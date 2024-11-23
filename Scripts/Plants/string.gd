@@ -11,11 +11,15 @@ export (float) var grab_speed = 400.0
 export (float) var retract_speed = 200.0
 export (float) var visibility_shrink_rate = 30.0
 
-# Wriggle parameters
-export (float) var wriggle_amplitude = 20.0  # How far the tip moves
-export (float) var wriggle_speed = 3.0      # Speed of the wriggle motion
-export (float) var phase_offset = 0.5       # Offset between horizontal and vertical motion
-export (float) var wriggle_dampening = 0.7  # How much the wriggle reduces along the tentacle
+# Enhanced wriggle parameters
+export (float) var wriggle_amplitude = 20.0
+export (float) var wriggle_speed = 3.0
+export (float) var phase_offset = 0.5
+export (float) var wriggle_dampening = 0.7
+export (float) var direction_bias = 0.0  # -1.0 to 1.0: tendency to move in a particular direction
+export (float) var secondary_frequency = 1.5  # Additional frequency for more complex motion
+export (float) var speed_variation = 0.2  # Random speed variation
+
 
 # Node references
 onready var line2D := $Line2D
@@ -35,13 +39,50 @@ var pos: PoolVector2Array
 var posPrev: PoolVector2Array
 var pointCount: int
 
+var unique_offset: float  # Unique to each tentacle
+var speed_modifier: float # Unique to each tentacle
+
 func _ready() -> void:
+	# Initialize random offsets for this tentacle
+	randomize()
+	unique_offset = rand_range(0, PI * 2)
+	speed_modifier = 1.0 + rand_range(-speed_variation, speed_variation)
+	
 	pointCount = get_pointCount(ropeLength)
 	initial_position = position
-	anchor_position = position  # Store the fixed point
+	anchor_position = position
 	resize_arrays()
 	init_position()
 	visible_points = pointCount
+
+func update_wriggle(delta: float) -> void:
+	time_elapsed += delta
+	var start_pos = to_global(anchor_position)
+	
+	pos[0] = start_pos
+	posPrev[0] = start_pos
+	
+	for i in range(1, pointCount):
+		var t = time_elapsed * wriggle_speed * speed_modifier
+		var segment_factor = float(i) / pointCount
+		var dampen = pow(segment_factor, wriggle_dampening)
+		
+		# Primary motion
+		var x_offset = sin(t + segment_factor * PI + unique_offset) * wriggle_amplitude * dampen
+		var y_offset = cos(t * secondary_frequency + segment_factor * PI + phase_offset + unique_offset) * wriggle_amplitude * dampen
+		
+		# Add directional bias
+		x_offset += direction_bias * wriggle_amplitude * dampen
+		
+		# Secondary motion for more complexity
+		x_offset += sin(t * secondary_frequency + unique_offset) * wriggle_amplitude * 0.3 * dampen
+		y_offset += cos(t * 1.3 + unique_offset) * wriggle_amplitude * 0.3 * dampen
+		
+		var base_pos = pos[i-1] + Vector2(constrain, 0)
+		var target = base_pos + Vector2(x_offset, y_offset)
+		
+		pos[i] = pos[i].linear_interpolate(target, 0.2)
+		posPrev[i] = pos[i] - (target - pos[i]) * 0.1
 
 func get_pointCount(distance: float) -> int:
 	return int(ceil(distance / constrain))
@@ -71,32 +112,6 @@ func start_grab_sequence() -> void:
 		pos[i] = start_pos + dir * (constrain * i)
 		posPrev[i] = pos[i]
 	visible_points = pointCount
-
-func update_wriggle(delta: float) -> void:
-	time_elapsed += delta
-	var start_pos = to_global(anchor_position)
-	
-	# Keep the base point fixed
-	pos[0] = start_pos
-	posPrev[0] = start_pos
-	
-	# Update each point with a sinusoidal motion
-	for i in range(1, pointCount):
-		var t = time_elapsed * wriggle_speed
-		var segment_factor = float(i) / pointCount
-		var dampen = pow(segment_factor, wriggle_dampening)
-		
-		# Create organic motion by combining multiple sine waves
-		var x_offset = sin(t + segment_factor * PI) * wriggle_amplitude * dampen
-		var y_offset = cos(t * 0.7 + segment_factor * PI + phase_offset) * wriggle_amplitude * dampen
-		
-		# Calculate position relative to the previous point
-		var base_pos = pos[i-1] + Vector2(constrain, 0)
-		var target = base_pos + Vector2(x_offset, y_offset)
-		
-		# Smoothly move towards the target position
-		pos[i] = pos[i].linear_interpolate(target, 0.2)
-		posPrev[i] = pos[i] - (target - pos[i]) * 0.1
 
 func _process(delta) -> void:
 	if not visible:

@@ -54,15 +54,10 @@ shape = SubResource( 8 )
 
 [node name="Tentacle" parent="." instance=ExtResource( 3 )]
 visible = false
-wriggle_amplitude = 4.0
-wriggle_speed = 5.0
-wriggle_dampening = 0.9
 
 [node name="Tentacle2" parent="." instance=ExtResource( 3 )]
 visible = false
 
 [node name="Tentacle3" parent="." instance=ExtResource( 3 )]
+visible = false
 rotation = 3.14026
-wriggle_amplitude = 4.0
-wriggle_speed = 5.0
-wriggle_dampening = 0.9

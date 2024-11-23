@@ -16,6 +16,7 @@ func _ready():
 	tentacle = tentacle_scene.instance()
 	add_child(tentacle)
 	tentacle.visible = false  # Hide tentacle initially
+	setup_tentacles()
 
 func _process(_delta):
 	if not attacking:
@@ -48,3 +49,38 @@ func take_damage(damage):
 	if health <= 0:
 		PlantManager.clear_space(self.global_position)
 		queue_free()
+		
+func setup_tentacles():
+	# Tentacle 1 - Wide, slower movements
+	var tentacle1 = tentacle_scene.instance()
+	add_child(tentacle1)
+	tentacle1.wriggle_amplitude = 3#25.0
+	tentacle1.wriggle_speed = 2.0
+	tentacle1.phase_offset = PI / 3
+	tentacle1.direction_bias = -0.9
+	tentacle1.wriggle_dampening = 0.8
+	tentacle1.secondary_frequency = 1.3
+	
+	# Tentacle 2 - Quick, tighter movements
+	var tentacle2 = tentacle_scene.instance()
+	add_child(tentacle2)
+	tentacle2.wriggle_amplitude = 5#20.0
+	tentacle2.wriggle_speed = 3.5
+	tentacle2.phase_offset = PI / 2
+	tentacle2.direction_bias = 0.9
+	tentacle2.wriggle_dampening = 0.6
+	tentacle2.secondary_frequency = 1.7
+	
+	# Tentacle 3 - Medium, circular movements
+	var tentacle3 = tentacle_scene.instance()
+	add_child(tentacle3)
+	tentacle3.wriggle_amplitude = 9#22.0
+	tentacle3.wriggle_speed = 2.8
+	tentacle3.phase_offset = PI * 0.7
+	tentacle3.direction_bias = 0.0
+	tentacle3.wriggle_dampening = 0.7
+	tentacle3.secondary_frequency = 1.5
+	
+	# Optionally offset their base positions slightly
+	tentacle2.position += Vector2(5, 2)
+	tentacle3.position += Vector2(-3, -2)
