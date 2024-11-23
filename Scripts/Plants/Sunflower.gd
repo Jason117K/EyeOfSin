@@ -1,5 +1,5 @@
 extends Area2D
-#Be Careful Next time
+
 #var sun_value = 50  # Amount of sun points generated
 var health = 100
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
@@ -11,7 +11,9 @@ func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$SunTimer.wait_time = 8.5
 	$SunTimer.start()  # Start the timer
-	assert($SunTimer.connect("timeout", self, "_on_SunTimer_timeout") == OK)
+	
+	assert($SunTimer.connect("timeout", self, "_on_SunTimer_timeout")  ==OK)
+	
 	
 
 # Called every time the sun timer reaches timeout

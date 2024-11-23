@@ -14,7 +14,7 @@ func _ready():
 	$ShootTimer.start()  # Start the shoot timer
 	assert($ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout") ==OK)
 
-#Handles Collision In Relation To Attacking
+
 func _process(_delta):
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()

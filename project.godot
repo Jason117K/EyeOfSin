@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="PVZ0.1"
-run/main_scene="res://Scenes/StartScreen.tscn"
+run/main_scene="res://Scenes/LevelScenes/StartScreen.tscn"
 config/icon="res://Assets/icon.png"
 
 [display]

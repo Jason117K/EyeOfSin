@@ -15,7 +15,7 @@ func _ready():
 	
 	
 func _on_Sun_mouse_entered():
-	#print("Claiming Sun")
+	print("Claiming Sun")
 	# Access the root node of the current scene
 	$CollectAudioPlayer.play()
 	var root = get_tree().current_scene
