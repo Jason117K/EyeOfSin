@@ -12,8 +12,8 @@ export (float) var retract_speed = 200.0 # Speed of retraction
 export (float) var visibility_shrink_rate = 30.0  # How fast tentacle shrinks when retracting
 
 # Wriggle motion parameters
-export (float) var wriggle_amplitude = 20.0  # How far points can move from rest position
-export (float) var wriggle_speed = 3.0       # Base speed of wriggle motion
+export (float) var wriggle_amplitude = 3.0  # How far points can move from rest position
+export (float) var wriggle_speed = 2.0       # Base speed of wriggle motion
 export (float) var phase_offset = 0.5        # Offset between horizontal and vertical motion
 export (float) var wriggle_dampening = 0.7   # How much movement decreases along length
 export (float) var direction_bias = 0.0      # Tendency to move in a direction (-1 to 1)

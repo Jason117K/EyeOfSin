@@ -1,5 +1,5 @@
 extends Area2D
-
+#Maw.gd
 var health = 100
 var tentacle_scene = preload("res://Scenes/Verlet.tscn")  # Preload tentacle scene
 var PlantManager
@@ -9,30 +9,18 @@ var attacking_tentacles = {}  # Dictionary to track which tentacles are attackin
 # Detection radius for zombies
 onready var detection_area = $DetectionComponent
 
+
+
 func _ready():
 	# Get reference to plant manager
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
-	#setup_tentacles()
+	setup_tentacles()
 
 func setup_tentacles():
 	# First tentacle - Blood red color scheme with aggressive movements
 	var tentacle1 = tentacle_scene.instance()
 	add_child(tentacle1)
 	
-	# Configure colors and pulsing
-	tentacle1.set_colors(
-		Color(0.8, 0.0, 0.0, 1.0),  # Bright blood red
-		Color(0.3, 0.0, 0.0, 1.0)   # Dark blood red
-	)
-	tentacle1.set_pulse(true, 1.5, 0.3)  # Enable pulsing effect
-	
-	# Configure movement parameters
-	tentacle1.wriggle_amplitude = 5.0    # Large movement range
-	tentacle1.wriggle_speed = 0.5   # Fast speed
-	tentacle1.phase_offset = PI / 3       # 60-degree phase offset
-	tentacle1.direction_bias = -0.3       # Slight leftward tendency
-	tentacle1.wriggle_dampening = 0.8     # More movement near base
-	tentacle1.secondary_frequency = 1.3    # Slower secondary motion
 	
 	# Offset position slightly
 	tentacle1.position += Vector2(0, -2)
@@ -46,18 +34,18 @@ func setup_tentacles():
 	add_child(tentacle2)
 	
 	# Configure colors and pulsing
-	tentacle2.set_colors(
-		Color(0.7, 0.0, 1.0, 1.0),  # Bright purple
-		Color(0.35, 0.0, 0.5, 1.0)  # Dark purple
-	)
+	#tentacle2.set_colors(
+	#	Color(0.7, 0.0, 1.0, 1.0),  # Bright purple
+	#	Color(0.35, 0.0, 0.5, 1.0)  # Dark purple
+	#)
 	tentacle2.set_pulse(true, 2.0, 0.25)  # Faster pulsing
 	
 	# Configure movement parameters
-	tentacle2.wriggle_amplitude = 4.0    # Moderate movement range
+	tentacle2.wriggle_amplitude = 3   # Moderate movement range
 	tentacle2.wriggle_speed = 2.0         # Moderate movement
-	tentacle2.phase_offset = PI / 2       # 90-degree phase offset
-	tentacle2.direction_bias = 0.2        # Slight rightward tendency
-	tentacle2.wriggle_dampening = 0.6     # More uniform movement
+	tentacle2.phase_offset = PI        # 90-degree phase offset
+	tentacle2.direction_bias = 0.0        
+	tentacle2.wriggle_dampening = 0.9     # More uniform movement
 	tentacle2.secondary_frequency = 1.7    # Faster secondary motion
 	
 	# Offset position slightly
@@ -72,19 +60,19 @@ func setup_tentacles():
 	add_child(tentacle3)
 	
 	# Configure colors and pulsing
-	tentacle3.set_colors(
-		Color(1.0, 1.0, 0.0, 1.0),
-		Color(0.0, 1.0, 0.0, 1.0)
+#	tentacle3.set_colors(
+#		Color(1.0, 1.0, 0.0, 1.0),
+#		Color(0.0, 1.0, 0.0, 1.0)
 		#Color(0.0, 1.0, 0.0, 1.0),  # Bright green
 		#Color(1.0, 1.0, 0.0, 1.0)   # Yellow
-	)
+#	)
 	tentacle3.set_pulse(true, 1.0, 0.2)  # Gentle pulsing
 	
 	# Configure movement parameters
-	tentacle3.wriggle_amplitude = 4.5    # Small movement range
+	tentacle3.wriggle_amplitude = 2.5   # Small movement range
 	tentacle3.wriggle_speed = 1         # Slow speed
 	tentacle3.phase_offset = PI * 0.7     # ~126-degree phase offset
-	tentacle3.direction_bias = 0.1        # Slight rightward tendency
+	tentacle3.direction_bias = -0.9        
 	tentacle3.wriggle_dampening = 0.7     # Balanced movement distribution
 	tentacle3.secondary_frequency = 1.5    # Moderate secondary motion
 	
@@ -132,3 +120,8 @@ func take_damage(damage):
 			tentacle.queue_free()
 		PlantManager.clear_space(self.global_position)
 		queue_free()
+
+
+func _on_ShootTimer_timeout():
+	pass
+	#laser.fire()
