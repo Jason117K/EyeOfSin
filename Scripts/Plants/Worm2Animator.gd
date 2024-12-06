@@ -9,7 +9,7 @@ export var bounce_elasticity = 0.3  # How "bouncy" the squash/stretch is (0-1)
 export var animation_exaggeration = 1.0  # Overall multiplier for animation effects
 
 # Node references
-export(NodePath) var sprite_path  # Path to the sprite to animate
+export(NodePath) var sprite_path  
 onready var sprite = get_node(sprite_path) if sprite_path else null
 
 # Internal animation state
@@ -21,11 +21,12 @@ var target_stretch = 0.0
 var velocity = 0.0
 var prev_y = 0.0
 var initial_sprite_scale: Vector2
+var initial_sprite_position: Vector2  # Store the initial position
 
 func _ready():
 	if sprite:
-		# Store the sprite's initial scale to maintain any preset scaling
 		initial_sprite_scale = sprite.scale
+		initial_sprite_position = sprite.position  # Store the initial position
 	else:
 		push_warning("No sprite assigned to animate!")
 
@@ -38,24 +39,22 @@ func _process(delta):
 	# Calculate smooth up/down motion with slight ease-in/out
 	var raw_bob = sin(time)
 	var smoothed_bob = sign(raw_bob) * pow(abs(raw_bob), 0.7)
-	var y_pos = smoothed_bob * bob_height * animation_exaggeration
+	var y_offset = smoothed_bob * bob_height * animation_exaggeration
 	
 	# Calculate velocity for squash/stretch
-	var new_velocity = (y_pos - prev_y) / delta
+	var new_velocity = (y_offset - prev_y) / delta
 	velocity = lerp(velocity, new_velocity, 0.5)
-	prev_y = y_pos
+	prev_y = y_offset
 	
 	# Determine target squash/stretch based on motion
 	var normalized_velocity = clamp(velocity / (bob_height * 2), -1, 1)
 	
 	if abs(normalized_velocity) > 0.1:
-		# Stretch when moving, more stretch at higher velocities
 		target_stretch = normalized_velocity * stretch_amount * animation_exaggeration
-		target_squash = -target_stretch * 0.5  # Maintain volume
+		target_squash = -target_stretch * 0.5
 	else:
-		# Squash at the peaks of motion
 		target_squash = abs(smoothed_bob) * squash_amount * animation_exaggeration
-		target_stretch = -target_squash * 0.5  # Maintain volume
+		target_stretch = -target_squash * 0.5
 	
 	# Apply bounce elasticity to squash/stretch
 	current_squash = lerp(current_squash, target_squash, bounce_elasticity)
@@ -65,6 +64,7 @@ func _process(delta):
 	var scale_y = initial_sprite_scale.y * (1.0 + current_squash)
 	var scale_x = initial_sprite_scale.x * (1.0 + current_stretch)
 	
-	# Update only the sprite's transform
-	sprite.position.y = y_pos
+	# Update sprite's transform relative to its initial position
+	sprite.position.x = initial_sprite_position.x
+	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)

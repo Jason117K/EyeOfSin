@@ -1,5 +1,7 @@
 extends Area2D
 #Maw.gd
+#Create tentacle component 
+
 var health = 100
 var tentacle_scene = preload("res://Scenes/Verlet.tscn")  # Preload tentacle scene
 var PlantManager
@@ -9,7 +11,14 @@ var attacking_tentacles = {}  # Dictionary to track which tentacles are attackin
 # Detection radius for zombies
 onready var detection_area = $DetectionComponent
 
+var currentTentacle
 
+
+var charges = 3.0
+#Maw has 6 'Charges'
+#Basic Zombie 1 Charge
+#ConeheadZombie 2 Charges
+#BucketHeadZombie 4 Charges
 
 func _ready():
 	# Get reference to plant manager
@@ -97,12 +106,19 @@ func assign_tentacle_to_target(target):
 		
 	# Find first available tentacle
 	for tentacle in tentacles:
-		if not tentacle in attacking_tentacles:
-			# Assign target to tentacle
-			attacking_tentacles[tentacle] = target
-			tentacle.enemy = target
-			tentacle.start_grab_sequence()
-			break
+		if not tentacle in attacking_tentacles: 
+			#print("Charges is ", charges)
+			if charges > 0.0:
+				# Assign target to tentacle
+				attacking_tentacles[tentacle] = target
+				tentacle.enemy = target
+				tentacle.start_grab_sequence()
+				#charges = charges - target.getChargeComp.getValue()
+				charges = charges - 1
+				break
+			else:
+				#print("Cannot attack")
+				pass
 
 func _on_tentacle_retraction_complete(tentacle):
 	# Remove the enemy-tentacle pair from tracking
@@ -111,6 +127,8 @@ func _on_tentacle_retraction_complete(tentacle):
 		if is_instance_valid(enemy):
 			enemy.queue_free()  # Remove the caught enemy
 		attacking_tentacles.erase(tentacle)
+		
+ 
 
 func take_damage(damage):
 	health = health - damage
@@ -125,3 +143,7 @@ func take_damage(damage):
 func _on_ShootTimer_timeout():
 	pass
 	#laser.fire()
+
+func _on_DigestionTimer_timeout():
+	#print(charges)
+	charges = charges + 2

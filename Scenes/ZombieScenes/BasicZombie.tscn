@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/Zombies/BasicZombie.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Audio/HitSmack.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/zombie-bite-96528.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Scripts/Zombies/AttackComponent.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Zombies/ZombieSpriteComponent.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 13.5 )
@@ -79,6 +81,11 @@ animations = [ {
 "name": "Attack",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "default",
@@ -97,9 +104,9 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 11 )
-animation = "Attack"
-frame = 5
+animation = "New Anim"
 flip_h = true
+script = ExtResource( 6 )
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]
 enabled = true
@@ -123,6 +130,9 @@ stream = ExtResource( 4 )
 volume_db = -16.0
 pitch_scale = 2.0
 
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
 [connection signal="timeout" from="JustSpawned" to="." method="_on_JustSpawned_timeout"]

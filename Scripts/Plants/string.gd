@@ -3,8 +3,8 @@ extends Node2D
 signal retraction_complete
 
 # Basic configuration parameters
-export (float) var ropeLength = 30       # Total length of the tentacle
-export (float) var constrain = 1         # Distance between each point
+export (float) var ropeLength = 30.0       # Total length of the tentacle
+export (float) var constrain = 1.0         # Distance between each point
 export (Vector2) var gravity = Vector2(0, 9.8)  # Gravity influence
 export (float) var dampening = 0.9       # Movement dampening (0-1)
 export (float) var grab_speed = 400.0    # Speed of grabbing attack
@@ -174,11 +174,11 @@ func _process(delta) -> void:
 			var dir = (target_position - tip_pos).normalized()
 			pos[pointCount-1] += dir * grab_speed * delta
 			posPrev[pointCount-1] = pos[pointCount-1] - dir * grab_speed * delta
-			
-			if tip_pos.distance_to(target_position) < 10:
-				current_state = State.ATTACHED
-				enemy.global_position = pos[pointCount-1]
-				_start_attach_timer()
+			if enemy and is_instance_valid(enemy):
+				if tip_pos.distance_to(target_position) < 10:
+					current_state = State.ATTACHED
+					enemy.global_position = pos[pointCount-1]
+					_start_attach_timer()
 		
 		State.ATTACHED:
 			if is_instance_valid(enemy):

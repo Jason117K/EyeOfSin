@@ -7,6 +7,7 @@ var peashooter_scene = preload("res://Scenes/PlantScenes/Peashooter.tscn")
 var sunflower_scene = preload("res://Scenes/PlantScenes/Sunflower.tscn")
 var walnut_scene = preload("res://Scenes/PlantScenes/WalnutTree.tscn")
 var maw_scene = preload("res://Scenes/PlantScenes/Maw.tscn")
+var egg_scene = preload("res://Scenes/PlantScenes/EggWorm.tscn")
 
 
 
@@ -28,7 +29,7 @@ func _ready():
 		assert($HBoxContainer/PeashooterButton2.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
 		assert($HBoxContainer/SunflowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
 		assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
-		$HBoxContainer/MawButton.visible = false
+		$HBoxContainer/MawButton.visible = true
 
 	#print(root)
 	
@@ -53,4 +54,11 @@ func _on_MawButton_pressed():
 	selected_plant = maw_scene
 	print("Maw Selected")
 	$UIClickAudio.play()
-	pass # Replace with function body.
+
+
+
+func _on_EggButton_pressed():
+	selected_plant = egg_scene
+	print("EggWorm Selected")
+	$UIClickAudio.play()
+
