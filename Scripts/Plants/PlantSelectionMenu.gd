@@ -8,6 +8,7 @@ var sunflower_scene = preload("res://Scenes/PlantScenes/Sunflower.tscn")
 var walnut_scene = preload("res://Scenes/PlantScenes/WalnutTree.tscn")
 var maw_scene = preload("res://Scenes/PlantScenes/Maw.tscn")
 var egg_scene = preload("res://Scenes/PlantScenes/EggWorm.tscn")
+var bomb_scene = preload("res://Scenes/PlantScenes/EyeBomb.tscn")
 
 
 
@@ -60,5 +61,12 @@ func _on_MawButton_pressed():
 func _on_EggButton_pressed():
 	selected_plant = egg_scene
 	print("EggWorm Selected")
+	$UIClickAudio.play()
+
+
+
+func _on_EyeButton_pressed():
+	selected_plant = bomb_scene
+	print("EyeBomb Selected")
 	$UIClickAudio.play()
 

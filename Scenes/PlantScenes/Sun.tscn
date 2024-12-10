@@ -55,7 +55,7 @@ stream = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 7 )
-frame = 2
+frame = 3
 playing = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_Sun_mouse_entered"]

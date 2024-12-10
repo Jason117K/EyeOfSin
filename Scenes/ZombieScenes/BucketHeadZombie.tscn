@@ -80,7 +80,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="BucketHead" type="Area2D" groups=["Zombie"]]
+[node name="BucketHeadZombie" type="Area2D" groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource( 2 )
@@ -90,7 +90,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 

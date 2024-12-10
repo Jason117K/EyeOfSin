@@ -3,6 +3,7 @@ extends Area2D
 # Reference to the PlantManager or GameManager to update the sun count
 #var plant_manager = preload("res://Scenes/PlantManager.tscn")
 
+export var SunValue = 50
 
 # Called when the node is added to the scene
 func _ready():
@@ -23,7 +24,7 @@ func _on_Sun_mouse_entered():
 	var plant_manager = root.get_node("PlantManager")
 	if plant_manager:  # If the PlantManager or GameManager is set
 		#$CollectAudioPlayer.play()
-		plant_manager.add_sun(25)  # Add 25 sun points (or whatever amount)
+		plant_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
 		plant_manager.play_sun_collect()
 	# Queue the sun for deletion (simulate absorption)
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Plants/PlantSelectionMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Plants/SpyderrCARD2.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Audio/UIClick.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Plants/EggWormCard.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Plants/MawCARD.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Plants/EyeBombCARD.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0 )
@@ -62,8 +63,16 @@ margin_bottom = 83.0
 custom_styles/normal = SubResource( 3 )
 icon = ExtResource( 6 )
 
+[node name="EyeButton" type="Button" parent="HBoxContainer"]
+margin_left = 355.0
+margin_right = 422.0
+margin_bottom = 83.0
+custom_styles/normal = SubResource( 3 )
+icon = ExtResource( 8 )
+
 [node name="UIClickAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 
 [connection signal="pressed" from="HBoxContainer/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/EggButton" to="." method="_on_EggButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/EyeButton" to="." method="_on_EyeButton_pressed"]
