@@ -9,7 +9,10 @@ var target_plant = null  # Holds reference to the plant being attacked
 
 var attack_power = 33
 
+onready var animatedSprite = $AnimatedSprite
 onready var attack_ray = $DMGRayCast2D
+
+var thisMaterial
 
 func ready():
 	add_to_group("Alive-Enemies")
@@ -56,6 +59,11 @@ func _on_AttackTimer_timeout():
 
 # Function to handle taking damage
 func take_damage(damage):
+	if(thisMaterial):
+		thisMaterial.set_shader_param("target_color", Color.black)
+		thisMaterial.set_shader_param("replace_color", Color.white)
+		thisMaterial.set_shader_param("tolerance", 1)
+		$ResetColor.start()
 	health -= damage
 	$HitAudioPlayer.play()
 	if health <= 0:
@@ -63,6 +71,14 @@ func take_damage(damage):
 
 
 func _on_JustSpawned_timeout():
+	# Create a unique material instance for this zombie
+	thisMaterial = animatedSprite.material.duplicate()
+	animatedSprite.material = thisMaterial
+	# Set initial shader parameters
+	if thisMaterial:
+		thisMaterial.set_shader_param("target_color", Color.black)
+		thisMaterial.set_shader_param("replace_color", Color.black)
+		thisMaterial.set_shader_param("tolerance", 0.1)
 	add_to_group("Alive-Enemies")
 	var _group_size = get_tree().get_nodes_in_group("Alive-Enemies").size()
 	#print("Group Size is : " , group_size)
@@ -71,4 +87,11 @@ func _on_JustSpawned_timeout():
 func _on_AnimatedSprite_animation_finished():
 	if("Attack" in $AnimatedSprite.animation):
 		$AttackAudioPlayer.play()
+
+
+
+func _on_ResetColor_timeout():
+	thisMaterial.set_shader_param("target_color", Color.black)
+	thisMaterial.set_shader_param("replace_color", Color.black)
+	thisMaterial.set_shader_param("tolerance", 0.1)
 

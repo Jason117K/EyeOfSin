@@ -1,5 +1,7 @@
 extends Node2D
 
+var health = 100
+
 # Animation parameters
 export var bob_speed = 2.0  
 export var bob_height = 30.0 
@@ -22,13 +24,23 @@ var velocity = 0.0
 var prev_y = 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  # Store the initial position
+var PlantManager
 
 func _ready():
+		# Get reference to plant manager
+	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	if sprite:
 		initial_sprite_scale = sprite.scale
 		initial_sprite_position = sprite.position  # Store the initial position
 	else:
 		push_warning("No sprite assigned to animate!")
+		
+
+func take_damage(damage):
+	health = health - damage
+	if health <= 0:
+		PlantManager.clear_space(self.global_position)
+		queue_free()
 
 func _process(delta):
 	if not sprite:
