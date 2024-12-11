@@ -36,8 +36,7 @@ func _on_SpriteComponent_animation_finished():
 	else:
 		print("done")
 		for enemy in enemiesToHit:
-			if not is_instance_valid_and_alive(enemy):
-				
+			if not is_instance_valid_and_alive(enemy):	
 				continue
 			if(enemy != null):
 				if enemy.has_method("take_damage"):

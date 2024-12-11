@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Zombies/BackUpDancerHead.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Plants/Head.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Zombies/BackUpDancerZombie.gd" type="Script" id=3]
+
+[node name="BackUpDancerZombie" type="Node2D"]
+z_index = 1
+script = ExtResource( 3 )
+
+[node name="Head" type="Sprite" parent="."]
+rotation = -2.35619
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="TentacleSpawnPoint" type="Node2D" parent="."]
+visible = false
+position = Vector2( 186, 222 )
+
+[node name="TentacleSpawnPoint2" type="Node2D" parent="."]
+visible = false
+position = Vector2( 393, 220 )
