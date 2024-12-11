@@ -73,6 +73,7 @@ func place_plant(grid_pos: Vector2):
 		return
 	var plant_instance = selected_plant_scene.instance()
 	get_cost(plant_instance)
+	plant_cost = plant_instance.get_cost()
 	if sun_points >= plant_cost:  # Assume the plant costs 25 sun points
 		plant_instance.position = Vector2(grid_pos.x+32,grid_pos.y-32)
 		get_parent().get_node("GameLayer").add_child(plant_instance)
@@ -103,6 +104,6 @@ func _on_SetSun_timeout():
 		sun_points = 75
 		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
 	else:
-		sun_points = 150
+		sun_points = 600
 		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
 

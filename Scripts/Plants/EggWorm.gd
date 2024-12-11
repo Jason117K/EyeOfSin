@@ -26,6 +26,8 @@ var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  # Store the initial position
 var PlantManager
 
+export var cost = 150
+
 func _ready():
 		# Get reference to plant manager
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
@@ -80,3 +82,7 @@ func _process(delta):
 	sprite.position.x = initial_sprite_position.x
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
+	
+	
+func get_cost():
+	return cost

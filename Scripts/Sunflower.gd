@@ -4,12 +4,13 @@ extends Area2D
 var health = 100
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
+export var cost = 25
 
 func _ready():
 	#get_parent().get_node("GameLayer").add_child(plant_instance)
 						#Gets GameLayer/Gets Main
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
-	$SunTimer.wait_time = 8.5
+
 	$SunTimer.start()  # Start the timer
 	assert($SunTimer.connect("timeout", self, "_on_SunTimer_timeout") == OK)
 	
@@ -41,5 +42,6 @@ func take_damage(damage):
 		
 		queue_free()
 	
-
+func get_cost():
+	return cost
 	

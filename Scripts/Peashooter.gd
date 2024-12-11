@@ -6,10 +6,14 @@ var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  #
 var PlantManager
 var canAttack = false
 
+export var cost = 50
+
 # Raycast to detect zombies in front of the spider
 onready var attack_ray = $DMG_RayCast2D
+onready var animatedSpriteComponent = $AnimatedSprite
 
 func _ready():
+	animatedSpriteComponent.animation = "redSpiderDefault"
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$ShootTimer.start()  # Start the shoot timer
 	assert($ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout") ==OK)
@@ -24,12 +28,15 @@ func _process(_delta):
 				canAttack = true
 			else:
 				canAttack = false
+				
+		
 
 
 # Called every time the shoot timer reaches timeout
 func _on_ShootTimer_timeout():
 	if canAttack:
-		shoot_projectile()
+		pass
+		#shoot_projectile()
 
 # Function to create and shoot a new projectile
 func shoot_projectile():
@@ -44,3 +51,28 @@ func take_damage(damage):
 	if(health <= 0):
 		PlantManager.clear_space(self.global_position)
 		queue_free()
+
+func get_cost():
+	return cost
+
+
+func _on_AnimatedSprite_animation_finished():
+	if canAttack:
+		animatedSpriteComponent.animation = "redSpiderAttack"
+	else:
+		animatedSpriteComponent.animation = "redSpiderDefault"
+
+
+
+func _on_AnimatedSprite_frame_changed():
+	if(animatedSpriteComponent.animation == "redSpiderAttack"):
+		print(animatedSpriteComponent.frame)
+		if(animatedSpriteComponent.frame == 3):
+			shoot_projectile()
+
+
+
+
+
+
+

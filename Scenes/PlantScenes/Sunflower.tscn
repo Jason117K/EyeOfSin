@@ -66,10 +66,10 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 1 )
 
 [node name="SunTimer" type="Timer" parent="."]
-wait_time = 40.0
+wait_time = 16.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "defaultOutline"
-frame = 3
+frame = 1
 playing = true

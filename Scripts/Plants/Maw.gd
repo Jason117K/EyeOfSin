@@ -13,6 +13,8 @@ onready var detection_area = $DetectionComponent
 
 var currentTentacle
 
+export var cost = 200
+
 
 var charges = 3.0
 #Maw has 6 'Charges'
@@ -147,3 +149,6 @@ func _on_ShootTimer_timeout():
 func _on_DigestionTimer_timeout():
 	#print(charges)
 	charges = charges + 2
+	
+func get_cost():
+	return cost

@@ -8,6 +8,9 @@ var startNum = 0
 var damage = 10
 var enemiesToHit
 
+export var cost = 25
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -33,7 +36,17 @@ func _on_SpriteComponent_animation_finished():
 	else:
 		print("done")
 		for enemy in enemiesToHit:
+			if not is_instance_valid_and_alive(enemy):
+				
+				continue
 			if(enemy != null):
 				if enemy.has_method("take_damage"):
 					enemy.take_damage(damage)
 		queue_free()
+		
+func get_cost():
+	return cost
+
+# Add this helper function to scripts that deal with combat
+func is_instance_valid_and_alive(node) -> bool:
+	return is_instance_valid(node) and not node.is_queued_for_deletion()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Plants/PlantSelectionMenu.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Plants/SpyderrCARD2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Plants/RedSpiderCARD.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Plants/EyeTower2CARD.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Plants/EyeTreeCARD2.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Audio/UIClick.mp3" type="AudioStream" id=5]
