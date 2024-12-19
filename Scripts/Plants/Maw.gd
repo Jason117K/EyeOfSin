@@ -3,7 +3,7 @@ extends Area2D
 #Create tentacle component 
 
 var health = 100
-var tentacle_scene = preload("res://Scenes/Verlet.tscn")  # Preload tentacle scene
+var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  # Preload tentacle scene
 var PlantManager
 var tentacles = []  # Array to track all tentacles
 var attacking_tentacles = {}  # Dictionary to track which tentacles are attacking which enemies
@@ -31,6 +31,7 @@ func setup_tentacles():
 	# First tentacle - Blood red color scheme with aggressive movements
 	var tentacle1 = tentacle_scene.instance()
 	add_child(tentacle1)
+	tentacle1.z_index = z_index - 1
 	
 	
 	# Offset position slightly
@@ -43,12 +44,13 @@ func setup_tentacles():
 	# Second tentacle - Purple color scheme with quick, erratic movements
 	var tentacle2 = tentacle_scene.instance()
 	add_child(tentacle2)
+	tentacle2.z_index = z_index - 1
 	
 	# Configure colors and pulsing
-	#tentacle2.set_colors(
-	#	Color(0.7, 0.0, 1.0, 1.0),  # Bright purple
-	#	Color(0.35, 0.0, 0.5, 1.0)  # Dark purple
-	#)
+	tentacle2.set_colors(
+		Color(0.7, 0.0, 1.0, 1.0),  # Bright purple
+		Color(0.35, 0.0, 0.5, 1.0)  # Dark purple
+	)
 	tentacle2.set_pulse(true, 2.0, 0.25)  # Faster pulsing
 	
 	# Configure movement parameters
@@ -69,14 +71,15 @@ func setup_tentacles():
 	# Third tentacle - Green and yellow color scheme with medium, smooth movements
 	var tentacle3 = tentacle_scene.instance()
 	add_child(tentacle3)
+	tentacle3.z_index = z_index - 1
 	
 	# Configure colors and pulsing
-#	tentacle3.set_colors(
-#		Color(1.0, 1.0, 0.0, 1.0),
-#		Color(0.0, 1.0, 0.0, 1.0)
-		#Color(0.0, 1.0, 0.0, 1.0),  # Bright green
-		#Color(1.0, 1.0, 0.0, 1.0)   # Yellow
-#	)
+	tentacle3.set_colors(
+	#	Color(1.0, 1.0, 0.0, 1.0),
+	#	Color(0.0, 1.0, 0.0, 1.0),
+		Color(0.0, 1.0, 0.0, 1.0),  # Bright green
+		Color(1.0, 1.0, 0.0, 1.0)   # Yellow
+	)
 	tentacle3.set_pulse(true, 1.0, 0.2)  # Gentle pulsing
 	
 	# Configure movement parameters

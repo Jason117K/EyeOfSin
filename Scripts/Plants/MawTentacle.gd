@@ -4,20 +4,12 @@ signal retraction_complete
 
 # Basic configuration parameters
 export (float) var ropeLength = 30.0       # Total length of the tentacle
-export (float) var constrain = 1        # Distance between each point
+export (float) var constrain = 1.0         # Distance between each point
 export (Vector2) var gravity = Vector2(0, 9.8)  # Gravity influence
 export (float) var dampening = 0.9       # Movement dampening (0-1)
 export (float) var grab_speed = 400.0    # Speed of grabbing attack
 export (float) var retract_speed = 200.0 # Speed of retraction
 export (float) var visibility_shrink_rate = 30.0  # How fast tentacle shrinks when retracting
-
-# Thickness parameters
-export (float) var base_width = 4.0      # Base thickness of the tentacle
-export (float) var tip_width = 2.0       # Thickness at the tip
-export (bool) var use_width_gradient = true  # Whether to gradually reduce width
-export (float) var width_pulse_speed = 1.0   # Speed of width pulsing
-export (float) var width_pulse_amount = 0.2  # Amount of width pulsing (0-1)
-export (bool) var enable_width_pulse = false # Whether to enable width pulsing
 
 # Wriggle motion parameters
 export (float) var wriggle_amplitude = 3.0  # How far points can move from rest position
@@ -75,9 +67,6 @@ func _ready() -> void:
 	
 	# Add to tentacle group for easy reference
 	add_to_group("tentacles")
-	
-	# Initialize line width
-	update_width_profile()
 
 func get_pointCount(distance: float) -> int:
 	return int(ceil(distance / constrain))
@@ -89,30 +78,33 @@ func resize_arrays() -> void:
 func init_position() -> void:
 	var start_pos = to_global(anchor_position)
 	for i in range(pointCount):
-		pos[i] = start_pos + Vector2(constrain * i , 0)     #constrain
-		posPrev[i] = start_pos + Vector2(constrain * i , 0 ) #constrain
+		pos[i] = start_pos + Vector2(constrain * i, 0)
+		posPrev[i] = start_pos + Vector2(constrain * i, 0)
 
 func setup_line_color() -> void:
-	if not line2D:
-		push_error("line2D not initialized!")
-		return
-		
 	if use_gradient:
 		var gradient = Gradient.new()
-		#gradient.add_point(0.0, start_color)
-		#gradient.add_point(1.0, end_color)
-		#line2D.gradient = gradient
-		
-		gradient.set_offset(0, 0.0)  # First color at start (0.0)
-		gradient.set_offset(1, 1.0)  # Second color at end (1.0)
-	
-		gradient.set_color(0, start_color)
-		gradient.set_color(1, end_color)
+		gradient.add_point(0.0, start_color)
+		gradient.add_point(1.0, end_color)
 		line2D.gradient = gradient
 	else:
-		if is_instance_valid(line2D):
-			line2D.default_color = start_color
+		line2D.default_color = start_color
 
+func update_color(delta: float) -> void:
+	if not enable_pulse:
+		return
+		
+	time_elapsed += delta
+	var pulse = (sin(time_elapsed * pulse_speed) * 0.5 + 0.5) * pulse_intensity
+	
+	if use_gradient:
+		var gradient = line2D.gradient
+		var pulsed_start = start_color.lightened(pulse)
+		var pulsed_end = end_color.lightened(pulse)
+		gradient.set_color(0, pulsed_start)
+		gradient.set_color(1, pulsed_end)
+	else:
+		line2D.default_color = start_color.lightened(pulse)
 
 func update_wriggle(delta: float) -> void:
 	time_elapsed += delta
@@ -139,7 +131,7 @@ func update_wriggle(delta: float) -> void:
 		x_offset += sin(t * secondary_frequency + unique_offset) * wriggle_amplitude * 0.3 * dampen
 		y_offset += cos(t * 1.3 + unique_offset) * wriggle_amplitude * 0.3 * dampen
 		
-		var base_pos = pos[i-1] + Vector2(constrain, 3)
+		var base_pos = pos[i-1] + Vector2(constrain, 0)
 		var target = base_pos + Vector2(x_offset, y_offset)
 		
 		# Smooth movement
@@ -270,83 +262,3 @@ func set_pulse(enabled: bool, new_speed: float = 1.0, new_intensity: float = 0.2
 	enable_pulse = enabled
 	pulse_speed = new_speed
 	pulse_intensity = new_intensity
-
-# Update function to update tentacle width profile
-func update_width_profile() -> void:
-	if not line2D:
-		push_error("line2D not initialized in update_width_profile!")
-		return
-		
-	if not use_width_gradient:
-		line2D.width = base_width
-		return
-		
-	# Create width profile
-	var width_points = []
-	for i in range(pointCount):
-		var t = float(i) / (pointCount - 1)
-		var current_width = lerp(base_width, tip_width, t)
-		width_points.append(current_width)
-	
-	var curve = create_width_curve(width_points)
-	if curve and is_instance_valid(line2D):
-		line2D.width_curve = curve
-
-
-# Helper function to create width curve
-func create_width_curve(width_points: Array) -> Curve:
-	if width_points.empty():
-		return null
-		
-	var curve = Curve.new()
-	for i in range(len(width_points)):
-		var t = float(i) / (len(width_points) - 1)
-		if base_width > 0:  # Prevent division by zero
-			curve.add_point(Vector2(t, width_points[i] / base_width))
-	return curve
-
-# Modified update_color to include width pulsing
-# Modified update_color to include width pulsing with proper checks
-func update_color(delta: float) -> void:
-	if not line2D:
-		return
-		
-	if not enable_pulse and not enable_width_pulse:
-		return
-		
-	time_elapsed += delta
-	
-	# Color pulse code
-	if enable_pulse and line2D.gradient:
-		var pulse = (sin(time_elapsed * pulse_speed) * 0.5 + 0.5) * pulse_intensity
-		var gradient = line2D.gradient
-		var pulsed_start = start_color.lightened(pulse)
-		var pulsed_end = end_color.lightened(pulse)
-		gradient.set_color(0, pulsed_start)
-		gradient.set_color(1, pulsed_end)
-	
-	# Width pulsing with proper checks
-	if enable_width_pulse and is_instance_valid(line2D):
-		var width_pulse = (sin(time_elapsed * width_pulse_speed) * 0.5 + 0.5) * width_pulse_amount
-		if use_width_gradient:
-			var width_points = []
-			for i in range(pointCount):
-				var t = float(i) / (pointCount - 1)
-				var base = lerp(base_width, tip_width, t)
-				width_points.append(base * (1.0 + width_pulse))
-			var curve = create_width_curve(width_points)
-			if curve:
-				line2D.width_curve = curve
-		else:
-			line2D.width = base_width * (1.0 + width_pulse)
-
-# Add to your existing public methods
-func set_width(new_base_width: float, new_tip_width: float = -1) -> void:
-	base_width = new_base_width
-	tip_width = new_tip_width if new_tip_width >= 0 else new_base_width * 0.5
-	update_width_profile()
-
-func set_width_pulse(enabled: bool, speed: float = 1.0, amount: float = 0.2) -> void:
-	enable_width_pulse = enabled
-	width_pulse_speed = speed
-	width_pulse_amount = amount

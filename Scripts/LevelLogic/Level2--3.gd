@@ -18,5 +18,5 @@ func _on_Continue_pressed():
 
 
 func _on_PlayAgain_pressed():
-	assert(get_tree().reload_current_scene() ==OK)
+	assert(get_tree().change_scene("res://Scenes/LevelScenes/Level2.tscn") ==OK)
 

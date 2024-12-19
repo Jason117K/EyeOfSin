@@ -15,6 +15,12 @@ export var speed_variation = 0.3
 export var start_color = Color(0.8, 0.2, 0.2, 1.0)  # Blood red
 export var end_color = Color(0.4, 0.0, 0.0, 1.0)    # Dark red
 
+# Thickness settings
+export var base_width = 6.0
+export var tip_width = 2.0
+export var width_pulse_speed = 1.2
+export var width_pulse_amount = 0.15
+
 # Store spawned tentacles
 var tentacles = []
 onready var spawnPos = $"../TentacleSpawnPoint"
@@ -24,7 +30,6 @@ func _ready():
 	spawn_tentacles()
 
 func spawn_tentacles():
-	# Create tentacles evenly distributed around the base of the head
 	for i in range(num_tentacles):
 		var tentacle = create_tentacle(i)
 		tentacles.append(tentacle)
@@ -35,8 +40,7 @@ func create_tentacle(index: int) -> Node2D:
 	tentacle.z_index = z_index - 1
 	
 	# Calculate spawn position in a semicircle at the base of the head
-	#var angle = (2 * PI * index / num_tentacles)
-	var angle = PI + (PI * index / (num_tentacles - 1))  # Distribute across bottom semicircle
+	var angle = PI + (PI * index / (num_tentacles - 1))
 	var offset = Vector2(
 		cos(angle) * spawn_radius,
 		sin(angle) * spawn_radius
@@ -44,44 +48,40 @@ func create_tentacle(index: int) -> Node2D:
 	
 	# Adjust base position to be closer to head
 	tentacle.position = Vector2(0, (texture.get_height() / 3)-30) + offset 
-	#tentacle.position = Vector2(-75, texture.get_height() / 2) + offset
-	print(tentacle.position)
-	
-	# Set up the tentacle's transform to point downward
-#	var transform = Transform2D()
-	#transform = transform.rotated(PI/2)  # Rotate 90 degrees
-#	tentacle.transform = transform
 	
 	# Additional rotation to ensure downward direction
-	tentacle.rotation = PI/2  # 90 degrees in radians
+	tentacle.rotation = PI/2
 	
 	# Randomize tentacle properties
 	var length = rand_range(min_length, max_length)
 	tentacle.ropeLength = length
 	tentacle.wriggle_speed = base_speed + rand_range(-speed_variation, speed_variation)
-	tentacle.wriggle_amplitude = rand_range(2.0, 4.0)
-	tentacle.phase_offset = rand_range(0, PI * 2)
+	tentacle.wriggle_amplitude = rand_range(5.0, 6.0) #5/6
+	tentacle.phase_offset = rand_range(0, PI * 2) #PI
 	
 	# Configure the tentacle to grow downward
-	tentacle.gravity = Vector2(0, 20)  # Add downward gravity
-	#tentacle.direction_bias = 1.0      # Maximum downward bias
+	tentacle.gravity = Vector2(0, 20)
 	tentacle.direction_bias = rand_range(-0.2, 0.2)
 	
-	# Configure visual properties
-	tentacle.start_color = start_color
-	tentacle.end_color = end_color
+	# Explicitly set up the colors
+	tentacle.set_colors(start_color, end_color)
 	tentacle.use_gradient = true
-	tentacle.enable_pulse = true
+	tentacle.enable_pulse = false
 	tentacle.pulse_speed = rand_range(0.8, 1.2)
 	tentacle.pulse_intensity = rand_range(0.1, 0.3)
 	
-	# Add some randomization to movement while maintaining downward direction
-	tentacle.wriggle_dampening = rand_range(0.6, 0.8)
-	tentacle.secondary_frequency = rand_range(1.3, 1.7)
-	tentacle.dampening = 0.95  # Increase dampening to reduce horizontal movement
+	# Configure thickness properties
+	tentacle.set_width(base_width * rand_range(0.9, 1.1), tip_width * rand_range(0.9, 1.1))
+	tentacle.use_width_gradient = false
+	tentacle.set_width_pulse(true, width_pulse_speed * rand_range(0.9, 1.1), width_pulse_amount)
+	
+	# Movement properties
+	tentacle.wriggle_dampening = rand_range(0.1, 0.2)
+	tentacle.secondary_frequency = rand_range(1.5, 1.9)
+	tentacle.dampening = 0.99 #0.95
+
 	
 	return tentacle
 
 func _process(_delta):
-	# Optional: Add any dynamic behavior here
 	pass

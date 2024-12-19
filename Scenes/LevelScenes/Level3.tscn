@@ -176,4 +176,7 @@ stream = ExtResource( 11 )
 autoplay = true
 
 [node name="BackUpDancerZombie" parent="." instance=ExtResource( 14 )]
-position = Vector2( 439, 223 )
+visible = false
+position = Vector2( 461, 206 )
+rotation = -0.0249615
+scale = Vector2( 0.2, 0.2 )
