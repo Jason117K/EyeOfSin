@@ -146,6 +146,7 @@ position = Vector2( 0, -8.5 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 9 )
 animation = "redSpiderAttack"
+frame = 1
 playing = true
 flip_h = true
 

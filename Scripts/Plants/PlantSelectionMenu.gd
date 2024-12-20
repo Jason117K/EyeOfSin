@@ -19,17 +19,20 @@ func _ready():
 	if root == "Main": #or root == "Level2":
 		assert($HBoxContainer/PeashooterButton2.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
 		assert($HBoxContainer/SunflowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
-		$HBoxContainer/WalnutButton.visible = false
+		$HBoxContainer/WalnutButton.visible = true
 		$HBoxContainer/MawButton.visible = false
+		$HBoxContainer/EggButton.visible = false
+		$HBoxContainer/EyeButton.visible = false
+		
 	elif root == "Level2":
 		assert($HBoxContainer/PeashooterButton2.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
 		assert($HBoxContainer/SunflowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
-		assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
+		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
 		$HBoxContainer/MawButton.visible = false
 	else: #root = Level3
 		assert($HBoxContainer/PeashooterButton2.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
 		assert($HBoxContainer/SunflowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
-		assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
+		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
 		$HBoxContainer/MawButton.visible = true
 
 	#print(root)

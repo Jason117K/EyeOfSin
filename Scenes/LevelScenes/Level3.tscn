@@ -100,7 +100,7 @@ z_index = 1
 position = Vector2( -56, 224 )
 z_index = 1
 script = ExtResource( 8 )
-StartDelay = 15
+StartDelay = 90
 Wave1_Interval = 5.0
 Wave2_Interval = 35
 Wave3_Interval = 65.0
@@ -176,7 +176,6 @@ stream = ExtResource( 11 )
 autoplay = true
 
 [node name="BackUpDancerZombie" parent="." instance=ExtResource( 14 )]
-visible = false
 position = Vector2( 461, 206 )
 rotation = -0.0249615
 scale = Vector2( 0.2, 0.2 )

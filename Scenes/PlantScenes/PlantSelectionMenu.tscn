@@ -73,6 +73,7 @@ icon = ExtResource( 7 )
 [node name="UIClickAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 
+[connection signal="pressed" from="HBoxContainer/WalnutButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/EyeButton" to="." method="_on_EyeButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/MawButton" to="." method="_on_MawButton_pressed"]

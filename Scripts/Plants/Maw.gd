@@ -2,6 +2,18 @@ extends Area2D
 #Maw.gd
 #Create tentacle component 
 
+# Color export variables for tentacle 1
+export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red
+var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red
+
+# Color export variables for tentacle 2
+export var tentacle2_start_color := Color(0.7, 0.0, 1.0, 1.0)  # Bright purple
+var tentacle2_end_color := Color(0.35, 0.0, 0.5, 1.0)   # Dark purple
+
+# Color export variables for tentacle 3
+export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green
+var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
+
 var health = 100
 var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  # Preload tentacle scene
 var PlantManager
@@ -14,7 +26,6 @@ onready var detection_area = $DetectionComponent
 var currentTentacle
 
 export var cost = 200
-
 
 var charges = 3.0
 #Maw has 6 'Charges'
@@ -33,9 +44,11 @@ func setup_tentacles():
 	add_child(tentacle1)
 	tentacle1.z_index = z_index - 1
 	
-	
 	# Offset position slightly
 	tentacle1.position += Vector2(0, -2)
+	
+	# Set colors from export variables
+	tentacle1.set_colors(tentacle1_start_color, tentacle1_end_color)
 	
 	# Connect retraction signal
 	tentacle1.connect("retraction_complete", self, "_on_tentacle_retraction_complete", [tentacle1])
@@ -46,11 +59,8 @@ func setup_tentacles():
 	add_child(tentacle2)
 	tentacle2.z_index = z_index - 1
 	
-	# Configure colors and pulsing
-	tentacle2.set_colors(
-		Color(0.7, 0.0, 1.0, 1.0),  # Bright purple
-		Color(0.35, 0.0, 0.5, 1.0)  # Dark purple
-	)
+	# Set colors from export variables
+	tentacle2.set_colors(tentacle2_start_color, tentacle2_end_color)
 	tentacle2.set_pulse(true, 2.0, 0.25)  # Faster pulsing
 	
 	# Configure movement parameters
@@ -73,13 +83,8 @@ func setup_tentacles():
 	add_child(tentacle3)
 	tentacle3.z_index = z_index - 1
 	
-	# Configure colors and pulsing
-	tentacle3.set_colors(
-	#	Color(1.0, 1.0, 0.0, 1.0),
-	#	Color(0.0, 1.0, 0.0, 1.0),
-		Color(0.0, 1.0, 0.0, 1.0),  # Bright green
-		Color(1.0, 1.0, 0.0, 1.0)   # Yellow
-	)
+	# Set colors from export variables
+	tentacle3.set_colors(tentacle3_start_color, tentacle3_end_color)
 	tentacle3.set_pulse(true, 1.0, 0.2)  # Gentle pulsing
 	
 	# Configure movement parameters
@@ -112,18 +117,13 @@ func assign_tentacle_to_target(target):
 	# Find first available tentacle
 	for tentacle in tentacles:
 		if not tentacle in attacking_tentacles: 
-			#print("Charges is ", charges)
 			if charges > 0.0:
 				# Assign target to tentacle
 				attacking_tentacles[tentacle] = target
 				tentacle.enemy = target
 				tentacle.start_grab_sequence()
-				#charges = charges - target.getChargeComp.getValue()
 				charges = charges - 1
 				break
-			else:
-				#print("Cannot attack")
-				pass
 
 func _on_tentacle_retraction_complete(tentacle):
 	# Remove the enemy-tentacle pair from tracking
@@ -132,8 +132,6 @@ func _on_tentacle_retraction_complete(tentacle):
 		if is_instance_valid(enemy):
 			enemy.queue_free()  # Remove the caught enemy
 		attacking_tentacles.erase(tentacle)
-		
- 
 
 func take_damage(damage):
 	health = health - damage
@@ -144,13 +142,10 @@ func take_damage(damage):
 		PlantManager.clear_space(self.global_position)
 		queue_free()
 
-
 func _on_ShootTimer_timeout():
 	pass
-	#laser.fire()
 
 func _on_DigestionTimer_timeout():
-	#print(charges)
 	charges = charges + 2
 	
 func get_cost():
