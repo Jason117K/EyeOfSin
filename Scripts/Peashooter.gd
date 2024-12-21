@@ -1,7 +1,7 @@
 extends Area2D
 
 var health = 100
-var attack_speed = 1.5  # Seconds between shots
+var attack_speed = 5 #1.5  # Seconds between shots
 var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
 var PlantManager
 var canAttack = false
@@ -66,7 +66,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_AnimatedSprite_frame_changed():
 	if(animatedSpriteComponent.animation == "redSpiderAttack"):
-		print(animatedSpriteComponent.frame)
+		#print(animatedSpriteComponent.frame)
 		if(animatedSpriteComponent.frame == 3):
 			shoot_projectile()
 

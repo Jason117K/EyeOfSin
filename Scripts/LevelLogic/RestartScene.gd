@@ -12,7 +12,7 @@ func _ready():
 func _on_Retry_pressed():
 	print(self.name)
 	if(self.name == "RestartScene1"):
-		assert(get_tree().change_scene("res://Scenes/Main.tscn") ==OK)
+		assert(get_tree().change_scene("res://Scenes/LevelScenes/Main.tscn") ==OK)
 	elif(self.name == "RestartScene2"):
 		assert(get_tree().change_scene("res://Scenes/LevelScenes/Level2.tscn") ==OK)
 	elif(self.name == "RestartScene3"):

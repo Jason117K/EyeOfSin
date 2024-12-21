@@ -26,7 +26,7 @@ script = ExtResource( 10 )
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 878, 283 )
-r1_BaseZombies = 4
+r1_BaseZombies = 1
 r1_ConeheadZombies = 0
 r2_ConeheadZombies = 0
 r3_ConeheadZombies = 0
@@ -75,8 +75,8 @@ z_index = 1
 [node name="WaveManager" parent="GameLayer" instance=ExtResource( 2 )]
 position = Vector2( -64, 200 )
 script = ExtResource( 9 )
-StartDelay = 12
-Wave1_Interval = 5.0
+StartDelay = 1
+Wave1_Interval = 1.0
 Wave2_Interval = 10
 Wave3_Interval = 20.0
 

@@ -1,29 +1,24 @@
 # BasicZombie.gd
 extends Area2D
 
-var health = 6 #7 #10 # Health of the zombie
-var speed = 26 #30 # Movement speed, was 34
-#var attack_power = 33
-
-var is_attacking
 
 onready var animatedSprite = $AnimatedSprite
-
 onready var attackComp = $AttackComponent
+onready var speedComp = $SpeedComponent
 
-
-
+var isSlow = 0
 var thisMaterial
+var is_attacking
+var health = 6 #7 #10 # Health of the zombie
 
-func ready():
-	pass
-
-func _process(delta):
-	is_attacking = attackComp.getAttackState()
-	if not is_attacking:
-		# Only move if not attacking 
-		position.x -= speed * delta  # Move left across the screen
+func getSlow():
+	return isSlow 
 	
+func slow():
+	print("SLOWING")
+	isSlow = isSlow + 100 
+	speedComp.slow()
+
 # Function to handle taking damage
 func take_damage(damage):
 	if(thisMaterial):
@@ -58,3 +53,8 @@ func _on_ResetColor_timeout():
 	thisMaterial.set_shader_param("target_color", Color.black)
 	thisMaterial.set_shader_param("replace_color", Color.black)
 	thisMaterial.set_shader_param("tolerance", 0.1)
+
+
+func _on_DegradeDebuff_timeout():
+	if((isSlow - 20) >= 0):
+		isSlow = isSlow - 20
