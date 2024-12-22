@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LaserEggWormsSmolMERGED-Sheet.png-4e3dc06a41d397490bc548a4633ce046.stex"
+path="res://.import/BloodBuffTileDrip.png-044c6029defd2471b210209eccdcaa5a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Plants/Animations/LaserEggWormsSmolMERGED-Sheet.png"
-dest_files=[ "res://.import/LaserEggWormsSmolMERGED-Sheet.png-4e3dc06a41d397490bc548a4633ce046.stex" ]
+source_file="res://Assets/Plants/Animations/BloodBuffTileDrip.png"
+dest_files=[ "res://.import/BloodBuffTileDrip.png-044c6029defd2471b210209eccdcaa5a.stex" ]
 
 [params]
 

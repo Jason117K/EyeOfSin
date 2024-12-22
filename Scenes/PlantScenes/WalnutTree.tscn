@@ -153,5 +153,14 @@ shape = SubResource( 1 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 12 )
 animation = "New Anim"
-frame = 9
+frame = 7
+playing = true
+
+[node name="PreviewNodes" type="Node2D" parent="."]
+
+[node name="AnimatedSpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 12 )
+animation = "New Anim"
+frame = 6
 playing = true

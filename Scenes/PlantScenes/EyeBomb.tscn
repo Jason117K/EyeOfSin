@@ -224,13 +224,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="EyeBomb" type="Node2D"]
+[node name="EyeBomb" type="Node2D" groups=["Plants"]]
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 3 )
 
 [node name="SpriteComponent" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
-frame = 5
+frame = 2
 speed_scale = 2.0
 playing = true
 
@@ -251,8 +251,18 @@ visible = false
 position = Vector2( 320, 0 )
 scale = Vector2( 10, 10 )
 frames = SubResource( 48 )
-frame = 18
+frame = 16
+playing = true
+
+[node name="PreviewNodes" type="Node2D" parent="."]
+
+[node name="SpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
+scale = Vector2( 1, 1 )
+frames = SubResource( 17 )
+frame = 2
+speed_scale = 2.0
 playing = true
 
 [connection signal="animation_finished" from="SpriteComponent" to="." method="_on_SpriteComponent_animation_finished"]
 [connection signal="area_entered" from="DetectionComponent" to="." method="_on_DetectionComponent_area_entered"]
+[connection signal="animation_finished" from="PreviewNodes/SpriteComponent2" to="." method="_on_SpriteComponent_animation_finished"]

@@ -102,8 +102,8 @@ func place_plant(grid_pos: Vector2):
 		#Play the sound
 		$PlacePlantAudioPlayer.play()
 		
-		# Clear preview after successful placement
-		selection_menu.clear_preview()
+		# Clear preview after successful placement, or do this when deselect Hit 
+		#selection_menu.clear_preview()
 		
 	else:
 		print("Not enough sun points!")
