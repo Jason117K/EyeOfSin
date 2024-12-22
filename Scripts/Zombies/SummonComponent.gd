@@ -2,7 +2,9 @@ extends Node2D
 
 onready var summonTimer = $SummonTimer
 onready var dancerZombie = get_parent()
-onready var animatedSpriteComp = $"../AnimatedSprite"
+
+onready var animatedSpriteComp = get_parent().get_node("AnimatedSprite")
+
 
 onready var point1 = $SummonPoint1
 onready var point2 = $SummonPoint2
@@ -17,7 +19,7 @@ onready var points = [point1,point2,point3,point4,point6,point7,point8,point9]
 var BackUpDancerScene = preload("res://Scenes/ZombieScenes/BackUpDancerZombie.tscn")
 
 func summon_backup():
-	print(dancerZombie.position)
+	print("Summoning")
 	# Get reference to GameLayer
 	var game_layer = get_parent().get_parent()
 	
@@ -51,6 +53,7 @@ func _on_SummonTimer_timeout():
 
 
 func _on_AnimatedSprite_animation_finished():
+	print(animatedSpriteComp.animation)
 	if(animatedSpriteComp.animation == "Summon"):
 		print(animatedSpriteComp.animation)
 		print("AnimPlayed")

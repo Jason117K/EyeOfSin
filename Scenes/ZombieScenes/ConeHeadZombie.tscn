@@ -14,6 +14,9 @@
 [ext_resource path="res://Scripts/Zombies/ZombieSpriteComponent.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" type="Texture" id=13]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 20 )
+
 [sub_resource type="ShaderMaterial" id=31]
 shader = ExtResource( 5 )
 shader_param/target_color = null
@@ -179,9 +182,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 20 )
-
 [node name="ConeHeadZombie" type="Area2D" groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
@@ -196,6 +196,10 @@ position = Vector2( 4, 4 )
 
 [node name="AttackComponent" parent="." instance=ExtResource( 9 )]
 
+[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 4 )
+shape = SubResource( 1 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 31 )
 scale = Vector2( 1.5, 1.5 )
@@ -205,10 +209,6 @@ frame = 3
 playing = true
 flip_h = true
 script = ExtResource( 12 )
-
-[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-position = Vector2( 4, 4 )
-shape = SubResource( 1 )
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 enabled = true

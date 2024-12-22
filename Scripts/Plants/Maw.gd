@@ -129,7 +129,14 @@ func _on_tentacle_retraction_complete(tentacle):
 	# Remove the enemy-tentacle pair from tracking
 	if tentacle in attacking_tentacles:
 		var enemy = attacking_tentacles[tentacle]
+		var enemyCompManager = enemy.getCompManager()
+		var slow = enemyCompManager.getSlow()
+		
 		if is_instance_valid(enemy):
+			if(slow>0):
+				#do slow BELCH here 
+				pass
+			
 			enemy.queue_free()  # Remove the caught enemy
 		attacking_tentacles.erase(tentacle)
 

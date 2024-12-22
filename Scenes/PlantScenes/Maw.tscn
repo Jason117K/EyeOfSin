@@ -54,10 +54,10 @@ tentacle3_start_color = Color( 0.552941, 0, 0, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 7 )
+frame = 2
 playing = true
 
 [node name="DetectionComponent" type="Area2D" parent="."]
-visible = false
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]

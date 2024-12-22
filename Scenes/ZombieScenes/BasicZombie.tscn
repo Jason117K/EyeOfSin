@@ -12,6 +12,9 @@
 [ext_resource path="res://Scenes/ZombieScenes/ComponentManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/ZombieScenes/HealthComponent.tscn" type="PackedScene" id=11]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 15.1667 )
+
 [sub_resource type="ShaderMaterial" id=20]
 shader = ExtResource( 7 )
 shader_param/target_color = Color( 0, 0, 0, 1 )
@@ -169,9 +172,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 15.1667 )
-
 [node name="BasicZombie" type="Area2D" groups=["Zombie"]]
 scale = Vector2( 1.5, 1.5 )
 z_index = 1
@@ -187,18 +187,18 @@ position = Vector2( 0, 1.83333 )
 
 [node name="AttackComponent" parent="." instance=ExtResource( 5 )]
 
+[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1.83333 )
+shape = SubResource( 1 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 20 )
 frames = SubResource( 11 )
 animation = "Walk"
-frame = 4
+frame = 5
 playing = true
 flip_h = true
 script = ExtResource( 6 )
-
-[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1.83333 )
-shape = SubResource( 1 )
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 enabled = true

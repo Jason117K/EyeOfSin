@@ -36,7 +36,8 @@ func _ready():
 		$HBoxContainer/MawButton.visible = true
 
 	#print(root)
-	
+	I want to enhance this script. Make it so that, when a button is clicked, a preview of the sprite will
+	now follow around the players cursor. When the player clicks to place 
 	
 func _on_PeashooterButton_pressed():
 	selected_plant = peashooter_scene
