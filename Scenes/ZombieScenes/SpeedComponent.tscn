@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Zombies/SpeedComponent.gd" type="Script" id=1]
+
+[node name="SpeedComponent" type="Node2D"]
+script = ExtResource( 1 )

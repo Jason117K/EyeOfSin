@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed = 300  # Speed of the projectile
-var damage = 1 #2   # Damage dealt to zombies
+var damage = 11 #1 #2   # Damage dealt to zombies
 
 func _process(delta):
 	position.x += speed * delta  # Move the projectile to the right
@@ -15,7 +15,12 @@ func _process(delta):
 func _on_PeaProjectile_area_entered(area):
 	#print("func called")
 	if area.is_in_group("Zombie"):
-		area.take_damage(damage)  # Call take_damage() on the zombie
+		print(area.name)
+		var compManager = area.getCompManager()
+		var healthComp = compManager.getHealthComponent()
+		print(healthComp)
+		compManager.slow()
+		compManager.take_damage(damage)  # Call take_damage() on the zombie
+		#area.slow()
 		queue_free()  # Remove the projectile # Replace with function body.
-		area.slow()
 

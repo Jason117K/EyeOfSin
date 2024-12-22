@@ -5,26 +5,20 @@ extends Node2D
 var base_zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  
 var cone_zombie_scene = preload("res://Scenes/ZombieScenes/ConeHeadZombie.tscn") 
 var bucket_zombie_scene = preload("res://Scenes/ZombieScenes/BucketHeadZombie.tscn") 
+var screendoor_zombie_scene = preload("res://Scenes/ZombieScenes/ScreenDoorZombie.tscn") 
+var dancer_zombie_scene = preload("res://Scenes/ZombieScenes/DancerZombie.tscn") 
 
 # Array to hold zombie types
 var wave1_zombies = []  
 var wave2_zombies = []  
 var wave3_zombies = []  
 
-# Lists of each Zombie per round
-export var r1_BaseZombies = 5
-export var r2_BaseZombies = 5
-export var r3_BaseZombies = 5
+export var Round1_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, "ScreenDoor" : 1, "Dancer" : 1}
+export var Round2_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, "ScreenDoor" : 1, "Dancer" : 1}
+export var Round3_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, "ScreenDoor" : 1, "Dancer" : 1}
 
 var baseZombies = []
 
-export var r1_ConeheadZombies = 5
-export var r2_ConeheadZombies = 5
-export var r3_ConeheadZombies = 5
-
-export var r1_BucketheadZombies = 5
-export var r2_BucketheadZombies = 5
-export var r3_BucketheadZombies = 5
 
 # The current wave we are on
 var numWave = 0
@@ -38,14 +32,22 @@ var coneZombieLabel
 var bucketZombieLabel 
 
 func _ready():
-	populate_zombies(r1_BaseZombies,r1_ConeheadZombies,r1_BucketheadZombies,wave1_zombies)
-	populate_zombies(r2_BaseZombies,r2_ConeheadZombies,r2_BucketheadZombies,wave2_zombies)
-	populate_zombies(r3_BaseZombies,r3_ConeheadZombies,r3_BucketheadZombies,wave3_zombies)
-	$WaveDelay.wait_time = waveDelay
 	
-	baseZombies.append(r1_BaseZombies)
-	baseZombies.append(r2_BaseZombies)
-	baseZombies.append(r3_BaseZombies)
+	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
+	Round1_Zombies.get("BucketHead") , Round1_Zombies.get("ScreenDoor"),
+	Round1_Zombies.get("Dancer"),
+	 wave1_zombies)
+	
+	populate_zombies(Round2_Zombies.get("Base") , Round2_Zombies.get("ConeHead"), 
+	Round2_Zombies.get("BucketHead") , Round2_Zombies.get("ScreenDoor"), 
+	Round2_Zombies.get("Dancer"), wave2_zombies)
+	
+	populate_zombies(Round3_Zombies.get("Base") , Round3_Zombies.get("ConeHead"),
+	Round3_Zombies.get("BucketHead") , Round3_Zombies.get("ScreenDoor"),
+	Round3_Zombies.get("Dancer"),  wave3_zombies)
+
+	$WaveDelay.wait_time = waveDelay
+
 
 
 func start_spawn_zombie():
@@ -89,7 +91,11 @@ func spawn_zombie():
 	
 # Function to populate the zombies array based on numbers provided
 func populate_zombies(base_zombie_count: int, conehead_zombie_count: int, 
-					buckethead_zombie_count: int, zombie_wave: Array):
+					buckethead_zombie_count: int, screendoor_zombie_count: int, 
+					dancer_zombie_count: int,
+					zombie_wave: Array):
+						
+						
 	# Add base zombies to the array
 	for _i in range(base_zombie_count):
 		zombie_wave.append(base_zombie_scene)
@@ -99,7 +105,13 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 		# Add buckethead zombies to the array
 	for _i in range(buckethead_zombie_count):
 		zombie_wave.append(bucket_zombie_scene)
-		
+		#Add screen door 
+	for _i in range(screendoor_zombie_count):
+		zombie_wave.append(screendoor_zombie_scene)
+		#Add Dancer
+	for _i in range(dancer_zombie_count):
+		zombie_wave.append(dancer_zombie_scene)
+				
 func increase_wave():
 	numWave = numWave + 1
 

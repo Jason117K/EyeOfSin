@@ -1,7 +1,7 @@
 extends Node2D
 #Level2->3
 
-var Lvl3 = preload("res://Scenes/LevelScenes/Level3.tscn")  # Load the next scene
+onready var Lvl3 = preload("res://Scenes/LevelScenes/Level3.tscn")  # Load the next scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

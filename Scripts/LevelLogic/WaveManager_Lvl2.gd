@@ -17,6 +17,11 @@ var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
 
 
 export var StartDelay = 10
+#Amount of Time it Takes a wave to spawn after previous done
+export var Wave2StartTime = 20
+export var Wave3StartTime = 30
+
+#Time In Between Spawns In a Wave? #Look at More
 export var Wave1_Interval = 7.5
 export var Wave2_Interval = 9
 export var Wave3_Interval = 5.5
@@ -31,7 +36,6 @@ var health = 5
 var new_scene = preload("res://Scenes/LevelScenes/Level2--3.tscn")  # Load the Main scene
 
 var retry_scene = preload("res://Scenes/LevelScenes/RestartScene2.tscn")
-
 #
 
 func _physics_process(_delta):
@@ -78,7 +82,7 @@ func _on_ProceedGame_timeout():
 	
 	match numWave:
 		0:
-			$ProceedGame.wait_time = 20
+			$ProceedGame.wait_time = Wave2StartTime
 			$ProceedGame.start()
 			$Wave1.start()
 			numWave = numWave + 1
@@ -88,7 +92,7 @@ func _on_ProceedGame_timeout():
 				timer.start()
 		1:
 			$Wave2.start()
-			$ProceedGame.wait_time = 30
+			$ProceedGame.wait_time = Wave3StartTime
 			$ProceedGame.start()
 			numWave = numWave + 1
 			for icon in wavePreviewIcons:
@@ -153,5 +157,11 @@ func _on_Area2D_area_entered(area):
 	print(area.name, " :entered home base")
 	if "Zombie" in area.name:
 		#Go to Restart Scene 
-		assert(get_tree().change_scene_to(retry_scene))
+		get_parent().get_tree().change_scene_to(retry_scene)
+		#assert(get_tree().change_scene_to(retry_scene))
+		
+		
+		
+		
+		
 		

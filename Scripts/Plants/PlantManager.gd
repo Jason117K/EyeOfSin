@@ -26,8 +26,8 @@ func _input(event):
 			#print("Clicked mouse_pos is : ")
 			#print(mouse_pos)
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
-			#print("Clicked grid_pos is : ")
-			#print(grid_pos)
+		#	print("Clicked grid_pos is : ")
+		#	print(grid_pos)
 			grid_pos = Vector2(grid_pos.x,grid_pos.y+64)
 			#print(get_parent().name)
 			if(get_parent().name == "Main"):

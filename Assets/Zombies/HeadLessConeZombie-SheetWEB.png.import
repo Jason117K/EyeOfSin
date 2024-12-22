@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ZombieConeHeadLessWalk-Sheet.png-00d8b9e6d8fa238588dc19f172d908a4.stex"
+path="res://.import/HeadLessConeZombie-SheetWEB.png-9dbb710060a4713da79ffc374bf15232.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png"
-dest_files=[ "res://.import/ZombieConeHeadLessWalk-Sheet.png-00d8b9e6d8fa238588dc19f172d908a4.stex" ]
+source_file="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png"
+dest_files=[ "res://.import/HeadLessConeZombie-SheetWEB.png-9dbb710060a4713da79ffc374bf15232.stex" ]
 
 [params]
 

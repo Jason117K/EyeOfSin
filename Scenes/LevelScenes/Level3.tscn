@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/PlantScenes/PlantManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Systems/WaveManager.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=11]
 [ext_resource path="res://Scenes/Environment/Shrub.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Scenes/ZombieScenes/BackUpDancerZombie.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 13 )
@@ -35,14 +34,6 @@ z_index = 1
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 900, 224 )
-r2_BaseZombies = 6
-r3_BaseZombies = 7
-r1_ConeheadZombies = 0
-r2_ConeheadZombies = 1
-r3_ConeheadZombies = 3
-r1_BucketheadZombies = 1
-r2_BucketheadZombies = 1
-r3_BucketheadZombies = 2
 
 [node name="WavePreview2" parent="GameLayer/ZombieSpawner2" instance=ExtResource( 9 )]
 position = Vector2( -20, 0 )
@@ -50,15 +41,6 @@ z_index = 1
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 878, 283 )
-r1_BaseZombies = 4
-r2_BaseZombies = 6
-r3_BaseZombies = 8
-r1_ConeheadZombies = 1
-r2_ConeheadZombies = 2
-r3_ConeheadZombies = 3
-r1_BucketheadZombies = 0
-r2_BucketheadZombies = 1
-r3_BucketheadZombies = 2
 
 [node name="WavePreview3" parent="GameLayer/ZombieSpawner3" instance=ExtResource( 9 )]
 position = Vector2( 2, 5 )
@@ -66,14 +48,6 @@ z_index = 1
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 904, 344 )
-r2_BaseZombies = 6
-r3_BaseZombies = 7
-r1_ConeheadZombies = 1
-r2_ConeheadZombies = 2
-r3_ConeheadZombies = 2
-r1_BucketheadZombies = 0
-r2_BucketheadZombies = 0
-r3_BucketheadZombies = 1
 
 [node name="WavePreview4" parent="GameLayer/ZombieSpawner4" instance=ExtResource( 9 )]
 position = Vector2( -24, 0 )
@@ -81,14 +55,6 @@ z_index = 1
 
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 888, 95 )
-r2_BaseZombies = 6
-r3_BaseZombies = 8
-r1_ConeheadZombies = 1
-r2_ConeheadZombies = 2
-r3_ConeheadZombies = 3
-r1_BucketheadZombies = 0
-r2_BucketheadZombies = 1
-r3_BucketheadZombies = 3
 
 [node name="WavePreview5" parent="GameLayer/ZombieSpawner5" instance=ExtResource( 9 )]
 position = Vector2( -8, 0 )
@@ -174,8 +140,3 @@ position = Vector2( 177, 7 )
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 autoplay = true
-
-[node name="BackUpDancerZombie" parent="." instance=ExtResource( 14 )]
-position = Vector2( 461, 206 )
-rotation = -0.0249615
-scale = Vector2( 0.2, 0.2 )

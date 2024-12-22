@@ -17,9 +17,9 @@ func _ready():
 
 func _on_Area2D_mouse_entered():
 	if $PreviewSprite.visible == true:
-		var currentText1 = "Base Zombies : " + str(spawner.r1_BaseZombies)
-		var currentText2 = "Cone Zombies : " + str(spawner.r1_ConeheadZombies)
-		var currentText3 = "Bucket Zombies : " + str(spawner.r1_BucketheadZombies)
+		var currentText1 = "Base Zombies : " + str(spawner.Round1_Zombies.get("Base"))
+		var currentText2 = "Cone Zombies : " + str(spawner.Round1_Zombies.get("ConeHead"))
+		var currentText3 = "Bucket Zombies : " + str(spawner.Round1_Zombies.get("BucketHead"))
 		
 		$Node2D/Control.visible = true
 		$Node2D/Control/Label.text = currentText1
