@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Sunflower.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Plants/SunEye2.png" type="Texture" id=2]
@@ -53,6 +53,14 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Sunflower" type="Area2D" groups=["Plants"]]
 position = Vector2( 0, 1 )
 script = ExtResource( 1 )
@@ -71,5 +79,9 @@ wait_time = 16.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "defaultOutline"
-frame = 1
 playing = true
+
+[node name="OverlayComponent" type="Node2D" parent="."]
+
+[node name="AnimSpriteComp1" type="AnimatedSprite" parent="OverlayComponent"]
+frames = SubResource( 11 )

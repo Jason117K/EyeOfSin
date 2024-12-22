@@ -1,12 +1,12 @@
 extends Node2D
+#PlantManager.gd
+
+onready var selection_menu = get_parent().get_node("UILayer/PlantSelectionMenu")
 
 var selected_plant_scene = null  # Updated: Holds the selected plant scene
-
 var grid_size = 64 #64  # Assuming each grid cell is 64x64 pixels
-
 var grid_map = {}  # Dictionary to store occupied cells
 var sun_points = 200
-
 var plant_cost = 25
 
 # Updated: Reference the PlantSelectionMenu dynamically
@@ -19,6 +19,8 @@ func ready():
 	pass
 #384,256
 
+
+
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == BUTTON_LEFT:
@@ -30,6 +32,20 @@ func _input(event):
 		#	print(grid_pos)
 			grid_pos = Vector2(grid_pos.x,grid_pos.y+64)
 			#print(get_parent().name)
+			
+			
+			# Add early return if no sun points
+			if selected_plant_scene:
+				var temp_instance = selected_plant_scene.instance()
+				var cost = temp_instance.get_cost()
+				temp_instance.queue_free()
+				
+				if sun_points < cost:
+					selection_menu.clear_preview()
+					return
+			
+			
+			
 			if(get_parent().name == "Main"):
 				if(grid_pos.x<769 && grid_pos.y<321 && grid_pos.y > 128):
 					#print("Place Plant " , grid_pos)
@@ -85,6 +101,9 @@ func place_plant(grid_pos: Vector2):
 		
 		#Play the sound
 		$PlacePlantAudioPlayer.play()
+		
+		# Clear preview after successful placement
+		selection_menu.clear_preview()
 		
 	else:
 		print("Not enough sun points!")

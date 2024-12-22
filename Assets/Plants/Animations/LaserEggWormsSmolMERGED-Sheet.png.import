@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LaserEggWormsSmolSHELL.png-3b4d8b21b36e607064eef72ef3ca6729.stex"
+path="res://.import/LaserEggWormsSmolMERGED-Sheet.png-4e3dc06a41d397490bc548a4633ce046.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Plants/LaserEggWormsSmolSHELL.png"
-dest_files=[ "res://.import/LaserEggWormsSmolSHELL.png-3b4d8b21b36e607064eef72ef3ca6729.stex" ]
+source_file="res://Assets/Plants/Animations/LaserEggWormsSmolMERGED-Sheet.png"
+dest_files=[ "res://.import/LaserEggWormsSmolMERGED-Sheet.png-4e3dc06a41d397490bc548a4633ce046.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

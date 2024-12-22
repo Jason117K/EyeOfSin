@@ -267,8 +267,16 @@ position = Vector2( 0, -8.5 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 9 )
 animation = "redSpiderAttack"
-frame = 2
+frame = 3
 playing = true
+flip_h = true
+
+[node name="AnimatedSpritePreview" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -8.5 )
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 9 )
+animation = "redSpiderDefault"
+frame = 1
 flip_h = true
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -288,9 +296,11 @@ visible = false
 position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 55 )
-frame = 26
+frame = 20
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="animation_finished" from="AnimatedSpritePreview" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSpritePreview" to="." method="_on_AnimatedSprite_frame_changed"]

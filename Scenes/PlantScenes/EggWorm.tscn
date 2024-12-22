@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Plants/LaserEggWormsSmolSHELL.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Plants/Worm1.png" type="Texture" id=2]
@@ -7,9 +7,28 @@
 [ext_resource path="res://Scripts/Plants/Worm2Animator.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/PlantScenes/LaserShootComponent.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Plants/LaserEggWormsSmol.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Plants/Animations/LaserEggWormsSmolMERGED-Sheet.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 163.333, 146.667 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="EggWorm" type="Area2D" groups=["Plants"]]
 position = Vector2( 0, -36 )
@@ -57,3 +76,6 @@ duration = 0.7
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2( -3.33333, -6.66666 )
 shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )

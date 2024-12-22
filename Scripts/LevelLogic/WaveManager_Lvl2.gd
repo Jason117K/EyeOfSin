@@ -1,7 +1,8 @@
 extends Node
 #WaveManager2
 
-
+	
+	
 var current_wave = 1                # Current wave number
 var zombies_per_wave = 2           # Number of zombies in the current wave
 var spawn_interval = 3.0            # Time interval between each zombie spawn
