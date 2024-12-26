@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://Assets/Plants/Animations/SpyderOutlineShoot.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Peashooter.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Plants/TestBloodBSheet.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 5 )
@@ -407,37 +408,8 @@ position = Vector2( 0, -8.5 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 9 )
 animation = "redSpiderAttack"
-frame = 4
 playing = true
 flip_h = true
-
-[node name="BuffNodes" type="Node2D" parent="."]
-visible = false
-
-[node name="BloodTile1" type="AnimatedSprite" parent="BuffNodes"]
-modulate = Color( 1.5, 1, 1, 1 )
-position = Vector2( 32, 0 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 4
-playing = true
-
-[node name="BloodTile2" type="AnimatedSprite" parent="BuffNodes"]
-position = Vector2( 64, 0 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 1
-playing = true
-
-[node name="BloodTile3" type="AnimatedSprite" parent="BuffNodes"]
-position = Vector2( -32, 0 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 24
-playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false
@@ -447,7 +419,7 @@ position = Vector2( 0, -8.5 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 9 )
 animation = "redSpiderDefault"
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 
@@ -457,7 +429,7 @@ position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim 2"
-frame = 2
+frame = 3
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
@@ -465,7 +437,6 @@ position = Vector2( 64, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim 2"
-frame = 2
 playing = true
 
 [node name="BloodTile3" type="AnimatedSprite" parent="PreviewNodes"]
@@ -473,7 +444,7 @@ position = Vector2( -32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim 2"
-frame = 1
+frame = 3
 playing = true
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -481,6 +452,7 @@ stream = ExtResource( 4 )
 volume_db = -20.0
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]
+visible = false
 scale = Vector2( 1, 20 )
 enabled = true
 cast_to = Vector2( 412, 0 )
@@ -488,8 +460,62 @@ collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="BuffNodesComponent" parent="." instance=ExtResource( 10 )]
+scale = Vector2( 0.5, 0.5 )
+giveBuffTo = [ "Wasp", "Maw", "None", "None", "None", "None", "None", "None" ]
+
+[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+frame = 22
+
+[node name="TileArea2" parent="BuffNodesComponent" index="2"]
+visible = false
+
+[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
+visible = false
+frame = 19
+
+[node name="TileArea3" parent="BuffNodesComponent" index="4"]
+visible = false
+
+[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
+visible = false
+frame = 19
+
+[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
+frame = 19
+
+[node name="TileArea5" parent="BuffNodesComponent" index="8"]
+visible = false
+
+[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
+visible = false
+frame = 19
+
+[node name="TileArea6" parent="BuffNodesComponent" index="10"]
+visible = false
+
+[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
+visible = false
+frame = 19
+
+[node name="TileArea7" parent="BuffNodesComponent" index="12"]
+visible = false
+
+[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
+visible = false
+frame = 19
+
+[node name="TileArea8" parent="BuffNodesComponent" index="14"]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+visible = false
+frame = 19
+
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="animation_finished" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_frame_changed"]
+
+[editable path="BuffNodesComponent"]

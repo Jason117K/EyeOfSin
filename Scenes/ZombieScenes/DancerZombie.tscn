@@ -182,7 +182,7 @@ shape = SubResource( 25 )
 material = SubResource( 32 )
 frames = SubResource( 24 )
 animation = "Walk"
-frame = 1
+frame = 2
 playing = true
 script = ExtResource( 10 )
 

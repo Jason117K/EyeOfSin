@@ -19,6 +19,9 @@ var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  # Preload tentacl
 var PlantManager
 var tentacles = []  # Array to track all tentacles
 var attacking_tentacles = {}  # Dictionary to track which tentacles are attacking which enemies
+var tentacle1
+var tentacle2
+var tentacle3
 
 # Detection radius for zombies
 onready var detection_area = $DetectionComponent
@@ -28,19 +31,24 @@ var currentTentacle
 export var cost = 200
 
 var charges = 3.0
-#Maw has 6 'Charges'
-#Basic Zombie 1 Charge
-#ConeheadZombie 2 Charges
-#BucketHeadZombie 4 Charges
+#Maw has 6 'Chargez'
+#Basic Zombie 1 Chargez
+#ConeheadZombie 2 Chargez
+#BucketHeadZombie 4 Chargez
 
 func _ready():
 	# Get reference to plant manager
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	setup_tentacles()
 
+func receiveBuff(bufferName):
+	#attack_speed = 10
+	tentacle1.set_colors(Color.purple, Color.purple)
+	tentacle2.set_colors(Color.darkmagenta, Color.darkmagenta)
+
 func setup_tentacles():
 	# First tentacle - Blood red color scheme with aggressive movements
-	var tentacle1 = tentacle_scene.instance()
+	tentacle1 = tentacle_scene.instance()
 	add_child(tentacle1)
 	tentacle1.z_index = z_index - 1
 	
@@ -55,7 +63,7 @@ func setup_tentacles():
 	tentacles.append(tentacle1)
 	
 	# Second tentacle - Purple color scheme with quick, erratic movements
-	var tentacle2 = tentacle_scene.instance()
+	tentacle2 = tentacle_scene.instance()
 	add_child(tentacle2)
 	tentacle2.z_index = z_index - 1
 	
@@ -79,7 +87,7 @@ func setup_tentacles():
 	tentacles.append(tentacle2)
 	
 	# Third tentacle - Green and yellow color scheme with medium, smooth movements
-	var tentacle3 = tentacle_scene.instance()
+	tentacle3 = tentacle_scene.instance()
 	add_child(tentacle3)
 	tentacle3.z_index = z_index - 1
 	
@@ -122,6 +130,7 @@ func assign_tentacle_to_target(target):
 				attacking_tentacles[tentacle] = target
 				tentacle.enemy = target
 				tentacle.start_grab_sequence()
+				#charges = charges - tentacle.enemy.getCharge()
 				charges = charges - 1
 				break
 
@@ -129,10 +138,11 @@ func _on_tentacle_retraction_complete(tentacle):
 	# Remove the enemy-tentacle pair from tracking
 	if tentacle in attacking_tentacles:
 		var enemy = attacking_tentacles[tentacle]
-		var enemyCompManager = enemy.getCompManager()
-		var slow = enemyCompManager.getSlow()
+	
 		
 		if is_instance_valid(enemy):
+			var enemyCompManager = enemy.getCompManager()
+			var slow = enemyCompManager.getSlow()
 			if(slow>0):
 				#do slow BELCH here 
 				pass

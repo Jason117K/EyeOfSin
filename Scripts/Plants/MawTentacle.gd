@@ -252,10 +252,10 @@ func set_colors(new_start_color: Color, new_end_color: Color = Color()) -> void:
 	start_color = new_start_color
 	if new_end_color.a > 0:
 		end_color = new_end_color
-		print("new end color")
+		#print("new end color")
 	else:
 		end_color = start_color.darkened(0.5)
-		print("darkened")
+		#print("darkened")
 	setup_line_color()
 
 func set_pulse(enabled: bool, new_speed: float = 1.0, new_intensity: float = 0.2) -> void:

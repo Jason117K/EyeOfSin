@@ -29,8 +29,11 @@ func _process(_delta):
 			else:
 				canAttack = false
 				
-		
+func receiveBuff(bufferName):
+	#attack_speed = 10
+	animatedSpriteComponent.speed_scale = 2
 
+	
 
 # Called every time the shoot timer reaches timeout
 func _on_ShootTimer_timeout():

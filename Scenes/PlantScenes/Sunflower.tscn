@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Scripts/Sunflower.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Plants/SunEye2.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Plants/Animations/EyeOutlineIdle-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" type="Texture" id=6]
-[ext_resource path="res://Scripts/Plants/BuffNodes.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=89]
 extents = Vector2( 10.8333, 11 )
@@ -205,9 +205,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=88]
-extents = Vector2( 10.6667, 10.6667 )
-
 [node name="Sunflower" type="Area2D" groups=["Plants"]]
 position = Vector2( 0, 1 )
 script = ExtResource( 1 )
@@ -227,7 +224,6 @@ wait_time = 16.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "defaultOutline"
-frame = 1
 playing = true
 
 [node name="OverlayComponent" type="Node2D" parent="."]
@@ -244,6 +240,7 @@ position = Vector2( 66, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
+frame = 3
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
@@ -251,7 +248,7 @@ position = Vector2( 65, 65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 3
+frame = 2
 playing = true
 
 [node name="BloodTile3" type="AnimatedSprite" parent="PreviewNodes"]
@@ -259,7 +256,7 @@ position = Vector2( 65, -65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 2
+frame = 1
 playing = true
 
 [node name="BloodTile4" type="AnimatedSprite" parent="PreviewNodes"]
@@ -267,7 +264,7 @@ position = Vector2( -65, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 2
+frame = 1
 playing = true
 
 [node name="BloodTile5" type="AnimatedSprite" parent="PreviewNodes"]
@@ -275,7 +272,6 @@ position = Vector2( -65, 65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 1
 playing = true
 
 [node name="BloodTile6" type="AnimatedSprite" parent="PreviewNodes"]
@@ -283,6 +279,7 @@ position = Vector2( -65, -65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
+frame = 3
 playing = true
 
 [node name="BloodTile7" type="AnimatedSprite" parent="PreviewNodes"]
@@ -290,7 +287,7 @@ position = Vector2( 0, -65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 3
+frame = 2
 playing = true
 
 [node name="BloodTile8" type="AnimatedSprite" parent="PreviewNodes"]
@@ -298,164 +295,40 @@ position = Vector2( 0, 65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
+frame = 3
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 6 )
 animation = "defaultOutline"
+frame = 3
 playing = true
 
-[node name="BuffNodes" type="Node2D" parent="."]
-script = ExtResource( 7 )
+[node name="BuffNodesComponent" parent="." instance=ExtResource( 7 )]
+giveBuffTo = [ "Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "None", "None" ]
 
-[node name="TileArea1" type="Area2D" parent="BuffNodes"]
-position = Vector2( 64, 0 )
-scale = Vector2( 0.9, 0.9 )
-
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea1"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
-
-[node name="BloodTile1" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( 66, 0 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 18
-playing = true
-
-[node name="TileArea2" type="Area2D" parent="BuffNodes"]
-position = Vector2( 64, 64 )
-scale = Vector2( 0.9, 0.9 )
-
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea2"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
-
-[node name="BloodTile2" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( 65, 65 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
+[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 frame = 15
-playing = true
 
-[node name="TileArea3" type="Area2D" parent="BuffNodes"]
-position = Vector2( 64, -64 )
-scale = Vector2( 0.9, 0.9 )
+[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
+frame = 12
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea3"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
+[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
+frame = 12
 
-[node name="BloodTile3" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( 65, -65 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 15
-playing = true
+[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
+frame = 12
 
-[node name="TileArea4" type="Area2D" parent="BuffNodes"]
-position = Vector2( -64, 0 )
-scale = Vector2( 0.9, 0.9 )
+[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
+frame = 12
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea4"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
+[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
+frame = 12
 
-[node name="BloodTile4" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( -65, 0 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 15
-playing = true
+[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
+frame = 12
 
-[node name="TileArea5" type="Area2D" parent="BuffNodes"]
-position = Vector2( -64, 64 )
-scale = Vector2( 0.9, 0.9 )
+[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+frame = 12
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea5"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
-
-[node name="BloodTile5" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( -65, 65 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 15
-playing = true
-
-[node name="TileArea6" type="Area2D" parent="BuffNodes"]
-position = Vector2( -64, -64 )
-scale = Vector2( 0.9, 0.9 )
-
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea6"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
-
-[node name="BloodTile6" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( -65, -65 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 15
-playing = true
-
-[node name="TileArea7" type="Area2D" parent="BuffNodes"]
-position = Vector2( 0, -64 )
-scale = Vector2( 0.9, 0.9 )
-
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea7"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
-
-[node name="BloodTile7" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( 0, -65 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 15
-playing = true
-
-[node name="TileArea8" type="Area2D" parent="BuffNodes"]
-position = Vector2( 0, 64 )
-scale = Vector2( 0.9, 0.9 )
-
-[node name="TileAreaCollision" type="CollisionShape2D" parent="BuffNodes/TileArea8"]
-position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 88 )
-
-[node name="BloodTile8" type="AnimatedSprite" parent="BuffNodes"]
-visible = false
-position = Vector2( 0, 65 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 55 )
-animation = "Drip"
-frame = 15
-playing = true
+[editable path="BuffNodesComponent"]

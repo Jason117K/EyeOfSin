@@ -86,9 +86,14 @@ func _check_collisions() -> void:
 	
 	for area in overlapping_areas:
 		if "Zombie" in area.name and not hit_enemies.has(area):
-			print("Damaging zombie via area")
-			area.take_damage(damage)
+			#print("Damaging zombie via area")
 			hit_enemies[area] = true  # Mark this enemy as hit
+			var compManager = area.getCompManager()
+			var healthComp = compManager.getHealthComponent()
+			#print(healthComp)
+			compManager.take_damage(damage)  # Call take_damage() on the zombie
+			#area.slow()
+			#queue_free()  # Remove the projectile # Replace with function body.
 
 func _on_laser_timeout() -> void:
 	is_firing = false

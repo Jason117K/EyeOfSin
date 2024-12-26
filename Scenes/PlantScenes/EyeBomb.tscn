@@ -230,12 +230,11 @@ script = ExtResource( 3 )
 
 [node name="SpriteComponent" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
-frame = 2
+frame = 3
 speed_scale = 2.0
 playing = true
 
 [node name="DetectionComponent" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
 position = Vector2( 0, 1 )
@@ -251,18 +250,19 @@ visible = false
 position = Vector2( 320, 0 )
 scale = Vector2( 10, 10 )
 frames = SubResource( 48 )
-frame = 16
+frame = 20
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
+visible = false
 
 [node name="SpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
-scale = Vector2( 1, 1 )
 frames = SubResource( 17 )
 frame = 2
 speed_scale = 2.0
 playing = true
 
 [connection signal="animation_finished" from="SpriteComponent" to="." method="_on_SpriteComponent_animation_finished"]
+[connection signal="frame_changed" from="SpriteComponent" to="." method="_on_SpriteComponent_frame_changed"]
 [connection signal="area_entered" from="DetectionComponent" to="." method="_on_DetectionComponent_area_entered"]
 [connection signal="animation_finished" from="PreviewNodes/SpriteComponent2" to="." method="_on_SpriteComponent_animation_finished"]

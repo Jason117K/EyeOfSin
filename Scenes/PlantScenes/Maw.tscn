@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Scripts/Plants/DetectionComponent.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Plants/TestBloodBSheet.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -356,6 +357,7 @@ tentacle3_start_color = Color( 0.552941, 0, 0, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 7 )
+frame = 2
 playing = true
 
 [node name="DetectionComponent" type="Area2D" parent="."]
@@ -385,7 +387,7 @@ visible = false
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="PreviewNodes"]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 7 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="BloodTile1" type="AnimatedSprite" parent="PreviewNodes"]
@@ -397,17 +399,61 @@ animation = "New Anim 2"
 frame = 2
 playing = true
 
-[node name="BuffNodes" type="Node2D" parent="."]
+[node name="BuffNodesComponent" parent="." instance=ExtResource( 8 )]
+giveBuffTo = [ "WalnutTree", "None", "None", "None", "None", "None", "None", "None" ]
 
-[node name="BloodTile1" type="AnimatedSprite" parent="BuffNodes"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+frame = 14
+
+[node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
-modulate = Color( 1.5, 1, 1, 1 )
-position = Vector2( 69, 0 )
-scale = Vector2( 2, 2 )
-z_index = 6
-frames = SubResource( 90 )
-animation = "Drip"
-frame = 18
-playing = true
+
+[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
+visible = false
+frame = 11
+
+[node name="TileArea3" parent="BuffNodesComponent" index="4"]
+visible = false
+
+[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
+visible = false
+frame = 11
+
+[node name="TileArea4" parent="BuffNodesComponent" index="6"]
+visible = false
+
+[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
+visible = false
+frame = 11
+
+[node name="TileArea5" parent="BuffNodesComponent" index="8"]
+visible = false
+
+[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
+visible = false
+frame = 11
+
+[node name="TileArea6" parent="BuffNodesComponent" index="10"]
+visible = false
+
+[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
+visible = false
+frame = 11
+
+[node name="TileArea7" parent="BuffNodesComponent" index="12"]
+visible = false
+
+[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
+visible = false
+frame = 11
+
+[node name="TileArea8" parent="BuffNodesComponent" index="14"]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+visible = false
+frame = 11
 
 [connection signal="timeout" from="DigestionTimer" to="." method="_on_DigestionTimer_timeout"]
+
+[editable path="BuffNodesComponent"]

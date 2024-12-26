@@ -53,7 +53,7 @@ func _on_SummonTimer_timeout():
 
 
 func _on_AnimatedSprite_animation_finished():
-	print(animatedSpriteComp.animation)
+	#print(animatedSpriteComp.animation)
 	if(animatedSpriteComp.animation == "Summon"):
 		print(animatedSpriteComp.animation)
 		print("AnimPlayed")

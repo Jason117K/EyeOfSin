@@ -13,6 +13,7 @@ export var animation_exaggeration = 1.0
 # Node references
 export(NodePath) var sprite_path  
 onready var sprite = get_node(sprite_path) if sprite_path else null
+onready var laserShootComp = $Worm2/LaserShootComponent
 
 # Internal animation state
 var time = 0.0
@@ -36,8 +37,13 @@ func _ready():
 		initial_sprite_position = sprite.position  # Store the initial position
 	else:
 		push_warning("No sprite assigned to animate!")
-		
 
+func receiveBuff(bufferName):
+	#attack_speed = 10
+	laserShootComp.extension_speed = 80000
+	laserShootComp.max_length = 40000
+	
+	
 func take_damage(damage):
 	health = health - damage
 	if health <= 0:

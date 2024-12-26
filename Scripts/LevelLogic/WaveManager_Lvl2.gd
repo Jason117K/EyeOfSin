@@ -33,10 +33,10 @@ var numWave = 0
 
 var health = 5
 
+#Make this runtimeDynamic
+var new_scene# = preload("res://Scenes/LevelScenes/Level2--3.tscn")  # Load the Main scene
 
-var new_scene = preload("res://Scenes/LevelScenes/Level2--3.tscn")  # Load the Main scene
-
-var retry_scene = preload("res://Scenes/LevelScenes/RestartScene2.tscn")
+var retry_scene #= preload("res://Scenes/LevelScenes/RestartScene2.tscn")
 #
 
 func _physics_process(_delta):
@@ -47,7 +47,7 @@ func _physics_process(_delta):
 			pass
 
 func end_level():
-	#var new_scene = preload("res://Scenes/Level2.tscn")  # Load the Main scene
+
 	print("CHANGE - 2")
 	# Switch to the Transition Scene scene
 	assert(get_tree().change_scene_to(new_scene) ==OK)
@@ -56,7 +56,16 @@ func end_level():
 	
 	
 func _ready():
+	var root = get_parent().get_parent().get_name()
+	if root == "Level2":
+		new_scene = preload("res://Scenes/LevelScenes/Level2--3.tscn")  
+		retry_scene = preload("res://Scenes/LevelScenes/RestartScene2.tscn")
 
+	elif root == "Level3":
+		#new_scene = preload("res://Scenes/LevelScenes/EndScreen.tscn")  
+		#retry_scene = preload("res://Scenes/LevelScenes/RestartScene3.tscn")
+		pass
+		
 	$Wave1.wait_time = Wave1_Interval
 	$Wave2.wait_time = Wave2_Interval
 	for child in get_parent().get_parent().get_node("GameLayer").get_children():

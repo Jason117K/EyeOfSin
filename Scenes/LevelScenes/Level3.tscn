@@ -66,10 +66,12 @@ z_index = 1
 position = Vector2( -56, 224 )
 z_index = 1
 script = ExtResource( 8 )
-StartDelay = 90
-Wave1_Interval = 5.0
-Wave2_Interval = 35
-Wave3_Interval = 65.0
+StartDelay = 5
+Wave2StartTime = 45
+Wave3StartTime = 75
+Wave1_Interval = 2.0
+Wave2_Interval = 4
+Wave3_Interval = 2.0
 
 [node name="UILayer" type="Control" parent="."]
 margin_left = 1.0

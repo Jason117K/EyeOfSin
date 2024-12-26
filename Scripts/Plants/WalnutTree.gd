@@ -13,6 +13,9 @@ export var cost = 100
 func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 
+func receiveBuff(bufferName):
+	pass
+	
 func take_damage(damage):
 	print("taking damage, health is " , health)
 	health = health - damage
