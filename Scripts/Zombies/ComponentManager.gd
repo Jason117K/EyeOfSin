@@ -10,6 +10,7 @@ var isSlow = 0  #how much slow the  has
 var thisMaterial
 var thisMaterial2
 
+
 onready var animatedSprite = $"../AnimatedSprite"  # Reference to animated Sprite
 onready var attack_ray = $"../DMGRayCast2D" # Reference to Damage Raycast
 onready var healthComp = $"../HealthComponent" # Reference to health comp 

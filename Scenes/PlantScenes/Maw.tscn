@@ -357,7 +357,7 @@ tentacle3_start_color = Color( 0.552941, 0, 0, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 7 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="DetectionComponent" type="Area2D" parent="."]
@@ -367,7 +367,7 @@ script = ExtResource( 1 )
 shape = SubResource( 8 )
 
 [node name="DigestionTimer" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 11.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -387,7 +387,7 @@ visible = false
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="PreviewNodes"]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 7 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="BloodTile1" type="AnimatedSprite" parent="PreviewNodes"]
@@ -403,56 +403,56 @@ playing = true
 giveBuffTo = [ "WalnutTree", "None", "None", "None", "None", "None", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 14
+frame = 22
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 11
+frame = 19
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 11
+frame = 19
 
 [node name="TileArea4" parent="BuffNodesComponent" index="6"]
 visible = false
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
-frame = 11
+frame = 19
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
 visible = false
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 11
+frame = 19
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
 visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 11
+frame = 19
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
 visible = false
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 11
+frame = 19
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
 visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 11
+frame = 19
 
 [connection signal="timeout" from="DigestionTimer" to="." method="_on_DigestionTimer_timeout"]
 

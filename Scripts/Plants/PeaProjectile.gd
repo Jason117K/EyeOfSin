@@ -18,7 +18,7 @@ func _on_PeaProjectile_area_entered(area):
 		#print(area.name)
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
-		print(healthComp)
+		#print(healthComp)
 		compManager.slow()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
 		#area.slow()

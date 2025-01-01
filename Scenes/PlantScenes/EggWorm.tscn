@@ -371,8 +371,11 @@ texture = ExtResource( 3 )
 position = Vector2( 140, 13.3333 )
 extension_speed = 40000.0
 max_length = 20000.0
-laser_width = 45.0
+laser_width = 100.0
 duration = 0.7
+zigzag_height = 500.0
+zigzag_position = 3500.0
+zigzag_width = 2500.0
 
 [node name="ShootTimer" type="Timer" parent="."]
 
@@ -382,7 +385,6 @@ position = Vector2( -3.33333, -6.66666 )
 shape = SubResource( 1 )
 
 [node name="PreviewNodes" type="Node2D" parent="."]
-visible = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 4 )
@@ -390,6 +392,15 @@ frames = SubResource( 4 )
 [node name="BloodTile1" type="AnimatedSprite" parent="PreviewNodes"]
 modulate = Color( 1.5, 1, 1, 1 )
 position = Vector2( 66, 0 )
+z_index = 6
+frames = SubResource( 90 )
+animation = "New Anim 2"
+frame = 2
+playing = true
+
+[node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
+modulate = Color( 1.5, 1, 1, 1 )
+position = Vector2( 128, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
@@ -401,55 +412,58 @@ scale = Vector2( 7, 7 )
 giveBuffTo = [ "WalnutTree", "Maw", "Wasp", "None", "None", "None", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 5
+frame = 14
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 2
+frame = 11
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 2
+frame = 11
 
 [node name="TileArea4" parent="BuffNodesComponent" index="6"]
 visible = false
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
-frame = 2
+frame = 11
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
 visible = false
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 2
+frame = 11
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
 visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 2
+frame = 11
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
 visible = false
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 2
+frame = 11
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
 visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 2
+frame = 11
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+frame = 17
 
 [editable path="BuffNodesComponent"]

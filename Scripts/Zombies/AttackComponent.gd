@@ -36,7 +36,7 @@ func _process(_delta):
 func attack_plant(collider):
 	is_attacking = true
 	target_plant = collider
-	print("TName is ", target_plant.name)
+	#print("TName is ", target_plant.name)
 	zombieSprite.play("Attack")
 	
 	attack_audio_player.play()
@@ -46,7 +46,7 @@ func _on_AttackTimer_timeout():
 	#print("Basic Zombie Attack Timer Timeout")
 	if(is_instance_valid(target_plant)):
 		if(target_plant.health >= 0):
-			print("HHHHHHHHHHEF")
+			#print("HHHHHHHHHHEF")
 			target_plant.take_damage(attack_power)
 		else:
 			stop_attack()

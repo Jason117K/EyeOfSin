@@ -2,7 +2,7 @@ extends Node2D
 
 onready var hitAudioPlayer = $"../HitAudioPlayer"
 onready var zombie = get_parent()
-export var health = 25 # Health of the zombie
+export var health = 76 #25 # Health of the zombie
 export var healthRegen = 0.0
 
 var injured = false

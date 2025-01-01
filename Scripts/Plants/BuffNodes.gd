@@ -77,10 +77,28 @@ func _process(_delta):
 					# If any overlapping area has "Pea" in its name, make BloodTile visible
 					if(area.is_in_group("Plants")):
 						#print(blood_tile_name)
-						for plant in giveBuffTo:
-							if plant in area.name:
-								area.receiveBuff(plant)
+						for plantActor in giveBuffTo:
+							#print("PlantActor is ", plantActor, "Self is ", plant)
+							#Handles EggWorm Buff Specifically 
+							var selfPlantName = ""
+							var buffPlantName = ""
+							selfPlantName = plant.name
+							buffPlantName = plantActor
+							if "EggWorm" in selfPlantName:
+								if "WalnutTree" in area.name:
+									#Makes EggWorm Receive Walnut Buff
+									#plant.receiveBuff(area.name)
+									plant.receiveWalnutBuff(area.position)
+									
+									
+							#Handle Rest of Buffs
+							if plantActor in area.name:
+								#print(plant.name)
+								area.receiveBuff(plant.name)
 								blood_tile.visible = true
+								
+								
+								
 								break
 						#print(area.name + " is Overlapping")
 					#if "Pea" in area.name:

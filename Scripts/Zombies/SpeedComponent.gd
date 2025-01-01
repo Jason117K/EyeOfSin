@@ -5,7 +5,7 @@ onready var zombie = 	get_parent()
 onready var attackComp = $"../AttackComponent"
 
 var originalSpeed 
-export var speed = 26 #30 # Movement speed, was 34
+export var speed = 26 #40 #26 #30 # Movement speed, was 34
 var is_attacking
 
 

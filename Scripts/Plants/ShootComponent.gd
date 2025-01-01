@@ -5,10 +5,15 @@ export (Color) var laser_color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
 export (float) var extension_speed = 1000.0  # Pixels per second
 export (float) var max_length = 1000.0
 export (float) var laser_width = 4.0  # Increased for visibility
-export (float) var damage = 1
+export (float) var damage = 1.0
 export (float) var duration = 0.5
 export (bool) var auto_fire = false
 export (float) var cooldown = 1.0
+
+# Zigzag parameters
+export (float) var zigzag_height = 50.0  # Height of the zigzag
+export (float) var zigzag_position = 300.0  # Fixed screen position where zigzag occurs
+export (float) var zigzag_width = 100.0  # Width of the zigzag section
 
 # Node references
 onready var line2D := Line2D.new()
@@ -19,6 +24,7 @@ var current_length := 0.0
 var is_firing := false
 var timer := Timer.new()
 var hit_enemies = {}  # Dictionary to track hit enemies
+var isBuffed = false
 
 func _ready() -> void:
 	# Set up Line2D
@@ -73,10 +79,35 @@ func fire() -> void:
 		timer.start()
 
 func _update_laser() -> void:
-	var end_point = Vector2(current_length, 0)
-	line2D.points = PoolVector2Array([Vector2.ZERO, end_point])
+	var points = PoolVector2Array()
+	points.append(Vector2.ZERO)  # Starting point
+		
+	if isBuffed:
+		if current_length <= zigzag_position:
+			# Before zigzag point, just draw straight line
+			points.append(Vector2(current_length, 0))
+		else:
+			# Add straight line up to zigzag
+			points.append(Vector2(zigzag_position, 0))
+		
+			#Add ZigZag
+			points.append(Vector2(zigzag_position + zigzag_width/4, zigzag_height))
+			points.append(Vector2(zigzag_position + ((zigzag_width/4)*2), 0))
+			points.append(Vector2(zigzag_position + ((zigzag_width/4)*3), zigzag_height))
+			points.append(Vector2(zigzag_position + zigzag_width, 0))
+		
+		
+		# If laser extends beyond zigzag, add final straight section
+		if current_length > zigzag_position + zigzag_width:
+			points.append(Vector2(current_length, 0))
+	else:
+		# Before zigzag point, just draw straight line
+		points.append(Vector2(current_length, 0))
+		
+	line2D.points = points
 
 func _update_collision_shape() -> void:
+	# Update collision shape to follow the laser path
 	var rect_shape = collision_shape.shape as RectangleShape2D
 	rect_shape.extents = Vector2(current_length / 2, laser_width / 2)
 	collision_shape.position = Vector2(current_length / 2, 0)
@@ -86,14 +117,9 @@ func _check_collisions() -> void:
 	
 	for area in overlapping_areas:
 		if "Zombie" in area.name and not hit_enemies.has(area):
-			#print("Damaging zombie via area")
 			hit_enemies[area] = true  # Mark this enemy as hit
 			var compManager = area.getCompManager()
-			var healthComp = compManager.getHealthComponent()
-			#print(healthComp)
-			compManager.take_damage(damage)  # Call take_damage() on the zombie
-			#area.slow()
-			#queue_free()  # Remove the projectile # Replace with function body.
+			compManager.take_damage(damage)
 
 func _on_laser_timeout() -> void:
 	is_firing = false
@@ -109,3 +135,22 @@ func set_laser_color(color: Color) -> void:
 func set_laser_width(width: float) -> void:
 	laser_width = width
 	line2D.width = width
+	
+func buff(bufferLocation):
+	isBuffed = true
+	#print(bufferLocation)
+	bufferLocation = to_local(bufferLocation)
+	#print(bufferLocation)
+	#print("OLD ZigZag Position is ", zigzag_position)
+	zigzag_position = self.position.x + (bufferLocation.x - 1200)
+	#print("New ZigZag Position is ", zigzag_position)
+	
+	damage = damage * 1.5
+
+func isBuffed():
+	return isBuffed
+	
+	
+	
+	
+	

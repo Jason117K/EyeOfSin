@@ -1,4 +1,5 @@
 extends Node2D
+#MawTentacle.gd 
 
 signal retraction_complete
 
@@ -142,10 +143,10 @@ func start_grab_sequence() -> void:
 	if not enemy or not is_instance_valid(enemy):
 		return
 		
+	visible = true  # Ensure visibility during grab
 	current_state = State.EXTENDING
 	target_position = enemy.global_position
 	
-	# Reset positions while keeping base fixed
 	var start_pos = to_global(anchor_position)
 	pos[0] = start_pos
 	posPrev[0] = start_pos
@@ -197,7 +198,17 @@ func _process(delta) -> void:
 				current_state = State.IDLE_WRIGGLE
 				emit_signal("retraction_complete")
 				time_elapsed = 0.0
+				
+				
+			# Re-Initialize tentacle
+				pointCount = get_pointCount(ropeLength)
+				initial_position = position
+				anchor_position = position
+				resize_arrays()
 				init_position()
+				visible_points = pointCount
+	
+				#init_position()
 
 	update_points(delta)
 	update_constrain()
