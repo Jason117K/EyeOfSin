@@ -8,10 +8,13 @@ onready var attack_ray = $"../DMGRayCast2D"
 onready var zombieSprite = $"../AnimatedSprite"
 onready var attack_timer = $"../AttackTimer"
 onready var attack_audio_player = $"../AttackAudioPlayer"
+onready var parent = get_parent()
 
 
 var target_plant = null  # Holds reference to the plant being attacked
 var attack_power = 33
+
+var canSpecial = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,12 +28,26 @@ func _process(_delta):
 	if not is_attacking:
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
-			if(get_parent().name == "ScreenDoorZombie"):
+			print("Its collding with ", collider.name )
+			if(parent.name == "ScreenDoorZombie"):
 				#print("Its collding with ", collider.name )
 				pass
+				
 			if collider:
 				if collider.is_in_group("Plants"):
-					attack_plant(collider)
+					if(parent.name == "PoleVaultZombie"):
+							if canSpecial:
+								print("Pole Vault Special Mo")
+								parent.special_move()
+								canSpecial = false
+								pass
+							else:
+								if parent.getBusy() == false:
+									pass
+								else:
+									attack_plant(collider)
+					else:
+						attack_plant(collider)
 
 
 func attack_plant(collider):
@@ -38,6 +55,7 @@ func attack_plant(collider):
 	target_plant = collider
 	#print("TName is ", target_plant.name)
 	zombieSprite.play("Attack")
+				
 	
 	attack_audio_player.play()
 	attack_timer.start()

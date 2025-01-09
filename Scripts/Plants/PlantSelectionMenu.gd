@@ -19,6 +19,7 @@ var walnut_scene = preload("res://Scenes/PlantScenes/WalnutTree.tscn")
 var maw_scene = preload("res://Scenes/PlantScenes/Maw.tscn")
 var egg_scene = preload("res://Scenes/PlantScenes/EggWorm.tscn")
 var bomb_scene = preload("res://Scenes/PlantScenes/EyeBomb.tscn")
+var hive_scene = preload("res://Scenes/PlantScenes/Hive.tscn")
 
 var currentPlantLabel
 var deselectText = " PRESS [X] TO DESELECT"
@@ -41,6 +42,7 @@ func _ready():
 	var EyeButton = $VBoxContainer/HBoxContainer/EyeButton
 	var EggButton = $VBoxContainer/HBoxContainer/EggButton
 	var MawButton = $VBoxContainer/HBoxContainer/MawButton
+	var HiveButton = $VBoxContainer/HBoxContainer/HiveButton
 	
 	if root == "Main": #or root == "Level2":
 		assert(PeaShooterButton.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
@@ -119,6 +121,15 @@ func _on_EyeButton_pressed():
 	print("EyeBomb Selected")
 	currentPlantLabel.text = "EYE MINE SELECTED " + deselectText
 	$UIClickAudio.play()
+	
+	
+func _on_HiveButton_pressed():
+	selected_plant = hive_scene
+	create_preview(hive_scene)
+	print("Hive Selected")
+	currentPlantLabel.text = "HIVE SELECTED " + deselectText
+	$UIClickAudio.play()
+	
 
 func create_preview(plant_scene):
 	clear_preview()
@@ -228,3 +239,4 @@ func find_animated_sprite(node):
 		if result:
 			return result
 	return null
+

@@ -1,8 +1,9 @@
 extends Area2D
-#BucketHeadZombie.gd
+#TickerZombie.gd
 
 onready var compManager = $ComponentManager
 onready var rayCast = $DMGRayCast2D
+#onready var specialMoveComp = $SpecialMoveComp
 
 
 func getCompManager():
@@ -11,7 +12,3 @@ func getCompManager():
 
 func die():
 	queue_free()
-
-
-func special_move():
-	compManager.special_move()

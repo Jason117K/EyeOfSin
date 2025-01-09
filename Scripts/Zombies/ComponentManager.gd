@@ -17,7 +17,13 @@ onready var healthComp = $"../HealthComponent" # Reference to health comp
 onready var speedComp =  $"../SpeedComponent"   # Reference to Speed Comp
 onready var zombie = get_parent()
 
-
+func special_move():
+	var specialMoveComp = $"../SpecialMoveComp"
+	print("Pole Vault Special COMP Manager")
+	specialMoveComp.executeMove()
+	animatedSprite.setSpecialMoveTrue()
+	
+	
 func getSlow():  
 	return isSlow 
 	

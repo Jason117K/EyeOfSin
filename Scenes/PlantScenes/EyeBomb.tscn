@@ -230,7 +230,7 @@ script = ExtResource( 3 )
 
 [node name="SpriteComponent" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
-frame = 3
+frame = 1
 speed_scale = 2.0
 playing = true
 
@@ -250,7 +250,7 @@ visible = false
 position = Vector2( 320, 0 )
 scale = Vector2( 10, 10 )
 frames = SubResource( 48 )
-frame = 20
+frame = 26
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
@@ -258,7 +258,6 @@ visible = false
 
 [node name="SpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 17 )
-frame = 2
 speed_scale = 2.0
 playing = true
 

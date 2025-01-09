@@ -8,9 +8,17 @@ onready var zombie = 	get_parent()
 onready var attackComp = $"../AttackComponent"
 onready var attack_audio_player = $"../AttackAudioPlayer"
 onready var healthComp  =  $"../HealthComponent"
+
+var specialMove = false 
 #Allow Summons While Webbed?
 #Maybe Give Zombies With Special Animations Own Sprite Comp Controller
 
+func setSpecialMoveTrue():
+	specialMove = true
+	
+func setSpecialMoveFalse():
+	specialMove = false
+	
 func _process(_delta):
 	is_attacking = attackComp.getAttackState()
 	isInjured = healthComp.getInjured()
@@ -20,54 +28,87 @@ func _process(_delta):
 	#print("IsSlow is : ", isSlow)
 	
 	
-	#Slow Webbed Block
-	#--------------------------------------------------------------------------
-	if isSlow > 0:
+	if not specialMove:
+		#Slow Webbed Block
+		#--------------------------------------------------------------------------
+		if isSlow > 0:
+			#Dancer Specific 
+			if(zombie.name == "DancerZombie"):
+				if(self.animation == "Summon"):
+					pass
+				else:
+					if(not is_attacking):
+						self.play("WebWalk")     
 
-		#Dancer Specific 
-		if(zombie.name == "DancerZombie"):
-			if(self.animation == "Summon"):
-				pass
-			else:
-				if(not is_attacking):
-					self.play("WebWalk")     
+			if isInjured: #Injured and Webbed 
+				if not is_attacking:
+					if frames.has_animation("InjuredWebWalk"):
+						self.play("InjuredWebWalk")    #InjuredWebWalk
+					else : 
+						self.play("Walk") #InjuredWebWalk
+				else:
+					if frames.has_animation("InjuredWebAttack"):
+						self.play("InjuredWebAttack")    #InjuredWebAttack
+					else : 
+						self.play("Attack") #InjuredInjuredWebAttackWebWalk
+						
+			else: #Not Injured, Are Webbed
+				if not is_attacking:
+					if frames.has_animation("WebWalk"):
+						self.play("WebWalk")    #WebWalk
+					else : 
+						self.play("Walk") #WebWalk
+				else:
+					if frames.has_animation("WebAttack"):
+						self.play("WebAttack")    #WebAttack
+					else : 
+						self.play("Attack") #WebAttack
+		#--------------------------------------------------------------------------
+			
+		#Not Slow Block
+		else: #isSlow <= 0
 
-		if isInjured: #Injured and Webbed 
-			if not is_attacking:
-				self.play("WebWalk")    #InjuredWebWalk
-			else:
-				self.play("Attack")  #InjuredWebAttack
-		else: #Not Injured, Are Webbed
-			if not is_attacking:
-				self.play("WebWalk")
-			else:
-				self.play("Attack") #WebAttack
-	#--------------------------------------------------------------------------
-		
-	#Not Slow Block
-	else: #isSlow <= 0
+			#Dancer Specific 
+			if(zombie.name == "DancerZombie"):
+				if(self.animation == "Summon"):
+					pass
+				else:
+					if(not is_attacking):
+						self.play("Walk")
 
-		#Dancer Specific 
-		if(zombie.name == "DancerZombie"):
-			if(self.animation == "Summon"):
-				pass
-			else:
-				if(not is_attacking):
+			if isInjured: #Injured and NOT Webbed 
+				if not is_attacking:
+					self.play("Walk") #InjuredWalk
+				else:
+					self.play("Attack") #InjuredAttack
+			else: #Not Injured, NOT Webbed
+				if not is_attacking:
+					#print("Walk Nw")
 					self.play("Walk")
-
-		if isInjured: #Injured and NOT Webbed 
-			if not is_attacking:
-				self.play("Walk") #InjuredWalk
-			else:
-				self.play("Attack") #InjuredAttack
-		else: #Not Injured, NOT Webbed
-			if not is_attacking:
-				self.play("Walk")
-			else:
-				self.play("Attack")
+				else:
+					self.play("Attack")
+					
+	else:
+		pass
 
 
 func _on_AnimatedSprite_animation_finished():
 	if("Attack" in self.animation):
 		#attack_audio_player.play()
 		pass
+	#print(self.animation)
+
+	if("Vault" in self.animation):
+		print("Jere")
+		specialMove = false
+
+
+func _on_AnimatedSprite_frame_changed():
+	if(zombie.name == "TickerZombie"):
+		if self.animation == "Attack":
+			if self.frame == 3:
+				var AOEHit = $"../AOEHit"
+				AOEHit.goBoom()
+	else:
+		pass
+
