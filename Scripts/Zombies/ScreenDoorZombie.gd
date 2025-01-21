@@ -23,3 +23,11 @@ func transform():
 	startSprite.visible = false
 	compManager.setMaterial(altSprite)
 	healthCom.resetHealth()
+
+
+func fightDrone():
+	compManager.fightDrone()
+
+
+func stopFightingDrone():
+	compManager.stopFightingDrone()

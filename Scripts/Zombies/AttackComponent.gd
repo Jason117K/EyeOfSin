@@ -28,16 +28,18 @@ func _process(_delta):
 	if not is_attacking:
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
-			print("Its collding with ", collider.name )
+			#print("Its collding with ", collider.name )
 			if(parent.name == "ScreenDoorZombie"):
 				#print("Its collding with ", collider.name )
 				pass
 				
 			if collider:
+				#print(collider.name)
 				if collider.is_in_group("Plants"):
+					#print(collider.name , " is in group plants")
 					if(parent.name == "PoleVaultZombie"):
 							if canSpecial:
-								print("Pole Vault Special Mo")
+								#print("Pole Vault Special Mo")
 								parent.special_move()
 								canSpecial = false
 								pass
@@ -63,6 +65,7 @@ func attack_plant(collider):
 func _on_AttackTimer_timeout():
 	#print("Basic Zombie Attack Timer Timeout")
 	if(is_instance_valid(target_plant)):
+		print(target_plant.name)
 		if(target_plant.health >= 0):
 			#print("HHHHHHHHHHEF")
 			target_plant.take_damage(attack_power)

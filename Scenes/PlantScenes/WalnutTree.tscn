@@ -393,7 +393,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSpriteComponent" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 79 )
-frame = 10
+frame = 3
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
@@ -402,5 +402,5 @@ visible = false
 [node name="AnimatedSpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 12 )
-frame = 12
+frame = 9
 playing = true

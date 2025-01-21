@@ -19,3 +19,11 @@ func special_move():
 
 func getBusy():
 	return specialMoveComp.isMoveFinished()
+
+
+func fightDrone():
+	compManager.fightDrone()
+
+
+func stopFightingDrone():
+	compManager.stopFightingDrone()

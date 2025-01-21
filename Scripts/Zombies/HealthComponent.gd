@@ -8,6 +8,9 @@ export var healthRegen = 0.0
 var injured = false
 var halfHealth = health/2
 
+# Declare the death signal
+signal enemy_died(enemy)
+
 func getInjured():
 	return injured
 	
@@ -20,6 +23,7 @@ func take_damage(damage):
 	health -= damage
 	hitAudioPlayer.play()
 	if health <= 0:
+		emit_signal("enemy_died", self)
 		zombie.die()
 		#zombie.queue_free()  # Remove zombie when health is zero
 

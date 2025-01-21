@@ -250,7 +250,7 @@ visible = false
 position = Vector2( 320, 0 )
 scale = Vector2( 10, 10 )
 frames = SubResource( 48 )
-frame = 26
+frame = 15
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]

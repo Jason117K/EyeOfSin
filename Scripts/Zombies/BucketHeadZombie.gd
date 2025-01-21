@@ -15,3 +15,11 @@ func die():
 
 func special_move():
 	compManager.special_move()
+
+
+func fightDrone():
+	compManager.fightDrone()
+
+
+func stopFightingDrone():
+	compManager.stopFightingDrone()

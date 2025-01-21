@@ -170,3 +170,8 @@ func receiveBuff(bufferName):
 		tentacle1.set_colors(Color.purple, Color.purple)
 		tentacle2.set_colors(Color.darkmagenta, Color.darkmagenta)
 		willBelchWebs = true
+	elif(bufferName == "Hive"):
+		tentacle1.set_colors(Color.white, Color.white)
+		tentacle2.set_colors(Color.black, Color.black)
+		health = 200
+		

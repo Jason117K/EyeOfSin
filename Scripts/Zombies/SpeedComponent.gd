@@ -14,6 +14,9 @@ func _ready():
 
 func setSpeed(newSpeed):
 	speed = newSpeed
+	
+func getOriginalSpeed():
+	return originalSpeed
 
 func _process(delta):
 	is_attacking = attackComp.getAttackState()

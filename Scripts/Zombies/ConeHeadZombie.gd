@@ -8,3 +8,11 @@ func getCompManager():
 
 func die():
 	queue_free()
+
+
+func fightDrone():
+	compManager.fightDrone()
+
+
+func stopFightingDrone():
+	compManager.stopFightingDrone()
