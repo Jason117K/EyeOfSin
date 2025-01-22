@@ -182,6 +182,7 @@ script = ExtResource( 2 )
 [node name="ComponentManager" parent="." instance=ExtResource( 8 )]
 
 [node name="HealthComponent" parent="." instance=ExtResource( 6 )]
+health = 50
 
 [node name="SpeedComponent" parent="." instance=ExtResource( 7 )]
 
@@ -196,6 +197,7 @@ position = Vector2( 0, -2 )
 scale = Vector2( 1.7, 1.7 )
 frames = SubResource( 9 )
 animation = "WebWalk"
+frame = 6
 playing = true
 flip_h = true
 script = ExtResource( 10 )

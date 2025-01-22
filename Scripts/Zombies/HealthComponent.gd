@@ -8,6 +8,10 @@ export var healthRegen = 0.0
 var injured = false
 var halfHealth = health/2
 
+var explode = false
+
+var bomb_scene = preload("res://Scenes/PlantScenes/Bomb.tscn")
+
 # Declare the death signal
 signal enemy_died(enemy)
 
@@ -23,6 +27,11 @@ func take_damage(damage):
 	health -= damage
 	hitAudioPlayer.play()
 	if health <= 0:
+		if(explode):
+			var bomb = bomb_scene.instance()
+			bomb.position = zombie.position + Vector2(0, 0)  # Adjust starting position
+			print(((get_parent().get_parent()).name), "is parent")
+			get_parent().get_parent().add_child(bomb)  
 		emit_signal("enemy_died", self)
 		zombie.die()
 		#zombie.queue_free()  # Remove zombie when health is zero
@@ -36,3 +45,6 @@ func _process(_delta):
 
 func resetHealth():
 	health = (halfHealth * 2)
+
+func willExplode():
+	explode = true

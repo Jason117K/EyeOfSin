@@ -205,7 +205,6 @@ material = SubResource( 31 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 17 )
 animation = "WebWalk"
-frame = 4
 playing = true
 flip_h = true
 script = ExtResource( 12 )

@@ -19,3 +19,6 @@ func fightDrone():
 
 func stopFightingDrone():
 	compManager.stopFightingDrone()
+	
+func fightDroneExplode():
+	compManager.fightDroneExplode()

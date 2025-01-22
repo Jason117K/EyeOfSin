@@ -20,6 +20,10 @@ onready var zombie = get_parent()
 
 func fightDrone():
 	speedComp.setSpeed(0)
+	
+func fightDroneExplode():
+	healthComp.willExplode()
+	
 
 func stopFightingDrone():
 	speedComp.setSpeed(speedComp.getOriginalSpeed())
@@ -44,6 +48,7 @@ func getHealthComponent():
 	return healthComp
 
 func take_damage(damage):
+	print("Just took, ", damage)
 	healthComp.take_damage(damage)
 	
 	if(thisMaterial):

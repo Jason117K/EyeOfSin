@@ -20,3 +20,6 @@ func get_animation_length(anim_name: String) -> float:
 		var speed_scale = speed_scale
 		return (frame_count / frame_rate) / speed_scale
 	return 0.0
+
+func buff():
+	self_modulate = Color("d91a1a")

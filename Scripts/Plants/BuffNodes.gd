@@ -75,8 +75,9 @@ func _process(_delta):
 				for area in overlapping_areas:
 					
 					# If any overlapping area has "Pea" in its name, make BloodTile visible
-					if(area.is_in_group("Plants")):
+					if(area.is_in_group("Plants") && !("Drone" in area.name)):
 						#print(blood_tile_name)
+						#print("Plant to Buff : ", area.name)
 						for plantActor in giveBuffTo:
 							#print("PlantActor is ", plantActor, "Self is ", plant)
 							#Handles EggWorm Buff Specifically 
@@ -92,6 +93,7 @@ func _process(_delta):
 									
 									
 							#Handle Rest of Buffs
+							#Make this not happen every time
 							if plantActor in area.name:
 								#print(plant.name)
 								area.receiveBuff(plant.name)

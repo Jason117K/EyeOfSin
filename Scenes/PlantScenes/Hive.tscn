@@ -62,7 +62,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSpriteComp" type="AnimatedSprite" parent="."]
 frames = SubResource( 10 )
 animation = "idle"
-frame = 3
+frame = 5
 playing = true
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
@@ -86,49 +86,50 @@ one_shot = true
 [node name="BuffNodesComponent" parent="." instance=ExtResource( 3 )]
 position = Vector2( -0.588235, 0 )
 scale = Vector2( 0.5, 0.5 )
+giveBuffTo = [ "Maw", "None", "None", "None", "None", "None", "None", "None" ]
 
 [node name="TileArea1" parent="BuffNodesComponent" index="0"]
 visible = false
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 visible = false
-frame = 16
+frame = 26
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 13
+frame = 23
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 13
+frame = 23
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-frame = 13
+frame = 23
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-frame = 13
+frame = 23
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-frame = 13
+frame = 23
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
-frame = 13
+frame = 23
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
-frame = 13
+frame = 23
 
 [node name="TileArea9" parent="BuffNodesComponent" index="16"]
 visible = false
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
 visible = false
-frame = 16
+frame = 26
 
 [connection signal="area_entered" from="DetectionComp" to="." method="_on_enemy_entered"]
 [connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
