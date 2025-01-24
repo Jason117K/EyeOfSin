@@ -182,7 +182,8 @@ func optimize_drone_assignments():
 func command_drone_to_attack(drone, enemy):
 	# Implement your drone attack command logic here
 	# This will depend on your drone implementation
-	drone.attack_target(enemy)
+	if is_instance_valid_and_alive(enemy):
+		drone.attack_target(enemy)
 
 func take_damage(damage):
 	print("drone taking damage, health is " , health)
@@ -211,3 +212,7 @@ func _on_DroneRespawnTimer_timeout():
 	
 	# Optimize assignments with new drone
 	optimize_drone_assignments()
+
+# Add this helper function to scripts that deal with combat
+func is_instance_valid_and_alive(node) -> bool:
+	return is_instance_valid(node) and not node.is_queued_for_deletion()

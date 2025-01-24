@@ -8,23 +8,8 @@ onready var deathTimer = $DeathTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pass
 
-	enemiesToHitTemp = get_overlapping_areas()
-	print("Spawned Bomb : ", enemiesToHitTemp)
-	
-	for enemy in enemiesToHitTemp:
-		print("Enemy is " , enemy.name)
-		if "Zombie" in enemy.name:
-			enemiesToHit.append(enemy)
-	print("Spawned Bomb 2")		
-	for enemy in enemiesToHit:
-		if not is_instance_valid_and_alive(enemy):	
-			if(enemy != null):
-				var compManager = enemy.getCompManager()
-				var healthComp = compManager.getHealthComponent()
-				compManager.take_damage(damage)  
-	deathTimer.start()
-	print("Spawned Bomb 3")
 
 
 
@@ -34,5 +19,26 @@ func is_instance_valid_and_alive(node) -> bool:
 
 
 func _on_DeathTimer_timeout():
+	print("WE HEREEEE")
+	enemiesToHitTemp = get_overlapping_areas()
+	#print("Spawned Bomb : ", enemiesToHitTemp)
+	
+	for enemy in enemiesToHitTemp:
+		#print("Enemy is " , enemy.name)
+		if "Zombie" in enemy.name:
+			print("Enemy is " , enemy.name)
+			enemiesToHit.append(enemy)
+	
+	for enemy in enemiesToHit:
+		print("About Damage")
+		if is_instance_valid_and_alive(enemy):	
+			if(enemy != null):
+				print("Will NOW DAMAGE")
+				var compManager = enemy.getCompManager()
+				var healthComp = compManager.getHealthComponent()
+				compManager.take_damage(damage)  
+	
+	print("Spawned Bomb 3")
+
 	print("Ded")
 	queue_free()

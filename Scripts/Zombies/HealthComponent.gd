@@ -24,9 +24,12 @@ func ready():
 	
 # Function to handle taking damage
 func take_damage(damage):
+	if damage > 99:
+		print("HIT BY DOMB")
 	health -= damage
 	hitAudioPlayer.play()
 	if health <= 0:
+		print("EXPLODE IS ", explode)
 		if(explode):
 			var bomb = bomb_scene.instance()
 			bomb.position = zombie.position + Vector2(0, 0)  # Adjust starting position

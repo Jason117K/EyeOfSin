@@ -48,7 +48,7 @@ func getHealthComponent():
 	return healthComp
 
 func take_damage(damage):
-	print("Just took, ", damage)
+	#print("Just took, ", damage)
 	healthComp.take_damage(damage)
 	
 	if(thisMaterial):
