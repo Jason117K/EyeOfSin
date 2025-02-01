@@ -308,27 +308,30 @@ playing = true
 giveBuffTo = [ "Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 15
+frame = 23
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
-frame = 12
+frame = 20
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
-frame = 12
+frame = 20
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-frame = 12
+frame = 20
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-frame = 12
+frame = 20
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-frame = 12
+frame = 20
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
-frame = 12
+frame = 20
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
-frame = 12
+frame = 20
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+frame = 18
 
 [editable path="BuffNodesComponent"]

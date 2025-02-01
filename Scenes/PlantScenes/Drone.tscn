@@ -97,7 +97,6 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=20]
 radius = 11.0
-height = 20.0
 
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 11, 15.5 )
@@ -110,7 +109,6 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
 animation = "idle"
-frame = 2
 playing = true
 script = ExtResource( 3 )
 
