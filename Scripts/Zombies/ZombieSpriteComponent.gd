@@ -50,7 +50,7 @@ func _process(_delta):
 					if frames.has_animation("InjuredWebAttack"):
 						self.play("InjuredWebAttack")    #InjuredWebAttack
 					else : 
-						self.play("Attack") #InjuredInjuredWebAttackWebWalk
+						self.play("Attack") 
 						
 			else: #Not Injured, Are Webbed
 				if not is_attacking:
