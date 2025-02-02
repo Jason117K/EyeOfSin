@@ -1,17 +1,17 @@
 extends Node2D
 #PlantManager.gd
 
-onready var selection_menu = get_parent().get_node("UILayer/PlantSelectionMenu")
+onready var selection_menu = get_parent().get_node("PlantSelectionMenu")
 
 var selected_plant_scene = null  # Updated: Holds the selected plant scene
-var grid_size = 64 #64  # Assuming each grid cell is 64x64 pixels
+var grid_size = 32 #64  # Assuming each grid cell is 64x64 pixels
 var grid_map = {}  # Dictionary to store occupied cells
 var sun_points = 200
 var plant_cost = 25
 
 # Updated: Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
-	return get_parent().get_node("UILayer/PlantSelectionMenu").selected_plant
+	return get_parent().get_node("PlantSelectionMenu").selected_plant
 
 func ready():
 	#print(get_parent().get_name())
@@ -25,12 +25,12 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == BUTTON_LEFT:
 			var mouse_pos = get_global_mouse_position()
-			#print("Clicked mouse_pos is : ")
-			#print(mouse_pos)
+			#print("Clicked mouse_pos is : ", mouse_pos)
+
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
-		#	print("Clicked grid_pos is : ")
-		#	print(grid_pos)
-			grid_pos = Vector2(grid_pos.x,grid_pos.y+64)
+			#print("Clicked grid_pos is : ", grid_pos)
+
+			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
 			#print(get_parent().name)
 			
 			
@@ -51,7 +51,7 @@ func _input(event):
 					#print("Place Plant " , grid_pos)
 					place_plant(grid_pos)
 			else:
-				if(grid_pos.x<769 && grid_pos.y<385 && grid_pos.y > 64):
+				if(grid_pos.x<769 && grid_pos.y<288 && grid_pos.y > 31):
 					#print("Place Plant " , grid_pos)
 					place_plant(grid_pos)
 
@@ -91,7 +91,8 @@ func place_plant(grid_pos: Vector2):
 	get_cost(plant_instance)
 	plant_cost = plant_instance.get_cost()
 	if sun_points >= plant_cost:  # Assume the plant costs 25 sun points
-		plant_instance.position = Vector2(grid_pos.x+32,grid_pos.y-32)
+		#plant_instance.position = Vector2(grid_pos.x+32,grid_pos.y-32)
+		plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
 		get_parent().get_node("GameLayer").add_child(plant_instance)
 
 		# Mark the cell as occupied and reduce sun points

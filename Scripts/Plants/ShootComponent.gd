@@ -141,9 +141,9 @@ func buff(bufferLocation):
 	#print(bufferLocation)
 	bufferLocation = to_local(bufferLocation)
 	#print(bufferLocation)
-	#print("OLD ZigZag Position is ", zigzag_position)
-	zigzag_position = self.position.x + (bufferLocation.x - 1200)
-	#print("New ZigZag Position is ", zigzag_position)
+	print("OLD ZigZag Position is ", zigzag_position)
+	zigzag_position = self.position.x + (bufferLocation.x - 96)
+	print("New ZigZag Position is ", zigzag_position)
 	
 	damage = damage * 1.5
 

@@ -128,7 +128,8 @@ margin_top = 87.0
 margin_right = 78.0
 margin_bottom = 106.0
 
-[node name="Shrubs" type="Node" parent="."]
+[node name="Shrubs" type="Node2D" parent="."]
+visible = false
 
 [node name="BloodTree" type="Sprite" parent="Shrubs"]
 position = Vector2( 491, 457 )
@@ -164,6 +165,7 @@ position = Vector2( 152, 32 )
 position = Vector2( 824, 424 )
 
 [node name="Fish" type="Node2D" parent="."]
+visible = false
 
 [node name="Fish5" parent="Fish" instance=ExtResource( 7 )]
 position = Vector2( 664, 40 )

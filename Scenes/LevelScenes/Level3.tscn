@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/PlantScenes/PlantManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Systems/WaveManager.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=11]
 [ext_resource path="res://Scenes/Environment/Shrub.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Scenes/PlantScenes/Bomb.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 13 )
@@ -26,8 +25,9 @@ glow_hdr_threshold = 1.5
 glow_bicubic_upscale = true
 adjustment_enabled = true
 
-[node name="Level3" type="Node2D"]
-position = Vector2( 0, -1 )
+[node name="Level3" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 6 )
 
 [node name="PlantManager" parent="." instance=ExtResource( 1 )]
@@ -35,7 +35,7 @@ script = ExtResource( 6 )
 [node name="GameLayer" type="Node2D" parent="."]
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 868, 159 )
+position = Vector2( 875, 75 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -51,7 +51,7 @@ position = Vector2( 12, 0 )
 z_index = 1
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 900, 224 )
+position = Vector2( 890, 109 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 2,
@@ -67,7 +67,7 @@ position = Vector2( -20, 0 )
 z_index = 1
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 878, 283 )
+position = Vector2( 879, 139 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -83,7 +83,7 @@ position = Vector2( 2, 5 )
 z_index = 1
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 904, 344 )
+position = Vector2( 892, 174 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -100,7 +100,7 @@ position = Vector2( -24, 0 )
 z_index = 1
 
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 888, 95 )
+position = Vector2( 884, 207 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -116,6 +116,7 @@ position = Vector2( -8, 0 )
 z_index = 1
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource( 3 )]
+z_index = -1
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource( 2 )]
 position = Vector2( -56, 224 )
@@ -128,9 +129,11 @@ Wave1_Interval = 2.0
 Wave2_Interval = 4
 Wave3_Interval = 2.0
 
-[node name="Bomb" parent="GameLayer" instance=ExtResource( 14 )]
+[node name="ColorRect" type="ColorRect" parent="GameLayer"]
 visible = false
-position = Vector2( 522, 258 )
+margin_right = 1130.0
+margin_bottom = 598.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="UILayer" type="Control" parent="."]
 margin_left = 1.0
@@ -150,25 +153,22 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Blood : 200"
 
-[node name="PlantSelectionMenu" parent="UILayer" instance=ExtResource( 5 )]
-margin_left = 55.0
-margin_top = 87.0
-margin_right = 78.0
-margin_bottom = 106.0
-
 [node name="Shrubs" type="Node" parent="."]
 
 [node name="BloodTree" type="Sprite" parent="Shrubs"]
+visible = false
 position = Vector2( 753, 472 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="BloodTree2" type="Sprite" parent="Shrubs"]
+visible = false
 position = Vector2( 120, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="Fish" type="Node2D" parent="."]
+visible = false
 position = Vector2( 173, 30 )
 
 [node name="Fish5" parent="Fish" instance=ExtResource( 7 )]
@@ -200,7 +200,16 @@ position = Vector2( 177, 7 )
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
+volume_db = -80.0
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
+
+[node name="PlantSelectionMenu" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.034
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.399994
+margin_bottom = 40.4

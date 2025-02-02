@@ -148,7 +148,6 @@ animations = [ {
 extents = Vector2( 83.0833, 15.6667 )
 
 [node name="TickerZombie" type="Area2D" groups=["Zombie"]]
-scale = Vector2( 1.5, 1.5 )
 collision_layer = 2
 script = ExtResource( 6 )
 
@@ -169,7 +168,7 @@ material = SubResource( 16 )
 position = Vector2( 8, 0 )
 frames = SubResource( 14 )
 animation = "Walk"
-frame = 3
+frame = 5
 playing = true
 flip_h = true
 script = ExtResource( 9 )

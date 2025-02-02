@@ -333,10 +333,9 @@ animations = [ {
 } ]
 
 [node name="EggWorm" type="Area2D" groups=["Plants"]]
-position = Vector2( 0, -36 )
-scale = Vector2( 0.15, 0.15 )
 script = ExtResource( 4 )
 bob_speed = 1.7
+bob_height = 3.0
 squash_amount = 0.2
 stretch_amount = 0.1
 bounce_elasticity = 0.01
@@ -344,38 +343,38 @@ sprite_path = NodePath("Worm1")
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-position = Vector2( 6.6665, 0.000160217 )
 texture = ExtResource( 7 )
 
 [node name="Egg" type="Sprite" parent="."]
-position = Vector2( 0, -26.6666 )
+position = Vector2( 0, -3 )
 z_index = 1
 texture = ExtResource( 1 )
 
 [node name="Worm1" type="Sprite" parent="."]
-position = Vector2( 10, -26.667 )
+position = Vector2( 11, 1 )
 texture = ExtResource( 2 )
 
 [node name="Worm2Animator" type="Node2D" parent="."]
 visible = false
 script = ExtResource( 5 )
 bob_speed = 0.9
+bob_height = 3.0
 bounce_elasticity = 0.0
 sprite_path = NodePath("../Worm2")
 
 [node name="Worm2" type="Sprite" parent="."]
-position = Vector2( -10, -26.667 )
+position = Vector2( -11, 1 )
 texture = ExtResource( 3 )
 
 [node name="LaserShootComponent" parent="Worm2" instance=ExtResource( 6 )]
-position = Vector2( 140, 13.3333 )
+position = Vector2( 14, -9 )
 extension_speed = 40000.0
 max_length = 20000.0
-laser_width = 100.0
+laser_width = 10.0
 duration = 0.7
-zigzag_height = 500.0
+zigzag_height = 160.0
 zigzag_position = 3500.0
-zigzag_width = 2500.0
+zigzag_width = 160.0
 
 [node name="ShootTimer" type="Timer" parent="."]
 
@@ -396,7 +395,7 @@ position = Vector2( 66, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
-frame = 3
+frame = 2
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
@@ -405,66 +404,65 @@ position = Vector2( 128, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
-frame = 2
+frame = 1
 playing = true
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource( 12 )]
-scale = Vector2( 7, 7 )
 giveBuffTo = [ "WalnutTree", "Maw", "Hive", "None", "None", "None", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 3
+frame = 26
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 0
+frame = 23
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 0
+frame = 23
 
 [node name="TileArea4" parent="BuffNodesComponent" index="6"]
 visible = false
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
-frame = 0
+frame = 23
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
 visible = false
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 0
+frame = 23
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
 visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 0
+frame = 23
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
 visible = false
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 0
+frame = 23
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
 visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 0
+frame = 23
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
-frame = 6
+frame = 1
 
 [editable path="BuffNodesComponent"]

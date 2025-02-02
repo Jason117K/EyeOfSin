@@ -173,7 +173,6 @@ animations = [ {
 } ]
 
 [node name="BasicZombie" type="Area2D" groups=["Zombie"]]
-scale = Vector2( 1.5, 1.5 )
 z_index = 1
 collision_layer = 2
 script = ExtResource( 1 )
@@ -195,6 +194,7 @@ shape = SubResource( 1 )
 material = SubResource( 20 )
 frames = SubResource( 11 )
 animation = "Walk"
+frame = 1
 playing = true
 flip_h = true
 script = ExtResource( 6 )

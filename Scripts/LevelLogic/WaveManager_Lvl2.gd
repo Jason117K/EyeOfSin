@@ -164,7 +164,7 @@ func _on_Wave3_timeout():
 
 #Code Taking Damage Here 
 func _on_Area2D_area_entered(area):
-	print(area.name, " :entered home base")
+	#print(area.name, " :entered home base")
 	if "Zombie" in area.name:
 		#Go to Restart Scene 
 		get_parent().get_tree().change_scene_to(retry_scene)

@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var tilemap = $TileMap
+onready var tilemap = $TileMap2
 
 # The ID of the tile you want to set (you can check this in the TileSet editor)
 #var tile_id = 2  

@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var spriteComp = $SpriteComponent
+onready var spriteComp = $AnimSpriteComponent
 onready var hitBoxComp = $HitBoxComponent
 
 var startNum = 0

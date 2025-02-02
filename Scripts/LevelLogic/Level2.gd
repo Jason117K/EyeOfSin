@@ -8,9 +8,17 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$GameLayer/GridManager.set_tiles_for_rows(2,6, 9)
-	#$GameLayer/GridManager.set_tiles_for_rows(0,2, 5)
-	$GameLayer/GridManager.set_tiles_for_rows(2,6, 9)
+	$GameLayer/GridManager.set_tiles_for_rows(0,1, 18)
+	$GameLayer/GridManager.set_tiles_for_rows(1,1, 17)
+	
+	$GameLayer/GridManager.set_tiles_for_rows(2,1, 21)
+	$GameLayer/GridManager.set_tiles_for_rows(3,1, 22)
+	$GameLayer/GridManager.set_tiles_for_rows(4,1, 3)
+	$GameLayer/GridManager.set_tiles_for_rows(5,1, 4)
+	$GameLayer/GridManager.set_tiles_for_rows(6,1, 12)
+	
+	$GameLayer/GridManager.set_tiles_for_rows(7,1, 15)
+	$GameLayer/GridManager.set_tiles_for_rows(8,1, 18)
 
 
 

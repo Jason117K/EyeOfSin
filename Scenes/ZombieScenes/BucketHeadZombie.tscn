@@ -194,10 +194,9 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 44 )
 position = Vector2( 0, -2 )
-scale = Vector2( 1.7, 1.7 )
 frames = SubResource( 9 )
 animation = "WebWalk"
-frame = 5
+frame = 8
 playing = true
 flip_h = true
 script = ExtResource( 10 )

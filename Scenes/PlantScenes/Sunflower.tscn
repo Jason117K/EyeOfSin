@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Scripts/Sunflower.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Plants/SunEye2.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Plants/Animations/SunFlowerIdle-Sheet.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Plants/Animations/EyeOutlineIdle-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" type="PackedScene" id=7]
@@ -11,48 +11,52 @@
 [sub_resource type="RectangleShape2D" id=89]
 extents = Vector2( 10.8333, 11 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 3 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 3 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=98]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=99]
 atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=100]
 atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=101]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=94]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=95]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=96]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=97]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
 "loop": true,
-"name": "default",
+"name": "New Anim",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
 "loop": true,
-"name": "defaultOutline",
+"name": "idleDebug",
 "speed": 5.0
 } ]
 
@@ -223,7 +227,8 @@ wait_time = 16.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
-animation = "defaultOutline"
+animation = "New Anim"
+frame = 1
 playing = true
 
 [node name="OverlayComponent" type="Node2D" parent="."]
@@ -240,7 +245,7 @@ position = Vector2( 66, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 3
+frame = 1
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
@@ -248,7 +253,6 @@ position = Vector2( 65, 65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 2
 playing = true
 
 [node name="BloodTile3" type="AnimatedSprite" parent="PreviewNodes"]
@@ -256,7 +260,7 @@ position = Vector2( 65, -65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 1
+frame = 3
 playing = true
 
 [node name="BloodTile4" type="AnimatedSprite" parent="PreviewNodes"]
@@ -264,7 +268,7 @@ position = Vector2( -65, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 1
+frame = 3
 playing = true
 
 [node name="BloodTile5" type="AnimatedSprite" parent="PreviewNodes"]
@@ -272,6 +276,7 @@ position = Vector2( -65, 65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
+frame = 2
 playing = true
 
 [node name="BloodTile6" type="AnimatedSprite" parent="PreviewNodes"]
@@ -279,7 +284,7 @@ position = Vector2( -65, -65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 3
+frame = 1
 playing = true
 
 [node name="BloodTile7" type="AnimatedSprite" parent="PreviewNodes"]
@@ -287,7 +292,6 @@ position = Vector2( 0, -65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 2
 playing = true
 
 [node name="BloodTile8" type="AnimatedSprite" parent="PreviewNodes"]
@@ -295,43 +299,43 @@ position = Vector2( 0, 65 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 6 )
-animation = "defaultOutline"
-frame = 3
+animation = "idleDebug"
+frame = 2
 playing = true
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource( 7 )]
 giveBuffTo = [ "Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 23
+frame = 25
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
-frame = 20
+frame = 22
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
-frame = 20
+frame = 22
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-frame = 20
+frame = 22
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-frame = 20
+frame = 22
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-frame = 20
+frame = 22
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
-frame = 20
+frame = 22
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
-frame = 20
+frame = 22
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
-frame = 18
+frame = 20
 
 [editable path="BuffNodesComponent"]

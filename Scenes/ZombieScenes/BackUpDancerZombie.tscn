@@ -105,7 +105,6 @@ shape = SubResource( 8 )
 material = SubResource( 15 )
 frames = SubResource( 7 )
 animation = "WebWalk"
-frame = 5
 playing = true
 script = ExtResource( 10 )
 
