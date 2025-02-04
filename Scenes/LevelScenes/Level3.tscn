@@ -28,6 +28,7 @@ adjustment_enabled = true
 [node name="Level3" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 6 )
 
 [node name="PlantManager" parent="." instance=ExtResource( 1 )]
@@ -35,7 +36,7 @@ script = ExtResource( 6 )
 [node name="GameLayer" type="Node2D" parent="."]
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 875, 75 )
+position = Vector2( 747, 76 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -47,11 +48,11 @@ Round1_Zombies = {
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource( 9 )]
-position = Vector2( 12, 0 )
+position = Vector2( -37, 0 )
 z_index = 1
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 890, 109 )
+position = Vector2( 747, 109 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 2,
@@ -63,11 +64,11 @@ Round1_Zombies = {
 }
 
 [node name="WavePreview2" parent="GameLayer/ZombieSpawner2" instance=ExtResource( 9 )]
-position = Vector2( -20, 0 )
+position = Vector2( -36, 1 )
 z_index = 1
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 879, 139 )
+position = Vector2( 747, 143 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -79,11 +80,11 @@ Round1_Zombies = {
 }
 
 [node name="WavePreview3" parent="GameLayer/ZombieSpawner3" instance=ExtResource( 9 )]
-position = Vector2( 2, 5 )
+position = Vector2( -38, 1 )
 z_index = 1
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 892, 174 )
+position = Vector2( 751, 174 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -96,11 +97,11 @@ Round1_Zombies = {
 waveDelay = 1.2
 
 [node name="WavePreview4" parent="GameLayer/ZombieSpawner4" instance=ExtResource( 9 )]
-position = Vector2( -24, 0 )
+position = Vector2( -41, -1 )
 z_index = 1
 
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 884, 207 )
+position = Vector2( 754, 207 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -112,17 +113,17 @@ Round1_Zombies = {
 }
 
 [node name="WavePreview5" parent="GameLayer/ZombieSpawner5" instance=ExtResource( 9 )]
-position = Vector2( -8, 0 )
+position = Vector2( -41, -1 )
 z_index = 1
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource( 3 )]
 z_index = -1
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource( 2 )]
-position = Vector2( -56, 224 )
+position = Vector2( -59, 222 )
 z_index = 1
 script = ExtResource( 8 )
-StartDelay = 1
+StartDelay = 19
 Wave2StartTime = 45
 Wave3StartTime = 75
 Wave1_Interval = 2.0
@@ -140,11 +141,13 @@ margin_left = 1.0
 margin_top = 321.0
 margin_right = 41.0
 margin_bottom = 361.0
+mouse_filter = 2
 
 [node name="SunCounter" type="Control" parent="UILayer"]
 margin_top = -320.0
 margin_right = 40.0
 margin_bottom = -280.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="UILayer/SunCounter"]
 margin_right = 40.0

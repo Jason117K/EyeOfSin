@@ -16,6 +16,7 @@ func _ready():
 	
 
 func _on_Area2D_mouse_entered():
+	
 	if $PreviewSprite.visible == true:
 		var currentText1 = "Base Zombies : " + str(spawner.Round1_Zombies.get("Base"))
 		var currentText2 = "Cone Zombies : " + str(spawner.Round1_Zombies.get("ConeHead"))

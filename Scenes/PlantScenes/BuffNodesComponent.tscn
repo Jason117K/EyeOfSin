@@ -152,172 +152,145 @@ animations = [ {
 script = ExtResource( 2 )
 
 [node name="TileArea1" type="Area2D" parent="."]
-position = Vector2( 64, 0 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( 32, 0 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea1"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile1" type="AnimatedSprite" parent="."]
-position = Vector2( 66, 0 )
-scale = Vector2( 2, 2 )
+position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 10
+frame = 4
 playing = true
 
 [node name="TileArea2" type="Area2D" parent="."]
-position = Vector2( 64, 64 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( 32, 32 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea2"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile2" type="AnimatedSprite" parent="."]
-position = Vector2( 65, 65 )
-scale = Vector2( 2, 2 )
+position = Vector2( 32, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 7
+frame = 1
 playing = true
 
 [node name="TileArea3" type="Area2D" parent="."]
-position = Vector2( 64, -64 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( 32, -32 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea3"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile3" type="AnimatedSprite" parent="."]
-position = Vector2( 65, -65 )
-scale = Vector2( 2, 2 )
+position = Vector2( 32, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 7
+frame = 1
 playing = true
 
 [node name="TileArea4" type="Area2D" parent="."]
-position = Vector2( -64, 0 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( -32, 0 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea4"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile4" type="AnimatedSprite" parent="."]
-position = Vector2( -65, 0 )
-scale = Vector2( 2, 2 )
+position = Vector2( -32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 7
+frame = 1
 playing = true
 
 [node name="TileArea5" type="Area2D" parent="."]
-position = Vector2( -64, 64 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( -32, 32 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea5"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile5" type="AnimatedSprite" parent="."]
-position = Vector2( -65, 65 )
-scale = Vector2( 2, 2 )
+position = Vector2( -32, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 7
+frame = 1
 playing = true
 
 [node name="TileArea6" type="Area2D" parent="."]
-position = Vector2( -64, -64 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( -32, -32 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea6"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile6" type="AnimatedSprite" parent="."]
-position = Vector2( -65, -65 )
-scale = Vector2( 2, 2 )
+position = Vector2( -32, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 7
+frame = 1
 playing = true
 
 [node name="TileArea7" type="Area2D" parent="."]
-position = Vector2( 0, -64 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( 0, -32 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea7"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile7" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -65 )
-scale = Vector2( 2, 2 )
+position = Vector2( 0, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 7
+frame = 1
 playing = true
 
 [node name="TileArea8" type="Area2D" parent="."]
-position = Vector2( 0, 64 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( 0, 32 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea8"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile8" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 65 )
-scale = Vector2( 2, 2 )
+position = Vector2( 0, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 7
+frame = 1
 playing = true
 
 [node name="TileArea9" type="Area2D" parent="."]
-position = Vector2( 128, 0 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( 64, 0 )
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea9"]
 position = Vector2( -1.43051e-06, -1.43051e-06 )
-scale = Vector2( 3, 3 )
 shape = SubResource( 88 )
 
 [node name="BloodTile9" type="AnimatedSprite" parent="."]
-position = Vector2( 128, 0 )
-scale = Vector2( 2, 2 )
+position = Vector2( 64, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 10
+frame = 4
 playing = true
