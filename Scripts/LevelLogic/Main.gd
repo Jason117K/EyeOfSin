@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -9,16 +9,16 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
-	$GameLayer/GridManager.set_tiles_for_rows(1,1, 26)
+	$GameLayer/GridManager.set_tiles_for_rows(1,2, 26)
 	
-	$GameLayer/GridManager.set_tiles_for_rows(2,1, 21)
-	$GameLayer/GridManager.set_tiles_for_rows(3,1, 22)
-	$GameLayer/GridManager.set_tiles_for_rows(4,1, 3)
-	$GameLayer/GridManager.set_tiles_for_rows(5,1, 4)
-	$GameLayer/GridManager.set_tiles_for_rows(6,1, 12)
+	$GameLayer/GridManager.set_tiles_for_rows(2,3, 26)
+	$GameLayer/GridManager.set_tiles_for_rows(3,4, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(4,5, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(5,6, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(6,7, 26)
 	
-	$GameLayer/GridManager.set_tiles_for_rows(7,1, 26)
-	$GameLayer/GridManager.set_tiles_for_rows(8,1, 18)
+	$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
+	$GameLayer/GridManager.set_tiles_for_rows(8,9, 29)
 	pass # Replace with function body.
 
 

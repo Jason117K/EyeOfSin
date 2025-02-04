@@ -3,18 +3,17 @@ extends Control
 
 
 func _ready():
+	$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
+	$GameLayer/GridManager.set_tiles_for_rows(1,2, 26)
 	
-	$GridManager.set_tiles_for_rows(0,1, 28)
-	$GridManager.set_tiles_for_rows(1,1, 26)
+	$GameLayer/GridManager.set_tiles_for_rows(2,3, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(3,4, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(4,5, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(5,6, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(6,7, 23)
 	
-	$GridManager.set_tiles_for_rows(2,1, 21)
-	$GridManager.set_tiles_for_rows(3,1, 22)
-	$GridManager.set_tiles_for_rows(4,1, 3)
-	$GridManager.set_tiles_for_rows(5,1, 4)
-	$GridManager.set_tiles_for_rows(6,1, 12)
-	
-	$GridManager.set_tiles_for_rows(7,1, 26)
-	$GridManager.set_tiles_for_rows(8,1, 18)
+	$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
+	$GameLayer/GridManager.set_tiles_for_rows(8,9, 29)
 	
 	
 	$AudioStreamPlayer2D.playing = true

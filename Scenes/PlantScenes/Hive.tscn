@@ -61,7 +61,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSpriteComp" type="AnimatedSprite" parent="."]
 frames = SubResource( 10 )
 animation = "idle"
-frame = 2
+frame = 7
 playing = true
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
@@ -91,43 +91,43 @@ visible = false
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 visible = false
-frame = 8
+frame = 10
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 5
+frame = 7
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 5
+frame = 7
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-frame = 5
+frame = 7
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-frame = 5
+frame = 7
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-frame = 5
+frame = 7
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
-frame = 5
+frame = 7
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
-frame = 5
+frame = 7
 
 [node name="TileArea9" parent="BuffNodesComponent" index="16"]
 visible = false
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
 visible = false
-frame = 8
+frame = 10
 
 [connection signal="area_entered" from="DetectionComp" to="." method="_on_enemy_entered"]
 [connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
