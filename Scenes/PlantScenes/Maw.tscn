@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://Scripts/Plants/DetectionComponent.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Assets/Plants/TestBloodBSheet.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" type="Texture" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -42,10 +44,10 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 108.005
+radius = 65.0
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 43, 22.5 )
+extents = Vector2( 27.5, 10.5 )
 
 [sub_resource type="AtlasTexture" id=91]
 atlas = ExtResource( 7 )
@@ -347,6 +349,55 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="AtlasTexture" id=119]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=120]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=121]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=122]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=123]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=124]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=125]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=126]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=127]
+animations = [ {
+"frames": [ SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ) ],
+"loop": true,
+"name": "idleDebug",
+"speed": 5.0
+} ]
+
 [node name="Maw" type="Area2D" groups=["Plants"]]
 z_index = 1
 script = ExtResource( 4 )
@@ -355,9 +406,7 @@ tentacle2_start_color = Color( 0.552941, 0, 0, 1 )
 tentacle3_start_color = Color( 0.552941, 0, 0, 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 7 )
-frame = 3
 playing = true
 
 [node name="DetectionComponent" type="Area2D" parent="."]
@@ -371,7 +420,7 @@ wait_time = 11.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2( 0.5, -0.5 )
 shape = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -385,77 +434,97 @@ texture = ExtResource( 3 )
 visible = false
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="PreviewNodes"]
-scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 7 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="BloodTile1" type="AnimatedSprite" parent="PreviewNodes"]
 modulate = Color( 1.5, 1, 1, 1 )
-position = Vector2( 32, 0 )
+position = Vector2( 48, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
-frame = 1
+frame = 2
 playing = true
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource( 8 )]
 giveBuffTo = [ "WalnutTree", "None", "None", "None", "None", "None", "None", "None" ]
 
+[node name="TileArea1" parent="BuffNodesComponent" index="0"]
+position = Vector2( 48, 0 )
+
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 0
+position = Vector2( 48, 0 )
+frame = 17
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
+position = Vector2( 96, 32 )
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 25
+position = Vector2( 64, 32 )
+frame = 14
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 25
+frame = 14
 
 [node name="TileArea4" parent="BuffNodesComponent" index="6"]
 visible = false
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
-frame = 25
+frame = 14
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
 visible = false
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 25
+frame = 14
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
 visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 25
+frame = 14
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
 visible = false
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 25
+frame = 14
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
 visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 25
+frame = 14
+
+[node name="TileArea9" parent="BuffNodesComponent" index="16"]
+visible = false
+
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea9" index="0"]
+visible = false
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
-frame = 2
+visible = false
+frame = 19
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 16, 1 )
+frames = SubResource( 127 )
+animation = "New Anim"
+frame = 3
+playing = true
 
 [connection signal="timeout" from="DigestionTimer" to="." method="_on_DigestionTimer_timeout"]
 

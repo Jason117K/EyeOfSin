@@ -14,7 +14,7 @@
 [ext_resource path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 163.333, 146.667 )
+extents = Vector2( 19, 16.5 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 8 )
@@ -379,90 +379,89 @@ zigzag_width = 160.0
 [node name="ShootTimer" type="Timer" parent="."]
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -3.33333, -6.66666 )
+position = Vector2( -1, -2.5 )
 shape = SubResource( 1 )
 
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PreviewNodes"]
+visible = false
 frames = SubResource( 4 )
 
 [node name="BloodTile1" type="AnimatedSprite" parent="PreviewNodes"]
 modulate = Color( 1.5, 1, 1, 1 )
-position = Vector2( 66, 0 )
+position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
-frame = 2
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
 modulate = Color( 1.5, 1, 1, 1 )
-position = Vector2( 128, 0 )
+position = Vector2( 64, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
-frame = 1
+frame = 3
 playing = true
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource( 12 )]
 giveBuffTo = [ "WalnutTree", "Maw", "Hive", "None", "None", "None", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 26
+frame = 12
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 23
+frame = 9
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 23
+frame = 9
 
 [node name="TileArea4" parent="BuffNodesComponent" index="6"]
 visible = false
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
-frame = 23
+frame = 9
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
 visible = false
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 23
+frame = 9
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
 visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 23
+frame = 9
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
 visible = false
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 23
+frame = 9
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
 visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 23
+frame = 9
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
-frame = 1
+frame = 15
 
 [editable path="BuffNodesComponent"]

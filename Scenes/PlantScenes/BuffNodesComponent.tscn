@@ -164,7 +164,7 @@ position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 4
+frame = 2
 playing = true
 
 [node name="TileArea2" type="Area2D" parent="."]
@@ -180,7 +180,7 @@ position = Vector2( 32, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 1
+frame = 27
 playing = true
 
 [node name="TileArea3" type="Area2D" parent="."]
@@ -196,7 +196,7 @@ position = Vector2( 32, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 1
+frame = 27
 playing = true
 
 [node name="TileArea4" type="Area2D" parent="."]
@@ -212,7 +212,7 @@ position = Vector2( -32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 1
+frame = 27
 playing = true
 
 [node name="TileArea5" type="Area2D" parent="."]
@@ -228,7 +228,7 @@ position = Vector2( -32, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 1
+frame = 27
 playing = true
 
 [node name="TileArea6" type="Area2D" parent="."]
@@ -244,7 +244,7 @@ position = Vector2( -32, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 1
+frame = 27
 playing = true
 
 [node name="TileArea7" type="Area2D" parent="."]
@@ -260,7 +260,7 @@ position = Vector2( 0, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 1
+frame = 27
 playing = true
 
 [node name="TileArea8" type="Area2D" parent="."]
@@ -276,7 +276,7 @@ position = Vector2( 0, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 1
+frame = 27
 playing = true
 
 [node name="TileArea9" type="Area2D" parent="."]
@@ -292,5 +292,5 @@ position = Vector2( 64, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "Drip"
-frame = 4
+frame = 2
 playing = true

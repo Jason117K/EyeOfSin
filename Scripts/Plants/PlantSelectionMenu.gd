@@ -149,27 +149,6 @@ func create_preview(plant_scene):
 			preview_sprite.set_meta("original_offset", original_pos)
 			#print("Sprite original position:", original_pos)
 		
-			# Set the scale based on the plant type
-			if "Sunflower" in plant_scene.resource_path:
-				preview_sprite.scale = Vector2(0.5, 0.5)  # Adjust this value as needed
-			elif "Peashooter" in plant_scene.resource_path:
-				preview_sprite.scale = child.scale  # Keep peashooter's existing scale
-			elif "EyeBomb" in plant_scene.resource_path:
-				preview_sprite.scale = Vector2(0.1,0.1) 
-			elif "WalnutTree" in plant_scene.resource_path:
-				preview_sprite.scale = Vector2(0.1,0.1) 
-			elif "Maw" in plant_scene.resource_path:
-				preview_sprite.scale = Vector2(0.8,0.8) 
-			elif "EggWorm" in plant_scene.resource_path:
-				preview_sprite.scale = Vector2(0.8,0.8) 
-			else:
-				preview_sprite.scale = child.scale  # Keep existing scale
-				
-			if "Tile" in preview_sprite.name:
-				preview_sprite.scale = child.scale  # Keep existing scale
-				preview_sprite.modulate = Color(1, 1, 1, 0.2) #Make tiles more transparent
-		
-			preview_sprite.scale = preview_sprite.scale * 2
 			
 			preview_container.add_child(preview_sprite)
 			preview_sprites.append(preview_sprite)
@@ -218,12 +197,7 @@ func _process(_delta):
 				var offset = sprite.get_meta("original_offset") as Vector2
 				#print("Applying offset:", offset, "to sprite")
 				
-				if offset.x == 32:
-					offset.x = 64
-				elif offset.x == -32:
-					offset.x = -64
-				elif offset.x == 64:
-					offset.x = 128
+
 			#	if offset.x == -64:
 			#		offset.x = -80
 					

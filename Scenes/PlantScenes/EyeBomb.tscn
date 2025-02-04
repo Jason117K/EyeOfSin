@@ -98,10 +98,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 161, 132.5 )
+extents = Vector2( 39, 16.5 )
 
 [sub_resource type="CircleShape2D" id=19]
-radius = 228.0
+radius = 44.0114
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 4 )
@@ -228,14 +228,14 @@ script = ExtResource( 3 )
 
 [node name="AnimSpriteComponent" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
-frame = 5
+frame = 3
 speed_scale = 2.0
 playing = true
 
 [node name="DetectionComponent" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
-position = Vector2( 0, 1 )
+position = Vector2( 1, -0.5 )
 shape = SubResource( 18 )
 
 [node name="HitBoxComponent" type="Area2D" parent="."]
@@ -247,7 +247,7 @@ shape = SubResource( 19 )
 visible = false
 position = Vector2( 320, 0 )
 frames = SubResource( 48 )
-frame = 24
+frame = 2
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
@@ -255,7 +255,7 @@ visible = false
 
 [node name="SpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 17 )
-frame = 5
+frame = 3
 speed_scale = 2.0
 playing = true
 

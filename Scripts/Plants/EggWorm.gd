@@ -38,14 +38,19 @@ func _ready():
 	else:
 		push_warning("No sprite assigned to animate!")
 
-func receiveBuff(bufferName):
+func receiveBuff(plant):
 	#print("Received Buff From : " , bufferName)
-	#attack_speed = 10
-	if(bufferName == "Peashooter"):
+	print("PRE NUT BYUFFFFF")
+	if(plant.name == "Peashooter"):
 		laserShootComp.extension_speed = 80000
 		laserShootComp.max_length = 40000
-	elif(bufferName == "WalnutTree"):
-		laserShootComp.buff()
+	elif(plant.name == "WalnutTree"):
+		print("NUT BYUFFFFF")
+		if (laserShootComp.isBuffed):
+			pass
+		else:
+			laserShootComp.buff(plant.position)
+		
 		
 func receiveWalnutBuff(bufferLocation):
 	if (laserShootComp.isBuffed):

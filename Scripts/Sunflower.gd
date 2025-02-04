@@ -32,6 +32,9 @@ func generate_sun():
 	#return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
 
 
+func receiveBuff(plantName):
+	pass
+
 func take_damage(damage):
 	#print("taking damage, health is " , health)
 	health = health - damage

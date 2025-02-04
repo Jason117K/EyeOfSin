@@ -160,8 +160,9 @@ func _on_DigestionTimer_timeout():
 func get_cost():
 	return cost
 
-func receiveBuff(bufferName):
+func receiveBuff(plant):
 	#print(bufferName)
+	var bufferName = plant.name
 	if(bufferName == "EggWorm"):
 		tentacle1.set_colors(Color.yellow, Color.yellow)
 		tentacle2.set_colors(Color.blue, Color.blue)

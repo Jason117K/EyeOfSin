@@ -79,24 +79,40 @@ func get_cost(this_selected_plant_scene):
 
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
+	
+	#Check if Spot is Occupied
 	if grid_pos in grid_map:
 		print("Cell already occupied!")
 		return
-	selected_plant_scene = get_selected_plant()  # Dynamically get the selected plant
+		
+	# Dynamically get the selected plant	
+	selected_plant_scene = get_selected_plant()  
 	
 	if selected_plant_scene == null:
 		print("No plant selected!")
 		return
+	
+	#Get The Cost 
 	var plant_instance = selected_plant_scene.instance()
 	get_cost(plant_instance)
 	plant_cost = plant_instance.get_cost()
-	if sun_points >= plant_cost:  # Assume the plant costs 25 sun points
-		#plant_instance.position = Vector2(grid_pos.x+32,grid_pos.y-32)
-		plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
+	
+	if sun_points >= plant_cost: 
+		
+		#Maw Handling, occupies two cells
+		if plant_instance.name == "Maw":
+			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
+			grid_map[grid_pos] = plant_instance
+			grid_map[Vector2(grid_pos.x+16,grid_pos.y)] = plant_instance
+			
+		else: #Only occupies one cell
+			plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
+			grid_map[grid_pos] = plant_instance
+	
+		#Add To The GameLayer 
 		get_parent().get_node("GameLayer").add_child(plant_instance)
 
-		# Mark the cell as occupied and reduce sun points
-		grid_map[grid_pos] = plant_instance
+		#Reduce Sun Points
 		sun_points -= plant_cost
 		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
 		
