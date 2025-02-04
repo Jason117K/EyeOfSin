@@ -1,35 +1,61 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Scripts/Sunflower.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=89]
-extents = Vector2( 7.75, 6.5 )
+extents = Vector2( 10.8333, 11 )
 
-[sub_resource type="AtlasTexture" id=90]
+[sub_resource type="AtlasTexture" id=98]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=91]
+[sub_resource type="AtlasTexture" id=99]
 atlas = ExtResource( 4 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=92]
+[sub_resource type="AtlasTexture" id=100]
 atlas = ExtResource( 4 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=93]
+[sub_resource type="AtlasTexture" id=101]
 atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=94]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=95]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=96]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=97]
+flags = 4
+atlas = ExtResource( 3 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ) ],
+"frames": [ SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
 "loop": true,
 "name": "New Anim",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ) ],
+"loop": true,
+"name": "idleDebug",
 "speed": 5.0
 } ]
 
@@ -281,30 +307,30 @@ visible = false
 giveBuffTo = [ "Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 4
+frame = 8
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
-frame = 1
+frame = 5
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
-frame = 1
+frame = 5
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-frame = 1
+frame = 5
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-frame = 1
+frame = 5
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-frame = 1
+frame = 5
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
-frame = 1
+frame = 5
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
-frame = 1
+frame = 5
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
-frame = 27
+frame = 3
 
 [editable path="BuffNodesComponent"]
