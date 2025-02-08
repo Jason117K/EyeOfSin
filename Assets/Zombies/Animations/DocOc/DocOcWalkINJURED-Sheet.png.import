@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DocOcZombie-SheetWEB.png-8841b3af58f51f9117e81f6b2750418d.stex"
+path="res://.import/DocOcWalkINJURED-Sheet.png-18141da3cbb47e67e0b4e3c3bf89a1ff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Zombies/DocOcZombie-SheetWEB.png"
-dest_files=[ "res://.import/DocOcZombie-SheetWEB.png-8841b3af58f51f9117e81f6b2750418d.stex" ]
+source_file="res://Assets/Zombies/Animations/DocOc/DocOcWalkINJURED-Sheet.png"
+dest_files=[ "res://.import/DocOcWalkINJURED-Sheet.png-18141da3cbb47e67e0b4e3c3bf89a1ff.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
