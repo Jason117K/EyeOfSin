@@ -1,16 +1,39 @@
 tool
 extends EditorScript
 
-# This script checks for scenes without owners in your Godot project
-# To use: Place in your project, select it in Script Editor, then click "Run"
+var all_files = []
+var referenced_files = {}
+var orphaned_files = []
 
 func _run():
-	print("\n=== Starting Scene Owner Check ===")
-	var dir = Directory.new()
-	scan_directory("res://", dir)
-	print("=== Scene Owner Check Complete ===\n")
+	print("\n=== Starting Orphaned File Check ===")
+	
+	# First pass: Collect all files
+	scan_directory("res://")
+	
+	# Second pass: Check all scene files for references
+	check_scene_references()
+	
+	# Third pass: Check script files for references
+	check_script_references()
+	
+	# Find orphaned files
+	find_orphaned_files()
+	
+	# Print results
+	print("\nOrphaned files found:")
+	if orphaned_files.empty():
+		print("No orphaned files found!")
+	else:
+		for file in orphaned_files:
+			print("- ", file)
+	
+	print("\n=== File Check Complete ===")
+	print("Total files checked: ", all_files.size())
+	print("Orphaned files: ", orphaned_files.size())
 
-func scan_directory(path: String, dir: Directory) -> void:
+func scan_directory(path: String) -> void:
+	var dir = Directory.new()
 	if dir.open(path) == OK:
 		dir.list_dir_begin(true, true)
 		var file_name = dir.get_next()
@@ -19,41 +42,52 @@ func scan_directory(path: String, dir: Directory) -> void:
 			var full_path = path + file_name
 			
 			if dir.current_is_dir():
-				scan_directory(full_path + "/", dir)
-			elif file_name.ends_with(".tscn"):
-				check_scene_owner(full_path)
-				
-			file_name = dir.get_next()
+				scan_directory(full_path + "/")
+			else:
+				# Skip import files and temporary files
+				if !file_name.begins_with(".") and !file_name.ends_with(".import"):
+					all_files.append(full_path)
 			
+			file_name = dir.get_next()
+		
 		dir.list_dir_end()
 
-func check_scene_owner(scene_path: String) -> void:
-	var packed_scene = load(scene_path)
-	if not packed_scene:
-		print("WARNING: Could not load scene: ", scene_path)
-		return
-		
-	var scene = packed_scene.instance()
-	var has_owner = false
-	
-	# Check if the root node has an owner
-	if scene.owner != null:
-		has_owner = true
-	
-	# Check all child nodes recursively
-	var nodes_without_owner = []
-	check_node_owner(scene, nodes_without_owner)
-	
-	if nodes_without_owner.size() > 0:
-		print("\nScene: ", scene_path)
-		print("Nodes without owners:")
-		for node_path in nodes_without_owner:
-			print("  - ", node_path)
-	
-	scene.free()
+func check_scene_references() -> void:
+	for file_path in all_files:
+		if file_path.ends_with(".tscn"):
+			var file = File.new()
+			if file.open(file_path, File.READ) == OK:
+				var content = file.get_as_text()
+				file.close()
+				
+				# Check for file references in the scene file
+				for other_file in all_files:
+					if other_file != file_path:
+						var file_name = other_file.get_file()
+						if content.find(file_name) != -1:
+							referenced_files[other_file] = true
 
-func check_node_owner(node: Node, nodes_without_owner: Array) -> void:
-	for child in node.get_children():
-		if child.owner == null:
-			nodes_without_owner.append(str(child.get_path()))
-		check_node_owner(child, nodes_without_owner)
+func check_script_references() -> void:
+	for file_path in all_files:
+		if file_path.ends_with(".gd"):
+			var file = File.new()
+			if file.open(file_path, File.READ) == OK:
+				var content = file.get_as_text()
+				file.close()
+				
+				# Check for file references in the script
+				for other_file in all_files:
+					if other_file != file_path:
+						var file_name = other_file.get_file()
+						if content.find(file_name) != -1:
+							referenced_files[other_file] = true
+
+func find_orphaned_files() -> void:
+	for file_path in all_files:
+		# Skip scenes, scripts, and resource files as they're typically root files
+		if file_path.ends_with(".tscn") or file_path.ends_with(".gd") or file_path.ends_with(".tres"):
+			continue
+			
+		# If the file isn't referenced anywhere, it's orphaned
+		if !referenced_files.has(file_path):
+			orphaned_files.append(file_path)
