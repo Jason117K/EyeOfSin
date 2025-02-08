@@ -1,24 +1,4 @@
-extends Area2D
-#TickerZombie.gd
+extends Zombie
+# TickerZombie.gd
 
-onready var compManager = $ComponentManager
-onready var rayCast = $DMGRayCast2D
-#onready var specialMoveComp = $SpecialMoveComp
-
-
-func getCompManager():
-	return compManager
-
-
-func die():
-	queue_free()
-
-
-func fightDrone():
-	compManager.fightDrone()
-
-func stopFightingDrone():
-	compManager.stopFightingDrone()
-	
-func fightDroneExplode():
-	compManager.fightDroneExplode()
+# Handles Any Ticker Zombie Specific Logic 

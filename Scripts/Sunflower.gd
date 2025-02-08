@@ -1,16 +1,18 @@
 extends Area2D
-#Be Careful Next time
-#var sun_value = 50  # Amount of sun points generated
-var health = 100
+#Sunflower.gd
+
+
+# Adjustable health and cost 
+export var health = 100
+export var cost = 25
+#Keep a reference to our sun scene 
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
-export var cost = 25
 
+
+#Assign PlantManager and connect the apprioprate timers 
 func _ready():
-	#get_parent().get_node("GameLayer").add_child(plant_instance)
-						#Gets GameLayer/Gets Main
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
-
 	$SunTimer.start()  # Start the timer
 	assert($SunTimer.connect("timeout", self, "_on_SunTimer_timeout") == OK)
 	
@@ -21,30 +23,27 @@ func _on_SunTimer_timeout():
 
 # Function to handle sun generation
 func generate_sun():
-	#print("Sun generated: " + str(sun_value))
 	var sun_instance = SunScene.instance()  # Create a new instance of the sun
 	add_child(sun_instance)  # Add the sun to the scene
-	
+	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
 
-#func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
-#	pass
-	#return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
 
 
+# TODO Implement sunflower buff 
+# Handles all pontential sunflower buffs 
 func receiveBuff(plantName):
 	pass
 
+#Handles the sunflower taking damage 
 func take_damage(damage):
 	#print("taking damage, health is " , health)
 	health = health - damage
 	if(health <= 0):
-		#PlantManager.kill_plant()
-		#print(self.global_position)
 		PlantManager.clear_space(self.global_position)
-		
 		queue_free()
-	
+
+# Plant Cost Getter
 func get_cost():
 	return cost
 	

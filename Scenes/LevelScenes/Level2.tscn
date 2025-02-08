@@ -90,43 +90,47 @@ text = "Blood : 200
 "
 
 [node name="Shrubs" type="Node2D" parent="."]
-visible = false
 
 [node name="BloodTree" type="Sprite" parent="Shrubs"]
-position = Vector2( 491, 457 )
-scale = Vector2( 2, 2 )
+position = Vector2( 564, 354 )
+z_index = 1
 texture = ExtResource( 10 )
 
 [node name="BloodTree2" type="Sprite" parent="Shrubs"]
-position = Vector2( 595, 481 )
-scale = Vector2( 2, 2 )
+position = Vector2( 639, 333 )
+z_index = 1
 texture = ExtResource( 10 )
 
 [node name="BloodTree3" type="Sprite" parent="Shrubs"]
-position = Vector2( 699, 465 )
-scale = Vector2( 2, 2 )
+position = Vector2( 700, 368 )
+z_index = 1
 texture = ExtResource( 10 )
 
 [node name="Shrub3" parent="Shrubs" instance=ExtResource( 12 )]
 position = Vector2( 560, 24 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub" parent="Shrubs" instance=ExtResource( 12 )]
 position = Vector2( 552, 40 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub2" parent="Shrubs" instance=ExtResource( 12 )]
 position = Vector2( 580, 40 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub4" parent="Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 357, 488 )
+position = Vector2( 254, 43 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub5" parent="Shrubs" instance=ExtResource( 12 )]
 position = Vector2( 152, 32 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub6" parent="Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 824, 424 )
+position = Vector2( 297, 48 )
+scale = Vector2( 1, 1 )
 
 [node name="Fish" type="Node2D" parent="."]
-visible = false
 
 [node name="Fish5" parent="Fish" instance=ExtResource( 7 )]
 position = Vector2( 664, 40 )
@@ -138,36 +142,28 @@ position = Vector2( 384, 24 )
 position = Vector2( 224, 48 )
 
 [node name="Fish6" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 568, 504 )
-scale = Vector2( 1, 1 )
+position = Vector2( 665, 391 )
 
 [node name="Fish11" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 536, 512 )
-scale = Vector2( 1, 1 )
+position = Vector2( 633, 399 )
 
 [node name="Fish12" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 760, 504 )
-scale = Vector2( 1, 1 )
+position = Vector2( 715, 365 )
 
 [node name="Fish13" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 632, 520 )
-scale = Vector2( 1, 1 )
+position = Vector2( 587, 381 )
 
 [node name="Fish14" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 736, 496 )
-scale = Vector2( 1, 1 )
+position = Vector2( 691, 357 )
 
 [node name="Fish15" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 664, 504 )
-scale = Vector2( 1, 1 )
+position = Vector2( 619, 365 )
 
 [node name="Fish9" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 448, 504 )
-scale = Vector2( 1, 1 )
+position = Vector2( 545, 391 )
 
 [node name="Fish10" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 472, 480 )
-scale = Vector2( 1, 1 )
+position = Vector2( 536, 314 )
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )

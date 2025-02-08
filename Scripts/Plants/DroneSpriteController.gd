@@ -1,16 +1,9 @@
 extends AnimatedSprite
+#DroneSpriteController.gd
 
+#Handles changes to the drone's sprite 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
+# Returns the length of a given animation for a drone 
 func get_animation_length(anim_name: String) -> float:
 	
 	if frames.has_animation(anim_name):
@@ -21,5 +14,6 @@ func get_animation_length(anim_name: String) -> float:
 		return (frame_count / frame_rate) / speed_scale
 	return 0.0
 
+#Changes drone color to indicate buff 
 func buff():
 	self_modulate = Color("d91a1a")

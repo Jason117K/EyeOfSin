@@ -1,12 +1,9 @@
 extends Control
+#Main.gd 
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
+#Sets up Tilemap 
 func _ready():
 	$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
 	$GameLayer/GridManager.set_tiles_for_rows(1,2, 26)
@@ -19,9 +16,4 @@ func _ready():
 	
 	$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
 	$GameLayer/GridManager.set_tiles_for_rows(8,9, 29)
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

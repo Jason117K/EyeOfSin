@@ -1,27 +1,28 @@
 extends Area2D
+#WalnutTree.gd
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#Adjustbale Plant Parameter Variables
 export var health = 650
 export var healthRegen = 0.1
 export var buffedHealthRegen = 0.2
-var maxHealth
+export var maxHealth = 800
+#Adjustable Cost 
+export var cost = 100
 var PlantManager
 onready var animComponent = $AnimatedSpriteComponent
 var isBuffed = false
 
-export var cost = 100
 
-# Called when the node enters the scene tree for the first time.
+
+#Grabs reference to plantManager 
 func _ready():
-	maxHealth = 650#health
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 
+#Sets buffed to true 
 func receiveBuff(bufferName):
 	isBuffed = true
 	
+#Handles the walnut taking damage 
 func take_damage(damage):
 	print("taking damage, health is " , health)
 	health = health - damage
@@ -29,7 +30,7 @@ func take_damage(damage):
 		PlantManager.clear_space(self.global_position)
 		queue_free()
 		
-
+#Dynamically adjusts the walnuts animation based on damage level 
 func _process(delta):
 	if health > (maxHealth * 0.9):
 		animComponent.animation = "default"
@@ -45,5 +46,6 @@ func _process(delta):
 	else:	
 		health = health + healthRegen
 		
+#Cost getter
 func get_cost():
 	return cost

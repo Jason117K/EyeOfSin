@@ -395,6 +395,7 @@ position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
+frame = 3
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
@@ -403,65 +404,65 @@ position = Vector2( 64, 0 )
 z_index = 6
 frames = SubResource( 90 )
 animation = "New Anim 2"
-frame = 3
+frame = 2
 playing = true
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource( 12 )]
 giveBuffTo = [ "WalnutTree", "Maw", "Hive", "None", "None", "None", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 12
+frame = 3
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 9
+frame = 0
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 9
+frame = 0
 
 [node name="TileArea4" parent="BuffNodesComponent" index="6"]
 visible = false
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
-frame = 9
+frame = 0
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
 visible = false
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 9
+frame = 0
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
 visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 9
+frame = 0
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
 visible = false
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 9
+frame = 0
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
 visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 9
+frame = 0
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
-frame = 15
+frame = 6
 
 [editable path="BuffNodesComponent"]

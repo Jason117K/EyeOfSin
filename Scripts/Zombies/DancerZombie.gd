@@ -1,23 +1,4 @@
-extends Area2D
-#DancerZombie.gd
+extends Zombie
+# DancerZombie.gd
 
-
-onready var compManager = $ComponentManager
-
-func getCompManager():
-	return compManager
-
-
-func die():
-	queue_free()
-
-
-func fightDrone():
-	compManager.fightDrone()
-
-
-func stopFightingDrone():
-	compManager.stopFightingDrone()
-
-func fightDroneExplode():
-	compManager.fightDroneExplode()
+# Handles Any DancerZombie Specific Logic 

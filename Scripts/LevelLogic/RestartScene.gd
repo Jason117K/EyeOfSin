@@ -1,14 +1,13 @@
 extends Node2D
+#RestartScene.gd
 
 
-var retryScene = "Cat"
 
-# Called when the node enters the scene tree for the first time.
+#Set the tilemap 
 func _ready():
 	$GridManager.set_tiles_for_rows(1,6, 5)
-	#print (retryScene)
 
-
+#Restart the current scene 
 func _on_Retry_pressed():
 	print(self.name)
 	if(self.name == "RestartScene1"):

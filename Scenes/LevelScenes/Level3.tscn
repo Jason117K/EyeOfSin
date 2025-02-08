@@ -38,7 +38,7 @@ script = ExtResource( 6 )
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 747, 77 )
 Round1_Zombies = {
-"Base": 0,
+"Base": 1,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -159,45 +159,58 @@ text = "Blood : 200"
 [node name="Shrubs" type="Node" parent="."]
 
 [node name="BloodTree" type="Sprite" parent="Shrubs"]
-position = Vector2( 691, 359 )
-scale = Vector2( 2, 2 )
+position = Vector2( 678, 350 )
 texture = ExtResource( 10 )
 
 [node name="BloodTree2" type="Sprite" parent="Shrubs"]
-position = Vector2( 95, -18 )
-scale = Vector2( 2, 2 )
+position = Vector2( 92, 23 )
 texture = ExtResource( 10 )
 
 [node name="Fish" type="Node2D" parent="."]
 position = Vector2( 173, 30 )
 
 [node name="Fish5" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 352, 358 )
+position = Vector2( 422, 329 )
 
 [node name="Fish6" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 584, 463 )
+position = Vector2( 474, 313 )
 
 [node name="Fish7" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 670, 441 )
+position = Vector2( 495, 285 )
 
 [node name="Fish8" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 462, 297 )
+position = Vector2( 546, 354 )
+
+[node name="Fish9" parent="Fish" instance=ExtResource( 7 )]
+position = Vector2( 303, 22 )
 
 [node name="Shrub" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 406, 9 )
+position = Vector2( 348, 8 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub2" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 410, 303 )
+position = Vector2( 469, 362 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub3" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 440, 354 )
+position = Vector2( 547, 308 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub4" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 47, 10 )
+position = Vector2( 375, 307 )
 scale = Vector2( 1, 1 )
 
 [node name="Shrub5" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 268, 15 )
+position = Vector2( 392, 356 )
+scale = Vector2( 1, 1 )
+
+[node name="Shrub7" parent="Fish" instance=ExtResource( 12 )]
+position = Vector2( 497, 23 )
+scale = Vector2( 1, 1 )
+
+[node name="Shrub8" parent="Fish" instance=ExtResource( 12 )]
+position = Vector2( 61, 18 )
+scale = Vector2( 1, 1 )
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
@@ -208,7 +221,6 @@ autoplay = true
 environment = SubResource( 2 )
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource( 5 )]
-visible = false
 anchor_left = 0.034
 anchor_top = 0.75
 anchor_right = 1.0

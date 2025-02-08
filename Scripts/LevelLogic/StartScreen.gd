@@ -1,7 +1,7 @@
 extends Control
 #StartScreen.gd
 
-
+#Sets up the startscreen tiles
 func _ready():
 	$GridManager.set_tiles_for_rows(0,1, 28)
 	$GridManager.set_tiles_for_rows(1,2, 26)
@@ -18,7 +18,7 @@ func _ready():
 	
 	$AudioStreamPlayer2D.playing = true
 
-
+#Starts Level 1
 func _on_Button_pressed():
 	var level1_scene = load("res://Scenes/LevelScenes/Main.tscn")
 	assert(get_tree().change_scene_to(level1_scene)== OK)

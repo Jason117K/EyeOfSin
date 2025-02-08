@@ -1,8 +1,11 @@
 extends AnimatedSprite
+# Shrub Animator.gd
 
+# Adjustable Max & Min Speed Values for the Shrub Anim
 export(float) var minSpeed = 1.0
 export(float) var maxSpeed = 2.0
 
+#Randomizes the speed of the Shrub Bob Animation 
 func _ready():
 	# Create random number generator
 	randomize()

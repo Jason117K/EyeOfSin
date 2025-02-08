@@ -15,6 +15,7 @@ var wave1_zombies = []
 var wave2_zombies = []  
 var wave3_zombies = []  
 
+#Arrays to track amount of zombies by types per round 
 export var Round1_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
 							"ScreenDoor" : 1, "Dancer" : 1, "PoleVault" : 1,
 							"Ticker" : 1}
@@ -33,14 +34,14 @@ var baseZombies = []
 # The current wave we are on
 var numWave = 0
 
+#Slight random position adjustmnet 
 var random_adjustment = rand_range(-1.0, 1.0)
+
+#Adjustble delay between waves 
 export var waveDelay = 0.5
 
-#Onready var???
-var baseZombieLabel 
-var coneZombieLabel 
-var bucketZombieLabel 
 
+# Populates the apprioate arrays with current zombie counts by type 
 func _ready():
 	
 	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
@@ -64,16 +65,19 @@ func _ready():
 	$WaveDelay.wait_time = waveDelay
 
 
-
+# Starts spawning the zombies with slight random timing adjustment 
 func start_spawn_zombie():
 	random_adjustment = rand_range(-0.5, 0.5)
 	$WaveDelay.wait_time = waveDelay + random_adjustment
 	$WaveDelay.start()
 	
+#Spawns a different amount of zombies depending on the wave 
 func spawn_zombie():
 	
+	#For each wave, shuffle the zombies, and then spawn them at the spawner positon 
+	#TODO Add slight variation in spawn y axis 
 	match numWave:
-		1:
+		1: 
 			if(wave1_zombies.size() > 0):
 				wave1_zombies.shuffle()
 
@@ -105,6 +109,7 @@ func spawn_zombie():
 		_:
 			print("Value is something else")
 	
+	
 # Function to populate the zombies array based on numbers provided
 func populate_zombies(base_zombie_count: int, conehead_zombie_count: int, 
 					buckethead_zombie_count: int, screendoor_zombie_count: int, 
@@ -134,11 +139,12 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 	# Add ticker zombies
 	for _i in range(ticker_zombie_count):
 		zombie_wave.append(ticker_zombie_scene)
-				
+	
+#Increments the current wave 				
 func increase_wave():
 	numWave = numWave + 1
 
-
+#Starts the next round of zombie spawning 
 func _on_WaveDelay_timeout():
 	spawn_zombie()
 	$WaveDelay.stop()

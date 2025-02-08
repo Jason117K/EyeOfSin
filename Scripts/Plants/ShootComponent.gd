@@ -138,13 +138,8 @@ func set_laser_width(width: float) -> void:
 	
 func buff(bufferLocation):
 	isBuffed = true
-	#print(bufferLocation)
 	bufferLocation = to_local(bufferLocation)
-	#print(bufferLocation)
-	print("OLD ZigZag Position is ", zigzag_position)
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
-	print("New ZigZag Position is ", zigzag_position)
-	
 	damage = damage * 1.5
 
 func isBuffed():

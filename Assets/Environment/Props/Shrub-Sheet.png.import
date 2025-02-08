@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Shrub-Sheet.png-683e5a1d63fa0b1eb087f459b32be558.stex"
+path="res://.import/Shrub-Sheet.png-7c4c8b234d1cd752426fa6ff49601cc1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Animations/Shrub-Sheet.png"
-dest_files=[ "res://.import/Shrub-Sheet.png-683e5a1d63fa0b1eb087f459b32be558.stex" ]
+source_file="res://Assets/Environment/Props/Shrub-Sheet.png"
+dest_files=[ "res://.import/Shrub-Sheet.png-7c4c8b234d1cd752426fa6ff49601cc1.stex" ]
 
 [params]
 

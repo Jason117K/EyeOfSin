@@ -1,34 +1,40 @@
 extends Node2D
+#SpeedComponent.gd
 
-
+#Onready variables to store zombie & attack comp
 onready var zombie = 	get_parent()
 onready var attackComp = $"../AttackComponent"
 
-var originalSpeed 
+#Adjustable movement speed
 export var speed = 26 #40 #26 #30 # Movement speed, was 34
+
+# Store the original speed and whether or not the zombie is attacking
+var originalSpeed 
 var is_attacking
 
-
+# Set the original speed immidiately
 func _ready():
 	originalSpeed = speed
 
+#Setter for Speed
 func setSpeed(newSpeed):
 	speed = newSpeed
 	
+#Getter for speed
 func getOriginalSpeed():
 	return originalSpeed
 
+#Handles moving the zombie unless it's attacking 
 func _process(delta):
 	is_attacking = attackComp.getAttackState()
 	if not is_attacking:
 		# Only move if not attacking 
 		zombie.position.x -= speed * delta  # Move left across the screen
 
+#Applies slow debuff to zombie
 func slow():
-#	print("Speed Was : " , speed)
 	if speed >= originalSpeed:
 		speed = speed / 2
-		#print("Speed IS : " , speed)
 		var endSpeedDebuff = Timer.new()
 		# Configure the timer
 		endSpeedDebuff.one_shot = true  # Timer will run only once
@@ -42,7 +48,8 @@ func slow():
 		assert(endSpeedDebuff.connect("timeout", self, "_on_endSpeedDebuff_timeout") == OK)
 		# Start the timer
 		endSpeedDebuff.start()
-		
+
+#Reset speed to original when debuff expires		
 func _on_endSpeedDebuff_timeout():
 	speed = originalSpeed
 	

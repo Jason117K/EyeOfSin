@@ -1,32 +1,17 @@
-extends Area2D
+extends Zombie 
 #PoleVaultZombie.gd
 
-onready var compManager = $ComponentManager
-onready var rayCast = $DMGRayCast2D
+# Handles PoleVault Zombie specific functionality
+
 onready var specialMoveComp = $SpecialMoveComp
 
-func getCompManager():
-	return compManager
 
-
-func die():
-	queue_free()
-
-
+# Specific Pole Vault Special Move 
 func special_move():
 	print("Pole Vault Special DOS 2")
 	compManager.special_move()
-
+	
+# Gets whether or not the special Move has finished executing 
 func getBusy():
 	return specialMoveComp.isMoveFinished()
 
-
-func fightDrone():
-	compManager.fightDrone()
-
-
-func stopFightingDrone():
-	compManager.stopFightingDrone()
-
-func fightDroneExplode():
-	compManager.fightDroneExplode()

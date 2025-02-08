@@ -1,28 +1,17 @@
-#EndScreen.gd
 extends Node2D
+#EndScreen.gd
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
+#SetUp The Rows in The EndScreen 
 func _ready():
 	$GridManager.set_tiles_for_rows(0,8, 5)
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 
+#Handle quiting the game
 func _on_Button_pressed():
 	get_tree().quit()
 
-
+#Handle reestarting th game
 func _on_PlayAgain_pressed():
 	var new_scene = preload("res://Scenes/LevelScenes/StartScreen.tscn")  # Load the Main scene
 	# Switch to the Main scene

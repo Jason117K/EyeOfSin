@@ -1,38 +1,46 @@
 extends Area2D
+#Drone.gd
+
+# Handles Hive Drone Behavior 
+
 
 # Signals
 signal drone_died(drone)
 
-# Export variables for easy tweaking in editor
-export var health = 50
-export var attack_damage = 1
-export var attack_speed = 1.0  # Attacks per second
-export var move_speed = 150    # Pixels per second
+# Export variables 
+export var health = 50          # Drone Health
+export var attack_damage = 1    # Attack Damage
+export var attack_speed = 1.0   # Attacks per second
+export var move_speed = 150     # Pixels per second
 export var rotation_speed = 5.0 # How fast the drone rotates to face target
-export var attack_range = 50   # How close the drone needs to be to attack
+export var attack_range = 50    # How close the drone needs to be to attack
 export var return_threshold = 5 # How close to rest position is considered "arrived"
 
 # Internal state tracking
-var current_target = null
-var can_attack = true
-var velocity = Vector2.ZERO
-var rest_position = null
-var is_returning = false
-var explodeBuff = false
+var current_target = null       # Holds the current drone target
+var can_attack = true           # Whether or not the drone can attack
+var velocity = Vector2.ZERO     # Drone Velocity 
+var rest_position = null        # The Location of the Drone Resting Position   
+var is_returning = false        # Whether or not the drone is returning to rest
+var explodeBuff = false         # Whether or not the drone is buffed 
 
-onready var animatedSpriteComp = $AnimatedSprite
+onready var animatedSpriteComp = $AnimatedSprite  # Reference to Sprite Comp 
 
+# Doubles the drone attack damage 
 func doubleDamage():
 	attack_damage = attack_damage * 5
 	animatedSpriteComp.buff()
 
+# Activates the drone explosion buff
 func makeExplode():
 	explodeBuff = true
 
+
 func _ready():
+	#idle by default 
 	animatedSpriteComp.animation = "idle"
 	
-	# Create attack timer
+	# Create & configure attack timer
 	var timer = Timer.new()
 	add_child(timer)
 	var attack_length = animatedSpriteComp.get_animation_length("attack")
@@ -41,20 +49,25 @@ func _ready():
 	timer.connect("timeout", self, "_on_attack_timer_timeout")
 	timer.start()
 
+# Handles the drone taking damage
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
 		die()
 
+# Changes the drone's current animation 
 func setAnimation(newAnimation):
 	animatedSpriteComp.animation = newAnimation
 
+# Kills drone
 func die():
+	# Emit a died signal and make sure fighting stops before killing 
 	emit_signal("drone_died", self)
 	if current_target and is_instance_valid(current_target):
 		current_target.stopFightingDrone()
 	queue_free()
 
+# Attacks a given enemy with out without buffs 
 func attack_target(enemy):
 	#print("Drone Strike")
 	current_target = enemy
@@ -64,10 +77,12 @@ func attack_target(enemy):
 	
 	is_returning = false
 
+# Sends the drone back to it's original resting position 
 func return_to_position(pos):
 	rest_position = pos
 	current_target = null
 	is_returning = true
+
 
 func _physics_process(delta):
 	if current_target and is_instance_valid(current_target):
@@ -101,6 +116,7 @@ func _physics_process(delta):
 		current_target = null
 		velocity = Vector2.ZERO
 
+# Handles the drone dealing attack damage 
 func _on_attack_timer_timeout():
 	if current_target and can_attack and is_instance_valid(current_target):
 		animatedSpriteComp.animation = "attack"

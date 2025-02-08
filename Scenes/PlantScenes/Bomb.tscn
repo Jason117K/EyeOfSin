@@ -79,7 +79,7 @@ autostart = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 self_modulate = Color( 0.882353, 0.0352941, 0.0352941, 1 )
 frames = SubResource( 12 )
-frame = 2
+frame = 9
 playing = true
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

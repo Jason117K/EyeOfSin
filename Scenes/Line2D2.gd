@@ -1,4 +1,8 @@
 extends Line2D
+#Line2D2.gd
+
+#Handles setting the colors for Maw tentacles 
+
 
 # Create colors with full alpha channel (1.0)
 const START_COLOR = Color(1, 0, 0, 1) # Red

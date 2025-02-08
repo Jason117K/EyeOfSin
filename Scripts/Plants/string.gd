@@ -1,4 +1,6 @@
 extends Node2D
+#String.gd
+
 
 signal retraction_complete
 

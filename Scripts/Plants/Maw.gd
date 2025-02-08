@@ -36,13 +36,13 @@ var charges = 3.0
 var available_tentacles = []  # Track which tentacles are available
 
 func _ready():
-	# Example usage in another script:
-
-	#web_ball.set_target(Vector2(100, 100))
-	#web_ball.set_arc_params(-60, 150)  # 60 degree angle, 150 pixel max height
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	setup_tentacles()
 	
+#Plant Cost Getter
+func get_cost():
+	return cost
+		
 func setup_tentacles():
 	# First tentacle setup
 	tentacle1 = tentacle_scene.instance()
@@ -157,8 +157,6 @@ func _on_DigestionTimer_timeout():
 			tentacle.visible = true
 			break
 
-func get_cost():
-	return cost
 
 func receiveBuff(plant):
 	#print(bufferName)

@@ -1,36 +1,27 @@
-extends Area2D
+extends Zombie
 #ScreenDoorZombie.gd
 
-onready var compManager = $ComponentManager
+# Handles ScreenDoor Zombie specific behavior 
+
 onready var healthCom = compManager.getHealthComponent()
 onready var altSprite = $TransformedSpriteComp
 onready var startSprite = $AnimatedSprite
 
+# Stores death count for transformation purposes 
 var deathCount = 0 
 
-func getCompManager():
-	return compManager
-	
+
+# First transforms zombie 'death' 1, then kills zombie 'death' 2
 func die():
 	deathCount = deathCount+1
 	if deathCount < 2:
 		transform()
 	else:
 		queue_free()
-	
+
+# Switches visible sprite to transform zombie 
 func transform():
 	altSprite.visible = true
 	startSprite.visible = false
 	compManager.setMaterial(altSprite)
 	healthCom.resetHealth()
-
-
-func fightDrone():
-	compManager.fightDrone()
-
-
-func stopFightingDrone():
-	compManager.stopFightingDrone()
-
-func fightDroneExplode():
-	compManager.fightDroneExplode()

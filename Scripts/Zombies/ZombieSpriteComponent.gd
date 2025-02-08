@@ -19,15 +19,14 @@ func setSpecialMoveTrue():
 func setSpecialMoveFalse():
 	specialMove = false
 	
+#Handles Animation 
 func _process(_delta):
+	# Predetermine the state of attacking, being injured, and being slowed 
 	is_attacking = attackComp.getAttackState()
 	isInjured = healthComp.getInjured()
-	
-	#print(zombie.name)
 	isSlow = zombie.getCompManager().getSlow()
-	#print("IsSlow is : ", isSlow)
 	
-	
+	#Handle each combination of the above cases in the below block 
 	if not specialMove:
 		#Slow Webbed Block
 		#--------------------------------------------------------------------------
@@ -93,18 +92,12 @@ func _process(_delta):
 	else:
 		pass
 
-
+#Makes it so Pole Vaulters can only special move once 
 func _on_AnimatedSprite_animation_finished():
-	if("Attack" in self.animation):
-		#attack_audio_player.play()
-		pass
-	#print(self.animation)
-
 	if("Vault" in self.animation):
-		print("Jere")
 		specialMove = false
 
-
+#Handles Ticker Zombie Explosion Animation 
 func _on_AnimatedSprite_frame_changed():
 	if(zombie.name == "TickerZombie"):
 		if self.animation == "Attack" || self.animation == "WebAttack":

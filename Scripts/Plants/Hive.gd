@@ -1,6 +1,8 @@
 extends Area2D
 #Hive.gd
 
+# Hive Plant Script
+
 #Export variables
 export var cost = 25
 export var health = 50
@@ -14,36 +16,39 @@ var BUFF_MAX_DRONES = 4
 #const MAX_DRONES = 3
 
 # Drone management
-var available_drones = []  # Currently active but unassigned drones
-var drone_assignments = {}  # Dictionary mapping enemies to arrays of drones
-var enemy_queue = []       # Enemies in order of entry
-var active_enemies = []    # All enemies currently in range
-var drone_rest_positions = {}  # Dictionary to store rest positions for each drone
+var available_drones = []                          # Currently active but unassigned drones
+var drone_assignments = {}                         # Dictionary mapping enemies to arrays of drones
+var enemy_queue = []                               # Enemies in order of entry
+var active_enemies = []                            # All enemies currently in range
+var drone_rest_positions = {}                      # Dictionary to store rest positions for each drone
 
-onready var droneRespawnTimer = $DroneRespawnTimer
-var isBuffed = false
-var PlantManager
-
+onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
+var isBuffed = false                               # Tracks Current Buff State Of Drone  
+var PlantManager                                   # Reference to PlantManager 
+ 
 func _ready():
-	# Initialize drones
+	# Initialize drones & Plant Manager 
 	spawn_initial_drones()
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	
+#Getter for plant cost 
 func get_cost():
 	return cost
 	
+#Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
+	#Apply a double damage buff to every drone 
 	if(bufferName.name == "EggWorm" && isBuffed == false):
-		#print("this hive buffed")
 		for drone in available_drones:
 			drone.doubleDamage()
 		isBuffed = true 
+	#Make the drones explode if it's a peashooter buff 
 	if(bufferName.name == "Peashooter" && isBuffed == false):
-		#print("this hive buffed")
 		for drone in available_drones:
 			drone.makeExplode()
 		isBuffed = true 
 
+#Kill every drone if the Hive falls 
 func kill_all_drones():
 	# Kill all assigned drones
 	for enemy in drone_assignments.keys():
@@ -63,10 +68,12 @@ func kill_all_drones():
 		
 		
 	
+# Calculate evenly spaced resting positons for all drones 
 func calculate_rest_position(index):
 	var angle = (2 * PI * index) / MAX_DRONES
 	return Vector2(cos(angle), sin(angle)) * 30
-	
+
+# Spawns an assembles the initial number of drones 	
 func spawn_initial_drones():
 	for i in range(MAX_DRONES):
 		var drone = DroneScene.instance()
@@ -85,9 +92,10 @@ func spawn_initial_drones():
 		if isBuffed:
 			drone.doubleDamage()
 
+#Assigns drones to enemies if able & then re-optimizes drone assignments 
 func _on_enemy_entered(area):
 	if area.is_in_group("Zombie"):
-		print("Hive Reporting," ,area.name, " entered.")
+		#print("Hive Reporting," ,area.name, " entered.")
 		# Add to tracking arrays
 		enemy_queue.append(area)
 		active_enemies.append(area)
@@ -98,6 +106,7 @@ func _on_enemy_entered(area):
 		# Optimize drone assignments
 		optimize_drone_assignments()
 
+#Handles redoing drone assignments when enemies leave or die 
 func _on_enemy_exited(area):
 	if area.is_in_group("Zombie"):
 		# Remove from tracking
@@ -120,6 +129,7 @@ func _on_enemy_exited(area):
 		if enemy_queue.empty():
 			return_drones_to_rest()
 
+# Helper func to reassemble drones in resting position 
 func return_drones_to_rest():
 	for drone in available_drones:
 		if is_instance_valid(drone):
@@ -129,6 +139,7 @@ func return_drones_to_rest():
 func _on_enemy_died(enemy):
 	_on_enemy_exited(enemy)  # Reuse exit logic
 
+#Handle assignment clean-up on drone death 
 func _on_drone_died(drone):
 	# Remove drone from assignments
 	for enemy in drone_assignments.keys():
@@ -138,8 +149,10 @@ func _on_drone_died(drone):
 	# Remove rest position
 	drone_rest_positions.erase(drone)
 	
+	#Start Respawn Timer 
 	droneRespawnTimer.start()
 
+#Assigns the optimal number of drones based on availablity and enemy presence 
 func optimize_drone_assignments():
 	# Reset all drone assignments
 	var all_drones = []
@@ -179,21 +192,20 @@ func optimize_drone_assignments():
 			drone_assignments[enemy].append(drone)
 			command_drone_to_attack(drone, enemy)
 
+#Tell a drone to attack a target
 func command_drone_to_attack(drone, enemy):
-	# Implement your drone attack command logic here
-	# This will depend on your drone implementation
 	if is_instance_valid_and_alive(enemy):
 		drone.attack_target(enemy)
 
+#Handles the Hive taking damage 
 func take_damage(damage):
-	print("drone taking damage, health is " , health)
 	health = health - damage
 	if(health <= 0):
 		PlantManager.clear_space(self.global_position)
 		queue_free()
 
+#Respawns a drone and re-optimizes assignmnets 
 func _on_DroneRespawnTimer_timeout():
-	print("TIMER OFF")
 	# Create new drone
 	var new_drone = DroneScene.instance()
 	add_child(new_drone)

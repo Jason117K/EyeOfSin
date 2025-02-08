@@ -1,4 +1,5 @@
 extends Node2D
+#Worm2Animator.gd
 
 # Animation parameters
 export var bob_speed = 2.0  # Speed of the up/down motion
@@ -23,13 +24,15 @@ var prev_y = 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  # Store the initial position
 
+#Stores initial sprite values 
 func _ready():
 	if sprite:
 		initial_sprite_scale = sprite.scale
-		initial_sprite_position = sprite.position  # Store the initial position
+		initial_sprite_position = sprite.position  
 	else:
 		push_warning("No sprite assigned to animate!")
 
+#Handles worm sprite bobbing 
 func _process(delta):
 	if not sprite:
 		return

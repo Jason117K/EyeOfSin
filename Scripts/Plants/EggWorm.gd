@@ -1,6 +1,9 @@
 extends Node2D
+#EggWorm.gd
 
-var health = 100
+#Adjustable health & cost
+export var health = 100
+export var cost = 150
 
 # Animation parameters
 export var bob_speed = 2.0  
@@ -24,50 +27,48 @@ var target_stretch = 0.0
 var velocity = 0.0
 var prev_y = 0.0
 var initial_sprite_scale: Vector2
-var initial_sprite_position: Vector2  # Store the initial position
+var initial_sprite_position: Vector2  
+
 var PlantManager
 
-export var cost = 150
 
 func _ready():
 		# Get reference to plant manager
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	#Verify sprite is set up correctly 
 	if sprite:
 		initial_sprite_scale = sprite.scale
 		initial_sprite_position = sprite.position  # Store the initial position
 	else:
 		push_warning("No sprite assigned to animate!")
+		
+		
+# Returns the plants cost 
+func get_cost():
+	return cost
 
+
+#Handles Eggworm Buffing 
 func receiveBuff(plant):
-	#print("Received Buff From : " , bufferName)
-	print("PRE NUT BYUFFFFF")
+	#Increases Speed and Range From Peashooter Buff
 	if(plant.name == "Peashooter"):
 		laserShootComp.extension_speed = 80000
 		laserShootComp.max_length = 40000
+	#Applies a different buff to the laser projectile 
 	elif(plant.name == "WalnutTree"):
-		print("NUT BYUFFFFF")
 		if (laserShootComp.isBuffed):
 			pass
 		else:
 			laserShootComp.buff(plant.position)
 		
-		
-func receiveWalnutBuff(bufferLocation):
-	if (laserShootComp.isBuffed):
-		pass
-	else:	
-		laserShootComp.buff(bufferLocation)
-	
-	
-	
-	
-	
+# Handles Receiving Damage for the EggWorm 
 func take_damage(damage):
 	health = health - damage
 	if health <= 0:
 		PlantManager.clear_space(self.global_position)
 		queue_free()
 
+# Constantly animates the two worms of the EggWorm 
 func _process(delta):
 	if not sprite:
 		return
@@ -107,6 +108,3 @@ func _process(delta):
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
 	
-	
-func get_cost():
-	return cost

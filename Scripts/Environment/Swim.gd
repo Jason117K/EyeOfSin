@@ -1,10 +1,15 @@
 extends AnimatedSprite
+# Swim.gd
 
+# Handles fish movement 
+
+#Adjustblae movement parameters 
 export(float) var minSpeed = 1.0
 export(float) var maxSpeed = 2.0
 export(float) var minAmount = 10.0
 export(float) var maxAmount = 50.0
 
+#variables to store amount moved and initial position 
 var moveAmount: float
 var distanceMoved: float = 0.0
 var startPosition: Vector2

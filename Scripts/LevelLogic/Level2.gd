@@ -1,9 +1,7 @@
 extends Control
 #Level2
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Sets Up the Tiles For Level 2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +18,3 @@ func _ready():
 	$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
 	$GameLayer/GridManager.set_tiles_for_rows(8,9, 29)
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

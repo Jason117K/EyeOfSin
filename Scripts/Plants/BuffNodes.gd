@@ -1,7 +1,7 @@
 extends Node2D
 #BuffNodes.gd
 
-
+# All of the possible "blood tile" (buffed) visual effects 
 onready var bloodTile1 = $BloodTile1
 onready var bloodTile2 = $BloodTile2
 onready var bloodTile3 = $BloodTile3
@@ -11,8 +11,10 @@ onready var bloodTile6 = $BloodTile6
 onready var bloodTile7 = $BloodTile7
 onready var bloodTile8 = $BloodTile8
 
+# Parent plant with these buffNodes
 onready var plant = get_parent()
 
+# The tile areas representing the area being buffed 
 export(Array, NodePath) var activeTiles = [
 	"TileArea1",
 	"TileArea2",
@@ -24,11 +26,12 @@ export(Array, NodePath) var activeTiles = [
 	"TileArea8"
 ]
 
+# Adjustable variable to store which plants this plant can buff
 export var giveBuffTo = ["None","None","None","None","None","None","None","None"]
 
 
 func _ready():
-	
+	# Make sure all the bloodTiles are not visible
 	bloodTile1.visible = false
 	bloodTile2.visible = false
 	bloodTile3.visible = false
@@ -67,7 +70,7 @@ func _process(_delta):
 				# Check for plants in the overlapped areas
 				for plantToBuff in overlapping_areas:
 					
-					# If the plantToBuff is a valid plant 
+					# If the plantToBuff is a valid plant & not a drone
 					if(plantToBuff.is_in_group("Plants") && !("Drone" in plantToBuff.name)):
 						#print("Plant to Buff is ", plantToBuff.name)
 						
@@ -82,7 +85,9 @@ func _process(_delta):
 									
 							#Handle Rest of Buffs
 							if plantActor in plantToBuff.name:
-								#plantToBuff.receiveBuff(plant.name)
+								#Handle Special EggWorm Buff Case, as both plants 'receive' a buff
+								if (plantToBuff.name == "WalnutTree") && ("EggWorm" in plant.name):
+									plant.receiveBuff(plantToBuff)
 								plantToBuff.receiveBuff(plant)
 								blood_tile.visible = true
 								break
