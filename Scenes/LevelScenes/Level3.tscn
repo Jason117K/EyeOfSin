@@ -159,23 +159,20 @@ text = "Blood : 200"
 [node name="Shrubs" type="Node" parent="."]
 
 [node name="BloodTree" type="Sprite" parent="Shrubs"]
-visible = false
-position = Vector2( 753, 472 )
+position = Vector2( 691, 359 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="BloodTree2" type="Sprite" parent="Shrubs"]
-visible = false
-position = Vector2( 120, -16 )
+position = Vector2( 95, -18 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="Fish" type="Node2D" parent="."]
-visible = false
 position = Vector2( 173, 30 )
 
 [node name="Fish5" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 363, 448 )
+position = Vector2( 352, 358 )
 
 [node name="Fish6" parent="Fish" instance=ExtResource( 7 )]
 position = Vector2( 584, 463 )
@@ -184,22 +181,23 @@ position = Vector2( 584, 463 )
 position = Vector2( 670, 441 )
 
 [node name="Fish8" parent="Fish" instance=ExtResource( 7 )]
-position = Vector2( 595, 393 )
+position = Vector2( 462, 297 )
 
 [node name="Shrub" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 557, -3 )
+position = Vector2( 406, 9 )
 
 [node name="Shrub2" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 592, 27 )
+position = Vector2( 410, 303 )
 
 [node name="Shrub3" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 460, 395 )
+position = Vector2( 440, 354 )
 
 [node name="Shrub4" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 67, -4 )
+position = Vector2( 47, 10 )
+scale = Vector2( 1, 1 )
 
 [node name="Shrub5" parent="Fish" instance=ExtResource( 12 )]
-position = Vector2( 177, 7 )
+position = Vector2( 268, 15 )
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
@@ -210,6 +208,7 @@ autoplay = true
 environment = SubResource( 2 )
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource( 5 )]
+visible = false
 anchor_left = 0.034
 anchor_top = 0.75
 anchor_right = 1.0

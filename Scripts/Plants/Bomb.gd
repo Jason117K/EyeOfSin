@@ -26,7 +26,7 @@ func _on_DeathTimer_timeout():
 	for enemy in enemiesToHitTemp:
 		#print("Enemy is " , enemy.name)
 		if "Zombie" in enemy.name:
-			print("Enemy is " , enemy.name)
+			#print("Enemy is " , enemy.name)
 			enemiesToHit.append(enemy)
 	
 	for enemy in enemiesToHit:

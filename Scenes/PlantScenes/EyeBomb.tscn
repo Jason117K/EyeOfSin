@@ -247,7 +247,7 @@ shape = SubResource( 19 )
 visible = false
 position = Vector2( 320, 0 )
 frames = SubResource( 48 )
-frame = 2
+frame = 9
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]

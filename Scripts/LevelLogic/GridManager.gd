@@ -22,7 +22,7 @@ func set_tiles_for_rows(row_start:int, row_end: int, tile_id: int):
 	var map_width = tilemap.get_used_rect().size.x
 	# Loop through the specified number of rows
 	for y in range(row_start,row_end):
-		print("Y is ", y)
+		#print("Y is ", y)
 		# Loop through each column in the row
 		for x in range(map_width):
 			# Set the tile at (x, y) to the specified tile_id

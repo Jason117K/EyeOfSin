@@ -36,7 +36,7 @@ func _input(event):
 			
 			# Add early return if no sun points
 			if selected_plant_scene:
-				print("SEKE PLANETR IS")
+				#print("SEKE PLANETR IS")
 				var temp_instance = selected_plant_scene.instance()
 				var cost = temp_instance.get_cost()
 				temp_instance.queue_free()
