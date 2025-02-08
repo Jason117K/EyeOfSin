@@ -110,5 +110,5 @@ func _on_ResetThisColor_timeout():
 
 
 func _on_DebuffDegrade_timeout():
-	if((isSlow - 20) >= 0):
-		isSlow = isSlow - 20
+	if((isSlow - 10) >= 0):
+		isSlow = isSlow - 10

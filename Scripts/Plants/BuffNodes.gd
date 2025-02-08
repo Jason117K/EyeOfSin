@@ -69,7 +69,7 @@ func _process(_delta):
 					
 					# If the plantToBuff is a valid plant 
 					if(plantToBuff.is_in_group("Plants") && !("Drone" in plantToBuff.name)):
-						print("Plant to Buff is ", plantToBuff.name)
+						#print("Plant to Buff is ", plantToBuff.name)
 						
 						#Check our list of valid plants to buff
 						for plantActor in giveBuffTo:

@@ -33,12 +33,12 @@ func get_cost():
 	return cost
 	
 func receiveBuff(bufferName):
-	if(bufferName == "EggWorm" && isBuffed == false):
+	if(bufferName.name == "EggWorm" && isBuffed == false):
 		#print("this hive buffed")
 		for drone in available_drones:
 			drone.doubleDamage()
 		isBuffed = true 
-	if(bufferName == "Peashooter" && isBuffed == false):
+	if(bufferName.name == "Peashooter" && isBuffed == false):
 		#print("this hive buffed")
 		for drone in available_drones:
 			drone.makeExplode()

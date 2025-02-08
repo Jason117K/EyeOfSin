@@ -36,14 +36,14 @@ script = ExtResource( 6 )
 [node name="GameLayer" type="Node2D" parent="."]
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 747, 76 )
+position = Vector2( 747, 77 )
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
 "PoleVault": 0,
-"ScreenDoor": 0,
+"ScreenDoor": 1,
 "Ticker": 0
 }
 
@@ -55,7 +55,7 @@ z_index = 1
 position = Vector2( 747, 109 )
 Round1_Zombies = {
 "Base": 0,
-"BucketHead": 2,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
 "PoleVault": 0,
@@ -123,7 +123,7 @@ z_index = -1
 position = Vector2( -59, 222 )
 z_index = 1
 script = ExtResource( 8 )
-StartDelay = 19
+StartDelay = 0
 Wave2StartTime = 45
 Wave3StartTime = 75
 Wave1_Interval = 2.0

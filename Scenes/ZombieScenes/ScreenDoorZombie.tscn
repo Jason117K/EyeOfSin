@@ -107,7 +107,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "Webwalk",
+"name": "WebWalk",
 "speed": 5.0
 } ]
 
@@ -256,14 +256,14 @@ shape = SubResource( 17 )
 material = SubResource( 27 )
 frames = SubResource( 16 )
 animation = "Walk"
-frame = 5
+frame = 7
 playing = true
 script = ExtResource( 10 )
 
 [node name="TransformedSpriteComp" type="AnimatedSprite" parent="."]
 visible = false
 material = SubResource( 63 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 2, 1 )
 frames = SubResource( 62 )
 animation = "Walk"
 script = ExtResource( 10 )

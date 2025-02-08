@@ -25,7 +25,7 @@ func _process(_delta):
 	
 	#print(zombie.name)
 	isSlow = zombie.getCompManager().getSlow()
-	#print("IsSlow is : ", isSlow)
+	print("IsSlow is : ", isSlow)
 	
 	
 	if not specialMove:
@@ -45,17 +45,18 @@ func _process(_delta):
 					if frames.has_animation("InjuredWebWalk"):
 						self.play("InjuredWebWalk")    #InjuredWebWalk
 					else : 
-						self.play("Walk") #InjuredWebWalk
+						self.play("WebWalk") #InjuredWebWalk
 				else:
 					if frames.has_animation("InjuredWebAttack"):
 						self.play("InjuredWebAttack")    #InjuredWebAttack
 					else : 
-						self.play("Attack") 
+						self.play("WebAttack") 
 						
 			else: #Not Injured, Are Webbed
 				if not is_attacking:
 					if frames.has_animation("WebWalk"):
 						self.play("WebWalk")    #WebWalk
+						#print("Playing WebWalk Right nw")
 					else : 
 						self.play("Walk") #WebWalk
 				else:
@@ -67,6 +68,7 @@ func _process(_delta):
 			
 		#Not Slow Block
 		else: #isSlow <= 0
+			#print("NOT SLOW")
 
 			#Dancer Specific 
 			if(zombie.name == "DancerZombie"):
