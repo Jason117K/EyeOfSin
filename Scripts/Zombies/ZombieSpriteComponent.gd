@@ -25,7 +25,7 @@ func _process(_delta):
 	
 	#print(zombie.name)
 	isSlow = zombie.getCompManager().getSlow()
-	print("IsSlow is : ", isSlow)
+	#print("IsSlow is : ", isSlow)
 	
 	
 	if not specialMove:
@@ -107,7 +107,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_AnimatedSprite_frame_changed():
 	if(zombie.name == "TickerZombie"):
-		if self.animation == "Attack":
+		if self.animation == "Attack" || self.animation == "WebAttack":
 			if self.frame == 3:
 				var AOEHit = $"../AOEHit"
 				AOEHit.goBoom()

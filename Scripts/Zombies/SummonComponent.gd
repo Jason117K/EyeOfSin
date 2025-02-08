@@ -1,10 +1,11 @@
 extends Node2D
+#SummonComponent.gd
 
 onready var summonTimer = $SummonTimer
 onready var dancerZombie = get_parent()
 
 onready var animatedSpriteComp = get_parent().get_node("AnimatedSprite")
-
+onready var attackComp = $"../AttackComponent"
 
 onready var point1 = $SummonPoint1
 onready var point2 = $SummonPoint2
@@ -17,6 +18,8 @@ onready var point9 = $SummonPoint9
 onready var points = [point1,point2,point3,point4,point6,point7,point8,point9]
 
 var BackUpDancerScene = preload("res://Scenes/ZombieScenes/BackUpDancerZombie.tscn")
+
+var is_attacking
 
 func summon_backup():
 	print("Summoning")
@@ -36,7 +39,7 @@ func summon_backup():
 
 	
 	for point in points:
-		print("Adding Zombie to ", point.name)
+		#print("Adding Zombie to ", point.name)
 		var zombie_instance = BackUpDancerScene.instance()
 		
 		# Convert spawn point's position to global coordinates
@@ -50,15 +53,21 @@ func summon_backup():
 
 func _on_SummonTimer_timeout():
 	animatedSpriteComp.animation = "Summon"
+	animatedSpriteComp.setSpecialMoveTrue()
 
 
 func _on_AnimatedSprite_animation_finished():
-	#print(animatedSpriteComp.animation)
+	print(animatedSpriteComp.animation, " just finished playing")
 	if(animatedSpriteComp.animation == "Summon"):
-		print(animatedSpriteComp.animation)
-		print("AnimPlayed")
+		#print(animatedSpriteComp.animation)
+		#print("AnimPlayed")
 		summon_backup()
-		animatedSpriteComp.animation = "default"
+		animatedSpriteComp.setSpecialMoveFalse()
+		is_attacking = attackComp.getAttackState()
+		if is_attacking:
+			animatedSpriteComp.animation = "Attack"
+		else:
+			animatedSpriteComp.animation = "Walk"
 		
 		
 		

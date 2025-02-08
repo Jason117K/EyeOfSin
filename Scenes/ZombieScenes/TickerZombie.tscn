@@ -212,9 +212,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=29]
-extents = Vector2( 83.0833, 15.6667 )
+extents = Vector2( 73.4166, 15.6667 )
 
 [node name="TickerZombie" type="Area2D" groups=["Zombie"]]
+position = Vector2( 0, -15 )
 collision_layer = 2
 script = ExtResource( 6 )
 
@@ -235,14 +236,13 @@ material = SubResource( 16 )
 position = Vector2( 8, 0 )
 frames = SubResource( 14 )
 animation = "WebWalk"
-frame = 1
 playing = true
 flip_h = true
 script = ExtResource( 9 )
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( -36, 0 )
+cast_to = Vector2( -15, 0 )
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -274,13 +274,13 @@ frames = SubResource( 28 )
 position = Vector2( -140, 4.66667 )
 frames = SubResource( 28 )
 
-[node name="HitBoxComponent" type="Area2D" parent="."]
+[node name="HitBoxComponent" type="Area2D" parent="." groups=["Zombie"]]
 z_index = 2
 collision_layer = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-position = Vector2( -72.25, 4.66667 )
+position = Vector2( -62.5834, 4.66667 )
 shape = SubResource( 29 )
 
 [connection signal="frame_changed" from="AnimatedSprite" to="AnimatedSprite" method="_on_AnimatedSprite_frame_changed"]

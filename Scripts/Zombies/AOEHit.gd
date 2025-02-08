@@ -23,13 +23,16 @@ func _on_Hit3_animation_finished():
 	var areasToDamage = hitBoxComp.get_overlapping_areas()
 	
 	for area in areasToDamage:
+		print("This area is ", area.name)
 		if(is_instance_valid(area)):
-			if(area.health >= 0):
-				area.take_damage(attack_power)
+			if area.is_in_group("Plants"):
+				print("About to bomb ", area.name)
+				if(area.health >= 0):
+					area.take_damage(attack_power)
+				else:
+					pass
 			else:
 				pass
-		else:
-			pass
 	var parent = get_parent()
 	parent.die()
 	

@@ -182,7 +182,6 @@ shape = SubResource( 25 )
 material = SubResource( 32 )
 frames = SubResource( 24 )
 animation = "Walk"
-frame = 4
 playing = true
 script = ExtResource( 10 )
 
@@ -190,39 +189,38 @@ script = ExtResource( 10 )
 script = ExtResource( 6 )
 
 [node name="SummonPoint1" type="Node2D" parent="SummonComponent"]
-position = Vector2( -64, -64 )
+position = Vector2( -32, -32 )
 
 [node name="SummonPoint2" type="Node2D" parent="SummonComponent"]
-position = Vector2( 0, -64 )
+position = Vector2( 0, -32 )
 
 [node name="SummonPoint3" type="Node2D" parent="SummonComponent"]
-position = Vector2( 64, -64 )
+position = Vector2( 32, -32 )
 
 [node name="SummonPoint4" type="Node2D" parent="SummonComponent"]
-position = Vector2( -64, 0 )
+position = Vector2( -32, 0 )
 
 [node name="SummonPoint6" type="Node2D" parent="SummonComponent"]
-position = Vector2( 64, 0 )
+position = Vector2( 32, 0 )
 
 [node name="SummonPoint7" type="Node2D" parent="SummonComponent"]
-position = Vector2( -64, 64 )
+position = Vector2( -32, 32 )
 
 [node name="SummonPoint8" type="Node2D" parent="SummonComponent"]
-position = Vector2( 0, 64 )
+position = Vector2( 0, 32 )
 
 [node name="SummonPoint9" type="Node2D" parent="SummonComponent"]
-position = Vector2( 64, 64 )
+position = Vector2( 32, 32 )
 
 [node name="SummonTimer" type="Timer" parent="SummonComponent"]
-wait_time = 3.0
-one_shot = true
+wait_time = 5.0
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( -52, 0 )
+cast_to = Vector2( -28, 0 )
 collide_with_areas = true
 
 [node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]

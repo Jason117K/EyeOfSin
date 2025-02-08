@@ -43,7 +43,7 @@ Round1_Zombies = {
 "ConeHead": 0,
 "Dancer": 0,
 "PoleVault": 0,
-"ScreenDoor": 1,
+"ScreenDoor": 0,
 "Ticker": 0
 }
 
@@ -57,7 +57,7 @@ Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
 "ConeHead": 0,
-"Dancer": 0,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0

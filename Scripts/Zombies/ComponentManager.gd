@@ -35,6 +35,8 @@ func special_move():
 	specialMoveComp.executeMove()
 	animatedSprite.setSpecialMoveTrue()
 	
+func special_move2():
+	animatedSprite.setSpecialMoveTrue()
 	
 func getSlow():  
 	return isSlow 

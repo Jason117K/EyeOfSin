@@ -23,7 +23,7 @@ func _process(_delta):
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
 		if collider:
-			#print(collider.name)
+			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				canAttack = true
 			else:

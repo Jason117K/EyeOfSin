@@ -169,7 +169,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite" parent="."]
 frames = SubResource( 79 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
@@ -178,5 +178,5 @@ visible = false
 [node name="AnimatedSpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 12 )
 animation = "New Anim"
-frame = 1
+frame = 4
 playing = true
