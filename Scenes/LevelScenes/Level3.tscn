@@ -38,7 +38,7 @@ script = ExtResource( 6 )
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 747, 77 )
 Round1_Zombies = {
-"Base": 1,
+"Base": 7,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -57,7 +57,7 @@ Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
 "ConeHead": 0,
-"Dancer": 1,
+"Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0

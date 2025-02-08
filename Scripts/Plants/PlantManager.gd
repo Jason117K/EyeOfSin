@@ -1,52 +1,39 @@
 extends Node2D
 #PlantManager.gd
 
+# Get a reference to the plant selection menu 
 onready var selection_menu = get_parent().get_node("PlantSelectionMenu")
 
-var selected_plant_scene = null  # Updated: Holds the selected plant scene
-var grid_size = 32 #64  # Assuming each grid cell is 64x64 pixels
+var selected_plant_scene = null  # Holds the selected plant scene
+var grid_size = 32 # Defines the size of each grid cell 
 var grid_map = {}  # Dictionary to store occupied cells
-var sun_points = 200
-var plant_cost = 25
+var sun_points = 200 # Holds how many sun points we have currently 
+var plant_cost = 25  # Holds the cost of the currently selected plant 
 
-# Updated: Reference the PlantSelectionMenu dynamically
+# Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
 	return get_parent().get_node("PlantSelectionMenu").selected_plant
 
-func ready():
-	#print(get_parent().get_name())
-	
-	pass
-#384,256
 
-
-
+# Handles Player Interaction with the Plant Menu 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
+		# If they left click, grab the positon and place a plant there 
 		if event.button_index == BUTTON_LEFT:
 			var mouse_pos = get_global_mouse_position()
-			#print("Clicked mouse_pos is : ", mouse_pos)
-
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
-			#print("Clicked grid_pos is : ", grid_pos)
-
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
-			#print(get_parent().name)
-			
-			
-			# Add early return if no sun points
+
 			if selected_plant_scene:
-				#print("SEKE PLANETR IS")
 				var temp_instance = selected_plant_scene.instance()
 				var cost = temp_instance.get_cost()
 				temp_instance.queue_free()
-				
+				# early return if no sun points
 				if sun_points < cost:
 					selection_menu.clear_preview()
 					return
 			
-			
-			
+			# Place the plant assuming it's within bounds of the level
 			if(get_parent().name == "Main"):
 				if(grid_pos.x<769 && grid_pos.y<321 && grid_pos.y > 128):
 					#print("Place Plant " , grid_pos)
@@ -60,24 +47,12 @@ func _input(event):
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
 
+# Clear a space for a new plant to go 
 func clear_space(passed_grid_pos):
 	var new_passed_grid_pos = mouse_pos_to_grid(passed_grid_pos)
 	new_passed_grid_pos = Vector2(new_passed_grid_pos.x,new_passed_grid_pos.y+64)
-	#print("New Passed Grid Pos : ",new_passed_grid_pos)
-	#print("Grid Map is : ", grid_map)
 	grid_map.erase(new_passed_grid_pos)
-	#print("Grid Map is : ", grid_map)
 	
-
-func get_cost(this_selected_plant_scene):
-	#print(this_selected_plant_scene)
-	if("Sunflower" in this_selected_plant_scene.name):
-		plant_cost = 25
-	if("Peashooter" in this_selected_plant_scene.name):
-		plant_cost = 50
-	if("Walnut" in this_selected_plant_scene.name):
-		plant_cost = 75
-
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
 	
@@ -95,7 +70,6 @@ func place_plant(grid_pos: Vector2):
 	
 	#Get The Cost 
 	var plant_instance = selected_plant_scene.instance()
-	get_cost(plant_instance)
 	plant_cost = plant_instance.get_cost()
 	
 	if sun_points >= plant_cost: 
@@ -126,16 +100,17 @@ func place_plant(grid_pos: Vector2):
 	else:
 		print("Not enough sun points!")
 
+#Add sun to total 
 func add_sun(amount):
 	#print("Add Sun: " , amount)
 	sun_points += amount
 	get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
 	
+# Play the sun collection sound 
 func play_sun_collect():
 	$SunCollectPlayer.play()
 	
-
-
+# Set the starting sun amount depending on level 
 func _on_SetSun_timeout():
 	if(get_parent().name == "Main"):
 		sun_points = 300 #75

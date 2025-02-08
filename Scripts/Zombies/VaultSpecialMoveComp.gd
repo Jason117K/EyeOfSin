@@ -2,9 +2,9 @@ extends Node2D
 #VaultSpecialMoveComp.gd
 
 onready var animatedSprite = $"../AnimatedSprite"  # Reference to animated Sprite
-onready var speedComp = $"../SpeedComponent"
-onready var parent = get_parent()
-
+onready var speedComp = $"../SpeedComponent"       # Reference to speed component 
+onready var parent = get_parent()                  # Reference to parent 
+ 
 onready var tween = Tween.new()  # Create new Tween node
 
 var move_duration = 3.3  # Duration of the vault movement in seconds
@@ -15,7 +15,10 @@ func _ready():
 	# Add Tween as child of this node
 	add_child(tween)
 
+# Perform the pole vault 
 func executeMove():
+	
+	# Start the animation and make the speed dependent on the tween 
 	animatedSprite.animation = "Vault"
 	speedComp.setSpeed(0)
 	
@@ -44,6 +47,7 @@ func executeMove():
 	vaultTimer.start()
 	tween.start()
 
+# Stop the tween and delete the timer 
 func _on_vault_timer_timeout():
 	# Stop the tween if it's still running
 	if tween.is_active():
@@ -56,10 +60,12 @@ func _on_vault_timer_timeout():
 	
 	moveFinished()
 
+# Make it so the polevaulter cannot vault again and starts walking normally 
 func moveFinished():
 	animatedSprite.setSpecialMoveFalse()
 	speedComp.setSpeed(26)
 	moveDone = true
-	
+
+# Informs whether or not the move was performed 
 func isMoveFinished():
 	return moveDone

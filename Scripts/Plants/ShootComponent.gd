@@ -1,4 +1,7 @@
 extends Node2D
+# ShootComponent.gd
+
+# Handles Shooting the EggWorm Laser 
 
 # Configuration parameters
 export (Color) var laser_color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
@@ -20,6 +23,7 @@ onready var line2D := Line2D.new()
 onready var laser_area := Area2D.new()
 onready var collision_shape := CollisionShape2D.new()
 
+# State variables 
 var current_length := 0.0
 var is_firing := false
 var timer := Timer.new()
@@ -61,6 +65,7 @@ func _ready() -> void:
 		cooldown_timer.connect("timeout", self, "fire")
 		cooldown_timer.start()
 
+# Handle updating the laser firing if we are firing 
 func _physics_process(delta: float) -> void:
 	if is_firing:
 		if current_length < max_length:
@@ -70,6 +75,7 @@ func _physics_process(delta: float) -> void:
 			_update_collision_shape()
 			_check_collisions()
 
+# Fire a new laser 
 func fire() -> void:
 	if !is_firing:
 		is_firing = true
@@ -78,6 +84,7 @@ func fire() -> void:
 		timer.wait_time = duration
 		timer.start()
 
+# Update the laser points specifically, also taking into account buffs
 func _update_laser() -> void:
 	var points = PoolVector2Array()
 	points.append(Vector2.ZERO)  # Starting point
@@ -106,12 +113,14 @@ func _update_laser() -> void:
 		
 	line2D.points = points
 
+# Updates the laser's collision specifically 
 func _update_collision_shape() -> void:
 	# Update collision shape to follow the laser path
 	var rect_shape = collision_shape.shape as RectangleShape2D
 	rect_shape.extents = Vector2(current_length / 2, laser_width / 2)
 	collision_shape.position = Vector2(current_length / 2, 0)
 
+# Checks for zombies to damage and damages them 
 func _check_collisions() -> void:
 	var overlapping_areas = laser_area.get_overlapping_areas()
 	
@@ -121,6 +130,7 @@ func _check_collisions() -> void:
 			var compManager = area.getCompManager()
 			compManager.take_damage(damage)
 
+# Stop firing the laser on a cooldown 
 func _on_laser_timeout() -> void:
 	is_firing = false
 	current_length = 0.0
@@ -128,20 +138,24 @@ func _on_laser_timeout() -> void:
 	_update_laser()
 	_update_collision_shape()
 
+# Set the laser color 
 func set_laser_color(color: Color) -> void:
 	laser_color = color
 	line2D.default_color = color
 
+# Set the laser width 
 func set_laser_width(width: float) -> void:
 	laser_width = width
 	line2D.width = width
-	
+
+# Make the laser more powerful when EggWorm is buffed 
 func buff(bufferLocation):
 	isBuffed = true
 	bufferLocation = to_local(bufferLocation)
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
 	damage = damage * 1.5
 
+# getter for buffed status
 func isBuffed():
 	return isBuffed
 	

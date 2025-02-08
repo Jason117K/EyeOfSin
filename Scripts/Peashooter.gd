@@ -1,17 +1,21 @@
 extends Area2D
+#Peashooter.gd
 
-var health = 100
-var attack_speed = 5 #1.5  # Seconds between shots
+# Adjustbale health, cost, attack speed 
+export var health = 100
+export var attack_speed = 5 
+export var cost = 50
+
 var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
 var PlantManager
-var canAttack = false
-
-export var cost = 50
+var canAttack = false   # Whether or not the peashooter can attack 
 
 # Raycast to detect zombies in front of the spider
 onready var attack_ray = $DMG_RayCast2D
+# Reference to the animatedSpriteComponent 
 onready var animatedSpriteComponent = $AnimatedSprite
 
+#Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
 	animatedSpriteComponent.animation = "redSpiderDefault"
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
@@ -28,18 +32,16 @@ func _process(_delta):
 				canAttack = true
 			else:
 				canAttack = false
-				
+
+#Cost getter 
+func get_cost():
+	return cost
+	
+					
+# Doubles attack speed when receiving a buff 
 func receiveBuff(bufferName):
-	#attack_speed = 10
 	animatedSpriteComponent.speed_scale = 2
 
-	
-
-# Called every time the shoot timer reaches timeout
-func _on_ShootTimer_timeout():
-	if canAttack:
-		pass
-		#shoot_projectile()
 
 # Function to create and shoot a new projectile
 func shoot_projectile():
@@ -48,6 +50,7 @@ func shoot_projectile():
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer
 
+# Handles the peashooter taking damage 
 func take_damage(damage):
 	#print("taking damage, health is " , health)
 	health = health - damage
@@ -55,18 +58,14 @@ func take_damage(damage):
 		PlantManager.clear_space(self.global_position)
 		queue_free()
 
-func get_cost():
-	return cost
-
-
+# Handles either looping attack animation or returning to default 
 func _on_AnimatedSprite_animation_finished():
 	if canAttack:
 		animatedSpriteComponent.animation = "redSpiderAttack"
 	else:
 		animatedSpriteComponent.animation = "redSpiderDefault"
 
-
-
+#Shoots based on animation 
 func _on_AnimatedSprite_frame_changed():
 	if(animatedSpriteComponent.animation == "redSpiderAttack"):
 		#print(animatedSpriteComponent.frame)

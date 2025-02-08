@@ -13,27 +13,31 @@ var tentacle2_end_color := Color(0.35, 0.0, 0.5, 1.0)   # Dark purple
 export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green
 var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
 
-var health = 100
+#Reference to tentacle scene 
 var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  
-var PlantManager
-var tentacles = []  # Array to track all tentacles
+
+#Adjustable maw health & cost 
+export var health = 100
+export var cost = 200
+
+var PlantManager              # Plantmanager Reference 
+var tentacles = []            # Array to track all tentacles
 var attacking_tentacles = {}  # Dictionary to track which tentacles are attacking which enemies
 var tentacle1
 var tentacle2
 var tentacle3
-var willBelchWebs = false
+var currentTentacle
+var charges = 3.0             # Essentially Maw ammo 
+var willBelchWebs = false     # Whether or not we have a peashooter buff 
+var available_tentacles = []  # Track which tentacles are available
 
+#Essentially a reload timer for the maw
 onready var digestionTimer = $DigestionTimer
 
 # Detection radius for zombies
 onready var detection_area = $DetectionComponent
 
-var currentTentacle
 
-export var cost = 200
-
-var charges = 3.0
-var available_tentacles = []  # Track which tentacles are available
 
 func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
@@ -43,6 +47,7 @@ func _ready():
 func get_cost():
 	return cost
 		
+#Sets Up and Configures all the tentacles 
 func setup_tentacles():
 	# First tentacle setup
 	tentacle1 = tentacle_scene.instance()
@@ -88,24 +93,31 @@ func setup_tentacles():
 	tentacles.append(tentacle3)
 	available_tentacles.append(tentacle3)
 
+#Constantly check for enemies in range and assign them for eating appropriately 
 func _process(_delta):
 	var overlapping_areas = detection_area.get_overlapping_areas()
 	for area in overlapping_areas:
 		if area.is_in_group("Zombie"):
 			assign_tentacle_to_target(area)
 
+#Assign a target to a tentacle 
 func assign_tentacle_to_target(target):
+	#Early return if the target is already being eaten 
 	if target in attacking_tentacles.values():
 		return
-		
+	#If we have a free tentacle, assignment is possible 
 	if available_tentacles.size() > 0 and charges > 0:
+		#Select a tentacle, give it an enemy, and decrement charges 
 		var tentacle = available_tentacles.pop_front()
 		attacking_tentacles[tentacle] = target
 		tentacle.enemy = target
 		tentacle.start_grab_sequence()
 		charges -= 1
 
+#Handle Tentacle Retraction 
 func _on_tentacle_retraction_complete(tentacle):
+	
+	#Get a reference to the eaten enemy 
 	if tentacle in attacking_tentacles:
 		var enemy = attacking_tentacles[tentacle]
 		
@@ -113,30 +125,19 @@ func _on_tentacle_retraction_complete(tentacle):
 			#print(enemy.name)
 			var enemyCompManager = enemy.getCompManager()
 			var slow = enemyCompManager.getSlow()
+			#If the swallowed enemy is slow and maw is buffed, belch a web bomb
 			if(slow > 0):
-				print("YES THEY WERE SLOW ENOGUH")
 				if willBelchWebs:
-					
 					var web_ball = preload("res://Scenes/PlantScenes/WebBall.tscn").instance()
 					add_child(web_ball)
 					web_ball.target_position = Vector2(100, 0)
 					web_ball.travel_time = 1.5
 					
-					#var web_ball2 = preload("res://Scenes/PlantScenes/WebBall.tscn").instance()
-					#add_child(web_ball2)
-					#web_ball2.target_position = Vector2(50, 0)
-					#web_ball2.travel_time = 1.5
-					
-					#var web_ball3 = preload("res://Scenes/PlantScenes/WebBall.tscn").instance()
-					#add_child(web_ball3)
-					#web_ball3.target_position = Vector2(150, 0)
-					#web_ball3.travel_time = 1.5
-					pass
-			
 			enemy.queue_free()
 		attacking_tentacles.erase(tentacle)
 		tentacle.visible = false  # Hide tentacle after retraction
 
+#Handles the Maw taking damage 
 func take_damage(damage):
 	health = health - damage
 	if health <= 0:
@@ -145,6 +146,7 @@ func take_damage(damage):
 		PlantManager.clear_space(self.global_position)
 		queue_free()
 
+#When the time is up, free up a tentacle by adding a charge
 func _on_DigestionTimer_timeout():
 	charges += 1
 	if charges > tentacles.size():
@@ -157,7 +159,7 @@ func _on_DigestionTimer_timeout():
 			tentacle.visible = true
 			break
 
-
+#Handles Receiving Buffs From EggWorm, Peashooter, and Hive, setting color accordingly 
 func receiveBuff(plant):
 	#print(bufferName)
 	var bufferName = plant.name

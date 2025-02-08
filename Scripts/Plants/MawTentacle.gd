@@ -1,6 +1,9 @@
 extends Node2D
 #MawTentacle.gd 
 
+# Handles individual maw tentacle behavior, controlling things like wrigggling and 
+# squirming 
+
 signal retraction_complete
 
 # Basic configuration parameters
@@ -69,19 +72,23 @@ func _ready() -> void:
 	# Add to tentacle group for easy reference
 	add_to_group("tentacles")
 
+# Gets the amount of points for a given tentancle
 func get_pointCount(distance: float) -> int:
 	return int(ceil(distance / constrain))
 
+# Resizes a tentacle 
 func resize_arrays() -> void:
 	pos.resize(pointCount)
 	posPrev.resize(pointCount)
 
+# Initalize tentacle positions
 func init_position() -> void:
 	var start_pos = to_global(anchor_position)
 	for i in range(pointCount):
 		pos[i] = start_pos + Vector2(constrain * i, 0)
 		posPrev[i] = start_pos + Vector2(constrain * i, 0)
 
+# Setup tentacle colors 
 func setup_line_color() -> void:
 	if use_gradient:
 		var gradient = Gradient.new()
@@ -90,7 +97,8 @@ func setup_line_color() -> void:
 		line2D.gradient = gradient
 	else:
 		line2D.default_color = start_color
-
+		
+# Update the color for a given tentacle 
 func update_color(delta: float) -> void:
 	if not enable_pulse:
 		return
@@ -107,6 +115,7 @@ func update_color(delta: float) -> void:
 	else:
 		line2D.default_color = start_color.lightened(pulse)
 
+# Update the wrriggle motion for a given tentacle 
 func update_wriggle(delta: float) -> void:
 	time_elapsed += delta
 	var start_pos = to_global(anchor_position)
@@ -139,15 +148,18 @@ func update_wriggle(delta: float) -> void:
 		pos[i] = pos[i].linear_interpolate(target, 0.2)
 		posPrev[i] = pos[i] - (target - pos[i]) * 0.1
 
+# Starts to grab an enemy 
 func start_grab_sequence() -> void:
+	#Make sure the enemy is valid 
 	if not enemy or not is_instance_valid(enemy):
 		return
 		
 	visible = true  # Ensure visibility during grab
-	current_state = State.EXTENDING
-	target_position = enemy.global_position
+	current_state = State.EXTENDING # Change the state 
+	target_position = enemy.global_position # Assign the target pos to the enemy pos 
 	
-	var start_pos = to_global(anchor_position)
+	#Make the tentacle grab the enemy 
+	var start_pos = to_global(anchor_position) 
 	pos[0] = start_pos
 	posPrev[0] = start_pos
 	for i in range(1, pointCount):
@@ -156,6 +168,8 @@ func start_grab_sequence() -> void:
 		posPrev[i] = pos[i]
 	visible_points = pointCount
 
+
+# Handle the tentacle depending on what state it's in 
 func _process(delta) -> void:
 	if not visible:
 		return
@@ -163,13 +177,16 @@ func _process(delta) -> void:
 	update_color(delta)
 	
 	match current_state:
+		
+		# Continue wriggling and check for enemies to grab 
 		State.IDLE_WRIGGLE:
 			update_wriggle(delta)
 			if enemy and is_instance_valid(enemy):
 				var distance = pos[pointCount-1].distance_to(enemy.global_position)
 				if distance < 200:  # Detection range
 					start_grab_sequence()
-		
+					
+		# Continuously extend tentacle to enemy 
 		State.EXTENDING:
 			var tip_pos = pos[pointCount-1]
 			var dir = (target_position - tip_pos).normalized()
@@ -181,10 +198,12 @@ func _process(delta) -> void:
 					enemy.global_position = pos[pointCount-1]
 					_start_attach_timer()
 		
+		# Attach to enemy 
 		State.ATTACHED:
 			if is_instance_valid(enemy):
 				enemy.global_position = pos[pointCount-1]
 		
+		# Retract tentacle back into maw mouth along with enemy 
 		State.RETRACTING:
 			var start_pos = to_global(anchor_position)
 			var dir = (start_pos - pos[pointCount-1]).normalized()
@@ -209,7 +228,8 @@ func _process(delta) -> void:
 				visible_points = pointCount
 	
 				#init_position()
-
+				
+	# Update all points and contraints 
 	update_points(delta)
 	update_constrain()
 	
@@ -219,6 +239,7 @@ func _process(delta) -> void:
 		visible_positions.push_back(to_local(pos[i]))
 	line2D.points = visible_positions
 
+# Start a timer for the brief "attaching" period of a tentacle 
 func _start_attach_timer() -> void:
 	var timer = Timer.new()
 	timer.name = "AttachTimer"
@@ -228,11 +249,13 @@ func _start_attach_timer() -> void:
 	timer.connect("timeout", self, "_on_attach_timeout")
 	timer.start()
 
+# Starts to retract tentacle 
 func _on_attach_timeout() -> void:
 	current_state = State.RETRACTING
 	visible_points = pointCount
 	$AttachTimer.queue_free()
 
+# Updates tentacle points
 func update_points(delta) -> void:
 	for i in range(1, pointCount-1):
 		if current_state != State.IDLE_WRIGGLE:
@@ -240,6 +263,7 @@ func update_points(delta) -> void:
 			posPrev[i] = pos[i]
 			pos[i] += velocity + (gravity * delta)
 
+# Updates tentacle constraints 
 func update_constrain() -> void:
 	for i in range(pointCount - 1):
 		var distance = pos[i].distance_to(pos[i+1])
@@ -256,9 +280,8 @@ func update_constrain() -> void:
 				pos[i] -= vec2 * (percent/2)
 				pos[i+1] += vec2 * (percent/2)
 
-# Public methods for controlling the tentacle
 
-#Currently, 2nd/tip color fades to white rly fast
+# Sets color for a given tentacle 
 func set_colors(new_start_color: Color, new_end_color: Color = Color()) -> void:
 	start_color = new_start_color
 	if new_end_color.a > 0:
@@ -269,6 +292,7 @@ func set_colors(new_start_color: Color, new_end_color: Color = Color()) -> void:
 		#print("darkened")
 	setup_line_color()
 
+# Configures the color pulse for a given tentacle
 func set_pulse(enabled: bool, new_speed: float = 1.0, new_intensity: float = 0.2) -> void:
 	enable_pulse = enabled
 	pulse_speed = new_speed
