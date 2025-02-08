@@ -1,4 +1,7 @@
 extends Area2D
+#WebBall.gd
+
+# Ball that spawns when buffed Maws eat an enemy covered in webs
 
 # Export variables for easy editing in inspector
 export var target_position = Vector2() setget set_target  # Target position to move towards
@@ -9,7 +12,6 @@ var start_position = Vector2()
 var time = 0
 var velocity = Vector2()
 var debug_marker: Node2D
-
 var enemiesToWeb = []
 
 func _ready():
@@ -22,6 +24,7 @@ func _ready():
 	calculate_trajectory()
 	create_debug_marker()
 
+# Get all valid enemies and then apply a slow effect to them
 func die():
 	var valid_enemies = []
 	
@@ -30,7 +33,7 @@ func die():
 		if is_instance_valid(enemy) and not enemy.is_queued_for_deletion():
 			if enemy.is_in_group("Zombie"):
 				valid_enemies.append(enemy)
-				
+	# Then slow the valid enemies 
 	for enemy in valid_enemies:
 		if enemy.is_in_group("Zombie"):
 			var compManager = enemy.getCompManager()
@@ -39,7 +42,8 @@ func die():
 			
 	queue_free()  # Remove the projectile # Replace with function body.
 		
-		
+
+# Handle the math of launching a ball in an arc 
 func _physics_process(delta):
 	time += delta
 	
@@ -61,6 +65,7 @@ func _physics_process(delta):
 			   2 * one_minus_t * t * p1 + \
 			   t * t * p2
 
+# Calculate the trajectory
 func calculate_trajectory():
 	# Reset time when recalculating
 	time = 0
@@ -72,12 +77,14 @@ func calculate_trajectory():
 	# Store calculated values
 	velocity = (target_position - start_position) / travel_time
 
+# Calculate the midpoint of the curve 
 func calculate_mid_point() -> Vector2:
 	var mid_x = (start_position.x + target_position.x) / 2
 	var mid_y = min(start_position.y, target_position.y) - \
 				start_position.distance_to(target_position) * 0.3
 	return Vector2(mid_x, mid_y)
 
+# Set a target for the ball to hit 
 func set_target(new_target: Vector2):
 	target_position = new_target
 	if is_inside_tree():
@@ -85,6 +92,7 @@ func set_target(new_target: Vector2):
 		if debug_marker:
 			debug_marker.position = target_position
 
+# Set how long the ball will travel for 
 func set_travel_time(new_time: float):
 	travel_time = new_time
 	if is_inside_tree():
@@ -101,8 +109,8 @@ class DebugMarker extends Node2D:
 	func _draw():
 		draw_circle(Vector2.ZERO, 5, Color.blue)
 
-
+# Add enemies to enemiesToWeb when they enter the area 
 func _on_WebBall_area_entered(area):
 	print("The Webbed Enemy is ", area.name)
 	enemiesToWeb.append(area)
-	pass # Replace with function body.
+
