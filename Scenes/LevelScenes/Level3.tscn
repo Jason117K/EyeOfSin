@@ -46,9 +46,10 @@ animations = [ {
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 1
-glow_hdr_threshold = 1.5
 glow_bicubic_upscale = true
+glow_high_quality = true
 adjustment_enabled = true
+adjustment_brightness = 0.9
 
 [node name="Level3" type="Control"]
 anchor_right = 1.0
@@ -63,13 +64,31 @@ script = ExtResource( 6 )
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 747, 77 )
 Round1_Zombies = {
-"Base": 7,
-"BucketHead": 0,
-"ConeHead": 0,
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round2_Zombies = {
+"Base": 2,
+"BucketHead": 2,
+"ConeHead": 2,
+"Dancer": 1,
+"PoleVault": 2,
+"ScreenDoor": 2,
+"Ticker": 2
+}
+Round3_Zombies = {
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
+"Dancer": 0,
+"PoleVault": 1,
+"ScreenDoor": 1,
+"Ticker": 1
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource( 9 )]
@@ -79,13 +98,31 @@ z_index = 1
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 747, 109 )
 Round1_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 0,
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round2_Zombies = {
+"Base": 2,
+"BucketHead": 2,
+"ConeHead": 2,
+"Dancer": 0,
+"PoleVault": 2,
+"ScreenDoor": 2,
+"Ticker": 2
+}
+Round3_Zombies = {
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
+"Dancer": 0,
+"PoleVault": 1,
+"ScreenDoor": 1,
+"Ticker": 1
 }
 
 [node name="WavePreview2" parent="GameLayer/ZombieSpawner2" instance=ExtResource( 9 )]
@@ -95,13 +132,31 @@ z_index = 1
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 747, 143 )
 Round1_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round2_Zombies = {
+"Base": 2,
+"BucketHead": 2,
+"ConeHead": 2,
+"Dancer": 0,
+"PoleVault": 2,
+"ScreenDoor": 2,
+"Ticker": 2
+}
+Round3_Zombies = {
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
+"Dancer": 0,
+"PoleVault": 1,
+"ScreenDoor": 1,
+"Ticker": 1
 }
 
 [node name="WavePreview3" parent="GameLayer/ZombieSpawner3" instance=ExtResource( 9 )]
@@ -111,13 +166,31 @@ z_index = 1
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 751, 174 )
 Round1_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 0,
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round2_Zombies = {
+"Base": 2,
+"BucketHead": 2,
+"ConeHead": 2,
+"Dancer": 0,
+"PoleVault": 2,
+"ScreenDoor": 2,
+"Ticker": 2
+}
+Round3_Zombies = {
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
+"Dancer": 0,
+"PoleVault": 1,
+"ScreenDoor": 1,
+"Ticker": 1
 }
 waveDelay = 1.2
 
@@ -128,13 +201,31 @@ z_index = 1
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 754, 207 )
 Round1_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 0,
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round2_Zombies = {
+"Base": 2,
+"BucketHead": 2,
+"ConeHead": 2,
+"Dancer": 1,
+"PoleVault": 2,
+"ScreenDoor": 2,
+"Ticker": 2
+}
+Round3_Zombies = {
+"Base": 1,
+"BucketHead": 1,
+"ConeHead": 1,
+"Dancer": 0,
+"PoleVault": 1,
+"ScreenDoor": 1,
+"Ticker": 1
 }
 
 [node name="WavePreview5" parent="GameLayer/ZombieSpawner5" instance=ExtResource( 9 )]
@@ -148,7 +239,7 @@ z_index = -1
 position = Vector2( -59, 222 )
 z_index = 1
 script = ExtResource( 8 )
-StartDelay = 0
+StartDelay = 8
 Wave2StartTime = 45
 Wave3StartTime = 75
 Wave1_Interval = 2.0
@@ -156,10 +247,11 @@ Wave2_Interval = 4
 Wave3_Interval = 2.0
 
 [node name="ColorRect" type="ColorRect" parent="GameLayer"]
-visible = false
-margin_right = 1130.0
-margin_bottom = 598.0
-color = Color( 0, 0, 0, 1 )
+margin_left = 739.0
+margin_top = 43.0
+margin_right = 777.0
+margin_bottom = 241.0
+color = Color( 2, 0, 0, 0.729412 )
 
 [node name="UILayer" type="Control" parent="."]
 margin_left = 1.0
@@ -225,6 +317,7 @@ scale = Vector2( 1, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Environment/Animated"]
 position = Vector2( 347, 347 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 flip_h = true
 
@@ -258,6 +351,26 @@ texture = ExtResource( 15 )
 position = Vector2( -36, 16 )
 texture = ExtResource( 14 )
 
+[node name="CoralBigProp" type="Sprite" parent="Environment/Static"]
+position = Vector2( 217, 17 )
+texture = ExtResource( 17 )
+
+[node name="CoralBigProp2" type="Sprite" parent="Environment/Static"]
+position = Vector2( 176, 364 )
+texture = ExtResource( 17 )
+
+[node name="CoralSmallProp2" type="Sprite" parent="Environment/Static"]
+position = Vector2( 429, 357 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp" type="Sprite" parent="Environment/Static"]
+position = Vector2( 464, 290 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp3" type="Sprite" parent="Environment/Static"]
+position = Vector2( 542, 332 )
+texture = ExtResource( 18 )
+
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 volume_db = -80.0
@@ -274,23 +387,3 @@ anchor_bottom = 1.0
 margin_top = 0.399994
 margin_bottom = 40.4
 rect_scale = Vector2( 0.5, 0.5 )
-
-[node name="CoralBigProp" type="Sprite" parent="."]
-position = Vector2( 390, 47 )
-texture = ExtResource( 17 )
-
-[node name="CoralBigProp" type="Sprite" parent="CoralBigProp"]
-position = Vector2( -41, 347 )
-texture = ExtResource( 17 )
-
-[node name="CoralSmallProp" type="Sprite" parent="CoralBigProp"]
-position = Vector2( 247, 273 )
-texture = ExtResource( 18 )
-
-[node name="CoralSmallProp" type="Sprite" parent="CoralBigProp/CoralSmallProp"]
-position = Vector2( 78, 42 )
-texture = ExtResource( 18 )
-
-[node name="CoralSmallProp2" type="Sprite" parent="CoralBigProp"]
-position = Vector2( 212, 340 )
-texture = ExtResource( 18 )

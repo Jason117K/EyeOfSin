@@ -90,6 +90,7 @@ script = ExtResource( 5 )
 [node name="ComponentManager" parent="." instance=ExtResource( 9 )]
 
 [node name="HealthComponent" parent="." instance=ExtResource( 7 )]
+health = 10
 healthRegen = 0.1
 
 [node name="SpeedComponent" parent="." instance=ExtResource( 3 )]
@@ -105,6 +106,7 @@ shape = SubResource( 8 )
 material = SubResource( 15 )
 frames = SubResource( 7 )
 animation = "WebWalk"
+frame = 3
 playing = true
 script = ExtResource( 10 )
 

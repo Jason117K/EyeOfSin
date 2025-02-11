@@ -213,7 +213,7 @@ position = Vector2( 0, 32 )
 position = Vector2( 32, 32 )
 
 [node name="SummonTimer" type="Timer" parent="SummonComponent"]
-wait_time = 5.0
+wait_time = 15.0
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="."]

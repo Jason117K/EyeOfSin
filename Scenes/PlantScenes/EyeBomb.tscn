@@ -295,7 +295,7 @@ script = ExtResource( 3 )
 [node name="AnimSpriteComponent" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
 animation = "spawn"
-frame = 8
+frame = 6
 speed_scale = 2.0
 playing = true
 
@@ -314,7 +314,7 @@ shape = SubResource( 19 )
 visible = false
 position = Vector2( 320, 0 )
 frames = SubResource( 48 )
-frame = 23
+frame = 13
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
