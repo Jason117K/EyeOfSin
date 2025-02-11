@@ -8,13 +8,15 @@ export var cost = 25
 #Keep a reference to our sun scene 
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
-
+onready var animSpriteComp = $AnimatedSprite
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$SunTimer.start()  # Start the timer
 	assert($SunTimer.connect("timeout", self, "_on_SunTimer_timeout") == OK)
+	
+	animSpriteComp.animation = "spawn"
 	
 
 # Called every time the sun timer reaches timeout
@@ -47,3 +49,18 @@ func take_damage(damage):
 func get_cost():
 	return cost
 	
+
+
+# Stops Spawn Animation From Playing
+func _on_AnimatedSprite_animation_finished():
+	if animSpriteComp.animation == "spawn":
+		animSpriteComp.animation = "idle"
+		
+		
+		
+		
+		
+		
+		
+		
+		

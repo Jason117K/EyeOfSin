@@ -25,11 +25,15 @@ var drone_rest_positions = {}                      # Dictionary to store rest po
 onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
 var isBuffed = false                               # Tracks Current Buff State Of Drone  
 var PlantManager                                   # Reference to PlantManager 
+
+
+onready var animSpriteComp = $AnimatedSpriteComp
  
 func _ready():
 	# Initialize drones & Plant Manager 
 	spawn_initial_drones()
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	animSpriteComp.animation = "spawn"
 	
 #Getter for plant cost 
 func get_cost():
@@ -228,3 +232,10 @@ func _on_DroneRespawnTimer_timeout():
 # Add this helper function to scripts that deal with combat
 func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
+
+
+
+# Stops Spawn Animation From Playing
+func _on_AnimatedSpriteComp_animation_finished():
+	if animSpriteComp.animation == "spawn":
+		animSpriteComp.animation = "idle"

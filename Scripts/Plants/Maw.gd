@@ -37,11 +37,12 @@ onready var digestionTimer = $DigestionTimer
 # Detection radius for zombies
 onready var detection_area = $DetectionComponent
 
-
+onready var animSpriteComp = $AnimatedSprite
 
 func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	setup_tentacles()
+	animSpriteComp.animation = "spawn"
 	
 #Plant Cost Getter
 func get_cost():
@@ -175,4 +176,12 @@ func receiveBuff(plant):
 		tentacle1.set_colors(Color.white, Color.white)
 		tentacle2.set_colors(Color.black, Color.black)
 		health = 200
+		
+
+# Stops Spawn Animation From Playing
+func _on_AnimatedSprite_animation_finished():
+	if animSpriteComp.animation == "spawn":
+		animSpriteComp.animation = "default"
+		
+		
 		

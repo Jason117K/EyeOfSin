@@ -17,6 +17,7 @@ var isBuffed = false
 #Grabs reference to plantManager 
 func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	animComponent.animation = "spawn"
 
 #Sets buffed to true 
 func receiveBuff(bufferName):
@@ -32,14 +33,17 @@ func take_damage(damage):
 		
 #Dynamically adjusts the walnuts animation based on damage level 
 func _process(delta):
-	if health > (maxHealth * 0.9):
-		animComponent.animation = "default"
-	elif health < maxHealth && health > ((maxHealth/3)*2) :
-		animComponent.animation = "hurt1"
-	elif (health < ((maxHealth/3)*2)) && health > (maxHealth/3):
-		animComponent.animation = "hurt2"
+	if animComponent.animation == "spawn":
+		return
 	else:
-		animComponent.animation = "hurt3"
+		if health > (maxHealth * 0.9):
+			animComponent.animation = "default"
+		elif health < maxHealth && health > ((maxHealth/3)*2) :
+			animComponent.animation = "hurt1"
+		elif (health < ((maxHealth/3)*2)) && health > (maxHealth/3):
+			animComponent.animation = "hurt2"
+		else:
+			animComponent.animation = "hurt3"
 		
 	if isBuffed:
 		health = health + buffedHealthRegen
@@ -49,3 +53,9 @@ func _process(delta):
 #Cost getter
 func get_cost():
 	return cost
+	
+	
+
+func _on_AnimatedSpriteComponent_animation_finished():
+	if animComponent.animation == "spawn":
+		animComponent.animation = "default"

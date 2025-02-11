@@ -2,8 +2,10 @@ extends Node2D
 #EyeBomb.gd
 
 #Component References
+# TODO FIX THISSSSSS
 onready var spriteComp = $AnimSpriteComponent
 onready var hitBoxComp = $HitBoxComponent
+#onready var animSpriteComp = $AnimatedSprite
 
 export var cost = 25 
 export var damage = 10 #explosion damage 
@@ -11,6 +13,13 @@ export var damage = 10 #explosion damage
 var enemiesToHit = []  #Stores reference to valid enemy 
 var enemiesToHitTemp   #Stores reference to enemy targets, both valid and invalid
 var startNum = 0       #Makes sure the eye only explodes once  
+
+
+
+
+
+func ready():
+	spriteComp.animation = "spawn"
 
 
 #Returns the plant cost 
@@ -40,6 +49,12 @@ func receiveBuff(bufferName):
 	
 #Damages enemies on explosion finish, looping through array 
 func _on_SpriteComponent_animation_finished():
+
+	#print(spriteComp.animation)
+	if spriteComp.animation == "spawn":
+		print("Spaen Done")
+		spriteComp.animation = "default"
+		return 
 	if(spriteComp.animation == "default"):
 		pass
 	elif(spriteComp.animation == "boom"):
@@ -57,5 +72,11 @@ func is_instance_valid_and_alive(node) -> bool:
 
 # Delete the eyebomb on explosion completion 
 func _on_SpriteComponent_frame_changed():
-	if spriteComp.frame == 9:
-		queue_free()
+	if spriteComp.animation == "Boom":
+		if spriteComp.frame == 9:
+			queue_free()
+
+
+
+
+

@@ -21,17 +21,21 @@ func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$ShootTimer.start()  # Start the shoot timer
 	assert($ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout") ==OK)
+	animatedSpriteComponent.animation = "spawn"
 
 #Handles Collision In Relation To Attacking
 func _process(_delta):
-	if attack_ray.is_colliding():
-		var collider = attack_ray.get_collider()
-		if collider:
-			#print("Collider Name is ", collider.name)
-			if collider.is_in_group("Zombie"):
-				canAttack = true
-			else:
-				canAttack = false
+	if animatedSpriteComponent.animation == "spawn":
+		return
+	else:
+		if attack_ray.is_colliding():
+			var collider = attack_ray.get_collider()
+			if collider:
+				#print("Collider Name is ", collider.name)
+				if collider.is_in_group("Zombie"):
+					canAttack = true
+				else:
+					canAttack = false
 
 #Cost getter 
 func get_cost():
@@ -60,6 +64,11 @@ func take_damage(damage):
 
 # Handles either looping attack animation or returning to default 
 func _on_AnimatedSprite_animation_finished():
+	if animatedSpriteComponent.animation == "spawn":
+		
+		animatedSpriteComponent.position = Vector2(animatedSpriteComponent.position.x, animatedSpriteComponent.position.y -8.5)
+		animatedSpriteComponent.animation = "redSpiderDefault"
+		return
 	if canAttack:
 		animatedSpriteComponent.animation = "redSpiderAttack"
 	else:
@@ -71,7 +80,6 @@ func _on_AnimatedSprite_frame_changed():
 		#print(animatedSpriteComponent.frame)
 		if(animatedSpriteComponent.frame == 3):
 			shoot_projectile()
-
 
 
 

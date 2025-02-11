@@ -56,11 +56,6 @@ func clear_space(passed_grid_pos):
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
 	
-	#Check if Spot is Occupied
-	if grid_pos in grid_map:
-		print("Cell already occupied!")
-		return
-		
 	# Dynamically get the selected plant	
 	selected_plant_scene = get_selected_plant()  
 	
@@ -68,8 +63,21 @@ func place_plant(grid_pos: Vector2):
 		print("No plant selected!")
 		return
 	
-	#Get The Cost 
 	var plant_instance = selected_plant_scene.instance()
+	
+	#Check if Spot is Occupied
+	if grid_pos in grid_map:
+		print("Cell already occupied!")
+		return
+	
+	#Maw is larger, check neighboring cell
+	if plant_instance.name == "Maw":
+		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
+			print("Maw is Big, Neighboring Cell Occupied")
+			return 
+		
+	
+	#Get The Cost 
 	plant_cost = plant_instance.get_cost()
 	
 	if sun_points >= plant_cost: 

@@ -18,6 +18,8 @@ export(NodePath) var sprite_path
 onready var sprite = get_node(sprite_path) if sprite_path else null
 onready var laserShootComp = $Worm2/LaserShootComponent
 
+#onready var animSpriteComp = $AnimatedSprite
+
 # Internal animation state
 var time = 0.0
 var current_squash = 0.0
@@ -41,6 +43,8 @@ func _ready():
 		initial_sprite_position = sprite.position  # Store the initial position
 	else:
 		push_warning("No sprite assigned to animate!")
+		
+	#animSpriteComp.animation = "spawn"
 		
 		
 # Returns the plants cost 
@@ -108,3 +112,7 @@ func _process(delta):
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
 	
+# Stops Spawn Animation From Playing
+#func _on_AnimatedSprite_animation_finished():
+	#if animSpriteComp.animation == "spawn":
+	#	animSpriteComp.animation = "idle"
