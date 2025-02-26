@@ -5,7 +5,7 @@ extends Control
 
 #Sets up Tilemap 
 func _ready():
-	$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
+	#$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
 	$GameLayer/GridManager.set_tiles_for_rows(1,2, 26)
 	
 	$GameLayer/GridManager.set_tiles_for_rows(2,3, 26)

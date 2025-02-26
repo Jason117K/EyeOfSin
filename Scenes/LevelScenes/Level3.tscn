@@ -46,10 +46,9 @@ animations = [ {
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 1
+glow_hdr_threshold = 1.5
 glow_bicubic_upscale = true
-glow_high_quality = true
 adjustment_enabled = true
-adjustment_contrast = 1.2
 
 [node name="Level3" type="Control"]
 anchor_right = 1.0
@@ -318,7 +317,6 @@ scale = Vector2( 1, 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Environment/Animated"]
 position = Vector2( 347, 347 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 flip_h = true
 

@@ -9,6 +9,7 @@ var grid_size = 32 # Defines the size of each grid cell
 var grid_map = {}  # Dictionary to store occupied cells
 var sun_points = 200 # Holds how many sun points we have currently 
 var plant_cost = 25  # Holds the cost of the currently selected plant 
+onready var parentName = get_parent().get_name()
 
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
@@ -34,9 +35,9 @@ func _input(event):
 					return
 			
 			# Place the plant assuming it's within bounds of the level
-			if(get_parent().name == "Main"):
-				if(grid_pos.x<769 && grid_pos.y<321 && grid_pos.y > 128):
-					#print("Place Plant " , grid_pos)
+			if(parentName == "Main"):
+				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
+					print("Place Plant " , grid_pos)
 					place_plant(grid_pos)
 			else:
 				if(grid_pos.x<769 && grid_pos.y<288 && grid_pos.y > 31):

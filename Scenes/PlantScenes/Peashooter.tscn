@@ -14,42 +14,52 @@
 extents = Vector2( 8, 5 )
 
 [sub_resource type="AtlasTexture" id=118]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=119]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 40, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=120]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 80, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=121]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 120, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=122]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 160, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=123]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 200, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=124]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=125]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 40, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=126]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 80, 0, 40, 40 )
 
 [sub_resource type="AtlasTexture" id=127]
+flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 120, 0, 40, 40 )
 
@@ -404,7 +414,7 @@ autostart = true
 modulate = Color( 1.5, 1.5, 1.5, 1 )
 frames = SubResource( 9 )
 animation = "redSpiderDefault"
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 
@@ -415,7 +425,7 @@ visible = false
 position = Vector2( 0, -8.5 )
 frames = SubResource( 9 )
 animation = "redSpiderDefault"
-frame = 3
+frame = 1
 playing = true
 flip_h = true
 
@@ -425,7 +435,7 @@ position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim 2"
-frame = 1
+frame = 3
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
@@ -433,7 +443,6 @@ position = Vector2( 64, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim 2"
-frame = 2
 playing = true
 
 [node name="BloodTile3" type="AnimatedSprite" parent="PreviewNodes"]
@@ -441,7 +450,7 @@ position = Vector2( -32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim 2"
-frame = 1
+frame = 3
 playing = true
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -461,56 +470,56 @@ collide_with_bodies = false
 giveBuffTo = [ "Hive", "Maw", "None", "None", "None", "None", "None", "None" ]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-frame = 7
+frame = 1
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
 visible = false
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 4
+frame = 26
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
 visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 4
+frame = 26
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-frame = 4
+frame = 26
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
 visible = false
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 4
+frame = 26
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
 visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 4
+frame = 26
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
 visible = false
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 4
+frame = 26
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
 visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 4
+frame = 26
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
 visible = false
-frame = 7
+frame = 1
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

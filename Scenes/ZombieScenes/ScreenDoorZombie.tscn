@@ -454,6 +454,7 @@ shape = SubResource( 17 )
 material = SubResource( 27 )
 frames = SubResource( 16 )
 animation = "Attack"
+frame = 3
 playing = true
 script = ExtResource( 10 )
 
