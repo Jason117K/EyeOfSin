@@ -9,6 +9,7 @@ var bomb_scene = preload("res://Scenes/PlantScenes/Bomb.tscn")
 
 export var health = 76 #25 # Health of the zombie
 export var healthRegen = 0.0 # Health regen rate
+export var bloodWorth := 1.0
 
 var injured = false 
 var halfHealth = health/2
@@ -39,6 +40,14 @@ func take_damage(damage):
 			#print(((get_parent().get_parent()).name), "is parent")
 			get_parent().get_parent().add_child(bomb)  
 		emit_signal("enemy_died", self)
+		
+		var root = get_tree().current_scene
+		var plant_manager = root.get_node("PlantManager")
+		if plant_manager:  # If the PlantManager or GameManager is set
+			#$CollectAudioPlayer.play()
+			plant_manager.add_sun(bloodWorth)  # Add 25 sun points (or whatever amount)
+			plant_manager.play_sun_collect()
+		
 		zombie.die()
 
 
@@ -57,3 +66,5 @@ func resetHealth():
 #Sets explode to true
 func willExplode():
 	explode = true
+	
+	

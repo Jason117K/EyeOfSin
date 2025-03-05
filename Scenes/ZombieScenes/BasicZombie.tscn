@@ -185,6 +185,7 @@ position = Vector2( 0, 1.83333 )
 [node name="SpeedComponent" parent="." instance=ExtResource( 8 )]
 
 [node name="AttackComponent" parent="." instance=ExtResource( 5 )]
+attack_power = 24
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1.83333 )
@@ -194,7 +195,7 @@ shape = SubResource( 1 )
 material = SubResource( 20 )
 frames = SubResource( 11 )
 animation = "Walk"
-frame = 7
+frame = 5
 playing = true
 flip_h = true
 script = ExtResource( 6 )

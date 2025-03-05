@@ -11,7 +11,7 @@ var is_previewing: bool = false # Whether or not we are currently previewing
 
 # Preload the plant scenes
 var peashooter_scene = preload("res://Scenes/PlantScenes/Peashooter.tscn")
-var sunflower_scene = preload("res://Scenes/PlantScenes/Sunflower.tscn")
+var sunflower_scene := preload("res://Scenes/PlantScenes/Sunflower.tscn")
 var walnut_scene = preload("res://Scenes/PlantScenes/WalnutTree.tscn")
 var maw_scene = preload("res://Scenes/PlantScenes/Maw.tscn")
 var egg_scene = preload("res://Scenes/PlantScenes/EggWorm.tscn")
@@ -20,40 +20,100 @@ var hive_scene = preload("res://Scenes/PlantScenes/Hive.tscn")
 
 # Label for Current Plant 
 var currentPlantLabel
+var currentPlantCost
 var deselectText = " PRESS [X] TO DESELECT"
 
 onready var preview_container = Node2D.new()
 
+
+var sunFlowerCostLabel
+var peaShooterCostLabel
+var walnutCostLabel
+var eyeCostLabel 
+var eggCostLabel
+var mawCostLabel
+var hiveCostLabel 
+
+
 func _ready():
+
 	set_process_input(true)
 	
 	# Connect button signals to their respective functions
-	var root = get_parent().get_parent().get_name()
+	var root = get_parent().get_name()
 	
-	currentPlantLabel = $VBoxContainer/CurrentPlantLabel
+	#Set Up Label for Displaying Current Plant
+	currentPlantLabel = $CurrentPlantLabel
 	
-	var SunFlowerButton = $VBoxContainer/HBoxContainer/SunflowerButton
-	var PeaShooterButton = $VBoxContainer/HBoxContainer/PeashooterButton2
-	var WalnutButton = $VBoxContainer/HBoxContainer/WalnutButton
-	var EyeButton = $VBoxContainer/HBoxContainer/EyeButton
-	var EggButton = $VBoxContainer/HBoxContainer/EggButton
-	var MawButton = $VBoxContainer/HBoxContainer/MawButton
-	var HiveButton = $VBoxContainer/HBoxContainer/HiveButton
+	var temp_instance
+	
+	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+	sunFlowerCostLabel = $VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
+	temp_instance = sunflower_scene.instance()
+	sunFlowerCostLabel.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	peaShooterCostLabel = $VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
+	temp_instance = peashooter_scene.instance()
+	peaShooterCostLabel.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	var WalnutButton = $VBoxContainer/HBoxContainer/Walnut/WalnutButton
+	walnutCostLabel = $VBoxContainer/HBoxContainer/Walnut/WalnutLabel
+	temp_instance = walnut_scene.instance()
+	walnutCostLabel.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	var EyeButton = $VBoxContainer/HBoxContainer/Eye/EyeButton
+	eyeCostLabel = $VBoxContainer/HBoxContainer/Eye/EyeLabel
+	temp_instance = bomb_scene.instance()
+	eyeCostLabel.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()		
+	
+	var EggButton = $VBoxContainer/HBoxContainer/Egg/EggButton
+	eggCostLabel = $VBoxContainer/HBoxContainer/Egg/EggLabel
+	temp_instance = egg_scene.instance()
+	eggCostLabel.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	var MawButton = $VBoxContainer/HBoxContainer/Maw/MawButton
+	mawCostLabel = $VBoxContainer/HBoxContainer/Maw/MawLabel
+	temp_instance = maw_scene.instance()
+	mawCostLabel.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+			
+	var HiveButton = $VBoxContainer/HBoxContainer/Hive/HiveButton
+	hiveCostLabel = $VBoxContainer/HBoxContainer/Hive/HiveLabel
+	temp_instance = hive_scene.instance()
+	hiveCostLabel.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()		
 	
 	# Make sure the appropirate plants are available per level
 	if root == "Main": #or root == "Level2":
 		assert(PeaShooterButton.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
+		
 		assert(SunFlowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
-		WalnutButton.visible = true
-		MawButton.visible = false
+		
+		$VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
 		EggButton.visible = false
+
+		$VBoxContainer/HBoxContainer/Eye/EyeLabel.visible = false
 		EyeButton.visible = false
+
+		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		MawButton.visible = false
+
+		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
+		HiveButton.visible = false
+		
 		
 	elif root == "Level2":
 		assert(PeaShooterButton.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
 		assert(SunFlowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
 		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
 		MawButton.visible = false
+		mawCostLabel.visible = false
 	else: #root = Level3
 		assert(PeaShooterButton.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
 		assert(SunFlowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
@@ -76,57 +136,101 @@ func _input(event):
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 
 func _on_PeashooterButton_pressed():
 	selected_plant = peashooter_scene
+	var temp_instance = peashooter_scene.instance()
 	create_preview(peashooter_scene)
-	print("Peashooter selected")
+	
 	currentPlantLabel.text = "SPIDER SELECTED " + deselectText
+	currentPlantCost = $VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
+	currentPlantCost.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	print("Peashooter selected")
 	$UIClickAudio.play()
 
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
 func _on_SunflowerButton_pressed():
+	
 	selected_plant = sunflower_scene
+	var temp_instance = sunflower_scene.instance()
 	create_preview(sunflower_scene)
-	print("Sunflower selected")
+	
 	currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
+	currentPlantCost = $VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
+	#currentPlantCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	print("3Label text is ", sunFlowerCostLabel.text)
+	print("Sunflower selected", temp_instance.get_name())
 	$UIClickAudio.play()
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_WalnutButton_pressed():
 	selected_plant = walnut_scene
+	var temp_instance = walnut_scene.instance()
 	create_preview(walnut_scene)
-	print("Walnut selected")
+	
 	currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
+	currentPlantCost = $VBoxContainer/HBoxContainer/Walnut/WalnutLabel
+	currentPlantCost.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+		
+	print("Walnut selected")
 	$UIClickAudio.play()
 
 # Plays Sound and Makes the Maw the current selected plant, changing label & preview image 
 func _on_MawButton_pressed():
 	selected_plant = maw_scene
+	var temp_instance = maw_scene.instance()	
 	create_preview(maw_scene)
-	print("Maw Selected")
+	
 	currentPlantLabel.text = "MAW SELECTED " + deselectText
+	currentPlantCost = $VBoxContainer/HBoxContainer/Maw/MawLabel
+	currentPlantCost.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+		
+	print("Maw Selected")
 	$UIClickAudio.play()
 
 # Plays Sound and Makes the EggWorm the current selected plant, changing label & preview image 
 func _on_EggButton_pressed():
 	selected_plant = egg_scene
 	create_preview(egg_scene)
-	print("EggWorm Selected")
+	var temp_instance = egg_scene.instance()
+		
 	currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
+	currentPlantCost = $VBoxContainer/HBoxContainer/Egg/EggLabel
+	currentPlantCost.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	print("EggWorm Selected")
 	$UIClickAudio.play()
 
 # Plays Sound and Makes the EyeBomb the current selected plant, changing label & preview image 
 func _on_EyeButton_pressed():
 	selected_plant = bomb_scene
 	create_preview(bomb_scene)
-	print("EyeBomb Selected")
+	var temp_instance = bomb_scene.instance()
+		
 	currentPlantLabel.text = "EYE MINE SELECTED " + deselectText
+	currentPlantCost = $VBoxContainer/HBoxContainer/Eye/EyeLabel
+	currentPlantCost.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	
+	print("EyeBomb Selected")
 	$UIClickAudio.play()
 	
 # Plays Sound and Makes the Hive the current selected plant, changing label & preview image 
 func _on_HiveButton_pressed():
 	selected_plant = hive_scene
 	create_preview(hive_scene)
-	print("Hive Selected")
+	var temp_instance = hive_scene.instance()
+		
 	currentPlantLabel.text = "HIVE SELECTED " + deselectText
+	currentPlantCost = $VBoxContainer/HBoxContainer/Hive/HiveLabel
+	currentPlantCost.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+		
+	print("Hive Selected")
 	$UIClickAudio.play()
 	
 # Creates a transparent preview image for a given plant scene 
@@ -143,10 +247,12 @@ func create_preview(plant_scene):
 			# Create the preview sprite and make it semi-transparent 
 			var preview_sprite = child.duplicate()
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
+			preview_sprite.scale = Vector2(2,2)
 			
 			# Store original position and print it
 			var original_pos = Vector2(child.position.x, child.position.y)
 			preview_sprite.set_meta("original_offset", original_pos)
+			print(preview_container.name)
 			
 			# Add the preview sprite to the container and array 
 			preview_container.add_child(preview_sprite)

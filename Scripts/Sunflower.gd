@@ -4,7 +4,7 @@ extends Area2D
 
 # Adjustable health and cost 
 export var health = 100
-export var cost = 25
+export var cost = 50
 #Keep a reference to our sun scene 
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager

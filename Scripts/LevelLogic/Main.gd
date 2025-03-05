@@ -14,6 +14,6 @@ func _ready():
 	$GameLayer/GridManager.set_tiles_for_rows(5,6, 23)
 	$GameLayer/GridManager.set_tiles_for_rows(6,7, 26)
 	
-	$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
+	#$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
 	$GameLayer/GridManager.set_tiles_for_rows(8,9, 29)
 

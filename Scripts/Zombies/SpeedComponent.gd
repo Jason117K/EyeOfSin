@@ -14,6 +14,8 @@ var is_attacking
 
 # Set the original speed immidiately
 func _ready():
+	if zombie.get_name() == "DancerZombie":
+		print("THE DANCER POS IS ", zombie.position)
 	originalSpeed = speed
 
 #Setter for Speed

@@ -224,6 +224,8 @@ script = ExtResource( 2 )
 
 [node name="HealthComponent" parent="." instance=ExtResource( 10 )]
 position = Vector2( 4, 4 )
+health = 120
+bloodWorth = 2.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource( 8 )]
 
@@ -237,7 +239,7 @@ shape = SubResource( 1 )
 material = SubResource( 31 )
 frames = SubResource( 17 )
 animation = "WebAttack"
-frame = 6
+frame = 2
 playing = true
 flip_h = true
 script = ExtResource( 12 )

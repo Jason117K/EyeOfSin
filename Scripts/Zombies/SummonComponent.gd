@@ -28,6 +28,8 @@ func summon_backup():
 	#print("Summoning")
 	# Get reference to GameLayer
 	var game_layer = get_parent().get_parent()
+	var root = get_tree().current_scene
+	var level = root.get_name()
 	
 	#TODO double check these postions 
 	
@@ -38,8 +40,17 @@ func summon_backup():
 		points.erase(point2)
 		points.erase(point3)
 		
+	if level == "Main" && (dancerZombie.position.y < 112):
+		points.erase(point1)
+		points.erase(point2)
+		points.erase(point3)
 		
 	if(dancerZombie.position.y > 340):
+		points.erase(point7)
+		points.erase(point8)
+		points.erase(point9)
+		
+	if level == "Main" && (dancerZombie.position.y > 173):
 		points.erase(point7)
 		points.erase(point8)
 		points.erase(point9)

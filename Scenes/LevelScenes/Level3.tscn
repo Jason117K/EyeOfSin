@@ -22,6 +22,14 @@
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 13 )
 
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 1.5
+glow_bicubic_upscale = true
+adjustment_enabled = true
+
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 32, 41 )
@@ -42,17 +50,11 @@ animations = [ {
 "speed": 3.0
 } ]
 
-[sub_resource type="Environment" id=2]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 1
-glow_hdr_threshold = 1.5
-glow_bicubic_upscale = true
-adjustment_enabled = true
-
 [node name="Level3" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -740.0
+margin_bottom = -416.0
 mouse_filter = 2
 script = ExtResource( 6 )
 
@@ -60,6 +62,9 @@ script = ExtResource( 6 )
 
 [node name="GameLayer" type="Node2D" parent="."]
 z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
 position = Vector2( 747, 77 )
@@ -246,11 +251,11 @@ Wave1_Interval = 2.0
 Wave2_Interval = 4
 Wave3_Interval = 2.0
 
-[node name="ColorRect" type="ColorRect" parent="GameLayer"]
-margin_left = 739.0
-margin_top = 43.0
-margin_right = 777.0
-margin_bottom = 241.0
+[node name="Glow" type="ColorRect" parent="GameLayer"]
+margin_left = 741.0
+margin_top = 40.0
+margin_right = 779.0
+margin_bottom = 238.0
 color = Color( 2, 0, 0, 0.729412 )
 
 [node name="UILayer" type="Control" parent="."]
@@ -273,103 +278,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Blood : 200"
 
-[node name="Environment" type="Node2D" parent="."]
-position = Vector2( 173, 30 )
-
-[node name="Animated" type="Node2D" parent="Environment"]
-
-[node name="Fish5" parent="Environment/Animated" instance=ExtResource( 7 )]
-position = Vector2( 422, 329 )
-
-[node name="Fish7" parent="Environment/Animated" instance=ExtResource( 7 )]
-position = Vector2( 495, 285 )
-
-[node name="Fish8" parent="Environment/Animated" instance=ExtResource( 7 )]
-position = Vector2( 546, 354 )
-
-[node name="Fish9" parent="Environment/Animated" instance=ExtResource( 7 )]
-position = Vector2( 303, 22 )
-
-[node name="Shrub" parent="Environment/Animated" instance=ExtResource( 12 )]
-position = Vector2( 348, 8 )
-scale = Vector2( 1, 1 )
-
-[node name="Shrub2" parent="Environment/Animated" instance=ExtResource( 12 )]
-position = Vector2( 469, 362 )
-scale = Vector2( 1, 1 )
-
-[node name="Shrub3" parent="Environment/Animated" instance=ExtResource( 12 )]
-position = Vector2( 547, 308 )
-scale = Vector2( 1, 1 )
-
-[node name="Shrub5" parent="Environment/Animated" instance=ExtResource( 12 )]
-position = Vector2( 450, 317 )
-scale = Vector2( 1, 1 )
-
-[node name="Shrub7" parent="Environment/Animated" instance=ExtResource( 12 )]
-position = Vector2( 497, 23 )
-scale = Vector2( 1, 1 )
-
-[node name="Shrub8" parent="Environment/Animated" instance=ExtResource( 12 )]
-position = Vector2( 61, 18 )
-scale = Vector2( 1, 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Environment/Animated"]
-position = Vector2( 347, 347 )
-frames = SubResource( 6 )
-playing = true
-flip_h = true
-
-[node name="Static" type="Node2D" parent="Environment"]
-
-[node name="BloodTree" type="Sprite" parent="Environment/Static"]
-position = Vector2( 505, 320 )
-texture = ExtResource( 10 )
-
-[node name="BloodTree2" type="Sprite" parent="Environment/Static"]
-position = Vector2( -81, -7 )
-texture = ExtResource( 10 )
-
-[node name="Bramble1" type="Sprite" parent="Environment/Static"]
-position = Vector2( 189, 299 )
-texture = ExtResource( 14 )
-
-[node name="Bramble2prop" type="Sprite" parent="Environment/Static"]
-position = Vector2( -128, 349 )
-texture = ExtResource( 15 )
-
-[node name="Bramble2" type="Sprite" parent="Environment/Static"]
-position = Vector2( -17, 370 )
-texture = ExtResource( 14 )
-
-[node name="Bramble2prop2" type="Sprite" parent="Environment/Static"]
-position = Vector2( 59, 270 )
-texture = ExtResource( 15 )
-
-[node name="Bramble3" type="Sprite" parent="Environment/Static"]
-position = Vector2( -36, 16 )
-texture = ExtResource( 14 )
-
-[node name="CoralBigProp" type="Sprite" parent="Environment/Static"]
-position = Vector2( 217, 17 )
-texture = ExtResource( 17 )
-
-[node name="CoralBigProp2" type="Sprite" parent="Environment/Static"]
-position = Vector2( 176, 364 )
-texture = ExtResource( 17 )
-
-[node name="CoralSmallProp2" type="Sprite" parent="Environment/Static"]
-position = Vector2( 429, 357 )
-texture = ExtResource( 18 )
-
-[node name="CoralSmallProp" type="Sprite" parent="Environment/Static"]
-position = Vector2( 464, 290 )
-texture = ExtResource( 18 )
-
-[node name="CoralSmallProp3" type="Sprite" parent="Environment/Static"]
-position = Vector2( 542, 332 )
-texture = ExtResource( 18 )
-
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 volume_db = -80.0
@@ -383,17 +291,155 @@ anchor_left = 0.034
 anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 0.399994
-margin_bottom = 40.4
+margin_left = 8.0
+margin_top = 313.0
+margin_right = 48.0
+margin_bottom = 353.0
 rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
+position = Vector2( 2, 0 )
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
-margin_left = -56.0
+margin_left = -42.0
 margin_top = -58.0
-margin_right = 792.0
+margin_right = 806.0
 margin_bottom = 444.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.0784314 )
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Coral" type="Node2D" parent="Environment"]
+
+[node name="CoralSmallProp" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 532, 366 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp3" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 532, 366 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp2" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 588, 308 )
+texture = ExtResource( 18 )
+flip_h = true
+
+[node name="CoralSmallProp4" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 644, 380 )
+texture = ExtResource( 18 )
+flip_h = true
+
+[node name="CoralSmallProp5" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 690, 312 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp6" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 406, 379 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp8" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 116, 396 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp9" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 268, 47 )
+texture = ExtResource( 18 )
+flip_h = true
+
+[node name="CoralSmallProp10" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 513, 45 )
+texture = ExtResource( 18 )
+
+[node name="CoralSmallProp7" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 413, 382 )
+scale = Vector2( -0.0526316, 1 )
+texture = ExtResource( 18 )
+
+[node name="CoralBigProp" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 617, 324 )
+texture = ExtResource( 17 )
+
+[node name="CoralBigProp2" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 631, 332 )
+texture = ExtResource( 17 )
+flip_h = true
+
+[node name="CoralBigProp3" type="Sprite" parent="Environment/Coral"]
+position = Vector2( 613, 343 )
+texture = ExtResource( 17 )
+flip_h = true
+
+[node name="Bramble" type="Node2D" parent="Environment"]
+
+[node name="Bramble1" type="Sprite" parent="Environment/Bramble"]
+position = Vector2( 505, 328 )
+texture = ExtResource( 14 )
+
+[node name="BrambleSmall" type="Sprite" parent="Environment/Bramble"]
+position = Vector2( 366, 316 )
+texture = ExtResource( 15 )
+flip_h = true
+
+[node name="BrambleSmall2" type="Sprite" parent="Environment/Bramble"]
+position = Vector2( 455, 331 )
+texture = ExtResource( 15 )
+flip_h = true
+
+[node name="BrambleSmall3" type="Sprite" parent="Environment/Bramble"]
+position = Vector2( 402, 343 )
+texture = ExtResource( 15 )
+
+[node name="BrambleSmall4" type="Sprite" parent="Environment/Bramble"]
+position = Vector2( 377, 389 )
+texture = ExtResource( 15 )
+flip_h = true
+
+[node name="Fish" type="Node2D" parent="Environment"]
+
+[node name="Fish" parent="Environment/Fish" instance=ExtResource( 7 )]
+position = Vector2( 595, 351 )
+z_index = -1
+
+[node name="Fish2" parent="Environment/Fish" instance=ExtResource( 7 )]
+position = Vector2( 636, 315 )
+z_index = -1
+
+[node name="Fish3" parent="Environment/Fish" instance=ExtResource( 7 )]
+position = Vector2( 680, 364 )
+z_index = -1
+
+[node name="Fish4" parent="Environment/Fish" instance=ExtResource( 7 )]
+position = Vector2( 638, 346 )
+z_index = -1
+
+[node name="Shrubs" type="Node2D" parent="Environment"]
+
+[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource( 12 )]
+position = Vector2( 552, 40 )
+scale = Vector2( 1, 1 )
+
+[node name="Trees" type="Node2D" parent="Environment"]
+
+[node name="BloodTree" type="Sprite" parent="Environment/Trees"]
+position = Vector2( 317, 335 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="BloodTree2" type="Sprite" parent="Environment/Trees"]
+position = Vector2( 100, 16 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="Special" type="Node2D" parent="Environment"]
+
+[node name="EyeStalk" type="AnimatedSprite" parent="Environment/Special"]
+position = Vector2( 587, 387 )
+frames = SubResource( 6 )
+playing = true
+flip_h = true

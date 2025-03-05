@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Plants/PlantSelectionMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Plants/RedSpiderCARD.png" type="Texture" id=2]
@@ -14,8 +14,16 @@
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0588235, 0.0392157, 0.0392157, 0 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 9 )
+
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 9 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0 )
@@ -30,63 +38,152 @@ script = ExtResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 0.582
+margin_right = 469.72
+margin_bottom = 154.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 493.0
-margin_bottom = 83.0
+margin_bottom = 154.0
 
-[node name="SunflowerButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Sunflower" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 67.0
+margin_bottom = 154.0
+
+[node name="SunflowerButton" type="Button" parent="VBoxContainer/HBoxContainer/Sunflower"]
 margin_right = 67.0
 margin_bottom = 83.0
 custom_styles/normal = SubResource( 2 )
 icon = ExtResource( 3 )
 
-[node name="WalnutButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="SunFlowerLabel" type="Label" parent="VBoxContainer/HBoxContainer/Sunflower"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 87.0
+margin_right = 40.0
+margin_bottom = 154.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 5 )
+text = "50
+"
+
+[node name="Walnut" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 71.0
 margin_right = 138.0
+margin_bottom = 154.0
+
+[node name="WalnutButton" type="Button" parent="VBoxContainer/HBoxContainer/Walnut"]
+margin_right = 67.0
 margin_bottom = 83.0
 custom_styles/normal = SubResource( 3 )
 icon = ExtResource( 4 )
 
-[node name="EyeButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="WalnutLabel" type="Label" parent="VBoxContainer/HBoxContainer/Walnut"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 87.0
+margin_right = 67.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 6 )
+text = "50"
+
+[node name="Peashooter" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 142.0
 margin_right = 209.0
-margin_bottom = 83.0
-custom_styles/normal = SubResource( 3 )
-icon = ExtResource( 8 )
+margin_bottom = 154.0
 
-[node name="PeashooterButton2" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 213.0
-margin_right = 280.0
+[node name="PeashooterButton2" type="Button" parent="VBoxContainer/HBoxContainer/Peashooter"]
+margin_right = 67.0
 margin_bottom = 83.0
 custom_styles/normal = SubResource( 1 )
 icon = ExtResource( 2 )
 
-[node name="EggButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 284.0
-margin_right = 351.0
-margin_bottom = 83.0
-custom_styles/normal = SubResource( 3 )
-icon = ExtResource( 6 )
+[node name="PeashooterLabel" type="Label" parent="VBoxContainer/HBoxContainer/Peashooter"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 87.0
+margin_right = 67.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 6 )
+text = "50"
 
-[node name="MawButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 355.0
-margin_right = 422.0
+[node name="Maw" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 213.0
+margin_right = 280.0
+margin_bottom = 154.0
+
+[node name="MawButton" type="Button" parent="VBoxContainer/HBoxContainer/Maw"]
+margin_right = 67.0
 margin_bottom = 83.0
 custom_styles/normal = SubResource( 3 )
 icon = ExtResource( 7 )
 
-[node name="HiveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="MawLabel" type="Label" parent="VBoxContainer/HBoxContainer/Maw"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 87.0
+margin_right = 67.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 6 )
+text = "50"
+
+[node name="Eye" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 284.0
+margin_right = 351.0
+margin_bottom = 154.0
+
+[node name="EyeButton" type="Button" parent="VBoxContainer/HBoxContainer/Eye"]
+margin_right = 67.0
+margin_bottom = 83.0
+custom_styles/normal = SubResource( 3 )
+icon = ExtResource( 8 )
+
+[node name="EyeLabel" type="Label" parent="VBoxContainer/HBoxContainer/Eye"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 87.0
+margin_right = 67.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 6 )
+text = "50"
+
+[node name="Egg" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 355.0
+margin_right = 422.0
+margin_bottom = 154.0
+
+[node name="EggButton" type="Button" parent="VBoxContainer/HBoxContainer/Egg"]
+margin_right = 67.0
+margin_bottom = 83.0
+custom_styles/normal = SubResource( 3 )
+icon = ExtResource( 6 )
+
+[node name="EggLabel" type="Label" parent="VBoxContainer/HBoxContainer/Egg"]
+modulate = Color( 0, 0, 0, 1 )
+margin_top = 87.0
+margin_right = 67.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 6 )
+text = "50"
+
+[node name="Hive" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 426.0
 margin_right = 493.0
+margin_bottom = 154.0
+
+[node name="HiveButton" type="Button" parent="VBoxContainer/HBoxContainer/Hive"]
+margin_right = 67.0
 margin_bottom = 83.0
 custom_styles/normal = SubResource( 3 )
 icon = ExtResource( 10 )
 
-[node name="CurrentPlantLabel" type="Label" parent="VBoxContainer"]
+[node name="HiveLabel" type="Label" parent="VBoxContainer/HBoxContainer/Hive"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 87.0
+margin_right = 67.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 6 )
+text = "50"
+
+[node name="CurrentPlantLabel" type="Label" parent="."]
+margin_top = 125.0
 margin_right = 493.0
-margin_bottom = 103.0
+margin_bottom = 141.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "No Plant Selected"
@@ -95,8 +192,8 @@ align = 1
 [node name="UIClickAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/WalnutButton" to="." method="_on_WalnutButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/EyeButton" to="." method="_on_EyeButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/EggButton" to="." method="_on_EggButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/MawButton" to="." method="_on_MawButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/HiveButton" to="." method="_on_HiveButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Eye/EyeButton" to="." method="_on_EyeButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]

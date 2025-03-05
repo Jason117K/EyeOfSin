@@ -67,9 +67,14 @@ func _ready():
 		timer.wait_time = StartDelay
 		timer.start()
 	$ProceedGame.start()
+	
+	if self.has_method("setScenes"):
+		self.setScenes()
 		
 			
-			
+func setScenes():
+	pass
+				
 func _on_ProceedGame_timeout():
 	$ProceedGame.stop()
 	print("ProceedGameTimeout")
@@ -141,7 +146,7 @@ func _on_Wave3_timeout():
 #TODO FIX THIS 
 #Code Taking Damage Here 
 func _on_Area2D_area_entered(area):
-	if "BasicZombie" in area.name:
+	if "Zombie" in area.name:
 		#Go to Restart Scene 
 		assert(get_tree().change_scene_to(retry_scene) == OK)
 

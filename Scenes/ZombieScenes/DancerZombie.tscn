@@ -168,6 +168,7 @@ script = ExtResource( 5 )
 [node name="ComponentManager" parent="." instance=ExtResource( 11 )]
 
 [node name="HealthComponent" parent="." instance=ExtResource( 7 )]
+bloodWorth = 5.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource( 1 )]
 speed = 15
@@ -182,6 +183,7 @@ shape = SubResource( 25 )
 material = SubResource( 32 )
 frames = SubResource( 24 )
 animation = "Walk"
+frame = 2
 playing = true
 script = ExtResource( 10 )
 

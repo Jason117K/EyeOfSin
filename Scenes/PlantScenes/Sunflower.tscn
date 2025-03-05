@@ -284,12 +284,12 @@ scale = Vector2( 3, 3 )
 shape = SubResource( 89 )
 
 [node name="SunTimer" type="Timer" parent="."]
-wait_time = 16.0
+wait_time = 20.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="OverlayComponent" type="Node2D" parent="."]
@@ -306,7 +306,6 @@ position = Vector2( 32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 1
 playing = true
 
 [node name="BloodTile2" type="AnimatedSprite" parent="PreviewNodes"]
@@ -314,6 +313,7 @@ position = Vector2( 32, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
+frame = 3
 playing = true
 
 [node name="BloodTile3" type="AnimatedSprite" parent="PreviewNodes"]
@@ -321,7 +321,7 @@ position = Vector2( 32, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 3
+frame = 2
 playing = true
 
 [node name="BloodTile4" type="AnimatedSprite" parent="PreviewNodes"]
@@ -329,7 +329,7 @@ position = Vector2( -32, 0 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 3
+frame = 2
 playing = true
 
 [node name="BloodTile5" type="AnimatedSprite" parent="PreviewNodes"]
@@ -337,7 +337,7 @@ position = Vector2( -32, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 2
+frame = 1
 playing = true
 
 [node name="BloodTile6" type="AnimatedSprite" parent="PreviewNodes"]
@@ -345,7 +345,6 @@ position = Vector2( -32, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 1
 playing = true
 
 [node name="BloodTile7" type="AnimatedSprite" parent="PreviewNodes"]
@@ -353,6 +352,7 @@ position = Vector2( 0, -32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
+frame = 3
 playing = true
 
 [node name="BloodTile8" type="AnimatedSprite" parent="PreviewNodes"]
@@ -360,12 +360,12 @@ position = Vector2( 0, 32 )
 z_index = 6
 frames = SubResource( 55 )
 animation = "New Anim"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 6 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource( 7 )]
@@ -373,42 +373,42 @@ giveBuffTo = [ "Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", 
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 visible = false
-frame = 25
+frame = 0
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
-frame = 22
+frame = 25
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
-frame = 22
+frame = 25
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
-frame = 22
+frame = 25
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
-frame = 22
+frame = 25
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
-frame = 22
+frame = 25
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
-frame = 22
+frame = 25
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
-frame = 22
+frame = 25
 
 [node name="TileArea9" parent="BuffNodesComponent" index="16"]
 visible = false
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
 visible = false
-frame = 20
+frame = 23
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 
