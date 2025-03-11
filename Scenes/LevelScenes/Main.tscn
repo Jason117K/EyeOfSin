@@ -130,7 +130,7 @@ Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
 "ConeHead": 1,
-"Dancer": 0,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -347,64 +347,65 @@ position = Vector2( 665, 361 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 619, 342 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 597, 357 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 618, 363 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 323, 337 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 337, 346 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 468, 375 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 439, 306 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 679, 304 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 691, 48 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 513, 49 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 32, 35 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true

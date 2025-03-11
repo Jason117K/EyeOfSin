@@ -50,7 +50,7 @@ func summon_backup():
 		points.erase(point8)
 		points.erase(point9)
 		
-	if level == "Main" && (dancerZombie.position.y > 173):
+	if level == "Main" && (dancerZombie.position.y > 163):
 		points.erase(point7)
 		points.erase(point8)
 		points.erase(point9)

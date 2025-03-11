@@ -20,6 +20,9 @@ func get_selected_plant():
 
 # Handles Player Interaction with the Plant Menu 
 func _input(event):
+	# Dynamically get the selected plant	
+	selected_plant_scene = get_selected_plant()  
+	
 	if event is InputEventMouseButton and event.pressed:
 		# If they left click, grab the positon and place a plant there 
 		if event.button_index == BUTTON_LEFT:
@@ -29,11 +32,14 @@ func _input(event):
 
 			if selected_plant_scene:
 				var temp_instance = selected_plant_scene.instance()
+				
 				var cost = temp_instance.get_cost()
+				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 				temp_instance.queue_free()
 				# early return if no sun points
 				if sun_points < cost:
 					selection_menu.clear_preview()
+					print("Sun Points is : ", sun_points, "which is less than ", cost)
 					return
 			
 			# Place the plant assuming it's within bounds of the level
@@ -43,7 +49,7 @@ func _input(event):
 					place_plant(grid_pos)
 			else:
 				if(grid_pos.x<769 && grid_pos.y<288 && grid_pos.y > 31):
-					#print("Place Plant " , grid_pos)
+					print("INCORRECT Place Plant " , grid_pos)
 					place_plant(grid_pos)
 
 # Convert mouse position to a grid cell position
@@ -58,6 +64,8 @@ func clear_space(passed_grid_pos):
 	
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
+	
+	print("About to Place Plant")
 	
 	# Dynamically get the selected plant	
 	selected_plant_scene = get_selected_plant()  
@@ -85,6 +93,7 @@ func place_plant(grid_pos: Vector2):
 	
 	if sun_points >= plant_cost: 
 		
+		print("Have enough sun, placing plant ")
 		#Maw Handling, occupies two cells
 		if plant_instance.name == "Maw":
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
@@ -110,6 +119,8 @@ func place_plant(grid_pos: Vector2):
 		
 	else:
 		print("Not enough sun points!")
+	
+	print("Plant Was Placed ")
 
 #Add sun to total 
 func add_sun(amount):

@@ -52,6 +52,7 @@ func _process(delta):
 		
 #Cost getter
 func get_cost():
+	print("Walnut returning cost of ", cost)
 	return cost
 	
 	

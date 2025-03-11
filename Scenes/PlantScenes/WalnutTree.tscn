@@ -228,7 +228,8 @@ animations = [ {
 
 [node name="WalnutTree" type="Area2D" groups=["Plants"]]
 script = ExtResource( 2 )
-health = 300
+health = 999
+maxHealth = 1000
 cost = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -236,7 +237,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite" parent="."]
 frames = SubResource( 79 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="PreviewNodes" type="Node2D" parent="."]
@@ -245,7 +246,7 @@ visible = false
 [node name="AnimatedSpriteComponent2" type="AnimatedSprite" parent="PreviewNodes"]
 frames = SubResource( 12 )
 animation = "New Anim"
-frame = 5
+frame = 2
 playing = true
 
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSpriteComponent_animation_finished"]
