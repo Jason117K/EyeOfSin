@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/PlantScenes/PlantManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Systems/WaveManager.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Systems/WavePreview.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/LevelLogic/WaveManager.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/LevelLogic/Main.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Systems/ToolTips.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=12]
 [ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture" id=14]
@@ -46,6 +47,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="StyleBoxFlat" id=7]
+
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,6 +56,7 @@ mouse_filter = 2
 script = ExtResource( 10 )
 
 [node name="PlantManager" parent="." instance=ExtResource( 1 )]
+sun_points = 275
 
 [node name="GameLayer" type="Node2D" parent="."]
 
@@ -347,65 +351,60 @@ position = Vector2( 665, 361 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 619, 342 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 597, 357 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 618, 363 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 323, 337 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 337, 346 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 468, 375 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 439, 306 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 679, 304 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 691, 48 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 513, 49 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="Environment/Shrubs"]
 position = Vector2( 32, 35 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
+
+[node name="ToolTips" parent="." instance=ExtResource( 11 )]
+margin_right = 283.72
+margin_bottom = 267.136
+custom_styles/panel = SubResource( 7 )

@@ -2,7 +2,7 @@ extends Node2D
 #EyeBomb.gd
 
 #Component References
-# TODO FIX THISSSSSS
+
 onready var spriteComp = $AnimSpriteComponent
 onready var hitBoxComp = $HitBoxComponent
 #onready var animSpriteComp = $AnimatedSprite
@@ -50,31 +50,36 @@ func receiveBuff(bufferName):
 #Damages enemies on explosion finish, looping through array 
 func _on_SpriteComponent_animation_finished():
 
+	#AnimatedSprite
 	#print(spriteComp.animation)
 	if spriteComp.animation == "spawn":
-		print("Spaen Done")
+		print("Spawn Done")
 		spriteComp.animation = "default"
 		return 
 	if(spriteComp.animation == "default"):
 		pass
-	elif(spriteComp.animation == "boom"):
-		for enemy in enemiesToHit:
-			if not is_instance_valid_and_alive(enemy):	
-				continue
-			if(enemy != null):
-				var compManager = enemy.getCompManager()
-				var healthComp = compManager.getHealthComponent()
-				compManager.take_damage(damage)  
+	elif spriteComp.animation == "boom":
+	# Wait until we're actually on the last frame
+		if spriteComp.get_frame() == spriteComp.frames.get_frame_count("boom") - 1:
+			for enemy in enemiesToHit:
+				print("Now damage : ", enemy)
+				if not is_instance_valid_and_alive(enemy):    
+					continue
+				if enemy != null:
+					var compManager = enemy.getCompManager()
+					compManager.take_damage(damage)  
+			print("Loop Done Now Free")
+			queue_free()
 		
 # Add this helper function to scripts that deal with combat
 func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
 # Delete the eyebomb on explosion completion 
-func _on_SpriteComponent_frame_changed():
-	if spriteComp.animation == "Boom":
-		if spriteComp.frame == 9:
-			queue_free()
+#func _on_SpriteComponent_frame_changed():
+#	if spriteComp.animation == "Boom":
+#		if spriteComp.frame == 9:
+#			queue_free()
 
 
 

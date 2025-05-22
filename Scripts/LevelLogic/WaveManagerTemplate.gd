@@ -3,6 +3,13 @@ extends Node
 class_name WaveManagerTemplate
 #Template for All Wave Managers to Extend
 
+# Define custom signals
+signal level_start(custom_message)
+#signal blood_tutorial(custom_message)
+signal wave2started(custom_message)
+
+
+
 
 var current_wave = 1                # Current wave number
 var zombies_per_wave = 2           # Number of zombies in the current wave
@@ -143,7 +150,7 @@ func _on_Wave3_timeout():
 		
 	checkEndLevel = true
 
-#TODO FIX THIS 
+
 #Code Taking Damage Here 
 func _on_Area2D_area_entered(area):
 	if "Zombie" in area.name:

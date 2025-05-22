@@ -1,7 +1,9 @@
 extends Control
 #Main.gd 
 
+onready var toolTips = $ToolTips
 
+var startingTutorialText = "res://Assets/Text/TextFiles/StartingTutorial.tres"
 
 #Sets up Tilemap 
 func _ready():
@@ -16,4 +18,7 @@ func _ready():
 	
 	#$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
 	$GameLayer/GridManager.set_tiles_for_rows(8,9, 29)
+	
+	#Sets the first tutorial popup
+	toolTips.set_text(startingTutorialText)
 
