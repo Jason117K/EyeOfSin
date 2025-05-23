@@ -17,11 +17,11 @@ func _ready():
 #Moves onto next level 
 func _on_Continue_pressed():
 	$ButtonClickPlayer.play()
-	assert(get_tree().change_scene_to(Lvl2) ==OK)
+	assert(get_tree().change_scene_to_packed(Lvl2) ==OK)
 
 #Restarts the current level
 func _on_PlayAgain_pressed():
 	$ButtonClickPlayer.play()
 	if(self.name == "Level1->2"):
-		assert(get_tree().change_scene("res://Scenes/Main.tscn") == OK)
+		assert(get_tree().change_scene_to_file("res://Scenes/Main.tscn") == OK)
 	

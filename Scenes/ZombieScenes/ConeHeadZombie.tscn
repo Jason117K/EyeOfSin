@@ -1,18 +1,18 @@
 [gd_scene load_steps=58 format=2]
 
-[ext_resource path="res://Assets/Zombies/Summoner 46x 44.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Zombies/Summoner 46x 44.png" type="Texture2D" id=1]
 [ext_resource path="res://Scripts/Zombies/ConeHeadZombie.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Audio/ZombieAttack.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/HitSmack.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Shaders/basicZombieHitShader.tres" type="Shader" id=5]
-[ext_resource path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" type="Texture2D" id=6]
+[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" type="Texture2D" id=7]
 [ext_resource path="res://Scenes/ZombieScenes/SpeedComponent.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/ZombieScenes/AttackComponent.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/ZombieScenes/HealthComponent.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/ZombieScenes/ComponentManager.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/Zombies/ZombieSpriteComponent.gd" type="Script" id=12]
-[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" type="Texture2D" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 20 )
@@ -235,7 +235,7 @@ bloodWorth = 2.0
 position = Vector2( 4, 4 )
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource( 31 )
 frames = SubResource( 17 )
 animation = "WebAttack"
@@ -246,7 +246,7 @@ script = ExtResource( 12 )
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( -8, 0 )
+target_position = Vector2( -8, 0 )
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -259,5 +259,5 @@ volume_db = -20.0
 stream = ExtResource( 3 )
 volume_db = -16.0
 
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

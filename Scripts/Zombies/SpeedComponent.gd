@@ -2,11 +2,11 @@ extends Node2D
 #SpeedComponent.gd
 
 #Onready variables to store zombie & attack comp
-onready var zombie = 	get_parent()
-onready var attackComp = $"../AttackComponent"
+@onready var zombie = 	get_parent()
+@onready var attackComp = $"../AttackComponent"
 
 #Adjustable movement speed
-export var speed = 26 #40 #26 #30 # Movement speed, was 34
+@export var speed = 26 #40 #26 #30 # Movement speed, was 34
 
 # Store the original speed and whether or not the zombie is attacking
 var originalSpeed 
@@ -47,7 +47,7 @@ func slow():
 	
 		# Connect timer's timeout signal to the _on_timer_timeout method
 		# The 'assert' ensures the connection was successful
-		assert(endSpeedDebuff.connect("timeout", self, "_on_endSpeedDebuff_timeout") == OK)
+		assert(endSpeedDebuff.connect("timeout", Callable(self, "_on_endSpeedDebuff_timeout")) == OK)
 		# Start the timer
 		endSpeedDebuff.start()
 

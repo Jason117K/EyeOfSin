@@ -2,25 +2,25 @@ extends Area2D
 #Maw.gd
 
 # Color export variables for tentacle 1
-export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red
+@export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red
 var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red
 
 # Color export variables for tentacle 2
-export var tentacle2_start_color := Color(0.7, 0.0, 1.0, 1.0)  # Bright purple
+@export var tentacle2_start_color := Color(0.7, 0.0, 1.0, 1.0)  # Bright purple
 var tentacle2_end_color := Color(0.35, 0.0, 0.5, 1.0)   # Dark purple
 
 # Color export variables for tentacle 3
-export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green
+@export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green
 var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
 
 #Reference to tentacle scene 
 var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  
 
 #Adjustable maw health & cost 
-export var health = 100
-export var cost = 200
+@export var health = 100
+@export var cost = 200
 
-var PlantManager              # Plantmanager Reference 
+var PlantManager              # Plantmanager RefCounted 
 var tentacles = []            # Array to track all tentacles
 var attacking_tentacles = {}  # Dictionary to track which tentacles are attacking which enemies
 var tentacle1
@@ -32,12 +32,12 @@ var willBelchWebs = false     # Whether or not we have a peashooter buff
 var available_tentacles = []  # Track which tentacles are available
 
 #Essentially a reload timer for the maw
-onready var digestionTimer = $DigestionTimer
+@onready var digestionTimer = $DigestionTimer
 
 # Detection radius for zombies
-onready var detection_area = $DetectionComponent
+@onready var detection_area = $DetectionComponent
 
-onready var animSpriteComp = $AnimatedSprite
+@onready var animSpriteComp = $AnimatedSprite2D
 
 func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
@@ -51,17 +51,17 @@ func get_cost():
 #Sets Up and Configures all the tentacles 
 func setup_tentacles():
 	# First tentacle setup
-	tentacle1 = tentacle_scene.instance()
+	tentacle1 = tentacle_scene.instantiate()
 	add_child(tentacle1)
 	tentacle1.z_index = z_index - 1
 	tentacle1.position += Vector2(0, -2)
 	tentacle1.set_colors(tentacle1_start_color, tentacle1_end_color)
-	tentacle1.connect("retraction_complete", self, "_on_tentacle_retraction_complete", [tentacle1])
+	tentacle1.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle1))
 	tentacles.append(tentacle1)
 	available_tentacles.append(tentacle1)
 	
 	# Second tentacle setup
-	tentacle2 = tentacle_scene.instance()
+	tentacle2 = tentacle_scene.instantiate()
 	add_child(tentacle2)
 	tentacle2.z_index = z_index - 1
 	tentacle2.set_colors(tentacle2_start_color, tentacle2_end_color)
@@ -73,12 +73,12 @@ func setup_tentacles():
 	tentacle2.wriggle_dampening = 0.9
 	tentacle2.secondary_frequency = 1.7
 	tentacle2.position += Vector2(5, 2)
-	tentacle2.connect("retraction_complete", self, "_on_tentacle_retraction_complete", [tentacle2])
+	tentacle2.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle2))
 	tentacles.append(tentacle2)
 	available_tentacles.append(tentacle2)
 	
 	# Third tentacle setup
-	tentacle3 = tentacle_scene.instance()
+	tentacle3 = tentacle_scene.instantiate()
 	add_child(tentacle3)
 	tentacle3.z_index = z_index - 1
 	tentacle3.set_colors(tentacle3_start_color, tentacle3_end_color)
@@ -90,7 +90,7 @@ func setup_tentacles():
 	tentacle3.wriggle_dampening = 0.7
 	tentacle3.secondary_frequency = 1.5
 	tentacle3.position += Vector2(-3, -2)
-	tentacle3.connect("retraction_complete", self, "_on_tentacle_retraction_complete", [tentacle3])
+	tentacle3.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle3))
 	tentacles.append(tentacle3)
 	available_tentacles.append(tentacle3)
 
@@ -129,7 +129,7 @@ func _on_tentacle_retraction_complete(tentacle):
 			#If the swallowed enemy is slow and maw is buffed, belch a web bomb
 			if(slow > 0):
 				if willBelchWebs:
-					var web_ball = preload("res://Scenes/PlantScenes/WebBall.tscn").instance()
+					var web_ball = preload("res://Scenes/PlantScenes/WebBall.tscn").instantiate()
 					add_child(web_ball)
 					web_ball.target_position = Vector2(100, 0)
 					web_ball.travel_time = 1.5
@@ -165,16 +165,16 @@ func receiveBuff(plant):
 	#print(bufferName)
 	var bufferName = plant.name
 	if(bufferName == "EggWorm"):
-		tentacle1.set_colors(Color.yellow, Color.yellow)
-		tentacle2.set_colors(Color.blue, Color.blue)
+		tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+		tentacle2.set_colors(Color.BLUE, Color.BLUE)
 		digestionTimer.wait_time = 6
 	elif(bufferName == "Peashooter"):
-		tentacle1.set_colors(Color.purple, Color.purple)
-		tentacle2.set_colors(Color.darkmagenta, Color.darkmagenta)
+		tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+		tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
 		willBelchWebs = true
 	elif(bufferName == "Hive"):
-		tentacle1.set_colors(Color.white, Color.white)
-		tentacle2.set_colors(Color.black, Color.black)
+		tentacle1.set_colors(Color.WHITE, Color.WHITE)
+		tentacle2.set_colors(Color.BLACK, Color.BLACK)
 		health = 200
 		
 
@@ -182,6 +182,7 @@ func receiveBuff(plant):
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "default"
+		animSpriteComp.play()
 		
 		
 		

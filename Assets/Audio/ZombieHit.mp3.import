@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/ZombieHit.mp3-33694449802807a670e0c9ccb05d5437.mp3str"
+uid="uid://cw1onbslylyyx"
+path="res://.godot/imported/ZombieHit.mp3-33694449802807a670e0c9ccb05d5437.mp3str"
 
 [deps]
 
 source_file="res://Assets/Audio/ZombieHit.mp3"
-dest_files=[ "res://.import/ZombieHit.mp3-33694449802807a670e0c9ccb05d5437.mp3str" ]
+dest_files=["res://.godot/imported/ZombieHit.mp3-33694449802807a670e0c9ccb05d5437.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

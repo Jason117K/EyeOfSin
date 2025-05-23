@@ -8,13 +8,13 @@ extends Area2D
 signal drone_died(drone)
 
 # Export variables 
-export var health = 50          # Drone Health
-export var attack_damage = 1    # Attack Damage
-export var attack_speed = 1.0   # Attacks per second
-export var move_speed = 150     # Pixels per second
-export var rotation_speed = 5.0 # How fast the drone rotates to face target
-export var attack_range = 50    # How close the drone needs to be to attack
-export var return_threshold = 5 # How close to rest position is considered "arrived"
+@export var health = 50          # Drone Health
+@export var attack_damage = 1    # Attack Damage
+@export var attack_speed = 1.0   # Attacks per second
+@export var move_speed = 150     # Pixels per second
+@export var rotation_speed = 5.0 # How fast the drone rotates to face target
+@export var attack_range = 50    # How close the drone needs to be to attack
+@export var return_threshold = 5 # How close to rest position is considered "arrived"
 
 # Internal state tracking
 var current_target = null       # Holds the current drone target
@@ -24,7 +24,7 @@ var rest_position = null        # The Location of the Drone Resting Position
 var is_returning = false        # Whether or not the drone is returning to rest
 var explodeBuff = false         # Whether or not the drone is buffed 
 
-onready var animatedSpriteComp = $AnimatedSprite  # Reference to Sprite Comp 
+@onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
 # Doubles the drone attack damage 
 func doubleDamage():
@@ -46,7 +46,7 @@ func _ready():
 	var attack_length = animatedSpriteComp.get_animation_length("attack")
 	#print("Attack animation is ", attack_length, " seconds long")
 	timer.wait_time = attack_length
-	timer.connect("timeout", self, "_on_attack_timer_timeout")
+	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
 	timer.start()
 
 # Handles the drone taking damage

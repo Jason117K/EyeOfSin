@@ -8,7 +8,7 @@ var currentBaseZombies
 var currentConeZombies
 var currentBucketZombies
 
-onready var visibility = true
+@onready var visibility = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

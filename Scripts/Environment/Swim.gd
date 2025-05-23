@@ -1,13 +1,13 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 # Swim.gd
 
 # Handles fish movement 
 
 #Adjustblae movement parameters 
-export(float) var minSpeed = 1.0
-export(float) var maxSpeed = 2.0
-export(float) var minAmount = 10.0
-export(float) var maxAmount = 50.0
+@export var minSpeed: float = 1.0
+@export var maxSpeed: float = 2.0
+@export var minAmount: float = 10.0
+@export var maxAmount: float = 50.0
 
 #variables to store amount moved and initial position 
 var moveAmount: float
@@ -22,16 +22,16 @@ func _ready():
 	flip_h = randf() > 0.5
 	
 	# Set random movement amount and store start position
-	moveAmount = rand_range(minAmount, maxAmount)
+	moveAmount = randf_range(minAmount, maxAmount)
 	startPosition = position
 	
 	# Only play if minSpeed is greater than 0
 	if minSpeed > 0:
 		# Set random speed between min and max
-		speed_scale = rand_range(minSpeed, maxSpeed)
-		playing = true
+		speed_scale = randf_range(minSpeed, maxSpeed)
+		play()
 	else:
-		playing = false
+		stop()
 
 func _process(delta):
 	# Calculate movement for this frame

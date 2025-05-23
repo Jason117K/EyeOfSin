@@ -4,8 +4,8 @@ extends Area2D
 # Ball that spawns when buffed Maws eat an enemy covered in webs
 
 # Export variables for easy editing in inspector
-export var target_position = Vector2() setget set_target  # Target position to move towards
-export(float, 0.1, 10.0) var travel_time = 1.0 setget set_travel_time  # Time to reach target
+@export var target_position = Vector2(): set = set_target
+@export var travel_time = 1.0: set = set_travel_time
 
 # Internal variables
 var start_position = Vector2()
@@ -107,7 +107,7 @@ func create_debug_marker():
 # Inner class for debug marker
 class DebugMarker extends Node2D:
 	func _draw():
-		draw_circle(Vector2.ZERO, 5, Color.blue)
+		draw_circle(Vector2.ZERO, 5, Color.BLUE)
 
 # Add enemies to enemiesToWeb when they enter the area 
 func _on_WebBall_area_entered(area):

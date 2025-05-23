@@ -3,18 +3,18 @@ extends Area2D
 
 
 # Adjustable health and cost 
-export var health = 100
-export var cost = 50
+@export var health = 100
+@export var cost = 50
 #Keep a reference to our sun scene 
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
-onready var animSpriteComp = $AnimatedSprite
+@onready var animSpriteComp = $AnimatedSprite2D
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
-	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	PlantManager = get_parent().get_parent().get_node("PlantManager") 
 	$SunTimer.start()  # Start the timer
-	assert($SunTimer.connect("timeout", self, "_on_SunTimer_timeout") == OK)
+	assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
 	
 	animSpriteComp.animation = "spawn"
 	
@@ -25,7 +25,7 @@ func _on_SunTimer_timeout():
 
 # Function to handle sun generation
 func generate_sun():
-	var sun_instance = SunScene.instance()  # Create a new instance of the sun
+	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
 	add_child(sun_instance)  # Add the sun to the scene
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
@@ -55,6 +55,7 @@ func get_cost():
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "idle"
+		animSpriteComp.play()
 		
 		
 		

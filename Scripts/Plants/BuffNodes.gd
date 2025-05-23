@@ -2,20 +2,20 @@ extends Node2D
 #BuffNodes.gd
 
 # All of the possible "blood tile" (buffed) visual effects 
-onready var bloodTile1 = $BloodTile1
-onready var bloodTile2 = $BloodTile2
-onready var bloodTile3 = $BloodTile3
-onready var bloodTile4 = $BloodTile4
-onready var bloodTile5 = $BloodTile5
-onready var bloodTile6 = $BloodTile6
-onready var bloodTile7 = $BloodTile7
-onready var bloodTile8 = $BloodTile8
+@onready var bloodTile1 = $BloodTile1
+@onready var bloodTile2 = $BloodTile2
+@onready var bloodTile3 = $BloodTile3
+@onready var bloodTile4 = $BloodTile4
+@onready var bloodTile5 = $BloodTile5
+@onready var bloodTile6 = $BloodTile6
+@onready var bloodTile7 = $BloodTile7
+@onready var bloodTile8 = $BloodTile8
 
 # Parent plant with these buffNodes
-onready var plant = get_parent()
+@onready var plant = get_parent()
 
 # The tile areas representing the area being buffed 
-export(Array, NodePath) var activeTiles = [
+@export var activeTiles = [ # (Array, NodePath)
 	"TileArea1",
 	"TileArea2",
 	"TileArea3",
@@ -27,7 +27,7 @@ export(Array, NodePath) var activeTiles = [
 ]
 
 # Adjustable variable to store which plants this plant can buff
-export var giveBuffTo = ["None","None","None","None","None","None","None","None"]
+@export var giveBuffTo = ["None","None","None","None","None","None","None","None"]
 
 
 func _ready():

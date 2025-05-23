@@ -3,13 +3,13 @@ extends Node2D
 
 #Health Component for all zombie enemies
 
-onready var hitAudioPlayer = $"../HitAudioPlayer"
-onready var zombie = get_parent()
+@onready var hitAudioPlayer = $"../HitAudioPlayer"
+@onready var zombie = get_parent()
 var bomb_scene = preload("res://Scenes/PlantScenes/Bomb.tscn")
 
-export var health = 76 #25 # Health of the zombie
-export var healthRegen = 0.0 # Health regen rate
-export var bloodWorth := 1.0
+@export var health = 76 #25 # Health of the zombie
+@export var healthRegen = 0.0 # Health regen rate
+@export var bloodWorth := 1.0
 
 var injured = false 
 var halfHealth = health/2
@@ -35,7 +35,7 @@ func take_damage(damage):
 	if health <= 0:
 		#Spawns Bomb on Zombie if it was set to explode 
 		if(explode):
-			var bomb = bomb_scene.instance()
+			var bomb = bomb_scene.instantiate()
 			bomb.position = zombie.position + Vector2(0, 0)  # Adjust starting position
 			#print(((get_parent().get_parent()).name), "is parent")
 			get_parent().get_parent().add_child(bomb)  

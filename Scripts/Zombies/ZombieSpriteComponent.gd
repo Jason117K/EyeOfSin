@@ -1,13 +1,13 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 #ZombieSpriteComp
 
 var is_attacking
 var isSlow
 var isInjured
-onready var zombie = 	get_parent()
-onready var attackComp = $"../AttackComponent"
-onready var attack_audio_player = $"../AttackAudioPlayer"
-onready var healthComp  =  $"../HealthComponent"
+@onready var zombie = 	get_parent()
+@onready var attackComp = $"../AttackComponent"
+@onready var attack_audio_player = $"../AttackAudioPlayer"
+@onready var healthComp  =  $"../HealthComponent"
 
 var specialMove = false 
 #Allow Summons While Webbed?
@@ -41,25 +41,25 @@ func _process(_delta):
 
 			if isInjured: #Injured and Webbed 
 				if not is_attacking:
-					if frames.has_animation("InjuredWebWalk"):
+					if sprite_frames.has_animation("InjuredWebWalk"):
 						self.play("InjuredWebWalk")    #InjuredWebWalk
 					else : 
 						self.play("WebWalk") #InjuredWebWalk
 				else:
-					if frames.has_animation("InjuredWebAttack"):
+					if sprite_frames.has_animation("InjuredWebAttack"):
 						self.play("InjuredWebAttack")    #InjuredWebAttack
 					else : 
 						self.play("WebAttack") 
 						
 			else: #Not Injured, Are Webbed
 				if not is_attacking:
-					if frames.has_animation("WebWalk"):
+					if sprite_frames.has_animation("WebWalk"):
 						self.play("WebWalk")    #WebWalk
 						#print("Playing WebWalk Right nw")
 					else : 
 						self.play("Walk") #WebWalk
 				else:
-					if frames.has_animation("WebAttack"):
+					if sprite_frames.has_animation("WebAttack"):
 						self.play("WebAttack")    #WebAttack
 					else : 
 						self.play("Attack") #WebAttack
@@ -106,4 +106,3 @@ func _on_AnimatedSprite_frame_changed():
 				AOEHit.goBoom()
 	else:
 		pass
-

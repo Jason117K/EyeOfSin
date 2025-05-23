@@ -8,7 +8,7 @@ extends Line2D
 const START_COLOR = Color(1, 0, 0, 1) # Red
 const END_COLOR = Color(0, 1, 0, 1)   # Green
 
-const START_COLOR2 = Color.fuchsia
+const START_COLOR2 = Color.FUCHSIA
 
 func _ready():
 	# Create new gradient

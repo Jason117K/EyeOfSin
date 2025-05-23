@@ -5,7 +5,7 @@ class_name Zombie
 # Defines basic behavior for all zombie types
 
 
-onready var compManager = $ComponentManager
+@onready var compManager = $ComponentManager
 
 # Component Manager Getter
 func getCompManager():

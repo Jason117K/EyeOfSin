@@ -3,19 +3,19 @@
 [ext_resource path="res://Scripts/Zombies/ScreenDoorZombie.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/zombie-bite-96528.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/ZombieScenes/SpeedComponent.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcWalk-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcWalk-Sheet.png" type="Texture2D" id=4]
 [ext_resource path="res://Scenes/ZombieScenes/AttackComponent.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Audio/ZombieHit.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Scenes/ZombieScenes/HealthComponent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/ZombieScenes/ComponentManager.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcZombie-SheetWEB.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcZombie-SheetWEB.png" type="Texture2D" id=9]
 [ext_resource path="res://Scripts/Zombies/ZombieSpriteComponent.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Shaders/basicZombieHitShader.tres" type="Shader" id=11]
-[ext_resource path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcWalkInjuredWeb-Sheet.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcWalkINJURED-Sheet.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" type="Texture2D" id=12]
+[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" type="Texture2D" id=13]
+[ext_resource path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" type="Texture2D" id=14]
+[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcWalkInjuredWeb-Sheet.png" type="Texture2D" id=15]
+[ext_resource path="res://Assets/Zombies/Animations/DocOc/DocOcWalkINJURED-Sheet.png" type="Texture2D" id=16]
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 9.5, 14.25 )
@@ -450,7 +450,7 @@ health = 100
 position = Vector2( -2.5, 3.25 )
 shape = SubResource( 17 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource( 27 )
 frames = SubResource( 16 )
 animation = "Attack"
@@ -458,7 +458,7 @@ frame = 3
 playing = true
 script = ExtResource( 10 )
 
-[node name="TransformedSpriteComp" type="AnimatedSprite" parent="."]
+[node name="TransformedSpriteComp" type="AnimatedSprite2D" parent="."]
 visible = false
 material = SubResource( 63 )
 position = Vector2( 2, 1 )
@@ -470,7 +470,7 @@ script = ExtResource( 10 )
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 scale = Vector2( 1, 2 )
 enabled = true
-cast_to = Vector2( -28, 0 )
+target_position = Vector2( -28, 0 )
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]

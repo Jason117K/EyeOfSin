@@ -21,4 +21,4 @@ func _ready():
 #Starts Level 1
 func _on_Button_pressed():
 	var level1_scene = load("res://Scenes/LevelScenes/Main.tscn")
-	assert(get_tree().change_scene_to(level1_scene)== OK)
+	assert(get_tree().change_scene_to_packed(level1_scene)== OK)

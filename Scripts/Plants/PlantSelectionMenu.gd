@@ -2,7 +2,7 @@ extends Control
 #PlantSelectionMenu.gd
 
 var selected_plant = sunflower_scene  # Holds the currently selected plant scene
-var preview_sprite: AnimatedSprite = null  # Holds the sprite currently being previewed 
+var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
 #var is_previewing: bool = false
 
 var preview_sprites: Array = [] # Holds array of preview sprites 
@@ -23,7 +23,7 @@ var currentPlantLabel
 var currentPlantCost
 var deselectText = " PRESS [X] TO DESELECT"
 
-onready var preview_container = Node2D.new()
+@onready var preview_container = Node2D.new()
 
 
 var sunFlowerCostLabel
@@ -49,51 +49,51 @@ func _ready():
 	
 	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	sunFlowerCostLabel = $VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
-	temp_instance = sunflower_scene.instance()
+	temp_instance = sunflower_scene.instantiate()
 	sunFlowerCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	peaShooterCostLabel = $VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
-	temp_instance = peashooter_scene.instance()
+	temp_instance = peashooter_scene.instantiate()
 	peaShooterCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	var WalnutButton = $VBoxContainer/HBoxContainer/Walnut/WalnutButton
 	walnutCostLabel = $VBoxContainer/HBoxContainer/Walnut/WalnutLabel
-	temp_instance = walnut_scene.instance()
+	temp_instance = walnut_scene.instantiate()
 	walnutCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	var EyeButton = $VBoxContainer/HBoxContainer/Eye/EyeButton
 	eyeCostLabel = $VBoxContainer/HBoxContainer/Eye/EyeLabel
-	temp_instance = bomb_scene.instance()
+	temp_instance = bomb_scene.instantiate()
 	eyeCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()		
 	
 	var EggButton = $VBoxContainer/HBoxContainer/Egg/EggButton
 	eggCostLabel = $VBoxContainer/HBoxContainer/Egg/EggLabel
-	temp_instance = egg_scene.instance()
+	temp_instance = egg_scene.instantiate()
 	eggCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	var MawButton = $VBoxContainer/HBoxContainer/Maw/MawButton
 	mawCostLabel = $VBoxContainer/HBoxContainer/Maw/MawLabel
-	temp_instance = maw_scene.instance()
+	temp_instance = maw_scene.instantiate()
 	mawCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 			
 	var HiveButton = $VBoxContainer/HBoxContainer/Hive/HiveButton
 	hiveCostLabel = $VBoxContainer/HBoxContainer/Hive/HiveLabel
-	temp_instance = hive_scene.instance()
+	temp_instance = hive_scene.instantiate()
 	hiveCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()		
 	
 	# Make sure the appropirate plants are available per level
 	if root == "Main": #or root == "Level2":
-		assert(PeaShooterButton.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
+		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
 		
-		assert(SunFlowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
+		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 		
 		$VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
 		EggButton.visible = false
@@ -109,14 +109,14 @@ func _ready():
 		
 		
 	elif root == "Level2":
-		assert(PeaShooterButton.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
-		assert(SunFlowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
+		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
 		MawButton.visible = false
 		mawCostLabel.visible = false
 	else: #root = Level3
-		assert(PeaShooterButton.connect("pressed", self, "_on_PeashooterButton_pressed")== OK)
-		assert(SunFlowerButton.connect("pressed", self, "_on_SunflowerButton_pressed")== OK)
+		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
 		MawButton.visible = true
 		
@@ -129,14 +129,14 @@ func _ready():
 # Handle Deselection
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_X:
+		if event.keycode == KEY_X:
 			clear_preview()
 			
 
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 
 func _on_PeashooterButton_pressed():
 	selected_plant = peashooter_scene
-	var temp_instance = peashooter_scene.instance()
+	var temp_instance = peashooter_scene.instantiate()
 	create_preview(peashooter_scene)
 	
 	currentPlantLabel.text = "SPIDER SELECTED " + deselectText
@@ -151,7 +151,7 @@ func _on_PeashooterButton_pressed():
 func _on_SunflowerButton_pressed():
 	
 	selected_plant = sunflower_scene
-	var temp_instance = sunflower_scene.instance()
+	var temp_instance = sunflower_scene.instantiate()
 	create_preview(sunflower_scene)
 	
 	currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
@@ -166,7 +166,7 @@ func _on_SunflowerButton_pressed():
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_WalnutButton_pressed():
 	selected_plant = walnut_scene
-	var temp_instance = walnut_scene.instance()
+	var temp_instance = walnut_scene.instantiate()
 	create_preview(walnut_scene)
 	
 	currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
@@ -180,7 +180,7 @@ func _on_WalnutButton_pressed():
 # Plays Sound and Makes the Maw the current selected plant, changing label & preview image 
 func _on_MawButton_pressed():
 	selected_plant = maw_scene
-	var temp_instance = maw_scene.instance()	
+	var temp_instance = maw_scene.instantiate()	
 	create_preview(maw_scene)
 	
 	currentPlantLabel.text = "MAW SELECTED " + deselectText
@@ -195,7 +195,7 @@ func _on_MawButton_pressed():
 func _on_EggButton_pressed():
 	selected_plant = egg_scene
 	create_preview(egg_scene)
-	var temp_instance = egg_scene.instance()
+	var temp_instance = egg_scene.instantiate()
 		
 	currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
 	currentPlantCost = $VBoxContainer/HBoxContainer/Egg/EggLabel
@@ -209,7 +209,7 @@ func _on_EggButton_pressed():
 func _on_EyeButton_pressed():
 	selected_plant = bomb_scene
 	create_preview(bomb_scene)
-	var temp_instance = bomb_scene.instance()
+	var temp_instance = bomb_scene.instantiate()
 		
 	currentPlantLabel.text = "EYE MINE SELECTED " + deselectText
 	currentPlantCost = $VBoxContainer/HBoxContainer/Eye/EyeLabel
@@ -223,7 +223,7 @@ func _on_EyeButton_pressed():
 func _on_HiveButton_pressed():
 	selected_plant = hive_scene
 	create_preview(hive_scene)
-	var temp_instance = hive_scene.instance()
+	var temp_instance = hive_scene.instantiate()
 		
 	currentPlantLabel.text = "HIVE SELECTED " + deselectText
 	currentPlantCost = $VBoxContainer/HBoxContainer/Hive/HiveLabel
@@ -238,7 +238,7 @@ func create_preview(plant_scene):
 	# Clear the last preview 
 	clear_preview()
 	
-	var temp_plant = plant_scene.instance()
+	var temp_plant = plant_scene.instantiate()
 	var preview_node = find_preview_nodes(temp_plant)
 	
 	if preview_node:
@@ -286,7 +286,7 @@ func find_preview_nodes(node):
 	
 func find_preview_sprite(node):
 	# Recursively search for AnimatedSprite node
-	if node is AnimatedSprite:
+	if node is AnimatedSprite2D:
 		if("Preview" in node.name):
 			return node
 			
@@ -294,7 +294,7 @@ func find_preview_sprite(node):
 	
 # Drags the preview sprite around with the cursor 
 func _process(_delta):
-	if is_previewing and not preview_sprites.empty():
+	if is_previewing and not preview_sprites.is_empty():
 		var base_pos = get_global_mouse_position()
 
 		for sprite in preview_sprites:
@@ -304,7 +304,7 @@ func _process(_delta):
 
 func find_animated_sprite(node):
 	# Recursively search for AnimatedSprite node
-	if node is AnimatedSprite:
+	if node is AnimatedSprite2D:
 		return node
 	
 	for child in node.get_children():
@@ -312,4 +312,3 @@ func find_animated_sprite(node):
 		if result:
 			return result
 	return null
-

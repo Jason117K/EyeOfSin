@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorScript
 
 var all_files = []
@@ -22,7 +22,7 @@ func _run():
 	
 	# Print results
 	print("\nOrphaned files found:")
-	if orphaned_files.empty():
+	if orphaned_files.is_empty():
 		print("No orphaned files found!")
 	else:
 		for file in orphaned_files:
@@ -33,9 +33,9 @@ func _run():
 	print("Orphaned files: ", orphaned_files.size())
 
 func scan_directory(path: String) -> void:
-	var dir = Directory.new()
+	var dir = DirAccess.new()
 	if dir.open(path) == OK:
-		dir.list_dir_begin(true, true)
+		dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file_name = dir.get_next()
 		
 		while file_name != "":

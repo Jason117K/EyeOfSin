@@ -3,12 +3,12 @@ extends Node2D
 
 #Component References
 
-onready var spriteComp = $AnimSpriteComponent
-onready var hitBoxComp = $HitBoxComponent
+@onready var spriteComp = $AnimSpriteComponent
+@onready var hitBoxComp = $HitBoxComponent
 #onready var animSpriteComp = $AnimatedSprite
 
-export var cost = 25 
-export var damage = 10 #explosion damage 
+@export var cost = 25 
+@export var damage = 10 #explosion damage 
 
 var enemiesToHit = []  #Stores reference to valid enemy 
 var enemiesToHitTemp   #Stores reference to enemy targets, both valid and invalid
@@ -55,6 +55,7 @@ func _on_SpriteComponent_animation_finished():
 	if spriteComp.animation == "spawn":
 		print("Spawn Done")
 		spriteComp.animation = "default"
+		spriteComp.play()
 		return 
 	if(spriteComp.animation == "default"):
 		pass
@@ -80,8 +81,3 @@ func is_instance_valid_and_alive(node) -> bool:
 #	if spriteComp.animation == "Boom":
 #		if spriteComp.frame == 9:
 #			queue_free()
-
-
-
-
-

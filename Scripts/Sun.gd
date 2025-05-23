@@ -2,7 +2,7 @@ extends Area2D
 #Sun.gd
 
 #Adjustable sun value 
-export var SunValue = 50
+@export var SunValue = 50
 
 	
 #Handle sun collection 

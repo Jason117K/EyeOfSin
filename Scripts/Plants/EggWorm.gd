@@ -2,21 +2,21 @@ extends Node2D
 #EggWorm.gd
 
 #Adjustable health & cost
-export var health = 100
-export var cost = 150
+@export var health = 100
+@export var cost = 150
 
 # Animation parameters
-export var bob_speed = 2.0  
-export var bob_height = 30.0 
-export var squash_amount = 0.3  
-export var stretch_amount = 0.3  
-export var bounce_elasticity = 0.3  
-export var animation_exaggeration = 1.0  
+@export var bob_speed = 2.0  
+@export var bob_height = 30.0 
+@export var squash_amount = 0.3  
+@export var stretch_amount = 0.3  
+@export var bounce_elasticity = 0.3  
+@export var animation_exaggeration = 1.0  
 
 # Node references
-export(NodePath) var sprite_path  
-onready var sprite = get_node(sprite_path) if sprite_path else null
-onready var laserShootComp = $Worm2/LaserShootComponent
+@export var sprite_path: NodePath  
+@onready var sprite = get_node(sprite_path) if sprite_path else null
+@onready var laserShootComp = $Worm2/LaserShootComponent
 
 #onready var animSpriteComp = $AnimatedSprite
 

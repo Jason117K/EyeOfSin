@@ -2,21 +2,21 @@ extends Node2D
 #SummonComponent.gd
 
 #Various node references 
-onready var summonTimer = $SummonTimer
-onready var dancerZombie = get_parent()
-onready var animatedSpriteComp = get_parent().get_node("AnimatedSprite")
-onready var attackComp = $"../AttackComponent"
+@onready var summonTimer = $SummonTimer
+@onready var dancerZombie = get_parent()
+@onready var animatedSpriteComp = get_parent().get_node("AnimatedSprite2D")
+@onready var attackComp = $"../AttackComponent"
 
 #Summon Points for BackUp Dancers 
-onready var point1 = $SummonPoint1
-onready var point2 = $SummonPoint2
-onready var point3 = $SummonPoint3
-onready var point4 = $SummonPoint4
-onready var point6 = $SummonPoint6
-onready var point7 = $SummonPoint7
-onready var point8 = $SummonPoint8
-onready var point9 = $SummonPoint9
-onready var points = [point1,point2,point3,point4,point6,point7,point8,point9]
+@onready var point1 = $SummonPoint1
+@onready var point2 = $SummonPoint2
+@onready var point3 = $SummonPoint3
+@onready var point4 = $SummonPoint4
+@onready var point6 = $SummonPoint6
+@onready var point7 = $SummonPoint7
+@onready var point8 = $SummonPoint8
+@onready var point9 = $SummonPoint9
+@onready var points = [point1,point2,point3,point4,point6,point7,point8,point9]
 
 #Load the zombie we will summon
 var BackUpDancerScene = preload("res://Scenes/ZombieScenes/BackUpDancerZombie.tscn")
@@ -58,7 +58,7 @@ func summon_backup():
 	#Spawn a backUp dancer at every available point 
 	for point in points:
 		#print("Adding Zombie to ", point.name)
-		var zombie_instance = BackUpDancerScene.instance()
+		var zombie_instance = BackUpDancerScene.instantiate()
 		
 		# Convert spawn point's position to global coordinates
 		var global_spawn_pos = point.global_position

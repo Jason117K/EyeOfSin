@@ -7,34 +7,34 @@ extends Node2D
 signal retraction_complete
 
 # Basic configuration parameters
-export (float) var ropeLength = 30.0       # Total length of the tentacle
-export (float) var constrain = 1.0         # Distance between each point
-export (Vector2) var gravity = Vector2(0, 9.8)  # Gravity influence
-export (float) var dampening = 0.9       # Movement dampening (0-1)
-export (float) var grab_speed = 400.0    # Speed of grabbing attack
-export (float) var retract_speed = 200.0 # Speed of retraction
-export (float) var visibility_shrink_rate = 30.0  # How fast tentacle shrinks when retracting
+@export var ropeLength: float = 30.0       # Total length of the tentacle
+@export var constrain: float = 1.0         # Distance between each point
+@export var gravity: Vector2 = Vector2(0, 9.8)  # Gravity influence
+@export var dampening: float = 0.9       # Movement dampening (0-1)
+@export var grab_speed: float = 400.0    # Speed of grabbing attack
+@export var retract_speed: float = 200.0 # Speed of retraction
+@export var visibility_shrink_rate: float = 30.0  # How fast tentacle shrinks when retracting
 
 # Wriggle motion parameters
-export (float) var wriggle_amplitude = 3.0  # How far points can move from rest position
-export (float) var wriggle_speed = 2.0       # Base speed of wriggle motion
-export (float) var phase_offset = 0.5        # Offset between horizontal and vertical motion
-export (float) var wriggle_dampening = 0.7   # How much movement decreases along length
-export (float) var direction_bias = 0.0      # Tendency to move in a direction (-1 to 1)
-export (float) var secondary_frequency = 1.5  # Frequency of secondary motion
-export (float) var speed_variation = 0.2     # Random speed variation per tentacle
+@export var wriggle_amplitude: float = 3.0  # How far points can move from rest position
+@export var wriggle_speed: float = 2.0       # Base speed of wriggle motion
+@export var phase_offset: float = 0.5        # Offset between horizontal and vertical motion
+@export var wriggle_dampening: float = 0.7   # How much movement decreases along length
+@export var direction_bias: float = 0.0      # Tendency to move in a direction (-1 to 1)
+@export var secondary_frequency: float = 1.5  # Frequency of secondary motion
+@export var speed_variation: float = 0.2     # Random speed variation per tentacle
 
 # Color parameters
-export (Color) var start_color = Color(1.0, 0.0, 0.0, 1.0)  # Start color (default red)
-export (Color) var end_color = Color(0.5, 0.0, 0.0, 1.0)    # End color (default dark red)
-export (bool) var use_gradient = false    # Whether to use gradient or solid color
-export (float) var pulse_speed = 1.0     # Speed of color pulsing
-export (bool) var enable_pulse = false   # Whether to enable color pulsing
-export (float) var pulse_intensity = 0.2 # Intensity of color pulse (0-1)
+@export var start_color: Color = Color(1.0, 0.0, 0.0, 1.0)  # Start color (default red)
+@export var end_color: Color = Color(0.5, 0.0, 0.0, 1.0)    # End color (default dark red)
+@export var use_gradient: bool = false    # Whether to use gradient or solid color
+@export var pulse_speed: float = 1.0     # Speed of color pulsing
+@export var enable_pulse: bool = false   # Whether to enable color pulsing
+@export var pulse_intensity: float = 0.2 # Intensity of color pulse (0-1)
 
 # Node references
-onready var line2D := $Line2D
-var enemy = null  # Reference to current target
+@onready var line2D := $Line2D
+var enemy = null  # RefCounted to current target
 
 # State management
 enum State {IDLE_WRIGGLE, EXTENDING, ATTACHED, RETRACTING}
@@ -48,15 +48,15 @@ var unique_offset: float        # Unique offset for this tentacle's motion
 var speed_modifier: float       # Unique speed modifier for this tentacle
 
 # Core tentacle data
-var pos: PoolVector2Array         # Current positions of points
-var posPrev: PoolVector2Array     # Previous positions of points
+var pos: PackedVector2Array         # Current positions of points
+var posPrev: PackedVector2Array     # Previous positions of points
 var pointCount: int              # Total number of points
 
 func _ready() -> void:
 	# Initialize random elements
 	randomize()
-	unique_offset = rand_range(0, PI * 2)
-	speed_modifier = 1.0 + rand_range(-speed_variation, speed_variation)
+	unique_offset = randf_range(0, PI * 2)
+	speed_modifier = 1.0 + randf_range(-speed_variation, speed_variation)
 	
 	# Initialize tentacle
 	pointCount = get_pointCount(ropeLength)
@@ -145,7 +145,7 @@ func update_wriggle(delta: float) -> void:
 		var target = base_pos + Vector2(x_offset, y_offset)
 		
 		# Smooth movement
-		pos[i] = pos[i].linear_interpolate(target, 0.2)
+		pos[i] = pos[i].lerp(target, 0.2)
 		posPrev[i] = pos[i] - (target - pos[i]) * 0.1
 
 # Starts to grab an enemy 
@@ -234,7 +234,7 @@ func _process(delta) -> void:
 	update_constrain()
 	
 	# Update visual representation
-	var visible_positions = PoolVector2Array()
+	var visible_positions = PackedVector2Array()
 	for i in range(min(int(visible_points), pointCount)):
 		visible_positions.push_back(to_local(pos[i]))
 	line2D.points = visible_positions
@@ -246,7 +246,7 @@ func _start_attach_timer() -> void:
 	timer.wait_time = 0.1
 	timer.one_shot = true
 	add_child(timer)
-	timer.connect("timeout", self, "_on_attach_timeout")
+	timer.connect("timeout", Callable(self, "_on_attach_timeout"))
 	timer.start()
 
 # Starts to retract tentacle 

@@ -18,22 +18,22 @@ var time_between_waves = 20.0       # Delay before starting a new wave
 
 var wave_active = false             # Whether a wave is currently active
 var zombies_spawned = 0             # Counter for spawned zombies
-var zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  # Path to the zombie scene
+var zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  # Path3D to the zombie scene
 
 var spawners = []  # Array to hold all ZombieSpawner nodes
 var timers = [] # Array to hold all the timers in the WavePreview nodes
 var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
 
 
-export var StartDelay = 10
+@export var StartDelay = 10
 #Amount of Time it Takes a wave to spawn after previous done
-export var Wave2StartTime = 20
-export var Wave3StartTime = 30
+@export var Wave2StartTime = 20
+@export var Wave3StartTime = 30
 
 #Time In Between Spawns In a Wave? #Look at More
-export var Wave1_Interval = 7.5
-export var Wave2_Interval = 9
-export var Wave3_Interval = 5.5
+@export var Wave1_Interval = 7.5
+@export var Wave2_Interval = 9
+@export var Wave3_Interval = 5.5
 
 var checkEndLevel = false
 
@@ -54,7 +54,7 @@ func _physics_process(_delta):
 			end_level()
 
 func end_level():
-	assert(get_tree().change_scene_to(new_scene) == OK) # Switch to earlier defined new_scene
+	assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
 
 	
 func _ready():
@@ -121,7 +121,7 @@ func _on_ProceedGame_timeout():
 # Spawn the first wave 
 func _on_Wave1_timeout():
 	var wave_Interval = Wave1_Interval
-	var random_adjustment = rand_range(-1.0,0.1)
+	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
 	$Wave1.wait_time = wave_Interval
 	
@@ -131,7 +131,7 @@ func _on_Wave1_timeout():
 # Spawn the Second Wave 
 func _on_Wave2_timeout():
 	var wave_Interval = Wave2_Interval
-	var random_adjustment = rand_range(-1.0,0.1)
+	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
 	$Wave2.wait_time = wave_Interval
 	
@@ -141,7 +141,7 @@ func _on_Wave2_timeout():
 # Spawn the last wave and start checking for the end of the wave 
 func _on_Wave3_timeout():
 	var wave_Interval = Wave3_Interval
-	var random_adjustment = rand_range(-1.0,0.1)
+	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
 	$Wave3.wait_time = wave_Interval
 	
@@ -155,5 +155,5 @@ func _on_Wave3_timeout():
 func _on_Area2D_area_entered(area):
 	if "Zombie" in area.name:
 		#Go to Restart Scene 
-		assert(get_tree().change_scene_to(retry_scene) == OK)
+		assert(get_tree().change_scene_to_packed(retry_scene) == OK)
 

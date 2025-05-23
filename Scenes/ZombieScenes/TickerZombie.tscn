@@ -1,7 +1,7 @@
 [gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Scenes/ZombieScenes/ComponentManager.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Zombies/Ticker-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Zombies/Ticker-Sheet.png" type="Texture2D" id=2]
 [ext_resource path="res://Scenes/ZombieScenes/AttackComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ZombieScenes/SpeedComponent.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/ZombieScenes/HealthComponent.tscn" type="PackedScene" id=5]
@@ -10,9 +10,9 @@
 [ext_resource path="res://Assets/Audio/ZombieHit.mp3" type="AudioStream" id=8]
 [ext_resource path="res://Scripts/Zombies/ZombieSpriteComponent.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Shaders/basicZombieHitShader.tres" type="Shader" id=10]
-[ext_resource path="res://Assets/Zombies/TickerHitEffect-Sheet.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Zombies/TickerHitEffect-Sheet.png" type="Texture2D" id=11]
 [ext_resource path="res://Scripts/Zombies/AOEHit.gd" type="Script" id=12]
-[ext_resource path="res://Assets/Zombies/Animations/Ticker/Ticker-WebSheet.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Zombies/Animations/Ticker/Ticker-WebSheet.png" type="Texture2D" id=13]
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 9, 15 )
@@ -231,7 +231,7 @@ script = ExtResource( 6 )
 position = Vector2( -1, 5 )
 shape = SubResource( 15 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource( 16 )
 position = Vector2( 8, 0 )
 frames = SubResource( 14 )
@@ -242,7 +242,7 @@ script = ExtResource( 9 )
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( -15, 0 )
+target_position = Vector2( -15, 0 )
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -257,20 +257,20 @@ stream = ExtResource( 7 )
 visible = false
 script = ExtResource( 12 )
 
-[node name="Hit1" type="AnimatedSprite" parent="AOEHit"]
+[node name="Hit1" type="AnimatedSprite2D" parent="AOEHit"]
 visible = false
 position = Vector2( -24, 4 )
 frames = SubResource( 28 )
 
-[node name="Hit2" type="AnimatedSprite" parent="AOEHit"]
+[node name="Hit2" type="AnimatedSprite2D" parent="AOEHit"]
 position = Vector2( -96.6667, 4 )
 frames = SubResource( 28 )
 
-[node name="Hit3" type="AnimatedSprite" parent="AOEHit"]
+[node name="Hit3" type="AnimatedSprite2D" parent="AOEHit"]
 position = Vector2( -54.6667, 4 )
 frames = SubResource( 28 )
 
-[node name="Hit4" type="AnimatedSprite" parent="AOEHit"]
+[node name="Hit4" type="AnimatedSprite2D" parent="AOEHit"]
 position = Vector2( -140, 4.66667 )
 frames = SubResource( 28 )
 
@@ -283,6 +283,6 @@ monitorable = false
 position = Vector2( -62.5834, 4.66667 )
 shape = SubResource( 29 )
 
-[connection signal="frame_changed" from="AnimatedSprite" to="AnimatedSprite" method="_on_AnimatedSprite_frame_changed"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
 [connection signal="animation_finished" from="AOEHit/Hit3" to="AOEHit" method="_on_Hit3_animation_finished"]

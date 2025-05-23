@@ -4,9 +4,9 @@ extends Node2D
 #Component Manager Script for All Zombies 
 
 # Adjustable Stat Variables 
-export var health = 17 #Zombie Health
-export var speed = 29  #Zombie Movement Speed
-export var attack_power = 33   #Damage zombie deals when attacking
+@export var health = 17 #Zombie Health
+@export var speed = 29  #Zombie Movement Speed
+@export var attack_power = 33   #Damage zombie deals when attacking
 
 #State tracking variables 
 var is_attacking = false #Whether or not we attacking
@@ -16,11 +16,11 @@ var thisMaterial
 var thisMaterial2
 
 #Onready variables for tracking nodes 
-onready var animatedSprite = $"../AnimatedSprite"  # Reference to animated Sprite
-onready var attack_ray = $"../DMGRayCast2D" # Reference to Damage Raycast
-onready var healthComp = $"../HealthComponent" # Reference to health comp 
-onready var speedComp =  $"../SpeedComponent"   # Reference to Speed Comp
-onready var zombie = get_parent()
+@onready var animatedSprite = $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
+@onready var attack_ray = $"../DMGRayCast2D" # RefCounted to Damage Raycast
+@onready var healthComp = $"../HealthComponent" # RefCounted to health comp 
+@onready var speedComp =  $"../SpeedComponent"   # RefCounted to Speed Comp
+@onready var zombie = get_parent()
 
 #Tells the zombie it's locked in single combat with a drone
 func fightDrone():
@@ -68,13 +68,13 @@ func take_damage(damage):
 	#TODO Review Damage Visusal Effects 
 	if(thisMaterial):
 		#print("COKOR COCJHW")
-		thisMaterial.set_shader_param("target_color", Color.black)
-		thisMaterial.set_shader_param("replace_color", Color.white)
-		thisMaterial.set_shader_param("tolerance", 1)
+		thisMaterial.set_shader_parameter("target_color", Color.BLACK)
+		thisMaterial.set_shader_parameter("replace_color", Color.WHITE)
+		thisMaterial.set_shader_parameter("tolerance", 1)
 		if(thisMaterial2):
-			thisMaterial2.set_shader_param("target_color", Color.black)
-			thisMaterial2.set_shader_param("replace_color", Color.white)
-			thisMaterial2.set_shader_param("tolerance", 1)
+			thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
+			thisMaterial2.set_shader_parameter("replace_color", Color.WHITE)
+			thisMaterial2.set_shader_parameter("tolerance", 1)
 		$ResetThisColor.start()
 	
 
@@ -86,9 +86,9 @@ func _on_JustNowSpawned_timeout():
 	# Set initial shader parameters
 	if thisMaterial:
 		#print("Made h")
-		thisMaterial.set_shader_param("target_color", Color.black)
-		thisMaterial.set_shader_param("replace_color", Color.black)
-		thisMaterial.set_shader_param("tolerance", 0.1)
+		thisMaterial.set_shader_parameter("target_color", Color.BLACK)
+		thisMaterial.set_shader_parameter("replace_color", Color.BLACK)
+		thisMaterial.set_shader_parameter("tolerance", 0.1)
 		pass
 		
 	add_to_group("Alive-Enemies")
@@ -100,20 +100,20 @@ func setMaterial(newAnimatedSprite):
 	newAnimatedSprite.material = thisMaterial2
 	# Set initial shader parameters
 	if newAnimatedSprite:
-		thisMaterial2.set_shader_param("target_color", Color.black)
-		thisMaterial2.set_shader_param("replace_color", Color.black)
-		thisMaterial2.set_shader_param("tolerance", 0.1)
+		thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
+		thisMaterial2.set_shader_parameter("replace_color", Color.BLACK)
+		thisMaterial2.set_shader_parameter("tolerance", 0.1)
 		
 
 # Changes sprite color back to default 
 func _on_ResetThisColor_timeout():
-	thisMaterial.set_shader_param("target_color", Color.black)
-	thisMaterial.set_shader_param("replace_color", Color.black)
-	thisMaterial.set_shader_param("tolerance", 0.1)
+	thisMaterial.set_shader_parameter("target_color", Color.BLACK)
+	thisMaterial.set_shader_parameter("replace_color", Color.BLACK)
+	thisMaterial.set_shader_parameter("tolerance", 0.1)
 	if thisMaterial2:
-		thisMaterial2.set_shader_param("target_color", Color.black)
-		thisMaterial2.set_shader_param("replace_color", Color.black)
-		thisMaterial2.set_shader_param("tolerance", 0.1)
+		thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
+		thisMaterial2.set_shader_parameter("replace_color", Color.BLACK)
+		thisMaterial2.set_shader_parameter("tolerance", 0.1)
 	
 
 # Slowly gets rid of slow debuff

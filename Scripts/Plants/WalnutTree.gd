@@ -2,14 +2,14 @@ extends Area2D
 #WalnutTree.gd
 
 #Adjustbale Plant Parameter Variables
-export var health = 650
-export var healthRegen = 0.1
-export var buffedHealthRegen = 0.2
-export var maxHealth = 800
+@export var health = 650
+@export var healthRegen = 0.1
+@export var buffedHealthRegen = 0.2
+@export var maxHealth = 800
 #Adjustable Cost 
-export var cost = 100
+@export var cost = 100
 var PlantManager
-onready var animComponent = $AnimatedSpriteComponent
+@onready var animComponent = $AnimatedSpriteComponent
 var isBuffed = false
 
 
@@ -60,3 +60,4 @@ func get_cost():
 func _on_AnimatedSpriteComponent_animation_finished():
 	if animComponent.animation == "spawn":
 		animComponent.animation = "default"
+		animComponent.play()

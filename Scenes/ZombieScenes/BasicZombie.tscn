@@ -1,16 +1,16 @@
 [gd_scene load_steps=47 format=2]
 
-[ext_resource path="res://Scripts/Zombies/BasicZombie.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Audio/HitSmack.mp3" type="AudioStream" id=3]
-[ext_resource path="res://Assets/Audio/zombie-bite-96528.mp3" type="AudioStream" id=4]
-[ext_resource path="res://Scenes/ZombieScenes/AttackComponent.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/Zombies/ZombieSpriteComponent.gd" type="Script" id=6]
-[ext_resource path="res://Assets/Shaders/basicZombieHitShader.tres" type="Shader" id=7]
-[ext_resource path="res://Scenes/ZombieScenes/SpeedComponent.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Zombies/GhoulWebbedSheet.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/ZombieScenes/ComponentManager.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/ZombieScenes/HealthComponent.tscn" type="PackedScene" id=11]
+[ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://Scripts/Zombies/BasicZombie.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://cl1ixl83sr2sy" path="res://Assets/Audio/HitSmack.mp3" id="3"]
+[ext_resource type="AudioStream" uid="uid://chan24ixi06ro" path="res://Assets/Audio/zombie-bite-96528.mp3" id="4"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
+[ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="6"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="7"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://Assets/Zombies/GhoulWebbedSheet.png" id="9"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 15.1667 )
@@ -191,7 +191,7 @@ attack_power = 24
 position = Vector2( 0, 1.83333 )
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource( 20 )
 frames = SubResource( 11 )
 animation = "Walk"
@@ -202,7 +202,7 @@ script = ExtResource( 6 )
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( -10.6667, 0 )
+target_position = Vector2( -10.6667, 0 )
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -217,5 +217,5 @@ stream = ExtResource( 4 )
 volume_db = -16.0
 pitch_scale = 2.0
 
-[connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

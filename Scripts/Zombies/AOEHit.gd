@@ -5,13 +5,13 @@ extends Node2D
 # towers caught in it 
 
 # References to the Animation & the Hitbox 
-onready var hit1 = $Hit2
-onready var hit2 = $Hit3
-onready var hit3 = $Hit4
-onready var hitBoxComp = $"../HitBoxComponent"
+@onready var hit1 = $Hit2
+@onready var hit2 = $Hit3
+@onready var hit3 = $Hit4
+@onready var hitBoxComp = $"../HitBoxComponent"
 
 # Adjustable Explosion Damage
-export var attack_power = 1000
+@export var attack_power = 1000
 
 # Play the Animation and Make it Visible 
 func goBoom():

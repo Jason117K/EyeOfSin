@@ -2,14 +2,14 @@ extends Node2D
 #PlantManager.gd
 
 # Get a reference to the plant selection menu 
-onready var selection_menu = get_parent().get_node("PlantSelectionMenu")
+@onready var selection_menu = get_parent().get_node("PlantSelectionMenu")
 
 var selected_plant_scene = null  # Holds the selected plant scene
 var grid_size = 32 # Defines the size of each grid cell 
 var grid_map = {}  # Dictionary to store occupied cells
-export var sun_points = 200 # Holds how many sun points we have currently 
+@export var sun_points = 200 # Holds how many sun points we have currently 
 var plant_cost = 25  # Holds the cost of the currently selected plant 
-onready var parentName = get_parent().get_name()
+@onready var parentName = get_parent().get_name()
 
 
 
@@ -25,13 +25,13 @@ func _input(event):
 	
 	if event is InputEventMouseButton and event.pressed:
 		# If they left click, grab the positon and place a plant there 
-		if event.button_index == BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			var mouse_pos = get_global_mouse_position()
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
 
 			if selected_plant_scene:
-				var temp_instance = selected_plant_scene.instance()
+				var temp_instance = selected_plant_scene.instantiate()
 				
 				var cost = temp_instance.get_cost()
 				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
@@ -74,7 +74,7 @@ func place_plant(grid_pos: Vector2):
 		print("No plant selected!")
 		return
 	
-	var plant_instance = selected_plant_scene.instance()
+	var plant_instance = selected_plant_scene.instantiate()
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
@@ -140,4 +140,3 @@ func _on_SetSun_timeout():
 	else:
 		#sun_points = 900 #700
 		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
-

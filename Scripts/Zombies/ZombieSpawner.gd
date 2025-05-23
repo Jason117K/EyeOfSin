@@ -16,15 +16,15 @@ var wave2_zombies = []
 var wave3_zombies = []  
 
 #Arrays to track amount of zombies by types per round 
-export var Round1_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
+@export var Round1_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
 							"ScreenDoor" : 1, "Dancer" : 1, "PoleVault" : 1,
 							"Ticker" : 1}
 							
-export var Round2_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
+@export var Round2_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
 							"ScreenDoor" : 1, "Dancer" : 1, "PoleVault" : 1,
 							"Ticker" : 1}
 							
-export var Round3_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
+@export var Round3_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
 							"ScreenDoor" : 1, "Dancer" : 1, "PoleVault" : 1,
 							"Ticker" : 1}
 
@@ -35,10 +35,10 @@ var baseZombies = []
 var numWave = 0
 
 #Slight random position adjustmnet 
-var random_adjustment = rand_range(-1.0, 1.0)
+var random_adjustment = randf_range(-1.0, 1.0)
 
 #Adjustble delay between waves 
-export var waveDelay = 0.5
+@export var waveDelay = 0.5
 
 
 # Populates the apprioate arrays with current zombie counts by type 
@@ -67,7 +67,7 @@ func _ready():
 
 # Starts spawning the zombies with slight random timing adjustment 
 func start_spawn_zombie():
-	random_adjustment = rand_range(-0.5, 0.5)
+	random_adjustment = randf_range(-0.5, 0.5)
 	$WaveDelay.wait_time = waveDelay + random_adjustment
 	$WaveDelay.start()
 	
@@ -82,7 +82,7 @@ func spawn_zombie():
 				wave1_zombies.shuffle()
 
 				var zombie_type = wave1_zombies.pop_front()
-				var zombie_instance = zombie_type.instance()
+				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.position = self.position #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				
@@ -92,7 +92,7 @@ func spawn_zombie():
 			if(wave2_zombies.size() > 0):
 				wave2_zombies.shuffle()
 				var zombie_type = wave2_zombies.pop_front()
-				var zombie_instance = zombie_type.instance()
+				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.position = self.position + Vector2(-30,0)  #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#print("Spawn wave 2")
@@ -102,7 +102,7 @@ func spawn_zombie():
 			if(wave3_zombies.size() > 0):
 				wave3_zombies.shuffle()
 				var zombie_type = wave3_zombies.pop_front()
-				var zombie_instance = zombie_type.instance()
+				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#print("Spawn wave 3")

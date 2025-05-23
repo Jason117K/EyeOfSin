@@ -2,16 +2,16 @@ extends Node2D
 #Worm2Animator.gd
 
 # Animation parameters
-export var bob_speed = 2.0  # Speed of the up/down motion
-export var bob_height = 30.0  # How far the worm moves up/down
-export var squash_amount = 0.3  # How much the worm squashes (0-1)
-export var stretch_amount = 0.3  # How much the worm stretches (0-1)
-export var bounce_elasticity = 0.3  # How "bouncy" the squash/stretch is (0-1)
-export var animation_exaggeration = 1.0  # Overall multiplier for animation effects
+@export var bob_speed = 2.0  # Speed of the up/down motion
+@export var bob_height = 30.0  # How far the worm moves up/down
+@export var squash_amount = 0.3  # How much the worm squashes (0-1)
+@export var stretch_amount = 0.3  # How much the worm stretches (0-1)
+@export var bounce_elasticity = 0.3  # How "bouncy" the squash/stretch is (0-1)
+@export var animation_exaggeration = 1.0  # Overall multiplier for animation effects
 
 # Node references
-export(NodePath) var sprite_path  
-onready var sprite = get_node(sprite_path) if sprite_path else null
+@export var sprite_path: NodePath  
+@onready var sprite = get_node(sprite_path) if sprite_path else null
 
 # Internal animation state
 var time = 0.0

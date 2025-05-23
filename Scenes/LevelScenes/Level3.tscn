@@ -9,17 +9,17 @@
 [ext_resource path="res://Scenes/Environment/Fish.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/LevelLogic/WaveManager_Lvl3.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Systems/WavePreview.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/Environment/BloodTree.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Environment/BloodTree.png" type="Texture2D" id=10]
 [ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=11]
 [ext_resource path="res://Scenes/Environment/Shrub.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Environment/Props/CoralBigPROP.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Environment/Props/CoralSmallPROP.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=13]
+[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture2D" id=14]
+[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture2D" id=15]
+[ext_resource path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" type="Texture2D" id=16]
+[ext_resource path="res://Assets/Environment/Props/CoralBigPROP.png" type="Texture2D" id=17]
+[ext_resource path="res://Assets/Environment/Props/CoralSmallPROP.png" type="Texture2D" id=18]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 font_data = ExtResource( 13 )
 
 [sub_resource type="Environment" id=2]
@@ -53,8 +53,8 @@ animations = [ {
 [node name="Level3" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -740.0
-margin_bottom = -416.0
+offset_right = -740.0
+offset_bottom = -416.0
 mouse_filter = 2
 script = ExtResource( 6 )
 
@@ -253,30 +253,30 @@ Wave2_Interval = 4
 Wave3_Interval = 2.0
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
-margin_left = 741.0
-margin_top = 40.0
-margin_right = 779.0
-margin_bottom = 238.0
+offset_left = 741.0
+offset_top = 40.0
+offset_right = 779.0
+offset_bottom = 238.0
 color = Color( 2, 0, 0, 0.729412 )
 
 [node name="UILayer" type="Control" parent="."]
-margin_left = 1.0
-margin_top = 321.0
-margin_right = 41.0
-margin_bottom = 361.0
+offset_left = 1.0
+offset_top = 321.0
+offset_right = 41.0
+offset_bottom = 361.0
 mouse_filter = 2
 
 [node name="SunCounter" type="Control" parent="UILayer"]
-margin_top = -320.0
-margin_right = 40.0
-margin_bottom = -280.0
+offset_top = -320.0
+offset_right = 40.0
+offset_bottom = -280.0
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="UILayer/SunCounter"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "Blood : 200"
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
@@ -292,11 +292,11 @@ anchor_left = 0.034
 anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 313.0
-margin_right = 48.0
-margin_bottom = 353.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 8.0
+offset_top = 313.0
+offset_right = 48.0
+offset_bottom = 353.0
+scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -307,10 +307,10 @@ position = Vector2( 2, 0 )
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
-margin_left = -42.0
-margin_top = -58.0
-margin_right = 806.0
-margin_bottom = 444.0
+offset_left = -42.0
+offset_top = -58.0
+offset_right = 806.0
+offset_bottom = 444.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.0784314 )
 
@@ -318,85 +318,85 @@ color = Color( 0, 0, 0, 0.0784314 )
 
 [node name="Coral" type="Node2D" parent="Environment"]
 
-[node name="CoralSmallProp" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 532, 366 )
 texture = ExtResource( 18 )
 
-[node name="CoralSmallProp3" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 532, 366 )
 texture = ExtResource( 18 )
 
-[node name="CoralSmallProp2" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 588, 308 )
 texture = ExtResource( 18 )
 flip_h = true
 
-[node name="CoralSmallProp4" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 644, 380 )
 texture = ExtResource( 18 )
 flip_h = true
 
-[node name="CoralSmallProp5" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 690, 312 )
 texture = ExtResource( 18 )
 
-[node name="CoralSmallProp6" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 406, 379 )
 texture = ExtResource( 18 )
 
-[node name="CoralSmallProp8" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 116, 396 )
 texture = ExtResource( 18 )
 
-[node name="CoralSmallProp9" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 268, 47 )
 texture = ExtResource( 18 )
 flip_h = true
 
-[node name="CoralSmallProp10" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 513, 45 )
 texture = ExtResource( 18 )
 
-[node name="CoralSmallProp7" type="Sprite" parent="Environment/Coral"]
+[node name="CoralSmallProp7" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 413, 382 )
 scale = Vector2( -0.0526316, 1 )
 texture = ExtResource( 18 )
 
-[node name="CoralBigProp" type="Sprite" parent="Environment/Coral"]
+[node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 617, 324 )
 texture = ExtResource( 17 )
 
-[node name="CoralBigProp2" type="Sprite" parent="Environment/Coral"]
+[node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 631, 332 )
 texture = ExtResource( 17 )
 flip_h = true
 
-[node name="CoralBigProp3" type="Sprite" parent="Environment/Coral"]
+[node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2( 613, 343 )
 texture = ExtResource( 17 )
 flip_h = true
 
 [node name="Bramble" type="Node2D" parent="Environment"]
 
-[node name="Bramble1" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 505, 328 )
 texture = ExtResource( 14 )
 
-[node name="BrambleSmall" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 366, 316 )
 texture = ExtResource( 15 )
 flip_h = true
 
-[node name="BrambleSmall2" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 455, 331 )
 texture = ExtResource( 15 )
 flip_h = true
 
-[node name="BrambleSmall3" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 402, 343 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall4" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 377, 389 )
 texture = ExtResource( 15 )
 flip_h = true
@@ -427,19 +427,19 @@ scale = Vector2( 1, 1 )
 
 [node name="Trees" type="Node2D" parent="Environment"]
 
-[node name="BloodTree" type="Sprite" parent="Environment/Trees"]
+[node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 position = Vector2( 317, 335 )
 z_index = 1
 texture = ExtResource( 10 )
 
-[node name="BloodTree2" type="Sprite" parent="Environment/Trees"]
+[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
 position = Vector2( 100, 16 )
 z_index = 1
 texture = ExtResource( 10 )
 
 [node name="Special" type="Node2D" parent="Environment"]
 
-[node name="EyeStalk" type="AnimatedSprite" parent="Environment/Special"]
+[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
 position = Vector2( 587, 387 )
 frames = SubResource( 6 )
 playing = true

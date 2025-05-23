@@ -4,24 +4,24 @@ extends Node2D
 # Handles Shooting the EggWorm Laser 
 
 # Configuration parameters
-export (Color) var laser_color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
-export (float) var extension_speed = 1000.0  # Pixels per second
-export (float) var max_length = 1000.0
-export (float) var laser_width = 4.0  # Increased for visibility
-export (float) var damage = 1.0
-export (float) var duration = 0.5
-export (bool) var auto_fire = false
-export (float) var cooldown = 1.0
+@export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
+@export var extension_speed: float = 1000.0  # Pixels per second
+@export var max_length: float = 1000.0
+@export var laser_width: float = 4.0  # Increased for visibility
+@export var damage: float = 1.0
+@export var duration: float = 0.5
+@export var auto_fire: bool = false
+@export var cooldown: float = 1.0
 
 # Zigzag parameters
-export (float) var zigzag_height = 50.0  # Height of the zigzag
-export (float) var zigzag_position = 300.0  # Fixed screen position where zigzag occurs
-export (float) var zigzag_width = 100.0  # Width of the zigzag section
+@export var zigzag_height: float = 50.0  # Height of the zigzag
+@export var zigzag_position: float = 300.0  # Fixed screen position where zigzag occurs
+@export var zigzag_width: float = 100.0  # Width of the zigzag section
 
 # Node references
-onready var line2D := Line2D.new()
-onready var laser_area := Area2D.new()
-onready var collision_shape := CollisionShape2D.new()
+@onready var line2D := Line2D.new()
+@onready var laser_area := Area2D.new()
+@onready var collision_shape := CollisionShape2D.new()
 
 # State variables 
 var current_length := 0.0
@@ -33,7 +33,7 @@ var isBuffed = false
 func _ready() -> void:
 	# Set up Line2D
 	add_child(line2D)
-	line2D.points = PoolVector2Array([Vector2.ZERO, Vector2(100, 0)])
+	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
 	line2D.default_color = laser_color
 	line2D.width = laser_width
 	line2D.begin_cap_mode = Line2D.LINE_CAP_ROUND
@@ -49,20 +49,20 @@ func _ready() -> void:
 	# Set up debug marker
 	var debug_marker = ColorRect.new()
 	add_child(debug_marker)
-	debug_marker.rect_size = Vector2(5, 5)
-	debug_marker.rect_position = Vector2(-2.5, -2.5)
-	debug_marker.color = Color.yellow
+	debug_marker.size = Vector2(5, 5)
+	debug_marker.position = Vector2(-2.5, -2.5)
+	debug_marker.color = Color.YELLOW
 	
 	# Set up timer
 	add_child(timer)
 	timer.one_shot = true
-	timer.connect("timeout", self, "_on_laser_timeout")
+	timer.connect("timeout", Callable(self, "_on_laser_timeout"))
 	
 	if auto_fire:
 		var cooldown_timer = Timer.new()
 		add_child(cooldown_timer)
 		cooldown_timer.wait_time = cooldown
-		cooldown_timer.connect("timeout", self, "fire")
+		cooldown_timer.connect("timeout", Callable(self, "fire"))
 		cooldown_timer.start()
 
 # Handle updating the laser firing if we are firing 
@@ -86,7 +86,7 @@ func fire() -> void:
 
 # Update the laser points specifically, also taking into account buffs
 func _update_laser() -> void:
-	var points = PoolVector2Array()
+	var points = PackedVector2Array()
 	points.append(Vector2.ZERO)  # Starting point
 		
 	if isBuffed:
@@ -156,7 +156,7 @@ func buff(bufferLocation):
 	damage = damage * 1.5
 
 # getter for buffed status
-func isBuffed():
+func getIsBuffed():
 	return isBuffed
 	
 	

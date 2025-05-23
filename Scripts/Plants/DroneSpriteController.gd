@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 #DroneSpriteController.gd
 
 #Handles changes to the drone's sprite 
@@ -6,11 +6,11 @@ extends AnimatedSprite
 # Returns the length of a given animation for a drone 
 func get_animation_length(anim_name: String) -> float:
 	
-	if frames.has_animation(anim_name):
-		var frame_count = frames.get_frame_count(anim_name)
-		var frame_rate = frames.get_animation_speed(anim_name)
+	if sprite_frames.has_animation(anim_name):
+		var frame_count = sprite_frames.get_frame_count(anim_name)
+		var frame_rate = sprite_frames.get_animation_speed(anim_name)
 		# Don't forget to account for the speed scale if it's been modified
-		var speed_scale = speed_scale
+		var speed_scale = sprite_frames.speed_scale
 		return (frame_count / frame_rate) / speed_scale
 	return 0.0
 

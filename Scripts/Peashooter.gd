@@ -2,25 +2,25 @@ extends Area2D
 #Peashooter.gd
 
 # Adjustbale health, cost, attack speed 
-export var health = 100
-export var attack_speed = 5 
-export var cost = 50
+@export var health = 100
+@export var attack_speed = 5 
+@export var cost = 50
 
 var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
 var PlantManager
 var canAttack = false   # Whether or not the peashooter can attack 
 
 # Raycast to detect zombies in front of the spider
-onready var attack_ray = $DMG_RayCast2D
+@onready var attack_ray = $DMG_RayCast2D
 # Reference to the animatedSpriteComponent 
-onready var animatedSpriteComponent = $AnimatedSprite
+@onready var animatedSpriteComponent = $AnimatedSprite2D
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
 	animatedSpriteComponent.animation = "redSpiderDefault"
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$ShootTimer.start()  # Start the shoot timer
-	assert($ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout") ==OK)
+	assert($ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout")) ==OK)
 	animatedSpriteComponent.animation = "spawn"
 
 #Handles Collision In Relation To Attacking
@@ -33,6 +33,7 @@ func _process(_delta):
 			if collider:
 				#print("Collider Name is ", collider.name)
 				if collider.is_in_group("Zombie"):
+					print("Can Attack Is True")
 					canAttack = true
 				else:
 					canAttack = false
@@ -50,7 +51,7 @@ func receiveBuff(bufferName):
 # Function to create and shoot a new projectile
 func shoot_projectile():
 	$AttackAudioPlayer.play()
-	var projectile = projectile_scene.instance()
+	var projectile = projectile_scene.instantiate()
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer
 
@@ -68,11 +69,14 @@ func _on_AnimatedSprite_animation_finished():
 		
 		animatedSpriteComponent.position = Vector2(animatedSpriteComponent.position.x, animatedSpriteComponent.position.y -8.5)
 		animatedSpriteComponent.animation = "redSpiderDefault"
+		animatedSpriteComponent.play()
 		return
 	if canAttack:
+		print("Should Be Red Spider Attack")
 		animatedSpriteComponent.animation = "redSpiderAttack"
 	else:
 		animatedSpriteComponent.animation = "redSpiderDefault"
+	animatedSpriteComponent.play()
 
 #Shoots based on animation 
 func _on_AnimatedSprite_frame_changed():
@@ -80,9 +84,3 @@ func _on_AnimatedSprite_frame_changed():
 		#print(animatedSpriteComponent.frame)
 		if(animatedSpriteComponent.frame == 3):
 			shoot_projectile()
-
-
-
-
-
-

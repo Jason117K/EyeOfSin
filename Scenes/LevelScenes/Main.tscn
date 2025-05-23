@@ -5,18 +5,18 @@
 [ext_resource path="res://Scenes/Systems/GridManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" type="Texture2D" id=6]
 [ext_resource path="res://Scenes/Environment/Fish.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Systems/WavePreview.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/LevelLogic/WaveManager.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/LevelLogic/Main.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Systems/ToolTips.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=12]
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=13]
+[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture2D" id=14]
+[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture2D" id=15]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 font_data = ExtResource( 13 )
 
 [sub_resource type="Environment" id=2]
@@ -173,28 +173,28 @@ Wave2_Interval = 10
 Wave3_Interval = 20.0
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
-margin_left = 739.0
-margin_top = 43.0
-margin_right = 777.0
-margin_bottom = 241.0
+offset_left = 739.0
+offset_top = 43.0
+offset_right = 777.0
+offset_bottom = 241.0
 color = Color( 2, 0, 0, 0.729412 )
 
 [node name="UILayer" type="Control" parent="."]
-margin_left = 1.0
-margin_top = 321.0
-margin_right = 41.0
-margin_bottom = 361.0
+offset_left = 1.0
+offset_top = 321.0
+offset_right = 41.0
+offset_bottom = 361.0
 
 [node name="SunCounter" type="Control" parent="UILayer"]
-margin_top = -320.0
-margin_right = 40.0
-margin_bottom = -280.0
+offset_top = -320.0
+offset_right = 40.0
+offset_bottom = -280.0
 
 [node name="Label" type="Label" parent="UILayer/SunCounter"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "Blood : 75
 "
 
@@ -203,20 +203,20 @@ stream = ExtResource( 12 )
 autoplay = true
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource( 5 )]
-margin_left = 8.0
-margin_top = 313.0
-margin_right = 1.0
-margin_bottom = 1.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 8.0
+offset_top = 313.0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2( 0.5, 0.5 )
 
 [node name="Node" type="Node2D" parent="."]
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Node"]
-margin_left = -56.0
-margin_top = -58.0
-margin_right = 792.0
-margin_bottom = 444.0
+offset_left = -56.0
+offset_top = -58.0
+offset_right = 792.0
+offset_bottom = 444.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 0.0784314 )
 
@@ -227,99 +227,99 @@ environment = SubResource( 2 )
 
 [node name="Bramble" type="Node2D" parent="Environment"]
 
-[node name="Bramble1" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 505, 328 )
 texture = ExtResource( 14 )
 
-[node name="Bramble2" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 299, 386 )
 texture = ExtResource( 14 )
 
-[node name="Bramble3" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 713, 305 )
 texture = ExtResource( 14 )
 
-[node name="Bramble4" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 552, 392 )
 texture = ExtResource( 14 )
 
-[node name="Bramble5" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 99, 45 )
 texture = ExtResource( 14 )
 
-[node name="Bramble6" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 380, 48 )
 texture = ExtResource( 14 )
 
-[node name="Bramble7" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble7" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 718, 44 )
 texture = ExtResource( 14 )
 
-[node name="Bramble8" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble8" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 422, 372 )
 texture = ExtResource( 14 )
 
-[node name="Bramble9" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble9" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 229, 395 )
 texture = ExtResource( 14 )
 
-[node name="Bramble10" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble10" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 46, 397 )
 texture = ExtResource( 14 )
 
-[node name="BrambleSmall" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 366, 317 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall2" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 461, 397 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall3" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 596, 381 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall4" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 536, 310 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall5" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall5" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 691, 327 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall6" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall6" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 274, 397 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall7" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall7" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 63, 47 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall8" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall8" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 416, 51 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall9" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall9" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 322, 48 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall10" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall10" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 145, 48 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall11" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall11" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 176, 21 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall12" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall12" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 555, 51 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall13" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall13" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 625, 36 )
 texture = ExtResource( 15 )
 
-[node name="BrambleSmall14" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall14" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 470, 342 )
 texture = ExtResource( 15 )
 
@@ -348,63 +348,63 @@ position = Vector2( 665, 361 )
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 619, 342 )
 frames = SubResource( 6 )
 frame = 2
 playing = true
 
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 597, 357 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite3" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 618, 363 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite4" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 323, 337 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite5" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite5" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 337, 346 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite6" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite6" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 468, 375 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite7" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite7" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 439, 306 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite8" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite8" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 679, 304 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite9" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite9" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 691, 48 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite10" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite10" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 513, 49 )
 frames = SubResource( 6 )
 playing = true
 
-[node name="AnimatedSprite11" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="AnimatedSprite11" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 32, 35 )
 frames = SubResource( 6 )
 playing = true
 
 [node name="ToolTips" parent="." instance=ExtResource( 11 )]
-margin_right = 283.72
-margin_bottom = 267.136
-custom_styles/panel = SubResource( 7 )
+offset_right = 283.72
+offset_bottom = 267.136
+theme_override_styles/panel = SubResource( 7 )

@@ -3,7 +3,7 @@ extends Node2D
 
 #Switches the Level from 1 to 2 
 
-onready var Lvl3 = preload("res://Scenes/LevelScenes/Level3.tscn")  # Load the next scene
+@onready var Lvl3 = preload("res://Scenes/LevelScenes/Level3.tscn")  # Load the next scene
 
 #Sets Level Interim Screen TileMap 
 func _ready():
@@ -13,10 +13,10 @@ func _ready():
 
 #Changes the Scene to Level 3
 func _on_Continue_pressed():
-	assert(get_tree().change_scene_to(Lvl3) ==OK)
+	assert(get_tree().change_scene_to_packed(Lvl3) ==OK)
 	
 
 # Restarts the Scene 
 func _on_PlayAgain_pressed():
-	assert(get_tree().change_scene("res://Scenes/LevelScenes/Level2.tscn") ==OK)
+	assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/Level2.tscn") ==OK)
 

@@ -4,8 +4,8 @@ extends Area2D
 # Hive Plant Script
 
 #Export variables
-export var cost = 25
-export var health = 50
+@export var cost = 25
+@export var health = 50
 
 # Preload the drone scene
 const DroneScene = preload("res://Scenes/PlantScenes/Drone.tscn")
@@ -22,12 +22,12 @@ var enemy_queue = []                               # Enemies in order of entry
 var active_enemies = []                            # All enemies currently in range
 var drone_rest_positions = {}                      # Dictionary to store rest positions for each drone
 
-onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
+@onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
 var isBuffed = false                               # Tracks Current Buff State Of Drone  
-var PlantManager                                   # Reference to PlantManager 
+var PlantManager                                   # RefCounted to PlantManager 
 
 
-onready var animSpriteComp = $AnimatedSpriteComp
+@onready var animSpriteComp = $AnimatedSpriteComp
  
 func _ready():
 	# Initialize drones & Plant Manager 
@@ -80,7 +80,7 @@ func calculate_rest_position(index):
 # Spawns an assembles the initial number of drones 	
 func spawn_initial_drones():
 	for i in range(MAX_DRONES):
-		var drone = DroneScene.instance()
+		var drone = DroneScene.instantiate()
 		add_child(drone)
 		available_drones.append(drone)
 		
@@ -92,7 +92,7 @@ func spawn_initial_drones():
 		drone.position = rest_pos
 		
 		# Connect drone signals
-		drone.connect("drone_died", self, "_on_drone_died")
+		drone.connect("drone_died", Callable(self, "_on_drone_died"))
 		if isBuffed:
 			drone.doubleDamage()
 
@@ -105,7 +105,7 @@ func _on_enemy_entered(area):
 		active_enemies.append(area)
 		
 		# Connect to enemy death signal
-		area.connect("enemy_died", self, "_on_enemy_died")
+		area.connect("enemy_died", Callable(self, "_on_enemy_died"))
 		
 		# Optimize drone assignments
 		optimize_drone_assignments()
@@ -130,7 +130,7 @@ func _on_enemy_exited(area):
 		optimize_drone_assignments()
 		
 		# If no enemies remain, return drones to rest positions
-		if enemy_queue.empty():
+		if enemy_queue.is_empty():
 			return_drones_to_rest()
 
 # Helper func to reassemble drones in resting position 
@@ -168,13 +168,13 @@ func optimize_drone_assignments():
 	available_drones = all_drones
 	
 	# If no enemies, return all drones to rest positions
-	if enemy_queue.empty():
+	if enemy_queue.is_empty():
 		return_drones_to_rest()
 		return
 		
 	# Calculate optimal distribution
 	var enemies_to_assign = enemy_queue.slice(0, min(enemy_queue.size() - 1, MAX_DRONES - 1))
-	if enemies_to_assign.empty():
+	if enemies_to_assign.is_empty():
 		return
 		
 	var drones_per_enemy = int(MAX_DRONES / enemies_to_assign.size())
@@ -190,7 +190,7 @@ func optimize_drone_assignments():
 		drone_assignments[enemy] = []
 		for _i in range(num_drones):
 			
-			if available_drones.empty():
+			if available_drones.is_empty():
 				break
 			var drone = available_drones.pop_front()
 			drone_assignments[enemy].append(drone)
@@ -211,7 +211,7 @@ func take_damage(damage):
 #Respawns a drone and re-optimizes assignmnets 
 func _on_DroneRespawnTimer_timeout():
 	# Create new drone
-	var new_drone = DroneScene.instance()
+	var new_drone = DroneScene.instantiate()
 	add_child(new_drone)
 	available_drones.append(new_drone)
 	
@@ -221,7 +221,7 @@ func _on_DroneRespawnTimer_timeout():
 	drone_rest_positions[new_drone] = rest_pos
 	new_drone.position = rest_pos
 	
-	new_drone.connect("drone_died", self, "_on_drone_died")
+	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
 	
 	if isBuffed:
 		new_drone.doubleDamage()
@@ -239,3 +239,4 @@ func is_instance_valid_and_alive(node) -> bool:
 func _on_AnimatedSpriteComp_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "idle"
+		animSpriteComp.play()

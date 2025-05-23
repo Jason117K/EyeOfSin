@@ -2,16 +2,16 @@ extends Node2D
 # AttackComp.gd 
 # Handles Zombie attacking Plant Behavior 
 
-export var attack_power = 33 # Adjustable reference to attack damage
+@export var attack_power = 33 # Adjustable reference to attack damage
 var is_attacking = false  # Whether or not we attacking
 var target_plant = null  # Holds reference to the plant being attacked
 var canSpecial = true # Determines whether or not a special move can be performed
 
-onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect plants in front of the zombie
-onready var zombieSprite = $"../AnimatedSprite" # Reference to sprite comp 
-onready var attack_timer = $"../AttackTimer" # Adjustable timer to control attack speed
-onready var attack_audio_player = $"../AttackAudioPlayer" # Reference to attack audio 
-onready var parent = get_parent() # Parent Zombie Attacking 
+@onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect plants in front of the zombie
+@onready var zombieSprite = $"../AnimatedSprite2D" # RefCounted to sprite comp 
+@onready var attack_timer = $"../AttackTimer" # Adjustable timer to control attack speed
+@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
+@onready var parent = get_parent() # Parent Zombie Attacking 
 
 # Attack State Getter 
 func getAttackState():

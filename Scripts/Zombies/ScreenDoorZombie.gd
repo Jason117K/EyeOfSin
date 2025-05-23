@@ -3,9 +3,9 @@ extends Zombie
 
 # Handles ScreenDoor Zombie specific behavior 
 
-onready var healthCom = compManager.getHealthComponent()
-onready var altSprite = $TransformedSpriteComp
-onready var startSprite = $AnimatedSprite
+@onready var healthCom = compManager.getHealthComponent()
+@onready var altSprite = $TransformedSpriteComp
+@onready var startSprite = $AnimatedSprite2D
 
 # Stores death count for transformation purposes 
 var deathCount = 0 

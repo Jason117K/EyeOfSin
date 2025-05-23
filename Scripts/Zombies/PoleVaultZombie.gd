@@ -3,7 +3,7 @@ extends Zombie
 
 # Handles PoleVault Zombie specific functionality
 
-onready var specialMoveComp = $SpecialMoveComp
+@onready var specialMoveComp = $SpecialMoveComp
 
 
 # Specific Pole Vault Special Move 

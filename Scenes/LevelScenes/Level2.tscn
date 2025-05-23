@@ -9,15 +9,15 @@
 [ext_resource path="res://Scenes/Environment/Fish.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Systems/WavePreview.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/LevelLogic/WaveManager_Lvl2.gd" type="Script" id=9]
-[ext_resource path="res://Assets/Environment/BloodTree.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Environment/BloodTree.png" type="Texture2D" id=10]
 [ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=11]
 [ext_resource path="res://Scenes/Environment/Shrub.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=13]
+[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture2D" id=14]
+[ext_resource path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" type="Texture2D" id=15]
+[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture2D" id=16]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 font_data = ExtResource( 13 )
 
 [sub_resource type="Environment" id=2]
@@ -239,28 +239,28 @@ Wave1_Interval = 1.0
 Wave3_Interval = 89.0
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
-margin_left = 739.0
-margin_top = 43.0
-margin_right = 777.0
-margin_bottom = 241.0
+offset_left = 739.0
+offset_top = 43.0
+offset_right = 777.0
+offset_bottom = 241.0
 color = Color( 2, 0, 0, 0.729412 )
 
 [node name="UILayer" type="Control" parent="."]
-margin_left = 1.0
-margin_top = 321.0
-margin_right = 41.0
-margin_bottom = 361.0
+offset_left = 1.0
+offset_top = 321.0
+offset_right = 41.0
+offset_bottom = 361.0
 
 [node name="SunCounter" type="Control" parent="UILayer"]
-margin_top = -320.0
-margin_right = 40.0
-margin_bottom = -280.0
+offset_top = -320.0
+offset_right = 40.0
+offset_bottom = -280.0
 
 [node name="Label" type="Label" parent="UILayer/SunCounter"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "Blood : 200
 "
 
@@ -269,10 +269,10 @@ stream = ExtResource( 11 )
 autoplay = true
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource( 5 )]
-margin_left = 15.0
-margin_top = 313.0
-margin_bottom = 66.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 15.0
+offset_top = 313.0
+offset_bottom = 66.0
+scale = Vector2( 0.5, 0.5 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -281,37 +281,37 @@ environment = SubResource( 2 )
 
 [node name="Bramble" type="Node2D" parent="Environment"]
 
-[node name="Bramble1" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 505, 328 )
 texture = ExtResource( 14 )
 
-[node name="Bramble2" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 304, 361 )
 texture = ExtResource( 14 )
 
-[node name="Bramble3" type="Sprite" parent="Environment/Bramble"]
+[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 427, 372 )
 texture = ExtResource( 14 )
 
-[node name="BrambleSmall" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 366, 316 )
 texture = ExtResource( 16 )
 flip_h = true
 
-[node name="BrambleSmall2" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 399, 347 )
 texture = ExtResource( 16 )
 
-[node name="BrambleSmall3" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 390, 385 )
 texture = ExtResource( 16 )
 flip_h = true
 
-[node name="BrambleSmall4" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 307, 308 )
 texture = ExtResource( 16 )
 
-[node name="BrambleSmall5" type="Sprite" parent="Environment/Bramble"]
+[node name="BrambleSmall5" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2( 277, 390 )
 texture = ExtResource( 16 )
 
@@ -355,7 +355,7 @@ position = Vector2( 536, 314 )
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 
-[node name="Shrub7" type="AnimatedSprite" parent="Environment/Shrubs"]
+[node name="Shrub7" type="AnimatedSprite2D" parent="Environment/Shrubs"]
 position = Vector2( 619, 342 )
 frames = SubResource( 6 )
 frame = 1
@@ -387,22 +387,22 @@ scale = Vector2( 1, 1 )
 
 [node name="Trees" type="Node2D" parent="Environment"]
 
-[node name="BloodTree" type="Sprite" parent="Environment/Trees"]
+[node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 position = Vector2( 564, 354 )
 z_index = 1
 texture = ExtResource( 10 )
 
-[node name="BloodTree2" type="Sprite" parent="Environment/Trees"]
+[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
 position = Vector2( 639, 333 )
 z_index = 1
 texture = ExtResource( 10 )
 
-[node name="BloodTree3" type="Sprite" parent="Environment/Trees"]
+[node name="BloodTree3" type="Sprite2D" parent="Environment/Trees"]
 position = Vector2( 700, 368 )
 z_index = 1
 texture = ExtResource( 10 )
 
-[node name="BloodTree4" type="Sprite" parent="Environment/Trees"]
+[node name="BloodTree4" type="Sprite2D" parent="Environment/Trees"]
 position = Vector2( 335, 353 )
 z_index = 1
 texture = ExtResource( 10 )

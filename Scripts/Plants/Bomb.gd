@@ -3,10 +3,10 @@ extends Area2D
 
 # Spawns Bomb that explodes and damages all zombies in the area 
 
-export var damage = 100 # Adjustable damage  
+@export var damage = 100 # Adjustable damage  
 var enemiesToHit = [] # Stores all the valid enemies to hit 
 var enemiesToHitTemp # Stores enemies to hit, some of which are invalid targets
-onready var deathTimer = $DeathTimer # Timer to trigger explosion and destroy bomb
+@onready var deathTimer = $DeathTimer # Timer to trigger explosion and destroy bomb
 
 
 # Add this helper function to scripts that deal with combat
