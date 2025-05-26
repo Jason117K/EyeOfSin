@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="6"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="7"]
 
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)

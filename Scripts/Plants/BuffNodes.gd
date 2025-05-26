@@ -91,13 +91,3 @@ func _process(_delta):
 								plantToBuff.receiveBuff(plant)
 								blood_tile.visible = true
 								break
-
-
-
-
-
-
-
-
-
-

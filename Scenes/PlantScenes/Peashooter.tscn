@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="9"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="10"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -914,20 +914,22 @@ modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
 sprite_frames = SubResource("55")
-animation = &"New Anim 2"
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(64, 0)
 sprite_frames = SubResource("55")
-animation = &"New Anim 2"
-frame = 1
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
-animation = &"New Anim 2"
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4")
@@ -945,7 +947,7 @@ giveBuffTo = ["Hive", "Maw", "None", "None", "None", "None", "None", "None"]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 6
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
@@ -954,7 +956,7 @@ visible = false
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 3
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
@@ -963,12 +965,12 @@ visible = false
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 3
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 3
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
@@ -977,7 +979,7 @@ visible = false
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 3
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
@@ -986,7 +988,7 @@ visible = false
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 3
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
@@ -995,7 +997,7 @@ visible = false
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 3
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
@@ -1004,14 +1006,14 @@ visible = false
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
+autoplay = "Drip"
 frame = 3
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
-frame = 6
+autoplay = "Drip"
+frame = 15
+frame_progress = 0.606092
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
