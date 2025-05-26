@@ -9,7 +9,7 @@ extends Area2D
 var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
 var PlantManager
 var canAttack = false   # Whether or not the peashooter can attack 
-
+#f
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
 # Reference to the animatedSpriteComponent 
