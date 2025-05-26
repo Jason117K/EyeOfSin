@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="6"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://6fs5whoq53mi" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="7"]
 
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)
@@ -696,54 +696,57 @@ visible = false
 z_index = 6
 position = Vector2(32, 0)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(32, 32)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 3
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(32, -32)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 2
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 2
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(-32, 32)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 1
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(-32, -32)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(0, -32)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 3
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("55")
-animation = &"New Anim"
+animation = &"Drip"
+autoplay = "Drip"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("6")
@@ -757,7 +760,7 @@ giveBuffTo = ["Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 animation = &"Drip"
-frame = 4
+frame = 0
 
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false

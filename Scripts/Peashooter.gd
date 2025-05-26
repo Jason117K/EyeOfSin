@@ -33,7 +33,7 @@ func _process(_delta):
 			if collider:
 				#print("Collider Name is ", collider.name)
 				if collider.is_in_group("Zombie"):
-					print("Can Attack Is True")
+					#print("Can Attack Is True")
 					canAttack = true
 				else:
 					canAttack = false

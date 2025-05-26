@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="9"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://6fs5whoq53mi" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="10"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)

@@ -72,7 +72,7 @@ func _process(_delta):
 					
 					# If the plantToBuff is a valid plant & not a drone
 					if(plantToBuff.is_in_group("Plants") && !("Drone" in plantToBuff.name)):
-						#print("Plant to Buff is ", plantToBuff.name)
+						print("Plant to Buff is ", plantToBuff.name)
 						
 						#Check our list of valid plants to buff
 						for plantActor in giveBuffTo:
@@ -88,16 +88,7 @@ func _process(_delta):
 								#Handle Special EggWorm Buff Case, as both plants 'receive' a buff
 								if (plantToBuff.name == "WalnutTree") && ("EggWorm" in plant.name):
 									plant.receiveBuff(plantToBuff)
+								print("Plant to buff : ", plantToBuff , " will now receive buff from ", plant)
 								plantToBuff.receiveBuff(plant)
 								blood_tile.visible = true
 								break
-
-
-
-
-
-
-
-
-
-
