@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://Scripts/LevelLogic/StartScreen.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://cobj784popsao" path="res://Assets/Text/StartGame.png" id="4"]
+[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="3_yhwb3"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -26,6 +26,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = -2.845
+offset_bottom = -2.845
 size_flags_horizontal = 3
 size_flags_vertical = 3
 use_top_left = true
@@ -34,7 +36,18 @@ use_top_left = true
 layout_mode = 2
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-icon = ExtResource("4")
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yhwb3")
+theme_override_font_sizes/font_size = 32
+text = "START GAME"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

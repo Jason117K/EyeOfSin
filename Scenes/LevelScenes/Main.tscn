@@ -1,67 +1,83 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=23 format=3 uid="uid://cbc05gyx2o4qf"]
 
-[ext_resource path="res://Scenes/PlantScenes/PlantManager.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Systems/WaveManager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Systems/GridManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" type="Texture2D" id=6]
-[ext_resource path="res://Scenes/Environment/Fish.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Systems/WavePreview.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scripts/LevelLogic/WaveManager.gd" type="Script" id=9]
-[ext_resource path="res://Scripts/LevelLogic/Main.gd" type="Script" id=10]
-[ext_resource path="res://Scenes/Systems/ToolTips.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=12]
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=13]
-[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture2D" id=14]
-[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture2D" id=15]
+[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="6"]
+[ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://Scenes/Systems/WavePreview.tscn" id="8"]
+[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="9"]
+[ext_resource type="Script" uid="uid://cfv5r2hytpurl" path="res://Scripts/LevelLogic/Main.gd" id="10"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="11"]
+[ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="12"]
+[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="13"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
+[ext_resource type="Script" uid="uid://dlmmfpqcb527g" path="res://Scripts/Environment/ShrubAnimator.gd" id="15_dph8t"]
 
-[sub_resource type="FontFile" id=1]
-font_data = ExtResource( 13 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("13")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id="2"]
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 1
 glow_hdr_threshold = 1.5
-glow_bicubic_upscale = true
 adjustment_enabled = true
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 18, 20 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 18, 20)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 6 )
-region = Rect2( 18, 0, 18, 20 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("6")
+region = Rect2(18, 0, 18, 20)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 6 )
-region = Rect2( 36, 0, 18, 20 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("6")
+region = Rect2(36, 0, 18, 20)
 
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
-
-[sub_resource type="StyleBoxFlat" id=7]
+}]
 
 [node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 10 )
+script = ExtResource("10")
 
-[node name="PlantManager" parent="." instance=ExtResource( 1 )]
+[node name="PlantManager" parent="." instance=ExtResource("1")]
 sun_points = 275
 
 [node name="GameLayer" type="Node2D" parent="."]
 
-[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 748, 109 )
+[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(748, 109)
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
@@ -90,12 +106,12 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource( 8 )]
-position = Vector2( -54, 0 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("8")]
 z_index = 1
+position = Vector2(-54, 0)
 
-[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 746, 141 )
+[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(746, 141)
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
@@ -124,12 +140,12 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource( 8 )]
-position = Vector2( -48, 0 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("8")]
 z_index = 1
+position = Vector2(-48, 0)
 
-[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 746, 173 )
+[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(746, 173)
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
@@ -158,15 +174,15 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource( 8 )]
-position = Vector2( -46, 4 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("8")]
 z_index = 1
+position = Vector2(-46, 4)
 
-[node name="GridManager" parent="GameLayer" instance=ExtResource( 3 )]
+[node name="GridManager" parent="GameLayer" instance=ExtResource("3")]
 
-[node name="WaveManager" parent="GameLayer" instance=ExtResource( 2 )]
-position = Vector2( -64, 200 )
-script = ExtResource( 9 )
+[node name="WaveManager" parent="GameLayer" instance=ExtResource("2")]
+position = Vector2(-64, 200)
+script = ExtResource("9")
 StartDelay = 9
 Wave1_Interval = 1.0
 Wave2_Interval = 10
@@ -177,37 +193,50 @@ offset_left = 739.0
 offset_top = 43.0
 offset_right = 777.0
 offset_bottom = 241.0
-color = Color( 2, 0, 0, 0.729412 )
+color = Color(2, 0, 0, 0.729412)
 
 [node name="UILayer" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 1.0
 offset_top = 321.0
 offset_right = 41.0
 offset_bottom = 361.0
 
 [node name="SunCounter" type="Control" parent="UILayer"]
+anchors_preset = 0
 offset_top = -320.0
 offset_right = 40.0
 offset_bottom = -280.0
 
+[node name="ColorRect" type="ColorRect" parent="UILayer/SunCounter"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 86.0
+offset_bottom = 23.0
+color = Color(0, 0, 0, 1)
+
 [node name="Label" type="Label" parent="UILayer/SunCounter"]
-offset_right = 40.0
-offset_bottom = 14.0
-theme_override_colors/font_color = Color( 0, 0, 0, 1 )
-theme_override_fonts/font = SubResource( 1 )
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 82.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
 text = "Blood : 75
 "
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource("12")
 autoplay = true
 
-[node name="PlantSelectionMenu" parent="." instance=ExtResource( 5 )]
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("5")]
 offset_left = 8.0
 offset_top = 313.0
 offset_right = 1.0
 offset_bottom = 1.0
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2(0.5, 0.5)
 
 [node name="Node" type="Node2D" parent="."]
 z_index = -1
@@ -218,193 +247,208 @@ offset_top = -58.0
 offset_right = 792.0
 offset_bottom = 444.0
 mouse_filter = 2
-color = Color( 0, 0, 0, 0.0784314 )
+color = Color(0, 0, 0, 0.0784314)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource("2")
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Bramble" type="Node2D" parent="Environment"]
 
 [node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 505, 328 )
-texture = ExtResource( 14 )
+position = Vector2(505, 328)
+texture = ExtResource("14")
 
 [node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 299, 386 )
-texture = ExtResource( 14 )
+position = Vector2(299, 386)
+texture = ExtResource("14")
 
 [node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 713, 305 )
-texture = ExtResource( 14 )
+position = Vector2(713, 305)
+texture = ExtResource("14")
 
 [node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 552, 392 )
-texture = ExtResource( 14 )
+position = Vector2(552, 392)
+texture = ExtResource("14")
 
 [node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 99, 45 )
-texture = ExtResource( 14 )
+position = Vector2(99, 45)
+texture = ExtResource("14")
 
 [node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 380, 48 )
-texture = ExtResource( 14 )
+position = Vector2(380, 48)
+texture = ExtResource("14")
 
 [node name="Bramble7" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 718, 44 )
-texture = ExtResource( 14 )
+position = Vector2(718, 44)
+texture = ExtResource("14")
 
 [node name="Bramble8" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 422, 372 )
-texture = ExtResource( 14 )
+position = Vector2(422, 372)
+texture = ExtResource("14")
 
 [node name="Bramble9" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 229, 395 )
-texture = ExtResource( 14 )
+position = Vector2(229, 395)
+texture = ExtResource("14")
 
 [node name="Bramble10" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 46, 397 )
-texture = ExtResource( 14 )
+position = Vector2(46, 397)
+texture = ExtResource("14")
 
 [node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 366, 317 )
-texture = ExtResource( 15 )
+position = Vector2(366, 317)
+texture = ExtResource("15")
 
 [node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 461, 397 )
-texture = ExtResource( 15 )
+position = Vector2(461, 397)
+texture = ExtResource("15")
 
 [node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 596, 381 )
-texture = ExtResource( 15 )
+position = Vector2(596, 381)
+texture = ExtResource("15")
 
 [node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 536, 310 )
-texture = ExtResource( 15 )
+position = Vector2(536, 310)
+texture = ExtResource("15")
 
 [node name="BrambleSmall5" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 691, 327 )
-texture = ExtResource( 15 )
+position = Vector2(691, 327)
+texture = ExtResource("15")
 
 [node name="BrambleSmall6" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 274, 397 )
-texture = ExtResource( 15 )
+position = Vector2(274, 397)
+texture = ExtResource("15")
 
 [node name="BrambleSmall7" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 63, 47 )
-texture = ExtResource( 15 )
+position = Vector2(63, 47)
+texture = ExtResource("15")
 
 [node name="BrambleSmall8" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 416, 51 )
-texture = ExtResource( 15 )
+position = Vector2(416, 51)
+texture = ExtResource("15")
 
 [node name="BrambleSmall9" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 322, 48 )
-texture = ExtResource( 15 )
+position = Vector2(322, 48)
+texture = ExtResource("15")
 
 [node name="BrambleSmall10" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 145, 48 )
-texture = ExtResource( 15 )
+position = Vector2(145, 48)
+texture = ExtResource("15")
 
 [node name="BrambleSmall11" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 176, 21 )
-texture = ExtResource( 15 )
+position = Vector2(176, 21)
+texture = ExtResource("15")
 
 [node name="BrambleSmall12" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 555, 51 )
-texture = ExtResource( 15 )
+position = Vector2(555, 51)
+texture = ExtResource("15")
 
 [node name="BrambleSmall13" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 625, 36 )
-texture = ExtResource( 15 )
+position = Vector2(625, 36)
+texture = ExtResource("15")
 
 [node name="BrambleSmall14" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 470, 342 )
-texture = ExtResource( 15 )
+position = Vector2(470, 342)
+texture = ExtResource("15")
 
 [node name="Fish" type="Node2D" parent="Environment"]
 
-[node name="Fish" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 330, 391 )
+[node name="Fish" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(330, 391)
 
-[node name="Fish2" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 588, 77 )
+[node name="Fish2" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(588, 77)
 
-[node name="Fish3" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 219, 50 )
+[node name="Fish3" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(219, 50)
 
-[node name="Fish4" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 416, 338 )
+[node name="Fish4" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(416, 338)
 
-[node name="Fish5" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 607, 306 )
+[node name="Fish5" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(607, 306)
 
-[node name="Fish6" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 549, 345 )
+[node name="Fish6" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(549, 345)
 
-[node name="Fish7" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 665, 361 )
+[node name="Fish7" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(665, 361)
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 619, 342 )
-frames = SubResource( 6 )
+position = Vector2(619, 342)
+sprite_frames = SubResource("6")
 frame = 2
-playing = true
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite2" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 597, 357 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(597, 357)
+sprite_frames = SubResource("6")
+frame_progress = 0.964556
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite3" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 618, 363 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(618, 363)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite4" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 323, 337 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(323, 337)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite5" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 337, 346 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(337, 346)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite6" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 468, 375 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(468, 375)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite7" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 439, 306 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(439, 306)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite8" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 679, 304 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(679, 304)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite9" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 691, 48 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(691, 48)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite10" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 513, 49 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(513, 49)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
 [node name="AnimatedSprite11" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 32, 35 )
-frames = SubResource( 6 )
-playing = true
+position = Vector2(32, 35)
+sprite_frames = SubResource("6")
+script = ExtResource("15_dph8t")
 
-[node name="ToolTips" parent="." instance=ExtResource( 11 )]
-offset_right = 283.72
-offset_bottom = 267.136
-theme_override_styles/panel = SubResource( 7 )
+[node name="ToolTips" parent="." instance=ExtResource("11")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
+[connection signal="plant_placed" from="PlantManager" to="PlantSelectionMenu" method="_on_plant_manager_plant_placed"]
+[connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

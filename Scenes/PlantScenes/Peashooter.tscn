@@ -533,7 +533,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("117")
 }],
-"loop": true,
+"loop": false,
 "name": &"Drip",
 "speed": 5.0
 }, {
@@ -550,7 +550,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("67")
 }],
-"loop": true,
+"loop": false,
 "name": &"New Anim 2",
 "speed": 5.0
 }, {
@@ -914,22 +914,22 @@ modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
 sprite_frames = SubResource("55")
-animation = &"Drip"
-autoplay = "Drip"
+animation = &"New Anim 2"
+autoplay = "New Anim 2"
 
 [node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(64, 0)
 sprite_frames = SubResource("55")
-animation = &"Drip"
-autoplay = "Drip"
+animation = &"New Anim 2"
+autoplay = "New Anim 2"
 
 [node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
-animation = &"Drip"
-autoplay = "Drip"
+animation = &"New Anim 2"
+autoplay = "New Anim 2"
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4")

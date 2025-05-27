@@ -11,6 +11,7 @@ var grid_map = {}  # Dictionary to store occupied cells
 var plant_cost = 25  # Holds the cost of the currently selected plant 
 @onready var parentName = get_parent().get_name()
 
+signal plant_placed
 
 
 # Reference the PlantSelectionMenu dynamically
@@ -113,6 +114,7 @@ func place_plant(grid_pos: Vector2):
 		
 		#Play the sound
 		$PlacePlantAudioPlayer.play()
+		plant_placed.emit()
 		
 		# Clear preview after successful placement, or do this when deselect Hit 
 		#selection_menu.clear_preview()

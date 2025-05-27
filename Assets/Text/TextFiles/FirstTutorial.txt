@@ -1,0 +1,5 @@
+ZOMBIES will walk right to left down the path, trying to feast on your blood.
+ 
+Use SUMMONS to kill zombies before they reach the end of the path. 
+ 
+If too many zombies reach the end of the path, you die. 

@@ -1,0 +1,7 @@
+EYES generate BLOOD over time 
+ 
+BLOOD is used to place more SUMMONS
+  
+You also gain BLOOD from killing enemies 
+ 
+Click on a Tile to place the Eye 

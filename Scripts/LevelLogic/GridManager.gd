@@ -24,7 +24,7 @@ func set_tiles_for_rows(row_start: int, row_end: int, tile_id: int):
 	# - source_id (typically 0 for the first tileset)
 	# - atlas_coords (Vector2i for the tile coordinates in the atlas)
 	
-	var source_id = 63  # First tileset source
+	var source_id = tile_id  # First tileset source
 	
 	# Calculate atlas coordinates from tile_id
 	# Adjust this based on how your tileset is organized

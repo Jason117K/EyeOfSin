@@ -8,6 +8,7 @@ var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being 
 var preview_sprites: Array = [] # Holds array of preview sprites 
 var is_previewing: bool = false # Whether or not we are currently previewing 
 
+signal clicked_Eye
 
 # Preload the plant scenes
 var peashooter_scene = preload("res://Scenes/PlantScenes/Peashooter.tscn")
@@ -34,9 +35,15 @@ var eggCostLabel
 var mawCostLabel
 var hiveCostLabel 
 
+# Thickness of the highlight border (in pixels)
+@export var highlight_border_thickness: int = 4
+
+# Color of the highlight border
+@export var highlight_border_color: Color = Color.WHITE
 
 func _ready():
 
+	add_button_highlight
 	set_process_input(true)
 	
 	# Connect button signals to their respective functions
@@ -52,6 +59,8 @@ func _ready():
 	temp_instance = sunflower_scene.instantiate()
 	sunFlowerCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
+	
+	add_button_highlight(SunFlowerButton)
 	
 	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	peaShooterCostLabel = $VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
@@ -92,6 +101,8 @@ func _ready():
 	# Make sure the appropirate plants are available per level
 	if root == "Main": #or root == "Level2":
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		PeaShooterButton.visible = false 
+		WalnutButton.visible = false
 		
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 		
@@ -162,6 +173,8 @@ func _on_SunflowerButton_pressed():
 	print("3Label text is ", sunFlowerCostLabel.text)
 	print("Sunflower selected", temp_instance.get_name())
 	$UIClickAudio.play()
+	
+	clicked_Eye.emit()
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_WalnutButton_pressed():
@@ -312,3 +325,60 @@ func find_animated_sprite(node):
 		if result:
 			return result
 	return null
+
+# Function to add highlight to a button
+func add_button_highlight(button: Button) -> void:
+	if not button:
+		push_error("Button node is null!")
+		return
+	
+	# Create a new StyleBoxFlat for the highlight
+	var highlight_style = StyleBoxFlat.new()
+	
+	# Set the background to be transparent or match button's original background
+	highlight_style.bg_color = Color.TRANSPARENT
+	
+	# Configure the border
+	highlight_style.border_width_left = highlight_border_thickness
+	highlight_style.border_width_right = highlight_border_thickness  
+	highlight_style.border_width_top = highlight_border_thickness
+	highlight_style.border_width_bottom = highlight_border_thickness
+	highlight_style.border_color = highlight_border_color
+	
+	# Apply some corner rounding for a smoother look
+	highlight_style.corner_radius_top_left = 4
+	highlight_style.corner_radius_top_right = 4
+	highlight_style.corner_radius_bottom_left = 4
+	highlight_style.corner_radius_bottom_right = 4
+	
+	# Store the original style so we can restore it later
+	if not button.has_meta("original_normal_style"):
+		button.set_meta("original_normal_style", button.get_theme_stylebox("normal"))
+	
+	# Apply the highlight style to the button's normal state
+	button.add_theme_stylebox_override("normal", highlight_style)
+
+# Function to remove highlight from a button
+func remove_button_highlight(button: Button) -> void:
+	if not button:
+		push_error("Button node is null!")
+		return
+	
+	# Restore the original style if it was saved
+	if button.has_meta("original_normal_style"):
+		var original_style = button.get_meta("original_normal_style")
+		if original_style:
+			button.add_theme_stylebox_override("normal", original_style)
+		else:
+			button.remove_theme_stylebox_override("normal")
+		button.remove_meta("original_normal_style")
+	else:
+		# If no original style was saved, just remove the override
+		button.remove_theme_stylebox_override("normal")
+		
+		
+
+
+func _on_plant_manager_plant_placed() -> void:
+	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	PeaShooterButton.visible = true 

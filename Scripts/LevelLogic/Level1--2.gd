@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 #Level1->2
 
 #Switches the Level from 1 to 2 
@@ -23,5 +23,5 @@ func _on_Continue_pressed():
 func _on_PlayAgain_pressed():
 	$ButtonClickPlayer.play()
 	if(self.name == "Level1->2"):
-		assert(get_tree().change_scene_to_file("res://Scenes/Main.tscn") == OK)
+		assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/Main.tscn") == OK)
 	

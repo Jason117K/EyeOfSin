@@ -2,36 +2,33 @@ extends PanelContainer
 
 @onready var label_text = $VBoxContainer/RichTextLabel
 @onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
-var redColor := "Red"
+@onready var anim_texture = $VBoxContainer/CenterContainer/AnimatedTextureRect
 
-@export var bloodTutorial = "res://Assets/Text/TextFiles/BloodTutorial.tres"
-#var file = File.new()
-#var currentFile
-#
-#
-#
-#func _on_button_pressed() -> void:
-	#hide()
-#
-#
-#func set_text(newFile : String):
-	##label_text.set_text(meleeLoreText)
-	#
-	#show()
-	#
-	#currentFile = file.open(newFile, File.READ)
-	#var newText = file.get_as_text()
-	#file.close()
-	#
-	#label_text.text = newText
-	#Node3D
+signal ToolTipHid
+
+
+func set_text(newFile : String):
+	
+	var file = FileAccess.open(newFile, FileAccess.READ)
+	var newText = file.get_as_text()
+	file.close()
+	label_text.text = newText
+	
+
+func setAnim(newAnim : SpriteFrames):
+	anim_texture.sprites =  newAnim
+	anim_texture.playing = true
+
+func noButtonShow():
+	show()
+	$VBoxContainer/Button.visible = false
+	pass
 	
 func setImage(newImage):
 	#TextureRect
 	pass
 	
 
-
-
 func _on_Button_pressed():
 	hide()
+	ToolTipHid.emit()
