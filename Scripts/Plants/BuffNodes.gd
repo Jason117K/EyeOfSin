@@ -88,7 +88,7 @@ func _process(_delta):
 								#Handle Special EggWorm Buff Case, as both plants 'receive' a buff
 								if (plantToBuff.name == "WalnutTree") && ("EggWorm" in plant.name):
 									plant.receiveBuff(plantToBuff)
-								print("Plant to buff : ", plantToBuff.name , " will now receive buff from ", plant.name)
+								#print("Plant to buff : ", plantToBuff.name , " will now receive buff from ", plant.name)
 								plantToBuff.receiveBuff(plant)
 								blood_tile.visible = true
 								break

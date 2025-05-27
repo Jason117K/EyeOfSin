@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var label_text = $VBoxContainer/RichTextLabel
 @onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
 @onready var anim_texture = $VBoxContainer/CenterContainer/AnimatedTextureRect
-
+@onready var button = $VBoxContainer/Button
 signal ToolTipHid
 
 
@@ -14,14 +14,19 @@ func set_text(newFile : String):
 	file.close()
 	label_text.text = newText
 	
-
+func showButton():
+	button.visible = true 
+	pass
+	
+	
+	
 func setAnim(newAnim : SpriteFrames):
 	anim_texture.sprites =  newAnim
 	anim_texture.playing = true
 
 func noButtonShow():
 	show()
-	$VBoxContainer/Button.visible = false
+	button.visible = false
 	pass
 	
 func setImage(newImage):

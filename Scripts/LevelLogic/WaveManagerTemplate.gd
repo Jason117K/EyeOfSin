@@ -8,13 +8,14 @@ signal level_start(custom_message)
 #signal blood_tutorial(custom_message)
 signal wave2started(custom_message)
 
-
+signal wave2AlmostStart
 
 
 var current_wave = 1                # Current wave number
 var zombies_per_wave = 2           # Number of zombies in the current wave
 var spawn_interval = 3.0            # Time interval between each zombie spawn
 var time_between_waves = 20.0       # Delay before starting a new wave
+var startWave2 : bool = false 
 
 var wave_active = false             # Whether a wave is currently active
 var zombies_spawned = 0             # Counter for spawned zombies
@@ -36,19 +37,29 @@ var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
 @export var Wave3_Interval = 5.5
 
 var checkEndLevel = false
-
+var canStartGame : bool = false 
 var numWave = 0
-
 var health = 5
 
 var root
-
-
 var new_scene
 var retry_scene
 
 
 func _physics_process(_delta):
+	#New game start 
+	
+	if canStartGame:
+		print("Starting All timers this once")
+		for timer in timers:
+			if timer != null:
+				print("Timer is ", timer)
+				timer.wait_time = StartDelay
+				timer.start()
+		$ProceedGame.start()
+		
+		canStartGame = false
+		
 	if(checkEndLevel):
 		if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
 			end_level()
@@ -65,15 +76,21 @@ func _ready():
 	$Wave2.wait_time = Wave2_Interval
 	for child in get_parent().get_parent().get_node("GameLayer").get_children():
 		if "ZombieSpawner" in child.name:
+			print("Spawners.append ", child.name)
 			spawners.append(child)
-			timers.append(child.get_child(1).get_child(2))
-			wavePreviewIcons.append(child.get_child(1))
+			print("Timers.append child.get_child(1) : ",child.find_child("WavePreview").name)
+			print(".get_child(2): , ", child.find_child("WavePreview").get_child(2).name)
+			timers.append(child.find_child("WavePreview").get_child(2))
+			print("WavePreviewIcons.append : ",child.find_child("WavePreview").name)
+			wavePreviewIcons.append(child.find_child("WavePreview"))
 			
 	$ProceedGame.wait_time = StartDelay
-	for timer in timers:
-		timer.wait_time = StartDelay
-		timer.start()
-	$ProceedGame.start()
+	#for timer in timers:
+	#	timer.wait_time = StartDelay
+	#	timer.start()
+		
+	#TODO Game starts here just don't forget 
+	#$ProceedGame.start()
 	
 	if self.has_method("setScenes"):
 		self.setScenes()
@@ -81,7 +98,21 @@ func _ready():
 			
 func setScenes():
 	pass
-				
+			
+func startSecondWave():
+	print("Second Wave Started")
+	$Wave2.start()
+	$ProceedGame.wait_time = 30
+	$ProceedGame.start()
+	numWave = numWave + 1
+	for icon in wavePreviewIcons:
+		print("Icon is ", icon.name)
+		icon.swap_Visibility()
+	for timer in timers:
+		if timer != null:
+			timer.wait_time = $ProceedGame.wait_time - 10
+			timer.start()
+		
 func _on_ProceedGame_timeout():
 	$ProceedGame.stop()
 	print("ProceedGameTimeout")
@@ -90,27 +121,33 @@ func _on_ProceedGame_timeout():
 	
 	match numWave:
 		0:
-			$ProceedGame.wait_time = 20
+			$ProceedGame.wait_time = Wave2StartTime
 			$ProceedGame.start()
 			$Wave1.start()
 			numWave = numWave + 1
 			
 			for timer in timers:
-				timer.wait_time = $ProceedGame.wait_time - 10
-				timer.start()
+				if timer != null:
+					timer.wait_time = $ProceedGame.wait_time - 10
+					timer.start()
 		1:
-			$Wave2.start()
-			$ProceedGame.wait_time = 30
-			$ProceedGame.start()
-			numWave = numWave + 1
-			for icon in wavePreviewIcons:
-				icon.swap_Visibility()
-			for timer in timers:
-				timer.wait_time = $ProceedGame.wait_time - 10
-				timer.start()
+			wave2AlmostStart.emit()
+			print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+			print("Emitting Wave2Almost Start Signal")
+			#if startWave2 : 
+				#$Wave2.start()
+				#$ProceedGame.wait_time = 30
+				#$ProceedGame.start()
+				#numWave = numWave + 1
+				#for icon in wavePreviewIcons:
+					#icon.swap_Visibility()
+				#for timer in timers:
+					#timer.wait_time = $ProceedGame.wait_time - 10
+					#timer.start()
 
 			# thing.callFunc(pass)
 		2:
+			print("Start Wave 3")
 			for icon in wavePreviewIcons:
 				icon.swap_Visibility()
 			$Wave3.start()
@@ -120,6 +157,7 @@ func _on_ProceedGame_timeout():
 
 # Spawn the first wave 
 func _on_Wave1_timeout():
+	print("Spawning first wave")
 	var wave_Interval = Wave1_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
@@ -130,6 +168,7 @@ func _on_Wave1_timeout():
 
 # Spawn the Second Wave 
 func _on_Wave2_timeout():
+	print("Will now spawn second wave")
 	var wave_Interval = Wave2_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
@@ -140,6 +179,7 @@ func _on_Wave2_timeout():
 
 # Spawn the last wave and start checking for the end of the wave 
 func _on_Wave3_timeout():
+	print("Spawning third wave")
 	var wave_Interval = Wave3_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
@@ -156,4 +196,3 @@ func _on_Area2D_area_entered(area):
 	if "Zombie" in area.name:
 		#Go to Restart Scene 
 		assert(get_tree().change_scene_to_packed(retry_scene) == OK)
-

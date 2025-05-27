@@ -43,7 +43,7 @@ var hiveCostLabel
 
 func _ready():
 
-	add_button_highlight
+	#add_button_highlight
 	set_process_input(true)
 	
 	# Connect button signals to their respective functions
@@ -102,9 +102,13 @@ func _ready():
 	if root == "Main": #or root == "Level2":
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
 		PeaShooterButton.visible = false 
+		peaShooterCostLabel.visible = false
 		WalnutButton.visible = false
+		walnutCostLabel.visible = false
 		
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		SunFlowerButton.visible = false
+		sunFlowerCostLabel.visible = false 
 		
 		$VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
 		EggButton.visible = false
@@ -157,9 +161,13 @@ func _on_PeashooterButton_pressed():
 	
 	print("Peashooter selected")
 	$UIClickAudio.play()
+	
+	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	remove_button_highlight(PeaShooterButton)
 
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
 func _on_SunflowerButton_pressed():
+	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	
 	selected_plant = sunflower_scene
 	var temp_instance = sunflower_scene.instantiate()
@@ -175,6 +183,8 @@ func _on_SunflowerButton_pressed():
 	$UIClickAudio.play()
 	
 	clicked_Eye.emit()
+	
+	remove_button_highlight(SunFlowerButton)
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_WalnutButton_pressed():
@@ -382,3 +392,16 @@ func remove_button_highlight(button: Button) -> void:
 func _on_plant_manager_plant_placed() -> void:
 	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	PeaShooterButton.visible = true 
+	peaShooterCostLabel.visible = true 
+	add_button_highlight(PeaShooterButton)
+
+func showEyeSummon():
+	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+	SunFlowerButton.visible = true 
+	sunFlowerCostLabel.visible = true 
+
+
+func _on_wave_manager_wave_2_almost_start() -> void:
+	var WalnutButton = $VBoxContainer/HBoxContainer/Walnut/WalnutButton
+	walnutCostLabel.visible = true 
+	WalnutButton.visible = true 

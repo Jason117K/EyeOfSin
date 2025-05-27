@@ -1,67 +1,80 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://bteegsg6ig7de"]
 
-[ext_resource path="res://Assets/Icons/WaveSkullIcon2.png" type="Texture2D" id=1]
-[ext_resource path="res://Scripts/LevelLogic/WavePreview.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=3]
+[ext_resource type="Texture2D" uid="uid://dap0pqr1o8ibf" path="res://Assets/Icons/WaveSkullIcon2.png" id="1"]
+[ext_resource type="Script" uid="uid://javwqvkctiff" path="res://Scripts/LevelLogic/WavePreview.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="3"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 radius = 32.0
 
-[sub_resource type="FontFile" id=2]
-size = 19
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("3"), ExtResource("3")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [node name="WavePreview" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="PreviewSprite" type="Sprite2D" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="ToggleVisibility" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2(0.5, 0.5)
 
 [node name="Control" type="Control" parent="Node2D"]
 visible = false
+layout_mode = 3
+anchors_preset = 0
 offset_left = -3.0
 offset_top = -52.0
 offset_right = -3.0
 offset_bottom = -52.0
 
 [node name="Panel" type="Panel" parent="Node2D/Control"]
+layout_mode = 0
 offset_left = -227.0
 offset_top = 25.0
 offset_right = -27.0
 offset_bottom = 80.0
 
 [node name="Label" type="Label" parent="Node2D/Control"]
+layout_mode = 0
 offset_left = -229.0
 offset_top = 28.0
 offset_right = -109.0
 offset_bottom = 51.0
-theme_override_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource("2")
 
 [node name="Label2" type="Label" parent="Node2D/Control"]
+layout_mode = 0
 offset_left = -229.0
 offset_top = 44.0
 offset_right = -109.0
 offset_bottom = 67.0
-theme_override_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource("2")
 
 [node name="Label3" type="Label" parent="Node2D/Control"]
+layout_mode = 0
 offset_left = -229.0
 offset_top = 60.0
 offset_right = -109.0
 offset_bottom = 83.0
-theme_override_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource("2")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

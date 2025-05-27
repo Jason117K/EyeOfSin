@@ -36,6 +36,7 @@ func _on_Area2D_mouse_exited():
 
 
 func _on_ToggleVisibility_timeout():
+	print("Swap Vis")
 	swap_Visibility()
 	
 func swap_Visibility():

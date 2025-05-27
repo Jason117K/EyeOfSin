@@ -1,0 +1,8 @@
+Utilize OCCULAR SPINES to block zombies, halting them in their tracks while
+they attempt to break through. 
+ 
+OCCULAR SPINES will regenerate health over time when not being damaged.
+ 
+OCCULAR SPINES cannot block flying enemies.
+ 
+Click the OCCULAR Spine Icon to select it and place it in a defensive position.

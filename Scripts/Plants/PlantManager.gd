@@ -12,7 +12,8 @@ var plant_cost = 25  # Holds the cost of the currently selected plant
 @onready var parentName = get_parent().get_name()
 
 signal plant_placed
-
+signal spyder_placed
+signal walnut_placed 
 
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
@@ -113,8 +114,21 @@ func place_plant(grid_pos: Vector2):
 		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
 		
 		#Play the sound
+		
 		$PlacePlantAudioPlayer.play()
-		plant_placed.emit()
+		if "Sunflower" in plant_instance.name:
+			print("Selected Plant Scene is : ", plant_instance.name)
+			#TODO change to sunflower_placed
+			plant_placed.emit()
+			pass
+		elif "Peashooter" in plant_instance.name:
+			spyder_placed.emit()
+			pass
+		elif "Walnut" in plant_instance.name:
+			walnut_placed.emit()
+			pass
+		#print("Selected Plant Scene is : ", plant_instance)
+		
 		
 		# Clear preview after successful placement, or do this when deselect Hit 
 		#selection_menu.clear_preview()

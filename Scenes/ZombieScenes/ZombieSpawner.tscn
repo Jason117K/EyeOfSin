@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dwihkqs25js7n"]
 
-[ext_resource path="res://Scripts/Zombies/ZombieSpawner.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://bx05bdxn4odxk" path="res://Scripts/Zombies/ZombieSpawner.gd" id="1"]
 
 [node name="ZombieSpawner" type="Node2D"]
-scale = Vector2( 0.5, 0.5 )
-script = ExtResource( 1 )
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1")
 
 [node name="WaveDelay" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="WaveInterval" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="timeout" from="WaveDelay" to="." method="_on_WaveDelay_timeout"]
+[connection signal="timeout" from="WaveInterval" to="." method="_on_wave_interval_timeout"]

@@ -36,6 +36,7 @@ var numWave = 0
 
 #Slight random position adjustmnet 
 var random_adjustment = randf_range(-1.0, 1.0)
+var random_adjustment2 = randf_range(-0.6, 0.6)
 
 #Adjustble delay between waves 
 @export var waveDelay = 0.5
@@ -70,6 +71,7 @@ func start_spawn_zombie():
 	random_adjustment = randf_range(-0.5, 0.5)
 	$WaveDelay.wait_time = waveDelay + random_adjustment
 	$WaveDelay.start()
+	print("Start SPawn Zombie Called")
 	
 #Spawns a different amount of zombies depending on the wave 
 func spawn_zombie():
@@ -85,7 +87,10 @@ func spawn_zombie():
 				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.position = self.position #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
-				
+				#$WaveDelay.start()
+				random_adjustment2 = randf_range(-0.6, 0.6)
+				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
+				$WaveInterval.start()
 				
 
 		2:
@@ -95,7 +100,10 @@ func spawn_zombie():
 				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.position = self.position + Vector2(-30,0)  #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
-				#print("Spawn wave 2")
+				print("Spawn wave 2")
+				random_adjustment2 = randf_range(-0.6, 0.6)
+				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
+				$WaveInterval.start()
 		
 
 		3:
@@ -106,6 +114,12 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#print("Spawn wave 3")
+				random_adjustment2 = randf_range(-0.6, 0.6)
+				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
+				$WaveInterval.start()
+				$WaveInterval.start()
+				
+
 		_:
 			print("Value is something else")
 	
@@ -146,5 +160,10 @@ func increase_wave():
 
 #Starts the next round of zombie spawning 
 func _on_WaveDelay_timeout():
+	print("Zombie Spawning Starting Here")
 	spawn_zombie()
 	$WaveDelay.stop()
+
+
+func _on_wave_interval_timeout() -> void:
+	spawn_zombie()

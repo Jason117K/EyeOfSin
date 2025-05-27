@@ -1,7 +1,7 @@
 extends WaveManagerTemplate
 #WaveManager1
 
-
+var gameStarted : bool = false 
 # Set the Level Specific Transition and Restart Scenes 
 func setScenes():
 	print("Main Set Scenes")
@@ -9,3 +9,8 @@ func setScenes():
 	retry_scene = preload("res://Scenes/LevelScenes/RestartScene.tscn") # Load the Restart Scene 
 
 
+func _on_plant_manager_spyder_placed() -> void:
+	pass
+	#if !gameStarted:
+		#canStartGame = true 
+		#print("Can Start Game is True ")

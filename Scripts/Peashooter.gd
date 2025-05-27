@@ -4,7 +4,7 @@ extends Area2D
 # Adjustbale health, cost, attack speed 
 @export var health = 100
 @export var attack_speed = 5 
-@export var cost = 50
+@export var cost = 75
 
 var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
 var PlantManager

@@ -1,13 +1,13 @@
 [gd_scene load_steps=23 format=3 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="6"]
 [ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://Scenes/Systems/WavePreview.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="8"]
 [ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="9"]
 [ext_resource type="Script" uid="uid://cfv5r2hytpurl" path="res://Scripts/LevelLogic/Main.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="11"]
@@ -81,7 +81,7 @@ position = Vector2(748, 109)
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 0,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -115,7 +115,7 @@ position = Vector2(746, 141)
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 0,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -149,8 +149,8 @@ position = Vector2(746, 173)
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
-"ConeHead": 1,
-"Dancer": 1,
+"ConeHead": 0,
+"Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -184,6 +184,7 @@ position = Vector2(-46, 4)
 position = Vector2(-64, 200)
 script = ExtResource("9")
 StartDelay = 9
+Wave2StartTime = 30
 Wave1_Interval = 1.0
 Wave2_Interval = 10
 Wave3_Interval = 20.0
@@ -212,7 +213,7 @@ offset_bottom = -280.0
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
-offset_right = 86.0
+offset_right = 119.0
 offset_bottom = 23.0
 color = Color(0, 0, 0, 1)
 
@@ -450,5 +451,10 @@ grow_vertical = 2
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="plant_placed" from="PlantManager" to="PlantSelectionMenu" method="_on_plant_manager_plant_placed"]
+[connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
+[connection signal="spyder_placed" from="PlantManager" to="GameLayer/WaveManager" method="_on_plant_manager_spyder_placed"]
+[connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
