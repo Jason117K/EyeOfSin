@@ -88,7 +88,7 @@ func spawn_zombie():
 				zombie_instance.position = self.position #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#$WaveDelay.start()
-				random_adjustment2 = randf_range(-0.6, 0.6)
+				random_adjustment2 = randf_range(-0.9, 0.9)
 				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
 				$WaveInterval.start()
 				
@@ -101,7 +101,7 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-30,0)  #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				print("Spawn wave 2")
-				random_adjustment2 = randf_range(-0.6, 0.6)
+				random_adjustment2 = randf_range(-0.9, 0.9)
 				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
 				$WaveInterval.start()
 		
@@ -114,7 +114,7 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#print("Spawn wave 3")
-				random_adjustment2 = randf_range(-0.6, 0.6)
+				random_adjustment2 = randf_range(-0.9, 0.9)
 				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
 				$WaveInterval.start()
 				$WaveInterval.start()

@@ -76,3 +76,8 @@ func _on_plant_manager_walnut_placed() -> void:
 	print("Walnut Placed")
 	waveManager.startSecondWave()
 	pass # Replace with function body.
+
+
+func _on_wave_manager_wave_2_started() -> void:
+	#toolTips.set_text(coneHeadTutorial)
+	pass # Replace with function body.

@@ -185,6 +185,7 @@ position = Vector2(-64, 200)
 script = ExtResource("9")
 StartDelay = 9
 Wave2StartTime = 30
+Wave3StartTime = 50
 Wave1_Interval = 1.0
 Wave2_Interval = 10
 Wave3_Interval = 20.0
@@ -456,5 +457,6 @@ grow_vertical = 2
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
+[connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

@@ -9,7 +9,7 @@ signal level_start(custom_message)
 signal wave2started(custom_message)
 
 signal wave2AlmostStart
-
+signal wave2Started
 
 var current_wave = 1                # Current wave number
 var zombies_per_wave = 2           # Number of zombies in the current wave
@@ -102,7 +102,7 @@ func setScenes():
 func startSecondWave():
 	print("Second Wave Started")
 	$Wave2.start()
-	$ProceedGame.wait_time = 30
+	$ProceedGame.wait_time = Wave3StartTime
 	$ProceedGame.start()
 	numWave = numWave + 1
 	for icon in wavePreviewIcons:
@@ -169,6 +169,7 @@ func _on_Wave1_timeout():
 # Spawn the Second Wave 
 func _on_Wave2_timeout():
 	print("Will now spawn second wave")
+	wave2Started.emit()
 	var wave_Interval = Wave2_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment

@@ -72,7 +72,7 @@ func _on_AnimatedSprite_animation_finished():
 		animatedSpriteComponent.play()
 		return
 	if canAttack:
-		print("Should Be Red Spider Attack")
+		#print("Should Be Red Spider Attack")
 		animatedSpriteComponent.animation = "redSpiderAttack"
 	else:
 		animatedSpriteComponent.animation = "redSpiderDefault"
