@@ -6,15 +6,26 @@ extends PanelContainer
 @onready var button = $VBoxContainer/Button
 signal ToolTipHid
 
+#TODO Combine both set text functions
 
 func set_text(newFile : String):
-	
 	var file = FileAccess.open(newFile, FileAccess.READ)
 	var newText = file.get_as_text()
 	file.close()
 	label_text.text = newText
+
+func set_text_pause(newFile : String):
+	var file = FileAccess.open(newFile, FileAccess.READ)
+	var newText = file.get_as_text()
+	file.close()
+	label_text.text = newText	
+	
+	get_tree().paused = true
+	pass
+
 	
 func showButton():
+	show()
 	button.visible = true 
 	pass
 	
@@ -37,3 +48,4 @@ func setImage(newImage):
 func _on_Button_pressed():
 	hide()
 	ToolTipHid.emit()
+	get_tree().paused = false

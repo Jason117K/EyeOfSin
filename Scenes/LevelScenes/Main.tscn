@@ -90,7 +90,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 4,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 2,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -122,10 +122,10 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 3,
+"Base": 4,
 "BucketHead": 0,
 "ConeHead": 1,
-"Dancer": 1,
+"Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -185,7 +185,7 @@ position = Vector2(-64, 200)
 script = ExtResource("9")
 StartDelay = 9
 Wave2StartTime = 30
-Wave3StartTime = 50
+Wave3StartTime = 40
 Wave1_Interval = 1.0
 Wave2_Interval = 10
 Wave3_Interval = 20.0

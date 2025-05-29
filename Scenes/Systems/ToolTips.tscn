@@ -24,6 +24,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
 [node name="ToolTips" type="PanelContainer"]
+process_mode = 3
 anchors_preset = -1
 anchor_left = 0.304
 anchor_top = 0.105

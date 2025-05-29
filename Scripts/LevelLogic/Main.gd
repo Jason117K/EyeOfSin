@@ -9,6 +9,7 @@ var placeSummonText = "res://Assets/Text/TextFiles/PlaceSummon.txt"
 var spyderTutorialText = "res://Assets/Text/TextFiles/SpyderTutorial.txt"
 var basicOffenseDefenseText = "res://Assets/Text/TextFiles/basicOffensiveDefense.txt"
 var walnutTutorial = "res://Assets/Text/TextFiles/OccularSpineTutorial.txt"
+var coneheadTutorial = "res://Assets/Text/TextFiles/ConeheadTutorial.txt"
 var showNextTutuorial : bool = false
 var count : int = 1
 
@@ -79,5 +80,6 @@ func _on_plant_manager_walnut_placed() -> void:
 
 
 func _on_wave_manager_wave_2_started() -> void:
-	#toolTips.set_text(coneHeadTutorial)
+	toolTips.set_text_pause(coneheadTutorial)
+	toolTips.showButton()
 	pass # Replace with function body.
