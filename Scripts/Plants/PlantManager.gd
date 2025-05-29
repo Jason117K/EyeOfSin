@@ -14,6 +14,8 @@ var plant_cost = 25  # Holds the cost of the currently selected plant
 signal plant_placed
 signal spyder_placed
 signal walnut_placed 
+signal eyeBomb_placed
+signal eggWorm_placed
 
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
@@ -127,6 +129,10 @@ func place_plant(grid_pos: Vector2):
 		elif "Walnut" in plant_instance.name:
 			walnut_placed.emit()
 			pass
+		elif "Bomb" in plant_instance.name:
+			eyeBomb_placed.emit()
+		elif "EggWorm" in plant_instance.name:
+			eggWorm_placed.emit()
 		#print("Selected Plant Scene is : ", plant_instance)
 		
 		

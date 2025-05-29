@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=22 format=3 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -8,22 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="6"]
 [ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="8_dph8t"]
 [ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="9"]
 [ext_resource type="Script" uid="uid://cfv5r2hytpurl" path="res://Scripts/LevelLogic/Main.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="11"]
 [ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="12"]
-[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="13"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
 [ext_resource type="Script" uid="uid://dlmmfpqcb527g" path="res://Scripts/Environment/ShrubAnimator.gd" id="15_dph8t"]
-
-[sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("13")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -98,9 +90,9 @@ Round2_Zombies = {
 }
 Round3_Zombies = {
 "Base": 4,
-"BucketHead": 0,
-"ConeHead": 2,
-"Dancer": 1,
+"BucketHead": 1,
+"ConeHead": 3,
+"Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -132,7 +124,7 @@ Round2_Zombies = {
 }
 Round3_Zombies = {
 "Base": 3,
-"BucketHead": 0,
+"BucketHead": 2,
 "ConeHead": 1,
 "Dancer": 0,
 "PoleVault": 0,
@@ -165,10 +157,10 @@ Round2_Zombies = {
 "Ticker": 0
 }
 Round3_Zombies = {
-"Base": 4,
-"BucketHead": 0,
+"Base": 6,
+"BucketHead": 1,
 "ConeHead": 2,
-"Dancer": 1,
+"Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -197,37 +189,7 @@ offset_right = 777.0
 offset_bottom = 241.0
 color = Color(2, 0, 0, 0.729412)
 
-[node name="UILayer" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 321.0
-offset_right = 41.0
-offset_bottom = 361.0
-
-[node name="SunCounter" type="Control" parent="UILayer"]
-anchors_preset = 0
-offset_top = -320.0
-offset_right = 40.0
-offset_bottom = -280.0
-
-[node name="ColorRect" type="ColorRect" parent="UILayer/SunCounter"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 119.0
-offset_bottom = 23.0
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="UILayer/SunCounter"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 82.0
-offset_bottom = 42.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = SubResource("1")
-text = "Blood : 75
-"
+[node name="UILayer" parent="." instance=ExtResource("8_dph8t")]
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12")

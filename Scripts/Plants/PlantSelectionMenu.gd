@@ -1,6 +1,7 @@
 extends Control
 #PlantSelectionMenu.gd
 
+var root
 var selected_plant = sunflower_scene  # Holds the currently selected plant scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
 #var is_previewing: bool = false
@@ -47,7 +48,7 @@ func _ready():
 	set_process_input(true)
 	
 	# Connect button signals to their respective functions
-	var root = get_parent().get_name()
+	root = get_parent().get_name()
 	
 	#Set Up Label for Displaying Current Plant
 	currentPlantLabel = $CurrentPlantLabel
@@ -129,6 +130,14 @@ func _ready():
 		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
 		MawButton.visible = false
 		mawCostLabel.visible = false
+		$VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
+		EggButton.visible = false
+
+		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		MawButton.visible = false
+
+		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
+		HiveButton.visible = false
 	else: #root = Level3
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
@@ -402,6 +411,14 @@ func showEyeSummon():
 
 
 func _on_wave_manager_wave_2_almost_start() -> void:
-	var WalnutButton = $VBoxContainer/HBoxContainer/Walnut/WalnutButton
-	walnutCostLabel.visible = true 
-	WalnutButton.visible = true 
+	if root == "Main":
+		
+		var WalnutButton = $VBoxContainer/HBoxContainer/Walnut/WalnutButton
+		walnutCostLabel.visible = true 
+		WalnutButton.visible = true 
+		
+	elif root == "Level2":
+		var EggButton = $VBoxContainer/HBoxContainer/Egg/EggButton
+		eggCostLabel.visible = true 
+		EggButton.visible = true 
+		

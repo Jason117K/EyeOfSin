@@ -8,6 +8,7 @@ signal level_start(custom_message)
 #signal blood_tutorial(custom_message)
 signal wave2started(custom_message)
 
+signal wave1Started
 signal wave2AlmostStart
 signal wave2Started
 signal wave3Started
@@ -77,12 +78,12 @@ func _ready():
 	$Wave2.wait_time = Wave2_Interval
 	for child in get_parent().get_parent().get_node("GameLayer").get_children():
 		if "ZombieSpawner" in child.name:
-			#print("Spawners.append ", child.name)
+			print("Spawners.append ", child.name)
 			spawners.append(child)
-			#print("Timers.append child.get_child(1) : ",child.find_child("WavePreview").name)
-			#print(".get_child(2): , ", child.find_child("WavePreview").get_child(2).name)
+			print("Timers.append child.get_child(1) : ",child.find_child("WavePreview").name)
+			print(".get_child(2): , ", child.find_child("WavePreview").get_child(2).name)
 			timers.append(child.find_child("WavePreview").get_child(2))
-		#	print("WavePreviewIcons.append : ",child.find_child("WavePreview").name)
+			print("WavePreviewIcons.append : ",child.find_child("WavePreview").name)
 			wavePreviewIcons.append(child.find_child("WavePreview"))
 	#Connect done spawning
 	for spawner in spawners:
@@ -163,6 +164,7 @@ func _on_ProceedGame_timeout():
 # Spawn the first wave 
 func _on_Wave1_timeout():
 	print("Spawning first wave")
+	wave1Started.emit()
 	var wave_Interval = Wave1_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment

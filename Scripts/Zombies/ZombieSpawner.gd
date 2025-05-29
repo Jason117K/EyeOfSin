@@ -16,17 +16,17 @@ var wave2_zombies = []
 var wave3_zombies = []  
 
 #Arrays to track amount of zombies by types per round 
-@export var Round1_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
-							"ScreenDoor" : 1, "Dancer" : 1, "PoleVault" : 1,
-							"Ticker" : 1}
+@export var Round1_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
+							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
+							"Ticker" : 0}
 							
-@export var Round2_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
-							"ScreenDoor" : 1, "Dancer" : 1, "PoleVault" : 1,
-							"Ticker" : 1}
+@export var Round2_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
+							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
+							"Ticker" : 0}
 							
-@export var Round3_Zombies = {"Base": 1, "ConeHead": 1, "BucketHead" : 1, 
-							"ScreenDoor" : 1, "Dancer" : 1, "PoleVault" : 1,
-							"Ticker" : 1}
+@export var Round3_Zombies =  {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
+							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
+							"Ticker" : 0}
 
 var baseZombies = []
 

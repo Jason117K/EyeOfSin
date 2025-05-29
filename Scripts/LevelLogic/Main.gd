@@ -11,12 +11,14 @@ var basicOffenseDefenseText = "res://Assets/Text/TextFiles/basicOffensiveDefense
 var walnutTutorial = "res://Assets/Text/TextFiles/OccularSpineTutorial.txt"
 var coneheadTutorial = "res://Assets/Text/TextFiles/ConeheadTutorial.txt"
 var dancerTutorial = "res://Assets/Text/TextFiles/DancerTutorial.txt"
+var bucketHeadTutorial = "res://Assets/Text/TextFiles/BucketHeadTutorial.txt"
 
 var coneheadAnim = preload("res://Assets/Zombies/Animations/Spriteframes/Severed.tres")
 var dancerAnim = preload("res://Assets/Zombies/Animations/Spriteframes/DancerAnim.tres")
 var eyeAnim = preload("res://Assets/Zombies/Animations/Spriteframes/eyeFrames.tres")
 var walnutAnim = preload("res://Assets/Zombies/Animations/Spriteframes/walnutFrames.tres")
 var spyderAnim = preload("res://Assets/Zombies/Animations/Spriteframes/spyderFrames.tres")
+var bucketHeadAnim = preload("res://Assets/Zombies/Animations/Spriteframes/BucketHead.tres")
 
 var showNextTutuorial : bool = false
 var count : int = 1
@@ -98,7 +100,7 @@ func _on_wave_manager_wave_2_started() -> void:
 
 
 func _on_wave_manager_wave_3_started() -> void:
-	toolTips.set_text_pause(dancerTutorial)
-	toolTips.setAnim(dancerAnim)
+	toolTips.set_text_pause(bucketHeadTutorial)
+	toolTips.setAnim(bucketHeadAnim)
 	toolTips.showButton()
 	pass # Replace with function body.

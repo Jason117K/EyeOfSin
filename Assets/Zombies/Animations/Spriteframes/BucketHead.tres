@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://b86x6c8xghsvs"]
+
+[ext_resource type="Texture2D" uid="uid://cxngjs3ld2psd" path="res://Assets/Zombies/SwordBucketZombie-Sheet.png" id="1_n4cg3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx2mr"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(0, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnxqu"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(64, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t86y"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(128, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi6fa"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(192, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22fvt"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(256, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcnon"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(320, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljob3"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(384, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rnrm"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(448, 0, 64, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75k45"]
+atlas = ExtResource("1_n4cg3")
+region = Rect2(512, 0, 64, 33)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx2mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnxqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t86y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi6fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22fvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcnon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljob3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rnrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75k45")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

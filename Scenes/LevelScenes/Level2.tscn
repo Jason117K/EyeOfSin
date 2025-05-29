@@ -1,239 +1,204 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=23 format=3 uid="uid://c0i06w5c5gtby"]
 
-[ext_resource path="res://Scenes/PlantScenes/PlantManager.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Systems/WaveManager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Systems/GridManager.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/LevelLogic/Level2.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Environment/Fish.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Systems/WavePreview.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scripts/LevelLogic/WaveManager_Lvl2.gd" type="Script" id=9]
-[ext_resource path="res://Assets/Environment/BloodTree.png" type="Texture2D" id=10]
-[ext_resource path="res://Assets/Audio/SpookyBackGroundTrack.mp3" type="AudioStream" id=11]
-[ext_resource path="res://Scenes/Environment/Shrub.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Assets/Fonts/Minecraft.ttf" type="FontFile" id=13]
-[ext_resource path="res://Assets/Environment/Props/Bramble1.png" type="Texture2D" id=14]
-[ext_resource path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" type="Texture2D" id=15]
-[ext_resource path="res://Assets/Environment/Props/Bramble2PROP.png" type="Texture2D" id=16]
+[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="5"]
+[ext_resource type="Script" uid="uid://kkr6ryt2ykr8" path="res://Scripts/LevelLogic/Level2.gd" id="6"]
+[ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="8_y08as"]
+[ext_resource type="Script" uid="uid://60tkiidiqegd" path="res://Scripts/LevelLogic/WaveManager_Lvl2.gd" id="9"]
+[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="10"]
+[ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="11"]
+[ext_resource type="PackedScene" path="res://Scenes/Environment/Shrub.tscn" id="12"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="16"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="17_y08as"]
 
-[sub_resource type="FontFile" id=1]
-font_data = ExtResource( 13 )
-
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id="2"]
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 1
 glow_hdr_threshold = 1.5
-glow_bicubic_upscale = true
 adjustment_enabled = true
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 18, 20 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("15")
+region = Rect2(0, 0, 18, 20)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 15 )
-region = Rect2( 18, 0, 18, 20 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("15")
+region = Rect2(18, 0, 18, 20)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 15 )
-region = Rect2( 36, 0, 18, 20 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("15")
+region = Rect2(36, 0, 18, 20)
 
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
 [node name="Level2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 6 )
+script = ExtResource("6")
 
-[node name="PlantManager" parent="." instance=ExtResource( 1 )]
-sun_points = 450
+[node name="PlantManager" parent="." instance=ExtResource("1")]
+sun_points = 475
 
 [node name="GameLayer" type="Node2D" parent="."]
 
-[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 747, 78 )
+[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(747, 78)
 Round1_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 1,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 0
+"Ticker": 1
 }
 Round2_Zombies = {
-"Base": 4,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 4,
-"BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
+"ConeHead": 3,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource( 8 )]
-position = Vector2( -48, 0 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("8")]
 z_index = 1
+position = Vector2(-48, 0)
 
-[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 747, 109 )
+[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(747, 109)
 Round1_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 1,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 0
+"Ticker": 1
 }
 Round2_Zombies = {
-"Base": 4,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 4,
-"BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
+"ConeHead": 3,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 
-[node name="WavePreview2" parent="GameLayer/ZombieSpawner2" instance=ExtResource( 8 )]
-position = Vector2( -50, 4 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("8")]
 z_index = 3
+position = Vector2(-50, 4)
 
-[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 747, 141 )
+[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(747, 141)
 Round1_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 1,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 0
+"Ticker": 1
 }
 Round2_Zombies = {
-"Base": 4,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 4,
-"BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
+"ConeHead": 3,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 
-[node name="WavePreview3" parent="GameLayer/ZombieSpawner3" instance=ExtResource( 8 )]
-position = Vector2( -48, 6 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("8")]
 z_index = 3
+position = Vector2(-48, 6)
 
-[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 744, 172 )
+[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(744, 172)
 Round1_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 1,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 0
+"Ticker": 1
 }
 Round2_Zombies = {
-"Base": 4,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 4,
-"BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
+"ConeHead": 3,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 
-[node name="WavePreview4" parent="GameLayer/ZombieSpawner4" instance=ExtResource( 8 )]
-position = Vector2( -40, 8 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("8")]
 z_index = 3
+position = Vector2(-40, 8)
 
-[node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource( 4 )]
-position = Vector2( 745, 206 )
+[node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(745, 206)
 Round1_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 1,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 0
+"Ticker": 1
 }
 Round2_Zombies = {
-"Base": 4,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 4,
-"BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
+"ConeHead": 3,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 
-[node name="WavePreview5" parent="GameLayer/ZombieSpawner5" instance=ExtResource( 8 )]
-position = Vector2( -42, 2 )
+[node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("8")]
 z_index = 3
+position = Vector2(-42, 2)
 
-[node name="GridManager" parent="GameLayer" instance=ExtResource( 3 )]
+[node name="GridManager" parent="GameLayer" instance=ExtResource("3")]
 
-[node name="WaveManager" parent="GameLayer" instance=ExtResource( 2 )]
-position = Vector2( -64, 192 )
-script = ExtResource( 9 )
+[node name="WaveManager" parent="GameLayer" instance=ExtResource("2")]
+position = Vector2(-64, 192)
+script = ExtResource("9")
 StartDelay = 6
 Wave1_Interval = 1.0
 Wave3_Interval = 89.0
@@ -243,166 +208,170 @@ offset_left = 739.0
 offset_top = 43.0
 offset_right = 777.0
 offset_bottom = 241.0
-color = Color( 2, 0, 0, 0.729412 )
+color = Color(2, 0, 0, 0.729412)
 
-[node name="UILayer" type="Control" parent="."]
-offset_left = 1.0
-offset_top = 321.0
-offset_right = 41.0
-offset_bottom = 361.0
-
-[node name="SunCounter" type="Control" parent="UILayer"]
-offset_top = -320.0
-offset_right = 40.0
-offset_bottom = -280.0
-
-[node name="Label" type="Label" parent="UILayer/SunCounter"]
-offset_right = 40.0
-offset_bottom = 14.0
-theme_override_colors/font_color = Color( 0, 0, 0, 1 )
-theme_override_fonts/font = SubResource( 1 )
-text = "Blood : 200
-"
+[node name="UILayer" parent="." instance=ExtResource("8_y08as")]
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource("11")
 autoplay = true
 
-[node name="PlantSelectionMenu" parent="." instance=ExtResource( 5 )]
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("5")]
 offset_left = 15.0
 offset_top = 313.0
 offset_bottom = 66.0
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2(0.5, 0.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource("2")
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Bramble" type="Node2D" parent="Environment"]
 
 [node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 505, 328 )
-texture = ExtResource( 14 )
+position = Vector2(505, 328)
+texture = ExtResource("14")
 
 [node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 304, 361 )
-texture = ExtResource( 14 )
+position = Vector2(304, 361)
+texture = ExtResource("14")
 
 [node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 427, 372 )
-texture = ExtResource( 14 )
+position = Vector2(427, 372)
+texture = ExtResource("14")
 
 [node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 366, 316 )
-texture = ExtResource( 16 )
+position = Vector2(366, 316)
+texture = ExtResource("16")
 flip_h = true
 
 [node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 399, 347 )
-texture = ExtResource( 16 )
+position = Vector2(399, 347)
+texture = ExtResource("16")
 
 [node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 390, 385 )
-texture = ExtResource( 16 )
+position = Vector2(390, 385)
+texture = ExtResource("16")
 flip_h = true
 
 [node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 307, 308 )
-texture = ExtResource( 16 )
+position = Vector2(307, 308)
+texture = ExtResource("16")
 
 [node name="BrambleSmall5" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2( 277, 390 )
-texture = ExtResource( 16 )
+position = Vector2(277, 390)
+texture = ExtResource("16")
 
 [node name="Fish" type="Node2D" parent="Environment"]
 
-[node name="Fish" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 330, 391 )
+[node name="Fish" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(330, 391)
 
-[node name="Fish5" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 664, 40 )
+[node name="Fish5" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(664, 40)
 
-[node name="Fish7" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 384, 24 )
+[node name="Fish7" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(384, 24)
 
-[node name="Fish8" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 224, 48 )
+[node name="Fish8" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(224, 48)
 
-[node name="Fish6" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 665, 391 )
+[node name="Fish6" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(665, 391)
 
-[node name="Fish11" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 633, 399 )
+[node name="Fish11" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(633, 399)
 
-[node name="Fish12" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 715, 365 )
+[node name="Fish12" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(715, 365)
 
-[node name="Fish13" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 587, 381 )
+[node name="Fish13" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(587, 381)
 
-[node name="Fish14" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 691, 357 )
+[node name="Fish14" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(691, 357)
 
-[node name="Fish15" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 619, 365 )
+[node name="Fish15" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(619, 365)
 
-[node name="Fish9" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 545, 391 )
+[node name="Fish9" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(545, 391)
 
-[node name="Fish10" parent="Environment/Fish" instance=ExtResource( 7 )]
-position = Vector2( 536, 314 )
+[node name="Fish10" parent="Environment/Fish" instance=ExtResource("7")]
+position = Vector2(536, 314)
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 
 [node name="Shrub7" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2( 619, 342 )
-frames = SubResource( 6 )
+position = Vector2(619, 342)
+sprite_frames = SubResource("6")
 frame = 1
-playing = true
 
-[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 552, 40 )
-scale = Vector2( 1, 1 )
+[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(552, 40)
+scale = Vector2(1, 1)
 
-[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 580, 40 )
-scale = Vector2( 1, 1 )
+[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(580, 40)
+scale = Vector2(1, 1)
 
-[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 560, 24 )
-scale = Vector2( 1, 1 )
+[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(560, 24)
+scale = Vector2(1, 1)
 
-[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 254, 43 )
-scale = Vector2( 1, 1 )
+[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(254, 43)
+scale = Vector2(1, 1)
 
-[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 152, 32 )
-scale = Vector2( 1, 1 )
+[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(152, 32)
+scale = Vector2(1, 1)
 
-[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource( 12 )]
-position = Vector2( 297, 48 )
-scale = Vector2( 1, 1 )
+[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(297, 48)
+scale = Vector2(1, 1)
 
 [node name="Trees" type="Node2D" parent="Environment"]
 
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
-position = Vector2( 564, 354 )
 z_index = 1
-texture = ExtResource( 10 )
+position = Vector2(564, 354)
+texture = ExtResource("10")
 
 [node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
-position = Vector2( 639, 333 )
 z_index = 1
-texture = ExtResource( 10 )
+position = Vector2(639, 333)
+texture = ExtResource("10")
 
 [node name="BloodTree3" type="Sprite2D" parent="Environment/Trees"]
-position = Vector2( 700, 368 )
 z_index = 1
-texture = ExtResource( 10 )
+position = Vector2(700, 368)
+texture = ExtResource("10")
 
 [node name="BloodTree4" type="Sprite2D" parent="Environment/Trees"]
-position = Vector2( 335, 353 )
 z_index = 1
-texture = ExtResource( 10 )
+position = Vector2(335, 353)
+texture = ExtResource("10")
+
+[node name="ToolTips" parent="." instance=ExtResource("17_y08as")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -152.0
+offset_right = 152.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
+[connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]
+[connection signal="wave1Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_1_started"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
+[connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

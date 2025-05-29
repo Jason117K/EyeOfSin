@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ls67604vxxj"]
+
+[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="1_qaivy"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1_qaivy")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="UILayer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 321.0
+offset_right = 41.0
+offset_bottom = 361.0
+
+[node name="SunCounter" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -320.0
+offset_right = 40.0
+offset_bottom = -280.0
+
+[node name="ColorRect" type="ColorRect" parent="SunCounter"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 119.0
+offset_bottom = 23.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="SunCounter"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 82.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
+text = "Blood : 75
+"

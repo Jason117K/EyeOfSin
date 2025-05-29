@@ -29,16 +29,19 @@ func get_cost():
 
 #Add zombies to the list of enemies to hit & start the explosion
 func _on_DetectionComponent_area_entered(area):
-	if "Zombie" in area.name:
+	#print(area.name, " entered this EyeBomb")
+	if "Zombie" in area.name || area.is_in_group("Zombie"):
+		print("Zombie Entered Eye Bomb Area")
 		#Start the explosion and only do it the first time the area is entered 
 		if(startNum == 0):
-			#print("Boom Time")
+			print("Boom Time")
 			spriteComp.animation = "boom"
 			spriteComp.scale = Vector2(1.1,1.1)
 			enemiesToHitTemp = hitBoxComp.get_overlapping_areas()
 			for enemy in enemiesToHitTemp:
-				#print(enemy.name)
-				if "Zombie" in enemy.name:
+				print("Enemy name is ", enemy.name)
+				if "Zombie" in enemy.name || enemy.is_in_group("Zombie"):
+					print("LOCKED IN ENEMY")
 					enemiesToHit.append(enemy)
 					
 			startNum = startNum + 1
@@ -61,7 +64,7 @@ func _on_SpriteComponent_animation_finished():
 		pass
 	elif spriteComp.animation == "boom":
 	# Wait until we're actually on the last frame
-		if spriteComp.get_frame() == spriteComp.frames.get_frame_count("boom") - 1:
+		if spriteComp.get_frame() == spriteComp.sprite_frames.get_frame_count("boom") - 1: 
 			for enemy in enemiesToHit:
 				print("Now damage : ", enemy)
 				if not is_instance_valid_and_alive(enemy):    
