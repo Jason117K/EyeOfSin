@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://mg6uxelmtpj2"]
+
+[ext_resource type="Texture2D" uid="uid://dcafmrlvbujwo" path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" id="1_12aud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pter"]
+atlas = ExtResource("1_12aud")
+region = Rect2(0, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6sl6"]
+atlas = ExtResource("1_12aud")
+region = Rect2(62, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i04hp"]
+atlas = ExtResource("1_12aud")
+region = Rect2(124, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we1m7"]
+atlas = ExtResource("1_12aud")
+region = Rect2(186, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02ago"]
+atlas = ExtResource("1_12aud")
+region = Rect2(248, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot6n2"]
+atlas = ExtResource("1_12aud")
+region = Rect2(310, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ivuo"]
+atlas = ExtResource("1_12aud")
+region = Rect2(372, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hkst"]
+atlas = ExtResource("1_12aud")
+region = Rect2(434, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt8hi"]
+atlas = ExtResource("1_12aud")
+region = Rect2(496, 0, 62, 33)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pter")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6sl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i04hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we1m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02ago")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot6n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ivuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hkst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt8hi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -36,6 +36,7 @@ func _ready() -> void:
 	# Initialize animation data
 	if sprites != null:
 		if not sprites.has_animation(current_animation):
+			#print("Sprites not null")
 			var animations = sprites.get_animation_names()
 			if animations.size() > 0:
 				current_animation = animations[0]

@@ -2,11 +2,15 @@ extends PanelContainer
 
 @onready var label_text = $VBoxContainer/RichTextLabel
 @onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
-@onready var anim_texture = $VBoxContainer/CenterContainer/AnimatedTextureRect
+@onready var anim_texture = $VBoxContainer/CenterContainer/TextureRect
 @onready var button = $VBoxContainer/Button
 signal ToolTipHid
 
 #TODO Combine both set text functions
+
+func _ready() -> void:
+	#print("Anim Texture is , ",anim_texture.name )
+	pass
 
 func set_text(newFile : String):
 	var file = FileAccess.open(newFile, FileAccess.READ)

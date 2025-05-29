@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cxtejkbyak8qm"]
+
+[ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1_ix2xt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq47n"]
+atlas = ExtResource("1_ix2xt")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78vsn"]
+atlas = ExtResource("1_ix2xt")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xhxf"]
+atlas = ExtResource("1_ix2xt")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j51cd"]
+atlas = ExtResource("1_ix2xt")
+region = Rect2(120, 0, 40, 40)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq47n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78vsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xhxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j51cd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
