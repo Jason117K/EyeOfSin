@@ -458,5 +458,6 @@ grow_vertical = 2
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
+[connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

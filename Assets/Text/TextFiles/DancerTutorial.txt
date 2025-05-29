@@ -1,0 +1,4 @@
+SUMMONER Zombies are slow moving masses of flesh that spawn other zombies 
+from their putresence. 
+
+Will spawn up to 8 head zombies in an area around it.

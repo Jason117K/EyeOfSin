@@ -30,6 +30,8 @@ var wave3_zombies = []
 
 var baseZombies = []
 
+signal doneSpawning
+
 
 # The current wave we are on
 var numWave = 0
@@ -44,6 +46,9 @@ var random_adjustment2 = randf_range(-0.6, 0.6)
 
 # Populates the apprioate arrays with current zombie counts by type 
 func _ready():
+	
+	var wave_manager = get_parent().get_node("WaveManager")
+	
 	
 	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
 	Round1_Zombies.get("BucketHead") , Round1_Zombies.get("ScreenDoor"),
@@ -118,6 +123,8 @@ func spawn_zombie():
 				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
 				$WaveInterval.start()
 				$WaveInterval.start()
+			else:
+				doneSpawning.emit()
 				
 
 		_:

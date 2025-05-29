@@ -10,6 +10,7 @@ signal wave2started(custom_message)
 
 signal wave2AlmostStart
 signal wave2Started
+signal wave3Started
 
 var current_wave = 1                # Current wave number
 var zombies_per_wave = 2           # Number of zombies in the current wave
@@ -83,7 +84,11 @@ func _ready():
 			timers.append(child.find_child("WavePreview").get_child(2))
 		#	print("WavePreviewIcons.append : ",child.find_child("WavePreview").name)
 			wavePreviewIcons.append(child.find_child("WavePreview"))
-			
+	#Connect done spawning
+	for spawner in spawners:
+		spawner.doneSpawning.connect(_done_spawning)
+		
+				
 	$ProceedGame.wait_time = StartDelay
 	#for timer in timers:
 	#	timer.wait_time = StartDelay
@@ -181,6 +186,7 @@ func _on_Wave2_timeout():
 # Spawn the last wave and start checking for the end of the wave 
 func _on_Wave3_timeout():
 	print("Spawning third wave")
+	wave3Started.emit()
 	var wave_Interval = Wave3_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
@@ -189,8 +195,10 @@ func _on_Wave3_timeout():
 	for spawner in spawners:
 		spawner.start_spawn_zombie()
 		
-	checkEndLevel = true
+	#checkEndLevel = true
 
+func _done_spawning():
+	checkEndLevel = true
 
 #Code Taking Damage Here 
 func _on_Area2D_area_entered(area):
