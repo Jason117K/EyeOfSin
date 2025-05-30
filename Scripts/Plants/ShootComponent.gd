@@ -23,18 +23,19 @@ extends Node2D
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
 @onready var attack_ray = $"../../DMG_RayCast2D"
+var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
+
 # State variables 
 var current_length := 0.0
 var is_firing := false
 var timer := Timer.new()
 var hit_enemies = {}  # Dictionary to track hit enemies
-var isBuffed = false
-var canAttack : bool = false
+var isBuffed := false
+var canAttack := false
 
 func _ready() -> void:
 	# Set up Line2D
 	add_child(line2D)
-	line2D.visible = false
 	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
 	line2D.default_color = laser_color
 	line2D.width = laser_width
@@ -45,8 +46,10 @@ func _ready() -> void:
 	# Set up Area2D and CollisionShape2D
 	add_child(laser_area)
 	laser_area.add_child(collision_shape)
+	laser_area.collision_mask = 2
 	var shape = RectangleShape2D.new()
 	collision_shape.shape = shape
+	
 	
 	# Set up debug marker
 	var debug_marker = ColorRect.new()
@@ -68,39 +71,79 @@ func _ready() -> void:
 		cooldown_timer.connect("timeout", Callable(self, "fire"))
 		cooldown_timer.start()
 
-# Handle updating the laser firing if we are firing 
-func _physics_process(delta: float) -> void:
+	# Initialize a set to track currently overlapping areas
+	#var currently_overlapping_areas = []
+
+func _process(delta: float) -> void: 
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
-		if collider && !canAttack:
-			print("Collider Name is ", collider.name)
+		if collider:
+			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
-				print("Can Attack Is True")
-				canAttack = true
+				canAttack = true 
 			else:
 				canAttack = false
-	if canAttack:
-		fire()
 	if is_firing:
 		if current_length < max_length:
 			current_length += extension_speed * delta
 			current_length = min(current_length, max_length)
 			_update_laser()
 			_update_collision_shape()
-			_check_collisions()
+## Handle updating the laser firing if we are firing 
+#func _physics_process(delta: float) -> void:
+	#if attack_ray.is_colliding():
+		#var collider = attack_ray.get_collider()
+		#if collider:
+			##print("Collider Name is ", collider.name)
+			#if collider.is_in_group("Zombie"):
+				#canAttack = true 
+			#else:
+				#canAttack = false
+	#if is_firing:
+		#if current_length < max_length:
+			#current_length += extension_speed * delta
+			#current_length = min(current_length, max_length)
+			#_update_laser()
+			#_update_collision_shape()
+			
 
+
+func _on_area_exited(area: Area2D) -> void:
+	# Allow re-hitting if zombie exits and re-enters
+	hit_enemies.erase(area)
+
+func _process_collision(area: Area2D) -> void:
+	if "Zombie" in area.name and not hit_enemies.has(area):
+		print("Damaging via signal: ", area.name)
+		hit_enemies[area] = true
+		var compManager = area.getCompManager()
+		compManager.take_damage(damage)
+		
+func shoot_projectile():
+	
+	var projectile = projectile_scene.instantiate()
+	projectile.position = position + Vector2(32, 8)  # Adjust starting position
+	get_parent().add_child(projectile)  # Add the projectile to the game layer		
+	
+	
 # Fire a new laser 
 func fire() -> void:
-	if !is_firing:
-		is_firing = true
-		current_length = 0.0
-		hit_enemies.clear()  # Clear the hit enemies when firing a new laser
-		timer.wait_time = duration
-		timer.start()
-		#canAttack = false
+	if attack_ray.is_colliding():
+		var collider = attack_ray.get_collider()
+		if collider:
+			#print("Collider Name is ", collider.name)
+			if collider.is_in_group("Zombie"):
+				if !is_firing:
+					
+					is_firing = true
+					current_length = 0.0
+					hit_enemies.clear()  # Clear the hit enemies when firing a new laser
+					timer.wait_time = duration
+					timer.start()
+					shoot_projectile()
+
 # Update the laser points specifically, also taking into account buffs
 func _update_laser() -> void:
-	line2D.visible = true
 	var points = PackedVector2Array()
 	points.append(Vector2.ZERO)  # Starting point
 		
@@ -132,27 +175,20 @@ func _update_laser() -> void:
 func _update_collision_shape() -> void:
 	# Update collision shape to follow the laser path
 	var rect_shape = collision_shape.shape as RectangleShape2D
-	rect_shape.extents = Vector2(current_length / 2, laser_width / 2)
-	collision_shape.position = Vector2(current_length / 2, 0)
+	rect_shape.extents = Vector2(current_length / 2, laser_width ) #/2
+	collision_shape.position = Vector2(current_length / 2, 0) 
 
 # Checks for zombies to damage and damages them 
-func _check_collisions() -> void:
-	var overlapping_areas = laser_area.get_overlapping_areas()
-	
-	for area in overlapping_areas:
-		if "Zombie" in area.name and not hit_enemies.has(area):
-			hit_enemies[area] = true  # Mark this enemy as hit
-			var compManager = area.getCompManager()
-			compManager.take_damage(damage)
+
 
 # Stop firing the laser on a cooldown 
 func _on_laser_timeout() -> void:
 	is_firing = false
-	canAttack = false
 	current_length = 0.0
 	hit_enemies.clear()  # Clear the hit enemies when the laser times out
 	_update_laser()
 	_update_collision_shape()
+
 
 # Set the laser color 
 func set_laser_color(color: Color) -> void:
@@ -179,3 +215,8 @@ func getIsBuffed():
 	
 	
 	
+
+
+#func _on_shoot_timer_timeout() -> void:
+	#if canAttack:
+		#shoot_projectile()

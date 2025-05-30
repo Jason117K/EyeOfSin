@@ -815,16 +815,17 @@ texture = ExtResource("3")
 
 [node name="LaserShootComponent" parent="Worm2" instance=ExtResource("6")]
 position = Vector2(14, -9)
-extension_speed = 40000.0
 max_length = 20000.0
 laser_width = 10.0
-duration = 0.7
-auto_fire = false
+damage = 0.0
+duration = 1.0
+cooldown = 2.0
 zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
 
 [node name="ShootTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2.5)
@@ -925,5 +926,7 @@ target_position = Vector2(270.428, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[connection signal="timeout" from="ShootTimer" to="Worm2/LaserShootComponent" method="_on_shoot_timer_timeout"]
 
 [editable path="BuffNodesComponent"]

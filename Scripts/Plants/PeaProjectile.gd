@@ -2,7 +2,7 @@ extends Area2D
 #PeaProjectile.gd
 
 
-var speed = 300  # Speed of the projectile
+@export var speed = 300  # Speed of the projectile
 @export var damage = 20 #2   # Damage dealt to zombies
 
 func _process(delta):
@@ -18,7 +18,5 @@ func _on_PeaProjectile_area_entered(area):
 	if area.is_in_group("Zombie"):
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
-		compManager.slow()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
-		queue_free()  # Remove the projectile # Replace with function body.
-
+		#queue_free()  # Remove the projectile # Replace with function body.

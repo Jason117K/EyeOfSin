@@ -19,7 +19,8 @@ extends Node2D
 @onready var laserShootComp = $Worm2/LaserShootComponent
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
-
+var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
+@onready var shootTimer = $ShootTimer
 #onready var animSpriteComp = $AnimatedSprite
 
 # Internal animation state
@@ -33,6 +34,7 @@ var prev_y = 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  
 
+
 var PlantManager
 
 
@@ -45,8 +47,9 @@ func _ready():
 		initial_sprite_position = sprite.position  # Store the initial position
 	else:
 		push_warning("No sprite assigned to animate!")
-		
+	shootTimer.wait_time = laserShootComp.cooldown
 	#animSpriteComp.animation = "spawn"
+		
 		
 		
 # Returns the plants cost 
@@ -76,6 +79,7 @@ func take_damage(damage):
 
 # Constantly animates the two worms of the EggWorm 
 func _process(delta):
+
 	if not sprite:
 		return
 		

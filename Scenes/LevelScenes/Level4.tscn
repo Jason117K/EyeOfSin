@@ -110,8 +110,8 @@ position = Vector2(-37, 0)
 position = Vector2(747, 109)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
+"BucketHead": 0,
+"ConeHead": 0,
 "Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -143,10 +143,10 @@ position = Vector2(-36, 1)
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(747, 143)
 Round1_Zombies = {
-"Base": 1,
+"Base": 0,
 "BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 1,
+"ConeHead": 0,
+"Dancer": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -177,10 +177,10 @@ position = Vector2(-38, 1)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(751, 174)
 Round1_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -250,7 +250,7 @@ z_index = -2
 z_index = 1
 position = Vector2(-59, 222)
 script = ExtResource("7_ghmvw")
-StartDelay = 8
+StartDelay = 0
 Wave2StartTime = 45
 Wave3StartTime = 75
 Wave1_Interval = 2.0

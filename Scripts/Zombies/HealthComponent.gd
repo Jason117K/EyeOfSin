@@ -28,8 +28,12 @@ func getInjured():
 	
 # Function to handle zombie taking damage
 func take_damage(damage):
+	
 
 	health -= damage
+	
+	print("Taking damage ", damage, " health now ", health) 
+	
 	hitAudioPlayer.play()
 	#Handles killing the zombie if health hits 0
 	if health <= 0:
