@@ -17,6 +17,8 @@ extends Node2D
 @export var sprite_path: NodePath  
 @onready var sprite = get_node(sprite_path) if sprite_path else null
 @onready var laserShootComp = $Worm2/LaserShootComponent
+# Raycast to detect zombies in front of the spider
+@onready var attack_ray = $DMG_RayCast2D
 
 #onready var animSpriteComp = $AnimatedSprite
 

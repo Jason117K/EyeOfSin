@@ -22,17 +22,19 @@ extends Node2D
 @onready var line2D := Line2D.new()
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
-
+@onready var attack_ray = $"../../DMG_RayCast2D"
 # State variables 
 var current_length := 0.0
 var is_firing := false
 var timer := Timer.new()
 var hit_enemies = {}  # Dictionary to track hit enemies
 var isBuffed = false
+var canAttack : bool = false
 
 func _ready() -> void:
 	# Set up Line2D
 	add_child(line2D)
+	line2D.visible = false
 	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
 	line2D.default_color = laser_color
 	line2D.width = laser_width
@@ -68,6 +70,17 @@ func _ready() -> void:
 
 # Handle updating the laser firing if we are firing 
 func _physics_process(delta: float) -> void:
+	if attack_ray.is_colliding():
+		var collider = attack_ray.get_collider()
+		if collider && !canAttack:
+			print("Collider Name is ", collider.name)
+			if collider.is_in_group("Zombie"):
+				print("Can Attack Is True")
+				canAttack = true
+			else:
+				canAttack = false
+	if canAttack:
+		fire()
 	if is_firing:
 		if current_length < max_length:
 			current_length += extension_speed * delta
@@ -84,9 +97,10 @@ func fire() -> void:
 		hit_enemies.clear()  # Clear the hit enemies when firing a new laser
 		timer.wait_time = duration
 		timer.start()
-
+		#canAttack = false
 # Update the laser points specifically, also taking into account buffs
 func _update_laser() -> void:
+	line2D.visible = true
 	var points = PackedVector2Array()
 	points.append(Vector2.ZERO)  # Starting point
 		
@@ -134,6 +148,7 @@ func _check_collisions() -> void:
 # Stop firing the laser on a cooldown 
 func _on_laser_timeout() -> void:
 	is_firing = false
+	canAttack = false
 	current_length = 0.0
 	hit_enemies.clear()  # Clear the hit enemies when the laser times out
 	_update_laser()

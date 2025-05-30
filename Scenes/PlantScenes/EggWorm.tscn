@@ -919,4 +919,11 @@ frame = 11
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 17
 
+[node name="DMG_RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(1.08712, 3.82142)
+target_position = Vector2(270.428, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
 [editable path="BuffNodesComponent"]
