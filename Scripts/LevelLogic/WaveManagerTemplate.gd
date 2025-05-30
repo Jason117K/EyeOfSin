@@ -37,9 +37,10 @@ var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
 @export var Wave1_Interval = 7.5
 @export var Wave2_Interval = 9
 @export var Wave3_Interval = 5.5
+@export var canStartGame : bool = false 
 
 var checkEndLevel = false
-var canStartGame : bool = false 
+
 var numWave = 0
 var health = 5
 

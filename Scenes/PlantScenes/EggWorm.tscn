@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://Assets/Plants/Worm2.png" id="3"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://Scripts/Plants/EggWorm.gd" id="4"]
 [ext_resource type="Script" uid="uid://ba55ljhixst0w" path="res://Scripts/Plants/Worm2Animator.gd" id="5"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/LaserShootComponent.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://ktsfsnvej37r" path="res://Scenes/PlantScenes/LaserShootComponent.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://bbxyx2pv8hot8" path="res://Assets/Plants/LaserEggWormsSmol.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://Assets/Plants/Animations/LaserEggWormsSmolMERGED-Sheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="11"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="12"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(38, 33)
@@ -819,6 +819,7 @@ extension_speed = 40000.0
 max_length = 20000.0
 laser_width = 10.0
 duration = 0.7
+auto_fire = false
 zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
@@ -856,7 +857,6 @@ giveBuffTo = ["WalnutTree", "Maw", "Hive", "None", "None", "None", "None", "None
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 14
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
@@ -865,7 +865,6 @@ visible = false
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 11
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
@@ -874,7 +873,6 @@ visible = false
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 11
 
 [node name="TileArea4" parent="BuffNodesComponent" index="6"]
@@ -883,7 +881,6 @@ visible = false
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 11
 
 [node name="TileArea5" parent="BuffNodesComponent" index="8"]
@@ -892,7 +889,6 @@ visible = false
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 11
 
 [node name="TileArea6" parent="BuffNodesComponent" index="10"]
@@ -901,7 +897,6 @@ visible = false
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 11
 
 [node name="TileArea7" parent="BuffNodesComponent" index="12"]
@@ -910,7 +905,6 @@ visible = false
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 11
 
 [node name="TileArea8" parent="BuffNodesComponent" index="14"]
@@ -919,12 +913,10 @@ visible = false
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 11
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 17
 
 [editable path="BuffNodesComponent"]

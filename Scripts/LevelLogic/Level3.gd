@@ -1,17 +1,37 @@
 extends Control
 #Level3
 
+@onready var toolTips = $ToolTips
+@onready var waveManager = $GameLayer/WaveManager
+
+var bloodBuffTutorial = "res://Assets/Text/TextFiles/BloodBuffTutorial.txt"
+var bloodBuffTutorial2 = "res://Assets/Text/TextFiles/BloodBuffTutorial2.txt"
+var bloodBuffTutorial3 = "res://Assets/Text/TextFiles/BloodBuffTutorial3.txt"
+
 # Sets Up the Tiles For Level 3 
 func _ready():
-	#$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
-	$GameLayer/GridManager.set_tiles_for_rows(1,2, 26)
+	$GameLayer/GridManager.set_tiles_for_rows(0,1, 68)
+	$GameLayer/GridManager.set_tiles_for_rows(1,2, 66)
 	
-	$GameLayer/GridManager.set_tiles_for_rows(2,3, 23)
-	$GameLayer/GridManager.set_tiles_for_rows(3,4, 23)
-	$GameLayer/GridManager.set_tiles_for_rows(4,5, 23)
-	$GameLayer/GridManager.set_tiles_for_rows(5,6, 23)
-	$GameLayer/GridManager.set_tiles_for_rows(6,7, 23)
+	$GameLayer/GridManager.set_tiles_for_rows(2,3, 63)
+	$GameLayer/GridManager.set_tiles_for_rows(3,4, 63)
+	$GameLayer/GridManager.set_tiles_for_rows(4,5, 63)
+	$GameLayer/GridManager.set_tiles_for_rows(5,6, 63)
+	$GameLayer/GridManager.set_tiles_for_rows(6,7, 63)
 	
-	#$GameLayer/GridManager.set_tiles_for_rows(7,8, 26)
-	#$GameLayer/GridManager.set_tiles_for_rows(8,9, 29)
+	$GameLayer/GridManager.set_tiles_for_rows(7,8, 66)
+	$GameLayer/GridManager.set_tiles_for_rows(8,9, 69)
+	
+	toolTips.set_text(bloodBuffTutorial)
+	toolTips.noButtonShow()
 
+
+func _on_plant_manager_egg_worm_placed() -> void:
+	toolTips.set_text(bloodBuffTutorial2)
+	toolTips.noButtonShow()
+	
+
+func _on_plant_manager_walnut_placed() -> void:
+	toolTips.set_text(bloodBuffTutorial3)
+	waveManager.canStartGame = true
+	toolTips.showButton()

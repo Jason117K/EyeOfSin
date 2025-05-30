@@ -59,6 +59,7 @@ func _ready() -> void:
 	timer.connect("timeout", Callable(self, "_on_laser_timeout"))
 	
 	if auto_fire:
+		print("AUTO FIRE TRUUUU")
 		var cooldown_timer = Timer.new()
 		add_child(cooldown_timer)
 		cooldown_timer.wait_time = cooldown

@@ -141,8 +141,13 @@ func _ready():
 	else: #root = Level3
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
-		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
-		MawButton.visible = true
+		
+
+		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		MawButton.visible = false
+
+		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
+		HiveButton.visible = false
 		
 	add_child(preview_container)
 	preview_container.z_index = 100  # Ensure preview appears above other elements

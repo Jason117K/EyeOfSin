@@ -1,0 +1,5 @@
+Eggwyrms can apply buffs to Occular Spine's, resulting in the Spine having
+increased health regeneration and the EggWyrm's beam becoming empowered 
+when it passes through the spine.
+
+Place an Occular Spine within two tiles to the right of the EggWyrm 

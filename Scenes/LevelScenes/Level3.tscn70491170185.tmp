@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://lbnwijjflsge"]
+[gd_scene load_steps=26 format=3 uid="uid://lbnwijjflsge"]
 
 [ext_resource type="PackedScene" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -10,15 +10,26 @@
 [ext_resource type="Script" uid="uid://c31n61qr27kvd" path="res://Scripts/LevelLogic/WaveManager_Lvl3.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="9"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="10"]
-[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="10_ldx1s"]
 [ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="11"]
 [ext_resource type="PackedScene" path="res://Scenes/Environment/Shrub.tscn" id="12"]
+[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="13"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="16"]
 [ext_resource type="Texture2D" uid="uid://der1qkybx4731" path="res://Assets/Environment/Props/CoralBigPROP.png" id="17"]
 [ext_resource type="Texture2D" uid="uid://df36u1f3ge5s6" path="res://Assets/Environment/Props/CoralSmallPROP.png" id="18"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_ldx1s"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("13"), ExtResource("13")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -256,6 +267,7 @@ Wave3StartTime = 75
 Wave1_Interval = 2.0
 Wave2_Interval = 4
 Wave3_Interval = 2.0
+canStartGame = true
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 741.0
@@ -263,6 +275,29 @@ offset_top = 40.0
 offset_right = 779.0
 offset_bottom = 238.0
 color = Color(2, 0, 0, 0.729412)
+
+[node name="UILayer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 321.0
+offset_right = 41.0
+offset_bottom = 361.0
+mouse_filter = 2
+
+[node name="SunCounter" type="Control" parent="UILayer"]
+anchors_preset = 0
+offset_top = -320.0
+offset_right = 40.0
+offset_bottom = -280.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="UILayer/SunCounter"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
+text = "Blood : 200"
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11")
@@ -279,8 +314,6 @@ offset_top = 313.0
 offset_right = 65.0
 offset_bottom = 353.0
 scale = Vector2(0.5, 0.5)
-
-[node name="UILayer" parent="." instance=ExtResource("10_ldx1s")]
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
@@ -438,6 +471,3 @@ offset_right = 152.0
 offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
-[connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]

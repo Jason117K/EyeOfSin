@@ -1,0 +1,3 @@
+Blood Buffs can have powerful effects that shouldn't be ignored. Eyes give 
+general stat buffs to all summons in a one tile radius, while most other summons
+are more specific. Read up on specific combinations in the CODEX.

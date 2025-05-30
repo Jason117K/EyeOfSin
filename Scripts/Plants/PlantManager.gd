@@ -39,6 +39,17 @@ func _input(event):
 				
 				var cost = temp_instance.get_cost()
 				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
+				if(parentName == "Level3"):
+					print("Grid map size is ", grid_map.size())
+					if grid_map.size() == 0 && selected_plant_scene:
+					
+						if "Egg" in temp_instance.get_name():
+							print("Place Plant11 " , grid_pos)
+							place_plant(grid_pos)
+							return
+						else:
+							return
+					
 				temp_instance.queue_free()
 				# early return if no sun points
 				if sun_points < cost:
@@ -51,6 +62,35 @@ func _input(event):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
 					print("Place Plant " , grid_pos)
 					place_plant(grid_pos)
+			elif(parentName == "Level3"):
+				print("Grid map size is ", grid_map.size())
+				if grid_map.size() == 0 && selected_plant_scene:
+					var temp_instance = selected_plant_scene.instantiate()
+					if "Egg" in temp_instance.get_name():
+						print("Place Plant1 " , grid_pos)
+						place_plant(grid_pos)
+					temp_instance.queue_free()
+					
+				if grid_map.size() == 1:
+					var keys = grid_map.keys()
+					
+					var first_key = keys[0]
+					var first_value = grid_map[first_key]
+					print("First key: ", first_key, ", First value: ", first_value)
+					print("Thiss grd: ", grid_pos)
+					print(abs(first_key.x - grid_pos.x))
+							
+					
+					if  abs(first_key.x - grid_pos.x) < 65 &&  (abs(first_key.y - grid_pos.y) < 32):
+						if grid_pos.x > first_key.x:
+							print("Try place plant")
+							place_plant(grid_pos)
+					else:
+						pass
+				else:
+					print("Place Plant2 " , grid_pos)
+					place_plant(grid_pos)
+				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<288 && grid_pos.y > 31):
 					print("INCORRECT Place Plant " , grid_pos)
@@ -70,6 +110,11 @@ func clear_space(passed_grid_pos):
 func place_plant(grid_pos: Vector2):
 	
 	print("About to Place Plant")
+	if(grid_pos.x<769 && grid_pos.y<288 && grid_pos.y > 31):
+		pass
+	else:
+		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
+		return 
 	
 	# Dynamically get the selected plant	
 	selected_plant_scene = get_selected_plant()  
