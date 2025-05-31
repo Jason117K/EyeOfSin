@@ -6,9 +6,12 @@ extends Control
 
 var waspText = "res://Assets/Text/TextFiles/waspTutorial.txt"
 var screenDoorZombieText = "res://Assets/Text/TextFiles/ScreenDoorZombieTutorial.txt"
+var waspEggBuffText = "res://Assets/Text/TextFiles/WaspEggBuff.txt"
 
 var waspAnim = preload("res://Assets/Plants/Spriteframes/Wasp.tres")
 var screenDoorZombieAnim = preload("res://Assets/Zombies/Animations/Spriteframes/ScreenDoorZombie.tres")
+
+var hive_egg_buff_scene = preload("res://Scenes/Tutorials/hive_egg_buff.tscn")
 
 
 # Sets Up the Tiles For Level 3 
@@ -32,8 +35,13 @@ func _ready():
 
 
 func _on_plant_manager_wasp_placed() -> void:
-	toolTips.hide()
-	waveManager.canStartGame = true
+	toolTips.mainVbox.visible = false
+	toolTips.synergyVBox.visible = true 
+	
+	toolTips.setComplexSceneText(waspEggBuffText)
+	toolTips.setComplexScene(hive_egg_buff_scene)
+	#toolTips.hide()
+	#waveManager.canStartGame = true
 
 
 func _on_wave_manager_wave_1_started() -> void:

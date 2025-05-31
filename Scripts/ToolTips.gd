@@ -4,6 +4,11 @@ extends PanelContainer
 @onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
 @onready var anim_texture = $VBoxContainer/CenterContainer/TextureRect
 @onready var button = $VBoxContainer/Button
+@onready var mainVbox = $VBoxContainer
+@onready var synergyVBox = $SynergyVBox
+@onready var synergyLabel = $SynergyVBox/CenterContainer/VBoxContainer/SynergyLabel
+@onready var complexSceneContainer = $SynergyVBox/CenterContainer/VBoxContainer
+
 signal ToolTipHid
 
 #TODO Combine both set text functions
@@ -18,6 +23,14 @@ func set_text(newFile : String):
 	var newText = file.get_as_text()
 	file.close()
 	label_text.text = newText
+
+func setComplexSceneText(newFile : String):
+	var file = FileAccess.open(newFile, FileAccess.READ)
+	var newText = file.get_as_text()
+	file.close()
+	synergyLabel.text = newText
+	
+
 
 #Sets the current toolTip Text while also pausing the game
 func set_text_pause(newFile : String):
@@ -49,6 +62,20 @@ func noButtonShow():
 func setImage(newImage):
 	#TextureRect
 	pass
+
+func setComplexScene(newScene):
+	#Clean Up Any Previous Complex Scenes 
+	for node in complexSceneContainer.get_children():
+		if node is Label:
+			pass
+		else:
+			node.queue_free()
+	#Add New Complex Scene to Container 
+	var this_new_scene = newScene.instantiate()
+	complexSceneContainer.add_child(this_new_scene)
+	complexSceneContainer.move_child(this_new_scene, 0)
+	
+
 	
 #Hides the tooltip and unpauses the game when the player clicks the button
 func _on_Button_pressed():
