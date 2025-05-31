@@ -35,8 +35,7 @@ func _ready():
 
 
 func _on_plant_manager_wasp_placed() -> void:
-	toolTips.mainVbox.visible = false
-	toolTips.synergyVBox.visible = true 
+
 	
 	toolTips.setComplexSceneText(waspEggBuffText)
 	toolTips.setComplexScene(hive_egg_buff_scene)
@@ -48,3 +47,7 @@ func _on_wave_manager_wave_1_started() -> void:
 	toolTips.set_text_pause(screenDoorZombieText)
 	toolTips.setAnim(screenDoorZombieAnim)
 	toolTips.showButton()
+
+
+func _on_tool_tips_tool_tip_hid() -> void:
+	waveManager.canStartGame = true

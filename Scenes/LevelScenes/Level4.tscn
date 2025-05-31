@@ -441,3 +441,4 @@ grow_vertical = 2
 
 [connection signal="wasp_placed" from="PlantManager" to="." method="_on_plant_manager_wasp_placed"]
 [connection signal="wave1Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_1_started"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

@@ -19,6 +19,8 @@ func _ready() -> void:
 
 #Sets the current toolTip Text
 func set_text(newFile : String):
+	mainVbox.visible = true
+	synergyVBox.visible = false 
 	var file = FileAccess.open(newFile, FileAccess.READ)
 	var newText = file.get_as_text()
 	file.close()
@@ -34,6 +36,8 @@ func setComplexSceneText(newFile : String):
 
 #Sets the current toolTip Text while also pausing the game
 func set_text_pause(newFile : String):
+	mainVbox.visible = true
+	synergyVBox.visible = false 
 	var file = FileAccess.open(newFile, FileAccess.READ)
 	var newText = file.get_as_text()
 	file.close()
@@ -64,6 +68,9 @@ func setImage(newImage):
 	pass
 
 func setComplexScene(newScene):
+	mainVbox.visible = false
+	synergyVBox.visible = true 
+	
 	#Clean Up Any Previous Complex Scenes 
 	for node in complexSceneContainer.get_children():
 		if node is Label:
@@ -82,3 +89,8 @@ func _on_Button_pressed():
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
+
+
+func _on_button_2_pressed() -> void:
+	hide()
+	ToolTipHid.emit()
