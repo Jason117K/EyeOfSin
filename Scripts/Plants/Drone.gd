@@ -53,6 +53,7 @@ func _ready():
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
+		print("Die Cos Health too Low")
 		die()
 
 # Changes the drone's current animation 
@@ -65,9 +66,10 @@ func die():
 	emit_signal("drone_died", self)
 	if current_target and is_instance_valid(current_target):
 		current_target.stopFightingDrone()
+	print("Drone Free Self")
 	queue_free()
 
-# Attacks a given enemy with out without buffs 
+# Attacks a given enemy without buffs 
 func attack_target(enemy):
 	#print("Drone Strike")
 	current_target = enemy

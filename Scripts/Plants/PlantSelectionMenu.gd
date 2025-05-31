@@ -138,7 +138,7 @@ func _ready():
 
 		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
 		HiveButton.visible = false
-	else: #root = Level3
+	elif root == "Level3":
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 		
@@ -148,7 +148,12 @@ func _ready():
 
 		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
 		HiveButton.visible = false
-		
+	elif root == "Level4":
+		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		MawButton.visible = false
+
 	add_child(preview_container)
 	preview_container.z_index = 100  # Ensure preview appears above other elements
 

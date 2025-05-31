@@ -4,6 +4,8 @@ extends Control
 @onready var toolTips = $ToolTips
 @onready var waveManager = $GameLayer/WaveManager
 
+var waspText = "res://Assets/Text/TextFiles/waspTutorial.txt"
+var waspAnim = preload("res://Assets/Plants/Spriteframes/Wasp.tres")
 
 
 # Sets Up the Tiles For Level 3 
@@ -19,3 +21,13 @@ func _ready():
 	
 	$GameLayer/GridManager.set_tiles_for_rows(7,8, 66)
 	$GameLayer/GridManager.set_tiles_for_rows(8,9, 69)
+	
+	#Sets the first tutorial popup
+	toolTips.set_text(waspText)
+	toolTips.setAnim(waspAnim)
+	toolTips.noButtonShow()
+
+
+func _on_plant_manager_wasp_placed() -> void:
+	toolTips.hide()
+	waveManager.canStartGame = true

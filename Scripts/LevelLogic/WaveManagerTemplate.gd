@@ -79,12 +79,12 @@ func _ready():
 	$Wave2.wait_time = Wave2_Interval
 	for child in get_parent().get_parent().get_node("GameLayer").get_children():
 		if "ZombieSpawner" in child.name:
-			print("Spawners.append ", child.name)
+			#print("Spawners.append ", child.name)
 			spawners.append(child)
-			print("Timers.append child.get_child(1) : ",child.find_child("WavePreview").name)
-			print(".get_child(2): , ", child.find_child("WavePreview").get_child(2).name)
+			#print("Timers.append child.get_child(1) : ",child.find_child("WavePreview").name)
+			#print(".get_child(2): , ", child.find_child("WavePreview").get_child(2).name)
 			timers.append(child.find_child("WavePreview").get_child(2))
-			print("WavePreviewIcons.append : ",child.find_child("WavePreview").name)
+			#print("WavePreviewIcons.append : ",child.find_child("WavePreview").name)
 			wavePreviewIcons.append(child.find_child("WavePreview"))
 	#Connect done spawning
 	for spawner in spawners:

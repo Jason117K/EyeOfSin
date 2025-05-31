@@ -10,8 +10,8 @@ func get_animation_length(anim_name: String) -> float:
 		var frame_count = sprite_frames.get_frame_count(anim_name)
 		var frame_rate = sprite_frames.get_animation_speed(anim_name)
 		# Don't forget to account for the speed scale if it's been modified
-		var speed_scale = sprite_frames.speed_scale
-		return (frame_count / frame_rate) / speed_scale
+		var this_speed_scale = speed_scale
+		return (frame_count / frame_rate) / this_speed_scale
 	return 0.0
 
 #Changes drone color to indicate buff 

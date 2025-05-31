@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://Scripts/Plants/Hive.gd" id="2"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="6"]
@@ -195,7 +195,7 @@ size = Vector2(32, 32)
 
 [sub_resource type="CapsuleShape2D" id="12"]
 radius = 17.0588
-height = 78.8235
+height = 132.706
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqdb"]
 atlas = ExtResource("5")
@@ -937,7 +937,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComp"]
-position = Vector2(12.3529, -0.588235)
+position = Vector2(50, 0)
 rotation = 1.5708
 shape = SubResource("12")
 
@@ -955,7 +955,6 @@ visible = false
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 9
 
 [node name="TileArea2" parent="BuffNodesComponent" index="2"]
@@ -964,7 +963,6 @@ visible = false
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 6
 
 [node name="TileArea3" parent="BuffNodesComponent" index="4"]
@@ -973,32 +971,26 @@ visible = false
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 6
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="7"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 6
 
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 6
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 6
 
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 6
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 6
 
 [node name="TileArea9" parent="BuffNodesComponent" index="16"]
@@ -1007,7 +999,6 @@ visible = false
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
-animation = &"Drip"
 frame = 9
 
 [node name="PreviewNodes" type="Node2D" parent="."]
