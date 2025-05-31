@@ -5,7 +5,10 @@ extends Control
 @onready var waveManager = $GameLayer/WaveManager
 
 var waspText = "res://Assets/Text/TextFiles/waspTutorial.txt"
+var screenDoorZombieText = "res://Assets/Text/TextFiles/ScreenDoorZombieTutorial.txt"
+
 var waspAnim = preload("res://Assets/Plants/Spriteframes/Wasp.tres")
+var screenDoorZombieAnim = preload("res://Assets/Zombies/Animations/Spriteframes/ScreenDoorZombie.tres")
 
 
 # Sets Up the Tiles For Level 3 
@@ -31,3 +34,9 @@ func _ready():
 func _on_plant_manager_wasp_placed() -> void:
 	toolTips.hide()
 	waveManager.canStartGame = true
+
+
+func _on_wave_manager_wave_1_started() -> void:
+	toolTips.set_text_pause(screenDoorZombieText)
+	toolTips.setAnim(screenDoorZombieAnim)
+	toolTips.showButton()

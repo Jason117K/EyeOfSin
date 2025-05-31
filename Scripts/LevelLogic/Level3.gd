@@ -4,6 +4,9 @@ extends Control
 @onready var toolTips = $ToolTips
 @onready var waveManager = $GameLayer/WaveManager
 
+var eggWyrmPlaced := false
+var walnutPlaced := false 
+
 var bloodBuffTutorial = "res://Assets/Text/TextFiles/BloodBuffTutorial.txt"
 var bloodBuffTutorial2 = "res://Assets/Text/TextFiles/BloodBuffTutorial2.txt"
 var bloodBuffTutorial3 = "res://Assets/Text/TextFiles/BloodBuffTutorial3.txt"
@@ -27,11 +30,15 @@ func _ready():
 
 
 func _on_plant_manager_egg_worm_placed() -> void:
-	toolTips.set_text(bloodBuffTutorial2)
-	toolTips.noButtonShow()
+	if !eggWyrmPlaced:
+		toolTips.set_text(bloodBuffTutorial2)
+		toolTips.noButtonShow()
+		eggWyrmPlaced = true
 	
 
 func _on_plant_manager_walnut_placed() -> void:
-	toolTips.set_text(bloodBuffTutorial3)
-	waveManager.canStartGame = true
-	toolTips.showButton()
+	if !walnutPlaced:
+		toolTips.set_text(bloodBuffTutorial3)
+		waveManager.canStartGame = true
+		toolTips.showButton()
+		walnutPlaced = true 

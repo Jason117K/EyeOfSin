@@ -125,7 +125,7 @@ func place_plant(grid_pos: Vector2):
 		return
 	
 	var plant_instance = selected_plant_scene.instantiate()
-	print("Will Make PPName From ",plant_instance.name)
+	#print("Will Make PPName From ",plant_instance.name)
 	plant_instance.name = generate_unique_name(plant_instance.name)
 	
 	
@@ -167,7 +167,7 @@ func place_plant(grid_pos: Vector2):
 		#Play the sound
 		
 		$PlacePlantAudioPlayer.play()
-		print("PPLant name is ", plant_instance.name)
+		#print("PPLant name is ", plant_instance.name)
 		if "Sunflower" in plant_instance.name:
 			print("Selected Plant Scene is : ", plant_instance.name)
 			#TODO change to sunflower_placed
@@ -202,15 +202,15 @@ func generate_unique_name(base_name: String) -> String:
 	var used_numbers = []
 	# Collect all existing numbers from siblings
 	for child in get_parent().get_node("GameLayer").get_children():
-		print("PPChild is ", child.name)
+		#print("PPChild is ", child.name)
 		if child.name.begins_with(base_name):
 			var suffix = child.name.substr(base_name.length())
-			print("PPSuffix Is ", suffix)
+			#print("PPSuffix Is ", suffix)
 			if suffix.is_valid_int():
 				used_numbers.append(suffix.to_int())
 					
 	used_numbers.sort()
-	print("Used PP Numbers is ",used_numbers )
+	#print("Used PP Numbers is ",used_numbers )
 	# Find first available number (fills gaps)
 	var candidate = 1
 	for num in used_numbers: 
@@ -218,7 +218,7 @@ func generate_unique_name(base_name: String) -> String:
 			break  # Gap found
 		if candidate == num:
 			candidate = num + 1
-	print("Will Return PP ", base_name + str(candidate))
+	#print("Will Return PP ", base_name + str(candidate))
 	return base_name + str(candidate)
 	
 #Add sun to total 

@@ -42,12 +42,12 @@ func get_cost():
 #Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
 	#Apply a double damage buff to every drone 
-	if(bufferName.name == "EggWorm" && isBuffed == false):
+	if("EggWorm" in bufferName.name && isBuffed == false):
 		for drone in available_drones:
 			drone.doubleDamage()
 		isBuffed = true 
 	#Make the drones explode if it's a peashooter buff 
-	if(bufferName.name == "Peashooter" && isBuffed == false):
+	if("Peashooter" in bufferName.name && isBuffed == false):
 		for drone in available_drones:
 			drone.makeExplode()
 		isBuffed = true 

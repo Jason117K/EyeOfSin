@@ -36,6 +36,7 @@ var canAttack := false
 func _ready() -> void:
 	# Set up Line2D
 	add_child(line2D)
+	line2D.visible = false
 	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
 	line2D.default_color = laser_color
 	line2D.width = laser_width
@@ -81,8 +82,10 @@ func _process(delta: float) -> void:
 			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				canAttack = true 
+				line2D.visible = true
 			else:
 				canAttack = false
+				line2D.visible = false
 	if is_firing:
 		if current_length < max_length:
 			current_length += extension_speed * delta

@@ -815,6 +815,7 @@ texture = ExtResource("3")
 
 [node name="LaserShootComponent" parent="Worm2" instance=ExtResource("6")]
 position = Vector2(14, -9)
+extension_speed = 30000.0
 max_length = 20000.0
 laser_width = 10.0
 damage = 0.0

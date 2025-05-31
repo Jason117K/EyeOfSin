@@ -108,6 +108,15 @@ position = Vector2(-37, 0)
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(747, 109)
+Round1_Zombies = {
+"Base": 2,
+"BucketHead": 1,
+"ConeHead": 0,
+"Dancer": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 2,
 "BucketHead": 2,
@@ -135,11 +144,11 @@ position = Vector2(-36, 1)
 position = Vector2(747, 143)
 Round1_Zombies = {
 "Base": 0,
-"BucketHead": 1,
+"BucketHead": 2,
 "ConeHead": 0,
 "Dancer": 0,
 "PoleVault": 0,
-"ScreenDoor": 0,
+"ScreenDoor": 1,
 "Ticker": 0
 }
 Round2_Zombies = {
@@ -167,6 +176,15 @@ position = Vector2(-38, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(751, 174)
+Round1_Zombies = {
+"Base": 2,
+"BucketHead": 1,
+"ConeHead": 1,
+"Dancer": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 2,
 "BucketHead": 2,
@@ -422,3 +440,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="wasp_placed" from="PlantManager" to="." method="_on_plant_manager_wasp_placed"]
+[connection signal="wave1Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_1_started"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpp5nxl1i6r7p"]
 
-[ext_resource type="Script" uid="uid://bk1ka6qbmryci" path="res://Scripts/Plants/PeaProjectile.gd" id="1"]
+[ext_resource type="Script" uid="uid://dj86hknbrt4p8" path="res://Scripts/Plants/EggProjectile.gd" id="1_sfgus"]
 [ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
@@ -9,9 +9,7 @@
 visible = false
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1")
-speed = 3500
-damage = 24
+script = ExtResource("1_sfgus")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -27,5 +25,11 @@ offset_right = 41.0
 offset_bottom = 40.0
 color = Color(0.231373, 0.847059, 0.0823529, 1)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [connection signal="area_entered" from="." to="." method="_on_PeaProjectile_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_PeaProjectile_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
