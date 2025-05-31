@@ -46,6 +46,8 @@ func _ready():
 
 func _process(_delta):
 	
+	#print("I Am ", get_parent().name)
+	
 	# Go through all children of BuffNodes
 	for child in get_children():
 		

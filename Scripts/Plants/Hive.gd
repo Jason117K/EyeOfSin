@@ -82,10 +82,11 @@ func calculate_rest_position(index):
 func spawn_initial_drones():
 	for i in range(MAX_DRONES):
 		var drone = DroneScene.instantiate()
+		drone.name = "Drone_%d" % i  # e.g., "Drone_0", "Drone_1"
 		add_child(drone)
 		available_drones.append(drone)
-		print("Just Appeneded ", drone.name)
-		print("Available drones2 is ", available_drones)
+		print("Just Added : ", drone.name)
+	
 		
 		# Calculate and store rest position
 		var rest_pos = calculate_rest_position(i)

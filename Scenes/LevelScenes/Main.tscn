@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cbc05gyx2o4qf"]
 
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]

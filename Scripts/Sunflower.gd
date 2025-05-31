@@ -31,7 +31,6 @@ func generate_sun():
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
 
 
-
 # TODO Implement sunflower buff 
 # Handles all pontential sunflower buffs 
 func receiveBuff(plantName):
