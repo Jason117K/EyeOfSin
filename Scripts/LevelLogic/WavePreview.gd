@@ -34,7 +34,7 @@ func _on_Area2D_mouse_exited():
 	$Node2D/Control/Label2.text = ""
 	$Node2D/Control/Label3.text = ""
 
-
+#TODO Fix Vis
 func _on_ToggleVisibility_timeout():
 	print("Swap Vis")
 	swap_Visibility()

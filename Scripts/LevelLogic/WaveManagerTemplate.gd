@@ -128,15 +128,16 @@ func _on_ProceedGame_timeout():
 	
 	match numWave:
 		0:
+			#TODO make dynamic start
 			$ProceedGame.wait_time = Wave2StartTime
-			$ProceedGame.start()
+			#$ProceedGame.start()
 			$Wave1.start()
 			numWave = numWave + 1
 			
 			for timer in timers:
 				if timer != null:
 					timer.wait_time = $ProceedGame.wait_time - 10
-					timer.start()
+					#timer.start()
 		1:
 			wave2AlmostStart.emit()
 			print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
@@ -164,7 +165,7 @@ func _on_ProceedGame_timeout():
 
 # Spawn the first wave 
 func _on_Wave1_timeout():
-	print("Spawning first wave")
+	#print("Spawning first wave")
 	wave1Started.emit()
 	var wave_Interval = Wave1_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
@@ -172,11 +173,12 @@ func _on_Wave1_timeout():
 	$Wave1.wait_time = wave_Interval
 	
 	for spawner in spawners:
+		print("Calling Wave 1 Start Spawn Zombie")
 		spawner.start_spawn_zombie()
 
 # Spawn the Second Wave 
 func _on_Wave2_timeout():
-	print("Will now spawn second wave")
+	#print("Will now spawn second wave")
 	wave2Started.emit()
 	var wave_Interval = Wave2_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
@@ -184,6 +186,7 @@ func _on_Wave2_timeout():
 	$Wave2.wait_time = wave_Interval
 	
 	for spawner in spawners:
+		print("Calling Wave 2 Start Spawn Zombie")
 		spawner.start_spawn_zombie()
 
 # Spawn the last wave and start checking for the end of the wave 
@@ -196,6 +199,7 @@ func _on_Wave3_timeout():
 	$Wave3.wait_time = wave_Interval
 	
 	for spawner in spawners:
+		print("Calling Wave 3 Start Spawn Zombie")
 		spawner.start_spawn_zombie()
 		
 	#checkEndLevel = true
@@ -208,3 +212,13 @@ func _on_Area2D_area_entered(area):
 	if "Zombie" in area.name:
 		#Go to Restart Scene 
 		assert(get_tree().change_scene_to_packed(retry_scene) == OK)
+		
+func _on_spawn_next_wave():
+	print("Received spawn next wave signal!")
+	$ProceedGame.start()
+	for timer in timers:
+		if timer != null:
+			#timer.wait_time = $ProceedGame.wait_time - 10
+			timer.start()
+	
+	

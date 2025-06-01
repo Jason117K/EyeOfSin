@@ -1,6 +1,8 @@
 extends Node2D
 #ZombieSpawner
 
+signal spawnNextWave 
+
 # Path to the base zombie scene
 var base_zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  
 var cone_zombie_scene = preload("res://Scenes/ZombieScenes/ConeHeadZombie.tscn") 
@@ -54,11 +56,15 @@ var random_adjustment2 = randf_range(-0.6, 0.6)
 @export var small_gap_max: float = 0.39
 @export var small_gap_weight: float = 20.0  # Percentage chance for small gap 
 
+var waveManager
+
 # Populates the apprioate arrays with current zombie counts by type 
 func _ready():
 	
-	var wave_manager = get_parent().get_node("WaveManager")
+	waveManager = get_parent().get_node("WaveManager")
 	
+	var wave_manager = get_parent().get_node("WaveManager")
+	spawnNextWave.connect(wave_manager._on_spawn_next_wave)
 	
 	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
 	Round1_Zombies.get("BucketHead") , Round1_Zombies.get("ScreenDoor"),
@@ -104,9 +110,14 @@ func spawn_zombie():
 				zombie_instance.position = self.position #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#$WaveDelay.start()
+				print("Spawn Wave 1")
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = 10 #random_adjustment2
 				$WaveInterval.start()
+			else:
+				pass
+				#TODO Spawn Next Wave Here 
+				spawnNextWave.emit()
 				
 
 		2:
@@ -129,7 +140,7 @@ func spawn_zombie():
 				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
-				#print("Spawn wave 3")
+				print("Spawn wave 3")
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()
@@ -179,14 +190,16 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 func increase_wave():
 	numWave = numWave + 1
 
+#TODO Trace Back 
 #Starts the next round of zombie spawning 
 func _on_WaveDelay_timeout():
 	print("Zombie Spawning Starting Here")
 	spawn_zombie()
 	$WaveDelay.stop()
 
-
+#TODO Trace Back 
 func _on_wave_interval_timeout() -> void:
+	print("About call spawn zombie ")
 	spawn_zombie()
 
 
