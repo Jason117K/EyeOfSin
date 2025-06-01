@@ -9,6 +9,7 @@ var screendoor_zombie_scene = preload("res://Scenes/ZombieScenes/ScreenDoorZombi
 var dancer_zombie_scene = preload("res://Scenes/ZombieScenes/DancerZombie.tscn") 
 var poleVault_zombie_scene = preload("res://Scenes/ZombieScenes/PoleVaultZombie.tscn") 
 var ticker_zombie_scene = preload("res://Scenes/ZombieScenes/TickerZombie.tscn") 
+var football_zombie_scene = preload("res://Scenes/ZombieScenes/FootballZombie.tscn")
 
 # Array to hold zombie types
 var wave1_zombies = []  
@@ -18,15 +19,15 @@ var wave3_zombies = []
 #Arrays to track amount of zombies by types per round 
 @export var Round1_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
 							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0}
+							"Ticker" : 0, "Football" : 0}
 							
 @export var Round2_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
 							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0}
+							"Ticker" : 0, "Football" : 0}
 							
 @export var Round3_Zombies =  {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
 							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0}
+							"Ticker" : 0, "Football" : 0}
 
 var baseZombies = []
 
@@ -53,19 +54,19 @@ func _ready():
 	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
 	Round1_Zombies.get("BucketHead") , Round1_Zombies.get("ScreenDoor"),
 	Round1_Zombies.get("Dancer"),Round1_Zombies.get("PoleVault"),
-	Round1_Zombies.get("Ticker"),
+	Round1_Zombies.get("Ticker"),Round1_Zombies.get("Football"),
 	 wave1_zombies)
 	
 	populate_zombies(Round2_Zombies.get("Base") , Round2_Zombies.get("ConeHead"), 
 	Round2_Zombies.get("BucketHead") , Round2_Zombies.get("ScreenDoor"), 
 	Round2_Zombies.get("Dancer"),Round2_Zombies.get("PoleVault"),
-	Round2_Zombies.get("Ticker"),
+	Round2_Zombies.get("Ticker"),Round1_Zombies.get("Football"),
 	 wave2_zombies)
 	
 	populate_zombies(Round3_Zombies.get("Base") , Round3_Zombies.get("ConeHead"),
 	Round3_Zombies.get("BucketHead") , Round3_Zombies.get("ScreenDoor"),
 	Round3_Zombies.get("Dancer"), Round3_Zombies.get("PoleVault"),
-	Round2_Zombies.get("Ticker"),
+	Round2_Zombies.get("Ticker"),Round1_Zombies.get("Football"),
 	 wave3_zombies)
 
 	$WaveDelay.wait_time = waveDelay
@@ -135,7 +136,7 @@ func spawn_zombie():
 func populate_zombies(base_zombie_count: int, conehead_zombie_count: int, 
 					buckethead_zombie_count: int, screendoor_zombie_count: int, 
 					dancer_zombie_count: int, poleVault_zombie_count: int,
-					ticker_zombie_count: int,
+					ticker_zombie_count: int,football_zombie_count : int,
 					zombie_wave: Array):
 						
 						
@@ -160,6 +161,9 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 	# Add ticker zombies
 	for _i in range(ticker_zombie_count):
 		zombie_wave.append(ticker_zombie_scene)
+	#Add football
+	for _i in range(football_zombie_count):
+		zombie_wave.append(football_zombie_scene)
 	
 #Increments the current wave 				
 func increase_wave():

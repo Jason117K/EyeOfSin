@@ -14,7 +14,7 @@ var screenDoorZombieAnim = preload("res://Assets/Zombies/Animations/Spriteframes
 var hive_egg_buff_scene = preload("res://Scenes/Tutorials/hive_egg_buff.tscn")
 
 
-# Sets Up the Tiles For Level 3 
+# Sets Up the Tiles For Level 4 
 func _ready():
 	$GameLayer/GridManager.set_tiles_for_rows(0,1, 68)
 	$GameLayer/GridManager.set_tiles_for_rows(1,2, 66)
