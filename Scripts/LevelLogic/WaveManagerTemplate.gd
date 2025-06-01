@@ -178,7 +178,7 @@ func _on_Wave1_timeout():
 
 # Spawn the Second Wave 
 func _on_Wave2_timeout():
-	#print("Will now spawn second wave")
+	print("Will now spawn second wave")
 	wave2Started.emit()
 	var wave_Interval = Wave2_Interval
 	var random_adjustment = randf_range(-1.0,0.1)

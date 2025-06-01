@@ -14,6 +14,9 @@ var suicideBomberAnim = preload("res://Assets/Zombies/Animations/Spriteframes/Ti
 var dancerAnim = preload("res://Assets/Zombies/Animations/Spriteframes/DancerAnim.tres")
 var eggWormAnim = preload("res://Assets/Plants/Spriteframes/EggWorm.tres")
 
+var placedEye := false 
+var placedEgg : = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
@@ -36,8 +39,11 @@ func _ready():
 
 
 func _on_plant_manager_eye_bomb_placed() -> void:
-	toolTips.hide()
-	waveManager.canStartGame = true
+	if !placedEye:
+		
+		toolTips.hide()
+		waveManager.canStartGame = true
+		placedEye = true 
 
 
 func _on_tool_tips_tool_tip_hid() -> void:
@@ -64,5 +70,7 @@ func _on_wave_manager_wave_2_almost_start() -> void:
 
 
 func _on_plant_manager_egg_worm_placed() -> void:
-	toolTips.hide()
-	waveManager.startSecondWave()
+	if !placedEgg:
+		toolTips.hide()
+		waveManager.startSecondWave()
+		placedEgg = true

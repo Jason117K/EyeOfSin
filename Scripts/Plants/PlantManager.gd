@@ -95,7 +95,7 @@ func _input(event):
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<288 && grid_pos.y > 31):
-					print("INCORRECT Place Plant " , grid_pos)
+					print("Otro Place Plant " , grid_pos)
 					place_plant(grid_pos)
 
 # Convert mouse position to a grid cell position
@@ -104,9 +104,11 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 
 # Clear a space for a new plant to go 
 func clear_space(passed_grid_pos):
+	print("Erase Plant??? ", passed_grid_pos)
 	var new_passed_grid_pos = mouse_pos_to_grid(passed_grid_pos)
 	new_passed_grid_pos = Vector2(new_passed_grid_pos.x,new_passed_grid_pos.y+64)
-	grid_map.erase(new_passed_grid_pos)
+	print("Erase PLANT ", new_passed_grid_pos)
+	grid_map.erase(passed_grid_pos)
 	
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):

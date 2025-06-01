@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="13_64rgw"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="14_ba5l5"]
 [ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="15_u2s6g"]
-[ext_resource type="PackedScene" path="res://Scenes/Environment/Shrub.tscn" id="16_4g3jh"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="16_4g3jh"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_cf74m"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_kk6e7"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_wwxxi"]

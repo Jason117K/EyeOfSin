@@ -343,7 +343,7 @@ bloodWorth = 2.0
 speed = 42
 
 [node name="AttackComponent" parent="." instance=ExtResource("3")]
-attack_power = 100
+attack_power = 800
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5)

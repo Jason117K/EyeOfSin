@@ -781,6 +781,7 @@ animations = [{
 
 [node name="EggWorm" type="Area2D" groups=["Plants"]]
 script = ExtResource("4")
+cost = 125
 bob_speed = 1.7
 bob_height = 3.0
 squash_amount = 0.2

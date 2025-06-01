@@ -23,7 +23,7 @@ extends Node2D
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
 @onready var attack_ray = $"../../DMG_RayCast2D"
-var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
+var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  # Load the projectile scene
 
 # State variables 
 var current_length := 0.0

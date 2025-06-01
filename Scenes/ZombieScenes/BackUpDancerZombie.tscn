@@ -1,123 +1,157 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=27 format=3 uid="uid://cgcaw5piiqcxr"]
 
-[ext_resource path="res://Assets/Zombies/BackUpDancerFloat-Sheet.png" type="Texture2D" id=1]
-[ext_resource path="res://Scenes/ZombieScenes/AttackComponent.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/ZombieScenes/SpeedComponent.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Audio/zombie-bite-96528.mp3" type="AudioStream" id=4]
-[ext_resource path="res://Scripts/Zombies/BackUpDancerZombie.gd" type="Script" id=5]
-[ext_resource path="res://Assets/Audio/ZombieHit.mp3" type="AudioStream" id=6]
-[ext_resource path="res://Scenes/ZombieScenes/HealthComponent.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Zombies/BackUpDancerFloat-SheetWEB.png" type="Texture2D" id=8]
-[ext_resource path="res://Scenes/ZombieScenes/ComponentManager.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/Zombies/ZombieSpriteComponent.gd" type="Script" id=10]
-[ext_resource path="res://Assets/Shaders/basicZombieHitShader.tres" type="Shader" id=11]
+[ext_resource type="Texture2D" uid="uid://b2fg3smedqosy" path="res://Assets/Zombies/BackUpDancerFloat-Sheet.png" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="3"]
+[ext_resource type="AudioStream" uid="uid://chan24ixi06ro" path="res://Assets/Audio/zombie-bite-96528.mp3" id="4"]
+[ext_resource type="Script" uid="uid://cnr47vvtfeg2g" path="res://Scripts/Zombies/BackUpDancerZombie.gd" id="5"]
+[ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="6"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://l6dgn4pcxpf6" path="res://Assets/Zombies/BackUpDancerFloat-SheetWEB.png" id="8"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="9"]
+[ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="11"]
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 7.5, 22.5 )
+[sub_resource type="RectangleShape2D" id="8"]
+size = Vector2(15, 45)
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = ExtResource( 11 )
-shader_param/target_color = null
-shader_param/replace_color = null
-shader_param/tolerance = null
+[sub_resource type="ShaderMaterial" id="15"]
+shader = ExtResource("11")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 160, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("1")
+region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("8")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 8 )
-region = Rect2( 32, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("8")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 8 )
-region = Rect2( 64, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("8")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 8 )
-region = Rect2( 96, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("8")
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 8 )
-region = Rect2( 128, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("8")
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 8 )
-region = Rect2( 160, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("8")
+region = Rect2(160, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+[sub_resource type="SpriteFrames" id="7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}],
 "loop": true,
-"name": "Walk",
+"name": &"Walk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}],
 "loop": true,
-"name": "WebWalk",
+"name": &"WebWalk",
 "speed": 5.0
-} ]
+}]
 
 [node name="BackUpDancerZombie" type="Area2D" groups=["Zombie"]]
 z_index = 2
 collision_layer = 2
-script = ExtResource( 5 )
+script = ExtResource("5")
 
-[node name="ComponentManager" parent="." instance=ExtResource( 9 )]
+[node name="ComponentManager" parent="." instance=ExtResource("9")]
 
-[node name="HealthComponent" parent="." instance=ExtResource( 7 )]
+[node name="HealthComponent" parent="." instance=ExtResource("7")]
 health = 10
-healthRegen = 0.1
 
-[node name="SpeedComponent" parent="." instance=ExtResource( 3 )]
+[node name="SpeedComponent" parent="." instance=ExtResource("3")]
 speed = 25
 
-[node name="AttackComponent" parent="." instance=ExtResource( 2 )]
+[node name="AttackComponent" parent="." instance=ExtResource("2")]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-position = Vector2( 3, 9.5 )
-shape = SubResource( 8 )
+position = Vector2(3, 9.5)
+shape = SubResource("8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource( 15 )
-frames = SubResource( 7 )
-animation = "WebWalk"
+material = SubResource("15")
+sprite_frames = SubResource("7")
+animation = &"WebWalk"
 frame = 3
-playing = true
-script = ExtResource( 10 )
+script = ExtResource("10")
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
