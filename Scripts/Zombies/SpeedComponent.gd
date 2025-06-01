@@ -36,11 +36,12 @@ func _process(delta):
 #Applies slow debuff to zombie
 func slow():
 	if speed >= originalSpeed:
-		speed = speed / 2
+		#speed = speed / 2
+		speed = speed * 0.75
 		var endSpeedDebuff = Timer.new()
 		# Configure the timer
 		endSpeedDebuff.one_shot = true  # Timer will run only once
-		endSpeedDebuff.wait_time = 5.0  # Set timer for 5 seconds
+		endSpeedDebuff.wait_time = 4.0  # Set timer for 5 seconds
 	
 		# Add timer as a child of the current node
 		add_child(endSpeedDebuff)

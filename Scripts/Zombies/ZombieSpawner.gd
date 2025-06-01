@@ -44,6 +44,15 @@ var random_adjustment2 = randf_range(-0.6, 0.6)
 #Adjustble delay between waves 
 @export var waveDelay = 0.5
 
+# Alternative: Manual weight ranges
+@export_group("Weight Ranges")
+@export var large_gap_min: float = 0.4
+@export var large_gap_max: float = 0.9
+@export var large_gap_weight: float = 80.0  # Percentage chance for large gap
+
+@export var small_gap_min: float = 0.1
+@export var small_gap_max: float = 0.39
+@export var small_gap_weight: float = 20.0  # Percentage chance for small gap 
 
 # Populates the apprioate arrays with current zombie counts by type 
 func _ready():
@@ -95,8 +104,8 @@ func spawn_zombie():
 				zombie_instance.position = self.position #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#$WaveDelay.start()
-				random_adjustment2 = randf_range(-0.9, 0.9)
-				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
+				random_adjustment2 = get_weighted_range_speed()
+				$WaveInterval.wait_time = 10 #random_adjustment2
 				$WaveInterval.start()
 				
 
@@ -108,8 +117,8 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-30,0)  #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				print("Spawn wave 2")
-				random_adjustment2 = randf_range(-0.9, 0.9)
-				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
+				random_adjustment2 = get_weighted_range_speed()
+				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()
 		
 
@@ -121,8 +130,8 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#print("Spawn wave 3")
-				random_adjustment2 = randf_range(-0.9, 0.9)
-				$WaveInterval.wait_time = $WaveInterval.wait_time + random_adjustment2
+				random_adjustment2 = get_weighted_range_speed()
+				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()
 				$WaveInterval.start()
 			else:
@@ -204,3 +213,16 @@ func generate_unique_name(base_name: String) -> String:
 			candidate = num + 1
 	#print("Will Return PP ", base_name + str(candidate))
 	return base_name + str(candidate)
+
+
+#Weighted ranges - explicitly define speed ranges with weights
+func get_weighted_range_speed() -> float:
+	var total_weight = large_gap_weight + small_gap_weight
+	var random_weight = randf() * total_weight
+	
+	if random_weight <= large_gap_weight:
+		# Pick from large gap weight range
+		return randf_range(large_gap_min, large_gap_max)
+	else:
+		# Pick from small gap weight range 
+		return randf_range(small_gap_min, small_gap_max)

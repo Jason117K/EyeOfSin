@@ -351,6 +351,7 @@ health = 120
 bloodWorth = 2.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("8")]
+speed = 32
 
 [node name="AttackComponent" parent="." instance=ExtResource("9")]
 

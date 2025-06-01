@@ -758,10 +758,16 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 0
 
+[node name="TileArea2" parent="BuffNodesComponent" index="2"]
+visible = false
+
 [node name="BloodTile2" parent="BuffNodesComponent" index="3"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
+
+[node name="TileArea3" parent="BuffNodesComponent" index="4"]
+visible = false
 
 [node name="BloodTile3" parent="BuffNodesComponent" index="5"]
 visible = false
@@ -773,20 +779,32 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
+[node name="TileArea5" parent="BuffNodesComponent" index="8"]
+visible = false
+
 [node name="BloodTile5" parent="BuffNodesComponent" index="9"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
+
+[node name="TileArea6" parent="BuffNodesComponent" index="10"]
+visible = false
 
 [node name="BloodTile6" parent="BuffNodesComponent" index="11"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
+[node name="TileArea7" parent="BuffNodesComponent" index="12"]
+visible = false
+
 [node name="BloodTile7" parent="BuffNodesComponent" index="13"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
+
+[node name="TileArea8" parent="BuffNodesComponent" index="14"]
+visible = false
 
 [node name="BloodTile8" parent="BuffNodesComponent" index="15"]
 visible = false

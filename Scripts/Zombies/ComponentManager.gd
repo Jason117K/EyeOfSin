@@ -4,9 +4,9 @@ extends Node2D
 #Component Manager Script for All Zombies 
 
 # Adjustable Stat Variables 
-@export var health = 17 #Zombie Health
-@export var speed = 29  #Zombie Movement Speed
-@export var attack_power = 33   #Damage zombie deals when attacking
+#@export var health = 17 #Zombie Health
+#@export var speed = 29  #Zombie Movement Speed
+#@export var attack_power = 33   #Damage zombie deals when attacking
 
 #State tracking variables 
 var is_attacking = false #Whether or not we attacking

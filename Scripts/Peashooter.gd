@@ -3,7 +3,7 @@ extends Area2D
 
 # Adjustbale health, cost, attack speed 
 @export var health = 100
-@export var attack_speed = 5 
+#@export var attack_speed = 5 
 @export var cost = 75
 
 var projectile_scene = preload("res://Scenes/PlantScenes/PeaProjectile.tscn")  # Load the projectile scene
@@ -50,6 +50,8 @@ func receiveBuff(bufferName):
 
 # Function to create and shoot a new projectile
 func shoot_projectile():
+	var runtime_seconds = Time.get_ticks_msec() / 1000.0
+	#print("Runtime: %.2f seconds" % runtime_seconds)
 	$AttackAudioPlayer.play()
 	var projectile = projectile_scene.instantiate()
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
@@ -83,4 +85,5 @@ func _on_AnimatedSprite_frame_changed():
 	if(animatedSpriteComponent.animation == "redSpiderAttack"):
 		#print(animatedSpriteComponent.frame)
 		if(animatedSpriteComponent.frame == 3):
+			
 			shoot_projectile()

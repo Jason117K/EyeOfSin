@@ -8,13 +8,15 @@ extends PanelContainer
 @onready var synergyVBox = $SynergyVBox
 @onready var synergyLabel = $SynergyVBox/CenterContainer/VBoxContainer/SynergyLabel
 @onready var complexSceneContainer = $SynergyVBox/CenterContainer/VBoxContainer
-
+@onready var greyBG = $VBoxContainer/CenterContainer/TextureRect2
 signal ToolTipHid
 
 #TODO Combine both set text functions
 
 func _ready() -> void:
 	#print("Anim Texture is , ",anim_texture.name )
+	anim_texture.visible = false
+	greyBG.visible = false
 	pass
 
 #Sets the current toolTip Text
@@ -56,6 +58,8 @@ func showButton():
 func setAnim(newAnim : SpriteFrames):
 	anim_texture.sprites =  newAnim
 	anim_texture.playing = true
+	anim_texture.visible = true
+	greyBG.visible = true
 
 #Shows the tooltip Without the Button 
 func noButtonShow():

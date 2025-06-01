@@ -9,7 +9,7 @@
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1")
-damage = 24
+damage = 25
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2")
