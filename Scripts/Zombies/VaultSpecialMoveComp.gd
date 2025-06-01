@@ -5,18 +5,21 @@ extends Node2D
 @onready var speedComp = $"../SpeedComponent"       # RefCounted to speed component 
 @onready var parent = get_parent()                  # RefCounted to parent 
  
-@onready var tween = Tween.new()  # Create new Tween node
-
+#@onready var tween = Tween.new()  # Create new Tween node
+var tween
 var move_duration = 3.3  # Duration of the vault movement in seconds
 var vault_distance = -150  # Distance to move left (negative for leftward movement)
 var moveDone = false
 
 func _ready():
 	# Add Tween as child of this node
-	add_child(tween)
+	tween = create_tween()
+	tween.stop()
+
 
 # Perform the pole vault 
 func executeMove():
+	print("PP Pole Vault Execute ")
 	
 	# Start the animation and make the speed dependent on the tween 
 	animatedSprite.animation = "Vault"
@@ -33,25 +36,32 @@ func executeMove():
 	var start_pos = parent.position
 	var end_pos = start_pos + Vector2(vault_distance, 0)
 	
-	tween.interpolate_property(
-		parent,
-		"position",
-		start_pos,
-		end_pos,
-		move_duration,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_IN_OUT
-	)
+	print("Tween is, " , tween)
+	print("Parent is: ", parent)
+	print("Parent has position? ", "position" in parent)
+	print("End pos is: ", end_pos, " (Type: ", typeof(end_pos), ")")
+	print("Move duration: ", move_duration)
+	var tweener = tween.tween_property(parent, "position", end_pos, move_duration)
+	if tweener:  # Check if tween was created successfully
+		tweener.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	else:
+		print("Tween failed! Check parent/end_pos.")	
+	#tween.tween_property(
+		#parent,
+		#"position",
+		#end_pos,
+		#move_duration).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	
 	# Start both timer and tween
 	vaultTimer.start()
-	tween.start()
+	#tween.start()
+	tween.play()
 
 # Stop the tween and delete the timer 
 func _on_vault_timer_timeout():
 	# Stop the tween if it's still running
-	if tween.is_active():
-		tween.stop_all()
+	if tween and tween.is_running():
+		tween.stop()
 	
 	# Clean up the timer
 	var timer = get_node("Timer")

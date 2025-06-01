@@ -14,4 +14,3 @@ func special_move():
 # Gets whether or not the special Move has finished executing 
 func getBusy():
 	return specialMoveComp.isMoveFinished()
-

@@ -36,6 +36,7 @@ func stopFightingDrone():
 	
 #Special Move handler for pole vaulter specifically 
 func special_move():
+	print("PP Comp Manager Special Move")
 	var specialMoveComp = $"../SpecialMoveComp"
 	#print("Pole Vault Special COMP Manager")
 	specialMoveComp.executeMove()

@@ -91,6 +91,7 @@ func spawn_zombie():
 
 				var zombie_type = wave1_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
+				zombie_instance.name = generate_unique_name(zombie_instance.name)
 				zombie_instance.position = self.position #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#$WaveDelay.start()
@@ -178,3 +179,28 @@ func _on_WaveDelay_timeout():
 
 func _on_wave_interval_timeout() -> void:
 	spawn_zombie()
+
+
+# Helper function to generate sequential names
+func generate_unique_name(base_name: String) -> String:
+	var used_numbers = []
+	# Collect all existing numbers from siblings
+	for child in get_parent().get_children():
+		#print("PPChild is ", child.name)
+		if child.name.begins_with(base_name):
+			var suffix = child.name.substr(base_name.length())
+			#print("PPSuffix Is ", suffix)
+			if suffix.is_valid_int():
+				used_numbers.append(suffix.to_int())
+					
+	used_numbers.sort()
+	#print("Used PP Numbers is ",used_numbers )
+	# Find first available number (fills gaps)
+	var candidate = 1
+	for num in used_numbers: 
+		if candidate < num:
+			break  # Gap found
+		if candidate == num:
+			candidate = num + 1
+	#print("Will Return PP ", base_name + str(candidate))
+	return base_name + str(candidate)

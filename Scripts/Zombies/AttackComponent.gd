@@ -13,6 +13,9 @@ var canSpecial = true # Determines whether or not a special move can be performe
 @onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
 @onready var parent = get_parent() # Parent Zombie Attacking 
 
+
+func _ready() -> void:
+	print("FFParent is ", parent.get_name())
 # Attack State Getter 
 func getAttackState():
 	return is_attacking
@@ -54,16 +57,18 @@ func _process(_delta):
 			if collider:
 				if collider.is_in_group("Plants"):
 				#	print(collider.name , " is in group plants")
-					if(parent.name == "PoleVaultZombie"):
-							if canSpecial:
-								#print("Pole Vault Special Mo")
-								parent.special_move()
-								canSpecial = false
+					if("PoleVaultZombie" in parent.name):
+						print(parent.name, " - canSpecialPP: ", canSpecial)
+						print("PP Parent Is Pole Vault")
+						if canSpecial:
+							print("PP Pole Vault Special Mo")
+							parent.special_move()
+							canSpecial = false
+							pass
+						else:
+							if parent.getBusy() == false:
 								pass
 							else:
-								if parent.getBusy() == false:
-									pass
-								else:
-									attack_plant(collider)
+								attack_plant(collider)
 					else:
 						attack_plant(collider)
