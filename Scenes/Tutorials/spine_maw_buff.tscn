@@ -1,0 +1,95 @@
+[gd_scene load_steps=15 format=3 uid="uid://c6k8odf58q55t"]
+
+[ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://Scripts/complexTutorialImage.gd" id="1_gaqbg"]
+[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://Assets/Plants/Spriteframes/Maw.tres" id="1_m3nwt"]
+[ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpine-Sheet.png" id="2_01wf6"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_gaqbg"]
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="2_t10a1"]
+[ext_resource type="Script" uid="uid://dyie6vmk336h2" path="res://Scripts/ChangeColor.gd" id="3_gaqbg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t10a1"]
+shader = ExtResource("2_gaqbg")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t10a1"]
+atlas = ExtResource("2_01wf6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b6w1"]
+atlas = ExtResource("2_01wf6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqa0d"]
+atlas = ExtResource("2_01wf6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1ext"]
+atlas = ExtResource("2_01wf6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vteub"]
+atlas = ExtResource("2_01wf6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s167d"]
+atlas = ExtResource("2_01wf6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4cddc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t10a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b6w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqa0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1ext")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vteub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s167d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="spine_maw_buff" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gaqbg")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+offset_right = 108.0
+offset_bottom = 49.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_t10a1")
+expand_mode = 1
+
+[node name="Maw" type="AnimatedSprite2D" parent="."]
+position = Vector2(64, 64)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_m3nwt")
+
+[node name="OccularSpine" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_t10a1")
+position = Vector2(160, 40)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4cddc")
+script = ExtResource("3_gaqbg")
+target_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+replace_color = Color(0.884314, 3.20069e-06, 1.15514e-06, 1)

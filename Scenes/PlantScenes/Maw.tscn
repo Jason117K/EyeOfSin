@@ -1001,6 +1001,7 @@ autoplay = "spawn"
 frame = 9
 
 [node name="DetectionComponent" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
 shape = SubResource("8")

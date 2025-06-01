@@ -20,4 +20,4 @@ func _on_PeaProjectile_area_entered(area):
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
-		#queue_free()  # Remove the projectile # Replace with function body.
+		queue_free()  # Remove the projectile # Replace with function body.

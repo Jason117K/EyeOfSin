@@ -96,6 +96,7 @@ script = ExtResource("1_rbmga")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 self_modulate = Color(0.46, 0.46, 0.46, 1)
+layout_mode = 0
 offset_right = 207.0
 offset_bottom = 115.0
 texture = ExtResource("1_2pid0")

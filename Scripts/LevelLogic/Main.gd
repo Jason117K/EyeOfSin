@@ -21,6 +21,10 @@ var spyderAnim = preload("res://Assets/Zombies/Animations/Spriteframes/spyderFra
 var bucketHeadAnim = preload("res://Assets/Zombies/Animations/Spriteframes/BucketHead.tres")
 
 var showNextTutuorial : bool = false
+var sunflowerPlaced := false
+var spyderPlaced := false
+var walnutPlaced := false 
+
 var count : int = 1
 
 @onready var waveManager = $GameLayer/WaveManager
@@ -69,13 +73,17 @@ func _on_plant_selection_menu_clicked_eye() -> void:
 
 
 func _on_plant_manager_plant_placed() -> void:
-	toolTips.set_text(spyderTutorialText)
-	toolTips.setAnim(spyderAnim)
+	if !sunflowerPlaced:
+		toolTips.set_text(spyderTutorialText)
+		toolTips.setAnim(spyderAnim)
+		sunflowerPlaced = true 
 
 
 func _on_plant_manager_spyder_placed() -> void:
-	toolTips.set_text(basicOffenseDefenseText)
-	toolTips.showButton()
+	if !spyderPlaced:
+		toolTips.set_text(basicOffenseDefenseText)
+		toolTips.showButton()
+		spyderPlaced = true 
 
 
 func _on_wave_manager_wave_2_almost_start() -> void:
@@ -86,10 +94,11 @@ func _on_wave_manager_wave_2_almost_start() -> void:
 
 
 func _on_plant_manager_walnut_placed() -> void:
-	toolTips.hide()
-	print("Walnut Placed")
-	waveManager.startSecondWave()
-	pass # Replace with function body.
+	if !walnutPlaced:
+		toolTips.hide()
+		print("Walnut Placed")
+		waveManager.startSecondWave()
+		walnutPlaced = true
 
 
 func _on_wave_manager_wave_2_started() -> void:

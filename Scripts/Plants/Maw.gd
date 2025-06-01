@@ -54,7 +54,7 @@ func setup_tentacles():
 	tentacle1 = tentacle_scene.instantiate()
 	add_child(tentacle1)
 	tentacle1.z_index = z_index - 1
-	tentacle1.position += Vector2(0, -2)
+	#tentacle1.position += Vector2(0, -2)
 	tentacle1.set_colors(tentacle1_start_color, tentacle1_end_color)
 	tentacle1.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle1))
 	tentacles.append(tentacle1)
@@ -72,7 +72,7 @@ func setup_tentacles():
 	tentacle2.direction_bias = 0.0
 	tentacle2.wriggle_dampening = 0.9
 	tentacle2.secondary_frequency = 1.7
-	tentacle2.position += Vector2(5, 2)
+	#tentacle2.position += Vector2(5, 2)
 	tentacle2.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle2))
 	tentacles.append(tentacle2)
 	available_tentacles.append(tentacle2)
@@ -89,7 +89,7 @@ func setup_tentacles():
 	tentacle3.direction_bias = -0.9
 	tentacle3.wriggle_dampening = 0.7
 	tentacle3.secondary_frequency = 1.5
-	tentacle3.position += Vector2(-3, -2)
+	#tentacle3.position += Vector2(-3, -2)
 	tentacle3.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle3))
 	tentacles.append(tentacle3)
 	available_tentacles.append(tentacle3)
@@ -99,6 +99,7 @@ func _process(_delta):
 	var overlapping_areas = detection_area.get_overlapping_areas()
 	for area in overlapping_areas:
 		if area.is_in_group("Zombie"):
+			#print("Assigning Tentacle")
 			assign_tentacle_to_target(area)
 
 #Assign a target to a tentacle 

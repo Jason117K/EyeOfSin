@@ -7,14 +7,14 @@ extends Control
 var mawText =  "res://Assets/Text/TextFiles/MawTutorial.txt"
 var mawSpyderText =  "res://Assets/Text/TextFiles/SpiderMawBuff.txt"
 var mawEggText = "res://Assets/Text/TextFiles/EggMawBuff.txt"
-var spineMawText =  
-var waspMawText = 
+var spineMawText =  "res://Assets/Text/TextFiles/SpineMawBuff.txt"
+var hiveMawText = "res://Assets/Text/TextFiles/HiveMawBuff.txt"
 
 var mawAnim  = preload("res://Assets/Plants/Spriteframes/Maw.tres")
 var mawSpyderScene = preload("res://Scenes/Tutorials/maw_spider_buff.tscn")
 var mawEggScene = preload("res://Scenes/Tutorials/maw_egg_buff.tscn")
-var spineMawScene =
-var waspMawScene  =
+var spineMawScene = preload("res://Scenes/Tutorials/spine_maw_buff.tscn")
+var hiveMawScene  = preload("res://Scenes/Tutorials/maw_hive_buff.tscn")
 
 var count := 0
 
@@ -39,8 +39,9 @@ func _ready():
 
 
 func _on_plant_manager_maw_placed() -> void:
-	toolTips.setComplexSceneText(mawEggText)
-	toolTips.setComplexScene(mawEggScene)
+	if count == 0:
+		toolTips.setComplexSceneText(mawEggText)
+		toolTips.setComplexScene(mawEggScene)
 
 
 
@@ -57,8 +58,12 @@ func _on_tool_tips_tool_tip_hid() -> void:
 			toolTips.setComplexSceneText(spineMawText)
 			toolTips.setComplexScene(spineMawScene)
 		3:
-			toolTips.setComplexSceneText(spineMawText)
-			toolTips.setComplexScene(waspMawScene)
+			toolTips.setComplexSceneText(hiveMawText)
+			toolTips.setComplexScene(hiveMawScene)
 		_:
-			toolTips.setComplexSceneText(mawSpyderText)
-			toolTips.setComplexScene(mawSpyderScene)
+			toolTips.hide()
+			waveManager.canStartGame = true
+
+
+func _on_wave_manager_wave_2_almost_start() -> void:
+	waveManager.startSecondWave()
