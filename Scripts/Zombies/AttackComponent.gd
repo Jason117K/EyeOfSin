@@ -24,12 +24,15 @@ func getAttackState():
 func attack_plant(collider):
 	is_attacking = true
 	target_plant = collider
-	#print("TName is ", target_plant.name)
-	
+	print("TName is ", target_plant.name)
+	print("I am " , self.name)
 	zombieSprite.play("Attack")
 	attack_audio_player.play()
 	
 	attack_timer.start()
+	#if "Ticker" in parent.get_name():
+		#print("Ticker Should Die ")
+		#parent.queue_free()
 
 # Damages the target plant and decides whether or not to keep attacking
 func _on_AttackTimer_timeout():
@@ -40,6 +43,8 @@ func _on_AttackTimer_timeout():
 			target_plant.take_damage(attack_power)
 		else:
 			stop_attack()
+		if "Ticker" in parent.get_name():
+			queue_free()
 	else:
 		stop_attack()
 

@@ -401,12 +401,14 @@ script = ExtResource("2")
 [node name="ComponentManager" parent="." instance=ExtResource("8")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("6")]
-health = 50
+health = 250
 bloodWorth = 5.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("7")]
+speed = 30
 
 [node name="AttackComponent" parent="." instance=ExtResource("5")]
+attack_power = 51
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
 shape = SubResource("1")

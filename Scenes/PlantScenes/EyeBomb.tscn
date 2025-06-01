@@ -244,7 +244,7 @@ animations = [{
 size = Vector2(78, 33)
 
 [sub_resource type="CircleShape2D" id="19"]
-radius = 53.0377
+radius = 68.0074
 
 [sub_resource type="AtlasTexture" id="20"]
 atlas = ExtResource("4")
@@ -452,7 +452,7 @@ animations = [{
 
 [node name="EyeBomb" type="Node2D" groups=["Plants"]]
 script = ExtResource("3")
-damage = 75
+damage = 77
 
 [node name="AnimSpriteComponent" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("17")

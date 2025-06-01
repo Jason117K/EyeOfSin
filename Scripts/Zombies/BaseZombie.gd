@@ -29,4 +29,5 @@ func special_move():
 
 #Kills the Zombie 
 func die():
+	print("Should die")
 	queue_free()

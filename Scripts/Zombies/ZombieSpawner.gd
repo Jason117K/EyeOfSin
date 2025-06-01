@@ -48,12 +48,12 @@ var random_adjustment2 = randf_range(-0.6, 0.6)
 
 # Alternative: Manual weight ranges
 @export_group("Weight Ranges")
-@export var large_gap_min: float = 0.4
-@export var large_gap_max: float = 0.9
+@export var large_gap_min: float = 0.8
+@export var large_gap_max: float = 1.9
 @export var large_gap_weight: float = 80.0  # Percentage chance for large gap
 
-@export var small_gap_min: float = 0.1
-@export var small_gap_max: float = 0.39
+@export var small_gap_min: float = 0.3
+@export var small_gap_max: float = 0.65
 @export var small_gap_weight: float = 20.0  # Percentage chance for small gap 
 
 var waveManager
@@ -112,7 +112,7 @@ func spawn_zombie():
 				#$WaveDelay.start()
 				print("Spawn Wave 1")
 				random_adjustment2 = get_weighted_range_speed()
-				$WaveInterval.wait_time = 10 #random_adjustment2
+				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()
 			else:
 				pass

@@ -14,12 +14,13 @@ var enemiesToHit = []  #Stores reference to valid enemy
 var enemiesToHitTemp   #Stores reference to enemy targets, both valid and invalid
 var startNum = 0       #Makes sure the eye only explodes once  
 
+var PlantManager   
 
 
-
-
-func ready():
+func _ready() -> void:
+	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	spriteComp.animation = "spawn"
+
 
 
 #Returns the plant cost 
@@ -73,6 +74,7 @@ func _on_SpriteComponent_animation_finished():
 					var compManager = enemy.getCompManager()
 					compManager.take_damage(damage)  
 			print("Loop Done Now Free")
+			PlantManager.clear_space(self.global_position)
 			queue_free()
 		
 # Add this helper function to scripts that deal with combat

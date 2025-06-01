@@ -320,7 +320,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("27")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -336,14 +336,14 @@ script = ExtResource("6")
 [node name="ComponentManager" parent="." instance=ExtResource("1")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("5")]
-health = 75
+health = 74
 bloodWorth = 2.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4")]
-speed = 34
+speed = 42
 
 [node name="AttackComponent" parent="." instance=ExtResource("3")]
-attack_power = 50
+attack_power = 100
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5)

@@ -281,10 +281,10 @@ health = 130
 bloodWorth = 2.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("8")]
-speed = 24
+speed = 25
 
 [node name="AttackComponent" parent="." instance=ExtResource("5")]
-attack_power = 24
+attack_power = 20
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.83333)

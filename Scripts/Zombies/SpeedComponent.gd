@@ -28,10 +28,11 @@ func getOriginalSpeed():
 
 #Handles moving the zombie unless it's attacking 
 func _process(delta):
-	is_attacking = attackComp.getAttackState()
-	if not is_attacking:
-		# Only move if not attacking 
-		zombie.position.x -= speed * delta  # Move left across the screen
+	if attackComp != null:
+		is_attacking = attackComp.getAttackState()
+		if not is_attacking:
+			# Only move if not attacking 
+			zombie.position.x -= speed * delta  # Move left across the screen
 
 #Applies slow debuff to zombie
 func slow():
