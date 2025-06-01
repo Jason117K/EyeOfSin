@@ -17,6 +17,7 @@ signal walnut_placed
 signal eyeBomb_placed
 signal eggWorm_placed
 signal wasp_placed
+signal maw_placed
 
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
@@ -135,7 +136,7 @@ func place_plant(grid_pos: Vector2):
 		return
 	
 	#Maw is larger, check neighboring cell
-	if plant_instance.name == "Maw":
+	if  "Maw" in plant_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			print("Maw is Big, Neighboring Cell Occupied")
 			return 
@@ -148,10 +149,10 @@ func place_plant(grid_pos: Vector2):
 		
 		print("Have enough sun, placing plant ")
 		#Maw Handling, occupies two cells
-		if plant_instance.name == "Maw":
+		if "Maw" in plant_instance.name:
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			grid_map[grid_pos] = plant_instance
-			grid_map[Vector2(grid_pos.x+16,grid_pos.y)] = plant_instance
+			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
 			
 		else: #Only occupies one cell
 			plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
@@ -183,9 +184,11 @@ func place_plant(grid_pos: Vector2):
 			eyeBomb_placed.emit()
 		elif "EggWorm" in plant_instance.name:
 			eggWorm_placed.emit()
-			
 		elif "Hive" in plant_instance.name:
 			wasp_placed.emit()
+		elif "Maw" in plant_instance.name:
+			maw_placed.emit()
+			
 		#print("Selected Plant Scene is : ", plant_instance)
 		
 		

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdtv7ynijb45b"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="1_5ykb5"]
+[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://Assets/Plants/Spriteframes/Maw.tres" id="1_vkb4b"]
+[ext_resource type="Script" uid="uid://c4riwmfe7pjam" path="res://Scripts/Plants/make_grey_red.gd" id="2_xn45f"]
+[ext_resource type="SpriteFrames" uid="uid://pmpro31oktqb" path="res://Assets/Plants/Spriteframes/Wasp.tres" id="3_5ykb5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1cnc"]
+shader = ExtResource("1_5ykb5")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
+
+[node name="maw_hive_buff" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_h1cnc")
+position = Vector2(64, 32)
+sprite_frames = ExtResource("1_vkb4b")
+script = ExtResource("2_xn45f")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 16)
+sprite_frames = ExtResource("3_5ykb5")

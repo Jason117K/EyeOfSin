@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://d2qwe0mrve0cc"]
+
+[ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="1_6j5ca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvtg5"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp3cv"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wkb2"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyce0"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pd36"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52ob4"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bagkt"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m571v"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlon6"]
+atlas = ExtResource("1_6j5ca")
+region = Rect2(512, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvtg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp3cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wkb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyce0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pd36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52ob4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bagkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m571v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlon6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

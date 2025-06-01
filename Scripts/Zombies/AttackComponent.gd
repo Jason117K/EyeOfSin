@@ -50,10 +50,10 @@ func _process(_delta):
 	if not is_attacking:
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
-			print(parent.name , " Its collding with ", collider.name )
+			#print(parent.name , " Its collding with ", collider.name )
 			if collider:
 				if collider.is_in_group("Plants"):
-					print(collider.name , " is in group plants")
+				#	print(collider.name , " is in group plants")
 					if(parent.name == "PoleVaultZombie"):
 							if canSpecial:
 								#print("Pole Vault Special Mo")

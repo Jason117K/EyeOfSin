@@ -68,20 +68,25 @@ func setImage(newImage):
 	pass
 
 func setComplexScene(newScene):
+	show()
 	mainVbox.visible = false
 	synergyVBox.visible = true 
 	
 	#Clean Up Any Previous Complex Scenes 
 	for node in complexSceneContainer.get_children():
+		print("NNNOde is ", node.name)
 		if node is Label:
 			pass
 		else:
+			print("Queue Free ", node.name)
 			node.queue_free()
 	#Add New Complex Scene to Container 
 	var this_new_scene = newScene.instantiate()
 	complexSceneContainer.add_child(this_new_scene)
 	complexSceneContainer.move_child(this_new_scene, 0)
-	
+	for node in complexSceneContainer.get_children():
+		print("Node is ", node.name)
+
 
 	
 #Hides the tooltip and unpauses the game when the player clicks the button

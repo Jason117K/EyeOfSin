@@ -25,8 +25,8 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="3"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="FontFile" id="6"]
 fallbacks = Array[Font]([ExtResource("9"), ExtResource("9")])
@@ -39,8 +39,8 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="1"]
-bg_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="FontFile" id="4"]
 fallbacks = Array[Font]([ExtResource("9"), ExtResource("9")])
@@ -86,20 +86,6 @@ theme_override_fonts/font = SubResource("5")
 text = "50
 "
 
-[node name="Walnut" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="WalnutButton" type="Button" parent="VBoxContainer/HBoxContainer/Walnut"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("3")
-icon = ExtResource("4")
-
-[node name="WalnutLabel" type="Label" parent="VBoxContainer/HBoxContainer/Walnut"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-theme_override_fonts/font = SubResource("6")
-text = "50"
-
 [node name="Peashooter" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
@@ -114,15 +100,15 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
 
-[node name="Maw" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Walnut" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="MawButton" type="Button" parent="VBoxContainer/HBoxContainer/Maw"]
+[node name="WalnutButton" type="Button" parent="VBoxContainer/HBoxContainer/Walnut"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("3")
-icon = ExtResource("7")
+icon = ExtResource("4")
 
-[node name="MawLabel" type="Label" parent="VBoxContainer/HBoxContainer/Maw"]
+[node name="WalnutLabel" type="Label" parent="VBoxContainer/HBoxContainer/Walnut"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
@@ -170,6 +156,20 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
 
+[node name="Maw" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MawButton" type="Button" parent="VBoxContainer/HBoxContainer/Maw"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("7")
+
+[node name="MawLabel" type="Label" parent="VBoxContainer/HBoxContainer/Maw"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = SubResource("6")
+text = "50"
+
 [node name="CurrentPlantLabel" type="Label" parent="."]
 layout_mode = 0
 offset_top = 125.0
@@ -184,7 +184,7 @@ horizontal_alignment = 1
 stream = ExtResource("5")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Eye/EyeButton" to="." method="_on_EyeButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]

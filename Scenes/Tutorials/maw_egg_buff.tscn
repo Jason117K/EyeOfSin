@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=3 uid="uid://o4nuq63sfr2v"]
+
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="1_2pid0"]
+[ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://Scripts/complexTutorialImage.gd" id="1_rbmga"]
+[ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://Assets/Plants/Animations/LaserEggWormsSmolMERGED-Sheet.png" id="1_xonq7"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_2pid0"]
+[ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="2_hwkg3"]
+[ext_resource type="Script" uid="uid://bm4fkfuhvjcka" path="res://Scripts/Plants/make_red.gd" id="3_2pid0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgn5o"]
+atlas = ExtResource("1_xonq7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgxph"]
+atlas = ExtResource("1_xonq7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbmga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgn5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgxph")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbmga"]
+shader = ExtResource("2_2pid0")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4bbm"]
+atlas = ExtResource("2_hwkg3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0epe"]
+atlas = ExtResource("2_hwkg3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vicp"]
+atlas = ExtResource("2_hwkg3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok0on"]
+atlas = ExtResource("2_hwkg3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndxju"]
+atlas = ExtResource("2_hwkg3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8njs"]
+atlas = ExtResource("2_hwkg3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5c8ch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4bbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0epe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vicp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok0on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndxju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8njs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="maw_egg_buff" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rbmga")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+offset_right = 207.0
+offset_bottom = 115.0
+texture = ExtResource("1_2pid0")
+
+[node name="EggWyrm" type="AnimatedSprite2D" parent="."]
+position = Vector2(42, 39)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rbmga")
+
+[node name="Maw" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rbmga")
+position = Vector2(140, 49)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5c8ch")
+autoplay = "default"
+script = ExtResource("3_2pid0")

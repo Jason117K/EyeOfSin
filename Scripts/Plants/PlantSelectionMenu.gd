@@ -153,7 +153,9 @@ func _ready():
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
 		MawButton.visible = false
-
+	else:
+		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 	add_child(preview_container)
 	preview_container.z_index = 100  # Ensure preview appears above other elements
 
