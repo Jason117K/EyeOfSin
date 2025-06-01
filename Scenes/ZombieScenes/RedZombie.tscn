@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Assets/Zombies/Ghoul Sprite2D Sheet 62 x 33.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="1"]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
