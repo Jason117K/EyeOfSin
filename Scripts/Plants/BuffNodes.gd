@@ -89,6 +89,7 @@ func _process(_delta):
 							if plantActor in plantToBuff.name:
 								#Handle Special EggWorm Buff Case, as both plants 'receive' a buff
 								if ( "WalnutTree" in plantToBuff.name) && ("EggWorm" in plant.name):
+									#print("ZZZ Special Buff Case")
 									plant.receiveBuff(plantToBuff)
 								#print("Plant to buff : ", plantToBuff.name , " will now receive buff from ", plant.name)
 								plantToBuff.receiveBuff(plant)

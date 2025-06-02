@@ -68,6 +68,7 @@ func _physics_process(_delta):
 			end_level()
 
 func end_level():
+	print("Attempting End Level")
 	assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
 
 	
@@ -205,6 +206,7 @@ func _on_Wave3_timeout():
 	#checkEndLevel = true
 
 func _done_spawning():
+	print("Done Spawing")
 	checkEndLevel = true
 
 #Code Taking Damage Here 
@@ -215,6 +217,7 @@ func _on_Area2D_area_entered(area):
 		
 func _on_spawn_next_wave():
 	print("Received spawn next wave signal!")
+	print("Proceed Game Wait Time is ",$ProceedGame.wait_time )
 	$ProceedGame.start()
 	for timer in timers:
 		if timer != null:

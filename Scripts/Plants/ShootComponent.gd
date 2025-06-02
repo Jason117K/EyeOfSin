@@ -36,7 +36,7 @@ var canAttack := false
 func _ready() -> void:
 	# Set up Line2D
 	add_child(line2D)
-	line2D.visible = false
+	#line2D.visible = false
 	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
 	line2D.default_color = laser_color
 	line2D.width = laser_width
@@ -82,10 +82,10 @@ func _process(delta: float) -> void:
 			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				canAttack = true 
-				line2D.visible = true
+				#line2D.visible = true
 			else:
 				canAttack = false
-				line2D.visible = false
+				#line2D.visible = false
 	if is_firing:
 		if current_length < max_length:
 			current_length += extension_speed * delta
@@ -123,7 +123,7 @@ func _process_collision(area: Area2D) -> void:
 		compManager.take_damage(damage)
 		
 func shoot_projectile():
-	
+	print("Shoot Projectile ZZ")
 	var projectile = projectile_scene.instantiate()
 	projectile.position = position + Vector2(32, 8)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer		
@@ -137,13 +137,13 @@ func fire() -> void:
 			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				if !is_firing:
-					
+					shoot_projectile()
 					is_firing = true
 					current_length = 0.0
 					hit_enemies.clear()  # Clear the hit enemies when firing a new laser
 					timer.wait_time = duration
 					timer.start()
-					shoot_projectile()
+					
 
 # Update the laser points specifically, also taking into account buffs
 func _update_laser() -> void:
@@ -151,6 +151,7 @@ func _update_laser() -> void:
 	points.append(Vector2.ZERO)  # Starting point
 		
 	if isBuffed:
+		
 		if current_length <= zigzag_position:
 			# Before zigzag point, just draw straight line
 			points.append(Vector2(current_length, 0))
@@ -218,8 +219,3 @@ func getIsBuffed():
 	
 	
 	
-
-
-#func _on_shoot_timer_timeout() -> void:
-	#if canAttack:
-		#shoot_projectile()

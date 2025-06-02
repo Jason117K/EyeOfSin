@@ -34,6 +34,12 @@ func _on_plant_manager_egg_worm_placed() -> void:
 		toolTips.set_text(bloodBuffTutorial2)
 		toolTips.noButtonShow()
 		eggWyrmPlaced = true
+		
+		
+		
+		
+		
+	
 	
 
 func _on_plant_manager_walnut_placed() -> void:
@@ -42,3 +48,7 @@ func _on_plant_manager_walnut_placed() -> void:
 		waveManager.canStartGame = true
 		toolTips.showButton()
 		walnutPlaced = true 
+
+
+func _on_wave_manager_wave_2_almost_start() -> void:
+	waveManager.startSecondWave()

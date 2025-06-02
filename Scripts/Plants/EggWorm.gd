@@ -60,11 +60,11 @@ func get_cost():
 #Handles Eggworm Buffing 
 func receiveBuff(plant):
 	#Increases Speed and Range From Peashooter Buff
-	if(plant.name == "Peashooter"):
+	if("Peashooter" in plant.name):
 		laserShootComp.extension_speed = 80000
 		laserShootComp.max_length = 40000
 	#Applies a different buff to the laser projectile 
-	elif(plant.name == "WalnutTree"):
+	elif("WalnutTree" in plant.name):
 		if (laserShootComp.isBuffed):
 			pass
 		else:

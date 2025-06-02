@@ -9,8 +9,10 @@
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_sfgus")
+speed = 650
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 0, 0, 1)
 texture = ExtResource("2")
 
@@ -25,7 +27,7 @@ offset_bottom = 40.0
 color = Color(0.231373, 0.847059, 0.0823529, 1)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.001
 one_shot = true
 autostart = true
 

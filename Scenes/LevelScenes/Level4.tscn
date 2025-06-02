@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="13_371o1"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="14_mk2l3"]
 [ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="15_tg2a8"]
-[ext_resource type="PackedScene" path="res://Scenes/Environment/Shrub.tscn" id="16_y7sef"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="16_y7sef"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_qq0hm"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_dmrma"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_pa053"]
@@ -74,33 +74,6 @@ z_index = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(747, 77)
-Round1_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 1,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
-}
-Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
-}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_u6v5d")]
 z_index = 1
@@ -108,33 +81,6 @@ position = Vector2(-37, 0)
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(747, 109)
-Round1_Zombies = {
-"Base": 2,
-"BucketHead": 1,
-"ConeHead": 0,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
-}
-Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
-}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_u6v5d")]
 z_index = 1
@@ -142,33 +88,6 @@ position = Vector2(-36, 1)
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(747, 143)
-Round1_Zombies = {
-"Base": 0,
-"BucketHead": 2,
-"ConeHead": 0,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 1,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
-}
-Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
-}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_u6v5d")]
 z_index = 1
@@ -176,33 +95,6 @@ position = Vector2(-38, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(751, 174)
-Round1_Zombies = {
-"Base": 2,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 0,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
-}
-Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
-}
 waveDelay = 1.2
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_u6v5d")]
@@ -211,33 +103,6 @@ position = Vector2(-41, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_oh3ue")]
 position = Vector2(754, 207)
-Round1_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 1,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
-}
-Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
-}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("4_u6v5d")]
 z_index = 1
@@ -441,4 +306,5 @@ grow_vertical = 2
 
 [connection signal="wasp_placed" from="PlantManager" to="." method="_on_plant_manager_wasp_placed"]
 [connection signal="wave1Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_1_started"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

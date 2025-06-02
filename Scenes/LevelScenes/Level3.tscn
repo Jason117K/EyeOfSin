@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="10"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="10_ldx1s"]
 [ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="11"]
-[ext_resource type="PackedScene" path="res://Scenes/Environment/Shrub.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="12"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="16"]
@@ -67,73 +67,79 @@ mouse_filter = 2
 script = ExtResource("6")
 
 [node name="PlantManager" parent="." instance=ExtResource("1")]
-sun_points = 650
+sun_points = 1000
 
 [node name="GameLayer" type="Node2D" parent="."]
 z_index = 1
 
-[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("4")]
-position = Vector2(747, 77)
+[node name="ZombieSpawner" parent="GameLayer" instance=ExtResource("4")]
+position = Vector2(746, 75)
 Round1_Zombies = {
-"Base": 1,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 1,
+"ConeHead": 4,
 "Dancer": 0,
+"Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 1,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
+"Base": 3,
+"BucketHead": 3,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
+"Base": 3,
+"BucketHead": 3,
+"ConeHead": 3,
+"Dancer": 2,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("9")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner" instance=ExtResource("9")]
 z_index = 1
-position = Vector2(-37, 0)
+position = Vector2(-36, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("4")]
 position = Vector2(747, 109)
 Round1_Zombies = {
-"Base": 1,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 1,
+"ConeHead": 4,
 "Dancer": 0,
+"Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
+"Base": 3,
+"BucketHead": 3,
+"ConeHead": 3,
 "Dancer": 0,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
+"Base": 8,
+"BucketHead": 2,
+"ConeHead": 3,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("9")]
@@ -143,31 +149,34 @@ position = Vector2(-36, 1)
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("4")]
 position = Vector2(747, 143)
 Round1_Zombies = {
-"Base": 1,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 1,
+"ConeHead": 4,
+"Dancer": 0,
+"Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
+"Base": 3,
+"BucketHead": 3,
+"ConeHead": 3,
 "Dancer": 0,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
+"Base": 8,
+"BucketHead": 2,
+"ConeHead": 3,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("9")]
@@ -177,31 +186,34 @@ position = Vector2(-38, 1)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("4")]
 position = Vector2(751, 174)
 Round1_Zombies = {
-"Base": 1,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 1,
+"ConeHead": 4,
 "Dancer": 0,
+"Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
+"Base": 3,
+"BucketHead": 3,
+"ConeHead": 3,
 "Dancer": 0,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
+"Base": 8,
+"BucketHead": 2,
+"ConeHead": 3,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 waveDelay = 1.2
 
@@ -212,31 +224,34 @@ position = Vector2(-41, -1)
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("4")]
 position = Vector2(754, 207)
 Round1_Zombies = {
-"Base": 1,
+"Base": 2,
 "BucketHead": 1,
-"ConeHead": 1,
+"ConeHead": 4,
 "Dancer": 0,
+"Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 2,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 1,
-"PoleVault": 2,
-"ScreenDoor": 2,
-"Ticker": 2
+"Base": 3,
+"BucketHead": 3,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 Round3_Zombies = {
-"Base": 1,
-"BucketHead": 1,
-"ConeHead": 1,
-"Dancer": 0,
-"PoleVault": 1,
-"ScreenDoor": 1,
-"Ticker": 1
+"Base": 8,
+"BucketHead": 2,
+"ConeHead": 3,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("9")]
@@ -251,11 +266,11 @@ z_index = 1
 position = Vector2(-59, 222)
 script = ExtResource("8")
 StartDelay = 8
-Wave2StartTime = 45
-Wave3StartTime = 75
-Wave1_Interval = 2.0
-Wave2_Interval = 4
-Wave3_Interval = 2.0
+Wave2StartTime = 30
+Wave3StartTime = 35
+Wave1_Interval = 3.0
+Wave2_Interval = 3
+Wave3_Interval = 3.0
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 741.0
@@ -426,6 +441,7 @@ sprite_frames = SubResource("6")
 flip_h = true
 
 [node name="ToolTips" parent="." instance=ExtResource("19_ldx1s")]
+z_index = 8
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -441,3 +457,4 @@ grow_vertical = 2
 
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]

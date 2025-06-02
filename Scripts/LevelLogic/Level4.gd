@@ -51,3 +51,7 @@ func _on_wave_manager_wave_1_started() -> void:
 
 func _on_tool_tips_tool_tip_hid() -> void:
 	waveManager.canStartGame = true
+
+
+func _on_wave_manager_wave_2_almost_start() -> void:
+	waveManager.startSecondWave()
