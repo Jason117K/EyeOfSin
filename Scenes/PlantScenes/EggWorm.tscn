@@ -819,7 +819,6 @@ position = Vector2(14, -9)
 extension_speed = 30000.0
 max_length = 20000.0
 laser_width = 10.0
-damage = 0.0
 duration = 1.0
 cooldown = 2.0
 zigzag_height = 160.0

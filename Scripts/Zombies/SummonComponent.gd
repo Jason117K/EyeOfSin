@@ -25,7 +25,7 @@ var is_attacking #Whether or not we are attacking
 
 #Summon the Floating Tentacle head backup dancers 
 func summon_backup():
-	#print("Summoning")
+	print("Summoning",dancerZombie.position.y)
 	# Get reference to GameLayer
 	var game_layer = get_parent().get_parent()
 	var root = get_tree().current_scene
@@ -45,7 +45,7 @@ func summon_backup():
 		points.erase(point2)
 		points.erase(point3)
 		
-	if(dancerZombie.position.y > 340):
+	if(dancerZombie.position.y > 203):
 		points.erase(point7)
 		points.erase(point8)
 		points.erase(point9)

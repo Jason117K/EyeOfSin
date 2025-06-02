@@ -114,7 +114,7 @@ func clear_space(passed_grid_pos):
 func place_plant(grid_pos: Vector2):
 	
 	print("About to Place Plant")
-	if(grid_pos.x<769 && grid_pos.y<288 && grid_pos.y > 31):
+	if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 31):
 		pass
 	else:
 		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")

@@ -31,12 +31,13 @@ var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
 @export var StartDelay = 10
 #Amount of Time it Takes a wave to spawn after previous done
 @export var Wave2StartTime = 20
-@export var Wave3StartTime = 30
+@export var Wave3StartTime = 20
+
 
 #Time In Between Spawns In a Wave? #Look at More
-@export var Wave1_Interval = 7.5
-@export var Wave2_Interval = 9
-@export var Wave3_Interval = 5.5
+@export var Wave1_Interval = 4
+@export var Wave2_Interval = 4
+@export var Wave3_Interval =4
 @export var canStartGame : bool = false 
 
 var checkEndLevel = false
@@ -69,7 +70,11 @@ func _physics_process(_delta):
 
 func end_level():
 	print("Attempting End Level")
-	assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
+	for child in get_parent().get_parent().get_children():
+		if "LevelSwitcher" in child.name:
+			child.visible = true
+	get_tree().paused = true
+	#assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
 
 	
 func _ready():

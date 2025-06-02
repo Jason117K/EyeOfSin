@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxup8ebd3egtk"]
+[gd_scene load_steps=28 format=3 uid="uid://cxup8ebd3egtk"]
 
 [ext_resource type="Script" uid="uid://de2h3je53wpv2" path="res://Scripts/LevelLogic/Level6.gd" id="1_jqh7t"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_vhku6"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_nbadm"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_qsy25"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_flk1w"]
+[ext_resource type="PackedScene" uid="uid://bcigxl3havu2h" path="res://Scenes/LevelScenes/Level1--2.tscn" id="20_kqvvy"]
+[ext_resource type="Script" uid="uid://bvg34lbsy76le" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="21_0yt1w"]
+[ext_resource type="PackedScene" uid="uid://c0i06w5c5gtby" path="res://Scenes/LevelScenes/Level2.tscn" id="22_abnns"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -354,6 +357,15 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="LevelSwitcher" parent="." instance=ExtResource("20_kqvvy")]
+process_mode = 3
+visible = false
+layout_mode = 1
+script = ExtResource("21_0yt1w")
+nextLevel = ExtResource("22_abnns")
+
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+
+[editable path="LevelSwitcher"]

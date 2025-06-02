@@ -8,7 +8,7 @@ extends Node2D
 @export var extension_speed: float = 1000.0  # Pixels per second
 @export var max_length: float = 1000.0
 @export var laser_width: float = 4.0  # Increased for visibility
-@export var damage: float = 1.0
+@export var damage: float = 0
 @export var duration: float = 0.5
 @export var auto_fire: bool = false
 @export var cooldown: float = 1.0
@@ -209,7 +209,8 @@ func buff(bufferLocation):
 	isBuffed = true
 	bufferLocation = to_local(bufferLocation)
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
-	damage = damage * 1.5
+	damage = damage * 2
+	cooldown = cooldown * 0.5
 
 # getter for buffed status
 func getIsBuffed():

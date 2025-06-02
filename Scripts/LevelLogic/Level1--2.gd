@@ -5,14 +5,15 @@ extends Control
 
 
 var Lvl2 = preload("res://Scenes/LevelScenes/Level2.tscn")  # Load the next scene
-
+ 
 
 #TODO Abstract Level1--2 & Level2--3 into one script 
 
 
 #Sets Level Interim Screen TileMap 
 func _ready():
-	$GridManager.set_tiles_for_rows(1,6, 5)
+	#$GridManager.set_tiles_for_rows(1,6, 5)
+	pass
 
 #Moves onto next level 
 func _on_Continue_pressed():

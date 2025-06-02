@@ -452,7 +452,8 @@ animations = [{
 
 [node name="EyeBomb" type="Node2D" groups=["Plants"]]
 script = ExtResource("3")
-damage = 77
+cost = 30
+damage = 99
 
 [node name="AnimSpriteComponent" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("17")

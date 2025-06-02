@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=25 format=3 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
 [ext_resource type="Script" uid="uid://dlmmfpqcb527g" path="res://Scripts/Environment/ShrubAnimator.gd" id="15_dph8t"]
+[ext_resource type="PackedScene" uid="uid://bcigxl3havu2h" path="res://Scenes/LevelScenes/Level1--2.tscn" id="17_1qjpa"]
+[ext_resource type="Script" uid="uid://bvg34lbsy76le" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="18_eomv4"]
+[ext_resource type="PackedScene" uid="uid://c0i06w5c5gtby" path="res://Scenes/LevelScenes/Level2.tscn" id="19_ep3m3"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -187,9 +190,7 @@ script = ExtResource("9")
 StartDelay = 9
 Wave2StartTime = 30
 Wave3StartTime = 40
-Wave1_Interval = 1.0
 Wave2_Interval = 10
-Wave3_Interval = 20.0
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 739.0
@@ -421,6 +422,13 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="LevelSwitcher" parent="." instance=ExtResource("17_1qjpa")]
+process_mode = 3
+visible = false
+layout_mode = 1
+script = ExtResource("18_eomv4")
+nextLevel = ExtResource("19_ep3m3")
+
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="plant_placed" from="PlantManager" to="PlantSelectionMenu" method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
@@ -432,3 +440,5 @@ grow_vertical = 2
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+
+[editable path="LevelSwitcher"]

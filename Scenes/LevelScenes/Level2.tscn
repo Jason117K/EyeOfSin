@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0i06w5c5gtby"]
+[gd_scene load_steps=26 format=3 uid="uid://c0i06w5c5gtby"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="16"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="17_y08as"]
+[ext_resource type="PackedScene" uid="uid://bcigxl3havu2h" path="res://Scenes/LevelScenes/Level1--2.tscn" id="18_bpdoe"]
+[ext_resource type="Script" uid="uid://bvg34lbsy76le" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="19_f18wi"]
+[ext_resource type="PackedScene" uid="uid://lbnwijjflsge" path="res://Scenes/LevelScenes/Level3.tscn" id="20_f18wi"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -223,7 +226,7 @@ Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
 "ConeHead": 0,
-"Dancer": 0,
+"Dancer": 1,
 "Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -259,9 +262,7 @@ position = Vector2(-42, 2)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("2")]
 position = Vector2(-64, 192)
 script = ExtResource("9")
-StartDelay = 6
-Wave1_Interval = 1.0
-Wave3_Interval = 89.0
+StartDelay = 13
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 739.0
@@ -428,6 +429,13 @@ offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="LevelSwitcher" parent="." instance=ExtResource("18_bpdoe")]
+process_mode = 3
+visible = false
+layout_mode = 1
+script = ExtResource("19_f18wi")
+nextLevel = ExtResource("20_f18wi")
+
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]
 [connection signal="wave1Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_1_started"]
@@ -435,3 +443,5 @@ grow_vertical = 2
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+
+[editable path="LevelSwitcher"]

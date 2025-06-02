@@ -336,14 +336,14 @@ script = ExtResource("6")
 [node name="ComponentManager" parent="." instance=ExtResource("1")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("5")]
-health = 74
-bloodWorth = 2.0
+health = 177
+bloodWorth = 3.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4")]
-speed = 42
+speed = 58
 
 [node name="AttackComponent" parent="." instance=ExtResource("3")]
-attack_power = 800
+attack_power = 700
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://copylsosasdux"]
+[gd_scene load_steps=28 format=3 uid="uid://copylsosasdux"]
 
 [ext_resource type="Script" uid="uid://b0awa3lvoo8rt" path="res://Scripts/LevelLogic/Level5.gd" id="1_y1pfi"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_istt8"]
@@ -15,10 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="13_38u66"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="14_eai0y"]
 [ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="15_t0l2q"]
-[ext_resource type="PackedScene" path="res://Scenes/Environment/Shrub.tscn" id="16_cabgr"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="16_cabgr"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_5ydb2"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_bvdl2"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_80lnd"]
+[ext_resource type="PackedScene" uid="uid://bcigxl3havu2h" path="res://Scenes/LevelScenes/Level1--2.tscn" id="20_jm0qw"]
+[ext_resource type="Script" uid="uid://bvg34lbsy76le" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="21_dn4aj"]
+[ext_resource type="PackedScene" uid="uid://c0i06w5c5gtby" path="res://Scenes/LevelScenes/Level2.tscn" id="22_b1djl"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -358,6 +361,15 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="LevelSwitcher" parent="." instance=ExtResource("20_jm0qw")]
+process_mode = 3
+visible = false
+layout_mode = 1
+script = ExtResource("21_dn4aj")
+nextLevel = ExtResource("22_b1djl")
+
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+
+[editable path="LevelSwitcher"]

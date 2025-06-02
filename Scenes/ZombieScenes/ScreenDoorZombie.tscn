@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d4b0cn82fjmj8" path="res://Assets/Zombies/Animations/DocOc/DocOcWalkINJURED-Sheet.png" id="16"]
 
 [sub_resource type="RectangleShape2D" id="17"]
-size = Vector2(19, 28.5)
+size = Vector2(11, 24.625)
 
 [sub_resource type="ShaderMaterial" id="27"]
 shader = ExtResource("11")
@@ -696,21 +696,28 @@ script = ExtResource("1")
 
 [node name="HealthComponent" parent="." instance=ExtResource("7")]
 health = 100
+bloodWorth = 10.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("3")]
 
 [node name="AttackComponent" parent="." instance=ExtResource("5")]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, 3.25)
+position = Vector2(-10, 3.375)
+shape = SubResource("17")
+
+[node name="HurtBoxComponent2" type="CollisionShape2D" parent="."]
+position = Vector2(3, 5)
 shape = SubResource("17")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("27")
 sprite_frames = SubResource("16")
 animation = &"Attack"
-frame = 3
+frame = 5
+frame_progress = 0.662926
 script = ExtResource("10")
+metadata/_edit_lock_ = true
 
 [node name="TransformedSpriteComp" type="AnimatedSprite2D" parent="."]
 visible = false
