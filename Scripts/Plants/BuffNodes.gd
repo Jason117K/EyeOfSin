@@ -71,6 +71,8 @@ func _process(_delta):
 			#If we have a valid blood tile 
 			if blood_tile:
 				
+				var bloodTileVisible = false 
+				
 				# Check for plants in the overlapped areas
 				for plantToBuff in overlapping_areas:
 					#print("Plant buff is : ", plantToBuff)
@@ -79,7 +81,7 @@ func _process(_delta):
 					# If the plantToBuff is a valid plant & not a drone
 					if(         plantToBuff.is_in_group("Plants") &&    !("Drone" in plantToBuff.name)    ):
 						#print("Plant to Buff is ", plantToBuff.name)
-						
+						bloodTileVisible = true 
 						#Check our list of valid plants to buff
 						for plantActor in giveBuffTo:
 
@@ -95,3 +97,4 @@ func _process(_delta):
 								plantToBuff.receiveBuff(plant)
 								blood_tile.visible = true
 								break
+				blood_tile.visible = bloodTileVisible
