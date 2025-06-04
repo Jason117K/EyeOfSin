@@ -167,6 +167,7 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_X:
 			clear_preview()
+			selected_plant = null 
 			
 
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 

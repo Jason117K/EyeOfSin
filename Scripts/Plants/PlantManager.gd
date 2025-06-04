@@ -28,6 +28,9 @@ func get_selected_plant():
 func _input(event):
 	# Dynamically get the selected plant	
 	selected_plant_scene = get_selected_plant()  
+	if selected_plant_scene == null:
+		#print("Plant Scene is Null")
+		pass
 	
 	if event is InputEventMouseButton and event.pressed:
 		# If they left click, grab the positon and place a plant there 
@@ -36,7 +39,7 @@ func _input(event):
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
 
-			if selected_plant_scene:
+			if selected_plant_scene != null:
 				var temp_instance = selected_plant_scene.instantiate()
 				
 				var cost = temp_instance.get_cost()
@@ -58,7 +61,10 @@ func _input(event):
 					selection_menu.clear_preview()
 					print("Sun Points is : ", sun_points, "which is less than ", cost)
 					return
-			
+			else: #Plant Scene Null
+				print("Clicked and Plant Scene Null NN")
+				clear_space(grid_pos)
+				return 
 			# Place the plant assuming it's within bounds of the level
 			if(parentName == "Main"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
@@ -104,11 +110,16 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 
 # Clear a space for a new plant to go 
 func clear_space(passed_grid_pos):
-	print("Erase Plant??? ", passed_grid_pos)
-	var new_passed_grid_pos = mouse_pos_to_grid(passed_grid_pos)
-	new_passed_grid_pos = Vector2(new_passed_grid_pos.x,new_passed_grid_pos.y+64)
-	print("Erase PLANT ", new_passed_grid_pos)
+	print("Erase Plant At :", passed_grid_pos)
+	var plant_node = grid_map.get(passed_grid_pos)
+	print("Plant to Erase Is  ", plant_node)
+	#plantToErase.die()
+	if plant_node != null:
+		plant_node.queue_free()
 	grid_map.erase(passed_grid_pos)
+	
+
+
 	
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
