@@ -417,8 +417,9 @@ shape = SubResource("1")
 material = SubResource("44")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
-animation = &"WebAttack"
-frame = 5
+animation = &"Walk"
+frame = 6
+frame_progress = 0.819719
 flip_h = true
 script = ExtResource("10")
 

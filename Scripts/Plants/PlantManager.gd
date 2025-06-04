@@ -94,7 +94,7 @@ func _input(event):
 					place_plant(grid_pos)
 				
 			else:
-				if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 31):
+				if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 49):
 					print("Otro Place Plant " , grid_pos)
 					place_plant(grid_pos)
 

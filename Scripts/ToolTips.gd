@@ -9,14 +9,17 @@ extends PanelContainer
 @onready var synergyLabel = $SynergyVBox/CenterContainer/VBoxContainer/SynergyLabel
 @onready var complexSceneContainer = $SynergyVBox/CenterContainer/VBoxContainer
 @onready var greyBG = $VBoxContainer/CenterContainer/TextureRect2
+@onready var border = $VBoxContainer/CenterContainer/TextureRect3
 signal ToolTipHid
 
 #TODO Combine both set text functions
 
 func _ready() -> void:
+	#TODO Change Back
 	#print("Anim Texture is , ",anim_texture.name )
 	anim_texture.visible = false
 	greyBG.visible = false
+	border.visible = false 
 	pass
 
 #Sets the current toolTip Text
