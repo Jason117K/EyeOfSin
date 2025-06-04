@@ -12,7 +12,7 @@ var waspAnim = preload("res://Assets/Plants/Spriteframes/Wasp.tres")
 var screenDoorZombieAnim = preload("res://Assets/Zombies/Animations/Spriteframes/ScreenDoorZombie.tres")
 
 var hive_egg_buff_scene = preload("res://Scenes/Tutorials/hive_egg_buff.tscn")
-
+var hivePlaced := false
 
 # Sets Up the Tiles For Level 4 
 func _ready():
@@ -36,9 +36,10 @@ func _ready():
 
 func _on_plant_manager_wasp_placed() -> void:
 
-	
-	toolTips.setComplexSceneText(waspEggBuffText)
-	toolTips.setComplexScene(hive_egg_buff_scene)
+	if !hivePlaced:
+		toolTips.setComplexSceneText(waspEggBuffText)
+		toolTips.setComplexScene(hive_egg_buff_scene)
+		hivePlaced = true 
 	#toolTips.hide()
 	#waveManager.canStartGame = true
 

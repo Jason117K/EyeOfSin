@@ -363,7 +363,7 @@ animations = [{
 
 [node name="WalnutTree" type="Area2D" groups=["Plants"]]
 script = ExtResource("2")
-health = 1100
+health = 700
 cost = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

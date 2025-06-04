@@ -27,7 +27,7 @@ var tentacle1
 var tentacle2
 var tentacle3
 var currentTentacle
-var charges = 3.0             # Essentially Maw ammo 
+var charges = 4.0             # Essentially Maw ammo 
 var willBelchWebs = false     # Whether or not we have a peashooter buff 
 var available_tentacles = []  # Track which tentacles are available
 
@@ -134,8 +134,9 @@ func _on_tentacle_retraction_complete(tentacle):
 					add_child(web_ball)
 					web_ball.target_position = Vector2(100, 0)
 					web_ball.travel_time = 1.5
-					
-			enemy.queue_free()
+			var compManager = enemy.getCompManager()	
+			compManager.take_damage(9999)	
+			#enemy.queue_free()
 		attacking_tentacles.erase(tentacle)
 		tentacle.visible = false  # Hide tentacle after retraction
 

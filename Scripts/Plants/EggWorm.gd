@@ -69,6 +69,9 @@ func receiveBuff(plant):
 			pass
 		else:
 			laserShootComp.buff(plant.position)
+	else:
+		laserShootComp.sunBuff()
+		#print("Got buff from", plant.name)
 		
 # Handles Receiving Damage for the EggWorm 
 func take_damage(damage):

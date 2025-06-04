@@ -69,7 +69,11 @@ func _physics_process(_delta):
 
 func end_level():
 	print("Attempting End Level")
-	assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
+	#assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
+	for child in get_parent().get_parent().get_children():
+		if "LevelSwitcher" in child.name:
+			child.visible = true
+	get_tree().paused = true
 
 	
 func _ready():

@@ -1007,7 +1007,7 @@ collision_mask = 2
 shape = SubResource("8")
 
 [node name="DigestionTimer" type="Timer" parent="."]
-wait_time = 11.0
+wait_time = 9.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

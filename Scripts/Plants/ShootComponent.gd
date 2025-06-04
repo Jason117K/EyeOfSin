@@ -8,7 +8,7 @@ extends Node2D
 @export var extension_speed: float = 1000.0  # Pixels per second
 @export var max_length: float = 1000.0
 @export var laser_width: float = 4.0  # Increased for visibility
-@export var damage: float = 1.0
+@export var damage: float = 20
 @export var duration: float = 0.5
 @export var auto_fire: bool = false
 @export var cooldown: float = 1.0
@@ -120,13 +120,15 @@ func _process_collision(area: Area2D) -> void:
 		print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
 		var compManager = area.getCompManager()
-		compManager.take_damage(damage)
+		
 		
 func shoot_projectile():
 	print("Shoot Projectile ZZ")
 	var projectile = projectile_scene.instantiate()
+	projectile.set_damage(damage)
 	projectile.position = position + Vector2(32, 8)  # Adjust starting position
-	get_parent().add_child(projectile)  # Add the projectile to the game layer		
+	get_parent().add_child(projectile)  # Add the projectile to the game layer
+	
 	
 	
 # Fire a new laser 
@@ -182,7 +184,7 @@ func _update_collision_shape() -> void:
 	rect_shape.extents = Vector2(current_length / 2, laser_width ) #/2
 	collision_shape.position = Vector2(current_length / 2, 0) 
 
-# Checks for zombies to damage and damages them 
+
 
 
 # Stop firing the laser on a cooldown 
@@ -209,7 +211,11 @@ func buff(bufferLocation):
 	isBuffed = true
 	bufferLocation = to_local(bufferLocation)
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
-	damage = damage * 1.5
+	damage = damage * 2.0
+
+func sunBuff():
+	cooldown = cooldown * 0.5
+
 
 # getter for buffed status
 func getIsBuffed():

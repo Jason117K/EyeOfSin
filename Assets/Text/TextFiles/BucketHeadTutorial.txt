@@ -1,5 +1,4 @@
-Zombies that were once great warriors in life, now granted a sword of hell 
-energy in death, enabling them to deal massive damage.
+Zombies that were once great warriors in life, now granted a sword of hell energy in death, enabling them to deal massive damage.
  
 - Slower than regular zombie
 - High health 

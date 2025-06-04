@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0i06w5c5gtby"]
+[gd_scene load_steps=25 format=3 uid="uid://c0i06w5c5gtby"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="16"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="17_y08as"]
+[ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="18_3o6er"]
+[ext_resource type="PackedScene" uid="uid://lbnwijjflsge" path="res://Scenes/LevelScenes/Level3.tscn" id="19_bpdoe"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -82,7 +84,7 @@ Round1_Zombies = {
 "Ticker": 1
 }
 Round2_Zombies = {
-"Base": 3,
+"Base": 2,
 "BucketHead": 1,
 "ConeHead": 1,
 "Dancer": 0,
@@ -427,6 +429,11 @@ offset_right = 152.0
 offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("18_3o6er")]
+visible = false
+layout_mode = 1
+nextLevel = ExtResource("19_bpdoe")
 
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]
