@@ -239,3 +239,6 @@ func get_weighted_range_speed() -> float:
 	else:
 		# Pick from small gap weight range 
 		return randf_range(small_gap_min, small_gap_max)
+
+func get_numWave():
+	return numWave
