@@ -8,6 +8,7 @@ var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being 
 
 var preview_sprites: Array = [] # Holds array of preview sprites 
 var is_previewing: bool = false # Whether or not we are currently previewing 
+var canRemove := false 
 
 signal clicked_Eye
 
@@ -435,3 +436,22 @@ func _on_wave_manager_wave_2_almost_start() -> void:
 		eggCostLabel.visible = true 
 		EggButton.visible = true 
 		
+
+
+func _on_remove_plant_button_pressed() -> void:
+		clear_preview()
+		selected_plant = null 
+		canRemove = true 
+		
+func setCanRemoveFalse():
+	canRemove = false 
+	
+func getCanRemove():
+	return canRemove
+	
+	
+	
+	
+	
+	
+	

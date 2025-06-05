@@ -63,7 +63,9 @@ func _input(event):
 					return
 			else: #Plant Scene Null
 				print("Clicked and Plant Scene Null NN")
-				clear_space(grid_pos)
+				if selection_menu.getCanRemove():
+					clear_space(grid_pos)
+					selection_menu.setCanRemoveFalse()
 				return 
 			# Place the plant assuming it's within bounds of the level
 			if(parentName == "Main"):

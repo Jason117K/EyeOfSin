@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=18 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ccvjkxxqny0cw" path="res://Assets/Plants/RedSpiderCARD.png" id="2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bwpctk28aaj8p" path="res://Assets/Plants/EyeBombCARD.png" id="8"]
 [ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="9"]
 [ext_resource type="Texture2D" uid="uid://dj7di6fpkrem" path="res://Assets/Plants/Hive-CARD.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://Assets/Plants/Circle.png" id="10_plp1j"]
 
 [sub_resource type="StyleBoxFlat" id="2"]
 bg_color = Color(0.0588235, 0.0392157, 0.0392157, 0)
@@ -170,6 +171,21 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
 
+[node name="Maw2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RemovePlantButton" type="Button" parent="VBoxContainer/HBoxContainer/Maw2"]
+clip_contents = true
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("10_plp1j")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Maw2"]
+layout_mode = 2
+text = "REMOVE"
+
 [node name="CurrentPlantLabel" type="Label" parent="."]
 layout_mode = 0
 offset_top = 125.0
@@ -188,3 +204,4 @@ stream = ExtResource("5")
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw2/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
