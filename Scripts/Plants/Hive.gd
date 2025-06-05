@@ -25,7 +25,8 @@ var drone_rest_positions = {}                      # Dictionary to store rest po
 @onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
 var isBuffed = false                               # Tracks Current Buff State Of Drone  
 var PlantManager                                   # RefCounted to PlantManager 
-
+@export var waitTime := 7.0
+@export var buffedWaitTime := 4.0
 
 @onready var animSpriteComp = $AnimatedSpriteComp
  
@@ -34,6 +35,7 @@ func _ready():
 	spawn_initial_drones()
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	animSpriteComp.animation = "spawn"
+	droneRespawnTimer.wait_time = waitTime
 	
 #Getter for plant cost 
 func get_cost():
@@ -41,15 +43,18 @@ func get_cost():
 	
 #Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
-	#Apply a double damage buff to every drone 
-	if("EggWorm" in bufferName.name && isBuffed == false):
-		for drone in available_drones:
-			drone.doubleDamage()
-		isBuffed = true 
-	#Make the drones explode if it's a peashooter buff 
-	if("Peashooter" in bufferName.name && isBuffed == false):
-		for drone in available_drones:
-			drone.makeExplode()
+	if !isBuffed:
+		#Apply a double damage buff to every drone 
+		if("EggWorm" in bufferName.name):
+			for drone in available_drones:
+				drone.doubleDamage()
+		#Make the drones explode if it's a peashooter buff 
+		if("Peashooter" in bufferName.name):
+			for drone in available_drones:
+				drone.makeExplode()
+		if("Sunflower" in bufferName.name):
+			droneRespawnTimer.wait_time = buffedWaitTime
+			
 		isBuffed = true 
 
 #Kill every drone if the Hive falls 

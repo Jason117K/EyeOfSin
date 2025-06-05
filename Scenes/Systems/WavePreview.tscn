@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dap0pqr1o8ibf" path="res://Assets/Icons/WaveSkullIcon2.png" id="1"]
 [ext_resource type="Script" uid="uid://javwqvkctiff" path="res://Scripts/LevelLogic/WavePreview.gd" id="2"]
-[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="3"]
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="3_6qtyv"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 32.0
@@ -36,20 +36,20 @@ offset_bottom = -52.0
 
 [node name="Panel" type="Panel" parent="Node2D/Control"]
 layout_mode = 0
-offset_left = -227.0
-offset_top = 25.0
-offset_right = -27.0
-offset_bottom = 80.0
+offset_left = -365.0
+offset_top = 26.0
+offset_right = -63.0
+offset_bottom = 165.0
 scale = Vector2(1, 1.96)
 
 [node name="EnemyPreviewText" type="RichTextLabel" parent="Node2D/Control"]
 layout_mode = 0
-offset_left = -223.0
+offset_left = -359.0
 offset_top = 30.0
-offset_right = -183.0
+offset_right = -134.0
 offset_bottom = 70.0
-theme_override_fonts/normal_font = ExtResource("3")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_fonts/normal_font = ExtResource("3_6qtyv")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0

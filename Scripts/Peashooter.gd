@@ -15,6 +15,8 @@ var canAttack = false   # Whether or not the peashooter can attack
 # Reference to the animatedSpriteComponent 
 @onready var animatedSpriteComponent = $AnimatedSprite2D
 
+var isBuffed := false 
+
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
 	animatedSpriteComponent.animation = "redSpiderDefault"
@@ -45,7 +47,9 @@ func get_cost():
 					
 # Doubles attack speed when receiving a buff 
 func receiveBuff(bufferName):
-	animatedSpriteComponent.speed_scale = 2
+	if not isBuffed:
+		animatedSpriteComponent.speed_scale = 2
+		isBuffed = true 
 
 
 # Function to create and shoot a new projectile

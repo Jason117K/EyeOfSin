@@ -10,7 +10,7 @@ var currentBucketZombies
 @onready var previewText = $Node2D/Control/EnemyPreviewText
 @onready var visibility = true
 var numWave 
-var currentZombieDict := []
+var currentZombieDict :Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +21,7 @@ func _on_Area2D_mouse_entered():
 	numWave = spawner.get_numWave()
 	match numWave:
 		1:
+
 			currentZombieDict = spawner.Round1_Zombies
 		2:
 			currentZombieDict = spawner.Round2_Zombies
@@ -29,13 +30,13 @@ func _on_Area2D_mouse_entered():
 			
 			
 	if $PreviewSprite.visible == true:
-		#print("SS: ", spawner.Round1_Zombies)
+		print("SS: ", spawner.Round1_Zombies)
 		for key in spawner.Round1_Zombies:
 			#var line = "[b]" + str(key) + "[/b]: " + str(spawner.Round1_Zombies[key]) + "\n"
 			if spawner.Round1_Zombies[key] == 0:
 				pass
 			else:
-				var line = "[b]" + str(key) + " : "+ str(spawner.Round1_Zombies[key]) + "\n"
+				var line =  str(key) + " : "+ str(spawner.Round1_Zombies[key]) + "\n"
 				previewText.append_text(line)
 				print("Line is ", line)
 

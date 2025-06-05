@@ -30,3 +30,15 @@ func _on_auto_pick_up_timer_timeout() -> void:
 		plant_manager.play_sun_collect()
 	# Queue the sun for deletion (simulate absorption)
 	queue_free()
+
+func setWorth(bloodWorth):
+	SunValue = bloodWorth
+	
+	
+	
+	
+	
+	
+	
+	
+	

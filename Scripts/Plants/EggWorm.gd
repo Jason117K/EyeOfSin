@@ -33,7 +33,7 @@ var velocity = 0.0
 var prev_y = 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  
-
+var isBuffed := false 
 
 var PlantManager
 
@@ -59,19 +59,21 @@ func get_cost():
 
 #Handles Eggworm Buffing 
 func receiveBuff(plant):
-	#Increases Speed and Range From Peashooter Buff
-	if("Peashooter" in plant.name):
-		laserShootComp.extension_speed = 80000
-		laserShootComp.max_length = 40000
-	#Applies a different buff to the laser projectile 
-	elif("WalnutTree" in plant.name):
-		if (laserShootComp.isBuffed):
-			pass
-		else:
-			laserShootComp.buff(plant.position)
-	else:
-		laserShootComp.sunBuff()
-		#print("Got buff from", plant.name)
+	if !isBuffed:
+		#Increases Speed and Range From Peashooter Buff
+		if("Peashooter" in plant.name):
+			laserShootComp.extension_speed = 80000
+			laserShootComp.max_length = 40000
+		#Applies a different buff to the laser projectile 
+		elif("WalnutTree" in plant.name):
+			if (laserShootComp.isBuffed):
+				pass
+			else:
+				laserShootComp.buff(plant.position)
+		elif("Sunflower" in plant.name):
+			laserShootComp.sunBuff()
+			#print("Got buff from", plant.name)
+		isBuffed = true 
 		
 # Handles Receiving Damage for the EggWorm 
 func take_damage(damage):

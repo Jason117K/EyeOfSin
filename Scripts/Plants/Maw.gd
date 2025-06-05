@@ -15,7 +15,7 @@ var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
 
 #Reference to tentacle scene 
 var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  
-
+@onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
 #Adjustable maw health & cost 
 @export var health = 100
 @export var cost = 200
@@ -30,6 +30,9 @@ var currentTentacle
 var charges = 4.0             # Essentially Maw ammo 
 var willBelchWebs = false     # Whether or not we have a peashooter buff 
 var available_tentacles = []  # Track which tentacles are available
+var willBelchSun := false 
+
+@export var bloodAmount = 10
 
 #Essentially a reload timer for the maw
 @onready var digestionTimer = $DigestionTimer
@@ -38,6 +41,9 @@ var available_tentacles = []  # Track which tentacles are available
 @onready var detection_area = $DetectionComponent
 
 @onready var animSpriteComp = $AnimatedSprite2D
+
+var bloodScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
+var isBuffed := false 
 
 func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
@@ -134,6 +140,7 @@ func _on_tentacle_retraction_complete(tentacle):
 					add_child(web_ball)
 					web_ball.target_position = Vector2(100, 0)
 					web_ball.travel_time = 1.5
+
 			var compManager = enemy.getCompManager()	
 			compManager.take_damage(9999)	
 			#enemy.queue_free()
@@ -161,23 +168,33 @@ func _on_DigestionTimer_timeout():
 			available_tentacles.append(tentacle)
 			tentacle.visible = true
 			break
+	if willBelchSun:
+		generate_sun()
 
 #Handles Receiving Buffs From EggWorm, Peashooter, and Hive, setting color accordingly 
 func receiveBuff(plant):
+	if !isBuffed:
 	#print(bufferName)
-	var bufferName = plant.name
-	if(bufferName == "EggWorm"):
-		tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
-		tentacle2.set_colors(Color.BLUE, Color.BLUE)
-		digestionTimer.wait_time = 6
-	elif(bufferName == "Peashooter"):
-		tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
-		tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
-		willBelchWebs = true
-	elif(bufferName == "Hive"):
-		tentacle1.set_colors(Color.WHITE, Color.WHITE)
-		tentacle2.set_colors(Color.BLACK, Color.BLACK)
-		health = 200
+		var bufferName = plant.name
+		if("EggWorm" in bufferName):
+			tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+			tentacle2.set_colors(Color.BLUE, Color.BLUE)
+			digestionTimer.wait_time = 6
+		elif("Peashooter" in bufferName):
+			tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+			tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
+			willBelchWebs = true
+		elif("Hive" in bufferName):
+			tentacle1.set_colors(Color.WHITE, Color.WHITE)
+			tentacle2.set_colors(Color.BLACK, Color.BLACK)
+			print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
+			detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
+			health = 200
+			print("Buffer Was HHIve")
+		elif("Sunflower" in bufferName):
+			willBelchSun = true 
+		isBuffed = true 
+		
 		
 
 # Stops Spawn Animation From Playing
@@ -186,5 +203,11 @@ func _on_AnimatedSprite_animation_finished():
 		animSpriteComp.animation = "default"
 		animSpriteComp.play()
 		
-		
+# Function to handle sun generation
+func generate_sun():
+	var sun_instance = bloodScene.instantiate()  # Create a new instance of the sun
+	add_child(sun_instance)  # Add the sun to the scene
+	sun_instance.setWorth(bloodAmount)
+	#Set the sun pos to above the sunflower
+	sun_instance.global_position = self.global_position + Vector2(0,-40)	
 		

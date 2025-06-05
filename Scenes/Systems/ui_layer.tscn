@@ -1,14 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3ls67604vxxj"]
+[gd_scene load_steps=2 format=3 uid="uid://3ls67604vxxj"]
 
-[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="1_qaivy"]
-
-[sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("1_qaivy")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="1_qaivy"]
 
 [node name="UILayer" type="Control"]
 layout_mode = 3
@@ -32,13 +24,31 @@ offset_right = 119.0
 offset_bottom = 23.0
 color = Color(0, 0, 0, 1)
 
+[node name="ColorRect2" type="ColorRect" parent="SunCounter"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 24.0
+scale = Vector2(0.980001, 0.9)
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="SunCounter"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 144.0
+offset_bottom = 25.0
+scale = Vector2(0.8, 0.8)
+color = Color(0, 0, 0, 1)
+
 [node name="Label" type="Label" parent="SunCounter"]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 7.0
-offset_right = 82.0
-offset_bottom = 42.0
+offset_top = 5.0
+offset_right = 101.0
+offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = SubResource("1")
+theme_override_fonts/font = ExtResource("1_qaivy")
 text = "Blood : 75
 "

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://5i8s8njak5j3" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="1_jfxaf"]
 [ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://Assets/Audio/Win1.mp3" id="3_d7mvd"]
 [ext_resource type="AudioStream" uid="uid://cpe2vuf5wyk74" path="res://Assets/Audio/UIClick.mp3" id="4_bnxj2"]
-[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="5_p2n0n"]
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="4_jfxaf"]
 
 [node name="LevelSwitcher" type="Control"]
 process_mode = 3
@@ -47,21 +47,21 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_p2n0n")
+theme_override_fonts/font = ExtResource("4_jfxaf")
 theme_override_font_sizes/font_size = 64
 text = "YOU WIN!"
 
 [node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_p2n0n")
+theme_override_fonts/font = ExtResource("4_jfxaf")
 theme_override_font_sizes/font_size = 32
 text = "CONTINUE"
 
 [node name="PlayAgain" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_p2n0n")
+theme_override_fonts/font = ExtResource("4_jfxaf")
 theme_override_font_sizes/font_size = 32
 text = "PLAY AGAIN"
 

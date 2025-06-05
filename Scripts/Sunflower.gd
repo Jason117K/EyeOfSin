@@ -9,6 +9,10 @@ extends Area2D
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
 @onready var animSpriteComp = $AnimatedSprite2D
+@onready var sunTimer = $SunTimer
+@export var sunWaitTime := 15.0
+@export var buffedSunWaitTime := 12.0 
+var isBuffed = false 
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
@@ -34,7 +38,9 @@ func generate_sun():
 # TODO Implement sunflower buff 
 # Handles all pontential sunflower buffs 
 func receiveBuff(plantName):
-	pass
+	if !isBuffed : 
+		sunTimer.wait_time = buffedSunWaitTime
+		isBuffed = true 
 
 #Handles the sunflower taking damage 
 func take_damage(damage):
