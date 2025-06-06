@@ -442,13 +442,8 @@ position = Vector2(587, 387)
 sprite_frames = SubResource("6")
 flip_h = true
 
-[node name="LevelSwitcher" parent="." instance=ExtResource("19_lwhkm")]
-visible = false
-layout_mode = 1
-nextLevel = ExtResource("20_ht4uu")
-
 [node name="ToolTips" parent="." instance=ExtResource("19_ldx1s")]
-z_index = 8
+z_index = 4
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -461,6 +456,14 @@ offset_right = 152.0
 offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("19_lwhkm")]
+visible = false
+z_index = 6
+layout_mode = 1
+nextLevel = ExtResource("20_ht4uu")
+next_level = "res://Scenes/LevelScenes/Level4.tscn"
+level_unlocked = 4
 
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]

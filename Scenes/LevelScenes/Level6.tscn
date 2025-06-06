@@ -350,6 +350,8 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 nextLevel = ExtResource("21_kqvvy")
+next_level = "res://Scenes/LevelScenes/Level7.tscn"
+level_unlocked = 7
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]

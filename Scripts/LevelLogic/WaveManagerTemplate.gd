@@ -39,7 +39,7 @@ var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
 @export var Wave3_Interval = 5.5
 @export var canStartGame : bool = false 
 
-var checkEndLevel = false
+@export var checkEndLevel = false
 
 var numWave = 0
 var health = 5
@@ -68,7 +68,7 @@ func _physics_process(_delta):
 			end_level()
 
 func end_level():
-	print("Attempting End Level")
+	#print("Attempting End Level")
 	#assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
 	for child in get_parent().get_parent().get_children():
 		if "LevelSwitcher" in child.name:
@@ -104,8 +104,8 @@ func _ready():
 	#TODO Game starts here just don't forget 
 	#$ProceedGame.start()
 	
-	if self.has_method("setScenes"):
-		self.setScenes()
+	#if self.has_method("setScenes"):
+		#self.setScenes()
 		
 			
 func setScenes():
@@ -213,6 +213,7 @@ func _done_spawning():
 	print("Done Spawing")
 	checkEndLevel = true
 
+#TODO Taking Damage
 #Code Taking Damage Here 
 func _on_Area2D_area_entered(area):
 	if "Zombie" in area.name:

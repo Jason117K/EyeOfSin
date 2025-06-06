@@ -13,6 +13,7 @@ var bloodBuffTutorial3 = "res://Assets/Text/TextFiles/BloodBuffTutorial3.txt"
 
 # Sets Up the Tiles For Level 3 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	$GameLayer/GridManager.set_tiles_for_rows(0,1, 68)
 	$GameLayer/GridManager.set_tiles_for_rows(1,2, 66)
 	

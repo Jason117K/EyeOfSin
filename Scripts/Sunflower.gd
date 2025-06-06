@@ -16,11 +16,14 @@ var isBuffed = false
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
+	sunTimer.wait_time = sunWaitTime
 	PlantManager = get_parent().get_parent().get_node("PlantManager") 
 	$SunTimer.start()  # Start the timer
 	assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
-	
 	animSpriteComp.animation = "spawn"
+	
+	
+	
 	
 
 # Called every time the sun timer reaches timeout
@@ -30,7 +33,7 @@ func _on_SunTimer_timeout():
 # Function to handle sun generation
 func generate_sun():
 	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
-	add_child(sun_instance)  # Add the sun to the scene
+	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
 
@@ -61,7 +64,6 @@ func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "idle"
 		animSpriteComp.play()
-		
 		
 		
 		

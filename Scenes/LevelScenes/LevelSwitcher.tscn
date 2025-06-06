@@ -65,5 +65,13 @@ theme_override_fonts/font = ExtResource("4_jfxaf")
 theme_override_font_sizes/font_size = 32
 text = "PLAY AGAIN"
 
+[node name="ReturnToMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_jfxaf")
+theme_override_font_sizes/font_size = 32
+text = "RETURN TO MAIN"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

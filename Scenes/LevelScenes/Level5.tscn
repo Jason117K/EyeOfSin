@@ -446,6 +446,8 @@ flip_h = true
 visible = false
 layout_mode = 1
 nextLevel = ExtResource("20_jm0qw")
+next_level = "res://Scenes/LevelScenes/Level6.tscn"
+level_unlocked = 6
 
 [node name="ToolTips" parent="." instance=ExtResource("19_80lnd")]
 layout_mode = 1

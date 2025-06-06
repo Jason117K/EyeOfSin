@@ -13,6 +13,6 @@ func _on_Button_pressed():
 
 #Handle reestarting th game
 func _on_PlayAgain_pressed():
-	var new_scene = preload("res://Scenes/LevelScenes/StartScreen.tscn")  # Load the Main scene
+	
 	# Switch to the Main scene
-	assert(get_tree().change_scene_to_packed(new_scene)   ==OK)
+	assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn")   ==OK)
