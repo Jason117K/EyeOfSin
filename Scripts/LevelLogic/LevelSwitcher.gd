@@ -9,6 +9,7 @@ extends Control
 
 
 func _ready() -> void:
+	self.visible = false 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 #Moves onto next level 

@@ -46,6 +46,13 @@ var bloodScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path
 var isBuffed := false 
 
 func _ready():
+	collision_mask = 2
+	print("Maw Area2D: ", name)
+	print("Maw Collision Layer: ", collision_layer)
+	print("Maw Collision Mask: ", collision_mask)
+	print("Maw Monitoring: ", monitoring)
+	print("Maw Monitorable: ", monitorable)
+	
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	setup_tentacles()
 	animSpriteComp.animation = "spawn"
@@ -103,10 +110,12 @@ func setup_tentacles():
 #Constantly check for enemies in range and assign them for eating appropriately 
 func _process(_delta):
 	var overlapping_areas = detection_area.get_overlapping_areas()
+	print("Maw Overlapping Areas Is ", overlapping_areas)
 	for area in overlapping_areas:
+		print("AArea Is ", area)
 		if area.is_in_group("Zombie"):
-			#print("Assigning Tentacle")
-			assign_tentacle_to_target(area)
+			print("BBAssigning Tentacle to  ", area)
+		##	assign_tentacle_to_target(area)
 
 #Assign a target to a tentacle 
 func assign_tentacle_to_target(target):
@@ -211,3 +220,9 @@ func generate_sun():
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)	
 		
+
+
+func _on_detection_component_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Zombie"):
+		print("Maw Assigning Tentacle to  ", area)
+		assign_tentacle_to_target(area)

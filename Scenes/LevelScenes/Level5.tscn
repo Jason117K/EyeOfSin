@@ -442,13 +442,6 @@ position = Vector2(587, 387)
 sprite_frames = SubResource("6")
 flip_h = true
 
-[node name="LevelSwitcher" parent="." instance=ExtResource("19_atfoh")]
-visible = false
-layout_mode = 1
-nextLevel = ExtResource("20_jm0qw")
-next_level = "res://Scenes/LevelScenes/Level6.tscn"
-level_unlocked = 6
-
 [node name="ToolTips" parent="." instance=ExtResource("19_80lnd")]
 layout_mode = 1
 anchors_preset = 8
@@ -462,6 +455,13 @@ offset_right = 209.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("19_atfoh")]
+visible = false
+layout_mode = 1
+nextLevel = ExtResource("20_jm0qw")
+next_level = "res://Scenes/LevelScenes/Level6.tscn"
+level_unlocked = 6
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
