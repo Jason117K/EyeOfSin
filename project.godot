@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PVZ0.1"
-run/main_scene="res://Scenes/LevelScenes/StartScreen.tscn"
+run/main_scene="uid://0tcqey8apvy0"
 config/features=PackedStringArray("4.4")
 config/icon="res://Assets/icon.png"
 
@@ -24,6 +24,10 @@ Global="*res://Scripts/global.gd"
 window/size/viewport_width=740
 window/size/viewport_height=416
 window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/movie_file="C:/GodotGamesProjects/EyeOfSin/Clip1.avi"
 
 [global]
 

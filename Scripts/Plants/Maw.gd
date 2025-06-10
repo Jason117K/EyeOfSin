@@ -109,13 +109,14 @@ func setup_tentacles():
 
 #Constantly check for enemies in range and assign them for eating appropriately 
 func _process(_delta):
-	var overlapping_areas = detection_area.get_overlapping_areas()
-	print("Maw Overlapping Areas Is ", overlapping_areas)
-	for area in overlapping_areas:
-		print("AArea Is ", area)
-		if area.is_in_group("Zombie"):
-			print("BBAssigning Tentacle to  ", area)
-		##	assign_tentacle_to_target(area)
+	pass
+	#var overlapping_areas = detection_area.get_overlapping_areas()
+	#print("Maw Overlapping Areas Is ", overlapping_areas)
+	#for area in overlapping_areas:
+		#print("AArea Is ", area)
+		#if area.is_in_group("Zombie"):
+			#print("BBAssigning Tentacle to  ", area)
+		###	assign_tentacle_to_target(area)
 
 #Assign a target to a tentacle 
 func assign_tentacle_to_target(target):
@@ -224,5 +225,5 @@ func generate_sun():
 
 func _on_detection_component_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		print("Maw Assigning Tentacle to  ", area)
+	#	print("Maw Assigning Tentacle to  ", area)
 		assign_tentacle_to_target(area)

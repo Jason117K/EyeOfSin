@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://0tcqey8apvy0"]
 
 [ext_resource type="Script" uid="uid://cpye6mrmxtywc" path="res://Scripts/game_controller.gd" id="1_nqxm2"]
-[ext_resource type="PackedScene" uid="uid://l62ub0kbh343" path="res://Scenes/LevelScenes/Level4.tscn" id="2_kx2cw"]
+[ext_resource type="PackedScene" uid="uid://cwnxaalr7lrsd" path="res://Scenes/LevelScenes/StartScreen.tscn" id="2_kx2cw"]
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("scene")]
 script = ExtResource("1_nqxm2")
@@ -16,5 +16,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Level4" parent="CurrentScene" instance=ExtResource("2_kx2cw")]
+[node name="StartScreen" parent="CurrentScene" instance=ExtResource("2_kx2cw")]
 layout_mode = 1

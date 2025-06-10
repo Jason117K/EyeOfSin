@@ -51,3 +51,11 @@ func _on_start_game_pressed() -> void:
 func _on_level_select_button_pressed() -> void:
 	print("Button Worky")
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/LevelSelect.tscn")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit() 
+
+
+func _on_credits_pressed() -> void:
+	Global.game_controller.change_scene("res://Scenes/LevelScenes/CreditsScene.tscn")
