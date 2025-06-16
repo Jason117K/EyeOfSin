@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://blpt4dqra2o6j"]
+
+[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://Assets/Sprites/Sunflower.png" id="1_e0sdv"]
+[ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://Assets/Sprites/Spyder.png" id="2_v574q"]
+[ext_resource type="Texture2D" uid="uid://oewg178qt0kr" path="res://Assets/Sprites/Walnut.png" id="3_fsv5x"]
+[ext_resource type="Texture2D" uid="uid://ctfd4ekoc62rj" path="res://Assets/Sprites/EyeBomb.png" id="4_01d0a"]
+[ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://Assets/Sprites/EggWyrm.png" id="5_8rfn8"]
+[ext_resource type="Texture2D" uid="uid://dr854umtud4nf" path="res://Assets/Sprites/Hive.png" id="6_px0s8"]
+[ext_resource type="Texture2D" uid="uid://p88orx55tm4w" path="res://Assets/Sprites/MawImage.png" id="7_dxyr4"]
+[ext_resource type="Script" uid="uid://bov2qdtt14vx5" path="res://Scripts/UI/PlantLoreBookController.gd" id="8_rka8i"]
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="9_v574q"]
+[ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://Assets/Animations/Hive.tres" id="10_fsv5x"]
+
+[node name="PlantLoreBook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 764.0
+offset_bottom = 485.0
+color = Color(0.490196, 0.0588235, 0.121569, 1)
+
+[node name="CurrentPlantLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+offset_left = 315.0
+offset_top = 270.0
+offset_right = 740.0
+offset_bottom = 374.0
+theme_override_fonts/normal_font = ExtResource("9_v574q")
+theme_override_font_sizes/normal_font_size = 16
+text = "Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. "
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+
+[node name="AllPlantRows" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+
+[node name="Sunflower" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("1_e0sdv")
+
+[node name="Peashooter" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_v574q")
+
+[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("3_fsv5x")
+
+[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+
+[node name="EyeBomb" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("4_01d0a")
+
+[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("5_8rfn8")
+
+[node name="Hive" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("6_px0s8")
+
+[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+alignment = 1
+
+[node name="Maw" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("7_dxyr4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+expand_mode = 5
+script = ExtResource("8_rka8i")
+sprites = ExtResource("10_fsv5x")
+playing = true
+
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Sunflower" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Peashooter" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_peashooter_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Walnut" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EyeBomb" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_eye_bomb_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EggWrym" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Hive" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row3/Maw" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_maw_pressed"]

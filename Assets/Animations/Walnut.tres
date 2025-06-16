@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://tckun0j0h7pd"]
+
+[ext_resource type="Texture2D" uid="uid://cy05b15vscpbk" path="res://Assets/Animations/OccularSpine-Sheet.png" id="1_ti1vu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arewn"]
+atlas = ExtResource("1_ti1vu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yox3a"]
+atlas = ExtResource("1_ti1vu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urjm3"]
+atlas = ExtResource("1_ti1vu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y48yf"]
+atlas = ExtResource("1_ti1vu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4l78"]
+atlas = ExtResource("1_ti1vu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huhkr"]
+atlas = ExtResource("1_ti1vu")
+region = Rect2(160, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arewn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yox3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urjm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y48yf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4l78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huhkr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://c7yedxkvrkc75"]
+
+[ext_resource type="Texture2D" uid="uid://86kdtip70lur" path="res://Assets/Animations/MawMouthSpriteSheet.png" id="1_72x4p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ods8"]
+atlas = ExtResource("1_72x4p")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5nhn"]
+atlas = ExtResource("1_72x4p")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tcrb"]
+atlas = ExtResource("1_72x4p")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2t3a"]
+atlas = ExtResource("1_72x4p")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkwns"]
+atlas = ExtResource("1_72x4p")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw0d5"]
+atlas = ExtResource("1_72x4p")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0r1p"]
+atlas = ExtResource("1_72x4p")
+region = Rect2(384, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ods8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5nhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tcrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2t3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkwns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw0d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0r1p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

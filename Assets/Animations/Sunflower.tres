@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://brv3a2utkd0gc"]
+
+[ext_resource type="Texture2D" uid="uid://bq8kgy82dj1fk" path="res://Assets/Animations/EyeSunTowerIdle.png" id="1_3qyju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2n65"]
+atlas = ExtResource("1_3qyju")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxkyw"]
+atlas = ExtResource("1_3qyju")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o854f"]
+atlas = ExtResource("1_3qyju")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vwjq"]
+atlas = ExtResource("1_3qyju")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2n65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxkyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o854f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vwjq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

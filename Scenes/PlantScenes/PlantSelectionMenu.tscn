@@ -72,11 +72,11 @@ icon = ExtResource("3")
 [node name="SunFlowerLabel" type="Label" parent="VBoxContainer/HBoxContainer/Sunflower"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_fonts/font = SubResource("5")
 text = "50
 "
+horizontal_alignment = 1
 
 [node name="Peashooter" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -91,6 +91,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
+horizontal_alignment = 1
 
 [node name="Walnut" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -105,6 +106,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
+horizontal_alignment = 1
 
 [node name="Eye" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -119,6 +121,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
+horizontal_alignment = 1
 
 [node name="Egg" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -133,6 +136,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
+horizontal_alignment = 1
 
 [node name="Hive" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -147,6 +151,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
+horizontal_alignment = 1
 
 [node name="Maw" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -161,11 +166,12 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
+horizontal_alignment = 1
 
-[node name="Maw2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="RemovePlant" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="RemovePlantButton" type="Button" parent="VBoxContainer/HBoxContainer/Maw2"]
+[node name="RemovePlantButton" type="Button" parent="VBoxContainer/HBoxContainer/RemovePlant"]
 clip_contents = true
 custom_minimum_size = Vector2(19.54, 85)
 layout_mode = 2
@@ -173,10 +179,28 @@ theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("10_plp1j")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Maw2"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/RemovePlant"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "REMOVE"
+horizontal_alignment = 1
+
+[node name="OpenCodex" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="OpenCodexButton" type="Button" parent="VBoxContainer/HBoxContainer/OpenCodex"]
+clip_contents = true
+custom_minimum_size = Vector2(19.54, 85)
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("10_plp1j")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/OpenCodex"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_qqk0u")
+text = "CODEX"
+horizontal_alignment = 1
 
 [node name="CurrentPlantLabel" type="Label" parent="."]
 layout_mode = 0
@@ -196,4 +220,5 @@ stream = ExtResource("5")
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw2/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/OpenCodex/OpenCodexButton" to="." method="_on_remove_plant_button_pressed"]
