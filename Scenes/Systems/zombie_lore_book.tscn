@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://kpal5ggmjv70"]
+
+[ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://Assets/Sprites/BasicZombie.png" id="1_d8001"]
+[ext_resource type="Texture2D" uid="uid://bgma2h15leoe1" path="res://Assets/Sprites/ConeHeadZombie.png" id="2_brvkm"]
+[ext_resource type="Texture2D" uid="uid://c37wmrvd3fs5w" path="res://Assets/Sprites/BucketHeadZombie.png" id="3_votx1"]
+[ext_resource type="Texture2D" uid="uid://b711gtmcyisf" path="res://Assets/Sprites/SummonerZombie.png" id="4_0r1la"]
+[ext_resource type="Texture2D" uid="uid://cb8ilmxxu5imp" path="res://Assets/Sprites/BackUpDancer.png" id="5_13rm7"]
+[ext_resource type="Texture2D" uid="uid://vfleagnw1j4h" path="res://Assets/Sprites/TickerZombie.png" id="6_nl6qu"]
+[ext_resource type="Texture2D" uid="uid://boehiq0ysreqy" path="res://Assets/Sprites/ScreenDoorZombie.png" id="7_0cqbf"]
+[ext_resource type="Texture2D" uid="uid://87mvflvt25ip" path="res://Assets/Sprites/FootBallZombie.png" id="8_nhbtu"]
+[ext_resource type="Texture2D" uid="uid://csockxqf1ab8l" path="res://Assets/Sprites/PoleVaultZombie.png" id="9_7frkv"]
+[ext_resource type="Script" uid="uid://bwjh0i0w016sm" path="res://Scripts/UI/ZombieLoreBookController.gd" id="10_lexj7"]
+
+[node name="ZombieLoreBook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(18.6, 10.48)
+color = Color(0.49, 0.49, 0.49, 1)
+
+[node name="CurrentZombieLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+
+[node name="AllZombieRows" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllZombieRows"]
+layout_mode = 2
+
+[node name="BaseZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("1_d8001")
+
+[node name="ConeHeadZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("2_brvkm")
+
+[node name="BucketHeadZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row1"]
+layout_mode = 2
+texture_normal = ExtResource("3_votx1")
+
+[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllZombieRows"]
+layout_mode = 2
+
+[node name="DancerZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("4_0r1la")
+
+[node name="BackUpDancerZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("5_13rm7")
+
+[node name="TickerZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row2"]
+layout_mode = 2
+texture_normal = ExtResource("6_nl6qu")
+
+[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllZombieRows"]
+layout_mode = 2
+
+[node name="ScreenDoorZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("7_0cqbf")
+
+[node name="FootballZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("8_nhbtu")
+
+[node name="PoleVaultZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row3"]
+layout_mode = 2
+texture_normal = ExtResource("9_7frkv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("10_lexj7")

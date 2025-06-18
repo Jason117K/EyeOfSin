@@ -1,0 +1,4 @@
+A cornerstone of Hell, one it's rare creatures that can convert ambient Hell Energy to raw blood.
+- Produces blood to create other towers
+- Cannot be buffed 
+- Gives buff to every other plant 

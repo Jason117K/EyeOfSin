@@ -1,0 +1,7 @@
+Powerful pack hunters that prowl the canpoies of Hell's Blood Swamps, using their webs to catch all manner of prey.
+- Gives SYNERGY to 
+	- Maws 
+	- Hives 
+	- Occular Spine 
+- Receives SYNERGY from 
+	- Maws

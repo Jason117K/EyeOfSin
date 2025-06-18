@@ -131,3 +131,4 @@ func _on_maw_pressed() -> void:
 		GlobalResourceLoader.PlantType.MAW)
 	play()
 	set_text(mawDescription)
+	

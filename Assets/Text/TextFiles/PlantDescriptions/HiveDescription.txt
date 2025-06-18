@@ -1,0 +1,8 @@
+An infernal nest of vicious Hell-Wasps, creatures that seek to do nothing but kill and spread.
+- Stalls incoming enemies 
+- GIVES SYNERGY TO 
+	- Maws
+- RECEIVES SYNERGY FROM 
+	- EggWyrms 
+	- Spyders 
+	- Maws
