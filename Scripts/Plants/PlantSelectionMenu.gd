@@ -449,9 +449,3 @@ func setCanRemoveFalse():
 func getCanRemove():
 	return canRemove
 	
-	
-	
-	
-	
-	
-	

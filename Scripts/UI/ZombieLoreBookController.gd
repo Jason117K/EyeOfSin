@@ -18,3 +18,137 @@ var coneheadZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions
 var bucketHeadZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
 var dancerZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 var backUpDancerZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/backUpDancerDescription.txt"
+var tickerZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
+var screennDoorZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
+var footBallZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
+var poleVaultZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
+
+func _ready() -> void:
+	print("Zombie AnimatedTextureRect: _ready() called")
+	
+		# Set default button textures based on current colors
+	_update_button_textures()
+	
+	# Set initial sprites if none are set
+	if sprites == null:
+		var zombie_type = GlobalResourceLoader.PlantType.SUNFLOWER
+		sprites = GlobalResourceLoader.get_plant_animation(zombie_type)
+	
+	# Initialize animation data
+	if sprites != null:
+		if not sprites.has_animation(current_animation):
+			var animations = sprites.get_animation_names()
+			if animations.size() > 0:
+				current_animation = animations[0]
+		
+		fps = sprites.get_animation_speed(current_animation)
+		refresh_rate = sprites.get_frame_duration(current_animation, frame_index)
+		if auto_play:
+			play()
+
+# Update all button textures based on current color settings
+func _update_button_textures():
+	
+	# Set
+	if baseZombieButton != null:
+		baseZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.BASEZOMBIE)
+	if coneHeadZombieButton != null:
+		coneHeadZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.CONEHEAD)
+	if bucketHeadZombieButton != null:
+		bucketHeadZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.BUCKETHEAD)
+	
+	# Set 
+	if dancerZombieButton != null:
+		dancerZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.DANCERZOMBIE)
+	if backUpDanceerZombieButton != null:
+		backUpDanceerZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.BACKUPDANCERZOMBIE)
+	if tickerZombieButton != null:
+		tickerZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.TICKER)
+			
+	if screenDoorZombieButton != null:
+		screenDoorZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.SCREENDOORZOMBIE)
+			
+	if footBallZombieButton != null:
+		footBallZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.FOOTBALLZOMBIE)
+			
+	if poleVaultZombieButton != null:
+		poleVaultZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
+			GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
+			
+#Sets the current Zombie Description Text
+func set_text(newFile : String):
+	var file = FileAccess.open(newFile, FileAccess.READ)
+	var newText = file.get_as_text()
+	file.close()
+	currentZombieLabel.text = newText
+
+
+func _on_base_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.BASEZOMBIE)
+	play()
+	set_text(baseZombieDescription)
+
+
+func _on_cone_head_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.CONEHEAD)
+	play()
+	set_text(coneheadZombieDescription)
+
+
+func _on_bucket_head_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.BUCKETHEAD)
+	play()
+	set_text(bucketHeadZombieDescription)
+
+
+func _on_dancer_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.DANCERZOMBIE)
+	play()
+	set_text(dancerZombieDescription)
+
+
+func _on_back_up_dancer_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.BACKUPDANCERZOMBIE)
+	play()
+	set_text(backUpDancerZombieDescription)
+
+
+func _on_ticker_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.TICKER)
+	play()
+	set_text(tickerZombieDescription)
+
+
+func _on_screen_door_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.SCREENDOORZOMBIE)
+	play()
+	set_text(screennDoorZombieDescription)
+
+
+func _on_football_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.FOOTBALLZOMBIE)
+	play()
+	set_text(footBallZombieDescription)
+
+
+func _on_pole_vault_zombie_pressed() -> void:
+	sprites = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
+	play()
+	set_text(poleVaultZombieDescription)

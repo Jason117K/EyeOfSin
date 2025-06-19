@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://b41c2dduqifil"]
+
+[ext_resource type="Texture2D" uid="uid://b2fg3smedqosy" path="res://Assets/Zombies/BackUpDancerFloat-Sheet.png" id="1_lxpce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r60pk"]
+atlas = ExtResource("1_lxpce")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cvtp"]
+atlas = ExtResource("1_lxpce")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxncm"]
+atlas = ExtResource("1_lxpce")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbrhj"]
+atlas = ExtResource("1_lxpce")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohwn0"]
+atlas = ExtResource("1_lxpce")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vxo5"]
+atlas = ExtResource("1_lxpce")
+region = Rect2(160, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r60pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cvtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxncm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbrhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohwn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vxo5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

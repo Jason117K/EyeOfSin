@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0i06w5c5gtby"]
+[gd_scene load_steps=25 format=3 uid="uid://c0i06w5c5gtby"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="16"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="17_y08as"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="18_3o6er"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="19_bpdoe"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -445,6 +446,12 @@ z_index = 4
 layout_mode = 1
 next_level = "res://Scenes/LevelScenes/Level3.tscn"
 level_unlocked = 3
+
+[node name="CodexBG" parent="." instance=ExtResource("19_bpdoe")]
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
 
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]

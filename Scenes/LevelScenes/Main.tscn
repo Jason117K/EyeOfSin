@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=24 format=3 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="2_eomv4"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="5"]
@@ -410,6 +411,7 @@ sprite_frames = SubResource("6")
 script = ExtResource("15_dph8t")
 
 [node name="ToolTips" parent="." instance=ExtResource("11")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -427,6 +429,12 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 next_level = "res://Scenes/LevelScenes/Level2.tscn"
+
+[node name="CodexBG" parent="." instance=ExtResource("2_eomv4")]
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="plant_placed" from="PlantManager" to="PlantSelectionMenu" method="_on_plant_manager_plant_placed"]

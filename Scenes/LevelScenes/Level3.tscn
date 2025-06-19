@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://lbnwijjflsge"]
+[gd_scene load_steps=28 format=3 uid="uid://lbnwijjflsge"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_ldx1s"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="19_lwhkm"]
 [ext_resource type="PackedScene" uid="uid://l62ub0kbh343" path="res://Scenes/LevelScenes/Level4.tscn" id="20_ht4uu"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="22_kr57r"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -464,6 +465,12 @@ layout_mode = 1
 nextLevel = ExtResource("20_ht4uu")
 next_level = "res://Scenes/LevelScenes/Level4.tscn"
 level_unlocked = 4
+
+[node name="CodexBG" parent="." instance=ExtResource("22_kr57r")]
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
 
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]

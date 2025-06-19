@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkpcc8kkpu8n0"]
+
+[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://Assets/Sprites/Sunflower.png" id="1_paagv"]
+[ext_resource type="Script" uid="uid://cjm42a18n4alo" path="res://Scripts/UI/lore_book_opener.gd" id="1_x4iqa"]
+[ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://Assets/Sprites/BasicZombie.png" id="2_y17rf"]
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="3_y17rf"]
+
+[node name="LoreBookOpener" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -1.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4iqa")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 105.0
+offset_right = 440.0
+offset_bottom = 145.0
+scale = Vector2(5, 5)
+color = Color(0.490196, 0.0588235, 0.121569, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 104.0
+offset_right = 142.0
+offset_bottom = 144.0
+scale = Vector2(5, 5)
+color = Color(0.490196, 0.0588235, 0.121569, 1)
+
+[node name="PlantButtonBG" type="Button" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 102.0
+offset_right = 343.0
+offset_bottom = 306.0
+
+[node name="ZombieButtonBG" type="Button" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 104.0
+offset_right = 640.0
+offset_bottom = 308.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 106.0
+offset_right = 225.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+theme_override_constants/separation = 25
+
+[node name="PlantCodexButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_paagv")
+
+[node name="ZombieCodexButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_y17rf")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 158.0
+offset_top = 304.0
+offset_right = 649.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 190
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_y17rf")
+theme_override_font_sizes/font_size = 16
+text = "PLANT CODEX"
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_y17rf")
+theme_override_font_sizes/font_size = 16
+text = "ZOMBIE CODEX"
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+z_index = -1
+layout_mode = 2
+offset_right = 740.765
+offset_bottom = 414.29
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="PlantButtonBG" to="." method="_on_plant_codex_button_pressed"]
+[connection signal="pressed" from="ZombieButtonBG" to="." method="_on_zombie_codex_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PlantCodexButton" to="." method="_on_plant_codex_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ZombieCodexButton" to="." method="_on_zombie_codex_button_pressed"]

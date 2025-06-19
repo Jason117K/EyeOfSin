@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=21 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ccvjkxxqny0cw" path="res://Assets/Plants/RedSpiderCARD.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2_vvged"]
 [ext_resource type="Texture2D" uid="uid://c5j5wlswvkgcr" path="res://Assets/Plants/EyeTower2CARD.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dbkxvyjbwrerl" path="res://Assets/Plants/EyeTreeCARD3.png" id="4"]
 [ext_resource type="AudioStream" uid="uid://cpe2vuf5wyk74" path="res://Assets/Audio/UIClick.mp3" id="5"]
@@ -13,6 +14,13 @@
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://Assets/Text/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://dj7di6fpkrem" path="res://Assets/Plants/Hive-CARD.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://Assets/Plants/Circle.png" id="10_plp1j"]
+
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04elx"]
+atlas = ExtResource("2_vvged")
+region = Rect2(352, 0, 32, 0)
 
 [sub_resource type="StyleBoxFlat" id="2"]
 bg_color = Color(0.0588235, 0.0392157, 0.0392157, 0)
@@ -42,15 +50,34 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="3"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
 [node name="PlantSelectionMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1")
+
+[node name="OpenCodex" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 571.0
+offset_top = 10.0
+offset_right = 618.0
+offset_bottom = 132.0
+scale = Vector2(2, 2)
+
+[node name="OpenCodexButton" type="Button" parent="OpenCodex"]
+clip_contents = true
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_styles/normal = SubResource("3")
+icon = SubResource("AtlasTexture_04elx")
+
+[node name="Label" type="Label" parent="OpenCodex"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_qqk0u")
+text = "CODEX"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -185,22 +212,24 @@ theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "REMOVE"
 horizontal_alignment = 1
 
-[node name="OpenCodex" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="CodexTextTemp" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="OpenCodexButton" type="Button" parent="VBoxContainer/HBoxContainer/OpenCodex"]
+[node name="Ignore" type="Button" parent="VBoxContainer/HBoxContainer/CodexTextTemp"]
+z_index = -1
 clip_contents = true
 custom_minimum_size = Vector2(19.54, 85)
 layout_mode = 2
-theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("10_plp1j")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/OpenCodex"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CodexTextTemp"]
+z_index = 6
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "CODEX"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="CurrentPlantLabel" type="Label" parent="."]
 layout_mode = 0
@@ -215,10 +244,10 @@ horizontal_alignment = 1
 [node name="UIClickAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5")
 
+[connection signal="pressed" from="OpenCodex/OpenCodexButton" to="." method="_on_open_codex_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Eye/EyeButton" to="." method="_on_EyeButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/OpenCodex/OpenCodexButton" to="." method="_on_remove_plant_button_pressed"]

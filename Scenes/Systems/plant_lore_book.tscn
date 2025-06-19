@@ -12,6 +12,7 @@
 [ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://Assets/Animations/Hive.tres" id="10_fsv5x"]
 
 [node name="PlantLoreBook" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

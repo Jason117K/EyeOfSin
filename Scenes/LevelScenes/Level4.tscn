@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://l62ub0kbh343"]
+[gd_scene load_steps=28 format=3 uid="uid://l62ub0kbh343"]
 
 [ext_resource type="Script" uid="uid://874tnpm8fiel" path="res://Scripts/LevelLogic/Level4.gd" id="1_14dgs"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_dksml"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_qq0hm"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_dmrma"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_pa053"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="22_u6v5d"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -461,6 +462,12 @@ layout_mode = 1
 nextLevel = ExtResource("9_u6v5d")
 next_level = "res://Scenes/LevelScenes/Level5.tscn"
 level_unlocked = 5
+
+[node name="CodexBG" parent="." instance=ExtResource("22_u6v5d")]
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
 
 [connection signal="wasp_placed" from="PlantManager" to="." method="_on_plant_manager_wasp_placed"]
 [connection signal="wave1Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_1_started"]
