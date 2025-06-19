@@ -152,3 +152,9 @@ func _on_pole_vault_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
 	play()
 	set_text(poleVaultZombieDescription)
+
+
+func _on_back_button_pressed() -> void:
+	get_parent().get_parent().get_parent().visible = false 
+	print("BBack Button Pressed")
+	Global.game_controller.restore_previous_scene()

@@ -70,9 +70,11 @@ mouse_filter = 2
 script = ExtResource("6")
 
 [node name="PlantManager" parent="." instance=ExtResource("1")]
+process_mode = 1
 sun_points = 1250
 
 [node name="GameLayer" type="Node2D" parent="."]
+process_mode = 1
 z_index = 1
 
 [node name="ZombieSpawner" parent="GameLayer" instance=ExtResource("4")]
@@ -467,6 +469,7 @@ next_level = "res://Scenes/LevelScenes/Level4.tscn"
 level_unlocked = 4
 
 [node name="CodexBG" parent="." instance=ExtResource("22_kr57r")]
+layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0

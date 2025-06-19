@@ -102,7 +102,18 @@ offset_right = 740.765
 offset_bottom = 414.29
 color = Color(0, 0, 0, 1)
 
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 25)
+offset_left = 230.0
+offset_top = 355.0
+offset_right = 530.0
+offset_bottom = 380.0
+theme_override_fonts/font = ExtResource("3_y17rf")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
 [connection signal="pressed" from="PlantButtonBG" to="." method="_on_plant_codex_button_pressed"]
 [connection signal="pressed" from="ZombieButtonBG" to="." method="_on_zombie_codex_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PlantCodexButton" to="." method="_on_plant_codex_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ZombieCodexButton" to="." method="_on_zombie_codex_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

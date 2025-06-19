@@ -96,6 +96,16 @@ script = ExtResource("8_rka8i")
 sprites = ExtResource("10_fsv5x")
 playing = true
 
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 25)
+offset_left = 7.0
+offset_top = 379.0
+offset_right = 307.0
+offset_bottom = 404.0
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Sunflower" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Peashooter" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_peashooter_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Walnut" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_walnut_pressed"]
@@ -103,3 +113,4 @@ playing = true
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EggWrym" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Hive" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_hive_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/Row3/Maw" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="BackButton" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_back_button_pressed"]

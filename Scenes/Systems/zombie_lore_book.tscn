@@ -100,6 +100,17 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("10_lexj7")
 
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 380.0
+offset_right = 336.0
+offset_bottom = 405.0
+theme_override_fonts/font = ExtResource("1_brvkm")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
 [connection signal="pressed" from="HBoxContainer/AllZombieRows/Row1/BaseZombie" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_base_zombie_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllZombieRows/Row1/ConeHeadZombie" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_cone_head_zombie_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllZombieRows/Row1/BucketHeadZombie" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_bucket_head_zombie_pressed"]
@@ -109,3 +120,4 @@ script = ExtResource("10_lexj7")
 [connection signal="pressed" from="HBoxContainer/AllZombieRows/Row3/ScreenDoorZombie" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_screen_door_zombie_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllZombieRows/Row3/FootballZombie" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_football_zombie_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllZombieRows/Row3/PoleVaultZombie" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_pole_vault_zombie_pressed"]
+[connection signal="pressed" from="BackButton" to="HBoxContainer/VBoxContainer/TextureRect" method="_on_back_button_pressed"]

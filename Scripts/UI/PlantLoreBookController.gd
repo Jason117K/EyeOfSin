@@ -132,3 +132,9 @@ func _on_maw_pressed() -> void:
 	play()
 	set_text(mawDescription)
 	
+
+
+func _on_back_button_pressed() -> void:
+	get_parent().get_parent().get_parent().visible = false 
+	print("BBack Button Pressed")
+	Global.game_controller.restore_previous_scene()
