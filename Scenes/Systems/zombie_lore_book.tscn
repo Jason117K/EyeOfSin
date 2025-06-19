@@ -24,7 +24,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(18.6, 10.48)
-color = Color(0.49, 0.49, 0.49, 1)
+color = Color(0.490196, 0.0588235, 0.121569, 1)
 
 [node name="CurrentZombieLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

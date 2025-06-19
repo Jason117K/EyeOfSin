@@ -10,3 +10,11 @@ extends AnimatedTextureRect
 @onready var screenDoorZombieButton = $"../../AllZombieRows/Row3/ScreenDoorZombie"
 @onready var footBallZombieButton = $"../../AllZombieRows/Row3/FootballZombie"
 @onready var poleVaultZombieButton = $"../../AllZombieRows/Row3/PoleVaultZombie"
+
+@onready var currentZombieLabel = $"../../../CurrentZombieLabel"
+
+var baseZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
+var coneheadZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
+var bucketHeadZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
+var dancerZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
+var backUpDancerZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/backUpDancerDescription.txt"

@@ -1,0 +1,5 @@
+Floating heads that can't attack, but can fly over summoned demons. 
+- Fast 
+- Low health 
+- Can bypass demons
+- Can't attack

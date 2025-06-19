@@ -1,0 +1,4 @@
+A basic footsoldier. 
+- Slow moving 
+- low damage 
+- high numbers 
