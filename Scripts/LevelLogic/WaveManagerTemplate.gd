@@ -77,6 +77,9 @@ func end_level():
 
 	
 func _ready():
+	$Area2D.connect("area_entered",player_take_damage)
+	
+	
 	# Get the root node of the current scene
 	root = get_tree().current_scene
 
@@ -214,11 +217,10 @@ func _done_spawning():
 	checkEndLevel = true
 
 #TODO Taking Damage
-#Code Taking Damage Here 
-func _on_Area2D_area_entered(area):
-	if "Zombie" in area.name:
-		#Go to Restart Scene 
-		assert(get_tree().change_scene_to_packed(retry_scene) == OK)
+func player_take_damage(area: Area2D) -> void:
+	print("AAAAAAGGGGGGGG")
+	if area.is_in_group("Zombie"):
+		print("AAAAZZZOIHOHQWDIOHWDI()") 
 		
 func _on_spawn_next_wave():
 	print("Received spawn next wave signal!")

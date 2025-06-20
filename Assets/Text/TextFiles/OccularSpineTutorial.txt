@@ -1,5 +1,4 @@
-Utilize OCCULAR SPINES to block zombies, halting them in their tracks while
-they attempt to break through. 
+Utilize OCCULAR SPINES to block zombies, halting them in their tracks while they attempt to break through. 
  
 OCCULAR SPINES will regenerate health over time when not being damaged.
  

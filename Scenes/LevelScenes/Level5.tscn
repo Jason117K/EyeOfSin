@@ -474,6 +474,7 @@ offset_bottom = 40.0
 layout_mode = 0
 
 [node name="CodexBG2" parent="." instance=ExtResource("22_jm0qw")]
+layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0

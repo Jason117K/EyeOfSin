@@ -264,15 +264,6 @@ script = ExtResource("9")
 StartDelay = 6
 Wave1_Interval = 1.0
 Wave3_Interval = 89.0
-checkEndLevel = true
-
-[node name="WaveManager2" parent="GameLayer" instance=ExtResource("2")]
-position = Vector2(-64, 192)
-script = ExtResource("9")
-StartDelay = 6
-Wave1_Interval = 1.0
-Wave3_Interval = 89.0
-checkEndLevel = true
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 739.0
@@ -448,6 +439,7 @@ next_level = "res://Scenes/LevelScenes/Level3.tscn"
 level_unlocked = 3
 
 [node name="CodexBG" parent="." instance=ExtResource("19_bpdoe")]
+layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0
@@ -459,8 +451,4 @@ offset_bottom = 373.0
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
-[connection signal="wave1Started" from="GameLayer/WaveManager2" to="." method="_on_wave_manager_wave_1_started"]
-[connection signal="wave2AlmostStart" from="GameLayer/WaveManager2" to="." method="_on_wave_manager_wave_2_almost_start"]
-[connection signal="wave2AlmostStart" from="GameLayer/WaveManager2" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
-[connection signal="wave2Started" from="GameLayer/WaveManager2" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

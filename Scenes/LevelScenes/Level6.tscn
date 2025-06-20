@@ -355,6 +355,7 @@ next_level = "res://Scenes/LevelScenes/Level7.tscn"
 level_unlocked = 7
 
 [node name="CodexBG" parent="." instance=ExtResource("22_kqvvy")]
+layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0

@@ -178,7 +178,7 @@ func place_plant(grid_pos: Vector2):
 
 		#Reduce Sun Points
 		sun_points -= plant_cost
-		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
+		get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
 		
 		#Play the sound
 		
@@ -243,7 +243,7 @@ func generate_unique_name(base_name: String) -> String:
 func add_sun(amount):
 	#print("Add Sun: " , amount)
 	sun_points += amount
-	get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
+	get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
 	
 # Play the sun collection sound 
 func play_sun_collect():
@@ -253,7 +253,7 @@ func play_sun_collect():
 func _on_SetSun_timeout():
 	if(get_parent().name == "Main"):
 		#sun_points = 300 #75
-		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
+		get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
 	else:
 		#sun_points = 900 #700
-		get_parent().get_node("UILayer/SunCounter/Label").text = "Blood: " + str(sun_points)
+		get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)

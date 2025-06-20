@@ -192,7 +192,6 @@ Wave3StartTime = 40
 Wave1_Interval = 1.0
 Wave2_Interval = 10
 Wave3_Interval = 20.0
-checkEndLevel = true
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 739.0
@@ -411,7 +410,6 @@ sprite_frames = SubResource("6")
 script = ExtResource("15_dph8t")
 
 [node name="ToolTips" parent="." instance=ExtResource("11")]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -431,6 +429,7 @@ layout_mode = 1
 next_level = "res://Scenes/LevelScenes/Level2.tscn"
 
 [node name="CodexBG" parent="." instance=ExtResource("2_eomv4")]
+layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0

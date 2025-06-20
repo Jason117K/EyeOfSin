@@ -361,6 +361,7 @@ visible = false
 layout_mode = 1
 
 [node name="CodexBG" parent="." instance=ExtResource("21_bpqyd")]
+layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0
