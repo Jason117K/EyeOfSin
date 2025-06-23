@@ -6,6 +6,8 @@ extends Control
 @export var nextLevel = preload("res://Scenes/LevelScenes/EmptyScene.tscn")  # Load the next scene
 @export var next_level = "res://Scenes/LevelScenes/EmptyScene.tscn"
 @export var level_unlocked := 2
+@onready var outcome_label = $CenterContainer/VBoxContainer/OutcomeLabel
+@onready var continue_button = $CenterContainer/VBoxContainer/Continue
 
 
 func _ready() -> void:
@@ -35,4 +37,8 @@ func _on_return_to_menu_pressed() -> void:
 #	assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn") == OK)
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/StartScreen.tscn")
 	Global.unlockLevel(level_unlocked)
-	
+
+func lose():
+	#outcome_label.text = ""
+	outcome_label.text = "YOU LOSE!"
+	continue_button.visible = false 

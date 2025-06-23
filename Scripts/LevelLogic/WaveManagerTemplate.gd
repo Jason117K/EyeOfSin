@@ -14,7 +14,7 @@ signal wave2Started
 signal wave3Started
 
 var current_wave = 1                # Current wave number
-var zombies_per_wave = 2           # Number of zombies in the current wave
+var zombies_per_wave = 2            # Number of zombies in the current wave
 var spawn_interval = 3.0            # Time interval between each zombie spawn
 var time_between_waves = 20.0       # Delay before starting a new wave
 var startWave2 : bool = false 
@@ -26,7 +26,7 @@ var zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  # Path
 var spawners = []  # Array to hold all ZombieSpawner nodes
 var timers = [] # Array to hold all the timers in the WavePreview nodes
 var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
-
+var health_points = 10 
 
 @export var StartDelay = 10
 #Amount of Time it Takes a wave to spawn after previous done
@@ -47,6 +47,7 @@ var health = 5
 var root
 var new_scene
 var retry_scene
+var plant_manager
 
 
 func _physics_process(_delta):
@@ -77,6 +78,7 @@ func end_level():
 
 	
 func _ready():
+	plant_manager = get_parent().get_parent().get_node("PlantManager")
 	$Area2D.connect("area_entered",player_take_damage)
 	
 	
@@ -218,9 +220,14 @@ func _done_spawning():
 
 #TODO Taking Damage
 func player_take_damage(area: Area2D) -> void:
-	print("AAAAAAGGGGGGGG")
+	#print("AAAAAAGGGGGGGG: ",area.name)
 	if area.is_in_group("Zombie"):
-		print("AAAAZZZOIHOHQWDIOHWDI()") 
+		print("Subtracting Health")
+
+		subtract_health()  # Subtract Heath
+		#TODO Play DMG Sound
+			#plant_manager.play_sun_collect()
+		#print("AAAAZZZOIHOHQWDIOHWDI()") 
 		
 func _on_spawn_next_wave():
 	print("Received spawn next wave signal!")
@@ -231,4 +238,17 @@ func _on_spawn_next_wave():
 			#timer.wait_time = $ProceedGame.wait_time - 10
 			timer.start()
 	
-	
+#Damage the Player 
+func subtract_health():
+	health_points -= 1 
+	get_parent().get_parent().get_node("UILayer/SunCounter/HealthPoints").text = "Health: " + str(health_points)
+	print("Health is ",health_points)
+	if health_points <= 0:
+		lose()
+
+func lose():
+	for child in get_parent().get_parent().get_children():
+		if "LevelSwitcher" in child.name:
+			child.lose()
+			child.visible = true
+	get_tree().paused = true

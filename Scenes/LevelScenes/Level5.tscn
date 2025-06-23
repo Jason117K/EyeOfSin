@@ -73,6 +73,7 @@ script = ExtResource("1_y1pfi")
 sun_points = 1400
 
 [node name="GameLayer" type="Node2D" parent="."]
+process_mode = 1
 z_index = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_atfoh")]

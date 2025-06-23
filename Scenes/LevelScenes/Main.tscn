@@ -69,11 +69,12 @@ script = ExtResource("10")
 sun_points = 275
 
 [node name="GameLayer" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("4")]
 position = Vector2(748, 109)
 Round1_Zombies = {
-"Base": 3,
+"Base": 7,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -83,7 +84,7 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 5,
+"Base": 3,
 "BucketHead": 0,
 "ConeHead": 3,
 "Dancer": 0,
@@ -110,7 +111,7 @@ position = Vector2(-54, 0)
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("4")]
 position = Vector2(746, 141)
 Round1_Zombies = {
-"Base": 3,
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,

@@ -9,6 +9,7 @@ var grid_size = 32 # Defines the size of each grid cell
 var grid_map = {}  # Dictionary to store occupied cells
 @export var sun_points = 200 # Holds how many sun points we have currently 
 var plant_cost = 25  # Holds the cost of the currently selected plant 
+
 @onready var parentName = get_parent().get_name()
 
 signal plant_placed
@@ -18,6 +19,8 @@ signal eyeBomb_placed
 signal eggWorm_placed
 signal wasp_placed
 signal maw_placed
+
+
 
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
@@ -257,3 +260,6 @@ func _on_SetSun_timeout():
 	else:
 		#sun_points = 900 #700
 		get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
+
+
+	

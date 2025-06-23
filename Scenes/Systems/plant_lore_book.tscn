@@ -98,6 +98,7 @@ playing = true
 
 [node name="BackButton" type="Button" parent="."]
 custom_minimum_size = Vector2(300, 25)
+layout_mode = 0
 offset_left = 7.0
 offset_top = 379.0
 offset_right = 307.0
