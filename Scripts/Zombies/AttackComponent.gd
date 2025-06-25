@@ -27,7 +27,11 @@ func attack_plant(collider):
 	print("TName is ", target_plant.name)
 	print("I am " , self.name)
 	zombieSprite.play("Attack")
-	attack_audio_player.play()
+	#attack_audio_player.play()
+	if "Bucket" in parent.name:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)
+	else:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	
 	attack_timer.start()
 	#if "Ticker" in parent.get_name():

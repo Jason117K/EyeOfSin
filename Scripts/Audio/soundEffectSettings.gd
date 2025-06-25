@@ -1,20 +1,17 @@
 class_name SoundEffect 
 extends Resource
-## Sound effect resource, used to configure unique sound effects for use with the AudioManager. Passed to [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()] to play sound effects.
+## Sound effect resource, used to configure unique sound effects for use with the AudioManager. 
+## Passed to [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()] to play sound effects.
 
 ## Stores the different types of sounds effects available to be played to distinguish them from another. Each new SoundEffect resource created should add to this enum, to allow them to be easily instantiated via [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()].
 enum SOUND_EFFECT_TYPE {
-	CRY_TOWER_ATTACK,
-	RING_TOWER_ATTACK,
-	WING_TOWER_SHOOT,
-	TOWER_PLACE,
-	DASH,
-	MELEE_ALIEN_ATTACK,
-	RANGED_ALIEN_ATTACK,
-	ALIEN_PROJECTILE_HIT,
-	TOWER_PROJECTILE_HIT,
-	REVIVE,
+	ZOMBIE_TAKE_DAMAGE,
+	DEMON_SUMMON,
 	UI_CLICK,
+	SPYDER_SPIT,
+	SUN_COLLECT,
+	ZOMBIE_DEAL_DAMAGE,
+	BUCKET_DEAL_DAMAGE,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.
@@ -39,4 +36,5 @@ func has_open_limit() -> bool:
 
 ## Connected to the [member sound_effect]'s finished signal to decrement the [member audio_count].
 func on_audio_finished() -> void:
+	print("AADUIO  GYHBKLO<*IKM( )")
 	change_audio_count(-1)

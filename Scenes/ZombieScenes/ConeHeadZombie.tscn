@@ -1,9 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://c7vl2w17wswvs"]
+[gd_scene load_steps=57 format=3 uid="uid://c7vl2w17wswvs"]
 
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="1"]
 [ext_resource type="Script" uid="uid://bs1do4ve65fp4" path="res://Scripts/Zombies/ConeHeadZombie.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://8ambahl3xtal" path="res://Assets/Audio/ZombieAttack.mp3" id="3"]
-[ext_resource type="AudioStream" uid="uid://cl1ixl83sr2sy" path="res://Assets/Audio/HitSmack.mp3" id="4"]
 [ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://dcafmrlvbujwo" path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dfex4u742bght" path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" id="7"]
@@ -372,10 +371,6 @@ target_position = Vector2(-8, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4")
-volume_db = -20.0
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3")

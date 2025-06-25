@@ -10,13 +10,14 @@ func _ready() -> void:
 	print("SSCollision Layer: ", collision_layer)
 	print("SSCollision Mask: ", collision_mask)
 	print("SSInput Pickable: ", input_pickable)
-	
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	#process_mode = Node.PROCESS_MODE_ALWAYS
 	
 #Handle sun collection 
 func _on_Sun_mouse_entered():
 	print("SS Mouse Entered")
-	$CollectAudioPlayer.play()
+	#$CollectAudioPlayer.play()
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 
 	var plant_manager = get_parent().get_parent().get_node("PlantManager")
 	if plant_manager:  # If the PlantManager or GameManager is set
@@ -28,7 +29,8 @@ func _on_Sun_mouse_entered():
 
 
 func _on_auto_pick_up_timer_timeout() -> void:
-	$CollectAudioPlayer.play()
+	#$CollectAudioPlayer.play()
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	print("SSun Auto Pickup")
 	SunValue = SunValue / 2
 	#var root = get_tree().current_scene

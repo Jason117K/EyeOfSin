@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=20 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ccvjkxxqny0cw" path="res://Assets/Plants/RedSpiderCARD.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2_vvged"]
 [ext_resource type="Texture2D" uid="uid://c5j5wlswvkgcr" path="res://Assets/Plants/EyeTower2CARD.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dbkxvyjbwrerl" path="res://Assets/Plants/EyeTreeCARD3.png" id="4"]
-[ext_resource type="AudioStream" uid="uid://cpe2vuf5wyk74" path="res://Assets/Audio/UIClick.mp3" id="5"]
 [ext_resource type="Texture2D" uid="uid://cb3saeedumi1a" path="res://Assets/Plants/EggWormCard.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://uxucc64ij83d" path="res://Assets/Plants/MawCARD.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://bwpctk28aaj8p" path="res://Assets/Plants/EyeBombCARD.png" id="8"]
@@ -243,9 +242,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "No Plant Selected"
 horizontal_alignment = 1
-
-[node name="UIClickAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5")
 
 [connection signal="pressed" from="OpenCodex/OpenCodexButton" to="." method="_on_open_codex_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]

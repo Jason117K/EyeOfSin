@@ -19,6 +19,7 @@ config/icon="res://Assets/icon.png"
 
 Global="*res://Scripts/global.gd"
 GlobalResourceLoader="*res://Scripts/UI/ResourceLoader.gd"
+AudioManager="*res://Scenes/Systems/audio_manager.tscn"
 
 [display]
 

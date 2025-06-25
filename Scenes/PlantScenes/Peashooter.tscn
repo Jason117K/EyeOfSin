@@ -1,9 +1,8 @@
-[gd_scene load_steps=131 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=130 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bhcpyioblhadb" path="res://Assets/Plants/Animations_Plant/Spider/RedSpiderAttack-Sheet.png" id="3"]
-[ext_resource type="AudioStream" uid="uid://k17glq0ulnf3" path="res://Assets/Audio/SpiderSpitAttack.mp3" id="4"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="8"]
@@ -930,10 +929,6 @@ position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4")
-volume_db = -20.0
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]
 scale = Vector2(1, 20)

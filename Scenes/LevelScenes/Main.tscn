@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=26 format=3 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="9"]
 [ext_resource type="Script" uid="uid://cfv5r2hytpurl" path="res://Scripts/LevelLogic/Main.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="11"]
-[ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="12"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
 [ext_resource type="Script" uid="uid://dlmmfpqcb527g" path="res://Scripts/Environment/ShrubAnimator.gd" id="15_dph8t"]
@@ -205,10 +204,6 @@ offset_bottom = 241.0
 color = Color(2, 0, 0, 0.729412)
 
 [node name="UILayer" parent="." instance=ExtResource("8_dph8t")]
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12")
-autoplay = true
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource("5")]
 offset_left = 8.0

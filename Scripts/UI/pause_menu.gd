@@ -9,7 +9,8 @@ func _on_resume_pressed() -> void:
 func _on_return_to_menu_pressed() -> void:
 	# Ensure proper cleanup before changing scene
 	get_tree().root.set_input_as_handled()
-	$ButtonClickPlayer.play()
+	#$ButtonClickPlayer.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	# Add a small delay to ensure clean transition
 	await get_tree().create_timer(0.1).timeout
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/StartScreen.tscn")

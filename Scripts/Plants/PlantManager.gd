@@ -187,8 +187,8 @@ func place_plant(grid_pos: Vector2):
 		get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
 		
 		#Play the sound
-		
-		$PlacePlantAudioPlayer.play()
+		AudioManager.create_2d_audio_at_location(plant_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
+		#$PlacePlantAudioPlayer.play()
 		#print("PPLant name is ", plant_instance.name)
 		if "Sunflower" in plant_instance.name:
 			print("Selected Plant Scene is : ", plant_instance.name)
@@ -254,7 +254,8 @@ func add_sun(amount):
 	
 # Play the sun collection sound 
 func play_sun_collect():
-	$SunCollectPlayer.play()
+	#$SunCollectPlayer.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	
 # Set the starting sun amount depending on level 
 func _on_SetSun_timeout():

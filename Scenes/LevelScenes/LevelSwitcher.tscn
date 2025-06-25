@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://decli4dnrpx42"]
+[gd_scene load_steps=4 format=3 uid="uid://decli4dnrpx42"]
 
 [ext_resource type="Script" uid="uid://5i8s8njak5j3" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="1_jfxaf"]
 [ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://Assets/Audio/Win1.mp3" id="3_d7mvd"]
-[ext_resource type="AudioStream" uid="uid://cpe2vuf5wyk74" path="res://Assets/Audio/UIClick.mp3" id="4_bnxj2"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="4_jfxaf"]
 
 [node name="LevelSwitcher" type="Control"]
@@ -19,9 +18,6 @@ script = ExtResource("1_jfxaf")
 [node name="BGAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_d7mvd")
 autoplay = true
-
-[node name="ButtonClickPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_bnxj2")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

@@ -61,7 +61,8 @@ func debuff():
 func shoot_projectile():
 	var runtime_seconds = Time.get_ticks_msec() / 1000.0
 	#print("Runtime: %.2f seconds" % runtime_seconds)
-	$AttackAudioPlayer.play()
+	#$AttackAudioPlayer.play()
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	var projectile = projectile_scene.instantiate()
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer

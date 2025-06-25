@@ -185,8 +185,8 @@ func _on_PeashooterButton_pressed():
 	temp_instance.queue_free()
 	
 	print("Peashooter selected")
-	$UIClickAudio.play()
-	
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	remove_button_highlight(PeaShooterButton)
 
@@ -213,8 +213,8 @@ func _on_SunflowerButton_pressed():
 	
 	print("3Label text is ", sunFlowerCostLabel.text)
 	print("Sunflower selected", temp_instance.get_name())
-	$UIClickAudio.play()
-	
+#	$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	clicked_Eye.emit()
 	#sunFlowerCostLabel.text = str(50 + (Global.getSunflowerCountVisual()*5))
 	remove_button_highlight(SunFlowerButton)
@@ -231,7 +231,8 @@ func _on_WalnutButton_pressed():
 	temp_instance.queue_free()
 		
 	print("Walnut selected")
-	$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+	#$UIClickAudio.play()
 
 # Plays Sound and Makes the Maw the current selected plant, changing label & preview image 
 func _on_MawButton_pressed():
@@ -245,7 +246,8 @@ func _on_MawButton_pressed():
 	temp_instance.queue_free()
 		
 	print("Maw Selected")
-	$UIClickAudio.play()
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
 # Plays Sound and Makes the EggWorm the current selected plant, changing label & preview image 
 func _on_EggButton_pressed():
@@ -259,7 +261,8 @@ func _on_EggButton_pressed():
 	temp_instance.queue_free()
 	
 	print("EggWorm Selected")
-	$UIClickAudio.play()
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
 # Plays Sound and Makes the EyeBomb the current selected plant, changing label & preview image 
 func _on_EyeButton_pressed():
@@ -273,7 +276,8 @@ func _on_EyeButton_pressed():
 	temp_instance.queue_free()
 	
 	print("EyeBomb Selected")
-	$UIClickAudio.play()
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	
 # Plays Sound and Makes the Hive the current selected plant, changing label & preview image 
 func _on_HiveButton_pressed():
@@ -287,8 +291,8 @@ func _on_HiveButton_pressed():
 	temp_instance.queue_free()
 		
 	print("Hive Selected")
-	$UIClickAudio.play()
-	
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 # Creates a transparent preview image for a given plant scene 
 func create_preview(plant_scene):
 	# Clear the last preview 

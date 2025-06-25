@@ -1,8 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://bkwi1ob6dceio"]
+[gd_scene load_steps=46 format=3 uid="uid://bkwi1ob6dceio"]
 
 [ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://Scripts/Zombies/BasicZombie.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="2"]
-[ext_resource type="AudioStream" uid="uid://cl1ixl83sr2sy" path="res://Assets/Audio/HitSmack.mp3" id="3"]
 [ext_resource type="AudioStream" uid="uid://chan24ixi06ro" path="res://Assets/Audio/zombie-bite-96528.mp3" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="6"]
@@ -303,11 +302,6 @@ target_position = Vector2(-10.6667, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3")
-volume_db = -20.0
-pitch_scale = 0.64
 
 [node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4")

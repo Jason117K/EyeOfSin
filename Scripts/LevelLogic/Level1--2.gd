@@ -7,10 +7,12 @@ extends Control
 
 #Moves onto next level 
 func _on_Continue_pressed():
-	$ButtonClickPlayer.play()
+	#$ButtonClickPlayer.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	assert(get_tree().change_scene_to_packed(nextLevel) ==OK)
 
 #Restarts the current level
 func _on_PlayAgain_pressed():
-	$ButtonClickPlayer.play()
+	#$ButtonClickPlayer.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	assert(get_tree().change_scene_to_file(get_parent().get_scene_file_path()) == OK)

@@ -34,7 +34,8 @@ func take_damage(damage):
 	
 	print("Taking damage ", damage, " health now ", health) 
 	
-	hitAudioPlayer.play()
+	#hitAudioPlayer.play()
+	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	#Handles killing the zombie if health hits 0
 	if health <= 0:
 		#Spawns Bomb on Zombie if it was set to explode 
