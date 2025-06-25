@@ -1,3 +1,2 @@
 Certain SUMMONS have the ability to apply BLOOD BUFFS to other summons. This means that when a compatible summon is placed in the BLOOD BUFF area of another SUMMON, a special interaction will occur, making the SUMMONS stronger.
  
-Try out activating a BLOOD BUFF with an Occular Spine and an EggWyrm. Place the EggWyrm on the map. Take note of the squares surrounding the EggWyrm preview denoting what tiles it can apply a Blood Buff too.

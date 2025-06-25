@@ -18,6 +18,7 @@ var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")
 @onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
 #Adjustable maw health & cost 
 @export var health = 100
+@onready var ogHealth = 100
 @export var cost = 200
 
 var PlantManager              # Plantmanager RefCounted 
@@ -36,14 +37,17 @@ var willBelchSun := false
 
 #Essentially a reload timer for the maw
 @onready var digestionTimer = $DigestionTimer
-
+@export var digestTime : float
+@onready var ogDigestTime = digestTime
 # Detection radius for zombies
 @onready var detection_area = $DetectionComponent
-
+@onready var buffNodes = $BuffNodesComponent
 @onready var animSpriteComp = $AnimatedSprite2D
+@onready var ogDetectionRadius = detectionAreaShape.shape.radius
 
 var bloodScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var isBuffed := false 
+var bufferName : String 
 
 func _ready():
 	collision_mask = 2
@@ -163,8 +167,7 @@ func take_damage(damage):
 	if health <= 0:
 		for tentacle in tentacles:
 			tentacle.queue_free()
-		PlantManager.clear_space(self.global_position)
-		queue_free()
+		die()
 
 #When the time is up, free up a tentacle by adding a charge
 func _on_DigestionTimer_timeout():
@@ -185,7 +188,7 @@ func _on_DigestionTimer_timeout():
 func receiveBuff(plant):
 	if !isBuffed:
 	#print(bufferName)
-		var bufferName = plant.name
+		bufferName = plant.name
 		if("EggWorm" in bufferName):
 			tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
 			tentacle2.set_colors(Color.BLUE, Color.BLUE)
@@ -205,7 +208,25 @@ func receiveBuff(plant):
 			willBelchSun = true 
 		isBuffed = true 
 		
-		
+func debuff():
+	if("EggWorm" in bufferName):
+		tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+		tentacle2.set_colors(Color.BLUE, Color.BLUE)
+		digestionTimer.wait_time = ogDigestTime
+	elif("Peashooter" in bufferName):
+		tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+		tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
+		willBelchWebs = false
+	elif("Hive" in bufferName):
+		tentacle1.set_colors(Color.WHITE, Color.WHITE)
+		tentacle2.set_colors(Color.BLACK, Color.BLACK)
+		print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
+		detectionAreaShape.shape.radius = ogDetectionRadius
+		health = ogHealth
+		print("Buffer Was HHIve")
+	elif("Sunflower" in bufferName):
+		willBelchSun = false 
+	isBuffed = false 		
 
 # Stops Spawn Animation From Playing
 func _on_AnimatedSprite_animation_finished():
@@ -227,3 +248,13 @@ func _on_detection_component_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 	#	print("Maw Assigning Tentacle to  ", area)
 		assign_tentacle_to_target(area)
+		
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()	
+
+
+func die_fromClearSpace():
+	buffNodes.clearBuffs()
+	queue_free()		

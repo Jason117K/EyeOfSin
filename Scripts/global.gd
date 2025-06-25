@@ -2,16 +2,35 @@ extends Node
 
 #Tracks Which Levels Have Been Unlocked
 
-var canPlayLevel2 : bool
-var canPlayLevel3 : bool
-var canPlayLevel4 : bool 
-var canPlayLevel5 : bool 
-var canPlayLevel6 : bool 
-var canPlayLevel7 : bool
+var canPlayLevel2 : bool = true
+var canPlayLevel3 : bool  = true
+var canPlayLevel4 : bool = true
+var canPlayLevel5 : bool = true
+var canPlayLevel6 : bool = true
+var canPlayLevel7 : bool = true
+var sunflowerCount := 0  
+var sunflowerCountVisual := 0  
 
 var game_controller : GameController
+var plant_selection_menu 
 
+func get_current_scene_filepath():
+	return game_controller.get_current_scene_filepath()
+	
+func incrementSunflowerCount():
+	sunflowerCount += 1
+	plant_selection_menu.increaseSunflowerCost()
+	
+func incrementSunflowerCountVisual():
+	sunflowerCountVisual += 1
+	
+func getSunflowerCount():
+	print("SSReturn , ", sunflowerCount)
+	return sunflowerCount
 
+func getSunflowerCountVisual():
+	return sunflowerCountVisual
+	
 func setCanPlayLevel2():
 	canPlayLevel2 = true  
 	

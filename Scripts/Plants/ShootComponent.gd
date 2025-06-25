@@ -6,7 +6,11 @@ extends Node2D
 # Configuration parameters
 @export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
 @export var extension_speed: float = 1000.0  # Pixels per second
+@onready var ogExtension_Speed := extension_speed
+
 @export var max_length: float = 1000.0
+@onready var ogMax_Length := max_length
+
 @export var laser_width: float = 4.0  # Increased for visibility
 @export var damage: float = 20
 @export var duration: float = 0.5
@@ -216,6 +220,8 @@ func buff(bufferLocation):
 func sunBuff():
 	cooldown = cooldown * 0.5
 
+func unSunBuff():
+	cooldown = cooldown/2
 
 # getter for buffed status
 func getIsBuffed():

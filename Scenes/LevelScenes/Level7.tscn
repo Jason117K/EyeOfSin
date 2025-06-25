@@ -87,6 +87,26 @@ Round1_Zombies = {
 "ScreenDoor": 0,
 "Ticker": 0
 }
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 1,
+"ConeHead": 4,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 1,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 3,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 2,
+"ScreenDoor": 0,
+"Ticker": 1
+}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_jtxfb")]
 z_index = 1
@@ -102,6 +122,26 @@ Round1_Zombies = {
 "Football": 0,
 "PoleVault": 1,
 "ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 5,
+"BucketHead": 0,
+"ConeHead": 2,
+"Dancer": 2,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 2,
+"BucketHead": 0,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 1,
+"ScreenDoor": 2,
 "Ticker": 0
 }
 
@@ -121,6 +161,26 @@ Round1_Zombies = {
 "ScreenDoor": 0,
 "Ticker": 0
 }
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 1,
+"ConeHead": 4,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 1,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 3,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 2,
+"ScreenDoor": 0,
+"Ticker": 1
+}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_jtxfb")]
 z_index = 1
@@ -136,6 +196,26 @@ Round1_Zombies = {
 "Football": 0,
 "PoleVault": 1,
 "ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 5,
+"BucketHead": 0,
+"ConeHead": 2,
+"Dancer": 2,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 2,
+"BucketHead": 0,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 1,
+"ScreenDoor": 2,
 "Ticker": 0
 }
 waveDelay = 1.2
@@ -155,6 +235,26 @@ Round1_Zombies = {
 "PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 1,
+"ConeHead": 4,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 1,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 3,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 2,
+"ScreenDoor": 0,
+"Ticker": 1
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("4_jtxfb")]

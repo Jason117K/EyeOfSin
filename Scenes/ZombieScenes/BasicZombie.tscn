@@ -207,7 +207,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -281,7 +281,7 @@ health = 130
 bloodWorth = 3.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("8")]
-speed = 70
+speed = 37
 
 [node name="AttackComponent" parent="." instance=ExtResource("5")]
 attack_power = 20

@@ -18,7 +18,11 @@ func _ready():
 	
 
 func _on_Area2D_mouse_entered():
-	numWave = spawner.get_numWave()
+	
+	numWave = spawner.get_numWave() + 1
+	if numWave == 0:
+		numWave = 1
+	print("SSNumwave is ", numWave)
 	match numWave:
 		1:
 
@@ -30,15 +34,15 @@ func _on_Area2D_mouse_entered():
 			
 			
 	if $PreviewSprite.visible == true:
-		print("SS: ", spawner.Round1_Zombies)
-		for key in spawner.Round1_Zombies:
+		print("SS: ", currentZombieDict)
+		for key in currentZombieDict:
 			#var line = "[b]" + str(key) + "[/b]: " + str(spawner.Round1_Zombies[key]) + "\n"
-			if spawner.Round1_Zombies[key] == 0:
+			if currentZombieDict[key] == 0:
 				pass
 			else:
-				var line =  str(key) + " : "+ str(spawner.Round1_Zombies[key]) + "\n"
+				var line =  str(key) + " : "+ str(currentZombieDict[key]) + "\n"
 				previewText.append_text(line)
-				print("Line is ", line)
+				print("SSLine is ", line)
 
 		$Node2D/Control.visible = true
 

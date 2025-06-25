@@ -120,7 +120,9 @@ func clear_space(passed_grid_pos):
 	print("Plant to Erase Is  ", plant_node)
 	#plantToErase.die()
 	if plant_node != null:
-		plant_node.queue_free()
+		print("The Right DDDDDDD Function is Being Called ")
+		plant_node.die_fromClearSpace()
+		#plant_node.queue_free()
 	grid_map.erase(passed_grid_pos)
 	
 
@@ -158,10 +160,11 @@ func place_plant(grid_pos: Vector2):
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			print("Maw is Big, Neighboring Cell Occupied")
 			return 
-		
+
 	
 	#Get The Cost 
 	plant_cost = plant_instance.get_cost()
+	print("Plant CCost is : ", plant_cost)
 	
 	if sun_points >= plant_cost: 
 		
@@ -191,6 +194,7 @@ func place_plant(grid_pos: Vector2):
 			print("Selected Plant Scene is : ", plant_instance.name)
 			#TODO change to sunflower_placed
 			plant_placed.emit()
+			Global.incrementSunflowerCount()
 			pass
 		elif "Peashooter" in plant_instance.name:
 			spyder_placed.emit()
@@ -244,7 +248,7 @@ func generate_unique_name(base_name: String) -> String:
 	
 #Add sun to total 
 func add_sun(amount):
-	#print("Add Sun: " , amount)
+	print("Add SunWW: " , amount)
 	sun_points += amount
 	get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
 	

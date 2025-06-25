@@ -273,7 +273,6 @@ StartDelay = 7
 Wave1_Interval = 3.0
 Wave2_Interval = 3
 Wave3_Interval = 3.0
-checkEndLevel = true
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 741.0

@@ -27,9 +27,10 @@ var isBuffed = false                               # Tracks Current Buff State O
 var PlantManager                                   # RefCounted to PlantManager 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
-
+@onready var buffNodes = $BuffNodesComponent
 @onready var animSpriteComp = $AnimatedSpriteComp
- 
+var thisBufferName : String  
+
 func _ready():
 	# Initialize drones & Plant Manager 
 	spawn_initial_drones()
@@ -56,7 +57,21 @@ func receiveBuff(bufferName):
 			droneRespawnTimer.wait_time = buffedWaitTime
 			
 		isBuffed = true 
+	thisBufferName = bufferName
 
+func debuff():
+	if("EggWorm" in thisBufferName):
+		for drone in available_drones:
+			drone.regularDamage()
+	if("Peashooter" in thisBufferName):
+		for drone in available_drones:
+			drone.makeNotExplode()
+	if("Sunflower" in thisBufferName):
+		droneRespawnTimer.wait_time = waitTime
+			
+	isBuffed = false 
+		
+		
 #Kill every drone if the Hive falls 
 func kill_all_drones():
 	print("Die Cos KILL ALL DRONES")
@@ -257,8 +272,7 @@ func command_drone_to_attack(drone, enemy):
 func take_damage(damage):
 	health = health - damage
 	if(health <= 0):
-		PlantManager.clear_space(self.global_position)
-		queue_free()
+		die()
 
 #Respawns a drone and re-optimizes assignmnets 
 func _on_DroneRespawnTimer_timeout():
@@ -293,3 +307,15 @@ func _on_AnimatedSpriteComp_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "idle"
 		animSpriteComp.play()
+		
+		
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()	
+	
+func die_fromClearSpace():
+	buffNodes.clearBuffs()
+	queue_free()		
+	
+	

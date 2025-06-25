@@ -35,7 +35,6 @@ offset_right = 734.0
 offset_bottom = 322.0
 theme_override_fonts/normal_font = ExtResource("9_v574q")
 theme_override_font_sizes/normal_font_size = 16
-text = "Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. "
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

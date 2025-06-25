@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c1jhmnedm5ggk"]
+[gd_scene load_steps=45 format=3 uid="uid://c1jhmnedm5ggk"]
 
 [ext_resource type="Script" uid="uid://c2c4na1yww6up" path="res://Scripts/Zombies/FootballZombie.gd" id="1_x5n0p"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_o5kil"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5_ae3ds"]
 [ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="6_qij6q"]
 [ext_resource type="Texture2D" uid="uid://ccxvcy1yd2jvg" path="res://Assets/Zombies/Animations/Football/FootballZombie-Sheet.png" id="7_oaedh"]
+[ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://Assets/Zombies/Animations/Football/FootballZombie-SheetWEB.png" id="8_x5n0p"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="9_qr3bx"]
 [ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="10_novje"]
 [ext_resource type="AudioStream" uid="uid://8ambahl3xtal" path="res://Assets/Audio/ZombieAttack.mp3" id="11_5y0f5"]
@@ -81,63 +82,63 @@ atlas = ExtResource("7_oaedh")
 region = Rect2(558, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djok7"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(744, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5kd2"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(837, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aevdq"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(930, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1x5w"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1023, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_006ks"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1116, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpq4k"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1209, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhrc4"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1302, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s11ql"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1395, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xeif7"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1488, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53hno"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(93, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4igk"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(186, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmq3k"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(279, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bmgh"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(372, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7vj2"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(465, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm7fv"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(558, 0, 93, 40)
 
 [sub_resource type="SpriteFrames" id="9"]
@@ -278,7 +279,7 @@ shape = SubResource("1")
 material = SubResource("44")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
-animation = &"Attack"
+animation = &"WebWalk"
 script = ExtResource("9_qr3bx")
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]

@@ -12,6 +12,7 @@ var PlantManager
 @onready var sunTimer = $SunTimer
 @export var sunWaitTime := 15.0
 @export var buffedSunWaitTime := 12.0 
+@onready var buffNodes = $BuffNodesComponent
 var isBuffed = false 
 
 #Assign PlantManager and connect the apprioprate timers 
@@ -45,19 +46,26 @@ func receiveBuff(plantName):
 		sunTimer.wait_time = buffedSunWaitTime
 		isBuffed = true 
 
+func debuff():
+	sunTimer.wait_time = sunWaitTime
+	isBuffed = false
+	pass
+
 #Handles the sunflower taking damage 
 func take_damage(damage):
 	#print("taking damage, health is " , health)
 	health = health - damage
 	if(health <= 0):
-		PlantManager.clear_space(self.global_position)
-		queue_free()
+		die()
 
 # Plant Cost Getter
 func get_cost():
+	print("1CCost is ", cost)
+	cost = cost + (5 * Global.getSunflowerCount())
+	print("2CCost is ", cost)
 	return cost
+	#cost = cost + 5
 	
-
 
 # Stops Spawn Animation From Playing
 func _on_AnimatedSprite_animation_finished():
@@ -65,9 +73,15 @@ func _on_AnimatedSprite_animation_finished():
 		animSpriteComp.animation = "idle"
 		animSpriteComp.play()
 		
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()	
 		
-		
-		
+func die_fromClearSpace():
+	print("Should Clear the DDD Buffs")
+	buffNodes.clearBuffs()
+	queue_free()		
 		
 		
 		

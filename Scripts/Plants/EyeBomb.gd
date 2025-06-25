@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var spriteComp = $AnimSpriteComponent
 @onready var hitBoxComp = $HitBoxComponent
+@onready var buffNodes = $BuffNodesComponent
 #onready var animSpriteComp = $AnimatedSprite
 
 @export var cost = 25 

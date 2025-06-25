@@ -11,7 +11,7 @@ func _ready() -> void:
 	print("SSCollision Mask: ", collision_mask)
 	print("SSInput Pickable: ", input_pickable)
 	
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	#process_mode = Node.PROCESS_MODE_ALWAYS
 	
 #Handle sun collection 
 func _on_Sun_mouse_entered():

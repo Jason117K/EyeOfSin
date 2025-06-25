@@ -14,7 +14,7 @@ var canAttack = false   # Whether or not the peashooter can attack
 @onready var attack_ray = $DMG_RayCast2D
 # Reference to the animatedSpriteComponent 
 @onready var animatedSpriteComponent = $AnimatedSprite2D
-
+@onready var buffNodes = $BuffNodesComponent
 var isBuffed := false 
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
@@ -51,6 +51,11 @@ func receiveBuff(bufferName):
 		animatedSpriteComponent.speed_scale = 2
 		isBuffed = true 
 
+func debuff():
+	print("DDDD DEBUFFFEDDDDSAqw3eg")
+	animatedSpriteComponent.speed_scale = 1
+	isBuffed = false 
+
 
 # Function to create and shoot a new projectile
 func shoot_projectile():
@@ -66,8 +71,7 @@ func take_damage(damage):
 	#print("taking damage, health is " , health)
 	health = health - damage
 	if(health <= 0):
-		PlantManager.clear_space(self.global_position)
-		queue_free()
+		die()
 
 # Handles either looping attack animation or returning to default 
 func _on_AnimatedSprite_animation_finished():
@@ -91,3 +95,14 @@ func _on_AnimatedSprite_frame_changed():
 		if(animatedSpriteComponent.frame == 3):
 			
 			shoot_projectile()
+			
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()	
+	
+func die_fromClearSpace():
+	print("DD YYYING ---------------------------------")
+	buffNodes.clearBuffs()
+	queue_free()		
+	

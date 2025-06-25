@@ -17,3 +17,7 @@ func get_animation_length(anim_name: String) -> float:
 #Changes drone color to indicate buff 
 func buff():
 	self_modulate = Color("d91a1a")
+
+func debuff():
+	self_modulate = Color("ffffff")
+	

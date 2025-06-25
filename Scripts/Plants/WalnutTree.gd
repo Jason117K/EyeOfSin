@@ -4,10 +4,18 @@ extends Area2D
 #Adjustbale Plant Parameter Variables
 @export var health = 800
 @export var buffedHealth = 1000
+@onready var ogHealth = health
+
 @export var healthRegen = 0.1
 @export var buffedHealthRegen = 0.4
+@onready var ogHealthRegen = healthRegen
+
 @export var maxHealth = 800
 @export var buffedMaxHealth = 1000
+@onready var ogMaxHealth = maxHealth
+
+
+
 
 #Adjustable Cost 
 @export var cost = 100
@@ -16,8 +24,10 @@ extends Area2D
 var PlantManager
 @onready var animComponent = $AnimatedSpriteComponent
 @onready var AOEComp = $AOEDamageComponent
+@onready var buffNodes = $BuffNodesComponent
 var isBuffed := false
 var eggWyrmBuffed := false 
+var thisBufferName : String
 
 
 #Grabs reference to plantManager 
@@ -36,14 +46,26 @@ func receiveBuff(bufferName):
 		elif "Maw" in bufferName.name:
 			healthRegen = buffedHealthRegen
 	isBuffed = true 
+	thisBufferName = bufferName
+
+func debuff():
+	if "SunFlower" in thisBufferName:
+		health = ogHealth
+		maxHealth = ogMaxHealth
+	elif "EggWorm" in thisBufferName:
+		eggWyrmBuffed = false 
+	elif "Maw" in thisBufferName:
+		healthRegen = ogHealthRegen
+	isBuffed = false
+
 	
+		
 #Handles the walnut taking damage 
 func take_damage(damage):
 	print("taking damage, health is " , health)
 	health = health - damage
 	if(health <= 0):
-		PlantManager.clear_space(self.global_position)
-		queue_free()
+		die()
 		
 #Dynamically adjusts the walnuts animation based on damage level 
 func _process(delta):
@@ -84,8 +106,14 @@ func _on_aoe_damage_timer_timeout() -> void:
 				compManager.take_damage(aoeDamage) 
 			
 		
-		
-		
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()			
+	
+func die_fromClearSpace():
+	buffNodes.clearBuffs()
+	queue_free()				
 		
 		
 		

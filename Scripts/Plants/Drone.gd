@@ -31,10 +31,16 @@ func doubleDamage():
 	attack_damage = attack_damage * 3
 	animatedSpriteComp.buff()
 
+func regularDamage():
+	attack_damage = attack_damage / 3
+	animatedSpriteComp.debuff()
+	
 # Activates the drone explosion buff
 func makeExplode():
 	explodeBuff = true
 
+func makeNotExplode():
+	explodeBuff = false
 
 func _ready():
 	#idle by default 

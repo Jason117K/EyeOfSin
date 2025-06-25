@@ -366,7 +366,9 @@ size = Vector2(39, 29)
 
 [node name="WalnutTree" type="Area2D" groups=["Plants"]]
 script = ExtResource("2")
-health = 700
+health = 650
+healthRegen = 0.08
+maxHealth = 750
 cost = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

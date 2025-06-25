@@ -38,6 +38,7 @@ scale = Vector2(5, 5)
 color = Color(0.490196, 0.0588235, 0.121569, 1)
 
 [node name="PlantButtonBG" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 92.0
 offset_top = 102.0
@@ -45,6 +46,7 @@ offset_right = 343.0
 offset_bottom = 306.0
 
 [node name="ZombieButtonBG" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 390.0
 offset_top = 104.0
@@ -104,6 +106,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="BackButton" type="Button" parent="."]
 custom_minimum_size = Vector2(300, 25)
+layout_mode = 0
 offset_left = 230.0
 offset_top = 355.0
 offset_right = 530.0

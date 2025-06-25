@@ -52,7 +52,7 @@ animations = [{
 }]
 
 [node name="Sun" type="Area2D"]
-process_mode = 3
+process_mode = 1
 modulate = Color(1, 0.423529, 0.423529, 1)
 light_mask = 31
 z_index = 99

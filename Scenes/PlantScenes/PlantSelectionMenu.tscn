@@ -66,6 +66,7 @@ offset_bottom = 132.0
 scale = Vector2(2, 2)
 
 [node name="OpenCodexButton" type="Button" parent="OpenCodex"]
+visible = false
 clip_contents = true
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(1, 0, 1, 1)
@@ -216,6 +217,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="Ignore" type="Button" parent="VBoxContainer/HBoxContainer/CodexTextTemp"]
+visible = false
 z_index = -1
 clip_contents = true
 custom_minimum_size = Vector2(19.54, 85)
@@ -225,6 +227,7 @@ theme_override_styles/normal = SubResource("3")
 icon = ExtResource("10_plp1j")
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CodexTextTemp"]
+visible = false
 z_index = 6
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_qqk0u")

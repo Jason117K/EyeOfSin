@@ -10,6 +10,10 @@ func _ready() -> void:
 	Global.game_controller = self 
 	#TODO safsfaafsafe
 	current_scene = self.get_node("CurrentScene").get_child(0)
+	
+func get_current_scene_filepath():
+	return current_scene.scene_file_path
+	pass
 
 func restore_previous_scene():
 	var scene_to_restore = previous_scenes.back()

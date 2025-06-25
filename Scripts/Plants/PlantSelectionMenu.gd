@@ -30,6 +30,7 @@ var deselectText = " PRESS [X] TO DESELECT"
 
 
 var sunFlowerCostLabel
+var sunflowerCost := 50
 var peaShooterCostLabel
 var walnutCostLabel
 var eyeCostLabel 
@@ -44,6 +45,7 @@ var hiveCostLabel
 @export var highlight_border_color: Color = Color.WHITE
 
 func _ready():
+	Global.plant_selection_menu = self
 
 	#add_button_highlight
 	set_process_input(true)
@@ -188,8 +190,12 @@ func _on_PeashooterButton_pressed():
 	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	remove_button_highlight(PeaShooterButton)
 
+func increaseSunflowerCost():
+	sunFlowerCostLabel.text = str(50+(Global.getSunflowerCount()*5))
+	
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
 func _on_SunflowerButton_pressed():
+	#Global.incrementSunflowerCountVisual()
 	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	
 	selected_plant = sunflower_scene
@@ -199,6 +205,10 @@ func _on_SunflowerButton_pressed():
 	currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
 	currentPlantCost = $VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
 	#currentPlantCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
+	sunflowerCost  += 5
+	
+	
+	#currentPlantCost.text = "Penis"
 	temp_instance.queue_free()
 	
 	print("3Label text is ", sunFlowerCostLabel.text)
@@ -206,7 +216,7 @@ func _on_SunflowerButton_pressed():
 	$UIClickAudio.play()
 	
 	clicked_Eye.emit()
-	
+	#sunFlowerCostLabel.text = str(50 + (Global.getSunflowerCountVisual()*5))
 	remove_button_highlight(SunFlowerButton)
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
@@ -440,6 +450,7 @@ func _on_wave_manager_wave_2_almost_start() -> void:
 
 func _on_remove_plant_button_pressed() -> void:
 		clear_preview()
+		
 		selected_plant = null 
 		canRemove = true 
 		
