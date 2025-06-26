@@ -1,11 +1,9 @@
-[gd_scene load_steps=107 format=3 uid="uid://djf7c6468fi4f"]
+[gd_scene load_steps=105 format=3 uid="uid://djf7c6468fi4f"]
 
 [ext_resource type="Script" uid="uid://brxqqh1fsj6ho" path="res://Scripts/Zombies/ScreenDoorZombie.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://chan24ixi06ro" path="res://Assets/Audio/zombie-bite-96528.mp3" id="2"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cof875qbhouiv" path="res://Assets/Zombies/Animations/DocOc/DocOcWalk-Sheet.png" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
-[ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="6"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dqggi2obrqlms" path="res://Assets/Zombies/Animations/DocOc/DocOcZombie-SheetWEB.png" id="9"]
@@ -701,6 +699,7 @@ bloodWorth = 10.0
 [node name="SpeedComponent" parent="." instance=ExtResource("3")]
 
 [node name="AttackComponent" parent="." instance=ExtResource("5")]
+attack_power = null
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
 position = Vector2(-9.375, 0)
@@ -733,11 +732,5 @@ target_position = Vector2(-28, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6")
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2")
 
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

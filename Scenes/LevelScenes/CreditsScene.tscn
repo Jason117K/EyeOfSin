@@ -13,7 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pomhw")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(747.005, 600)
+layout_mode = 2
+offset_left = -1.0
+offset_right = 399.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
 [node name="GridManager" parent="." instance=ExtResource("2_1ilp2")]
+visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
@@ -33,6 +42,7 @@ size_flags_vertical = 3
 use_top_left = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+z_index = 1
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -43,13 +53,15 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_dcxy8")
 bbcode_enabled = true
-text = "Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum."
 fit_content = true
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+z_index = 3
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_dcxy8")
 text = "BACK"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

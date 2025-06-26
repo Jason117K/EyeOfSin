@@ -37,6 +37,8 @@ func _on_DetectionComponent_area_entered(area):
 		#Start the explosion and only do it the first time the area is entered 
 		if(startNum == 0):
 			print("Boom Time")
+			#TODO Give Unique Boom
+			AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.TICKER_BOOM)
 			spriteComp.animation = "boom"
 			spriteComp.scale = Vector2(1.1,1.1)
 			enemiesToHitTemp = hitBoxComp.get_overlapping_areas()

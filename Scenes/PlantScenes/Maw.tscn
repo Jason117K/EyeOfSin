@@ -993,6 +993,10 @@ script = ExtResource("4")
 tentacle1_start_color = Color(0.552941, 0, 0, 1)
 tentacle2_start_color = Color(0.552941, 0, 0, 1)
 tentacle3_start_color = Color(0.552941, 0, 0, 1)
+health = null
+cost = null
+bloodAmount = null
+digestTime = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("7")

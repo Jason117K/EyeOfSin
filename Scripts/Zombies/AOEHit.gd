@@ -20,6 +20,7 @@ func goBoom():
 	hit2.play()
 	hit3.play()
 	self.visible = true 
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.TICKER_BOOM)
 	
 
 # When the last animation is finished, damage all towers caught in the area

@@ -59,3 +59,7 @@ func _on_quit_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/CreditsScene.tscn")
+
+
+func _on_options_pressed() -> void:
+	Global.game_controller.change_scene("res://Scenes/Systems/OptionsMenu.tscn")

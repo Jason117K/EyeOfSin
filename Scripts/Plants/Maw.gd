@@ -147,6 +147,7 @@ func _on_tentacle_retraction_complete(tentacle):
 			#print(enemy.name)
 			var enemyCompManager = enemy.getCompManager()
 			var slow = enemyCompManager.getSlow()
+			AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_CHEW)
 			#If the swallowed enemy is slow and maw is buffed, belch a web bomb
 			if(slow > 0):
 				if willBelchWebs:

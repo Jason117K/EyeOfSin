@@ -920,6 +920,10 @@ animations = [{
 
 [node name="Hive" type="Area2D" groups=["Plants"]]
 script = ExtResource("2")
+cost = null
+health = null
+waitTime = null
+buffedWaitTime = null
 
 [node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("10")

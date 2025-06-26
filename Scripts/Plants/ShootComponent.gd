@@ -144,6 +144,7 @@ func fire() -> void:
 			if collider.is_in_group("Zombie"):
 				if !is_firing:
 					shoot_projectile()
+					AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 					is_firing = true
 					current_length = 0.0
 					hit_enemies.clear()  # Clear the hit enemies when firing a new laser

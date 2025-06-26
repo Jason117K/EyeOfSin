@@ -37,6 +37,7 @@ func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	animSpriteComp.animation = "spawn"
 	droneRespawnTimer.wait_time = waitTime
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 	
 #Getter for plant cost 
 func get_cost():

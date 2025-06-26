@@ -1,13 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://2ax0wkgo0i4b"]
+[gd_scene load_steps=43 format=3 uid="uid://2ax0wkgo0i4b"]
 
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="1"]
-[ext_resource type="AudioStream" uid="uid://chan24ixi06ro" path="res://Assets/Audio/zombie-bite-96528.mp3" id="2"]
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="4"]
 [ext_resource type="Script" uid="uid://cvurb2cp3ea7n" path="res://Scripts/Zombies/DancerZombie.gd" id="5"]
 [ext_resource type="Script" uid="uid://b2uvykwloafcm" path="res://Scripts/Zombies/SummonComponent.gd" id="6"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
-[ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="8"]
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://Assets/Zombies/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
@@ -262,6 +260,7 @@ bloodWorth = 20.0
 speed = 15
 
 [node name="AttackComponent" parent="." instance=ExtResource("4")]
+attack_power = null
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
 position = Vector2(6.5, 3)
@@ -310,12 +309,6 @@ autostart = true
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-28, 0)
 collide_with_areas = true
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8")
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="SummonComponent" method="_on_AnimatedSprite_animation_finished"]

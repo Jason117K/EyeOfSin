@@ -1,14 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5ixunyf5ml33"]
+[gd_scene load_steps=5 format=3 uid="uid://b5ixunyf5ml33"]
 
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="1_fqmqn"]
+[ext_resource type="Script" uid="uid://btqnbn3vvfshf" path="res://Scripts/UI/options_menu.gd" id="1_jyidh"]
 [ext_resource type="Script" uid="uid://ecufr5efcjt6" path="res://Scripts/UI/volume_slider.gd" id="1_n51ap"]
+[ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="2_yilts"]
 
-[node name="Control" type="Control"]
+[node name="OptionsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jyidh")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -22,14 +26,67 @@ grow_vertical = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
+[node name="Master" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fqmqn")
+text = "Master Volume"
+horizontal_alignment = 1
+
 [node name="masterVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
 script = ExtResource("1_n51ap")
+busName = "Master"
+
+[node name="Music" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fqmqn")
+text = "Music Volume"
+horizontal_alignment = 1
 
 [node name="musicVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
 script = ExtResource("1_n51ap")
+
+[node name="SFX" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fqmqn")
+text = "SFX Volume"
+horizontal_alignment = 1
 
 [node name="sfxVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
 script = ExtResource("1_n51ap")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yilts")
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("1_fqmqn")
+text = "BACK"
+
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/masterVolumeSlider" to="CenterContainer/VBoxContainer/masterVolumeSlider" method="on_value_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -28,8 +28,13 @@ func attack_plant(collider):
 	print("I am " , self.name)
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
+	#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)
+	elif "Dancer" in parent.name:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUMMONER_ATTACK)
+	elif "Screen" in parent.name:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	

@@ -12,6 +12,13 @@ enum SOUND_EFFECT_TYPE {
 	SUN_COLLECT,
 	ZOMBIE_DEAL_DAMAGE,
 	BUCKET_DEAL_DAMAGE,
+	SUMMONER_ATTACK,
+	TICKER_BOOM,
+	SCREEN_DOOR_ATTACK,
+	MAW_GRAB,
+	WASP_BUZZ,
+	MAW_CHEW,
+	WYRM_FIRE,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.
