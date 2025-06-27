@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwnxaalr7lrsd"]
+[gd_scene load_steps=5 format=3 uid="uid://cwnxaalr7lrsd"]
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://Scripts/LevelLogic/StartScreen.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="3_dd6vr"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="3_yhwb3"]
 
 [node name="StartScreen" type="Control"]
@@ -15,7 +16,9 @@ script = ExtResource("2")
 
 [node name="GridManager" parent="." instance=ExtResource("1")]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dd6vr")
+autoplay = true
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(35, 0)

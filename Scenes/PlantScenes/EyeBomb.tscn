@@ -1,9 +1,17 @@
-[gd_scene load_steps=68 format=3 uid="uid://kfv0uffi3fyb"]
+[gd_scene load_steps=71 format=3 uid="uid://kfv0uffi3fyb"]
 
 [ext_resource type="Texture2D" uid="uid://cmoxb8mymudca" path="res://Assets/Plants/Animations_Plant/EyeBomb/EyeBombDripBoom-Sheet.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_4iy6x"]
 [ext_resource type="Script" uid="uid://722vcp81lh7t" path="res://Scripts/Plants/EyeBomb.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="4"]
+[ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://Scripts/Plants/change_color.gd" id="4_7isjx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjdvj"]
+shader = ExtResource("2_4iy6x")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="49"]
 atlas = ExtResource("1")
@@ -456,12 +464,15 @@ cost = 30
 damage = 153
 
 [node name="AnimSpriteComponent" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_vjdvj")
 sprite_frames = SubResource("17")
 animation = &"boom"
 autoplay = "spawn"
 speed_scale = 2.0
+script = ExtResource("4_7isjx")
 
 [node name="DetectionComponent" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -470,6 +481,7 @@ position = Vector2(1, -0.5)
 shape = SubResource("18")
 
 [node name="HitBoxComponent" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 3
 

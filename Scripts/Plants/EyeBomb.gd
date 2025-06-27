@@ -84,6 +84,19 @@ func _on_SpriteComponent_animation_finished():
 func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
+
+
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()	
+
+func die_fromClearSpace():
+	
+	queue_free()		
+	
+	
+	
 # Delete the eyebomb on explosion completion 
 #func _on_SpriteComponent_frame_changed():
 #	if spriteComp.animation == "Boom":

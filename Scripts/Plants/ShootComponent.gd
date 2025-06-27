@@ -38,6 +38,7 @@ var isBuffed := false
 var canAttack := false
 
 func _ready() -> void:
+	self.visible = false
 	# Set up Line2D
 	add_child(line2D)
 	#line2D.visible = false
@@ -91,6 +92,7 @@ func _process(delta: float) -> void:
 				canAttack = false
 				#line2D.visible = false
 	if is_firing:
+		self.visible = true
 		if current_length < max_length:
 			current_length += extension_speed * delta
 			current_length = min(current_length, max_length)

@@ -1,13 +1,21 @@
-[gd_scene load_steps=135 format=3 uid="uid://cp6xcabhkv21t"]
+[gd_scene load_steps=138 format=3 uid="uid://cp6xcabhkv21t"]
 
 [ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://Scripts/Plants/Hive.gd" id="2"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_pd78h"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="4"]
+[ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://Scripts/Plants/change_color.gd" id="4_7f7y1"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awm0g"]
+shader = ExtResource("2_pd78h")
+shader_parameter/target_color = Color(0.164706, 0.0705882, 0.0705882, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -920,23 +928,23 @@ animations = [{
 
 [node name="Hive" type="Area2D" groups=["Plants"]]
 script = ExtResource("2")
-cost = null
-health = null
-waitTime = null
-buffedWaitTime = null
 
 [node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_awm0g")
 sprite_frames = SubResource("10")
-animation = &"spawn"
+animation = &"idle"
 autoplay = "spawn"
-frame = 6
+script = ExtResource("4_7f7y1")
+targetColorString = "ca4242"
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("11")
 
 [node name="Swarm" type="Node2D" parent="."]
 
 [node name="DetectionComp" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -1048,6 +1056,7 @@ animation = &"New Anim"
 frame = 7
 
 [connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSpriteComp_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSpriteComp" to="AnimatedSpriteComp" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComp" to="." method="_on_enemy_entered"]
 [connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
 [connection signal="timeout" from="DroneRespawnTimer" to="." method="_on_DroneRespawnTimer_timeout"]

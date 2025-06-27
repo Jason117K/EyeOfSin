@@ -1,8 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://xia8qyghjoqw"]
+[gd_scene load_steps=27 format=3 uid="uid://xia8qyghjoqw"]
 
 [ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://Assets/Plants/Animations/Wasp 16x16 Sprite Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://mbwu3w6n5a3x" path="res://Scripts/Plants/Drone.gd" id="2"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_8cfhw"]
 [ext_resource type="Script" uid="uid://cjpy3j8mq8mfa" path="res://Scripts/Plants/DroneSpriteController.gd" id="3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10gu7"]
+shader = ExtResource("2_8cfhw")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -160,6 +167,8 @@ health = 150
 attack_range = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.670588, 0.192157, 0.192157, 1)
+material = SubResource("ShaderMaterial_10gu7")
 sprite_frames = SubResource("18")
 animation = &"attack"
 autoplay = "idle"
@@ -170,11 +179,13 @@ script = ExtResource("3")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FightZone"]
+visible = false
 position = Vector2(8, 0)
 rotation = 1.5708
 shape = SubResource("20")
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 0)
 shape = SubResource("22")
 
@@ -182,5 +193,6 @@ shape = SubResource("22")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
 position = Vector2(7, 0)
 shape = SubResource("21")

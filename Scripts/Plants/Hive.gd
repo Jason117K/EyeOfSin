@@ -58,7 +58,7 @@ func receiveBuff(bufferName):
 			droneRespawnTimer.wait_time = buffedWaitTime
 			
 		isBuffed = true 
-	thisBufferName = bufferName
+	thisBufferName = bufferName.name
 
 func debuff():
 	if("EggWorm" in thisBufferName):

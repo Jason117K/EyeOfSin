@@ -46,6 +46,16 @@ func attack_plant(collider):
 # Damages the target plant and decides whether or not to keep attacking
 func _on_AttackTimer_timeout():
 	#print("Basic Zombie Attack Timer Timeout")
+		#TODO Make Attacking Sounds More Efficient
+	if "Bucket" in parent.name:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)
+	elif "Dancer" in parent.name:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUMMONER_ATTACK)
+	elif "Screen" in parent.name:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
+	else:
+		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
+		
 	if(is_instance_valid(target_plant)):
 		print(target_plant.name)
 		if(target_plant.health >= 0):

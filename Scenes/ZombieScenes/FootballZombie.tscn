@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c1jhmnedm5ggk"]
+[gd_scene load_steps=43 format=3 uid="uid://c1jhmnedm5ggk"]
 
 [ext_resource type="Script" uid="uid://c2c4na1yww6up" path="res://Scripts/Zombies/FootballZombie.gd" id="1_x5n0p"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_o5kil"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ccxvcy1yd2jvg" path="res://Assets/Zombies/Animations/Football/FootballZombie-Sheet.png" id="7_oaedh"]
 [ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://Assets/Zombies/Animations/Football/FootballZombie-SheetWEB.png" id="8_x5n0p"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="9_qr3bx"]
-[ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="10_novje"]
-[ext_resource type="AudioStream" uid="uid://8ambahl3xtal" path="res://Assets/Audio/ZombieAttack.mp3" id="11_5y0f5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(35, 25)
@@ -287,14 +285,6 @@ target_position = Vector2(-17, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_novje")
-volume_db = -20.0
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_5y0f5")
-volume_db = -16.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

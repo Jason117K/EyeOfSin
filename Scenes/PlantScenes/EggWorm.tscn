@@ -1,9 +1,11 @@
-[gd_scene load_steps=119 format=3 uid="uid://p8shvofaoy5d"]
+[gd_scene load_steps=124 format=3 uid="uid://p8shvofaoy5d"]
 
 [ext_resource type="Texture2D" uid="uid://dsmx5pydgpmck" path="res://Assets/Plants/LaserEggWormsSmolSHELL.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://2bti3iudanb6" path="res://Assets/Plants/Worm1.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://Assets/Plants/Worm2.png" id="3"]
+[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="3_hls8g"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://Scripts/Plants/EggWorm.gd" id="4"]
+[ext_resource type="Script" uid="uid://cow2usruh0l2b" path="res://Scripts/Plants/static_change_color.gd" id="4_vkg27"]
 [ext_resource type="Script" uid="uid://ba55ljhixst0w" path="res://Scripts/Plants/Worm2Animator.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ktsfsnvej37r" path="res://Scenes/PlantScenes/LaserShootComponent.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://bbxyx2pv8hot8" path="res://Assets/Plants/LaserEggWormsSmol.png" id="7"]
@@ -12,6 +14,24 @@
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="11"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="12"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7jjk"]
+shader = ExtResource("3_hls8g")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqc8a"]
+shader = ExtResource("3_hls8g")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5n28x"]
+shader = ExtResource("3_hls8g")
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(38, 33)
@@ -795,12 +815,16 @@ texture = ExtResource("7")
 
 [node name="Egg" type="Sprite2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_t7jjk")
 position = Vector2(0, -3)
 texture = ExtResource("1")
+script = ExtResource("4_vkg27")
 
 [node name="Worm1" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oqc8a")
 position = Vector2(11, 1)
 texture = ExtResource("2")
+script = ExtResource("4_vkg27")
 
 [node name="Worm2Animator" type="Node2D" parent="."]
 visible = false
@@ -811,15 +835,16 @@ bounce_elasticity = 0.0
 sprite_path = NodePath("../Worm2")
 
 [node name="Worm2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5n28x")
 position = Vector2(-11, 1)
 texture = ExtResource("3")
+script = ExtResource("4_vkg27")
 
 [node name="LaserShootComponent" parent="Worm2" instance=ExtResource("6")]
 position = Vector2(14, -9)
 extension_speed = 30000.0
 max_length = 20000.0
 laser_width = 10.0
-damage = null
 duration = 1.0
 cooldown = 2.0
 zigzag_height = 160.0

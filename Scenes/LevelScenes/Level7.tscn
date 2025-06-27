@@ -284,7 +284,6 @@ color = Color(2, 0, 0, 0.729412)
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_hn15n")
-volume_db = -80.0
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

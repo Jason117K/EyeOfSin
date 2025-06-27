@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=27 format=3 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -20,6 +20,7 @@
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="19_ep3m3"]
 [ext_resource type="Script" uid="uid://ct1f77uyefcnp" path="res://Scripts/UI/pause_button.gd" id="20_0lj60"]
 [ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://Scenes/LevelScenes/PauseMenu.tscn" id="21_2la15"]
+[ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="21_jgfqe"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -83,7 +84,7 @@ Round1_Zombies = {
 "Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 1
+"Ticker": 0
 }
 Round2_Zombies = {
 "Base": 3,
@@ -189,7 +190,7 @@ position = Vector2(-46, 4)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("2")]
 position = Vector2(-64, 200)
 script = ExtResource("9")
-StartDelay = 8
+StartDelay = 999
 Wave2StartTime = 30
 Wave3StartTime = 40
 Wave1_Interval = 1.0
@@ -451,6 +452,10 @@ offset_left = -327.0
 offset_top = -193.0
 offset_right = -327.0
 offset_bottom = -193.0
+
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_jgfqe")
+autoplay = true
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="plant_placed" from="PlantManager" to="PlantSelectionMenu" method="_on_plant_manager_plant_placed"]

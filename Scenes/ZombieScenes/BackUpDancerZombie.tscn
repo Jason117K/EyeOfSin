@@ -1,11 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgcaw5piiqcxr"]
+[gd_scene load_steps=25 format=3 uid="uid://cgcaw5piiqcxr"]
 
 [ext_resource type="Texture2D" uid="uid://b2fg3smedqosy" path="res://Assets/Zombies/BackUpDancerFloat-Sheet.png" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="3"]
-[ext_resource type="AudioStream" uid="uid://chan24ixi06ro" path="res://Assets/Audio/zombie-bite-96528.mp3" id="4"]
 [ext_resource type="Script" uid="uid://cnr47vvtfeg2g" path="res://Scripts/Zombies/BackUpDancerZombie.gd" id="5"]
-[ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="6"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://l6dgn4pcxpf6" path="res://Assets/Zombies/BackUpDancerFloat-SheetWEB.png" id="8"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="9"]
@@ -147,11 +145,5 @@ script = ExtResource("10")
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6")
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4")
 
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

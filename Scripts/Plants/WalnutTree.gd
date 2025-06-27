@@ -46,7 +46,7 @@ func receiveBuff(bufferName):
 		elif "Maw" in bufferName.name:
 			healthRegen = buffedHealthRegen
 	isBuffed = true 
-	thisBufferName = bufferName
+	thisBufferName = bufferName.name
 
 func debuff():
 	if "SunFlower" in thisBufferName:
@@ -108,11 +108,13 @@ func _on_aoe_damage_timer_timeout() -> void:
 		
 func die():
 	PlantManager.clear_space(self.global_position)
-	buffNodes.clearBuffs()
+	if buffNodes != null:
+		buffNodes.clearBuffs()
 	queue_free()			
 	
 func die_fromClearSpace():
-	buffNodes.clearBuffs()
+	if buffNodes != null:
+		buffNodes.clearBuffs()
 	queue_free()				
 		
 		

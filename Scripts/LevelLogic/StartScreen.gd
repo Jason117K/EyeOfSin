@@ -3,7 +3,7 @@ extends Control
 
 @onready var startGameButton = $CenterContainer/VBoxContainer/StartGame
 @onready var levelSelectButton = $CenterContainer/VBoxContainer/LevelSelectButton
-
+@onready var bgMusic = $BackGroundMuisc
 #Sets up the startscreen tiles
 func _ready():
 	# Get fresh reference
@@ -37,7 +37,7 @@ func _ready():
 	startGameButton.get_theme_stylebox("normal").bg_color = Color.BLACK
 
 
-	$AudioStreamPlayer2D.playing = true
+	bgMusic.playing = true
 	
 	levelSelectButton.pressed.connect(_on_level_select_button_pressed)
 	process_mode = Node.PROCESS_MODE_ALWAYS

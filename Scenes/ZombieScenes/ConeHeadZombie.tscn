@@ -1,8 +1,7 @@
-[gd_scene load_steps=57 format=3 uid="uid://c7vl2w17wswvs"]
+[gd_scene load_steps=56 format=3 uid="uid://c7vl2w17wswvs"]
 
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="1"]
 [ext_resource type="Script" uid="uid://bs1do4ve65fp4" path="res://Scripts/Zombies/ConeHeadZombie.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://8ambahl3xtal" path="res://Assets/Audio/ZombieAttack.mp3" id="3"]
 [ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://dcafmrlvbujwo" path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dfex4u742bght" path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" id="7"]
@@ -361,8 +360,7 @@ shape = SubResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("31")
 sprite_frames = SubResource("17")
-animation = &"WebAttack"
-frame = 2
+animation = &"Walk"
 flip_h = true
 script = ExtResource("12")
 
@@ -371,10 +369,6 @@ target_position = Vector2(-8, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3")
-volume_db = -16.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
