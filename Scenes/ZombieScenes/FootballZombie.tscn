@@ -254,6 +254,7 @@ animations = [{
 
 [node name="FootBallZombie" type="Area2D" groups=["Zombie"]]
 z_index = 1
+position = Vector2(-16, -30)
 collision_layer = 2
 script = ExtResource("1_x5n0p")
 

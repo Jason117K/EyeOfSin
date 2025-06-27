@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="5"]
 [ext_resource type="Script" uid="uid://dy5gbe70aven8" path="res://Scripts/LevelLogic/Level3.gd" id="6"]
-[ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="7"]
 [ext_resource type="Script" uid="uid://c31n61qr27kvd" path="res://Scripts/LevelLogic/WaveManager_Lvl3.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="9"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="10"]
@@ -337,7 +337,7 @@ texture = ExtResource("18")
 flip_h = true
 
 [node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(690, 312)
+position = Vector2(444, 299)
 texture = ExtResource("18")
 
 [node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
@@ -357,16 +357,12 @@ flip_h = true
 position = Vector2(513, 45)
 texture = ExtResource("18")
 
-[node name="CoralSmallProp7" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(413, 382)
-scale = Vector2(-0.0526316, 1)
-texture = ExtResource("18")
-
 [node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(617, 324)
 texture = ExtResource("17")
 
 [node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
+visible = false
 position = Vector2(631, 332)
 texture = ExtResource("17")
 flip_h = true
@@ -376,7 +372,32 @@ position = Vector2(613, 343)
 texture = ExtResource("17")
 flip_h = true
 
+[node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(413, 318)
+texture = ExtResource("17")
+flip_h = true
+
+[node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(455, 347)
+texture = ExtResource("17")
+flip_h = true
+
+[node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(628, 36)
+texture = ExtResource("17")
+
+[node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(380, 35)
+texture = ExtResource("17")
+flip_h = true
+
+[node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(703, 31)
+texture = ExtResource("17")
+flip_h = true
+
 [node name="Bramble" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(505, 328)
@@ -422,10 +443,43 @@ position = Vector2(638, 346)
 [node name="Shrubs" type="Node2D" parent="Environment"]
 
 [node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(552, 40)
+position = Vector2(461, 27)
+scale = Vector2(1, 1)
+
+[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(503, 332)
+scale = Vector2(1, 1)
+
+[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(479, 375)
+scale = Vector2(1, 1)
+
+[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(377, 353)
+scale = Vector2(1, 1)
+
+[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(232, 388)
+scale = Vector2(1, 1)
+
+[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(667, 332)
+scale = Vector2(1, 1)
+
+[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(558, 352)
+scale = Vector2(1, 1)
+
+[node name="Shrub8" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(319, 41)
+scale = Vector2(1, 1)
+
+[node name="Shrub9" parent="Environment/Shrubs" instance=ExtResource("12")]
+position = Vector2(357, 46)
 scale = Vector2(1, 1)
 
 [node name="Trees" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
@@ -444,7 +498,12 @@ position = Vector2(587, 387)
 sprite_frames = SubResource("6")
 flip_h = true
 
+[node name="EyeStalk2" type="AnimatedSprite2D" parent="Environment/Special"]
+position = Vector2(342, 368)
+sprite_frames = SubResource("6")
+
 [node name="ToolTips" parent="." instance=ExtResource("19_ldx1s")]
+visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = 8

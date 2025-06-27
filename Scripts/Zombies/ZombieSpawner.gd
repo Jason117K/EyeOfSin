@@ -110,6 +110,10 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-50,0)#Adjust position as needed
 				if "Ticker" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)
+				if "Foot" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-4)
+				if "Screen" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-3)					
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#$WaveDelay.start()
 				print("Spawn Wave 1")

@@ -7,12 +7,12 @@ extends AnimatedSprite2D
 
 # Alternative: Manual weight ranges
 @export_group("Weight Ranges")
-@export var slow_range_min: float = 0.5
-@export var slow_range_max: float = 1.0
+@export var slow_range_min: float = 0.1
+@export var slow_range_max: float = 0.5
 @export var slow_weight: float = 80.0  # Percentage chance for slow range
 
-@export var fast_range_min: float = 1.0
-@export var fast_range_max: float = 1.5
+@export var fast_range_min: float = 0.6
+@export var fast_range_max: float = 0.98
 @export var fast_weight: float = 20.0  # Percentage chance for fast range
 
 # Choose randomization method

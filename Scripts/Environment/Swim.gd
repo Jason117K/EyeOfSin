@@ -4,15 +4,18 @@ extends AnimatedSprite2D
 # Handles fish movement 
 
 #Adjustblae movement parameters 
-@export var minSpeed: float = 1.0
-@export var maxSpeed: float = 2.0
-@export var minAmount: float = 10.0
-@export var maxAmount: float = 50.0
+@export var minSpeed: float = 9
+@export var maxSpeed: float = 20
+@export var minSpeedAnim: float = 1
+@export var maxSpeedAnim: float = 2
+@export var minAmount: float = 7.0
+@export var maxAmount: float = 150.0
 
 #variables to store amount moved and initial position 
 var moveAmount: float
 var distanceMoved: float = 0.0
 var startPosition: Vector2
+var speed : float
 
 func _ready():
 	# Create random number generator
@@ -23,19 +26,22 @@ func _ready():
 	
 	# Set random movement amount and store start position
 	moveAmount = randf_range(minAmount, maxAmount)
+	print("MM Move Amount is ", moveAmount)
 	startPosition = position
 	
+	#Init speed
+	speed = randf_range(minSpeed,maxSpeed)
 	# Only play if minSpeed is greater than 0
 	if minSpeed > 0:
 		# Set random speed between min and max
-		speed_scale = randf_range(minSpeed, maxSpeed)
+		speed_scale = randf_range(minSpeedAnim, maxSpeedAnim)
 		play()
 	else:
 		stop()
 
 func _process(delta):
 	# Calculate movement for this frame
-	var movement = moveAmount * delta
+	var movement = speed * delta
 	
 	# Move sprite based on flip direction
 	if flip_h:

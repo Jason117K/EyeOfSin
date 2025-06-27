@@ -1,0 +1,212 @@
+[gd_scene load_steps=28 format=3 uid="uid://bgnidyneslcqh"]
+
+[ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://Scripts/complexTutorialImage.gd" id="1_e4llh"]
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="2_1lhml"]
+[ext_resource type="Texture2D" uid="uid://denmhprn6ukid" path="res://Assets/Plants/Animations/RedSpiderAttack-Sheet.png" id="3_41nvc"]
+[ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="4_e4llh"]
+[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://Assets/Plants/Animations/Wasp 16x16 Sprite Sheet.png" id="5_1lhml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6mlr"]
+atlas = ExtResource("3_41nvc")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kq3p"]
+atlas = ExtResource("3_41nvc")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af1nn"]
+atlas = ExtResource("3_41nvc")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nrt7"]
+atlas = ExtResource("3_41nvc")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kouv"]
+atlas = ExtResource("3_41nvc")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iomid"]
+atlas = ExtResource("3_41nvc")
+region = Rect2(2000, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qxis"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6mlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kq3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af1nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nrt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kouv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iomid")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd7ji"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn5mt"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_640p6"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7xn6"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6kyb"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pipac"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbp0u"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v436c"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkjwq"]
+atlas = ExtResource("4_e4llh")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6dt0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd7ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn5mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_640p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7xn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6kyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pipac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbp0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v436c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkjwq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppu7i"]
+atlas = ExtResource("5_1lhml")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v78ex"]
+atlas = ExtResource("5_1lhml")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3c6s"]
+atlas = ExtResource("5_1lhml")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ncr"]
+atlas = ExtResource("5_1lhml")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8x45d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppu7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v78ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3c6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8ncr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="maw_egg_buff" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e4llh")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+layout_mode = 0
+offset_right = 207.0
+offset_bottom = 115.0
+texture = ExtResource("2_1lhml")
+
+[node name="Spyder" type="AnimatedSprite2D" parent="."]
+position = Vector2(46, 25)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_7qxis")
+autoplay = "default"
+flip_h = true
+
+[node name="Hive" type="AnimatedSprite2D" parent="."]
+position = Vector2(148, 44)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6dt0s")
+frame = 4
+frame_progress = 0.120694
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
+position = Vector2(111, 25)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8x45d")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
+position = Vector2(148, 88)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8x45d")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
+position = Vector2(185, 23)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8x45d")

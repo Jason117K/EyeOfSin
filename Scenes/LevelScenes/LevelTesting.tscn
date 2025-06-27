@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://der1qkybx4731" path="res://Assets/Environment/Props/CoralBigPROP.png" id="12_xega2"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="13_i40ro"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="14_nfeiv"]
-[ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="15_noxcv"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="15_noxcv"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="16_f7sca"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_11rqa"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_7q2l8"]
@@ -79,7 +79,7 @@ z_index = 1
 position = Vector2(747, 77)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
+"BucketHead": 1,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
@@ -108,7 +108,7 @@ Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
 "ConeHead": 1,
-"Dancer": 0,
+"Dancer": 1,
 "Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -163,7 +163,7 @@ Round1_Zombies = {
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 1,
 "Ticker": 0
@@ -181,7 +181,7 @@ Round1_Zombies = {
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 1,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -198,12 +198,13 @@ z_index = -2
 z_index = 1
 position = Vector2(-59, 222)
 script = ExtResource("7_nx2as")
-StartDelay = 99
+StartDelay = 3
 Wave2StartTime = 30
 Wave3StartTime = 60
 Wave1_Interval = 2.0
 Wave2_Interval = 4
 Wave3_Interval = 2.0
+canStartGame = true
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
 offset_left = 741.0

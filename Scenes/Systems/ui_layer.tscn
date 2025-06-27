@@ -21,7 +21,7 @@ offset_bottom = -280.0
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
-offset_right = 119.0
+offset_right = 126.0
 offset_bottom = 23.0
 scale = Vector2(1.88, 2.12)
 color = Color(0, 0, 0, 1)
@@ -30,7 +30,7 @@ color = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 120.0
+offset_right = 127.0
 offset_bottom = 24.0
 scale = Vector2(1.86, 1.98)
 color = Color(1, 0, 0, 1)
@@ -39,16 +39,16 @@ color = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 144.0
+offset_right = 153.0
 offset_bottom = 25.0
 scale = Vector2(1.53, 1.885)
 color = Color(0, 0, 0, 1)
 
 [node name="HealthPoints" type="Label" parent="SunCounter"]
 layout_mode = 2
-offset_left = 121.0
+offset_left = 128.0
 offset_top = 15.0
-offset_right = 215.0
+offset_right = 222.0
 offset_bottom = 48.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qaivy")
@@ -56,9 +56,9 @@ text = "Health:10"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SunCounter"]
 layout_mode = 0
-offset_left = 6.0
+offset_left = 9.0
 offset_top = 2.0
-offset_right = 214.0
+offset_right = 217.0
 offset_bottom = 42.0
 theme_override_constants/separation = 10
 

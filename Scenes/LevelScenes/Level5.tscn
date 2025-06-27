@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://der1qkybx4731" path="res://Assets/Environment/Props/CoralBigPROP.png" id="12_b5h5w"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="13_38u66"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="14_eai0y"]
-[ext_resource type="PackedScene" path="res://Scenes/Environment/Fish.tscn" id="15_t0l2q"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="15_t0l2q"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="16_cabgr"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_5ydb2"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_bvdl2"]
@@ -316,6 +316,7 @@ color = Color(0, 0, 0, 0.0784314)
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Coral" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(532, 366)
@@ -381,8 +382,55 @@ flip_h = true
 position = Vector2(505, 328)
 texture = ExtResource("13_38u66")
 
+[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(486, 24)
+texture = ExtResource("13_38u66")
+flip_h = true
+
+[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(227, 394)
+texture = ExtResource("13_38u66")
+flip_h = true
+
+[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(174, 284)
+texture = ExtResource("13_38u66")
+flip_h = true
+
+[node name="Bramble7" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(679, 396)
+texture = ExtResource("13_38u66")
+flip_h = true
+
+[node name="Bramble8" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(576, 376)
+texture = ExtResource("13_38u66")
+
+[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(334, 21)
+texture = ExtResource("13_38u66")
+
+[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(640, 32)
+texture = ExtResource("13_38u66")
+
 [node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(366, 316)
+texture = ExtResource("14_eai0y")
+flip_h = true
+
+[node name="BrambleSmall5" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(591, 13)
+texture = ExtResource("14_eai0y")
+flip_h = true
+
+[node name="BrambleSmall6" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(299, 35)
+texture = ExtResource("14_eai0y")
+flip_h = true
+
+[node name="BrambleSmall7" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(226, 304)
 texture = ExtResource("14_eai0y")
 flip_h = true
 
@@ -424,12 +472,66 @@ position = Vector2(638, 346)
 position = Vector2(552, 40)
 scale = Vector2(1, 1)
 
+[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(254, 37)
+scale = Vector2(1, 1)
+
+[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(376, 37)
+scale = Vector2(1, 1)
+
+[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(158, 398)
+scale = Vector2(1, 1)
+
+[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(59, 282)
+scale = Vector2(1, 1)
+
+[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(45, 390)
+scale = Vector2(1, 1)
+
+[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(445, 373)
+scale = Vector2(1, 1)
+
+[node name="Shrub8" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(422, 365)
+scale = Vector2(1, 1)
+
+[node name="Shrub9" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(467, 357)
+scale = Vector2(1, 1)
+
+[node name="Shrub10" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(629, 373)
+scale = Vector2(1, 1)
+
+[node name="Shrub11" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(664, 332)
+scale = Vector2(1, 1)
+
+[node name="Shrub12" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(596, 322)
+scale = Vector2(1, 1)
+
+[node name="Shrub13" parent="Environment/Shrubs" instance=ExtResource("16_cabgr")]
+position = Vector2(719, 16)
+scale = Vector2(1, 1)
+
 [node name="Trees" type="Node2D" parent="Environment"]
 
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
-position = Vector2(317, 335)
+position = Vector2(337, 340)
 texture = ExtResource("17_5ydb2")
+
+[node name="BloodTree3" type="Sprite2D" parent="Environment/Trees"]
+z_index = 1
+position = Vector2(508, 379)
+texture = ExtResource("17_5ydb2")
+flip_h = true
 
 [node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
@@ -437,6 +539,7 @@ position = Vector2(100, 16)
 texture = ExtResource("17_5ydb2")
 
 [node name="Special" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
 position = Vector2(587, 387)
