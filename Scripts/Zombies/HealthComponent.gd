@@ -56,7 +56,7 @@ func take_damage(damage):
 			#$CollectAudioPlayer.play()
 			print("ADDING WW Blood Worth : ", bloodWorth)
 			plant_manager.add_sun(bloodWorth)  # Add 25 sun points (or whatever amount)
-			plant_manager.play_sun_collect()
+			#plant_manager.play_sun_collect()
 		else:
 			print("Plant Manager is NULLWWWW")
 		zombie.die()

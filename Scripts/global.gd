@@ -16,7 +16,9 @@ var plant_selection_menu
 
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()
-	
+
+func resetSunflowerCount():
+	sunflowerCount = 0
 func incrementSunflowerCount():
 	sunflowerCount += 1
 	plant_selection_menu.increaseSunflowerCost()

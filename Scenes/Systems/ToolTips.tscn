@@ -18,6 +18,7 @@ border_color = Color(0.8, 0, 0, 1)
 
 [node name="ToolTips" type="PanelContainer"]
 process_mode = 3
+z_index = 1
 anchors_preset = -1
 anchor_left = 0.304
 anchor_top = 0.105

@@ -19,7 +19,7 @@
 
 [sub_resource type="Resource" id="Resource_djtss"]
 script = ExtResource("2_ccgv0")
-limit = 3
+limit = 2
 type = 0
 sound_effect = ExtResource("3_icebg")
 volume = -8.285
@@ -59,7 +59,7 @@ metadata/_custom_type_script = "uid://4eiirlwgrgs8"
 
 [sub_resource type="Resource" id="Resource_54sv8"]
 script = ExtResource("2_ccgv0")
-limit = 4
+limit = 3
 type = 4
 sound_effect = ExtResource("7_pvcuu")
 volume = -10.465
@@ -69,10 +69,10 @@ metadata/_custom_type_script = "uid://4eiirlwgrgs8"
 
 [sub_resource type="Resource" id="Resource_7xj7y"]
 script = ExtResource("2_ccgv0")
-limit = 3
+limit = 2
 type = 5
 sound_effect = ExtResource("8_vgkqf")
-volume = 0.0
+volume = -5.272
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://4eiirlwgrgs8"
@@ -119,7 +119,7 @@ metadata/_custom_type_script = "uid://4eiirlwgrgs8"
 
 [sub_resource type="Resource" id="Resource_rb65j"]
 script = ExtResource("2_ccgv0")
-limit = 5
+limit = 4
 type = 10
 sound_effect = ExtResource("13_rybe5")
 volume = 0.0
@@ -142,14 +142,14 @@ script = ExtResource("2_ccgv0")
 limit = 2
 type = 12
 sound_effect = ExtResource("15_de70p")
-volume = 0.0
+volume = -8.786
 pitch_scale = 1.0
 pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://4eiirlwgrgs8"
 
 [sub_resource type="Resource" id="Resource_178v7"]
 script = ExtResource("2_ccgv0")
-limit = 3
+limit = 2
 type = 13
 sound_effect = ExtResource("16_rb65j")
 volume = -5.523

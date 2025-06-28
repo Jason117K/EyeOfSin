@@ -74,6 +74,7 @@ script = ExtResource("1_gaqbg")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 self_modulate = Color(0.46, 0.46, 0.46, 1)
+layout_mode = 0
 offset_right = 108.0
 offset_bottom = 49.0
 scale = Vector2(2, 2)
@@ -87,7 +88,7 @@ sprite_frames = ExtResource("1_m3nwt")
 
 [node name="OccularSpine" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_t10a1")
-position = Vector2(160, 40)
+position = Vector2(163, 44)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4cddc")
 script = ExtResource("3_gaqbg")

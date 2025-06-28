@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c0i06w5c5gtby"]
+[gd_scene load_steps=26 format=3 uid="uid://c0i06w5c5gtby"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -55,6 +55,14 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
 
 [node name="Level2" type="Control"]
 layout_mode = 3
@@ -262,7 +270,6 @@ position = Vector2(-42, 2)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("2")]
 position = Vector2(-64, 192)
 script = ExtResource("9")
-StartDelay = 99
 Wave1_Interval = 1.0
 Wave3_Interval = 89.0
 
@@ -465,6 +472,7 @@ offset_right = 152.0
 offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("18_3o6er")]
 visible = false

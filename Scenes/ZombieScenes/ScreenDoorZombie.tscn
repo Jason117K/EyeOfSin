@@ -429,7 +429,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -711,8 +711,7 @@ shape = SubResource("17")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("27")
 sprite_frames = SubResource("16")
-animation = &"Attack"
-frame_progress = 0.212695
+animation = &"Walk"
 script = ExtResource("10")
 metadata/_edit_lock_ = true
 

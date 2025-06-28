@@ -20,6 +20,7 @@ var count := 0
 
 # Sets Up the Tiles For Level 5 
 func _ready():
+	Global.resetSunflowerCount()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	$GameLayer/GridManager.set_tiles_for_rows(0,1, 68)
 	#$GameLayer/GridManager.set_tiles_for_rows(1,2, 66)

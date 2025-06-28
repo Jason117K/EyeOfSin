@@ -45,6 +45,8 @@ func receiveBuff(bufferName):
 			eggWyrmBuffed = true 
 		elif "Maw" in bufferName.name:
 			healthRegen = buffedHealthRegen
+			print("GG Color Changed")
+			$AnimatedSpriteComponent.change_color()
 	isBuffed = true 
 	thisBufferName = bufferName.name
 

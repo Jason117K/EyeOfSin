@@ -145,6 +145,8 @@ position = Vector2(132, 64)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_vkb4b")
 script = ExtResource("2_xn45f")
+target_color = Color(0.152941, 0.152941, 0.152941, 1)
+replace_color = Color(0.39, 0, 0, 1)
 
 [node name="Hive" type="AnimatedSprite2D" parent="."]
 position = Vector2(46, 41)

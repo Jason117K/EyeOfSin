@@ -19,6 +19,7 @@ var placedEgg : = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.resetSunflowerCount()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 #	$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
 	$GameLayer/GridManager.set_tiles_for_rows(0,1, 68)

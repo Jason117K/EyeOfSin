@@ -6,7 +6,7 @@ var startScreen = ("res://Scenes/LevelScenes/StartScreen.tscn")
 
 func _ready() -> void:
 	creditsText.append_text("Creative Director : Jason King\n")
-	creditsText.append_text("Art : Jason King,Admurin, and Penusbmic")
+	creditsText.append_text("Art : Jason King,Admurin, and Penusbmic\n")
 	creditsText.append_text("SFX : Sourced from Zapsplat")
 	$GridManager.set_tiles_for_rows(0,1, 68)
 	$GridManager.set_tiles_for_rows(1,2, 66)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c6u6h5wyw25fr"]
+[gd_scene load_steps=28 format=3 uid="uid://c6u6h5wyw25fr"]
 
 [ext_resource type="Script" uid="uid://c2arg8yxe0hf5" path="res://Scripts/LevelLogic/Level7.gd" id="1_rhl2j"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_xvglt"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_wwxxi"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="20_xvglt"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="21_bpqyd"]
+[ext_resource type="PackedScene" uid="uid://d1f383t0twnnu" path="res://Scenes/LevelScenes/EndScreen.tscn" id="21_jtxfb"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -552,6 +553,7 @@ grow_vertical = 2
 [node name="LevelSwitcher" parent="." instance=ExtResource("20_xvglt")]
 visible = false
 layout_mode = 1
+nextLevel = ExtResource("21_jtxfb")
 
 [node name="CodexBG" parent="." instance=ExtResource("21_bpqyd")]
 layout_mode = 0

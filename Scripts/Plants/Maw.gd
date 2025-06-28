@@ -21,6 +21,10 @@ var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")
 @onready var ogHealth = 100
 @export var cost = 200
 
+@export var alt_target_color : Color 
+@export var alt_replace_color : Color 
+
+
 var PlantManager              # Plantmanager RefCounted 
 var tentacles = []            # Array to track all tentacles
 var attacking_tentacles = {}  # Dictionary to track which tentacles are attacking which enemies
@@ -191,36 +195,38 @@ func receiveBuff(plant):
 	#print(bufferName)
 		bufferName = plant.name
 		if("EggWorm" in bufferName):
-			tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
-			tentacle2.set_colors(Color.BLUE, Color.BLUE)
+			#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+			#tentacle2.set_colors(Color.BLUE, Color.BLUE)
+			$AnimatedSprite2D.change_color()
 			digestionTimer.wait_time = 6
 		elif("Peashooter" in bufferName):
-			tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
-			tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
+			#tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+			#tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
 			willBelchWebs = true
 		elif("Hive" in bufferName):
-			tentacle1.set_colors(Color.WHITE, Color.WHITE)
-			tentacle2.set_colors(Color.BLACK, Color.BLACK)
+			#tentacle1.set_colors(Color.WHITE, Color.WHITE)
+			#tentacle2.set_colors(Color.BLACK, Color.BLACK)
 			print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
 			detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
 			health = 200
 			print("Buffer Was HHIve")
+			$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
 		elif("Sunflower" in bufferName):
 			willBelchSun = true 
 		isBuffed = true 
 		
 func debuff():
 	if("EggWorm" in bufferName):
-		tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
-		tentacle2.set_colors(Color.BLUE, Color.BLUE)
+		#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+		#tentacle2.set_colors(Color.BLUE, Color.BLUE)
 		digestionTimer.wait_time = ogDigestTime
 	elif("Peashooter" in bufferName):
-		tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
-		tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
+	#	tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+	#	tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
 		willBelchWebs = false
 	elif("Hive" in bufferName):
-		tentacle1.set_colors(Color.WHITE, Color.WHITE)
-		tentacle2.set_colors(Color.BLACK, Color.BLACK)
+	#	tentacle1.set_colors(Color.WHITE, Color.WHITE)
+	#	tentacle2.set_colors(Color.BLACK, Color.BLACK)
 		print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
 		detectionAreaShape.shape.radius = ogDetectionRadius
 		health = ogHealth

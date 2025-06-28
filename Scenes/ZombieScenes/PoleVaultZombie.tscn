@@ -318,7 +318,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -399,8 +399,7 @@ shape = SubResource("1")
 material = SubResource("44")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
-animation = &"Walk"
-frame = 1
+animation = &"Attack"
 flip_h = true
 script = ExtResource("10")
 
