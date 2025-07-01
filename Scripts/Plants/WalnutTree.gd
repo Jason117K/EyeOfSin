@@ -35,6 +35,7 @@ func _ready():
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	animComponent.animation = "spawn"
 
+
 #Sets buffed to true 
 func receiveBuff(bufferName):
 	if !isBuffed:
