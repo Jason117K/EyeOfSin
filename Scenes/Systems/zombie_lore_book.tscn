@@ -28,6 +28,15 @@ offset_bottom = 40.0
 scale = Vector2(18.6, 10.48)
 color = Color(0.490196, 0.0588235, 0.121569, 1)
 
+[node name="CurrentZombieTitle" type="Label" parent="."]
+layout_mode = 2
+offset_left = 514.0
+offset_top = 178.0
+offset_right = 541.0
+offset_bottom = 201.0
+theme_override_fonts/font = ExtResource("1_brvkm")
+theme_override_font_sizes/font_size = 16
+
 [node name="CurrentZombieLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 416.0
@@ -94,6 +103,7 @@ texture_normal = ExtResource("9_7frkv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

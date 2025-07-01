@@ -43,25 +43,101 @@ color = Color(0.490196, 0.0588235, 0.121569, 1)
 [node name="CurrentPlantLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(500, 1)
 layout_mode = 2
-offset_left = 234.0
-offset_top = 218.0
-offset_right = 734.0
-offset_bottom = 322.0
+offset_left = 260.0
+offset_top = 269.0
+offset_right = 760.0
+offset_bottom = 373.0
+scale = Vector2(0.928952, 1.00215)
 theme_override_fonts/normal_font = ExtResource("9_v574q")
 theme_override_font_sizes/normal_font_size = 16
-fit_content = true
+
+[node name="EyeLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 33.0
+offset_top = 106.0
+offset_right = 62.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 16
+text = "EYE"
+
+[node name="SpyderLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 149.0
+offset_top = 106.0
+offset_right = 206.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("9_v574q")
+text = "SPYDER"
+
+[node name="WalnutLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 239.0
+offset_top = 106.0
+offset_right = 361.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("9_v574q")
+text = "OCCULAR SPINE"
+
+[node name="EyeBombLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 237.0
+offset_right = 82.0
+offset_bottom = 252.0
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 16
+text = "EYEBOMB"
+
+[node name="EggWyrmLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 139.0
+offset_top = 237.0
+offset_right = 205.0
+offset_bottom = 252.0
+theme_override_fonts/font = ExtResource("9_v574q")
+text = "EGGWYRM"
+
+[node name="HiveLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 281.0
+offset_top = 238.0
+offset_right = 403.0
+offset_bottom = 253.0
+theme_override_fonts/font = ExtResource("9_v574q")
+text = "HIVE"
+
+[node name="MawLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 148.0
+offset_top = 359.0
+offset_right = 270.0
+offset_bottom = 374.0
+theme_override_fonts/font = ExtResource("9_v574q")
+text = "MAW"
+
+[node name="LabelRow1" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 38.0
+offset_top = 107.0
+offset_right = 254.0
+offset_bottom = 122.0
+theme_override_constants/separation = 55
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(3, 3)
+theme_override_constants/separation = 10
 
 [node name="AllPlantRows" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Sunflower" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1"]
 layout_mode = 2
@@ -77,6 +153,7 @@ texture_normal = ExtResource("3_fsv5x")
 
 [node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="EyeBomb" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2"]
 layout_mode = 2
@@ -92,6 +169,7 @@ texture_normal = ExtResource("6_px0s8")
 
 [node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Maw" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row3"]

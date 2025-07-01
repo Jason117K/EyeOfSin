@@ -12,6 +12,7 @@ extends AnimatedTextureRect
 @onready var poleVaultZombieButton = $"../../AllZombieRows/Row3/PoleVaultZombie"
 
 @onready var currentZombieLabel = $"../../../CurrentZombieLabel"
+@onready var currentZombieTitle = $"../../../CurrentZombieTitle" #$"../CurrentZombieTitle"
 
 var baseZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 var coneheadZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
@@ -22,6 +23,16 @@ var tickerZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/t
 var screennDoorZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 var footBallZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 var poleVaultZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
+
+var baseZombieTitle := "Basic Zombie"
+var coneHeadZombieTitle := "Severed Zombie"
+var bucketHeadZombieTitle := "Warrior Zombie"
+var dancerZombieTitle := "Summoner Zombie"
+var backUpDancerZombieTitle := "Wretch Zombie"
+var tickerZombieTitle := "Ticker Zombie"
+var screenDoorZombieTitle := "Phalanx Zombie"
+var footballZombieTitle := "Chimera Zombie"
+var poleVaultZombieTitle := "Leaper Zombie"
 
 func _ready() -> void:
 	print("Zombie AnimatedTextureRect: _ready() called")
@@ -90,12 +101,15 @@ func set_text(newFile : String):
 	file.close()
 	currentZombieLabel.text = newText
 
+func set_title(newTitle : String):
+	currentZombieTitle.text = newTitle
 
 func _on_base_zombie_pressed() -> void:
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.BASEZOMBIE)
 	play()
 	set_text(baseZombieDescription)
+	set_title(baseZombieTitle)
 
 
 func _on_cone_head_zombie_pressed() -> void:
@@ -103,13 +117,14 @@ func _on_cone_head_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.CONEHEAD)
 	play()
 	set_text(coneheadZombieDescription)
-
+	set_title(coneHeadZombieTitle)
 
 func _on_bucket_head_zombie_pressed() -> void:
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.BUCKETHEAD)
 	play()
 	set_text(bucketHeadZombieDescription)
+	set_title(bucketHeadZombieTitle)
 
 
 func _on_dancer_zombie_pressed() -> void:
@@ -117,6 +132,7 @@ func _on_dancer_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.DANCERZOMBIE)
 	play()
 	set_text(dancerZombieDescription)
+	set_title(dancerZombieTitle)
 
 
 func _on_back_up_dancer_zombie_pressed() -> void:
@@ -124,6 +140,7 @@ func _on_back_up_dancer_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.BACKUPDANCERZOMBIE)
 	play()
 	set_text(backUpDancerZombieDescription)
+	set_title(backUpDancerZombieTitle)
 
 
 func _on_ticker_zombie_pressed() -> void:
@@ -131,6 +148,7 @@ func _on_ticker_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.TICKER)
 	play()
 	set_text(tickerZombieDescription)
+	set_title(tickerZombieTitle)
 
 
 func _on_screen_door_zombie_pressed() -> void:
@@ -138,6 +156,7 @@ func _on_screen_door_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.SCREENDOORZOMBIE)
 	play()
 	set_text(screennDoorZombieDescription)
+	set_title(screenDoorZombieTitle)
 
 
 func _on_football_zombie_pressed() -> void:
@@ -145,6 +164,7 @@ func _on_football_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.FOOTBALLZOMBIE)
 	play()
 	set_text(footBallZombieDescription)
+	set_title(footballZombieTitle)
 
 
 func _on_pole_vault_zombie_pressed() -> void:
@@ -152,6 +172,7 @@ func _on_pole_vault_zombie_pressed() -> void:
 		GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
 	play()
 	set_text(poleVaultZombieDescription)
+	set_title(poleVaultZombieTitle)
 
 
 func _on_back_button_pressed() -> void:
