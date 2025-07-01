@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cxup8ebd3egtk"]
+[gd_scene load_steps=29 format=3 uid="uid://cxup8ebd3egtk"]
 
 [ext_resource type="Script" uid="uid://de2h3je53wpv2" path="res://Scripts/LevelLogic/Level6.gd" id="1_jqh7t"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_vhku6"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="20_cy6jx"]
 [ext_resource type="PackedScene" uid="uid://c6u6h5wyw25fr" path="res://Scenes/LevelScenes/Level7.tscn" id="21_kqvvy"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="22_kqvvy"]
+[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="23_0yt1w"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -78,6 +79,36 @@ z_index = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_cy6jx")]
 position = Vector2(747, 77)
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 2,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 2,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_kqvvy")]
 z_index = 1
@@ -94,6 +125,16 @@ Round1_Zombies = {
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 2,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 1
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_kqvvy")]
@@ -112,6 +153,26 @@ Round1_Zombies = {
 "ScreenDoor": 0,
 "Ticker": 0
 }
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
+}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_kqvvy")]
 z_index = 1
@@ -129,6 +190,26 @@ Round1_Zombies = {
 "ScreenDoor": 0,
 "Ticker": 0
 }
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
+}
 waveDelay = 1.2
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_kqvvy")]
@@ -139,13 +220,33 @@ position = Vector2(-41, -1)
 position = Vector2(754, 207)
 Round1_Zombies = {
 "Base": 0,
-"BucketHead": 1,
+"BucketHead": 2,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("4_kqvvy")]
@@ -161,7 +262,7 @@ position = Vector2(-59, 222)
 script = ExtResource("7_liv1i")
 StartDelay = 1
 Wave2StartTime = 30
-Wave3StartTime = 60
+Wave3StartTime = 40
 Wave1_Interval = 2.0
 Wave2_Interval = 4
 Wave3_Interval = 2.0
@@ -454,6 +555,13 @@ offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0
 offset_bottom = 373.0
+
+[node name="PauseButton" parent="." instance=ExtResource("23_0yt1w")]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 376.0
+offset_right = 738.0
+offset_bottom = 399.0
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]

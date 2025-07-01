@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=27 format=3 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -18,9 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
 [ext_resource type="Script" uid="uid://dlmmfpqcb527g" path="res://Scripts/Environment/ShrubAnimator.gd" id="15_dph8t"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="17_1qjpa"]
-[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="19_ep3m3"]
-[ext_resource type="Script" uid="uid://ct1f77uyefcnp" path="res://Scripts/UI/pause_button.gd" id="20_0lj60"]
-[ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://Scenes/LevelScenes/PauseMenu.tscn" id="21_2la15"]
+[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="19_0lj60"]
 [ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="21_jgfqe"]
 
 [sub_resource type="Environment" id="2"]
@@ -504,23 +502,12 @@ offset_top = 313.0
 offset_right = 739.0
 offset_bottom = 373.0
 
-[node name="PauseButton" type="Button" parent="."]
-visible = false
+[node name="PauseButton" parent="." instance=ExtResource("19_0lj60")]
 layout_mode = 0
-offset_left = 681.0
-offset_top = 389.0
-offset_right = 736.0
-offset_bottom = 412.0
-theme_override_fonts/font = ExtResource("19_ep3m3")
-text = "PAUSE"
-script = ExtResource("20_0lj60")
-
-[node name="PauseMenu" parent="PauseButton" instance=ExtResource("21_2la15")]
-layout_mode = 1
-offset_left = -327.0
-offset_top = -193.0
-offset_right = -327.0
-offset_bottom = -193.0
+offset_left = 683.0
+offset_top = 380.0
+offset_right = 738.0
+offset_bottom = 403.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_jgfqe")
@@ -537,4 +524,3 @@ autoplay = true
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
-[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_pressed"]

@@ -66,6 +66,7 @@ func _on_tool_tips_tool_tip_hid() -> void:
 
 
 func _on_plant_selection_menu_clicked_eye() -> void:
+	
 	if count < 3:
 		
 		toolTips.set_text(placeSummonText)

@@ -73,6 +73,8 @@ func _on_AnimatedSprite_animation_finished():
 		animSpriteComp.animation = "idle"
 		animSpriteComp.play()
 		
+		
+		
 func die():
 	PlantManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()

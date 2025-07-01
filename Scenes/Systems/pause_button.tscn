@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct0d53f75vuby"]
+
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="1_tkp42"]
+[ext_resource type="Script" path="res://Scripts/UI/pause_button.gd" id="2_w1yst"]
+[ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://Scenes/LevelScenes/PauseMenu.tscn" id="3_e4pn3"]
+
+[node name="PauseButton" type="Button"]
+offset_left = 681.0
+offset_top = 378.0
+offset_right = 736.0
+offset_bottom = 401.0
+theme_override_fonts/font = ExtResource("1_tkp42")
+text = "PAUSE"
+script = ExtResource("2_w1yst")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_e4pn3")]
+visible = false
+layout_mode = 1
+offset_left = -310.0
+offset_top = -165.0
+offset_right = -310.0
+offset_bottom = -165.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

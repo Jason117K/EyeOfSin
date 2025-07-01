@@ -223,6 +223,7 @@ func player_take_damage(area: Area2D) -> void:
 	#print("AAAAAAGGGGGGGG: ",area.name)
 	if area.is_in_group("Zombie"):
 		print("Subtracting Health")
+		area.die()
 
 		subtract_health()  # Subtract Heath
 		#TODO Play DMG Sound

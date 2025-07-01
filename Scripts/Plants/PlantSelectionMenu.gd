@@ -46,6 +46,7 @@ var hiveCostLabel
 
 func _ready():
 	Global.plant_selection_menu = self
+	Global.resetSunflowerCount()
 
 	#add_button_highlight
 	set_process_input(true)
@@ -61,7 +62,9 @@ func _ready():
 	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	sunFlowerCostLabel = $VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
 	temp_instance = sunflower_scene.instantiate()
+	print("Temp Instance.get_cost() is : ", str(temp_instance.get_cost()))
 	sunFlowerCostLabel.text = str(temp_instance.get_cost())
+	
 	temp_instance.queue_free()
 	
 	add_button_highlight(SunFlowerButton)
@@ -294,6 +297,7 @@ func _on_HiveButton_pressed():
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 # Creates a transparent preview image for a given plant scene 
+
 func create_preview(plant_scene):
 	# Clear the last preview 
 	clear_preview()
