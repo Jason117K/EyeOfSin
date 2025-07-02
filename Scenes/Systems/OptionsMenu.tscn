@@ -70,7 +70,7 @@ busName = "sfx"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_yilts")
-autoplay = false
+autoplay = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1

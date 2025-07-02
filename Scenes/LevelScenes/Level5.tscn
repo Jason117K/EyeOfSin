@@ -189,7 +189,7 @@ z_index = 1
 position = Vector2(-38, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_atfoh")]
-position = Vector2(751, 174)
+position = Vector2(751, 173)
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
@@ -227,7 +227,7 @@ z_index = 1
 position = Vector2(-41, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_atfoh")]
-position = Vector2(754, 207)
+position = Vector2(754, 205)
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 1,

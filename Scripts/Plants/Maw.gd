@@ -185,6 +185,7 @@ func _on_tentacle_retraction_complete(tentacle):
 			digestion_timer = Timer.new()
 			digestion_timer.wait_time = digestTime
 			digestion_timer.autostart = true
+			digestion_timer.one_shot = true
 			add_child(digestion_timer)
 	
 			# Connect timer to function - Godot 4.4 syntax
