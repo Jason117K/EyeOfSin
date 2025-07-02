@@ -4,6 +4,9 @@ var startScreen = ("res://Scenes/LevelScenes/StartScreen.tscn")
 var backButton 
 
 func _ready() -> void:
+	# Set process mode to handle input even when paused
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	print("=== OptionsMenu _ready() Debug ===")
 	print("Master slider exists: ", $CenterContainer/VBoxContainer/masterVolumeSlider != null)
 	print("Music slider exists: ", $CenterContainer/VBoxContainer/musicVolumeSlider != null)
