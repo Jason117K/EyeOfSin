@@ -52,6 +52,7 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 script = ExtResource("1_n51ap")
+busName = "music"
 
 [node name="SFX" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -65,6 +66,7 @@ max_value = 1.0
 step = 0.001
 value = 1.0
 script = ExtResource("1_n51ap")
+busName = "sfx"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_yilts")
