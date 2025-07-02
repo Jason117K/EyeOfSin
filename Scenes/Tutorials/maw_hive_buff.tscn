@@ -156,19 +156,16 @@ frame = 3
 frame_progress = 0.871005
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(9, 22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8issj")
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(46, 85)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8issj")
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(83, 20)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8issj")

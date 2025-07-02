@@ -65,7 +65,7 @@ func debuff():
 		
 #Handles the walnut taking damage 
 func take_damage(damage):
-	print("taking damage, health is " , health)
+	print("taking damage, health is " , health, " damage is ", damage)
 	health = health - damage
 	if(health <= 0):
 		die()

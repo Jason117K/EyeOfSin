@@ -58,6 +58,7 @@ var pointCount: int
 
 func _ready() -> void:
 	randomize()
+	grab_speed = randf_range(grab_speed-50.0,grab_speed+50.0)
 	unique_offset = randf_range(0, PI * 2)
 	speed_modifier = 1.0 + randf_range(-speed_variation, speed_variation)
 	
@@ -208,6 +209,7 @@ func _process(delta) -> void:
 			if tip_pos.distance_to(target_position) < 10:
 				current_state = State.ATTACHED
 				AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_GRAB)
+				print("QQ MAW GRABBED ENEMY")
 				enemy.global_position = pos[pointCount-1]
 				_start_attach_timer()
 		
@@ -231,7 +233,7 @@ func _process(delta) -> void:
 			
 			visible_points = max(2, visible_points - visibility_shrink_rate * delta)
 			
-			if pos[pointCount-1].distance_to(start_pos) < 10:
+			if pos[pointCount-1].distance_to(start_pos) < 3:
 				finish_retraction()
 
 	update_points(delta)

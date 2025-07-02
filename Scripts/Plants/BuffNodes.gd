@@ -48,7 +48,8 @@ func clearBuffs():
 	print("DDD Buffed Plants is ", buffedPlants)
 	for plant in buffedPlants:
 		print("Now DDD Buffing ", plant)
-		plant.debuff()
+		if plant != null:
+			plant.debuff()
 	pass
 	
 	

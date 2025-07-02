@@ -115,9 +115,9 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 
 # Clear a space for a new plant to go 
 func clear_space(passed_grid_pos):
-	print("Erase Plant At :", passed_grid_pos)
+	print(" QQ Erase Plant At :", passed_grid_pos)
 	var plant_node = grid_map.get(passed_grid_pos)
-	print("Plant to Erase Is  ", plant_node)
+	print(" QQ Plant to Erase Is  ", plant_node)
 	#plantToErase.die()
 	if plant_node != null:
 		print("The Right DDDDDDD Function is Being Called ")
@@ -132,7 +132,7 @@ func clear_space(passed_grid_pos):
 func place_plant(grid_pos: Vector2):
 	
 	print("About to Place Plant")
-	if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 31):
+	if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 48):
 		pass
 	else:
 		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
@@ -152,13 +152,13 @@ func place_plant(grid_pos: Vector2):
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print("Cell already occupied!")
+		print(grid_pos , " QQ Cell already occupied!")
 		return
 	
 	#Maw is larger, check neighboring cell
 	if  "Maw" in plant_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
-			print("Maw is Big, Neighboring Cell Occupied")
+			print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 
 	
@@ -220,7 +220,7 @@ func place_plant(grid_pos: Vector2):
 	else:
 		print("Not enough sun points!")
 	
-	print("Plant Was Placed ")
+	print("QQ Plant Was Placed At " , plant_instance.position)
 
 # Helper function to generate sequential names
 func generate_unique_name(base_name: String) -> String:

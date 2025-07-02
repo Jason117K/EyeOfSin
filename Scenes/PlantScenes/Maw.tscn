@@ -1012,7 +1012,6 @@ autoplay = "spawn"
 script = ExtResource("4_1cfx5")
 
 [node name="DetectionComponent" type="Area2D" parent="."]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
@@ -1020,7 +1019,7 @@ shape = SubResource("8")
 
 [node name="DigestionTimer" type="Timer" parent="."]
 wait_time = 9.0
-autostart = true
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -364,7 +364,6 @@ collide_with_areas = true
 [node name="AOEHit" type="Node2D" parent="."]
 visible = false
 script = ExtResource("12")
-attack_power = null
 
 [node name="Hit1" type="AnimatedSprite2D" parent="AOEHit"]
 visible = false

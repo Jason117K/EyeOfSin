@@ -399,8 +399,8 @@ script = ExtResource("2")
 [node name="ComponentManager" parent="." instance=ExtResource("8")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("6")]
-health = 225
-bloodWorth = 20.0
+health = 350
+bloodWorth = 10.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("7")]
 speed = 30

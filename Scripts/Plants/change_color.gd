@@ -78,9 +78,11 @@ func _on_frame_changed() -> void:
 				thisMaterial.set_shader_parameter("replace_color", Color.DARK_RED)
 				thisMaterial.set_shader_parameter("tolerance", 0.1)
 		else:
-			print("GG : ", get_parent().name)
+			pass
+			#print("GG : ", get_parent().name)
 	else:
-		print("GGG NOT DISABLED ")
+		pass
+		#print("GGG NOT DISABLED ")
 		
 func change_color():
 	isDisabled = false

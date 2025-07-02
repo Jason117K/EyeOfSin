@@ -41,6 +41,7 @@ func _on_Hit3_animation_finished():
 		if(is_instance_valid(area)):
 			if area.is_in_group("Plants"):
 				#print("About to bomb ", area.name)
+				print("AP IS ", attack_power)
 				if(area.health >= 0):
 					area.take_damage(attack_power)
 				else:
