@@ -20,6 +20,8 @@ func _ready()-> void :
 		print("ERROR: Invalid bus index for bus: ", busName)
 
 func on_value_changed(value : float ):
+	print("=== SLIDER VALUE CHANGED ===")
+	print("Slider for bus: ", busName, " changed to: ", value)
 	busIndex = AudioServer.get_bus_index(busName)
 	print("BusName is ", busName, "Bus Index is ", busIndex)
 	AudioServer.set_bus_volume_db(
