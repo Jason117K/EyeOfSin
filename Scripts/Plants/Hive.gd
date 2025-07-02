@@ -21,6 +21,9 @@ var drone_assignments = {}                         # Dictionary mapping enemies 
 var enemy_queue = []                               # Enemies in order of entry
 var active_enemies = []                            # All enemies currently in range
 var drone_rest_positions = {}                      # Dictionary to store rest positions for each drone
+var isEggWyrmBuffed := false 
+var isSpyderBuffed := false
+var isSunflowerBuffed:= false 
 
 @onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
 var isBuffed = false                               # Tracks Current Buff State Of Drone  
@@ -42,22 +45,26 @@ func _ready():
 #Getter for plant cost 
 func get_cost():
 	return cost
-	
+
+
+
+
 #Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
-	if !isBuffed:
-		#Apply a double damage buff to every drone 
-		if("EggWorm" in bufferName.name):
-			for drone in available_drones:
-				drone.doubleDamage()
-		#Make the drones explode if it's a peashooter buff 
-		if("Peashooter" in bufferName.name):
-			for drone in available_drones:
-				drone.makeExplode()
-		if("Sunflower" in bufferName.name):
-			droneRespawnTimer.wait_time = buffedWaitTime
+	#Apply a double damage buff to every drone 
+	if("EggWorm" in bufferName.name) && !isEggWyrmBuffed:
+		for drone in available_drones:
+			drone.doubleDamage()
+		isEggWyrmBuffed = true 
+	#Make the drones explode if it's a peashooter buff 
+	if("Peashooter" in bufferName.name) && !isSpyderBuffed:
+		for drone in available_drones:
+			drone.makeExplode()
+		isSpyderBuffed = true 
+	if("Sunflower" in bufferName.name) && !isSunflowerBuffed:
+		droneRespawnTimer.wait_time = buffedWaitTime
+		isSunflowerBuffed = true 
 			
-		isBuffed = true 
 	thisBufferName = bufferName.name
 
 func debuff():
@@ -209,21 +216,21 @@ func optimize_drone_assignments():
 	print("Available drones77 at start is ", available_drones)
 	# Reset all drone assignments
 	var all_drones = []
-	print("All drones B4 the loop is ", all_drones)
+	#print("All drones B4 the loop is ", all_drones)
 	for drones in drone_assignments.values():
 		all_drones.append_array(drones)
-		print("All drones will append ",drones )
-	print("All drones After the loop is ", all_drones)
+		#print("All drones will append ",drones )
+	#print("All drones After the loop is ", all_drones)
 	all_drones.append_array(available_drones)
 	
 	
-	print("All drones after Available Drones Appened is ", all_drones)
+	#print("All drones after Available Drones Appened is ", all_drones)
 	drone_assignments.clear()
 	available_drones = all_drones
-	print("Available drones88 at end is ", available_drones)
+	#print("Available drones88 at end is ", available_drones)
 
 	
-	print("Enemy Queue is ", enemy_queue)
+	#print("Enemy Queue is ", enemy_queue)
 	# If no enemies, return all drones to rest positions
 	if enemy_queue.is_empty():
 		return_drones_to_rest()
@@ -235,7 +242,7 @@ func optimize_drone_assignments():
 	#print()
 	# Calculate optimal distribution
 	var enemies_to_assign = enemy_queue.slice(0, min(enemy_queue.size(), MAX_DRONES ))
-	print("Enemies to assign is ", enemies_to_assign)
+	#print("Enemies to assign is ", enemies_to_assign)
 	if enemies_to_assign.is_empty():
 		return
 		
@@ -250,23 +257,23 @@ func optimize_drone_assignments():
 			extra_drones -= 1
 			
 		drone_assignments[enemy] = []
-		print("Drone Ass B4 Loop ", drone_assignments)
+		#print("Drone Ass B4 Loop ", drone_assignments)
 		for _i in range(num_drones):
-			print("Available drones1 is ", available_drones)
+			#print("Available drones1 is ", available_drones)
 			if available_drones.is_empty():
 				break
 			var drone = available_drones.pop_front()
-			print("Drone is ", drone)
+		#	print("Drone is ", drone)
 			drone_assignments[enemy].append(drone)
-			print("In Loop, Append ", drone)
+		#	print("In Loop, Append ", drone)
 			command_drone_to_attack(drone, enemy)
 		print("Drone Ass After Loop ", drone_assignments)
 
 #Tell a drone to attack a target
 func command_drone_to_attack(drone, enemy):
-	print("First Attack Command")
+#	print("First Attack Command")
 	if is_instance_valid_and_alive(enemy):
-		print("Drone is ", drone, " Enemy is ", enemy)
+	#	print("Drone is ", drone, " Enemy is ", enemy)
 		drone.attack_target(enemy)
 		
 #Handles the Hive taking damage 
@@ -281,7 +288,7 @@ func _on_DroneRespawnTimer_timeout():
 	var new_drone = DroneScene.instantiate()
 	add_child(new_drone)
 	available_drones.append(new_drone)
-	print("Availablle Drone just got : ", new_drone)
+	#print("Availablle Drone just got : ", new_drone)
 	
 	# Calculate and store rest position for new drone
 	var rest_pos = calculate_rest_position(available_drones.size() - 1)

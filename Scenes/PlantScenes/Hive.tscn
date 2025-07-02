@@ -999,6 +999,8 @@ animations = [{
 
 [node name="Hive" type="Area2D" groups=["Plants"]]
 script = ExtResource("2")
+waitTime = 6.0
+buffedWaitTime = 3.0
 
 [node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="."]
 visible = false

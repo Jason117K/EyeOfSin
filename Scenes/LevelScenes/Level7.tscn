@@ -71,7 +71,7 @@ mouse_filter = 2
 script = ExtResource("1_rhl2j")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_xvglt")]
-sun_points = 650
+sun_points = 1000
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -80,12 +80,12 @@ z_index = 1
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_bpqyd")]
 position = Vector2(747, 77)
 Round1_Zombies = {
-"Base": 1,
-"BucketHead": 0,
+"Base": 0,
+"BucketHead": 1,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
-"PoleVault": 0,
+"PoleVault": 3,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -122,7 +122,7 @@ Round1_Zombies = {
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
-"PoleVault": 1,
+"PoleVault": 3,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -159,8 +159,8 @@ Round1_Zombies = {
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
-"PoleVault": 1,
-"ScreenDoor": 0,
+"PoleVault": 3,
+"ScreenDoor": 1,
 "Ticker": 0
 }
 Round2_Zombies = {
@@ -194,9 +194,9 @@ Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
 "ConeHead": 0,
-"Dancer": 0,
+"Dancer": 1,
 "Football": 0,
-"PoleVault": 1,
+"PoleVault": 3,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -230,11 +230,11 @@ position = Vector2(-41, -1)
 position = Vector2(754, 207)
 Round1_Zombies = {
 "Base": 0,
-"BucketHead": 0,
+"BucketHead": 1,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
-"PoleVault": 1,
+"PoleVault": 2,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -271,8 +271,8 @@ z_index = 1
 position = Vector2(-59, 222)
 script = ExtResource("7_frgcx")
 StartDelay = 9
-Wave2StartTime = 30
-Wave3StartTime = 60
+Wave2StartTime = 33
+Wave3StartTime = 45
 Wave1_Interval = 2.0
 Wave2_Interval = 4
 Wave3_Interval = 2.0
@@ -570,6 +570,12 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 55.0
 offset_bottom = 23.0
+
+[node name="PauseButton2" parent="." instance=ExtResource("23_88mod")]
+offset_left = 683.0
+offset_top = 376.0
+offset_right = 738.0
+offset_bottom = 399.0
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]

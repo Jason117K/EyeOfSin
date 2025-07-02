@@ -14,6 +14,9 @@ extends Area2D
 @export var buffedMaxHealth = 1000
 @onready var ogMaxHealth = maxHealth
 
+var isEggWyrmBuffed := false 
+var isMawBuffed := false 
+var isSunflowerBuffed:= false 	
 
 
 
@@ -36,19 +39,22 @@ func _ready():
 	animComponent.animation = "spawn"
 
 
+
 #Sets buffed to true 
 func receiveBuff(bufferName):
-	if !isBuffed:
-		if "SunFlower" in bufferName.name:
-			health = buffedHealth
-			maxHealth = buffedMaxHealth
-		elif "EggWorm" in bufferName.name:
-			eggWyrmBuffed = true 
-		elif "Maw" in bufferName.name:
-			healthRegen = buffedHealthRegen
-			print("GG Color Changed")
-			$AnimatedSpriteComponent.change_color()
-	isBuffed = true 
+	
+	if "SunFlower" in bufferName.name && !isSunflowerBuffed:
+		health = buffedHealth
+		maxHealth = buffedMaxHealth
+		isSunflowerBuffed = true 
+	elif "EggWorm" in bufferName.name && !isEggWyrmBuffed:
+		eggWyrmBuffed = true 
+		isEggWyrmBuffed = true 
+	elif "Maw" in bufferName.name && !isMawBuffed:
+		healthRegen = buffedHealthRegen
+		isMawBuffed = true 
+		print("GG Color Changed")
+		$AnimatedSpriteComponent.change_color()
 	thisBufferName = bufferName.name
 
 func debuff():

@@ -163,11 +163,11 @@ size = Vector2(22, 31)
 
 [node name="Drone" type="Area2D" groups=["Plants"]]
 script = ExtResource("2")
-health = 150
+health = 100
+attack_damage = 13
 attack_range = 20
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.670588, 0.192157, 0.192157, 1)
 material = SubResource("ShaderMaterial_10gu7")
 sprite_frames = SubResource("18")
 animation = &"attack"

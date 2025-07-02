@@ -24,6 +24,10 @@ var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  #
 @onready var buffNodes = $BuffNodesComponent
 #onready var animSpriteComp = $AnimatedSprite
 
+var isSpyderBuffed := false
+var isSpineBuffed := false
+var isSunflowerBuffed := false 
+
 # Internal animation state
 var time = 0.0
 var current_squash = 0.0
@@ -58,24 +62,26 @@ func get_cost():
 	return cost
 
 
+
 #Handles Eggworm Buffing 
 func receiveBuff(plant):
-	bufferName = plant.name
-	if !isBuffed:
 		#Increases Speed and Range From Peashooter Buff
-		if("Peashooter" in plant.name):
+		if("Peashooter" in plant.name) && !isSpyderBuffed:
 			laserShootComp.extension_speed = 80000
 			laserShootComp.max_length = 40000
+			isSpyderBuffed = true 
 		#Applies a different buff to the laser projectile 
-		elif("WalnutTree" in plant.name):
+		elif("WalnutTree" in plant.name) && !isSpineBuffed:
 			if (laserShootComp.isBuffed):
 				pass
 			else:
 				laserShootComp.buff(plant.position)
-		elif("Sunflower" in plant.name):
+			isSpineBuffed = true 
+		elif("Sunflower" in plant.name) && !isSunflowerBuffed:
 			laserShootComp.sunBuff()
+			isSunflowerBuffed = true 
 			#print("Got buff from", plant.name)
-		isBuffed = true 
+
 #Handles Eggworm Buffing 
 func debuff():
 	if("Peashooter" in bufferName):

@@ -35,13 +35,20 @@ var currentTentacle
 var charges = 3.0             # Essentially Maw ammo 
 var willBelchWebs = false     # Whether or not we have a peashooter buff 
 var available_tentacles = []  # Track which tentacles are available
+var enemies_to_eat = []       # Enemies in Detection zone that couldn't be eaten yet
 var willBelchSun := false 
+var isEggWyrmBuffed := false 
+var isSpyderBuffed := false
+var isHiveBuffed := false 
+var isSunflowerBuffed:= false 	
+
 
 @export var bloodAmount = 10
 
 #Essentially a reload timer for the maw
 @onready var digestionTimer = $DigestionTimer
 @export var digestTime : float
+@export var buffedDigestTime : float
 @onready var ogDigestTime = digestTime
 # Detection radius for zombies
 @onready var detection_area = $DetectionComponent
@@ -117,7 +124,11 @@ func setup_tentacles():
 
 #Constantly check for enemies in range and assign them for eating appropriately 
 func _process(_delta):
-	pass
+	if enemies_to_eat.size()>0:
+		for enemy in enemies_to_eat:
+			if enemy != null:
+				assign_tentacle_to_target(enemy)
+		pass
 	#var overlapping_areas = detection_area.get_overlapping_areas()
 	#print("Maw Overlapping Areas Is ", overlapping_areas)
 	#for area in overlapping_areas:
@@ -128,12 +139,14 @@ func _process(_delta):
 
 #Assign a target to a tentacle 
 func assign_tentacle_to_target(target):
+	if target in enemies_to_eat:
+		enemies_to_eat.erase(target)
 	#Early return if the target is already being eaten 
 	if target in attacking_tentacles.values():
 		print("QQ Target Already Being Eaten")
 		return
 	#If we have a free tentacle, assignment is possible 
-	print("QQ Charges is : ", charges, " QQ available_tentacles.size() is : ", available_tentacles.size())
+	#print("QQ Charges is : ", charges, " QQ available_tentacles.size() is : ", available_tentacles.size())
 	if available_tentacles.size() > 0 and charges > 0:
 		#Select a tentacle, give it an enemy, 
 		var tentacle = available_tentacles.pop_front()
@@ -141,6 +154,9 @@ func assign_tentacle_to_target(target):
 		tentacle.enemy = target
 		tentacle.start_grab_sequence()
 		#charges -= 1
+	else:
+		enemies_to_eat.append(target)
+		
 
 #Handle Tentacle Retraction 
 func _on_tentacle_retraction_complete(tentacle):
@@ -211,19 +227,20 @@ func _on_DigestionTimer_timeout():
 
 #Handles Receiving Buffs From EggWorm, Peashooter, and Hive, setting color accordingly 
 func receiveBuff(plant):
-	if !isBuffed:
 	#print(bufferName)
 		bufferName = plant.name
-		if("EggWorm" in bufferName):
+		if("EggWorm" in bufferName) && !isEggWyrmBuffed:
 			#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
 			#tentacle2.set_colors(Color.BLUE, Color.BLUE)
 			$AnimatedSprite2D.change_color()
-			digestionTimer.wait_time = 6
-		elif("Peashooter" in bufferName):
+			digestionTimer.wait_time = buffedDigestTime
+			isEggWyrmBuffed = true 
+		elif("Peashooter" in bufferName) && !isSpyderBuffed:
 			#tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
 			#tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
 			willBelchWebs = true
-		elif("Hive" in bufferName):
+			isSpyderBuffed = true 
+		elif("Hive" in bufferName) && !isHiveBuffed:
 			#tentacle1.set_colors(Color.WHITE, Color.WHITE)
 			#tentacle2.set_colors(Color.BLACK, Color.BLACK)
 			print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
@@ -231,10 +248,11 @@ func receiveBuff(plant):
 			health = 200
 			print("Buffer Was HHIve")
 			$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
-		elif("Sunflower" in bufferName):
+			isHiveBuffed = true 
+		elif("Sunflower" in bufferName) && !isSunflowerBuffed:
 			willBelchSun = true 
-		isBuffed = true 
-		
+			isSunflowerBuffed = true 
+	
 func debuff():
 	if("EggWorm" in bufferName):
 		#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)

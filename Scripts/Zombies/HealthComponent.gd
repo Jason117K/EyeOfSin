@@ -7,7 +7,7 @@ extends Node2D
 @onready var zombie = get_parent()
 var bomb_scene = preload("res://Scenes/PlantScenes/Bomb.tscn")
 
-@export var health = 76 #25 # Health of the zombie
+@export var health := 76 #25 # Health of the zombie
 @export var healthRegen = 0.0 # Health regen rate
 @export var bloodWorth := 1.0
 
@@ -15,7 +15,7 @@ var injured = false
 var halfHealth = health/2
 
 var explode = false    #Determines whether or not the zombie will explode 
-
+@onready var maxHealth := health
 
 
 # Declare the death signal
@@ -32,7 +32,7 @@ func take_damage(damage):
 
 	health -= damage
 	
-	print("Taking damage ", damage, " health now ", health) 
+	print(zombie.name, " is taking : ", damage, " damage, jj health now ", health) 
 	
 	#hitAudioPlayer.play()
 	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
@@ -64,7 +64,8 @@ func take_damage(damage):
 
 #Applies small passive health regen and determines injured status 
 func _process(_delta):
-	health = health + healthRegen
+	if health < maxHealth:
+		health = health + healthRegen
 	if health < halfHealth:
 		injured = true
 	else:

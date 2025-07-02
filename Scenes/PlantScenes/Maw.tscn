@@ -1001,9 +1001,11 @@ script = ExtResource("4")
 tentacle1_start_color = Color(0.552941, 0, 0, 1)
 tentacle2_start_color = Color(0.552941, 0, 0, 1)
 tentacle3_start_color = Color(0.552941, 0, 0, 1)
+cost = 250
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
-digestTime = 9.0
+digestTime = 15.0
+buffedDigestTime = 11.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_1eo28")

@@ -7,9 +7,9 @@ extends Area2D
 
 func _ready() -> void:
 	input_pickable = true
-	print("SSCollision Layer: ", collision_layer)
-	print("SSCollision Mask: ", collision_mask)
-	print("SSInput Pickable: ", input_pickable)
+	#print("SSCollision Layer: ", collision_layer)
+	#print("SSCollision Mask: ", collision_mask)
+	#print("SSInput Pickable: ", input_pickable)
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	#process_mode = Node.PROCESS_MODE_ALWAYS
 	
