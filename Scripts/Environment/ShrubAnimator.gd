@@ -30,7 +30,7 @@ func _ready():
 
 		speed_scale = final_speed
 		play()
-		print("Final Speed is : " , final_speed)
+		#print("Final Speed is : " , final_speed)
 	else:
 		stop()
 		

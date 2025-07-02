@@ -28,7 +28,7 @@ func incrementSunflowerCountVisual():
 	sunflowerCountVisual += 1
 	
 func getSunflowerCount():
-	print("SSReturn , ", sunflowerCount)
+	#print("SSReturn , ", sunflowerCount)
 	return sunflowerCount
 
 func getSunflowerCountVisual():

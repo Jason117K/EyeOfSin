@@ -46,7 +46,7 @@ func _input(event):
 				var temp_instance = selected_plant_scene.instantiate()
 				
 				var cost = temp_instance.get_cost()
-				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
+				#print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 				if(parentName == "Level3"):
 					print("Grid map size is ", grid_map.size())
 					if grid_map.size() == 0 && selected_plant_scene:

@@ -60,9 +60,9 @@ func take_damage(damage):
 
 # Plant Cost Getter
 func get_cost():
-	print("1CCost is ", cost)
+	#print("1CCost is ", cost)
 	cost = cost + (5 * Global.getSunflowerCount())
-	print("2CCost is ", cost)
+	#print("2CCost is ", cost)
 	return cost
 	#cost = cost + 5
 	
