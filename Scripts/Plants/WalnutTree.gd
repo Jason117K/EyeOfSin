@@ -54,7 +54,8 @@ func receiveBuff(bufferName):
 		healthRegen = buffedHealthRegen
 		isMawBuffed = true 
 		print("GG Color Changed")
-		$AnimatedSpriteComponent.change_color()
+		#TODO Re Implement Color Changes
+		#$AnimatedSpriteComponent.change_color()
 	thisBufferName = bufferName.name
 
 func debuff():

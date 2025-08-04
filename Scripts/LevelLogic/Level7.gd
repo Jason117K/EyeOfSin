@@ -1,6 +1,6 @@
 extends Control
 #Level7.gd
-
+#1000 Starting Blood
 
 @onready var toolTips = $ToolTips
 @onready var waveManager = $GameLayer/WaveManager

@@ -1,21 +1,16 @@
-[gd_scene load_steps=148 format=3 uid="uid://cp6xcabhkv21t"]
+[gd_scene load_steps=147 format=3 uid="uid://cp6xcabhkv21t"]
 
 [ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://Scripts/Plants/Hive.gd" id="2"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_pd78h"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="4"]
-[ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://Scripts/Plants/change_color.gd" id="4_7f7y1"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="5"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="5_pd78h"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_awm0g"]
-shader = ExtResource("2_pd78h")
-shader_parameter/target_color = Color(0.164706, 0.0705882, 0.0705882, 1)
-shader_parameter/replace_color = Color(0, 0, 0, 1)
-shader_parameter/tolerance = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -1004,20 +999,20 @@ buffedWaitTime = 3.0
 
 [node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_awm0g")
+material = SubResource("ShaderMaterial_7f7y1")
 sprite_frames = SubResource("10")
 animation = &"idle"
 autoplay = "spawn"
 frame = 4
 frame_progress = 0.675502
-script = ExtResource("4_7f7y1")
-targetColorString = "ca4242"
+script = ExtResource("5_pd78h")
 
 [node name="Hive" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_pd78h")
 frame = 3
 frame_progress = 0.937657
+script = ExtResource("5_pd78h")
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
 visible = false

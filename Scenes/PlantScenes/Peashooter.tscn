@@ -1,11 +1,10 @@
-[gd_scene load_steps=133 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=132 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_67t0g"]
 [ext_resource type="Texture2D" uid="uid://bhcpyioblhadb" path="res://Assets/Plants/Animations_Plant/Spider/RedSpiderAttack-Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="5"]
-[ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://Scripts/Plants/change_color.gd" id="5_eww63"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="6_67t0g"]
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="9"]
@@ -15,10 +14,6 @@
 size = Vector2(16, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81bns"]
-shader = ExtResource("2_67t0g")
-shader_parameter/target_color = Color(0, 0, 0, 1)
-shader_parameter/replace_color = Color(0, 0, 0, 1)
-shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="143"]
 atlas = ExtResource("3")
@@ -906,7 +901,7 @@ sprite_frames = SubResource("9")
 animation = &"redSpiderDefault"
 autoplay = "spawn"
 flip_h = true
-script = ExtResource("5_eww63")
+script = ExtResource("6_67t0g")
 
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false

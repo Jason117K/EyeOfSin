@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://c4p43yljvybvj"]
+[gd_scene load_steps=39 format=3 uid="uid://c4p43yljvybvj"]
 
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cbg411w54cgi4" path="res://Scripts/Plants/BuffNodes.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="3"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="4_f2smc"]
 
 [sub_resource type="RectangleShape2D" id="88"]
 size = Vector2(21.3334, 21.3334)
@@ -262,6 +263,7 @@ sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
 frame = 16
+script = ExtResource("4_f2smc")
 
 [node name="TileArea2" type="Area2D" parent="."]
 position = Vector2(32, 32)
@@ -277,6 +279,7 @@ position = Vector2(32, 32)
 sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
+script = ExtResource("4_f2smc")
 
 [node name="TileArea3" type="Area2D" parent="."]
 position = Vector2(32, -32)
@@ -293,6 +296,7 @@ sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
 frame = 13
+script = ExtResource("4_f2smc")
 
 [node name="TileArea4" type="Area2D" parent="."]
 position = Vector2(-32, 0)
@@ -309,6 +313,7 @@ sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
 frame = 13
+script = ExtResource("4_f2smc")
 
 [node name="TileArea5" type="Area2D" parent="."]
 position = Vector2(-32, 32)
@@ -325,6 +330,7 @@ sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
 frame = 13
+script = ExtResource("4_f2smc")
 
 [node name="TileArea6" type="Area2D" parent="."]
 position = Vector2(-32, -32)
@@ -341,6 +347,7 @@ sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
 frame = 13
+script = ExtResource("4_f2smc")
 
 [node name="TileArea7" type="Area2D" parent="."]
 position = Vector2(0, -32)
@@ -357,6 +364,7 @@ sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
 frame = 13
+script = ExtResource("4_f2smc")
 
 [node name="TileArea8" type="Area2D" parent="."]
 position = Vector2(0, 32)
@@ -373,6 +381,7 @@ sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
 frame = 13
+script = ExtResource("4_f2smc")
 
 [node name="TileArea9" type="Area2D" parent="."]
 position = Vector2(64, 0)
@@ -388,3 +397,4 @@ position = Vector2(64, 0)
 sprite_frames = SubResource("55")
 animation = &"Drip"
 autoplay = "Drip"
+script = ExtResource("4_f2smc")

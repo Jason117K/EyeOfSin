@@ -2,15 +2,15 @@ extends Area2D
 #Maw.gd
 
 # Color export variables for tentacle 1
-@export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red
-var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red
+@export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red / 8d0000
+var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red  
 
 # Color export variables for tentacle 2
-@export var tentacle2_start_color := Color(0.7, 0.0, 1.0, 1.0)  # Bright purple
+@export var tentacle2_start_color := Color(0.7, 0.0, 1.0, 1.0)  # Bright purple  / 8d0000
 var tentacle2_end_color := Color(0.35, 0.0, 0.5, 1.0)   # Dark purple
 
 # Color export variables for tentacle 3
-@export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green
+@export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green  / 8d0000
 var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
 
 #Reference to tentacle scene 
@@ -233,7 +233,8 @@ func receiveBuff(plant):
 		if("EggWorm" in bufferName) && !isEggWyrmBuffed:
 			#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
 			#tentacle2.set_colors(Color.BLUE, Color.BLUE)
-			$AnimatedSprite2D.change_color()
+			#TODO Re Implement Color Changes
+			#$AnimatedSprite2D.change_color()
 			digestionTimer.wait_time = buffedDigestTime
 			isEggWyrmBuffed = true 
 		elif("Peashooter" in bufferName) && !isSpyderBuffed:
@@ -248,7 +249,8 @@ func receiveBuff(plant):
 			detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
 			health = 200
 			print("Buffer Was HHIve")
-			$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
+			#TODO Re Implement Color Changes
+			#$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
 			isHiveBuffed = true 
 		elif("Sunflower" in bufferName) && !isSunflowerBuffed:
 			willBelchSun = true 

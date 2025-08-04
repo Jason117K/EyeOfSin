@@ -5,8 +5,8 @@
 [ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_fxtok"]
 [ext_resource type="Texture2D" uid="uid://347bq70xelxl" path="res://Assets/Zombies/BackUpDancerHead.png" id="3"]
 [ext_resource type="Script" uid="uid://32gl5oscgs3x" path="res://Scripts/Plants/Maw.gd" id="4"]
-[ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://Scripts/Plants/change_color.gd" id="4_1cfx5"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="5_fxtok"]
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="7"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="8"]
@@ -998,9 +998,9 @@ animations = [{
 [node name="Maw" type="Area2D" groups=["Plants"]]
 z_index = 1
 script = ExtResource("4")
-tentacle1_start_color = Color(0.552941, 0, 0, 1)
-tentacle2_start_color = Color(0.552941, 0, 0, 1)
-tentacle3_start_color = Color(0.552941, 0, 0, 1)
+tentacle1_start_color = Color(0.55, 0, 0.366667, 1)
+tentacle2_start_color = Color(0.55, 0, 0.366667, 1)
+tentacle3_start_color = Color(0.55, 0, 0.366667, 1)
 cost = 250
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
@@ -1011,7 +1011,7 @@ buffedDigestTime = 11.0
 material = SubResource("ShaderMaterial_1eo28")
 sprite_frames = SubResource("7")
 autoplay = "spawn"
-script = ExtResource("4_1cfx5")
+script = ExtResource("5_fxtok")
 
 [node name="DetectionComponent" type="Area2D" parent="."]
 collision_mask = 2

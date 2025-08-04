@@ -1,22 +1,17 @@
-[gd_scene load_steps=59 format=3 uid="uid://bymckgsndcx1y"]
+[gd_scene load_steps=58 format=3 uid="uid://bymckgsndcx1y"]
 
 [ext_resource type="Texture2D" uid="uid://bplktshlxk4fi" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpineHurt2-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://dfkobn3p1i8at" path="res://Scripts/Plants/WalnutTree.gd" id="2"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_ksu1o"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://blmlmra0kwots" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpineHurt1-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpine-Sheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://djbyji3pwvlah" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpineHurt3-Sheet.png" id="7"]
-[ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://Scripts/Plants/change_color.gd" id="7_on2pf"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="8_ksu1o"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(34, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6a3v0"]
-shader = ExtResource("2_ksu1o")
-shader_parameter/target_color = Color(0, 0, 0, 1)
-shader_parameter/replace_color = Color(0, 0, 0, 1)
-shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="80"]
 atlas = ExtResource("6")
@@ -388,11 +383,7 @@ shape = SubResource("1")
 material = SubResource("ShaderMaterial_6a3v0")
 sprite_frames = SubResource("79")
 autoplay = "spawn"
-script = ExtResource("7_on2pf")
-targetColorString = "171717"
-replaceColorString = "e20000"
-target_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
-replace_color = Color(0.788235, 0, 0.0509804, 1)
+script = ExtResource("8_ksu1o")
 
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false
