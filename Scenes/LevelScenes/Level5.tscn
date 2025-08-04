@@ -534,6 +534,12 @@ position = Vector2(508, 379)
 texture = ExtResource("17_5ydb2")
 flip_h = true
 
+[node name="BloodTree4" type="Sprite2D" parent="Environment/Trees"]
+z_index = 1
+position = Vector2(548, 354)
+texture = ExtResource("17_5ydb2")
+flip_h = true
+
 [node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
 position = Vector2(100, 16)

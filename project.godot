@@ -27,6 +27,10 @@ window/size/viewport_width=740
 window/size/viewport_height=416
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="PVZ0.1"
+
 [editor]
 
 movie_writer/movie_file="C:/GodotGamesProjects/EyeOfSin/Clip1.avi"

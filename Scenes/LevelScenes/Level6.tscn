@@ -270,7 +270,6 @@ z_index = -2
 z_index = 1
 position = Vector2(-59, 222)
 script = ExtResource("7_liv1i")
-StartDelay = 8
 Wave2StartTime = 25
 Wave3StartTime = 40
 Wave1_Interval = 2.0
