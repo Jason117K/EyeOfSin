@@ -690,7 +690,6 @@ sprite_frames = SubResource("6")
 animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("6_bufnm")
-hue_shift = -40.0
 
 [node name="OverlayComponent" type="Node2D" parent="."]
 visible = false
