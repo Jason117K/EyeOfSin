@@ -468,3 +468,7 @@ func setCanRemoveFalse():
 func getCanRemove():
 	return canRemove
 	
+
+
+func _on_open_codex_button_pressed() -> void:
+	pass # Replace with function body.

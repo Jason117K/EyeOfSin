@@ -998,9 +998,9 @@ animations = [{
 [node name="Maw" type="Area2D" groups=["Plants"]]
 z_index = 1
 script = ExtResource("4")
-tentacle1_start_color = Color(0.55, 0, 0.366667, 1)
-tentacle2_start_color = Color(0.55, 0, 0.366667, 1)
-tentacle3_start_color = Color(0.55, 0, 0.366667, 1)
+tentacle1_start_color = Color(0.552941, 0, 0, 1)
+tentacle2_start_color = Color(0.552941, 0, 0, 1)
+tentacle3_start_color = Color(0.552941, 0, 0, 1)
 cost = 250
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
@@ -1120,9 +1120,6 @@ sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
 [node name="TileArea9" parent="BuffNodesComponent" index="16"]
-visible = false
-
-[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea9" index="0"]
 visible = false
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]

@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export_range(-180, 180) var hue_shift: float = -25.0:
+@export_range(-180, 180) var hue_shift: float = 0.0: #25.0
 	set(value):
 		hue_shift = clamp(value, -180.0, 180.0)
 		_apply_hue_shift()

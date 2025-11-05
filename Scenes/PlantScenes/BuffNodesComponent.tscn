@@ -253,6 +253,7 @@ position = Vector2(32, 0)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea1"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -270,6 +271,7 @@ position = Vector2(32, 32)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea2"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -286,6 +288,7 @@ position = Vector2(32, -32)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea3"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -303,6 +306,7 @@ position = Vector2(-32, 0)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea4"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -320,6 +324,7 @@ position = Vector2(-32, 32)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea5"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -337,6 +342,7 @@ position = Vector2(-32, -32)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea6"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -354,6 +360,7 @@ position = Vector2(0, -32)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea7"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -371,6 +378,7 @@ position = Vector2(0, 32)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea8"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
@@ -388,6 +396,7 @@ position = Vector2(64, 0)
 collision_layer = 0
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea9"]
+visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 

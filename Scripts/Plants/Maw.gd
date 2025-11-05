@@ -2,7 +2,7 @@ extends Area2D
 #Maw.gd
 
 # Color export variables for tentacle 1
-@export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red / 8d0000
+@export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red / 8d0000 is red, 8c005e is other color
 var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red  
 
 # Color export variables for tentacle 2

@@ -14,6 +14,9 @@ var PlantManager
 @export var buffedSunWaitTime := 12.0 
 @onready var buffNodes = $BuffNodesComponent
 var isBuffed = false 
+var highlight_active = false
+var highlight_material = null
+var original_material = null
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
@@ -23,9 +26,24 @@ func _ready():
 	assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
 	animSpriteComp.animation = "spawn"
 	
+	# Store the original material
+	original_material = animSpriteComp.material
+	
+	# Create the highlight material (shader)
+	highlight_material = ShaderMaterial.new()
+	highlight_material.shader = load("res://Scripts/Shaders/outline_shader.gdshader")
+	highlight_material.set_shader_parameter("outline_width", 5.0)
+	highlight_material.set_shader_parameter("outline_color", Color(1.0, 0.7, 0.0, 1.0)) # Golden highlight	
 	
 	
+func toggle_highlight():
+	print("Highlight Toggled")
+	highlight_active = !highlight_active
 	
+	if highlight_active:
+		animSpriteComp.material = highlight_material
+	else:
+		animSpriteComp.material = original_material	
 
 # Called every time the sun timer reaches timeout
 func _on_SunTimer_timeout():
@@ -85,6 +103,8 @@ func die_fromClearSpace():
 	buffNodes.clearBuffs()
 	queue_free()		
 		
-		
+
+func highlight():
+	print("Highlight Here")		
 		
 		

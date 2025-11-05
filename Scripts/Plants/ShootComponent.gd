@@ -3,6 +3,7 @@ extends Node2D
 
 # Handles Shooting the EggWorm Laser 
 #Red Color : b00000
+#Magenta : b00075
 # Configuration parameters
 @export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
 @export var extension_speed: float = 1000.0  # Pixels per second

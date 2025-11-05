@@ -9,7 +9,10 @@ var grid_size = 32 # Defines the size of each grid cell
 var grid_map = {}  # Dictionary to store occupied cells
 @export var sun_points = 200 # Holds how many sun points we have currently 
 var plant_cost = 25  # Holds the cost of the currently selected plant 
-
+var plant_to_move
+var plant_highlighted := false
+var highlight_plant_global_pos 
+var sunflower_scene := preload("res://Scenes/PlantScenes/Sunflower.tscn")
 @onready var parentName = get_parent().get_name()
 
 signal plant_placed
@@ -24,7 +27,11 @@ signal maw_placed
 
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
-	return get_parent().get_node("PlantSelectionMenu").selected_plant
+	if plant_highlighted:
+		print("Returning HighLight Sunflower.R")
+		return sunflower_scene
+	else:
+		return get_parent().get_node("PlantSelectionMenu").selected_plant
 
 
 # Handles Player Interaction with the Plant Menu 
@@ -41,6 +48,9 @@ func _input(event):
 			var mouse_pos = get_global_mouse_position()
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
+			
+			if plant_highlighted:
+				move_plant(plant_to_move, grid_pos)
 
 			if selected_plant_scene != null:
 				var temp_instance = selected_plant_scene.instantiate()
@@ -65,10 +75,15 @@ func _input(event):
 					print("Sun Points is : ", sun_points, "which is less than ", cost)
 					return
 			else: #Plant Scene Null
+				#TODO Make Double Click
 				print("Clicked and Plant Scene Null NN")
 				if selection_menu.getCanRemove():
 					clear_space(grid_pos)
 					selection_menu.setCanRemoveFalse()
+				if detect_plant(grid_pos):
+					print("Plant Detected")
+					highlight_plant(grid_pos)
+					pass
 				return 
 			# Place the plant assuming it's within bounds of the level
 			if(parentName == "Main"):
@@ -124,9 +139,47 @@ func clear_space(passed_grid_pos):
 		plant_node.die_fromClearSpace()
 		#plant_node.queue_free()
 	grid_map.erase(passed_grid_pos)
+
+func detect_plant(passed_grid_pos):
+	var plant_node = grid_map.get(passed_grid_pos)
 	
+	if plant_node != null:
+		print("Plant Node is , ",plant_node, " returning true" )
+		return true
+	else:
+		print("Plant Node is , ",plant_node, " returning false" )
+		return false 
+	
+func highlight_plant(passed_grid_pos):
+	var plant_node = grid_map.get(passed_grid_pos)
+	plant_to_move = plant_node
+	if plant_node.has_method("highlight"):
+		print("HighLight Should Turn On")
+		highlight_plant_global_pos = plant_node.global_position 
+		plant_node.toggle_highlight()
+		plant_highlighted = true
+		
+		
+		pass
 
-
+func move_plant(this_plant_to_move, passed_new_grid_pos):
+	this_plant_to_move.toggle_highlight()
+	
+	print("HighLight Should Turn Off")
+	print("HighLight Selected Plant is ", selected_plant_scene)
+	selected_plant_scene = sunflower_scene
+	print("HighLight Selected Plant is NOW ", selected_plant_scene)
+	print("HighLight OLD Plant is ", this_plant_to_move)
+	place_plant(passed_new_grid_pos)
+	#Doesnt Work
+	#clear_space(passed_new_grid_pos)
+	
+	#Works 
+	plant_highlighted = false
+	clear_space(highlight_plant_global_pos)
+	pass
+	
+	
 	
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):

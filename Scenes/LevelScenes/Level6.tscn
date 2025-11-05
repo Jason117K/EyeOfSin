@@ -78,6 +78,7 @@ process_mode = 1
 z_index = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_cy6jx")]
+visible = false
 position = Vector2(747, 77)
 Round1_Zombies = {
 "Base": 0,
@@ -115,6 +116,7 @@ z_index = 1
 position = Vector2(-37, 0)
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_cy6jx")]
+visible = false
 position = Vector2(747, 109)
 Round1_Zombies = {
 "Base": 0,
@@ -152,6 +154,7 @@ z_index = 1
 position = Vector2(-36, 1)
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_cy6jx")]
+visible = false
 position = Vector2(747, 141)
 Round1_Zombies = {
 "Base": 0,
@@ -189,6 +192,7 @@ z_index = 1
 position = Vector2(-38, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_cy6jx")]
+visible = false
 position = Vector2(751, 173)
 Round1_Zombies = {
 "Base": 0,
@@ -227,6 +231,7 @@ z_index = 1
 position = Vector2(-41, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_cy6jx")]
+visible = false
 position = Vector2(754, 205)
 Round1_Zombies = {
 "Base": 0,
@@ -291,6 +296,7 @@ autoplay = true
 environment = SubResource("2")
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource("9_f0kak")]
+visible = false
 layout_mode = 1
 offset_left = 25.0
 offset_top = 313.0
@@ -299,6 +305,7 @@ offset_bottom = 353.0
 scale = Vector2(0.5, 0.5)
 
 [node name="UILayer" parent="." instance=ExtResource("10_mgbt0")]
+visible = false
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
@@ -316,6 +323,7 @@ color = Color(0, 0, 0, 0.0784314)
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Coral" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(532, 366)
@@ -531,6 +539,7 @@ position = Vector2(413, 14)
 texture = ExtResource("17_nbadm")
 
 [node name="Special" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
 position = Vector2(606, 395)
@@ -559,6 +568,7 @@ next_level = "res://Scenes/LevelScenes/Level7.tscn"
 level_unlocked = 7
 
 [node name="CodexBG" parent="." instance=ExtResource("22_kqvvy")]
+visible = false
 layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
@@ -566,6 +576,7 @@ offset_right = 739.0
 offset_bottom = 373.0
 
 [node name="PauseButton" parent="." instance=ExtResource("23_0yt1w")]
+visible = false
 layout_mode = 0
 offset_left = 683.0
 offset_top = 376.0
