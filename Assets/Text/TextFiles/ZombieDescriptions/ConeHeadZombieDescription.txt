@@ -1,3 +1,5 @@
 A zombie lacking it's head, causing it's internal mutation to start to spiral out of control.
-- Moderate health 
-- fast speed 
+- Slow Speed
+- High Numbers
+- Moderate Health 
+- Moderate Damage 

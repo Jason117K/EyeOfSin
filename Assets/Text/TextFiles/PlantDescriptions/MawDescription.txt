@@ -9,3 +9,9 @@ Gives SYNERGY to :
 	- Spyders
 	- Occular Spines
 	
+- Good against 
+	- High Health
+	
+- Weak Against 
+	- High Numbers
+	- High Speed

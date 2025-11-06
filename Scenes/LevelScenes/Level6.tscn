@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="5_0yt1w"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="6_abnns"]
 [ext_resource type="Script" uid="uid://c31n61qr27kvd" path="res://Scripts/LevelLogic/WaveManager_Lvl3.gd" id="7_liv1i"]
-[ext_resource type="AudioStream" uid="uid://ciau6lgnl27mt" path="res://Assets/Audio/SpookyBackGroundTrack.mp3" id="8_iawb1"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="8_0yt1w"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="9_f0kak"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="10_mgbt0"]
 [ext_resource type="Texture2D" uid="uid://df36u1f3ge5s6" path="res://Assets/Environment/Props/CoralSmallPROP.png" id="11_qa4y1"]
@@ -289,14 +289,13 @@ offset_bottom = 238.0
 color = Color(2, 0, 0, 0.729412)
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_iawb1")
+stream = ExtResource("8_0yt1w")
 autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("2")
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource("9_f0kak")]
-visible = false
 layout_mode = 1
 offset_left = 25.0
 offset_top = 313.0
@@ -305,7 +304,6 @@ offset_bottom = 353.0
 scale = Vector2(0.5, 0.5)
 
 [node name="UILayer" parent="." instance=ExtResource("10_mgbt0")]
-visible = false
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
@@ -568,7 +566,6 @@ next_level = "res://Scenes/LevelScenes/Level7.tscn"
 level_unlocked = 7
 
 [node name="CodexBG" parent="." instance=ExtResource("22_kqvvy")]
-visible = false
 layout_mode = 0
 offset_left = 686.0
 offset_top = 313.0
@@ -576,7 +573,6 @@ offset_right = 739.0
 offset_bottom = 373.0
 
 [node name="PauseButton" parent="." instance=ExtResource("23_0yt1w")]
-visible = false
 layout_mode = 0
 offset_left = 683.0
 offset_top = 376.0

@@ -6,3 +6,11 @@ An infernal nest of vicious Hell-Wasps, creatures that seek to do nothing but ki
 	- EggWyrms 
 	- Spyders 
 	- Maws
+
+
+- Good against 
+	- High Speed
+	- High Numbers
+	
+- Weak Against 
+	- High Health

@@ -4,3 +4,12 @@ Hatchling Wyrms from the Blood Swamps of Hell. Capable of firing a hyper pressur
 	- Maws  
 	- Occular Spines  
 	- Hives 
+	
+	
+- Good against 
+	- High Numbers
+	- High Speed 
+	
+- Weak Against 
+	- High Health
+	

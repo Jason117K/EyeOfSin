@@ -1,5 +1,5 @@
 Slow moving masses of flesh that spawn other zombies from their putresence. Spawns up to 8 zombies in an area around it.
-- Slow 
-- High health 
-- Low damage 
-- Summons backup
+- Slow Speed
+- Moderate Numbers (Summons High Numbers Via BackUp Spawn) 
+- High Health 
+- Moderate damage 

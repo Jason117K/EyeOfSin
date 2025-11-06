@@ -1,4 +1,5 @@
 TICKER ZOMBIES are fast moving sentient bombs. Make sure to take them out before they get too close to your summons.
 - High Speed 
+- Low Numbers
 - Low Health 
-- Explodes When Close 
+- High Damage Explosion When Close 
