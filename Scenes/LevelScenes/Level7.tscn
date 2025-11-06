@@ -283,6 +283,7 @@ Wave2_Interval = 4
 Wave3_Interval = 2.0
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
+visible = false
 offset_left = 741.0
 offset_top = 40.0
 offset_right = 779.0
@@ -298,13 +299,18 @@ environment = SubResource("2")
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource("9_omvub")]
 layout_mode = 1
-offset_left = 25.0
-offset_top = 313.0
-offset_right = 65.0
-offset_bottom = 353.0
-scale = Vector2(0.5, 0.5)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.045
+offset_top = 133.07
+offset_right = 8.045
+offset_bottom = 133.07
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 
 [node name="UILayer" parent="." instance=ExtResource("10_dljnt")]
+layout_mode = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
@@ -320,6 +326,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.0784314)
 
 [node name="Environment" type="Node2D" parent="."]
+visible = false
 
 [node name="Coral" type="Node2D" parent="Environment"]
 
@@ -332,7 +339,7 @@ position = Vector2(532, 366)
 texture = ExtResource("11_ynos0")
 
 [node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(588, 308)
+position = Vector2(596, 324)
 texture = ExtResource("11_ynos0")
 flip_h = true
 
@@ -342,24 +349,24 @@ texture = ExtResource("11_ynos0")
 flip_h = true
 
 [node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(690, 312)
+position = Vector2(718, 321)
 texture = ExtResource("11_ynos0")
 
 [node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(406, 379)
+position = Vector2(430, 366)
 texture = ExtResource("11_ynos0")
 
 [node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(116, 396)
+position = Vector2(83, 328)
 texture = ExtResource("11_ynos0")
 
 [node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(268, 47)
+position = Vector2(258, 16)
 texture = ExtResource("11_ynos0")
 flip_h = true
 
 [node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(513, 45)
+position = Vector2(524, 7)
 texture = ExtResource("11_ynos0")
 
 [node name="CoralSmallProp7" type="Sprite2D" parent="Environment/Coral"]
@@ -382,12 +389,12 @@ texture = ExtResource("12_uif5r")
 flip_h = true
 
 [node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(252, 383)
+position = Vector2(445, 13)
 texture = ExtResource("12_uif5r")
 flip_h = true
 
 [node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(252, 383)
+position = Vector2(295, 325)
 texture = ExtResource("12_uif5r")
 flip_h = true
 
@@ -397,17 +404,17 @@ texture = ExtResource("12_uif5r")
 flip_h = true
 
 [node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(700, 21)
+position = Vector2(709, 0)
 texture = ExtResource("12_uif5r")
 flip_h = true
 
 [node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(700, 21)
+position = Vector2(612, 13)
 texture = ExtResource("12_uif5r")
 flip_h = true
 
 [node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(323, 27)
+position = Vector2(341, 14)
 texture = ExtResource("12_uif5r")
 
 [node name="Bramble" type="Node2D" parent="Environment"]
@@ -421,19 +428,19 @@ position = Vector2(454, 388)
 texture = ExtResource("13_64rgw")
 
 [node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(215, 388)
+position = Vector2(584, 399)
 texture = ExtResource("13_64rgw")
 
 [node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(215, 388)
+position = Vector2(640, 303)
 texture = ExtResource("13_64rgw")
 
 [node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(136, 46)
+position = Vector2(483, 0)
 texture = ExtResource("13_64rgw")
 
 [node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(639, 31)
+position = Vector2(660, 11)
 texture = ExtResource("13_64rgw")
 
 [node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
@@ -451,7 +458,7 @@ position = Vector2(402, 343)
 texture = ExtResource("14_ba5l5")
 
 [node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(377, 389)
+position = Vector2(428, 399)
 texture = ExtResource("14_ba5l5")
 flip_h = true
 
@@ -463,27 +470,27 @@ position = Vector2(595, 351)
 
 [node name="Fish2" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(636, 315)
+position = Vector2(515, 353)
 
 [node name="Fish5" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(250, 293)
+position = Vector2(250, 325)
 
 [node name="Fish6" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(78, 288)
+position = Vector2(37, 326)
 
 [node name="Fish7" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(177, 300)
+position = Vector2(158, 323)
 
 [node name="Fish8" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(677, 295)
+position = Vector2(677, 327)
 
 [node name="Fish9" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(478, 15)
+position = Vector2(366, 13)
 
 [node name="Fish3" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
@@ -496,11 +503,11 @@ position = Vector2(638, 346)
 [node name="Shrubs" type="Node2D" parent="Environment"]
 
 [node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
-position = Vector2(552, 40)
+position = Vector2(560, 13)
 scale = Vector2(1, 1)
 
 [node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
-position = Vector2(328, 279)
+position = Vector2(474, 339)
 scale = Vector2(1, 1)
 
 [node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
@@ -508,32 +515,32 @@ position = Vector2(521, 392)
 scale = Vector2(1, 1)
 
 [node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
-position = Vector2(156, 400)
+position = Vector2(193, 327)
 scale = Vector2(1, 1)
 
 [node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
-position = Vector2(433, 298)
+position = Vector2(433, 330)
 scale = Vector2(1, 1)
 
 [node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
-position = Vector2(630, 284)
+position = Vector2(658, 403)
 scale = Vector2(1, 1)
 
 [node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
-position = Vector2(298, 30)
+position = Vector2(297, 14)
 scale = Vector2(1, 1)
 
 [node name="Trees" type="Node2D" parent="Environment"]
 
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
-position = Vector2(337, 370)
+position = Vector2(561, 364)
 texture = ExtResource("17_cf74m")
 flip_h = true
 
 [node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
-position = Vector2(413, 14)
+position = Vector2(396, 7)
 texture = ExtResource("17_cf74m")
 
 [node name="Special" type="Node2D" parent="Environment"]
@@ -565,26 +572,23 @@ next_level = "res://Scenes/LevelScenes/EndScreen.tscn"
 
 [node name="CodexBG" parent="." instance=ExtResource("21_bpqyd")]
 layout_mode = 0
-offset_left = 686.0
-offset_top = 313.0
-offset_right = 739.0
-offset_bottom = 373.0
-
-[node name="PauseButton" parent="." instance=ExtResource("23_88mod")]
-visible = false
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 55.0
-offset_bottom = 23.0
+offset_left = 685.0
+offset_top = 327.0
+offset_right = 738.0
+offset_bottom = 387.0
 
 [node name="PauseButton2" parent="." instance=ExtResource("23_88mod")]
 layout_mode = 0
-offset_left = 683.0
-offset_top = 376.0
-offset_right = 738.0
-offset_bottom = 399.0
+offset_left = 682.0
+offset_top = 390.0
+offset_right = 737.0
+offset_bottom = 413.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(370, 208)
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+
+[editable path="UILayer"]

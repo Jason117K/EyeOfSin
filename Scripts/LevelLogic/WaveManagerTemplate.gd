@@ -242,7 +242,7 @@ func _on_spawn_next_wave():
 #Damage the Player 
 func subtract_health():
 	health_points -= 1 
-	get_parent().get_parent().get_node("UILayer/SunCounter/HealthPoints").text = "Health: " + str(health_points)
+	get_parent().get_parent().get_node("UILayer/SunCounter/HBoxContainer/HealthPoints").text = "Health: " + str(health_points)
 	print("Health is ",health_points)
 	if health_points <= 0:
 		lose()

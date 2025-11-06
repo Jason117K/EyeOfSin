@@ -5,6 +5,7 @@ extends AnimatedSprite2D
 		hue_shift = clamp(value, -180.0, 180.0)
 		_apply_hue_shift()
 
+#TODO Get Rid of Preload 
 var demon_hue_shift = preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
 
 func _apply_hue_shift() -> void:

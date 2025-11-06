@@ -5,61 +5,49 @@
 [node name="UILayer" type="Control"]
 z_index = 2
 layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 321.0
-offset_right = 41.0
-offset_bottom = 361.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="SunCounter" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 0
-offset_top = -320.0
 offset_right = 40.0
-offset_bottom = -280.0
+offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="SunCounter"]
+custom_minimum_size = Vector2(225, 30)
 layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 126.0
-offset_bottom = 23.0
-scale = Vector2(1.88, 2.12)
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="SunCounter"]
+custom_minimum_size = Vector2(221, 26)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 223.0
+offset_bottom = 28.0
+color = Color(0.690196, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="SunCounter"]
+custom_minimum_size = Vector2(217, 22)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 127.0
-offset_bottom = 24.0
-scale = Vector2(1.86, 1.98)
-color = Color(1, 0, 0, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="SunCounter"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 153.0
-offset_bottom = 25.0
-scale = Vector2(1.53, 1.885)
+offset_right = 221.0
+offset_bottom = 26.0
 color = Color(0, 0, 0, 1)
 
-[node name="HealthPoints" type="Label" parent="SunCounter"]
-layout_mode = 2
-offset_left = 128.0
-offset_top = 15.0
-offset_right = 222.0
-offset_bottom = 48.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_qaivy")
-text = "Health:10"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="SunCounter"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 2.0
-offset_right = 217.0
-offset_bottom = 42.0
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+offset_left = 4.72
+offset_top = -14.0
+offset_right = 174.72
+offset_bottom = 46.0
 theme_override_constants/separation = 10
 
 [node name="BloodCounter" type="Label" parent="SunCounter/HBoxContainer"]
@@ -68,3 +56,9 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qaivy")
 text = "Blood:75
 "
+
+[node name="HealthPoints" type="Label" parent="SunCounter/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qaivy")
+text = "Health:10"

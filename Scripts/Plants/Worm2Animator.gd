@@ -50,7 +50,7 @@ func _process(delta):
 	var new_velocity = (y_offset - prev_y) / delta
 	velocity = lerp(velocity, new_velocity, 0.5)
 	prev_y = y_offset
-	
+	#test
 	# Determine target squash/stretch based on motion
 	var normalized_velocity = clamp(velocity / (bob_height * 2), -1, 1)
 	
