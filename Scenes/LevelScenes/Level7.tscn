@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c6u6h5wyw25fr"]
+[gd_scene load_steps=31 format=3 uid="uid://c6u6h5wyw25fr"]
 
 [ext_resource type="Script" uid="uid://c2arg8yxe0hf5" path="res://Scripts/LevelLogic/Level7.gd" id="1_rhl2j"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_xvglt"]
@@ -10,10 +10,12 @@
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="8_88mod"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="9_omvub"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="10_dljnt"]
-[ext_resource type="Texture2D" uid="uid://df36u1f3ge5s6" path="res://Assets/Environment/Props/CoralSmallPROP.png" id="11_ynos0"]
-[ext_resource type="Texture2D" uid="uid://der1qkybx4731" path="res://Assets/Environment/Props/CoralBigPROP.png" id="12_uif5r"]
+[ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="11_88mod"]
+[ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="12_xnnj6"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="13_64rgw"]
+[ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="13_frgcx"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="14_ba5l5"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="14_hn15n"]
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="15_u2s6g"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="16_4g3jh"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_cf74m"]
@@ -76,6 +78,7 @@ sun_points = 2000
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
 z_index = 1
+metadata/_edit_lock_ = true
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_bpqyd")]
 visible = false
@@ -270,6 +273,7 @@ position = Vector2(-41, -1)
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("5_88mod")]
 z_index = -2
+metadata/_edit_lock_ = true
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_xnnj6")]
 z_index = 1
@@ -311,6 +315,7 @@ scale = Vector2(0.7, 0.7)
 
 [node name="UILayer" parent="." instance=ExtResource("10_dljnt")]
 layout_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
@@ -326,98 +331,109 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.0784314)
 
 [node name="Environment" type="Node2D" parent="."]
-visible = false
 
 [node name="Coral" type="Node2D" parent="Environment"]
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(532, 366)
-texture = ExtResource("11_ynos0")
+position = Vector2(543, 347)
+texture = ExtResource("11_88mod")
 
 [node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(532, 366)
-texture = ExtResource("11_ynos0")
+position = Vector2(499, 335)
+texture = ExtResource("11_88mod")
 
 [node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(596, 324)
-texture = ExtResource("11_ynos0")
+position = Vector2(670, 400)
+texture = ExtResource("11_88mod")
 flip_h = true
 
 [node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(644, 380)
-texture = ExtResource("11_ynos0")
+position = Vector2(601, 401)
+texture = ExtResource("11_88mod")
 flip_h = true
 
 [node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(718, 321)
-texture = ExtResource("11_ynos0")
+texture = ExtResource("11_88mod")
 
 [node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(430, 366)
-texture = ExtResource("11_ynos0")
+position = Vector2(420, 382)
+texture = ExtResource("11_88mod")
 
 [node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(83, 328)
-texture = ExtResource("11_ynos0")
+position = Vector2(113, 323)
+texture = ExtResource("11_88mod")
 
 [node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(258, 16)
-texture = ExtResource("11_ynos0")
+position = Vector2(262, 8)
+texture = ExtResource("11_88mod")
 flip_h = true
 
 [node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(524, 7)
-texture = ExtResource("11_ynos0")
-
-[node name="CoralSmallProp7" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(413, 382)
-scale = Vector2(-0.0526316, 1)
-texture = ExtResource("11_ynos0")
+position = Vector2(497, 16)
+texture = ExtResource("11_88mod")
 
 [node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(617, 324)
-texture = ExtResource("12_uif5r")
+position = Vector2(618, 344)
+texture = ExtResource("12_xnnj6")
 
 [node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(622, 356)
-texture = ExtResource("12_uif5r")
+position = Vector2(406, 333)
+texture = ExtResource("12_xnnj6")
 flip_h = true
 
 [node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(707, 397)
-texture = ExtResource("12_uif5r")
+texture = ExtResource("12_xnnj6")
 flip_h = true
 
 [node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(445, 13)
-texture = ExtResource("12_uif5r")
+position = Vector2(724, 4)
+texture = ExtResource("12_xnnj6")
 flip_h = true
 
 [node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(295, 325)
-texture = ExtResource("12_uif5r")
+position = Vector2(263, 323)
+texture = ExtResource("12_xnnj6")
 flip_h = true
 
 [node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(485, 366)
-texture = ExtResource("12_uif5r")
+position = Vector2(490, 396)
+texture = ExtResource("12_xnnj6")
 flip_h = true
 
 [node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(709, 0)
-texture = ExtResource("12_uif5r")
+position = Vector2(620, 3)
+texture = ExtResource("12_xnnj6")
 flip_h = true
 
 [node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(612, 13)
-texture = ExtResource("12_uif5r")
+position = Vector2(609, 15)
+texture = ExtResource("12_xnnj6")
 flip_h = true
 
 [node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(341, 14)
-texture = ExtResource("12_uif5r")
+position = Vector2(353, 14)
+texture = ExtResource("12_xnnj6")
+
+[node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(563, 378)
+texture = ExtResource("13_frgcx")
+
+[node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(662, 343)
+texture = ExtResource("13_frgcx")
+
+[node name="FetusProp" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(438, 4)
+texture = ExtResource("14_hn15n")
+
+[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(465, 347)
+texture = ExtResource("14_hn15n")
 
 [node name="Bramble" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(505, 328)
@@ -466,7 +482,7 @@ flip_h = true
 
 [node name="Fish" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(595, 351)
+position = Vector2(542, 386)
 
 [node name="Fish2" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
@@ -474,7 +490,7 @@ position = Vector2(515, 353)
 
 [node name="Fish5" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(250, 325)
+position = Vector2(180, 329)
 
 [node name="Fish6" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
@@ -482,25 +498,26 @@ position = Vector2(37, 326)
 
 [node name="Fish7" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(158, 323)
+position = Vector2(573, 19)
 
 [node name="Fish8" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(677, 327)
+position = Vector2(455, 394)
 
 [node name="Fish9" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(366, 13)
+position = Vector2(315, 14)
 
 [node name="Fish3" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(680, 364)
+position = Vector2(573, 342)
 
 [node name="Fish4" parent="Environment/Fish" instance=ExtResource("15_u2s6g")]
 z_index = -1
-position = Vector2(638, 346)
+position = Vector2(633, 395)
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("16_4g3jh")]
 position = Vector2(560, 13)
@@ -531,6 +548,7 @@ position = Vector2(297, 14)
 scale = Vector2(1, 1)
 
 [node name="Trees" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
@@ -544,6 +562,7 @@ position = Vector2(396, 7)
 texture = ExtResource("17_cf74m")
 
 [node name="Special" type="Node2D" parent="Environment"]
+visible = false
 
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
 position = Vector2(606, 395)

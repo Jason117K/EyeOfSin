@@ -211,6 +211,7 @@ offset_bottom = 241.0
 color = Color(2, 0, 0, 0.729412)
 
 [node name="UILayer" parent="." instance=ExtResource("8_dph8t")]
+layout_mode = 1
 offset_top = 320.0
 offset_bottom = 360.0
 
