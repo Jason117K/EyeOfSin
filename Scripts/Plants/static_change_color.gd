@@ -3,6 +3,8 @@ extends Sprite2D
 var thisMaterial
 
 @export var targetColorString := "ff0013"
+@export var targetColor : Color 
+@export var replaceColor : Color 
 
 func _ready() -> void:
 	self.connect("animation_changed",_on_animation_changed)

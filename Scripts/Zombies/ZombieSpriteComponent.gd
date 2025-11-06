@@ -8,8 +8,11 @@ extends AnimatedSprite2D
 		_apply_hue_shift()
 
 var demon_hue_shift = preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+var thisMaterial
 
-
+@export var targetColorString := "ff0013"
+@export var targetColor : Color 
+@export var replaceColor : Color = Color.BLACK
 
 var is_attacking
 var isSlow
@@ -31,6 +34,16 @@ func _ready() -> void:
 	animation_changed.connect(_apply_hue_shift)
 	frame_changed.connect(_apply_hue_shift)
 	
+	self.connect("animation_changed",_on_animation_changed)
+	thisMaterial = material.duplicate()
+	material = thisMaterial
+	# Set initial shader parameters
+	if thisMaterial:
+		#print("Made h")
+		thisMaterial.set_shader_parameter("target_color", targetColor)
+		thisMaterial.set_shader_parameter("replace_color",replaceColor)
+		thisMaterial.set_shader_parameter("tolerance", 0.1)
+		pass	
 	
 	
 func setSpecialMoveTrue():
@@ -149,3 +162,12 @@ func shift_hue(degrees: float) -> void:
 	hue_shift = fmod(hue_shift + degrees, 360.0)
 	if hue_shift > 180: hue_shift -= 360
 	if hue_shift < -180: hue_shift += 360
+
+
+
+func _on_animation_changed() -> void:
+	if thisMaterial:
+		print("Made PPInk")
+		thisMaterial.set_shader_parameter("target_color", Color(targetColorString))
+		thisMaterial.set_shader_parameter("replace_color", Color.DEEP_PINK)
+		thisMaterial.set_shader_parameter("tolerance", 0.3)

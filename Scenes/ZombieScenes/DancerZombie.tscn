@@ -271,6 +271,7 @@ sprite_frames = SubResource("24")
 animation = &"Walk"
 frame = 3
 script = ExtResource("10")
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 
 [node name="SummonComponent" type="Node2D" parent="."]
 script = ExtResource("6")

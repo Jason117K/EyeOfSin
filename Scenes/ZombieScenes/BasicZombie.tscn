@@ -295,6 +295,7 @@ animation = &"Walk"
 frame_progress = 0.580148
 flip_h = true
 script = ExtResource("6")
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-10.6667, 0)

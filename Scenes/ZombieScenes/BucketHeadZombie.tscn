@@ -409,6 +409,7 @@ speed = 30
 attack_power = 51
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -420,6 +421,7 @@ frame = 6
 frame_progress = 0.819719
 flip_h = true
 script = ExtResource("10")
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-34, 0)

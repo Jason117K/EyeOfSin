@@ -344,6 +344,7 @@ speed = 72
 attack_power = 700
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, 5)
 shape = SubResource("15")
 
@@ -354,6 +355,7 @@ sprite_frames = SubResource("14")
 animation = &"WebWalk"
 flip_h = true
 script = ExtResource("9")
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-15, 0)
@@ -383,6 +385,7 @@ position = Vector2(-140, 4.66667)
 sprite_frames = SubResource("28")
 
 [node name="HitBoxComponent" type="Area2D" parent="." groups=["Zombie"]]
+visible = false
 z_index = 2
 collision_layer = 2
 monitorable = false

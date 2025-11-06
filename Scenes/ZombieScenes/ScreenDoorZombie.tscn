@@ -715,6 +715,7 @@ material = SubResource("27")
 sprite_frames = SubResource("16")
 animation = &"Walk"
 script = ExtResource("10")
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 metadata/_edit_lock_ = true
 
 [node name="TransformedSpriteComp" type="AnimatedSprite2D" parent="."]

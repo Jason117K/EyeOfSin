@@ -403,6 +403,7 @@ sprite_frames = SubResource("9")
 animation = &"Attack"
 flip_h = true
 script = ExtResource("10")
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." groups=["Zombie"]]
 target_position = Vector2(-30, 0)
