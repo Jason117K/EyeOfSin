@@ -26,6 +26,10 @@ var explodeBuff = false         # Whether or not the drone is buffed
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
+func make_drone_glow():
+	animatedSpriteComp.make_glow()
+	
+	
 # Doubles the drone attack damage 
 func doubleDamage():
 	attack_damage = attack_damage * 3

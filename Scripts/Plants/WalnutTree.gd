@@ -42,7 +42,7 @@ func _ready():
 
 #Sets buffed to true 
 func receiveBuff(bufferName):
-	
+	animComponent.make_buff_glow()
 	if "SunFlower" in bufferName.name && !isSunflowerBuffed:
 		health = buffedHealth
 		maxHealth = buffedMaxHealth

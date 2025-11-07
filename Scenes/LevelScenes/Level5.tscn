@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://copylsosasdux"]
+[gd_scene load_steps=33 format=3 uid="uid://copylsosasdux"]
 
 [ext_resource type="Script" uid="uid://b0awa3lvoo8rt" path="res://Scripts/LevelLogic/Level5.gd" id="1_y1pfi"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_istt8"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cxup8ebd3egtk" path="res://Scenes/LevelScenes/Level6.tscn" id="20_jm0qw"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="22_jm0qw"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="23_dn4aj"]
+[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="26_rp3wk"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -61,6 +62,13 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwem5"]
+shader = ExtResource("26_rp3wk")
+shader_parameter/hpass = 1.0
+shader_parameter/vpass = 1.0
+shader_parameter/radius = 65
+shader_parameter/unit = Vector2(1, 1)
 
 [node name="Level5" type="Control"]
 layout_mode = 3
@@ -591,6 +599,17 @@ sprite_frames = SubResource("SpriteFrames_33uve")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
+
+[node name="GlowShaderPass" type="CanvasLayer" parent="."]
+
+[node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
+material = SubResource("ShaderMaterial_rwem5")
+offset_left = -49.0
+offset_top = -65.0
+offset_right = 804.0
+offset_bottom = 435.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]

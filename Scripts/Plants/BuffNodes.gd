@@ -112,6 +112,6 @@ func _process(_delta):
 									pass
 								else:
 									buffedPlants.append(plantToBuff)
-								blood_tile.visible = true
+								#blood_tile.visible = true
 								break
 				#blood_tile.visible = bloodTileVisible

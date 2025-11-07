@@ -19,11 +19,12 @@ var isBuffed := false
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
-	animatedSpriteComponent.animation = "redSpiderDefault"
+	animatedSpriteComponent.animation = "spawn"
+	#animatedSpriteComponent.animation = "redSpiderDefault"
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$ShootTimer.start()  # Start the shoot timer
 	assert($ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout")) ==OK)
-	animatedSpriteComponent.animation = "spawn"
+	#animatedSpriteComponent.animation = "spawn"
 
 #Handles Collision In Relation To Attacking
 func _process(_delta):
@@ -35,8 +36,9 @@ func _process(_delta):
 			if collider:
 				#print("Collider Name is ", collider.name)
 				if collider.is_in_group("Zombie"):
-					#print("Can Attack Is True")
 					canAttack = true
+					print("Can AttackZ Is True",canAttack)
+					
 				else:
 					canAttack = false
 
@@ -47,6 +49,7 @@ func get_cost():
 					
 # Doubles attack speed when receiving a buff 
 func receiveBuff(bufferName):
+	animatedSpriteComponent.make_buff_glow()
 	if not isBuffed:
 		animatedSpriteComponent.speed_scale = 2
 		isBuffed = true 
@@ -77,15 +80,16 @@ func take_damage(damage):
 # Handles either looping attack animation or returning to default 
 func _on_AnimatedSprite_animation_finished():
 	if animatedSpriteComponent.animation == "spawn":
-		
+		print("Early Return No AttackZ")
 		animatedSpriteComponent.position = Vector2(animatedSpriteComponent.position.x, animatedSpriteComponent.position.y -8.5)
 		animatedSpriteComponent.animation = "redSpiderDefault"
 		animatedSpriteComponent.play()
 		return
 	if canAttack:
-		#print("Should Be Red Spider Attack")
+		print("Should Be Red Spider AttackZ")
 		animatedSpriteComponent.animation = "redSpiderAttack"
 	else:
+		print("Can AttackZ is ", canAttack)
 		animatedSpriteComponent.animation = "redSpiderDefault"
 	animatedSpriteComponent.play()
 

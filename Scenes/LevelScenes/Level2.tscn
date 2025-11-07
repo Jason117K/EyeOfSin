@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0i06w5c5gtby"]
+[gd_scene load_steps=33 format=3 uid="uid://c0i06w5c5gtby"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="19_bpdoe"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="20_f18wi"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="24_3oioj"]
+[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="25_mxy0f"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -68,6 +69,13 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc8kw"]
+shader = ExtResource("25_mxy0f")
+shader_parameter/hpass = 1.0
+shader_parameter/vpass = 1.0
+shader_parameter/radius = 65
+shader_parameter/unit = Vector2(1, 1)
 
 [node name="Level2" type="Control"]
 layout_mode = 3
@@ -571,6 +579,17 @@ sprite_frames = SubResource("SpriteFrames_ngjvq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
+
+[node name="GlowShaderPass" type="CanvasLayer" parent="."]
+
+[node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
+material = SubResource("ShaderMaterial_uc8kw")
+offset_left = -49.0
+offset_top = -65.0
+offset_right = 804.0
+offset_bottom = 435.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]

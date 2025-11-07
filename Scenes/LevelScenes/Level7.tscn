@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c6u6h5wyw25fr"]
+[gd_scene load_steps=33 format=3 uid="uid://c6u6h5wyw25fr"]
 
 [ext_resource type="Script" uid="uid://c2arg8yxe0hf5" path="res://Scripts/LevelLogic/Level7.gd" id="1_rhl2j"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_xvglt"]
@@ -25,11 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="21_bpqyd"]
 [ext_resource type="PackedScene" uid="uid://d1f383t0twnnu" path="res://Scenes/LevelScenes/EndScreen.tscn" id="21_jtxfb"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="23_88mod"]
-[ext_resource type="PackedScene" uid="uid://2ax0wkgo0i4b" path="res://Scenes/ZombieScenes/DancerZombie.tscn" id="26_hn15n"]
-[ext_resource type="PackedScene" uid="uid://bkwi1ob6dceio" path="res://Scenes/ZombieScenes/BasicZombie.tscn" id="27_dljnt"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_omvub"]
-[ext_resource type="PackedScene" uid="uid://cgcaw5piiqcxr" path="res://Scenes/ZombieScenes/BackUpDancerZombie.tscn" id="27_uif5r"]
-[ext_resource type="PackedScene" uid="uid://dfqiiji8xji3q" path="res://Scenes/ZombieScenes/PoleVaultZombie.tscn" id="30_64rgw"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -635,18 +631,6 @@ offset_top = 44.0
 offset_right = 119.0
 offset_bottom = 84.0
 
-[node name="BackUpDancerZombie" parent="." instance=ExtResource("27_uif5r")]
-position = Vector2(435, 207)
-
-[node name="BasicZombie" parent="." instance=ExtResource("27_dljnt")]
-position = Vector2(409, 163)
-
-[node name="DancerZombie" parent="." instance=ExtResource("26_hn15n")]
-position = Vector2(211, 138)
-
-[node name="PoleVaultZombie" parent="." instance=ExtResource("30_64rgw")]
-position = Vector2(545, 243)
-
 [node name="GlowShaderPass" type="CanvasLayer" parent="."]
 
 [node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
@@ -656,6 +640,7 @@ offset_top = -65.0
 offset_right = 804.0
 offset_bottom = 435.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]

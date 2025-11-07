@@ -1,7 +1,8 @@
-[gd_scene load_steps=123 format=3 uid="uid://p8shvofaoy5d"]
+[gd_scene load_steps=124 format=3 uid="uid://p8shvofaoy5d"]
 
 [ext_resource type="Texture2D" uid="uid://2bti3iudanb6" path="res://Assets/Plants/Worm1.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://Assets/Plants/Worm2.png" id="3"]
+[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://Scripts/Plants/Shaders/DemonGlow.gdshader" id="3_hls8g"]
 [ext_resource type="Texture2D" uid="uid://b3tnuprj1j3dg" path="res://Assets/Plants/Plant_Animations/LaserEggWormsSmolSHELL.png" id="3_vkg27"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://Scripts/Plants/EggWorm.gd" id="4"]
 [ext_resource type="Script" uid="uid://ba55ljhixst0w" path="res://Scripts/Plants/Worm2Animator.gd" id="5"]
@@ -15,6 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="12"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7jjk"]
+resource_local_to_scene = true
+shader = ExtResource("3_hls8g")
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(33, 33, 33, 1)
+shader_parameter/glow_tolerance = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqc8a"]
 
@@ -806,6 +812,7 @@ material = SubResource("ShaderMaterial_t7jjk")
 position = Vector2(0, -3)
 texture = ExtResource("3_vkg27")
 script = ExtResource("5_hls8g")
+targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="Worm1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_oqc8a")

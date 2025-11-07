@@ -22,6 +22,7 @@ extends Node2D
 var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  # Load the projectile scene
 @onready var shootTimer = $ShootTimer
 @onready var buffNodes = $BuffNodesComponent
+@onready var shell_sprite = $Egg
 #onready var animSpriteComp = $AnimatedSprite
 
 var isSpyderBuffed := false
@@ -65,6 +66,7 @@ func get_cost():
 
 #Handles Eggworm Buffing 
 func receiveBuff(plant):
+		shell_sprite.make_buff_glow()
 		#Increases Speed and Range From Peashooter Buff
 		if("Peashooter" in plant.name) && !isSpyderBuffed:
 			laserShootComp.extension_speed = 80000

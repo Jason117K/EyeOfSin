@@ -26,14 +26,14 @@ func _ready():
 	assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
 	animSpriteComp.animation = "spawn"
 	
-	# Store the original material
-	original_material = animSpriteComp.material
-	
-	# Create the highlight material (shader)
-	highlight_material = ShaderMaterial.new()
-	highlight_material.shader = load("res://Scripts/Shaders/outline_shader.gdshader")
-	highlight_material.set_shader_parameter("outline_width", 5.0)
-	highlight_material.set_shader_parameter("outline_color", Color(1.0, 0.7, 0.0, 1.0)) # Golden highlight	
+	## Store the original material
+	#original_material = animSpriteComp.material
+	#
+	## Create the highlight material (shader)
+	#highlight_material = ShaderMaterial.new()
+	#highlight_material.shader = load("res://Scripts/Shaders/outline_shader.gdshader")
+	#highlight_material.set_shader_parameter("outline_width", 5.0)
+	#highlight_material.set_shader_parameter("outline_color", Color(1.0, 0.7, 0.0, 1.0)) # Golden highlight	
 	
 	
 func toggle_highlight():
@@ -60,6 +60,7 @@ func generate_sun():
 # TODO Implement sunflower buff 
 # Handles all pontential sunflower buffs 
 func receiveBuff(plantName):
+	animSpriteComp.make_buff_glow()
 	if !isBuffed : 
 		sunTimer.wait_time = buffedSunWaitTime
 		isBuffed = true 

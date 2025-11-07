@@ -9,6 +9,10 @@ extends AnimatedSprite2D
 
 var demon_hue_shift = preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
 
+#TODO Get Rid of Preload 
+var demon_glow = preload("res://Scripts/Plants/Shaders/DemonGlow.gdshader")
+@export var targetGlowColor : Color
+
 func _apply_hue_shift() -> void:
 	# Create material if needed
 	if material == null:
@@ -54,4 +58,21 @@ func buff():
 
 func debuff():
 	self_modulate = Color("ffffff")
+
+
+func make_glow():
+	#print("Make Drone Glow")
+	if material == null:
+		#print("PRE LOL")
+		material = ShaderMaterial.new()
+		material.shader = demon_glow #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
 	
+	# Update shader parameter
+	if material is ShaderMaterial:
+		
+		#material.shader = demon_glow
+		#print("LOL" , material)
+		material.set_shader_parameter("glow_color", targetGlowColor)
+	else:
+		#print("Not funn y LOL ", material)
+		pass

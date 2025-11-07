@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://l62ub0kbh343"]
+[gd_scene load_steps=33 format=3 uid="uid://l62ub0kbh343"]
 
 [ext_resource type="Script" uid="uid://874tnpm8fiel" path="res://Scripts/LevelLogic/Level4.gd" id="1_14dgs"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_dksml"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_pa053"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="22_u6v5d"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="23_b3suy"]
+[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="26_yn1uf"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -61,6 +62,13 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7dnwh"]
+shader = ExtResource("26_yn1uf")
+shader_parameter/hpass = 1.0
+shader_parameter/vpass = 1.0
+shader_parameter/radius = 65
+shader_parameter/unit = Vector2(1, 1)
 
 [node name="Level4" type="Control"]
 layout_mode = 3
@@ -586,6 +594,17 @@ sprite_frames = SubResource("SpriteFrames_61i0t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
+
+[node name="GlowShaderPass" type="CanvasLayer" parent="."]
+
+[node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
+material = SubResource("ShaderMaterial_7dnwh")
+offset_left = -49.0
+offset_top = -65.0
+offset_right = 804.0
+offset_bottom = 435.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="wasp_placed" from="PlantManager" to="." method="_on_plant_manager_wasp_placed"]
 [connection signal="wave1Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_1_started"]

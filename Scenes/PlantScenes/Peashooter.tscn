@@ -1,7 +1,8 @@
-[gd_scene load_steps=144 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=145 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
+[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://Scripts/Plants/Shaders/DemonGlow.gdshader" id="2_4vrps"]
 [ext_resource type="Texture2D" uid="uid://bc83pey6ruxkg" path="res://Assets/Plants/Plant_Animations/RedSpiderAttack-Sheet.png" id="2_81bns"]
 [ext_resource type="Texture2D" uid="uid://bhcpyioblhadb" path="res://Assets/Plants/Animations_Plant/Spider/RedSpiderAttack-Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cskcxpelcs24" path="res://Assets/Plants/Plant_Animations/RedSpider-Sheet.png" id="4_4vrps"]
@@ -15,7 +16,12 @@
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_81bns"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vrps"]
+resource_local_to_scene = true
+shader = ExtResource("2_4vrps")
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(22, 22, 22, 1)
+shader_parameter/glow_tolerance = 0.8
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qq15"]
 atlas = ExtResource("2_81bns")
@@ -178,7 +184,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u1mma")
 }],
-"loop": true,
+"loop": false,
 "name": &"redSpiderAttack",
 "speed": 5.0
 }, {
@@ -218,7 +224,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_okgsi")
 }],
-"loop": true,
+"loop": false,
 "name": &"redSpiderDefault",
 "speed": 5.0
 }, {
@@ -977,13 +983,13 @@ shape = SubResource("1")
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1.5, 1.5, 1.5, 1)
-material = SubResource("ShaderMaterial_81bns")
+material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
 animation = &"redSpiderDefault"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("6_67t0g")
+targetGlowColor = Color(1, 0, 0.101961, 1)
 
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false
@@ -1090,10 +1096,15 @@ sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 15
 frame_progress = 0.606092
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="animation_finished" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 
 [editable path="BuffNodesComponent"]

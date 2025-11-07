@@ -51,6 +51,9 @@ func get_cost():
 
 #Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
+	for drone in available_drones:
+		drone.make_drone_glow()
+	#animSpriteComp.make_drone_glow()
 	#Apply a double damage buff to every drone 
 	if("EggWorm" in bufferName.name) && !isEggWyrmBuffed:
 		for drone in available_drones:

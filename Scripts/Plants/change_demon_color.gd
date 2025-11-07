@@ -1,35 +1,40 @@
 extends AnimatedSprite2D
 
-@export_range(-180, 180) var hue_shift: float = 0.0: #25.0
-	set(value):
-		hue_shift = clamp(value, -180.0, 180.0)
-		_apply_hue_shift()
+
 
 #TODO Get Rid of Preload 
-var demon_hue_shift = preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+var demon_glow = preload("res://Scripts/Plants/Shaders/DemonGlow.gdshader")
+@export var targetGlowColor : Color
 
-func _apply_hue_shift() -> void:
-	# Create material if needed
+
+
+
+func _ready() -> void:
+	#make_buff_glow()
+	pass
+
+
+
+func make_buff_glow():
 	if material == null:
+		#print("PRE LOL")
 		material = ShaderMaterial.new()
-		material.shader = demon_hue_shift #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+		material.shader = demon_glow #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:
-		material.shader = demon_hue_shift
-		material.set_shader_parameter("hue_shift_degrees", hue_shift)
+		
+		#material.shader = demon_glow
+		#print("LOL" , material)
+		material.set_shader_parameter("glow_color", targetGlowColor)
+	else:
+		#print("Not funn y LOL ", material)
+		pass
 
-func _ready() -> void:
-	_apply_hue_shift()
-	# Ensure updates on animation changes
-	animation_changed.connect(_apply_hue_shift)
-	frame_changed.connect(_apply_hue_shift)
 
-# Public API methods
-func set_hue_shift(degrees: float) -> void:
-	hue_shift = clamp(degrees, -180.0, 180.0)
+func _on_timer_timeout() -> void:
+	#make_buff_glow()
+	pass
 
-func shift_hue(degrees: float) -> void:
-	hue_shift = fmod(hue_shift + degrees, 360.0)
-	if hue_shift > 180: hue_shift -= 360
-	if hue_shift < -180: hue_shift += 360
+func make_drone_glow():
+	pass

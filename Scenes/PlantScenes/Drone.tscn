@@ -1,10 +1,16 @@
-[gd_scene load_steps=26 format=3 uid="uid://xia8qyghjoqw"]
+[gd_scene load_steps=27 format=3 uid="uid://xia8qyghjoqw"]
 
 [ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://Assets/Plants/Animations/Wasp 16x16 Sprite Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://mbwu3w6n5a3x" path="res://Scripts/Plants/Drone.gd" id="2"]
+[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://Scripts/Plants/Shaders/DemonGlow.gdshader" id="2_8cfhw"]
 [ext_resource type="Script" uid="uid://cjpy3j8mq8mfa" path="res://Scripts/Plants/DroneSpriteController.gd" id="3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10gu7"]
+resource_local_to_scene = true
+shader = ExtResource("2_8cfhw")
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(99, 99, 99, 1)
+shader_parameter/glow_tolerance = 0.2
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("1")
@@ -169,6 +175,7 @@ animation = &"attack"
 autoplay = "idle"
 flip_h = true
 script = ExtResource("3")
+targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="FightZone" type="Area2D" parent="."]
 collision_layer = 0
