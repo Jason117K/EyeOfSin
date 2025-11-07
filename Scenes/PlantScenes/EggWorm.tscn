@@ -1,8 +1,8 @@
 [gd_scene load_steps=123 format=3 uid="uid://p8shvofaoy5d"]
 
-[ext_resource type="Texture2D" uid="uid://dsmx5pydgpmck" path="res://Assets/Plants/LaserEggWormsSmolSHELL.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://2bti3iudanb6" path="res://Assets/Plants/Worm1.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://Assets/Plants/Worm2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b3tnuprj1j3dg" path="res://Assets/Plants/Plant_Animations/LaserEggWormsSmolSHELL.png" id="3_vkg27"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://Scripts/Plants/EggWorm.gd" id="4"]
 [ext_resource type="Script" uid="uid://ba55ljhixst0w" path="res://Scripts/Plants/Worm2Animator.gd" id="5"]
 [ext_resource type="Script" uid="uid://houv2w5xud0" path="res://Scripts/Plants/change_demon_color_static.gd" id="5_hls8g"]
@@ -804,7 +804,7 @@ texture = ExtResource("7")
 z_index = 1
 material = SubResource("ShaderMaterial_t7jjk")
 position = Vector2(0, -3)
-texture = ExtResource("1")
+texture = ExtResource("3_vkg27")
 script = ExtResource("5_hls8g")
 
 [node name="Worm1" type="Sprite2D" parent="."]

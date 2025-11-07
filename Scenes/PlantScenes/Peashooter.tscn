@@ -1,8 +1,10 @@
-[gd_scene load_steps=132 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=144 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bc83pey6ruxkg" path="res://Assets/Plants/Plant_Animations/RedSpiderAttack-Sheet.png" id="2_81bns"]
 [ext_resource type="Texture2D" uid="uid://bhcpyioblhadb" path="res://Assets/Plants/Animations_Plant/Spider/RedSpiderAttack-Sheet.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cskcxpelcs24" path="res://Assets/Plants/Plant_Animations/RedSpider-Sheet.png" id="4_4vrps"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="5"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="6_67t0g"]
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="7"]
@@ -14,6 +16,30 @@
 size = Vector2(16, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81bns"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qq15"]
+atlas = ExtResource("2_81bns")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3byx0"]
+atlas = ExtResource("2_81bns")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y16w"]
+atlas = ExtResource("2_81bns")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdofu"]
+atlas = ExtResource("2_81bns")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7b5k"]
+atlas = ExtResource("2_81bns")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1mma"]
+atlas = ExtResource("2_81bns")
+region = Rect2(200, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="143"]
 atlas = ExtResource("3")
@@ -38,6 +64,22 @@ region = Rect2(160, 0, 40, 40)
 [sub_resource type="AtlasTexture" id="148"]
 atlas = ExtResource("3")
 region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l66ve"]
+atlas = ExtResource("4_4vrps")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64arl"]
+atlas = ExtResource("4_4vrps")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t52d5"]
+atlas = ExtResource("4_4vrps")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okgsi"]
+atlas = ExtResource("4_4vrps")
+region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="149"]
 atlas = ExtResource("1")
@@ -119,6 +161,29 @@ region = Rect2(448, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5qq15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3byx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y16w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdofu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7b5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1mma")
+}],
+"loop": true,
+"name": &"redSpiderAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("143")
 }, {
 "duration": 1.0,
@@ -137,7 +202,24 @@ animations = [{
 "texture": SubResource("148")
 }],
 "loop": false,
-"name": &"redSpiderAttack",
+"name": &"redSpiderAttack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l66ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64arl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t52d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okgsi")
+}],
+"loop": true,
+"name": &"redSpiderDefault",
 "speed": 5.0
 }, {
 "frames": [{
@@ -154,7 +236,7 @@ animations = [{
 "texture": SubResource("152")
 }],
 "loop": false,
-"name": &"redSpiderDefault",
+"name": &"redSpiderDefault1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -898,7 +980,7 @@ autostart = true
 modulate = Color(1.5, 1.5, 1.5, 1)
 material = SubResource("ShaderMaterial_81bns")
 sprite_frames = SubResource("9")
-animation = &"redSpiderAttack"
+animation = &"redSpiderDefault"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("6_67t0g")
@@ -909,8 +991,7 @@ visible = false
 [node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes"]
 position = Vector2(0, -8.5)
 sprite_frames = SubResource("9")
-animation = &"redSpiderDefault"
-frame = 1
+animation = &"redSpiderDefault1"
 flip_h = true
 
 [node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]

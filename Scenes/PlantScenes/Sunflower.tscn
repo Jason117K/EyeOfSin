@@ -1,7 +1,8 @@
-[gd_scene load_steps=102 format=3 uid="uid://ct2xdafdtut66"]
+[gd_scene load_steps=107 format=3 uid="uid://ct2xdafdtut66"]
 
 [ext_resource type="Script" uid="uid://kjyi7ykyorhn" path="res://Scripts/Sunflower.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://Assets/Plants/Plant_Animations/EyeSunTowerIdle-Sheet.png" id="2_bufnm"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
@@ -13,6 +14,22 @@
 size = Vector2(11, 9)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bufnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcved"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43yhb"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teyhb"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_644qc"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="119"]
 atlas = ExtResource("4")
@@ -110,6 +127,23 @@ region = Rect2(448, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vcved")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43yhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teyhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_644qc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("119")
 }, {
 "duration": 1.0,
@@ -122,7 +156,7 @@ animations = [{
 "texture": SubResource("122")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -753,8 +787,7 @@ animation = &"New Anim"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("6")
-animation = &"idle"
-frame = 3
+animation = &"idle1"
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("7")]
 giveBuffTo = ["Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "Sunflower", "None"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=3 uid="uid://2ax0wkgo0i4b"]
+[gd_scene load_steps=44 format=3 uid="uid://2ax0wkgo0i4b"]
 
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_26b7w"]
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="4"]
 [ext_resource type="Script" uid="uid://cvurb2cp3ea7n" path="res://Scripts/Zombies/DancerZombie.gd" id="5"]
@@ -251,6 +252,11 @@ animations = [{
 [node name="DancerZombie" type="Area2D" groups=["Zombie"]]
 collision_layer = 2
 script = ExtResource("5")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
+position = Vector2(8, 20)
+texture = ExtResource("2_26b7w")
 
 [node name="ComponentManager" parent="." instance=ExtResource("11")]
 

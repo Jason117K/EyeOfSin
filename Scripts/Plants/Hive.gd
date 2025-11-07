@@ -327,3 +327,7 @@ func die_fromClearSpace():
 	queue_free()		
 	
 	
+
+
+func _on_play_anim_timer_timeout() -> void:
+	animSpriteComp.play("idle")

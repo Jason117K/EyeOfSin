@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://cgcaw5piiqcxr"]
+[gd_scene load_steps=26 format=3 uid="uid://cgcaw5piiqcxr"]
 
 [ext_resource type="Texture2D" uid="uid://b2fg3smedqosy" path="res://Assets/Zombies/BackUpDancerFloat-Sheet.png" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_tq53n"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="3"]
 [ext_resource type="Script" uid="uid://cnr47vvtfeg2g" path="res://Scripts/Zombies/BackUpDancerZombie.gd" id="5"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_naxm4"]
@@ -122,6 +123,11 @@ animations = [{
 z_index = 2
 collision_layer = 2
 script = ExtResource("5")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
+position = Vector2(4, 17)
+texture = ExtResource("2_tq53n")
 
 [node name="ComponentManager" parent="." instance=ExtResource("9")]
 

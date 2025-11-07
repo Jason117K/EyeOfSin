@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c7vl2w17wswvs"]
+[gd_scene load_steps=57 format=3 uid="uid://c7vl2w17wswvs"]
 
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="1"]
 [ext_resource type="Script" uid="uid://bs1do4ve65fp4" path="res://Scripts/Zombies/ConeHeadZombie.gd" id="2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="12"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="12_ebmmd"]
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" id="13"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -374,6 +375,11 @@ target_position = Vector2(-8, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
+position = Vector2(1, 16)
+texture = ExtResource("12_ebmmd")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

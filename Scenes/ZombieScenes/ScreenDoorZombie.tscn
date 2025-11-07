@@ -1,6 +1,7 @@
-[gd_scene load_steps=106 format=3 uid="uid://djf7c6468fi4f"]
+[gd_scene load_steps=107 format=3 uid="uid://djf7c6468fi4f"]
 
 [ext_resource type="Script" uid="uid://brxqqh1fsj6ho" path="res://Scripts/Zombies/ScreenDoorZombie.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_40guy"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cof875qbhouiv" path="res://Assets/Zombies/Animations/DocOc/DocOcWalk-Sheet.png" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
@@ -695,6 +696,11 @@ animations = [{
 [node name="ScreenDoorZombie" type="Area2D" groups=["Zombie"]]
 collision_layer = 2
 script = ExtResource("1")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
+position = Vector2(1, 18)
+texture = ExtResource("2_40guy")
 
 [node name="ComponentManager" parent="." instance=ExtResource("8")]
 
