@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c6u6h5wyw25fr"]
+[gd_scene load_steps=37 format=3 uid="uid://c6u6h5wyw25fr"]
 
 [ext_resource type="Script" uid="uid://c2arg8yxe0hf5" path="res://Scripts/LevelLogic/Level7.gd" id="1_rhl2j"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_xvglt"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://2ax0wkgo0i4b" path="res://Scenes/ZombieScenes/DancerZombie.tscn" id="26_hn15n"]
 [ext_resource type="PackedScene" uid="uid://bkwi1ob6dceio" path="res://Scenes/ZombieScenes/BasicZombie.tscn" id="27_dljnt"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_omvub"]
+[ext_resource type="PackedScene" uid="uid://cgcaw5piiqcxr" path="res://Scenes/ZombieScenes/BackUpDancerZombie.tscn" id="27_uif5r"]
+[ext_resource type="PackedScene" uid="uid://dfqiiji8xji3q" path="res://Scenes/ZombieScenes/PoleVaultZombie.tscn" id="30_64rgw"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -321,7 +323,7 @@ offset_top = 133.07
 offset_right = 8.045
 offset_bottom = 133.07
 grow_vertical = 2
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 
 [node name="UILayer" parent="." instance=ExtResource("10_dljnt")]
 layout_mode = 1
@@ -616,15 +618,6 @@ offset_bottom = 413.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
 
-[node name="DancerZombie" parent="." instance=ExtResource("26_hn15n")]
-position = Vector2(235, 216)
-
-[node name="BasicZombie2" parent="." instance=ExtResource("27_dljnt")]
-position = Vector2(369, 70)
-
-[node name="BasicZombie" parent="." instance=ExtResource("27_dljnt")]
-position = Vector2(436, 196)
-
 [node name="BigZGlow" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
@@ -642,14 +635,26 @@ offset_top = 44.0
 offset_right = 119.0
 offset_bottom = 84.0
 
+[node name="BackUpDancerZombie" parent="." instance=ExtResource("27_uif5r")]
+position = Vector2(435, 207)
+
+[node name="BasicZombie" parent="." instance=ExtResource("27_dljnt")]
+position = Vector2(409, 163)
+
+[node name="DancerZombie" parent="." instance=ExtResource("26_hn15n")]
+position = Vector2(211, 138)
+
+[node name="PoleVaultZombie" parent="." instance=ExtResource("30_64rgw")]
+position = Vector2(545, 243)
+
 [node name="GlowShaderPass" type="CanvasLayer" parent="."]
 
 [node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
 material = SubResource("ShaderMaterial_dljnt")
 offset_left = -49.0
-offset_top = -64.0
+offset_top = -65.0
 offset_right = 804.0
-offset_bottom = 436.0
+offset_bottom = 435.0
 mouse_filter = 2
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]

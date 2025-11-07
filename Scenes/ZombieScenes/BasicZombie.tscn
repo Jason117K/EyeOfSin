@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://bkwi1ob6dceio"]
+[gd_scene load_steps=45 format=3 uid="uid://bkwi1ob6dceio"]
 
 [ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://Scripts/Zombies/BasicZombie.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="2"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="6"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_ldf7h"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://Assets/Zombies/GhoulWebbedSheet.png" id="9"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="10"]
@@ -13,6 +14,12 @@
 size = Vector2(20, 30.3334)
 
 [sub_resource type="ShaderMaterial" id="20"]
+shader = ExtResource("6_ldf7h")
+shader_parameter/hue_shift_degrees = 0.0
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="12"]
 atlas = ExtResource("2")

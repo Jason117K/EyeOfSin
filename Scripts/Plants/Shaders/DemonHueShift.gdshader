@@ -4,9 +4,11 @@ uniform float hue_shift_degrees : hint_range(-180, 180) = 0.0;
 uniform vec4 target_color : source_color;
 uniform vec4 replace_color : source_color;
 uniform vec4 glow_color : source_color = vec4(223,66,66,256);
-uniform vec4 modulate_factor : source_color = vec4(9.0, 9.0, 9.0, 1.0);
+const vec4 modulate_factor = vec4(19, 19,19, 1.0);
+//uniform vec4 modulate_factor : source_color = vec4(1.1, 1.1, 1.1, 1.0);
 uniform float tolerance : hint_range(0.0, 1.0);
-uniform float glow_tolerance : hint_range(0.0, 1.0) = 0.2;
+const float glow_tolerance = 0.2;
+//uniform float glow_tolerance : hint_range(0.0, 1.0) = 0.5;
 
 // Optimized HSV conversion
 vec3 rgb2hsv(vec3 c) {

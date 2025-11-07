@@ -1,9 +1,10 @@
-[gd_scene load_steps=105 format=3 uid="uid://djf7c6468fi4f"]
+[gd_scene load_steps=106 format=3 uid="uid://djf7c6468fi4f"]
 
 [ext_resource type="Script" uid="uid://brxqqh1fsj6ho" path="res://Scripts/Zombies/ScreenDoorZombie.gd" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cof875qbhouiv" path="res://Assets/Zombies/Animations/DocOc/DocOcWalk-Sheet.png" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_1r4m2"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dqggi2obrqlms" path="res://Assets/Zombies/Animations/DocOc/DocOcZombie-SheetWEB.png" id="9"]
@@ -19,13 +20,12 @@
 size = Vector2(8.75, 21)
 
 [sub_resource type="ShaderMaterial" id="27"]
-shader = ExtResource("11")
+shader = ExtResource("6_1r4m2")
+shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
-shader_parameter/glow_color = Color(0, 0, 0, 1)
-shader_parameter/modulate_factor = Color(6, 6, 6, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
 shader_parameter/tolerance = 0.0
-shader_parameter/glow_tolerance = 0.1
 
 [sub_resource type="AtlasTexture" id="64"]
 atlas = ExtResource("4")
@@ -722,6 +722,7 @@ sprite_frames = SubResource("16")
 animation = &"Walk"
 script = ExtResource("10")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
+targetGlowColor = Color(0.85098, 0.101961, 0.101961, 1)
 metadata/_edit_lock_ = true
 
 [node name="TransformedSpriteComp" type="AnimatedSprite2D" parent="."]

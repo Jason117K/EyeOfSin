@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="1"]
 [ext_resource type="Script" uid="uid://bs1do4ve65fp4" path="res://Scripts/Zombies/ConeHeadZombie.gd" id="2"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://dcafmrlvbujwo" path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" id="6"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_pt70x"]
 [ext_resource type="Texture2D" uid="uid://dfex4u742bght" path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" id="7"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="9"]
@@ -16,9 +16,11 @@
 size = Vector2(24, 40)
 
 [sub_resource type="ShaderMaterial" id="31"]
-shader = ExtResource("5")
+shader = ExtResource("6_pt70x")
+shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="32"]
@@ -365,6 +367,7 @@ frame_progress = 0.492457
 flip_h = true
 script = ExtResource("12")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
+targetGlowColor = Color(1, 0.145098, 0.168627, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-8, 0)

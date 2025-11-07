@@ -4,18 +4,20 @@
 [ext_resource type="Script" uid="uid://bjujkcy7ub8up" path="res://Scripts/Zombies/BucketHeadZombie.gd" id="2"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="6"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_5lnjy"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://behdfh75j1wph" path="res://Assets/Zombies/SwordBucketZombie-SheeWEBt.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="11"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 
 [sub_resource type="ShaderMaterial" id="44"]
-shader = ExtResource("11")
+shader = ExtResource("6_5lnjy")
+shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="10"]
@@ -422,6 +424,7 @@ frame_progress = 0.819719
 flip_h = true
 script = ExtResource("10")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
+targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-34, 0)

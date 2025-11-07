@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://2ax0wkgo0i4b"]
+[gd_scene load_steps=43 format=3 uid="uid://2ax0wkgo0i4b"]
 
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="4"]
 [ext_resource type="Script" uid="uid://cvurb2cp3ea7n" path="res://Scripts/Zombies/DancerZombie.gd" id="5"]
 [ext_resource type="Script" uid="uid://b2uvykwloafcm" path="res://Scripts/Zombies/SummonComponent.gd" id="6"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_vgguy"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://Assets/Zombies/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
@@ -12,6 +13,14 @@
 
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 38)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26b7w"]
+shader = ExtResource("6_vgguy")
+shader_parameter/hue_shift_degrees = 0.0
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("3")
@@ -260,6 +269,7 @@ position = Vector2(6.5, 3)
 shape = SubResource("25")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_26b7w")
 sprite_frames = SubResource("24")
 animation = &"Walk"
 script = ExtResource("10")

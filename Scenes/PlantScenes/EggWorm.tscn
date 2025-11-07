@@ -842,6 +842,7 @@ zigzag_width = 160.0
 autostart = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -2.5)
 shape = SubResource("1")
 

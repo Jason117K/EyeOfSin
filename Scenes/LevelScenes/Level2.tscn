@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0i06w5c5gtby"]
+[gd_scene load_steps=31 format=3 uid="uid://c0i06w5c5gtby"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -14,12 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="10"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="12"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="15_qhrib"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="16_mxy0f"]
+[ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="17_uc8kw"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="17_y08as"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="18_3o6er"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="18_4kjyc"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="19_bpdoe"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="20_f18wi"]
+[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="24_3oioj"]
 
 [sub_resource type="Environment" id="2"]
 background_mode = 4
@@ -28,19 +32,27 @@ glow_blend_mode = 1
 glow_hdr_threshold = 1.5
 adjustment_enabled = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+
 [sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("15")
-region = Rect2(0, 0, 18, 20)
+atlas = ExtResource("24_3oioj")
+region = Rect2(0, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("15")
-region = Rect2(18, 0, 18, 20)
+atlas = ExtResource("24_3oioj")
+region = Rect2(32, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("15")
-region = Rect2(36, 0, 18, 20)
+atlas = ExtResource("24_3oioj")
+region = Rect2(64, 0, 32, 41)
 
-[sub_resource type="SpriteFrames" id="6"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngjvq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -54,16 +66,8 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
 
 [node name="Level2" type="Control"]
 layout_mode = 3
@@ -273,14 +277,8 @@ position = Vector2(-64, 192)
 script = ExtResource("9")
 Wave1_Interval = 1.0
 
-[node name="Glow" type="ColorRect" parent="GameLayer"]
-offset_left = 739.0
-offset_top = 43.0
-offset_right = 777.0
-offset_bottom = 241.0
-color = Color(2, 0, 0, 0.729412)
-
 [node name="UILayer" parent="." instance=ExtResource("8_y08as")]
+layout_mode = 1
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_f18wi")
@@ -294,168 +292,6 @@ scale = Vector2(0.5, 0.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("2")
-
-[node name="Environment" type="Node2D" parent="."]
-
-[node name="Bramble" type="Node2D" parent="Environment"]
-
-[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(335, 46)
-texture = ExtResource("14")
-
-[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(692, 43)
-texture = ExtResource("14")
-flip_h = true
-
-[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(427, 372)
-texture = ExtResource("14")
-
-[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(366, 316)
-texture = ExtResource("16")
-flip_h = true
-
-[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(399, 347)
-texture = ExtResource("16")
-
-[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(390, 385)
-texture = ExtResource("16")
-flip_h = true
-
-[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(307, 308)
-texture = ExtResource("16")
-
-[node name="BrambleSmall5" type="Sprite2D" parent="Environment/Bramble"]
-position = Vector2(277, 390)
-texture = ExtResource("16")
-
-[node name="Fish" type="Node2D" parent="Environment"]
-
-[node name="Fish" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(330, 391)
-
-[node name="Fish5" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(664, 40)
-
-[node name="Fish7" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(384, 24)
-
-[node name="Fish8" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(224, 48)
-
-[node name="Fish6" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(665, 391)
-
-[node name="Fish11" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(633, 399)
-
-[node name="Fish12" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(715, 365)
-
-[node name="Fish13" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(587, 381)
-
-[node name="Fish14" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(691, 357)
-
-[node name="Fish15" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(618, 365)
-
-[node name="Fish9" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(123, 55)
-
-[node name="Fish10" parent="Environment/Fish" instance=ExtResource("7")]
-position = Vector2(536, 314)
-
-[node name="Shrubs" type="Node2D" parent="Environment"]
-
-[node name="Shrub7" type="AnimatedSprite2D" parent="Environment/Shrubs"]
-position = Vector2(619, 342)
-sprite_frames = SubResource("6")
-frame = 1
-
-[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(552, 40)
-scale = Vector2(1, 1)
-
-[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(85, 270)
-scale = Vector2(1, 1)
-
-[node name="Shrub8" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(408, 49)
-scale = Vector2(1, 1)
-
-[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(560, 24)
-scale = Vector2(1, 1)
-
-[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(254, 43)
-scale = Vector2(1, 1)
-
-[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(440, 337)
-scale = Vector2(1, 1)
-
-[node name="Shrub9" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(414, 316)
-scale = Vector2(1, 1)
-
-[node name="Shrub10" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(216, 380)
-scale = Vector2(1, 1)
-
-[node name="Shrub12" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(595, 360)
-scale = Vector2(1, 1)
-
-[node name="Shrub13" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(704, 392)
-scale = Vector2(1, 1)
-
-[node name="Shrub11" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(81, 388)
-scale = Vector2(1, 1)
-
-[node name="Shrub14" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(120, 401)
-scale = Vector2(1, 1)
-
-[node name="Shrub15" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(526, 378)
-scale = Vector2(1, 1)
-
-[node name="Shrub16" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(492, 353)
-scale = Vector2(1, 1)
-
-[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("12")]
-position = Vector2(297, 48)
-scale = Vector2(1, 1)
-
-[node name="Trees" type="Node2D" parent="Environment"]
-
-[node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
-visible = false
-z_index = 1
-position = Vector2(500, 376)
-texture = ExtResource("10")
-
-[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
-z_index = 1
-position = Vector2(673, 283)
-texture = ExtResource("10")
-
-[node name="BloodTree4" type="Sprite2D" parent="Environment/Trees"]
-z_index = 1
-position = Vector2(335, 353)
-texture = ExtResource("10")
 
 [node name="ToolTips" parent="." instance=ExtResource("17_y08as")]
 visible = false
@@ -494,6 +330,247 @@ offset_left = 675.0
 offset_top = 377.0
 offset_right = 730.0
 offset_bottom = 400.0
+
+[node name="Environment2" type="Node2D" parent="."]
+
+[node name="Coral" type="Node2D" parent="Environment2"]
+
+[node name="CoralSmallProp" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(543, 347)
+texture = ExtResource("15_qhrib")
+
+[node name="CoralSmallProp3" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(499, 335)
+texture = ExtResource("15_qhrib")
+
+[node name="CoralSmallProp2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(670, 400)
+texture = ExtResource("15_qhrib")
+flip_h = true
+
+[node name="CoralSmallProp4" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(601, 401)
+texture = ExtResource("15_qhrib")
+flip_h = true
+
+[node name="CoralSmallProp5" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(718, 321)
+texture = ExtResource("15_qhrib")
+
+[node name="CoralSmallProp6" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(420, 382)
+texture = ExtResource("15_qhrib")
+
+[node name="CoralSmallProp8" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(113, 323)
+texture = ExtResource("15_qhrib")
+
+[node name="CoralSmallProp9" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(262, 8)
+texture = ExtResource("15_qhrib")
+flip_h = true
+
+[node name="CoralSmallProp10" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(497, 16)
+texture = ExtResource("15_qhrib")
+
+[node name="CoralBigProp" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(618, 344)
+texture = ExtResource("16_mxy0f")
+
+[node name="CoralBigProp2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(406, 333)
+texture = ExtResource("16_mxy0f")
+flip_h = true
+
+[node name="CoralBigProp4" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(707, 397)
+texture = ExtResource("16_mxy0f")
+flip_h = true
+
+[node name="CoralBigProp5" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(724, 4)
+texture = ExtResource("16_mxy0f")
+flip_h = true
+
+[node name="CoralBigProp6" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(263, 323)
+texture = ExtResource("16_mxy0f")
+flip_h = true
+
+[node name="CoralBigProp3" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(490, 396)
+texture = ExtResource("16_mxy0f")
+flip_h = true
+
+[node name="CoralBigProp7" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(620, 3)
+texture = ExtResource("16_mxy0f")
+flip_h = true
+
+[node name="CoralBigProp8" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(609, 15)
+texture = ExtResource("16_mxy0f")
+flip_h = true
+
+[node name="CoralBigProp9" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(353, 14)
+texture = ExtResource("16_mxy0f")
+
+[node name="Biggest_Coral" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(563, 378)
+texture = ExtResource("17_uc8kw")
+
+[node name="Biggest_Coral2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(662, 343)
+texture = ExtResource("17_uc8kw")
+
+[node name="FetusProp" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(438, 4)
+texture = ExtResource("18_4kjyc")
+
+[node name="FetusProp2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(465, 347)
+texture = ExtResource("18_4kjyc")
+
+[node name="Bramble" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="Bramble1" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(505, 328)
+texture = ExtResource("14")
+
+[node name="Bramble2" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(454, 388)
+texture = ExtResource("14")
+
+[node name="Bramble3" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(584, 399)
+texture = ExtResource("14")
+
+[node name="Bramble4" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(640, 303)
+texture = ExtResource("14")
+
+[node name="Bramble5" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(483, 0)
+texture = ExtResource("14")
+
+[node name="Bramble6" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(660, 11)
+texture = ExtResource("14")
+
+[node name="BrambleSmall" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(366, 316)
+texture = ExtResource("16")
+flip_h = true
+
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(455, 331)
+texture = ExtResource("16")
+flip_h = true
+
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(402, 343)
+texture = ExtResource("16")
+
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(428, 399)
+texture = ExtResource("16")
+flip_h = true
+
+[node name="Fish" type="Node2D" parent="Environment2"]
+
+[node name="Fish" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(542, 386)
+
+[node name="Fish2" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(515, 353)
+
+[node name="Fish5" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(180, 329)
+
+[node name="Fish6" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(37, 326)
+
+[node name="Fish7" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(573, 19)
+
+[node name="Fish8" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(455, 394)
+
+[node name="Fish9" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(315, 14)
+
+[node name="Fish3" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(573, 342)
+
+[node name="Fish4" parent="Environment2/Fish" instance=ExtResource("7")]
+z_index = -1
+position = Vector2(633, 395)
+
+[node name="Shrubs" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="Shrub" parent="Environment2/Shrubs" instance=ExtResource("12")]
+position = Vector2(560, 13)
+scale = Vector2(1, 1)
+
+[node name="Shrub2" parent="Environment2/Shrubs" instance=ExtResource("12")]
+position = Vector2(474, 339)
+scale = Vector2(1, 1)
+
+[node name="Shrub3" parent="Environment2/Shrubs" instance=ExtResource("12")]
+position = Vector2(521, 392)
+scale = Vector2(1, 1)
+
+[node name="Shrub4" parent="Environment2/Shrubs" instance=ExtResource("12")]
+position = Vector2(193, 327)
+scale = Vector2(1, 1)
+
+[node name="Shrub5" parent="Environment2/Shrubs" instance=ExtResource("12")]
+position = Vector2(433, 330)
+scale = Vector2(1, 1)
+
+[node name="Shrub6" parent="Environment2/Shrubs" instance=ExtResource("12")]
+position = Vector2(658, 403)
+scale = Vector2(1, 1)
+
+[node name="Shrub7" parent="Environment2/Shrubs" instance=ExtResource("12")]
+position = Vector2(297, 14)
+scale = Vector2(1, 1)
+
+[node name="Trees" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="BloodTree" type="Sprite2D" parent="Environment2/Trees"]
+z_index = 1
+position = Vector2(561, 364)
+texture = ExtResource("10")
+flip_h = true
+
+[node name="BloodTree2" type="Sprite2D" parent="Environment2/Trees"]
+z_index = 1
+position = Vector2(396, 7)
+texture = ExtResource("10")
+
+[node name="Special" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment2/Special"]
+position = Vector2(606, 395)
+sprite_frames = SubResource("SpriteFrames_ngjvq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(370, 208)
 
 [connection signal="eggWorm_placed" from="PlantManager" to="." method="_on_plant_manager_egg_worm_placed"]
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]
