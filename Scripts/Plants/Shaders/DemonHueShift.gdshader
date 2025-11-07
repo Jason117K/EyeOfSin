@@ -1,6 +1,12 @@
 shader_type canvas_item;
 
 uniform float hue_shift_degrees : hint_range(-180, 180) = 0.0;
+uniform vec4 target_color : source_color;
+uniform vec4 replace_color : source_color;
+uniform vec4 glow_color : source_color = vec4(223,66,66,256);
+uniform vec4 modulate_factor : source_color = vec4(9.0, 9.0, 9.0, 1.0);
+uniform float tolerance : hint_range(0.0, 1.0);
+uniform float glow_tolerance : hint_range(0.0, 1.0) = 0.2;
 
 // Optimized HSV conversion
 vec3 rgb2hsv(vec3 c) {
@@ -19,7 +25,15 @@ vec3 hsv2rgb(vec3 c) {
 }
 
 void fragment() {
-    vec4 tex_color = texture(TEXTURE, UV);
+	vec4 first_tex_color = texture(TEXTURE, UV);
+		// Apply modulation to pixels matching glow_color
+	float glow_dist = distance(first_tex_color.rgb, glow_color.rgb);
+	if (glow_dist < glow_tolerance) {
+		first_tex_color *= modulate_factor;
+	}
+	COLOR = first_tex_color;
+    //vec4 tex_color = texture(TEXTURE, UV);
+	vec4 tex_color = first_tex_color;
     if (tex_color.a == 0.0) discard;
     
     vec3 hsv = rgb2hsv(tex_color.rgb);
@@ -32,4 +46,15 @@ void fragment() {
     
     vec3 rgb = hsv2rgb(hsv);
     COLOR = vec4(rgb, tex_color.a);
+	
+	vec4 alternate_tex_color = vec4(rgb, tex_color.a);
+
+    float dist = distance(alternate_tex_color.rgb, target_color.rgb);
+	if (dist < tolerance) {
+        alternate_tex_color.rgb = replace_color.rgb;
+    }
+	
+	
+
+    COLOR = alternate_tex_color;
 }

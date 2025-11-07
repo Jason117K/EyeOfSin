@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="3_5ut6p"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4_nihc1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5_ae3ds"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="6_qij6q"]
+[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="6_qij6q"]
 [ext_resource type="Texture2D" uid="uid://ccxvcy1yd2jvg" path="res://Assets/Zombies/Animations/Football/FootballZombie-Sheet.png" id="7_oaedh"]
 [ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://Assets/Zombies/Animations/Football/FootballZombie-SheetWEB.png" id="8_x5n0p"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="9_qr3bx"]
@@ -17,7 +17,10 @@ size = Vector2(35, 25)
 shader = ExtResource("6_qij6q")
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0, 0, 0, 1)
+shader_parameter/modulate_factor = Color(6, 6, 6, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5n0p"]
 atlas = ExtResource("7_oaedh")

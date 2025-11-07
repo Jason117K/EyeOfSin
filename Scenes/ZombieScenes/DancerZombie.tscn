@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://2ax0wkgo0i4b"]
+[gd_scene load_steps=41 format=3 uid="uid://2ax0wkgo0i4b"]
 
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="3"]
@@ -9,16 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://Assets/Zombies/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="12"]
 
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 38)
-
-[sub_resource type="ShaderMaterial" id="32"]
-shader = ExtResource("12")
-shader_parameter/target_color = Color(0, 0, 0, 1)
-shader_parameter/replace_color = Color(0, 0, 0, 1)
-shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("3")
@@ -262,16 +255,16 @@ speed = 15
 [node name="AttackComponent" parent="." instance=ExtResource("4")]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(6.5, 3)
 shape = SubResource("25")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("32")
 sprite_frames = SubResource("24")
 animation = &"Walk"
-frame = 3
 script = ExtResource("10")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
+targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 
 [node name="SummonComponent" type="Node2D" parent="."]
 script = ExtResource("6")
@@ -307,6 +300,7 @@ autostart = true
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(-28, 0)
 collide_with_areas = true
 

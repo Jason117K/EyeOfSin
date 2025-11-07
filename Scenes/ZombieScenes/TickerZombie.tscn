@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://hqk27c6jaac0" path="res://Scripts/Zombies/TickerZombie.gd" id="6"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="9"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="10"]
+[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="10"]
 [ext_resource type="Texture2D" uid="uid://ngjx3kqoe6yb" path="res://Assets/Zombies/TickerHitEffect-Sheet.png" id="11"]
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://Scripts/Zombies/AOEHit.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://Assets/Zombies/Animations/Ticker/Ticker-WebSheet.png" id="13"]
@@ -19,7 +19,10 @@ size = Vector2(18, 30)
 shader = ExtResource("10")
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0, 0, 0, 1)
+shader_parameter/modulate_factor = Color(6, 6, 6, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.1
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")

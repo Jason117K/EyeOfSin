@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dqggi2obrqlms" path="res://Assets/Zombies/Animations/DocOc/DocOcZombie-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="11"]
+[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="11"]
 [ext_resource type="Texture2D" uid="uid://dcafmrlvbujwo" path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://dfex4u742bght" path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" id="14"]
@@ -22,7 +22,10 @@ size = Vector2(8.75, 21)
 shader = ExtResource("11")
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0, 0, 0, 1)
+shader_parameter/modulate_factor = Color(6, 6, 6, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.1
 
 [sub_resource type="AtlasTexture" id="64"]
 atlas = ExtResource("4")
@@ -491,7 +494,10 @@ animations = [{
 shader = ExtResource("11")
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0, 0, 0, 1)
+shader_parameter/modulate_factor = Color(6, 6, 6, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.1
 
 [sub_resource type="AtlasTexture" id="37"]
 atlas = ExtResource("13")

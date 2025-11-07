@@ -12,6 +12,7 @@ var thisMaterial
 
 @export var targetColorString := "ff0013"
 @export var targetColor : Color 
+@export var targetGlowColor : Color
 @export var replaceColor : Color = Color.BLACK
 
 var is_attacking
@@ -39,7 +40,7 @@ func _ready() -> void:
 	material = thisMaterial
 	# Set initial shader parameters
 	if thisMaterial:
-		#print("Made h")
+		print("Made h")
 		thisMaterial.set_shader_parameter("target_color", targetColor)
 		thisMaterial.set_shader_parameter("replace_color",replaceColor)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
@@ -150,6 +151,7 @@ func _apply_hue_shift() -> void:
 	# Update shader parameter
 	if material is ShaderMaterial:
 		material.shader = demon_hue_shift
+		material.set_shader_parameter("glow_color", targetGlowColor)
 		material.set_shader_parameter("hue_shift_degrees", hue_shift)
 		
 		
