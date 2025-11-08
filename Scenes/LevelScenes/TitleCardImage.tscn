@@ -307,6 +307,7 @@ autoplay = true
 position = Vector2(35, 0)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -319,6 +320,7 @@ size_flags_vertical = 3
 use_top_left = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+visible = false
 layout_mode = 2
 
 [node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -396,8 +398,17 @@ theme_override_fonts/font = ExtResource("14_pebbp")
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(777, 777)
+layout_mode = 0
+offset_left = -7.0
+offset_top = -136.0
+offset_right = 770.0
+offset_bottom = 641.0
+color = Color(0, 0, 0, 0.486275)
+
 [node name="EyeOfSynTitle" type="Sprite2D" parent="."]
-position = Vector2(371, 143)
+position = Vector2(370, 207)
 texture = ExtResource("15_4n8jy")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
