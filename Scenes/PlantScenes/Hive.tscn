@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://cp6xcabhkv21t"]
+[gd_scene load_steps=175 format=3 uid="uid://cp6xcabhkv21t"]
 
 [ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://Scripts/Plants/Hive.gd" id="2"]
@@ -950,6 +950,42 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("7")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cimh"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttn30"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnq4q"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8d8y"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fom8w"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hga4l"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxd8j"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw6lg"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4pod"]
+atlas = ExtResource("5_awm0g")
+region = Rect2(256, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="127"]
 atlas = ExtResource("4")
 region = Rect2(0, 0, 32, 32)
@@ -1076,6 +1112,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"idleDebug",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cimh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttn30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnq4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8d8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fom8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hga4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxd8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw6lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4pod")
+}],
+"loop": false,
+"name": &"new_animation",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1263,8 +1331,8 @@ frame = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("152")
-animation = &"New Anim"
-frame = 7
+animation = &"new_animation"
+autoplay = "new_animation"
 
 [node name="PlayAnimTimer" type="Timer" parent="."]
 wait_time = 0.5

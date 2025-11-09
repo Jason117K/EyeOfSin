@@ -35,3 +35,7 @@ func _on_tool_tips_tool_tip_hid() -> void:
 
 func _on_wave_manager_wave_2_almost_start() -> void:
 	waveManager.startSecondWave()
+
+
+func make_camera_current():
+	$Camera2D.make_current()

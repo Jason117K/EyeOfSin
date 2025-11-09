@@ -1,18 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=21 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://ccvjkxxqny0cw" path="res://Assets/Plants/RedSpiderCARD.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2_vvged"]
-[ext_resource type="Texture2D" uid="uid://c5j5wlswvkgcr" path="res://Assets/Plants/EyeTower2CARD.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://dbkxvyjbwrerl" path="res://Assets/Plants/EyeTreeCARD3.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://cb3saeedumi1a" path="res://Assets/Plants/EggWormCard.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://uxucc64ij83d" path="res://Assets/Plants/MawCARD.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bnonp588k00ud" path="res://Assets/Plants/Cards/DemonCARD_Base_wText1.png" id="4_yqvs4"]
+[ext_resource type="Texture2D" uid="uid://bhdetpjhqj66n" path="res://Assets/Plants/Cards/DemonCARD_Base_wText4.png" id="6_vvged"]
+[ext_resource type="Texture2D" uid="uid://bmyi7seiksjo4" path="res://Assets/Plants/Cards/DemonCARD_Base_wText2.png" id="7_04elx"]
 [ext_resource type="Texture2D" uid="uid://bwpctk28aaj8p" path="res://Assets/Plants/EyeBombCARD.png" id="8"]
 [ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="9"]
+[ext_resource type="Texture2D" uid="uid://caq7ay6v48o5w" path="res://Assets/Plants/Cards/DemonCARD_Base_wText5.png" id="9_e3ig8"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="9_qqk0u"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://Assets/Text/Minecraft.ttf" id="9_yqvs4"]
-[ext_resource type="Texture2D" uid="uid://dj7di6fpkrem" path="res://Assets/Plants/Hive-CARD.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bunytloaghkwx" path="res://Assets/Plants/Cards/DemonCARD_Base_wText3.png" id="10_iafbj"]
 [ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://Assets/Plants/Circle.png" id="10_plp1j"]
+[ext_resource type="Texture2D" uid="uid://d25ykk7aqlbir" path="res://Assets/Plants/Cards/DemonCARD_LargeBase_wText.png" id="12_js2vo"]
 
 [sub_resource type="StyleBoxFlat" id="3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -20,6 +20,18 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="AtlasTexture" id="AtlasTexture_04elx"]
 atlas = ExtResource("2_vvged")
 region = Rect2(352, 0, 32, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
+bg_color = Color(0, 0, 0, 0.788235)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0, 0, 0)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id="2"]
 bg_color = Color(0.0588235, 0.0392157, 0.0392157, 0)
@@ -79,143 +91,187 @@ theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "CODEX"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CurrentPlantLabel" type="Label" parent="."]
 layout_mode = 0
-anchor_right = 0.582
-offset_right = 469.72
-offset_bottom = 154.0
+offset_top = 130.265
+offset_right = 493.0
+offset_bottom = 146.265
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_qqk0u")
+text = "No Plant Selected"
+horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+custom_minimum_size = Vector2(225, 30)
+offset_right = 225.0
+offset_bottom = 30.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Node2D"]
+custom_minimum_size = Vector2(221, 26)
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 223.0
+offset_bottom = 28.0
+color = Color(0.690196, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Node2D"]
+custom_minimum_size = Vector2(217, 22)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 221.0
+offset_bottom = 26.0
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 502.0
+offset_bottom = 123.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Sunflower" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Sunflower" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="SunflowerButton" type="Button" parent="VBoxContainer/HBoxContainer/Sunflower"]
+[node name="SunflowerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("2")
-icon = ExtResource("3")
+icon = ExtResource("4_yqvs4")
 
-[node name="SunFlowerLabel" type="Label" parent="VBoxContainer/HBoxContainer/Sunflower"]
-modulate = Color(0, 0, 0, 1)
+[node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = SubResource("5")
-text = "50
-"
+text = "50"
 horizontal_alignment = 1
 
-[node name="Peashooter" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Peashooter" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="PeashooterButton2" type="Button" parent="VBoxContainer/HBoxContainer/Peashooter"]
+[node name="PeashooterButton2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("1")
-icon = ExtResource("2")
+icon = ExtResource("6_vvged")
 
-[node name="PeashooterLabel" type="Label" parent="VBoxContainer/HBoxContainer/Peashooter"]
-modulate = Color(0, 0, 0, 1)
+[node name="PeashooterLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Walnut" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Walnut" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="WalnutButton" type="Button" parent="VBoxContainer/HBoxContainer/Walnut"]
+[node name="WalnutButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
-icon = ExtResource("4")
+icon = ExtResource("7_04elx")
 
-[node name="WalnutLabel" type="Label" parent="VBoxContainer/HBoxContainer/Walnut"]
-modulate = Color(0, 0, 0, 1)
+[node name="WalnutLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Eye" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Eye" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="EyeButton" type="Button" parent="VBoxContainer/HBoxContainer/Eye"]
+[node name="EyeButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("8")
 
-[node name="EyeLabel" type="Label" parent="VBoxContainer/HBoxContainer/Eye"]
+[node name="EyeLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Egg" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Egg" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="EggButton" type="Button" parent="VBoxContainer/HBoxContainer/Egg"]
+[node name="EggButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
-icon = ExtResource("6")
+icon = ExtResource("9_e3ig8")
 
-[node name="EggLabel" type="Label" parent="VBoxContainer/HBoxContainer/Egg"]
-modulate = Color(0, 0, 0, 1)
+[node name="EggLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("6")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Hive" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="HiveButton" type="Button" parent="VBoxContainer/HBoxContainer/Hive"]
+[node name="HiveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
-icon = ExtResource("10")
+icon = ExtResource("10_iafbj")
 
-[node name="HiveLabel" type="Label" parent="VBoxContainer/HBoxContainer/Hive"]
-modulate = Color(0, 0, 0, 1)
+[node name="HiveLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Maw" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="MawButton" type="Button" parent="VBoxContainer/HBoxContainer/Maw"]
+[node name="MawButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
-icon = ExtResource("7")
+icon = ExtResource("12_js2vo")
 
-[node name="MawLabel" type="Label" parent="VBoxContainer/HBoxContainer/Maw"]
-modulate = Color(0, 0, 0, 1)
+[node name="MawLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
 horizontal_alignment = 1
 
-[node name="RemovePlant" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="RemovePlantButton" type="Button" parent="VBoxContainer/HBoxContainer/RemovePlant"]
+[node name="RemovePlantButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant"]
 clip_contents = true
-custom_minimum_size = Vector2(19.54, 85)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme_override_colors/icon_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("10_plp1j")
+icon_alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/RemovePlant"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "REMOVE"
 horizontal_alignment = 1
 
-[node name="CodexTextTemp" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="CodexTextTemp" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Ignore" type="Button" parent="VBoxContainer/HBoxContainer/CodexTextTemp"]
+[node name="Ignore" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/CodexTextTemp"]
 visible = false
 z_index = -1
 clip_contents = true
@@ -225,7 +281,7 @@ theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("10_plp1j")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/CodexTextTemp"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/CodexTextTemp"]
 visible = false
 z_index = 6
 layout_mode = 2
@@ -233,20 +289,10 @@ theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "CODEX"
 horizontal_alignment = 2
 
-[node name="CurrentPlantLabel" type="Label" parent="."]
-layout_mode = 0
-offset_top = 125.0
-offset_right = 493.0
-offset_bottom = 141.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("9_qqk0u")
-text = "No Plant Selected"
-horizontal_alignment = 1
-
 [connection signal="pressed" from="OpenCodex/OpenCodexButton" to="." method="_on_open_codex_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Eye/EyeButton" to="." method="_on_EyeButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton" to="." method="_on_EyeButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]

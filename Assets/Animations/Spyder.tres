@@ -1,6 +1,23 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bi3ons7l4sy04"]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://bi3ons7l4sy04"]
 
 [ext_resource type="Texture2D" uid="uid://dqe7dmr0qbm0v" path="res://Assets/Animations/RedSpider-Sheet.png" id="1_0l1pg"]
+[ext_resource type="Texture2D" uid="uid://cskcxpelcs24" path="res://Assets/Plants/Plant_Animations/RedSpider-Sheet.png" id="1_ar0v1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcumy"]
+atlas = ExtResource("1_ar0v1")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mge7l"]
+atlas = ExtResource("1_ar0v1")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7e8o"]
+atlas = ExtResource("1_ar0v1")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfqkh"]
+atlas = ExtResource("1_ar0v1")
+region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ar0v1"]
 atlas = ExtResource("1_0l1pg")
@@ -22,6 +39,23 @@ region = Rect2(120, 0, 40, 40)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hcumy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mge7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7e8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfqkh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ar0v1")
 }, {
 "duration": 1.0,
@@ -34,6 +68,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_clqot")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default_1",
 "speed": 5.0
 }]

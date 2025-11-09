@@ -11,8 +11,8 @@ extends AnimatedTextureRect
 @onready var footBallZombieButton = $"../../AllZombieRows/Row3/FootballZombie"
 @onready var poleVaultZombieButton = $"../../AllZombieRows/Row3/PoleVaultZombie"
 
-@onready var currentZombieLabel = $"../../../CurrentZombieLabel"
-@onready var currentZombieTitle = $"../../../CurrentZombieTitle" #$"../CurrentZombieTitle"
+@onready var currentZombieLabel = $"../../CurrentZombieLabel"
+@onready var currentZombieTitle = $"../../CurrentZombieTitle"
 
 var baseZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 var coneheadZombieDescription := "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
@@ -176,6 +176,6 @@ func _on_pole_vault_zombie_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	get_parent().get_parent().get_parent().visible = false 
+	get_parent().get_parent().visible = false 
 	print("BBack Button Pressed")
 	Global.game_controller.restore_previous_scene()

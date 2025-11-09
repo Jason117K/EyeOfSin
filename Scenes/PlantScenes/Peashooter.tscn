@@ -997,7 +997,8 @@ visible = false
 [node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes"]
 position = Vector2(0, -8.5)
 sprite_frames = SubResource("9")
-animation = &"redSpiderDefault1"
+animation = &"redSpiderDefault"
+autoplay = "redSpiderDefault"
 flip_h = true
 
 [node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]

@@ -9,11 +9,11 @@ extends AnimatedTextureRect
 @onready var hiveButton = $"../AllPlantRows/Row2/Hive" 
 @onready var mawButton = $"../AllPlantRows/Row3/Maw"
 
-@onready var currentPlantLabel = $"../../../CurrentPlantLabel"
-@onready var bgDarken = $"../../../BGDarkEn"
-@onready var synergyPanel = $"../../../ToolTips"
-@onready var backOutDetailsButton = $"../../../BackOutDetails"
-@onready var moreInfoButton = $"../../../MoreInfoButton"
+@onready var currentPlantLabel = $"../../CurrentPlantLabel"
+@onready var bgDarken = $"../../BGDarkEn"
+@onready var synergyPanel = $"../../ToolTips"
+@onready var backOutDetailsButton = $"../../BackOutDetails"
+@onready var moreInfoButton =$"../../HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton"
 
 #Plant Text Descriptions
 var sunflowerDescription := "res://Assets/Text/TextFiles/PlantDescriptions/SunflowerDescription.txt"
@@ -66,6 +66,7 @@ enum PLANT {
 var current_plant = PLANT.SUNFLOWER
 
 func _ready() -> void:
+	$"../../Camera2D".make_current()
 	print("Plant AnimatedTextureRect: _ready() called")
 	
 		# Set default button textures based on current colors
@@ -194,9 +195,14 @@ func _on_maw_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	get_parent().get_parent().get_parent().visible = false 
+	get_parent().get_parent().visible = false 
 	print("BBack Button Pressed")
 	Global.game_controller.restore_previous_scene()
+	
+	
+	
+
+
 
 
 func _on_more_info_button_pressed() -> void:

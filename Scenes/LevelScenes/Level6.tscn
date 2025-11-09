@@ -538,11 +538,11 @@ environment = SubResource("2")
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource("9_f0kak")]
 layout_mode = 1
-offset_left = 25.0
-offset_top = 313.0
-offset_right = 65.0
-offset_bottom = 353.0
-scale = Vector2(0.5, 0.5)
+offset_left = 8.0
+offset_top = 315.0
+offset_right = 48.0
+offset_bottom = 355.0
+scale = Vector2(0.8, 0.8)
 
 [node name="UILayer" parent="." instance=ExtResource("10_mgbt0")]
 layout_mode = 1
@@ -584,10 +584,15 @@ level_unlocked = 7
 
 [node name="CodexBG" parent="." instance=ExtResource("22_kqvvy")]
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0
 offset_bottom = 373.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="PauseButton" parent="." instance=ExtResource("23_0yt1w")]
 layout_mode = 0

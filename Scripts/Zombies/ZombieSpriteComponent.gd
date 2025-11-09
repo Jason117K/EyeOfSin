@@ -169,7 +169,7 @@ func shift_hue(degrees: float) -> void:
 
 func _on_animation_changed() -> void:
 	if thisMaterial:
-		print("Made PPInk")
+		#print("Made PPInk")
 		thisMaterial.set_shader_parameter("target_color", Color(targetColorString))
 		thisMaterial.set_shader_parameter("replace_color", Color.DEEP_PINK)
 		thisMaterial.set_shader_parameter("tolerance", 0.3)

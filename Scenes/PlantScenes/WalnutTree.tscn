@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bymckgsndcx1y"]
+[gd_scene load_steps=72 format=3 uid="uid://bymckgsndcx1y"]
 
 [ext_resource type="Texture2D" uid="uid://bplktshlxk4fi" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpineHurt2-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://dfkobn3p1i8at" path="res://Scripts/Plants/WalnutTree.gd" id="2"]
@@ -368,6 +368,30 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l03of"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga5pi"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrgsx"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ysu1"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6nbb"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8qau"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(160, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="104"]
 atlas = ExtResource("6")
 region = Rect2(0, 0, 32, 32)
@@ -396,6 +420,29 @@ region = Rect2(160, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_l03of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga5pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrgsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ysu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6nbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8qau")
+}],
+"loop": true,
+"name": &"New Anim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("104")
 }, {
 "duration": 1.0,
@@ -414,7 +461,7 @@ animations = [{
 "texture": SubResource("109")
 }],
 "loop": true,
-"name": &"New Anim",
+"name": &"New Anim_1",
 "speed": 5.0
 }]
 
@@ -446,7 +493,6 @@ visible = false
 [node name="AnimatedSpriteComponent2" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("12")
 animation = &"New Anim"
-frame = 5
 
 [node name="AOEDamageComponent" type="Area2D" parent="."]
 visible = false

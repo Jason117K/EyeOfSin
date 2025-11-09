@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyey2hcl61et"]
+[gd_scene load_steps=5 format=3 uid="uid://cyey2hcl61et"]
 
 [ext_resource type="Script" uid="uid://b1x3sawhqfdhx" path="res://Scripts/LevelLogic/level_select.gd" id="1_1cl4n"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="2_d8a26"]
-[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="3_m0h8b"]
+[ext_resource type="FontFile" uid="uid://dw8o777s6dcqi" path="res://Assets/Fonts/Fleshandblood-MVA5x.ttf" id="3_1cl4n"]
+[ext_resource type="StyleBox" uid="uid://bu8cfo71nnluh" path="res://Resources_tres/Start_Button_Stylebox.tres" id="4_d8a26"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -25,77 +26,84 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_top = -2.845
 offset_bottom = -2.845
+scale = Vector2(0.4, 0.4)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 use_top_left = true
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="Levels1-4" type="HBoxContainer" parent="CenterContainer/HBoxContainer3"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer3/Levels1-4"]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="Level1" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 1"
 
 [node name="Level2" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 2"
 
 [node name="Level3" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 3"
 
 [node name="Level4" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 4"
 
 [node name="Levels5-7" type="HBoxContainer" parent="CenterContainer/HBoxContainer3"]
@@ -103,67 +111,72 @@ layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="CenterContainer/HBoxContainer3/Levels5-7"]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="Level5" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 5
 "
 
 [node name="Level6" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 6"
 
 [node name="Level7" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 7"
 
 [node name="Back" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_m0h8b")
-theme_override_font_sizes/font_size = 32
-text = "BACK"
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_1cl4n")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("4_d8a26")
+text = "Back"
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]

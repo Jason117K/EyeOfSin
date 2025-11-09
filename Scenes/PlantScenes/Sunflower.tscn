@@ -829,7 +829,7 @@ animation = &"New Anim"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("6")
-animation = &"idle1"
+animation = &"idle"
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("7")]
 giveBuffTo = ["Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "Sunflower", "None"]

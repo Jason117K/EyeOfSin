@@ -63,3 +63,6 @@ func _on_credits_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	Global.game_controller.change_scene("res://Scenes/Systems/OptionsMenu.tscn")
+
+func make_camera_current():
+	$Camera2D.make_current()

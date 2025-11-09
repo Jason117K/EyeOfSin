@@ -116,3 +116,6 @@ func _on_wave_manager_wave_3_started() -> void:
 	toolTips.setAnim(bucketHeadAnim)
 	toolTips.showButton()
 	pass # Replace with function body.
+
+func make_camera_current():
+	$Camera2D.make_current()

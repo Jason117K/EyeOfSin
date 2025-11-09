@@ -26,21 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="24_3oioj"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="25_mxy0f"]
 
-[sub_resource type="Environment" id="2"]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 1
-glow_hdr_threshold = 1.5
-adjustment_enabled = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
-
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("24_3oioj")
 region = Rect2(0, 0, 32, 41)
@@ -69,6 +54,21 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
+
+[sub_resource type="Environment" id="2"]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 1.5
+adjustment_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uc8kw"]
 shader = ExtResource("25_mxy0f")
@@ -284,60 +284,6 @@ position = Vector2(-42, 2)
 position = Vector2(-64, 192)
 script = ExtResource("9")
 Wave1_Interval = 1.0
-
-[node name="UILayer" parent="." instance=ExtResource("8_y08as")]
-layout_mode = 1
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_f18wi")
-autoplay = true
-
-[node name="PlantSelectionMenu" parent="." instance=ExtResource("5")]
-offset_left = 15.0
-offset_top = 313.0
-offset_bottom = 66.0
-scale = Vector2(0.5, 0.5)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("2")
-
-[node name="ToolTips" parent="." instance=ExtResource("17_y08as")]
-visible = false
-z_index = 4
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -152.0
-offset_right = 152.0
-offset_bottom = 152.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
-
-[node name="LevelSwitcher" parent="." instance=ExtResource("18_3o6er")]
-visible = false
-z_index = 4
-layout_mode = 1
-next_level = "res://Scenes/LevelScenes/Level3.tscn"
-level_unlocked = 3
-
-[node name="CodexBG" parent="." instance=ExtResource("19_bpdoe")]
-layout_mode = 0
-offset_left = 686.0
-offset_top = 313.0
-offset_right = 739.0
-offset_bottom = 373.0
-
-[node name="PauseButton" parent="." instance=ExtResource("20_f18wi")]
-layout_mode = 0
-offset_left = 675.0
-offset_top = 377.0
-offset_right = 730.0
-offset_bottom = 400.0
 
 [node name="Environment2" type="Node2D" parent="."]
 
@@ -576,6 +522,66 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment2/Special"]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_ngjvq")
+
+[node name="UILayer" parent="." instance=ExtResource("8_y08as")]
+layout_mode = 1
+
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_f18wi")
+autoplay = true
+
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("5")]
+offset_left = 8.0
+offset_top = 315.0
+offset_right = 33.0
+offset_bottom = 315.0
+scale = Vector2(0.8, 0.8)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="ToolTips" parent="." instance=ExtResource("17_y08as")]
+visible = false
+z_index = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -152.0
+offset_right = 152.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("18_3o6er")]
+visible = false
+z_index = 4
+layout_mode = 1
+next_level = "res://Scenes/LevelScenes/Level3.tscn"
+level_unlocked = 3
+
+[node name="CodexBG" parent="." instance=ExtResource("19_bpdoe")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PauseButton" parent="." instance=ExtResource("20_f18wi")]
+layout_mode = 0
+offset_left = 675.0
+offset_top = 377.0
+offset_right = 730.0
+offset_bottom = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)

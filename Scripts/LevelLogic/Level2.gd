@@ -76,3 +76,7 @@ func _on_plant_manager_egg_worm_placed() -> void:
 		toolTips.hide()
 		waveManager.startSecondWave()
 		placedEgg = true
+
+
+func make_camera_current():
+	$Camera2D.make_current()

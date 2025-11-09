@@ -27,13 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="23_dn4aj"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="26_rp3wk"]
 
-[sub_resource type="Environment" id="2"]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 1
-glow_hdr_threshold = 1.5
-adjustment_enabled = true
-
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("18_bvdl2")
 region = Rect2(0, 0, 32, 41)
@@ -63,6 +56,13 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Environment" id="2"]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 1.5
+adjustment_enabled = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rwem5"]
 shader = ExtResource("26_rp3wk")
 shader_parameter/hpass = 1.0
@@ -79,285 +79,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_y1pfi")
-
-[node name="PlantManager" parent="." instance=ExtResource("2_istt8")]
-sun_points = 1000
-
-[node name="GameLayer" type="Node2D" parent="."]
-process_mode = 1
-z_index = 1
-
-[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_atfoh")]
-position = Vector2(747, 77)
-Round1_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 1,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 0,
-"BucketHead": 2,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 3,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 4,
-"Ticker": 0
-}
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_jm0qw")]
-z_index = 1
-position = Vector2(-37, 0)
-
-[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_atfoh")]
-position = Vector2(747, 109)
-Round1_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 1,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 0,
-"BucketHead": 2,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 1,
-"BucketHead": 3,
-"ConeHead": 2,
-"Dancer": 1,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 3,
-"Ticker": 0
-}
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_jm0qw")]
-z_index = 1
-position = Vector2(-36, 1)
-
-[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_atfoh")]
-position = Vector2(747, 141)
-Round1_Zombies = {
-"Base": 0,
-"BucketHead": 1,
-"ConeHead": 3,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 0,
-"BucketHead": 2,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 3,
-"BucketHead": 2,
-"ConeHead": 3,
-"Dancer": 1,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 3,
-"Ticker": 0
-}
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_jm0qw")]
-z_index = 1
-position = Vector2(-38, 1)
-
-[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_atfoh")]
-position = Vector2(751, 173)
-Round1_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 1,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 0,
-"BucketHead": 2,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 1,
-"BucketHead": 3,
-"ConeHead": 3,
-"Dancer": 1,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 2,
-"Ticker": 0
-}
-waveDelay = 1.2
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_jm0qw")]
-z_index = 1
-position = Vector2(-41, -1)
-
-[node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_atfoh")]
-position = Vector2(754, 205)
-Round1_Zombies = {
-"Base": 0,
-"BucketHead": 1,
-"ConeHead": 3,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 0,
-"BucketHead": 2,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 3,
-"BucketHead": 2,
-"ConeHead": 2,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 3,
-"Ticker": 0
-}
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("4_jm0qw")]
-z_index = 1
-position = Vector2(-41, -1)
-
-[node name="GridManager" parent="GameLayer" instance=ExtResource("5_dn4aj")]
-z_index = -2
-
-[node name="WaveManager" parent="GameLayer" instance=ExtResource("6_b1djl")]
-z_index = 1
-position = Vector2(-59, 222)
-script = ExtResource("7_7q734")
-StartDelay = 5
-Wave2StartTime = 25
-Wave3StartTime = 40
-Wave1_Interval = 2.0
-Wave2_Interval = 4
-Wave3_Interval = 2.0
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_dn4aj")
-autoplay = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("2")
-
-[node name="PlantSelectionMenu" parent="." instance=ExtResource("9_rwem5")]
-layout_mode = 1
-offset_left = 25.0
-offset_top = 313.0
-offset_right = 65.0
-offset_bottom = 353.0
-scale = Vector2(0.5, 0.5)
-
-[node name="UILayer" parent="." instance=ExtResource("10_2cm1y")]
-layout_mode = 1
-
-[node name="Node2D" type="Node2D" parent="."]
-visible = false
-z_index = -1
-position = Vector2(2, 0)
-
-[node name="ColorRect" type="ColorRect" parent="Node2D"]
-offset_left = -42.0
-offset_top = -58.0
-offset_right = 806.0
-offset_bottom = 444.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.0784314)
-
-[node name="ToolTips" parent="." instance=ExtResource("19_80lnd")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -154.0
-offset_right = 209.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LevelSwitcher" parent="." instance=ExtResource("19_atfoh")]
-visible = false
-layout_mode = 1
-nextLevel = ExtResource("20_jm0qw")
-next_level = "res://Scenes/LevelScenes/Level6.tscn"
-level_unlocked = 6
-
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CodexBG2" parent="." instance=ExtResource("22_jm0qw")]
-layout_mode = 0
-offset_left = 686.0
-offset_top = 313.0
-offset_right = 739.0
-offset_bottom = 373.0
-
-[node name="PauseButton" parent="." instance=ExtResource("23_dn4aj")]
-layout_mode = 0
-offset_left = 684.0
-offset_top = 380.0
-offset_right = 739.0
-offset_bottom = 403.0
 
 [node name="Environment2" type="Node2D" parent="."]
 
@@ -596,6 +317,290 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment2/Special"]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_33uve")
+
+[node name="PlantManager" parent="." instance=ExtResource("2_istt8")]
+sun_points = 1000
+
+[node name="GameLayer" type="Node2D" parent="."]
+process_mode = 1
+z_index = 1
+
+[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_atfoh")]
+position = Vector2(747, 77)
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 3,
+"BucketHead": 1,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 4,
+"Ticker": 0
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_jm0qw")]
+z_index = 1
+position = Vector2(-37, 0)
+
+[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_atfoh")]
+position = Vector2(747, 109)
+Round1_Zombies = {
+"Base": 3,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 1,
+"BucketHead": 3,
+"ConeHead": 2,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 3,
+"Ticker": 0
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_jm0qw")]
+z_index = 1
+position = Vector2(-36, 1)
+
+[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_atfoh")]
+position = Vector2(747, 141)
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 1,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 3,
+"BucketHead": 2,
+"ConeHead": 3,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 3,
+"Ticker": 0
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_jm0qw")]
+z_index = 1
+position = Vector2(-38, 1)
+
+[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_atfoh")]
+position = Vector2(751, 173)
+Round1_Zombies = {
+"Base": 3,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 1,
+"BucketHead": 3,
+"ConeHead": 3,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 2,
+"Ticker": 0
+}
+waveDelay = 1.2
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_jm0qw")]
+z_index = 1
+position = Vector2(-41, -1)
+
+[node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_atfoh")]
+position = Vector2(754, 205)
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 1,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 3,
+"BucketHead": 2,
+"ConeHead": 2,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 3,
+"Ticker": 0
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("4_jm0qw")]
+z_index = 1
+position = Vector2(-41, -1)
+
+[node name="GridManager" parent="GameLayer" instance=ExtResource("5_dn4aj")]
+z_index = -2
+
+[node name="WaveManager" parent="GameLayer" instance=ExtResource("6_b1djl")]
+z_index = 1
+position = Vector2(-59, 222)
+script = ExtResource("7_7q734")
+StartDelay = 5
+Wave2StartTime = 25
+Wave3StartTime = 40
+Wave1_Interval = 2.0
+Wave2_Interval = 4
+Wave3_Interval = 2.0
+
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_dn4aj")
+autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("9_rwem5")]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 315.0
+offset_right = 48.0
+offset_bottom = 355.0
+scale = Vector2(0.8, 0.8)
+
+[node name="UILayer" parent="." instance=ExtResource("10_2cm1y")]
+layout_mode = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(2, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_left = -42.0
+offset_top = -58.0
+offset_right = 806.0
+offset_bottom = 444.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.0784314)
+
+[node name="ToolTips" parent="." instance=ExtResource("19_80lnd")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -154.0
+offset_right = 209.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("19_atfoh")]
+visible = false
+layout_mode = 1
+nextLevel = ExtResource("20_jm0qw")
+next_level = "res://Scenes/LevelScenes/Level6.tscn"
+level_unlocked = 6
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CodexBG2" parent="." instance=ExtResource("22_jm0qw")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PauseButton" parent="." instance=ExtResource("23_dn4aj")]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 380.0
+offset_right = 739.0
+offset_bottom = 403.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)

@@ -17,8 +17,8 @@ script = ExtResource("2_w1yst")
 visible = false
 layout_mode = 1
 offset_left = -310.0
-offset_top = -165.0
+offset_top = -178.885
 offset_right = -310.0
-offset_bottom = -165.0
+offset_bottom = -178.885
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

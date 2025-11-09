@@ -20,7 +20,10 @@ func restore_previous_scene():
 	print("PPScene to restore is ",scene_to_restore )
 	
 	previous_scenes.pop_back() 
+	print("PPScene to restore iis ",scene_to_restore )
 	scene_to_restore.visible = true 
+	if scene_to_restore.has_method("make_camera_current"):
+		scene_to_restore.make_camera_current()
 	current_scene = scene_to_restore
 	print("PPPrevious Scenes Is ",previous_scenes )
 	if previous_scenes.is_empty():

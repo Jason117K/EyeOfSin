@@ -791,12 +791,12 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 8.045
-offset_top = 133.07
-offset_right = 8.045
-offset_bottom = 133.07
+offset_left = 8.0
+offset_top = 107.0
+offset_right = 8.0
+offset_bottom = 107.0
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.8, 0.8)
 
 [node name="UILayer" parent="." instance=ExtResource("10_dljnt")]
 layout_mode = 1
@@ -838,10 +838,15 @@ next_level = "res://Scenes/LevelScenes/EndScreen.tscn"
 
 [node name="CodexBG" parent="." instance=ExtResource("21_bpqyd")]
 layout_mode = 0
-offset_left = 685.0
-offset_top = 327.0
-offset_right = 738.0
-offset_bottom = 387.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 687.0
+offset_top = 329.0
+offset_right = 740.0
+offset_bottom = 389.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="PauseButton2" parent="." instance=ExtResource("23_88mod")]
 layout_mode = 0
@@ -886,6 +891,7 @@ metadata/_edit_lock_ = true
 visible = false
 z_index = 5
 custom_minimum_size = Vector2(777, 777)
+layout_mode = 0
 offset_left = -7.0
 offset_top = -136.0
 offset_right = 770.0

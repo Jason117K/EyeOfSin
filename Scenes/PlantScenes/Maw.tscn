@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="2"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_fxtok"]
+[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_fxtok"]
 [ext_resource type="Texture2D" uid="uid://347bq70xelxl" path="res://Assets/Zombies/BackUpDancerHead.png" id="3"]
 [ext_resource type="Script" uid="uid://32gl5oscgs3x" path="res://Scripts/Plants/Maw.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
@@ -17,7 +17,10 @@
 shader = ExtResource("2_fxtok")
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(0, 0, 0, 1)
+shader_parameter/modulate_factor = Color(9, 9, 9, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")

@@ -76,3 +76,7 @@ func _on_tool_tips_tool_tip_hid() -> void:
 		3:
 			waveManager.canStartGame = true
 	count += 1
+
+
+func make_camera_current():
+	$Camera2D.make_current()
