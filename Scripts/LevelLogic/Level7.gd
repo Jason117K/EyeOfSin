@@ -28,6 +28,7 @@ func _ready():
 	toolTips.set_text_pause(poleVaultZombieText)
 	toolTips.setAnim(poleVaultZombieAnim)
 	toolTips.showButton()
+	make_camera_current()
 
 
 func _on_tool_tips_tool_tip_hid() -> void:

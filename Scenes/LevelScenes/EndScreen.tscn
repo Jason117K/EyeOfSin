@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b2bnnssljo4uk" path="res://Assets/Audio/Win2.mp3" id="6"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
-bg_color = Color(0.56, 0, 0, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3

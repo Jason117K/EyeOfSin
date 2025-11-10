@@ -38,6 +38,7 @@ func _ready():
 	toolTips.set_text(eyeBombText)
 	toolTips.setAnim(eyeBombAnim)
 	toolTips.noButtonShow()
+	make_camera_current()
 
 
 func _on_plant_manager_eye_bomb_placed() -> void:

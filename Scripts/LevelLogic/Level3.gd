@@ -34,6 +34,7 @@ func _ready():
 	
 	toolTips.set_text(bloodBuffTutorial)
 	toolTips.showButton()
+	make_camera_current()
 
 
 func _on_plant_manager_egg_worm_placed() -> void:

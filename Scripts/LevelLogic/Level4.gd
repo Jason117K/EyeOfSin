@@ -34,6 +34,7 @@ func _ready():
 	toolTips.set_text(waspText)
 	toolTips.setAnim(waspAnim)
 	toolTips.noButtonShow()
+	make_camera_current()
 
 
 func _on_plant_manager_wasp_placed() -> void:

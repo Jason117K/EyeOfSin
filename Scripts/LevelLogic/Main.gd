@@ -48,6 +48,7 @@ func _ready():
 	
 	#Sets the first tutorial popup
 	toolTips.set_text(startingTutorialText)
+	make_camera_current()
 	
 	
 func _process(delta: float) -> void:

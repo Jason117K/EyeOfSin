@@ -38,6 +38,7 @@ func _ready():
 	toolTips.set_text(mawText)
 	toolTips.setAnim(mawAnim)
 	toolTips.noButtonShow()
+	make_camera_current()
 
 
 func _on_plant_manager_maw_placed() -> void:
