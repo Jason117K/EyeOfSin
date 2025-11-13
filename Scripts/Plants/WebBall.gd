@@ -22,7 +22,7 @@ func _ready():
 		target_position = start_position + Vector2(200, 0)
 	
 	calculate_trajectory()
-	create_debug_marker()
+	#create_debug_marker()
 
 # Get all valid enemies and then apply a slow effect to them
 func die():
@@ -113,4 +113,3 @@ class DebugMarker extends Node2D:
 func _on_WebBall_area_entered(area):
 	print("The Webbed Enemy is ", area.name)
 	enemiesToWeb.append(area)
-

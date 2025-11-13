@@ -1,17 +1,125 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdtv7ynijb45b"]
+[gd_scene load_steps=24 format=3 uid="uid://cdtv7ynijb45b"]
 
 [ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="1_5ykb5"]
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://Scripts/complexTutorialImage.gd" id="1_katmg"]
 [ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://Assets/Plants/Spriteframes/Maw.tres" id="1_vkb4b"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="2_fewqe"]
 [ext_resource type="Script" uid="uid://c4riwmfe7pjam" path="res://Scripts/Plants/make_grey_red.gd" id="2_xn45f"]
-[ext_resource type="SpriteFrames" uid="uid://pmpro31oktqb" path="res://Assets/Plants/Spriteframes/Wasp.tres" id="3_5ykb5"]
+[ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="6_fewqe"]
+[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://Assets/Plants/Animations/Wasp 16x16 Sprite Sheet.png" id="7_upj5p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1cnc"]
 shader = ExtResource("1_5ykb5")
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
 shader_parameter/tolerance = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd7ji"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn5mt"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_640p6"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7xn6"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6kyb"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pipac"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbp0u"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v436c"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkjwq"]
+atlas = ExtResource("6_fewqe")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_emqvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd7ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn5mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_640p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7xn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6kyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pipac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbp0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v436c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkjwq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppu7i"]
+atlas = ExtResource("7_upj5p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v78ex"]
+atlas = ExtResource("7_upj5p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3c6s"]
+atlas = ExtResource("7_upj5p")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ncr"]
+atlas = ExtResource("7_upj5p")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8issj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppu7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v78ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3c6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8ncr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="maw_hive_buff" type="Control"]
 layout_mode = 3
@@ -24,6 +132,7 @@ script = ExtResource("1_katmg")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 self_modulate = Color(0.46, 0.46, 0.46, 1)
+layout_mode = 0
 offset_right = 108.0
 offset_bottom = 49.0
 scale = Vector2(2, 2)
@@ -36,8 +145,27 @@ position = Vector2(132, 64)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_vkb4b")
 script = ExtResource("2_xn45f")
+target_color = Color(0.152941, 0.152941, 0.152941, 1)
+replace_color = Color(0.39, 0, 0, 1)
+
+[node name="Hive" type="AnimatedSprite2D" parent="."]
+position = Vector2(46, 41)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_emqvu")
+frame = 3
+frame_progress = 0.871005
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(36, 36)
+position = Vector2(9, 22)
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("3_5ykb5")
+sprite_frames = SubResource("SpriteFrames_8issj")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(46, 85)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8issj")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(83, 20)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_8issj")

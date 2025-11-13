@@ -1,8 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwnxaalr7lrsd"]
+[gd_scene load_steps=21 format=4 uid="uid://cwnxaalr7lrsd"]
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://Scripts/LevelLogic/StartScreen.gd" id="2"]
-[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="3_yhwb3"]
+[ext_resource type="AudioStream" uid="uid://2ovmbrp2455w" path="res://Audio/menu music bounce 8-13-25.wav" id="3_dd6vr"]
+[ext_resource type="Texture2D" uid="uid://b33cuw824fnwf" path="res://Assets/Icons/EyeOfSynTitle.png" id="5_fmyua"]
+[ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="6_4rth8"]
+[ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="7_j88ag"]
+[ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="8_5mipx"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="9_1p6mn"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="10_vgtya"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="11_4ojxa"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="12_bcgeo"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="13_hj78q"]
+[ext_resource type="FontFile" uid="uid://dw8o777s6dcqi" path="res://Assets/Fonts/Fleshandblood-MVA5x.ttf" id="14_4rth8"]
+[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="14_nyvis"]
+[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="15_mrsis"]
+[ext_resource type="StyleBox" uid="uid://bu8cfo71nnluh" path="res://Resources_tres/Start_Button_Stylebox.tres" id="16_j88ag"]
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("15_mrsis")
+region = Rect2(0, 0, 32, 41)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("15_mrsis")
+region = Rect2(32, 0, 32, 41)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("15_mrsis")
+region = Rect2(64, 0, 32, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sk018"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -14,40 +56,378 @@ grow_vertical = 2
 script = ExtResource("2")
 
 [node name="GridManager" parent="." instance=ExtResource("1")]
+metadata/_edit_lock_ = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="TileMapLayer" parent="GridManager" index="0"]
+tile_map_data = PackedByteArray("AAACAAsAAQAJAAIAAAABAAsAAQAGAAkAAAAAAAsAAQAAAAkAAAADAAsAAQAJAAIAAAAFAAsAAQAJAAIAAAAGAAsAAQAJAAIAAAAHAAsAAQAJAAIAAAAIAAsAAQAJAAIAAAAWAAsAAQAJAAIAAAAXAAsAAQAJAAIAAAAVAAsAAQAJAAIAAAAUAAsAAQAJAAIAAAATAAsAAQAJAAIAAAASAAsAAQAJAAIAAAARAAsAAQAJAAIAAAAQAAsAAQAJAAIAAAAPAAsAAQAJAAIAAAAOAAsAAQAJAAIAAAANAAsAAQAJAAIAAAAMAAsAAQAJAAIAAAALAAsAAQAJAAIAAAAKAAsAAQAJAAIAAAAJAAsAAQAJAAIAAAAEAAoAAQAJAAIAAAADAAoAAQAJAAIAAAACAAoAAQAJAAIAAAABAAoAAQAJAAIAAAAFAAoAAQAJAAIAAAAHAAoAAQARAAgAAAAIAAoAAQARAAgAAAAJAAoAAQADAAgAAAAKAAoAAQARAAgAAAALAAoAAQARAAgAAAAMAAoAAQADAAgAAAANAAoAAQADAAgAAAAOAAoAAQARAAgAAAAPAAoAAQARAAgAAAAQAAoAAQARAAgAAAARAAoAAQARAAgAAAASAAoAAQARAAgAAAATAAoAAQARAAgAAAAUAAoAAQARAAgAAAAVAAoAAQARAAgAAAAWAAoAAQARAAgAAAARAAkAAQAJAAIAAAAQAAkAAQAJAAIAAAAPAAkAAQAJAAIAAAAOAAkAAQAJAAIAAAANAAkAAQAJAAIAAAAMAAkAAQAJAAIAAAALAAkAAQAJAAIAAAAKAAkAAQAJAAIAAAAJAAkAAQAJAAIAAAAAAAoAAQARAAgAAAAAAAkAAQANAAcAAAABAAkAAQAJAAIAAAACAAkAAQAJAAIAAAADAAkAAQAJAAIAAAAEAAkAAQAJAAIAAAAFAAkAAQAJAAIAAAAGAAkAAQAJAAIAAAAHAAkAAQAJAAIAAAAIAAkAAQAJAAIAAAASAAkAAQAJAAIAAAATAAkAAQAJAAIAAAAUAAkAAQAJAAIAAAAVAAkAAQAJAAIAAAAWAAkAAQAJAAIAAAAXAAkAAQAJAAIAAAAEAAsAAQAJAAIAAAAGAAoAAQARAAgAAAADAAgAAQAJAAIAAAABAAcAAQAJAAIAAAAIAAcAAQAJAAIAAAADAAYAAQABAAcAAAAFAAUAAQABAAYAAAAGAAgAAQAJAAIAAAAOAAYAAQABAAcAAAALAAUAAQABAAYAAAAMAAgAAQAJAAIAAAAVAAcAAQAJAAIAAAASAAYAAQABAAcAAAAQAAgAAQAJAAIAAAAJAAYAAQABAAcAAAAFAAcAAQAJAAIAAAAHAAgAAQAJAAIAAAAIAAgAAQAJAAIAAAAJAAgAAQAJAAIAAAAKAAgAAQAJAAIAAAALAAgAAQAJAAIAAAAFAAgAAQAJAAIAAAAEAAgAAQAJAAIAAAACAAgAAQAJAAIAAAAAAAgAAQAJAAIAAAABAAgAAQAJAAIAAAAAAAcAAQAJAAIAAAAAAAYAAQABAAcAAAABAAYAAQABAAcAAAACAAcAAQAJAAIAAAADAAcAAQAJAAIAAAAEAAcAAQAJAAIAAAACAAYAAQABAAcAAAAEAAYAAQABAAcAAAAGAAYAAQABAAcAAAAGAAcAAQAJAAIAAAAFAAYAAQABAAcAAAAHAAYAAQABAAcAAAAIAAYAAQABAAcAAAAHAAcAAQAJAAIAAAAJAAcAAQAJAAIAAAAKAAYAAQABAAcAAAALAAcAAQAJAAIAAAAKAAcAAQAJAAIAAAALAAYAAQABAAcAAAAMAAYAAQABAAcAAAANAAYAAQABAAcAAAANAAcAAQAJAAIAAAAMAAcAAQAJAAIAAAANAAgAAQAJAAIAAAAOAAgAAQAJAAIAAAAPAAgAAQAJAAIAAAAOAAcAAQAJAAIAAAAPAAcAAQAJAAIAAAAPAAYAAQABAAcAAAAQAAYAAQABAAcAAAARAAYAAQABAAcAAAARAAcAAQAJAAIAAAAQAAcAAQAJAAIAAAARAAgAAQAJAAIAAAASAAgAAQAJAAIAAAASAAcAAQAJAAIAAAATAAYAAQABAAcAAAATAAcAAQAJAAIAAAATAAgAAQAJAAIAAAAUAAgAAQAJAAIAAAAUAAcAAQAJAAIAAAAUAAYAAQABAAcAAAAVAAYAAQABAAcAAAAWAAYAAQABAAcAAAAWAAcAAQAJAAIAAAAWAAgAAQAJAAIAAAAVAAgAAQAJAAIAAAAXAAIAAQAJAAIAAAAWAAIAAQABAAMAAAAVAAIAAQABAAMAAAAUAAIAAQABAAMAAAATAAIAAQABAAMAAAASAAIAAQABAAMAAAARAAIAAQABAAMAAAAQAAIAAQABAAMAAAAPAAIAAQABAAMAAAAOAAIAAQABAAMAAAANAAIAAQABAAMAAAAMAAIAAQABAAMAAAALAAIAAQABAAMAAAAKAAIAAQABAAMAAAAJAAIAAQABAAMAAAAIAAIAAQABAAMAAAAHAAIAAQABAAMAAAAGAAIAAQABAAMAAAAFAAIAAQABAAMAAAAEAAIAAQABAAMAAAADAAIAAQABAAMAAAACAAIAAQABAAMAAAABAAIAAQABAAMAAAAAAAIAAQABAAMAAAAXAAoAAQARAAgAAAAXAAgAAQAJAAIAAAAXAAcAAQAJAAIAAAAXAAYAAQAJAAIAAAAWAAUAAQABAAYAAAAVAAUAAQABAAYAAAAUAAUAAQABAAYAAAATAAUAAQABAAYAAAASAAUAAQABAAYAAAARAAUAAQABAAYAAAAQAAUAAQABAAYAAAAPAAUAAQABAAYAAAAOAAUAAQABAAYAAAANAAUAAQABAAYAAAAMAAUAAQABAAYAAAAKAAUAAQABAAYAAAAXAAUAAQABAAYAAAAJAAUAAQABAAYAAAAIAAUAAQABAAYAAAAHAAUAAQABAAYAAAAXAAQAAQAJAAIAAAAWAAQAAQAFAAUAAAAVAAQAAQAFAAUAAAAUAAQAAQAFAAUAAAATAAQAAQAFAAUAAAASAAQAAQAFAAUAAAARAAQAAQAFAAUAAAAQAAQAAQAFAAUAAAAPAAQAAQAFAAUAAAAGAAUAAQABAAYAAAAEAAUAAQABAAYAAAADAAUAAQABAAYAAAACAAUAAQABAAYAAAABAAUAAQABAAYAAAAAAAUAAQABAAYAAAAAAAQAAQAFAAUAAAABAAQAAQAFAAUAAAACAAQAAQAFAAUAAAADAAQAAQAFAAUAAAAEAAQAAQAFAAUAAAAFAAQAAQAFAAUAAAAGAAQAAQAFAAUAAAAHAAQAAQAFAAUAAAAIAAQAAQAFAAUAAAAJAAQAAQAFAAUAAAAKAAQAAQAFAAUAAAALAAQAAQAFAAUAAAAMAAQAAQAFAAUAAAANAAQAAQAFAAUAAAAOAAQAAQAFAAUAAAAAAAMAAQADAAQAAAABAAMAAQADAAQAAAACAAMAAQADAAQAAAADAAMAAQADAAQAAAAEAAMAAQADAAQAAAAFAAMAAQADAAQAAAAGAAMAAQADAAQAAAAHAAMAAQADAAQAAAAIAAMAAQADAAQAAAAJAAMAAQADAAQAAAAKAAMAAQADAAQAAAALAAMAAQADAAQAAAAQAAMAAQAFAAUAAAARAAMAAQAFAAUAAAASAAMAAQAFAAUAAAATAAMAAQADAAQAAAAUAAMAAQADAAQAAAAVAAMAAQADAAQAAAAWAAMAAQADAAQAAAAXAAMAAQADAAQAAAAPAAMAAQADAAQAAAAOAAMAAQADAAQAAAANAAMAAQADAAQAAAAMAAMAAQADAAQAAAAXAAEAAQACAAgAAAAWAAEAAQACAAgAAAAVAAEAAQACAAgAAAAUAAEAAQACAAgAAAATAAEAAQACAAgAAAASAAEAAQACAAgAAAARAAEAAQACAAgAAAAQAAEAAQACAAgAAAAPAAEAAQACAAgAAAAOAAEAAQACAAgAAAANAAEAAQACAAgAAAAMAAEAAQACAAgAAAALAAEAAQACAAgAAAAKAAEAAQACAAgAAAAJAAEAAQACAAgAAAAIAAEAAQACAAgAAAAHAAEAAQACAAgAAAAGAAEAAQACAAgAAAAFAAEAAQACAAgAAAAEAAEAAQACAAgAAAADAAEAAQACAAgAAAACAAEAAQACAAgAAAABAAEAAQACAAgAAAAAAAEAAQAIAAIAAAAXAAAAAQACAAcAAAAWAAAAAQACAAcAAAAVAAAAAQACAAcAAAAUAAAAAQACAAcAAAATAAAAAQACAAcAAAASAAAAAQACAAcAAAARAAAAAQACAAcAAAAQAAAAAQACAAcAAAAPAAAAAQACAAcAAAAOAAAAAQACAAcAAAANAAAAAQACAAcAAAAMAAAAAQACAAcAAAALAAAAAQACAAcAAAAKAAAAAQACAAcAAAAJAAAAAQACAAcAAAAIAAAAAQACAAcAAAAHAAAAAQACAAcAAAAGAAAAAQACAAcAAAAFAAAAAQACAAcAAAAEAAAAAQACAAcAAAADAAAAAQACAAcAAAACAAAAAQACAAcAAAABAAAAAQACAAcAAAAAAAAAAQAKAAcAAAAXAAwAAQAJAAMAAAAWAAwAAQAJAAMAAAAVAAwAAQAJAAMAAAAUAAwAAQAJAAMAAAATAAwAAQAJAAMAAAASAAwAAQAJAAMAAAARAAwAAQAJAAMAAAAQAAwAAQAJAAMAAAAPAAwAAQAJAAMAAAAOAAwAAQAJAAMAAAANAAwAAQAJAAMAAAAMAAwAAQAJAAMAAAALAAwAAQAJAAMAAAAKAAwAAQAJAAMAAAAJAAwAAQAJAAMAAAAIAAwAAQAJAAMAAAAHAAwAAQAJAAMAAAAGAAwAAQAJAAMAAAAFAAwAAQAJAAMAAAAEAAwAAQAJAAMAAAADAAwAAQAJAAMAAAACAAwAAQAJAAMAAAABAAwAAQAJAAMAAAAAAAwAAQAJAAMAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Coral" type="Node2D" parent="Environment"]
+
+[node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(543, 347)
+texture = ExtResource("6_4rth8")
+
+[node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(588, 303)
+texture = ExtResource("6_4rth8")
+
+[node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(282, 48)
+texture = ExtResource("6_4rth8")
+flip_h = true
+
+[node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(69, 363)
+texture = ExtResource("6_4rth8")
+flip_h = true
+
+[node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(718, 321)
+texture = ExtResource("6_4rth8")
+
+[node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(44, 277)
+texture = ExtResource("6_4rth8")
+
+[node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(113, 323)
+texture = ExtResource("6_4rth8")
+
+[node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(72, 58)
+texture = ExtResource("6_4rth8")
+flip_h = true
+
+[node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(476, 47)
+texture = ExtResource("6_4rth8")
+
+[node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(618, 344)
+texture = ExtResource("7_j88ag")
+
+[node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(406, 333)
+texture = ExtResource("7_j88ag")
+flip_h = true
+
+[node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(672, 305)
+texture = ExtResource("7_j88ag")
+flip_h = true
+
+[node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(425, 46)
+texture = ExtResource("7_j88ag")
+flip_h = true
+
+[node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(275, 278)
+texture = ExtResource("7_j88ag")
+flip_h = true
+
+[node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(331, 350)
+texture = ExtResource("7_j88ag")
+flip_h = true
+
+[node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(212, 55)
+texture = ExtResource("7_j88ag")
+flip_h = true
+
+[node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(553, 48)
+texture = ExtResource("7_j88ag")
+flip_h = true
+
+[node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(356, 49)
+texture = ExtResource("7_j88ag")
+
+[node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(181, 365)
+texture = ExtResource("8_5mipx")
+
+[node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(650, 44)
+texture = ExtResource("8_5mipx")
+
+[node name="FetusProp" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(135, 41)
+texture = ExtResource("9_1p6mn")
+
+[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(477, 287)
+texture = ExtResource("9_1p6mn")
+
+[node name="Bramble" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(505, 328)
+texture = ExtResource("10_vgtya")
+
+[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(454, 388)
+texture = ExtResource("10_vgtya")
+
+[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(584, 399)
+texture = ExtResource("10_vgtya")
+
+[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(640, 303)
+texture = ExtResource("10_vgtya")
+
+[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(483, 0)
+texture = ExtResource("10_vgtya")
+
+[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(660, 11)
+texture = ExtResource("10_vgtya")
+
+[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(366, 316)
+texture = ExtResource("11_4ojxa")
+flip_h = true
+
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(455, 331)
+texture = ExtResource("11_4ojxa")
+flip_h = true
+
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(402, 343)
+texture = ExtResource("11_4ojxa")
+
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(428, 399)
+texture = ExtResource("11_4ojxa")
+flip_h = true
+
+[node name="Fish" type="Node2D" parent="Environment"]
+
+[node name="Fish" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(542, 386)
+
+[node name="Fish2" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(515, 353)
+
+[node name="Fish5" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(180, 329)
+
+[node name="Fish6" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(37, 326)
+
+[node name="Fish7" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(573, 19)
+
+[node name="Fish8" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(455, 394)
+
+[node name="Fish9" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(315, 14)
+
+[node name="Fish3" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(573, 342)
+
+[node name="Fish4" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+z_index = -1
+position = Vector2(633, 395)
+
+[node name="Shrubs" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+position = Vector2(560, 13)
+scale = Vector2(1, 1)
+
+[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+position = Vector2(474, 339)
+scale = Vector2(1, 1)
+
+[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+position = Vector2(521, 392)
+scale = Vector2(1, 1)
+
+[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+position = Vector2(193, 327)
+scale = Vector2(1, 1)
+
+[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+position = Vector2(433, 330)
+scale = Vector2(1, 1)
+
+[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+position = Vector2(658, 403)
+scale = Vector2(1, 1)
+
+[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+position = Vector2(297, 14)
+scale = Vector2(1, 1)
+
+[node name="Trees" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
+z_index = 1
+position = Vector2(561, 364)
+texture = ExtResource("14_nyvis")
+flip_h = true
+
+[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
+z_index = 1
+position = Vector2(396, 7)
+texture = ExtResource("14_nyvis")
+
+[node name="Special" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
+position = Vector2(606, 395)
+sprite_frames = SubResource("SpriteFrames_sk018")
+
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dd6vr")
+autoplay = true
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(35, 0)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(777, 777)
 layout_mode = 0
+offset_left = -7.0
+offset_top = -136.0
+offset_right = 770.0
+offset_bottom = 641.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.486275)
+
+[node name="EyeOfSynTitle" type="Sprite2D" parent="."]
+position = Vector2(371, 92)
+texture = ExtResource("5_fmyua")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -2.845
-offset_bottom = -2.845
+offset_left = 13.0
+offset_top = 67.0
+offset_right = 13.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 use_top_left = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 45
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_yhwb3")
-theme_override_font_sizes/font_size = 32
-text = "START GAME"
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("16_j88ag")
+text = "Start Game"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("16_j88ag")
+text = "Level Select"
+
+[node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("16_j88ag")
+text = "Options"
+
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("16_j88ag")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = ExtResource("16_j88ag")
+text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(370, 208)
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+
+[editable path="GridManager"]

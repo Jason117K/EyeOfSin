@@ -1,15 +1,76 @@
-[gd_scene load_steps=100 format=3 uid="uid://ct2xdafdtut66"]
+[gd_scene load_steps=108 format=3 uid="uid://ct2xdafdtut66"]
 
 [ext_resource type="Script" uid="uid://kjyi7ykyorhn" path="res://Scripts/Sunflower.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://Assets/Plants/Plant_Animations/EyeSunTowerIdle-Sheet.png" id="2_bufnm"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="6"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="6_bufnm"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="7"]
 
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)
+
+[sub_resource type="Shader" id="Shader_bufnm"]
+code = "shader_type canvas_item;
+
+
+
+uniform vec4 glow_color : source_color = vec4(223,66,66,256);
+const vec4 modulate_factor = vec4(9, 9,9, 1.0);
+//uniform vec4 modulate_factor : source_color = vec4(1.1, 1.1, 1.1, 1.0);
+const float glow_tolerance = 0.2;
+//uniform float glow_tolerance : hint_range(0.0, 1.0) = 0.5;
+
+// Optimized HSV conversion
+vec3 rgb2hsv(vec3 c) {
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = c.g < c.b ? vec4(c.bg, K.wz) : vec4(c.gb, K.xy);
+    vec4 q = c.r < p.x ? vec4(p.xyw, c.r) : vec4(c.r, p.yzx);
+    
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+vec3 hsv2rgb(vec3 c) {
+    vec3 rgb = clamp(abs(fract(c.x + vec3(0.0, 2.0/3.0, 1.0/3.0)) * 6.0 - 3.0) - 1.0, 0.0, 1.0);
+    return c.z * mix(vec3(1.0), rgb, c.y);
+}
+
+void fragment() {
+	vec4 first_tex_color = texture(TEXTURE, UV);
+		// Apply modulation to pixels matching glow_color
+	float glow_dist = distance(first_tex_color.rgb, glow_color.rgb);
+	if (glow_dist < glow_tolerance) {
+		first_tex_color *= modulate_factor;
+	}
+	COLOR = first_tex_color;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a84i6"]
+resource_local_to_scene = true
+shader = SubResource("Shader_bufnm")
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcved"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43yhb"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teyhb"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_644qc"]
+atlas = ExtResource("2_bufnm")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="119"]
 atlas = ExtResource("4")
@@ -107,6 +168,23 @@ region = Rect2(448, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vcved")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43yhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teyhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_644qc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("119")
 }, {
 "duration": 1.0,
@@ -119,7 +197,7 @@ animations = [{
 "texture": SubResource("122")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -669,6 +747,7 @@ animations = [{
 [node name="Sunflower" type="Area2D" groups=["Plants"]]
 position = Vector2(0, 1)
 script = ExtResource("1")
+buffedSunWaitTime = 9.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.499999)
@@ -679,9 +758,12 @@ shape = SubResource("89")
 wait_time = 15.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
-animation = &"spawn"
+animation = &"idle"
 autoplay = "spawn"
+script = ExtResource("6_bufnm")
+targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="OverlayComponent" type="Node2D" parent="."]
 visible = false
@@ -748,7 +830,6 @@ animation = &"New Anim"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("6")
 animation = &"idle"
-frame = 3
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("7")]
 giveBuffTo = ["Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "Sunflower", "None"]
@@ -819,6 +900,12 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 27
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 
 [editable path="BuffNodesComponent"]

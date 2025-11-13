@@ -8,8 +8,8 @@ extends Area2D
 signal drone_died(drone)
 
 # Export variables 
-@export var health = 100          # Drone Health
-@export var attack_damage = 8    # Attack Damage
+@export var health = 75          # Drone Health
+@export var attack_damage = 7    # Attack Damage
 @export var attack_speed = 1.0   # Attacks per second
 @export var move_speed = 150     # Pixels per second
 @export var rotation_speed = 5.0 # How fast the drone rotates to face target
@@ -26,15 +26,25 @@ var explodeBuff = false         # Whether or not the drone is buffed
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
+func make_drone_glow():
+	animatedSpriteComp.make_glow()
+	
+	
 # Doubles the drone attack damage 
 func doubleDamage():
 	attack_damage = attack_damage * 3
 	animatedSpriteComp.buff()
 
+func regularDamage():
+	attack_damage = attack_damage / 3
+	animatedSpriteComp.debuff()
+	
 # Activates the drone explosion buff
 func makeExplode():
 	explodeBuff = true
 
+func makeNotExplode():
+	explodeBuff = false
 
 func _ready():
 	#idle by default 

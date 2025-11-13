@@ -20,6 +20,7 @@ func goBoom():
 	hit2.play()
 	hit3.play()
 	self.visible = true 
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.TICKER_BOOM)
 	
 
 # When the last animation is finished, damage all towers caught in the area
@@ -40,6 +41,7 @@ func _on_Hit3_animation_finished():
 		if(is_instance_valid(area)):
 			if area.is_in_group("Plants"):
 				#print("About to bomb ", area.name)
+				print("AP IS ", attack_power)
 				if(area.health >= 0):
 					area.take_damage(attack_power)
 				else:

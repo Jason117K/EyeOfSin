@@ -1,24 +1,25 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgcaw5piiqcxr"]
+[gd_scene load_steps=26 format=3 uid="uid://cgcaw5piiqcxr"]
 
 [ext_resource type="Texture2D" uid="uid://b2fg3smedqosy" path="res://Assets/Zombies/BackUpDancerFloat-Sheet.png" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_tq53n"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="3"]
-[ext_resource type="AudioStream" uid="uid://chan24ixi06ro" path="res://Assets/Audio/zombie-bite-96528.mp3" id="4"]
 [ext_resource type="Script" uid="uid://cnr47vvtfeg2g" path="res://Scripts/Zombies/BackUpDancerZombie.gd" id="5"]
-[ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="6"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_naxm4"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://l6dgn4pcxpf6" path="res://Assets/Zombies/BackUpDancerFloat-SheetWEB.png" id="8"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="11"]
 
 [sub_resource type="RectangleShape2D" id="8"]
 size = Vector2(15, 45)
 
-[sub_resource type="ShaderMaterial" id="15"]
-shader = ExtResource("11")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6m1t7"]
+shader = ExtResource("6_naxm4")
+shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="1"]
@@ -115,7 +116,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebWalk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="BackUpDancerZombie" type="Area2D" groups=["Zombie"]]
@@ -123,13 +124,19 @@ z_index = 2
 collision_layer = 2
 script = ExtResource("5")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
+position = Vector2(4, 17)
+texture = ExtResource("2_tq53n")
+
 [node name="ComponentManager" parent="." instance=ExtResource("9")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("7")]
-health = 10
+health = 72
+bloodWorth = 0.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("3")]
-speed = 25
+speed = 32
 
 [node name="AttackComponent" parent="." instance=ExtResource("2")]
 
@@ -138,20 +145,16 @@ position = Vector2(3, 9.5)
 shape = SubResource("8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("15")
+material = SubResource("ShaderMaterial_6m1t7")
 sprite_frames = SubResource("7")
 animation = &"WebWalk"
 frame = 3
 script = ExtResource("10")
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
+targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6")
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4")
 
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

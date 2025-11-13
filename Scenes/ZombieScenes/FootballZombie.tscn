@@ -1,23 +1,24 @@
-[gd_scene load_steps=44 format=3 uid="uid://c1jhmnedm5ggk"]
+[gd_scene load_steps=43 format=3 uid="uid://c1jhmnedm5ggk"]
 
 [ext_resource type="Script" uid="uid://c2c4na1yww6up" path="res://Scripts/Zombies/FootballZombie.gd" id="1_x5n0p"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_o5kil"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="3_5ut6p"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4_nihc1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5_ae3ds"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="6_qij6q"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_katje"]
 [ext_resource type="Texture2D" uid="uid://ccxvcy1yd2jvg" path="res://Assets/Zombies/Animations/Football/FootballZombie-Sheet.png" id="7_oaedh"]
+[ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://Assets/Zombies/Animations/Football/FootballZombie-SheetWEB.png" id="8_x5n0p"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="9_qr3bx"]
-[ext_resource type="AudioStream" uid="uid://cw1onbslylyyx" path="res://Assets/Audio/ZombieHit.mp3" id="10_novje"]
-[ext_resource type="AudioStream" uid="uid://8ambahl3xtal" path="res://Assets/Audio/ZombieAttack.mp3" id="11_5y0f5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(35, 25)
 
-[sub_resource type="ShaderMaterial" id="44"]
-shader = ExtResource("6_qij6q")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaedh"]
+shader = ExtResource("6_katje")
+shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
 shader_parameter/tolerance = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5n0p"]
@@ -81,63 +82,63 @@ atlas = ExtResource("7_oaedh")
 region = Rect2(558, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djok7"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(744, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5kd2"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(837, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aevdq"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(930, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1x5w"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1023, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_006ks"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1116, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpq4k"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1209, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhrc4"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1302, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s11ql"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1395, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xeif7"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(1488, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53hno"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(93, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4igk"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(186, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmq3k"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(279, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bmgh"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(372, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7vj2"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(465, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm7fv"]
-atlas = ExtResource("7_oaedh")
+atlas = ExtResource("8_x5n0p")
 region = Rect2(558, 0, 93, 40)
 
 [sub_resource type="SpriteFrames" id="9"]
@@ -250,48 +251,44 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebWalk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="FootBallZombie" type="Area2D" groups=["Zombie"]]
 z_index = 1
+position = Vector2(-16, -30)
 collision_layer = 2
 script = ExtResource("1_x5n0p")
 
 [node name="ComponentManager" parent="." instance=ExtResource("2_o5kil")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_5ut6p")]
-health = 50
-bloodWorth = 5.0
+health = 500
+bloodWorth = 50.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4_nihc1")]
+speed = 40
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_ae3ds")]
+attack_power = 49
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
 position = Vector2(16.5, 5.5)
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("44")
+material = SubResource("ShaderMaterial_oaedh")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
-animation = &"Attack"
+animation = &"WebWalk"
 script = ExtResource("9_qr3bx")
+targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(-17, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_novje")
-volume_db = -20.0
-
-[node name="AttackAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_5y0f5")
-volume_db = -16.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

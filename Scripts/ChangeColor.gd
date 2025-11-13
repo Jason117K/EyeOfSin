@@ -16,3 +16,10 @@ func _ready() -> void:
 		thisMaterial.set_shader_parameter("replace_color", replace_color)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
 		pass
+
+func change_color():
+	if thisMaterial:
+		#print("Made h")
+		thisMaterial.set_shader_parameter("target_color", target_color) #Color("#272727"))
+		thisMaterial.set_shader_parameter("replace_color", replace_color)
+		thisMaterial.set_shader_parameter("tolerance", 0.1)

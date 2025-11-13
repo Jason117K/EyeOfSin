@@ -1,0 +1,5 @@
+A basic footsoldier. 
+- Slow Speed 
+- High Numbers
+- Low Health
+- Low Damage 

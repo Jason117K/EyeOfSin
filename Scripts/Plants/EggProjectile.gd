@@ -3,7 +3,7 @@ extends Area2D
 
 
 @export var speed = 300  # Speed of the projectile
-@export var damage = 20 #2   # Damage dealt to zombies
+@export var damage = 20.0 #2   # Damage dealt to zombies
 var canMove := false 
 
 func _process(delta):
@@ -24,8 +24,10 @@ func _on_PeaProjectile_area_entered(area):
 		#queue_free()  # Remove the projectile # Replace with function body.
 		
 		#Reduce Damage Every Time 
-		damage = damage - 1
+		damage = damage - 0.5
 
+func set_damage(new_damage):
+	damage = new_damage
 
 func _on_timer_timeout() -> void:
 	canMove = true 

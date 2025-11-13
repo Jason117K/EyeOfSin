@@ -12,27 +12,29 @@ var waspAnim = preload("res://Assets/Plants/Spriteframes/Wasp.tres")
 var screenDoorZombieAnim = preload("res://Assets/Zombies/Animations/Spriteframes/ScreenDoorZombie.tres")
 
 var hive_egg_buff_scene = preload("res://Scenes/Tutorials/hive_egg_buff.tscn")
-
 var hivePlaced := false
 
 # Sets Up the Tiles For Level 4 
 func _ready():
-	$GameLayer/GridManager.set_tiles_for_rows(0,1, 68)
-	$GameLayer/GridManager.set_tiles_for_rows(1,2, 66)
-	
-	$GameLayer/GridManager.set_tiles_for_rows(2,3, 63)
-	$GameLayer/GridManager.set_tiles_for_rows(3,4, 63)
-	$GameLayer/GridManager.set_tiles_for_rows(4,5, 63)
-	$GameLayer/GridManager.set_tiles_for_rows(5,6, 63)
-	$GameLayer/GridManager.set_tiles_for_rows(6,7, 63)
-	
-	$GameLayer/GridManager.set_tiles_for_rows(7,8, 66)
-	$GameLayer/GridManager.set_tiles_for_rows(8,9, 69)
+	Global.resetSunflowerCount()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	#$GameLayer/GridManager.set_tiles_for_rows(0,1, 68)
+##	$GameLayer/GridManager.set_tiles_for_rows(1,2, 66)
+	#
+	#$GameLayer/GridManager.set_tiles_for_rows(2,3, 63)
+	#$GameLayer/GridManager.set_tiles_for_rows(3,4, 63)
+	#$GameLayer/GridManager.set_tiles_for_rows(4,5, 63)
+	#$GameLayer/GridManager.set_tiles_for_rows(5,6, 63)
+	#$GameLayer/GridManager.set_tiles_for_rows(6,7, 63)
+	#
+	##$GameLayer/GridManager.set_tiles_for_rows(7,8, 66)
+	#$GameLayer/GridManager.set_tiles_for_rows(8,9, 69)
 	
 	#Sets the first tutorial popup
 	toolTips.set_text(waspText)
 	toolTips.setAnim(waspAnim)
 	toolTips.noButtonShow()
+	make_camera_current()
 
 
 func _on_plant_manager_wasp_placed() -> void:
@@ -40,7 +42,7 @@ func _on_plant_manager_wasp_placed() -> void:
 	if !hivePlaced:
 		toolTips.setComplexSceneText(waspEggBuffText)
 		toolTips.setComplexScene(hive_egg_buff_scene)
-		hivePlaced = true
+		hivePlaced = true 
 	#toolTips.hide()
 	#waveManager.canStartGame = true
 
@@ -57,3 +59,6 @@ func _on_tool_tips_tool_tip_hid() -> void:
 
 func _on_wave_manager_wave_2_almost_start() -> void:
 	waveManager.startSecondWave()
+
+func make_camera_current():
+	$Camera2D.make_current()

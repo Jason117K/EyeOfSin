@@ -4,19 +4,23 @@ extends PanelContainer
 @onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
 @onready var anim_texture = $VBoxContainer/CenterContainer/TextureRect
 @onready var button = $VBoxContainer/Button
+@onready var complexButton = $SynergyVBox/Button2
 @onready var mainVbox = $VBoxContainer
 @onready var synergyVBox = $SynergyVBox
 @onready var synergyLabel = $SynergyVBox/CenterContainer/VBoxContainer/SynergyLabel
 @onready var complexSceneContainer = $SynergyVBox/CenterContainer/VBoxContainer
 @onready var greyBG = $VBoxContainer/CenterContainer/TextureRect2
+@onready var border = $VBoxContainer/CenterContainer/TextureRect3
 signal ToolTipHid
 
 #TODO Combine both set text functions
 
 func _ready() -> void:
+	#TODO Change Back
 	#print("Anim Texture is , ",anim_texture.name )
 	anim_texture.visible = false
 	greyBG.visible = false
+	border.visible = false 
 	pass
 
 #Sets the current toolTip Text
@@ -75,7 +79,7 @@ func setComplexScene(newScene):
 	show()
 	mainVbox.visible = false
 	synergyVBox.visible = true 
-	
+	complexButton.visible = true
 	#Clean Up Any Previous Complex Scenes 
 	for node in complexSceneContainer.get_children():
 		print("NNNOde is ", node.name)
@@ -91,6 +95,8 @@ func setComplexScene(newScene):
 	for node in complexSceneContainer.get_children():
 		print("Node is ", node.name)
 
+func hideComplexSceneButton():
+	complexButton.visible = false
 
 	
 #Hides the tooltip and unpauses the game when the player clicks the button

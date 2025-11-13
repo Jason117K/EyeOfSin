@@ -7,7 +7,7 @@ extends Node2D
 @onready var zombie = get_parent()
 var bomb_scene = preload("res://Scenes/PlantScenes/Bomb.tscn")
 
-@export var health = 76 #25 # Health of the zombie
+@export var health := 76 #25 # Health of the zombie
 @export var healthRegen = 0.0 # Health regen rate
 @export var bloodWorth := 1.0
 
@@ -15,7 +15,7 @@ var injured = false
 var halfHealth = health/2
 
 var explode = false    #Determines whether or not the zombie will explode 
-
+@onready var maxHealth := health
 
 
 # Declare the death signal
@@ -32,9 +32,10 @@ func take_damage(damage):
 
 	health -= damage
 	
-	print("Taking damage ", damage, " health now ", health) 
+	print(zombie.name, " is taking : ", damage, " damage, jj health now ", health) 
 	
-	hitAudioPlayer.play()
+	#hitAudioPlayer.play()
+	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	#Handles killing the zombie if health hits 0
 	if health <= 0:
 		#Spawns Bomb on Zombie if it was set to explode 
@@ -45,19 +46,26 @@ func take_damage(damage):
 			get_parent().get_parent().add_child(bomb)  
 		emit_signal("enemy_died", self)
 		
-		var root = get_tree().current_scene
-		var plant_manager = root.get_node("PlantManager")
+		var gameLayer = get_parent().get_parent()
+		print("WWGameLayer is", gameLayer)
+		var currentLevel = gameLayer.get_parent()
+		print("WWCurrentLevel is", currentLevel)
+
+		var plant_manager = currentLevel.get_node("PlantManager")
 		if plant_manager:  # If the PlantManager or GameManager is set
 			#$CollectAudioPlayer.play()
+			print("ADDING WW Blood Worth : ", bloodWorth)
 			plant_manager.add_sun(bloodWorth)  # Add 25 sun points (or whatever amount)
-			plant_manager.play_sun_collect()
-		
+			#plant_manager.play_sun_collect()
+		else:
+			print("Plant Manager is NULLWWWW")
 		zombie.die()
 
 
 #Applies small passive health regen and determines injured status 
 func _process(_delta):
-	health = health + healthRegen
+	if health < maxHealth:
+		health = health + healthRegen
 	if health < halfHealth:
 		injured = true
 	else:

@@ -8,6 +8,7 @@ var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being 
 
 var preview_sprites: Array = [] # Holds array of preview sprites 
 var is_previewing: bool = false # Whether or not we are currently previewing 
+var canRemove := false 
 
 signal clicked_Eye
 
@@ -27,8 +28,17 @@ var deselectText = " PRESS [X] TO DESELECT"
 
 @onready var preview_container = Node2D.new()
 
+var SunFlowerButton
+var WalnutButton
+var EyeButton
+var EggButton
+var MawButton
+var HiveButton
+var PeaShooterButton
+
 
 var sunFlowerCostLabel
+var sunflowerCost := 50
 var peaShooterCostLabel
 var walnutCostLabel
 var eyeCostLabel 
@@ -43,6 +53,8 @@ var hiveCostLabel
 @export var highlight_border_color: Color = Color.WHITE
 
 func _ready():
+	Global.plant_selection_menu = self
+	Global.resetSunflowerCount()
 
 	#add_button_highlight
 	set_process_input(true)
@@ -55,46 +67,48 @@ func _ready():
 	
 	var temp_instance
 	
-	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
-	sunFlowerCostLabel = $VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
+	SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+	sunFlowerCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
 	temp_instance = sunflower_scene.instantiate()
+	print("Temp Instance.get_cost() is : ", str(temp_instance.get_cost()))
 	sunFlowerCostLabel.text = str(temp_instance.get_cost())
+	
 	temp_instance.queue_free()
 	
-	add_button_highlight(SunFlowerButton)
+	#add_button_highlight(SunFlowerButton)
 	
-	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
-	peaShooterCostLabel = $VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
+	PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	peaShooterCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
 	temp_instance = peashooter_scene.instantiate()
 	peaShooterCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
-	var WalnutButton = $VBoxContainer/HBoxContainer/Walnut/WalnutButton
-	walnutCostLabel = $VBoxContainer/HBoxContainer/Walnut/WalnutLabel
+	WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
+	walnutCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
 	temp_instance = walnut_scene.instantiate()
 	walnutCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
-	var EyeButton = $VBoxContainer/HBoxContainer/Eye/EyeButton
-	eyeCostLabel = $VBoxContainer/HBoxContainer/Eye/EyeLabel
+	EyeButton = $PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton
+	eyeCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel
 	temp_instance = bomb_scene.instantiate()
 	eyeCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()		
 	
-	var EggButton = $VBoxContainer/HBoxContainer/Egg/EggButton
-	eggCostLabel = $VBoxContainer/HBoxContainer/Egg/EggLabel
+	EggButton = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton
+	eggCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
 	temp_instance = egg_scene.instantiate()
 	eggCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
-	var MawButton = $VBoxContainer/HBoxContainer/Maw/MawButton
-	mawCostLabel = $VBoxContainer/HBoxContainer/Maw/MawLabel
+	MawButton = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton
+	mawCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
 	temp_instance = maw_scene.instantiate()
 	mawCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 			
-	var HiveButton = $VBoxContainer/HBoxContainer/Hive/HiveButton
-	hiveCostLabel = $VBoxContainer/HBoxContainer/Hive/HiveLabel
+	HiveButton = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
+	hiveCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
 	temp_instance = hive_scene.instantiate()
 	hiveCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()		
@@ -111,16 +125,16 @@ func _ready():
 		SunFlowerButton.visible = false
 		sunFlowerCostLabel.visible = false 
 		
-		$VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
 		EggButton.visible = false
 
-		$VBoxContainer/HBoxContainer/Eye/EyeLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel.visible = false
 		EyeButton.visible = false
 
-		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
 		MawButton.visible = false
 
-		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
 		HiveButton.visible = false
 		
 		
@@ -130,28 +144,28 @@ func _ready():
 		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
 		MawButton.visible = false
 		mawCostLabel.visible = false
-		$VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
 		EggButton.visible = false
 
-		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
 		MawButton.visible = false
 
-		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
 		HiveButton.visible = false
 	elif root == "Level3":
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
 		
 
-		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
 		MawButton.visible = false
 
-		$VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
 		HiveButton.visible = false
 	elif root == "Level4":
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
-		$VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
+		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
 		MawButton.visible = false
 	else:
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
@@ -167,6 +181,8 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_X:
 			clear_preview()
+			release_all_focus()
+			selected_plant = null 
 			
 
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 
@@ -176,36 +192,44 @@ func _on_PeashooterButton_pressed():
 	create_preview(peashooter_scene)
 	
 	currentPlantLabel.text = "SPIDER SELECTED " + deselectText
-	currentPlantCost = $VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	print("Peashooter selected")
-	$UIClickAudio.play()
-	
-	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
-	remove_button_highlight(PeaShooterButton)
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+	var PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	#remove_button_highlight(PeaShooterButton)
 
+func increaseSunflowerCost():
+	sunFlowerCostLabel.text = str(50+(Global.getSunflowerCount()*5))
+	
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
 func _on_SunflowerButton_pressed():
-	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+	#Global.incrementSunflowerCountVisual()
+	var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	
 	selected_plant = sunflower_scene
 	var temp_instance = sunflower_scene.instantiate()
 	create_preview(sunflower_scene)
 	
 	currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
-	currentPlantCost = $VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
 	#currentPlantCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
+	sunflowerCost  += 5
+	
+	
+	#currentPlantCost.text = "Penis"
 	temp_instance.queue_free()
 	
 	print("3Label text is ", sunFlowerCostLabel.text)
 	print("Sunflower selected", temp_instance.get_name())
-	$UIClickAudio.play()
-	
+#	$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	clicked_Eye.emit()
-	
-	remove_button_highlight(SunFlowerButton)
+	#sunFlowerCostLabel.text = str(50 + (Global.getSunflowerCountVisual()*5))
+	#remove_button_highlight(SunFlowerButton)
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_WalnutButton_pressed():
@@ -214,12 +238,14 @@ func _on_WalnutButton_pressed():
 	create_preview(walnut_scene)
 	
 	currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
-	currentPlantCost = $VBoxContainer/HBoxContainer/Walnut/WalnutLabel
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
-		
+	var WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
+	#WalnutButton.release_focus()
 	print("Walnut selected")
-	$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+	#$UIClickAudio.play()
 
 # Plays Sound and Makes the Maw the current selected plant, changing label & preview image 
 func _on_MawButton_pressed():
@@ -228,12 +254,13 @@ func _on_MawButton_pressed():
 	create_preview(maw_scene)
 	
 	currentPlantLabel.text = "MAW SELECTED " + deselectText
-	currentPlantCost = $VBoxContainer/HBoxContainer/Maw/MawLabel
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 		
 	print("Maw Selected")
-	$UIClickAudio.play()
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
 # Plays Sound and Makes the EggWorm the current selected plant, changing label & preview image 
 func _on_EggButton_pressed():
@@ -242,12 +269,13 @@ func _on_EggButton_pressed():
 	var temp_instance = egg_scene.instantiate()
 		
 	currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
-	currentPlantCost = $VBoxContainer/HBoxContainer/Egg/EggLabel
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	print("EggWorm Selected")
-	$UIClickAudio.play()
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
 # Plays Sound and Makes the EyeBomb the current selected plant, changing label & preview image 
 func _on_EyeButton_pressed():
@@ -256,12 +284,13 @@ func _on_EyeButton_pressed():
 	var temp_instance = bomb_scene.instantiate()
 		
 	currentPlantLabel.text = "EYE MINE SELECTED " + deselectText
-	currentPlantCost = $VBoxContainer/HBoxContainer/Eye/EyeLabel
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	print("EyeBomb Selected")
-	$UIClickAudio.play()
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	
 # Plays Sound and Makes the Hive the current selected plant, changing label & preview image 
 func _on_HiveButton_pressed():
@@ -270,14 +299,15 @@ func _on_HiveButton_pressed():
 	var temp_instance = hive_scene.instantiate()
 		
 	currentPlantLabel.text = "HIVE SELECTED " + deselectText
-	currentPlantCost = $VBoxContainer/HBoxContainer/Hive/HiveLabel
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 		
 	print("Hive Selected")
-	$UIClickAudio.play()
-	
+	#$UIClickAudio.play()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 # Creates a transparent preview image for a given plant scene 
+
 func create_preview(plant_scene):
 	# Clear the last preview 
 	clear_preview()
@@ -291,7 +321,7 @@ func create_preview(plant_scene):
 			# Create the preview sprite and make it semi-transparent 
 			var preview_sprite = child.duplicate()
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
-			preview_sprite.scale = Vector2(2,2)
+			preview_sprite.scale = Vector2(1.25,1.25)
 			
 			# Store original position and print it
 			var original_pos = Vector2(child.position.x, child.position.y)
@@ -315,6 +345,18 @@ func clear_preview():
 	preview_sprites.clear()
 	currentPlantLabel.text = ""
 	is_previewing = false
+
+func release_all_focus():
+		
+	SunFlowerButton.release_focus()
+	WalnutButton.release_focus()
+	EyeButton.release_focus()
+	EggButton.release_focus()
+	MawButton.release_focus()
+	HiveButton.release_focus()
+	PeaShooterButton.release_focus()
+	
+
 
 # Gets all the previewNodes
 func find_preview_nodes(node):
@@ -411,13 +453,13 @@ func remove_button_highlight(button: Button) -> void:
 
 
 func _on_plant_manager_plant_placed() -> void:
-	var PeaShooterButton = $VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	var PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	PeaShooterButton.visible = true 
 	peaShooterCostLabel.visible = true 
-	add_button_highlight(PeaShooterButton)
+	#add_button_highlight(PeaShooterButton)
 
 func showEyeSummon():
-	var SunFlowerButton = $VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+	var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	SunFlowerButton.visible = true 
 	sunFlowerCostLabel.visible = true 
 
@@ -425,7 +467,7 @@ func showEyeSummon():
 func _on_wave_manager_wave_2_almost_start() -> void:
 	if root == "Main":
 		
-		var WalnutButton = $VBoxContainer/HBoxContainer/Walnut/WalnutButton
+		var WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
 		walnutCostLabel.visible = true 
 		WalnutButton.visible = true 
 		
@@ -434,3 +476,21 @@ func _on_wave_manager_wave_2_almost_start() -> void:
 		eggCostLabel.visible = true 
 		EggButton.visible = true 
 		
+
+
+func _on_remove_plant_button_pressed() -> void:
+		clear_preview()
+		
+		selected_plant = null 
+		canRemove = true 
+		
+func setCanRemoveFalse():
+	canRemove = false 
+	
+func getCanRemove():
+	return canRemove
+	
+
+
+func _on_open_codex_button_pressed() -> void:
+	pass # Replace with function body.

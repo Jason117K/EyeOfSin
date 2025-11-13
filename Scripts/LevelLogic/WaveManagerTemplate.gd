@@ -14,7 +14,7 @@ signal wave2Started
 signal wave3Started
 
 var current_wave = 1                # Current wave number
-var zombies_per_wave = 2           # Number of zombies in the current wave
+var zombies_per_wave = 2            # Number of zombies in the current wave
 var spawn_interval = 3.0            # Time interval between each zombie spawn
 var time_between_waves = 20.0       # Delay before starting a new wave
 var startWave2 : bool = false 
@@ -26,21 +26,20 @@ var zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  # Path
 var spawners = []  # Array to hold all ZombieSpawner nodes
 var timers = [] # Array to hold all the timers in the WavePreview nodes
 var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
-
+var health_points = 10 
 
 @export var StartDelay = 10
 #Amount of Time it Takes a wave to spawn after previous done
 @export var Wave2StartTime = 20
-@export var Wave3StartTime = 20
-
+@export var Wave3StartTime = 30
 
 #Time In Between Spawns In a Wave? #Look at More
-@export var Wave1_Interval = 4
-@export var Wave2_Interval = 4
-@export var Wave3_Interval =4
+@export var Wave1_Interval = 7.5
+@export var Wave2_Interval = 9
+@export var Wave3_Interval = 5.5
 @export var canStartGame : bool = false 
 
-var checkEndLevel = false
+@export var checkEndLevel = false
 
 var numWave = 0
 var health = 5
@@ -48,6 +47,7 @@ var health = 5
 var root
 var new_scene
 var retry_scene
+var plant_manager
 
 
 func _physics_process(_delta):
@@ -69,15 +69,19 @@ func _physics_process(_delta):
 			end_level()
 
 func end_level():
-	print("Attempting End Level")
+	#print("Attempting End Level")
+	#assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
 	for child in get_parent().get_parent().get_children():
 		if "LevelSwitcher" in child.name:
 			child.visible = true
 	get_tree().paused = true
-	#assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
 
 	
 func _ready():
+	plant_manager = get_parent().get_parent().get_node("PlantManager")
+	$Area2D.connect("area_entered",player_take_damage)
+	
+	
 	# Get the root node of the current scene
 	root = get_tree().current_scene
 
@@ -105,8 +109,8 @@ func _ready():
 	#TODO Game starts here just don't forget 
 	#$ProceedGame.start()
 	
-	if self.has_method("setScenes"):
-		self.setScenes()
+	#if self.has_method("setScenes"):
+		#self.setScenes()
 		
 			
 func setScenes():
@@ -214,11 +218,17 @@ func _done_spawning():
 	print("Done Spawing")
 	checkEndLevel = true
 
-#Code Taking Damage Here 
-func _on_Area2D_area_entered(area):
-	if "Zombie" in area.name:
-		#Go to Restart Scene 
-		assert(get_tree().change_scene_to_packed(retry_scene) == OK)
+#TODO Taking Damage
+func player_take_damage(area: Area2D) -> void:
+	#print("AAAAAAGGGGGGGG: ",area.name)
+	if area.is_in_group("Zombie"):
+		print("Subtracting Health")
+		area.die()
+
+		subtract_health()  # Subtract Heath
+		#TODO Play DMG Sound
+			#plant_manager.play_sun_collect()
+		#print("AAAAZZZOIHOHQWDIOHWDI()") 
 		
 func _on_spawn_next_wave():
 	print("Received spawn next wave signal!")
@@ -229,4 +239,17 @@ func _on_spawn_next_wave():
 			#timer.wait_time = $ProceedGame.wait_time - 10
 			timer.start()
 	
-	
+#Damage the Player 
+func subtract_health():
+	health_points -= 1 
+	get_parent().get_parent().get_node("UILayer/SunCounter/HBoxContainer/HealthPoints").text = "Health: " + str(health_points)
+	print("Health is ",health_points)
+	if health_points <= 0:
+		lose()
+
+func lose():
+	for child in get_parent().get_parent().get_children():
+		if "LevelSwitcher" in child.name:
+			child.lose()
+			child.visible = true
+	get_tree().paused = true

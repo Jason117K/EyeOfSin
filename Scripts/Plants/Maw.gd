@@ -2,23 +2,28 @@ extends Area2D
 #Maw.gd
 
 # Color export variables for tentacle 1
-@export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red
-var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red
+@export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red / 8d0000 is red, 8c005e is other color
+var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red  
 
 # Color export variables for tentacle 2
-@export var tentacle2_start_color := Color(0.7, 0.0, 1.0, 1.0)  # Bright purple
+@export var tentacle2_start_color := Color(0.7, 0.0, 1.0, 1.0)  # Bright purple  / 8d0000
 var tentacle2_end_color := Color(0.35, 0.0, 0.5, 1.0)   # Dark purple
 
 # Color export variables for tentacle 3
-@export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green
+@export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green  / 8d0000
 var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
 
 #Reference to tentacle scene 
 var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  
-
+@onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
 #Adjustable maw health & cost 
 @export var health = 100
+@onready var ogHealth = 100
 @export var cost = 200
+
+@export var alt_target_color : Color 
+@export var alt_replace_color : Color 
+
 
 var PlantManager              # Plantmanager RefCounted 
 var tentacles = []            # Array to track all tentacles
@@ -30,16 +35,39 @@ var currentTentacle
 var charges = 3.0             # Essentially Maw ammo 
 var willBelchWebs = false     # Whether or not we have a peashooter buff 
 var available_tentacles = []  # Track which tentacles are available
+var enemies_to_eat = []       # Enemies in Detection zone that couldn't be eaten yet
+var willBelchSun := false 
+var isEggWyrmBuffed := false 
+var isSpyderBuffed := false
+var isHiveBuffed := false 
+var isSunflowerBuffed:= false 	
+
+
+@export var bloodAmount = 10
 
 #Essentially a reload timer for the maw
 @onready var digestionTimer = $DigestionTimer
-
+@export var digestTime : float
+@export var buffedDigestTime : float
+@onready var ogDigestTime = digestTime
 # Detection radius for zombies
 @onready var detection_area = $DetectionComponent
-
+@onready var buffNodes = $BuffNodesComponent
 @onready var animSpriteComp = $AnimatedSprite2D
+@onready var ogDetectionRadius = detectionAreaShape.shape.radius
+
+var bloodScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
+var isBuffed := false 
+var bufferName : String 
 
 func _ready():
+	collision_mask = 2
+	#print("Maw Area2D: ", name)
+	#print("Maw Collision Layer: ", collision_layer)
+	#print("Maw Collision Mask: ", collision_mask)
+	#print("Maw Monitoring: ", monitoring)
+	#print("Maw Monitorable: ", monitorable)
+	
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	setup_tentacles()
 	animSpriteComp.animation = "spawn"
@@ -96,25 +124,39 @@ func setup_tentacles():
 
 #Constantly check for enemies in range and assign them for eating appropriately 
 func _process(_delta):
-	var overlapping_areas = detection_area.get_overlapping_areas()
-	for area in overlapping_areas:
-		if area.is_in_group("Zombie"):
-			#print("Assigning Tentacle")
-			assign_tentacle_to_target(area)
+	if enemies_to_eat.size()>0:
+		for enemy in enemies_to_eat:
+			if enemy != null:
+				assign_tentacle_to_target(enemy)
+		pass
+	#var overlapping_areas = detection_area.get_overlapping_areas()
+	#print("Maw Overlapping Areas Is ", overlapping_areas)
+	#for area in overlapping_areas:
+		#print("AArea Is ", area)
+		#if area.is_in_group("Zombie"):
+			#print("BBAssigning Tentacle to  ", area)
+		###	assign_tentacle_to_target(area)
 
 #Assign a target to a tentacle 
 func assign_tentacle_to_target(target):
+	if target in enemies_to_eat:
+		enemies_to_eat.erase(target)
 	#Early return if the target is already being eaten 
 	if target in attacking_tentacles.values():
+		print("QQ Target Already Being Eaten")
 		return
 	#If we have a free tentacle, assignment is possible 
+	#print("QQ Charges is : ", charges, " QQ available_tentacles.size() is : ", available_tentacles.size())
 	if available_tentacles.size() > 0 and charges > 0:
-		#Select a tentacle, give it an enemy, and decrement charges 
+		#Select a tentacle, give it an enemy, 
 		var tentacle = available_tentacles.pop_front()
 		attacking_tentacles[tentacle] = target
 		tentacle.enemy = target
 		tentacle.start_grab_sequence()
-		charges -= 1
+		#charges -= 1
+	else:
+		enemies_to_eat.append(target)
+		
 
 #Handle Tentacle Retraction 
 func _on_tentacle_retraction_complete(tentacle):
@@ -124,9 +166,10 @@ func _on_tentacle_retraction_complete(tentacle):
 		var enemy = attacking_tentacles[tentacle]
 		
 		if is_instance_valid(enemy):
-			#print(enemy.name)
+			print(self.name, "QQ MAW JUST ATE ",enemy.name)
 			var enemyCompManager = enemy.getCompManager()
 			var slow = enemyCompManager.getSlow()
+			AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_CHEW)
 			#If the swallowed enemy is slow and maw is buffed, belch a web bomb
 			if(slow > 0):
 				if willBelchWebs:
@@ -134,10 +177,31 @@ func _on_tentacle_retraction_complete(tentacle):
 					add_child(web_ball)
 					web_ball.target_position = Vector2(100, 0)
 					web_ball.travel_time = 1.5
-					
-			enemy.queue_free()
+
+			var compManager = enemy.getCompManager()	
+			compManager.take_damage(9999)	
+			#digestionTimer.start()
+			var digestion_timer
+			digestion_timer = Timer.new()
+			digestion_timer.wait_time = digestTime
+			digestion_timer.autostart = true
+			digestion_timer.one_shot = true
+			add_child(digestion_timer)
+	
+			# Connect timer to function - Godot 4.4 syntax
+			digestion_timer.timeout.connect(_on_DigestionTimer_timeout)
+	
+			charges -= 1
+			tentacle.visible = false  # Hide tentacle after retraction
+			#enemy.queue_free()
+		else:
+			print(self.name , "MAW JUST ATE NOTHINGGG QQ")
+			available_tentacles.append(tentacle)
+			#tentacle.visible = false 
 		attacking_tentacles.erase(tentacle)
-		tentacle.visible = false  # Hide tentacle after retraction
+		
+		
+
 
 #Handles the Maw taking damage 
 func take_damage(damage):
@@ -145,8 +209,7 @@ func take_damage(damage):
 	if health <= 0:
 		for tentacle in tentacles:
 			tentacle.queue_free()
-		PlantManager.clear_space(self.global_position)
-		queue_free()
+		die()
 
 #When the time is up, free up a tentacle by adding a charge
 func _on_DigestionTimer_timeout():
@@ -160,24 +223,58 @@ func _on_DigestionTimer_timeout():
 			available_tentacles.append(tentacle)
 			tentacle.visible = true
 			break
+	if willBelchSun:
+		generate_sun()
 
 #Handles Receiving Buffs From EggWorm, Peashooter, and Hive, setting color accordingly 
 func receiveBuff(plant):
 	#print(bufferName)
-	var bufferName = plant.name
-	if(bufferName == "EggWorm"):
-		tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
-		tentacle2.set_colors(Color.BLUE, Color.BLUE)
-		digestionTimer.wait_time = 6
-	elif(bufferName == "Peashooter"):
-		tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
-		tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
-		willBelchWebs = true
-	elif(bufferName == "Hive"):
-		tentacle1.set_colors(Color.WHITE, Color.WHITE)
-		tentacle2.set_colors(Color.BLACK, Color.BLACK)
-		health = 200
-		
+		bufferName = plant.name
+		if("EggWorm" in bufferName) && !isEggWyrmBuffed:
+			#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+			#tentacle2.set_colors(Color.BLUE, Color.BLUE)
+			#TODO Re Implement Color Changes
+			#$AnimatedSprite2D.change_color()
+			digestionTimer.wait_time = buffedDigestTime
+			isEggWyrmBuffed = true 
+		elif("Peashooter" in bufferName) && !isSpyderBuffed:
+			#tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+			#tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
+			willBelchWebs = true
+			isSpyderBuffed = true 
+		elif("Hive" in bufferName) && !isHiveBuffed:
+			#tentacle1.set_colors(Color.WHITE, Color.WHITE)
+			#tentacle2.set_colors(Color.BLACK, Color.BLACK)
+			print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
+			detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
+			health = 200
+			print("Buffer Was HHIve")
+			#TODO Re Implement Color Changes
+			#$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
+			isHiveBuffed = true 
+		elif("Sunflower" in bufferName) && !isSunflowerBuffed:
+			willBelchSun = true 
+			isSunflowerBuffed = true 
+	
+func debuff():
+	if("EggWorm" in bufferName):
+		#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+		#tentacle2.set_colors(Color.BLUE, Color.BLUE)
+		digestionTimer.wait_time = ogDigestTime
+	elif("Peashooter" in bufferName):
+	#	tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+	#	tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
+		willBelchWebs = false
+	elif("Hive" in bufferName):
+	#	tentacle1.set_colors(Color.WHITE, Color.WHITE)
+	#	tentacle2.set_colors(Color.BLACK, Color.BLACK)
+		print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
+		detectionAreaShape.shape.radius = ogDetectionRadius
+		health = ogHealth
+		print("Buffer Was HHIve")
+	elif("Sunflower" in bufferName):
+		willBelchSun = false 
+	isBuffed = false 		
 
 # Stops Spawn Animation From Playing
 func _on_AnimatedSprite_animation_finished():
@@ -185,5 +282,31 @@ func _on_AnimatedSprite_animation_finished():
 		animSpriteComp.animation = "default"
 		animSpriteComp.play()
 		
+# Function to handle sun generation
+func generate_sun():
+	var sun_instance = bloodScene.instantiate()  # Create a new instance of the sun
+	add_child(sun_instance)  # Add the sun to the scene
+	sun_instance.setWorth(bloodAmount)
+	#Set the sun pos to above the sunflower
+	sun_instance.global_position = self.global_position + Vector2(0,-40)	
 		
+
+
+func _on_detection_component_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Zombie"):
+	#	print("Maw Assigning Tentacle to  ", area)
+		assign_tentacle_to_target(area)
 		
+func die():
+	print(" QQ MAW IS DYING 1111111111111111")
+	#PlantManager.clear_space(self.global_position)
+	PlantManager.clear_space(Vector2(self.global_position.x-16,self.global_position.y))
+	PlantManager.clear_space(Vector2(self.global_position.x+16,self.global_position.y))
+	buffNodes.clearBuffs()
+	queue_free()	
+
+
+func die_fromClearSpace():
+	print("QQ MAW IS DYING 222222222222222")
+	buffNodes.clearBuffs()
+	queue_free()		

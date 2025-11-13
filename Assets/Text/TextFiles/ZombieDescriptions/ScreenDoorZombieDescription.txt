@@ -1,0 +1,6 @@
+PHALANX's are severed that use the undead corpses of their kin as a shields that double as battering rams. Masters of hell energy, these foes are not to be underestimated. 
+- Moderate speed 
+- Low Numbers 
+- High Health 
+- High Damage 
+- Weak to piercing damage

@@ -62,11 +62,11 @@ func getHealthComponent():
 
 # Handles the zombie taking damage 
 func take_damage(damage):
-	#print("Just took, ", damage)
+	#print(zombie.name, " jjust took, ", damage)
 	healthComp.take_damage(damage)
 	
 	# Adds a visual effect for damage 
-	#TODO Review Damage Visusal Effects 
+	#TODO Review Damage Hit Flash Visusal Effects 
 	if(thisMaterial):
 		#print("COKOR COCJHW")
 		thisMaterial.set_shader_parameter("target_color", Color.BLACK)
@@ -79,6 +79,7 @@ func take_damage(damage):
 		$ResetThisColor.start()
 	
 
+#Set the enemy colors on spawn 
 #Set the enemy colors on spawn 
 func _on_JustNowSpawned_timeout():
 #Create a unique material instance for this zombie
@@ -104,7 +105,10 @@ func setMaterial(newAnimatedSprite):
 		thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
 		thisMaterial2.set_shader_parameter("replace_color", Color.BLACK)
 		thisMaterial2.set_shader_parameter("tolerance", 0.1)
-		
+
+func make_glow():
+	pass
+	#thisMaterial.set_shader_parameter("glow_color", Color(0, 0, 0, 1) )		
 
 # Changes sprite color back to default 
 func _on_ResetThisColor_timeout():
@@ -115,6 +119,7 @@ func _on_ResetThisColor_timeout():
 		thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
 		thisMaterial2.set_shader_parameter("replace_color", Color.BLACK)
 		thisMaterial2.set_shader_parameter("tolerance", 0.1)
+		
 	
 
 # Slowly gets rid of slow debuff

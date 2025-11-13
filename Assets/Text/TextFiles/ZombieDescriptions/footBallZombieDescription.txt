@@ -1,0 +1,6 @@
+CHIMERA are the result of the infernal tinkering of Blood Priests. Not content with solely warping human flesh, they fused the bodies of man and demon in an unholy union, creaturing a monster of relentless strength, speed, and ferocity. 
+- Moderate Speed
+- Moderate Numbers 
+- High Health 
+- High Damage 
+- Enrages Nearby Zombies 

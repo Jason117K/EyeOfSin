@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var spriteComp = $AnimSpriteComponent
 @onready var hitBoxComp = $HitBoxComponent
+@onready var buffNodes = $BuffNodesComponent
 #onready var animSpriteComp = $AnimatedSprite
 
 @export var cost = 25 
@@ -36,6 +37,8 @@ func _on_DetectionComponent_area_entered(area):
 		#Start the explosion and only do it the first time the area is entered 
 		if(startNum == 0):
 			print("Boom Time")
+			#TODO Give Unique Boom
+			AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.TICKER_BOOM)
 			spriteComp.animation = "boom"
 			spriteComp.scale = Vector2(1.1,1.1)
 			enemiesToHitTemp = hitBoxComp.get_overlapping_areas()
@@ -81,6 +84,19 @@ func _on_SpriteComponent_animation_finished():
 func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
+
+
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()	
+
+func die_fromClearSpace():
+	
+	queue_free()		
+	
+	
+	
 # Delete the eyebomb on explosion completion 
 #func _on_SpriteComponent_frame_changed():
 #	if spriteComp.animation == "Boom":

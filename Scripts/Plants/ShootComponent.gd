@@ -2,13 +2,18 @@ extends Node2D
 # ShootComponent.gd
 
 # Handles Shooting the EggWorm Laser 
-
+#Red Color : b00000
+#Magenta : b00075
 # Configuration parameters
 @export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
 @export var extension_speed: float = 1000.0  # Pixels per second
+@onready var ogExtension_Speed := extension_speed
+
 @export var max_length: float = 1000.0
+@onready var ogMax_Length := max_length
+
 @export var laser_width: float = 4.0  # Increased for visibility
-@export var damage: float = 0
+@export var damage: float = 20
 @export var duration: float = 0.5
 @export var auto_fire: bool = false
 @export var cooldown: float = 1.0
@@ -34,6 +39,7 @@ var isBuffed := false
 var canAttack := false
 
 func _ready() -> void:
+	self.visible = false
 	# Set up Line2D
 	add_child(line2D)
 	#line2D.visible = false
@@ -87,6 +93,7 @@ func _process(delta: float) -> void:
 				canAttack = false
 				#line2D.visible = false
 	if is_firing:
+		self.visible = true
 		if current_length < max_length:
 			current_length += extension_speed * delta
 			current_length = min(current_length, max_length)
@@ -120,13 +127,15 @@ func _process_collision(area: Area2D) -> void:
 		print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
 		var compManager = area.getCompManager()
-		compManager.take_damage(damage)
+		
 		
 func shoot_projectile():
 	print("Shoot Projectile ZZ")
 	var projectile = projectile_scene.instantiate()
+	projectile.set_damage(damage)
 	projectile.position = position + Vector2(32, 8)  # Adjust starting position
-	get_parent().add_child(projectile)  # Add the projectile to the game layer		
+	get_parent().add_child(projectile)  # Add the projectile to the game layer
+	
 	
 	
 # Fire a new laser 
@@ -138,6 +147,7 @@ func fire() -> void:
 			if collider.is_in_group("Zombie"):
 				if !is_firing:
 					shoot_projectile()
+					AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 					is_firing = true
 					current_length = 0.0
 					hit_enemies.clear()  # Clear the hit enemies when firing a new laser
@@ -182,7 +192,7 @@ func _update_collision_shape() -> void:
 	rect_shape.extents = Vector2(current_length / 2, laser_width ) #/2
 	collision_shape.position = Vector2(current_length / 2, 0) 
 
-# Checks for zombies to damage and damages them 
+
 
 
 # Stop firing the laser on a cooldown 
@@ -209,8 +219,13 @@ func buff(bufferLocation):
 	isBuffed = true
 	bufferLocation = to_local(bufferLocation)
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
-	damage = damage * 2
+	damage = damage * 2.0
+
+func sunBuff():
 	cooldown = cooldown * 0.5
+
+func unSunBuff():
+	cooldown = cooldown/2
 
 # getter for buffed status
 func getIsBuffed():

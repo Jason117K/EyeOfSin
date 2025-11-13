@@ -4,12 +4,22 @@ extends Area2D
 #Adjustable sun value 
 @export var SunValue = 50
 
+
+func _ready() -> void:
+	input_pickable = true
+	#print("SSCollision Layer: ", collision_layer)
+	#print("SSCollision Mask: ", collision_mask)
+	#print("SSInput Pickable: ", input_pickable)
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
+	#process_mode = Node.PROCESS_MODE_ALWAYS
 	
 #Handle sun collection 
 func _on_Sun_mouse_entered():
-	$CollectAudioPlayer.play()
-	var root = get_tree().current_scene
-	var plant_manager = root.get_node("PlantManager")
+	print("SS Mouse Entered")
+	#$CollectAudioPlayer.play()
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
+
+	var plant_manager = get_parent().get_parent().get_node("PlantManager")
 	if plant_manager:  # If the PlantManager or GameManager is set
 		#$CollectAudioPlayer.play()
 		plant_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
@@ -18,5 +28,30 @@ func _on_Sun_mouse_entered():
 	queue_free()
 
 
+func _on_auto_pick_up_timer_timeout() -> void:
+	#$CollectAudioPlayer.play()
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
+	print("SSun Auto Pickup")
+	SunValue = SunValue / 2
+	#var root = get_tree().current_scene
+	#print("SS root is ", root )
+	var plant_manager = get_parent().get_parent().get_node("PlantManager")
+	print("PlantManager SS : ", plant_manager)
+	if plant_manager:  # If the PlantManager or GameManager is set
+		#$CollectAudioPlayer.play()
+		plant_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
+		plant_manager.play_sun_collect()
+	# Queue the sun for deletion (simulate absorption)
+	queue_free()
 
-
+func setWorth(bloodWorth):
+	SunValue = bloodWorth
+	
+	
+	
+	
+	
+	
+	
+	
+	

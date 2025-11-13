@@ -1,0 +1,162 @@
+[gd_scene load_steps=31 format=3 uid="uid://ct1o5wci40ksg"]
+
+[ext_resource type="Script" uid="uid://crdeeuk6gunp2" path="res://Scripts/Audio/audio_manager.gd" id="1_od13e"]
+[ext_resource type="Script" uid="uid://4eiirlwgrgs8" path="res://Scripts/Audio/soundEffectSettings.gd" id="2_ccgv0"]
+[ext_resource type="AudioStream" uid="uid://crl00hij2xb38" path="res://Assets/Audio/ZombieTakeDamageSFX.wav" id="3_icebg"]
+[ext_resource type="AudioStream" uid="uid://doc0fuawd7qc1" path="res://Assets/Audio/DemonSummon.wav" id="4_54sv8"]
+[ext_resource type="AudioStream" uid="uid://gvrpb72rldg5" path="res://Assets/Audio/Sweet UI Click.wav" id="5_jo6nm"]
+[ext_resource type="AudioStream" uid="uid://c4u62gvdalwbw" path="res://Assets/Audio/SpyderSpit.wav" id="6_vgkqf"]
+[ext_resource type="AudioStream" uid="uid://bobd4oatxfgbs" path="res://Assets/Audio/SunCollect.wav" id="7_pvcuu"]
+[ext_resource type="AudioStream" uid="uid://qoaacd48esx6" path="res://Assets/Audio/ZombieBiteRip.wav" id="8_vgkqf"]
+[ext_resource type="AudioStream" uid="uid://b2mkqewobqili" path="res://Assets/Audio/BucketHeadAttack.wav" id="9_pvcuu"]
+[ext_resource type="AudioStream" uid="uid://b5vk78wbiybxu" path="res://Assets/Audio/SummonerAttack.wav" id="10_pvcuu"]
+[ext_resource type="AudioStream" uid="uid://dn5d1iwi3ejqy" path="res://Assets/Audio/TickerExplosion.wav" id="11_7xj7y"]
+[ext_resource type="AudioStream" uid="uid://xjk750twu18q" path="res://Assets/Audio/ScreenDoorStab.wav" id="12_d0fwp"]
+[ext_resource type="AudioStream" uid="uid://cra4lhhrnc6wo" path="res://Assets/Audio/MawGrab.wav" id="13_rybe5"]
+[ext_resource type="AudioStream" uid="uid://c085maienahs3" path="res://Assets/Audio/HiveBuzz.wav" id="14_de70p"]
+[ext_resource type="AudioStream" uid="uid://c0hgslt1e5i81" path="res://Assets/Audio/MawChew.wav" id="15_de70p"]
+[ext_resource type="AudioStream" uid="uid://dyrsctrr5rj6s" path="res://Assets/Audio/WyrmFire.wav" id="16_rb65j"]
+
+[sub_resource type="Resource" id="Resource_djtss"]
+script = ExtResource("2_ccgv0")
+limit = 2
+type = 0
+sound_effect = ExtResource("3_icebg")
+volume = -8.285
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_wgcmg"]
+script = ExtResource("2_ccgv0")
+limit = 2
+type = 1
+sound_effect = ExtResource("4_54sv8")
+volume = -11.437
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_jo6nm"]
+script = ExtResource("2_ccgv0")
+limit = 5
+type = 2
+sound_effect = ExtResource("5_jo6nm")
+volume = -10.425
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_icebg"]
+script = ExtResource("2_ccgv0")
+limit = 3
+type = 3
+sound_effect = ExtResource("6_vgkqf")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_54sv8"]
+script = ExtResource("2_ccgv0")
+limit = 3
+type = 4
+sound_effect = ExtResource("7_pvcuu")
+volume = -10.465
+pitch_scale = 2.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_7xj7y"]
+script = ExtResource("2_ccgv0")
+limit = 2
+type = 5
+sound_effect = ExtResource("8_vgkqf")
+volume = -7.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_d0fwp"]
+script = ExtResource("2_ccgv0")
+limit = 3
+type = 6
+sound_effect = ExtResource("9_pvcuu")
+volume = -6.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_eunjc"]
+script = ExtResource("2_ccgv0")
+limit = 3
+type = 7
+sound_effect = ExtResource("10_pvcuu")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_rybe5"]
+script = ExtResource("2_ccgv0")
+limit = 3
+type = 8
+sound_effect = ExtResource("11_7xj7y")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_de70p"]
+script = ExtResource("2_ccgv0")
+limit = 3
+type = 9
+sound_effect = ExtResource("12_d0fwp")
+volume = -7.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_rb65j"]
+script = ExtResource("2_ccgv0")
+limit = 4
+type = 10
+sound_effect = ExtResource("13_rybe5")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_h1slu"]
+script = ExtResource("2_ccgv0")
+limit = 2
+type = 11
+sound_effect = ExtResource("14_de70p")
+volume = -37.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_atiok"]
+script = ExtResource("2_ccgv0")
+limit = 2
+type = 12
+sound_effect = ExtResource("15_de70p")
+volume = -8.786
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[sub_resource type="Resource" id="Resource_178v7"]
+script = ExtResource("2_ccgv0")
+limit = 2
+type = 13
+sound_effect = ExtResource("16_rb65j")
+volume = -6.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_od13e")
+sound_effects = Array[ExtResource("2_ccgv0")]([SubResource("Resource_djtss"), SubResource("Resource_wgcmg"), SubResource("Resource_jo6nm"), SubResource("Resource_icebg"), SubResource("Resource_54sv8"), SubResource("Resource_7xj7y"), SubResource("Resource_d0fwp"), SubResource("Resource_eunjc"), SubResource("Resource_rybe5"), SubResource("Resource_de70p"), SubResource("Resource_rb65j"), SubResource("Resource_h1slu"), SubResource("Resource_atiok"), SubResource("Resource_178v7")])

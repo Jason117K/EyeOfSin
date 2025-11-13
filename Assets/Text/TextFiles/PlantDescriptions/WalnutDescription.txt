@@ -1,0 +1,12 @@
+Occular Spines are Eyes that funnel the Hell energy they channel into defensive measures, stalling Zombies. 
+- Receives SYNERGY from 
+	-EggWyrms 
+	-Maws 
+
+
+- Good against 
+	- High Health
+	- High Speed
+	
+- Weak Against 
+	- High Numbers

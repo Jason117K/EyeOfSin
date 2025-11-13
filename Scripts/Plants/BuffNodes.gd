@@ -30,6 +30,7 @@ extends Node2D
 # Adjustable variable to store which plants this plant can buff
 @export var giveBuffTo = ["None","None","None","None","None","None","None","None"]
 
+var buffedPlants = []
 
 func _ready():
 	# Make sure all the bloodTiles are not visible
@@ -43,7 +44,19 @@ func _ready():
 	bloodTile8.visible = false
 	bloodTile9.visible = false
 
-
+func clearBuffs():
+	print("DDD Buffed Plants is ", buffedPlants)
+	for plant in buffedPlants:
+		print("Now DDD Buffing ", plant)
+		if plant != null:
+			plant.debuff()
+	pass
+	
+	
+	
+	
+	
+	
 func _process(_delta):
 	
 	#print("I Am ", get_parent().name)
@@ -71,6 +84,8 @@ func _process(_delta):
 			#If we have a valid blood tile 
 			if blood_tile:
 				
+				var bloodTileVisible = false 
+				
 				# Check for plants in the overlapped areas
 				for plantToBuff in overlapping_areas:
 					#print("Plant buff is : ", plantToBuff)
@@ -79,7 +94,7 @@ func _process(_delta):
 					# If the plantToBuff is a valid plant & not a drone
 					if(         plantToBuff.is_in_group("Plants") &&    !("Drone" in plantToBuff.name)    ):
 						#print("Plant to Buff is ", plantToBuff.name)
-						
+						bloodTileVisible = true 
 						#Check our list of valid plants to buff
 						for plantActor in giveBuffTo:
 
@@ -93,5 +108,10 @@ func _process(_delta):
 									plant.receiveBuff(plantToBuff)
 								#print("Plant to buff : ", plantToBuff.name , " will now receive buff from ", plant.name)
 								plantToBuff.receiveBuff(plant)
-								blood_tile.visible = true
+								if plantToBuff in buffedPlants:
+									pass
+								else:
+									buffedPlants.append(plantToBuff)
+								#blood_tile.visible = true
 								break
+				#blood_tile.visible = bloodTileVisible

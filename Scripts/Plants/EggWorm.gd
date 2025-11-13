@@ -21,7 +21,13 @@ extends Node2D
 @onready var attack_ray = $DMG_RayCast2D
 var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  # Load the projectile scene
 @onready var shootTimer = $ShootTimer
+@onready var buffNodes = $BuffNodesComponent
+@onready var shell_sprite = $Egg
 #onready var animSpriteComp = $AnimatedSprite
+
+var isSpyderBuffed := false
+var isSpineBuffed := false
+var isSunflowerBuffed := false 
 
 # Internal animation state
 var time = 0.0
@@ -33,8 +39,8 @@ var velocity = 0.0
 var prev_y = 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  
-
-
+var isBuffed := false 
+var bufferName : String 
 var PlantManager
 
 
@@ -57,25 +63,44 @@ func get_cost():
 	return cost
 
 
+
 #Handles Eggworm Buffing 
 func receiveBuff(plant):
-	#Increases Speed and Range From Peashooter Buff
-	if("Peashooter" in plant.name):
-		laserShootComp.extension_speed = 80000
-		laserShootComp.max_length = 40000
-	#Applies a different buff to the laser projectile 
-	elif("WalnutTree" in plant.name):
-		if (laserShootComp.isBuffed):
-			pass
-		else:
-			laserShootComp.buff(plant.position)
+		shell_sprite.make_buff_glow()
+		#Increases Speed and Range From Peashooter Buff
+		if("Peashooter" in plant.name) && !isSpyderBuffed:
+			laserShootComp.extension_speed = 80000
+			laserShootComp.max_length = 40000
+			isSpyderBuffed = true 
+		#Applies a different buff to the laser projectile 
+		elif("WalnutTree" in plant.name) && !isSpineBuffed:
+			if (laserShootComp.isBuffed):
+				pass
+			else:
+				laserShootComp.buff(plant.position)
+			isSpineBuffed = true 
+		elif("Sunflower" in plant.name) && !isSunflowerBuffed:
+			laserShootComp.sunBuff()
+			isSunflowerBuffed = true 
+			#print("Got buff from", plant.name)
+
+#Handles Eggworm Buffing 
+func debuff():
+	if("Peashooter" in bufferName):
+		laserShootComp.extension_speed = laserShootComp.ogExtension_Speed
+		laserShootComp.max_length = laserShootComp.ogMax_Length
+		#Applies a different buff to the laser projectile 
+	elif("Sunflower" in bufferName):
+		laserShootComp.unSunBuff()
+			
+	isBuffed = false 
 		
+				
 # Handles Receiving Damage for the EggWorm 
 func take_damage(damage):
 	health = health - damage
 	if health <= 0:
-		PlantManager.clear_space(self.global_position)
-		queue_free()
+		die()
 
 # Constantly animates the two worms of the EggWorm 
 func _process(delta):
@@ -117,6 +142,16 @@ func _process(delta):
 	sprite.position.x = initial_sprite_position.x
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
+	
+func die():
+	PlantManager.clear_space(self.global_position)
+	buffNodes.clearBuffs()
+	queue_free()	
+
+func die_fromClearSpace():
+	buffNodes.clearBuffs()
+	queue_free()		
+		
 	
 # Stops Spawn Animation From Playing
 #func _on_AnimatedSprite_animation_finished():

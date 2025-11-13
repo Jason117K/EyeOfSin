@@ -21,13 +21,13 @@ wait_time = 4.5
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(16, 40)
+position = Vector2(-16, 40)
 shape = SubResource("1")
 
 [connection signal="timeout" from="ProceedGame" to="." method="_on_ProceedGame_timeout"]
 [connection signal="timeout" from="Wave1" to="." method="_on_Wave1_timeout"]
 [connection signal="timeout" from="Wave2" to="." method="_on_Wave2_timeout"]
 [connection signal="timeout" from="Wave3" to="." method="_on_Wave3_timeout"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

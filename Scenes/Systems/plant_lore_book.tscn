@@ -1,0 +1,388 @@
+[gd_scene load_steps=18 format=3 uid="uid://blpt4dqra2o6j"]
+
+[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://Assets/Sprites/Sunflower.png" id="1_e0sdv"]
+[ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://Assets/Sprites/Spyder.png" id="2_v574q"]
+[ext_resource type="Texture2D" uid="uid://oewg178qt0kr" path="res://Assets/Sprites/Walnut.png" id="3_fsv5x"]
+[ext_resource type="Texture2D" uid="uid://ctfd4ekoc62rj" path="res://Assets/Sprites/EyeBomb.png" id="4_01d0a"]
+[ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://Assets/Sprites/EggWyrm.png" id="5_8rfn8"]
+[ext_resource type="Texture2D" uid="uid://dr854umtud4nf" path="res://Assets/Sprites/Hive.png" id="6_px0s8"]
+[ext_resource type="Texture2D" uid="uid://p88orx55tm4w" path="res://Assets/Sprites/MawImage.png" id="7_dxyr4"]
+[ext_resource type="Script" uid="uid://bov2qdtt14vx5" path="res://Scripts/UI/PlantLoreBookController.gd" id="8_rka8i"]
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="9_v574q"]
+[ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://Assets/Animations/Hive.tres" id="10_fsv5x"]
+[ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://Scripts/ToolTips.gd" id="11_oco5c"]
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="12_xbp22"]
+[ext_resource type="Script" uid="uid://rhdxfmhgn4ur" path="res://Scripts/animated_texture_rect.gd" id="13_gt4id"]
+[ext_resource type="SpriteFrames" uid="uid://36ihcf5firig" path="res://Assets/Zombies/Animations/Spriteframes/eyeFrames.tres" id="14_2aiv6"]
+[ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://Scenes/Tutorials/maw_spider_buff.tscn" id="15_8he61"]
+[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="16_hpj2u"]
+
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+
+[node name="PlantLoreBook" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(493.35, 277.4)
+zoom = Vector2(0.75, 0.75)
+
+[node name="BG_Color" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 986.0
+offset_bottom = 561.0
+color = Color(0.490196, 0.0588235, 0.121569, 1)
+
+[node name="CurrentPlantLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(500, 1)
+layout_mode = 0
+offset_left = 505.0
+offset_top = 364.0
+offset_right = 1005.0
+offset_bottom = 468.0
+scale = Vector2(0.928952, 1.00215)
+theme_override_fonts/normal_font = ExtResource("9_v574q")
+theme_override_font_sizes/normal_font_size = 16
+text = "lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -208.0
+offset_right = 185.0
+offset_bottom = 336.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(325, 325)
+layout_mode = 2
+expand_mode = 5
+script = ExtResource("8_rka8i")
+sprites = ExtResource("10_fsv5x")
+playing = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="AllPlantRows" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sunflower" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture_normal = ExtResource("1_e0sdv")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Peashooter" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture_normal = ExtResource("2_v574q")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture_normal = ExtResource("3_fsv5x")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlantNames1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1"]
+layout_mode = 2
+theme_override_constants/margin_right = 31
+
+[node name="EyeLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 32
+text = "EYE"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1"]
+layout_mode = 2
+theme_override_constants/margin_right = 90
+
+[node name="SpyderLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 32
+text = "SPYDER"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1"]
+layout_mode = 2
+theme_override_constants/margin_right = 36
+
+[node name="WalnutLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 32
+text = "OCCULAR 
+ SPINE"
+
+[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="EyeBomb" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture_normal = ExtResource("4_01d0a")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture_normal = ExtResource("5_8rfn8")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hive" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture_normal = ExtResource("6_px0s8")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlantNames2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2"]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="EyeLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 32
+text = "EYE"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2"]
+layout_mode = 2
+theme_override_constants/margin_right = 105
+
+[node name="WyrmLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 32
+text = "WYRM"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2"]
+layout_mode = 2
+theme_override_constants/margin_right = 95
+
+[node name="HiveLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 32
+text = "HIVE"
+
+[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Maw" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row3"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+texture_normal = ExtResource("7_dxyr4")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/Row3"]
+layout_mode = 2
+theme_override_constants/margin_left = 445
+
+[node name="PlantNames3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames3"]
+layout_mode = 2
+theme_override_constants/margin_right = 212
+
+[node name="MawLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 32
+text = "MAW"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/AllPlantRows"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="BackButton" type="Button" parent="HBoxContainer/AllPlantRows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 48
+text = "BACK"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 500
+
+[node name="MoreInfoButton" type="Button" parent="HBoxContainer/AllPlantRows/HBoxContainer"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 48
+text = "MORE INFO"
+
+[node name="BackOutDetails" type="Button" parent="."]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 675.0
+offset_right = 975.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
+[node name="BGDarkEn" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+offset_left = -22.0
+offset_top = -11.0
+offset_right = 1334.0
+offset_bottom = 618.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.717647)
+
+[node name="ToolTips" type="PanelContainer" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 353.0
+offset_top = 110.0
+offset_right = 657.0
+offset_bottom = 414.0
+theme_override_styles/panel = SubResource("2")
+script = ExtResource("11_oco5c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ToolTips"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="ToolTips/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="ToolTips/VBoxContainer/CenterContainer"]
+self_modulate = Color(0.847059, 0, 0, 1)
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+texture = ExtResource("12_xbp22")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ToolTips/VBoxContainer/CenterContainer"]
+self_modulate = Color(0.33, 0.33, 0.33, 1)
+z_index = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("12_xbp22")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="ToolTips/VBoxContainer/CenterContainer"]
+z_index = 2
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 4
+script = ExtResource("13_gt4id")
+sprites = ExtResource("14_2aiv6")
+auto_play = true
+playing = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ToolTips/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("9_v574q")
+text = "Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ToolTips/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_v574q")
+text = "UNDERSTOOD"
+
+[node name="SynergyVBox" type="VBoxContainer" parent="ToolTips"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="ToolTips/SynergyVBox"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ToolTips/SynergyVBox/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MawSpiderBuff" parent="ToolTips/SynergyVBox/CenterContainer/VBoxContainer" instance=ExtResource("15_8he61")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="SynergyLabel" type="Label" parent="ToolTips/SynergyVBox/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_v574q")
+theme_override_font_sizes/font_size = 16
+text = "Spyders can give MAWS a buff that causes them to release an AOE explosion of slowing webs on death."
+autowrap_mode = 3
+
+[node name="Button2" type="Button" parent="ToolTips/SynergyVBox"]
+layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("16_hpj2u")
+text = "NEXT
+"
+
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Sunflower" to="VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Peashooter" to="VBoxContainer/TextureRect" method="_on_peashooter_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EyeBomb" to="VBoxContainer/TextureRect" method="_on_eye_bomb_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row3/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/HBoxContainer/BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton" to="VBoxContainer/TextureRect" method="_on_more_info_button_pressed"]
+[connection signal="pressed" from="BackOutDetails" to="VBoxContainer/TextureRect" method="_on_back_out_details_pressed"]
+[connection signal="pressed" from="ToolTips/VBoxContainer/Button" to="ToolTips" method="_on_Button_pressed"]
+[connection signal="pressed" from="ToolTips/SynergyVBox/Button2" to="VBoxContainer/TextureRect" method="_on_button_2_pressed"]

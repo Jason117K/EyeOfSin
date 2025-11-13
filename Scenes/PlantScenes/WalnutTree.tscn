@@ -1,14 +1,48 @@
-[gd_scene load_steps=55 format=3 uid="uid://bymckgsndcx1y"]
+[gd_scene load_steps=72 format=3 uid="uid://bymckgsndcx1y"]
 
 [ext_resource type="Texture2D" uid="uid://bplktshlxk4fi" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpineHurt2-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://dfkobn3p1i8at" path="res://Scripts/Plants/WalnutTree.gd" id="2"]
+[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://Scripts/Plants/Shaders/DemonGlow.gdshader" id="2_6a3v0"]
+[ext_resource type="Texture2D" uid="uid://c6ui5cj8lb6mf" path="res://Assets/Plants/Plant_Animations/OccularSpineIdle-Sheet.png" id="2_ksu1o"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://blmlmra0kwots" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpineHurt1-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpine-Sheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://djbyji3pwvlah" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpineHurt3-Sheet.png" id="7"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="8_ksu1o"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(34, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sygpr"]
+resource_local_to_scene = true
+shader = ExtResource("2_6a3v0")
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(33, 33, 33, 1)
+shader_parameter/glow_tolerance = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a3v0"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sygpr"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cifvu"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7agvn"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crbeh"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8j8r"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="80"]
 atlas = ExtResource("6")
@@ -170,6 +204,29 @@ region = Rect2(448, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6a3v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sygpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cifvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7agvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crbeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8j8r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("80")
 }, {
 "duration": 1.0,
@@ -188,7 +245,7 @@ animations = [{
 "texture": SubResource("85")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -311,6 +368,30 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l03of"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga5pi"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrgsx"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ysu1"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6nbb"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8qau"]
+atlas = ExtResource("2_ksu1o")
+region = Rect2(160, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="104"]
 atlas = ExtResource("6")
 region = Rect2(0, 0, 32, 32)
@@ -339,6 +420,29 @@ region = Rect2(160, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_l03of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga5pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrgsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ysu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6nbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8qau")
+}],
+"loop": true,
+"name": &"New Anim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("104")
 }, {
 "duration": 1.0,
@@ -357,22 +461,31 @@ animations = [{
 "texture": SubResource("109")
 }],
 "loop": true,
-"name": &"New Anim",
+"name": &"New Anim_1",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdljx"]
+size = Vector2(39, 29)
+
 [node name="WalnutTree" type="Area2D" groups=["Plants"]]
 script = ExtResource("2")
-health = 700
+health = 450
+buffedHealth = 700
+healthRegen = 0.07
+maxHealth = 450
+buffedMaxHealth = 700
 cost = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = SubResource("79")
-animation = &"spawn"
 autoplay = "spawn"
+script = ExtResource("8_ksu1o")
+targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false
@@ -380,6 +493,18 @@ visible = false
 [node name="AnimatedSpriteComponent2" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("12")
 animation = &"New Anim"
-frame = 5
+
+[node name="AOEDamageComponent" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AOEDamageComponent"]
+position = Vector2(9.5, -0.5)
+shape = SubResource("RectangleShape2D_hdljx")
+
+[node name="AOEDamageTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
 
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSpriteComponent_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
+[connection signal="timeout" from="AOEDamageTimer" to="." method="_on_aoe_damage_timer_timeout"]

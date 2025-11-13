@@ -107,7 +107,14 @@ func spawn_zombie():
 				var zombie_type = wave1_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.name = generate_unique_name(zombie_instance.name)
-				zombie_instance.position = self.position #Adjust position as needed
+				
+				zombie_instance.position = self.position + Vector2(25,0)#Adjust position as needed
+				if "Ticker" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-3)
+				if "Foot" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-4)
+				if "Screen" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-3)					
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				#$WaveDelay.start()
 				print("Spawn Wave 1")
@@ -125,7 +132,15 @@ func spawn_zombie():
 				wave2_zombies.shuffle()
 				var zombie_type = wave2_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
+				zombie_instance.name = generate_unique_name(zombie_instance.name)
+				
 				zombie_instance.position = self.position + Vector2(-30,0)  #Adjust position as needed
+				if "Ticker" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-3)
+				if "Foot" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-4)
+				if "Screen" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-3)					
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				print("Spawn wave 2")
 				random_adjustment2 = get_weighted_range_speed()
@@ -138,6 +153,14 @@ func spawn_zombie():
 				wave3_zombies.shuffle()
 				var zombie_type = wave3_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
+				zombie_instance.name = generate_unique_name(zombie_instance.name)
+				if "Ticker" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-3)
+				if "Foot" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-4)
+				if "Screen" in zombie_instance.name:
+					zombie_instance.position = self.position + Vector2(0,-3)					
+				
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				print("Spawn wave 3")
@@ -239,3 +262,6 @@ func get_weighted_range_speed() -> float:
 	else:
 		# Pick from small gap weight range 
 		return randf_range(small_gap_min, small_gap_max)
+
+func get_numWave():
+	return numWave

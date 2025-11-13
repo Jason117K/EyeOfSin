@@ -1,0 +1,14 @@
+Powerful pack hunters that prowl the canpoies of Hell's Blood Swamps, using their webs to catch all manner of prey.
+- Gives SYNERGY to 
+	- Maws 
+	- Hives 
+- Receives SYNERGY from 
+	- Maws
+
+- Good against 
+	- High Speed 
+	- High Numbers 
+	
+- Weak Against 
+	- High Health
+	
