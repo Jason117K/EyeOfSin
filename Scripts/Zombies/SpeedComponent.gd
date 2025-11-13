@@ -6,7 +6,7 @@ extends Node2D
 @onready var attackComp = $"../AttackComponent"
 
 #Adjustable movement speed
-@export var speed = 26 #40 #26 #30 # Movement speed, was 34
+@export var speed = 20 #40 #26 #30 # Movement speed, was 34  #37
 
 # Store the original speed and whether or not the zombie is attacking
 var originalSpeed 
@@ -14,6 +14,7 @@ var is_attacking
 
 # Set the original speed immidiately
 func _ready():
+	speed = randf_range(19,24)
 	if zombie.get_name() == "DancerZombie":
 		print("THE DANCER POS IS ", zombie.position)
 	originalSpeed = speed

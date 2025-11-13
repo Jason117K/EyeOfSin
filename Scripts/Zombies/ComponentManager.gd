@@ -22,6 +22,9 @@ var thisMaterial2
 @onready var speedComp =  $"../SpeedComponent"   # RefCounted to Speed Comp
 @onready var zombie = get_parent()
 
+func set_hue_shift(hue_shift_degrees):
+	animatedSprite.set_hue_shift(hue_shift_degrees)
+	
 #Tells the zombie it's locked in single combat with a drone
 func fightDrone():
 	speedComp.setSpeed(0)

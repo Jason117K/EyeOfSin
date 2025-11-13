@@ -2,6 +2,7 @@ extends Control
 #Main.gd 
 
 @onready var toolTips = $ToolTips
+@export var make_green := false 
 
 var startingTutorialText = "res://Assets/Text/TextFiles/FirstTutorial.txt"
 var sunFlowerText = "res://Assets/Text/TextFiles/SunflowerIntro.txt"
@@ -28,7 +29,7 @@ var walnutPlaced := false
 var count : int = 1
 
 @onready var waveManager = $GameLayer/WaveManager
-
+@onready var plantManager = $PlantManager
 #Sets up Tilemap 
 func _ready():
 	attach_script_to_coral_children("res://Scripts/Environment/sway.gd")
@@ -62,7 +63,7 @@ func _process(delta: float) -> void:
 func _on_tool_tips_tool_tip_hid() -> void:
 	if showNextTutuorial:
 		$GameLayer/WaveManager.canStartGame = true 
-		print("Let the games begin")
+		#print("Let the games begin")
 	showNextTutuorial = true 
 	
 
@@ -123,12 +124,14 @@ func make_camera_current():
 	$Camera2D.make_current()
 
 func attach_script_to_coral_children(script_path: String) -> void:
+
 	# Find the Coral node
 	var coral_node = get_node("Environment/Coral")
 	
 	if coral_node == null:
 		push_error("Coral node not found at Environment/Coral")
 		return
+	
 	
 	# Load the script to attach
 	var script_to_attach = load(script_path)
@@ -141,5 +144,11 @@ func attach_script_to_coral_children(script_path: String) -> void:
 	for child in coral_node.get_children():
 		child.set_script(script_to_attach)
 		if child.is_inside_tree() and child.has_method("_ready"):
+			if make_green:
+				child.make_green()
 			child._ready()
 		print("Script attached to: ", child.name)
+
+
+func place_empty_blocker_plant(grid_pos):
+	plantManager.place_empty_blocker_plant(grid_pos)

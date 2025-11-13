@@ -79,6 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_jqh7t")
+make_green = true
 
 [node name="Environment2" type="Node2D" parent="."]
 
@@ -328,6 +329,7 @@ z_index = 1
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_cy6jx")]
 visible = false
 position = Vector2(747, 77)
+make_green = true
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 2,
@@ -366,6 +368,7 @@ position = Vector2(-37, 0)
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_cy6jx")]
 visible = false
 position = Vector2(747, 109)
+make_green = true
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -404,6 +407,7 @@ position = Vector2(-36, 1)
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_cy6jx")]
 visible = false
 position = Vector2(747, 141)
+make_green = true
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 2,
@@ -442,6 +446,7 @@ position = Vector2(-38, 1)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_cy6jx")]
 visible = false
 position = Vector2(751, 173)
+make_green = true
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -481,6 +486,7 @@ position = Vector2(-41, -1)
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_cy6jx")]
 visible = false
 position = Vector2(754, 205)
+make_green = true
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 2,
@@ -518,6 +524,7 @@ position = Vector2(-41, -1)
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("5_0yt1w")]
 z_index = -2
+make_green = true
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_abnns")]
 z_index = 1

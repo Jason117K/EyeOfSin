@@ -179,10 +179,15 @@ func _ready():
 # Handle Deselection
 func _input(event):
 	if event is InputEventKey and event.pressed:
+		#print("Key Pressed")
 		if event.keycode == KEY_X:
 			clear_preview()
 			release_all_focus()
 			selected_plant = null 
+		if event.keycode == KEY_Y:
+			print("Y Key Pressed")
+			Global.game_controller.swap_scenes()
+		
 			
 
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 

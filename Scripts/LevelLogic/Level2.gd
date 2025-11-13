@@ -51,7 +51,7 @@ func _on_plant_manager_eye_bomb_placed() -> void:
 
 func _on_tool_tips_tool_tip_hid() -> void:
 	$GameLayer/WaveManager.canStartGame = true 
-	print("Let the games begin")
+	#print("Let the games begin")
 
 
 func _on_wave_manager_wave_1_started() -> void:

@@ -47,18 +47,19 @@ func take_damage(damage):
 		emit_signal("enemy_died", self)
 		
 		var gameLayer = get_parent().get_parent()
-		print("WWGameLayer is", gameLayer)
+		#print("WWGameLayer is", gameLayer)
 		var currentLevel = gameLayer.get_parent()
-		print("WWCurrentLevel is", currentLevel)
+		#print("WWCurrentLevel is", currentLevel)
 
 		var plant_manager = currentLevel.get_node("PlantManager")
 		if plant_manager:  # If the PlantManager or GameManager is set
 			#$CollectAudioPlayer.play()
-			print("ADDING WW Blood Worth : ", bloodWorth)
+			#print("ADDING WW Blood Worth : ", bloodWorth)
 			plant_manager.add_sun(bloodWorth)  # Add 25 sun points (or whatever amount)
 			#plant_manager.play_sun_collect()
 		else:
-			print("Plant Manager is NULLWWWW")
+			pass
+			#print("Plant Manager is NULLWWWW")
 		zombie.die()
 
 

@@ -49,16 +49,16 @@ func _ready() -> void:
 # Handle scene switching with _notification
 func _notification(what):
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
-		print("AnimatedTextureRect: Visibility changed, visible =", visible)
+		#print("AnimatedTextureRect: Visibility changed, visible =", visible)
 		if visible:
 			call_deferred("_restart_animation")
 	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
-		print("AnimatedTextureRect: Window focus gained")
+		#print("AnimatedTextureRect: Window focus gained")
 		call_deferred("_restart_animation")
 
 # Restart animation (called after scene changes)
 func _restart_animation():
-	print("AnimatedTextureRect: Restarting animation")
+	#print("AnimatedTextureRect: Restarting animation")
 	
 	
 	# Restart animation
@@ -71,8 +71,8 @@ func _process(delta: float) -> void:
 		
 	if sprites.has_animation(current_animation) == false:
 		playing = false
-		print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
-		print("Available animations:", sprites.get_animation_names())
+		#print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
+		#print("Available animations:", sprites.get_animation_names())
 		return
 		
 	get_animation_data(current_animation)

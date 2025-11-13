@@ -13,6 +13,8 @@ var poleVault_zombie_scene = preload("res://Scenes/ZombieScenes/PoleVaultZombie.
 var ticker_zombie_scene = preload("res://Scenes/ZombieScenes/TickerZombie.tscn") 
 var football_zombie_scene = preload("res://Scenes/ZombieScenes/FootballZombie.tscn")
 
+@export var make_green := false
+
 # Array to hold zombie types
 var wave1_zombies = []  
 var wave2_zombies = []  
@@ -92,7 +94,7 @@ func start_spawn_zombie():
 	random_adjustment = randf_range(-0.5, 0.5)
 	$WaveDelay.wait_time = waveDelay + random_adjustment
 	$WaveDelay.start()
-	print("Start SPawn Zombie Called")
+	#print("Start SPawn Zombie Called")
 	
 #Spawns a different amount of zombies depending on the wave 
 func spawn_zombie():
@@ -106,6 +108,7 @@ func spawn_zombie():
 
 				var zombie_type = wave1_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
+
 				zombie_instance.name = generate_unique_name(zombie_instance.name)
 				
 				zombie_instance.position = self.position + Vector2(25,0)#Adjust position as needed
@@ -116,6 +119,8 @@ func spawn_zombie():
 				if "Screen" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)					
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
+				if make_green :
+					zombie_instance.set_hue_shift(125)
 				#$WaveDelay.start()
 				print("Spawn Wave 1")
 				random_adjustment2 = get_weighted_range_speed()

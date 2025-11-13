@@ -13,6 +13,8 @@ var plant_to_move
 var plant_highlighted := false
 var highlight_plant_global_pos 
 var sunflower_scene := preload("res://Scenes/PlantScenes/Sunflower.tscn")
+var empty_demon_scene := preload("res://Scenes/PlantScenes/EmptyDemon.tscn")
+
 @onready var parentName = get_parent().get_name()
 
 signal plant_placed
@@ -38,6 +40,7 @@ func get_selected_plant():
 func _input(event):
 	# Dynamically get the selected plant	
 	selected_plant_scene = get_selected_plant()  
+	
 	if selected_plant_scene == null:
 		#print("Plant Scene is Null")
 		pass
@@ -45,9 +48,11 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		# If they left click, grab the positon and place a plant there 
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			
 			var mouse_pos = get_global_mouse_position()
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
+			
 			
 			if plant_highlighted:
 				move_plant(plant_to_move, grid_pos)
@@ -89,6 +94,7 @@ func _input(event):
 			if(parentName == "Main"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
 					print("Place Plant " , grid_pos)
+					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 			elif(parentName == "Level3"):
 				print("Grid map size is ", grid_map.size())
@@ -96,6 +102,7 @@ func _input(event):
 					var temp_instance = selected_plant_scene.instantiate()
 					if "Egg" in temp_instance.get_name():
 						print("Place Plant1 " , grid_pos)
+						Global.game_controller.place_empty_in_alt_scene(grid_pos)
 						place_plant(grid_pos)
 					temp_instance.queue_free()
 					
@@ -112,16 +119,19 @@ func _input(event):
 					if  abs(first_key.x - grid_pos.x) < 65 &&  (abs(first_key.y - grid_pos.y) < 32):
 						if grid_pos.x > first_key.x:
 							print("Try place plant")
+							Global.game_controller.place_empty_in_alt_scene(grid_pos)
 							place_plant(grid_pos)
 					else:
 						pass
 				else:
 					print("Place Plant2 " , grid_pos)
+					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 49):
 					print("Otro Place Plant " , grid_pos)
+					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 
 # Convert mouse position to a grid cell position
@@ -179,6 +189,61 @@ func move_plant(this_plant_to_move, passed_new_grid_pos):
 	clear_space(highlight_plant_global_pos)
 	pass
 	
+func place_empty_blocker_plant(grid_pos):
+	print("Should Place Block Plant")
+	selected_plant_scene = empty_demon_scene
+	print("About to Place Plant")
+	if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 48):
+		pass
+	else:
+		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
+		return 
+	
+	
+	if selected_plant_scene == null:
+		print("No plant selected!")
+		return
+	
+	var plant_instance = selected_plant_scene.instantiate()
+	#print("Will Make PPName From ",plant_instance.name)
+	plant_instance.name = generate_unique_name(plant_instance.name)
+	
+	
+	#Check if Spot is Occupied
+	if grid_pos in grid_map:
+		print(grid_pos , " QQ Cell already occupied!")
+		return
+	
+	#Maw is larger, check neighboring cell
+	if  "Maw" in plant_instance.name:
+		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
+			print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
+			return 
+	
+	if sun_points >= -99999: 
+		
+		print("Have enough sun, placing plant ")
+		#Maw Handling, occupies two cells
+		if "Maw" in plant_instance.name:
+			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
+			grid_map[grid_pos] = plant_instance
+			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
+			
+		else: #Only occupies one cell
+			plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
+			grid_map[grid_pos] = plant_instance
+	
+		#Add To The GameLayer 
+		get_parent().get_node("GameLayer").add_child(plant_instance)
+
+		
+		#Play the sound
+		AudioManager.create_2d_audio_at_location(plant_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
+
+	else:
+		print("Not enough sun points!")
+	
+	print("QQ Plant Was Placed At " , plant_instance.position)
 	
 	
 # Place the selected plant on the grid

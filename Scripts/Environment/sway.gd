@@ -9,6 +9,9 @@ func _ready() -> void:
 	set_instance_shader_parameter("RandomStrength", randf_range(-3.0,3.0))
 	pass
 
+func make_green():
+	self.self_modulate = Color("00ff08")
+
 func set_sprite_visual_shader(new_shader: VisualShader) -> void:
 	var newShaderMaterial = ShaderMaterial.new()
 	material = newShaderMaterial

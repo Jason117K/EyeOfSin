@@ -254,23 +254,31 @@ func optimize_drone_assignments():
 	
 	# Assign drones based on calculated distribution
 	for enemy in enemies_to_assign:
-		var num_drones = drones_per_enemy
-		if extra_drones > 0:
-			num_drones += 1
-			extra_drones -= 1
-			
-		drone_assignments[enemy] = []
-		#print("Drone Ass B4 Loop ", drone_assignments)
-		for _i in range(num_drones):
-			#print("Available drones1 is ", available_drones)
-			if available_drones.is_empty():
-				break
-			var drone = available_drones.pop_front()
-		#	print("Drone is ", drone)
-			drone_assignments[enemy].append(drone)
-		#	print("In Loop, Append ", drone)
-			command_drone_to_attack(drone, enemy)
-		print("Drone Ass After Loop ", drone_assignments)
+		print("Enemy is ", enemy)
+		if !(enemy.get_parent().get_parent() == get_parent().get_parent()):
+			#print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
+			print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+			break
+		else:
+		#	print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
+			print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+			var num_drones = drones_per_enemy
+			if extra_drones > 0:
+				num_drones += 1
+				extra_drones -= 1
+				
+			drone_assignments[enemy] = []
+			#print("Drone Ass B4 Loop ", drone_assignments)
+			for _i in range(num_drones):
+				#print("Available drones1 is ", available_drones)
+				if available_drones.is_empty():
+					break
+				var drone = available_drones.pop_front()
+			#	print("Drone is ", drone)
+				drone_assignments[enemy].append(drone)
+			#	print("In Loop, Append ", drone)
+				command_drone_to_attack(drone, enemy)
+			print("Drone Ass After Loop ", drone_assignments)
 
 #Tell a drone to attack a target
 func command_drone_to_attack(drone, enemy):

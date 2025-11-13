@@ -16,7 +16,10 @@ func _process(delta):
 
 # Handles projectile collison and damage application 
 func _on_PeaProjectile_area_entered(area):
+
 	if area.is_in_group("Zombie"):
+		if area.get_parent().get_parent() != self.get_parent().get_parent():
+			return
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
 		compManager.slow()

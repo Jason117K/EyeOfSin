@@ -36,8 +36,10 @@ func _process(_delta):
 			if collider:
 				#print("Collider Name is ", collider.name)
 				if collider.is_in_group("Zombie"):
+					if collider.get_parent().get_parent() != self.get_parent().get_parent():
+						return
 					canAttack = true
-					print("Can AttackZ Is True",canAttack)
+					#print("Can AttackZ Is True",canAttack)
 					
 				else:
 					canAttack = false
@@ -89,7 +91,7 @@ func _on_AnimatedSprite_animation_finished():
 		print("Should Be Red Spider AttackZ")
 		animatedSpriteComponent.animation = "redSpiderAttack"
 	else:
-		print("Can AttackZ is ", canAttack)
+		#print("Can AttackZ is ", canAttack)
 		animatedSpriteComponent.animation = "redSpiderDefault"
 	animatedSpriteComponent.play()
 

@@ -22,7 +22,7 @@ func _ready() -> void:
 func create_2d_audio_at_location(location: Vector2, type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 	if sound_effect_dict.has(type):
 		var sound_effect: SoundEffect = sound_effect_dict[type]
-		print("AA Sound Effectr is ", sound_effect)
+		#print("AA Sound Effectr is ", sound_effect)
 		if sound_effect.has_open_limit():
 			sound_effect.change_audio_count(1)
 			var new_2D_audio: AudioStreamPlayer2D = AudioStreamPlayer2D.new()

@@ -24,8 +24,8 @@ func getAttackState():
 func attack_plant(collider):
 	is_attacking = true
 	target_plant = collider
-	print("TName is ", target_plant.name)
-	print("I am " , self.name)
+	#print("TName is ", target_plant.name)
+	#print("I am " , self.name)
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
 	#TODO Make Attacking Sounds More Efficient
@@ -83,6 +83,8 @@ func _process(_delta):
 			#print(parent.name , " Its collding with ", collider.name )
 			if collider:
 				if collider.is_in_group("Plants"):
+					if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
+						return
 				#	print(collider.name , " is in group plants")
 					if("PoleVaultZombie" in parent.name):
 						print(parent.name, " - canSpecialPP: ", canSpecial)

@@ -25,7 +25,7 @@ func goBoom():
 
 # When the last animation is finished, damage all towers caught in the area
 func _on_Hit3_animation_finished():
-	print("Ticker DEF About Die")
+	#print("Ticker DEF About Die")
 	# Make the animation invisible & stop it 
 	self.visible = false 
 	hit1.stop()
@@ -50,7 +50,7 @@ func _on_Hit3_animation_finished():
 				pass
 	var parent = get_parent()
 	parent.die()
-	print("TTicker Should Die")
+	#print("TTicker Should Die")
 	
 
 	

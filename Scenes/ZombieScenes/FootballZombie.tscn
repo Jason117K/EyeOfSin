@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c2c4na1yww6up" path="res://Scripts/Zombies/FootballZombie.gd" id="1_x5n0p"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_o5kil"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="3_5ut6p"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4_nihc1"]
+[ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4_nihc1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5_ae3ds"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_katje"]
 [ext_resource type="Texture2D" uid="uid://ccxvcy1yd2jvg" path="res://Assets/Zombies/Animations/Football/FootballZombie-Sheet.png" id="7_oaedh"]

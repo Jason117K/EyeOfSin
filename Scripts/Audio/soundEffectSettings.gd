@@ -43,5 +43,5 @@ func has_open_limit() -> bool:
 
 ## Connected to the [member sound_effect]'s finished signal to decrement the [member audio_count].
 func on_audio_finished() -> void:
-	print("AADUIO  GYHBKLO<*IKM( )")
+	#print("AADUIO  GYHBKLO<*IKM( )")
 	change_audio_count(-1)

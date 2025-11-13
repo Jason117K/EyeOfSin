@@ -6,8 +6,12 @@ extends Node2D
 const GRID_COLUMNS = 24  # Adjust based on your game's design
 const GRID_ROWS = 13      # Adjust based on your game's design
 
+@export var make_green := false
+
 func _ready():
-	pass
+	if make_green:
+		tilemapLayer.make_green = true 
+		tilemapLayer._setup_shader()
 
 # Function to set tiles in a given range of rows
 func set_tiles_for_rows(row_start: int, row_end: int, tile_id: int):

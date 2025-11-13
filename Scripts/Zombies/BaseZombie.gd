@@ -27,6 +27,10 @@ func fightDroneExplode():
 func special_move():
 	compManager.special_move()
 
+#TODO Pick Up Here Left Off Here 
+func set_hue_shift(hue_shift_degrees):
+	compManager.set_hue_shift(hue_shift_degrees)
+	
 #Kills the Zombie 
 func die():
 	print("Should die")

@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_ldf7h"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://Assets/Zombies/GhoulWebbedSheet.png" id="9"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -304,7 +304,6 @@ animation = &"Walk"
 frame_progress = 0.580148
 flip_h = true
 script = ExtResource("6")
-hue_shift = 125.0
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 

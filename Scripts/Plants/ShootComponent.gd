@@ -87,6 +87,8 @@ func _process(delta: float) -> void:
 		if collider:
 			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
+				if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent().get_parent():
+					return
 				canAttack = true 
 				#line2D.visible = true
 			else:
@@ -133,8 +135,9 @@ func shoot_projectile():
 	print("Shoot Projectile ZZ")
 	var projectile = projectile_scene.instantiate()
 	projectile.set_damage(damage)
-	projectile.position = position + Vector2(32, 8)  # Adjust starting position
-	get_parent().add_child(projectile)  # Add the projectile to the game layer
+	projectile.global_position = self.global_position
+	#projectile.position = position + Vector2(32, 8)  # Adjust starting position
+	get_parent().get_parent().get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
 	
 	

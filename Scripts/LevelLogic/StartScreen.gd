@@ -44,7 +44,8 @@ func _ready():
 
 func _on_start_game_pressed() -> void:
 	print("I KNOW U WERE CLICKED")
-	Global.game_controller.change_scene("res://Scenes/LevelScenes/Main.tscn")
+	#Global.game_controller.change_scene("res://Scenes/LevelScenes/Main.tscn")
+	Global.game_controller.change_dual_scenes("res://Scenes/LevelScenes/Main.tscn","res://Scenes/LevelScenes/Level6.tscn")
 
 
 

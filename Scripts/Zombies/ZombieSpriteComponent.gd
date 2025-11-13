@@ -159,7 +159,8 @@ func _apply_hue_shift() -> void:
 # Public API methods
 func set_hue_shift(degrees: float) -> void:
 	hue_shift = clamp(degrees, -180.0, 180.0)
-
+	_apply_hue_shift()
+	
 func shift_hue(degrees: float) -> void:
 	hue_shift = fmod(hue_shift + degrees, 360.0)
 	if hue_shift > 180: hue_shift -= 360
@@ -173,3 +174,7 @@ func _on_animation_changed() -> void:
 		thisMaterial.set_shader_parameter("target_color", Color(targetColorString))
 		thisMaterial.set_shader_parameter("replace_color", Color.DEEP_PINK)
 		thisMaterial.set_shader_parameter("tolerance", 0.3)
+
+
+
+	

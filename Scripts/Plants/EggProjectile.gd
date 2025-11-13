@@ -2,7 +2,7 @@ extends Area2D
 #EggProjectile.gd
 
 
-@export var speed = 300  # Speed of the projectile
+@export var speed = 1  # Speed of the projectile
 @export var damage = 20.0 #2   # Damage dealt to zombies
 var canMove := false 
 
@@ -17,7 +17,12 @@ func _process(delta):
 
 # Handles projectile collison and damage application 
 func _on_PeaProjectile_area_entered(area):
+	print("Just Entered " , area )
 	if area.is_in_group("Zombie"):
+		if area.get_parent().get_parent() != self.get_parent().get_parent():
+			print("Early Return, Wrong Layer")
+			return
+		print("No Return, Right Layer")
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
@@ -25,6 +30,8 @@ func _on_PeaProjectile_area_entered(area):
 		
 		#Reduce Damage Every Time 
 		damage = damage - 0.5
+	else:
+		print("NOT A ZOMBIE")
 
 func set_damage(new_damage):
 	damage = new_damage
