@@ -31,6 +31,7 @@ var count : int = 1
 
 #Sets up Tilemap 
 func _ready():
+	attach_script_to_coral_children("res://Scripts/Environment/sway.gd")
 	Global.resetSunflowerCount()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	#$GameLayer/GridManager.set_tiles_for_rows(0,1, 28)
@@ -120,3 +121,25 @@ func _on_wave_manager_wave_3_started() -> void:
 
 func make_camera_current():
 	$Camera2D.make_current()
+
+func attach_script_to_coral_children(script_path: String) -> void:
+	# Find the Coral node
+	var coral_node = get_node("Environment/Coral")
+	
+	if coral_node == null:
+		push_error("Coral node not found at Environment/Coral")
+		return
+	
+	# Load the script to attach
+	var script_to_attach = load(script_path)
+	
+	if script_to_attach == null:
+		push_error("Failed to load script at: " + script_path)
+		return
+	
+	# Iterate through all children and attach the script
+	for child in coral_node.get_children():
+		child.set_script(script_to_attach)
+		if child.is_inside_tree() and child.has_method("_ready"):
+			child._ready()
+		print("Script attached to: ", child.name)

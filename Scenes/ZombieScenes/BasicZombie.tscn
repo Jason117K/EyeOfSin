@@ -304,6 +304,7 @@ animation = &"Walk"
 frame_progress = 0.580148
 flip_h = true
 script = ExtResource("6")
+hue_shift = 125.0
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 

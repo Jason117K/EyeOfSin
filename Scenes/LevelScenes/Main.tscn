@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=36 format=4 uid="uid://cbc05gyx2o4qf"]
 
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="8_dph8t"]
 [ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="9"]
 [ext_resource type="Script" uid="uid://cfv5r2hytpurl" path="res://Scripts/LevelLogic/Main.gd" id="10"]
+[ext_resource type="Shader" uid="uid://b1grbrx70s8m4" path="res://Scripts/Shaders/swayShader.tres" id="10_n1ol4"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="11"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="12_jgfqe"]
+[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_jv7rq"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="15_htelm"]
@@ -25,6 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="22_jv7rq"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="24_a0suq"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="25_fv2in"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
+shader = ExtResource("10_n1ol4")
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("24_a0suq")
@@ -305,8 +310,10 @@ position = Vector2(353, 14)
 texture = ExtResource("16_fv2in")
 
 [node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
+material = SubResource("ShaderMaterial_a0suq")
 position = Vector2(563, 378)
 texture = ExtResource("17_o4yey")
+script = ExtResource("12_jv7rq")
 
 [node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(662, 343)
