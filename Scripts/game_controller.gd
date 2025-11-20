@@ -56,7 +56,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 func swap_scenes():
 	if can_swap:
 		can_swap = false
-	
+	#check
 	
 			
 		print("Swap Scenes")
