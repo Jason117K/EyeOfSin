@@ -80,6 +80,7 @@ func reset_cooldown():
 	can_swap = true
 	
 func place_empty_in_alt_scene(grid_pos):
+	return
 	if current_scenes[1].visible == false :
 		current_scenes[1].place_empty_blocker_plant(grid_pos)
 	elif current_scenes[0].visible == false :
