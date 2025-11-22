@@ -439,13 +439,13 @@ position = Vector2(-38, 1)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_atfoh")]
 position = Vector2(751, 173)
 Round1_Zombies = {
-"Base": 3,
+"Base": 1,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
-"ScreenDoor": 1,
+"ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {

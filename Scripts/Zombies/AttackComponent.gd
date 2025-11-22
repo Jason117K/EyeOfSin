@@ -12,10 +12,11 @@ var canSpecial = true # Determines whether or not a special move can be performe
 @onready var attack_timer = $"../AttackTimer" # Adjustable timer to control attack speed
 @onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
 @onready var parent = get_parent() # Parent Zombie Attacking 
-
+@onready var zombie = 	get_parent()
 
 func _ready() -> void:
-	print("FFParent is ", parent.get_name())
+	pass
+	#print("FFParent is ", parent.get_name())
 # Attack State Getter 
 func getAttackState():
 	return is_attacking
@@ -59,13 +60,23 @@ func _on_AttackTimer_timeout():
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
 	if(is_instance_valid(target_plant)):
-		print(target_plant.name)
+		print("target plant name is ", target_plant.name)
 		if(target_plant.health >= 0):
+			if target_plant.has_method("mawBuffed"):
+				if target_plant.can_eat_zombie == true :
+					print("Demon Can Eat Me Time to Die")
+					target_plant.eat_zombie()
+					get_parent().die()
+			if target_plant.has_method("walnutWyrmBuffed"):
+				if target_plant.can_damage_zombie == true :
+					print("Demon Hive Can Damage Me While I Eat")
+					zombie.getCompManager().take_damage(10)
+					
 			target_plant.take_damage(attack_power)
 		else:
 			stop_attack()
 		if "Ticker" in parent.get_name():
-			queue_free()
+			get_parent().die()
 	else:
 		stop_attack()
 
@@ -80,11 +91,14 @@ func _process(_delta):
 	if not is_attacking:
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
-			#print(parent.name , " Its collding with ", collider.name )
+			print(parent.name , " Its collding with ", collider.name )
 			if collider:
 				if collider.is_in_group("Plants"):
+					print("Collider In Right Group")
 					if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
-						return
+						if collider.get_parent().get_parent().get_parent() != self.get_parent().get_parent().get_parent():
+							print("Collider Early Return")
+							return
 				#	print(collider.name , " is in group plants")
 					if("PoleVaultZombie" in parent.name):
 						print(parent.name, " - canSpecialPP: ", canSpecial)

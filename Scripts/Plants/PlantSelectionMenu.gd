@@ -20,6 +20,7 @@ var maw_scene = preload("res://Scenes/PlantScenes/Maw.tscn")
 var egg_scene = preload("res://Scenes/PlantScenes/EggWorm.tscn")
 var bomb_scene = preload("res://Scenes/PlantScenes/EyeBomb.tscn")
 var hive_scene = preload("res://Scenes/PlantScenes/Hive.tscn")
+#var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
 
 # Label for Current Plant 
 var currentPlantLabel

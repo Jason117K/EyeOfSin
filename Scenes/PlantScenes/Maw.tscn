@@ -1,16 +1,22 @@
-[gd_scene load_steps=149 format=3 uid="uid://d3n5cefu4fpso"]
+[gd_scene load_steps=179 format=3 uid="uid://d3n5cefu4fpso"]
 
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="2"]
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_fxtok"]
 [ext_resource type="Texture2D" uid="uid://347bq70xelxl" path="res://Assets/Zombies/BackUpDancerHead.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dlft4k3qhircs" path="res://Assets/Demons/SpriteSheets/Maw/Maw_Base-Sheet.png" id="3_38s27"]
 [ext_resource type="Script" uid="uid://32gl5oscgs3x" path="res://Scripts/Plants/Maw.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://m5be4wtpwb4u" path="res://Assets/Demons/SpriteSheets/Maw/Maw_Spider-Sheet.png" id="5_elvfo"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="5_fxtok"]
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dlooruj7v3bo2" path="res://Assets/Demons/SpriteSheets/Maw/Maw_Sun-Sheet.png" id="6_6aeqa"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c05bqxnmc2aor" path="res://Assets/Demons/SpriteSheets/Maw/Maw_Walnut-Sheet.png" id="7_0xvi3"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://dvmo00thwrc38" path="res://Assets/Demons/SpriteSheets/Maw/Maw_Hive-Sheet.png" id="8_5v7ar"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://Assets/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="9_drv5f"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="10"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
@@ -21,6 +27,18 @@ shader_parameter/glow_color = Color(0, 0, 0, 1)
 shader_parameter/modulate_factor = Color(9, 9, 9, 1)
 shader_parameter/tolerance = 0.0
 shader_parameter/glow_tolerance = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hr7d"]
+atlas = ExtResource("3_38s27")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxnqy"]
+atlas = ExtResource("3_38s27")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gg1v"]
+atlas = ExtResource("3_38s27")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")
@@ -45,6 +63,90 @@ region = Rect2(256, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="6"]
 atlas = ExtResource("2")
 region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isgow"]
+atlas = ExtResource("3_38s27")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnoe8"]
+atlas = ExtResource("3_38s27")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opv5f"]
+atlas = ExtResource("3_38s27")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5x47"]
+atlas = ExtResource("5_elvfo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi11l"]
+atlas = ExtResource("5_elvfo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h74m"]
+atlas = ExtResource("5_elvfo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g67sh"]
+atlas = ExtResource("5_elvfo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuj0c"]
+atlas = ExtResource("5_elvfo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17i1y"]
+atlas = ExtResource("5_elvfo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k65hl"]
+atlas = ExtResource("6_6aeqa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpocr"]
+atlas = ExtResource("6_6aeqa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k376"]
+atlas = ExtResource("6_6aeqa")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8repv"]
+atlas = ExtResource("7_0xvi3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1i5b"]
+atlas = ExtResource("7_0xvi3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnhl5"]
+atlas = ExtResource("7_0xvi3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5dig"]
+atlas = ExtResource("8_5v7ar")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l11s1"]
+atlas = ExtResource("8_5v7ar")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x5a5"]
+atlas = ExtResource("8_5v7ar")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76buk"]
+atlas = ExtResource("9_drv5f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql4m5"]
+atlas = ExtResource("9_drv5f")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plov3"]
+atlas = ExtResource("9_drv5f")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="128"]
 atlas = ExtResource("1")
@@ -110,6 +212,20 @@ region = Rect2(448, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8hr7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxnqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gg1v")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("1")
 }, {
 "duration": 1.0,
@@ -128,7 +244,119 @@ animations = [{
 "texture": SubResource("6")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hr7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxnqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gg1v")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isgow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnoe8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opv5f")
+}],
+"loop": false,
+"name": &"idle_Maw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5x47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi11l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h74m")
+}],
+"loop": false,
+"name": &"idle_Peashooter",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g67sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuj0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17i1y")
+}],
+"loop": false,
+"name": &"idle_Spider",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k65hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpocr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k376")
+}],
+"loop": false,
+"name": &"idle_Sunflower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8repv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1i5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnhl5")
+}],
+"loop": false,
+"name": &"idle_Walnut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5dig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l11s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x5a5")
+}],
+"loop": false,
+"name": &"idle_Wasp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76buk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql4m5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plov3")
+}],
+"loop": false,
+"name": &"idle_Wyrm",
 "speed": 5.0
 }, {
 "frames": [{
@@ -183,6 +411,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="8"]
+resource_local_to_scene = true
 radius = 65.0
 
 [sub_resource type="RectangleShape2D" id="9"]
@@ -1013,7 +1242,10 @@ buffedDigestTime = 11.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_1eo28")
 sprite_frames = SubResource("7")
+animation = &"idle"
 autoplay = "spawn"
+frame = 2
+frame_progress = 1.0
 script = ExtResource("5_fxtok")
 
 [node name="DetectionComponent" type="Area2D" parent="."]
@@ -1043,7 +1275,6 @@ visible = false
 
 [node name="AnimatedSprite2" type="AnimatedSprite2D" parent="PreviewNodes"]
 sprite_frames = SubResource("7")
-frame = 2
 
 [node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
 modulate = Color(1.5, 1, 1, 1)
@@ -1054,7 +1285,7 @@ animation = &"New Anim 2"
 frame = 3
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("8")]
-giveBuffTo = ["WalnutTree", "None", "None", "None", "None", "None", "None", "None"]
+giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "Hive", "", "None", "None"]
 
 [node name="TileArea1" parent="BuffNodesComponent" index="0"]
 position = Vector2(48, 0)

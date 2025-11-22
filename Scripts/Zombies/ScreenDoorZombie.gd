@@ -13,6 +13,8 @@ var deathCount = 0
 
 # First transforms zombie 'death' 1, then kills zombie 'death' 2
 func die():
+	#TODO Restore to work with Maw
+	queue_free()
 	deathCount = deathCount+1
 	if deathCount < 2:
 		transform()

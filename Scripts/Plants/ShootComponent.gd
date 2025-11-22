@@ -14,9 +14,16 @@ extends Node2D
 
 @export var laser_width: float = 4.0  # Increased for visibility
 @export var damage: float = 20
+var og_damage
+@export var maw_damage: float = 60
 @export var duration: float = 0.5
 @export var auto_fire: bool = false
-@export var cooldown: float = 1.0
+
+
+@export var cooldown: float = 3
+@export var sun_buff_cooldown: float = 0.9
+var og_cooldown 
+var isSunBuffed := false 
 
 # Zigzag parameters
 @export var zigzag_height: float = 50.0  # Height of the zigzag
@@ -29,7 +36,8 @@ extends Node2D
 @onready var collision_shape := CollisionShape2D.new()
 @onready var attack_ray = $"../../DMG_RayCast2D"
 var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  # Load the projectile scene
-
+var projectile_scene_slow = preload("res://Scripts/Plants/PeaProjectile.gd")
+var cooldown_timer := Timer.new() 
 # State variables 
 var current_length := 0.0
 var is_firing := false
@@ -37,8 +45,14 @@ var timer := Timer.new()
 var hit_enemies = {}  # Dictionary to track hit enemies
 var isBuffed := false
 var canAttack := false
+var isSlowingProjectile := false
+@export var isDisabled := false
 
 func _ready() -> void:
+	if isDisabled:
+		return
+	og_cooldown = cooldown
+	og_damage =damage
 	self.visible = false
 	# Set up Line2D
 	add_child(line2D)
@@ -59,11 +73,11 @@ func _ready() -> void:
 	
 	
 	# Set up debug marker
-	var debug_marker = ColorRect.new()
-	add_child(debug_marker)
-	debug_marker.size = Vector2(5, 5)
-	debug_marker.position = Vector2(-2.5, -2.5)
-	debug_marker.color = Color.YELLOW
+	#var debug_marker = ColorRect.new()
+	#add_child(debug_marker)
+	#debug_marker.size = Vector2(5, 5)
+	#debug_marker.position = Vector2(-2.5, -2.5)
+	#debug_marker.color = Color.YELLOW
 	
 	# Set up timer
 	add_child(timer)
@@ -72,20 +86,24 @@ func _ready() -> void:
 	
 	if auto_fire:
 		print("AUTO FIRE TRUUUU")
-		var cooldown_timer = Timer.new()
+		cooldown_timer = Timer.new()
 		add_child(cooldown_timer)
 		cooldown_timer.wait_time = cooldown
 		cooldown_timer.connect("timeout", Callable(self, "fire"))
+		#cooldown_timer.one_shot = true
 		cooldown_timer.start()
 
 	# Initialize a set to track currently overlapping areas
 	#var currently_overlapping_areas = []
 
 func _process(delta: float) -> void: 
+	if isDisabled:
+		return
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
+		print("ppp ray collider is" , collider)
 		if collider:
-			#print("Collider Name is ", collider.name)
+			print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent().get_parent():
 					return
@@ -121,10 +139,14 @@ func _process(delta: float) -> void:
 
 
 func _on_area_exited(area: Area2D) -> void:
+	if isDisabled:
+		return
 	# Allow re-hitting if zombie exits and re-enters
 	hit_enemies.erase(area)
 
 func _process_collision(area: Area2D) -> void:
+	if isDisabled:
+		return
 	if "Zombie" in area.name and not hit_enemies.has(area):
 		print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
@@ -132,10 +154,21 @@ func _process_collision(area: Area2D) -> void:
 		
 		
 func shoot_projectile():
+	if isDisabled:
+		return
 	print("Shoot Projectile ZZ")
-	var projectile = projectile_scene.instantiate()
+	var projectile
+	if isSlowingProjectile:
+		
+		projectile = projectile_scene.instantiate()
+		projectile.isSlow = true 
+		
+	else:
+		projectile = projectile_scene.instantiate()
 	projectile.set_damage(damage)
 	projectile.global_position = self.global_position
+	if isSunBuffed:
+		projectile.canGenSun = true 
 	#projectile.position = position + Vector2(32, 8)  # Adjust starting position
 	get_parent().get_parent().get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
@@ -143,12 +176,16 @@ func shoot_projectile():
 	
 # Fire a new laser 
 func fire() -> void:
+	if isDisabled:
+		return
+	#print("FIRE CALLED")
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
 		if collider:
-			#print("Collider Name is ", collider.name)
+			print("ppp Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				if !is_firing:
+					print("ppp Shoot Proj")
 					shoot_projectile()
 					AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 					is_firing = true
@@ -156,10 +193,14 @@ func fire() -> void:
 					hit_enemies.clear()  # Clear the hit enemies when firing a new laser
 					timer.wait_time = duration
 					timer.start()
+				else:
+					print("ppp is_firing is ", is_firing)
 					
 
 # Update the laser points specifically, also taking into account buffs
 func _update_laser() -> void:
+	if isDisabled:
+		return
 	var points = PackedVector2Array()
 	points.append(Vector2.ZERO)  # Starting point
 		
@@ -190,6 +231,8 @@ func _update_laser() -> void:
 
 # Updates the laser's collision specifically 
 func _update_collision_shape() -> void:
+	if isDisabled:
+		return
 	# Update collision shape to follow the laser path
 	var rect_shape = collision_shape.shape as RectangleShape2D
 	rect_shape.extents = Vector2(current_length / 2, laser_width ) #/2
@@ -200,41 +243,60 @@ func _update_collision_shape() -> void:
 
 # Stop firing the laser on a cooldown 
 func _on_laser_timeout() -> void:
+	if isDisabled:
+		return
 	is_firing = false
 	current_length = 0.0
 	hit_enemies.clear()  # Clear the hit enemies when the laser times out
 	_update_laser()
 	_update_collision_shape()
+	cooldown_timer.start()
 
 
 # Set the laser color 
 func set_laser_color(color: Color) -> void:
+	if isDisabled:
+		return
 	laser_color = color
 	line2D.default_color = color
 
 # Set the laser width 
 func set_laser_width(width: float) -> void:
+	if isDisabled:
+		return
 	laser_width = width
 	line2D.width = width
 
 # Make the laser more powerful when EggWorm is buffed 
 func buff(bufferLocation):
+	if isDisabled:
+		return
 	isBuffed = true
 	bufferLocation = to_local(bufferLocation)
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
 	damage = damage * 2.0
 
 func sunBuff():
-	cooldown = cooldown * 0.5
+	if isDisabled:
+		return
+	cooldown = sun_buff_cooldown
+	cooldown_timer.wait_time = cooldown
+	#cooldown = cooldown * 0.5
 
 func unSunBuff():
-	cooldown = cooldown/2
+	if isDisabled:
+		return
+	cooldown = og_cooldown
+	#cooldown = cooldown/2
 
 # getter for buffed status
 func getIsBuffed():
+	if isDisabled:
+		return
 	return isBuffed
 	
-	
+func mawBuff():
+	damage = maw_damage
 	
 	
 	

@@ -1,4 +1,4 @@
-extends Area2D
+extends Demon
 #Maw.gd
 
 # Color export variables for tentacle 1
@@ -18,6 +18,8 @@ var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")
 @onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
 #Adjustable maw health & cost 
 @export var health = 100
+@export var walnutHealth = 600
+
 @onready var ogHealth = 100
 @export var cost = 200
 
@@ -41,6 +43,7 @@ var isEggWyrmBuffed := false
 var isSpyderBuffed := false
 var isHiveBuffed := false 
 var isSunflowerBuffed:= false 	
+var isWalnutBuffed := false
 
 
 @export var bloodAmount = 10
@@ -53,7 +56,7 @@ var isSunflowerBuffed:= false
 # Detection radius for zombies
 @onready var detection_area = $DetectionComponent
 @onready var buffNodes = $BuffNodesComponent
-@onready var animSpriteComp = $AnimatedSprite2D
+#@onready var animSpriteComp = $AnimatedSprite2D
 @onready var ogDetectionRadius = detectionAreaShape.shape.radius
 
 var bloodScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
@@ -62,6 +65,7 @@ var bufferName : String
 
 func _ready():
 	collision_mask = 2
+	animSpriteComp = $AnimatedSprite2D
 	#print("Maw Area2D: ", name)
 	#print("Maw Collision Layer: ", collision_layer)
 	#print("Maw Collision Mask: ", collision_mask)
@@ -170,6 +174,8 @@ func _on_tentacle_retraction_complete(tentacle):
 			var enemyCompManager = enemy.getCompManager()
 			var slow = enemyCompManager.getSlow()
 			AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_CHEW)
+			if isWalnutBuffed:
+				health = health + 100
 			#If the swallowed enemy is slow and maw is buffed, belch a web bomb
 			if(slow > 0):
 				if willBelchWebs:
@@ -229,32 +235,39 @@ func _on_DigestionTimer_timeout():
 #Handles Receiving Buffs From EggWorm, Peashooter, and Hive, setting color accordingly 
 func receiveBuff(plant):
 	#print(bufferName)
+	if !isBuffed:
+		super(plant)
 		bufferName = plant.name
 		if("EggWorm" in bufferName) && !isEggWyrmBuffed:
-			#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
-			#tentacle2.set_colors(Color.BLUE, Color.BLUE)
-			#TODO Re Implement Color Changes
-			#$AnimatedSprite2D.change_color()
+				#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
+				#tentacle2.set_colors(Color.BLUE, Color.BLUE)
+				#TODO Re Implement Color Changes
+				#$AnimatedSprite2D.change_color()
 			digestionTimer.wait_time = buffedDigestTime
 			isEggWyrmBuffed = true 
+			animSpriteComp.speed_scale = animSpriteComp.speed_scale * 1.5
 		elif("Peashooter" in bufferName) && !isSpyderBuffed:
-			#tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
-			#tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
+				#tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
+				#tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
 			willBelchWebs = true
 			isSpyderBuffed = true 
 		elif("Hive" in bufferName) && !isHiveBuffed:
-			#tentacle1.set_colors(Color.WHITE, Color.WHITE)
-			#tentacle2.set_colors(Color.BLACK, Color.BLACK)
+				#tentacle1.set_colors(Color.WHITE, Color.WHITE)
+				#tentacle2.set_colors(Color.BLACK, Color.BLACK)
 			print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
 			detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
 			health = 200
 			print("Buffer Was HHIve")
 			#TODO Re Implement Color Changes
-			#$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
+				#$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
 			isHiveBuffed = true 
 		elif("Sunflower" in bufferName) && !isSunflowerBuffed:
 			willBelchSun = true 
 			isSunflowerBuffed = true 
+		elif "Walnut" in bufferName:
+			health = walnutHealth
+			isWalnutBuffed = true
+		isBuffed = true 
 	
 func debuff():
 	if("EggWorm" in bufferName):
@@ -280,6 +293,9 @@ func debuff():
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "default"
+		animSpriteComp.play()
+	else:
+		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 		
 # Function to handle sun generation
@@ -310,3 +326,5 @@ func die_fromClearSpace():
 	print("QQ MAW IS DYING 222222222222222")
 	buffNodes.clearBuffs()
 	queue_free()		
+	
+	

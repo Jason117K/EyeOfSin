@@ -65,7 +65,7 @@ func _on_wave_manager_wave_2_almost_start() -> void:
 
 
 func _on_tool_tips_tool_tip_hid() -> void:
-	print("HID, COUNT IS ",count )
+	#print("HID, COUNT IS ",count )
 	match count:
 		1:
 			toolTips.setComplexSceneText(bloodBuffTutorial2)

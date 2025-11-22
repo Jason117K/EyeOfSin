@@ -4,19 +4,35 @@ extends Area2D
 
 # Adjustable health and cost 
 @export var health = 100
+@export var maw_health = 500 
 @export var cost = 50
 #Keep a reference to our sun scene 
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
 @onready var animSpriteComp = $AnimatedSprite2D
 @onready var sunTimer = $SunTimer
-@export var sunWaitTime := 15.0
+@onready var resetEatingTimer = $ResetEatingSpeed
+@export var sunWaitTime := 20.0
+@export var wyrmSunWaitTime := 30.0
+@export var hiveSunWaitTime := 14.0
 @export var buffedSunWaitTime := 12.0 
 @onready var buffNodes = $BuffNodesComponent
+@onready var healTimer = $HealTimer
+@onready var healInvisTimer = $HealInvisTimer
+
+var tween
 var isBuffed = false 
+var wyrmBuff = false
+var hiveBuff = false 
+var isWalnutBuffed = false
+var mawBuff = false
 var highlight_active = false
 var highlight_material = null
 var original_material = null
+var plants_to_heal = []
+var max_alpha = 0.2
+var lerp_duration = 2.5
+var can_eat_zombie = false 
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
@@ -25,6 +41,8 @@ func _ready():
 	$SunTimer.start()  # Start the timer
 	assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
 	animSpriteComp.animation = "spawn"
+	healTimer.wait_time = lerp_duration
+
 	
 	## Store the original material
 	#original_material = animSpriteComp.material
@@ -51,7 +69,13 @@ func _on_SunTimer_timeout():
 
 # Function to handle sun generation
 func generate_sun():
+	if mawBuff:
+		can_eat_zombie = true
 	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
+	if wyrmBuff:
+		sun_instance.wyrm_buff()
+	if hiveBuff:
+		sun_instance.hive_buff()
 	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
@@ -59,12 +83,60 @@ func generate_sun():
 
 # TODO Implement sunflower buff 
 # Handles all pontential sunflower buffs 
-func receiveBuff(plantName):
-	animSpriteComp.make_buff_glow()
-	if !isBuffed : 
-		sunTimer.wait_time = buffedSunWaitTime
+func receiveBuff(newPlant):
+	#print("Buff Name is ", newPlant.name)
+	var plantName = truncate_string(newPlant.name)
+	
+	if !isBuffed :
+		print("Sunflower Buff Received from ", plantName)
+		match plantName:
+			"Sunflower":
+				
+				animSpriteComp.change_form("Sunflower")
+				
+			"Peashooter":
+				print("Change to SPIDER")
+				$Webs.visible = true 
+				$SlowField.monitoring = true 
+				animSpriteComp.change_form("Peashooter")
+			"WalnutTree" :
+				animSpriteComp.change_form("Walnut")
+				$HealZone.visible = true 
+				healTimer.start()
+				start_alpha_pulse()
+				tween.play()
+				isWalnutBuffed = true
+			"EggWorm":
+				animSpriteComp.change_form("Wyrm")
+				wyrmBuff = true
+				sunTimer.wait_time = wyrmSunWaitTime
+				$SunTimer.start()
+			"Hive":
+				animSpriteComp.change_form("Wasp")
+				hiveBuff = true
+				sunTimer.wait_time = hiveSunWaitTime
+				$SunTimer.start()
+			"Maw":
+				animSpriteComp.change_form("Maw")
+				health = maw_health
+				can_eat_zombie = true
+				mawBuff = true 
+				
+		#sunTimer.wait_time = buffedSunWaitTime
+		
 		isBuffed = true 
+			
+		animSpriteComp.make_buff_glow()
 
+
+func truncate_string(input_string: String) -> String:
+	for i in range(input_string.length()):
+		var character = input_string[i]
+		if character.is_valid_int():
+			return input_string.substr(0, i)
+	return input_string
+	
+	
 func debuff():
 	sunTimer.wait_time = sunWaitTime
 	isBuffed = false
@@ -91,6 +163,9 @@ func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "idle"
 		animSpriteComp.play()
+	else:
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
 		
 		
 		
@@ -108,4 +183,112 @@ func die_fromClearSpace():
 func highlight():
 	print("Highlight Here")		
 		
-		
+
+func adjust_position(new_form):
+	match new_form:
+		"Sunflower":
+			pass
+
+		"Peashooter":
+			print("Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-2)
+			print("Self pos IS ", self.global_position)
+			
+		"Walnut" :
+			print("Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-2)
+			print("Self pos IS ", self.global_position)
+			
+		"Wyrm":
+			print("Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-2)
+			print("Self pos IS ", self.global_position)
+			
+		"Wasp":
+			print("Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-2)
+			print("Self pos IS ", self.global_position)
+			
+		"Maw":
+			print("Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-2)
+			print("Self pos IS ", self.global_position)	
+
+
+func _on_slow_field_area_entered(area: Area2D) -> void:
+	print(area , " just entered snow field")
+	if area.is_in_group("Zombie"):
+		print("Zombie Entered Slow Field")
+		#if area.get_parent().get_parent() != self.get_parent().get_parent():
+			#return
+		var compManager = area.getCompManager()
+		var healthComp = compManager.getHealthComponent()
+		#TODO Balance
+		compManager.slow()
+
+
+func _on_slow_field_body_entered(body: Node2D) -> void:
+	print(body , " just entered snow field b ")
+	if body.is_in_group("Zombie"):
+		print("Zombie Entered Slow Field")
+		#if area.get_parent().get_parent() != self.get_parent().get_parent():
+			#return
+		var compManager = body.getCompManager()
+		var healthComp = compManager.getHealthComponent()
+		#TODO Balance
+		compManager.slow()
+
+
+func _on_heal_zone_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Plants"):
+		plants_to_heal.append(area)
+
+
+func _on_heal_timer_timeout() -> void:
+	#$HealZone.visible = true
+	#healInvisTimer.start()
+	for plant in plants_to_heal:
+		plant.health = plant.health + 5
+
+
+func _on_heal_invis_timer_timeout() -> void:
+	pass
+	#$HealZone.visible = false
+
+func start_alpha_pulse():
+	# Cancel any existing tween
+	
+	# Start with alpha at 0
+	$HealZone.modulate.a = 0.0
+	
+	# Create infinite loop tween
+	tween = create_tween().set_loops()
+	
+	# Lerp from 0 to max_alpha
+	tween.tween_property($HealZone, "modulate:a", max_alpha, lerp_duration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	
+	# Lerp back from max_alpha to 0
+	tween.tween_property($HealZone, "modulate:a", 0.0, lerp_duration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+
+
+func mawBuffed():
+	pass
+
+func eat_zombie():
+	animSpriteComp.speed_scale = 4
+	#var resetSpeedEatingTimer = Timer.new()
+	resetEatingTimer.start()
+	can_eat_zombie = false
+	pass
+
+
+func _on_reset_eating_speed_timeout() -> void:
+	animSpriteComp.speed_scale = 1
+	generate_sun_alt()
+
+
+func generate_sun_alt():
+	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
+	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
+	#Set the sun pos to above the sunflower
+	sun_instance.global_position = self.global_position + Vector2(0,-40)

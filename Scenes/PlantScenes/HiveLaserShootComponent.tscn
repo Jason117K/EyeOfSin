@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv382bof512a6"]
+
+[ext_resource type="Script" uid="uid://by8326xmjmjwd" path="res://Scripts/Plants/hive_laser_shoot_component.gd" id="1_cqvb2"]
+
+[node name="HiveLaserShootComp" type="Node2D"]
+position = Vector2(32, -8)
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_cqvb2")

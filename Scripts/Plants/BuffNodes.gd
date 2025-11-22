@@ -15,6 +15,8 @@ extends Node2D
 # Parent plant with these buffNodes
 @onready var plant = get_parent()
 
+enum Demons { EYESUN,SPIDER,WALNUT,WYRM,HIVE, MAW, }
+
 # The tile areas representing the area being buffed 
 @export var activeTiles = [ # (Array, NodePath)
 	"TileArea1",
@@ -28,7 +30,7 @@ extends Node2D
 ]
 
 # Adjustable variable to store which plants this plant can buff
-@export var giveBuffTo = ["None","None","None","None","None","None","None","None"]
+@export var giveBuffTo = ["Sunflower","Peashooter","WalnutTree","EggWorm","Hive","Maw","None","None"]
 
 var buffedPlants = []
 
@@ -45,9 +47,9 @@ func _ready():
 	bloodTile9.visible = false
 
 func clearBuffs():
-	print("DDD Buffed Plants is ", buffedPlants)
+	#print("DDD Buffed Plants is ", buffedPlants)
 	for plant in buffedPlants:
-		print("Now DDD Buffing ", plant)
+		#print("Now DDD Buffing ", plant)
 		if plant != null:
 			plant.debuff()
 	pass

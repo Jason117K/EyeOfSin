@@ -14,20 +14,25 @@ var target_plant = null  #Holds reference to the plant being attacked
 var isSlow = 0  #how much slow the zombie has
 var thisMaterial  
 var thisMaterial2
+var spawn_slow_field := false 
 
 #Onready variables for tracking nodes 
 @onready var animatedSprite = $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
 @onready var attack_ray = $"../DMGRayCast2D" # RefCounted to Damage Raycast
 @onready var healthComp = $"../HealthComponent" # RefCounted to health comp 
 @onready var speedComp =  $"../SpeedComponent"   # RefCounted to Speed Comp
-@onready var zombie = get_parent()
+@onready var zombie : Zombie = get_parent()
 
+func knockBack():
+	zombie.global_position = zombie.global_position + Vector2(9,0) 
 func set_hue_shift(hue_shift_degrees):
 	animatedSprite.set_hue_shift(hue_shift_degrees)
 	
 #Tells the zombie it's locked in single combat with a drone
 func fightDrone():
-	speedComp.setSpeed(0)
+	pass
+	#$"../AttackComponent"
+	#speedComp.setSpeed(0)
 	
 #Make the zombie explode because it fought a buffed drone 
 func fightDroneExplode():
@@ -55,7 +60,7 @@ func getSlow():
 	
 # Debuffs zombie with slow effect
 func slow():
-	#print("SLOWING")
+	print("SLOWING rr")
 	isSlow = isSlow + 100 
 	speedComp.slow()
 	
@@ -81,7 +86,8 @@ func take_damage(damage):
 			thisMaterial2.set_shader_parameter("tolerance", 1)
 		$ResetThisColor.start()
 	
-
+func increaseBloodWorth():
+	healthComp.bloodWorth = healthComp.bloodWorth + 5.0
 #Set the enemy colors on spawn 
 #Set the enemy colors on spawn 
 func _on_JustNowSpawned_timeout():

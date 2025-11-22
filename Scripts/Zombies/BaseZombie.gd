@@ -4,8 +4,11 @@ extends Area2D
 class_name Zombie 
 # Defines basic behavior for all zombie types
 
+signal zombie_death
 
 @onready var compManager = $ComponentManager
+
+var slow_field_scene = preload("res://Scenes/PlantScenes/web_tile_slow.tscn")
 
 # Component Manager Getter
 func getCompManager():
@@ -15,6 +18,10 @@ func getCompManager():
 func fightDrone():
 	compManager.fightDrone()
 
+func make_spawn_slow_on_death():
+	compManager.spawn_slow_field = true 
+	
+	
 # Tells Comp Manager the Zombie Stopped Fighting a Hive Drone 
 func stopFightingDrone():
 	compManager.stopFightingDrone()
@@ -33,5 +40,16 @@ func set_hue_shift(hue_shift_degrees):
 	
 #Kills the Zombie 
 func die():
+	if compManager.spawn_slow_field == true :
+		spawn_slow_field_on_death()
+	#if compMana
 	print("Should die")
+	zombie_death.emit()
 	queue_free()
+
+func spawn_slow_field_on_death():
+	var slow_field
+	slow_field = slow_field_scene.instantiate()
+	slow_field.global_position = self.global_position
+	#slow_field.position = position + Vector2(32, 8)  # Adjust starting position
+	get_parent().add_child(slow_field)  # Add the projectile to the game layer DOUBLE CHECK

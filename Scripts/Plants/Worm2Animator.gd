@@ -12,8 +12,9 @@ extends Node2D
 
 # Node references
 @export var sprite_path: NodePath  
+@export var sprite_path2: NodePath  
 @onready var sprite = get_node(sprite_path) if sprite_path else null
-
+@onready var sprite2 = get_node(sprite_path2) if sprite_path else null
 # Internal animation state
 var time = 0.0
 var current_squash = 0.0
@@ -74,3 +75,18 @@ func _process(delta):
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
 	
+func adjustParams(new_form):
+	
+	match new_form:
+		"Sunflower":
+			pass
+		"Peashooter":
+			bob_height = 1
+		"Walnut" :
+			pass
+		"Wyrm":
+			pass
+		"Wasp":
+			pass
+		"Maw":
+			bob_height = 1

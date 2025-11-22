@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cspgp33mo2ygv"]
+[gd_scene load_steps=15 format=3 uid="uid://cspgp33mo2ygv"]
 
 [ext_resource type="Texture2D" uid="uid://chjlyymq5t45q" path="res://Assets/Plants/Sun.png" id="1"]
 [ext_resource type="Script" uid="uid://csushx4jkpqkt" path="res://Scripts/Sun.gd" id="2"]
@@ -54,11 +54,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rabkd"]
+radius = 83.75
+
 [node name="Sun" type="Area2D"]
 process_mode = 1
 modulate = Color(1, 0.423529, 0.423529, 1)
 light_mask = 31
 z_index = 99
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2")
 SunValue = 30
 
@@ -84,5 +88,11 @@ wait_time = 6.0
 one_shot = true
 autostart = true
 
+[node name="HealZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealZone"]
+shape = SubResource("CircleShape2D_rabkd")
+
 [connection signal="mouse_entered" from="." to="." method="_on_Sun_mouse_entered"]
 [connection signal="timeout" from="AutoPickUpTimer" to="." method="_on_auto_pick_up_timer_timeout"]
+[connection signal="area_entered" from="HealZone" to="." method="_on_heal_zone_area_entered"]

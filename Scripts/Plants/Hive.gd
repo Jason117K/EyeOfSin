@@ -1,4 +1,4 @@
-extends Area2D
+extends Demon
 #Hive.gd
 
 # Hive Plant Script
@@ -6,13 +6,15 @@ extends Area2D
 #Export variables
 @export var cost = 25
 @export var health = 50
+var walnutHealth = 650
 
 # Preload the drone scene
 const DroneScene = preload("res://Scenes/PlantScenes/Drone.tscn")
 
 # Constants
 var MAX_DRONES = 3
-var BUFF_MAX_DRONES = 4
+var WALNUT_BUFF_MAX_DRONES = 4
+var SUN_BUFF_MAX_DRONES = 5
 #const MAX_DRONES = 3
 
 # Drone management
@@ -24,17 +26,19 @@ var drone_rest_positions = {}                      # Dictionary to store rest po
 var isEggWyrmBuffed := false 
 var isSpyderBuffed := false
 var isSunflowerBuffed:= false 
-
+var isMawBuffed := false 
 @onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
 var isBuffed = false                               # Tracks Current Buff State Of Drone  
 var PlantManager                                   # RefCounted to PlantManager 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
 @onready var buffNodes = $BuffNodesComponent
-@onready var animSpriteComp = $AnimatedSpriteComp
+#@onready var animSpriteComp = $AnimatedSpriteComp
 var thisBufferName : String  
 
 func _ready():
+	animSpriteComp = $AnimatedSpriteComp
+	
 	# Initialize drones & Plant Manager 
 	spawn_initial_drones()
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
@@ -51,24 +55,42 @@ func get_cost():
 
 #Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
-	for drone in available_drones:
-		drone.make_drone_glow()
-	#animSpriteComp.make_drone_glow()
-	#Apply a double damage buff to every drone 
-	if("EggWorm" in bufferName.name) && !isEggWyrmBuffed:
+	#print("BUFF HIVE")
+	if !isBuffed:
+		super(bufferName)
 		for drone in available_drones:
-			drone.doubleDamage()
-		isEggWyrmBuffed = true 
-	#Make the drones explode if it's a peashooter buff 
-	if("Peashooter" in bufferName.name) && !isSpyderBuffed:
-		for drone in available_drones:
-			drone.makeExplode()
-		isSpyderBuffed = true 
-	if("Sunflower" in bufferName.name) && !isSunflowerBuffed:
-		droneRespawnTimer.wait_time = buffedWaitTime
-		isSunflowerBuffed = true 
-			
-	thisBufferName = bufferName.name
+			drone.make_drone_glow()
+		#animSpriteComp.make_drone_glow()
+		#Apply a double damage buff to every drone 
+		if("EggWorm" in bufferName.name):
+			$HiveLaserShootComp.isDisabled = false
+			$HiveLaserShootComp._ready()
+			#for drone in available_drones:
+			#	drone.doubleDamage()
+			isEggWyrmBuffed = true 
+		#Make the drones explode if it's a peashooter buff 
+		if("Peashooter" in bufferName.name) && !isSpyderBuffed:
+			for drone in available_drones:
+				drone.makeExplode()
+				drone.isSpiderBuffed = true
+			isSpyderBuffed = true 
+		if("Sun" in bufferName.name):
+			droneRespawnTimer.wait_time = buffedWaitTime
+			isSunflowerBuffed = true 
+			MAX_DRONES = SUN_BUFF_MAX_DRONES
+			kill_all_drones()
+			spawn_initial_drones()
+		if("Walnut" in bufferName.name):
+			health = walnutHealth
+			MAX_DRONES = WALNUT_BUFF_MAX_DRONES	
+			kill_all_drones()
+			spawn_initial_drones()			
+		if("Maw" in bufferName.name):
+			isMawBuffed = true 
+			kill_all_drones()
+			spawn_initial_drones()	
+		isBuffed = true 		
+		thisBufferName = bufferName.name
 
 func debuff():
 	if("EggWorm" in thisBufferName):
@@ -107,7 +129,7 @@ func kill_all_drones():
 # Calculate evenly spaced resting positons for all drones 
 func calculate_rest_position(index):
 	var angle = (2 * PI * index) / MAX_DRONES
-	return Vector2(cos(angle), sin(angle)) * 30
+	return Vector2(cos(angle), sin(angle)) * 10
 
 # Spawns an assembles the initial number of drones 	
 func spawn_initial_drones():
@@ -128,7 +150,7 @@ func spawn_initial_drones():
 		
 		# Connect drone signals
 		drone.connect("drone_died", Callable(self, "_on_drone_died"))
-		if isBuffed:
+		if isMawBuffed:
 			drone.doubleDamage()
 
 #Assigns drones to enemies if able & then re-optimizes drone assignments 
@@ -203,10 +225,10 @@ func _on_drone_died(drone):
 	# Remove drone from assignments
 	for enemy in drone_assignments.keys():
 		if drone in drone_assignments[enemy]:
-			print("Will Now Erase ", drone)
-			print("Drone Ass B4 Erase ", drone_assignments)
+			#print("Will Now Erase ", drone)
+			#print("Drone Assign B4 Erase ", drone_assignments)
 			drone_assignments[enemy].erase(drone)
-			print("Drone Ass After Erase ", drone_assignments)
+			#print("Drone Assign After Erase ", drone_assignments)
 	
 	# Remove rest position
 	drone_rest_positions.erase(drone)
@@ -254,7 +276,7 @@ func optimize_drone_assignments():
 	
 	# Assign drones based on calculated distribution
 	for enemy in enemies_to_assign:
-		print("Enemy is ", enemy)
+		#print("Enemy is ", enemy)
 		if !(enemy.get_parent().get_parent() == get_parent().get_parent()):
 			#print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
 			print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
@@ -268,7 +290,7 @@ func optimize_drone_assignments():
 				extra_drones -= 1
 				
 			drone_assignments[enemy] = []
-			#print("Drone Ass B4 Loop ", drone_assignments)
+			#print("Drone Assign B4 Loop ", drone_assignments)
 			for _i in range(num_drones):
 				#print("Available drones1 is ", available_drones)
 				if available_drones.is_empty():
@@ -278,13 +300,14 @@ func optimize_drone_assignments():
 				drone_assignments[enemy].append(drone)
 			#	print("In Loop, Append ", drone)
 				command_drone_to_attack(drone, enemy)
-			print("Drone Ass After Loop ", drone_assignments)
+			#print("Drone Assign After Loop ", drone_assignments)
 
 #Tell a drone to attack a target
 func command_drone_to_attack(drone, enemy):
 #	print("First Attack Command")
 	if is_instance_valid_and_alive(enemy):
 	#	print("Drone is ", drone, " Enemy is ", enemy)
+		drone.enable_hurtbox()
 		drone.attack_target(enemy)
 		
 #Handles the Hive taking damage 
@@ -309,7 +332,7 @@ func _on_DroneRespawnTimer_timeout():
 	
 	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
 	
-	if isBuffed:
+	if isMawBuffed:
 		new_drone.doubleDamage()
 	
 	# Optimize assignments with new drone
@@ -322,9 +345,12 @@ func is_instance_valid_and_alive(node) -> bool:
 
 
 # Stops Spawn Animation From Playing
-func _on_AnimatedSpriteComp_animation_finished():
+func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "idle"
+		animSpriteComp.play()
+	else:
+		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 		
 		
@@ -341,4 +367,5 @@ func die_fromClearSpace():
 
 
 func _on_play_anim_timer_timeout() -> void:
-	animSpriteComp.play("idle")
+	pass
+	#animSpriteComp.play("idle")

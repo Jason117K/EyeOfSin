@@ -82,7 +82,7 @@ func setComplexScene(newScene):
 	complexButton.visible = true
 	#Clean Up Any Previous Complex Scenes 
 	for node in complexSceneContainer.get_children():
-		print("NNNOde is ", node.name)
+		#print("NNNOde is ", node.name)
 		if node is Label:
 			pass
 		else:
@@ -93,7 +93,8 @@ func setComplexScene(newScene):
 	complexSceneContainer.add_child(this_new_scene)
 	complexSceneContainer.move_child(this_new_scene, 0)
 	for node in complexSceneContainer.get_children():
-		print("Node is ", node.name)
+		pass
+		#print("Node is ", node.name)
 
 func hideComplexSceneButton():
 	complexButton.visible = false

@@ -1,8 +1,9 @@
-[gd_scene load_steps=124 format=3 uid="uid://p8shvofaoy5d"]
+[gd_scene load_steps=125 format=3 uid="uid://p8shvofaoy5d"]
 
 [ext_resource type="Texture2D" uid="uid://2bti3iudanb6" path="res://Assets/Plants/Worm1.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://Assets/Plants/Worm2.png" id="3"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://Scripts/Plants/Shaders/DemonGlow.gdshader" id="3_hls8g"]
+[ext_resource type="Texture2D" uid="uid://detf6cv0bgq0d" path="res://Assets/Demons/Wyrm_PNG/Wyrm_ShellBack.png" id="3_t7jjk"]
 [ext_resource type="Texture2D" uid="uid://b3tnuprj1j3dg" path="res://Assets/Plants/Plant_Animations/LaserEggWormsSmolSHELL.png" id="3_vkg27"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://Scripts/Plants/EggWorm.gd" id="4"]
 [ext_resource type="Script" uid="uid://ba55ljhixst0w" path="res://Scripts/Plants/Worm2Animator.gd" id="5"]
@@ -800,11 +801,14 @@ bob_height = 3.0
 squash_amount = 0.2
 stretch_amount = 0.1
 bounce_elasticity = 0.01
-sprite_path = NodePath("Worm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("7")
+
+[node name="ShellBack" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("3_t7jjk")
 
 [node name="Egg" type="Sprite2D" parent="."]
 z_index = 1
@@ -814,23 +818,42 @@ texture = ExtResource("3_vkg27")
 script = ExtResource("5_hls8g")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
+[node name="Worm1Animator" type="Node2D" parent="."]
+visible = false
+script = ExtResource("5")
+bob_speed = 0.6
+bob_height = 1.0
+bounce_elasticity = 0.0
+sprite_path = NodePath("../Worm1")
+
 [node name="Worm1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_oqc8a")
-position = Vector2(11, 1)
+position = Vector2(11, -3)
 texture = ExtResource("2")
 script = ExtResource("5_hls8g")
+
+[node name="LaserShootComponent" parent="Worm1" instance=ExtResource("6")]
+position = Vector2(-7, -3)
+extension_speed = 30000.0
+max_length = 20000.0
+laser_width = 10.0
+duration = 1.0
+zigzag_height = 160.0
+zigzag_position = 3500.0
+zigzag_width = 160.0
+isDisabled = true
 
 [node name="Worm2Animator" type="Node2D" parent="."]
 visible = false
 script = ExtResource("5")
-bob_speed = 0.9
-bob_height = 3.0
+bob_speed = 0.7
+bob_height = 1.5
 bounce_elasticity = 0.0
 sprite_path = NodePath("../Worm2")
 
 [node name="Worm2" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5n28x")
-position = Vector2(-11, 1)
+position = Vector2(-10, 3)
 texture = ExtResource("3")
 script = ExtResource("5_hls8g")
 
@@ -840,7 +863,21 @@ extension_speed = 30000.0
 max_length = 20000.0
 laser_width = 10.0
 duration = 1.0
-cooldown = 2.0
+zigzag_height = 160.0
+zigzag_position = 3500.0
+zigzag_width = 160.0
+
+[node name="Worm3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5n28x")
+position = Vector2(3, 1)
+script = ExtResource("5_hls8g")
+
+[node name="LaserShootComponent" parent="Worm3" instance=ExtResource("6")]
+position = Vector2(14, -9)
+extension_speed = 30000.0
+max_length = 20000.0
+laser_width = 10.0
+duration = 1.0
 zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
@@ -875,7 +912,7 @@ sprite_frames = SubResource("90")
 animation = &"New Anim 2"
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("12")]
-giveBuffTo = ["WalnutTree", "Maw", "Hive", "None", "None", "None", "None", "None"]
+giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "", "Hive", "Maw", "None", "None"]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 sprite_frames = SubResource("SpriteFrames_5qq15")
@@ -943,11 +980,17 @@ frame = 17
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]
 scale = Vector2(1.08712, 3.82142)
-target_position = Vector2(270.428, 0)
+target_position = Vector2(275, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="ShootTimer" to="Worm2/LaserShootComponent" method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="BuffNodesComponent"]

@@ -2,7 +2,10 @@ extends Node2D
 #EggWorm.gd
 
 #Adjustable health & cost
-@export var health = 100
+@export var health = 10
+var og_health
+@export var walnutBuffed_health = 550
+@export var mawBuffed_health = 350
 @export var cost = 150
 
 # Animation parameters
@@ -16,13 +19,15 @@ extends Node2D
 # Node references
 @export var sprite_path: NodePath  
 @onready var sprite = get_node(sprite_path) if sprite_path else null
-@onready var laserShootComp = $Worm2/LaserShootComponent
+@onready var laserShootComp1 = $Worm1/LaserShootComponent
+@onready var laserShootComp2 = $Worm2/LaserShootComponent
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
 var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  # Load the projectile scene
 @onready var shootTimer = $ShootTimer
 @onready var buffNodes = $BuffNodesComponent
 @onready var shell_sprite = $Egg
+
 #onready var animSpriteComp = $AnimatedSprite
 
 var isSpyderBuffed := false
@@ -42,6 +47,7 @@ var initial_sprite_position: Vector2
 var isBuffed := false 
 var bufferName : String 
 var PlantManager
+var isCurrentlyBuffed = true  
 
 
 func _ready():
@@ -53,8 +59,12 @@ func _ready():
 		initial_sprite_position = sprite.position  # Store the initial position
 	else:
 		push_warning("No sprite assigned to animate!")
-	shootTimer.wait_time = laserShootComp.cooldown
+	shootTimer.wait_time = laserShootComp2.cooldown
 	#animSpriteComp.animation = "spawn"
+	 
+	
+
+	
 		
 		
 		
@@ -66,32 +76,72 @@ func get_cost():
 
 #Handles Eggworm Buffing 
 func receiveBuff(plant):
+	var plantName = truncate_string(plant.name)
+	
+	if !isCurrentlyBuffed :
+		print(self.name, " Buff Received from ", plantName)
+		match plantName:
+			"Sunflower":
+				shell_sprite.change_form("Sunflower")
+				$Worm2/LaserShootComponent.isSunBuffed = true 
+				laserShootComp2.sunBuff()
+				#animSpriteComp.change_form("Sunflower")
+			"Peashooter":
+				shell_sprite.change_form("Peashooter")
+				$Worm2/LaserShootComponent.isSlowingProjectile = true 
+				$Worm3/LaserShootComponent.isSlowingProjectile = true 
+				print("Change to SPIDER")
+				#animSpriteComp.change_form("Peashooter")
+			"WalnutTree" : 
+				shell_sprite.change_form("Walnut")
+				health = walnutBuffed_health
+				#animSpriteComp.change_form("Walnut")
+			"EggWorm":
+				shell_sprite.change_form("Wyrm")
+				#animSpriteComp.change_form("Wyrm")
+			"Hive":
+				shell_sprite.change_form("Wasp")
+				attack_ray.target_position = attack_ray.target_position + Vector2(100,0)
+				#animSpriteComp.change_form("Wasp")
+			"Maw":
+				#TODO Make Buff Heal Via Signals From Zombie
+				shell_sprite.change_form("Maw")
+				health = mawBuffed_health
+				laserShootComp1.isDisabled = false
+				laserShootComp1._ready()
+				$ShellBack.visible = false 
+				laserShootComp1.mawBuff()
+				$Worm1.z_index = 2
+				#animSpriteComp.change_form("Maw")
+				
+		isCurrentlyBuffed = true		
+				
 		shell_sprite.make_buff_glow()
 		#Increases Speed and Range From Peashooter Buff
-		if("Peashooter" in plant.name) && !isSpyderBuffed:
-			laserShootComp.extension_speed = 80000
-			laserShootComp.max_length = 40000
-			isSpyderBuffed = true 
-		#Applies a different buff to the laser projectile 
-		elif("WalnutTree" in plant.name) && !isSpineBuffed:
-			if (laserShootComp.isBuffed):
-				pass
-			else:
-				laserShootComp.buff(plant.position)
-			isSpineBuffed = true 
-		elif("Sunflower" in plant.name) && !isSunflowerBuffed:
-			laserShootComp.sunBuff()
-			isSunflowerBuffed = true 
-			#print("Got buff from", plant.name)
+		#if("Peashooter" in plant.name) && !isSpyderBuffed:
+			#laserShootComp.extension_speed = 80000
+			#laserShootComp.max_length = 40000
+			#isSpyderBuffed = true 
+		##Applies a different buff to the laser projectile 
+		#elif("WalnutTree" in plant.name) && !isSpineBuffed:
+			#if (laserShootComp.isBuffed):
+				#pass
+			#else:
+				#laserShootComp.buff(plant.position)
+			#isSpineBuffed = true 
+		#elif("Sunflower" in plant.name) && !isSunflowerBuffed:
+			#laserShootComp.sunBuff()
+			#isSunflowerBuffed = true 
+			##print("Got buff from", plant.name)
 
 #Handles Eggworm Buffing 
 func debuff():
 	if("Peashooter" in bufferName):
-		laserShootComp.extension_speed = laserShootComp.ogExtension_Speed
-		laserShootComp.max_length = laserShootComp.ogMax_Length
+		laserShootComp2.extension_speed = laserShootComp2.ogExtension_Speed
+		laserShootComp2.max_length = laserShootComp2.ogMax_Length
 		#Applies a different buff to the laser projectile 
 	elif("Sunflower" in bufferName):
-		laserShootComp.unSunBuff()
+		laserShootComp2.unSunBuff()
 			
 	isBuffed = false 
 		
@@ -157,3 +207,15 @@ func die_fromClearSpace():
 #func _on_AnimatedSprite_animation_finished():
 	#if animSpriteComp.animation == "spawn":
 	#	animSpriteComp.animation = "idle"
+
+
+func truncate_string(input_string: String) -> String:
+	for i in range(input_string.length()):
+		var character = input_string[i]
+		if character.is_valid_int():
+			return input_string.substr(0, i)
+	return input_string
+
+
+func _on_timer_timeout() -> void:
+	isCurrentlyBuffed = false

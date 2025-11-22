@@ -209,7 +209,7 @@ func _process(delta) -> void:
 			if tip_pos.distance_to(target_position) < 10:
 				current_state = State.ATTACHED
 				AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_GRAB)
-				print("QQ MAW GRABBED ENEMY")
+				#print("QQ MAW GRABBED ENEMY")
 				enemy.global_position = pos[pointCount-1]
 				_start_attach_timer()
 		

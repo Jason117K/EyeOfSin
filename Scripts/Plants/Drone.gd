@@ -23,6 +23,7 @@ var velocity = Vector2.ZERO     # Drone Velocity
 var rest_position = null        # The Location of the Drone Resting Position   
 var is_returning = false        # Whether or not the drone is returning to rest
 var explodeBuff = false         # Whether or not the drone is buffed 
+var isSpiderBuffed = false 
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
@@ -32,7 +33,7 @@ func make_drone_glow():
 	
 # Doubles the drone attack damage 
 func doubleDamage():
-	attack_damage = attack_damage * 3
+	attack_damage = attack_damage * 4
 	animatedSpriteComp.buff()
 
 func regularDamage():
@@ -79,13 +80,19 @@ func die():
 	print("Drone Free Self")
 	queue_free()
 
+func enable_hurtbox():
+	$HurtBox.disabled = false
 # Attacks a given enemy without buffs 
 func attack_target(enemy):
+	$HurtBox.disabled = false
 	#print("Drone Strike")
 	current_target = enemy
 	if explodeBuff:
 		enemy.fightDroneExplode()
 	enemy.fightDrone()
+	if isSpiderBuffed:
+		
+		enemy.make_spawn_slow_on_death()
 	
 	is_returning = false
 

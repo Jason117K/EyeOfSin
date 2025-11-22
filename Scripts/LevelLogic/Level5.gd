@@ -51,7 +51,7 @@ func _on_plant_manager_maw_placed() -> void:
 func _on_tool_tips_tool_tip_hid() -> void:
 	
 	count += 1
-	print("Count is : ", count)
+	#print("Count is : ", count)
 	match count :
 		1: 
 			print("1Matchhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")

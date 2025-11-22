@@ -4,8 +4,15 @@ extends Area2D
 
 @export var speed = 1  # Speed of the projectile
 @export var damage = 20.0 #2   # Damage dealt to zombies
-var canMove := false 
+var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 
+var canMove := false 
+var isSlow := false 
+var canGenSun := false
+
+
+func _ready() -> void:
+	print("ppp Spawned Egg p")
 func _process(delta):
 	if canMove:
 		position.x += speed * delta  # Move the projectile to the right
@@ -26,10 +33,16 @@ func _on_PeaProjectile_area_entered(area):
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
+		if isSlow:
+			compManager.slow()
 		#queue_free()  # Remove the projectile # Replace with function body.
 		
 		#Reduce Damage Every Time 
 		damage = damage - 0.5
+		
+		if damage < 18.5 && canGenSun:
+			generate_sun()
+			canGenSun = false
 	else:
 		print("NOT A ZOMBIE")
 
@@ -38,3 +51,11 @@ func set_damage(new_damage):
 
 func _on_timer_timeout() -> void:
 	canMove = true 
+
+
+# Function to handle sun generation
+func generate_sun():
+	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
+	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
+	#Set the sun pos to above the sunflower
+	sun_instance.global_position = self.global_position + Vector2(0,-40)

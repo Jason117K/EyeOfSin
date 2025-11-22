@@ -240,7 +240,7 @@ func _on_back_out_details_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
-	print("CCount is ", count)
+	#print("CCount is ", count)
 	count += 1
 	setNextSynergyScene(current_plant,count)
 
@@ -327,4 +327,4 @@ func setNextSynergyScene(current_plant,this_count):
 					synergyPanel.setComplexSceneText(hiveMawText)
 					synergyPanel.setComplexScene(hiveMawScene)
 					count = -1
-					print("CCCCC Count is ", count)
+					#print("CCCCC Count is ", count)

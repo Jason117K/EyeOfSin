@@ -51,8 +51,9 @@ func _input(event):
 			
 			var mouse_pos = get_global_mouse_position()
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
+			#print("GRID POS IS ", grid_pos)
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
-			
+			#print("GRID POS IS NOW ", grid_pos)
 			
 			if plant_highlighted:
 				move_plant(plant_to_move, grid_pos)
@@ -140,12 +141,12 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 
 # Clear a space for a new plant to go 
 func clear_space(passed_grid_pos):
-	print(" QQ Erase Plant At :", passed_grid_pos)
+	#print(" QQ Erase Plant At :", passed_grid_pos)
 	var plant_node = grid_map.get(passed_grid_pos)
-	print(" QQ Plant to Erase Is  ", plant_node)
+	#print(" QQ Plant to Erase Is  ", plant_node)
 	#plantToErase.die()
 	if plant_node != null:
-		print("The Right DDDDDDD Function is Being Called ")
+		#print("The Right DDDDDDD Function is Being Called ")
 		plant_node.die_fromClearSpace()
 		#plant_node.queue_free()
 	grid_map.erase(passed_grid_pos)

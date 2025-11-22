@@ -558,7 +558,7 @@ position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_bpqyd")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_xvglt")]
-sun_points = 2000
+sun_points = 9999
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -764,7 +764,7 @@ metadata/_edit_lock_ = true
 z_index = 1
 position = Vector2(-59, 222)
 script = ExtResource("7_frgcx")
-StartDelay = 9
+StartDelay = 999
 Wave2StartTime = 33
 Wave3StartTime = 45
 Wave1_Interval = 2.0

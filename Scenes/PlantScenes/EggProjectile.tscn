@@ -12,6 +12,7 @@ script = ExtResource("1_sfgus")
 speed = 600
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 0, 0, 1)
 texture = ExtResource("2")
 

@@ -293,7 +293,6 @@ speed = 37
 attack_power = 20
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1.83333)
 shape = SubResource("1")
 

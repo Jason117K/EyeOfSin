@@ -111,5 +111,5 @@ class DebugMarker extends Node2D:
 
 # Add enemies to enemiesToWeb when they enter the area 
 func _on_WebBall_area_entered(area):
-	print("The Webbed Enemy is ", area.name)
+	#print("The Webbed Enemy is ", area.name)
 	enemiesToWeb.append(area)

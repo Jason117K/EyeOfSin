@@ -1,14 +1,42 @@
-[gd_scene load_steps=108 format=3 uid="uid://ct2xdafdtut66"]
+[gd_scene load_steps=146 format=3 uid="uid://ct2xdafdtut66"]
 
 [ext_resource type="Script" uid="uid://kjyi7ykyorhn" path="res://Scripts/Sunflower.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://lg8ggykkyq8x" path="res://Assets/Demons/Decals/Web_Small.png" id="2_3r88c"]
 [ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://Assets/Plants/Plant_Animations/EyeSunTowerIdle-Sheet.png" id="2_bufnm"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_kvwqv"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="3"]
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_muovt"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="4"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_kbw6t"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bv3ias3dilty5" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_MAW-Sheet.png" id="5_p48hc"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="6"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="6_bufnm"]
+[ext_resource type="Texture2D" uid="uid://wh85hj3u24vx" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_SPYDER-Sheet.png" id="6_ixnkm"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://cbytmdkwyv53a" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_WALNUT-Sheet.png" id="7_3r88c"]
+[ext_resource type="Texture2D" uid="uid://ceviomuixqede" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_Base-Sheet.png" id="7_ixnkm"]
+[ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
+[ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_WYRM-Sheet.png" id="9_00tae"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3r88c"]
+radius = 61.2046
+
+[sub_resource type="Curve2D" id="Curve2D_iv1q7"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 33.5902, 60.7583, 0, 33.5568, 0, -33.5568, 0, 0, 60.8188, 0, 33.5902, 0, -33.5902, -60.7583, 0, -33.5568, 0, 33.5568, 0, 0, -60.8188, 0, -33.5902, 0, 0, 60.7583, 0)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_nyuxt"]
+resource_local_to_scene = true
+script = ExtResource("4_kbw6t")
+arcs = Array[ExtResource("3_muovt")]([])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r88c"]
+size = Vector2(87, 77)
 
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)
@@ -104,6 +132,102 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("3")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsbcx"]
+atlas = ExtResource("5_p48hc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5herh"]
+atlas = ExtResource("5_p48hc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gvd4"]
+atlas = ExtResource("5_p48hc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h268"]
+atlas = ExtResource("5_p48hc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aetst"]
+atlas = ExtResource("6_ixnkm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82s4g"]
+atlas = ExtResource("6_ixnkm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8hw6"]
+atlas = ExtResource("6_ixnkm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_310g2"]
+atlas = ExtResource("6_ixnkm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2qer"]
+atlas = ExtResource("7_ixnkm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to1yt"]
+atlas = ExtResource("7_ixnkm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qtei"]
+atlas = ExtResource("7_ixnkm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5xyv"]
+atlas = ExtResource("7_ixnkm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evxkh"]
+atlas = ExtResource("7_3r88c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc301"]
+atlas = ExtResource("7_3r88c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n8uh"]
+atlas = ExtResource("7_3r88c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e38w"]
+atlas = ExtResource("7_3r88c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66jkl"]
+atlas = ExtResource("8_c21ec")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfnc7"]
+atlas = ExtResource("8_c21ec")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlc7g"]
+atlas = ExtResource("8_c21ec")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp1kj"]
+atlas = ExtResource("8_c21ec")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2gjr"]
+atlas = ExtResource("9_00tae")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdkpp"]
+atlas = ExtResource("9_00tae")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b7g6"]
+atlas = ExtResource("9_00tae")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhqcc"]
+atlas = ExtResource("9_00tae")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="127"]
 atlas = ExtResource("2")
 region = Rect2(0, 0, 32, 32)
@@ -179,7 +303,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_644qc")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -215,6 +339,108 @@ animations = [{
 }],
 "loop": true,
 "name": &"idleDebug",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsbcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5herh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gvd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h268")
+}],
+"loop": true,
+"name": &"idle_Maw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aetst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82s4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8hw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_310g2")
+}],
+"loop": true,
+"name": &"idle_Spider",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2qer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_to1yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qtei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5xyv")
+}],
+"loop": true,
+"name": &"idle_Sunflower",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evxkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc301")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n8uh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e38w")
+}],
+"loop": true,
+"name": &"idle_Walnut",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66jkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfnc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlc7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp1kj")
+}],
+"loop": true,
+"name": &"idle_Wasp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2gjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdkpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b7g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhqcc")
+}],
+"loop": true,
+"name": &"idle_Wyrm",
 "speed": 5.0
 }, {
 "frames": [{
@@ -746,10 +972,60 @@ animations = [{
 
 [node name="Sunflower" type="Area2D" groups=["Plants"]]
 position = Vector2(0, 1)
+collision_mask = 3
 script = ExtResource("1")
 buffedSunWaitTime = 9.0
 
+[node name="HealZone" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealZone"]
+visible = false
+shape = SubResource("CircleShape2D_3r88c")
+
+[node name="Ellipse" type="Node2D" parent="HealZone" node_paths=PackedStringArray("polygon", "line")]
+modulate = Color(1, 0, 0, 0.14902)
+script = ExtResource("2_kvwqv")
+polygon = NodePath("Fill")
+stroke_width = 0.0
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_iv1q7")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_nyuxt")
+shape_type = 2
+size = Vector2(121.517, 121.638)
+rx = 60.7583
+ry = 60.8188
+
+[node name="Fill" type="Polygon2D" parent="HealZone/Ellipse"]
+polygon = PackedVector2Array(60.7583, 0, 60.4447, 6.21852, 59.524, 12.2574, 58.0268, 18.086, 55.9838, 23.6738, 53.4253, 28.9903, 50.382, 34.0048, 46.8844, 38.6868, 42.963, 43.0058, 38.6483, 46.9311, 33.971, 50.4322, 28.9614, 53.4785, 23.6503, 56.0395, 18.068, 58.0846, 12.2452, 59.5832, 6.21234, 60.5048, 0, 60.8188, -6.21234, 60.5048, -12.2452, 59.5832, -18.068, 58.0846, -23.6503, 56.0395, -28.9614, 53.4785, -33.971, 50.4322, -38.6483, 46.9311, -42.963, 43.0058, -46.8844, 38.6868, -50.382, 34.0048, -53.4253, 28.9903, -55.9838, 23.6738, -58.0268, 18.086, -59.524, 12.2574, -60.4446, 6.21852, -60.7583, 0, -60.4447, -6.21852, -59.524, -12.2574, -58.0268, -18.086, -55.9838, -23.6738, -53.4253, -28.9903, -50.382, -34.0048, -46.8844, -38.6868, -42.963, -43.0058, -38.6483, -46.9311, -33.971, -50.4322, -28.9614, -53.4785, -23.6503, -56.0395, -18.068, -58.0846, -12.2452, -59.5832, -6.21234, -60.5048, 0, -60.8188, 6.21234, -60.5048, 12.2452, -59.5832, 18.068, -58.0846, 23.6503, -56.0395, 28.9614, -53.4785, 33.971, -50.4322, 38.6483, -46.9311, 42.963, -43.0058, 46.8844, -38.6868, 50.382, -34.0048, 53.4253, -28.9903, 55.9838, -23.6738, 58.0268, -18.086, 59.524, -12.2574, 60.4446, -6.21852)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="HealZone/Ellipse"]
+points = PackedVector2Array(60.7583, 0, 60.4447, 6.21852, 59.524, 12.2574, 58.0268, 18.086, 55.9838, 23.6738, 53.4253, 28.9903, 50.382, 34.0048, 46.8844, 38.6868, 42.963, 43.0058, 38.6483, 46.9311, 33.971, 50.4322, 28.9614, 53.4785, 23.6503, 56.0395, 18.068, 58.0846, 12.2452, 59.5832, 6.21234, 60.5048, 0, 60.8188, -6.21234, 60.5048, -12.2452, 59.5832, -18.068, 58.0846, -23.6503, 56.0395, -28.9614, 53.4785, -33.971, 50.4322, -38.6483, 46.9311, -42.963, 43.0058, -46.8844, 38.6868, -50.382, 34.0048, -53.4253, 28.9903, -55.9838, 23.6738, -58.0268, 18.086, -59.524, 12.2574, -60.4446, 6.21852, -60.7583, 0, -60.4447, -6.21852, -59.524, -12.2574, -58.0268, -18.086, -55.9838, -23.6738, -53.4253, -28.9903, -50.382, -34.0048, -46.8844, -38.6868, -42.963, -43.0058, -38.6483, -46.9311, -33.971, -50.4322, -28.9614, -53.4785, -23.6503, -56.0395, -18.068, -58.0846, -12.2452, -59.5832, -6.21234, -60.5048, 0, -60.8188, 6.21234, -60.5048, 12.2452, -59.5832, 18.068, -58.0846, 23.6503, -56.0395, 28.9614, -53.4785, 33.971, -50.4322, 38.6483, -46.9311, 42.963, -43.0058, 46.8844, -38.6868, 50.382, -34.0048, 53.4253, -28.9903, 55.9838, -23.6738, 58.0268, -18.086, 59.524, -12.2574, 60.4446, -6.21852)
+closed = true
+width = 0.0
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
+
+[node name="SlowField" type="Area2D" parent="."]
+visible = false
+collision_mask = 3
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowField"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_3r88c")
+
+[node name="Webs" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.117647)
+z_index = -1
+position = Vector2(0, 3)
+texture = ExtResource("2_3r88c")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, 0.499999)
 scale = Vector2(3, 3)
 shape = SubResource("89")
@@ -832,7 +1108,7 @@ sprite_frames = SubResource("6")
 animation = &"idle"
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("7")]
-giveBuffTo = ["Peashooter", "Maw", "EggWorm", "EyeBomb", "Wasp", "WalnutTree", "Sunflower", "None"]
+giveBuffTo = ["", "Peashooter", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
 visible = false
@@ -905,7 +1181,23 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="HealTimer" type="Timer" parent="."]
+
+[node name="HealInvisTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="ResetEatingSpeed" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="area_entered" from="HealZone" to="." method="_on_heal_zone_area_entered"]
+[connection signal="area_entered" from="SlowField" to="." method="_on_slow_field_area_entered"]
+[connection signal="body_entered" from="SlowField" to="." method="_on_slow_field_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
+[connection signal="timeout" from="HealInvisTimer" to="." method="_on_heal_invis_timer_timeout"]
+[connection signal="timeout" from="ResetEatingSpeed" to="." method="_on_reset_eating_speed_timeout"]
 
 [editable path="BuffNodesComponent"]

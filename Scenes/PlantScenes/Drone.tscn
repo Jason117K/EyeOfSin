@@ -187,11 +187,11 @@ rotation = 1.5708
 shape = SubResource("20")
 
 [node name="HurtBox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, 0)
 shape = SubResource("22")
 
 [node name="HitBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

@@ -35,10 +35,18 @@ project/assembly_name="PVZ0.1"
 
 movie_writer/movie_file="C:/GodotGamesProjects/EyeOfSin/Clip1.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/curved_lines_2d/plugin.cfg")
+
 [global]
 
 stretch=false
 "stretch mode"=false
+
+[global_group]
+
+Plants=""
 
 [gui]
 

@@ -4,6 +4,8 @@ extends Area2D
 #Adjustable sun value 
 @export var SunValue = 50
 
+var plants_to_heal = []
+
 
 func _ready() -> void:
 	input_pickable = true
@@ -24,9 +26,18 @@ func _on_Sun_mouse_entered():
 		#$CollectAudioPlayer.play()
 		plant_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
 		plant_manager.play_sun_collect()
+		heal_plants()
 	# Queue the sun for deletion (simulate absorption)
 	queue_free()
 
+func heal_plants():
+	for plant in plants_to_heal:
+		if plant == null:
+			plants_to_heal.erase(plant)
+		if plant != null:
+			
+			plant.health = plant.health + 100
+		pass
 
 func _on_auto_pick_up_timer_timeout() -> void:
 	#$CollectAudioPlayer.play()
@@ -41,6 +52,7 @@ func _on_auto_pick_up_timer_timeout() -> void:
 		#$CollectAudioPlayer.play()
 		plant_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
 		plant_manager.play_sun_collect()
+		heal_plants()
 	# Queue the sun for deletion (simulate absorption)
 	queue_free()
 
@@ -48,10 +60,18 @@ func setWorth(bloodWorth):
 	SunValue = bloodWorth
 	
 	
+func wyrm_buff():
+	self.scale = Vector2(1.2,1.2)
+	SunValue = 75 
+	
+func hive_buff():
+	pass
 	
 	
 	
 	
-	
-	
-	
+
+
+func _on_heal_zone_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Plants"):
+		plants_to_heal.append(area)
