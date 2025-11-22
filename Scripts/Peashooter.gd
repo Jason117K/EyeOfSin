@@ -17,6 +17,7 @@ var walnutBuffed = false
 var sunBuffed = false
 var wyrmBuffed = false
 var mawBuffed = false
+var canAttackSetTrueOnce = false
 #f
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
@@ -59,25 +60,32 @@ func _process(_delta):
 		return
 	else:
 		if attack_ray.is_colliding():
-			var collider = attack_ray.get_collider()
-			if collider:
-				#print("Collider Name is XXX", collider.name)
-				if collider.is_in_group("Zombie"):
+			var collision_count = attack_ray.get_collision_count()
+			for i in range(collision_count):
+				var collider = attack_ray.get_collider(i)
+				if collider and collider.is_in_group("Zombie"):
 					#print("Collider Name is XXX", collider.name)
 					#if collider.get_parent().get_parent() != self.get_parent().get_parent(): #Dimension Check
 					#	print(" XXX collider.get_parent().get_parent() is ",  collider.get_parent().get_parent() , " and self.get_parent().get_parent() is ", self.get_parent().get_parent())
 					#	return
 					if collider.is_in_group("Green"):
+						if self.is_in_group("Green"):
+							canAttack = true
+					if collider.is_in_group("Purple"):
 						if self.is_in_group("Purple"):
-							return
+							canAttack = true
+					if collider.is_in_group("Green"):
+						if self.is_in_group("Purple"):
+							continue
 					elif collider.is_in_group("Purple"):
 						if self.is_in_group("Green"):
-							return
+							continue
 					canAttack = true
+					#canAttackSetTrueOnce = 
 					#print("Can AttackZ Is True XXX ",canAttack)
 					
-				else:
-					canAttack = false
+			#	else:
+				#	canAttack = false
 
 #Cost getter 
 func get_cost():
@@ -136,6 +144,7 @@ func shoot_projectile():
 		
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer
+	canAttack = false
 	
 func second_shoot_projectile():
 	print("Shoot 2nd Proj From Spider ")

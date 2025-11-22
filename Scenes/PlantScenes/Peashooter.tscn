@@ -1,4 +1,4 @@
-[gd_scene load_steps=205 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=206 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
@@ -1218,6 +1218,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a06ib"]
+size = Vector2(20, 1.275)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqdb"]
 atlas = ExtResource("9")
 region = Rect2(0, 0, 32, 32)
@@ -1509,9 +1512,10 @@ sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="DMG_RayCast2D" type="RayCast2D" parent="."]
+[node name="DMG_RayCast2D" type="ShapeCast2D" parent="."]
 scale = Vector2(1, 20)
-target_position = Vector2(500, 0.05)
+shape = SubResource("RectangleShape2D_a06ib")
+target_position = Vector2(500, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
