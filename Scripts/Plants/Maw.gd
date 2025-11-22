@@ -311,7 +311,8 @@ func generate_sun():
 func _on_detection_component_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 	#	print("Maw Assigning Tentacle to  ", area)
-		assign_tentacle_to_target(area)
+		if area.get_parent().get_parent() == self.get_parent().get_parent(): #Dimension Check
+			assign_tentacle_to_target(area)
 		
 func die():
 	print(" QQ MAW IS DYING 1111111111111111")

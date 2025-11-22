@@ -187,7 +187,7 @@ script = ExtResource("6_s7w3h")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0.0500001, 1, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 texture = ExtResource("3_geop3")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -91,13 +91,13 @@ func _process(_delta):
 	if not is_attacking:
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
-			print(parent.name , " Its collding with ", collider.name )
+			#print(parent.name , " Its collding with ", collider.name )
 			if collider:
 				if collider.is_in_group("Plants"):
-					print("Collider In Right Group")
+					#print("Collider In Right Group")
 					if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
 						if collider.get_parent().get_parent().get_parent() != self.get_parent().get_parent().get_parent():
-							print("Collider Early Return")
+							#print("Collider Early Return")
 							return
 				#	print(collider.name , " is in group plants")
 					if("PoleVaultZombie" in parent.name):

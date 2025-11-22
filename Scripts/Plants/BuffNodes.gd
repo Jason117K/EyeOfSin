@@ -94,7 +94,7 @@ func _process(_delta):
 					#print("Plant buff name is : ", plantToBuff.name)
 					
 					# If the plantToBuff is a valid plant & not a drone
-					if(         plantToBuff.is_in_group("Plants") &&    !("Drone" in plantToBuff.name)    ):
+					if(         plantToBuff.is_in_group("Plants") &&    !("Drone" in plantToBuff.name) && plantToBuff.get_parent() ==   plant.get_parent()  ):
 						#print("Plant to Buff is ", plantToBuff.name)
 						bloodTileVisible = true 
 						#Check our list of valid plants to buff

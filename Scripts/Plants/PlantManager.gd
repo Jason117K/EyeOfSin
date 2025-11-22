@@ -229,6 +229,7 @@ func place_empty_blocker_plant(grid_pos):
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			grid_map[grid_pos] = plant_instance
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
+			#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
 			plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
@@ -279,6 +280,8 @@ func place_plant(grid_pos: Vector2):
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
+		else:
+			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 
 	
 	#Get The Cost 

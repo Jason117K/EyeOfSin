@@ -216,9 +216,9 @@ func adjust_position(new_form):
 
 
 func _on_slow_field_area_entered(area: Area2D) -> void:
-	print(area , " just entered snow field")
+	#print(area , " just entered snow field")
 	if area.is_in_group("Zombie"):
-		print("Zombie Entered Slow Field")
+		#print("Zombie Entered Slow Field")
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
 		var compManager = area.getCompManager()
@@ -228,9 +228,9 @@ func _on_slow_field_area_entered(area: Area2D) -> void:
 
 
 func _on_slow_field_body_entered(body: Node2D) -> void:
-	print(body , " just entered snow field b ")
+	#print(body , " just entered snow field b ")
 	if body.is_in_group("Zombie"):
-		print("Zombie Entered Slow Field")
+		#print("Zombie Entered Slow Field")
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
 		var compManager = body.getCompManager()

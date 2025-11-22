@@ -63,7 +63,7 @@ func _process(_delta):
 			if collider:
 				#print("Collider Name is ", collider.name)
 				if collider.is_in_group("Zombie"):
-					if collider.get_parent().get_parent() != self.get_parent().get_parent():
+					if collider.get_parent().get_parent() != self.get_parent().get_parent(): #Dimension Check
 						return
 					canAttack = true
 					#print("Can AttackZ Is True",canAttack)
