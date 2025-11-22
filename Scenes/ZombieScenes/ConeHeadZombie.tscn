@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="10"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="12_ebmmd"]
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" id="13"]
@@ -352,7 +352,6 @@ health = 250
 bloodWorth = 4.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("8")]
-speed = 46
 
 [node name="AttackComponent" parent="." instance=ExtResource("9")]
 

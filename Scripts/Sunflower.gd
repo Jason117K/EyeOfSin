@@ -12,13 +12,14 @@ var PlantManager
 @onready var animSpriteComp = $AnimatedSprite2D
 @onready var sunTimer = $SunTimer
 @onready var resetEatingTimer = $ResetEatingSpeed
-@export var sunWaitTime := 20.0
-@export var wyrmSunWaitTime := 30.0
-@export var hiveSunWaitTime := 14.0
-@export var buffedSunWaitTime := 12.0 
+@export var sunWaitTime := 40.0
+@export var wyrmSunWaitTime :=  60.0
+@export var hiveSunWaitTime := 28.0
+@export var buffedSunWaitTime := 24.0 
 @onready var buffNodes = $BuffNodesComponent
 @onready var healTimer = $HealTimer
 @onready var healInvisTimer = $HealInvisTimer
+@onready var webbing_aoe_sprite = $Webs
 
 var tween
 var isBuffed = false 
@@ -95,8 +96,9 @@ func receiveBuff(newPlant):
 				animSpriteComp.change_form("Sunflower")
 				
 			"Peashooter":
-				print("Change to SPIDER")
+				print("Change to SPIDERRR")
 				$Webs.visible = true 
+				webbing_aoe_sprite.visible = true 
 				$SlowField.monitoring = true 
 				animSpriteComp.change_form("Peashooter")
 			"WalnutTree" :

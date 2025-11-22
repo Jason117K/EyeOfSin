@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://36ihcf5firig"]
 
-[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="1_5fvj3"]
+[ext_resource type="Texture2D" uid="uid://ceviomuixqede" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_Base-Sheet.png" id="1_5fvj3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1dy7"]
 atlas = ExtResource("1_5fvj3")

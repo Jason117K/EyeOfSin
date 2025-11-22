@@ -142,7 +142,9 @@ size = Vector2(76, 76)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1")
-damage = 35
+speed = 325
+damage = 60
+lightning_damage = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2")

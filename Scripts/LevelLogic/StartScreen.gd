@@ -5,7 +5,10 @@ extends Control
 @onready var levelSelectButton = $CenterContainer/VBoxContainer/LevelSelectButton
 @onready var bgMusic = $BackGroundMuisc
 #Sets up the startscreen tiles
+#var ownerScript = preload("res://Scripts/LevelLogic/Main_Controller.gd")
+
 func _ready():
+	
 	# Get fresh reference
 	startGameButton = $CenterContainer/VBoxContainer/StartGame
 		# Always disconnect any existing connections first
@@ -45,7 +48,7 @@ func _ready():
 func _on_start_game_pressed() -> void:
 	print("I KNOW U WERE CLICKED")
 	#Global.game_controller.change_scene("res://Scenes/LevelScenes/Main.tscn")
-	Global.game_controller.change_dual_scenes("res://Scenes/LevelScenes/Main.tscn","res://Scenes/LevelScenes/Level6.tscn")
+	Global.game_controller.change_dual_scenes("res://Scenes/LevelScenes/Main.tscn", "res://Scenes/LevelScenes/Main_Alternate.tscn") #"res://Scenes/LevelScenes/Level6.tscn")
 
 
 

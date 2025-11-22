@@ -105,9 +105,15 @@ func _process(delta: float) -> void:
 		if collider:
 			print("ppp Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
-				if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
-					print("PPP Early Return")
-					return
+				if collider.is_in_group("Green"):
+					if self.is_in_group("Purple"):
+						return
+				elif collider.is_in_group("Purple"):
+					if self.is_in_group("Green"):
+						return
+				#if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
+					#print("PPP Early Return")
+					#return
 				canAttack = true 
 				#line2D.visible = true
 			else:

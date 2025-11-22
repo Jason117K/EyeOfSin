@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=3 uid="uid://b8rpsreq1t70n"]
 
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dayah1ly72ajm" path="res://Assets/Zombies/Ticker-Sheet.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_ln36l"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="3"]
@@ -343,10 +343,10 @@ texture = ExtResource("2_ln36l")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5")]
 health = 177
-bloodWorth = 2.0
+bloodWorth = 3.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4")]
-speed = 72
+speed = 30
 
 [node name="AttackComponent" parent="." instance=ExtResource("3")]
 attack_power = 700

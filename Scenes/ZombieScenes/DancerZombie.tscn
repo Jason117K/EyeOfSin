@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://Assets/Zombies/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 38)
@@ -265,7 +265,7 @@ health = 200
 bloodWorth = 15.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("1")]
-speed = 15
+speed = 8
 
 [node name="AttackComponent" parent="." instance=ExtResource("4")]
 

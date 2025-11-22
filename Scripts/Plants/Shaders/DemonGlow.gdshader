@@ -3,9 +3,9 @@ shader_type canvas_item;
 
 
 uniform vec4 glow_color : source_color = vec4(223,66,66,256);
-uniform vec4 modulate_factor = vec4(99, 99,99, 1.0);
+uniform vec4 modulate_factor = vec4(1.01, 1.01,1.01, 1.0);
 //uniform vec4 modulate_factor : source_color = vec4(1.1, 1.1, 1.1, 1.0);
-uniform float glow_tolerance = 0.9;
+uniform float glow_tolerance = 0.0;
 //uniform float glow_tolerance : hint_range(0.0, 1.0) = 0.5;
 
 // Optimized HSV conversion

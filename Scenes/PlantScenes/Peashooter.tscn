@@ -1456,7 +1456,9 @@ animations = [{
 }]
 
 [node name="Peashooter" type="Area2D" groups=["Plants"]]
+z_index = 1
 script = ExtResource("2")
+cost = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -1495,7 +1497,7 @@ autoplay = "New Anim 2"
 
 [node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
-position = Vector2(64, 0)
+position = Vector2(-64, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
@@ -1508,7 +1510,6 @@ animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]
-visible = false
 scale = Vector2(1, 20)
 target_position = Vector2(500, 0.05)
 collision_mask = 2
@@ -1576,11 +1577,17 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
+[node name="TileArea9" parent="BuffNodesComponent" index="16"]
+visible = false
+
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 15
 frame_progress = 0.606092
+
+[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+visible = false
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

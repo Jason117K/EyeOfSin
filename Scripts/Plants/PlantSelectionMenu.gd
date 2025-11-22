@@ -47,6 +47,8 @@ var eggCostLabel
 var mawCostLabel
 var hiveCostLabel 
 
+var canSwapScenes = false
+
 # Thickness of the highlight border (in pixels)
 @export var highlight_border_thickness: int = 4
 
@@ -187,7 +189,8 @@ func _input(event):
 			selected_plant = null 
 		if event.keycode == KEY_Y:
 			print("Y Key Pressed")
-			Global.game_controller.swap_scenes()
+			if canSwapScenes:
+				Global.game_controller.swap_scenes()
 		
 			
 

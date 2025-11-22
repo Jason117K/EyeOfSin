@@ -119,8 +119,12 @@ func spawn_zombie():
 				if "Screen" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)					
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
+				
 				if make_green :
+					zombie_instance.add_to_group("Green")
 					zombie_instance.set_hue_shift(125)
+				else:
+					zombie_instance.add_to_group("Purple")
 				#$WaveDelay.start()
 				print("Spawn Wave 1")
 				random_adjustment2 = get_weighted_range_speed()
@@ -147,6 +151,11 @@ func spawn_zombie():
 				if "Screen" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)					
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
+				if make_green :
+					zombie_instance.add_to_group("Green")
+					zombie_instance.set_hue_shift(125)
+				else:
+					zombie_instance.add_to_group("Purple")
 				print("Spawn wave 2")
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2
@@ -168,6 +177,11 @@ func spawn_zombie():
 				
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
+				if make_green :
+					zombie_instance.add_to_group("Green")
+					zombie_instance.set_hue_shift(125)
+				else:
+					zombie_instance.add_to_group("Purple")
 				print("Spawn wave 3")
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2

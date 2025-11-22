@@ -329,9 +329,9 @@ z_index = 1
 [node name="ZombieSpawner" parent="GameLayer" instance=ExtResource("4")]
 position = Vector2(746, 77)
 Round1_Zombies = {
-"Base": 2,
+"Base": 1,
 "BucketHead": 1,
-"ConeHead": 3,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -339,9 +339,9 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 3,
-"BucketHead": 3,
-"ConeHead": 3,
+"Base": 2,
+"BucketHead": 2,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,

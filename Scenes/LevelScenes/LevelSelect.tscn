@@ -56,9 +56,10 @@ theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_1cl4n")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
-text = "Level 1"
+text = "Tutorial"
 
 [node name="Level2" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -75,6 +76,7 @@ theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 2"
 
 [node name="Level3" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -91,6 +93,7 @@ theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 3"
 
 [node name="Level4" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -114,6 +117,7 @@ layout_mode = 2
 theme_override_constants/separation = 50
 
 [node name="Level5" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -131,6 +135,7 @@ text = "Level 5
 "
 
 [node name="Level6" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)

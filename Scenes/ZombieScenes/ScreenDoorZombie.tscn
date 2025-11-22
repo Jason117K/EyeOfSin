@@ -705,11 +705,12 @@ texture = ExtResource("2_40guy")
 [node name="ComponentManager" parent="." instance=ExtResource("8")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("7")]
-health = 400
+health = 300
 healthRegen = 0.5
 bloodWorth = 10.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("3")]
+speed = 14
 
 [node name="AttackComponent" parent="." instance=ExtResource("5")]
 attack_power = 35

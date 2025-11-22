@@ -1,46 +1,46 @@
-[gd_scene load_steps=36 format=4 uid="uid://cbc05gyx2o4qf"]
+[gd_scene load_steps=36 format=4 uid="uid://dg0glx80ett8w"]
 
-[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="2_eomv4"]
-[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="8_dph8t"]
-[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="9"]
-[ext_resource type="Script" uid="uid://cfv5r2hytpurl" path="res://Scripts/LevelLogic/Main.gd" id="10"]
-[ext_resource type="Shader" uid="uid://b1grbrx70s8m4" path="res://Scripts/Shaders/swayShader.tres" id="10_n1ol4"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="11"]
-[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="12_jgfqe"]
-[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_jv7rq"]
-[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15"]
-[ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="15_htelm"]
-[ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="16_fv2in"]
-[ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="17_1qjpa"]
-[ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="17_o4yey"]
-[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="18_n1ol4"]
-[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="19_0lj60"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="20_0lj60"]
-[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="22_jv7rq"]
-[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="24_a0suq"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="25_fv2in"]
+[ext_resource type="Script" uid="uid://carf0g7rubwc1" path="res://Scripts/LevelLogic/main_alternate.gd" id="1_26khc"]
+[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_58tep"]
+[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_hc2ud"]
+[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_p41yo"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="5_4rxf1"]
+[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="6_h4ha6"]
+[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="7_lbeyc"]
+[ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://Assets/Environment/Props/Pustules-export.png" id="8_26khc"]
+[ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://Assets/Environment/Props/Pustules_shadow1_Medium.png" id="9_58tep"]
+[ext_resource type="Shader" uid="uid://b1grbrx70s8m4" path="res://Scripts/Shaders/swayShader.tres" id="10_ubtpr"]
+[ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://Assets/Environment/Props/Pustules_shadow1_big.png" id="11_hc2ud"]
+[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_y3moa"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="13_hsjfq"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14_3dcs2"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15_8i7oh"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="16_gk22u"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="17_cvi5h"]
+[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="18_byc6k"]
+[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_6jm1j"]
+[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_hoi0r"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="21_f1dyy"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_mlsxw"]
+[ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="23_xxkc0"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="24_m4q8n"]
+[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="25_nqcla"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="26_075f7"]
+[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_4ebjk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
-shader = ExtResource("10_n1ol4")
+shader = ExtResource("10_ubtpr")
 
 [sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("24_a0suq")
+atlas = ExtResource("19_6jm1j")
 region = Rect2(0, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("24_a0suq")
+atlas = ExtResource("19_6jm1j")
 region = Rect2(32, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("24_a0suq")
+atlas = ExtResource("19_6jm1j")
 region = Rect2(64, 0, 32, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b1vmi"]
@@ -76,13 +76,13 @@ border_width_bottom = 2
 border_color = Color(0.8, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("25_fv2in")
+shader = ExtResource("27_4ebjk")
 shader_parameter/hpass = 1.0
 shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
-[node name="Main" type="Control" groups=["Green", "Purple"]]
+[node name="MainAlternate" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,16 +90,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("10")
+script = ExtResource("1_26khc")
 
-[node name="PlantManager" parent="." instance=ExtResource("1")]
-sun_points = 275
+[node name="PlantManager" parent="." instance=ExtResource("2_58tep")]
+sun_points = 325
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
 
-[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("4")]
+[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_hc2ud")]
 position = Vector2(748, 109)
+make_green = true
 Round1_Zombies = {
 "Base": 3,
 "BucketHead": 0,
@@ -113,7 +114,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 3,
 "BucketHead": 0,
-"ConeHead": 3,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -123,7 +124,7 @@ Round2_Zombies = {
 Round3_Zombies = {
 "Base": 3,
 "BucketHead": 1,
-"ConeHead": 4,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -131,16 +132,27 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("8")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_p41yo")]
 z_index = 1
 position = Vector2(-54, 0)
 
-[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("4")]
+[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_hc2ud")]
 position = Vector2(746, 141)
+make_green = true
+Round1_Zombies = {
+"Base": 3,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 5,
+"ConeHead": 4,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -150,7 +162,7 @@ Round2_Zombies = {
 Round3_Zombies = {
 "Base": 0,
 "BucketHead": 2,
-"ConeHead": 5,
+"ConeHead": 3,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -158,12 +170,13 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("8")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_p41yo")]
 z_index = 1
 position = Vector2(-48, 0)
 
-[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("4")]
+[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_hc2ud")]
 position = Vector2(746, 173)
+make_green = true
 Round1_Zombies = {
 "Base": 4,
 "BucketHead": 0,
@@ -177,7 +190,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 5,
 "BucketHead": 0,
-"ConeHead": 3,
+"ConeHead": 4,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -185,9 +198,9 @@ Round2_Zombies = {
 "Ticker": 0
 }
 Round3_Zombies = {
-"Base": 5,
+"Base": 6,
 "BucketHead": 1,
-"ConeHead": 2,
+"ConeHead": 3,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -195,18 +208,19 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("8")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_p41yo")]
 z_index = 1
 position = Vector2(-46, 4)
 
-[node name="GridManager" parent="GameLayer" instance=ExtResource("3")]
+[node name="GridManager" parent="GameLayer" instance=ExtResource("5_4rxf1")]
+make_green = true
 
 [node name="TileMapLayer" parent="GameLayer/GridManager" index="0"]
 tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAAAAAADAAsAAQACAAAAAAAFAAsAAQACAAAAAAAGAAsAAQACAAAAAAAHAAsAAQACAAAAAAAIAAsAAQACAAAAAAAWAAsAAQACAAAAAAAXAAsAAQACAAAAAAAVAAsAAQACAAAAAAAUAAsAAQACAAAAAAATAAsAAQACAAAAAAASAAsAAQACAAAAAAARAAsAAQACAAAAAAAQAAsAAQACAAAAAAAPAAsAAQACAAAAAAAOAAsAAQACAAAAAAANAAsAAQACAAAAAAAMAAsAAQAAAAkAAAALAAsAAQAGAAkAAAAKAAsAAQAAAAkAAAAJAAsAAQACAAAAAAAEAAoAAQAAAAkAAAADAAoAAQACAAAAAAACAAoAAQACAAAAAAABAAoAAQACAAAAAAAFAAoAAQARAAgAAAAHAAoAAQACAAAAAAAIAAoAAQACAAAAAAAJAAoAAQACAAAAAAAKAAoAAQACAAAAAAALAAoAAQACAAAAAAAMAAoAAQACAAAAAAANAAoAAQACAAAAAAAOAAoAAQACAAAAAAAPAAoAAQACAAAAAAAQAAoAAQACAAAAAAARAAoAAQACAAAAAAASAAoAAQACAAAAAAATAAoAAQACAAAAAAAUAAoAAQACAAAAAAAVAAoAAQACAAAAAAAWAAoAAQARAAgAAAARAAkAAQACAAAAAAAQAAkAAQACAAAAAAAPAAkAAQACAAMAAAAOAAkAAQACAAAAAAANAAkAAQACAAAAAAAMAAkAAQACAAAAAAALAAkAAQACAAAAAAAKAAkAAQACAAAAAAAJAAkAAQACAAAAAAAAAAoAAQACAAAAAAAAAAkAAQACAAAAAAABAAkAAQACAAAAAAACAAkAAQACAAAAAAADAAkAAQACAAAAAAAEAAkAAQACAAAAAAAFAAkAAQACAAAAAAAGAAkAAQACAAAAAAAHAAkAAQACAAAAAAAIAAkAAQACAAAAAAASAAkAAQACAAAAAAATAAkAAQACAAAAAAAUAAkAAQACAAAAAAAVAAkAAQACAAAAAAAWAAkAAQACAAAAAAAXAAkAAQACAAAAAAAEAAsAAQACAAAAAAAGAAoAAQARAAgAAAADAAgAAQAGAAkAAAABAAcAAQAGAAkAAAAIAAcAAQARAAgAAAADAAYAAQARAAcAAAAFAAUAAQADAAYAAAAGAAgAAQAAAAkAAAAOAAYAAQAJAAcAAAALAAUAAQADAAYAAAAMAAgAAQAAAAkAAAAVAAcAAQARAAgAAAASAAYAAQAFAAcAAAAQAAgAAQAAAAkAAAAJAAYAAQAIAAcAAAAFAAcAAQARAAgAAAAHAAgAAQAGAAkAAAAIAAgAAQAAAAkAAAAJAAgAAQAGAAkAAAAKAAgAAQAAAAkAAAALAAgAAQAGAAkAAAAFAAgAAQAGAAkAAAAEAAgAAQAAAAkAAAACAAgAAQAAAAkAAAAAAAgAAQAAAAkAAAABAAgAAQAGAAkAAAAAAAcAAQAAAAkAAAAAAAYAAQANAAcAAAABAAYAAQABAAcAAAACAAcAAQAAAAkAAAADAAcAAQAGAAkAAAAEAAcAAQAAAAkAAAACAAYAAQAJAAcAAAAEAAYAAQAFAAcAAAAGAAYAAQAKAAcAAAAGAAcAAQARAAgAAAAFAAYAAQAJAAcAAAAHAAYAAQABAAcAAAAIAAYAAQACAAcAAAAHAAcAAQARAAgAAAAJAAcAAQADAAgAAAAKAAYAAQAAAAcAAAALAAcAAQARAAgAAAAKAAcAAQARAAgAAAALAAYAAQAJAAcAAAAMAAYAAQARAAcAAAANAAYAAQACAAcAAAANAAcAAQADAAgAAAAMAAcAAQADAAgAAAANAAgAAQAGAAkAAAAOAAgAAQAAAAkAAAAPAAgAAQAGAAkAAAAOAAcAAQARAAgAAAAPAAcAAQARAAgAAAAPAAYAAQACAAMAAAAQAAYAAQAKAAcAAAARAAYAAQALAAcAAAARAAcAAQARAAgAAAAQAAcAAQARAAgAAAARAAgAAQAGAAkAAAASAAgAAQAAAAkAAAASAAcAAQARAAgAAAATAAYAAQAJAAcAAAATAAcAAQARAAgAAAATAAgAAQAGAAkAAAAUAAgAAQAAAAkAAAAUAAcAAQARAAgAAAAUAAYAAQAKAAcAAAAVAAYAAQAJAAcAAAAWAAYAAQAQAAcAAAAWAAcAAQARAAgAAAAWAAgAAQAAAAkAAAAVAAgAAQAGAAkAAAAXAAIAAQAJAAMAAAAWAAIAAQAKAAMAAAAVAAIAAQAGAAMAAAAUAAIAAQAJAAMAAAATAAIAAQANAAMAAAASAAIAAQABAAMAAAARAAIAAQAJAAMAAAAQAAIAAQACAAMAAAAPAAIAAQAJAAMAAAAOAAIAAQAEAAMAAAANAAIAAQALAAMAAAAMAAIAAQAIAAMAAAALAAIAAQALAAMAAAAKAAIAAQAJAAMAAAAJAAIAAQAPAAMAAAAIAAIAAQAHAAMAAAAHAAIAAQABAAMAAAAGAAIAAQACAAMAAAAFAAIAAQAAAAMAAAAEAAIAAQAGAAMAAAADAAIAAQABAAMAAAACAAIAAQAJAAMAAAABAAIAAQAIAAMAAAAAAAIAAQALAAMAAAAXAAoAAQACAAAAAAAXAAgAAQAAAAkAAAAXAAcAAQARAAgAAAAXAAYAAQAJAAcAAAAWAAUAAQARAAYAAAAVAAUAAQARAAYAAAAUAAUAAQADAAYAAAATAAUAAQADAAYAAAASAAUAAQADAAYAAAARAAUAAQADAAYAAAAQAAUAAQADAAYAAAAPAAUAAQADAAYAAAAOAAUAAQADAAYAAAANAAUAAQADAAYAAAAMAAUAAQADAAYAAAAKAAUAAQADAAYAAAAXAAUAAQARAAYAAAAJAAUAAQADAAYAAAAIAAUAAQADAAYAAAAHAAUAAQADAAYAAAAXAAQAAQABAAUAAAAWAAQAAQABAAUAAAAVAAQAAQABAAUAAAAUAAQAAQABAAUAAAATAAQAAQABAAUAAAASAAQAAQABAAUAAAARAAQAAQABAAUAAAAQAAQAAQABAAUAAAAPAAQAAQABAAUAAAAGAAUAAQADAAYAAAAEAAUAAQADAAYAAAADAAUAAQADAAYAAAACAAUAAQADAAYAAAABAAUAAQADAAYAAAAAAAUAAQADAAYAAAAAAAQAAQABAAUAAAABAAQAAQABAAUAAAACAAQAAQABAAUAAAADAAQAAQABAAUAAAAEAAQAAQABAAUAAAAFAAQAAQABAAUAAAAGAAQAAQABAAUAAAAHAAQAAQABAAUAAAAIAAQAAQABAAUAAAAJAAQAAQABAAUAAAAKAAQAAQABAAUAAAALAAQAAQABAAUAAAAMAAQAAQABAAUAAAANAAQAAQABAAUAAAAOAAQAAQABAAUAAAAAAAMAAQAAAAQAAAABAAMAAQAAAAQAAAACAAMAAQAAAAQAAAADAAMAAQAAAAQAAAAEAAMAAQAAAAQAAAAFAAMAAQAAAAQAAAAGAAMAAQAAAAQAAAAHAAMAAQAAAAQAAAAIAAMAAQAAAAQAAAAJAAMAAQAAAAQAAAAKAAMAAQAAAAQAAAALAAMAAQAAAAQAAAAQAAMAAQAAAAQAAAARAAMAAQAAAAQAAAASAAMAAQAAAAQAAAATAAMAAQAAAAQAAAAUAAMAAQAAAAQAAAAVAAMAAQAAAAQAAAAWAAMAAQAAAAQAAAAXAAMAAQAAAAQAAAAPAAMAAQAAAAQAAAAOAAMAAQAAAAQAAAANAAMAAQAAAAQAAAAMAAMAAQAAAAQAAAAXAAEAAQARAAEAAAAWAAEAAQAMAAEAAAAVAAEAAQARAAEAAAAUAAEAAQAMAAEAAAATAAEAAQARAAEAAAASAAEAAQAMAAEAAAARAAEAAQARAAEAAAAQAAEAAQARAAEAAAAPAAEAAQAMAAEAAAAOAAEAAQARAAEAAAANAAEAAQARAAEAAAAMAAEAAQAMAAEAAAALAAEAAQARAAEAAAAKAAEAAQAMAAEAAAAJAAEAAQAMAAEAAAAIAAEAAQARAAEAAAAHAAEAAQARAAEAAAAGAAEAAQAMAAEAAAAFAAEAAQARAAEAAAAEAAEAAQAMAAEAAAADAAEAAQARAAEAAAACAAEAAQAMAAEAAAABAAEAAQARAAEAAAAAAAEAAQARAAEAAAAXAAAAAQARAAEAAAAWAAAAAQAMAAEAAAAVAAAAAQARAAEAAAAUAAAAAQAMAAEAAAATAAAAAQARAAEAAAASAAAAAQAMAAEAAAARAAAAAQARAAEAAAAQAAAAAQARAAEAAAAPAAAAAQAMAAEAAAAOAAAAAQARAAEAAAANAAAAAQARAAEAAAAMAAAAAQAMAAEAAAALAAAAAQARAAEAAAAKAAAAAQAMAAEAAAAJAAAAAQAMAAEAAAAIAAAAAQARAAEAAAAHAAAAAQARAAEAAAAGAAAAAQAMAAEAAAAFAAAAAQARAAEAAAAEAAAAAQAMAAEAAAADAAAAAQARAAEAAAACAAAAAQAMAAEAAAABAAAAAQARAAEAAAAAAAAAAQARAAEAAAAXAAwAAQACAAAAAAAWAAwAAQACAAAAAAAVAAwAAQACAAAAAAAUAAwAAQACAAAAAAATAAwAAQARAAoAAAASAAwAAQARAAoAAAARAAwAAQARAAoAAAAQAAwAAQARAAoAAAAPAAwAAQARAAoAAAAOAAwAAQARAAoAAAANAAwAAQARAAoAAAAMAAwAAQARAAoAAAALAAwAAQARAAoAAAAKAAwAAQARAAoAAAAJAAwAAQARAAoAAAAIAAwAAQARAAoAAAAHAAwAAQARAAoAAAAGAAwAAQARAAoAAAAFAAwAAQARAAoAAAAEAAwAAQARAAoAAAADAAwAAQARAAoAAAACAAwAAQARAAoAAAABAAwAAQARAAoAAAAAAAwAAQARAAoAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAA=")
 
-[node name="WaveManager" parent="GameLayer" instance=ExtResource("2")]
+[node name="WaveManager" parent="GameLayer" instance=ExtResource("6_h4ha6")]
 position = Vector2(-64, 200)
-script = ExtResource("9")
+script = ExtResource("7_lbeyc")
 StartDelay = 15
 Wave2StartTime = 33
 Wave3StartTime = 38
@@ -220,216 +234,218 @@ Wave3_Interval = 20.0
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(543, 347)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 
 [node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(499, 335)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 
 [node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(670, 400)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 flip_h = true
 
 [node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(601, 401)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 flip_h = true
 
 [node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(718, 321)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 
 [node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(420, 382)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 
 [node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(113, 323)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 
 [node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(262, 8)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 flip_h = true
 
 [node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(497, 16)
-texture = ExtResource("15_htelm")
+texture = ExtResource("8_26khc")
 
 [node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(618, 344)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 
 [node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(406, 333)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 flip_h = true
 
 [node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(707, 397)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 flip_h = true
 
 [node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(724, 4)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 flip_h = true
 
 [node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(263, 323)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 flip_h = true
 
 [node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(490, 396)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 flip_h = true
 
 [node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(620, 3)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 flip_h = true
 
 [node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(609, 15)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 flip_h = true
 
 [node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(353, 14)
-texture = ExtResource("16_fv2in")
+texture = ExtResource("9_58tep")
 
 [node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
 material = SubResource("ShaderMaterial_a0suq")
 position = Vector2(563, 378)
-texture = ExtResource("17_o4yey")
-script = ExtResource("12_jv7rq")
+texture = ExtResource("11_hc2ud")
+script = ExtResource("12_y3moa")
 
 [node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(662, 343)
-texture = ExtResource("17_o4yey")
+texture = ExtResource("11_hc2ud")
 
 [node name="FetusProp" type="Sprite2D" parent="Environment/Coral"]
+visible = false
 position = Vector2(438, 4)
-texture = ExtResource("18_n1ol4")
+texture = ExtResource("13_hsjfq")
 
 [node name="FetusProp2" type="Sprite2D" parent="Environment/Coral"]
+visible = false
 position = Vector2(465, 347)
-texture = ExtResource("18_n1ol4")
+texture = ExtResource("13_hsjfq")
 
 [node name="Bramble" type="Node2D" parent="Environment"]
 visible = false
 
 [node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(505, 328)
-texture = ExtResource("14")
+texture = ExtResource("14_3dcs2")
 
 [node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(454, 388)
-texture = ExtResource("14")
+texture = ExtResource("14_3dcs2")
 
 [node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(584, 399)
-texture = ExtResource("14")
+texture = ExtResource("14_3dcs2")
 
 [node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(640, 303)
-texture = ExtResource("14")
+texture = ExtResource("14_3dcs2")
 
 [node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(483, 0)
-texture = ExtResource("14")
+texture = ExtResource("14_3dcs2")
 
 [node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(660, 11)
-texture = ExtResource("14")
+texture = ExtResource("14_3dcs2")
 
 [node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(366, 316)
-texture = ExtResource("15")
+texture = ExtResource("15_8i7oh")
 flip_h = true
 
 [node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(455, 331)
-texture = ExtResource("15")
+texture = ExtResource("15_8i7oh")
 flip_h = true
 
 [node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(402, 343)
-texture = ExtResource("15")
+texture = ExtResource("15_8i7oh")
 
 [node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(428, 399)
-texture = ExtResource("15")
+texture = ExtResource("15_8i7oh")
 flip_h = true
 
 [node name="Fish" type="Node2D" parent="Environment"]
 
-[node name="Fish" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(542, 386)
 
-[node name="Fish2" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(515, 353)
 
-[node name="Fish5" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish5" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(180, 329)
 
-[node name="Fish6" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish6" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(37, 326)
 
-[node name="Fish7" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(573, 19)
 
-[node name="Fish8" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(455, 394)
 
-[node name="Fish9" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(315, 14)
 
-[node name="Fish3" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(573, 342)
 
-[node name="Fish4" parent="Environment/Fish" instance=ExtResource("7")]
+[node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_gk22u")]
 z_index = -1
 position = Vector2(633, 395)
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 visible = false
 
-[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("22_jv7rq")]
+[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("17_cvi5h")]
 position = Vector2(560, 13)
 scale = Vector2(1, 1)
 
-[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("22_jv7rq")]
+[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("17_cvi5h")]
 position = Vector2(474, 339)
 scale = Vector2(1, 1)
 
-[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("22_jv7rq")]
+[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("17_cvi5h")]
 position = Vector2(521, 392)
 scale = Vector2(1, 1)
 
-[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("22_jv7rq")]
+[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("17_cvi5h")]
 position = Vector2(193, 327)
 scale = Vector2(1, 1)
 
-[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("22_jv7rq")]
+[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("17_cvi5h")]
 position = Vector2(433, 330)
 scale = Vector2(1, 1)
 
-[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("22_jv7rq")]
+[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("17_cvi5h")]
 position = Vector2(658, 403)
 scale = Vector2(1, 1)
 
-[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("22_jv7rq")]
+[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("17_cvi5h")]
 position = Vector2(297, 14)
 scale = Vector2(1, 1)
 
@@ -439,13 +455,13 @@ visible = false
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
 position = Vector2(561, 364)
-texture = ExtResource("12_jgfqe")
+texture = ExtResource("18_byc6k")
 flip_h = true
 
 [node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
 position = Vector2(396, 7)
-texture = ExtResource("12_jgfqe")
+texture = ExtResource("18_byc6k")
 
 [node name="Special" type="Node2D" parent="Environment"]
 visible = false
@@ -454,10 +470,10 @@ visible = false
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
-[node name="UILayer" parent="." instance=ExtResource("8_dph8t")]
+[node name="UILayer" parent="." instance=ExtResource("20_hoi0r")]
 layout_mode = 1
 
-[node name="PlantSelectionMenu" parent="." instance=ExtResource("5")]
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("21_f1dyy")]
 offset_left = 8.0
 offset_top = 315.0
 offset_right = 8.0
@@ -479,7 +495,8 @@ color = Color(0, 0, 0, 0.0784314)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("2")
 
-[node name="ToolTips" parent="." instance=ExtResource("11")]
+[node name="ToolTips" parent="." instance=ExtResource("22_mlsxw")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -494,12 +511,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
-[node name="LevelSwitcher" parent="." instance=ExtResource("17_1qjpa")]
+[node name="LevelSwitcher" parent="." instance=ExtResource("23_xxkc0")]
 visible = false
 layout_mode = 1
 next_level = "res://Scenes/LevelScenes/Level2.tscn"
 
-[node name="CodexBG" parent="." instance=ExtResource("2_eomv4")]
+[node name="CodexBG" parent="." instance=ExtResource("24_m4q8n")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -511,7 +528,7 @@ offset_bottom = 373.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="PauseButton" parent="." instance=ExtResource("19_0lj60")]
+[node name="PauseButton" parent="." instance=ExtResource("25_nqcla")]
 layout_mode = 0
 offset_left = 683.0
 offset_top = 380.0
@@ -519,8 +536,7 @@ offset_right = 738.0
 offset_bottom = 403.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("20_0lj60")
-autoplay = true
+stream = ExtResource("26_075f7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)

@@ -130,7 +130,7 @@ func _input(event):
 					place_plant(grid_pos)
 				
 			else:
-				if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 49):
+				if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 					print("Otro Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
@@ -194,7 +194,7 @@ func place_empty_blocker_plant(grid_pos):
 	print("Should Place Block Plant")
 	selected_plant_scene = empty_demon_scene
 	print("About to Place Plant")
-	if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 48):
+	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
 	else:
 		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
@@ -252,7 +252,7 @@ func place_empty_blocker_plant(grid_pos):
 func place_plant(grid_pos: Vector2):
 	
 	print("About to Place Plant")
-	if(grid_pos.x<769 && grid_pos.y<240 && grid_pos.y > 48):
+	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
 	else:
 		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
@@ -268,7 +268,10 @@ func place_plant(grid_pos: Vector2):
 	var plant_instance = selected_plant_scene.instantiate()
 	#print("Will Make PPName From ",plant_instance.name)
 	plant_instance.name = generate_unique_name(plant_instance.name)
-	
+	if "Alternate" in get_parent().name :
+		plant_instance.add_to_group("Green")
+	else:
+		plant_instance.add_to_group("Purple")
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:

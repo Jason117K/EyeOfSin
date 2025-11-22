@@ -61,12 +61,20 @@ func _process(_delta):
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
 			if collider:
-				#print("Collider Name is ", collider.name)
+				#print("Collider Name is XXX", collider.name)
 				if collider.is_in_group("Zombie"):
-					if collider.get_parent().get_parent() != self.get_parent().get_parent(): #Dimension Check
-						return
+					#print("Collider Name is XXX", collider.name)
+					#if collider.get_parent().get_parent() != self.get_parent().get_parent(): #Dimension Check
+					#	print(" XXX collider.get_parent().get_parent() is ",  collider.get_parent().get_parent() , " and self.get_parent().get_parent() is ", self.get_parent().get_parent())
+					#	return
+					if collider.is_in_group("Green"):
+						if self.is_in_group("Purple"):
+							return
+					elif collider.is_in_group("Purple"):
+						if self.is_in_group("Green"):
+							return
 					canAttack = true
-					#print("Can AttackZ Is True",canAttack)
+					#print("Can AttackZ Is True XXX ",canAttack)
 					
 				else:
 					canAttack = false

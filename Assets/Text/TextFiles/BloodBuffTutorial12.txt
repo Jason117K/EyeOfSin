@@ -1,1 +1,1 @@
-Try out activating a BLOOD BUFF with an Occular Spine and an EggWyrm. Place the EggWyrm on the map. Take note of the squares surrounding the EggWyrm preview denoting what tiles it can apply a Blood Buff too.
+BLOOD BUFFS are powerful buffs Demons can give to eachother denoted by the red squares around a demon when placing it. Place Demons in eachtothers BLOOD BUFF zones for powerful effects and transformations. Experiment! Or else . . . 

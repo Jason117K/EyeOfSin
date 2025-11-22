@@ -3,19 +3,22 @@ class_name GameController extends Node
 @export var scene : Control 
 
 var current_scene
+var current_scene_owner 
 var current_scenes := []
 var previous_scenes := []
 
 var on_scene_1 := true 
 var swap_cooldown_timer 
-var cooldown = 0.6
+var cooldown = 0.1
 var can_swap := true 
 
 func _ready() -> void:
 	Global.game_controller = self 
 	#TODO safsfaafsafe
 	current_scene = self.get_node("CurrentScene").get_child(0)
+	current_scene_owner = self.get_node("CurrentScene")
 	swap_cooldown_timer = Timer.new()
+	
 	add_child(swap_cooldown_timer)
 	swap_cooldown_timer.wait_time = cooldown
 	swap_cooldown_timer.connect("timeout", Callable(self, "reset_cooldown"))	
@@ -48,7 +51,9 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	new2.visible = false 
 	scene.add_child(new2)
 	current_scenes.append(new2)
-		
+	
+	current_scene._ready()
+	#new2._ready()
 	# Force physics update to ensure collision detection works
 	await get_tree().process_frame
 	get_tree().physics_frame	
@@ -82,6 +87,7 @@ func reset_cooldown():
 func place_empty_in_alt_scene(grid_pos):
 	#return
 	if current_scenes[1].visible == false :
+		print("current_scenes[1] is", current_scenes[1])
 		current_scenes[1].place_empty_blocker_plant(grid_pos)
 	elif current_scenes[0].visible == false :
 		current_scenes[0].place_empty_blocker_plant(grid_pos)

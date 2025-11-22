@@ -794,8 +794,9 @@ animations = [{
 }]
 
 [node name="EggWorm" type="Area2D" groups=["Plants"]]
+z_index = 1
 script = ExtResource("4")
-cost = 120
+cost = 100
 bob_speed = 1.7
 bob_height = 3.0
 squash_amount = 0.2
@@ -915,6 +916,7 @@ animation = &"New Anim 2"
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "", "Hive", "Maw", "None", "None"]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 14
 
@@ -975,8 +977,15 @@ sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
 [node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 17
+
+[node name="TileArea10" parent="BuffNodesComponent" index="18"]
+visible = false
+
+[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+visible = false
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]
 scale = Vector2(1.08712, 3.82142)

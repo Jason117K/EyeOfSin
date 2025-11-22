@@ -64,7 +64,6 @@ light_mask = 31
 z_index = 99
 scale = Vector2(0.8, 0.8)
 script = ExtResource("2")
-SunValue = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

@@ -62,7 +62,7 @@ func setWorth(bloodWorth):
 	
 func wyrm_buff():
 	self.scale = Vector2(1.2,1.2)
-	SunValue = 75 
+	SunValue = 150 
 	
 func hive_buff():
 	pass

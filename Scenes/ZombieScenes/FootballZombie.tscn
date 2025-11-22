@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://c1jhmnedm5ggk"]
 
 [ext_resource type="Script" uid="uid://c2c4na1yww6up" path="res://Scripts/Zombies/FootballZombie.gd" id="1_x5n0p"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_o5kil"]
+[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_o5kil"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="3_5ut6p"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4_nihc1"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5_ae3ds"]
@@ -267,7 +267,7 @@ health = 500
 bloodWorth = 50.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4_nihc1")]
-speed = 40
+speed = 25
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_ae3ds")]
 attack_power = 49

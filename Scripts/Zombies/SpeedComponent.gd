@@ -14,7 +14,7 @@ var is_attacking
 
 # Set the original speed immidiately
 func _ready():
-	speed = randf_range(19,24)
+	#yspeed = randf_range(19,24)
 	if zombie.get_name() == "DancerZombie":
 		print("THE DANCER POS IS ", zombie.position)
 	originalSpeed = speed

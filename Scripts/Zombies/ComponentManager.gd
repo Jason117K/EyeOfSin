@@ -87,7 +87,7 @@ func take_damage(damage):
 		$ResetThisColor.start()
 	
 func increaseBloodWorth():
-	healthComp.bloodWorth = healthComp.bloodWorth + 5.0
+	healthComp.bloodWorth = healthComp.bloodWorth + 10.0
 #Set the enemy colors on spawn 
 #Set the enemy colors on spawn 
 func _on_JustNowSpawned_timeout():

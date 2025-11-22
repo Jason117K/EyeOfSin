@@ -105,8 +105,14 @@ func _process(delta: float) -> void:
 		if collider:
 			print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
-				if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent().get_parent():
-					return
+				#if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent().get_parent():
+					#return
+				if collider.is_in_group("Green"):
+					if self.is_in_group("Purple"):
+						return
+				elif collider.is_in_group("Purple"):
+					if self.is_in_group("Green"):
+						return
 				print("PPP can attack is true")
 				canAttack = true 
 				#line2D.visible = true
@@ -184,7 +190,13 @@ func fire() -> void:
 		var collider = attack_ray.get_collider()
 		if collider:
 			print("ppp Collider Name is ", collider.name)
-			if collider.is_in_group("Zombie") &&  collider.get_parent().get_parent() == self.get_parent().get_parent().get_parent().get_parent(): #Dimension Check
+			if collider.is_in_group("Zombie") : # &&  collider.get_parent().get_parent() == self.get_parent().get_parent().get_parent().get_parent(): #Dimension Check
+				if collider.is_in_group("Green"):
+					if self.is_in_group("Purple"):
+						return
+				elif collider.is_in_group("Purple"):
+					if self.is_in_group("Green"):
+						return
 				if !is_firing:
 					print("ppp Shoot Proj")
 					shoot_projectile()

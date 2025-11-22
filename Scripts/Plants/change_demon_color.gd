@@ -53,7 +53,7 @@ func change_form(new_form):
 
 
 func make_buff_glow():
-	
+	return
 	if material == null:
 		#print("PRE LOL")
 		material = ShaderMaterial.new()
