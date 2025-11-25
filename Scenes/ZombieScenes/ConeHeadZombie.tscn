@@ -348,7 +348,7 @@ script = ExtResource("2")
 
 [node name="HealthComponent" parent="." instance=ExtResource("10")]
 position = Vector2(4, 4)
-health = 250
+health = 200
 bloodWorth = 4.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("8")]

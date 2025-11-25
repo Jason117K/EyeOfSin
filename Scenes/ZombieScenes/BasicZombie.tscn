@@ -283,7 +283,7 @@ texture = ExtResource("2_80ohr")
 
 [node name="HealthComponent" parent="." instance=ExtResource("11")]
 position = Vector2(0, 1.83333)
-health = 130
+health = 80
 bloodWorth = 2.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("8")]

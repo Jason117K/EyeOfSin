@@ -261,7 +261,7 @@ texture = ExtResource("2_26b7w")
 [node name="ComponentManager" parent="." instance=ExtResource("11")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("7")]
-health = 200
+health = 150
 bloodWorth = 15.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("1")]

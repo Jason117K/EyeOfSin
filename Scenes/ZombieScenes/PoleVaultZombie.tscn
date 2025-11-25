@@ -395,7 +395,7 @@ texture = ExtResource("2_16asd")
 [node name="ComponentManager" parent="." instance=ExtResource("8")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("6")]
-health = 130
+health = 80
 
 [node name="SpeedComponent" parent="." instance=ExtResource("7")]
 speed = 19
