@@ -1,0 +1,315 @@
+[gd_scene load_steps=46 format=3 uid="uid://cqfve1l3lskua"]
+
+[ext_resource type="Script" uid="uid://cdbe451i2i0tu" path="res://Scripts/Zombies/commander_zombie.gd" id="1_w77mk"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_p3jqi"]
+[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="3_w77mk"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="4_1nviu"]
+[ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="5_thp0g"]
+[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="6_nh8xl"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="7_07nji"]
+[ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="8_w77mk"]
+[ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://Assets/Zombies/Summoner-SheetWEB.png" id="9_1nviu"]
+[ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10_d7irc"]
+[ext_resource type="Script" uid="uid://bxb2qheetyb66" path="res://Scripts/Zombies/command_component.gd" id="11_p3jqi"]
+[ext_resource type="Script" uid="uid://bihnngeomocjq" path="res://Scripts/Plants/command_zone.gd" id="12_w77mk"]
+
+[sub_resource type="RectangleShape2D" id="25"]
+size = Vector2(23, 38)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26b7w"]
+shader = ExtResource("7_07nji")
+shader_parameter/hue_shift_degrees = 0.0
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/tolerance = 0.0
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(0, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(46, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(92, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(138, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(184, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(230, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(276, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(322, 176, 46, 44)
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(0, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(46, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(92, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(138, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(184, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(230, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(276, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(322, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(368, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(0, 44, 46, 44)
+
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(46, 44, 46, 44)
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(92, 44, 46, 44)
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(138, 44, 46, 44)
+
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(184, 44, 46, 44)
+
+[sub_resource type="AtlasTexture" id="23"]
+atlas = ExtResource("8_w77mk")
+region = Rect2(230, 44, 46, 44)
+
+[sub_resource type="AtlasTexture" id="26"]
+atlas = ExtResource("9_1nviu")
+region = Rect2(322, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="27"]
+atlas = ExtResource("9_1nviu")
+region = Rect2(368, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="28"]
+atlas = ExtResource("9_1nviu")
+region = Rect2(414, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="29"]
+atlas = ExtResource("9_1nviu")
+region = Rect2(460, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="30"]
+atlas = ExtResource("9_1nviu")
+region = Rect2(506, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="31"]
+atlas = ExtResource("9_1nviu")
+region = Rect2(552, 0, 46, 44)
+
+[sub_resource type="SpriteFrames" id="24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}, {
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}, {
+"duration": 1.0,
+"texture": SubResource("15")
+}, {
+"duration": 1.0,
+"texture": SubResource("16")
+}, {
+"duration": 1.0,
+"texture": SubResource("17")
+}],
+"loop": false,
+"name": &"Summon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("18")
+}, {
+"duration": 1.0,
+"texture": SubResource("19")
+}, {
+"duration": 1.0,
+"texture": SubResource("20")
+}, {
+"duration": 1.0,
+"texture": SubResource("21")
+}, {
+"duration": 1.0,
+"texture": SubResource("22")
+}, {
+"duration": 1.0,
+"texture": SubResource("23")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("26")
+}, {
+"duration": 1.0,
+"texture": SubResource("27")
+}, {
+"duration": 1.0,
+"texture": SubResource("28")
+}, {
+"duration": 1.0,
+"texture": SubResource("29")
+}, {
+"duration": 1.0,
+"texture": SubResource("30")
+}, {
+"duration": 1.0,
+"texture": SubResource("31")
+}],
+"loop": true,
+"name": &"WebWalk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w77mk"]
+radius = 723.056
+
+[node name="CommanderZombie" type="Area2D" groups=["Zombie"]]
+collision_layer = 2
+script = ExtResource("1_w77mk")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
+position = Vector2(8, 20)
+texture = ExtResource("2_p3jqi")
+
+[node name="ComponentManager" parent="." instance=ExtResource("3_w77mk")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_1nviu")]
+health = 150
+bloodWorth = 15.0
+
+[node name="SpeedComponent" parent="." instance=ExtResource("5_thp0g")]
+speed = 8
+
+[node name="AttackComponent" parent="." instance=ExtResource("6_nh8xl")]
+
+[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(6.5, 3)
+shape = SubResource("25")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_26b7w")
+sprite_frames = SubResource("24")
+animation = &"Walk"
+script = ExtResource("10_d7irc")
+hue_shift = 55.573
+targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
+targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="DMGRayCast2D" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(-28, 0)
+collide_with_areas = true
+
+[node name="CommandComponent" type="Node2D" parent="."]
+script = ExtResource("11_p3jqi")
+
+[node name="CommandZone" type="Area2D" parent="CommandComponent" groups=["Commander"]]
+collision_mask = 3
+script = ExtResource("12_w77mk")
+
+[node name="ZoneArea" type="CollisionShape2D" parent="CommandComponent/CommandZone"]
+shape = SubResource("CircleShape2D_w77mk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 9.465
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
+[connection signal="area_entered" from="CommandComponent/CommandZone" to="." method="_on_command_zone_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

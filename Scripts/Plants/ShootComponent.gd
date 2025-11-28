@@ -101,9 +101,9 @@ func _process(delta: float) -> void:
 		return
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
-		print("ppp ray collider is" , collider)
+		#print("ppp ray collider is" , collider)
 		if collider:
-			print("Collider Name is ", collider.name)
+			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				#if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent().get_parent():
 					#return
@@ -113,7 +113,7 @@ func _process(delta: float) -> void:
 				elif collider.is_in_group("Purple"):
 					if self.is_in_group("Green"):
 						return
-				print("PPP can attack is true")
+				#print("PPP can attack is true")
 				canAttack = true 
 				#line2D.visible = true
 			else:
@@ -155,7 +155,7 @@ func _process_collision(area: Area2D) -> void:
 	if isDisabled:
 		return
 	if "Zombie" in area.name and not hit_enemies.has(area):
-		print("Damaging via signal: ", area.name)
+		#print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
 		var compManager = area.getCompManager()
 		
@@ -163,7 +163,7 @@ func _process_collision(area: Area2D) -> void:
 func shoot_projectile():
 	if isDisabled:
 		return
-	print("Shoot Projectile ZZ")
+	#print("Shoot Projectile ZZ")
 	var projectile
 	if isSlowingProjectile:
 		
@@ -189,7 +189,7 @@ func fire() -> void:
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
 		if collider:
-			print("ppp Collider Name is ", collider.name)
+			#print("ppp Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie") : # &&  collider.get_parent().get_parent() == self.get_parent().get_parent().get_parent().get_parent(): #Dimension Check
 				if collider.is_in_group("Green"):
 					if self.is_in_group("Purple"):
@@ -198,7 +198,7 @@ func fire() -> void:
 					if self.is_in_group("Green"):
 						return
 				if !is_firing:
-					print("ppp Shoot Proj")
+					#print("ppp Shoot Proj")
 					shoot_projectile()
 					AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 					is_firing = true
@@ -207,7 +207,8 @@ func fire() -> void:
 					timer.wait_time = duration
 					timer.start()
 				else:
-					print("ppp is_firing is ", is_firing)
+					pass
+					#print("ppp is_firing is ", is_firing)
 					
 
 # Update the laser points specifically, also taking into account buffs

@@ -34,9 +34,12 @@ var plants_to_heal = []
 var max_alpha = 0.2
 var lerp_duration = 2.5
 var can_eat_zombie = false 
+var gridPos = Vector2(0,0)
+var laneNumber = 0 
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
+	calc_laneNumber()
 	sunTimer.wait_time = sunWaitTime
 	PlantManager = get_parent().get_parent().get_node("PlantManager") 
 	$SunTimer.start()  # Start the timer
@@ -53,6 +56,15 @@ func _ready():
 	#highlight_material.shader = load("res://Scripts/Shaders/outline_shader.gdshader")
 	#highlight_material.set_shader_parameter("outline_width", 5.0)
 	#highlight_material.set_shader_parameter("outline_color", Color(1.0, 0.7, 0.0, 1.0)) # Golden highlight	
+	
+func calc_laneNumber():
+	gridPos = Vector2(self.global_position.x / 32, self.global_position.y /32)
+	gridPos = Vector2(gridPos.x+0.5,gridPos.y + 0.5)
+	laneNumber = gridPos.y
+	#print("I, the Sunflower, am located at ",self.global_position, " gridPos is ", gridPos)
+
+func get_laneNumber():
+	return laneNumber
 	
 	
 func toggle_highlight():
@@ -294,3 +306,9 @@ func generate_sun_alt():
 	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
+
+#Register/Subscribe to Commander
+func _on_area_entered(area: Area2D) -> void:
+	pass
+	#if area.is_in_group("Commander"):
+		#area.register_plant(self, laneNumber)

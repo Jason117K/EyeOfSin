@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c6u6h5wyw25fr"]
+[gd_scene load_steps=36 format=3 uid="uid://c6u6h5wyw25fr"]
 
 [ext_resource type="Script" uid="uid://c2arg8yxe0hf5" path="res://Scripts/LevelLogic/Level7.gd" id="1_rhl2j"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_xvglt"]
@@ -21,12 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="17_cf74m"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="18_kk6e7"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="19_wwxxi"]
+[ext_resource type="PackedScene" uid="uid://bkwi1ob6dceio" path="res://Scenes/ZombieScenes/BasicZombie.tscn" id="19_ynos0"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="20_xvglt"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="21_bpqyd"]
 [ext_resource type="PackedScene" uid="uid://d1f383t0twnnu" path="res://Scenes/LevelScenes/EndScreen.tscn" id="21_jtxfb"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="23_88mod"]
 [ext_resource type="Texture2D" uid="uid://b33cuw824fnwf" path="res://Assets/Icons/EyeOfSynTitle.png" id="27_dljnt"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_omvub"]
+[ext_resource type="PackedScene" uid="uid://cqfve1l3lskua" path="res://Scenes/ZombieScenes/CommanderZombie.tscn" id="28_dljnt"]
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("18_kk6e7")
@@ -558,7 +560,7 @@ position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_bpqyd")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_xvglt")]
-sun_points = 1200
+sun_points = 9999
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -817,6 +819,25 @@ offset_top = 40.0
 offset_right = 779.0
 offset_bottom = 238.0
 color = Color(2, 0, 0, 0.729412)
+
+[node name="CommanderZombie" parent="GameLayer" instance=ExtResource("28_dljnt")]
+z_index = 3
+position = Vector2(669, 172)
+
+[node name="BasicZombie" parent="GameLayer" instance=ExtResource("19_ynos0")]
+position = Vector2(696, 227)
+
+[node name="BasicZombie2" parent="GameLayer" instance=ExtResource("19_ynos0")]
+position = Vector2(698, 112)
+
+[node name="BasicZombie3" parent="GameLayer" instance=ExtResource("19_ynos0")]
+position = Vector2(701, 152)
+
+[node name="BasicZombie4" parent="GameLayer" instance=ExtResource("19_ynos0")]
+position = Vector2(703, 189)
+
+[node name="BasicZombie5" parent="GameLayer" instance=ExtResource("19_ynos0")]
+position = Vector2(704, 261)
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_88mod")

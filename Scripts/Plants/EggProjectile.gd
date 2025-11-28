@@ -12,7 +12,8 @@ var canGenSun := false
 
 
 func _ready() -> void:
-	print("ppp Spawned Egg p")
+	#print("ppp Spawned Egg p")
+	pass
 func _process(delta):
 	if canMove:
 		position.x += speed * delta  # Move the projectile to the right

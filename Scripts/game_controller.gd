@@ -127,7 +127,7 @@ func restore_previous_scene():
 	if scene_to_restore.has_method("make_camera_current"):
 		scene_to_restore.make_camera_current()
 	current_scene = scene_to_restore
-	print("PPPrevious Scenes Is ",previous_scenes )
+	#print("PPPrevious Scenes Is ",previous_scenes )
 	if previous_scenes.is_empty():
 		scene_to_restore.get_tree().paused = false
 	pass

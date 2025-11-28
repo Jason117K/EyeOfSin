@@ -53,3 +53,7 @@ func spawn_slow_field_on_death():
 	slow_field.global_position = self.global_position
 	#slow_field.position = position + Vector2(32, 8)  # Adjust starting position
 	get_parent().add_child(slow_field)  # Add the projectile to the game layer DOUBLE CHECK
+	
+	
+func move_to_lane(laneNumber):
+	self.global_position = Vector2(self.global_position.x,laneNumber * 32)
