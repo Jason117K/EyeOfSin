@@ -57,3 +57,13 @@ func spawn_slow_field_on_death():
 	
 func move_to_lane(laneNumber):
 	self.global_position = Vector2(self.global_position.x,laneNumber * 32)
+
+func flip_dimension():
+	print("D Flipping")
+	if self.is_in_group("Green"):
+		print("Flip to Purple")
+		reparent(Global.game_controller.get_purple_scene())
+	elif self.is_in_group("Purple"):
+		print("Flip to Green")
+		reparent(Global.game_controller.get_green_scene())
+	

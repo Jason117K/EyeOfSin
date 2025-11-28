@@ -1,5 +1,5 @@
 extends Zombie
-# CommanderZombie.gd
+# DimensionalCommanderZombie.gd
 
 # Handles Any CommanderZombie Specific Logic 
 var lane1Demons = {}
@@ -33,13 +33,13 @@ func _on_command_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Plants"):
 		print("Plant Entered")
 		if area.is_in_group("Green"):
-			#print("Demon Is Green")
-			if self.is_in_group("Green"):
-				print("RRRRRG Register Demon ", area)
+			print("Demon Is Green")
+			if self.is_in_group("Purple"):
+				print("Green Register Demon ", area)
 				register_demon(area,area.get_laneNumber())
 		elif area.is_in_group("Purple"):
-			if self.is_in_group("Purple"):
-				print("RRRRRP Register Demon ", area)
+			if self.is_in_group("Green"):
+				print("Purple Register Demon ", area)
 				register_demon(area,area.get_laneNumber())
 
 		
@@ -56,7 +56,7 @@ func _on_command_zone_area_entered(area: Area2D) -> void:
 
 
 func register_demon(new_demon, laneNumber):
-	#print("RRRR Register Demon : ", new_demon, " with laneNumber ", laneNumber)
+	print("RRRR Register Demon : ", new_demon, " with laneNumber ", laneNumber)
 	match laneNumber:
 		3.0:
 			#print("LLLLLLLLL3")
@@ -79,26 +79,25 @@ func register_demon(new_demon, laneNumber):
 			lane5DemonCount += 1
 			lane5Demons[laneNumber] = lane5DemonCount
 	allDemons = [lane1Demons,lane2Demons,lane3Demons,lane4Demons,lane5Demons]
-	#print("RRRR All Demons is ", allDemons)
+	print("RRRR All Demons is ", allDemons)
 
 func commandZombies():
 	var lowestDemonCount = 99
 	var currentDemonCount = 0
-	var currentLane = allDemons[0]
+	var currentLane
 	#Incremement to find the lane with the lowest amount of demons 
 	for lane in allDemons:
-		#print("lane is ", lane )
+		print("lane is ", lane )
 		for key in lane:
 			currentDemonCount += lane[key]
 			break
 		#currentDemonCount += lane.size()
-		#print("lane size is ", currentDemonCount )
+		print("lane size is ", currentDemonCount )
 		if currentDemonCount < lowestDemonCount:
 			lowestDemonCount = currentDemonCount
 			currentLane = lane
 		currentDemonCount = 0 
 	print(currentLane.keys())
-	
 	if currentLane.keys().size() > 0:
 		lane_to_send_zombies = currentLane.keys()[0]
 	else:
@@ -106,6 +105,7 @@ func commandZombies():
 	for currentZombie in allZombies:
 		print("Moooooooooooooooooooooooooove ", currentZombie, " to lane ", lane_to_send_zombies)
 		currentZombie.move_to_lane(lane_to_send_zombies)
+		currentZombie.flip_dimension()
 
 func register_zombie(new_zombie : Zombie):
 	allZombies.append(new_zombie)

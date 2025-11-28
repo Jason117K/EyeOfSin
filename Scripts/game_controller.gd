@@ -90,11 +90,17 @@ func place_empty_in_alt_scene(grid_pos):
 		print("current_scenes[1] is", current_scenes[1])
 		current_scenes[1].place_empty_blocker_plant(grid_pos)
 	elif current_scenes[0].visible == false :
+		print("current_scenes[0] is", current_scenes[0])
 		current_scenes[0].place_empty_blocker_plant(grid_pos)
 	
 	
+func get_green_scene():
+	return current_scenes[1]
 	
+func get_purple_scene():
+	return current_scenes[0]
 	
+		
 	
 	
 	

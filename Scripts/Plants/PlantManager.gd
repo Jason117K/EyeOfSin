@@ -193,7 +193,7 @@ func move_plant(this_plant_to_move, passed_new_grid_pos):
 func place_empty_blocker_plant(grid_pos):
 	print("Should Place Block Plant")
 	selected_plant_scene = empty_demon_scene
-	print("About to Place Plant")
+	#print("About to Place Plant")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
 	else:
@@ -251,7 +251,7 @@ func place_empty_blocker_plant(grid_pos):
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
 	
-	print("About to Place Plant")
+	#print("About to Place Plant")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
 	else:
