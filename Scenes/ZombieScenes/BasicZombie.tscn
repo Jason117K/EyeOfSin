@@ -1,7 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://bkwi1ob6dceio"]
+[gd_scene load_steps=67 format=3 uid="uid://bkwi1ob6dceio"]
 
 [ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://Scripts/Zombies/BasicZombie.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c50qcyf0jy5d6" path="res://Assets/VFX/Effect 12.png" id="2_5rxux"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_80ohr"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="6"]
@@ -10,6 +11,128 @@
 [ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://Assets/Zombies/GhoulWebbedSheet.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="11"]
+[ext_resource type="Script" uid="uid://bxb2qheetyb66" path="res://Scripts/Zombies/sensing_component.gd" id="12_vut8x"]
+[ext_resource type="Script" path="res://Scripts/Plants/command_zone.gd" id="13_2h5wt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd1v8"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vut8x"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h5wt"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3q1i"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaphs"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gte6"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ajvq"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25qm7"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ogj"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jkk3"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl74n"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nihiw"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3amw"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_norao"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpc4c"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4umi"]
+atlas = ExtResource("2_5rxux")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lu7ej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd1v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vut8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h5wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3q1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaphs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gte6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ajvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25qm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ogj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jkk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl74n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nihiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3amw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_norao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpc4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4umi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(20, 30.3334)
@@ -269,10 +392,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3q1i"]
+radius = 723.056
+
 [node name="BasicZombie" type="Area2D" groups=["Zombie", "Zombie-Basic"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1")
+
+[node name="EnrageSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1, -4)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_lu7ej")
+autoplay = "default"
+frame_progress = 0.35487
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
@@ -280,6 +414,7 @@ position = Vector2(0, 16)
 texture = ExtResource("2_80ohr")
 
 [node name="ComponentManager" parent="." instance=ExtResource("10")]
+can_respawn_enraged = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("11")]
 position = Vector2(0, 1.83333)
@@ -293,6 +428,7 @@ speed = 15
 attack_power = 20
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1.83333)
 shape = SubResource("1")
 
@@ -313,5 +449,24 @@ collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 
+[node name="TimeToDieLmao" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="SensingComponent" type="Node2D" parent="."]
+visible = false
+script = ExtResource("12_vut8x")
+
+[node name="Sensing" type="Area2D" parent="SensingComponent" groups=["Commander"]]
+collision_mask = 7
+monitoring = false
+script = ExtResource("13_2h5wt")
+
+[node name="ZoneArea" type="CollisionShape2D" parent="SensingComponent/Sensing"]
+shape = SubResource("CircleShape2D_p3q1i")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="TimeToDieLmao" to="." method="_on_time_to_die_lmao_timeout"]
+[connection signal="area_entered" from="SensingComponent/Sensing" to="SensingComponent" method="_on_sensing_area_entered"]

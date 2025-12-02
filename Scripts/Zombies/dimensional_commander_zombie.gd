@@ -48,6 +48,7 @@ func _on_command_zone_area_entered(area: Area2D) -> void:
 			if self.is_in_group("Green"):
 				print("RRRRRG Register Zombie ", area)
 				register_zombie(area)
+				
 		elif area.is_in_group("Purple"):
 			if self.is_in_group("Purple"):
 				print("RRRRRP Register Zombie ", area)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=46 format=3 uid="uid://cqfve1l3lskua"]
+[gd_scene load_steps=45 format=3 uid="uid://c4dmdsy26mp7k"]
 
-[ext_resource type="Script" uid="uid://cdbe451i2i0tu" path="res://Scripts/Zombies/commander_zombie.gd" id="1_w77mk"]
+[ext_resource type="Script" path="res://Scripts/Zombies/commander_zombie.gd" id="1_w77mk"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_p3jqi"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="3_w77mk"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="4_1nviu"]
@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="8_w77mk"]
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://Assets/Zombies/Summoner-SheetWEB.png" id="9_1nviu"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10_d7irc"]
-[ext_resource type="Script" uid="uid://bxb2qheetyb66" path="res://Scripts/Zombies/command_component.gd" id="11_p3jqi"]
-[ext_resource type="Script" uid="uid://bihnngeomocjq" path="res://Scripts/Plants/command_zone.gd" id="12_w77mk"]
+[ext_resource type="Script" path="res://Scripts/Plants/command_zone.gd" id="12_w77mk"]
 
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 38)
@@ -295,7 +294,6 @@ target_position = Vector2(-28, 0)
 collide_with_areas = true
 
 [node name="CommandComponent" type="Node2D" parent="."]
-script = ExtResource("11_p3jqi")
 
 [node name="CommandZone" type="Area2D" parent="CommandComponent" groups=["Commander"]]
 collision_mask = 3

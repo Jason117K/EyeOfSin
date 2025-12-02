@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c6u6h5wyw25fr"]
+[gd_scene load_steps=35 format=3 uid="uid://c6u6h5wyw25fr"]
 
 [ext_resource type="Script" uid="uid://c2arg8yxe0hf5" path="res://Scripts/LevelLogic/Level7.gd" id="1_rhl2j"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_xvglt"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="23_88mod"]
 [ext_resource type="Texture2D" uid="uid://b33cuw824fnwf" path="res://Assets/Icons/EyeOfSynTitle.png" id="27_dljnt"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_omvub"]
-[ext_resource type="PackedScene" uid="uid://4xuaqedkcugv" path="res://Scenes/ZombieScenes/DimensionalCommanderZombie.tscn" id="29_ynos0"]
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("18_kk6e7")
@@ -820,27 +819,30 @@ offset_right = 779.0
 offset_bottom = 238.0
 color = Color(2, 0, 0, 0.729412)
 
-[node name="DimensionalCommanderZombie" parent="GameLayer" groups=["Purple"] instance=ExtResource("29_ynos0")]
-position = Vector2(662, 186)
-
 [node name="BasicZombie" parent="GameLayer" groups=["Purple"] instance=ExtResource("19_ynos0")]
-position = Vector2(696, 227)
+position = Vector2(700, 210)
 
 [node name="BasicZombie2" parent="GameLayer" groups=["Purple"] instance=ExtResource("19_ynos0")]
-position = Vector2(698, 112)
+position = Vector2(664, 84)
+
+[node name="BasicZombie6" parent="GameLayer" groups=["Purple"] instance=ExtResource("19_ynos0")]
+position = Vector2(614, 162)
+
+[node name="BasicZombie7" parent="GameLayer" groups=["Purple"] instance=ExtResource("19_ynos0")]
+position = Vector2(649, 161)
 
 [node name="BasicZombie3" parent="GameLayer" groups=["Purple"] instance=ExtResource("19_ynos0")]
-position = Vector2(701, 152)
+position = Vector2(585, 165)
 
 [node name="BasicZombie4" parent="GameLayer" groups=["Purple"] instance=ExtResource("19_ynos0")]
-position = Vector2(703, 189)
+position = Vector2(635, 242)
 
 [node name="BasicZombie5" parent="GameLayer" groups=["Purple"] instance=ExtResource("19_ynos0")]
-position = Vector2(704, 261)
+position = Vector2(701, 277)
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_88mod")
-autoplay = true
+volume_db = -1.93
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("2")

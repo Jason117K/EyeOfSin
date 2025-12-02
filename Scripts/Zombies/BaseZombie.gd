@@ -9,6 +9,8 @@ signal zombie_death
 @onready var compManager = $ComponentManager
 
 var slow_field_scene = preload("res://Scenes/PlantScenes/web_tile_slow.tscn")
+var gridPos = Vector2(0,0)
+var laneNumber = 0 
 
 # Component Manager Getter
 func getCompManager():
@@ -42,6 +44,11 @@ func set_hue_shift(hue_shift_degrees):
 func die():
 	if compManager.spawn_slow_field == true :
 		spawn_slow_field_on_death()
+	if compManager.can_respawn_enraged == true :
+		#TODO Add Probabilty Based Chance Here 
+		compManager.enrage()
+		print("I WILL NOT DIE")
+		return 
 	#if compMana
 	print("Should die")
 	zombie_death.emit()
@@ -67,3 +74,9 @@ func flip_dimension():
 		print("Flip to Green")
 		reparent(Global.game_controller.get_green_scene())
 	
+func get_laneNumber():
+	var laneNumber 
+	gridPos = Vector2(self.global_position.x / 32, self.global_position.y /32)
+	gridPos = Vector2(gridPos.x+0.5,gridPos.y + 0.5)
+	laneNumber = gridPos.y	
+	return laneNumber

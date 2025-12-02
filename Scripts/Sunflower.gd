@@ -64,6 +64,10 @@ func calc_laneNumber():
 	#print("I, the Sunflower, am located at ",self.global_position, " gridPos is ", gridPos)
 
 func get_laneNumber():
+	var laneNumber 
+	gridPos = Vector2(self.global_position.x / 32, self.global_position.y /32)
+	gridPos = Vector2(gridPos.x+0.5,gridPos.y + 0.5)
+	laneNumber = gridPos.y	
 	return laneNumber
 	
 	

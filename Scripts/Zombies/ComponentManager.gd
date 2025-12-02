@@ -15,6 +15,8 @@ var isSlow = 0  #how much slow the zombie has
 var thisMaterial  
 var thisMaterial2
 var spawn_slow_field := false 
+@export var can_respawn_enraged := false 
+
 
 #Onready variables for tracking nodes 
 @onready var animatedSprite = $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
@@ -135,3 +137,28 @@ func _on_ResetThisColor_timeout():
 func _on_DebuffDegrade_timeout():
 	if((isSlow - 10) >= 0):
 		isSlow = isSlow - 10
+
+
+func enrage():
+	#Set Fire Sprite Visible 
+	$"../EnrageSprite".visible = true 
+	$"../SensingComponent/Sensing".monitoring = true 
+	
+	#Heal by making health comp take negative damage 
+	healthComp.take_damage(-100)
+	animatedSprite.set_hue_shift(0)
+	$"../SensingComponent".moveToStrongestZombieLane()
+	pass
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+func _on_time_to_die_lmao_timeout() -> void:
+	pass # Replace with function body.
