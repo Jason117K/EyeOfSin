@@ -46,9 +46,10 @@ func die():
 		spawn_slow_field_on_death()
 	if compManager.can_respawn_enraged == true :
 		#TODO Add Probabilty Based Chance Here 
-		compManager.enrage()
-		print("I WILL NOT DIE")
-		return 
+		if randf() < 0.5:
+			compManager.enrage()
+			print("I WILL NOT DIE")
+			return 
 	#if compMana
 	print("Should die")
 	zombie_death.emit()
