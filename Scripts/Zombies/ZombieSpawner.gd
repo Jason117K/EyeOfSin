@@ -40,6 +40,7 @@ signal doneSpawning
 
 # The current wave we are on
 var numWave = 0
+var currentRound = 0
 
 #Slight random position adjustmnet 
 var random_adjustment = randf_range(-1.0, 1.0)
@@ -60,6 +61,8 @@ var random_adjustment2 = randf_range(-0.6, 0.6)
 
 var waveManager
 
+func _physics_process(delta: float) -> void:
+	currentRound = numWave
 # Populates the apprioate arrays with current zombie counts by type 
 func _ready():
 	
