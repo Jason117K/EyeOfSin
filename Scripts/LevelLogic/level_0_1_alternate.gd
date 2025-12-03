@@ -19,8 +19,8 @@ func _ready():
 func start_wave_2():
 	print("[Level0-1 Alternate] Wave 2 activated in green dimension")
 	waiting_for_wave_2 = false
-	waveManager.canStartGame = true
-	waveManager.startSecondWave()
+	waveManager.numWave = 1             # Initialize wave state for Wave 2
+	waveManager.startSecondWave()       # This increments numWave to 2
 
 
 func place_empty_blocker_plant(grid_pos):
