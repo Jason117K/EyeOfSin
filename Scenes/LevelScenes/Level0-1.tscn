@@ -416,6 +416,7 @@ color = Color(0, 0, 0, 0.0784314)
 environment = SubResource("2")
 
 [node name="ToolTips" parent="." instance=ExtResource("22_41kje")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

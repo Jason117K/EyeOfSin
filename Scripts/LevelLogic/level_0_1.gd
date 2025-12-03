@@ -14,12 +14,13 @@ enum TutorialState {
 	TUTORIAL_COMPLETE
 }
 
-var tutorial_state: TutorialState = TutorialState.INIT
+var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_SPYDER
 var wave_1_active: bool = false
 var wave_1_complete: bool = false
 
 # Node references
-@onready var toolTips = $ToolTips
+#@onready var toolTips = $ToolTips
+@onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $PlantSelectionMenu
 @onready var waveManager = $GameLayer/WaveManager
@@ -34,6 +35,8 @@ const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
+	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
 
 	# Connect signals
@@ -47,6 +50,7 @@ func _ready():
 
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
+	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
 
 
 # Input filtering system - intercepts input based on tutorial state

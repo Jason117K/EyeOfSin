@@ -9,6 +9,7 @@ signal level_start(custom_message)
 signal wave2started(custom_message)
 
 signal wave1Started
+var wave1IsStarted = false 
 signal wave2AlmostStart
 signal wave2Started
 signal wave3Started
@@ -239,7 +240,9 @@ func _on_spawn_next_wave():
 		if timer != null:
 			#timer.wait_time = $ProceedGame.wait_time - 10
 			timer.start()
-	wave1Started.emit()
+	if wave1IsStarted == false:
+		wave1Started.emit()
+		wave1IsStarted = true 
 	
 #Damage the Player 
 func subtract_health():

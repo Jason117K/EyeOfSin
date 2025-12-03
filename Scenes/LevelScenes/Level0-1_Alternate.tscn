@@ -101,20 +101,10 @@ process_mode = 1
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_7r54f")]
 position = Vector2(746, 141)
 make_green = true
-Round1_Zombies = {
-"Base": 3,
+Round2_Zombies = {
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 4,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,

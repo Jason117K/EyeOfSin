@@ -11,7 +11,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="WaveInterval" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="WaveDelay" to="." method="_on_WaveDelay_timeout"]

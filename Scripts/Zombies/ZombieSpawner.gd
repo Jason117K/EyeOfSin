@@ -125,7 +125,7 @@ func spawn_zombie():
 					zombie_instance.set_hue_shift(125)
 				else:
 					zombie_instance.add_to_group("Purple")
-				#$WaveDelay.start()
+				$WaveDelay.start()
 				print("Spawn Wave 1")
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2

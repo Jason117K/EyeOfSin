@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://0tcqey8apvy0"]
+[gd_scene load_steps=5 format=3 uid="uid://0tcqey8apvy0"]
 
 [ext_resource type="Script" uid="uid://cpye6mrmxtywc" path="res://Scripts/game_controller.gd" id="1_nqxm2"]
 [ext_resource type="PackedScene" uid="uid://cwnxaalr7lrsd" path="res://Scenes/LevelScenes/StartScreen.tscn" id="2_kx2cw"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="3_goscw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppfu0"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("scene")]
 script = ExtResource("1_nqxm2")
@@ -18,3 +27,19 @@ mouse_filter = 2
 
 [node name="StartScreen" parent="CurrentScene" instance=ExtResource("2_kx2cw")]
 layout_mode = 1
+
+[node name="ToolTips" parent="CurrentScene" instance=ExtResource("3_goscw")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -167.0
+offset_right = 172.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppfu0")
