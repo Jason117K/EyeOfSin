@@ -82,7 +82,7 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
-[node name="Level0-1" type="Control" groups=["Green", "Purple"]]
+[node name="Level0-1" type="Control" groups=["Purple"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,6 +100,16 @@ process_mode = 1
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_s6f4w")]
 position = Vector2(746, 141)
+Round1_Zombies = {
+"Base": 3,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -133,7 +143,7 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_y5q10")]
 position = Vector2(-64, 200)
 script = ExtResource("7_h8ehj")
-StartDelay = 15
+StartDelay = 5
 Wave2StartTime = 33
 Wave3StartTime = 38
 Wave1_Interval = 1.0
@@ -472,6 +482,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

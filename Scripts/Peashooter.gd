@@ -30,7 +30,7 @@ var isBuffed := false
 func _ready():
 	animSpriteComp = $AnimatedSprite2D
 	animSpriteComp.animation = "spawn"
-	animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+	#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
 	#animatedSpriteComponent.animation = "redSpiderDefault"
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$ShootTimer.start()  # Start the shoot timer
@@ -165,6 +165,7 @@ func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		#print("Early Return No AttackZ")
 		#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 		return

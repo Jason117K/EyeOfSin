@@ -17,6 +17,9 @@ var level5 = ("res://Scenes/LevelScenes/Level5.tscn")
 var level6 = ("res://Scenes/LevelScenes/Level6.tscn")
 var level7 = ("res://Scenes/LevelScenes/Level7.tscn")
 
+var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
+var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	canPlayLevel2 = Global.getCanPlayLevel2()
@@ -39,7 +42,8 @@ func _ready() -> void:
 
 func _on_level_1_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level1) ==OK)
-	Global.game_controller.change_scene(level1)
+	#Global.game_controller.change_scene(level1)
+	Global.game_controller.change_dual_scenes(level0_1,level0_1Alt )
 	
 
 

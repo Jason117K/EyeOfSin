@@ -176,7 +176,7 @@ func _on_ProceedGame_timeout():
 # Spawn the first wave 
 func _on_Wave1_timeout():
 	#print("Spawning first wave")
-	wave1Started.emit()
+	#wave1Started.emit()
 	var wave_Interval = Wave1_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
@@ -185,6 +185,7 @@ func _on_Wave1_timeout():
 	for spawner in spawners:
 		print("Calling Wave 1 Start Spawn Zombie")
 		spawner.start_spawn_zombie()
+	#wave1Started.emit()
 
 # Spawn the Second Wave 
 func _on_Wave2_timeout():
@@ -238,6 +239,7 @@ func _on_spawn_next_wave():
 		if timer != null:
 			#timer.wait_time = $ProceedGame.wait_time - 10
 			timer.start()
+	wave1Started.emit()
 	
 #Damage the Player 
 func subtract_health():

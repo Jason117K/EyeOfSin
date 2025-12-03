@@ -82,7 +82,7 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
-[node name="Level0-1_Alternate" type="Control"]
+[node name="Level0-1_Alternate" type="Control" groups=["Green"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,44 +97,6 @@ sun_points = 325
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
-
-[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_7r54f")]
-position = Vector2(748, 109)
-make_green = true
-Round1_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 2,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_vll5p")]
-z_index = 1
-position = Vector2(-54, 0)
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_7r54f")]
 position = Vector2(746, 141)
@@ -173,44 +135,6 @@ Round3_Zombies = {
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_vll5p")]
 z_index = 1
 position = Vector2(-48, 0)
-
-[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_7r54f")]
-position = Vector2(746, 173)
-make_green = true
-Round1_Zombies = {
-"Base": 4,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 5,
-"BucketHead": 0,
-"ConeHead": 4,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 6,
-"BucketHead": 1,
-"ConeHead": 3,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_vll5p")]
-z_index = 1
-position = Vector2(-46, 4)
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("5_8snc0")]
 make_green = true

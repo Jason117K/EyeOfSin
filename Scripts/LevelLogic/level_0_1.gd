@@ -162,8 +162,8 @@ func _start_force_press_y():
 
 func _start_explain_green_dimension():
 	# Brief delay for dimension swap visual
-	await get_tree().create_timer(0.5).timeout
-
+	#await get_tree().create_timer(0.5).timeout
+	print("Tutorial Explain Green Dimension")
 	toolTips.set_text_pause(TUTORIAL_GREEN_DIMENSION)
 	toolTips.showButton()
 
