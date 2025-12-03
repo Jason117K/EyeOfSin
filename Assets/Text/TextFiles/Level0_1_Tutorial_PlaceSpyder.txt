@@ -1,0 +1,5 @@
+Good, now click on a grey path tile to place the demon.
+
+The glowing preview shows where your demon will appear.
+
+Place it anywhere within the play area.

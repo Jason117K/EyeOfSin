@@ -1,0 +1,5 @@
+Demons cost Blood. You just lost some, so you can't place anymore.
+
+Endure the wave. Use the demons you've placed to kill the zombies.
+
+Blood regenerates slowly over time. Spend it wisely!
