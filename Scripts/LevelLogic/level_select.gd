@@ -9,10 +9,6 @@ var canPlayLevel6 := false
 var canPlayLevel7 := false 
 
 var startScreen = ("res://Scenes/LevelScenes/StartScreen.tscn")
-
-var level01 = ("res://Scenes/LevelScenes/Level0-1.tscn")
-var level01Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
-
 var level1 = ("res://Scenes/LevelScenes/Main.tscn")
 var level2 = ("res://Scenes/LevelScenes/Level2.tscn")
 var level3 = ("res://Scenes/LevelScenes/Level3.tscn")
@@ -43,8 +39,7 @@ func _ready() -> void:
 
 func _on_level_1_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level1) ==OK)
-	#Global.game_controller.change_scene(level1)
-	Global.game_controller.change_dual_scenes(level01,level01Alt)
+	Global.game_controller.change_scene(level1)
 	
 
 

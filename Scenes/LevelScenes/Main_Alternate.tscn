@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="7_lbeyc"]
 [ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://Assets/Environment/Props/Pustules-export.png" id="8_26khc"]
 [ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://Assets/Environment/Props/Pustules_shadow1_Medium.png" id="9_58tep"]
-[ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://Scripts/Shaders/swayShader.tres" id="10_ubtpr"]
+[ext_resource type="Shader" uid="uid://b1grbrx70s8m4" path="res://Scripts/Shaders/swayShader.tres" id="10_ubtpr"]
 [ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://Assets/Environment/Props/Pustules_shadow1_big.png" id="11_hc2ud"]
 [ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_y3moa"]
 [ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="13_hsjfq"]
