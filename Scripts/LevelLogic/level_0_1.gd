@@ -187,6 +187,15 @@ func _start_wave_2_both_dimensions():
 	else:
 		print("[PURPLE] ERROR: Could not find green dimension or start_wave_2 method!")
 
+	# CRITICAL: Spawners need to be at wave 2 to spawn wave2_zombies
+	# Purple dimension completed Wave 1, so spawners are at 1
+	# Need to increment once: 1→2
+	print("[PURPLE] Incrementing spawner waves from 1 to 2...")
+	for spawner in waveManager.spawners:
+		print("[PURPLE] Spawner ", spawner.name, " numWave BEFORE: ", spawner.numWave)
+		spawner.increase_wave()  # 1→2
+		print("[PURPLE] Spawner ", spawner.name, " numWave AFTER: ", spawner.numWave)
+
 	# Start Wave 2 in purple dimension
 	print("[PURPLE] About to call waveManager.startSecondWave()...")
 	waveManager.startSecondWave()
