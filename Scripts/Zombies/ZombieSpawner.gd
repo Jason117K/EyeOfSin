@@ -47,7 +47,7 @@ var random_adjustment2 = randf_range(-0.6, 0.6)
 
 #Adjustble delay between waves 
 @export var waveDelay = 0.5
-
+#c
 # Alternative: Manual weight ranges
 @export_group("Weight Ranges")
 @export var large_gap_min: float = 0.8
