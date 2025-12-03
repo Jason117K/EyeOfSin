@@ -1,0 +1,477 @@
+[gd_scene load_steps=36 format=4 uid="uid://war4pcq0fchu"]
+
+[ext_resource type="Script" uid="uid://dlrnrtqdgddg6" path="res://Scripts/LevelLogic/level_0_1.gd" id="1_capnp"]
+[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_3gktd"]
+[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_s6f4w"]
+[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_ehuem"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="5_uly3c"]
+[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="6_y5q10"]
+[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="7_h8ehj"]
+[ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="8_eftpd"]
+[ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="9_g6kpo"]
+[ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://Scripts/Shaders/swayShader.tres" id="10_m5qpf"]
+[ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="11_heb57"]
+[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_xho5h"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="13_v51jy"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14_xl50p"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15_0m4ho"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="16_07f3a"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="17_6md0y"]
+[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="18_dxyyl"]
+[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_2oox3"]
+[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_17pkm"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="21_ipgls"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_41kje"]
+[ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="23_whwei"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="24_5b5bb"]
+[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="25_4b6nv"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="26_mlggh"]
+[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_cr4g1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
+shader = ExtResource("10_m5qpf")
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("19_2oox3")
+region = Rect2(0, 0, 32, 41)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("19_2oox3")
+region = Rect2(32, 0, 32, 41)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("19_2oox3")
+region = Rect2(64, 0, 32, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b1vmi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Environment" id="2"]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 1.5
+adjustment_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
+shader = ExtResource("27_cr4g1")
+shader_parameter/hpass = 1.0
+shader_parameter/vpass = 1.0
+shader_parameter/radius = 65
+shader_parameter/unit = Vector2(1, 1)
+
+[node name="Level0-1" type="Control" groups=["Green", "Purple"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_capnp")
+
+[node name="PlantManager" parent="." instance=ExtResource("2_3gktd")]
+sun_points = 275
+
+[node name="GameLayer" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_s6f4w")]
+position = Vector2(746, 141)
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 5,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 5,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_ehuem")]
+z_index = 1
+position = Vector2(-48, 0)
+
+[node name="GridManager" parent="GameLayer" instance=ExtResource("5_uly3c")]
+
+[node name="TileMapLayer" parent="GameLayer/GridManager" index="0"]
+tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAAAAAADAAsAAQACAAAAAAAFAAsAAQACAAAAAAAGAAsAAQACAAAAAAAHAAsAAQACAAAAAAAIAAsAAQACAAAAAAAWAAsAAQACAAAAAAAXAAsAAQACAAAAAAAVAAsAAQACAAAAAAAUAAsAAQACAAAAAAATAAsAAQACAAAAAAASAAsAAQACAAAAAAARAAsAAQACAAAAAAAQAAsAAQACAAAAAAAPAAsAAQACAAAAAAAOAAsAAQACAAAAAAANAAsAAQACAAAAAAAMAAsAAQAAAAkAAAALAAsAAQAGAAkAAAAKAAsAAQAAAAkAAAAJAAsAAQACAAAAAAAEAAoAAQAAAAkAAAADAAoAAQACAAAAAAACAAoAAQACAAAAAAABAAoAAQACAAAAAAAFAAoAAQARAAgAAAAHAAoAAQACAAAAAAAIAAoAAQACAAAAAAAJAAoAAQACAAAAAAAKAAoAAQACAAAAAAALAAoAAQACAAAAAAAMAAoAAQACAAAAAAANAAoAAQACAAAAAAAOAAoAAQACAAAAAAAPAAoAAQACAAAAAAAQAAoAAQACAAAAAAARAAoAAQACAAAAAAASAAoAAQACAAAAAAATAAoAAQACAAAAAAAUAAoAAQACAAAAAAAVAAoAAQACAAAAAAAWAAoAAQARAAgAAAARAAkAAQACAAAAAAAQAAkAAQACAAAAAAAPAAkAAQACAAMAAAAOAAkAAQACAAAAAAANAAkAAQACAAAAAAAMAAkAAQACAAAAAAALAAkAAQACAAAAAAAKAAkAAQACAAAAAAAJAAkAAQACAAAAAAAAAAoAAQACAAAAAAAAAAkAAQACAAAAAAABAAkAAQACAAAAAAACAAkAAQACAAAAAAADAAkAAQACAAAAAAAEAAkAAQACAAAAAAAFAAkAAQACAAAAAAAGAAkAAQACAAAAAAAHAAkAAQACAAAAAAAIAAkAAQACAAAAAAASAAkAAQACAAAAAAATAAkAAQACAAAAAAAUAAkAAQACAAAAAAAVAAkAAQACAAAAAAAWAAkAAQACAAAAAAAXAAkAAQACAAAAAAAEAAsAAQACAAAAAAAGAAoAAQARAAgAAAADAAgAAQAGAAkAAAABAAcAAQAGAAkAAAAIAAcAAQARAAgAAAADAAYAAQAGAAkAAAAFAAUAAQAJAAcAAAAGAAgAAQAAAAkAAAAOAAYAAQARAAgAAAALAAUAAQAJAAcAAAAMAAgAAQAAAAkAAAAVAAcAAQARAAgAAAASAAYAAQARAAgAAAAQAAgAAQAAAAkAAAAJAAYAAQADAAgAAAAFAAcAAQARAAgAAAAHAAgAAQAGAAkAAAAIAAgAAQAAAAkAAAAJAAgAAQAGAAkAAAAKAAgAAQAAAAkAAAALAAgAAQAGAAkAAAAFAAgAAQAGAAkAAAAEAAgAAQAAAAkAAAACAAgAAQAAAAkAAAAAAAgAAQAAAAkAAAABAAgAAQAGAAkAAAAAAAcAAQAAAAkAAAAAAAYAAQAAAAkAAAABAAYAAQAGAAkAAAACAAcAAQAAAAkAAAADAAcAAQAGAAkAAAAEAAcAAQAAAAkAAAACAAYAAQAAAAkAAAAEAAYAAQAAAAkAAAAGAAYAAQARAAgAAAAGAAcAAQARAAgAAAAFAAYAAQARAAgAAAAHAAYAAQARAAgAAAAIAAYAAQARAAgAAAAHAAcAAQARAAgAAAAJAAcAAQADAAgAAAAKAAYAAQARAAgAAAALAAcAAQARAAgAAAAKAAcAAQARAAgAAAALAAYAAQARAAgAAAAMAAYAAQADAAgAAAANAAYAAQADAAgAAAANAAcAAQADAAgAAAAMAAcAAQADAAgAAAANAAgAAQAGAAkAAAAOAAgAAQAAAAkAAAAPAAgAAQAGAAkAAAAOAAcAAQARAAgAAAAPAAcAAQARAAgAAAAPAAYAAQARAAgAAAAQAAYAAQARAAgAAAARAAYAAQARAAgAAAARAAcAAQARAAgAAAAQAAcAAQARAAgAAAARAAgAAQAGAAkAAAASAAgAAQAAAAkAAAASAAcAAQARAAgAAAATAAYAAQARAAgAAAATAAcAAQARAAgAAAATAAgAAQAGAAkAAAAUAAgAAQAAAAkAAAAUAAcAAQARAAgAAAAUAAYAAQARAAgAAAAVAAYAAQARAAgAAAAWAAYAAQARAAgAAAAWAAcAAQARAAgAAAAWAAgAAQAAAAkAAAAVAAgAAQAGAAkAAAAXAAIAAQARAAEAAAAWAAIAAQAMAAEAAAAVAAIAAQARAAEAAAAUAAIAAQAMAAEAAAATAAIAAQARAAEAAAASAAIAAQAMAAEAAAARAAIAAQARAAEAAAAQAAIAAQARAAEAAAAPAAIAAQAMAAEAAAAOAAIAAQARAAEAAAANAAIAAQARAAEAAAAMAAIAAQAMAAEAAAALAAIAAQARAAEAAAAKAAIAAQAMAAEAAAAJAAIAAQAMAAEAAAAIAAIAAQARAAEAAAAHAAIAAQARAAEAAAAGAAIAAQAMAAEAAAAFAAIAAQARAAEAAAAEAAIAAQAMAAEAAAADAAIAAQARAAEAAAACAAIAAQAMAAEAAAABAAIAAQARAAEAAAAAAAIAAQARAAEAAAAXAAoAAQACAAAAAAAXAAgAAQAAAAkAAAAXAAcAAQARAAgAAAAXAAYAAQARAAgAAAAWAAUAAQAQAAcAAAAVAAUAAQAJAAcAAAAUAAUAAQAKAAcAAAATAAUAAQAJAAcAAAASAAUAAQAFAAcAAAARAAUAAQALAAcAAAAQAAUAAQAKAAcAAAAPAAUAAQACAAMAAAAOAAUAAQAJAAcAAAANAAUAAQACAAcAAAAMAAUAAQARAAcAAAAKAAUAAQAAAAcAAAAXAAUAAQAJAAcAAAAJAAUAAQAIAAcAAAAIAAUAAQACAAcAAAAHAAUAAQABAAcAAAAXAAQAAQABAAUAAAAWAAQAAQABAAUAAAAVAAQAAQABAAUAAAAUAAQAAQABAAUAAAATAAQAAQABAAUAAAASAAQAAQABAAUAAAARAAQAAQABAAUAAAAQAAQAAQABAAUAAAAPAAQAAQABAAUAAAAGAAUAAQAKAAcAAAAEAAUAAQAFAAcAAAADAAUAAQARAAcAAAACAAUAAQAJAAcAAAABAAUAAQABAAcAAAAAAAUAAQANAAcAAAAAAAQAAQABAAUAAAABAAQAAQABAAUAAAACAAQAAQABAAUAAAADAAQAAQABAAUAAAAEAAQAAQABAAUAAAAFAAQAAQABAAUAAAAGAAQAAQABAAUAAAAHAAQAAQABAAUAAAAIAAQAAQABAAUAAAAJAAQAAQABAAUAAAAKAAQAAQABAAUAAAALAAQAAQABAAUAAAAMAAQAAQABAAUAAAANAAQAAQABAAUAAAAOAAQAAQABAAUAAAAAAAMAAQALAAMAAAABAAMAAQAIAAMAAAACAAMAAQAJAAMAAAADAAMAAQABAAMAAAAEAAMAAQAGAAMAAAAFAAMAAQAAAAMAAAAGAAMAAQACAAMAAAAHAAMAAQABAAMAAAAIAAMAAQAHAAMAAAAJAAMAAQAPAAMAAAAKAAMAAQAJAAMAAAALAAMAAQALAAMAAAAQAAMAAQACAAMAAAARAAMAAQAJAAMAAAASAAMAAQABAAMAAAATAAMAAQANAAMAAAAUAAMAAQAJAAMAAAAVAAMAAQAGAAMAAAAWAAMAAQAKAAMAAAAXAAMAAQAJAAMAAAAPAAMAAQAJAAMAAAAOAAMAAQAEAAMAAAANAAMAAQALAAMAAAAMAAMAAQAIAAMAAAAXAAEAAQARAAEAAAAWAAEAAQAMAAEAAAAVAAEAAQARAAEAAAAUAAEAAQAMAAEAAAATAAEAAQARAAEAAAASAAEAAQAMAAEAAAARAAEAAQARAAEAAAAQAAEAAQARAAEAAAAPAAEAAQAMAAEAAAAOAAEAAQARAAEAAAANAAEAAQARAAEAAAAMAAEAAQAMAAEAAAALAAEAAQARAAEAAAAKAAEAAQAMAAEAAAAJAAEAAQAMAAEAAAAIAAEAAQARAAEAAAAHAAEAAQARAAEAAAAGAAEAAQAMAAEAAAAFAAEAAQARAAEAAAAEAAEAAQAMAAEAAAADAAEAAQARAAEAAAACAAEAAQAMAAEAAAABAAEAAQARAAEAAAAAAAEAAQARAAEAAAAXAAAAAQARAAEAAAAWAAAAAQAMAAEAAAAVAAAAAQARAAEAAAAUAAAAAQAMAAEAAAATAAAAAQARAAEAAAASAAAAAQAMAAEAAAARAAAAAQARAAEAAAAQAAAAAQARAAEAAAAPAAAAAQAMAAEAAAAOAAAAAQARAAEAAAANAAAAAQARAAEAAAAMAAAAAQAMAAEAAAALAAAAAQARAAEAAAAKAAAAAQAMAAEAAAAJAAAAAQAMAAEAAAAIAAAAAQARAAEAAAAHAAAAAQARAAEAAAAGAAAAAQAMAAEAAAAFAAAAAQARAAEAAAAEAAAAAQAMAAEAAAADAAAAAQARAAEAAAACAAAAAQAMAAEAAAABAAAAAQARAAEAAAAAAAAAAQARAAEAAAAXAAwAAQACAAAAAAAWAAwAAQACAAAAAAAVAAwAAQACAAAAAAAUAAwAAQACAAAAAAATAAwAAQARAAoAAAASAAwAAQARAAoAAAARAAwAAQARAAoAAAAQAAwAAQARAAoAAAAPAAwAAQARAAoAAAAOAAwAAQARAAoAAAANAAwAAQARAAoAAAAMAAwAAQARAAoAAAALAAwAAQARAAoAAAAKAAwAAQARAAoAAAAJAAwAAQARAAoAAAAIAAwAAQARAAoAAAAHAAwAAQARAAoAAAAGAAwAAQARAAoAAAAFAAwAAQARAAoAAAAEAAwAAQARAAoAAAADAAwAAQARAAoAAAACAAwAAQARAAoAAAABAAwAAQARAAoAAAAAAAwAAQARAAoAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAA=")
+
+[node name="WaveManager" parent="GameLayer" instance=ExtResource("6_y5q10")]
+position = Vector2(-64, 200)
+script = ExtResource("7_h8ehj")
+StartDelay = 15
+Wave2StartTime = 33
+Wave3StartTime = 38
+Wave1_Interval = 1.0
+Wave2_Interval = 10
+Wave3_Interval = 20.0
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Coral" type="Node2D" parent="Environment"]
+
+[node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(543, 347)
+texture = ExtResource("8_eftpd")
+
+[node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(499, 335)
+texture = ExtResource("8_eftpd")
+
+[node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(670, 400)
+texture = ExtResource("8_eftpd")
+flip_h = true
+
+[node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(601, 401)
+texture = ExtResource("8_eftpd")
+flip_h = true
+
+[node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(718, 321)
+texture = ExtResource("8_eftpd")
+
+[node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(420, 382)
+texture = ExtResource("8_eftpd")
+
+[node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(113, 323)
+texture = ExtResource("8_eftpd")
+
+[node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(262, 8)
+texture = ExtResource("8_eftpd")
+flip_h = true
+
+[node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(497, 16)
+texture = ExtResource("8_eftpd")
+
+[node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(618, 344)
+texture = ExtResource("9_g6kpo")
+
+[node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(406, 333)
+texture = ExtResource("9_g6kpo")
+flip_h = true
+
+[node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(707, 397)
+texture = ExtResource("9_g6kpo")
+flip_h = true
+
+[node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(724, 4)
+texture = ExtResource("9_g6kpo")
+flip_h = true
+
+[node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(263, 323)
+texture = ExtResource("9_g6kpo")
+flip_h = true
+
+[node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(490, 396)
+texture = ExtResource("9_g6kpo")
+flip_h = true
+
+[node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(620, 3)
+texture = ExtResource("9_g6kpo")
+flip_h = true
+
+[node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(609, 15)
+texture = ExtResource("9_g6kpo")
+flip_h = true
+
+[node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(353, 14)
+texture = ExtResource("9_g6kpo")
+
+[node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
+material = SubResource("ShaderMaterial_a0suq")
+position = Vector2(563, 378)
+texture = ExtResource("11_heb57")
+script = ExtResource("12_xho5h")
+
+[node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(662, 343)
+texture = ExtResource("11_heb57")
+
+[node name="FetusProp" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(438, 4)
+texture = ExtResource("13_v51jy")
+
+[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral"]
+position = Vector2(465, 347)
+texture = ExtResource("13_v51jy")
+
+[node name="Bramble" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(505, 328)
+texture = ExtResource("14_xl50p")
+
+[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(454, 388)
+texture = ExtResource("14_xl50p")
+
+[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(584, 399)
+texture = ExtResource("14_xl50p")
+
+[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(640, 303)
+texture = ExtResource("14_xl50p")
+
+[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(483, 0)
+texture = ExtResource("14_xl50p")
+
+[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(660, 11)
+texture = ExtResource("14_xl50p")
+
+[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(366, 316)
+texture = ExtResource("15_0m4ho")
+flip_h = true
+
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(455, 331)
+texture = ExtResource("15_0m4ho")
+flip_h = true
+
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(402, 343)
+texture = ExtResource("15_0m4ho")
+
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
+position = Vector2(428, 399)
+texture = ExtResource("15_0m4ho")
+flip_h = true
+
+[node name="Fish" type="Node2D" parent="Environment"]
+
+[node name="Fish" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(542, 386)
+
+[node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(515, 353)
+
+[node name="Fish5" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(180, 329)
+
+[node name="Fish6" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(37, 326)
+
+[node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(573, 19)
+
+[node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(455, 394)
+
+[node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(315, 14)
+
+[node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(573, 342)
+
+[node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_07f3a")]
+z_index = -1
+position = Vector2(633, 395)
+
+[node name="Shrubs" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("17_6md0y")]
+position = Vector2(560, 13)
+scale = Vector2(1, 1)
+
+[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("17_6md0y")]
+position = Vector2(474, 339)
+scale = Vector2(1, 1)
+
+[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("17_6md0y")]
+position = Vector2(521, 392)
+scale = Vector2(1, 1)
+
+[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("17_6md0y")]
+position = Vector2(193, 327)
+scale = Vector2(1, 1)
+
+[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("17_6md0y")]
+position = Vector2(433, 330)
+scale = Vector2(1, 1)
+
+[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("17_6md0y")]
+position = Vector2(658, 403)
+scale = Vector2(1, 1)
+
+[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("17_6md0y")]
+position = Vector2(297, 14)
+scale = Vector2(1, 1)
+
+[node name="Trees" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
+z_index = 1
+position = Vector2(561, 364)
+texture = ExtResource("18_dxyyl")
+flip_h = true
+
+[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
+z_index = 1
+position = Vector2(396, 7)
+texture = ExtResource("18_dxyyl")
+
+[node name="Special" type="Node2D" parent="Environment"]
+visible = false
+
+[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
+position = Vector2(606, 395)
+sprite_frames = SubResource("SpriteFrames_b1vmi")
+
+[node name="UILayer" parent="." instance=ExtResource("20_17pkm")]
+layout_mode = 1
+
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("21_ipgls")]
+offset_left = 8.0
+offset_top = 315.0
+offset_right = 8.0
+offset_bottom = 315.0
+scale = Vector2(0.8, 0.8)
+
+[node name="Node" type="Node2D" parent="."]
+visible = false
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="Node"]
+offset_left = -56.0
+offset_top = -58.0
+offset_right = 792.0
+offset_bottom = 444.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.0784314)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="ToolTips" parent="." instance=ExtResource("22_41kje")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -167.0
+offset_right = 172.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("23_whwei")]
+visible = false
+layout_mode = 1
+next_level = "res://Scenes/LevelScenes/Level2.tscn"
+
+[node name="CodexBG" parent="." instance=ExtResource("24_5b5bb")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PauseButton" parent="." instance=ExtResource("25_4b6nv")]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 380.0
+offset_right = 738.0
+offset_bottom = 403.0
+
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_mlggh")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(370, 208)
+
+[node name="GlowShaderPass" type="CanvasLayer" parent="."]
+
+[node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
+material = SubResource("ShaderMaterial_o4yey")
+offset_left = -49.0
+offset_top = -65.0
+offset_right = 804.0
+offset_bottom = 435.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
+[connection signal="plant_placed" from="PlantManager" to="PlantSelectionMenu" method="_on_plant_manager_plant_placed"]
+[connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
+[connection signal="spyder_placed" from="PlantManager" to="GameLayer/WaveManager" method="_on_plant_manager_spyder_placed"]
+[connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
+[connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
+[connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
+[connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+
+[editable path="GameLayer/GridManager"]
