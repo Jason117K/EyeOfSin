@@ -173,18 +173,32 @@ func _start_explain_green_dimension():
 
 
 func _start_wave_2_both_dimensions():
+	print("========== PURPLE DIMENSION ACTIVATING WAVE 2 FOR BOTH ==========")
+	print("[PURPLE] Current time: ", Time.get_ticks_msec())
+	print("[PURPLE] waveManager.numWave BEFORE: ", waveManager.numWave)
+
 	# Start Wave 2 in green dimension
 	var green_dimension = get_parent().get_node("Level0-1_Alternate")
+	print("[PURPLE] Green dimension node found: ", green_dimension != null)
 	if green_dimension and green_dimension.has_method("start_wave_2"):
+		print("[PURPLE] Calling green_dimension.start_wave_2()...")
 		green_dimension.start_wave_2()
+		print("[PURPLE] Green dimension start_wave_2() completed")
+	else:
+		print("[PURPLE] ERROR: Could not find green dimension or start_wave_2 method!")
 
 	# Start Wave 2 in purple dimension
+	print("[PURPLE] About to call waveManager.startSecondWave()...")
 	waveManager.startSecondWave()
+	print("[PURPLE] waveManager.numWave AFTER startSecondWave: ", waveManager.numWave)
+	print("[PURPLE] waveManager.$Wave2.is_stopped(): ", waveManager.get_node("Wave2").is_stopped())
 
 	# Enable dimension swapping
 	plantSelectionMenu.canSwapScenes = true
+	print("[PURPLE] Dimension swapping enabled")
 
 	tutorial_state = TutorialState.TUTORIAL_COMPLETE
+	print("========== PURPLE DIMENSION WAVE 2 ACTIVATION COMPLETED ==========")
 
 
 # UI Control Methods
@@ -231,12 +245,19 @@ func unhighlight_spyder_button():
 
 # Signal Handlers
 func _on_tooltip_hidden():
-	print("[Tutorial] ToolTip hidden in state: ", TutorialState.keys()[tutorial_state])
+	print("########## TOOLTIP HIDDEN ##########")
+	print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
+	print("[Tutorial] Current time: ", Time.get_ticks_msec())
+
 	match tutorial_state:
 		TutorialState.EXPLAIN_BLOOD_COST:
+			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_COST to WAVE_1_ACTIVE")
 			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
 		TutorialState.EXPLAIN_GREEN_DIMENSION:
+			print("[Tutorial] Transitioning from EXPLAIN_GREEN_DIMENSION to WAVE_2_ACTIVE")
 			_transition_to_state(TutorialState.WAVE_2_ACTIVE)
+
+	print("########## TOOLTIP HIDDEN HANDLER COMPLETED ##########")
 
 
 func _on_spyder_placed():

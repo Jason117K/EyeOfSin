@@ -118,18 +118,37 @@ func setScenes():
 	pass
 			
 func startSecondWave():
-	print("Second Wave Started")
+	print("---------- WAVE MANAGER startSecondWave() CALLED ----------")
+	print("[WM] Current time: ", Time.get_ticks_msec())
+	print("[WM] numWave BEFORE increment: ", numWave)
+	print("[WM] $Wave2.is_stopped() BEFORE: ", $Wave2.is_stopped())
+
 	$Wave2.start()
+	print("[WM] $Wave2.start() called")
+	print("[WM] $Wave2.is_stopped() AFTER start: ", $Wave2.is_stopped())
+	print("[WM] $Wave2.wait_time: ", $Wave2.wait_time)
+	print("[WM] $Wave2.time_left: ", $Wave2.time_left)
+
 	$ProceedGame.wait_time = Wave3StartTime
 	$ProceedGame.start()
+
 	numWave = numWave + 1
+	print("[WM] numWave AFTER increment: ", numWave)
+
 	for icon in wavePreviewIcons:
-		print("Icon is ", icon.name)
+		print("[WM] Swapping visibility for icon: ", icon.name)
 		icon.swap_Visibility()
+
 	for timer in timers:
 		if timer != null:
 			timer.wait_time = $ProceedGame.wait_time - 10
 			timer.start()
+
+	print("[WM] Number of spawners: ", spawners.size())
+	for spawner in spawners:
+		print("[WM] Spawner: ", spawner.name, " - currentRound: ", spawner.currentRound if spawner.has_method("get") else "N/A")
+
+	print("---------- WAVE MANAGER startSecondWave() COMPLETED ----------")
 		
 func _on_ProceedGame_timeout():
 	$ProceedGame.stop()
@@ -188,18 +207,29 @@ func _on_Wave1_timeout():
 		spawner.start_spawn_zombie()
 	#wave1Started.emit()
 
-# Spawn the Second Wave 
+# Spawn the Second Wave
 func _on_Wave2_timeout():
-	print("Will now spawn second wave")
+	print("********** WAVE 2 TIMEOUT - SPAWNING ZOMBIES **********")
+	print("[WM-W2] Current time: ", Time.get_ticks_msec())
+	print("[WM-W2] numWave: ", numWave)
+	print("[WM-W2] Number of spawners: ", spawners.size())
+
 	wave2Started.emit()
+	print("[WM-W2] wave2Started signal emitted")
+
 	var wave_Interval = Wave2_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
 	$Wave2.wait_time = wave_Interval
-	
+	print("[WM-W2] Next Wave2 interval set to: ", wave_Interval)
+
 	for spawner in spawners:
-		print("Calling Wave 2 Start Spawn Zombie")
+		print("[WM-W2] Calling start_spawn_zombie() on spawner: ", spawner.name)
+		print("[WM-W2] Spawner currentRound before call: ", spawner.currentRound if spawner.has_method("get") else "N/A")
 		spawner.start_spawn_zombie()
+		print("[WM-W2] Spawner currentRound after call: ", spawner.currentRound if spawner.has_method("get") else "N/A")
+
+	print("********** WAVE 2 TIMEOUT COMPLETED **********")
 
 # Spawn the last wave and start checking for the end of the wave 
 func _on_Wave3_timeout():
