@@ -96,11 +96,16 @@ func start_spawn_zombie():
 	$WaveDelay.start()
 	#print("Start SPawn Zombie Called")
 	
-#Spawns a different amount of zombies depending on the wave 
+#Spawns a different amount of zombies depending on the wave
 func spawn_zombie():
-	
-	#For each wave, shuffle the zombies, and then spawn them at the spawner positon 
-	#TODO Add slight variation in spawn y axis 
+	print("[SPAWNER ", name, "] ===== spawn_zombie() called =====")
+	print("[SPAWNER ", name, "] numWave: ", numWave)
+	print("[SPAWNER ", name, "] wave1_zombies.size(): ", wave1_zombies.size())
+	print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
+	print("[SPAWNER ", name, "] wave3_zombies.size(): ", wave3_zombies.size())
+
+	#For each wave, shuffle the zombies, and then spawn them at the spawner positon
+	#TODO Add slight variation in spawn y axis
 	match numWave:
 		1: 
 			if(wave1_zombies.size() > 0):
@@ -137,7 +142,10 @@ func spawn_zombie():
 				
 
 		2:
+			print("[SPAWNER ", name, "] CASE 2: Wave 2 spawning")
+			print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
 			if(wave2_zombies.size() > 0):
+				print("[SPAWNER ", name, "] Spawning a Wave 2 zombie...")
 				wave2_zombies.shuffle()
 				var zombie_type = wave2_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
@@ -192,7 +200,8 @@ func spawn_zombie():
 				
 
 		_:
-			print("Value is something else")
+			print("[SPAWNER ", name, "] DEFAULT CASE: numWave = ", numWave, " (no matching wave!)")
+			print("[SPAWNER ", name, "] This means the spawner doesn't know how to spawn for this wave number")
 	
 	
 # Function to populate the zombies array based on numbers provided
@@ -228,9 +237,11 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 	for _i in range(football_zombie_count):
 		zombie_wave.append(football_zombie_scene)
 	
-#Increments the current wave 				
+#Increments the current wave
 func increase_wave():
+	print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
 	numWave = numWave + 1
+	print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
 
 #TODO Trace Back 
 #Starts the next round of zombie spawning 

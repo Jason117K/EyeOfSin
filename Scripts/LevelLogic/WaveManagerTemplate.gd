@@ -146,7 +146,7 @@ func startSecondWave():
 
 	print("[WM] Number of spawners: ", spawners.size())
 	for spawner in spawners:
-		print("[WM] Spawner: ", spawner.name, " - currentRound: ", spawner.currentRound if spawner.has_method("get") else "N/A")
+		print("[WM] Spawner: ", spawner.name, " - numWave: ", spawner.numWave)
 
 	print("---------- WAVE MANAGER startSecondWave() COMPLETED ----------")
 		
@@ -225,9 +225,9 @@ func _on_Wave2_timeout():
 
 	for spawner in spawners:
 		print("[WM-W2] Calling start_spawn_zombie() on spawner: ", spawner.name)
-		print("[WM-W2] Spawner currentRound before call: ", spawner.currentRound if spawner.has_method("get") else "N/A")
+		print("[WM-W2] Spawner numWave before call: ", spawner.numWave)
 		spawner.start_spawn_zombie()
-		print("[WM-W2] Spawner currentRound after call: ", spawner.currentRound if spawner.has_method("get") else "N/A")
+		print("[WM-W2] Spawner numWave after call: ", spawner.numWave)
 
 	print("********** WAVE 2 TIMEOUT COMPLETED **********")
 
