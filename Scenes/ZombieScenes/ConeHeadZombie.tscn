@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="12_ebmmd"]
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" id="13"]
 
-
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(24, 40)
 

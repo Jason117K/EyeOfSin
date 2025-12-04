@@ -4,6 +4,7 @@ extends Zombie
 # Handles Any BucketHeadZombie Specific Logic 
 
 func _ready() -> void:
+	super()
 	pass
 	#print("MawPREY Area2D: ", name)
 	#print("MawPREY Collision Layer: ", collision_layer)
