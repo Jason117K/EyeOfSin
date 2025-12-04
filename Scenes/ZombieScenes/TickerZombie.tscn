@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://Scripts/Zombies/AOEHit.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://Assets/Zombies/Animations/Ticker/Ticker-WebSheet.png" id="13"]
 
+
 [sub_resource type="RectangleShape2D" id="15"]
 size = Vector2(18, 30)
 

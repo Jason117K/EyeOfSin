@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="4_e4llh"]
 [ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://Assets/Plants/Animations/Wasp 16x16 Sprite Sheet.png" id="5_1lhml"]
 
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6mlr"]
 atlas = ExtResource("3_41nvc")
 region = Rect2(0, 0, 400, 400)

@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
 
+
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 38)
 

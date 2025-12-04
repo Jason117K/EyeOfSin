@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://0tcqey8apvy0"]
+[gd_scene load_steps=6 format=3 uid="uid://0tcqey8apvy0"]
 
 [ext_resource type="Script" uid="uid://cpye6mrmxtywc" path="res://Scripts/game_controller.gd" id="1_nqxm2"]
 [ext_resource type="PackedScene" uid="uid://cwnxaalr7lrsd" path="res://Scenes/LevelScenes/StartScreen.tscn" id="2_kx2cw"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="3_goscw"]
+[ext_resource type="PackedScene" uid="uid://dpltvbm84xujg" path="res://Scenes/Tutorials/spotlight_overlay.tscn" id="4_ppfu0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppfu0"]
 bg_color = Color(0, 0, 0, 1)
@@ -43,3 +44,6 @@ offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ppfu0")
+
+[node name="SpotlightOverlay" parent="CurrentScene" instance=ExtResource("4_ppfu0")]
+visible = false

@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://Scripts/complexTutorialImage.gd" id="1_ur82m"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="2_rnfva"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="5_qo6f4"]
+[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="5_qo6f4"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="6_csmf8"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="7_48tj0"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="8_cnmoj"]
 [ext_resource type="Texture2D" uid="uid://denmhprn6ukid" path="res://Assets/Plants/Animations/RedSpiderAttack-Sheet.png" id="8_rs5kb"]
 [ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://Scripts/Plants/change_color.gd" id="9_00344"]
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f4j35"]
 shader = ExtResource("5_qo6f4")

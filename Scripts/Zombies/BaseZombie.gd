@@ -10,6 +10,16 @@ signal zombie_death
 
 var slow_field_scene = preload("res://Scenes/PlantScenes/web_tile_slow.tscn")
 
+func _ready() -> void:
+	if self.is_in_group("Green"):
+		print("SET TO GTREEEEEEEN SO CAN ATTTACK GREEEN")
+		self.set_collision_layer_value(1,false)
+		self.set_collision_layer_value(2,false)
+		self.set_collision_layer_value(3,true)
+	else:
+		self.set_collision_layer_value(1,false)
+		self.set_collision_layer_value(2,true)
+		self.set_collision_layer_value(3,false)
 # Component Manager Getter
 func getCompManager():
 	return compManager

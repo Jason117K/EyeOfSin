@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ct1f77uyefcnp" path="res://Scripts/UI/pause_button.gd" id="2_w1yst"]
 [ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://Scenes/LevelScenes/PauseMenu.tscn" id="3_e4pn3"]
 
+
 [node name="PauseButton" type="Button"]
 offset_left = 681.0
 offset_top = 378.0

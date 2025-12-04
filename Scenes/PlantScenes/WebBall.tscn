@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/Plants/WebBall.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Plants/WebBallwOutline.png" type="Texture2D" id=2]
+[ext_resource type="Script" uid="uid://b6yhajrlfy10e" path="res://Scripts/Plants/WebBall.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="2"]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 56.0486

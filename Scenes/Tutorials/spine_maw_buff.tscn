@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://Scripts/complexTutorialImage.gd" id="1_gaqbg"]
 [ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://Assets/Plants/Spriteframes/Maw.tres" id="1_m3nwt"]
 [ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpine-Sheet.png" id="2_01wf6"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_gaqbg"]
+[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_gaqbg"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="2_t10a1"]
 [ext_resource type="Script" uid="uid://dyie6vmk336h2" path="res://Scripts/ChangeColor.gd" id="3_gaqbg"]
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t10a1"]
 shader = ExtResource("2_gaqbg")

@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Systems/GridManager.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/LevelLogic/RestartScene.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Text/YouLose!.png" type="Texture2D" id=3]
-[ext_resource path="res://Assets/Text/Retry.png" type="Texture2D" id=4]
-[ext_resource path="res://Assets/Audio/Lose.mp3" type="AudioStream" id=5]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
+[ext_resource type="Script" uid="uid://d2qbul4sop4n0" path="res://Scripts/LevelLogic/RestartScene.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://ppdte33x5h82" path="res://Assets/Text/YouLose!.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c2o5ytbgl6vae" path="res://Assets/Text/Retry.png" id="4"]
+[ext_resource type="AudioStream" uid="uid://ch5fpn6o2aajn" path="res://Assets/Audio/Lose.mp3" id="5"]
+
 
 [node name="RestartScene1" type="Node2D"]
 script = ExtResource( 2 )

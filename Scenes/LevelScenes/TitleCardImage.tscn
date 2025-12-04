@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="14_pebbp"]
 [ext_resource type="Texture2D" uid="uid://b33cuw824fnwf" path="res://Assets/Icons/EyeOfSynTitle.png" id="15_4n8jy"]
 
+
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("12_j22w3")
 region = Rect2(0, 0, 32, 41)

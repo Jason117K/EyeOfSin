@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b78q3ipyvju71" path="res://Assets/Zombies/Animations/HeadDrag/HeadDragZombieWebAttack-Sheet.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://brskuj7wo2ibg" path="res://Assets/Zombies/Animations/HeadDrag/HeadDragZombieWebWalk-Sheet.png" id="15"]
 
+
 [sub_resource type="RectangleShape2D" id="1"]
 
 [sub_resource type="ShaderMaterial" id="44"]

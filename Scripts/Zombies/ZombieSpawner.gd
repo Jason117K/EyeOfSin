@@ -127,7 +127,9 @@ func spawn_zombie():
 				
 				if make_green :
 					zombie_instance.add_to_group("Green")
+					zombie_instance.collision_layer = 3
 					zombie_instance.set_hue_shift(125)
+					zombie_instance._ready()
 				else:
 					zombie_instance.add_to_group("Purple")
 				$WaveDelay.start()
@@ -161,7 +163,9 @@ func spawn_zombie():
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				if make_green :
 					zombie_instance.add_to_group("Green")
+					zombie_instance.collision_layer = 3
 					zombie_instance.set_hue_shift(125)
+					zombie_instance._ready()
 				else:
 					zombie_instance.add_to_group("Purple")
 				print("Spawn wave 2")
@@ -187,7 +191,9 @@ func spawn_zombie():
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				if make_green :
 					zombie_instance.add_to_group("Green")
+					zombie_instance.collision_layer = 3
 					zombie_instance.set_hue_shift(125)
+					zombie_instance._ready()
 				else:
 					zombie_instance.add_to_group("Purple")
 				print("Spawn wave 3")

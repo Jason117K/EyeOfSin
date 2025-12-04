@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="1_2pid0"]
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://Scripts/complexTutorialImage.gd" id="1_rbmga"]
 [ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://Assets/Plants/Animations/LaserEggWormsSmolMERGED-Sheet.png" id="1_xonq7"]
-[ext_resource type="Shader" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_2pid0"]
+[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://Assets/Shaders/basicZombieHitShader.tres" id="2_2pid0"]
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="2_hwkg3"]
 [ext_resource type="Script" uid="uid://bm4fkfuhvjcka" path="res://Scripts/Plants/make_red.gd" id="3_2pid0"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgn5o"]
 atlas = ExtResource("1_xonq7")

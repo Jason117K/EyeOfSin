@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://behdfh75j1wph" path="res://Assets/Zombies/SwordBucketZombie-SheeWEBt.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
 
+
 [sub_resource type="RectangleShape2D" id="1"]
 
 [sub_resource type="ShaderMaterial" id="44"]

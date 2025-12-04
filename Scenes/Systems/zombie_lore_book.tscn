@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://csockxqf1ab8l" path="res://Assets/Sprites/PoleVaultZombie.png" id="9_7frkv"]
 [ext_resource type="Script" uid="uid://bwjh0i0w016sm" path="res://Scripts/UI/ZombieLoreBookController.gd" id="10_lexj7"]
 
+
 [node name="ZombieLoreBook" type="Control"]
 process_mode = 3
 layout_mode = 3

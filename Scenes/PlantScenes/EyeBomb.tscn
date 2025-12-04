@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="4"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="4_7isjx"]
 
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vjdvj"]
 
 [sub_resource type="AtlasTexture" id="49"]

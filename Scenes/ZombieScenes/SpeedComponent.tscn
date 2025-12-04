@@ -2,5 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dp1hloyrh6bp1" path="res://Scripts/Zombies/SpeedComponent.gd" id="1"]
 
+
 [node name="SpeedComponent" type="Node2D"]
 script = ExtResource("1")

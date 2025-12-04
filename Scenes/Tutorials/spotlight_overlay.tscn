@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpltvbm84xujg"]
+
+[ext_resource type="Shader" uid="uid://yue3q3mw3i0w" path="res://Scripts/Shaders/spotlight_shader.gdshader" id="1_ttf60"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttf60"]
+shader = ExtResource("1_ttf60")
+shader_parameter/circle_position = Vector2(0.5, 0.5)
+shader_parameter/circle_size = 0.15
+shader_parameter/dimming = 0.75
+shader_parameter/edge_softness = 0.03
+
+[node name="SpotlightOverlay" type="CanvasLayer"]
+
+[node name="SpotlightRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ttf60")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

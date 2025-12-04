@@ -97,7 +97,7 @@ func _input(event):
 					print("Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
-			elif(parentName == "Level0-1"):
+			elif(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
 					print("Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)

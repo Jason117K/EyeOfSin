@@ -31,13 +31,13 @@ var health_points = 10
 
 @export var StartDelay = 10
 #Amount of Time it Takes a wave to spawn after previous done
-@export var Wave2StartTime = 20
-@export var Wave3StartTime = 30
+@export var Wave2StartTime = 25
+@export var Wave3StartTime = 40
 
 #Time In Between Spawns In a Wave? #Look at More #I think its extra delay between waves??
-@export var Wave1_Interval = 7.5
-@export var Wave2_Interval = 9
-@export var Wave3_Interval = 5.5
+@export var Wave1_Interval = 0.5
+@export var Wave2_Interval = 0.5
+@export var Wave3_Interval = 0.5
 @export var canStartGame : bool = false 
 
 @export var checkEndLevel = false

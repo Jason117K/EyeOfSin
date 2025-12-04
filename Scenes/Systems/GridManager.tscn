@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://Assets/Environment/GrassTilesRED.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://dyyeeri7m6bqq" path="res://Assets/Environment/BGTiles.png" id="12"]
 
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1o11"]
 texture = ExtResource("11")
 texture_region_size = Vector2i(32, 32)

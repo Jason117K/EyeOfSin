@@ -24,6 +24,7 @@ var wave_1_complete: bool = false
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $PlantSelectionMenu
 @onready var waveManager = $GameLayer/WaveManager
+@onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
 # Text file paths
 const TUTORIAL_SELECT_SPYDER = "res://Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
@@ -128,27 +129,15 @@ func _transition_to_state(new_state: TutorialState):
 
 
 # State entry methods
-func _start_force_select_spyder():
-	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
-	toolTips.noButtonShow()
-
-	hide_all_plant_buttons_except_spyder()
-	highlight_spyder_button()
-
-	waveManager.canStartGame = false
-	plantSelectionMenu.canSwapScenes = false
 
 
-func _start_force_place_plant():
-	toolTips.set_text(TUTORIAL_PLACE_SPYDER)
-	toolTips.noButtonShow()
-
-	unhighlight_spyder_button()
 
 
 func _start_explain_blood_cost():
 	toolTips.set_text_pause(TUTORIAL_BLOOD_COST)
 	toolTips.showButton()
+		
+	show_spotlight_at_position(Vector2(10,0))
 
 
 func _start_wave_1_purple_only():
@@ -254,6 +243,7 @@ func unhighlight_spyder_button():
 
 # Signal Handlers
 func _on_tooltip_hidden():
+	hide_spotlight()
 	print("########## TOOLTIP HIDDEN ##########")
 	print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
 	print("[Tutorial] Current time: ", Time.get_ticks_msec())
@@ -312,3 +302,69 @@ func make_camera_current():
 
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)
+
+
+# Spotlight helper functions - ADD THESE NEW FUNCTIONS
+
+## Shows spotlight centered on a Control node
+func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
+	if not target_node or not spotlight_overlay:
+		print("NOT SHOWING SPOTLIGHT")
+		return
+	print("Showing Spotlight", target_node, size_multiplier)
+
+	# Get center of target in screen coordinates
+	var global_rect = target_node.get_global_rect()
+	var center = global_rect.get_center()
+
+	# Calculate appropriate spotlight size based on button size
+	var viewport_size = get_viewport().get_visible_rect().size
+	var button_diagonal = global_rect.size.length()
+	var uv_size = (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
+
+	show_spotlight_at_position(center, uv_size)
+
+## Shows spotlight at specific screen position
+func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
+	if not spotlight_overlay:
+		return
+	var viewport_size = get_viewport().get_visible_rect().size
+	var uv_pos = screen_pos / viewport_size
+	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
+	#var viewport_size = get_viewport().get_visible_rect().size
+	#var uv_pos = screen_pos / viewport_size
+
+	var spotlight_rect = spotlight_overlay.get_node("SpotlightRect")
+	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
+	spotlight_rect.material.set_shader_parameter("circle_size", size)
+	spotlight_overlay.visible = true
+
+## Hides spotlight overlay
+func hide_spotlight():
+	if spotlight_overlay:
+		spotlight_overlay.visible = false
+
+
+
+func _start_force_select_spyder():
+	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
+	toolTips.noButtonShow()
+
+	hide_all_plant_buttons_except_spyder()
+	highlight_spyder_button()
+
+	# ADD THIS: Show spotlight on Spyder button
+	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
+	show_spotlight_at_node(spyder_button)
+
+	waveManager.canStartGame = false
+	plantSelectionMenu.canSwapScenes = false
+
+func _start_force_place_plant():
+	toolTips.set_text(TUTORIAL_PLACE_SPYDER)
+	toolTips.noButtonShow()
+
+	unhighlight_spyder_button()
+
+	# ADD THIS: Hide spotlight (grid too large for effective spotlight)
+	hide_spotlight()

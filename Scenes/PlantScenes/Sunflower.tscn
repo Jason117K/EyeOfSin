@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_WYRM-Sheet.png" id="9_00tae"]
 
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3r88c"]
 radius = 61.2046
 

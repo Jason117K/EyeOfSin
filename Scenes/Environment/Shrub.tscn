@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dlmmfpqcb527g" path="res://Scripts/Environment/ShrubAnimator.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://cu85mdbxcvylm" path="res://Assets/Environment/Props/Shrub-Sheet2-export.png" id="4"]
 
+
 [sub_resource type="RectangleShape2D" id="1"]
 
 [sub_resource type="AtlasTexture" id="9"]

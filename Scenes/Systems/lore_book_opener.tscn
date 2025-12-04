@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://Assets/Sprites/BasicZombie.png" id="2_y17rf"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="3_y17rf"]
 
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4iqa"]
 bg_color = Color(0.490196, 0.0588235, 0.121569, 1)
 

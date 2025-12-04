@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="2_mf8jh"]
 [ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="3_mf8jh"]
 
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4bbm"]
 atlas = ExtResource("1_rp6vx")
 region = Rect2(0, 0, 64, 64)

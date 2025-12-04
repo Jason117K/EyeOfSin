@@ -1516,7 +1516,7 @@ autoplay = "New Anim 2"
 scale = Vector2(1, 20)
 shape = SubResource("RectangleShape2D_a06ib")
 target_position = Vector2(500, 0)
-collision_mask = 2
+collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
 

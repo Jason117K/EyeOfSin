@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="20_amwcl"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="21_vf7of"]
 
+
 [sub_resource type="Environment" id="2"]
 background_mode = 4
 glow_enabled = true

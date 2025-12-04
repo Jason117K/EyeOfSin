@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dkrse75gra5mn" path="res://Assets/Environment/Animations/FishySheet-Sheet.png" id="2_of2bb"]
 [ext_resource type="Script" uid="uid://bh2tu0akjqnj8" path="res://Scripts/Environment/Swim.gd" id="4"]
 
+
 [sub_resource type="RectangleShape2D" id="1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kc6tc"]

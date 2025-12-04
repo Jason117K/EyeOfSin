@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://Scenes/Tutorials/maw_spider_buff.tscn" id="15_8he61"]
 [ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="16_hpj2u"]
 
+
 [sub_resource type="StyleBoxFlat" id="2"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 2

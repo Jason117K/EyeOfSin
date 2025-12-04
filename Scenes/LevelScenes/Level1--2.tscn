@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="2"]
 [ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="5_hon6n"]
 [ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://Assets/Audio/Win1.mp3" id="6"]
-[ext_resource type="AudioStream" uid="uid://cpe2vuf5wyk74" path="res://Assets/Audio/UIClick.mp3" id="7"]
+[ext_resource type="AudioStream" path="res://Assets/Audio/UIClick.mp3" id="7"]
+
 
 [node name="LevelSwitcher" type="Control"]
 layout_mode = 3

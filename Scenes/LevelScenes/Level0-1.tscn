@@ -93,7 +93,7 @@ mouse_filter = 2
 script = ExtResource("1_capnp")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_3gktd")]
-sun_points = 275
+sun_points = 666
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -144,11 +144,6 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 position = Vector2(-64, 200)
 script = ExtResource("7_h8ehj")
 StartDelay = 5
-Wave2StartTime = 33
-Wave3StartTime = 38
-Wave1_Interval = 1.0
-Wave2_Interval = 10
-Wave3_Interval = 20.0
 
 [node name="Environment" type="Node2D" parent="."]
 

@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dlg0sfn1ax4sn" path="res://Assets/Zombies/Animations/DocOc/DocOcWalkInjuredWeb-Sheet.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://d4b0cn82fjmj8" path="res://Assets/Zombies/Animations/DocOc/DocOcWalkINJURED-Sheet.png" id="16"]
 
+
 [sub_resource type="RectangleShape2D" id="17"]
 size = Vector2(8.75, 21)
 
