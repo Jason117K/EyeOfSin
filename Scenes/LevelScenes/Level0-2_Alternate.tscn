@@ -1,45 +1,45 @@
-[gd_scene load_steps=35 format=4 uid="uid://bbd0fjsv4uvsi"]
+[gd_scene load_steps=35 format=4 uid="uid://ccqnmp0xk6x1c"]
 
-[ext_resource type="Script" uid="uid://b3olngowkc40m" path="res://Scripts/LevelLogic/level_0_1_alternate.gd" id="1_83ut0"]
-[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_6jrws"]
-[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_7r54f"]
-[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_vll5p"]
-[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="5_8snc0"]
-[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="6_ychsy"]
-[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="7_f8ath"]
-[ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://Assets/Environment/Props/Pustules-export.png" id="8_opuci"]
-[ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://Assets/Environment/Props/Pustules_shadow1_Medium.png" id="9_sgty8"]
-[ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://Scripts/Shaders/swayShader.tres" id="10_26pv7"]
-[ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://Assets/Environment/Props/Pustules_shadow1_big.png" id="11_wmlhy"]
-[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_rigti"]
-[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="13_l7yxw"]
-[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14_sacax"]
-[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15_qiku5"]
-[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="16_654uq"]
-[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="17_54fiw"]
-[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="18_y4elr"]
-[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_s48g2"]
-[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_qm12r"]
-[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="21_fdd0k"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_hcyne"]
-[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="24_as807"]
-[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="25_uavsr"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="26_adj10"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_j7igl"]
+[ext_resource type="Script" uid="uid://b3olngowkc40m" path="res://Scripts/LevelLogic/level_0_1_alternate.gd" id="1_xmbdx"]
+[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_m8syp"]
+[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_b1irm"]
+[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_b2r3q"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="5_uwsnf"]
+[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="6_g1cyh"]
+[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="7_a84oj"]
+[ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://Assets/Environment/Props/Pustules-export.png" id="8_vyoll"]
+[ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://Assets/Environment/Props/Pustules_shadow1_Medium.png" id="9_eycat"]
+[ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://Scripts/Shaders/swayShader.tres" id="10_b37ko"]
+[ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://Assets/Environment/Props/Pustules_shadow1_big.png" id="11_a0o5e"]
+[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_ettje"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="13_0y7qa"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="14_mi1d3"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="15_gxdr2"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="16_vgyyd"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="17_wf2gn"]
+[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="18_4kn7w"]
+[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_uv6up"]
+[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_c63eg"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="21_osmq4"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_16kt4"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="23_bxjc2"]
+[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="24_42ryq"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="25_7in2w"]
+[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="26_hwxwv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
-shader = ExtResource("10_26pv7")
+shader = ExtResource("10_b37ko")
 
 [sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("19_s48g2")
+atlas = ExtResource("19_uv6up")
 region = Rect2(0, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("19_s48g2")
+atlas = ExtResource("19_uv6up")
 region = Rect2(32, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("19_s48g2")
+atlas = ExtResource("19_uv6up")
 region = Rect2(64, 0, 32, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b1vmi"]
@@ -75,7 +75,7 @@ border_width_bottom = 2
 border_color = Color(0.8, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("27_j7igl")
+shader = ExtResource("26_hwxwv")
 shader_parameter/hpass = 1.0
 shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
@@ -89,15 +89,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_83ut0")
+script = ExtResource("1_xmbdx")
 
-[node name="PlantManager" parent="." instance=ExtResource("2_6jrws")]
+[node name="PlantManager" parent="." instance=ExtResource("2_m8syp")]
 sun_points = 75
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
 
-[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_7r54f")]
+[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_b1irm")]
 position = Vector2(746, 141)
 make_green = true
 Round2_Zombies = {
@@ -121,19 +121,19 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_vll5p")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_b2r3q")]
 z_index = 1
 position = Vector2(-48, 0)
 
-[node name="GridManager" parent="GameLayer" instance=ExtResource("5_8snc0")]
+[node name="GridManager" parent="GameLayer" instance=ExtResource("5_uwsnf")]
 make_green = true
 
 [node name="TileMapLayer" parent="GameLayer/GridManager" index="0"]
 tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAAAAAADAAsAAQACAAAAAAAFAAsAAQACAAAAAAAGAAsAAQACAAAAAAAHAAsAAQACAAAAAAAIAAsAAQACAAAAAAAWAAsAAQACAAAAAAAXAAsAAQACAAAAAAAVAAsAAQACAAAAAAAUAAsAAQACAAAAAAATAAsAAQACAAAAAAASAAsAAQACAAAAAAARAAsAAQACAAAAAAAQAAsAAQACAAAAAAAPAAsAAQACAAAAAAAOAAsAAQACAAAAAAANAAsAAQACAAAAAAAMAAsAAQAAAAkAAAALAAsAAQAGAAkAAAAKAAsAAQAAAAkAAAAJAAsAAQACAAAAAAAEAAoAAQAAAAkAAAADAAoAAQACAAAAAAACAAoAAQACAAAAAAABAAoAAQACAAAAAAAFAAoAAQARAAgAAAAHAAoAAQACAAAAAAAIAAoAAQACAAAAAAAJAAoAAQACAAAAAAAKAAoAAQACAAAAAAALAAoAAQACAAAAAAAMAAoAAQACAAAAAAANAAoAAQACAAAAAAAOAAoAAQACAAAAAAAPAAoAAQACAAAAAAAQAAoAAQACAAAAAAARAAoAAQACAAAAAAASAAoAAQACAAAAAAATAAoAAQACAAAAAAAUAAoAAQACAAAAAAAVAAoAAQACAAAAAAAWAAoAAQARAAgAAAARAAkAAQACAAAAAAAQAAkAAQACAAAAAAAPAAkAAQACAAMAAAAOAAkAAQACAAAAAAANAAkAAQACAAAAAAAMAAkAAQACAAAAAAALAAkAAQACAAAAAAAKAAkAAQACAAAAAAAJAAkAAQACAAAAAAAAAAoAAQACAAAAAAAAAAkAAQACAAAAAAABAAkAAQACAAAAAAACAAkAAQACAAAAAAADAAkAAQACAAAAAAAEAAkAAQACAAAAAAAFAAkAAQACAAAAAAAGAAkAAQACAAAAAAAHAAkAAQACAAAAAAAIAAkAAQACAAAAAAASAAkAAQACAAAAAAATAAkAAQACAAAAAAAUAAkAAQACAAAAAAAVAAkAAQACAAAAAAAWAAkAAQACAAAAAAAXAAkAAQACAAAAAAAEAAsAAQACAAAAAAAGAAoAAQARAAgAAAADAAgAAQAGAAkAAAABAAcAAQAGAAkAAAAIAAcAAQARAAgAAAADAAYAAQAGAAkAAAAFAAUAAQAJAAcAAAAGAAgAAQAAAAkAAAAOAAYAAQARAAgAAAALAAUAAQAJAAcAAAAMAAgAAQAAAAkAAAAVAAcAAQARAAgAAAASAAYAAQARAAgAAAAQAAgAAQAAAAkAAAAJAAYAAQADAAgAAAAFAAcAAQARAAgAAAAHAAgAAQAGAAkAAAAIAAgAAQAAAAkAAAAJAAgAAQAGAAkAAAAKAAgAAQAAAAkAAAALAAgAAQAGAAkAAAAFAAgAAQAGAAkAAAAEAAgAAQAAAAkAAAACAAgAAQAAAAkAAAAAAAgAAQAAAAkAAAABAAgAAQAGAAkAAAAAAAcAAQAAAAkAAAAAAAYAAQAAAAkAAAABAAYAAQAGAAkAAAACAAcAAQAAAAkAAAADAAcAAQAGAAkAAAAEAAcAAQAAAAkAAAACAAYAAQAAAAkAAAAEAAYAAQAAAAkAAAAGAAYAAQARAAgAAAAGAAcAAQARAAgAAAAFAAYAAQARAAgAAAAHAAYAAQARAAgAAAAIAAYAAQARAAgAAAAHAAcAAQARAAgAAAAJAAcAAQADAAgAAAAKAAYAAQARAAgAAAALAAcAAQARAAgAAAAKAAcAAQARAAgAAAALAAYAAQARAAgAAAAMAAYAAQADAAgAAAANAAYAAQADAAgAAAANAAcAAQADAAgAAAAMAAcAAQADAAgAAAANAAgAAQAGAAkAAAAOAAgAAQAAAAkAAAAPAAgAAQAGAAkAAAAOAAcAAQARAAgAAAAPAAcAAQARAAgAAAAPAAYAAQARAAgAAAAQAAYAAQARAAgAAAARAAYAAQARAAgAAAARAAcAAQARAAgAAAAQAAcAAQARAAgAAAARAAgAAQAGAAkAAAASAAgAAQAAAAkAAAASAAcAAQARAAgAAAATAAYAAQARAAgAAAATAAcAAQARAAgAAAATAAgAAQAGAAkAAAAUAAgAAQAAAAkAAAAUAAcAAQARAAgAAAAUAAYAAQARAAgAAAAVAAYAAQARAAgAAAAWAAYAAQARAAgAAAAWAAcAAQARAAgAAAAWAAgAAQAAAAkAAAAVAAgAAQAGAAkAAAAXAAIAAQARAAEAAAAWAAIAAQAMAAEAAAAVAAIAAQARAAEAAAAUAAIAAQAMAAEAAAATAAIAAQARAAEAAAASAAIAAQAMAAEAAAARAAIAAQARAAEAAAAQAAIAAQARAAEAAAAPAAIAAQAMAAEAAAAOAAIAAQARAAEAAAANAAIAAQARAAEAAAAMAAIAAQAMAAEAAAALAAIAAQARAAEAAAAKAAIAAQAMAAEAAAAJAAIAAQAMAAEAAAAIAAIAAQARAAEAAAAHAAIAAQARAAEAAAAGAAIAAQAMAAEAAAAFAAIAAQARAAEAAAAEAAIAAQAMAAEAAAADAAIAAQARAAEAAAACAAIAAQAMAAEAAAABAAIAAQARAAEAAAAAAAIAAQARAAEAAAAXAAoAAQACAAAAAAAXAAgAAQAAAAkAAAAXAAcAAQARAAgAAAAXAAYAAQARAAgAAAAWAAUAAQAQAAcAAAAVAAUAAQAJAAcAAAAUAAUAAQAKAAcAAAATAAUAAQAJAAcAAAASAAUAAQAFAAcAAAARAAUAAQALAAcAAAAQAAUAAQAKAAcAAAAPAAUAAQACAAMAAAAOAAUAAQAJAAcAAAANAAUAAQACAAcAAAAMAAUAAQARAAcAAAAKAAUAAQAAAAcAAAAXAAUAAQAJAAcAAAAJAAUAAQAIAAcAAAAIAAUAAQACAAcAAAAHAAUAAQABAAcAAAAXAAQAAQAAAAQAAAAWAAQAAQAAAAQAAAAVAAQAAQAAAAQAAAAUAAQAAQAAAAQAAAATAAQAAQAAAAQAAAASAAQAAQAAAAQAAAARAAQAAQAAAAQAAAAQAAQAAQAAAAQAAAAPAAQAAQAAAAQAAAAGAAUAAQAKAAcAAAAEAAUAAQAFAAcAAAADAAUAAQARAAcAAAACAAUAAQAJAAcAAAABAAUAAQABAAcAAAAAAAUAAQANAAcAAAAAAAQAAQAAAAQAAAABAAQAAQAAAAQAAAACAAQAAQAAAAQAAAADAAQAAQAAAAQAAAAEAAQAAQAAAAQAAAAFAAQAAQAAAAQAAAAGAAQAAQAAAAQAAAAHAAQAAQAAAAQAAAAIAAQAAQAAAAQAAAAJAAQAAQAAAAQAAAAKAAQAAQAAAAQAAAALAAQAAQAAAAQAAAAMAAQAAQAAAAQAAAANAAQAAQAAAAQAAAAOAAQAAQAAAAQAAAAAAAMAAQALAAMAAAABAAMAAQAIAAMAAAACAAMAAQAJAAMAAAADAAMAAQABAAMAAAAEAAMAAQAGAAMAAAAFAAMAAQAAAAMAAAAGAAMAAQACAAMAAAAHAAMAAQABAAMAAAAIAAMAAQAHAAMAAAAJAAMAAQAPAAMAAAAKAAMAAQAJAAMAAAALAAMAAQALAAMAAAAQAAMAAQACAAMAAAARAAMAAQAJAAMAAAASAAMAAQABAAMAAAATAAMAAQANAAMAAAAUAAMAAQAJAAMAAAAVAAMAAQAGAAMAAAAWAAMAAQAKAAMAAAAXAAMAAQAJAAMAAAAPAAMAAQAJAAMAAAAOAAMAAQAEAAMAAAANAAMAAQALAAMAAAAMAAMAAQAIAAMAAAAXAAEAAQARAAEAAAAWAAEAAQAMAAEAAAAVAAEAAQARAAEAAAAUAAEAAQAMAAEAAAATAAEAAQARAAEAAAASAAEAAQAMAAEAAAARAAEAAQARAAEAAAAQAAEAAQARAAEAAAAPAAEAAQAMAAEAAAAOAAEAAQARAAEAAAANAAEAAQARAAEAAAAMAAEAAQAMAAEAAAALAAEAAQARAAEAAAAKAAEAAQAMAAEAAAAJAAEAAQAMAAEAAAAIAAEAAQARAAEAAAAHAAEAAQARAAEAAAAGAAEAAQAMAAEAAAAFAAEAAQARAAEAAAAEAAEAAQAMAAEAAAADAAEAAQARAAEAAAACAAEAAQAMAAEAAAABAAEAAQARAAEAAAAAAAEAAQARAAEAAAAXAAAAAQARAAEAAAAWAAAAAQAMAAEAAAAVAAAAAQARAAEAAAAUAAAAAQAMAAEAAAATAAAAAQARAAEAAAASAAAAAQAMAAEAAAARAAAAAQARAAEAAAAQAAAAAQARAAEAAAAPAAAAAQAMAAEAAAAOAAAAAQARAAEAAAANAAAAAQARAAEAAAAMAAAAAQAMAAEAAAALAAAAAQARAAEAAAAKAAAAAQAMAAEAAAAJAAAAAQAMAAEAAAAIAAAAAQARAAEAAAAHAAAAAQARAAEAAAAGAAAAAQAMAAEAAAAFAAAAAQARAAEAAAAEAAAAAQAMAAEAAAADAAAAAQARAAEAAAACAAAAAQAMAAEAAAABAAAAAQARAAEAAAAAAAAAAQARAAEAAAAXAAwAAQACAAAAAAAWAAwAAQACAAAAAAAVAAwAAQACAAAAAAAUAAwAAQACAAAAAAATAAwAAQARAAoAAAASAAwAAQARAAoAAAARAAwAAQARAAoAAAAQAAwAAQARAAoAAAAPAAwAAQARAAoAAAAOAAwAAQARAAoAAAANAAwAAQARAAoAAAAMAAwAAQARAAoAAAALAAwAAQARAAoAAAAKAAwAAQARAAoAAAAJAAwAAQARAAoAAAAIAAwAAQARAAoAAAAHAAwAAQARAAoAAAAGAAwAAQARAAoAAAAFAAwAAQARAAoAAAAEAAwAAQARAAoAAAADAAwAAQARAAoAAAACAAwAAQARAAoAAAABAAwAAQARAAoAAAAAAAwAAQARAAoAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAA=")
 
-[node name="WaveManager" parent="GameLayer" instance=ExtResource("6_ychsy")]
+[node name="WaveManager" parent="GameLayer" instance=ExtResource("6_g1cyh")]
 position = Vector2(-64, 200)
-script = ExtResource("7_f8ath")
+script = ExtResource("7_a84oj")
 StartDelay = 5
 
 [node name="Environment" type="Node2D" parent="."]
@@ -142,218 +142,218 @@ StartDelay = 5
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(543, 347)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 
 [node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(499, 335)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 
 [node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(670, 400)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 flip_h = true
 
 [node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(601, 401)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 flip_h = true
 
 [node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(718, 321)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 
 [node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(420, 382)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 
 [node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(113, 323)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 
 [node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(262, 8)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 flip_h = true
 
 [node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(497, 16)
-texture = ExtResource("8_opuci")
+texture = ExtResource("8_vyoll")
 
 [node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(618, 344)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 
 [node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(406, 333)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(707, 397)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(724, 4)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(263, 323)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(490, 396)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(620, 3)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(609, 15)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(353, 14)
-texture = ExtResource("9_sgty8")
+texture = ExtResource("9_eycat")
 
 [node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
 material = SubResource("ShaderMaterial_a0suq")
 position = Vector2(563, 378)
-texture = ExtResource("11_wmlhy")
-script = ExtResource("12_rigti")
+texture = ExtResource("11_a0o5e")
+script = ExtResource("12_ettje")
 
 [node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
 position = Vector2(662, 343)
-texture = ExtResource("11_wmlhy")
+texture = ExtResource("11_a0o5e")
 
 [node name="FetusProp" type="Sprite2D" parent="Environment/Coral"]
 visible = false
 position = Vector2(438, 4)
-texture = ExtResource("13_l7yxw")
+texture = ExtResource("13_0y7qa")
 
 [node name="FetusProp2" type="Sprite2D" parent="Environment/Coral"]
 visible = false
 position = Vector2(465, 347)
-texture = ExtResource("13_l7yxw")
+texture = ExtResource("13_0y7qa")
 
 [node name="Bramble" type="Node2D" parent="Environment"]
 visible = false
 
 [node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(505, 328)
-texture = ExtResource("14_sacax")
+texture = ExtResource("14_mi1d3")
 
 [node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(454, 388)
-texture = ExtResource("14_sacax")
+texture = ExtResource("14_mi1d3")
 
 [node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(584, 399)
-texture = ExtResource("14_sacax")
+texture = ExtResource("14_mi1d3")
 
 [node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(640, 303)
-texture = ExtResource("14_sacax")
+texture = ExtResource("14_mi1d3")
 
 [node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(483, 0)
-texture = ExtResource("14_sacax")
+texture = ExtResource("14_mi1d3")
 
 [node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(660, 11)
-texture = ExtResource("14_sacax")
+texture = ExtResource("14_mi1d3")
 
 [node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(366, 316)
-texture = ExtResource("15_qiku5")
+texture = ExtResource("15_gxdr2")
 flip_h = true
 
 [node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(455, 331)
-texture = ExtResource("15_qiku5")
+texture = ExtResource("15_gxdr2")
 flip_h = true
 
 [node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(402, 343)
-texture = ExtResource("15_qiku5")
+texture = ExtResource("15_gxdr2")
 
 [node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
 position = Vector2(428, 399)
-texture = ExtResource("15_qiku5")
+texture = ExtResource("15_gxdr2")
 flip_h = true
 
 [node name="Fish" type="Node2D" parent="Environment"]
 
-[node name="Fish" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(542, 386)
 
-[node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(515, 353)
 
-[node name="Fish5" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish5" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(180, 329)
 
-[node name="Fish6" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish6" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(37, 326)
 
-[node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(573, 19)
 
-[node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(455, 394)
 
-[node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(315, 14)
 
-[node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(573, 342)
 
-[node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_654uq")]
+[node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(633, 395)
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 visible = false
 
-[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("17_54fiw")]
+[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("17_wf2gn")]
 position = Vector2(560, 13)
 scale = Vector2(1, 1)
 
-[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("17_54fiw")]
+[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("17_wf2gn")]
 position = Vector2(474, 339)
 scale = Vector2(1, 1)
 
-[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("17_54fiw")]
+[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("17_wf2gn")]
 position = Vector2(521, 392)
 scale = Vector2(1, 1)
 
-[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("17_54fiw")]
+[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("17_wf2gn")]
 position = Vector2(193, 327)
 scale = Vector2(1, 1)
 
-[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("17_54fiw")]
+[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("17_wf2gn")]
 position = Vector2(433, 330)
 scale = Vector2(1, 1)
 
-[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("17_54fiw")]
+[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("17_wf2gn")]
 position = Vector2(658, 403)
 scale = Vector2(1, 1)
 
-[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("17_54fiw")]
+[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("17_wf2gn")]
 position = Vector2(297, 14)
 scale = Vector2(1, 1)
 
@@ -363,13 +363,13 @@ visible = false
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
 position = Vector2(561, 364)
-texture = ExtResource("18_y4elr")
+texture = ExtResource("18_4kn7w")
 flip_h = true
 
 [node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
 z_index = 1
 position = Vector2(396, 7)
-texture = ExtResource("18_y4elr")
+texture = ExtResource("18_4kn7w")
 
 [node name="Special" type="Node2D" parent="Environment"]
 visible = false
@@ -378,10 +378,10 @@ visible = false
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
-[node name="UILayer" parent="." instance=ExtResource("20_qm12r")]
+[node name="UILayer" parent="." instance=ExtResource("20_c63eg")]
 layout_mode = 1
 
-[node name="PlantSelectionMenu" parent="." instance=ExtResource("21_fdd0k")]
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("21_osmq4")]
 offset_left = 8.0
 offset_top = 315.0
 offset_right = 8.0
@@ -403,7 +403,7 @@ color = Color(0, 0, 0, 0.0784314)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("2")
 
-[node name="ToolTips" parent="." instance=ExtResource("22_hcyne")]
+[node name="ToolTips" parent="." instance=ExtResource("22_16kt4")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -419,7 +419,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
-[node name="CodexBG" parent="." instance=ExtResource("24_as807")]
+[node name="CodexBG" parent="." instance=ExtResource("23_bxjc2")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -431,7 +431,7 @@ offset_bottom = 373.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="PauseButton" parent="." instance=ExtResource("25_uavsr")]
+[node name="PauseButton" parent="." instance=ExtResource("24_42ryq")]
 layout_mode = 0
 offset_left = 683.0
 offset_top = 380.0
@@ -439,7 +439,7 @@ offset_right = 738.0
 offset_bottom = 403.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("26_adj10")
+stream = ExtResource("25_7in2w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)

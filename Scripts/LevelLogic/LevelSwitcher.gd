@@ -3,8 +3,12 @@ extends Control
 
 #Switches the Level to the next level
 
-@export var nextLevel = preload("res://Scenes/LevelScenes/EmptyScene.tscn")  # Load the next scene
+#@export var nextLevel = preload("res://Scenes/LevelScenes/EmptyScene.tscn")  # Load the next scene
 @export var next_level = "res://Scenes/LevelScenes/EmptyScene.tscn"
+@export var next_level_alt = "res://Scenes/LevelScenes/EmptyScene.tscn"
+@export var current_level = "res://Scenes/LevelScenes/EmptyScene.tscn"
+@export var current_level_alt = "res://Scenes/LevelScenes/EmptyScene.tscn"
+
 @export var level_unlocked := 2
 @onready var outcome_label = $CenterContainer/VBoxContainer/OutcomeLabel
 @onready var continue_button = $CenterContainer/VBoxContainer/Continue
@@ -19,7 +23,8 @@ func _on_Continue_pressed():
 	#$ButtonClickPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	#assert(get_tree().change_scene_to_packed(nextLevel) == OK)
-	Global.game_controller.change_scene(next_level)
+	#Global.game_controller.change_scene(next_level)
+	Global.game_controller.change_dual_scenes(next_level,next_level_alt)
 	Global.unlockLevel(level_unlocked)
 
 #Restarts the current level
@@ -27,7 +32,8 @@ func _on_PlayAgain_pressed():
 	#$ButtonClickPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	#assert(get_tree().change_scene_to_file(get_parent().get_scene_file_path()) == OK)
-	Global.game_controller.change_scene(get_parent().get_scene_file_path())
+	#Global.game_controller.change_scene(get_parent().get_scene_file_path())
+	Global.game_controller.change_dual_scenes(current_level,current_level_alt)
 	Global.unlockLevel(level_unlocked)
 
 func _on_return_to_menu_pressed() -> void:
@@ -38,6 +44,7 @@ func _on_return_to_menu_pressed() -> void:
 	# Add a small delay to ensure clean transition
 	await get_tree().create_timer(0.1).timeout
 #	assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn") == OK)
+	#TODO Will this work with current setup?
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/StartScreen.tscn")
 	Global.unlockLevel(level_unlocked)
 
