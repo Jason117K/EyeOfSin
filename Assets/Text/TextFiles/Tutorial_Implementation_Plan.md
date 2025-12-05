@@ -128,42 +128,42 @@ plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashoot
 ### Input Blocking Pattern
 ```gdscript
 func _input(event):
-    match tutorial_state:
-        TutorialState.FORCE_SELECT_SPYDER:
-            # Block all keyboard input
-            if event is InputEventKey:
-                get_viewport().set_input_as_handled()
+	match tutorial_state:
+		TutorialState.FORCE_SELECT_SPYDER:
+			# Block all keyboard input
+			if event is InputEventKey:
+				get_viewport().set_input_as_handled()
 
-        TutorialState.FORCE_PLACE_PLANT:
-            # Block X key (deselect) and Y key (swap)
-            if event is InputEventKey and event.pressed:
-                if event.keycode == KEY_X or event.keycode == KEY_Y:
-                    get_viewport().set_input_as_handled()
+		TutorialState.FORCE_PLACE_PLANT:
+			# Block X key (deselect) and Y key (swap)
+			if event is InputEventKey and event.pressed:
+				if event.keycode == KEY_X or event.keycode == KEY_Y:
+					get_viewport().set_input_as_handled()
 
-        TutorialState.FORCE_PRESS_Y:
-            # Only allow Y key
-            if event is InputEventKey and event.pressed:
-                if event.keycode != KEY_Y:
-                    get_viewport().set_input_as_handled()
-            elif event is InputEventMouseButton:
-                get_viewport().set_input_as_handled()
+		TutorialState.FORCE_PRESS_Y:
+			# Only allow Y key
+			if event is InputEventKey and event.pressed:
+				if event.keycode != KEY_Y:
+					get_viewport().set_input_as_handled()
+			elif event is InputEventMouseButton:
+				get_viewport().set_input_as_handled()
 ```
 
 ### Wave Control
 ```gdscript
 # Wave 1: Purple dimension only
 func _start_wave_1_purple_only():
-    waveManager.canStartGame = true
-    # Green dimension stays inactive (canStartGame = false)
+	waveManager.canStartGame = true
+	# Green dimension stays inactive (canStartGame = false)
 
 # Wave 2: Both dimensions
 func _start_wave_2_both_dimensions():
-    var green_dimension = get_parent().get_node("Level0-1_Alternate")
-    if green_dimension:
-        green_dimension.start_wave_2()  # Activate green dimension
+	var green_dimension = get_parent().get_node("Level0-1_Alternate")
+	if green_dimension:
+		green_dimension.start_wave_2()  # Activate green dimension
 
-    waveManager.startSecondWave()  # Purple dimension Wave 2
-    plantSelectionMenu.canSwapScenes = true  # Enable Y key swapping
+	waveManager.startSecondWave()  # Purple dimension Wave 2
+	plantSelectionMenu.canSwapScenes = true  # Enable Y key swapping
 ```
 
 ## Testing Strategy

@@ -16,9 +16,9 @@ The game operates two parallel game spaces simultaneously, with players switchin
 **Technical Implementation** (`game_controller.gd:61-86`):
 ```gdscript
 func swap_scenes():
-    - Toggles visibility between current_scenes[0] and current_scenes[1]
-    - Uses on_scene_1 boolean to track active world
-    - 0.1s cooldown prevents rapid switching
+	- Toggles visibility between current_scenes[0] and current_scenes[1]
+	- Uses on_scene_1 boolean to track active world
+	- 0.1s cooldown prevents rapid switching
 ```
 
 ### 2. Blood Buff System
