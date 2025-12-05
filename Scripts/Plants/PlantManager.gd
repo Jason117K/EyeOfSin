@@ -17,13 +17,13 @@ var empty_demon_scene := preload("res://Scenes/PlantScenes/EmptyDemon.tscn")
 
 @onready var parentName = get_parent().get_name()
 
-signal plant_placed
-signal spyder_placed
-signal walnut_placed 
-signal eyeBomb_placed
-signal eggWorm_placed
-signal wasp_placed
-signal maw_placed
+signal plant_placed(grid_position: Vector2)
+signal spyder_placed(grid_position: Vector2)
+signal walnut_placed(grid_position: Vector2)
+signal eyeBomb_placed(grid_position: Vector2)
+signal eggWorm_placed(grid_position: Vector2)
+signal wasp_placed(grid_position: Vector2)
+signal maw_placed(grid_position: Vector2)
 
 
 
@@ -328,23 +328,23 @@ func place_plant(grid_pos: Vector2):
 		if "Sunflower" in plant_instance.name:
 			print("Selected Plant Scene is : ", plant_instance.name)
 			#TODO change to sunflower_placed
-			plant_placed.emit()
+			plant_placed.emit(grid_pos)
 			Global.incrementSunflowerCount()
 			pass
 		elif "Peashooter" in plant_instance.name:
-			spyder_placed.emit()
+			spyder_placed.emit(grid_pos)
 			pass
 		elif "Walnut" in plant_instance.name:
-			walnut_placed.emit()
+			walnut_placed.emit(grid_pos)
 			pass
 		elif "Bomb" in plant_instance.name:
-			eyeBomb_placed.emit()
+			eyeBomb_placed.emit(grid_pos)
 		elif "EggWorm" in plant_instance.name:
-			eggWorm_placed.emit()
+			eggWorm_placed.emit(grid_pos)
 		elif "Hive" in plant_instance.name:
-			wasp_placed.emit()
+			wasp_placed.emit(grid_pos)
 		elif "Maw" in plant_instance.name:
-			maw_placed.emit()
+			maw_placed.emit(grid_pos)
 			
 		#print("Selected Plant Scene is : ", plant_instance)
 		

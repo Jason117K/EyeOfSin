@@ -1,0 +1,3 @@
+Wrong position! Place the SPYDER directly BEHIND the Eye.
+
+"Behind" means one cell to the LEFT of the Eye.

@@ -69,7 +69,7 @@ func _on_SunTimer_timeout():
 	generate_sun()
 
 # Function to handle sun generation
-func generate_sun():
+func generate_sun() -> Node2D:
 	if mawBuff:
 		can_eat_zombie = true
 	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
@@ -80,6 +80,7 @@ func generate_sun():
 	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
+	return sun_instance
 
 
 # TODO Implement sunflower buff 
@@ -289,8 +290,9 @@ func _on_reset_eating_speed_timeout() -> void:
 	generate_sun_alt()
 
 
-func generate_sun_alt():
+func generate_sun_alt() -> Node2D:
 	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
 	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
+	return sun_instance

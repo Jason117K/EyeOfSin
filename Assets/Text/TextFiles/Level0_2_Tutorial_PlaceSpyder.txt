@@ -1,0 +1,3 @@
+Place the SPYDER directly BEHIND (to the left of) the Eye.
+
+Spyders buff Eyes when positioned behind them.

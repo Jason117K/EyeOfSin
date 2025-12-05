@@ -9,6 +9,9 @@ enum TutorialState {
 	FORCE_PLACE_PLANT,
 	EXPLAIN_BLOOD_COST,
 	EXPLAIN_BLOOD_GENERATION,
+	FORCE_SELECT_SPYDER_AFTER_BLOOD,
+	FORCE_PLACE_SPYDER_BEHIND,
+	EXPLAIN_BLOOD_BUFFS,
 	WAVE_1_ACTIVE,
 	FORCE_PRESS_Y,
 	EXPLAIN_GREEN_DIMENSION,
@@ -24,6 +27,8 @@ var wave_1_complete: bool = false
 var tutorial_sunflower = null
 var waiting_for_blood = false
 var sun_before_pickup = 0
+var tutorial_sunflower_grid_pos: Vector2 = Vector2.ZERO
+var tutorial_sun_instance: Node2D = null
 
 # Node references
 #@onready var toolTips = $ToolTips
@@ -35,13 +40,14 @@ var green_dimension
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
 # Text file paths
-#const TUTORIAL_SELECT_SPYDER = "res://Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
 const TUTORIAL_SELECT_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSunflower.txt"
-const TUTORIAL_PLACE_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSunflower.txt"
 const TUTORIAL_PLACE_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSunflower.txt"
-
 const TUTORIAL_BLOOD_COST = "res://Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
 const TUTORIAL_BLOOD_GEN = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
+const TUTORIAL_SELECT_SPYDER_AFTER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
+const TUTORIAL_PLACE_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
+const TUTORIAL_BLOOD_BUFFS = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
+const TUTORIAL_INVALID_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
 const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
 const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
 
@@ -55,15 +61,16 @@ func _ready():
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	#plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
 	plantManager.connect("plant_placed", Callable(self, "_on_sunflower_placed"))
+	plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 
-	# Connect to Spyder button directly
-	#var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
-	#spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
+	# Connect to button presses
 	var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
 	sunflower_button.connect("pressed", Callable(self, "_on_sunflower_button_pressed"))
+
+	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
+	spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_SUNFLOWER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
@@ -75,8 +82,14 @@ func _input(event):
 		TutorialState.FORCE_SELECT_SUNFLOWER:
 			_handle_force_select_sunflower_input(event)
 
+		TutorialState.FORCE_SELECT_SPYDER_AFTER_BLOOD:
+			_handle_force_select_spyder_input(event)
+
 		TutorialState.FORCE_PLACE_PLANT:
 			_handle_force_place_plant_input(event)
+
+		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
+			_handle_force_place_spyder_input(event)
 
 		TutorialState.FORCE_PRESS_Y:
 			_handle_force_press_y_input(event)
@@ -115,6 +128,20 @@ func _handle_force_press_y_input(event):
 		get_viewport().set_input_as_handled()
 
 
+func _handle_force_select_spyder_input(event):
+	# Only allow clicking Spyder button, block all keyboard input
+	if event is InputEventKey:
+		get_viewport().set_input_as_handled()
+	# Mouse input: Spyder button gets clicks via visibility, others hidden
+
+
+func _handle_force_place_spyder_input(event):
+	# Allow mouse clicks for placement, block X key (deselect)
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_X:
+			get_viewport().set_input_as_handled()
+
+
 # State transition system
 func _transition_to_state(new_state: TutorialState):
 	print("[Tutorial] Transition: ", TutorialState.keys()[tutorial_state], " → ", TutorialState.keys()[new_state])
@@ -132,6 +159,12 @@ func _transition_to_state(new_state: TutorialState):
 			_start_explain_blood_cost()
 		TutorialState.EXPLAIN_BLOOD_GENERATION:
 			_start_explain_blood_gen()
+		TutorialState.FORCE_SELECT_SPYDER_AFTER_BLOOD:
+			_start_force_select_spyder_after_blood()
+		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
+			_start_force_place_spyder_behind()
+		TutorialState.EXPLAIN_BLOOD_BUFFS:
+			_start_explain_blood_buffs()
 		TutorialState.WAVE_1_ACTIVE:
 			_start_wave_1()
 			green_dimension.start_game()
@@ -179,6 +212,43 @@ func _start_wave_1():
 func _start_force_press_y():
 	toolTips.set_text(TUTORIAL_PRESS_Y)
 	toolTips.noButtonShow()
+
+
+func _start_force_select_spyder_after_blood():
+	print("[Tutorial] Starting FORCE_SELECT_SPYDER_AFTER_BLOOD")
+	toolTips.set_text(TUTORIAL_SELECT_SPYDER_AFTER)
+	toolTips.noButtonShow()
+
+	# Hide Sunflower, show only Spyder
+	hide_all_plant_buttons_except_spyder()
+	highlight_spyder_button()
+
+	# Spotlight on Spyder button
+	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
+	show_spotlight_at_node(spyder_button)
+
+	# Keep game running
+	waveManager.canStartGame = false
+	plantSelectionMenu.canSwapScenes = false
+
+
+func _start_force_place_spyder_behind():
+	print("[Tutorial] Starting FORCE_PLACE_SPYDER_BEHIND")
+	toolTips.set_text(TUTORIAL_PLACE_SPYDER)
+	toolTips.noButtonShow()
+
+	unhighlight_spyder_button()
+
+	# Show spotlight on valid placement position (one cell left of sunflower)
+	var valid_pos = tutorial_sunflower_grid_pos - Vector2(32, 0)
+	show_spotlight_at_position(valid_pos, 0.12)
+
+
+func _start_explain_blood_buffs():
+	print("[Tutorial] Starting EXPLAIN_BLOOD_BUFFS")
+	get_tree().paused = true
+	toolTips.set_text_pause(TUTORIAL_BLOOD_BUFFS)
+	toolTips.showButton()
 
 
 func _start_explain_green_dimension():
@@ -259,6 +329,28 @@ func show_all_plant_buttons():
 	pass
 
 
+func hide_all_plant_buttons_except_spyder():
+	# Hide Sunflower
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = false
+
+	# Show Spyder
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true
+
+	# Keep others hidden
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel").visible = false
+
+
 func highlight_spyder_button():
 	var button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
 	plantSelectionMenu.add_button_highlight(button)
@@ -284,21 +376,64 @@ func _on_tooltip_hidden():
 
 	match tutorial_state:
 		# EXPLAIN_BLOOD_GENERATION handled by blood pickup detection in _physics_process
+		TutorialState.EXPLAIN_BLOOD_BUFFS:
+			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_BUFFS to WAVE_1_ACTIVE")
+			get_tree().paused = false  # Unpause game
+			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
+
 		TutorialState.EXPLAIN_GREEN_DIMENSION:
 			print("[Tutorial] Transitioning from EXPLAIN_GREEN_DIMENSION to WAVE_2_ACTIVE")
 			_transition_to_state(TutorialState.WAVE_2_ACTIVE)
 
+		# Handle invalid placement error - return to placement state
+		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
+			print("[Tutorial] Error acknowledged - returning to Spyder placement")
+			get_tree().paused = false
+			# State already FORCE_PLACE_SPYDER_BEHIND - player can try again
+
 	print("########## TOOLTIP HIDDEN HANDLER COMPLETED ##########")
 
 
-func _on_spyder_placed():
-	print("[Tutorial] Spyder placed in state: ", TutorialState.keys()[tutorial_state])
+func _on_spyder_placed(grid_pos: Vector2):
+	print("[Tutorial] Spyder placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
+
 	if tutorial_state == TutorialState.FORCE_PLACE_PLANT:
 		_transition_to_state(TutorialState.EXPLAIN_BLOOD_COST)
+		return
+
+	if tutorial_state != TutorialState.FORCE_PLACE_SPYDER_BEHIND:
+		return
+
+	# Calculate expected position (one grid cell LEFT of sunflower)
+	var expected_pos = tutorial_sunflower_grid_pos - Vector2(32, 0)
+	print("[TUTORIAL] Expected Spyder position: ", expected_pos, " Actual: ", grid_pos)
+
+	# Validate placement
+	if grid_pos != expected_pos:
+		print("[TUTORIAL] Invalid Spyder placement - deleting and showing error")
+		# Wait for plant to enter tree
+		await get_tree().create_timer(0.15).timeout
+
+		# Delete the incorrectly placed Spyder (refunds cost automatically)
+		plantManager.clear_space(grid_pos)
+
+		# Show error message
+		get_tree().paused = true
+		toolTips.set_text_pause(TUTORIAL_INVALID_SPYDER)
+		toolTips.showButton()
+
+		# Keep spotlight on valid position to guide retry
+		show_spotlight_at_position(expected_pos, 0.12)
+	else:
+		print("[TUTORIAL] Valid Spyder placement - advancing to buff explanation")
+		_transition_to_state(TutorialState.EXPLAIN_BLOOD_BUFFS)
 		
-func _on_sunflower_placed():
-	print("[Tutorial] Sunflower placed in state: ", TutorialState.keys()[tutorial_state])
+func _on_sunflower_placed(grid_pos: Vector2):
+	print("[Tutorial] Sunflower placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
 	if tutorial_state == TutorialState.FORCE_PLACE_PLANT:
+		# Store grid position for Spyder placement validation
+		tutorial_sunflower_grid_pos = grid_pos
+
 		# Get the sunflower we just placed
 		print("[TUTORIAL] Sunflower placed, waiting for instantiation...")
 		await get_tree().create_timer(0.3).timeout
@@ -308,13 +443,25 @@ func _on_sunflower_placed():
 		for plant in sunflowers:
 			if "Sunflower" in plant.name:
 				tutorial_sunflower = plant
-				print("[TUTORIAL] Found tutorial sunflower: ", plant.name)
+				print("[TUTORIAL] Found tutorial sunflower: ", plant.name, " at grid: ", grid_pos)
 				break
 
-		# Force generate blood immediately
+		# Force generate blood immediately and store reference
 		if tutorial_sunflower and tutorial_sunflower.has_method("generate_sun"):
 			print("[TUTORIAL] Forcing blood generation on ", tutorial_sunflower.name)
-			tutorial_sunflower.generate_sun()
+			tutorial_sun_instance = tutorial_sunflower.generate_sun()
+
+			# Disable auto-pickup for tutorial blood
+			if tutorial_sun_instance and tutorial_sun_instance.has_node("Auto_pick_up_timer"):
+				tutorial_sun_instance.get_node("Auto_pick_up_timer").stop()
+				print("[TUTORIAL] Disabled auto-pickup for tutorial blood")
+
+			# Wait briefly for blood to enter scene tree, then spotlight it
+			await get_tree().create_timer(0.15).timeout
+			if tutorial_sun_instance:
+				var sun_screen_pos = tutorial_sun_instance.global_position
+				show_spotlight_at_position(sun_screen_pos, 0.12)
+				print("[TUTORIAL] Spotlighting blood at: ", sun_screen_pos)
 		else:
 			print("[TUTORIAL ERROR] Could not find sunflower or generate_sun method!")
 
@@ -325,6 +472,12 @@ func _on_sunflower_button_pressed():
 	print("[Tutorial] Sunflower button pressed in state: ", TutorialState.keys()[tutorial_state])
 	if tutorial_state == TutorialState.FORCE_SELECT_SUNFLOWER:
 		_transition_to_state(TutorialState.FORCE_PLACE_PLANT)
+
+
+func _on_spyder_button_pressed():
+	print("[Tutorial] Spyder button pressed in state: ", TutorialState.keys()[tutorial_state])
+	if tutorial_state == TutorialState.FORCE_SELECT_SPYDER_AFTER_BLOOD:
+		_transition_to_state(TutorialState.FORCE_PLACE_SPYDER_BEHIND)
 
 
 func _on_wave_1_started():
@@ -339,8 +492,9 @@ func _physics_process(_delta):
 		print("[TUTORIAL] Blood picked up! New sun: ", plantManager.sun_points)
 		waiting_for_blood = false
 		toolTips.hide()
+		hide_spotlight()
 		get_tree().paused = false  # Ensure game is unpaused
-		_transition_to_state(TutorialState.WAVE_1_ACTIVE)
+		_transition_to_state(TutorialState.FORCE_SELECT_SPYDER_AFTER_BLOOD)
 
 	if tutorial_state == TutorialState.WAVE_1_ACTIVE and not wave_1_complete:
 		# Check if all Wave 1 zombies are dead
