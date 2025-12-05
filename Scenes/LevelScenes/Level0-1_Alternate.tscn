@@ -92,7 +92,7 @@ mouse_filter = 2
 script = ExtResource("1_83ut0")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_6jrws")]
-sun_points = 75
+sun_points = 80
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -112,7 +112,7 @@ Round2_Zombies = {
 }
 Round3_Zombies = {
 "Base": 0,
-"BucketHead": 2,
+"BucketHead": 1,
 "ConeHead": 3,
 "Dancer": 0,
 "Football": 0,
@@ -135,6 +135,8 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 position = Vector2(-64, 200)
 script = ExtResource("7_f8ath")
 StartDelay = 5
+Wave2StartTime = 20
+Wave3StartTime = 30
 
 [node name="Environment" type="Node2D" parent="."]
 

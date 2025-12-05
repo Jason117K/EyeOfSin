@@ -351,6 +351,7 @@ func place_plant(grid_pos: Vector2):
 		print("Not enough sun points!")
 	
 	print("QQ Plant Was Placed At " , plant_instance.position)
+	selection_menu.deselect_plant()
 
 # Helper function to generate sequential names
 func generate_unique_name(base_name: String) -> String:

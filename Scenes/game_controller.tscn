@@ -52,7 +52,5 @@ visible = false
 [node name="LevelSwitcher" parent="CurrentScene" instance=ExtResource("5_7la68")]
 visible = false
 layout_mode = 1
-next_level = "res://Scenes/LevelScenes/Level0-1.tscn"
-next_level_alt = "res://Scenes/LevelScenes/Level0-1_Alternate.tscn"
 current_level = "res://Scenes/LevelScenes/Level0-1.tscn"
 current_level_alt = "res://Scenes/LevelScenes/Level0-1_Alternate.tscn"

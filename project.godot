@@ -24,7 +24,7 @@ AudioManager="*res://Scenes/Systems/audio_manager.tscn"
 [display]
 
 window/size/viewport_width=740
-window/size/viewport_height=416
+window/size/viewport_height=412
 window/stretch/mode="canvas_items"
 
 [dotnet]

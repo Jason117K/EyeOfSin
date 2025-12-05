@@ -1,10 +1,9 @@
 extends Control
-# level_0_1_alternate.gd - Green Dimension Controller for Level 0-1
+# level_0_2_alternate.gd - Green Dimension Controller for Level 0-2
 # Waits for purple dimension to activate Wave 2
 
 @onready var waveManager = $GameLayer/WaveManager
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $PlantSelectionMenu
 
 var waiting_for_wave_2: bool = true
 
@@ -18,7 +17,6 @@ func _ready():
 
 
 func start_wave_2():
-	hide_all_plant_buttons_except_spyder()
 	print("========== GREEN DIMENSION START_WAVE_2 CALLED ==========")
 	print("[GREEN] Current time: ", Time.get_ticks_msec())
 	print("[GREEN] waiting_for_wave_2 BEFORE: ", waiting_for_wave_2)
@@ -51,29 +49,3 @@ func place_empty_blocker_plant(grid_pos):
 
 func make_camera_current():
 	$Camera2D.make_current()
-
-
-
-func hide_all_plant_buttons_except_spyder():
-	# Hide all buttons except Spyder
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel").visible = false
-
-	# Keep Spyder visible
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true

@@ -3,6 +3,8 @@ class_name GameController extends Node
 @export var scene : Control 
 
 var current_scene
+var current_alt_scene
+
 var current_scene_owner 
 var current_scenes := []
 var previous_scenes := []
@@ -26,10 +28,26 @@ func _ready() -> void:
 	
 func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool = true, keep_running : bool = false) -> void:
 	print("Changing scene to ", new_scene1 , " AND ", new_scene2)
+	if !current_scenes.is_empty():
+		if delete:
+			print("Current Scenes is ",current_scenes )
+			print("Current Scenes 1 is ",current_scenes[1] )
+			current_scenes.remove_at(1)
+			print("Current Scenes 0 is ",current_scenes[0] )
+			current_scenes.remove_at(0)
+		#elif keep_running:
+			#current_scene.visible = false # Keeps in memory and running 
+		#else:
+			#print("RRemoved Child")
+			#scene.remove_child(current_scene) #Keeps in memory, does not run 
+		
 	if current_scene == null:
 		print("Current scene : ", current_scene, " is null ")
 	else:
 		print("Current scene is : ", current_scene)
+	if current_alt_scene != null:
+		if delete:
+			current_alt_scene.queue_free() # Removes Node Entirely 		
 	if current_scene != null:
 		if delete:
 			current_scene.queue_free() # Removes Node Entirely 
@@ -50,9 +68,11 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	var new2 = load(new_scene2).instantiate()
 	new2.visible = false 
 	scene.add_child(new2)
+	current_alt_scene = new2
 	current_scenes.append(new2)
 	
 	current_scene._ready()
+	print("Current Scenes is now ", current_scenes)
 	#new2._ready()
 	# Force physics update to ensure collision detection works
 	await get_tree().process_frame

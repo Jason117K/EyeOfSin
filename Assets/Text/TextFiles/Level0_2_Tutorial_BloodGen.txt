@@ -1,0 +1,5 @@
+Eyes generate blood automatically.
+
+This blood must be collected by hovering the mouse over it.
+
+Otherwise it will be collected automatically after 5 seconds for reduced value.

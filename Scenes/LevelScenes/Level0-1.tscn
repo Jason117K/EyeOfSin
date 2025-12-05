@@ -110,9 +110,9 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 0,
+"Base": 2,
 "BucketHead": 0,
-"ConeHead": 5,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -121,8 +121,8 @@ Round2_Zombies = {
 }
 Round3_Zombies = {
 "Base": 0,
-"BucketHead": 2,
-"ConeHead": 5,
+"BucketHead": 1,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -143,6 +143,8 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 position = Vector2(-64, 200)
 script = ExtResource("7_h8ehj")
 StartDelay = 5
+Wave2StartTime = 20
+Wave3StartTime = 30
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -389,9 +391,9 @@ layout_mode = 1
 
 [node name="PlantSelectionMenu" parent="." instance=ExtResource("21_ipgls")]
 offset_left = 8.0
-offset_top = 315.0
+offset_top = 290.0
 offset_right = 8.0
-offset_bottom = 315.0
+offset_bottom = 290.0
 scale = Vector2(0.8, 0.8)
 
 [node name="Node" type="Node2D" parent="."]
@@ -472,7 +474,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]
