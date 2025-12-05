@@ -100,6 +100,16 @@ process_mode = 1
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_b1irm")]
 position = Vector2(746, 141)
 make_green = true
+Round1_Zombies = {
+"Base": 6,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 5,
 "BucketHead": 0,
@@ -134,7 +144,7 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_g1cyh")]
 position = Vector2(-64, 200)
 script = ExtResource("7_a84oj")
-StartDelay = 5
+StartDelay = 1
 
 [node name="Environment" type="Node2D" parent="."]
 

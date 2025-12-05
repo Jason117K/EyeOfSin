@@ -26,6 +26,7 @@ var wave_1_complete: bool = false
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $PlantSelectionMenu
 @onready var waveManager = $GameLayer/WaveManager
+var green_dimension
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
 # Text file paths
@@ -45,6 +46,7 @@ func _ready():
 	toolTips.set_text(TUTORIAL_SELECT_SUNFLOWER)
 	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
+	green_dimension = get_parent().get_node("Level0-2_Alternate")
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
@@ -89,7 +91,7 @@ func _handle_force_select_sunflower_input(event):
 func _handle_force_place_plant_input(event):
 	# Allow mouse clicks for placement, block X key (deselect) and Y key (swap)
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_X or event.keycode == KEY_Y:
+		if event.keycode == KEY_X: #or event.keycode == KEY_Y:
 			get_viewport().set_input_as_handled()
 
 
@@ -126,7 +128,8 @@ func _transition_to_state(new_state: TutorialState):
 		TutorialState.EXPLAIN_BLOOD_GENERATION:
 			_start_explain_blood_gen()
 		TutorialState.WAVE_1_ACTIVE:
-			_start_wave_1_purple_only()
+			_start_wave_1()
+			green_dimension.start_game()
 		TutorialState.FORCE_PRESS_Y:
 			_start_force_press_y()
 		TutorialState.EXPLAIN_GREEN_DIMENSION:
@@ -152,7 +155,9 @@ func _start_explain_blood_gen():
 		
 	show_spotlight_at_position(Vector2(10,0))
 
-func _start_wave_1_purple_only():
+func _start_wave_1():
+	print("Starting Wave 111")
+	plantSelectionMenu.canSwapScenes = true
 	# Game unpauses when ToolTips button clicked
 	waveManager.canStartGame = true
 	show_all_plant_buttons()
@@ -267,7 +272,7 @@ func _on_tooltip_hidden():
 	print("[Tutorial] Current time: ", Time.get_ticks_msec())
 
 	match tutorial_state:
-		TutorialState.EXPLAIN_BLOOD_COST:
+		TutorialState.EXPLAIN_BLOOD_GENERATION:
 			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_COST to WAVE_1_ACTIVE")
 			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
 		TutorialState.EXPLAIN_GREEN_DIMENSION:
