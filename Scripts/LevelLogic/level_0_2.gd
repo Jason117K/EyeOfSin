@@ -20,6 +20,11 @@ var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_SUNFLOWER
 var wave_1_active: bool = false
 var wave_1_complete: bool = false
 
+# Tutorial blood generation tracking
+var tutorial_sunflower = null
+var waiting_for_blood = false
+var sun_before_pickup = 0
+
 # Node references
 #@onready var toolTips = $ToolTips
 @onready var toolTips = $"../ToolTips"
@@ -150,10 +155,16 @@ func _start_explain_blood_cost():
 	show_spotlight_at_position(Vector2(10,0))
 	
 func _start_explain_blood_gen():
-	toolTips.set_text_pause(TUTORIAL_BLOOD_GEN)
-	toolTips.showButton()
-		
-	show_spotlight_at_position(Vector2(10,0))
+	toolTips.set_text(TUTORIAL_BLOOD_GEN)  # Don't pause - let player collect blood
+	toolTips.noButtonShow()  # No button - waits for blood pickup
+
+	# Set up blood pickup detection
+	waiting_for_blood = true
+	sun_before_pickup = plantManager.sun_points
+	print("[TUTORIAL] Waiting for blood pickup. Current sun: ", sun_before_pickup)
+
+	# Optional: show spotlight at blood position if needed
+	# show_spotlight_at_position(Vector2(10,0))
 
 func _start_wave_1():
 	print("Starting Wave 111")
@@ -272,9 +283,7 @@ func _on_tooltip_hidden():
 	print("[Tutorial] Current time: ", Time.get_ticks_msec())
 
 	match tutorial_state:
-		TutorialState.EXPLAIN_BLOOD_GENERATION:
-			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_COST to WAVE_1_ACTIVE")
-			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
+		# EXPLAIN_BLOOD_GENERATION handled by blood pickup detection in _physics_process
 		TutorialState.EXPLAIN_GREEN_DIMENSION:
 			print("[Tutorial] Transitioning from EXPLAIN_GREEN_DIMENSION to WAVE_2_ACTIVE")
 			_transition_to_state(TutorialState.WAVE_2_ACTIVE)
@@ -288,8 +297,28 @@ func _on_spyder_placed():
 		_transition_to_state(TutorialState.EXPLAIN_BLOOD_COST)
 		
 func _on_sunflower_placed():
-	print("[Tutorial] Eye placed in state: ", TutorialState.keys()[tutorial_state])
+	print("[Tutorial] Sunflower placed in state: ", TutorialState.keys()[tutorial_state])
 	if tutorial_state == TutorialState.FORCE_PLACE_PLANT:
+		# Get the sunflower we just placed
+		print("[TUTORIAL] Sunflower placed, waiting for instantiation...")
+		await get_tree().create_timer(0.3).timeout
+
+		# Find the sunflower instance from Plants group
+		var sunflowers = get_tree().get_nodes_in_group("Plants")
+		for plant in sunflowers:
+			if "Sunflower" in plant.name:
+				tutorial_sunflower = plant
+				print("[TUTORIAL] Found tutorial sunflower: ", plant.name)
+				break
+
+		# Force generate blood immediately
+		if tutorial_sunflower and tutorial_sunflower.has_method("generate_sun"):
+			print("[TUTORIAL] Forcing blood generation on ", tutorial_sunflower.name)
+			tutorial_sunflower.generate_sun()
+		else:
+			print("[TUTORIAL ERROR] Could not find sunflower or generate_sun method!")
+
+		# Transition to blood generation explanation
 		_transition_to_state(TutorialState.EXPLAIN_BLOOD_GENERATION)
 
 func _on_sunflower_button_pressed():
@@ -305,6 +334,14 @@ func _on_wave_1_started():
 
 # Wave Completion Detection
 func _physics_process(_delta):
+	# Check for blood pickup during tutorial
+	if waiting_for_blood and plantManager.sun_points > sun_before_pickup:
+		print("[TUTORIAL] Blood picked up! New sun: ", plantManager.sun_points)
+		waiting_for_blood = false
+		toolTips.hide()
+		get_tree().paused = false  # Ensure game is unpaused
+		_transition_to_state(TutorialState.WAVE_1_ACTIVE)
+
 	if tutorial_state == TutorialState.WAVE_1_ACTIVE and not wave_1_complete:
 		# Check if all Wave 1 zombies are dead
 		var alive_zombies = get_tree().get_nodes_in_group("Alive-Enemies")
