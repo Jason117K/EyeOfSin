@@ -81,37 +81,39 @@ text = "UNDERSTOOD"
 
 [node name="SynergyVBox" type="VBoxContainer" parent="."]
 visible = false
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 5
+theme_override_constants/separation = -5
 alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="SynergyVBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SynergyVBox"]
+custom_minimum_size = Vector2(287.245, 288.595)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SynergyVBox/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="MawSpiderBuff" parent="SynergyVBox/CenterContainer/VBoxContainer" instance=ExtResource("6_imaxi")]
+[node name="MawSpiderBuff" parent="SynergyVBox/VBoxContainer" instance=ExtResource("6_imaxi")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="SynergyLabel" type="Label" parent="SynergyVBox/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="SynergyLabel" type="Label" parent="SynergyVBox/VBoxContainer"]
+custom_minimum_size = Vector2(324.975, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_ygqpy")
 theme_override_font_sizes/font_size = 16
 text = "Spyders can give MAWS a buff that causes them to release an AOE explosion of slowing webs on death."
 autowrap_mode = 3
 
-[node name="Button2" type="Button" parent="SynergyVBox"]
+[node name="Button2" type="Button" parent="SynergyVBox/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2")
 text = "UNDERSTOOD"
 
+[node name="CenterContainer" type="CenterContainer" parent="SynergyVBox"]
+layout_mode = 2
+
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="SynergyVBox/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="SynergyVBox/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

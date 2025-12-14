@@ -1,0 +1,3 @@
+SYNERGY UNLOCKED: Eye -> Spyder
+
+- Spyder projectiles now generate sun on hit  

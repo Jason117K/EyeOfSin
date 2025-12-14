@@ -25,6 +25,9 @@ signal eggWorm_placed(grid_position: Vector2)
 signal wasp_placed(grid_position: Vector2)
 signal maw_placed(grid_position: Vector2)
 
+func _ready() -> void:
+	if get_parent().has_method("spyder_placed"):
+		self.connect("_on_spyder_placed", Callable(get_parent(), "spyder_placed"))
 
 
 # Reference the PlantSelectionMenu dynamically
@@ -103,7 +106,7 @@ func _input(event):
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 			elif(parentName == "Level0-2" || parentName == "Level0-2_Alternate"):
-				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
+				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
 					print("Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
@@ -332,6 +335,7 @@ func place_plant(grid_pos: Vector2):
 			Global.incrementSunflowerCount()
 			pass
 		elif "Peashooter" in plant_instance.name:
+			print("[TUTORIAL] Emit Spyder Placed")
 			spyder_placed.emit(grid_pos)
 			pass
 		elif "Walnut" in plant_instance.name:

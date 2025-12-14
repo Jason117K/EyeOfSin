@@ -12,6 +12,7 @@ enum TutorialState {
 	FORCE_SELECT_SPYDER_AFTER_BLOOD,
 	FORCE_PLACE_SPYDER_BEHIND,
 	EXPLAIN_BLOOD_BUFFS,
+	EXPLAIN_BLOOD_BUFFS_2,
 	WAVE_1_ACTIVE,
 	FORCE_PRESS_Y,
 	EXPLAIN_GREEN_DIMENSION,
@@ -46,10 +47,19 @@ const TUTORIAL_BLOOD_COST = "res://Assets/Text/TextFiles/Level0_1_Tutorial_Blood
 const TUTORIAL_BLOOD_GEN = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
 const TUTORIAL_SELECT_SPYDER_AFTER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
 const TUTORIAL_PLACE_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
+var tutorial_place_spyder =  "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
+
 const TUTORIAL_BLOOD_BUFFS = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
+const TUTORIAL_BLOOD_BUFFS_2 = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
+
 const TUTORIAL_INVALID_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
-const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
-const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
+#const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
+#const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
+
+var hive_egg_buff_scene = preload("res://Scenes/Tutorials/egg_spine_buff.tscn")
+var spyder_sun_buff_scene = preload("res://Scenes/Tutorials/sunflower_spyder_buff.tscn")
+var sun_spyder_buff_scene = preload("res://Scenes/Tutorials/spyder_sunflower_buff.tscn")
+var buff_demo_scene = preload("res://Scenes/Tutorials/blood_buff_demo.tscn")
 
 
 func _ready():
@@ -165,13 +175,11 @@ func _transition_to_state(new_state: TutorialState):
 			_start_force_place_spyder_behind()
 		TutorialState.EXPLAIN_BLOOD_BUFFS:
 			_start_explain_blood_buffs()
+		TutorialState.EXPLAIN_BLOOD_BUFFS_2:
+			_start_explain_blood_buffs_2()
 		TutorialState.WAVE_1_ACTIVE:
 			_start_wave_1()
 			green_dimension.start_game()
-		TutorialState.FORCE_PRESS_Y:
-			_start_force_press_y()
-		TutorialState.EXPLAIN_GREEN_DIMENSION:
-			_start_explain_green_dimension()
 		TutorialState.WAVE_2_ACTIVE:
 			_start_wave_2_both_dimensions()
 
@@ -209,9 +217,7 @@ func _start_wave_1():
 	wave_1_complete = false
 
 
-func _start_force_press_y():
-	toolTips.set_text(TUTORIAL_PRESS_Y)
-	toolTips.noButtonShow()
+
 
 
 func _start_force_select_spyder_after_blood():
@@ -234,7 +240,9 @@ func _start_force_select_spyder_after_blood():
 
 func _start_force_place_spyder_behind():
 	print("[Tutorial] Starting FORCE_PLACE_SPYDER_BEHIND")
-	toolTips.set_text(TUTORIAL_PLACE_SPYDER)
+	#toolTips.set_text(TUTORIAL_PLACE_SPYDER)
+	toolTips.setComplexSceneText(tutorial_place_spyder)
+	toolTips.setComplexScene(buff_demo_scene)
 	toolTips.noButtonShow()
 
 	unhighlight_spyder_button()
@@ -247,16 +255,19 @@ func _start_force_place_spyder_behind():
 func _start_explain_blood_buffs():
 	print("[Tutorial] Starting EXPLAIN_BLOOD_BUFFS")
 	get_tree().paused = true
-	toolTips.set_text_pause(TUTORIAL_BLOOD_BUFFS)
+	#toolTips.set_text_pause(TUTORIAL_BLOOD_BUFFS)
+	toolTips.setComplexSceneText(TUTORIAL_BLOOD_BUFFS)
+	toolTips.setComplexScene(spyder_sun_buff_scene)
+	toolTips.showButton()
+	
+func _start_explain_blood_buffs_2():
+	print("[Tutorial] Starting EXPLAIN_BLOOD_BUFFS_2")
+	get_tree().paused = true
+	#toolTips.set_text_pause(TUTORIAL_BLOOD_BUFFS)
+	toolTips.setComplexSceneText(TUTORIAL_BLOOD_BUFFS_2)
+	toolTips.setComplexScene(sun_spyder_buff_scene)
 	toolTips.showButton()
 
-
-func _start_explain_green_dimension():
-	# Brief delay for dimension swap visual
-	#await get_tree().create_timer(0.5).timeout
-	print("Tutorial Explain Green Dimension")
-	toolTips.set_text_pause(TUTORIAL_GREEN_DIMENSION)
-	toolTips.showButton()
 
 
 func _start_wave_2_both_dimensions():
@@ -377,6 +388,10 @@ func _on_tooltip_hidden():
 	match tutorial_state:
 		# EXPLAIN_BLOOD_GENERATION handled by blood pickup detection in _physics_process
 		TutorialState.EXPLAIN_BLOOD_BUFFS:
+			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_BUFFS to EXPLAIN_BLOOD_BUFFS_2")
+			get_tree().paused = false  # Unpause game
+			_transition_to_state(TutorialState.EXPLAIN_BLOOD_BUFFS_2)
+		TutorialState.EXPLAIN_BLOOD_BUFFS_2:
 			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_BUFFS to WAVE_1_ACTIVE")
 			get_tree().paused = false  # Unpause game
 			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
@@ -416,6 +431,7 @@ func _on_spyder_placed(grid_pos: Vector2):
 
 		# Delete the incorrectly placed Spyder (refunds cost automatically)
 		plantManager.clear_space(grid_pos)
+		plantManager.add_sun(50)
 
 		# Show error message
 		get_tree().paused = true

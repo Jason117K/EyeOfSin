@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" id="13"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(24, 40)
+size = Vector2(24, 35)
 
 [sub_resource type="ShaderMaterial" id="31"]
 shader = ExtResource("6_pt70x")
@@ -356,7 +356,7 @@ bloodWorth = 4.0
 [node name="AttackComponent" parent="." instance=ExtResource("9")]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-position = Vector2(4, 4)
+position = Vector2(4, 1.5)
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

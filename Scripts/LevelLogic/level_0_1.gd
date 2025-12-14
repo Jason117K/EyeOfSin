@@ -134,6 +134,7 @@ func _transition_to_state(new_state: TutorialState):
 
 
 func _start_explain_blood_cost():
+	print("[TUTORIAL] Satart Explaing Blood Cost")
 	toolTips.set_text_pause(TUTORIAL_BLOOD_COST)
 	toolTips.showButton()
 		
@@ -368,3 +369,7 @@ func _start_force_place_plant():
 
 	# ADD THIS: Hide spotlight (grid too large for effective spotlight)
 	hide_spotlight()
+
+
+func _on_plant_manager_spyder_placed(grid_position: Vector2) -> void:
+	_on_spyder_placed()

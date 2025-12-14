@@ -1,3 +1,5 @@
-Place the SPYDER directly BEHIND (to the left of) the Eye.
+All DEMONS have BLOOD BUFF zones indicated by the red squares around them when placing them.
 
-Spyders buff Eyes when positioned behind them.
+When a Demon is placed in the BLOOD BUFF zone of another Demon, it transforms. Try it now
+
+Place the SPYDER directly BEHIND (to the left of) the Eye.

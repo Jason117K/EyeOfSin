@@ -1,7 +1,3 @@
-SYNERGY UNLOCKED: Eye + Spyder
+SYNERGY UNLOCKED: Spyder -> Eye
 
-When a SPYDER is behind an EYE:
-- Eye gains web slowing attack
-- Spyder gains increased fire rate
-
-Positioning creates powerful combinations!
+- Eye now slows all surrounding enemies 

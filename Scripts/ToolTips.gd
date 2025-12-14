@@ -4,11 +4,12 @@ extends PanelContainer
 @onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
 @onready var anim_texture = $VBoxContainer/CenterContainer/TextureRect
 @onready var button = $VBoxContainer/Button
-@onready var complexButton = $SynergyVBox/Button2
+@onready var complexButton = $SynergyVBox/VBoxContainer/Button2
 @onready var mainVbox = $VBoxContainer
 @onready var synergyVBox = $SynergyVBox
-@onready var synergyLabel = $SynergyVBox/CenterContainer/VBoxContainer/SynergyLabel
-@onready var complexSceneContainer = $SynergyVBox/CenterContainer/VBoxContainer
+@onready var synergyLabel = $SynergyVBox/VBoxContainer/SynergyLabel
+@onready var syngergyButton = $SynergyVBox/VBoxContainer/Button2
+@onready var complexSceneContainer =$SynergyVBox/VBoxContainer 
 @onready var greyBG = $VBoxContainer/CenterContainer/TextureRect2
 @onready var border = $VBoxContainer/CenterContainer/TextureRect3
 signal ToolTipHid
@@ -70,12 +71,18 @@ func noButtonShow():
 	show()
 	button.visible = false
 	pass
-	
+
+func complexNoButtonShow():
+	#show()
+	syngergyButton.visible = false
+	pass
+		
 func setImage(newImage):
 	#TextureRect
 	pass
 
 func setComplexScene(newScene):
+	syngergyButton.visible = true 
 	show()
 	mainVbox.visible = false
 	synergyVBox.visible = true 
@@ -84,10 +91,14 @@ func setComplexScene(newScene):
 	for node in complexSceneContainer.get_children():
 		#print("NNNOde is ", node.name)
 		if node is Label:
+			print("Will Now Pass ", node.name)
 			pass
 		else:
-			print("Queue Free ", node.name)
-			node.queue_free()
+			if (node == Button) || "Button" in node.name:
+				print("Node is button ", node.name)
+			elif node != Button:
+				print("Queue Free ", node.name)
+				node.queue_free()
 	#Add New Complex Scene to Container 
 	var this_new_scene = newScene.instantiate()
 	complexSceneContainer.add_child(this_new_scene)

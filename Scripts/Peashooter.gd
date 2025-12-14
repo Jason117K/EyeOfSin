@@ -200,11 +200,12 @@ func _on_AnimatedSprite_animation_finished():
 
 #Shoots based on animation 
 func _on_AnimatedSprite_frame_changed():
-	if( animSpriteComp.animation.contains("ttack") ):
-		#print("The frame is ", animSpriteComp.frame)
-		if(animSpriteComp.frame == 3):
-			#print("ABOUT Shoot Proj From Spider ")
-			shoot_projectile()
+	if animSpriteComp != null:
+		if( animSpriteComp.animation.contains("ttack") ):
+			#print("The frame is ", animSpriteComp.frame)
+			if(animSpriteComp.frame == 3):
+				#print("ABOUT Shoot Proj From Spider ")
+				shoot_projectile()
 			
 func die():
 	PlantManager.clear_space(self.global_position)
@@ -218,13 +219,15 @@ func die_fromClearSpace():
 	
 	
 func adjust_position(new_form):
+	print("New Form Is " , new_form)
 	match new_form:
+		
 		"Sunflower":
 			pass
 
-			#print("Self pos was ", self.global_position)
-			#self.global_position = self.global_position + Vector2(0,-0.75)
-			#print("Self pos IS ", self.global_position)
+			print("Spyder Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-5)
+			print("Spyder Self pos IS ", self.global_position)
 
 		"Peashooter":
 			pass
