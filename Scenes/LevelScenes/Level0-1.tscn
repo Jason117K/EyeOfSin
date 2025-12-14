@@ -110,9 +110,9 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 2,
+"Base": 5,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -120,9 +120,9 @@ Round2_Zombies = {
 "Ticker": 0
 }
 Round3_Zombies = {
-"Base": 0,
-"BucketHead": 1,
-"ConeHead": 2,
+"Base": 7,
+"BucketHead": 0,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,

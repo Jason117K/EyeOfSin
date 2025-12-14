@@ -111,9 +111,9 @@ Round2_Zombies = {
 "Ticker": 0
 }
 Round3_Zombies = {
-"Base": 0,
-"BucketHead": 1,
-"ConeHead": 3,
+"Base": 3,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
