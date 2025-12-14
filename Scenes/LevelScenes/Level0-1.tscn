@@ -142,7 +142,7 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_y5q10")]
 position = Vector2(-64, 200)
 script = ExtResource("7_h8ehj")
-StartDelay = 5
+StartDelay = 55
 Wave2StartTime = 20
 Wave3StartTime = 30
 
