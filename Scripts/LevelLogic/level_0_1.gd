@@ -8,6 +8,8 @@ enum TutorialState {
 	FORCE_PLACE_PLANT,
 	EXPLAIN_BLOOD_COST,
 	WAVE_1_ACTIVE,
+	EXPLAIN_BASIC_ZOMBIE,
+	EXPLAIN_SEVERED_ZOMBIE,
 	FORCE_PRESS_Y,
 	EXPLAIN_GREEN_DIMENSION,
 	WAVE_2_ACTIVE,
@@ -32,7 +34,11 @@ const TUTORIAL_PLACE_SPYDER = "res://Assets/Text/TextFiles/Level0_1_Tutorial_Pla
 const TUTORIAL_BLOOD_COST = "res://Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
 const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
 const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
+const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
+const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
+var basic_zombie_demo_scene = preload("res://Scenes/Tutorials/basic_zombie_demo.tscn")
+var severed_zombie_demo_scene = preload( "res://Scenes/Tutorials/severed_zombie_demo.tscn")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -44,11 +50,11 @@ func _ready():
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
-
+	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 	# Connect to Spyder button directly
 	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
 	spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
-
+				
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
@@ -72,10 +78,15 @@ func _input(event):
 				if event.keycode == KEY_Y:
 					get_viewport().set_input_as_handled()
 
+			# Explain the Basic Zombie with a popup 
+			
+
 		# Other states allow normal input
 		_:
 			pass
 
+
+	
 
 func _handle_force_select_spyder_input(event):
 	# Only allow clicking Spyder button, block all keyboard input
@@ -126,13 +137,27 @@ func _transition_to_state(new_state: TutorialState):
 			_start_explain_green_dimension()
 		TutorialState.WAVE_2_ACTIVE:
 			_start_wave_2_both_dimensions()
+		TutorialState.EXPLAIN_BASIC_ZOMBIE:
+			_start_explain_basic_zombie()
+		TutorialState.EXPLAIN_SEVERED_ZOMBIE:
+			_start_explain_severed_zombie()
 
 
 # State entry methods
 
+func _start_explain_severed_zombie():
+	print("[TUTORIAL] Start Explain Severed Zombie")
+	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)
+	toolTips.setComplexScene(severed_zombie_demo_scene)
+	toolTips.showButton()	
 
-
-
+func _start_explain_basic_zombie():
+	print("[TUTORIAL] Start Explain Basic Zombie")
+	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
+	toolTips.setComplexScene(basic_zombie_demo_scene)
+	#toolTips.set_text_pause(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
+	toolTips.showButton()
+	
 func _start_explain_blood_cost():
 	print("[TUTORIAL] Satart Explaing Blood Cost")
 	toolTips.set_text_pause(TUTORIAL_BLOOD_COST)
@@ -275,25 +300,30 @@ func _on_spyder_button_pressed():
 func _on_wave_1_started():
 	print("[Tutorial] Wave 1 started")
 	wave_1_active = true
+	_transition_to_state(TutorialState.EXPLAIN_BASIC_ZOMBIE)
 
-
+func _on_wave_3_started():
+	print("[Tutorial] Wave 2 started")
+	_transition_to_state(TutorialState.EXPLAIN_SEVERED_ZOMBIE)
+	
 # Wave Completion Detection
 func _physics_process(_delta):
-	if tutorial_state == TutorialState.WAVE_1_ACTIVE and not wave_1_complete:
-		# Check if all Wave 1 zombies are dead
-		var alive_zombies = get_tree().get_nodes_in_group("Alive-Enemies")
+	if tutorial_state == TutorialState.WAVE_1_ACTIVE or tutorial_state == TutorialState.EXPLAIN_BASIC_ZOMBIE:
+		if not wave_1_complete:
+			# Check if all Wave 1 zombies are dead
+			var alive_zombies = get_tree().get_nodes_in_group("Alive-Enemies")
 
-		# Filter to only purple dimension zombies (not green)
-		var purple_zombies = []
-		for zombie in alive_zombies:
-			if not zombie.is_in_group("Green"):
-				purple_zombies.append(zombie)
+			# Filter to only purple dimension zombies (not green)
+			var purple_zombies = []
+			for zombie in alive_zombies:
+				if not zombie.is_in_group("Green"):
+					purple_zombies.append(zombie)
 
-		# If wave has started and all purple zombies are dead, advance
-		if purple_zombies.size() == 0 and wave_1_active:
-			print("[Tutorial] Wave 1 complete - all zombies dead")
-			wave_1_complete = true
-			_transition_to_state(TutorialState.FORCE_PRESS_Y)
+			# If wave has started and all purple zombies are dead, advance
+			if purple_zombies.size() == 0 and wave_1_active:
+				print("[Tutorial] Wave 1 complete - all zombies dead")
+				wave_1_complete = true
+				_transition_to_state(TutorialState.FORCE_PRESS_Y)
 
 
 # Helper Methods

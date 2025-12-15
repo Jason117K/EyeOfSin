@@ -142,7 +142,7 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_y5q10")]
 position = Vector2(-64, 200)
 script = ExtResource("7_h8ehj")
-StartDelay = 55
+StartDelay = 5
 Wave2StartTime = 20
 Wave3StartTime = 30
 
@@ -475,7 +475,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

@@ -1,4 +1,5 @@
-A basic footsoldier. 
+A basic Zombie footsoldier. What they lack in every category they make up for in numbers.
+
 - Slow Speed 
 - High Numbers
 - Low Health

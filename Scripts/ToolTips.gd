@@ -39,7 +39,13 @@ func setComplexSceneText(newFile : String):
 	file.close()
 	synergyLabel.text = newText
 	
-
+func setComplexSceneTextPause(newFile : String):
+	var file = FileAccess.open(newFile, FileAccess.READ)
+	var newText = file.get_as_text()
+	file.close()
+	synergyLabel.text = newText
+	get_tree().paused = true
+	pass
 
 #Sets the current toolTip Text while also pausing the game
 func set_text_pause(newFile : String):
@@ -121,3 +127,4 @@ func _on_Button_pressed():
 func _on_button_2_pressed() -> void:
 	hide()
 	ToolTipHid.emit()
+	get_tree().paused = false

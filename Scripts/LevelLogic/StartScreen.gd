@@ -6,6 +6,8 @@ extends Control
 @onready var bgMusic = $BackGroundMuisc
 #Sets up the startscreen tiles
 #var ownerScript = preload("res://Scripts/LevelLogic/Main_Controller.gd")
+var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
+var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 
 func _ready():
 	
@@ -48,8 +50,8 @@ func _ready():
 func _on_start_game_pressed() -> void:
 	print("I KNOW U WERE CLICKED")
 	#Global.game_controller.change_scene("res://Scenes/LevelScenes/Main.tscn")
-	Global.game_controller.change_dual_scenes("res://Scenes/LevelScenes/Main.tscn", "res://Scenes/LevelScenes/Main_Alternate.tscn") #"res://Scenes/LevelScenes/Level6.tscn")
-
+	#Global.game_controller.change_dual_scenes("res://Scenes/LevelScenes/Main.tscn", "res://Scenes/LevelScenes/Main_Alternate.tscn") #"res://Scenes/LevelScenes/Level6.tscn")
+	Global.game_controller.change_dual_scenes(level0_1,level0_1Alt )
 
 
 func _on_level_select_button_pressed() -> void:

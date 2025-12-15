@@ -1610,7 +1610,6 @@ autoplay = "New Anim 2"
 
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="."]
 position = Vector2(0, 6)
-scale = Vector2(1, 20)
 shape = SubResource("RectangleShape2D_a06ib")
 target_position = Vector2(500, 0)
 collision_mask = 0

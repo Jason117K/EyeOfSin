@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://rvksod7ky54y"]
+[gd_scene load_steps=34 format=3 uid="uid://rvksod7ky54y"]
 
 [ext_resource type="Script" uid="uid://dxymrbi3b8pdg" path="res://Scripts/LevelLogic/level_7_alternate.gd" id="1_1x6i5"]
 [ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://Assets/Environment/Props/Pustules_shadow1_Medium.png" id="3_aor2q"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_06316"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_nqe2n"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="22_g63ld"]
-[ext_resource type="PackedScene" uid="uid://d1f383t0twnnu" path="res://Scenes/LevelScenes/EndScreen.tscn" id="23_vj2p7"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="24_w20gw"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="25_6ikxl"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="26_bob2j"]
@@ -563,7 +562,7 @@ position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_bpqyd")
 
 [node name="PlantManager" parent="." instance=ExtResource("12_bqc13")]
-sun_points = 1200
+sun_points = 2500
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -816,11 +815,10 @@ metadata/_edit_lock_ = true
 z_index = 1
 position = Vector2(-59, 222)
 script = ExtResource("17_l65bd")
-StartDelay = 60
+StartDelay = 130
 Wave2StartTime = 33
 Wave3StartTime = 45
 Wave1_Interval = 14.0
-Wave2_Interval = 14
 Wave3_Interval = 14.0
 
 [node name="Glow" type="ColorRect" parent="GameLayer"]
@@ -884,7 +882,6 @@ grow_vertical = 2
 [node name="LevelSwitcher" parent="." instance=ExtResource("22_g63ld")]
 visible = false
 layout_mode = 1
-nextLevel = ExtResource("23_vj2p7")
 next_level = "res://Scenes/LevelScenes/EndScreen.tscn"
 
 [node name="CodexBG" parent="." instance=ExtResource("24_w20gw")]

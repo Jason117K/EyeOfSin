@@ -101,8 +101,6 @@ func _input(event):
 		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
 			_handle_force_place_spyder_input(event)
 
-		TutorialState.FORCE_PRESS_Y:
-			_handle_force_press_y_input(event)
 
 		# Other states allow normal input
 		_:
@@ -123,19 +121,6 @@ func _handle_force_place_plant_input(event):
 			get_viewport().set_input_as_handled()
 
 
-func _handle_force_press_y_input(event):
-	# Only allow Y key
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_Y:
-			# Swap to green dimension
-			Global.game_controller.swap_scenes()
-			# Transition to explanation state
-			_transition_to_state(TutorialState.EXPLAIN_GREEN_DIMENSION)
-			return
-		else:
-			get_viewport().set_input_as_handled()
-	elif event is InputEventMouseButton:
-		get_viewport().set_input_as_handled()
 
 
 func _handle_force_select_spyder_input(event):
@@ -335,9 +320,14 @@ func hide_all_plant_buttons_except_sunflower():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = false
 
 func show_all_plant_buttons():
-	# For Level0-1 tutorial, only show Spyder
-	# Other buttons remain hidden (this is a tutorial level)
-	pass
+	# Show Sunflower
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = true
+
+	# Show Spyder
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true
+
 
 
 func hide_all_plant_buttons_except_spyder():
@@ -498,6 +488,7 @@ func _on_spyder_button_pressed():
 
 func _on_wave_1_started():
 	print("[Tutorial] Wave 1 started")
+	show_all_plant_buttons()
 	wave_1_active = true
 
 
@@ -512,21 +503,7 @@ func _physics_process(_delta):
 		get_tree().paused = false  # Ensure game is unpaused
 		_transition_to_state(TutorialState.FORCE_SELECT_SPYDER_AFTER_BLOOD)
 
-	if tutorial_state == TutorialState.WAVE_1_ACTIVE and not wave_1_complete:
-		# Check if all Wave 1 zombies are dead
-		var alive_zombies = get_tree().get_nodes_in_group("Alive-Enemies")
 
-		# Filter to only purple dimension zombies (not green)
-		var purple_zombies = []
-		for zombie in alive_zombies:
-			if not zombie.is_in_group("Green"):
-				purple_zombies.append(zombie)
-
-		# If wave has started and all purple zombies are dead, advance
-		if purple_zombies.size() == 0 and wave_1_active:
-			print("[Tutorial] Wave 1 complete - all zombies dead")
-			wave_1_complete = true
-			_transition_to_state(TutorialState.FORCE_PRESS_Y)
 
 
 # Helper Methods

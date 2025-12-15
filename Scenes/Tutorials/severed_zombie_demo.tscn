@@ -1,0 +1,151 @@
+[gd_scene load_steps=20 format=3 uid="uid://d2dt61ico0vad"]
+
+[ext_resource type="Texture2D" uid="uid://dey55mcq10gc0" path="res://Assets/Zombies/UpdatedAnimations/HeadLessConeZombie-Sheet.png" id="1_bgn1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf675"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(0, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw3n4"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(62, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0xxk"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(124, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lypv5"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(186, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81pwp"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(248, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi3kk"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(310, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jho2s"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(372, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llet1"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(434, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7enei"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(496, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvh5i"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(620, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pguoe"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(682, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya6pb"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(744, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry10f"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(806, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2lrh"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(868, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rh67"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(930, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it4xt"]
+atlas = ExtResource("1_bgn1j")
+region = Rect2(992, 0, 62, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihw76"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf675")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw3n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0xxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lypv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81pwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi3kk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jho2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llet1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7enei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvh5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pguoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya6pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry10f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2lrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rh67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it4xt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BasicZombieDemo" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(160, 119)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lj1o")
+
+[node name="SeveredZombie" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(96, 58)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ihw76")
+autoplay = "default"
+frame = 14
+frame_progress = 0.360341
+flip_h = true
