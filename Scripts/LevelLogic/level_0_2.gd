@@ -6,7 +6,9 @@ enum TutorialState {
 	INIT,
 	FORCE_SELECT_SPYDER,
 	FORCE_SELECT_SUNFLOWER,
+	FORCE_SELECT_WALNUT,
 	FORCE_PLACE_PLANT,
+	FORCE_PLACE_WALNUT,
 	EXPLAIN_BLOOD_COST,
 	EXPLAIN_BLOOD_GENERATION,
 	FORCE_SELECT_SPYDER_AFTER_BLOOD,
@@ -45,6 +47,8 @@ var green_dimension
 # Text file paths
 const TUTORIAL_SELECT_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSunflower.txt"
 const TUTORIAL_PLACE_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSunflower.txt"
+const TUTORIAL_PLACE_WALNUT = "res://Assets/Text/TextFiles/PlantDescriptions/WalnutDescription.txt"
+
 const TUTORIAL_BLOOD_COST = "res://Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
 const TUTORIAL_BLOOD_GEN = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
 const TUTORIAL_SELECT_SPYDER_AFTER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
@@ -57,13 +61,13 @@ const TUTORIAL_BLOOD_BUFFS_2 = "res://Assets/Text/TextFiles/Level0_2_Tutorial_Bl
 const TUTORIAL_INVALID_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
 #const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
 #const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
-const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
+const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
 
 var hive_egg_buff_scene = preload("res://Scenes/Tutorials/egg_spine_buff.tscn")
 var spyder_sun_buff_scene = preload("res://Scenes/Tutorials/sunflower_spyder_buff.tscn")
 var sun_spyder_buff_scene = preload("res://Scenes/Tutorials/spyder_sunflower_buff.tscn")
 var buff_demo_scene = preload("res://Scenes/Tutorials/blood_buff_demo.tscn")
-var buckethead_zombie_demo_scene = preload( "res://Scenes/Tutorials/severed_zombie_demo.tscn")
+var buckethead_zombie_demo_scene = preload("res://Scenes/Tutorials/buckethead_zombie_demo.tscn")
 
 
 func _ready():
@@ -86,6 +90,10 @@ func _ready():
 
 	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
 	spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
+	
+	var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
+	walnut_button.connect("pressed", Callable(self, "_on_walnut_button_pressed"))
+	
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_SUNFLOWER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
@@ -94,6 +102,8 @@ func _ready():
 # Input filtering system - intercepts input based on tutorial state
 func _input(event):
 	match tutorial_state:
+		TutorialState.FORCE_SELECT_WALNUT:
+			_handle_force_select_walnut_input(event)
 		TutorialState.FORCE_SELECT_SUNFLOWER:
 			_handle_force_select_sunflower_input(event)
 
@@ -101,6 +111,9 @@ func _input(event):
 			_handle_force_select_spyder_input(event)
 
 		TutorialState.FORCE_PLACE_PLANT:
+			_handle_force_place_plant_input(event)
+		
+		TutorialState.FORCE_PLACE_WALNUT:
 			_handle_force_place_plant_input(event)
 
 		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
@@ -121,6 +134,11 @@ func _start_explain_buckethead_zombie():
 	toolTips.setComplexScene(buckethead_zombie_demo_scene)
 	toolTips.showButton()	
 
+func _handle_force_select_walnut_input(event):
+	# Only allow clicking Walnut button, block all keyboard input
+	if event is InputEventKey:
+		get_viewport().set_input_as_handled()
+	# Mouse input: Walnut button gets clicks via visibility, others hidden	
 
 func _handle_force_select_sunflower_input(event):
 	# Only allow clicking Spyder button, block all keyboard input
@@ -163,6 +181,8 @@ func _transition_to_state(new_state: TutorialState):
 			pass
 		TutorialState.FORCE_SELECT_SUNFLOWER:
 			_start_force_select_sunflower()
+		TutorialState.FORCE_SELECT_WALNUT:
+			_start_force_select_walnut()
 		TutorialState.FORCE_PLACE_PLANT:
 			_start_force_place_plant()
 		TutorialState.EXPLAIN_BLOOD_COST:
@@ -217,7 +237,19 @@ func _start_wave_1():
 	wave_1_complete = false
 
 
+func _start_force_select_walnut():
+	print("[Tutorial] Starting FORCE_SELECT_WALNUT")
+	toolTips.set_text(TUTORIAL_PLACE_WALNUT)
+	toolTips.noButtonShow()
 
+	# Hide all, show only Walnut
+	hide_all_plant_buttons_except_walnut()
+	highlight_walnut_button()
+
+	# Spotlight on Spyder button
+	var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
+	show_spotlight_at_node(walnut_button)
+	
 
 
 func _start_force_select_spyder_after_blood():
@@ -334,6 +366,31 @@ func hide_all_plant_buttons_except_sunflower():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = false
 
+func hide_all_plant_buttons_except_walnut():
+	# Hide all buttons except Walnut
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = false
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = false
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel").visible = false
+
+	# Keep Walnut visible
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = false
+	
+
 func show_all_plant_buttons():
 	# Show Sunflower
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
@@ -366,6 +423,9 @@ func hide_all_plant_buttons_except_spyder():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel").visible = false
 
+func highlight_walnut_button():
+	var button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
+	plantSelectionMenu.add_button_highlight(button)	
 
 func highlight_spyder_button():
 	var button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
@@ -485,6 +545,11 @@ func _on_sunflower_placed(grid_pos: Vector2):
 		# Transition to blood generation explanation
 		_transition_to_state(TutorialState.EXPLAIN_BLOOD_GENERATION)
 
+func _on_walnut_button_pressed():
+	print("[Tutorial] Walnut button pressed in state: ", TutorialState.keys()[tutorial_state])
+	#if tutorial_state == TutorialState.FORCE_SELECT_SUNFLOWER:
+	_transition_to_state(TutorialState.FORCE_PLACE_WALNUT)
+			
 func _on_sunflower_button_pressed():
 	print("[Tutorial] Sunflower button pressed in state: ", TutorialState.keys()[tutorial_state])
 	if tutorial_state == TutorialState.FORCE_SELECT_SUNFLOWER:

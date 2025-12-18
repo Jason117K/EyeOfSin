@@ -5,11 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://Assets/Environment/TX Tileset Grass.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://csemll4b6ejvm" path="res://Assets/Environment/GrassTile3.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://bd465xy3xrvpe" path="res://Assets/Environment/GrassTiles2.png" id="9"]
-[ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://Scripts/Environment/tile_map_layer.gd" id="9_ce0dd"]
+[ext_resource type="Script" path="res://Scripts/Environment/tile_map_layer.gd" id="9_ce0dd"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://Assets/Environment/WalkTile32x32.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://Assets/Environment/GrassTilesRED.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://dyyeeri7m6bqq" path="res://Assets/Environment/BGTiles.png" id="12"]
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1o11"]
 texture = ExtResource("11")
