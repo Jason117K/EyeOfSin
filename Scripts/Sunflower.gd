@@ -12,10 +12,10 @@ var PlantManager
 @onready var animSpriteComp = $AnimatedSprite2D
 @onready var sunTimer = $SunTimer
 @onready var resetEatingTimer = $ResetEatingSpeed
-@export var sunWaitTime := 40.0
-@export var wyrmSunWaitTime :=  60.0
-@export var hiveSunWaitTime := 28.0
-@export var buffedSunWaitTime := 24.0 
+@export var sunWaitTime := 30.0
+@export var wyrmSunWaitTime :=  50.0
+@export var hiveSunWaitTime := 23.0
+@export var buffedSunWaitTime := 19.0 
 @onready var buffNodes = $BuffNodesComponent
 @onready var healTimer = $HealTimer
 @onready var healInvisTimer = $HealInvisTimer

@@ -42,7 +42,12 @@ func _on_PeaProjectile_area_entered(area):
 		if walnutBuff:
 			compManager.knockBack()
 		if sunBuff:
-			compManager.increaseBloodWorth()
+			var plant_manager = get_parent().get_parent().get_node("PlantManager")
+			if plant_manager:  # If the PlantManager or GameManager is set
+				#$CollectAudioPlayer.play()
+				plant_manager.add_sun(2.0)  # Add 25 sun points (or whatever amount)
+				plant_manager.play_sun_collect()
+			#compManager.increaseBloodWorth()
 		queue_free()  # Remove the projectile # Replace with function body.
 
 

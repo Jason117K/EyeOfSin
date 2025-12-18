@@ -18,6 +18,7 @@ var sunBuffed = false
 var wyrmBuffed = false
 var mawBuffed = false
 var canAttackSetTrueOnce = false
+var spawnAnimDone = false
 #f
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
@@ -187,6 +188,7 @@ func _on_AnimatedSprite_animation_finished():
 		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
+		spawnAnimDone = true 
 		return
 	if canAttack:
 		print(self, "Should Be Red Spider AttackZ")
@@ -220,6 +222,8 @@ func die_fromClearSpace():
 	
 func adjust_position(new_form):
 	print("New Form Is " , new_form)
+	if spawnAnimDone:
+		return
 	match new_form:
 		
 		"Sunflower":
@@ -243,7 +247,7 @@ func adjust_position(new_form):
 			print("Spyder Self pos was ", self.global_position)
 			self.global_position = self.global_position + Vector2(0,-5)
 			print("Spyder Self pos IS ", self.global_position)
-		"Hiveyyy":
+		"Hive":
 
 			print("Spyder Self pos was ", self.global_position)
 			self.global_position = self.global_position + Vector2(0,-5)

@@ -17,7 +17,8 @@ enum TutorialState {
 	FORCE_PRESS_Y,
 	EXPLAIN_GREEN_DIMENSION,
 	WAVE_2_ACTIVE,
-	TUTORIAL_COMPLETE
+	TUTORIAL_COMPLETE,
+	EXPLAIN_BUCKETHEAD_ZOMBIE
 }
 
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_SUNFLOWER
@@ -27,6 +28,7 @@ var wave_1_complete: bool = false
 # Tutorial blood generation tracking
 var tutorial_sunflower = null
 var waiting_for_blood = false
+var bucketHeadExplained = false
 var sun_before_pickup = 0
 var tutorial_sunflower_grid_pos: Vector2 = Vector2.ZERO
 var tutorial_sun_instance: Node2D = null
@@ -55,11 +57,13 @@ const TUTORIAL_BLOOD_BUFFS_2 = "res://Assets/Text/TextFiles/Level0_2_Tutorial_Bl
 const TUTORIAL_INVALID_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
 #const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
 #const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
+const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
 var hive_egg_buff_scene = preload("res://Scenes/Tutorials/egg_spine_buff.tscn")
 var spyder_sun_buff_scene = preload("res://Scenes/Tutorials/sunflower_spyder_buff.tscn")
 var sun_spyder_buff_scene = preload("res://Scenes/Tutorials/spyder_sunflower_buff.tscn")
 var buff_demo_scene = preload("res://Scenes/Tutorials/blood_buff_demo.tscn")
+var buckethead_zombie_demo_scene = preload( "res://Scenes/Tutorials/severed_zombie_demo.tscn")
 
 
 func _ready():
@@ -74,6 +78,7 @@ func _ready():
 	plantManager.connect("plant_placed", Callable(self, "_on_sunflower_placed"))
 	plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
+	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
 
 	# Connect to button presses
 	var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
@@ -100,11 +105,21 @@ func _input(event):
 
 		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
 			_handle_force_place_spyder_input(event)
-
+		TutorialState.EXPLAIN_BUCKETHEAD_ZOMBIE:
+			if bucketHeadExplained:
+				pass
+			else:
+				_start_explain_buckethead_zombie()
 
 		# Other states allow normal input
 		_:
 			pass
+func _start_explain_buckethead_zombie():
+	bucketHeadExplained = true 
+	print("[TUTORIAL] Start Explain Buckethead Zombie")
+	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE)
+	toolTips.setComplexScene(buckethead_zombie_demo_scene)
+	toolTips.showButton()	
 
 
 func _handle_force_select_sunflower_input(event):
@@ -386,10 +401,6 @@ func _on_tooltip_hidden():
 			get_tree().paused = false  # Unpause game
 			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
 
-		TutorialState.EXPLAIN_GREEN_DIMENSION:
-			print("[Tutorial] Transitioning from EXPLAIN_GREEN_DIMENSION to WAVE_2_ACTIVE")
-			_transition_to_state(TutorialState.WAVE_2_ACTIVE)
-
 		# Handle invalid placement error - return to placement state
 		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
 			print("[Tutorial] Error acknowledged - returning to Spyder placement")
@@ -491,7 +502,11 @@ func _on_wave_1_started():
 	show_all_plant_buttons()
 	wave_1_active = true
 
-
+func _on_wave_2_started():
+	print("[Tutorial] Wave 2 started")
+	_transition_to_state(TutorialState.EXPLAIN_BUCKETHEAD_ZOMBIE)
+	
+	
 # Wave Completion Detection
 func _physics_process(_delta):
 	# Check for blood pickup during tutorial

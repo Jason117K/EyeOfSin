@@ -18,7 +18,7 @@ var current_wave = 1                # Current wave number
 var zombies_per_wave = 2            # Number of zombies in the current wave
 var spawn_interval = 3.0            # Time interval between each zombie spawn
 var time_between_waves = 20.0       # Delay before starting a new wave
-var startWave2 : bool = false 
+var startWave2 : bool = true 
 
 var wave_active = false             # Whether a wave is currently active
 var zombies_spawned = 0             # Counter for spawned zombies
@@ -118,6 +118,7 @@ func setScenes():
 	pass
 			
 func startSecondWave():
+	startWave2 = false #Only One Wave 2 Can be Started
 	print("---------- WAVE MANAGER startSecondWave() CALLED ----------")
 	print("[WM] Current time: ", Time.get_ticks_msec())
 	print("[WM] numWave BEFORE increment: ", numWave)
@@ -172,16 +173,16 @@ func _on_ProceedGame_timeout():
 			wave2AlmostStart.emit()
 			print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 			print("Emitting Wave2Almost Start Signal")
-			#if startWave2 : 
-				#$Wave2.start()
-				#$ProceedGame.wait_time = 30
-				#$ProceedGame.start()
-				#numWave = numWave + 1
-				#for icon in wavePreviewIcons:
-					#icon.swap_Visibility()
-				#for timer in timers:
-					#timer.wait_time = $ProceedGame.wait_time - 10
-					#timer.start()
+			if startWave2 : 
+				$Wave2.start()
+				$ProceedGame.wait_time = 30
+				$ProceedGame.start()
+				numWave = numWave + 1
+				for icon in wavePreviewIcons:
+					icon.swap_Visibility()
+				for timer in timers:
+					timer.wait_time = $ProceedGame.wait_time - 10
+					timer.start()
 
 			# thing.callFunc(pass)
 		2:

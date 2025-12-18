@@ -92,7 +92,7 @@ mouse_filter = 2
 script = ExtResource("1_xmbdx")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_m8syp")]
-sun_points = 75
+sun_points = 155
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -100,20 +100,10 @@ process_mode = 1
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_b1irm")]
 position = Vector2(747, 109)
 make_green = true
-Round1_Zombies = {
-"Base": 2,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
 Round2_Zombies = {
-"Base": 2,
+"Base": 0,
 "BucketHead": 0,
-"ConeHead": 3,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -122,8 +112,8 @@ Round2_Zombies = {
 }
 Round3_Zombies = {
 "Base": 0,
-"BucketHead": 0,
-"ConeHead": 6,
+"BucketHead": 1,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -139,9 +129,9 @@ position = Vector2(-36, 1)
 position = Vector2(746, 141)
 make_green = true
 Round1_Zombies = {
-"Base": 4,
+"Base": 0,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -149,9 +139,9 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 4,
+"Base": 3,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -176,6 +166,36 @@ position = Vector2(-48, 0)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_b1irm")]
 position = Vector2(751, 173)
 make_green = true
+Round1_Zombies = {
+"Base": 3,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 3,
+"BucketHead": 0,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 4,
+"BucketHead": 0,
+"ConeHead": 4,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_b2r3q")]
 z_index = 1
@@ -190,7 +210,8 @@ tile_map_data = PackedByteArray("AAACAAsAAQACAAAAAAABAAsAAQACAAAAAAAAAAsAAQACAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_g1cyh")]
 position = Vector2(-64, 200)
 script = ExtResource("7_a84oj")
-StartDelay = 1
+StartDelay = 5
+Wave3StartTime = 35
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -443,6 +464,19 @@ offset_top = 315.0
 offset_right = 8.0
 offset_bottom = 315.0
 scale = Vector2(0.8, 0.8)
+is_alt = true
+
+[node name="Walnut" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="2"]
+visible = false
+
+[node name="Egg" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="4"]
+visible = false
+
+[node name="Hive" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="5"]
+visible = false
+
+[node name="Maw" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="6"]
+visible = false
 
 [node name="Node" type="Node2D" parent="."]
 visible = false
@@ -524,3 +558,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]
+[editable path="PlantSelectionMenu"]

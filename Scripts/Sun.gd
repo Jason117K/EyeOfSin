@@ -19,7 +19,7 @@ func _ready() -> void:
 func _on_Sun_mouse_entered():
 	print("SS Mouse Entered")
 	#$CollectAudioPlayer.play()
-	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
+	#AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 
 	var plant_manager = get_parent().get_parent().get_node("PlantManager")
 	if plant_manager:  # If the PlantManager or GameManager is set

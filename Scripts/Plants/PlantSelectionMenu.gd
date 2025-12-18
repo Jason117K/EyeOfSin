@@ -1,6 +1,8 @@
 extends Control
 #PlantSelectionMenu.gd
 
+@export var is_alt := false
+
 var root
 var selected_plant = sunflower_scene  # Holds the currently selected plant scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
@@ -56,7 +58,11 @@ var canSwapScenes = false
 @export var highlight_border_color: Color = Color.WHITE
 
 func _ready():
-	Global.plant_selection_menu = self
+	#Global.plant_selection_menu = self
+	if is_alt:
+		Global.plant_selection_menu_alt = self
+	else:
+		Global.plant_selection_menu = self
 	Global.resetSunflowerCount()
 
 	#add_button_highlight
