@@ -6,8 +6,6 @@ extends Control
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $PlantSelectionMenu
 
-var waiting_for_wave_2: bool = true
-
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -21,10 +19,8 @@ func start_wave_2():
 	hide_all_plant_buttons_except_spyder()
 	print("========== GREEN DIMENSION START_WAVE_2 CALLED ==========")
 	print("[GREEN] Current time: ", Time.get_ticks_msec())
-	print("[GREEN] waiting_for_wave_2 BEFORE: ", waiting_for_wave_2)
 	print("[GREEN] waveManager.numWave BEFORE: ", waveManager.numWave)
 
-	waiting_for_wave_2 = false
 	waveManager.numWave = 1             # Initialize wave state for Wave 2
 
 	# CRITICAL: Spawners need to be at wave 2 to spawn wave2_zombies

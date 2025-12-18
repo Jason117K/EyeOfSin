@@ -3,23 +3,16 @@ extends Control
 # Implements forced tutorial system with state machine and input filtering
 
 enum TutorialState {
-	INIT,
-	FORCE_SELECT_SPYDER,
 	FORCE_SELECT_SUNFLOWER,
 	FORCE_SELECT_WALNUT,
 	FORCE_PLACE_PLANT,
 	FORCE_PLACE_WALNUT,
-	EXPLAIN_BLOOD_COST,
 	EXPLAIN_BLOOD_GENERATION,
 	FORCE_SELECT_SPYDER_AFTER_BLOOD,
 	FORCE_PLACE_SPYDER_BEHIND,
 	EXPLAIN_BLOOD_BUFFS,
 	EXPLAIN_BLOOD_BUFFS_2,
 	WAVE_1_ACTIVE,
-	FORCE_PRESS_Y,
-	EXPLAIN_GREEN_DIMENSION,
-	WAVE_2_ACTIVE,
-	TUTORIAL_COMPLETE,
 	EXPLAIN_BUCKETHEAD_ZOMBIE
 }
 
@@ -49,7 +42,6 @@ const TUTORIAL_SELECT_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial
 const TUTORIAL_PLACE_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSunflower.txt"
 const TUTORIAL_PLACE_WALNUT = "res://Assets/Text/TextFiles/PlantDescriptions/WalnutDescription.txt"
 
-const TUTORIAL_BLOOD_COST = "res://Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
 const TUTORIAL_BLOOD_GEN = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
 const TUTORIAL_SELECT_SPYDER_AFTER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
 const TUTORIAL_PLACE_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
@@ -81,8 +73,10 @@ func _ready():
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	plantManager.connect("plant_placed", Callable(self, "_on_sunflower_placed"))
 	plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
+	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
+	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 
 	# Connect to button presses
 	var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
@@ -176,17 +170,14 @@ func _transition_to_state(new_state: TutorialState):
 	tutorial_state = new_state
 
 	match new_state:
-		TutorialState.FORCE_SELECT_SPYDER:
-			#_start_force_select_spyder()
-			pass
 		TutorialState.FORCE_SELECT_SUNFLOWER:
 			_start_force_select_sunflower()
 		TutorialState.FORCE_SELECT_WALNUT:
 			_start_force_select_walnut()
 		TutorialState.FORCE_PLACE_PLANT:
 			_start_force_place_plant()
-		TutorialState.EXPLAIN_BLOOD_COST:
-			_start_explain_blood_cost()
+		TutorialState.FORCE_PLACE_WALNUT:
+			_start_force_place_walnut()
 		TutorialState.EXPLAIN_BLOOD_GENERATION:
 			_start_explain_blood_gen()
 		TutorialState.FORCE_SELECT_SPYDER_AFTER_BLOOD:
@@ -200,8 +191,6 @@ func _transition_to_state(new_state: TutorialState):
 		TutorialState.WAVE_1_ACTIVE:
 			_start_wave_1()
 			green_dimension.start_game()
-		TutorialState.WAVE_2_ACTIVE:
-			_start_wave_2_both_dimensions()
 
 
 # State entry methods
@@ -209,12 +198,6 @@ func _transition_to_state(new_state: TutorialState):
 
 
 
-func _start_explain_blood_cost():
-	toolTips.set_text_pause(TUTORIAL_BLOOD_COST)
-	toolTips.showButton()
-		
-	show_spotlight_at_position(Vector2(10,0))
-	
 func _start_explain_blood_gen():
 	toolTips.set_text(TUTORIAL_BLOOD_GEN)  # Don't pause - let player collect blood
 	toolTips.noButtonShow()  # No button - waits for blood pickup
@@ -246,10 +229,21 @@ func _start_force_select_walnut():
 	hide_all_plant_buttons_except_walnut()
 	highlight_walnut_button()
 
-	# Spotlight on Spyder button
+	# Spotlight on Walnut button
 	var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
 	show_spotlight_at_node(walnut_button)
-	
+
+func _start_force_place_walnut():
+	print("[Tutorial] Starting FORCE_PLACE_WALNUT")
+	toolTips.set_text(TUTORIAL_PLACE_WALNUT)
+	toolTips.noButtonShow()
+
+	# Remove walnut highlight
+	var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
+	plantSelectionMenu.remove_button_highlight(walnut_button)
+
+	# Hide spotlight (grid too large)
+	hide_spotlight()
 
 
 func _start_force_select_spyder_after_blood():
@@ -300,44 +294,6 @@ func _start_explain_blood_buffs_2():
 	toolTips.setComplexScene(sun_spyder_buff_scene)
 	toolTips.showButton()
 
-
-
-func _start_wave_2_both_dimensions():
-	print("========== PURPLE DIMENSION ACTIVATING WAVE 2 FOR BOTH ==========")
-	print("[PURPLE] Current time: ", Time.get_ticks_msec())
-	print("[PURPLE] waveManager.numWave BEFORE: ", waveManager.numWave)
-
-	# Start Wave 2 in green dimension
-	var green_dimension = get_parent().get_node("Level0-1_Alternate")
-	print("[PURPLE] Green dimension node found: ", green_dimension != null)
-	if green_dimension and green_dimension.has_method("start_wave_2"):
-		print("[PURPLE] Calling green_dimension.start_wave_2()...")
-		green_dimension.start_wave_2()
-		print("[PURPLE] Green dimension start_wave_2() completed")
-	else:
-		print("[PURPLE] ERROR: Could not find green dimension or start_wave_2 method!")
-
-	# CRITICAL: Spawners need to be at wave 2 to spawn wave2_zombies
-	# Purple dimension completed Wave 1, so spawners are at 1
-	# Need to increment once: 1→2
-	print("[PURPLE] Incrementing spawner waves from 1 to 2...")
-	for spawner in waveManager.spawners:
-		print("[PURPLE] Spawner ", spawner.name, " numWave BEFORE: ", spawner.numWave)
-		spawner.increase_wave()  # 1→2
-		print("[PURPLE] Spawner ", spawner.name, " numWave AFTER: ", spawner.numWave)
-
-	# Start Wave 2 in purple dimension
-	print("[PURPLE] About to call waveManager.startSecondWave()...")
-	waveManager.startSecondWave()
-	print("[PURPLE] waveManager.numWave AFTER startSecondWave: ", waveManager.numWave)
-	print("[PURPLE] waveManager.$Wave2.is_stopped(): ", waveManager.get_node("Wave2").is_stopped())
-
-	# Enable dimension swapping
-	plantSelectionMenu.canSwapScenes = true
-	print("[PURPLE] Dimension swapping enabled")
-
-	tutorial_state = TutorialState.TUTORIAL_COMPLETE
-	print("========== PURPLE DIMENSION WAVE 2 ACTIVATION COMPLETED ==========")
 
 
 # UI Control Methods
@@ -461,6 +417,11 @@ func _on_tooltip_hidden():
 			get_tree().paused = false  # Unpause game
 			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
 
+		TutorialState.EXPLAIN_BUCKETHEAD_ZOMBIE:
+			print("[Tutorial] Buckethead explained - waiting for Wave 3")
+			get_tree().paused = false  # Unpause game
+			# No state transition - wait for wave3Started signal
+
 		# Handle invalid placement error - return to placement state
 		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
 			print("[Tutorial] Error acknowledged - returning to Spyder placement")
@@ -472,10 +433,6 @@ func _on_tooltip_hidden():
 
 func _on_spyder_placed(grid_pos: Vector2):
 	print("[Tutorial] Spyder placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
-
-	if tutorial_state == TutorialState.FORCE_PLACE_PLANT:
-		_transition_to_state(TutorialState.EXPLAIN_BLOOD_COST)
-		return
 
 	if tutorial_state != TutorialState.FORCE_PLACE_SPYDER_BEHIND:
 		return
@@ -504,7 +461,14 @@ func _on_spyder_placed(grid_pos: Vector2):
 	else:
 		print("[TUTORIAL] Valid Spyder placement - advancing to buff explanation")
 		_transition_to_state(TutorialState.EXPLAIN_BLOOD_BUFFS)
-		
+
+func _on_walnut_placed(grid_pos: Vector2):
+	print("[Tutorial] Walnut placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
+
+	if tutorial_state == TutorialState.FORCE_PLACE_WALNUT:
+		print("[Tutorial] Walnut placement complete - tutorial finished")
+		# Tutorial complete - no further forced actions
+
 func _on_sunflower_placed(grid_pos: Vector2):
 	print("[Tutorial] Sunflower placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
 	if tutorial_state == TutorialState.FORCE_PLACE_PLANT:
@@ -547,8 +511,8 @@ func _on_sunflower_placed(grid_pos: Vector2):
 
 func _on_walnut_button_pressed():
 	print("[Tutorial] Walnut button pressed in state: ", TutorialState.keys()[tutorial_state])
-	#if tutorial_state == TutorialState.FORCE_SELECT_SUNFLOWER:
-	_transition_to_state(TutorialState.FORCE_PLACE_WALNUT)
+	if tutorial_state == TutorialState.FORCE_SELECT_WALNUT:
+		_transition_to_state(TutorialState.FORCE_PLACE_WALNUT)
 			
 func _on_sunflower_button_pressed():
 	print("[Tutorial] Sunflower button pressed in state: ", TutorialState.keys()[tutorial_state])
@@ -570,8 +534,12 @@ func _on_wave_1_started():
 func _on_wave_2_started():
 	print("[Tutorial] Wave 2 started")
 	_transition_to_state(TutorialState.EXPLAIN_BUCKETHEAD_ZOMBIE)
-	
-	
+
+func _on_wave_3_started():
+	print("[Tutorial] Wave 3 started")
+	_transition_to_state(TutorialState.FORCE_SELECT_WALNUT)
+
+
 # Wave Completion Detection
 func _physics_process(_delta):
 	# Check for blood pickup during tutorial

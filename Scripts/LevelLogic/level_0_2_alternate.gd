@@ -5,8 +5,6 @@ extends Control
 @onready var waveManager = $GameLayer/WaveManager
 @onready var plantManager = $PlantManager
 
-var waiting_for_wave_2: bool = true
-
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS

@@ -3,7 +3,6 @@ extends Control
 # Implements forced tutorial system with state machine and input filtering
 
 enum TutorialState {
-	INIT,
 	FORCE_SELECT_SPYDER,
 	FORCE_PLACE_PLANT,
 	EXPLAIN_BLOOD_COST,
@@ -12,8 +11,7 @@ enum TutorialState {
 	EXPLAIN_SEVERED_ZOMBIE,
 	FORCE_PRESS_Y,
 	EXPLAIN_GREEN_DIMENSION,
-	WAVE_2_ACTIVE,
-	TUTORIAL_COMPLETE
+	WAVE_2_ACTIVE
 }
 
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_SPYDER
@@ -169,7 +167,6 @@ func _start_explain_blood_cost():
 func _start_wave_1_purple_only():
 	# Game unpauses when ToolTips button clicked
 	waveManager.canStartGame = true
-	show_all_plant_buttons()
 	wave_1_active = false
 	wave_1_complete = false
 
@@ -220,8 +217,6 @@ func _start_wave_2_both_dimensions():
 	# Enable dimension swapping
 	plantSelectionMenu.canSwapScenes = true
 	print("[PURPLE] Dimension swapping enabled")
-
-	tutorial_state = TutorialState.TUTORIAL_COMPLETE
 	print("========== PURPLE DIMENSION WAVE 2 ACTIVATION COMPLETED ==========")
 
 
@@ -249,12 +244,6 @@ func hide_all_plant_buttons_except_spyder():
 	# Keep Spyder visible
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true
-
-
-func show_all_plant_buttons():
-	# For Level0-1 tutorial, only show Spyder
-	# Other buttons remain hidden (this is a tutorial level)
-	pass
 
 
 func highlight_spyder_button():
@@ -399,7 +388,6 @@ func _start_force_place_plant():
 
 	# ADD THIS: Hide spotlight (grid too large for effective spotlight)
 	hide_spotlight()
-
 
 func _on_plant_manager_spyder_placed(grid_position: Vector2) -> void:
 	_on_spyder_placed()
