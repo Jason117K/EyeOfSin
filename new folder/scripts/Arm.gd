@@ -19,7 +19,6 @@ class_name Arm extends Node2D
 		base_node = value
 		if base_node:
 			_base_position = base_node.position
-			print("Base Pos is ",_base_position )
 		_apply_line_width()
 		_apply_width_curve()
 		_initialize_segments()
@@ -99,7 +98,6 @@ var _wave_time: float = 0.0
 func _ready() -> void:
 	if base_node:
 		_base_position = base_node.position
-		print("Base Pos is ",_base_position )
 	_initialize_segments()
 
 

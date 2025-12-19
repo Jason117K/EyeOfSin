@@ -5,24 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://new folder/scenes/arm_target.tscn" id="2_l20p6"]
 
 [node name="demo" type="Node2D"]
-position = Vector2(200, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(256, 256)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(4, 4)
 
-[node name="Arm" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_ba4lm")]
-target = NodePath("../ArmTarget")
-
-[node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(0, 5, -3.44398, 1.1156, -6.25212, -3.02501, -8.52122, -7.37473, -10.2786, -11.8776, -11.5007, -16.5199, -12.3609, -21.2457, -13.4199, -25.948, -14.9418, -30.5285, -16.9593, -34.9111, -19.4369, -39.0615, -22.3866, -42.9412, -25.6486, -46.6292, -28.7568, -50.4511, -31.4584, -54.5255, -33.6753, -58.8216, -35.4066, -63.2896, -36.6159, -67.9113, -37.4708, -72.6255, -38.5284, -77.3205, -40.0477, -81.8932, -42.0567, -86.2618, -44.5121, -90.3862, -47.4213, -94.224, -50.6506, -97.8362)
-
-[node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-position = Vector2(456, 256)
-points = PackedVector2Array(-200, 0, -203.444, -4.5094, -206.252, -9.27501, -208.521, -14.2497, -210.279, -19.3776, -211.501, -24.6449, -212.361, -29.9957, -213.42, -35.323, -214.942, -40.5285, -216.959, -45.5361, -219.437, -50.3115, -222.387, -54.8162, -225.649, -59.1292, -228.757, -63.5761, -231.458, -68.2755, -233.675, -73.1966, -235.407, -78.2896, -236.616, -83.5363, -237.471, -88.8755, -238.528, -94.1955, -240.048, -99.3932, -242.057, -104.387, -244.512, -109.136, -247.421, -113.599, -250.651, -117.836)
+[node name="Arm" parent="." instance=ExtResource("2_ba4lm")]
 
 [node name="ArmTarget" parent="." instance=ExtResource("2_l20p6")]
-position = Vector2(-30, 55)
+position = Vector2(365, 160)
 
 [node name="DebugDraw" type="Node2D" parent="." node_paths=PackedStringArray("arm")]
 process_mode = 3
@@ -39,5 +30,3 @@ wave_width = 0.5
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 10.56, 0, 23.775, 0)
 default_color = Color(0.808737, 0, 0.214771, 1)
-
-[editable path="Arm"]
