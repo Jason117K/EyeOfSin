@@ -4,7 +4,8 @@ enum TutorialState {
 	FORCE_SELECT_MAW,
 	FORCE_PLACE_MAW,
 	EXPLAIN_CODEX,
-	EXPLAIN_CHIMERA_ZOMBIE
+	EXPLAIN_CHIMERA_ZOMBIE,
+	TUTORIAL_DONE
 }
 
 
@@ -19,10 +20,12 @@ enum TutorialState {
 var level04 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level04Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_MAW
+var chimeraExplained := false 
 var green_dimension
 
 
-const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSunflower.txt"
+const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
+const TUTORIAL_PLACE_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
 
 
 func _ready():
@@ -36,6 +39,7 @@ func _ready():
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
+	plantManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
 	
 	# Connect to button presses
 	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
@@ -45,6 +49,25 @@ func _ready():
 	
 	
 	levelSwitcher.update_level(level04,level04Alt)
+
+
+# Input filtering system - intercepts input based on tutorial state
+func _input(event):
+	match tutorial_state:
+		TutorialState.FORCE_SELECT_MAW:
+			_handle_force_select_maw_input(event)
+		TutorialState.FORCE_PLACE_MAW:
+			_start_force_place_maw()
+		TutorialState.EXPLAIN_CHIMERA_ZOMBIE:
+			if chimeraExplained:
+				pass
+			else:
+				_start_explain_chimera_zombie()
+			#_start_explain_chimera()
+		TutorialState.EXPLAIN_CODEX:
+			pass
+			#_start_explain_codex()
+
 
 
 # State transition system
@@ -58,10 +81,43 @@ func _transition_to_state(new_state: TutorialState):
 		TutorialState.FORCE_PLACE_MAW:
 			_start_force_place_maw()
 		TutorialState.EXPLAIN_CHIMERA_ZOMBIE:
-			_start_explain_chimera()
+			pass
+			#_start_explain_chimera()
 		TutorialState.EXPLAIN_CODEX:
-			_start_explain_codex()
+			pass
+			#_start_explain_codex()
 
+func _on_tooltip_hidden():
+	hide_spotlight()
+	print("########## TOOLTIP HIDDEN ##########")
+	print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
+	print("[Tutorial] Current time: ", Time.get_ticks_msec())
+	match tutorial_state:
+		TutorialState.FORCE_SELECT_MAW:
+			pass
+		TutorialState.FORCE_PLACE_MAW:
+			get_tree().paused = false
+		TutorialState.EXPLAIN_CHIMERA_ZOMBIE:
+			pass
+			#_start_explain_chimera()
+		TutorialState.EXPLAIN_CODEX:
+			pass
+			#_start_explain_codex()	
+	
+	
+	
+func _handle_force_select_maw_input(event):
+	# Only allow clicking Maw button, block all keyboard input
+	if event is InputEventKey:
+		get_viewport().set_input_as_handled()
+	# Mouse input: Maw button gets clicks via visibility, others hidden	
+	
+func _handle_force_place_maw_input(event):
+	# Allow mouse clicks for placement, block X key (deselect)
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_X:
+			get_viewport().set_input_as_handled()
+			
 func _start_force_select_maw():
 	toolTips.set_text(TUTORIAL_SELECT_MAW)
 	toolTips.noButtonShow()
@@ -70,9 +126,130 @@ func _start_force_select_maw():
 	highlight_maw_button()
 
 	# ADD THIS: Show spotlight on Maw button
-	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
+	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
 	show_spotlight_at_node(maw_button)
 
 	waveManager.canStartGame = false
 	plantSelectionMenu.canSwapScenes = false
 	
+func _start_force_place_maw():
+	print("[Tutorial] Starting FORCE_PLACE_MAW")
+	toolTips.set_text(TUTORIAL_PLACE_MAW)
+	toolTips.noButtonShow()
+
+	# Remove walnut highlight
+	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
+	plantSelectionMenu.remove_button_highlight(maw_button)
+
+	# Hide spotlight (grid too large)
+	hide_spotlight()
+
+func _on_maw_button_pressed():
+	print("[Tutorial] Maw button pressed in state: ", TutorialState.keys()[tutorial_state])
+	if tutorial_state == TutorialState.FORCE_SELECT_MAW:
+		_transition_to_state(TutorialState.FORCE_PLACE_MAW)
+
+
+func _on_maw_placed(grid_pos: Vector2):
+	print("[Tutorial] Maw placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
+
+	if tutorial_state == TutorialState.FORCE_PLACE_MAW:
+		print("[Tutorial] Maw placement complete - tutorial initial part finished")
+		toolTips.hide()
+		_transition_to_state(TutorialState.TUTORIAL_DONE)
+		plantSelectionMenu.canSwapScenes = true
+		# Tutorial complete - no further forced actions
+		
+func highlight_maw_button():
+	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
+	plantSelectionMenu.add_button_highlight(maw_button)	
+	
+	
+func hide_all_plant_buttons_except_maw():
+	# Hide all buttons except Spyder
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = false
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
+	
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = false
+	
+	
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel").visible = false
+
+	# Keep Maw visible
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = true
+
+
+
+func show_all_plant_buttons():
+	# Show Sunflower
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = true
+
+	# Show Spyder
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true	
+
+	#Show Walnut
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false	
+	
+	
+# Spotlight helper functions 
+
+func _start_explain_chimera_zombie():
+	pass
+	
+## Shows spotlight centered on a Control node
+func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
+	if not target_node or not spotlight_overlay:
+		print("NOT SHOWING SPOTLIGHT")
+		return
+	print("Showing Spotlight", target_node, size_multiplier)
+
+	# Get center of target in screen coordinates
+	var global_rect = target_node.get_global_rect()
+	var center = global_rect.get_center()
+
+	# Calculate appropriate spotlight size based on button size
+	var viewport_size = get_viewport().get_visible_rect().size
+	var button_diagonal = global_rect.size.length()
+	var uv_size = (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
+
+	show_spotlight_at_position(center, uv_size)
+
+## Shows spotlight at specific screen position
+func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
+	if not spotlight_overlay:
+		return
+	var viewport_size = get_viewport().get_visible_rect().size
+	var uv_pos = screen_pos / viewport_size
+	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
+	#var viewport_size = get_viewport().get_visible_rect().size
+	#var uv_pos = screen_pos / viewport_size
+
+	var spotlight_rect = spotlight_overlay.get_node("SpotlightRect")
+	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
+	spotlight_rect.material.set_shader_parameter("circle_size", size)
+	spotlight_overlay.visible = true
+
+## Hides spotlight overlay
+func hide_spotlight():
+	if spotlight_overlay:
+		spotlight_overlay.visible = false
+
+
+func place_empty_blocker_plant(grid_pos):
+	plantManager.place_empty_blocker_plant(grid_pos)

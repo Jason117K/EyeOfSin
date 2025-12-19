@@ -197,7 +197,10 @@ func _input(event):
 		if event.keycode == KEY_Y:
 			print("Y Key Pressed")
 			if canSwapScenes:
+				print("Can Swap Scenes is ", canSwapScenes)
 				Global.game_controller.swap_scenes()
+			else:
+				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
 		
 func deselect_plant():
 	clear_preview()
