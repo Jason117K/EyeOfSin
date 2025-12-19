@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=3 uid="uid://d3n5cefu4fpso"]
+[gd_scene load_steps=214 format=3 uid="uid://d3n5cefu4fpso"]
 
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="2"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://Assets/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="9_drv5f"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="10"]
+[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://new folder/scenes/arm.tscn" id="19_elvfo"]
+[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://new folder/scenes/arm_target.tscn" id="20_6aeqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
 shader = ExtResource("2_fxtok")
@@ -1478,15 +1480,15 @@ buffedDigestTime = 11.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_1eo28")
+position = Vector2(256, 256)
 sprite_frames = SubResource("7")
 animation = &"idle"
 autoplay = "spawn"
-frame = 2
-frame_progress = 1.0
 script = ExtResource("5_fxtok")
 
 [node name="DetectionComponent" type="Area2D" parent="."]
-collision_mask = 2
+position = Vector2(256, 256)
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
 shape = SubResource("8")
@@ -1576,6 +1578,7 @@ sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("8")]
+position = Vector2(256, 256)
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "Hive", "", "None", "None"]
 
 [node name="TileArea1" parent="BuffNodesComponent" index="0"]
@@ -1664,6 +1667,12 @@ visible = false
 position = Vector2(16, 1)
 sprite_frames = SubResource("127")
 animation = &"New Anim"
+
+[node name="Arm" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
+target = NodePath("../ArmTarget")
+
+[node name="ArmTarget" parent="." instance=ExtResource("20_6aeqa")]
+position = Vector2(264, 396)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]

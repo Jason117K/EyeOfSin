@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://j3gcywxflkf1"]
+
+[ext_resource type="Script" uid="uid://cnvqr2tm46rpq" path="res://new folder/scripts/Arm.gd" id="1_k0nq1"]
+[ext_resource type="Shader" uid="uid://bm6i26uu8obx0" path="res://new folder/shaders/canvas_group_shadow.gdshader" id="2_mg0tv"]
+[ext_resource type="Shader" uid="uid://dvcmoaj2bkbf3" path="res://new folder/shaders/outline.gdshader" id="3_o1qxq"]
+[ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://new folder/shaders/canvas_group_two_tone.gdshader" id="4_gowua"]
+
+[sub_resource type="Curve" id="Curve_pi6jo"]
+_data = [Vector2(0, 0.987436), 0.0, 0.0, 0, 0, Vector2(1, 0.184906), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pi6jo"]
+shader = ExtResource("3_o1qxq")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/alpha_threshold = 0.8
+shader_parameter/outline_samples = 4
+shader_parameter/shade_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pek0"]
+shader = ExtResource("2_mg0tv")
+shader_parameter/shadow_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_arm"]
+shader = ExtResource("4_gowua")
+shader_parameter/light_color = Color(1, 0.08, 0.0953331, 1)
+shader_parameter/dark_color = Color(0.35, 0, 0.00583324, 1)
+shader_parameter/shade_ratio = 0.53
+
+[node name="Arm" type="Node2D" node_paths=PackedStringArray("base_node", "shadow_node")]
+position = Vector2(-260, -253)
+script = ExtResource("1_k0nq1")
+base_node = NodePath("OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup/BaseLine")
+shadow_node = NodePath("OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup/ShadowLine")
+width_curve = SubResource("Curve_pi6jo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(258, 255)
+zoom = Vector2(5, 5)
+editor_draw_screen = false
+
+[node name="OutlinedSubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_pi6jo")
+offset_right = 512.0
+offset_bottom = 512.0
+
+[node name="SubViewport" type="SubViewport" parent="OutlinedSubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ShadowCanvasGroup" type="CanvasGroup" parent="OutlinedSubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_5pek0")
+
+[node name="ShadowLine" type="Line2D" parent="OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
+position = Vector2(256, 256)
+points = PackedVector2Array(0, 5, -4.67076, 2.65018, -8.02228, -1.09792, -11.4225, -4.81035, -15.1546, -8.20117, -19.2285, -11.1767, -23.5999, -13.7269, -28.2649, -15.8174, -33.108, -17.6139, -37.8599, -19.6127, -42.3544, -22.0168, -46.5138, -24.8284, -50.319, -28.0035, -53.7276, -31.5459, -56.8806, -35.3138, -60.2223, -38.9616, -63.9242, -42.2929, -67.9757, -45.2301, -72.3305, -47.7608, -76.9871, -49.8435, -81.8308, -51.6423, -86.5932, -53.6558, -91.1041, -56.0874, -95.2725, -58.9303, -99.0592, -62.1163)
+width = 24.0
+width_curve = SubResource("Curve_pi6jo")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TwoToneCanvasGroup" type="CanvasGroup" parent="OutlinedSubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_arm")
+
+[node name="BaseLine" type="Line2D" parent="OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
+position = Vector2(256, 256)
+points = PackedVector2Array(0, 0, -4.67076, -2.97482, -8.02228, -7.34792, -11.4225, -11.6853, -15.1546, -15.7012, -19.2285, -19.3017, -23.5999, -22.4769, -28.2649, -25.1924, -33.108, -27.6139, -37.8599, -30.2377, -42.3544, -33.2668, -46.5138, -36.7034, -50.319, -40.5035, -53.7276, -44.6709, -56.8806, -49.0638, -60.2223, -53.3366, -63.9242, -57.2929, -67.9757, -60.8551, -72.3305, -64.0108, -76.9871, -66.7185, -81.8308, -69.1423, -86.5932, -71.7808, -91.1041, -74.8374, -95.2725, -78.3053, -99.0592, -82.1163)
+width = 24.0
+width_curve = SubResource("Curve_pi6jo")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

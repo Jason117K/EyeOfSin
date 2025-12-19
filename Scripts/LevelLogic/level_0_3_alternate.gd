@@ -3,7 +3,7 @@ extends Control
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $PlantSelectionMenu
+@onready var plantSelectionMenu = $"../PlantSelectionMenu"
 @onready var waveManager = $GameLayer/WaveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
@@ -11,3 +11,22 @@ extends Control
 
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)
+
+
+func start_game():
+	show_all_plant_buttons()
+	waveManager.canStartGame = true
+
+
+func show_all_plant_buttons():
+	# Show Sunflower
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = true
+
+	# Show Spyder
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true	
+
+	#Show Walnut
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true	

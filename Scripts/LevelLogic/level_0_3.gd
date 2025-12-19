@@ -4,10 +4,9 @@ enum TutorialState {
 	FORCE_SELECT_MAW,
 	FORCE_PLACE_MAW,
 	EXPLAIN_CODEX,
-	EXPLAIN_CHIMERA_ZOMBIE,
-	TUTORIAL_DONE
+	EXPLAIN_FLESHEATER_ZOMBIE,
+	TUTORIAL_P1_DONE
 }
-
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
@@ -15,17 +14,18 @@ enum TutorialState {
 @onready var waveManager = $GameLayer/WaveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
-
+@onready var green_dimension = $CurrentScene/Level03Alternate
 
 var level04 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level04Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_MAW
-var chimeraExplained := false 
-var green_dimension
-
+var fleshEaterExplained := false 
+var wave2Started := false 
+var fleshEater_zombie_demo_scene = preload("res://Scenes/Tutorials/fleshEater_zombie_demo.tscn")
 
 const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
 const TUTORIAL_PLACE_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
+const TUTORIAL_EXPLAIN_FLESHEATER = "res://Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 
 
 func _ready():
@@ -33,7 +33,7 @@ func _ready():
 	toolTips.set_text(TUTORIAL_SELECT_MAW)
 	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
-	green_dimension = get_parent().get_node("Level0-3_Alternate")
+	
 	
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
@@ -49,8 +49,16 @@ func _ready():
 	
 	
 	levelSwitcher.update_level(level04,level04Alt)
+	
 
-
+func start_game():
+	show_all_plant_buttons()
+	plantSelectionMenu.canSwapScenes = true
+	green_dimension = get_parent().get_node("Level03Alternate")
+	print("Green D is ", green_dimension)
+	green_dimension.start_game()
+	waveManager.canStartGame = true
+	
 # Input filtering system - intercepts input based on tutorial state
 func _input(event):
 	match tutorial_state:
@@ -58,11 +66,11 @@ func _input(event):
 			_handle_force_select_maw_input(event)
 		TutorialState.FORCE_PLACE_MAW:
 			_start_force_place_maw()
-		TutorialState.EXPLAIN_CHIMERA_ZOMBIE:
-			if chimeraExplained:
+		TutorialState.EXPLAIN_FLESHEATER_ZOMBIE:
+			if fleshEaterExplained:
 				pass
 			else:
-				_start_explain_chimera_zombie()
+				_start_explain_fleshEater_zombie()
 			#_start_explain_chimera()
 		TutorialState.EXPLAIN_CODEX:
 			pass
@@ -80,7 +88,7 @@ func _transition_to_state(new_state: TutorialState):
 			_start_force_select_maw()
 		TutorialState.FORCE_PLACE_MAW:
 			_start_force_place_maw()
-		TutorialState.EXPLAIN_CHIMERA_ZOMBIE:
+		TutorialState.EXPLAIN_FLESHEATER_ZOMBIE:
 			pass
 			#_start_explain_chimera()
 		TutorialState.EXPLAIN_CODEX:
@@ -97,15 +105,20 @@ func _on_tooltip_hidden():
 			pass
 		TutorialState.FORCE_PLACE_MAW:
 			get_tree().paused = false
-		TutorialState.EXPLAIN_CHIMERA_ZOMBIE:
-			pass
-			#_start_explain_chimera()
+		TutorialState.EXPLAIN_FLESHEATER_ZOMBIE:
+			print("[Tutorial] FleshEater explained - waiting for Wave 2")
+			get_tree().paused = false  # Unpause game
+
 		TutorialState.EXPLAIN_CODEX:
 			pass
 			#_start_explain_codex()	
 	
 	
+func _on_wave_2_started():
+	print("[Tutorial] Wave 2 started")
+	_transition_to_state(TutorialState.EXPLAIN_FLESHEATER_ZOMBIE)
 	
+		
 func _handle_force_select_maw_input(event):
 	# Only allow clicking Maw button, block all keyboard input
 	if event is InputEventKey:
@@ -156,8 +169,8 @@ func _on_maw_placed(grid_pos: Vector2):
 	if tutorial_state == TutorialState.FORCE_PLACE_MAW:
 		print("[Tutorial] Maw placement complete - tutorial initial part finished")
 		toolTips.hide()
-		_transition_to_state(TutorialState.TUTORIAL_DONE)
-		plantSelectionMenu.canSwapScenes = true
+		_transition_to_state(TutorialState.TUTORIAL_P1_DONE)
+		start_game()
 		# Tutorial complete - no further forced actions
 		
 func highlight_maw_button():
@@ -192,7 +205,6 @@ func hide_all_plant_buttons_except_maw():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = true
 
 
-
 func show_all_plant_buttons():
 	# Show Sunflower
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
@@ -203,15 +215,18 @@ func show_all_plant_buttons():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true	
 
 	#Show Walnut
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false	
-	
-	
-# Spotlight helper functions 
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true	
 
-func _start_explain_chimera_zombie():
-	pass
-	
+
+# Spotlight helper functions 
+func _start_explain_fleshEater_zombie():
+	fleshEaterExplained = true 
+	print("[TUTORIAL] Start Explain FleshEater Zombie")
+	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_FLESHEATER)
+	toolTips.setComplexScene(fleshEater_zombie_demo_scene)
+	toolTips.showButton()	
+
 ## Shows spotlight centered on a Control node
 func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
 	if not target_node or not spotlight_overlay:

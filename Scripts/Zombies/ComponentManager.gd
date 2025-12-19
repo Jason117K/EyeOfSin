@@ -70,7 +70,7 @@ func getHealthComponent():
 
 # Handles the zombie taking damage 
 func take_damage(damage):
-	#print(zombie.name, " jjust took, ", damage)
+	print(zombie.name, " jjust took, ", damage)
 	healthComp.take_damage(damage)
 	
 	# Adds a visual effect for damage 

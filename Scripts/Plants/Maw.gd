@@ -168,8 +168,9 @@ func _on_tentacle_retraction_complete(tentacle):
 	#Get a reference to the eaten enemy 
 	if tentacle in attacking_tentacles:
 		var enemy = attacking_tentacles[tentacle]
-		
+		print("Enemy Is ", enemy)
 		if is_instance_valid(enemy):
+			enemy.visible = false
 			print(self.name, "QQ MAW JUST ATE ",enemy.name)
 			var enemyCompManager = enemy.getCompManager()
 			var slow = enemyCompManager.getSlow()

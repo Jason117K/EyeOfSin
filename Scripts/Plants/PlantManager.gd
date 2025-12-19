@@ -310,6 +310,7 @@ func place_plant(grid_pos: Vector2):
 		#Maw Handling, occupies two cells
 		if "Maw" in plant_instance.name:
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
+			plant_instance.position = Vector2(plant_instance.position.x-256,plant_instance.position.y-256)
 			grid_map[grid_pos] = plant_instance
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
 			
