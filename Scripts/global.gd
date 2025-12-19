@@ -25,7 +25,7 @@ func resetSunflowerCount():
 func incrementSunflowerCount():
 	sunflowerCount += 1
 	plant_selection_menu.increaseSunflowerCost()
-	plant_selection_menu_alt.increaseSunflowerCost()
+	#plant_selection_menu_alt.increaseSunflowerCost()
 	
 func incrementSunflowerCountVisual():
 	sunflowerCountVisual += 1

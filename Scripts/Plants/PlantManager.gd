@@ -2,7 +2,7 @@ extends Node2D
 #PlantManager.gd
 
 # Get a reference to the plant selection menu 
-@onready var selection_menu = get_parent().get_node("PlantSelectionMenu")
+@onready var selection_menu = get_parent().get_parent().get_node("PlantSelectionMenu")
 
 var selected_plant_scene = null  # Holds the selected plant scene
 var grid_size = 32 # Defines the size of each grid cell 
@@ -36,7 +36,7 @@ func get_selected_plant():
 		print("Returning HighLight Sunflower.R")
 		return sunflower_scene
 	else:
-		return get_parent().get_node("PlantSelectionMenu").selected_plant
+		return get_parent().get_parent().get_node("PlantSelectionMenu").selected_plant
 
 
 # Handles Player Interaction with the Plant Menu 

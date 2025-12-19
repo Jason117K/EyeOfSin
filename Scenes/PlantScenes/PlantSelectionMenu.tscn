@@ -62,6 +62,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
 [node name="PlantSelectionMenu" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -32,7 +32,7 @@ var tutorial_sun_instance: Node2D = null
 #@onready var toolTips = $ToolTips
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $PlantSelectionMenu
+@onready var plantSelectionMenu = $"../PlantSelectionMenu" #$PlantSelectionMenu
 @onready var waveManager = $GameLayer/WaveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 
