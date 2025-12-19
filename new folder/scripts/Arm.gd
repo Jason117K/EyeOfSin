@@ -17,8 +17,8 @@ class_name Arm extends Node2D
 @export var base_node: Line2D:
 	set(value):
 		base_node = value
-		if base_node:
-			_base_position = base_node.position
+		# Base position is always (0, 0) in Arm's local space
+		# Remove the incorrect _base_position assignment
 		_apply_line_width()
 		_apply_width_curve()
 		_initialize_segments()
@@ -96,15 +96,21 @@ var _wave_time: float = 0.0
 ## Runs on scene load and sets up segments.
 ## Separate from _initialize_segments() so setters can rebuild segments during editing.
 func _ready() -> void:
-	if base_node:
-		_base_position = base_node.position
+	# Work in Arm's local space - base is always at origin
+	_base_position = Vector2.ZERO
 	_initialize_segments()
 
 
 ## Runs each physics frame applying IK, constraints, wave motion, then constraints again.
 func _physics_process(delta: float) -> void:
-	var target_pos: Vector2 = target.global_position if target else get_global_mouse_position()
-	solve_ik(target_pos)
+	# Get target in parent scene global space
+	var target_global: Vector2 = target.global_position if target else get_global_mouse_position()
+
+	# Convert to Arm's local coordinate space
+	var target_local: Vector2 = to_local(target_global)
+
+	# Solve IK in Arm's local space
+	solve_ik(target_local)
 
 	apply_constraints()
 	apply_wave_motion(delta)
@@ -206,16 +212,23 @@ func apply_wave_motion(delta: float) -> void:
 ## Shadow offset interpolates from small (base) to large (tip) for depth trick.
 func update_line2d() -> void:
 	base_node.clear_points()
+
+	# BaseLine is centered at this position in SubViewport
+	var subviewport_offset: Vector2 = base_node.position  # Dynamic, typically (256, 256)
+
 	for pos in _segments:
-		base_node.add_point(base_node.to_local(pos))
+		# pos is in Arm's local space
+		# Add SubViewport offset to center the arm in the rendering viewport
+		var point: Vector2 = pos + subviewport_offset
+		base_node.add_point(point)
 
 	if shadow_node:
 		shadow_node.clear_points()
 		for i in range(_segments.size()):
 			var t: float = float(i) / float(_segments.size() - 1)
 			var shadow_offset: Vector2 = min_shadow_offset.lerp(max_shadow_offset, t)
-			var offset_pos: Vector2 = _segments[i] + shadow_offset
-			shadow_node.add_point(shadow_node.to_local(offset_pos))
+			var offset_pos: Vector2 = _segments[i] + shadow_offset + subviewport_offset
+			shadow_node.add_point(offset_pos)
 
 
 ## Rebuilds segment arrays when num__segments or max_length change.
