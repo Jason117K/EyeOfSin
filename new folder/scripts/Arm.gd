@@ -17,8 +17,8 @@ class_name Arm extends Node2D
 @export var base_node: Line2D:
 	set(value):
 		base_node = value
-		if base_node and is_inside_tree():
-			_base_position = base_node.global_position
+		if is_inside_tree():
+			_base_position = global_position
 		_apply_line_width()
 		_apply_width_curve()
 		_initialize_segments()
@@ -96,16 +96,14 @@ var _wave_time: float = 0.0
 ## Runs on scene load and sets up segments.
 ## Separate from _initialize_segments() so setters can rebuild segments during editing.
 func _ready() -> void:
-	if base_node:
-		_base_position = base_node.global_position
+	_base_position = global_position
 	_initialize_segments()
 
 
 ## Runs each physics frame applying IK, constraints, wave motion, then constraints again.
 func _physics_process(delta: float) -> void:
-	# Update base position to global coordinates (fixes position bug when Arm node is not at origin)
-	if base_node:
-		_base_position = base_node.global_position
+	# Update base position to follow the Arm node's position
+	_base_position = global_position
 
 	var target_pos: Vector2 = target.global_position if target else get_global_mouse_position()
 	solve_ik(target_pos)
@@ -231,7 +229,9 @@ func _initialize_segments() -> void:
 
 	# Update base position for initialization
 	if is_inside_tree():
-		_base_position = base_node.global_position
+		_base_position = global_position
+	else:
+		_base_position = Vector2.ZERO
 
 	# Clear and rebuild arrays
 	_segments.clear()
