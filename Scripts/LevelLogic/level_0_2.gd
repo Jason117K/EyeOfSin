@@ -34,6 +34,11 @@ var tutorial_sun_instance: Node2D = null
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $PlantSelectionMenu
 @onready var waveManager = $GameLayer/WaveManager
+@onready var levelSwitcher = 	$"../LevelSwitcher"
+
+var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
+var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+
 var green_dimension
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
@@ -91,6 +96,8 @@ func _ready():
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_SUNFLOWER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
+	
+	levelSwitcher.update_level(level03,level03Alt)
 
 
 # Input filtering system - intercepts input based on tutorial state
@@ -467,6 +474,8 @@ func _on_walnut_placed(grid_pos: Vector2):
 
 	if tutorial_state == TutorialState.FORCE_PLACE_WALNUT:
 		print("[Tutorial] Walnut placement complete - tutorial finished")
+		toolTips.hide()
+		show_all_plant_buttons()
 		# Tutorial complete - no further forced actions
 
 func _on_sunflower_placed(grid_pos: Vector2):

@@ -1,14 +1,15 @@
-[gd_scene load_steps=59 format=4 uid="uid://be6sbtmqr5d2f"]
+[gd_scene load_steps=61 format=4 uid="uid://be6sbtmqr5d2f"]
 
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://Assets/Environment/Tilesets/PurpleTileSet.png" id="3_g2vsk"]
 [ext_resource type="Texture2D" uid="uid://bg53m2qki4ukj" path="res://Assets/Environment/Tilesets/bgtilespbig-Sheet.png" id="4_ktpe1"]
+[ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="4_lkj57"]
 [ext_resource type="Texture2D" uid="uid://8g35103qrcq8" path="res://Assets/Environment/Tilesets/PurpleSwampTileset.png" id="5_6vajl"]
 [ext_resource type="Script" uid="uid://dgmj62dxchyg6" path="res://Scripts/LevelLogic/GridManager.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://Assets/Environment/TX Tileset Grass.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="7_6vajl"]
 [ext_resource type="Texture2D" uid="uid://csemll4b6ejvm" path="res://Assets/Environment/GrassTile3.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://bd465xy3xrvpe" path="res://Assets/Environment/GrassTiles2.png" id="9"]
-[ext_resource type="Script" path="res://Scripts/Environment/tile_map_layer.gd" id="9_ce0dd"]
+[ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://Scripts/Environment/tile_map_layer.gd" id="9_ce0dd"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://Assets/Environment/WalkTile32x32.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://Assets/Environment/GrassTilesRED.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://dyyeeri7m6bqq" path="res://Assets/Environment/BGTiles.png" id="12"]
@@ -250,6 +251,42 @@ texture_region_size = Vector2i(32, 32)
 15:10/0 = 0
 16:10/0 = 0
 17:10/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkj4a"]
+texture = ExtResource("4_lkj57")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_separation = Vector2i(1, 0)
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/0 = 0
+0:1/animation_separation = Vector2i(1, 0)
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/animation_frame_4/duration = 1.0
+0:1/animation_frame_5/duration = 1.0
+0:1/0 = 0
+1:1/animation_separation = Vector2i(1, 0)
+1:1/animation_frame_0/duration = 1.0
+1:1/animation_frame_1/duration = 1.0
+1:1/animation_frame_2/duration = 1.0
+1:1/animation_frame_3/duration = 1.0
+1:1/animation_frame_4/duration = 1.0
+1:1/animation_frame_5/duration = 1.0
+1:1/0 = 0
+1:0/animation_separation = Vector2i(1, 0)
+1:0/animation_frame_0/duration = 1.0
+1:0/animation_frame_1/duration = 1.0
+1:0/animation_frame_2/duration = 1.0
+1:0/animation_frame_3/duration = 1.0
+1:0/animation_frame_4/duration = 1.0
+1:0/animation_frame_5/duration = 1.0
+1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lkj57"]
 texture = ExtResource("4_ktpe1")
@@ -1433,6 +1470,7 @@ sources/1 = SubResource("TileSetAtlasSource_ce0dd")
 sources/3 = SubResource("TileSetAtlasSource_lkj57")
 sources/4 = SubResource("TileSetAtlasSource_7l8j2")
 sources/5 = SubResource("TileSetAtlasSource_ym7ua")
+sources/2 = SubResource("TileSetAtlasSource_fkj4a")
 
 [node name="GridManager" type="Node2D"]
 script = ExtResource("6")

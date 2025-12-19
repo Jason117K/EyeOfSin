@@ -38,7 +38,7 @@ func _ready():
 	#
 	#$GridManager.set_tiles_for_rows(7,8, 66)
 	#$GridManager.set_tiles_for_rows(8,9, 69)
-	
+
 	startGameButton.get_theme_stylebox("normal").bg_color = Color.BLACK
 
 

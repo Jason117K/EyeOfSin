@@ -16,6 +16,12 @@ extends Control
 var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
 var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 
+var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
+var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+
+var upcomingLevel 
+var upcomingLevelAlt  
+
 func _ready() -> void:
 	self.visible = false 
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -28,7 +34,7 @@ func _on_Continue_pressed():
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	#assert(get_tree().change_scene_to_packed(nextLevel) == OK)
 	#Global.game_controller.change_scene(next_level)
-	Global.game_controller.change_dual_scenes(level02,level02Alt)
+	Global.game_controller.change_dual_scenes(next_level,next_level_alt)
 	self.visible = false 
 	Global.unlockLevel(level_unlocked)
 
@@ -53,6 +59,11 @@ func _on_return_to_menu_pressed() -> void:
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/StartScreen.tscn")
 	Global.unlockLevel(level_unlocked)
 
+func update_level(this_upcomingLevel,this_upcomingLevelAlt):
+	upcomingLevel = this_upcomingLevel
+	upcomingLevelAlt = this_upcomingLevelAlt
+	pass
+	
 func lose():
 	#outcome_label.text = ""
 	outcome_label.text = "YOU LOSE!"
