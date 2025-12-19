@@ -22,7 +22,7 @@ var wave_1_complete: bool = false
 #@onready var toolTips = $ToolTips
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $PlantSelectionMenu
+@onready var plantSelectionMenu = $"../PlantSelectionMenu" 
 @onready var waveManager = $GameLayer/WaveManager
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 

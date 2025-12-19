@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bbd0fjsv4uvsi"]
+[gd_scene load_steps=34 format=4 uid="uid://bbd0fjsv4uvsi"]
 
 [ext_resource type="Script" uid="uid://b3olngowkc40m" path="res://Scripts/LevelLogic/level_0_1_alternate.gd" id="1_83ut0"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_6jrws"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="18_y4elr"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_s48g2"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_qm12r"]
-[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="21_fdd0k"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_hcyne"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="24_as807"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="25_uavsr"]
@@ -92,7 +91,7 @@ mouse_filter = 2
 script = ExtResource("1_83ut0")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_6jrws")]
-sun_points = 80
+sun_points = 85
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -383,28 +382,6 @@ sprite_frames = SubResource("SpriteFrames_b1vmi")
 [node name="UILayer" parent="." instance=ExtResource("20_qm12r")]
 layout_mode = 1
 
-[node name="PlantSelectionMenu" parent="." instance=ExtResource("21_fdd0k")]
-offset_left = 8.0
-offset_top = 315.0
-offset_right = 8.0
-offset_bottom = 315.0
-scale = Vector2(0.8, 0.8)
-
-[node name="Sunflower" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="0"]
-visible = false
-
-[node name="Walnut" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="2"]
-visible = false
-
-[node name="Egg" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="4"]
-visible = false
-
-[node name="Hive" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="5"]
-visible = false
-
-[node name="Maw" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="6"]
-visible = false
-
 [node name="Node" type="Node2D" parent="."]
 visible = false
 z_index = -1
@@ -474,16 +451,12 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
-[connection signal="plant_placed" from="PlantManager" to="PlantSelectionMenu" method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="GameLayer/WaveManager" method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
-[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="PlantSelectionMenu" method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
-[connection signal="clicked_Eye" from="PlantSelectionMenu" to="." method="_on_plant_selection_menu_clicked_eye"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]
-[editable path="PlantSelectionMenu"]

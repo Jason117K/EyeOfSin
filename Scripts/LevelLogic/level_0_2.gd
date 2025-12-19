@@ -239,6 +239,7 @@ func _start_force_select_walnut():
 	# Spotlight on Walnut button
 	var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
 	show_spotlight_at_node(walnut_button)
+	plantManager.add_sun(50.0) 
 
 func _start_force_place_walnut():
 	print("[Tutorial] Starting FORCE_PLACE_WALNUT")

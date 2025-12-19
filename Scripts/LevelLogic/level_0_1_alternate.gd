@@ -4,8 +4,7 @@ extends Control
 
 @onready var waveManager = $GameLayer/WaveManager
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $PlantSelectionMenu
-
+@onready var plantSelectionMenu = $"../PlantSelectionMenu" 
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
