@@ -538,6 +538,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="CodexBG" parent="." instance=ExtResource("23_0wokh")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -566,6 +567,7 @@ position = Vector2(370, 208)
 [node name="GlowShaderPass" type="CanvasLayer" parent="."]
 
 [node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
+visible = false
 material = SubResource("ShaderMaterial_o4yey")
 offset_left = -49.0
 offset_top = -65.0

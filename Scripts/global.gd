@@ -19,6 +19,12 @@ var plant_selection_menu_alt
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()
 
+func hidePlantSelectionMenu():
+	plant_selection_menu.visible = false 
+	
+func unHidePlantSelectionMenu():
+	plant_selection_menu.visible = true 	
+	
 func resetSunflowerCount():
 	sunflowerCount = 0
 	

@@ -121,10 +121,12 @@ func hideComplexSceneButton():
 func _on_Button_pressed():
 	hide()
 	ToolTipHid.emit()
+	print("UNPPAUSE HERE1")
 	get_tree().paused = false
 
 
 func _on_button_2_pressed() -> void:
 	hide()
 	ToolTipHid.emit()
+	print("UNPPAUSE HERE2")
 	get_tree().paused = false

@@ -58,7 +58,7 @@ current_level_alt = "res://Scenes/LevelScenes/Level0-1_Alternate.tscn"
 
 [node name="PlantSelectionMenu" parent="CurrentScene" instance=ExtResource("6_k0qbb")]
 offset_left = 8.0
-offset_top = 315.0
+offset_top = 288.87
 offset_right = 8.0
-offset_bottom = 315.0
+offset_bottom = 288.87
 scale = Vector2(0.8, 0.8)

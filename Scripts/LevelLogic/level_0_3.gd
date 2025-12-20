@@ -26,6 +26,8 @@ var fleshEater_zombie_demo_scene = preload("res://Scenes/Tutorials/fleshEater_zo
 const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
 const TUTORIAL_PLACE_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
+const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.txt"
+
 
 
 func _ready():
@@ -93,7 +95,7 @@ func _transition_to_state(new_state: TutorialState):
 			#_start_explain_chimera()
 		TutorialState.EXPLAIN_CODEX:
 			pass
-			#_start_explain_codex()
+			_start_explain_codex()
 
 func _on_tooltip_hidden():
 	hide_spotlight()
@@ -104,9 +106,11 @@ func _on_tooltip_hidden():
 		TutorialState.FORCE_SELECT_MAW:
 			pass
 		TutorialState.FORCE_PLACE_MAW:
+			print("UNPPAUSE HERE")
 			get_tree().paused = false
 		TutorialState.EXPLAIN_FLESHEATER_ZOMBIE:
 			print("[Tutorial] FleshEater explained - waiting for Wave 2")
+			print("UNPPAUSE HERE")
 			get_tree().paused = false  # Unpause game
 
 		TutorialState.EXPLAIN_CODEX:
@@ -118,7 +122,13 @@ func _on_wave_2_started():
 	print("[Tutorial] Wave 2 started")
 	_transition_to_state(TutorialState.EXPLAIN_FLESHEATER_ZOMBIE)
 	
-		
+func _start_explain_codex():
+	toolTips.set_text(TUTORIAL_SELECT_CODEX)
+	toolTips.noButtonShow()
+	#Show spotlight on Codex button
+	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
+	show_spotlight_at_node(codex_buton)
+			
 func _handle_force_select_maw_input(event):
 	# Only allow clicking Maw button, block all keyboard input
 	if event is InputEventKey:

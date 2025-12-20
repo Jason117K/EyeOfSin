@@ -7,5 +7,6 @@ func _process(delta: float) -> void:
 		pauseMenu.visible = false 
 		
 func _on_pressed() -> void:
+	print("PP Pause Button Pressed")
 	get_tree().paused = true 
 	pauseMenu.visible = true 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://blpt4dqra2o6j"]
+[gd_scene load_steps=17 format=3 uid="uid://blpt4dqra2o6j"]
 
 [ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://Assets/Sprites/Sunflower.png" id="1_e0sdv"]
 [ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://Assets/Sprites/Spyder.png" id="2_v574q"]
@@ -11,25 +11,11 @@
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="9_v574q"]
 [ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://Assets/Animations/Hive.tres" id="10_fsv5x"]
 [ext_resource type="Texture2D" uid="uid://rmx5cu2rsvjh" path="res://Assets/Demons/Icons/EyeSunTowerIdle_SPYDER.png" id="11_hpj2u"]
-[ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://Scripts/ToolTips.gd" id="11_oco5c"]
 [ext_resource type="Texture2D" uid="uid://c6lvwjddlbxqw" path="res://Assets/Demons/Icons/EyeSunTowerIdle_WALNUT.png" id="12_ng81s"]
-[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="12_xbp22"]
 [ext_resource type="Texture2D" uid="uid://c20e4aa6kqxl2" path="res://Assets/Demons/Icons/EyeSunTowerIdle_MAW.png" id="13_dabg1"]
-[ext_resource type="Script" uid="uid://rhdxfmhgn4ur" path="res://Scripts/animated_texture_rect.gd" id="13_gt4id"]
-[ext_resource type="SpriteFrames" uid="uid://36ihcf5firig" path="res://Assets/Zombies/Animations/Spriteframes/eyeFrames.tres" id="14_2aiv6"]
 [ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://Assets/Demons/Icons/EyeSunTowerIdle_WYRM.png" id="14_n75mo"]
-[ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://Scenes/Tutorials/maw_spider_buff.tscn" id="15_8he61"]
 [ext_resource type="Texture2D" uid="uid://o0mp0qg5i8xw" path="res://Assets/Demons/Icons/EyeSunTowerIdle_HIVE.png" id="15_aukl0"]
-[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="16_hpj2u"]
 [ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://Assets/Demons/Icons/EyeSunTowerIdle_Base.png" id="22_ng81s"]
-
-[sub_resource type="StyleBoxFlat" id="2"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
 
 [node name="PlantLoreBook" type="Control"]
 process_mode = 3
@@ -310,14 +296,8 @@ text = "BACK"
 layout_mode = 2
 theme_override_constants/margin_right = 280
 
-[node name="MoreInfoButton" type="Button" parent="HBoxContainer/AllPlantRows/HBoxContainer"]
-custom_minimum_size = Vector2(300, 25)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("9_v574q")
-theme_override_font_sizes/font_size = 48
-text = "MORE INFO"
-
 [node name="BackOutDetails" type="Button" parent="."]
+visible = false
 z_index = 2
 layout_mode = 0
 offset_left = 436.0
@@ -338,102 +318,8 @@ offset_bottom = 618.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.717647)
 
-[node name="ToolTips" type="PanelContainer" parent="."]
-process_mode = 3
-visible = false
-layout_mode = 0
-offset_left = 353.0
-offset_top = 110.0
-offset_right = 657.0
-offset_bottom = 414.0
-theme_override_styles/panel = SubResource("2")
-script = ExtResource("11_oco5c")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ToolTips"]
-visible = false
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="ToolTips/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="ToolTips/VBoxContainer/CenterContainer"]
-self_modulate = Color(0.847059, 0, 0, 1)
-custom_minimum_size = Vector2(105, 105)
-layout_mode = 2
-texture = ExtResource("12_xbp22")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="ToolTips/VBoxContainer/CenterContainer"]
-self_modulate = Color(0.33, 0.33, 0.33, 1)
-z_index = 1
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("12_xbp22")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="ToolTips/VBoxContainer/CenterContainer"]
-z_index = 2
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-stretch_mode = 4
-script = ExtResource("13_gt4id")
-sprites = ExtResource("14_2aiv6")
-auto_play = true
-playing = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ToolTips/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("9_v574q")
-text = "Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum."
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="ToolTips/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("9_v574q")
-text = "UNDERSTOOD"
-
-[node name="SynergyVBox" type="VBoxContainer" parent="ToolTips"]
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="ToolTips/SynergyVBox"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ToolTips/SynergyVBox/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="MawSpiderBuff" parent="ToolTips/SynergyVBox/CenterContainer/VBoxContainer" instance=ExtResource("15_8he61")]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-
-[node name="SynergyLabel" type="Label" parent="ToolTips/SynergyVBox/CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("9_v574q")
-theme_override_font_sizes/font_size = 16
-text = "Spyders can give MAWS a buff that causes them to release an AOE explosion of slowing webs on death."
-autowrap_mode = 3
-
-[node name="Button2" type="Button" parent="ToolTips/SynergyVBox"]
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("16_hpj2u")
-text = "NEXT
-"
-
 [node name="StaticPreview" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 483.0
 offset_top = 35.0
@@ -456,7 +342,4 @@ expand_mode = 1
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow2/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow2/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllPlantRows/HBoxContainer/BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton" to="VBoxContainer/TextureRect" method="_on_more_info_button_pressed"]
 [connection signal="pressed" from="BackOutDetails" to="VBoxContainer/TextureRect" method="_on_back_out_details_pressed"]
-[connection signal="pressed" from="ToolTips/VBoxContainer/Button" to="ToolTips" method="_on_Button_pressed"]
-[connection signal="pressed" from="ToolTips/SynergyVBox/Button2" to="VBoxContainer/TextureRect" method="_on_button_2_pressed"]

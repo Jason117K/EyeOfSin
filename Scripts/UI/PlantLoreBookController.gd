@@ -13,7 +13,7 @@ extends AnimatedTextureRect
 @onready var bgDarken = $"../../BGDarkEn"
 @onready var synergyPanel = $"../../ToolTips"
 @onready var backOutDetailsButton = $"../../BackOutDetails"
-@onready var moreInfoButton =$"../../HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton"
+#@onready var moreInfoButton =$"../../HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton"
 @onready var staticPreview := $"../../StaticPreview"
 
 @onready var alt1 = $"../../HBoxContainer/AllPlantRows/AltRow/Alt1"
@@ -119,6 +119,7 @@ enum PLANT {
 var current_plant = PLANT.SUNFLOWER
 
 func _ready() -> void:
+	pass
 	$"../../Camera2D".make_current()
 	print("Plant AnimatedTextureRect: _ready() called")
 	
@@ -210,7 +211,6 @@ func set_demon_variations(newDemon : GlobalResourceLoader.PlantType):
 func _on_sunflower_pressed() -> void:
 	visible = true
 	staticPreview.visible = false 
-	moreInfoButton.visible = true
 	current_plant = PLANT.SUNFLOWER
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.SUNFLOWER)
@@ -221,7 +221,6 @@ func _on_sunflower_pressed() -> void:
 func _on_peashooter_pressed() -> void:
 	visible = true
 	staticPreview.visible = false 
-	moreInfoButton.visible = true
 	current_plant = PLANT.SPYDER
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.PEASHOOTER)
@@ -233,7 +232,6 @@ func _on_peashooter_pressed() -> void:
 func _on_walnut_pressed() -> void:
 	visible = true
 	staticPreview.visible = false 
-	moreInfoButton.visible = true
 	current_plant = PLANT.OCCULAR_SPINE
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.WALNUT)
@@ -245,7 +243,6 @@ func _on_walnut_pressed() -> void:
 func _on_eye_bomb_pressed() -> void:
 	visible = true
 	staticPreview.visible = false 
-	moreInfoButton.visible = false
 	current_plant = PLANT.EYE_BOMB
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.BOMBPLANT)
@@ -256,7 +253,6 @@ func _on_eye_bomb_pressed() -> void:
 func _on_egg_wrym_pressed() -> void:
 	visible = true
 	staticPreview.visible = false 
-	moreInfoButton.visible = true
 	current_plant = PLANT.EGG_WYRM
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.EGGWYRM)
@@ -267,7 +263,6 @@ func _on_egg_wrym_pressed() -> void:
 func _on_hive_pressed() -> void:
 	visible = true
 	staticPreview.visible = false 
-	moreInfoButton.visible = true
 	current_plant = PLANT.HIVE
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.HIVE)
@@ -279,7 +274,6 @@ func _on_hive_pressed() -> void:
 func _on_maw_pressed() -> void:
 	visible = true
 	staticPreview.visible = false 
-	moreInfoButton.visible = true
 	current_plant = PLANT.MAW
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.MAW)
@@ -291,7 +285,12 @@ func _on_maw_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	get_parent().get_parent().visible = false 
+
 	print("BBack Button Pressed")
+	self.visible = false 
+	
+	#Global.unHidePlantSelectionMenu()
+	#Global.game_controller.restore_dual_scenes()
 	Global.game_controller.restore_previous_scene()
 	
 	

@@ -6,10 +6,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7q734"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -24,6 +24,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_right = 104.0
+offset_bottom = 50.0
+
+[node name="OpenDemonCodexButton" type="Button" parent="HBoxContainer"]
+z_index = 3
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_7q734")
+icon = ExtResource("2_chcn6")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_cf0ig")
+
+[node name="OpenZombieCodexButton" type="Button" parent="HBoxContainer"]
+visible = false
+z_index = 3
+clip_contents = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/icon_normal_color = Color(0.566667, 0, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_7q734")
+icon = ExtResource("2_chcn6")
+icon_alignment = 1
+expand_icon = true
 
 [node name="DemonCodexLabel" type="Label" parent="."]
 visible = false
@@ -46,32 +80,6 @@ offset_bottom = 65.0
 theme_override_fonts/font = ExtResource("3_cf0ig")
 theme_override_font_sizes/font_size = 32
 text = "CODEX"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="OpenDemonCodexButton" type="Button" parent="HBoxContainer"]
-z_index = 3
-clip_contents = true
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_7q734")
-icon = ExtResource("2_chcn6")
-icon_alignment = 1
-script = ExtResource("2_cf0ig")
-
-[node name="OpenZombieCodexButton" type="Button" parent="HBoxContainer"]
-z_index = 3
-clip_contents = true
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_colors/icon_normal_color = Color(0.566667, 0, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_7q734")
-icon = ExtResource("2_chcn6")
-icon_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/OpenDemonCodexButton" to="HBoxContainer/OpenDemonCodexButton" method="_on_open_demon_codex_pressed"]
 [connection signal="pressed" from="HBoxContainer/OpenZombieCodexButton" to="HBoxContainer/OpenDemonCodexButton" method="_on_open_zombie_codex_button_pressed"]

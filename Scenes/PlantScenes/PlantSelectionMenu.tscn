@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=22 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2_vvged"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bunytloaghkwx" path="res://Assets/Plants/Cards/DemonCARD_Base_wText3.png" id="10_iafbj"]
 [ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://Assets/Plants/Circle.png" id="10_plp1j"]
 [ext_resource type="Texture2D" uid="uid://d25ykk7aqlbir" path="res://Assets/Plants/Cards/DemonCARD_LargeBase_wText.png" id="12_js2vo"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="14_vvged"]
 
 [sub_resource type="StyleBoxFlat" id="3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -24,7 +25,7 @@ region = Rect2(352, 0, 32, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
 bg_color = Color(0, 0, 0, 0.788235)
 border_width_left = 2
-border_width_top = 2
+border_width_top = 10
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 0, 0, 0)
@@ -94,9 +95,9 @@ horizontal_alignment = 1
 
 [node name="CurrentPlantLabel" type="Label" parent="."]
 layout_mode = 0
-offset_top = 130.265
+offset_top = 136.265
 offset_right = 493.0
-offset_bottom = 146.265
+offset_bottom = 152.265
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "No Plant Selected"
@@ -130,7 +131,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 502.0
+offset_right = 647.1
 offset_bottom = 123.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
@@ -292,6 +293,9 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "CODEX"
 horizontal_alignment = 2
+
+[node name="CodexBG" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("14_vvged")]
+layout_mode = 2
 
 [connection signal="pressed" from="OpenCodex/OpenCodexButton" to="." method="_on_open_codex_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
