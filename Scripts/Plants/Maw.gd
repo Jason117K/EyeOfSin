@@ -23,6 +23,10 @@ const ATTACH_DURATION = 0.1
 const MAX_EXTEND_TIME = 3.0  # Timeout for stuck tentacles
 const DIGESTION_TIME = 3.0  # Match existing digestion_time variable
 
+# Extension/Retraction animation speeds
+const EXTEND_DURATION = 2.0  # Seconds to fully extend to enemy
+const RETRACT_DURATION = 1.5  # Seconds to fully retract to maw center
+
 # IDLE state offsets for each tentacle (relative to maw center)
 const IDLE_OFFSETS = [
 	Vector2(307.0, 282),  # Tentacle 1: upper left
@@ -237,8 +241,9 @@ func update_tentacles(delta: float) -> void:
 func update_extending_state(tentacle: TentacleState, enemy: Node2D, delta: float) -> void:
 	"""Handle EXTENDING state: Tentacle chasing enemy"""
 
-	# Update target to follow moving enemy
-	tentacle.target.global_position = enemy.global_position
+	# Smoothly move target toward enemy over EXTEND_DURATION
+	var lerp_weight = delta / EXTEND_DURATION
+	tentacle.target.global_position = tentacle.target.global_position.lerp(enemy.global_position, lerp_weight)
 
 	# Track timeout
 	tentacle.extend_timer += delta
@@ -285,9 +290,10 @@ func update_attached_state(tentacle: TentacleState, enemy: Node2D, delta: float)
 func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: float) -> void:
 	"""Handle RETRACTING state: Pulling enemy to maw center"""
 
-	# Move target toward maw center
+	# Smoothly move target toward maw center over RETRACT_DURATION
 	var maw_center = $AnimatedSprite2D.global_position
-	tentacle.target.global_position = maw_center
+	var lerp_weight = delta / RETRACT_DURATION
+	tentacle.target.global_position = tentacle.target.global_position.lerp(maw_center, lerp_weight)
 
 	# Keep enemy attached if still valid
 	if is_instance_valid(enemy):
