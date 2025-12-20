@@ -106,6 +106,7 @@ func reset_cooldown():
 	
 func place_empty_in_alt_scene(grid_pos):
 	#return
+	print("Placing Empty in Alt At QQ ", grid_pos)
 	if current_scenes[1].visible == false :
 		print("current_scenes[1] is", current_scenes[1])
 		current_scenes[1].place_empty_blocker_plant(grid_pos)

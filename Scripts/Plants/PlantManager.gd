@@ -144,7 +144,7 @@ func _input(event):
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
-					print("Otro Place Plant " , grid_pos)
+					print("QQOtro Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 
@@ -225,7 +225,7 @@ func place_empty_blocker_plant(grid_pos):
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print(grid_pos , " QQ Cell already occupied!")
+		print(grid_pos , " QQW Cell already occupied!")
 		return
 	
 	#Maw is larger, check neighboring cell
@@ -241,7 +241,9 @@ func place_empty_blocker_plant(grid_pos):
 		if "Maw" in plant_instance.name:
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			grid_map[grid_pos] = plant_instance
+			print("QQZGirdMap Now Contains",grid_pos)
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
+			print("QQZGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
@@ -258,7 +260,7 @@ func place_empty_blocker_plant(grid_pos):
 	else:
 		print("Not enough sun points!")
 	
-	print("QQ Plant Was Placed At " , plant_instance.position)
+	print("QQ Blocker Plant Was Placed At " , plant_instance.position)
 	
 	
 # Place the selected plant on the grid
@@ -288,7 +290,7 @@ func place_plant(grid_pos: Vector2):
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print(grid_pos , " QQ Cell already occupied!")
+		print(grid_pos , " QQV Cell already occupied!")
 		return
 	
 	#Maw is larger, check neighboring cell
@@ -312,7 +314,9 @@ func place_plant(grid_pos: Vector2):
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			plant_instance.position = Vector2(plant_instance.position.x-256,plant_instance.position.y-256)
 			grid_map[grid_pos] = plant_instance
+			print("QQGirdMap Now Contains",grid_pos)
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
+			print("QQGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
 			plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
@@ -360,7 +364,7 @@ func place_plant(grid_pos: Vector2):
 	else:
 		print("Not enough sun points!")
 	
-	print("QQ Plant Was Placed At " , plant_instance.position)
+	print("QQZ Plant Was Placed At " , plant_instance.position)
 	selection_menu.deselect_plant()
 
 # Helper function to generate sequential names
