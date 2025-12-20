@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bry6wbbvn2abw"]
+[gd_scene load_steps=33 format=4 uid="uid://bry6wbbvn2abw"]
 
 [ext_resource type="Script" uid="uid://cs4qat1lxac3t" path="res://Scripts/LevelLogic/level_0_3_alternate.gd" id="1_pwl3v"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_fsj0e"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_hca0k"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_i62ex"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="23_oe16j"]
-[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="24_prgnp"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="25_j4lsd"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="26_4vi7a"]
 
@@ -547,6 +546,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="CodexBG" parent="." instance=ExtResource("23_oe16j")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -557,13 +557,6 @@ offset_right = 739.0
 offset_bottom = 373.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="PauseButton" parent="." instance=ExtResource("24_prgnp")]
-layout_mode = 0
-offset_left = 683.0
-offset_top = 380.0
-offset_right = 738.0
-offset_bottom = 403.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_j4lsd")

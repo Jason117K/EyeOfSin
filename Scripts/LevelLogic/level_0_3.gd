@@ -16,6 +16,9 @@ enum TutorialState {
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var green_dimension = $CurrentScene/Level03Alternate
+@onready var pause_Button = $"../PauseButton"
+
+
 
 var level04 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level04Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
@@ -23,6 +26,9 @@ var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_MAW
 var fleshEaterExplained := false 
 var wave2Started := false 
 var fleshEater_zombie_demo_scene = preload("res://Scenes/Tutorials/fleshEater_zombie_demo.tscn")
+
+var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
+var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
 
 const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
 const TUTORIAL_PLACE_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
@@ -32,6 +38,7 @@ const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.tx
 
 
 func _ready():
+	pause_Button.set_restart_levels(level03,level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_MAW)
 	toolTips.noButtonShow()

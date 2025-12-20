@@ -25,6 +25,7 @@ var wave_1_complete: bool = false
 @onready var plantSelectionMenu = $"../PlantSelectionMenu" 
 @onready var waveManager = $GameLayer/WaveManager
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
+@onready var pause_Button = $"../PauseButton"
 
 # Text file paths
 const TUTORIAL_SELECT_SPYDER = "res://Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
@@ -37,8 +38,11 @@ const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescr
 
 var basic_zombie_demo_scene = preload("res://Scenes/Tutorials/basic_zombie_demo.tscn")
 var severed_zombie_demo_scene = preload( "res://Scenes/Tutorials/severed_zombie_demo.tscn")
+var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
+var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 
 func _ready():
+	pause_Button.set_restart_levels(level0_1,level0_1Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
 	toolTips.noButtonShow()

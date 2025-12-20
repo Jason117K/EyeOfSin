@@ -35,6 +35,7 @@ var tutorial_sun_instance: Node2D = null
 @onready var plantSelectionMenu = $"../PlantSelectionMenu" #$PlantSelectionMenu
 @onready var waveManager = $GameLayer/WaveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
+@onready var pause_Button = $"../PauseButton"
 
 var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
@@ -65,9 +66,11 @@ var spyder_sun_buff_scene = preload("res://Scenes/Tutorials/sunflower_spyder_buf
 var sun_spyder_buff_scene = preload("res://Scenes/Tutorials/spyder_sunflower_buff.tscn")
 var buff_demo_scene = preload("res://Scenes/Tutorials/blood_buff_demo.tscn")
 var buckethead_zombie_demo_scene = preload("res://Scenes/Tutorials/buckethead_zombie_demo.tscn")
-
+var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
+var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 
 func _ready():
+	pause_Button.set_restart_levels(level02,level02Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_SUNFLOWER)
 	toolTips.noButtonShow()
