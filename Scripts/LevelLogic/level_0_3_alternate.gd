@@ -8,6 +8,10 @@ extends Control
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
+@export var isGreenDimension := false 
+
+func getIsGreenDimension():
+	return isGreenDimension
 
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)

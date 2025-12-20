@@ -61,7 +61,11 @@ func start_game():
 	show_all_plant_buttons()
 	#hide_Codex()
 	plantSelectionMenu.canSwapScenes = true
-	green_dimension = get_parent().get_node("Level03Alternate")
+	#green_dimension = get_parent().get_node("Level03Alternate")
+	#var possibleGreenDimension
+	for node in get_parent().get_children():
+		if node.has_method("getIsGreenDimension"):
+			green_dimension = node
 	print("Green D is ", green_dimension)
 	green_dimension.start_game()
 	waveManager.canStartGame = true

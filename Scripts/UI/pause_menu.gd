@@ -1,7 +1,10 @@
 extends Control
 
+var level0_3 = ("res://Scenes/LevelScenes/Level0-3.tscn")
+var level0_3Alt = ("res://Scenes/LevelScenes/Level0-3_Alternate.tscn")
 
-
+var restartScene
+var restartSceneAlt 
 
 func _on_resume_pressed() -> void:
 	print("UNPPAUSE HERE")
@@ -19,5 +22,6 @@ func _on_return_to_menu_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	var current_scene_filepath = Global.get_current_scene_filepath()
-	print("CCUrent Scene Is ", current_scene_filepath) 
-	Global.game_controller.change_scene(current_scene_filepath)
+	#print("CCUrent Scene Is ", current_scene_filepath) 
+	Global.game_controller.change_dual_scenes(level0_3,level0_3Alt )
+	#Global.game_controller.change_scene(current_scene_filepath)

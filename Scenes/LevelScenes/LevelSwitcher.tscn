@@ -20,6 +20,7 @@ stream = ExtResource("3_d7mvd")
 autoplay = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

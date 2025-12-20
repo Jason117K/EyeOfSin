@@ -89,6 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_pwl3v")
+isGreenDimension = true
 
 [node name="PlantManager" parent="." instance=ExtResource("2_fsj0e")]
 sun_points = 1000
