@@ -194,9 +194,7 @@ func assign_tentacle_to_target(target):
 		tentacle.extend_timer = 0.0  # Reset timeout
 
 		# Move ArmTarget to enemy position (Arm will follow)
-		var tween = create_tween()
-		tween.tween_property(tentacle.target, "global_position", target.global_position, 5.0)
-		#tentacle.target.global_position = target.global_position
+		tentacle.target.global_position = target.global_position
 
 		# Track assignment
 		attacking_tentacles[tentacle] = target
