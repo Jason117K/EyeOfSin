@@ -13,8 +13,48 @@ var tentacle2_end_color := Color(0.35, 0.0, 0.5, 1.0)   # Dark purple
 @export var tentacle3_start_color := Color(0.0, 1.0, 0.0, 1.0)  # Bright green  / 8d0000
 var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
 
-#Reference to tentacle scene 
-var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")  
+# Tentacle state machine
+enum State {IDLE, EXTENDING, ATTACHED, RETRACTING, DIGESTING}
+
+# Tentacle behavior configuration
+const GRAB_DISTANCE_THRESHOLD = 10.0
+const RETRACT_DISTANCE_THRESHOLD = 5.0
+const ATTACH_DURATION = 0.1
+const MAX_EXTEND_TIME = 3.0  # Timeout for stuck tentacles
+const DIGESTION_TIME = 3.0  # Match existing digestion_time variable
+
+# IDLE state offsets for each tentacle (relative to maw center)
+const IDLE_OFFSETS = [
+	Vector2(-20, -15),  # Tentacle 1: upper left
+	Vector2(0, -20),    # Tentacle 2: straight up
+	Vector2(20, -15)    # Tentacle 3: upper right
+]
+
+# Tentacle state tracking
+class TentacleState:
+	var arm: Arm
+	var target: ArmTarget
+	var state: State
+	var enemy: Node2D
+	var timer: float = 0.0
+	var extend_timer: float = 0.0  # Timeout tracking
+
+	func _init(p_arm: Arm, p_target: ArmTarget):
+		arm = p_arm
+		target = p_target
+		state = State.IDLE
+		enemy = null
+		timer = 0.0
+		extend_timer = 0.0
+
+# References to Arm tentacles (already in scene)
+@onready var arm1 = $Arm
+@onready var arm2 = $Arm2
+@onready var arm3 = $Arm3
+@onready var arm_target1 = $ArmTarget
+@onready var arm_target2 = $ArmTarget2
+@onready var arm_target3 = $ArmTarget3
+
 @onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
 #Adjustable maw health & cost 
 @export var health = 100
@@ -23,16 +63,15 @@ var tentacle_scene = preload("res://Scenes/MawTentacle.tscn")
 @onready var ogHealth = 100
 @export var cost = 200
 
-@export var alt_target_color : Color 
-@export var alt_replace_color : Color 
+@export var alt_target_color : Color
+@export var alt_replace_color : Color
 
+# Debug mode for verbose console output
+@export var debug_mode: bool = false
 
 var PlantManager              # Plantmanager RefCounted 
-var tentacles = []            # Array to track all tentacles
+var tentacles = []            # Array to track all tentacles (now TentacleState objects)
 var attacking_tentacles = {}  # Dictionary to track which tentacles are attacking which enemies
-var tentacle1
-var tentacle2
-var tentacle3
 var currentTentacle
 var charges = 3.0             # Essentially Maw ammo 
 var willBelchWebs = false     # Whether or not we have a peashooter buff 
@@ -80,66 +119,50 @@ func _ready():
 func get_cost():
 	return cost
 		
-#Sets Up and Configures all the tentacles 
+#Sets Up and Configures all the tentacles
 func setup_tentacles():
-	# First tentacle setup
-	tentacle1 = tentacle_scene.instantiate()
-	add_child(tentacle1)
-	tentacle1.z_index = z_index - 1
-	#tentacle1.position += Vector2(0, -2)
-	tentacle1.position += Vector2(256,256)
-	tentacle1.set_colors(tentacle1_start_color, tentacle1_end_color)
-	tentacle1.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle1))
-	tentacles.append(tentacle1)
-	available_tentacles.append(tentacle1)
-	
-	# Second tentacle setup
-	tentacle2 = tentacle_scene.instantiate()
-	add_child(tentacle2)
-	tentacle2.position += Vector2(256,256)
-	tentacle2.z_index = z_index - 1
-	tentacle2.set_colors(tentacle2_start_color, tentacle2_end_color)
-	tentacle2.set_pulse(true, 2.0, 0.25)
-	tentacle2.wriggle_amplitude = 3
-	tentacle2.wriggle_speed = 2.0
-	tentacle2.phase_offset = PI
-	tentacle2.direction_bias = 0.0
-	tentacle2.wriggle_dampening = 0.9
-	tentacle2.secondary_frequency = 1.7
-	#tentacle2.position += Vector2(5, 2)
-	tentacle2.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle2))
-	tentacles.append(tentacle2)
-	available_tentacles.append(tentacle2)
-	
-	# Third tentacle setup
-	tentacle3 = tentacle_scene.instantiate()
-	add_child(tentacle3)
-	tentacle3.z_index = z_index - 1
-	tentacle3.set_colors(tentacle3_start_color, tentacle3_end_color)
-	tentacle3.set_pulse(true, 1.0, 0.2)
-	tentacle3.wriggle_amplitude = 2.5
-	tentacle3.wriggle_speed = 1
-	tentacle3.phase_offset = PI * 0.7
-	tentacle3.direction_bias = -0.9
-	tentacle3.wriggle_dampening = 0.7
-	tentacle3.secondary_frequency = 1.5
-	#tentacle3.position += Vector2(-3, -2)
-	tentacle3.position += Vector2(256,256)
-	tentacle3.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle3))
-	tentacles.append(tentacle3)
-	available_tentacles.append(tentacle3)
+	# Initialize tentacle state objects
+	var t1 = TentacleState.new(arm1, arm_target1)
+	var t2 = TentacleState.new(arm2, arm_target2)
+	var t3 = TentacleState.new(arm3, arm_target3)
+
+	tentacles = [t1, t2, t3]
+	available_tentacles = tentacles.duplicate()
+
+	# Set initial IDLE positions
+	for i in range(tentacles.size()):
+		var tentacle = tentacles[i]
+		var maw_center = global_position
+		tentacle.target.global_position = maw_center + IDLE_OFFSETS[i]
+
+	if debug_mode:
+		print("[Maw] Setup complete: %d tentacles ready" % tentacles.size())
 
 
 func get_end_location():
-	return tentacle1.get_end_location()
+	# Return the tip of the first arm (in global space)
+	if arm1 and arm1.get_segments().size() > 0:
+		var arm_tip_local = arm1.get_segments()[-1]
+		return arm1.to_global(arm_tip_local)
+	return global_position
 	
-#Constantly check for enemies in range and assign them for eating appropriately 
-func _process(_delta):
-	if enemies_to_eat.size()>0:
-		for enemy in enemies_to_eat:
-			if enemy != null:
+#Constantly check for enemies in range and assign them for eating appropriately
+func _process(delta):
+	# Process enemy queue
+	if enemies_to_eat.size() > 0:
+		for enemy in enemies_to_eat.duplicate():  # Duplicate to avoid modification during iteration
+			if enemy != null and is_instance_valid(enemy):
 				assign_tentacle_to_target(enemy)
-		pass
+
+	# Update all active tentacles
+	update_tentacles(delta)
+
+	# Update digesting tentacles
+	for tentacle in tentacles:
+		if tentacle.state == State.DIGESTING:
+			tentacle.timer += delta
+			if tentacle.timer >= DIGESTION_TIME:
+				complete_digestion(tentacle)
 	#var overlapping_areas = detection_area.get_overlapping_areas()
 	#print("Maw Overlapping Areas Is ", overlapping_areas)
 	#for area in overlapping_areas:
@@ -148,82 +171,252 @@ func _process(_delta):
 			#print("BBAssigning Tentacle to  ", area)
 		###	assign_tentacle_to_target(area)
 
-#Assign a target to a tentacle 
+#Assign a target to a tentacle
 func assign_tentacle_to_target(target):
+	# Remove from queue if it was waiting
 	if target in enemies_to_eat:
 		enemies_to_eat.erase(target)
-	#Early return if the target is already being eaten 
+
+	# Prevent double-assignment
 	if target in attacking_tentacles.values():
-		print("QQ Target Already Being Eaten")
+		if debug_mode:
+			print("[Maw] Target already being eaten, skipping")
 		return
-	#If we have a free tentacle, assignment is possible 
-	#print("QQ Charges is : ", charges, " QQ available_tentacles.size() is : ", available_tentacles.size())
+
+	# Check availability
 	if available_tentacles.size() > 0 and charges > 0:
-		#Select a tentacle, give it an enemy, 
-		var tentacle = available_tentacles.pop_front()
-		attacking_tentacles[tentacle] = target
+		var tentacle: TentacleState = available_tentacles.pop_front()
+
+		# Setup tentacle state
+		tentacle.state = State.EXTENDING
 		tentacle.enemy = target
-		tentacle.start_grab_sequence()
-		#charges -= 1
+		tentacle.timer = 0.0
+		tentacle.extend_timer = 0.0  # Reset timeout
+
+		# Move ArmTarget to enemy position (Arm will follow)
+		tentacle.target.global_position = target.global_position
+
+		# Track assignment
+		attacking_tentacles[tentacle] = target
+
+		# Don't consume charge yet - wait until retraction completes
+		# This matches old behavior where charge is consumed in retraction handler
+
+		if debug_mode:
+			print("[Maw] Assigned tentacle to %s - Available: %d" % [target.name, available_tentacles.size()])
 	else:
-		enemies_to_eat.append(target)
-		
-
-#Handle Tentacle Retraction 
-func _on_tentacle_retraction_complete(tentacle):
-	
-	#Get a reference to the eaten enemy 
-	if tentacle in attacking_tentacles:
-		var enemy = attacking_tentacles[tentacle]
-		print("Enemy Is ", enemy)
-		if is_instance_valid(enemy):
-			enemy.visible = false
-			print(self.name, "QQ MAW JUST ATE ",enemy.name)
-			var enemyCompManager = enemy.getCompManager()
-			var slow = enemyCompManager.getSlow()
-			AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_CHEW)
-			if isWalnutBuffed:
-				health = health + 100
-			#If the swallowed enemy is slow and maw is buffed, belch a web bomb
-			if(slow > 0):
-				if willBelchWebs:
-					var web_ball = preload("res://Scenes/PlantScenes/WebBall.tscn").instantiate()
-					add_child(web_ball)
-					web_ball.target_position = Vector2(100, 0)
-					web_ball.travel_time = 1.5
-
-			var compManager = enemy.getCompManager()	
-			compManager.take_damage(9999)	
-			#digestionTimer.start()
-			var digestion_timer
-			digestion_timer = Timer.new()
-			digestion_timer.wait_time = digestTime
-			digestion_timer.autostart = true
-			digestion_timer.one_shot = true
-			add_child(digestion_timer)
-	
-			# Connect timer to function - Godot 4.4 syntax
-			digestion_timer.timeout.connect(_on_DigestionTimer_timeout)
-	
-			charges -= 1
-			tentacle.visible = false  # Hide tentacle after retraction
-
-			#enemy.queue_free()
-		else:
-			print(self.name , "MAW JUST ATE NOTHINGGG QQ")
-			available_tentacles.append(tentacle)
-			#tentacle.visible = false 
-		attacking_tentacles.erase(tentacle)
-		
-		
+		# Queue for later
+		if not target in enemies_to_eat:
+			enemies_to_eat.append(target)
 
 
-#Handles the Maw taking damage 
+func update_tentacles(delta: float) -> void:
+	"""Main state machine update - called every frame"""
+
+	# Iterate over attacking tentacles (currently active)
+	for tentacle in attacking_tentacles.keys():
+		var enemy = tentacle.enemy
+
+		# CRITICAL: Validate enemy still exists
+		if not is_instance_valid(enemy):
+			if debug_mode:
+				print("[Maw] Enemy became invalid, aborting")
+			abort_tentacle(tentacle)
+			continue
+
+		# State machine
+		match tentacle.state:
+			State.EXTENDING:
+				update_extending_state(tentacle, enemy, delta)
+			State.ATTACHED:
+				update_attached_state(tentacle, enemy, delta)
+			State.RETRACTING:
+				update_retracting_state(tentacle, enemy, delta)
+
+
+func update_extending_state(tentacle: TentacleState, enemy: Node2D, delta: float) -> void:
+	"""Handle EXTENDING state: Tentacle chasing enemy"""
+
+	# Update target to follow moving enemy
+	tentacle.target.global_position = enemy.global_position
+
+	# Track timeout
+	tentacle.extend_timer += delta
+	if tentacle.extend_timer > MAX_EXTEND_TIME:
+		if debug_mode:
+			print("[Maw] Extension timeout, giving up on enemy")
+		abort_tentacle(tentacle)
+		return
+
+	# Check if arm tip reached enemy (DISTANCE-BASED DETECTION)
+	var arm_tip_local = tentacle.arm.get_segments()[-1]  # Last segment in local space
+	var arm_tip_global = tentacle.arm.to_global(arm_tip_local)  # Convert to global
+	var distance_to_enemy = arm_tip_global.distance_to(enemy.global_position)
+
+	if distance_to_enemy < GRAB_DISTANCE_THRESHOLD:
+		# Transition to ATTACHED
+		tentacle.state = State.ATTACHED
+		tentacle.timer = 0.0
+
+		# Audio feedback
+		AudioManager.create_2d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_GRAB)
+
+		if debug_mode:
+			print("[Maw] Grabbed enemy at distance: %.1fpx" % distance_to_enemy)
+
+
+func update_attached_state(tentacle: TentacleState, enemy: Node2D, delta: float) -> void:
+	"""Handle ATTACHED state: Brief hold before retracting"""
+
+	# Keep target on enemy (Arm follows)
+	tentacle.target.global_position = enemy.global_position
+
+	# Pin enemy to arm tip
+	var arm_tip_local = tentacle.arm.get_segments()[-1]
+	var arm_tip_global = tentacle.arm.to_global(arm_tip_local)
+	enemy.global_position = arm_tip_global
+
+	# Update timer
+	tentacle.timer += delta
+	if tentacle.timer >= ATTACH_DURATION:
+		start_tentacle_retraction(tentacle)
+
+
+func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: float) -> void:
+	"""Handle RETRACTING state: Pulling enemy to maw center"""
+
+	# Move target toward maw center
+	var maw_center = global_position
+	tentacle.target.global_position = maw_center
+
+	# Keep enemy attached if still valid
+	if is_instance_valid(enemy):
+		var arm_tip_local = tentacle.arm.get_segments()[-1]
+		var arm_tip_global = tentacle.arm.to_global(arm_tip_local)
+		enemy.global_position = arm_tip_global
+
+	# Check if arm tip reached maw center (DISTANCE-BASED DETECTION)
+	var arm_tip_local2 = tentacle.arm.get_segments()[-1]
+	var arm_tip_global2 = tentacle.arm.to_global(arm_tip_local2)
+	var distance_to_center = arm_tip_global2.distance_to(maw_center)
+
+	if distance_to_center < RETRACT_DISTANCE_THRESHOLD:
+		finish_tentacle_retraction(tentacle)
+
+
+func start_tentacle_retraction(tentacle: TentacleState) -> void:
+	"""Begin retraction sequence"""
+	tentacle.state = State.RETRACTING
+
+	if debug_mode:
+		print("[Maw] Starting tentacle retraction")
+
+
+func finish_tentacle_retraction(tentacle: TentacleState) -> void:
+	"""Complete retraction - damage enemy, hide arm, start digestion"""
+	var enemy = tentacle.enemy
+
+	# Make arm invisible
+	tentacle.arm.base_node.visible = false
+	if tentacle.arm.shadow_node:
+		tentacle.arm.shadow_node.visible = false
+
+	# Damage enemy if still valid
+	if is_instance_valid(enemy):
+		enemy.visible = false
+		var enemyCompManager = enemy.getCompManager()
+		enemyCompManager.take_damage(9999)
+
+		# Audio feedback
+		AudioManager.create_2d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_CHOMP)
+
+		# Handle buffs (walnut health gain)
+		if isWalnutBuffed:
+			health += 100
+
+		# Check for web belch (spyder buff + slowed enemy)
+		var slow = enemyCompManager.getSlow()
+		if slow > 0 and willBelchWebs:
+			var web_ball = preload("res://Scenes/PlantScenes/WebBall.tscn").instantiate()
+			add_child(web_ball)
+			web_ball.target_position = Vector2(100, 0)
+			web_ball.travel_time = 1.5
+
+	# Start digestion
+	tentacle.state = State.DIGESTING
+	tentacle.timer = 0.0
+
+	# Consume charge (matches old system timing)
+	charges -= 1
+
+	# Remove from attacking dictionary
+	attacking_tentacles.erase(tentacle)
+
+	if debug_mode:
+		print("[Maw] Retraction complete, starting digestion (charges: %d)" % charges)
+
+
+func abort_tentacle(tentacle: TentacleState) -> void:
+	"""Abort current attack and return tentacle to idle"""
+	tentacle.state = State.IDLE
+	tentacle.enemy = null
+	tentacle.timer = 0.0
+	tentacle.extend_timer = 0.0
+
+	# Return to available pool
+	if not tentacle in available_tentacles:
+		available_tentacles.append(tentacle)
+
+	# Remove from attacking dictionary
+	attacking_tentacles.erase(tentacle)
+
+	# Reset target to idle position
+	var tentacle_index = tentacles.find(tentacle)
+	if tentacle_index >= 0:
+		var maw_center = global_position
+		tentacle.target.global_position = maw_center + IDLE_OFFSETS[tentacle_index]
+
+
+func complete_digestion(tentacle: TentacleState) -> void:
+	"""Return tentacle to IDLE after digestion"""
+	# Return to IDLE state
+	tentacle.state = State.IDLE
+	tentacle.enemy = null
+	tentacle.timer = 0.0
+
+	# Make arm visible again
+	tentacle.arm.base_node.visible = true
+	if tentacle.arm.shadow_node:
+		tentacle.arm.shadow_node.visible = true
+
+	# Reset ArmTarget to IDLE offset
+	var tentacle_index = tentacles.find(tentacle)
+	if tentacle_index >= 0:
+		var maw_center = global_position
+		tentacle.target.global_position = maw_center + IDLE_OFFSETS[tentacle_index]
+
+	# Return to available pool
+	if not tentacle in available_tentacles:
+		available_tentacles.append(tentacle)
+
+	# Regenerate charge
+	charges += 1
+	if charges > tentacles.size():
+		charges = tentacles.size()
+
+	# Belch sun if buffed
+	if willBelchSun:
+		generate_sun()
+
+	if debug_mode:
+		print("[Maw] Digestion complete - Available: %d, Charges: %d" % [available_tentacles.size(), charges])
+
+
+#Handles the Maw taking damage
 func take_damage(damage):
 	health = health - damage
 	if health <= 0:
-		for tentacle in tentacles:
-			tentacle.queue_free()
+		# Arms will be freed in die() function
 		die()
 
 #When the time is up, free up a tentacle by adding a charge
@@ -331,6 +524,12 @@ func _on_detection_component_area_entered(area: Area2D) -> void:
 		
 func die():
 	print(" QQ MAW IS DYING 1111111111111111")
+
+	# FREE ALL ARM TENTACLES
+	if arm1: arm1.queue_free()
+	if arm2: arm2.queue_free()
+	if arm3: arm3.queue_free()
+
 	#PlantManager.clear_space(self.global_position)
 	PlantManager.clear_space(Vector2(self.global_position.x-16,self.global_position.y))
 	PlantManager.clear_space(Vector2(self.global_position.x+16,self.global_position.y))
