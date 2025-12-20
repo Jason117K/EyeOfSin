@@ -17,7 +17,7 @@ config/icon="res://Assets/icon.png"
 
 [autoload]
 
-Global="*res://Scripts/global.gd"
+Global="*res://Assets/Text/TextFiles/global.gd"
 GlobalResourceLoader="*res://Scripts/UI/ResourceLoader.gd"
 AudioManager="*res://Scenes/Systems/audio_manager.tscn"
 

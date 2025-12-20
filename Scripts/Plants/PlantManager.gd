@@ -25,6 +25,7 @@ signal eggWorm_placed(grid_position: Vector2)
 signal wasp_placed(grid_position: Vector2)
 signal maw_placed(grid_position: Vector2)
 
+
 func _ready() -> void:
 	if get_parent().has_method("spyder_placed"):
 		self.connect("_on_spyder_placed", Callable(get_parent(), "spyder_placed"))

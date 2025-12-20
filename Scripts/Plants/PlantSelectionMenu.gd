@@ -13,6 +13,7 @@ var is_previewing: bool = false # Whether or not we are currently previewing
 var canRemove := false 
 
 signal clicked_Eye
+signal codex_clicked
 
 # Preload the plant scenes
 var peashooter_scene = preload("res://Scenes/PlantScenes/Peashooter.tscn")
@@ -516,3 +517,7 @@ func getCanRemove():
 
 func _on_open_codex_button_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_open_demon_codex_button_pressed() -> void:
+	codex_clicked.emit()

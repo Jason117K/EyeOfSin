@@ -5,7 +5,8 @@ enum TutorialState {
 	FORCE_PLACE_MAW,
 	EXPLAIN_CODEX,
 	EXPLAIN_FLESHEATER_ZOMBIE,
-	TUTORIAL_P1_DONE
+	TUTORIAL_P1_DONE,
+	TUTORIAL_P2_DONE
 }
 
 @onready var toolTips = $"../ToolTips"
@@ -42,6 +43,7 @@ func _ready():
 	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 	plantManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
+	plantSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	
 	# Connect to button presses
 	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
@@ -52,9 +54,12 @@ func _ready():
 	
 	levelSwitcher.update_level(level04,level04Alt)
 	
+	Global.unHidePlantSelectionMenu()
+	
 
 func start_game():
 	show_all_plant_buttons()
+	#hide_Codex()
 	plantSelectionMenu.canSwapScenes = true
 	green_dimension = get_parent().get_node("Level03Alternate")
 	print("Green D is ", green_dimension)
@@ -94,8 +99,12 @@ func _transition_to_state(new_state: TutorialState):
 			pass
 			#_start_explain_chimera()
 		TutorialState.EXPLAIN_CODEX:
-			pass
+			var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
+			codex_buton.visible = true  
 			_start_explain_codex()
+		TutorialState.TUTORIAL_P2_DONE:
+			toolTips._on_Button_pressed()
+			
 
 func _on_tooltip_hidden():
 	hide_spotlight()
@@ -114,19 +123,24 @@ func _on_tooltip_hidden():
 			get_tree().paused = false  # Unpause game
 
 		TutorialState.EXPLAIN_CODEX:
-			pass
-			#_start_explain_codex()	
+			
+			_start_explain_codex()	
 	
 	
 func _on_wave_2_started():
 	print("[Tutorial] Wave 2 started")
 	_transition_to_state(TutorialState.EXPLAIN_FLESHEATER_ZOMBIE)
+
+func _on_wave_3_started():
+	print("[Tutorial] Wave 3 Started")
+	_transition_to_state(TutorialState.EXPLAIN_CODEX)
+
 	
 func _start_explain_codex():
 	toolTips.set_text(TUTORIAL_SELECT_CODEX)
 	toolTips.noButtonShow()
 	#Show spotlight on Codex button
-	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
+	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
 	show_spotlight_at_node(codex_buton)
 			
 func _handle_force_select_maw_input(event):
@@ -172,6 +186,10 @@ func _on_maw_button_pressed():
 	if tutorial_state == TutorialState.FORCE_SELECT_MAW:
 		_transition_to_state(TutorialState.FORCE_PLACE_MAW)
 
+func _on_codex_button_pressed():
+	print("[Tutorial] Codex button pressed in state: ", TutorialState.keys()[tutorial_state])
+	_transition_to_state(TutorialState.TUTORIAL_P2_DONE)
+	
 
 func _on_maw_placed(grid_pos: Vector2):
 	print("[Tutorial] Maw placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
@@ -275,6 +293,10 @@ func hide_spotlight():
 	if spotlight_overlay:
 		spotlight_overlay.visible = false
 
+func hide_Codex():
+	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
+	codex_buton.visible = false 
+	
 
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)

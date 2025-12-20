@@ -56,6 +56,7 @@ func _ready():
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
+	Global.unHidePlantSelectionMenu()
 
 
 # Input filtering system - intercepts input based on tutorial state

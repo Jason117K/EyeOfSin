@@ -4,6 +4,7 @@ extends Control
 
 func _ready() -> void:
 	Global.hidePlantSelectionMenu()
+	_on_plant_codex_button_pressed()
 	
 func _on_plant_codex_button_pressed() -> void:
 	get_tree().paused = true

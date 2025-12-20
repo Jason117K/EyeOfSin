@@ -304,3 +304,6 @@ layout_mode = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/CodexBG/HBoxContainer/OpenDemonCodexButton" to="." method="_on_open_demon_codex_button_pressed"]
+
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/CodexBG"]

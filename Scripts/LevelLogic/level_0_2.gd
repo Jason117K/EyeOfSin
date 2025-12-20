@@ -98,6 +98,8 @@ func _ready():
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
 	
 	levelSwitcher.update_level(level03,level03Alt)
+	
+	Global.unHidePlantSelectionMenu()
 
 
 # Input filtering system - intercepts input based on tutorial state
