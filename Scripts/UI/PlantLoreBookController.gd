@@ -14,6 +14,15 @@ extends AnimatedTextureRect
 @onready var synergyPanel = $"../../ToolTips"
 @onready var backOutDetailsButton = $"../../BackOutDetails"
 @onready var moreInfoButton =$"../../HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton"
+@onready var staticPreview := $"../../StaticPreview"
+
+@onready var alt1 = $"../../HBoxContainer/AllPlantRows/AltRow/Alt1"
+@onready var alt2 = $"../../HBoxContainer/AllPlantRows/AltRow/Alt2"
+@onready var alt3 = $"../../HBoxContainer/AllPlantRows/AltRow/Alt3"
+@onready var alt4 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt4"
+@onready var alt5 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt5"
+@onready var alt6 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt6"
+
 
 #Plant Text Descriptions
 var sunflowerDescription := "res://Assets/Text/TextFiles/PlantDescriptions/SunflowerDescription.txt"
@@ -36,6 +45,50 @@ var sunEggText = "res://Assets/Text/TextFiles/SunEggWyrmBuff.txt"
 var sunMawText = "res://Assets/Text/TextFiles/SunMawBuff.txt"
 var sunSpineText = "res://Assets/Text/TextFiles/SunSpineBuff.txt"
 var sunHiveText = "res://Assets/Text/TextFiles/SunHiveBuff.txt"
+
+
+var occulumBase = "res://Assets/Text/TextFiles/Synergies/EyeBase.txt"
+var occulumHive = "res://Assets/Text/TextFiles/Synergies/EyeHive.txt"
+var occulumMaw = "res://Assets/Text/TextFiles/Synergies/EyeMaw.txt"
+var occulumSpyder = "res://Assets/Text/TextFiles/Synergies/EyeSpyder.txt"
+var occulumWalnut = "res://Assets/Text/TextFiles/Synergies/EyeWalnut.txt"
+var occulumWyrm = "res://Assets/Text/TextFiles/Synergies/EyeWyrm.txt"
+
+var spyderBase = "res://Assets/Text/TextFiles/Synergies/SpyderBase.txt"
+var spyderEye = "res://Assets/Text/TextFiles/Synergies/SpyderEye.txt"
+var spyderHive = "res://Assets/Text/TextFiles/Synergies/SpyderHive.txt"
+var spyderMaw = "res://Assets/Text/TextFiles/Synergies/SpyderMaw.txt"
+var spyderWalnut = "res://Assets/Text/TextFiles/Synergies/SpyderWalnut.txt"
+var spyderWyrm = "res://Assets/Text/TextFiles/Synergies/SpyderWyrm.txt"
+
+var hiveBase = "res://Assets/Text/TextFiles/Synergies/HiveBase.txt"
+var hiveEye = "res://Assets/Text/TextFiles/Synergies/HiveEye.txt"
+var hiveMaw = "res://Assets/Text/TextFiles/Synergies/HiveMaw.txt"
+var hiveSpyder = "res://Assets/Text/TextFiles/Synergies/HiveSpyder.txt"
+var hiveWalnut = "res://Assets/Text/TextFiles/Synergies/HiveWalnut.txt"
+var hiveWyrm = "res://Assets/Text/TextFiles/Synergies/HiveWyrm.txt"
+
+var walnutBase = "res://Assets/Text/TextFiles/Synergies/WalnutBase.txt"
+var walnutEye = "res://Assets/Text/TextFiles/Synergies/WalnutEye.txt"
+var walnutHive = "res://Assets/Text/TextFiles/Synergies/WalnutHive.txt"
+var walnutMaw = "res://Assets/Text/TextFiles/Synergies/WalnutMaw.txt"
+var walnutSpyder = "res://Assets/Text/TextFiles/Synergies/WalnutSpyder.txt"
+var walnutWyrm = "res://Assets/Text/TextFiles/Synergies/WalnutWyrm.txt"
+
+var mawBase = "res://Assets/Text/TextFiles/Synergies/MawBase.txt"
+var mawEye = "res://Assets/Text/TextFiles/Synergies/MawEye.txt"
+var mawHive = "res://Assets/Text/TextFiles/Synergies/MawHive.txt"
+var mawSpyder = "res://Assets/Text/TextFiles/Synergies/MawSpyder.txt"
+var mawWalnut = "res://Assets/Text/TextFiles/Synergies/MawWalnut.txt"
+var mawWyrm = "res://Assets/Text/TextFiles/Synergies/MawWyrm.txt"
+
+var wyrmBase = "res://Assets/Text/TextFiles/Synergies/WyrmBase.txt"
+var wyrmEye ="res://Assets/Text/TextFiles/Synergies/WyrmEye.txt"
+var wyrmHive ="res://Assets/Text/TextFiles/Synergies/WyrmHive.txt"
+var wyrmMaw ="res://Assets/Text/TextFiles/Synergies/WyrmMaw.txt"
+var wyrmSpyder ="res://Assets/Text/TextFiles/Synergies/WyrmSpyder.txt"
+var wyrmWalnut ="res://Assets/Text/TextFiles/Synergies/WyrmWalnut.txt"
+
 
 
 var mawSpyderScene = preload("res://Scenes/Tutorials/maw_spider_buff.tscn")
@@ -129,35 +182,69 @@ func set_text(newFile : String):
 	file.close()
 	currentPlantLabel.text = newText
 
+func set_demon_variations(newDemon : GlobalResourceLoader.PlantType):
+
+	var new_images = []
+	new_images = GlobalResourceLoader.get_demon_image_variations(newDemon)
+	
+	var count = 0 
+	for this_image in new_images:
+		match count:
+			0:
+				$"../../HBoxContainer/AllPlantRows/AltRow/Alt1".texture_normal = this_image
+			1:
+				$"../../HBoxContainer/AllPlantRows/AltRow/Alt2".texture_normal= this_image
+			2:
+				$"../../HBoxContainer/AllPlantRows/AltRow/Alt3".texture_normal= this_image
+			3:
+				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt4".texture_normal= this_image
+			4:
+				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt5".texture_normal= this_image
+			5:
+				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt6".texture_normal= this_image
+				
+		count+=1
+	
+	pass
+	
 func _on_sunflower_pressed() -> void:
+	visible = true
+	staticPreview.visible = false 
 	moreInfoButton.visible = true
 	current_plant = PLANT.SUNFLOWER
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.SUNFLOWER)
 	play()
 	set_text(sunflowerDescription)
-
-
+	set_demon_variations(GlobalResourceLoader.PlantType.SUNFLOWER)
 
 func _on_peashooter_pressed() -> void:
+	visible = true
+	staticPreview.visible = false 
 	moreInfoButton.visible = true
 	current_plant = PLANT.SPYDER
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.PEASHOOTER)
 	play()
 	set_text(peashooterDescription)
+	set_demon_variations(GlobalResourceLoader.PlantType.PEASHOOTER)
 
 
 func _on_walnut_pressed() -> void:
+	visible = true
+	staticPreview.visible = false 
 	moreInfoButton.visible = true
 	current_plant = PLANT.OCCULAR_SPINE
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.WALNUT)
 	play()
 	set_text(walnutDescription)
+	set_demon_variations(GlobalResourceLoader.PlantType.WALNUT)
 
 
 func _on_eye_bomb_pressed() -> void:
+	visible = true
+	staticPreview.visible = false 
 	moreInfoButton.visible = false
 	current_plant = PLANT.EYE_BOMB
 	sprites = GlobalResourceLoader.get_plant_animation(
@@ -167,30 +254,38 @@ func _on_eye_bomb_pressed() -> void:
 
 
 func _on_egg_wrym_pressed() -> void:
+	visible = true
+	staticPreview.visible = false 
 	moreInfoButton.visible = true
 	current_plant = PLANT.EGG_WYRM
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.EGGWYRM)
 	play()
 	set_text(eggWyrmDescription)
-
+	set_demon_variations(GlobalResourceLoader.PlantType.EGGWYRM)
 
 func _on_hive_pressed() -> void:
+	visible = true
+	staticPreview.visible = false 
 	moreInfoButton.visible = true
 	current_plant = PLANT.HIVE
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.HIVE)
 	play()
 	set_text(hiveDescription)
+	set_demon_variations(GlobalResourceLoader.PlantType.HIVE)
 
 
 func _on_maw_pressed() -> void:
+	visible = true
+	staticPreview.visible = false 
 	moreInfoButton.visible = true
 	current_plant = PLANT.MAW
 	sprites = GlobalResourceLoader.get_plant_animation(
 		GlobalResourceLoader.PlantType.MAW)
 	play()
 	set_text(mawDescription)
+	set_demon_variations(GlobalResourceLoader.PlantType.MAW)
 	
 
 
@@ -328,3 +423,147 @@ func setNextSynergyScene(current_plant,this_count):
 					synergyPanel.setComplexScene(hiveMawScene)
 					count = -1
 					#print("CCCCC Count is ", count)
+
+
+func _on_alt_1_pressed() -> void:
+	visible = false
+	staticPreview.visible = true
+	match current_plant:
+		PLANT.SUNFLOWER:
+			staticPreview.texture = alt1.texture_normal
+			set_text(occulumBase)
+		PLANT.SPYDER:
+			staticPreview.texture = alt1.texture_normal
+			set_text(spyderBase)
+		PLANT.OCCULAR_SPINE:
+			staticPreview.texture = alt1.texture_normal
+			set_text(walnutBase)
+		PLANT.EGG_WYRM:
+			staticPreview.texture = alt1.texture_normal
+			set_text(wyrmBase)
+		PLANT.HIVE:
+			staticPreview.texture = alt1.texture_normal
+			set_text(hiveBase)
+		PLANT.MAW:
+			staticPreview.texture = alt1.texture_normal
+			set_text(mawBase)
+
+
+func _on_alt_2_pressed() -> void:
+	staticPreview.visible = true
+	visible = false
+	match current_plant:
+		PLANT.SUNFLOWER:
+			staticPreview.texture = alt2.texture_normal
+			set_text(occulumMaw)
+		PLANT.SPYDER:
+			staticPreview.texture = alt2.texture_normal
+			set_text(spyderHive)
+		PLANT.OCCULAR_SPINE:
+			staticPreview.texture = alt2.texture_normal
+			set_text(walnutEye)
+		PLANT.EGG_WYRM:
+			staticPreview.texture = alt2.texture_normal
+			set_text(wyrmEye)
+		PLANT.HIVE:
+			staticPreview.texture = alt2.texture_normal
+			set_text(hiveMaw)
+		PLANT.MAW:
+			staticPreview.texture = alt2.texture_normal
+			set_text(mawHive)
+
+
+func _on_alt_3_pressed() -> void:
+	staticPreview.visible = true
+	visible = false
+	match current_plant:
+		PLANT.SUNFLOWER:
+			staticPreview.texture = alt3.texture_normal
+			set_text(occulumHive)
+		PLANT.SPYDER:
+			staticPreview.texture = alt3.texture_normal
+			set_text(spyderMaw)
+		PLANT.OCCULAR_SPINE:
+			staticPreview.texture = alt3.texture_normal
+			set_text(walnutHive)
+		PLANT.EGG_WYRM:
+			staticPreview.texture = alt3.texture_normal
+			set_text(wyrmHive)
+		PLANT.HIVE:
+			staticPreview.texture = alt3.texture_normal
+			set_text(hiveSpyder)
+		PLANT.MAW:
+			staticPreview.texture = alt3.texture_normal
+			set_text(mawSpyder)
+
+
+func _on_alt_4_pressed() -> void:
+	staticPreview.visible = true
+	visible = false
+	match current_plant:
+		PLANT.SUNFLOWER:
+			staticPreview.texture = alt4.texture_normal
+			set_text(occulumSpyder)
+		PLANT.SPYDER:
+			staticPreview.texture = alt4.texture_normal
+			set_text(spyderEye)
+		PLANT.OCCULAR_SPINE:
+			staticPreview.texture = alt4.texture_normal
+			set_text(walnutMaw)
+		PLANT.EGG_WYRM:
+			staticPreview.texture = alt4.texture_normal
+			set_text(wyrmMaw)
+		PLANT.HIVE:
+			staticPreview.texture = alt4.texture_normal
+			set_text(hiveEye)
+		PLANT.MAW:
+			staticPreview.texture = alt4.texture_normal
+			set_text(mawEye)
+
+
+func _on_alt_5_pressed() -> void:
+	staticPreview.visible = true
+	visible = false
+	match current_plant:
+		PLANT.SUNFLOWER:
+			staticPreview.texture = alt5.texture_normal
+			set_text(occulumWalnut)
+		PLANT.SPYDER:
+			staticPreview.texture = alt5.texture_normal
+			set_text(spyderWalnut)
+		PLANT.OCCULAR_SPINE:
+			staticPreview.texture = alt5.texture_normal
+			set_text(walnutSpyder)
+		PLANT.EGG_WYRM:
+			staticPreview.texture = alt5.texture_normal
+			set_text(wyrmWalnut)
+		PLANT.HIVE:
+			staticPreview.texture = alt5.texture_normal
+			set_text(hiveWalnut)
+		PLANT.MAW:
+			staticPreview.texture = alt5.texture_normal
+			set_text(mawWalnut)
+
+
+func _on_alt_6_pressed() -> void:
+	staticPreview.visible = true
+	visible = false
+	match current_plant:
+		PLANT.SUNFLOWER:
+			staticPreview.texture = alt6.texture_normal
+			set_text(occulumWyrm)
+		PLANT.SPYDER:
+			staticPreview.texture = alt6.texture_normal
+			set_text(spyderWyrm)
+		PLANT.OCCULAR_SPINE:
+			staticPreview.texture = alt6.texture_normal
+			set_text(walnutWyrm)
+		PLANT.EGG_WYRM:
+			staticPreview.texture = alt6.texture_normal
+			set_text(wyrmWalnut)
+		PLANT.HIVE:
+			staticPreview.texture = alt6.texture_normal
+			set_text(hiveWyrm)
+		PLANT.MAW:
+			staticPreview.texture = alt6.texture_normal
+			set_text(mawWyrm)

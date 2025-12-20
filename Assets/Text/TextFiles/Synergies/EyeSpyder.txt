@@ -1,0 +1,1 @@
+Occulum emits moderate aoe slowing zone, zombies in zone are slow and generate blood on hit

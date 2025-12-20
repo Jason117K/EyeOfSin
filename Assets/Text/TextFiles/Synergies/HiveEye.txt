@@ -1,0 +1,1 @@
+ Increased Wasp Count x2, decreased health, wasps give sun on death

@@ -1,0 +1,1 @@
+Spyder periodically spawns a spiderling that runs down the lane. If one tile in front, Spyder can instakill enemy fighting spyderling.

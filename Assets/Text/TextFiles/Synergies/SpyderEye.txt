@@ -1,0 +1,1 @@
+Enemies Spyder Webs now give blood when hit and more blood on death. Minor DMG increase
