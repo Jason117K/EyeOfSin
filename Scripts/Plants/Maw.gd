@@ -25,9 +25,9 @@ const DIGESTION_TIME = 3.0  # Match existing digestion_time variable
 
 # IDLE state offsets for each tentacle (relative to maw center)
 const IDLE_OFFSETS = [
-	Vector2(-20, -15),  # Tentacle 1: upper left
-	Vector2(0, -20),    # Tentacle 2: straight up
-	Vector2(20, -15)    # Tentacle 3: upper right
+	Vector2(307.0, 282),  # Tentacle 1: upper left
+	Vector2(206, 293),    # Tentacle 2: straight up
+	Vector2(202, 224)    # Tentacle 3: upper right
 ]
 
 # Tentacle state tracking
@@ -194,7 +194,9 @@ func assign_tentacle_to_target(target):
 		tentacle.extend_timer = 0.0  # Reset timeout
 
 		# Move ArmTarget to enemy position (Arm will follow)
-		tentacle.target.global_position = target.global_position
+		var tween = create_tween()
+		tween.tween_property(tentacle.target, "global_position", target.global_position, 5.0)
+		#tentacle.target.global_position = target.global_position
 
 		# Track assignment
 		attacking_tentacles[tentacle] = target
@@ -286,7 +288,7 @@ func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: floa
 	"""Handle RETRACTING state: Pulling enemy to maw center"""
 
 	# Move target toward maw center
-	var maw_center = global_position
+	var maw_center = $AnimatedSprite2D.global_position
 	tentacle.target.global_position = maw_center
 
 	# Keep enemy attached if still valid
@@ -302,6 +304,8 @@ func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: floa
 
 	if distance_to_center < RETRACT_DISTANCE_THRESHOLD:
 		finish_tentacle_retraction(tentacle)
+	else:
+		print(RETRACT_DISTANCE_THRESHOLD, "Dist to cent is ", distance_to_center)
 
 
 func start_tentacle_retraction(tentacle: TentacleState) -> void:
@@ -322,13 +326,15 @@ func finish_tentacle_retraction(tentacle: TentacleState) -> void:
 		tentacle.arm.shadow_node.visible = false
 
 	# Damage enemy if still valid
+	print("Enemy is ", enemy)
 	if is_instance_valid(enemy):
+		print("Enemy Is Valid")
 		enemy.visible = false
 		var enemyCompManager = enemy.getCompManager()
 		enemyCompManager.take_damage(9999)
 
 		# Audio feedback
-		AudioManager.create_2d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_CHOMP)
+		#AudioManager.create_2d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_CHOMP)
 
 		# Handle buffs (walnut health gain)
 		if isWalnutBuffed:
