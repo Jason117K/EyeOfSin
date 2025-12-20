@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tmcuyaasqw17"
-path="res://.godot/imported/tentacle_icon.svg-6533d3ca8fcfca20669677d185359c59.ctex"
+path="res://.godot/imported/tentacle_icon.svg-66edc32efac44425c0a4c637205be9b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://svg/tentacle_icon.svg"
-dest_files=["res://.godot/imported/tentacle_icon.svg-6533d3ca8fcfca20669677d185359c59.ctex"]
+source_file="res://new folder/svg/tentacle_icon.svg"
+dest_files=["res://.godot/imported/tentacle_icon.svg-66edc32efac44425c0a4c637205be9b5.ctex"]
 
 [params]
 

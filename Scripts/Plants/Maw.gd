@@ -87,6 +87,7 @@ func setup_tentacles():
 	add_child(tentacle1)
 	tentacle1.z_index = z_index - 1
 	#tentacle1.position += Vector2(0, -2)
+	tentacle1.position += Vector2(256,256)
 	tentacle1.set_colors(tentacle1_start_color, tentacle1_end_color)
 	tentacle1.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle1))
 	tentacles.append(tentacle1)
@@ -95,6 +96,7 @@ func setup_tentacles():
 	# Second tentacle setup
 	tentacle2 = tentacle_scene.instantiate()
 	add_child(tentacle2)
+	tentacle2.position += Vector2(256,256)
 	tentacle2.z_index = z_index - 1
 	tentacle2.set_colors(tentacle2_start_color, tentacle2_end_color)
 	tentacle2.set_pulse(true, 2.0, 0.25)
@@ -122,10 +124,15 @@ func setup_tentacles():
 	tentacle3.wriggle_dampening = 0.7
 	tentacle3.secondary_frequency = 1.5
 	#tentacle3.position += Vector2(-3, -2)
+	tentacle3.position += Vector2(256,256)
 	tentacle3.connect("retraction_complete", Callable(self, "_on_tentacle_retraction_complete").bind(tentacle3))
 	tentacles.append(tentacle3)
 	available_tentacles.append(tentacle3)
 
+
+func get_end_location():
+	return tentacle1.get_end_location()
+	
 #Constantly check for enemies in range and assign them for eating appropriately 
 func _process(_delta):
 	if enemies_to_eat.size()>0:
@@ -200,6 +207,7 @@ func _on_tentacle_retraction_complete(tentacle):
 	
 			charges -= 1
 			tentacle.visible = false  # Hide tentacle after retraction
+
 			#enemy.queue_free()
 		else:
 			print(self.name , "MAW JUST ATE NOTHINGGG QQ")

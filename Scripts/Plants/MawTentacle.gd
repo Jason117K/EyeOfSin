@@ -79,11 +79,19 @@ func resize_arrays() -> void:
 	pos.resize(pointCount)
 	posPrev.resize(pointCount)
 
+func get_end_location():
+	var returnPos
+	for i in range(pointCount):
+		returnPos = pos[i] 
+	print("Return Pos is ", returnPos)
+	return returnPos
+		
 func init_position() -> void:
 	var start_pos = to_global(anchor_position)
 	for i in range(pointCount):
 		pos[i] = start_pos + Vector2(constrain * i, 0)
 		posPrev[i] = start_pos + Vector2(constrain * i, 0)
+		#print("Pos ", i, " is ", pos[i])
 
 func setup_line_color() -> void:
 	if use_gradient:

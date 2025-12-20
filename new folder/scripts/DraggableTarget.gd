@@ -7,6 +7,25 @@ class_name ArmTarget extends Node2D
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
+var og_global_position
+
+func _ready() -> void:
+	og_global_position = global_position
+
+func get_grabbing_position():
+	global_position = get_parent().get_end_location()
+	return global_position
+
+
+func revert_to_normal_position():
+	global_position = og_global_position
+	return global_position
+	
+func _physics_process(delta: float) -> void:
+	#if isGrabbing:
+		#global_position = get_parent().get_end_location()
+	pass
+	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_event := event as InputEventMouseButton

@@ -91,6 +91,7 @@ var _segments: Array[Vector2] = []
 var _segment_lengths: Array[float] = []
 var _base_position: Vector2
 var _wave_time: float = 0.0
+
 #endregion
 
 ## Runs on scene load and sets up segments.
@@ -103,8 +104,9 @@ func _ready() -> void:
 
 ## Runs each physics frame applying IK, constraints, wave motion, then constraints again.
 func _physics_process(delta: float) -> void:
+	var target_global :Vector2
 	# Get target in parent scene global space
-	var target_global: Vector2 = target.global_position if target else get_global_mouse_position()
+	target_global= target.global_position if target else get_global_mouse_position()
 
 	# Convert to Arm's local coordinate space
 	var target_local: Vector2 = to_local(target_global)

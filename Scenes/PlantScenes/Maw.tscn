@@ -1487,6 +1487,7 @@ autoplay = "spawn"
 script = ExtResource("5_fxtok")
 
 [node name="DetectionComponent" type="Area2D" parent="."]
+visible = false
 position = Vector2(256, 256)
 collision_mask = 6
 
@@ -1669,10 +1670,44 @@ sprite_frames = SubResource("127")
 animation = &"New Anim"
 
 [node name="Arm" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
+position = Vector2(259, 256)
 target = NodePath("../ArmTarget")
+max_length = 60.0
+wave_speed = 2.0
+line_width = 5.0
+
+[node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
+points = PackedVector2Array(112.595, 131.435, 115.299, 132.885, 116.983, 135.741, 118.017, 139.032, 119.327, 142.218, 121.243, 144.948, 123.629, 147.006, 126.274, 148.295, 128.984, 148.897, 131.594, 148.691, 134.367, 149.182, 137.037, 150.619, 139.282, 152.866, 140.847, 155.74, 141.514, 159.023, 141.365, 162.42, 141.913, 165.799, 143.501, 168.753, 145.873, 170.866, 148.622, 171.81, 151.166, 171.355, 153.109, 169.991, 155.339, 169.003, 157.969, 169.101, 160.479, 170.324)
+width = 5.0
+
+[node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
+points = PackedVector2Array(112.595, 126.435, 115.299, 127.26, 116.983, 129.491, 118.017, 132.157, 119.327, 134.718, 121.243, 136.823, 123.629, 138.256, 126.274, 138.92, 128.984, 138.897, 131.594, 138.066, 134.367, 137.932, 137.037, 138.744, 139.282, 140.366, 140.847, 142.615, 141.514, 145.273, 141.365, 148.045, 141.913, 150.799, 143.501, 153.128, 145.873, 154.616, 148.622, 154.935, 151.166, 153.855, 153.109, 151.866, 155.339, 150.253, 157.969, 149.726, 160.479, 150.324)
+width = 5.0
+
+[node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
+position = Vector2(259, 256)
+target = NodePath("../ArmTarget2")
+max_length = 60.0
+wave_speed = 2.0
+line_width = 5.0
+
+[node name="Arm3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
+position = Vector2(259, 256)
+target = NodePath("../ArmTarget3")
+max_length = 60.0
+wave_speed = 2.0
+line_width = 5.0
 
 [node name="ArmTarget" parent="." instance=ExtResource("20_6aeqa")]
-position = Vector2(264, 396)
+visible = false
+position = Vector2(307, 282)
+
+[node name="ArmTarget2" parent="." instance=ExtResource("20_6aeqa")]
+position = Vector2(206, 293)
+
+[node name="ArmTarget3" parent="." instance=ExtResource("20_6aeqa")]
+visible = false
+position = Vector2(202, 224)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
@@ -1680,3 +1715,4 @@ position = Vector2(264, 396)
 [connection signal="timeout" from="DigestionTimer" to="." method="_on_DigestionTimer_timeout"]
 
 [editable path="BuffNodesComponent"]
+[editable path="Arm"]
