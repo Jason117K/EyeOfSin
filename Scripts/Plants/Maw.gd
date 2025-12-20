@@ -24,8 +24,8 @@ const MAX_EXTEND_TIME = 3.0  # Timeout for stuck tentacles
 const DIGESTION_TIME = 3.0  # Match existing digestion_time variable
 
 # Extension/Retraction animation speeds
-const EXTEND_DURATION = 2.0  # Seconds to fully extend to enemy
-const RETRACT_DURATION = 1.5  # Seconds to fully retract to maw center
+const EXTEND_DURATION = 0.75  # Seconds to fully extend to enemy
+const RETRACT_DURATION = 0.5  # Seconds to fully retract to maw center
 
 # IDLE state offsets for each tentacle (relative to maw center)
 const IDLE_OFFSETS = [
