@@ -44,3 +44,6 @@ func show_all_plant_buttons():
 	# Show Spyder
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true
+
+func add_sun(sunAmount):
+	plantManager.add_sun(sunAmount)

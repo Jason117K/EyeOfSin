@@ -19,8 +19,6 @@ var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
 
-var upcomingLevel 
-var upcomingLevelAlt  
 
 func _ready() -> void:
 	self.visible = false 
@@ -60,8 +58,8 @@ func _on_return_to_menu_pressed() -> void:
 	Global.unlockLevel(level_unlocked)
 
 func update_level(this_upcomingLevel,this_upcomingLevelAlt):
-	upcomingLevel = this_upcomingLevel
-	upcomingLevelAlt = this_upcomingLevelAlt
+	next_level = this_upcomingLevel
+	next_level_alt = this_upcomingLevelAlt
 	pass
 	
 func lose():
