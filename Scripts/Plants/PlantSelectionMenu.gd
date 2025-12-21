@@ -11,6 +11,7 @@ var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being 
 var preview_sprites: Array = [] # Holds array of preview sprites 
 var is_previewing: bool = false # Whether or not we are currently previewing 
 var canRemove := false 
+var selected_plant_name : String = "Sunflower"
 
 signal clicked_Eye
 signal codex_clicked
@@ -230,6 +231,7 @@ func increaseSunflowerCost():
 	
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
 func _on_SunflowerButton_pressed():
+	selected_plant_name = "Sunflower"
 	#Global.incrementSunflowerCountVisual()
 	var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	
@@ -256,6 +258,7 @@ func _on_SunflowerButton_pressed():
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_WalnutButton_pressed():
+	selected_plant_name = "Walnut"
 	selected_plant = walnut_scene
 	var temp_instance = walnut_scene.instantiate()
 	create_preview(walnut_scene)
@@ -272,6 +275,7 @@ func _on_WalnutButton_pressed():
 
 # Plays Sound and Makes the Maw the current selected plant, changing label & preview image 
 func _on_MawButton_pressed():
+	selected_plant_name = "Maw"
 	selected_plant = maw_scene
 	var temp_instance = maw_scene.instantiate()	
 	create_preview(maw_scene)
@@ -287,6 +291,7 @@ func _on_MawButton_pressed():
 
 # Plays Sound and Makes the EggWorm the current selected plant, changing label & preview image 
 func _on_EggButton_pressed():
+	selected_plant_name = "EggWyrm"
 	selected_plant = egg_scene
 	create_preview(egg_scene)
 	var temp_instance = egg_scene.instantiate()
@@ -302,6 +307,7 @@ func _on_EggButton_pressed():
 
 # Plays Sound and Makes the EyeBomb the current selected plant, changing label & preview image 
 func _on_EyeButton_pressed():
+	selected_plant_name = "Bomb"
 	selected_plant = bomb_scene
 	create_preview(bomb_scene)
 	var temp_instance = bomb_scene.instantiate()
@@ -317,6 +323,7 @@ func _on_EyeButton_pressed():
 	
 # Plays Sound and Makes the Hive the current selected plant, changing label & preview image 
 func _on_HiveButton_pressed():
+	selected_plant_name = "Hive"
 	selected_plant = hive_scene
 	create_preview(hive_scene)
 	var temp_instance = hive_scene.instantiate()

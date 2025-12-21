@@ -37,8 +37,8 @@ signal retraction_complete
 var enemy = null
 
 # State management
-enum State {IDLE_WRIGGLE, EXTENDING, ATTACHED, RETRACTING}
-var current_state = State.IDLE_WRIGGLE
+enum TentState {IDLE_WRIGGLE, EXTENDING, ATTACHED, RETRACTING}
+var current_state = TentState.IDLE_WRIGGLE
 var initial_position: Vector2
 var anchor_position: Vector2
 var target_position: Vector2
@@ -155,7 +155,7 @@ func start_grab_sequence() -> void:
 		return
 		
 	visible = true
-	current_state = State.EXTENDING
+	current_state = TentState.EXTENDING
 	target_position = enemy.global_position
 	extend_timeout = 0.0  # Reset timeout
 	
@@ -183,14 +183,14 @@ func _process(delta) -> void:
 		return
 	
 	match current_state:
-		State.IDLE_WRIGGLE:
+		TentState.IDLE_WRIGGLE:
 			update_wriggle(delta)
 			if enemy and is_instance_valid(enemy):
 				var distance = pos[pointCount-1].distance_to(enemy.global_position)
 				if distance < 200:
 					start_grab_sequence()
 					
-		State.EXTENDING:
+		TentState.EXTENDING:
 			# FIX: Track extension timeout
 			extend_timeout += delta
 			if extend_timeout > max_extend_time:
@@ -215,13 +215,13 @@ func _process(delta) -> void:
 			posPrev[pointCount-1] = pos[pointCount-1] - dir * grab_speed * delta
 			
 			if tip_pos.distance_to(target_position) < 10:
-				current_state = State.ATTACHED
+				current_state = TentState.ATTACHED
 				AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_GRAB)
 				#print("QQ MAW GRABBED ENEMY")
 				enemy.global_position = pos[pointCount-1]
 				_start_attach_timer()
 		
-		State.ATTACHED:
+		TentState.ATTACHED:
 			if is_instance_valid(enemy):
 				enemy.global_position = pos[pointCount-1]
 			else:
@@ -230,7 +230,7 @@ func _process(delta) -> void:
 					print("[Tentacle] Enemy died while attached, retracting")
 				start_retraction()
 		
-		State.RETRACTING:
+		TentState.RETRACTING:
 			var start_pos = to_global(anchor_position)
 			var dir = (start_pos - pos[pointCount-1]).normalized()
 			pos[pointCount-1] += dir * retract_speed * delta
@@ -254,7 +254,7 @@ func _process(delta) -> void:
 
 # FIX: Add helper function to cleanly return to idle
 func return_to_idle() -> void:
-	current_state = State.IDLE_WRIGGLE
+	current_state = TentState.IDLE_WRIGGLE
 	enemy = null
 	extend_timeout = 0.0
 	time_elapsed = 0.0
@@ -263,7 +263,7 @@ func return_to_idle() -> void:
 
 # FIX: Add helper function to start retraction
 func start_retraction() -> void:
-	current_state = State.RETRACTING
+	current_state = TentState.RETRACTING
 	visible_points = pointCount
 
 # FIX: Add helper function to finish retraction
@@ -287,7 +287,7 @@ func _on_attach_timeout() -> void:
 
 func update_points(delta) -> void:
 	for i in range(1, pointCount-1):
-		if current_state != State.IDLE_WRIGGLE:
+		if current_state != TentState.IDLE_WRIGGLE:
 			var velocity = (pos[i] - posPrev[i]) * dampening
 			posPrev[i] = pos[i]
 			pos[i] += velocity + (gravity * delta)

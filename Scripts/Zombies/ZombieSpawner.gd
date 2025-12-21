@@ -14,6 +14,8 @@ var ticker_zombie_scene = preload("res://Scenes/ZombieScenes/TickerZombie.tscn")
 var football_zombie_scene = preload("res://Scenes/ZombieScenes/FootballZombie.tscn")
 
 @export var make_green := false
+@export var astarGridContainer : Node
+@export var target_cell : Node
 
 # Array to hold zombie types
 var wave1_zombies = []  
@@ -123,6 +125,7 @@ func spawn_zombie():
 					zombie_instance.position = self.position + Vector2(0,-4)
 				if "Screen" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)					
+				zombie_instance.setup(astarGridContainer.astar_grid,target_cell.global_position)
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				
 				if make_green :

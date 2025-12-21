@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dlg0sfn1ax4sn" path="res://Assets/Zombies/Animations/DocOc/DocOcWalkInjuredWeb-Sheet.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://d4b0cn82fjmj8" path="res://Assets/Zombies/Animations/DocOc/DocOcWalkINJURED-Sheet.png" id="16"]
 
-
 [sub_resource type="RectangleShape2D" id="17"]
 size = Vector2(8.75, 21)
 
@@ -748,5 +747,7 @@ target_position = Vector2(-28, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

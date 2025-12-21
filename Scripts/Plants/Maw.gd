@@ -14,7 +14,7 @@ var tentacle2_end_color := Color(0.35, 0.0, 0.5, 1.0)   # Dark purple
 var tentacle3_end_color := Color(1.0, 1.0, 0.0, 1.0)    # Yellow
 
 # Tentacle state machine
-enum State {IDLE, EXTENDING, ATTACHED, RETRACTING, DIGESTING}
+enum TentState {IDLE, EXTENDING, ATTACHED, RETRACTING, DIGESTING}
 
 # Tentacle behavior configuration
 const GRAB_DISTANCE_THRESHOLD = 10.0
@@ -38,7 +38,7 @@ const IDLE_OFFSETS = [
 class TentacleState:
 	var arm: Arm
 	var target: ArmTarget
-	var state: State
+	var state: TentState
 	var enemy: Node2D
 	var timer: float = 0.0
 	var extend_timer: float = 0.0  # Timeout tracking
@@ -46,7 +46,7 @@ class TentacleState:
 	func _init(p_arm: Arm, p_target: ArmTarget):
 		arm = p_arm
 		target = p_target
-		state = State.IDLE
+		state = TentState.IDLE
 		enemy = null
 		timer = 0.0
 		extend_timer = 0.0
@@ -163,7 +163,7 @@ func _process(delta):
 
 	# Update digesting tentacles
 	for tentacle in tentacles:
-		if tentacle.state == State.DIGESTING:
+		if tentacle.state == TentState.DIGESTING:
 			tentacle.timer += delta
 			if tentacle.timer >= DIGESTION_TIME:
 				complete_digestion(tentacle)
@@ -192,7 +192,7 @@ func assign_tentacle_to_target(target):
 		var tentacle: TentacleState = available_tentacles.pop_front()
 
 		# Setup tentacle state
-		tentacle.state = State.EXTENDING
+		tentacle.state = TentState.EXTENDING
 		tentacle.enemy = target
 		tentacle.timer = 0.0
 		tentacle.extend_timer = 0.0  # Reset timeout
@@ -228,13 +228,13 @@ func update_tentacles(delta: float) -> void:
 			abort_tentacle(tentacle)
 			continue
 
-		# State machine
+		# TentState machine
 		match tentacle.state:
-			State.EXTENDING:
+			TentState.EXTENDING:
 				update_extending_state(tentacle, enemy, delta)
-			State.ATTACHED:
+			TentState.ATTACHED:
 				update_attached_state(tentacle, enemy, delta)
-			State.RETRACTING:
+			TentState.RETRACTING:
 				update_retracting_state(tentacle, enemy, delta)
 
 
@@ -260,7 +260,7 @@ func update_extending_state(tentacle: TentacleState, enemy: Node2D, delta: float
 
 	if distance_to_enemy < GRAB_DISTANCE_THRESHOLD:
 		# Transition to ATTACHED
-		tentacle.state = State.ATTACHED
+		tentacle.state = TentState.ATTACHED
 		tentacle.timer = 0.0
 
 		# Audio feedback
@@ -314,7 +314,7 @@ func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: floa
 
 func start_tentacle_retraction(tentacle: TentacleState) -> void:
 	"""Begin retraction sequence"""
-	tentacle.state = State.RETRACTING
+	tentacle.state = TentState.RETRACTING
 
 	if debug_mode:
 		print("[Maw] Starting tentacle retraction")
@@ -353,7 +353,7 @@ func finish_tentacle_retraction(tentacle: TentacleState) -> void:
 			web_ball.travel_time = 1.5
 
 	# Start digestion
-	tentacle.state = State.DIGESTING
+	tentacle.state = TentState.DIGESTING
 	tentacle.timer = 0.0
 
 	# Consume charge (matches old system timing)
@@ -368,7 +368,7 @@ func finish_tentacle_retraction(tentacle: TentacleState) -> void:
 
 func abort_tentacle(tentacle: TentacleState) -> void:
 	"""Abort current attack and return tentacle to idle"""
-	tentacle.state = State.IDLE
+	tentacle.state = TentState.IDLE
 	tentacle.enemy = null
 	tentacle.timer = 0.0
 	tentacle.extend_timer = 0.0
@@ -390,7 +390,7 @@ func abort_tentacle(tentacle: TentacleState) -> void:
 func complete_digestion(tentacle: TentacleState) -> void:
 	"""Return tentacle to IDLE after digestion"""
 	# Return to IDLE state
-	tentacle.state = State.IDLE
+	tentacle.state = TentState.IDLE
 	tentacle.enemy = null
 	tentacle.timer = 0.0
 

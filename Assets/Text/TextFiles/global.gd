@@ -14,7 +14,23 @@ var sunflowerCountVisual := 0
 var game_controller : GameController
 var plant_selection_menu 
 var plant_selection_menu_alt 
+var game_astar_grid
+var solidPoint 
+var solidPointSet : bool = false 
 
+func get_solid_point():
+	return solidPoint
+	
+func set_solid_point(sP):
+	solidPoint = sP
+	solidPointSet = true 
+
+func register_grid(passedGrid):
+	game_astar_grid = passedGrid
+
+func get_grid():
+	print("GRID FOTTT")
+	return game_astar_grid
 
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()

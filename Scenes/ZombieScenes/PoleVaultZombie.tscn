@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b78q3ipyvju71" path="res://Assets/Zombies/Animations/HeadDrag/HeadDragZombieWebAttack-Sheet.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://brskuj7wo2ibg" path="res://Assets/Zombies/Animations/HeadDrag/HeadDragZombieWebWalk-Sheet.png" id="15"]
 
-
 [sub_resource type="RectangleShape2D" id="1"]
 
 [sub_resource type="ShaderMaterial" id="44"]
@@ -424,6 +423,8 @@ collide_with_areas = true
 
 [node name="SpecialMoveComp" type="Node2D" parent="."]
 script = ExtResource("12")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
