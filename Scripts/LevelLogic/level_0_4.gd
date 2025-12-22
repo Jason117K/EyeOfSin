@@ -1,10 +1,9 @@
 extends Control
 
 enum TutorialState {
-	FORCE_SELECT_MAW,
-	FORCE_PLACE_MAW,
-	EXPLAIN_CODEX,
-	EXPLAIN_FLESHEATER_ZOMBIE,
+	FORCE_SELECT_WYRM,
+	FORCE_PLACE_WYRM,
+	EXPLAIN_SUMMONER_ZOMBIE,
 	TUTORIAL_P1_DONE,
 	TUTORIAL_P2_DONE
 }
@@ -20,27 +19,27 @@ enum TutorialState {
 
 
 
+var level05 = "res://Scenes/LevelScenes/Level0-3.tscn"
+var level05Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_WYRM
+var summonerExplained := false 
+var wave2Started := false 
+var summoner_zombie_demo_scene = preload("res://Scenes/Tutorials/summoner_zombie_demo.tscn")
+
 var level04 = "res://Scenes/LevelScenes/Level0-4.tscn"
 var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
-var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_MAW
-var fleshEaterExplained := false 
-var wave2Started := false 
-var fleshEater_zombie_demo_scene = preload("res://Scenes/Tutorials/fleshEater_zombie_demo.tscn")
 
-var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
-var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+const TUTORIAL_SELECT_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
+const TUTORIAL_PLACE_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
+const TUTORIAL_EXPLAIN_SUMMONER = "res://Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 
-const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
-const TUTORIAL_PLACE_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
-const TUTORIAL_EXPLAIN_FLESHEATER = "res://Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
-const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.txt"
 
 
 
 func _ready():
-	pause_Button.set_restart_levels(level03,level03Alt)
+	pause_Button.set_restart_levels(level04,level04Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	toolTips.set_text(TUTORIAL_SELECT_MAW)
+	toolTips.set_text(TUTORIAL_SELECT_WYRM)
 	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
 	
@@ -49,14 +48,14 @@ func _ready():
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
-	plantManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
+	plantManager.connect("eggWorm_placed", Callable(self, "_on_wyrm_placed"))
 	plantSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	
 	# Connect to button presses
-	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
-	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
+	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
+	wyrm_button.connect("pressed", Callable(self, "_on_wyrm_button_pressed"))
 	# Start tutorial
-	_transition_to_state(TutorialState.FORCE_SELECT_MAW)
+	_transition_to_state(TutorialState.FORCE_SELECT_WYRM)
 	
 	
 	levelSwitcher.update_level(level04,level04Alt)
@@ -80,19 +79,17 @@ func start_game():
 # Input filtering system - intercepts input based on tutorial state
 func _input(event):
 	match tutorial_state:
-		TutorialState.FORCE_SELECT_MAW:
-			_handle_force_select_maw_input(event)
-		TutorialState.FORCE_PLACE_MAW:
-			_start_force_place_maw()
-		TutorialState.EXPLAIN_FLESHEATER_ZOMBIE:
-			if fleshEaterExplained:
+		TutorialState.FORCE_SELECT_WYRM:
+			_handle_force_select_wyrm_input(event)
+		TutorialState.FORCE_PLACE_WYRM:
+			_start_force_place_wyrm()
+		TutorialState.EXPLAIN_SUMMONER_ZOMBIE:
+			if summonerExplained:
 				pass
 			else:
 				_start_explain_fleshEater_zombie()
 			#_start_explain_chimera()
-		TutorialState.EXPLAIN_CODEX:
-			pass
-			#_start_explain_codex()
+
 
 
 
@@ -102,17 +99,13 @@ func _transition_to_state(new_state: TutorialState):
 	tutorial_state = new_state
 
 	match new_state:
-		TutorialState.FORCE_SELECT_MAW:
-			_start_force_select_maw()
-		TutorialState.FORCE_PLACE_MAW:
-			_start_force_place_maw()
-		TutorialState.EXPLAIN_FLESHEATER_ZOMBIE:
+		TutorialState.FORCE_SELECT_WYRM:
+			_start_force_select_wyrm()
+		TutorialState.FORCE_PLACE_WYRM:
+			_start_force_place_wyrm()
+		TutorialState.EXPLAIN_SUMMONER_ZOMBIE:
 			pass
 			#_start_explain_chimera()
-		TutorialState.EXPLAIN_CODEX:
-			var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
-			codex_buton.visible = true  
-			_start_explain_codex()
 		TutorialState.TUTORIAL_P2_DONE:
 			toolTips._on_Button_pressed()
 			
@@ -123,101 +116,93 @@ func _on_tooltip_hidden():
 	print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
 	print("[Tutorial] Current time: ", Time.get_ticks_msec())
 	match tutorial_state:
-		TutorialState.FORCE_SELECT_MAW:
+		TutorialState.FORCE_SELECT_WYRM:
 			pass
-		TutorialState.FORCE_PLACE_MAW:
+		TutorialState.FORCE_PLACE_WYRM:
 			print("UNPPAUSE HERE")
 			get_tree().paused = false
-		TutorialState.EXPLAIN_FLESHEATER_ZOMBIE:
+		TutorialState.EXPLAIN_SUMMONER_ZOMBIE:
 			print("[Tutorial] FleshEater explained - waiting for Wave 2")
 			print("UNPPAUSE HERE")
 			get_tree().paused = false  # Unpause game
 
-		TutorialState.EXPLAIN_CODEX:
-			
-			_start_explain_codex()	
+
 	
 	
 func _on_wave_2_started():
 	print("[Tutorial] Wave 2 started")
-	_transition_to_state(TutorialState.EXPLAIN_FLESHEATER_ZOMBIE)
+	_transition_to_state(TutorialState.EXPLAIN_SUMMONER_ZOMBIE)
 
 func _on_wave_3_started():
 	print("[Tutorial] Wave 3 Started")
-	_transition_to_state(TutorialState.EXPLAIN_CODEX)
+
 
 	
-func _start_explain_codex():
-	toolTips.set_text(TUTORIAL_SELECT_CODEX)
-	toolTips.noButtonShow()
-	#Show spotlight on Codex button
-	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
-	show_spotlight_at_node(codex_buton)
-			
-func _handle_force_select_maw_input(event):
-	# Only allow clicking Maw button, block all keyboard input
+
+func _handle_force_select_wyrm_input(event):
+	# Only allow clicking Wyrm button, block all keyboard input
 	if event is InputEventKey:
 		get_viewport().set_input_as_handled()
-	# Mouse input: Maw button gets clicks via visibility, others hidden	
+	# Mouse input: Wyrm button gets clicks via visibility, others hidden	
 	
-func _handle_force_place_maw_input(event):
+func _handle_force_place_wyrm_input(event):
 	# Allow mouse clicks for placement, block X key (deselect)
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_X:
 			get_viewport().set_input_as_handled()
 			
-func _start_force_select_maw():
-	toolTips.set_text(TUTORIAL_SELECT_MAW)
+func _start_force_select_wyrm():
+	toolTips.set_text(TUTORIAL_SELECT_WYRM)
 	toolTips.noButtonShow()
 
-	hide_all_plant_buttons_except_maw()
-	highlight_maw_button()
+	hide_all_plant_buttons_except_wyrm()
+	highlight_wyrm_button()
 
-	# ADD THIS: Show spotlight on Maw button
-	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
-	show_spotlight_at_node(maw_button)
+	# ADD THIS: Show spotlight on Wyrm button
+	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
+	show_spotlight_at_node(wyrm_button)
 
 	waveManager.canStartGame = false
 	plantSelectionMenu.canSwapScenes = false
 	
-func _start_force_place_maw():
-	print("[Tutorial] Starting FORCE_PLACE_MAW")
-	toolTips.set_text(TUTORIAL_PLACE_MAW)
+func _start_force_place_wyrm():
+	print("[Tutorial] Starting FORCE_PLACE_WYRM")
+	toolTips.set_text(TUTORIAL_PLACE_WYRM)
 	toolTips.noButtonShow()
 
 	# Remove walnut highlight
-	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
-	plantSelectionMenu.remove_button_highlight(maw_button)
+	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
+	plantSelectionMenu.remove_button_highlight(wyrm_button)
 
 	# Hide spotlight (grid too large)
 	hide_spotlight()
 
-func _on_maw_button_pressed():
-	print("[Tutorial] Maw button pressed in state: ", TutorialState.keys()[tutorial_state])
-	if tutorial_state == TutorialState.FORCE_SELECT_MAW:
-		_transition_to_state(TutorialState.FORCE_PLACE_MAW)
+func _on_wyrm_button_pressed():
+	print("[Tutorial] Wyrm button pressed in state: ", TutorialState.keys()[tutorial_state])
+	if tutorial_state == TutorialState.FORCE_SELECT_WYRM:
+		_transition_to_state(TutorialState.FORCE_PLACE_WYRM)
 
 func _on_codex_button_pressed():
 	print("[Tutorial] Codex button pressed in state: ", TutorialState.keys()[tutorial_state])
 	_transition_to_state(TutorialState.TUTORIAL_P2_DONE)
 	
 
-func _on_maw_placed(grid_pos: Vector2):
-	print("[Tutorial] Maw placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
+func _on_wyrm_placed(grid_pos: Vector2):
+	print("[Tutorial] Wyrm placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
 
-	if tutorial_state == TutorialState.FORCE_PLACE_MAW:
-		print("[Tutorial] Maw placement complete - tutorial initial part finished")
+	if tutorial_state == TutorialState.FORCE_PLACE_WYRM:
+		print("[Tutorial] Wyrm placement complete - tutorial initial part finished")
 		toolTips.hide()
 		_transition_to_state(TutorialState.TUTORIAL_P1_DONE)
 		start_game()
 		# Tutorial complete - no further forced actions
 		
-func highlight_maw_button():
-	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
-	plantSelectionMenu.add_button_highlight(maw_button)	
+func highlight_wyrm_button():
+	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
+	plantSelectionMenu.add_button_highlight(wyrm_button)	
 	
 	
-func hide_all_plant_buttons_except_maw():
+func hide_all_plant_buttons_except_wyrm():
 	# Hide all buttons except Spyder
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = false
@@ -228,8 +213,8 @@ func hide_all_plant_buttons_except_maw():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = true 
 	
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = false
@@ -239,9 +224,9 @@ func hide_all_plant_buttons_except_maw():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel").visible = false
 
-	# Keep Maw visible
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = true
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = true
+
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = false
 
 
 func show_all_plant_buttons():
@@ -257,13 +242,18 @@ func show_all_plant_buttons():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true	
 
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = true 
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = true 
+	
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = true 
 
 # Spotlight helper functions 
 func _start_explain_fleshEater_zombie():
-	fleshEaterExplained = true 
+	summonerExplained = true 
 	print("[TUTORIAL] Start Explain FleshEater Zombie")
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_FLESHEATER)
-	toolTips.setComplexScene(fleshEater_zombie_demo_scene)
+	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_SUMMONER)
+	toolTips.setComplexScene(summoner_zombie_demo_scene)
 	toolTips.showButton()	
 
 ## Shows spotlight centered on a Control node

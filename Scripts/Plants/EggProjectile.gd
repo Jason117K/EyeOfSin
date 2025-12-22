@@ -12,7 +12,8 @@ var canGenSun := false
 
 
 func _ready() -> void:
-	print("ppp Spawned Egg p")
+	pass
+	#print("ppp Spawned Egg p")
 func _process(delta):
 	if canMove:
 		position.x += speed * delta  # Move the projectile to the right
@@ -27,7 +28,7 @@ func _on_PeaProjectile_area_entered(area):
 	print("Just Entered " , area )
 	if area.is_in_group("Zombie"):
 		if area.get_parent().get_parent() != self.get_parent().get_parent():
-			print("Early Return, Wrong Layer")
+			#print("Early Return, Wrong Layer")
 			return
 		print("No Return, Right Layer")
 		var compManager = area.getCompManager()

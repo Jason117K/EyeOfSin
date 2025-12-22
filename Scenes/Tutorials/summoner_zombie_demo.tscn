@@ -1,0 +1,141 @@
+[gd_scene load_steps=19 format=3 uid="uid://c2rph8r5d3cn5"]
+
+[ext_resource type="Texture2D" uid="uid://bk70css3txait" path="res://Assets/Zombies/UpdatedAnimations/Summoner 46x 44-Sheet.png" id="1_4wivs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b74up"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(460, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw8q3"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(506, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l46mc"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(552, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8os0f"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(598, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yetrn"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(644, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2da6"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(690, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_angsl"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(920, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ptu"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(966, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b48m2"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(1012, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p6q5"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(1058, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wo74"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(1104, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8jnf"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(1150, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of6hg"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(1196, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ierv"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(1242, 0, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a70r8"]
+atlas = ExtResource("1_4wivs")
+region = Rect2(1288, 0, 46, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e6x33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b74up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw8q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l46mc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8os0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yetrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2da6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_angsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ptu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b48m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p6q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wo74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8jnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of6hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ierv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a70r8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SummonerZombieDemo" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(160, 119)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lj1o")
+
+[node name="SummonerZombie" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(62, 56)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e6x33")
+autoplay = "default"

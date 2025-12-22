@@ -55,7 +55,8 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 		print(area, " is INDEED in Zombie Group")
 		if area.get_parent().get_parent() != self.get_parent().get_parent():
-			print("Early Return Rr")
+			#print("Early Return Rr")
+			pass
 			return
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()

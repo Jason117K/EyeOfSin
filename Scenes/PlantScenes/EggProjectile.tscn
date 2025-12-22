@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="1"]
 
 [node name="EggProjectile" type="Area2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_sfgus")
 speed = 600
 

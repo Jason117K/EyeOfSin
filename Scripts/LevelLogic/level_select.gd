@@ -23,6 +23,8 @@ var level0_2 = ("res://Scenes/LevelScenes/Level0-2.tscn")
 var level0_2Alt = ("res://Scenes/LevelScenes/Level0-2_Alternate.tscn")
 var level0_3 = ("res://Scenes/LevelScenes/Level0-3.tscn")
 var level0_3Alt = ("res://Scenes/LevelScenes/Level0-3_Alternate.tscn")
+var level0_4 = ("res://Scenes/LevelScenes/Level0-4.tscn")
+var level0_4Alt = ("res://Scenes/LevelScenes/Level0-4_Alternate.tscn")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -66,7 +68,7 @@ func _on_level_3_pressed() -> void:
 func _on_level_4_pressed() -> void:
 	if canPlayLevel4:
 		#assert(get_tree().change_scene_to_file(level4) ==OK)
-		Global.game_controller.change_scene(level4)
+		Global.game_controller.change_dual_scenes(level0_4,level0_4Alt )
 
 func _on_level_5_pressed() -> void:
 	if canPlayLevel5:

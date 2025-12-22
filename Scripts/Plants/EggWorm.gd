@@ -51,6 +51,18 @@ var isCurrentlyBuffed = true
 
 
 func _ready():
+	
+	if self.is_in_group("Green"):
+		print(" I AM GREEN WYRM I WILL ATTACK GREEN")
+		$DMG_RayCast2D.collision_mask = 3
+		$DMG_RayCast2D.set_collision_mask_value(1,false)
+		$DMG_RayCast2D.set_collision_mask_value(2,false)
+		$DMG_RayCast2D.set_collision_mask_value(3,true)
+	else:
+		$DMG_RayCast2D.set_collision_mask_value(1,false)
+		$DMG_RayCast2D.set_collision_mask_value(2,true)
+		$DMG_RayCast2D.set_collision_mask_value(3,false)
+		
 		# Get reference to plant manager
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	#Verify sprite is set up correctly 

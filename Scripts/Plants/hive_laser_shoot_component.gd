@@ -101,9 +101,9 @@ func _process(delta: float) -> void:
 		return
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
-		print("ppp ray collider is" , collider)
+		#print("ppp ray collider is" , collider)
 		if collider:
-			print("ppp Collider Name is ", collider.name)
+			#print("ppp Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				if collider.is_in_group("Green"):
 					if self.is_in_group("Purple"):
@@ -186,17 +186,17 @@ func shoot_projectile():
 	
 # Fire a new laser 
 func fire() -> void:
-	print("ppp FIRE CALLED")
+	#print("ppp FIRE CALLED")
 	if isDisabled:
 		return
 	
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
 		if collider:
-			print("ppp Collider Name is ", collider.name)
+			#print("ppp Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
 				if !is_firing:
-					print("ppp Shoot Proj")
+					#print("ppp Shoot Proj")
 					shoot_projectile()
 					AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 					is_firing = true
@@ -205,9 +205,11 @@ func fire() -> void:
 					timer.wait_time = duration
 					timer.start()
 				else:
-					print("ppp is_firing is ", is_firing)
+					pass
+					#print("ppp is_firing is ", is_firing)
 			else:
-				print("ppp collider not in zombie group")
+				pass
+				#print("ppp collider not in zombie group")
 					
 
 # Update the laser points specifically, also taking into account buffs

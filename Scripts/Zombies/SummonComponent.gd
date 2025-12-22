@@ -59,6 +59,10 @@ func summon_backup():
 	for point in points:
 		#print("Adding Zombie to ", point.name)
 		var zombie_instance = BackUpDancerScene.instantiate()
+		if self.is_in_group("Green"):
+			zombie_instance.add_to_group("Green")
+		else:
+			zombie_instance.add_to_group("Purple")
 		
 		# Convert spawn point's position to global coordinates
 		var global_spawn_pos = point.global_position
