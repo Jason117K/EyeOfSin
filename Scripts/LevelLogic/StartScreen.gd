@@ -46,6 +46,8 @@ func _ready():
 	
 	levelSelectButton.pressed.connect(_on_level_select_button_pressed)
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	Global.hidePlantSelectionMenu()
 
 func _on_start_game_pressed() -> void:
 	print("I KNOW U WERE CLICKED")

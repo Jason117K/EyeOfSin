@@ -28,8 +28,8 @@ var lancerExplained := false
 var wave2Started := false
 var erupter_zombie_demo_scene = preload( "res://Scenes/Tutorials/erupter_zombie_demo.tscn")
 var lancer_zombie_demo_scene = preload("res://Scenes/Tutorials/lancer_zombie_demo.tscn")
-var level06 = "res://Scenes/LevelScenes/Level0-4.tscn"
-var level06Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
+var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
+var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
 
 const TUTORIAL_SELECT_HIVE = "res://Assets/Text/TextFiles/Level0-5_Tutorial_SelectHive.txt"
 const TUTORIAL_PLACE_HIVE = "res://Assets/Text/TextFiles/Level0-5_Tutorial_PlaceHive.txt"

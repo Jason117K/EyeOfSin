@@ -19,8 +19,8 @@ enum TutorialState {
 
 
 
-var level05 = "res://Scenes/LevelScenes/Level0-3.tscn"
-var level05Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
+var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_WYRM
 var summonerExplained := false 
 var wave2Started := false 

@@ -118,7 +118,54 @@ func place_empty_in_alt_scene(grid_pos):
 	
 	
 	
+func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:
+	print("Changing scene to ", new_scene)
 	
+	#Delete Old Scenes
+	
+	if !current_scenes.is_empty():
+		if delete:
+			print("Current Scenes is ",current_scenes )
+			print("Current Scenes 1 is ",current_scenes[1] )
+			current_scenes.remove_at(1)
+			print("Current Scenes 0 is ",current_scenes[0] )
+			current_scenes.remove_at(0)
+		
+	if current_scene == null:
+		print("Current scene : ", current_scene, " is null ")
+	else:
+		print("Current scene is : ", current_scene)
+		
+	if current_alt_scene != null:
+		if delete:
+			print("Delete Here1",current_scene)
+			current_alt_scene.queue_free() # Removes Node Entirely 					
+	
+	if current_scene != null:
+		if delete:
+			print("Delete Herqe",current_scene)
+			current_scene.queue_free() # Removes Node Entirely 
+		elif keep_running:
+			current_scene.visible = false # Keeps in memory and running 
+		else:
+			print("RRemoved Child")
+			scene.remove_child(current_scene) #Keeps in memory, does not run 
+			
+	# Wait one frame to ensure the old scenes are properly removed
+	await get_tree().process_frame
+	
+	var new = load(new_scene).instantiate()
+	scene.add_child(new)
+	current_scene = new 
+	
+	# Force physics update to ensure collision detection works
+	await get_tree().process_frame
+	get_tree().physics_frame
+	
+	current_scene._ready()
+	print("Current Scenes is now ", current_scenes)
+	print("Current Scene is now ", current_scene)
+
 	
 	
 	

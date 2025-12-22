@@ -59,10 +59,10 @@ current_level_alt = "res://Scenes/LevelScenes/Level0-1_Alternate.tscn"
 
 [node name="PlantSelectionMenu" parent="CurrentScene" instance=ExtResource("6_k0qbb")]
 visible = false
-offset_left = 8.0
-offset_top = 288.87
-offset_right = 8.0
-offset_bottom = 288.87
+offset_left = 3.0
+offset_top = 328.0
+offset_right = 3.0
+offset_bottom = 328.0
 scale = Vector2(0.8, 0.8)
 
 [node name="PauseButton" parent="CurrentScene" instance=ExtResource("7_27abl")]

@@ -31,18 +31,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 use_top_left = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Levels1-4" type="HBoxContainer" parent="CenterContainer/HBoxContainer3"]
+[node name="Levels1-4" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer3/Levels1-4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Level1" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level1" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -58,7 +62,7 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 1"
 
-[node name="Level2" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -74,7 +78,7 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 2"
 
-[node name="Level3" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level3" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -90,7 +94,14 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level  3"
 
-[node name="Level4" type="Button" parent="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Levels5-7" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Level4" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -106,14 +117,7 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 4"
 
-[node name="Levels5-7" type="HBoxContainer" parent="CenterContainer/HBoxContainer3"]
-layout_mode = 2
-
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/HBoxContainer3/Levels5-7"]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="Level5" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level5" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -130,8 +134,7 @@ theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 5
 "
 
-[node name="Level6" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
-visible = false
+[node name="Level6" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -147,7 +150,8 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 6"
 
-[node name="Level7" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level7" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -163,7 +167,7 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 7"
 
-[node name="Back" type="Button" parent="CenterContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -179,11 +183,11 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Back"
 
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level4" to="." method="_on_level_4_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels5-7/VBox/Level5" to="." method="_on_level_5_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels5-7/VBox/Level6" to="." method="_on_level_6_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels5-7/VBox/Level7" to="." method="_on_level_7_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer3/Levels5-7/VBox/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level7" to="." method="_on_level_7_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

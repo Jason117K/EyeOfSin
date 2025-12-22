@@ -31,6 +31,7 @@ var currentPlantCost
 var deselectText = " PRESS [X] TO DESELECT"
 
 @onready var preview_container = Node2D.new()
+@onready var panelContainer = $PanelContainer
 
 var SunFlowerButton
 var WalnutButton
@@ -59,6 +60,7 @@ var canSwapScenes = false
 @export var highlight_border_color: Color = Color.WHITE
 
 func _ready():
+	setPanelContainerWidth(100)
 	#Global.plant_selection_menu = self
 	if is_alt:
 		Global.plant_selection_menu_alt = self
@@ -202,14 +204,22 @@ func _input(event):
 				Global.game_controller.swap_scenes()
 			else:
 				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
+
+func setPanelContainerWidth(newWidth: int):
+	print("Panel Container Dimensions is ", panelContainer.size)
+	panelContainer.size.x = 71
+	print("Panel Container Dimensions is ", panelContainer.size)
+
 		
 func deselect_plant():
 	clear_preview()
 	release_all_focus()
 	selected_plant = null 			
+	setCanRemoveFalse()
 
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 
 func _on_PeashooterButton_pressed():
+	setCanRemoveFalse()
 	selected_plant = peashooter_scene
 	var temp_instance = peashooter_scene.instantiate()
 	create_preview(peashooter_scene)
@@ -232,7 +242,7 @@ func increaseSunflowerCost():
 func _on_SunflowerButton_pressed():
 	#Global.incrementSunflowerCountVisual()
 	var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
-	
+	setCanRemoveFalse()
 	selected_plant = sunflower_scene
 	var temp_instance = sunflower_scene.instantiate()
 	create_preview(sunflower_scene)
@@ -259,7 +269,7 @@ func _on_WalnutButton_pressed():
 	selected_plant = walnut_scene
 	var temp_instance = walnut_scene.instantiate()
 	create_preview(walnut_scene)
-	
+	setCanRemoveFalse()
 	currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
@@ -275,7 +285,7 @@ func _on_MawButton_pressed():
 	selected_plant = maw_scene
 	var temp_instance = maw_scene.instantiate()	
 	create_preview(maw_scene)
-	
+	setCanRemoveFalse()
 	currentPlantLabel.text = "MAW SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
@@ -290,7 +300,7 @@ func _on_EggButton_pressed():
 	selected_plant = egg_scene
 	create_preview(egg_scene)
 	var temp_instance = egg_scene.instantiate()
-		
+	setCanRemoveFalse()
 	currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
@@ -305,7 +315,7 @@ func _on_EyeButton_pressed():
 	selected_plant = bomb_scene
 	create_preview(bomb_scene)
 	var temp_instance = bomb_scene.instantiate()
-		
+	setCanRemoveFalse()	
 	currentPlantLabel.text = "EYE MINE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
@@ -320,7 +330,7 @@ func _on_HiveButton_pressed():
 	selected_plant = hive_scene
 	create_preview(hive_scene)
 	var temp_instance = hive_scene.instantiate()
-		
+	setCanRemoveFalse()	
 	currentPlantLabel.text = "HIVE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
 	currentPlantCost.text = str(temp_instance.get_cost())
