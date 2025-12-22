@@ -1,0 +1,183 @@
+[gd_scene load_steps=25 format=3 uid="uid://buthlnrhuihti"]
+
+[ext_resource type="Texture2D" uid="uid://b7odd4ng7wfua" path="res://Assets/Zombies/UpdatedAnimations/Ticker-Sheet.png" id="1_llkjp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn587"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(0, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6fpf"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(57, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l06yq"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(114, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksr5q"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(171, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6hs3"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(228, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oprj"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(285, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8dka"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(342, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8ab2"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(399, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqecc"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(456, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqp2v"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(513, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38477"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(570, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jwsh"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(627, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pnow"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(684, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo0ky"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(741, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpma4"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(798, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooian"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(855, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5rfm"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(912, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rag6d"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(969, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm8wl"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(1026, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plrip"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(1083, 0, 57, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hgn2"]
+atlas = ExtResource("1_llkjp")
+region = Rect2(1140, 0, 57, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cf2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn587")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6fpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l06yq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksr5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6hs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oprj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8dka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8ab2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqecc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqp2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38477")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jwsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pnow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo0ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpma4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooian")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5rfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rag6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm8wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hgn2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ErupterZombieDemo" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(160, 119)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lj1o")
+
+[node name="ErupterZombie" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(62, 56)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_2cf2j")
+autoplay = "default"
