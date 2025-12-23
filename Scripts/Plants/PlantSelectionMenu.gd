@@ -531,3 +531,9 @@ func _on_open_codex_button_pressed() -> void:
 
 func _on_open_demon_codex_button_pressed() -> void:
 	codex_clicked.emit()
+
+
+func _on_world_swap_button_pressed() -> void:
+	if canSwapScenes:
+		print("Can Swap Scenes is ", canSwapScenes)
+		Global.game_controller.swap_scenes()

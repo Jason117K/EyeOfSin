@@ -25,7 +25,8 @@ var amalgam_zombie_demo_scene = preload("res://Scenes/Tutorials/amalgam_zombie_d
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
 var gameStarted := false 
-
+var endScreen = "res://Scenes/LevelScenes/EndScreen.tscn"
+var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 
 const TUTORIAL_EXPLAIN_AMALGAM = "res://Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
@@ -43,7 +44,7 @@ func _ready():
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 
 	
-	levelSwitcher.update_level(level06,level06Alt)
+	levelSwitcher.update_level(endScreen,endScreenAlt)
 	
 	Global.unHidePlantSelectionMenu()
 	#start_game()

@@ -7,6 +7,10 @@
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -47,7 +51,7 @@ text = "THANKS FOR PLAYING!"
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_tmq5p")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("1")
 text = "PLAY AGAIN"
 
@@ -55,7 +59,7 @@ text = "PLAY AGAIN"
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_tmq5p")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("1")
 text = "QUIT"
 

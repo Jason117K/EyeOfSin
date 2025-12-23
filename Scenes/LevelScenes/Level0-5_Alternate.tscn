@@ -79,6 +79,7 @@ shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
 [node name="Level05Alternate" type="Control" groups=["Green"]]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +97,7 @@ sun_points = 1000
 process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_4xikw")]
-position = Vector2(747, 77)
+position = Vector2(740, 77)
 make_green = true
 Round1_Zombies = {
 "Base": 0,
@@ -131,10 +132,10 @@ Round3_Zombies = {
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_otain")]
 z_index = 1
-position = Vector2(-37, 0)
+position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_4xikw")]
-position = Vector2(747, 109)
+position = Vector2(740, 109)
 make_green = true
 Round2_Zombies = {
 "Base": 0,
@@ -159,10 +160,10 @@ Round3_Zombies = {
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("4_otain")]
 z_index = 1
-position = Vector2(-36, 1)
+position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_4xikw")]
-position = Vector2(746, 141)
+position = Vector2(740, 141)
 make_green = true
 Round2_Zombies = {
 "Base": 0,
@@ -187,10 +188,10 @@ Round3_Zombies = {
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_otain")]
 z_index = 1
-position = Vector2(-48, 0)
+position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_4xikw")]
-position = Vector2(751, 173)
+position = Vector2(740, 173)
 make_green = true
 Round2_Zombies = {
 "Base": 0,
@@ -215,10 +216,10 @@ Round3_Zombies = {
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_otain")]
 z_index = 1
-position = Vector2(-41, -1)
+position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_4xikw")]
-position = Vector2(754, 205)
+position = Vector2(740, 205)
 make_green = true
 Round1_Zombies = {
 "Base": 0,
@@ -253,10 +254,10 @@ Round3_Zombies = {
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("4_otain")]
 z_index = 1
-position = Vector2(-41, -1)
+position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" instance=ExtResource("3_4xikw")]
-position = Vector2(746, 241)
+position = Vector2(740, 241)
 make_green = true
 Round1_Zombies = {
 "Base": 0,
@@ -291,10 +292,10 @@ Round3_Zombies = {
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" instance=ExtResource("4_otain")]
 z_index = 1
-position = Vector2(-41, -1)
+position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_4xikw")]
-position = Vector2(744, 276)
+position = Vector2(740, 276)
 make_green = true
 Round1_Zombies = {
 "Base": 0,
@@ -329,7 +330,7 @@ Round3_Zombies = {
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" instance=ExtResource("4_otain")]
 z_index = 1
-position = Vector2(-41, -1)
+position = Vector2(-32, -1)
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("5_iv116")]
 position = Vector2(-64, 200)
@@ -501,38 +502,47 @@ flip_h = true
 [node name="Fish" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(542, 386)
+makeGreen = true
 
 [node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(515, 353)
+makeGreen = true
 
 [node name="Fish5" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(180, 329)
+makeGreen = true
 
 [node name="Fish6" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(37, 326)
+makeGreen = true
 
 [node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(573, 19)
+makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(455, 394)
+makeGreen = true
 
 [node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(315, 14)
+makeGreen = true
 
 [node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(573, 342)
+makeGreen = true
 
 [node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(633, 395)
+makeGreen = true
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 visible = false

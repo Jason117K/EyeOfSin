@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://f72ajnkx6ih5"]
+[gd_scene load_steps=12 format=3 uid="uid://f72ajnkx6ih5"]
 
 [ext_resource type="Texture2D" uid="uid://oa3umw3gyfq" path="res://Assets/Environment/Fish.png" id="1"]
+[ext_resource type="Script" uid="uid://dug8htun1h31b" path="res://Scripts/Environment/fish.gd" id="1_kc6tc"]
 [ext_resource type="Texture2D" uid="uid://dkrse75gra5mn" path="res://Assets/Environment/Animations/FishySheet-Sheet.png" id="2_of2bb"]
 [ext_resource type="Script" uid="uid://bh2tu0akjqnj8" path="res://Scripts/Environment/Swim.gd" id="4"]
-
+[ext_resource type="Texture2D" uid="uid://csye6272r1ly0" path="res://Assets/Environment/Animations/FishySheet-Green-export.png" id="4_kawxj"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 
@@ -13,6 +14,14 @@ region = Rect2(0, 0, 24, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kawxj"]
 atlas = ExtResource("2_of2bb")
+region = Rect2(24, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mih58"]
+atlas = ExtResource("4_kawxj")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kr4y"]
+atlas = ExtResource("4_kawxj")
 region = Rect2(24, 0, 24, 16)
 
 [sub_resource type="SpriteFrames" id="4"]
@@ -27,9 +36,21 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mih58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kr4y")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
 }]
 
 [node name="Fish" type="Area2D"]
+script = ExtResource("1_kc6tc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

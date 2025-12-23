@@ -16,8 +16,13 @@ var moveAmount: float
 var distanceMoved: float = 0.0
 var startPosition: Vector2
 var speed : float
+var make_green := false
 
 func _ready():
+	if make_green:
+		change_animation()
+		#_setup_shader()
+		
 	# Create random number generator
 	randomize()
 	
@@ -57,3 +62,10 @@ func _process(delta):
 		flip_h = !flip_h
 		# Reset distance tracking
 		distanceMoved = 0
+
+func updateAnim():
+	change_animation()
+
+
+func change_animation():
+	animation = "green"

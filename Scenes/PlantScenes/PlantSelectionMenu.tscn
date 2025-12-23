@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=21 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b6vva031ql0r0" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText1.png" id="3_yqvs4"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cs7hq3cbnjody" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText5.png" id="10_iafbj"]
 [ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://Assets/Plants/Cards/DESELECT_CARD.png" id="12_yqvs4"]
+[ext_resource type="Texture2D" uid="uid://w4n34nhafrdq" path="res://Assets/Plants/Cards/WORDSWAP_CARD.png" id="13_vvged"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="14_vvged"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
@@ -245,6 +246,15 @@ theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
 horizontal_alignment = 1
 
+[node name="WorldSwap" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="WorldSwapButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 67
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("13_vvged")
+
 [node name="CodexBG" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("14_vvged")]
 visible = false
 layout_mode = 2
@@ -260,6 +270,7 @@ mouse_filter = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/CodexBG/HBoxContainer/OpenDemonCodexButton" to="." method="_on_open_demon_codex_button_pressed"]
 
 [editable path="PanelContainer/VBoxContainer/HBoxContainer/CodexBG"]

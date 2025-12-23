@@ -1,9 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bteegsg6ig7de"]
 
-[ext_resource type="Texture2D" uid="uid://dap0pqr1o8ibf" path="res://Assets/Icons/WaveSkullIcon2.png" id="1"]
 [ext_resource type="Script" uid="uid://javwqvkctiff" path="res://Scripts/LevelLogic/WavePreview.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cp3hp8glu2u0p" path="res://Assets/Icons/SkullIconNew.png" id="2_6qtyv"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="3_6qtyv"]
-
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 32.0
@@ -12,7 +11,8 @@ radius = 32.0
 script = ExtResource("2")
 
 [node name="PreviewSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1")
+scale = Vector2(2, 2)
+texture = ExtResource("2_6qtyv")
 
 [node name="Area2D" type="Area2D" parent="."]
 

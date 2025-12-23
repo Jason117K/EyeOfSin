@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://3ls67604vxxj"]
+[gd_scene load_steps=3 format=3 uid="uid://3ls67604vxxj"]
 
+[ext_resource type="Texture2D" uid="uid://nmylu60joqud" path="res://Assets/UI/StatusBarVer1.2.png" id="1_nx033"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="1_qaivy"]
 
 [node name="UILayer" type="Control"]
@@ -12,6 +13,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(112, 31)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_nx033")
+
 [node name="SunCounter" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
@@ -19,11 +25,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="SunCounter"]
+visible = false
 custom_minimum_size = Vector2(225, 30)
 layout_mode = 0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="SunCounter"]
+visible = false
 custom_minimum_size = Vector2(221, 26)
 layout_mode = 0
 offset_left = 2.0
@@ -33,6 +41,7 @@ offset_bottom = 28.0
 color = Color(0.690196, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="SunCounter"]
+visible = false
 custom_minimum_size = Vector2(217, 22)
 layout_mode = 0
 offset_left = 4.0
@@ -45,9 +54,9 @@ color = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 offset_left = 4.72
-offset_top = -14.0
+offset_top = 1.0
 offset_right = 174.72
-offset_bottom = 46.0
+offset_bottom = 61.0
 theme_override_constants/separation = 10
 
 [node name="BloodCounter" type="Label" parent="SunCounter/HBoxContainer"]
@@ -62,3 +71,15 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qaivy")
 text = "Health:10"
+
+[node name="Panel" type="Panel" parent="SunCounter"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="SunCounter"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
