@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dndt0jcjj7xpo"]
+[gd_scene load_steps=5 format=3 uid="uid://dndt0jcjj7xpo"]
 
 [ext_resource type="Script" uid="uid://boere3vd8qgrv" path="res://Scripts/UI/pause_menu.gd" id="1_0buc1"]
+[ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://Assets/UI/Box.png" id="2_0buc1"]
 [ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://Assets/Audio/Win1.mp3" id="2_epntb"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="4_vv3ew"]
 
@@ -16,6 +17,10 @@ offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0buc1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(370, 206)
+texture = ExtResource("2_0buc1")
 
 [node name="BGAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_epntb")
@@ -36,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+visible = false
 custom_minimum_size = Vector2(350, 350)
 layout_mode = 2
 color = Color(0, 0, 0, 1)

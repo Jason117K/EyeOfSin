@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://cwnxaalr7lrsd"]
+[gd_scene load_steps=24 format=4 uid="uid://cwnxaalr7lrsd"]
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://Scripts/LevelLogic/StartScreen.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://2ovmbrp2455w" path="res://Audio/menu music bounce 8-13-25.wav" id="3_dd6vr"]
-[ext_resource type="Texture2D" uid="uid://b33cuw824fnwf" path="res://Assets/Icons/EyeOfSynTitle.png" id="5_fmyua"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="6_4rth8"]
 [ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="7_j88ag"]
 [ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="8_5mipx"]
@@ -12,10 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="11_4ojxa"]
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="12_bcgeo"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="13_hj78q"]
+[ext_resource type="Texture2D" uid="uid://dumccj53e7qey" path="res://Assets/UI/TitleCard1.2.png" id="14_1p6mn"]
 [ext_resource type="FontFile" uid="uid://dw8o777s6dcqi" path="res://Assets/Fonts/Fleshandblood-MVA5x.ttf" id="14_4rth8"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="14_nyvis"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="15_mrsis"]
 [ext_resource type="StyleBox" uid="uid://bu8cfo71nnluh" path="res://Resources_tres/Start_Button_Stylebox.tres" id="16_j88ag"]
+[ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://Assets/UI/ButtonSprite.png" id="17_1p6mn"]
+[ext_resource type="Texture2D" uid="uid://cgu32xpdd2gbw" path="res://Assets/UI/BorderSprite.png" id="18_vgtya"]
+[ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://Assets/UI/ButtonSpriteHover.png" id="19_vgtya"]
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("15_mrsis")
@@ -310,16 +313,17 @@ position = Vector2(35, 0)
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(777, 777)
 layout_mode = 0
-offset_left = -7.0
-offset_top = -136.0
-offset_right = 770.0
-offset_bottom = 641.0
+offset_left = -50.0
+offset_top = -157.0
+offset_right = 792.0
+offset_bottom = 620.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.486275)
 
 [node name="EyeOfSynTitle" type="Sprite2D" parent="."]
 position = Vector2(371, 92)
-texture = ExtResource("5_fmyua")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_1p6mn")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -335,15 +339,17 @@ offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(0, 17.23)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 use_top_left = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 45
+theme_override_constants/separation = 15
 
 [node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -360,6 +366,7 @@ theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Start Game"
 
 [node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -376,6 +383,7 @@ theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Level Select"
 
 [node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -392,6 +400,7 @@ theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Options"
 
 [node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -408,6 +417,7 @@ theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Credits"
 
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
@@ -423,11 +433,225 @@ theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Quit"
 
+[node name="ButtonSprite" type="Sprite2D" parent="CenterContainer/VBoxContainer"]
+visible = false
+position = Vector2(389, 23)
+scale = Vector2(6, 6)
+texture = ExtResource("17_1p6mn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CenterContainer/VBoxContainer"]
+visible = false
+modulate = Color(1, 0, 0, 1)
+position = Vector2(389, -54.88)
+scale = Vector2(6, 6)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="StartGam" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+tooltip_text = "Stuff
+"
+texture_normal = ExtResource("17_1p6mn")
+texture_hover = ExtResource("19_vgtya")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/StartGam"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 96
+text = "Start Game"
+
+[node name="LevelSelectButto" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+tooltip_text = "Stuff
+"
+texture_normal = ExtResource("17_1p6mn")
+texture_hover = ExtResource("19_vgtya")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/LevelSelectButto"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 96
+text = "Level Select"
+
+[node name="Options2" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+texture_normal = ExtResource("17_1p6mn")
+texture_hover = ExtResource("19_vgtya")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Options2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 96
+text = "Options"
+
+[node name="Credit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+texture_normal = ExtResource("17_1p6mn")
+texture_hover = ExtResource("19_vgtya")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Credit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 96
+text = "Credits"
+
+[node name="Qui" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+texture_normal = ExtResource("17_1p6mn")
+texture_hover = ExtResource("19_vgtya")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Qui"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_font_sizes/font_size = 96
+text = "Quit"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
+
+[node name="ButtonDecor" type="Node2D" parent="."]
+position = Vector2(383, 162)
+
+[node name="Decor" type="Sprite2D" parent="ButtonDecor"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(36.55, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-35.4, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="ButtonDecor4" type="Node2D" parent="."]
+position = Vector2(383, 411.125)
+rotation = -3.14159
+
+[node name="Decor" type="Sprite2D" parent="ButtonDecor4"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(36.55, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor4"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-35.4, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="ButtonDecor2" type="Node2D" parent="."]
+position = Vector2(262, 286)
+rotation = -1.5708
+
+[node name="Decor" type="Sprite2D" parent="ButtonDecor2"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(36.55, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor2"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-35.4, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="ButtonDecor3" type="Node2D" parent="."]
+position = Vector2(502, 285)
+rotation = 1.5708
+
+[node name="Decor" type="Sprite2D" parent="ButtonDecor3"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(36.55, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
+
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor3"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-35.4, 9.2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_vgtya")
+flip_v = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGam" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelSelectButto" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Options2" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credit" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Qui" to="." method="_on_quit_pressed"]
 
 [editable path="GridManager"]

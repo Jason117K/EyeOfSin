@@ -1,8 +1,8 @@
 extends Control
 #StartScreen.gd
 
-@onready var startGameButton = $CenterContainer/VBoxContainer/StartGame
-@onready var levelSelectButton = $CenterContainer/VBoxContainer/LevelSelectButton
+@onready var startGameButton = $CenterContainer/VBoxContainer/StartGam
+@onready var levelSelectButton = $CenterContainer/VBoxContainer/LevelSelectButto
 @onready var bgMusic = $BackGroundMuisc
 #Sets up the startscreen tiles
 #var ownerScript = preload("res://Scripts/LevelLogic/Main_Controller.gd")

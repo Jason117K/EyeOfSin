@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="20_amwcl"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="21_vf7of"]
 
-
 [sub_resource type="Environment" id="2"]
 background_mode = 4
 glow_enabled = true
@@ -159,6 +158,7 @@ offset_bottom = 353.0
 scale = Vector2(0.5, 0.5)
 
 [node name="UILayer" parent="." instance=ExtResource("10_np8ae")]
+layout_mode = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
@@ -324,10 +324,15 @@ layout_mode = 1
 
 [node name="CodexBG" parent="." instance=ExtResource("21_vf7of")]
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 686.0
 offset_top = 313.0
 offset_right = 739.0
 offset_bottom = 373.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]

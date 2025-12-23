@@ -14,11 +14,15 @@ text = "PAUSE"
 script = ExtResource("2_w1yst")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_e4pn3")]
-visible = false
 layout_mode = 1
 offset_left = -310.0
 offset_top = -178.885
 offset_right = -310.0
 offset_bottom = -178.885
 
+[node name="Sprite2D" parent="PauseMenu" index="0"]
+position = Vector2(28.61, -0.08)
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+
+[editable path="PauseMenu"]
