@@ -96,15 +96,17 @@ func setComplexScene(newScene):
 	#Clean Up Any Previous Complex Scenes 
 	for node in complexSceneContainer.get_children():
 		#print("NNNOde is ", node.name)
-		if node is Label:
+		if node is Label || node is RichTextLabel || node is VScrollBar:
 			print("Will Now Pass ", node.name)
 			pass
+
 		else:
-			if (node == Button) || "Button" in node.name:
+			if (node == Button) || "Button" in node.name || (node == RichTextLabel):
 				print("Node is button ", node.name)
 			elif node != Button:
-				print("Queue Free ", node.name)
-				node.queue_free()
+				if node != RichTextLabel:
+					print("Queue Free ", node.name)
+					node.queue_free()
 	#Add New Complex Scene to Container 
 	var this_new_scene = newScene.instantiate()
 	complexSceneContainer.add_child(this_new_scene)

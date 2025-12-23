@@ -53,9 +53,9 @@ color = Color(0, 0, 0, 1)
 [node name="HBoxContainer" type="HBoxContainer" parent="SunCounter"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
-offset_left = 4.72
+offset_left = 5.0
 offset_top = 1.0
-offset_right = 174.72
+offset_right = 175.0
 offset_bottom = 61.0
 theme_override_constants/separation = 10
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgkc7lr4bmh7r"]
+[gd_scene load_steps=13 format=3 uid="uid://cgkc7lr4bmh7r"]
 
 [ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://Scripts/ToolTips.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="2"]
 [ext_resource type="Script" uid="uid://rhdxfmhgn4ur" path="res://Scripts/animated_texture_rect.gd" id="2_4pnf4"]
+[ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://Assets/UI/Box.png" id="2_c1ynx"]
 [ext_resource type="SpriteFrames" uid="uid://36ihcf5firig" path="res://Assets/Zombies/Animations/Spriteframes/eyeFrames.tres" id="4_imaxi"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="4_mpr7a"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="5_ygqpy"]
@@ -10,12 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://okpv0aqap43q" path="res://Scenes/Tutorials/basic_zombie_demo.tscn" id="7_f4pib"]
 
 [sub_resource type="StyleBoxFlat" id="2"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
+border_color = Color(0.8, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygqpy"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -39,10 +40,13 @@ anchor_bottom = 0.184
 theme_override_styles/panel = SubResource("2")
 script = ExtResource("1")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(154.04, 142.74)
+texture = ExtResource("2_c1ynx")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
-size_flags_horizontal = 3
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
@@ -82,6 +86,7 @@ fit_content = true
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_ygqpy")
@@ -91,14 +96,13 @@ text = "UNDERSTOOD"
 
 [node name="SynergyVBox" type="VBoxContainer" parent="."]
 visible = false
-custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 5
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SynergyVBox"]
-custom_minimum_size = Vector2(287.245, 288.595)
+custom_minimum_size = Vector2(200, 288.595)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 25
@@ -111,13 +115,17 @@ layout_mode = 2
 [node name="BasicZombieDemo" parent="SynergyVBox/VBoxContainer" instance=ExtResource("7_f4pib")]
 layout_mode = 2
 
-[node name="SynergyLabel" type="Label" parent="SynergyVBox/VBoxContainer"]
-custom_minimum_size = Vector2(324.975, 0)
+[node name="SynergyLabel" type="RichTextLabel" parent="SynergyVBox/VBoxContainer"]
+custom_minimum_size = Vector2(307.935, 84.29)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_ygqpy")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/normal_font = ExtResource("5_ygqpy")
+theme_override_font_sizes/normal_font_size = 16
 text = "Spyders can give MAWS a buff that causes them to release an AOE explosion of slowing webs on death."
-autowrap_mode = 3
+
+[node name="VScrollBar" type="VScrollBar" parent="SynergyVBox/VBoxContainer/SynergyLabel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Button2" type="Button" parent="SynergyVBox/VBoxContainer"]
 layout_mode = 2
