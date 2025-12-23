@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
 [ext_resource type="Script" uid="uid://baidl8iu0c57c" path="res://Scripts/LevelLogic/EndScreen.gd" id="2"]
-[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="5_tmq5p"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="4_hkgw8"]
 [ext_resource type="AudioStream" uid="uid://b2bnnssljo4uk" path="res://Assets/Audio/Win2.mp3" id="6"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
@@ -43,14 +43,14 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("5_tmq5p")
+theme_override_fonts/font = ExtResource("4_hkgw8")
 theme_override_font_sizes/font_size = 48
 text = "THANKS FOR PLAYING!"
 
 [node name="PlayAgain" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_tmq5p")
+theme_override_fonts/font = ExtResource("4_hkgw8")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("1")
 text = "PLAY AGAIN"
@@ -58,7 +58,7 @@ text = "PLAY AGAIN"
 [node name="Quit Game" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_tmq5p")
+theme_override_fonts/font = ExtResource("4_hkgw8")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("1")
 text = "QUIT"

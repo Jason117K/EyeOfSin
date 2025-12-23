@@ -98,3 +98,7 @@ func _on_back_pressed() -> void:
 	#await get_tree().create_timer(0.1).timeout
 	#assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn") == OK)
 	Global.game_controller.change_scene(startScreen)
+
+
+func _on_level_4_button_pressed() -> void:
+	pass # Replace with function body.

@@ -6,6 +6,7 @@ var level0_3Alt = ("res://Scenes/LevelScenes/Level0-3_Alternate.tscn")
 @export var restartScene : String 
 @export  var restartSceneAlt  : String 
 
+
 func set_restart_levels(newLevel,newAltLevel):
 	restartScene = newLevel
 	restartSceneAlt = newAltLevel

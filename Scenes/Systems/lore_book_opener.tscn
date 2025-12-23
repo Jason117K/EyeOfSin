@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://Assets/Sprites/Sunflower.png" id="1_paagv"]
 [ext_resource type="Script" uid="uid://cjm42a18n4alo" path="res://Scripts/UI/lore_book_opener.gd" id="1_x4iqa"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://Assets/Sprites/BasicZombie.png" id="2_y17rf"]
-[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="3_y17rf"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="4_x4iqa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4iqa"]
 bg_color = Color(0.490196, 0.0588235, 0.121569, 1)
@@ -66,14 +66,14 @@ theme_override_constants/separation = 190
 [node name="Label" type="Label" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_y17rf")
+theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 16
 text = "PLANT CODEX"
 
 [node name="Label2" type="Label" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_y17rf")
+theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 16
 text = "ZOMBIE CODEX"
 
@@ -92,7 +92,7 @@ offset_left = 230.0
 offset_top = 355.0
 offset_right = 530.0
 offset_bottom = 380.0
-theme_override_fonts/font = ExtResource("3_y17rf")
+theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 16
 text = "BACK"
 

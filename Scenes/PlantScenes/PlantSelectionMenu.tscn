@@ -1,18 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=20 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b6vva031ql0r0" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText1.png" id="3_yqvs4"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="4_vvged"]
 [ext_resource type="Texture2D" uid="uid://cdlvi1sqbawix" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText4.png" id="5_vvged"]
 [ext_resource type="Texture2D" uid="uid://b13m4nfeccjgl" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText2.png" id="6_04elx"]
 [ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://Assets/Plants/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
 [ext_resource type="Texture2D" uid="uid://bwpctk28aaj8p" path="res://Assets/Plants/EyeBombCARD.png" id="8"]
-[ext_resource type="FontFile" uid="uid://bwv5t3eoriqlv" path="res://Assets/Fonts/Minecraft.ttf" id="9"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="9_qqk0u"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://Assets/Text/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://cs7hq3cbnjody" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText5.png" id="10_iafbj"]
 [ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://Assets/Plants/Cards/DESELECT_CARD.png" id="12_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://w4n34nhafrdq" path="res://Assets/Plants/Cards/WORDSWAP_CARD.png" id="13_vvged"]
+[ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://Assets/Icons/CODEX_CARD.png" id="14_04elx"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="14_vvged"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
@@ -33,36 +34,14 @@ expand_margin_right = 5.0
 [sub_resource type="StyleBoxFlat" id="2"]
 bg_color = Color(0.0588235, 0.0392157, 0.0392157, 0)
 
-[sub_resource type="FontFile" id="5"]
-fallbacks = Array[Font]([ExtResource("9"), ExtResource("9")])
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0, 0, 0, 0)
-
-[sub_resource type="FontFile" id="6"]
-fallbacks = Array[Font]([ExtResource("9"), ExtResource("9")])
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
 
 [sub_resource type="StyleBoxFlat" id="3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PlantSelectionMenu" type="Control"]
-z_index = 1
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -135,7 +114,7 @@ icon = ExtResource("3_yqvs4")
 [node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_fonts/font = SubResource("5")
+theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
@@ -150,7 +129,7 @@ icon = ExtResource("5_vvged")
 
 [node name="PeashooterLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("6")
+theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
@@ -165,7 +144,7 @@ icon = ExtResource("6_04elx")
 
 [node name="WalnutLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("6")
+theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
@@ -180,7 +159,7 @@ icon = ExtResource("7_e3ig8")
 
 [node name="MawLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_yqvs4")
+theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
@@ -196,7 +175,7 @@ icon = ExtResource("8")
 [node name="EyeLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-theme_override_fonts/font = SubResource("6")
+theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
@@ -211,7 +190,7 @@ icon = ExtResource("10_iafbj")
 
 [node name="EggLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("6")
+theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
@@ -226,7 +205,7 @@ icon = ExtResource("11_js2vo")
 
 [node name="HiveLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("9_yqvs4")
+theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
@@ -255,6 +234,15 @@ theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("13_vvged")
 
+[node name="Codex" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CodexButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Codex"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 67
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("14_04elx")
+
 [node name="CodexBG" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("14_vvged")]
 visible = false
 layout_mode = 2
@@ -271,6 +259,7 @@ mouse_filter = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton" to="." method="_on_codex_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/CodexBG/HBoxContainer/OpenDemonCodexButton" to="." method="_on_open_demon_codex_button_pressed"]
 
 [editable path="PanelContainer/VBoxContainer/HBoxContainer/CodexBG"]

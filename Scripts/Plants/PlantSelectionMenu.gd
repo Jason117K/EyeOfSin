@@ -537,3 +537,7 @@ func _on_world_swap_button_pressed() -> void:
 	if canSwapScenes:
 		print("Can Swap Scenes is ", canSwapScenes)
 		Global.game_controller.swap_scenes()
+
+
+func _on_codex_button_pressed() -> void:
+	Global.game_controller.change_scene_with_pause("res://Scenes/Systems/lore_book_opener.tscn")

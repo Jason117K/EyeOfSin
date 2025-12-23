@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://5i8s8njak5j3" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="1_jfxaf"]
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://Assets/UI/Box.png" id="2_jfxaf"]
 [ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://Assets/Audio/Win1.mp3" id="3_d7mvd"]
-[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="4_jfxaf"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="4_jfxaf"]
 
 [node name="LevelSwitcher" type="Control"]
 process_mode = 3

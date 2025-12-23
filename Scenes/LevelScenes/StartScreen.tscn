@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cwnxaalr7lrsd"]
+[gd_scene load_steps=26 format=4 uid="uid://cwnxaalr7lrsd"]
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://Scripts/LevelLogic/StartScreen.gd" id="2"]
@@ -10,10 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="10_vgtya"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="11_4ojxa"]
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="12_bcgeo"]
+[ext_resource type="PackedScene" uid="uid://c7qxb81x4h2ne" path="res://Scenes/Environment/arm_line.tscn" id="13_bcgeo"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="13_hj78q"]
-[ext_resource type="Texture2D" uid="uid://dumccj53e7qey" path="res://Assets/UI/TitleCard1.2.png" id="14_1p6mn"]
+[ext_resource type="Texture2D" uid="uid://doopqiivdy4f2" path="res://Assets/Icons/TitleCard.png" id="14_4ojxa"]
 [ext_resource type="FontFile" uid="uid://dw8o777s6dcqi" path="res://Assets/Fonts/Fleshandblood-MVA5x.ttf" id="14_4rth8"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="14_nyvis"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="15_bcgeo"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="15_mrsis"]
 [ext_resource type="StyleBox" uid="uid://bu8cfo71nnluh" path="res://Resources_tres/Start_Button_Stylebox.tres" id="16_j88ag"]
 [ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://Assets/UI/ButtonSprite.png" id="17_1p6mn"]
@@ -321,9 +323,8 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.486275)
 
 [node name="EyeOfSynTitle" type="Sprite2D" parent="."]
-position = Vector2(371, 92)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("14_1p6mn")
+position = Vector2(372, 195)
+texture = ExtResource("14_4ojxa")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -332,10 +333,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 13.0
-offset_top = 67.0
-offset_right = 13.0
-offset_bottom = 67.0
+offset_left = 14.0
+offset_top = 47.0
+offset_right = 14.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.2, 0.2)
@@ -360,7 +361,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("14_4rth8")
+theme_override_fonts/font = ExtResource("15_bcgeo")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Start Game"
@@ -380,7 +381,7 @@ theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("14_4rth8")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
-text = "Level Select"
+text = "LEVEL SELECT"
 
 [node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
 visible = false
@@ -469,9 +470,9 @@ offset_right = 44.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 96
-text = "Start Game"
+theme_override_fonts/font = ExtResource("15_bcgeo")
+theme_override_font_sizes/font_size = 144
+text = "START GAME"
 
 [node name="LevelSelectButto" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -495,9 +496,9 @@ offset_right = 44.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 96
-text = "Level Select"
+theme_override_fonts/font = ExtResource("15_bcgeo")
+theme_override_font_sizes/font_size = 144
+text = "LEVEL SELECT"
 
 [node name="Options2" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -519,9 +520,9 @@ offset_right = 44.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 96
-text = "Options"
+theme_override_fonts/font = ExtResource("15_bcgeo")
+theme_override_font_sizes/font_size = 144
+text = "OPTIONS"
 
 [node name="Credit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -543,9 +544,9 @@ offset_right = 44.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 96
-text = "Credits"
+theme_override_fonts/font = ExtResource("15_bcgeo")
+theme_override_font_sizes/font_size = 144
+text = "CREDITS"
 
 [node name="Qui" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -567,15 +568,15 @@ offset_right = 44.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 96
-text = "Quit"
+theme_override_fonts/font = ExtResource("15_bcgeo")
+theme_override_font_sizes/font_size = 144
+text = "QUIT"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
 
 [node name="ButtonDecor" type="Node2D" parent="."]
-position = Vector2(383, 162)
+position = Vector2(384, 142)
 
 [node name="Decor" type="Sprite2D" parent="ButtonDecor"]
 modulate = Color(1, 0, 0, 1)
@@ -592,7 +593,7 @@ texture = ExtResource("18_vgtya")
 flip_v = true
 
 [node name="ButtonDecor4" type="Node2D" parent="."]
-position = Vector2(383, 411.125)
+position = Vector2(384, 391.125)
 rotation = -3.14159
 
 [node name="Decor" type="Sprite2D" parent="ButtonDecor4"]
@@ -610,7 +611,7 @@ texture = ExtResource("18_vgtya")
 flip_v = true
 
 [node name="ButtonDecor2" type="Node2D" parent="."]
-position = Vector2(262, 286)
+position = Vector2(263, 266)
 rotation = -1.5708
 
 [node name="Decor" type="Sprite2D" parent="ButtonDecor2"]
@@ -628,7 +629,7 @@ texture = ExtResource("18_vgtya")
 flip_v = true
 
 [node name="ButtonDecor3" type="Node2D" parent="."]
-position = Vector2(502, 285)
+position = Vector2(503, 265)
 rotation = 1.5708
 
 [node name="Decor" type="Sprite2D" parent="ButtonDecor3"]
@@ -644,6 +645,21 @@ position = Vector2(-35.4, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
+
+[node name="ArmLine" parent="." instance=ExtResource("13_bcgeo")]
+position = Vector2(-11, 412)
+
+[node name="ArmLine2" parent="." instance=ExtResource("13_bcgeo")]
+position = Vector2(751, -2)
+rotation = -3.14159
+
+[node name="ArmLine3" parent="." instance=ExtResource("13_bcgeo")]
+position = Vector2(744, 416)
+rotation = -1.5708
+
+[node name="ArmLine4" parent="." instance=ExtResource("13_bcgeo")]
+position = Vector2(-1, -82)
+rotation = 1.5708
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
