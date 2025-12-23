@@ -97,9 +97,9 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 77)
 Round1_Zombies = {
-"Base": 0,
+"Base": 2,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -109,7 +109,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -133,10 +133,20 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 109)
-Round2_Zombies = {
-"Base": 3,
-"BucketHead": 1,
+Round1_Zombies = {
+"Base": 2,
+"BucketHead": 0,
 "ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -161,9 +171,9 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 141)
 Round1_Zombies = {
-"Base": 0,
+"Base": 2,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -173,8 +183,8 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 1,
-"Dancer": 1,
+"ConeHead": 2,
+"Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -197,10 +207,20 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 173)
-Round2_Zombies = {
-"Base": 3,
-"BucketHead": 1,
+Round1_Zombies = {
+"Base": 2,
+"BucketHead": 0,
 "ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -225,9 +245,9 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 205)
 Round1_Zombies = {
-"Base": 0,
+"Base": 2,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -237,7 +257,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -262,9 +282,9 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 240)
 Round1_Zombies = {
-"Base": 0,
+"Base": 2,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -274,7 +294,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -299,9 +319,9 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 276)
 Round1_Zombies = {
-"Base": 0,
+"Base": 2,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -311,7 +331,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -646,7 +666,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

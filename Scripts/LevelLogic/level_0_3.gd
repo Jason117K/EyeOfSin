@@ -110,7 +110,7 @@ func _transition_to_state(new_state: TutorialState):
 			pass
 			#_start_explain_chimera()
 		TutorialState.EXPLAIN_CODEX:
-			var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
+			var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
 			codex_buton.visible = true  
 			_start_explain_codex()
 		TutorialState.TUTORIAL_P2_DONE:
@@ -151,7 +151,7 @@ func _start_explain_codex():
 	toolTips.set_text(TUTORIAL_SELECT_CODEX)
 	toolTips.noButtonShow()
 	#Show spotlight on Codex button
-	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
+	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
 	show_spotlight_at_node(codex_buton)
 			
 func _handle_force_select_maw_input(event):
@@ -305,7 +305,7 @@ func hide_spotlight():
 		spotlight_overlay.visible = false
 
 func hide_Codex():
-	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
+	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
 	codex_buton.visible = false 
 	
 

@@ -540,4 +540,5 @@ func _on_world_swap_button_pressed() -> void:
 
 
 func _on_codex_button_pressed() -> void:
+	codex_clicked.emit()
 	Global.game_controller.change_scene_with_pause("res://Scenes/Systems/lore_book_opener.tscn")

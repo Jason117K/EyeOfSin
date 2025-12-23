@@ -395,7 +395,7 @@ text = "BACK"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level5" to="." method="_on_level_5_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level6" to="." method="_on_level_6_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level7" to="." method="_on_level_7_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level4Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level4Button" to="." method="_on_level_4_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level5Button" to="." method="_on_level_5_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level6Button" to="." method="_on_level_6_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

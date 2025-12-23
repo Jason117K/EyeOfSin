@@ -59,6 +59,7 @@ func _ready():
 	
 	
 	levelSwitcher.update_level(level05,level05Alt)
+	levelSwitcher.visible = false
 	
 	Global.unHidePlantSelectionMenu()
 	

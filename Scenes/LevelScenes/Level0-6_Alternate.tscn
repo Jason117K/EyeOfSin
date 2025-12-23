@@ -99,7 +99,7 @@ process_mode = 1
 position = Vector2(740, 77)
 make_green = true
 Round1_Zombies = {
-"Base": 0,
+"Base": 1,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -136,6 +136,16 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_2irmp")]
 position = Vector2(740, 109)
 make_green = true
+Round1_Zombies = {
+"Base": 1,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -149,7 +159,7 @@ Round2_Zombies = {
 Round3_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
 "PoleVault": 0,
@@ -164,6 +174,16 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_2irmp")]
 position = Vector2(740, 141)
 make_green = true
+Round1_Zombies = {
+"Base": 1,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -177,8 +197,8 @@ Round2_Zombies = {
 Round3_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 2,
+"ConeHead": 1,
+"Dancer": 0,
 "Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -192,6 +212,16 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_2irmp")]
 position = Vector2(740, 173)
 make_green = true
+Round1_Zombies = {
+"Base": 1,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -205,7 +235,7 @@ Round2_Zombies = {
 Round3_Zombies = {
 "Base": 0,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
 "PoleVault": 0,
@@ -221,7 +251,7 @@ position = Vector2(-32, -1)
 position = Vector2(740, 205)
 make_green = true
 Round1_Zombies = {
-"Base": 0,
+"Base": 1,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -259,7 +289,7 @@ position = Vector2(-32, -1)
 position = Vector2(740, 241)
 make_green = true
 Round1_Zombies = {
-"Base": 0,
+"Base": 1,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -297,7 +327,7 @@ position = Vector2(-32, -1)
 position = Vector2(740, 276)
 make_green = true
 Round1_Zombies = {
-"Base": 0,
+"Base": 1,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
