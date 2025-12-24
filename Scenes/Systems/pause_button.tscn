@@ -14,6 +14,7 @@ text = "PAUSE"
 script = ExtResource("2_w1yst")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_e4pn3")]
+visible = false
 layout_mode = 1
 offset_left = -310.0
 offset_top = -178.885

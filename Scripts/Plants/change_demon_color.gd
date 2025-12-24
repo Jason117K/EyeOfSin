@@ -50,6 +50,8 @@ func change_form(new_form):
 			currentAnim = "idle_Maw"
 			currentAttackAnim = "attack_Maw"
 			animation = "idle_Maw"
+			$"../Arm".visible = true 
+			$"../Arm2".visible = true 
 
 
 func make_buff_glow():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=226 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=237 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
@@ -22,6 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://1bypqcyxtbl0" path="res://Assets/Demons/SpriteSheets/Maw/SpiderIdle_Hive-Sheet.png" id="12_kcbs3"]
 [ext_resource type="Texture2D" uid="uid://bsirqr2554xjt" path="res://Assets/Demons/SpriteSheets/Maw/SpiderIdle_Wyrm-Sheet.png" id="13_u7x5w"]
 [ext_resource type="Texture2D" uid="uid://di5w0fuql2vat" path="res://Assets/Demons/SpriteSheets/Maw/SpiderAttack_Base-Sheet.png" id="17_hvfi3"]
+[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://new folder/scenes/arm.tscn" id="23_io8k3"]
+[ext_resource type="Script" uid="uid://cnvqr2tm46rpq" path="res://new folder/scripts/Arm.gd" id="23_jwcrf"]
+[ext_resource type="Shader" uid="uid://dvcmoaj2bkbf3" path="res://new folder/shaders/outline.gdshader" id="24_druvk"]
+[ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://new folder/shaders/canvas_group_two_tone.gdshader" id="24_mmfac"]
+[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://new folder/scenes/arm_target.tscn" id="25_82rcb"]
+[ext_resource type="Shader" uid="uid://bm6i26uu8obx0" path="res://new folder/shaders/canvas_group_shadow.gdshader" id="25_kcbs3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -1544,6 +1550,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_io8k3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.686661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pi6jo"]
+shader = ExtResource("24_druvk")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/alpha_threshold = 0.8
+shader_parameter/outline_samples = 4
+shader_parameter/shade_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pek0"]
+shader = ExtResource("25_kcbs3")
+shader_parameter/shadow_color = Color(0, 0, 0, 0.470588)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwcrf"]
+shader = ExtResource("24_mmfac")
+shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
+shader_parameter/dark_color = Color(0.160784, 0, 0.0627451, 1)
+shader_parameter/shade_ratio = 0.53
+
+[sub_resource type="Curve" id="Curve_mmfac"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.558477), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Peashooter" type="Area2D" groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -1568,10 +1600,8 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"attack"
+animation = &"idle_Maw"
 autoplay = "spawn"
-frame = 4
-frame_progress = 1.0
 flip_h = true
 script = ExtResource("6_67t0g")
 targetGlowColor = Color(1, 0, 0.101961, 1)
@@ -1697,6 +1727,95 @@ autostart = true
 wait_time = 7.0
 autostart = true
 
+[node name="Arm" type="Node2D" parent="." node_paths=PackedStringArray("base_node", "shadow_node", "target")]
+visible = false
+position = Vector2(-12, 5)
+script = ExtResource("23_jwcrf")
+base_node = NodePath("OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup/BaseLine")
+shadow_node = NodePath("OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup/ShadowLine")
+target = NodePath("../ArmTarget")
+num__segments = 8
+max_length = 30.0
+wave_speed = 1.0
+line_width = 3.0
+width_curve = SubResource("Curve_io8k3")
+
+[node name="Camera2D" type="Camera2D" parent="Arm"]
+position = Vector2(258, 255)
+zoom = Vector2(5, 5)
+editor_draw_screen = false
+
+[node name="OutlinedSubViewportContainer" type="SubViewportContainer" parent="Arm"]
+material = SubResource("ShaderMaterial_pi6jo")
+offset_left = -225.0
+offset_top = -253.0
+offset_right = 287.0
+offset_bottom = 259.0
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Arm/OutlinedSubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="ShadowCanvasGroup" type="CanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_5pek0")
+
+[node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
+position = Vector2(112.12, 120)
+points = PackedVector2Array(112.595, 131.435, 108.899, 131.888, 107.486, 130.097, 104.694, 129.197, 100.765, 130.613, 97.313, 130.61, 95.9171, 128.839, 93.5449, 127.7, 89.7906, 129.984)
+width = 3.0
+width_curve = SubResource("Curve_io8k3")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TwoToneCanvasGroup" type="CanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport"]
+material = SubResource("ShaderMaterial_jwcrf")
+
+[node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
+position = Vector2(112.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 108.899, 125.013, 107.486, 121.347, 104.694, 118.572, 100.765, 118.113, 97.313, 116.235, 95.9171, 112.589, 93.5449, 109.575, 89.7906, 109.984)
+width = 3.0
+width_curve = SubResource("Curve_io8k3")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("23_io8k3")]
+visible = false
+position = Vector2(-11, 5)
+target = NodePath("../ArmTarget2")
+num__segments = 8
+max_length = 19.0
+wave_speed = 2.0
+line_width = 3.0
+width_curve = SubResource("Curve_mmfac")
+
+[node name="SubViewport" parent="Arm2/OutlinedSubViewportContainer" index="0"]
+render_target_update_mode = 0
+
+[node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
+points = PackedVector2Array(112.595, 131.435, 113.64, 131.053, 115.892, 131.944, 116.535, 131.405, 116.283, 130.788, 117.761, 130.637, 119.941, 131.334, 120.827, 130.943, 119.571, 130.776)
+width = 3.0
+width_curve = SubResource("Curve_mmfac")
+
+[node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1"]
+material = SubResource("ShaderMaterial_jwcrf")
+
+[node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
+points = PackedVector2Array(112.595, 126.435, 113.64, 124.178, 115.892, 123.194, 116.535, 120.78, 116.283, 118.288, 117.761, 116.262, 119.941, 115.084, 120.827, 112.818, 119.571, 110.776)
+width = 3.0
+width_curve = SubResource("Curve_mmfac")
+
+[node name="ArmTarget" parent="." instance=ExtResource("25_82rcb")]
+visible = false
+position = Vector2(-37, -13)
+
+[node name="ArmTarget2" parent="." instance=ExtResource("25_82rcb")]
+visible = false
+position = Vector2(-2, -13)
+
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_frame_changed"]
@@ -1706,3 +1825,4 @@ autostart = true
 [connection signal="timeout" from="SpawnSpiderling" to="." method="_on_spawn_spiderling_timeout"]
 
 [editable path="BuffNodesComponent"]
+[editable path="Arm2"]

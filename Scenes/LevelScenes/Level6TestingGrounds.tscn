@@ -1,0 +1,623 @@
+[gd_scene load_steps=32 format=3 uid="uid://bjryluw6rxv5m"]
+
+[ext_resource type="Script" uid="uid://de2h3je53wpv2" path="res://Scripts/LevelLogic/Level6.gd" id="1_gsi42"]
+[ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="2_s0jwn"]
+[ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="3_oryl8"]
+[ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="4_6b7n0"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="5_76njo"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://Assets/Environment/Props/Bramble1.png" id="6_podyy"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://Assets/Environment/Props/Bramble2PROP.png" id="7_1xvdo"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://Scenes/Environment/Fish.tscn" id="8_w4jky"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://Scenes/Environment/Shrub.tscn" id="9_jifen"]
+[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="10_85f8l"]
+[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="11_clq4y"]
+[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="12_cqkkx"]
+[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="13_xx6xv"]
+[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="14_lxbfb"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="15_7j700"]
+[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="16_s4grl"]
+[ext_resource type="Script" uid="uid://c31n61qr27kvd" path="res://Scripts/LevelLogic/WaveManager_Lvl3.gd" id="17_7s3iq"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="18_scwyt"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="19_a7hs7"]
+[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_xdfvd"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_6whku"]
+[ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="22_2wtcq"]
+[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="23_xah3h"]
+[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="24_st1vt"]
+[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="25_sd5m3"]
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("11_clq4y")
+region = Rect2(0, 0, 32, 41)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("11_clq4y")
+region = Rect2(32, 0, 32, 41)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("11_clq4y")
+region = Rect2(64, 0, 32, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qa4y1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Environment" id="2"]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 1
+glow_hdr_threshold = 1.5
+adjustment_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0kak"]
+shader = ExtResource("25_sd5m3")
+shader_parameter/hpass = 1.0
+shader_parameter/vpass = 1.0
+shader_parameter/radius = 65
+shader_parameter/unit = Vector2(1, 1)
+
+[node name="Level6" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gsi42")
+make_green = true
+
+[node name="Environment2" type="Node2D" parent="."]
+
+[node name="Coral" type="Node2D" parent="Environment2"]
+
+[node name="CoralSmallProp" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(543, 347)
+texture = ExtResource("2_s0jwn")
+
+[node name="CoralSmallProp3" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(499, 335)
+texture = ExtResource("2_s0jwn")
+
+[node name="CoralSmallProp2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(670, 400)
+texture = ExtResource("2_s0jwn")
+flip_h = true
+
+[node name="CoralSmallProp4" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(601, 401)
+texture = ExtResource("2_s0jwn")
+flip_h = true
+
+[node name="CoralSmallProp5" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(718, 321)
+texture = ExtResource("2_s0jwn")
+
+[node name="CoralSmallProp6" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(420, 382)
+texture = ExtResource("2_s0jwn")
+
+[node name="CoralSmallProp8" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(113, 323)
+texture = ExtResource("2_s0jwn")
+
+[node name="CoralSmallProp9" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(262, 8)
+texture = ExtResource("2_s0jwn")
+flip_h = true
+
+[node name="CoralSmallProp10" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(497, 16)
+texture = ExtResource("2_s0jwn")
+
+[node name="CoralBigProp" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(618, 344)
+texture = ExtResource("3_oryl8")
+
+[node name="CoralBigProp2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(406, 333)
+texture = ExtResource("3_oryl8")
+flip_h = true
+
+[node name="CoralBigProp4" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(707, 397)
+texture = ExtResource("3_oryl8")
+flip_h = true
+
+[node name="CoralBigProp5" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(724, 4)
+texture = ExtResource("3_oryl8")
+flip_h = true
+
+[node name="CoralBigProp6" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(263, 323)
+texture = ExtResource("3_oryl8")
+flip_h = true
+
+[node name="CoralBigProp3" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(490, 396)
+texture = ExtResource("3_oryl8")
+flip_h = true
+
+[node name="CoralBigProp7" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(620, 3)
+texture = ExtResource("3_oryl8")
+flip_h = true
+
+[node name="CoralBigProp8" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(609, 15)
+texture = ExtResource("3_oryl8")
+flip_h = true
+
+[node name="CoralBigProp9" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(353, 14)
+texture = ExtResource("3_oryl8")
+
+[node name="Biggest_Coral" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(563, 378)
+texture = ExtResource("4_6b7n0")
+
+[node name="Biggest_Coral2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(662, 343)
+texture = ExtResource("4_6b7n0")
+
+[node name="FetusProp" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(438, 4)
+texture = ExtResource("5_76njo")
+
+[node name="FetusProp2" type="Sprite2D" parent="Environment2/Coral"]
+position = Vector2(465, 347)
+texture = ExtResource("5_76njo")
+
+[node name="Bramble" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="Bramble1" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(505, 328)
+texture = ExtResource("6_podyy")
+
+[node name="Bramble2" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(454, 388)
+texture = ExtResource("6_podyy")
+
+[node name="Bramble3" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(584, 399)
+texture = ExtResource("6_podyy")
+
+[node name="Bramble4" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(640, 303)
+texture = ExtResource("6_podyy")
+
+[node name="Bramble5" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(483, 0)
+texture = ExtResource("6_podyy")
+
+[node name="Bramble6" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(660, 11)
+texture = ExtResource("6_podyy")
+
+[node name="BrambleSmall" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(366, 316)
+texture = ExtResource("7_1xvdo")
+flip_h = true
+
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(455, 331)
+texture = ExtResource("7_1xvdo")
+flip_h = true
+
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(402, 343)
+texture = ExtResource("7_1xvdo")
+
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment2/Bramble"]
+position = Vector2(428, 399)
+texture = ExtResource("7_1xvdo")
+flip_h = true
+
+[node name="Fish" type="Node2D" parent="Environment2"]
+
+[node name="Fish" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(542, 386)
+
+[node name="Fish2" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(515, 353)
+
+[node name="Fish5" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(180, 329)
+
+[node name="Fish6" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(37, 326)
+
+[node name="Fish7" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(573, 19)
+
+[node name="Fish8" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(455, 394)
+
+[node name="Fish9" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(315, 14)
+
+[node name="Fish3" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(573, 342)
+
+[node name="Fish4" parent="Environment2/Fish" instance=ExtResource("8_w4jky")]
+z_index = -1
+position = Vector2(633, 395)
+
+[node name="Shrubs" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="Shrub" parent="Environment2/Shrubs" instance=ExtResource("9_jifen")]
+position = Vector2(560, 13)
+scale = Vector2(1, 1)
+
+[node name="Shrub2" parent="Environment2/Shrubs" instance=ExtResource("9_jifen")]
+position = Vector2(474, 339)
+scale = Vector2(1, 1)
+
+[node name="Shrub3" parent="Environment2/Shrubs" instance=ExtResource("9_jifen")]
+position = Vector2(521, 392)
+scale = Vector2(1, 1)
+
+[node name="Shrub4" parent="Environment2/Shrubs" instance=ExtResource("9_jifen")]
+position = Vector2(193, 327)
+scale = Vector2(1, 1)
+
+[node name="Shrub5" parent="Environment2/Shrubs" instance=ExtResource("9_jifen")]
+position = Vector2(433, 330)
+scale = Vector2(1, 1)
+
+[node name="Shrub6" parent="Environment2/Shrubs" instance=ExtResource("9_jifen")]
+position = Vector2(658, 403)
+scale = Vector2(1, 1)
+
+[node name="Shrub7" parent="Environment2/Shrubs" instance=ExtResource("9_jifen")]
+position = Vector2(297, 14)
+scale = Vector2(1, 1)
+
+[node name="Trees" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="BloodTree" type="Sprite2D" parent="Environment2/Trees"]
+z_index = 1
+position = Vector2(561, 364)
+texture = ExtResource("10_85f8l")
+flip_h = true
+
+[node name="BloodTree2" type="Sprite2D" parent="Environment2/Trees"]
+z_index = 1
+position = Vector2(396, 7)
+texture = ExtResource("10_85f8l")
+
+[node name="Special" type="Node2D" parent="Environment2"]
+visible = false
+
+[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment2/Special"]
+position = Vector2(606, 395)
+sprite_frames = SubResource("SpriteFrames_qa4y1")
+
+[node name="PlantManager" parent="." instance=ExtResource("12_cqkkx")]
+sun_points = 1250
+
+[node name="GameLayer" type="Node2D" parent="."]
+process_mode = 1
+z_index = 1
+
+[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("13_xx6xv")]
+visible = false
+position = Vector2(747, 77)
+make_green = true
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 8,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 2,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 4,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 2,
+"Ticker": 0
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("14_lxbfb")]
+z_index = 1
+position = Vector2(-37, 0)
+
+[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("13_xx6xv")]
+visible = false
+position = Vector2(747, 109)
+make_green = true
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 1,
+"ConeHead": 0,
+"Dancer": 2,
+"Football": 2,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 1
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("14_lxbfb")]
+z_index = 1
+position = Vector2(-36, 1)
+
+[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("13_xx6xv")]
+visible = false
+position = Vector2(747, 141)
+make_green = true
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 2,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" instance=ExtResource("14_lxbfb")]
+z_index = 1
+position = Vector2(-38, 1)
+
+[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("13_xx6xv")]
+visible = false
+position = Vector2(751, 173)
+make_green = true
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 2,
+"Dancer": 1,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 1,
+"Ticker": 1
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 1,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
+}
+waveDelay = 1.2
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("14_lxbfb")]
+z_index = 1
+position = Vector2(-41, -1)
+
+[node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("13_xx6xv")]
+visible = false
+position = Vector2(754, 205)
+make_green = true
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 3,
+"BucketHead": 1,
+"ConeHead": 2,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 1
+}
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner5" instance=ExtResource("14_lxbfb")]
+z_index = 1
+position = Vector2(-41, -1)
+
+[node name="GridManager" parent="GameLayer" instance=ExtResource("15_7j700")]
+z_index = -2
+make_green = true
+
+[node name="WaveManager" parent="GameLayer" instance=ExtResource("16_s4grl")]
+z_index = 1
+position = Vector2(-59, 222)
+script = ExtResource("17_7s3iq")
+Wave1_Interval = 2.0
+Wave2_Interval = 4
+Wave3_Interval = 2.0
+
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_scwyt")
+autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("2")
+
+[node name="PlantSelectionMenu" parent="." instance=ExtResource("19_a7hs7")]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 315.0
+offset_right = 48.0
+offset_bottom = 355.0
+scale = Vector2(0.8, 0.8)
+
+[node name="UILayer" parent="." instance=ExtResource("20_xdfvd")]
+layout_mode = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(2, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_left = -42.0
+offset_top = -58.0
+offset_right = 806.0
+offset_bottom = 444.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.0784314)
+
+[node name="ToolTips" parent="." instance=ExtResource("21_6whku")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -154.0
+offset_right = 209.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("22_2wtcq")]
+visible = false
+layout_mode = 1
+next_level = "res://Scenes/LevelScenes/Level7.tscn"
+level_unlocked = 7
+
+[node name="CodexBG" parent="." instance=ExtResource("23_xah3h")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 686.0
+offset_top = 313.0
+offset_right = 739.0
+offset_bottom = 373.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PauseButton" parent="." instance=ExtResource("24_st1vt")]
+layout_mode = 0
+offset_left = 683.0
+offset_top = 376.0
+offset_right = 738.0
+offset_bottom = 399.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(370, 208)
+
+[node name="GlowShaderPass" type="CanvasLayer" parent="."]
+
+[node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
+material = SubResource("ShaderMaterial_f0kak")
+offset_left = -49.0
+offset_top = -65.0
+offset_right = 804.0
+offset_bottom = 435.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="maw_placed" from="PlantManager" to="." method="_on_plant_manager_maw_placed"]
+[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
