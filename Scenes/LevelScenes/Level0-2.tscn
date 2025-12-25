@@ -169,7 +169,7 @@ Round3_Zombies = {
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_sg366")]
+[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_sg366")]
 position = Vector2(740, 173)
 Round2_Zombies = {
 "Base": 3,
@@ -192,7 +192,7 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_acmis")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_acmis")]
 z_index = 1
 position = Vector2(-32, -1)
 
@@ -204,7 +204,8 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_muand")]
 position = Vector2(-64, 200)
 script = ExtResource("7_d6oo2")
-StartDelay = 5
+StartDelay = 15
+Wave2StartTime = 30
 Wave3StartTime = 35
 
 [node name="Environment" type="Node2D" parent="."]

@@ -161,7 +161,7 @@ Round3_Zombies = {
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_b1irm")]
+[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_b1irm")]
 position = Vector2(742, 173)
 make_green = true
 Round1_Zombies = {
@@ -195,14 +195,15 @@ Round3_Zombies = {
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner4" instance=ExtResource("4_b2r3q")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" instance=ExtResource("4_b2r3q")]
 z_index = 1
 position = Vector2(-32, -1)
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_g1cyh")]
 position = Vector2(-64, 200)
 script = ExtResource("7_a84oj")
-StartDelay = 5
+StartDelay = 15
+Wave2StartTime = 30
 Wave3StartTime = 35
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("5_uwsnf")]
