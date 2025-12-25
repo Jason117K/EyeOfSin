@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://Assets/Plants/Animations_Plant/Debug/Idle Animation 2 -Sheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dljm8b4c8pmnm" path="res://Assets/Demons/SpriteSheets/Maw/Hive_Wyrm-Sheet.png" id="7_ijvem"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="8"]
-[ext_resource type="PackedScene" path="res://Scenes/PlantScenes/HiveLaserShootComponent.tscn" id="16_lnyhe"]
+[ext_resource type="PackedScene" uid="uid://bv382bof512a6" path="res://Scenes/PlantScenes/HiveLaserShootComponent.tscn" id="16_lnyhe"]
 [ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://new folder/scenes/arm.tscn" id="17_ijvem"]
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://new folder/shaders/canvas_group_two_tone.gdshader" id="18_cpfsp"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://new folder/scenes/arm_target.tscn" id="19_s2bgg"]
@@ -1628,14 +1628,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 110.447, 131.7, 108.816, 131.232, 107.884, 130.151, 107.175, 128.956, 106.44, 127.772, 105.026, 127.063, 103.258, 127.008, 101.453, 127.658, 100.008, 129.247, 98.5681, 128.689, 96.7619, 128.527, 95.1849, 127.926, 94.1799, 126.883, 93.9684, 125.668, 94.6366, 124.658, 93.4127, 123.93, 92.7907, 122.738, 91.5664, 121.83, 89.8323, 121.582, 87.9566, 122.202, 86.415, 123.763, 85.9033, 126.08, 85.8682, 128.436, 84.9552, 130.487)
+points = PackedVector2Array(112.595, 131.435, 111.228, 130.607, 109.294, 130.926, 107.29, 131.907, 105.216, 132.55, 103.263, 132.437, 101.686, 131.757, 100.242, 131.185, 101.271, 130.734, 99.4041, 130.429, 97.5338, 129.972, 95.5229, 129.964, 93.5429, 130.618, 91.8177, 131.826, 91.0841, 134.028, 89.1609, 134.446, 87.1503, 134.835, 85.3039, 134.635, 83.9979, 133.797, 83.5489, 132.593, 84.1772, 131.49, 85.5517, 130.91, 86.2957, 129.886, 85.8858, 128.778, 84.7406, 128.12)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 110.447, 126.075, 108.816, 124.982, 107.884, 123.276, 107.175, 121.456, 106.44, 119.647, 105.026, 118.313, 103.258, 117.633, 101.453, 117.658, 100.008, 118.622, 98.5681, 117.439, 96.7619, 116.652, 95.1849, 115.426, 94.1799, 113.758, 93.9684, 111.918, 94.6366, 110.283, 93.4127, 108.93, 92.7907, 107.113, 91.5664, 105.58, 89.8323, 104.707, 87.9566, 104.702, 86.415, 105.638, 85.9033, 107.33, 85.8682, 109.061, 84.9552, 110.487)
+points = PackedVector2Array(112.595, 126.435, 111.228, 124.982, 109.294, 124.676, 107.29, 125.032, 105.216, 125.05, 103.263, 124.312, 101.686, 123.007, 100.242, 121.81, 101.271, 120.734, 99.4041, 119.804, 97.5338, 118.722, 95.5229, 118.089, 93.5429, 118.118, 91.8177, 118.701, 91.0841, 120.278, 89.1609, 120.071, 87.1503, 119.835, 85.3039, 119.01, 83.9979, 117.547, 83.5489, 115.718, 84.1772, 113.99, 85.5517, 112.785, 86.2957, 111.136, 85.8858, 109.403, 84.7406, 108.12)
 width = 4.0
 
 [node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
@@ -1650,24 +1650,26 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.536, 131.765, 115.832, 130.916, 116.838, 129.781, 118.254, 128.948, 120.072, 128.784, 121.953, 129.449, 123.482, 130.945, 124.627, 130.235, 126.532, 130.698, 128.378, 130.603, 129.796, 129.852, 130.474, 128.682, 130.245, 127.461, 129.317, 126.512, 129.695, 125.304, 130.57, 124.267, 132.222, 124.036, 134.008, 125.031, 134.954, 127.182, 134.273, 129.499, 132.89, 131.329, 132.08, 133.551, 132.755, 135.788, 134.305, 137.117)
+points = PackedVector2Array(112.595, 131.435, 114.584, 131.941, 116.043, 131.264, 117.019, 130.112, 118.28, 129.123, 120.005, 128.703, 121.898, 128.961, 123.684, 129.682, 124.637, 131.722, 126.441, 131.611, 128.332, 131.464, 129.921, 130.817, 130.841, 129.712, 130.858, 128.471, 129.991, 127.513, 130.443, 126.366, 130.677, 125.164, 131.938, 124.443, 133.734, 124.786, 135.179, 126.45, 135.055, 128.864, 133.714, 130.744, 132.537, 132.738, 132.573, 135.118, 133.759, 136.968)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.536, 126.14, 115.832, 124.666, 116.838, 122.906, 118.254, 121.448, 120.072, 120.659, 121.953, 120.699, 123.482, 121.57, 124.627, 120.235, 126.532, 120.073, 128.378, 119.353, 129.796, 117.977, 130.474, 116.182, 130.245, 114.336, 129.317, 112.762, 129.695, 110.929, 130.57, 109.267, 132.222, 108.411, 134.008, 108.781, 134.954, 110.307, 134.273, 111.999, 132.89, 113.204, 132.08, 114.801, 132.755, 116.413, 134.305, 117.117)
+points = PackedVector2Array(112.595, 126.435, 114.584, 126.316, 116.043, 125.013, 117.019, 123.237, 118.28, 121.623, 120.005, 120.578, 121.898, 120.211, 123.684, 120.307, 124.637, 121.722, 126.441, 120.986, 128.332, 120.214, 129.921, 118.942, 130.841, 117.212, 130.858, 115.346, 129.991, 113.763, 130.443, 111.991, 130.677, 110.164, 131.938, 108.818, 133.734, 108.536, 135.179, 109.575, 135.055, 111.364, 133.714, 112.619, 132.537, 113.987, 132.573, 115.743, 133.759, 116.968)
 width = 4.0
 
 [node name="ArmTarget" parent="." instance=ExtResource("19_s2bgg")]
+visible = false
 position = Vector2(-30, -16)
 
 [node name="ArmTarget2" parent="." instance=ExtResource("19_s2bgg")]
+visible = false
 position = Vector2(21, -10)
 
-[connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSpriteComp_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSpriteComp" to="AnimatedSpriteComp" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComp" to="." method="_on_enemy_entered"]
 [connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
