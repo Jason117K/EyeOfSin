@@ -52,7 +52,7 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		# If they left click, grab the positon and place a plant there 
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			
+			print("QQ Grid Map is ", grid_map)
 			var mouse_pos = get_global_mouse_position()
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
 			print("GRID POS IS ", grid_pos)
@@ -156,6 +156,7 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 
 # Clear a space for a new plant to go 
 func clear_space(passed_grid_pos):
+	print("QQ Grid Map is ", grid_map)
 	#print(" QQ Erase Plant At :", passed_grid_pos)
 	var plant_node = grid_map.get(passed_grid_pos)
 	print(" QQ Plant to Erase Is  ", plant_node)
@@ -169,6 +170,7 @@ func clear_space(passed_grid_pos):
 	grid_map.erase(passed_grid_pos)
 
 func detect_plant(passed_grid_pos):
+	print("QQ Grid Map is ", grid_map)
 	var plant_node = grid_map.get(passed_grid_pos)
 	
 	if plant_node != null:
@@ -179,6 +181,7 @@ func detect_plant(passed_grid_pos):
 		return false 
 	
 func highlight_plant(passed_grid_pos):
+	print("QQ Grid Map is ", grid_map)
 	var plant_node = grid_map.get(passed_grid_pos)
 	plant_to_move = plant_node
 	if plant_node.has_method("highlight"):
@@ -192,7 +195,7 @@ func highlight_plant(passed_grid_pos):
 
 func move_plant(this_plant_to_move, passed_new_grid_pos):
 	this_plant_to_move.toggle_highlight()
-	
+	print("QQ Grid Map is ", grid_map)
 	print("HighLight Should Turn Off")
 	print("HighLight Selected Plant is ", selected_plant_scene)
 	selected_plant_scene = sunflower_scene
@@ -208,6 +211,8 @@ func move_plant(this_plant_to_move, passed_new_grid_pos):
 	pass
 	
 func place_empty_blocker_plant(grid_pos):
+	print("QQ1 Grid Map is ", grid_map)
+	#Add Scene Names 
 	print("Should Place Block Plant")
 	selected_plant_scene = empty_demon_scene
 	print("About to Place Plant")
@@ -269,7 +274,7 @@ func place_empty_blocker_plant(grid_pos):
 	
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
-	
+	print("QQ Grid Map is ", grid_map)
 	print("About to Place Plant")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
@@ -294,7 +299,7 @@ func place_plant(grid_pos: Vector2):
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print(grid_pos , " QQV Cell already occupied!")
+		print(grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)
 		return
 	
 	#Maw is larger, check neighboring cell
