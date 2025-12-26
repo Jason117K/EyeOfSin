@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 				if distance < 32.0:
 					dragging = true
 					drag_offset = global_position - local_click
-					get_viewport().set_input_as_handled()
+					#get_viewport().set_input_as_handled()
 			else:
 				# Release drag
 				dragging = false
@@ -48,4 +48,4 @@ func _input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and dragging:
 		# Update position while dragging
 		global_position = get_global_mouse_position() + drag_offset
-		get_viewport().set_input_as_handled()
+		#get_viewport().set_input_as_handled()

@@ -42,6 +42,7 @@ func get_selected_plant():
 
 # Handles Player Interaction with the Plant Menu 
 func _input(event):
+
 	# Dynamically get the selected plant	
 	selected_plant_scene = get_selected_plant()  
 	
@@ -52,7 +53,10 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		# If they left click, grab the positon and place a plant there 
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			print("QQ Grid Map is ", grid_map)
+			if get_parent().visible == false:
+				print(get_parent(), " is not visible, return early qqx")
+				return 
+			print(get_parent()," QQx Grid Map on Click is ", grid_map)
 			var mouse_pos = get_global_mouse_position()
 			var grid_pos = mouse_pos_to_grid(mouse_pos)
 			print("GRID POS IS ", grid_pos)
@@ -146,7 +150,7 @@ func _input(event):
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
-					print("QQOtro Place Plant " , grid_pos)
+					print(get_parent(), "QQOtro Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 
@@ -211,7 +215,7 @@ func move_plant(this_plant_to_move, passed_new_grid_pos):
 	pass
 	
 func place_empty_blocker_plant(grid_pos):
-	print("QQ1 Grid Map is ", grid_map)
+	print(get_parent(), " QQ1 Grid Map is ", grid_map)
 	#Add Scene Names 
 	print("Should Place Block Plant")
 	selected_plant_scene = empty_demon_scene
@@ -234,13 +238,13 @@ func place_empty_blocker_plant(grid_pos):
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print(grid_pos , " QQW Cell already occupied!")
+		print(get_parent(), grid_pos , " QQW Cell already occupied!")
 		return
 	
 	#Maw is larger, check neighboring cell
 	if  "Maw" in plant_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
-			print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
+			print(get_parent(), "QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 	
 	if sun_points >= -99999: 
@@ -250,9 +254,9 @@ func place_empty_blocker_plant(grid_pos):
 		if "Maw" in plant_instance.name:
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			grid_map[grid_pos] = plant_instance
-			print("QQZGirdMap Now Contains",grid_pos)
+			print(get_parent(), "QQZGirdMap Now Contains",grid_pos)
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
-			print("QQZGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
+			print(get_parent(), "QQZGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
@@ -269,12 +273,12 @@ func place_empty_blocker_plant(grid_pos):
 	else:
 		print("Not enough sun points!")
 	
-	print("QQ Blocker Plant Was Placed At " , plant_instance.position)
+	print(get_parent(), "QQ Blocker Plant Was Placed At " , plant_instance.position)
 	
 	
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
-	print("QQ Grid Map is ", grid_map)
+	print(get_parent(), "QQ Grid Map Place Plant is ", grid_map)
 	print("About to Place Plant")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
@@ -299,7 +303,7 @@ func place_plant(grid_pos: Vector2):
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print(grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)
+		print(get_parent(), grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)
 		return
 	
 	#Maw is larger, check neighboring cell
