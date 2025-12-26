@@ -42,6 +42,7 @@ func _on_PlayAgain_pressed():
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	#assert(get_tree().change_scene_to_file(get_parent().get_scene_file_path()) == OK)
 	#Global.game_controller.change_scene(get_parent().get_scene_file_path())
+	self.visible = false 
 	Global.game_controller.change_dual_scenes(current_level,current_level_alt)
 	Global.unlockLevel(level_unlocked)
 

@@ -1,7 +1,7 @@
 @tool
 extends TileMapLayer
 
-var make_green := false
+@export var make_green := false
 
 ## Amount to shift hue (0.0 to 1.0, wraps around)
 @export_range(0.0, 1.0, 0.01) var hue_shift: float = 0.0:

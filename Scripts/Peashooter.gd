@@ -237,10 +237,15 @@ func adjust_position(new_form):
 			pass
 			
 		"Walnut" :
-			pass
+			print("Spyder Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-5)
+			print("Spyder Self pos IS ", self.global_position)		
 			
 		"Wyrm":
-			pass
+
+			print("Spyder Self pos was ", self.global_position)
+			self.global_position = self.global_position + Vector2(0,-5)
+			print("Spyder Self pos IS ", self.global_position)
 			
 		"Wasp":
 
