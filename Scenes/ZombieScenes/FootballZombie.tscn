@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://Assets/Zombies/Animations/Football/FootballZombie-SheetWEB.png" id="8_x5n0p"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="9_qr3bx"]
 
-
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(35, 25)
 
@@ -20,7 +19,9 @@ shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
 shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(9, 9, 9, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.456
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5n0p"]
 atlas = ExtResource("7_oaedh")

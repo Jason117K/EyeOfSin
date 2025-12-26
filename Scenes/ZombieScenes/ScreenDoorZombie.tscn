@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dlg0sfn1ax4sn" path="res://Assets/Zombies/Animations/DocOc/DocOcWalkInjuredWeb-Sheet.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://d4b0cn82fjmj8" path="res://Assets/Zombies/Animations/DocOc/DocOcWalkINJURED-Sheet.png" id="16"]
 
-
 [sub_resource type="RectangleShape2D" id="17"]
 size = Vector2(8.75, 21)
 
@@ -27,7 +26,9 @@ shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
 shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(9, 9, 9, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.2
 
 [sub_resource type="AtlasTexture" id="64"]
 atlas = ExtResource("4")
@@ -173,10 +174,6 @@ region = Rect2(434, 0, 62, 36)
 atlas = ExtResource("15")
 region = Rect2(496, 0, 62, 36)
 
-[sub_resource type="AtlasTexture" id="70"]
-atlas = ExtResource("4")
-region = Rect2(0, 0, 62, 36)
-
 [sub_resource type="AtlasTexture" id="71"]
 atlas = ExtResource("4")
 region = Rect2(62, 0, 62, 36)
@@ -188,6 +185,10 @@ region = Rect2(124, 0, 62, 36)
 [sub_resource type="AtlasTexture" id="73"]
 atlas = ExtResource("4")
 region = Rect2(186, 0, 62, 36)
+
+[sub_resource type="AtlasTexture" id="70"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="74"]
 atlas = ExtResource("4")
@@ -406,9 +407,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("70")
-}, {
-"duration": 1.0,
 "texture": SubResource("71")
 }, {
 "duration": 1.0,
@@ -416,6 +414,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("73")
+}, {
+"duration": 1.0,
+"texture": SubResource("70")
 }, {
 "duration": 1.0,
 "texture": SubResource("74")
@@ -434,7 +435,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 10.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -728,6 +729,8 @@ shape = SubResource("17")
 material = SubResource("27")
 sprite_frames = SubResource("16")
 animation = &"Walk"
+frame = 3
+frame_progress = 0.726956
 script = ExtResource("10")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.85098, 0.101961, 0.101961, 1)

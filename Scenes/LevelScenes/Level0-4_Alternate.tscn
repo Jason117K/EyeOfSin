@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_fyt8r"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_hgpp1"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_hbnda"]
+[ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="21_qrjcg"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="22_fdf6c"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="23_lnyt2"]
 
@@ -55,13 +56,6 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
-
-[sub_resource type="Environment" id="2"]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 1
-glow_hdr_threshold = 1.5
-adjustment_enabled = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
 bg_color = Color(0, 0, 0, 1)
@@ -602,7 +596,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.0784314)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("2")
+environment = ExtResource("21_qrjcg")
 
 [node name="ToolTips" parent="." instance=ExtResource("21_hbnda")]
 visible = false
