@@ -49,7 +49,7 @@ func _ready():
 func receiveBuff(bufferName):
 	if !isBuffed :
 		super(bufferName)
-		animSpriteComp.make_buff_glow()
+		#animSpriteComp.make_buff_glow()
 		
 		if "Sun" in bufferName.name && !isSunflowerBuffed:
 			canGenSun = true 

@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+class_name DemonSpriteComp extends AnimatedSprite2D
 
 
 #TODO Get Rid of Preload 
@@ -6,6 +6,7 @@ extends AnimatedSprite2D
 var demon_glow = preload("res://Scripts/Plants/Shaders/DemonGlow.gdshader")
 
 @export var targetGlowColor : Color
+@export var modulate_factor : Vector4 = Vector4(7,7,7,1)
 
 
 var currentAnim := "idle"
@@ -56,9 +57,9 @@ func change_form(new_form):
 
 
 func make_buff_glow():
-	return
+	#return
 	if material == null:
-		#print("PRE LOL")
+		print("PRE LOL")
 		material = ShaderMaterial.new()
 		material.shader = demon_glow #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
 	
@@ -66,8 +67,9 @@ func make_buff_glow():
 	if material is ShaderMaterial:
 		
 		#material.shader = demon_glow
-		#print("LOL" , material)
+		print("LOL" , material)
 		material.set_shader_parameter("glow_color", targetGlowColor)
+		material.set_shader_parameter("modulate_factor", modulate_factor)
 	else:
 		#print("Not funn y LOL ", material)
 		pass

@@ -12,13 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://bv3ias3dilty5" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_MAW-Sheet.png" id="5_p48hc"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="6"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="6_bufnm"]
 [ext_resource type="Texture2D" uid="uid://wh85hj3u24vx" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_SPYDER-Sheet.png" id="6_ixnkm"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://Scenes/PlantScenes/BuffNodesComponent.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://cbytmdkwyv53a" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_WALNUT-Sheet.png" id="7_3r88c"]
 [ext_resource type="Texture2D" uid="uid://ceviomuixqede" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_Base-Sheet.png" id="7_ixnkm"]
 [ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_WYRM-Sheet.png" id="9_00tae"]
+[ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://Scripts/Plants/Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3r88c"]
 radius = 61.2046
@@ -1039,8 +1039,9 @@ material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
 animation = &"idle"
 autoplay = "spawn"
-script = ExtResource("6_bufnm")
+script = ExtResource("16_kvwqv")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
+modulate_factor = Vector4(6, 6, 6, 1)
 
 [node name="OverlayComponent" type="Node2D" parent="."]
 visible = false

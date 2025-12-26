@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+class_name ZombieSpriteComp extends AnimatedSprite2D
 #ZombieSpriteComp
 
 
@@ -143,6 +143,7 @@ func _on_AnimatedSprite_frame_changed():
 		pass
 
 func _apply_hue_shift() -> void:
+	
 	# Create material if needed
 	if material == null:
 		material = ShaderMaterial.new()

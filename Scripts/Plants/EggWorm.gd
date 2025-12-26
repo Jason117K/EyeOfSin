@@ -128,7 +128,7 @@ func receiveBuff(plant):
 				
 		isCurrentlyBuffed = true		
 				
-		shell_sprite.make_buff_glow()
+		#shell_sprite.make_buff_glow()
 		#Increases Speed and Range From Peashooter Buff
 		#if("Peashooter" in plant.name) && !isSpyderBuffed:
 			#laserShootComp.extension_speed = 80000

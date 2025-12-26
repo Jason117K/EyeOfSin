@@ -129,7 +129,7 @@ func receiveBuff(newPlant):
 		
 		isBuffed = true 
 			
-		animSpriteComp.make_buff_glow()
+		#animSpriteComp.make_buff_glow()
 
 
 func truncate_string(input_string: String) -> String:

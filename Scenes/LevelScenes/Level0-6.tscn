@@ -57,8 +57,12 @@ animations = [{
 }]
 
 [sub_resource type="Environment" id="2"]
-background_mode = 4
+background_mode = 3
+tonemap_mode = 1
+tonemap_white = 0.8
 glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.06
 glow_blend_mode = 1
 glow_hdr_threshold = 1.5
 adjustment_enabled = true
@@ -610,16 +614,7 @@ sprite_frames = SubResource("SpriteFrames_b1vmi")
 layout_mode = 1
 
 [node name="Node" type="Node2D" parent="."]
-visible = false
 z_index = -1
-
-[node name="ColorRect" type="ColorRect" parent="Node"]
-offset_left = -56.0
-offset_top = -58.0
-offset_right = 792.0
-offset_bottom = 444.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.0784314)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("2")
@@ -647,10 +642,19 @@ volume_db = -80.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(5, 5, 5, 1)
+z_index = 2
+offset_left = 377.0
+offset_top = 86.0
+offset_right = 535.0
+offset_bottom = 228.0
+mouse_filter = 2
+
 [node name="GlowShaderPass" type="CanvasLayer" parent="."]
 
 [node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
-visible = false
 material = SubResource("ShaderMaterial_o4yey")
 offset_left = -49.0
 offset_top = -65.0
@@ -666,7 +670,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]
