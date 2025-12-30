@@ -2019,7 +2019,7 @@ position = Vector2(287, 263)
 texture = ExtResource("8_opuci")
 
 [node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
-position = Vector2(666, 350)
+position = Vector2(648, 351)
 texture = ExtResource("8_opuci")
 flip_h = true
 
