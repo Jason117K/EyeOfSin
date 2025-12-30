@@ -291,7 +291,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 276)
+position = Vector2(740, 270)
 Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -335,7 +335,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_im0x3")]
 position = Vector2(-64, 200)
 script = ExtResource("7_r7xet")
-StartDelay = 5
+StartDelay = 22
 Wave2StartTime = 35
 Wave3StartTime = 45
 
@@ -639,7 +639,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

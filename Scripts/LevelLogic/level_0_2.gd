@@ -403,6 +403,8 @@ func hide_all_plant_buttons_except_spyder():
 
 func highlight_walnut_button():
 	var button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
+	button.visible = true 
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut").visible = true 
 	plantSelectionMenu.add_button_highlight(button)	
 
 func highlight_spyder_button():

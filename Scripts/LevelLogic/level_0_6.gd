@@ -33,6 +33,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://Assets/Text/TextFiles/ZombieDescriptions
 
 
 func _ready():
+	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level06,level06Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.resetSunflowerCount()
@@ -76,7 +77,17 @@ func _input(event):
 			else:
 				_start_explain_amalgam_zombie()
 
-
+func setup_plant_selection_menu():
+	pass
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/RemovePlant").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive").visible = true
+	
 
 
 # State transition system

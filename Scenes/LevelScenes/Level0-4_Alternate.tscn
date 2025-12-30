@@ -288,7 +288,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_qtrot")]
-position = Vector2(740, 276)
+position = Vector2(740, 270)
 make_green = true
 Round1_Zombies = {
 "Base": 0,
@@ -328,7 +328,7 @@ position = Vector2(-32, -1)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("5_h2j3p")]
 position = Vector2(-64, 200)
 script = ExtResource("6_dylvt")
-StartDelay = 5
+StartDelay = 22
 Wave2StartTime = 35
 Wave3StartTime = 45
 

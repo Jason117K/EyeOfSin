@@ -2207,42 +2207,52 @@ texture = ExtResource("15_qiku5")
 flip_h = true
 
 [node name="Fish" type="Node2D" parent="Environment"]
+z_index = 1
 
 [node name="Fish" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(542, 386)
+makeGreen = true
 
 [node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(515, 353)
+makeGreen = true
 
 [node name="Fish5" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(180, 329)
+makeGreen = true
 
 [node name="Fish6" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(37, 326)
+makeGreen = true
 
 [node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(573, 19)
+makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(455, 394)
+makeGreen = true
 
 [node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(315, 14)
+makeGreen = true
 
 [node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(573, 342)
+makeGreen = true
 
 [node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
 position = Vector2(633, 395)
+makeGreen = true
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 visible = false

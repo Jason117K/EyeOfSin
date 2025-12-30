@@ -118,6 +118,7 @@ func _transition_to_state(new_state: TutorialState):
 			#_start_explain_chimera()
 		TutorialState.EXPLAIN_CODEX:
 			var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
+			plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex").visible = true 
 			codex_buton.visible = true  
 			_start_explain_codex()
 		TutorialState.TUTORIAL_P2_DONE:

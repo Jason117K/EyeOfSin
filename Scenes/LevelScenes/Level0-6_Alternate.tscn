@@ -84,7 +84,7 @@ script = ExtResource("1_vpaut")
 isGreenDimension = true
 
 [node name="PlantManager" parent="." instance=ExtResource("2_0v3x8")]
-sun_points = 1000
+sun_points = 1500
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -94,11 +94,11 @@ position = Vector2(740, 77)
 make_green = true
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
-"PoleVault": 0,
+"PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -132,11 +132,11 @@ position = Vector2(740, 109)
 make_green = true
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
-"PoleVault": 0,
+"PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -170,11 +170,11 @@ position = Vector2(740, 141)
 make_green = true
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
-"PoleVault": 0,
+"PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -208,11 +208,11 @@ position = Vector2(740, 173)
 make_green = true
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
-"PoleVault": 0,
+"PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -246,18 +246,18 @@ position = Vector2(740, 205)
 make_green = true
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
-"PoleVault": 0,
+"PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
 "Base": 3,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -284,11 +284,11 @@ position = Vector2(740, 241)
 make_green = true
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
-"PoleVault": 0,
+"PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -322,11 +322,11 @@ position = Vector2(740, 276)
 make_green = true
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 1,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 1,
-"PoleVault": 0,
+"PoleVault": 1,
 "ScreenDoor": 0,
 "Ticker": 0
 }
@@ -358,9 +358,10 @@ position = Vector2(-32, -1)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("5_hgfp3")]
 position = Vector2(-64, 200)
 script = ExtResource("6_fafrc")
-StartDelay = 5
+StartDelay = 77
 Wave2StartTime = 35
 Wave3StartTime = 45
+Wave1_Interval = 3.0
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("7_mt0c8")]
 make_green = true
