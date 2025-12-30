@@ -70,6 +70,7 @@ var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
 var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 
 func _ready():
+	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level02,level02Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_SUNFLOWER)
@@ -133,6 +134,13 @@ func _input(event):
 		# Other states allow normal input
 		_:
 			pass
+func setup_plant_selection_menu():
+	pass
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower").visible = true
+	
+	
+	
+	
 func _start_explain_buckethead_zombie():
 	bucketHeadExplained = true 
 	print("[TUTORIAL] Start Explain Buckethead Zombie")
@@ -430,6 +438,7 @@ func _on_tooltip_hidden():
 			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_BUFFS to WAVE_1_ACTIVE")
 			get_tree().paused = false  # Unpause game
 			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
+			plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 
 		TutorialState.EXPLAIN_BUCKETHEAD_ZOMBIE:
 			print("[Tutorial] Buckethead explained - waiting for Wave 3")
@@ -632,6 +641,7 @@ func _start_force_select_sunflower():
 
 	# ADD THIS: Show spotlight on Sunflower button
 	var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
+	sunflower_button.visible = true 
 	show_spotlight_at_node(sunflower_button)
 
 	waveManager.canStartGame = false

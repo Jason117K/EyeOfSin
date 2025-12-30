@@ -38,6 +38,7 @@ const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.tx
 
 
 func _ready():
+	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03,level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_MAW)
@@ -94,7 +95,13 @@ func _input(event):
 			pass
 			#_start_explain_codex()
 
-
+func setup_plant_selection_menu():
+	pass
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/RemovePlant").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex").visible = true
+	
 
 # State transition system
 func _transition_to_state(new_state: TutorialState):
@@ -248,14 +255,17 @@ func show_all_plant_buttons():
 	# Show Sunflower
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower").visible = true
 
 	# Show Spyder
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true	
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter").visible = true	
 
 	#Show Walnut
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true	
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut").visible = true	
 
 
 # Spotlight helper functions 

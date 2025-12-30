@@ -42,6 +42,7 @@ var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
 var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 
 func _ready():
+	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level0_1,level0_1Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
@@ -88,7 +89,12 @@ func _input(event):
 		_:
 			pass
 
-
+func setup_plant_selection_menu():
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton").visible = false
+	plantSelectionMenu.get_node("PanelContainer").size.x = 71 
+	
 	
 
 func _handle_force_select_spyder_input(event):
@@ -106,6 +112,8 @@ func _handle_force_place_plant_input(event):
 
 
 func _handle_force_press_y_input(event):
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton").visible = true
+	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 	# Only allow Y key
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
