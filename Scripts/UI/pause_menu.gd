@@ -8,6 +8,7 @@ var level0_3Alt = ("res://Scenes/LevelScenes/Level0-3_Alternate.tscn")
 
 
 func set_restart_levels(newLevel,newAltLevel):
+	print(newLevel,newAltLevel, "RESTART LEVELS SET")
 	restartScene = newLevel
 	restartSceneAlt = newAltLevel
 
