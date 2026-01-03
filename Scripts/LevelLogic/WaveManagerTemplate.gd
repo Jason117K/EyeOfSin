@@ -175,7 +175,7 @@ func _on_ProceedGame_timeout():
 			print("Emitting Wave2Almost Start Signal")
 			if startWave2 : 
 				$Wave2.start()
-				$ProceedGame.wait_time = 30
+				$ProceedGame.wait_time = Wave3StartTime
 				$ProceedGame.start()
 				numWave = numWave + 1
 				for icon in wavePreviewIcons:
