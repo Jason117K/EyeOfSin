@@ -1299,8 +1299,8 @@ position = Vector2(-32, -1)
 position = Vector2(-64, 200)
 script = ExtResource("7_a84oj")
 StartDelay = 15
-Wave2StartTime = 30
-Wave3StartTime = 35
+Wave2StartTime = 35
+Wave3StartTime = 55
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("5_uwsnf")]
 make_green = true
