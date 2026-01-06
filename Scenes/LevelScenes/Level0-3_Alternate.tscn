@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=4 uid="uid://bry6wbbvn2abw"]
 
-[ext_resource type="Script" path="res://Scripts/LevelLogic/level_0_3_alternate.gd" id="1_pwl3v"]
+[ext_resource type="Script" uid="uid://cs4qat1lxac3t" path="res://Scripts/LevelLogic/level_0_3_alternate.gd" id="1_pwl3v"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_fsj0e"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_xeusr"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_ox1g6"]
@@ -84,7 +84,7 @@ script = ExtResource("1_pwl3v")
 isGreenDimension = true
 
 [node name="PlantManager" parent="." instance=ExtResource("2_fsj0e")]
-sun_points = 1000
+sun_points = 500
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -252,9 +252,9 @@ position = Vector2(-32, -1)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("5_yjtpb")]
 position = Vector2(-64, 200)
 script = ExtResource("6_n56wc")
-StartDelay = 5
-Wave2StartTime = 35
-Wave3StartTime = 45
+StartDelay = 20
+Wave2StartTime = 37
+Wave3StartTime = 50
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("7_8ft45")]
 make_green = true

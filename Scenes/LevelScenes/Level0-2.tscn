@@ -199,8 +199,8 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 position = Vector2(-64, 200)
 script = ExtResource("7_d6oo2")
 StartDelay = 15
-Wave2StartTime = 30
-Wave3StartTime = 35
+Wave2StartTime = 35
+Wave3StartTime = 55
 
 [node name="Environment" type="Node2D" parent="."]
 
