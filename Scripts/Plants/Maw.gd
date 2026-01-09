@@ -130,7 +130,6 @@ func setup_tentacles():
 	var t2 = TentacleState.new(arm2, arm_target2)
 	var t3 = TentacleState.new(arm3, arm_target3)
 
-	#tentacles = [t1, t2, t3]
 	tentacles = [t1, t2]
 	available_tentacles = tentacles.duplicate()
 
