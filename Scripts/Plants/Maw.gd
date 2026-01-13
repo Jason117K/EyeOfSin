@@ -21,7 +21,7 @@ const GRAB_DISTANCE_THRESHOLD = 10.0
 const RETRACT_DISTANCE_THRESHOLD = 5.0
 const ATTACH_DURATION = 0.1
 const MAX_EXTEND_TIME = 3.0  # Timeout for stuck tentacles
-const DIGESTION_TIME = 3.0  # Match existing digestion_time variable
+const DIGESTION_TIME = 4.5  # Match existing digestion_time variable
 
 # Extension/Retraction animation speeds
 const EXTEND_DURATION = 0.75  # Seconds to fully extend to enemy
