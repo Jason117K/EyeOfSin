@@ -96,7 +96,7 @@ Round1_Zombies = {
 "Base": 0,
 "BucketHead": 0,
 "ConeHead": 0,
-"Dancer": 0,
+"Dancer": 1,
 "Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
@@ -328,7 +328,7 @@ position = Vector2(-32, -1)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("5_h2j3p")]
 position = Vector2(-64, 200)
 script = ExtResource("6_dylvt")
-StartDelay = 22
+StartDelay = 0
 Wave2StartTime = 35
 Wave3StartTime = 45
 

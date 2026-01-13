@@ -20,6 +20,7 @@ func _ready() -> void:
 		self.set_collision_layer_value(1,false)
 		self.set_collision_layer_value(2,true)
 		self.set_collision_layer_value(3,false)
+	#set_hue_shift
 # Component Manager Getter
 func getCompManager():
 	return compManager

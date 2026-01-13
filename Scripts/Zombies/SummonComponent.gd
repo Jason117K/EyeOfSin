@@ -59,10 +59,7 @@ func summon_backup():
 	for point in points:
 		#print("Adding Zombie to ", point.name)
 		var zombie_instance = BackUpDancerScene.instantiate()
-		if self.is_in_group("Green"):
-			zombie_instance.add_to_group("Green")
-		else:
-			zombie_instance.add_to_group("Purple")
+			
 		
 		# Convert spawn point's position to global coordinates
 		var global_spawn_pos = point.global_position
@@ -72,6 +69,15 @@ func summon_backup():
 		
 		# Set the zombie's global position
 		zombie_instance.global_position = global_spawn_pos
+		if self.get_parent().is_in_group("Green"):
+			print("Summoner Spawned Green")
+			zombie_instance.add_to_group("Green")
+			zombie_instance.collision_layer = 3
+			zombie_instance.set_hue_shift(125)
+			zombie_instance._ready()
+		else:
+			print("Summoner Spawned Purple")
+			zombie_instance.add_to_group("Purple")
 
 #Start the summon again by setting the animation 
 func _on_SummonTimer_timeout():

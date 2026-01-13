@@ -21,7 +21,9 @@ shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
 shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(5, 5, 5, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.2
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("3")
