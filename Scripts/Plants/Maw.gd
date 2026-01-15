@@ -446,11 +446,12 @@ func _on_DigestionTimer_timeout():
 
 #Handles Receiving Buffs From EggWorm, Peashooter, and Hive, setting color accordingly 
 func receiveBuff(plant):
-	#print(bufferName)
+	#print("Maw7",bufferName)
 	if !isBuffed:
 		super(plant)
 		bufferName = plant.name
 		if("EggWorm" in bufferName) && !isEggWyrmBuffed:
+			#print("Maw7 Buffer Was Eggworm")
 				#tentacle1.set_colors(Color.YELLOW, Color.YELLOW)
 				#tentacle2.set_colors(Color.BLUE, Color.BLUE)
 				#TODO Re Implement Color Changes
@@ -463,22 +464,26 @@ func receiveBuff(plant):
 				#tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
 			willBelchWebs = true
 			isSpyderBuffed = true 
+			#print("Maw7 Buffer Was Peashooter")
+
 		elif("Hive" in bufferName) && !isHiveBuffed:
 				#tentacle1.set_colors(Color.WHITE, Color.WHITE)
 				#tentacle2.set_colors(Color.BLACK, Color.BLACK)
-			print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
+			#print("Maw7 DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
 			detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
 			health = 200
-			print("Buffer Was HHIve")
+			#print("Maw7 Buffer Was HHIve")
 			#TODO Re Implement Color Changes
 				#$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
 			isHiveBuffed = true 
 		elif("Sunflower" in bufferName) && !isSunflowerBuffed:
 			willBelchSun = true 
 			isSunflowerBuffed = true 
+			#print("Maw7 Buffer Was Sunflower")
 		elif "Walnut" in bufferName:
 			health = walnutHealth
 			isWalnutBuffed = true
+			#print("Maw7 Buffer Was Walnut")
 		isBuffed = true 
 	
 func debuff():

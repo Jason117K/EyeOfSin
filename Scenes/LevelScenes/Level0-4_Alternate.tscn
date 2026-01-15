@@ -328,7 +328,7 @@ position = Vector2(-32, -1)
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("5_h2j3p")]
 position = Vector2(-64, 200)
 script = ExtResource("6_dylvt")
-StartDelay = 0
+StartDelay = 45
 Wave2StartTime = 35
 Wave3StartTime = 45
 

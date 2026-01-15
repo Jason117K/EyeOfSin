@@ -1500,8 +1500,7 @@ wait_time = 9.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.5, -0.5)
+position = Vector2(256, 256)
 shape = SubResource("9")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

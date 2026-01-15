@@ -190,6 +190,7 @@ func _ready():
 	
 # Handle Deselection
 func _input(event):
+	
 	if event is InputEventKey and event.pressed:
 		#print("Key Pressed")
 		if event.keycode == KEY_X:

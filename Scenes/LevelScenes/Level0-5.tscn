@@ -86,7 +86,7 @@ script = ExtResource("1_ehl8e")
 environment = ExtResource("2_e2mf6")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_uuukh")]
-sun_points = 1000
+sun_points = 2000
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -94,7 +94,7 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 77)
 Round1_Zombies = {
-"Base": 2,
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -131,7 +131,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 109)
 Round1_Zombies = {
-"Base": 2,
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -168,7 +168,7 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 141)
 Round1_Zombies = {
-"Base": 2,
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -205,9 +205,9 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 173)
 Round1_Zombies = {
-"Base": 2,
-"BucketHead": 0,
-"ConeHead": 0,
+"Base": 1,
+"BucketHead": 2,
+"ConeHead": 5,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -242,7 +242,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 205)
 Round1_Zombies = {
-"Base": 2,
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -279,7 +279,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 240)
 Round1_Zombies = {
-"Base": 2,
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -316,7 +316,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 270)
 Round1_Zombies = {
-"Base": 2,
+"Base": 5,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -358,7 +358,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_alf2p")]
 position = Vector2(-64, 200)
 script = ExtResource("7_8ur1c")
-StartDelay = 22
+StartDelay = 30
 Wave2StartTime = 35
 Wave3StartTime = 45
 
