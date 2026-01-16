@@ -696,6 +696,7 @@ animations = [{
 }]
 
 [node name="ScreenDoorZombie" type="Area2D" groups=["Zombie"]]
+z_index = 2
 collision_layer = 2
 script = ExtResource("1")
 
@@ -707,7 +708,7 @@ texture = ExtResource("2_40guy")
 [node name="ComponentManager" parent="." instance=ExtResource("8")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("7")]
-health = 250
+health = 999
 healthRegen = 0.5
 bloodWorth = 10.0
 

@@ -190,13 +190,16 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				if make_green :
+					print("Made Green")
 					zombie_instance.add_to_group("Green")
 					zombie_instance.collision_layer = 3
 					zombie_instance.set_hue_shift(125)
 					zombie_instance._ready()
 				else:
 					zombie_instance.add_to_group("Purple")
+					print("Made Purple")
 				print("Spawn wave 3")
+				
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()

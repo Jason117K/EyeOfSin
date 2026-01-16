@@ -77,8 +77,8 @@ func _process(_delta):
 				for i in range(collision_count):
 					var collider = attack_ray.get_collider(i)
 					if collider and collider.is_in_group("Zombie"):
-						if self.is_in_group("Green"):
-							print("Collider Name is XXX to be attacked", collider.name)
+						i#f self.is_in_group("Green"):
+						print("Collider Name is XXX to be attacked", collider.name)
 							
 						#print("Collider Name is XXX", collider.name)
 						#if collider.get_parent().get_parent() != self.get_parent().get_parent(): #Dimension Check
@@ -89,7 +89,9 @@ func _process(_delta):
 								print("Is Green, Can Attack")
 								canAttack = true
 						if collider.is_in_group("Purple"):
+							print("Is Purple")
 							if self.is_in_group("Purple"):
+								print("Can Attack")
 								canAttack = true
 						if collider.is_in_group("Green"):
 							if self.is_in_group("Purple"):

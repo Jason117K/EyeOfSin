@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://Scripts/Zombies/AOEHit.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://Assets/Zombies/Animations/Ticker/Ticker-WebSheet.png" id="13"]
 
-
 [sub_resource type="RectangleShape2D" id="15"]
 size = Vector2(18, 30)
 
@@ -23,7 +22,9 @@ shader_parameter/hue_shift_degrees = 0.0
 shader_parameter/target_color = Color(0, 0, 0, 1)
 shader_parameter/replace_color = Color(0, 0, 0, 1)
 shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(5, 5, 5, 1)
 shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.2
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")
@@ -395,9 +396,8 @@ position = Vector2(-140, 4.66667)
 sprite_frames = SubResource("28")
 
 [node name="HitBoxComponent" type="Area2D" parent="." groups=["Zombie"]]
-visible = false
 z_index = 2
-collision_layer = 2
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
