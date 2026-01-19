@@ -92,10 +92,10 @@ process_mode = 1
 position = Vector2(740, 77)
 Round1_Zombies = {
 "Base": 0,
-"BucketHead": 1,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
 "Ticker": 0
@@ -132,10 +132,10 @@ Round1_Zombies = {
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 1
+"Ticker": 0
 }
 Round2_Zombies = {
 "Base": 3,
@@ -169,10 +169,10 @@ Round1_Zombies = {
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 1
+"Ticker": 0
 }
 Round2_Zombies = {
 "Base": 0,
@@ -206,10 +206,10 @@ Round1_Zombies = {
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 1
+"Ticker": 0
 }
 Round2_Zombies = {
 "Base": 3,
@@ -243,10 +243,10 @@ Round1_Zombies = {
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 1
+"Ticker": 0
 }
 Round2_Zombies = {
 "Base": 0,
@@ -280,10 +280,10 @@ Round1_Zombies = {
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
 "PoleVault": 0,
 "ScreenDoor": 0,
-"Ticker": 1
+"Ticker": 0
 }
 Round2_Zombies = {
 "Base": 0,
@@ -312,6 +312,16 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_xdg5i")]
 position = Vector2(740, 270)
+Round1_Zombies = {
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
 Round2_Zombies = {
 "Base": 0,
 "BucketHead": 0,
@@ -345,7 +355,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_im0x3")]
 position = Vector2(-64, 200)
 script = ExtResource("7_r7xet")
-StartDelay = 5
+StartDelay = 13
 Wave2StartTime = 35
 Wave3StartTime = 45
 
