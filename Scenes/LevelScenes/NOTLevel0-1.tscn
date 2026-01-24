@@ -1,6 +1,6 @@
 [gd_scene load_steps=154 format=4 uid="uid://d001lsx0dnrsk"]
 
-[ext_resource type="Script" path="res://Scripts/LevelLogic/level_0_1.gd" id="1_lolyg"]
+[ext_resource type="Script" uid="uid://dm2navsh6rvfd" path="res://Scripts/LevelLogic/level_0_1.gd" id="1_lolyg"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_hfncb"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="2_qffnb"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_hh1rc"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bg53m2qki4ukj" path="res://Assets/Environment/Tilesets/bgtilespbig-Sheet.png" id="10_pnb5s"]
 [ext_resource type="Texture2D" uid="uid://8g35103qrcq8" path="res://Assets/Environment/Tilesets/PurpleSwampTileset.png" id="11_4kmsn"]
 [ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://Assets/Environment/Props/Coral_ExtraBig.png" id="11_aadij"]
-[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://Scripts/Environment/sway.gd" id="12_4nlii"]
+[ext_resource type="Script" path="res://Scripts/Environment/sway.gd" id="12_4nlii"]
 [ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://Assets/Environment/TX Tileset Grass.png" id="12_iuwre"]
 [ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://Assets/Environment/Props/FetusProp.png" id="13_l8ebs"]
 [ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="13_rlu0d"]
@@ -3139,30 +3139,6 @@ offset_left = 2.0
 offset_top = 307.0
 offset_right = 42.0
 offset_bottom = 347.0
-
-[node name="Sunflower" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="0"]
-visible = false
-
-[node name="Walnut" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="2"]
-visible = false
-
-[node name="Maw" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="3"]
-visible = false
-
-[node name="Egg" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="5"]
-visible = false
-
-[node name="Hive" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="6"]
-visible = false
-
-[node name="RemovePlant" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="7"]
-visible = false
-
-[node name="WorldSwap" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="8"]
-visible = false
-
-[node name="Codex" parent="PlantSelectionMenu/PanelContainer/VBoxContainer/HBoxContainer" index="9"]
-visible = false
 
 [node name="PlantManager" parent="." instance=ExtResource("2_hfncb")]
 sun_points = 85
