@@ -86,7 +86,7 @@ script = ExtResource("1_ehl8e")
 environment = ExtResource("2_e2mf6")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_uuukh")]
-sun_points = 400
+sun_points = 500
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
