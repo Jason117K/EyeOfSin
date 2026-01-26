@@ -115,8 +115,14 @@ func place_empty_in_alt_scene(grid_pos):
 		current_scenes[1].place_empty_blocker_plant(grid_pos)
 	elif current_scenes[0].visible == false :
 		current_scenes[0].place_empty_blocker_plant(grid_pos)
-	
-	
+
+func remove_empty_in_alt_scene(grid_pos):	
+	print("Removing Empty in Alt At QQ ", grid_pos)
+	if current_scenes[1].visible == false :
+		print("current_scenes[1] is", current_scenes[1])
+		current_scenes[1].remove_empty_blocker_plant(grid_pos)
+	elif current_scenes[0].visible == false :
+		current_scenes[0].remove_empty_blocker_plant(grid_pos)	
 	
 	
 func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:

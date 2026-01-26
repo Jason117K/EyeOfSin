@@ -166,13 +166,35 @@ func clear_space(passed_grid_pos):
 	print(" QQ Plant to Erase Is  ", plant_node)
 	#plantToErase.die()
 	if plant_node != null:
-		#print("The Right DDDDDDD Function is Being Called ")
-		if "Empty" in plant_node.name:
-			return
 		plant_node.die_fromClearSpace()
+		#print("The Right DDDDDDD Function is Being Called ")
+		#if "Empty" in plant_node.name:
+			##return
+			#pass
+		#else:
+			#plant_node.die_fromClearSpace()
 		#plant_node.queue_free()
 	grid_map.erase(passed_grid_pos)
+	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
+func clear_space_alt(passed_grid_pos):
+	print("QQ Grid Map is ", grid_map)
+	#print(" QQ Erase Plant At :", passed_grid_pos)
+	var plant_node = grid_map.get(passed_grid_pos)
+	print(" QQ Plant to Erase Is  ", plant_node)
+	#plantToErase.die()
+	if plant_node != null:
+		plant_node.die_fromClearSpace()
+		#print("The Right DDDDDDD Function is Being Called ")
+		#if "Empty" in plant_node.name:
+			##return
+			#pass
+		#else:
+			#plant_node.die_fromClearSpace()
+		#plant_node.queue_free()
+	grid_map.erase(passed_grid_pos)
+	#Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
+	
 func detect_plant(passed_grid_pos):
 	print("QQ Grid Map is ", grid_map)
 	var plant_node = grid_map.get(passed_grid_pos)

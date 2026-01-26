@@ -150,3 +150,6 @@ func attach_script_to_coral_children(script_path: String) -> void:
 
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)
+
+func remove_empty_blocker_plant(grid_pos):
+	plantManager.clear_space_alt(grid_pos)

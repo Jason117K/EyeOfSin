@@ -322,3 +322,6 @@ func hide_Codex():
 
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)
+
+func remove_empty_blocker_plant(grid_pos):
+	plantManager.clear_space_alt(grid_pos)

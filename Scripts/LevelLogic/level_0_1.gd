@@ -336,6 +336,8 @@ func make_camera_current():
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)
 
+func remove_empty_blocker_plant(grid_pos):
+	plantManager.clear_space_alt(grid_pos)
 
 # Spotlight helper functions - ADD THESE NEW FUNCTIONS
 

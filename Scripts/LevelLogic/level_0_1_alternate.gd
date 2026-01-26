@@ -43,7 +43,8 @@ func start_wave_2():
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)
 
-
+func remove_empty_blocker_plant(grid_pos):
+	plantManager.clear_space_alt(grid_pos) 
 func make_camera_current():
 	$Camera2D.make_current()
 
