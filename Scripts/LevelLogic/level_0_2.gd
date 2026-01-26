@@ -284,6 +284,7 @@ func _start_force_select_spyder_after_blood():
 	# Keep game running
 	waveManager.canStartGame = false
 	plantSelectionMenu.canSwapScenes = false
+	get_tree().paused = true 
 
 
 func _start_force_place_spyder_behind():

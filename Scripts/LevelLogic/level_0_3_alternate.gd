@@ -18,6 +18,7 @@ func place_empty_blocker_plant(grid_pos):
 
 func remove_empty_blocker_plant(grid_pos):
 	plantManager.clear_space_alt(grid_pos)
+	
 
 func start_game():
 	show_all_plant_buttons()
