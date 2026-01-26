@@ -9,7 +9,7 @@ extends Demon
 
 # Preload the drone scene
 const DroneScene = preload("res://Scenes/PlantScenes/Drone.tscn")
-
+var spawnAnimDone = false
 # Constants
 var MAX_DRONES = 2
 var BUFF_MAX_DRONES = 4
@@ -324,7 +324,18 @@ func _on_DroneRespawnTimer_timeout():
 func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
-
+func spawn_done():
+	
+	if spawnAnimDone:
+		print("Spyder Self Spawn Adjust 1")
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+	else:
+		print("Spyder Self Spawn Adjust 2")
+		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+		spawnAnimDone = true 
 
 # Stops Spawn Animation From Playing
 func _on_AnimatedSprite_animation_finished():

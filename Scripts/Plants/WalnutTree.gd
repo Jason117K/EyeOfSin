@@ -14,6 +14,7 @@ extends Demon
 @export var buffedMaxHealth = 1000
 @onready var ogMaxHealth = maxHealth
 
+var spawnAnimDone = false
 var isEggWyrmBuffed := false 
 var isMawBuffed := false 
 var isSunflowerBuffed:= false 	
@@ -131,7 +132,19 @@ func get_cost():
 	return cost
 	
 	
-
+func spawn_done():
+	
+	if spawnAnimDone:
+		print("Spyder Self Spawn Adjust 1")
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+	else:
+		print("Spyder Self Spawn Adjust 2")
+		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+		spawnAnimDone = true 
+		
 func _on_AnimatedSprite_animation_finished():
 
 	if animSpriteComp.animation == "spawn":

@@ -27,30 +27,36 @@ func change_form(new_form):
 		"Sunflower":
 			currentAnim = "idle_Sunflower"
 			currentAttackAnim = "attack_Sunflower"
-			animation = "idle_Sunflower"
+			#animation = "idle_Sunflower"
+			animation = "spawn"
 		"Peashooter":
 			currentAnim = "idle_Spider"
 			currentAttackAnim = "attack_Spider"
 			if "Sun" in parent.get_name():
 				
 				$"../Webs".visible = true 
-			animation = "idle_Spider"
+			#animation = "idle_Spider"
+			animation = "spawn"
 		"Walnut" :
 			currentAnim = "idle_Walnut"
 			currentAttackAnim = "attack_Walnut"
-			animation = "idle_Walnut"
+			#animation = "idle_Walnut"
+			animation = "spawn"
 		"Wyrm":
 			currentAnim = "idle_Wyrm"
 			currentAttackAnim = "attack_Wyrm"
-			animation = "idle_Wyrm"
+			#animation = "idle_Wyrm"
+			animation = "spawn"
 		"Wasp":
 			currentAnim = "idle_Wasp"
 			currentAttackAnim = "attack_Wasp"
-			animation = "idle_Wasp"
+			#animation = "idle_Wasp"
+			animation = "spawn"
 		"Maw":
 			currentAnim = "idle_Maw"
 			currentAttackAnim = "attack_Maw"
-			animation = "idle_Maw"
+			#animation = "idle_Maw"
+			animation = "spawn"
 			if $"../Arm" != null:
 				$"../Arm".visible = true 
 				$"../Arm2".visible = true 

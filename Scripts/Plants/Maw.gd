@@ -1,6 +1,8 @@
 extends Demon
 #Maw.gd
 
+var spawnAnimDone = false
+
 # Color export variables for tentacle 1
 @export var tentacle1_start_color := Color(0.8, 0.2, 0.2, 1.0)  # Blood red / 8d0000 is red, 8c005e is other color
 var tentacle1_end_color := Color(0.4, 0.0, 0.0, 1.0)    # Dark red  
@@ -506,6 +508,21 @@ func debuff():
 		willBelchSun = false 
 	isBuffed = false 		
 
+
+func spawn_done():
+	
+	if spawnAnimDone:
+		print("Spyder Self Spawn Adjust 1")
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+	else:
+		print("Spyder Self Spawn Adjust 2")
+		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+		spawnAnimDone = true 
+		
+		
 # Stops Spawn Animation From Playing
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":

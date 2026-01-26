@@ -182,15 +182,29 @@ func take_damage(damage):
 	if(health <= 0):
 		die()
 
+func spawn_done():
+	
+	if spawnAnimDone:
+		print("Spyder Self Spawn Adjust 1")
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+	else:
+		print("Spyder Self Spawn Adjust 2")
+		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+		spawnAnimDone = true 
 # Handles either looping attack animation or returning to default 
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		#print("Early Return No AttackZ")
 		#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-		spawnAnimDone = true 
+		#if spawnAnimDone:
+			#pass
+		#else:
+			#spawn_done()
+		print("Calling Spawn Done Spyder Self Is I Am")
+		spawn_done()
 		return
 	if canAttack:
 		print(self, "Should Be Red Spider AttackZ")
@@ -222,47 +236,6 @@ func die_fromClearSpace():
 	queue_free()		
 	
 	
-func adjust_position(new_form):
-	print("New Form Is " , new_form)
-	if spawnAnimDone:
-		return
-	match new_form:
-		
-		"Sunflower":
-			pass
-
-			print("Spyder Self pos was ", self.global_position)
-			self.global_position = self.global_position + Vector2(0,-5)
-			print("Spyder Self pos IS ", self.global_position)
-
-		"Peashooter":
-			pass
-			
-		"Walnut" :
-			print("Spyder Self pos was ", self.global_position)
-			self.global_position = self.global_position + Vector2(0,-5)
-			print("Spyder Self pos IS ", self.global_position)		
-			
-		"Wyrm":
-
-			print("Spyder Self pos was ", self.global_position)
-			self.global_position = self.global_position + Vector2(0,-5)
-			print("Spyder Self pos IS ", self.global_position)
-			
-		"Wasp":
-
-			print("Spyder Self pos was ", self.global_position)
-			self.global_position = self.global_position + Vector2(0,-5)
-			print("Spyder Self pos IS ", self.global_position)
-		"Hive":
-
-			print("Spyder Self pos was ", self.global_position)
-			self.global_position = self.global_position + Vector2(0,-5)
-			print("Spyder Self pos IS ", self.global_position)			
-		"Maw":
-			print("Spyder Self pos was ", self.global_position)
-			self.global_position = self.global_position + Vector2(0,-5)
-			print("Spyder Self pos IS ", self.global_position)			
 
 
 func _on_spawn_spiderling_timeout() -> void:

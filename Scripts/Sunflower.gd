@@ -21,6 +21,7 @@ var PlantManager
 @onready var healInvisTimer = $HealInvisTimer
 @onready var webbing_aoe_sprite = $Webs
 
+var spawnAnimDone = false
 var tween
 var isBuffed = false 
 var wyrmBuff = false
@@ -170,7 +171,20 @@ func _on_AnimatedSprite_animation_finished():
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 		
+func spawn_done():
+	
+	if spawnAnimDone:
+		print("Spyder Self Spawn Adjust 1")
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+	else:
+		print("Spyder Self Spawn Adjust 2")
+		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+		spawnAnimDone = true 
 		
+				
 		
 func die():
 	PlantManager.clear_space(self.global_position)

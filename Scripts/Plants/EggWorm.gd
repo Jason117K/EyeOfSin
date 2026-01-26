@@ -33,6 +33,7 @@ var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  #
 var isSpyderBuffed := false
 var isSpineBuffed := false
 var isSunflowerBuffed := false 
+var spawnAnimDone = false
 
 # Internal animation state
 var time = 0.0
@@ -220,7 +221,20 @@ func die_fromClearSpace():
 	#if animSpriteComp.animation == "spawn":
 	#	animSpriteComp.animation = "idle"
 
-
+#func spawn_done():
+	#
+	#if spawnAnimDone:
+		#print("Spyder Self Spawn Adjust 1")
+		#animSpriteComp.animation = animSpriteComp.currentAnim
+		#animSpriteComp.play()
+	#else:
+		#print("Spyder Self Spawn Adjust 2")
+		#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		#animSpriteComp.animation = animSpriteComp.currentAnim
+		#animSpriteComp.play()
+		#spawnAnimDone = true 
+		
+		
 func truncate_string(input_string: String) -> String:
 	for i in range(input_string.length()):
 		var character = input_string[i]

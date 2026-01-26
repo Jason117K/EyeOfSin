@@ -16,7 +16,7 @@ var MAX_DRONES = 3
 var WALNUT_BUFF_MAX_DRONES = 4
 var SUN_BUFF_MAX_DRONES = 5
 #const MAX_DRONES = 3
-
+var spawnAnimDone = false
 # Drone management
 var available_drones = []                          # Currently active but unassigned drones
 var drone_assignments = {}                         # Dictionary mapping enemies to arrays of drones
@@ -343,7 +343,20 @@ func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
 
-
+func spawn_done():
+	
+	if spawnAnimDone:
+		print("Spyder Self Spawn Adjust 1")
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+	else:
+		print("Spyder Self Spawn Adjust 2")
+		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		animSpriteComp.animation = animSpriteComp.currentAnim
+		animSpriteComp.play()
+		spawnAnimDone = true 
+		
+		
 # Stops Spawn Animation From Playing
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
