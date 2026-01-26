@@ -1278,7 +1278,7 @@ shape = SubResource("1")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = SubResource("79")
-animation = &"spawn"
+animation = &"idle_Walnut"
 autoplay = "spawn"
 script = ExtResource("8_ksu1o")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)

@@ -57,7 +57,6 @@ animations = [{
 size = Vector2(28, 20)
 
 [node name="Spiderling" type="Area2D" groups=["Plants"]]
-collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jyors")
 

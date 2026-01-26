@@ -99,6 +99,8 @@ func _process(_delta):
 						elif collider.is_in_group("Purple"):
 							if self.is_in_group("Green"):
 								continue
+					else:
+						continue
 					#canAttack = true
 					#canAttackSetTrueOnce = 
 					#print("Can AttackZ Is True XXX ",canAttack)
