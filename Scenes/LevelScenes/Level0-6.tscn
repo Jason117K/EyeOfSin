@@ -202,14 +202,14 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_7nw23")]
 position = Vector2(740, 173)
 Round1_Zombies = {
-"Base": 1,
-"BucketHead": 8,
-"ConeHead": 1,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
 "Dancer": 0,
-"Football": 2,
+"Football": 0,
 "PoleVault": 0,
-"ScreenDoor": 1,
-"Ticker": 0
+"ScreenDoor": 0,
+"Ticker": 1
 }
 Round2_Zombies = {
 "Base": 1,
@@ -355,7 +355,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_r7j3l")]
 position = Vector2(-64, 200)
 script = ExtResource("7_mukwx")
-StartDelay = 77
+StartDelay = 0
 Wave2StartTime = 35
 Wave3StartTime = 45
 Wave1_Interval = 3.0

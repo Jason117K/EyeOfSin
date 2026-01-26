@@ -1,4 +1,4 @@
-[gd_scene load_steps=203 format=4 uid="uid://w7dlyygoysll"]
+[gd_scene load_steps=235 format=4 uid="uid://w7dlyygoysll"]
 
 [ext_resource type="Script" uid="uid://dm2navsh6rvfd" path="res://Scripts/LevelLogic/level_0_1.gd" id="1_capnp"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_3gktd"]
@@ -49,6 +49,10 @@
 [ext_resource type="Texture2D" uid="uid://sfpy6iw65b" path="res://Assets/Environment/Props/Furniture1.png" id="47_whwei"]
 [ext_resource type="Texture2D" uid="uid://dkh4k2mymsbhn" path="res://Assets/Environment/Props/Furniture2.png" id="48_5b5bb"]
 [ext_resource type="Texture2D" uid="uid://bm6d0le2bm0hg" path="res://Assets/Environment/Props/postersbig-Sheet.png" id="49_4b6nv"]
+[ext_resource type="Texture2D" uid="uid://djku3qtm6aj32" path="res://Assets/Environment/Props/Blood_Stain_Anim1-Sheet.png" id="50_cr4g1"]
+[ext_resource type="Texture2D" uid="uid://bjwxrvjpwvxbp" path="res://Assets/Environment/Props/Blood_Stain_Anim_2-Sheet.png" id="51_aat0k"]
+[ext_resource type="Texture2D" uid="uid://jmiumnuidyj1" path="res://Assets/Environment/Props/rifts-2-Sheet.png" id="52_uq3u4"]
+[ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://Assets/Environment/Props/rifts-alt-Sheet.png" id="53_vgf8q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lu7qh"]
 texture = ExtResource("8_0m4ho")
@@ -3450,6 +3454,206 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkld7"]
+atlas = ExtResource("50_cr4g1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k4y0"]
+atlas = ExtResource("50_cr4g1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy81r"]
+atlas = ExtResource("50_cr4g1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsxb6"]
+atlas = ExtResource("50_cr4g1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oci2"]
+atlas = ExtResource("50_cr4g1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts6bu"]
+atlas = ExtResource("50_cr4g1")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65efi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkld7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k4y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy81r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsxb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oci2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts6bu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcdsh"]
+atlas = ExtResource("51_aat0k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_456jm"]
+atlas = ExtResource("51_aat0k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiig6"]
+atlas = ExtResource("51_aat0k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mupvm"]
+atlas = ExtResource("51_aat0k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ete"]
+atlas = ExtResource("51_aat0k")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltoys"]
+atlas = ExtResource("51_aat0k")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qo44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcdsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_456jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiig6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mupvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ete")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltoys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3c46"]
+atlas = ExtResource("52_uq3u4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av4vc"]
+atlas = ExtResource("52_uq3u4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k0ah"]
+atlas = ExtResource("52_uq3u4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuq8p"]
+atlas = ExtResource("52_uq3u4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhapo"]
+atlas = ExtResource("52_uq3u4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uxqa"]
+atlas = ExtResource("52_uq3u4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vwbg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3c46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av4vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k0ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuq8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhapo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uxqa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l78r"]
+atlas = ExtResource("53_vgf8q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1jpl"]
+atlas = ExtResource("53_vgf8q")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik8sp"]
+atlas = ExtResource("53_vgf8q")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_donoo"]
+atlas = ExtResource("53_vgf8q")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umpqa"]
+atlas = ExtResource("53_vgf8q")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r2mf"]
+atlas = ExtResource("53_vgf8q")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_veknr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l78r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1jpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik8sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_donoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umpqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r2mf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Level0-1" type="Control" groups=["Purple"]]
 layout_mode = 3
 anchors_preset = 15
@@ -3975,20 +4179,84 @@ position = Vector2(385, 225)
 sprite_frames = SubResource("SpriteFrames_hpegv")
 autoplay = "default"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="FloatingDresser" type="AnimatedSprite2D" parent="."]
 position = Vector2(431, 55)
 sprite_frames = SubResource("SpriteFrames_bkld7")
 autoplay = "default"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="BrokenBed" type="AnimatedSprite2D" parent="."]
 position = Vector2(441, 342)
 sprite_frames = SubResource("SpriteFrames_2k4y0")
 autoplay = "default"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+[node name="Posters" type="AnimatedSprite2D" parent="."]
 position = Vector2(512, 224)
 sprite_frames = SubResource("SpriteFrames_xy81r")
 autoplay = "default"
+
+[node name="FloatingBlood" type="AnimatedSprite2D" parent="."]
+position = Vector2(204, 195)
+sprite_frames = SubResource("SpriteFrames_65efi")
+autoplay = "default"
+
+[node name="FloatingBlood3" type="AnimatedSprite2D" parent="."]
+position = Vector2(692, 378)
+sprite_frames = SubResource("SpriteFrames_65efi")
+autoplay = "default"
+
+[node name="FloatingBlood4" type="AnimatedSprite2D" parent="."]
+position = Vector2(375, 5)
+sprite_frames = SubResource("SpriteFrames_65efi")
+autoplay = "default"
+
+[node name="FloatingBlood2" type="AnimatedSprite2D" parent="."]
+position = Vector2(655, 103)
+sprite_frames = SubResource("SpriteFrames_3qo44")
+autoplay = "default"
+
+[node name="FloatingBlood5" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, 366)
+sprite_frames = SubResource("SpriteFrames_3qo44")
+autoplay = "default"
+
+[node name="FloatingBlood6" type="AnimatedSprite2D" parent="."]
+position = Vector2(344, 369)
+sprite_frames = SubResource("SpriteFrames_3qo44")
+autoplay = "default"
+
+[node name="Rift" type="AnimatedSprite2D" parent="."]
+position = Vector2(186, 271)
+sprite_frames = SubResource("SpriteFrames_8vwbg")
+autoplay = "default"
+
+[node name="Rift2" type="AnimatedSprite2D" parent="."]
+position = Vector2(560, 37)
+sprite_frames = SubResource("SpriteFrames_8vwbg")
+autoplay = "default"
+flip_h = true
+
+[node name="Rift3" type="AnimatedSprite2D" parent="."]
+position = Vector2(625, 375)
+sprite_frames = SubResource("SpriteFrames_8vwbg")
+autoplay = "default"
+flip_h = true
+flip_v = true
+
+[node name="Rift-Alt" type="AnimatedSprite2D" parent="."]
+position = Vector2(242, 310)
+sprite_frames = SubResource("SpriteFrames_veknr")
+autoplay = "default"
+
+[node name="Rift-Alt2" type="AnimatedSprite2D" parent="."]
+position = Vector2(117, 374)
+sprite_frames = SubResource("SpriteFrames_veknr")
+flip_h = true
+
+[node name="Rift-Alt3" type="AnimatedSprite2D" parent="."]
+position = Vector2(705, 92)
+sprite_frames = SubResource("SpriteFrames_veknr")
+autoplay = "default"
+flip_h = true
 
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
