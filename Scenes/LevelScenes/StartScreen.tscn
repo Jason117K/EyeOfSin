@@ -451,8 +451,6 @@ flip_v = true
 [node name="StartGam" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("17_1p6mn")
 texture_hover = ExtResource("19_vgtya")
 stretch_mode = 6
@@ -477,8 +475,6 @@ text = "START GAME"
 [node name="LevelSelectButto" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("17_1p6mn")
 texture_hover = ExtResource("19_vgtya")
 stretch_mode = 6

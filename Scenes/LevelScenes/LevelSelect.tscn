@@ -102,8 +102,6 @@ text = "Level  3"
 [node name="Level1Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
@@ -128,8 +126,6 @@ text = "LEVEL 1"
 [node name="Level2Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
@@ -154,8 +150,6 @@ text = "LEVEL 2"
 [node name="Level3Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
@@ -256,8 +250,6 @@ text = "Level 7"
 [node name="Level4Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
@@ -282,8 +274,6 @@ text = "LEVEL 4"
 [node name="Level5Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
@@ -308,8 +298,6 @@ text = "LEVEL 5"
 [node name="Level6Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
-tooltip_text = "Stuff
-"
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
