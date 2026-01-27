@@ -528,6 +528,7 @@ func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
 		animSpriteComp.animation = "default"
 		animSpriteComp.play()
+		show_tentacles()
 	else:
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
@@ -574,4 +575,6 @@ func die_fromClearSpace():
 	buffNodes.clearBuffs()
 	queue_free()		
 	
-	
+func show_tentacles():
+	$Arm.visible = true 
+	$Arm2.visible = true 

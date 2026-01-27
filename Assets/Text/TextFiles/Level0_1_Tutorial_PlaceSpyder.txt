@@ -1,4 +1,4 @@
-Good, now click on a grey path tile to place the demon.
+Good, now click on a light purple path tile to place the demon.
 
 The glowing preview shows where your demon will appear.
 
