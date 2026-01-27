@@ -127,13 +127,15 @@ func _ready():
 	
 	# Make sure the appropirate plants are available per level
 	if root == "Main": #or root == "Level2":
-		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		#assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK
 		PeaShooterButton.visible = false 
 		peaShooterCostLabel.visible = false
 		WalnutButton.visible = false
 		walnutCostLabel.visible = false
 		
-		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK
 		SunFlowerButton.visible = false
 		sunFlowerCostLabel.visible = false 
 		
@@ -151,9 +153,12 @@ func _ready():
 		
 		
 	elif root == "Level2":
-		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		#assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
+		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
 		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
+		$HBoxContainer/WalnutButton.connect("pressed", Callable(self, "_on_WalnutButton_pressed"))
 		MawButton.visible = false
 		mawCostLabel.visible = false
 		$PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
@@ -165,8 +170,10 @@ func _ready():
 		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
 		HiveButton.visible = false
 	elif root == "Level3":
-		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		#assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
+		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
 		
 
 		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
@@ -175,13 +182,17 @@ func _ready():
 		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
 		HiveButton.visible = false
 	elif root == "Level4":
-		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+	#	assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
+		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
 		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
 		MawButton.visible = false
 	else:
 		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
+		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
 		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
+		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
 	add_child(preview_container)
 	preview_container.z_index = 100  # Ensure preview appears above other elements
 
@@ -241,8 +252,6 @@ func increaseSunflowerCost():
 	
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
 func _on_SunflowerButton_pressed():
-	#Global.incrementSunflowerCountVisual()
-	var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	setCanRemoveFalse()
 	selected_plant = sunflower_scene
 	var temp_instance = sunflower_scene.instantiate()
@@ -262,8 +271,7 @@ func _on_SunflowerButton_pressed():
 #	$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	clicked_Eye.emit()
-	#sunFlowerCostLabel.text = str(50 + (Global.getSunflowerCountVisual()*5))
-	#remove_button_highlight(SunFlowerButton)
+
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_WalnutButton_pressed():
@@ -343,6 +351,7 @@ func _on_HiveButton_pressed():
 # Creates a transparent preview image for a given plant scene 
 
 func create_preview(plant_scene):
+	print("MAKE A PREVIEW")
 	# Clear the last preview 
 	clear_preview()
 	
