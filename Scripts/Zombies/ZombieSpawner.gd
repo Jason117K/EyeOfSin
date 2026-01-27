@@ -12,6 +12,7 @@ var dancer_zombie_scene = preload("res://Scenes/ZombieScenes/DancerZombie.tscn")
 var poleVault_zombie_scene = preload("res://Scenes/ZombieScenes/PoleVaultZombie.tscn") 
 var ticker_zombie_scene = preload("res://Scenes/ZombieScenes/TickerZombie.tscn") 
 var football_zombie_scene = preload("res://Scenes/ZombieScenes/FootballZombie.tscn")
+var rohan_zombie_scene = preload("res://Scenes/ZombieScenes/RohanZombie.tscn")
 
 @export var make_green := false
 
@@ -23,15 +24,15 @@ var wave3_zombies = []
 #Arrays to track amount of zombies by types per round 
 @export var Round1_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
 							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0, "Football" : 0}
+							"Ticker" : 0, "Football" : 0, "Rohan" : 0}
 							
 @export var Round2_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
 							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0, "Football" : 0}
+							"Ticker" : 0, "Football" : 0, "Rohan" : 0}
 							
 @export var Round3_Zombies =  {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
 							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0, "Football" : 0}
+							"Ticker" : 0, "Football" : 0, "Rohan" : 0}
 
 var baseZombies = []
 
@@ -71,19 +72,19 @@ func _ready():
 	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
 	Round1_Zombies.get("BucketHead") , Round1_Zombies.get("ScreenDoor"),
 	Round1_Zombies.get("Dancer"),Round1_Zombies.get("PoleVault"),
-	Round1_Zombies.get("Ticker"),Round1_Zombies.get("Football"),
+	Round1_Zombies.get("Ticker"),Round1_Zombies.get("Football"), Round1_Zombies.get("Rohan"),
 	 wave1_zombies)
 	
 	populate_zombies(Round2_Zombies.get("Base") , Round2_Zombies.get("ConeHead"), 
 	Round2_Zombies.get("BucketHead") , Round2_Zombies.get("ScreenDoor"), 
 	Round2_Zombies.get("Dancer"),Round2_Zombies.get("PoleVault"),
-	Round2_Zombies.get("Ticker"),Round1_Zombies.get("Football"),
+	Round2_Zombies.get("Ticker"),Round2_Zombies.get("Football"), Round2_Zombies.get("Rohan"),
 	 wave2_zombies)
 	
 	populate_zombies(Round3_Zombies.get("Base") , Round3_Zombies.get("ConeHead"),
 	Round3_Zombies.get("BucketHead") , Round3_Zombies.get("ScreenDoor"),
 	Round3_Zombies.get("Dancer"), Round3_Zombies.get("PoleVault"),
-	Round2_Zombies.get("Ticker"),Round1_Zombies.get("Football"),
+	Round2_Zombies.get("Ticker"),Round3_Zombies.get("Football"), Round3_Zombies.get("Rohan"),
 	 wave3_zombies)
 
 	$WaveDelay.wait_time = waveDelay
@@ -217,7 +218,7 @@ func spawn_zombie():
 func populate_zombies(base_zombie_count: int, conehead_zombie_count: int, 
 					buckethead_zombie_count: int, screendoor_zombie_count: int, 
 					dancer_zombie_count: int, poleVault_zombie_count: int,
-					ticker_zombie_count: int,football_zombie_count : int,
+					ticker_zombie_count: int,football_zombie_count : int, rohan_zombie_count : int,
 					zombie_wave: Array):
 						
 						
@@ -245,23 +246,26 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 	#Add football
 	for _i in range(football_zombie_count):
 		zombie_wave.append(football_zombie_scene)
+	#Add Rohan boss
+	for _i in range(rohan_zombie_count):
+		zombie_wave.append(rohan_zombie_scene)
 	
 #Increments the current wave
 func increase_wave():
-	print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
+	#print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
 	numWave = numWave + 1
-	print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
+	#print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
 
 #TODO Trace Back 
 #Starts the next round of zombie spawning 
 func _on_WaveDelay_timeout():
-	print("Zombie Spawning Starting Here")
+	#print("Zombie Spawning Starting Here")
 	spawn_zombie()
 	$WaveDelay.stop()
 
 #TODO Trace Back 
 func _on_wave_interval_timeout() -> void:
-	print("About call spawn zombie ")
+	#print("About call spawn zombie ")
 	spawn_zombie()
 
 
