@@ -84,7 +84,7 @@ script = ExtResource("1_7crvk")
 isGreenDimension = true
 
 [node name="PlantManager" parent="." instance=ExtResource("2_qrjcg")]
-sun_points = 600
+sun_points = 400
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
