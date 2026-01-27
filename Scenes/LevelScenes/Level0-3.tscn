@@ -2820,7 +2820,7 @@ mouse_filter = 2
 script = ExtResource("1_3xvj4")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_k82tg")]
-sun_points = 320
+sun_points = 500
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -3386,7 +3386,7 @@ texture = ExtResource("86_18xgo")
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]
