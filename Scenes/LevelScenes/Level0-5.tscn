@@ -626,7 +626,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_uqvme")
-volume_db = -80.0
+autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
