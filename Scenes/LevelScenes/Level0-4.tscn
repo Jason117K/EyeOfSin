@@ -83,7 +83,7 @@ mouse_filter = 2
 script = ExtResource("1_xw2pb")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_60dyi")]
-sun_points = 999
+sun_points = 400
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -605,7 +605,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_2i5fe")
-volume_db = -80.0
+autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(370, 208)
