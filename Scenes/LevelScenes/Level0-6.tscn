@@ -165,13 +165,13 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_7nw23")]
 position = Vector2(740, 141)
 Round1_Zombies = {
-"Base": 1,
-"BucketHead": 8,
-"ConeHead": 1,
+"Base": 0,
+"BucketHead": 0,
+"ConeHead": 0,
 "Dancer": 0,
-"Football": 2,
+"Football": 1,
 "PoleVault": 0,
-"ScreenDoor": 1,
+"ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
@@ -208,7 +208,7 @@ Round1_Zombies = {
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
-"ScreenDoor": 0,
+"ScreenDoor": 1,
 "Ticker": 1
 }
 Round2_Zombies = {
@@ -239,13 +239,13 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_7nw23")]
 position = Vector2(740, 205)
 Round1_Zombies = {
-"Base": 1,
-"BucketHead": 8,
-"ConeHead": 1,
+"Base": 2,
+"BucketHead": 1,
+"ConeHead": 0,
 "Dancer": 0,
-"Football": 2,
+"Football": 0,
 "PoleVault": 0,
-"ScreenDoor": 1,
+"ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {

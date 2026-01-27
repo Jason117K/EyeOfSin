@@ -646,9 +646,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="11"]
 size = Vector2(32, 32)
 
-[sub_resource type="CapsuleShape2D" id="12"]
-radius = 17.0588
-height = 132.706
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ijvem"]
+points = PackedVector2Array(0, -24, 0, 24, 192, 15, 192, 0, 192, -15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqdb"]
 atlas = ExtResource("5")
@@ -1473,14 +1472,11 @@ shape = SubResource("11")
 [node name="Swarm" type="Node2D" parent="."]
 
 [node name="DetectionComp" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComp"]
-position = Vector2(50, 0)
-rotation = 1.5708
-shape = SubResource("12")
+shape = SubResource("ConvexPolygonShape2D_ijvem")
 
 [node name="DroneRespawnTimer" type="Timer" parent="."]
 wait_time = 6.0
@@ -1610,6 +1606,7 @@ auto_fire = true
 isDisabled = true
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(12, -11)
 target_position = Vector2(200, 0)
 collision_mask = 2
@@ -1628,14 +1625,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 111.128, 130.758, 109.164, 131.32, 107.16, 132.245, 105.144, 132.659, 103.398, 132.368, 102.246, 131.524, 101.97, 130.417, 100.197, 130.933, 98.8167, 130.22, 97.0965, 129.851, 95.156, 130.171, 93.3495, 131.295, 92.0873, 133.145, 90.6154, 132.802, 88.7409, 133.763, 86.7888, 134.118, 85.1313, 133.686, 84.167, 132.659, 84.1779, 131.427, 85.2214, 130.542, 86.5263, 129.913, 86.6504, 128.741, 85.6189, 127.916, 84.0509, 127.832)
+points = PackedVector2Array(112.595, 131.435, 110.771, 131.347, 109.807, 130.256, 109.047, 129.004, 107.818, 128.026, 106.148, 127.637, 104.316, 128.02, 102.706, 129.323, 101.599, 128.519, 99.7915, 128.451, 98.1481, 127.963, 97.0157, 127, 96.6411, 125.807, 97.1544, 124.755, 95.6407, 124.417, 94.844, 123.299, 93.526, 122.457, 91.7333, 122.29, 89.8305, 123.007, 88.2798, 124.644, 87.5251, 126.942, 86.9614, 129.284, 85.3652, 130.743, 83.6192, 131.015, 82.3395, 130.488)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 111.128, 125.133, 109.164, 125.07, 107.16, 125.37, 105.144, 125.159, 103.398, 124.243, 102.246, 122.774, 101.97, 121.042, 100.197, 120.933, 98.8167, 119.595, 97.0965, 118.601, 95.156, 118.296, 93.3495, 118.795, 92.0873, 120.02, 90.6154, 119.052, 88.7409, 119.388, 86.7888, 119.118, 85.1313, 118.061, 84.167, 116.409, 84.1779, 114.552, 85.2214, 113.042, 86.5263, 111.788, 86.6504, 109.991, 85.6189, 108.541, 84.0509, 107.832)
+points = PackedVector2Array(112.595, 126.435, 110.771, 125.722, 109.807, 124.006, 109.047, 122.129, 107.818, 120.526, 106.148, 119.512, 104.316, 119.27, 102.706, 119.948, 101.599, 118.519, 99.7915, 117.826, 98.1481, 116.713, 97.0157, 115.125, 96.6411, 113.307, 97.1544, 111.63, 95.6407, 110.667, 94.844, 108.924, 93.526, 107.457, 91.7333, 106.665, 89.8305, 106.757, 88.2798, 107.769, 87.5251, 109.442, 86.9614, 111.159, 85.3652, 111.993, 83.6192, 111.64, 82.3395, 110.488)
 width = 4.0
 
 [node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
@@ -1650,14 +1647,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.532, 131.753, 115.821, 130.896, 116.853, 129.778, 118.297, 128.977, 120.119, 128.842, 121.989, 129.525, 123.506, 131.035, 124.702, 130.348, 126.6, 130.707, 128.413, 130.53, 129.772, 129.723, 130.389, 128.535, 130.119, 127.327, 129.141, 126.418, 129.604, 125.223, 130.591, 124.235, 132.281, 124.061, 134.052, 125.127, 134.917, 127.326, 134.161, 129.614, 132.778, 131.439, 132.035, 133.689, 132.802, 135.882, 134.39, 137.122)
+points = PackedVector2Array(112.595, 131.435, 114.073, 130.778, 116.041, 131.359, 118.055, 132.199, 120.049, 132.486, 121.722, 132.09, 122.771, 131.186, 122.933, 130.066, 124.712, 130.382, 126.179, 129.741, 127.997, 129.524, 129.993, 130.074, 131.803, 131.345, 133.275, 132.999, 133.362, 135.352, 135.192, 136.481, 137.129, 137.096, 138.775, 136.785, 139.417, 135.701, 138.509, 134.783, 136.692, 135.243, 134.925, 136.31, 133.218, 136.441, 132.592, 135.439, 133.216, 134.481)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.532, 126.128, 115.821, 124.646, 116.853, 122.903, 118.297, 121.477, 120.119, 120.717, 121.989, 120.775, 123.506, 121.66, 124.702, 120.348, 126.6, 120.082, 128.413, 119.28, 129.772, 117.848, 130.389, 116.035, 130.119, 114.202, 129.141, 112.668, 129.604, 110.848, 130.591, 109.235, 132.281, 108.436, 134.052, 108.877, 134.917, 110.451, 134.161, 112.114, 132.778, 113.314, 132.035, 114.939, 132.802, 116.507, 134.39, 117.122)
+points = PackedVector2Array(112.595, 126.435, 114.073, 125.153, 116.041, 125.109, 118.055, 125.324, 120.049, 124.986, 121.722, 123.965, 122.771, 122.436, 122.933, 120.691, 124.712, 120.382, 126.179, 119.116, 127.997, 118.274, 129.993, 118.199, 131.803, 118.845, 133.275, 119.874, 133.362, 121.602, 135.192, 122.106, 137.129, 122.096, 138.775, 121.16, 139.417, 119.451, 138.509, 117.908, 136.692, 117.743, 134.925, 118.185, 133.218, 117.69, 132.592, 116.064, 133.216, 114.481)
 width = 4.0
 
 [node name="ArmTarget" parent="." instance=ExtResource("19_s2bgg")]

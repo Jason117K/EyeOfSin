@@ -46,6 +46,17 @@ func _ready():
 	droneRespawnTimer.wait_time = waitTime
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 	
+	if self.is_in_group("Green"):
+		print(" I AM GREEN HIVE I WILL ATTACK GREEN")
+		$DetectionComp.collision_mask = 3
+		$DetectionComp.set_collision_mask_value(1,false)
+		$DetectionComp.set_collision_mask_value(2,false)
+		$DetectionComp.set_collision_mask_value(3,true)
+	else: #Purple
+		$DetectionComp.set_collision_mask_value(1,false)
+		$DetectionComp.set_collision_mask_value(2,true)
+		$DetectionComp.set_collision_mask_value(3,false)
+	
 #Getter for plant cost 
 func get_cost():
 	return cost

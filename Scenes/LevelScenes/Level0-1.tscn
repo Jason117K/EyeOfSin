@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=4 uid="uid://w7dlyygoysll"]
+[gd_scene load_steps=236 format=4 uid="uid://w7dlyygoysll"]
 
 [ext_resource type="Script" uid="uid://dm2navsh6rvfd" path="res://Scripts/LevelLogic/level_0_1.gd" id="1_capnp"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_3gktd"]
@@ -53,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://bjwxrvjpwvxbp" path="res://Assets/Environment/Props/Blood_Stain_Anim_2-Sheet.png" id="51_aat0k"]
 [ext_resource type="Texture2D" uid="uid://jmiumnuidyj1" path="res://Assets/Environment/Props/rifts-2-Sheet.png" id="52_uq3u4"]
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://Assets/Environment/Props/rifts-alt-Sheet.png" id="53_vgf8q"]
+[ext_resource type="Texture2D" uid="uid://dvh7gwtig5786" path="res://Assets/Icons/elucrwip1.png" id="54_aat0k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lu7qh"]
 texture = ExtResource("8_0m4ho")
@@ -3740,7 +3741,13 @@ metadata/_edit_lock_ = true
 
 [node name="TileMapLayer4" type="TileMapLayer" parent="GameLayer/GridManager"]
 modulate = Color(3, 3, 3, 1)
-tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQASAAoAAAAAAAEAAQASAAkAAAAAAAEAAwAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAAQAAkAAAAAAAEAAAAJAAIAAAAAAAEAAwAJAAMAAAAAAAEAAQAIAAMAAAAAAAEABQAJAAEAAAACAAEAAAAHAAIAAAAAAAEAAAATAAgAAAACAAEAAAA=")
+tile_map_data = PackedByteArray("AAASAAoAAAAAAAEAAQASAAkAAAAAAAEAAwAQAAoAAAAAAAEAAAARAAoAAAAAAAEAAAAQAAkAAAAAAAEAAAAJAAIAAAAAAAEAAwAJAAMAAAAAAAEAAQAIAAMAAAAAAAEABQAJAAEAAAACAAEAAAAHAAIAAAAAAAEAAAATAAgAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_gawxv")
+
+[node name="TileMapLayer6" type="TileMapLayer" parent="GameLayer/GridManager"]
+visible = false
+modulate = Color(3, 3, 3, 1)
+tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQA=")
 tile_set = SubResource("TileSet_gawxv")
 
 [node name="Environment" type="Node2D" parent="."]
@@ -4195,34 +4202,42 @@ sprite_frames = SubResource("SpriteFrames_xy81r")
 autoplay = "default"
 
 [node name="FloatingBlood" type="AnimatedSprite2D" parent="."]
-position = Vector2(204, 195)
+position = Vector2(60, 177)
 sprite_frames = SubResource("SpriteFrames_65efi")
 autoplay = "default"
 
 [node name="FloatingBlood3" type="AnimatedSprite2D" parent="."]
-position = Vector2(692, 378)
+position = Vector2(433, 176)
+sprite_frames = SubResource("SpriteFrames_65efi")
+autoplay = "default"
+
+[node name="FloatingBlood7" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 114)
 sprite_frames = SubResource("SpriteFrames_65efi")
 autoplay = "default"
 
 [node name="FloatingBlood4" type="AnimatedSprite2D" parent="."]
-position = Vector2(375, 5)
+position = Vector2(187, 113)
 sprite_frames = SubResource("SpriteFrames_65efi")
 autoplay = "default"
+flip_h = true
 
 [node name="FloatingBlood2" type="AnimatedSprite2D" parent="."]
-position = Vector2(655, 103)
+position = Vector2(226, 177)
 sprite_frames = SubResource("SpriteFrames_3qo44")
 autoplay = "default"
 
 [node name="FloatingBlood5" type="AnimatedSprite2D" parent="."]
-position = Vector2(48, 366)
+position = Vector2(69, 96)
 sprite_frames = SubResource("SpriteFrames_3qo44")
 autoplay = "default"
+flip_h = true
 
 [node name="FloatingBlood6" type="AnimatedSprite2D" parent="."]
-position = Vector2(344, 369)
+position = Vector2(361, 111)
 sprite_frames = SubResource("SpriteFrames_3qo44")
 autoplay = "default"
+flip_h = true
 
 [node name="Rift" type="AnimatedSprite2D" parent="."]
 position = Vector2(186, 271)
@@ -4256,6 +4271,21 @@ flip_h = true
 position = Vector2(705, 92)
 sprite_frames = SubResource("SpriteFrames_veknr")
 autoplay = "default"
+flip_h = true
+
+[node name="Elucrwip1" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(115, 237)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("54_aat0k")
+
+[node name="Elucrwip2" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(640, 232)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("54_aat0k")
 flip_h = true
 
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]
