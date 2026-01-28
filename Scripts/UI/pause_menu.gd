@@ -24,6 +24,9 @@ func _on_return_to_menu_pressed() -> void:
 	# Add a small delay to ensure clean transition
 	await get_tree().create_timer(0.1).timeout
 	self.visible = false 
+		#toolTips.visble = false
+	#toolTips.hide()
+	get_parent().hide_toolTip()
 	Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/StartScreen.tscn")
 
 

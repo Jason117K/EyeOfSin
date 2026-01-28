@@ -8,7 +8,7 @@ extends Control
 @export var next_level_alt = "res://Scenes/LevelScenes/EmptyScene.tscn"
 @export var current_level = "res://Scenes/LevelScenes/EmptyScene.tscn"
 @export var current_level_alt = "res://Scenes/LevelScenes/EmptyScene.tscn"
-
+@onready var toolTips = $"../ToolTips"
 @export var level_unlocked := 2
 @onready var outcome_label = $CenterContainer/VBoxContainer/OutcomeLabel
 @onready var continue_button = $CenterContainer/VBoxContainer/Continue
@@ -47,6 +47,7 @@ func _on_PlayAgain_pressed():
 	Global.unlockLevel(level_unlocked)
 
 func _on_return_to_menu_pressed() -> void:
+	#print("Tooltip AAAAAAAAA")
 	# Ensure proper cleanup before changing scene
 	get_tree().root.set_input_as_handled()
 	#$ButtonClickPlayer.play()
@@ -55,6 +56,9 @@ func _on_return_to_menu_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
 #	assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn") == OK)
 	#TODO Will this work with current setup?
+	#toolTips.visble = false
+	#toolTips.hide()
+	#print("Tooltip Hide")
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/StartScreen.tscn")
 	Global.unlockLevel(level_unlocked)
 

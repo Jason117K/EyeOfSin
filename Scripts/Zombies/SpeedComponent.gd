@@ -50,7 +50,8 @@ func slow():
 	
 		# Connect timer's timeout signal to the _on_timer_timeout method
 		# The 'assert' ensures the connection was successful
-		assert(endSpeedDebuff.connect("timeout", Callable(self, "_on_endSpeedDebuff_timeout")) == OK)
+		#assert(endSpeedDebuff.connect("timeout", Callable(self, "_on_endSpeedDebuff_timeout")) == OK)
+		endSpeedDebuff.connect("timeout", Callable(self, "_on_endSpeedDebuff_timeout"))
 		# Start the timer
 		endSpeedDebuff.start()
 

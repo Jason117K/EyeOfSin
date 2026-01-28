@@ -41,7 +41,8 @@ func _ready():
 	sunTimer.wait_time = sunWaitTime
 	PlantManager = get_parent().get_parent().get_node("PlantManager") 
 	$SunTimer.start()  # Start the timer
-	assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
+	#assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
+	$SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout"))
 	animSpriteComp.animation = "spawn"
 	healTimer.wait_time = lerp_duration
 

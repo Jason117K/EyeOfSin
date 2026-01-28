@@ -9,10 +9,12 @@ extends Control
 func _on_Continue_pressed():
 	#$ButtonClickPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	assert(get_tree().change_scene_to_packed(nextLevel) ==OK)
+	#assert(get_tree().change_scene_to_packed(nextLevel) ==OK)
+	get_tree().change_scene_to_packed(nextLevel)
 
 #Restarts the current level
 func _on_PlayAgain_pressed():
 	#$ButtonClickPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	assert(get_tree().change_scene_to_file(get_parent().get_scene_file_path()) == OK)
+	#assert(get_tree().change_scene_to_file(get_parent().get_scene_file_path()) == OK)
+	get_tree().change_scene_to_file(get_parent().get_scene_file_path()) 

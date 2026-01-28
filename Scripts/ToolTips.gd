@@ -19,6 +19,7 @@ signal ToolTipHid
 func _ready() -> void:
 	#TODO Change Back
 	#print("Anim Texture is , ",anim_texture.name )
+	visible = false
 	anim_texture.visible = false
 	greyBG.visible = false
 	border.visible = false 

@@ -45,7 +45,8 @@ func _ready():
 	#animatedSpriteComponent.animation = "redSpiderDefault"
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$ShootTimer.start()  # Start the shoot timer
-	assert($ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout")) ==OK)
+	#assert($ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout")) ==OK)
+	$ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	
 	
 		# Create a new timer

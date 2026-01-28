@@ -18,4 +18,5 @@ func _ready():
 
 # Restarts the Scene 
 func _on_PlayAgain_pressed():
-	assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/Level2.tscn") ==OK)
+	#assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/Level2.tscn") ==OK)
+	get_tree().change_scene_to_file("res://Scenes/LevelScenes/Level2.tscn")

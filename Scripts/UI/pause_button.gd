@@ -1,7 +1,7 @@
 extends Button
 
 @onready var pauseMenu = $PauseMenu
-
+@onready var toolTips = $"../ToolTips"
 
 func _ready() -> void:
 	visible = true 
@@ -17,3 +17,6 @@ func _on_pressed() -> void:
 
 func set_restart_levels(newLevel,newAltLevel):
 	pauseMenu.set_restart_levels(newLevel,newAltLevel)
+
+func hide_toolTip():
+	toolTips.hide()
