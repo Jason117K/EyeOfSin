@@ -2,11 +2,13 @@ extends Control
 # level_0_1_alternate.gd - Green Dimension Controller for Level 0-1
 # Waits for purple dimension to activate Wave 2
 
-@onready var waveManager = $GameLayer/WaveManager
+#@onready var waveManager = $GameLayer/WaveManager
+var waveManager 
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $"../PlantSelectionMenu" 
 
 func _ready():
+	waveManager = get_parent().get_node("WaveManager")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# Keep waves disabled until purple dimension activates us
@@ -15,6 +17,7 @@ func _ready():
 
 
 func start_wave_2():
+	
 	hide_all_plant_buttons_except_spyder()
 	print("========== GREEN DIMENSION START_WAVE_2 CALLED ==========")
 	print("[GREEN] Current time: ", Time.get_ticks_msec())
@@ -27,10 +30,11 @@ func start_wave_2():
 	# Need to increment twice: 0→1→2
 	print("[GREEN] Incrementing spawner waves from 0 to 2...")
 	for spawner in waveManager.spawners:
-		print("[GREEN] Spawner ", spawner.name, " numWave BEFORE: ", spawner.numWave)
-		spawner.increase_wave()  # 0→1
-		spawner.increase_wave()  # 1→2
-		print("[GREEN] Spawner ", spawner.name, " numWave AFTER: ", spawner.numWave)
+		if spawner.make_green == true:
+			print("[GREEN] Spawner ", spawner.name, " numWave BEFORE: ", spawner.numWave)
+			#spawner.increase_wave()  # 0→1
+			#spawner.increase_wave()  # 1→2
+			print("[GREEN] Spawner ", spawner.name, " numWave AFTER: ", spawner.numWave)
 
 	print("[GREEN] About to call startSecondWave()...")
 	waveManager.startSecondWave()       # This increments numWave to 2

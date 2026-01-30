@@ -29,6 +29,8 @@ func end_level():
 
 
 func win_level():
+	$"../LevelSwitcher".visible = true
+	$"../ToolTips".visible = false
 	for child in get_parent().get_parent().get_parent().get_children():
 		if "LevelSwitcher" in child.name:
 			child.visible = true

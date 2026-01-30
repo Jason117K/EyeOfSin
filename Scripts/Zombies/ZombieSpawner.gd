@@ -59,14 +59,14 @@ var random_adjustment2 = randf_range(-0.6, 0.6)
 @export var small_gap_max: float = 0.65
 @export var small_gap_weight: float = 20.0  # Percentage chance for small gap 
 
-var waveManager
+var wave_manager
 
 # Populates the apprioate arrays with current zombie counts by type 
 func _ready():
 	
-	waveManager = get_parent().get_node("WaveManager")
-	
-	var wave_manager = get_parent().get_node("WaveManager")
+	#waveManager = get_parent().get_node("WaveManager")
+	print(get_parent().get_parent())
+	wave_manager = get_parent().get_parent().get_parent().get_node("WaveManager")
 	spawnNextWave.connect(wave_manager._on_spawn_next_wave)
 	
 	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
@@ -138,6 +138,7 @@ func spawn_zombie():
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()
+				#Global.start_wave_1()
 			else:
 				pass
 				#TODO Spawn Next Wave Here 
@@ -252,9 +253,9 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 	
 #Increments the current wave
 func increase_wave():
-	#print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
+	print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
 	numWave = numWave + 1
-	#print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
+	print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
 
 #TODO Trace Back 
 #Starts the next round of zombie spawning 
@@ -267,6 +268,7 @@ func _on_WaveDelay_timeout():
 func _on_wave_interval_timeout() -> void:
 	#print("About call spawn zombie ")
 	spawn_zombie()
+	Global.start_wave_1()
 
 
 # Helper function to generate sequential names

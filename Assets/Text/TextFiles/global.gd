@@ -15,7 +15,7 @@ var game_controller : GameController
 var plant_selection_menu 
 var plant_selection_menu_alt 
 var gameIsStarted := false
-
+var current_level
 
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()
@@ -105,7 +105,12 @@ func unlockLevel(levelUnlocked):
 		7:
 			setCanPlayLevel7()
 	
-	
+func start_wave_1():
+	if current_level != null:
+		current_level.wave_1_active = true	
+		print("Current Level is ", current_level, " wave 1 active is ", current_level.wave_1_active)
+	else:
+		print("Current Level is Null")
 	
 	
 	

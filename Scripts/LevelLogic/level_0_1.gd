@@ -23,7 +23,8 @@ var wave_1_complete: bool = false
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $"../PlantSelectionMenu" 
-@onready var waveManager = $GameLayer/WaveManager
+#@onready var waveManager = $GameLayer/WaveManager
+var waveManager
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button = $"../PauseButton"
 
@@ -42,6 +43,9 @@ var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
 var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 
 func _ready():
+	Global.current_level = self
+	waveManager = get_parent().get_node("WaveManager")
+	print("WaveManager is ", waveManager)
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level0_1,level0_1Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -191,6 +195,7 @@ func start_game():
 	_start_wave_1_purple_only()
 func _start_wave_1_purple_only():
 	# Game unpauses when ToolTips button clicked
+	print("Wavemanager started")
 	waveManager.canStartGame = true
 	wave_1_active = false
 	wave_1_complete = false
@@ -313,7 +318,7 @@ func _on_spyder_button_pressed():
 
 func _on_wave_1_started():
 	print("[Tutorial] Wave 1 started")
-	wave_1_active = true
+	#wave_1_active = true
 	_transition_to_state(TutorialState.EXPLAIN_BASIC_ZOMBIE)
 
 func _on_wave_3_started():

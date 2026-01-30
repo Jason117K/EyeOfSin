@@ -28,6 +28,7 @@ func _ready() -> void:
 	
 func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool = true, keep_running : bool = false) -> void:
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 	print("Changing scene to ", new_scene1 , " AND ", new_scene2)
 	if !current_scenes.is_empty():
 		if delete:
@@ -80,6 +81,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	# Force physics update to ensure collision detection works
 	await get_tree().process_frame
 	get_tree().physics_frame	
+	$CurrentScene/WaveManager._ready()
 
 func swap_scenes():
 	if can_swap:

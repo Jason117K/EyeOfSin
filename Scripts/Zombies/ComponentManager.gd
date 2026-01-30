@@ -103,6 +103,7 @@ func _on_JustNowSpawned_timeout():
 		pass
 		
 	add_to_group("Alive-Enemies")
+	print("JUSTZ SPAWNED")
 	var group_size = get_tree().get_nodes_in_group("Alive-Enemies").size()
 
 # Changes sprite color 

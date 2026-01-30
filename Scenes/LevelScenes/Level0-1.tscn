@@ -1,12 +1,10 @@
-[gd_scene load_steps=236 format=4 uid="uid://w7dlyygoysll"]
+[gd_scene load_steps=234 format=4 uid="uid://w7dlyygoysll"]
 
 [ext_resource type="Script" uid="uid://dm2navsh6rvfd" path="res://Scripts/LevelLogic/level_0_1.gd" id="1_capnp"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_3gktd"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_s6f4w"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_ehuem"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="5_uly3c"]
-[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="6_y5q10"]
-[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="7_h8ehj"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://Assets/Environment/GrassTilesRED.png" id="8_0m4ho"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="8_eftpd"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://Assets/Environment/Tilesets/PurpleTileSet.png" id="9_07f3a"]
@@ -3655,7 +3653,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Level0-1" type="Control" groups=["Purple"]]
+[node name="Level0-1" type="Control" groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -3711,13 +3709,6 @@ Round3_Zombies = {
 z_index = 1
 position = Vector2(-48, 0)
 levelToStart = NodePath("../../..")
-
-[node name="WaveManager" parent="GameLayer" instance=ExtResource("6_y5q10")]
-position = Vector2(-64, 200)
-script = ExtResource("7_h8ehj")
-StartDelay = 1
-Wave2StartTime = 20
-Wave3StartTime = 30
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("5_uly3c")]
 metadata/_edit_lock_ = true
@@ -4294,11 +4285,7 @@ flip_h = true
 [connection signal="eyeBomb_placed" from="PlantManager" to="." method="_on_plant_manager_eye_bomb_placed"]
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="spyder_placed" from="PlantManager" to="GameLayer/WaveManager" method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
-[connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
-[connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
