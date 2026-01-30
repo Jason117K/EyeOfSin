@@ -2009,30 +2009,44 @@ process_mode = 1
 [node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_7r54f")]
 position = Vector2(746, 137.305)
 make_green = true
-Round2_Zombies = {
-"Base": 5,
+Round1_Zombies = {
+"Base": 2,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
+"Rohan": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
-Round3_Zombies = {
-"Base": 3,
+Round2_Zombies = {
+"Base": 0,
 "BucketHead": 0,
 "ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 2,
+"ConeHead": 0,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 0,
+"Rohan": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_vll5p")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_vll5p")]
 z_index = 1
 position = Vector2(-48, 0)
+levelToStart = NodePath("../../..")
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_ychsy")]
 position = Vector2(-64, 200)

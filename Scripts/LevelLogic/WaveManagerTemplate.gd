@@ -94,6 +94,7 @@ func _ready():
 			spawners.append(child)
 			#print("Timers.append child.get_child(1) : ",child.find_child("WavePreview").name)
 			#print(".get_child(2): , ", child.find_child("WavePreview").get_child(2).name)
+			#Appends toggle visibility here toggleV
 			timers.append(child.find_child("WavePreview").get_child(2))
 			#print("WavePreviewIcons.append : ",child.find_child("WavePreview").name)
 			wavePreviewIcons.append(child.find_child("WavePreview"))

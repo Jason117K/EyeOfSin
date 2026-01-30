@@ -17,6 +17,7 @@ texture = ExtResource("2_6qtyv")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("1")
 
 [node name="ToggleVisibility" type="Timer" parent="."]
@@ -55,6 +56,13 @@ bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 
+[node name="StartGameButton" type="Button" parent="."]
+offset_left = -36.0
+offset_top = -34.0
+offset_right = 36.0
+offset_bottom = 35.0
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="timeout" from="ToggleVisibility" to="." method="_on_ToggleVisibility_timeout"]
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]

@@ -14,6 +14,7 @@ var sunflowerCountVisual := 0
 var game_controller : GameController
 var plant_selection_menu 
 var plant_selection_menu_alt 
+var gameIsStarted := false
 
 
 func get_current_scene_filepath():
@@ -29,6 +30,7 @@ func unHidePlantSelectionMenu():
 	
 func resetSunflowerCount():
 	sunflowerCount = 0
+	gameIsStarted = false
 	
 func incrementSunflowerCount():
 	sunflowerCount += 1

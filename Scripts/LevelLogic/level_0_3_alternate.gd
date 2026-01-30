@@ -9,6 +9,7 @@ extends Control
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
 @export var isGreenDimension := false 
+var purple_dimension : Control
 
 func getIsGreenDimension():
 	return isGreenDimension
@@ -22,6 +23,11 @@ func remove_empty_blocker_plant(grid_pos):
 
 func start_game():
 	show_all_plant_buttons()
+	for node in get_parent().get_children():
+		if node.has_method("getIsPurpleDimension"):
+			purple_dimension = node
+	print("Purple Dim is ", purple_dimension)
+	purple_dimension.start_game()	
 	waveManager.canStartGame = true
 
 

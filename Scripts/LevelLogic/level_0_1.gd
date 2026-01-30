@@ -141,7 +141,8 @@ func _transition_to_state(new_state: TutorialState):
 		TutorialState.EXPLAIN_BLOOD_COST:
 			_start_explain_blood_cost()
 		TutorialState.WAVE_1_ACTIVE:
-			_start_wave_1_purple_only()
+			pass
+			#_start_wave_1_purple_only()
 		TutorialState.FORCE_PRESS_Y:
 			_start_force_press_y()
 		TutorialState.EXPLAIN_GREEN_DIMENSION:
@@ -176,7 +177,8 @@ func _start_explain_blood_cost():
 		
 	show_spotlight_at_position(Vector2(10,0))
 
-
+func start_game():
+	_start_wave_1_purple_only()
 func _start_wave_1_purple_only():
 	# Game unpauses when ToolTips button clicked
 	waveManager.canStartGame = true

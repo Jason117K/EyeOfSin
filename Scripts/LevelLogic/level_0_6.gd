@@ -33,6 +33,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://Assets/Text/TextFiles/ZombieDescriptions
 
 
 func _ready():
+	
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level06,level06Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -48,11 +49,17 @@ func _ready():
 	levelSwitcher.update_level(endScreen,endScreenAlt)
 	
 	Global.unHidePlantSelectionMenu()
+	plantSelectionMenu.canSwapScenes = true
 	#start_game()
 	
 
+func getIsPurpleDimension():
+	return 
+	
+	
 func start_game():
-	show_all_plant_buttons()
+	print("Game Is Starting")
+	#show_all_plant_buttons()
 	plantSelectionMenu.canSwapScenes = true
 	#green_dimension = get_parent().get_node("Level03Alternate")
 	#var possibleGreenDimension
@@ -61,8 +68,11 @@ func start_game():
 			green_dimension = node
 			print("Green D FOUND ")
 	print("Green D is ", green_dimension)
-	green_dimension.start_game()
+	if waveManager.canStartGame == true:
+		return
+	
 	waveManager.canStartGame = true
+	green_dimension.start_game()
 	gameStarted = true 
 	
 # Input filtering system - intercepts input based on tutorial state
@@ -70,7 +80,9 @@ func _input(event):
 	match tutorial_state:
 		TutorialState.TUTORIAL_P1_DONE:
 			if !gameStarted:
-				start_game()
+				#start_game()
+				show_all_plant_buttons()
+				pass
 		TutorialState.EXPLAIN_AMALGAM_ZOMBIE:
 			if amalgamExplained:
 				pass

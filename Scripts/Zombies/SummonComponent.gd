@@ -97,6 +97,7 @@ func _on_AnimatedSprite_animation_finished():
 			animatedSpriteComp.animation = "Attack"
 		else:
 			animatedSpriteComp.animation = "Walk"
+			#animatedSpriteComp.reparent()
 		
 		
 		

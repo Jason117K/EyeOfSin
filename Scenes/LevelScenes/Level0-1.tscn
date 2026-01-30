@@ -3680,38 +3680,20 @@ Round1_Zombies = {
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round2_Zombies = {
-"Base": 5,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
-Round3_Zombies = {
-"Base": 7,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Rohan": 0,
 "ScreenDoor": 0,
 "Ticker": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" instance=ExtResource("4_ehuem")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_ehuem")]
 z_index = 1
 position = Vector2(-48, 0)
+levelToStart = NodePath("../../..")
 
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_y5q10")]
 position = Vector2(-64, 200)
 script = ExtResource("7_h8ehj")
-StartDelay = 5
+StartDelay = 1
 Wave2StartTime = 20
 Wave3StartTime = 30
 
@@ -4295,7 +4277,7 @@ flip_h = true
 [connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
 [connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
 [connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

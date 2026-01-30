@@ -63,7 +63,9 @@ func _ready():
 	
 	Global.unHidePlantSelectionMenu()
 	
-
+func getIsPurpleDimension():
+	return 
+	
 func start_game():
 	show_all_plant_buttons()
 	plantSelectionMenu.canSwapScenes = true
@@ -73,8 +75,11 @@ func start_game():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node
 	print("Green D is ", green_dimension)
-	green_dimension.start_game()
+	if waveManager.canStartGame == true:
+		return
+	
 	waveManager.canStartGame = true
+	green_dimension.start_game()
 	
 # Input filtering system - intercepts input based on tutorial state
 func _input(event):
@@ -206,7 +211,9 @@ func _on_hive_placed(grid_pos: Vector2):
 		print("[Tutorial] Hive placement complete - tutorial initial part finished")
 		toolTips.hide()
 		_transition_to_state(TutorialState.TUTORIAL_P1_DONE)
-		start_game()
+		show_all_plant_buttons()
+		plantSelectionMenu.canSwapScenes = true
+		#start_game()
 		# Tutorial complete - no further forced actions
 		
 func highlight_hive_button():

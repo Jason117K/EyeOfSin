@@ -209,8 +209,10 @@ func _transition_to_state(new_state: TutorialState):
 		TutorialState.EXPLAIN_BLOOD_BUFFS_2:
 			_start_explain_blood_buffs_2()
 		TutorialState.WAVE_1_ACTIVE:
-			_start_wave_1()
-			green_dimension.start_game()
+			plantSelectionMenu.canSwapScenes = true
+			pass
+			#_start_wave_1()
+			#green_dimension.start_game()
 
 
 # State entry methods
@@ -230,11 +232,17 @@ func _start_explain_blood_gen():
 	# Optional: show spotlight at blood position if needed
 	# show_spotlight_at_position(Vector2(10,0))
 
+
+func start_game():
+	_start_wave_1()
+	
+	
 func _start_wave_1():
 	print("Starting Wave 111")
 	plantSelectionMenu.canSwapScenes = true
 	# Game unpauses when ToolTips button clicked
 	waveManager.canStartGame = true
+	green_dimension.start_game()
 	show_all_plant_buttons()
 	wave_1_active = false
 	wave_1_complete = false

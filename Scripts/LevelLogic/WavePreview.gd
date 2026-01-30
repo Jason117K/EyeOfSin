@@ -9,6 +9,7 @@ var currentConeZombies
 var currentBucketZombies
 @onready var previewText = $Node2D/Control/EnemyPreviewText
 @onready var visibility = true
+@export var levelToStart : Control
 var numWave 
 var currentZombieDict :Dictionary = {}
 
@@ -60,4 +61,12 @@ func _on_ToggleVisibility_timeout():
 	
 func swap_Visibility():
 	$PreviewSprite.visible = !visibility
+	self.visible = !visibility
 	visibility = !visibility
+
+
+func _on_start_game_button_pressed() -> void:
+	Global.gameIsStarted = true 
+	if levelToStart != null:
+			
+		levelToStart.start_game()

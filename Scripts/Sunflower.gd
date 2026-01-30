@@ -35,6 +35,7 @@ var plants_to_heal = []
 var max_alpha = 0.2
 var lerp_duration = 2.5
 var can_eat_zombie = false 
+var madeTutorialBlood = false
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
@@ -72,6 +73,14 @@ func _on_SunTimer_timeout():
 
 # Function to handle sun generation
 func generate_sun() -> Node2D:
+	if "Level0-2" in get_parent().get_parent().name:
+		if madeTutorialBlood == false:
+			pass
+			madeTutorialBlood = true 
+		elif Global.gameIsStarted == false:
+			return 
+	elif Global.gameIsStarted == false:
+		return 
 	if mawBuff:
 		can_eat_zombie = true
 	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
@@ -266,7 +275,8 @@ func _on_heal_timer_timeout() -> void:
 	#$HealZone.visible = true
 	#healInvisTimer.start()
 	for plant in plants_to_heal:
-		plant.health = plant.health + 5
+		if plant != null:
+			plant.health = plant.health + 5
 
 
 func _on_heal_invis_timer_timeout() -> void:
