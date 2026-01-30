@@ -82,6 +82,7 @@ func end_level():
 	
 	
 func _ready():
+	spawners = [] 
 	plant_manager = get_parent().get_parent().get_node("PlantManager")
 	$Area2D.connect("area_entered",player_take_damage)
 	
@@ -118,7 +119,8 @@ func _ready():
 						wavePreviewIcons.append(new_child.find_child("WavePreview"))
 	#Connect done spawning
 	for spawner in spawners:
-		spawner.doneSpawning.connect(_done_spawning)
+		if spawner != null:
+			spawner.doneSpawning.connect(_done_spawning)
 		
 				
 	$ProceedGame.wait_time = StartDelay
@@ -175,7 +177,8 @@ func _on_ProceedGame_timeout():
 	$ProceedGame.stop()
 	print("ProceedGameTimeout")
 	for spawner in spawners:
-		spawner.increase_wave()
+		if spawner != null:
+			spawner.increase_wave()
 	
 	match numWave:
 		0:

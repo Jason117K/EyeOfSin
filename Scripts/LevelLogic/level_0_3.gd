@@ -12,7 +12,8 @@ enum TutorialState {
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $"../PlantSelectionMenu"
-@onready var waveManager = $GameLayer/WaveManager
+#@onready var waveManager = $GameLayer/WaveManager
+var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var green_dimension = $CurrentScene/Level03Alternate
@@ -38,6 +39,7 @@ const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.tx
 
 
 func _ready():
+	waveManager = get_parent().get_node("WaveManager")
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03,level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -68,6 +70,7 @@ func getIsPurpleDimension():
 	return 
 
 func start_game():
+	print(self, " starting game")
 	show_all_plant_buttons()
 	#hide_Codex()
 	plantSelectionMenu.canSwapScenes = true

@@ -72,7 +72,7 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
-[node name="Level05Alternate" type="Control" groups=["Green"]]
+[node name="Level05Alternate" type="Control" groups=["Green", "GreenLevel"]]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15

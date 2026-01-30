@@ -36,6 +36,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 			print("Current Scenes 1 is ",current_scenes[1] )
 			current_scenes.remove_at(1)
 			print("Current Scenes 0 is ",current_scenes[0] )
+			current_scenes[0].queue_free()
 			current_scenes.remove_at(0)
 		#elif keep_running:
 			#current_scene.visible = false # Keeps in memory and running 
@@ -49,7 +50,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 		print("Current scene is : ", current_scene)
 	if current_alt_scene != null:
 		if delete:
-			print("Delete Here1",current_scene)
+			print("Delete Here1",current_alt_scene)
 			current_alt_scene.queue_free() # Removes Node Entirely 		
 	if current_scene != null:
 		if delete:

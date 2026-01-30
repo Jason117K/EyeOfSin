@@ -5,7 +5,8 @@ extends Control
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $"../PlantSelectionMenu" #$PlantSelectionMenu
-@onready var waveManager = $GameLayer/WaveManager
+#@onready var waveManager = $GameLayer/WaveManager
+var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 
 func _ready():
@@ -19,6 +20,7 @@ func _ready():
 
 
 func start_game():
+	waveManager = get_parent().get_node("WaveManager")
 	waveManager.canStartGame = true
 
 

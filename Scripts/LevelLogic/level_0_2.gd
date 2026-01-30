@@ -33,7 +33,8 @@ var tutorial_sun_instance: Node2D = null
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $"../PlantSelectionMenu" #$PlantSelectionMenu
-@onready var waveManager = $GameLayer/WaveManager
+#@onready var waveManager = $GameLayer/WaveManager
+var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var pause_Button = $"../PauseButton"
 
@@ -70,6 +71,7 @@ var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
 var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 
 func _ready():
+	waveManager = get_parent().get_node("WaveManager")
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level02,level02Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS

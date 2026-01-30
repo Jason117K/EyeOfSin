@@ -66,7 +66,9 @@ func swap_Visibility():
 
 
 func _on_start_game_button_pressed() -> void:
-	Global.gameIsStarted = true 
-	if levelToStart != null:
-		if levelToStart.has_method("start_game"):			
-			levelToStart.start_game()
+	if Global.gameIsStarted == false:
+		Global.gameIsStarted = true 
+		if levelToStart != null:
+			if levelToStart.has_method("start_game"):			
+				levelToStart.start_game()
+				print("Start Game For ", levelToStart)

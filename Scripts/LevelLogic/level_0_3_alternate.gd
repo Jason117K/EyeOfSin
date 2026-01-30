@@ -4,7 +4,8 @@ extends Control
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $"../PlantSelectionMenu"
-@onready var waveManager = $GameLayer/WaveManager
+#@onready var waveManager = $GameLayer/WaveManager
+var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
@@ -22,6 +23,7 @@ func remove_empty_blocker_plant(grid_pos):
 	
 
 func start_game():
+	waveManager = get_parent().get_node("WaveManager")
 	show_all_plant_buttons()
 	for node in get_parent().get_children():
 		if node.has_method("getIsPurpleDimension"):

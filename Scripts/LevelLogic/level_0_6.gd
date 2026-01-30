@@ -9,7 +9,8 @@ enum TutorialState {
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
 @onready var plantSelectionMenu = $"../PlantSelectionMenu"
-@onready var waveManager = $GameLayer/WaveManager
+#@onready var waveManager = $GameLayer/WaveManager
+var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var green_dimension = $CurrentScene/Level03Alternate
@@ -33,7 +34,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://Assets/Text/TextFiles/ZombieDescriptions
 
 
 func _ready():
-	
+	waveManager = get_parent().get_node("WaveManager")
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level06,level06Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS

@@ -1,11 +1,9 @@
-[gd_scene load_steps=32 format=4 uid="uid://cxll6h2seen1h"]
+[gd_scene load_steps=30 format=4 uid="uid://cxll6h2seen1h"]
 
 [ext_resource type="Script" uid="uid://cs4qat1lxac3t" path="res://Scripts/LevelLogic/level_0_3_alternate.gd" id="1_vpaut"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_0v3x8"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_2irmp"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_mqw32"]
-[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="5_hgfp3"]
-[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://Scripts/LevelLogic/WaveManager.gd" id="6_fafrc"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="7_mt0c8"]
 [ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://Assets/Environment/Props/Pustules-export.png" id="8_8pg5l"]
 [ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://Assets/Environment/Props/Pustules_shadow1_Medium.png" id="9_8haqq"]
@@ -72,7 +70,7 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
-[node name="Level06Alternate" type="Control" groups=["Green"]]
+[node name="Level06Alternate" type="Control" groups=["Green", "GreenLevel"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,14 +149,6 @@ make_green = true
 z_index = 1
 position = Vector2(-32, -1)
 levelToStart = NodePath("../../..")
-
-[node name="WaveManager" parent="GameLayer" instance=ExtResource("5_hgfp3")]
-position = Vector2(-64, 200)
-script = ExtResource("6_fafrc")
-StartDelay = 1
-Wave2StartTime = 35
-Wave3StartTime = 45
-Wave1_Interval = 3.0
 
 [node name="GridManager" parent="GameLayer" instance=ExtResource("7_mt0c8")]
 make_green = true
@@ -472,11 +462,7 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="spyder_placed" from="PlantManager" to="GameLayer/WaveManager" method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="wave2AlmostStart" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_almost_start"]
-[connection signal="wave2Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_2_started"]
-[connection signal="wave3Started" from="GameLayer/WaveManager" to="." method="_on_wave_manager_wave_3_started"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]
