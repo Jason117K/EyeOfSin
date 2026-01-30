@@ -2010,7 +2010,7 @@ process_mode = 1
 position = Vector2(746, 137.305)
 make_green = true
 Round1_Zombies = {
-"Base": 2,
+"Base": 3,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -2021,9 +2021,9 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 0,
+"Base": 1,
 "BucketHead": 0,
-"ConeHead": 2,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -2032,8 +2032,8 @@ Round2_Zombies = {
 "Ticker": 0
 }
 Round3_Zombies = {
-"Base": 0,
-"BucketHead": 2,
+"Base": 3,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
@@ -2051,7 +2051,8 @@ levelToStart = NodePath("../../..")
 [node name="WaveManager" parent="GameLayer" instance=ExtResource("6_ychsy")]
 position = Vector2(-64, 200)
 script = ExtResource("7_f8ath")
-StartDelay = 5
+alt = true
+StartDelay = 1
 Wave2StartTime = 20
 Wave3StartTime = 30
 

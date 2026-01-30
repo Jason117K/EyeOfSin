@@ -41,7 +41,7 @@ var health_points = 10
 @export var canStartGame : bool = false 
 
 @export var checkEndLevel = false
-
+var levelOver = false 
 var numWave = 0
 var health = 5
 
@@ -66,17 +66,20 @@ func _physics_process(_delta):
 		canStartGame = false
 		
 	if(checkEndLevel):
-		if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
-			end_level()
+		if levelOver != true :
+			if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
+				end_level()
+				levelOver = true
 
 func end_level():
 	print("Attempting End Level")
-	#assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
+	
 	for child in get_parent().get_parent().get_parent().get_children():
 		if "LevelSwitcher" in child.name:
 			child.visible = true
 	get_tree().paused = true
 
+	
 	
 func _ready():
 	plant_manager = get_parent().get_parent().get_node("PlantManager")

@@ -12,7 +12,6 @@ config_version=5
 
 config/name="PVZ0.1"
 run/main_scene="uid://0tcqey8apvy0"
-run/disable_stdout=true
 config/features=PackedStringArray("4.4")
 config/icon="res://Assets/icon.png"
 
@@ -31,6 +30,7 @@ directories/dch_directory={
 "Syn_Lucretia": "res://Assets/Dialog/Characters/Syn_Lucretia.dch"
 }
 directories/dtl_directory={
+"level_0_end_dialog": "res://level_0_end_dialog.dtl",
 "level_0_start_dialog": "res://Assets/Dialog/level_0_start_dialog.dtl"
 }
 layout/style_directory={}

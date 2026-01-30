@@ -58,13 +58,21 @@ func _ready():
 	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
 	spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
 	toolTips.hide()
+	
+	Dialogic.timeline_ended.connect(finish_ready)
 	Dialogic.start("res://Assets/Dialog/level_0_start_dialog.dtl")
+	
+	
 	#toolTips.visible = true 
 	# Start tutorial
-	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
+	#_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
-	Global.unHidePlantSelectionMenu()
+	#Global.unHidePlantSelectionMenu()
 
+func finish_ready():
+	print("Skipped Dialog")
+	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
+	Global.unHidePlantSelectionMenu()
 
 # Input filtering system - intercepts input based on tutorial state
 func _input(event):
