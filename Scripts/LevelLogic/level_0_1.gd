@@ -57,7 +57,9 @@ func _ready():
 	# Connect to Spyder button directly
 	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
 	spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
-				
+	toolTips.hide()
+	Dialogic.start("res://Assets/Dialog/level_0_start_dialog.dtl")
+	#toolTips.visible = true 
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))

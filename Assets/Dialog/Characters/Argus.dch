@@ -1,0 +1,32 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 0, 0, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "",
+"suffix": ""
+},
+&"default_portrait": "Elucrwip 1",
+&"description": "",
+&"display_name": "Argus",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"Elucrwip 1": {
+"export_overrides": {
+"image": "\"res://Assets/Icons/elucrwip1.png\""
+},
+"ignore_char_scale": false,
+"mirror": true,
+"offset": Vector2(-1, 0),
+"scale": 0.98,
+"scene": ""
+}
+},
+&"scale": 1.0
+}

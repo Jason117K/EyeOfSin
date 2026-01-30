@@ -12,6 +12,7 @@ config_version=5
 
 config/name="PVZ0.1"
 run/main_scene="uid://0tcqey8apvy0"
+run/disable_stdout=true
 config/features=PackedStringArray("4.4")
 config/icon="res://Assets/icon.png"
 
@@ -24,7 +25,11 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"Argus": "res://Assets/Dialog/Characters/Argus.dch",
+"Lucretia": "res://Assets/Dialog/Characters/Lucretia.dch",
+"Syn_Lucretia": "res://Assets/Dialog/Characters/Syn_Lucretia.dch"
+}
 directories/dtl_directory={
 "level_0_start_dialog": "res://Assets/Dialog/level_0_start_dialog.dtl"
 }
