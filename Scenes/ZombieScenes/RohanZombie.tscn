@@ -1,12 +1,13 @@
-[gd_scene load_steps=83 format=3 uid="uid://bx8or4fx7yt4f"]
+[gd_scene load_steps=84 format=3 uid="uid://bx8or4fx7yt4f"]
 
 [ext_resource type="Script" uid="uid://cvf357kn8knle" path="res://Scripts/Zombies/RohanZombie.gd" id="1_j77dt"]
 [ext_resource type="Texture2D" uid="uid://rl210wbm7b8f" path="res://Assets/Animations/The Tarnished Widow 188x90.png" id="1_sqkiy"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_1x2dv"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="3_0a8uh"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4_l5q52"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5_jml6e"]
+[ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5_jml6e"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="6_6c4j7"]
+[ext_resource type="Script" uid="uid://cso6i4imurqei" path="res://Scripts/Zombies/RohanAttackComponent.gd" id="6_nhx5k"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="9_1djwo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oaedh"]
@@ -448,7 +449,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u2cq0")
 }],
-"loop": true,
+"loop": false,
 "name": &"Teleport_End",
 "speed": 5.0
 }, {
@@ -501,7 +502,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5b2am")
 }],
-"loop": true,
+"loop": false,
 "name": &"Teleport_Start",
 "speed": 5.0
 }, {
@@ -563,7 +564,8 @@ bloodWorth = 50.0
 speed = 25
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_jml6e")]
-attack_power = 49
+script = ExtResource("6_nhx5k")
+attack_power = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_oaedh")
@@ -571,9 +573,7 @@ position = Vector2(16.087, -26.525)
 rotation = 3.14159
 scale = Vector2(1, -1)
 sprite_frames = SubResource("9")
-animation = &"Walk"
-frame = 9
-frame_progress = 0.024922
+animation = &"Teleport_Start"
 script = ExtResource("9_1djwo")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
@@ -581,11 +581,25 @@ targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 position = Vector2(26, -2)
 shape = SubResource("1")
 
-[node name="DMGRayCast2D" type="RayCast2D" parent="."]
+[node name="DMGRayCast2D_1" type="RayCast2D" parent="."]
+position = Vector2(0, -30)
+target_position = Vector2(-17, 0)
+collide_with_areas = true
+
+[node name="DMGRayCast2D_2" type="RayCast2D" parent="."]
+target_position = Vector2(-17, 0)
+collide_with_areas = true
+
+[node name="DMGRayCast2D_3" type="RayCast2D" parent="."]
+position = Vector2(0, 30)
 target_position = Vector2(-17, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 
+[node name="TeleportTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="TeleportTimer" to="AttackComponent" method="_on_TeleportTimer_timeout"]
