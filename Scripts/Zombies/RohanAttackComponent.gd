@@ -19,15 +19,14 @@ func _on_TeleportTimer_timeout():
 	if self.parent.is_in_group("Purple"):
 		var alternate_scene = get_tree().get_first_node_in_group("Green")
 		parent.reparent(alternate_scene)
-		parent.position = Vector2(650, laneYPositions[rng.randi_range(0, laneYPositions.size() - 1)])
 		parent.remove_from_group("Purple")
 		parent.add_to_group("Green")
 	elif self.parent.is_in_group("Green"):
 		var alternate_scene = get_tree().get_first_node_in_group("Purple")
 		parent.reparent(alternate_scene)
-		parent.position = Vector2(650, laneYPositions[rng.randi_range(0, laneYPositions.size() - 1)])
 		parent.remove_from_group("Green")
 		parent.add_to_group("Purple")
+	parent.position = Vector2(650, laneYPositions[rng.randi_range(0, laneYPositions.size() - 1)])
 	zombieSprite.play("Teleport_End")
 	await zombieSprite.animation_finished
 	is_attacking = false
