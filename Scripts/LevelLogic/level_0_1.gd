@@ -41,10 +41,12 @@ var basic_zombie_demo_scene = preload("res://Scenes/Tutorials/basic_zombie_demo.
 var severed_zombie_demo_scene = preload( "res://Scenes/Tutorials/severed_zombie_demo.tscn")
 var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
 var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
+@export var new_end_dialog = "res://Assets/Dialog/level_0_end_dialog.dtl"
 
 func _ready():
 	Global.current_level = self
 	waveManager = get_parent().get_node("WaveManager")
+	waveManager.set_dialog_end(new_end_dialog)
 	print("WaveManager is ", waveManager)
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level0_1,level0_1Alt)

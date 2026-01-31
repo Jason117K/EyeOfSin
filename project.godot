@@ -25,11 +25,23 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Ally": "res://Assets/Dialog/Characters/Ally.dch",
 "Argus": "res://Assets/Dialog/Characters/Argus.dch",
 "Lucretia": "res://Assets/Dialog/Characters/Lucretia.dch",
+"Rohan_Moore": "res://Assets/Dialog/Characters/Rohan_Moore.dch",
 "Syn_Lucretia": "res://Assets/Dialog/Characters/Syn_Lucretia.dch"
 }
 directories/dtl_directory={
+"level_02_end_dialog": "res://Assets/Dialog/level_02_end_dialog.dtl",
+"level_02_start_dialog": "res://Assets/Dialog/level_02_start_dialog.dtl",
+"level_03_end_dialog": "res://Assets/Dialog/level_03_end_dialog.dtl",
+"level_03_start_dialog": "res://Assets/Dialog/level_03_start_dialog.dtl",
+"level_04_end_dialog": "res://Assets/Dialog/level_04_end_dialog.dtl",
+"level_04_start_dialog": "res://Assets/Dialog/level_04_start_dialog.dtl",
+"level_05_end_dialog": "res://Assets/Dialog/level_05_end_dialog.dtl",
+"level_05_start_dialog": "res://Assets/Dialog/level_05_start_dialog.dtl",
+"level_06_end_dialog": "res://Assets/Dialog/level_06_end_dialog.dtl",
+"level_06_start_dialog": "res://Assets/Dialog/level_06_start_dialog.dtl",
 "level_0_end_dialog": "res://Assets/Dialog/level_0_end_dialog.dtl",
 "level_0_start_dialog": "res://Assets/Dialog/level_0_start_dialog.dtl"
 }

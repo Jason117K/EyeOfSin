@@ -69,9 +69,12 @@ var buff_demo_scene = preload("res://Scenes/Tutorials/blood_buff_demo.tscn")
 var buckethead_zombie_demo_scene = preload("res://Scenes/Tutorials/buckethead_zombie_demo.tscn")
 var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
 var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
+@export var new_end_dialog = "res://Assets/Dialog/level_02_end_dialog.dtl"
 
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
+	waveManager.set_dialog_end(new_end_dialog)
+	
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level02,level02Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -99,15 +102,27 @@ func _ready():
 	var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
 	walnut_button.connect("pressed", Callable(self, "_on_walnut_button_pressed"))
 	
+	Dialogic.timeline_ended.connect(finish_ready)
+	Dialogic.start("res://Assets/Dialog/level_02_start_dialog.dtl")
+	
 	# Start tutorial
+	#_transition_to_state(TutorialState.FORCE_SELECT_SUNFLOWER)
+	##toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
+	#
+	#levelSwitcher.update_level(level03,level03Alt)
+	#
+	#Global.unHidePlantSelectionMenu()
+
+func finish_ready():
+	print("Skipped Dialog")
 	_transition_to_state(TutorialState.FORCE_SELECT_SUNFLOWER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
 	
 	levelSwitcher.update_level(level03,level03Alt)
 	
 	Global.unHidePlantSelectionMenu()
-
-
+	
+	
 # Input filtering system - intercepts input based on tutorial state
 func _input(event):
 	match tutorial_state:

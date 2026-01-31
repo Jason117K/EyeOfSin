@@ -74,7 +74,7 @@ func take_damage(damage):
 	healthComp.take_damage(damage)
 	
 	# Adds a visual effect for damage 
-	#TODO Review Damage Hit Flash Visusal Effects 
+	#TODO Review Damage Hit Flash Visusal Effects HitFlash
 	if(thisMaterial):
 		#print("COKOR COCJHW")
 		thisMaterial.set_shader_parameter("target_color", Color.BLACK)

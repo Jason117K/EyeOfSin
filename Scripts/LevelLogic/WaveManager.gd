@@ -14,9 +14,9 @@ func setScenes():
 
 func _on_plant_manager_spyder_placed() -> void:
 	pass
-	#if !gameStarted:
-		#canStartGame = true 
-		#print("Can Start Game is True ")
+
+func set_dialog_end(newEndDialog):
+	dialogic_end = newEndDialog
 
 func end_level():
 	print("Attempting End Current Level")

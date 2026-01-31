@@ -37,10 +37,12 @@ const TUTORIAL_PLACE_HIVE = "res://Assets/Text/TextFiles/Level0-5_Tutorial_Place
 const TUTORIAL_EXPLAIN_ERUPTER = "res://Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
 const TUTORIAL_EXPLAIN_LANCER = "res://Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 
+@export var new_end_dialog = "res://Assets/Dialog/level_05_end_dialog.dtl"
 
 
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
+	waveManager.set_dialog_end(new_end_dialog)
 	pause_Button.set_restart_levels(level05,level05Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_HIVE)
@@ -57,14 +59,24 @@ func _ready():
 	# Connect to button presses
 	var hive_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton")
 	hive_button.connect("pressed", Callable(self, "_on_hive_button_pressed"))
+	
+	Dialogic.timeline_ended.connect(finish_ready)
+	Dialogic.start("res://Assets/Dialog/level_05_start_dialog.dtl")
+	# Start tutorial
+	#_transition_to_state(TutorialState.FORCE_SELECT_HIVE)
+	#
+	#
+	#levelSwitcher.update_level(level06,level06Alt)
+	#
+	#Global.unHidePlantSelectionMenu()
+
+func finish_ready():
+	print("Skipped Dialog")
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_HIVE)
-	
-	
 	levelSwitcher.update_level(level06,level06Alt)
-	
 	Global.unHidePlantSelectionMenu()
-	
+		
 func getIsPurpleDimension():
 	return 
 	

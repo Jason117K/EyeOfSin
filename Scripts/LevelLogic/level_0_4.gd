@@ -33,12 +33,14 @@ var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
 const TUTORIAL_SELECT_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
 const TUTORIAL_PLACE_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
 const TUTORIAL_EXPLAIN_SUMMONER = "res://Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
+@export var new_end_dialog = "res://Assets/Dialog/level_04_end_dialog.dtl"
 
 
 
 
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
+	waveManager.set_dialog_end(new_end_dialog)
 	pause_Button.set_restart_levels(level04,level04Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_WYRM)
@@ -56,15 +58,24 @@ func _ready():
 	# Connect to button presses
 	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
 	wyrm_button.connect("pressed", Callable(self, "_on_wyrm_button_pressed"))
+	
+	Dialogic.timeline_ended.connect(finish_ready)
+	Dialogic.start("res://Assets/Dialog/level_04_start_dialog.dtl")
 	# Start tutorial
+	#_transition_to_state(TutorialState.FORCE_SELECT_WYRM)
+	#
+	#
+	#levelSwitcher.update_level(level05,level05Alt)
+	#levelSwitcher.visible = false
+	#
+	#Global.unHidePlantSelectionMenu()
+	
+func finish_ready():
+	print("Skipped Dialog")
 	_transition_to_state(TutorialState.FORCE_SELECT_WYRM)
-	
-	
 	levelSwitcher.update_level(level05,level05Alt)
 	levelSwitcher.visible = false
-	
 	Global.unHidePlantSelectionMenu()
-	
 
 func start_game():
 	show_all_plant_buttons()

@@ -31,10 +31,12 @@ var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 
 const TUTORIAL_EXPLAIN_AMALGAM = "res://Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
+@export var new_end_dialog = "res://Assets/Dialog/level_06_end_dialog.dtl"
 
 
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
+	waveManager.set_dialog_end(new_end_dialog)
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level06,level06Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -46,14 +48,22 @@ func _ready():
 	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 
-	
-	levelSwitcher.update_level(endScreen,endScreenAlt)
-	
-	Global.unHidePlantSelectionMenu()
-	plantSelectionMenu.canSwapScenes = true
+	Dialogic.timeline_ended.connect(finish_ready)
+	Dialogic.start("res://Assets/Dialog/level_06_start_dialog.dtl")
+		#
+	#levelSwitcher.update_level(endScreen,endScreenAlt)
+	#
+	#Global.unHidePlantSelectionMenu()
+	#plantSelectionMenu.canSwapScenes = true
 	#start_game()
 	
-
+func finish_ready():
+	print("Skipped Dialog")
+	levelSwitcher.update_level(endScreen,endScreenAlt)
+	Global.unHidePlantSelectionMenu()
+	plantSelectionMenu.canSwapScenes = true
+	
+	
 func getIsPurpleDimension():
 	return 
 	

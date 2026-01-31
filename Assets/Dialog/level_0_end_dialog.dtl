@@ -1,6 +1,6 @@
-join Lucretia center
+join Lucretia leftmost
 Lucretia: Okay, I think that’s the last of them.
-join Syn_Lucretia center
+join Syn_Lucretia rightmost
 Syn_Lucretia: Same here. How…
 Lucretia: How did we do that?
 Syn_Lucretia: You tell me. I don’t remember anything before waking up here, and I have a sneaking suspicion you have something to do with it.
@@ -9,4 +9,4 @@ Syn_Lucretia: Don’t patronize me. You had that thing appear in your room just 
 Lucretia: Argus...
 Lucretia: …
 Syn_Lucretia: You remembered something.
-Lucretia:  Yeah, but you’re not gonna like it.
+Lucretia: Yeah, but you’re not gonna like it.

@@ -11,7 +11,7 @@ var waveManager
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
+	waveManager = get_parent().get_node("WaveManager")
 	# Keep waves disabled until purple dimension activates us
 	waveManager.canStartGame = false
 	print("[Level0-1 Alternate] Green dimension loaded, waiting for Wave 2 activation")

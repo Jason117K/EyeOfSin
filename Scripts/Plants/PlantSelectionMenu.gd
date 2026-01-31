@@ -216,6 +216,24 @@ func _input(event):
 				Global.game_controller.swap_scenes()
 			else:
 				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
+		if event.keycode == KEY_1:
+			print("1 Key Pressed")
+			_on_SunflowerButton_pressed()
+		if event.keycode == KEY_2:
+			print("2 Key Pressed")
+			_on_PeashooterButton_pressed()
+		if event.keycode == KEY_3:
+			print("3 Key Pressed")
+			_on_WalnutButton_pressed()
+		if event.keycode == KEY_4:
+			print("4 Key Pressed")
+			_on_MawButton_pressed()
+		if event.keycode == KEY_5:
+			print("5 Key Pressed")
+			_on_EggButton_pressed()
+		if event.keycode == KEY_6:
+			print("6 Key Pressed")
+			_on_HiveButton_pressed()			
 
 func setPanelContainerWidth(newWidth: int):
 	print("Panel Container Dimensions is ", panelContainer.size)

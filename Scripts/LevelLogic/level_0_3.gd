@@ -35,11 +35,13 @@ const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_Selec
 const TUTORIAL_PLACE_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.txt"
+@export var new_end_dialog = "res://Assets/Dialog/level_03_end_dialog.dtl"
 
 
 
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
+	waveManager.set_dialog_end(new_end_dialog)
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03,level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -58,13 +60,26 @@ func _ready():
 	# Connect to button presses
 	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
+	
+	Dialogic.timeline_ended.connect(finish_ready)
+	Dialogic.start("res://Assets/Dialog/level_03_start_dialog.dtl")
+	
+	## Start tutorial
+	#_transition_to_state(TutorialState.FORCE_SELECT_MAW)
+	#
+	#
+	#levelSwitcher.update_level(level04,level04Alt)
+	#
+	#Global.unHidePlantSelectionMenu()
+
+	
+func finish_ready():
+	print("Skipped Dialog")
 	# Start tutorial
 	_transition_to_state(TutorialState.FORCE_SELECT_MAW)
-	
-	
 	levelSwitcher.update_level(level04,level04Alt)
-	
 	Global.unHidePlantSelectionMenu()
+	
 	
 func getIsPurpleDimension():
 	return 

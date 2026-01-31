@@ -1,0 +1,15 @@
+join Lucretia center
+Lucretia: It’s okay, the zombies are gone now. It’s safe.
+join Ally center
+Ally: Geez, thank you so much. I thought I’d take ‘em all by myself, but I guess I overestimate my own strength sometimes.
+Lucretia:  I can’t blame you…
+join Syn_Lucretia right
+Syn_Lucretia: Alright, you’ve made your point. You’re a hero, whatever.  Let's just move on now.
+Lucretia:  Fine. Well, uh, good luck…
+Ally:  Name’s Ally! But, uh, you’re not just gonna leave me here, right?
+Syn_Lucretia: Nu–uh. Nope. There’s no way in hell we’re bringing her with us. We don’t know this girl, she might be crazy! At the very least she’d slow us down.
+Lucretia: Ally. Well, unfortunately we’ve–I’ve got something I need to take care of here and, um… I don’t think it’d be safe for you to join us. You’re better off just getting out of the city as fast as possible.
+Ally: Oh… Okay. Yeah, no worries. I’ll be able to manage on my own. Probably. See ya around then, I guess!
+leave Ally
+Syn_Lucretia: Good. Now then, onwards to Rohan! Let’s try not to get distracted this time, alright?!
+Lucretia: …
