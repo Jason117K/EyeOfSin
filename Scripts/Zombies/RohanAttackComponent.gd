@@ -12,6 +12,7 @@ func attack_plant(collider):
 	
 func _on_TeleportTimer_timeout():
 	teleport_timer.stop()
+	stop_attack()
 	teleport_timer.wait_time = rng.randf_range(2, 7)
 	is_attacking = true
 	zombieSprite.play("Teleport_Start")
@@ -32,7 +33,8 @@ func _on_TeleportTimer_timeout():
 	is_attacking = false
 	
 func _on_AttackTimer_timeout():
-	teleport_timer.start()
+	if(teleport_timer.is_stopped()):
+		teleport_timer.start()
 	#print("Basic Zombie Attack Timer Timeout")
 		#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent.name:
