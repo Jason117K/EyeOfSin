@@ -20,17 +20,46 @@ func _on_TeleportTimer_timeout():
 	if self.parent.is_in_group("Purple"):
 		var alternate_scene = get_tree().get_first_node_in_group("Green")
 		parent.reparent(alternate_scene)
-		parent.remove_from_group("Purple")
-		parent.add_to_group("Green")
+		changeGroup()
 	elif self.parent.is_in_group("Green"):
 		var alternate_scene = get_tree().get_first_node_in_group("Purple")
 		parent.reparent(alternate_scene)
-		parent.remove_from_group("Green")
-		parent.add_to_group("Purple")
+		changeGroup()
 	parent.position = Vector2(650, laneYPositions[rng.randi_range(0, laneYPositions.size() - 1)])
 	zombieSprite.play("Teleport_End")
 	await zombieSprite.animation_finished
 	is_attacking = false
+	
+
+#if self.is_in_group("Green"):
+		#print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
+		#$DMG_RayCast2D.collision_mask = 3
+		#$DMG_RayCast2D.set_collision_mask_value(1,false)
+		#$DMG_RayCast2D.set_collision_mask_value(2,false)
+		#$DMG_RayCast2D.set_collision_mask_value(3,true)
+	#else:
+		#$DMG_RayCast2D.set_collision_mask_value(1,false)
+		#$DMG_RayCast2D.set_collision_mask_value(2,true)
+		#$DMG_RayCast2D.set_collision_mask_value(3,false)
+
+
+func changeGroup():
+	if(self.parent.is_in_group("Green")):
+		parent.remove_from_group("Green")
+		parent.add_to_group("Purple")
+		for attack_ray in attack_rays:
+			attack_ray.collision_mask = 2
+			attack_ray.set_collision_mask_value(1,false)
+			attack_ray.set_collision_mask_value(2,true)
+			attack_ray.set_collision_mask_value(3,false)
+	if(self.parent.is_in_group("Purple")):
+		parent.remove_from_group("Purple")
+		parent.add_to_group("Green")
+		for attack_ray in attack_rays:
+			attack_ray.collision_mask = 3
+			attack_ray.set_collision_mask_value(1,false)
+			attack_ray.set_collision_mask_value(2,false)
+			attack_ray.set_collision_mask_value(3,true)
 	
 func _on_AttackTimer_timeout():
 	if(teleport_timer.is_stopped()):
@@ -48,7 +77,9 @@ func _on_AttackTimer_timeout():
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
 	for plant in target_plants:
-		if(is_instance_valid(plant)):
+		if(is_instance_valid(plant) 
+		&& ((plant.is_in_group("Green") && self.parent.is_in_group("Green"))
+		|| (plant.is_in_group("Purple") && self.parent.is_in_group("Purple")))):
 			print("target plant name is ", plant.name)
 			if(plant.health >= 0):
 				if plant.has_method("mawBuffed"):
