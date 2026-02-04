@@ -59,6 +59,8 @@ var canSwapScenes = false
 # Color of the highlight border
 @export var highlight_border_color: Color = Color.WHITE
 
+var doubleSpeed = false 
+
 func _ready():
 	setPanelContainerWidth(100)
 	#Global.plant_selection_menu = self
@@ -570,3 +572,12 @@ func _on_world_swap_button_pressed() -> void:
 func _on_codex_button_pressed() -> void:
 	codex_clicked.emit()
 	Global.game_controller.change_scene_with_pause("res://Scenes/Systems/lore_book_opener.tscn")
+
+
+func _on_fast_forward_pressed() -> void:
+	if doubleSpeed : 
+		Engine.time_scale = 2
+		doubleSpeed = false
+	else:
+		Engine.time_scale = 1
+		doubleSpeed = true 

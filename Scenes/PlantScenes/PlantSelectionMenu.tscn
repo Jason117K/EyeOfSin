@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene load_steps=21 format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b6vva031ql0r0" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText1.png" id="3_yqvs4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://w4n34nhafrdq" path="res://Assets/Plants/Cards/WORDSWAP_CARD.png" id="13_vvged"]
 [ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://Assets/Icons/CODEX_CARD.png" id="14_04elx"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="14_vvged"]
+[ext_resource type="Texture2D" uid="uid://chfuimepfak3s" path="res://Assets/UI/DemonCard_FastForward.png" id="15_e3ig8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
 bg_color = Color(0, 0, 0, 0.788235)
@@ -99,11 +100,11 @@ size_flags_vertical = 0
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 97.395)
 layout_mode = 2
 mouse_filter = 2
 
 [node name="Sunflower" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="SunflowerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower"]
@@ -135,7 +136,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Walnut" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="WalnutButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut"]
@@ -151,7 +151,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MawButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw"]
@@ -183,7 +182,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Egg" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="EggButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg"]
@@ -199,7 +197,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="HiveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive"]
@@ -215,7 +212,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="RemovePlantButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant"]
@@ -232,7 +228,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="WorldSwap" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="WorldSwapButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap"]
@@ -242,7 +237,6 @@ theme_override_styles/normal = SubResource("3")
 icon = ExtResource("13_vvged")
 
 [node name="Codex" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="CodexButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Codex"]
@@ -250,6 +244,15 @@ layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("14_04elx")
+
+[node name="FastForward" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="FastForwardButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/FastForward"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 67
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("15_e3ig8")
 
 [node name="CodexBG" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("14_vvged")]
 visible = false
@@ -268,6 +271,7 @@ mouse_filter = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton" to="." method="_on_codex_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/CodexBG/HBoxContainer/OpenDemonCodexButton" to="." method="_on_open_demon_codex_button_pressed"]
 
 [editable path="PanelContainer/VBoxContainer/HBoxContainer/CodexBG"]

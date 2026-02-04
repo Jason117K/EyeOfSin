@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://Scenes/LevelScenes/PauseMenu.tscn" id="3_e4pn3"]
 
 [node name="PauseButton" type="Button"]
-offset_left = 681.0
-offset_top = 378.0
-offset_right = 736.0
-offset_bottom = 401.0
+offset_left = 676.0
+offset_top = 6.0
+offset_right = 733.0
+offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("1_tkp42")
 text = "PAUSE"
 script = ExtResource("2_w1yst")
