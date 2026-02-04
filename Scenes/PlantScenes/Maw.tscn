@@ -1678,11 +1678,11 @@ line_width = 5.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 115.095, 132.06, 117.595, 132.685, 120.095, 133.31, 122.595, 133.935, 125.095, 134.56, 127.595, 135.185, 130.095, 135.81, 132.595, 136.435, 135.095, 137.06, 137.595, 137.685, 140.095, 138.31, 142.595, 138.935, 145.095, 139.56, 147.595, 140.185, 150.095, 140.81, 152.595, 141.435, 155.095, 142.06, 157.595, 142.685, 160.095, 143.31, 162.595, 143.935, 165.095, 144.56, 167.595, 145.185, 170.095, 145.81, 172.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 114.993, 133.512, 116.182, 136.684, 117.368, 139.911, 119.128, 142.78, 121.403, 145.033, 123.989, 146.551, 126.69, 147.346, 129.336, 147.296, 132.08, 147.581, 134.799, 148.809, 137.17, 150.864, 138.948, 153.57, 139.926, 156.741, 140.003, 160.126, 140.475, 163.505, 141.978, 166.509, 144.285, 168.729, 147.011, 169.866, 149.655, 169.674, 151.705, 168.389, 153.878, 167.243, 156.56, 167.171, 159.188, 168.406, 161.179, 170.681)
 width = 5.0
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 115.095, 126.435, 117.595, 126.435, 120.095, 126.435, 122.595, 126.435, 125.095, 126.435, 127.595, 126.435, 130.095, 126.435, 132.595, 126.435, 135.095, 126.435, 137.595, 126.435, 140.095, 126.435, 142.595, 126.435, 145.095, 126.435, 147.595, 126.435, 150.095, 126.435, 152.595, 126.435, 155.095, 126.435, 157.595, 126.435, 160.095, 126.435, 162.595, 126.435, 165.095, 126.435, 167.595, 126.435, 170.095, 126.435, 172.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 114.993, 127.887, 116.182, 130.434, 117.368, 133.036, 119.128, 135.28, 121.403, 136.908, 123.989, 137.801, 126.69, 137.971, 129.336, 137.296, 132.08, 136.956, 134.799, 137.559, 137.17, 138.989, 138.948, 141.07, 139.926, 143.616, 140.003, 146.376, 140.475, 149.13, 141.978, 151.509, 144.285, 153.104, 147.011, 153.616, 149.655, 152.799, 151.705, 150.889, 153.878, 149.118, 156.56, 148.421, 159.188, 149.031, 161.179, 150.681)
 width = 5.0
 
 [node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
@@ -1713,6 +1713,8 @@ position = Vector2(206, 293)
 visible = false
 position = Vector2(202, 224)
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComponent" to="." method="_on_detection_component_area_entered"]

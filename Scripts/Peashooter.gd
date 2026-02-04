@@ -248,3 +248,12 @@ func _on_spawn_spiderling_timeout() -> void:
 		var spiderling = spiderling_scene.instantiate()
 		spiderling.position = position + Vector2(8, -4)  # Adjust starting position
 		get_parent().add_child(spiderling)  # Add the projectile to the game layer
+
+
+func _on_mouse_entered() -> void:
+	$PreviewNodes/Spider.visible = false
+	$PreviewNodes.visible = true 
+
+
+func _on_mouse_exited() -> void:
+	$PreviewNodes.visible = false 

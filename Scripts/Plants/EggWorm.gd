@@ -245,3 +245,12 @@ func truncate_string(input_string: String) -> String:
 
 func _on_timer_timeout() -> void:
 	isCurrentlyBuffed = false
+
+
+func _on_mouse_entered() -> void:
+	$PreviewNodes/AnimatedSprite2D.visible = false
+	$PreviewNodes.visible = true 
+
+
+func _on_mouse_exited() -> void:
+	$PreviewNodes.visible = false 

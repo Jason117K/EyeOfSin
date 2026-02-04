@@ -578,3 +578,12 @@ func die_fromClearSpace():
 func show_tentacles():
 	$Arm.visible = true 
 	$Arm2.visible = true 
+
+
+func _on_mouse_entered() -> void:
+	$PreviewNodes/AnimatedSprite2.visible = false
+	$PreviewNodes.visible = true 
+
+
+func _on_mouse_exited() -> void:
+	$PreviewNodes.visible = false 

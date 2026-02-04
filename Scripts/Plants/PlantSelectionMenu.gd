@@ -404,7 +404,8 @@ func create_preview(plant_scene):
 func clear_preview():
 	for sprite in preview_sprites:
 		if sprite:
-			sprite.queue_free()
+			sprite.visible = false
+			#sprite.queue_free()
 	preview_sprites.clear()
 	currentPlantLabel.text = ""
 	is_previewing = false

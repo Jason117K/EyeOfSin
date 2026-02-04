@@ -207,3 +207,12 @@ func _on_reset_sun_cooldown_timeout() -> void:
 func walnutWyrmBuffed():
 	pass
 	
+
+
+func _on_mouse_entered() -> void:
+	$PreviewNodes/AnimatedSpriteComponent2.visible = false
+	$PreviewNodes.visible = true 
+
+
+func _on_mouse_exited() -> void:
+	$PreviewNodes.visible = false 

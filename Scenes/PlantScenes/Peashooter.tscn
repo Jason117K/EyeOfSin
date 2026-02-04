@@ -1612,9 +1612,8 @@ script = ExtResource("6_67t0g")
 targetGlowColor = Color(1, 0, 0.101961, 1)
 
 [node name="PreviewNodes" type="Node2D" parent="."]
-visible = false
 
-[node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" groups=["Invis"]]
 position = Vector2(0, -8.5)
 sprite_frames = SubResource("9")
 animation = &"redSpiderDefault"
@@ -1768,7 +1767,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 108.528, 133.174, 105.243, 132.862, 103.958, 131.008, 100.994, 130.284, 97.0696, 131.767, 93.753, 131.563, 92.5446, 129.752, 90.3205, 128.534)
+points = PackedVector2Array(112.595, 131.435, 108.541, 133.186, 105.477, 132.573, 104.178, 130.729, 100.974, 130.303, 97.0528, 131.805, 93.9457, 131.301, 92.7855, 129.482, 90.2077, 128.558)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1780,7 +1779,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 108.528, 126.299, 105.243, 124.112, 103.958, 120.383, 100.994, 117.784, 97.0696, 117.392, 93.753, 115.313, 92.5446, 111.627, 90.3205, 108.534)
+points = PackedVector2Array(112.595, 126.435, 108.541, 126.311, 105.477, 123.823, 104.178, 120.104, 100.974, 117.803, 97.0528, 117.43, 93.9457, 115.051, 92.7855, 111.357, 90.2077, 108.558)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1801,7 +1800,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 113.209, 130.852, 112.984, 130.265, 114.948, 130.563, 116.997, 130.98, 117.337, 130.346, 117.252, 129.729, 119.072, 129.953, 121.446, 131.391)
+points = PackedVector2Array(112.595, 131.435, 112.511, 130.66, 112.905, 130.043, 115.107, 130.657, 116.988, 130.848, 117.014, 130.179, 117.379, 129.571, 119.514, 130.166, 121.788, 131.183)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1809,7 +1808,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 113.209, 123.977, 112.984, 121.515, 114.948, 119.938, 116.997, 118.48, 117.337, 115.971, 117.252, 113.479, 119.072, 111.828, 121.446, 111.391)
+points = PackedVector2Array(112.595, 126.435, 112.511, 123.785, 112.905, 121.293, 115.107, 120.032, 116.988, 118.348, 117.014, 115.804, 117.379, 113.321, 119.514, 112.041, 121.788, 111.183)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1822,6 +1821,8 @@ visible = false
 position = Vector2(-2, -13)
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="animation_finished" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_animation_finished"]

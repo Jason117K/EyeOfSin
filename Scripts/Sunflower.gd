@@ -321,3 +321,12 @@ func generate_sun_alt() -> Node2D:
 	#Set the sun pos to above the sunflower
 	sun_instance.global_position = self.global_position + Vector2(0,-40)
 	return sun_instance
+
+
+func _on_mouse_entered() -> void:
+	$PreviewNodes/AnimatedSprite2D.visible = false
+	$PreviewNodes.visible = true 
+
+
+func _on_mouse_exited() -> void:
+	$PreviewNodes.visible = false 

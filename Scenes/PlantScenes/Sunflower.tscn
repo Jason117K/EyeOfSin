@@ -1052,6 +1052,10 @@ sprite_frames = SubResource("11")
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
+sprite_frames = SubResource("6")
+animation = &"idle"
+
 [node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
 z_index = 6
 position = Vector2(-64, 0)
@@ -1110,10 +1114,6 @@ z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("55")
 animation = &"New Anim"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
-sprite_frames = SubResource("6")
-animation = &"idle"
 
 [node name="BuffNodesComponent" parent="." instance=ExtResource("7")]
 giveBuffTo = ["", "Peashooter", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
@@ -1205,6 +1205,8 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="HealZone" to="." method="_on_heal_zone_area_entered"]
 [connection signal="area_entered" from="SlowField" to="." method="_on_slow_field_area_entered"]
 [connection signal="body_entered" from="SlowField" to="." method="_on_slow_field_body_entered"]

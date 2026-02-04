@@ -887,243 +887,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="60"]
-atlas = ExtResource("5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="61"]
-atlas = ExtResource("5")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="62"]
-atlas = ExtResource("5")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="63"]
-atlas = ExtResource("5")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="64"]
-atlas = ExtResource("5")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="65"]
-atlas = ExtResource("5")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="66"]
-atlas = ExtResource("5")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="67"]
-atlas = ExtResource("5")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="68"]
-atlas = ExtResource("5")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="69"]
-atlas = ExtResource("5")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="70"]
-atlas = ExtResource("5")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="71"]
-atlas = ExtResource("5")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="72"]
-atlas = ExtResource("5")
-region = Rect2(384, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="73"]
-atlas = ExtResource("5")
-region = Rect2(416, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="74"]
-atlas = ExtResource("5")
-region = Rect2(448, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="75"]
-atlas = ExtResource("5")
-region = Rect2(480, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="76"]
-atlas = ExtResource("5")
-region = Rect2(512, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="77"]
-atlas = ExtResource("5")
-region = Rect2(544, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="78"]
-atlas = ExtResource("5")
-region = Rect2(576, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="79"]
-atlas = ExtResource("5")
-region = Rect2(608, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="80"]
-atlas = ExtResource("5")
-region = Rect2(640, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="81"]
-atlas = ExtResource("5")
-region = Rect2(672, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="82"]
-atlas = ExtResource("5")
-region = Rect2(704, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="83"]
-atlas = ExtResource("5")
-region = Rect2(736, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="84"]
-atlas = ExtResource("5")
-region = Rect2(768, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="85"]
-atlas = ExtResource("5")
-region = Rect2(800, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="86"]
-atlas = ExtResource("5")
-region = Rect2(832, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="87"]
-atlas = ExtResource("5")
-region = Rect2(864, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="56"]
-atlas = ExtResource("6")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="57"]
-atlas = ExtResource("6")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="58"]
-atlas = ExtResource("6")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="59"]
-atlas = ExtResource("6")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="142"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("60")
-}, {
-"duration": 1.0,
-"texture": SubResource("61")
-}, {
-"duration": 1.0,
-"texture": SubResource("62")
-}, {
-"duration": 1.0,
-"texture": SubResource("63")
-}, {
-"duration": 1.0,
-"texture": SubResource("64")
-}, {
-"duration": 1.0,
-"texture": SubResource("65")
-}, {
-"duration": 1.0,
-"texture": SubResource("66")
-}, {
-"duration": 1.0,
-"texture": SubResource("67")
-}, {
-"duration": 1.0,
-"texture": SubResource("68")
-}, {
-"duration": 1.0,
-"texture": SubResource("69")
-}, {
-"duration": 1.0,
-"texture": SubResource("70")
-}, {
-"duration": 1.0,
-"texture": SubResource("71")
-}, {
-"duration": 1.0,
-"texture": SubResource("72")
-}, {
-"duration": 1.0,
-"texture": SubResource("73")
-}, {
-"duration": 1.0,
-"texture": SubResource("74")
-}, {
-"duration": 1.0,
-"texture": SubResource("75")
-}, {
-"duration": 1.0,
-"texture": SubResource("76")
-}, {
-"duration": 1.0,
-"texture": SubResource("77")
-}, {
-"duration": 1.0,
-"texture": SubResource("78")
-}, {
-"duration": 1.0,
-"texture": SubResource("79")
-}, {
-"duration": 1.0,
-"texture": SubResource("80")
-}, {
-"duration": 1.0,
-"texture": SubResource("81")
-}, {
-"duration": 1.0,
-"texture": SubResource("82")
-}, {
-"duration": 1.0,
-"texture": SubResource("83")
-}, {
-"duration": 1.0,
-"texture": SubResource("84")
-}, {
-"duration": 1.0,
-"texture": SubResource("85")
-}, {
-"duration": 1.0,
-"texture": SubResource("86")
-}, {
-"duration": 1.0,
-"texture": SubResource("87")
-}],
-"loop": true,
-"name": &"Drip",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("56")
-}, {
-"duration": 1.0,
-"texture": SubResource("57")
-}, {
-"duration": 1.0,
-"texture": SubResource("58")
-}, {
-"duration": 1.0,
-"texture": SubResource("59")
-}],
-"loop": true,
-"name": &"New Anim",
-"speed": 5.0
-}]
-
 [sub_resource type="AtlasTexture" id="143"]
 atlas = ExtResource("1")
 region = Rect2(0, 0, 32, 32)
@@ -1439,6 +1202,243 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="60"]
+atlas = ExtResource("5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="61"]
+atlas = ExtResource("5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="62"]
+atlas = ExtResource("5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="63"]
+atlas = ExtResource("5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="64"]
+atlas = ExtResource("5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="65"]
+atlas = ExtResource("5")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="66"]
+atlas = ExtResource("5")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="67"]
+atlas = ExtResource("5")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="68"]
+atlas = ExtResource("5")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="69"]
+atlas = ExtResource("5")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="70"]
+atlas = ExtResource("5")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="71"]
+atlas = ExtResource("5")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="72"]
+atlas = ExtResource("5")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="73"]
+atlas = ExtResource("5")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="74"]
+atlas = ExtResource("5")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="75"]
+atlas = ExtResource("5")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="76"]
+atlas = ExtResource("5")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="77"]
+atlas = ExtResource("5")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="78"]
+atlas = ExtResource("5")
+region = Rect2(576, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="79"]
+atlas = ExtResource("5")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="80"]
+atlas = ExtResource("5")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="81"]
+atlas = ExtResource("5")
+region = Rect2(672, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="82"]
+atlas = ExtResource("5")
+region = Rect2(704, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="83"]
+atlas = ExtResource("5")
+region = Rect2(736, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="84"]
+atlas = ExtResource("5")
+region = Rect2(768, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="85"]
+atlas = ExtResource("5")
+region = Rect2(800, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="86"]
+atlas = ExtResource("5")
+region = Rect2(832, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="87"]
+atlas = ExtResource("5")
+region = Rect2(864, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="56"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="57"]
+atlas = ExtResource("6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="58"]
+atlas = ExtResource("6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="59"]
+atlas = ExtResource("6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="142"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("60")
+}, {
+"duration": 1.0,
+"texture": SubResource("61")
+}, {
+"duration": 1.0,
+"texture": SubResource("62")
+}, {
+"duration": 1.0,
+"texture": SubResource("63")
+}, {
+"duration": 1.0,
+"texture": SubResource("64")
+}, {
+"duration": 1.0,
+"texture": SubResource("65")
+}, {
+"duration": 1.0,
+"texture": SubResource("66")
+}, {
+"duration": 1.0,
+"texture": SubResource("67")
+}, {
+"duration": 1.0,
+"texture": SubResource("68")
+}, {
+"duration": 1.0,
+"texture": SubResource("69")
+}, {
+"duration": 1.0,
+"texture": SubResource("70")
+}, {
+"duration": 1.0,
+"texture": SubResource("71")
+}, {
+"duration": 1.0,
+"texture": SubResource("72")
+}, {
+"duration": 1.0,
+"texture": SubResource("73")
+}, {
+"duration": 1.0,
+"texture": SubResource("74")
+}, {
+"duration": 1.0,
+"texture": SubResource("75")
+}, {
+"duration": 1.0,
+"texture": SubResource("76")
+}, {
+"duration": 1.0,
+"texture": SubResource("77")
+}, {
+"duration": 1.0,
+"texture": SubResource("78")
+}, {
+"duration": 1.0,
+"texture": SubResource("79")
+}, {
+"duration": 1.0,
+"texture": SubResource("80")
+}, {
+"duration": 1.0,
+"texture": SubResource("81")
+}, {
+"duration": 1.0,
+"texture": SubResource("82")
+}, {
+"duration": 1.0,
+"texture": SubResource("83")
+}, {
+"duration": 1.0,
+"texture": SubResource("84")
+}, {
+"duration": 1.0,
+"texture": SubResource("85")
+}, {
+"duration": 1.0,
+"texture": SubResource("86")
+}, {
+"duration": 1.0,
+"texture": SubResource("87")
+}],
+"loop": true,
+"name": &"Drip",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("56")
+}, {
+"duration": 1.0,
+"texture": SubResource("57")
+}, {
+"duration": 1.0,
+"texture": SubResource("58")
+}, {
+"duration": 1.0,
+"texture": SubResource("59")
+}],
+"loop": true,
+"name": &"New Anim",
+"speed": 5.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q3sqy"]
 shader = ExtResource("18_cpfsp")
 shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
@@ -1561,6 +1561,11 @@ visible = false
 [node name="PreviewNodes" type="Node2D" parent="."]
 visible = false
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
+sprite_frames = SubResource("152")
+animation = &"new_animation"
+autoplay = "new_animation"
+
 [node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes"]
 visible = false
 z_index = 6
@@ -1596,11 +1601,6 @@ sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
-sprite_frames = SubResource("152")
-animation = &"new_animation"
-autoplay = "new_animation"
-
 [node name="PlayAnimTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -1631,14 +1631,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 110.359, 132.042, 108.268, 132.444, 106.36, 132.139, 104.866, 131.212, 103.449, 130.275, 104.625, 130.867, 102.833, 130.123, 101.024, 129.399, 99.012, 129.182, 96.9757, 129.617, 95.1485, 130.267, 94.6856, 132.454, 92.7721, 132.491, 90.7727, 132.504, 89.053, 131.994, 87.9913, 130.962, 87.8577, 129.719, 88.6887, 128.718, 88.4954, 127.502, 88.3967, 126.268, 87.2374, 125.429, 85.4761, 125.516, 83.7918, 126.726, 82.9433, 128.84)
+points = PackedVector2Array(112.595, 131.435, 110.43, 131.642, 108.797, 131.151, 107.857, 130.071, 107.215, 128.857, 106.46, 127.686, 105.041, 126.984, 103.254, 126.958, 101.437, 127.678, 99.9704, 129.237, 98.636, 128.617, 96.7886, 128.641, 95.124, 128.183, 94.0048, 127.21, 93.6845, 126.002, 94.2602, 124.961, 92.9308, 124.387, 92.4946, 123.159, 91.4253, 122.143, 89.7767, 121.736, 87.9022, 122.187, 86.2745, 123.595, 85.588, 125.839, 85.7507, 128.18, 85.0009, 130.319)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 110.359, 126.417, 108.268, 126.194, 106.36, 125.264, 104.866, 123.712, 103.449, 122.15, 104.625, 122.117, 102.833, 120.748, 101.024, 119.399, 99.012, 118.557, 96.9757, 118.367, 95.1485, 118.392, 94.6856, 119.954, 92.7721, 119.366, 90.7727, 118.754, 89.053, 117.619, 87.9913, 115.962, 87.8577, 114.094, 88.6887, 112.468, 88.4954, 110.627, 88.3967, 108.768, 87.2374, 107.304, 85.4761, 106.766, 83.7918, 107.351, 82.9433, 108.84)
+points = PackedVector2Array(112.595, 126.435, 110.43, 126.017, 108.797, 124.901, 107.857, 123.196, 107.215, 121.357, 106.46, 119.561, 105.041, 118.234, 103.254, 117.583, 101.437, 117.678, 99.9704, 118.612, 98.636, 117.367, 96.7886, 116.766, 95.124, 115.683, 94.0048, 114.085, 93.6845, 112.252, 94.2602, 110.586, 92.9308, 109.387, 92.4946, 107.534, 91.4253, 105.893, 89.7767, 104.861, 87.9022, 104.687, 86.2745, 105.47, 85.588, 107.089, 85.7507, 108.805, 85.0009, 110.319)
 width = 4.0
 
 [node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
@@ -1653,14 +1653,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 113.839, 130.21, 115.167, 129.233, 116.914, 128.792, 118.822, 128.995, 120.606, 129.463, 121.378, 131.555, 123.185, 131.366, 125.092, 131.164, 126.704, 130.513, 127.685, 129.437, 127.824, 128.208, 127.103, 127.194, 128.142, 126.259, 129.268, 125.329, 130.976, 125.085, 132.841, 125.917, 134.125, 127.84, 133.991, 130.278, 132.789, 132.28, 132.014, 134.513, 132.852, 136.676, 134.595, 137.368, 135.725, 136.682, 135.595, 135.616)
+points = PackedVector2Array(112.595, 131.435, 113.908, 130.286, 115.625, 129.925, 117.572, 130.456, 119.503, 131.372, 121.451, 132.123, 123.267, 132.034, 124.605, 131.289, 125.24, 130.191, 125.016, 129.081, 126.659, 128.96, 127.816, 128.058, 129.434, 127.569, 131.347, 127.836, 133.172, 128.965, 134.481, 130.908, 135.238, 133.217, 136.113, 135.442, 137.864, 136.596, 139.539, 136.498, 140.3, 135.5, 139.533, 134.533, 137.768, 134.902, 136.085, 136.079, 134.375, 136.85)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 113.839, 124.585, 115.167, 122.983, 116.914, 121.917, 118.822, 121.495, 120.606, 121.338, 121.378, 122.805, 123.185, 121.991, 125.092, 121.164, 126.704, 119.888, 127.685, 118.187, 127.824, 116.333, 127.103, 114.694, 128.142, 113.134, 129.268, 111.579, 130.976, 110.71, 132.841, 110.917, 134.125, 112.215, 133.991, 114.028, 132.789, 115.405, 132.014, 117.013, 132.852, 118.551, 134.595, 118.618, 135.725, 117.307, 135.595, 115.616)
+points = PackedVector2Array(112.595, 126.435, 113.908, 124.661, 115.625, 123.675, 117.572, 123.581, 119.503, 123.872, 121.451, 123.998, 123.267, 123.284, 124.605, 121.914, 125.24, 120.191, 125.016, 118.456, 126.659, 117.71, 127.816, 116.183, 129.434, 115.069, 131.347, 114.711, 133.172, 115.215, 134.481, 116.533, 135.238, 118.217, 136.113, 119.817, 137.864, 120.346, 139.539, 119.623, 140.3, 118, 139.533, 116.408, 137.768, 116.152, 136.085, 116.704, 134.375, 116.85)
 width = 4.0
 
 [node name="ArmTarget" parent="." instance=ExtResource("19_s2bgg")]
@@ -1671,8 +1671,10 @@ position = Vector2(-30, -16)
 visible = false
 position = Vector2(21, -10)
 
-[connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSpriteComp_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSpriteComp" to="AnimatedSpriteComp" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComp" to="." method="_on_enemy_entered"]
 [connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
