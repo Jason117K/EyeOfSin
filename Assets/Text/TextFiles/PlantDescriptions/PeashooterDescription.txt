@@ -1,14 +1,11 @@
-Powerful pack hunters that prowl the canpoies of Hell's Blood Swamps, using their webs to catch all manner of prey.
-- Gives SYNERGY to 
-	- Maws 
-	- Hives 
-- Receives SYNERGY from 
-	- Maws
+Once beloved pet companions to the people of Syn, the Crawlers have been weaponized into hideous and lethal servants. 
 
-- Good against 
+- Shoots a web projectile that damages and slows the first enemy it contacts
+
+- Strong VS. 
 	- High Speed 
 	- High Numbers 
 	
-- Weak Against 
+- Weak VS. 
 	- High Health
 	

@@ -301,8 +301,9 @@ shape = SubResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("20")
 sprite_frames = SubResource("11")
-animation = &"Walk"
-frame_progress = 0.580148
+animation = &"Attack"
+frame = 5
+frame_progress = 0.209926
 flip_h = true
 script = ExtResource("6")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)

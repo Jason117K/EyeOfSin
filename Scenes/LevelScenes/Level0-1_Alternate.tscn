@@ -2205,7 +2205,7 @@ z_index = 1
 
 [node name="Fish" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(542, 386)
+position = Vector2(546, 374)
 makeGreen = true
 
 [node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_654uq")]
@@ -2225,17 +2225,17 @@ makeGreen = true
 
 [node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(573, 19)
+position = Vector2(564, 30)
 makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(455, 394)
+position = Vector2(458, 379)
 makeGreen = true
 
 [node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(315, 14)
+position = Vector2(310, 30)
 makeGreen = true
 
 [node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_654uq")]
@@ -2245,7 +2245,7 @@ makeGreen = true
 
 [node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(633, 395)
+position = Vector2(650, 380)
 makeGreen = true
 
 [node name="Shrubs" type="Node2D" parent="Environment"]

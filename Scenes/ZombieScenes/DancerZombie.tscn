@@ -279,7 +279,9 @@ shape = SubResource("25")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_26b7w")
 sprite_frames = SubResource("24")
-animation = &"Walk"
+animation = &"Summon"
+frame = 8
+frame_progress = 1.0
 script = ExtResource("10")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)

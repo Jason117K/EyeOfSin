@@ -1,8 +1,9 @@
-[gd_scene load_steps=237 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=238 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://Scripts/Plants/Shaders/DemonGlow.gdshader" id="2_4vrps"]
+[ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://Assets/Demon_Shadow.png" id="2_druvk"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_hvfi3"]
 [ext_resource type="Texture2D" uid="uid://c30lgql0xnwsx" path="res://Assets/Demons/SpriteSheets/Maw/SpiderAttack_Maw-Sheet.png" id="3_a06ib"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="5"]
@@ -1581,10 +1582,14 @@ z_index = 1
 script = ExtResource("2")
 cost = 50
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="DemonShadow" type="Sprite2D" parent="."]
 visible = false
-self_modulate = Color(1, 1, 1, 0.65098)
-position = Vector2(-4, 18)
+position = Vector2(-2, 8)
+texture = ExtResource("2_druvk")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.721569)
+position = Vector2(-4, 6)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hvfi3")
 
@@ -1763,7 +1768,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 116.345, 133.31, 120.095, 135.185, 123.845, 137.06, 127.595, 138.935, 131.345, 140.81, 135.095, 142.685, 138.845, 144.56, 142.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 108.528, 133.174, 105.243, 132.862, 103.958, 131.008, 100.994, 130.284, 97.0696, 131.767, 93.753, 131.563, 92.5446, 129.752, 90.3205, 128.534)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1775,7 +1780,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 116.345, 126.435, 120.095, 126.435, 123.845, 126.435, 127.595, 126.435, 131.345, 126.435, 135.095, 126.435, 138.845, 126.435, 142.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 108.528, 126.299, 105.243, 124.112, 103.958, 120.383, 100.994, 117.784, 97.0696, 117.392, 93.753, 115.313, 92.5446, 111.627, 90.3205, 108.534)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1796,7 +1801,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.97, 133.31, 117.345, 135.185, 119.72, 137.06, 122.095, 138.935, 124.47, 140.81, 126.845, 142.685, 129.22, 144.56, 131.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 113.209, 130.852, 112.984, 130.265, 114.948, 130.563, 116.997, 130.98, 117.337, 130.346, 117.252, 129.729, 119.072, 129.953, 121.446, 131.391)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1804,7 +1809,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.97, 126.435, 117.345, 126.435, 119.72, 126.435, 122.095, 126.435, 124.47, 126.435, 126.845, 126.435, 129.22, 126.435, 131.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 113.209, 123.977, 112.984, 121.515, 114.948, 119.938, 116.997, 118.48, 117.337, 115.971, 117.252, 113.479, 119.072, 111.828, 121.446, 111.391)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 

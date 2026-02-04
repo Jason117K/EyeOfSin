@@ -1491,7 +1491,7 @@ flip_h = true
 
 [node name="Fish" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(542, 386)
+position = Vector2(538, 368)
 
 [node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
@@ -1507,15 +1507,15 @@ position = Vector2(37, 326)
 
 [node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(573, 19)
+position = Vector2(565, 30)
 
 [node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(455, 394)
+position = Vector2(434, 370)
 
 [node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(315, 14)
+position = Vector2(309, 27)
 
 [node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
@@ -1523,7 +1523,7 @@ position = Vector2(573, 342)
 
 [node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(633, 395)
+position = Vector2(639, 380)
 
 [node name="Shrubs" type="Node2D" parent="Environment"]
 visible = false

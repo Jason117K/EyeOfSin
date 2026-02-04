@@ -1,4 +1,3 @@
-A cornerstone of Hell, one it's rare creatures that can convert ambient Hell Energy to raw blood.
-- Produces blood to create other towers
-- Cannot be buffed 
-- Gives buff to every other plant 
+Resilient and fast-growing, the Oculum are densely populated and serve both as the primary producers of blood energy on Syn and as spies for Argus. 
+
+- Generates blood energy over time 

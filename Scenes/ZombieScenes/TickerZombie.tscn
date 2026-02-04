@@ -362,7 +362,9 @@ shape = SubResource("15")
 material = SubResource("16")
 position = Vector2(8, 0)
 sprite_frames = SubResource("14")
-animation = &"WebWalk"
+animation = &"Attack"
+frame = 3
+frame_progress = 0.75243
 flip_h = true
 script = ExtResource("9")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -375,7 +377,6 @@ collide_with_areas = true
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="AOEHit" type="Node2D" parent="."]
-visible = false
 script = ExtResource("12")
 
 [node name="Hit1" type="AnimatedSprite2D" parent="AOEHit"]
@@ -401,6 +402,7 @@ collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+visible = false
 position = Vector2(-62.5834, 4.66667)
 shape = SubResource("29")
 

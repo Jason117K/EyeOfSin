@@ -1,17 +1,11 @@
-A juvenile apex-predator of Hell, and one highly connected to the ecoystem. The near endless appetites of these creatures fuels their outstanding growth later in life. 
-- Can Insta-kill most enemies 
-- Receives SYNGERY from :
-	- Spyders 
-	- Eggwyrms 
-	- Hives 
-Gives SYNERGY to :
-	- Hives
-	- Spyders
-	- Occular Spines
-	
-- Good against 
+Said to be inspired by the screams of his victims, the Maws are Argus’ most sinister creation. With an insatiable appetite, the chasmic throat of the beast appears to stretch endlessly into the depths of Syn’s core. - Can Insta-kill most enemies 
+
+- Maintains 3 tentacles which consume zombies whole as they approach, killing them instantly
+- When a zombie is eaten, a digestion timer starts, and when the timer is done, the tentacle is free to consume another zombie 
+
+- Strong VS
 	- High Health
 	
-- Weak Against 
+- Weak VS 
 	- High Numbers
 	- High Speed

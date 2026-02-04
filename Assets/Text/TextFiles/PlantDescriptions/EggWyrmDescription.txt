@@ -1,15 +1,11 @@
-Hatchling Wyrms from the Blood Swamps of Syn. Capable of firing a hyper pressurized super-heated beam of blood from their mouths, slicing through prey.
-- Pierces targets  
-- GIVES SYNERGY to  
-	- Maws  
-	- Occular Spines  
-	- Hives 
-	
-	
-- Good against 
+For their entire lifespan, Wyrms reside entirely within the eggs they’re hatched in. As blood pools inside the shell, they consume its nutrients and channel it into a deadly projectile.  
+- Shoots a straight line of hyper pressurized blood that damages all enemies in a straight line from the demon 
+- The damage each zombie suffers is reduced for every zombie hit
+
+- Strong VS
 	- High Numbers
 	- High Speed 
 	
-- Weak Against 
+- Weak VS 
 	- High Health
 	
