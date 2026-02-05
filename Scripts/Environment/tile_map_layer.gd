@@ -3,6 +3,10 @@ extends TileMapLayer
 
 @export var make_green := false
 
+@export var rectangle_scene: PackedScene
+
+## Container for spawned rectangle instances (for management/cleanup)
+var spawned_rectangles: Array[Node2D] = []
 ## Amount to shift hue (0.0 to 1.0, wraps around)
 @export_range(0.0, 1.0, 0.01) var hue_shift: float = 0.0:
 	set(value):
@@ -12,6 +16,8 @@ extends TileMapLayer
 var _shader_material: ShaderMaterial
 
 func _ready() -> void:
+	print("Rect Ready Called")
+	#place_rectangles_on_rows(2, 8)
 	if make_green:
 		_setup_shader()
 
@@ -65,3 +71,55 @@ func _update_hue_shift() -> void:
 ## Call this function to change the hue shift at runtime
 func set_hue_shift_value(value: float) -> void:
 	hue_shift = value
+	
+	
+	
+	
+	
+## Places rectangle sprites centered over each tile in the specified row range.
+## start_row: First row (inclusive)
+## end_row: Last row (inclusive)
+func place_rectangles_on_rows(start_row: int, end_row: int) -> void:
+	print("rectrectrectrectrectrectrect")
+	if rectangle_scene == null:
+		push_error("Rectangle scene not assigned!")
+		return
+	
+	# Validate row range
+	if start_row > end_row:
+		push_warning("start_row > end_row, swapping values")
+		var temp := start_row
+		start_row = end_row
+		end_row = temp
+	
+	# Get all used cells and filter by row
+	var used_cells := get_used_cells()
+	print("Spawn Rectttvvvvvvvvvvvvvt")
+	for cell_coords in used_cells:
+		print("Spawn Rectzzzzzzttt")
+		if cell_coords.y >= start_row and cell_coords.y <= end_row:
+			print("Spawn Recttttppppp")
+			_spawn_rectangle_at_cell(cell_coords)
+			
+				
+	## Spawns a single rectangle centered on the given tile cell
+func _spawn_rectangle_at_cell(cell_coords: Vector2i) -> void:
+	print("Spawn Rectttt")
+	var rect_instance: Node2D = rectangle_scene.instantiate()
+	rect_instance.scale = Vector2(0.2,0.356)
+	
+	# Get the center position of the tile in local coordinates
+	var tile_center := map_to_local(cell_coords)
+	
+	rect_instance.position = tile_center
+	add_child(rect_instance)
+	spawned_rectangles.append(rect_instance)
+
+
+## Clears all spawned rectangles
+func clear_rectangles() -> void:
+	for rect in spawned_rectangles:
+		if is_instance_valid(rect):
+			rect.queue_free()
+	spawned_rectangles.clear()
+	

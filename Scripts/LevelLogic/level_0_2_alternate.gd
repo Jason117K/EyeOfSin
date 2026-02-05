@@ -77,3 +77,10 @@ func show_all_plant_buttons():
 
 func add_sun(sunAmount):
 	plantManager.add_sun(sunAmount)
+
+
+func show_guide():
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 2)
+	
+func hide_guide():
+	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

@@ -16,13 +16,14 @@ extends AnimatedTextureRect
 #@onready var moreInfoButton =$"../../HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton"
 @onready var staticPreview := $"../../StaticPreview"
 
-@onready var alt1 = $"../../HBoxContainer/AllPlantRows/AltRow/Alt1"
-@onready var alt2 = $"../../HBoxContainer/AllPlantRows/AltRow/Alt2"
-@onready var alt3 = $"../../HBoxContainer/AllPlantRows/AltRow/Alt3"
+@onready var alt1 = $"../../HBoxContainer/AllPlantRows/AltRow1/Alt1"
+@onready var alt2 = $"../../HBoxContainer/AllPlantRows/AltRow1/Alt2"
+@onready var alt3 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt3"
 @onready var alt4 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt4"
-@onready var alt5 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt5"
-@onready var alt6 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt6"
+@onready var alt5 = $"../../HBoxContainer/AllPlantRows/AltRow3/Alt5"
+@onready var alt6 = $"../../HBoxContainer/AllPlantRows/AltRow3/Alt6"
 
+var is_in_synergy = false
 
 #Plant Text Descriptions
 var sunflowerDescription := "res://Assets/Text/TextFiles/PlantDescriptions/SunflowerDescription.txt"
@@ -105,6 +106,7 @@ var sunSpineScene = preload("res://Scenes/Tutorials/sun_spine_buff.tscn")
 var sunMawScene = preload("res://Scenes/Tutorials/sun_maw_buff.tscn")
 
 var count := 0
+var current_page := 2
 
 enum PLANT {
 	SUNFLOWER,
@@ -122,14 +124,15 @@ func _ready() -> void:
 	pass
 	$"../../Camera2D".make_current()
 	print("Plant AnimatedTextureRect: _ready() called")
-	
+	$"../../InteractiveBook2D".go_to_page(current_page)
+	current_page = current_page + 1
 		# Set default button textures based on current colors
 	_update_button_textures()
 	
 	# Set initial sprites if none are set
-	if sprites == null:
-		var plant_type = GlobalResourceLoader.PlantType.SUNFLOWER
-		sprites = GlobalResourceLoader.get_plant_animation(plant_type)
+	#if sprites == null:
+	var plant_type = GlobalResourceLoader.PlantType.SUNFLOWER
+	sprites = GlobalResourceLoader.get_plant_animation(plant_type)
 	
 	# Initialize animation data
 	if sprites != null:
@@ -184,31 +187,41 @@ func set_text(newFile : String):
 	currentPlantLabel.text = newText
 
 func set_demon_variations(newDemon : GlobalResourceLoader.PlantType):
-
+	is_in_synergy = true 
 	var new_images = []
 	new_images = GlobalResourceLoader.get_demon_image_variations(newDemon)
+	$"../../HBoxContainer/AllPlantRows/Row1".visible = false
+	$"../../HBoxContainer/AllPlantRows/Row2".visible = false
+	$"../../HBoxContainer/AllPlantRows/Row3".visible = false
+	
+	$"../../HBoxContainer/AllPlantRows/AltRow1".visible = true 
+	$"../../HBoxContainer/AllPlantRows/AltRow2".visible = true 
+	$"../../HBoxContainer/AllPlantRows/AltRow3".visible = true 
 	
 	var count = 0 
 	for this_image in new_images:
 		match count:
 			0:
-				$"../../HBoxContainer/AllPlantRows/AltRow/Alt1".texture_normal = this_image
+				$"../../HBoxContainer/AllPlantRows/AltRow1/Alt1".texture_normal = this_image
 			1:
-				$"../../HBoxContainer/AllPlantRows/AltRow/Alt2".texture_normal= this_image
+				$"../../HBoxContainer/AllPlantRows/AltRow1/Alt2".texture_normal= this_image
 			2:
-				$"../../HBoxContainer/AllPlantRows/AltRow/Alt3".texture_normal= this_image
+				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt3".texture_normal= this_image
 			3:
 				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt4".texture_normal= this_image
 			4:
-				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt5".texture_normal= this_image
+				$"../../HBoxContainer/AllPlantRows/AltRow3/Alt5".texture_normal= this_image
 			5:
-				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt6".texture_normal= this_image
+				$"../../HBoxContainer/AllPlantRows/AltRow3/Alt6".texture_normal= this_image
 				
 		count+=1
 	
 	pass
 	
 func _on_sunflower_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
+	
 	visible = true
 	staticPreview.visible = false 
 	current_plant = PLANT.SUNFLOWER
@@ -220,6 +233,8 @@ func _on_sunflower_pressed() -> void:
 
 func _on_peashooter_pressed() -> void:
 	visible = true
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = false 
 	current_plant = PLANT.SPYDER
 	sprites = GlobalResourceLoader.get_plant_animation(
@@ -230,6 +245,8 @@ func _on_peashooter_pressed() -> void:
 
 
 func _on_walnut_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
 	current_plant = PLANT.OCCULAR_SPINE
@@ -251,6 +268,8 @@ func _on_eye_bomb_pressed() -> void:
 
 
 func _on_egg_wrym_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
 	current_plant = PLANT.EGG_WYRM
@@ -261,6 +280,8 @@ func _on_egg_wrym_pressed() -> void:
 	set_demon_variations(GlobalResourceLoader.PlantType.EGGWYRM)
 
 func _on_hive_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
 	current_plant = PLANT.HIVE
@@ -272,6 +293,8 @@ func _on_hive_pressed() -> void:
 
 
 func _on_maw_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
 	current_plant = PLANT.MAW
@@ -284,14 +307,26 @@ func _on_maw_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	get_parent().get_parent().visible = false 
+	if is_in_synergy == false:
+		get_parent().get_parent().visible = false 
 
-	print("BBack Button Pressed")
-	self.visible = false 
+		print("BBack Button Pressed")
+		self.visible = false 
+		
+		#Global.unHidePlantSelectionMenu()
+		#Global.game_controller.restore_dual_scenes()
+		Global.game_controller.restore_previous_scene()
+	else:
+		is_in_synergy = false
+		$"../../HBoxContainer/AllPlantRows/Row1".visible = true
+		$"../../HBoxContainer/AllPlantRows/Row2".visible = true
+		$"../../HBoxContainer/AllPlantRows/Row3".visible = true
 	
-	#Global.unHidePlantSelectionMenu()
-	#Global.game_controller.restore_dual_scenes()
-	Global.game_controller.restore_previous_scene()
+		$"../../HBoxContainer/AllPlantRows/AltRow1".visible = false 
+		$"../../HBoxContainer/AllPlantRows/AltRow2".visible = false 
+		$"../../HBoxContainer/AllPlantRows/AltRow3".visible = false 
+		current_page = current_page - 1
+		$"../../InteractiveBook2D".go_to_page(current_page)
 	
 	
 	
@@ -328,9 +363,12 @@ func _on_more_info_button_pressed() -> void:
 
 
 func _on_back_out_details_pressed() -> void:
-	bgDarken.visible = false 
-	backOutDetailsButton.visible = false 
-	synergyPanel.visible = false 
+	if is_in_synergy == false:
+		bgDarken.visible = false 
+		backOutDetailsButton.visible = false 
+		synergyPanel.visible = false 
+
+		
 
 
 func _on_button_2_pressed() -> void:
@@ -425,6 +463,9 @@ func setNextSynergyScene(current_plant,this_count):
 
 
 func _on_alt_1_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
+	
 	visible = false
 	staticPreview.visible = true
 	match current_plant:
@@ -449,6 +490,8 @@ func _on_alt_1_pressed() -> void:
 
 
 func _on_alt_2_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
 	match current_plant:
@@ -473,6 +516,8 @@ func _on_alt_2_pressed() -> void:
 
 
 func _on_alt_3_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
 	match current_plant:
@@ -497,6 +542,8 @@ func _on_alt_3_pressed() -> void:
 
 
 func _on_alt_4_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
 	match current_plant:
@@ -521,6 +568,8 @@ func _on_alt_4_pressed() -> void:
 
 
 func _on_alt_5_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
 	match current_plant:
@@ -545,6 +594,8 @@ func _on_alt_5_pressed() -> void:
 
 
 func _on_alt_6_pressed() -> void:
+	current_page = current_page + 1
+	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
 	match current_plant:

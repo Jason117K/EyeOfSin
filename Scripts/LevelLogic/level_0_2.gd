@@ -711,3 +711,10 @@ func _start_force_place_plant():
 
 	# ADD THIS: Hide spotlight (grid too large for effective spotlight)
 	hide_spotlight()
+
+
+func show_guide():
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 4)
+	
+func hide_guide():
+	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

@@ -425,3 +425,10 @@ func _start_force_place_plant():
 
 func _on_plant_manager_spyder_placed(grid_position: Vector2) -> void:
 	_on_spyder_placed()
+
+
+func show_guide():
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 2)
+	
+func hide_guide():
+	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

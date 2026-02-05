@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsy2hsulw3a7q"]
+
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="1_i8yx7"]
+[ext_resource type="Script" uid="uid://dg3et3o8agin" path="res://Scripts/white_rectangle.gd" id="2_edfb1"]
+
+[node name="WhiteRectangle" type="Sprite2D"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.2, 0.355556)
+texture = ExtResource("1_i8yx7")
+script = ExtResource("2_edfb1")

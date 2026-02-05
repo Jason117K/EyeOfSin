@@ -34,16 +34,21 @@ var screenDoorZombieTitle := "Phalanx Zombie"
 var footballZombieTitle := "Chimera Zombie"
 var poleVaultZombieTitle := "Leaper Zombie"
 
+@onready var zombieBookVisual = $"../../InteractiveBook2D"
+var current_page := 2
+
 func _ready() -> void:
 	print("Zombie AnimatedTextureRect: _ready() called")
+	zombieBookVisual.go_to_page(current_page)
+	current_page = current_page + 1
 	
 		# Set default button textures based on current colors
 	_update_button_textures()
 	
 	# Set initial sprites if none are set
-	if sprites == null:
-		var zombie_type = GlobalResourceLoader.PlantType.SUNFLOWER
-		sprites = GlobalResourceLoader.get_plant_animation(zombie_type)
+	#if sprites == null:
+	var zombie_type = GlobalResourceLoader.ZombieType.CONEHEAD
+	sprites = GlobalResourceLoader.get_zombie_animation(zombie_type)
 	
 	# Initialize animation data
 	if sprites != null:
@@ -56,7 +61,8 @@ func _ready() -> void:
 		refresh_rate = sprites.get_frame_duration(current_animation, frame_index)
 		if auto_play:
 			play()
-
+	set_text(coneheadZombieDescription)
+	set_title(coneHeadZombieTitle)
 # Update all button textures based on current color settings
 func _update_button_textures():
 	
@@ -105,6 +111,9 @@ func set_title(newTitle : String):
 	currentZombieTitle.text = newTitle
 
 func _on_base_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
+	
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.BASEZOMBIE)
 	play()
@@ -113,6 +122,8 @@ func _on_base_zombie_pressed() -> void:
 
 
 func _on_cone_head_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.CONEHEAD)
 	play()
@@ -120,6 +131,8 @@ func _on_cone_head_zombie_pressed() -> void:
 	set_title(coneHeadZombieTitle)
 
 func _on_bucket_head_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.BUCKETHEAD)
 	play()
@@ -128,6 +141,8 @@ func _on_bucket_head_zombie_pressed() -> void:
 
 
 func _on_dancer_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.DANCERZOMBIE)
 	play()
@@ -136,6 +151,8 @@ func _on_dancer_zombie_pressed() -> void:
 
 
 func _on_back_up_dancer_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.BACKUPDANCERZOMBIE)
 	play()
@@ -144,6 +161,8 @@ func _on_back_up_dancer_zombie_pressed() -> void:
 
 
 func _on_ticker_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.TICKER)
 	play()
@@ -152,6 +171,8 @@ func _on_ticker_zombie_pressed() -> void:
 
 
 func _on_screen_door_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.SCREENDOORZOMBIE)
 	play()
@@ -160,6 +181,8 @@ func _on_screen_door_zombie_pressed() -> void:
 
 
 func _on_football_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.FOOTBALLZOMBIE)
 	play()
@@ -168,6 +191,8 @@ func _on_football_zombie_pressed() -> void:
 
 
 func _on_pole_vault_zombie_pressed() -> void:
+	current_page = current_page + 1
+	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
 	play()
@@ -176,6 +201,8 @@ func _on_pole_vault_zombie_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	current_page = current_page - 1
+	zombieBookVisual.go_to_page(current_page)
 	get_parent().get_parent().visible = false 
 	print("BBack Button Pressed")
 	Global.game_controller.restore_previous_scene()

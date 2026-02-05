@@ -350,3 +350,10 @@ func place_empty_blocker_plant(grid_pos):
 
 func remove_empty_blocker_plant(grid_pos):
 	plantManager.clear_space_alt(grid_pos)
+
+
+func show_guide():
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 5)
+	
+func hide_guide():
+	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=4 uid="uid://cxll6h2seen1h"]
 
-[ext_resource type="Script" uid="uid://cs4qat1lxac3t" path="res://Scripts/LevelLogic/level_0_3_alternate.gd" id="1_vpaut"]
+[ext_resource type="Script" uid="uid://ddj2tjw1108e2" path="res://Scripts/LevelLogic/level_0_6_alternate.gd" id="1_01won"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_0v3x8"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="3_2irmp"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="4_mqw32"]
@@ -78,8 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_vpaut")
-isGreenDimension = true
+script = ExtResource("1_01won")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_0v3x8")]
 sun_points = 1000

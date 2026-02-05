@@ -375,6 +375,8 @@ func create_preview(plant_scene):
 	# Clear the last preview 
 	clear_preview()
 	
+	Global.show_guide()
+	
 	var temp_plant = plant_scene.instantiate()
 	var preview_node = find_preview_nodes(temp_plant)
 	
@@ -402,6 +404,7 @@ func create_preview(plant_scene):
 	
 # Clears the current preview image 
 func clear_preview():
+	Global.clear_guide()
 	for sprite in preview_sprites:
 		if sprite:
 			sprite.visible = false

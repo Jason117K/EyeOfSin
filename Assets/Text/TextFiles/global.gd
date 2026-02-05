@@ -112,8 +112,10 @@ func start_wave_1():
 	else:
 		print("Current Level is Null")
 	
+func show_guide():
+	game_controller.show_guide()	
 	
-	
-	
+func clear_guide():
+	game_controller.clear_guide()		
 	
 	

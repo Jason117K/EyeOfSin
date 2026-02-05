@@ -104,3 +104,10 @@ func hide_all_plant_buttons_except_spyder():
 	# Keep Spyder visible
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true
+
+
+func show_guide():
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 2)
+	
+func hide_guide():
+	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

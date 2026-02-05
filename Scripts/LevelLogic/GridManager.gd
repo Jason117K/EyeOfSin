@@ -9,6 +9,7 @@ const GRID_ROWS = 13      # Adjust based on your game's design
 @export var make_green := false
 
 func _ready():
+	tilemapLayer._ready()
 	if make_green:
 		tilemapLayer.make_green = true 
 		tilemapLayer._setup_shader()
