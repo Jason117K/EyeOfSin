@@ -55,7 +55,7 @@ func _physics_process(_delta):
 	#New game start 
 	
 	if canStartGame:
-		print("Starting All timers this once")
+		#print("Starting All timers this once")
 		for timer in timers:
 			if timer != null:
 				#print("Timer is ", timer)
@@ -70,7 +70,7 @@ func _physics_process(_delta):
 			end_level()
 
 func end_level():
-	print("Attempting End Level")
+	#print("Attempting End Level")
 	#assert(get_tree().change_scene_to_packed(new_scene) == OK) # Switch to earlier defined new_scene
 	for child in get_parent().get_parent().get_parent().get_children():
 		if "LevelSwitcher" in child.name:
@@ -119,25 +119,25 @@ func setScenes():
 			
 func startSecondWave():
 	startWave2 = false #Only One Wave 2 Can be Started
-	print("---------- WAVE MANAGER startSecondWave() CALLED ----------")
-	print("[WM] Current time: ", Time.get_ticks_msec())
-	print("[WM] numWave BEFORE increment: ", numWave)
-	print("[WM] $Wave2.is_stopped() BEFORE: ", $Wave2.is_stopped())
+	#print("---------- WAVE MANAGER startSecondWave() CALLED ----------")
+	#print("[WM] Current time: ", Time.get_ticks_msec())
+	#print("[WM] numWave BEFORE increment: ", numWave)
+	#print("[WM] $Wave2.is_stopped() BEFORE: ", $Wave2.is_stopped())
 
 	$Wave2.start()
-	print("[WM] $Wave2.start() called")
-	print("[WM] $Wave2.is_stopped() AFTER start: ", $Wave2.is_stopped())
-	print("[WM] $Wave2.wait_time: ", $Wave2.wait_time)
-	print("[WM] $Wave2.time_left: ", $Wave2.time_left)
+	#print("[WM] $Wave2.start() called")
+	#print("[WM] $Wave2.is_stopped() AFTER start: ", $Wave2.is_stopped())
+	#print("[WM] $Wave2.wait_time: ", $Wave2.wait_time)
+	#print("[WM] $Wave2.time_left: ", $Wave2.time_left)
 
 	$ProceedGame.wait_time = Wave3StartTime
 	$ProceedGame.start()
 
 	numWave = numWave + 1
-	print("[WM] numWave AFTER increment: ", numWave)
+	#print("[WM] numWave AFTER increment: ", numWave)
 
 	for icon in wavePreviewIcons:
-		print("[WM] Swapping visibility for icon: ", icon.name)
+		#print("[WM] Swapping visibility for icon: ", icon.name)
 		icon.swap_Visibility()
 
 	for timer in timers:
@@ -145,15 +145,15 @@ func startSecondWave():
 			timer.wait_time = $ProceedGame.wait_time - 10
 			timer.start()
 
-	print("[WM] Number of spawners: ", spawners.size())
+	#print("[WM] Number of spawners: ", spawners.size())
 	for spawner in spawners:
 		print("[WM] Spawner: ", spawner.name, " - numWave: ", spawner.numWave)
 
-	print("---------- WAVE MANAGER startSecondWave() COMPLETED ----------")
+	#print("---------- WAVE MANAGER startSecondWave() COMPLETED ----------")
 		
 func _on_ProceedGame_timeout():
 	$ProceedGame.stop()
-	print("ProceedGameTimeout")
+	#print("ProceedGameTimeout")
 	for spawner in spawners:
 		spawner.increase_wave()
 	
@@ -171,8 +171,8 @@ func _on_ProceedGame_timeout():
 					#timer.start()
 		1:
 			wave2AlmostStart.emit()
-			print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-			print("Emitting Wave2Almost Start Signal")
+			#print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+			#print("Emitting Wave2Almost Start Signal")
 			if startWave2 : 
 				$Wave2.start()
 				$ProceedGame.wait_time = Wave3StartTime
@@ -186,7 +186,7 @@ func _on_ProceedGame_timeout():
 
 			# thing.callFunc(pass)
 		2:
-			print("Start Wave 3")
+			#print("Start Wave 3")
 			for icon in wavePreviewIcons:
 				icon.swap_Visibility()
 			$Wave3.start()
@@ -204,37 +204,37 @@ func _on_Wave1_timeout():
 	$Wave1.wait_time = wave_Interval
 	
 	for spawner in spawners:
-		print("Calling Wave 1 Start Spawn Zombie")
+		#print("Calling Wave 1 Start Spawn Zombie")
 		spawner.start_spawn_zombie()
 	#wave1Started.emit()
 
 # Spawn the Second Wave
 func _on_Wave2_timeout():
-	print("********** WAVE 2 TIMEOUT - SPAWNING ZOMBIES **********")
-	print("[WM-W2] Current time: ", Time.get_ticks_msec())
-	print("[WM-W2] numWave: ", numWave)
-	print("[WM-W2] Number of spawners: ", spawners.size())
+	#print("********** WAVE 2 TIMEOUT - SPAWNING ZOMBIES **********")
+	#print("[WM-W2] Current time: ", Time.get_ticks_msec())
+	#print("[WM-W2] numWave: ", numWave)
+	#print("[WM-W2] Number of spawners: ", spawners.size())
 
 	wave2Started.emit()
-	print("[WM-W2] wave2Started signal emitted")
+	#print("[WM-W2] wave2Started signal emitted")
 
 	var wave_Interval = Wave2_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
 	wave_Interval = wave_Interval + random_adjustment
 	$Wave2.wait_time = wave_Interval
-	print("[WM-W2] Next Wave2 interval set to: ", wave_Interval)
+	#print("[WM-W2] Next Wave2 interval set to: ", wave_Interval)
 
 	for spawner in spawners:
-		print("[WM-W2] Calling start_spawn_zombie() on spawner: ", spawner.name)
-		print("[WM-W2] Spawner numWave before call: ", spawner.numWave)
+		#print("[WM-W2] Calling start_spawn_zombie() on spawner: ", spawner.name)
+		#print("[WM-W2] Spawner numWave before call: ", spawner.numWave)
 		spawner.start_spawn_zombie()
-		print("[WM-W2] Spawner numWave after call: ", spawner.numWave)
+		#print("[WM-W2] Spawner numWave after call: ", spawner.numWave)
 
-	print("********** WAVE 2 TIMEOUT COMPLETED **********")
+	#print("********** WAVE 2 TIMEOUT COMPLETED **********")
 
 # Spawn the last wave and start checking for the end of the wave 
 func _on_Wave3_timeout():
-	print("Spawning third wave")
+	#print("Spawning third wave")
 	wave3Started.emit()
 	var wave_Interval = Wave3_Interval
 	var random_adjustment = randf_range(-1.0,0.1)
@@ -242,21 +242,27 @@ func _on_Wave3_timeout():
 	$Wave3.wait_time = wave_Interval
 	
 	for spawner in spawners:
-		print("Calling Wave 3 Start Spawn Zombie")
+		#print("Calling Wave 3 Start Spawn Zombie")
 		spawner.start_spawn_zombie()
 		
 	#checkEndLevel = true
 
 func _done_spawning():
-	print("Done Spawing")
+	#print("Done Spawing")
 	checkEndLevel = true
 
 #TODO Taking Damage
 func player_take_damage(area: Area2D) -> void:
 	#print("AAAAAAGGGGGGGG: ",area.name)
 	if area.is_in_group("Zombie"):
-		print("Subtracting Health")
+		#print("Subtracting Health")
 		area.die()
+		
+		if "Boss" in area.get_name():
+			health_points = 0
+			get_parent().get_parent().get_node("UILayer/HBoxContainer2/Health").text = str(health_points)
+			lose()
+			return
 
 		subtract_health()  # Subtract Heath
 		#TODO Play DMG Sound
@@ -264,8 +270,8 @@ func player_take_damage(area: Area2D) -> void:
 		#print("AAAAZZZOIHOHQWDIOHWDI()") 
 		
 func _on_spawn_next_wave():
-	print("Received spawn next wave signal!")
-	print("Proceed Game Wait Time is ",$ProceedGame.wait_time )
+	#print("Received spawn next wave signal!")
+	#print("Proceed Game Wait Time is ",$ProceedGame.wait_time )
 	$ProceedGame.start()
 	for timer in timers:
 		if timer != null:
@@ -280,7 +286,7 @@ func subtract_health():
 	health_points -= 1 
 	get_parent().get_parent().get_node("UILayer/HBoxContainer2/Health").text = str(health_points)
 	#get_parent().get_parent().get_node("UILayer/SunCounter/HBoxContainer/HealthPoints").text = "Health: " + str(health_points)
-	print("Health is ",health_points)
+	#print("Health is ",health_points)
 	if health_points <= 0:
 		lose()
 

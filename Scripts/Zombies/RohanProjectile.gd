@@ -3,7 +3,7 @@ extends Area2D
 
 
 @export var speed = 300  # Speed of the projectile
-@export var damage = 20 #2   # Damage dealt to zombies
+@export var damage = 500 #2   # Damage dealt to plant
 
 
 func _process(delta):
@@ -11,17 +11,19 @@ func _process(delta):
 
 	# Remove the projectile if it goes off-screen
 	if global_position.x < get_viewport_rect().position.x:
+		print("REMOVE PROJECTILE FOR ZOMBIE")
 		queue_free()  # Remove projectile if off-screen
 
 
 # Handles projectile collison and damage application 
 func _on_PeaProjectile_area_entered(area):
+	print("PLANT HIT: ", area)
+	var plant = area
 
-	if area.is_in_group("Plants"):
-		if area.get_parent().get_parent() != self.get_parent().get_parent():
+	if plant.is_in_group("Plants"):
+		print("IS IN GROUP")
+		if plant.get_parent().get_parent() != self.get_parent().get_parent():
 			return
-		var compManager = area.getCompManager()
-		var healthComp = compManager.getHealthComponent()
-		compManager.slow()
-		compManager.take_damage(damage)  # Call take_damage() on the plant
-		queue_free()  # Remove the projectile # Replace with function body.
+		if(plant.health >= 0):
+			plant.take_damage(damage)
+			queue_free()  # Remove the projectile # Replace with function body.

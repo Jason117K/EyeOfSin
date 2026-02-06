@@ -1,6 +1,9 @@
 extends AttackComponent
 
+@export var shootProbability = 20
+
 @onready var attack_rays = [$"../DMGRayCast2D_1", $"../DMGRayCast2D_2", $"../DMGRayCast2D_3"]
+@onready var shoot_ray = $"../DMGRayCast2D_Shoot"
 @onready var target_plants = []
 @onready var teleport_timer = $"../TeleportTimer"
 @onready var shoot_timer = $"../ShootTimer"
@@ -16,17 +19,17 @@ func attack_plant(collider):
 func _on_TeleportTimer_timeout():
 	teleport_timer.stop()
 	stop_attack()
-	teleport_timer.wait_time = rng.randf_range(2, 7)
+	teleport_timer.wait_time = rng.randf_range(2, 12)
 	is_attacking = true
 	zombieSprite.play("Teleport_Start")
 	await zombieSprite.animation_finished
 	if self.parent.is_in_group("Purple"):
 		var alternate_scene = get_tree().get_first_node_in_group("Green")
-		parent.reparent(alternate_scene)
+		parent.reparent(alternate_scene.get_game_layer())
 		changeGroup()
 	elif self.parent.is_in_group("Green"):
 		var alternate_scene = get_tree().get_first_node_in_group("Purple")
-		parent.reparent(alternate_scene)
+		parent.reparent(alternate_scene.get_game_layer())
 		changeGroup()
 	parent.position = Vector2(650, laneYPositions[rng.randi_range(0, laneYPositions.size() - 1)])
 	zombieSprite.play("Teleport_End")
@@ -48,28 +51,27 @@ func _on_TeleportTimer_timeout():
 
 
 func changeGroup():
+	print("CHANGING GROUP")
 	if(self.parent.is_in_group("Green")):
 		parent.remove_from_group("Green")
 		parent.add_to_group("Purple")
-		for attack_ray in attack_rays:
-			attack_ray.collision_mask = 3
-			attack_ray.set_collision_mask_value(1,false)
-			attack_ray.set_collision_mask_value(2,false)
-			attack_ray.set_collision_mask_value(3,true)
+		#for attack_ray in attack_rays:
+			#attack_ray.set_collision_mask_value(1,true)
+			#attack_ray.set_collision_mask_value(2,true)
+			#attack_ray.set_collision_mask_value(3,true)
+		self.parent.set_collision_layer_value(1,false)
+		self.parent.set_collision_layer_value(2,true)
+		self.parent.set_collision_layer_value(3,false)
+	elif(self.parent.is_in_group("Purple")):
+		parent.remove_from_group("Purple")
+		parent.add_to_group("Green")
+		#for attack_ray in attack_rays:
+			#attack_ray.set_collision_mask_value(1,true)
+			#attack_ray.set_collision_mask_value(2,true)
+			#attack_ray.set_collision_mask_value(3,true)
 		self.parent.set_collision_layer_value(1,false)
 		self.parent.set_collision_layer_value(2,false)
 		self.parent.set_collision_layer_value(3,true)
-	if(self.parent.is_in_group("Purple")):
-		parent.remove_from_group("Purple")
-		parent.add_to_group("Green")
-		for attack_ray in attack_rays:
-			attack_ray.collision_mask = 1
-			attack_ray.set_collision_mask_value(1,true)
-			attack_ray.set_collision_mask_value(2,false)
-			attack_ray.set_collision_mask_value(3,false)
-		self.parent.set_collision_layer_value(1,true)
-		self.parent.set_collision_layer_value(2,false)
-		self.parent.set_collision_layer_value(3,false)
 	
 func _on_AttackTimer_timeout():
 	if(teleport_timer.is_stopped()):
@@ -120,6 +122,10 @@ func stop_attack():
 func _process(_delta):
 	if not is_attacking:
 		var colliders = []
+		if shoot_ray.is_colliding() && 1 == rng.randi_range(1, (shootProbability)):
+			if shoot_ray.get_collider().is_in_group("Plants"):
+				shoot()
+				pass
 		for ray in attack_rays:
 			if ray.is_colliding():
 				var collider = ray.get_collider()
@@ -164,15 +170,15 @@ func _process(_delta):
 			attack_timer.start()
 
 
-func _on_ShootTimer_timeout() -> void:
+func shoot():
 	is_attacking = true
 	zombieSprite.play("Shoot_Start")
 	await zombieSprite.animation_finished
 	
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	var projectile = projectile_scene.instantiate()
-	projectile.position = position - Vector2(32, 0)  # Adjust starting position
-	get_parent().add_child(projectile)  # Add the projectile to the game layer
+	projectile.global_position = global_position - Vector2(32, 0)  # Adjust starting position
+	get_parent().get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
 	zombieSprite.play("Shoot_End")
 	await zombieSprite.animation_finished

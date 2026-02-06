@@ -137,8 +137,8 @@ animations = [{
 
 [node name="RohanProjectile" type="Area2D"]
 z_index = 1
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_24ovy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

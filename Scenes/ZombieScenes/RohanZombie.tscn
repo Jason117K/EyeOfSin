@@ -551,18 +551,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(62, 41)
+size = Vector2(62, 31.5)
 
-[node name="RohanZombie" type="Area2D" groups=["Zombie"]]
+[node name="RohanZombie_Boss" type="Area2D" groups=["Zombie"]]
 z_index = 1
 position = Vector2(-16, -30)
 collision_layer = 2
+collision_mask = 6
 script = ExtResource("1_gima6")
 
 [node name="ComponentManager" parent="." instance=ExtResource("2_fcwo0")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_mqmnj")]
-health = 450
+health = 3000
 bloodWorth = 50.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4_l212a")]
@@ -570,6 +571,7 @@ speed = 25
 
 [node name="AttackComponent" parent="." instance=ExtResource("5_x8a86")]
 script = ExtResource("6_qlel4")
+shootProbability = 250
 attack_power = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -578,28 +580,37 @@ position = Vector2(16.087, -26.525)
 rotation = 3.14159
 scale = Vector2(1, -1)
 sprite_frames = SubResource("9")
-animation = &"Shoot_Start"
-frame = 4
-frame_progress = 1.0
+animation = &"Stomp"
+frame = 3
+frame_progress = 0.0347027
 script = ExtResource("8_7ej8x")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-position = Vector2(26, -2)
+position = Vector2(26, 2.75)
 shape = SubResource("1")
 
 [node name="DMGRayCast2D_1" type="RayCast2D" parent="."]
 position = Vector2(0, -30)
 target_position = Vector2(-17, 0)
+collision_mask = 7
 collide_with_areas = true
 
 [node name="DMGRayCast2D_2" type="RayCast2D" parent="."]
 target_position = Vector2(-17, 0)
+collision_mask = 7
 collide_with_areas = true
 
 [node name="DMGRayCast2D_3" type="RayCast2D" parent="."]
 position = Vector2(0, 30)
 target_position = Vector2(-17, 0)
+collision_mask = 7
+collide_with_areas = true
+
+[node name="DMGRayCast2D_Shoot" type="RayCast2D" parent="."]
+position = Vector2(-50, 3.67)
+target_position = Vector2(-138.715, 0)
+collision_mask = 7
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
