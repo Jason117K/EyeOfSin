@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=3 uid="uid://cp6xcabhkv21t"]
+[gd_scene load_steps=224 format=3 uid="uid://cp6xcabhkv21t"]
 
 [ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://Scripts/Plants/Hive.gd" id="2"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://new folder/scenes/arm.tscn" id="17_ijvem"]
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://new folder/shaders/canvas_group_two_tone.gdshader" id="18_cpfsp"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://new folder/scenes/arm_target.tscn" id="19_s2bgg"]
+[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://Assets/Animations/Effect 8-1.png" id="21_q3sqy"]
+[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://Scripts/lightning_spawn.gd" id="22_ethfs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
@@ -1451,6 +1453,73 @@ shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
 shader_parameter/dark_color = Color(0.01, 0, 0.00383333, 1)
 shader_parameter/shade_ratio = 0.53
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(64, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(0, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(32, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(96, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(128, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(160, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(192, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
+atlas = ExtResource("21_q3sqy")
+region = Rect2(224, 0, 32, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wby7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30klx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cibk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pvli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ty7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nud0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltgmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Hive" type="Area2D" groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -1631,14 +1700,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 110.924, 131.006, 110.083, 129.822, 109.064, 128.668, 107.533, 127.934, 105.726, 127.779, 104.012, 127.862, 103.09, 129.833, 101.463, 129.306, 99.6511, 128.875, 98.1047, 128.114, 97.0984, 127.049, 96.679, 125.907, 97.5996, 125.063, 96.3379, 124.23, 95.0629, 123.287, 93.3991, 122.764, 91.4809, 122.998, 89.6674, 124.122, 88.4515, 126.144, 87.6487, 128.433, 86.4273, 130.419, 84.6104, 131.22, 83.069, 130.921, 82.2588, 130.021)
+points = PackedVector2Array(112.595, 131.435, 111.106, 130.787, 109.139, 131.377, 107.13, 132.258, 105.127, 132.604, 103.419, 132.268, 102.31, 131.407, 102.099, 130.295, 100.316, 130.689, 98.871, 130.034, 97.118, 129.728, 95.179, 130.108, 93.3971, 131.275, 92.1682, 133.154, 90.617, 132.903, 88.7226, 133.774, 86.7853, 134.043, 85.1765, 133.548, 84.2736, 132.493, 84.3469, 131.267, 85.4201, 130.403, 86.6724, 129.725, 86.6769, 128.55, 85.5525, 127.794, 83.9383, 127.823)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 110.924, 125.381, 110.083, 123.572, 109.064, 121.793, 107.533, 120.434, 105.726, 119.654, 104.012, 119.112, 103.09, 120.458, 101.463, 119.306, 99.6511, 118.25, 98.1047, 116.864, 97.0984, 115.174, 96.679, 113.407, 97.5996, 111.938, 96.3379, 110.48, 95.0629, 108.912, 93.3991, 107.764, 91.4809, 107.373, 89.6674, 107.872, 88.4515, 109.269, 87.6487, 110.933, 86.4273, 112.294, 84.6104, 112.47, 83.069, 111.546, 82.2588, 110.021)
+points = PackedVector2Array(112.595, 126.435, 111.106, 125.162, 109.139, 125.127, 107.13, 125.383, 105.127, 125.104, 103.419, 124.143, 102.31, 122.657, 102.099, 120.92, 100.316, 120.689, 98.871, 119.409, 97.118, 118.478, 95.179, 118.233, 93.3971, 118.775, 92.1682, 120.029, 90.617, 119.153, 88.7226, 119.399, 86.7853, 119.043, 85.1765, 117.923, 84.2736, 116.243, 84.3469, 114.392, 85.4201, 112.903, 86.6724, 111.6, 86.6769, 109.8, 85.5525, 108.419, 83.9383, 107.823)
 width = 4.0
 
 [node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
@@ -1653,14 +1722,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.331, 131.125, 116.312, 131.912, 118.341, 132.526, 120.235, 132.484, 121.715, 131.882, 122.688, 130.998, 122.29, 129.946, 123.981, 129.643, 125.715, 129.221, 127.671, 129.317, 129.613, 130.205, 131.151, 131.885, 131.97, 134.103, 133.746, 135.12, 135.435, 136.491, 137.259, 136.789, 138.498, 136.066, 138.473, 134.897, 136.984, 134.506, 135.164, 135.381, 133.365, 136.083, 132.126, 135.464, 132.51, 134.398, 133.909, 134.057)
+points = PackedVector2Array(112.595, 131.435, 114.518, 131.694, 115.768, 130.801, 116.816, 129.692, 118.284, 128.924, 120.108, 128.822, 121.965, 129.526, 123.461, 131.064, 124.743, 130.43, 126.635, 130.677, 128.408, 130.397, 129.694, 129.517, 130.269, 128.321, 130.127, 127.135, 128.936, 126.444, 129.529, 125.274, 130.655, 124.342, 132.379, 124.202, 134.14, 125.315, 134.894, 127.568, 134.014, 129.794, 132.624, 131.601, 131.979, 133.886, 132.874, 136.008, 134.506, 137.117)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.331, 125.5, 116.312, 125.662, 118.341, 125.651, 120.235, 124.984, 121.715, 123.757, 122.688, 122.248, 122.29, 120.571, 123.981, 119.643, 125.715, 118.596, 127.671, 118.067, 129.613, 118.33, 131.151, 119.385, 131.97, 120.978, 133.746, 121.37, 135.435, 122.116, 137.259, 121.789, 138.498, 120.441, 138.473, 118.647, 136.984, 117.631, 135.164, 117.881, 133.365, 117.958, 132.126, 116.714, 132.51, 115.023, 133.909, 114.057)
+points = PackedVector2Array(112.595, 126.435, 114.518, 126.069, 115.768, 124.551, 116.816, 122.817, 118.284, 121.424, 120.108, 120.697, 121.965, 120.776, 123.461, 121.689, 124.743, 120.43, 126.635, 120.052, 128.408, 119.147, 129.694, 117.642, 130.269, 115.821, 130.127, 114.01, 128.936, 112.694, 129.529, 110.899, 130.655, 109.342, 132.379, 108.577, 134.14, 109.065, 134.894, 110.693, 134.014, 112.294, 132.624, 113.476, 131.979, 115.136, 132.874, 116.633, 134.506, 117.117)
 width = 4.0
 
 [node name="ArmTarget" parent="." instance=ExtResource("19_s2bgg")]
@@ -1671,15 +1740,23 @@ position = Vector2(-30, -16)
 visible = false
 position = Vector2(21, -10)
 
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -51)
+sprite_frames = SubResource("SpriteFrames_wby7u")
+speed_scale = 5.0
+script = ExtResource("22_ethfs")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSpriteComp_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSpriteComp" to="." method="_on_AnimatedSpriteComp_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSpriteComp" to="AnimatedSpriteComp" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComp" to="." method="_on_enemy_entered"]
 [connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
 [connection signal="timeout" from="DroneRespawnTimer" to="." method="_on_DroneRespawnTimer_timeout"]
 [connection signal="timeout" from="PlayAnimTimer" to="." method="_on_play_anim_timer_timeout"]
+[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
+[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]
 [editable path="Arm"]

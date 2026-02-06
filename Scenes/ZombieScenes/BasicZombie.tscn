@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bkwi1ob6dceio"]
+[gd_scene load_steps=57 format=3 uid="uid://bkwi1ob6dceio"]
 
 [ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://Scripts/Zombies/BasicZombie.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="2"]
@@ -152,6 +152,50 @@ region = Rect2(1042, 0, 62, 33)
 atlas = ExtResource("9")
 region = Rect2(1104, 0, 62, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_80ohr"]
+atlas = ExtResource("2")
+region = Rect2(620, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rxux"]
+atlas = ExtResource("2")
+region = Rect2(558, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd1v8"]
+atlas = ExtResource("2")
+region = Rect2(496, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vut8x"]
+atlas = ExtResource("2")
+region = Rect2(434, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h5wt"]
+atlas = ExtResource("2")
+region = Rect2(372, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3q1i"]
+atlas = ExtResource("2")
+region = Rect2(310, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaphs"]
+atlas = ExtResource("2")
+region = Rect2(248, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gte6"]
+atlas = ExtResource("2")
+region = Rect2(186, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ajvq"]
+atlas = ExtResource("2")
+region = Rect2(124, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25qm7"]
+atlas = ExtResource("2")
+region = Rect2(62, 165, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ogj"]
+atlas = ExtResource("2")
+region = Rect2(0, 165, 62, 33)
+
 [sub_resource type="SpriteFrames" id="11"]
 animations = [{
 "frames": [{
@@ -269,6 +313,44 @@ animations = [{
 "loop": true,
 "name": &"WebWalk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ohr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rxux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd1v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vut8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h5wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3q1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaphs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gte6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ajvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25qm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ogj")
+}],
+"loop": false,
+"name": &"death",
+"speed": 15.0
 }]
 
 [node name="BasicZombie" type="Area2D" groups=["Zombie"]]
@@ -301,9 +383,7 @@ shape = SubResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("20")
 sprite_frames = SubResource("11")
-animation = &"Attack"
-frame = 5
-frame_progress = 0.209926
+animation = &"WebWalk"
 flip_h = true
 script = ExtResource("6")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)

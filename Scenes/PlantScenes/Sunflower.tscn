@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://ct2xdafdtut66"]
+[gd_scene load_steps=157 format=3 uid="uid://ct2xdafdtut66"]
 
 [ext_resource type="Script" uid="uid://kjyi7ykyorhn" path="res://Scripts/Sunflower.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="2"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_WYRM-Sheet.png" id="9_00tae"]
 [ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://Scripts/Plants/Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
+[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://Assets/Animations/Effect 8-1.png" id="20_muovt"]
+[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://Scripts/lightning_spawn.gd" id="21_kbw6t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3r88c"]
 radius = 61.2046
@@ -970,6 +972,73 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
+atlas = ExtResource("20_muovt")
+region = Rect2(64, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
+atlas = ExtResource("20_muovt")
+region = Rect2(0, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
+atlas = ExtResource("20_muovt")
+region = Rect2(32, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
+atlas = ExtResource("20_muovt")
+region = Rect2(96, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
+atlas = ExtResource("20_muovt")
+region = Rect2(128, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
+atlas = ExtResource("20_muovt")
+region = Rect2(160, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
+atlas = ExtResource("20_muovt")
+region = Rect2(192, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
+atlas = ExtResource("20_muovt")
+region = Rect2(224, 0, 32, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v30tg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30klx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cibk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pvli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ty7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nud0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltgmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Sunflower" type="Area2D" groups=["Plants"]]
 z_index = 1
 position = Vector2(0, 1)
@@ -1040,8 +1109,6 @@ sprite_frames = SubResource("6")
 animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("16_kvwqv")
-targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
-modulate_factor = Vector4(6, 6, 6, 1)
 
 [node name="OverlayComponent" type="Node2D" parent="."]
 visible = false
@@ -1205,15 +1272,26 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -51)
+sprite_frames = SubResource("SpriteFrames_v30tg")
+frame = 8
+frame_progress = 1.0
+speed_scale = 5.0
+script = ExtResource("21_kbw6t")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="HealZone" to="." method="_on_heal_zone_area_entered"]
 [connection signal="area_entered" from="SlowField" to="." method="_on_slow_field_area_entered"]
 [connection signal="body_entered" from="SlowField" to="." method="_on_slow_field_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
 [connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="HealInvisTimer" to="." method="_on_heal_invis_timer_timeout"]
 [connection signal="timeout" from="ResetEatingSpeed" to="." method="_on_reset_eating_speed_timeout"]
+[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
+[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]

@@ -206,6 +206,8 @@ func _on_AnimatedSprite_animation_finished():
 			#pass
 		#else:
 			#spawn_done()
+		$LightningSpawn.play()
+		animSpriteComp.visible = false
 		print("Calling Spawn Done Spyder Self Is I Am")
 		spawn_done()
 		return
@@ -257,3 +259,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
+
+
+func finish_spawn():
+	animSpriteComp.visible = true		
+	animSpriteComp.animation = "idle"
+		
+	animSpriteComp.play()

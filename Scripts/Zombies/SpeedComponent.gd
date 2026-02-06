@@ -29,7 +29,7 @@ func getOriginalSpeed():
 
 #Handles moving the zombie unless it's attacking 
 func _process(delta):
-	if attackComp != null:
+	if attackComp != null && $"../AnimatedSprite2D".isDead == false:
 		is_attacking = attackComp.getAttackState()
 		if not is_attacking:
 			# Only move if not attacking 

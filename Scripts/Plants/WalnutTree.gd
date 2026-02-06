@@ -148,8 +148,10 @@ func spawn_done():
 func _on_AnimatedSprite_animation_finished():
 
 	if animSpriteComp.animation == "spawn":
-		animSpriteComp.animation = "idle"
-		animSpriteComp.play()
+		$LightningSpawn.play()
+		animSpriteComp.visible = false
+		#animSpriteComp.animation = "idle"
+		#animSpriteComp.play()
 	else:
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
@@ -216,3 +218,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
+
+
+func finish_spawn():
+	animSpriteComp.visible = true		
+	animSpriteComp.animation = "idle"
+		
+	animSpriteComp.play()

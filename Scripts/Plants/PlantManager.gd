@@ -354,7 +354,7 @@ func place_plant(grid_pos: Vector2):
 			print("QQGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
-			plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
+			plant_instance.position = Vector2(grid_pos.x,grid_pos.y )
 			grid_map[grid_pos] = plant_instance
 	
 		#Add To The GameLayer 
@@ -370,6 +370,7 @@ func place_plant(grid_pos: Vector2):
 		#print("PPLant name is ", plant_instance.name)
 		if "Sunflower" in plant_instance.name:
 			print("Selected Plant Scene is : ", plant_instance.name)
+			#plant_instance.position = Vector2(grid_pos.x,grid_pos.y + 13 )
 			#TODO change to sunflower_placed
 			plant_placed.emit(grid_pos)
 			Global.incrementSunflowerCount()

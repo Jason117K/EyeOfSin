@@ -96,10 +96,10 @@ process_mode = 1
 position = Vector2(740, 77)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 1,
+"Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
@@ -115,10 +115,10 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 109)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 1,
+"Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
@@ -135,9 +135,9 @@ position = Vector2(740, 141)
 Round1_Zombies = {
 "Base": 1,
 "BucketHead": 1,
-"ConeHead": 0,
+"ConeHead": 1,
 "Dancer": 0,
-"Football": 1,
+"Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
@@ -153,10 +153,10 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 173)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 1,
+"Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
@@ -172,10 +172,10 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 205)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 1,
+"Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
@@ -191,10 +191,10 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 239.15)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 1,
+"Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
@@ -210,10 +210,10 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 272)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
+"BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
-"Football": 1,
+"Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,

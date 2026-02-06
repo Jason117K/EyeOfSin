@@ -1,4 +1,4 @@
-[gd_scene load_steps=238 format=3 uid="uid://chtib6ixf30ex"]
+[gd_scene load_steps=249 format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://Assets/Plants/Animations_Plant/Spider/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://Scripts/Peashooter.gd" id="2"]
@@ -29,6 +29,8 @@
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://new folder/shaders/canvas_group_two_tone.gdshader" id="24_mmfac"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://new folder/scenes/arm_target.tscn" id="25_82rcb"]
 [ext_resource type="Shader" uid="uid://bm6i26uu8obx0" path="res://new folder/shaders/canvas_group_shadow.gdshader" id="25_kcbs3"]
+[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://Assets/Animations/Effect 8-1.png" id="30_u7x5w"]
+[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://Scripts/lightning_spawn.gd" id="31_oysqj"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -1577,6 +1579,73 @@ shader_parameter/shade_ratio = 0.53
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.558477), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(64, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(0, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(32, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(96, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(128, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(160, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(192, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
+atlas = ExtResource("30_u7x5w")
+region = Rect2(224, 0, 32, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3byx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30klx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cibk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pvli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ty7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nud0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltgmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Peashooter" type="Area2D" groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -1612,6 +1681,7 @@ script = ExtResource("6_67t0g")
 targetGlowColor = Color(1, 0, 0.101961, 1)
 
 [node name="PreviewNodes" type="Node2D" parent="."]
+visible = false
 
 [node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" groups=["Invis"]]
 position = Vector2(0, -8.5)
@@ -1767,7 +1837,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 116.345, 133.31, 120.095, 135.185, 123.845, 137.06, 127.595, 138.935, 131.345, 140.81, 135.095, 142.685, 138.845, 144.56, 142.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 110.78, 129.732, 106.947, 130.596, 103.057, 131.796, 100.723, 130.459, 98.7488, 128.929, 94.9669, 129.782, 91.1172, 131.481, 88.7447, 130.404)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1779,7 +1849,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 116.345, 126.435, 120.095, 126.435, 123.845, 126.435, 127.595, 126.435, 131.345, 126.435, 135.095, 126.435, 138.845, 126.435, 142.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 110.78, 122.857, 106.947, 121.846, 103.057, 121.171, 100.723, 117.959, 98.7488, 114.554, 94.9669, 113.532, 91.1172, 113.356, 88.7447, 110.404)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1800,7 +1870,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.97, 133.31, 117.345, 135.185, 119.72, 137.06, 122.095, 138.935, 124.47, 140.81, 126.845, 142.685, 129.22, 144.56, 131.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 112.358, 130.735, 114.184, 130.853, 116.315, 131.387, 116.759, 130.764, 116.712, 130.123, 118.488, 130.229, 120.712, 131.049, 121.576, 130.675)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1808,7 +1878,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.97, 126.435, 117.345, 126.435, 119.72, 126.435, 122.095, 126.435, 124.47, 126.435, 126.845, 126.435, 129.22, 126.435, 131.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 112.358, 123.86, 114.184, 122.103, 116.315, 120.762, 116.759, 118.264, 116.712, 115.748, 118.488, 113.979, 120.712, 112.924, 121.576, 110.675)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1820,6 +1890,12 @@ position = Vector2(-37, -13)
 visible = false
 position = Vector2(-2, -13)
 
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -51)
+sprite_frames = SubResource("SpriteFrames_3byx0")
+speed_scale = 5.0
+script = ExtResource("31_oysqj")
+
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
@@ -1829,6 +1905,8 @@ position = Vector2(-2, -13)
 [connection signal="frame_changed" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="SpawnSpiderling" to="." method="_on_spawn_spiderling_timeout"]
+[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
+[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]
 [editable path="Arm2"]

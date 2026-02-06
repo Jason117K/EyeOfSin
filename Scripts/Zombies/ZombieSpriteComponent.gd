@@ -23,6 +23,7 @@ var isInjured
 @onready var attack_audio_player = $"../AttackAudioPlayer"
 @onready var healthComp  =  $"../HealthComponent"
 
+var isDead = false
 var specialMove = false 
 #Allow Summons While Webbed?
 #Maybe Give Zombies With Special Animations Own Sprite Comp Controller
@@ -55,7 +56,7 @@ func setSpecialMoveFalse():
 	
 #Handles Animation 
 func _process(_delta):
-	if attackComp != null:
+	if attackComp != null && isDead == false:
 		# Predetermine the state of attacking, being injured, and being slowed 
 		is_attacking = attackComp.getAttackState()
 		isInjured = healthComp.getInjured()
@@ -131,6 +132,8 @@ func _process(_delta):
 func _on_AnimatedSprite_animation_finished():
 	if("Vault" in self.animation):
 		specialMove = false
+	if("death" in self.animation):
+		zombie.kill_zombie()
 
 #Handles Ticker Zombie Explosion Animation 
 func _on_AnimatedSprite_frame_changed():

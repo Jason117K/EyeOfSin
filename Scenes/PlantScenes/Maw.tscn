@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=3 uid="uid://d3n5cefu4fpso"]
+[gd_scene load_steps=225 format=3 uid="uid://d3n5cefu4fpso"]
 
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://Assets/Plants/Animations_Plant/SummonAnim-Sheet.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="2"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://Assets/Plants/Animations_Plant/EyeSunTowerIdle.png" id="10"]
 [ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://new folder/scenes/arm.tscn" id="19_elvfo"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://new folder/scenes/arm_target.tscn" id="20_6aeqa"]
+[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://Assets/Animations/Effect 8-1.png" id="21_5v7ar"]
+[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://Scripts/lightning_spawn.gd" id="22_drv5f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
 shader = ExtResource("2_fxtok")
@@ -1466,6 +1468,73 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(64, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(0, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(32, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(96, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(128, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(160, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(192, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
+atlas = ExtResource("21_5v7ar")
+region = Rect2(224, 0, 32, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hr7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30klx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cibk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pvli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ty7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nud0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltgmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6slq8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Maw" type="Area2D" groups=["Plants"]]
 z_index = 1
 script = ExtResource("4")
@@ -1678,11 +1747,11 @@ line_width = 5.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.993, 133.512, 116.182, 136.684, 117.368, 139.911, 119.128, 142.78, 121.403, 145.033, 123.989, 146.551, 126.69, 147.346, 129.336, 147.296, 132.08, 147.581, 134.799, 148.809, 137.17, 150.864, 138.948, 153.57, 139.926, 156.741, 140.003, 160.126, 140.475, 163.505, 141.978, 166.509, 144.285, 168.729, 147.011, 169.866, 149.655, 169.674, 151.705, 168.389, 153.878, 167.243, 156.56, 167.171, 159.188, 168.406, 161.179, 170.681)
+points = PackedVector2Array(112.595, 131.435, 115.061, 133.388, 117.85, 133.679, 120.67, 133.818, 123.523, 134.599, 126.171, 136.151, 128.393, 138.382, 130.062, 141.139, 131.038, 144.31, 132.134, 147.467, 134.041, 150.12, 136.49, 152.045, 139.192, 153.125, 141.877, 153.274, 144.261, 152.511, 146.758, 151.889, 149.564, 152.308, 152.219, 153.844, 154.255, 156.357, 155.186, 159.586, 154.808, 162.983, 154.398, 166.378, 155.114, 169.677, 156.933, 172.293, 159.342, 173.859)
 width = 5.0
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.993, 127.887, 116.182, 130.434, 117.368, 133.036, 119.128, 135.28, 121.403, 136.908, 123.989, 137.801, 126.69, 137.971, 129.336, 137.296, 132.08, 136.956, 134.799, 137.559, 137.17, 138.989, 138.948, 141.07, 139.926, 143.616, 140.003, 146.376, 140.475, 149.13, 141.978, 151.509, 144.285, 153.104, 147.011, 153.616, 149.655, 152.799, 151.705, 150.889, 153.878, 149.118, 156.56, 148.421, 159.188, 149.031, 161.179, 150.681)
+points = PackedVector2Array(112.595, 126.435, 115.061, 127.763, 117.85, 127.429, 120.67, 126.943, 123.523, 127.099, 126.171, 128.026, 128.393, 129.632, 130.062, 131.764, 131.038, 134.31, 132.134, 136.842, 134.041, 138.87, 136.49, 140.17, 139.192, 140.625, 141.877, 140.149, 144.261, 138.761, 146.758, 137.514, 149.564, 137.308, 152.219, 138.219, 154.255, 140.107, 155.186, 142.711, 154.808, 145.483, 154.398, 148.253, 155.114, 150.927, 156.933, 152.918, 159.342, 153.859)
 width = 5.0
 
 [node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
@@ -1713,12 +1782,20 @@ position = Vector2(206, 293)
 visible = false
 position = Vector2(202, 224)
 
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -51)
+sprite_frames = SubResource("SpriteFrames_8hr7d")
+speed_scale = 5.0
+script = ExtResource("22_drv5f")
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComponent" to="." method="_on_detection_component_area_entered"]
 [connection signal="timeout" from="DigestionTimer" to="." method="_on_DigestionTimer_timeout"]
+[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
+[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]
 [editable path="Arm"]
