@@ -3,12 +3,15 @@ extends AttackComponent
 @onready var attack_rays = [$"../DMGRayCast2D_1", $"../DMGRayCast2D_2", $"../DMGRayCast2D_3"]
 @onready var target_plants = []
 @onready var teleport_timer = $"../TeleportTimer"
+@onready var shoot_timer = $"../ShootTimer"
+var projectile_scene = preload("res://Scenes/ZombieScenes/RohanProjectile.tscn" )
 var rng = RandomNumberGenerator.new()
 var laneYPositions = [77.0, 109.0, 141.0, 173.0, 205.0, 239.15, 272.0]
 
 func attack_plant(collider):
-	#I apologize that I have to do this
-	print()
+	pass
+	
+
 	
 func _on_TeleportTimer_timeout():
 	teleport_timer.stop()
@@ -29,6 +32,7 @@ func _on_TeleportTimer_timeout():
 	zombieSprite.play("Teleport_End")
 	await zombieSprite.animation_finished
 	is_attacking = false
+	shoot_timer.start()
 	
 
 #if self.is_in_group("Green"):
@@ -48,18 +52,24 @@ func changeGroup():
 		parent.remove_from_group("Green")
 		parent.add_to_group("Purple")
 		for attack_ray in attack_rays:
-			attack_ray.collision_mask = 2
-			attack_ray.set_collision_mask_value(1,false)
-			attack_ray.set_collision_mask_value(2,true)
-			attack_ray.set_collision_mask_value(3,false)
-	if(self.parent.is_in_group("Purple")):
-		parent.remove_from_group("Purple")
-		parent.add_to_group("Green")
-		for attack_ray in attack_rays:
 			attack_ray.collision_mask = 3
 			attack_ray.set_collision_mask_value(1,false)
 			attack_ray.set_collision_mask_value(2,false)
 			attack_ray.set_collision_mask_value(3,true)
+		self.parent.set_collision_layer_value(1,false)
+		self.parent.set_collision_layer_value(2,false)
+		self.parent.set_collision_layer_value(3,true)
+	if(self.parent.is_in_group("Purple")):
+		parent.remove_from_group("Purple")
+		parent.add_to_group("Green")
+		for attack_ray in attack_rays:
+			attack_ray.collision_mask = 1
+			attack_ray.set_collision_mask_value(1,true)
+			attack_ray.set_collision_mask_value(2,false)
+			attack_ray.set_collision_mask_value(3,false)
+		self.parent.set_collision_layer_value(1,true)
+		self.parent.set_collision_layer_value(2,false)
+		self.parent.set_collision_layer_value(3,false)
 	
 func _on_AttackTimer_timeout():
 	if(teleport_timer.is_stopped()):
@@ -152,3 +162,18 @@ func _process(_delta):
 				print("Playing ZOMBIE DEAL DAMAGE in attack_plant for parent ", parent.name)
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 			attack_timer.start()
+
+
+func _on_ShootTimer_timeout() -> void:
+	is_attacking = true
+	zombieSprite.play("Shoot_Start")
+	await zombieSprite.animation_finished
+	
+	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
+	var projectile = projectile_scene.instantiate()
+	projectile.position = position - Vector2(32, 0)  # Adjust starting position
+	get_parent().add_child(projectile)  # Add the projectile to the game layer
+	
+	zombieSprite.play("Shoot_End")
+	await zombieSprite.animation_finished
+	is_attacking = false
