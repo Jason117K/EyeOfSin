@@ -40,6 +40,7 @@ const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.tx
 
 
 func _ready():
+	Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	waveManager.Wave2StartTime = 37
@@ -356,7 +357,7 @@ func remove_empty_blocker_plant(grid_pos):
 
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 5)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 19)
 	
 func hide_guide():
 	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

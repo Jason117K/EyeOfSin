@@ -72,6 +72,7 @@ var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 @export var new_end_dialog = "res://Assets/Dialog/level_02_end_dialog.dtl"
 
 func _ready():
+	Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	waveManager.Wave2StartTime = 35
@@ -716,7 +717,7 @@ func _start_force_place_plant():
 
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 4)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 5)
 	
 func hide_guide():
 	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

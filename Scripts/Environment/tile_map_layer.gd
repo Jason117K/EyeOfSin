@@ -107,6 +107,7 @@ func _spawn_rectangle_at_cell(cell_coords: Vector2i) -> void:
 #	print("Spawn Rectttt")
 	var rect_instance: Node2D = rectangle_scene.instantiate()
 	rect_instance.scale = Vector2(0.2,0.356)
+	rect_instance.z_index = 2
 	
 	# Get the center position of the tile in local coordinates
 	var tile_center := map_to_local(cell_coords)
