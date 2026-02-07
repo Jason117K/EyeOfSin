@@ -555,6 +555,8 @@ func _on_detection_component_area_entered(area: Area2D) -> void:
 		elif area.is_in_group("Purple"):
 			if self.is_in_group("Green"):
 				return
+		if("Boss" in area.get_name()):
+			return		
 		assign_tentacle_to_target(area)
 		
 func die():
