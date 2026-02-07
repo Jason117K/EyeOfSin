@@ -9,7 +9,7 @@ func die():
 	if compManager.spawn_slow_field == true :
 		spawn_slow_field_on_death()
 	#if compMana
-	print("Should die")
+	#print("Should die")
 	zombie_death.emit()
 	$AnimatedSprite2D.isDead = true 
 	$AnimatedSprite2D.play("death")

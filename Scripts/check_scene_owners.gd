@@ -6,7 +6,7 @@ var referenced_files = {}
 var orphaned_files = []
 
 func _run():
-	print("\n=== Starting Orphaned File Check ===")
+	#print("\n=== Starting Orphaned File Check ===")
 	
 	# First pass: Collect all files
 	scan_directory("res://")
@@ -21,16 +21,16 @@ func _run():
 	find_orphaned_files()
 	
 	# Print results
-	print("\nOrphaned files found:")
+	#print("\nOrphaned files found:")
 	if orphaned_files.is_empty():
 		print("No orphaned files found!")
 	else:
 		for file in orphaned_files:
 			print("- ", file)
 	
-	print("\n=== File Check Complete ===")
-	print("Total files checked: ", all_files.size())
-	print("Orphaned files: ", orphaned_files.size())
+	#print("\n=== File Check Complete ===")
+	#print("Total files checked: ", all_files.size())
+#	print("Orphaned files: ", orphaned_files.size())
 
 func scan_directory(path: String) -> void:
 	var dir = DirAccess.new()

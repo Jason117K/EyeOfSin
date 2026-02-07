@@ -98,15 +98,16 @@ func setComplexScene(newScene):
 	for node in complexSceneContainer.get_children():
 		#print("NNNOde is ", node.name)
 		if node is Label || node is RichTextLabel || node is VScrollBar:
-			print("Will Now Pass ", node.name)
+		#	print("Will Now Pass ", node.name)
 			pass
 
 		else:
 			if (node == Button) || "Button" in node.name || (node == RichTextLabel):
-				print("Node is button ", node.name)
+				pass
+			#	print("Node is button ", node.name)
 			elif node != Button:
 				if node != RichTextLabel:
-					print("Queue Free ", node.name)
+				#	print("Queue Free ", node.name)
 					node.queue_free()
 	#Add New Complex Scene to Container 
 	var this_new_scene = newScene.instantiate()
@@ -124,12 +125,12 @@ func hideComplexSceneButton():
 func _on_Button_pressed():
 	hide()
 	ToolTipHid.emit()
-	print("UNPPAUSE HERE1")
+	#print("UNPPAUSE HERE1")
 	get_tree().paused = false
 
 
 func _on_button_2_pressed() -> void:
 	hide()
 	ToolTipHid.emit()
-	print("UNPPAUSE HERE2")
+	#print("UNPPAUSE HERE2")
 	get_tree().paused = false

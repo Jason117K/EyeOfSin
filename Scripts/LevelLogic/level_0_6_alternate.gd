@@ -39,7 +39,7 @@ func attach_script_to_sway_children(script_path: String) -> void:
 			#if self.is_in_group("Green"):
 				#child.make_green()
 			child._ready()
-		print("Script attached to: ", child.name)	
+		#print("Script attached to: ", child.name)	
 	
 func getIsGreenDimension():
 	return isGreenDimension
@@ -57,7 +57,7 @@ func start_game():
 	for node in get_parent().get_children():
 		if node.has_method("getIsPurpleDimension"):
 			purple_dimension = node
-	print("Purple Dim is ", purple_dimension)
+	#print("Purple Dim is ", purple_dimension)
 	purple_dimension.start_game()	
 	waveManager.canStartGame = true
 

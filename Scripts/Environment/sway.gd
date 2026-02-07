@@ -4,7 +4,7 @@ var sway_shader : VisualShader = preload("res://Scripts/Shaders/swayShader.tres"
 var set_shader :bool = false 
 
 func _ready() -> void:
-	print(name ," READY ")
+	#print(name ," READY ")
 	set_sprite_visual_shader(sway_shader)
 	set_instance_shader_parameter("RandomStrength", randf_range(-3.0,3.0))
 	pass
@@ -17,7 +17,7 @@ func set_sprite_visual_shader(new_shader: VisualShader) -> void:
 	material = newShaderMaterial
 	if new_shader:
 		newShaderMaterial.shader = new_shader
-		print(name, "Shader set successfully")
+		#print(name, "Shader set successfully")
 		set_shader = true
 	else:
 		push_warning("Attempted to set null shader")

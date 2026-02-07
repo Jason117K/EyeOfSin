@@ -27,11 +27,11 @@ func create_2d_audio_at_location(location: Vector2, type: SoundEffect.SOUND_EFFE
 			sound_effect.change_audio_count(1)
 			var new_2D_audio: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 			add_child(new_2D_audio)
-			print("AA Creating Audio, Child is ", new_2D_audio , " parent is ", new_2D_audio.get_parent())
+			#print("AA Creating Audio, Child is ", new_2D_audio , " parent is ", new_2D_audio.get_parent())
 			new_2D_audio.bus = "sfx"
 			new_2D_audio.position = location
 			new_2D_audio.stream = sound_effect.sound_effect
-			print("AASound Effect.sound effect is ", sound_effect.sound_effect)
+			#print("AASound Effect.sound effect is ", sound_effect.sound_effect)
 			new_2D_audio.volume_db = sound_effect.volume
 			new_2D_audio.pitch_scale = sound_effect.pitch_scale
 			#new_2D_audio.pitch_scale += Global.rng.randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness )

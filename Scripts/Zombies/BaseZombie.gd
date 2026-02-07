@@ -12,7 +12,7 @@ var slow_field_scene = preload("res://Scenes/PlantScenes/web_tile_slow.tscn")
 
 func _ready() -> void:
 	if self.is_in_group("Green"):
-		print("SET TO GTREEEEEEEN SO CAN ATTTACK GREEEN")
+	#	print("SET TO GTREEEEEEEN SO CAN ATTTACK GREEEN")
 		self.set_collision_layer_value(1,false)
 		self.set_collision_layer_value(2,false)
 		self.set_collision_layer_value(3,true)
@@ -54,7 +54,7 @@ func die():
 	if compManager.spawn_slow_field == true :
 		spawn_slow_field_on_death()
 	#if compMana
-	print("Should die")
+#	print("Should die")
 	zombie_death.emit()
 	queue_free()
 

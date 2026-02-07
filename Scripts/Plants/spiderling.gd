@@ -19,7 +19,7 @@ func _on_area_entered(area: Area2D) -> void:
 		canMove = false
 		
 		zombies.append(area)
-		print("Added Zombie, array now ", zombies)
+	#	print("Added Zombie, array now ", zombies)
 		
 
 
@@ -31,5 +31,5 @@ func _on_area_exited(area: Area2D) -> void:
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
-		print("Die Cos Health too Low")
+		#print("Die Cos Health too Low")
 		queue_free()

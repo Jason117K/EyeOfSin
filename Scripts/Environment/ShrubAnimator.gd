@@ -62,6 +62,6 @@ func test_distribution(sample_size: int = 1000):
 		else:
 			fast_count += 1
 	
-	print("Distribution test (", sample_size, " samples):")
-	print("Slow speeds (1.0-1.3): ", (slow_count * 100.0 / sample_size), "%")
-	print("Fast speeds (1.4-2.0): ", (fast_count * 100.0 / sample_size), "%")
+	#print("Distribution test (", sample_size, " samples):")
+	#print("Slow speeds (1.0-1.3): ", (slow_count * 100.0 / sample_size), "%")
+	#print("Fast speeds (1.4-2.0): ", (fast_count * 100.0 / sample_size), "%")

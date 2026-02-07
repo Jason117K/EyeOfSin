@@ -58,15 +58,15 @@ func _on_AttackTimer_timeout():
 	elif "Screen" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
+		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
 	if(is_instance_valid(target_plant)):
-		print("target plant name is ", target_plant.name)
+		#print("target plant name is ", target_plant.name)
 		if(target_plant.health >= 0):
 			if target_plant.has_method("mawBuffed"):
 				if target_plant.can_eat_zombie == true :
-					print("Demon Can Eat Me Time to Die")
+				#	print("Demon Can Eat Me Time to Die")
 					target_plant.eat_zombie()
 					get_parent().die()
 			if target_plant.has_method("walnutWyrmBuffed"):
@@ -103,10 +103,10 @@ func _process(_delta):
 							return
 				#	print(collider.name , " is in group plants")
 					if("PoleVaultZombie" in parent.name):
-						print(parent.name, " - canSpecialPP: ", canSpecial)
-						print("PP Parent Is Pole Vault")
+						#print(parent.name, " - canSpecialPP: ", canSpecial)
+						#print("PP Parent Is Pole Vault")
 						if canSpecial:
-							print("PP Pole Vault Special Mo")
+						#	print("PP Pole Vault Special Mo")
 							parent.special_move()
 							canSpecial = false
 							pass

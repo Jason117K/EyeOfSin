@@ -23,7 +23,7 @@ func _on_Area2D_mouse_entered():
 	numWave = spawner.get_numWave() + 1
 	if numWave == 0:
 		numWave = 1
-	print("SSNumwave is ", numWave)
+	#print("SSNumwave is ", numWave)
 	match numWave:
 		1:
 
@@ -35,7 +35,7 @@ func _on_Area2D_mouse_entered():
 			
 			
 	if $PreviewSprite.visible == true:
-		print("SS: ", currentZombieDict)
+	#	print("SS: ", currentZombieDict)
 		for key in currentZombieDict:
 			#var line = "[b]" + str(key) + "[/b]: " + str(spawner.Round1_Zombies[key]) + "\n"
 			if currentZombieDict[key] == 0:
@@ -43,7 +43,7 @@ func _on_Area2D_mouse_entered():
 			else:
 				var line =  str(key) + " : "+ str(currentZombieDict[key]) + "\n"
 				previewText.append_text(line)
-				print("SSLine is ", line)
+				#print("SSLine is ", line)
 
 		$Node2D/Control.visible = true
 
@@ -56,7 +56,7 @@ func _on_Area2D_mouse_exited():
 
 #TODO Fix Vis
 func _on_ToggleVisibility_timeout():
-	print("Swap Vis")
+#	print("Swap Vis")
 	swap_Visibility()
 	
 func swap_Visibility():
@@ -71,4 +71,4 @@ func _on_start_game_button_pressed() -> void:
 		if levelToStart != null:
 			if levelToStart.has_method("start_game"):			
 				levelToStart.start_game()
-				print("Start Game For ", levelToStart)
+			#	print("Start Game For ", levelToStart)

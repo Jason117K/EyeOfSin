@@ -30,7 +30,7 @@ var isBuffed := false
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
 	if self.is_in_group("Green"):
-		print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
+		#print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
 		$DMG_RayCast2D.collision_mask = 3
 		$DMG_RayCast2D.set_collision_mask_value(1,false)
 		$DMG_RayCast2D.set_collision_mask_value(2,false)
@@ -79,7 +79,7 @@ func _process(_delta):
 					var collider = attack_ray.get_collider(i)
 					if collider and collider.is_in_group("Zombie"):
 						i#f self.is_in_group("Green"):
-						print("Collider Name is XXX to be attacked", collider.name)
+						#print("Collider Name is XXX to be attacked", collider.name)
 							
 						#print("Collider Name is XXX", collider.name)
 						#if collider.get_parent().get_parent() != self.get_parent().get_parent(): #Dimension Check
@@ -87,12 +87,12 @@ func _process(_delta):
 						#	return
 						if collider.is_in_group("Green"):
 							if self.is_in_group("Green"):
-								print("Is Green, Can Attack")
+								#print("Is Green, Can Attack")
 								canAttack = true
 						if collider.is_in_group("Purple"):
-							print("Is Purple")
+						#	print("Is Purple")
 							if self.is_in_group("Purple"):
-								print("Can Attack")
+							#	print("Can Attack")
 								canAttack = true
 						if collider.is_in_group("Green"):
 							if self.is_in_group("Purple"):
@@ -148,7 +148,7 @@ func debuff():
 
 # Function to create and shoot a new projectile
 func shoot_projectile():
-	print("Shoot Proj From Spider ")
+	#print("Shoot Proj From Spider ")
 	if hiveBuffed:
 		second_shot_timer.start()
 
@@ -167,12 +167,13 @@ func shoot_projectile():
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer
 	if self.is_in_group("Green"):
-		print("Is Green, Can Attack Is Now False")
+		pass
+		#print("Is Green, Can Attack Is Now False")
 
 	canAttack = false
 	
 func second_shoot_projectile():
-	print("Shoot 2nd Proj From Spider ")
+	#print("Shoot 2nd Proj From Spider ")
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	var projectile = projectile_scene.instantiate()
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
@@ -188,11 +189,11 @@ func take_damage(damage):
 func spawn_done():
 	
 	if spawnAnimDone:
-		print("Spyder Self Spawn Adjust 1")
+		#print("Spyder Self Spawn Adjust 1")
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 	else:
-		print("Spyder Self Spawn Adjust 2")
+		#print("Spyder Self Spawn Adjust 2")
 		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
@@ -208,11 +209,11 @@ func _on_AnimatedSprite_animation_finished():
 			#spawn_done()
 		$LightningSpawn.play()
 		animSpriteComp.visible = false
-		print("Calling Spawn Done Spyder Self Is I Am")
+		#print("Calling Spawn Done Spyder Self Is I Am")
 		spawn_done()
 		return
 	if canAttack:
-		print(self, "Should Be Red Spider AttackZ")
+		#print(self, "Should Be Red Spider AttackZ")
 		animSpriteComp.animation = animSpriteComp.currentAttackAnim
 		animSpriteComp.play()
 	else:
@@ -236,7 +237,7 @@ func die():
 	queue_free()	
 	
 func die_fromClearSpace():
-	print("DD YYYING ---------------------------------")
+	#print("DD YYYING ---------------------------------")
 	buffNodes.clearBuffs()
 	queue_free()		
 	

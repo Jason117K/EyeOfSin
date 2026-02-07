@@ -15,7 +15,7 @@ extends Node2D
 
 # Play the Animation and Make it Visible 
 func goBoom():
-	print("TickerRRRRRRR going boom ")
+	#print("TickerRRRRRRR going boom ")
 	hit1.play()
 	hit2.play()
 	hit3.play()
@@ -41,7 +41,7 @@ func _on_Hit3_animation_finished():
 		if(is_instance_valid(area)):
 			if area.is_in_group("Plants"):
 				#print("About to bomb ", area.name)
-				print("AP IS ", attack_power)
+				#print("AP IS ", attack_power)
 				if(area.health >= 0):
 					area.take_damage(attack_power)
 				else:

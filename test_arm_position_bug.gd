@@ -12,10 +12,10 @@ func _ready() -> void:
 	add_child(arm_at_origin)
 	add_child(arm_at_offset)
 
-	print("=== Position Bug Test ===")
-	print("Arm at (0,0): Should work correctly")
-	print("Arm at (300,100): BROKEN - tentacle offset by (300,100)")
-	print("========================")
+	#print("=== Position Bug Test ===")
+	#print("Arm at (0,0): Should work correctly")
+	#print("Arm at (300,100): BROKEN - tentacle offset by (300,100)")
+	#print("========================")
 
 func create_test_arm(pos: Vector2) -> Node2D:
 	var arm_instance = preload("res://new folder/scenes/arm.tscn").instantiate()

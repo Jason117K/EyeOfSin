@@ -16,7 +16,7 @@ var spawned_rectangles: Array[Node2D] = []
 var _shader_material: ShaderMaterial
 
 func _ready() -> void:
-	print("Rect Ready Called")
+	#print("Rect Ready Called")
 	#place_rectangles_on_rows(2, 8)
 	if make_green:
 		_setup_shader()
@@ -80,7 +80,7 @@ func set_hue_shift_value(value: float) -> void:
 ## start_row: First row (inclusive)
 ## end_row: Last row (inclusive)
 func place_rectangles_on_rows(start_row: int, end_row: int) -> void:
-	print("rectrectrectrectrectrectrect")
+#	print("rectrectrectrectrectrectrect")
 	if rectangle_scene == null:
 		push_error("Rectangle scene not assigned!")
 		return
@@ -94,17 +94,17 @@ func place_rectangles_on_rows(start_row: int, end_row: int) -> void:
 	
 	# Get all used cells and filter by row
 	var used_cells := get_used_cells()
-	print("Spawn Rectttvvvvvvvvvvvvvt")
+	#print("Spawn Rectttvvvvvvvvvvvvvt")
 	for cell_coords in used_cells:
-		print("Spawn Rectzzzzzzttt")
+		#print("Spawn Rectzzzzzzttt")
 		if cell_coords.y >= start_row and cell_coords.y <= end_row:
-			print("Spawn Recttttppppp")
+			#print("Spawn Recttttppppp")
 			_spawn_rectangle_at_cell(cell_coords)
 			
 				
 	## Spawns a single rectangle centered on the given tile cell
 func _spawn_rectangle_at_cell(cell_coords: Vector2i) -> void:
-	print("Spawn Rectttt")
+#	print("Spawn Rectttt")
 	var rect_instance: Node2D = rectangle_scene.instantiate()
 	rect_instance.scale = Vector2(0.2,0.356)
 	

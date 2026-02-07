@@ -29,13 +29,13 @@ func _ready() -> void:
 func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool = true, keep_running : bool = false) -> void:
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	print("Changing scene to ", new_scene1 , " AND ", new_scene2)
+	#print("Changing scene to ", new_scene1 , " AND ", new_scene2)
 	if !current_scenes.is_empty():
 		if delete:
-			print("Current Scenes is ",current_scenes )
-			print("Current Scenes 1 is ",current_scenes[1] )
+			#print("Current Scenes is ",current_scenes )
+		#	print("Current Scenes 1 is ",current_scenes[1] )
 			current_scenes.remove_at(1)
-			print("Current Scenes 0 is ",current_scenes[0] )
+		#	print("Current Scenes 0 is ",current_scenes[0] )
 			current_scenes[0].queue_free()
 			current_scenes.remove_at(0)
 		#elif keep_running:
@@ -45,26 +45,28 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 			#scene.remove_child(current_scene) #Keeps in memory, does not run 
 		
 	if current_scene == null:
-		print("Current scene : ", current_scene, " is null ")
+		pass
+	#	print("Current scene : ", current_scene, " is null ")
 	else:
-		print("Current scene is : ", current_scene)
+		pass
+	#	print("Current scene is : ", current_scene)
 	if current_alt_scene != null:
 		if delete:
-			print("Delete Here1",current_alt_scene)
+			#print("Delete Here1",current_alt_scene)
 			current_alt_scene.queue_free() # Removes Node Entirely 		
 	if current_scene != null:
 		if delete:
-			print("Delete Herqe",current_scene)
+		#	print("Delete Herqe",current_scene)
 			current_scene.queue_free() # Removes Node Entirely 
 		elif keep_running:
 			current_scene.visible = false # Keeps in memory and running 
 		else:
-			print("RRemoved Child")
+			#print("RRemoved Child")
 			scene.remove_child(current_scene) #Keeps in memory, does not run 
 			
 			# Wait one frame to ensure the old scene is properly removed
 	await get_tree().process_frame
-	print("New Scene 1 is  ", new_scene1 , " AND 2 is : ", new_scene2)
+	#print("New Scene 1 is  ", new_scene1 , " AND 2 is : ", new_scene2)
 	var new1 = load(new_scene1).instantiate()
 	scene.add_child(new1)
 	current_scene = new1 
@@ -77,7 +79,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	current_scenes.append(new2)
 	
 	current_scene._ready()
-	print("Current Scenes is now ", current_scenes)
+	#print("Current Scenes is now ", current_scenes)
 	#new2._ready()
 	# Force physics update to ensure collision detection works
 	await get_tree().process_frame
@@ -90,7 +92,7 @@ func swap_scenes():
 	#check
 	
 			
-		print("Swap Scenes")
+	#	print("Swap Scenes")
 		#current_scene.visible = false 
 		if on_scene_1:
 			current_scenes[1].visible = true 
@@ -112,9 +114,9 @@ func reset_cooldown():
 	
 func place_empty_in_alt_scene(grid_pos):
 	#return
-	print("Placing Empty in Alt At QQ ", grid_pos)
+	#print("Placing Empty in Alt At QQ ", grid_pos)
 	if current_scenes[1].visible == false :
-		print("current_scenes[1] is", current_scenes[1])
+	#	print("current_scenes[1] is", current_scenes[1])
 		current_scenes[1].place_empty_blocker_plant(grid_pos)
 	elif current_scenes[0].visible == false :
 		current_scenes[0].place_empty_blocker_plant(grid_pos)
@@ -129,36 +131,38 @@ func remove_empty_in_alt_scene(grid_pos):
 	
 	
 func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:
-	print("Changing scene to ", new_scene)
+#	print("Changing scene to ", new_scene)
 	
 	#Delete Old Scenes
 	
 	if !current_scenes.is_empty():
 		if delete:
-			print("Current Scenes is ",current_scenes )
-			print("Current Scenes 1 is ",current_scenes[1] )
+			#print("Current Scenes is ",current_scenes )
+			#print("Current Scenes 1 is ",current_scenes[1] )
 			current_scenes.remove_at(1)
-			print("Current Scenes 0 is ",current_scenes[0] )
+		#	print("Current Scenes 0 is ",current_scenes[0] )
 			current_scenes.remove_at(0)
 		
 	if current_scene == null:
-		print("Current scene : ", current_scene, " is null ")
+		pass
+		#print("Current scene : ", current_scene, " is null ")
 	else:
-		print("Current scene is : ", current_scene)
+		pass
+	#	print("Current scene is : ", current_scene)
 		
 	if current_alt_scene != null:
 		if delete:
-			print("Delete Here1",current_scene)
+			#print("Delete Here1",current_scene)
 			current_alt_scene.queue_free() # Removes Node Entirely 					
 	
 	if current_scene != null:
 		if delete:
-			print("Delete Herqe",current_scene)
+		#	print("Delete Herqe",current_scene)
 			current_scene.queue_free() # Removes Node Entirely 
 		elif keep_running:
 			current_scene.visible = false # Keeps in memory and running 
 		else:
-			print("RRemoved Child")
+		#	print("RRemoved Child")
 			scene.remove_child(current_scene) #Keeps in memory, does not run 
 			
 	# Wait one frame to ensure the old scenes are properly removed
@@ -173,8 +177,8 @@ func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_runni
 	get_tree().physics_frame
 	
 	current_scene._ready()
-	print("Current Scenes is now ", current_scenes)
-	print("Current Scene is now ", current_scene)
+	#print("Current Scenes is now ", current_scenes)
+#	print("Current Scene is now ", current_scene)
 
 	
 	
@@ -199,27 +203,29 @@ func get_current_scene_filepath():
 
 func restore_previous_scene():
 	var scene_to_restore = previous_scenes.back()
-	print("PPScene to restore is ",scene_to_restore )
+#	print("PPScene to restore is ",scene_to_restore )
 	
 	previous_scenes.pop_back() 
-	print("PPScene to restore iis ",scene_to_restore )
+#	print("PPScene to restore iis ",scene_to_restore )
 	scene_to_restore.visible = true 
 	if scene_to_restore.has_method("make_camera_current"):
 		scene_to_restore.make_camera_current()
 	current_scene = scene_to_restore
-	print("PPPrevious Scenes Is ",previous_scenes )
+	#print("PPPrevious Scenes Is ",previous_scenes )
 	if previous_scenes.is_empty():
 		scene_to_restore.get_tree().paused = false
-		print("UNPPAUSE HER222E")
+	#	print("UNPPAUSE HER222E")
 	pass
 	
 	
 func change_scene_with_pause(new_scene : String):
 	print("PPChanging scene with PAUSE to ", new_scene)
 	if current_scene == null:
-		print("Current scene : ", current_scene, " is null ")
+		pass
+	#	print("Current scene : ", current_scene, " is null ")
 	else:
-		print("PPCurrent scene is : ", current_scene)
+		pass
+	#	print("PPCurrent scene is : ", current_scene)
 	if current_scene != null:
 		current_scene.visible = false # Keeps in memory and running 
 		pass
@@ -238,10 +244,10 @@ func change_scene_with_pause(new_scene : String):
 
 	previous_scenes.append(current_scene)
 	current_scene = new
-	print("PPrevious Scenes is ",previous_scenes )
+#	print("PPrevious Scenes is ",previous_scenes )
 	
 func change_scene_with_pause_from_dual_scene(new_scene : String):
-	print("PPChanging scene with PAUSE from DUAL to ", new_scene)
+#	print("PPChanging scene with PAUSE from DUAL to ", new_scene)
 
 	if current_scenes.size() > 1:
 		for scene in current_scenes:
@@ -249,7 +255,8 @@ func change_scene_with_pause_from_dual_scene(new_scene : String):
 				scene.visible = false
 				scene.get_tree().paused = true  
 			else:
-				print("Scene is null")
+				pass
+			#	print("Scene is null")
 
 	await get_tree().process_frame
 	var new = load(new_scene).instantiate()
@@ -258,17 +265,19 @@ func change_scene_with_pause_from_dual_scene(new_scene : String):
 
 
 func restore_dual_scenes():
-	print("PPRestoring Dual Scenes", current_scenes)
+#	print("PPRestoring Dual Scenes", current_scenes)
 	if current_scene == null:
-		print("Current scene : ", current_scene, " is null ")
+		pass
+	#	print("Current scene : ", current_scene, " is null ")
 	else:
-		print("PPCurrent scene is : ", current_scene)
+		pass
+	#	print("PPCurrent scene is : ", current_scene)
 	if current_scene != null:
-		print("Delete Her333e",current_scene)
+	#	print("Delete Her333e",current_scene)
 		current_scene.queue_free() 
 		pass
 	await get_tree().process_frame
-	print("UNPPAUSE HE2222222222222222RE")
+#	print("UNPPAUSE HE2222222222222222RE")
 	current_scenes[0].get_tree().paused = false  
 	current_scenes[1].get_tree().paused = false 
 	if !on_scene_1:
@@ -289,19 +298,22 @@ func restore_dual_scenes():
 
 
 func change_scene(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:
-	print("Changing scene to ", new_scene)
+#	print("Changing scene to ", new_scene)
 	if current_scene == null:
-		print("Current scene : ", current_scene, " is null ")
+		pass
+#		print("Current scene : ", current_scene, " is null ")
 	else:
-		print("Current scene is : ", current_scene)
+		pass
+	#	print("Current scene is : ", current_scene)
 	if current_scene != null:
 		if delete:
-			print("Delete Here",current_scene)
+			#print("Delete Here",current_scene)
 			current_scene.queue_free() # Removes Node Entirely 
 		elif keep_running:
 			current_scene.visible = false # Keeps in memory and running 
 		else:
-			print("RRemoved Child")
+			
+			#print("RRemoved Child")
 			scene.remove_child(current_scene) #Keeps in memory, does not run 
 			
 			# Wait one frame to ensure the old scene is properly removed

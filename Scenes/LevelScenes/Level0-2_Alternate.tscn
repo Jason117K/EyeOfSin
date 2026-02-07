@@ -1191,21 +1191,10 @@ process_mode = 1
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_b1irm")]
 position = Vector2(742, 109)
 make_green = true
-Round1_Zombies = {
-"Base": 2,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
-"Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
-}
 Round2_Zombies = {
-"Base": 2,
+"Base": 0,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -1215,8 +1204,8 @@ Round2_Zombies = {
 }
 Round3_Zombies = {
 "Base": 0,
-"BucketHead": 0,
-"ConeHead": 3,
+"BucketHead": 1,
+"ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -1234,9 +1223,9 @@ levelToStart = NodePath("../../..")
 position = Vector2(742, 141)
 make_green = true
 Round1_Zombies = {
-"Base": 2,
+"Base": 0,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -1245,9 +1234,9 @@ Round1_Zombies = {
 "Ticker": 0
 }
 Round2_Zombies = {
-"Base": 0,
+"Base": 3,
 "BucketHead": 0,
-"ConeHead": 3,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -1256,8 +1245,8 @@ Round2_Zombies = {
 "Ticker": 0
 }
 Round3_Zombies = {
-"Base": 0,
-"BucketHead": 2,
+"Base": 5,
+"BucketHead": 1,
 "ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
@@ -1276,7 +1265,7 @@ levelToStart = NodePath("../../..")
 position = Vector2(742, 173)
 make_green = true
 Round1_Zombies = {
-"Base": 2,
+"Base": 3,
 "BucketHead": 0,
 "ConeHead": 0,
 "Dancer": 0,
@@ -1289,7 +1278,7 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Base": 3,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 1,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
@@ -1298,10 +1287,10 @@ Round2_Zombies = {
 "Ticker": 0
 }
 Round3_Zombies = {
-"Base": 0,
+"Base": 4,
 "BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 1,
+"ConeHead": 4,
+"Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
 "Rohan": 0,

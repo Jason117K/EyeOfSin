@@ -96,14 +96,36 @@ process_mode = 1
 position = Vector2(740, 77)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 8,
+"ConeHead": 1,
 "Dancer": 0,
-"Football": 0,
+"Football": 2,
+"PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 1,
+"Ticker": 3
+}
+Round2_Zombies = {
+"Base": 11,
+"BucketHead": 3,
+"ConeHead": 5,
+"Dancer": 1,
+"Football": 2,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round3_Zombies = {
+"Base": 8,
+"BucketHead": 5,
+"ConeHead": 7,
+"Dancer": 0,
+"Football": 3,
+"PoleVault": 4,
+"Rohan": 0,
+"ScreenDoor": 0,
+"Ticker": 3
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_0g5v1")]
@@ -115,14 +137,36 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 109)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
-"ConeHead": 0,
+"BucketHead": 8,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 2,
+"PoleVault": 4,
+"Rohan": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 8,
+"BucketHead": 4,
+"ConeHead": 2,
 "Dancer": 0,
 "Football": 0,
-"PoleVault": 0,
+"PoleVault": 6,
 "Rohan": 0,
 "ScreenDoor": 0,
 "Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 3,
+"ConeHead": 7,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 5,
+"Rohan": 0,
+"ScreenDoor": 0,
+"Ticker": 2
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_0g5v1")]
@@ -134,10 +178,32 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 141)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 1,
+"BucketHead": 4,
+"ConeHead": 3,
+"Dancer": 1,
+"Football": 1,
+"PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 0,
+"Ticker": 2
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 6,
 "ConeHead": 1,
 "Dancer": 0,
-"Football": 0,
+"Football": 1,
+"PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 0,
+"Ticker": 3
+}
+Round3_Zombies = {
+"Base": 10,
+"BucketHead": 6,
+"ConeHead": 3,
+"Dancer": 0,
+"Football": 5,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
@@ -152,15 +218,37 @@ levelToStart = NodePath("../../..")
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_7nw23")]
 position = Vector2(740, 173)
 Round1_Zombies = {
-"Base": 1,
+"Base": 12,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 1,
 "Dancer": 0,
+"Football": 2,
+"PoleVault": 5,
+"Rohan": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
+"BucketHead": 4,
+"ConeHead": 0,
+"Dancer": 1,
 "Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
-"Ticker": 0
+"Ticker": 4
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 3,
+"ConeHead": 8,
+"Dancer": 0,
+"Football": 2,
+"PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 0,
+"Ticker": 5
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_0g5v1")]
@@ -172,14 +260,36 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 205)
 Round1_Zombies = {
 "Base": 1,
-"BucketHead": 0,
+"BucketHead": 8,
+"ConeHead": 1,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 5,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 10,
+"BucketHead": 12,
 "ConeHead": 0,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
+"ScreenDoor": 2,
 "Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 3,
+"ConeHead": 5,
+"Dancer": 1,
+"Football": 0,
+"PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 9,
+"Ticker": 4
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_0g5v1")]
@@ -191,13 +301,35 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 239.15)
 Round1_Zombies = {
 "Base": 1,
+"BucketHead": 4,
+"ConeHead": 1,
+"Dancer": 1,
+"Football": 1,
+"PoleVault": 5,
+"Rohan": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 0,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 5,
+"Dancer": 0,
+"Football": 1,
+"PoleVault": 3,
+"Rohan": 0,
+"ScreenDoor": 0,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 0,
+"BucketHead": 11,
+"ConeHead": 4,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
+"ScreenDoor": 5,
 "Ticker": 0
 }
 
@@ -210,14 +342,36 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 272)
 Round1_Zombies = {
 "Base": 1,
+"BucketHead": 8,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 2,
+"PoleVault": 0,
+"Rohan": 0,
+"ScreenDoor": 1,
+"Ticker": 0
+}
+Round2_Zombies = {
+"Base": 8,
 "BucketHead": 0,
-"ConeHead": 0,
+"ConeHead": 1,
+"Dancer": 0,
+"Football": 0,
+"PoleVault": 3,
+"Rohan": 0,
+"ScreenDoor": 4,
+"Ticker": 0
+}
+Round3_Zombies = {
+"Base": 18,
+"BucketHead": 6,
+"ConeHead": 7,
 "Dancer": 0,
 "Football": 0,
 "PoleVault": 0,
 "Rohan": 0,
 "ScreenDoor": 0,
-"Ticker": 0
+"Ticker": 1
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_0g5v1")]
@@ -554,7 +708,7 @@ script = ExtResource("25_7nw23")
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]
