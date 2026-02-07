@@ -42,6 +42,9 @@ const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.tx
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
+	waveManager.Wave2StartTime = 37
+	waveManager.Wave3StartTime = 50
+
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03,level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS

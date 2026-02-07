@@ -72,7 +72,9 @@ func getHealthComponent():
 # Handles the zombie taking damage 
 func take_damage(damage):
 	print(zombie.name, " jjust took, ", damage)
-	
+	bloodHit.visible = true 
+	bloodHit.rotation_degrees = randf_range(-60, 60)
+	bloodHit.play("hit")
 	
 	
 	
@@ -141,3 +143,8 @@ func _on_ResetThisColor_timeout():
 func _on_DebuffDegrade_timeout():
 	if((isSlow - 10) >= 0):
 		isSlow = isSlow - 10
+
+
+func _on_blood_hit_animation_finished() -> void:
+	bloodHit.visible = false
+	bloodHit.rotation_degrees = 0

@@ -74,6 +74,8 @@ var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
+	waveManager.Wave2StartTime = 35
+	waveManager.Wave3StartTime = 55
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
 	
 	setup_plant_selection_menu()

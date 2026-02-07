@@ -44,9 +44,12 @@ var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 @export var new_end_dialog = "res://Assets/Dialog/level_0_end_dialog.dtl"
 
 func _ready():
+	Dialogic.Inputs.auto_skip.enabled = true 
 	Global.current_level = self
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
+	waveManager.Wave2StartTime = 20
+	waveManager.Wave3StartTime = 30
 	print("WaveManager is ", waveManager)
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level0_1,level0_1Alt)

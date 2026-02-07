@@ -41,6 +41,9 @@ const TUTORIAL_EXPLAIN_SUMMONER = "res://Assets/Text/TextFiles/ZombieDescription
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
+	waveManager.Wave2StartTime = 35
+	waveManager.Wave3StartTime = 45
+	
 	pause_Button.set_restart_levels(level04,level04Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_WYRM)

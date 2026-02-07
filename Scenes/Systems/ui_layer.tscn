@@ -37,7 +37,6 @@ text = "Blood : "
 layout_mode = 2
 
 [node name="HealthPointsLabel" type="Label" parent="HBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_nx033")

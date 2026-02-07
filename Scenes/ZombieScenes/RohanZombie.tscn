@@ -1,6 +1,7 @@
-[gd_scene load_steps=84 format=3 uid="uid://bg4nsfcybe55t"]
+[gd_scene load_steps=90 format=3 uid="uid://bg4nsfcybe55t"]
 
-[ext_resource type="Script" uid="uid://cvf357kn8knle" path="res://Scripts/Zombies/RohanZombie.gd" id="1_gima6"]
+[ext_resource type="Script" path="res://Scripts/Zombies/RohanZombie.gd" id="1_gima6"]
+[ext_resource type="Texture2D" uid="uid://b1dfc7glbf42w" path="res://Assets/Zombies/Animations/BloodHitFX-Sheet.png" id="2_1x2dv"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="2_fcwo0"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="3_mqmnj"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4_l212a"]
@@ -9,6 +10,42 @@
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://Scripts/Plants/Shaders/DemonHueShift.gdshader" id="7_2n4dv"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="8_7ej8x"]
 [ext_resource type="Texture2D" uid="uid://rl210wbm7b8f" path="res://Assets/Animations/The Tarnished Widow 188x90.png" id="8_nhx5k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jkk3"]
+atlas = ExtResource("2_1x2dv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl74n"]
+atlas = ExtResource("2_1x2dv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nihiw"]
+atlas = ExtResource("2_1x2dv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3amw"]
+atlas = ExtResource("2_1x2dv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0a8uh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jkk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl74n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nihiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3amw")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 15.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oaedh"]
 shader = ExtResource("7_2n4dv")
@@ -560,6 +597,12 @@ collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_gima6")
 
+[node name="BloodHit" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(4, -8)
+sprite_frames = SubResource("SpriteFrames_0a8uh")
+animation = &"hit"
+
 [node name="ComponentManager" parent="." instance=ExtResource("2_fcwo0")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_mqmnj")]
@@ -621,6 +664,7 @@ wait_time = 20.0
 [node name="TeleportTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="AttackComponent" method="_on_ShootTimer_timeout"]

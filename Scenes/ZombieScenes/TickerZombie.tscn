@@ -1,9 +1,10 @@
-[gd_scene load_steps=56 format=3 uid="uid://b8rpsreq1t70n"]
+[gd_scene load_steps=62 format=3 uid="uid://b8rpsreq1t70n"]
 
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dayah1ly72ajm" path="res://Assets/Zombies/Ticker-Sheet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b1dfc7glbf42w" path="res://Assets/Zombies/Animations/BloodHitFX-Sheet.png" id="2_24hxe"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_ln36l"]
-[ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://hqk27c6jaac0" path="res://Scripts/Zombies/TickerZombie.gd" id="6"]
@@ -12,6 +13,42 @@
 [ext_resource type="Texture2D" uid="uid://ngjx3kqoe6yb" path="res://Assets/Zombies/TickerHitEffect-Sheet.png" id="11"]
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://Scripts/Zombies/AOEHit.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://Assets/Zombies/Animations/Ticker/Ticker-WebSheet.png" id="13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jkk3"]
+atlas = ExtResource("2_24hxe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl74n"]
+atlas = ExtResource("2_24hxe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nihiw"]
+atlas = ExtResource("2_24hxe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3amw"]
+atlas = ExtResource("2_24hxe")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0oyjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jkk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl74n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nihiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3amw")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="15"]
 size = Vector2(18, 30)
@@ -336,6 +373,12 @@ position = Vector2(0, -15)
 collision_layer = 2
 script = ExtResource("6")
 
+[node name="BloodHit" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-6, 2)
+sprite_frames = SubResource("SpriteFrames_0oyjo")
+animation = &"hit"
+
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
 position = Vector2(1, 19)
@@ -362,9 +405,7 @@ shape = SubResource("15")
 material = SubResource("16")
 position = Vector2(8, 0)
 sprite_frames = SubResource("14")
-animation = &"Attack"
-frame = 3
-frame_progress = 0.75243
+animation = &"Walk"
 flip_h = true
 script = ExtResource("9")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -385,14 +426,17 @@ position = Vector2(-24, 4)
 sprite_frames = SubResource("28")
 
 [node name="Hit2" type="AnimatedSprite2D" parent="AOEHit"]
+visible = false
 position = Vector2(-96.6667, 4)
 sprite_frames = SubResource("28")
 
 [node name="Hit3" type="AnimatedSprite2D" parent="AOEHit"]
+visible = false
 position = Vector2(-54.6667, 4)
 sprite_frames = SubResource("28")
 
 [node name="Hit4" type="AnimatedSprite2D" parent="AOEHit"]
+visible = false
 position = Vector2(-140, 4.66667)
 sprite_frames = SubResource("28")
 
@@ -406,6 +450,7 @@ visible = false
 position = Vector2(-62.5834, 4.66667)
 shape = SubResource("29")
 
+[connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
 [connection signal="animation_finished" from="AOEHit/Hit3" to="AOEHit" method="_on_Hit3_animation_finished"]

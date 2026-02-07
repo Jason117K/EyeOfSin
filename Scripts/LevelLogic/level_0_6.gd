@@ -38,6 +38,12 @@ func _ready():
 	Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
+	waveManager.Wave2StartTime = 35
+	waveManager.Wave3StartTime = 45
+	waveManager.Wave1_Interval = 3
+	
+	
+	
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level06,level06Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
