@@ -2,6 +2,8 @@ extends Node2D
 # AttackComp.gd 
 # Handles Zombie attacking Plant Behavior 
 
+class_name AttackComponent
+
 @export var attack_power = 33 # Adjustable reference to attack damage
 var is_attacking = false  # Whether or not we attacking
 var target_plant = null  # Holds reference to the plant being attacked
