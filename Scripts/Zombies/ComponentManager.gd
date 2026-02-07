@@ -22,6 +22,7 @@ var spawn_slow_field := false
 @onready var healthComp = $"../HealthComponent" # RefCounted to health comp 
 @onready var speedComp =  $"../SpeedComponent"   # RefCounted to Speed Comp
 @onready var zombie : Zombie = get_parent()
+@onready var bloodHit := $"../BloodHit"
 
 func knockBack():
 	zombie.global_position = zombie.global_position + Vector2(9,0) 
@@ -71,6 +72,10 @@ func getHealthComponent():
 # Handles the zombie taking damage 
 func take_damage(damage):
 	print(zombie.name, " jjust took, ", damage)
+	
+	
+	
+	
 	healthComp.take_damage(damage)
 	
 	# Adds a visual effect for damage 
