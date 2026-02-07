@@ -19,7 +19,7 @@ func attack_plant(collider):
 func _on_TeleportTimer_timeout():
 	teleport_timer.stop()
 	stop_attack()
-	teleport_timer.wait_time = rng.randf_range(50, 80)
+	teleport_timer.wait_time = rng.randf_range(2, 15)
 	is_attacking = true
 	zombieSprite.play("Teleport_Start")
 	await zombieSprite.animation_finished
@@ -108,11 +108,15 @@ func _on_AttackTimer_timeout():
 					plant.take_damage(attack_power)
 				else:
 					stop_attack()
+					return
 				if "Ticker" in parent.get_name():
 					get_parent().die()
 			else:
 				stop_attack()
-			
+				return
+	if(target_plants.size() > 0):
+		zombieSprite.play("Stomp_End")
+		await zombieSprite.animation_finished
 	target_plants = []
 	stop_attack()
 # Stops the attack and resumes movement
@@ -156,7 +160,7 @@ func _process(_delta):
 		if colliders.size() > 0:
 			is_attacking = true
 			target_plants = colliders
-			zombieSprite.play("Stomp")
+			zombieSprite.play("Stomp_Start")
 			await zombieSprite.animation_finished
 			if "Bucket" in parent.name:
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)

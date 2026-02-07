@@ -84,6 +84,34 @@ region = Rect2(564, 270, 188, 90)
 atlas = ExtResource("8_nhx5k")
 region = Rect2(752, 270, 188, 90)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3phxh"]
+atlas = ExtResource("8_nhx5k")
+region = Rect2(2068, 180, 188, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0alxy"]
+atlas = ExtResource("8_nhx5k")
+region = Rect2(2256, 180, 188, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7xyu"]
+atlas = ExtResource("8_nhx5k")
+region = Rect2(2444, 180, 188, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1381m"]
+atlas = ExtResource("8_nhx5k")
+region = Rect2(2632, 180, 188, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe5gc"]
+atlas = ExtResource("8_nhx5k")
+region = Rect2(2820, 180, 188, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3pi0"]
+atlas = ExtResource("8_nhx5k")
+region = Rect2(3008, 180, 188, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucgrn"]
+atlas = ExtResource("8_nhx5k")
+region = Rect2(3196, 180, 188, 90)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jijd5"]
 atlas = ExtResource("8_nhx5k")
 region = Rect2(0, 180, 188, 90)
@@ -127,34 +155,6 @@ region = Rect2(1692, 180, 188, 90)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdgrb"]
 atlas = ExtResource("8_nhx5k")
 region = Rect2(1880, 180, 188, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3phxh"]
-atlas = ExtResource("8_nhx5k")
-region = Rect2(2068, 180, 188, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0alxy"]
-atlas = ExtResource("8_nhx5k")
-region = Rect2(2256, 180, 188, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g7xyu"]
-atlas = ExtResource("8_nhx5k")
-region = Rect2(2444, 180, 188, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1381m"]
-atlas = ExtResource("8_nhx5k")
-region = Rect2(2632, 180, 188, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fe5gc"]
-atlas = ExtResource("8_nhx5k")
-region = Rect2(2820, 180, 188, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3pi0"]
-atlas = ExtResource("8_nhx5k")
-region = Rect2(3008, 180, 188, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ucgrn"]
-atlas = ExtResource("8_nhx5k")
-region = Rect2(3196, 180, 188, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6cn8"]
 atlas = ExtResource("8_nhx5k")
@@ -366,6 +366,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3phxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0alxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7xyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1381m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe5gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3pi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucgrn")
+}],
+"loop": false,
+"name": &"Stomp_End",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jijd5")
 }, {
 "duration": 1.0,
@@ -397,30 +423,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sdgrb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3phxh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0alxy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g7xyu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1381m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fe5gc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o3pi0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ucgrn")
 }],
 "loop": false,
-"name": &"Stomp",
+"name": &"Stomp_Start",
 "speed": 5.0
 }, {
 "frames": [{
@@ -563,7 +568,7 @@ script = ExtResource("1_gima6")
 [node name="ComponentManager" parent="." instance=ExtResource("2_fcwo0")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_mqmnj")]
-health = 3000
+health = 900000
 bloodWorth = 50.0
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4_l212a")]
@@ -580,9 +585,7 @@ position = Vector2(16.087, -26.525)
 rotation = 3.14159
 scale = Vector2(1, -1)
 sprite_frames = SubResource("9")
-animation = &"Stomp"
-frame = 3
-frame_progress = 0.0347027
+animation = &"Stomp_Start"
 script = ExtResource("8_7ej8x")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
@@ -614,6 +617,7 @@ collision_mask = 7
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.001
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 20.0
