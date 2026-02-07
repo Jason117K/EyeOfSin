@@ -74,7 +74,10 @@ func take_damage(damage):
 	print(zombie.name, " jjust took, ", damage)
 	bloodHit.visible = true 
 	bloodHit.rotation_degrees = randf_range(-60, 60)
-	bloodHit.play("hit")
+	if zombie.is_in_group("Purple"):
+		bloodHit.play("hit_purple")
+	else:
+		bloodHit.play("hit_green")
 	
 	
 	

@@ -1,8 +1,8 @@
-[gd_scene load_steps=70 format=3 uid="uid://e31uaiyqsnpf"]
+[gd_scene load_steps=65 format=3 uid="uid://e31uaiyqsnpf"]
 
 [ext_resource type="Texture2D" uid="uid://cxngjs3ld2psd" path="res://Assets/Zombies/SwordBucketZombie-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bjujkcy7ub8up" path="res://Scripts/Zombies/BucketHeadZombie.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://b1dfc7glbf42w" path="res://Assets/Zombies/Animations/BloodHitFX-Sheet.png" id="2_ey1sx"]
+[ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://Scenes/ZombieScenes/Zombie_Hit_FX.tres" id="2_ey1sx"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_vjupx"]
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Scenes/ZombieScenes/HealthComponent.tscn" id="6"]
@@ -11,42 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://behdfh75j1wph" path="res://Assets/Zombies/SwordBucketZombie-SheeWEBt.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jkk3"]
-atlas = ExtResource("2_ey1sx")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kl74n"]
-atlas = ExtResource("2_ey1sx")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nihiw"]
-atlas = ExtResource("2_ey1sx")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3amw"]
-atlas = ExtResource("2_ey1sx")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_13goh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jkk3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kl74n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nihiw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3amw")
-}],
-"loop": false,
-"name": &"hit",
-"speed": 15.0
-}]
 
 [sub_resource type="RectangleShape2D" id="1"]
 
@@ -441,7 +405,7 @@ script = ExtResource("2")
 [node name="BloodHit" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-8, 1)
-sprite_frames = SubResource("SpriteFrames_13goh")
+sprite_frames = ExtResource("2_ey1sx")
 animation = &"hit"
 
 [node name="Shadow" type="Sprite2D" parent="."]

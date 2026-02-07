@@ -1,7 +1,7 @@
-[gd_scene load_steps=50 format=3 uid="uid://2ax0wkgo0i4b"]
+[gd_scene load_steps=45 format=3 uid="uid://2ax0wkgo0i4b"]
 
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://Scenes/ZombieScenes/SpeedComponent.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://b1dfc7glbf42w" path="res://Assets/Zombies/Animations/BloodHitFX-Sheet.png" id="2_8gbs0"]
+[ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://Scenes/ZombieScenes/Zombie_Hit_FX.tres" id="2_8gbs0"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_26b7w"]
 [ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://Scenes/ZombieScenes/AttackComponent.tscn" id="4"]
@@ -12,42 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://Assets/Zombies/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://Scripts/Zombies/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://Scenes/ZombieScenes/ComponentManager.tscn" id="11"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jkk3"]
-atlas = ExtResource("2_8gbs0")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kl74n"]
-atlas = ExtResource("2_8gbs0")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nihiw"]
-atlas = ExtResource("2_8gbs0")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3amw"]
-atlas = ExtResource("2_8gbs0")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2iiyb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2jkk3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kl74n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nihiw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p3amw")
-}],
-"loop": false,
-"name": &"hit",
-"speed": 15.0
-}]
 
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 38)
@@ -295,7 +259,7 @@ script = ExtResource("5")
 [node name="BloodHit" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-1, 3)
-sprite_frames = SubResource("SpriteFrames_2iiyb")
+sprite_frames = ExtResource("2_8gbs0")
 animation = &"hit"
 
 [node name="Shadow" type="Sprite2D" parent="."]
