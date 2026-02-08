@@ -19,7 +19,7 @@ func attack_plant(collider):
 func _on_TeleportTimer_timeout():
 	teleport_timer.stop()
 	stop_attack()
-	teleport_timer.wait_time = rng.randf_range(2, 12)
+	teleport_timer.wait_time = rng.randf_range(2, 15)
 	is_attacking = true
 	zombieSprite.play("Teleport_Start")
 	await zombieSprite.animation_finished
@@ -87,31 +87,38 @@ func _on_AttackTimer_timeout():
 	else:
 		print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
-		
+	print("TARGET PLANTS: ", target_plants)
 	for plant in target_plants:
-		if(is_instance_valid(plant) 
-		&& ((plant.is_in_group("Green") && self.parent.is_in_group("Green"))
+		if(is_instance_valid(plant)):
+			print("PLANT NAME: ", plant)
+			if(((plant.is_in_group("Green") && self.parent.is_in_group("Green"))
 		|| (plant.is_in_group("Purple") && self.parent.is_in_group("Purple")))):
-			print("target plant name is ", plant.name)
-			if(plant.health >= 0):
-				if plant.has_method("mawBuffed"):
-					if plant.can_eat_zombie == true :
-						print("Demon Can Eat Me Time to Die")
-						plant.eat_zombie()
-						get_parent().die()
-				if plant.has_method("walnutWyrmBuffed"):
-					if plant.can_damage_zombie == true :
-						print("Demon Hive Can Damage Me While I Eat")
-						zombie.getCompManager().take_damage(10)
-						
-				plant.take_damage(attack_power)
+				if(plant.health >= 0):
+					if plant.has_method("mawBuffed"):
+						if plant.can_eat_zombie == true :
+							print("Demon Can Eat Me Time to Die")
+							plant.eat_zombie()
+							get_parent().die()
+					if plant.has_method("walnutWyrmBuffed"):
+						if plant.can_damage_zombie == true :
+							print("Demon Hive Can Damage Me While I Eat")
+							zombie.getCompManager().take_damage(10)
+							
+					print("MELEE ATTACK", plant)
+					plant.take_damage(attack_power)
+				else:
+					stop_attack()
+					return
+				if "Ticker" in parent.get_name():
+					get_parent().die()
 			else:
 				stop_attack()
-			if "Ticker" in parent.get_name():
-				get_parent().die()
-		else:
-			stop_attack()
-			
+				return
+	if(target_plants.size() > 0):
+		zombieSprite.play("Stomp_End")
+		await zombieSprite.animation_finished
+	target_plants = []
+	stop_attack()
 # Stops the attack and resumes movement
 func stop_attack():
 	#print("Stopping Attack")
@@ -122,10 +129,6 @@ func stop_attack():
 func _process(_delta):
 	if not is_attacking:
 		var colliders = []
-		if shoot_ray.is_colliding() && 1 == rng.randi_range(1, (shootProbability)):
-			if shoot_ray.get_collider().is_in_group("Plants"):
-				shoot()
-				pass
 		for ray in attack_rays:
 			if ray.is_colliding():
 				var collider = ray.get_collider()
@@ -135,9 +138,9 @@ func _process(_delta):
 						#print("Collider In Right Group")
 						if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
 							if collider.get_parent().get_parent().get_parent() != self.get_parent().get_parent().get_parent():
-								#print("Collider Early Return")
+								print("Collider Early Return")
 								return
-					#	print(collider.name , " is in group plants")
+						print(collider.name , " is in group plants")
 						if("PoleVaultZombie" in parent.name):
 							print(parent.name, " - canSpecialPP: ", canSpecial)
 							print("PP Parent Is Pole Vault")
@@ -157,7 +160,8 @@ func _process(_delta):
 		if colliders.size() > 0:
 			is_attacking = true
 			target_plants = colliders
-			zombieSprite.play("Stomp")
+			zombieSprite.play("Stomp_Start")
+			await zombieSprite.animation_finished
 			if "Bucket" in parent.name:
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)
 			elif "Dancer" in parent.name:
@@ -168,9 +172,14 @@ func _process(_delta):
 				print("Playing ZOMBIE DEAL DAMAGE in attack_plant for parent ", parent.name)
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 			attack_timer.start()
+		else:
+			if shoot_ray.is_colliding() && 1 == rng.randi_range(1, (shootProbability)):
+				if shoot_ray.get_collider().is_in_group("Plants"):
+					shoot()
 
 
 func shoot():
+	stop_attack()
 	is_attacking = true
 	zombieSprite.play("Shoot_Start")
 	await zombieSprite.animation_finished
