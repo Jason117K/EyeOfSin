@@ -10,18 +10,18 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "Syn_Lucretia_Portrait",
+&"default_portrait": "Syn Lucretia Portrait Tem Pt",
 &"description": "",
 &"display_name": "Syn Lucretia",
-&"mirror": false,
+&"mirror": true,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
-"Syn_Lucretia_Portrait": {
+"Syn Lucretia Portrait Tem Pt": {
 "export_overrides": {
-"image": "\"res://Assets/Icons/elucrwip1.png\""
+"image": "\"res://Assets/Characters/SynLucretiaPortraitTEMPt.png\""
 },
-"mirror": true,
+"mirror": false,
 "offset": Vector2(0, 0),
 "scale": 1,
 "scene": ""

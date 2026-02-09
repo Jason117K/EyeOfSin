@@ -40,7 +40,7 @@ const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.tx
 
 
 func _ready():
-	Dialogic.Inputs.auto_skip.enabled = true 
+	#Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	waveManager.Wave2StartTime = 37
@@ -64,7 +64,7 @@ func _ready():
 	# Connect to button presses
 	var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
-	
+	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	Dialogic.start("res://Assets/Dialog/level_03_start_dialog.dtl")
 	
@@ -80,6 +80,7 @@ func _ready():
 func finish_ready():
 	print("Skipped Dialog")
 	# Start tutorial
+	toolTips.show()
 	_transition_to_state(TutorialState.FORCE_SELECT_MAW)
 	levelSwitcher.update_level(level04,level04Alt)
 	Global.unHidePlantSelectionMenu()

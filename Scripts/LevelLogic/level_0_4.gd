@@ -39,7 +39,7 @@ const TUTORIAL_EXPLAIN_SUMMONER = "res://Assets/Text/TextFiles/ZombieDescription
 
 
 func _ready():
-	Dialogic.Inputs.auto_skip.enabled = true 
+	#Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	waveManager.Wave2StartTime = 35
@@ -63,7 +63,7 @@ func _ready():
 	# Connect to button presses
 	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
 	wyrm_button.connect("pressed", Callable(self, "_on_wyrm_button_pressed"))
-	
+	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	Dialogic.start("res://Assets/Dialog/level_04_start_dialog.dtl")
 	# Start tutorial
@@ -77,6 +77,7 @@ func _ready():
 	
 func finish_ready():
 	print("Skipped Dialog")
+	toolTips.show()
 	_transition_to_state(TutorialState.FORCE_SELECT_WYRM)
 	levelSwitcher.update_level(level05,level05Alt)
 	levelSwitcher.visible = false

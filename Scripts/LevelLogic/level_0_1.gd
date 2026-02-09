@@ -17,6 +17,7 @@ enum TutorialState {
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_SPYDER
 var wave_1_active: bool = false
 var wave_1_complete: bool = false
+var spyder_already_selected = false
 
 # Node references
 #@onready var toolTips = $ToolTips
@@ -44,7 +45,7 @@ var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 @export var new_end_dialog = "res://Assets/Dialog/level_0_end_dialog.dtl"
 
 func _ready():
-	Dialogic.Inputs.auto_skip.enabled = true 
+	#Dialogic.Inputs.auto_skip.enabled = true 
 	Global.current_level = self
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
@@ -154,7 +155,9 @@ func _transition_to_state(new_state: TutorialState):
 
 	match new_state:
 		TutorialState.FORCE_SELECT_SPYDER:
-			_start_force_select_spyder()
+			if !spyder_already_selected:
+				spyder_already_selected = true
+				_start_force_select_spyder()
 		TutorialState.FORCE_PLACE_PLANT:
 			_start_force_place_plant()
 		TutorialState.EXPLAIN_BLOOD_COST:
@@ -316,7 +319,7 @@ func _on_spyder_placed():
 
 
 func _on_spyder_button_pressed():
-	print("[Tutorial] Spyder button pressed in state: ", TutorialState.keys()[tutorial_state])
+	print(tutorial_state, "[Tutorial] Spyder button pressed in state: ", TutorialState.keys()[tutorial_state])
 	if tutorial_state == TutorialState.FORCE_SELECT_SPYDER:
 		_transition_to_state(TutorialState.FORCE_PLACE_PLANT)
 
@@ -368,7 +371,7 @@ func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
 	if not target_node or not spotlight_overlay:
 		print("NOT SHOWING SPOTLIGHT")
 		return
-	print("Showing Spotlight", target_node, size_multiplier)
+	print("Showing Spotlight At Node", target_node, size_multiplier)
 
 	# Get center of target in screen coordinates
 	var global_rect = target_node.get_global_rect()
@@ -387,7 +390,7 @@ func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
 		return
 	var viewport_size = get_viewport().get_visible_rect().size
 	var uv_pos = screen_pos / viewport_size
-	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
+	print("[SHOW SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
 	#var viewport_size = get_viewport().get_visible_rect().size
 	#var uv_pos = screen_pos / viewport_size
 

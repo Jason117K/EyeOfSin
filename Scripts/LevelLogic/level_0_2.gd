@@ -72,7 +72,11 @@ var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 @export var new_end_dialog = "res://Assets/Dialog/level_02_end_dialog.dtl"
 
 func _ready():
-	Dialogic.Inputs.auto_skip.enabled = true 
+	#Dialogic.Inputs.auto_skip.enabled = true 
+	levelSwitcher.visible = false
+	plantSelectionMenu.visible = false
+	print("UNPAUSE GAME")
+	get_tree().paused = false
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	waveManager.Wave2StartTime = 35
@@ -105,7 +109,7 @@ func _ready():
 	
 	var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
 	walnut_button.connect("pressed", Callable(self, "_on_walnut_button_pressed"))
-	
+	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	Dialogic.start("res://Assets/Dialog/level_02_start_dialog.dtl")
 	
@@ -119,11 +123,12 @@ func _ready():
 
 func finish_ready():
 	print("Skipped Dialog")
+	toolTips.show()
 	_transition_to_state(TutorialState.FORCE_SELECT_SUNFLOWER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
-	
+	#levelSwitcher.visible = false
 	levelSwitcher.update_level(level03,level03Alt)
-	
+	levelSwitcher.visible = false
 	Global.unHidePlantSelectionMenu()
 	
 	
@@ -183,7 +188,7 @@ func attach_script_to_sway_children(script_path: String) -> void:
 			#if self.is_in_group("Green"):
 				#child.make_green()
 			child._ready()
-		print("Script attached to: ", child.name)	
+		#print("Script attached to: ", child.name)	
 	
 	
 func _start_explain_buckethead_zombie():
@@ -337,6 +342,7 @@ func _start_force_select_spyder_after_blood():
 	# Keep game running
 	waveManager.canStartGame = false
 	plantSelectionMenu.canSwapScenes = false
+	print("PAUSE GAME")
 	get_tree().paused = true 
 
 
@@ -356,6 +362,7 @@ func _start_force_place_spyder_behind():
 
 func _start_explain_blood_buffs():
 	print("[Tutorial] Starting EXPLAIN_BLOOD_BUFFS")
+	print("PAUSE GAME")
 	get_tree().paused = true
 	#toolTips.set_text_pause(TUTORIAL_BLOOD_BUFFS)
 	toolTips.setComplexSceneText(TUTORIAL_BLOOD_BUFFS)
@@ -364,6 +371,7 @@ func _start_explain_blood_buffs():
 	
 func _start_explain_blood_buffs_2():
 	print("[Tutorial] Starting EXPLAIN_BLOOD_BUFFS_2")
+	print("PAUSE GAME")
 	get_tree().paused = true
 	#toolTips.set_text_pause(TUTORIAL_BLOOD_BUFFS)
 	toolTips.setComplexSceneText(TUTORIAL_BLOOD_BUFFS_2)
@@ -488,22 +496,26 @@ func _on_tooltip_hidden():
 		# EXPLAIN_BLOOD_GENERATION handled by blood pickup detection in _physics_process
 		TutorialState.EXPLAIN_BLOOD_BUFFS:
 			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_BUFFS to EXPLAIN_BLOOD_BUFFS_2")
+			print("UNPAUSE GAME")
 			get_tree().paused = false  # Unpause game
 			_transition_to_state(TutorialState.EXPLAIN_BLOOD_BUFFS_2)
 		TutorialState.EXPLAIN_BLOOD_BUFFS_2:
 			print("[Tutorial] Transitioning from EXPLAIN_BLOOD_BUFFS to WAVE_1_ACTIVE")
+			print("UNPAUSE GAME")
 			get_tree().paused = false  # Unpause game
 			_transition_to_state(TutorialState.WAVE_1_ACTIVE)
 			plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 
 		TutorialState.EXPLAIN_BUCKETHEAD_ZOMBIE:
 			print("[Tutorial] Buckethead explained - waiting for Wave 3")
+			print("UNPAUSE GAME")
 			get_tree().paused = false  # Unpause game
 			# No state transition - wait for wave3Started signal
 
 		# Handle invalid placement error - return to placement state
 		TutorialState.FORCE_PLACE_SPYDER_BEHIND:
 			print("[Tutorial] Error acknowledged - returning to Spyder placement")
+			print("UNPAUSE GAME")
 			get_tree().paused = false
 			# State already FORCE_PLACE_SPYDER_BEHIND - player can try again
 
@@ -531,6 +543,7 @@ func _on_spyder_placed(grid_pos: Vector2):
 		plantManager.add_sun(50)
 
 		# Show error message
+		print("PAUSE GAME")
 		get_tree().paused = true
 		toolTips.set_text_pause(TUTORIAL_INVALID_SPYDER)
 		toolTips.showButton()
@@ -629,6 +642,7 @@ func _physics_process(_delta):
 		waiting_for_blood = false
 		toolTips.hide()
 		hide_spotlight()
+		print("UNPAUSE GAME")
 		get_tree().paused = false  # Ensure game is unpaused
 		_transition_to_state(TutorialState.FORCE_SELECT_SPYDER_AFTER_BLOOD)
 

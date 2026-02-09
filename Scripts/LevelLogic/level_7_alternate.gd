@@ -51,4 +51,4 @@ func attach_script_to_coral_children(script_path: String) -> void:
 			if make_green:
 				child.make_green()
 			child._ready()
-		print("Script attached to: ", child.name)
+		#print("Script attached to: ", child.name)

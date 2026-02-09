@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 		
 func _on_pressed() -> void:
 	print("PP Pause Button Pressed")
+	print("PAUSE GAME")
 	get_tree().paused = true 
 	pauseMenu.visible = true 
 
@@ -19,4 +20,6 @@ func set_restart_levels(newLevel,newAltLevel):
 	pauseMenu.set_restart_levels(newLevel,newAltLevel)
 
 func hide_toolTip():
-	toolTips.hide()
+	if toolTips != null:
+		
+		toolTips.hide()

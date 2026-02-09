@@ -10,16 +10,16 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "Fish",
+&"default_portrait": "Rohan Place Holder",
 &"description": "",
 &"display_name": "Rohan Moore",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
-"Fish": {
+"Rohan Place Holder": {
 "export_overrides": {
-"image": "\"res://Assets/Environment/Fish.png\""
+"image": "\"res://Assets/Characters/RohanPlaceHolder.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

@@ -47,7 +47,7 @@ func attach_script_to_sway_children(script_path: String) -> void:
 			#if self.is_in_group("Green"):
 				#child.make_green()
 			child._ready()
-		print("Script attached to: ", child.name)	
+		#print("Script attached to: ", child.name)	
 	
 func place_empty_blocker_plant(grid_pos):
 	plantManager.place_empty_blocker_plant(grid_pos)
@@ -80,7 +80,7 @@ func add_sun(sunAmount):
 
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 2)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 5)
 	
 func hide_guide():
 	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		

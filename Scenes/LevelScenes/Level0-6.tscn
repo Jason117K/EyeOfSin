@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ds5agdrtpf8cx"]
+[gd_scene load_steps=32 format=4 uid="uid://ds5agdrtpf8cx"]
 
 [ext_resource type="Script" uid="uid://c4jlf7l0jh1tt" path="res://Scripts/LevelLogic/level_0_6.gd" id="1_a4agt"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_au3v8"]
@@ -21,10 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_07b0m"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="21_au3v8"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="22_jfq8m"]
-[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://Assets/Text/WhiteRectangle.png" id="23_au3v8"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="23_vmdu7"]
 [ext_resource type="Script" uid="uid://d3yjo4efg0sgs" path="res://Scripts/button_breathe.gd" id="24_7nw23"]
-[ext_resource type="Script" uid="uid://dg3et3o8agin" path="res://Scripts/white_rectangle.gd" id="25_7nw23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("10_bpnmg")
@@ -218,14 +216,14 @@ levelToStart = NodePath("../../..")
 [node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_7nw23")]
 position = Vector2(740, 173)
 Round1_Zombies = {
-"Base": 12,
+"Base": 0,
 "BucketHead": 0,
-"ConeHead": 1,
+"ConeHead": 0,
 "Dancer": 0,
-"Football": 2,
-"PoleVault": 5,
-"Rohan": 0,
-"ScreenDoor": 1,
+"Football": 0,
+"PoleVault": 0,
+"Rohan": 1,
+"ScreenDoor": 0,
 "Ticker": 0
 }
 Round2_Zombies = {
@@ -698,17 +696,10 @@ offset_bottom = 128.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0g5v1")
 script = ExtResource("24_7nw23")
 
-[node name="WhiteRectangle" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(16, 80)
-scale = Vector2(0.2, 0.355556)
-texture = ExtResource("23_au3v8")
-script = ExtResource("25_7nw23")
-
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

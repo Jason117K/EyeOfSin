@@ -45,6 +45,7 @@ func setComplexSceneTextPause(newFile : String):
 	var newText = file.get_as_text()
 	file.close()
 	synergyLabel.text = newText
+	print("PAUSE GAME")
 	get_tree().paused = true
 	pass
 
@@ -56,7 +57,7 @@ func set_text_pause(newFile : String):
 	var newText = file.get_as_text()
 	file.close()
 	label_text.text = newText	
-	
+	print("PAUSE GAME")
 	get_tree().paused = true
 	pass
 
@@ -126,6 +127,7 @@ func _on_Button_pressed():
 	hide()
 	ToolTipHid.emit()
 	#print("UNPPAUSE HERE1")
+	print("UNPAUSE GAME")
 	get_tree().paused = false
 
 
@@ -133,4 +135,5 @@ func _on_button_2_pressed() -> void:
 	hide()
 	ToolTipHid.emit()
 	#print("UNPPAUSE HERE2")
+	print("UNPAUSE GAME")
 	get_tree().paused = false

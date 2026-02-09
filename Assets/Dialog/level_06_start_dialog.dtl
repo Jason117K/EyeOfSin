@@ -1,4 +1,4 @@
-join Syn_Lucretia center
+join Syn_Lucretia right
 Syn_Lucretia: I’ve made it to the statue, but it’s guarded by even more monster-zombie-things. Convenient timing, looks like we’re both in for a fight.
 join Lucretia left
 Lucretia: Yeah. Rohan is definitely here somewhere…
@@ -6,9 +6,9 @@ join Rohan_Moore center
 Rohan_Moore: Talking to yourself, are you? I’m impressed you’ve managed to follow me this far… to where it all started. Tell me, what is your name?
 Lucretia: Lucretia. I need to speak to Argus. The deals we’ve made – they’re not right. We’re destroying our world!
 Rohan_Moore: It’s true. With each zombie mutated and demon brought to our realm, Argus’ power grows. A new empire is coming, one with him and I on top. Why else would I have released the virus?
-Lucretia:  You can’t trust him, Rohan! Together, we can still fix this. We can undo the deals we made.
+Lucretia: You can’t trust him, Rohan! Together, we can still fix this. We can undo the deals we made.
 Rohan_Moore: It’s too late. He’s here, and I will ascend to join him in ruling this new world, one without useless fighting and inefficiencies. Ultimate peace and order…
 join Argus rightmost
 Argus: Well done, Mr. Moore. You’ve accomplished your end of the bargain. And now it’s time for mine. Ascension… or, mutation.
-Rohan_Moore:  What? NOOOOOOO!
+Rohan_Moore: What? NOOOOOOO!
 Lucretia: Argus!!

@@ -35,7 +35,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://Assets/Text/TextFiles/ZombieDescriptions
 
 
 func _ready():
-	Dialogic.Inputs.auto_skip.enabled = true 
+	#Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	waveManager.Wave2StartTime = 35
@@ -154,7 +154,7 @@ func attach_script_to_sway_children(script_path: String) -> void:
 			#if self.is_in_group("Green"):
 				#child.make_green()
 			child._ready()
-		print("Script attached to: ", child.name)	
+		#print("Script attached to: ", child.name)	
 	
 	
 	

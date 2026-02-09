@@ -66,6 +66,7 @@ func _physics_process(_delta):
 		canStartGame = false
 		
 	if(checkEndLevel):
+		print("Alive Enemies is ", get_tree().get_nodes_in_group("Alive-Enemies").size())
 		if levelOver != true :
 			if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
 				end_level()
@@ -77,6 +78,7 @@ func end_level():
 	for child in get_parent().get_parent().get_parent().get_children():
 		if "LevelSwitcher" in child.name:
 			child.visible = true
+	print("PAUSE GAME")
 	get_tree().paused = true
 
 	
@@ -99,18 +101,18 @@ func _ready():
 		#print("CHILD is " , child)
 		if child.is_in_group("PurpleLevel") or child.is_in_group("GreenLevel"):
 			levelChildren.append(child)
-			print("LevelChild is " , child)
+			#print("LevelChild is " , child)
 	for level_child in levelChildren:
 		for child in level_child.get_children():
 			#print("Child is ", child)
 			if "GameLayer" in child.name:
-				print("Childddd is ", child)
+				#print("Childddd is ", child)
 				for new_child in child.get_children():
-					print("New Child is ", new_child)
+					#print("New Child is ", new_child)
 					if "ZombieSpawner" in new_child.name:
 						#print("Spawners.append ", new_child.name)
 						spawners.append(new_child)
-						print("Child Spawner to append is ", new_child)
+						#print("Child Spawner to append is ", new_child)
 						#print("Timers.append new_child.get_child(1) : ",new_child.find_child("WavePreview").name)
 						#print(".get_child(2): , ", new_child.find_child("WavePreview").get_child(2).name)
 						#Appends toggle visibility here toggleV
@@ -272,7 +274,7 @@ func _on_Wave3_timeout():
 	#checkEndLevel = true
 
 func _done_spawning():
-	print("Done Spawing")
+	print("Done Spawning")
 	checkEndLevel = true
 
 #TODO Taking Damage

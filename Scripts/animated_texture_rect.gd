@@ -27,6 +27,7 @@ var frame_delta = 0
 
 func _ready() -> void:
 	#print("AnimatedTextureRect: _ready() called")
+	print("UNPAUSE GAME")
 	get_tree().paused = false
 	
 	# Set initial sprites if none are set

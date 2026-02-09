@@ -69,9 +69,8 @@ offset_bottom = 328.0
 scale = Vector2(0.8, 0.8)
 
 [node name="PauseButton" parent="CurrentScene" instance=ExtResource("7_27abl")]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
-z_index = 2
+z_index = 7
 layout_mode = 0
 offset_left = 683.0
 offset_top = 380.0
@@ -83,3 +82,9 @@ position = Vector2(-64, 200)
 script = ExtResource("9_gruqv")
 StartDelay = 0
 Wave3StartTime = 45
+
+[node name="PauseButton" parent="." instance=ExtResource("7_27abl")]
+offset_left = 672.0
+offset_top = 370.0
+offset_right = 729.0
+offset_bottom = 398.0

@@ -39,7 +39,7 @@ func attach_script_to_sway_children(script_path: String) -> void:
 			#if self.is_in_group("Green"):
 				#child.make_green()
 			child._ready()
-		print("Script attached to: ", child.name)	
+		#print("Script attached to: ", child.name)	
 	
 func getIsGreenDimension():
 	return isGreenDimension

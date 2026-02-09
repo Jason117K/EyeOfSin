@@ -14,6 +14,7 @@ var plant_highlighted := false
 var highlight_plant_global_pos 
 var sunflower_scene := preload("res://Scenes/PlantScenes/Sunflower.tscn")
 var empty_demon_scene := preload("res://Scenes/PlantScenes/EmptyDemon.tscn")
+var spyder_not_placed := true 
 
 @onready var parentName = get_parent().get_name()
 
@@ -376,8 +377,10 @@ func place_plant(grid_pos: Vector2):
 			Global.incrementSunflowerCount()
 			pass
 		elif "Peashooter" in plant_instance.name:
-			print("[TUTORIAL] Emit Spyder Placed")
-			spyder_placed.emit(grid_pos)
+			if spyder_not_placed:
+				print("[TUTORIAL] Emit Spyder Placed")
+				spyder_placed.emit(grid_pos)
+				spyder_not_placed = false
 			pass
 		elif "Walnut" in plant_instance.name:
 			walnut_placed.emit(grid_pos)
