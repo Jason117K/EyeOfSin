@@ -212,9 +212,9 @@ func _input(event):
 			#release_all_focus()
 			#selected_plant = null 
 		if event.keycode == KEY_Y:
-			print("Y Key Pressed")
+			#print("Y Key Pressed")
 			if canSwapScenes:
-				print("Can Swap Scenes is ", canSwapScenes)
+				#print("Can Swap Scenes is ", canSwapScenes)
 				Global.game_controller.swap_scenes()
 			else:
 				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")

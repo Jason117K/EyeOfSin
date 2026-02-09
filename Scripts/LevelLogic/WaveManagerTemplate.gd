@@ -29,7 +29,7 @@ var timers = [] # Array to hold all the timers in the WavePreview nodes
 var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
 var health_points = 10 
 
-@export var StartDelay = 10
+@export var StartDelay = 0
 #Amount of Time it Takes a wave to spawn after previous done
 @export var Wave2StartTime = 25
 @export var Wave3StartTime = 40
@@ -115,11 +115,11 @@ func _ready():
 		for child in level_child.get_children():
 			#print("Child is ", child)
 			if "GameLayer" in child.name:
-				#print("Childddd is ", child)
+				print("Childddd is ", child)
 				for new_child in child.get_children():
 					#print("New Child is ", new_child)
 					if "ZombieSpawner" in new_child.name:
-						#print("Spawners.append ", new_child.name)
+						print("Spawners.append ", new_child.name)
 						spawners.append(new_child)
 						#print("Child Spawner to append is ", new_child)
 						#print("Timers.append new_child.get_child(1) : ",new_child.find_child("WavePreview").name)
@@ -186,7 +186,7 @@ func startSecondWave():
 		
 func _on_ProceedGame_timeout():
 	$ProceedGame.stop()
-	print("ProceedGameTimeout")
+	print("ProceedGameTimeout",numWave)
 	for spawner in spawners:
 		if spawner != null:
 			spawner.increase_wave()

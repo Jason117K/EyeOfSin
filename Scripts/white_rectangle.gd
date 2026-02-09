@@ -19,7 +19,7 @@ var _initial_scale: Vector2
 
 func _ready() -> void:
 	_initial_scale = scale
-	print("Rect Is Alive")
+	#print("Rect Is Alive")
 	
 	if breathing:
 		_start_breathing()

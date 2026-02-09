@@ -80,7 +80,6 @@ offset_bottom = 403.0
 [node name="WaveManager" parent="CurrentScene" instance=ExtResource("8_smyyb")]
 position = Vector2(-64, 200)
 script = ExtResource("9_gruqv")
-StartDelay = 0
 Wave3StartTime = 45
 
 [node name="PauseButton" parent="." instance=ExtResource("7_27abl")]
