@@ -84,7 +84,7 @@ script = ExtResource("1_te6yt")
 sun_points = 105
 
 [node name="GameLayer" type="Node2D" parent="."]
-process_mode = 1
+process_mode = 0
 
 [node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_sg366")]
 position = Vector2(740, 109)
