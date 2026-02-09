@@ -66,7 +66,7 @@ func _physics_process(_delta):
 		canStartGame = false
 		
 	if(checkEndLevel):
-		print("Alive Enemies is ", get_tree().get_nodes_in_group("Alive-Enemies").size())
+		#print("Alive Enemies is ", get_tree().get_nodes_in_group("Alive-Enemies").size())
 		if levelOver != true :
 			if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
 				end_level()
