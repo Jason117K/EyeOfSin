@@ -78,13 +78,11 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	current_alt_scene = new2
 	current_scenes.append(new2)
 	
-	current_scene._ready()
 	print("Current Scenes is now ", current_scenes)
-	#new2._ready()
+	# Reinitialize WaveManager after both scenes are added so it finds new spawners
+	$CurrentScene/WaveManager.call_deferred("_ready")
 	# Force physics update to ensure collision detection works
 	await get_tree().process_frame
-	get_tree().physics_frame	
-	$CurrentScene/WaveManager._ready()
 	print("UNPAUSE GAME")
 	current_scenes[0].get_tree().paused = false  
 	current_scenes[1].get_tree().paused = false 

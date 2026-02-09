@@ -24,7 +24,7 @@ func end_level():
 	if alt : 
 		return 
 	
-	Dialogic.timeline_ended.connect(win_level)
+	Dialogic.timeline_ended.connect(win_level, CONNECT_ONE_SHOT)
 	Dialogic.start(dialogic_end)
 
 

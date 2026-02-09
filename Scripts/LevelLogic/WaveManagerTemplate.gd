@@ -84,7 +84,16 @@ func end_level():
 	
 	
 func _ready():
-	spawners = [] 
+	spawners = []
+	timers = []
+	wavePreviewIcons = []
+	checkEndLevel = false
+	levelOver = false
+	numWave = 0
+	wave1IsStarted = false
+	startWave2 = true
+	health_points = 10
+	canStartGame = false
 	plant_manager = get_parent().get_parent().get_node("PlantManager")
 	$Area2D.connect("area_entered",player_take_damage)
 	

@@ -89,7 +89,7 @@ func _ready():
 	toolTips.set_text(TUTORIAL_SELECT_SUNFLOWER)
 	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
-	green_dimension = get_parent().get_node("Level0-2_Alternate")
+	call_deferred("_find_green_dimension")
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
@@ -120,6 +120,9 @@ func _ready():
 	#levelSwitcher.update_level(level03,level03Alt)
 	#
 	#Global.unHidePlantSelectionMenu()
+
+func _find_green_dimension():
+	green_dimension = get_parent().get_node("Level0-2_Alternate")
 
 func finish_ready():
 	print("Skipped Dialog")
