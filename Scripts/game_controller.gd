@@ -73,22 +73,24 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	current_scenes.append(new1)
 
 	var new2 = load(new_scene2).instantiate()
-	new2.visible = false 
+	new2.visible = false
 	scene.add_child(new2)
 	current_alt_scene = new2
 	current_scenes.append(new2)
-	
+
+	# Unpause BEFORE calling _ready() so everything initializes in unpaused state
+	print("UNPAUSE GAME EARLY")
+	get_tree().paused = false
+	print("PAUSED STATE AFTER EARLY UNPAUSE: ", get_tree().paused)
+
 	current_scene._ready()
 	print("Current Scenes is now ", current_scenes)
 	#new2._ready()
 	# Force physics update to ensure collision detection works
 	await get_tree().process_frame
-	get_tree().physics_frame	
+	get_tree().physics_frame
 	$CurrentScene/WaveManager._ready()
-	print("UNPAUSE GAME")
-	current_scenes[0].get_tree().paused = false  
-	current_scenes[1].get_tree().paused = false 
-	get_tree().paused = false 
+	print("FINAL PAUSED STATE: ", get_tree().paused) 
 
 
 
