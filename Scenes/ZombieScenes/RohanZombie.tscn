@@ -343,7 +343,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Shoot_End",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -363,7 +363,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Shoot_Start",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -389,7 +389,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Stomp_End",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -427,7 +427,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Stomp_Start",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -462,7 +462,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Teleport_End",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -515,7 +515,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Teleport_Start",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -553,7 +553,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -592,7 +592,7 @@ position = Vector2(16.087, -26.525)
 rotation = 3.14159
 scale = Vector2(1, -1)
 sprite_frames = SubResource("9")
-animation = &"Stomp_Start"
+animation = &"Walk"
 script = ExtResource("8_7ej8x")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 

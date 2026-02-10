@@ -36,7 +36,7 @@ var tutorial_sun_instance: Node2D = null
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var pause_Button = $"../PauseButton"
+@onready var pause_Button = $"../../PauseButton"
 
 var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
@@ -738,3 +738,6 @@ func show_guide():
 	
 func hide_guide():
 	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
+
+func get_health_ui():
+	return $UILayer.get_the_health()

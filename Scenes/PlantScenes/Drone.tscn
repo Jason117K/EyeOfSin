@@ -163,6 +163,7 @@ size = Vector2(22, 31)
 [sub_resource type="CircleShape2D" id="21"]
 
 [node name="Drone" type="Area2D" groups=["Plants"]]
+z_index = 1
 script = ExtResource("2")
 health = 100
 attack_damage = 13

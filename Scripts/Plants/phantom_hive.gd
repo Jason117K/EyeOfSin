@@ -178,7 +178,7 @@ func _on_enemy_exited(area):
 func return_drones_to_rest():
 	for drone in available_drones:
 		if is_instance_valid(drone):
-			drone.return_to_position(drone_rest_positions[drone])
+			drone.return_to_position(self.global_position + drone_rest_positions[drone])
 			drone.setAnimation("idle")
 
 func _on_enemy_died(enemy):

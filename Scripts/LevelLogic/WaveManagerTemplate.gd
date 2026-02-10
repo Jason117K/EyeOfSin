@@ -85,6 +85,7 @@ func end_level():
 	
 func _ready():
 	spawners = []
+	print("Spawners is now ", spawners)
 	timers = []
 	wavePreviewIcons = []
 	checkEndLevel = false
@@ -238,8 +239,10 @@ func _on_Wave1_timeout():
 	$Wave1.wait_time = wave_Interval
 	
 	for spawner in spawners:
-		print("Calling Wave 1 Start Spawn Zombie")
-		spawner.start_spawn_zombie()
+		if spawner != null:
+			print("Calling Wave 1 Start Spawn Zombie")
+			print("Spawners is ", spawners)
+			spawner.start_spawn_zombie()
 	#wave1Started.emit()
 	#Global.start_wave_1()
 
@@ -260,10 +263,11 @@ func _on_Wave2_timeout():
 	print("[WM-W2] Next Wave2 interval set to: ", wave_Interval)
 
 	for spawner in spawners:
-		print("[WM-W2] Calling start_spawn_zombie() on spawner: ", spawner.name)
-		print("[WM-W2] Spawner numWave before call: ", spawner.numWave)
-		spawner.start_spawn_zombie()
-		print("[WM-W2] Spawner numWave after call: ", spawner.numWave)
+		if spawner != null:
+			print("[WM-W2] Calling start_spawn_zombie() on spawner: ", spawner.name)
+			print("[WM-W2] Spawner numWave before call: ", spawner.numWave)
+			spawner.start_spawn_zombie()
+			print("[WM-W2] Spawner numWave after call: ", spawner.numWave)
 
 	print("********** WAVE 2 TIMEOUT COMPLETED **********")
 
@@ -277,8 +281,9 @@ func _on_Wave3_timeout():
 	$Wave3.wait_time = wave_Interval
 	
 	for spawner in spawners:
-		print("Calling Wave 3 Start Spawn Zombie")
-		spawner.start_spawn_zombie()
+		if spawner != null:
+			print("Calling Wave 3 Start Spawn Zombie")
+			spawner.start_spawn_zombie()
 		
 	#checkEndLevel = true
 
@@ -313,9 +318,12 @@ func _on_spawn_next_wave():
 #Damage the Player 
 func subtract_health():
 	health_points -= 1 
-	get_parent().get_parent().get_node("UILayer/HBoxContainer2/Health").text = str(health_points)
+	#get_tree().get_first_node_in_group("Purple").get_health_ui().text = "Health: " + str(health_points)
+	get_tree().get_first_node_in_group("Purple").get_health_ui().text = str(health_points)
+	get_tree().get_first_node_in_group("Green").get_health_ui().text = str(health_points)
+	#get_parent().get_parent().get_node("CurrentScene/Level0-4/UILayer/HBoxContainer2/Health").text = str(health_points)
 	#get_parent().get_parent().get_node("UILayer/SunCounter/HBoxContainer/HealthPoints").text = "Health: " + str(health_points)
-	print("Health is ",health_points)
+	print(get_tree().get_first_node_in_group("Purple").get_health_ui(),"Health is ",health_points)
 	if health_points <= 0:
 		lose()
 

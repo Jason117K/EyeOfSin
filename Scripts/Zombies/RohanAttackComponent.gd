@@ -88,6 +88,8 @@ func _on_AttackTimer_timeout():
 		print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	print("TARGET PLANTS: ", target_plants)
+	if target_plants == null:
+		return
 	for plant in target_plants:
 		if(is_instance_valid(plant)):
 			print("PLANT NAME: ", plant)

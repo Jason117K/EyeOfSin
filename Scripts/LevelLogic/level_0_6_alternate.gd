@@ -80,3 +80,8 @@ func show_guide():
 	
 func hide_guide():
 	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
+
+func get_game_layer():
+	return $GameLayer
+func get_health_ui():
+	return $UILayer.get_the_health()

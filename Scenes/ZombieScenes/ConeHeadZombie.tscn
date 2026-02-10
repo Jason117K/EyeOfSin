@@ -365,8 +365,14 @@ bloodWorth = 4.0
 [node name="AttackComponent" parent="." instance=ExtResource("9")]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(4, 1.5)
 shape = SubResource("1")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
+position = Vector2(1, 16)
+texture = ExtResource("12_ebmmd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("31")
@@ -383,11 +389,6 @@ target_position = Vector2(-8, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="Shadow" type="Sprite2D" parent="."]
-self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
-position = Vector2(1, 16)
-texture = ExtResource("12_ebmmd")
 
 [connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

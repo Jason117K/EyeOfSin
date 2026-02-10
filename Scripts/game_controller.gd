@@ -349,9 +349,13 @@ func change_scene(new_scene : String, delete: bool = true, keep_running : bool =
 
 
 func show_guide():
-	current_scene.show_guide()	
-	current_alt_scene.show_guide()	
+	print("Current Scene is ",	current_scene)
+	if current_scene:
+		current_scene.show_guide()	
+		current_alt_scene.show_guide()	
 	
 func clear_guide():
-	current_scene.hide_guide()	
-	current_alt_scene.hide_guide()	
+	print("Current Scene is ",	current_scene)
+	if current_scene:
+		current_scene.hide_guide()	
+		current_alt_scene.hide_guide()	

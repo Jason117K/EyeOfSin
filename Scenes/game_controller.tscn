@@ -68,15 +68,6 @@ offset_right = 3.0
 offset_bottom = 328.0
 scale = Vector2(0.8, 0.8)
 
-[node name="PauseButton" parent="CurrentScene" instance=ExtResource("7_27abl")]
-self_modulate = Color(1, 1, 1, 0)
-z_index = 7
-layout_mode = 0
-offset_left = 683.0
-offset_top = 380.0
-offset_right = 738.0
-offset_bottom = 403.0
-
 [node name="WaveManager" parent="CurrentScene" instance=ExtResource("8_smyyb")]
 position = Vector2(-64, 200)
 script = ExtResource("9_gruqv")

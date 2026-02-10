@@ -147,7 +147,11 @@ func spawn_initial_drones():
 	for i in range(MAX_DRONES):
 		var drone = DroneScene.instantiate()
 		drone.name = "Drone_%d" % i  # e.g., "Drone_0", "Drone_1"
-		add_child(drone)
+		get_parent().add_child(drone)
+		if self.is_in_group("Green"):
+			drone.add_to_group("Green")
+		else: #Purple
+			drone.add_to_group("Purple")
 		available_drones.append(drone)
 		print("Just Added : ", drone.name)
 	
@@ -157,7 +161,8 @@ func spawn_initial_drones():
 		drone_rest_positions[drone] = rest_pos
 		
 		# Set initial position
-		drone.position = rest_pos
+		#drone.position = rest_pos
+		drone.global_position = self.global_position + rest_pos
 		
 		# Connect drone signals
 		drone.connect("drone_died", Callable(self, "_on_drone_died"))
@@ -206,7 +211,7 @@ func _on_enemy_exited(area):
 func return_drones_to_rest():
 	for drone in available_drones:
 		if is_instance_valid(drone):
-			drone.return_to_position(drone_rest_positions[drone])
+			drone.return_to_position(self.global_position + drone_rest_positions[drone])
 			drone.setAnimation("idle")
 
 func _on_enemy_died(enemy):
@@ -331,15 +336,20 @@ func take_damage(damage):
 func _on_DroneRespawnTimer_timeout():
 	# Create new drone
 	var new_drone = DroneScene.instantiate()
-	add_child(new_drone)
+	print("Drone Parent is : ",self.get_parent())
+	get_parent().add_child(new_drone)
 	available_drones.append(new_drone)
+	if self.is_in_group("Green"):
+		new_drone.add_to_group("Green")
+	else: #Purple
+		new_drone.add_to_group("Purple")
 	#print("Availablle Drone just got : ", new_drone)
 	
 	# Calculate and store rest position for new drone
 	var rest_pos = calculate_rest_position(available_drones.size() - 1)
 	
 	drone_rest_positions[new_drone] = rest_pos
-	new_drone.position = rest_pos
+	new_drone.global_position = self.global_position + rest_pos
 	
 	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
 	
