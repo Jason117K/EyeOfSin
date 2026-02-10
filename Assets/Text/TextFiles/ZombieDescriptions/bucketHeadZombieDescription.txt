@@ -1,6 +1,5 @@
-Zombies that were once great warriors in life, now granted a sword of hell energy in death, enabling them to deal massive damage.
- 
-- Very Slow Speed
-- Low Numbers
-- High Health 
-- High Damage 
+The Unhallowers are a mysterious sub-species of Reborn. Initial theories suggest that a person’s soul can embrace Argus’ influence, turning them into heralds of eldritch destruction. 
+Speed: Very Low
+Health: High
+Numbers: Low
+Damage: High

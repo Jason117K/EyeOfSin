@@ -1,6 +1,5 @@
-Floating heads that can't attack, but can fly over summoned demons. 
-- Moderate Speed
-- High Numbers
-- Low Health 
-- Can bypass demons
-- Can't attack
+Wretches are smaller than average Reborns, and this is because they are actually infants. 
+Speed: Medium
+Health: Low
+Numbers: High
+Damage: Low

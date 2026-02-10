@@ -1,5 +1,5 @@
-TICKER ZOMBIES are fast moving sentient bombs. Make sure to take them out before they get too close to your summons.
-- High Speed 
-- Low Numbers
-- Low Health 
-- High Damage Explosion When Close 
+Mutated zombies that spontaneously combust when exposed to threatening stimuli. This makes the Erupters perfect for world-ending conquests. 
+Speed: High
+Health: Low
+Numbers: Low
+Damage: High

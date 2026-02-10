@@ -1,6 +1,5 @@
-A basic Zombie footsoldier. What they lack in every category they make up for in numbers.
-
-- Slow Speed 
-- High Numbers
-- Low Health
-- Low Damage 
+The first of the mutated zombies, now just average eldritch footsoldiers. They retain most of their human form and all of their undead hunger. 
+Speed: Low
+Health: Low
+Numbers: High
+Damage: Low

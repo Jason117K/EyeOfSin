@@ -1,5 +1,5 @@
-A zombie lacking it's head, causing it's internal mutation to start to spiral out of control.
-- Slow Speed
-- High Numbers
-- Moderate Health 
-- Moderate Damage 
+The Severed have been aptly named, for they are missing the upper half of their body. These zombies wander the land aimlessly and blindly follow those in front of them. 
+Speed: Low
+Health: Medium
+Numbers: High
+Damage: Medium

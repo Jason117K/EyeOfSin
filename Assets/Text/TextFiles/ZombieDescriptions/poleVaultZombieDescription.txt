@@ -1,5 +1,5 @@
-LEAPER's can do as their name suggests a catapault themselves over defenses. Take them out quickly.
-- High Speed 
-- Moderate Numbers 
-- Moderate Health 
-- Can Leap Over Plants 
+All of the Sundered’s vital organs have been moved to the head, allowing them to disconnect and regenerate limbs quickly. This does, however, also make the head too heavy for their bodies. 
+Speed: High
+Health: Medium
+Numbers: Medium
+Damage: Low
