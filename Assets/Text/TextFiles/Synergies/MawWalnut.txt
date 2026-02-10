@@ -1,1 +1,3 @@
-Increased health, kills now health, can kill lower health enemies faster 
+Increased health, kills now health
+Upgraded :
+	-Can kill lower health enemies faster 

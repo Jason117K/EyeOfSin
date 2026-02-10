@@ -1,1 +1,1 @@
-Hive gain healing, wasps gain damage the more damage they deal
+Hive gains healing over time, wasps gain damage the more damage they deal

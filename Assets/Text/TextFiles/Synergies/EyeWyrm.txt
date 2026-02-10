@@ -1,1 +1,3 @@
-Occulum produces higher value blood at a slower rate and blood emits lane damaging effect on pickup
+Occulum produces higher value blood at a slower rate 
+Upgraded:
+Blood emits lane damaging effect on pickup

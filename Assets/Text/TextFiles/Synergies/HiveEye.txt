@@ -1,1 +1,3 @@
- Increased Wasp Count x2, decreased health, wasps give sun on death
+Increased Wasp Count x2, decreased health, 
+Upgraded : 
+	- wasps give blood on death

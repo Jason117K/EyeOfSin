@@ -1,1 +1,3 @@
-Walnut generates high slow zone immediately in front of it. Slows while being eaten.
+Walnut generates webs in front of it, slowing enemies.
+Upgraded :
+Extra slows enemies attacking it

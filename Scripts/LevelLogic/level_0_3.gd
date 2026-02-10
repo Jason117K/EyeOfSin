@@ -17,7 +17,7 @@ var waveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var green_dimension = $CurrentScene/Level03Alternate
-@onready var pause_Button = $"../PauseButton"
+@onready var pause_Button = $"../../PauseButton"
 
 
 

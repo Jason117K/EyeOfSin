@@ -1,1 +1,4 @@
-Increased health, increased damage the closer enemies are, close up kills heal
+Increased health, slightly increased damage 
+Upgraded : 
+	-Increased damage the closer enemies are
+	-Close up kills heal

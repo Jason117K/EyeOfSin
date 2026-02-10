@@ -27,7 +27,7 @@ var spyder_already_selected = false
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
-@onready var pause_Button = $"../PauseButton"
+@onready var pause_Button = $"../../PauseButton"
 
 # Text file paths
 const TUTORIAL_SELECT_SPYDER = "res://Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"

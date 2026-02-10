@@ -1,1 +1,3 @@
-Occulum produces blood faster, blood heals allies on pickup
+Occulum has more health, produces slightly blood faster.
+Upgraded 
+- Blood heals demons behind on pickup

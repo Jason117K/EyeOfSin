@@ -27,7 +27,7 @@ var zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  # Path
 var spawners = []  # Array to hold all ZombieSpawner nodes
 var timers = [] # Array to hold all the timers in the WavePreview nodes
 var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
-var health_points = 10 
+var health_points = 100 
 
 @export var StartDelay = 0
 #Amount of Time it Takes a wave to spawn after previous done

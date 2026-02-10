@@ -1,1 +1,1 @@
-Walnut now shoots ahead of itself 
+Spinal Occulum now damages enemies that attack it

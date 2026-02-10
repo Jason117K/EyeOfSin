@@ -1,1 +1,4 @@
-Increased health, increased damage the closer enemies are, close up kills heal
+Increased health
+Upgraded :
+- Increases nearby demon damage
+- Nearby zombie deaths heal 

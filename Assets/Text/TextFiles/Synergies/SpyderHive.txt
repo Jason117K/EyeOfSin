@@ -1,1 +1,3 @@
-Gatling pea fire speed, ¾ of shots are carried by wasps nesting on back to adjacent lane 
+Increased fire speed
+Upgraded : 
+If one tile in front, Spyder can instakill enemy fighting Spiderling

@@ -584,7 +584,7 @@ func _on_alt_5_pressed() -> void:
 			set_text(walnutSpyder)
 		PLANT.EGG_WYRM:
 			staticPreview.texture = alt5.texture_normal
-			set_text(wyrmWalnut)
+			set_text(wyrmSpyder)
 		PLANT.HIVE:
 			staticPreview.texture = alt5.texture_normal
 			set_text(hiveWalnut)

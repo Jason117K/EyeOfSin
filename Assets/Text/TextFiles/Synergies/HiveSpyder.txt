@@ -1,1 +1,1 @@
-Hive killed enemies aoe slow zone on death,
+Enemies killed by the hive spawn a web slowing zone on their death

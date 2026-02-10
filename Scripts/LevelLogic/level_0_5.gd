@@ -17,7 +17,7 @@ var waveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var green_dimension = $CurrentScene/Level03Alternate
-@onready var pause_Button = $"../PauseButton"
+@onready var pause_Button = $"../../PauseButton"
 
 
 
@@ -41,7 +41,7 @@ const TUTORIAL_EXPLAIN_LANCER = "res://Assets/Text/TextFiles/ZombieDescriptions/
 
 
 func _ready():
-	#Dialogic.Inputs.auto_skip.enabled = true 
+	Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	
