@@ -4033,7 +4033,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("26_mlggh")
-volume_db = -80.0
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

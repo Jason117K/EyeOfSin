@@ -243,7 +243,7 @@ Round3_Zombies = {
 "Flesheater": 2,
 "Reanimator": 0,
 "Reborn": 0,
-"Rohan": 0,
+"Rohan": 1,
 "Severed": 8,
 "Sundered": 0,
 "Unhallower": 3
@@ -650,7 +650,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_a4agt")
-volume_db = -8.517
+volume_db = -5.0
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
