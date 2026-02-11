@@ -2008,26 +2008,26 @@ process_mode = 1
 position = Vector2(746, 137.305)
 make_green = true
 Round2_Zombies = {
-"Base": 5,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 0,
+"Reborn": 5,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round3_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 2,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 0,
+"Reborn": 3,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 2,
+"Sundered": 0,
+"Unhallower": 0
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2Green" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_vll5p")]

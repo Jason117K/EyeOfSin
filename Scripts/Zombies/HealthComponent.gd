@@ -32,7 +32,7 @@ func take_damage(damage):
 
 	health -= damage
 	
-	print(zombie.name, " is taking : ", damage, " damage, jj health now ", health) 
+	#print(zombie.name, " is taking : ", damage, " damage, jj health now ", health) 
 	
 	#hitAudioPlayer.play()
 	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)

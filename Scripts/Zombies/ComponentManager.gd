@@ -71,7 +71,7 @@ func getHealthComponent():
 
 # Handles the zombie taking damage 
 func take_damage(damage):
-	print(zombie.name, " jjust took, ", damage)
+#	print(zombie.name, " jjust took, ", damage)
 	bloodHit.visible = true 
 	bloodHit.rotation_degrees = randf_range(-60, 60)
 	if zombie.is_in_group("Purple"):

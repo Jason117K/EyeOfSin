@@ -55,13 +55,18 @@ func _physics_process(_delta):
 	#New game start 
 	
 	if canStartGame:
-		print("Starting All timers this once")
+		print("Starting All timers this onceFF")
 		for timer in timers:
 			if timer != null:
-				print("Timer is ", timer)
+				print("Timer isFF ", timer)
 				timer.wait_time = StartDelay
 				timer.start()
-		$ProceedGame.start()
+		
+		if $ProceedGame.is_stopped():
+			print("Proceed Game is StartingNowFF ",$ProceedGame.wait_time )
+			$ProceedGame.start()
+		else:
+			print("Proceed Game is StoppedFF")
 		
 		canStartGame = false
 		
@@ -136,6 +141,8 @@ func _ready():
 		
 				
 	$ProceedGame.wait_time = StartDelay
+	$ProceedGame.wait_time = 0
+	print("Proceed Game Wait Time is ", 0)
 	#for timer in timers:
 	#	timer.wait_time = StartDelay
 	#	timer.start()

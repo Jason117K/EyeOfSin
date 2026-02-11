@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://det1jqlflbl3j"
+path="res://.godot/imported/Eye of Syn Boss Battle (New Edits).mp3-1fe8c74c8b7b3b9a051a4e394d113a5d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3"
+dest_files=["res://.godot/imported/Eye of Syn Boss Battle (New Edits).mp3-1fe8c74c8b7b3b9a051a4e394d113a5d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

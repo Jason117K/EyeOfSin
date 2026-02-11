@@ -287,6 +287,7 @@ func _start_explain_blood_gen():
 
 
 func start_game():
+	print("Start Game Here")
 	_start_wave_1()
 	
 	
@@ -296,6 +297,7 @@ func _start_wave_1():
 	# Game unpauses when ToolTips button clicked
 	waveManager.canStartGame = true
 	green_dimension.start_game()
+	#start_game()
 	show_all_plant_buttons()
 	wave_1_active = false
 	wave_1_complete = false

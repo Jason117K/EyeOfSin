@@ -32,6 +32,7 @@ func _on_Continue_pressed():
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	#assert(get_tree().change_scene_to_packed(nextLevel) == OK)
 	#Global.game_controller.change_scene(next_level)
+	#Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/StartScreen.tscn")
 	Global.game_controller.change_dual_scenes(next_level,next_level_alt)
 	self.visible = false 
 	Global.unlockLevel(level_unlocked)

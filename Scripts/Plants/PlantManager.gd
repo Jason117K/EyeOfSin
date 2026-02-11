@@ -91,13 +91,13 @@ func _input(event):
 					return
 			else: #Plant Scene Null
 				#TODO Make Double Click
-				print("Clicked1 and Plant Scene Null NN")
+				#print("Clicked1 and Plant Scene Null NN")
 				if selection_menu.getCanRemove():
-					print("Clicked1 and Time to Clear Space")
+					#print("Clicked1 and Time to Clear Space")
 					clear_space(grid_pos)
 					#selection_menu.setCanRemoveFalse()
 				if detect_plant(grid_pos):
-					print("Plant Detected")
+				#	print("Plant Detected")
 					highlight_plant(grid_pos)
 					pass
 				return 
@@ -201,10 +201,10 @@ func detect_plant(passed_grid_pos):
 	var plant_node = grid_map.get(passed_grid_pos)
 	
 	if plant_node != null:
-		print("Plant Node is , ",plant_node, " returning true" )
+		#print("Plant Node is , ",plant_node, " returning true" )
 		return true
 	else:
-		print("Plant Node is , ",plant_node, " returning false" )
+		#print("Plant Node is , ",plant_node, " returning false" )
 		return false 
 	
 func highlight_plant(passed_grid_pos):
@@ -212,7 +212,7 @@ func highlight_plant(passed_grid_pos):
 	var plant_node = grid_map.get(passed_grid_pos)
 	plant_to_move = plant_node
 	if plant_node.has_method("highlight"):
-		print("HighLight Should Turn On")
+	#	print("HighLight Should Turn On")
 		highlight_plant_global_pos = plant_node.global_position 
 		plant_node.toggle_highlight()
 		plant_highlighted = true

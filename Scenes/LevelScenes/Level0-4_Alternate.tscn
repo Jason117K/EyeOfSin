@@ -90,37 +90,37 @@ process_mode = 1
 position = Vector2(740, 77)
 make_green = true
 Round1_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 0,
+"Reborn": 3,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round2_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 0,
+"Reborn": 3,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 1,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round3_Zombies = {
-"Base": 5,
-"BucketHead": 0,
-"ConeHead": 2,
-"Dancer": 0,
-"Football": 2,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 2,
+"Reanimator": 0,
+"Reborn": 5,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 2,
+"Sundered": 0,
+"Unhallower": 0
 }
 waveDelay = 1.0
 
@@ -133,26 +133,26 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 109)
 make_green = true
 Round2_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 1,
-"Football": 2,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 2,
+"Reanimator": 1,
+"Reborn": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round3_Zombies = {
-"Base": 1,
-"BucketHead": 3,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 0,
+"Reborn": 1,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 3
 }
 waveDelay = 1.0
 
@@ -165,37 +165,37 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 141)
 make_green = true
 Round1_Zombies = {
-"Base": 0,
-"BucketHead": 3,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 0,
+"Reborn": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 1,
+"Sundered": 0,
+"Unhallower": 3
 }
 Round2_Zombies = {
-"Base": 6,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 0,
+"Reborn": 6,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round3_Zombies = {
-"Base": 3,
-"BucketHead": 1,
-"ConeHead": 2,
-"Dancer": 1,
-"Football": 2,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 2,
+"Reanimator": 1,
+"Reborn": 3,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 2,
+"Sundered": 0,
+"Unhallower": 1
 }
 waveDelay = 1.0
 
@@ -208,26 +208,26 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 173)
 make_green = true
 Round2_Zombies = {
-"Base": 0,
-"BucketHead": 1,
-"ConeHead": 0,
-"Dancer": 2,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 2,
+"Reborn": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 1
 }
 Round3_Zombies = {
-"Base": 7,
-"BucketHead": 1,
-"ConeHead": 3,
-"Dancer": 0,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 0,
+"Reborn": 7,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 3,
+"Sundered": 0,
+"Unhallower": 1
 }
 waveDelay = 1.0
 
@@ -240,37 +240,37 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 205)
 make_green = true
 Round1_Zombies = {
-"Base": 2,
-"BucketHead": 0,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 0,
+"Reborn": 2,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 1,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round2_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 1,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 1,
+"Reborn": 3,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round3_Zombies = {
-"Base": 0,
-"BucketHead": 4,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 0,
+"Reborn": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 1,
+"Sundered": 0,
+"Unhallower": 4
 }
 waveDelay = 1.0
 
@@ -283,26 +283,26 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 241)
 make_green = true
 Round2_Zombies = {
-"Base": 3,
-"BucketHead": 0,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 0,
+"Reborn": 3,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round3_Zombies = {
-"Base": 0,
-"BucketHead": 2,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 2,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 2,
+"Reanimator": 0,
+"Reborn": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 1,
+"Sundered": 0,
+"Unhallower": 2
 }
 waveDelay = 1.0
 
@@ -315,37 +315,37 @@ levelToStart = NodePath("../../..")
 position = Vector2(740, 270)
 make_green = true
 Round1_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 3,
-"Dancer": 0,
-"Football": 0,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 0,
+"Reanimator": 0,
+"Reborn": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 3,
+"Sundered": 0,
+"Unhallower": 0
 }
 Round2_Zombies = {
-"Base": 2,
-"BucketHead": 1,
-"ConeHead": 0,
-"Dancer": 0,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 0,
+"Reborn": 2,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 0,
+"Sundered": 0,
+"Unhallower": 1
 }
 Round3_Zombies = {
-"Base": 0,
-"BucketHead": 0,
-"ConeHead": 1,
-"Dancer": 0,
-"Football": 1,
-"PoleVault": 0,
+"Amalgams": 0,
+"Erupter": 0,
+"Flesheater": 1,
+"Reanimator": 0,
+"Reborn": 0,
 "Rohan": 0,
-"ScreenDoor": 0,
-"Ticker": 0
+"Severed": 1,
+"Sundered": 0,
+"Unhallower": 0
 }
 waveDelay = 1.0
 

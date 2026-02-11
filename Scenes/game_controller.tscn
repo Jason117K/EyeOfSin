@@ -71,6 +71,7 @@ scale = Vector2(0.8, 0.8)
 [node name="WaveManager" parent="CurrentScene" instance=ExtResource("8_smyyb")]
 position = Vector2(-64, 200)
 script = ExtResource("9_gruqv")
+StartDelay = 1
 Wave3StartTime = 45
 
 [node name="PauseButton" parent="." instance=ExtResource("7_27abl")]

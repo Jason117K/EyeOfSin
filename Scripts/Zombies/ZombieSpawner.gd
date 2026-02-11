@@ -22,17 +22,17 @@ var wave2_zombies = []
 var wave3_zombies = []  
 
 #Arrays to track amount of zombies by types per round 
-@export var Round1_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
-							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0, "Football" : 0, "Rohan" : 0}
+@export var Round1_Zombies = {"Reborn": 0, "Severed": 0, "Unhallower" : 0, 
+							"Amalgams" : 0, "Reanimator" : 0, "Sundered" : 0,
+							"Erupter" : 0, "Flesheater" : 0, "Rohan" : 0}
 							
-@export var Round2_Zombies = {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
-							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0, "Football" : 0, "Rohan" : 0}
+@export var Round2_Zombies = {"Reborn": 0, "Severed": 0, "Unhallower" : 0, 
+							"Amalgams" : 0, "Reanimator" : 0, "Sundered" : 0,
+							"Erupter" : 0, "Flesheater" : 0, "Rohan" : 0}
 							
-@export var Round3_Zombies =  {"Base": 0, "ConeHead": 0, "BucketHead" : 0, 
-							"ScreenDoor" : 0, "Dancer" : 0, "PoleVault" : 0,
-							"Ticker" : 0, "Football" : 0, "Rohan" : 0}
+@export var Round3_Zombies =  {"Reborn": 0, "Severed": 0, "Unhallower" : 0, 
+							"Amalgams" : 0, "Reanimator" : 0, "Sundered" : 0,
+							"Erupter" : 0, "Flesheater" : 0, "Rohan" : 0}
 
 var baseZombies = []
 
@@ -69,22 +69,22 @@ func _ready():
 	wave_manager = get_parent().get_parent().get_parent().get_node("WaveManager")
 	spawnNextWave.connect(wave_manager._on_spawn_next_wave)
 	
-	populate_zombies(Round1_Zombies.get("Base") , Round1_Zombies.get("ConeHead"), 
-	Round1_Zombies.get("BucketHead") , Round1_Zombies.get("ScreenDoor"),
-	Round1_Zombies.get("Dancer"),Round1_Zombies.get("PoleVault"),
-	Round1_Zombies.get("Ticker"),Round1_Zombies.get("Football"), Round1_Zombies.get("Rohan"),
+	populate_zombies(Round1_Zombies.get("Reborn") , Round1_Zombies.get("Severed"), 
+	Round1_Zombies.get("Unhallower") , Round1_Zombies.get("Amalgams"),
+	Round1_Zombies.get("Reanimator"),Round1_Zombies.get("Sundered"),
+	Round1_Zombies.get("Erupter"),Round1_Zombies.get("Flesheater"), Round1_Zombies.get("Rohan"),
 	 wave1_zombies)
 	
-	populate_zombies(Round2_Zombies.get("Base") , Round2_Zombies.get("ConeHead"), 
-	Round2_Zombies.get("BucketHead") , Round2_Zombies.get("ScreenDoor"), 
-	Round2_Zombies.get("Dancer"),Round2_Zombies.get("PoleVault"),
-	Round2_Zombies.get("Ticker"),Round2_Zombies.get("Football"), Round2_Zombies.get("Rohan"),
+	populate_zombies(Round2_Zombies.get("Reborn") , Round2_Zombies.get("Severed"), 
+	Round2_Zombies.get("Unhallower") , Round2_Zombies.get("Amalgams"), 
+	Round2_Zombies.get("Reanimator"),Round2_Zombies.get("Sundered"),
+	Round2_Zombies.get("Erupter"),Round2_Zombies.get("Flesheater"), Round2_Zombies.get("Rohan"),
 	 wave2_zombies)
 	
-	populate_zombies(Round3_Zombies.get("Base") , Round3_Zombies.get("ConeHead"),
-	Round3_Zombies.get("BucketHead") , Round3_Zombies.get("ScreenDoor"),
-	Round3_Zombies.get("Dancer"), Round3_Zombies.get("PoleVault"),
-	Round2_Zombies.get("Ticker"),Round3_Zombies.get("Football"), Round3_Zombies.get("Rohan"),
+	populate_zombies(Round3_Zombies.get("Reborn") , Round3_Zombies.get("Severed"),
+	Round3_Zombies.get("Unhallower") , Round3_Zombies.get("Amalgams"),
+	Round3_Zombies.get("Reanimator"), Round3_Zombies.get("Sundered"),
+	Round2_Zombies.get("Erupter"),Round3_Zombies.get("Flesheater"), Round3_Zombies.get("Rohan"),
 	 wave3_zombies)
 
 	$WaveDelay.wait_time = waveDelay
@@ -118,7 +118,7 @@ func spawn_zombie():
 				zombie_instance.name = generate_unique_name(zombie_instance.name)
 				
 				zombie_instance.position = self.position + Vector2(25,0)#Adjust position as needed
-				if "Ticker" in zombie_instance.name:
+				if "Erupter" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)
 				if "Foot" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-4)
@@ -156,7 +156,7 @@ func spawn_zombie():
 				zombie_instance.name = generate_unique_name(zombie_instance.name)
 				
 				zombie_instance.position = self.position + Vector2(-30,0)  #Adjust position as needed
-				if "Ticker" in zombie_instance.name:
+				if "Erupter" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)
 				if "Foot" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-4)
@@ -182,7 +182,7 @@ func spawn_zombie():
 				var zombie_type = wave3_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
 				zombie_instance.name = generate_unique_name(zombie_instance.name)
-				if "Ticker" in zombie_instance.name:
+				if "Erupter" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-3)
 				if "Foot" in zombie_instance.name:
 					zombie_instance.position = self.position + Vector2(0,-4)
@@ -261,12 +261,14 @@ func increase_wave():
 #Starts the next round of zombie spawning 
 func _on_WaveDelay_timeout():
 	#print("Zombie Spawning Starting Here")
+	print("Zombie Spawning Starting Here")
 	spawn_zombie()
 	$WaveDelay.stop()
 
 #TODO Trace Back 
 func _on_wave_interval_timeout() -> void:
 	#print("About call spawn zombie ")
+	print("Zombie Spawning Starting Hereeeeeeeeeeeeeee")
 	spawn_zombie()
 	Global.start_wave_1()
 
