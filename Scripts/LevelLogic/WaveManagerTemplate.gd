@@ -93,6 +93,7 @@ func _ready():
 	print("Spawners is now ", spawners)
 	timers = []
 	wavePreviewIcons = []
+	print("Wave Preview Icons is now ", spawners)
 	checkEndLevel = false
 	levelOver = false
 	numWave = 0
@@ -132,7 +133,7 @@ func _ready():
 						#print(".get_child(2): , ", new_child.find_child("WavePreview").get_child(2).name)
 						#Appends toggle visibility here toggleV
 						timers.append(new_child.find_child("WavePreview").get_child(2))
-						#print("WavePreviewIcons.append : ",new_child.find_child("WavePreview").name)
+						print("WavePreviewIcons.append : ",new_child.find_child("WavePreview").name)
 						wavePreviewIcons.append(new_child.find_child("WavePreview"))
 	#Connect done spawning
 	for spawner in spawners:
@@ -179,7 +180,8 @@ func startSecondWave():
 
 		for icon in wavePreviewIcons:
 			print("[WM] Swapping visibility for icon: ", icon.name)
-			icon.swap_Visibility()
+			if icon != null:
+				icon.swap_Visibility()
 
 		for timer in timers:
 			if timer != null:
@@ -220,8 +222,10 @@ func _on_ProceedGame_timeout():
 				$ProceedGame.wait_time = Wave3StartTime
 				$ProceedGame.start()
 				numWave = numWave + 1
+				print("Wave Preview Icons Is ",wavePreviewIcons)
 				for icon in wavePreviewIcons:
-					icon.swap_Visibility()
+					if icon != null:
+						icon.swap_Visibility()
 				for timer in timers:
 					timer.wait_time = $ProceedGame.wait_time - 10
 					timer.start()
@@ -230,7 +234,8 @@ func _on_ProceedGame_timeout():
 		2:
 			print("Start Wave 3")
 			for icon in wavePreviewIcons:
-				icon.swap_Visibility()
+				if icon != null:
+					icon.swap_Visibility()
 			$Wave3.start()
 			$ProceedGame.stop()
 		_:

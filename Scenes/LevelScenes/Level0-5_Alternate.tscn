@@ -84,7 +84,7 @@ mouse_filter = 2
 script = ExtResource("1_iid74")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_iid74")]
-sun_points = 500
+sun_points = 650
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -92,17 +92,6 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_4xikw")]
 position = Vector2(740, 77)
 make_green = true
-Round1_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 2,
-"Reanimator": 1,
-"Reborn": 3,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 1,
-"Unhallower": 1
-}
 Round2_Zombies = {
 "Amalgams": 0,
 "Erupter": 0,
@@ -112,16 +101,16 @@ Round2_Zombies = {
 "Rohan": 0,
 "Severed": 0,
 "Sundered": 3,
-"Unhallower": 3
+"Unhallower": 0
 }
 Round3_Zombies = {
 "Amalgams": 0,
-"Erupter": 6,
+"Erupter": 3,
 "Flesheater": 1,
-"Reanimator": 5,
+"Reanimator": 1,
 "Reborn": 0,
 "Rohan": 0,
-"Severed": 8,
+"Severed": 7,
 "Sundered": 4,
 "Unhallower": 3
 }
@@ -138,7 +127,7 @@ Round2_Zombies = {
 "Amalgams": 0,
 "Erupter": 3,
 "Flesheater": 1,
-"Reanimator": 4,
+"Reanimator": 2,
 "Reborn": 0,
 "Rohan": 0,
 "Severed": 2,
@@ -191,8 +180,8 @@ Round3_Zombies = {
 "Amalgams": 0,
 "Erupter": 0,
 "Flesheater": 1,
-"Reanimator": 2,
-"Reborn": 8,
+"Reanimator": 1,
+"Reborn": 7,
 "Rohan": 0,
 "Severed": 3,
 "Sundered": 6,
@@ -220,12 +209,12 @@ Round1_Zombies = {
 }
 Round2_Zombies = {
 "Amalgams": 0,
-"Erupter": 4,
-"Flesheater": 4,
+"Erupter": 2,
+"Flesheater": 3,
 "Reanimator": 0,
 "Reborn": 0,
 "Rohan": 0,
-"Severed": 7,
+"Severed": 6,
 "Sundered": 3,
 "Unhallower": 0
 }
@@ -233,7 +222,7 @@ Round3_Zombies = {
 "Amalgams": 0,
 "Erupter": 2,
 "Flesheater": 2,
-"Reanimator": 5,
+"Reanimator": 1,
 "Reborn": 0,
 "Rohan": 0,
 "Severed": 3,
@@ -253,7 +242,7 @@ Round1_Zombies = {
 "Amalgams": 0,
 "Erupter": 0,
 "Flesheater": 0,
-"Reanimator": 2,
+"Reanimator": 1,
 "Reborn": 0,
 "Rohan": 0,
 "Severed": 0,
@@ -305,8 +294,8 @@ Round1_Zombies = {
 Round2_Zombies = {
 "Amalgams": 0,
 "Erupter": 2,
-"Flesheater": 6,
-"Reanimator": 1,
+"Flesheater": 5,
+"Reanimator": 0,
 "Reborn": 3,
 "Rohan": 0,
 "Severed": 3,
@@ -333,23 +322,12 @@ levelToStart = NodePath("../../..")
 [node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_4xikw")]
 position = Vector2(740, 270)
 make_green = true
-Round1_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 1,
-"Reanimator": 1,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 0,
-"Unhallower": 0
-}
 Round2_Zombies = {
 "Amalgams": 0,
 "Erupter": 1,
 "Flesheater": 4,
 "Reanimator": 1,
-"Reborn": 13,
+"Reborn": 12,
 "Rohan": 0,
 "Severed": 1,
 "Sundered": 0,
@@ -364,7 +342,7 @@ Round3_Zombies = {
 "Rohan": 0,
 "Severed": 3,
 "Sundered": 1,
-"Unhallower": 6
+"Unhallower": 0
 }
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]

@@ -81,7 +81,7 @@ mouse_filter = 2
 script = ExtResource("1_e23m8")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_qrjcg")]
-sun_points = 400
+sun_points = 450
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
