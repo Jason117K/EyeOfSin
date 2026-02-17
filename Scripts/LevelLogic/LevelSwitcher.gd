@@ -67,6 +67,12 @@ func update_level(this_upcomingLevel,this_upcomingLevelAlt):
 	next_level = this_upcomingLevel
 	next_level_alt = this_upcomingLevelAlt
 	pass
+
+func update_current_level(this_current_Level,this_current_LevelAlt):
+	current_level = this_current_Level
+	current_level_alt = this_current_LevelAlt
+	pass
+	
 	
 func lose():
 	#outcome_label.text = ""

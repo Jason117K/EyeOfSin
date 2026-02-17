@@ -38,6 +38,9 @@ var waveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var pause_Button = $"../../PauseButton"
 
+var thisLevel := "res://Scenes/LevelScenes/Level0-2.tscn"
+var thisAltLevel := "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
+
 var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
 
@@ -131,6 +134,7 @@ func finish_ready():
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
 	#levelSwitcher.visible = false
 	levelSwitcher.update_level(level03,level03Alt)
+	levelSwitcher.update_current_level(thisLevel,thisAltLevel)
 	levelSwitcher.visible = false
 	Global.unHidePlantSelectionMenu()
 	

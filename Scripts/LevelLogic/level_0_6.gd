@@ -25,6 +25,10 @@ var wave2Started := false
 var amalgam_zombie_demo_scene = preload("res://Scenes/Tutorials/amalgam_zombie_demo.tscn")
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
+
+var thisLevel := "res://Scenes/LevelScenes/Level0-6.tscn"
+var thisAltLevel := "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
+
 var gameStarted := false 
 var endScreen = "res://Scenes/LevelScenes/EndScreen.tscn"
 var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
@@ -67,6 +71,7 @@ func _ready():
 func finish_ready():
 	print("Skipped Dialog")
 	levelSwitcher.update_level(endScreen,endScreenAlt)
+	levelSwitcher.update_current_level(thisLevel,thisAltLevel)
 	Global.unHidePlantSelectionMenu()
 	plantSelectionMenu.canSwapScenes = true
 	

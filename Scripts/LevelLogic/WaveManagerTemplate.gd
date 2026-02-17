@@ -340,8 +340,10 @@ func subtract_health():
 		lose()
 
 func lose():
-	for child in get_parent().get_parent().get_children():
+	for child in get_parent().get_children(): #.get_parent().get_children():
 		if "LevelSwitcher" in child.name:
 			child.lose()
 			child.visible = true
+	#$CurrentScene/LevelSwitcher.lose()
+	#$CurrentScene/LevelSwitcher.visible = true
 	get_tree().paused = true

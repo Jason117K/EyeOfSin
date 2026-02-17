@@ -20,6 +20,8 @@ var waveManager
 @onready var pause_Button = $"../../PauseButton"
 
 
+var thisLevel := "res://Scenes/LevelScenes/Level0-5.tscn"
+var thisAltLevel := "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
 
 var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
 var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
@@ -83,6 +85,7 @@ func finish_ready():
 	toolTips.show()
 	_transition_to_state(TutorialState.FORCE_SELECT_HIVE)
 	levelSwitcher.update_level(level06,level06Alt)
+	levelSwitcher.update_current_level(thisLevel,thisAltLevel)
 	Global.unHidePlantSelectionMenu()
 		
 func getIsPurpleDimension():

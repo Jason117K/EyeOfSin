@@ -30,6 +30,9 @@ var summoner_zombie_demo_scene = preload("res://Scenes/Tutorials/summoner_zombie
 var level04 = "res://Scenes/LevelScenes/Level0-4.tscn"
 var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
 
+var thisLevel := "res://Scenes/LevelScenes/Level0-4.tscn"
+var thisAltLevel :=  "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
+
 const TUTORIAL_SELECT_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
 const TUTORIAL_PLACE_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
 const TUTORIAL_EXPLAIN_SUMMONER = "res://Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
@@ -80,6 +83,7 @@ func finish_ready():
 	toolTips.show()
 	_transition_to_state(TutorialState.FORCE_SELECT_WYRM)
 	levelSwitcher.update_level(level05,level05Alt)
+	levelSwitcher.update_current_level(thisLevel,thisAltLevel)
 	levelSwitcher.visible = false
 	Global.unHidePlantSelectionMenu()
 
