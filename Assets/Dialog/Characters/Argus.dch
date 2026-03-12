@@ -10,16 +10,16 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "Argussilhouette",
+&"default_portrait": "Argus",
 &"description": "",
 &"display_name": "Argus",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
 &"portraits": {
-"Argussilhouette": {
+"Argus": {
 "export_overrides": {
-"image": "\"res://Assets/Characters/argussilhouette.png\""
+"image": "\"res://Assets/Characters/argus.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
