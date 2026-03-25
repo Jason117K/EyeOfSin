@@ -8,10 +8,10 @@ var level0_3Alt = ("res://Scenes/LevelScenes/Level0-3_Alternate.tscn")
 
 
 func set_restart_levels(newLevel,newAltLevel):
-	print(newLevel,newAltLevel, "RESTART LEVELS SET")
+	#print(newLevel,newAltLevel, "RESTART LEVELS SET")
 	restartScene = newLevel
 	restartSceneAlt = newAltLevel
-	print(restartScene,restartSceneAlt, "RESTART LEVELS SET2")
+	#print(restartScene,restartSceneAlt, "RESTART LEVELS SET2")
 
 func _on_resume_pressed() -> void:
 	print("UNPPAUSE HERE")
@@ -32,7 +32,7 @@ func _on_return_to_menu_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-	print(restartScene,restartSceneAlt, "RESTART LEVELS SET2364553645463564564645645465")
+#	print(restartScene,restartSceneAlt, "RESTART LEVELS SET2364553645463564564645645465")
 	var current_scene_filepath = Global.get_current_scene_filepath()
 	#print("CCUrent Scene Is ", current_scene_filepath) 
 	Global.game_controller.change_dual_scenes(restartScene,restartSceneAlt )

@@ -915,76 +915,76 @@ animation = &"New Anim 2"
 [node name="BuffNodesComponent" parent="." instance=ExtResource("12")]
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "", "Hive", "Maw", "None", "None"]
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 14
 
-[node name="TileArea2" parent="BuffNodesComponent" index="2"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3"]
 visible = false
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 11
-
-[node name="TileArea3" parent="BuffNodesComponent" index="4"]
-visible = false
-
-[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="TileArea4" parent="BuffNodesComponent" index="6"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5"]
 visible = false
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 11
-
-[node name="TileArea5" parent="BuffNodesComponent" index="8"]
-visible = false
-
-[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
+[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="TileArea6" parent="BuffNodesComponent" index="10"]
+[node name="TileArea4" parent="BuffNodesComponent" index="7"]
 visible = false
 
-[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 11
-
-[node name="TileArea7" parent="BuffNodesComponent" index="12"]
-visible = false
-
-[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="TileArea8" parent="BuffNodesComponent" index="14"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9"]
 visible = false
 
-[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11"]
+visible = false
+
+[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 11
+
+[node name="TileArea7" parent="BuffNodesComponent" index="13"]
+visible = false
+
+[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 11
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15"]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 11
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 17
 
-[node name="TileArea10" parent="BuffNodesComponent" index="18"]
+[node name="TileArea10" parent="BuffNodesComponent" index="19"]
 visible = false
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
 visible = false
 
 [node name="DMG_RayCast2D" type="RayCast2D" parent="."]

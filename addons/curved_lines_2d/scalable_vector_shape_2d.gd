@@ -1300,4 +1300,3 @@ static func set_ellipse_points(curve : Curve2D, size: Vector2, offset := Vector2
 	)
 	curve.set_block_signals(false)
 	curve.changed.emit()
-

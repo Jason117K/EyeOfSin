@@ -29,6 +29,7 @@ var isBuffed := false
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
+	super()
 	if self.is_in_group("Green"):
 		#print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
 		$DMG_RayCast2D.collision_mask = 3

@@ -1,4 +1,4 @@
-extends Area2D
+extends Demon
 #Sunflower.gd
 
 
@@ -9,7 +9,7 @@ extends Area2D
 #Keep a reference to our sun scene 
 var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
-@onready var animSpriteComp = $AnimatedSprite2D
+#@onready var animSpriteComp = $AnimatedSprite2D
 @onready var sunTimer = $SunTimer
 @onready var resetEatingTimer = $ResetEatingSpeed
 @export var sunWaitTime := 30.0
@@ -39,6 +39,8 @@ var madeTutorialBlood = false
 
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
+	super()
+	animSpriteComp = $AnimatedSprite2D
 	sunTimer.wait_time = sunWaitTime
 	PlantManager = get_parent().get_parent().get_node("PlantManager") 
 	$SunTimer.start()  # Start the timer

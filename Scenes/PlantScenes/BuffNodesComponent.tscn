@@ -1,12 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://c4p43yljvybvj"]
+[gd_scene load_steps=40 format=3 uid="uid://c4p43yljvybvj"]
 
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cbg411w54cgi4" path="res://Scripts/Plants/BuffNodes.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="3"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://Scripts/Plants/change_demon_color.gd" id="4_f2smc"]
-
-[sub_resource type="RectangleShape2D" id="88"]
-size = Vector2(21.3334, 21.3334)
 
 [sub_resource type="AtlasTexture" id="60"]
 atlas = ExtResource("3")
@@ -119,6 +116,101 @@ region = Rect2(832, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="87"]
 atlas = ExtResource("3")
 region = Rect2(864, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2smc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("60")
+}, {
+"duration": 1.0,
+"texture": SubResource("61")
+}, {
+"duration": 1.0,
+"texture": SubResource("62")
+}, {
+"duration": 1.0,
+"texture": SubResource("63")
+}, {
+"duration": 1.0,
+"texture": SubResource("64")
+}, {
+"duration": 1.0,
+"texture": SubResource("65")
+}, {
+"duration": 1.0,
+"texture": SubResource("66")
+}, {
+"duration": 1.0,
+"texture": SubResource("67")
+}, {
+"duration": 1.0,
+"texture": SubResource("68")
+}, {
+"duration": 1.0,
+"texture": SubResource("69")
+}, {
+"duration": 1.0,
+"texture": SubResource("70")
+}, {
+"duration": 1.0,
+"texture": SubResource("71")
+}, {
+"duration": 1.0,
+"texture": SubResource("72")
+}, {
+"duration": 1.0,
+"texture": SubResource("73")
+}, {
+"duration": 1.0,
+"texture": SubResource("74")
+}, {
+"duration": 1.0,
+"texture": SubResource("75")
+}, {
+"duration": 1.0,
+"texture": SubResource("76")
+}, {
+"duration": 1.0,
+"texture": SubResource("77")
+}, {
+"duration": 1.0,
+"texture": SubResource("78")
+}, {
+"duration": 1.0,
+"texture": SubResource("79")
+}, {
+"duration": 1.0,
+"texture": SubResource("80")
+}, {
+"duration": 1.0,
+"texture": SubResource("81")
+}, {
+"duration": 1.0,
+"texture": SubResource("82")
+}, {
+"duration": 1.0,
+"texture": SubResource("83")
+}, {
+"duration": 1.0,
+"texture": SubResource("84")
+}, {
+"duration": 1.0,
+"texture": SubResource("85")
+}, {
+"duration": 1.0,
+"texture": SubResource("86")
+}, {
+"duration": 1.0,
+"texture": SubResource("87")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="88"]
+size = Vector2(21.3334, 21.3334)
 
 [sub_resource type="AtlasTexture" id="56"]
 atlas = ExtResource("1")
@@ -247,6 +339,11 @@ animations = [{
 
 [node name="BuffNodesComponent" type="Node2D"]
 script = ExtResource("2")
+
+[node name="CenterBuff" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_f2smc")
+autoplay = "default"
 
 [node name="TileArea1" type="Area2D" parent="."]
 position = Vector2(32, 0)

@@ -1651,82 +1651,82 @@ animation = &"New Anim"
 position = Vector2(256, 256)
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "Hive", "", "None", "None"]
 
-[node name="TileArea1" parent="BuffNodesComponent" index="0"]
+[node name="TileArea1" parent="BuffNodesComponent" index="1"]
 position = Vector2(48, 0)
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
 position = Vector2(48, 0)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 2
 
-[node name="TileArea2" parent="BuffNodesComponent" index="2"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3"]
 position = Vector2(48, 32)
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
 position = Vector2(48, 32)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea3" parent="BuffNodesComponent" index="4"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5"]
 position = Vector2(48, -32)
 
-[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
+[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
 position = Vector2(48, -32)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea4" parent="BuffNodesComponent" index="6"]
+[node name="TileArea4" parent="BuffNodesComponent" index="7"]
 position = Vector2(-48, 0)
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
 position = Vector2(-48, 0)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea5" parent="BuffNodesComponent" index="8"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9"]
 visible = false
 
-[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 27
-
-[node name="TileArea6" parent="BuffNodesComponent" index="10"]
-visible = false
-
-[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea7" parent="BuffNodesComponent" index="12"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11"]
 visible = false
 
-[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 27
-
-[node name="TileArea8" parent="BuffNodesComponent" index="14"]
-visible = false
-
-[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea9" parent="BuffNodesComponent" index="16"]
+[node name="TileArea7" parent="BuffNodesComponent" index="13"]
 visible = false
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 27
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15"]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 27
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17"]
+visible = false
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 4
 
-[node name="TileArea10" parent="BuffNodesComponent" index="18"]
+[node name="TileArea10" parent="BuffNodesComponent" index="19"]
 visible = false
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
 visible = false
 
 [node name="AnimatedSprite2" type="AnimatedSprite2D" parent="."]
@@ -1747,11 +1747,11 @@ line_width = 5.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 115.095, 132.06, 117.595, 132.685, 120.095, 133.31, 122.595, 133.935, 125.095, 134.56, 127.595, 135.185, 130.095, 135.81, 132.595, 136.435, 135.095, 137.06, 137.595, 137.685, 140.095, 138.31, 142.595, 138.935, 145.095, 139.56, 147.595, 140.185, 150.095, 140.81, 152.595, 141.435, 155.095, 142.06, 157.595, 142.685, 160.095, 143.31, 162.595, 143.935, 165.095, 144.56, 167.595, 145.185, 170.095, 145.81, 172.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 114.288, 134.454, 115.537, 137.636, 117.29, 140.487, 119.546, 142.742, 122.113, 144.284, 124.803, 145.128, 127.457, 145.145, 130.192, 145.415, 132.912, 146.601, 135.313, 148.588, 137.169, 151.21, 138.312, 154.298, 138.623, 157.653, 139.297, 160.977, 140.955, 163.867, 143.337, 165.964, 146.073, 167.027, 148.72, 166.857, 150.823, 165.628, 153.052, 164.525, 155.784, 164.471, 158.483, 165.73, 160.502, 168.129, 161.33, 171.196)
 width = 5.0
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 115.095, 126.435, 117.595, 126.435, 120.095, 126.435, 122.595, 126.435, 125.095, 126.435, 127.595, 126.435, 130.095, 126.435, 132.595, 126.435, 135.095, 126.435, 137.595, 126.435, 140.095, 126.435, 142.595, 126.435, 145.095, 126.435, 147.595, 126.435, 150.095, 126.435, 152.595, 126.435, 155.095, 126.435, 157.595, 126.435, 160.095, 126.435, 162.595, 126.435, 165.095, 126.435, 167.595, 126.435, 170.095, 126.435, 172.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 114.288, 128.829, 115.537, 131.386, 117.29, 133.612, 119.546, 135.242, 122.113, 136.159, 124.803, 136.378, 127.457, 135.77, 130.192, 135.415, 132.912, 135.976, 135.313, 137.338, 137.169, 139.335, 138.312, 141.798, 138.623, 144.528, 139.297, 147.227, 140.955, 149.492, 143.337, 150.964, 146.073, 151.402, 148.72, 150.607, 150.823, 148.753, 153.052, 147.025, 155.784, 146.346, 158.483, 146.98, 160.502, 148.754, 161.33, 151.196)
 width = 5.0
 
 [node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]

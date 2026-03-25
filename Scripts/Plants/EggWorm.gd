@@ -52,7 +52,8 @@ var isCurrentlyBuffed = true
 
 
 func _ready():
-	
+	print(self, " Heart Connect")
+	self.area_entered.connect(on_demon_area_entered)	
 	if self.is_in_group("Green"):
 		print(" I AM GREEN WYRM I WILL ATTACK GREEN")
 		$DMG_RayCast2D.collision_mask = 3
@@ -254,3 +255,19 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
+
+
+func on_demon_area_entered(new_area: Area2D):
+	print(self, "New Area Heart is ", new_area)
+	if new_area.is_in_group("HeartBuff"):
+		print(self, "will now receive heart buff")
+		receive_heart_buff()
+
+
+	
+func receive_heart_buff():
+	print(self.name , " receive Heart Buff")
+	$BuffNodesComponent.get_child(0).visible = true 
+	self.health = self.health + 400
+	pass
+	

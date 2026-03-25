@@ -16,12 +16,12 @@ func _ready():
 		# Always disconnect any existing connections first
 	if startGameButton.pressed.is_connected(_on_start_game_pressed):
 		startGameButton.pressed.disconnect(_on_start_game_pressed)
-	print("=== Button Debug Info ===")
-	print("Button exists: ", startGameButton != null)
-	print("Button disabled: ", startGameButton.disabled if startGameButton else "null")
-	print("Button visible: ", startGameButton.visible if startGameButton else "null")
-	print("Button mouse_filter: ", startGameButton.mouse_filter if startGameButton else "null")
-	print("Button instance ID: ", startGameButton.get_instance_id() if startGameButton else "null")
+	#print("=== Button Debug Info ===")
+	#print("Button exists: ", startGameButton != null)
+	#print("Button disabled: ", startGameButton.disabled if startGameButton else "null")
+	#print("Button visible: ", startGameButton.visible if startGameButton else "null")
+	#print("Button mouse_filter: ", startGameButton.mouse_filter if startGameButton else "null")
+	#print("Button instance ID: ", startGameButton.get_instance_id() if startGameButton else "null")
 	
 	if startGameButton and not startGameButton.pressed.is_connected(_on_start_game_pressed):
 		var result = startGameButton.pressed.connect(_on_start_game_pressed)
@@ -57,7 +57,7 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_level_select_button_pressed() -> void:
-	print("Button Worky")
+	#print("Button Worky")
 	Global.game_controller.change_scene("res://Scenes/LevelScenes/LevelSelect.tscn")
 
 

@@ -12,7 +12,6 @@ config_version=5
 
 config/name="PVZ0.1"
 run/main_scene="uid://0tcqey8apvy0"
-run/disable_stdout=true
 config/features=PackedStringArray("4.4")
 config/icon="res://Assets/icon.png"
 
@@ -113,6 +112,7 @@ Green=""
 Purple=""
 PurpleLevel=""
 GreenLevel=""
+HeartBuff=""
 
 [gui]
 

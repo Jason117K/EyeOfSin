@@ -23,6 +23,8 @@ var maw_scene = preload("res://Scenes/PlantScenes/Maw.tscn")
 var egg_scene = preload("res://Scenes/PlantScenes/EggWorm.tscn")
 var bomb_scene = preload("res://Scenes/PlantScenes/EyeBomb.tscn")
 var hive_scene = preload("res://Scenes/PlantScenes/Hive.tscn")
+var heart_scene = preload("res://Scenes/PlantScenes/HeartDemon.tscn")
+
 #var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
 
 # Label for Current Plant 
@@ -84,7 +86,7 @@ func _ready():
 	SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
 	sunFlowerCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
 	temp_instance = sunflower_scene.instantiate()
-	print("Temp Instance.get_cost() is : ", str(temp_instance.get_cost()))
+	#print("Temp Instance.get_cost() is : ", str(temp_instance.get_cost()))
 	sunFlowerCostLabel.text = str(temp_instance.get_cost())
 	
 	temp_instance.queue_free()
@@ -238,9 +240,9 @@ func _input(event):
 			_on_HiveButton_pressed()			
 
 func setPanelContainerWidth(newWidth: int):
-	print("Panel Container Dimensions is ", panelContainer.size)
+	#print("Panel Container Dimensions is ", panelContainer.size)
 	panelContainer.size.x = 71
-	print("Panel Container Dimensions is ", panelContainer.size)
+	#print("Panel Container Dimensions is ", panelContainer.size)
 
 		
 func deselect_plant():
@@ -286,8 +288,8 @@ func _on_SunflowerButton_pressed():
 	#currentPlantCost.text = "Penis"
 	temp_instance.queue_free()
 	
-	print("3Label text is ", sunFlowerCostLabel.text)
-	print("Sunflower selected", temp_instance.get_name())
+##	print("3Label text is ", sunFlowerCostLabel.text)
+#	print("Sunflower selected", temp_instance.get_name())
 #	$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	clicked_Eye.emit()
@@ -371,7 +373,7 @@ func _on_HiveButton_pressed():
 # Creates a transparent preview image for a given plant scene 
 
 func create_preview(plant_scene):
-	print("MAKE A PREVIEW")
+	#print("MAKE A PREVIEW")
 	# Clear the last preview 
 	clear_preview()
 	
@@ -391,7 +393,7 @@ func create_preview(plant_scene):
 			# Store original position and print it
 			var original_pos = Vector2(child.position.x, child.position.y)
 			preview_sprite.set_meta("original_offset", original_pos)
-			print(preview_container.name)
+			#print(preview_container.name)
 			
 			# Add the preview sprite to the container and array 
 			preview_container.add_child(preview_sprite)
@@ -569,7 +571,7 @@ func _on_open_demon_codex_button_pressed() -> void:
 
 func _on_world_swap_button_pressed() -> void:
 	if canSwapScenes:
-		print("Can Swap Scenes is ", canSwapScenes)
+	#	print("Can Swap Scenes is ", canSwapScenes)
 		Global.game_controller.swap_scenes()
 
 
@@ -585,3 +587,18 @@ func _on_fast_forward_pressed() -> void:
 	else:
 		Engine.time_scale = 1
 		doubleSpeed = true 
+
+
+func _on_heart_button_pressed() -> void:
+	selected_plant = heart_scene
+	var temp_instance = heart_scene.instantiate()
+	create_preview(heart_scene)
+	setCanRemoveFalse()
+	currentPlantLabel.text = "HEART DEMON SELECTED " + deselectText
+	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartLabel
+	currentPlantCost.text = str(temp_instance.get_cost())
+	temp_instance.queue_free()
+	var HeartButton = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
+	#WalnutButton.release_focus()
+	print("Heart selected")
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)

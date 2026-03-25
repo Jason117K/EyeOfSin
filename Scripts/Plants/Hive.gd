@@ -37,6 +37,7 @@ var PlantManager                                   # RefCounted to PlantManager
 var thisBufferName : String  
 
 func _ready():
+	super()
 	animSpriteComp = $AnimatedSpriteComp
 	
 	# Initialize drones & Plant Manager 

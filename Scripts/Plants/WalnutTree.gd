@@ -40,6 +40,7 @@ var can_damage_zombie= false
 
 #Grabs reference to plantManager 
 func _ready():
+	super()
 	animSpriteComp = $AnimatedSpriteComponent
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	animSpriteComp.animation = "spawn"
@@ -128,18 +129,18 @@ func _process(delta):
 		
 #Cost getter
 func get_cost():
-	print("Walnut returning cost of ", cost)
+	#print("Walnut returning cost of ", cost)
 	return cost
 	
 	
 func spawn_done():
 	
 	if spawnAnimDone:
-		print("Spyder Self Spawn Adjust 1")
+		#print("Spyder Self Spawn Adjust 1")
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 	else:
-		print("Spyder Self Spawn Adjust 2")
+		#print("Spyder Self Spawn Adjust 2")
 		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()

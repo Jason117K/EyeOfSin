@@ -109,6 +109,7 @@ var isBuffed := false
 var bufferName : String 
 
 func _ready():
+	super()
 	collision_mask = 2
 	animSpriteComp = $AnimatedSprite2D
 	#print("Maw Area2D: ", name)

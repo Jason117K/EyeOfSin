@@ -35,7 +35,7 @@ func _ready() -> void:
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
 	if plant_highlighted:
-		print("Returning HighLight Sunflower.R")
+		#print("Returning HighLight Sunflower.R")
 		return sunflower_scene
 	else:
 		return get_parent().get_parent().get_node("PlantSelectionMenu").selected_plant
@@ -73,11 +73,11 @@ func _input(event):
 				var cost = temp_instance.get_cost()
 				#print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 				if(parentName == "Level3"):
-					print("Grid map size is ", grid_map.size())
+					#print("Grid map size is ", grid_map.size())
 					if grid_map.size() == 0 && selected_plant_scene:
 					
 						if "Egg" in temp_instance.get_name():
-							print("Place Plant11 " , grid_pos)
+							#print("Place Plant11 " , grid_pos)
 							place_plant(grid_pos)
 							return
 						else:
@@ -87,7 +87,7 @@ func _input(event):
 				# early return if no sun points
 				if sun_points < cost:
 					selection_menu.clear_preview()
-					print("Sun Points is : ", sun_points, "which is less than ", cost)
+				#	print("Sun Points is : ", sun_points, "which is less than ", cost)
 					return
 			else: #Plant Scene Null
 				#TODO Make Double Click
@@ -151,7 +151,7 @@ func _input(event):
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
-					print(get_parent(), "QQOtro Place Plant " , grid_pos)
+				#	print(get_parent(), "QQOtro Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 
@@ -164,7 +164,7 @@ func clear_space(passed_grid_pos):
 	#print("QQ Grid Map is ", grid_map)
 	#print(" QQ Erase Plant At :", passed_grid_pos)
 	var plant_node = grid_map.get(passed_grid_pos)
-	print(" QQ Plant to Erase Is  ", plant_node)
+	#print(" QQ Plant to Erase Is  ", plant_node)
 	#plantToErase.die()
 	if plant_node != null:
 		plant_node.die_fromClearSpace()
@@ -277,9 +277,9 @@ func place_empty_blocker_plant(grid_pos):
 		if "Maw" in plant_instance.name:
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			grid_map[grid_pos] = plant_instance
-			print(get_parent(), "QQZGirdMap Now Contains",grid_pos)
+			#print(get_parent(), "QQZGirdMap Now Contains",grid_pos)
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
-			print(get_parent(), "QQZGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
+			#print(get_parent(), "QQZGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
@@ -294,19 +294,20 @@ func place_empty_blocker_plant(grid_pos):
 		AudioManager.create_2d_audio_at_location(plant_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 
 	else:
-		print("Not enough sun points!")
+		pass
+		#print("Not enough sun points!")
 	
-	print(get_parent(), "QQ Blocker Plant Was Placed At " , plant_instance.position)
+	#print(get_parent(), "QQ Blocker Plant Was Placed At " , plant_instance.position)
 	
 	
 # Place the selected plant on the grid
 func place_plant(grid_pos: Vector2):
-	print(get_parent(), "QQ Grid Map Place Plant is ", grid_map)
-	print("About to Place Plant")
+	#print(get_parent(), "QQ Grid Map Place Plant is ", grid_map)
+	#print("About to Place Plant")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
 	else:
-		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
+		#print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
 		return 
 	
 	# Dynamically get the selected plant	
@@ -340,19 +341,19 @@ func place_plant(grid_pos: Vector2):
 	
 	#Get The Cost 
 	plant_cost = plant_instance.get_cost()
-	print("Plant CCost is : ", plant_cost)
+	#print("Plant CCost is : ", plant_cost)
 	
 	if sun_points >= plant_cost: 
 		
-		print("Have enough sun, placing plant ")
+		#print("Have enough sun, placing plant ")
 		#Maw Handling, occupies two cells
 		if "Maw" in plant_instance.name:
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			plant_instance.position = Vector2(plant_instance.position.x-256,plant_instance.position.y-256)
 			grid_map[grid_pos] = plant_instance
-			print("QQGirdMap Now Contains",grid_pos)
+			#print("QQGirdMap Now Contains",grid_pos)
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
-			print("QQGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
+		#	print("QQGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
 			plant_instance.position = Vector2(grid_pos.x,grid_pos.y )
@@ -401,9 +402,10 @@ func place_plant(grid_pos: Vector2):
 		#selection_menu.clear_preview()
 		
 	else:
-		print("Not enough sun points!")
+		pass
+		#print("Not enough sun points!")
 	
-	print("QQZ Plant Was Placed At " , plant_instance.position)
+	#print("QQZ Plant Was Placed At " , plant_instance.position)
 	selection_menu.deselect_plant()
 
 # Helper function to generate sequential names

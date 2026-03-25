@@ -119,7 +119,7 @@ func _load_resources():
 	_load_zombie_type_animation_resource(ZombieType.SCREENDOORZOMBIE,"ScreenDoorZombie.tres")
 	_load_zombie_type_animation_resource(ZombieType.TICKER,"TickerFrames.tres")
 	
-	print("Plant Variation Images 1 is ", plant_variation_images[1])
+	#print("Plant Variation Images 1 is ", plant_variation_images[1])
 	
 	
 # Helper function to load resources for a specific tower type

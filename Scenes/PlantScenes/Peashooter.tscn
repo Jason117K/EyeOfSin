@@ -1663,7 +1663,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_hvfi3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
 shape = SubResource("1")
@@ -1674,7 +1673,7 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"idle_Spider"
+animation = &"attack"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("6_67t0g")
@@ -1723,74 +1722,74 @@ collide_with_bodies = false
 [node name="BuffNodesComponent" parent="." instance=ExtResource("10")]
 giveBuffTo = ["Sunflower", "", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 6
 
-[node name="TileArea2" parent="BuffNodesComponent" index="2"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3"]
 visible = false
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 3
-
-[node name="TileArea3" parent="BuffNodesComponent" index="4"]
-visible = false
-
-[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5"]
+visible = false
+
+[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea5" parent="BuffNodesComponent" index="8"]
-visible = false
-
-[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea6" parent="BuffNodesComponent" index="10"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9"]
 visible = false
 
-[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 3
-
-[node name="TileArea7" parent="BuffNodesComponent" index="12"]
-visible = false
-
-[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea8" parent="BuffNodesComponent" index="14"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11"]
 visible = false
 
-[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea9" parent="BuffNodesComponent" index="16"]
+[node name="TileArea7" parent="BuffNodesComponent" index="13"]
 visible = false
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 3
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15"]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 3
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17"]
+visible = false
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 15
 frame_progress = 0.606092
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
 visible = false
 
 [node name="Timer" type="Timer" parent="."]
@@ -1837,7 +1836,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 110.78, 129.732, 106.947, 130.596, 103.057, 131.796, 100.723, 130.459, 98.7488, 128.929, 94.9669, 129.782, 91.1172, 131.481, 88.7447, 130.404)
+points = PackedVector2Array(112.595, 131.435, 109.798, 130.514, 108.337, 128.791, 104.582, 129.505, 100.692, 130.828, 98.2389, 129.617, 96.5898, 127.959, 92.9743, 128.504, 89.2431, 131.077)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1849,7 +1848,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 110.78, 122.857, 106.947, 121.846, 103.057, 121.171, 100.723, 117.959, 98.7488, 114.554, 94.9669, 113.532, 91.1172, 113.356, 88.7447, 110.404)
+points = PackedVector2Array(112.595, 126.435, 109.798, 123.639, 108.337, 120.041, 104.582, 118.88, 100.692, 118.328, 98.2389, 115.242, 96.5898, 111.709, 92.9743, 110.379, 89.2431, 111.077)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1870,7 +1869,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 112.358, 130.735, 114.184, 130.853, 116.315, 131.387, 116.759, 130.764, 116.712, 130.123, 118.488, 130.229, 120.712, 131.049, 121.576, 130.675)
+points = PackedVector2Array(112.595, 131.435, 114.909, 132.118, 115.624, 131.579, 115.125, 130.999, 116.513, 130.77, 118.632, 131.292, 119.403, 130.784, 118.866, 130.246, 119.608, 129.819)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1878,7 +1877,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 112.358, 123.86, 114.184, 122.103, 116.315, 120.762, 116.759, 118.264, 116.712, 115.748, 118.488, 113.979, 120.712, 112.924, 121.576, 110.675)
+points = PackedVector2Array(112.595, 126.435, 114.909, 125.243, 115.624, 122.829, 115.125, 120.374, 116.513, 118.27, 118.632, 116.917, 119.403, 114.534, 118.866, 112.121, 119.608, 109.819)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1896,7 +1895,7 @@ sprite_frames = SubResource("SpriteFrames_3byx0")
 speed_scale = 5.0
 script = ExtResource("31_oysqj")
 
-[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

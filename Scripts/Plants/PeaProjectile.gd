@@ -11,17 +11,18 @@ var sunBuff := false
 var wyrmBuff := false
 
 func _ready() -> void:
-	if wyrmBuff:
-		$LightningZone.visible = true 
-		$LightningZone.monitoring = true 
-		$AnimatedSprite2D.visible = true 
+	pass
+	#if wyrmBuff:
+		#$LightningZone.visible = true 
+		#$LightningZone.monitoring = true 
+		#$AnimatedSprite2D.visible = true 
 
 func _process(delta):
-	if wyrmBuff:
-		$LightningZone.visible = true 
-		$LightningZone.monitoring = true 
-		$AnimatedSprite2D.visible = true 
-		$LightningZone/CollisionShape2D.disabled = false
+	#if wyrmBuff:
+		#$LightningZone.visible = true 
+		#$LightningZone.monitoring = true 
+		#$AnimatedSprite2D.visible = true 
+		#$LightningZone/CollisionShape2D.disabled = false
 	position.x += speed * delta  # Move the projectile to the right
 
 	# Remove the projectile if it goes off-screen

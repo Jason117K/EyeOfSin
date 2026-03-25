@@ -19,11 +19,11 @@ func _ready():
 	
 
 func _on_Area2D_mouse_entered():
-	print("SSD Mouse Entered")	
+	#print("SSD Mouse Entered")	
 	numWave = spawner.get_numWave() + 1
 	if numWave == 0:
 		numWave = 1
-	print("SSD Mouse Entered Numwave is ", numWave)
+	#print("SSD Mouse Entered Numwave is ", numWave)
 	match numWave:
 		1:
 
@@ -35,7 +35,7 @@ func _on_Area2D_mouse_entered():
 			
 			
 	if $PreviewSprite.visible == true:
-		print("SSDict: ", currentZombieDict)
+		#print("SSDict: ", currentZombieDict)
 		for key in currentZombieDict:
 			#var line = "[b]" + str(key) + "[/b]: " + str(spawner.Round1_Zombies[key]) + "\n"
 			if currentZombieDict[key] == 0:
