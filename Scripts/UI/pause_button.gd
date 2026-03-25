@@ -4,7 +4,8 @@ extends Button
 @onready var toolTips = $"../ToolTips"
 
 func _ready() -> void:
-	visible = true 
+	pass
+#	visible = true 
 	
 func _process(delta: float) -> void:
 	if get_tree().paused == false :

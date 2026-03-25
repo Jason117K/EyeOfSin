@@ -14,6 +14,8 @@ var swap_cooldown_timer
 var cooldown = 0.1
 var can_swap := true 
 
+@onready var pauseButton = $PauseButton
+
 func _ready() -> void:
 	Global.game_controller = self 
 	#TODO safsfaafsafe
@@ -28,7 +30,7 @@ func _ready() -> void:
 	
 func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool = true, keep_running : bool = false) -> void:
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
+	pauseButton.visible = true 
 	#print("Changing scene to ", new_scene1 , " AND ", new_scene2)
 	if !current_scenes.is_empty():
 		if delete:
@@ -136,7 +138,7 @@ func remove_empty_in_alt_scene(grid_pos):
 	
 func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:
 	#print("Changing scene to ", new_scene)
-	
+	pauseButton.visible = false 
 	#Delete Old Scenes
 	
 	if !current_scenes.is_empty():
@@ -228,6 +230,7 @@ func restore_previous_scene():
 	
 func change_scene_with_pause(new_scene : String):
 #	print("PPChanging scene with PAUSE to ", new_scene)
+	pauseButton.visible = false 
 	if current_scene == null:
 		pass
 	#	print("Current scene : ", current_scene, " is null ")
@@ -257,7 +260,7 @@ func change_scene_with_pause(new_scene : String):
 	
 func change_scene_with_pause_from_dual_scene(new_scene : String):
 #	print("PPChanging scene with PAUSE from DUAL to ", new_scene)
-
+	pauseButton.visible = false 
 	if current_scenes.size() > 1:
 		for scene in current_scenes:
 			if scene != null:
@@ -276,6 +279,7 @@ func change_scene_with_pause_from_dual_scene(new_scene : String):
 
 func restore_dual_scenes():
 #	print("PPRestoring Dual Scenes", current_scenes)
+	pauseButton.visible = true 
 	if current_scene == null:
 		pass
 	#	print("Current scene : ", current_scene, " is null ")
@@ -310,6 +314,7 @@ func restore_dual_scenes():
 
 func change_scene(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:
 #	print("Changing scene to ", new_scene)
+	pauseButton.visible = false 
 	if current_scene == null:
 		pass
 #		print("Current scene : ", current_scene, " is null ")

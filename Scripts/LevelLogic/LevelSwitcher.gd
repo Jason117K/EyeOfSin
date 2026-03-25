@@ -33,7 +33,8 @@ func _on_Continue_pressed():
 	#assert(get_tree().change_scene_to_packed(nextLevel) == OK)
 	#Global.game_controller.change_scene(next_level)
 	#Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/StartScreen.tscn")
-	Global.game_controller.change_dual_scenes(next_level,next_level_alt)
+	#Global.game_controller.change_dual_scenes(next_level,next_level_alt)
+	Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/LevelSelect.tscn")
 	self.visible = false 
 	Global.unlockLevel(level_unlocked)
 

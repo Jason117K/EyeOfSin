@@ -45,7 +45,7 @@ var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 @export var new_end_dialog = "res://Assets/Dialog/level_0_end_dialog.dtl"
 
 func _ready():
-	#Dialogic.Inputs.auto_skip.enabled = true 
+	Dialogic.Inputs.auto_skip.enabled = true 
 	Global.current_level = self
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)

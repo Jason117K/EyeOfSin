@@ -75,6 +75,8 @@ StartDelay = 1
 Wave3StartTime = 45
 
 [node name="PauseButton" parent="." instance=ExtResource("7_27abl")]
+visible = false
+z_index = 1
 offset_left = 672.0
 offset_top = 370.0
 offset_right = 729.0
