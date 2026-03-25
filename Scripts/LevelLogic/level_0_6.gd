@@ -60,7 +60,8 @@ func _ready():
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 
 	Dialogic.timeline_ended.connect(finish_ready)
-	Dialogic.start("res://Assets/Dialog/level_06_start_dialog.dtl")
+	#Dialogic.start("res://Assets/Dialog/level_06_start_dialog.dtl")
+	finish_ready()
 		#
 	#levelSwitcher.update_level(endScreen,endScreenAlt)
 	#

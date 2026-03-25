@@ -70,7 +70,8 @@ func _ready():
 	toolTips.hide()
 	
 	Dialogic.timeline_ended.connect(finish_ready)
-	Dialogic.start("res://Assets/Dialog/level_0_start_dialog.dtl")
+	#Dialogic.start("res://Assets/Dialog/level_0_start_dialog.dtl")
+	finish_ready()
 	
 	
 	#toolTips.visible = true 

@@ -70,7 +70,8 @@ func _ready():
 	hive_button.connect("pressed", Callable(self, "_on_hive_button_pressed"))
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
-	Dialogic.start("res://Assets/Dialog/level_05_start_dialog.dtl")
+	#Dialogic.start("res://Assets/Dialog/level_05_start_dialog.dtl")
+	finish_ready()
 	# Start tutorial
 	#_transition_to_state(TutorialState.FORCE_SELECT_HIVE)
 	#

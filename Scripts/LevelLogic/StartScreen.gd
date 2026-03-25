@@ -58,7 +58,7 @@ func _on_start_game_pressed() -> void:
 
 func _on_level_select_button_pressed() -> void:
 	#print("Button Worky")
-	Global.game_controller.change_scene("res://Scenes/LevelScenes/LevelSelect.tscn")
+	Global.game_controller.change_scene("res://Scenes/LevelScenes/LevelSelect_Map.tscn")
 
 
 func _on_quit_pressed() -> void:
