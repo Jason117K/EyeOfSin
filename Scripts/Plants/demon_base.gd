@@ -13,7 +13,7 @@ func _ready() -> void:
 	self.area_exited.connect(on_demon_area_exited)
 	
 func on_demon_area_entered(new_area: Area2D):
-	print(self, "New Area Heart is ", new_area)
+	#print(self, "New Area Heart is ", new_area)
 	if new_area.is_in_group("HeartBuff"):
 		print(self, "will now receive heart buff")
 		receive_heart_buff()

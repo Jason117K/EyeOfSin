@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://cumfakomi0t74"]
+[gd_scene load_steps=31 format=4 uid="uid://cumfakomi0t74"]
 
 [ext_resource type="Script" uid="uid://8f6u42ck4bpg" path="res://Scripts/LevelLogic/level_0_4.gd" id="1_xw2pb"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_60dyi"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_u00xe"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="22_2i5fe"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="23_qpmao"]
+[ext_resource type="PackedScene" uid="uid://b1irt6sxuudih" path="res://Scenes/PlantScenes/HeartDemon.tscn" id="23_xw2pb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("10_27ghl")
@@ -81,7 +82,7 @@ mouse_filter = 2
 script = ExtResource("1_xw2pb")
 
 [node name="PlantManager" parent="." instance=ExtResource("2_60dyi")]
-sun_points = 450
+sun_points = 900
 
 [node name="GameLayer" type="Node2D" parent="."]
 process_mode = 1
@@ -637,10 +638,14 @@ offset_bottom = 435.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="Heart" parent="." instance=ExtResource("23_xw2pb")]
+visible = false
+position = Vector2(400, 293)
+
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

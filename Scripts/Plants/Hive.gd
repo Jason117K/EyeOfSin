@@ -154,7 +154,7 @@ func spawn_initial_drones():
 		else: #Purple
 			drone.add_to_group("Purple")
 		available_drones.append(drone)
-		print("Just Added : ", drone.name)
+		#print("Just Added : ", drone.name)
 	
 		
 		# Calculate and store rest position

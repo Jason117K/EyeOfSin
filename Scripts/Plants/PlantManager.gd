@@ -3,11 +3,13 @@ extends Node2D
 
 # Get a reference to the plant selection menu 
 @onready var selection_menu = get_parent().get_parent().get_node("PlantSelectionMenu")
+@onready var parentName = get_parent().get_name()
+
+@export var sun_points = 200 # Holds how many sun points we have currently 
 
 var selected_plant_scene = null  # Holds the selected plant scene
 var grid_size = 32 # Defines the size of each grid cell 
 var grid_map = {}  # Dictionary to store occupied cells
-@export var sun_points = 200 # Holds how many sun points we have currently 
 var plant_cost = 25  # Holds the cost of the currently selected plant 
 var plant_to_move
 var plant_highlighted := false
@@ -15,8 +17,7 @@ var highlight_plant_global_pos
 var sunflower_scene := preload("res://Scenes/PlantScenes/Sunflower.tscn")
 var empty_demon_scene := preload("res://Scenes/PlantScenes/EmptyDemon.tscn")
 var spyder_not_placed := true 
-
-@onready var parentName = get_parent().get_name()
+var hero_demon : Demon 
 
 signal plant_placed(grid_position: Vector2)
 signal spyder_placed(grid_position: Vector2)
@@ -272,7 +273,7 @@ func place_empty_blocker_plant(grid_pos):
 	
 	if sun_points >= -99999: 
 		
-		print("Have enough sun, placing plant ")
+		#print("Have enough sun, placing plant ")
 		#Maw Handling, occupies two cells
 		if "Maw" in plant_instance.name:
 			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
@@ -337,7 +338,37 @@ func place_plant(grid_pos: Vector2):
 			return 
 		else:
 			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
-
+	if "Heart" in plant_instance.name:
+		print("About to Place Heart Demon")
+		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
+			return 
+		if Vector2(grid_pos.x+32,grid_pos.y+32) in grid_map:
+			return 
+		if Vector2(grid_pos.x+32,grid_pos.y-32) in grid_map:
+			return 
+		if Vector2(grid_pos.x,grid_pos.y+32) in grid_map:
+			return 
+		if Vector2(grid_pos.x,grid_pos.y-32) in grid_map:
+			return 
+		if Vector2(grid_pos.x-32,grid_pos.y) in grid_map:
+			return 
+			
+		grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
+		grid_map[Vector2(grid_pos.x+32,grid_pos.y+32)] = plant_instance
+		grid_map[Vector2(grid_pos.x+32,grid_pos.y-32)] = plant_instance
+		grid_map[Vector2(grid_pos.x,grid_pos.y+32)] = plant_instance
+		grid_map[Vector2(grid_pos.x,grid_pos.y-32)] = plant_instance
+		grid_map[Vector2(grid_pos.x-32,grid_pos.y)] = plant_instance
+		
+		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
+		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y+32))
+		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y-32))
+		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32))
+		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y-32))
+		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y))
+		hero_demon = plant_instance
+		Global.game_controller.register_heart_alt_scene(hero_demon)
+		print("Heart Demon Should Be Placed : ", hero_demon)
 	
 	#Get The Cost 
 	plant_cost = plant_instance.get_cost()
@@ -455,5 +486,37 @@ func _on_SetSun_timeout():
 		#get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
 		get_parent().get_node("UILayer/HBoxContainer2/Blood").text = str(sun_points)
 
-
+func swap_heart():
+	print("Hero Demon Is ", hero_demon)
+	if "Alternate" in get_parent().name :
+		hero_demon.add_to_group("Green")
+		hero_demon.remove_from_group("Purple")
+		hero_demon.reparent(get_parent().get_node("GameLayer"))
+		
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
+		
+	else:
+		hero_demon.add_to_group("Purple")
+		hero_demon.remove_from_group("Green")
+		hero_demon.reparent(get_parent().get_node("GameLayer"))
 	
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = hero_demon
+		grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
+
+#Clear Hero Demon When Swapping Dimensions 
+func clear_hero_demon():
+	grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = empty_demon_scene
+	grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = empty_demon_scene
+	grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = empty_demon_scene
+	grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = empty_demon_scene
+	grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = empty_demon_scene
+	grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = empty_demon_scene

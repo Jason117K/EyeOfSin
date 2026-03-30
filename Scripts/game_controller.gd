@@ -14,6 +14,8 @@ var swap_cooldown_timer
 var cooldown = 0.1
 var can_swap := true 
 
+var plant_manager
+
 @onready var pauseButton = $PauseButton
 
 func _ready() -> void:
@@ -101,20 +103,31 @@ func swap_scenes():
 	#	print("Swap Scenes")
 		#current_scene.visible = false 
 		if on_scene_1:
+			plant_manager = current_scenes[0].get_child(0)
+			plant_manager.clear_hero_demon()
+			
 			current_scenes[1].visible = true 
+			plant_manager = current_scenes[1].get_child(0)
 			current_scenes[1].set_process_input(true)
 			current_scenes[0].visible = false 
 			current_scenes[1].set_process_input(false)
 			on_scene_1 = false 
 		else:
+			plant_manager = current_scenes[1].get_child(0)
+			plant_manager.clear_hero_demon()
+			
 			current_scenes[1].visible = false 
 			current_scenes[1].set_process_input(false)
 			current_scenes[0].visible = true 
+			plant_manager = current_scenes[0].get_child(0)
 			current_scenes[0].set_process_input(true)
 			on_scene_1 = true 		
 			
 		swap_cooldown_timer.start()
-		
+	#for child in current_scene
+	#plant_manager = current_scene.find_child("PlantManager")
+	print("PlantManager Is ", plant_manager)
+	plant_manager.swap_heart()
 func reset_cooldown():
 	can_swap = true
 	
@@ -364,3 +377,9 @@ func clear_guide():
 	if current_scene:
 		current_scene.hide_guide()	
 		current_alt_scene.hide_guide()	
+		
+func register_heart_alt_scene(new_hero_demon):
+	if current_scenes[1].visible == false :
+		current_scenes[1].get_child(0).hero_demon = new_hero_demon
+	elif current_scenes[0].visible == false :
+		current_scenes[0].get_child(0).hero_demon = new_hero_demon

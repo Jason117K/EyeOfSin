@@ -155,7 +155,7 @@ func attach_script_to_sway_children(script_path: String) -> void:
 
 # State transition system
 func _transition_to_state(new_state: TutorialState):
-	print("[Tutorial] Transition: ", TutorialState.keys()[tutorial_state], " → ", TutorialState.keys()[new_state])
+	#print("[Tutorial] Transition: ", TutorialState.keys()[tutorial_state], " → ", TutorialState.keys()[new_state])
 	tutorial_state = new_state
 
 	match new_state:
@@ -172,36 +172,37 @@ func _transition_to_state(new_state: TutorialState):
 
 func _on_tooltip_hidden():
 	hide_spotlight()
-	print("########## TOOLTIP HIDDEN ##########")
-	print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
-	print("[Tutorial] Current time: ", Time.get_ticks_msec())
+	#print("########## TOOLTIP HIDDEN ##########")
+	#print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
+	#print("[Tutorial] Current time: ", Time.get_ticks_msec())
 	match tutorial_state:
 		TutorialState.FORCE_SELECT_HIVE:
 			pass
 		TutorialState.FORCE_PLACE_HIVE:
-			print("UNPPAUSE HERE")
+			#print("UNPPAUSE HERE")
 			get_tree().paused = false
 		TutorialState.EXPLAIN_ERUPTER_ZOMBIE:
-			print("[Tutorial] Erupter explained - waiting for Wave 2")
-			print("UNPPAUSE HERE")
+			#print("[Tutorial] Erupter explained - waiting for Wave 2")
+			#print("UNPPAUSE HERE")
 			get_tree().paused = false  # Unpause game
 			
 		TutorialState.EXPLAIN_LANCER_ZOMBIE:
-			print("[Tutorial] Lancer explained")
-			print("UNPPAUSE HERE")
+		#	print("[Tutorial] Lancer explained")
+		#	print("UNPPAUSE HERE")
 			get_tree().paused = false  # Unpause game
 			
 func _on_wave_1_started():
-	print("[Tutorial] Wave 1 started")
+	#print("[Tutorial] Wave 1 started")
 	_transition_to_state(TutorialState.EXPLAIN_LANCER_ZOMBIE)
 	
 	
 func _on_wave_2_started():
-	print("[Tutorial] Wave 2 started")
+	#print("[Tutorial] Wave 2 started")
 	_transition_to_state(TutorialState.EXPLAIN_ERUPTER_ZOMBIE)
 
 func _on_wave_3_started():
-	print("[Tutorial] Wave 3 Started")
+	#print("[Tutorial] Wave 3 Started")
+	pass
 
 
 
@@ -234,7 +235,7 @@ func _start_force_select_hive():
 	plantSelectionMenu.canSwapScenes = false
 	
 func _start_force_place_hive():
-	print("[Tutorial] Starting FORCE_PLACE_HIVE")
+	#print("[Tutorial] Starting FORCE_PLACE_HIVE")
 	toolTips.set_text(TUTORIAL_PLACE_HIVE)
 	toolTips.noButtonShow()
 
@@ -246,20 +247,21 @@ func _start_force_place_hive():
 	hide_spotlight()
 
 func _on_hive_button_pressed():
-	print("[Tutorial] Hive button pressed in state: ", TutorialState.keys()[tutorial_state])
+	#print("[Tutorial] Hive button pressed in state: ", TutorialState.keys()[tutorial_state])
 	if tutorial_state == TutorialState.FORCE_SELECT_HIVE:
 		_transition_to_state(TutorialState.FORCE_PLACE_HIVE)
 
 func _on_codex_button_pressed():
-	print("[Tutorial] Codex button pressed in state: ", TutorialState.keys()[tutorial_state])
+	#print("[Tutorial] Codex button pressed in state: ", TutorialState.keys()[tutorial_state])
 	_transition_to_state(TutorialState.TUTORIAL_P2_DONE)
 	
 
 func _on_hive_placed(grid_pos: Vector2):
-	print("[Tutorial] Hive placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
+	#print("[Tutorial] Hive placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
+	pass
 
 	if tutorial_state == TutorialState.FORCE_PLACE_HIVE:
-		print("[Tutorial] Hive placement complete - tutorial initial part finished")
+		#print("[Tutorial] Hive placement complete - tutorial initial part finished")
 		toolTips.hide()
 		_transition_to_state(TutorialState.TUTORIAL_P1_DONE)
 		show_all_plant_buttons()
@@ -328,14 +330,14 @@ func show_all_plant_buttons():
 # Spotlight helper functions 
 func _start_explain_erupter_zombie():
 	erupterExplained = true 
-	print("[TUTORIAL] Start Explain Erupter Zombie")
+	#print("[TUTORIAL] Start Explain Erupter Zombie")
 	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_ERUPTER)
 	toolTips.setComplexScene(erupter_zombie_demo_scene)
 	toolTips.showButton()	
 	
 func _start_explain_lancer_zombie():
 	lancerExplained = true 
-	print("[TUTORIAL] Start Explain Lancer Zombie")
+	#print("[TUTORIAL] Start Explain Lancer Zombie")
 	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_LANCER)
 	toolTips.setComplexScene(lancer_zombie_demo_scene)
 	toolTips.showButton()	
@@ -343,9 +345,9 @@ func _start_explain_lancer_zombie():
 ## Shows spotlight centered on a Control node
 func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
 	if not target_node or not spotlight_overlay:
-		print("NOT SHOWING SPOTLIGHT")
+		#print("NOT SHOWING SPOTLIGHT")
 		return
-	print("Showing Spotlight", target_node, size_multiplier)
+#	print("Showing Spotlight", target_node, size_multiplier)
 
 	# Get center of target in screen coordinates
 	var global_rect = target_node.get_global_rect()
@@ -364,7 +366,7 @@ func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
 		return
 	var viewport_size = get_viewport().get_visible_rect().size
 	var uv_pos = screen_pos / viewport_size
-	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
+#	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
 	#var viewport_size = get_viewport().get_visible_rect().size
 	#var uv_pos = screen_pos / viewport_size
 

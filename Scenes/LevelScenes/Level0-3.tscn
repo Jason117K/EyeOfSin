@@ -4219,7 +4219,6 @@ position = Vector2(719, 282)
 texture = ExtResource("86_18xgo")
 
 [node name="Peashooter" parent="." instance=ExtResource("87_yf6p8")]
-z_index = 3
 position = Vector2(282, 142)
 
 [node name="Sunflower" parent="." instance=ExtResource("88_xyvkd")]

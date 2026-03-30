@@ -124,7 +124,7 @@ func spawn_initial_drones():
 		drone.name = "Drone_%d" % i  # e.g., "Drone_0", "Drone_1"
 		add_child(drone)
 		available_drones.append(drone)
-		print("Just Added : ", drone.name)
+		#print("Just Added : ", drone.name)
 	
 		
 		# Calculate and store rest position

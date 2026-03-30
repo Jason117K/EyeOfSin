@@ -128,7 +128,7 @@ func setup_plant_selection_menu():
 
 # State transition system
 func _transition_to_state(new_state: TutorialState):
-	print("[Tutorial] Transition: ", TutorialState.keys()[tutorial_state], " → ", TutorialState.keys()[new_state])
+	#print("[Tutorial] Transition: ", TutorialState.keys()[tutorial_state], " → ", TutorialState.keys()[new_state])
 	tutorial_state = new_state
 
 	match new_state:
@@ -166,27 +166,29 @@ func attach_script_to_sway_children(script_path: String) -> void:
 	
 func _on_tooltip_hidden():
 	hide_spotlight()
-	print("########## TOOLTIP HIDDEN ##########")
-	print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
-	print("[Tutorial] Current time: ", Time.get_ticks_msec())
+	#print("########## TOOLTIP HIDDEN ##########")
+	#print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
+	#print("[Tutorial] Current time: ", Time.get_ticks_msec())
 	match tutorial_state:
 			
 		TutorialState.EXPLAIN_AMALGAM_ZOMBIE:
-			print("[Tutorial] amalgam explained")
-			print("UNPPAUSE HERE")
+			#print("[Tutorial] amalgam explained")
+			#print("UNPPAUSE HERE")
 			get_tree().paused = false  # Unpause game
 			
 func _on_wave_1_started():
-	print("[Tutorial] Wave 1 started")
+	#print("[Tutorial] Wave 1 started")
 	_transition_to_state(TutorialState.EXPLAIN_AMALGAM_ZOMBIE)
 	
 	
 func _on_wave_2_started():
-	print("[Tutorial] Wave 2 started")
+	pass
+	#print("[Tutorial] Wave 2 started")
 
 
 func _on_wave_3_started():
-	print("[Tutorial] Wave 3 Started")
+	pass
+	#print("[Tutorial] Wave 3 Started")
 
 
 
@@ -196,7 +198,7 @@ func _on_wave_3_started():
 
 
 func _on_codex_button_pressed():
-	print("[Tutorial] Codex button pressed in state: ", TutorialState.keys()[tutorial_state])
+	#print("[Tutorial] Codex button pressed in state: ", TutorialState.keys()[tutorial_state])
 	_transition_to_state(TutorialState.TUTORIAL_P2_DONE)
 	
 
@@ -227,7 +229,7 @@ func show_all_plant_buttons():
 # Spotlight helper functions 	
 func _start_explain_amalgam_zombie():
 	amalgamExplained = true 
-	print("[TUTORIAL] Start Explain amalgam Zombie")
+	#print("[TUTORIAL] Start Explain amalgam Zombie")
 	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_AMALGAM)
 	toolTips.setComplexScene(amalgam_zombie_demo_scene)
 	toolTips.showButton()	
@@ -237,7 +239,7 @@ func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
 	if not target_node or not spotlight_overlay:
 		print("NOT SHOWING SPOTLIGHT")
 		return
-	print("Showing Spotlight", target_node, size_multiplier)
+	#print("Showing Spotlight", target_node, size_multiplier)
 
 	# Get center of target in screen coordinates
 	var global_rect = target_node.get_global_rect()
@@ -256,7 +258,7 @@ func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
 		return
 	var viewport_size = get_viewport().get_visible_rect().size
 	var uv_pos = screen_pos / viewport_size
-	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
+	#print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
 	#var viewport_size = get_viewport().get_visible_rect().size
 	#var uv_pos = screen_pos / viewport_size
 
