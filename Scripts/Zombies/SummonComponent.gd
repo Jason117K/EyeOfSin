@@ -25,7 +25,7 @@ var is_attacking #Whether or not we are attacking
 
 #Summon the Floating Tentacle head backup dancers 
 func summon_backup():
-	print("Summoning",dancerZombie.position.y)
+	#print("Summoning ",dancerZombie.position.y)
 	# Get reference to GameLayer
 	var game_layer = get_parent().get_parent()
 	var root = get_tree().current_scene
@@ -70,13 +70,13 @@ func summon_backup():
 		# Set the zombie's global position
 		zombie_instance.global_position = global_spawn_pos
 		if self.get_parent().is_in_group("Green"):
-			print("Summoner Spawned Green")
+			#print("Summoner Spawned Green")
 			zombie_instance.add_to_group("Green")
 			zombie_instance.collision_layer = 3
 			zombie_instance.set_hue_shift(125)
 			zombie_instance._ready()
 		else:
-			print("Summoner Spawned Purple")
+			#print("Summoner Spawned Purple")
 			zombie_instance.add_to_group("Purple")
 
 #Start the summon again by setting the animation 

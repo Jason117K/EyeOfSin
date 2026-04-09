@@ -366,7 +366,7 @@ func place_plant(grid_pos: Vector2):
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32))
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y-32))
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y))
-		hero_demon = plant_instance
+		hero_demon = plant_instance  
 		Global.game_controller.register_heart_alt_scene(hero_demon)
 		print("Heart Demon Should Be Placed : ", hero_demon)
 	
@@ -465,7 +465,7 @@ func generate_unique_name(base_name: String) -> String:
 	
 #Add sun to total 
 func add_sun(amount):
-	print("Add SunWW: " , amount)
+	#print("Add SunWW: " , amount)
 	sun_points += amount
 	#get_parent().get_node("UILayer/SunCounter/HBoxContainer/BloodCounter").text = "Blood: " + str(sun_points)
 	get_parent().get_node("UILayer/HBoxContainer2/Blood").text = str(sun_points)
@@ -488,35 +488,39 @@ func _on_SetSun_timeout():
 
 func swap_heart():
 	print("Hero Demon Is ", hero_demon)
-	if "Alternate" in get_parent().name :
-		hero_demon.add_to_group("Green")
-		hero_demon.remove_from_group("Purple")
-		hero_demon.reparent(get_parent().get_node("GameLayer"))
-		
-		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
-		
-	else:
-		hero_demon.add_to_group("Purple")
-		hero_demon.remove_from_group("Green")
-		hero_demon.reparent(get_parent().get_node("GameLayer"))
-	
-		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = hero_demon
-		grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
+	if hero_demon != null:
+		if "Alternate" in get_parent().name :
+			hero_demon.add_to_group("Green")
+			hero_demon.remove_from_group("Purple")
+			hero_demon.reparent(get_parent().get_node("GameLayer"))
+			hero_demon.set_attack_ray()
+			
+			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
+			
+		else:
+			hero_demon.add_to_group("Purple")
+			hero_demon.remove_from_group("Green")
+			hero_demon.reparent(get_parent().get_node("GameLayer"))
+			hero_demon.set_attack_ray()
+			
+			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = hero_demon
+			grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
 
 #Clear Hero Demon When Swapping Dimensions 
 func clear_hero_demon():
-	grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = empty_demon_scene
-	grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = empty_demon_scene
-	grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = empty_demon_scene
-	grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = empty_demon_scene
-	grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = empty_demon_scene
-	grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = empty_demon_scene
+	if hero_demon != null:
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = empty_demon_scene
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = empty_demon_scene
+		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = empty_demon_scene
+		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y+32)] = empty_demon_scene
+		grid_map[Vector2(hero_demon.global_position.x,hero_demon.global_position.y-32)] = empty_demon_scene
+		grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = empty_demon_scene

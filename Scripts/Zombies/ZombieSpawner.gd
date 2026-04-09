@@ -99,11 +99,11 @@ func start_spawn_zombie():
 	
 #Spawns a different amount of zombies depending on the wave
 func spawn_zombie():
-	print("[SPAWNER ", name, "] ===== spawn_zombie() called =====")
-	print("[SPAWNER ", name, "] numWave: ", numWave)
-	print("[SPAWNER ", name, "] wave1_zombies.size(): ", wave1_zombies.size())
-	print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
-	print("[SPAWNER ", name, "] wave3_zombies.size(): ", wave3_zombies.size())
+	#print("[SPAWNER ", name, "] ===== spawn_zombie() called =====")
+	#print("[SPAWNER ", name, "] numWave: ", numWave)
+	#print("[SPAWNER ", name, "] wave1_zombies.size(): ", wave1_zombies.size())
+	#print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
+	#print("[SPAWNER ", name, "] wave3_zombies.size(): ", wave3_zombies.size())
 
 	#For each wave, shuffle the zombies, and then spawn them at the spawner positon
 	#TODO Add slight variation in spawn y axis
@@ -134,7 +134,7 @@ func spawn_zombie():
 				else:
 					zombie_instance.add_to_group("Purple")
 				$WaveDelay.start()
-				print("Spawn Wave 1")
+				#print("Spawn Wave 1")
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()
@@ -146,8 +146,8 @@ func spawn_zombie():
 				
 
 		2:
-			print("[SPAWNER ", name, "] CASE 2: Wave 2 spawning")
-			print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
+			#print("[SPAWNER ", name, "] CASE 2: Wave 2 spawning")
+			#print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
 			if(wave2_zombies.size() > 0):
 				print("[SPAWNER ", name, "] Spawning a Wave 2 zombie...")
 				wave2_zombies.shuffle()
@@ -170,7 +170,7 @@ func spawn_zombie():
 					zombie_instance._ready()
 				else:
 					zombie_instance.add_to_group("Purple")
-				print("Spawn wave 2")
+				#print("Spawn wave 2")
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2
 				$WaveInterval.start()
@@ -192,15 +192,15 @@ func spawn_zombie():
 				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
 				get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				if make_green :
-					print("Made Green")
+					#print("Made Green")
 					zombie_instance.add_to_group("Green")
 					zombie_instance.collision_layer = 3
 					zombie_instance.set_hue_shift(125)
 					zombie_instance._ready()
 				else:
 					zombie_instance.add_to_group("Purple")
-					print("Made Purple")
-				print("Spawn wave 3")
+					#print("Made Purple")
+				#print("Spawn wave 3")
 				
 				random_adjustment2 = get_weighted_range_speed()
 				$WaveInterval.wait_time = random_adjustment2
@@ -261,14 +261,14 @@ func increase_wave():
 #Starts the next round of zombie spawning 
 func _on_WaveDelay_timeout():
 	#print("Zombie Spawning Starting Here")
-	print("Zombie Spawning Starting Here")
+	#print("Zombie Spawning Starting Here")
 	spawn_zombie()
 	$WaveDelay.stop()
 
 #TODO Trace Back 
 func _on_wave_interval_timeout() -> void:
 	#print("About call spawn zombie ")
-	print("Zombie Spawning Starting Hereeeeeeeeeeeeeee")
+	#print("Zombie Spawning Starting Hereeeeeeeeeeeeeee")
 	spawn_zombie()
 	Global.start_wave_1()
 

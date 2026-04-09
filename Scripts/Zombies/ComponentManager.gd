@@ -61,7 +61,7 @@ func getSlow():
 	
 # Debuffs zombie with slow effect
 func slow():
-	print("SLOWING rr")
+	#print("SLOWING rr")
 	isSlow = isSlow + 100 
 	speedComp.slow()
 	
@@ -113,8 +113,8 @@ func _on_JustNowSpawned_timeout():
 		pass
 		
 	add_to_group("Alive-Enemies")
-	print("JUSTZ SPAWNED")
-	print("Alive Enemies is now ", get_tree().get_nodes_in_group("Alive-Enemies").size())
+	#print("JUSTZ SPAWNED")
+	#print("Alive Enemies is now ", get_tree().get_nodes_in_group("Alive-Enemies").size())
 	var group_size = get_tree().get_nodes_in_group("Alive-Enemies").size()
 
 # Changes sprite color 

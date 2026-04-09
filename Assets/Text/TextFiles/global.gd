@@ -108,9 +108,10 @@ func unlockLevel(levelUnlocked):
 func start_wave_1():
 	if current_level != null:
 		current_level.wave_1_active = true	
-		print("Current Level is ", current_level, " wave 1 active is ", current_level.wave_1_active)
+		#print("Current Level is ", current_level, " wave 1 active is ", current_level.wave_1_active)
 	else:
-		print("Current Level is Null")
+		pass
+		#print("Current Level is Null")
 	
 func show_guide():
 	game_controller.show_guide()	

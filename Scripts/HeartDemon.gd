@@ -33,16 +33,7 @@ const START_SCALE: Vector2 = Vector2(0.1, 0.1)
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
-	if self.is_in_group("Green"):
-		#print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
-		$DMG_RayCast2D.collision_mask = 3
-		$DMG_RayCast2D.set_collision_mask_value(1,false)
-		$DMG_RayCast2D.set_collision_mask_value(2,false)
-		$DMG_RayCast2D.set_collision_mask_value(3,true)
-	else:
-		$DMG_RayCast2D.set_collision_mask_value(1,false)
-		$DMG_RayCast2D.set_collision_mask_value(2,true)
-		$DMG_RayCast2D.set_collision_mask_value(3,false)
+	set_attack_ray()
 	animSpriteComp = $AnimatedSprite2D
 	animSpriteComp.animation = "spawn"
 
@@ -69,6 +60,7 @@ func _process(_delta):
 					var collider = attack_ray.get_collider(i)
 					if collider and collider.is_in_group("Zombie"):
 						if collider.is_in_group("Green"):
+							print("Is Green")
 							if self.is_in_group("Green"):
 								#print("Is Green, Can Attack")
 								canAttack = true
@@ -265,4 +257,15 @@ func beat_of_death():
 	tween.tween_property(beatOfDeathCirle, "modulate:a", 0.0, duration)
 	$BuffZone/CollisionShape2D.disabled = false
 	
+func set_attack_ray():
+	if self.is_in_group("Green"):
+		#print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
+		$DMG_RayCast2D.collision_mask = 3
+		$DMG_RayCast2D.set_collision_mask_value(1,false)
+		$DMG_RayCast2D.set_collision_mask_value(2,false)
+		$DMG_RayCast2D.set_collision_mask_value(3,true)
+	else:
+		$DMG_RayCast2D.set_collision_mask_value(1,false)
+		$DMG_RayCast2D.set_collision_mask_value(2,true)
+		$DMG_RayCast2D.set_collision_mask_value(3,false)
 	
