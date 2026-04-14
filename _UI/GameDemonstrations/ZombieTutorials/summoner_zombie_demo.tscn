@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2rph8r5d3cn5"]
+[gd_scene format=3 uid="uid://c2rph8r5d3cn5"]
 
-[ext_resource type="Texture2D" uid="uid://bk70css3txait" path="res://Assets/Zombies/UpdatedAnimations/Summoner 46x 44-Sheet.png" id="1_4wivs"]
+[ext_resource type="Texture2D" uid="uid://bk70css3txait" path="res://_Entities/Zombies/UpdatedAnimations/Summoner 46x 44-Sheet.png" id="1_4wivs"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
 bg_color = Color(0.15, 0.15, 0.15, 1)

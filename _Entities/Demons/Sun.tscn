@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cspgp33mo2ygv"]
 
-[ext_resource type="Texture2D" uid="uid://chjlyymq5t45q" path="res://Assets/Plants/Sun.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://chjlyymq5t45q" path="res://_Entities/Demons/Sun.png" id="1"]
 [ext_resource type="Script" uid="uid://csushx4jkpqkt" path="res://_Entities/Demons/Sun.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://swqg421sexsx" path="res://_Assets/Audio/SunCollect.mp3" id="3"]
-[ext_resource type="Texture2D" uid="uid://c30blenge7e7r" path="res://Assets/Plants/Animations/BloodBeating.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c30blenge7e7r" path="res://_Entities/Demons/BloodBeating.png" id="4"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/change_demon_color.gd" id="5_rabkd"]
 
 

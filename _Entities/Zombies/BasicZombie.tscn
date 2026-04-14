@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bkwi1ob6dceio"]
 
 [ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://_Entities/Zombies/Scripts/BasicZombie.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://Assets/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://_Entities/Zombies/Ghoul Sprite Sheet 62 x 33.png" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/Zombie_Hit_FX.tres" id="2_5rxux"]
-[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_80ohr"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/Zombie_Shadow1.png" id="2_80ohr"]
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/AttackComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Scripts/ZombieSpriteComponent.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_ldf7h"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/SpeedComponent.tscn" id="8"]
-[ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://Assets/Zombies/GhoulWebbedSheet.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://_Entities/Zombies/GhoulWebbedSheet.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/ComponentManager.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://_Entities/Zombies/HealthComponent.tscn" id="11"]
 

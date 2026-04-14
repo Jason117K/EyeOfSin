@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c35ses7btlwqk"]
 
 [ext_resource type="Script" uid="uid://bk1ka6qbmryci" path="res://_Entities/Demons/PeaProjectile.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://Assets/Plants/Animations/blueboom.png" id="3_r2e76"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/WebBallwOutline.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://_Entities/Demons/blueboom.png" id="3_r2e76"]
 
 [sub_resource type="CircleShape2D" id="1"]
 

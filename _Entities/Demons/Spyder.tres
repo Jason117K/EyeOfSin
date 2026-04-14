@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bi3ons7l4sy04"]
 
-[ext_resource type="Texture2D" uid="uid://dqe7dmr0qbm0v" path="res://_Entities/Demons/RedSpider-Sheet.png" id="1_0l1pg"]
-[ext_resource type="Texture2D" uid="uid://cskcxpelcs24" path="res://Assets/Plants/Plant_Animations/RedSpider-Sheet.png" id="1_ar0v1"]
+[ext_resource type="Texture2D" uid="uid://cskcxpelcs24" path="res://_Entities/Demons/RedSpider-Sheet.png" id="1_0l1pg"]
+[ext_resource type="Texture2D" uid="uid://cskcxpelcs24" path="res://_Entities/Demons/RedSpider-Sheet.png" id="1_ar0v1"]
 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcumy"]

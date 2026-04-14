@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://byuio1krtgq8y"]
 
-[ext_resource type="Texture2D" uid="uid://ci06d7kqs85h7" path="res://_Entities/Demons/Hive-Sheet.png" id="1_3v3np"]
-[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://Assets/Plants/Plant_Animations/Hive-Sheet.png" id="1_y81th"]
+[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/Hive-Sheet.png" id="1_3v3np"]
+[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/Hive-Sheet.png" id="1_y81th"]
 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6885p"]

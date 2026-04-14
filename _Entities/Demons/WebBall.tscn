@@ -1,7 +1,7 @@
 [gd_scene format=2]
 
 [ext_resource type="Script" uid="uid://b6yhajrlfy10e" path="res://_Entities/Demons/WebBall.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/WebBallwOutline.png" id="2"]
 
 
 

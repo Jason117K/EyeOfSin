@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://buthlnrhuihti"]
+[gd_scene format=3 uid="uid://buthlnrhuihti"]
 
-[ext_resource type="Texture2D" uid="uid://b7odd4ng7wfua" path="res://Assets/Zombies/UpdatedAnimations/Ticker-Sheet.png" id="1_llkjp"]
+[ext_resource type="Texture2D" uid="uid://b7odd4ng7wfua" path="res://_Entities/Zombies/UpdatedAnimations/Ticker-Sheet.png" id="1_llkjp"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
 bg_color = Color(0.15, 0.15, 0.15, 1)

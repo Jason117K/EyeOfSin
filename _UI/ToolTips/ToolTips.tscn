@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://_UI/ToolTips/ToolTips.gd" id="1"]
 [ext_resource type="Script" uid="uid://rhdxfmhgn4ur" path="res://_UI/animated_texture_rect.gd" id="2_4pnf4"]
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_c1ynx"]
-[ext_resource type="SpriteFrames" uid="uid://36ihcf5firig" path="res://Assets/Zombies/Animations/Spriteframes/eyeFrames.tres" id="4_imaxi"]
+[ext_resource type="SpriteFrames" uid="uid://36ihcf5firig" path="res://_Entities/Zombies/Spriteframes/eyeFrames.tres" id="4_imaxi"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/WhiteRectangle.png" id="4_mpr7a"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_spider_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]

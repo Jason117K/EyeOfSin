@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxv4fqitpxckh"]
 
 [ext_resource type="Script" uid="uid://dfo47ke1mopv6" path="res://_Entities/Demons/Bomb.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://Assets/Plants/Animations/blueboom.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://_Entities/Demons/blueboom.png" id="2"]
 
 
 [sub_resource type="CircleShape2D" id="1"]

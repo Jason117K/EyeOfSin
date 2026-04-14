@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bpp5nxl1i6r7p"]
 
 [ext_resource type="Script" uid="uid://dj86hknbrt4p8" path="res://_Entities/Demons/EggProjectile.gd" id="1_sfgus"]
-[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/WebBallwOutline.png" id="2"]
 
 
 [sub_resource type="CircleShape2D" id="1"]

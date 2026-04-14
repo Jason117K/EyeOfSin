@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://okpv0aqap43q"]
+[gd_scene format=3 uid="uid://okpv0aqap43q"]
 
-[ext_resource type="Texture2D" uid="uid://bwgphvk2ugl1i" path="res://Assets/Zombies/UpdatedAnimations/Ghoul Sprite-Sheet.png" id="2_ytn3k"]
+[ext_resource type="Texture2D" uid="uid://bwgphvk2ugl1i" path="res://_Entities/Zombies/UpdatedAnimations/Ghoul Sprite-Sheet.png" id="2_ytn3k"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
 bg_color = Color(0.15, 0.15, 0.15, 1)

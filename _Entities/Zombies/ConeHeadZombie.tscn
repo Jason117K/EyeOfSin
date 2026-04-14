@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://c7vl2w17wswvs"]
 
-[ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://Assets/Zombies/Summoner 46x 44.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://_Entities/Zombies/Summoner 46x 44.png" id="1"]
 [ext_resource type="Script" uid="uid://bs1do4ve65fp4" path="res://_Entities/Zombies/Scripts/ConeHeadZombie.gd" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/Zombie_Hit_FX.tres" id="2_tbvgb"]
-[ext_resource type="Texture2D" uid="uid://dcafmrlvbujwo" path="res://Assets/Zombies/ZombieConeHeadLessWalk-Sheet.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dcafmrlvbujwo" path="res://_Entities/Zombies/ZombieConeHeadLessWalk-Sheet.png" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_pt70x"]
-[ext_resource type="Texture2D" uid="uid://dfex4u742bght" path="res://Assets/Zombies/HeadLessConeZombie-Sheet.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dfex4u742bght" path="res://_Entities/Zombies/HeadLessConeZombie-Sheet.png" id="7"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/SpeedComponent.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/AttackComponent.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://_Entities/Zombies/HealthComponent.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/ComponentManager.tscn" id="11"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Scripts/ZombieSpriteComponent.gd" id="12"]
-[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="12_ebmmd"]
-[ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://Assets/Zombies/HeadLessConeZombie-SheetWEB.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/Zombie_Shadow1.png" id="12_ebmmd"]
+[ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://_Entities/Zombies/HeadLessConeZombie-SheetWEB.png" id="13"]
 
 
 [sub_resource type="RectangleShape2D" id="1"]

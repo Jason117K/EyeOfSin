@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c4p43yljvybvj"]
 
-[ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuffTileBorderSheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cbg411w54cgi4" path="res://_Entities/Demons/BuffNodes.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuffTileDrip.png" id="3"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/change_demon_color.gd" id="4_f2smc"]
 
 [sub_resource type="AtlasTexture" id="60"]

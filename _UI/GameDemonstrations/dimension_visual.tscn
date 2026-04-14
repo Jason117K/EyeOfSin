@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_yl3cr"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/WhiteRectangle.png" id="2_q4f4l"]
-[ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://Assets/Plants/Animations/LaserEggWormsSmolMERGED-Sheet.png" id="3_1ewl1"]
-[ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://Assets/Plants/Animations/BloodBuffTileDrip.png" id="4_r6w6o"]
-[ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://Assets/Plants/Animations/BloodBuffTileBorderSheet.png" id="5_sdpqw"]
-[ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://Assets/Plants/TestBloodBSheet.png" id="6_xyfe0"]
-[ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://Assets/Plants/Animations_Plant/OccularSpine/OccularSpine-Sheet.png" id="7_g17w3"]
+[ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://_Entities/Demons/LaserEggWormsSmolMERGED-Sheet.png" id="3_1ewl1"]
+[ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuffTileDrip.png" id="4_r6w6o"]
+[ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuffTileBorderSheet.png" id="5_sdpqw"]
+[ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://_Entities/Demons/TestBloodBSheet.png" id="6_xyfe0"]
+[ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/OccularSpine/OccularSpine-Sheet.png" id="7_g17w3"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="8_q4f4l"]
 
 

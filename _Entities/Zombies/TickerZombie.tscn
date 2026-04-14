@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://b8rpsreq1t70n"]
 
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/ComponentManager.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://dayah1ly72ajm" path="res://Assets/Zombies/Ticker-Sheet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dayah1ly72ajm" path="res://_Entities/Zombies/Ticker-Sheet.png" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/Zombie_Hit_FX.tres" id="2_24hxe"]
-[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://Assets/Zombies/Shadows/Zombie_Shadow1.png" id="2_ln36l"]
+[ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/Zombie_Shadow1.png" id="2_ln36l"]
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/AttackComponent.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/SpeedComponent.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://_Entities/Zombies/HealthComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://hqk27c6jaac0" path="res://_Entities/Zombies/Scripts/TickerZombie.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_g5eid"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Scripts/ZombieSpriteComponent.gd" id="9"]
-[ext_resource type="Texture2D" uid="uid://ngjx3kqoe6yb" path="res://Assets/Zombies/TickerHitEffect-Sheet.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://ngjx3kqoe6yb" path="res://_Entities/Zombies/TickerHitEffect-Sheet.png" id="11"]
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://_Entities/Zombies/Scripts/AOEHit.gd" id="12"]
-[ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://Assets/Zombies/Animations/Ticker/Ticker-WebSheet.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://_Entities/Zombies/Ticker/Ticker-WebSheet.png" id="13"]
 
 
 [sub_resource type="RectangleShape2D" id="15"]

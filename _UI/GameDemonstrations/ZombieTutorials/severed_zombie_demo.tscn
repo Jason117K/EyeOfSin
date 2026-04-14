@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://d2dt61ico0vad"]
+[gd_scene format=3 uid="uid://d2dt61ico0vad"]
 
-[ext_resource type="Texture2D" uid="uid://dey55mcq10gc0" path="res://Assets/Zombies/UpdatedAnimations/HeadLessConeZombie-Sheet.png" id="1_bgn1j"]
+[ext_resource type="Texture2D" uid="uid://dey55mcq10gc0" path="res://_Entities/Zombies/UpdatedAnimations/HeadLessConeZombie-Sheet.png" id="1_bgn1j"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
 bg_color = Color(0.15, 0.15, 0.15, 1)

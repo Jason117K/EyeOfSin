@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://da4ats0qldrw6"]
+[gd_scene format=3 uid="uid://da4ats0qldrw6"]
 
-[ext_resource type="Texture2D" uid="uid://y2o6u55mftgl" path="res://Assets/Zombies/UpdatedAnimations/DocOcWalk-Sheet.png" id="1_v1y0c"]
+[ext_resource type="Texture2D" uid="uid://y2o6u55mftgl" path="res://_Entities/Zombies/UpdatedAnimations/DocOcWalk-Sheet.png" id="1_v1y0c"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
 bg_color = Color(0.15, 0.15, 0.15, 1)

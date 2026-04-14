@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://tckun0j0h7pd"]
 
-[ext_resource type="Texture2D" uid="uid://c6ui5cj8lb6mf" path="res://Assets/Plants/Plant_Animations/OccularSpineIdle-Sheet.png" id="1_arewn"]
-[ext_resource type="Texture2D" uid="uid://cy05b15vscpbk" path="res://_Entities/Demons/OccularSpine-Sheet.png" id="1_ti1vu"]
+[ext_resource type="Texture2D" uid="uid://c6ui5cj8lb6mf" path="res://_Entities/Demons/OccularSpineIdle-Sheet.png" id="1_arewn"]
+[ext_resource type="Texture2D" uid="uid://c6iah108u2384" path="res://_Entities/Demons/OccularSpine-Sheet.png" id="1_ti1vu"]
 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onca6"]

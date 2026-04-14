@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bo76sl10wnes5"]
 
 [ext_resource type="Script" uid="uid://dvy7gnmvp5w0m" path="res://_Entities/Zombies/Scripts/RohanProjectile.gd" id="1_24ovy"]
-[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="2_oagqr"]
-[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://Assets/Plants/Animations/blueboom.png" id="3_qas8w"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/WebBallwOutline.png" id="2_oagqr"]
+[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://_Entities/Demons/blueboom.png" id="3_qas8w"]
 
 
 [sub_resource type="CircleShape2D" id="1"]
