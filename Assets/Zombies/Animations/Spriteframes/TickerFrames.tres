@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=39 format=3 uid="uid://qravco04fboa"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://qravco04fboa"]
 
 [ext_resource type="Texture2D" uid="uid://dayah1ly72ajm" path="res://Assets/Zombies/Ticker-Sheet.png" id="1_2q5fk"]
 [ext_resource type="Texture2D" uid="uid://b7odd4ng7wfua" path="res://Assets/Zombies/UpdatedAnimations/Ticker-Sheet.png" id="1_r64qp"]

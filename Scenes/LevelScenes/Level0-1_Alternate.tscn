@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://bbd0fjsv4uvsi"]
+[gd_scene format=4 uid="uid://bbd0fjsv4uvsi"]
 
 [ext_resource type="Script" uid="uid://b3olngowkc40m" path="res://Scripts/LevelLogic/level_0_1_alternate.gd" id="1_83ut0"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_6jrws"]
@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://Assets/Environment/Tilesets/Level1FloorTiles.png" id="21_6i610"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="21_kx3dj"]
 [ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://Assets/Environment/Tilesets/Ground_rocks.png" id="22_1rls6"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_hcyne"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_hcyne"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://Scripts/Environment/tile_map_layer.gd" id="23_eu4n5"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="26_adj10"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="27_j7igl"]

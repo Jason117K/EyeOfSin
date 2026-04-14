@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://802bvw3m4n0a"]
+[gd_scene format=3 uid="uid://802bvw3m4n0a"]
 
-[ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://Scripts/Plants/PlantSelectionMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://_Utilities/Demons/DemonSelectionMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b6vva031ql0r0" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText1.png" id="3_yqvs4"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="4_vvged"]
 [ext_resource type="Texture2D" uid="uid://cdlvi1sqbawix" path="res://Assets/Plants/Cards/DemonCARD_Base_NOText4.png" id="5_vvged"]
@@ -42,7 +42,7 @@ bg_color = Color(0, 0, 0, 0)
 [sub_resource type="StyleBoxFlat" id="3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="PlantSelectionMenu" type="Control"]
+[node name="DemonSelectionMenu" type="Control" unique_id=1988977493]
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
@@ -50,7 +50,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1")
 
-[node name="CurrentPlantLabel" type="Label" parent="."]
+[node name="CurrentPlantLabel" type="Label" parent="." unique_id=29852823]
 visible = false
 layout_mode = 0
 offset_top = 136.265
@@ -61,17 +61,17 @@ theme_override_fonts/font = ExtResource("9_qqk0u")
 text = "No Plant Selected"
 horizontal_alignment = 1
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=1678486078]
 visible = false
 scale = Vector2(3, 3)
 
-[node name="ColorRect" type="ColorRect" parent="Node2D"]
+[node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=81806904]
 custom_minimum_size = Vector2(225, 30)
 offset_right = 225.0
 offset_bottom = 30.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Node2D"]
+[node name="ColorRect2" type="ColorRect" parent="Node2D" unique_id=157287919]
 custom_minimum_size = Vector2(221, 26)
 offset_left = 2.0
 offset_top = 2.0
@@ -79,7 +79,7 @@ offset_right = 223.0
 offset_bottom = 28.0
 color = Color(0.690196, 0, 0, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="Node2D"]
+[node name="ColorRect3" type="ColorRect" parent="Node2D" unique_id=1014407573]
 custom_minimum_size = Vector2(217, 22)
 offset_left = 4.0
 offset_top = 4.0
@@ -87,7 +87,7 @@ offset_right = 221.0
 offset_bottom = 26.0
 color = Color(0, 0, 0, 1)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 layout_mode = 0
 offset_left = 4.0
 offset_right = 75.0
@@ -95,184 +95,184 @@ offset_bottom = 123.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=423638109]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=882467696]
 custom_minimum_size = Vector2(0, 97.395)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Sunflower" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Sunflower" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
 layout_mode = 2
 
-[node name="SunflowerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower"]
+[node name="SunflowerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=989014425]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("2")
 icon = ExtResource("3_yqvs4")
 
-[node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower"]
+[node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=875715703]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Peashooter" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Peashooter" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
 layout_mode = 2
 
-[node name="PeashooterButton2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter"]
+[node name="PeashooterButton2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter" unique_id=1928961911]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("1")
 icon = ExtResource("5_vvged")
 
-[node name="PeashooterLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter"]
+[node name="PeashooterLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter" unique_id=752286747]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Walnut" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Walnut" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=560354734]
 layout_mode = 2
 
-[node name="WalnutButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut"]
+[node name="WalnutButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut" unique_id=63966066]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("6_04elx")
 
-[node name="WalnutLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut"]
+[node name="WalnutLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut" unique_id=1640644905]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
 layout_mode = 2
 
-[node name="MawButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw"]
+[node name="MawButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1544433936]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("7_e3ig8")
 
-[node name="MawLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw"]
+[node name="MawLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Eye" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Eye" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1516499706]
 visible = false
 layout_mode = 2
 
-[node name="EyeButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye"]
+[node name="EyeButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye" unique_id=501338354]
 layout_mode = 2
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("8")
 
-[node name="EyeLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye"]
+[node name="EyeLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye" unique_id=1504137257]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Egg" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Egg" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
 visible = false
 layout_mode = 2
 
-[node name="EggButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg"]
+[node name="EggButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg" unique_id=176165834]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("10_iafbj")
 
-[node name="EggLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg"]
+[node name="EggLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg" unique_id=925628958]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=640469747]
 layout_mode = 2
 
-[node name="HiveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive"]
+[node name="HiveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=832668511]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("11_js2vo")
 
-[node name="HiveLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive"]
+[node name="HiveLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1149167924]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Heart" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Heart" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=957864529]
 layout_mode = 2
 
-[node name="HeartButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart"]
+[node name="HeartButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=642478587]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("11_iafbj")
 
-[node name="HeartLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart"]
+[node name="HeartLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1891909463]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "0
 "
 horizontal_alignment = 1
 
-[node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
 layout_mode = 2
 
-[node name="RemovePlantButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant"]
+[node name="RemovePlantButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=1687386622]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("12_yqvs4")
 
-[node name="RemovePlantLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant"]
+[node name="RemovePlantLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=77291499]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
 horizontal_alignment = 1
 
-[node name="WorldSwap" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="WorldSwap" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=767161417]
 layout_mode = 2
 
-[node name="WorldSwapButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap"]
+[node name="WorldSwapButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap" unique_id=1076450100]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("13_vvged")
 
-[node name="Codex" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Codex" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=396055590]
 layout_mode = 2
 
-[node name="CodexButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Codex"]
+[node name="CodexButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Codex" unique_id=820887150]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("14_04elx")
 
-[node name="FastForward" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="FastForward" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=2101431720]
 layout_mode = 2
 
-[node name="FastForwardButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/FastForward"]
+[node name="FastForwardButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/FastForward" unique_id=106520995]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("15_e3ig8")
 
-[node name="CodexBG" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("14_vvged")]
+[node name="CodexBG" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=668099888 instance=ExtResource("14_vvged")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 1

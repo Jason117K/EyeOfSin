@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://0l22rargtx3w"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://0l22rargtx3w"]
 
 [ext_resource type="Texture2D" uid="uid://b1dfc7glbf42w" path="res://Assets/Zombies/Animations/BloodHitFX-Sheet.png" id="1_0ynqf"]
 [ext_resource type="Texture2D" uid="uid://u2hajldyqtf8" path="res://Assets/Zombies/UpdatedAnimations/BloodHitFXGreen-Sheet.png" id="2_tr1ju"]

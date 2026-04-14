@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://36ihcf5firig"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://36ihcf5firig"]
 
 [ext_resource type="Texture2D" uid="uid://ceviomuixqede" path="res://Assets/Demons/SpriteSheets/EyeSun/EyeSunTowerIdle_Base-Sheet.png" id="1_5fvj3"]
 

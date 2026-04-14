@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bjryluw6rxv5m"]
+[gd_scene format=3 uid="uid://bjryluw6rxv5m"]
 
 [ext_resource type="Script" uid="uid://de2h3je53wpv2" path="res://Scripts/LevelLogic/Level6.gd" id="1_gsi42"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="2_s0jwn"]
@@ -15,16 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://Scenes/ZombieScenes/ZombieSpawner.tscn" id="13_xx6xv"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://Scenes/Systems/WavePreview.tscn" id="14_lxbfb"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="15_7j700"]
-[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://Scenes/Systems/WaveManager.tscn" id="16_s4grl"]
-[ext_resource type="Script" uid="uid://c31n61qr27kvd" path="res://Scripts/LevelLogic/WaveManager_Lvl3.gd" id="17_7s3iq"]
+[ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="16_s4grl"]
+[ext_resource type="Script" uid="uid://c31n61qr27kvd" path="res://_Utilities/Waves/WaveManager_Lvl3.gd" id="17_7s3iq"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="18_scwyt"]
-[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://Scenes/PlantScenes/PlantSelectionMenu.tscn" id="19_a7hs7"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="19_a7hs7"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_xdfvd"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_6whku"]
-[ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://Scenes/LevelScenes/LevelSwitcher.tscn" id="22_2wtcq"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_6whku"]
+[ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://_Common/LevelSwitching/LevelSwitcher.tscn" id="22_2wtcq"]
 [ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://Scenes/Systems/codex_button.tscn" id="23_xah3h"]
-[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://Scenes/Systems/pause_button.tscn" id="24_st1vt"]
+[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="24_st1vt"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="25_sd5m3"]
+
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("11_clq4y")

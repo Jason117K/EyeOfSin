@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=29 format=3 uid="uid://cxttx6t0ho11k"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cxttx6t0ho11k"]
 
 [ext_resource type="Texture2D" uid="uid://y2o6u55mftgl" path="res://Assets/Zombies/UpdatedAnimations/DocOcWalk-Sheet.png" id="1_loi7v"]
 [ext_resource type="Texture2D" uid="uid://cof875qbhouiv" path="res://Assets/Zombies/Animations/DocOc/DocOcWalk-Sheet.png" id="1_um2hw"]

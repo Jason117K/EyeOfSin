@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=4 uid="uid://bih2naki1c8up"]
+[gd_scene format=4 uid="uid://bih2naki1c8up"]
 
 [ext_resource type="Script" uid="uid://bcagkfrrfe7ix" path="res://Scripts/LevelLogic/level_0_2.gd" id="1_te6yt"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_1uoo0"]
@@ -23,7 +23,7 @@
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://Scripts/Environment/tile_map_layer.gd" id="20_krw63"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://Assets/Environment/Tilesets/Level1FloorProps2.png" id="21_3mnb7"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="21_kmsuw"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_oidxx"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_oidxx"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="25_71bjb"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="26_d7fgi"]
 [ext_resource type="Texture2D" uid="uid://w74nfa4bai7c" path="res://Assets/Environment/Props/BookProp1.png" id="27_w8is8"]

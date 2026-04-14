@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://b86x6c8xghsvs"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b86x6c8xghsvs"]
 
 [ext_resource type="Texture2D" uid="uid://cxngjs3ld2psd" path="res://Assets/Zombies/SwordBucketZombie-Sheet.png" id="1_n4cg3"]
 [ext_resource type="Texture2D" uid="uid://d3w43txgdyuah" path="res://Assets/Zombies/UpdatedAnimations/SwordBucketZombie-Sheet.png" id="1_tx2mr"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=4 uid="uid://cwnxaalr7lrsd"]
+[gd_scene format=4 uid="uid://cwnxaalr7lrsd"]
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="1"]
-[ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://Scripts/LevelLogic/StartScreen.gd" id="2"]
+[ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://_Stages/StartScreen/StartScreen.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://2ovmbrp2455w" path="res://Audio/menu music bounce 8-13-25.wav" id="3_dd6vr"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="6_4rth8"]
 [ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="7_j88ag"]
@@ -51,7 +51,7 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="StartScreen" type="Control"]
+[node name="StartScreen" type="Control" unique_id=1376711410]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,259 +60,259 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
 
-[node name="GridManager" parent="." instance=ExtResource("1")]
+[node name="GridManager" parent="." unique_id=329923945 instance=ExtResource("1")]
 metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" parent="GridManager" index="0"]
 tile_map_data = PackedByteArray("AAACAAsAAQAJAAIAAAABAAsAAQAGAAkAAAAAAAsAAQAAAAkAAAADAAsAAQAJAAIAAAAFAAsAAQAJAAIAAAAGAAsAAQAJAAIAAAAHAAsAAQAJAAIAAAAIAAsAAQAJAAIAAAAWAAsAAQAJAAIAAAAXAAsAAQAJAAIAAAAVAAsAAQAJAAIAAAAUAAsAAQAJAAIAAAATAAsAAQAJAAIAAAASAAsAAQAJAAIAAAARAAsAAQAJAAIAAAAQAAsAAQAJAAIAAAAPAAsAAQAJAAIAAAAOAAsAAQAJAAIAAAANAAsAAQAJAAIAAAAMAAsAAQAJAAIAAAALAAsAAQAJAAIAAAAKAAsAAQAJAAIAAAAJAAsAAQAJAAIAAAAEAAoAAQAJAAIAAAADAAoAAQAJAAIAAAACAAoAAQAJAAIAAAABAAoAAQAJAAIAAAAFAAoAAQAJAAIAAAAHAAoAAQARAAgAAAAIAAoAAQARAAgAAAAJAAoAAQADAAgAAAAKAAoAAQARAAgAAAALAAoAAQARAAgAAAAMAAoAAQADAAgAAAANAAoAAQADAAgAAAAOAAoAAQARAAgAAAAPAAoAAQARAAgAAAAQAAoAAQARAAgAAAARAAoAAQARAAgAAAASAAoAAQARAAgAAAATAAoAAQARAAgAAAAUAAoAAQARAAgAAAAVAAoAAQARAAgAAAAWAAoAAQARAAgAAAARAAkAAQAJAAIAAAAQAAkAAQAJAAIAAAAPAAkAAQAJAAIAAAAOAAkAAQAJAAIAAAANAAkAAQAJAAIAAAAMAAkAAQAJAAIAAAALAAkAAQAJAAIAAAAKAAkAAQAJAAIAAAAJAAkAAQAJAAIAAAAAAAoAAQARAAgAAAAAAAkAAQANAAcAAAABAAkAAQAJAAIAAAACAAkAAQAJAAIAAAADAAkAAQAJAAIAAAAEAAkAAQAJAAIAAAAFAAkAAQAJAAIAAAAGAAkAAQAJAAIAAAAHAAkAAQAJAAIAAAAIAAkAAQAJAAIAAAASAAkAAQAJAAIAAAATAAkAAQAJAAIAAAAUAAkAAQAJAAIAAAAVAAkAAQAJAAIAAAAWAAkAAQAJAAIAAAAXAAkAAQAJAAIAAAAEAAsAAQAJAAIAAAAGAAoAAQARAAgAAAADAAgAAQAJAAIAAAABAAcAAQAJAAIAAAAIAAcAAQAJAAIAAAADAAYAAQABAAcAAAAFAAUAAQABAAYAAAAGAAgAAQAJAAIAAAAOAAYAAQABAAcAAAALAAUAAQABAAYAAAAMAAgAAQAJAAIAAAAVAAcAAQAJAAIAAAASAAYAAQABAAcAAAAQAAgAAQAJAAIAAAAJAAYAAQABAAcAAAAFAAcAAQAJAAIAAAAHAAgAAQAJAAIAAAAIAAgAAQAJAAIAAAAJAAgAAQAJAAIAAAAKAAgAAQAJAAIAAAALAAgAAQAJAAIAAAAFAAgAAQAJAAIAAAAEAAgAAQAJAAIAAAACAAgAAQAJAAIAAAAAAAgAAQAJAAIAAAABAAgAAQAJAAIAAAAAAAcAAQAJAAIAAAAAAAYAAQABAAcAAAABAAYAAQABAAcAAAACAAcAAQAJAAIAAAADAAcAAQAJAAIAAAAEAAcAAQAJAAIAAAACAAYAAQABAAcAAAAEAAYAAQABAAcAAAAGAAYAAQABAAcAAAAGAAcAAQAJAAIAAAAFAAYAAQABAAcAAAAHAAYAAQABAAcAAAAIAAYAAQABAAcAAAAHAAcAAQAJAAIAAAAJAAcAAQAJAAIAAAAKAAYAAQABAAcAAAALAAcAAQAJAAIAAAAKAAcAAQAJAAIAAAALAAYAAQABAAcAAAAMAAYAAQABAAcAAAANAAYAAQABAAcAAAANAAcAAQAJAAIAAAAMAAcAAQAJAAIAAAANAAgAAQAJAAIAAAAOAAgAAQAJAAIAAAAPAAgAAQAJAAIAAAAOAAcAAQAJAAIAAAAPAAcAAQAJAAIAAAAPAAYAAQABAAcAAAAQAAYAAQABAAcAAAARAAYAAQABAAcAAAARAAcAAQAJAAIAAAAQAAcAAQAJAAIAAAARAAgAAQAJAAIAAAASAAgAAQAJAAIAAAASAAcAAQAJAAIAAAATAAYAAQABAAcAAAATAAcAAQAJAAIAAAATAAgAAQAJAAIAAAAUAAgAAQAJAAIAAAAUAAcAAQAJAAIAAAAUAAYAAQABAAcAAAAVAAYAAQABAAcAAAAWAAYAAQABAAcAAAAWAAcAAQAJAAIAAAAWAAgAAQAJAAIAAAAVAAgAAQAJAAIAAAAXAAIAAQAJAAIAAAAWAAIAAQABAAMAAAAVAAIAAQABAAMAAAAUAAIAAQABAAMAAAATAAIAAQABAAMAAAASAAIAAQABAAMAAAARAAIAAQABAAMAAAAQAAIAAQABAAMAAAAPAAIAAQABAAMAAAAOAAIAAQABAAMAAAANAAIAAQABAAMAAAAMAAIAAQABAAMAAAALAAIAAQABAAMAAAAKAAIAAQABAAMAAAAJAAIAAQABAAMAAAAIAAIAAQABAAMAAAAHAAIAAQABAAMAAAAGAAIAAQABAAMAAAAFAAIAAQABAAMAAAAEAAIAAQABAAMAAAADAAIAAQABAAMAAAACAAIAAQABAAMAAAABAAIAAQABAAMAAAAAAAIAAQABAAMAAAAXAAoAAQARAAgAAAAXAAgAAQAJAAIAAAAXAAcAAQAJAAIAAAAXAAYAAQAJAAIAAAAWAAUAAQABAAYAAAAVAAUAAQABAAYAAAAUAAUAAQABAAYAAAATAAUAAQABAAYAAAASAAUAAQABAAYAAAARAAUAAQABAAYAAAAQAAUAAQABAAYAAAAPAAUAAQABAAYAAAAOAAUAAQABAAYAAAANAAUAAQABAAYAAAAMAAUAAQABAAYAAAAKAAUAAQABAAYAAAAXAAUAAQABAAYAAAAJAAUAAQABAAYAAAAIAAUAAQABAAYAAAAHAAUAAQABAAYAAAAXAAQAAQAJAAIAAAAWAAQAAQAFAAUAAAAVAAQAAQAFAAUAAAAUAAQAAQAFAAUAAAATAAQAAQAFAAUAAAASAAQAAQAFAAUAAAARAAQAAQAFAAUAAAAQAAQAAQAFAAUAAAAPAAQAAQAFAAUAAAAGAAUAAQABAAYAAAAEAAUAAQABAAYAAAADAAUAAQABAAYAAAACAAUAAQABAAYAAAABAAUAAQABAAYAAAAAAAUAAQABAAYAAAAAAAQAAQAFAAUAAAABAAQAAQAFAAUAAAACAAQAAQAFAAUAAAADAAQAAQAFAAUAAAAEAAQAAQAFAAUAAAAFAAQAAQAFAAUAAAAGAAQAAQAFAAUAAAAHAAQAAQAFAAUAAAAIAAQAAQAFAAUAAAAJAAQAAQAFAAUAAAAKAAQAAQAFAAUAAAALAAQAAQAFAAUAAAAMAAQAAQAFAAUAAAANAAQAAQAFAAUAAAAOAAQAAQAFAAUAAAAAAAMAAQADAAQAAAABAAMAAQADAAQAAAACAAMAAQADAAQAAAADAAMAAQADAAQAAAAEAAMAAQADAAQAAAAFAAMAAQADAAQAAAAGAAMAAQADAAQAAAAHAAMAAQADAAQAAAAIAAMAAQADAAQAAAAJAAMAAQADAAQAAAAKAAMAAQADAAQAAAALAAMAAQADAAQAAAAQAAMAAQAFAAUAAAARAAMAAQAFAAUAAAASAAMAAQAFAAUAAAATAAMAAQADAAQAAAAUAAMAAQADAAQAAAAVAAMAAQADAAQAAAAWAAMAAQADAAQAAAAXAAMAAQADAAQAAAAPAAMAAQADAAQAAAAOAAMAAQADAAQAAAANAAMAAQADAAQAAAAMAAMAAQADAAQAAAAXAAEAAQACAAgAAAAWAAEAAQACAAgAAAAVAAEAAQACAAgAAAAUAAEAAQACAAgAAAATAAEAAQACAAgAAAASAAEAAQACAAgAAAARAAEAAQACAAgAAAAQAAEAAQACAAgAAAAPAAEAAQACAAgAAAAOAAEAAQACAAgAAAANAAEAAQACAAgAAAAMAAEAAQACAAgAAAALAAEAAQACAAgAAAAKAAEAAQACAAgAAAAJAAEAAQACAAgAAAAIAAEAAQACAAgAAAAHAAEAAQACAAgAAAAGAAEAAQACAAgAAAAFAAEAAQACAAgAAAAEAAEAAQACAAgAAAADAAEAAQACAAgAAAACAAEAAQACAAgAAAABAAEAAQACAAgAAAAAAAEAAQAIAAIAAAAXAAAAAQACAAcAAAAWAAAAAQACAAcAAAAVAAAAAQACAAcAAAAUAAAAAQACAAcAAAATAAAAAQACAAcAAAASAAAAAQACAAcAAAARAAAAAQACAAcAAAAQAAAAAQACAAcAAAAPAAAAAQACAAcAAAAOAAAAAQACAAcAAAANAAAAAQACAAcAAAAMAAAAAQACAAcAAAALAAAAAQACAAcAAAAKAAAAAQACAAcAAAAJAAAAAQACAAcAAAAIAAAAAQACAAcAAAAHAAAAAQACAAcAAAAGAAAAAQACAAcAAAAFAAAAAQACAAcAAAAEAAAAAQACAAcAAAADAAAAAQACAAcAAAACAAAAAQACAAcAAAABAAAAAQACAAcAAAAAAAAAAQAKAAcAAAAXAAwAAQAJAAMAAAAWAAwAAQAJAAMAAAAVAAwAAQAJAAMAAAAUAAwAAQAJAAMAAAATAAwAAQAJAAMAAAASAAwAAQAJAAMAAAARAAwAAQAJAAMAAAAQAAwAAQAJAAMAAAAPAAwAAQAJAAMAAAAOAAwAAQAJAAMAAAANAAwAAQAJAAMAAAAMAAwAAQAJAAMAAAALAAwAAQAJAAMAAAAKAAwAAQAJAAMAAAAJAAwAAQAJAAMAAAAIAAwAAQAJAAMAAAAHAAwAAQAJAAMAAAAGAAwAAQAJAAMAAAAFAAwAAQAJAAMAAAAEAAwAAQAJAAMAAAADAAwAAQAJAAMAAAACAAwAAQAJAAMAAAABAAwAAQAJAAMAAAAAAAwAAQAJAAMAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAA=")
 metadata/_edit_lock_ = true
 
-[node name="Environment" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="." unique_id=165747163]
 
-[node name="Coral" type="Node2D" parent="Environment"]
+[node name="Coral" type="Node2D" parent="Environment" unique_id=1484505946]
 
-[node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=1508978968]
 position = Vector2(543, 347)
 texture = ExtResource("6_4rth8")
 
-[node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral" unique_id=1610995344]
 position = Vector2(588, 303)
 texture = ExtResource("6_4rth8")
 
-[node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral" unique_id=899843921]
 position = Vector2(282, 48)
 texture = ExtResource("6_4rth8")
 flip_h = true
 
-[node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral" unique_id=1648108159]
 position = Vector2(69, 363)
 texture = ExtResource("6_4rth8")
 flip_h = true
 
-[node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral" unique_id=1182693716]
 position = Vector2(718, 321)
 texture = ExtResource("6_4rth8")
 
-[node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral" unique_id=1838769724]
 position = Vector2(44, 277)
 texture = ExtResource("6_4rth8")
 
-[node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral" unique_id=1402586996]
 position = Vector2(113, 323)
 texture = ExtResource("6_4rth8")
 
-[node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral" unique_id=927742081]
 position = Vector2(72, 58)
 texture = ExtResource("6_4rth8")
 flip_h = true
 
-[node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral" unique_id=534242764]
 position = Vector2(476, 47)
 texture = ExtResource("6_4rth8")
 
-[node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral" unique_id=1180022113]
 position = Vector2(618, 344)
 texture = ExtResource("7_j88ag")
 
-[node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral" unique_id=1122691026]
 position = Vector2(406, 333)
 texture = ExtResource("7_j88ag")
 flip_h = true
 
-[node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral" unique_id=555380598]
 position = Vector2(672, 305)
 texture = ExtResource("7_j88ag")
 flip_h = true
 
-[node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral" unique_id=1646271845]
 position = Vector2(425, 46)
 texture = ExtResource("7_j88ag")
 flip_h = true
 
-[node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral" unique_id=2056714114]
 position = Vector2(275, 278)
 texture = ExtResource("7_j88ag")
 flip_h = true
 
-[node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral" unique_id=1498123524]
 position = Vector2(331, 350)
 texture = ExtResource("7_j88ag")
 flip_h = true
 
-[node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral" unique_id=1620065680]
 position = Vector2(212, 55)
 texture = ExtResource("7_j88ag")
 flip_h = true
 
-[node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral" unique_id=671244728]
 position = Vector2(553, 48)
 texture = ExtResource("7_j88ag")
 flip_h = true
 
-[node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral" unique_id=1867924915]
 position = Vector2(356, 49)
 texture = ExtResource("7_j88ag")
 
-[node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
+[node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral" unique_id=192920803]
 position = Vector2(181, 365)
 texture = ExtResource("8_5mipx")
 
-[node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
+[node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral" unique_id=48912712]
 position = Vector2(650, 44)
 texture = ExtResource("8_5mipx")
 
-[node name="FetusProp" type="Sprite2D" parent="Environment/Coral"]
+[node name="FetusProp" type="Sprite2D" parent="Environment/Coral" unique_id=1542253326]
 position = Vector2(135, 41)
 texture = ExtResource("9_1p6mn")
 
-[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral"]
+[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral" unique_id=695480775]
 position = Vector2(477, 287)
 texture = ExtResource("9_1p6mn")
 
-[node name="Bramble" type="Node2D" parent="Environment"]
+[node name="Bramble" type="Node2D" parent="Environment" unique_id=1016117047]
 visible = false
 
-[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble" unique_id=1563345943]
 position = Vector2(505, 328)
 texture = ExtResource("10_vgtya")
 
-[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble" unique_id=89180752]
 position = Vector2(454, 388)
 texture = ExtResource("10_vgtya")
 
-[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble" unique_id=1381174201]
 position = Vector2(584, 399)
 texture = ExtResource("10_vgtya")
 
-[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble" unique_id=291740119]
 position = Vector2(640, 303)
 texture = ExtResource("10_vgtya")
 
-[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble" unique_id=1365730428]
 position = Vector2(483, 0)
 texture = ExtResource("10_vgtya")
 
-[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble" unique_id=235874049]
 position = Vector2(660, 11)
 texture = ExtResource("10_vgtya")
 
-[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble" unique_id=487579598]
 position = Vector2(366, 316)
 texture = ExtResource("11_4ojxa")
 flip_h = true
 
-[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble" unique_id=858361466]
 position = Vector2(455, 331)
 texture = ExtResource("11_4ojxa")
 flip_h = true
 
-[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble" unique_id=327912107]
 position = Vector2(402, 343)
 texture = ExtResource("11_4ojxa")
 
-[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble" unique_id=1395826715]
 position = Vector2(428, 399)
 texture = ExtResource("11_4ojxa")
 flip_h = true
 
-[node name="Fish" type="Node2D" parent="Environment"]
+[node name="Fish" type="Node2D" parent="Environment" unique_id=323420493]
 
-[node name="Fish" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish" parent="Environment/Fish" unique_id=1574875615 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(542, 386)
 
-[node name="Fish2" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish2" parent="Environment/Fish" unique_id=596804608 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(515, 353)
 
-[node name="Fish5" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish5" parent="Environment/Fish" unique_id=1669832884 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(180, 329)
 
-[node name="Fish6" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish6" parent="Environment/Fish" unique_id=2053927063 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(37, 326)
 
-[node name="Fish7" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish7" parent="Environment/Fish" unique_id=1887025805 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(573, 19)
 
-[node name="Fish8" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish8" parent="Environment/Fish" unique_id=85074003 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(455, 394)
 
-[node name="Fish9" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish9" parent="Environment/Fish" unique_id=544885898 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(315, 14)
 
-[node name="Fish3" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish3" parent="Environment/Fish" unique_id=702571073 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(573, 342)
 
-[node name="Fish4" parent="Environment/Fish" instance=ExtResource("12_bcgeo")]
+[node name="Fish4" parent="Environment/Fish" unique_id=702908540 instance=ExtResource("12_bcgeo")]
 z_index = -1
 position = Vector2(633, 395)
 
-[node name="Shrubs" type="Node2D" parent="Environment"]
+[node name="Shrubs" type="Node2D" parent="Environment" unique_id=2030310145]
 visible = false
 
-[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+[node name="Shrub" parent="Environment/Shrubs" unique_id=102044368 instance=ExtResource("13_hj78q")]
 position = Vector2(560, 13)
 scale = Vector2(1, 1)
 
-[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+[node name="Shrub2" parent="Environment/Shrubs" unique_id=112348048 instance=ExtResource("13_hj78q")]
 position = Vector2(474, 339)
 scale = Vector2(1, 1)
 
-[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+[node name="Shrub3" parent="Environment/Shrubs" unique_id=2102796035 instance=ExtResource("13_hj78q")]
 position = Vector2(521, 392)
 scale = Vector2(1, 1)
 
-[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+[node name="Shrub4" parent="Environment/Shrubs" unique_id=249662523 instance=ExtResource("13_hj78q")]
 position = Vector2(193, 327)
 scale = Vector2(1, 1)
 
-[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+[node name="Shrub5" parent="Environment/Shrubs" unique_id=191904447 instance=ExtResource("13_hj78q")]
 position = Vector2(433, 330)
 scale = Vector2(1, 1)
 
-[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+[node name="Shrub6" parent="Environment/Shrubs" unique_id=1123814582 instance=ExtResource("13_hj78q")]
 position = Vector2(658, 403)
 scale = Vector2(1, 1)
 
-[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("13_hj78q")]
+[node name="Shrub7" parent="Environment/Shrubs" unique_id=223012227 instance=ExtResource("13_hj78q")]
 position = Vector2(297, 14)
 scale = Vector2(1, 1)
 
-[node name="Trees" type="Node2D" parent="Environment"]
+[node name="Trees" type="Node2D" parent="Environment" unique_id=485877299]
 visible = false
 
-[node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
+[node name="BloodTree" type="Sprite2D" parent="Environment/Trees" unique_id=860785744]
 z_index = 1
 position = Vector2(561, 364)
 texture = ExtResource("14_nyvis")
 flip_h = true
 
-[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
+[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees" unique_id=825560932]
 z_index = 1
 position = Vector2(396, 7)
 texture = ExtResource("14_nyvis")
 
-[node name="Special" type="Node2D" parent="Environment"]
+[node name="Special" type="Node2D" parent="Environment" unique_id=352468915]
 visible = false
 
-[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
+[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=1843078383]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_sk018")
 
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=615701866]
 stream = ExtResource("3_dd6vr")
 autoplay = true
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=1076663692]
 position = Vector2(35, 0)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=538128745]
 custom_minimum_size = Vector2(777, 777)
 layout_mode = 0
 offset_left = -50.0
@@ -322,11 +322,11 @@ offset_bottom = 620.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.486275)
 
-[node name="EyeOfSynTitle" type="Sprite2D" parent="."]
+[node name="EyeOfSynTitle" type="Sprite2D" parent="." unique_id=916376707]
 position = Vector2(372, 195)
 texture = ExtResource("14_4ojxa")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=3187112]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -345,102 +345,102 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 use_top_left = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=611729303]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer" unique_id=988144217]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("15_bcgeo")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Start Game"
 
-[node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1062716716]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("14_4rth8")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
 text = "LEVEL SELECT"
 
-[node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2000528791]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("14_4rth8")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Options"
 
-[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1962099345]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("14_4rth8")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Credits"
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2033080751]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("14_4rth8")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("16_j88ag")
 text = "Quit"
 
-[node name="ButtonSprite" type="Sprite2D" parent="CenterContainer/VBoxContainer"]
+[node name="ButtonSprite" type="Sprite2D" parent="CenterContainer/VBoxContainer" unique_id=281949170]
 visible = false
 position = Vector2(389, 23)
 scale = Vector2(6, 6)
 texture = ExtResource("17_1p6mn")
 
-[node name="Sprite2D2" type="Sprite2D" parent="CenterContainer/VBoxContainer"]
+[node name="Sprite2D2" type="Sprite2D" parent="CenterContainer/VBoxContainer" unique_id=7054385]
 visible = false
 modulate = Color(1, 0, 0, 1)
 position = Vector2(389, -54.88)
@@ -448,14 +448,14 @@ scale = Vector2(6, 6)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="StartGam" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="StartGam" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=925136712]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 texture_normal = ExtResource("17_1p6mn")
 texture_hover = ExtResource("19_vgtya")
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/StartGam"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/StartGam" unique_id=822456382]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -472,14 +472,14 @@ theme_override_fonts/font = ExtResource("15_bcgeo")
 theme_override_font_sizes/font_size = 144
 text = "START GAME"
 
-[node name="LevelSelectButto" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="LevelSelectButto" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=842462901]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture_normal = ExtResource("17_1p6mn")
 texture_hover = ExtResource("19_vgtya")
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/LevelSelectButto"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/LevelSelectButto" unique_id=1347707435]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -496,14 +496,14 @@ theme_override_fonts/font = ExtResource("15_bcgeo")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL SELECT"
 
-[node name="Options2" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="Options2" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=510037907]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture_normal = ExtResource("17_1p6mn")
 texture_hover = ExtResource("19_vgtya")
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Options2"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Options2" unique_id=1228469968]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -520,14 +520,14 @@ theme_override_fonts/font = ExtResource("15_bcgeo")
 theme_override_font_sizes/font_size = 144
 text = "OPTIONS"
 
-[node name="Credit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="Credit" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=1258618639]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture_normal = ExtResource("17_1p6mn")
 texture_hover = ExtResource("19_vgtya")
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Credit"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Credit" unique_id=1593612293]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -544,14 +544,14 @@ theme_override_fonts/font = ExtResource("15_bcgeo")
 theme_override_font_sizes/font_size = 144
 text = "CREDITS"
 
-[node name="Qui" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="Qui" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=371985224]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture_normal = ExtResource("17_1p6mn")
 texture_hover = ExtResource("19_vgtya")
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Qui"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Qui" unique_id=2026059159]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -568,95 +568,95 @@ theme_override_fonts/font = ExtResource("15_bcgeo")
 theme_override_font_sizes/font_size = 144
 text = "QUIT"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1878373916]
 position = Vector2(370, 208)
 
-[node name="ButtonDecor" type="Node2D" parent="."]
+[node name="ButtonDecor" type="Node2D" parent="." unique_id=195740361]
 position = Vector2(384, 142)
 
-[node name="Decor" type="Sprite2D" parent="ButtonDecor"]
+[node name="Decor" type="Sprite2D" parent="ButtonDecor" unique_id=1715951903]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(36.55, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor"]
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor" unique_id=1902219077]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-35.4, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="ButtonDecor4" type="Node2D" parent="."]
+[node name="ButtonDecor4" type="Node2D" parent="." unique_id=247952555]
 position = Vector2(384, 391.125)
 rotation = -3.14159
 
-[node name="Decor" type="Sprite2D" parent="ButtonDecor4"]
+[node name="Decor" type="Sprite2D" parent="ButtonDecor4" unique_id=734031320]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(36.55, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor4"]
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor4" unique_id=1139884940]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-35.4, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="ButtonDecor2" type="Node2D" parent="."]
+[node name="ButtonDecor2" type="Node2D" parent="." unique_id=1415705880]
 position = Vector2(263, 266)
 rotation = -1.5708
 
-[node name="Decor" type="Sprite2D" parent="ButtonDecor2"]
+[node name="Decor" type="Sprite2D" parent="ButtonDecor2" unique_id=1578275141]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(36.55, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor2"]
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor2" unique_id=1045236277]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-35.4, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="ButtonDecor3" type="Node2D" parent="."]
+[node name="ButtonDecor3" type="Node2D" parent="." unique_id=2045721856]
 position = Vector2(503, 265)
 rotation = 1.5708
 
-[node name="Decor" type="Sprite2D" parent="ButtonDecor3"]
+[node name="Decor" type="Sprite2D" parent="ButtonDecor3" unique_id=1046473882]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(36.55, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor3"]
+[node name="Decor2" type="Sprite2D" parent="ButtonDecor3" unique_id=1786629991]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-35.4, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
 
-[node name="ArmLine" parent="." instance=ExtResource("13_bcgeo")]
+[node name="ArmLine" parent="." unique_id=1650852918 instance=ExtResource("13_bcgeo")]
 position = Vector2(-11, 412)
 metadata/_edit_lock_ = true
 
-[node name="ArmLine2" parent="." instance=ExtResource("13_bcgeo")]
+[node name="ArmLine2" parent="." unique_id=1250489295 instance=ExtResource("13_bcgeo")]
 position = Vector2(751, -2)
 rotation = -3.14159
 metadata/_edit_lock_ = true
 
-[node name="ArmLine3" parent="." instance=ExtResource("13_bcgeo")]
+[node name="ArmLine3" parent="." unique_id=1322033599 instance=ExtResource("13_bcgeo")]
 position = Vector2(744, 416)
 rotation = -1.5708
 metadata/_edit_lock_ = true
 
-[node name="ArmLine4" parent="." instance=ExtResource("13_bcgeo")]
+[node name="ArmLine4" parent="." unique_id=172362847 instance=ExtResource("13_bcgeo")]
 position = Vector2(-1, -82)
 rotation = 1.5708
 metadata/_edit_lock_ = true

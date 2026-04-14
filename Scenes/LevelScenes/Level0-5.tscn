@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://vadugshvfncf"]
+[gd_scene format=4 uid="uid://vadugshvfncf"]
 
 [ext_resource type="Script" uid="uid://bkctt2665ap4n" path="res://Scripts/LevelLogic/level_0_5.gd" id="1_ehl8e"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="2_e2mf6"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="18_pn3gt"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_dgihb"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_icbpr"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_k4d0o"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_k4d0o"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="22_uqvme"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="23_d4dk4"]
 

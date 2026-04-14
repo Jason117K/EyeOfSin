@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="PVZ0.1"
 run/main_scene="uid://0tcqey8apvy0"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.6")
 config/icon="res://Assets/icon.png"
 
 [autoload]
@@ -20,7 +24,7 @@ config/icon="res://Assets/icon.png"
 Global="*res://Assets/Text/TextFiles/global.gd"
 GlobalResourceLoader="*res://Scripts/UI/ResourceLoader.gd"
 AudioManager="*res://Scenes/Systems/audio_manager.tscn"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 

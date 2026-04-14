@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://decli4dnrpx42"]
+[gd_scene format=3 uid="uid://decli4dnrpx42"]
 
-[ext_resource type="Script" uid="uid://5i8s8njak5j3" path="res://Scripts/LevelLogic/LevelSwitcher.gd" id="1_jfxaf"]
+[ext_resource type="Script" uid="uid://5i8s8njak5j3" path="res://_Common/LevelSwitching/LevelSwitcher.gd" id="1_jfxaf"]
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://Assets/UI/Box.png" id="2_jfxaf"]
 [ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://Assets/Audio/Win1.mp3" id="3_d7mvd"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="4_jfxaf"]
 
-[node name="LevelSwitcher" type="Control"]
+[node name="LevelSwitcher" type="Control" unique_id=1637656475]
 process_mode = 3
 z_index = 2
 layout_mode = 3
@@ -16,15 +16,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jfxaf")
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="." unique_id=1829864181]
 position = Vector2(370, 205)
 texture = ExtResource("2_jfxaf")
 
-[node name="BGAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="BGAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=423359055]
 stream = ExtResource("3_d7mvd")
 autoplay = true
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1301035723]
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -39,37 +39,37 @@ offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=125470033]
 visible = false
 custom_minimum_size = Vector2(350, 350)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1860752278]
 layout_mode = 2
 
-[node name="OutcomeLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="OutcomeLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1005638975]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_jfxaf")
 theme_override_font_sizes/font_size = 64
 text = "YOU WIN!"
 
-[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer" unique_id=524412309]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_jfxaf")
 theme_override_font_sizes/font_size = 32
 text = "CONTINUE"
 
-[node name="PlayAgain" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="PlayAgain" type="Button" parent="CenterContainer/VBoxContainer" unique_id=99254189]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_jfxaf")
 theme_override_font_sizes/font_size = 32
 text = "PLAY AGAIN"
 
-[node name="ReturnToMenu" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ReturnToMenu" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1414143839]
 custom_minimum_size = Vector2(250, 75)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_jfxaf")

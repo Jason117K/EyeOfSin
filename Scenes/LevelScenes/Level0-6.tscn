@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://ds5agdrtpf8cx"]
+[gd_scene format=4 uid="uid://ds5agdrtpf8cx"]
 
 [ext_resource type="Script" uid="uid://c4jlf7l0jh1tt" path="res://Scripts/LevelLogic/level_0_6.gd" id="1_a4agt"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_au3v8"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://Assets/Environment/BloodTree.png" id="18_0r4g2"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_2cexd"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_f0dgu"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_07b0m"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_07b0m"]
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="21_a4agt"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="21_au3v8"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="23_vmdu7"]

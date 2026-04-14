@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cumfakomi0t74"]
+[gd_scene format=4 uid="uid://cumfakomi0t74"]
 
 [ext_resource type="Script" uid="uid://8f6u42ck4bpg" path="res://Scripts/LevelLogic/level_0_4.gd" id="1_xw2pb"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_60dyi"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_43gi5"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_d40up"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="21_60dyi"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="21_u00xe"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_u00xe"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://Audio/gameplay track bounce 8-13-25.wav" id="22_2i5fe"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://Scripts/Shaders/Glow.gdshader" id="23_qpmao"]
 [ext_resource type="PackedScene" uid="uid://b1irt6sxuudih" path="res://Scenes/PlantScenes/HeartDemon.tscn" id="23_xw2pb"]

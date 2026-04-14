@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://qy170ocroq7g"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://qy170ocroq7g"]
 
 [ext_resource type="Texture2D" uid="uid://cmoxb8mymudca" path="res://Assets/Plants/Animations_Plant/EyeBomb/EyeBombDripBoom-Sheet.png" id="1_khuy2"]
 

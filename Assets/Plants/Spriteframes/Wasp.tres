@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://pmpro31oktqb"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://pmpro31oktqb"]
 
 [ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://Assets/Plants/Animations/Hive-Sheet.png" id="1_fphmr"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=4 uid="uid://b4u7ahs5dx3c5"]
+[gd_scene format=4 uid="uid://b4u7ahs5dx3c5"]
 
 [ext_resource type="Script" uid="uid://cf23o6rna857e" path="res://Scripts/LevelLogic/level_0_3.gd" id="1_3xvj4"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://Scenes/PlantScenes/PlantManager.tscn" id="2_k82tg"]
@@ -33,7 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://Scenes/Systems/ui_layer.tscn" id="20_wyrux"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://Scenes/LevelScenes/Level0-6Environment.tres" id="21_fwot8"]
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://Assets/Environment/Tilesets/Level1FloorTiles.png" id="21_qsfc0"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://Scenes/Systems/ToolTips.tscn" id="22_88et8"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_88et8"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://Scripts/Environment/tile_map_layer.gd" id="22_w02yh"]
 [ext_resource type="Texture2D" uid="uid://dstr8xpgf1bbv" path="res://Assets/Environment/Tilesets/Earth3SpecialTile1.png" id="23_2iio6"]
 [ext_resource type="Texture2D" uid="uid://f14xq5mmwpkh" path="res://Assets/Environment/Tilesets/Earth3SpecialTile1Alt.png" id="24_lwhto"]

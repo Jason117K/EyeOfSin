@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://d2qwe0mrve0cc"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://d2qwe0mrve0cc"]
 
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="1_6j5ca"]
 

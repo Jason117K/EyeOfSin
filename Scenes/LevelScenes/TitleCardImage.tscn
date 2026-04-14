@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://c5nvr7nuth1vy"]
+[gd_scene format=4 uid="uid://c5nvr7nuth1vy"]
 
-[ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://Scripts/LevelLogic/StartScreen.gd" id="1_eqm65"]
+[ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://_Stages/StartScreen/StartScreen.gd" id="1_eqm65"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="2_vs316"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://Assets/Environment/Props/CoralSmall_PROP.png" id="3_0vx1l"]
 [ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://Assets/Environment/Props/CoralBig_Prop.png" id="4_vibxn"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://2ovmbrp2455w" path="res://Audio/menu music bounce 8-13-25.wav" id="13_y61ag"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://Assets/Text/VCR_OSD_MONO_1.001.ttf" id="14_pebbp"]
 [ext_resource type="Texture2D" uid="uid://b33cuw824fnwf" path="res://Assets/Icons/EyeOfSynTitle.png" id="15_4n8jy"]
+
 
 
 [sub_resource type="AtlasTexture" id="3"]

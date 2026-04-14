@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://bhv03xsgolkhx"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bhv03xsgolkhx"]
 
 [ext_resource type="Texture2D" uid="uid://ccxvcy1yd2jvg" path="res://Assets/Zombies/Animations/Football/FootballZombie-Sheet.png" id="1_5c2py"]
 [ext_resource type="Texture2D" uid="uid://ce1kshsbddsup" path="res://Assets/Zombies/UpdatedAnimations/FootballZombie-Sheet.png" id="1_x5vy3"]
