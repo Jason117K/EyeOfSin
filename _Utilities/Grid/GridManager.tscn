@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://be43mxb3vs0h" path="res://_Assets/Environment/Tilesets/Level1FloorProps.png" id="13_f2sh1"]
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="15_uhmsm"]
 [ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="16_f2sh1"]
-[ext_resource type="PackedScene" uid="uid://dsy2hsulw3a7q" path="res://_Common/white_rectangle.tscn" id="20_5t1d3"]
+[ext_resource type="PackedScene" uid="uid://dsy2hsulw3a7q" path="res://_Common/Misc/white_rectangle.tscn" id="20_5t1d3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkj4a"]
 texture = ExtResource("2_ym7ua")

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://_Assets/Environment/Props/Bramble1.png" id="10_vgtya"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://_Assets/Environment/Props/Bramble2PROP.png" id="11_4ojxa"]
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="12_bcgeo"]
-[ext_resource type="PackedScene" uid="uid://c7qxb81x4h2ne" path="res://_Entities/Tentacles/arm_line.tscn" id="13_bcgeo"]
+[ext_resource type="PackedScene" uid="uid://c7qxb81x4h2ne" path="res://_Entities/Demons/Tentacles/arm_line.tscn" id="13_bcgeo"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://_Entities/LevelDecorations/Shrub.tscn" id="13_hj78q"]
 [ext_resource type="Texture2D" uid="uid://doopqiivdy4f2" path="res://_Assets/Misc/TitleCard.png" id="14_4ojxa"]
 [ext_resource type="FontFile" uid="uid://dw8o777s6dcqi" path="res://_Assets/Fonts/Fleshandblood-MVA5x.ttf" id="14_4rth8"]

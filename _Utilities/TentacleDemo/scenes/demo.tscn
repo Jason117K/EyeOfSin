@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dec6sm6m68snh"]
 
 [ext_resource type="Script" uid="uid://bvne1f46nq8cd" path="res://_Utilities/TentacleDemo/scripts/DebugDraw.gd" id="1_tqfh0"]
-[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Tentacles/arm.tscn" id="2_ba4lm"]
-[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Tentacles/arm_target.tscn" id="2_l20p6"]
+[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="2_ba4lm"]
+[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="2_l20p6"]
 
 [node name="demo" type="Node2D" unique_id=253802753]
 

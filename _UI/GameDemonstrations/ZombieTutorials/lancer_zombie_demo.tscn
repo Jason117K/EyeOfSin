@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cebouuew8563s"]
 
-[ext_resource type="Texture2D" uid="uid://b05p1fsdblr4j" path="res://_Entities/Zombies/UpdatedAnimations/HeadDragZombie-Sheet.png" id="1_q35xs"]
+[ext_resource type="Texture2D" uid="uid://b05p1fsdblr4j" path="res://_Entities/Zombies/_Sundered/HeadDragZombie-Sheet.png" id="1_q35xs"]
 
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]

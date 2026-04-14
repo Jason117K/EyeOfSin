@@ -1,0 +1,397 @@
+[gd_scene format=3 uid="uid://blpt4dqra2o6j"]
+
+[ext_resource type="PackedScene" uid="uid://kf64j7pluy7o" path="res://_UI/LoreBooks/LoreBookVisual/interactive_book_2d.tscn" id="1_gyohk"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_r6hpg"]
+[ext_resource type="Script" uid="uid://bov2qdtt14vx5" path="res://_UI/LoreBooks/demon_lore_book_controller.gd" id="3_gh3ig"]
+[ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://_Entities/Demons/Hive/Hive.tres" id="4_chrhc"]
+[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://_Entities/Demons/_Occulum/Sunflower.png" id="5_jm2ht"]
+[ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://_Entities/Demons/_Crawler/Spyder.png" id="6_28t4q"]
+[ext_resource type="Texture2D" uid="uid://oewg178qt0kr" path="res://_Entities/Demons/_CagedOculum/Walnut.png" id="7_tpmsq"]
+[ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://_Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="8_n4a1q"]
+[ext_resource type="Texture2D" uid="uid://p88orx55tm4w" path="res://_Entities/Demons/Maw/MawImage.png" id="9_btjlo"]
+[ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://_Entities/Demons/_Wyrm/EggWyrm.png" id="11_mcd4t"]
+[ext_resource type="Texture2D" uid="uid://dr854umtud4nf" path="res://_Entities/Demons/Hive/Hive.png" id="12_i2p6p"]
+[ext_resource type="Texture2D" uid="uid://c20e4aa6kqxl2" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_MAW.png" id="13_hqwrb"]
+[ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_WYRM.png" id="14_te31g"]
+[ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_Base.png" id="15_8exk2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g75u1"]
+
+[node name="PlantLoreBook" type="Control" unique_id=97848138]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG_Color" type="ColorRect" parent="." unique_id=1810172308]
+layout_mode = 0
+offset_right = 740.0
+offset_bottom = 412.0
+color = Color(0.490196, 0.0588235, 0.121569, 1)
+
+[node name="InteractiveBook2D" parent="." unique_id=1863075210 instance=ExtResource("1_gyohk")]
+position = Vector2(370, 164)
+scale = Vector2(12.1563, 8.09375)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=627385222]
+position = Vector2(370, 206)
+
+[node name="CurrentPlantLabel" type="RichTextLabel" parent="." unique_id=2124714015]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 244.0
+offset_right = 660.0
+offset_bottom = 309.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_r6hpg")
+theme_override_font_sizes/normal_font_size = 16
+text = "Resilient and fast-growing, the Oculum are densely populated and serve both as the primary producers of blood energy on Syn and as spies for Argus. 
+
+- Generates blood energy over time 
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1961918662]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -163.0
+offset_right = -114.0
+offset_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1929164251]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+expand_mode = 5
+script = ExtResource("3_gh3ig")
+sprites = ExtResource("4_chrhc")
+playing = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1376691575]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 43.0
+offset_right = 831.0
+offset_bottom = 454.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="AllPlantRows" type="VBoxContainer" parent="HBoxContainer" unique_id=287999705]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1010203393]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+
+[node name="Sunflower" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1" unique_id=1900871465]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("5_jm2ht")
+stretch_mode = 4
+
+[node name="Peashooter" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1" unique_id=342407816]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("6_28t4q")
+stretch_mode = 5
+
+[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1" unique_id=1696769767]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("7_tpmsq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlantNames1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1209401893]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 23
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1038732148]
+layout_mode = 2
+
+[node name="EyeLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=2034527998]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "EYE"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1217756370]
+layout_mode = 2
+theme_override_constants/margin_right = 55
+
+[node name="SpyderLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=987055448]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "SPYDER"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1524718653]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="WalnutLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1302543777]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "O-SPINE"
+
+[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1178864748]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+
+[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=337339227]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("7_tpmsq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Maw" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=794088523]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("9_btjlo")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EyeBomb" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=22459720]
+visible = false
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_g75u1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=2085581078]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("11_mcd4t")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hive" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=510701508]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("12_i2p6p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlantNames2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=229843166]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 22
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=493684138]
+layout_mode = 2
+
+[node name="MawLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=1313293612]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "MAW"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=134442084]
+layout_mode = 2
+theme_override_constants/margin_right = 45
+
+[node name="WyrmLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=227279318]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "WYRM"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=1187907957]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="HiveLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=1428129755]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "HIVE"
+
+[node name="PlantNames3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=113310672]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames3" unique_id=648118578]
+layout_mode = 2
+theme_override_constants/margin_right = 212
+
+[node name="MawLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames3" unique_id=771669505]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 32
+text = "MAW"
+
+[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1772946496]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+
+[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row3" unique_id=1306419466]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("11_mcd4t")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hive" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row3" unique_id=858027766]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("12_i2p6p")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AltRow1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1802603340]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+
+[node name="Alt1" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow1" unique_id=1360651257]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("13_hqwrb")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Alt2" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow1" unique_id=249098203]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("14_te31g")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AltRow2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=142716490]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+
+[node name="Alt3" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow2" unique_id=2053529146]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("13_hqwrb")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Alt4" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow2" unique_id=214639677]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("14_te31g")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AltRow3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=2037741047]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+
+[node name="Alt5" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow3" unique_id=217192327]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("13_hqwrb")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Alt6" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow3" unique_id=71210810]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture_normal = ExtResource("14_te31g")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows" unique_id=1159880042]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1613663661]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/HBoxContainer" unique_id=1094706216]
+layout_mode = 2
+theme_override_constants/margin_right = 75
+
+[node name="BackButton" type="Button" parent="HBoxContainer/AllPlantRows/HBoxContainer" unique_id=992794287]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_r6hpg")
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/HBoxContainer" unique_id=1218859726]
+layout_mode = 2
+theme_override_constants/margin_right = 280
+
+[node name="BackOutDetails" type="Button" parent="." unique_id=682929152]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 436.0
+offset_top = 4.0
+offset_right = 736.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
+[node name="BGDarkEn" type="ColorRect" parent="." unique_id=1722038336]
+visible = false
+layout_mode = 0
+offset_left = -22.0
+offset_top = -11.0
+offset_right = 1334.0
+offset_bottom = 618.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.717647)
+
+[node name="StaticPreview" type="TextureRect" parent="." unique_id=526117518]
+visible = false
+layout_mode = 0
+offset_left = 430.0
+offset_top = 38.0
+offset_right = 630.0
+offset_bottom = 238.0
+texture = ExtResource("15_8exk2")
+expand_mode = 1
+
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Sunflower" to="VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Peashooter" to="VBoxContainer/TextureRect" method="_on_peashooter_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EyeBomb" to="VBoxContainer/TextureRect" method="_on_eye_bomb_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row3/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllPlantRows/HBoxContainer/BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackOutDetails" to="VBoxContainer/TextureRect" method="_on_back_out_details_pressed"]

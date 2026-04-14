@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c6k8odf58q55t"]
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_gaqbg"]
-[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://_Entities/Demons/Maw.tres" id="1_m3nwt"]
+[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://_Entities/Demons/Maw/Maw.tres" id="1_m3nwt"]
 [ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/OccularSpine/OccularSpine-Sheet.png" id="2_01wf6"]
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="2_gaqbg"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/WhiteRectangle.png" id="2_t10a1"]
-[ext_resource type="Script" uid="uid://dyie6vmk336h2" path="res://_Common/ChangeColor.gd" id="3_gaqbg"]
+[ext_resource type="Script" uid="uid://dyie6vmk336h2" path="res://_Common/ColorChangingScripts/ChangeColor.gd" id="3_gaqbg"]
 
 
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yexauda0c86w"]
 
-[ext_resource type="Texture2D" uid="uid://d3w43txgdyuah" path="res://_Entities/Zombies/UpdatedAnimations/SwordBucketZombie-Sheet.png" id="1_shdaa"]
+[ext_resource type="Texture2D" uid="uid://d3w43txgdyuah" path="res://_Entities/Zombies/_Unhallower/SwordBucketZombie-Sheet.png" id="1_shdaa"]
 
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]

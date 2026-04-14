@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://cspgp33mo2ygv"]
+
+[ext_resource type="Texture2D" uid="uid://chjlyymq5t45q" path="res://_Entities/Demons/Blood/Sun.png" id="1"]
+[ext_resource type="Script" uid="uid://csushx4jkpqkt" path="res://_Entities/Demons/Blood/Sun.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://swqg421sexsx" path="res://_Assets/Audio/SunCollect.mp3" id="3"]
+[ext_resource type="Texture2D" uid="uid://c30blenge7e7r" path="res://_Entities/Demons/Blood/BloodBeating.png" id="4"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="5_rabkd"]
+
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvv4n"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rabkd"]
+radius = 83.75
+
+[node name="Sun" type="Area2D"]
+process_mode = 1
+modulate = Color(2.4, 1.2, 1, 1)
+light_mask = 31
+z_index = 99
+scale = Vector2(0.8, 0.8)
+script = ExtResource("2")
+SunValue = 45
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_pvv4n")
+texture = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("1")
+
+[node name="CollectAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("7")
+autoplay = "default"
+frame = 1
+script = ExtResource("5_rabkd")
+
+[node name="AutoPickUpTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="HealZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealZone"]
+visible = false
+shape = SubResource("CircleShape2D_rabkd")
+
+[connection signal="mouse_entered" from="." to="." method="_on_Sun_mouse_entered"]
+[connection signal="timeout" from="AutoPickUpTimer" to="." method="_on_auto_pick_up_timer_timeout"]
+[connection signal="area_entered" from="HealZone" to="." method="_on_heal_zone_area_entered"]

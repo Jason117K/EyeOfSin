@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bjclsere2bncq"]
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_wvnut"]
-[ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://_Entities/Demons/LaserEggWormsSmolMERGED-Sheet.png" id="2_cu8ui"]
+[ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://_Entities/Demons/_Wyrm/LaserEggWormsSmolMERGED-Sheet.png" id="2_cu8ui"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/WhiteRectangle.png" id="2_pjb6j"]
-[ext_resource type="Texture2D" uid="uid://csb4xyd0dabe3" path="res://_Entities/Demons/Hive-Sheet.png" id="3_pjb6j"]
-[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/Wasp 16x16 Sprite Sheet.png" id="4_1o6ls"]
+[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/Hive/Hive-Sheet.png" id="3_pjb6j"]
+[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/Hive/Wasp 16x16 Sprite Sheet.png" id="4_1o6ls"]
 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgn5o"]

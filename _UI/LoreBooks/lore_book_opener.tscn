@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dkpcc8kkpu8n0"]
 
-[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://_Entities/Demons/Sunflower.png" id="1_paagv"]
+[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://_Entities/Demons/_Occulum/Sunflower.png" id="1_paagv"]
 [ext_resource type="Script" uid="uid://cjm42a18n4alo" path="res://_UI/LoreBooks/lore_book_opener.gd" id="1_x4iqa"]
-[ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/Sprites/BasicZombie.png" id="2_y17rf"]
+[ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="2_y17rf"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_x4iqa"]
 
 
