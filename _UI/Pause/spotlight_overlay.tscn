@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpltvbm84xujg"]
+[gd_scene format=3 uid="uid://dpltvbm84xujg"]
 
-[ext_resource type="Shader" uid="uid://yue3q3mw3i0w" path="res://Scripts/Shaders/spotlight_shader.gdshader" id="1_ttf60"]
+[ext_resource type="Shader" uid="uid://yue3q3mw3i0w" path="res://_Common/Shaders/spotlight_shader.gdshader" id="1_ttf60"]
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ttf60"]
 shader = ExtResource("1_ttf60")

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dndt0jcjj7xpo"]
 
 [ext_resource type="Script" uid="uid://boere3vd8qgrv" path="res://_UI/Pause/pause_menu.gd" id="1_0buc1"]
-[ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://Assets/UI/Box.png" id="2_0buc1"]
-[ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://Assets/Audio/Win1.mp3" id="2_epntb"]
-[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="4_0buc1"]
+[ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_0buc1"]
+[ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://_Assets/Audio/Win1.mp3" id="2_epntb"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_0buc1"]
 
 
 [node name="PauseMenu" type="Control"]

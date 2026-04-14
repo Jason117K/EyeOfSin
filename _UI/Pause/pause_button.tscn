@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct0d53f75vuby"]
 
-[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="1_tkp42"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="1_tkp42"]
 [ext_resource type="Script" uid="uid://ct1f77uyefcnp" path="res://_UI/Pause/pause_button.gd" id="2_w1yst"]
 [ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://_UI/Pause/PauseMenu.tscn" id="3_e4pn3"]
 

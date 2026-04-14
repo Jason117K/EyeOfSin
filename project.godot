@@ -17,37 +17,40 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="PVZ0.1"
 run/main_scene="uid://0tcqey8apvy0"
 config/features=PackedStringArray("4.6")
-config/icon="res://Assets/icon.png"
+
+[audio]
+
+buses/default_bus_layout="res://_Common/Tres Resources/default_bus_layout.tres"
 
 [autoload]
 
-Global="*res://Assets/Text/TextFiles/global.gd"
-GlobalResourceLoader="*res://Scripts/UI/ResourceLoader.gd"
-AudioManager="*res://Scenes/Systems/audio_manager.tscn"
+Global="*res://_Assets/Text/TextFiles/global.gd"
+GlobalResourceLoader="*res://_UI/ResourceLoader.gd"
+AudioManager="*res://_Utilities/Audio/audio_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
 directories/dch_directory={
-"Ally": "res://Assets/Dialog/Characters/Ally.dch",
-"Argus": "res://Assets/Dialog/Characters/Argus.dch",
-"Lucretia": "res://Assets/Dialog/Characters/Lucretia.dch",
-"Rohan_Moore": "res://Assets/Dialog/Characters/Rohan_Moore.dch",
-"Syn_Lucretia": "res://Assets/Dialog/Characters/Syn_Lucretia.dch"
+"Ally": "res://_Assets/Dialog/Characters/Ally.dch",
+"Argus": "res://_Assets/Dialog/Characters/Argus.dch",
+"Lucretia": "res://_Assets/Dialog/Characters/Lucretia.dch",
+"Rohan_Moore": "res://_Assets/Dialog/Characters/Rohan_Moore.dch",
+"Syn_Lucretia": "res://_Assets/Dialog/Characters/Syn_Lucretia.dch"
 }
 directories/dtl_directory={
-"level_02_end_dialog": "res://Assets/Dialog/level_02_end_dialog.dtl",
-"level_02_start_dialog": "res://Assets/Dialog/level_02_start_dialog.dtl",
-"level_03_end_dialog": "res://Assets/Dialog/level_03_end_dialog.dtl",
-"level_03_start_dialog": "res://Assets/Dialog/level_03_start_dialog.dtl",
-"level_04_end_dialog": "res://Assets/Dialog/level_04_end_dialog.dtl",
-"level_04_start_dialog": "res://Assets/Dialog/level_04_start_dialog.dtl",
-"level_05_end_dialog": "res://Assets/Dialog/level_05_end_dialog.dtl",
-"level_05_start_dialog": "res://Assets/Dialog/level_05_start_dialog.dtl",
-"level_06_end_dialog": "res://Assets/Dialog/level_06_end_dialog.dtl",
-"level_06_start_dialog": "res://Assets/Dialog/level_06_start_dialog.dtl",
-"level_0_end_dialog": "res://Assets/Dialog/level_0_end_dialog.dtl",
-"level_0_start_dialog": "res://Assets/Dialog/level_0_start_dialog.dtl"
+"level_02_end_dialog": "res://_Assets/Dialog/level_02_end_dialog.dtl",
+"level_02_start_dialog": "res://_Assets/Dialog/level_02_start_dialog.dtl",
+"level_03_end_dialog": "res://_Assets/Dialog/level_03_end_dialog.dtl",
+"level_03_start_dialog": "res://_Assets/Dialog/level_03_start_dialog.dtl",
+"level_04_end_dialog": "res://_Assets/Dialog/level_04_end_dialog.dtl",
+"level_04_start_dialog": "res://_Assets/Dialog/level_04_start_dialog.dtl",
+"level_05_end_dialog": "res://_Assets/Dialog/level_05_end_dialog.dtl",
+"level_05_start_dialog": "res://_Assets/Dialog/level_05_start_dialog.dtl",
+"level_06_end_dialog": "res://_Assets/Dialog/level_06_end_dialog.dtl",
+"level_06_start_dialog": "res://_Assets/Dialog/level_06_start_dialog.dtl",
+"level_0_end_dialog": "res://_Assets/Dialog/level_0_end_dialog.dtl",
+"level_0_start_dialog": "res://_Assets/Dialog/level_0_start_dialog.dtl"
 }
 layout/style_directory={}
 extensions_folder="res://addons/dialogic_additions"

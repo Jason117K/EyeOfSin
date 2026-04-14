@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cvrdciruhhvpo"]
+
+[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Tentacles/arm.tscn" id="1_15qc4"]
+[ext_resource type="Script" uid="uid://obsbqcftfxyw" path="res://_Utilities/TentacleDemo/scripts/DraggableTarget.gd" id="2_hw0aq"]
+
+[node name="ArmPointedRight" type="Node2D" unique_id=565519757]
+
+[node name="Arm" parent="." unique_id=1470237806 node_paths=PackedStringArray("target") instance=ExtResource("1_15qc4")]
+position = Vector2(-2, 5)
+target = NodePath("../ArmTarget")
+
+[node name="ArmTarget" type="Node2D" parent="." unique_id=2032995619]
+position = Vector2(139, 0)
+script = ExtResource("2_hw0aq")
+metadata/_custom_type_script = "uid://obsbqcftfxyw"

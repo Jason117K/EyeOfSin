@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c7qxb81x4h2ne"]
+
+[ext_resource type="PackedScene" uid="uid://cvrdciruhhvpo" path="res://_Entities/Tentacles/arm_pointed_right.tscn" id="1_ayvoy"]
+
+[node name="ArmLine" type="Node2D" unique_id=238428396]
+
+[node name="ArmPointedRight" parent="." unique_id=1711663157 instance=ExtResource("1_ayvoy")]
+
+[node name="ArmPointedRight2" parent="." unique_id=454255606 instance=ExtResource("1_ayvoy")]
+position = Vector2(95, 0)
+
+[node name="Arm" parent="ArmPointedRight2" index="0"]
+num__segments = 27
+wave_amplitude = 1.5
+wave_frequency = 4.0
+wave_speed = 5.0
+
+[node name="ArmPointedRight3" parent="." unique_id=601636073 instance=ExtResource("1_ayvoy")]
+position = Vector2(189, -2)
+
+[node name="ArmPointedRight4" parent="." unique_id=2081536922 instance=ExtResource("1_ayvoy")]
+position = Vector2(299, -2)
+
+[node name="ArmPointedRight5" parent="." unique_id=1577965127 instance=ExtResource("1_ayvoy")]
+position = Vector2(394, -2)
+
+[node name="Arm" parent="ArmPointedRight5" index="0"]
+num__segments = 27
+wave_amplitude = 1.5
+wave_frequency = 4.0
+wave_speed = 5.0
+
+[node name="ArmPointedRight6" parent="." unique_id=108816571 instance=ExtResource("1_ayvoy")]
+position = Vector2(488, -4)
+
+[node name="ArmPointedRight7" parent="." unique_id=1817045265 instance=ExtResource("1_ayvoy")]
+position = Vector2(582, -4)
+
+[node name="ArmPointedRight8" parent="." unique_id=277999844 instance=ExtResource("1_ayvoy")]
+position = Vector2(677, -4)
+
+[node name="Arm" parent="ArmPointedRight8" index="0"]
+num__segments = 27
+wave_amplitude = 1.5
+wave_frequency = 4.0
+wave_speed = 5.0
+
+[editable path="ArmPointedRight2"]
+[editable path="ArmPointedRight5"]
+[editable path="ArmPointedRight8"]

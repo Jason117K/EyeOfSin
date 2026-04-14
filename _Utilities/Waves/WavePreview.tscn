@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bteegsg6ig7de"]
+
+[ext_resource type="Script" uid="uid://javwqvkctiff" path="res://_Utilities/Waves/WavePreview.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cp3hp8glu2u0p" path="res://_Assets/Misc/SkullIconNew.png" id="2_6qtyv"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="3_6qtyv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qtyv"]
+size = Vector2(69, 66)
+
+[node name="WavePreview" type="Node2D" unique_id=2004771555]
+script = ExtResource("2")
+
+[node name="PreviewSprite" type="Sprite2D" parent="." unique_id=471890236]
+scale = Vector2(2, 2)
+texture = ExtResource("2_6qtyv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=456039983]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1281212639]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_6qtyv")
+disabled = true
+
+[node name="ToggleVisibility" type="Timer" parent="." unique_id=1226762900]
+wait_time = 2.0
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1395822247]
+scale = Vector2(0.5, 0.5)
+
+[node name="Control" type="Control" parent="Node2D" unique_id=1190479830]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_top = -52.0
+offset_right = -3.0
+offset_bottom = -52.0
+
+[node name="Panel" type="Panel" parent="Node2D/Control" unique_id=1350581145]
+layout_mode = 0
+offset_left = -365.0
+offset_top = 26.0
+offset_right = -63.0
+offset_bottom = 165.0
+scale = Vector2(1, 1.96)
+
+[node name="EnemyPreviewText" type="RichTextLabel" parent="Node2D/Control" unique_id=1734004144]
+layout_mode = 0
+offset_left = -359.0
+offset_top = 30.0
+offset_right = -134.0
+offset_bottom = 70.0
+theme_override_fonts/normal_font = ExtResource("3_6qtyv")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+
+[node name="StartGameButton" type="Button" parent="." unique_id=294501158]
+offset_left = -35.0
+offset_top = -32.0
+offset_right = 34.0
+offset_bottom = 33.0
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="timeout" from="ToggleVisibility" to="." method="_on_ToggleVisibility_timeout"]
+[connection signal="mouse_entered" from="StartGameButton" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="StartGameButton" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="pressed" from="StartGameButton" to="." method="_on_start_game_button_pressed"]

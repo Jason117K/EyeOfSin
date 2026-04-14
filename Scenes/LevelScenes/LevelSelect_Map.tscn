@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://mshgo26aw4wn"]
+[gd_scene format=3 uid="uid://mshgo26aw4wn"]
 
 [ext_resource type="Script" uid="uid://b1x3sawhqfdhx" path="res://Scripts/LevelLogic/level_select.gd" id="1_n2hue"]
-[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="2_c0y8p"]
-[ext_resource type="Texture2D" uid="uid://cp2x6j4qfxwq8" path="res://Assets/Environment/Map.jpg" id="2_n2hue"]
-[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="3_lwmcq"]
-[ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://Assets/UI/ButtonSprite.png" id="5_g2cgg"]
-[ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://Assets/UI/ButtonSpriteHover.png" id="6_r3hyu"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="2_c0y8p"]
+[ext_resource type="Texture2D" uid="uid://cp2x6j4qfxwq8" path="res://_Assets/Environment/Map.jpg" id="2_n2hue"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="3_lwmcq"]
+[ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://_Assets/UI/ButtonSprite.png" id="5_g2cgg"]
+[ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://_Assets/UI/ButtonSpriteHover.png" id="6_r3hyu"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3

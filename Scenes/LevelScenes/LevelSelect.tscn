@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyey2hcl61et"]
+[gd_scene format=3 uid="uid://cyey2hcl61et"]
 
 [ext_resource type="Script" uid="uid://b1x3sawhqfdhx" path="res://Scripts/LevelLogic/level_select.gd" id="1_1cl4n"]
-[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://Scenes/Systems/GridManager.tscn" id="2_d8a26"]
-[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://Assets/Fonts/cormorant.semi.otf" id="3_d8a26"]
-[ext_resource type="StyleBox" uid="uid://bu8cfo71nnluh" path="res://Resources_tres/Start_Button_Stylebox.tres" id="4_d8a26"]
-[ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://Assets/UI/ButtonSprite.png" id="5_gy6r3"]
-[ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://Assets/UI/ButtonSpriteHover.png" id="6_1pxcl"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="2_d8a26"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="3_d8a26"]
+[ext_resource type="StyleBox" uid="uid://bu8cfo71nnluh" path="res://_Common/Tres Resources/Start_Button_Stylebox.tres" id="4_d8a26"]
+[ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://_Assets/UI/ButtonSprite.png" id="5_gy6r3"]
+[ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://_Assets/UI/ButtonSpriteHover.png" id="6_1pxcl"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3

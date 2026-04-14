@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://cqibbup7wggwi"]
+
+[ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_shu37"]
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/WhiteRectangle.png" id="2_gfiw1"]
+[ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://Assets/Plants/Animations/MawMouthSpriteSheet.png" id="3_5kl5k"]
+[ext_resource type="Texture2D" uid="uid://denmhprn6ukid" path="res://Assets/Plants/Animations/RedSpiderAttack-Sheet.png" id="4_8w8gb"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="5_5vond"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4bbm"]
+atlas = ExtResource("3_5kl5k")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0epe"]
+atlas = ExtResource("3_5kl5k")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vicp"]
+atlas = ExtResource("3_5kl5k")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok0on"]
+atlas = ExtResource("3_5kl5k")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndxju"]
+atlas = ExtResource("3_5kl5k")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8njs"]
+atlas = ExtResource("3_5kl5k")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwkik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4bbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0epe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vicp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok0on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndxju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8njs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6mlr"]
+atlas = ExtResource("4_8w8gb")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kq3p"]
+atlas = ExtResource("4_8w8gb")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af1nn"]
+atlas = ExtResource("4_8w8gb")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nrt7"]
+atlas = ExtResource("4_8w8gb")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kouv"]
+atlas = ExtResource("4_8w8gb")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iomid"]
+atlas = ExtResource("4_8w8gb")
+region = Rect2(2000, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sj3fu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6mlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kq3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af1nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nrt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kouv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iomid")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MawSpiderBuff" type="Control" unique_id=1668830419]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_shu37")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=820463752]
+self_modulate = Color(0.46, 0.46, 0.46, 1)
+layout_mode = 0
+offset_left = 40.0
+offset_right = 247.0
+offset_bottom = 115.0
+texture = ExtResource("2_gfiw1")
+
+[node name="Maw" type="AnimatedSprite2D" parent="TextureRect3" unique_id=606176026]
+position = Vector2(143, 65.9891)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fwkik")
+autoplay = "default"
+frame = 1
+frame_progress = 0.381639
+
+[node name="Spyder" type="AnimatedSprite2D" parent="TextureRect3" unique_id=263243816]
+position = Vector2(39, 41.9891)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sj3fu")
+autoplay = "default"
+frame = 5
+frame_progress = 0.811769
+flip_h = true
+
+[node name="WebBallwOutline" type="Sprite2D" parent="TextureRect3" unique_id=672462889]
+position = Vector2(189, 39.9891)
+rotation = -0.583037
+scale = Vector2(2, 2)
+texture = ExtResource("5_5vond")
+
+[node name="WebBallwOutline2" type="Sprite2D" parent="TextureRect3" unique_id=1929542363]
+position = Vector2(97, 38.9891)
+rotation = -2.46462
+scale = Vector2(2, 2)
+texture = ExtResource("5_5vond")
+
+[node name="WebBallwOutline3" type="Sprite2D" parent="TextureRect3" unique_id=1136198538]
+position = Vector2(146, 100.989)
+rotation = 1.44667
+scale = Vector2(2, 2)
+texture = ExtResource("5_5vond")

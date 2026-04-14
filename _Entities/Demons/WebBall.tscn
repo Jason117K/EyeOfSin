@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[ext_resource type="Script" uid="uid://b6yhajrlfy10e" path="res://_Entities/Demons/WebBall.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://Assets/Plants/WebBallwOutline.png" id="2"]
+
+
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 56.0486
+
+[node name="WebBall" type="Area2D"]
+scale = Vector2( 3, 3 )
+script = ExtResource( 1 )
+target_position = Vector2( 100, 0 )
+
+[node name="Projectile" type="Sprite2D" parent="."]
+texture = ExtResource( 2 )
+
+[node name="HitBoxComponent" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_WebBall_area_entered"]
