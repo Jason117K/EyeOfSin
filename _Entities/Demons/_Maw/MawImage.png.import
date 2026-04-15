@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uxucc64ij83d"
-path="res://.godot/imported/MawCARD.png-e89925c409750be549e25d0021bb7656.ctex"
+uid="uid://p88orx55tm4w"
+path="res://.godot/imported/MawImage.png-1fa974e885c931fea59ac31bae17aa84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Entities/Demons/Maw/MawCARD.png"
-dest_files=["res://.godot/imported/MawCARD.png-e89925c409750be549e25d0021bb7656.ctex"]
+source_file="res://_Entities/Demons/_Maw/MawImage.png"
+dest_files=["res://.godot/imported/MawImage.png-1fa974e885c931fea59ac31bae17aa84.ctex"]
 
 [params]
 

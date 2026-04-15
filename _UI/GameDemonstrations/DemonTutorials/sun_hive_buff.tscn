@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_tj380"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="2_belle"]
-[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/Hive/Hive-Sheet.png" id="4_8qwm3"]
-[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/Hive/Wasp 16x16 Sprite Sheet.png" id="5_8kuga"]
+[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/_Hive/Hive-Sheet.png" id="4_8qwm3"]
+[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/_Hive/Wasp 16x16 Sprite Sheet.png" id="5_8kuga"]
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="5_qwhkp"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="6_s5q0p"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="7_ut8cw"]

@@ -65,7 +65,7 @@ func _process(_delta):
 								#print("Is Green, Can Attack")
 								canAttack = true
 						if collider.is_in_group("Purple"):
-							print("Is Purple")
+							#print("Is Purple")
 							if self.is_in_group("Purple"):
 								print("Can Attack")
 								canAttack = true

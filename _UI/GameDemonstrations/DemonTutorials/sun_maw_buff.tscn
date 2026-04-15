@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="5_7v70t"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="6_ivkaj"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="7_njkda"]
-[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://_Entities/Demons/Maw/Maw.tres" id="8_u0o3f"]
+[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://_Entities/Demons/_Maw/Maw.tres" id="8_u0o3f"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="8_vkkh2"]
 [ext_resource type="Script" uid="uid://b0a5h4n57eujp" path="res://_Common/ColorChangingScripts/change_color.gd" id="9_hhdg0"]
 [ext_resource type="Script" uid="uid://c4riwmfe7pjam" path="res://_Common/ColorChangingScripts/make_grey_red.gd" id="9_lxqid"]

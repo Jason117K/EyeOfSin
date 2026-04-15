@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bymckgsndcx1y"]
 
-[ext_resource type="Texture2D" uid="uid://bplktshlxk4fi" path="res://_Entities/Demons/OccularSpine/OccularSpineHurt2-Sheet.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bplktshlxk4fi" path="res://_Entities/Demons/_CagedOculum/OccularSpineHurt2-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://dfkobn3p1i8at" path="res://_Entities/Demons/_CagedOculum/WalnutTree.gd" id="2"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_6a3v0"]
 [ext_resource type="PackedScene" uid="uid://l1w5vga5fve" path="res://_Entities/Demons/WebTile/web_tile_slow.tscn" id="2_j6nbb"]
 [ext_resource type="Texture2D" uid="uid://c6ui5cj8lb6mf" path="res://_Entities/Demons/_CagedOculum/OccularSpineIdle-Sheet.png" id="2_ksu1o"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://blmlmra0kwots" path="res://_Entities/Demons/OccularSpine/OccularSpineHurt1-Sheet.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/OccularSpine/OccularSpine-Sheet.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://djbyji3pwvlah" path="res://_Entities/Demons/OccularSpine/OccularSpineHurt3-Sheet.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://blmlmra0kwots" path="res://_Entities/Demons/_CagedOculum/OccularSpineHurt1-Sheet.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/_CagedOculum/OccularSpine-Sheet.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://djbyji3pwvlah" path="res://_Entities/Demons/_CagedOculum/OccularSpineHurt3-Sheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://bsm0bj2td7bp3" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_MAW-Sheet.png" id="8_2ysu1"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="8_ksu1o"]
 [ext_resource type="Texture2D" uid="uid://cmau6h8e8nj7t" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_SPYDER-Sheet.png" id="9_j6nbb"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://c8kdy0rt01xw7" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_WYRM-Sheet.png" id="13_vyedq"]
 [ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="20_ctykl"]
 [ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="21_yub8t"]
-
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(34, 32)

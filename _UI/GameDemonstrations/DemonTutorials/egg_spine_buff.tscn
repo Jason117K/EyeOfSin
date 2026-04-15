@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="4_3crtc"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="5_ix3dn"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="6_tdx03"]
-[ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/OccularSpine/OccularSpine-Sheet.png" id="7_5pe3u"]
+[ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/_CagedOculum/OccularSpine-Sheet.png" id="7_5pe3u"]
 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgn5o"]

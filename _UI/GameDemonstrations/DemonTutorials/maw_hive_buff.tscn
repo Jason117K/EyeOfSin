@@ -2,11 +2,11 @@
 
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="1_5ykb5"]
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_katmg"]
-[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://_Entities/Demons/Maw/Maw.tres" id="1_vkb4b"]
+[ext_resource type="SpriteFrames" uid="uid://d2qwe0mrve0cc" path="res://_Entities/Demons/_Maw/Maw.tres" id="1_vkb4b"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="2_fewqe"]
 [ext_resource type="Script" uid="uid://c4riwmfe7pjam" path="res://_Common/ColorChangingScripts/make_grey_red.gd" id="2_xn45f"]
-[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/Hive/Hive-Sheet.png" id="6_fewqe"]
-[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/Hive/Wasp 16x16 Sprite Sheet.png" id="7_upj5p"]
+[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/_Hive/Hive-Sheet.png" id="6_fewqe"]
+[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/_Hive/Wasp 16x16 Sprite Sheet.png" id="7_upj5p"]
 
 
 

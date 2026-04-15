@@ -128,6 +128,13 @@ func swap_scenes():
 	#plant_manager = current_scene.find_child("PlantManager")
 	print("PlantManager Is ", plant_manager)
 	plant_manager.swap_heart()
+	
+func get_alt_dimension():
+	if on_scene_1:
+		return current_scenes[1]
+	else:
+		return current_scenes[0]
+		
 func reset_cooldown():
 	can_swap = true
 	

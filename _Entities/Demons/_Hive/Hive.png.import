@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdtsmxs7db4wj"
-path="res://.godot/imported/MawMouthSpriteSheet.png-56192f4281b0b82a836d1c0cc2360bb5.ctex"
+uid="uid://dr854umtud4nf"
+path="res://.godot/imported/Hive.png-c810bc1a9183ae7c89e80215dd8f40c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Entities/Demons/Maw/MawMouthSpriteSheet.png"
-dest_files=["res://.godot/imported/MawMouthSpriteSheet.png-56192f4281b0b82a836d1c0cc2360bb5.ctex"]
+source_file="res://_Entities/Demons/_Hive/Hive.png"
+dest_files=["res://.godot/imported/Hive.png-c810bc1a9183ae7c89e80215dd8f40c7.ctex"]
 
 [params]
 

@@ -6,15 +6,17 @@ extends Demon
 #Export variables
 @export var cost = 25
 @export var health = 50
+var walnutHealth = 650
 
 # Preload the drone scene
-const DroneScene = preload("res://_Entities/Demons/Hive/Drone.tscn")
-var spawnAnimDone = false
-# Constants
-var MAX_DRONES = 2
-var BUFF_MAX_DRONES = 4
-#const MAX_DRONES = 3
+const DroneScene = preload("res://_Entities/Demons/_Hive/Drone.tscn")
 
+# Constants
+var MAX_DRONES = 3
+var WALNUT_BUFF_MAX_DRONES = 4
+var SUN_BUFF_MAX_DRONES = 5
+#const MAX_DRONES = 3
+var spawnAnimDone = false
 # Drone management
 var available_drones = []                          # Currently active but unassigned drones
 var drone_assignments = {}                         # Dictionary mapping enemies to arrays of drones
@@ -24,20 +26,18 @@ var drone_rest_positions = {}                      # Dictionary to store rest po
 var isEggWyrmBuffed := false 
 var isSpyderBuffed := false
 var isSunflowerBuffed:= false 
-
+var isMawBuffed := false 
 @onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
 var isBuffed = false                               # Tracks Current Buff State Of Drone  
 var PlantManager                                   # RefCounted to PlantManager 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
-#@onready var buffNodes = $BuffNodesComponent
+@onready var buffNodes = $BuffNodesComponent
 #@onready var animSpriteComp = $AnimatedSpriteComp
 var thisBufferName : String  
 
 func _ready():
-	
 	super()
-	
 	animSpriteComp = $AnimatedSpriteComp
 	
 	# Initialize drones & Plant Manager 
@@ -46,6 +46,17 @@ func _ready():
 	animSpriteComp.animation = "spawn"
 	droneRespawnTimer.wait_time = waitTime
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
+	
+	if self.is_in_group("Green"):
+		print(" I AM GREEN HIVE I WILL ATTACK GREEN")
+		$DetectionComp.collision_mask = 3
+		$DetectionComp.set_collision_mask_value(1,false)
+		$DetectionComp.set_collision_mask_value(2,false)
+		$DetectionComp.set_collision_mask_value(3,true)
+	else: #Purple
+		$DetectionComp.set_collision_mask_value(1,false)
+		$DetectionComp.set_collision_mask_value(2,true)
+		$DetectionComp.set_collision_mask_value(3,false)
 	
 #Getter for plant cost 
 func get_cost():
@@ -57,26 +68,41 @@ func get_cost():
 #Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
 	#print("BUFF HIVE")
-	super(bufferName)
-	for drone in available_drones:
-		drone.make_drone_glow()
-	#animSpriteComp.make_drone_glow()
-	#Apply a double damage buff to every drone 
-	if("EggWorm" in bufferName.name) && !isEggWyrmBuffed:
+	if !isBuffed:
+		super(bufferName)
 		for drone in available_drones:
-			drone.doubleDamage()
-		isEggWyrmBuffed = true 
-	#Make the drones explode if it's a peashooter buff 
-	if("Peashooter" in bufferName.name) && !isSpyderBuffed:
-		for drone in available_drones:
-			drone.makeExplode()
-			drone.isSpiderBuffed = true
-		isSpyderBuffed = true 
-	if("Sunflower" in bufferName.name) && !isSunflowerBuffed:
-		droneRespawnTimer.wait_time = buffedWaitTime
-		isSunflowerBuffed = true 
-			
-	thisBufferName = bufferName.name
+			drone.make_drone_glow()
+		#animSpriteComp.make_drone_glow()
+		#Apply a double damage buff to every drone 
+		if("EggWorm" in bufferName.name):
+			$HiveLaserShootComp.isDisabled = false
+			$HiveLaserShootComp._ready()
+			#for drone in available_drones:
+			#	drone.doubleDamage()
+			isEggWyrmBuffed = true 
+		#Make the drones explode if it's a peashooter buff 
+		if("Peashooter" in bufferName.name) && !isSpyderBuffed:
+			for drone in available_drones:
+				drone.makeExplode()
+				drone.isSpiderBuffed = true
+			isSpyderBuffed = true 
+		if("Sun" in bufferName.name):
+			droneRespawnTimer.wait_time = buffedWaitTime
+			isSunflowerBuffed = true 
+			MAX_DRONES = SUN_BUFF_MAX_DRONES
+			kill_all_drones()
+			spawn_initial_drones()
+		if("Walnut" in bufferName.name):
+			health = walnutHealth
+			MAX_DRONES = WALNUT_BUFF_MAX_DRONES	
+			kill_all_drones()
+			spawn_initial_drones()			
+		if("Maw" in bufferName.name):
+			isMawBuffed = true 
+			kill_all_drones()
+			spawn_initial_drones()	
+		isBuffed = true 		
+		thisBufferName = bufferName.name
 
 func debuff():
 	if("EggWorm" in thisBufferName):
@@ -115,14 +141,18 @@ func kill_all_drones():
 # Calculate evenly spaced resting positons for all drones 
 func calculate_rest_position(index):
 	var angle = (2 * PI * index) / MAX_DRONES
-	return Vector2(cos(angle), sin(angle)) * 30
+	return Vector2(cos(angle), sin(angle)) * 10
 
 # Spawns an assembles the initial number of drones 	
 func spawn_initial_drones():
 	for i in range(MAX_DRONES):
 		var drone = DroneScene.instantiate()
 		drone.name = "Drone_%d" % i  # e.g., "Drone_0", "Drone_1"
-		add_child(drone)
+		get_parent().add_child(drone)
+		if self.is_in_group("Green"):
+			drone.add_to_group("Green")
+		else: #Purple
+			drone.add_to_group("Purple")
 		available_drones.append(drone)
 		#print("Just Added : ", drone.name)
 	
@@ -132,11 +162,12 @@ func spawn_initial_drones():
 		drone_rest_positions[drone] = rest_pos
 		
 		# Set initial position
-		drone.position = rest_pos
+		#drone.position = rest_pos
+		drone.global_position = self.global_position + rest_pos
 		
 		# Connect drone signals
 		drone.connect("drone_died", Callable(self, "_on_drone_died"))
-		if isBuffed:
+		if isMawBuffed:
 			drone.doubleDamage()
 
 #Assigns drones to enemies if able & then re-optimizes drone assignments 
@@ -293,6 +324,7 @@ func command_drone_to_attack(drone, enemy):
 #	print("First Attack Command")
 	if is_instance_valid_and_alive(enemy):
 	#	print("Drone is ", drone, " Enemy is ", enemy)
+		drone.enable_hurtbox()
 		drone.attack_target(enemy)
 		
 #Handles the Hive taking damage 
@@ -305,19 +337,24 @@ func take_damage(damage):
 func _on_DroneRespawnTimer_timeout():
 	# Create new drone
 	var new_drone = DroneScene.instantiate()
-	add_child(new_drone)
+	print("Drone Parent is : ",self.get_parent())
+	get_parent().add_child(new_drone)
 	available_drones.append(new_drone)
+	if self.is_in_group("Green"):
+		new_drone.add_to_group("Green")
+	else: #Purple
+		new_drone.add_to_group("Purple")
 	#print("Availablle Drone just got : ", new_drone)
 	
 	# Calculate and store rest position for new drone
 	var rest_pos = calculate_rest_position(available_drones.size() - 1)
 	
 	drone_rest_positions[new_drone] = rest_pos
-	new_drone.position = rest_pos
+	new_drone.global_position = self.global_position + rest_pos
 	
 	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
 	
-	if isBuffed:
+	if isMawBuffed:
 		new_drone.doubleDamage()
 	
 	# Optimize assignments with new drone
@@ -326,6 +363,7 @@ func _on_DroneRespawnTimer_timeout():
 # Add this helper function to scripts that deal with combat
 func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
+
 
 func spawn_done():
 	
@@ -339,12 +377,15 @@ func spawn_done():
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 		spawnAnimDone = true 
-
+		
+		
 # Stops Spawn Animation From Playing
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
-		animSpriteComp.animation = "idle"
-		animSpriteComp.play()
+		$LightningSpawn.play()
+		animSpriteComp.visible = false
+		#animSpriteComp.animation = "idle"
+		#animSpriteComp.play()
 	else:
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
@@ -352,11 +393,11 @@ func _on_AnimatedSprite_animation_finished():
 		
 func die():
 	PlantManager.clear_space(self.global_position)
-	#buffNodes.clearBuffs()
+	buffNodes.clearBuffs()
 	queue_free()	
 	
 func die_fromClearSpace():
-	#buffNodes.clearBuffs()
+	buffNodes.clearBuffs()
 	queue_free()		
 	
 	
@@ -365,3 +406,19 @@ func die_fromClearSpace():
 func _on_play_anim_timer_timeout() -> void:
 	pass
 	#animSpriteComp.play("idle")
+
+
+func _on_mouse_entered() -> void:
+	$PreviewNodes/AnimatedSprite2D.visible = false
+	$PreviewNodes.visible = true 
+
+
+func _on_mouse_exited() -> void:
+	$PreviewNodes.visible = false 
+
+
+func finish_spawn():
+	animSpriteComp.visible = true		
+	animSpriteComp.animation = "idle"
+		
+	animSpriteComp.play()

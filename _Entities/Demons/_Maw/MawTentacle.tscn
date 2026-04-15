@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0hmveuohh3iw"]
 
-[ext_resource type="Script" uid="uid://chd0eev56g81l" path="res://_Entities/Demons/Maw/MawTentacle.gd" id="1"]
+[ext_resource type="Script" uid="uid://chd0eev56g81l" path="res://_Entities/Demons/_Maw/MawTentacle.gd" id="1"]
 [ext_resource type="Script" uid="uid://h10fe7gowona" path="res://_Entities/Demons/Tentacles/Line2D2.gd" id="2"]
 
 

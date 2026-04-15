@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blmlmra0kwots"
-path="res://.godot/imported/OccularSpineHurt1-Sheet.png-86706233f53b2e81f23d6bc923783bf6.ctex"
+path="res://.godot/imported/OccularSpineHurt1-Sheet.png-990446a6565a2f66c32f39414b153d02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Entities/Demons/OccularSpine/OccularSpineHurt1-Sheet.png"
-dest_files=["res://.godot/imported/OccularSpineHurt1-Sheet.png-86706233f53b2e81f23d6bc923783bf6.ctex"]
+source_file="res://_Entities/Demons/_CagedOculum/OccularSpineHurt1-Sheet.png"
+dest_files=["res://.godot/imported/OccularSpineHurt1-Sheet.png-990446a6565a2f66c32f39414b153d02.ctex"]
 
 [params]
 

@@ -64,3 +64,11 @@ func spawn_slow_field_on_death():
 	slow_field.global_position = self.global_position
 	#slow_field.position = position + Vector2(32, 8)  # Adjust starting position
 	get_parent().add_child(slow_field)  # Add the projectile to the game layer DOUBLE CHECK
+	
+	
+	
+func change_dimensions():
+	print("Swa Parent Was ", get_parent())
+	self.reparent(Global.get_game_controller().get_alt_dimension().get_node("GameLayer"))
+	print("Swa Parent IS ", get_parent())
+	

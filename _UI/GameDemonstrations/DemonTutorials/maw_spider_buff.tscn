@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_shu37"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="2_gfiw1"]
-[ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://_Entities/Demons/Maw/MawMouthSpriteSheet.png" id="3_5kl5k"]
+[ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://_Entities/Demons/_Maw/MawMouthSpriteSheet.png" id="3_5kl5k"]
 [ext_resource type="Texture2D" uid="uid://bhcpyioblhadb" path="res://_Entities/Demons/_Crawler/RedSpiderAttack-Sheet.png" id="4_8w8gb"]
 [ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/Projectile/WebBallwOutline.png" id="5_5vond"]
 

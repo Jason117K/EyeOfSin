@@ -119,4 +119,6 @@ func show_guide():
 func clear_guide():
 	game_controller.clear_guide()		
 	
+func get_game_controller():
+	return game_controller
 	

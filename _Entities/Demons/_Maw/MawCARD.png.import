@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bplktshlxk4fi"
-path="res://.godot/imported/OccularSpineHurt2-Sheet.png-29a7ca30a5b6599e0f2da19bdec281f2.ctex"
+uid="uid://uxucc64ij83d"
+path="res://.godot/imported/MawCARD.png-d852abf4aebc80fd923f2092d9fcd1bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Entities/Demons/OccularSpine/OccularSpineHurt2-Sheet.png"
-dest_files=["res://.godot/imported/OccularSpineHurt2-Sheet.png-29a7ca30a5b6599e0f2da19bdec281f2.ctex"]
+source_file="res://_Entities/Demons/_Maw/MawCARD.png"
+dest_files=["res://.godot/imported/MawCARD.png-d852abf4aebc80fd923f2092d9fcd1bb.ctex"]
 
 [params]
 

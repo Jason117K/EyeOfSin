@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://xia8qyghjoqw"]
 
-[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/Hive/Wasp 16x16 Sprite Sheet.png" id="1"]
-[ext_resource type="Script" uid="uid://mbwu3w6n5a3x" path="res://_Entities/Demons/Hive/Drone.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/_Hive/Wasp 16x16 Sprite Sheet.png" id="1"]
+[ext_resource type="Script" uid="uid://mbwu3w6n5a3x" path="res://_Entities/Demons/_Hive/Drone.gd" id="2"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_8cfhw"]
-[ext_resource type="Script" uid="uid://cjpy3j8mq8mfa" path="res://_Entities/Demons/Hive/DroneSpriteController.gd" id="3"]
+[ext_resource type="Script" uid="uid://cjpy3j8mq8mfa" path="res://_Entities/Demons/_Hive/DroneSpriteController.gd" id="3"]
 
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10gu7"]

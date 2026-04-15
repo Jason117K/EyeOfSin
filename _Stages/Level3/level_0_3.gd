@@ -32,11 +32,11 @@ var fleshEater_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieT
 var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
 
-const TUTORIAL_SELECT_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
-const TUTORIAL_PLACE_MAW = "res://Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
-const TUTORIAL_EXPLAIN_FLESHEATER = "res://Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
-const TUTORIAL_SELECT_CODEX = "res://Assets/Text/TextFiles/CodexSelectExplain.txt"
-@export var new_end_dialog = "res://Assets/Dialog/level_03_end_dialog.dtl"
+const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
+const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
+const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
+const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
+@export var new_end_dialog = "res://_Assets/Dialog/level_03_end_dialog.dtl"
 
 
 

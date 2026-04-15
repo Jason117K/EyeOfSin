@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://15uffwh4days"
-path="res://.godot/imported/Hive-Sheet.png-2b8e0d0aabf0d25fe3e87b0838294376.ctex"
+uid="uid://djbyji3pwvlah"
+path="res://.godot/imported/OccularSpineHurt3-Sheet.png-7d906386c48cb95fc33a8321a0578b3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Entities/Demons/Hive/Hive-Sheet.png"
-dest_files=["res://.godot/imported/Hive-Sheet.png-2b8e0d0aabf0d25fe3e87b0838294376.ctex"]
+source_file="res://_Entities/Demons/_CagedOculum/OccularSpineHurt3-Sheet.png"
+dest_files=["res://.godot/imported/OccularSpineHurt3-Sheet.png-7d906386c48cb95fc33a8321a0578b3b.ctex"]
 
 [params]
 

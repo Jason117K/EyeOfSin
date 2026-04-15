@@ -19,9 +19,9 @@ signal codex_clicked
 var peashooter_scene = preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
 var sunflower_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
 var walnut_scene = preload("res://_Entities/Demons/_CagedOculum/WalnutTree.tscn")
-var maw_scene = preload("res://_Entities/Demons/Maw/Maw.tscn")
+var maw_scene = preload("res://_Entities/Demons/_Maw/Maw.tscn")
 var egg_scene = preload("res://_Entities/Demons/_Wyrm/EggWorm.tscn")
-var hive_scene = preload("res://_Entities/Demons/Hive/Hive.tscn")
+var hive_scene = preload("res://_Entities/Demons/_Hive/Hive.tscn")
 var heart_scene = preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
 
 #var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")

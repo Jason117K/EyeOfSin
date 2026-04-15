@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bv382bof512a6"]
 
-[ext_resource type="Script" uid="uid://by8326xmjmjwd" path="res://_Entities/Demons/Hive/hive_laser_shoot_component.gd" id="1_cqvb2"]
+[ext_resource type="Script" uid="uid://by8326xmjmjwd" path="res://_Entities/Demons/_Hive/hive_laser_shoot_component.gd" id="1_cqvb2"]
 
 
 [node name="HiveLaserShootComp" type="Node2D"]

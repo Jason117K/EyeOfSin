@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj7di6fpkrem"
-path="res://.godot/imported/Hive-CARD.png-8560a99c1a48d5470b1c281ad49ed43f.ctex"
+uid="uid://15uffwh4days"
+path="res://.godot/imported/Hive-Sheet.png-26d7ee7367cdc29897f2d5bee5afd5de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Entities/Demons/Hive/Hive-CARD.png"
-dest_files=["res://.godot/imported/Hive-CARD.png-8560a99c1a48d5470b1c281ad49ed43f.ctex"]
+source_file="res://_Entities/Demons/_Hive/Hive-Sheet.png"
+dest_files=["res://.godot/imported/Hive-Sheet.png-26d7ee7367cdc29897f2d5bee5afd5de.ctex"]
 
 [params]
 
