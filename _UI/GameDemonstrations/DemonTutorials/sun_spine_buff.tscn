@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnqfcvcy5hbw4"]
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_sp7rp"]
-[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/WhiteRectangle.png" id="2_op0vw"]
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="2_op0vw"]
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="5_c5bim"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="6_wokno"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="7_5h5bo"]

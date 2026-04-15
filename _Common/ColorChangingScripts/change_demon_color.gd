@@ -3,7 +3,7 @@ class_name DemonSpriteComp extends AnimatedSprite2D
 
 #TODO Get Rid of Preload 
 
-var demon_glow = preload("res://Scripts/Plants/Shaders/DemonGlow.gdshader")
+var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
 
 @export var targetGlowColor : Color
 @export var modulate_factor : Vector4 = Vector4(7,7,7,1)

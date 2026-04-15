@@ -8,7 +8,7 @@ extends Demon
 @export var health = 50
 
 # Preload the drone scene
-const DroneScene = preload("res://Scenes/PlantScenes/Drone.tscn")
+const DroneScene = preload("res://_Entities/Demons/Hive/Drone.tscn")
 var spawnAnimDone = false
 # Constants
 var MAX_DRONES = 2

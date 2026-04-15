@@ -4,7 +4,7 @@ extends Area2D
 
 @export var speed = 1  # Speed of the projectile
 @export var damage = 20.0 #2   # Damage dealt to zombies
-var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
+var SunScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  # Adjust the path to your sun sprite scene
 
 var canMove := false 
 var isSlow := false 

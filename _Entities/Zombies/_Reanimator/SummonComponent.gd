@@ -19,7 +19,7 @@ extends Node2D
 @onready var points = [point1,point2,point3,point4,point6,point7,point8,point9]
 
 #Load the zombie we will summon
-var BackUpDancerScene = preload("res://Scenes/ZombieScenes/BackUpDancerZombie.tscn")
+var BackUpDancerScene = preload("res://_Entities/Zombies/_Wretch/BackUpDancerZombie.tscn")
 
 var is_attacking #Whether or not we are attacking 
 

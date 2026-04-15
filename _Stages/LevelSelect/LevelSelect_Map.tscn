@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://_Assets/UI/ButtonSprite.png" id="5_g2cgg"]
 [ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://_Assets/UI/ButtonSpriteHover.png" id="6_r3hyu"]
 
-[node name="LevelSelect" type="Control"]
+[node name="LevelSelect" type="Control" unique_id=7423103]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,19 +16,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n2hue")
 
-[node name="Map" type="Sprite2D" parent="."]
+[node name="Map" type="Sprite2D" parent="." unique_id=1499312793]
 position = Vector2(349, 207)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_n2hue")
 
-[node name="GridManager" parent="." instance=ExtResource("2_c0y8p")]
+[node name="GridManager" parent="." unique_id=2076751134 instance=ExtResource("2_c0y8p")]
 visible = false
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1171085700]
 
-[node name="Level1Button" type="TextureButton" parent="."]
+[node name="Level1Button" type="TextureButton" parent="." unique_id=1616412574]
 custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
+layout_mode = 0
 offset_left = 116.0
 offset_top = 79.0
 offset_right = 1116.0
@@ -38,7 +38,7 @@ texture_normal = ExtResource("5_g2cgg")
 texture_hover = ExtResource("6_r3hyu")
 stretch_mode = 6
 
-[node name="Level1Label" type="Label" parent="Level1Button"]
+[node name="Level1Label" type="Label" parent="Level1Button" unique_id=154748707]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,9 +55,9 @@ theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 1"
 
-[node name="Level2Button" type="TextureButton" parent="."]
+[node name="Level2Button" type="TextureButton" parent="." unique_id=1885615814]
 custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
+layout_mode = 0
 offset_left = 109.0
 offset_top = 133.0
 offset_right = 1109.0
@@ -67,7 +67,7 @@ texture_normal = ExtResource("5_g2cgg")
 texture_hover = ExtResource("6_r3hyu")
 stretch_mode = 6
 
-[node name="Level2Label" type="Label" parent="Level2Button"]
+[node name="Level2Label" type="Label" parent="Level2Button" unique_id=1142038373]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -84,9 +84,9 @@ theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 2"
 
-[node name="Level3Button" type="TextureButton" parent="."]
+[node name="Level3Button" type="TextureButton" parent="." unique_id=94327617]
 custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
+layout_mode = 0
 offset_left = 153.0
 offset_top = 230.0
 offset_right = 1153.0
@@ -96,7 +96,7 @@ texture_normal = ExtResource("5_g2cgg")
 texture_hover = ExtResource("6_r3hyu")
 stretch_mode = 6
 
-[node name="Level3Label" type="Label" parent="Level3Button"]
+[node name="Level3Label" type="Label" parent="Level3Button" unique_id=1910370097]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -113,9 +113,9 @@ theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 3"
 
-[node name="Level4Button" type="TextureButton" parent="."]
+[node name="Level4Button" type="TextureButton" parent="." unique_id=1918870513]
 custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
+layout_mode = 0
 offset_left = 582.0
 offset_top = 33.0
 offset_right = 1582.0
@@ -125,7 +125,7 @@ texture_normal = ExtResource("5_g2cgg")
 texture_hover = ExtResource("6_r3hyu")
 stretch_mode = 6
 
-[node name="Level4Label" type="Label" parent="Level4Button"]
+[node name="Level4Label" type="Label" parent="Level4Button" unique_id=1343318947]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,9 +142,9 @@ theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 4"
 
-[node name="Level5Button" type="TextureButton" parent="."]
+[node name="Level5Button" type="TextureButton" parent="." unique_id=1003410823]
 custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
+layout_mode = 0
 offset_left = 414.0
 offset_top = 88.0
 offset_right = 1414.0
@@ -154,7 +154,7 @@ texture_normal = ExtResource("5_g2cgg")
 texture_hover = ExtResource("6_r3hyu")
 stretch_mode = 6
 
-[node name="Level5Label" type="Label" parent="Level5Button"]
+[node name="Level5Label" type="Label" parent="Level5Button" unique_id=483188141]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,9 +171,9 @@ theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 5"
 
-[node name="Level6Button" type="TextureButton" parent="."]
+[node name="Level6Button" type="TextureButton" parent="." unique_id=1918536202]
 custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
+layout_mode = 0
 offset_left = 429.0
 offset_top = 166.0
 offset_right = 1429.0
@@ -183,7 +183,7 @@ texture_normal = ExtResource("5_g2cgg")
 texture_hover = ExtResource("6_r3hyu")
 stretch_mode = 6
 
-[node name="Level6Label" type="Label" parent="Level6Button"]
+[node name="Level6Label" type="Label" parent="Level6Button" unique_id=1523342138]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -200,7 +200,7 @@ theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 6"
 
-[node name="CenterContainer2" type="CenterContainer" parent="."]
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=331079586]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,7 +211,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BackButton" type="TextureButton" parent="CenterContainer2"]
+[node name="BackButton" type="TextureButton" parent="CenterContainer2" unique_id=79365668]
 custom_minimum_size = Vector2(500, 60)
 layout_mode = 2
 tooltip_text = "Stuff
@@ -220,7 +220,7 @@ texture_normal = ExtResource("5_g2cgg")
 texture_hover = ExtResource("6_r3hyu")
 stretch_mode = 5
 
-[node name="BackLabel" type="Label" parent="CenterContainer2/BackButton"]
+[node name="BackLabel" type="Label" parent="CenterContainer2/BackButton" unique_id=580686456]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

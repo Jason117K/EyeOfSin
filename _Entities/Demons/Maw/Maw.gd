@@ -104,7 +104,7 @@ var isWalnutBuffed := false
 #@onready var animSpriteComp = $AnimatedSprite2D
 @onready var ogDetectionRadius = detectionAreaShape.shape.radius
 
-var bloodScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
+var bloodScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  
 var isBuffed := false 
 var bufferName : String 
 
@@ -350,7 +350,7 @@ func finish_tentacle_retraction(tentacle: TentacleState) -> void:
 		# Check for web belch (spyder buff + slowed enemy)
 		var slow = enemyCompManager.getSlow()
 		if slow > 0 and willBelchWebs:
-			var web_ball = preload("res://Scenes/PlantScenes/WebBall.tscn").instantiate()
+			var web_ball = preload("res://_Entities/Demons/Projectile/WebBall.tscn").instantiate()
 			add_child(web_ball)
 			web_ball.target_position = Vector2(100, 0)
 			web_ball.travel_time = 1.5

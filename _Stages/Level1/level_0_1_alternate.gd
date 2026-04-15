@@ -5,7 +5,7 @@ extends Control
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu" 
+@onready var plantSelectionMenu = $"../DemonSelectionMenu" 
 
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
@@ -88,9 +88,6 @@ func hide_all_plant_buttons_except_spyder():
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false

@@ -11,7 +11,7 @@ enum TutorialState {
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu"
+@onready var plantSelectionMenu = $"../DemonSelectionMenu"
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
@@ -27,7 +27,7 @@ var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_MAW
 var fleshEaterExplained := false 
 var wave2Started := false 
-var fleshEater_zombie_demo_scene = preload("res://Scenes/Tutorials/fleshEater_zombie_demo.tscn")
+var fleshEater_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
 
 var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
 var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
@@ -265,9 +265,6 @@ func hide_all_plant_buttons_except_maw():
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false

@@ -2,7 +2,7 @@ extends Node2D
 #PlantManager.gd
 
 # Get a reference to the plant selection menu 
-@onready var selection_menu = get_parent().get_parent().get_node("PlantSelectionMenu")
+@onready var selection_menu = get_parent().get_parent().get_node("DemonSelectionMenu")
 @onready var parentName = get_parent().get_name()
 
 @export var sun_points = 200 # Holds how many sun points we have currently 
@@ -14,8 +14,8 @@ var plant_cost = 25  # Holds the cost of the currently selected plant
 var plant_to_move
 var plant_highlighted := false
 var highlight_plant_global_pos 
-var sunflower_scene := preload("res://Scenes/PlantScenes/Sunflower.tscn")
-var empty_demon_scene := preload("res://Scenes/PlantScenes/EmptyDemon.tscn")
+var sunflower_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
+var empty_demon_scene := preload("res://_Entities/Demons/Empty/EmptyDemon.tscn")
 var spyder_not_placed := true 
 var hero_demon : Demon 
 
@@ -39,7 +39,7 @@ func get_selected_plant():
 		#print("Returning HighLight Sunflower.R")
 		return sunflower_scene
 	else:
-		return get_parent().get_parent().get_node("PlantSelectionMenu").selected_plant
+		return get_parent().get_parent().get_node("DemonSelectionMenu").selected_plant
 
 
 # Handles Player Interaction with the Plant Menu 

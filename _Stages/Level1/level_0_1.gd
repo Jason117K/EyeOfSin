@@ -23,7 +23,7 @@ var spyder_already_selected = false
 #@onready var toolTips = $ToolTips
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu" 
+@onready var plantSelectionMenu = $"../DemonSelectionMenu" 
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
@@ -38,8 +38,8 @@ const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_
 const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
-var basic_zombie_demo_scene = preload("res://Scenes/Tutorials/basic_zombie_demo.tscn")
-var severed_zombie_demo_scene = preload( "res://Scenes/Tutorials/severed_zombie_demo.tscn")
+var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
+var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
 var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
 var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
 @export var new_end_dialog = "res://Assets/Dialog/level_0_end_dialog.dtl"
@@ -267,9 +267,6 @@ func hide_all_plant_buttons_except_spyder():
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false

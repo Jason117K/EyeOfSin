@@ -4,15 +4,15 @@ extends Node2D
 signal spawnNextWave 
 
 # Path to the base zombie scene
-var base_zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  
-var cone_zombie_scene = preload("res://Scenes/ZombieScenes/ConeHeadZombie.tscn") 
-var bucket_zombie_scene = preload("res://Scenes/ZombieScenes/BucketHeadZombie.tscn") 
-var screendoor_zombie_scene = preload("res://Scenes/ZombieScenes/ScreenDoorZombie.tscn") 
-var dancer_zombie_scene = preload("res://Scenes/ZombieScenes/DancerZombie.tscn") 
-var poleVault_zombie_scene = preload("res://Scenes/ZombieScenes/PoleVaultZombie.tscn") 
-var ticker_zombie_scene = preload("res://Scenes/ZombieScenes/TickerZombie.tscn") 
-var football_zombie_scene = preload("res://Scenes/ZombieScenes/FootballZombie.tscn")
-var rohan_zombie_scene = preload("res://Scenes/ZombieScenes/RohanZombie.tscn")
+var base_zombie_scene = preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.tscn")  
+var cone_zombie_scene = preload("res://_Entities/Zombies/_Severed/ConeHeadZombie.tscn") 
+var bucket_zombie_scene = preload("res://_Entities/Zombies/_Unhallower/BucketHeadZombie.tscn") 
+var screendoor_zombie_scene = preload("res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.tscn") 
+var dancer_zombie_scene = preload("res://_Entities/Zombies/_Reanimator/DancerZombie.tscn") 
+var poleVault_zombie_scene = preload("res://_Entities/Zombies/_Sundered/PoleVaultZombie.tscn") 
+var ticker_zombie_scene = preload("res://_Entities/Zombies/_Erupter/TickerZombie.tscn") 
+var football_zombie_scene = preload("res://_Entities/Zombies/_Flesheater/FootballZombie.tscn")
+var rohan_zombie_scene = preload("res://_Entities/Zombies/_RohanZombie/RohanZombie.tscn")
 
 @export var make_green := false
 

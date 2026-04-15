@@ -8,7 +8,7 @@ enum TutorialState {
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu"
+@onready var plantSelectionMenu = $"../DemonSelectionMenu"
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
@@ -22,7 +22,7 @@ var waveManager
 var tutorial_state: TutorialState = TutorialState.TUTORIAL_P1_DONE
 var amalgamExplained := false
 var wave2Started := false
-var amalgam_zombie_demo_scene = preload("res://Scenes/Tutorials/amalgam_zombie_demo.tscn")
+var amalgam_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
 

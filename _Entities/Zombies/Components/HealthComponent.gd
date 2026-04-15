@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var hitAudioPlayer = $"../HitAudioPlayer"
 @onready var zombie = get_parent()
-var bomb_scene = preload("res://Scenes/PlantScenes/Bomb.tscn")
+var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 
 @export var health := 76 #25 # Health of the zombie
 @export var healthRegen = 0.0 # Health regen rate

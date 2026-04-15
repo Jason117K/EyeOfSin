@@ -16,14 +16,13 @@ signal clicked_Eye
 signal codex_clicked
 
 # Preload the plant scenes
-var peashooter_scene = preload("res://Scenes/PlantScenes/Peashooter.tscn")
-var sunflower_scene := preload("res://Scenes/PlantScenes/Sunflower.tscn")
-var walnut_scene = preload("res://Scenes/PlantScenes/WalnutTree.tscn")
-var maw_scene = preload("res://Scenes/PlantScenes/Maw.tscn")
-var egg_scene = preload("res://Scenes/PlantScenes/EggWorm.tscn")
-var bomb_scene = preload("res://Scenes/PlantScenes/EyeBomb.tscn")
-var hive_scene = preload("res://Scenes/PlantScenes/Hive.tscn")
-var heart_scene = preload("res://Scenes/PlantScenes/HeartDemon.tscn")
+var peashooter_scene = preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
+var sunflower_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
+var walnut_scene = preload("res://_Entities/Demons/_CagedOculum/WalnutTree.tscn")
+var maw_scene = preload("res://_Entities/Demons/Maw/Maw.tscn")
+var egg_scene = preload("res://_Entities/Demons/_Wyrm/EggWorm.tscn")
+var hive_scene = preload("res://_Entities/Demons/Hive/Hive.tscn")
+var heart_scene = preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
 
 #var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
 
@@ -37,7 +36,6 @@ var deselectText = " PRESS [X] TO DESELECT"
 
 var SunFlowerButton
 var WalnutButton
-var EyeButton
 var EggButton
 var MawButton
 var HiveButton
@@ -105,11 +103,6 @@ func _ready():
 	walnutCostLabel.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
-	EyeButton = $PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton
-	eyeCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel
-	temp_instance = bomb_scene.instantiate()
-	eyeCostLabel.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()		
 	
 	EggButton = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton
 	eggCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
@@ -145,9 +138,6 @@ func _ready():
 		
 		$PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
 		EggButton.visible = false
-
-		$PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel.visible = false
-		EyeButton.visible = false
 
 		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
 		MawButton.visible = false
@@ -341,20 +331,7 @@ func _on_EggButton_pressed():
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
-# Plays Sound and Makes the EyeBomb the current selected plant, changing label & preview image 
-func _on_EyeButton_pressed():
-	selected_plant = bomb_scene
-	create_preview(bomb_scene)
-	var temp_instance = bomb_scene.instantiate()
-	setCanRemoveFalse()	
-	currentPlantLabel.text = "EYE MINE SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel
-	currentPlantCost.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-	
-	print("EyeBomb Selected")
-	#$UIClickAudio.play()
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+
 	
 # Plays Sound and Makes the Hive the current selected plant, changing label & preview image 
 func _on_HiveButton_pressed():
@@ -419,7 +396,6 @@ func release_all_focus():
 		
 	SunFlowerButton.release_focus()
 	WalnutButton.release_focus()
-	EyeButton.release_focus()
 	EggButton.release_focus()
 	MawButton.release_focus()
 	HiveButton.release_focus()

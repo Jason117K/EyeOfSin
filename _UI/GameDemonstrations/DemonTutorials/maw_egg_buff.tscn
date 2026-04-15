@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://o4nuq63sfr2v"]
 
-[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/WhiteRectangle.png" id="1_2pid0"]
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="1_2pid0"]
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_rbmga"]
 [ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://_Entities/Demons/_Wyrm/LaserEggWormsSmolMERGED-Sheet.png" id="1_xonq7"]
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="2_2pid0"]

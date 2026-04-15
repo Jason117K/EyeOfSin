@@ -9,26 +9,23 @@ var canPlayLevel6 := false
 var canPlayLevel7 := false 
 
 var startScreen = ("res://Scenes/LevelScenes/StartScreen.tscn")
-var level1 = ("res://Scenes/LevelScenes/Main.tscn")
-var level2 = ("res://Scenes/LevelScenes/Level2.tscn")
-var level3 = ("res://Scenes/LevelScenes/Level3.tscn")
-var level4 = ("res://Scenes/LevelScenes/Level4.tscn")
-var level5 = ("res://Scenes/LevelScenes/Level5.tscn")
-var level6 = ("res://Scenes/LevelScenes/Level6.tscn")
-var level7 = ("res://Scenes/LevelScenes/Level7.tscn")
 
-var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
-var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
-var level0_2 = ("res://Scenes/LevelScenes/Level0-2.tscn")
-var level0_2Alt = ("res://Scenes/LevelScenes/Level0-2_Alternate.tscn")
-var level0_3 = ("res://Scenes/LevelScenes/Level0-3.tscn")
-var level0_3Alt = ("res://Scenes/LevelScenes/Level0-3_Alternate.tscn")
-var level0_4 = ("res://Scenes/LevelScenes/Level0-4.tscn")
-var level0_4Alt = ("res://Scenes/LevelScenes/Level0-4_Alternate.tscn")
-var level0_5 = ("res://Scenes/LevelScenes/Level0-5.tscn")
-var level0_5Alt = ("res://Scenes/LevelScenes/Level0-5_Alternate.tscn")
-var level0_6 = ("res://Scenes/LevelScenes/Level0-6.tscn")
-var level0_6Alt = ("res://Scenes/LevelScenes/Level0-6_Alternate.tscn")
+
+
+var level0_1 = ("res://_Stages/Level1/Level0-1.tscn")
+var level0_1Alt =("res://_Stages/Level1/Level0-1_Alternate.tscn")
+var level0_2 = ("res://_Stages/Level2/Level0-2.tscn")
+var level0_2Alt = ("res://_Stages/Level2/Level0-2_Alternate.tscn")
+var level0_3 = ("res://_Stages/Level3/Level0-3.tscn")
+var level0_3Alt = ("res://_Stages/Level3/Level0-3_Alternate.tscn")
+var level0_4 = ("res://_Stages/Level4/Level0-4.tscn")
+var level0_4Alt = ("res://_Stages/Level4/Level0-4_Alternate.tscn")
+var level0_5 = ("res://_Stages/Level5/Level0-5.tscn")
+var level0_5Alt = ("res://_Stages/Level5/Level0-5_Alternate.tscn")
+var level0_6 = ("res://_Stages/Level6/Level0-6.tscn")
+var level0_6Alt = ("res://_Stages/Level6/Level0-6_Alternate.tscn")
+var level7 = ("res://_Stages/Level7/Level7.tscn")
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

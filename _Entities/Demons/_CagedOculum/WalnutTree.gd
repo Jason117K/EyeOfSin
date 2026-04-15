@@ -34,8 +34,8 @@ var PlantManager
 var isBuffed := false
 var eggWyrmBuffed := false 
 var thisBufferName : String
-var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  
-var phantomHive = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
+var SunScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  
+var phantomHive = preload("res://_Entities/Demons/Hive/phantom_hive.tscn")
 var can_damage_zombie= false 
 
 #Grabs reference to plantManager 

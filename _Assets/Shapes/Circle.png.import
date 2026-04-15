@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db6k2q4hdqclj"
-path="res://.godot/imported/WhiteRectangle.png-4b956a0fe9bca917c12885c27844e68e.ctex"
+uid="uid://hhpowqycojpq"
+path="res://.godot/imported/Circle.png-c69ba0931cb9e38c98793fe95abfdf27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/WhiteRectangle.png"
-dest_files=["res://.godot/imported/WhiteRectangle.png-4b956a0fe9bca917c12885c27844e68e.ctex"]
+source_file="res://_Assets/Shapes/Circle.png"
+dest_files=["res://.godot/imported/Circle.png-c69ba0931cb9e38c98793fe95abfdf27.ctex"]
 
 [params]
 

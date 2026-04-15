@@ -87,7 +87,7 @@
 [ext_resource type="Texture2D" uid="uid://rmgjkwwo8qj8" path="res://_Assets/Environment/Props/GraveStonePURPLE16.png" id="85_nwhm3"]
 [ext_resource type="Texture2D" uid="uid://bwx5cm4dsd64q" path="res://_Assets/Environment/Props/GraveStonePURPLE17.png" id="86_18xgo"]
 [ext_resource type="PackedScene" uid="uid://b1irt6sxuudih" path="res://_Entities/Demons/_HeartDemon/HeartDemon.tscn" id="87_yf6p8"]
-[ext_resource type="PackedScene" uid="uid://ct2xdafdtut66" path="res://_Entities/Demons/_Occulum/Sunflower.tscn" id="88_xyvkd"]
+[ext_resource type="PackedScene" uid="uid://ct2xdafdtut66" path="res://_Entities/Demons/_Occulum/Occulum.tscn" id="88_xyvkd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkj4a"]
 texture = ExtResource("6_t7wxb")

@@ -23,7 +23,7 @@ var og_health
 @onready var laserShootComp2 = $Worm2/LaserShootComponent
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
-var projectile_scene = preload("res://Scenes/PlantScenes/EggProjectile.tscn")  # Load the projectile scene
+var projectile_scene = preload("res://_Entities/Demons/_Wyrm/EggProjectile.tscn")  # Load the projectile scene
 @onready var shootTimer = $ShootTimer
 @onready var buffNodes = $BuffNodesComponent
 @onready var shell_sprite = $Egg

@@ -1,7 +1,7 @@
 extends Sprite2D
 
 #TODO Get Rid of Preload 
-var demon_glow = preload("res://Scripts/Plants/Shaders/DemonGlow.gdshader")
+var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
 @export var targetGlowColor : Color
 
 @onready var shell = $"."
@@ -13,23 +13,23 @@ var demon_glow = preload("res://Scripts/Plants/Shaders/DemonGlow.gdshader")
 @onready var worm1Animator :=  $"../Worm1Animator"
 @onready var worm2Animator :=  $"../Worm2Animator"
 
-var shell_wyrm := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Base_Shell.png")
-var shell_hive := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Hive_ShellNoBlood.png")
-var shell_walnut := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Walnut_Shell.png")
-var shell_spider = preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Spider_Shell.png")
-var shell_sun := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Sun_Shell.png")
-var shell_maw := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Maw_Shell.png")
-var worm1_wyrm := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Base_Worm1.png")
-var worm2_wyrm := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Base_Worm2.png")
-var worm1_hive := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Hive_Worm1.png")
-var worm2_hive := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Hive_Worm2.png")
-var worm3_hive := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Hive_Worm3.png")
-var worm1_spider := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Spider_Worm1.png")
-var worm2_spider := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Spider_Worm2.png")
-var worm1_maw := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Maw_Worm.png")
-var worm1_sun := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Sun_Worm1.png")
-var worm1_walnut := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Walnut_Worm1.png")
-var worm2_walnut := preload("res://Assets/Demons/Wyrm_PNG/Wyrm_Walnut_Worm2.png")
+var shell_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Shell.png")
+var shell_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_ShellNoBlood.png")
+var shell_walnut := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Walnut_Shell.png")
+var shell_spider = preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Shell.png")
+var shell_sun := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Sun_Shell.png")
+var shell_maw := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Maw_Shell.png")
+var worm1_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Worm1.png")
+var worm2_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Worm2.png")
+var worm1_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_Worm1.png")
+var worm2_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_Worm2.png")
+var worm3_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_Worm3.png")
+var worm1_spider := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm1.png")
+var worm2_spider := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm2.png")
+var worm1_maw := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Maw_Worm.png")
+var worm1_sun := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Sun_Worm1.png")
+var worm1_walnut := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Walnut_Worm1.png")
+var worm2_walnut := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Walnut_Worm2.png")
 
 
 func _ready() -> void:

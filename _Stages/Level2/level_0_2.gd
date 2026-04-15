@@ -32,7 +32,7 @@ var tutorial_sun_instance: Node2D = null
 #@onready var toolTips = $ToolTips
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu" #$PlantSelectionMenu
+@onready var plantSelectionMenu = $"../DemonSelectionMenu" #$PlantSelectionMenu
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
@@ -48,28 +48,28 @@ var green_dimension
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
 # Text file paths
-const TUTORIAL_SELECT_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSunflower.txt"
-const TUTORIAL_PLACE_SUNFLOWER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSunflower.txt"
-const TUTORIAL_PLACE_WALNUT = "res://Assets/Text/TextFiles/PlantDescriptions/WalnutDescription.txt"
+const TUTORIAL_SELECT_SUNFLOWER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSunflower.txt"
+const TUTORIAL_PLACE_SUNFLOWER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSunflower.txt"
+const TUTORIAL_PLACE_WALNUT = "res://_Assets/Text/TextFiles/PlantDescriptions/WalnutDescription.txt"
 
-const TUTORIAL_BLOOD_GEN = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
-const TUTORIAL_SELECT_SPYDER_AFTER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
-const TUTORIAL_PLACE_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
-var tutorial_place_spyder =  "res://Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
+const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
+const TUTORIAL_SELECT_SPYDER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
+const TUTORIAL_PLACE_SPYDER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
+var tutorial_place_spyder =  "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
 
-const TUTORIAL_BLOOD_BUFFS = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
-const TUTORIAL_BLOOD_BUFFS_2 = "res://Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
+const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
+const TUTORIAL_BLOOD_BUFFS_2 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
 
-const TUTORIAL_INVALID_SPYDER = "res://Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
+const TUTORIAL_INVALID_SPYDER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
 #const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
 #const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
-const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
+const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
 
-var hive_egg_buff_scene = preload("res://Scenes/Tutorials/egg_spine_buff.tscn")
-var spyder_sun_buff_scene = preload("res://Scenes/Tutorials/sunflower_spyder_buff.tscn")
-var sun_spyder_buff_scene = preload("res://Scenes/Tutorials/spyder_sunflower_buff.tscn")
-var buff_demo_scene = preload("res://Scenes/Tutorials/blood_buff_demo.tscn")
-var buckethead_zombie_demo_scene = preload("res://Scenes/Tutorials/buckethead_zombie_demo.tscn")
+var hive_egg_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/egg_spine_buff.tscn")
+var spyder_sun_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/sunflower_spyder_buff.tscn")
+var sun_spyder_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/spyder_sunflower_buff.tscn")
+var buff_demo_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/blood_buff_demo.tscn")
+var buckethead_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
 var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
 var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
 @export var new_end_dialog = "res://Assets/Dialog/level_02_end_dialog.dtl"
@@ -400,9 +400,6 @@ func hide_all_plant_buttons_except_sunflower():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
 
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
-
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
 
@@ -423,9 +420,6 @@ func hide_all_plant_buttons_except_walnut():
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
@@ -464,8 +458,6 @@ func hide_all_plant_buttons_except_spyder():
 	# Keep others hidden
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = false

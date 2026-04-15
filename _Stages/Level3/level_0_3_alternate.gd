@@ -3,7 +3,7 @@ extends Control
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu"
+@onready var plantSelectionMenu = $"../DemonSelectionMenu"
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"

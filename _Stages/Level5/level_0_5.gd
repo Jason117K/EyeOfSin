@@ -11,7 +11,7 @@ enum TutorialState {
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu"
+@onready var plantSelectionMenu = $"../DemonSelectionMenu"
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
@@ -29,8 +29,8 @@ var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_HIVE
 var erupterExplained := false 
 var lancerExplained := false
 var wave2Started := false
-var erupter_zombie_demo_scene = preload( "res://Scenes/Tutorials/erupter_zombie_demo.tscn")
-var lancer_zombie_demo_scene = preload("res://Scenes/Tutorials/lancer_zombie_demo.tscn")
+var erupter_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/erupter_zombie_demo.tscn")
+var lancer_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/lancer_zombie_demo.tscn")
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
 
@@ -281,9 +281,6 @@ func hide_all_plant_buttons_except_hive():
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = false 

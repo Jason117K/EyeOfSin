@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var sway_shader : VisualShader = preload("res://Scripts/Shaders/swayShader.tres")
+var sway_shader : VisualShader = preload("res://_Common/Shaders/swayShader.tres")
 var set_shader :bool = false 
 
 func _ready() -> void:

@@ -7,7 +7,7 @@ extends Demon
 @export var maw_health = 500 
 @export var cost = 50
 #Keep a reference to our sun scene 
-var SunScene = preload("res://Scenes/PlantScenes/Sun.tscn")  # Adjust the path to your sun sprite scene
+var SunScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  # Adjust the path to your sun sprite scene
 var PlantManager
 #@onready var animSpriteComp = $AnimatedSprite2D
 @onready var sunTimer = $SunTimer

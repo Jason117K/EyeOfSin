@@ -7,7 +7,7 @@ extends AttackComponent
 @onready var target_plants = []
 @onready var teleport_timer = $"../TeleportTimer"
 @onready var shoot_timer = $"../ShootTimer"
-var projectile_scene = preload("res://Scenes/ZombieScenes/RohanProjectile.tscn" )
+var projectile_scene = preload("res://_Entities/Zombies/_RohanZombie/RohanProjectile.tscn" )
 var rng = RandomNumberGenerator.new()
 var laneYPositions = [77.0, 109.0, 141.0, 173.0, 205.0, 239.15, 272.0]
 

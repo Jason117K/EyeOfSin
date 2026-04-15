@@ -9,7 +9,7 @@ extends Demon
 var walnutHealth = 650
 
 # Preload the drone scene
-const DroneScene = preload("res://Scenes/PlantScenes/Drone.tscn")
+const DroneScene = preload("res://_Entities/Demons/Hive/Drone.tscn")
 
 # Constants
 var MAX_DRONES = 3

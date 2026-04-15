@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hhpowqycojpq"
-path="res://.godot/imported/Circle.png-deffd398fb5e7793d918984f6b43660f.ctex"
+uid="uid://cknlnhveldd4h"
+path="res://.godot/imported/TestBloodBSheet.png-2b2dc1408ffcb05783ef360a19f29379.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Circle.png"
-dest_files=["res://.godot/imported/Circle.png-deffd398fb5e7793d918984f6b43660f.ctex"]
+source_file="res://_Entities/Demons/TestBloodBSheet.png"
+dest_files=["res://.godot/imported/TestBloodBSheet.png-2b2dc1408ffcb05783ef360a19f29379.ctex"]
 
 [params]
 

@@ -22,7 +22,7 @@ var startWave2 : bool = true
 
 var wave_active = false             # Whether a wave is currently active
 var zombies_spawned = 0             # Counter for spawned zombies
-var zombie_scene = preload("res://Scenes/ZombieScenes/BasicZombie.tscn")  # Path3D to the zombie scene
+var zombie_scene = preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.tscn")  
 
 var spawners = []  # Array to hold all ZombieSpawner nodes
 var timers = [] # Array to hold all the timers in the WavePreview nodes

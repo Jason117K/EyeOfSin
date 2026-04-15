@@ -10,7 +10,7 @@ enum TutorialState {
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../PlantSelectionMenu"
+@onready var plantSelectionMenu = $"../DemonSelectionMenu"
 #@onready var waveManager = $GameLayer/WaveManager
 var waveManager 
 @onready var levelSwitcher = 	$"../LevelSwitcher"
@@ -25,7 +25,7 @@ var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_WYRM
 var summonerExplained := false 
 var wave2Started := false 
-var summoner_zombie_demo_scene = preload("res://Scenes/Tutorials/summoner_zombie_demo.tscn")
+var summoner_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/summoner_zombie_demo.tscn")
 
 var level04 = "res://Scenes/LevelScenes/Level0-4.tscn"
 var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
@@ -269,9 +269,6 @@ func hide_all_plant_buttons_except_wyrm():
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeLabel").visible = false
 
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = true 
