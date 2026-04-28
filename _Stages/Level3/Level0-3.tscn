@@ -86,8 +86,6 @@
 [ext_resource type="Texture2D" uid="uid://dv828bwpttdxc" path="res://_Assets/Environment/Props/GraveStonePURPLE15.png" id="84_7fnes"]
 [ext_resource type="Texture2D" uid="uid://rmgjkwwo8qj8" path="res://_Assets/Environment/Props/GraveStonePURPLE16.png" id="85_nwhm3"]
 [ext_resource type="Texture2D" uid="uid://bwx5cm4dsd64q" path="res://_Assets/Environment/Props/GraveStonePURPLE17.png" id="86_18xgo"]
-[ext_resource type="PackedScene" uid="uid://b1irt6sxuudih" path="res://_Entities/Demons/_HeartDemon/HeartDemon.tscn" id="87_yf6p8"]
-[ext_resource type="PackedScene" uid="uid://ct2xdafdtut66" path="res://_Entities/Demons/_Occulum/Occulum.tscn" id="88_xyvkd"]
 [ext_resource type="PackedScene" uid="uid://djjemebiqljyg" path="res://_Entities/SpecialElementsPortal/Portal.tscn" id="89_q7mac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkj4a"]
@@ -4086,6 +4084,98 @@ texture = ExtResource("64_yf6p8")
 position = Vector2(663, 290)
 texture = ExtResource("62_qsfc0")
 
+[node name="GraveStonePurple1" type="Sprite2D" parent="Environment" unique_id=290658100]
+position = Vector2(43, 278)
+texture = ExtResource("70_xyvkd")
+
+[node name="GraveStonePurple18" type="Sprite2D" parent="Environment" unique_id=51824808]
+position = Vector2(536, 319)
+texture = ExtResource("70_xyvkd")
+
+[node name="GraveStonePurple2" type="Sprite2D" parent="Environment" unique_id=1542696892]
+position = Vector2(141, 279)
+texture = ExtResource("71_raejm")
+
+[node name="GraveStonePurple3" type="Sprite2D" parent="Environment" unique_id=440846664]
+position = Vector2(249, 23)
+texture = ExtResource("72_g2a02")
+
+[node name="GraveStonePurple19" type="Sprite2D" parent="Environment" unique_id=1650246741]
+position = Vector2(596, 323)
+texture = ExtResource("72_g2a02")
+
+[node name="GraveStonePurple4" type="Sprite2D" parent="Environment" unique_id=1347294170]
+position = Vector2(228, 278)
+texture = ExtResource("73_vx7f5")
+
+[node name="GraveStonePurple5" type="Sprite2D" parent="Environment" unique_id=939837865]
+position = Vector2(311, 278)
+texture = ExtResource("74_kewgx")
+
+[node name="GraveStonePurple6" type="Sprite2D" parent="Environment" unique_id=1625146712]
+position = Vector2(392, 28)
+texture = ExtResource("75_q5enr")
+
+[node name="GraveStonePurple8" type="Sprite2D" parent="Environment" unique_id=400383764]
+position = Vector2(472, 25)
+texture = ExtResource("76_y2nj5")
+
+[node name="GraveStonePurple20" type="Sprite2D" parent="Environment" unique_id=2109329417]
+position = Vector2(713, 321)
+texture = ExtResource("76_y2nj5")
+
+[node name="GraveStonePurple7" type="Sprite2D" parent="Environment" unique_id=1166910402]
+position = Vector2(392, 276)
+texture = ExtResource("77_lohwc")
+
+[node name="GraveStonePurple9" type="Sprite2D" parent="Environment" unique_id=1129776043]
+position = Vector2(464, 279)
+texture = ExtResource("78_88t3m")
+
+[node name="GraveStonePurple10" type="Sprite2D" parent="Environment" unique_id=615989067]
+position = Vector2(547, 23)
+texture = ExtResource("79_b32nt")
+
+[node name="GraveStonePurple21" type="Sprite2D" parent="Environment" unique_id=55656702]
+position = Vector2(557, 372)
+texture = ExtResource("79_b32nt")
+
+[node name="GraveStonePurple11" type="Sprite2D" parent="Environment" unique_id=2010360184]
+position = Vector2(542, 279)
+texture = ExtResource("80_7ylrm")
+
+[node name="GraveStonePurple22" type="Sprite2D" parent="Environment" unique_id=559530702]
+position = Vector2(683, 365)
+texture = ExtResource("80_7ylrm")
+
+[node name="GraveStonePurple12" type="Sprite2D" parent="Environment" unique_id=127705046]
+position = Vector2(620, 278)
+texture = ExtResource("81_uucy5")
+
+[node name="GraveStonePurple23" type="Sprite2D" parent="Environment" unique_id=1915640280]
+position = Vector2(447, 318)
+texture = ExtResource("81_uucy5")
+
+[node name="GraveStonePurple13" type="Sprite2D" parent="Environment" unique_id=2066199710]
+position = Vector2(277, 316)
+texture = ExtResource("82_2hm12")
+
+[node name="GraveStonePurple14" type="Sprite2D" parent="Environment" unique_id=1230893561]
+position = Vector2(358, 309)
+texture = ExtResource("83_nract")
+
+[node name="GraveStonePurple15" type="Sprite2D" parent="Environment" unique_id=2128866762]
+position = Vector2(723, 26)
+texture = ExtResource("84_7fnes")
+
+[node name="GraveStonePurple16" type="Sprite2D" parent="Environment" unique_id=541068795]
+position = Vector2(632, 25)
+texture = ExtResource("85_nwhm3")
+
+[node name="GraveStonePurple17" type="Sprite2D" parent="Environment" unique_id=163945034]
+position = Vector2(719, 282)
+texture = ExtResource("86_18xgo")
+
 [node name="UILayer" parent="." unique_id=71940636 instance=ExtResource("20_wyrux")]
 layout_mode = 1
 
@@ -4137,119 +4227,6 @@ offset_right = 772.0
 offset_bottom = 433.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="GraveStonePurple1" type="Sprite2D" parent="." unique_id=290658100]
-position = Vector2(43, 278)
-texture = ExtResource("70_xyvkd")
-
-[node name="GraveStonePurple18" type="Sprite2D" parent="." unique_id=51824808]
-position = Vector2(536, 319)
-texture = ExtResource("70_xyvkd")
-
-[node name="GraveStonePurple2" type="Sprite2D" parent="." unique_id=1542696892]
-position = Vector2(141, 279)
-texture = ExtResource("71_raejm")
-
-[node name="GraveStonePurple3" type="Sprite2D" parent="." unique_id=440846664]
-position = Vector2(249, 23)
-texture = ExtResource("72_g2a02")
-
-[node name="GraveStonePurple19" type="Sprite2D" parent="." unique_id=1650246741]
-position = Vector2(596, 323)
-texture = ExtResource("72_g2a02")
-
-[node name="GraveStonePurple4" type="Sprite2D" parent="." unique_id=1347294170]
-position = Vector2(228, 278)
-texture = ExtResource("73_vx7f5")
-
-[node name="GraveStonePurple5" type="Sprite2D" parent="." unique_id=939837865]
-position = Vector2(311, 278)
-texture = ExtResource("74_kewgx")
-
-[node name="GraveStonePurple6" type="Sprite2D" parent="." unique_id=1625146712]
-position = Vector2(392, 28)
-texture = ExtResource("75_q5enr")
-
-[node name="GraveStonePurple8" type="Sprite2D" parent="." unique_id=400383764]
-position = Vector2(472, 25)
-texture = ExtResource("76_y2nj5")
-
-[node name="GraveStonePurple20" type="Sprite2D" parent="." unique_id=2109329417]
-position = Vector2(713, 321)
-texture = ExtResource("76_y2nj5")
-
-[node name="GraveStonePurple7" type="Sprite2D" parent="." unique_id=1166910402]
-position = Vector2(392, 276)
-texture = ExtResource("77_lohwc")
-
-[node name="GraveStonePurple9" type="Sprite2D" parent="." unique_id=1129776043]
-position = Vector2(464, 279)
-texture = ExtResource("78_88t3m")
-
-[node name="GraveStonePurple10" type="Sprite2D" parent="." unique_id=615989067]
-position = Vector2(547, 23)
-texture = ExtResource("79_b32nt")
-
-[node name="GraveStonePurple21" type="Sprite2D" parent="." unique_id=55656702]
-position = Vector2(557, 372)
-texture = ExtResource("79_b32nt")
-
-[node name="GraveStonePurple11" type="Sprite2D" parent="." unique_id=2010360184]
-position = Vector2(542, 279)
-texture = ExtResource("80_7ylrm")
-
-[node name="GraveStonePurple22" type="Sprite2D" parent="." unique_id=559530702]
-position = Vector2(683, 365)
-texture = ExtResource("80_7ylrm")
-
-[node name="GraveStonePurple12" type="Sprite2D" parent="." unique_id=127705046]
-position = Vector2(620, 278)
-texture = ExtResource("81_uucy5")
-
-[node name="GraveStonePurple23" type="Sprite2D" parent="." unique_id=1915640280]
-position = Vector2(447, 318)
-texture = ExtResource("81_uucy5")
-
-[node name="GraveStonePurple13" type="Sprite2D" parent="." unique_id=2066199710]
-position = Vector2(277, 316)
-texture = ExtResource("82_2hm12")
-
-[node name="GraveStonePurple14" type="Sprite2D" parent="." unique_id=1230893561]
-position = Vector2(358, 309)
-texture = ExtResource("83_nract")
-
-[node name="GraveStonePurple15" type="Sprite2D" parent="." unique_id=2128866762]
-position = Vector2(723, 26)
-texture = ExtResource("84_7fnes")
-
-[node name="GraveStonePurple16" type="Sprite2D" parent="." unique_id=541068795]
-position = Vector2(632, 25)
-texture = ExtResource("85_nwhm3")
-
-[node name="GraveStonePurple17" type="Sprite2D" parent="." unique_id=163945034]
-position = Vector2(719, 282)
-texture = ExtResource("86_18xgo")
-
-[node name="Heart" parent="." unique_id=426273614 groups=["Purple"] instance=ExtResource("87_yf6p8")]
-position = Vector2(282, 142)
-
-[node name="Sunflower" parent="." unique_id=707397362 instance=ExtResource("88_xyvkd")]
-position = Vector2(280, 142)
-
-[node name="Sunflower4" parent="." unique_id=1329613920 instance=ExtResource("88_xyvkd")]
-position = Vector2(248, 142)
-
-[node name="Sunflower2" parent="." unique_id=1289405676 instance=ExtResource("88_xyvkd")]
-position = Vector2(280, 110)
-
-[node name="Sunflower5" parent="." unique_id=1247421186 instance=ExtResource("88_xyvkd")]
-position = Vector2(312, 110)
-
-[node name="Sunflower3" parent="." unique_id=1386422071 instance=ExtResource("88_xyvkd")]
-position = Vector2(280, 174)
-
-[node name="Sunflower6" parent="." unique_id=1891939837 instance=ExtResource("88_xyvkd")]
-position = Vector2(312, 174)
 
 [node name="Portal" parent="." unique_id=36782900 groups=["Purple"] instance=ExtResource("89_q7mac")]
 position = Vector2(649, 76)

@@ -33,10 +33,10 @@ var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
 var thisLevel := "res://Scenes/LevelScenes/Level0-4.tscn"
 var thisAltLevel :=  "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
 
-const TUTORIAL_SELECT_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
-const TUTORIAL_PLACE_WYRM = "res://Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
-const TUTORIAL_EXPLAIN_SUMMONER = "res://Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
-@export var new_end_dialog = "res://Assets/Dialog/level_04_end_dialog.dtl"
+const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
+const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
+const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
+@export var new_end_dialog = "res://_Assets/Dialog/level_04_end_dialog.dtl"
 
 
 

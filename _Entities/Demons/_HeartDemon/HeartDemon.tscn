@@ -23,7 +23,7 @@
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="19_chpte"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="20_eny5u"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="21_mgr0t"]
-[ext_resource type="Texture2D" path="res://_Entities/Demons/TestBloodBSheet.png" id="22_yjvce"]
+[ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="22_yjvce"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="23_f8a43"]
 [ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="30_nb35r"]
 [ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="31_w3l75"]
@@ -1782,45 +1782,45 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Heart" type="Area2D" groups=["Plants"]]
+[node name="Heart" type="Area2D" unique_id=1977454691 groups=["Plants"]]
 z_index = 3
 collision_layer = 3
 script = ExtResource("1_c8ds1")
 
-[node name="BeatOfDeathCircle" type="Sprite2D" parent="."]
+[node name="BeatOfDeathCircle" type="Sprite2D" parent="." unique_id=943859212]
 visible = false
 position = Vector2(-3.8147e-06, 6)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_6ofan")
 
-[node name="BuffZone" type="Area2D" parent="." groups=["HeartBuff"]]
+[node name="BuffZone" type="Area2D" parent="." unique_id=1270525213 groups=["HeartBuff"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuffZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuffZone" unique_id=1674089987]
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_6ofan")
 disabled = true
 
-[node name="DemonShadow" type="Sprite2D" parent="."]
+[node name="DemonShadow" type="Sprite2D" parent="." unique_id=1234462110]
 visible = false
 position = Vector2(-2, 8)
 texture = ExtResource("2_x555b")
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=2122333755]
 self_modulate = Color(0, 0, 0, 0.721569)
 position = Vector2(-4, 6)
 scale = Vector2(2, 2)
 texture = ExtResource("3_2gwo5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=319198855]
 visible = false
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
 shape = SubResource("1")
 
-[node name="ShootTimer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="." unique_id=292342004]
 autostart = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=554588261]
 material = SubResource("ShaderMaterial_4vrps")
 position = Vector2(0, 7)
 sprite_frames = SubResource("SpriteFrames_mo0be")
@@ -1829,17 +1829,17 @@ autoplay = "spawn"
 script = ExtResource("19_chpte")
 targetGlowColor = Color(1, 0, 0.101961, 1)
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=1396187383]
 visible = false
 
-[node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" groups=["Invis"]]
+[node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1876388275 groups=["Invis"]]
 position = Vector2(0, -8.5)
 sprite_frames = SubResource("9")
 animation = &"redSpiderDefault"
 autoplay = "redSpiderDefault"
 flip_h = true
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=818418206]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
@@ -1847,21 +1847,21 @@ sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=380173600]
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1894624474]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="DMG_RayCast2D" type="ShapeCast2D" parent="."]
+[node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=369866782]
 position = Vector2(33, 6)
 shape = SubResource("RectangleShape2D_a06ib")
 target_position = Vector2(500, 0)
@@ -1869,7 +1869,7 @@ collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="DMG_RayCast2D2" type="ShapeCast2D" parent="."]
+[node name="DMG_RayCast2D2" type="ShapeCast2D" parent="." unique_id=510650574]
 position = Vector2(34, 32)
 shape = SubResource("RectangleShape2D_a06ib")
 target_position = Vector2(500, 0)
@@ -1877,7 +1877,7 @@ collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="DMG_RayCast2D3" type="ShapeCast2D" parent="."]
+[node name="DMG_RayCast2D3" type="ShapeCast2D" parent="." unique_id=247525165]
 position = Vector2(27, -21)
 shape = SubResource("RectangleShape2D_a06ib")
 target_position = Vector2(500, 0)
@@ -1885,7 +1885,7 @@ collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="BuffNodesComponent" parent="." instance=ExtResource("23_f8a43")]
+[node name="BuffNodesComponent" parent="." unique_id=1843542822 instance=ExtResource("23_f8a43")]
 visible = false
 giveBuffTo = ["Sunflower", "", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
@@ -1968,27 +1968,27 @@ visible = false
 [node name="BloodTile10" parent="BuffNodesComponent" index="20"]
 visible = false
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1948747935]
 wait_time = 3.0
 autostart = true
 
-[node name="SpawnSpiderling" type="Timer" parent="."]
+[node name="SpawnSpiderling" type="Timer" parent="." unique_id=1512938150]
 wait_time = 7.0
 autostart = true
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=1971478301]
 position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_3byx0")
 speed_scale = 5.0
 script = ExtResource("31_w3l75")
 
-[node name="ShootSpawn1" type="Node2D" parent="."]
+[node name="ShootSpawn1" type="Node2D" parent="." unique_id=173720773]
 position = Vector2(31, -30)
 
-[node name="ShootSpawn2" type="Node2D" parent="."]
+[node name="ShootSpawn2" type="Node2D" parent="." unique_id=1908259473]
 position = Vector2(36, 28)
 
-[node name="ShootSpawn3" type="Node2D" parent="."]
+[node name="ShootSpawn3" type="Node2D" parent="." unique_id=162759693]
 position = Vector2(32, 3)
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

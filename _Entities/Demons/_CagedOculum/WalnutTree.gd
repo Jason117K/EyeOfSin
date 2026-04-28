@@ -95,7 +95,7 @@ func take_damage(damage):
 	if sunBuffed:
 		if canGenSun:
 			generate_sun()
-	print("walnut taking damage, health is " , health, " damage is ", damage)
+	#print("walnut taking damage, health is " , health, " damage is ", damage)
 	health = health - damage
 	if(health <= 0):
 		die()

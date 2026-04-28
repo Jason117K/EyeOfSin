@@ -149,7 +149,7 @@ func spawn_zombie():
 			#print("[SPAWNER ", name, "] CASE 2: Wave 2 spawning")
 			#print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
 			if(wave2_zombies.size() > 0):
-				print("[SPAWNER ", name, "] Spawning a Wave 2 zombie...")
+				#print("[SPAWNER ", name, "] Spawning a Wave 2 zombie...")
 				wave2_zombies.shuffle()
 				var zombie_type = wave2_zombies.pop_front()
 				var zombie_instance = zombie_type.instantiate()
@@ -253,9 +253,9 @@ func populate_zombies(base_zombie_count: int, conehead_zombie_count: int,
 	
 #Increments the current wave
 func increase_wave():
-	print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
+	#print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
 	numWave = numWave + 1
-	print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
+	#print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
 
 #TODO Trace Back 
 #Starts the next round of zombie spawning 

@@ -487,7 +487,7 @@ func _on_SetSun_timeout():
 		get_parent().get_node("UILayer/HBoxContainer2/Blood").text = str(sun_points)
 
 func swap_heart():
-	print("Hero Demon Is ", hero_demon)
+	#print("Hero Demon Is ", hero_demon)
 	if hero_demon != null:
 		if "Alternate" in get_parent().name :
 			hero_demon.add_to_group("Green")

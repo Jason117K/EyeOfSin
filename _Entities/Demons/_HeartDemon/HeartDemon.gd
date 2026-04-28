@@ -138,7 +138,7 @@ func receiveBuff(newPlant):
 
 # Function to create and shoot a new projectile
 func shoot_projectile():
-	print("Heart Demon Shoot Projectile")
+	#print("Heart Demon Shoot Projectile")
 	var runtime_seconds = Time.get_ticks_msec() / 1000.0
 	
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
@@ -258,14 +258,15 @@ func beat_of_death():
 	$BuffZone/CollisionShape2D.disabled = false
 	
 func set_attack_ray():
-	if self.is_in_group("Green"):
-		#print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
-		$DMG_RayCast2D.collision_mask = 3
-		$DMG_RayCast2D.set_collision_mask_value(1,false)
-		$DMG_RayCast2D.set_collision_mask_value(2,false)
-		$DMG_RayCast2D.set_collision_mask_value(3,true)
-	else:
-		$DMG_RayCast2D.set_collision_mask_value(1,false)
-		$DMG_RayCast2D.set_collision_mask_value(2,true)
-		$DMG_RayCast2D.set_collision_mask_value(3,false)
+	var attack_rays = [attack_ray,attack_ray_2,attack_ray_3]
+	for attacking_ray in attack_rays:
+		if self.is_in_group("Green"):
+			attacking_ray.collision_mask = 3
+			attacking_ray.set_collision_mask_value(1,false)
+			attacking_ray.set_collision_mask_value(2,false)
+			attacking_ray.set_collision_mask_value(3,true)
+		else:
+			attacking_ray.set_collision_mask_value(1,false)
+			attacking_ray.set_collision_mask_value(2,true)
+			attacking_ray.set_collision_mask_value(3,false)
 	
