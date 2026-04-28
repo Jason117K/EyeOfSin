@@ -1,23 +1,13 @@
 [gd_scene format=3 uid="uid://djjemebiqljyg"]
 
 [ext_resource type="Script" uid="uid://c76a8nl5hph72" path="res://_Entities/SpecialElementsPortal/portal.gd" id="1_87sni"]
-[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_0okgg"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="3_a3bgh"]
+[ext_resource type="Texture2D" uid="uid://cn57tbbn4ci0i" path="res://_Entities/SpecialElementsPortal/Dimensional_Portal.png" id="5_x6nls"]
 [ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="8_xxg0u"]
 [ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="9_d3g64"]
 [ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://_Assets/Shapes/Circle.png" id="10_uqgc7"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(34, 32)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sygpr"]
-resource_local_to_scene = true
-shader = ExtResource("2_0okgg")
-shader_parameter/glow_color = Color(223, 66, 66, 256)
-shader_parameter/modulate_factor = Vector4(33, 33, 33, 1)
-shader_parameter/glow_tolerance = 0.2
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uxpgm"]
+size = Vector2(21, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
 atlas = ExtResource("8_xxg0u")
@@ -86,19 +76,64 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltnqr"]
+atlas = ExtResource("5_x6nls")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j4hb"]
+atlas = ExtResource("5_x6nls")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm71f"]
+atlas = ExtResource("5_x6nls")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acqma"]
+atlas = ExtResource("5_x6nls")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87sni"]
+atlas = ExtResource("5_x6nls")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0okgg"]
+atlas = ExtResource("5_x6nls")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3bgh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltnqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j4hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm71f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acqma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87sni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0okgg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
 [node name="Portal" type="Area2D" unique_id=36782900 groups=["Plants"]]
 z_index = 1
 collision_mask = 3
 script = ExtResource("1_87sni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1422644504]
+position = Vector2(0.5, 0)
 shape = SubResource("1")
-
-[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1251565845]
-material = SubResource("ShaderMaterial_sygpr")
-sprite_frames = SubResource("SpriteFrames_uxpgm")
-script = ExtResource("3_a3bgh")
-targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=243642338]
 position = Vector2(0, -51)
@@ -107,14 +142,19 @@ speed_scale = 5.0
 script = ExtResource("9_d3g64")
 
 [node name="Circle" type="Sprite2D" parent="." unique_id=520436396]
+visible = false
 scale = Vector2(0.425, 0.425)
 texture = ExtResource("10_uqgc7")
+
+[node name="PortalAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1421888014]
+sprite_frames = SubResource("SpriteFrames_a3bgh")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
 [connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
 [connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]

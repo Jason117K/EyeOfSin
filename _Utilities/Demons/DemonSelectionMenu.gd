@@ -23,6 +23,7 @@ var maw_scene = preload("res://_Entities/Demons/_Maw/Maw.tscn")
 var egg_scene = preload("res://_Entities/Demons/_Wyrm/EggWorm.tscn")
 var hive_scene = preload("res://_Entities/Demons/_Hive/Hive.tscn")
 var heart_scene = preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
+var portal_scene = preload("res://_Entities/SpecialElementsPortal/Portal.tscn")
 
 #var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
 
@@ -577,4 +578,17 @@ func _on_heart_button_pressed() -> void:
 	var HeartButton = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 	#WalnutButton.release_focus()
 	print("Heart selected")
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+
+
+func _on_portal_button_pressed() -> void:
+	selected_plant = portal_scene
+	var temp_instance = portal_scene.instantiate()
+	create_preview(portal_scene)
+	setCanRemoveFalse()
+	currentPlantCost = 0
+	#currentPlantCost.text = "0"
+	currentPlantLabel.text = "PORTAL SELECTED " + deselectText
+	temp_instance.queue_free()
+	print("Portal selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)

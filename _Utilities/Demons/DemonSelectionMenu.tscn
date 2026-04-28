@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cdlvi1sqbawix" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText4.png" id="5_vvged"]
 [ext_resource type="Texture2D" uid="uid://b13m4nfeccjgl" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText2.png" id="6_04elx"]
 [ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://_Entities/Demons/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
-[ext_resource type="Texture2D" uid="uid://bwpctk28aaj8p" path="res://_Entities/Demons/EyeBombCARD.png" id="8"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://_Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="9_qqk0u"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://cs7hq3cbnjody" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText5.png" id="10_iafbj"]
+[ext_resource type="Texture2D" uid="uid://br5bnotborqjw" path="res://_Assets/UI/DemonCard_Portal.png" id="11_bcru6"]
 [ext_resource type="Texture2D" uid="uid://bajbuwbiesujh" path="res://_Entities/Demons/Cards/DemonCard_HEART.png" id="11_iafbj"]
 [ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://_Entities/Demons/Cards/DESELECT_CARD.png" id="12_yqvs4"]
@@ -166,22 +166,6 @@ theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Eye" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1516499706]
-visible = false
-layout_mode = 2
-
-[node name="EyeButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye" unique_id=501338354]
-layout_mode = 2
-theme_override_styles/normal = SubResource("3")
-icon = ExtResource("8")
-
-[node name="EyeLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Eye" unique_id=1504137257]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_vvged")
-text = "50"
-horizontal_alignment = 1
-
 [node name="Egg" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
 visible = false
 layout_mode = 2
@@ -199,6 +183,7 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=640469747]
+visible = false
 layout_mode = 2
 
 [node name="HiveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=832668511]
@@ -223,6 +208,22 @@ theme_override_styles/normal = SubResource("3")
 icon = ExtResource("11_iafbj")
 
 [node name="HeartLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1891909463]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_vvged")
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
+layout_mode = 2
+
+[node name="PortalButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1329203705]
+layout_mode = 2
+theme_override_constants/icon_max_width = 67
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("11_bcru6")
+
+[node name="PortalLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1642214617]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "0
@@ -278,15 +279,15 @@ layout_mode = 2
 size_flags_horizontal = 1
 mouse_filter = 2
 
-[node name="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/CodexBG" index="0"]
+[node name="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/CodexBG" index="0" unique_id=919352965]
 mouse_filter = 2
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Eye/EyeButton" to="." method="_on_EyeButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton" to="." method="_on_codex_button_pressed"]
