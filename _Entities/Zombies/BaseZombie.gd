@@ -68,7 +68,18 @@ func spawn_slow_field_on_death():
 	
 	
 func change_dimensions():
-	print("Swa Parent Was ", get_parent())
+	print("Swap Parent Was ", get_parent())
 	self.reparent(Global.get_game_controller().get_alt_dimension().get_node("GameLayer"))
+	if self.is_in_group("Green"):
+		print("Swap Green to Purple")
+		self.remove_from_group("Green")
+		self.add_to_group("Purple")
+		self.collision_layer = 2
+	else:
+		print("Swap Purple to Green")
+		self.remove_from_group("Purple")
+		self.add_to_group("Green")
+		self.collision_layer = 3
+		self.set_collision_layer_value(3,true)
 	print("Swa Parent IS ", get_parent())
 	
