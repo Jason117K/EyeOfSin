@@ -74,12 +74,13 @@ func change_dimensions():
 		print("Swap Green to Purple")
 		self.remove_from_group("Green")
 		self.add_to_group("Purple")
-		self.collision_layer = 2
+		self.set_collision_layer_value(2,true)
+		set_hue_shift(0)
 	else:
 		print("Swap Purple to Green")
 		self.remove_from_group("Purple")
 		self.add_to_group("Green")
-		self.collision_layer = 3
 		self.set_collision_layer_value(3,true)
+		set_hue_shift(125)
 	print("Swa Parent IS ", get_parent())
 	

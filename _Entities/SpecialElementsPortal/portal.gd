@@ -1,5 +1,12 @@
 extends Area2D
 
+#Make Place Other Portal
+func _ready() -> void:
+	if self.is_in_group("Green"):
+		self.set_collision_mask_value(3,true)
+	elif self.is_in_group("Purple"):
+		self.set_collision_mask_value(2,true)
+ 
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):

@@ -86,7 +86,6 @@
 [ext_resource type="Texture2D" uid="uid://dv828bwpttdxc" path="res://_Assets/Environment/Props/GraveStonePURPLE15.png" id="84_7fnes"]
 [ext_resource type="Texture2D" uid="uid://rmgjkwwo8qj8" path="res://_Assets/Environment/Props/GraveStonePURPLE16.png" id="85_nwhm3"]
 [ext_resource type="Texture2D" uid="uid://bwx5cm4dsd64q" path="res://_Assets/Environment/Props/GraveStonePURPLE17.png" id="86_18xgo"]
-[ext_resource type="PackedScene" uid="uid://djjemebiqljyg" path="res://_Entities/SpecialElementsPortal/Portal.tscn" id="89_q7mac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkj4a"]
 texture = ExtResource("6_t7wxb")
@@ -4227,9 +4226,6 @@ offset_right = 772.0
 offset_bottom = 433.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="Portal" parent="." unique_id=36782900 groups=["Purple"] instance=ExtResource("89_q7mac")]
-position = Vector2(649, 76)
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]

@@ -126,7 +126,7 @@ animations = [{
 "speed": 11.0
 }]
 
-[node name="Portal" type="Area2D" unique_id=36782900 groups=["Plants"]]
+[node name="Portal" type="Area2D" unique_id=36782900 groups=["Portal"]]
 z_index = 1
 collision_mask = 3
 script = ExtResource("1_87sni")
