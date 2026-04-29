@@ -19,18 +19,18 @@ var waveManager
 @onready var green_dimension = $CurrentScene/Level03Alternate
 @onready var pause_Button = $"../../PauseButton"
 
-var thisLevel := "res://Scenes/LevelScenes/Level0-3.tscn"
-var thisAltLevel := "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+var thisLevel := "res://_Stages/Level3/Level0-3.tscn"
+var thisAltLevel := "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
-var level04 = "res://Scenes/LevelScenes/Level0-4.tscn"
-var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
+var level04 = "res://_Stages/Level4/Level0-4.tscn"
+var level04Alt = "res://_Stages/Level4/Level0-4_Alternate.tscn"
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_MAW
 var fleshEaterExplained := false 
 var wave2Started := false 
 var fleshEater_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
 
-var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
-var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+var level03 = "res://_Stages/Level3/Level0-3.tscn"
+var level03Alt = "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
 const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
 const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"

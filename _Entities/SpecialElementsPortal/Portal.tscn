@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c76a8nl5hph72" path="res://_Entities/SpecialElementsPortal/portal.gd" id="1_87sni"]
 [ext_resource type="Texture2D" uid="uid://cn57tbbn4ci0i" path="res://_Entities/SpecialElementsPortal/Dimensional_Portal.png" id="5_x6nls"]
+[ext_resource type="Texture2D" uid="uid://bsajijaimij2v" path="res://_Entities/SpecialElementsPortal/Dimensional_Portal_Purple.png" id="6_ltnqr"]
 [ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="8_xxg0u"]
 [ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="9_d3g64"]
 [ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://_Assets/Shapes/Circle.png" id="10_uqgc7"]
@@ -100,6 +101,30 @@ region = Rect2(32, 32, 32, 32)
 atlas = ExtResource("5_x6nls")
 region = Rect2(64, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3bgh"]
+atlas = ExtResource("6_ltnqr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if8yw"]
+atlas = ExtResource("6_ltnqr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2eg4"]
+atlas = ExtResource("6_ltnqr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3y3f"]
+atlas = ExtResource("6_ltnqr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh5nc"]
+atlas = ExtResource("6_ltnqr")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxg0u"]
+atlas = ExtResource("6_ltnqr")
+region = Rect2(64, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_a3bgh"]
 animations = [{
 "frames": [{
@@ -122,7 +147,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_0okgg")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Green",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3bgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if8yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2eg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3y3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh5nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxg0u")
+}],
+"loop": true,
+"name": &"Purple",
 "speed": 11.0
 }]
 
@@ -138,6 +186,7 @@ shape = SubResource("1")
 [node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=243642338]
 position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_vyedq")
+autoplay = "default"
 speed_scale = 5.0
 script = ExtResource("9_d3g64")
 
@@ -148,13 +197,12 @@ texture = ExtResource("10_uqgc7")
 
 [node name="PortalAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1421888014]
 sprite_frames = SubResource("SpriteFrames_a3bgh")
-autoplay = "default"
-frame = 5
-frame_progress = 1.0
+animation = &"Purple"
+autoplay = "Green"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
+[connection signal="animation_finished" from="LightningSpawn" to="." method="_on_lightning_spawn_animation_finished"]
 [connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]

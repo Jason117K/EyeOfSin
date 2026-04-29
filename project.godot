@@ -121,6 +121,7 @@ PurpleLevel=""
 GreenLevel=""
 HeartBuff=""
 Portal=""
+EntrancePortal=""
 
 [gui]
 

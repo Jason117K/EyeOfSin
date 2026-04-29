@@ -70,7 +70,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 			
 			# Wait one frame to ensure the old scene is properly removed
 	await get_tree().process_frame
-#	print("New Scene 1 is  ", new_scene1 , " AND 2 is : ", new_scene2)
+	print("New Scene 1 is  ", new_scene1 , " AND 2 is : ", new_scene2)
 	var new1 = load(new_scene1).instantiate()
 	scene.add_child(new1)
 	current_scene = new1 
@@ -134,6 +134,9 @@ func get_alt_dimension():
 		return current_scenes[1]
 	else:
 		return current_scenes[0]
+
+func on_purple_scene():
+	return on_scene_1
 		
 func reset_cooldown():
 	can_swap = true

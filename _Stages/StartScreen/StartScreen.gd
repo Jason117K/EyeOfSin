@@ -6,8 +6,8 @@ extends Control
 @onready var bgMusic = $BackGroundMuisc
 #Sets up the startscreen tiles
 #var ownerScript = preload("res://Scripts/LevelLogic/Main_Controller.gd")
-var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
-var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
+var level0_1 = ("res://_Stages/Level1/Level0-1.tscn")
+var level0_1Alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
 func _ready():
 	

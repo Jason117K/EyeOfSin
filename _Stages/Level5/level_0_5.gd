@@ -34,12 +34,12 @@ var lancer_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutor
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
 
-const TUTORIAL_SELECT_HIVE = "res://Assets/Text/TextFiles/Level0-5_Tutorial_SelectHive.txt"
-const TUTORIAL_PLACE_HIVE = "res://Assets/Text/TextFiles/Level0-5_Tutorial_PlaceHive.txt"
-const TUTORIAL_EXPLAIN_ERUPTER = "res://Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
-const TUTORIAL_EXPLAIN_LANCER = "res://Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
+const TUTORIAL_SELECT_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_SelectHive.txt"
+const TUTORIAL_PLACE_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_PlaceHive.txt"
+const TUTORIAL_EXPLAIN_ERUPTER = "res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
+const TUTORIAL_EXPLAIN_LANCER = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 
-@export var new_end_dialog = "res://Assets/Dialog/level_05_end_dialog.dtl"
+@export var new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
 
 
 func _ready():

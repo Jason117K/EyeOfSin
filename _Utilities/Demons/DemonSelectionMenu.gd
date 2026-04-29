@@ -34,6 +34,7 @@ var deselectText = " PRESS [X] TO DESELECT"
 
 @onready var preview_container = Node2D.new()
 @onready var panelContainer = $PanelContainer
+@onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 
 var SunFlowerButton
 var WalnutButton
@@ -582,6 +583,17 @@ func _on_heart_button_pressed() -> void:
 
 
 func _on_portal_button_pressed() -> void:
+	if Global.game_controller.on_purple_scene():
+		if Global.purple_portal != null:
+			if Global.green_portal != null:
+				portalButton.self_modulate = Color("7575756b")
+			return
+	else:
+		if Global.green_portal != null:
+			if Global.purple_portal != null:
+				portalButton.self_modulate = Color("7575756b")
+			return
+		
 	selected_plant = portal_scene
 	var temp_instance = portal_scene.instantiate()
 	create_preview(portal_scene)

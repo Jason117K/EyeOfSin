@@ -38,11 +38,11 @@ var waveManager
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var pause_Button = $"../../PauseButton"
 
-var thisLevel := "res://Scenes/LevelScenes/Level0-2.tscn"
-var thisAltLevel := "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
+var thisLevel := "res://_Stages/Level2/Level0-2.tscn"
+var thisAltLevel := "res://_Stages/Level2/Level0-2_Alternate.tscn"
 
-var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
-var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+var level03 = "res://_Stages/Level3/Level0-3.tscn"
+var level03Alt = "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
 var green_dimension
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
@@ -70,8 +70,8 @@ var spyder_sun_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials
 var sun_spyder_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/spyder_sunflower_buff.tscn")
 var buff_demo_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/blood_buff_demo.tscn")
 var buckethead_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
-var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
-var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
+var level02 = "res://_Stages/Level2/Level0-2.tscn"
+var level02Alt = "res://_Stages/Level2/Level0-2_Alternate.tscn"
 @export var new_end_dialog = "res://Assets/Dialog/level_02_end_dialog.dtl"
 
 func _ready():

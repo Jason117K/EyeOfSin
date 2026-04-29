@@ -4,20 +4,20 @@ extends Control
 #Switches the Level to the next level
 
 #@export var nextLevel = preload("res://Scenes/LevelScenes/EmptyScene.tscn")  # Load the next scene
-@export var next_level = "res://Scenes/LevelScenes/EmptyScene.tscn"
-@export var next_level_alt = "res://Scenes/LevelScenes/EmptyScene.tscn"
-@export var current_level = "res://Scenes/LevelScenes/EmptyScene.tscn"
-@export var current_level_alt = "res://Scenes/LevelScenes/EmptyScene.tscn"
+@export var next_level = "res://_Stages/Empty/EmptyScene.tscn"
+@export var next_level_alt = "res://_Stages/Empty/EmptyScene.tscn"
+@export var current_level = "res://_Stages/Empty/EmptyScene.tscn"
+@export var current_level_alt = "res://_Stages/Empty/EmptyScene.tscn"
 @onready var toolTips = $"../ToolTips"
 @export var level_unlocked := 2
 @onready var outcome_label = $CenterContainer/VBoxContainer/OutcomeLabel
 @onready var continue_button = $CenterContainer/VBoxContainer/Continue
 
-var level02 = "res://Scenes/LevelScenes/Level0-2.tscn"
-var level02Alt = "res://Scenes/LevelScenes/Level0-2_Alternate.tscn"
+var level02 = "res://_Stages/Level2/Level0-2.tscn"
+var level02Alt = "res://_Stages/Level2/Level0-2_Alternate.tscn"
 
-var level03 = "res://Scenes/LevelScenes/Level0-3.tscn"
-var level03Alt = "res://Scenes/LevelScenes/Level0-3_Alternate.tscn"
+var level03 = "res://_Stages/Level3/Level0-3.tscn"
+var level03Alt = "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
 
 func _ready() -> void:

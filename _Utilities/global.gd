@@ -13,7 +13,9 @@ var sunflowerCountVisual := 0
 
 var game_controller : GameController
 var plant_selection_menu 
-var plant_selection_menu_alt 
+var plant_selection_menu_alt
+var green_portal = null
+var purple_portal = null 
 var gameIsStarted := false
 var current_level
 
@@ -121,4 +123,35 @@ func clear_guide():
 	
 func get_game_controller():
 	return game_controller
+	
+func register_green_portal(new_green_portal):
+	if purple_portal == null :
+		new_green_portal.add_to_group("EntrancePortal")
+	green_portal = new_green_portal
+
+
+func register_purple_portal(new_purple_portal):
+	if green_portal == null :
+		new_purple_portal.add_to_group("EntrancePortal")
+	purple_portal = new_purple_portal
+	
+func get_purple_portal_location():
+	return purple_portal.global_position
+	
+func get_green_portal_location():
+	return green_portal.global_position
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	

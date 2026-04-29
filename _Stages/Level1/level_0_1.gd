@@ -30,19 +30,19 @@ var waveManager
 @onready var pause_Button = $"../../PauseButton"
 
 # Text file paths
-const TUTORIAL_SELECT_SPYDER = "res://Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
-const TUTORIAL_PLACE_SPYDER = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PlaceSpyder.txt"
-const TUTORIAL_BLOOD_COST = "res://Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
-const TUTORIAL_PRESS_Y = "res://Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
-const TUTORIAL_GREEN_DIMENSION = "res://Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
-const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
-const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
+const TUTORIAL_SELECT_SPYDER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
+const TUTORIAL_PLACE_SPYDER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceSpyder.txt"
+const TUTORIAL_BLOOD_COST = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
+const TUTORIAL_PRESS_Y = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
+const TUTORIAL_GREEN_DIMENSION = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
+const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
+const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
 var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
 var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
-var level0_1 = ("res://Scenes/LevelScenes/Level0-1.tscn")
-var level0_1Alt = ("res://Scenes/LevelScenes/Level0-1_Alternate.tscn")
-@export var new_end_dialog = "res://Assets/Dialog/level_0_end_dialog.dtl"
+var level0_1 = ("res://_Stages/Level1/Level0-1.tscn")
+var level0_1Alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
+@export var new_end_dialog = "res://_Assets/Dialog/level_0_end_dialog.dtl"
 
 func _ready():
 	Dialogic.Inputs.auto_skip.enabled = true 
@@ -61,7 +61,11 @@ func _ready():
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
+	print("Plantmanager is ", plantManager)
+	#plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
+	#plantManager.spyder_placed.connect(_on_spyder_placed)
+	plantManager.spyder_placed.connect(func(_grid_position): _on_spyder_placed())
+	#plantManager.test_signal.connect(test_func)
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 	# Connect to Spyder button directly
@@ -79,7 +83,8 @@ func _ready():
 	#_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
 	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
 	#Global.unHidePlantSelectionMenu()
-
+func test_func():
+	print("PrintPirnt")
 func finish_ready():
 	print("Skipped Dialog")
 	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)

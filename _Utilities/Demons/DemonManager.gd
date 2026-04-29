@@ -26,7 +26,7 @@ signal eyeBomb_placed(grid_position: Vector2)
 signal eggWorm_placed(grid_position: Vector2)
 signal wasp_placed(grid_position: Vector2)
 signal maw_placed(grid_position: Vector2)
-
+signal test_signal()
 
 func _ready() -> void:
 	if get_parent().has_method("spyder_placed"):
@@ -35,6 +35,8 @@ func _ready() -> void:
 
 # Reference the PlantSelectionMenu dynamically
 func get_selected_plant():
+	#print("Emit Test")
+	test_signal.emit()
 	if plant_highlighted:
 		#print("Returning HighLight Sunflower.R")
 		return sunflower_scene

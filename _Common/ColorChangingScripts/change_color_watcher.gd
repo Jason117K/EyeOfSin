@@ -9,7 +9,8 @@ func _apply_hue_shift() -> void:
 	# Create material if needed
 	if material == null:
 		material = ShaderMaterial.new()
-		material.shader = preload("res://Scripts/Plants/Shaders/Sunflower.gdshader")
+		#TODO Is the right?
+		material.shader = preload("res://_Common/Shaders/Sunflower.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:
