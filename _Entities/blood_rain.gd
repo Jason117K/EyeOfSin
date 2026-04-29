@@ -11,3 +11,10 @@ func _ready() -> void:
 func begin():
 	for child in get_children():
 		child.show()
+	for zombie in Global.get_all_zombies():
+		zombie.blood_slow()
+
+
+func stop():
+	for child in get_children():
+		child.hide()

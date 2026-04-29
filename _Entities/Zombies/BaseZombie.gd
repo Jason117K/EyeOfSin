@@ -11,6 +11,7 @@ signal zombie_death
 var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
 
 func _ready() -> void:
+	Global.register_zombie(self)
 	if self.is_in_group("Green"):
 	#	print("SET TO GTREEEEEEEN SO CAN ATTTACK GREEEN")
 		self.set_collision_layer_value(1,false)
@@ -51,6 +52,7 @@ func set_hue_shift(hue_shift_degrees):
 	
 #Kills the Zombie 
 func die():
+	Global.deregister_zombie(self)
 	if compManager.spawn_slow_field == true :
 		spawn_slow_field_on_death()
 	#if compMana
@@ -84,4 +86,13 @@ func change_dimensions(new_position):
 		set_hue_shift(125)
 	self.global_position = new_position
 	print("Swa Parent IS ", get_parent())
+	
+func blood_slow():
+	compManager.blood_slow()
+	set_hue_shift(0)
+	
+	
+	
+	
+	
 	

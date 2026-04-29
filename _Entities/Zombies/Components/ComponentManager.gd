@@ -24,8 +24,28 @@ var spawn_slow_field := false
 @onready var zombie : Zombie = get_parent()
 @onready var bloodHit := $"../BloodHit"
 
+var reset_speed_timer : Timer
+
+func blood_slow():
+	speedComp.setSpeed(speedComp.getOriginalSpeed()/3)
+	reset_speed_timer = Timer.new()
+	reset_speed_timer.one_shot = true 
+	reset_speed_timer.autostart = false
+	reset_speed_timer.wait_time = 5
+	reset_speed_timer.timeout.connect(undoBloodSlow)
+	add_child(reset_speed_timer)
+	reset_speed_timer.start()
+
+func undoBloodSlow():
+	speedComp.setSpeed(speedComp.getOriginalSpeed())
+	Global.stop_blood_rain()
+	
+	
+	
+	
 func knockBack():
 	zombie.global_position = zombie.global_position + Vector2(9,0) 
+	
 func set_hue_shift(hue_shift_degrees):
 	animatedSprite.set_hue_shift(hue_shift_degrees)
 	

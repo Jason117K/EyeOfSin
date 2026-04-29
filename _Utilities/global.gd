@@ -11,6 +11,7 @@ var canPlayLevel7 : bool = true
 var sunflowerCount := 0  
 var sunflowerCountVisual := 0  
 
+var all_zombies := []
 var game_controller : GameController
 var plant_selection_menu 
 var plant_selection_menu_alt
@@ -158,10 +159,19 @@ func register_blood_rain(new_blood_rain):
 func start_blood_rain():
 	blood_rain.begin()
 	
+func stop_blood_rain():
+	blood_rain.stop()
+		
+	
+func register_zombie(new_zombie):
+	all_zombies.append(new_zombie)
 	
 	
+func deregister_zombie(zombie_to_delete):
+	all_zombies.erase(zombie_to_delete)
 	
-	
+func get_all_zombies():
+	return all_zombies
 	
 	
 	
