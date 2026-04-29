@@ -33,6 +33,9 @@ const START_SCALE: Vector2 = Vector2(0.1, 0.1)
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
+	print("Hero DEMON Ready")
+	Global.register_hero_demon(self)
+	$PreviewNodes/AnimatedSprite2D.hide()
 	set_attack_ray()
 	animSpriteComp = $AnimatedSprite2D
 	animSpriteComp.animation = "spawn"

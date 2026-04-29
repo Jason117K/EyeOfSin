@@ -570,6 +570,9 @@ func _on_fast_forward_pressed() -> void:
 
 
 func _on_heart_button_pressed() -> void:
+	if Global.hero_demon_is_summoned():
+		return 
+	
 	selected_plant = heart_scene
 	var temp_instance = heart_scene.instantiate()
 	create_preview(heart_scene)

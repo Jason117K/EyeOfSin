@@ -17,7 +17,9 @@ var plant_selection_menu_alt
 var green_portal = null
 var purple_portal = null 
 var gameIsStarted := false
+var hero_demon_summoned := false
 var current_level
+var hero_demon 
 
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()
@@ -142,7 +144,12 @@ func get_green_portal_location():
 	return green_portal.global_position
 	
 	
+func register_hero_demon(new_hero_demon):
+	hero_demon = new_hero_demon 
+	hero_demon_summoned = true 
 	
+func hero_demon_is_summoned():
+	return hero_demon_summoned
 	
 	
 	
