@@ -352,7 +352,7 @@ func _on_HiveButton_pressed():
 # Creates a transparent preview image for a given plant scene 
 
 func create_preview(plant_scene):
-	#print("MAKE A PREVIEW")
+	print("MAKE A PREVIEW", plant_scene)
 	# Clear the last preview 
 	clear_preview()
 	
@@ -362,8 +362,10 @@ func create_preview(plant_scene):
 	var preview_node = find_preview_nodes(temp_plant)
 	
 	if preview_node:
+		print("Found Preview Node")
 		# Duplicate all child sprites
 		for child in preview_node.get_children():
+			print("Preview Node Child is ", preview_node)
 			# Create the preview sprite and make it semi-transparent 
 			var preview_sprite = child.duplicate()
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)

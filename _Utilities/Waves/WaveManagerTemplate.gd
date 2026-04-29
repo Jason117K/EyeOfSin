@@ -58,7 +58,7 @@ func _physics_process(_delta):
 		#print("Starting All timers this onceFF")
 		for timer in timers:
 			if timer != null:
-				print("Timer isFF ", timer)
+				#print("Timer isFF ", timer)
 				timer.wait_time = StartDelay
 				timer.start()
 		

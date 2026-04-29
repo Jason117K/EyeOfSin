@@ -22,21 +22,19 @@
 [ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="20_muovt"]
 [ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="21_kbw6t"]
 
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_3r88c"]
 radius = 61.2046
 
 [sub_resource type="Curve2D" id="Curve2D_iv1q7"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 33.5903, 60.7585, 0, 33.5569, 0, -33.5569, 0, 0, 60.819, 0, 33.5903, 0, -33.5903, -60.7585, 0, -33.5569, 0, 33.5569, 0, 0, -60.819, 0, -33.5903, 0, 0, 60.7585, 0)
+"points": PackedVector2Array(0, 0, 0, 33.590332, 60.7585, 0, 33.55692, 0, -33.55692, 0, 0, 60.819, 0, 33.590332, 0, -33.590332, -60.7585, 0, -33.55692, 0, 33.55692, 0, 0, -60.819, 0, -33.590332, 0, 0, 60.7585, 0)
 }
 point_count = 5
 
 [sub_resource type="Resource" id="Resource_nyuxt"]
 resource_local_to_scene = true
 script = ExtResource("4_kbw6t")
-arcs = Array[ExtResource("3_muovt")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3r88c"]
 size = Vector2(87, 77)
@@ -1040,21 +1038,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Sunflower" type="Area2D" groups=["Plants"]]
+[node name="Sunflower" type="Area2D" unique_id=1389197860 groups=["Plants"]]
 z_index = 1
 position = Vector2(0, 1)
 collision_mask = 3
 script = ExtResource("1")
 buffedSunWaitTime = 9.0
 
-[node name="HealZone" type="Area2D" parent="."]
+[node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HealZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealZone" unique_id=1133432548]
 visible = false
 shape = SubResource("CircleShape2D_3r88c")
 
-[node name="Ellipse" type="Node2D" parent="HealZone" node_paths=PackedStringArray("polygon", "line")]
+[node name="Ellipse" type="Node2D" parent="HealZone" unique_id=1388740585 node_paths=PackedStringArray("polygon", "line")]
 modulate = Color(1, 0, 0, 0.14902)
 script = ExtResource("2_kvwqv")
 polygon = NodePath("Fill")
@@ -1068,69 +1066,69 @@ size = Vector2(121.517, 121.638)
 rx = 60.7583
 ry = 60.8188
 
-[node name="Fill" type="Polygon2D" parent="HealZone/Ellipse"]
-polygon = PackedVector2Array(60.7585, 0, 60.4448, 6.21854, 59.5241, 12.2574, 58.027, 18.0861, 55.9839, 23.6739, 53.4255, 28.9904, 50.3821, 34.0049, 46.8845, 38.6869, 42.9631, 43.0059, 38.6484, 46.9312, 33.9711, 50.4323, 28.9615, 53.4787, 23.6503, 56.0397, 18.0681, 58.0848, 12.2452, 59.5834, 6.21236, 60.505, 0, 60.819, -6.21236, 60.505, -12.2452, 59.5834, -18.0681, 58.0848, -23.6503, 56.0397, -28.9615, 53.4787, -33.9711, 50.4323, -38.6484, 46.9312, -42.9631, 43.0059, -46.8845, 38.6869, -50.3821, 34.0049, -53.4255, 28.9904, -55.9839, 23.6739, -58.027, 18.0861, -59.5241, 12.2574, -60.4448, 6.21854, -60.7585, 0, -60.4448, -6.21854, -59.5241, -12.2574, -58.027, -18.0861, -55.9839, -23.6739, -53.4255, -28.9904, -50.3821, -34.0049, -46.8845, -38.6869, -42.9631, -43.0059, -38.6484, -46.9312, -33.9711, -50.4323, -28.9615, -53.4787, -23.6503, -56.0397, -18.0681, -58.0848, -12.2452, -59.5834, -6.21236, -60.505, 0, -60.819, 6.21236, -60.505, 12.2452, -59.5834, 18.0681, -58.0848, 23.6503, -56.0397, 28.9615, -53.4787, 33.9711, -50.4323, 38.6484, -46.9312, 42.9631, -43.0059, 46.8845, -38.6869, 50.3821, -34.0049, 53.4255, -28.9904, 55.9839, -23.6739, 58.027, -18.0861, 59.5241, -12.2574, 60.4448, -6.21854)
+[node name="Fill" type="Polygon2D" parent="HealZone/Ellipse" unique_id=404790425]
+polygon = PackedVector2Array(60.7585, 0, 60.44482, 6.218542, 59.524143, 12.257415, 58.026997, 18.086054, 55.983925, 23.67389, 53.42546, 28.990358, 50.38215, 34.004887, 46.884514, 38.686916, 42.963097, 43.005875, 38.64843, 46.931194, 33.97106, 50.432312, 28.96152, 53.47866, 23.650341, 56.039673, 18.068064, 58.084778, 12.245223, 59.583416, 6.212356, 60.50501, 0, 60.819, -6.212356, 60.50501, -12.245223, 59.583416, -18.068062, 58.084778, -23.650341, 56.039673, -28.96152, 53.47866, -33.97106, 50.432312, -38.648434, 46.93119, -42.963097, 43.005875, -46.884514, 38.686916, -50.382145, 34.004887, -53.42546, 28.990356, -55.983925, 23.67389, -58.026993, 18.086056, -59.524143, 12.257416, -60.44482, 6.218542, -60.7585, 0, -60.44482, -6.218542, -59.524143, -12.257415, -58.026997, -18.086054, -55.983925, -23.67389, -53.42546, -28.990358, -50.38215, -34.004887, -46.884514, -38.686916, -42.963097, -43.005875, -38.64843, -46.931194, -33.97106, -50.432312, -28.96152, -53.47866, -23.650341, -56.039673, -18.068064, -58.084778, -12.245223, -59.583416, -6.212356, -60.50501, 0, -60.819, 6.212356, -60.50501, 12.245223, -59.583416, 18.068062, -58.084778, 23.650341, -56.039673, 28.96152, -53.47866, 33.97106, -50.432312, 38.648434, -46.93119, 42.963097, -43.005875, 46.884514, -38.686916, 50.382145, -34.004887, 53.42546, -28.990356, 55.983925, -23.67389, 58.026993, -18.086056, 59.524143, -12.257416, 60.44482, -6.218542)
 metadata/_edit_lock_ = true
 
-[node name="Stroke" type="Line2D" parent="HealZone/Ellipse"]
-points = PackedVector2Array(60.7585, 0, 60.4448, 6.21854, 59.5241, 12.2574, 58.027, 18.0861, 55.9839, 23.6739, 53.4255, 28.9904, 50.3821, 34.0049, 46.8845, 38.6869, 42.9631, 43.0059, 38.6484, 46.9312, 33.9711, 50.4323, 28.9615, 53.4787, 23.6503, 56.0397, 18.0681, 58.0848, 12.2452, 59.5834, 6.21236, 60.505, 0, 60.819, -6.21236, 60.505, -12.2452, 59.5834, -18.0681, 58.0848, -23.6503, 56.0397, -28.9615, 53.4787, -33.9711, 50.4323, -38.6484, 46.9312, -42.9631, 43.0059, -46.8845, 38.6869, -50.3821, 34.0049, -53.4255, 28.9904, -55.9839, 23.6739, -58.027, 18.0861, -59.5241, 12.2574, -60.4448, 6.21854, -60.7585, 0, -60.4448, -6.21854, -59.5241, -12.2574, -58.027, -18.0861, -55.9839, -23.6739, -53.4255, -28.9904, -50.3821, -34.0049, -46.8845, -38.6869, -42.9631, -43.0059, -38.6484, -46.9312, -33.9711, -50.4323, -28.9615, -53.4787, -23.6503, -56.0397, -18.0681, -58.0848, -12.2452, -59.5834, -6.21236, -60.505, 0, -60.819, 6.21236, -60.505, 12.2452, -59.5834, 18.0681, -58.0848, 23.6503, -56.0397, 28.9615, -53.4787, 33.9711, -50.4323, 38.6484, -46.9312, 42.9631, -43.0059, 46.8845, -38.6869, 50.3821, -34.0049, 53.4255, -28.9904, 55.9839, -23.6739, 58.027, -18.0861, 59.5241, -12.2574, 60.4448, -6.21854)
+[node name="Stroke" type="Line2D" parent="HealZone/Ellipse" unique_id=459422993]
+points = PackedVector2Array(60.7585, 0, 60.44482, 6.218542, 59.524143, 12.257415, 58.026997, 18.086054, 55.983925, 23.67389, 53.42546, 28.990358, 50.38215, 34.004887, 46.884514, 38.686916, 42.963097, 43.005875, 38.64843, 46.931194, 33.97106, 50.432312, 28.96152, 53.47866, 23.650341, 56.039673, 18.068064, 58.084778, 12.245223, 59.583416, 6.212356, 60.50501, 0, 60.819, -6.212356, 60.50501, -12.245223, 59.583416, -18.068062, 58.084778, -23.650341, 56.039673, -28.96152, 53.47866, -33.97106, 50.432312, -38.648434, 46.93119, -42.963097, 43.005875, -46.884514, 38.686916, -50.382145, 34.004887, -53.42546, 28.990356, -55.983925, 23.67389, -58.026993, 18.086056, -59.524143, 12.257416, -60.44482, 6.218542, -60.7585, 0, -60.44482, -6.218542, -59.524143, -12.257415, -58.026997, -18.086054, -55.983925, -23.67389, -53.42546, -28.990358, -50.38215, -34.004887, -46.884514, -38.686916, -42.963097, -43.005875, -38.64843, -46.931194, -33.97106, -50.432312, -28.96152, -53.47866, -23.650341, -56.039673, -18.068064, -58.084778, -12.245223, -59.583416, -6.212356, -60.50501, 0, -60.819, 6.212356, -60.50501, 12.245223, -59.583416, 18.068062, -58.084778, 23.650341, -56.039673, 28.96152, -53.47866, 33.97106, -50.432312, 38.648434, -46.93119, 42.963097, -43.005875, 46.884514, -38.686916, 50.382145, -34.004887, 53.42546, -28.990356, 55.983925, -23.67389, 58.026993, -18.086056, 59.524143, -12.257416, 60.44482, -6.218542)
 closed = true
 width = 0.0
 sharp_limit = 90.0
 metadata/_edit_lock_ = true
 
-[node name="SlowField" type="Area2D" parent="."]
+[node name="SlowField" type="Area2D" parent="." unique_id=2026951633]
 visible = false
 collision_mask = 3
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowField"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowField" unique_id=667603053]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_3r88c")
 
-[node name="Webs" type="Sprite2D" parent="."]
+[node name="Webs" type="Sprite2D" parent="." unique_id=315914018]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
 z_index = -1
 position = Vector2(0, 3)
 texture = ExtResource("2_3r88c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467600003]
 visible = false
 position = Vector2(0.5, 0.499999)
 scale = Vector2(3, 3)
 shape = SubResource("89")
 
-[node name="SunTimer" type="Timer" parent="."]
+[node name="SunTimer" type="Timer" parent="." unique_id=447707411]
 wait_time = 30.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=686202393]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
 animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("16_kvwqv")
 
-[node name="OverlayComponent" type="Node2D" parent="."]
+[node name="OverlayComponent" type="Node2D" parent="." unique_id=151025187]
 visible = false
 
-[node name="AnimSpriteComp1" type="AnimatedSprite2D" parent="OverlayComponent"]
+[node name="AnimSpriteComp1" type="AnimatedSprite2D" parent="OverlayComponent" unique_id=1234352984]
 sprite_frames = SubResource("11")
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=487174492]
 visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1694872563]
 sprite_frames = SubResource("6")
 animation = &"idle"
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=777905841]
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim"
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=473168645]
 visible = false
 z_index = 6
 position = Vector2(32, 32)
@@ -1138,7 +1136,7 @@ sprite_frames = SubResource("55")
 animation = &"New Anim"
 frame = 3
 
-[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1883590278]
 visible = false
 z_index = 6
 position = Vector2(32, -32)
@@ -1146,14 +1144,14 @@ sprite_frames = SubResource("55")
 animation = &"New Anim"
 frame = 2
 
-[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1552514547]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim"
 frame = 2
 
-[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1319060389]
 visible = false
 z_index = 6
 position = Vector2(-32, 32)
@@ -1161,14 +1159,14 @@ sprite_frames = SubResource("55")
 animation = &"New Anim"
 frame = 1
 
-[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=2080494736]
 visible = false
 z_index = 6
 position = Vector2(-32, -32)
 sprite_frames = SubResource("55")
 animation = &"New Anim"
 
-[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=2138636444]
 visible = false
 z_index = 6
 position = Vector2(0, -32)
@@ -1176,104 +1174,104 @@ sprite_frames = SubResource("55")
 animation = &"New Anim"
 frame = 3
 
-[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=10734453]
 visible = false
 z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("55")
 animation = &"New Anim"
 
-[node name="BuffNodesComponent" parent="." instance=ExtResource("7")]
+[node name="BuffNodesComponent" parent="." unique_id=1007137061 instance=ExtResource("7")]
 giveBuffTo = ["", "Peashooter", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
-[node name="TileArea1" parent="BuffNodesComponent" index="0"]
+[node name="TileArea1" parent="BuffNodesComponent" index="1"]
 visible = false
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 0
 
-[node name="TileArea2" parent="BuffNodesComponent" index="2"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3"]
 visible = false
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_vcved")
-frame = 1
-
-[node name="TileArea3" parent="BuffNodesComponent" index="4"]
-visible = false
-
-[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5"]
+visible = false
+
+[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
-[node name="TileArea5" parent="BuffNodesComponent" index="8"]
-visible = false
-
-[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
-[node name="TileArea6" parent="BuffNodesComponent" index="10"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9"]
 visible = false
 
-[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_vcved")
-frame = 1
-
-[node name="TileArea7" parent="BuffNodesComponent" index="12"]
-visible = false
-
-[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
-[node name="TileArea8" parent="BuffNodesComponent" index="14"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11"]
 visible = false
 
-[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
-[node name="TileArea9" parent="BuffNodesComponent" index="16"]
+[node name="TileArea7" parent="BuffNodesComponent" index="13"]
 visible = false
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_vcved")
+frame = 1
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15"]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_vcved")
+frame = 1
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17"]
+visible = false
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 27
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
 visible = false
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=406806239]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="HealTimer" type="Timer" parent="."]
+[node name="HealTimer" type="Timer" parent="." unique_id=1622921667]
 
-[node name="HealInvisTimer" type="Timer" parent="."]
+[node name="HealInvisTimer" type="Timer" parent="." unique_id=978471311]
 wait_time = 0.1
 one_shot = true
 
-[node name="ResetEatingSpeed" type="Timer" parent="."]
+[node name="ResetEatingSpeed" type="Timer" parent="." unique_id=1062269006]
 wait_time = 5.0
 one_shot = true
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=916671621]
 position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_v30tg")
 frame = 8

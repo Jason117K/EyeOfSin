@@ -51,83 +51,27 @@ func _ready():
 func _process(_delta):
 	if animSpriteComp.animation == "spawn":
 		return
-	else:
-		if canAttack == false:
-			
-			if attack_ray.is_colliding():
-				var collision_count = attack_ray.get_collision_count()
-				for i in range(collision_count):
-					var collider = attack_ray.get_collider(i)
-					if collider and collider.is_in_group("Zombie"):
-						if collider.is_in_group("Green"):
-							print("Is Green")
-							if self.is_in_group("Green"):
-								#print("Is Green, Can Attack")
-								canAttack = true
-						if collider.is_in_group("Purple"):
-							#print("Is Purple")
-							if self.is_in_group("Purple"):
-								print("Can Attack")
-								canAttack = true
-						if collider.is_in_group("Green"):
-							if self.is_in_group("Purple"):
-								continue
-						elif collider.is_in_group("Purple"):
-							if self.is_in_group("Green"):
-								continue
-					else:
-						continue
+		
+	if canAttack == false:
+		check_attack_rays()
 
-
-			if attack_ray_2.is_colliding():
-				var this_collision_count = attack_ray_2.get_collision_count()
-				for i in range(this_collision_count):
-					var this_collider = attack_ray_2.get_collider(i)
-					if this_collider and this_collider.is_in_group("Zombie"):
-						if this_collider.is_in_group("Green"):
-							if self.is_in_group("Green"):
-								#print("Is Green, Can Attack")
-								canAttack = true
-						if this_collider.is_in_group("Purple"):
-						#	print("Is Purple")
-							if self.is_in_group("Purple"):
-							#	print("Can Attack")
-								canAttack = true
-						if this_collider.is_in_group("Green"):
-							if self.is_in_group("Purple"):
-								continue
-						elif this_collider.is_in_group("Purple"):
-							if self.is_in_group("Green"):
-								continue
-					else:
-						continue
-
-			if attack_ray_3.is_colliding():
-				var this_collision_count_2 = attack_ray_3.get_collision_count()
-				for i in range(this_collision_count_2):
-					var this_collider_2 = attack_ray_3.get_collider(i)
-					if this_collider_2 and this_collider_2.is_in_group("Zombie"):
-						if this_collider_2.is_in_group("Green"):
-							if self.is_in_group("Green"):
-								#print("Is Green, Can Attack")
-								canAttack = true
-						if this_collider_2.is_in_group("Purple"):
-						#	print("Is Purple")
-							if self.is_in_group("Purple"):
-							#	print("Can Attack")
-								canAttack = true
-						if this_collider_2.is_in_group("Green"):
-							if self.is_in_group("Purple"):
-								continue
-						elif this_collider_2.is_in_group("Purple"):
-							if self.is_in_group("Green"):
-								continue
-					else:
-						continue
+# Re-check rays immediately on animation finish
+func check_attack_rays():
+	canAttack = false
+	for ray in [attack_ray, attack_ray_2, attack_ray_3]:
+		if ray.is_colliding():
+			for i in range(ray.get_collision_count()):
+				var collider = ray.get_collider(i)
+				if collider and collider.is_in_group("Zombie"):
+					if collider.is_in_group("Green") and self.is_in_group("Green"):
+						canAttack = true
+					elif collider.is_in_group("Purple") and self.is_in_group("Purple"):
+						canAttack = true
 						
 						
 #Cost getter 
 func get_cost():
+	#print("Return , ", cost )
 	return cost
 	
 					
@@ -185,19 +129,20 @@ func spawn_done():
 # Handles either looping attack animation or returning to default 
 func _on_AnimatedSprite_animation_finished():
 	has_shot = false
-	if animSpriteComp.animation == "attack":
-		beatOfDeathCirle.scale = EXPAND_SCALE
-		beatOfDeathCirle.modulate.a = 0.0
+	#if animSpriteComp.animation == "attack":
+		#beatOfDeathCirle.scale = EXPAND_SCALE
+		#beatOfDeathCirle.modulate.a = 0.0
 	
 	if animSpriteComp.animation == "spawn":
 		$LightningSpawn.play()
 		animSpriteComp.visible = false
 		spawn_done()
 		return
+	check_attack_rays()
 	if canAttack:
 		animSpriteComp.animation = animSpriteComp.currentAttackAnim
 		animSpriteComp.play()
-		beat_of_death()
+		#beat_of_death()
 	else:
 			animSpriteComp.animation = animSpriteComp.currentAnim
 			animSpriteComp.play()
@@ -212,7 +157,9 @@ func _on_AnimatedSprite_frame_changed():
 			if(animSpriteComp.frame == 3) && not has_shot:
 				has_shot = true
 				shoot_projectile()
-			
+			if(animSpriteComp.frame == 2):
+				has_shot = false
+						
 func die():
 	PlantManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
@@ -226,7 +173,6 @@ func die_fromClearSpace():
 	
 
 func _on_mouse_entered() -> void:
-	$PreviewNodes/Spider.visible = false
 	$PreviewNodes.visible = true 
 
 
@@ -241,21 +187,21 @@ func finish_spawn():
 	animSpriteComp.play()
 	
 	
-func beat_of_death():
-	# Reset sprite to starting state
-	beatOfDeathCirle.scale = START_SCALE
-	beatOfDeathCirle.modulate.a = 1.0
-	beatOfDeathCirle.visible = true
-
-	var tween: Tween = create_tween()
-	tween.set_parallel(true)  # Run scale and fade simultaneously
-
-	# Scale up
-	tween.tween_property(beatOfDeathCirle, "scale", EXPAND_SCALE, duration)
-
-	# Fade out
-	tween.tween_property(beatOfDeathCirle, "modulate:a", 0.0, duration)
-	$BuffZone/CollisionShape2D.disabled = false
+#func beat_of_death():
+	## Reset sprite to starting state
+	#beatOfDeathCirle.scale = START_SCALE
+	#beatOfDeathCirle.modulate.a = 1.0
+	#beatOfDeathCirle.visible = true
+#
+	#var tween: Tween = create_tween()
+	#tween.set_parallel(true)  # Run scale and fade simultaneously
+#
+	## Scale up
+	#tween.tween_property(beatOfDeathCirle, "scale", EXPAND_SCALE, duration)
+#
+	## Fade out
+	#tween.tween_property(beatOfDeathCirle, "modulate:a", 0.0, duration)
+	#$BuffZone/CollisionShape2D.disabled = false
 	
 func set_attack_ray():
 	var attack_rays = [attack_ray,attack_ray_2,attack_ray_3]
