@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://_Entities/Demons/Cards/DESELECT_CARD.png" id="12_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://w4n34nhafrdq" path="res://_Entities/Demons/Cards/WORDSWAP_CARD.png" id="13_vvged"]
 [ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://_Assets/Misc/CODEX_CARD.png" id="14_04elx"]
-[ext_resource type="PackedScene" uid="uid://df0lebnns0vfl" path="res://_UI/Buttons/codex_button.tscn" id="14_vvged"]
 [ext_resource type="Texture2D" uid="uid://chfuimepfak3s" path="res://_Assets/UI/DemonCard_FastForward.png" id="15_e3ig8"]
+[ext_resource type="Texture2D" uid="uid://d181tymrqsycn" path="res://_Assets/UI/DemonCard_BloodRain_Large.png" id="17_bcru6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
 bg_color = Color(0, 0, 0, 0.788235)
@@ -207,13 +207,6 @@ theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("11_iafbj")
 
-[node name="HeartLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1891909463]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_vvged")
-text = "0
-"
-horizontal_alignment = 1
-
 [node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
 layout_mode = 2
 
@@ -222,13 +215,6 @@ layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("11_bcru6")
-
-[node name="PortalLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1642214617]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_vvged")
-text = "0
-"
-horizontal_alignment = 1
 
 [node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
 layout_mode = 2
@@ -273,14 +259,14 @@ theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = SubResource("3")
 icon = ExtResource("15_e3ig8")
 
-[node name="CodexBG" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=668099888 instance=ExtResource("14_vvged")]
-visible = false
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=958387944]
 layout_mode = 2
-size_flags_horizontal = 1
-mouse_filter = 2
 
-[node name="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/CodexBG" index="0" unique_id=919352965]
-mouse_filter = 2
+[node name="SwapAbilityButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=309884997]
+layout_mode = 2
+theme_override_constants/icon_max_width = 268
+theme_override_styles/normal = SubResource("3")
+icon = ExtResource("17_bcru6")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
@@ -292,6 +278,3 @@ mouse_filter = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton" to="." method="_on_codex_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/CodexBG/HBoxContainer/OpenDemonCodexButton" to="." method="_on_open_demon_codex_button_pressed"]
-
-[editable path="PanelContainer/VBoxContainer/HBoxContainer/CodexBG"]

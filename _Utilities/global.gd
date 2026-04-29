@@ -18,6 +18,7 @@ var green_portal = null
 var purple_portal = null 
 var gameIsStarted := false
 var hero_demon_summoned := false
+var blood_rain 
 var current_level
 var hero_demon 
 
@@ -151,8 +152,11 @@ func register_hero_demon(new_hero_demon):
 func hero_demon_is_summoned():
 	return hero_demon_summoned
 	
-	
-	
+func register_blood_rain(new_blood_rain):
+	blood_rain = new_blood_rain
+
+func start_blood_rain():
+	blood_rain.begin()
 	
 	
 	

@@ -86,6 +86,7 @@
 [ext_resource type="Texture2D" uid="uid://dv828bwpttdxc" path="res://_Assets/Environment/Props/GraveStonePURPLE15.png" id="84_7fnes"]
 [ext_resource type="Texture2D" uid="uid://rmgjkwwo8qj8" path="res://_Assets/Environment/Props/GraveStonePURPLE16.png" id="85_nwhm3"]
 [ext_resource type="Texture2D" uid="uid://bwx5cm4dsd64q" path="res://_Assets/Environment/Props/GraveStonePURPLE17.png" id="86_18xgo"]
+[ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/blood_rain.gd" id="87_q7mac"]
 [ext_resource type="Texture2D" uid="uid://dlibutqbo27r5" path="res://_Assets/Particles/RainText.png" id="87_tcopw"]
 [ext_resource type="Texture2D" uid="uid://c0vryk05d320o" path="res://_Assets/Particles/Splashes-Sheet.png" id="88_1a115"]
 
@@ -4277,8 +4278,10 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="BloodRain" type="Node" parent="." unique_id=2119898098]
+script = ExtResource("87_q7mac")
 
 [node name="Raindrops" type="GPUParticles2D" parent="BloodRain" unique_id=1241746169]
+visible = false
 z_index = 1
 texture_filter = 1
 position = Vector2(417, 207)
@@ -4291,6 +4294,7 @@ visibility_rect = Rect2(-1000, -1000, 2000, 2000)
 process_material = SubResource("ParticleProcessMaterial_wqtmm")
 
 [node name="RainSplash" type="GPUParticles2D" parent="BloodRain" unique_id=1334956151]
+visible = false
 z_index = 1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_q7mac")
