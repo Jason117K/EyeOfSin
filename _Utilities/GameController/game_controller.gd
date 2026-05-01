@@ -128,6 +128,7 @@ func swap_scenes():
 	#for child in current_scene
 	#plant_manager = current_scene.find_child("PlantManager")
 	print("PlantManager Is ", plant_manager)
+	#Swap Hero Heart Demon Here 
 	plant_manager.swap_heart()
 	
 func get_alt_dimension():

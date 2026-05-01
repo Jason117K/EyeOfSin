@@ -18,7 +18,7 @@ var has_shot := false
 @onready var attack_ray = $DMG_RayCast2D
 @onready var attack_ray_2 = $DMG_RayCast2D2
 @onready var attack_ray_3 = $DMG_RayCast2D3
-
+@onready var damage_zone := $DMGZone
 # Buff Nodes Comp 
 @onready var buffNodes = $BuffNodesComponent
 #Shoot Location References 
@@ -26,7 +26,7 @@ var has_shot := false
 @onready var shootPosition2 = $ShootSpawn2
 @onready var shootPosition3 = $ShootSpawn3
 #Circle Sprite for Special Move
-@onready var beatOfDeathCirle = $BeatOfDeathCircle
+#@onready var beatOfDeathCirle = $BeatOfDeathCircle
 
 const EXPAND_SCALE: Vector2 = Vector2(0.35, 0.35)  # How large the sprite grows
 const START_SCALE: Vector2 = Vector2(0.1, 0.1)
@@ -36,7 +36,7 @@ func _ready():
 	print("Hero DEMON Ready")
 	Global.register_hero_demon(self)
 	$PreviewNodes/AnimatedSprite2D.hide()
-	set_attack_ray()
+	set_attack_collision()
 	animSpriteComp = $AnimatedSprite2D
 	animSpriteComp.animation = "spawn"
 
@@ -206,16 +206,43 @@ func finish_spawn():
 	#tween.tween_property(beatOfDeathCirle, "modulate:a", 0.0, duration)
 	#$BuffZone/CollisionShape2D.disabled = false
 	
-func set_attack_ray():
+func set_attack_collision():
 	var attack_rays = [attack_ray,attack_ray_2,attack_ray_3]
-	for attacking_ray in attack_rays:
-		if self.is_in_group("Green"):
-			attacking_ray.collision_mask = 3
+	if self.is_in_group("Green"):
+		damage_zone.set_collision_mask_value(1,false)
+		damage_zone.set_collision_mask_value(2,false)
+		damage_zone.set_collision_mask_value(3,true)
+		for attacking_ray in attack_rays:
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,false)
 			attacking_ray.set_collision_mask_value(3,true)
-		else:
+	else:
+		damage_zone.set_collision_mask_value(1,false)
+		damage_zone.set_collision_mask_value(2,true)
+		damage_zone.set_collision_mask_value(3,false)
+		for attacking_ray in attack_rays:
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,true)
 			attacking_ray.set_collision_mask_value(3,false)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	#for attacking_ray in attack_rays:
+		#if self.is_in_group("Green"):
+			#attacking_ray.collision_mask = 3
+			#attacking_ray.set_collision_mask_value(1,false)
+			#attacking_ray.set_collision_mask_value(2,false)
+			#attacking_ray.set_collision_mask_value(3,true)
+		#else:
+			#attacking_ray.set_collision_mask_value(1,false)
+			#attacking_ray.set_collision_mask_value(2,true)
+			#attacking_ray.set_collision_mask_value(3,false)
+	
 	

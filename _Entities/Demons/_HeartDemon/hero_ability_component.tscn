@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cmmvuo0uc4nvr"]
+
+[ext_resource type="Script" uid="uid://b5fmwvjqobl76" path="res://_Entities/Demons/_HeartDemon/hero_ability_component.gd" id="1_txri4"]
+[ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="4_yipsg"]
+
+[sub_resource type="Shader" id="Shader_xbg3e"]
+code = "shader_type canvas_item;
+
+uniform float fill_amount : hint_range(0.0, 1.0) = 0.0;
+uniform vec4 fill_color : source_color = vec4(1.0, 0.0, 0.0, 1.0);
+uniform vec4 empty_color : source_color = vec4(0.0, 0.0, 0.0, 0.0);
+
+void fragment() {
+    // UV.y is 0.0 at the top, 1.0 at the bottom
+    // We want to fill from bottom up, so we invert it
+    float from_bottom = 1.0 - UV.y;
+
+    if (from_bottom <= fill_amount) {
+        COLOR = fill_color;
+    } else {
+        COLOR = empty_color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uohdi"]
+shader = SubResource("Shader_xbg3e")
+shader_parameter/fill_amount = 0.0
+shader_parameter/fill_color = Color(1, 1, 1, 1)
+shader_parameter/empty_color = Color(0, 0, 0, 0)
+
+[node name="HeroAbilityComponent" type="Node" unique_id=55620515]
+script = ExtResource("1_txri4")
+
+[node name="Control" type="Control" parent="." unique_id=417067064]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CooldownVisual" type="ColorRect" parent="Control" unique_id=1832249708]
+material = SubResource("ShaderMaterial_uohdi")
+layout_mode = 0
+offset_left = 674.0
+offset_top = 313.0
+offset_right = 734.0
+offset_bottom = 373.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Control" unique_id=1663942210]
+visible = false
+layout_mode = 0
+offset_left = 605.045
+offset_top = 311.0
+offset_right = 1033.045
+offset_bottom = 739.0
+scale = Vector2(0.15, 0.15)
+mouse_filter = 2
+icon = ExtResource("4_yipsg")
+
+[node name="ActivateAbilityButton" type="Button" parent="Control" unique_id=350313211]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 311.0
+offset_right = 1100.0
+offset_bottom = 739.0
+scale = Vector2(0.15, 0.15)
+icon = ExtResource("4_yipsg")

@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bnlhoalxw13qu" path="res://_Assets/Environment/Props/BeatOfDeathCircle.png" id="2_6ofan"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_x555b"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="3_2gwo5"]
-[ext_resource type="Script" uid="uid://d2d3t0ru76fm2" path="res://_Entities/Demons/_HeartDemon/heart_buff_zone.gd" id="3_5i6up"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="4_nbddu"]
 [ext_resource type="Texture2D" uid="uid://c4m14uxs4uhld" path="res://_Entities/Demons/SpriteSheets/HeartSplitterHero-Sheet.png" id="5_x555b"]
+[ext_resource type="PackedScene" uid="uid://cmmvuo0uc4nvr" path="res://_Entities/Demons/_HeartDemon/hero_ability_component.tscn" id="14_tfp6l"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="18_qifgx"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="19_chpte"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="20_eny5u"]
@@ -17,6 +17,9 @@
 [ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="31_w3l75"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ofan"]
+size = Vector2(129, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i6up"]
 size = Vector2(129, 121)
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -942,18 +945,27 @@ z_index = 3
 collision_layer = 3
 script = ExtResource("1_c8ds1")
 
-[node name="BeatOfDeathCircle" type="Sprite2D" parent="." unique_id=943859212]
+[node name="BeatOfDeathCircle" type="Sprite2D" parent="." unique_id=346922753]
 visible = false
 position = Vector2(-3.8147e-06, 6)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_6ofan")
 
+[node name="DMGZone" type="Area2D" parent="." unique_id=1596722407 groups=["HeartBuff"]]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DMGZone" unique_id=2000516649]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_6ofan")
+
 [node name="BuffZone" type="Area2D" parent="." unique_id=1270525213 groups=["HeartBuff"]]
-script = ExtResource("3_5i6up")
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuffZone" unique_id=1674089987]
 position = Vector2(0.5, 3.5)
-shape = SubResource("RectangleShape2D_6ofan")
+shape = SubResource("RectangleShape2D_5i6up")
 
 [node name="DemonShadow" type="Sprite2D" parent="." unique_id=1234462110]
 visible = false
@@ -1047,83 +1059,83 @@ collide_with_bodies = false
 visible = false
 giveBuffTo = ["Sunflower", "", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
-[node name="TileArea1" parent="BuffNodesComponent" index="1"]
+[node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 6
 
-[node name="TileArea2" parent="BuffNodesComponent" index="3"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3" unique_id=1222914378]
 visible = false
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 3
-
-[node name="TileArea3" parent="BuffNodesComponent" index="5"]
-visible = false
-
-[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4" unique_id=727498254]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea4" parent="BuffNodesComponent" index="7"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5" unique_id=963343398]
 visible = false
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 3
-
-[node name="TileArea5" parent="BuffNodesComponent" index="9"]
-visible = false
-
-[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
+[node name="BloodTile3" parent="BuffNodesComponent" index="6" unique_id=2066119592]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea6" parent="BuffNodesComponent" index="11"]
+[node name="TileArea4" parent="BuffNodesComponent" index="7" unique_id=1195978361]
 visible = false
 
-[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 3
-
-[node name="TileArea7" parent="BuffNodesComponent" index="13"]
-visible = false
-
-[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea8" parent="BuffNodesComponent" index="15"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9" unique_id=334855413]
 visible = false
 
-[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10" unique_id=1290243908]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea9" parent="BuffNodesComponent" index="17"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11" unique_id=1969648199]
 visible = false
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
+[node name="BloodTile6" parent="BuffNodesComponent" index="12" unique_id=748963459]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 3
+
+[node name="TileArea7" parent="BuffNodesComponent" index="13" unique_id=1022902709]
+visible = false
+
+[node name="BloodTile7" parent="BuffNodesComponent" index="14" unique_id=1211874094]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 3
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15" unique_id=1026513902]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16" unique_id=523478326]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 3
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17" unique_id=1370979832]
+visible = false
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18" unique_id=352922726]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 15
 frame_progress = 0.606092
 
-[node name="TileArea10" parent="BuffNodesComponent" index="19"]
+[node name="TileArea10" parent="BuffNodesComponent" index="19" unique_id=1590585108]
 visible = false
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
 
 [node name="Timer" type="Timer" parent="." unique_id=1948747935]
@@ -1148,6 +1160,8 @@ position = Vector2(36, 28)
 
 [node name="ShootSpawn3" type="Node2D" parent="." unique_id=162759693]
 position = Vector2(32, 3)
+
+[node name="HeroAbilityComponent" parent="." unique_id=55620515 instance=ExtResource("14_tfp6l")]
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
