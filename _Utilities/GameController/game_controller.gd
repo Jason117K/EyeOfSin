@@ -95,7 +95,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 
 
 func swap_scenes():
-	Global.start_blood_rain()
+	Global.start_swap_ability()
 	if can_swap:
 		can_swap = false
 	#check

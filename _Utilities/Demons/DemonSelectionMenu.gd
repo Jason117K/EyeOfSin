@@ -2,6 +2,8 @@ extends Control
 #PlantSelectionMenu.gd
 
 @export var is_alt := false
+var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
+#var swap_ability_instance : Node
 
 var root
 var selected_plant = sunflower_scene  # Holds the currently selected plant scene
@@ -64,6 +66,12 @@ var canSwapScenes = false
 var doubleSpeed = false 
 
 func _ready():
+	var swap_ability_instance = preload("res://_Entities/SwapAbilities/blood_rain.tscn").instantiate()
+	print("swap_ability_instance is : ",  swap_ability_instance)
+	get_parent().call_deferred("add_child", swap_ability_instance)
+	#print("swap_ability_i")
+#	swap_ability_instance._ready()
+	
 	setPanelContainerWidth(100)
 	#Global.plant_selection_menu = self
 	if is_alt:
@@ -252,7 +260,7 @@ func _on_PeashooterButton_pressed():
 	
 	currentPlantLabel.text = "SPIDER SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
-	currentPlantCost.text = str(temp_instance.get_cost())
+	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	print("Peashooter selected")
@@ -295,7 +303,7 @@ func _on_WalnutButton_pressed():
 	setCanRemoveFalse()
 	currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
-	currentPlantCost.text = str(temp_instance.get_cost())
+	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	var WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
 	#WalnutButton.release_focus()
@@ -311,7 +319,7 @@ func _on_MawButton_pressed():
 	setCanRemoveFalse()
 	currentPlantLabel.text = "MAW SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
-	currentPlantCost.text = str(temp_instance.get_cost())
+	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 		
 	print("Maw Selected")
@@ -326,7 +334,7 @@ func _on_EggButton_pressed():
 	setCanRemoveFalse()
 	currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
-	currentPlantCost.text = str(temp_instance.get_cost())
+	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	print("EggWorm Selected")
@@ -343,7 +351,7 @@ func _on_HiveButton_pressed():
 	setCanRemoveFalse()	
 	currentPlantLabel.text = "HIVE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
-	currentPlantCost.text = str(temp_instance.get_cost())
+	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 		
 	print("Hive Selected")
@@ -579,7 +587,7 @@ func _on_heart_button_pressed() -> void:
 	setCanRemoveFalse()
 	currentPlantLabel.text = "HEART DEMON SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartLabel
-	currentPlantCost.text = str(temp_instance.get_cost())
+	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	var HeartButton = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 	#WalnutButton.release_focus()

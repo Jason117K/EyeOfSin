@@ -86,9 +86,6 @@
 [ext_resource type="Texture2D" uid="uid://dv828bwpttdxc" path="res://_Assets/Environment/Props/GraveStonePURPLE15.png" id="84_7fnes"]
 [ext_resource type="Texture2D" uid="uid://rmgjkwwo8qj8" path="res://_Assets/Environment/Props/GraveStonePURPLE16.png" id="85_nwhm3"]
 [ext_resource type="Texture2D" uid="uid://bwx5cm4dsd64q" path="res://_Assets/Environment/Props/GraveStonePURPLE17.png" id="86_18xgo"]
-[ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/blood_rain.gd" id="87_q7mac"]
-[ext_resource type="Texture2D" uid="uid://dlibutqbo27r5" path="res://_Assets/Particles/RainText.png" id="87_tcopw"]
-[ext_resource type="Texture2D" uid="uid://c0vryk05d320o" path="res://_Assets/Particles/Splashes-Sheet.png" id="88_1a115"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkj4a"]
 texture = ExtResource("6_t7wxb")
@@ -3630,53 +3627,6 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
-[sub_resource type="Curve" id="Curve_1a115"]
-_data = [Vector2(0.006211184, 0.012294054), 0.0, 0.0, 0, 0, Vector2(0.24637681, 0.50774527), 0.0, 0.0, 0, 0, Vector2(0.77639747, 0.5748709), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_q7mac"]
-curve = SubResource("Curve_1a115")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wqtmm"]
-lifetime_randomness = 1.0
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(100, -400, 0)
-emission_shape_scale = Vector3(1, 0.1, 1)
-emission_shape = 3
-emission_box_extents = Vector3(750, 1, 1)
-angle_min = 10.0000105
-angle_max = 10.0000105
-direction = Vector3(-0.4, 1, 0)
-spread = 0.0
-initial_velocity_min = 450.0
-initial_velocity_max = 470.0
-gravity = Vector3(-2, 25, 0)
-color = Color(1, 0, 0, 1)
-alpha_curve = SubResource("CurveTexture_q7mac")
-sub_emitter_mode = 2
-sub_emitter_amount_at_end = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q7mac"]
-particles_animation = true
-particles_anim_h_frames = 3
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_wqtmm"]
-_data = [Vector2(0, 0.56208503), 0.0, 0.0, 0, 0, Vector2(0.16149068, 0.56208503), 0.0, 0.0, 0, 0, Vector2(0.24430642, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_hnpjm"]
-curve = SubResource("Curve_wqtmm")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k4e5a"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-color = Color(1, 0, 0, 1)
-alpha_curve = SubResource("CurveTexture_hnpjm")
-anim_speed_min = 4.0
-anim_speed_max = 4.0
-
 [node name="Level0-3" type="Control" unique_id=4920149 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -4276,36 +4226,6 @@ offset_right = 772.0
 offset_bottom = 433.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="BloodRain" type="Node" parent="." unique_id=2119898098]
-script = ExtResource("87_q7mac")
-
-[node name="Raindrops" type="GPUParticles2D" parent="BloodRain" unique_id=1241746169]
-visible = false
-z_index = 1
-texture_filter = 1
-position = Vector2(417, 207)
-amount = 1000
-sub_emitter = NodePath("../RainSplash")
-texture = ExtResource("87_tcopw")
-lifetime = 2.0
-randomness = 1.0
-visibility_rect = Rect2(-1000, -1000, 2000, 2000)
-process_material = SubResource("ParticleProcessMaterial_wqtmm")
-
-[node name="RainSplash" type="GPUParticles2D" parent="BloodRain" unique_id=1334956151]
-visible = false
-z_index = 1
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_q7mac")
-emitting = false
-amount = 1000
-texture = ExtResource("88_1a115")
-lifetime = 1.2
-one_shot = true
-preprocess = 0.01
-explosiveness = 0.5
-process_material = SubResource("ParticleProcessMaterial_k4e5a")
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]

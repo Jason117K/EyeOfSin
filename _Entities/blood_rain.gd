@@ -4,7 +4,8 @@ extends Node
 var all_zombies = []
 
 func _ready() -> void:
-	Global.register_blood_rain(self)
+	print("Swap Ability Ready")
+	Global.register_swap_ability(self)
 	
 
 	

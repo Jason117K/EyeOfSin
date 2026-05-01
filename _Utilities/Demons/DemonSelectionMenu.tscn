@@ -49,6 +49,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1")
+is_alt = null
+highlight_border_thickness = null
+highlight_border_color = null
 
 [node name="CurrentPlantLabel" type="Label" parent="." unique_id=29852823]
 visible = false

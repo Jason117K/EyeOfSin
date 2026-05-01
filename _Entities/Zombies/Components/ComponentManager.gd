@@ -36,9 +36,11 @@ func blood_slow():
 	add_child(reset_speed_timer)
 	reset_speed_timer.start()
 
+
+#TODO Undo The Hue Shift
 func undoBloodSlow():
 	speedComp.setSpeed(speedComp.getOriginalSpeed())
-	Global.stop_blood_rain()
+	Global.stop_swap_ability()
 	
 	
 	
