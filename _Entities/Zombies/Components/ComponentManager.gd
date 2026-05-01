@@ -28,20 +28,12 @@ var reset_speed_timer : Timer
 
 func blood_slow():
 	speedComp.setSpeed(speedComp.getOriginalSpeed()/3)
-	reset_speed_timer = Timer.new()
-	reset_speed_timer.one_shot = true 
-	reset_speed_timer.autostart = false
-	reset_speed_timer.wait_time = 5
-	reset_speed_timer.timeout.connect(undoBloodSlow)
-	add_child(reset_speed_timer)
-	reset_speed_timer.start()
-
-
-#TODO Undo The Hue Shift
-func undoBloodSlow():
-	speedComp.setSpeed(speedComp.getOriginalSpeed())
-	Global.stop_swap_ability()
+	set_hue_shift(0)
 	
+func undoBloodSlow():
+	reset_speed()
+	print("OG Hue Shift Is ", animatedSprite.original_hue_shift)
+	set_hue_shift(animatedSprite.original_hue_shift)
 	
 	
 	
@@ -62,7 +54,7 @@ func fightDroneExplode():
 	healthComp.willExplode()
 	
 #Tells the zombie to stop one on one drone combat
-func stopFightingDrone():
+func reset_speed():
 	speedComp.setSpeed(speedComp.getOriginalSpeed())
 	
 #Special Move handler for pole vaulter specifically 

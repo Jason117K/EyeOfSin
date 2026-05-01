@@ -76,7 +76,7 @@ func die():
 	# Emit a died signal and make sure fighting stops before killing 
 	emit_signal("drone_died", self)
 	if current_target and is_instance_valid(current_target):
-		current_target.stopFightingDrone()
+		current_target.reset_speed()
 	print("Drone Free Self")
 	queue_free()
 

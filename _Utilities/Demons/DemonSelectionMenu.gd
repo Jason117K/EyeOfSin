@@ -3,7 +3,7 @@ extends Control
 
 @export var is_alt := false
 var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
-#var swap_ability_instance : Node
+var swap_ability_instance : Node
 
 var root
 var selected_plant = sunflower_scene  # Holds the currently selected plant scene
@@ -66,8 +66,8 @@ var canSwapScenes = false
 var doubleSpeed = false 
 
 func _ready():
-	var swap_ability_instance = preload("res://_Entities/SwapAbilities/blood_rain.tscn").instantiate()
-	print("swap_ability_instance is : ",  swap_ability_instance)
+	swap_ability_instance = swap_ability.instantiate()
+	#print("swap_ability_instance is : ",  swap_ability_instance)
 	get_parent().call_deferred("add_child", swap_ability_instance)
 	#print("swap_ability_i")
 #	swap_ability_instance._ready()

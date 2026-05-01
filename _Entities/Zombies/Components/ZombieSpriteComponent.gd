@@ -1,14 +1,17 @@
 class_name ZombieSpriteComp extends AnimatedSprite2D
 #ZombieSpriteComp
 
+var count = 1
 
 @export_range(-180, 180) var hue_shift: float = -86.0: #25.0
 	set(value):
 		hue_shift = clamp(value, -180.0, 180.0)
+		print(hue_shift,"Apply HUE Shift ", count)
 		_apply_hue_shift()
 
 var demon_hue_shift = preload("res://_Common/Shaders/DemonHueShift.gdshader")
 var thisMaterial
+var original_hue_shift := -86
 
 @export var targetColorString := "ff0013"
 @export var targetColor : Color 
@@ -25,16 +28,23 @@ var isInjured
 
 var isDead = false
 var specialMove = false 
+var set_hue := false
+
 #Allow Summons While Webbed?
 #Maybe Give Zombies With Special Animations Own Sprite Comp Controller
 
 
 
 func _ready() -> void:
-	_apply_hue_shift()
+	#print(get_parent(), "Apply Hue SHIFT ", count)
+	#if get_parent().is_in_group("Purple"):
+		#print("Apply Parent Is Purple And Hue Shift is : ", hue_shift)
+	#if get_parent().is_in_group("Green"):
+		#print("Apply Parent Is Green And Hue Shift is : ", hue_shift)
+	#_apply_hue_shift()
 	# Ensure updates on animation changes
-	animation_changed.connect(_apply_hue_shift)
-	frame_changed.connect(_apply_hue_shift)
+	#animation_changed.connect(_apply_hue_shift)
+	#frame_changed.connect(_apply_hue_shift)
 	
 	self.connect("animation_changed",_on_animation_changed)
 	thisMaterial = material.duplicate()
@@ -146,6 +156,7 @@ func _on_AnimatedSprite_frame_changed():
 		pass
 
 func _apply_hue_shift() -> void:
+	print("Apply Hue Shift ", count)
 	
 	# Create material if needed
 	if material == null:
@@ -157,6 +168,11 @@ func _apply_hue_shift() -> void:
 		material.shader = demon_hue_shift
 		material.set_shader_parameter("glow_color", targetGlowColor)
 		material.set_shader_parameter("hue_shift_degrees", hue_shift)
+		if set_hue == false :
+			original_hue_shift = hue_shift
+			set_hue = true 
+			print(original_hue_shift, "Apply Hue Shift First ", count)
+	count += 1 
 		
 		
 		

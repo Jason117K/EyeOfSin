@@ -35,8 +35,8 @@ func make_spawn_slow_on_death():
 	
 	
 # Tells Comp Manager the Zombie Stopped Fighting a Hive Drone 
-func stopFightingDrone():
-	compManager.stopFightingDrone()
+func reset_speed():
+	compManager.reset_speed()
 
 #Tells Comp Manager This Zombie Will Explode When Killed 
 func fightDroneExplode():
@@ -89,8 +89,10 @@ func change_dimensions(new_position):
 	
 func blood_slow():
 	compManager.blood_slow()
-	set_hue_shift(0)
 	
+	
+func undoBloodSlow():
+	compManager.undoBloodSlow()
 	
 	
 	

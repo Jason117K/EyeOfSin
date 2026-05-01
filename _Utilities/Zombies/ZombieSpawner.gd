@@ -133,6 +133,8 @@ func spawn_zombie():
 					zombie_instance._ready()
 				else:
 					zombie_instance.add_to_group("Purple")
+					zombie_instance.set_hue_shift(-86)
+				#get_parent().add_child(zombie_instance)  # Add to the GameLayer
 				$WaveDelay.start()
 				#print("Spawn Wave 1")
 				random_adjustment2 = get_weighted_range_speed()
