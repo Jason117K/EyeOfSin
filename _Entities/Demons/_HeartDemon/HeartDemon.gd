@@ -144,12 +144,12 @@ func _on_AnimatedSprite_animation_finished():
 	check_attack_rays()
 	if canAttack:
 		animSpriteComp.animation = animSpriteComp.currentAttackAnim
-		animSpriteComp.play()
-		#beat_of_death()
 	else:
-			animSpriteComp.animation = animSpriteComp.currentAnim
-			animSpriteComp.play()
-			$BuffZone/CollisionShape2D.disabled = true
+		animSpriteComp.animation = animSpriteComp.currentAnim
+	
+	animSpriteComp.play()
+	
+	#$BuffZone/CollisionShape2D.disabled = true
 		
 
 

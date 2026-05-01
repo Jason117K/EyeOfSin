@@ -2,8 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cbg411w54cgi4" path="res://_Entities/Demons/BloodBuff/BuffNodes.gd" id="2"]
+[ext_resource type="SpriteFrames" uid="uid://brbpbxcqn0xja" path="res://_Common/Tres Resources/blood_buff_spriteframes.tres" id="2_flh7w"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="3"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="4_f2smc"]
+
+[sub_resource type="RectangleShape2D" id="88"]
+size = Vector2(21.3334, 21.3334)
 
 [sub_resource type="AtlasTexture" id="60"]
 atlas = ExtResource("3")
@@ -116,101 +120,6 @@ region = Rect2(832, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="87"]
 atlas = ExtResource("3")
 region = Rect2(864, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_f2smc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("60")
-}, {
-"duration": 1.0,
-"texture": SubResource("61")
-}, {
-"duration": 1.0,
-"texture": SubResource("62")
-}, {
-"duration": 1.0,
-"texture": SubResource("63")
-}, {
-"duration": 1.0,
-"texture": SubResource("64")
-}, {
-"duration": 1.0,
-"texture": SubResource("65")
-}, {
-"duration": 1.0,
-"texture": SubResource("66")
-}, {
-"duration": 1.0,
-"texture": SubResource("67")
-}, {
-"duration": 1.0,
-"texture": SubResource("68")
-}, {
-"duration": 1.0,
-"texture": SubResource("69")
-}, {
-"duration": 1.0,
-"texture": SubResource("70")
-}, {
-"duration": 1.0,
-"texture": SubResource("71")
-}, {
-"duration": 1.0,
-"texture": SubResource("72")
-}, {
-"duration": 1.0,
-"texture": SubResource("73")
-}, {
-"duration": 1.0,
-"texture": SubResource("74")
-}, {
-"duration": 1.0,
-"texture": SubResource("75")
-}, {
-"duration": 1.0,
-"texture": SubResource("76")
-}, {
-"duration": 1.0,
-"texture": SubResource("77")
-}, {
-"duration": 1.0,
-"texture": SubResource("78")
-}, {
-"duration": 1.0,
-"texture": SubResource("79")
-}, {
-"duration": 1.0,
-"texture": SubResource("80")
-}, {
-"duration": 1.0,
-"texture": SubResource("81")
-}, {
-"duration": 1.0,
-"texture": SubResource("82")
-}, {
-"duration": 1.0,
-"texture": SubResource("83")
-}, {
-"duration": 1.0,
-"texture": SubResource("84")
-}, {
-"duration": 1.0,
-"texture": SubResource("85")
-}, {
-"duration": 1.0,
-"texture": SubResource("86")
-}, {
-"duration": 1.0,
-"texture": SubResource("87")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="88"]
-size = Vector2(21.3334, 21.3334)
 
 [sub_resource type="AtlasTexture" id="56"]
 atlas = ExtResource("1")
@@ -337,24 +246,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BuffNodesComponent" type="Node2D"]
+[node name="BuffNodesComponent" type="Node2D" unique_id=804653098]
 script = ExtResource("2")
 
-[node name="CenterBuff" type="AnimatedSprite2D" parent="."]
+[node name="CenterBuff" type="AnimatedSprite2D" parent="." unique_id=880081828]
 visible = false
-sprite_frames = SubResource("SpriteFrames_f2smc")
+sprite_frames = ExtResource("2_flh7w")
 autoplay = "default"
 
-[node name="TileArea1" type="Area2D" parent="."]
+[node name="TileArea1" type="Area2D" parent="." unique_id=1583416791]
 position = Vector2(32, 0)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea1"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea1" unique_id=493772299]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="." unique_id=1525047237]
 z_index = 6
 position = Vector2(32, 0)
 sprite_frames = SubResource("55")
@@ -363,16 +272,16 @@ autoplay = "Drip"
 frame = 16
 script = ExtResource("4_f2smc")
 
-[node name="TileArea2" type="Area2D" parent="."]
+[node name="TileArea2" type="Area2D" parent="." unique_id=1222914378]
 position = Vector2(32, 32)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea2"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea2" unique_id=838074481]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="." unique_id=727498254]
 z_index = 6
 position = Vector2(32, 32)
 sprite_frames = SubResource("55")
@@ -380,16 +289,16 @@ animation = &"Drip"
 autoplay = "Drip"
 script = ExtResource("4_f2smc")
 
-[node name="TileArea3" type="Area2D" parent="."]
+[node name="TileArea3" type="Area2D" parent="." unique_id=963343398]
 position = Vector2(32, -32)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea3"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea3" unique_id=362020715]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile3" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile3" type="AnimatedSprite2D" parent="." unique_id=2066119592]
 z_index = 6
 position = Vector2(32, -32)
 sprite_frames = SubResource("55")
@@ -398,16 +307,16 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("4_f2smc")
 
-[node name="TileArea4" type="Area2D" parent="."]
+[node name="TileArea4" type="Area2D" parent="." unique_id=1195978361]
 position = Vector2(-32, 0)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea4"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea4" unique_id=1425430868]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile4" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile4" type="AnimatedSprite2D" parent="." unique_id=227563038]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
@@ -416,16 +325,16 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("4_f2smc")
 
-[node name="TileArea5" type="Area2D" parent="."]
+[node name="TileArea5" type="Area2D" parent="." unique_id=334855413]
 position = Vector2(-32, 32)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea5"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea5" unique_id=1091949743]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile5" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile5" type="AnimatedSprite2D" parent="." unique_id=1290243908]
 z_index = 6
 position = Vector2(-32, 32)
 sprite_frames = SubResource("55")
@@ -434,16 +343,16 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("4_f2smc")
 
-[node name="TileArea6" type="Area2D" parent="."]
+[node name="TileArea6" type="Area2D" parent="." unique_id=1969648199]
 position = Vector2(-32, -32)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea6"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea6" unique_id=927270191]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile6" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile6" type="AnimatedSprite2D" parent="." unique_id=748963459]
 z_index = 6
 position = Vector2(-32, -32)
 sprite_frames = SubResource("55")
@@ -452,16 +361,16 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("4_f2smc")
 
-[node name="TileArea7" type="Area2D" parent="."]
+[node name="TileArea7" type="Area2D" parent="." unique_id=1022902709]
 position = Vector2(0, -32)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea7"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea7" unique_id=1986470664]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile7" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile7" type="AnimatedSprite2D" parent="." unique_id=1211874094]
 z_index = 6
 position = Vector2(0, -32)
 sprite_frames = SubResource("55")
@@ -470,16 +379,16 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("4_f2smc")
 
-[node name="TileArea8" type="Area2D" parent="."]
+[node name="TileArea8" type="Area2D" parent="." unique_id=1026513902]
 position = Vector2(0, 32)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea8"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea8" unique_id=412606561]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile8" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile8" type="AnimatedSprite2D" parent="." unique_id=523478326]
 z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("55")
@@ -488,16 +397,16 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("4_f2smc")
 
-[node name="TileArea9" type="Area2D" parent="."]
+[node name="TileArea9" type="Area2D" parent="." unique_id=1370979832]
 position = Vector2(64, 0)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea9"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea9" unique_id=70285421]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile9" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile9" type="AnimatedSprite2D" parent="." unique_id=352922726]
 z_index = 6
 position = Vector2(64, 0)
 sprite_frames = SubResource("55")
@@ -505,16 +414,16 @@ animation = &"Drip"
 autoplay = "Drip"
 script = ExtResource("4_f2smc")
 
-[node name="TileArea10" type="Area2D" parent="."]
+[node name="TileArea10" type="Area2D" parent="." unique_id=1590585108]
 position = Vector2(-64, 0)
 collision_layer = 0
 
-[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea10"]
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea10" unique_id=1606136775]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
 
-[node name="BloodTile10" type="AnimatedSprite2D" parent="."]
+[node name="BloodTile10" type="AnimatedSprite2D" parent="." unique_id=364442034]
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("55")

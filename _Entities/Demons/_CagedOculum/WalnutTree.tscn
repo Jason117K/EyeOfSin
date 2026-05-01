@@ -1326,7 +1326,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="WalnutTree" type="Area2D" groups=["Plants"]]
+[node name="WalnutTree" type="Area2D" unique_id=106028571 groups=["Plants"]]
 z_index = 1
 collision_mask = 3
 script = ExtResource("2")
@@ -1337,14 +1337,14 @@ maxHealth = 450
 buffedMaxHealth = 700
 cost = 50
 
-[node name="Web" parent="." instance=ExtResource("2_j6nbb")]
+[node name="Web" parent="." unique_id=1241820489 instance=ExtResource("2_j6nbb")]
 visible = false
 position = Vector2(30, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2004042112]
 shape = SubResource("1")
 
-[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]
 material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = SubResource("79")
 animation = &"idle_Walnut"
@@ -1352,160 +1352,160 @@ autoplay = "spawn"
 script = ExtResource("8_ksu1o")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=241713253]
 visible = false
 
-[node name="AnimatedSpriteComponent2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="AnimatedSpriteComponent2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1884567667]
 sprite_frames = SubResource("12")
 animation = &"New Anim"
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=279432461]
 visible = false
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1073475611]
 visible = false
 z_index = 6
 position = Vector2(32, 32)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=358009293]
 visible = false
 z_index = 6
 position = Vector2(32, -32)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1887225117]
 visible = false
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1605717916]
 visible = false
 z_index = 6
 position = Vector2(-32, 32)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1457670842]
 visible = false
 z_index = 6
 position = Vector2(-32, -32)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=129723908]
 z_index = 6
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=945370358]
 z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="AOEDamageComponent" type="Area2D" parent="."]
+[node name="AOEDamageComponent" type="Area2D" parent="." unique_id=172305962]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AOEDamageComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AOEDamageComponent" unique_id=2131184995]
 position = Vector2(9.5, -0.5)
 shape = SubResource("RectangleShape2D_hdljx")
 
-[node name="AOEDamageTimer" type="Timer" parent="."]
+[node name="AOEDamageTimer" type="Timer" parent="." unique_id=1673717192]
 wait_time = 1.5
 autostart = true
 
-[node name="BuffNodesComponent" parent="." instance=ExtResource("10_7agvn")]
+[node name="BuffNodesComponent" parent="." unique_id=1843409871 instance=ExtResource("10_7agvn")]
 giveBuffTo = ["Sunflower", "Peashooter", "", "EggWorm", "Hive", "Maw", "None", "None"]
 
-[node name="TileArea1" parent="BuffNodesComponent" index="0"]
+[node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
 position = Vector2(48, 0)
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 visible = false
 position = Vector2(48, 0)
 sprite_frames = SubResource("SpriteFrames_l03of")
 frame = 0
 
-[node name="TileArea2" parent="BuffNodesComponent" index="2"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3" unique_id=1222914378]
 visible = false
 position = Vector2(96, 32)
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4" unique_id=727498254]
 visible = false
 position = Vector2(64, 32)
 sprite_frames = SubResource("SpriteFrames_l03of")
 
-[node name="TileArea3" parent="BuffNodesComponent" index="4"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5" unique_id=963343398]
 visible = false
 
-[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_l03of")
-frame = 0
-
-[node name="TileArea4" parent="BuffNodesComponent" index="6"]
-visible = false
-
-[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
+[node name="BloodTile3" parent="BuffNodesComponent" index="6" unique_id=2066119592]
 visible = false
 sprite_frames = SubResource("SpriteFrames_l03of")
 frame = 0
 
-[node name="TileArea5" parent="BuffNodesComponent" index="8"]
+[node name="TileArea4" parent="BuffNodesComponent" index="7" unique_id=1195978361]
 visible = false
 
-[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_l03of")
-frame = 0
-
-[node name="TileArea6" parent="BuffNodesComponent" index="10"]
-visible = false
-
-[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 visible = false
 sprite_frames = SubResource("SpriteFrames_l03of")
 frame = 0
 
-[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9" unique_id=334855413]
+visible = false
+
+[node name="BloodTile5" parent="BuffNodesComponent" index="10" unique_id=1290243908]
 visible = false
 sprite_frames = SubResource("SpriteFrames_l03of")
 frame = 0
 
-[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11" unique_id=1969648199]
+visible = false
+
+[node name="BloodTile6" parent="BuffNodesComponent" index="12" unique_id=748963459]
 visible = false
 sprite_frames = SubResource("SpriteFrames_l03of")
 frame = 0
 
-[node name="TileArea9" parent="BuffNodesComponent" index="16"]
+[node name="BloodTile7" parent="BuffNodesComponent" index="14" unique_id=1211874094]
+visible = false
+sprite_frames = SubResource("SpriteFrames_l03of")
+frame = 0
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16" unique_id=523478326]
+visible = false
+sprite_frames = SubResource("SpriteFrames_l03of")
+frame = 0
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17" unique_id=1370979832]
 visible = false
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+[node name="BloodTile9" parent="BuffNodesComponent" index="18" unique_id=352922726]
 visible = false
 sprite_frames = SubResource("SpriteFrames_l03of")
 
-[node name="TileArea10" parent="BuffNodesComponent" index="18"]
+[node name="TileArea10" parent="BuffNodesComponent" index="19" unique_id=1590585108]
 visible = false
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
 
-[node name="ResetSunCooldown" type="Timer" parent="."]
+[node name="ResetSunCooldown" type="Timer" parent="." unique_id=1152289663]
 wait_time = 5.0
 autostart = true
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=171642433]
 position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_vyedq")
 speed_scale = 5.0

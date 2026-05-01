@@ -1535,7 +1535,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Maw" type="Area2D" groups=["Plants"]]
+[node name="Maw" type="Area2D" unique_id=1021710121 groups=["Plants"]]
 z_index = 1
 script = ExtResource("4")
 tentacle1_start_color = Color(0.552941, 0, 0, 1)
@@ -1548,7 +1548,7 @@ alt_replace_color = Color(0.388235, 0, 0, 1)
 digestTime = 15.0
 buffedDigestTime = 11.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=163048683]
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
 sprite_frames = SubResource("7")
@@ -1556,36 +1556,36 @@ animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("5_fxtok")
 
-[node name="DetectionComponent" type="Area2D" parent="."]
+[node name="DetectionComponent" type="Area2D" parent="." unique_id=366524875]
 visible = false
 position = Vector2(256, 256)
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent" unique_id=96664600]
 shape = SubResource("8")
 
-[node name="DigestionTimer" type="Timer" parent="."]
+[node name="DigestionTimer" type="Timer" parent="." unique_id=531900449]
 wait_time = 9.0
 one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1101145556]
 position = Vector2(256, 256)
 shape = SubResource("9")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2110900547]
 visible = false
 z_index = 5
 rotation = -2.33791
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3")
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=1675409704]
 visible = false
 
-[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1467640385]
 sprite_frames = SubResource("7")
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=493708681]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(48, 0)
@@ -1593,66 +1593,70 @@ sprite_frames = SubResource("90")
 animation = &"New Anim 2"
 frame = 3
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1415860938]
 visible = false
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=493845449]
 z_index = 6
 position = Vector2(48, 32)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=2043877193]
 z_index = 6
 position = Vector2(48, -32)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=999480150]
 visible = false
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1049544184]
 visible = false
 z_index = 6
 position = Vector2(-32, 32)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=207249279]
 visible = false
 z_index = 6
 position = Vector2(-32, -32)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=197687417]
 visible = false
 z_index = 6
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BloodTile9" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile9" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=664331239]
 visible = false
 z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
 
-[node name="BuffNodesComponent" parent="." instance=ExtResource("8")]
+[node name="BuffNodesComponent" parent="." unique_id=464042542 instance=ExtResource("8")]
 position = Vector2(256, 256)
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "Hive", "", "None", "None"]
 
 [node name="TileArea1" parent="BuffNodesComponent" index="1"]
+visible = false
 position = Vector2(48, 0)
+
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea1" index="0"]
+visible = true
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="2"]
 position = Vector2(48, 0)
@@ -1729,13 +1733,13 @@ visible = false
 [node name="BloodTile10" parent="BuffNodesComponent" index="20"]
 visible = false
 
-[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="." unique_id=2122660910]
 visible = false
 position = Vector2(16, 1)
 sprite_frames = SubResource("127")
 animation = &"New Anim"
 
-[node name="Arm" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
+[node name="Arm" parent="." unique_id=2047821289 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
 visible = false
 position = Vector2(259, 256)
 target = NodePath("../ArmTarget")
@@ -1747,14 +1751,14 @@ line_width = 5.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 115.095, 132.06, 117.595, 132.685, 120.095, 133.31, 122.595, 133.935, 125.095, 134.56, 127.595, 135.185, 130.095, 135.81, 132.595, 136.435, 135.095, 137.06, 137.595, 137.685, 140.095, 138.31, 142.595, 138.935, 145.095, 139.56, 147.595, 140.185, 150.095, 140.81, 152.595, 141.435, 155.095, 142.06, 157.595, 142.685, 160.095, 143.31, 162.595, 143.935, 165.095, 144.56, 167.595, 145.185, 170.095, 145.81, 172.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 114.67706, 134.01045, 117.437164, 135.06163, 120.240105, 135.1574, 123.08017, 135.3333, 125.92089, 136.22977, 128.51082, 137.90901, 130.63927, 140.25105, 132.20537, 143.08403, 133.0322, 146.31308, 134.19995, 149.44675, 136.17651, 152.03973, 138.67996, 153.86618, 141.4082, 154.80052, 144.05943, 154.74791, 146.33104, 153.78484, 148.80191, 153.08737, 151.60806, 153.4359, 154.27745, 154.92767, 156.31087, 157.4367, 157.17728, 160.67694, 156.732, 164.03513, 156.34012, 167.37389, 156.98851, 170.59311, 158.5787, 173.24408)
 width = 5.0
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 115.095, 126.435, 117.595, 126.435, 120.095, 126.435, 122.595, 126.435, 125.095, 126.435, 127.595, 126.435, 130.095, 126.435, 132.595, 126.435, 135.095, 126.435, 137.595, 126.435, 140.095, 126.435, 142.595, 126.435, 145.095, 126.435, 147.595, 126.435, 150.095, 126.435, 152.595, 126.435, 155.095, 126.435, 157.595, 126.435, 160.095, 126.435, 162.595, 126.435, 165.095, 126.435, 167.595, 126.435, 170.095, 126.435, 172.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 114.67706, 128.38545, 117.437164, 128.81163, 120.240105, 128.2824, 123.08017, 127.833305, 125.92089, 128.10477, 128.51082, 129.15901, 130.63927, 130.87605, 132.20537, 133.08403, 133.0322, 135.68808, 134.19995, 138.19675, 136.17651, 140.16473, 138.67996, 141.36618, 141.4082, 141.67552, 144.05943, 140.99791, 146.33104, 139.40984, 148.80191, 138.08737, 151.60806, 137.8109, 154.27745, 138.67767, 156.31087, 140.5617, 157.17728, 143.17694, 156.732, 145.91013, 156.34012, 148.62389, 156.98851, 151.21811, 158.5787, 153.24408)
 width = 5.0
 
-[node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
+[node name="Arm2" parent="." unique_id=766619732 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
 visible = false
 position = Vector2(259, 256)
 target = NodePath("../ArmTarget2")
@@ -1762,7 +1766,7 @@ max_length = 60.0
 wave_speed = 2.0
 line_width = 5.0
 
-[node name="Arm3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
+[node name="Arm3" parent="." unique_id=1786597405 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
 visible = false
 position = Vector2(259, 256)
 target = NodePath("../ArmTarget3")
@@ -1770,19 +1774,19 @@ max_length = 60.0
 wave_speed = 2.0
 line_width = 5.0
 
-[node name="ArmTarget" parent="." instance=ExtResource("20_6aeqa")]
+[node name="ArmTarget" parent="." unique_id=1664757267 instance=ExtResource("20_6aeqa")]
 visible = false
 position = Vector2(307, 282)
 
-[node name="ArmTarget2" parent="." instance=ExtResource("20_6aeqa")]
+[node name="ArmTarget2" parent="." unique_id=945713582 instance=ExtResource("20_6aeqa")]
 visible = false
 position = Vector2(206, 293)
 
-[node name="ArmTarget3" parent="." instance=ExtResource("20_6aeqa")]
+[node name="ArmTarget3" parent="." unique_id=1263773246 instance=ExtResource("20_6aeqa")]
 visible = false
 position = Vector2(202, 224)
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+[node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=403811780]
 position = Vector2(0, -51)
 sprite_frames = SubResource("SpriteFrames_8hr7d")
 speed_scale = 5.0

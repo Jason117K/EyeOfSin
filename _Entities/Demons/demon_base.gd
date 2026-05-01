@@ -8,14 +8,19 @@ var animSpriteComp
 
 func _ready() -> void:
 	pass
+	await get_tree().physics_frame
 	print(self, " Heart Connect")
+	for new_area in get_overlapping_areas():
+		print("New Area is ", new_area)
+		if new_area.is_in_group("HeartBuff"):
+			receive_heart_buff()
 	self.area_entered.connect(on_demon_area_entered)
-	self.area_exited.connect(on_demon_area_exited)
+	#self.area_exited.connect(on_demon_area_exited)
 	
 func on_demon_area_entered(new_area: Area2D):
 	#print(self, "New Area Heart is ", new_area)
 	if new_area.is_in_group("HeartBuff"):
-		print(self, "will now receive heart buff")
+		#print(self, "will now receive heart buff")
 		receive_heart_buff()
 		
 func on_demon_area_exited(old_area: Area2D):
@@ -58,12 +63,12 @@ func truncate_string(input_string: String) -> String:
 	return input_string
 	
 func receive_heart_buff():
-	#print(self.name , " receive Heart Buff")
+	print(self.name , " receive Heart Buff")
 	$BuffNodesComponent.get_child(0).visible = true 
 	self.health = self.health + 400
 	pass
 	
 func remove_heart_buff():
-	#print(self.name , " remove Heart Buff")
+	print(self.name , " remove Heart Buff")
 	$BuffNodesComponent.get_child(0).visible = false 
 	pass
