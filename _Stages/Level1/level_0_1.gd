@@ -58,6 +58,7 @@ func _ready():
 	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
 	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
+	Global.reset_swap_ability()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))

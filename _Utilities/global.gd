@@ -162,6 +162,8 @@ func start_swap_ability():
 func stop_swap_ability():
 	swap_ability.stop()
 		
+func reset_swap_ability():
+	swap_ability.reset_on_game_start()
 	
 func register_zombie(new_zombie):
 	all_zombies.append(new_zombie)

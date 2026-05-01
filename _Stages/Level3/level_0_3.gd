@@ -53,6 +53,7 @@ func _ready():
 	toolTips.set_text(TUTORIAL_SELECT_MAW)
 	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
+	Global.reset_swap_ability()
 	
 	
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))

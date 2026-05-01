@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://_Utilities/Waves/WaveManager.gd" id="8_n0ibe"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
+[ext_resource type="PackedScene" uid="uid://dxeohrwemsvwx" path="res://_Entities/SwapAbilities/blood_rain.tscn" id="9_mahd0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppfu0"]
 bg_color = Color(0, 0, 0, 1)
@@ -78,10 +79,12 @@ script = ExtResource("8_n0ibe")
 StartDelay = 1
 Wave3StartTime = 45
 
+[node name="BloodRain" parent="CurrentScene" unique_id=534558046 instance=ExtResource("9_mahd0")]
+
 [node name="PauseButton" parent="." unique_id=94770946 instance=ExtResource("9_4wufg")]
 visible = false
 z_index = 1
 offset_left = 672.0
-offset_top = 370.0
+offset_top = 381.0
 offset_right = 729.0
-offset_bottom = 398.0
+offset_bottom = 409.0

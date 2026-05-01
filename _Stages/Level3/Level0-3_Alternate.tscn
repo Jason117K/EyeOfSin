@@ -594,6 +594,8 @@ offset_bottom = 435.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="Timer" type="Timer" parent="." unique_id=1920464950]
+
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
