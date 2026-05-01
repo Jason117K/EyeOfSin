@@ -13,6 +13,7 @@ var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being 
 var preview_sprites: Array = [] # Holds array of preview sprites 
 var is_previewing: bool = false # Whether or not we are currently previewing 
 var canRemove := false 
+var purple_scene := true 
 
 signal clicked_Eye
 signal codex_clicked
@@ -26,6 +27,8 @@ var egg_scene = preload("res://_Entities/Demons/_Wyrm/EggWorm.tscn")
 var hive_scene = preload("res://_Entities/Demons/_Hive/Hive.tscn")
 var heart_scene = preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
 var portal_scene = preload("res://_Entities/SpecialElementsPortal/Portal.tscn")
+var green_portal_icon = preload("res://_Assets/UI/DemonCard_Portal_GreenButton.png")
+var purple_portal_icon = preload("res://_Assets/UI/DemonCard_Portal.png")
 
 #var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
 
@@ -217,7 +220,8 @@ func _input(event):
 			#print("Y Key Pressed")
 			if canSwapScenes:
 				#print("Can Swap Scenes is ", canSwapScenes)
-				Global.game_controller.swap_scenes()
+				#Global.game_controller.swap_scenes()
+				Global.swap_scenes()
 			else:
 				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
 		if event.keycode == KEY_1:
@@ -560,7 +564,8 @@ func _on_open_demon_codex_button_pressed() -> void:
 func _on_world_swap_button_pressed() -> void:
 	if canSwapScenes:
 	#	print("Can Swap Scenes is ", canSwapScenes)
-		Global.game_controller.swap_scenes()
+		#Global.game_controller.swap_scenes()
+		Global.swap_scenes()
 
 
 func _on_codex_button_pressed() -> void:
@@ -617,3 +622,16 @@ func _on_portal_button_pressed() -> void:
 	temp_instance.queue_free()
 	print("Portal selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+	
+	
+func swap_portal_button():
+	if purple_scene:
+		portalButton.icon = green_portal_icon
+		purple_scene = false
+		return 
+	else:
+		portalButton.icon = purple_portal_icon
+		purple_scene = true 
+		return 
+		
+	

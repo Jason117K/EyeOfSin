@@ -145,7 +145,9 @@ func _handle_force_press_y_input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			# Swap to green dimension
-			Global.game_controller.swap_scenes()
+			#TODO maybe delete
+			#Global.game_controller.swap_scenes()
+			Global.swap_scenes()
 			# Transition to explanation state
 			_transition_to_state(TutorialState.EXPLAIN_GREEN_DIMENSION)
 			return

@@ -33,6 +33,9 @@ func hidePlantSelectionMenu():
 func unHidePlantSelectionMenu():
 	if plant_selection_menu != null:
 		plant_selection_menu.visible = true 	
+		
+func swap_portal_button():
+	plant_selection_menu.swap_portal_button()
 	
 func resetSunflowerCount():
 	sunflowerCount = 0
@@ -152,9 +155,16 @@ func register_hero_demon(new_hero_demon):
 	
 func hero_demon_is_summoned():
 	return hero_demon_summoned
+
+func swap_scenes():
+	game_controller.swap_scenes()
+	swap_portal_button()
 	
 func register_swap_ability(new_swap_ability):
 	swap_ability = new_swap_ability
+	
+
+	
 
 func start_swap_ability():
 	swap_ability.begin()
