@@ -165,6 +165,7 @@ func stop_swap_ability():
 	
 func register_zombie(new_zombie):
 	all_zombies.append(new_zombie)
+	swap_ability.append_new_zombie(new_zombie)
 	
 	
 func deregister_zombie(zombie_to_delete):

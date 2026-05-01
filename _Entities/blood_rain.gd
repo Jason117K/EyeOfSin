@@ -3,6 +3,7 @@ extends Node
 
 var all_zombies = []
 var reset_timer : Timer 
+var is_active := false
 
 func _ready() -> void:
 	print("Swap Ability Ready")
@@ -12,9 +13,14 @@ func _ready() -> void:
 	
 func begin():
 	pass
+	is_active = true 
+	
 	for child in get_children():
 		if child.has_method("show"):
 			child.show()
+	
+	all_zombies = Global.get_all_zombies()
+	
 	for zombie in Global.get_all_zombies():
 		zombie.blood_slow()
 		
@@ -32,9 +38,40 @@ func undoBloodSlow():
 	for zombie in Global.get_all_zombies():
 		zombie.undoBloodSlow()
 	stop()
+	is_active = false
 	
 
 func stop():
 	for child in get_children():
 		if child.has_method("hide"):
 			child.hide()
+
+
+func append_new_zombie(new_zombie):
+	if is_active == true:
+		all_zombies.append(new_zombie)
+		new_zombie.blood_slow()
+		
+		
+		
+		#
+	#for zombie in all_zombies:
+		#if new_zombie == zombie:
+			#return
+	#all_zombies.append(new_zombie)
+	#new_zombie.blood_slow()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -156,7 +156,7 @@ func _on_AnimatedSprite_frame_changed():
 		pass
 
 func _apply_hue_shift() -> void:
-	print("Apply Hue Shift ", count)
+	#print("Apply Hue Shift ", count)
 	
 	# Create material if needed
 	if material == null:
@@ -168,10 +168,10 @@ func _apply_hue_shift() -> void:
 		material.shader = demon_hue_shift
 		material.set_shader_parameter("glow_color", targetGlowColor)
 		material.set_shader_parameter("hue_shift_degrees", hue_shift)
-		if set_hue == false :
+		if set_hue == false && hue_shift != 0:
 			original_hue_shift = hue_shift
 			set_hue = true 
-			print(original_hue_shift, "Apply Hue Shift First ", count)
+			#print(original_hue_shift, "Apply Hue Shift First ", count)
 	count += 1 
 		
 		

@@ -101,7 +101,7 @@ func _process(delta: float) -> void:
 		return
 	if attack_ray.is_colliding():
 		var collider = attack_ray.get_collider()
-		print("ppp ray collider is" , collider)
+		#print("ppp ray collider is" , collider)
 		if collider:
 			#print("Collider Name is ", collider.name)
 			if collider.is_in_group("Zombie"):
