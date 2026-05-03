@@ -90,8 +90,8 @@ color = Color(0, 0, 0, 1)
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 layout_mode = 0
 offset_left = 4.0
-offset_right = 75.0
-offset_bottom = 123.0
+offset_right = 8.0
+offset_bottom = 34.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
 
@@ -101,7 +101,6 @@ size_flags_vertical = 0
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=882467696]
-custom_minimum_size = Vector2(0, 97.395)
 layout_mode = 2
 mouse_filter = 2
 
@@ -115,6 +114,7 @@ theme_override_styles/normal = SubResource("2")
 icon = ExtResource("3_yqvs4")
 
 [node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=875715703]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_vvged")
@@ -131,6 +131,7 @@ theme_override_styles/normal = SubResource("1")
 icon = ExtResource("5_vvged")
 
 [node name="PeashooterLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter" unique_id=752286747]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
@@ -146,6 +147,7 @@ theme_override_styles/normal = SubResource("3")
 icon = ExtResource("6_04elx")
 
 [node name="WalnutLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut" unique_id=1640644905]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
@@ -161,6 +163,7 @@ theme_override_styles/normal = SubResource("3")
 icon = ExtResource("7_e3ig8")
 
 [node name="MawLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
@@ -177,6 +180,7 @@ theme_override_styles/normal = SubResource("3")
 icon = ExtResource("10_iafbj")
 
 [node name="EggLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg" unique_id=925628958]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
@@ -260,9 +264,11 @@ theme_override_styles/normal = SubResource("3")
 icon = ExtResource("15_e3ig8")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=958387944]
+visible = false
 layout_mode = 2
 
 [node name="SwapAbilityButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=309884997]
+visible = false
 layout_mode = 2
 theme_override_constants/icon_max_width = 268
 theme_override_styles/normal = SubResource("3")

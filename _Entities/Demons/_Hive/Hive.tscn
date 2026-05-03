@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cp6xcabhkv21t"]
 
-[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/_Hive/Hive-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://_Entities/Demons/_Hive/Hive.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_cpfsp"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="3"]
@@ -20,9 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="17_ijvem"]
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://_Utilities/TentacleDemo/shaders/canvas_group_two_tone.gdshader" id="18_cpfsp"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="19_s2bgg"]
-[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="21_q3sqy"]
-[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="22_ethfs"]
-
+[ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_ntueb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
@@ -243,39 +240,39 @@ atlas = ExtResource("7_ijvem")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="6"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="7"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="8"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="13"]
@@ -891,39 +888,39 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="143"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="144"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="145"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="146"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="147"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="148"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="149"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="150"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="151"]
-atlas = ExtResource("1")
+atlas = ExtResource("5_awm0g")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="119"]
@@ -1454,86 +1451,19 @@ shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
 shader_parameter/dark_color = Color(0.01, 0, 0.00383333, 1)
 shader_parameter/shade_ratio = 0.53
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(64, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(0, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(32, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(96, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(128, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(160, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(192, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
-atlas = ExtResource("21_q3sqy")
-region = Rect2(224, 0, 32, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wby7u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gt4q1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_30klx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cibk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pvli")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m3ty7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nud0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ltgmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="Hive" type="Area2D" groups=["Plants"]]
+[node name="Hive" type="Area2D" unique_id=1078490386 groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
 cost = 50
 waitTime = 6.0
 buffedWaitTime = 3.0
 
-[node name="DemonShadow" type="Sprite2D" parent="."]
+[node name="DemonShadow" type="Sprite2D" parent="." unique_id=1372104208]
 self_modulate = Color(0, 0, 0, 0.717647)
 position = Vector2(-4, -3)
 texture = ExtResource("2_cpfsp")
 
-[node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="." unique_id=1834457510]
 material = SubResource("ShaderMaterial_7f7y1")
 position = Vector2(0, -3)
 sprite_frames = SubResource("10")
@@ -1541,102 +1471,102 @@ animation = &"idle_Maw"
 autoplay = "spawn"
 script = ExtResource("5_pd78h")
 
-[node name="HurtBoxComp" type="CollisionShape2D" parent="."]
+[node name="HurtBoxComp" type="CollisionShape2D" parent="." unique_id=386170650]
 visible = false
 shape = SubResource("11")
 
-[node name="Swarm" type="Node2D" parent="."]
+[node name="Swarm" type="Node2D" parent="." unique_id=1594848500]
 
-[node name="DetectionComp" type="Area2D" parent="."]
+[node name="DetectionComp" type="Area2D" parent="." unique_id=299923120]
 collision_layer = 0
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComp"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComp" unique_id=1530185518]
 shape = SubResource("ConvexPolygonShape2D_ijvem")
 
-[node name="DroneRespawnTimer" type="Timer" parent="."]
+[node name="DroneRespawnTimer" type="Timer" parent="." unique_id=836228713]
 wait_time = 33.0
 one_shot = true
 
-[node name="BuffNodesComponent" parent="." instance=ExtResource("3")]
+[node name="BuffNodesComponent" parent="." unique_id=1342001150 instance=ExtResource("3")]
 position = Vector2(-0.588235, 0)
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "", "Maw", "None", "None"]
 
-[node name="TileArea1" parent="BuffNodesComponent" index="0"]
+[node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="1"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 9
-
-[node name="BloodTile2" parent="BuffNodesComponent" index="3"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 6
-
-[node name="BloodTile3" parent="BuffNodesComponent" index="5"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 6
-
-[node name="TileArea4" parent="BuffNodesComponent" index="6"]
-visible = false
-
-[node name="BloodTile4" parent="BuffNodesComponent" index="7"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 6
-
-[node name="BloodTile5" parent="BuffNodesComponent" index="9"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 6
-
-[node name="BloodTile6" parent="BuffNodesComponent" index="11"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 6
-
-[node name="TileArea7" parent="BuffNodesComponent" index="12"]
-visible = false
-
-[node name="BloodTile7" parent="BuffNodesComponent" index="13"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 6
-
-[node name="TileArea8" parent="BuffNodesComponent" index="14"]
-visible = false
-
-[node name="BloodTile8" parent="BuffNodesComponent" index="15"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 6
-
-[node name="TileArea9" parent="BuffNodesComponent" index="16"]
-visible = false
-
-[node name="BloodTile9" parent="BuffNodesComponent" index="17"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 9
 
-[node name="TileArea10" parent="BuffNodesComponent" index="18"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4" unique_id=727498254]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 6
+
+[node name="BloodTile3" parent="BuffNodesComponent" index="6" unique_id=2066119592]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 6
+
+[node name="TileArea4" parent="BuffNodesComponent" index="7" unique_id=1195978361]
 visible = false
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="19"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 6
+
+[node name="BloodTile5" parent="BuffNodesComponent" index="10" unique_id=1290243908]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 6
+
+[node name="BloodTile6" parent="BuffNodesComponent" index="12" unique_id=748963459]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 6
+
+[node name="TileArea7" parent="BuffNodesComponent" index="13" unique_id=1022902709]
 visible = false
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="BloodTile7" parent="BuffNodesComponent" index="14" unique_id=1211874094]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 6
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15" unique_id=1026513902]
 visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile8" parent="BuffNodesComponent" index="16" unique_id=523478326]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 6
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17" unique_id=1370979832]
+visible = false
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18" unique_id=352922726]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 9
+
+[node name="TileArea10" parent="BuffNodesComponent" index="19" unique_id=1590585108]
+visible = false
+
+[node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
+visible = false
+
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=240505522]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1759221083]
 sprite_frames = SubResource("152")
 animation = &"new_animation"
 autoplay = "new_animation"
 
-[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1610070458]
 visible = false
 z_index = 6
 position = Vector2(-32, 0)
@@ -1644,44 +1574,44 @@ sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 3
 
-[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1718196156]
 z_index = 6
 position = Vector2(-32, 32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 2
 
-[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1408583258]
 z_index = 6
 position = Vector2(-32, -32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 1
 
-[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=14826841]
 z_index = 6
 position = Vector2(32, -32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 
-[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=149998501]
 z_index = 6
 position = Vector2(32, 32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 1
 
-[node name="PlayAnimTimer" type="Timer" parent="."]
+[node name="PlayAnimTimer" type="Timer" parent="." unique_id=1892560275]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="HiveLaserShootComp" parent="." instance=ExtResource("16_lnyhe")]
+[node name="HiveLaserShootComp" parent="." unique_id=1721254107 instance=ExtResource("16_lnyhe")]
 position = Vector2(12, -11)
 auto_fire = true
 isDisabled = true
 
-[node name="DMG_RayCast2D" type="RayCast2D" parent="."]
+[node name="DMG_RayCast2D" type="RayCast2D" parent="." unique_id=1591135190]
 visible = false
 position = Vector2(12, -11)
 target_position = Vector2(200, 0)
@@ -1689,7 +1619,7 @@ collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Arm" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
+[node name="Arm" parent="." unique_id=37171657 node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
 visible = false
 position = Vector2(-1, 1)
 target = NodePath("../ArmTarget")
@@ -1701,17 +1631,17 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.262, 132.06, 115.928, 132.685, 117.595, 133.31, 119.262, 133.935, 120.928, 134.56, 122.595, 135.185, 124.262, 135.81, 125.928, 136.435, 127.595, 137.06, 129.262, 137.685, 130.928, 138.31, 132.595, 138.935, 134.262, 139.56, 135.928, 140.185, 137.595, 140.81, 139.262, 141.435, 140.928, 142.06, 142.595, 142.685, 144.262, 143.31, 145.928, 143.935, 147.595, 144.56, 149.262, 145.185, 150.928, 145.81, 152.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 110.64857, 131.59407, 109.40957, 130.70421, 108.73994, 129.4123, 107.780266, 128.21257, 106.25312, 127.46839, 104.43913, 127.31729, 102.729935, 127.37448, 101.84814, 129.35585, 100.22561, 128.80656, 98.43506, 128.32808, 96.937546, 127.51406, 96.015915, 126.40155, 95.748474, 125.22211, 96.70786, 124.38572, 95.579155, 123.45523, 94.42966, 122.429474, 92.8367, 121.82002, 90.933014, 121.979935, 89.103424, 123.05711, 87.857414, 125.034, 87.46417, 127.44552, 86.46763, 129.57968, 84.78401, 130.77791, 83.08944, 131.11469)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.262, 126.435, 115.928, 126.435, 117.595, 126.435, 119.262, 126.435, 120.928, 126.435, 122.595, 126.435, 124.262, 126.435, 125.928, 126.435, 127.595, 126.435, 129.262, 126.435, 130.928, 126.435, 132.595, 126.435, 134.262, 126.435, 135.928, 126.435, 137.595, 126.435, 139.262, 126.435, 140.928, 126.435, 142.595, 126.435, 144.262, 126.435, 145.928, 126.435, 147.595, 126.435, 149.262, 126.435, 150.928, 126.435, 152.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 110.64857, 125.96907, 109.40957, 124.45421, 108.73994, 122.53729, 107.780266, 120.71257, 106.25312, 119.34339, 104.43913, 118.56729, 102.729935, 117.99948, 101.84814, 119.35585, 100.22561, 118.181564, 98.43506, 117.07808, 96.937546, 115.63906, 96.015915, 113.90155, 95.748474, 112.09711, 96.70786, 110.63572, 95.579155, 109.08023, 94.42966, 107.429474, 92.8367, 106.19502, 90.933014, 105.729935, 89.103424, 106.18211, 87.857414, 107.534, 87.46417, 109.32052, 86.46763, 110.82969, 84.78401, 111.402916, 83.08944, 111.11468)
 width = 4.0
 
-[node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
+[node name="Arm2" parent="." unique_id=848670294 node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
 visible = false
 position = Vector2(-1, 1)
 target = NodePath("../ArmTarget2")
@@ -1723,29 +1653,25 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.262, 132.06, 115.928, 132.685, 117.595, 133.31, 119.262, 133.935, 120.928, 134.56, 122.595, 135.185, 124.262, 135.81, 125.928, 136.435, 127.595, 137.06, 129.262, 137.685, 130.928, 138.31, 132.595, 138.935, 134.262, 139.56, 135.928, 140.185, 137.595, 140.81, 139.262, 141.435, 140.928, 142.06, 142.595, 142.685, 144.262, 143.31, 145.928, 143.935, 147.595, 144.56, 149.262, 145.185, 150.928, 145.81, 152.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 113.860016, 130.51292, 115.765526, 130.70448, 117.77116, 131.60033, 119.81303, 132.20499, 121.686455, 132.10477, 123.11498, 131.44576, 124.03598, 130.53174, 123.57503, 129.49709, 125.238754, 129.14032, 126.96305, 128.70058, 128.91779, 128.79686, 130.85349, 129.70189, 132.36877, 131.41257, 133.11694, 133.67496, 134.80087, 134.98991, 136.33235, 136.62746, 138.17094, 137.17099, 139.54959, 136.614, 139.69377, 135.46631, 138.24768, 135.03638, 136.4317, 135.93298, 134.62875, 136.70134, 133.20146, 136.29875, 132.85646, 135.25337)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1"]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.262, 126.435, 115.928, 126.435, 117.595, 126.435, 119.262, 126.435, 120.928, 126.435, 122.595, 126.435, 124.262, 126.435, 125.928, 126.435, 127.595, 126.435, 129.262, 126.435, 130.928, 126.435, 132.595, 126.435, 134.262, 126.435, 135.928, 126.435, 137.595, 126.435, 139.262, 126.435, 140.928, 126.435, 142.595, 126.435, 144.262, 126.435, 145.928, 126.435, 147.595, 126.435, 149.262, 126.435, 150.928, 126.435, 152.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 113.860016, 124.88792, 115.765526, 124.45448, 117.77116, 124.72533, 119.81303, 124.70499, 121.686455, 123.97976, 123.11498, 122.695755, 124.03598, 121.156746, 123.57503, 119.497086, 125.238754, 118.51533, 126.96305, 117.45058, 128.91779, 116.92186, 130.85349, 117.20188, 132.36877, 118.28756, 133.11694, 119.92495, 134.80087, 120.61492, 136.33235, 121.62746, 138.17094, 121.546, 139.54959, 120.364, 139.69377, 118.59132, 138.24768, 117.53638, 136.4317, 117.80798, 134.62875, 117.95135, 133.20146, 116.92376, 132.85646, 115.25338)
 width = 4.0
 
-[node name="ArmTarget" parent="." instance=ExtResource("19_s2bgg")]
+[node name="ArmTarget" parent="." unique_id=2013687383 instance=ExtResource("19_s2bgg")]
 visible = false
 position = Vector2(-30, -16)
 
-[node name="ArmTarget2" parent="." instance=ExtResource("19_s2bgg")]
+[node name="ArmTarget2" parent="." unique_id=1623712451 instance=ExtResource("19_s2bgg")]
 visible = false
 position = Vector2(21, -10)
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -51)
-sprite_frames = SubResource("SpriteFrames_wby7u")
-speed_scale = 5.0
-script = ExtResource("22_ethfs")
+[node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("20_ntueb")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
@@ -1756,8 +1682,6 @@ script = ExtResource("22_ethfs")
 [connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
 [connection signal="timeout" from="DroneRespawnTimer" to="." method="_on_DroneRespawnTimer_timeout"]
 [connection signal="timeout" from="PlayAnimTimer" to="." method="_on_play_anim_timer_timeout"]
-[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
-[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]
 [editable path="Arm"]

@@ -202,13 +202,15 @@ func spawn_done():
 # Handles either looping attack animation or returning to default 
 func _on_AnimatedSprite_animation_finished():
 	if animSpriteComp.animation == "spawn":
+		print(self, " spawn anim done")
 		#print("Early Return No AttackZ")
 		#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		#if spawnAnimDone:
-			#pass
-		#else:
-			#spawn_done()
+		if spawnAnimDone:
+			$LightningSpawn.animation = "change_form"
+		$LightningSpawn.show()
 		$LightningSpawn.play()
+
+
 		animSpriteComp.visible = false
 		#print("Calling Spawn Done Spyder Self Is I Am")
 		spawn_done()
@@ -265,6 +267,6 @@ func _on_mouse_exited() -> void:
 
 func finish_spawn():
 	animSpriteComp.visible = true		
-	animSpriteComp.animation = "idle"
+	animSpriteComp.animation = animSpriteComp.currentAnim
 		
 	animSpriteComp.play()

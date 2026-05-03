@@ -20,8 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="10"]
 [ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="19_elvfo"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="20_6aeqa"]
-[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="21_5v7ar"]
-[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="22_drv5f"]
+[ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="21_8vtaw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
 shader = ExtResource("2_fxtok")
@@ -1468,73 +1467,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(64, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(0, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(32, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(96, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(128, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(160, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(192, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
-atlas = ExtResource("21_5v7ar")
-region = Rect2(224, 0, 32, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8hr7d"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gt4q1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_30klx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cibk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pvli")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m3ty7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nud0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ltgmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Maw" type="Area2D" unique_id=1021710121 groups=["Plants"]]
 z_index = 1
 script = ExtResource("4")
@@ -1651,86 +1583,86 @@ animation = &"New Anim"
 position = Vector2(256, 256)
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "Hive", "", "None", "None"]
 
-[node name="TileArea1" parent="BuffNodesComponent" index="1"]
+[node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
 position = Vector2(48, 0)
 
-[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea1" index="0"]
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea1" index="0" unique_id=493772299]
 visible = true
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 position = Vector2(48, 0)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 2
 
-[node name="TileArea2" parent="BuffNodesComponent" index="3"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3" unique_id=1222914378]
 position = Vector2(48, 32)
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4" unique_id=727498254]
 position = Vector2(48, 32)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea3" parent="BuffNodesComponent" index="5"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5" unique_id=963343398]
 position = Vector2(48, -32)
 
-[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
+[node name="BloodTile3" parent="BuffNodesComponent" index="6" unique_id=2066119592]
 position = Vector2(48, -32)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea4" parent="BuffNodesComponent" index="7"]
+[node name="TileArea4" parent="BuffNodesComponent" index="7" unique_id=1195978361]
 position = Vector2(-48, 0)
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 position = Vector2(-48, 0)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea5" parent="BuffNodesComponent" index="9"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9" unique_id=334855413]
 visible = false
 
-[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 27
-
-[node name="TileArea6" parent="BuffNodesComponent" index="11"]
-visible = false
-
-[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10" unique_id=1290243908]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea7" parent="BuffNodesComponent" index="13"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11" unique_id=1969648199]
 visible = false
 
-[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 27
-
-[node name="TileArea8" parent="BuffNodesComponent" index="15"]
-visible = false
-
-[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+[node name="BloodTile6" parent="BuffNodesComponent" index="12" unique_id=748963459]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
-[node name="TileArea9" parent="BuffNodesComponent" index="17"]
+[node name="TileArea7" parent="BuffNodesComponent" index="13" unique_id=1022902709]
 visible = false
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
+[node name="BloodTile7" parent="BuffNodesComponent" index="14" unique_id=1211874094]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 27
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15" unique_id=1026513902]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16" unique_id=523478326]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 27
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17" unique_id=1370979832]
+visible = false
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18" unique_id=352922726]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 4
 
-[node name="TileArea10" parent="BuffNodesComponent" index="19"]
+[node name="TileArea10" parent="BuffNodesComponent" index="19" unique_id=1590585108]
 visible = false
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
 
 [node name="AnimatedSprite2" type="AnimatedSprite2D" parent="." unique_id=2122660910]
@@ -1751,11 +1683,11 @@ line_width = 5.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.67706, 134.01045, 117.437164, 135.06163, 120.240105, 135.1574, 123.08017, 135.3333, 125.92089, 136.22977, 128.51082, 137.90901, 130.63927, 140.25105, 132.20537, 143.08403, 133.0322, 146.31308, 134.19995, 149.44675, 136.17651, 152.03973, 138.67996, 153.86618, 141.4082, 154.80052, 144.05943, 154.74791, 146.33104, 153.78484, 148.80191, 153.08737, 151.60806, 153.4359, 154.27745, 154.92767, 156.31087, 157.4367, 157.17728, 160.67694, 156.732, 164.03513, 156.34012, 167.37389, 156.98851, 170.59311, 158.5787, 173.24408)
+points = PackedVector2Array(112.595, 131.435, 115.10426, 133.30292, 116.408066, 136.41345, 117.502396, 139.68378, 119.1266, 142.66574, 121.30247, 145.07358, 123.83533, 146.76152, 126.52834, 147.67966, 129.21103, 147.83882, 131.90517, 147.88966, 134.6604, 148.90007, 137.13513, 150.78276, 139.06285, 153.36159, 140.2128, 156.46013, 140.42827, 159.83208, 140.62083, 163.23764, 141.84834, 166.39326, 143.97192, 168.85791, 146.62952, 170.30081, 149.3508, 170.4431, 151.5345, 169.32718, 153.56891, 168.03236, 156.14606, 167.65277, 158.82669, 168.55444, 161.02252, 170.54446)
 width = 5.0
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.67706, 128.38545, 117.437164, 128.81163, 120.240105, 128.2824, 123.08017, 127.833305, 125.92089, 128.10477, 128.51082, 129.15901, 130.63927, 130.87605, 132.20537, 133.08403, 133.0322, 135.68808, 134.19995, 138.19675, 136.17651, 140.16473, 138.67996, 141.36618, 141.4082, 141.67552, 144.05943, 140.99791, 146.33104, 139.40984, 148.80191, 138.08737, 151.60806, 137.8109, 154.27745, 138.67767, 156.31087, 140.5617, 157.17728, 143.17694, 156.732, 145.91013, 156.34012, 148.62389, 156.98851, 151.21811, 158.5787, 153.24408)
+points = PackedVector2Array(112.595, 126.435, 115.10426, 127.67792, 116.408066, 130.16345, 117.502396, 132.80878, 119.1266, 135.16573, 121.30247, 136.94858, 123.83533, 138.01152, 126.52834, 138.30466, 129.21103, 137.83882, 131.90517, 137.26466, 134.6604, 137.65007, 137.13513, 138.90776, 139.06285, 140.86159, 140.2128, 143.33513, 140.42827, 146.08208, 140.62083, 148.86264, 141.84834, 151.39326, 143.97192, 153.23291, 146.62952, 154.05081, 149.3508, 153.5681, 151.5345, 151.8272, 153.56891, 149.90736, 156.14606, 148.90277, 158.82669, 149.17944, 161.02252, 150.54446)
 width = 5.0
 
 [node name="Arm2" parent="." unique_id=766619732 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
@@ -1786,11 +1718,11 @@ position = Vector2(206, 293)
 visible = false
 position = Vector2(202, 224)
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=403811780]
-position = Vector2(0, -51)
-sprite_frames = SubResource("SpriteFrames_8hr7d")
-speed_scale = 5.0
-script = ExtResource("22_drv5f")
+[node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("21_8vtaw")]
+position = Vector2(256, 205)
+animation = &"change_form"
+frame = 9
+frame_progress = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
@@ -1798,8 +1730,6 @@ script = ExtResource("22_drv5f")
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComponent" to="." method="_on_detection_component_area_entered"]
 [connection signal="timeout" from="DigestionTimer" to="." method="_on_DigestionTimer_timeout"]
-[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
-[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]
 [editable path="Arm"]

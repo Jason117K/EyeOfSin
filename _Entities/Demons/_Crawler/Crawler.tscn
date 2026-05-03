@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Sun-Sheet.png" id="5_0i0o1"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="6_67t0g"]
 [ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Walnut-Sheet.png" id="6_hvfi3"]
-[ext_resource type="Texture2D" path="res://_Entities/Demons/TestBloodBSheet.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://lojdao7nw8m1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Hive-Sheet.png" id="7_io8k3"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://cugwyj56vu68w" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Wyrm-Sheet.png" id="8_mmfac"]
@@ -29,8 +29,7 @@
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://_Utilities/TentacleDemo/shaders/canvas_group_two_tone.gdshader" id="24_mmfac"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="25_82rcb"]
 [ext_resource type="Shader" uid="uid://bm6i26uu8obx0" path="res://_Utilities/TentacleDemo/shaders/canvas_group_shadow.gdshader" id="25_kcbs3"]
-[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="30_u7x5w"]
-[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="31_oysqj"]
+[ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="30_tifvr"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -1579,117 +1578,50 @@ shader_parameter/shade_ratio = 0.53
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.558477), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(64, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(0, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(32, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(96, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(128, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(160, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(192, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
-atlas = ExtResource("30_u7x5w")
-region = Rect2(224, 0, 32, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3byx0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gt4q1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_30klx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cibk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pvli")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m3ty7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nud0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ltgmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="Peashooter" type="Area2D" groups=["Plants"]]
+[node name="Peashooter" type="Area2D" unique_id=675421916 groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
 cost = 50
 
-[node name="DemonShadow" type="Sprite2D" parent="."]
+[node name="DemonShadow" type="Sprite2D" parent="." unique_id=1450708437]
 visible = false
 position = Vector2(-2, 8)
 texture = ExtResource("2_druvk")
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=373658709]
 self_modulate = Color(0, 0, 0, 0.721569)
 position = Vector2(-4, 6)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hvfi3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434290327]
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
 shape = SubResource("1")
 
-[node name="ShootTimer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="." unique_id=1385105491]
 autostart = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"attack"
+animation = &"spawn"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("6_67t0g")
 targetGlowColor = Color(1, 0, 0.101961, 1)
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
 visible = false
 
-[node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" groups=["Invis"]]
+[node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1617410873 groups=["Invis"]]
 position = Vector2(0, -8.5)
 sprite_frames = SubResource("9")
 animation = &"redSpiderDefault"
 autoplay = "redSpiderDefault"
 flip_h = true
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1137944680]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
@@ -1697,21 +1629,21 @@ sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1860243133]
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1030965472]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="DMG_RayCast2D" type="ShapeCast2D" parent="."]
+[node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=299414353]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_a06ib")
 target_position = Vector2(500, 0)
@@ -1719,88 +1651,88 @@ collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="BuffNodesComponent" parent="." instance=ExtResource("10")]
+[node name="BuffNodesComponent" parent="." unique_id=321485823 instance=ExtResource("10")]
 giveBuffTo = ["Sunflower", "", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 6
 
-[node name="TileArea2" parent="BuffNodesComponent" index="3"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3" unique_id=1222914378]
 visible = false
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 3
-
-[node name="TileArea3" parent="BuffNodesComponent" index="5"]
-visible = false
-
-[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4" unique_id=727498254]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5" unique_id=963343398]
+visible = false
+
+[node name="BloodTile3" parent="BuffNodesComponent" index="6" unique_id=2066119592]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea5" parent="BuffNodesComponent" index="9"]
-visible = false
-
-[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea6" parent="BuffNodesComponent" index="11"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9" unique_id=334855413]
 visible = false
 
-[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 3
-
-[node name="TileArea7" parent="BuffNodesComponent" index="13"]
-visible = false
-
-[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10" unique_id=1290243908]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea8" parent="BuffNodesComponent" index="15"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11" unique_id=1969648199]
 visible = false
 
-[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+[node name="BloodTile6" parent="BuffNodesComponent" index="12" unique_id=748963459]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
 
-[node name="TileArea9" parent="BuffNodesComponent" index="17"]
+[node name="TileArea7" parent="BuffNodesComponent" index="13" unique_id=1022902709]
 visible = false
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
+[node name="BloodTile7" parent="BuffNodesComponent" index="14" unique_id=1211874094]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 3
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15" unique_id=1026513902]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16" unique_id=523478326]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 3
+
+[node name="TileArea9" parent="BuffNodesComponent" index="17" unique_id=1370979832]
+visible = false
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18" unique_id=352922726]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 15
 frame_progress = 0.606092
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1278380740]
 wait_time = 3.0
 autostart = true
 
-[node name="SpawnSpiderling" type="Timer" parent="."]
+[node name="SpawnSpiderling" type="Timer" parent="." unique_id=1494130499]
 wait_time = 7.0
 autostart = true
 
-[node name="Arm" type="Node2D" parent="." node_paths=PackedStringArray("base_node", "shadow_node", "target")]
+[node name="Arm" type="Node2D" parent="." unique_id=945670767 node_paths=PackedStringArray("base_node", "shadow_node", "target")]
 visible = false
 position = Vector2(-12, 5)
 script = ExtResource("23_jwcrf")
@@ -1813,12 +1745,12 @@ wave_speed = 1.0
 line_width = 3.0
 width_curve = SubResource("Curve_io8k3")
 
-[node name="Camera2D" type="Camera2D" parent="Arm"]
+[node name="Camera2D" type="Camera2D" parent="Arm" unique_id=718710594]
 position = Vector2(258, 255)
 zoom = Vector2(5, 5)
 editor_draw_screen = false
 
-[node name="OutlinedSubViewportContainer" type="SubViewportContainer" parent="Arm"]
+[node name="OutlinedSubViewportContainer" type="SubViewportContainer" parent="Arm" unique_id=721704374]
 material = SubResource("ShaderMaterial_pi6jo")
 offset_left = -225.0
 offset_top = -253.0
@@ -1826,36 +1758,36 @@ offset_right = 287.0
 offset_bottom = 259.0
 mouse_filter = 2
 
-[node name="SubViewport" type="SubViewport" parent="Arm/OutlinedSubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Arm/OutlinedSubViewportContainer" unique_id=789697322]
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 0
 
-[node name="ShadowCanvasGroup" type="CanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport"]
+[node name="ShadowCanvasGroup" type="CanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" unique_id=1477110023]
 material = SubResource("ShaderMaterial_5pek0")
 
-[node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
+[node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 116.345, 133.31, 120.095, 135.185, 123.845, 137.06, 127.595, 138.935, 131.345, 140.81, 135.095, 142.685, 138.845, 144.56, 142.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 108.5283, 133.046, 105.0085, 133.1471, 103.64095, 131.31677, 101.00168, 130.2661, 97.08063, 131.64566, 93.54869, 131.82953, 92.21106, 130.05742, 90.44369, 128.55247)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="TwoToneCanvasGroup" type="CanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport"]
+[node name="TwoToneCanvasGroup" type="CanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" unique_id=57379949]
 material = SubResource("ShaderMaterial_jwcrf")
 
-[node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
+[node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 116.345, 126.435, 120.095, 126.435, 123.845, 126.435, 127.595, 126.435, 131.345, 126.435, 135.095, 126.435, 138.845, 126.435, 142.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 108.5283, 126.171005, 105.0085, 124.397095, 103.64095, 120.69178, 101.00168, 117.766106, 97.08063, 117.27067, 93.54869, 115.57952, 92.21106, 111.93242, 90.44369, 108.55247)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Arm2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("23_io8k3")]
+[node name="Arm2" parent="." unique_id=542749670 node_paths=PackedStringArray("target") instance=ExtResource("23_io8k3")]
 visible = false
 position = Vector2(-11, 5)
 target = NodePath("../ArmTarget2")
@@ -1869,7 +1801,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.97, 133.31, 117.345, 135.185, 119.72, 137.06, 122.095, 138.935, 124.47, 140.81, 126.845, 142.685, 129.22, 144.56, 131.595, 146.435)
+points = PackedVector2Array(112.595, 131.435, 114.026306, 131.27705, 113.42855, 130.75954, 114.6523, 130.45909, 116.82097, 131.0757, 117.829704, 130.65948, 117.4019, 130.09305, 118.28853, 129.70573, 120.665764, 131.3241)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1877,23 +1809,20 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.97, 126.435, 117.345, 126.435, 119.72, 126.435, 122.095, 126.435, 124.47, 126.435, 126.845, 126.435, 129.22, 126.435, 131.595, 126.435)
+points = PackedVector2Array(112.595, 126.435, 114.026306, 124.40206, 113.42855, 122.00953, 114.6523, 119.83409, 116.82097, 118.5757, 117.829704, 116.284485, 117.4019, 113.84304, 118.28853, 111.58074, 120.665764, 111.3241)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
-[node name="ArmTarget" parent="." instance=ExtResource("25_82rcb")]
+[node name="ArmTarget" parent="." unique_id=503647317 instance=ExtResource("25_82rcb")]
 visible = false
 position = Vector2(-37, -13)
 
-[node name="ArmTarget2" parent="." instance=ExtResource("25_82rcb")]
+[node name="ArmTarget2" parent="." unique_id=521304679 instance=ExtResource("25_82rcb")]
 visible = false
 position = Vector2(-2, -13)
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="."]
+[node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("30_tifvr")]
 position = Vector2(0, -51)
-sprite_frames = SubResource("SpriteFrames_3byx0")
-speed_scale = 5.0
-script = ExtResource("31_oysqj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
@@ -1904,8 +1833,6 @@ script = ExtResource("31_oysqj")
 [connection signal="frame_changed" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="SpawnSpiderling" to="." method="_on_spawn_spiderling_timeout"]
-[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
-[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]
 [editable path="Arm2"]

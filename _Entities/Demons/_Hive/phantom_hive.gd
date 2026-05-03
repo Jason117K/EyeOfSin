@@ -328,16 +328,9 @@ func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
 func spawn_done():
-	
 	if spawnAnimDone:
-		print("Spyder Self Spawn Adjust 1")
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
+		pass
 	else:
-		print("Spyder Self Spawn Adjust 2")
-		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
 		spawnAnimDone = true 
 
 # Stops Spawn Animation From Playing

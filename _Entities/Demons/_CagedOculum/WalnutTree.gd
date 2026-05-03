@@ -134,25 +134,20 @@ func get_cost():
 	
 	
 func spawn_done():
-	
 	if spawnAnimDone:
-		#print("Spyder Self Spawn Adjust 1")
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
+		pass
 	else:
-		#print("Spyder Self Spawn Adjust 2")
-		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
 		spawnAnimDone = true 
 		
 func _on_AnimatedSprite_animation_finished():
 
 	if animSpriteComp.animation == "spawn":
+		if spawnAnimDone:
+			$LightningSpawn.animation = "change_form"
+		$LightningSpawn.show()
 		$LightningSpawn.play()
 		animSpriteComp.visible = false
-		#animSpriteComp.animation = "idle"
-		#animSpriteComp.play()
+		spawn_done()
 	else:
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
@@ -223,6 +218,6 @@ func _on_mouse_exited() -> void:
 
 func finish_spawn():
 	animSpriteComp.visible = true		
-	animSpriteComp.animation = "idle"
+	animSpriteComp.animation = animSpriteComp.currentAnim
 		
 	animSpriteComp.play()

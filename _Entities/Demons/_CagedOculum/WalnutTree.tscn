@@ -19,8 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="12_x8j8r"]
 [ext_resource type="Texture2D" uid="uid://dmvy02sr64r05" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_HIVE-Sheet.png" id="12_yub8t"]
 [ext_resource type="Texture2D" uid="uid://c8kdy0rt01xw7" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_WYRM-Sheet.png" id="13_vyedq"]
-[ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="20_ctykl"]
-[ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="21_yub8t"]
+[ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_yv2yc"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(34, 32)
@@ -1259,73 +1258,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6slq8"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(64, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gt4q1"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(0, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30klx"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(32, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2cibk"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(96, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pvli"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(128, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3ty7"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(160, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nud0r"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(192, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltgmw"]
-atlas = ExtResource("20_ctykl")
-region = Rect2(224, 0, 32, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vyedq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gt4q1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_30klx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2cibk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pvli")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m3ty7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nud0r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ltgmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6slq8")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="WalnutTree" type="Area2D" unique_id=106028571 groups=["Plants"]]
 z_index = 1
 collision_mask = 3
@@ -1505,11 +1437,7 @@ visible = false
 wait_time = 5.0
 autostart = true
 
-[node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=171642433]
-position = Vector2(0, -51)
-sprite_frames = SubResource("SpriteFrames_vyedq")
-speed_scale = 5.0
-script = ExtResource("21_yub8t")
+[node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("20_yv2yc")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
@@ -1517,7 +1445,5 @@ script = ExtResource("21_yub8t")
 [connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
 [connection signal="timeout" from="AOEDamageTimer" to="." method="_on_aoe_damage_timer_timeout"]
 [connection signal="timeout" from="ResetSunCooldown" to="." method="_on_reset_sun_cooldown_timeout"]
-[connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
-[connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
 
 [editable path="BuffNodesComponent"]
