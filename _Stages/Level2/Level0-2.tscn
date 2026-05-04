@@ -3606,6 +3606,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_te6yt")
 
+[node name="PlantManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
+sun_points = 105
+
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("20_17c31")]
 layout_mode = 1
 
@@ -3634,9 +3637,6 @@ position = Vector2(370, 208)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=764205938]
 environment = ExtResource("21_kmsuw")
-
-[node name="PlantManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
-sun_points = 105
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=715005668]
 process_mode = 1
@@ -4007,10 +4007,10 @@ offset_bottom = 435.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

@@ -33,9 +33,9 @@ var gameStarted := false
 var endScreen = "res://Scenes/LevelScenes/EndScreen.tscn"
 var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 
-const TUTORIAL_EXPLAIN_AMALGAM = "res://Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
+const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
-@export var new_end_dialog = "res://Assets/Dialog/level_06_end_dialog.dtl"
+@export var new_end_dialog = "res://_Assets/Dialog/level_06_end_dialog.dtl"
 
 
 func _ready():
