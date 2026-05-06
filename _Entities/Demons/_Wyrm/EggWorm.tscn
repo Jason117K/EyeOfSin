@@ -804,6 +804,8 @@ bob_height = 3.0
 squash_amount = 0.2
 stretch_amount = 0.1
 bounce_elasticity = 0.01
+animation_exaggeration = null
+sprite_path = null
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_tvvdq")]
 script = ExtResource("3_pfhft")

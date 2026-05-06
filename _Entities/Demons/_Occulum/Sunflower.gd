@@ -20,11 +20,9 @@ var PlantManager
 @onready var healTimer = $HealTimer
 @onready var healInvisTimer = $HealInvisTimer
 @onready var webbing_aoe_sprite = $Webs
-@onready var healthComp := $HealthComponent
 
 var spawnAnimDone = false
 var tween
-var isBuffed = false 
 var wyrmBuff = false
 var hiveBuff = false 
 var isWalnutBuffed = false
@@ -41,13 +39,11 @@ var madeTutorialBlood = false
 #Assign PlantManager and connect the apprioprate timers 
 func _ready():
 	super()
-	animSpriteComp = $AnimatedSprite2D
 	sunTimer.wait_time = sunWaitTime
 	PlantManager = get_parent().get_parent().get_node("PlantManager") 
 	$SunTimer.start()  # Start the timer
 	#assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
 	$SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout"))
-	animSpriteComp.animation = "spawn"
 	healTimer.wait_time = lerp_duration
 
 	
@@ -101,40 +97,40 @@ func generate_sun() -> Node2D:
 # Handles all pontential sunflower buffs 
 func receiveBuff(newPlant):
 	#print("Buff Name is ", newPlant.name)
+	super(newPlant)
 	var plantName = truncate_string(newPlant.name)
 	
 	if !isBuffed :
 		print("Sunflower Buff Received from ", plantName)
 		match plantName:
 			"Sunflower":
-				
-				animSpriteComp.change_form("Sunflower")
+				pass
 				
 			"Peashooter":
 				print("Change to SPIDERRR")
 				$Webs.visible = true 
 				webbing_aoe_sprite.visible = true 
 				$SlowField.monitoring = true 
-				animSpriteComp.change_form("Peashooter")
+
 			"WalnutTree" :
-				animSpriteComp.change_form("Walnut")
+
 				$HealZone.visible = true 
 				healTimer.start()
 				start_alpha_pulse()
 				tween.play()
 				isWalnutBuffed = true
 			"EggWorm":
-				animSpriteComp.change_form("Wyrm")
+
 				wyrmBuff = true
 				sunTimer.wait_time = wyrmSunWaitTime
 				$SunTimer.start()
 			"Hive":
-				animSpriteComp.change_form("Wasp")
+
 				hiveBuff = true
 				sunTimer.wait_time = hiveSunWaitTime
 				$SunTimer.start()
 			"Maw":
-				animSpriteComp.change_form("Maw")
+
 				#health = maw_health
 				can_eat_zombie = true
 				mawBuff = true 
@@ -159,9 +155,6 @@ func debuff():
 	isBuffed = false
 	pass
 
-#Handles the sunflower taking damage 
-func take_damage(damage):
-	healthComp.take_damage(damage)
 
 # Plant Cost Getter
 func get_cost():
@@ -171,33 +164,6 @@ func get_cost():
 	return cost
 	#cost = cost + 5
 	
-
-# Stops Spawn Animation From Playing
-func _on_AnimatedSprite_animation_finished():
-	if animSpriteComp.animation == "spawn":
-		if spawnAnimDone:
-			#print("Occulum CHANGE FORM")
-			$LightningSpawn.animation = "change_form"
-		#print("Lightning Spawn Default anim is ",$LightningSpawn.animation  )
-		$LightningSpawn.show()
-		$LightningSpawn.play()
-		animSpriteComp.visible = false
-		spawn_done()
-	else:
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-
-func finish_spawn():
-	animSpriteComp.visible = true		
-	animSpriteComp.animation = animSpriteComp.currentAnim
-		
-	animSpriteComp.play()
-	
-func spawn_done():
-	if spawnAnimDone:
-		pass
-	else:
-		spawnAnimDone = true 
 		
 				
 		
@@ -281,7 +247,8 @@ func _on_heal_timer_timeout() -> void:
 	#healInvisTimer.start()
 	for plant in plants_to_heal:
 		if plant != null:
-			plant.health = plant.health + 5
+			plant.increase_health(5)
+			#plant.health = plant.health + 5
 
 
 func _on_heal_invis_timer_timeout() -> void:

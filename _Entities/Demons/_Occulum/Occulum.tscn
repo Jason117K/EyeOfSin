@@ -982,6 +982,7 @@ buffedSunWaitTime = 9.0
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_m5mcc")]
 script = ExtResource("3_0ypr0")
 maw_health = 500
+health = 200
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false
@@ -1040,7 +1041,7 @@ shape = SubResource("89")
 [node name="SunTimer" type="Timer" parent="." unique_id=447707411]
 wait_time = 30.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=686202393]
+[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
 animation = &"idle"
@@ -1217,9 +1218,9 @@ animation = &"change_form"
 [connection signal="area_entered" from="HealZone" to="." method="_on_heal_zone_area_entered"]
 [connection signal="area_entered" from="SlowField" to="." method="_on_slow_field_area_entered"]
 [connection signal="body_entered" from="SlowField" to="." method="_on_slow_field_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
-[connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
+[connection signal="timeout" from="Timer" to="AnimatedSpriteComponent" method="_on_timer_timeout"]
 [connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="HealInvisTimer" to="." method="_on_heal_invis_timer_timeout"]
 [connection signal="timeout" from="ResetEatingSpeed" to="." method="_on_reset_eating_speed_timeout"]

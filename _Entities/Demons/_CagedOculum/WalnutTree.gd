@@ -12,12 +12,10 @@ var sunBuffed = false
 @export var aoeDamage = 4
 
 var PlantManager
-#@onready var animSpriteComp = $AnimatedSpriteComponent
 @onready var AOEComp = $AOEDamageComponent
 @onready var buffNodes = $BuffNodesComponent
-@onready var healthComp := $HealthComponent
 
-var isBuffed := false
+
 var eggWyrmBuffed := false 
 var thisBufferName : String
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
@@ -28,15 +26,14 @@ var bloodScene = preload("res://_Entities/Demons/Blood/Sun.tscn")
 #Grabs reference to plantManager 
 func _ready():
 	super()
-	animSpriteComp = $AnimatedSpriteComponent
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
-	animSpriteComp.animation = "spawn"
+	
 
 
 func receiveBuff(bufferName):
 	if !isBuffed :
 		super(bufferName)
-		healthComp.receive_buff(bufferName)
+		healthComp.receiveBuff(bufferName)
 		
 		if "Sun" in bufferName.name && !isSunflowerBuffed:
 			sunBuffed = true 
@@ -62,22 +59,6 @@ func debuff():
 	#Call Debuff On Rest of Components Here
 	isBuffed = false
 
-
-#Dynamically adjusts the walnuts animation based on damage level 
-func _process(delta):
-	if animSpriteComp.animation == "spawn":
-		return
-	else:
-		pass
-		#TODO Restore Hurt Anims, Move to Health Component 
-		#if health > (maxHealth * 0.9):
-			#animSpriteComp.animation = "default"
-		#elif health < maxHealth && health > ((maxHealth/3)*2) :
-			#animSpriteComp.animation = "hurt1"
-		#elif (health < ((maxHealth/3)*2)) && health > (maxHealth/3):
-			#animSpriteComp.animation = "hurt2"
-		#else:
-			#animSpriteComp.animation = "hurt3"
 		
 
 
@@ -94,19 +75,6 @@ func get_cost():
 	#else:
 		#spawnAnimDone = true 
 	
-#TODO Move to Animated Sprite Component 
-#func _on_AnimatedSprite_animation_finished():
-#
-	#if animSpriteComp.animation == "spawn":
-		#if spawnAnimDone:
-			#$LightningSpawn.animation = "change_form"
-		#$LightningSpawn.show()
-		#$LightningSpawn.play()
-		#animSpriteComp.visible = false
-		#spawn_done()
-	#else:
-		#animSpriteComp.animation = animSpriteComp.currentAnim
-		#animSpriteComp.play()
 
 #TODO Move to AOE Damage Component that gets Added
 func _on_aoe_damage_timer_timeout() -> void:
@@ -165,15 +133,3 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
-
-
-func finish_spawn():
-	animSpriteComp.visible = true		
-	animSpriteComp.animation = animSpriteComp.currentAnim
-	animSpriteComp.play()
-	
-func get_is_buffed():
-	return isBuffed
-
-func take_damage(damage):
-	healthComp.take_damage(damage)

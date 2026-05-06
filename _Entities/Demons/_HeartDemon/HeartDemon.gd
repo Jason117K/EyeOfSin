@@ -9,10 +9,9 @@ var projectile_scene = preload("res://_Entities/Demons/_Crawler/PeaProjectile.ts
 var PlantManager
 var canAttack = false   # Whether or not the peashooter can attack 
 var canAttackSetTrueOnce = false
-var spawnAnimDone = false
-var isBuffed := false 
+#var spawnAnimDone = false
 var duration : float 
-var has_shot := false 
+#var has_shot := false 
 
 # Raycast to detect zombies in front
 @onready var attack_ray = $DMG_RayCast2D
@@ -26,7 +25,6 @@ var has_shot := false
 @onready var shootPosition2 = $ShootSpawn2
 @onready var shootPosition3 = $ShootSpawn3
 
-@onready var healthComponent = $HealthComponent
 #Circle Sprite for Special Move
 #@onready var beatOfDeathCirle = $BeatOfDeathCircle
 
@@ -39,8 +37,7 @@ func _ready():
 	Global.register_hero_demon(self)
 	$PreviewNodes/AnimatedSprite2D.hide()
 	set_attack_collision()
-	animSpriteComp = $AnimatedSprite2D
-	animSpriteComp.animation = "spawn"
+
 
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 
@@ -112,56 +109,13 @@ func set_attack_false():
 		
 
 	
-# Handles the peashooter taking damage 
-func take_damage(damage):
-	healthComponent.take_damage(damage)
 
-func spawn_done():
-	if spawnAnimDone:
-		#print("Spyder Self Spawn Adjust 1")
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-	else:
-		#print("Spyder Self Spawn Adjust 2")
-		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-		spawnAnimDone = true 
+
 		
-# Handles either looping attack animation or returning to default 
-func _on_AnimatedSprite_animation_finished():
-	has_shot = false
-	#if animSpriteComp.animation == "attack":
-		#beatOfDeathCirle.scale = EXPAND_SCALE
-		#beatOfDeathCirle.modulate.a = 0.0
 	
-	if animSpriteComp.animation == "spawn":
-		$LightningSpawn.play()
-		animSpriteComp.visible = false
-		spawn_done()
-		return
-	check_attack_rays()
-	if canAttack:
-		animSpriteComp.animation = animSpriteComp.currentAttackAnim
-	else:
-		animSpriteComp.animation = animSpriteComp.currentAnim
-	
-	animSpriteComp.play()
-	
-	#$BuffZone/CollisionShape2D.disabled = true
-		
 
 
-#Shoots based on animation 
-func _on_AnimatedSprite_frame_changed():
-	if animSpriteComp != null:
-		if( animSpriteComp.animation.contains("ttack") ):
-			if(animSpriteComp.frame == 3) && not has_shot:
-				has_shot = true
-				shoot_projectile()
-			if(animSpriteComp.frame == 2):
-				has_shot = false
-						
+					
 func die():
 	PlantManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
@@ -181,12 +135,6 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
 
-
-func finish_spawn():
-	animSpriteComp.visible = true		
-	animSpriteComp.animation = "idle"
-		
-	animSpriteComp.play()
 	
 	
 #func beat_of_death():

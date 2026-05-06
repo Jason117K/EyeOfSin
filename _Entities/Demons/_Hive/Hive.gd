@@ -16,7 +16,7 @@ var MAX_DRONES = 3
 var WALNUT_BUFF_MAX_DRONES = 4
 var SUN_BUFF_MAX_DRONES = 5
 #const MAX_DRONES = 3
-var spawnAnimDone = false
+#var spawnAnimDone = false
 # Drone management
 var available_drones = []                          # Currently active but unassigned drones
 var drone_assignments = {}                         # Dictionary mapping enemies to arrays of drones
@@ -28,25 +28,22 @@ var isSpyderBuffed := false
 var isSunflowerBuffed:= false 
 var isMawBuffed := false 
 @onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
-var isBuffed = false                               # Tracks Current Buff State Of Drone  
 var PlantManager                                   # RefCounted to PlantManager 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
 @onready var buffNodes = $BuffNodesComponent
-@onready var healthComponent := $HealthComponent
-
 
 #@onready var animSpriteComp = $AnimatedSpriteComp
 var thisBufferName : String  
 
 func _ready():
 	super()
-	animSpriteComp = $AnimatedSpriteComp
+
 	
 	# Initialize drones & Plant Manager 
 	spawn_initial_drones()
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
-	animSpriteComp.animation = "spawn"
+	#animSpriteComp.animation = "spawn"
 	droneRespawnTimer.wait_time = waitTime
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 	
@@ -330,9 +327,6 @@ func command_drone_to_attack(drone, enemy):
 		drone.enable_hurtbox()
 		drone.attack_target(enemy)
 		
-#Handles the Hive taking damage 
-func take_damage(damage):
-	healthComponent.take_damage(damage)
 
 #Respawns a drone and re-optimizes assignmnets 
 func _on_DroneRespawnTimer_timeout():
@@ -366,26 +360,6 @@ func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
 
-func spawn_done():
-	if spawnAnimDone:
-		pass
-	else:
-		spawnAnimDone = true 
-		
-		
-# Stops Spawn Animation From Playing
-func _on_AnimatedSprite_animation_finished():
-	if animSpriteComp.animation == "spawn":
-		if spawnAnimDone:
-			$LightningSpawn.animation = "change_form"
-		$LightningSpawn.show()
-		$LightningSpawn.play()
-		animSpriteComp.visible = false
-		spawn_done()
-	else:
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-		
 		
 func die():
 	PlantManager.clear_space(self.global_position)
@@ -411,10 +385,3 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
-
-
-func finish_spawn():
-	animSpriteComp.visible = true		
-	animSpriteComp.animation = animSpriteComp.currentAnim
-		
-	animSpriteComp.play()

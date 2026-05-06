@@ -6,7 +6,10 @@ class_name Demon
 
 var isCurrentlyBuffed := false 
 var area : Area2D
-var animSpriteComp
+var isBuffed := false
+
+@onready var animSpriteComp := $AnimatedSpriteComponent
+@onready var healthComp := $HealthComponent
 
 func _ready() -> void:
 	pass
@@ -29,7 +32,8 @@ func on_demon_area_exited(old_area: Area2D):
 	if old_area.is_in_group("HeartBuff"):
 		remove_heart_buff()		
 	
-	
+#TODO Call ReceiveBuff On ALL Components Here
+#TODO Set All isDemonBuffed Variables Here As Well
 func receiveBuff(newPlant):
 	#print("Buff Name is ", newPlant.name)
 	var plantName = truncate_string(newPlant.name)
@@ -74,3 +78,31 @@ func remove_heart_buff():
 	print(self.name , " remove Heart Buff")
 	$BuffNodesComponent.get_child(0).visible = false 
 	pass
+	
+func finish_spawn():
+	animSpriteComp.visible = true		
+	animSpriteComp.animation = animSpriteComp.currentAnim
+	animSpriteComp.play()
+
+func get_is_buffed():
+	return isBuffed
+
+func increase_health(added_health_amount):
+	healthComp.increase_health(added_health_amount)
+
+func take_damage(damage):
+	print(self, " is now taking damage : ", damage)
+	healthComp.take_damage(damage)
+
+func get_health():
+	return healthComp.get_health()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

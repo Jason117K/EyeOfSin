@@ -61,8 +61,6 @@ class TentacleState:
 @onready var arm_target2 = $ArmTarget2
 @onready var arm_target3 = $ArmTarget3
 
-@onready var healthComp := $HealthComponent
-
 @onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
 #Adjustable maw health & cost 
 #@export var health = 100
@@ -103,17 +101,15 @@ var isWalnutBuffed := false
 # Detection radius for zombies
 @onready var detection_area = $DetectionComponent
 @onready var buffNodes = $BuffNodesComponent
-#@onready var animSpriteComp = $AnimatedSprite2D
 @onready var ogDetectionRadius = detectionAreaShape.shape.radius
 
 var bloodScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  
-var isBuffed := false 
 var bufferName : String 
 
 func _ready():
 	super()
 	collision_mask = 2
-	animSpriteComp = $AnimatedSprite2D
+
 	#print("Maw Area2D: ", name)
 	#print("Maw Collision Layer: ", collision_layer)
 	#print("Maw Collision Mask: ", collision_mask)
@@ -122,7 +118,7 @@ func _ready():
 	
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	setup_tentacles()
-	animSpriteComp.animation = "spawn"
+
 	
 #Plant Cost Getter
 func get_cost():
@@ -427,9 +423,6 @@ func complete_digestion(tentacle: TentacleState) -> void:
 		print("[Maw] Digestion complete - Available: %d, Charges: %d" % [available_tentacles.size(), charges])
 
 
-#Handles the Maw taking damage
-func take_damage(damage):
-	healthComp.take_damage(damage)
 
 #When the time is up, free up a tentacle by adding a charge
 func _on_DigestionTimer_timeout():
@@ -449,6 +442,7 @@ func _on_DigestionTimer_timeout():
 #Handles Receiving Buffs From EggWorm, Peashooter, and Hive, setting color accordingly 
 func receiveBuff(plant):
 	#print("Maw7",bufferName)
+	animSpriteComp.receiveBuff(plant)
 	if !isBuffed:
 		super(plant)
 		bufferName = plant.name
@@ -460,7 +454,7 @@ func receiveBuff(plant):
 				#$AnimatedSprite2D.change_color()
 			digestionTimer.wait_time = buffedDigestTime
 			isEggWyrmBuffed = true 
-			animSpriteComp.speed_scale = animSpriteComp.speed_scale * 1.5
+			#animSpriteComp.speed_scale = animSpriteComp.speed_scale * 1.5
 		elif("Peashooter" in bufferName) && !isSpyderBuffed:
 				#tentacle1.set_colors(Color.PURPLE, Color.PURPLE)
 				#tentacle2.set_colors(Color.DARK_MAGENTA, Color.DARK_MAGENTA)
@@ -516,19 +510,7 @@ func spawn_done():
 		spawnAnimDone = true 
 		
 		
-# Stops Spawn Animation From Playing
-func _on_AnimatedSprite_animation_finished():
-	if animSpriteComp.animation == "spawn":
-		if spawnAnimDone:
-			$LightningSpawn.animation = "change_form"
-		$LightningSpawn.show()
-		$LightningSpawn.play()
-		animSpriteComp.visible = false
-		spawn_done()
-	else:
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-		
+
 # Function to handle sun generation
 func generate_sun():
 	var sun_instance = bloodScene.instantiate()  # Create a new instance of the sun
@@ -590,9 +572,7 @@ func _on_mouse_exited() -> void:
 
 
 func finish_spawn():
-	animSpriteComp.visible = true		
+	super()
 	show_tentacles()
-	animSpriteComp.animation = animSpriteComp.currentAnim
-		
-	animSpriteComp.play()
+
 	

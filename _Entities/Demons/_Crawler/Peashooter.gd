@@ -21,10 +21,7 @@ var canAttackSetTrueOnce = false
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
 # Reference to the animatedSpriteComponent 
-#@onready var animSpriteComp = $AnimatedSprite2D
 @onready var buffNodes = $BuffNodesComponent
-var isBuffed := false 
-@onready var healthComp := $HealthComponent
 
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
@@ -40,10 +37,8 @@ func _ready():
 		$DMG_RayCast2D.set_collision_mask_value(1,false)
 		$DMG_RayCast2D.set_collision_mask_value(2,true)
 		$DMG_RayCast2D.set_collision_mask_value(3,false)
-	animSpriteComp = $AnimatedSprite2D
-	animSpriteComp.animation = "spawn"
-	#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-	#animatedSpriteComponent.animation = "redSpiderDefault"
+
+
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	$ShootTimer.start()  # Start the shoot timer
 	#assert($ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout")) ==OK)
@@ -120,6 +115,7 @@ func receiveBuff(newPlant):
 	#print("Buff Name is ", newPlant.name)
 	super(newPlant)
 	healthComp.receiveBuff(newPlant)
+	animSpriteComp.receiveBuff(newPlant)
 	var plantName = truncate_string(newPlant.name)
 	
 	if !isBuffed :
@@ -130,20 +126,17 @@ func receiveBuff(newPlant):
 			"Peashooter":
 				mawBuffed = true 
 			"WalnutTree" :
-				animSpriteComp.speed_scale = 0.7
 				walnutBuffed = true 
 			"EggWorm":
 				wyrmBuffed = true 
 			"Hive":
 				hiveBuffed = true 
-				animSpriteComp.speed_scale = 1.3
 			"Maw":
 				mawBuffed = true
 
-
+#TODO Move to Parent Class
 func debuff():
-	#print("DDDD DEBUFFFEDDDDSAqw3eg")
-	animSpriteComp.speed_scale = 1
+	animSpriteComp.debuff()
 	isBuffed = false 
 
 
@@ -180,55 +173,7 @@ func second_shoot_projectile():
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
-func take_damage(damage):
-	healthComp.take_damage(damage)
 
-#func spawn_done():
-	#
-	#if spawnAnimDone:
-		##print("Spyder Self Spawn Adjust 1")
-		#animSpriteComp.animation = animSpriteComp.currentAnim
-		#animSpriteComp.play()
-	#else:
-		##print("Spyder Self Spawn Adjust 2")
-		#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		#animSpriteComp.animation = animSpriteComp.currentAnim
-		#animSpriteComp.play()
-		#spawnAnimDone = true 
-# Handles either looping attack animation or returning to default 
-#func _on_AnimatedSprite_animation_finished():
-	#if animSpriteComp.animation == "spawn":
-		#print(self, " spawn anim done")
-		##print("Early Return No AttackZ")
-		##animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		#if spawnAnimDone:
-			#$LightningSpawn.animation = "change_form"
-		#$LightningSpawn.show()
-		#$LightningSpawn.play()
-#
-#
-		#animSpriteComp.visible = false
-		##print("Calling Spawn Done Spyder Self Is I Am")
-		#spawn_done()
-		#return
-	#if canAttack:
-		##print(self, "Should Be Red Spider AttackZ")
-		#animSpriteComp.animation = animSpriteComp.currentAttackAnim
-		#animSpriteComp.play()
-	#else:
-			#animSpriteComp.animation = animSpriteComp.currentAnim
-			#animSpriteComp.play()
-		
-
-
-#Shoots based on animation 
-func _on_AnimatedSprite_frame_changed():
-	if animSpriteComp != null:
-		if( animSpriteComp.animation.contains("ttack") ):
-			#print("The frame is ", animSpriteComp.frame)
-			if(animSpriteComp.frame == 3):
-				#print("ABOUT Shoot Proj From Spider ")
-				shoot_projectile()
 			
 func die():
 	PlantManager.clear_space(self.global_position)
@@ -259,10 +204,3 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
-
-
-func finish_spawn():
-	animSpriteComp.visible = true		
-	animSpriteComp.animation = animSpriteComp.currentAnim
-		
-	animSpriteComp.play()

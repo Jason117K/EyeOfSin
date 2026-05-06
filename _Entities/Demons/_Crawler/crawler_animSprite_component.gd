@@ -1,5 +1,8 @@
 extends DemonSpriteComp
 
+func _ready():
+	super()
+	frame_changed.connect(_on_AnimatedSprite_frame_changed)
 
 func spawn_done():
 	
@@ -14,6 +17,12 @@ func spawn_done():
 		play()
 		spawnAnimDone = true 
 
+func _on_AnimatedSprite_frame_changed():
+		if(animation.contains("ttack")):
+			#print("The frame is ", animSpriteComp.frame)
+			if(frame == 3):
+				#print("ABOUT Shoot Proj From Spider ")
+				demon.shoot_projectile()
 
 func _on_animation_finished():
 	super()
@@ -24,3 +33,12 @@ func _on_animation_finished():
 	else:
 			animation = currentAnim
 			play()
+
+func receiveBuff(demonName):
+	#print("Buff Name is ", newPlant.name)
+	if !demon.get_is_buffed():
+		match demonName:
+			"WalnutTree" :
+				speed_scale = 0.7
+			"Hive":
+				speed_scale = 1.3

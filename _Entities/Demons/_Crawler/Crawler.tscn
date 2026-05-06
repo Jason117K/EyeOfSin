@@ -1608,15 +1608,13 @@ walnutHealth = 375
 [node name="ShootTimer" type="Timer" parent="." unique_id=1385105491]
 autostart = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1427083886]
+[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
 animation = &"spawn"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("21_ol6r1")
-targetGlowColor = null
-modulate_factor = null
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
 visible = false
@@ -1775,7 +1773,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 110.39147, 129.9609, 108.42361, 128.46342, 104.52716, 129.73419, 100.688034, 130.74866, 98.577774, 129.27817, 96.51711, 127.8297, 92.70686, 129.0031, 88.909294, 131.1739)
+points = PackedVector2Array(112.595, 131.435, 108.58549, 132.96739, 106.08555, 131.77548, 104.49671, 130.04332, 100.86613, 130.33939, 96.97036, 131.66826, 94.43643, 130.55927, 93.20971, 128.77527, 89.94565, 128.71753)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1787,7 +1785,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 110.39147, 123.085915, 108.42361, 119.713425, 104.52716, 119.1092, 100.688034, 118.24866, 98.577774, 114.90316, 96.51711, 111.5797, 92.70686, 110.8781, 88.909294, 111.17391)
+points = PackedVector2Array(112.595, 126.435, 108.58549, 126.092384, 106.08555, 123.02548, 104.49671, 119.41832, 100.86613, 117.839386, 96.97036, 117.29327, 94.43643, 114.309265, 93.20971, 110.65026, 89.94565, 108.71754)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1808,7 +1806,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.6304, 131.73251, 114.613754, 131.06055, 114.78506, 130.40695, 116.74927, 130.64755, 118.607605, 130.8166, 118.55444, 130.18338, 118.220184, 129.62871, 120.053856, 129.9574)
+points = PackedVector2Array(112.595, 131.435, 112.10975, 130.72803, 113.35993, 130.41835, 115.66501, 131.31087, 116.80406, 130.94275, 116.591545, 130.30743, 117.79501, 129.9844, 120.05279, 130.83344, 121.736115, 130.96466)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1816,7 +1814,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.6304, 124.85751, 114.613754, 122.310555, 114.78506, 119.78196, 116.74927, 118.147545, 118.607605, 116.441605, 118.55444, 113.93338, 118.220184, 111.5037, 120.053856, 109.9574)
+points = PackedVector2Array(112.595, 126.435, 112.10975, 123.85302, 113.35993, 121.66835, 115.66501, 120.68587, 116.80406, 118.44276, 116.591545, 115.932434, 117.79501, 113.734406, 120.05279, 112.70844, 121.736115, 110.96467)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1833,11 +1831,11 @@ position = Vector2(-2, -13)
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="animation_finished" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_frame_changed"]
-[connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="AnimatedSpriteComponent" method="_on_timer_timeout"]
 [connection signal="timeout" from="SpawnSpiderling" to="." method="_on_spawn_spiderling_timeout"]
 
 [editable path="BuffNodesComponent"]

@@ -85,7 +85,7 @@ func _on_AttackTimer_timeout():
 	elif "Screen" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
+		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	print("TARGET PLANTS: ", target_plants)
 	if target_plants == null:
@@ -171,7 +171,7 @@ func _process(_delta):
 			elif "Screen" in parent.name:
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 			else:
-				print("Playing ZOMBIE DEAL DAMAGE in attack_plant for parent ", parent.name)
+				#print("Playing ZOMBIE DEAL DAMAGE in attack_plant for parent ", parent.name)
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 			attack_timer.start()
 		else:

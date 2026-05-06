@@ -26,7 +26,7 @@ var isSpyderBuffed := false
 var isSunflowerBuffed:= false 
 
 @onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
-var isBuffed = false                               # Tracks Current Buff State Of Drone  
+#var isBuffed = false                               # Tracks Current Buff State Of Drone  
 var PlantManager                                   # RefCounted to PlantManager 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0

@@ -19,8 +19,9 @@ var spawnAnimDone = false
 
 func _ready() -> void:
 	#make_buff_glow()
+	animation = "spawn"
 	self.animation_finished.connect(_on_animation_finished)
-	print(self, "PARENT Is" , get_parent())
+	#print(self, "PARENT Is" , get_parent())
 	demon = get_parent()
 	pass
 	
@@ -32,7 +33,7 @@ func spawn_done():
 		
 		
 func _on_animation_finished():
-	print(self, "PARENT Is" , get_parent())
+	#print(self, "PARENT Is" , get_parent())
 	if animation == "spawn":
 		if spawnAnimDone:
 			lightning_spawn.animation = "change_form"
@@ -48,7 +49,7 @@ func _on_animation_finished():
 		
 func change_form(new_form):
 	var parent = get_parent()
-	self.animation_finished.connect(parent._on_AnimatedSprite_animation_finished)
+	
 	if parent.has_method("adjust_position"):
 		parent.adjust_position(new_form)
 
@@ -116,3 +117,7 @@ func _on_timer_timeout() -> void:
 
 func make_drone_glow():
 	pass
+	
+	
+func debuff():
+	speed_scale = 1

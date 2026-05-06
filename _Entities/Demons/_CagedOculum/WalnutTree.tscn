@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/_CagedOculum/OccularSpine-Sheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://djbyji3pwvlah" path="res://_Entities/Demons/_CagedOculum/OccularSpineHurt3-Sheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://bsm0bj2td7bp3" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_MAW-Sheet.png" id="8_2ysu1"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="8_ksu1o"]
 [ext_resource type="Texture2D" uid="uid://cmau6h8e8nj7t" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_SPYDER-Sheet.png" id="9_j6nbb"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="10_7agvn"]
 [ext_resource type="Texture2D" uid="uid://clpafcm624o01" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_Sun-Sheet.png" id="10_k8qau"]
@@ -19,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="12_x8j8r"]
 [ext_resource type="Texture2D" uid="uid://dmvy02sr64r05" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_HIVE-Sheet.png" id="12_yub8t"]
 [ext_resource type="Texture2D" uid="uid://c8kdy0rt01xw7" path="res://_Entities/Demons/SpriteSheets/Maw/OccularSpineIdle_WYRM-Sheet.png" id="13_vyedq"]
+[ext_resource type="Script" uid="uid://dun47fuxdqe18" path="res://_Entities/Demons/_CagedOculum/caged_occulum_animated_sprite_component.gd" id="15_kwpry"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="16_kwpry"]
 [ext_resource type="Script" uid="uid://byyf1oyb22s4e" path="res://_Entities/Demons/_CagedOculum/caged_occulum_health_component.gd" id="17_mko7f"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_yv2yc"]
@@ -1274,18 +1274,10 @@ material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = SubResource("79")
 animation = &"idle_Walnut"
 autoplay = "spawn"
-script = ExtResource("8_ksu1o")
-targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
+script = ExtResource("15_kwpry")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_kwpry")]
 script = ExtResource("17_mko7f")
-health = null
-buffedHealth = null
-healthRegen = null
-buffedHealthRegen = null
-maxHealth = null
-buffedMaxHealth = null
-blood_spawn_time = null
 
 [node name="Web" parent="." unique_id=1241820489 instance=ExtResource("2_j6nbb")]
 visible = false

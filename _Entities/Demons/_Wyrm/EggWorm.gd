@@ -16,6 +16,8 @@ extends Node2D
 @export var bounce_elasticity = 0.3  
 @export var animation_exaggeration = 1.0  
 
+@onready var healthComp := $HealthComponent
+
 # Node references
 @export var sprite_path: NodePath  
 @onready var sprite = get_node(sprite_path) if sprite_path else null
@@ -27,7 +29,6 @@ var projectile_scene = preload("res://_Entities/Demons/_Wyrm/EggProjectile.tscn"
 @onready var shootTimer = $ShootTimer
 @onready var buffNodes = $BuffNodesComponent
 @onready var shell_sprite = $Egg
-@onready var healthComp := $HealthComponent
 
 #onready var animSpriteComp = $AnimatedSprite
 

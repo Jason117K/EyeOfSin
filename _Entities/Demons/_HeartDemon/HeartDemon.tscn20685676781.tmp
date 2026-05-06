@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="3_2gwo5"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="4_nbddu"]
 [ext_resource type="Texture2D" uid="uid://c4m14uxs4uhld" path="res://_Entities/Demons/SpriteSheets/HeartSplitterHero-Sheet.png" id="5_x555b"]
-[ext_resource type="Script" uid="uid://gmwocdw7gk2e" path="res://_Entities/Demons/_HeartDemon/heart_animated_sprite_component.gd" id="8_ay5kv"]
 [ext_resource type="PackedScene" uid="uid://cmmvuo0uc4nvr" path="res://_Entities/Demons/_HeartDemon/hero_ability_component.tscn" id="14_tfp6l"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="16_ay5kv"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="18_qifgx"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="19_chpte"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="20_eny5u"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="21_mgr0t"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="22_yjvce"]
@@ -945,6 +945,7 @@ animations = [{
 z_index = 3
 collision_layer = 3
 script = ExtResource("1_c8ds1")
+cost = null
 
 [node name="BeatOfDeathCircle" type="Sprite2D" parent="." unique_id=346922753]
 visible = false
@@ -988,14 +989,15 @@ shape = SubResource("1")
 [node name="ShootTimer" type="Timer" parent="." unique_id=292342004]
 autostart = true
 
-[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=554588261]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=554588261]
 visible = false
 material = SubResource("ShaderMaterial_4vrps")
 position = Vector2(0, 7)
 sprite_frames = SubResource("SpriteFrames_mo0be")
 animation = &"idle"
 autoplay = "spawn"
-script = ExtResource("8_ay5kv")
+script = ExtResource("19_chpte")
+targetGlowColor = Color(1, 0, 0.101961, 1)
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1396187383]
 
@@ -1168,9 +1170,9 @@ position = Vector2(32, 3)
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_frame_changed"]
-[connection signal="timeout" from="Timer" to="AnimatedSpriteComponent" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="timeout" from="Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="SpawnSpiderling" to="." method="_on_spawn_spiderling_timeout"]
 [connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
 [connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]

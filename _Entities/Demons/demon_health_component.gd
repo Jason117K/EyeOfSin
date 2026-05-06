@@ -25,11 +25,19 @@ var isCrawlerBuffed:= false
 var isSpinalOcculumBuffed := false
 var isHeartBuffed:= false  
 
+func get_health():
+	return health
+	
 func take_damage(damage):
+	print(demon, " is taking DAMAGE health is ", health)
 	health = health - damage
 	if(health <= 0):
 		demon.die()
 
+func increase_health(added_health_amount):
+	health = health + added_health_amount
+	pass
+	
 func _process(delta):
 	health = health + healthRegen
 
