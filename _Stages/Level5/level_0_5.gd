@@ -1,4 +1,4 @@
-extends Control
+extends LevelTemplate
 
 enum TutorialState {
 	FORCE_SELECT_HIVE,

@@ -1,4 +1,4 @@
-extends Control
+extends LevelTemplate
 
 enum TutorialState {
 	TUTORIAL_P1_DONE,

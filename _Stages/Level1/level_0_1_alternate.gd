@@ -1,4 +1,4 @@
-extends Control
+extends LevelTemplate
 # level_0_1_alternate.gd - Green Dimension Controller for Level 0-1
 # Waits for purple dimension to activate Wave 2
 

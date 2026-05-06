@@ -1,4 +1,4 @@
-extends Control
+extends LevelTemplate
 
 
 @onready var toolTips = $"../ToolTips"

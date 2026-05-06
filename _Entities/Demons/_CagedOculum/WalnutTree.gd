@@ -1,34 +1,29 @@
 extends Demon
 #WalnutTree.gd
 
-#var spawnAnimDone = false
+@export var cost = 100
+@export var aoeDamage = 4
+
+@onready var AOEComp = $AOEDamageComponent
+@onready var buffNodes = $BuffNodesComponent
+
 var isEggWyrmBuffed := false 
 var isMawBuffed := false 
 var isSunflowerBuffed:= false 
 var hiveBuffed:= false
 var sunBuffed = false
-
-@export var cost = 100
-@export var aoeDamage = 4
+var eggWyrmBuffed := false 
 
 var PlantManager
-@onready var AOEComp = $AOEDamageComponent
-@onready var buffNodes = $BuffNodesComponent
-
-
-var eggWyrmBuffed := false 
 var thisBufferName : String
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
 var can_damage_zombie= false 
-
 var bloodScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  
 
-#Grabs reference to plantManager 
 func _ready():
 	super()
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
 	
-
 
 func receiveBuff(bufferName):
 	if !isBuffed :
@@ -54,27 +49,16 @@ func receiveBuff(bufferName):
 		thisBufferName = bufferName.name
 		isBuffed = true 
 
+
 func debuff():
 	healthComp.debuff()
 	#Call Debuff On Rest of Components Here
 	isBuffed = false
 
-		
 
-
-		
-#Cost getter
 func get_cost():
-	#print("Walnut returning cost of ", cost)
 	return cost
-	
-	
-#func spawn_done():
-	#if spawnAnimDone:
-		#pass
-	#else:
-		#spawnAnimDone = true 
-	
+
 
 #TODO Move to AOE Damage Component that gets Added
 func _on_aoe_damage_timer_timeout() -> void:
@@ -91,6 +75,7 @@ func die():
 		buffNodes.clearBuffs()
 	queue_free()			
 	
+	
 func die_fromClearSpace():
 	if buffNodes != null:
 		buffNodes.clearBuffs()
@@ -106,7 +91,6 @@ func spawnPhantomHive():
 	hive_instance.global_position = self.global_position 
 
 
-
 #TODO Move to Slow Field Component That Gets Added
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(area , " just entered walnut snow field  ")
@@ -119,13 +103,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		#TODO Balance
 		compManager.slow()
 
-
-
-func walnutWyrmBuffed():
-	pass
-	
-
-
+#TODO Move to Parent Class
 func _on_mouse_entered() -> void:
 	$PreviewNodes/AnimatedSpriteComponent2.visible = false
 	$PreviewNodes.visible = true 

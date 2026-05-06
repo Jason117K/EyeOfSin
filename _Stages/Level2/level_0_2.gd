@@ -1,4 +1,4 @@
-extends Control
+extends LevelTemplate
 # level_0_2.gd - Level 0-2 Tutorial Controller
 # Implements forced tutorial system with state machine and input filtering
 

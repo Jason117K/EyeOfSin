@@ -1,5 +1,4 @@
-extends Control
-
+extends LevelTemplate
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
