@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_druvk"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_hvfi3"]
 [ext_resource type="Texture2D" uid="uid://c30lgql0xnwsx" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Maw-Sheet.png" id="3_a06ib"]
+[ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="4_ol6r1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Sun-Sheet.png" id="5_0i0o1"]
+[ext_resource type="Script" uid="uid://cexywbegs7b6b" path="res://_Entities/Demons/_Crawler/crawler_health_component.gd" id="5_kupbo"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="6_67t0g"]
 [ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Walnut-Sheet.png" id="6_hvfi3"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="7"]
@@ -1581,7 +1583,14 @@ point_count = 2
 [node name="Peashooter" type="Area2D" unique_id=675421916 groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
+health = null
+walnutHealth = null
 cost = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434290327]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+shape = SubResource("1")
 
 [node name="DemonShadow" type="Sprite2D" parent="." unique_id=1450708437]
 visible = false
@@ -1594,10 +1603,9 @@ position = Vector2(-4, 6)
 scale = Vector2(2, 2)
 texture = ExtResource("2_hvfi3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434290327]
-position = Vector2(0, 2)
-scale = Vector2(2, 2)
-shape = SubResource("1")
+[node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("4_ol6r1")]
+script = ExtResource("5_kupbo")
+walnutHealth = 375
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1385105491]
 autostart = true
@@ -1768,7 +1776,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 108.5283, 133.046, 105.0085, 133.1471, 103.64095, 131.31677, 101.00168, 130.2661, 97.08063, 131.64566, 93.54869, 131.82953, 92.21106, 130.05742, 90.44369, 128.55247)
+points = PackedVector2Array(112.595, 131.435, 109.12726, 131.42078, 105.249825, 133.12184, 102.860405, 131.87802, 101.14165, 130.22124, 97.471306, 130.66492, 93.59258, 132.16339, 91.08148, 131.122, 90.610565, 129.23303)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1780,7 +1788,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 108.5283, 126.171005, 105.0085, 124.397095, 103.64095, 120.69178, 101.00168, 117.766106, 97.08063, 117.27067, 93.54869, 115.57952, 92.21106, 111.93242, 90.44369, 108.55247)
+points = PackedVector2Array(112.595, 126.435, 109.12726, 124.545784, 105.249825, 124.37184, 102.860405, 121.25301, 101.14165, 117.72124, 97.471306, 116.28991, 93.59258, 115.91338, 91.08148, 112.996994, 90.610565, 109.233025)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1801,7 +1809,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.026306, 131.27705, 113.42855, 130.75954, 114.6523, 130.45909, 116.82097, 131.0757, 117.829704, 130.65948, 117.4019, 130.09305, 118.28853, 129.70573, 120.665764, 131.3241)
+points = PackedVector2Array(112.595, 131.435, 114.93586, 132.14404, 115.807274, 131.65834, 115.24361, 131.0935, 116.483215, 130.77763, 118.61404, 131.31357, 119.53206, 130.85771, 118.99345, 130.31573, 119.53973, 129.83214)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1809,7 +1817,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.026306, 124.40206, 113.42855, 122.00953, 114.6523, 119.83409, 116.82097, 118.5757, 117.829704, 116.284485, 117.4019, 113.84304, 118.28853, 111.58074, 120.665764, 111.3241)
+points = PackedVector2Array(112.595, 126.435, 114.93586, 125.26904, 115.807274, 122.90834, 115.24361, 120.468506, 116.483215, 118.277626, 118.61404, 116.93857, 119.53206, 114.60771, 118.99345, 112.190735, 119.53973, 109.83214)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1822,7 +1830,6 @@ visible = false
 position = Vector2(-2, -13)
 
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("30_tifvr")]
-position = Vector2(0, -51)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

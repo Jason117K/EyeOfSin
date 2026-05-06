@@ -1,42 +1,29 @@
 extends Demon
 #WalnutTree.gd
 
-#Adjustbale Plant Parameter Variables
-@export var health = 800
-@export var buffedHealth = 1200
-@onready var ogHealth = health
-
-@export var healthRegen = 0.1
-@export var buffedHealthRegen = 0.6
-@onready var ogHealthRegen = healthRegen
-
-@export var maxHealth = 800
-@export var buffedMaxHealth = 1000
-@onready var ogMaxHealth = maxHealth
-
 var spawnAnimDone = false
 var isEggWyrmBuffed := false 
 var isMawBuffed := false 
-var isSunflowerBuffed:= false 	
+var isSunflowerBuffed:= false 
 var hiveBuffed:= false
 var sunBuffed = false
-var canGenSun = false
 
-
-#Adjustable Cost 
 @export var cost = 100
-#Damage of AOE 
 @export var aoeDamage = 4
+
 var PlantManager
 #@onready var animSpriteComp = $AnimatedSpriteComponent
 @onready var AOEComp = $AOEDamageComponent
 @onready var buffNodes = $BuffNodesComponent
+@onready var healthComp := $HealthComponent
+
 var isBuffed := false
 var eggWyrmBuffed := false 
 var thisBufferName : String
-var SunScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
 var can_damage_zombie= false 
+
+var bloodScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  
 
 #Grabs reference to plantManager 
 func _ready():
@@ -51,69 +38,40 @@ func _ready():
 func receiveBuff(bufferName):
 	if !isBuffed :
 		super(bufferName)
-		#animSpriteComp.make_buff_glow()
+		healthComp.receive_buff(bufferName)
 		
 		if "Sun" in bufferName.name && !isSunflowerBuffed:
-			canGenSun = true 
 			sunBuffed = true 
-			health = buffedHealth
-			maxHealth = buffedMaxHealth
 			isSunflowerBuffed = true 
 		elif "EggWorm" in bufferName.name && !isEggWyrmBuffed:
 			eggWyrmBuffed = true 
 			isEggWyrmBuffed = true 
 			can_damage_zombie = true 
 		elif "Maw" in bufferName.name && !isMawBuffed:
-			healthRegen = buffedHealthRegen
 			isMawBuffed = true 
-			print("GG Color Changed")
 			#TODO Re Implement Color Changes
 			#$AnimatedSpriteComponent.change_color()
 		elif "Pea" in bufferName.name :
 			$Web.visible  = true 
 			$Web/Area2D.monitoring= true
 		elif "Hive" in bufferName.name:
-			
 			spawnPhantomHive()
 		thisBufferName = bufferName.name
 		isBuffed = true 
 
 func debuff():
-	if "SunFlower" in thisBufferName:
-		health = ogHealth
-		maxHealth = ogMaxHealth
-	elif "EggWorm" in thisBufferName:
-		eggWyrmBuffed = false 
-	elif "Maw" in thisBufferName:
-		healthRegen = ogHealthRegen
+	healthComp.debuff()
+	#Call Debuff On Rest of Components Here
 	isBuffed = false
 
-	
-		
-#Handles the walnut taking damage 
-func take_damage(damage):
-	if sunBuffed:
-		if canGenSun:
-			generate_sun()
-	#print("walnut taking damage, health is " , health, " damage is ", damage)
-	health = health - damage
-	if(health <= 0):
-		die()
-		
-func generate_sun():
-	var sun_instance = SunScene.instantiate()
-	print("Spawn Sun")
-	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
-	#Set the sun pos to above the sunflower
-	sun_instance.global_position = self.global_position + Vector2(0,-40)
-	canGenSun = false 
-		
+
 #Dynamically adjusts the walnuts animation based on damage level 
 func _process(delta):
 	if animSpriteComp.animation == "spawn":
 		return
 	else:
-		pass#TODO Restore Hurt Anims
+		pass
+		#TODO Restore Hurt Anims, Move to Health Component 
 		#if health > (maxHealth * 0.9):
 			#animSpriteComp.animation = "default"
 		#elif health < maxHealth && health > ((maxHealth/3)*2) :
@@ -124,7 +82,6 @@ func _process(delta):
 			#animSpriteComp.animation = "hurt3"
 		
 
-	health = health + healthRegen
 
 		
 #Cost getter
@@ -138,7 +95,8 @@ func spawn_done():
 		pass
 	else:
 		spawnAnimDone = true 
-		
+	
+#TODO Move to Animated Sprite Component 
 func _on_AnimatedSprite_animation_finished():
 
 	if animSpriteComp.animation == "spawn":
@@ -152,7 +110,7 @@ func _on_AnimatedSprite_animation_finished():
 		animSpriteComp.animation = animSpriteComp.currentAnim
 		animSpriteComp.play()
 
-
+#TODO Move to AOE Damage Component that gets Added
 func _on_aoe_damage_timer_timeout() -> void:
 	if eggWyrmBuffed:
 		for area in AOEComp.get_overlapping_areas():
@@ -172,7 +130,8 @@ func die_fromClearSpace():
 		buffNodes.clearBuffs()
 	queue_free()				
 		
-		
+
+#TODO Move to PhantomHiveSpawner Component That Gets Added
 func spawnPhantomHive():
 	var hive_instance = phantomHive.instantiate()
 	print("Spawn HIVE")
@@ -180,12 +139,9 @@ func spawnPhantomHive():
 	#Set the sun pos to above the sunflower
 	hive_instance.global_position = self.global_position 
 
-		
-		
-		
-		
 
 
+#TODO Move to Slow Field Component That Gets Added
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(area , " just entered walnut snow field  ")
 	if area.is_in_group("Zombie"):
@@ -193,13 +149,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
 		var compManager = area.getCompManager()
-		var healthComp = compManager.getHealthComponent()
+		var enemyHealthComp = compManager.getHealthComponent()
 		#TODO Balance
 		compManager.slow()
 
-
-func _on_reset_sun_cooldown_timeout() -> void:
-	canGenSun = true 
 
 
 func walnutWyrmBuffed():
@@ -221,3 +174,7 @@ func finish_spawn():
 	animSpriteComp.animation = animSpriteComp.currentAnim
 		
 	animSpriteComp.play()
+
+
+func get_is_buffed():
+	return isBuffed

@@ -2,8 +2,8 @@ extends Demon
 #Peashooter.gd
 
 # Adjustbale health, cost, attack speed 
-@export var health = 100
-@export var walnutHealth = 375
+#@export var health = 100
+#@export var walnutHealth = 375
 #@export var attack_speed = 5 
 @export var cost = 75
 
@@ -26,6 +26,8 @@ var spawnAnimDone = false
 #@onready var animSpriteComp = $AnimatedSprite2D
 @onready var buffNodes = $BuffNodesComponent
 var isBuffed := false 
+@onready var healthComp := $HealthComponent
+
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
 func _ready():
@@ -119,6 +121,7 @@ func get_cost():
 func receiveBuff(newPlant):
 	#print("Buff Name is ", newPlant.name)
 	super(newPlant)
+	healthComp.receiveBuff(newPlant)
 	var plantName = truncate_string(newPlant.name)
 	
 	if !isBuffed :
@@ -131,7 +134,6 @@ func receiveBuff(newPlant):
 			"WalnutTree" :
 				animSpriteComp.speed_scale = 0.7
 				walnutBuffed = true 
-				health = walnutHealth
 			"EggWorm":
 				wyrmBuffed = true 
 			"Hive":

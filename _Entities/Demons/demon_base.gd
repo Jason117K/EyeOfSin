@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Demon 
 
+#Handle Area Detection for Buffs, Buffs, Storing Cost, Showing Preview Nodes
+
 var isCurrentlyBuffed := false 
 var area : Area2D
 var animSpriteComp
