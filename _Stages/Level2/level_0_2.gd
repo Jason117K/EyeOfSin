@@ -17,8 +17,7 @@ enum TutorialState {
 }
 
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_SUNFLOWER
-var wave_1_active: bool = false
-var wave_1_complete: bool = false
+
 
 # Tutorial blood generation tracking
 var tutorial_sunflower = null
@@ -28,24 +27,12 @@ var sun_before_pickup = 0
 var tutorial_sunflower_grid_pos: Vector2 = Vector2.ZERO
 var tutorial_sun_instance: Node2D = null
 
-# Node references
-#@onready var toolTips = $ToolTips
-@onready var toolTips = $"../ToolTips"
-@onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu" #$PlantSelectionMenu
-#@onready var waveManager = $GameLayer/WaveManager
-var waveManager 
-@onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var pause_Button = $"../../PauseButton"
-
 var thisLevel := "res://_Stages/Level2/Level0-2.tscn"
 var thisAltLevel := "res://_Stages/Level2/Level0-2_Alternate.tscn"
 
 var level03 = "res://_Stages/Level3/Level0-3.tscn"
 var level03Alt = "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
-var green_dimension
-@onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 
 # Text file paths
 const TUTORIAL_SELECT_SUNFLOWER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSunflower.txt"
@@ -54,7 +41,6 @@ const TUTORIAL_PLACE_WALNUT = "res://_Assets/Text/TextFiles/PlantDescriptions/Wa
 
 const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
 const TUTORIAL_SELECT_SPYDER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
-const TUTORIAL_PLACE_SPYDER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
 var tutorial_place_spyder =  "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
 
 const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
@@ -72,7 +58,7 @@ var buff_demo_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/blood
 var buckethead_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
 var level02 = "res://_Stages/Level2/Level0-2.tscn"
 var level02Alt = "res://_Stages/Level2/Level0-2_Alternate.tscn"
-@export var new_end_dialog = "res://Assets/Dialog/level_02_end_dialog.dtl"
+
 
 func _ready():
 	#Dialogic.Inputs.auto_skip.enabled = true 
@@ -651,59 +637,6 @@ func _physics_process(_delta):
 
 
 
-# Helper Methods
-func make_camera_current():
-	$Camera2D.make_current()
-
-
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
-
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space(grid_pos)
-
-# Spotlight helper functions - ADD THESE NEW FUNCTIONS
-
-## Shows spotlight centered on a Control node
-func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
-	if not target_node or not spotlight_overlay:
-		print("NOT SHOWING SPOTLIGHT")
-		return
-	print("Showing Spotlight", target_node, size_multiplier)
-
-	# Get center of target in screen coordinates
-	var global_rect = target_node.get_global_rect()
-	var center = global_rect.get_center()
-
-	# Calculate appropriate spotlight size based on button size
-	var viewport_size = get_viewport().get_visible_rect().size
-	var button_diagonal = global_rect.size.length()
-	var uv_size = (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
-
-	show_spotlight_at_position(center, uv_size)
-
-## Shows spotlight at specific screen position
-func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
-	if not spotlight_overlay:
-		return
-	var viewport_size = get_viewport().get_visible_rect().size
-	var uv_pos = screen_pos / viewport_size
-	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
-	#var viewport_size = get_viewport().get_visible_rect().size
-	#var uv_pos = screen_pos / viewport_size
-
-	var spotlight_rect = spotlight_overlay.get_node("SpotlightRect")
-	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
-	spotlight_rect.material.set_shader_parameter("circle_size", size)
-	spotlight_overlay.visible = true
-
-## Hides spotlight overlay
-func hide_spotlight():
-	if spotlight_overlay:
-		spotlight_overlay.visible = false
-
-
-
 
 
 func _start_force_select_sunflower():
@@ -735,8 +668,3 @@ func _start_force_place_plant():
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 5)
 	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
-
-func get_health_ui():
-	return $UILayer.get_the_health()

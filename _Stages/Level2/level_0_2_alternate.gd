@@ -2,12 +2,6 @@ extends LevelTemplate
 # level_0_2_alternate.gd - Green Dimension Controller for Level 0-2
 # Waits for purple dimension to activate Wave 2
 
-@onready var toolTips = $"../ToolTips"
-@onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu" #$PlantSelectionMenu
-#@onready var waveManager = $GameLayer/WaveManager
-var waveManager 
-@onready var levelSwitcher = 	$"../LevelSwitcher"
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -49,15 +43,10 @@ func attach_script_to_sway_children(script_path: String) -> void:
 			child._ready()
 		#print("Script attached to: ", child.name)	
 	
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
 
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos)
-	
 
-func make_camera_current():
-	$Camera2D.make_current()
+
+
 
 
 func _on_walnut_placed(grid_pos: Vector2):
@@ -82,7 +71,3 @@ func add_sun(sunAmount):
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 5)
 	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
-func get_health_ui():
-	return $UILayer.get_the_health()

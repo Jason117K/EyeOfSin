@@ -6,22 +6,14 @@ enum TutorialState {
 	EXPLAIN_AMALGAM_ZOMBIE
 }
 
-@onready var toolTips = $"../ToolTips"
-@onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu"
-#@onready var waveManager = $GameLayer/WaveManager
-var waveManager 
-@onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
-@onready var green_dimension = $CurrentScene/Level03Alternate
-@onready var pause_Button = $"../../PauseButton"
+#TODO Refactor 
+#@onready var green_dimension = Global.game_controller.get_alt_dimension()# $CurrentScene/Level03Alternate
 
 
 
 
 var tutorial_state: TutorialState = TutorialState.TUTORIAL_P1_DONE
 var amalgamExplained := false
-var wave2Started := false
 var amalgam_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
@@ -35,7 +27,6 @@ var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
-@export var new_end_dialog = "res://_Assets/Dialog/level_06_end_dialog.dtl"
 
 
 func _ready():
@@ -226,68 +217,15 @@ func show_all_plant_buttons():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = true 
 
-# Spotlight helper functions 	
+
 func _start_explain_amalgam_zombie():
 	amalgamExplained = true 
 	#print("[TUTORIAL] Start Explain amalgam Zombie")
 	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_AMALGAM)
 	toolTips.setComplexScene(amalgam_zombie_demo_scene)
 	toolTips.showButton()	
-	
-## Shows spotlight centered on a Control node
-func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
-	if not target_node or not spotlight_overlay:
-		print("NOT SHOWING SPOTLIGHT")
-		return
-	#print("Showing Spotlight", target_node, size_multiplier)
-
-	# Get center of target in screen coordinates
-	var global_rect = target_node.get_global_rect()
-	var center = global_rect.get_center()
-
-	# Calculate appropriate spotlight size based on button size
-	var viewport_size = get_viewport().get_visible_rect().size
-	var button_diagonal = global_rect.size.length()
-	var uv_size = (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
-
-	show_spotlight_at_position(center, uv_size)
-
-## Shows spotlight at specific screen position
-func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
-	if not spotlight_overlay:
-		return
-	var viewport_size = get_viewport().get_visible_rect().size
-	var uv_pos = screen_pos / viewport_size
-	#print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
-	#var viewport_size = get_viewport().get_visible_rect().size
-	#var uv_pos = screen_pos / viewport_size
-
-	var spotlight_rect = spotlight_overlay.get_node("SpotlightRect")
-	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
-	spotlight_rect.material.set_shader_parameter("circle_size", size)
-	spotlight_overlay.visible = true
-
-## Hides spotlight overlay
-func hide_spotlight():
-	if spotlight_overlay:
-		spotlight_overlay.visible = false
-
-
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
-	
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos)
-
 
 
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)
 	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
-
-func get_game_layer():
-	return $GameLayer
-func get_health_ui():
-	return $UILayer.get_the_health()

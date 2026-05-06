@@ -9,15 +9,6 @@ enum TutorialState {
 	TUTORIAL_P2_DONE
 }
 
-@onready var toolTips = $"../ToolTips"
-@onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu"
-#@onready var waveManager = $GameLayer/WaveManager
-var waveManager 
-@onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
-@onready var green_dimension = $CurrentScene/Level03Alternate
-@onready var pause_Button = $"../../PauseButton"
 
 var thisLevel := "res://_Stages/Level3/Level0-3.tscn"
 var thisAltLevel := "res://_Stages/Level3/Level0-3_Alternate.tscn"
@@ -26,7 +17,6 @@ var level04 = "res://_Stages/Level4/Level0-4.tscn"
 var level04Alt = "res://_Stages/Level4/Level0-4_Alternate.tscn"
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_MAW
 var fleshEaterExplained := false 
-var wave2Started := false 
 var fleshEater_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
 
 var level03 = "res://_Stages/Level3/Level0-3.tscn"
@@ -36,7 +26,7 @@ const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_Sele
 const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
-@export var new_end_dialog = "res://_Assets/Dialog/level_03_end_dialog.dtl"
+
 
 
 
@@ -309,59 +299,20 @@ func _start_explain_fleshEater_zombie():
 	toolTips.showButton()	
 
 ## Shows spotlight centered on a Control node
-func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
-	if not target_node or not spotlight_overlay:
-		print("NOT SHOWING SPOTLIGHT")
-		return
-	print("Showing Spotlight", target_node, size_multiplier)
 
-	# Get center of target in screen coordinates
-	var global_rect = target_node.get_global_rect()
-	var center = global_rect.get_center()
 
-	# Calculate appropriate spotlight size based on button size
-	var viewport_size = get_viewport().get_visible_rect().size
-	var button_diagonal = global_rect.size.length()
-	var uv_size = (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
 
-	show_spotlight_at_position(center, uv_size)
-
-## Shows spotlight at specific screen position
-func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
-	if not spotlight_overlay:
-		return
-	var viewport_size = get_viewport().get_visible_rect().size
-	var uv_pos = screen_pos / viewport_size
-	print("[SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
-	#var viewport_size = get_viewport().get_visible_rect().size
-	#var uv_pos = screen_pos / viewport_size
-
-	var spotlight_rect = spotlight_overlay.get_node("SpotlightRect")
-	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
-	spotlight_rect.material.set_shader_parameter("circle_size", size)
-	spotlight_overlay.visible = true
-
-## Hides spotlight overlay
-func hide_spotlight():
-	if spotlight_overlay:
-		spotlight_overlay.visible = false
 
 func hide_Codex():
 	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
 	codex_buton.visible = false 
 	
 
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
 
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos)
+
+
 
 
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 19)
 	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
-func get_health_ui():
-	return $UILayer.get_the_health()

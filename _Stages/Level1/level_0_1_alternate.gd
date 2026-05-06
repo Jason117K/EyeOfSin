@@ -3,12 +3,10 @@ extends LevelTemplate
 # Waits for purple dimension to activate Wave 2
 
 #@onready var waveManager = $GameLayer/WaveManager
-var waveManager 
-@onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu" 
+ 
 
 func _ready():
-	waveManager = get_parent().get_node("WaveManager")
+	#waveManager = get_parent().get_node("WaveManager")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# Keep waves disabled until purple dimension activates us
@@ -71,13 +69,9 @@ func start_wave_2():
 	print("========== GREEN DIMENSION START_WAVE_2 COMPLETED ==========")
 
 
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
 
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos) 
-func make_camera_current():
-	$Camera2D.make_current()
+
+
 
 
 
@@ -106,7 +100,3 @@ func hide_all_plant_buttons_except_spyder():
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(4, 4)
 	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
-func get_health_ui():
-	return $UILayer.get_the_health()

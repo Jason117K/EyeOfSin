@@ -634,4 +634,5 @@ func swap_portal_button():
 		purple_scene = true 
 		return 
 		
-	
+func get_crawler_button():
+	return $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2

@@ -1,6 +1,4 @@
 extends LevelTemplate
-# level_0_1.gd - Level 0-1 Tutorial Controller
-# Implements forced tutorial system with state machine and input filtering
 
 enum TutorialState {
 	FORCE_SELECT_SPYDER,
@@ -15,79 +13,49 @@ enum TutorialState {
 }
 
 var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_SPYDER
-var wave_1_active: bool = false
-var wave_1_complete: bool = false
-var spyder_already_selected = false
-
-# Node references
-#@onready var toolTips = $ToolTips
-@onready var toolTips = $"../ToolTips"
-@onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu" 
-#@onready var waveManager = $GameLayer/WaveManager
-var waveManager
-@onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
-@onready var pause_Button = $"../../PauseButton"
-
-# Text file paths
-const TUTORIAL_SELECT_SPYDER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
-const TUTORIAL_PLACE_SPYDER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceSpyder.txt"
-const TUTORIAL_BLOOD_COST = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
-const TUTORIAL_PRESS_Y = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
-const TUTORIAL_GREEN_DIMENSION = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
-const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
-const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
 var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
 var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
-var level0_1 = ("res://_Stages/Level1/Level0-1.tscn")
-var level0_1Alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
-@export var new_end_dialog = "res://_Assets/Dialog/level_0_end_dialog.dtl"
+
+
 
 func _ready():
+	#super()
+	
 	Dialogic.Inputs.auto_skip.enabled = true 
+	Dialogic.timeline_ended.connect(finish_ready)
+	
 	Global.current_level = self
-	waveManager = get_parent().get_node("WaveManager")
-	waveManager.set_dialog_end(new_end_dialog)
-	waveManager.Wave2StartTime = 20
-	waveManager.Wave3StartTime = 30
-	print("WaveManager is ", waveManager)
-	setup_plant_selection_menu()
-	pause_Button.set_restart_levels(level0_1,level0_1Alt)
-	process_mode = Node.PROCESS_MODE_ALWAYS
-	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
-	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
 	Global.reset_swap_ability()
+	
+	waveManager.set_dialog_end(new_end_dialog)
+	waveManager.Wave2StartTime = Wave2StartTime
+	waveManager.Wave3StartTime = Wave3StartTime
 
-	# Connect signals
+	setup_plant_selection_menu()
+	pause_Button.set_restart_levels(current_level,current_level_alt)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	print("Plantmanager is ", plantManager)
-	#plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
-	#plantManager.spyder_placed.connect(_on_spyder_placed)
+	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
+	toolTips.noButtonShow()
+	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
+	
 	plantManager.spyder_placed.connect(func(_grid_position): _on_spyder_placed())
-	#plantManager.test_signal.connect(test_func)
+	
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
-	# Connect to Spyder button directly
-	var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
+	
+	var spyder_button = plantSelectionMenu.get_crawler_button()
 	spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
+	
 	toolTips.hide()
-	
-	Dialogic.timeline_ended.connect(finish_ready)
-	#Dialogic.start("res://Assets/Dialog/level_0_start_dialog.dtl")
 	finish_ready()
-	
-	
-	#toolTips.visible = true 
-	# Start tutorial
-	#_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
-	#toolTips.connect("ToolTipHid",Callable(self, "_on_tooltip_hidden"))
-	#Global.unHidePlantSelectionMenu()
-func test_func():
-	print("PrintPirnt")
+
+
 func finish_ready():
-	print("Skipped Dialog")
+	#print("Skipped Dialog")
 	_transition_to_state(TutorialState.FORCE_SELECT_SPYDER)
 	Global.unHidePlantSelectionMenu()
 
@@ -108,11 +76,6 @@ func _input(event):
 			if event is InputEventKey and event.pressed:
 				if event.keycode == KEY_Y:
 					get_viewport().set_input_as_handled()
-
-			# Explain the Basic Zombie with a popup 
-			
-
-		# Other states allow normal input
 		_:
 			pass
 
@@ -139,6 +102,7 @@ func _handle_force_place_plant_input(event):
 
 
 func _handle_force_press_y_input(event):
+	#TODO Refactor with specific getters
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 	# Only allow Y key
@@ -210,6 +174,7 @@ func _start_explain_blood_cost():
 
 func start_game():
 	_start_wave_1_purple_only()
+	
 func _start_wave_1_purple_only():
 	# Game unpauses when ToolTips button clicked
 	print("Wavemanager started")
@@ -359,59 +324,6 @@ func _physics_process(_delta):
 				_transition_to_state(TutorialState.FORCE_PRESS_Y)
 
 
-# Helper Methods
-func make_camera_current():
-	$Camera2D.make_current()
-
-
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
-
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos)
-
-# Spotlight helper functions - ADD THESE NEW FUNCTIONS
-
-## Shows spotlight centered on a Control node
-func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
-	if not target_node or not spotlight_overlay:
-		print("NOT SHOWING SPOTLIGHT")
-		return
-	print("Showing Spotlight At Node", target_node, size_multiplier)
-
-	# Get center of target in screen coordinates
-	var global_rect = target_node.get_global_rect()
-	var center = global_rect.get_center()
-
-	# Calculate appropriate spotlight size based on button size
-	var viewport_size = get_viewport().get_visible_rect().size
-	var button_diagonal = global_rect.size.length()
-	var uv_size = (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
-
-	show_spotlight_at_position(center, uv_size)
-
-## Shows spotlight at specific screen position
-func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
-	if not spotlight_overlay:
-		return
-	var viewport_size = get_viewport().get_visible_rect().size
-	var uv_pos = screen_pos / viewport_size
-	print("[SHOW SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
-	#var viewport_size = get_viewport().get_visible_rect().size
-	#var uv_pos = screen_pos / viewport_size
-
-	var spotlight_rect = spotlight_overlay.get_node("SpotlightRect")
-	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
-	spotlight_rect.material.set_shader_parameter("circle_size", size)
-	spotlight_overlay.visible = true
-
-## Hides spotlight overlay
-func hide_spotlight():
-	if spotlight_overlay:
-		spotlight_overlay.visible = false
-
-
-
 func _start_force_select_spyder():
 	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
 	toolTips.noButtonShow()
@@ -441,9 +353,3 @@ func _on_plant_manager_spyder_placed(grid_position: Vector2) -> void:
 
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(4, 4)
-	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
-
-func get_health_ui():
-	return $UILayer.get_the_health()

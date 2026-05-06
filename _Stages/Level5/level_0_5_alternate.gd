@@ -1,12 +1,7 @@
 extends LevelTemplate
 
-@onready var toolTips = $"../ToolTips"
-@onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu"
-#@onready var waveManager = $GameLayer/WaveManager
-var waveManager 
-@onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
+
+
 
 @export var isGreenDimension := false 
 var purple_dimension : Control
@@ -43,12 +38,6 @@ func attach_script_to_sway_children(script_path: String) -> void:
 func getIsGreenDimension():
 	return isGreenDimension
 
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
-
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos)
-	
 
 func start_game():
 	waveManager = get_parent().get_node("WaveManager")
@@ -77,7 +66,3 @@ func show_all_plant_buttons():
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)
 	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
-func get_health_ui():
-	return $UILayer.get_the_health()

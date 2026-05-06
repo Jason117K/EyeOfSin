@@ -104,23 +104,23 @@ func swap_scenes():
 	#	print("Swap Scenes")
 		#current_scene.visible = false 
 		if on_scene_1:
-			plant_manager = current_scenes[0].get_child(0)
+			plant_manager = current_scenes[0].get_demon_manager()
 			plant_manager.clear_hero_demon()
 			
 			current_scenes[1].visible = true 
-			plant_manager = current_scenes[1].get_child(0)
+			plant_manager = current_scenes[1].get_demon_manager()
 			current_scenes[1].set_process_input(true)
 			current_scenes[0].visible = false 
 			current_scenes[1].set_process_input(false)
 			on_scene_1 = false 
 		else:
-			plant_manager = current_scenes[1].get_child(0)
+			plant_manager = current_scenes[1].get_demon_manager()
 			plant_manager.clear_hero_demon()
 			
 			current_scenes[1].visible = false 
 			current_scenes[1].set_process_input(false)
 			current_scenes[0].visible = true 
-			plant_manager = current_scenes[0].get_child(0)
+			plant_manager = current_scenes[0].get_demon_manager()
 			current_scenes[0].set_process_input(true)
 			on_scene_1 = true 		
 			

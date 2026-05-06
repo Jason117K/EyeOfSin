@@ -70,7 +70,7 @@ shader_parameter/vpass = 1.0
 shader_parameter/radius = 65
 shader_parameter/unit = Vector2(1, 1)
 
-[node name="Level05Alternate" type="Control" groups=["Green", "GreenLevel"]]
+[node name="Level05Alternate" type="Control" unique_id=2024626130 groups=["Green", "GreenLevel"]]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -80,14 +80,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_iid74")
+isGreenDimension = true
 
-[node name="PlantManager" parent="." instance=ExtResource("2_iid74")]
+[node name="PlantManager" parent="." unique_id=1718086426 instance=ExtResource("2_iid74")]
 sun_points = 650
 
-[node name="GameLayer" type="Node2D" parent="."]
+[node name="GameLayer" type="Node2D" parent="." unique_id=819774608]
 process_mode = 1
 
-[node name="ZombieSpawner1" parent="GameLayer" instance=ExtResource("3_4xikw")]
+[node name="ZombieSpawner1" parent="GameLayer" unique_id=1966373180 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 77)
 make_green = true
 Round2_Zombies = {
@@ -113,12 +114,12 @@ Round3_Zombies = {
 "Unhallower": 3
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1096298744 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, 0)
 levelToStart = NodePath("../../..")
 
-[node name="ZombieSpawner3" parent="GameLayer" instance=ExtResource("3_4xikw")]
+[node name="ZombieSpawner3" parent="GameLayer" unique_id=406937831 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 109)
 make_green = true
 Round2_Zombies = {
@@ -144,12 +145,12 @@ Round3_Zombies = {
 "Unhallower": 6
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=866564976 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, 1)
 levelToStart = NodePath("../../..")
 
-[node name="ZombieSpawner2" parent="GameLayer" instance=ExtResource("3_4xikw")]
+[node name="ZombieSpawner2" parent="GameLayer" unique_id=582696796 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 141)
 make_green = true
 Round1_Zombies = {
@@ -186,12 +187,12 @@ Round3_Zombies = {
 "Unhallower": 1
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1814117221 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, 0)
 levelToStart = NodePath("../../..")
 
-[node name="ZombieSpawner4" parent="GameLayer" instance=ExtResource("3_4xikw")]
+[node name="ZombieSpawner4" parent="GameLayer" unique_id=866825408 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 173)
 make_green = true
 Round1_Zombies = {
@@ -228,12 +229,12 @@ Round3_Zombies = {
 "Unhallower": 1
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner4" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1816570866 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
 levelToStart = NodePath("../../..")
 
-[node name="ZombieSpawner5" parent="GameLayer" instance=ExtResource("3_4xikw")]
+[node name="ZombieSpawner5" parent="GameLayer" unique_id=1745598549 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 205)
 make_green = true
 Round1_Zombies = {
@@ -270,12 +271,12 @@ Round3_Zombies = {
 "Unhallower": 3
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner5" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1540339064 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
 levelToStart = NodePath("../../..")
 
-[node name="ZombieSpawner6" parent="GameLayer" instance=ExtResource("3_4xikw")]
+[node name="ZombieSpawner6" parent="GameLayer" unique_id=1105065544 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 241)
 make_green = true
 Round1_Zombies = {
@@ -312,12 +313,12 @@ Round3_Zombies = {
 "Unhallower": 6
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner6" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=87244267 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
 levelToStart = NodePath("../../..")
 
-[node name="ZombieSpawner7" parent="GameLayer" instance=ExtResource("3_4xikw")]
+[node name="ZombieSpawner7" parent="GameLayer" unique_id=1086465909 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 270)
 make_green = true
 Round2_Zombies = {
@@ -343,276 +344,276 @@ Round3_Zombies = {
 "Unhallower": 0
 }
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner7" node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1195128336 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
 levelToStart = NodePath("../../..")
 
-[node name="GridManager" parent="GameLayer" instance=ExtResource("7_vx8y4")]
+[node name="GridManager" parent="GameLayer" unique_id=1244735254 instance=ExtResource("7_vx8y4")]
 make_green = true
 
-[node name="TileMapLayer" parent="GameLayer/GridManager" index="0"]
+[node name="TileMapLayer" parent="GameLayer/GridManager" index="0" unique_id=456208734]
 tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAAAAAADAAsABQAAAAAAAAAFAAsABQAAAAAAAAAGAAsABQAAAAAAAAAHAAsABQAAAAAAAAAIAAsABQAAAAAAAAAWAAsABQAAAAAAAAAXAAsABQAAAAAAAAAVAAsABQAAAAEAAAAUAAsABQAAAAAAAAATAAsABQAAAAAAAAASAAsABQAAAAAAAAARAAsABQAAAAAAAAAQAAsABQAAAAAAAAAPAAsABQAAAAAAAAAOAAsABQAAAAEAAAANAAsABQAAAAAAAAAMAAsAAQAAAAkAAAALAAsAAQAGAAkAAAAKAAsAAQAAAAkAAAAJAAsABQAAAAAAAAAEAAoAAQAAAAkAAAADAAoABQAAAAAAAAACAAoABQAAAAAAAAABAAoABQAAAAAAAAAFAAoAAQARAAgAAAAHAAoABQAAAAAAAAAIAAoABQAAAAAAAAAJAAoABQAAAAAAAAAKAAoABQAAAAAAAAALAAoABQAAAAAAAAAMAAoABQAAAAAAAAANAAoABQAAAAAAAAAOAAoABQAAAAAAAAAPAAoABQAAAAAAAAAQAAoABQAAAAAAAAARAAoABQAAAAAAAAASAAoABQAAAAAAAAATAAoABQAAAAAAAAAUAAoABQAAAAAAAAAVAAoABQAAAAAAAAAWAAoAAQARAAgAAAARAAkAAQALAAcAAAAQAAkAAQAKAAcAAAAPAAkAAQACAAMAAAAOAAkAAQAJAAcAAAANAAkAAQACAAcAAAAMAAkAAQARAAcAAAALAAkAAQAJAAcAAAAKAAkAAQAAAAcAAAAJAAkAAQAIAAcAAAAAAAoABQAAAAAAAAAAAAkAAQANAAcAAAABAAkAAQABAAcAAAACAAkAAQAJAAcAAAADAAkAAQARAAcAAAAEAAkAAQAFAAcAAAAFAAkAAQAJAAcAAAAGAAkAAQAKAAcAAAAHAAkAAQABAAcAAAAIAAkAAQACAAcAAAASAAkAAQAFAAcAAAATAAkAAQAJAAcAAAAUAAkAAQAKAAcAAAAVAAkAAQAJAAcAAAAWAAkAAQAQAAcAAAAXAAkAAQAJAAcAAAAEAAsABQAAAAAAAAAGAAoAAQARAAgAAAADAAgAAQADAAUAAAABAAcAAQADAAUAAAAIAAcAAQADAAUAAAADAAYAAQADAAUAAAAFAAUAAQADAAUAAAAGAAgAAQADAAUAAAAOAAYAAQADAAUAAAALAAUAAQADAAUAAAAMAAgAAQADAAUAAAAVAAcAAQADAAUAAAASAAYAAQADAAUAAAAQAAgAAQADAAUAAAAJAAYAAQADAAUAAAAFAAcAAQADAAUAAAAHAAgAAQADAAUAAAAIAAgAAQADAAUAAAAJAAgAAQADAAUAAAAKAAgAAQADAAUAAAALAAgAAQADAAUAAAAFAAgAAQADAAUAAAAEAAgAAQADAAUAAAACAAgAAQADAAUAAAAAAAgAAQADAAUAAAABAAgAAQADAAUAAAAAAAcAAQADAAUAAAAAAAYAAQADAAUAAAABAAYAAQADAAUAAAACAAcAAQADAAUAAAADAAcAAQADAAUAAAAEAAcAAQADAAUAAAACAAYAAQADAAUAAAAEAAYAAQADAAUAAAAGAAYAAQADAAUAAAAGAAcAAQADAAUAAAAFAAYAAQADAAUAAAAHAAYAAQADAAUAAAAIAAYAAQADAAUAAAAHAAcAAQADAAUAAAAJAAcAAQADAAUAAAAKAAYAAQADAAUAAAALAAcAAQADAAUAAAAKAAcAAQADAAUAAAALAAYAAQADAAUAAAAMAAYAAQADAAUAAAANAAYAAQADAAUAAAANAAcAAQADAAUAAAAMAAcAAQADAAUAAAANAAgAAQADAAUAAAAOAAgAAQADAAUAAAAPAAgAAQADAAUAAAAOAAcAAQADAAUAAAAPAAcAAQADAAUAAAAPAAYAAQADAAUAAAAQAAYAAQADAAUAAAARAAYAAQADAAUAAAARAAcAAQADAAUAAAAQAAcAAQADAAUAAAARAAgAAQADAAUAAAASAAgAAQADAAUAAAASAAcAAQADAAUAAAATAAYAAQADAAUAAAATAAcAAQADAAUAAAATAAgAAQADAAUAAAAUAAgAAQADAAUAAAAUAAcAAQADAAUAAAAUAAYAAQADAAUAAAAVAAYAAQADAAUAAAAWAAYAAQADAAUAAAAWAAcAAQADAAUAAAAWAAgAAQADAAUAAAAVAAgAAQADAAUAAAAXAAIAAQADAAUAAAAWAAIAAQADAAUAAAAVAAIAAQADAAUAAAAUAAIAAQADAAUAAAATAAIAAQADAAUAAAASAAIAAQADAAUAAAARAAIAAQADAAUAAAAQAAIAAQADAAUAAAAPAAIAAQADAAUAAAAOAAIAAQADAAUAAAANAAIAAQADAAUAAAAMAAIAAQADAAUAAAALAAIAAQADAAUAAAAKAAIAAQADAAUAAAAJAAIAAQADAAUAAAAIAAIAAQADAAUAAAAHAAIAAQADAAUAAAAGAAIAAQADAAUAAAAFAAIAAQADAAUAAAAEAAIAAQADAAUAAAADAAIAAQADAAUAAAACAAIAAQADAAUAAAABAAIAAQADAAUAAAAAAAIAAQADAAUAAAAXAAoABQAAAAAAAAAXAAgAAQADAAUAAAAXAAcAAQADAAUAAAAXAAYAAQADAAUAAAAWAAUAAQADAAUAAAAVAAUAAQADAAUAAAAUAAUAAQADAAUAAAATAAUAAQADAAUAAAASAAUAAQADAAUAAAARAAUAAQADAAUAAAAQAAUAAQADAAUAAAAPAAUAAQADAAUAAAAOAAUAAQADAAUAAAANAAUAAQADAAUAAAAMAAUAAQADAAUAAAAKAAUAAQADAAUAAAAXAAUAAQADAAUAAAAJAAUAAQADAAUAAAAIAAUAAQADAAUAAAAHAAUAAQADAAUAAAAXAAQAAQABAAUAAAAWAAQAAQABAAUAAAAVAAQAAQABAAUAAAAUAAQAAQABAAUAAAATAAQAAQABAAUAAAASAAQAAQABAAUAAAARAAQAAQABAAUAAAAQAAQAAQABAAUAAAAPAAQAAQABAAUAAAAGAAUAAQADAAUAAAAEAAUAAQADAAUAAAADAAUAAQADAAUAAAACAAUAAQADAAUAAAABAAUAAQADAAUAAAAAAAUAAQADAAUAAAAAAAQAAQADAAUAAAABAAQAAQADAAUAAAACAAQAAQACAAUAAAADAAQAAQABAAUAAAAEAAQAAQABAAUAAAAFAAQAAQABAAUAAAAGAAQAAQABAAUAAAAHAAQAAQABAAUAAAAIAAQAAQABAAUAAAAJAAQAAQABAAUAAAAKAAQAAQABAAUAAAALAAQAAQABAAUAAAAMAAQAAQABAAUAAAANAAQAAQABAAUAAAAOAAQAAQABAAUAAAAAAAMAAQADAAUAAAABAAMAAQADAAUAAAACAAMAAQADAAUAAAADAAMAAQADAAUAAAAEAAMAAQADAAUAAAAFAAMAAQADAAUAAAAGAAMAAQADAAUAAAAHAAMAAQADAAUAAAAIAAMAAQADAAUAAAAJAAMAAQADAAUAAAAKAAMAAQADAAUAAAALAAMAAQADAAUAAAAQAAMAAQADAAUAAAARAAMAAQADAAUAAAASAAMAAQADAAUAAAATAAMAAQADAAUAAAAUAAMAAQADAAUAAAAVAAMAAQADAAUAAAAWAAMAAQADAAUAAAAXAAMAAQADAAUAAAAPAAMAAQADAAUAAAAOAAMAAQADAAUAAAANAAMAAQADAAUAAAAMAAMAAQADAAUAAAAXAAEAAQAJAAMAAAAWAAEAAQAKAAMAAAAVAAEAAQAGAAMAAAAUAAEAAQAJAAMAAAATAAEAAQANAAMAAAASAAEAAQABAAMAAAARAAEAAQAJAAMAAAAQAAEAAQACAAMAAAAPAAEAAQAJAAMAAAAOAAEAAQAEAAMAAAANAAEAAQALAAMAAAAMAAEAAQAIAAMAAAALAAEAAQALAAMAAAAKAAEAAQAJAAMAAAAJAAEAAQAPAAMAAAAIAAEAAQAHAAMAAAAHAAEAAQABAAMAAAAGAAEAAQACAAMAAAAFAAEAAQAAAAMAAAAEAAEAAQAGAAMAAAADAAEAAQABAAMAAAACAAEAAQAJAAMAAAABAAEAAQAIAAMAAAAAAAEAAQALAAMAAAAXAAAABQAAAAAAAAAWAAAABQAAAAAAAAAVAAAABQAAAAAAAAAUAAAABQAAAAAAAAATAAAABQAAAAAAAAASAAAABQAAAAAAAAARAAAABQAAAAAAAAAQAAAABQAAAAEAAAAPAAAABQAAAAAAAAAOAAAABQAAAAAAAAANAAAABQAAAAAAAAAMAAAABQAAAAAAAAALAAAABQAAAAAAAAAKAAAABQAAAAAAAAAJAAAABQAAAAAAAAAIAAAABQAAAAAAAAAHAAAABQAAAAAAAAAGAAAABQAAAAAAAAAFAAAABQAAAAAAAAAEAAAABQAAAAAAAAADAAAABQAAAAAAAAACAAAABAABAAAAAAABAAAABQAAAAAAAAAAAAAABQAAAAAAAAAXAAwABQAAAAAAAAAWAAwABQAAAAAAAAAVAAwABQAAAAAAAAAUAAwABQAAAAAAAAATAAwABQAAAAAAAAASAAwABQAAAAAAAAARAAwABQAAAAAAAAAQAAwABQAAAAAAAAAPAAwABQAAAAAAAAAOAAwABQAAAAAAAAANAAwABQAAAAAAAAAMAAwABQAAAAAAAAALAAwABQAAAAAAAAAKAAwABQAAAAAAAAAJAAwABQAAAAAAAAAIAAwABQAAAAAAAAAHAAwABQAAAAAAAAAGAAwABQAAAAAAAAAFAAwABQAAAAAAAAAEAAwABQAAAAAAAAADAAwABQAAAAAAAAACAAwABQAAAAAAAAABAAwABQAAAAAAAAAAAAwABQAAAAAAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAD+/wUAAQADAAUAAAA=")
 
-[node name="Environment" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="." unique_id=2143091434]
 
-[node name="Coral" type="Node2D" parent="Environment"]
+[node name="Coral" type="Node2D" parent="Environment" unique_id=288891074]
 
-[node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=448246136]
 position = Vector2(543, 347)
 texture = ExtResource("8_cku2c")
 
-[node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral" unique_id=751757268]
 position = Vector2(499, 335)
 texture = ExtResource("8_cku2c")
 
-[node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral" unique_id=108389418]
 position = Vector2(670, 400)
 texture = ExtResource("8_cku2c")
 flip_h = true
 
-[node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral" unique_id=91438350]
 position = Vector2(601, 401)
 texture = ExtResource("8_cku2c")
 flip_h = true
 
-[node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral" unique_id=1851969013]
 position = Vector2(718, 321)
 texture = ExtResource("8_cku2c")
 
-[node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral" unique_id=1116265953]
 position = Vector2(420, 382)
 texture = ExtResource("8_cku2c")
 
-[node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral" unique_id=2028442968]
 position = Vector2(113, 323)
 texture = ExtResource("8_cku2c")
 
-[node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral" unique_id=1233412528]
 position = Vector2(262, 8)
 texture = ExtResource("8_cku2c")
 flip_h = true
 
-[node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral" unique_id=1207273194]
 position = Vector2(497, 16)
 texture = ExtResource("8_cku2c")
 
-[node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral" unique_id=2077579235]
 position = Vector2(618, 344)
 texture = ExtResource("9_km4on")
 
-[node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral" unique_id=2036462819]
 position = Vector2(406, 333)
 texture = ExtResource("9_km4on")
 flip_h = true
 
-[node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral" unique_id=1613079223]
 position = Vector2(707, 397)
 texture = ExtResource("9_km4on")
 flip_h = true
 
-[node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral" unique_id=852558327]
 position = Vector2(724, 4)
 texture = ExtResource("9_km4on")
 flip_h = true
 
-[node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral" unique_id=1184087483]
 position = Vector2(263, 323)
 texture = ExtResource("9_km4on")
 flip_h = true
 
-[node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral" unique_id=2004786469]
 position = Vector2(490, 396)
 texture = ExtResource("9_km4on")
 flip_h = true
 
-[node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral" unique_id=1292380846]
 position = Vector2(620, 3)
 texture = ExtResource("9_km4on")
 flip_h = true
 
-[node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral" unique_id=1932147006]
 position = Vector2(609, 15)
 texture = ExtResource("9_km4on")
 flip_h = true
 
-[node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral"]
+[node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral" unique_id=1275646569]
 position = Vector2(353, 14)
 texture = ExtResource("9_km4on")
 
-[node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral"]
+[node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral" unique_id=1619786175]
 material = SubResource("ShaderMaterial_a0suq")
 position = Vector2(563, 378)
 texture = ExtResource("11_keido")
 script = ExtResource("12_trolp")
 
-[node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral"]
+[node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral" unique_id=1741204658]
 position = Vector2(662, 343)
 texture = ExtResource("11_keido")
 
-[node name="FetusProp" type="Sprite2D" parent="Environment/Coral"]
+[node name="FetusProp" type="Sprite2D" parent="Environment/Coral" unique_id=486306663]
 visible = false
 position = Vector2(438, 4)
 texture = ExtResource("13_he18v")
 
-[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral"]
+[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral" unique_id=2136333625]
 visible = false
 position = Vector2(465, 347)
 texture = ExtResource("13_he18v")
 
-[node name="Bramble" type="Node2D" parent="Environment"]
+[node name="Bramble" type="Node2D" parent="Environment" unique_id=18488438]
 visible = false
 
-[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble1" type="Sprite2D" parent="Environment/Bramble" unique_id=353410913]
 position = Vector2(505, 328)
 texture = ExtResource("14_y8a5i")
 
-[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble2" type="Sprite2D" parent="Environment/Bramble" unique_id=1454922001]
 position = Vector2(454, 388)
 texture = ExtResource("14_y8a5i")
 
-[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble3" type="Sprite2D" parent="Environment/Bramble" unique_id=932681686]
 position = Vector2(584, 399)
 texture = ExtResource("14_y8a5i")
 
-[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble4" type="Sprite2D" parent="Environment/Bramble" unique_id=515805561]
 position = Vector2(640, 303)
 texture = ExtResource("14_y8a5i")
 
-[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble5" type="Sprite2D" parent="Environment/Bramble" unique_id=2027454377]
 position = Vector2(483, 0)
 texture = ExtResource("14_y8a5i")
 
-[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble"]
+[node name="Bramble6" type="Sprite2D" parent="Environment/Bramble" unique_id=269711518]
 position = Vector2(660, 11)
 texture = ExtResource("14_y8a5i")
 
-[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble" unique_id=153940138]
 position = Vector2(366, 316)
 texture = ExtResource("15_vs18p")
 flip_h = true
 
-[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble" unique_id=1381422225]
 position = Vector2(455, 331)
 texture = ExtResource("15_vs18p")
 flip_h = true
 
-[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble" unique_id=895130077]
 position = Vector2(402, 343)
 texture = ExtResource("15_vs18p")
 
-[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble"]
+[node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble" unique_id=1412940814]
 position = Vector2(428, 399)
 texture = ExtResource("15_vs18p")
 flip_h = true
 
-[node name="Fish" type="Node2D" parent="Environment"]
+[node name="Fish" type="Node2D" parent="Environment" unique_id=1439455188]
 
-[node name="Fish" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish" parent="Environment/Fish" unique_id=2134542322 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(542, 386)
 makeGreen = true
 
-[node name="Fish2" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish2" parent="Environment/Fish" unique_id=857330893 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(515, 353)
 makeGreen = true
 
-[node name="Fish5" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish5" parent="Environment/Fish" unique_id=2001002557 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(180, 329)
 makeGreen = true
 
-[node name="Fish6" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish6" parent="Environment/Fish" unique_id=252595922 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(37, 326)
 makeGreen = true
 
-[node name="Fish7" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish7" parent="Environment/Fish" unique_id=946457803 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(573, 19)
 makeGreen = true
 
-[node name="Fish8" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish8" parent="Environment/Fish" unique_id=292382488 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(455, 394)
 makeGreen = true
 
-[node name="Fish9" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish9" parent="Environment/Fish" unique_id=714973857 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(315, 14)
 makeGreen = true
 
-[node name="Fish3" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish3" parent="Environment/Fish" unique_id=1872969009 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(573, 342)
 makeGreen = true
 
-[node name="Fish4" parent="Environment/Fish" instance=ExtResource("16_57rr0")]
+[node name="Fish4" parent="Environment/Fish" unique_id=1097543462 instance=ExtResource("16_57rr0")]
 z_index = -1
 position = Vector2(633, 395)
 makeGreen = true
 
-[node name="Shrubs" type="Node2D" parent="Environment"]
+[node name="Shrubs" type="Node2D" parent="Environment" unique_id=466646769]
 visible = false
 
-[node name="Shrub" parent="Environment/Shrubs" instance=ExtResource("17_sdo32")]
+[node name="Shrub" parent="Environment/Shrubs" unique_id=1160766889 instance=ExtResource("17_sdo32")]
 position = Vector2(560, 13)
 scale = Vector2(1, 1)
 
-[node name="Shrub2" parent="Environment/Shrubs" instance=ExtResource("17_sdo32")]
+[node name="Shrub2" parent="Environment/Shrubs" unique_id=953599094 instance=ExtResource("17_sdo32")]
 position = Vector2(474, 339)
 scale = Vector2(1, 1)
 
-[node name="Shrub3" parent="Environment/Shrubs" instance=ExtResource("17_sdo32")]
+[node name="Shrub3" parent="Environment/Shrubs" unique_id=1282681226 instance=ExtResource("17_sdo32")]
 position = Vector2(521, 392)
 scale = Vector2(1, 1)
 
-[node name="Shrub4" parent="Environment/Shrubs" instance=ExtResource("17_sdo32")]
+[node name="Shrub4" parent="Environment/Shrubs" unique_id=1195993739 instance=ExtResource("17_sdo32")]
 position = Vector2(193, 327)
 scale = Vector2(1, 1)
 
-[node name="Shrub5" parent="Environment/Shrubs" instance=ExtResource("17_sdo32")]
+[node name="Shrub5" parent="Environment/Shrubs" unique_id=239529216 instance=ExtResource("17_sdo32")]
 position = Vector2(433, 330)
 scale = Vector2(1, 1)
 
-[node name="Shrub6" parent="Environment/Shrubs" instance=ExtResource("17_sdo32")]
+[node name="Shrub6" parent="Environment/Shrubs" unique_id=474523448 instance=ExtResource("17_sdo32")]
 position = Vector2(658, 403)
 scale = Vector2(1, 1)
 
-[node name="Shrub7" parent="Environment/Shrubs" instance=ExtResource("17_sdo32")]
+[node name="Shrub7" parent="Environment/Shrubs" unique_id=260235190 instance=ExtResource("17_sdo32")]
 position = Vector2(297, 14)
 scale = Vector2(1, 1)
 
-[node name="Trees" type="Node2D" parent="Environment"]
+[node name="Trees" type="Node2D" parent="Environment" unique_id=2144624725]
 visible = false
 
-[node name="BloodTree" type="Sprite2D" parent="Environment/Trees"]
+[node name="BloodTree" type="Sprite2D" parent="Environment/Trees" unique_id=892447765]
 z_index = 1
 position = Vector2(561, 364)
 texture = ExtResource("18_nw5e7")
 flip_h = true
 
-[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees"]
+[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees" unique_id=1018350532]
 z_index = 1
 position = Vector2(396, 7)
 texture = ExtResource("18_nw5e7")
 
-[node name="Special" type="Node2D" parent="Environment"]
+[node name="Special" type="Node2D" parent="Environment" unique_id=637368112]
 visible = false
 
-[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special"]
+[node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=851047884]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
-[node name="UILayer" parent="." instance=ExtResource("20_nsrc7")]
+[node name="UILayer" parent="." unique_id=1182954165 instance=ExtResource("20_nsrc7")]
 layout_mode = 1
 
-[node name="Node" type="Node2D" parent="."]
+[node name="Node" type="Node2D" parent="." unique_id=1442712269]
 visible = false
 z_index = -1
 
-[node name="ColorRect" type="ColorRect" parent="Node"]
+[node name="ColorRect" type="ColorRect" parent="Node" unique_id=1628783123]
 offset_left = -56.0
 offset_top = -58.0
 offset_right = 792.0
@@ -620,10 +621,10 @@ offset_bottom = 444.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.0784314)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=179819462]
 environment = ExtResource("21_iid74")
 
-[node name="ToolTips" parent="." instance=ExtResource("21_eq38i")]
+[node name="ToolTips" parent="." unique_id=1143164867 instance=ExtResource("21_eq38i")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -639,16 +640,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="."]
+[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=91227064]
 stream = ExtResource("22_mjn0x")
 volume_db = -80.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=546743593]
 position = Vector2(370, 208)
 
-[node name="GlowShaderPass" type="CanvasLayer" parent="."]
+[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=1989636091]
 
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass"]
+[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=254358105]
 material = SubResource("ShaderMaterial_o4yey")
 offset_left = -49.0
 offset_top = -65.0
