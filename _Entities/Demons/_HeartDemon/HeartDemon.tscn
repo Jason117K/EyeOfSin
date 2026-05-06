@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="4_nbddu"]
 [ext_resource type="Texture2D" uid="uid://c4m14uxs4uhld" path="res://_Entities/Demons/SpriteSheets/HeartSplitterHero-Sheet.png" id="5_x555b"]
 [ext_resource type="PackedScene" uid="uid://cmmvuo0uc4nvr" path="res://_Entities/Demons/_HeartDemon/hero_ability_component.tscn" id="14_tfp6l"]
+[ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="16_ay5kv"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="18_qifgx"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="19_chpte"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="20_eny5u"]
@@ -1162,6 +1163,8 @@ position = Vector2(36, 28)
 position = Vector2(32, 3)
 
 [node name="HeroAbilityComponent" parent="." unique_id=55620515 instance=ExtResource("14_tfp6l")]
+
+[node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_ay5kv")]
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -3,8 +3,8 @@ extends Demon
 
 
 # Adjustable health and cost 
-@export var health = 100
-@export var maw_health = 500 
+#@export var health = 100
+#@export var maw_health = 500 
 @export var cost = 50
 #Keep a reference to our sun scene 
 var SunScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  # Adjust the path to your sun sprite scene
@@ -20,6 +20,7 @@ var PlantManager
 @onready var healTimer = $HealTimer
 @onready var healInvisTimer = $HealInvisTimer
 @onready var webbing_aoe_sprite = $Webs
+@onready var healthComp := $HealthComponent
 
 var spawnAnimDone = false
 var tween
@@ -134,7 +135,7 @@ func receiveBuff(newPlant):
 				$SunTimer.start()
 			"Maw":
 				animSpriteComp.change_form("Maw")
-				health = maw_health
+				#health = maw_health
 				can_eat_zombie = true
 				mawBuff = true 
 				
@@ -160,10 +161,7 @@ func debuff():
 
 #Handles the sunflower taking damage 
 func take_damage(damage):
-	#print("taking damage, health is " , health)
-	health = health - damage
-	if(health <= 0):
-		die()
+	healthComp.take_damage(damage)
 
 # Plant Cost Getter
 func get_cost():

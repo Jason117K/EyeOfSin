@@ -1,9 +1,7 @@
 extends Demon
 #Peashooter.gd
 
-# Adjustbale health, cost, attack speed 
-#@export var health = 100
-#@export var walnutHealth = 375
+
 #@export var attack_speed = 5 
 @export var cost = 75
 
@@ -182,12 +180,8 @@ func second_shoot_projectile():
 	projectile.position = position + Vector2(32, 0)  # Adjust starting position
 	get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
-# Handles the peashooter taking damage 
 func take_damage(damage):
-	#print("taking damage, health is " , health)
-	health = health - damage
-	if(health <= 0):
-		die()
+	healthComp.take_damage(damage)
 
 func spawn_done():
 	

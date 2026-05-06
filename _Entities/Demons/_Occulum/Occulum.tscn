@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://lg8ggykkyq8x" path="res://_Entities/Demons/Decals/Web_Small.png" id="2_3r88c"]
 [ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle-Sheet.png" id="2_bufnm"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_kvwqv"]
+[ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_m5mcc"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="3"]
+[ext_resource type="Script" uid="uid://cfqca1j76a6eh" path="res://_Entities/Demons/_Occulum/occulum_health_component.gd" id="3_0ypr0"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_muovt"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="4"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_kbw6t"]
@@ -976,6 +978,10 @@ position = Vector2(0, 1)
 collision_mask = 3
 script = ExtResource("1")
 buffedSunWaitTime = 9.0
+
+[node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_m5mcc")]
+script = ExtResource("3_0ypr0")
+maw_health = 500
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false

@@ -2,9 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://_Entities/Demons/_Maw/MawMouthSpriteSheet.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_colwa"]
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="2_fxtok"]
 [ext_resource type="Texture2D" uid="uid://347bq70xelxl" path="res://_Entities/Zombies/_Wretch/BackUpDancerHead.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dlft4k3qhircs" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Base-Sheet.png" id="3_38s27"]
+[ext_resource type="Script" uid="uid://cgts6jvr1vng3" path="res://_Entities/Demons/_Maw/maw_health_component.gd" id="3_xf387"]
 [ext_resource type="Script" uid="uid://32gl5oscgs3x" path="res://_Entities/Demons/_Maw/Maw.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://m5be4wtpwb4u" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Spider-Sheet.png" id="5_elvfo"]
@@ -1473,12 +1475,15 @@ script = ExtResource("4")
 tentacle1_start_color = Color(0.552941, 0, 0, 1)
 tentacle2_start_color = Color(0.552941, 0, 0, 1)
 tentacle3_start_color = Color(0.552941, 0, 0, 1)
-health = 400
 cost = 250
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
 digestTime = 15.0
 buffedDigestTime = 11.0
+
+[node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_colwa")]
+script = ExtResource("3_xf387")
+walnutHealth = 600
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=163048683]
 material = SubResource("ShaderMaterial_1eo28")
@@ -1683,11 +1688,11 @@ line_width = 5.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 115.10426, 133.30292, 116.408066, 136.41345, 117.502396, 139.68378, 119.1266, 142.66574, 121.30247, 145.07358, 123.83533, 146.76152, 126.52834, 147.67966, 129.21103, 147.83882, 131.90517, 147.88966, 134.6604, 148.90007, 137.13513, 150.78276, 139.06285, 153.36159, 140.2128, 156.46013, 140.42827, 159.83208, 140.62083, 163.23764, 141.84834, 166.39326, 143.97192, 168.85791, 146.62952, 170.30081, 149.3508, 170.4431, 151.5345, 169.32718, 153.56891, 168.03236, 156.14606, 167.65277, 158.82669, 168.55444, 161.02252, 170.54446)
+points = PackedVector2Array(112.595, 131.435, 115.21959, 133.0711, 117.995346, 133.22914, 120.83306, 133.5408, 123.6427, 134.57208, 126.17322, 136.35414, 128.22386, 138.77635, 129.75604, 141.63287, 130.54047, 144.87888, 131.93774, 147.89781, 134.0525, 150.33484, 136.60828, 152.00931, 139.33371, 152.81827, 141.96646, 152.72325, 144.30319, 151.87071, 146.96577, 151.63226, 149.77121, 152.49025, 152.25092, 154.4126, 153.95702, 157.21913, 154.43169, 160.57654, 153.84723, 163.94713, 153.77391, 167.37827, 154.92421, 170.5278, 157.06187, 172.80096, 159.60565, 173.89604)
 width = 5.0
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 115.10426, 127.67792, 116.408066, 130.16345, 117.502396, 132.80878, 119.1266, 135.16573, 121.30247, 136.94858, 123.83533, 138.01152, 126.52834, 138.30466, 129.21103, 137.83882, 131.90517, 137.26466, 134.6604, 137.65007, 137.13513, 138.90776, 139.06285, 140.86159, 140.2128, 143.33513, 140.42827, 146.08208, 140.62083, 148.86264, 141.84834, 151.39326, 143.97192, 153.23291, 146.62952, 154.05081, 149.3508, 153.5681, 151.5345, 151.8272, 153.56891, 149.90736, 156.14606, 148.90277, 158.82669, 149.17944, 161.02252, 150.54446)
+points = PackedVector2Array(112.595, 126.435, 115.21959, 127.44611, 117.995346, 126.97914, 120.83306, 126.6658, 123.6427, 127.07208, 126.17322, 128.22914, 128.22386, 130.02635, 129.75604, 132.25787, 130.54047, 134.87888, 131.93774, 137.27281, 134.0525, 139.08484, 136.60828, 140.13432, 139.33371, 140.31827, 141.96646, 139.59825, 144.30319, 138.12071, 146.96577, 137.25726, 149.77121, 137.49025, 152.25092, 138.78758, 153.95702, 140.96913, 154.43169, 143.70155, 153.84723, 146.44713, 153.77391, 149.25327, 154.92421, 151.7778, 157.06187, 153.42596, 159.60565, 153.89604)
 width = 5.0
 
 [node name="Arm2" parent="." unique_id=766619732 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]

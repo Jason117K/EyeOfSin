@@ -178,3 +178,6 @@ func finish_spawn():
 
 func get_is_buffed():
 	return isBuffed
+
+func take_damage(damage):
+	healthComp.take_damage(damage)

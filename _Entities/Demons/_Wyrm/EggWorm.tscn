@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://p8shvofaoy5d"]
 
 [ext_resource type="Texture2D" uid="uid://2bti3iudanb6" path="res://_Entities/Demons/_Wyrm/Worm1.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_tvvdq"]
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://_Entities/Demons/_Wyrm/Worm2.png" id="3"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="3_hls8g"]
+[ext_resource type="Script" uid="uid://bmj40cxvi8eq4" path="res://_Entities/Demons/_Wyrm/wyrm_health_component.gd" id="3_pfhft"]
 [ext_resource type="Texture2D" uid="uid://detf6cv0bgq0d" path="res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_ShellBack.png" id="3_t7jjk"]
 [ext_resource type="Texture2D" uid="uid://b3tnuprj1j3dg" path="res://_Entities/Demons/_Wyrm/LaserEggWormsSmolSHELL.png" id="3_vkg27"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://_Entities/Demons/_Wyrm/EggWorm.gd" id="4"]
@@ -12,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://pnbh3i46qiwd" path="res://_Entities/Demons/_Wyrm/LaserEggWormsSmol.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://_Entities/Demons/_Wyrm/LaserEggWormsSmolMERGED-Sheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="9"]
-[ext_resource type="Texture2D" path="res://_Entities/Demons/TestBloodBSheet.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="11"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="12"]
 
@@ -793,7 +795,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EggWorm" type="Area2D" groups=["Plants"]]
+[node name="EggWorm" type="Area2D" unique_id=639369473 groups=["Plants"]]
 z_index = 1
 script = ExtResource("4")
 cost = 100
@@ -803,15 +805,20 @@ squash_amount = 0.2
 stretch_amount = 0.1
 bounce_elasticity = 0.01
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_tvvdq")]
+script = ExtResource("3_pfhft")
+walnutBuffed_health = 550
+mawBuffed_health = 350
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=738991279]
 visible = false
 texture = ExtResource("7")
 
-[node name="ShellBack" type="Sprite2D" parent="."]
+[node name="ShellBack" type="Sprite2D" parent="." unique_id=1978951793]
 position = Vector2(0, -3)
 texture = ExtResource("3_t7jjk")
 
-[node name="Egg" type="Sprite2D" parent="."]
+[node name="Egg" type="Sprite2D" parent="." unique_id=555444028]
 z_index = 1
 material = SubResource("ShaderMaterial_t7jjk")
 position = Vector2(0, -3)
@@ -819,7 +826,7 @@ texture = ExtResource("3_vkg27")
 script = ExtResource("5_hls8g")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
-[node name="Worm1Animator" type="Node2D" parent="."]
+[node name="Worm1Animator" type="Node2D" parent="." unique_id=738937676]
 visible = false
 script = ExtResource("5")
 bob_speed = 0.6
@@ -827,13 +834,13 @@ bob_height = 1.0
 bounce_elasticity = 0.0
 sprite_path = NodePath("../Worm1")
 
-[node name="Worm1" type="Sprite2D" parent="."]
+[node name="Worm1" type="Sprite2D" parent="." unique_id=1392660571]
 material = SubResource("ShaderMaterial_oqc8a")
 position = Vector2(11, -3)
 texture = ExtResource("2")
 script = ExtResource("5_hls8g")
 
-[node name="LaserShootComponent" parent="Worm1" instance=ExtResource("6")]
+[node name="LaserShootComponent" parent="Worm1" unique_id=379337331 instance=ExtResource("6")]
 position = Vector2(-7, -3)
 extension_speed = 30000.0
 max_length = 20000.0
@@ -844,7 +851,7 @@ zigzag_position = 3500.0
 zigzag_width = 160.0
 isDisabled = true
 
-[node name="Worm2Animator" type="Node2D" parent="."]
+[node name="Worm2Animator" type="Node2D" parent="." unique_id=1459870071]
 visible = false
 script = ExtResource("5")
 bob_speed = 0.7
@@ -852,13 +859,13 @@ bob_height = 1.5
 bounce_elasticity = 0.0
 sprite_path = NodePath("../Worm2")
 
-[node name="Worm2" type="Sprite2D" parent="."]
+[node name="Worm2" type="Sprite2D" parent="." unique_id=1649176909]
 material = SubResource("ShaderMaterial_5n28x")
 position = Vector2(-10, 3)
 texture = ExtResource("3")
 script = ExtResource("5_hls8g")
 
-[node name="LaserShootComponent" parent="Worm2" instance=ExtResource("6")]
+[node name="LaserShootComponent" parent="Worm2" unique_id=1577011033 instance=ExtResource("6")]
 position = Vector2(14, -9)
 extension_speed = 30000.0
 max_length = 20000.0
@@ -868,12 +875,12 @@ zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
 
-[node name="Worm3" type="Sprite2D" parent="."]
+[node name="Worm3" type="Sprite2D" parent="." unique_id=638135112]
 material = SubResource("ShaderMaterial_5n28x")
 position = Vector2(3, 1)
 script = ExtResource("5_hls8g")
 
-[node name="LaserShootComponent" parent="Worm3" instance=ExtResource("6")]
+[node name="LaserShootComponent" parent="Worm3" unique_id=1439520591 instance=ExtResource("6")]
 position = Vector2(14, -9)
 extension_speed = 30000.0
 max_length = 20000.0
@@ -883,21 +890,21 @@ zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
 
-[node name="ShootTimer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="." unique_id=387122970]
 autostart = true
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=615257564]
 visible = false
 position = Vector2(-1, -2.5)
 shape = SubResource("1")
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=1120460148]
 visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=481485503]
 sprite_frames = SubResource("4")
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1161793996]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
@@ -905,96 +912,96 @@ sprite_frames = SubResource("90")
 animation = &"New Anim 2"
 frame = 2
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=62385464]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(64, 0)
 sprite_frames = SubResource("90")
 animation = &"New Anim 2"
 
-[node name="BuffNodesComponent" parent="." instance=ExtResource("12")]
+[node name="BuffNodesComponent" parent="." unique_id=1891567804 instance=ExtResource("12")]
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "", "Hive", "Maw", "None", "None"]
 
-[node name="BloodTile1" parent="BuffNodesComponent" index="2"]
+[node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 14
 
-[node name="TileArea2" parent="BuffNodesComponent" index="3"]
+[node name="TileArea2" parent="BuffNodesComponent" index="3" unique_id=1222914378]
 visible = false
 
-[node name="BloodTile2" parent="BuffNodesComponent" index="4"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 11
-
-[node name="TileArea3" parent="BuffNodesComponent" index="5"]
-visible = false
-
-[node name="BloodTile3" parent="BuffNodesComponent" index="6"]
+[node name="BloodTile2" parent="BuffNodesComponent" index="4" unique_id=727498254]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="TileArea4" parent="BuffNodesComponent" index="7"]
+[node name="TileArea3" parent="BuffNodesComponent" index="5" unique_id=963343398]
 visible = false
 
-[node name="BloodTile4" parent="BuffNodesComponent" index="8"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 11
-
-[node name="TileArea5" parent="BuffNodesComponent" index="9"]
-visible = false
-
-[node name="BloodTile5" parent="BuffNodesComponent" index="10"]
+[node name="BloodTile3" parent="BuffNodesComponent" index="6" unique_id=2066119592]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="TileArea6" parent="BuffNodesComponent" index="11"]
+[node name="TileArea4" parent="BuffNodesComponent" index="7" unique_id=1195978361]
 visible = false
 
-[node name="BloodTile6" parent="BuffNodesComponent" index="12"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_5qq15")
-frame = 11
-
-[node name="TileArea7" parent="BuffNodesComponent" index="13"]
-visible = false
-
-[node name="BloodTile7" parent="BuffNodesComponent" index="14"]
+[node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="TileArea8" parent="BuffNodesComponent" index="15"]
+[node name="TileArea5" parent="BuffNodesComponent" index="9" unique_id=334855413]
 visible = false
 
-[node name="BloodTile8" parent="BuffNodesComponent" index="16"]
+[node name="BloodTile5" parent="BuffNodesComponent" index="10" unique_id=1290243908]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 11
 
-[node name="BloodTile9" parent="BuffNodesComponent" index="18"]
+[node name="TileArea6" parent="BuffNodesComponent" index="11" unique_id=1969648199]
+visible = false
+
+[node name="BloodTile6" parent="BuffNodesComponent" index="12" unique_id=748963459]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 11
+
+[node name="TileArea7" parent="BuffNodesComponent" index="13" unique_id=1022902709]
+visible = false
+
+[node name="BloodTile7" parent="BuffNodesComponent" index="14" unique_id=1211874094]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 11
+
+[node name="TileArea8" parent="BuffNodesComponent" index="15" unique_id=1026513902]
+visible = false
+
+[node name="BloodTile8" parent="BuffNodesComponent" index="16" unique_id=523478326]
+visible = false
+sprite_frames = SubResource("SpriteFrames_5qq15")
+frame = 11
+
+[node name="BloodTile9" parent="BuffNodesComponent" index="18" unique_id=352922726]
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 17
 
-[node name="TileArea10" parent="BuffNodesComponent" index="19"]
+[node name="TileArea10" parent="BuffNodesComponent" index="19" unique_id=1590585108]
 visible = false
 
-[node name="BloodTile10" parent="BuffNodesComponent" index="20"]
+[node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
 
-[node name="DMG_RayCast2D" type="RayCast2D" parent="."]
+[node name="DMG_RayCast2D" type="RayCast2D" parent="." unique_id=1610026642]
 scale = Vector2(1.08712, 3.82142)
 target_position = Vector2(275, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=135352540]
 wait_time = 2.0
 one_shot = true
 autostart = true

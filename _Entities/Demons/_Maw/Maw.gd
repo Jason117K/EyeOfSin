@@ -61,12 +61,14 @@ class TentacleState:
 @onready var arm_target2 = $ArmTarget2
 @onready var arm_target3 = $ArmTarget3
 
+@onready var healthComp := $HealthComponent
+
 @onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
 #Adjustable maw health & cost 
-@export var health = 100
-@export var walnutHealth = 600
-
-@onready var ogHealth = 100
+#@export var health = 100
+#@export var walnutHealth = 600
+#
+#@onready var ogHealth = 100
 @export var cost = 200
 
 @export var alt_target_color : Color
@@ -345,7 +347,7 @@ func finish_tentacle_retraction(tentacle: TentacleState) -> void:
 
 		# Handle buffs (walnut health gain)
 		if isWalnutBuffed:
-			health += 100
+			healthComp.health += 100
 
 		# Check for web belch (spyder buff + slowed enemy)
 		var slow = enemyCompManager.getSlow()
@@ -427,10 +429,7 @@ func complete_digestion(tentacle: TentacleState) -> void:
 
 #Handles the Maw taking damage
 func take_damage(damage):
-	health = health - damage
-	if health <= 0:
-		# Arms will be freed in die() function
-		die()
+	healthComp.take_damage(damage)
 
 #When the time is up, free up a tentacle by adding a charge
 func _on_DigestionTimer_timeout():
@@ -474,7 +473,7 @@ func receiveBuff(plant):
 				#tentacle2.set_colors(Color.BLACK, Color.BLACK)
 			#print("Maw7 DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
 			detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
-			health = 200
+			#health = 200
 			#print("Maw7 Buffer Was HHIve")
 			#TODO Re Implement Color Changes
 				#$AnimatedSprite2D.change_color_specific(alt_target_color,alt_replace_color)
@@ -484,7 +483,7 @@ func receiveBuff(plant):
 			isSunflowerBuffed = true 
 			#print("Maw7 Buffer Was Sunflower")
 		elif "Walnut" in bufferName:
-			health = walnutHealth
+			#health = walnutHealth
 			isWalnutBuffed = true
 			#print("Maw7 Buffer Was Walnut")
 		isBuffed = true 
@@ -503,7 +502,7 @@ func debuff():
 	#	tentacle2.set_colors(Color.BLACK, Color.BLACK)
 		print("DD Area Shape Radius is : ", detectionAreaShape.shape.radius)
 		detectionAreaShape.shape.radius = ogDetectionRadius
-		health = ogHealth
+		#health = ogHealth
 		print("Buffer Was HHIve")
 	elif("Sunflower" in bufferName):
 		willBelchSun = false 

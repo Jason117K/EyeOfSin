@@ -2,7 +2,7 @@ extends Demon
 #HeartDemon.gd
 
 # Adjustbale health, cost, attack speed 
-@export var health = 1000
+#@export var health = 1000
 @export var cost = 0
 
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/PeaProjectile.tscn")  # Load the projectile scene
@@ -25,6 +25,8 @@ var has_shot := false
 @onready var shootPosition1 = $ShootSpawn1
 @onready var shootPosition2 = $ShootSpawn2
 @onready var shootPosition3 = $ShootSpawn3
+
+@onready var healthComponent = $HealthComponent
 #Circle Sprite for Special Move
 #@onready var beatOfDeathCirle = $BeatOfDeathCircle
 
@@ -112,10 +114,7 @@ func set_attack_false():
 	
 # Handles the peashooter taking damage 
 func take_damage(damage):
-	#print("taking damage, health is " , health)
-	health = health - damage
-	if(health <= 0):
-		die()
+	healthComponent.take_damage(damage)
 
 func spawn_done():
 	if spawnAnimDone:

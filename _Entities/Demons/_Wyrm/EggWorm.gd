@@ -2,10 +2,10 @@ extends Node2D
 #EggWorm.gd
 
 #Adjustable health & cost
-@export var health = 10
-var og_health
-@export var walnutBuffed_health = 550
-@export var mawBuffed_health = 350
+#@export var health = 10
+#var og_health
+#@export var walnutBuffed_health = 550
+#@export var mawBuffed_health = 350
 @export var cost = 150
 
 # Animation parameters
@@ -27,6 +27,7 @@ var projectile_scene = preload("res://_Entities/Demons/_Wyrm/EggProjectile.tscn"
 @onready var shootTimer = $ShootTimer
 @onready var buffNodes = $BuffNodesComponent
 @onready var shell_sprite = $Egg
+@onready var healthComp := $HealthComponent
 
 #onready var animSpriteComp = $AnimatedSprite
 
@@ -108,7 +109,7 @@ func receiveBuff(plant):
 				#animSpriteComp.change_form("Peashooter")
 			"WalnutTree" : 
 				shell_sprite.change_form("Walnut")
-				health = walnutBuffed_health
+				#health = walnutBuffed_health
 				#animSpriteComp.change_form("Walnut")
 			"EggWorm":
 				shell_sprite.change_form("Wyrm")
@@ -120,7 +121,7 @@ func receiveBuff(plant):
 			"Maw":
 				#TODO Make Buff Heal Via Signals From Zombie
 				shell_sprite.change_form("Maw")
-				health = mawBuffed_health
+				#health = mawBuffed_health
 				laserShootComp1.isDisabled = false
 				laserShootComp1._ready()
 				$ShellBack.visible = false 
@@ -162,9 +163,7 @@ func debuff():
 				
 # Handles Receiving Damage for the EggWorm 
 func take_damage(damage):
-	health = health - damage
-	if health <= 0:
-		die()
+	healthComp.take_damage(damage)
 
 # Constantly animates the two worms of the EggWorm 
 func _process(delta):

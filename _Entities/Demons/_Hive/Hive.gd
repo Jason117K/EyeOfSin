@@ -5,8 +5,8 @@ extends Demon
 
 #Export variables
 @export var cost = 25
-@export var health = 50
-var walnutHealth = 650
+#@export var health = 50
+#var walnutHealth = 650
 
 # Preload the drone scene
 const DroneScene = preload("res://_Entities/Demons/_Hive/Drone.tscn")
@@ -33,6 +33,9 @@ var PlantManager                                   # RefCounted to PlantManager
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
 @onready var buffNodes = $BuffNodesComponent
+@onready var healthComponent := $HealthComponent
+
+
 #@onready var animSpriteComp = $AnimatedSpriteComp
 var thisBufferName : String  
 
@@ -93,7 +96,7 @@ func receiveBuff(bufferName):
 			kill_all_drones()
 			spawn_initial_drones()
 		if("Walnut" in bufferName.name):
-			health = walnutHealth
+			#health = walnutHealth
 			MAX_DRONES = WALNUT_BUFF_MAX_DRONES	
 			kill_all_drones()
 			spawn_initial_drones()			
@@ -329,9 +332,7 @@ func command_drone_to_attack(drone, enemy):
 		
 #Handles the Hive taking damage 
 func take_damage(damage):
-	health = health - damage
-	if(health <= 0):
-		die()
+	healthComponent.take_damage(damage)
 
 #Respawns a drone and re-optimizes assignmnets 
 func _on_DroneRespawnTimer_timeout():

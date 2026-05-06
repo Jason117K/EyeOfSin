@@ -1,15 +1,11 @@
 extends DemonHealthComponent
 
-@export var walnutHealth = 375
+
+@export var maw_health = 500 
 
 func receiveBuff(demonName):
 	#print("Buff Name is ", newPlant.name)
 	if !demon.get_is_buffed():
 		match demonName:
-			"WalnutTree" :
-				health = walnutHealth
-				isSpinalOcculumBuffed = true 
-
-
-func debuff():
-	super() 
+			"Maw" :
+				health = maw_health

@@ -14,7 +14,7 @@ class_name DemonHealthComponent extends Node
 
 @export var blood_spawn_time := 5 
 
-@onready var zombie : Zombie = get_parent()
+@onready var demon : Demon = get_parent()
 
 
 var isEggWyrmBuffed := false 
@@ -28,7 +28,7 @@ var isHeartBuffed:= false
 func take_damage(damage):
 	health = health - damage
 	if(health <= 0):
-		zombie.die()
+		demon.die()
 
 func _process(delta):
 	health = health + healthRegen
