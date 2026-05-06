@@ -22,7 +22,8 @@ var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button = $"../../PauseButton"
 @onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var green_dimension = Global.game_controller.get_alt_dimension()
+#@onready var green_dimension = Global.game_controller.get_alt_dimension()
+var green_dimension 
 
 # Text file paths
 const TUTORIAL_SELECT_SPYDER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
@@ -126,5 +127,60 @@ func get_game_layer():
 	
 	
 	
+	
+	
+	
+# ============================================================
+# Tutorial Step System 
+# ============================================================
+
+var _tutorial_steps: Array[Dictionary] = []
+var _current_step_index: int = -1
+
+
+func define_tutorial_steps(steps: Array[Dictionary]) -> void:
+	_tutorial_steps = steps
+
+
+func advance_tutorial() -> void:
+	go_to_step_index(_current_step_index + 1)
+
+
+func go_to_step(step_name: String) -> void:
+	for i in _tutorial_steps.size():
+		if _tutorial_steps[i]["name"] == step_name:
+			go_to_step_index(i)
+			return
+	push_warning("[Tutorial] Step not found: " + step_name)
+
+
+func go_to_step_index(index: int) -> void:
+	if index < 0 or index >= _tutorial_steps.size():
+		push_warning("[Tutorial] Step index out of range: " + str(index))
+		return
+	var old_name = get_current_step_name()
+	_current_step_index = index
+	var step = _tutorial_steps[_current_step_index]
+	print("[Tutorial] Transition: ", old_name, " → ", step["name"])
+	if step.has("enter"):
+		step["enter"].call()
+
+
+func get_current_step_name() -> String:
+	if _current_step_index >= 0 and _current_step_index < _tutorial_steps.size():
+		return _tutorial_steps[_current_step_index]["name"]
+	return "NONE"
+
+
+func get_current_step() -> Dictionary:
+	if _current_step_index >= 0 and _current_step_index < _tutorial_steps.size():
+		return _tutorial_steps[_current_step_index]
+	return {}
+
+
+func _filter_tutorial_input(event: InputEvent) -> void:
+	var step = get_current_step()
+	if step.has("input_filter"):
+		step["input_filter"].call(event)
 	
 	

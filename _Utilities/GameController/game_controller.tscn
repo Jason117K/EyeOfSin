@@ -64,9 +64,9 @@ visible = false
 process_mode = 3
 layout_mode = 0
 offset_left = 3.0
-offset_top = 346.665
+offset_top = 339.835
 offset_right = 3.0
-offset_bottom = 346.665
+offset_bottom = 339.835
 scale = Vector2(0.8, 0.8)
 
 [node name="WaveManager" parent="CurrentScene" unique_id=275355790 instance=ExtResource("7_k31g3")]

@@ -64,7 +64,7 @@ var canSwapScenes = false
 @export var highlight_border_thickness: int = 4
 
 # Color of the highlight border
-@export var highlight_border_color: Color = Color.WHITE
+@export var highlight_border_color: Color = Color.RED
 
 var doubleSpeed = false 
 
@@ -460,7 +460,6 @@ func find_animated_sprite(node):
 			return result
 	return null
 
-# Function to add highlight to a button
 func add_button_highlight(button: Button) -> void:
 	if not button:
 		push_error("Button node is null!")
@@ -479,11 +478,53 @@ func add_button_highlight(button: Button) -> void:
 	highlight_style.border_width_bottom = highlight_border_thickness
 	highlight_style.border_color = highlight_border_color
 	
+	
 	# Apply some corner rounding for a smoother look
 	highlight_style.corner_radius_top_left = 4
 	highlight_style.corner_radius_top_right = 4
 	highlight_style.corner_radius_bottom_left = 4
 	highlight_style.corner_radius_bottom_right = 4
+	
+	
+	# Store the original style so we can restore it later
+	if not button.has_meta("original_normal_style"):
+		button.set_meta("original_normal_style", button.get_theme_stylebox("normal"))
+	
+	# Apply the highlight style to the button's normal state
+	button.add_theme_stylebox_override("normal", highlight_style)
+	
+	
+func add_pulsing_button_highlight(button: Button) -> void:
+	if not button:
+		push_error("Button node is null!")
+		return
+	
+	# Create a new StyleBoxFlat for the highlight
+	var highlight_style = StyleBoxFlat.new()
+	
+	# Set the background to be transparent or match button's original background
+	highlight_style.bg_color = Color.TRANSPARENT
+	
+	# Configure the border
+	highlight_style.border_width_left = highlight_border_thickness
+	highlight_style.border_width_right = highlight_border_thickness  
+	highlight_style.border_width_top = highlight_border_thickness
+	highlight_style.border_width_bottom = highlight_border_thickness
+	highlight_style.border_color = highlight_border_color
+	
+	# Add a glow effect using the shadow properties
+	highlight_style.shadow_color = Color(highlight_border_color, 0.5)
+	highlight_style.shadow_size = 8
+	highlight_style.shadow_offset = Vector2.ZERO
+	
+	# Apply some corner rounding for a smoother look
+	highlight_style.corner_radius_top_left = 4
+	highlight_style.corner_radius_top_right = 4
+	highlight_style.corner_radius_bottom_left = 4
+	highlight_style.corner_radius_bottom_right = 4
+	
+	button.add_theme_stylebox_override("normal", highlight_style)
+	start_glow_pulse(button)
 	
 	# Store the original style so we can restore it later
 	if not button.has_meta("original_normal_style"):
@@ -492,24 +533,75 @@ func add_button_highlight(button: Button) -> void:
 	# Apply the highlight style to the button's normal state
 	button.add_theme_stylebox_override("normal", highlight_style)
 
+func start_glow_pulse(button: Button, glow_color: Color = highlight_border_color) -> void:
+	var style: StyleBoxFlat = button.get_theme_stylebox("normal")
+	if not style or not style is StyleBoxFlat:
+		return
+	
+	# Kill any existing glow tween on this button
+	if button.has_meta("glow_tween"):
+		var old_tween: Tween = button.get_meta("glow_tween")
+		if old_tween and old_tween.is_valid():
+			old_tween.kill()
+	
+	var tween := button.create_tween()
+	tween.set_loops()  # Loop forever
+	
+	# Pulse: dim -> bright -> dim
+	tween.tween_method(
+		func(val: float) -> void:
+			style.shadow_size = lerpf(4, 12, val)
+			style.shadow_color = Color(glow_color, lerpf(0.2, 0.6, val)),
+		0.0, 1.0, 0.8
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	tween.tween_method(
+		func(val: float) -> void:
+			style.shadow_size = lerpf(12, 4, val)
+			style.shadow_color = Color(glow_color, lerpf(0.6, 0.2, val)),
+		0.0, 1.0, 0.8
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	button.set_meta("glow_tween", tween)
+
+
+func stop_glow_pulse(button: Button) -> void:
+	if button.has_meta("glow_tween"):
+		var tween: Tween = button.get_meta("glow_tween")
+		if tween and tween.is_valid():
+			tween.kill()
+		button.remove_meta("glow_tween")
+	
+	# Reset shadow
+	var style: StyleBoxFlat = button.get_theme_stylebox("normal")
+	if style and style is StyleBoxFlat:
+		style.shadow_size = 0
+		style.shadow_color = Color.TRANSPARENT
+		
+		
 # Function to remove highlight from a button
 func remove_button_highlight(button: Button) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
-	
-	# Restore the original style if it was saved
-	if button.has_meta("original_normal_style"):
-		var original_style = button.get_meta("original_normal_style")
-		if original_style:
-			button.add_theme_stylebox_override("normal", original_style)
-		else:
-			button.remove_theme_stylebox_override("normal")
-		button.remove_meta("original_normal_style")
-	else:
-		# If no original style was saved, just remove the override
-		button.remove_theme_stylebox_override("normal")
-		
+	button.remove_theme_stylebox_override("normal")
+	button.get_theme_stylebox("normal").bg_color = Color("0f0a0a00")
+	#0f0a0a00
+	## Restore the original style if it was saved
+	#if button.has_meta("original_normal_style"):
+		#var original_style = button.get_meta("original_normal_style")
+		#if original_style:
+			#print("Original Style Exists")
+			#button.add_theme_stylebox_override("normal", original_style)
+		#else:
+			#print("Original Style Does Not Exists")
+			#button.remove_theme_stylebox_override("normal")
+		#button.remove_meta("original_normal_style")
+	#else:
+		#print("original_normal_style Style Exists")
+		## If no original style was saved, just remove the override
+		#button.remove_theme_stylebox_override("normal")
+		#
 		
 
 

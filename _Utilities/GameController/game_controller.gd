@@ -162,7 +162,7 @@ func remove_empty_in_alt_scene(grid_pos):
 	
 	
 func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:
-	#print("Changing scene to ", new_scene)
+	print("Changing scene to ", new_scene)
 	pauseButton.visible = false 
 	#Delete Old Scenes
 	

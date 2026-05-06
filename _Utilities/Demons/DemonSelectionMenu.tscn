@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://_Utilities/Demons/DemonSelectionMenu.gd" id="1"]
+[ext_resource type="StyleBox" uid="uid://dhe5ty22fd316" path="res://_Assets/clear_style_box.tres" id="3_nabk1"]
 [ext_resource type="Texture2D" uid="uid://b6vva031ql0r0" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText1.png" id="3_yqvs4"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_vvged"]
 [ext_resource type="Texture2D" uid="uid://cdlvi1sqbawix" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText4.png" id="5_vvged"]
@@ -32,9 +33,6 @@ corner_radius_bottom_left = 5
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
-
-[sub_resource type="StyleBoxFlat" id="2"]
-bg_color = Color(0.0588235, 0.0392157, 0.0392157, 0)
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0, 0, 0, 0)
@@ -110,7 +108,7 @@ layout_mode = 2
 [node name="SunflowerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=989014425]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("2")
+theme_override_styles/normal = ExtResource("3_nabk1")
 icon = ExtResource("3_yqvs4")
 
 [node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=875715703]
