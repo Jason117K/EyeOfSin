@@ -8,15 +8,44 @@ var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
 @export var targetGlowColor : Color
 @export var modulate_factor : Vector4 = Vector4(7,7,7,1)
 
+@onready var lightning_spawn := $"../LightningSpawn"   # $"../LightningSpawn"
+#@onready var demon : Demon = get_parent()
+var demon : Demon
 
 var currentAnim := "idle"
 var currentAttackAnim := "attack"
+var spawnAnimDone = false
 
 
 func _ready() -> void:
 	#make_buff_glow()
+	self.animation_finished.connect(_on_animation_finished)
+	print(self, "PARENT Is" , get_parent())
+	demon = get_parent()
 	pass
-
+	
+func spawn_done():
+	if spawnAnimDone:
+		pass
+	else:
+		spawnAnimDone = true 
+		
+		
+func _on_animation_finished():
+	print(self, "PARENT Is" , get_parent())
+	if animation == "spawn":
+		if spawnAnimDone:
+			lightning_spawn.animation = "change_form"
+		lightning_spawn.show()
+		lightning_spawn.play()
+		visible = false
+		spawn_done()
+	else:
+		animation = currentAnim
+		play()
+		
+		
+		
 func change_form(new_form):
 	var parent = get_parent()
 	self.animation_finished.connect(parent._on_AnimatedSprite_animation_finished)

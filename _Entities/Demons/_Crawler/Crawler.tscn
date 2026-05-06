@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Sun-Sheet.png" id="5_0i0o1"]
 [ext_resource type="Script" uid="uid://cexywbegs7b6b" path="res://_Entities/Demons/_Crawler/crawler_health_component.gd" id="5_kupbo"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="6_67t0g"]
 [ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Walnut-Sheet.png" id="6_hvfi3"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://lojdao7nw8m1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Hive-Sheet.png" id="7_io8k3"]
@@ -25,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://1bypqcyxtbl0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Hive-Sheet.png" id="12_kcbs3"]
 [ext_resource type="Texture2D" uid="uid://bsirqr2554xjt" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Wyrm-Sheet.png" id="13_u7x5w"]
 [ext_resource type="Texture2D" uid="uid://di5w0fuql2vat" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Base-Sheet.png" id="17_hvfi3"]
+[ext_resource type="Script" uid="uid://bjsd0o8c8pqlb" path="res://_Entities/Demons/_Crawler/crawler_animSprite_component.gd" id="21_ol6r1"]
 [ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="23_io8k3"]
 [ext_resource type="Script" uid="uid://cnvqr2tm46rpq" path="res://_Entities/Demons/Tentacles/Arm.gd" id="23_jwcrf"]
 [ext_resource type="Shader" uid="uid://dvcmoaj2bkbf3" path="res://_Utilities/TentacleDemo/shaders/outline.gdshader" id="24_druvk"]
@@ -1583,8 +1583,6 @@ point_count = 2
 [node name="Peashooter" type="Area2D" unique_id=675421916 groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
-health = null
-walnutHealth = null
 cost = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434290327]
@@ -1616,8 +1614,9 @@ sprite_frames = SubResource("9")
 animation = &"spawn"
 autoplay = "spawn"
 flip_h = true
-script = ExtResource("6_67t0g")
-targetGlowColor = Color(1, 0, 0.101961, 1)
+script = ExtResource("21_ol6r1")
+targetGlowColor = null
+modulate_factor = null
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
 visible = false
@@ -1776,7 +1775,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 109.12726, 131.42078, 105.249825, 133.12184, 102.860405, 131.87802, 101.14165, 130.22124, 97.471306, 130.66492, 93.59258, 132.16339, 91.08148, 131.122, 90.610565, 129.23303)
+points = PackedVector2Array(112.595, 131.435, 110.39147, 129.9609, 108.42361, 128.46342, 104.52716, 129.73419, 100.688034, 130.74866, 98.577774, 129.27817, 96.51711, 127.8297, 92.70686, 129.0031, 88.909294, 131.1739)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1788,7 +1787,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 109.12726, 124.545784, 105.249825, 124.37184, 102.860405, 121.25301, 101.14165, 117.72124, 97.471306, 116.28991, 93.59258, 115.91338, 91.08148, 112.996994, 90.610565, 109.233025)
+points = PackedVector2Array(112.595, 126.435, 110.39147, 123.085915, 108.42361, 119.713425, 104.52716, 119.1092, 100.688034, 118.24866, 98.577774, 114.90316, 96.51711, 111.5797, 92.70686, 110.8781, 88.909294, 111.17391)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1809,7 +1808,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.93586, 132.14404, 115.807274, 131.65834, 115.24361, 131.0935, 116.483215, 130.77763, 118.61404, 131.31357, 119.53206, 130.85771, 118.99345, 130.31573, 119.53973, 129.83214)
+points = PackedVector2Array(112.595, 131.435, 114.6304, 131.73251, 114.613754, 131.06055, 114.78506, 130.40695, 116.74927, 130.64755, 118.607605, 130.8166, 118.55444, 130.18338, 118.220184, 129.62871, 120.053856, 129.9574)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1817,7 +1816,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.93586, 125.26904, 115.807274, 122.90834, 115.24361, 120.468506, 116.483215, 118.277626, 118.61404, 116.93857, 119.53206, 114.60771, 118.99345, 112.190735, 119.53973, 109.83214)
+points = PackedVector2Array(112.595, 126.435, 114.6304, 124.85751, 114.613754, 122.310555, 114.78506, 119.78196, 116.74927, 118.147545, 118.607605, 116.441605, 118.55444, 113.93338, 118.220184, 111.5037, 120.053856, 109.9574)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 

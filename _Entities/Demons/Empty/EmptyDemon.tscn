@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://b3r6refdveg5g" path="res://_Entities/Demons/Empty/empty_demon.gd" id="1_rfapi"]
 [ext_resource type="Texture2D" uid="uid://gl4ngmjuqupi" path="res://_Assets/Misc/Summon_Circle.png" id="3_geop3"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="5_ctkr0"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="6_s7w3h"]
-
 
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)
@@ -170,27 +168,22 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Empty" type="Area2D" groups=["Plants"]]
+[node name="Empty" type="Area2D" unique_id=422311796 groups=["Plants"]]
 position = Vector2(0, 1)
 script = ExtResource("1_rfapi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589969452]
 position = Vector2(0.5, 0.499999)
 scale = Vector2(3, 3)
 shape = SubResource("89")
 disabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=495141167]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
 animation = &"new_animation"
 autoplay = "spawn"
-script = ExtResource("6_s7w3h")
-targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838057780]
 self_modulate = Color(1, 0, 0, 0.0784314)
 texture = ExtResource("3_geop3")
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

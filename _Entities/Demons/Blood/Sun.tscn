@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://csushx4jkpqkt" path="res://_Entities/Demons/Blood/Sun.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://swqg421sexsx" path="res://_Assets/Audio/SunCollect.mp3" id="3"]
 [ext_resource type="Texture2D" uid="uid://c30blenge7e7r" path="res://_Entities/Demons/Blood/BloodBeating.png" id="4"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="5_rabkd"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="5_rabkd"]
 
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pvv4n"]

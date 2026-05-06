@@ -154,7 +154,7 @@ func _input(event):
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
-				#	print(get_parent(), "QQOtro Place Plant " , grid_pos)
+					print(get_parent(), "QQOtro Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 

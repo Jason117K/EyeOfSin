@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cmmvuo0uc4nvr" path="res://_Entities/Demons/_HeartDemon/hero_ability_component.tscn" id="14_tfp6l"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="16_ay5kv"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="18_qifgx"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="19_chpte"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="19_chpte"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="20_eny5u"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="21_mgr0t"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="22_yjvce"]

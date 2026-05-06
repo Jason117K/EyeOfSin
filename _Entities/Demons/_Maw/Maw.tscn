@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://32gl5oscgs3x" path="res://_Entities/Demons/_Maw/Maw.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://m5be4wtpwb4u" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Spider-Sheet.png" id="5_elvfo"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Common/ColorChangingScripts/change_demon_color.gd" id="5_fxtok"]
+[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="5_fxtok"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dlooruj7v3bo2" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Sun-Sheet.png" id="6_6aeqa"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="7"]
@@ -1485,6 +1485,12 @@ buffedDigestTime = 11.0
 script = ExtResource("3_xf387")
 walnutHealth = 600
 
+[node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("21_8vtaw")]
+position = Vector2(256, 205)
+animation = &"change_form"
+frame = 9
+frame_progress = 1.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=163048683]
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
@@ -1688,11 +1694,11 @@ line_width = 5.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 115.21959, 133.0711, 117.995346, 133.22914, 120.83306, 133.5408, 123.6427, 134.57208, 126.17322, 136.35414, 128.22386, 138.77635, 129.75604, 141.63287, 130.54047, 144.87888, 131.93774, 147.89781, 134.0525, 150.33484, 136.60828, 152.00931, 139.33371, 152.81827, 141.96646, 152.72325, 144.30319, 151.87071, 146.96577, 151.63226, 149.77121, 152.49025, 152.25092, 154.4126, 153.95702, 157.21913, 154.43169, 160.57654, 153.84723, 163.94713, 153.77391, 167.37827, 154.92421, 170.5278, 157.06187, 172.80096, 159.60565, 173.89604)
+points = PackedVector2Array(112.595, 131.435, 114.27339, 134.68176, 116.5439, 137.04579, 119.205635, 138.50226, 121.962845, 139.19388, 124.65671, 139.1652, 127.43788, 139.58301, 130.14935, 140.8375, 132.53317, 142.82887, 134.40308, 145.41335, 135.7136, 148.39886, 136.29521, 151.69571, 137.53732, 154.8022, 139.59052, 157.32404, 142.15189, 159.02924, 144.9002, 159.7736, 147.4826, 159.45139, 149.6289, 158.29486, 152.09885, 157.56424, 154.90472, 157.87967, 157.56984, 159.32755, 159.60065, 161.76549, 160.49702, 164.88417, 159.93372, 168.04211, 159.18114, 171.09262)
 width = 5.0
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 115.21959, 127.44611, 117.995346, 126.97914, 120.83306, 126.6658, 123.6427, 127.07208, 126.17322, 128.22914, 128.22386, 130.02635, 129.75604, 132.25787, 130.54047, 134.87888, 131.93774, 137.27281, 134.0525, 139.08484, 136.60828, 140.13432, 139.33371, 140.31827, 141.96646, 139.59825, 144.30319, 138.12071, 146.96577, 137.25726, 149.77121, 137.49025, 152.25092, 138.78758, 153.95702, 140.96913, 154.43169, 143.70155, 153.84723, 146.44713, 153.77391, 149.25327, 154.92421, 151.7778, 157.06187, 153.42596, 159.60565, 153.89604)
+points = PackedVector2Array(112.595, 126.435, 114.27339, 129.05676, 116.5439, 130.79579, 119.205635, 131.62726, 121.962845, 131.69388, 124.65671, 131.0402, 127.43788, 130.83301, 130.14935, 131.4625, 132.53317, 132.82887, 134.40308, 134.78835, 135.7136, 137.14886, 136.29521, 139.82071, 137.53732, 142.3022, 139.59052, 144.19904, 142.15189, 145.27924, 144.9002, 145.3986, 147.4826, 144.45137, 149.6289, 142.66986, 152.09885, 141.31424, 154.90472, 141.00467, 157.56984, 141.82755, 159.60065, 143.64049, 160.49702, 146.13417, 159.93372, 148.66711, 159.18114, 151.09262)
 width = 5.0
 
 [node name="Arm2" parent="." unique_id=766619732 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
@@ -1722,12 +1728,6 @@ position = Vector2(206, 293)
 [node name="ArmTarget3" parent="." unique_id=1263773246 instance=ExtResource("20_6aeqa")]
 visible = false
 position = Vector2(202, 224)
-
-[node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("21_8vtaw")]
-position = Vector2(256, 205)
-animation = &"change_form"
-frame = 9
-frame_progress = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

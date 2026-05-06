@@ -1,7 +1,7 @@
 extends Demon
 #WalnutTree.gd
 
-var spawnAnimDone = false
+#var spawnAnimDone = false
 var isEggWyrmBuffed := false 
 var isMawBuffed := false 
 var isSunflowerBuffed:= false 
@@ -33,8 +33,6 @@ func _ready():
 	animSpriteComp.animation = "spawn"
 
 
-
-#Sets buffed to true 
 func receiveBuff(bufferName):
 	if !isBuffed :
 		super(bufferName)
@@ -90,25 +88,25 @@ func get_cost():
 	return cost
 	
 	
-func spawn_done():
-	if spawnAnimDone:
-		pass
-	else:
-		spawnAnimDone = true 
+#func spawn_done():
+	#if spawnAnimDone:
+		#pass
+	#else:
+		#spawnAnimDone = true 
 	
 #TODO Move to Animated Sprite Component 
-func _on_AnimatedSprite_animation_finished():
-
-	if animSpriteComp.animation == "spawn":
-		if spawnAnimDone:
-			$LightningSpawn.animation = "change_form"
-		$LightningSpawn.show()
-		$LightningSpawn.play()
-		animSpriteComp.visible = false
-		spawn_done()
-	else:
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
+#func _on_AnimatedSprite_animation_finished():
+#
+	#if animSpriteComp.animation == "spawn":
+		#if spawnAnimDone:
+			#$LightningSpawn.animation = "change_form"
+		#$LightningSpawn.show()
+		#$LightningSpawn.play()
+		#animSpriteComp.visible = false
+		#spawn_done()
+	#else:
+		#animSpriteComp.animation = animSpriteComp.currentAnim
+		#animSpriteComp.play()
 
 #TODO Move to AOE Damage Component that gets Added
 func _on_aoe_damage_timer_timeout() -> void:
@@ -172,10 +170,8 @@ func _on_mouse_exited() -> void:
 func finish_spawn():
 	animSpriteComp.visible = true		
 	animSpriteComp.animation = animSpriteComp.currentAnim
-		
 	animSpriteComp.play()
-
-
+	
 func get_is_buffed():
 	return isBuffed
 

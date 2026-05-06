@@ -16,7 +16,7 @@ var sunBuffed = false
 var wyrmBuffed = false
 var mawBuffed = false
 var canAttackSetTrueOnce = false
-var spawnAnimDone = false
+#var spawnAnimDone = false
 #f
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
@@ -183,41 +183,41 @@ func second_shoot_projectile():
 func take_damage(damage):
 	healthComp.take_damage(damage)
 
-func spawn_done():
-	
-	if spawnAnimDone:
-		#print("Spyder Self Spawn Adjust 1")
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-	else:
-		#print("Spyder Self Spawn Adjust 2")
-		animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		animSpriteComp.animation = animSpriteComp.currentAnim
-		animSpriteComp.play()
-		spawnAnimDone = true 
-# Handles either looping attack animation or returning to default 
-func _on_AnimatedSprite_animation_finished():
-	if animSpriteComp.animation == "spawn":
-		print(self, " spawn anim done")
-		#print("Early Return No AttackZ")
+#func spawn_done():
+	#
+	#if spawnAnimDone:
+		##print("Spyder Self Spawn Adjust 1")
+		#animSpriteComp.animation = animSpriteComp.currentAnim
+		#animSpriteComp.play()
+	#else:
+		##print("Spyder Self Spawn Adjust 2")
 		#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
-		if spawnAnimDone:
-			$LightningSpawn.animation = "change_form"
-		$LightningSpawn.show()
-		$LightningSpawn.play()
-
-
-		animSpriteComp.visible = false
-		#print("Calling Spawn Done Spyder Self Is I Am")
-		spawn_done()
-		return
-	if canAttack:
-		#print(self, "Should Be Red Spider AttackZ")
-		animSpriteComp.animation = animSpriteComp.currentAttackAnim
-		animSpriteComp.play()
-	else:
-			animSpriteComp.animation = animSpriteComp.currentAnim
-			animSpriteComp.play()
+		#animSpriteComp.animation = animSpriteComp.currentAnim
+		#animSpriteComp.play()
+		#spawnAnimDone = true 
+# Handles either looping attack animation or returning to default 
+#func _on_AnimatedSprite_animation_finished():
+	#if animSpriteComp.animation == "spawn":
+		#print(self, " spawn anim done")
+		##print("Early Return No AttackZ")
+		##animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
+		#if spawnAnimDone:
+			#$LightningSpawn.animation = "change_form"
+		#$LightningSpawn.show()
+		#$LightningSpawn.play()
+#
+#
+		#animSpriteComp.visible = false
+		##print("Calling Spawn Done Spyder Self Is I Am")
+		#spawn_done()
+		#return
+	#if canAttack:
+		##print(self, "Should Be Red Spider AttackZ")
+		#animSpriteComp.animation = animSpriteComp.currentAttackAnim
+		#animSpriteComp.play()
+	#else:
+			#animSpriteComp.animation = animSpriteComp.currentAnim
+			#animSpriteComp.play()
 		
 
 

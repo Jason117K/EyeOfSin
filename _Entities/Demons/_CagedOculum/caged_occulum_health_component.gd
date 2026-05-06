@@ -13,7 +13,7 @@ func take_damage(damage):
 
 #Move to Generate Blood Component That Gets Added
 func generate_blood():
-	var blood_instance = zombie.bloodScene.instantiate()
+	var blood_instance = demon.bloodScene.instantiate()
 	#print("Spawn Blood")
 	get_parent().add_child(blood_instance)  
 	blood_instance.global_position = self.global_position + Vector2(0,-40)
@@ -24,7 +24,7 @@ func _on_reset_blood_spawn_cooldown() -> void:
 
 	
 func receiveBuff(bufferName):
-	if !zombie.get_is_buffed() :		
+	if !demon.get_is_buffed() :		
 		if "Sun" in bufferName.name && !isSunflowerBuffed:
 			canGenBlood = true
 			health = buffedHealth
