@@ -95,9 +95,8 @@ func start_game():
 
 
 func _start_explain_amalgam_zombie():
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_AMALGAM)
-	toolTips.setComplexScene(amalgam_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_AMALGAM)
+	toolTips.set_visual_tutorial_visual(amalgam_zombie_demo_scene.instantiate())
 #endregion
 
 

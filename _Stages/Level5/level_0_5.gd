@@ -66,8 +66,8 @@ func _ready():
 
 	pause_Button.set_restart_levels(level05, level05Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	toolTips.set_text(TUTORIAL_SELECT_HIVE)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
+	
 	Global.resetSunflowerCount()
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
 
@@ -105,8 +105,8 @@ func _input(event):
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_hive():
-	toolTips.set_text(TUTORIAL_SELECT_HIVE)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
+	
 	show_only_plant_buttons(["Hive"])
 	hbox.get_node("Hive").visible = true
 	plantSelectionMenu.add_pulsing_button_highlight(hive_button)
@@ -115,8 +115,8 @@ func _start_force_select_hive():
 
 
 func _start_force_place_hive():
-	toolTips.set_text(TUTORIAL_PLACE_HIVE)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_HIVE,false)
+	
 	plantSelectionMenu.remove_button_highlight(hive_button)
 	hide_spotlight()
 
@@ -142,15 +142,13 @@ func start_game():
 
 
 func _start_explain_lancer_zombie():
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_LANCER)
-	toolTips.setComplexScene(lancer_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_LANCER)
+	toolTips.set_visual_tutorial_visual(lancer_zombie_demo_scene.instantiate())
 
 
 func _start_explain_erupter_zombie():
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_ERUPTER)
-	toolTips.setComplexScene(erupter_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_ERUPTER)
+	toolTips.set_visual_tutorial_visual(erupter_zombie_demo_scene.instantiate())
 #endregion
 
 

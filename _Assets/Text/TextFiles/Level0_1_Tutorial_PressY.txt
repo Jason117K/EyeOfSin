@@ -1,5 +1,3 @@
-Great work! You survived the first wave.
-
-Now for the tricky part. Press Y to travel to another dimension.
-
+Good job, you survived.
+PRESS Y to travel to another dimension.
 Be warned: Both dimensions are under attack!

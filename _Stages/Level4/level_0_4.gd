@@ -59,8 +59,8 @@ func _ready():
 
 	pause_Button.set_restart_levels(level04, level04Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	toolTips.set_text(TUTORIAL_SELECT_WYRM)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
+	
 	Global.resetSunflowerCount()
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
 
@@ -98,8 +98,8 @@ func _input(event):
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_wyrm():
-	toolTips.set_text(TUTORIAL_SELECT_WYRM)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
+	
 	show_only_plant_buttons(["Egg"])
 	hbox.get_node("Egg").visible = true
 	plantSelectionMenu.add_pulsing_button_highlight(wyrm_button)
@@ -108,8 +108,8 @@ func _start_force_select_wyrm():
 
 
 func _start_force_place_wyrm():
-	toolTips.set_text(TUTORIAL_PLACE_WYRM)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WYRM, false)
+	
 	plantSelectionMenu.remove_button_highlight(wyrm_button)
 	hide_spotlight()
 
@@ -135,9 +135,8 @@ func start_game():
 
 
 func _start_explain_summoner_zombie():
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_SUMMONER)
-	toolTips.setComplexScene(summoner_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUMMONER)
+	toolTips.set_visual_tutorial_visual(summoner_zombie_demo_scene.instantiate())
 #endregion
 
 

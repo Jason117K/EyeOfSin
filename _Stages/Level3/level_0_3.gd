@@ -70,8 +70,8 @@ func _ready():
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03, level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	toolTips.set_text(TUTORIAL_SELECT_MAW)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
+	
 	Global.resetSunflowerCount()
 	Global.reset_swap_ability()
 
@@ -111,8 +111,8 @@ func _input(event):
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_maw():
-	toolTips.set_text(TUTORIAL_SELECT_MAW)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
+	
 	show_only_plant_buttons(["Maw"])
 	plantSelectionMenu.add_pulsing_button_highlight(maw_button)
 	#show_spotlight_at_node(maw_button)
@@ -121,8 +121,8 @@ func _start_force_select_maw():
 
 
 func _start_force_place_maw():
-	toolTips.set_text(TUTORIAL_PLACE_MAW)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
+	
 	plantSelectionMenu.remove_button_highlight(maw_button)
 	hide_spotlight()
 
@@ -148,16 +148,15 @@ func start_game():
 
 
 func _start_explain_fleshEater_zombie():
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_FLESHEATER)
-	toolTips.setComplexScene(fleshEater_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_FLESHEATER)
+	toolTips.set_visual_tutorial_visual(fleshEater_zombie_demo_scene.instantiate())
 
 
 func _start_explain_codex():
 	hbox.get_node("Codex").visible = true
 	codex_button.visible = true
-	toolTips.set_text(TUTORIAL_SELECT_CODEX)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CODEX, false)
+	
 	#show_spotlight_at_node(codex_button)
 
 

@@ -74,8 +74,8 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
+
 
 	plantManager.spyder_placed.connect(func(_grid_position): _on_spyder_placed())
 	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
@@ -101,25 +101,22 @@ func _input(event):
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_spyder():
-	toolTips.set_text(TUTORIAL_SELECT_SPYDER)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
 	hide_all_plant_buttons_except_spyder()
 	highlight_spyder_button()
-	#show_spotlight_at_node(crawler_button)
 	waveManager.canStartGame = false
 	plantSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_plant():
-	toolTips.set_text(TUTORIAL_PLACE_SPYDER)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SPYDER, false)
+	
 	unhighlight_spyder_button()
 	hide_spotlight()
 
 
 func _start_explain_blood_cost():
-	toolTips.set_text_pause(TUTORIAL_BLOOD_COST)
-	toolTips.showButton()
+	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, true)
 	#TODO Add Highlight
 	#show_spotlight_at_position(Vector2(10, 0))
 
@@ -135,21 +132,18 @@ func start_game():
 
 
 func _start_explain_basic_zombie():
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
-	toolTips.setComplexScene(basic_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
+	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate())
 
 
 func _start_force_press_y():
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton").visible = true
 	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
-	toolTips.set_text(TUTORIAL_PRESS_Y)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PRESS_Y, false)
 
 
 func _start_explain_green_dimension():
-	toolTips.set_text_pause(TUTORIAL_GREEN_DIMENSION)
-	toolTips.showButton()
+	toolTips.set_basic_tutorial_text(TUTORIAL_GREEN_DIMENSION, true)
 
 
 func _start_wave_2_both_dimensions():
@@ -170,9 +164,9 @@ func _start_wave_2_both_dimensions():
 
 
 func _start_explain_severed_zombie():
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)
-	toolTips.setComplexScene(severed_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)
+	toolTips.set_visual_tutorial_visual(severed_zombie_demo_scene.instantiate())
+
 #endregion
 
 

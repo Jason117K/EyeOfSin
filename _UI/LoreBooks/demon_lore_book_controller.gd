@@ -342,25 +342,25 @@ func _on_more_info_button_pressed() -> void:
 	
 	match current_plant:
 		PLANT.SUNFLOWER:
-			synergyPanel.setComplexSceneText(sunSpyderText)
-			synergyPanel.setComplexScene(sunSpyderScene)
+			synergyPanel.set_visual_tutorial_visualText(sunSpyderText)
+			synergyPanel.set_visual_tutorial_visual(sunSpyderScene.instantiate())
 		PLANT.SPYDER:
-			synergyPanel.setComplexSceneText(mawSpyderText)
-			synergyPanel.setComplexScene(mawSpyderScene)
+			synergyPanel.set_visual_tutorial_visualText(mawSpyderText)
+			synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
 		PLANT.OCCULAR_SPINE:
-			synergyPanel.setComplexSceneText(eggSpineText)
-			synergyPanel.setComplexScene(spineEggScene)	
+			synergyPanel.set_visual_tutorial_visualText(eggSpineText)
+			synergyPanel.set_visual_tutorial_visual(spineEggScene.instantiate())	
 		PLANT.EYE_BOMB:
 			pass
 		PLANT.EGG_WYRM:
-			synergyPanel.setComplexSceneText(mawEggText)
-			synergyPanel.setComplexScene(mawEggScene)
+			synergyPanel.set_visual_tutorial_visualText(mawEggText)
+			synergyPanel.set_visual_tutorial_visual(mawEggScene.instantiate())
 		PLANT.HIVE:
-			synergyPanel.setComplexSceneText(hiveMawText)
-			synergyPanel.setComplexScene(hiveMawScene)
+			synergyPanel.set_visual_tutorial_visualText(hiveMawText)
+			synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
 		PLANT.MAW:
-			synergyPanel.setComplexSceneText(mawSpyderText)
-			synergyPanel.setComplexScene(mawSpyderScene)
+			synergyPanel.set_visual_tutorial_visualText(mawSpyderText)
+			synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
 
 
 func _on_back_out_details_pressed() -> void:
@@ -382,39 +382,39 @@ func setNextSynergyScene(current_plant,this_count):
 		PLANT.SUNFLOWER:
 			match this_count:
 				0:
-					synergyPanel.setComplexSceneText(sunSpyderText)
-					synergyPanel.setComplexScene(sunSpyderScene)
+					synergyPanel.set_visual_tutorial_visualText(sunSpyderText)
+					synergyPanel.set_visual_tutorial_visual(sunSpyderScene.instantiate())
 				1:
-					synergyPanel.setComplexSceneText(sunEggText)
-					synergyPanel.setComplexScene(sunEggScene)
+					synergyPanel.set_visual_tutorial_visualText(sunEggText)
+					synergyPanel.set_visual_tutorial_visual(sunEggScene.instantiate())
 				2:
-					synergyPanel.setComplexSceneText(sunHiveText)
-					synergyPanel.setComplexScene(sunHiveScene)
+					synergyPanel.set_visual_tutorial_visualText(sunHiveText)
+					synergyPanel.set_visual_tutorial_visual(sunHiveScene.instantiate())
 				3:
-					synergyPanel.setComplexSceneText(sunSpineText)
-					synergyPanel.setComplexScene(sunSpineScene)
+					synergyPanel.set_visual_tutorial_visualText(sunSpineText)
+					synergyPanel.set_visual_tutorial_visual(sunSpineScene.instantiate())
 				4:
-					synergyPanel.setComplexSceneText(sunMawText)
-					synergyPanel.setComplexScene(sunMawScene)
+					synergyPanel.set_visual_tutorial_visualText(sunMawText)
+					synergyPanel.set_visual_tutorial_visual(sunMawScene.instantiate())
 					count = -1
 			
 		PLANT.SPYDER:
 			match this_count:
 				0:
-					synergyPanel.setComplexSceneText(mawSpyderText)
-					synergyPanel.setComplexScene(mawSpyderScene)
+					synergyPanel.set_visual_tutorial_visualText(mawSpyderText)
+					synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
 				1:
-					synergyPanel.setComplexSceneText(hiveSpyderText)
-					synergyPanel.setComplexScene(hiveSpyderScene)
+					synergyPanel.set_visual_tutorial_visualText(hiveSpyderText)
+					synergyPanel.set_visual_tutorial_visual(hiveSpyderScene.instantiate())
 					count = -1
 		PLANT.OCCULAR_SPINE:
 			match this_count:
 				0:
-					synergyPanel.setComplexSceneText(eggSpineText)
-					synergyPanel.setComplexScene(spineEggScene)	
+					synergyPanel.set_visual_tutorial_visualText(eggSpineText)
+					synergyPanel.set_visual_tutorial_visual(spineEggScene.instantiate())	
 				1:
-					synergyPanel.setComplexSceneText(spineMawText)
-					synergyPanel.setComplexScene(spineMawScene)
+					synergyPanel.set_visual_tutorial_visualText(spineMawText)
+					synergyPanel.set_visual_tutorial_visual(spineMawScene.instantiate())
 					count = -1
 		PLANT.EYE_BOMB:
 			match this_count:
@@ -423,42 +423,42 @@ func setNextSynergyScene(current_plant,this_count):
 		PLANT.EGG_WYRM:
 			match this_count:
 				0:
-					synergyPanel.setComplexSceneText(mawEggText)
-					synergyPanel.setComplexScene(mawEggScene)
+					synergyPanel.set_visual_tutorial_visualText(mawEggText)
+					synergyPanel.set_visual_tutorial_visual(mawEggScene.instantiate())
 				1:
-					synergyPanel.setComplexSceneText(eggSpineText)
-					synergyPanel.setComplexScene(spineEggScene)
+					synergyPanel.set_visual_tutorial_visualText(eggSpineText)
+					synergyPanel.set_visual_tutorial_visual(spineEggScene.instantiate())
 				2:
-					synergyPanel.setComplexSceneText(hiveEggText)
-					synergyPanel.setComplexScene(hiveEggScene)
+					synergyPanel.set_visual_tutorial_visualText(hiveEggText)
+					synergyPanel.set_visual_tutorial_visual(hiveEggScene.instantiate())
 					count = -1
 		PLANT.HIVE:
 			match this_count:
 				0:
-					synergyPanel.setComplexSceneText(hiveMawText)
-					synergyPanel.setComplexScene(hiveMawScene)
+					synergyPanel.set_visual_tutorial_visualText(hiveMawText)
+					synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
 				1:
-					synergyPanel.setComplexSceneText(hiveSpyderText)
-					synergyPanel.setComplexScene(hiveSpyderScene)
+					synergyPanel.set_visual_tutorial_visualText(hiveSpyderText)
+					synergyPanel.set_visual_tutorial_visual(hiveSpyderScene.instantiate())
 					
 				2:
-					synergyPanel.setComplexSceneText(hiveEggText)
-					synergyPanel.setComplexScene(hiveEggScene)
+					synergyPanel.set_visual_tutorial_visualText(hiveEggText)
+					synergyPanel.set_visual_tutorial_visual(hiveEggScene.instantiate())
 					count = -1
 		PLANT.MAW:
 			match this_count:
 				0:
-					synergyPanel.setComplexSceneText(mawSpyderText)
-					synergyPanel.setComplexScene(mawSpyderScene)	
+					synergyPanel.set_visual_tutorial_visualText(mawSpyderText)
+					synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())	
 				1:
-					synergyPanel.setComplexSceneText(mawEggText)
-					synergyPanel.setComplexScene(mawEggScene)
+					synergyPanel.set_visual_tutorial_visualText(mawEggText)
+					synergyPanel.set_visual_tutorial_visual(mawEggScene.instantiate())
 				2:
-					synergyPanel.setComplexSceneText(spineMawText)
-					synergyPanel.setComplexScene(spineMawScene)
+					synergyPanel.set_visual_tutorial_visualText(spineMawText)
+					synergyPanel.set_visual_tutorial_visual(spineMawScene.instantiate())
 				3:
-					synergyPanel.setComplexSceneText(hiveMawText)
-					synergyPanel.setComplexScene(hiveMawScene)
+					synergyPanel.set_visual_tutorial_visualText(hiveMawText)
+					synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
 					count = -1
 					#print("CCCCC Count is ", count)
 

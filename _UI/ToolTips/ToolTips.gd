@@ -1,147 +1,94 @@
 extends Control
 
-@onready var label_text = $BasicTutorialVbox/BasicTutorialLabel
-@onready var popup_image = $BasicTutorialVbox/CenterContainer/TextureRect
-@onready var anim_texture = $BasicTutorialVbox/CenterContainer/TextureRect
-@onready var button = $BasicTutorialVbox/Button
-@onready var complexButton = $ComplexTutorialVBox/VBoxContainer/Button2
-@onready var mainVbox = $BasicTutorialVbox
-@onready var synergyVBox = $ComplexTutorialVBox
-@onready var synergyLabel = $ComplexTutorialVBox/VBoxContainer/ComplexTutorialLabel
-@onready var syngergyButton = $ComplexTutorialVBox/VBoxContainer/Button2
-@onready var complexSceneContainer = $ComplexTutorialVBox/VBoxContainer
-@onready var greyBG = $BasicTutorialVbox/CenterContainer/TextureRect2
-@onready var border = $BasicTutorialVbox/CenterContainer/TextureRect3
-signal ToolTipHid
+@onready var basicTutorialMessageContainer := $BasicTutorialMessage
+@onready var basicTutorialLabel := $BasicTutorialMessage/BasicTutorialVbox/BasicTutorialLabel
+@onready var basicTutorialButton := $BasicTutorialMessage/BasicTutorialVbox/BasicTutorialUnderstoodButton
+
+@onready var visualTutorialContainer := $VisualTutorialVBox
+@onready var visualTutorialLabel := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialLabel
+@onready var visualTutorialButton := $VisualTutorialVBox/VisualTutorialUnderstoodButton
+@onready var visualTutorialVisual : CenterContainer = $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialVisual
+@onready var visualTutorialVisualParent := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox
+
+@export var max_basic_tutorial_characters := 100
+@export var small_basic_tutorial_text := 16
+@export var large_basic_tutorial_text := 32 
 
 var char_count 
+var index
 
-#TODO Combine both set text functions
+signal ToolTipHid
 
 func _ready() -> void:
-	#TODO Change Back
-	#print("Anim Texture is , ",anim_texture.name )
-	visible = false
-	anim_texture.visible = false
-	greyBG.visible = false
-	border.visible = false 
-	pass
-
-#Sets the current toolTip Text
-func set_text(newFile : String):
-	mainVbox.visible = true
-	synergyVBox.visible = false 
+	hide()
+	basicTutorialButton.pressed.connect(_on_basic_tutorial_understood_button_pressed)
+	visualTutorialButton.pressed.connect(_on_visual_tutorial_understood_button_pressed)
+	index = visualTutorialVisual.get_index()
+	
+func set_basic_tutorial_text(newFile : String, shouldPause : bool):
+	show()
+	hide_basic_tutorial_button()
+	basicTutorialMessageContainer.visible = true
+	visualTutorialContainer.visible = false 
+	
 	var file = FileAccess.open(newFile, FileAccess.READ)
 	var newText = file.get_as_text()
 	file.close()
-	label_text.text = newText
+	
+	basicTutorialLabel.text = newText
 	char_count = newText.length()
-	if char_count > 100:
-		label_text.add_theme_font_size_override("normal_font_size", 16)
+	if char_count > max_basic_tutorial_characters:
+		basicTutorialLabel.add_theme_font_size_override("normal_font_size", small_basic_tutorial_text)
 	else:
-		label_text.add_theme_font_size_override("normal_font_size", 32)
-	#label_text.set_auto_text(newText)
-
-func setComplexSceneText(newFile : String):
-	var file = FileAccess.open(newFile, FileAccess.READ)
-	var newText = file.get_as_text()
-	file.close()
-	synergyLabel.text = newText
+		basicTutorialLabel.add_theme_font_size_override("normal_font_size", large_basic_tutorial_text)
 	
-func setComplexSceneTextPause(newFile : String):
-	var file = FileAccess.open(newFile, FileAccess.READ)
-	var newText = file.get_as_text()
-	file.close()
-	synergyLabel.text = newText
-	print("PAUSE GAM 1E")
-	get_tree().paused = true
-	pass
+	if shouldPause:
+		show_basic_tutorial_button()
+		get_tree().paused = true 
 
-#Sets the current toolTip Text while also pausing the game
-func set_text_pause(newFile : String):
-	mainVbox.visible = true
-	synergyVBox.visible = false 
-	var file = FileAccess.open(newFile, FileAccess.READ)
-	var newText = file.get_as_text()
-	file.close()
-	label_text.text = newText	
-	print("PAUSE GAME 2")
-	get_tree().paused = true
-	pass
 
-#Shows the tooltip with the button
-func showButton():
-	show()
-	button.visible = true 
-	pass
-	
-#Sets the current tooltip animation 
-func setAnim(newAnim : SpriteFrames):
-	anim_texture.sprites =  newAnim
-	anim_texture.playing = true
-	anim_texture.visible = true
-	greyBG.visible = true
+func show_basic_tutorial_button():
+	basicTutorialButton.show()
 
-#Shows the tooltip Without the Button 
-func noButtonShow():
-	show()
-	button.visible = false
-	pass
 
-func complexNoButtonShow():
-	#show()
-	syngergyButton.visible = false
-	pass
+func hide_basic_tutorial_button():
+	basicTutorialButton.hide()
 		
-func setImage(newImage):
-	#TextureRect
-	pass
 
-func setComplexScene(newScene):
-	syngergyButton.visible = true 
+func _on_basic_tutorial_understood_button_pressed() -> void:
+	hide()
+	ToolTipHid.emit()
+	get_tree().paused = false
+	
+			
+func set_visual_tutorial_text(newFile : String):
 	show()
-	mainVbox.visible = false
-	synergyVBox.visible = true 
-	complexButton.visible = true
-	#Clean Up Any Previous Complex Scenes 
-	for node in complexSceneContainer.get_children():
-		#print("NNNOde is ", node.name)
-		if node is Label || node is RichTextLabel || node is VScrollBar:
-		#	print("Will Now Pass ", node.name)
-			pass
-
-		else:
-			if (node == Button) || "Button" in node.name || (node == RichTextLabel):
-				pass
-			#	print("Node is button ", node.name)
-			elif node != Button:
-				if node != RichTextLabel:
-				#	print("Queue Free ", node.name)
-					node.queue_free()
-	#Add New Complex Scene to Container 
-	var this_new_scene = newScene.instantiate()
-	complexSceneContainer.add_child(this_new_scene)
-	complexSceneContainer.move_child(this_new_scene, 0)
-	for node in complexSceneContainer.get_children():
-		pass
-		#print("Node is ", node.name)
-
-func hideComplexSceneButton():
-	complexButton.visible = false
+	basicTutorialMessageContainer.visible = false
+	visualTutorialContainer.visible = true
+	 
+	var file = FileAccess.open(newFile, FileAccess.READ)
+	var newText = file.get_as_text()
+	file.close()
+	
+	visualTutorialLabel.text = newText
+	get_tree().paused = true 
+	#if char_count > max_basic_tutorial_characters:
+		#basicTutorialLabel.add_theme_font_size_override("normal_font_size", small_basic_tutorial_text)
+	#else:
+		#basicTutorialLabel.add_theme_font_size_override("normal_font_size", large_basic_tutorial_text)
+	
+		
+func set_visual_tutorial_visual(newVisual : CenterContainer):
+	visualTutorialVisualParent.remove_child(visualTutorialVisual)
+	visualTutorialVisual.queue_free()
+	visualTutorialVisualParent.add_child(newVisual)
+	visualTutorialVisualParent.move_child(newVisual, index)
+	visualTutorialVisual = newVisual
+	
+	
+func _on_visual_tutorial_understood_button_pressed() -> void:
+	hide()
+	ToolTipHid.emit()
+	get_tree().paused = false
 
 	
-#Hides the tooltip and unpauses the game when the player clicks the button
-func _on_Button_pressed():
-	hide()
-	ToolTipHid.emit()
-	#print("UNPPAUSE HERE1")
-	print("UNPAUSE GAME")
-	get_tree().paused = false
-
-
-func _on_button_2_pressed() -> void:
-	hide()
-	ToolTipHid.emit()
-	#print("UNPPAUSE HERE2")
-	print("UNPAUSE GAME")
-	get_tree().paused = false

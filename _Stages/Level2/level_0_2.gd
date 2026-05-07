@@ -117,8 +117,8 @@ func _ready():
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level02, level02Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	toolTips.set_text(TUTORIAL_SELECT_SUNFLOWER)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SUNFLOWER, false)
+	
 	Global.resetSunflowerCount()
 	call_deferred("_find_green_dimension")
 
@@ -163,8 +163,8 @@ func _input(event):
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_sunflower():
-	toolTips.set_text(TUTORIAL_SELECT_SUNFLOWER)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SUNFLOWER,false)
+	
 	show_only_plant_buttons(["Sunflower"])
 	plantSelectionMenu.add_pulsing_button_highlight(sunflower_button)
 	#show_spotlight_at_node(sunflower_button)
@@ -173,22 +173,22 @@ func _start_force_select_sunflower():
 
 
 func _start_force_place_sunflower():
-	toolTips.set_text(TUTORIAL_PLACE_SUNFLOWER)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SUNFLOWER,false)
+	
 	plantSelectionMenu.remove_button_highlight(sunflower_button)
 	hide_spotlight()
 
 
 func _start_explain_blood_gen():
-	toolTips.set_text(TUTORIAL_BLOOD_GEN)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_GEN, false)
+	
 	waiting_for_blood = true
 	sun_before_pickup = plantManager.sun_points
 
 
 func _start_force_select_spyder_after_blood():
-	toolTips.set_text(TUTORIAL_SELECT_SPYDER_AFTER)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER_AFTER, false)
+	
 	show_only_plant_buttons(["Peashooter"])
 	plantSelectionMenu.add_pulsing_button_highlight(spyder_button)
 	#show_spotlight_at_node(spyder_button)
@@ -198,9 +198,9 @@ func _start_force_select_spyder_after_blood():
 
 
 func _start_force_place_spyder_behind():
-	toolTips.setComplexSceneText(tutorial_place_spyder)
-	toolTips.setComplexScene(buff_demo_scene)
-	toolTips.noButtonShow()
+	toolTips.set_visual_tutorial_visualText(tutorial_place_spyder)
+	toolTips.set_visual_tutorial_visual(buff_demo_scene.instantiate())
+	
 	plantSelectionMenu.remove_button_highlight(spyder_button)
 	var valid_pos = tutorial_sunflower_grid_pos - Vector2(32, 0)
 	#TODO Add Highlight
@@ -209,16 +209,14 @@ func _start_force_place_spyder_behind():
 
 func _start_explain_blood_buffs():
 	get_tree().paused = true
-	toolTips.setComplexSceneText(TUTORIAL_BLOOD_BUFFS)
-	toolTips.setComplexScene(spyder_sun_buff_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_visualText(TUTORIAL_BLOOD_BUFFS)
+	toolTips.set_visual_tutorial_visual(spyder_sun_buff_scene.instantiate())
 
 
 func _start_explain_blood_buffs_2():
 	get_tree().paused = true
-	toolTips.setComplexSceneText(TUTORIAL_BLOOD_BUFFS_2)
-	toolTips.setComplexScene(sun_spyder_buff_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_visualText(TUTORIAL_BLOOD_BUFFS_2)
+	toolTips.set_visual_tutorial_visual(sun_spyder_buff_scene.instantiate())
 
 
 func _start_wave_1():
@@ -236,14 +234,13 @@ func start_game():
 
 func _start_explain_buckethead_zombie():
 	bucketHeadExplained = true
-	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE)
-	toolTips.setComplexScene(buckethead_zombie_demo_scene)
-	toolTips.showButton()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE)
+	toolTips.set_visual_tutorial_visual(buckethead_zombie_demo_scene.instantiate())
 
 
 func _start_force_select_walnut():
-	toolTips.set_text(TUTORIAL_PLACE_WALNUT)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WALNUT, false)
+	
 	show_only_plant_buttons(["Walnut"])
 	plantSelectionMenu.add_pulsing_button_highlight(walnut_button)
 	hbox.get_node("Walnut").visible = true
@@ -253,8 +250,8 @@ func _start_force_select_walnut():
 
 
 func _start_force_place_walnut():
-	toolTips.set_text(TUTORIAL_PLACE_WALNUT)
-	toolTips.noButtonShow()
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WALNUT, false)
+	
 	plantSelectionMenu.remove_button_highlight(walnut_button)
 	hide_spotlight()
 #endregion
@@ -348,8 +345,7 @@ func _on_spyder_placed(grid_pos: Vector2):
 		plantManager.clear_space(grid_pos)
 		plantManager.add_sun(50)
 		get_tree().paused = true
-		toolTips.set_text_pause(TUTORIAL_INVALID_SPYDER)
-		toolTips.showButton()
+		toolTips.set_basic_tutorial_text(TUTORIAL_INVALID_SPYDER, true)
 		#TODO Add Highlight
 		#show_spotlight_at_position(expected_pos, 0.12)
 	else:

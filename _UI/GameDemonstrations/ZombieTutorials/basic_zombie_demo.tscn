@@ -3123,10 +3123,6 @@ region = Rect2(1550, 0, 62, 38)
 atlas = ExtResource("2_ytn3k")
 region = Rect2(1612, 0, 62, 38)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfulu"]
-atlas = ExtResource("2_ytn3k")
-region = Rect2(1674, 0, 62, 38)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_i074b"]
 atlas = ExtResource("2_ytn3k")
 region = Rect2(1736, 0, 62, 38)
@@ -3177,14 +3173,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_pfegx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lfulu")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_i074b")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [node name="BasicZombieDemo" type="CenterContainer" unique_id=695442406]
@@ -3240,7 +3233,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3lj1o")
 
 [node name="BasicZombie" type="AnimatedSprite2D" parent="Panel" unique_id=364899820]
-position = Vector2(97, 67)
+position = Vector2(96, 66)
 scale = Vector2(6.21, 6.21)
 sprite_frames = SubResource("SpriteFrames_j0lt8")
 autoplay = "default"
