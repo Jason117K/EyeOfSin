@@ -214,11 +214,9 @@ theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("11_bcru6")
 
 [node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
-visible = false
 layout_mode = 2
 
 [node name="RemovePlantButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=1687386622]
-visible = false
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
 theme_override_styles/normal = ExtResource("8_3emsw")
