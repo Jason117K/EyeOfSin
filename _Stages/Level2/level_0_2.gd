@@ -198,7 +198,7 @@ func _start_force_select_spyder_after_blood():
 
 
 func _start_force_place_spyder_behind():
-	toolTips.set_visual_tutorial_visualText(tutorial_place_spyder)
+	toolTips.set_visual_tutorial_text(tutorial_place_spyder)
 	toolTips.set_visual_tutorial_visual(buff_demo_scene.instantiate())
 	
 	plantSelectionMenu.remove_button_highlight(spyder_button)
@@ -209,13 +209,13 @@ func _start_force_place_spyder_behind():
 
 func _start_explain_blood_buffs():
 	get_tree().paused = true
-	toolTips.set_visual_tutorial_visualText(TUTORIAL_BLOOD_BUFFS)
+	toolTips.set_visual_tutorial_text(TUTORIAL_BLOOD_BUFFS)
 	toolTips.set_visual_tutorial_visual(spyder_sun_buff_scene.instantiate())
 
 
 func _start_explain_blood_buffs_2():
 	get_tree().paused = true
-	toolTips.set_visual_tutorial_visualText(TUTORIAL_BLOOD_BUFFS_2)
+	toolTips.set_visual_tutorial_text(TUTORIAL_BLOOD_BUFFS_2)
 	toolTips.set_visual_tutorial_visual(sun_spyder_buff_scene.instantiate())
 
 

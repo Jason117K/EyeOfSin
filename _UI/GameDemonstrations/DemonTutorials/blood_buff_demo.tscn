@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://cafee4rlp0oq3"]
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_7254w"]
-[ext_resource type="Texture2D" uid="uid://bhcpyioblhadb" path="res://_Entities/Demons/_Crawler/RedSpiderAttack-Sheet.png" id="2_jyajd"]
 [ext_resource type="Texture2D" uid="uid://jy54hb8pml7g" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SUN-Sheet.png" id="2_uumsr"]
 [ext_resource type="Texture2D" uid="uid://c30lgql0xnwsx" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Maw-Sheet.png" id="3_4oyl0"]
 [ext_resource type="Texture2D" uid="uid://j4nuwsywnax5" path="res://_Entities/Demons/SpriteSheets/Maw/EyeSunTowerIdle_SPYDER-Sheet.png" id="3_qlcry"]
-[ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://_Entities/Demons/_Crawler/RedSpider-Sheet.png" id="4_vk817"]
 [ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Sun-Sheet.png" id="5_5oyfw"]
 [ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Walnut-Sheet.png" id="6_5oect"]
 [ext_resource type="Texture2D" uid="uid://lojdao7nw8m1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Hive-Sheet.png" id="7_1b484"]
@@ -19,9 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="16_bk61l"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="17_lad36"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="18_eanlj"]
-[ext_resource type="Texture2D" uid="uid://bpbrbhn6c2lom" path="res://_Entities/Demons/TestBloodBSheet.png" id="19_e1p4d"]
+[ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="19_e1p4d"]
 [ext_resource type="Texture2D" uid="uid://cyvwcuast06ux" path="res://_Entities/Demons/SpriteSheets/Maw/EyeSunTowerIdle_Base-Sheet.png" id="21_utr1l"]
-
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
 bg_color = Color(0.15, 0.15, 0.15, 1)
@@ -31,27 +28,27 @@ border_width_right = 2
 border_width_bottom = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qq15"]
-atlas = ExtResource("2_jyajd")
+atlas = ExtResource("14_svaj7")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3byx0"]
-atlas = ExtResource("2_jyajd")
+atlas = ExtResource("14_svaj7")
 region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y16w"]
-atlas = ExtResource("2_jyajd")
+atlas = ExtResource("14_svaj7")
 region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdofu"]
-atlas = ExtResource("2_jyajd")
+atlas = ExtResource("14_svaj7")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7b5k"]
-atlas = ExtResource("2_jyajd")
+atlas = ExtResource("14_svaj7")
 region = Rect2(160, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1mma"]
-atlas = ExtResource("2_jyajd")
+atlas = ExtResource("14_svaj7")
 region = Rect2(200, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gj4d"]
@@ -79,19 +76,19 @@ atlas = ExtResource("3_4oyl0")
 region = Rect2(200, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l66ve"]
-atlas = ExtResource("4_vk817")
+atlas = ExtResource("15_fbgmf")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64arl"]
-atlas = ExtResource("4_vk817")
+atlas = ExtResource("15_fbgmf")
 region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t52d5"]
-atlas = ExtResource("4_vk817")
+atlas = ExtResource("15_fbgmf")
 region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_okgsi"]
-atlas = ExtResource("4_vk817")
+atlas = ExtResource("15_fbgmf")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlf35"]
@@ -1287,32 +1284,31 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MawSpiderBuff" type="Control"]
-custom_minimum_size = Vector2(400, 100)
-layout_mode = 3
-anchors_preset = 0
+[node name="MawSpiderBuff" type="CenterContainer" unique_id=2084871211]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_7254w")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 2.0
-offset_right = 257.0
-offset_bottom = 121.0
+[node name="Panel" type="Panel" parent="." unique_id=408020102]
+custom_minimum_size = Vector2(230, 130)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3lj1o")
 
-[node name="PreviewNodes" type="Node2D" parent="Panel"]
+[node name="PreviewNodes" type="Node2D" parent="Panel" unique_id=1361187105]
 position = Vector2(139, 89.08)
 scale = Vector2(1.7, 1.7)
 
-[node name="Spider" type="AnimatedSprite2D" parent="Panel/PreviewNodes"]
+[node name="Spider" type="AnimatedSprite2D" parent="Panel/PreviewNodes" unique_id=377533891]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_xbks4")
 animation = &"redSpiderDefault"
 autoplay = "redSpiderDefault"
 flip_h = true
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="Panel/PreviewNodes"]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="Panel/PreviewNodes" unique_id=1404051308]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
@@ -1320,26 +1316,26 @@ sprite_frames = SubResource("SpriteFrames_qqpst")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="Panel/PreviewNodes"]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="Panel/PreviewNodes" unique_id=2141742857]
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("SpriteFrames_qqpst")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="BloodTile3" type="AnimatedSprite2D" parent="Panel/PreviewNodes"]
+[node name="BloodTile3" type="AnimatedSprite2D" parent="Panel/PreviewNodes" unique_id=1141480864]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("SpriteFrames_qqpst")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/PreviewNodes"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/PreviewNodes" unique_id=50010910]
 position = Vector2(32.353, -7.62939e-06)
 sprite_frames = SubResource("SpriteFrames_xkm8m")
 autoplay = "default"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/PreviewNodes"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Panel/PreviewNodes" unique_id=586834620]
 position = Vector2(32.353, -30.44)
 sprite_frames = SubResource("SpriteFrames_j5jkr")
 animation = &"new_animation"

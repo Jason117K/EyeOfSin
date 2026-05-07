@@ -13,6 +13,9 @@ extends Control
 @export var max_basic_tutorial_characters := 100
 @export var small_basic_tutorial_text := 16
 @export var large_basic_tutorial_text := 32 
+@export var max_visual_tutorial_characters := 200
+@export var small_visual_tutorial_text := 20
+@export var large_visual_tutorial_text := 24 
 
 var char_count 
 var index
@@ -71,11 +74,12 @@ func set_visual_tutorial_text(newFile : String):
 	file.close()
 	
 	visualTutorialLabel.text = newText
+	char_count = newText.length()
 	get_tree().paused = true 
-	#if char_count > max_basic_tutorial_characters:
-		#basicTutorialLabel.add_theme_font_size_override("normal_font_size", small_basic_tutorial_text)
-	#else:
-		#basicTutorialLabel.add_theme_font_size_override("normal_font_size", large_basic_tutorial_text)
+	if char_count > max_visual_tutorial_characters:
+		visualTutorialLabel.add_theme_font_size_override("normal_font_size", small_visual_tutorial_text)
+	else:
+		visualTutorialLabel.add_theme_font_size_override("normal_font_size", large_visual_tutorial_text)
 	
 		
 func set_visual_tutorial_visual(newVisual : CenterContainer):

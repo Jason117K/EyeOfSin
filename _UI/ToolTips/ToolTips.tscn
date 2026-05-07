@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_spider_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]
-[ext_resource type="PackedScene" uid="uid://okpv0aqap43q" path="res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn" id="7_f4pib"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="7_qvk3g"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="8_x1rij"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="9_komxe"]
@@ -59,7 +58,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1")
+max_basic_tutorial_characters = 115
 
 [node name="BasicTutorialMessage" type="Control" parent="." unique_id=504267282]
 visible = false
@@ -69,6 +70,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="BasicTutorialBG" type="ColorRect" parent="BasicTutorialMessage" unique_id=233338250]
 layout_mode = 1
@@ -83,22 +85,23 @@ offset_right = 386.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0, 0, 0, 0.5882353)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.91764706)
 
 [node name="BasicTutorialVbox" type="VBoxContainer" parent="BasicTutorialMessage" unique_id=645986828]
-custom_minimum_size = Vector2(600, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -359.0
-offset_top = -55.0
-offset_right = 341.0
-offset_bottom = 245.0
+offset_left = -366.0
+offset_top = -11.0
+offset_right = 365.0
+offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="BasicTutorialLabel" type="RichTextLabel" parent="BasicTutorialMessage/BasicTutorialVbox" unique_id=1231091773]
@@ -108,12 +111,16 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
 theme_override_font_sizes/normal_font_size = 32
-text = "CLICK ON A DEMON RUNE TO READY IT FOR SUMMONING"
+text = "Good job, you survived.
+PRESS Y to travel to another dimension.
+Be warned: Both dimensions are under attack!"
 fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
 [node name="BasicTutorialUnderstoodButton" type="Button" parent="BasicTutorialMessage/BasicTutorialVbox" unique_id=1059101696]
 visible = false
+z_index = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_m6aj6")
@@ -140,10 +147,12 @@ mouse_filter = 2
 [node name="VisualTutorialPanelContainer" type="PanelContainer" parent="VisualTutorialVBox" unique_id=132621045]
 custom_minimum_size = Vector2(0, 230)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i1eds")
 
 [node name="VisualTutorialMarginContainer" type="MarginContainer" parent="VisualTutorialVBox/VisualTutorialPanelContainer" unique_id=1311181689]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_bottom = 3
@@ -151,15 +160,18 @@ theme_override_constants/margin_bottom = 3
 [node name="VisualTutorialHBox" type="HBoxContainer" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer" unique_id=2002964462]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/separation = 7
 alignment = 1
 
 [node name="VisualTutorialVisual" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1492933373 instance=ExtResource("6_imaxi")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VisualTutorialLabel" type="RichTextLabel" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1509879464]
 custom_minimum_size = Vector2(490, 148.595)
 layout_mode = 2
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
 theme_override_font_sizes/normal_font_size = 24
 text = "The first of the mutated zombies, now just average eldritch footsoldiers. They retain most of their human form and all of their undead hunger. 
@@ -170,62 +182,6 @@ Damage: Low
 "
 
 [node name="VisualTutorialUnderstoodButton" type="Button" parent="VisualTutorialVBox" unique_id=1590243430]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("6_m6aj6")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_f4pib")
-text = "UNDERSTOOD"
-
-[node name="ZombieTutorialVbox" type="VBoxContainer" parent="." unique_id=254989662]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -95.0
-offset_right = 347.5
-offset_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="ZombieTutorialVbox" unique_id=746935471]
-custom_minimum_size = Vector2(0, 230)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i1eds")
-
-[node name="ZombieTutorialHBox" type="HBoxContainer" parent="ZombieTutorialVbox/PanelContainer" unique_id=1106218]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="BasicZombieDemo" parent="ZombieTutorialVbox/PanelContainer/ZombieTutorialHBox" unique_id=914102237 instance=ExtResource("7_f4pib")]
-layout_mode = 2
-
-[node name="ZombieTutorialLabel" type="RichTextLabel" parent="ZombieTutorialVbox/PanelContainer/ZombieTutorialHBox" unique_id=417172031]
-custom_minimum_size = Vector2(490, 148.595)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("6_m6aj6")
-theme_override_font_sizes/normal_font_size = 18
-text = "The first of the mutated zombies, now just average eldritch footsoldiers. They retain most of their human form and all of their undead hunger. 
-Speed: Low
-Health: Low
-Numbers: High
-Damage: Low
-"
-
-[node name="VScrollBar" type="VScrollBar" parent="ZombieTutorialVbox/PanelContainer/ZombieTutorialHBox/ZombieTutorialLabel" unique_id=1560130800]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="ZombieIntroUnderstoodButton" type="Button" parent="ZombieTutorialVbox" unique_id=1724350241]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
@@ -301,4 +257,3 @@ texture = ExtResource("2_c1ynx")
 
 [connection signal="pressed" from="BasicTutorialMessage/BasicTutorialVbox/BasicTutorialUnderstoodButton" to="." method="_on_basic_tutorial_understood_button_pressed"]
 [connection signal="pressed" from="VisualTutorialVBox/VisualTutorialUnderstoodButton" to="." method="_on_visual_tutorial_understood_button_pressed"]
-[connection signal="pressed" from="ZombieTutorialVbox/ZombieIntroUnderstoodButton" to="." method="_on_button_2_pressed"]
