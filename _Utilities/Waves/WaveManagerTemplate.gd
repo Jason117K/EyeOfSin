@@ -338,8 +338,7 @@ func subtract_health():
 	#get_tree().get_first_node_in_group("Purple").get_health_ui().text = "Health: " + str(health_points)
 	get_tree().get_first_node_in_group("Purple").get_health_ui().text = str(health_points)
 	get_tree().get_first_node_in_group("Green").get_health_ui().text = str(health_points)
-	#get_parent().get_parent().get_node("CurrentScene/Level0-4/UILayer/HBoxContainer2/Health").text = str(health_points)
-	#get_parent().get_parent().get_node("UILayer/SunCounter/HBoxContainer/HealthPoints").text = "Health: " + str(health_points)
+
 	print(get_tree().get_first_node_in_group("Purple").get_health_ui(),"Health is ",health_points)
 	if health_points <= 0:
 		lose()

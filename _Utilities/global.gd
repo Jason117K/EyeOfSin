@@ -22,9 +22,13 @@ var hero_demon_summoned := false
 var swap_ability 
 var current_level
 var hero_demon 
+var ui_layer : Control
 
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()
+	
+func register_ui_layer(new_ui_layer):
+	ui_layer = new_ui_layer
 
 func hidePlantSelectionMenu():
 	if plant_selection_menu != null:

@@ -272,7 +272,7 @@ func _on_PeashooterButton_pressed():
 	create_preview(peashooter_scene)
 	add_button_highlight(PeaShooterButton)
 	
-	currentPlantLabel.text = "SPIDER SELECTED " + deselectText
+	#currentPlantLabel.text = "SPIDER SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
@@ -294,7 +294,7 @@ func _on_SunflowerButton_pressed():
 	create_preview(sunflower_scene)
 	add_button_highlight(SunFlowerButton)
 	
-	currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
+	#currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
 	#currentPlantCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
 	sunflowerCost  += 5
@@ -317,7 +317,7 @@ func _on_WalnutButton_pressed():
 	create_preview(walnut_scene)
 	add_button_highlight(WalnutButton)
 	setCanRemoveFalse()
-	currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
+	#currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
@@ -334,7 +334,7 @@ func _on_MawButton_pressed():
 	create_preview(maw_scene)
 	add_button_highlight(MawButton)
 	setCanRemoveFalse()
-	currentPlantLabel.text = "MAW SELECTED " + deselectText
+	#currentPlantLabel.text = "MAW SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
@@ -350,7 +350,7 @@ func _on_EggButton_pressed():
 	add_button_highlight(EggButton)
 	var temp_instance = egg_scene.instantiate()
 	setCanRemoveFalse()
-	currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
+	#currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
@@ -368,7 +368,7 @@ func _on_HiveButton_pressed():
 	add_button_highlight(HiveButton)
 	var temp_instance = hive_scene.instantiate()
 	setCanRemoveFalse()	
-	currentPlantLabel.text = "HIVE SELECTED " + deselectText
+	#currentPlantLabel.text = "HIVE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
@@ -424,7 +424,7 @@ func clear_preview():
 		print("Demon Button ia ",demonButton )
 		remove_button_highlight(demonButton)
 	preview_sprites.clear()
-	currentPlantLabel.text = ""
+	#currentPlantLabel.text = ""
 	is_previewing = false
 
 func release_all_focus():
@@ -479,7 +479,7 @@ func find_animated_sprite(node):
 			return result
 	return null
 
-func add_button_highlight(button: Button) -> void:
+func add_button_highlight(button: TextureButton) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
@@ -595,7 +595,7 @@ func stop_glow_pulse(button: Button) -> void:
 		
 		
 # Function to remove highlight from a button
-func remove_button_highlight(button: Button) -> void:
+func remove_button_highlight(button: TextureButton) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
@@ -700,7 +700,7 @@ func _on_heart_button_pressed() -> void:
 	var temp_instance = heart_scene.instantiate()
 	create_preview(heart_scene)
 	setCanRemoveFalse()
-	currentPlantLabel.text = "HEART DEMON SELECTED " + deselectText
+	#currentPlantLabel.text = "HEART DEMON SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartLabel
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
@@ -728,7 +728,7 @@ func _on_portal_button_pressed() -> void:
 	setCanRemoveFalse()
 	currentPlantCost = 0
 	#currentPlantCost.text = "0"
-	currentPlantLabel.text = "PORTAL SELECTED " + deselectText
+	#currentPlantLabel.text = "PORTAL SELECTED " + deselectText
 	temp_instance.queue_free()
 	print("Portal selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
@@ -736,11 +736,11 @@ func _on_portal_button_pressed() -> void:
 	
 func swap_portal_button():
 	if purple_scene:
-		portalButton.icon = green_portal_icon
+		portalButton.texture_normal = purple_portal_icon#green_portal_icon
 		purple_scene = false
 		return 
 	else:
-		portalButton.icon = purple_portal_icon
+		portalButton.texture_normal = green_portal_icon #purple_portal_icon
 		purple_scene = true 
 		return 
 		

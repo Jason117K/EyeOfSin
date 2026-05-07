@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://_Entities/Demons/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
 [ext_resource type="StyleBox" uid="uid://cql62ig3tywq8" path="res://_Common/StyleBoxes/demon_normal_button.tres" id="8_3emsw"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
+[ext_resource type="Texture2D" uid="uid://bowkp4mknv1ul" path="res://_Assets/UI/DemonCard_Portal_GreenButton.png" id="10_bcru6"]
 [ext_resource type="Texture2D" uid="uid://cs7hq3cbnjody" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText5.png" id="10_iafbj"]
-[ext_resource type="Texture2D" uid="uid://br5bnotborqjw" path="res://_Assets/UI/DemonCard_Portal.png" id="11_bcru6"]
 [ext_resource type="Texture2D" uid="uid://bajbuwbiesujh" path="res://_Entities/Demons/Cards/DemonCard_HEART.png" id="11_iafbj"]
 [ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://_Entities/Demons/Cards/DESELECT_CARD.png" id="12_yqvs4"]
@@ -194,7 +194,7 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
-texture_normal = ExtResource("11_bcru6")
+texture_normal = ExtResource("10_bcru6")
 ignore_texture_size = true
 stretch_mode = 0
 
