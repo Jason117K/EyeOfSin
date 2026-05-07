@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://_Utilities/Demons/DemonSelectionMenu.gd" id="1"]
-[ext_resource type="StyleBox" uid="uid://dhe5ty22fd316" path="res://_Assets/clear_style_box.tres" id="3_nabk1"]
 [ext_resource type="Texture2D" uid="uid://b6vva031ql0r0" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText1.png" id="3_yqvs4"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_vvged"]
 [ext_resource type="Texture2D" uid="uid://cdlvi1sqbawix" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText4.png" id="5_vvged"]
 [ext_resource type="Texture2D" uid="uid://b13m4nfeccjgl" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText2.png" id="6_04elx"]
 [ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://_Entities/Demons/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
+[ext_resource type="StyleBox" uid="uid://cql62ig3tywq8" path="res://_Common/StyleBoxes/demon_normal_button.tres" id="8_3emsw"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://_Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="9_qqk0u"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://cs7hq3cbnjody" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText5.png" id="10_iafbj"]
@@ -33,12 +33,6 @@ corner_radius_bottom_left = 5
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
-
-[sub_resource type="StyleBoxFlat" id="1"]
-bg_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="3"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="DemonSelectionMenu" type="Control" unique_id=1988977493]
 z_index = 2
@@ -101,6 +95,7 @@ mouse_filter = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=882467696]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 0
 
 [node name="Sunflower" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
 layout_mode = 2
@@ -108,7 +103,7 @@ layout_mode = 2
 [node name="SunflowerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=989014425]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = ExtResource("3_nabk1")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("3_yqvs4")
 
 [node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=875715703]
@@ -125,7 +120,7 @@ layout_mode = 2
 [node name="PeashooterButton2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter" unique_id=1928961911]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("1")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("5_vvged")
 
 [node name="PeashooterLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter" unique_id=752286747]
@@ -141,7 +136,7 @@ layout_mode = 2
 [node name="WalnutButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut" unique_id=63966066]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("6_04elx")
 
 [node name="WalnutLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut" unique_id=1640644905]
@@ -157,7 +152,7 @@ layout_mode = 2
 [node name="MawButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1544433936]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("7_e3ig8")
 
 [node name="MawLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
@@ -174,7 +169,7 @@ layout_mode = 2
 [node name="EggButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg" unique_id=176165834]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("10_iafbj")
 
 [node name="EggLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg" unique_id=925628958]
@@ -191,7 +186,7 @@ layout_mode = 2
 [node name="HiveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=832668511]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("11_js2vo")
 
 [node name="HiveLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1149167924]
@@ -206,7 +201,7 @@ layout_mode = 2
 [node name="HeartButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=642478587]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("11_iafbj")
 
 [node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
@@ -215,16 +210,18 @@ layout_mode = 2
 [node name="PortalButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1329203705]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("11_bcru6")
 
 [node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
+visible = false
 layout_mode = 2
 
 [node name="RemovePlantButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=1687386622]
+visible = false
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("12_yqvs4")
 
 [node name="RemovePlantLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=77291499]
@@ -240,7 +237,7 @@ layout_mode = 2
 [node name="WorldSwapButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/WorldSwap" unique_id=1076450100]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("13_vvged")
 
 [node name="Codex" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=396055590]
@@ -249,7 +246,7 @@ layout_mode = 2
 [node name="CodexButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/Codex" unique_id=820887150]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("14_04elx")
 
 [node name="FastForward" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=2101431720]
@@ -258,7 +255,7 @@ layout_mode = 2
 [node name="FastForwardButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/FastForward" unique_id=106520995]
 layout_mode = 2
 theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("15_e3ig8")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=958387944]
@@ -269,7 +266,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 theme_override_constants/icon_max_width = 268
-theme_override_styles/normal = SubResource("3")
+theme_override_styles/normal = ExtResource("8_3emsw")
 icon = ExtResource("17_bcru6")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]

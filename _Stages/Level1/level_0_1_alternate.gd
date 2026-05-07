@@ -1,67 +1,22 @@
 extends LevelTemplate
-# level_0_1_alternate.gd - Green Dimension Controller for Level 0-1
-# Waits for purple dimension to activate Wave 2
 
-#@onready var waveManager = $GameLayer/WaveManager
+# Waits for purple dimension to activate Wave 2
  
 
 func _ready():
-	#waveManager = get_parent().get_node("WaveManager")
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-	# Keep waves disabled until purple dimension activates us
 	waveManager.canStartGame = false
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
 	print("[Level0-1 Alternate] Green dimension loaded, waiting for Wave 2 activation")
 
-func attach_script_to_sway_children(script_path: String) -> void:
-
-	# Find the Coral node
-	var coral_node = get_node("Environment/Coral")
-	
-	if coral_node == null:
-		push_error("Coral node not found at Environment/Coral")
-		return
-	
-	
-	# Load the script to attach
-	var script_to_attach = load(script_path)
-	
-	if script_to_attach == null:
-		push_error("Failed to load script at: " + script_path)
-		return
-	
-	# Iterate through all children and attach the script
-	for child in coral_node.get_children():
-		child.set_script(script_to_attach)
-		if child.is_inside_tree() and child.has_method("_ready"):
-			#if self.is_in_group("Green"):
-				#child.make_green()
-			child._ready()
-		print("Script attached to: ", child.name)	
-	
 	
 func start_wave_2():
-	
 	hide_all_plant_buttons_except_spyder()
 	print("========== GREEN DIMENSION START_WAVE_2 CALLED ==========")
 	print("[GREEN] Current time: ", Time.get_ticks_msec())
 	print("[GREEN] waveManager.numWave BEFORE: ", waveManager.numWave)
 
 	waveManager.numWave = 1             # Initialize wave state for Wave 2
-
-	# CRITICAL: Spawners need to be at wave 2 to spawn wave2_zombies
-	# Green dimension skipped Wave 1, so spawners are still at 0
-	# Need to increment twice: 0→1→2
-	print("[GREEN] Incrementing spawner waves from 0 to 2...")
-	for spawner in waveManager.spawners:
-		if spawner.make_green == true:
-			print("[GREEN] Spawner ", spawner.name, " numWave BEFORE: ", spawner.numWave)
-			#spawner.increase_wave()  # 0→1
-			#spawner.increase_wave()  # 1→2
-			print("[GREEN] Spawner ", spawner.name, " numWave AFTER: ", spawner.numWave)
-
-	print("[GREEN] About to call startSecondWave()...")
 	waveManager.startSecondWave()       # This increments numWave to 2
 
 	print("[GREEN] waveManager.numWave AFTER startSecondWave: ", waveManager.numWave)

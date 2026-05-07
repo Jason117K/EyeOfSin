@@ -67,6 +67,9 @@ func take_damage(amount):
 		print("Die Cos Health too Low")
 		die()
 
+func get_health():
+	return health
+
 # Changes the drone's current animation 
 func setAnimation(newAnimation):
 	animatedSpriteComp.animation = newAnimation

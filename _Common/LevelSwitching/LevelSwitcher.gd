@@ -34,7 +34,7 @@ func _on_Continue_pressed():
 	#Global.game_controller.change_scene(next_level)
 	#Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/StartScreen.tscn")
 	#Global.game_controller.change_dual_scenes(next_level,next_level_alt)
-	Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/LevelSelect.tscn")
+	Global.game_controller.change_from_dual_scenes("res://_Stages/LevelSelect/LevelSelect_Map.tscn")
 	self.visible = false 
 	Global.unlockLevel(level_unlocked)
 

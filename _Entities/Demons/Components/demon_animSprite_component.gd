@@ -21,7 +21,7 @@ func _ready() -> void:
 	#make_buff_glow()
 	animation = "spawn"
 	self.animation_finished.connect(_on_animation_finished)
-	#print(self, "PARENT Is" , get_parent())
+	print(self, " PARENT Is " , get_parent())
 	demon = get_parent()
 	pass
 	

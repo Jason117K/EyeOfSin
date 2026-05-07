@@ -31,12 +31,12 @@ func _on_Sun_mouse_entered():
 	queue_free()
 
 func heal_plants():
-	for plant in plants_to_heal:
-		if plant == null:
-			plants_to_heal.erase(plant)
-		if plant != null:
+	for demon in plants_to_heal:
+		if demon == null:
+			plants_to_heal.erase(demon)
+		if demon != null:
+			demon.increase_health(100)
 			
-			plant.health = plant.health + 100
 		pass
 
 func _on_auto_pick_up_timer_timeout() -> void:

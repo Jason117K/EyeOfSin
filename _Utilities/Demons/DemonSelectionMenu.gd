@@ -30,6 +30,11 @@ var portal_scene = preload("res://_Entities/SpecialElementsPortal/Portal.tscn")
 var green_portal_icon = preload("res://_Assets/UI/DemonCard_Portal_GreenButton.png")
 var purple_portal_icon = preload("res://_Assets/UI/DemonCard_Portal.png")
 
+var demon_normal_stylebox_default = preload("res://_Common/StyleBoxes/demon_normal_button.tres")
+var demon_highlight_stylebox = preload("res://_Common/StyleBoxes/demon_highlight_stylebox.tres")
+
+#var demon_hover_stylebox = preload()
+
 #var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
 
 # Label for Current Plant 
@@ -41,12 +46,16 @@ var deselectText = " PRESS [X] TO DESELECT"
 @onready var panelContainer = $PanelContainer
 @onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 
-var SunFlowerButton
-var WalnutButton
-var EggButton
-var MawButton
-var HiveButton
-var PeaShooterButton
+@onready var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+@onready var WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
+@onready var  EggButton = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton
+@onready var  MawButton = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton
+@onready var HiveButton = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
+@onready var  PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+
+@onready var all_demon_buttons = [SunFlowerButton,WalnutButton,
+							EggButton,MawButton,HiveButton,
+							PeaShooterButton]
 
 
 var sunFlowerCostLabel
@@ -261,6 +270,7 @@ func _on_PeashooterButton_pressed():
 	selected_plant = peashooter_scene
 	var temp_instance = peashooter_scene.instantiate()
 	create_preview(peashooter_scene)
+	add_button_highlight(PeaShooterButton)
 	
 	currentPlantLabel.text = "SPIDER SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
@@ -282,6 +292,7 @@ func _on_SunflowerButton_pressed():
 	selected_plant = sunflower_scene
 	var temp_instance = sunflower_scene.instantiate()
 	create_preview(sunflower_scene)
+	add_button_highlight(SunFlowerButton)
 	
 	currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
@@ -304,6 +315,7 @@ func _on_WalnutButton_pressed():
 	selected_plant = walnut_scene
 	var temp_instance = walnut_scene.instantiate()
 	create_preview(walnut_scene)
+	add_button_highlight(WalnutButton)
 	setCanRemoveFalse()
 	currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
@@ -320,6 +332,7 @@ func _on_MawButton_pressed():
 	selected_plant = maw_scene
 	var temp_instance = maw_scene.instantiate()	
 	create_preview(maw_scene)
+	add_button_highlight(MawButton)
 	setCanRemoveFalse()
 	currentPlantLabel.text = "MAW SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
@@ -334,6 +347,7 @@ func _on_MawButton_pressed():
 func _on_EggButton_pressed():
 	selected_plant = egg_scene
 	create_preview(egg_scene)
+	add_button_highlight(EggButton)
 	var temp_instance = egg_scene.instantiate()
 	setCanRemoveFalse()
 	currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
@@ -351,6 +365,7 @@ func _on_EggButton_pressed():
 func _on_HiveButton_pressed():
 	selected_plant = hive_scene
 	create_preview(hive_scene)
+	add_button_highlight(HiveButton)
 	var temp_instance = hive_scene.instantiate()
 	setCanRemoveFalse()	
 	currentPlantLabel.text = "HIVE SELECTED " + deselectText
@@ -399,11 +414,15 @@ func create_preview(plant_scene):
 	
 # Clears the current preview image 
 func clear_preview():
+	print("Clear BUTTON PReview")
 	Global.clear_guide()
 	for sprite in preview_sprites:
 		if sprite:
 			sprite.visible = false
 			#sprite.queue_free()
+	for demonButton in all_demon_buttons:
+		print("Demon Button ia ",demonButton )
+		remove_button_highlight(demonButton)
 	preview_sprites.clear()
 	currentPlantLabel.text = ""
 	is_previewing = false
@@ -464,34 +483,30 @@ func add_button_highlight(button: Button) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
-	
-	# Create a new StyleBoxFlat for the highlight
-	var highlight_style = StyleBoxFlat.new()
-	
-	# Set the background to be transparent or match button's original background
-	highlight_style.bg_color = Color.TRANSPARENT
-	
-	# Configure the border
-	highlight_style.border_width_left = highlight_border_thickness
-	highlight_style.border_width_right = highlight_border_thickness  
-	highlight_style.border_width_top = highlight_border_thickness
-	highlight_style.border_width_bottom = highlight_border_thickness
-	highlight_style.border_color = highlight_border_color
-	
-	
-	# Apply some corner rounding for a smoother look
-	highlight_style.corner_radius_top_left = 4
-	highlight_style.corner_radius_top_right = 4
-	highlight_style.corner_radius_bottom_left = 4
-	highlight_style.corner_radius_bottom_right = 4
-	
+	## Set the background to be transparent or match button's original background
+	#highlight_style.bg_color = Color.TRANSPARENT
+	#
+	## Configure the border
+	#highlight_style.border_width_left = highlight_border_thickness
+	#highlight_style.border_width_right = highlight_border_thickness  
+	#highlight_style.border_width_top = highlight_border_thickness
+	#highlight_style.border_width_bottom = highlight_border_thickness
+	#highlight_style.border_color = highlight_border_color
+	#
+	#
+	## Apply some corner rounding for a smoother look
+	#highlight_style.corner_radius_top_left = 4
+	#highlight_style.corner_radius_top_right = 4
+	#highlight_style.corner_radius_bottom_left = 4
+	#highlight_style.corner_radius_bottom_right = 4
+	#
 	
 	# Store the original style so we can restore it later
 	if not button.has_meta("original_normal_style"):
 		button.set_meta("original_normal_style", button.get_theme_stylebox("normal"))
 	
-	# Apply the highlight style to the button's normal state
-	button.add_theme_stylebox_override("normal", highlight_style)
+	## Apply the highlight style to the button's normal state
+	button.add_theme_stylebox_override("normal", demon_highlight_stylebox)
 	
 	
 func add_pulsing_button_highlight(button: Button) -> void:
@@ -584,8 +599,11 @@ func remove_button_highlight(button: Button) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
-	button.remove_theme_stylebox_override("normal")
-	button.get_theme_stylebox("normal").bg_color = Color("0f0a0a00")
+	#button.remove_theme_stylebox_override("normal")
+	print("Button to REMOVVE Is ", button)
+	button.add_theme_stylebox_override("normal", demon_normal_stylebox_default )
+	#button.remove_theme_stylebox_override("hover")
+	#button.get_theme_stylebox("normal").bg_color = Color("0f0a0a00")
 	#0f0a0a00
 	## Restore the original style if it was saved
 	#if button.has_meta("original_normal_style"):

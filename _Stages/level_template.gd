@@ -183,4 +183,18 @@ func _filter_tutorial_input(event: InputEvent) -> void:
 	if step.has("input_filter"):
 		step["input_filter"].call(event)
 	
-	
+func attach_script_to_sway_children(script_path: String) -> void:
+	var coral_node = get_node("Environment/Coral")
+	if coral_node == null:
+		push_error("Coral node not found at Environment/Coral")
+		return
+
+	var script_to_attach = load(script_path)
+	if script_to_attach == null:
+		push_error("Failed to load script at: " + script_path)
+		return
+
+	for child in coral_node.get_children():
+		child.set_script(script_to_attach)
+		if child.is_inside_tree() and child.has_method("_ready"):
+			child._ready()

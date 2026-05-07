@@ -26,84 +26,85 @@ extends AnimatedTextureRect
 var is_in_synergy = false
 
 #Plant Text Descriptions
-var sunflowerDescription := "res://Assets/Text/TextFiles/PlantDescriptions/SunflowerDescription.txt"
-var peashooterDescription := "res://Assets/Text/TextFiles/PlantDescriptions/PeashooterDescription.txt"
-var walnutDescription := "res://Assets/Text/TextFiles/PlantDescriptions/WalnutDescription.txt"
-var eyeBombDescription := "res://Assets/Text/TextFiles/PlantDescriptions/EyeBombDescription.txt"
-var eggWyrmDescription := "res://Assets/Text/TextFiles/PlantDescriptions/EggWyrmDescription.txt"
-var hiveDescription := "res://Assets/Text/TextFiles/PlantDescriptions/HiveDescription.txt"
-var mawDescription := "res://Assets/Text/TextFiles/PlantDescriptions/MawDescription.txt"
-
-var mawSpyderText =  "res://Assets/Text/TextFiles/SpiderMawBuff.txt"
-var mawEggText = "res://Assets/Text/TextFiles/EggMawBuff.txt"
-var spineMawText =  "res://Assets/Text/TextFiles/SpineMawBuff.txt"
-var hiveMawText = "res://Assets/Text/TextFiles/HiveMawBuff.txt"
-var hiveEggText = "res://Assets/Text/TextFiles/WaspEggBuff.txt"
-var hiveSpyderText = "res://Assets/Text/TextFiles/hiveSpyderBuff.txt"
-var eggSpineText = "res://Assets/Text/TextFiles/eggSpineBuff.txt"
-var sunSpyderText = "res://Assets/Text/TextFiles/SunSpyderBuff.txt"
-var sunEggText = "res://Assets/Text/TextFiles/SunEggWyrmBuff.txt"
-var sunMawText = "res://Assets/Text/TextFiles/SunMawBuff.txt"
-var sunSpineText = "res://Assets/Text/TextFiles/SunSpineBuff.txt"
-var sunHiveText = "res://Assets/Text/TextFiles/SunHiveBuff.txt"
+var sunflowerDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/SunflowerDescription.txt"
+var peashooterDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/PeashooterDescription.txt"
+var walnutDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/WalnutDescription.txt"
+var eyeBombDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/EyeBombDescription.txt"
+var eggWyrmDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/EggWyrmDescription.txt"
+var hiveDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/HiveDescription.txt"
+var mawDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt"
 
 
-var occulumBase = "res://Assets/Text/TextFiles/Synergies/EyeBase.txt"
-var occulumHive = "res://Assets/Text/TextFiles/Synergies/EyeHive.txt"
-var occulumMaw = "res://Assets/Text/TextFiles/Synergies/EyeMaw.txt"
-var occulumSpyder = "res://Assets/Text/TextFiles/Synergies/EyeSpyder.txt"
-var occulumWalnut = "res://Assets/Text/TextFiles/Synergies/EyeWalnut.txt"
-var occulumWyrm = "res://Assets/Text/TextFiles/Synergies/EyeWyrm.txt"
-
-var spyderBase = "res://Assets/Text/TextFiles/Synergies/SpyderBase.txt"
-var spyderEye = "res://Assets/Text/TextFiles/Synergies/SpyderEye.txt"
-var spyderHive = "res://Assets/Text/TextFiles/Synergies/SpyderHive.txt"
-var spyderMaw = "res://Assets/Text/TextFiles/Synergies/SpyderMaw.txt"
-var spyderWalnut = "res://Assets/Text/TextFiles/Synergies/SpyderWalnut.txt"
-var spyderWyrm = "res://Assets/Text/TextFiles/Synergies/SpyderWyrm.txt"
-
-var hiveBase = "res://Assets/Text/TextFiles/Synergies/HiveBase.txt"
-var hiveEye = "res://Assets/Text/TextFiles/Synergies/HiveEye.txt"
-var hiveMaw = "res://Assets/Text/TextFiles/Synergies/HiveMaw.txt"
-var hiveSpyder = "res://Assets/Text/TextFiles/Synergies/HiveSpyder.txt"
-var hiveWalnut = "res://Assets/Text/TextFiles/Synergies/HiveWalnut.txt"
-var hiveWyrm = "res://Assets/Text/TextFiles/Synergies/HiveWyrm.txt"
-
-var walnutBase = "res://Assets/Text/TextFiles/Synergies/WalnutBase.txt"
-var walnutEye = "res://Assets/Text/TextFiles/Synergies/WalnutEye.txt"
-var walnutHive = "res://Assets/Text/TextFiles/Synergies/WalnutHive.txt"
-var walnutMaw = "res://Assets/Text/TextFiles/Synergies/WalnutMaw.txt"
-var walnutSpyder = "res://Assets/Text/TextFiles/Synergies/WalnutSpyder.txt"
-var walnutWyrm = "res://Assets/Text/TextFiles/Synergies/WalnutWyrm.txt"
-
-var mawBase = "res://Assets/Text/TextFiles/Synergies/MawBase.txt"
-var mawEye = "res://Assets/Text/TextFiles/Synergies/MawEye.txt"
-var mawHive = "res://Assets/Text/TextFiles/Synergies/MawHive.txt"
-var mawSpyder = "res://Assets/Text/TextFiles/Synergies/MawSpyder.txt"
-var mawWalnut = "res://Assets/Text/TextFiles/Synergies/MawWalnut.txt"
-var mawWyrm = "res://Assets/Text/TextFiles/Synergies/MawWyrm.txt"
-
-var wyrmBase = "res://Assets/Text/TextFiles/Synergies/WyrmBase.txt"
-var wyrmEye ="res://Assets/Text/TextFiles/Synergies/WyrmEye.txt"
-var wyrmHive ="res://Assets/Text/TextFiles/Synergies/WyrmHive.txt"
-var wyrmMaw ="res://Assets/Text/TextFiles/Synergies/WyrmMaw.txt"
-var wyrmSpyder ="res://Assets/Text/TextFiles/Synergies/WyrmSpyder.txt"
-var wyrmWalnut ="res://Assets/Text/TextFiles/Synergies/WyrmWalnut.txt"
+var mawSpyderText =  "res://_Assets/Text/TextFiles/SpiderMawBuff.txt"
+var mawEggText = "res://_Assets/Text/TextFiles/EggMawBuff.txt"
+var spineMawText =  "res://_Assets/Text/TextFiles/SpineMawBuff.txt"
+var hiveMawText = "res://_Assets/Text/TextFiles/HiveMawBuff.txt"
+var hiveEggText = "res://_Assets/Text/TextFiles/WaspEggBuff.txt"
+var hiveSpyderText = "res://_Assets/Text/TextFiles/hiveSpyderBuff.txt"
+var eggSpineText = "res://_Assets/Text/TextFiles/eggSpineBuff.txt"
+var sunSpyderText = "res://_Assets/Text/TextFiles/SunSpyderBuff.txt"
+var sunEggText = "res://_Assets/Text/TextFiles/SunEggWyrmBuff.txt"
+var sunMawText = "res://_Assets/Text/TextFiles/SunMawBuff.txt"
+var sunSpineText = "res://_Assets/Text/TextFiles/SunSpineBuff.txt"
+var sunHiveText = "res://_Assets/Text/TextFiles/SunHiveBuff.txt"
 
 
+var occulumBase = "res://_Assets/Text/TextFiles/Synergies/EyeBase.txt"
+var occulumHive = "res://_Assets/Text/TextFiles/Synergies/EyeHive.txt"
+var occulumMaw = "res://_Assets/Text/TextFiles/Synergies/EyeMaw.txt"
+var occulumSpyder = "res://_Assets/Text/TextFiles/Synergies/EyeSpyder.txt"
+var occulumWalnut = "res://_Assets/Text/TextFiles/Synergies/EyeWalnut.txt"
+var occulumWyrm = "res://_Assets/Text/TextFiles/Synergies/EyeWyrm.txt"
 
-var mawSpyderScene = preload("res://Scenes/Tutorials/maw_spider_buff.tscn")
-var mawEggScene = preload("res://Scenes/Tutorials/maw_egg_buff.tscn")
-var spineMawScene = preload("res://Scenes/Tutorials/spine_maw_buff.tscn")
-var hiveMawScene  = preload("res://Scenes/Tutorials/maw_hive_buff.tscn")
-var spineEggScene = preload("res://Scenes/Tutorials/egg_spine_buff.tscn")
-var hiveEggScene = preload("res://Scenes/Tutorials/hive_egg_buff.tscn")
-var hiveSpyderScene = preload("res://Scenes/Tutorials/hive_spyder_buff.tscn")
-var sunSpyderScene = preload("res://Scenes/Tutorials/sun_spyder_buff.tscn")
-var sunEggScene = preload("res://Scenes/Tutorials/sun_egg_buff.tscn")
-var sunHiveScene = preload("res://Scenes/Tutorials/sun_hive_buff.tscn")
-var sunSpineScene = preload("res://Scenes/Tutorials/sun_spine_buff.tscn")
-var sunMawScene = preload("res://Scenes/Tutorials/sun_maw_buff.tscn")
+var spyderBase = "res://_Assets/Text/TextFiles/Synergies/SpyderBase.txt"
+var spyderEye = "res://_Assets/Text/TextFiles/Synergies/SpyderEye.txt"
+var spyderHive = "res://_Assets/Text/TextFiles/Synergies/SpyderHive.txt"
+var spyderMaw = "res://_Assets/Text/TextFiles/Synergies/SpyderMaw.txt"
+var spyderWalnut = "res://_Assets/Text/TextFiles/Synergies/SpyderWalnut.txt"
+var spyderWyrm = "res://_Assets/Text/TextFiles/Synergies/SpyderWyrm.txt"
+
+var hiveBase = "res://_Assets/Text/TextFiles/Synergies/HiveBase.txt"
+var hiveEye = "res://_Assets/Text/TextFiles/Synergies/HiveEye.txt"
+var hiveMaw = "res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt"
+var hiveSpyder = "res://_Assets/Text/TextFiles/Synergies/HiveSpyder.txt"
+var hiveWalnut = "res://_Assets/Text/TextFiles/Synergies/HiveWalnut.txt"
+var hiveWyrm = "res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt"
+
+var walnutBase = "res://_Assets/Text/TextFiles/Synergies/WalnutBase.txt"
+var walnutEye = "res://_Assets/Text/TextFiles/Synergies/WalnutEye.txt"
+var walnutHive = "res://_Assets/Text/TextFiles/Synergies/WalnutHive.txt"
+var walnutMaw = "res://_Assets/Text/TextFiles/Synergies/WalnutMaw.txt"
+var walnutSpyder = "res://_Assets/Text/TextFiles/Synergies/WalnutSpyder.txt"
+var walnutWyrm = "res://_Assets/Text/TextFiles/Synergies/WalnutWyrm.txt"
+
+var mawBase = "res://_Assets/Text/TextFiles/Synergies/MawBase.txt"
+var mawEye = "res://_Assetss/Text/TextFiles/Synergies/MawEye.txt"
+var mawHive = "res://_Assets/Text/TextFiles/Synergies/MawHive.txt"
+var mawSpyder = "res://_Assets/Text/TextFiles/Synergies/MawSpyder.txt"
+var mawWalnut = "res://_Assets/Text/TextFiles/Synergies/MawWalnut.txt"
+var mawWyrm = "res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt"
+
+var wyrmBase = "res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt"
+var wyrmEye ="res://_Assets/Text/TextFiles/Synergies/WyrmEye.txt"
+var wyrmHive ="res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt"
+var wyrmMaw ="res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt"
+var wyrmSpyder ="res://_Assets/Text/TextFiles/Synergies/WyrmSpyder.txt"
+var wyrmWalnut ="res://_Assets/Text/TextFiles/Synergies/WyrmWalnut.txt"
+
+
+
+var mawSpyderScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_spider_buff.tscn")
+var mawEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_egg_buff.tscn")
+var spineMawScene = preload("res://_UI/GameDemonstrations/DemonTutorials/spine_maw_buff.tscn")
+var hiveMawScene  = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_hive_buff.tscn")
+var spineEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/egg_spine_buff.tscn")
+var hiveEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/hive_egg_buff.tscn")
+var hiveSpyderScene = preload("res://_UI/GameDemonstrations/DemonTutorials/hive_spyder_buff.tscn")
+var sunSpyderScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sunflower_spyder_buff.tscn")
+var sunEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_egg_buff.tscn")
+var sunHiveScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_hive_buff.tscn")
+var sunSpineScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_spine_buff.tscn")
+var sunMawScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_maw_buff.tscn")
 
 var count := 0
 var current_page := 2

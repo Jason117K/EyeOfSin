@@ -1,320 +1,204 @@
 extends LevelTemplate
+# level_0_4.gd - Level 0-4 Tutorial Controller
 
-enum TutorialState {
-	FORCE_SELECT_WYRM,
-	FORCE_PLACE_WYRM,
-	EXPLAIN_SUMMONER_ZOMBIE,
-	TUTORIAL_P1_DONE,
-	TUTORIAL_P2_DONE
-}
-
-
-var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
-var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
-var tutorial_state: TutorialState = TutorialState.FORCE_SELECT_WYRM
-var summonerExplained := false 
+# Preloaded demo scenes
 var summoner_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/summoner_zombie_demo.tscn")
 
+# Level paths
+var thisLevel := "res://Scenes/LevelScenes/Level0-4.tscn"
+var thisAltLevel := "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
 var level04 = "res://Scenes/LevelScenes/Level0-4.tscn"
 var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
+var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
+var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
 
-var thisLevel := "res://Scenes/LevelScenes/Level0-4.tscn"
-var thisAltLevel :=  "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
-
+# Text file paths
 const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
 const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
 const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 
+# Plant button container names
+const ALL_PLANT_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
+
+# Cached button references
+@onready var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
+@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
+#region Tutorial Step Definitions (sequential order — read top to bottom)
+func _setup_tutorial():
+	define_tutorial_steps([
+		{
+			"name": "FORCE_SELECT_WYRM",
+			"enter": _start_force_select_wyrm,
+			"input_filter": _filter_block_keyboard,
+		},
+		{
+			"name": "FORCE_PLACE_WYRM",
+			"enter": _start_force_place_wyrm,
+			"input_filter": _filter_block_deselect,
+		},
+		{
+			"name": "TUTORIAL_P1_DONE",
+			"enter": _start_tutorial_p1_done,
+		},
+		{
+			"name": "EXPLAIN_SUMMONER_ZOMBIE",
+			"enter": _start_explain_summoner_zombie,
+		},
+	])
+#endregion
 
+
+#region Lifecycle
 func _ready():
-	#Dialogic.Inputs.auto_skip.enabled = true 
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.set_dialog_end(new_end_dialog)
 	waveManager.Wave2StartTime = 35
 	waveManager.Wave3StartTime = 45
-	
-	pause_Button.set_restart_levels(level04,level04Alt)
+
+	pause_Button.set_restart_levels(level04, level04Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_text(TUTORIAL_SELECT_WYRM)
 	toolTips.noButtonShow()
 	Global.resetSunflowerCount()
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
-	
-	
+
+	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
-	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 	plantManager.connect("eggWorm_placed", Callable(self, "_on_wyrm_placed"))
-	plantSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
-	
-	# Connect to button presses
-	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
 	wyrm_button.connect("pressed", Callable(self, "_on_wyrm_button_pressed"))
+
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
-	#Dialogic.start("res://Assets/Dialog/level_04_start_dialog.dtl")
 	finish_ready()
-	# Start tutorial
-	#_transition_to_state(TutorialState.FORCE_SELECT_WYRM)
-	#
-	#
-	#levelSwitcher.update_level(level05,level05Alt)
-	#levelSwitcher.visible = false
-	#
-	#Global.unHidePlantSelectionMenu()
-	
+
+
 func finish_ready():
-	print("Skipped Dialog")
 	toolTips.show()
-	_transition_to_state(TutorialState.FORCE_SELECT_WYRM)
-	levelSwitcher.update_level(level05,level05Alt)
-	levelSwitcher.update_current_level(thisLevel,thisAltLevel)
+	_setup_tutorial()
+	go_to_step("FORCE_SELECT_WYRM")
+	levelSwitcher.update_level(level05, level05Alt)
+	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	levelSwitcher.visible = false
 	Global.unHidePlantSelectionMenu()
 
-func start_game():
-	show_all_plant_buttons()
-	#hide_Codex()
-	plantSelectionMenu.canSwapScenes = true
-	#green_dimension = get_parent().get_node("Level03Alternate")
-	#var possibleGreenDimension
-	for node in get_parent().get_children():
-		if node.has_method("getIsGreenDimension"):
-			green_dimension = node
-	print("Green D is ", green_dimension)
-	
-	if waveManager.canStartGame == true:
-		return	
-	waveManager.canStartGame = true
-	green_dimension.start_game()
-	
-	
-# Input filtering system - intercepts input based on tutorial state
-func _input(event):
-	match tutorial_state:
-		TutorialState.FORCE_SELECT_WYRM:
-			_handle_force_select_wyrm_input(event)
-		TutorialState.FORCE_PLACE_WYRM:
-			_start_force_place_wyrm()
-		TutorialState.EXPLAIN_SUMMONER_ZOMBIE:
-			if summonerExplained:
-				pass
-			else:
-				_start_explain_fleshEater_zombie()
-			#_start_explain_chimera()
-
-func attach_script_to_sway_children(script_path: String) -> void:
-
-	# Find the Coral node
-	var coral_node = get_node("Environment/Coral")
-	
-	if coral_node == null:
-		push_error("Coral node not found at Environment/Coral")
-		return
-	
-	
-	# Load the script to attach
-	var script_to_attach = load(script_path)
-	
-	if script_to_attach == null:
-		push_error("Failed to load script at: " + script_path)
-		return
-	
-	# Iterate through all children and attach the script
-	for child in coral_node.get_children():
-		child.set_script(script_to_attach)
-		if child.is_inside_tree() and child.has_method("_ready"):
-			#if self.is_in_group("Green"):
-				#child.make_green()
-			child._ready()
-		print("Script attached to: ", child.name)	
-
-
-# State transition system
-func _transition_to_state(new_state: TutorialState):
-	print("[Tutorial] Transition: ", TutorialState.keys()[tutorial_state], " → ", TutorialState.keys()[new_state])
-	tutorial_state = new_state
-
-	match new_state:
-		TutorialState.FORCE_SELECT_WYRM:
-			_start_force_select_wyrm()
-		TutorialState.FORCE_PLACE_WYRM:
-			_start_force_place_wyrm()
-		TutorialState.EXPLAIN_SUMMONER_ZOMBIE:
-			pass
-			#_start_explain_chimera()
-		TutorialState.TUTORIAL_P2_DONE:
-			toolTips._on_Button_pressed()
-			
-
-func _on_tooltip_hidden():
-	hide_spotlight()
-	print("########## TOOLTIP HIDDEN ##########")
-	print("[Tutorial] Current state: ", TutorialState.keys()[tutorial_state])
-	print("[Tutorial] Current time: ", Time.get_ticks_msec())
-	match tutorial_state:
-		TutorialState.FORCE_SELECT_WYRM:
-			pass
-		TutorialState.FORCE_PLACE_WYRM:
-			print("UNPPAUSE HERE")
-			get_tree().paused = false
-		TutorialState.EXPLAIN_SUMMONER_ZOMBIE:
-			print("[Tutorial] FleshEater explained - waiting for Wave 2")
-			print("UNPPAUSE HERE")
-			get_tree().paused = false  # Unpause game
 
 func getIsPurpleDimension():
-	return 
-
-	
-	
-func _on_wave_2_started():
-	print("[Tutorial] Wave 2 started")
-	_transition_to_state(TutorialState.EXPLAIN_SUMMONER_ZOMBIE)
-
-func _on_wave_3_started():
-	print("[Tutorial] Wave 3 Started")
+	return
+#endregion
 
 
-	
+#region Input
+func _input(event):
+	_filter_tutorial_input(event)
+#endregion
 
-func _handle_force_select_wyrm_input(event):
-	# Only allow clicking Wyrm button, block all keyboard input
-	if event is InputEventKey:
-		get_viewport().set_input_as_handled()
-	# Mouse input: Wyrm button gets clicks via visibility, others hidden	
-	
-func _handle_force_place_wyrm_input(event):
-	# Allow mouse clicks for placement, block X key (deselect)
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_X:
-			get_viewport().set_input_as_handled()
-			
+
+#region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_wyrm():
 	toolTips.set_text(TUTORIAL_SELECT_WYRM)
 	toolTips.noButtonShow()
-
-	hide_all_plant_buttons_except_wyrm()
-	highlight_wyrm_button()
-
-	# ADD THIS: Show spotlight on Wyrm button
-	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
-	wyrm_button.visible = true
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg").visible = true 
-	show_spotlight_at_node(wyrm_button)
-
+	show_only_plant_buttons(["Egg"])
+	hbox.get_node("Egg").visible = true
+	plantSelectionMenu.add_pulsing_button_highlight(wyrm_button)
 	waveManager.canStartGame = false
 	plantSelectionMenu.canSwapScenes = false
-	
+
+
 func _start_force_place_wyrm():
-	print("[Tutorial] Starting FORCE_PLACE_WYRM")
 	toolTips.set_text(TUTORIAL_PLACE_WYRM)
 	toolTips.noButtonShow()
-
-	# Remove walnut highlight
-	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
 	plantSelectionMenu.remove_button_highlight(wyrm_button)
-
-	# Hide spotlight (grid too large)
 	hide_spotlight()
 
-func _on_wyrm_button_pressed():
-	print("[Tutorial] Wyrm button pressed in state: ", TutorialState.keys()[tutorial_state])
-	if tutorial_state == TutorialState.FORCE_SELECT_WYRM:
-		_transition_to_state(TutorialState.FORCE_PLACE_WYRM)
 
-func _on_codex_button_pressed():
-	print("[Tutorial] Codex button pressed in state: ", TutorialState.keys()[tutorial_state])
-	_transition_to_state(TutorialState.TUTORIAL_P2_DONE)
-	
-
-func _on_wyrm_placed(grid_pos: Vector2):
-	print("[Tutorial] Wyrm placed at grid: ", grid_pos, " in state: ", TutorialState.keys()[tutorial_state])
-
-	if tutorial_state == TutorialState.FORCE_PLACE_WYRM:
-		print("[Tutorial] Wyrm placement complete - tutorial initial part finished")
-		toolTips.hide()
-		_transition_to_state(TutorialState.TUTORIAL_P1_DONE)
-		show_all_plant_buttons()
-
-		plantSelectionMenu.canSwapScenes = true
-		#start_game()
-		# Tutorial complete - no further forced actions
-		
-func highlight_wyrm_button():
-	var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
-	plantSelectionMenu.add_button_highlight(wyrm_button)	
-	
-	
-func hide_all_plant_buttons_except_wyrm():
-	# Hide all buttons except Spyder
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = false
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = false
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = false
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = true
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = true 
-	
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = false
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = false
-	
-	
-
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton").visible = false
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel").visible = false
+func _start_tutorial_p1_done():
+	toolTips.hide()
+	_show_all_buttons()
+	plantSelectionMenu.canSwapScenes = true
 
 
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = false
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = false
+func start_game():
+	for node in get_parent().get_children():
+		if node.has_method("getIsGreenDimension"):
+			green_dimension = node
+
+	if waveManager.canStartGame:
+		return
+
+	_show_all_buttons()
+	plantSelectionMenu.canSwapScenes = true
+	waveManager.canStartGame = true
+	green_dimension.start_game()
 
 
-func show_all_plant_buttons():
-	# Show Sunflower
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
-#	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = true
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower").visible = true
-	# Show Spyder
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
-#	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true	
-	
-	#Show Walnut
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true	
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut").visible = true	
-	
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton").visible = true 
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel").visible = true 
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw").visible = true 
-	
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton").visible = true
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel").visible = true 
-	
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true 
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex").visible = true 
-
-# Spotlight helper functions 
-func _start_explain_fleshEater_zombie():
-	summonerExplained = true 
-	print("[TUTORIAL] Start Explain FleshEater Zombie")
+func _start_explain_summoner_zombie():
 	toolTips.setComplexSceneTextPause(TUTORIAL_EXPLAIN_SUMMONER)
 	toolTips.setComplexScene(summoner_zombie_demo_scene)
-	toolTips.showButton()	
+	toolTips.showButton()
+#endregion
 
 
+#region Input Filters
+func _filter_block_keyboard(event: InputEvent):
+	if event is InputEventKey:
+		get_viewport().set_input_as_handled()
 
 
+func _filter_block_deselect(event: InputEvent):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_X:
+			get_viewport().set_input_as_handled()
+#endregion
 
-## Hides spotlight overlay
+
+#region Signal Handlers
+func _on_tooltip_hidden():
+	hide_spotlight()
+
+	match get_current_step_name():
+		"FORCE_PLACE_WYRM":
+			get_tree().paused = false
+
+		"EXPLAIN_SUMMONER_ZOMBIE":
+			get_tree().paused = false
 
 
-func hide_Codex():
-	var codex_buton = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/CodexBG")
-	codex_buton.visible = false 
+func _on_wyrm_button_pressed():
+	if get_current_step_name() == "FORCE_SELECT_WYRM":
+		advance_tutorial() # → FORCE_PLACE_WYRM
+
+
+func _on_wyrm_placed(_grid_pos: Vector2):
+	if get_current_step_name() == "FORCE_PLACE_WYRM":
+		advance_tutorial() # → TUTORIAL_P1_DONE
+
+
+func _on_wave_2_started():
+	go_to_step("EXPLAIN_SUMMONER_ZOMBIE")
+#endregion
+
+
+#region UI Helpers
+func show_only_plant_buttons(visible_containers: Array):
+	for container_name in ALL_PLANT_CONTAINERS:
+		var container = hbox.get_node(container_name)
+		var should_show = container_name in visible_containers
+		for child in container.get_children():
+			child.visible = should_show
+
+
+func _show_all_buttons():
+	show_only_plant_buttons(["Sunflower", "Walnut", "Egg", "Maw", "Peashooter"])
+	# Also show non-plant UI
+	hbox.get_node("Sunflower").visible = true
+	hbox.get_node("Walnut").visible = true
+	hbox.get_node("Maw").visible = true
+	hbox.get_node("WorldSwap").visible = true
+	hbox.get_node("Codex").visible = true
+
 
 func remove_empty_blocker_plant(grid_pos):
 	plantManager.clear_space_alt(grid_pos)
@@ -322,4 +206,4 @@ func remove_empty_blocker_plant(grid_pos):
 
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)
-	
+#endregion
