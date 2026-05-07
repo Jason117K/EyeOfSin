@@ -57,7 +57,6 @@ func show_basic_tutorial_button():
 func hide_basic_tutorial_button():
 	basicTutorialButton.hide()
 		
-
 func _on_basic_tutorial_understood_button_pressed() -> void:
 	hide()
 	ToolTipHid.emit()

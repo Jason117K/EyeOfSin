@@ -42,12 +42,8 @@ visible = false
 
 [node name="DemonSelectionMenu" parent="CurrentScene" unique_id=980103445 instance=ExtResource("6_c6rbx")]
 process_mode = 3
-layout_mode = 0
-offset_left = 3.0
-offset_top = 339.835
-offset_right = 3.0
-offset_bottom = 339.835
-scale = Vector2(0.8, 0.8)
+visible = false
+layout_mode = 1
 
 [node name="WaveManager" parent="CurrentScene" unique_id=275355790 instance=ExtResource("7_k31g3")]
 position = Vector2(-64, 200)

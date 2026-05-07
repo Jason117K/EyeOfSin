@@ -3,6 +3,20 @@
 [ext_resource type="Script" uid="uid://b11xe0h5a72s3" path="res://_UI/ui_layer.gd" id="1_nb644"]
 [ext_resource type="Texture2D" uid="uid://nmylu60joqud" path="res://_Assets/UI/StatusBarVer1.2.png" id="1_nx033"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_nx033"]
+[ext_resource type="Texture2D" uid="uid://bfv6moe12kb0n" path="res://_Assets/UI/BloodIcon.png" id="4_kfr0o"]
+[ext_resource type="Texture2D" uid="uid://bhqt5knrhvk4o" path="res://_Assets/UI/Health_Icon1.png" id="5_kni87"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfr0o"]
+bg_color = Color(0, 0, 0, 0.88235295)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="UILayer" type="Control" unique_id=811942513]
 z_index = 2
@@ -10,17 +24,24 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.07, 1.07)
 mouse_filter = 2
 script = ExtResource("1_nb644")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1502136170]
+visible = false
 position = Vector2(112, 31)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_nx033")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=875844633]
+visible = false
 layout_mode = 1
 offset_left = 9.0
 offset_top = 15.0
@@ -46,6 +67,7 @@ theme_override_font_sizes/font_size = 19
 text = "Health : "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1900214360]
+visible = false
 layout_mode = 1
 offset_left = 65.0
 offset_top = 11.0
@@ -149,3 +171,36 @@ visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="HUD_Panel" type="PanelContainer" parent="." unique_id=438712905]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfr0o")
+
+[node name="HUD_HBox" type="HBoxContainer" parent="HUD_Panel" unique_id=1642494369]
+layout_mode = 2
+
+[node name="Blood_VBox" type="VBoxContainer" parent="HUD_Panel/HUD_HBox" unique_id=1610694422]
+layout_mode = 2
+
+[node name="Blood_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Blood_VBox" unique_id=302539344]
+layout_mode = 2
+texture = ExtResource("4_kfr0o")
+
+[node name="BloodAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Blood_VBox" unique_id=209762597]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+
+[node name="Health_VBox" type="VBoxContainer" parent="HUD_Panel/HUD_HBox" unique_id=241863994]
+layout_mode = 2
+
+[node name="Health_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=186687710]
+layout_mode = 2
+texture = ExtResource("5_kni87")
+
+[node name="HealthAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=291366460]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1

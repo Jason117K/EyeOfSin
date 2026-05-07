@@ -20,6 +20,8 @@ const ALL_PLANT_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peas
 
 # Cached references
 @onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox_remove_worldSwap = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer")
+@onready var hbox_codex_fast_forward = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2")
 
 var gameStarted := false
 
@@ -117,21 +119,26 @@ func _on_wave_1_started():
 #region UI Helpers
 func setup_plant_selection_menu():
 	hbox.get_node("Maw").visible = true
-	hbox.get_node("WorldSwap").visible = true
-	hbox.get_node("RemovePlant").visible = true
-	hbox.get_node("Codex").visible = true
 	hbox.get_node("Sunflower").visible = true
 	hbox.get_node("Walnut").visible = true
 	hbox.get_node("Egg").visible = true
-	hbox.get_node("Hive").visible = true
+	#hbox.get_node("Hive").visible = true
+	
+	hbox_remove_worldSwap.get_node("WorldSwap").visible = true
+	hbox_remove_worldSwap.get_node("RemovePlant").visible = true
+	hbox_codex_fast_forward.get_node("Codex2").visible = true
+
 
 
 func _show_all_buttons():
 	for container_name in ALL_PLANT_CONTAINERS:
+		if container_name == "Hive":
+			continue
 		var container = hbox.get_node(container_name)
 		container.visible = true
 		for child in container.get_children():
-			child.visible = true
+			pass
+			#child.visible = true
 
 
 func show_guide():
