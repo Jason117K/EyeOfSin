@@ -8,6 +8,7 @@ var currentBaseZombies
 var currentConeZombies
 var currentBucketZombies
 @onready var previewText = $Node2D/Control/EnemyPreviewText
+@onready var startGameButton := $StartGameButton
 @onready var visibility = true
 @export var levelToStart : Control
 var numWave 
@@ -16,6 +17,7 @@ var currentZombieDict :Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawner = get_parent()
+	startGameButton.pressed.connect(_on_start_game_button_pressed)
 	
 
 func _on_Area2D_mouse_entered():
@@ -66,6 +68,7 @@ func swap_Visibility():
 
 
 func _on_start_game_button_pressed() -> void:
+	print("Attempting to START GAME")
 	if Global.gameIsStarted == false:
 		Global.gameIsStarted = true 
 		if levelToStart != null:

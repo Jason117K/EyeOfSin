@@ -143,7 +143,7 @@ func _ready():
 		
 				
 	$ProceedGame.wait_time = StartDelay
-	$ProceedGame.wait_time = 0
+	$ProceedGame.wait_time = 0.1
 	#print("Proceed Game Wait Time is ", 0)
 	#for timer in timers:
 	#	timer.wait_time = StartDelay

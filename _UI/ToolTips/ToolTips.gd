@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Control
 
 @onready var label_text = $VBoxContainer/RichTextLabel
 @onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
@@ -13,6 +13,8 @@ extends PanelContainer
 @onready var greyBG = $VBoxContainer/CenterContainer/TextureRect2
 @onready var border = $VBoxContainer/CenterContainer/TextureRect3
 signal ToolTipHid
+
+var char_count 
 
 #TODO Combine both set text functions
 
@@ -33,6 +35,12 @@ func set_text(newFile : String):
 	var newText = file.get_as_text()
 	file.close()
 	label_text.text = newText
+	char_count = newText.length()
+	if char_count > 100:
+		label_text.add_theme_font_size_override("normal_font_size", 16)
+	else:
+		label_text.add_theme_font_size_override("normal_font_size", 32)
+	#label_text.set_auto_text(newText)
 
 func setComplexSceneText(newFile : String):
 	var file = FileAccess.open(newFile, FileAccess.READ)
@@ -45,7 +53,7 @@ func setComplexSceneTextPause(newFile : String):
 	var newText = file.get_as_text()
 	file.close()
 	synergyLabel.text = newText
-	print("PAUSE GAME")
+	print("PAUSE GAM 1E")
 	get_tree().paused = true
 	pass
 
@@ -57,7 +65,7 @@ func set_text_pause(newFile : String):
 	var newText = file.get_as_text()
 	file.close()
 	label_text.text = newText	
-	print("PAUSE GAME")
+	print("PAUSE GAME 2")
 	get_tree().paused = true
 	pass
 

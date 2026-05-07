@@ -11,14 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
 [ext_resource type="PackedScene" uid="uid://dxeohrwemsvwx" path="res://_Entities/SwapAbilities/blood_rain.tscn" id="9_mahd0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppfu0"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
-
 [node name="GameController" type="Node" unique_id=324431877 node_paths=PackedStringArray("scene")]
 script = ExtResource("1_ip61f")
 scene = NodePath("CurrentScene")
@@ -44,18 +36,6 @@ current_level_alt = "res://Scenes/LevelScenes/Level0-1_Alternate.tscn"
 [node name="ToolTips" parent="CurrentScene" unique_id=728556310 instance=ExtResource("4_2jv8n")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -167.0
-offset_right = 172.0
-offset_bottom = 137.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ppfu0")
 
 [node name="SpotlightOverlay" parent="CurrentScene" unique_id=1663549642 instance=ExtResource("5_vtmjq")]
 visible = false

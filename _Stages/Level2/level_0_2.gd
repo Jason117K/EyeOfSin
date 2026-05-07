@@ -203,7 +203,8 @@ func _start_force_place_spyder_behind():
 	toolTips.noButtonShow()
 	plantSelectionMenu.remove_button_highlight(spyder_button)
 	var valid_pos = tutorial_sunflower_grid_pos - Vector2(32, 0)
-	show_spotlight_at_position(valid_pos, 0.12)
+	#TODO Add Highlight
+	#show_spotlight_at_position(valid_pos, 0.12)
 
 
 func _start_explain_blood_buffs():
@@ -323,7 +324,9 @@ func _on_sunflower_placed(grid_pos: Vector2):
 
 		await get_tree().create_timer(0.15).timeout
 		if tutorial_sun_instance:
-			show_spotlight_at_position(tutorial_sun_instance.global_position, 0.12)
+			#TODO Add Highlight
+			pass
+			#show_spotlight_at_position(tutorial_sun_instance.global_position, 0.12)
 
 	advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
 
@@ -347,7 +350,8 @@ func _on_spyder_placed(grid_pos: Vector2):
 		get_tree().paused = true
 		toolTips.set_text_pause(TUTORIAL_INVALID_SPYDER)
 		toolTips.showButton()
-		show_spotlight_at_position(expected_pos, 0.12)
+		#TODO Add Highlight
+		#show_spotlight_at_position(expected_pos, 0.12)
 	else:
 		advance_tutorial() # → EXPLAIN_BLOOD_BUFFS
 

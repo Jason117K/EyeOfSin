@@ -120,7 +120,8 @@ func _start_force_place_plant():
 func _start_explain_blood_cost():
 	toolTips.set_text_pause(TUTORIAL_BLOOD_COST)
 	toolTips.showButton()
-	show_spotlight_at_position(Vector2(10, 0))
+	#TODO Add Highlight
+	#show_spotlight_at_position(Vector2(10, 0))
 
 
 func _start_wave_1():

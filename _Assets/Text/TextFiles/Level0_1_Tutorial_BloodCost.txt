@@ -1,6 +1,1 @@
-Demons cost Blood. You just lost some, so you can't place anymore.
-
-Click the Skull Icon to start the wave. Blood cannot be generated until the wave starts.
-Endure the wave. Use the demons you've placed to kill the zombies.
-
-Spend your blood wisely!
+Click the Skull Icon to Start The Wave

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dm2navsh6rvfd" path="res://_Stages/Level1/level_0_1.gd" id="1_fb4rh"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_umbnb"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="3_wjf0q"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="4_07bn3"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="5_fhu8f"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="6_6ct43"]
@@ -39,14 +38,6 @@
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://_Assets/Environment/Props/rifts-alt-Sheet.png" id="37_8ymh3"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="38_g88e2"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="39_0eisp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
 
 [sub_resource type="Environment" id="Environment_xl50p"]
 background_mode = 3
@@ -3621,22 +3612,6 @@ script = ExtResource("1_fb4rh")
 layout_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="ToolTips" parent="." unique_id=835032483 instance=ExtResource("3_wjf0q")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -2051.5
-offset_right = 172.0
-offset_bottom = 2021.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1131491396]
 environment = SubResource("Environment_xl50p")
 
@@ -3968,8 +3943,5 @@ offset_right = 804.0
 offset_bottom = 435.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

@@ -5,22 +5,29 @@
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_c1ynx"]
 [ext_resource type="SpriteFrames" uid="uid://36ihcf5firig" path="res://_Entities/Demons/_Occulum/eyeFrames.tres" id="4_imaxi"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="4_mpr7a"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_spider_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]
 [ext_resource type="PackedScene" uid="uid://okpv0aqap43q" path="res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn" id="7_f4pib"]
-
-[sub_resource type="StyleBoxFlat" id="2"]
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 0)
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="7_qvk3g"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="8_x1rij"]
+[ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="9_komxe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygqpy"]
 bg_color = Color(0.6, 0, 0, 1)
 border_width_bottom = 4
 border_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_bm0xk"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 27.615, 50, 0, 27.615, 0, -27.615, 0, 0, 50, 0, 27.615, 0, -27.615, -50, 0, -27.615, 0, 27.615, 0, 0, -50, 0, -27.615, 0, 0, 50, 0)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_q07en"]
+resource_local_to_scene = true
+script = ExtResource("8_x1rij")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pib"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -28,27 +35,49 @@ border_width_top = 5
 border_width_bottom = 1
 border_color = Color(0.6, 0, 0, 1)
 
-[node name="ToolTips" type="PanelContainer" unique_id=1058773115]
+[node name="ToolTips" type="Control" unique_id=561144166]
 process_mode = 3
 z_index = 4
-anchors_preset = -1
-anchor_left = 0.304
-anchor_top = 0.105
-anchor_right = 0.326
-anchor_bottom = 0.184
-theme_override_styles/panel = SubResource("2")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=762519585]
-position = Vector2(154.04, 142.74)
-texture = ExtResource("2_c1ynx")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=233338250]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -188.0
+offset_right = 384.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.5882353)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=645986828]
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -55.0
+offset_right = 141.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=2142428007]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -78,10 +107,13 @@ auto_play = true
 playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=1231091773]
+custom_minimum_size = Vector2(700, 100)
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
-text = "Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum.Lorem Ipsum."
+theme_override_font_sizes/normal_font_size = 32
+text = "CLICK ON A DEMON RUNE TO READY IT FOR SUMMONING"
 fit_content = true
 horizontal_alignment = 1
 
@@ -95,11 +127,79 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ygqpy")
 text = "UNDERSTOOD"
 
 [node name="SynergyVBox" type="VBoxContainer" parent="." unique_id=1014078164]
-visible = false
-layout_mode = 2
+layout_mode = 0
+offset_left = 215.0
+offset_top = 67.0
+offset_right = 522.0
+offset_bottom = 367.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 5
 alignment = 1
+
+[node name="BasicZombieNotif" type="Node2D" parent="SynergyVBox" unique_id=828084213]
+visible = false
+position = Vector2(-153, 10)
+scale = Vector2(0.54, 0.54)
+
+[node name="Ellipse2" type="Node2D" parent="SynergyVBox/BasicZombieNotif" unique_id=150514345 node_paths=PackedStringArray("polygon", "line")]
+modulate = Color(0.60784316, 0.25882354, 0.8745098, 1)
+clip_children = 1
+position = Vector2(0, -1)
+scale = Vector2(1.23, 1.23)
+script = ExtResource("6_i1eds")
+polygon = NodePath("Fill")
+stroke_color = Color(0, 0, 0, 1)
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_bm0xk")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_q07en")
+rx = 50.0
+ry = 50.0
+
+[node name="Fill" type="Polygon2D" parent="SynergyVBox/BasicZombieNotif/Ellipse2" unique_id=2004185187]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="SynergyVBox/BasicZombieNotif/Ellipse2" unique_id=579480478]
+points = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
+closed = true
+default_color = Color(0, 0, 0, 1)
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
+
+[node name="Ellipse" type="Node2D" parent="SynergyVBox/BasicZombieNotif" unique_id=928527820 node_paths=PackedStringArray("polygon", "line")]
+modulate = Color(0.60784316, 0.25882354, 0.8745098, 1)
+clip_children = 1
+position = Vector2(0, -1)
+script = ExtResource("6_i1eds")
+polygon = NodePath("Fill")
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_bm0xk")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_q07en")
+rx = 50.0
+ry = 50.0
+
+[node name="Fill" type="Polygon2D" parent="SynergyVBox/BasicZombieNotif/Ellipse" unique_id=1506563546]
+polygon = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="SynergyVBox/BasicZombieNotif/Ellipse" unique_id=231622447]
+points = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
+closed = true
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
+
+[node name="BasicZombie" type="Sprite2D" parent="SynergyVBox/BasicZombieNotif" unique_id=409176380]
+position = Vector2(1, -1)
+scale = Vector2(4.62, 4.62)
+texture = ExtResource("9_komxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="SynergyVBox" unique_id=762519585]
+visible = false
+position = Vector2(153, 133)
+texture = ExtResource("2_c1ynx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SynergyVBox" unique_id=1451423303]
 custom_minimum_size = Vector2(200, 288.595)
@@ -136,6 +236,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_f4pib")
 text = "UNDERSTOOD"
 
 [node name="CenterContainer" type="CenterContainer" parent="SynergyVBox" unique_id=744839986]
+visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
