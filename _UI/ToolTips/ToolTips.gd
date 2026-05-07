@@ -1,17 +1,17 @@
 extends Control
 
-@onready var label_text = $VBoxContainer/RichTextLabel
-@onready var popup_image = $VBoxContainer/CenterContainer/TextureRect
-@onready var anim_texture = $VBoxContainer/CenterContainer/TextureRect
-@onready var button = $VBoxContainer/Button
-@onready var complexButton = $SynergyVBox/VBoxContainer/Button2
-@onready var mainVbox = $VBoxContainer
-@onready var synergyVBox = $SynergyVBox
-@onready var synergyLabel = $SynergyVBox/VBoxContainer/SynergyLabel
-@onready var syngergyButton = $SynergyVBox/VBoxContainer/Button2
-@onready var complexSceneContainer =$SynergyVBox/VBoxContainer 
-@onready var greyBG = $VBoxContainer/CenterContainer/TextureRect2
-@onready var border = $VBoxContainer/CenterContainer/TextureRect3
+@onready var label_text = $BasicTutorialVbox/BasicTutorialLabel
+@onready var popup_image = $BasicTutorialVbox/CenterContainer/TextureRect
+@onready var anim_texture = $BasicTutorialVbox/CenterContainer/TextureRect
+@onready var button = $BasicTutorialVbox/Button
+@onready var complexButton = $ComplexTutorialVBox/VBoxContainer/Button2
+@onready var mainVbox = $BasicTutorialVbox
+@onready var synergyVBox = $ComplexTutorialVBox
+@onready var synergyLabel = $ComplexTutorialVBox/VBoxContainer/ComplexTutorialLabel
+@onready var syngergyButton = $ComplexTutorialVBox/VBoxContainer/Button2
+@onready var complexSceneContainer = $ComplexTutorialVBox/VBoxContainer
+@onready var greyBG = $BasicTutorialVbox/CenterContainer/TextureRect2
+@onready var border = $BasicTutorialVbox/CenterContainer/TextureRect3
 signal ToolTipHid
 
 var char_count 
