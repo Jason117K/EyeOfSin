@@ -72,6 +72,7 @@ func get_current_wave() -> int:
 func _on_game_start_requested() -> void:
 	print("START REEEEEEE")
 	if not can_start:
+		print("CANNOT START")
 		return
 	_start_wave(0)
 
