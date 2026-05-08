@@ -16,7 +16,7 @@ var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
 # Cached references
-@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 var gameStarted := false
@@ -40,7 +40,8 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.wave_delays = [35.0, 45.0]
+	#waveManager.wave_delays = [60.0, 100.0]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 
@@ -62,8 +63,8 @@ func finish_ready():
 	go_to_step("GAME_READY")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
-	Global.unHidePlantSelectionMenu()
-	plantSelectionMenu.canSwapScenes = true
+	Global.unHideDemonSelectionMenu()
+	demonSelectionMenu.canSwapScenes = true
 
 
 func getIsPurpleDimension():
@@ -77,7 +78,7 @@ func _start_game_ready():
 
 
 func start_game():
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 	for node in get_parent().get_children():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node

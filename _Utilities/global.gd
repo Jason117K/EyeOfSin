@@ -50,11 +50,11 @@ func get_current_scene_filepath():
 func register_ui_layer(new_ui_layer):
 	ui_layer = new_ui_layer
 
-func hidePlantSelectionMenu():
+func hideDemonSelectionMenu():
 	if plant_selection_menu != null:
 		plant_selection_menu.visible = false 
 	
-func unHidePlantSelectionMenu():
+func unHideDemonSelectionMenu():
 	if plant_selection_menu != null:
 		plant_selection_menu.visible = true 	
 		

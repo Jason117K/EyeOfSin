@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dpltvbm84xujg" path="res://_UI/Pause/spotlight_overlay.tscn" id="5_vtmjq"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="6_c6rbx"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
-[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://_Utilities/Waves/WaveManager.gd" id="8_n0ibe"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
 [ext_resource type="PackedScene" uid="uid://dxeohrwemsvwx" path="res://_Entities/SwapAbilities/blood_rain.tscn" id="9_mahd0"]
 
@@ -47,9 +46,6 @@ layout_mode = 1
 
 [node name="WaveManager" parent="CurrentScene" unique_id=275355790 instance=ExtResource("7_k31g3")]
 position = Vector2(-64, 200)
-script = ExtResource("8_n0ibe")
-StartDelay = 1
-Wave3StartTime = 45
 
 [node name="BloodRain" parent="CurrentScene" unique_id=534558046 instance=ExtResource("9_mahd0")]
 

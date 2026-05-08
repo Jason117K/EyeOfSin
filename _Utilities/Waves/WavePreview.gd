@@ -50,7 +50,9 @@ func _on_Area2D_mouse_exited():
 
 
 func _on_start_game_button_pressed() -> void:
+	
 	if Global.gameIsStarted:
 		return
+	print("starttttttSSS")
 	Global.gameIsStarted = true
 	game_start_requested.emit()

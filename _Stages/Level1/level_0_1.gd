@@ -3,7 +3,7 @@ extends LevelTemplate
 var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
 var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
 
-@onready var crawler_button = plantSelectionMenu.get_crawler_button()
+@onready var crawler_button = demonSelectionMenu.get_crawler_button()
 
 const HIDEABLE_PLANT_NAMES = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]
 
@@ -65,7 +65,8 @@ func _ready():
 	Global.resetSunflowerCount()
 	Global.reset_swap_ability()
 
-	waveManager.wave_delays = [-1, -1]
+	#waveManager.wave_delays = [-1, -1]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 
@@ -86,7 +87,7 @@ func _ready():
 func finish_ready():
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_SPYDER")
-	Global.unHidePlantSelectionMenu()
+	Global.unHideDemonSelectionMenu()
 #endregion
 
 
@@ -103,7 +104,7 @@ func _start_force_select_spyder():
 	#hide_all_plant_buttons_except_spyder()
 	highlight_spyder_button()
 	waveManager.can_start = false
-	plantSelectionMenu.canSwapScenes = false
+	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_plant():
@@ -135,8 +136,8 @@ func _start_explain_basic_zombie():
 
 
 func _start_force_press_y():
-	plantSelectionMenu.get_world_swap_button().visible = true
-	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
+	demonSelectionMenu.get_world_swap_button().visible = true
+	#demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 	toolTips.set_basic_tutorial_text(TUTORIAL_PRESS_Y, false)
 
 
@@ -150,7 +151,7 @@ func _start_wave_2_both_dimensions():
 		green_dimension.setup_wave_2_ui()
 
 	waveManager.start_next_wave()
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 
 
 func _start_explain_severed_zombie():
@@ -249,20 +250,20 @@ func _physics_process(_delta):
 
 #region UI Helpers
 func setup_plant_selection_menu():
-	plantSelectionMenu.get_world_swap_button().visible = false
-	plantSelectionMenu.get_remove_demon_button().visible = false 
-	plantSelectionMenu.get_codex_button().visible = false 
+	demonSelectionMenu.get_world_swap_button().visible = false
+	demonSelectionMenu.get_remove_demon_button().visible = false 
+	demonSelectionMenu.get_codex_button().visible = false 
 	#TODO Should We Adjust Size Here?
-	plantSelectionMenu.get_panel_container().size.x = 71
+	demonSelectionMenu.get_panel_container().size.x = 71
 
 
 func highlight_spyder_button():
-	plantSelectionMenu.add_pulsing_button_highlight(crawler_button)
+	demonSelectionMenu.add_pulsing_button_highlight(crawler_button)
 
 
 func unhighlight_spyder_button():
-	plantSelectionMenu.remove_button_highlight(crawler_button)
-	plantSelectionMenu.stop_glow_pulse(crawler_button)
+	demonSelectionMenu.remove_button_highlight(crawler_button)
+	demonSelectionMenu.stop_glow_pulse(crawler_button)
 
 
 func show_guide():

@@ -3612,14 +3612,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
 shader = ExtResource("26_ltvfb")
 shader_parameter/hpass = 1.0
@@ -3636,6 +3628,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_3xvj4")
+wave2StartTime = 37
+wave3StartTime = 50
 
 [node name="PlantManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
 sun_points = 9999
@@ -3646,7 +3640,15 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1818320134 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 77)
-waves = [{"Reborn": 2}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}]
+waves = Array[Dictionary]([{
+"Reborn": 2
+}, {
+"Flesheater": 1,
+"Reborn": 2
+}, {
+"Reborn": 1,
+"Unhallower": 2
+}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1288326444 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3655,7 +3657,15 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1984376630 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 109)
-waves = [{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}]
+waves = Array[Dictionary]([{
+"Reborn": 2,
+"Severed": 1
+}, {
+"Flesheater": 1
+}, {
+"Reborn": 5,
+"Unhallower": 2
+}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1587845654 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3664,7 +3674,16 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1903365869 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 141)
-waves = [{"Reborn": 1, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}]
+waves = Array[Dictionary]([{
+"Reborn": 1,
+"Severed": 1
+}, {
+"Flesheater": 1,
+"Reborn": 2
+}, {
+"Flesheater": 1,
+"Severed": 2
+}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=2026872960 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3673,7 +3692,12 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1387059718 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 173)
-waves = [{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}]
+waves = Array[Dictionary]([{}, {
+"Flesheater": 1,
+"Severed": 1
+}, {
+"Unhallower": 2
+}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1069787089 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3682,7 +3706,15 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=404246832 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 205)
-waves = [{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}]
+waves = Array[Dictionary]([{}, {
+"Severed": 3,
+"Sundered": 1,
+"Unhallower": 1
+}, {
+"Flesheater": 1,
+"Reborn": 1,
+"Unhallower": 1
+}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1574738843 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -4062,9 +4094,6 @@ offset_left = -132.0
 offset_top = -167.0
 offset_right = 172.0
 offset_bottom = 137.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=31771245]
 stream = ExtResource("25_qjdmx")

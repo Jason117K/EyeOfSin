@@ -14,9 +14,9 @@ signal level_ended
 @export var preview_lead_time: float = 10.0
 
 ## Player health — will be extracted to a separate node later.
-@export var health_points: int = 10
+@export var health_points: int = 9999
 
-var can_start: bool = false
+var can_start: bool = true
 
 var _spawners: Array = []
 var _wave_previews: Array = []
@@ -61,6 +61,7 @@ func get_current_wave() -> int:
 
 ## Called when the player clicks the Start button (gated by can_start).
 func _on_game_start_requested() -> void:
+	print("START REEEEEEE")
 	if not can_start:
 		return
 	_start_wave(0)
@@ -80,6 +81,7 @@ func show_next_preview() -> void:
 
 
 func _start_wave(index: int) -> void:
+	print("STARRRRRRSDSSSSSSS")
 	if index < 0 or index >= _total_waves:
 		return
 

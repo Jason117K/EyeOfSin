@@ -314,7 +314,7 @@ func _on_back_button_pressed() -> void:
 		print("BBack Button Pressed")
 		self.visible = false 
 		
-		#Global.unHidePlantSelectionMenu()
+		#Global.unHideDemonSelectionMenu()
 		#Global.game_controller.restore_dual_scenes()
 		Global.game_controller.restore_previous_scene()
 	else:

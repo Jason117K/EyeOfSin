@@ -19,12 +19,10 @@ const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescript
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
 
 # Plant button container names
-const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
-@onready var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
-@onready var codex_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
-@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var maw_button = demonSelectionMenu.get_maw_button()
+@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -63,7 +61,8 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.wave_delays = [37.0, 50.0]
+	#waveManager.wave_delays = [37.0, 50.0]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 
@@ -78,7 +77,7 @@ func _ready():
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	plantManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
-	plantSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
+	demonSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
 
 	toolTips.hide()
@@ -92,7 +91,7 @@ func finish_ready():
 	go_to_step("FORCE_SELECT_MAW")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
-	Global.unHidePlantSelectionMenu()
+	Global.unHideDemonSelectionMenu()
 
 
 func getIsPurpleDimension():
@@ -111,23 +110,23 @@ func _start_force_select_maw():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	
 	show_only_plant_buttons(["Maw"])
-	plantSelectionMenu.add_pulsing_button_highlight(maw_button)
+	demonSelectionMenu.add_pulsing_button_highlight(maw_button)
 	#show_spotlight_at_node(maw_button)
 	waveManager.can_start = false
-	plantSelectionMenu.canSwapScenes = false
+	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_maw():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
 	
-	plantSelectionMenu.remove_button_highlight(maw_button)
+	demonSelectionMenu.remove_button_highlight(maw_button)
 	hide_spotlight()
 
 
 func _start_tutorial_p1_done():
 	toolTips.hide()
 	show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 
 
 func start_game():
@@ -139,7 +138,7 @@ func start_game():
 		return
 
 	show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
 

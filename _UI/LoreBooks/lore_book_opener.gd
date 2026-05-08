@@ -3,7 +3,7 @@ extends Control
 
 
 func _ready() -> void:
-	Global.hidePlantSelectionMenu()
+	Global.hideDemonSelectionMenu()
 	_on_plant_codex_button_pressed()
 	
 func _on_plant_codex_button_pressed() -> void:
@@ -19,5 +19,5 @@ func _on_zombie_codex_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	self.visible = false 
 	print("BBack Button Pressed")
-	Global.unHidePlantSelectionMenu()
+	Global.unHideDemonSelectionMenu()
 	Global.game_controller.restore_dual_scenes()

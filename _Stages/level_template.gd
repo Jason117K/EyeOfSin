@@ -11,18 +11,20 @@ var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
 
 @export var new_end_dialog = "res://_Assets/Dialog/level_0_end_dialog.dtl"
+@export var wave2StartTime := 30
+@export var wave3StartTime := 60
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var plantSelectionMenu = $"../DemonSelectionMenu" 
+@onready var demonSelectionMenu = $"../DemonSelectionMenu" 
 #@onready var waveManager = $GameLayer/WaveManager
 @onready var waveManager = get_parent().get_node("WaveManager")
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button = $"../../PauseButton"
 @onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var _plant_hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
-@onready var world_swap_button = plantSelectionMenu.get_world_swap_button()
-@onready var codex_button = plantSelectionMenu.get_codex_button()
+@onready var _plant_hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var world_swap_button = demonSelectionMenu.get_world_swap_button()
+@onready var codex_button = demonSelectionMenu.get_codex_button()
 
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
 var green_dimension 
@@ -107,7 +109,7 @@ func show_all_demon_buttons(extras: Array = []):
 			for child in container.get_children():
 				child.visible = true
 	for extra_name in extras:
-		for button_instance in plantSelectionMenu.get_all_extra_buttons():
+		for button_instance in demonSelectionMenu.get_all_extra_buttons():
 			if extra_name == button_instance.get_name():
 				button_instance.visible = true
 

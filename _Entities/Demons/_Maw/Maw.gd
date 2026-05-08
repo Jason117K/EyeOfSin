@@ -292,7 +292,7 @@ func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: floa
 	"""Handle RETRACTING state: Pulling enemy to maw center"""
 
 	# Smoothly move target toward maw center over RETRACT_DURATION
-	var maw_center = $AnimatedSprite2D.global_position
+	var maw_center = animSpriteComp.global_position
 	var lerp_weight = delta / RETRACT_DURATION
 	tentacle.target.global_position = tentacle.target.global_position.lerp(maw_center, lerp_weight)
 

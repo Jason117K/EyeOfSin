@@ -33,7 +33,7 @@ func _ready() -> void:
 		self.connect("_on_spyder_placed", Callable(get_parent(), "spyder_placed"))
 
 
-# Reference the PlantSelectionMenu dynamically
+# Reference the DemonSelectionMenu dynamically
 func get_selected_plant():
 	#print("Emit Test")
 	test_signal.emit()

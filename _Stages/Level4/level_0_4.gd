@@ -18,11 +18,10 @@ const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_Plac
 const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 
 # Plant button container names
-const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
-@onready var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
-@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var wyrm_button = demonSelectionMenu.get_wyrm_button()
+@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -53,7 +52,8 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.wave_delays = [35.0, 45.0]
+	#waveManager.wave_delays = [35.0, 45.0]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 
@@ -81,7 +81,7 @@ func finish_ready():
 	levelSwitcher.update_level(level05, level05Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	levelSwitcher.visible = false
-	Global.unHidePlantSelectionMenu()
+	Global.unHideDemonSelectionMenu()
 
 
 func getIsPurpleDimension():
@@ -101,22 +101,22 @@ func _start_force_select_wyrm():
 	
 	show_only_plant_buttons(["Egg"])
 	hbox.get_node("Egg").visible = true
-	plantSelectionMenu.add_pulsing_button_highlight(wyrm_button)
+	demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
 	waveManager.can_start = false
-	plantSelectionMenu.canSwapScenes = false
+	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_wyrm():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WYRM, false)
 	
-	plantSelectionMenu.remove_button_highlight(wyrm_button)
+	demonSelectionMenu.remove_button_highlight(wyrm_button)
 	hide_spotlight()
 
 
 func _start_tutorial_p1_done():
 	toolTips.hide()
 	_show_all_buttons()
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 
 
 func start_game():
@@ -128,7 +128,7 @@ func start_game():
 		return
 
 	_show_all_buttons()
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
 

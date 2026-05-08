@@ -1,5 +1,5 @@
 extends Control
-#PlantSelectionMenu.gd
+#DemonSelectionMenu.gd
 
 @export var is_alt := false
 var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
@@ -675,6 +675,21 @@ func swap_portal_button():
 func get_crawler_button():
 	return CrawlerButton
 
+func get_occulum_button():
+	return OcculumButton
+	
+func get_wyrm_button():
+	return WyrmButton
+	
+func get_hive_button():
+	return HiveButton
+	
+func get_spinal_occulum_button():
+	return SpinalOcculumButton
+	
+func get_maw_button():
+	return MawButton
+	
 func get_world_swap_button():
 	return swapButton
 	

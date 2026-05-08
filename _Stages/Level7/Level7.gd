@@ -38,7 +38,7 @@ func _ready():
 
 func _on_tool_tips_tool_tip_hid() -> void:
 	waveManager.can_start = true
-	$PlantSelectionMenu.canSwapScenes = true
+	$DemonSelectionMenu.canSwapScenes = true
 	dimensionalNode.finish_setup_and_start()
 
 func make_camera_current():

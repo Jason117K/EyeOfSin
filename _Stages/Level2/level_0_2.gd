@@ -39,10 +39,10 @@ var tutorial_sun_instance: Node2D = null
 
 
 # Cached button references
-@onready var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
-@onready var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
-@onready var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
-@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var sunflower_button = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
+@onready var spyder_button = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
+@onready var walnut_button = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
+@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -105,10 +105,11 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	levelSwitcher.visible = false
-	plantSelectionMenu.visible = false
+	demonSelectionMenu.visible = false
 	get_tree().paused = false
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.wave_delays = [35.0, 55.0]
+	#waveManager.wave_delays = [35.0, 55.0]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
@@ -147,7 +148,7 @@ func finish_ready():
 	levelSwitcher.update_level(level03, level03Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	levelSwitcher.visible = false
-	Global.unHidePlantSelectionMenu()
+	Global.unHideDemonSelectionMenu()
 #endregion
 
 
@@ -162,16 +163,16 @@ func _start_force_select_sunflower():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SUNFLOWER,false)
 	
 	show_only_plant_buttons(["Sunflower"])
-	plantSelectionMenu.add_pulsing_button_highlight(sunflower_button)
+	demonSelectionMenu.add_pulsing_button_highlight(sunflower_button)
 	#show_spotlight_at_node(sunflower_button)
 	waveManager.can_start = false
-	plantSelectionMenu.canSwapScenes = false
+	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_sunflower():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SUNFLOWER,false)
 	
-	plantSelectionMenu.remove_button_highlight(sunflower_button)
+	demonSelectionMenu.remove_button_highlight(sunflower_button)
 	hide_spotlight()
 
 
@@ -186,10 +187,10 @@ func _start_force_select_spyder_after_blood():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER_AFTER, false)
 	
 	show_only_plant_buttons(["Peashooter"])
-	plantSelectionMenu.add_pulsing_button_highlight(spyder_button)
+	demonSelectionMenu.add_pulsing_button_highlight(spyder_button)
 	#show_spotlight_at_node(spyder_button)
 	waveManager.can_start = false
-	plantSelectionMenu.canSwapScenes = false
+	demonSelectionMenu.canSwapScenes = false
 	get_tree().paused = true
 
 
@@ -197,7 +198,7 @@ func _start_force_place_spyder_behind():
 	toolTips.set_visual_tutorial_text(tutorial_place_spyder)
 	toolTips.set_visual_tutorial_visual(buff_demo_scene.instantiate())
 	
-	plantSelectionMenu.remove_button_highlight(spyder_button)
+	demonSelectionMenu.remove_button_highlight(spyder_button)
 	var valid_pos = tutorial_sunflower_grid_pos - Vector2(32, 0)
 	#TODO Add Highlight
 	#show_spotlight_at_position(valid_pos, 0.12)
@@ -216,7 +217,7 @@ func _start_explain_blood_buffs_2():
 
 
 func _start_wave_1():
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
 	show_only_plant_buttons(["Sunflower", "Peashooter"])
@@ -238,7 +239,7 @@ func _start_force_select_walnut():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WALNUT, false)
 	
 	show_only_plant_buttons(["Walnut"])
-	plantSelectionMenu.add_pulsing_button_highlight(walnut_button)
+	demonSelectionMenu.add_pulsing_button_highlight(walnut_button)
 	hbox.get_node("Walnut").visible = true
 	#show_spotlight_at_node(walnut_button)
 	plantManager.add_sun(50.0)
@@ -248,7 +249,7 @@ func _start_force_select_walnut():
 func _start_force_place_walnut():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WALNUT, false)
 	
-	plantSelectionMenu.remove_button_highlight(walnut_button)
+	demonSelectionMenu.remove_button_highlight(walnut_button)
 	hide_spotlight()
 #endregion
 
