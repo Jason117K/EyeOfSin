@@ -1,6 +1,7 @@
 extends Node2D
 
 signal game_start_requested
+signal call_wave_early_requested
 
 @onready var preview_text: RichTextLabel = $Node2D/Control/EnemyPreviewText
 @onready var start_game_button: Button = $StartGameButton
@@ -16,6 +17,7 @@ func _ready():
 
 
 func show_preview(wave_index: int, show_start_button: bool = false) -> void:
+	print("SHOW PREVIEW")
 	_preview_wave_index = wave_index
 	$PreviewSprite.visible = true
 	self.visible = true
@@ -24,6 +26,7 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 
 
 func hide_preview() -> void:
+	print("HIDE PREIVEW")
 	_preview_wave_index = -1
 	$PreviewSprite.visible = false
 	$Node2D/Control.visible = false
@@ -48,10 +51,11 @@ func _on_Area2D_mouse_exited():
 	$Node2D/Control.visible = false
 	preview_text.clear()
 
-
 func _on_start_game_button_pressed() -> void:
 	
 	if Global.gameIsStarted:
+		print("RequestingGGGGGGG")
+		call_wave_early_requested.emit()
 		return
 	print("starttttttSSS")
 	Global.gameIsStarted = true

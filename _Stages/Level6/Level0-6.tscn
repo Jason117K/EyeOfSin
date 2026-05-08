@@ -75,8 +75,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_a4agt")
-wave2StartTime = 60
-wave3StartTime = 100
+wave2StartTime = 35
+wave3StartTime = 90
 
 [node name="PlantManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]
 sun_points = 9999

@@ -203,14 +203,17 @@ stretch_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=69711182]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1070210295]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 1
 
 [node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="RemovePlantButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=311546539]
 custom_minimum_size = Vector2(30, 30)
@@ -230,6 +233,7 @@ horizontal_alignment = 1
 
 [node name="WorldSwap" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=767161417]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="WorldSwapButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap" unique_id=1500723408]
 custom_minimum_size = Vector2(30, 30)
@@ -242,6 +246,7 @@ stretch_mode = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1782143364]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 1
 
 [node name="Codex" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=396055590]

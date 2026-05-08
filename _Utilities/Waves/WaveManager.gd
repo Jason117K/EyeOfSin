@@ -11,10 +11,13 @@ signal level_ended
 @export var wave_delays: Array = []
 
 ## Seconds before a wave starts that the preview icon appears.
-@export var preview_lead_time: float = 10.0
+@export var preview_lead_time: float = 25.0
 
 ## Player health — will be extracted to a separate node later.
 @export var health_points: int = 9999
+
+@onready var waveDelayTimer := $WaveDelayTimer
+@onready var previewTimer := $PreviewTimer
 
 var can_start: bool = true
 
@@ -25,6 +28,7 @@ var _total_waves: int = 0
 var _spawners_finished: int = 0
 var _all_spawning_done: bool = false
 
+var elapsed_time_preview_on_screen
 
 func _ready():
 	call_deferred("_setup")
@@ -41,6 +45,7 @@ func _setup():
 		if preview != null:
 			_wave_previews.append(preview)
 			preview.game_start_requested.connect(_on_game_start_requested)
+			preview.call_wave_early_requested.connect(_on_call_early_wave_requested)
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
 
@@ -49,6 +54,10 @@ func _setup():
 	# Show wave 0 preview with start button so the player can begin
 	for preview in _wave_previews:
 		preview.show_preview(0, true)
+	
+	waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
+	previewTimer.timeout.connect(_on_preview_timer_timeout)
+	
 
 
 func get_wave_count() -> int:
@@ -66,22 +75,24 @@ func _on_game_start_requested() -> void:
 		return
 	_start_wave(0)
 
+func _on_call_early_wave_requested():
+	print("Requested Early Wave, current wave is ",_current_wave )
+	#_start_wave(_current_wave + 1)
+	if (_current_wave + 1) < wave_delays.size():
+		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
+										- (waveDelayTimer.time_left)
+	_start_wave(_current_wave + 1)
+	#_start_wave(_current_wave + 1)
+
 
 ## Manually start the next wave (for tutorial-controlled progression).
 func start_next_wave() -> void:
 	_start_wave(_current_wave + 1)
 
 
-## Show the preview for the next upcoming wave without starting it.
-func show_next_preview() -> void:
-	var next := _current_wave + 1
-	if next < _total_waves:
-		for preview in _wave_previews:
-			preview.show_preview(next)
-
 
 func _start_wave(index: int) -> void:
-	print("STARRRRRRSDSSSSSSS")
+	print("START WAVEEEEEEEEE ", index)
 	if index < 0 or index >= _total_waves:
 		return
 
@@ -100,10 +111,11 @@ func _start_wave(index: int) -> void:
 
 	# Schedule next wave (if not the last and delay is positive)
 	if index < wave_delays.size():
+		print("Index Is ",index, " & wave_delays.size() is ",wave_delays.size() )
 		var delay: float = wave_delays[index]
 		if delay > 0:
-			$WaveDelayTimer.wait_time = delay
-			$WaveDelayTimer.start()
+			waveDelayTimer.wait_time = delay
+			waveDelayTimer.start()
 
 			# Schedule preview to appear before next wave
 			var preview_time := delay - preview_lead_time
@@ -127,7 +139,7 @@ func _show_preview_for_next_wave() -> void:
 	var next := _current_wave + 1
 	if next < _total_waves:
 		for preview in _wave_previews:
-			preview.show_preview(next)
+			preview.show_preview(next,true)
 
 
 func _on_spawner_all_waves_exhausted() -> void:
