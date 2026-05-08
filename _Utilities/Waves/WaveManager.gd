@@ -1,5 +1,5 @@
-extends Node2D
-class_name WaveManager
+
+class_name WaveManager extends Node2D
 
 signal wave_started(wave_index: int)
 signal all_waves_complete

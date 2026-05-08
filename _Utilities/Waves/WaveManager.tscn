@@ -1,20 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6a02kdhke01v"]
+[gd_scene format=3 uid="uid://b6a02kdhke01v"]
+
+[ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://_Utilities/Waves/WaveManager.gd" id="1_ltxuo"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(96, 560)
 
-[node name="WaveManager" type="Node2D"]
+[node name="WaveManager" type="Node2D" unique_id=265852600]
+script = ExtResource("1_ltxuo")
 
-[node name="WaveDelayTimer" type="Timer" parent="."]
+[node name="WaveDelayTimer" type="Timer" parent="." unique_id=583860312]
 one_shot = true
 
-[node name="PreviewTimer" type="Timer" parent="."]
+[node name="PreviewTimer" type="Timer" parent="." unique_id=317321763]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1139834561]
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1183948714]
 position = Vector2(-16, 40)
 shape = SubResource("1")
 
