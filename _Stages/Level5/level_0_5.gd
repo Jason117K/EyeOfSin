@@ -60,9 +60,9 @@ func _setup_tutorial():
 func _ready():
 	Dialogic.Inputs.auto_skip.enabled = true
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.set_dialog_end(new_end_dialog)
-	waveManager.Wave2StartTime = 35
-	waveManager.Wave3StartTime = 45
+	waveManager.wave_delays = [35.0, 45.0]
+	waveManager.wave_started.connect(_on_wave_started)
+	waveManager.level_ended.connect(_on_level_ended)
 
 	pause_Button.set_restart_levels(level05, level05Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -73,8 +73,6 @@ func _ready():
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
-	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
 	plantManager.connect("wasp_placed", Callable(self, "_on_hive_placed"))
 	hive_button.connect("pressed", Callable(self, "_on_hive_button_pressed"))
 
@@ -110,7 +108,7 @@ func _start_force_select_hive():
 	show_only_plant_buttons(["Hive"])
 	hbox.get_node("Hive").visible = true
 	plantSelectionMenu.add_pulsing_button_highlight(hive_button)
-	waveManager.canStartGame = false
+	waveManager.can_start = false
 	plantSelectionMenu.canSwapScenes = false
 
 
@@ -132,12 +130,12 @@ func start_game():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node
 
-	if waveManager.canStartGame:
+	if waveManager.can_start:
 		return
 
 	_show_all_buttons()
 	plantSelectionMenu.canSwapScenes = true
-	waveManager.canStartGame = true
+	waveManager.can_start = true
 	green_dimension.start_game()
 
 
@@ -190,12 +188,10 @@ func _on_hive_placed(_grid_pos: Vector2):
 		advance_tutorial() # → TUTORIAL_P1_DONE
 
 
-func _on_wave_1_started():
-	go_to_step("EXPLAIN_LANCER_ZOMBIE")
-
-
-func _on_wave_2_started():
-	go_to_step("EXPLAIN_ERUPTER_ZOMBIE")
+func _on_wave_started(wave_index: int):
+	match wave_index:
+		0: go_to_step("EXPLAIN_LANCER_ZOMBIE")
+		1: go_to_step("EXPLAIN_ERUPTER_ZOMBIE")
 #endregion
 
 

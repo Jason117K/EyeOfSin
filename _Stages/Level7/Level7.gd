@@ -37,13 +37,9 @@ func _ready():
 
 
 func _on_tool_tips_tool_tip_hid() -> void:
-	waveManager.canStartGame = true 
-	$PlantSelectionMenu.canSwapScenes = true 
+	waveManager.can_start = true
+	$PlantSelectionMenu.canSwapScenes = true
 	dimensionalNode.finish_setup_and_start()
-
-
-func _on_wave_manager_wave_2_almost_start() -> void:
-	waveManager.startSecondWave()
 
 func make_camera_current():
 	$Camera2D.make_current()

@@ -40,10 +40,9 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.set_dialog_end(new_end_dialog)
-	waveManager.Wave2StartTime = 35
-	waveManager.Wave3StartTime = 45
-	waveManager.Wave1_Interval = 3
+	waveManager.wave_delays = [35.0, 45.0]
+	waveManager.wave_started.connect(_on_wave_started)
+	waveManager.level_ended.connect(_on_level_ended)
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level06, level06Alt)
@@ -53,7 +52,6 @@ func _ready():
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
 
 	Dialogic.timeline_ended.connect(finish_ready)
 	finish_ready()
@@ -84,10 +82,10 @@ func start_game():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node
 
-	if waveManager.canStartGame:
+	if waveManager.can_start:
 		return
 
-	waveManager.canStartGame = true
+	waveManager.can_start = true
 	green_dimension.start_game()
 	gameStarted = true
 
@@ -107,8 +105,9 @@ func _on_tooltip_hidden():
 			get_tree().paused = false
 
 
-func _on_wave_1_started():
-	go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
+func _on_wave_started(wave_index: int):
+	if wave_index == 0:
+		go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion
 
 

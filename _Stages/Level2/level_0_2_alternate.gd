@@ -5,17 +5,12 @@ extends LevelTemplate
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	waveManager = get_parent().get_node("WaveManager")
-	# Keep waves disabled until purple dimension activates us
-	waveManager.canStartGame = false
-	print("[Level0-1 Alternate] Green dimension loaded, waiting for Wave 2 activation")
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
 	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
 
 
 func start_game():
-	waveManager = get_parent().get_node("WaveManager")
-	waveManager.canStartGame = true
+	pass
 
 
 func _on_walnut_placed(grid_pos: Vector2):

@@ -3623,44 +3623,11 @@ process_mode = 1
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1144643147 instance=ExtResource("5_fhu8f")]
 position = Vector2(746, 141)
-Round1_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 0,
-"Reanimator": 0,
-"Reborn": 3,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 0,
-"Unhallower": 0
-}
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 0,
-"Reanimator": 0,
-"Reborn": 5,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 0,
-"Unhallower": 0
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 0,
-"Reanimator": 0,
-"Reborn": 7,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 0,
-"Unhallower": 0
-}
+waves = [{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=174461043 node_paths=PackedStringArray("levelToStart") instance=ExtResource("6_6ct43")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=174461043 instance=ExtResource("6_6ct43")]
 z_index = 1
 position = Vector2(-48, 0)
-levelToStart = NodePath("../../..")
 
 [node name="GridManager" parent="GameLayer" unique_id=1601070326 instance=ExtResource("7_7wfy0")]
 metadata/_edit_lock_ = true

@@ -15,14 +15,11 @@ func getIsGreenDimension():
 
 
 func start_game():
-	waveManager = get_parent().get_node("WaveManager")
 	show_all_plant_buttons()
 	for node in get_parent().get_children():
 		if node.has_method("getIsPurpleDimension"):
 			purple_dimension = node
-	print("Purple Dim is ", purple_dimension)
-	purple_dimension.start_game()	
-	waveManager.canStartGame = true
+	purple_dimension.start_game()
 
 
 func show_all_plant_buttons():

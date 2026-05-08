@@ -1,77 +1,56 @@
 extends Node2D
-#Wave Preview.gd
+
+signal game_start_requested
+
+@onready var preview_text: RichTextLabel = $Node2D/Control/EnemyPreviewText
+@onready var start_game_button: Button = $StartGameButton
+
+var _spawner: ZombieSpawner
+var _preview_wave_index: int = -1
 
 
-var spawner
-
-var currentBaseZombies
-var currentConeZombies
-var currentBucketZombies
-@onready var previewText = $Node2D/Control/EnemyPreviewText
-@onready var startGameButton := $StartGameButton
-@onready var visibility = true
-@export var levelToStart : Control
-var numWave 
-var currentZombieDict :Dictionary = {}
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	spawner = get_parent()
-	startGameButton.pressed.connect(_on_start_game_button_pressed)
-	
+	_spawner = get_parent() as ZombieSpawner
+	start_game_button.pressed.connect(_on_start_game_button_pressed)
+	hide_preview()
+
+
+func show_preview(wave_index: int, show_start_button: bool = false) -> void:
+	_preview_wave_index = wave_index
+	$PreviewSprite.visible = true
+	self.visible = true
+	start_game_button.visible = show_start_button
+	$Area2D/CollisionShape2D.disabled = false
+
+
+func hide_preview() -> void:
+	_preview_wave_index = -1
+	$PreviewSprite.visible = false
+	$Node2D/Control.visible = false
+	start_game_button.visible = false
+	$Area2D/CollisionShape2D.disabled = true
+	preview_text.clear()
+
 
 func _on_Area2D_mouse_entered():
-	#print("SSD Mouse Entered")	
-	numWave = spawner.get_numWave() + 1
-	if numWave == 0:
-		numWave = 1
-	#print("SSD Mouse Entered Numwave is ", numWave)
-	match numWave:
-		1:
-
-			currentZombieDict = spawner.Round1_Zombies
-		2:
-			currentZombieDict = spawner.Round2_Zombies
-		3:
-			currentZombieDict = spawner.Round3_Zombies
-			
-			
-	if $PreviewSprite.visible == true:
-		#print("SSDict: ", currentZombieDict)
-		for key in currentZombieDict:
-			#var line = "[b]" + str(key) + "[/b]: " + str(spawner.Round1_Zombies[key]) + "\n"
-			if currentZombieDict[key] == 0:
-				pass
-			else:
-				var line =  str(key) + " : "+ str(currentZombieDict[key]) + "\n"
-				previewText.append_text(line)
-				#print("SSLine is ", line)
-
-		$Node2D/Control.visible = true
-
+	if _preview_wave_index < 0 or not $PreviewSprite.visible:
+		return
+	var config := _spawner.get_wave_config(_preview_wave_index)
+	preview_text.clear()
+	for type_name in config:
+		var count: int = config[type_name]
+		if count > 0:
+			preview_text.append_text(str(type_name) + " : " + str(count) + "\n")
+	$Node2D/Control.visible = true
 
 
 func _on_Area2D_mouse_exited():
 	$Node2D/Control.visible = false
-	previewText.clear()
-
-
-#TODO Fix Vis
-func _on_ToggleVisibility_timeout():
-#	print("Swap Vis")
-	swap_Visibility()
-	
-func swap_Visibility():
-	$PreviewSprite.visible = !visibility
-	self.visible = !visibility
-	visibility = !visibility
+	preview_text.clear()
 
 
 func _on_start_game_button_pressed() -> void:
-	print("Attempting to START GAME")
-	if Global.gameIsStarted == false:
-		Global.gameIsStarted = true 
-		if levelToStart != null:
-			if levelToStart.has_method("start_game"):			
-				levelToStart.start_game()
-				print("Start Game For ", levelToStart)
+	if Global.gameIsStarted:
+		return
+	Global.gameIsStarted = true
+	game_start_requested.emit()

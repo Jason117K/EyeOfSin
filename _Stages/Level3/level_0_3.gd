@@ -63,23 +63,20 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.set_dialog_end(new_end_dialog)
-	waveManager.Wave2StartTime = 37
-	waveManager.Wave3StartTime = 50
+	waveManager.wave_delays = [37.0, 50.0]
+	waveManager.wave_started.connect(_on_wave_started)
+	waveManager.level_ended.connect(_on_level_ended)
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03, level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
-	
+
 	Global.resetSunflowerCount()
 	Global.reset_swap_ability()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
-	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
-	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 	plantManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
 	plantSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
@@ -116,7 +113,7 @@ func _start_force_select_maw():
 	show_only_plant_buttons(["Maw"])
 	plantSelectionMenu.add_pulsing_button_highlight(maw_button)
 	#show_spotlight_at_node(maw_button)
-	waveManager.canStartGame = false
+	waveManager.can_start = false
 	plantSelectionMenu.canSwapScenes = false
 
 
@@ -138,12 +135,12 @@ func start_game():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node
 
-	if waveManager.canStartGame:
+	if waveManager.can_start:
 		return
 
 	show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
 	plantSelectionMenu.canSwapScenes = true
-	waveManager.canStartGame = true
+	waveManager.can_start = true
 	green_dimension.start_game()
 
 
@@ -207,16 +204,10 @@ func _on_codex_button_pressed():
 	go_to_step("TUTORIAL_P2_DONE")
 
 
-func _on_wave_1_started():
-	pass
-
-
-func _on_wave_2_started():
-	go_to_step("EXPLAIN_FLESHEATER_ZOMBIE")
-
-
-func _on_wave_3_started():
-	go_to_step("EXPLAIN_CODEX")
+func _on_wave_started(wave_index: int):
+	match wave_index:
+		1: go_to_step("EXPLAIN_FLESHEATER_ZOMBIE")
+		2: go_to_step("EXPLAIN_CODEX")
 #endregion
 
 

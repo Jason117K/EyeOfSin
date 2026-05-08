@@ -53,9 +53,9 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.set_dialog_end(new_end_dialog)
-	waveManager.Wave2StartTime = 35
-	waveManager.Wave3StartTime = 45
+	waveManager.wave_delays = [35.0, 45.0]
+	waveManager.wave_started.connect(_on_wave_started)
+	waveManager.level_ended.connect(_on_level_ended)
 
 	pause_Button.set_restart_levels(level04, level04Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -66,7 +66,6 @@ func _ready():
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
 	plantManager.connect("eggWorm_placed", Callable(self, "_on_wyrm_placed"))
 	wyrm_button.connect("pressed", Callable(self, "_on_wyrm_button_pressed"))
 
@@ -103,7 +102,7 @@ func _start_force_select_wyrm():
 	show_only_plant_buttons(["Egg"])
 	hbox.get_node("Egg").visible = true
 	plantSelectionMenu.add_pulsing_button_highlight(wyrm_button)
-	waveManager.canStartGame = false
+	waveManager.can_start = false
 	plantSelectionMenu.canSwapScenes = false
 
 
@@ -125,12 +124,12 @@ func start_game():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node
 
-	if waveManager.canStartGame:
+	if waveManager.can_start:
 		return
 
 	_show_all_buttons()
 	plantSelectionMenu.canSwapScenes = true
-	waveManager.canStartGame = true
+	waveManager.can_start = true
 	green_dimension.start_game()
 
 
@@ -175,8 +174,9 @@ func _on_wyrm_placed(_grid_pos: Vector2):
 		advance_tutorial() # → TUTORIAL_P1_DONE
 
 
-func _on_wave_2_started():
-	go_to_step("EXPLAIN_SUMMONER_ZOMBIE")
+func _on_wave_started(wave_index: int):
+	if wave_index == 1:
+		go_to_step("EXPLAIN_SUMMONER_ZOMBIE")
 #endregion
 
 

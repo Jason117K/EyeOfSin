@@ -11,8 +11,6 @@ var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
 
 @export var new_end_dialog = "res://_Assets/Dialog/level_0_end_dialog.dtl"
-@export var Wave2StartTime := 20
-@export var Wave3StartTime := 30
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
@@ -43,6 +41,17 @@ const ALL_EXTRA_BUTTONS = []
 
 func get_demon_manager():
 	return plantManager
+
+
+func _on_level_ended():
+	Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
+	Dialogic.start(new_end_dialog)
+
+
+func _on_end_dialog_finished():
+	levelSwitcher.visible = true
+	$"../ToolTips".visible = false
+	get_tree().paused = true
 
 #TODO Refactor to Make Children Use Ready
 #func _ready():

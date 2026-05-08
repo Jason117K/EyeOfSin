@@ -91,263 +91,65 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1966373180 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 77)
 make_green = true
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 1,
-"Reanimator": 1,
-"Reborn": 7,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 3,
-"Unhallower": 0
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 3,
-"Flesheater": 1,
-"Reanimator": 1,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 7,
-"Sundered": 4,
-"Unhallower": 3
-}
+waves = [{}, {"Flesheater": 1, "Reanimator": 1, "Reborn": 7, "Sundered": 3}, {"Erupter": 3, "Flesheater": 1, "Reanimator": 1, "Severed": 7, "Sundered": 4, "Unhallower": 3}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1096298744 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1096298744 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, 0)
-levelToStart = NodePath("../../..")
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=406937831 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 109)
 make_green = true
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 3,
-"Flesheater": 1,
-"Reanimator": 2,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 2,
-"Sundered": 2,
-"Unhallower": 2
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 2,
-"Flesheater": 1,
-"Reanimator": 1,
-"Reborn": 3,
-"Rohan": 0,
-"Severed": 2,
-"Sundered": 5,
-"Unhallower": 6
-}
+waves = [{}, {"Erupter": 3, "Flesheater": 1, "Reanimator": 2, "Severed": 2, "Sundered": 2, "Unhallower": 2}, {"Erupter": 2, "Flesheater": 1, "Reanimator": 1, "Reborn": 3, "Severed": 2, "Sundered": 5, "Unhallower": 6}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=866564976 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=866564976 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, 1)
-levelToStart = NodePath("../../..")
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=582696796 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 141)
 make_green = true
-Round1_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 0,
-"Reanimator": 1,
-"Reborn": 3,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 1,
-"Unhallower": 0
-}
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 2,
-"Flesheater": 0,
-"Reanimator": 1,
-"Reborn": 7,
-"Rohan": 0,
-"Severed": 3,
-"Sundered": 0,
-"Unhallower": 0
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 1,
-"Reanimator": 1,
-"Reborn": 7,
-"Rohan": 0,
-"Severed": 3,
-"Sundered": 6,
-"Unhallower": 1
-}
+waves = [{"Reanimator": 1, "Reborn": 3, "Sundered": 1}, {"Erupter": 2, "Reanimator": 1, "Reborn": 7, "Severed": 3}, {"Flesheater": 1, "Reanimator": 1, "Reborn": 7, "Severed": 3, "Sundered": 6, "Unhallower": 1}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1814117221 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1814117221 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, 0)
-levelToStart = NodePath("../../..")
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=866825408 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 173)
 make_green = true
-Round1_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 0,
-"Reanimator": 0,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 2,
-"Unhallower": 0
-}
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 2,
-"Flesheater": 3,
-"Reanimator": 0,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 6,
-"Sundered": 3,
-"Unhallower": 0
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 2,
-"Flesheater": 2,
-"Reanimator": 1,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 3,
-"Sundered": 0,
-"Unhallower": 1
-}
+waves = [{"Sundered": 2}, {"Erupter": 2, "Flesheater": 3, "Severed": 6, "Sundered": 3}, {"Erupter": 2, "Flesheater": 2, "Reanimator": 1, "Severed": 3, "Unhallower": 1}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1816570866 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1816570866 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
-levelToStart = NodePath("../../..")
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=1745598549 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 205)
 make_green = true
-Round1_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 0,
-"Reanimator": 1,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 0,
-"Unhallower": 3
-}
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 2,
-"Reanimator": 0,
-"Reborn": 9,
-"Rohan": 0,
-"Severed": 6,
-"Sundered": 5,
-"Unhallower": 2
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 9,
-"Flesheater": 1,
-"Reanimator": 0,
-"Reborn": 6,
-"Rohan": 0,
-"Severed": 4,
-"Sundered": 5,
-"Unhallower": 3
-}
+waves = [{"Reanimator": 1, "Unhallower": 3}, {"Flesheater": 2, "Reborn": 9, "Severed": 6, "Sundered": 5, "Unhallower": 2}, {"Erupter": 9, "Flesheater": 1, "Reborn": 6, "Severed": 4, "Sundered": 5, "Unhallower": 3}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1540339064 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1540339064 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
-levelToStart = NodePath("../../..")
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1105065544 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 241)
 make_green = true
-Round1_Zombies = {
-"Amalgams": 0,
-"Erupter": 0,
-"Flesheater": 1,
-"Reanimator": 0,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 0,
-"Sundered": 3,
-"Unhallower": 0
-}
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 2,
-"Flesheater": 5,
-"Reanimator": 0,
-"Reborn": 3,
-"Rohan": 0,
-"Severed": 3,
-"Sundered": 0,
-"Unhallower": 0
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 3,
-"Flesheater": 4,
-"Reanimator": 2,
-"Reborn": 1,
-"Rohan": 0,
-"Severed": 1,
-"Sundered": 0,
-"Unhallower": 6
-}
+waves = [{"Flesheater": 1, "Sundered": 3}, {"Erupter": 2, "Flesheater": 5, "Reborn": 3, "Severed": 3}, {"Erupter": 3, "Flesheater": 4, "Reanimator": 2, "Reborn": 1, "Severed": 1, "Unhallower": 6}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=87244267 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=87244267 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
-levelToStart = NodePath("../../..")
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1086465909 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 270)
 make_green = true
-Round2_Zombies = {
-"Amalgams": 0,
-"Erupter": 1,
-"Flesheater": 4,
-"Reanimator": 1,
-"Reborn": 12,
-"Rohan": 0,
-"Severed": 1,
-"Sundered": 0,
-"Unhallower": 1
-}
-Round3_Zombies = {
-"Amalgams": 0,
-"Erupter": 3,
-"Flesheater": 3,
-"Reanimator": 1,
-"Reborn": 0,
-"Rohan": 0,
-"Severed": 3,
-"Sundered": 1,
-"Unhallower": 0
-}
+waves = [{}, {"Erupter": 1, "Flesheater": 4, "Reanimator": 1, "Reborn": 12, "Severed": 1, "Unhallower": 1}, {"Erupter": 3, "Flesheater": 3, "Reanimator": 1, "Severed": 3, "Sundered": 1}]
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1195128336 node_paths=PackedStringArray("levelToStart") instance=ExtResource("4_otain")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1195128336 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, -1)
-levelToStart = NodePath("../../..")
 
 [node name="GridManager" parent="GameLayer" unique_id=1244735254 instance=ExtResource("7_vx8y4")]
 make_green = true

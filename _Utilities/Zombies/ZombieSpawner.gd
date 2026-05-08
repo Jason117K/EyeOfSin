@@ -1,316 +1,142 @@
 extends Node2D
-#ZombieSpawner
+class_name ZombieSpawner
 
-signal spawnNextWave 
+signal wave_exhausted
+signal all_waves_exhausted
 
-# Path to the base zombie scene
-var base_zombie_scene = preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.tscn")  
-var cone_zombie_scene = preload("res://_Entities/Zombies/_Severed/ConeHeadZombie.tscn") 
-var bucket_zombie_scene = preload("res://_Entities/Zombies/_Unhallower/BucketHeadZombie.tscn") 
-var screendoor_zombie_scene = preload("res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.tscn") 
-var dancer_zombie_scene = preload("res://_Entities/Zombies/_Reanimator/DancerZombie.tscn") 
-var poleVault_zombie_scene = preload("res://_Entities/Zombies/_Sundered/PoleVaultZombie.tscn") 
-var ticker_zombie_scene = preload("res://_Entities/Zombies/_Erupter/TickerZombie.tscn") 
-var football_zombie_scene = preload("res://_Entities/Zombies/_Flesheater/FootballZombie.tscn")
-var rohan_zombie_scene = preload("res://_Entities/Zombies/_RohanZombie/RohanZombie.tscn")
+## Each entry is a Dictionary mapping zombie type name to count.
+## e.g. [{"Reborn": 3, "Severed": 2}, {"Unhallower": 1, "Reborn": 5}]
+@export var waves: Array[Dictionary] = []
+@export var make_green: bool = false
 
-@export var make_green := false
-
-# Array to hold zombie types
-var wave1_zombies = []  
-var wave2_zombies = []  
-var wave3_zombies = []  
-
-#Arrays to track amount of zombies by types per round 
-@export var Round1_Zombies = {"Reborn": 0, "Severed": 0, "Unhallower" : 0, 
-							"Amalgams" : 0, "Reanimator" : 0, "Sundered" : 0,
-							"Erupter" : 0, "Flesheater" : 0, "Rohan" : 0}
-							
-@export var Round2_Zombies = {"Reborn": 0, "Severed": 0, "Unhallower" : 0, 
-							"Amalgams" : 0, "Reanimator" : 0, "Sundered" : 0,
-							"Erupter" : 0, "Flesheater" : 0, "Rohan" : 0}
-							
-@export var Round3_Zombies =  {"Reborn": 0, "Severed": 0, "Unhallower" : 0, 
-							"Amalgams" : 0, "Reanimator" : 0, "Sundered" : 0,
-							"Erupter" : 0, "Flesheater" : 0, "Rohan" : 0}
-
-var baseZombies = []
-
-signal doneSpawning
-
-
-# The current wave we are on
-var numWave = 0
-
-#Slight random position adjustmnet 
-var random_adjustment = randf_range(-1.0, 1.0)
-var random_adjustment2 = randf_range(-0.6, 0.6)
-
-#Adjustble delay between waves 
-@export var waveDelay = 0.5
-#c
-# Alternative: Manual weight ranges
-@export_group("Weight Ranges")
+@export_group("Spawn Timing")
 @export var large_gap_min: float = 0.8
 @export var large_gap_max: float = 1.9
-@export var large_gap_weight: float = 80.0  # Percentage chance for large gap
-
+@export var large_gap_weight: float = 80.0
 @export var small_gap_min: float = 0.3
 @export var small_gap_max: float = 0.65
-@export var small_gap_weight: float = 20.0  # Percentage chance for small gap 
+@export var small_gap_weight: float = 20.0
 
-var wave_manager
+var _current_wave: int = -1
+var _spawn_pool: Array[PackedScene] = []
 
-# Populates the apprioate arrays with current zombie counts by type 
+
 func _ready():
-	
-	#waveManager = get_parent().get_node("WaveManager")
-	print(get_parent().get_parent())
-	wave_manager = get_parent().get_parent().get_parent().get_node("WaveManager")
-	spawnNextWave.connect(wave_manager._on_spawn_next_wave)
-	
-	populate_zombies(Round1_Zombies.get("Reborn") , Round1_Zombies.get("Severed"), 
-	Round1_Zombies.get("Unhallower") , Round1_Zombies.get("Amalgams"),
-	Round1_Zombies.get("Reanimator"),Round1_Zombies.get("Sundered"),
-	Round1_Zombies.get("Erupter"),Round1_Zombies.get("Flesheater"), Round1_Zombies.get("Rohan"),
-	 wave1_zombies)
-	
-	populate_zombies(Round2_Zombies.get("Reborn") , Round2_Zombies.get("Severed"), 
-	Round2_Zombies.get("Unhallower") , Round2_Zombies.get("Amalgams"), 
-	Round2_Zombies.get("Reanimator"),Round2_Zombies.get("Sundered"),
-	Round2_Zombies.get("Erupter"),Round2_Zombies.get("Flesheater"), Round2_Zombies.get("Rohan"),
-	 wave2_zombies)
-	
-	populate_zombies(Round3_Zombies.get("Reborn") , Round3_Zombies.get("Severed"),
-	Round3_Zombies.get("Unhallower") , Round3_Zombies.get("Amalgams"),
-	Round3_Zombies.get("Reanimator"), Round3_Zombies.get("Sundered"),
-	Round2_Zombies.get("Erupter"),Round3_Zombies.get("Flesheater"), Round3_Zombies.get("Rohan"),
-	 wave3_zombies)
-
-	$WaveDelay.wait_time = waveDelay
+	add_to_group("ZombieSpawners")
+	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout)
 
 
-# Starts spawning the zombies with slight random timing adjustment 
-func start_spawn_zombie():
-	random_adjustment = randf_range(-0.5, 0.5)
-	$WaveDelay.wait_time = waveDelay + random_adjustment
-	$WaveDelay.start()
-	#print("Start SPawn Zombie Called")
-	
-#Spawns a different amount of zombies depending on the wave
-func spawn_zombie():
-	#print("[SPAWNER ", name, "] ===== spawn_zombie() called =====")
-	#print("[SPAWNER ", name, "] numWave: ", numWave)
-	#print("[SPAWNER ", name, "] wave1_zombies.size(): ", wave1_zombies.size())
-	#print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
-	#print("[SPAWNER ", name, "] wave3_zombies.size(): ", wave3_zombies.size())
+func get_wave_count() -> int:
+	return waves.size()
 
-	#For each wave, shuffle the zombies, and then spawn them at the spawner positon
-	#TODO Add slight variation in spawn y axis
-	match numWave:
-		1: 
-			if(wave1_zombies.size() > 0):
-				wave1_zombies.shuffle()
 
-				var zombie_type = wave1_zombies.pop_front()
-				var zombie_instance = zombie_type.instantiate()
+func get_current_wave() -> int:
+	return _current_wave
 
-				zombie_instance.name = generate_unique_name(zombie_instance.name)
-				
-				zombie_instance.position = self.position + Vector2(25,0)#Adjust position as needed
-				if "Erupter" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-3)
-				if "Foot" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-4)
-				if "Screen" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-3)					
-				get_parent().add_child(zombie_instance)  # Add to the GameLayer
-				
-				if make_green :
-					zombie_instance.add_to_group("Green")
-					zombie_instance.collision_layer = 3
-					zombie_instance.set_hue_shift(125)
-					zombie_instance._ready()
-				else:
-					zombie_instance.add_to_group("Purple")
-					zombie_instance.set_hue_shift(-86)
-				#get_parent().add_child(zombie_instance)  # Add to the GameLayer
-				$WaveDelay.start()
-				#print("Spawn Wave 1")
-				random_adjustment2 = get_weighted_range_speed()
-				$WaveInterval.wait_time = random_adjustment2
-				$WaveInterval.start()
-				#Global.start_wave_1()
-			else:
-				pass
-				#TODO Spawn Next Wave Here 
-				spawnNextWave.emit()
-				
 
-		2:
-			#print("[SPAWNER ", name, "] CASE 2: Wave 2 spawning")
-			#print("[SPAWNER ", name, "] wave2_zombies.size(): ", wave2_zombies.size())
-			if(wave2_zombies.size() > 0):
-				#print("[SPAWNER ", name, "] Spawning a Wave 2 zombie...")
-				wave2_zombies.shuffle()
-				var zombie_type = wave2_zombies.pop_front()
-				var zombie_instance = zombie_type.instantiate()
-				zombie_instance.name = generate_unique_name(zombie_instance.name)
-				
-				zombie_instance.position = self.position + Vector2(-30,0)  #Adjust position as needed
-				if "Erupter" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-3)
-				if "Foot" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-4)
-				if "Screen" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-3)					
-				get_parent().add_child(zombie_instance)  # Add to the GameLayer
-				if make_green :
-					zombie_instance.add_to_group("Green")
-					zombie_instance.collision_layer = 3
-					zombie_instance.set_hue_shift(125)
-					zombie_instance._ready()
-				else:
-					zombie_instance.add_to_group("Purple")
-				#print("Spawn wave 2")
-				random_adjustment2 = get_weighted_range_speed()
-				$WaveInterval.wait_time = random_adjustment2
-				$WaveInterval.start()
-		
+func get_wave_config(index: int) -> Dictionary:
+	if index >= 0 and index < waves.size():
+		return waves[index]
+	return {}
 
-		3:
-			if(wave3_zombies.size() > 0):
-				wave3_zombies.shuffle()
-				var zombie_type = wave3_zombies.pop_front()
-				var zombie_instance = zombie_type.instantiate()
-				zombie_instance.name = generate_unique_name(zombie_instance.name)
-				if "Erupter" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-3)
-				if "Foot" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-4)
-				if "Screen" in zombie_instance.name:
-					zombie_instance.position = self.position + Vector2(0,-3)					
-				
-				zombie_instance.position = self.position + Vector2(-10,0) #Adjust position as needed
-				get_parent().add_child(zombie_instance)  # Add to the GameLayer
-				if make_green :
-					#print("Made Green")
-					zombie_instance.add_to_group("Green")
-					zombie_instance.collision_layer = 3
-					zombie_instance.set_hue_shift(125)
-					zombie_instance._ready()
-				else:
-					zombie_instance.add_to_group("Purple")
-					#print("Made Purple")
-				#print("Spawn wave 3")
-				
-				random_adjustment2 = get_weighted_range_speed()
-				$WaveInterval.wait_time = random_adjustment2
-				$WaveInterval.start()
-				$WaveInterval.start()
-			else:
-				doneSpawning.emit()
-				
 
-		_:
-			print("[SPAWNER ", name, "] DEFAULT CASE: numWave = ", numWave, " (no matching wave!)")
-			print("[SPAWNER ", name, "] This means the spawner doesn't know how to spawn for this wave number")
-	
-	
-# Function to populate the zombies array based on numbers provided
-func populate_zombies(base_zombie_count: int, conehead_zombie_count: int, 
-					buckethead_zombie_count: int, screendoor_zombie_count: int, 
-					dancer_zombie_count: int, poleVault_zombie_count: int,
-					ticker_zombie_count: int,football_zombie_count : int, rohan_zombie_count : int,
-					zombie_wave: Array):
-						
-						
-	# Add base zombies to the array
-	for _i in range(base_zombie_count):
-		zombie_wave.append(base_zombie_scene)
-	# Add conehead zombies to the array
-	for _i in range(conehead_zombie_count):
-		zombie_wave.append(cone_zombie_scene)
-		# Add buckethead zombies to the array
-	for _i in range(buckethead_zombie_count):
-		zombie_wave.append(bucket_zombie_scene)
-		#Add screen door 
-	for _i in range(screendoor_zombie_count):
-		zombie_wave.append(screendoor_zombie_scene)
-		#Add Dancer
-	for _i in range(dancer_zombie_count):
-		zombie_wave.append(dancer_zombie_scene)
-	# Add pole vault zombies
-	for _i in range(poleVault_zombie_count):
-		zombie_wave.append(poleVault_zombie_scene)
-	# Add ticker zombies
-	for _i in range(ticker_zombie_count):
-		zombie_wave.append(ticker_zombie_scene)
-	#Add football
-	for _i in range(football_zombie_count):
-		zombie_wave.append(football_zombie_scene)
-	#Add Rohan boss
-	for _i in range(rohan_zombie_count):
-		zombie_wave.append(rohan_zombie_scene)
-	
-#Increments the current wave
-func increase_wave():
-	#print("[SPAWNER ", name, "] increase_wave() called - numWave BEFORE: ", numWave)
-	numWave = numWave + 1
-	#print("[SPAWNER ", name, "] increase_wave() - numWave AFTER: ", numWave)
+func get_wave_preview() -> Node:
+	return $WavePreview
 
-#TODO Trace Back 
-#Starts the next round of zombie spawning 
-func _on_WaveDelay_timeout():
-	#print("Zombie Spawning Starting Here")
-	#print("Zombie Spawning Starting Here")
-	spawn_zombie()
-	$WaveDelay.stop()
 
-#TODO Trace Back 
-func _on_wave_interval_timeout() -> void:
-	#print("About call spawn zombie ")
-	#print("Zombie Spawning Starting Hereeeeeeeeeeeeeee")
-	spawn_zombie()
+func begin_wave(wave_index: int) -> void:
+	_current_wave = wave_index
+	_spawn_pool = _build_pool(wave_index)
+	_spawn_pool.shuffle()
+	$SpawnTimer.wait_time = randf_range(0.1, 0.5)
+	$SpawnTimer.start()
+
+
+func _build_pool(wave_index: int) -> Array[PackedScene]:
+	var pool: Array[PackedScene] = []
+	var config := get_wave_config(wave_index)
+	for type_name in config:
+		var count: int = config[type_name]
+		if count <= 0:
+			continue
+		var scene: PackedScene = ZombieRegistry.SCENES.get(type_name)
+		if scene == null:
+			push_warning("ZombieSpawner: unknown zombie type '%s'" % type_name)
+			continue
+		for _i in range(count):
+			pool.append(scene)
+	return pool
+
+
+func _spawn_next() -> void:
+	if _spawn_pool.is_empty():
+		if _current_wave >= waves.size() - 1:
+			all_waves_exhausted.emit()
+		else:
+			wave_exhausted.emit()
+		return
+
+	var scene: PackedScene = _spawn_pool.pop_front()
+	var zombie: Node2D = scene.instantiate()
+	zombie.name = _generate_unique_name(zombie.name)
+
+	var y_offset: float = ZombieRegistry.Y_OFFSETS.get(_get_type_key(zombie.name), 0.0)
+	zombie.position = self.position + Vector2(25, y_offset)
+
+	get_parent().add_child(zombie)
+
+	if make_green:
+		zombie.add_to_group("Green")
+		zombie.collision_layer = 3
+		zombie.set_hue_shift(125)
+		zombie._ready()
+	else:
+		zombie.add_to_group("Purple")
+		zombie.set_hue_shift(-86)
+
+	if not _spawn_pool.is_empty():
+		$SpawnTimer.wait_time = _get_weighted_spawn_delay()
+		$SpawnTimer.start()
+	else:
+		if _current_wave >= waves.size() - 1:
+			all_waves_exhausted.emit()
+		else:
+			wave_exhausted.emit()
+
+
+func _on_spawn_timer_timeout() -> void:
+	_spawn_next()
 	Global.start_wave_1()
 
 
-# Helper function to generate sequential names
-func generate_unique_name(base_name: String) -> String:
-	var used_numbers = []
-	# Collect all existing numbers from siblings
-	for child in get_parent().get_children():
-		#print("PPChild is ", child.name)
-		if child.name.begins_with(base_name):
-			var suffix = child.name.substr(base_name.length())
-			#print("PPSuffix Is ", suffix)
-			if suffix.is_valid_int():
-				used_numbers.append(suffix.to_int())
-					
-	used_numbers.sort()
-	#print("Used PP Numbers is ",used_numbers )
-	# Find first available number (fills gaps)
-	var candidate = 1
-	for num in used_numbers: 
-		if candidate < num:
-			break  # Gap found
-		if candidate == num:
-			candidate = num + 1
-	#print("Will Return PP ", base_name + str(candidate))
-	return base_name + str(candidate)
+func _get_type_key(zombie_name: String) -> String:
+	for type_name in ZombieRegistry.Y_OFFSETS:
+		if type_name in zombie_name:
+			return type_name
+	return ""
 
 
-#Weighted ranges - explicitly define speed ranges with weights
-func get_weighted_range_speed() -> float:
-	var total_weight = large_gap_weight + small_gap_weight
-	var random_weight = randf() * total_weight
-	
-	if random_weight <= large_gap_weight:
-		# Pick from large gap weight range
+func _get_weighted_spawn_delay() -> float:
+	var total_weight := large_gap_weight + small_gap_weight
+	var roll := randf() * total_weight
+	if roll <= large_gap_weight:
 		return randf_range(large_gap_min, large_gap_max)
 	else:
-		# Pick from small gap weight range 
 		return randf_range(small_gap_min, small_gap_max)
 
-func get_numWave():
-	return numWave
+
+func _generate_unique_name(base_name: String) -> String:
+	var used_numbers: Array[int] = []
+	for child in get_parent().get_children():
+		if child.name.begins_with(base_name):
+			var suffix := child.name.substr(base_name.length())
+			if suffix.is_valid_int():
+				used_numbers.append(suffix.to_int())
+	used_numbers.sort()
+	var candidate := 1
+	for num in used_numbers:
+		if candidate < num:
+			break
+		if candidate == num:
+			candidate = num + 1
+	return base_name + str(candidate)

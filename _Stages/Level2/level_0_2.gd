@@ -108,9 +108,9 @@ func _ready():
 	plantSelectionMenu.visible = false
 	get_tree().paused = false
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.set_dialog_end(new_end_dialog)
-	waveManager.Wave2StartTime = 35
-	waveManager.Wave3StartTime = 55
+	waveManager.wave_delays = [35.0, 55.0]
+	waveManager.wave_started.connect(_on_wave_started)
+	waveManager.level_ended.connect(_on_level_ended)
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
 
 	setup_plant_selection_menu()
@@ -126,9 +126,6 @@ func _ready():
 	plantManager.connect("plant_placed", Callable(self, "_on_sunflower_placed"))
 	plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
 	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
-	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
-	waveManager.connect("wave2Started", Callable(self, "_on_wave_2_started"))
-	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 
 	sunflower_button.connect("pressed", Callable(self, "_on_sunflower_button_pressed"))
 	spyder_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
@@ -167,7 +164,7 @@ func _start_force_select_sunflower():
 	show_only_plant_buttons(["Sunflower"])
 	plantSelectionMenu.add_pulsing_button_highlight(sunflower_button)
 	#show_spotlight_at_node(sunflower_button)
-	waveManager.canStartGame = false
+	waveManager.can_start = false
 	plantSelectionMenu.canSwapScenes = false
 
 
@@ -191,7 +188,7 @@ func _start_force_select_spyder_after_blood():
 	show_only_plant_buttons(["Peashooter"])
 	plantSelectionMenu.add_pulsing_button_highlight(spyder_button)
 	#show_spotlight_at_node(spyder_button)
-	waveManager.canStartGame = false
+	waveManager.can_start = false
 	plantSelectionMenu.canSwapScenes = false
 	get_tree().paused = true
 
@@ -220,7 +217,7 @@ func _start_explain_blood_buffs_2():
 
 func _start_wave_1():
 	plantSelectionMenu.canSwapScenes = true
-	waveManager.canStartGame = true
+	waveManager.can_start = true
 	green_dimension.start_game()
 	show_only_plant_buttons(["Sunflower", "Peashooter"])
 	wave_1_active = false
@@ -362,17 +359,15 @@ func _on_walnut_placed(grid_pos: Vector2):
 		show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut"])
 
 
-func _on_wave_1_started():
-	show_only_plant_buttons(["Sunflower", "Peashooter"])
-	wave_1_active = true
-
-
-func _on_wave_2_started():
-	go_to_step("EXPLAIN_BUCKETHEAD_ZOMBIE")
-
-
-func _on_wave_3_started():
-	go_to_step("FORCE_SELECT_WALNUT")
+func _on_wave_started(wave_index: int):
+	match wave_index:
+		0:
+			show_only_plant_buttons(["Sunflower", "Peashooter"])
+			wave_1_active = true
+		1:
+			go_to_step("EXPLAIN_BUCKETHEAD_ZOMBIE")
+		2:
+			go_to_step("FORCE_SELECT_WALNUT")
 #endregion
 
 

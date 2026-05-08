@@ -19,12 +19,7 @@ func remove_empty_blocker_plant(grid_pos):
 func finish_setup_and_start():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	attach_script_to_coral_children("res://Scripts/Environment/sway.gd")
-	$GameLayer/WaveManager.canStartGame = true 
-
-
-
-func _on_wave_manager_wave_2_almost_start() -> void:
-	waveManager.startSecondWave()
+	$GameLayer/WaveManager.can_start = true
 
 
 func attach_script_to_coral_children(script_path: String) -> void:

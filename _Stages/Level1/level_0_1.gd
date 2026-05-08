@@ -65,9 +65,9 @@ func _ready():
 	Global.resetSunflowerCount()
 	Global.reset_swap_ability()
 
-	waveManager.set_dialog_end(new_end_dialog)
-	waveManager.Wave2StartTime = Wave2StartTime
-	waveManager.Wave3StartTime = Wave3StartTime
+	waveManager.wave_delays = [-1, -1]
+	waveManager.wave_started.connect(_on_wave_started)
+	waveManager.level_ended.connect(_on_level_ended)
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(current_level, current_level_alt)
@@ -76,10 +76,7 @@ func _ready():
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
 
-
 	plantManager.spyder_placed.connect(func(_grid_position): _on_spyder_placed())
-	waveManager.connect("wave1Started", Callable(self, "_on_wave_1_started"))
-	waveManager.connect("wave3Started", Callable(self, "_on_wave_3_started"))
 	crawler_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
 
 	toolTips.hide()
@@ -105,7 +102,7 @@ func _start_force_select_spyder():
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#hide_all_plant_buttons_except_spyder()
 	highlight_spyder_button()
-	waveManager.canStartGame = false
+	waveManager.can_start = false
 	plantSelectionMenu.canSwapScenes = false
 
 
@@ -123,8 +120,7 @@ func _start_explain_blood_cost():
 
 
 func _start_wave_1():
-	
-	waveManager.canStartGame = true
+	waveManager.can_start = true
 	wave_1_active = false
 	wave_1_complete = false
 
@@ -149,19 +145,11 @@ func _start_explain_green_dimension():
 
 
 func _start_wave_2_both_dimensions():
-	# Start Wave 2 in green dimension
 	var green_dimension = get_parent().get_node("Level0-1_Alternate")
-	if green_dimension and green_dimension.has_method("start_wave_2"):
-		green_dimension.start_wave_2()
+	if green_dimension and green_dimension.has_method("setup_wave_2_ui"):
+		green_dimension.setup_wave_2_ui()
 
-	# Increment spawners from wave 1 to wave 2
-	for spawner in waveManager.spawners:
-		spawner.increase_wave()
-
-	# Start Wave 2 in purple dimension
-	waveManager.startSecondWave()
-
-	# Enable dimension swapping
+	waveManager.start_next_wave()
 	plantSelectionMenu.canSwapScenes = true
 
 
@@ -227,13 +215,13 @@ func _on_spyder_button_pressed():
 		advance_tutorial() # → FORCE_PLACE_PLANT
 
 
-func _on_wave_1_started():
-	print("Advancing Tutor2ial Here from : ", get_current_step_name())
-	advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
-
-
-func _on_wave_3_started():
-	go_to_step("EXPLAIN_SEVERED_ZOMBIE")
+func _on_wave_started(wave_index: int):
+	match wave_index:
+		0:
+			wave_1_active = true
+			advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
+		2:
+			go_to_step("EXPLAIN_SEVERED_ZOMBIE")
 
 
 func _on_plant_manager_spyder_placed(_grid_position: Vector2) -> void:
