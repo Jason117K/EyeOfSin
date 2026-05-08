@@ -45,27 +45,33 @@ var deselectText = " PRESS [X] TO DESELECT"
 @onready var preview_container = Node2D.new()
 @onready var panelContainer = $PanelContainer
 @onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
+@onready var swapButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
+@onready var removeDemonButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton
+@onready var codexButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2/CodexButton
+@onready var fastForwardButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton
+@onready var all_extra_buttons := [fastForwardButton,swapButton,removeDemonButton, codexButton]
 
-@onready var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
-@onready var WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
-@onready var  EggButton = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton
+@onready var OcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
+@onready var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
+@onready var  WyrmButton = $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton
 @onready var  MawButton = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton
 @onready var HiveButton = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
-@onready var  PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+@onready var  CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton
+@onready var HeartButton := $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 
-@onready var all_demon_buttons = [SunFlowerButton,WalnutButton,
-							EggButton,MawButton,HiveButton,
-							PeaShooterButton]
+@onready var all_demon_buttons = [OcculumButton,SpinalOcculumButton,
+							WyrmButton,MawButton,HiveButton,
+							CrawlerButton]
 
 
-var sunFlowerCostLabel
-var sunflowerCost := 50
-var peaShooterCostLabel
-var walnutCostLabel
-var eyeCostLabel 
-var eggCostLabel
-var mawCostLabel
-var hiveCostLabel 
+@onready var OcculumCostLabel := $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumCostLabel
+@onready var crawlerCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerCostLabel
+@onready var SpinalOcculumCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumCostLabel
+@onready var wyrmCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmCostLabel
+@onready var mawCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawCostLabel
+@onready var hiveCostLabel   := $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveCostLabel
+
+@onready var OcculumCost := 50
 
 var canSwapScenes = false
 
@@ -78,19 +84,37 @@ var canSwapScenes = false
 var doubleSpeed = false 
 
 func _ready():
+	add_child(preview_container)
 	swap_ability_instance = swap_ability.instantiate()
 	#print("swap_ability_instance is : ",  swap_ability_instance)
 	get_parent().call_deferred("add_child", swap_ability_instance)
 	#print("swap_ability_i")
 #	swap_ability_instance._ready()
 	
-	setPanelContainerWidth(100)
+	#setPanelContainerWidth(100)
 	#Global.plant_selection_menu = self
 	if is_alt:
 		Global.plant_selection_menu_alt = self
 	else:
 		Global.plant_selection_menu = self
 	Global.resetSunflowerCount()
+	Global._load_demon_costs()
+	
+	CrawlerButton.pressed.connect(_on_CrawlerButton_pressed)
+	OcculumButton.pressed.connect(_on_MawButton_pressed)
+	SpinalOcculumButton.pressed.connect(_on_SpinalOcculumButton_pressed)
+	WyrmButton.pressed.connect(_on_WyrmButton_pressed)
+	MawButton.pressed.connect(_on_MawButton_pressed)
+	HiveButton.pressed.connect(_on_HiveButton_pressed)
+	HeartButton.pressed.connect(_on_heart_button_pressed)
+
+	
+	OcculumCostLabel.text = str(Global.get_demon_cost("Occulum"))
+	crawlerCostLabel.text = str(Global.get_demon_cost("Crawler"))
+	SpinalOcculumCostLabel.text = str(Global.get_demon_cost("SpinalOcculum"))
+	wyrmCostLabel.text = str(Global.get_demon_cost("Wyrm"))
+	mawCostLabel.text = str(Global.get_demon_cost("Maw"))
+	hiveCostLabel.text = str(Global.get_demon_cost("Hive"))
 
 	#add_button_highlight
 	set_process_input(true)
@@ -101,118 +125,7 @@ func _ready():
 	#Set Up Label for Displaying Current Plant
 	currentPlantLabel = $CurrentPlantLabel
 	
-	var temp_instance
-	
-	SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
-	sunFlowerCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
-	temp_instance = sunflower_scene.instantiate()
-	#print("Temp Instance.get_cost() is : ", str(temp_instance.get_cost()))
-	sunFlowerCostLabel.text = str(temp_instance.get_cost())
-	
-	temp_instance.queue_free()
-	
-	#add_button_highlight(SunFlowerButton)
-	
-	PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
-	peaShooterCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
-	temp_instance = peashooter_scene.instantiate()
-	peaShooterCostLabel.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-	
-	WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
-	walnutCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
-	temp_instance = walnut_scene.instantiate()
-	walnutCostLabel.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-	
-	
-	EggButton = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton
-	eggCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
-	temp_instance = egg_scene.instantiate()
-	eggCostLabel.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-	
-	MawButton = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton
-	mawCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
-	temp_instance = maw_scene.instantiate()
-	mawCostLabel.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-			
-	HiveButton = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
-	hiveCostLabel = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
-	temp_instance = hive_scene.instantiate()
-	hiveCostLabel.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()		
-	
-	# Make sure the appropirate plants are available per level
-	if root == "Main": #or root == "Level2":
-		#assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK
-		PeaShooterButton.visible = false 
-		peaShooterCostLabel.visible = false
-		WalnutButton.visible = false
-		walnutCostLabel.visible = false
-		
-		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
-		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK
-		SunFlowerButton.visible = false
-		sunFlowerCostLabel.visible = false 
-		
-		$PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
-		EggButton.visible = false
 
-		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
-		MawButton.visible = false
-
-		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
-		HiveButton.visible = false
-		
-		
-	elif root == "Level2":
-		#assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
-		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
-		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
-		#assert($HBoxContainer/WalnutButton.connect("pressed", self, "_on_WalnutButton_pressed")== OK)
-		$HBoxContainer/WalnutButton.connect("pressed", Callable(self, "_on_WalnutButton_pressed"))
-		MawButton.visible = false
-		mawCostLabel.visible = false
-		$PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel.visible = false
-		EggButton.visible = false
-
-		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
-		MawButton.visible = false
-
-		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
-		HiveButton.visible = false
-	elif root == "Level3":
-		#assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
-		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
-		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
-		
-
-		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
-		MawButton.visible = false
-
-		$PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel.visible = false
-		HiveButton.visible = false
-	elif root == "Level4":
-	#	assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
-		#assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
-		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
-		$PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel.visible = false
-		MawButton.visible = false
-	else:
-		assert(PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))== OK)
-		PeaShooterButton.connect("pressed", Callable(self, "_on_PeashooterButton_pressed"))
-		assert(SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))== OK)
-		SunFlowerButton.connect("pressed", Callable(self, "_on_SunflowerButton_pressed"))
-	add_child(preview_container)
-	preview_container.z_index = 100  # Ensure preview appears above other elements
-
-	#print(root)
 	
 	
 # Handle Deselection
@@ -235,19 +148,19 @@ func _input(event):
 				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
 		if event.keycode == KEY_1:
 			print("1 Key Pressed")
-			_on_SunflowerButton_pressed()
+			_on_OcculumButton_pressed()
 		if event.keycode == KEY_2:
 			print("2 Key Pressed")
-			_on_PeashooterButton_pressed()
+			_on_CrawlerButton_pressed()
 		if event.keycode == KEY_3:
 			print("3 Key Pressed")
-			_on_WalnutButton_pressed()
+			_on_SpinalOcculumButton_pressed()
 		if event.keycode == KEY_4:
 			print("4 Key Pressed")
 			_on_MawButton_pressed()
 		if event.keycode == KEY_5:
 			print("5 Key Pressed")
-			_on_EggButton_pressed()
+			_on_WyrmButton_pressed()
 		if event.keycode == KEY_6:
 			print("6 Key Pressed")
 			_on_HiveButton_pressed()			
@@ -265,12 +178,12 @@ func deselect_plant():
 	setCanRemoveFalse()
 
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 
-func _on_PeashooterButton_pressed():
+func _on_CrawlerButton_pressed():
 	setCanRemoveFalse()
 	selected_plant = peashooter_scene
 	var temp_instance = peashooter_scene.instantiate()
 	create_preview(peashooter_scene)
-	add_button_highlight(PeaShooterButton)
+	add_button_highlight(CrawlerButton)
 	
 	#currentPlantLabel.text = "SPIDER SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
@@ -280,30 +193,30 @@ func _on_PeashooterButton_pressed():
 	print("Peashooter selected")
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	var PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
-	#remove_button_highlight(PeaShooterButton)
+	var CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	#remove_button_highlight(CrawlerButton)
 
 func increaseSunflowerCost():
-	sunFlowerCostLabel.text = str(50+(Global.getSunflowerCount()*5))
+	OcculumCostLabel.text = str(50+(Global.getSunflowerCount()*5))
 	
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
-func _on_SunflowerButton_pressed():
+func _on_OcculumButton_pressed():
 	setCanRemoveFalse()
 	selected_plant = sunflower_scene
 	var temp_instance = sunflower_scene.instantiate()
 	create_preview(sunflower_scene)
-	add_button_highlight(SunFlowerButton)
+	add_button_highlight(OcculumButton)
 	
 	#currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
 	#currentPlantCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
-	sunflowerCost  += 5
+	OcculumCost  += 5
 	
 	
 	#currentPlantCost.text = "Penis"
 	temp_instance.queue_free()
 	
-##	print("3Label text is ", sunFlowerCostLabel.text)
+##	print("3Label text is ", OcculumCostLabel.text)
 #	print("Sunflower selected", temp_instance.get_name())
 #	$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
@@ -311,18 +224,18 @@ func _on_SunflowerButton_pressed():
 
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
-func _on_WalnutButton_pressed():
+func _on_SpinalOcculumButton_pressed():
 	selected_plant = walnut_scene
 	var temp_instance = walnut_scene.instantiate()
 	create_preview(walnut_scene)
-	add_button_highlight(WalnutButton)
+	add_button_highlight(SpinalOcculumButton)
 	setCanRemoveFalse()
 	#currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
 	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
-	var WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
-	#WalnutButton.release_focus()
+	var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/SpinalOcculumButton
+	#SpinalOcculumButton.release_focus()
 	print("Walnut selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	#$UIClickAudio.play()
@@ -344,10 +257,10 @@ func _on_MawButton_pressed():
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
 # Plays Sound and Makes the EggWorm the current selected plant, changing label & preview image 
-func _on_EggButton_pressed():
+func _on_WyrmButton_pressed():
 	selected_plant = egg_scene
 	create_preview(egg_scene)
-	add_button_highlight(EggButton)
+	add_button_highlight(WyrmButton)
 	var temp_instance = egg_scene.instantiate()
 	setCanRemoveFalse()
 	#currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
@@ -389,14 +302,17 @@ func create_preview(plant_scene):
 	var preview_node = find_preview_nodes(temp_plant)
 	
 	if preview_node:
-		print("Found Preview Node")
+		print("Found Preview Node : ", preview_node)
 		# Duplicate all child sprites
 		for child in preview_node.get_children():
-			print("Preview Node Child is ", preview_node)
+			print("Preview Node Child is ", child)
 			# Create the preview sprite and make it semi-transparent 
 			var preview_sprite = child.duplicate()
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
 			preview_sprite.scale = Vector2(1.25,1.25)
+			preview_sprite.z_index = 100
+			if preview_sprite is AnimatedSprite2D:
+				preview_sprite.play()
 			
 			# Store original position and print it
 			var original_pos = Vector2(child.position.x, child.position.y)
@@ -406,8 +322,13 @@ func create_preview(plant_scene):
 			# Add the preview sprite to the container and array 
 			preview_container.add_child(preview_sprite)
 			preview_sprites.append(preview_sprite)
-		
+		for sprite in preview_sprites:
+			if sprite is AnimatedSprite2D:
+				print("Preview Animation: ", sprite.animation, " | Frame: ", sprite.frame, " | Frames: ", sprite.sprite_frames)		
 		is_previewing = true
+		print("Preview container visible: ", preview_container.visible)
+		print("Preview container global pos: ", preview_container.global_position)
+		print("Preview sprites count: ", preview_sprites.size())
 
 	
 	temp_plant.queue_free()
@@ -429,17 +350,18 @@ func clear_preview():
 
 func release_all_focus():
 		
-	SunFlowerButton.release_focus()
-	WalnutButton.release_focus()
-	EggButton.release_focus()
+	OcculumButton.release_focus()
+	SpinalOcculumButton.release_focus()
+	WyrmButton.release_focus()
 	MawButton.release_focus()
 	HiveButton.release_focus()
-	PeaShooterButton.release_focus()
+	CrawlerButton.release_focus()
 	
 
 
 # Gets all the previewNodes
 func find_preview_nodes(node):
+	print("Must Find Preview For : ", node)
 	if node.name == "PreviewNodes":
 		return node
 	
@@ -509,91 +431,114 @@ func add_button_highlight(button: TextureButton) -> void:
 	button.add_theme_stylebox_override("normal", demon_highlight_stylebox)
 	
 	
-func add_pulsing_button_highlight(button: Button) -> void:
+func add_pulsing_button_highlight(button: TextureButton) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
-	
-	# Create a new StyleBoxFlat for the highlight
-	var highlight_style = StyleBoxFlat.new()
-	
-	# Set the background to be transparent or match button's original background
+
+	# Remove any existing highlight
+	if button.has_meta("highlight_panel"):
+		var old: Panel = button.get_meta("highlight_panel")
+		if is_instance_valid(old):
+			old.queue_free()
+
+	# Create a Panel as a child to act as the border/glow
+	var panel := Panel.new()
+	panel.name = "HighlightPanel"
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
+
+
+	button.add_child(panel)
+	panel.top_level = true
+	#panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
+	# Expand slightly beyond the button to create a border effect
+	var margin := highlight_border_thickness + 4
+	panel.global_position = button.global_position - Vector2(margin, margin)
+	panel.size = button.size + Vector2(margin * 2, margin * 2)	
+	#panel.offset_left = -margin
+	#panel.offset_top = -margin
+	#panel.offset_right = margin
+	#panel.offset_bottom = margin
+	#panel.z_index = -1  # Draw behind the button's textures
+	panel.z_index = 2
+
+	# Build the stylebox for the panel
+	var highlight_style := StyleBoxFlat.new()
 	highlight_style.bg_color = Color.TRANSPARENT
-	
-	# Configure the border
 	highlight_style.border_width_left = highlight_border_thickness
-	highlight_style.border_width_right = highlight_border_thickness  
+	highlight_style.border_width_right = highlight_border_thickness
 	highlight_style.border_width_top = highlight_border_thickness
 	highlight_style.border_width_bottom = highlight_border_thickness
 	highlight_style.border_color = highlight_border_color
-	
-	# Add a glow effect using the shadow properties
 	highlight_style.shadow_color = Color(highlight_border_color, 0.5)
 	highlight_style.shadow_size = 8
 	highlight_style.shadow_offset = Vector2.ZERO
-	
-	# Apply some corner rounding for a smoother look
 	highlight_style.corner_radius_top_left = 4
 	highlight_style.corner_radius_top_right = 4
 	highlight_style.corner_radius_bottom_left = 4
 	highlight_style.corner_radius_bottom_right = 4
-	
-	button.add_theme_stylebox_override("normal", highlight_style)
-	start_glow_pulse(button)
-	
-	# Store the original style so we can restore it later
-	if not button.has_meta("original_normal_style"):
-		button.set_meta("original_normal_style", button.get_theme_stylebox("normal"))
-	
-	# Apply the highlight style to the button's normal state
-	button.add_theme_stylebox_override("normal", highlight_style)
 
-func start_glow_pulse(button: Button, glow_color: Color = highlight_border_color) -> void:
-	var style: StyleBoxFlat = button.get_theme_stylebox("normal")
-	if not style or not style is StyleBoxFlat:
-		return
+	panel.add_theme_stylebox_override("panel", highlight_style)
+	button.set_meta("highlight_panel", panel)
+
+
+
 	
-	# Kill any existing glow tween on this button
+	start_glow_pulse(button, panel, highlight_style)
+
+func start_glow_pulse(button: TextureButton, panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
 	if button.has_meta("glow_tween"):
 		var old_tween: Tween = button.get_meta("glow_tween")
 		if old_tween and old_tween.is_valid():
 			old_tween.kill()
-	
+
 	var tween := button.create_tween()
-	tween.set_loops()  # Loop forever
-	
-	# Pulse: dim -> bright -> dim
+	tween.set_loops()
+
 	tween.tween_method(
 		func(val: float) -> void:
 			style.shadow_size = lerpf(4, 12, val)
 			style.shadow_color = Color(glow_color, lerpf(0.2, 0.6, val)),
 		0.0, 1.0, 0.8
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	
+
 	tween.tween_method(
 		func(val: float) -> void:
 			style.shadow_size = lerpf(12, 4, val)
 			style.shadow_color = Color(glow_color, lerpf(0.6, 0.2, val)),
 		0.0, 1.0, 0.8
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	
+
 	button.set_meta("glow_tween", tween)
 
 
-func stop_glow_pulse(button: Button) -> void:
+func stop_glow_pulse(button: TextureButton) -> void:
+	print("STOP PULSE")
 	if button.has_meta("glow_tween"):
 		var tween: Tween = button.get_meta("glow_tween")
 		if tween and tween.is_valid():
 			tween.kill()
 		button.remove_meta("glow_tween")
 	
-	# Reset shadow
-	var style: StyleBoxFlat = button.get_theme_stylebox("normal")
-	if style and style is StyleBoxFlat:
-		style.shadow_size = 0
-		style.shadow_color = Color.TRANSPARENT
+	# Remove the highlight panel
+	if button.has_meta("highlight_panel"):
+		var panel: Panel = button.get_meta("highlight_panel")
+		if is_instance_valid(panel):
+			panel.queue_free()
+		button.remove_meta("highlight_panel")
 		
-		
+func remove_pulsing_button_highlight(button: TextureButton) -> void:
+	if button.has_meta("glow_tween"):
+		var tw: Tween = button.get_meta("glow_tween")
+		if tw and tw.is_valid():
+			tw.kill()
+	if button.has_meta("highlight_panel"):
+		var p: Panel = button.get_meta("highlight_panel")
+		if is_instance_valid(p):
+			p.queue_free()
+			
+					
 # Function to remove highlight from a button
 func remove_button_highlight(button: TextureButton) -> void:
 	if not button:
@@ -602,50 +547,33 @@ func remove_button_highlight(button: TextureButton) -> void:
 	#button.remove_theme_stylebox_override("normal")
 	print("Button to REMOVVE Is ", button)
 	button.add_theme_stylebox_override("normal", demon_normal_stylebox_default )
-	#button.remove_theme_stylebox_override("hover")
-	#button.get_theme_stylebox("normal").bg_color = Color("0f0a0a00")
-	#0f0a0a00
-	## Restore the original style if it was saved
-	#if button.has_meta("original_normal_style"):
-		#var original_style = button.get_meta("original_normal_style")
-		#if original_style:
-			#print("Original Style Exists")
-			#button.add_theme_stylebox_override("normal", original_style)
-		#else:
-			#print("Original Style Does Not Exists")
-			#button.remove_theme_stylebox_override("normal")
-		#button.remove_meta("original_normal_style")
-	#else:
-		#print("original_normal_style Style Exists")
-		## If no original style was saved, just remove the override
-		#button.remove_theme_stylebox_override("normal")
 		#
 		
 
 
 func _on_plant_manager_plant_placed() -> void:
-	var PeaShooterButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
-	PeaShooterButton.visible = true 
-	peaShooterCostLabel.visible = true 
-	#add_button_highlight(PeaShooterButton)
+	var CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	CrawlerButton.visible = true 
+	crawlerCostLabel.visible = true 
+	#add_button_highlight(CrawlerButton)
 
 func showEyeSummon():
-	var SunFlowerButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
-	SunFlowerButton.visible = true 
-	sunFlowerCostLabel.visible = true 
+	var OcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+	OcculumButton.visible = true 
+	OcculumCostLabel.visible = true 
 
 
 func _on_wave_manager_wave_2_almost_start() -> void:
 	if root == "Main":
 		
-		var WalnutButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton
-		walnutCostLabel.visible = true 
-		WalnutButton.visible = true 
+		var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/SpinalOcculumButton
+		SpinalOcculumCostLabel.visible = true 
+		SpinalOcculumButton.visible = true 
 		
 	elif root == "Level2":
-		var EggButton = $VBoxContainer/HBoxContainer/Egg/EggButton
-		eggCostLabel.visible = true 
-		EggButton.visible = true 
+		var WyrmButton = $VBoxContainer/HBoxContainer/Egg/WyrmButton
+		wyrmCostLabel.visible = true 
+		WyrmButton.visible = true 
 		
 
 
@@ -705,7 +633,7 @@ func _on_heart_button_pressed() -> void:
 	#currentPlantCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	var HeartButton = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
-	#WalnutButton.release_focus()
+	#SpinalOcculumButton.release_focus()
 	print("Heart selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
@@ -745,4 +673,19 @@ func swap_portal_button():
 		return 
 		
 func get_crawler_button():
-	return $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
+	return CrawlerButton
+
+func get_world_swap_button():
+	return swapButton
+	
+func get_remove_demon_button():
+	return removeDemonButton
+	
+func get_codex_button():
+	return codexButton
+	
+func get_panel_container():
+	return panelContainer
+
+func get_all_extra_buttons():
+	return all_extra_buttons

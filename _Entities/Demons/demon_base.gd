@@ -71,7 +71,8 @@ func truncate_string(input_string: String) -> String:
 func receive_heart_buff():
 	print(self.name , " receive Heart Buff")
 	$BuffNodesComponent.get_child(0).visible = true 
-	self.health = self.health + 400
+	increase_max_health(400)
+	increase_health(400)
 	pass
 	
 func remove_heart_buff():
@@ -89,6 +90,9 @@ func get_is_buffed():
 
 func increase_health(added_health_amount):
 	healthComp.increase_health(added_health_amount)
+
+func increase_max_health(added_health_amount):
+	healthComp.increase_max_health(added_health_amount)
 
 func take_damage(damage):
 	print(self, " is now taking damage : ", damage)

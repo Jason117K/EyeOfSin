@@ -23,7 +23,27 @@ var swap_ability
 var current_level
 var hero_demon 
 var ui_layer : Control
+var demon_costs: Dictionary = {}
+var demon_scenes : Dictionary
 
+func _load_demon_costs():
+	demon_scenes = {
+		"Occulum": "res://_Entities/Demons/_Occulum/Occulum.tscn",
+		"Crawler": "res://_Entities/Demons/_Crawler/Crawler.tscn",
+		"SpinalOcculum": "res://_Entities/Demons/_CagedOculum/WalnutTree.tscn",
+		"Wyrm": "res://_Entities/Demons/_Wyrm/EggWorm.tscn",
+		"Maw": "res://_Entities/Demons/_Maw/Maw.tscn",
+		"Hive": "res://_Entities/Demons/_Hive/Hive.tscn",
+	}
+	for demon_name in demon_scenes:
+		var scene: PackedScene = load(demon_scenes[demon_name])
+		var instance: Node = scene.instantiate()
+		demon_costs[demon_name] = instance.cost  # each plant script has an @export var cost: int
+		instance.queue_free()
+
+func get_demon_cost(demon_name: String) -> int:
+	return demon_costs.get(demon_name, -1)
+	
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()
 	

@@ -35,11 +35,15 @@ func take_damage(damage):
 		demon.die()
 
 func increase_health(added_health_amount):
-	health = health + added_health_amount
+	health = clamp(health + added_health_amount, 0, maxHealth)
 	pass
 	
+func increase_max_health(added_max_health_amount):
+	maxHealth = maxHealth + added_max_health_amount
+	
 func _process(delta):
-	health = health + healthRegen
+	if health != null:	
+		health = health + healthRegen
 
 
 func debuff():

@@ -37,7 +37,7 @@ var tutorial_sunflower_grid_pos: Vector2 = Vector2.ZERO
 var tutorial_sun_instance: Node2D = null
 
 # Plant button container names for show/hide helpers
-const ALL_PLANT_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
+const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
 @onready var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
@@ -394,7 +394,7 @@ func setup_plant_selection_menu():
 
 
 func show_only_plant_buttons(visible_containers: Array):
-	for container_name in ALL_PLANT_CONTAINERS:
+	for container_name in ALL_DEMON_CONTAINERS:
 		var container = hbox.get_node(container_name)
 		var should_show = container_name in visible_containers
 		for child in container.get_children():

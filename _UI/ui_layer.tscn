@@ -40,56 +40,6 @@ position = Vector2(112, 31)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_nx033")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=875844633]
-layout_mode = 1
-offset_left = 9.0
-offset_top = 15.0
-offset_right = 174.0
-offset_bottom = 44.0
-theme_override_constants/separation = 21
-
-[node name="BloodAmountLabel" type="Label" parent="HBoxContainer" unique_id=918262393]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_nx033")
-theme_override_font_sizes/font_size = 19
-text = "Blood : "
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1340546747]
-layout_mode = 2
-
-[node name="HealthPointsLabel" type="Label" parent="HBoxContainer" unique_id=1642742968]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_nx033")
-theme_override_font_sizes/font_size = 19
-text = "Health : "
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1900214360]
-layout_mode = 1
-offset_left = 65.0
-offset_top = 11.0
-offset_right = 203.0
-offset_bottom = 40.0
-theme_override_constants/separation = 42
-
-[node name="Blood" type="Label" parent="HBoxContainer2" unique_id=1987089677]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_nx033")
-theme_override_font_sizes/font_size = 23
-text = "1"
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2" unique_id=2095950773]
-layout_mode = 2
-
-[node name="Health" type="Label" parent="HBoxContainer2" unique_id=310116335]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_nx033")
-theme_override_font_sizes/font_size = 23
-text = "10"
-
 [node name="SunCounter" type="Control" parent="." unique_id=2045410320]
 visible = false
 layout_mode = 1

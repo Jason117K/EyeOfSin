@@ -400,7 +400,7 @@ func place_plant(grid_pos: Vector2):
 		
 		#Global.ui_layer.set_blood(str(sun_points))
 		get_parent().get_node("UILayer").set_blood(str(sun_points))
-		get_parent().get_node("UILayer/HBoxContainer2/Blood").text = str(sun_points) #"Blood: " + str(sun_points)
+		
 		#Play the sound
 		AudioManager.create_2d_audio_at_location(plant_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 		#$PlacePlantAudioPlayer.play()
@@ -473,7 +473,6 @@ func add_sun(amount):
 	sun_points += amount
 	#Global.ui_layer.set_blood(str(sun_points))
 	get_parent().get_node("UILayer").set_blood(str(sun_points))
-	get_parent().get_node("UILayer/HBoxContainer2/Blood").text = str(sun_points)
 	
 # Play the sun collection sound 
 func play_sun_collect():
@@ -486,12 +485,10 @@ func _on_SetSun_timeout():
 		#sun_points = 300 #75
 		#Global.ui_layer.set_blood(str(sun_points))
 		get_parent().get_node("UILayer").set_blood(str(sun_points))
-		get_parent().get_node("UILayer/HBoxContainer2/Blood").text = str(sun_points)
 	else:
 		#sun_points = 900 #700
 		#Global.ui_layer.set_blood(str(sun_points))
 		get_parent().get_node("UILayer").set_blood(str(sun_points))
-		get_parent().get_node("UILayer/HBoxContainer2/Blood").text = str(sun_points)
 
 func swap_heart():
 	#print("Hero Demon Is ", hero_demon)

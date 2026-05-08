@@ -16,7 +16,7 @@ var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
 # Plant button container names
-const ALL_PLANT_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
+const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached references
 @onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
@@ -131,7 +131,7 @@ func setup_plant_selection_menu():
 
 
 func _show_all_buttons():
-	for container_name in ALL_PLANT_CONTAINERS:
+	for container_name in ALL_DEMON_CONTAINERS:
 		if container_name == "Hive":
 			continue
 		var container = hbox.get_node(container_name)

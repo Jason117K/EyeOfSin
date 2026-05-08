@@ -20,7 +20,7 @@ const TUTORIAL_EXPLAIN_ERUPTER = "res://_Assets/Text/TextFiles/ZombieDescription
 const TUTORIAL_EXPLAIN_LANCER = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 
 # Plant button container names
-const ALL_PLANT_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
+const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
 @onready var hive_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton")
@@ -201,7 +201,7 @@ func _on_wave_2_started():
 
 #region UI Helpers
 func show_only_plant_buttons(visible_containers: Array):
-	for container_name in ALL_PLANT_CONTAINERS:
+	for container_name in ALL_DEMON_CONTAINERS:
 		var container = hbox.get_node(container_name)
 		var should_show = container_name in visible_containers
 		for child in container.get_children():
@@ -209,9 +209,9 @@ func show_only_plant_buttons(visible_containers: Array):
 
 
 func _show_all_buttons():
-	show_only_plant_buttons(ALL_PLANT_CONTAINERS)
+	show_only_plant_buttons(ALL_DEMON_CONTAINERS)
 	# Also show non-plant UI and parent containers
-	for container_name in ALL_PLANT_CONTAINERS:
+	for container_name in ALL_DEMON_CONTAINERS:
 		hbox.get_node(container_name).visible = true
 	hbox.get_node("WorldSwap").visible = true
 	hbox.get_node("Codex").visible = true

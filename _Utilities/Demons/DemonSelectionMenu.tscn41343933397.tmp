@@ -36,15 +36,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("1")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 layout_mode = 0
 offset_left = 86.0
-offset_top = 13.705
+offset_top = 7.0
 offset_right = 519.845
-offset_bottom = 76.990005
+offset_bottom = 70.285
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
 
@@ -58,31 +57,28 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="Occulum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
-z_index = 4
+[node name="Sunflower" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
 layout_mode = 2
 
-[node name="OcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
+[node name="SunflowerButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=102864345]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("3_yqvs4")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="OcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=875715703]
+[node name="SunFlowerLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Sunflower" unique_id=875715703]
 visible = false
-custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Crawler" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
+[node name="Peashooter" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
 layout_mode = 2
 
-[node name="CrawlerButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=972339713]
-z_index = 3
+[node name="PeashooterButton2" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter" unique_id=972339713]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -91,17 +87,17 @@ texture_normal = ExtResource("5_vvged")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CrawlerCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=752286747]
+[node name="PeashooterLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Peashooter" unique_id=752286747]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="SpinalOcculum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=560354734]
+[node name="Walnut" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=560354734]
 layout_mode = 2
 
-[node name="SpinalOcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=133221191]
+[node name="WalnutButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut" unique_id=133221191]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -110,7 +106,7 @@ texture_normal = ExtResource("6_04elx")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="SpinalOcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=1640644905]
+[node name="WalnutLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Walnut" unique_id=1640644905]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
@@ -129,18 +125,18 @@ texture_normal = ExtResource("7_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="MawCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
+[node name="MawLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Wyrm" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
+[node name="Egg" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
 visible = false
 layout_mode = 2
 
-[node name="WyrmButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=629061683]
+[node name="EggButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg" unique_id=629061683]
 visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -150,7 +146,7 @@ texture_normal = ExtResource("10_iafbj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="WyrmCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=925628958]
+[node name="EggLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Egg" unique_id=925628958]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
@@ -170,7 +166,7 @@ texture_normal = ExtResource("11_js2vo")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="HiveCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1149167924]
+[node name="HiveLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1149167924]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
@@ -178,7 +174,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Heart" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=957864529]
-visible = false
 layout_mode = 2
 
 [node name="HeartButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1081347700]
@@ -280,9 +275,9 @@ texture_normal = ExtResource("15_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="." method="_on_WalnutButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="." method="_on_EggButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton" to="." method="_on_EggButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]

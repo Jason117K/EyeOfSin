@@ -22,6 +22,8 @@ var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button = $"../../PauseButton"
 @onready var levelSwitcher = 	$"../LevelSwitcher"
+@onready var _plant_hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
 var green_dimension 
 
@@ -34,6 +36,8 @@ const TUTORIAL_GREEN_DIMENSION = "res://_Assets/Text/TextFiles/Level0_1_Tutorial
 const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
+const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal"]
+const ALL_EXTRA_BUTTONS = []
 
 func get_demon_manager():
 	return plantManager
@@ -58,7 +62,43 @@ func get_demon_manager():
 #
 	## Connect signals
 	#toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-
+## Hides all plant buttons except those in the exceptions array.
+## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Sunflower"]
+func hide_all_demon_buttons_with_exception(exceptions: Array = []):
+	print("Exceptions Are ",exceptions)
+	for container_name in ALL_DEMON_CONTAINERS:
+		if container_name in exceptions:
+			print(container_name , " is in ",exceptions )
+		else:
+			print(container_name , " is not in ",exceptions )
+		
+		
+		
+		print("container_name is ",container_name)
+		print("demon box is is ",_plant_hbox)
+		if _plant_hbox.get_node(container_name) != null:
+			var container = _plant_hbox.get_node(container_name)
+			
+			var should_show = container_name in exceptions
+			print(should_show, " container is IS ",container)
+			container.visible = should_show
+			for child in container.get_children():
+				child.visible = should_show
+ 
+ 
+## Shows all plant buttons and their parent containers.
+## Optionally pass extra non-plant UI names to also show (e.g. "WorldSwap", "Codex").
+func show_all_demon_buttons(extras: Array = []):
+	for container_name in ALL_DEMON_CONTAINERS:
+		if _plant_hbox.get_node(container_name) != null:
+			var container = _plant_hbox.get_node(container_name)
+			container.visible = true
+			for child in container.get_children():
+				child.visible = true
+	for extra_name in extras:
+		for button_instance in plantSelectionMenu.get_all_extra_buttons():
+			if extra_name == button_instance.get_name():
+				button_instance.visible = true
 
 	
 func setup_plant_selection_menu():

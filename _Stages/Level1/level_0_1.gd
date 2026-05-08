@@ -102,7 +102,8 @@ func _input(event):
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_spyder():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
-	hide_all_plant_buttons_except_spyder()
+	hide_all_demon_buttons_with_exception(["Crawler"])
+	#hide_all_plant_buttons_except_spyder()
 	highlight_spyder_button()
 	waveManager.canStartGame = false
 	plantSelectionMenu.canSwapScenes = false
@@ -137,8 +138,8 @@ func _start_explain_basic_zombie():
 
 
 func _start_force_press_y():
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton").visible = true
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
+	plantSelectionMenu.get_world_swap_button().visible = true
+	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 	toolTips.set_basic_tutorial_text(TUTORIAL_PRESS_Y, false)
 
 
@@ -254,22 +255,11 @@ func _physics_process(_delta):
 
 #region UI Helpers
 func setup_plant_selection_menu():
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton").visible = false
-	plantSelectionMenu.get_node("PanelContainer").size.x = 71
-
-
-func hide_all_plant_buttons_except_spyder():
-	var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
-	for plant_name in HIDEABLE_PLANT_NAMES:
-		var container = hbox.get_node(plant_name)
-		for child in container.get_children():
-			child.visible = false
-
-	# Keep Spyder visible
-	crawler_button.visible = true
-	plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true
+	plantSelectionMenu.get_world_swap_button().visible = false
+	plantSelectionMenu.get_remove_demon_button().visible = false 
+	plantSelectionMenu.get_codex_button().visible = false 
+	#TODO Should We Adjust Size Here?
+	plantSelectionMenu.get_panel_container().size.x = 71
 
 
 func highlight_spyder_button():
