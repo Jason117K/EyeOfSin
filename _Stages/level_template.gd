@@ -23,6 +23,8 @@ var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 @onready var pause_Button = $"../../PauseButton"
 @onready var levelSwitcher = 	$"../LevelSwitcher"
 @onready var _plant_hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var world_swap_button = plantSelectionMenu.get_world_swap_button()
+@onready var codex_button = plantSelectionMenu.get_codex_button()
 
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
 var green_dimension 

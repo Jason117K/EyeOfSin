@@ -63,20 +63,22 @@ func _on_AttackTimer_timeout():
 		
 	if(is_instance_valid(target_plant) && target_plant.is_in_group("Portal") != true ):
 		#print("target plant name is ", target_plant.name)
-		if(target_plant.get_health() >= 0):
-			if target_plant.has_method("mawBuffed"):
-				if target_plant.can_eat_zombie == true :
-				#	print("Demon Can Eat Me Time to Die")
-					target_plant.eat_zombie()
-					get_parent().die()
-			if target_plant.has_method("walnutWyrmBuffed"):
-				if target_plant.can_damage_zombie == true :
-					print("Demon Hive Can Damage Me While I Eat")
-					zombie.getCompManager().take_damage(10)
-					
-			target_plant.take_damage(attack_power)
-		else:
-			stop_attack()
+		if(target_plant.has_method("get_health")): 
+			#TODO Give Spiderling Get Health
+			if(target_plant.get_health() >= 0):
+				if target_plant.has_method("mawBuffed"):
+					if target_plant.can_eat_zombie == true :
+					#	print("Demon Can Eat Me Time to Die")
+						target_plant.eat_zombie()
+						get_parent().die()
+				if target_plant.has_method("walnutWyrmBuffed"):
+					if target_plant.can_damage_zombie == true :
+						print("Demon Hive Can Damage Me While I Eat")
+						zombie.getCompManager().take_damage(10)
+						
+				target_plant.take_damage(attack_power)
+			else:
+				stop_attack()
 		if "Ticker" in parent.get_name():
 			get_parent().die()
 	else:

@@ -101,7 +101,7 @@ func _ready():
 	Global._load_demon_costs()
 	
 	CrawlerButton.pressed.connect(_on_CrawlerButton_pressed)
-	OcculumButton.pressed.connect(_on_MawButton_pressed)
+	OcculumButton.pressed.connect(_on_OcculumButton_pressed)
 	SpinalOcculumButton.pressed.connect(_on_SpinalOcculumButton_pressed)
 	WyrmButton.pressed.connect(_on_WyrmButton_pressed)
 	MawButton.pressed.connect(_on_MawButton_pressed)

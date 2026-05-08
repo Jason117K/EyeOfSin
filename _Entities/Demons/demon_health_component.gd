@@ -42,7 +42,7 @@ func increase_max_health(added_max_health_amount):
 	maxHealth = maxHealth + added_max_health_amount
 	
 func _process(delta):
-	if health != null:	
+	if health != null && healthRegen != null:	
 		health = health + healthRegen
 
 

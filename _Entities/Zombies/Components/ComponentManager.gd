@@ -27,14 +27,14 @@ var spawn_slow_field := false
 var reset_speed_timer : Timer
 
 func blood_slow():
-	print("BLOOD Slow")
+	#print("BLOOD Slow")
 	speedComp.setSpeed(speedComp.getOriginalSpeed()/3)
 	set_hue_shift(0)
 	
 func undoBloodSlow():
-	print("UNDO BLOOD Slow")
+	#print("UNDO BLOOD Slow")
 	reset_speed()
-	print("OG Hue Shift Is ", animatedSprite.original_hue_shift)
+	#print("OG Hue Shift Is ", animatedSprite.original_hue_shift)
 	set_hue_shift(animatedSprite.original_hue_shift)
 	
 	

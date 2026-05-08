@@ -15,13 +15,9 @@ var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 # Text file paths
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
-# Plant button container names
-const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
-
 # Cached references
 @onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
-@onready var hbox_remove_worldSwap = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer")
-@onready var hbox_codex_fast_forward = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2")
+
 
 var gameStarted := false
 
@@ -118,16 +114,10 @@ func _on_wave_1_started():
 
 #region UI Helpers
 func setup_plant_selection_menu():
-	hbox.get_node("Maw").visible = true
-	hbox.get_node("Sunflower").visible = true
-	hbox.get_node("Walnut").visible = true
-	hbox.get_node("Egg").visible = true
-	#hbox.get_node("Hive").visible = true
+	show_all_demon_buttons()
 	
-	hbox_remove_worldSwap.get_node("WorldSwap").visible = true
-	hbox_remove_worldSwap.get_node("RemovePlant").visible = true
-	hbox_codex_fast_forward.get_node("Codex2").visible = true
-
+	world_swap_button.visible = true 
+	codex_button.visible = true 
 
 
 func _show_all_buttons():

@@ -27,7 +27,7 @@ var zombie_scene = preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.ts
 var spawners = []  # Array to hold all ZombieSpawner nodes
 var timers = [] # Array to hold all the timers in the WavePreview nodes
 var wavePreviewIcons = [] # Array to hold all of the WavePreviewIcons
-@export var health_points = 100 
+@export var health_points = 9999 
 
 @export var StartDelay = 0
 #Amount of Time it Takes a wave to spawn after previous done

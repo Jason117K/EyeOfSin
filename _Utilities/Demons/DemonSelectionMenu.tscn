@@ -65,13 +65,13 @@ layout_mode = 2
 [node name="OcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("3_yqvs4")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="OcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=875715703]
-visible = false
-custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_vvged")
@@ -92,7 +92,6 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="CrawlerCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=752286747]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"

@@ -77,7 +77,7 @@ mouse_filter = 2
 script = ExtResource("1_a4agt")
 
 [node name="PlantManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]
-sun_points = 1250
+sun_points = 9999
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
@@ -641,7 +641,7 @@ offset_bottom = 137.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
 stream = ExtResource("21_a4agt")
-volume_db = -5.0
+volume_db = -80.0
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1612504723]
@@ -691,7 +691,7 @@ script = ExtResource("24_7nw23")
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]
