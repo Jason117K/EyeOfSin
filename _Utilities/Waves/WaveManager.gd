@@ -8,7 +8,7 @@ signal level_ended
 ## Delay before wave i+1 starts after wave i begins.
 ## Length determines total wave count: total_waves = wave_delays.size() + 1.
 ## A value <= 0 means that wave requires manual start via start_next_wave().
-@export var wave_delays: Array[float] = []
+@export var wave_delays: Array = []
 
 ## Seconds before a wave starts that the preview icon appears.
 @export var preview_lead_time: float = 10.0
