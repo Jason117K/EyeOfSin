@@ -36,8 +36,7 @@ var sun_before_pickup = 0
 var tutorial_sunflower_grid_pos: Vector2 = Vector2.ZERO
 var tutorial_sun_instance: Node2D = null
 
-# Plant button container names for show/hide helpers
-const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
+
 
 # Cached button references
 @onready var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")

@@ -123,6 +123,7 @@ func _start_explain_blood_cost():
 
 
 func _start_wave_1():
+	
 	waveManager.canStartGame = true
 	wave_1_active = false
 	wave_1_complete = false
@@ -204,25 +205,30 @@ func _filter_only_allow_y(event: InputEvent):
 
 #region Signal Handlers
 func _on_tooltip_hidden():
+	print("Tooltip Was Hidden, Current Step is ", get_current_step_name() )
 	hide_spotlight()
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_COST":
-			go_to_step("WAVE_1_ACTIVE")
+			pass
+			#go_to_step("WAVE_1_ACTIVE")
 		"EXPLAIN_GREEN_DIMENSION":
 			go_to_step("WAVE_2_ACTIVE")
 
 
 func _on_spyder_placed():
 	if get_current_step_name() == "FORCE_PLACE_PLANT":
+		print("Advancing YTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → EXPLAIN_BLOOD_COST
 
 
 func _on_spyder_button_pressed():
 	if get_current_step_name() == "FORCE_SELECT_SPYDER":
+		print("Advancing WTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → FORCE_PLACE_PLANT
 
 
 func _on_wave_1_started():
+	print("Advancing Tutor2ial Here from : ", get_current_step_name())
 	advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
 
 
@@ -273,4 +279,5 @@ func unhighlight_spyder_button():
 
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(4, 4)
+	
 #endregion

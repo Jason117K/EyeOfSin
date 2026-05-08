@@ -11,7 +11,8 @@ func _ready():
 
 	
 func start_wave_2():
-	hide_all_plant_buttons_except_spyder()
+	#hide_all_plant_buttons_except_spyder()
+	hide_all_demon_buttons_with_exception(["Crawler"])
 	print("========== GREEN DIMENSION START_WAVE_2 CALLED ==========")
 	print("[GREEN] Current time: ", Time.get_ticks_msec())
 	print("[GREEN] waveManager.numWave BEFORE: ", waveManager.numWave)
