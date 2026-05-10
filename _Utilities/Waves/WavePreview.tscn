@@ -2,7 +2,17 @@
 
 [ext_resource type="Script" uid="uid://javwqvkctiff" path="res://_Utilities/Waves/WavePreview.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cp3hp8glu2u0p" path="res://_Assets/Misc/SkullIconNew.png" id="2_6qtyv"]
+[ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://_Assets/Shapes/Circle.png" id="2_r8vkn"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="3_6qtyv"]
+[ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="5_pf1pw"]
+[ext_resource type="Texture2D" uid="uid://bgma2h15leoe1" path="res://_Entities/Zombies/_Severed/ConeHeadZombie.png" id="6_6jyyo"]
+[ext_resource type="Texture2D" uid="uid://c37wmrvd3fs5w" path="res://_Entities/Zombies/_Unhallower/BucketHeadZombie.png" id="7_nteoh"]
+[ext_resource type="Texture2D" uid="uid://vfleagnw1j4h" path="res://_Entities/Zombies/_Erupter/TickerZombie.png" id="8_jr547"]
+[ext_resource type="Texture2D" uid="uid://b711gtmcyisf" path="res://_Entities/Zombies/_Reanimator/SummonerZombie.png" id="9_sf2ok"]
+[ext_resource type="Texture2D" uid="uid://cb8ilmxxu5imp" path="res://_Entities/Zombies/_Wretch/BackUpDancer.png" id="10_hksyf"]
+[ext_resource type="Texture2D" uid="uid://87mvflvt25ip" path="res://_Entities/Zombies/_Flesheater/FootBallZombie.png" id="11_47ah1"]
+[ext_resource type="Texture2D" uid="uid://boehiq0ysreqy" path="res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.png" id="12_ubrib"]
+[ext_resource type="Texture2D" uid="uid://csockxqf1ab8l" path="res://_Entities/Zombies/_Sundered/PoleVaultZombie.png" id="13_whwra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qtyv"]
 size = Vector2(69, 66)
@@ -10,11 +20,24 @@ size = Vector2(69, 66)
 [node name="WavePreview" type="Node2D" unique_id=2004771555]
 script = ExtResource("2")
 
+[node name="WaveProgressBar" type="TextureProgressBar" parent="." unique_id=1020930625]
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 29.0
+offset_bottom = 29.0
+scale = Vector2(1.1, 1.1)
+fill_mode = 4
+radial_initial_angle = 148.0
+texture_under = ExtResource("2_r8vkn")
+texture_progress = ExtResource("2_r8vkn")
+tint_progress = Color(1, 0, 0.016666412, 1)
+
 [node name="PreviewSprite" type="Sprite2D" parent="." unique_id=471890236]
 scale = Vector2(2, 2)
 texture = ExtResource("2_6qtyv")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=456039983]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1281212639]
 position = Vector2(-0.5, 0)
@@ -25,23 +48,23 @@ disabled = true
 scale = Vector2(0.5, 0.5)
 
 [node name="Control" type="Control" parent="Node2D" unique_id=1190479830]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -3.0
+offset_left = -2.0
 offset_top = -52.0
-offset_right = -3.0
+offset_right = -2.0
 offset_bottom = -52.0
 
 [node name="Panel" type="Panel" parent="Node2D/Control" unique_id=1350581145]
 layout_mode = 0
-offset_left = -365.0
-offset_top = 26.0
-offset_right = -63.0
-offset_bottom = 165.0
+offset_left = -430.0
+offset_top = 10.0
+offset_right = -76.0
+offset_bottom = 213.06122
 scale = Vector2(1, 1.96)
 
 [node name="EnemyPreviewText" type="RichTextLabel" parent="Node2D/Control" unique_id=1734004144]
+visible = false
 layout_mode = 0
 offset_left = -359.0
 offset_top = 30.0
@@ -53,11 +76,185 @@ bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0
 
+[node name="AllZombieRowTextures" type="VBoxContainer" parent="Node2D/Control" unique_id=382178935]
+layout_mode = 0
+offset_left = -462.0
+offset_top = 8.0
+offset_right = -52.0
+offset_bottom = 343.0
+theme_override_constants/separation = 8
+
+[node name="Row1" type="HBoxContainer" parent="Node2D/Control/AllZombieRowTextures" unique_id=973228918]
+layout_mode = 2
+theme_override_constants/separation = -56
+
+[node name="RebornTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row1" unique_id=1459531948]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("5_pf1pw")
+expand_mode = 3
+
+[node name="SeveredTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row1" unique_id=2106908533]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("6_6jyyo")
+expand_mode = 3
+
+[node name="UnhallowerTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row1" unique_id=1400858884]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("7_nteoh")
+expand_mode = 3
+
+[node name="Row2" type="HBoxContainer" parent="Node2D/Control/AllZombieRowTextures" unique_id=356373483]
+layout_mode = 2
+theme_override_constants/separation = -27
+
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/Control/AllZombieRowTextures/Row2" unique_id=349090381]
+layout_mode = 2
+theme_override_constants/margin_right = 27
+
+[node name="ErupterTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row2" unique_id=863936013]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture = ExtResource("8_jr547")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer2" type="MarginContainer" parent="Node2D/Control/AllZombieRowTextures/Row2" unique_id=509580655]
+layout_mode = 2
+theme_override_constants/margin_right = 60
+
+[node name="ReanimatorTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row2" unique_id=660096892]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture = ExtResource("9_sf2ok")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="WretchTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row2" unique_id=548146476]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+texture = ExtResource("10_hksyf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Row3" type="HBoxContainer" parent="Node2D/Control/AllZombieRowTextures" unique_id=624153502]
+layout_mode = 2
+theme_override_constants/separation = -51
+
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/Control/AllZombieRowTextures/Row3" unique_id=1430573234]
+layout_mode = 2
+
+[node name="AmalgamTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row3" unique_id=413159719]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+texture = ExtResource("11_47ah1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer2" type="MarginContainer" parent="Node2D/Control/AllZombieRowTextures/Row3" unique_id=441029174]
+layout_mode = 2
+theme_override_constants/margin_right = 121
+
+[node name="FlesheaterTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row3" unique_id=1842646917]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture = ExtResource("12_ubrib")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer3" type="MarginContainer" parent="Node2D/Control/AllZombieRowTextures/Row3" unique_id=147585148]
+layout_mode = 2
+theme_override_constants/margin_right = 93
+
+[node name="SunderedTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row3" unique_id=1945133427]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+texture = ExtResource("13_whwra")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ZombieLabelMarginContainer" type="MarginContainer" parent="Node2D/Control" unique_id=1009426848]
+layout_mode = 0
+offset_left = -462.0
+offset_top = 8.0
+offset_right = -52.0
+offset_bottom = 103.0
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 95
+
+[node name="AllZombieRowLabels" type="VBoxContainer" parent="Node2D/Control/ZombieLabelMarginContainer" unique_id=716917359]
+layout_mode = 2
+theme_override_constants/separation = 119
+
+[node name="Row1" type="HBoxContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels" unique_id=1367688099]
+layout_mode = 2
+theme_override_constants/separation = 31
+
+[node name="Reborn" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1" unique_id=1722294366]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "REBORN x"
+
+[node name="Severed" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1" unique_id=216566400]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "SEVERED x"
+
+[node name="Unhallower" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1" unique_id=292391417]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "UNHALLOWER x"
+
+[node name="Row2" type="HBoxContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels" unique_id=1324513268]
+layout_mode = 2
+theme_override_constants/separation = 29
+
+[node name="Erupter" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2" unique_id=569481367]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "ERUPTER x"
+
+[node name="Reanimator" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2" unique_id=893639170]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "REANIMATOR x"
+
+[node name="Wretch" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2" unique_id=877799905]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "WRETCH x"
+
+[node name="Row3" type="HBoxContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels" unique_id=903478756]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Flesheaster" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=1207012522]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "FLESHEATER x"
+
+[node name="Severed" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=1045409164]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "AMALGAM x"
+
+[node name="Sundered" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=6382745]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "SUNDERED x"
+
 [node name="StartGameButton" type="Button" parent="." unique_id=294501158]
-offset_left = -35.0
-offset_top = -32.0
-offset_right = 34.0
-offset_bottom = 33.0
+offset_left = -38.0
+offset_top = -36.0
+offset_right = 31.0
+offset_bottom = 29.0
+scale = Vector2(1.1, 1.1)
+
+[node name="NextWaveTimer" type="Timer" parent="." unique_id=1900916118]
+wait_time = 25.0
+one_shot = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

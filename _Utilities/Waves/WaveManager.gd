@@ -31,6 +31,7 @@ var _all_spawning_done: bool = false
 var elapsed_time_preview_on_screen
 
 func _ready():
+	Global.register_wave_manager(self)
 	call_deferred("_setup")
 
 
@@ -46,6 +47,7 @@ func _setup():
 			_wave_previews.append(preview)
 			preview.game_start_requested.connect(_on_game_start_requested)
 			preview.call_wave_early_requested.connect(_on_call_early_wave_requested)
+			preview.set_preview_lead_time(preview_lead_time)
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
 

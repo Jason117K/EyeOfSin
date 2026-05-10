@@ -10,6 +10,7 @@ var canPlayLevel6 : bool = true
 var canPlayLevel7 : bool = true
 var sunflowerCount := 0  
 var sunflowerCountVisual := 0  
+var wave_manager
 
 var all_zombies := []
 var game_controller : GameController
@@ -46,6 +47,12 @@ func get_demon_cost(demon_name: String) -> int:
 	
 func get_current_scene_filepath():
 	return game_controller.get_current_scene_filepath()
+	
+func register_wave_manager(new_wavemanager):
+	wave_manager = new_wavemanager
+
+func get_wave_manager():
+	return wave_manager
 	
 func register_ui_layer(new_ui_layer):
 	ui_layer = new_ui_layer
