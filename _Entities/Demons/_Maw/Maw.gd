@@ -310,7 +310,8 @@ func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: floa
 	if distance_to_center < RETRACT_DISTANCE_THRESHOLD:
 		finish_tentacle_retraction(tentacle)
 	else:
-		print(RETRACT_DISTANCE_THRESHOLD, "Dist to cent is ", distance_to_center)
+		#print(RETRACT_DISTANCE_THRESHOLD, "Dist to cent is ", distance_to_center)
+		pass
 
 
 func start_tentacle_retraction(tentacle: TentacleState) -> void:

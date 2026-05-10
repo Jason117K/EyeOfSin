@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_jws62"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_2mcn8"]
 [ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_n6xao"]
+[ext_resource type="Texture2D" uid="uid://bgma2h15leoe1" path="res://_Entities/Zombies/_Severed/ConeHeadZombie.png" id="20_1rxh2"]
+[ext_resource type="Script" uid="uid://t70aqhp8gia7" path="res://_UI/GameDemonstrations/simple_demo_hue_shift.gd" id="21_mcdey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rt11t"]
 texture = ExtResource("2_1rxh2")
@@ -3125,6 +3127,10 @@ region = Rect2(930, 0, 62, 33)
 atlas = ExtResource("1_bgn1j")
 region = Rect2(992, 0, 62, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcdey"]
+atlas = ExtResource("20_1rxh2")
+region = Rect2(0, 0, 62, 33)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ihw76"]
 animations = [{
 "frames": [{
@@ -3178,6 +3184,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcdey")
+}],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -3240,8 +3254,7 @@ position = Vector2(94, 78)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ihw76")
 autoplay = "default"
-frame = 4
-frame_progress = 0.97182125
 flip_h = true
+script = ExtResource("21_mcdey")
 
 [editable path="BG/GridManager"]

@@ -63,7 +63,7 @@ func _on_basic_tutorial_understood_button_pressed() -> void:
 	get_tree().paused = false
 	
 			
-func set_visual_tutorial_text(newFile : String):
+func set_visual_tutorial_text(newFile : String, show_button : bool = true):
 	show()
 	basicTutorialMessageContainer.visible = false
 	visualTutorialContainer.visible = true
@@ -79,15 +79,26 @@ func set_visual_tutorial_text(newFile : String):
 		visualTutorialLabel.add_theme_font_size_override("normal_font_size", small_visual_tutorial_text)
 	else:
 		visualTutorialLabel.add_theme_font_size_override("normal_font_size", large_visual_tutorial_text)
+	if show_button:
+		visualTutorialButton.show()
+		pass
+	else:
+		visualTutorialButton.hide()
+		
+		
 	
 		
-func set_visual_tutorial_visual(newVisual : CenterContainer):
+func set_visual_tutorial_visual(newVisual : CenterContainer, show_button : bool = true):
 	visualTutorialVisualParent.remove_child(visualTutorialVisual)
 	visualTutorialVisual.queue_free()
 	visualTutorialVisualParent.add_child(newVisual)
 	visualTutorialVisualParent.move_child(newVisual, index)
 	visualTutorialVisual = newVisual
-	
+	if show_button:
+		visualTutorialButton.show()
+		pass
+	else:
+		visualTutorialButton.hide()	
 	
 func _on_visual_tutorial_understood_button_pressed() -> void:
 	hide()

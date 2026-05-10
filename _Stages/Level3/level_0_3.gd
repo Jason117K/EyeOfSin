@@ -3,6 +3,7 @@ extends LevelTemplate
 
 # Preloaded demo scenes
 var fleshEater_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
+var codex_demo = preload("res://_UI/GameDemonstrations/codex_demo.tscn")
 
 # Level paths
 var thisLevel := "res://_Stages/Level3/Level0-3.tscn"
@@ -18,11 +19,14 @@ const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_Place
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
 
+var maw_pulse_added := false 
+
 # Plant button container names
 
 # Cached button references
 @onready var maw_button = demonSelectionMenu.get_maw_button()
 @onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -109,8 +113,11 @@ func _input(event):
 func _start_force_select_maw():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	
-	show_only_plant_buttons(["Maw"])
+	hide_all_demon_buttons_with_exception(["Maw"])
 	demonSelectionMenu.add_pulsing_button_highlight(maw_button)
+	if maw_pulse_added == false :
+		print("Add Glow Pulse SD")
+		maw_pulse_added = true 
 	#show_spotlight_at_node(maw_button)
 	waveManager.can_start = false
 	demonSelectionMenu.canSwapScenes = false
@@ -119,13 +126,16 @@ func _start_force_select_maw():
 func _start_force_place_maw():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
 	
-	demonSelectionMenu.remove_button_highlight(maw_button)
+	#demonSelectionMenu.remove_button_highlight(maw_button)
+	print("Stop GLOW Pulse")
+	demonSelectionMenu.stop_glow_pulse(maw_button)
 	hide_spotlight()
 
 
 func _start_tutorial_p1_done():
 	toolTips.hide()
-	show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
+	#show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
 	demonSelectionMenu.canSwapScenes = true
 
 
@@ -137,7 +147,7 @@ func start_game():
 	if waveManager.can_start:
 		return
 
-	show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
@@ -149,15 +159,23 @@ func _start_explain_fleshEater_zombie():
 
 
 func _start_explain_codex():
-	hbox.get_node("Codex").visible = true
+	#hbox.get_node("Codex").visible = true
+	codex_button.show()
 	codex_button.visible = true
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CODEX, false)
+	codex_button.pressed.connect(toolTips._on_visual_tutorial_understood_button_pressed)
+	#toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CODEX, false)
+	toolTips.set_visual_tutorial_text(TUTORIAL_SELECT_CODEX)
+	
+	demonSelectionMenu.add_pulsing_button_highlight(demonSelectionMenu.get_codex_button())
+	print("Add Glow Pulse F")
+	toolTips.set_visual_tutorial_visual(codex_demo.instantiate(), false)
 	
 	#show_spotlight_at_node(codex_button)
 
 
 func _start_tutorial_p2_done():
-	toolTips._on_Button_pressed()
+	demonSelectionMenu.stop_glow_pulse(demonSelectionMenu.get_codex_button())
+	#toolTips._on_Button_pressed()
 #endregion
 
 
@@ -212,10 +230,14 @@ func _on_wave_started(wave_index: int):
 
 #region UI Helpers
 func setup_plant_selection_menu():
-	hbox.get_node("Maw").visible = true
-	hbox.get_node("WorldSwap").visible = true
-	hbox.get_node("RemovePlant").visible = true
-	hbox.get_node("Codex").visible = true
+	#hbox.get_node("Maw").visible = true
+	demonSelectionMenu.get_maw_button().show()
+	#hbox.get_node("WorldSwap").visible = true
+	demonSelectionMenu.get_world_swap_button().show()
+	#hbox.get_node("RemovePlant").visible = true
+	demonSelectionMenu.get_remove_demon_button().show()
+# 	hbox.get_node("Codex").visible = true
+	demonSelectionMenu.get_codex_button().show()
 
 
 func show_only_plant_buttons(visible_containers: Array):

@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cdlvi1sqbawix" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText4.png" id="5_vvged"]
 [ext_resource type="Texture2D" uid="uid://b13m4nfeccjgl" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText2.png" id="6_04elx"]
 [ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://_Entities/Demons/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
-[ext_resource type="StyleBox" uid="uid://cql62ig3tywq8" path="res://_Common/StyleBoxes/demon_normal_button.tres" id="8_3emsw"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://bowkp4mknv1ul" path="res://_Assets/UI/DemonCard_Portal_GreenButton.png" id="10_bcru6"]
 [ext_resource type="Texture2D" uid="uid://cs7hq3cbnjody" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText5.png" id="10_iafbj"]
@@ -41,10 +40,10 @@ script = ExtResource("1")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 13.705
-offset_right = 519.845
-offset_bottom = 76.990005
+offset_left = 102.75
+offset_top = 7.0
+offset_right = 473.75
+offset_bottom = 91.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
 
@@ -249,17 +248,6 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="Codex" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=396055590]
-visible = false
-layout_mode = 2
-
-[node name="CodexButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex" unique_id=820887150]
-visible = false
-layout_mode = 2
-theme_override_constants/icon_max_width = 67
-theme_override_styles/normal = ExtResource("8_3emsw")
-icon = ExtResource("14_04elx")
-
 [node name="Codex2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1905932608]
 layout_mode = 2
 
@@ -292,6 +280,5 @@ stretch_mode = 0
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex/CodexButton" to="." method="_on_codex_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]

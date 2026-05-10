@@ -99,8 +99,10 @@ func _input(event):
 func _start_force_select_wyrm():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	
-	show_only_plant_buttons(["Egg"])
-	hbox.get_node("Egg").visible = true
+	#show_only_plant_buttons(["Egg"])
+	hide_all_demon_buttons_with_exception(["Wyrm"])
+	#hbox.get_node("Egg").visible = true
+	
 	demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
 	waveManager.can_start = false
 	demonSelectionMenu.canSwapScenes = false
@@ -109,7 +111,8 @@ func _start_force_select_wyrm():
 func _start_force_place_wyrm():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WYRM, false)
 	
-	demonSelectionMenu.remove_button_highlight(wyrm_button)
+	#demonSelectionMenu.remove_button_highlight(wyrm_button)
+	demonSelectionMenu.stop_glow_pulse(wyrm_button)
 	hide_spotlight()
 
 
@@ -191,12 +194,13 @@ func show_only_plant_buttons(visible_containers: Array):
 
 func _show_all_buttons():
 	show_only_plant_buttons(["Sunflower", "Walnut", "Egg", "Maw", "Peashooter"])
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw", "Wyrm"])
 	# Also show non-plant UI
-	hbox.get_node("Sunflower").visible = true
-	hbox.get_node("Walnut").visible = true
-	hbox.get_node("Maw").visible = true
-	hbox.get_node("WorldSwap").visible = true
-	hbox.get_node("Codex").visible = true
+	#hbox.get_node("Sunflower").visible = true
+	#hbox.get_node("Walnut").visible = true
+	#hbox.get_node("Maw").visible = true
+	#hbox.get_node("WorldSwap").visible = true
+	#hbox.get_node("Codex").visible = true
 
 
 func remove_empty_blocker_plant(grid_pos):

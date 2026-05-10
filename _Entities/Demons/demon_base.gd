@@ -89,7 +89,8 @@ func get_is_buffed():
 	return isBuffed
 
 func increase_health(added_health_amount):
-	healthComp.increase_health(added_health_amount)
+	if healthComp.is_node_ready():
+		healthComp.increase_health(added_health_amount)
 
 func increase_max_health(added_health_amount):
 	healthComp.increase_max_health(added_health_amount)
@@ -99,6 +100,7 @@ func take_damage(damage):
 	healthComp.take_damage(damage)
 
 func get_health():
+	print(self, " now getting the health")
 	return healthComp.get_health()
 	
 	

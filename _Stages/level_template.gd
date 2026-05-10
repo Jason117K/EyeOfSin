@@ -16,7 +16,7 @@ var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
 @onready var toolTips = $"../ToolTips"
 @onready var plantManager = $PlantManager
-@onready var demonSelectionMenu = $"../DemonSelectionMenu" 
+@onready var demonSelectionMenu := $"../DemonSelectionMenu" 
 #@onready var waveManager = $GameLayer/WaveManager
 @onready var waveManager = get_parent().get_node("WaveManager")
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
@@ -78,22 +78,24 @@ func _on_end_dialog_finished():
 ## Hides all plant buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Sunflower"]
 func hide_all_demon_buttons_with_exception(exceptions: Array = []):
-	print("Exceptions Are ",exceptions)
+	#print("Exceptions Are ",exceptions)
 	for container_name in ALL_DEMON_CONTAINERS:
 		if container_name in exceptions:
-			print(container_name , " is in ",exceptions )
+			pass
+			#print(container_name , " is in ",exceptions )
 		else:
-			print(container_name , " is not in ",exceptions )
+			pass
+			#print(container_name , " is not in ",exceptions )
 		
 		
 		
-		print("container_name is ",container_name)
-		print("demon box is is ",_plant_hbox)
+		#print("container_name is ",container_name)
+		#print("demon box is is ",_plant_hbox)
 		if _plant_hbox.get_node(container_name) != null:
 			var container = _plant_hbox.get_node(container_name)
 			
 			var should_show = container_name in exceptions
-			print(should_show, " container is IS ",container)
+			#print(should_show, " container is IS ",container)
 			container.visible = should_show
 			for child in container.get_children():
 				child.visible = should_show

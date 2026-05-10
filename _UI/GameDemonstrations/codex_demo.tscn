@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcdckuvhohdit"]
+
+[ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://_Assets/Misc/CODEX_CARD.png" id="1_mp0sf"]
+
+[node name="CodexDemo" type="CenterContainer" unique_id=695442406]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CodexButton" type="TextureButton" parent="." unique_id=717656679]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_mp0sf")
+ignore_texture_size = true
+stretch_mode = 0

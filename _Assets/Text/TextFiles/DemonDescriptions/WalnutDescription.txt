@@ -1,10 +1,7 @@
 The Caged Oculum are a sub-species of Oculum that have dense, rib-like protrusions around their delicate eyes. It is believed they evolved to withstand harsh blood-storms. 
-
 - Blocks zombies from progressing further, taking damage to stall their advance
 
-- Strong VS
-	- High Health
+- Strong VS               -Weak VS
+	- High Health         	-High Numbers
 	- High Speed
 	
-- Weak VS 
-	- High Numbers

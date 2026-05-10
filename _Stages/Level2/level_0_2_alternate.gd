@@ -16,17 +16,9 @@ func start_game():
 func _on_walnut_placed(grid_pos: Vector2):
 	print("[Tutorial] Walnut placement complete - tutorial finished")
 	toolTips.hide()
-	show_all_plant_buttons()
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler"])
 	# Tutorial complete - no further forced actions
 	
-func show_all_plant_buttons():
-	# Show Sunflower
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = true
-
-	# Show Spyder
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true
 
 func add_sun(sunAmount):
 	plantManager.add_sun(sunAmount)

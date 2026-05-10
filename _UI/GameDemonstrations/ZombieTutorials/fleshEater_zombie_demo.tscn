@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_axxmi"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_gbfqc"]
 [ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_7wiiv"]
+[ext_resource type="Texture2D" uid="uid://87mvflvt25ip" path="res://_Entities/Zombies/_Flesheater/FootBallZombie.png" id="20_ae300"]
+[ext_resource type="Script" uid="uid://t70aqhp8gia7" path="res://_UI/GameDemonstrations/simple_demo_hue_shift.gd" id="21_0kjbm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xly3p"]
 texture = ExtResource("2_7wiiv")
@@ -3121,6 +3123,10 @@ region = Rect2(1395, 0, 93, 40)
 atlas = ExtResource("1_dlscw")
 region = Rect2(1488, 0, 93, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kjbm"]
+atlas = ExtResource("20_ae300")
+region = Rect2(0, 0, 93, 40)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_rqy3p"]
 animations = [{
 "frames": [{
@@ -3171,6 +3177,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kjbm")
+}],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -3233,5 +3247,6 @@ position = Vector2(31.999989, 53)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_rqy3p")
 autoplay = "default"
+script = ExtResource("21_0kjbm")
 
 [editable path="BG/GridManager"]

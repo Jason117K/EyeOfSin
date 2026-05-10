@@ -1,6 +1,5 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bhv03xsgolkhx"]
 
-[ext_resource type="Texture2D" uid="uid://ce1kshsbddsup" path="res://_Entities/Zombies/_Flesheater/FootballZombie-Sheet.png" id="1_5c2py"]
 [ext_resource type="Texture2D" uid="uid://ce1kshsbddsup" path="res://_Entities/Zombies/_Flesheater/FootballZombie-Sheet.png" id="1_x5vy3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kf5v"]
@@ -28,27 +27,27 @@ atlas = ExtResource("1_x5vy3")
 region = Rect2(558, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5vy3"]
-atlas = ExtResource("1_5c2py")
+atlas = ExtResource("1_x5vy3")
 region = Rect2(93, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5h3hh"]
-atlas = ExtResource("1_5c2py")
+atlas = ExtResource("1_x5vy3")
 region = Rect2(186, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0krqq"]
-atlas = ExtResource("1_5c2py")
+atlas = ExtResource("1_x5vy3")
 region = Rect2(279, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5h60"]
-atlas = ExtResource("1_5c2py")
+atlas = ExtResource("1_x5vy3")
 region = Rect2(372, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vahdi"]
-atlas = ExtResource("1_5c2py")
+atlas = ExtResource("1_x5vy3")
 region = Rect2(465, 0, 93, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm88f"]
-atlas = ExtResource("1_5c2py")
+atlas = ExtResource("1_x5vy3")
 region = Rect2(558, 0, 93, 40)
 
 [resource]

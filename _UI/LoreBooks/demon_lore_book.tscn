@@ -14,10 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://c20e4aa6kqxl2" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_MAW.png" id="13_hqwrb"]
 [ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_WYRM.png" id="14_te31g"]
 [ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_Base.png" id="15_8exk2"]
+[ext_resource type="StyleBox" uid="uid://c3c28155s7n1n" path="res://_Common/StyleBoxes/black_flat.tres" id="15_gyohk"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g75u1"]
 
-[node name="PlantLoreBook" type="Control" unique_id=97848138]
+[node name="DemonLoreBook" type="Control" unique_id=97848138]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -39,7 +40,7 @@ scale = Vector2(12.1563, 8.09375)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=627385222]
 position = Vector2(370, 206)
 
-[node name="CurrentPlantLabel" type="RichTextLabel" parent="." unique_id=2124714015]
+[node name="CurrentDemonLabel" type="RichTextLabel" parent="." unique_id=2124714015]
 layout_mode = 0
 offset_left = 401.0
 offset_top = 244.0
@@ -85,28 +86,28 @@ offset_bottom = 454.0
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="AllPlantRows" type="VBoxContainer" parent="HBoxContainer" unique_id=287999705]
+[node name="AllDemonRows" type="VBoxContainer" parent="HBoxContainer" unique_id=287999705]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1010203393]
+[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1010203393]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="Sunflower" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1" unique_id=1900871465]
+[node name="Sunflower" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=1900871465]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("5_jm2ht")
 stretch_mode = 4
 
-[node name="Peashooter" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1" unique_id=342407816]
+[node name="Peashooter" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=342407816]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("6_28t4q")
 stretch_mode = 5
 
-[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row1" unique_id=1696769767]
+[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=1696769767]
 visible = false
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -114,61 +115,61 @@ texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PlantNames1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1209401893]
+[node name="DemonNames1" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1209401893]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 23
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1038732148]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1038732148]
 layout_mode = 2
 
-[node name="EyeLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=2034527998]
+[node name="EyeLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=2034527998]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "EYE"
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1217756370]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1217756370]
 layout_mode = 2
 theme_override_constants/margin_right = 55
 
-[node name="SpyderLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=987055448]
+[node name="SpyderLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=987055448]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "SPYDER"
 
-[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1524718653]
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1524718653]
 layout_mode = 2
 theme_override_constants/margin_right = 25
 
-[node name="WalnutLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames1" unique_id=1302543777]
+[node name="WalnutLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1302543777]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "O-SPINE"
 
-[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1178864748]
+[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1178864748]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=337339227]
+[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=337339227]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Maw" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=794088523]
+[node name="Maw" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=794088523]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("9_btjlo")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="EyeBomb" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=22459720]
+[node name="EyeBomb" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=22459720]
 visible = false
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
@@ -176,7 +177,7 @@ texture_normal = SubResource("CompressedTexture2D_g75u1")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=2085581078]
+[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=2085581078]
 visible = false
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -184,7 +185,7 @@ texture_normal = ExtResource("11_mcd4t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Hive" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row2" unique_id=510701508]
+[node name="Hive" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=510701508]
 visible = false
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -192,158 +193,139 @@ texture_normal = ExtResource("12_i2p6p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="PlantNames2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=229843166]
+[node name="DemonNames2" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=229843166]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 22
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=493684138]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=493684138]
 layout_mode = 2
 
-[node name="MawLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=1313293612]
+[node name="MawLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=1313293612]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "MAW"
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=134442084]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=134442084]
 layout_mode = 2
 theme_override_constants/margin_right = 45
 
-[node name="WyrmLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=227279318]
+[node name="WyrmLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=227279318]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "WYRM"
 
-[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=1187907957]
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=1187907957]
 layout_mode = 2
 theme_override_constants/margin_right = 50
 
-[node name="HiveLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames2" unique_id=1428129755]
+[node name="HiveLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=1428129755]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "HIVE"
 
-[node name="PlantNames3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=113310672]
+[node name="DemonNames3" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=113310672]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/PlantNames3" unique_id=648118578]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames3" unique_id=648118578]
 layout_mode = 2
 theme_override_constants/margin_right = 212
 
-[node name="MawLabel" type="Label" parent="HBoxContainer/AllPlantRows/PlantNames3" unique_id=771669505]
+[node name="MawLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames3" unique_id=771669505]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 32
 text = "MAW"
 
-[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1772946496]
+[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1772946496]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row3" unique_id=1306419466]
+[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row3" unique_id=1306419466]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("11_mcd4t")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Hive" type="TextureButton" parent="HBoxContainer/AllPlantRows/Row3" unique_id=858027766]
+[node name="Hive" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row3" unique_id=858027766]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("12_i2p6p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AltRow1" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1802603340]
+[node name="AltRow1" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1802603340]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="Alt1" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow1" unique_id=1360651257]
+[node name="Alt1" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow1" unique_id=1360651257]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt2" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow1" unique_id=249098203]
+[node name="Alt2" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow1" unique_id=249098203]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AltRow2" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=142716490]
+[node name="AltRow2" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=142716490]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="Alt3" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow2" unique_id=2053529146]
+[node name="Alt3" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow2" unique_id=2053529146]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt4" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow2" unique_id=214639677]
+[node name="Alt4" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow2" unique_id=214639677]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AltRow3" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=2037741047]
+[node name="AltRow3" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=2037741047]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="Alt5" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow3" unique_id=217192327]
+[node name="Alt5" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow3" unique_id=217192327]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt6" type="TextureButton" parent="HBoxContainer/AllPlantRows/AltRow3" unique_id=71210810]
+[node name="Alt6" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow3" unique_id=71210810]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows" unique_id=1159880042]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows" unique_id=1159880042]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/AllPlantRows" unique_id=1613663661]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllPlantRows/HBoxContainer" unique_id=1094706216]
-layout_mode = 2
-theme_override_constants/margin_right = 75
-
-[node name="BackButton" type="Button" parent="HBoxContainer/AllPlantRows/HBoxContainer" unique_id=992794287]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("2_r6hpg")
-theme_override_font_sizes/font_size = 24
-text = "BACK"
-
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllPlantRows/HBoxContainer" unique_id=1218859726]
-layout_mode = 2
-theme_override_constants/margin_right = 280
 
 [node name="BackOutDetails" type="Button" parent="." unique_id=682929152]
 visible = false
@@ -377,21 +359,34 @@ offset_bottom = 238.0
 texture = ExtResource("15_8exk2")
 expand_mode = 1
 
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Sunflower" to="VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Peashooter" to="VBoxContainer/TextureRect" method="_on_peashooter_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row1/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EyeBomb" to="VBoxContainer/TextureRect" method="_on_eye_bomb_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row2/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row3/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllPlantRows/HBoxContainer/BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]
+[node name="BackButton" type="Button" parent="." unique_id=992794287]
+custom_minimum_size = Vector2(300, 35)
+layout_mode = 0
+offset_left = 223.0
+offset_top = 346.0
+offset_right = 523.0
+offset_bottom = 384.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_r6hpg")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("15_gyohk")
+text = "BACK"
+
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Sunflower" to="VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Peashooter" to="VBoxContainer/TextureRect" method="_on_peashooter_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/EyeBomb" to="VBoxContainer/TextureRect" method="_on_eye_bomb_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
 [connection signal="pressed" from="BackOutDetails" to="VBoxContainer/TextureRect" method="_on_back_out_details_pressed"]
+[connection signal="pressed" from="BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]

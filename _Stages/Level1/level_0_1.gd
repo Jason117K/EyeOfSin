@@ -294,7 +294,7 @@ func highlight_spyder_button():
 
 
 func unhighlight_spyder_button():
-	demonSelectionMenu.remove_button_highlight(crawler_button)
+	#demonSelectionMenu.remove_button_highlight(crawler_button)
 	demonSelectionMenu.stop_glow_pulse(crawler_button)
 
 

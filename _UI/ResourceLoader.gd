@@ -1,20 +1,22 @@
 extends Node
 
-# Plant Types
-enum PlantType {BOMBPLANT, SUNFLOWER,PEASHOOTER,HIVE,MAW,WALNUT,EGGWYRM}
+# Demon Types
+enum DemonType {OCCULUM,CRAWLER,HIVE,MAW,SPINALOCCULUM,WYRM}
 
 # Zombie Types
 enum ZombieType {BASEZOMBIE, CONEHEAD,BUCKETHEAD,DANCERZOMBIE,BACKUPDANCERZOMBIE,
 FOOTBALLZOMBIE,POLEVAULTZOMBIE,SCREENDOORZOMBIE,TICKER}
 
 # Resource Caches
-var plant_images = {}
-var plant_variation_images = {}
+var demon_images = {}
+var demon_variation_images = {}
 
-var plant_animations = {}
+var demon_animations = {}
 
 var zombie_images = {}
 var zombie_animations = {}
+
+@onready var empty_animation := ResourceLoader.load("res://_Entities/Zombies/ImgAnimationResources/empty.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
 
 # Called when the node enters the scene tree for the first time
 func _ready():
@@ -26,13 +28,13 @@ func _ready():
 	
 # Initialize the resource cache dictionaries
 func _initialize_resource_caches():
-	for this_plantType in PlantType.values():
-		print("PP : ", this_plantType)
-		plant_images[this_plantType] = {}
-		plant_animations[this_plantType] = {}
-		plant_variation_images[this_plantType] = []
-		#for this_plantType2 in PlantType.values():
-			#plant_variation_images[this_plantType2] = {}
+	for this_demonType in DemonType.values():
+		print("PP : ", this_demonType)
+		demon_images[this_demonType] = {}
+		demon_animations[this_demonType] = {}
+		demon_variation_images[this_demonType] = []
+		#for this_demonType2 in DemonType.values():
+			#demon_variation_images[this_demonType2] = {}
 		
 	for this_zombieType in ZombieType.values():
 		print("ZZ : ", this_zombieType)
@@ -41,52 +43,51 @@ func _initialize_resource_caches():
 
 # Load all Resources
 func _load_resources():
-							  		#PlantType         , FileName
-	_load_plant_type_image_resource(PlantType.SUNFLOWER, "Sunflower.png")
-	_load_plant_type_image_resource(PlantType.PEASHOOTER, "Spyder.png")
-	_load_plant_type_image_resource(PlantType.WALNUT, "Walnut.png")
-	_load_plant_type_image_resource(PlantType.EGGWYRM, "EggWyrm.png")
-	_load_plant_type_image_resource(PlantType.HIVE, "Hive.png")
-	_load_plant_type_image_resource(PlantType.MAW, "MawImage.png")
-	_load_plant_type_image_resource(PlantType.BOMBPLANT, "EyeBomb.png")
+							  		#DemonType         , FileName
+	_load_demon_type_image_resource(DemonType.OCCULUM, "Sunflower.png")
+	_load_demon_type_image_resource(DemonType.CRAWLER, "Spyder.png")
+	_load_demon_type_image_resource(DemonType.SPINALOCCULUM, "Walnut.png")
+	_load_demon_type_image_resource(DemonType.WYRM, "EggWyrm.png")
+	_load_demon_type_image_resource(DemonType.HIVE, "Hive.png")
+	_load_demon_type_image_resource(DemonType.MAW, "MawImage.png")
 	
-	_load_plant_type_image_resource_variation(PlantType.SUNFLOWER, "res://Assets/Demons/Icons/EyeSunTowerIdle_MAW.png")
-	_load_plant_type_image_resource_variation(PlantType.SUNFLOWER, "res://Assets/Demons/Icons/EyeSunTowerIdle_HIVE.png")
-	_load_plant_type_image_resource_variation(PlantType.SUNFLOWER, "res://Assets/Demons/Icons/EyeSunTowerIdle_SPYDER.png")
-	_load_plant_type_image_resource_variation(PlantType.SUNFLOWER, "res://Assets/Demons/Icons/EyeSunTowerIdle_WALNUT.png")
-	_load_plant_type_image_resource_variation(PlantType.SUNFLOWER, "res://Assets/Demons/Icons/EyeSunTowerIdle_WYRM.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_MAW.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_HIVE.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_SPYDER.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_WALNUT.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_WYRM.png")
 	
-	_load_plant_type_image_resource_variation(PlantType.PEASHOOTER, "res://Assets/Demons/Icons/SpiderIdle_Hive.png")
-	_load_plant_type_image_resource_variation(PlantType.PEASHOOTER, "res://Assets/Demons/Icons/SpiderIdle_MAW.png")
-	_load_plant_type_image_resource_variation(PlantType.PEASHOOTER, "res://Assets/Demons/Icons/SpiderIdle_SUN.png")
-	_load_plant_type_image_resource_variation(PlantType.PEASHOOTER, "res://Assets/Demons/Icons/SpiderIdle_Walnut.png")
-	_load_plant_type_image_resource_variation(PlantType.PEASHOOTER, "res://Assets/Demons/Icons/SpiderIdle_Wyrm.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_Hive.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_MAW.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_SUN.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_Walnut.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_Wyrm.png")
 	
-	_load_plant_type_image_resource_variation(PlantType.WALNUT, "res://Assets/Demons/Icons/OccularSpineIdle_EYESUN.png")
-	_load_plant_type_image_resource_variation(PlantType.WALNUT, "res://Assets/Demons/Icons/OccularSpineIdle_HIVE.png")
-	_load_plant_type_image_resource_variation(PlantType.WALNUT, "res://Assets/Demons/Icons/OccularSpineIdle_MAW.png")
-	_load_plant_type_image_resource_variation(PlantType.WALNUT, "res://Assets/Demons/Icons/OccularSpineIdle_SPYDER.png")
-	_load_plant_type_image_resource_variation(PlantType.WALNUT, "res://Assets/Demons/Icons/OccularSpineIdle_WYRM.png")
+	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_EYESUN.png")
+	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_HIVE.png")
+	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_MAW.png")
+	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_SPYDER.png")
+	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_WYRM.png")
 	
 	
-	_load_plant_type_image_resource_variation(PlantType.EGGWYRM, "res://Assets/Demons/Icons/Wyrm_Eye.png")
-	_load_plant_type_image_resource_variation(PlantType.EGGWYRM, "res://Assets/Demons/Icons/Wyrm_Hive.png")
-	_load_plant_type_image_resource_variation(PlantType.EGGWYRM, "res://Assets/Demons/Icons/Wyrm_Maw.png")
-	_load_plant_type_image_resource_variation(PlantType.EGGWYRM, "res://Assets/Demons/Icons/Wyrm_Spider.png")
-	_load_plant_type_image_resource_variation(PlantType.EGGWYRM, "res://Assets/Demons/Icons/Wyrm_Walnut.png")
+	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Eye.png")
+	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Hive.png")
+	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Maw.png")
+	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Spider.png")
+	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Walnut.png")
 	
 		
-	_load_plant_type_image_resource_variation(PlantType.HIVE,"res://Assets/Demons/Icons/Hive_Maw.png" )
-	_load_plant_type_image_resource_variation(PlantType.HIVE, "res://Assets/Demons/Icons/Hive_Spider.png")
-	_load_plant_type_image_resource_variation(PlantType.HIVE, "res://Assets/Demons/Icons/Hive_Sun.png")
-	_load_plant_type_image_resource_variation(PlantType.HIVE, "res://Assets/Demons/Icons/Hive_Walnut.png")
-	_load_plant_type_image_resource_variation(PlantType.HIVE, "res://Assets/Demons/Icons/Hive_Wyrm.png")
+	_load_demon_type_image_resource_variation(DemonType.HIVE,"Hive_Maw.png" )
+	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Spider.png")
+	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Sun.png")
+	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Walnut.png")
+	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Wyrm.png")
 	
-	_load_plant_type_image_resource_variation(PlantType.MAW, "res://Assets/Demons/Icons/Maw_Hive.png")
-	_load_plant_type_image_resource_variation(PlantType.MAW, "res://Assets/Demons/Icons/Maw_Spider.png")
-	_load_plant_type_image_resource_variation(PlantType.MAW, "res://Assets/Demons/Icons/Maw_Sun.png")
-	_load_plant_type_image_resource_variation(PlantType.MAW, "res://Assets/Demons/Icons/Maw_Walnut.png")
-	_load_plant_type_image_resource_variation(PlantType.MAW, "res://Assets/Demons/Icons/Maw_Wyrm.png")
+	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Hive.png")
+	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Spider.png")
+	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Sun.png")
+	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Walnut.png")
+	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Wyrm.png")
 		
 	
 	_load_zombie_type_image_resource(ZombieType.BASEZOMBIE,"BasicZombie.png")
@@ -101,13 +102,12 @@ func _load_resources():
 	
 	
 	
-	_load_plant_type_animation_resource(PlantType.SUNFLOWER, "Sunflower.tres")
-	_load_plant_type_animation_resource(PlantType.PEASHOOTER, "Spyder.tres")
-	_load_plant_type_animation_resource(PlantType.WALNUT, "Walnut.tres")
-	_load_plant_type_animation_resource(PlantType.EGGWYRM, "EggWorm.tres")
-	_load_plant_type_animation_resource(PlantType.HIVE, "Hive.tres")
-	_load_plant_type_animation_resource(PlantType.MAW, "Maw.tres")
-	_load_plant_type_animation_resource(PlantType.BOMBPLANT, "EyeBomb.tres")
+	_load_demon_type_animation_resource(DemonType.OCCULUM, "Sunflower.tres")
+	_load_demon_type_animation_resource(DemonType.CRAWLER, "Spyder.tres")
+	_load_demon_type_animation_resource(DemonType.SPINALOCCULUM, "Walnut.tres")
+	_load_demon_type_animation_resource(DemonType.WYRM, "EggWorm.tres")
+	_load_demon_type_animation_resource(DemonType.HIVE, "Hive.tres")
+	_load_demon_type_animation_resource(DemonType.MAW, "Maw.tres")
 	
 	_load_zombie_type_animation_resource(ZombieType.BASEZOMBIE,"BaseZombie.tres")
 	_load_zombie_type_animation_resource(ZombieType.CONEHEAD,"Severed.tres")
@@ -119,66 +119,66 @@ func _load_resources():
 	_load_zombie_type_animation_resource(ZombieType.SCREENDOORZOMBIE,"ScreenDoorZombie.tres")
 	_load_zombie_type_animation_resource(ZombieType.TICKER,"TickerFrames.tres")
 	
-	#print("Plant Variation Images 1 is ", plant_variation_images[1])
+	#print("Demon Variation Images 1 is ", demon_variation_images[1])
 	
 	
 # Helper function to load resources for a specific tower type
-func _load_plant_type_image_resource(plant_type,file_name):
-	var img_base_path = "res://Assets/Sprites/" 
+func _load_demon_type_image_resource(demon_type,file_name):
+	var img_base_path = "res://_Assets/Sprites/" 
 	var img_path:String = img_base_path + file_name 
 	
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading image from " + img_path)
 	var img_resource = ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
-	plant_images[plant_type] = img_resource
-	plant_variation_images[plant_type].append(img_resource)
+	demon_images[demon_type] = img_resource
+	demon_variation_images[demon_type].append(img_resource)
 	
-func _load_plant_type_image_resource_variation(plant_type,file_name):
+func _load_demon_type_image_resource_variation(demon_type,file_name):
 	#var img_base_path =  "res://Assets/Demons/Icons/"
-	var img_base_path =  ""
+	var img_base_path =  "res://_Entities/Demons/Icons/"
 	var img_path:String = img_base_path + file_name 
 	
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading image from " + img_path)
 	var img_resource = ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
-	plant_variation_images[plant_type].append(img_resource)
+	demon_variation_images[demon_type].append(img_resource)
 
 # Helper function to load resources for a specific tower type
-func _load_plant_type_animation_resource(plant_type,file_name):
-	var anim_base_path = "res://Assets/Animations/"
+func _load_demon_type_animation_resource(demon_type,file_name):
+	var anim_base_path = "res://_Entities/Demons/AnimationResources/"
 	var anim_path:String = anim_base_path + file_name 
 	
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading animation from " + anim_path)
 	var anim_resource = ResourceLoader.load(anim_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	print("Added : ", anim_resource)
-	plant_animations[plant_type]= anim_resource
+	demon_animations[demon_type]= anim_resource
 
 
 # Get a alien image by type, 
-func get_plant_image(plant_type):
-	if not plant_images.has(plant_type):
-		print("ResourceManager: Error - Resource not found for image:",plant_type)
+func get_demon_image(demon_type):
+	if not demon_images.has(demon_type):
+		print("ResourceManager: Error - Resource not found for image:",demon_type)
 		return null
-	return plant_images[plant_type]
+	return demon_images[demon_type]
 	
-func get_demon_image_variations(plant_type):
+func get_demon_image_variations(demon_type):
 	
-	return plant_variation_images[plant_type]
+	return demon_variation_images[demon_type]
 	
 # Get a alien animation by type,
-func get_plant_animation(plant_type):
-	if not plant_animations.has(plant_type):
-		print("ResourceManager: Error - Resource not found for animation:", plant_type)
+func get_demon_animation(demon_type):
+	if not demon_animations.has(demon_type):
+		print("ResourceManager: Error - Resource not found for animation:", demon_type)
 		return null
-	print("This ", plant_animations[plant_type])
-	return plant_animations[plant_type]
+	print("This Demon Type : ", demon_type, " has animation : ", demon_animations[demon_type])
+	return demon_animations[demon_type]
 	
 
 
 # Helper function to load resources for a specific zombie type
 func _load_zombie_type_image_resource(zombie_type,file_name):
-	var img_base_path = "res://Assets/Sprites/" 
+	var img_base_path = "res://_Entities/Zombies/ImgAnimationResources/"
 	var img_path:String = img_base_path + file_name 
 	
 	# Force immediate loading with ResourceLoader
@@ -190,7 +190,7 @@ func _load_zombie_type_image_resource(zombie_type,file_name):
 
 # Helper function to load resources for a specific tower type
 func _load_zombie_type_animation_resource(zombie_type,file_name):
-	var anim_base_path = "res://Assets/Zombies/Animations/Spriteframes/"
+	var anim_base_path = "res://_Entities/Zombies/ImgAnimationResources/"
 	var anim_path:String = anim_base_path + file_name 
 	
 	# Force immediate loading with ResourceLoader
@@ -215,7 +215,8 @@ func get_zombie_animation(zombie_type):
 	print("This ", zombie_animations[zombie_type])
 	return zombie_animations[zombie_type]
 	
-	
+func get_empty():
+	return empty_animation
 	
 	
 	

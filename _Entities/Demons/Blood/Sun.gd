@@ -35,7 +35,9 @@ func heal_plants():
 		if demon == null:
 			plants_to_heal.erase(demon)
 		if demon != null:
-			demon.increase_health(100)
+			if demon.is_node_ready():
+			#	print("Demon is ", demon )
+				demon.increase_health(100)
 			
 		pass
 

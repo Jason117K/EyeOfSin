@@ -254,7 +254,7 @@ func restore_previous_scene():
 	
 	
 func change_scene_with_pause(new_scene : String):
-#	print("PPChanging scene with PAUSE to ", new_scene)
+	print("PPChanging scene with PAUSE to ", new_scene)
 	pauseButton.visible = false 
 	if current_scene == null:
 		pass

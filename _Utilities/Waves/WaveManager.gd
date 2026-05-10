@@ -72,14 +72,14 @@ func get_current_wave() -> int:
 
 ## Called when the player clicks the Start button (gated by can_start).
 func _on_game_start_requested() -> void:
-	print("START REEEEEEE")
+	#print("START REEEEEEE")
 	if not can_start:
-		print("CANNOT START")
+		#print("CANNOT START")
 		return
 	_start_wave(0)
 
 func _on_call_early_wave_requested():
-	print("Requested Early Wave, current wave is ",_current_wave )
+	#print("Requested Early Wave, current wave is ",_current_wave )
 	#_start_wave(_current_wave + 1)
 	if (_current_wave + 1) < wave_delays.size():
 		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
@@ -95,7 +95,7 @@ func start_next_wave() -> void:
 
 
 func _start_wave(index: int) -> void:
-	print("START WAVEEEEEEEEE ", index)
+	#print("START WAVEEEEEEEEE ", index)
 	if index < 0 or index >= _total_waves:
 		return
 

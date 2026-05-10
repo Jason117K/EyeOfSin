@@ -22,4 +22,4 @@ func _on_open_demon_codex_pressed() -> void:
 	print("PAUSE GAME")
 	get_tree().paused = true
 	Global.game_controller.change_scene_with_pause("res://Scenes/Systems/lore_book_opener.tscn")
-	#Global.game_controller.change_scene_with_pause("res://Scenes/Systems/plant_lore_book.tscn")
+	#Global.game_controller.change_scene_with_pause("res://Scenes/Systems/demon_lore_book.tscn")

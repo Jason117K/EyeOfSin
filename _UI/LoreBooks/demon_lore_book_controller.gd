@@ -1,31 +1,31 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var sunflowerButton = $"../AllPlantRows/Row1/Sunflower"
-@onready var peashooterButton = $"../AllPlantRows/Row1/Peashooter"
-@onready var walnutButton = $"../AllPlantRows/Row1/Walnut"
-@onready var eyeBombButton = $"../AllPlantRows/Row2/EyeBomb"
-@onready var eggWyrmButton = $"../AllPlantRows/Row2/EggWrym" 
-@onready var hiveButton = $"../AllPlantRows/Row2/Hive" 
-@onready var mawButton = $"../AllPlantRows/Row3/Maw"
+@onready var sunflowerButton = $"../AllDemonRows/Row1/Sunflower"
+@onready var peashooterButton = $"../AllDemonRows/Row1/Peashooter"
+@onready var walnutButton = $"../AllDemonRows/Row1/Walnut"
+@onready var eyeBombButton = $"../AllDemonRows/Row2/EyeBomb"
+@onready var eggWyrmButton = $"../AllDemonRows/Row2/EggWrym" 
+@onready var hiveButton = $"../AllDemonRows/Row2/Hive" 
+@onready var mawButton = $"../AllDemonRows/Row3/Maw"
 
-@onready var currentPlantLabel = $"../../CurrentPlantLabel"
+@onready var currentDemonLabel = $"../../CurrentDemonLabel"
 @onready var bgDarken = $"../../BGDarkEn"
 @onready var synergyPanel = $"../../ToolTips"
 @onready var backOutDetailsButton = $"../../BackOutDetails"
-#@onready var moreInfoButton =$"../../HBoxContainer/AllPlantRows/HBoxContainer/MoreInfoButton"
+#@onready var moreInfoButton =$"../../HBoxContainer/AllDemonRows/HBoxContainer/MoreInfoButton"
 @onready var staticPreview := $"../../StaticPreview"
 
-@onready var alt1 = $"../../HBoxContainer/AllPlantRows/AltRow1/Alt1"
-@onready var alt2 = $"../../HBoxContainer/AllPlantRows/AltRow1/Alt2"
-@onready var alt3 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt3"
-@onready var alt4 = $"../../HBoxContainer/AllPlantRows/AltRow2/Alt4"
-@onready var alt5 = $"../../HBoxContainer/AllPlantRows/AltRow3/Alt5"
-@onready var alt6 = $"../../HBoxContainer/AllPlantRows/AltRow3/Alt6"
+@onready var alt1 = $"../../HBoxContainer/AllDemonRows/AltRow1/Alt1"
+@onready var alt2 = $"../../HBoxContainer/AllDemonRows/AltRow1/Alt2"
+@onready var alt3 = $"../../HBoxContainer/AllDemonRows/AltRow2/Alt3"
+@onready var alt4 = $"../../HBoxContainer/AllDemonRows/AltRow2/Alt4"
+@onready var alt5 = $"../../HBoxContainer/AllDemonRows/AltRow3/Alt5"
+@onready var alt6 = $"../../HBoxContainer/AllDemonRows/AltRow3/Alt6"
 
 var is_in_synergy = false
 
-#Plant Text Descriptions
+#Demon Text Descriptions
 var sunflowerDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/SunflowerDescription.txt"
 var peashooterDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/PeashooterDescription.txt"
 var walnutDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/WalnutDescription.txt"
@@ -109,22 +109,21 @@ var sunMawScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_maw_b
 var count := 0
 var current_page := 2
 
-enum PLANT {
-	SUNFLOWER,
-	SPYDER,
-	OCCULAR_SPINE,
-	EYE_BOMB,
-	EGG_WYRM,
+enum DEMON {
+	OCCULUM,
+	CRAWLER,
+	SPINALOCCULUM,
+	WYRM,
 	HIVE,
 	MAW,
 }
 
-var current_plant = PLANT.SUNFLOWER
+var current_demon = DEMON.OCCULUM
 
 func _ready() -> void:
 	pass
 	$"../../Camera2D".make_current()
-	print("Plant AnimatedTextureRect: _ready() called")
+	print("Demon AnimatedTextureRect: _ready() called")
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	current_page = current_page + 1
 		# Set default button textures based on current colors
@@ -132,8 +131,8 @@ func _ready() -> void:
 	
 	# Set initial sprites if none are set
 	#if sprites == null:
-	var plant_type = GlobalResourceLoader.PlantType.SUNFLOWER
-	sprites = GlobalResourceLoader.get_plant_animation(plant_type)
+	var demon_type = GlobalResourceLoader.DemonType.OCCULUM
+	sprites = GlobalResourceLoader.get_demon_animation(demon_type)
 	
 	# Initialize animation data
 	if sprites != null:
@@ -152,68 +151,65 @@ func _update_button_textures():
 	
 	# Set Melee Alien buttons
 	if sunflowerButton != null:
-		sunflowerButton.texture_normal = GlobalResourceLoader.get_plant_image(
-			GlobalResourceLoader.PlantType.SUNFLOWER)
+		sunflowerButton.texture_normal = GlobalResourceLoader.get_demon_image(
+			GlobalResourceLoader.DemonType.OCCULUM)
 	if peashooterButton != null:
-		peashooterButton.texture_normal = GlobalResourceLoader.get_plant_image(
-			GlobalResourceLoader.PlantType.PEASHOOTER)
+		peashooterButton.texture_normal = GlobalResourceLoader.get_demon_image(
+			GlobalResourceLoader.DemonType.CRAWLER)
 	if walnutButton != null:
-		walnutButton.texture_normal = GlobalResourceLoader.get_plant_image(
-			GlobalResourceLoader.PlantType.WALNUT)
+		walnutButton.texture_normal = GlobalResourceLoader.get_demon_image(
+			GlobalResourceLoader.DemonType.SPINALOCCULUM)
 	
-	# Set Ranged Alien buttons
-	if eyeBombButton != null:
-		eyeBombButton.texture_normal = GlobalResourceLoader.get_plant_image(
-			GlobalResourceLoader.PlantType.BOMBPLANT)
+
 	if eggWyrmButton != null:
-		eggWyrmButton.texture_normal = GlobalResourceLoader.get_plant_image(
-			GlobalResourceLoader.PlantType.EGGWYRM)
+		eggWyrmButton.texture_normal = GlobalResourceLoader.get_demon_image(
+			GlobalResourceLoader.DemonType.WYRM)
 	if hiveButton != null:
-		hiveButton.texture_normal = GlobalResourceLoader.get_plant_image(
-			GlobalResourceLoader.PlantType.HIVE)
+		hiveButton.texture_normal = GlobalResourceLoader.get_demon_image(
+			GlobalResourceLoader.DemonType.HIVE)
 			
 	if mawButton != null:
-		mawButton.texture_normal = GlobalResourceLoader.get_plant_image(
-			GlobalResourceLoader.PlantType.MAW)
+		mawButton.texture_normal = GlobalResourceLoader.get_demon_image(
+			GlobalResourceLoader.DemonType.MAW)
 			
 			
 			
 			
 			
-#Sets the current Plant Description Text
+#Sets the current Demon Description Text
 func set_text(newFile : String):
 	var file = FileAccess.open(newFile, FileAccess.READ)
 	var newText = file.get_as_text()
 	file.close()
-	currentPlantLabel.text = newText
+	currentDemonLabel.text = newText
 
-func set_demon_variations(newDemon : GlobalResourceLoader.PlantType):
+func set_demon_variations(newDemon : GlobalResourceLoader.DemonType):
 	is_in_synergy = true 
 	var new_images = []
 	new_images = GlobalResourceLoader.get_demon_image_variations(newDemon)
-	$"../../HBoxContainer/AllPlantRows/Row1".visible = false
-	$"../../HBoxContainer/AllPlantRows/Row2".visible = false
-	$"../../HBoxContainer/AllPlantRows/Row3".visible = false
+	$"../../HBoxContainer/AllDemonRows/Row1".visible = false
+	$"../../HBoxContainer/AllDemonRows/Row2".visible = false
+	$"../../HBoxContainer/AllDemonRows/Row3".visible = false
 	
-	$"../../HBoxContainer/AllPlantRows/AltRow1".visible = true 
-	$"../../HBoxContainer/AllPlantRows/AltRow2".visible = true 
-	$"../../HBoxContainer/AllPlantRows/AltRow3".visible = true 
+	$"../../HBoxContainer/AllDemonRows/AltRow1".visible = true 
+	$"../../HBoxContainer/AllDemonRows/AltRow2".visible = true 
+	$"../../HBoxContainer/AllDemonRows/AltRow3".visible = true 
 	
 	var count = 0 
 	for this_image in new_images:
 		match count:
 			0:
-				$"../../HBoxContainer/AllPlantRows/AltRow1/Alt1".texture_normal = this_image
+				$"../../HBoxContainer/AllDemonRows/AltRow1/Alt1".texture_normal = this_image
 			1:
-				$"../../HBoxContainer/AllPlantRows/AltRow1/Alt2".texture_normal= this_image
+				$"../../HBoxContainer/AllDemonRows/AltRow1/Alt2".texture_normal= this_image
 			2:
-				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt3".texture_normal= this_image
+				$"../../HBoxContainer/AllDemonRows/AltRow2/Alt3".texture_normal= this_image
 			3:
-				$"../../HBoxContainer/AllPlantRows/AltRow2/Alt4".texture_normal= this_image
+				$"../../HBoxContainer/AllDemonRows/AltRow2/Alt4".texture_normal= this_image
 			4:
-				$"../../HBoxContainer/AllPlantRows/AltRow3/Alt5".texture_normal= this_image
+				$"../../HBoxContainer/AllDemonRows/AltRow3/Alt5".texture_normal= this_image
 			5:
-				$"../../HBoxContainer/AllPlantRows/AltRow3/Alt6".texture_normal= this_image
+				$"../../HBoxContainer/AllDemonRows/AltRow3/Alt6".texture_normal= this_image
 				
 		count+=1
 	
@@ -225,24 +221,24 @@ func _on_sunflower_pressed() -> void:
 	
 	visible = true
 	staticPreview.visible = false 
-	current_plant = PLANT.SUNFLOWER
-	sprites = GlobalResourceLoader.get_plant_animation(
-		GlobalResourceLoader.PlantType.SUNFLOWER)
+	current_demon = DEMON.OCCULUM
+	sprites = GlobalResourceLoader.get_demon_animation(
+		GlobalResourceLoader.DemonType.OCCULUM)
 	play()
 	set_text(sunflowerDescription)
-	set_demon_variations(GlobalResourceLoader.PlantType.SUNFLOWER)
+	set_demon_variations(GlobalResourceLoader.DemonType.OCCULUM)
 
 func _on_peashooter_pressed() -> void:
 	visible = true
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = false 
-	current_plant = PLANT.SPYDER
-	sprites = GlobalResourceLoader.get_plant_animation(
-		GlobalResourceLoader.PlantType.PEASHOOTER)
+	current_demon = DEMON.CRAWLER
+	sprites = GlobalResourceLoader.get_demon_animation(
+		GlobalResourceLoader.DemonType.CRAWLER)
 	play()
 	set_text(peashooterDescription)
-	set_demon_variations(GlobalResourceLoader.PlantType.PEASHOOTER)
+	set_demon_variations(GlobalResourceLoader.DemonType.CRAWLER)
 
 
 func _on_walnut_pressed() -> void:
@@ -250,22 +246,13 @@ func _on_walnut_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
-	current_plant = PLANT.OCCULAR_SPINE
-	sprites = GlobalResourceLoader.get_plant_animation(
-		GlobalResourceLoader.PlantType.WALNUT)
+	current_demon = DEMON.SPINALOCCULUM
+	sprites = GlobalResourceLoader.get_demon_animation(
+		GlobalResourceLoader.DemonType.SPINALOCCULUM)
 	play()
 	set_text(walnutDescription)
-	set_demon_variations(GlobalResourceLoader.PlantType.WALNUT)
+	set_demon_variations(GlobalResourceLoader.DemonType.SPINALOCCULUM)
 
-
-func _on_eye_bomb_pressed() -> void:
-	visible = true
-	staticPreview.visible = false 
-	current_plant = PLANT.EYE_BOMB
-	sprites = GlobalResourceLoader.get_plant_animation(
-		GlobalResourceLoader.PlantType.BOMBPLANT)
-	play()
-	set_text(eyeBombDescription)
 
 
 func _on_egg_wrym_pressed() -> void:
@@ -273,24 +260,24 @@ func _on_egg_wrym_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
-	current_plant = PLANT.EGG_WYRM
-	sprites = GlobalResourceLoader.get_plant_animation(
-		GlobalResourceLoader.PlantType.EGGWYRM)
+	current_demon = DEMON.WYRM
+	sprites = GlobalResourceLoader.get_demon_animation(
+		GlobalResourceLoader.DemonType.WYRM)
 	play()
 	set_text(eggWyrmDescription)
-	set_demon_variations(GlobalResourceLoader.PlantType.EGGWYRM)
+	set_demon_variations(GlobalResourceLoader.DemonType.WYRM)
 
 func _on_hive_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
-	current_plant = PLANT.HIVE
-	sprites = GlobalResourceLoader.get_plant_animation(
-		GlobalResourceLoader.PlantType.HIVE)
+	current_demon = DEMON.HIVE
+	sprites = GlobalResourceLoader.get_demon_animation(
+		GlobalResourceLoader.DemonType.HIVE)
 	play()
 	set_text(hiveDescription)
-	set_demon_variations(GlobalResourceLoader.PlantType.HIVE)
+	set_demon_variations(GlobalResourceLoader.DemonType.HIVE)
 
 
 func _on_maw_pressed() -> void:
@@ -298,12 +285,12 @@ func _on_maw_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
 	staticPreview.visible = false 
-	current_plant = PLANT.MAW
-	sprites = GlobalResourceLoader.get_plant_animation(
-		GlobalResourceLoader.PlantType.MAW)
+	current_demon = DEMON.MAW
+	sprites = GlobalResourceLoader.get_demon_animation(
+		GlobalResourceLoader.DemonType.MAW)
 	play()
 	set_text(mawDescription)
-	set_demon_variations(GlobalResourceLoader.PlantType.MAW)
+	set_demon_variations(GlobalResourceLoader.DemonType.MAW)
 	
 
 
@@ -319,13 +306,13 @@ func _on_back_button_pressed() -> void:
 		Global.game_controller.restore_previous_scene()
 	else:
 		is_in_synergy = false
-		$"../../HBoxContainer/AllPlantRows/Row1".visible = true
-		$"../../HBoxContainer/AllPlantRows/Row2".visible = true
-		$"../../HBoxContainer/AllPlantRows/Row3".visible = true
+		$"../../HBoxContainer/AllDemonRows/Row1".visible = true
+		$"../../HBoxContainer/AllDemonRows/Row2".visible = true
+		$"../../HBoxContainer/AllDemonRows/Row3".visible = true
 	
-		$"../../HBoxContainer/AllPlantRows/AltRow1".visible = false 
-		$"../../HBoxContainer/AllPlantRows/AltRow2".visible = false 
-		$"../../HBoxContainer/AllPlantRows/AltRow3".visible = false 
+		$"../../HBoxContainer/AllDemonRows/AltRow1".visible = false 
+		$"../../HBoxContainer/AllDemonRows/AltRow2".visible = false 
+		$"../../HBoxContainer/AllDemonRows/AltRow3".visible = false 
 		current_page = current_page - 1
 		$"../../InteractiveBook2D".go_to_page(current_page)
 	
@@ -340,25 +327,23 @@ func _on_more_info_button_pressed() -> void:
 	backOutDetailsButton.visible = true 
 	synergyPanel.visible = true 
 	
-	match current_plant:
-		PLANT.SUNFLOWER:
+	match current_demon:
+		DEMON.OCCULUM:
 			synergyPanel.set_visual_tutorial_text(sunSpyderText)
 			synergyPanel.set_visual_tutorial_visual(sunSpyderScene.instantiate())
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			synergyPanel.set_visual_tutorial_text(mawSpyderText)
 			synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			synergyPanel.set_visual_tutorial_text(eggSpineText)
 			synergyPanel.set_visual_tutorial_visual(spineEggScene.instantiate())	
-		PLANT.EYE_BOMB:
-			pass
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			synergyPanel.set_visual_tutorial_text(mawEggText)
 			synergyPanel.set_visual_tutorial_visual(mawEggScene.instantiate())
-		PLANT.HIVE:
+		DEMON.HIVE:
 			synergyPanel.set_visual_tutorial_text(hiveMawText)
 			synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
-		PLANT.MAW:
+		DEMON.MAW:
 			synergyPanel.set_visual_tutorial_text(mawSpyderText)
 			synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
 
@@ -375,11 +360,11 @@ func _on_back_out_details_pressed() -> void:
 func _on_button_2_pressed() -> void:
 	#print("CCount is ", count)
 	count += 1
-	setNextSynergyScene(current_plant,count)
+	setNextSynergyScene(current_demon,count)
 
-func setNextSynergyScene(current_plant,this_count):
-	match current_plant:
-		PLANT.SUNFLOWER:
+func setNextSynergyScene(current_demon,this_count):
+	match current_demon:
+		DEMON.OCCULUM:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(sunSpyderText)
@@ -398,7 +383,7 @@ func setNextSynergyScene(current_plant,this_count):
 					synergyPanel.set_visual_tutorial_visual(sunMawScene.instantiate())
 					count = -1
 			
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(mawSpyderText)
@@ -407,7 +392,7 @@ func setNextSynergyScene(current_plant,this_count):
 					synergyPanel.set_visual_tutorial_text(hiveSpyderText)
 					synergyPanel.set_visual_tutorial_visual(hiveSpyderScene.instantiate())
 					count = -1
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(eggSpineText)
@@ -416,11 +401,7 @@ func setNextSynergyScene(current_plant,this_count):
 					synergyPanel.set_visual_tutorial_text(spineMawText)
 					synergyPanel.set_visual_tutorial_visual(spineMawScene.instantiate())
 					count = -1
-		PLANT.EYE_BOMB:
-			match this_count:
-				0:
-					pass
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(mawEggText)
@@ -432,7 +413,7 @@ func setNextSynergyScene(current_plant,this_count):
 					synergyPanel.set_visual_tutorial_text(hiveEggText)
 					synergyPanel.set_visual_tutorial_visual(hiveEggScene.instantiate())
 					count = -1
-		PLANT.HIVE:
+		DEMON.HIVE:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(hiveMawText)
@@ -445,7 +426,7 @@ func setNextSynergyScene(current_plant,this_count):
 					synergyPanel.set_visual_tutorial_text(hiveEggText)
 					synergyPanel.set_visual_tutorial_visual(hiveEggScene.instantiate())
 					count = -1
-		PLANT.MAW:
+		DEMON.MAW:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(mawSpyderText)
@@ -469,23 +450,23 @@ func _on_alt_1_pressed() -> void:
 	
 	visible = false
 	staticPreview.visible = true
-	match current_plant:
-		PLANT.SUNFLOWER:
+	match current_demon:
+		DEMON.OCCULUM:
 			staticPreview.texture = alt1.texture_normal
 			set_text(occulumBase)
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			staticPreview.texture = alt1.texture_normal
 			set_text(spyderBase)
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt1.texture_normal
 			set_text(walnutBase)
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			staticPreview.texture = alt1.texture_normal
 			set_text(wyrmBase)
-		PLANT.HIVE:
+		DEMON.HIVE:
 			staticPreview.texture = alt1.texture_normal
 			set_text(hiveBase)
-		PLANT.MAW:
+		DEMON.MAW:
 			staticPreview.texture = alt1.texture_normal
 			set_text(mawBase)
 
@@ -495,23 +476,23 @@ func _on_alt_2_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
-	match current_plant:
-		PLANT.SUNFLOWER:
+	match current_demon:
+		DEMON.OCCULUM:
 			staticPreview.texture = alt2.texture_normal
 			set_text(occulumMaw)
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			staticPreview.texture = alt2.texture_normal
 			set_text(spyderHive)
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt2.texture_normal
 			set_text(walnutEye)
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			staticPreview.texture = alt2.texture_normal
 			set_text(wyrmEye)
-		PLANT.HIVE:
+		DEMON.HIVE:
 			staticPreview.texture = alt2.texture_normal
 			set_text(hiveMaw)
-		PLANT.MAW:
+		DEMON.MAW:
 			staticPreview.texture = alt2.texture_normal
 			set_text(mawHive)
 
@@ -521,23 +502,23 @@ func _on_alt_3_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
-	match current_plant:
-		PLANT.SUNFLOWER:
+	match current_demon:
+		DEMON.OCCULUM:
 			staticPreview.texture = alt3.texture_normal
 			set_text(occulumHive)
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			staticPreview.texture = alt3.texture_normal
 			set_text(spyderMaw)
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt3.texture_normal
 			set_text(walnutHive)
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			staticPreview.texture = alt3.texture_normal
 			set_text(wyrmHive)
-		PLANT.HIVE:
+		DEMON.HIVE:
 			staticPreview.texture = alt3.texture_normal
 			set_text(hiveSpyder)
-		PLANT.MAW:
+		DEMON.MAW:
 			staticPreview.texture = alt3.texture_normal
 			set_text(mawSpyder)
 
@@ -547,23 +528,23 @@ func _on_alt_4_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
-	match current_plant:
-		PLANT.SUNFLOWER:
+	match current_demon:
+		DEMON.OCCULUM:
 			staticPreview.texture = alt4.texture_normal
 			set_text(occulumSpyder)
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			staticPreview.texture = alt4.texture_normal
 			set_text(spyderEye)
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt4.texture_normal
 			set_text(walnutMaw)
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			staticPreview.texture = alt4.texture_normal
 			set_text(wyrmMaw)
-		PLANT.HIVE:
+		DEMON.HIVE:
 			staticPreview.texture = alt4.texture_normal
 			set_text(hiveEye)
-		PLANT.MAW:
+		DEMON.MAW:
 			staticPreview.texture = alt4.texture_normal
 			set_text(mawEye)
 
@@ -573,23 +554,23 @@ func _on_alt_5_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
-	match current_plant:
-		PLANT.SUNFLOWER:
+	match current_demon:
+		DEMON.OCCULUM:
 			staticPreview.texture = alt5.texture_normal
 			set_text(occulumWalnut)
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			staticPreview.texture = alt5.texture_normal
 			set_text(spyderWalnut)
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt5.texture_normal
 			set_text(walnutSpyder)
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			staticPreview.texture = alt5.texture_normal
 			set_text(wyrmSpyder)
-		PLANT.HIVE:
+		DEMON.HIVE:
 			staticPreview.texture = alt5.texture_normal
 			set_text(hiveWalnut)
-		PLANT.MAW:
+		DEMON.MAW:
 			staticPreview.texture = alt5.texture_normal
 			set_text(mawWalnut)
 
@@ -599,22 +580,22 @@ func _on_alt_6_pressed() -> void:
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	staticPreview.visible = true
 	visible = false
-	match current_plant:
-		PLANT.SUNFLOWER:
+	match current_demon:
+		DEMON.OCCULUM:
 			staticPreview.texture = alt6.texture_normal
 			set_text(occulumWyrm)
-		PLANT.SPYDER:
+		DEMON.CRAWLER:
 			staticPreview.texture = alt6.texture_normal
 			set_text(spyderWyrm)
-		PLANT.OCCULAR_SPINE:
+		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt6.texture_normal
 			set_text(walnutWyrm)
-		PLANT.EGG_WYRM:
+		DEMON.WYRM:
 			staticPreview.texture = alt6.texture_normal
 			set_text(wyrmWalnut)
-		PLANT.HIVE:
+		DEMON.HIVE:
 			staticPreview.texture = alt6.texture_normal
 			set_text(hiveWyrm)
-		PLANT.MAW:
+		DEMON.MAW:
 			staticPreview.texture = alt6.texture_normal
 			set_text(mawWyrm)

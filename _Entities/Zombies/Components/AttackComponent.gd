@@ -62,8 +62,8 @@ func _on_AttackTimer_timeout():
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
 	if(is_instance_valid(target_plant) && target_plant.is_in_group("Portal") != true ):
-		#print("target plant name is ", target_plant.name)
-		if(target_plant.has_method("get_health")): 
+		print("target plant name is ", target_plant.name)
+		if(target_plant.has_method("get_health") && (target_plant.get_health()!=null)): 
 			#TODO Give Spiderling Get Health
 			if(target_plant.get_health() >= 0):
 				if target_plant.has_method("mawBuffed"):

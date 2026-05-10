@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_8rulx"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_lldty"]
 [ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_1efvn"]
+[ext_resource type="Texture2D" uid="uid://csockxqf1ab8l" path="res://_Entities/Zombies/_Sundered/PoleVaultZombie.png" id="20_kmmkn"]
+[ext_resource type="Script" uid="uid://t70aqhp8gia7" path="res://_UI/GameDemonstrations/simple_demo_hue_shift.gd" id="21_8ccte"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_egj6n"]
 texture = ExtResource("2_kmmkn")
@@ -3157,6 +3159,10 @@ region = Rect2(1364, 0, 62, 33)
 atlas = ExtResource("1_q35xs")
 region = Rect2(1426, 0, 62, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ccte"]
+atlas = ExtResource("20_kmmkn")
+region = Rect2(0, 0, 62, 33)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_o2waf"]
 animations = [{
 "frames": [{
@@ -3235,6 +3241,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ccte")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="LancerZombieDemo" type="CenterContainer" unique_id=2053684665]
@@ -3295,7 +3309,9 @@ theme_override_styles/panel = ExtResource("18_1efvn")
 position = Vector2(86.00001, 60)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_o2waf")
+animation = &"new_animation"
 autoplay = "default"
 flip_h = true
+script = ExtResource("21_8ccte")
 
 [editable path="BG/GridManager"]

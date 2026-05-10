@@ -26,6 +26,7 @@ var isSpinalOcculumBuffed := false
 var isHeartBuffed:= false  
 
 func get_health():
+	print(demon, " is getting health from comp")
 	return health
 	
 func take_damage(damage):
@@ -35,7 +36,8 @@ func take_damage(damage):
 		demon.die()
 
 func increase_health(added_health_amount):
-	health = clamp(health + added_health_amount, 0, maxHealth)
+	if maxHealth != null:
+		health = clamp(health + added_health_amount, 0, maxHealth)
 	pass
 	
 func increase_max_health(added_max_health_amount):

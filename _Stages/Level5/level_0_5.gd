@@ -105,7 +105,8 @@ func _start_force_select_hive():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 	
 	show_only_plant_buttons(["Hive"])
-	hbox.get_node("Hive").visible = true
+	hide_all_demon_buttons_with_exception(["Hive"])
+	#hbox.get_node("Hive").visible = true
 	demonSelectionMenu.add_pulsing_button_highlight(hive_button)
 	waveManager.can_start = false
 	demonSelectionMenu.canSwapScenes = false
@@ -114,7 +115,8 @@ func _start_force_select_hive():
 func _start_force_place_hive():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_HIVE,false)
 	
-	demonSelectionMenu.remove_button_highlight(hive_button)
+#	demonSelectionMenu.remove_button_highlight(hive_button)
+	demonSelectionMenu.stop_glow_pulse(hive_button)
 	hide_spotlight()
 
 

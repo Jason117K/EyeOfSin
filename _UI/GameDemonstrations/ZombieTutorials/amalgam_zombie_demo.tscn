@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_yx50g"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_d0uf0"]
 [ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_qd6cm"]
+[ext_resource type="Texture2D" uid="uid://boehiq0ysreqy" path="res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.png" id="20_i3wvl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqoph"]
 texture = ExtResource("2_qd6cm")
@@ -3125,6 +3126,10 @@ region = Rect2(930, 0, 62, 36)
 atlas = ExtResource("1_v1y0c")
 region = Rect2(992, 0, 62, 36)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhugf"]
+atlas = ExtResource("20_i3wvl")
+region = Rect2(0, 0, 62, 36)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_m5qcm"]
 animations = [{
 "frames": [{
@@ -3178,6 +3183,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhugf")
+}],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -3238,6 +3251,7 @@ theme_override_styles/panel = ExtResource("18_qd6cm")
 position = Vector2(117, 78)
 scale = Vector2(3.985, 3.985)
 sprite_frames = SubResource("SpriteFrames_m5qcm")
-autoplay = "default"
+animation = &"new_animation"
+autoplay = "new_animation"
 
 [editable path="BG/GridManager"]

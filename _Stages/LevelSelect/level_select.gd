@@ -35,6 +35,8 @@ func _ready() -> void:
 	canPlayLevel5 = Global.getCanPlayLevel5()
 	canPlayLevel6 = Global.getCanPlayLevel6()
 	canPlayLevel7 = Global.getCanPlayLevel7()
+	
+	Global.hideDemonSelectionMenu()
 	#$GridManager.set_tiles_for_rows(0,1, 68)
 	#$GridManager.set_tiles_for_rows(1,2, 66)
 	#

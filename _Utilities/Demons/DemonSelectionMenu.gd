@@ -292,7 +292,7 @@ func _on_HiveButton_pressed():
 # Creates a transparent preview image for a given plant scene 
 
 func create_preview(plant_scene):
-	print("MAKE A PREVIEW", plant_scene)
+	#print("MAKE A PREVIEW", plant_scene)
 	# Clear the last preview 
 	clear_preview()
 	
@@ -302,10 +302,10 @@ func create_preview(plant_scene):
 	var preview_node = find_preview_nodes(temp_plant)
 	
 	if preview_node:
-		print("Found Preview Node : ", preview_node)
+		#print("Found Preview Node : ", preview_node)
 		# Duplicate all child sprites
 		for child in preview_node.get_children():
-			print("Preview Node Child is ", child)
+			#print("Preview Node Child is ", child)
 			# Create the preview sprite and make it semi-transparent 
 			var preview_sprite = child.duplicate()
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
@@ -324,25 +324,26 @@ func create_preview(plant_scene):
 			preview_sprites.append(preview_sprite)
 		for sprite in preview_sprites:
 			if sprite is AnimatedSprite2D:
-				print("Preview Animation: ", sprite.animation, " | Frame: ", sprite.frame, " | Frames: ", sprite.sprite_frames)		
+				pass
+				#print("Preview Animation: ", sprite.animation, " | Frame: ", sprite.frame, " | Frames: ", sprite.sprite_frames)		
 		is_previewing = true
-		print("Preview container visible: ", preview_container.visible)
-		print("Preview container global pos: ", preview_container.global_position)
-		print("Preview sprites count: ", preview_sprites.size())
+	#	print("Preview container visible: ", preview_container.visible)
+		#print("Preview container global pos: ", preview_container.global_position)
+	#	print("Preview sprites count: ", preview_sprites.size())
 
 	
 	temp_plant.queue_free()
 	
 # Clears the current preview image 
 func clear_preview():
-	print("Clear BUTTON PReview")
+	#print("Clear BUTTON PReview")
 	Global.clear_guide()
 	for sprite in preview_sprites:
 		if sprite:
 			sprite.visible = false
 			#sprite.queue_free()
 	for demonButton in all_demon_buttons:
-		print("Demon Button ia ",demonButton )
+		#print("Demon Button ia ",demonButton )
 		remove_button_highlight(demonButton)
 	preview_sprites.clear()
 	#currentPlantLabel.text = ""
@@ -361,7 +362,7 @@ func release_all_focus():
 
 # Gets all the previewNodes
 func find_preview_nodes(node):
-	print("Must Find Preview For : ", node)
+	#print("Must Find Preview For : ", node)
 	if node.name == "PreviewNodes":
 		return node
 	
@@ -545,7 +546,7 @@ func remove_button_highlight(button: TextureButton) -> void:
 		push_error("Button node is null!")
 		return
 	#button.remove_theme_stylebox_override("normal")
-	print("Button to REMOVVE Is ", button)
+	#print("Button to REMOVVE Is ", button)
 	button.add_theme_stylebox_override("normal", demon_normal_stylebox_default )
 		#
 		
@@ -608,7 +609,7 @@ func _on_world_swap_button_pressed() -> void:
 
 func _on_codex_button_pressed() -> void:
 	codex_clicked.emit()
-	Global.game_controller.change_scene_with_pause("res://Scenes/Systems/lore_book_opener.tscn")
+	Global.game_controller.change_scene_with_pause("res://_UI/LoreBooks/lore_book_opener.tscn")
 
 
 func _on_fast_forward_pressed() -> void:

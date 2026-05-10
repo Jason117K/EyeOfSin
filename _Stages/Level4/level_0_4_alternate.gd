@@ -12,31 +12,12 @@ func _ready() -> void:
 func getIsGreenDimension():
 	return isGreenDimension
 
-
-
-
-	
-
 func start_game():
-	show_all_plant_buttons()
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
 	for node in get_parent().get_children():
 		if node.has_method("getIsPurpleDimension"):
 			purple_dimension = node
 	purple_dimension.start_game()
-
-
-func show_all_plant_buttons():
-	# Show Sunflower
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton").visible = true
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel").visible = true
-
-	# Show Spyder
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2").visible = true
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel").visible = true	
-
-	#Show Walnut
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton").visible = true
-	demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel").visible = true	
 
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)

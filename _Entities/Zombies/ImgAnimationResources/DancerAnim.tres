@@ -1,0 +1,74 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c74kvawp1yp4x"]
+
+[ext_resource type="Texture2D" uid="uid://dipt8eji371tr" path="res://_Entities/Zombies/_Reanimator/Summoner 46x 44.png" id="2_qjb06"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rux7o"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(0, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_algts"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(46, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8d3r"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(92, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr5hy"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(138, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5cus"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(184, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inbsn"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(230, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdrq3"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(276, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3qfe"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(322, 88, 46, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0dul"]
+atlas = ExtResource("2_qjb06")
+region = Rect2(368, 88, 46, 44)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rux7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_algts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8d3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr5hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5cus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inbsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdrq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3qfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0dul")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

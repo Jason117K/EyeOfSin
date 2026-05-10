@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_uoktu"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_7qiij"]
 [ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_rjs68"]
+[ext_resource type="Texture2D" uid="uid://vfleagnw1j4h" path="res://_Entities/Zombies/_Erupter/TickerZombie.png" id="20_n1l2k"]
+[ext_resource type="Script" uid="uid://t70aqhp8gia7" path="res://_UI/GameDemonstrations/simple_demo_hue_shift.gd" id="21_vmkvc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8p32i"]
 texture = ExtResource("2_n1l2k")
@@ -3145,6 +3147,10 @@ region = Rect2(1083, 0, 57, 39)
 atlas = ExtResource("1_llkjp")
 region = Rect2(1140, 0, 57, 39)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmkvc"]
+atlas = ExtResource("20_n1l2k")
+region = Rect2(0, 0, 57, 39)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2cf2j"]
 animations = [{
 "frames": [{
@@ -3214,6 +3220,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmkvc")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="ErupterZombieDemo" type="CenterContainer" unique_id=668560170]
@@ -3275,5 +3289,6 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2cf2j")
 autoplay = "default"
 flip_h = true
+script = ExtResource("21_vmkvc")
 
 [editable path="BG/GridManager"]

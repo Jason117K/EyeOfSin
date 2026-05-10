@@ -7,8 +7,11 @@ class_name AnimatedTextureRect extends TextureRect
 @export_range(0.0, INF, 0.001) var speed_scale := 1.0 
 @export var auto_play := false
 @export var playing := false
-
+@export var targetGlowColor : Color
 @onready var textBox = $"../Text"
+@export_range(-180, 180) var hue_shift: float = -86.0: #25.0
+	set(value):
+		hue_shift = clamp(value, -180.0, 180.0)
 #@onready var damageTextBox =  $"../Damage"
 #@onready var rangeTextBox =  $"../Range"
 #@onready var speedTextBox =  $"../Speed"
@@ -23,7 +26,8 @@ var uniquePropertyText : String
 var refresh_rate = 1.0
 var fps = 30.0
 var frame_delta = 0
-
+var demon_hue_shift = preload("res://_Common/Shaders/DemonHueShift.gdshader")
+var original_hue_shift := -86
 
 func _ready() -> void:
 	#print("AnimatedTextureRect: _ready() called")
@@ -90,9 +94,9 @@ func play(animation_name :String = current_animation):
 	playing = true
 	
 func get_animation_data(animation):
-#	print("Animation is ", animation)
-#	print("Current Animation  is ", current_animation)
-#	print("sprites is", sprites)
+	#print("Animation is ", animation)
+	#print("Current Animation  is ", current_animation)
+	#print("sprites is", sprites)
 	fps = sprites.get_animation_speed(current_animation)
 	refresh_rate = sprites.get_frame_duration(current_animation, frame_index)
 	
@@ -115,3 +119,20 @@ func pause():
 func stop():
 	frame_index = 0
 	playing = false
+	
+	
+func _apply_hue_shift() -> void:
+	# Create material if needed
+	if material == null:
+		material = ShaderMaterial.new()
+		material.shader = demon_hue_shift
+	
+	# Update shader parameters
+	if material is ShaderMaterial:
+		material.shader = demon_hue_shift
+		material.set_shader_parameter("glow_color", targetGlowColor)
+		material.set_shader_parameter("hue_shift_degrees", hue_shift)
+		original_hue_shift = hue_shift
+	
+	# Apply material to this TextureRect so the shader affects every frame
+	self.material = material

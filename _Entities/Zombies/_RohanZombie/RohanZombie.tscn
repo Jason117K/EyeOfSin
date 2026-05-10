@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="8_7ej8x"]
 [ext_resource type="Texture2D" uid="uid://rl210wbm7b8f" path="res://_Entities/Zombies/_RohanZombie/The Tarnished Widow 188x90.png" id="8_nhx5k"]
 
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oaedh"]
 shader = ExtResource("7_2n4dv")
 shader_parameter/hue_shift_degrees = 0.0
@@ -560,34 +559,34 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(62, 31.5)
 
-[node name="RohanZombie_Boss" type="Area2D" groups=["Zombie"]]
+[node name="RohanZombie_Boss" type="Area2D" unique_id=486125281 groups=["Zombie"]]
 z_index = 1
 position = Vector2(-16, -30)
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_gima6")
 
-[node name="BloodHit" type="AnimatedSprite2D" parent="."]
+[node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=40225763]
 visible = false
 position = Vector2(4, -8)
 sprite_frames = ExtResource("2_1x2dv")
 animation = &"hit"
 
-[node name="ComponentManager" parent="." instance=ExtResource("2_fcwo0")]
+[node name="ComponentManager" parent="." unique_id=818004876 instance=ExtResource("2_fcwo0")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_mqmnj")]
+[node name="HealthComponent" parent="." unique_id=51473187 instance=ExtResource("3_mqmnj")]
 health = 900000
 bloodWorth = 50.0
 
-[node name="SpeedComponent" parent="." instance=ExtResource("4_l212a")]
+[node name="SpeedComponent" parent="." unique_id=1018819060 instance=ExtResource("4_l212a")]
 speed = 25
 
-[node name="AttackComponent" parent="." instance=ExtResource("5_x8a86")]
+[node name="AttackComponent" parent="." unique_id=431096804 instance=ExtResource("5_x8a86")]
 script = ExtResource("6_qlel4")
 shootProbability = 250
 attack_power = 500
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383555117]
 material = SubResource("ShaderMaterial_oaedh")
 position = Vector2(16.087, -26.525)
 rotation = 3.14159
@@ -597,40 +596,40 @@ animation = &"Walk"
 script = ExtResource("8_7ej8x")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
-[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+[node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1932592753]
 position = Vector2(26, 2.75)
 shape = SubResource("1")
 
-[node name="DMGRayCast2D_1" type="RayCast2D" parent="."]
+[node name="DMGRayCast2D_1" type="RayCast2D" parent="." unique_id=1336325567]
 position = Vector2(0, -30)
 target_position = Vector2(-17, 0)
 collision_mask = 7
 collide_with_areas = true
 
-[node name="DMGRayCast2D_2" type="RayCast2D" parent="."]
+[node name="DMGRayCast2D_2" type="RayCast2D" parent="." unique_id=715914995]
 target_position = Vector2(-17, 0)
 collision_mask = 7
 collide_with_areas = true
 
-[node name="DMGRayCast2D_3" type="RayCast2D" parent="."]
+[node name="DMGRayCast2D_3" type="RayCast2D" parent="." unique_id=1561723392]
 position = Vector2(0, 30)
 target_position = Vector2(-17, 0)
 collision_mask = 7
 collide_with_areas = true
 
-[node name="DMGRayCast2D_Shoot" type="RayCast2D" parent="."]
+[node name="DMGRayCast2D_Shoot" type="RayCast2D" parent="." unique_id=2062571618]
 position = Vector2(-50, 3.67)
 target_position = Vector2(-138.715, 0)
 collision_mask = 7
 collide_with_areas = true
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=1348933105]
 wait_time = 0.001
 
-[node name="ShootTimer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="." unique_id=1964627264]
 wait_time = 20.0
 
-[node name="TeleportTimer" type="Timer" parent="."]
+[node name="TeleportTimer" type="Timer" parent="." unique_id=1937033987]
 wait_time = 3.0
 
 [connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]

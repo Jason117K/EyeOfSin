@@ -48,6 +48,7 @@ disabled = true
 scale = Vector2(0.5, 0.5)
 
 [node name="Control" type="Control" parent="Node2D" unique_id=1190479830]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -2.0

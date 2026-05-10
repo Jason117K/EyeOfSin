@@ -5,14 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="2_y17rf"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_x4iqa"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4iqa"]
 bg_color = Color(0.490196, 0.0588235, 0.121569, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h70fg"]
 bg_color = Color(0.0980392, 0.0156863, 0.168627, 1)
 
-[node name="LoreBookOpener" type="Control"]
+[node name="LoreBookOpener" type="Control" unique_id=1171146340]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -26,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x4iqa")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1323133469]
 layout_mode = 1
 offset_left = 57.345
 offset_top = 87.0
@@ -34,28 +33,28 @@ offset_right = 183.345
 offset_bottom = 125.0
 scale = Vector2(5, 5)
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=227906333]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x4iqa")
 
-[node name="PlantCodexButton" type="TextureButton" parent="HBoxContainer/PanelContainer"]
+[node name="DemonCodexButton" type="TextureButton" parent="HBoxContainer/PanelContainer" unique_id=1170170057]
 custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
 texture_normal = ExtResource("1_paagv")
 stretch_mode = 3
 
-[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1646542814]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h70fg")
 
-[node name="ZombieCodexButton" type="TextureButton" parent="HBoxContainer/PanelContainer2"]
+[node name="ZombieCodexButton" type="TextureButton" parent="HBoxContainer/PanelContainer2" unique_id=1642037884]
 custom_minimum_size = Vector2(61, 38)
 layout_mode = 2
 texture_normal = ExtResource("2_y17rf")
 ignore_texture_size = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-layout_mode = 2
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1911655141]
+layout_mode = 0
 offset_left = 158.0
 offset_top = 304.0
 offset_right = 649.0
@@ -64,29 +63,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 190
 
-[node name="Label" type="Label" parent="HBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer2" unique_id=1795547476]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 16
-text = "PLANT CODEX"
+text = "DEMON CODEX  "
 
-[node name="Label2" type="Label" parent="HBoxContainer2"]
+[node name="Label2" type="Label" parent="HBoxContainer2" unique_id=89440407]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 16
 text = "ZOMBIE CODEX"
 
-[node name="ColorRect3" type="ColorRect" parent="."]
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1187630603]
 z_index = -1
-layout_mode = 2
+layout_mode = 0
 offset_right = 740.765
 offset_bottom = 414.29
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=615650955]
 custom_minimum_size = Vector2(300, 25)
 layout_mode = 0
 offset_left = 230.0
@@ -97,9 +96,9 @@ theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 16
 text = "BACK"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1884297918]
 position = Vector2(370, 208)
 
-[connection signal="pressed" from="HBoxContainer/PanelContainer/PlantCodexButton" to="." method="_on_plant_codex_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/DemonCodexButton" to="." method="_on_demon_codex_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer2/ZombieCodexButton" to="." method="_on_zombie_codex_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

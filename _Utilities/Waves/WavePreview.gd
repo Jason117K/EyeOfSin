@@ -50,7 +50,7 @@ func _ready():
 
 
 func show_preview(wave_index: int, show_start_button: bool = false) -> void:
-	print("SHOW PREVIEW")
+	#print("SHOW PREVIEW")
 	_preview_wave_index = wave_index
 	$PreviewSprite.visible = true
 	self.visible = true
@@ -68,7 +68,7 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 
 
 func hide_preview() -> void:
-	print("HIDE PREIVEW")
+	#print("HIDE PREIVEW")
 	_preview_wave_index = -1
 	$PreviewSprite.visible = false
 	$Node2D/Control.visible = false
@@ -96,7 +96,7 @@ func _on_Area2D_mouse_entered():
 	for type_name in config:
 		
 		var count: int = config[type_name]
-		print("Type Name is ", type_name, " with count ", count)
+		#print("Type Name is ", type_name, " with count ", count)
 		if count > 0:
 			preview_text.append_text(str(type_name) + " : " + str(count) + "\n")
 			for this_label in ALL_ZOMBIE_LABELS:
