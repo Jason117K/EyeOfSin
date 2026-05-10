@@ -28,13 +28,13 @@ signal call_wave_early_requested
 @onready var erupterLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Erupter
 @onready var reanimatorLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Reanimator
 @onready var wretchLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Wretch
-@onready var flesheaterLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Flesheaster
-@onready var severedLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Severed
+@onready var flesheaterLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Flesheater
+@onready var amalgamLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Amalgam
 @onready var sunderedLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Sundered
 
 @onready var ALL_ZOMBIE_LABELS = [rebornLabel,severedabel,unhallowerLabel, \
 									erupterLabel, reanimatorLabel, wretchLabel, \
-									flesheaterLabel, severedLabel, sunderedLabel]
+									flesheaterLabel, amalgamLabel, sunderedLabel]
 
 var preview_lead_time = 25
 var _spawner: ZombieSpawner
@@ -85,11 +85,27 @@ func _on_Area2D_mouse_entered():
 		return
 	var config := _spawner.get_wave_config(_preview_wave_index)
 	preview_text.clear()
+	
+	for this_label in ALL_ZOMBIE_LABELS:
+		this_label.hide()
+		var base_name = this_label.get_name()
+		this_label.text = base_name + " x"
+	for this_image in ALL_ZOMBIE_TEXTURES:
+		this_image.hide()
+		
 	for type_name in config:
+		
 		var count: int = config[type_name]
+		print("Type Name is ", type_name, " with count ", count)
 		if count > 0:
-			set_image_value(str(type_name), str(count))
 			preview_text.append_text(str(type_name) + " : " + str(count) + "\n")
+			for this_label in ALL_ZOMBIE_LABELS:
+				if str(type_name) in this_label.get_name():
+					this_label.text = this_label.get_name() + " x" + str(count)
+					this_label.show()
+			for this_image in ALL_ZOMBIE_TEXTURES:
+				if str(type_name) in this_image.get_name():
+					this_image.show()
 	$Node2D/Control.visible = true
 
 func set_image_value(this_type_name,this_count):

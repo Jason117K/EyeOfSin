@@ -106,6 +106,13 @@ layout_mode = 2
 texture = ExtResource("7_nteoh")
 expand_mode = 3
 
+[node name="UnhallowerTexture2" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row1" unique_id=383816785]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("7_nteoh")
+expand_mode = 3
+
 [node name="Row2" type="HBoxContainer" parent="Node2D/Control/AllZombieRowTextures" unique_id=356373483]
 layout_mode = 2
 theme_override_constants/separation = -27
@@ -133,6 +140,14 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="WretchTexture" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row2" unique_id=548146476]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+texture = ExtResource("10_hksyf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WretchTexture2" type="TextureRect" parent="Node2D/Control/AllZombieRowTextures/Row2" unique_id=250049058]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 125)
 layout_mode = 2
 texture = ExtResource("10_hksyf")
@@ -207,6 +222,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "UNHALLOWER x"
 
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1" unique_id=460290158]
+layout_mode = 2
+theme_override_constants/margin_right = 27
+
 [node name="Row2" type="HBoxContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels" unique_id=1324513268]
 layout_mode = 2
 theme_override_constants/separation = 29
@@ -226,16 +245,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "WRETCH x"
 
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2" unique_id=928619382]
+layout_mode = 2
+theme_override_constants/margin_right = 27
+
 [node name="Row3" type="HBoxContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels" unique_id=903478756]
 layout_mode = 2
 theme_override_constants/separation = 22
 
-[node name="Flesheaster" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=1207012522]
+[node name="Flesheater" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=1207012522]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "FLESHEATER x"
 
-[node name="Severed" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=1045409164]
+[node name="Amalgam" type="Label" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=1045409164]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "AMALGAM x"
@@ -244,6 +267,10 @@ text = "AMALGAM x"
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "SUNDERED x"
+
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3" unique_id=774780723]
+layout_mode = 2
+theme_override_constants/margin_right = 27
 
 [node name="StartGameButton" type="Button" parent="." unique_id=294501158]
 offset_left = -38.0
