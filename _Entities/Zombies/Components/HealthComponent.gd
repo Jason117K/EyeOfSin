@@ -3,7 +3,7 @@ extends Node2D
 
 #Health Component for all zombie enemies
 
-@onready var hitAudioPlayer = $"../HitAudioPlayer"
+#@onready var hitAudioPlayer = $"../HitAudioPlayer"
 @onready var zombie = get_parent()
 var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 

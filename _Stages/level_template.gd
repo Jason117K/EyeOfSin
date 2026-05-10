@@ -25,6 +25,7 @@ var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 @onready var _plant_hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 @onready var world_swap_button = demonSelectionMenu.get_world_swap_button()
 @onready var codex_button = demonSelectionMenu.get_codex_button()
+@onready var sway_script_path := "res://_Common/EnvironmentScripts/sway.gd"
 
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
 var green_dimension 
@@ -238,15 +239,15 @@ func _filter_tutorial_input(event: InputEvent) -> void:
 	if step.has("input_filter"):
 		step["input_filter"].call(event)
 	
-func attach_script_to_sway_children(script_path: String) -> void:
+func attach_script_to_sway_children():                                       #script_path: String) -> void:
 	var coral_node = get_node("Environment/Coral")
 	if coral_node == null:
 		push_error("Coral node not found at Environment/Coral")
 		return
 
-	var script_to_attach = load(script_path)
+	var script_to_attach = load(sway_script_path)
 	if script_to_attach == null:
-		push_error("Failed to load script at: " + script_path)
+		push_error("Failed to load script at: " + sway_script_path)
 		return
 
 	for child in coral_node.get_children():

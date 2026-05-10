@@ -12,7 +12,7 @@ var canSpecial = true # Determines whether or not a special move can be performe
 @onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect plants in front of the zombie
 @onready var zombieSprite = $"../AnimatedSprite2D" # RefCounted to sprite comp 
 @onready var attack_timer = $"../AttackTimer" # Adjustable timer to control attack speed
-@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
+#@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
 @onready var parent = get_parent() # Parent Zombie Attacking 
 @onready var zombie = 	get_parent()
 
@@ -62,7 +62,7 @@ func _on_AttackTimer_timeout():
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
 	if(is_instance_valid(target_plant) && target_plant.is_in_group("Portal") != true ):
-		print("target plant name is ", target_plant.name)
+		#print("target demon name is ", target_plant.name)
 		if(target_plant.has_method("get_health") && (target_plant.get_health()!=null)): 
 			#TODO Give Spiderling Get Health
 			if(target_plant.get_health() >= 0):

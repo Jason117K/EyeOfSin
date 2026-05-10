@@ -123,7 +123,7 @@ func _ready():
 	root = get_parent().get_name()
 	
 	#Set Up Label for Displaying Current Plant
-	currentPlantLabel = $CurrentPlantLabel
+	#currentPlantLabel = $CurrentPlantLabel
 	
 
 	

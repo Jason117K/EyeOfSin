@@ -62,7 +62,7 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 		wave_progress_bar.visible = true 
 	else:
 		wave_progress_bar.visible = false 
-		print("Global Current Wave is , ",  Global.get_wave_manager()._current_wave)
+		#print("Global Current Wave is , ",  Global.get_wave_manager()._current_wave)
 	progressing = true 
 	
 

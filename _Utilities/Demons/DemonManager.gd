@@ -148,13 +148,13 @@ func _input(event):
 					else:
 						pass
 				else:
-					print("Place Plant2 " , grid_pos)
+					#print("Place Plant2 " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
-					print(get_parent(), "QQOtro Place Plant " , grid_pos)
+					#print(get_parent(), "QQOtro Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
 
@@ -185,7 +185,7 @@ func clear_space_alt(passed_grid_pos):
 #	print("QQ Grid Map is ", grid_map)
 	#print(" QQ Erase Plant At :", passed_grid_pos)
 	var plant_node = grid_map.get(passed_grid_pos)
-	print(" QQ Plant to Erase Is  ", plant_node)
+	#print(" QQ Plant to Erase Is  ", plant_node)
 	#plantToErase.die()
 	if plant_node != null:
 		plant_node.die_fromClearSpace()
@@ -330,18 +330,18 @@ func place_plant(grid_pos: Vector2):
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print(get_parent(), grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)
+		#print(get_parent(), grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)
 		return
 	
 	#Maw is larger, check neighboring cell
 	if  "Maw" in plant_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
-			print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
+			#print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 		else:
 			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 	if "Heart" in plant_instance.name:
-		print("About to Place Heart Demon")
+		#print("About to Place Heart Demon")
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			return 
 		if Vector2(grid_pos.x+32,grid_pos.y+32) in grid_map:

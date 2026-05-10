@@ -539,7 +539,7 @@ func _on_detection_component_area_entered(area: Area2D) -> void:
 		assign_tentacle_to_target(area)
 		
 func die():
-	print(" QQ MAW IS DYING 1111111111111111")
+	#print(" QQ MAW IS DYING 1111111111111111")
 
 	# FREE ALL ARM TENTACLES
 	if arm1: arm1.queue_free()
@@ -554,7 +554,7 @@ func die():
 
 
 func die_fromClearSpace():
-	print("QQ MAW IS DYING 222222222222222")
+	#print("QQ MAW IS DYING 222222222222222")
 	buffNodes.clearBuffs()
 	queue_free()		
 	

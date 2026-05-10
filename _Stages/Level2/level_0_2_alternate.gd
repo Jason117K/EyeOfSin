@@ -5,7 +5,7 @@ extends LevelTemplate
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
 
 

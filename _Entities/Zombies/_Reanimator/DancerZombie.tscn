@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ComponentManager.tscn" id="11"]
 
-
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 38)
 
@@ -253,38 +252,38 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="DancerZombie" type="Area2D" groups=["Zombie"]]
+[node name="DancerZombie" type="Area2D" unique_id=1568648356 groups=["Zombie"]]
 collision_layer = 2
 script = ExtResource("5")
 
-[node name="BloodHit" type="AnimatedSprite2D" parent="."]
+[node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=715740053]
 visible = false
 position = Vector2(-1, 3)
 sprite_frames = ExtResource("2_8gbs0")
 animation = &"hit"
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1033626657]
 self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
 position = Vector2(8, 20)
 texture = ExtResource("2_26b7w")
 
-[node name="ComponentManager" parent="." instance=ExtResource("11")]
+[node name="ComponentManager" parent="." unique_id=1452143294 instance=ExtResource("11")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("7")]
+[node name="HealthComponent" parent="." unique_id=1825179096 instance=ExtResource("7")]
 health = 150
 bloodWorth = 15.0
 
-[node name="SpeedComponent" parent="." instance=ExtResource("1")]
+[node name="SpeedComponent" parent="." unique_id=18633547 instance=ExtResource("1")]
 speed = 8
 
-[node name="AttackComponent" parent="." instance=ExtResource("4")]
+[node name="AttackComponent" parent="." unique_id=1819790260 instance=ExtResource("4")]
 
-[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
+[node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1968111864]
 visible = false
 position = Vector2(6.5, 3)
 shape = SubResource("25")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=880495732]
 material = SubResource("ShaderMaterial_26b7w")
 sprite_frames = SubResource("24")
 animation = &"Summon"
@@ -294,40 +293,40 @@ script = ExtResource("10")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 
-[node name="SummonComponent" type="Node2D" parent="."]
+[node name="SummonComponent" type="Node2D" parent="." unique_id=924505645]
 script = ExtResource("6")
 
-[node name="SummonPoint1" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint1" type="Node2D" parent="SummonComponent" unique_id=1447393352]
 position = Vector2(-32, -32)
 
-[node name="SummonPoint2" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint2" type="Node2D" parent="SummonComponent" unique_id=324347672]
 position = Vector2(0, -32)
 
-[node name="SummonPoint3" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint3" type="Node2D" parent="SummonComponent" unique_id=950246708]
 position = Vector2(32, -32)
 
-[node name="SummonPoint4" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint4" type="Node2D" parent="SummonComponent" unique_id=130768552]
 position = Vector2(-32, 0)
 
-[node name="SummonPoint6" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint6" type="Node2D" parent="SummonComponent" unique_id=1210974763]
 position = Vector2(32, 0)
 
-[node name="SummonPoint7" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint7" type="Node2D" parent="SummonComponent" unique_id=573010595]
 position = Vector2(-32, 32)
 
-[node name="SummonPoint8" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint8" type="Node2D" parent="SummonComponent" unique_id=673833328]
 position = Vector2(0, 32)
 
-[node name="SummonPoint9" type="Node2D" parent="SummonComponent"]
+[node name="SummonPoint9" type="Node2D" parent="SummonComponent" unique_id=1166752108]
 position = Vector2(32, 32)
 
-[node name="SummonTimer" type="Timer" parent="SummonComponent"]
+[node name="SummonTimer" type="Timer" parent="SummonComponent" unique_id=1361586840]
 wait_time = 15.0
 autostart = true
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=1798724127]
 
-[node name="DMGRayCast2D" type="RayCast2D" parent="."]
+[node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=326477493]
 visible = false
 target_position = Vector2(-28, 0)
 collide_with_areas = true

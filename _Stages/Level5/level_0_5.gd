@@ -12,6 +12,7 @@ var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
 var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
+var hive_pulse_added := false 
 
 # Text file paths
 const TUTORIAL_SELECT_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_SelectHive.txt"
@@ -68,7 +69,7 @@ func _ready():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 	
 	Global.resetSunflowerCount()
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
@@ -107,7 +108,9 @@ func _start_force_select_hive():
 	show_only_plant_buttons(["Hive"])
 	hide_all_demon_buttons_with_exception(["Hive"])
 	#hbox.get_node("Hive").visible = true
-	demonSelectionMenu.add_pulsing_button_highlight(hive_button)
+	if hive_pulse_added == false
+		demonSelectionMenu.add_pulsing_button_highlight(hive_button)
+		hive_pulse_added = true
 	waveManager.can_start = false
 	demonSelectionMenu.canSwapScenes = false
 
@@ -210,8 +213,8 @@ func _show_all_buttons():
 	# Also show non-plant UI and parent containers
 	for container_name in ALL_DEMON_CONTAINERS:
 		hbox.get_node(container_name).visible = true
-	hbox.get_node("WorldSwap").visible = true
-	hbox.get_node("Codex").visible = true
+	world_swap_button.show()
+	codex_button.show()
 
 
 func show_guide():

@@ -78,6 +78,7 @@ func summon_backup():
 		else:
 			#print("Summoner Spawned Purple")
 			zombie_instance.add_to_group("Purple")
+			zombie_instance.set_hue_shift(-86)
 
 #Start the summon again by setting the animation 
 func _on_SummonTimer_timeout():

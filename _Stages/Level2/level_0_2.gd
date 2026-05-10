@@ -113,7 +113,7 @@ func _ready():
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level02, level02Alt)

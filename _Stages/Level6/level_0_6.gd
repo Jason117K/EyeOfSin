@@ -49,7 +49,7 @@ func _ready():
 	pause_Button.set_restart_levels(level06, level06Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.resetSunflowerCount()
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))

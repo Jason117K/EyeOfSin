@@ -142,7 +142,7 @@ func spawn_initial_drones():
 #Assigns drones to enemies if able & then re-optimizes drone assignments 
 func _on_enemy_entered(area):
 	if area.is_in_group("Zombie"):
-		print("Hive Reporting," ,area.name, " entered.")
+		#print("Hive Reporting," ,area.name, " entered.")
 		# Add to tracking arrays
 		enemy_queue.append(area)
 		active_enemies.append(area)
@@ -164,7 +164,7 @@ func _on_enemy_exited(area):
 		if area in drone_assignments:
 			var freed_drones = drone_assignments[area]
 			available_drones.append_array(freed_drones)
-			print("In Exited, Available Drones gets ", freed_drones)
+			#print("In Exited, Available Drones gets ", freed_drones)
 			drone_assignments.erase(area)
 		
 		for drone in available_drones:
@@ -189,17 +189,17 @@ func _on_enemy_died(enemy):
 
 #Handle assignment clean-up on drone death 
 func _on_drone_died(drone):
-	print("DRONE DEAD")
-	
-	
-	
-	
-	print("Drone to kill is ", drone )
-	print("Drone Assignments Is ",drone_assignments )
-	print("Drone Assignments.KEYS Is ",drone_assignments.keys())
-	print("Available Drones is ", available_drones)
-	print("Drone Rest Positions is, ", drone_rest_positions)
-	
+	#print("DRONE DEAD")
+	#
+	#
+	#
+	#
+	#print("Drone to kill is ", drone )
+	#print("Drone Assignments Is ",drone_assignments )
+	#print("Drone Assignments.KEYS Is ",drone_assignments.keys())
+	#print("Available Drones is ", available_drones)
+	#print("Drone Rest Positions is, ", drone_rest_positions)
+	#
 	for this_drone in available_drones:
 		if this_drone == drone:
 			available_drones.erase(this_drone)
@@ -265,11 +265,11 @@ func optimize_drone_assignments():
 		#print("Enemy is ", enemy)
 		if !(enemy.get_parent().get_parent() == get_parent().get_parent()):
 			#print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
-			print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
 			break
 		else:
 		#	print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
-			print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
 			var num_drones = drones_per_enemy
 			if extra_drones > 0:
 				num_drones += 1

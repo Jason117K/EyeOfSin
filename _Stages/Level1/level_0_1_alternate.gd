@@ -3,7 +3,8 @@ extends LevelTemplate
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	#attach_script_to_sway_children()
+	attach_script_to_sway_children()
 
 
 func setup_wave_2_ui():

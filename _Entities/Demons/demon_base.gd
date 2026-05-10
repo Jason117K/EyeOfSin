@@ -96,11 +96,11 @@ func increase_max_health(added_health_amount):
 	healthComp.increase_max_health(added_health_amount)
 
 func take_damage(damage):
-	print(self, " is now taking damage : ", damage)
+	#print(self, " is now taking damage : ", damage)
 	healthComp.take_damage(damage)
 
 func get_health():
-	print(self, " now getting the health")
+	#print(self, " now getting the health")
 	return healthComp.get_health()
 	
 	

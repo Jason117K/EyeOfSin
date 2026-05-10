@@ -296,11 +296,11 @@ func optimize_drone_assignments():
 		#print("Enemy is ", enemy)
 		if !(enemy.get_parent().get_parent() == get_parent().get_parent()):
 			#print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
-			print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
 			break
 		else:
 		#	print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
-			print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
 			var num_drones = drones_per_enemy
 			if extra_drones > 0:
 				num_drones += 1

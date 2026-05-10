@@ -62,7 +62,7 @@ func _ready():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	
 	Global.resetSunflowerCount()
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))

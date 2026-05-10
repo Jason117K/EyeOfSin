@@ -5,7 +5,7 @@ extends LevelTemplate
 var purple_dimension : Control
 
 func _ready() -> void:
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 	
 
 func getIsGreenDimension():

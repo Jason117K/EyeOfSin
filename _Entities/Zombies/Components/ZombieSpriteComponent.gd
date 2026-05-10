@@ -23,7 +23,7 @@ var isSlow
 var isInjured
 @onready var zombie = 	get_parent()
 @onready var attackComp = $"../AttackComponent"
-@onready var attack_audio_player = $"../AttackAudioPlayer"
+#@onready var attack_audio_player = $"../AttackAudioPlayer"
 @onready var healthComp  =  $"../HealthComponent"
 
 var isDead = false
