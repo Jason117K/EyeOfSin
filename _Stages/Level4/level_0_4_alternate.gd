@@ -19,13 +19,13 @@ func _ready() -> void:
 
 
 func _configure_waves():
-	zombie_spawner_1.waves = [{"Flesheater": 1, "Reborn": 3}, {"Reborn": 3, "Severed": 1}, {"Flesheater": 2, "Reborn": 5, "Severed": 2}]
-	zombie_spawner_2.waves = [{"Severed": 1, "Unhallower": 3}, {"Flesheater": 1, "Reborn": 6}, {"Flesheater": 2, "Reanimator": 1, "Reborn": 3, "Severed": 2, "Unhallower": 1}]
-	zombie_spawner_3.waves = [{}, {"Flesheater": 2, "Reanimator": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 3}]
-	zombie_spawner_4.waves = [{}, {"Flesheater": 1, "Reanimator": 2, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 7, "Severed": 3, "Unhallower": 1}]
-	zombie_spawner_5.waves = [{"Reborn": 2, "Severed": 1}, {"Reanimator": 1, "Reborn": 3}, {"Flesheater": 1, "Severed": 1, "Unhallower": 4}]
-	zombie_spawner_6.waves = [{}, {"Reborn": 3}, {"Flesheater": 2, "Severed": 1, "Unhallower": 2}]
-	zombie_spawner_7.waves = [{"Severed": 3}, {"Flesheater": 1, "Reborn": 2, "Unhallower": 1}, {"Flesheater": 1, "Severed": 1}]
+	zombie_spawner_1.set_waves_from_dicts([{"Flesheater": 1, "Reborn": 3}, {"Reborn": 3, "Severed": 1}, {"Flesheater": 2, "Reborn": 5, "Severed": 2}])
+	zombie_spawner_2.set_waves_from_dicts([{"Severed": 1, "Unhallower": 3}, {"Flesheater": 1, "Reborn": 6}, {"Flesheater": 2, "Reanimator": 1, "Reborn": 3, "Severed": 2, "Unhallower": 1}])
+	zombie_spawner_3.set_waves_from_dicts([{}, {"Flesheater": 2, "Reanimator": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 3}])
+	zombie_spawner_4.set_waves_from_dicts([{}, {"Flesheater": 1, "Reanimator": 2, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 7, "Severed": 3, "Unhallower": 1}])
+	zombie_spawner_5.set_waves_from_dicts([{"Reborn": 2, "Severed": 1}, {"Reanimator": 1, "Reborn": 3}, {"Flesheater": 1, "Severed": 1, "Unhallower": 4}])
+	zombie_spawner_6.set_waves_from_dicts([{}, {"Reborn": 3}, {"Flesheater": 2, "Severed": 1, "Unhallower": 2}])
+	zombie_spawner_7.set_waves_from_dicts([{"Severed": 3}, {"Flesheater": 1, "Reborn": 2, "Unhallower": 1}, {"Flesheater": 1, "Severed": 1}])
 
 
 func getIsGreenDimension():
