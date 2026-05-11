@@ -81,9 +81,11 @@ func undoBloodSlow():
 		stop()
 		
 func stop():
-	for child in get_children():
-		if child.has_method("hide"):
-			child.hide()
+	#for child in get_children():
+		#if child.has_method("hide"):
+			#child.hide()
+	$Raindrops.hide()
+	$RainSplash.hide()
 	is_active = false
 	cooldown_timer.wait_time = cooldown_duration
 	cooldown_timer.start()

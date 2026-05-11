@@ -119,7 +119,9 @@ func _start_force_select_spyder():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#hide_all_plant_buttons_except_spyder()
-	highlight_spyder_button()
+	if has_pulsed == false:
+		highlight_spyder_button()
+		has_pulsed = true 
 	waveManager.can_start = true
 	demonSelectionMenu.canSwapScenes = false
 

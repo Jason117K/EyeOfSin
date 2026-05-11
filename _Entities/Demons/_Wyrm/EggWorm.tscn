@@ -809,6 +809,10 @@ bounce_elasticity = 0.01
 script = ExtResource("3_pfhft")
 walnutBuffed_health = 550
 mawBuffed_health = 350
+health = 150
+buffedHealth = 300
+maxHealth = 150
+buffedMaxHealth = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=738991279]
 visible = false

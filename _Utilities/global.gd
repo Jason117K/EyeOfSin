@@ -15,7 +15,6 @@ var wave_manager
 var all_zombies := []
 var game_controller : GameController
 var plant_selection_menu 
-var plant_selection_menu_alt
 var green_portal = null
 var purple_portal = null 
 var gameIsStarted := false
@@ -75,7 +74,6 @@ func resetSunflowerCount():
 func incrementSunflowerCount():
 	sunflowerCount += 1
 	plant_selection_menu.increaseSunflowerCost()
-	#plant_selection_menu_alt.increaseSunflowerCost()
 	
 func incrementSunflowerCountVisual():
 	sunflowerCountVisual += 1
@@ -198,17 +196,21 @@ func register_swap_ability(new_swap_ability):
 	
 
 func start_swap_ability():
-	swap_ability.begin()
+	if swap_ability != null:
+		swap_ability.begin()
 	
 func stop_swap_ability():
-	swap_ability.stop()
+	if swap_ability != null:
+		swap_ability.stop()
 		
 func reset_swap_ability():
-	swap_ability.reset_on_game_start()
+	if swap_ability != null:
+		swap_ability.reset_on_game_start()
 	
 func register_zombie(new_zombie):
 	all_zombies.append(new_zombie)
-	swap_ability.append_new_zombie(new_zombie)
+	if swap_ability != null:
+		swap_ability.append_new_zombie(new_zombie)
 	
 	
 func deregister_zombie(zombie_to_delete):

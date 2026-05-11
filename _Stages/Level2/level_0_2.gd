@@ -239,6 +239,7 @@ func _start_wave_1():
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
+	print("Sussy31")
 	hide_all_demon_buttons_with_exception(["Occulum","Crawler"])
 	#show_only_plant_buttons(["Occulum", "Crawler"])
 	wave_1_active = false
@@ -395,7 +396,8 @@ func _on_walnut_placed(grid_pos: Vector2):
 func _on_wave_started(wave_index: int):
 	match wave_index:
 		0:
-			show_only_plant_buttons(["Occulum", "Crawler"])
+			print("Sussy1")
+			#show_only_plant_buttons(["Occulum", "Crawler"])
 			hide_all_demon_buttons_with_exception(["Occulum", "Crawler"])
 			wave_1_active = true
 		1:

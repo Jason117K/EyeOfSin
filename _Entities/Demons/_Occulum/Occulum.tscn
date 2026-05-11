@@ -982,7 +982,10 @@ buffedSunWaitTime = 9.0
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_m5mcc")]
 script = ExtResource("3_0ypr0")
 maw_health = 500
-health = 200
+health = 150
+buffedHealth = 500
+maxHealth = 150
+buffedMaxHealth = 500
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false

@@ -40,14 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://jmiumnuidyj1" path="res://_Assets/Environment/Props/rifts-2-Sheet.png" id="38_vp86k"]
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://_Assets/Environment/Props/rifts-alt-Sheet.png" id="39_myyu6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gh0wm"]
 texture = ExtResource("6_r12fy")
 texture_region_size = Vector2i(32, 32)
@@ -3624,9 +3616,6 @@ offset_left = -132.0
 offset_top = -2051.5
 offset_right = 172.0
 offset_bottom = 2021.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=2012856353]
 stream = ExtResource("25_71bjb")
@@ -3919,7 +3908,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

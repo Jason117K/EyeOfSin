@@ -128,9 +128,10 @@ func _start_force_select_maw():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	
 	hide_all_demon_buttons_with_exception(["Maw"])
-	demonSelectionMenu.add_pulsing_button_highlight(maw_button)
+	
 	if maw_pulse_added == false :
 		print("Add Glow Pulse SD")
+		demonSelectionMenu.add_pulsing_button_highlight(maw_button)
 		maw_pulse_added = true 
 	#show_spotlight_at_node(maw_button)
 	waveManager.can_start = false

@@ -82,7 +82,7 @@ func _ready():
 
 
 func _configure_waves():
-	zombie_spawner_1.set_waves_from_dicts([{"Flesheater": 1, "Severed": 2}, {"Severed": 5, "Unhallower": 2}, {"Flesheater": 2, "Reborn": 3, "Unhallower": 2}])
+	zombie_spawner_1.set_waves_from_dicts([{ "Flesheater": 1, "Severed": 2}, {"Severed": 5, "Unhallower": 2}, {"Flesheater": 2, "Reborn": 3, "Unhallower": 2}])
 	zombie_spawner_2.set_waves_from_dicts([{"Severed": 2}, {"Reanimator": 1, "Severed": 4, "Unhallower": 2}, {"Reborn": 6, "Unhallower": 2}])
 	zombie_spawner_3.set_waves_from_dicts([{}, {"Reanimator": 1, "Reborn": 5, "Unhallower": 2}, {"Reanimator": 1, "Reborn": 5, "Severed": 3}])
 	zombie_spawner_4.set_waves_from_dicts([{}, {"Reborn": 3, "Unhallower": 2}, {"Reanimator": 2, "Reborn": 1, "Unhallower": 3}])
@@ -119,8 +119,9 @@ func _start_force_select_wyrm():
 	#show_only_plant_buttons(["Egg"])
 	hide_all_demon_buttons_with_exception(["Wyrm"])
 	#hbox.get_node("Egg").visible = true
-	
-	demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
+	if has_pulsed == false:
+		has_pulsed = true 
+		demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
 	waveManager.can_start = false
 	demonSelectionMenu.canSwapScenes = false
 

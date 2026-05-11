@@ -85,18 +85,13 @@ var doubleSpeed = false
 
 func _ready():
 	add_child(preview_container)
-	swap_ability_instance = swap_ability.instantiate()
-	#print("swap_ability_instance is : ",  swap_ability_instance)
-	get_parent().call_deferred("add_child", swap_ability_instance)
-	#print("swap_ability_i")
-#	swap_ability_instance._ready()
+	#Future Swap Ability Code
+	#swap_ability_instance = swap_ability.instantiate()
+	##print("swap_ability_instance is : ",  swap_ability_instance)
+	#get_parent().call_deferred("add_child", swap_ability_instance)
+
 	
-	#setPanelContainerWidth(100)
-	#Global.plant_selection_menu = self
-	if is_alt:
-		Global.plant_selection_menu_alt = self
-	else:
-		Global.plant_selection_menu = self
+	Global.plant_selection_menu = self
 	Global.resetSunflowerCount()
 	Global._load_demon_costs()
 	

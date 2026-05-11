@@ -95,7 +95,7 @@ func _on_AttackTimer_timeout():
 			print("PLANT NAME: ", plant)
 			if(((plant.is_in_group("Green") && self.parent.is_in_group("Green"))
 		|| (plant.is_in_group("Purple") && self.parent.is_in_group("Purple")))):
-				if(plant.health >= 0):
+				if(plant.get_health() >= 0):
 					if plant.has_method("mawBuffed"):
 						if plant.can_eat_zombie == true :
 							print("Demon Can Eat Me Time to Die")

@@ -8,7 +8,7 @@ var spyder_already_selected = false
 
 var current_level = ("res://_Stages/Level1/Level0-1.tscn")
 var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
-
+var has_pulsed := false
 
 @export var new_end_dialog = "res://_Assets/Dialog/level_0_end_dialog.dtl"
 @export var wave2StartTime := 30
@@ -47,8 +47,9 @@ func get_demon_manager():
 
 
 func _on_level_ended():
-	Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
-	Dialogic.start(new_end_dialog)
+	#Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
+	#Dialogic.start(new_end_dialog)
+	_on_end_dialog_finished()
 
 
 func _on_end_dialog_finished():
@@ -79,7 +80,7 @@ func _on_end_dialog_finished():
 ## Hides all plant buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Sunflower"]
 func hide_all_demon_buttons_with_exception(exceptions: Array = []):
-	#print("Exceptions Are ",exceptions)
+	print("Exceptions Are ",exceptions)
 	for container_name in ALL_DEMON_CONTAINERS:
 		if container_name in exceptions:
 			pass

@@ -165,35 +165,38 @@ func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_runni
 	print("Changing scene to ", new_scene)
 	pauseButton.visible = false 
 	#Delete Old Scenes
-	
+	print("At Start, Current Scenes is ", current_scenes)
+	print("At Start, Current Scene is ", current_scene)
+	print("At Start, Current Scene ALT is ", current_alt_scene)
 	if !current_scenes.is_empty():
 		if delete:
-			#print("Current Scenes is ",current_scenes )
-			#print("Current Scenes 1 is ",current_scenes[1] )
+			print("Current Scenes is ",current_scenes )
+			print("Current Scenes 1 is ",current_scenes[1] )
 			current_scenes.remove_at(1)
-		#	print("Current Scenes 0 is ",current_scenes[0] )
+			print("Current Scenes 0 is ",current_scenes[0] )
+			current_scenes[0].queue_free()
 			current_scenes.remove_at(0)
 		
 	if current_scene == null:
 		pass
-		#print("Current scene : ", current_scene, " is null ")
+		print("Current scene : ", current_scene, " is null ")
 	else:
 		pass
-	#	print("Current scene is : ", current_scene)
+		print("Current scene is : ", current_scene)
 		
 	if current_alt_scene != null:
 		if delete:
-			#print("Delete Here1",current_scene)
+			print("Delete Here1 ",current_alt_scene)
 			current_alt_scene.queue_free() # Removes Node Entirely 					
 	
 	if current_scene != null:
 		if delete:
-		#	print("Delete Herqe",current_scene)
+			print("Delete Herqe",current_scene)
 			current_scene.queue_free() # Removes Node Entirely 
 		elif keep_running:
 			current_scene.visible = false # Keeps in memory and running 
 		else:
-		#	print("RRemoved Child")
+			print("RRemoved Child ", current_scene)
 			scene.remove_child(current_scene) #Keeps in memory, does not run 
 			
 	# Wait one frame to ensure the old scenes are properly removed
@@ -208,9 +211,9 @@ func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_runni
 	get_tree().physics_frame
 	
 	current_scene._ready()
-#	print("Current Scenes is now ", current_scenes)
-#	print("Current Scene is now ", current_scene)
-#	print("UNPAUSE GAME")
+	print("Current Scenes is now ", current_scenes)
+	print("Current Scene is now ", current_scene)
+	#	print("UNPAUSE GAME")
 	#current_scenes[0].get_tree().paused = false  
 	#current_scenes[1].get_tree().paused = false 
 

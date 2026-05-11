@@ -1278,6 +1278,10 @@ script = ExtResource("15_kwpry")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_kwpry")]
 script = ExtResource("17_mko7f")
+health = 500
+buffedHealth = 700
+maxHealth = 500
+buffedMaxHealth = 700
 
 [node name="Web" parent="." unique_id=1241820489 instance=ExtResource("2_j6nbb")]
 visible = false

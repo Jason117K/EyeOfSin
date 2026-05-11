@@ -24,6 +24,6 @@ func _on_PeaProjectile_area_entered(area):
 		print("IS IN GROUP")
 		if plant.get_parent().get_parent() != self.get_parent().get_parent():
 			return
-		if(plant.health >= 0):
+		if(plant.get_health() >= 0):
 			plant.take_damage(damage)
 			queue_free()  # Remove the projectile # Replace with function body.

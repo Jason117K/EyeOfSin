@@ -78,7 +78,7 @@ var walnutSpyder = "res://_Assets/Text/TextFiles/Synergies/WalnutSpyder.txt"
 var walnutWyrm = "res://_Assets/Text/TextFiles/Synergies/WalnutWyrm.txt"
 
 var mawBase = "res://_Assets/Text/TextFiles/Synergies/MawBase.txt"
-var mawEye = "res://_Assetss/Text/TextFiles/Synergies/MawEye.txt"
+var mawEye = "res://_Assets/Text/TextFiles/Synergies/MawEye.txt"
 var mawHive = "res://_Assets/Text/TextFiles/Synergies/MawHive.txt"
 var mawSpyder = "res://_Assets/Text/TextFiles/Synergies/MawSpyder.txt"
 var mawWalnut = "res://_Assets/Text/TextFiles/Synergies/MawWalnut.txt"

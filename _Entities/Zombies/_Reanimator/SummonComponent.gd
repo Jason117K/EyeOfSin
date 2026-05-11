@@ -35,25 +35,18 @@ func summon_backup():
 	
 	
 	# Don't spawn them in unreachable areas 
-	if(dancerZombie.position.y < 99):
+	if(dancerZombie.position.y < 128):
 		points.erase(point1)
 		points.erase(point2)
 		points.erase(point3)
+
 		
-	if level == "Main" && (dancerZombie.position.y < 112):
-		points.erase(point1)
-		points.erase(point2)
-		points.erase(point3)
-		
-	if(dancerZombie.position.y > 203):
+	if(dancerZombie.position.y > 288):
 		points.erase(point7)
 		points.erase(point8)
 		points.erase(point9)
 		
-	if level == "Main" && (dancerZombie.position.y > 163):
-		points.erase(point7)
-		points.erase(point8)
-		points.erase(point9)
+
 
 	#Spawn a backUp dancer at every available point 
 	for point in points:
