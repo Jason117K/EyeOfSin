@@ -3612,14 +3612,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
 shader = ExtResource("26_ltvfb")
 shader_parameter/hpass = 1.0
@@ -3638,7 +3630,7 @@ mouse_filter = 2
 script = ExtResource("1_3xvj4")
 
 [node name="PlantManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
-sun_points = 9999
+sun_points = 325
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=89289254]
 process_mode = 1
@@ -4057,9 +4049,6 @@ offset_left = -132.0
 offset_top = -167.0
 offset_right = 172.0
 offset_bottom = 137.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=31771245]
 stream = ExtResource("25_qjdmx")

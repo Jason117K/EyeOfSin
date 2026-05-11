@@ -73,27 +73,13 @@ mouse_filter = 2
 script = ExtResource("1_01won")
 
 [node name="PlantManager" parent="." unique_id=1812003954 instance=ExtResource("2_0v3x8")]
-sun_points = 1250
+sun_points = 750
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1288006005]
 process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=128186070 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 77)
-waves = Array[Dictionary]([{
-"Flesheater": 1,
-"Reanimator": 1,
-"Reborn": 15,
-"Severed": 5,
-"Unhallower": 1
-}, {
-"Reborn": 10,
-"Severed": 6,
-"Unhallower": 7
-}, {
-"Flesheater": 1,
-"Severed": 1
-}])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1497888431 instance=ExtResource("4_mqw32")]
@@ -102,24 +88,6 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 109)
-waves = Array[Dictionary]([{
-"Erupter": 5,
-"Flesheater": 3,
-"Reborn": 1,
-"Severed": 5,
-"Sundered": 1,
-"Unhallower": 1
-}, {
-"Amalgam": 2,
-"Erupter": 3,
-"Flesheater": 1,
-"Reanimator": 1,
-"Reborn": 3,
-"Unhallower": 6
-}, {
-"Flesheater": 1,
-"Severed": 1
-}])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("4_mqw32")]
@@ -128,22 +96,6 @@ position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1689922068 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 141)
-waves = Array[Dictionary]([{
-"Erupter": 1,
-"Flesheater": 1,
-"Reborn": 5,
-"Severed": 1,
-"Sundered": 3,
-"Unhallower": 8
-}, {
-"Amalgam": 1,
-"Flesheater": 4,
-"Sundered": 3,
-"Unhallower": 2
-}, {
-"Flesheater": 1,
-"Severed": 1
-}])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=326913154 instance=ExtResource("4_mqw32")]
@@ -152,20 +104,6 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=2041524300 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 173)
-waves = Array[Dictionary]([{
-"Amalgam": 3,
-"Erupter": 1,
-"Flesheater": 3,
-"Reborn": 5,
-"Sundered": 7
-}, {
-"Amalgam": 5,
-"Severed": 3,
-"Unhallower": 9
-}, {
-"Flesheater": 1,
-"Severed": 1
-}])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1681998341 instance=ExtResource("4_mqw32")]
@@ -174,22 +112,6 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=228284926 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 205)
-waves = Array[Dictionary]([{
-"Amalgam": 7,
-"Reanimator": 2,
-"Reborn": 7,
-"Severed": 1,
-"Sundered": 2,
-"Unhallower": 1
-}, {
-"Erupter": 5,
-"Flesheater": 1,
-"Reborn": 3,
-"Severed": 2
-}, {
-"Flesheater": 1,
-"Severed": 1
-}])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1236080942 instance=ExtResource("4_mqw32")]
@@ -198,20 +120,6 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1329179264 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 241)
-waves = Array[Dictionary]([{
-"Erupter": 7,
-"Flesheater": 4
-}, {
-"Erupter": 5,
-"Flesheater": 2,
-"Reanimator": 2,
-"Reborn": 3,
-"Severed": 7,
-"Unhallower": 1
-}, {
-"Flesheater": 1,
-"Severed": 1
-}])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1772735517 instance=ExtResource("4_mqw32")]
@@ -220,18 +128,6 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=2003164474 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 276)
-waves = Array[Dictionary]([{
-"Amalgam": 8,
-"Erupter": 5,
-"Unhallower": 5
-}, {
-"Reborn": 15,
-"Severed": 5,
-"Unhallower": 8
-}, {
-"Flesheater": 1,
-"Severed": 1
-}])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=633272156 instance=ExtResource("4_mqw32")]
