@@ -22,6 +22,11 @@ const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.t
 const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
+@onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
+@onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
+@onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
+@onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
 @onready var codex_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
 @onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
@@ -66,6 +71,7 @@ func _ready():
 	waveManager.wave_delays = [37.0, 50.0]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03, level03Alt)
@@ -93,6 +99,14 @@ func finish_ready():
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHidePlantSelectionMenu()
+
+
+func _configure_waves():
+	zombie_spawner_1.waves = [{"Reborn": 2}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}]
+	zombie_spawner_2.waves = [{"Reborn": 1, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}]
+	zombie_spawner_3.waves = [{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}]
+	zombie_spawner_4.waves = [{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}]
+	zombie_spawner_5.waves = [{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}]
 
 
 func getIsPurpleDimension():

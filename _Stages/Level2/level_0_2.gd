@@ -39,6 +39,9 @@ var tutorial_sun_instance: Node2D = null
 
 
 # Cached button references
+@onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
+@onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
 @onready var sunflower_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton")
 @onready var spyder_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2")
 @onready var walnut_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutButton")
@@ -111,6 +114,7 @@ func _ready():
 	waveManager.wave_delays = [35.0, 55.0]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
 
 	setup_plant_selection_menu()
@@ -148,6 +152,12 @@ func finish_ready():
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	levelSwitcher.visible = false
 	Global.unHidePlantSelectionMenu()
+
+
+func _configure_waves():
+	zombie_spawner_1.waves = [{}, {"Reborn": 3, "Severed": 1}, {"Unhallower": 3}]
+	zombie_spawner_2.waves = [{"Reborn": 1, "Severed": 1}, {"Reborn": 2, "Severed": 1}, {"Severed": 4, "Unhallower": 1}]
+	zombie_spawner_3.waves = [{"Severed": 1}, {"Reborn": 2, "Unhallower": 1}, {"Reborn": 6, "Unhallower": 2}]
 #endregion
 
 

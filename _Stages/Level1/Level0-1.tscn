@@ -3623,7 +3623,6 @@ process_mode = 1
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1144643147 instance=ExtResource("5_fhu8f")]
 position = Vector2(746, 141)
-waves = [{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}]
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=174461043 instance=ExtResource("6_6ct43")]
 z_index = 1

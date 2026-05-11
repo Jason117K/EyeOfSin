@@ -3646,7 +3646,6 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1818320134 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 77)
-waves = [{"Reborn": 2}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}]
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1288326444 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3655,7 +3654,6 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1984376630 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 109)
-waves = [{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}]
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1587845654 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3664,7 +3662,6 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1903365869 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 141)
-waves = [{"Reborn": 1, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}]
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=2026872960 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3673,7 +3670,6 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1387059718 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 173)
-waves = [{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}]
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1069787089 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3682,7 +3678,6 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=404246832 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 205)
-waves = [{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}]
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1574738843 instance=ExtResource("4_gehqo")]
 z_index = 1

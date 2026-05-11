@@ -4,6 +4,7 @@ var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutori
 var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
 
 @onready var crawler_button = plantSelectionMenu.get_crawler_button()
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
 
 const HIDEABLE_PLANT_NAMES = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]
 
@@ -68,6 +69,7 @@ func _ready():
 	waveManager.wave_delays = [-1, -1]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(current_level, current_level_alt)
@@ -87,6 +89,10 @@ func finish_ready():
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_SPYDER")
 	Global.unHidePlantSelectionMenu()
+
+
+func _configure_waves():
+	zombie_spawner_2.waves = [{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}]
 #endregion
 
 
