@@ -22,8 +22,9 @@ var can_attack = true           # Whether or not the drone can attack
 var velocity = Vector2.ZERO     # Drone Velocity 
 var rest_position = null        # The Location of the Drone Resting Position   
 var is_returning = false        # Whether or not the drone is returning to rest
-var explodeBuff = false         # Whether or not the drone is buffed 
-var isSpiderBuffed = false 
+var explodeBuff = false         # Whether or not the drone is buffed
+var isSpyderBuffed = false
+var base_attack_damage: int
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
@@ -31,13 +32,12 @@ func make_drone_glow():
 	animatedSpriteComp.make_glow()
 	
 	
-# Doubles the drone attack damage 
 func doubleDamage():
-	attack_damage = attack_damage * 4
+	attack_damage = base_attack_damage * 2
 	animatedSpriteComp.buff()
 
 func regularDamage():
-	attack_damage = attack_damage / 3
+	attack_damage = base_attack_damage
 	animatedSpriteComp.debuff()
 	
 # Activates the drone explosion buff
@@ -56,7 +56,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		
 		
 func _ready():
-	#idle by default 
+	base_attack_damage = attack_damage
 	animatedSpriteComp.animation = "idle"
 	
 	
@@ -86,11 +86,7 @@ func setAnimation(newAnimation):
 
 # Kills drone
 func die():
-	# Emit a died signal and make sure fighting stops before killing 
 	emit_signal("drone_died", self)
-	if current_target and is_instance_valid(current_target):
-		current_target.reset_speed()
-	print("Drone Free Self")
 	queue_free()
 
 func enable_hurtbox():
@@ -98,15 +94,11 @@ func enable_hurtbox():
 # Attacks a given enemy without buffs 
 func attack_target(enemy):
 	$HurtBox.disabled = false
-	#print("Drone Strike")
 	current_target = enemy
 	if explodeBuff:
 		enemy.fightDroneExplode()
-	enemy.fightDrone()
-	if isSpiderBuffed:
-		
+	if isSpyderBuffed:
 		enemy.make_spawn_slow_on_death()
-	
 	is_returning = false
 
 # Sends the drone back to it's original resting position 
