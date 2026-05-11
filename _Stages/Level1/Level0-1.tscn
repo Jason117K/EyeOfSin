@@ -3621,10 +3621,10 @@ sun_points = 90
 [node name="GameLayer" type="Node2D" parent="." unique_id=198300004]
 process_mode = 1
 
-[node name="ZombieSpawner2" parent="GameLayer" unique_id=1144643147 instance=ExtResource("5_fhu8f")]
+[node name="ZombieSpawner" parent="GameLayer" unique_id=1144643147 instance=ExtResource("5_fhu8f")]
 position = Vector2(746, 141)
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=174461043 instance=ExtResource("6_6ct43")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner" unique_id=174461043 instance=ExtResource("6_6ct43")]
 z_index = 1
 position = Vector2(-48, 0)
 
