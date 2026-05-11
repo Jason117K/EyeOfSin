@@ -56,7 +56,15 @@ var pos: PackedVector2Array
 var posPrev: PackedVector2Array
 var pointCount: int
 
+func print_scene_tree(node: Node = self, indent: int = 0) -> void:
+	var prefix := "\t".repeat(indent)
+	print(prefix + node.name + "(" + node.get_class() + ")")
+	for child in node.get_children():
+		print_scene_tree(child, indent + 1)
+	
+	
 func _ready() -> void:
+	
 	randomize()
 	grab_speed = randf_range(grab_speed-50.0,grab_speed+50.0)
 	unique_offset = randf_range(0, PI * 2)
@@ -71,6 +79,7 @@ func _ready() -> void:
 	
 	setup_line_color()
 	add_to_group("tentacles")
+
 
 func get_pointCount(distance: float) -> int:
 	return int(ceil(distance / constrain))

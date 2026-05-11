@@ -94,9 +94,16 @@ var _wave_time: float = 0.0
 
 #endregion
 
+func print_scene_tree(node: Node = self, indent: int = 0) -> void:
+	var prefix := "\t".repeat(indent)
+	print(prefix + node.name + "(" + node.get_class() + ")")
+	for child in node.get_children():
+		print_scene_tree(child, indent + 1)
+		
 ## Runs on scene load and sets up segments.
 ## Separate from _initialize_segments() so setters can rebuild segments during editing.
 func _ready() -> void:
+	print_scene_tree()
 	# Work in Arm's local space - base is always at origin
 	_base_position = Vector2.ZERO
 	_initialize_segments()

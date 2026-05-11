@@ -107,9 +107,10 @@ var bloodScene = preload("res://_Entities/Demons/Blood/Sun.tscn")
 var bufferName : String 
 
 func _ready():
+	
 	super()
 	collision_mask = 2
-
+	print_scene_tree()
 	#print("Maw Area2D: ", name)
 	#print("Maw Collision Layer: ", collision_layer)
 	#print("Maw Collision Mask: ", collision_mask)
