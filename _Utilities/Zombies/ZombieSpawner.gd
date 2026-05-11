@@ -4,9 +4,8 @@ class_name ZombieSpawner
 signal wave_exhausted
 signal all_waves_exhausted
 
-## Each entry is a Dictionary mapping zombie type name to count.
-## e.g. [{"Reborn": 3, "Severed": 2}, {"Unhallower": 1, "Reborn": 5}]
-@export var waves : Array
+## Each entry is a WaveData resource mapping zombie type name to count.
+@export var waves: Array[WaveData] = []
 @export var make_green: bool = false
 
 @export_group("Spawn Timing")
@@ -36,12 +35,20 @@ func get_current_wave() -> int:
 
 func get_wave_config(index: int) -> Dictionary:
 	if index >= 0 and index < waves.size():
-		return waves[index]
+		return waves[index].to_dict()
 	return {}
 
 
 func get_wave_preview() -> Node:
 	return $WavePreview
+
+
+## Set waves from an array of Dictionaries (for code-based configuration).
+## e.g. set_waves_from_dicts([{"Reborn": 3, "Severed": 2}, {"Unhallower": 1}])
+func set_waves_from_dicts(data: Array) -> void:
+	waves = []
+	for d in data:
+		waves.append(WaveData.from_dict(d))
 
 
 func begin_wave(wave_index: int) -> void:
@@ -54,15 +61,14 @@ func begin_wave(wave_index: int) -> void:
 
 func _build_pool(wave_index: int) -> Array[PackedScene]:
 	var pool: Array[PackedScene] = []
-	var config := get_wave_config(wave_index)
-	for type_name in config:
-		var count: int = config[type_name]
+	if wave_index < 0 or wave_index >= waves.size():
+		return pool
+	var wave: WaveData = waves[wave_index]
+	for type_name in ZombieRegistry.SCENES:
+		var count: int = wave.get(type_name)
 		if count <= 0:
 			continue
-		var scene: PackedScene = ZombieRegistry.SCENES.get(type_name)
-		if scene == null:
-			push_warning("ZombieSpawner: unknown zombie type '%s'" % type_name)
-			continue
+		var scene: PackedScene = ZombieRegistry.SCENES[type_name]
 		for _i in range(count):
 			pool.append(scene)
 	return pool

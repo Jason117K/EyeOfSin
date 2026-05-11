@@ -16,11 +16,11 @@ func _ready() -> void:
 
 
 func _configure_waves():
-	zombie_spawner_1.waves = [{"Erupter": 1}, {"Flesheater": 1, "Severed": 2}, {"Flesheater": 1, "Reborn": 3}]
-	zombie_spawner_2.waves = [{"Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Reborn": 3, "Severed": 1}]
-	zombie_spawner_3.waves = [{}, {"Severed": 1}, {"Flesheater": 1}]
-	zombie_spawner_4.waves = [{}, {"Reborn": 2, "Severed": 1}, {"Flesheater": 1, "Severed": 3}]
-	zombie_spawner_5.waves = [{"Unhallower": 1}, {"Severed": 2, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 3}]
+	zombie_spawner_1.set_waves_from_dicts([{"Erupter": 1}, {"Flesheater": 1, "Severed": 2}, {"Flesheater": 1, "Reborn": 3}])
+	zombie_spawner_2.set_waves_from_dicts([{"Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Reborn": 3, "Severed": 1}])
+	zombie_spawner_3.set_waves_from_dicts([{}, {"Severed": 1}, {"Flesheater": 1}])
+	zombie_spawner_4.set_waves_from_dicts([{}, {"Reborn": 2, "Severed": 1}, {"Flesheater": 1, "Severed": 3}])
+	zombie_spawner_5.set_waves_from_dicts([{"Unhallower": 1}, {"Severed": 2, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 3}])
 
 
 func getIsGreenDimension():
