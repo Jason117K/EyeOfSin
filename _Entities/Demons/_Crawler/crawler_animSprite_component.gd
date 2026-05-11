@@ -1,4 +1,6 @@
 extends DemonSpriteComp
+signal frame_changed_signal(animation_name: String, frame_index: int)
+
 
 func _ready():
 	super()
@@ -18,15 +20,16 @@ func spawn_done():
 		spawnAnimDone = true 
 
 func _on_AnimatedSprite_frame_changed():
-		if(animation.contains("ttack")):
-			#print("The frame is ", animSpriteComp.frame)
-			if(frame == 3):
-				#print("ABOUT Shoot Proj From Spider ")
-				demon.shoot_projectile()
+	emit_signal("frame_changed_signal", animation, frame)
+		#if(animation.contains("ttack")):
+			##print("The frame is ", animSpriteComp.frame)
+			#if(frame == 3):
+				##print("ABOUT Shoot Proj From Spider ")
+				#demon.shoot_projectile()
 
 func _on_animation_finished():
 	super()
-	if demon.canAttack:
+	if demon.get_can_attack():
 		#print(self, "Should Be Red Spider AttackZ")
 		animation = currentAttackAnim
 		play()

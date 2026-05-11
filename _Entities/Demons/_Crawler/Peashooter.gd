@@ -22,6 +22,7 @@ var canAttackSetTrueOnce = false
 @onready var attack_ray = $DMG_RayCast2D
 # Reference to the animatedSpriteComponent 
 @onready var buffNodes = $BuffNodesComponent
+@onready var projectile_shoot_component := $ProjectileShootComponent
 
 
 #Grab plantmanager, start default anim and connect/start relevant timers 
@@ -94,3 +95,13 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
+
+func get_can_attack():
+	return projectile_shoot_component.canAttack
+	
+	
+	
+	
+	
+	
+	
