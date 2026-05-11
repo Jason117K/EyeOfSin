@@ -24,12 +24,15 @@ func _apply_hue_shift() -> void:
 		material.shader = demon_hue_shift
 		material.set_shader_parameter("hue_shift_degrees", hue_shift)
 
+
+		
 func _ready() -> void:
 	#_apply_hue_shift()
 	# Ensure updates on animation changes
 	#animation_changed.connect(_apply_hue_shift)
 	#frame_changed.connect(_apply_hue_shift)
 	pass
+	
 
 # Public API methods
 func set_hue_shift(degrees: float) -> void:

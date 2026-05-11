@@ -38,6 +38,7 @@ var thisBufferName : String
 
 func _ready():
 	super()
+	#print_scene_tree()
 
 	
 	# Initialize drones & Plant Manager 

@@ -47,9 +47,18 @@ func makeExplode():
 func makeNotExplode():
 	explodeBuff = false
 
+
+func print_scene_tree(node: Node = self, indent: int = 0) -> void:
+	var prefix := "\t".repeat(indent)
+	print(prefix + node.name + "(" + node.get_class() + ")")
+	for child in node.get_children():
+		print_scene_tree(child, indent + 1)
+		
+		
 func _ready():
 	#idle by default 
 	animatedSpriteComp.animation = "idle"
+	
 	
 	# Create & configure attack timer
 	var timer = Timer.new()
@@ -59,6 +68,7 @@ func _ready():
 	timer.wait_time = attack_length
 	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
 	timer.start()
+	print_scene_tree()
 
 # Handles the drone taking damage
 func take_damage(amount):
