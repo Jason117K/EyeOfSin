@@ -92,6 +92,7 @@ func stop_attack():
 	attack_timer.stop()
 
 func _process(_delta):
+	pass
 	if not is_attacking:
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()

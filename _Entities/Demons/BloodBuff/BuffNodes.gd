@@ -60,6 +60,7 @@ func clearBuffs():
 	
 	
 func _process(_delta):
+	pass
 	
 	#print("I Am ", get_parent().name)
 	
@@ -122,4 +123,4 @@ func _process(_delta):
 									buffedPlants.append(plantToBuff)
 								#blood_tile.visible = true
 								break
-				#blood_tile.visible = bloodTileVisible
+				blood_tile.visible = bloodTileVisible

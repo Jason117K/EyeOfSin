@@ -66,6 +66,7 @@ func setSpecialMoveFalse():
 	
 #Handles Animation 
 func _process(_delta):
+	pass
 	if attackComp != null && isDead == false:
 		# Predetermine the state of attacking, being injured, and being slowed 
 		is_attacking = attackComp.getAttackState()

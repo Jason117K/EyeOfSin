@@ -65,6 +65,7 @@ func take_damage(damage):
 
 #Applies small passive health regen and determines injured status 
 func _process(_delta):
+	pass
 	if health < maxHealth:
 		health = health + healthRegen
 	if health < halfHealth:
