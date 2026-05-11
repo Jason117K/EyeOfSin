@@ -6,7 +6,7 @@ signal all_waves_exhausted
 
 ## Each entry is a Dictionary mapping zombie type name to count.
 ## e.g. [{"Reborn": 3, "Severed": 2}, {"Unhallower": 1, "Reborn": 5}]
-@export var waves: Array[Dictionary] = []
+@export var waves : Array
 @export var make_green: bool = false
 
 @export_group("Spawn Timing")
