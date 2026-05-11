@@ -108,7 +108,7 @@ func _start_force_select_hive():
 	show_only_plant_buttons(["Hive"])
 	hide_all_demon_buttons_with_exception(["Hive"])
 	#hbox.get_node("Hive").visible = true
-	if hive_pulse_added == false
+	if hive_pulse_added == false:
 		demonSelectionMenu.add_pulsing_button_highlight(hive_button)
 		hive_pulse_added = true
 	waveManager.can_start = false

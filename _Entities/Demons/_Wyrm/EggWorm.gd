@@ -1,4 +1,4 @@
-extends Node2D
+extends Demon
 #EggWorm.gd
 
 #Adjustable health & cost
@@ -16,7 +16,7 @@ extends Node2D
 @export var bounce_elasticity = 0.3  
 @export var animation_exaggeration = 1.0  
 
-@onready var healthComp := $HealthComponent
+#@onready var healthComp := $HealthComponent
 
 # Node references
 @export var sprite_path: NodePath  
@@ -47,10 +47,10 @@ var velocity = 0.0
 var prev_y = 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  
-var isBuffed := false 
+#var isBuffed := false 
 var bufferName : String 
 var PlantManager
-var isCurrentlyBuffed = true  
+#var isCurrentlyBuffed = true  
 
 
 func _ready():
