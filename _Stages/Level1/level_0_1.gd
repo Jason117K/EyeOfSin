@@ -2,13 +2,9 @@ extends LevelTemplate
 
 var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
 var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
-var wave_1_completed := false 
-var current_completed_wave_number := 0 
-var wave3StartTimer : Timer
-@export var this_wave_3_start_time := 10
 
-@onready var crawler_button = demonSelectionMenu.get_crawler_button()
-@onready var zombie_spawner := $GameLayer/ZombieSpawner2
+@onready var crawler_button = plantSelectionMenu.get_crawler_button()
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
 
 const HIDEABLE_PLANT_NAMES = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]
 
@@ -70,10 +66,10 @@ func _ready():
 	Global.resetSunflowerCount()
 	Global.reset_swap_ability()
 
-	#waveManager.wave_delays = [-1, -1]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
+	waveManager.wave_delays = [-1, -1]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(current_level, current_level_alt)
@@ -86,18 +82,17 @@ func _ready():
 	crawler_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
 
 	toolTips.hide()
-	
-	zombie_spawner.wave_exhausted.connect(wave_exhausted)
-	waveManager.preview_lead_time = 8
-	
-
 	finish_ready()
 
 
 func finish_ready():
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_SPYDER")
-	Global.unHideDemonSelectionMenu()
+	Global.unHidePlantSelectionMenu()
+
+
+func _configure_waves():
+	zombie_spawner_2.waves = [{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}]
 #endregion
 
 
@@ -114,7 +109,7 @@ func _start_force_select_spyder():
 	#hide_all_plant_buttons_except_spyder()
 	highlight_spyder_button()
 	waveManager.can_start = false
-	demonSelectionMenu.canSwapScenes = false
+	plantSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_plant():
@@ -126,7 +121,6 @@ func _start_force_place_plant():
 
 func _start_explain_blood_cost():
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, true)
-	#waveManager.can_start = true
 	#TODO Add Highlight
 	#show_spotlight_at_position(Vector2(10, 0))
 
@@ -134,8 +128,7 @@ func _start_explain_blood_cost():
 func _start_wave_1():
 	waveManager.can_start = true
 	wave_1_active = false
-	
-
+	wave_1_complete = false
 
 
 func start_game():
@@ -148,8 +141,8 @@ func _start_explain_basic_zombie():
 
 
 func _start_force_press_y():
-	demonSelectionMenu.get_world_swap_button().visible = true
-	#demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
+	plantSelectionMenu.get_world_swap_button().visible = true
+	#plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 	toolTips.set_basic_tutorial_text(TUTORIAL_PRESS_Y, false)
 
 
@@ -158,13 +151,12 @@ func _start_explain_green_dimension():
 
 
 func _start_wave_2_both_dimensions():
-	
 	var green_dimension = get_parent().get_node("Level0-1_Alternate")
 	if green_dimension and green_dimension.has_method("setup_wave_2_ui"):
 		green_dimension.setup_wave_2_ui()
-	#waveManager._show_preview_for_next_wave()
+
 	waveManager.start_next_wave()
-	demonSelectionMenu.canSwapScenes = true
+	plantSelectionMenu.canSwapScenes = true
 
 
 func _start_explain_severed_zombie():
@@ -212,7 +204,7 @@ func _on_tooltip_hidden():
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_COST":
 			pass
-			go_to_step("WAVE_1_ACTIVE")
+			#go_to_step("WAVE_1_ACTIVE")
 		"EXPLAIN_GREEN_DIMENSION":
 			go_to_step("WAVE_2_ACTIVE")
 
@@ -233,7 +225,6 @@ func _on_wave_started(wave_index: int):
 	match wave_index:
 		0:
 			wave_1_active = true
-			print("ADVANCE TO EXPLAIN BASIC ZOMBIE")
 			advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
 		2:
 			go_to_step("EXPLAIN_SEVERED_ZOMBIE")
@@ -245,24 +236,6 @@ func _on_plant_manager_spyder_placed(_grid_position: Vector2) -> void:
 
 
 #region Wave Completion Detection
-
-func wave_exhausted():
-	wave_1_completed = true 
-	current_completed_wave_number = current_completed_wave_number + 1
-	if current_completed_wave_number >= 2:
-		wave3StartTimer = Timer.new()
-		wave3StartTimer.autostart = false 
-		wave3StartTimer.one_shot = true 
-		wave3StartTimer.wait_time = this_wave_3_start_time
-		add_child(wave3StartTimer)
-		wave3StartTimer.timeout.connect(start_wave_3)
-		wave3StartTimer.start()
-		pass
-		#waveManager._start_wave(2) #WaveManager Counts from 0
-func start_wave_3():
-	pass
-	#waveManager._start_wave(2) #WaveManager Counts from 0
-	
 func _physics_process(_delta):
 	var step_name = get_current_step_name()
 	if step_name == "WAVE_1_ACTIVE" or step_name == "EXPLAIN_BASIC_ZOMBIE":
@@ -273,29 +246,29 @@ func _physics_process(_delta):
 			for zombie in alive_zombies:
 				if not zombie.is_in_group("Green"):
 					purple_zombies.append(zombie)
-			if wave_1_completed :
-				if purple_zombies.size() == 0 and wave_1_active:
-					wave_1_complete = true
-					go_to_step("FORCE_PRESS_Y")
+
+			if purple_zombies.size() == 0 and wave_1_active:
+				wave_1_complete = true
+				go_to_step("FORCE_PRESS_Y")
 #endregion
 
 
 #region UI Helpers
 func setup_plant_selection_menu():
-	demonSelectionMenu.get_world_swap_button().visible = false
-	demonSelectionMenu.get_remove_demon_button().visible = false 
-	demonSelectionMenu.get_codex_button().visible = false 
+	plantSelectionMenu.get_world_swap_button().visible = false
+	plantSelectionMenu.get_remove_demon_button().visible = false 
+	plantSelectionMenu.get_codex_button().visible = false 
 	#TODO Should We Adjust Size Here?
-	demonSelectionMenu.get_panel_container().size.x = 71
+	plantSelectionMenu.get_panel_container().size.x = 71
 
 
 func highlight_spyder_button():
-	demonSelectionMenu.add_pulsing_button_highlight(crawler_button)
+	plantSelectionMenu.add_pulsing_button_highlight(crawler_button)
 
 
 func unhighlight_spyder_button():
-	#demonSelectionMenu.remove_button_highlight(crawler_button)
-	demonSelectionMenu.stop_glow_pulse(crawler_button)
+	plantSelectionMenu.remove_button_highlight(crawler_button)
+	plantSelectionMenu.stop_glow_pulse(crawler_button)
 
 
 func show_guide():

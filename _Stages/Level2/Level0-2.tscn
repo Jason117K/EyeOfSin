@@ -40,6 +40,14 @@
 [ext_resource type="Texture2D" uid="uid://jmiumnuidyj1" path="res://_Assets/Environment/Props/rifts-2-Sheet.png" id="38_vp86k"]
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://_Assets/Environment/Props/rifts-alt-Sheet.png" id="39_myyu6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gh0wm"]
 texture = ExtResource("6_r12fy")
 texture_region_size = Vector2i(32, 32)
@@ -3597,8 +3605,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_te6yt")
-wave2StartTime = 35
-wave3StartTime = 55
 
 [node name="PlantManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
 sun_points = 105
@@ -3618,6 +3624,9 @@ offset_left = -132.0
 offset_top = -2051.5
 offset_right = 172.0
 offset_bottom = 2021.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=2012856353]
 stream = ExtResource("25_71bjb")
@@ -3634,15 +3643,6 @@ process_mode = 1
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1246316753 instance=ExtResource("3_sg366")]
 position = Vector2(740, 109)
-waves = Array[Dictionary]([{
-"Severed": 1
-}, {
-"Reborn": 2,
-"Unhallower": 1
-}, {
-"Reborn": 6,
-"Unhallower": 2
-}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=288924910 instance=ExtResource("4_acmis")]
 z_index = 1
@@ -3650,16 +3650,6 @@ position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=56502486 instance=ExtResource("3_sg366")]
 position = Vector2(740, 141)
-waves = Array[Dictionary]([{
-"Reborn": 1,
-"Severed": 1
-}, {
-"Reborn": 2,
-"Severed": 1
-}, {
-"Severed": 4,
-"Unhallower": 1
-}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1159930713 instance=ExtResource("4_acmis")]
 z_index = 1
@@ -3667,12 +3657,6 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=407286159 instance=ExtResource("3_sg366")]
 position = Vector2(740, 173)
-waves = Array[Dictionary]([{}, {
-"Reborn": 3,
-"Severed": 1
-}, {
-"Unhallower": 3
-}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1221651418 instance=ExtResource("4_acmis")]
 z_index = 1

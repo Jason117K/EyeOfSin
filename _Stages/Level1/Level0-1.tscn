@@ -3607,8 +3607,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_fb4rh")
-wave2StartTime = -1
-wave3StartTime = 23
 
 [node name="UILayer" parent="." unique_id=1087850493 instance=ExtResource("2_umbnb")]
 layout_mode = 1
@@ -3625,13 +3623,6 @@ process_mode = 1
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1144643147 instance=ExtResource("5_fhu8f")]
 position = Vector2(746, 141)
-waves = Array[Dictionary]([{
-"Reborn": 3
-}, {
-"Reborn": 5
-}, {
-"Reborn": 7
-}])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=174461043 instance=ExtResource("6_6ct43")]
 z_index = 1

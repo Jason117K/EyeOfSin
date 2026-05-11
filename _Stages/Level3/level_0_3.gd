@@ -3,7 +3,6 @@ extends LevelTemplate
 
 # Preloaded demo scenes
 var fleshEater_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
-var codex_demo = preload("res://_UI/GameDemonstrations/codex_demo.tscn")
 
 # Level paths
 var thisLevel := "res://_Stages/Level3/Level0-3.tscn"
@@ -19,14 +18,18 @@ const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_Place
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
 
-var maw_pulse_added := false 
-
 # Plant button container names
+const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
-@onready var maw_button = demonSelectionMenu.get_maw_button()
-@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
-
+@onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
+@onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
+@onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
+@onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
+@onready var maw_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton")
+@onready var codex_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Codex/CodexButton")
+@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -65,10 +68,10 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	#waveManager.wave_delays = [37.0, 50.0]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
+	waveManager.wave_delays = [37.0, 50.0]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03, level03Alt)
@@ -81,7 +84,7 @@ func _ready():
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	plantManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
-	demonSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
+	plantSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
 
 	toolTips.hide()
@@ -95,7 +98,15 @@ func finish_ready():
 	go_to_step("FORCE_SELECT_MAW")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
-	Global.unHideDemonSelectionMenu()
+	Global.unHidePlantSelectionMenu()
+
+
+func _configure_waves():
+	zombie_spawner_1.waves = [{"Reborn": 2}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}]
+	zombie_spawner_2.waves = [{"Reborn": 1, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}]
+	zombie_spawner_3.waves = [{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}]
+	zombie_spawner_4.waves = [{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}]
+	zombie_spawner_5.waves = [{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}]
 
 
 func getIsPurpleDimension():
@@ -113,30 +124,24 @@ func _input(event):
 func _start_force_select_maw():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	
-	hide_all_demon_buttons_with_exception(["Maw"])
-	demonSelectionMenu.add_pulsing_button_highlight(maw_button)
-	if maw_pulse_added == false :
-		print("Add Glow Pulse SD")
-		maw_pulse_added = true 
+	show_only_plant_buttons(["Maw"])
+	plantSelectionMenu.add_pulsing_button_highlight(maw_button)
 	#show_spotlight_at_node(maw_button)
 	waveManager.can_start = false
-	demonSelectionMenu.canSwapScenes = false
+	plantSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_maw():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
 	
-	#demonSelectionMenu.remove_button_highlight(maw_button)
-	print("Stop GLOW Pulse")
-	demonSelectionMenu.stop_glow_pulse(maw_button)
+	plantSelectionMenu.remove_button_highlight(maw_button)
 	hide_spotlight()
 
 
 func _start_tutorial_p1_done():
 	toolTips.hide()
-	#show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
-	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
-	demonSelectionMenu.canSwapScenes = true
+	show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
+	plantSelectionMenu.canSwapScenes = true
 
 
 func start_game():
@@ -147,8 +152,8 @@ func start_game():
 	if waveManager.can_start:
 		return
 
-	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
-	demonSelectionMenu.canSwapScenes = true
+	show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
+	plantSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
 
@@ -159,23 +164,15 @@ func _start_explain_fleshEater_zombie():
 
 
 func _start_explain_codex():
-	#hbox.get_node("Codex").visible = true
-	codex_button.show()
+	hbox.get_node("Codex").visible = true
 	codex_button.visible = true
-	codex_button.pressed.connect(toolTips._on_visual_tutorial_understood_button_pressed)
-	#toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CODEX, false)
-	toolTips.set_visual_tutorial_text(TUTORIAL_SELECT_CODEX)
-	
-	demonSelectionMenu.add_pulsing_button_highlight(demonSelectionMenu.get_codex_button())
-	print("Add Glow Pulse F")
-	toolTips.set_visual_tutorial_visual(codex_demo.instantiate(), false)
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CODEX, false)
 	
 	#show_spotlight_at_node(codex_button)
 
 
 func _start_tutorial_p2_done():
-	demonSelectionMenu.stop_glow_pulse(demonSelectionMenu.get_codex_button())
-	#toolTips._on_Button_pressed()
+	toolTips._on_Button_pressed()
 #endregion
 
 
@@ -230,14 +227,10 @@ func _on_wave_started(wave_index: int):
 
 #region UI Helpers
 func setup_plant_selection_menu():
-	#hbox.get_node("Maw").visible = true
-	demonSelectionMenu.get_maw_button().show()
-	#hbox.get_node("WorldSwap").visible = true
-	demonSelectionMenu.get_world_swap_button().show()
-	#hbox.get_node("RemovePlant").visible = true
-	demonSelectionMenu.get_remove_demon_button().show()
-# 	hbox.get_node("Codex").visible = true
-	demonSelectionMenu.get_codex_button().show()
+	hbox.get_node("Maw").visible = true
+	hbox.get_node("WorldSwap").visible = true
+	hbox.get_node("RemovePlant").visible = true
+	hbox.get_node("Codex").visible = true
 
 
 func show_only_plant_buttons(visible_containers: Array):
