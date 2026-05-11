@@ -6,11 +6,12 @@ extends LevelTemplate
 @onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
 @onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
 
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	attach_script_to_sway_children()
-	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
 	_configure_waves()
+	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
 
 
 func _configure_waves():

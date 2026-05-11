@@ -12,7 +12,7 @@ var purple_dimension : Control
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
 func _ready() -> void:
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 	_configure_waves()
 
 
@@ -24,14 +24,11 @@ func _configure_waves():
 	zombie_spawner_5.waves = [{"Amalgam": 7, "Reanimator": 2, "Reborn": 7, "Severed": 1, "Sundered": 2, "Unhallower": 1}, {"Erupter": 5, "Flesheater": 1, "Reborn": 3, "Severed": 2}, {"Flesheater": 1, "Severed": 1}]
 	zombie_spawner_6.waves = [{"Erupter": 7, "Flesheater": 4}, {"Erupter": 5, "Flesheater": 2, "Reanimator": 2, "Reborn": 3, "Severed": 7, "Unhallower": 1}, {"Flesheater": 1, "Severed": 1}]
 	zombie_spawner_7.waves = [{"Amalgam": 8, "Erupter": 5, "Unhallower": 5}, {"Reborn": 15, "Severed": 5, "Unhallower": 8}, {"Flesheater": 1, "Severed": 1}]
-	
+
 
 func getIsGreenDimension():
 	return isGreenDimension
 
-
-
-	
 
 func start_game():
 	show_all_demon_buttons()

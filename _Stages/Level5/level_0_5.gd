@@ -12,6 +12,7 @@ var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
 var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
+var hive_pulse_added := false 
 
 # Text file paths
 const TUTORIAL_SELECT_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_SelectHive.txt"
@@ -19,8 +20,6 @@ const TUTORIAL_PLACE_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_Plac
 const TUTORIAL_EXPLAIN_ERUPTER = "res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
 const TUTORIAL_EXPLAIN_LANCER = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 
-# Plant button container names
-const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -30,8 +29,8 @@ const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peas
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
-@onready var hive_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton")
-@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hive_button = demonSelectionMenu.get_hive_button()
+@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -67,7 +66,8 @@ func _setup_tutorial():
 func _ready():
 	Dialogic.Inputs.auto_skip.enabled = true
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.wave_delays = [35.0, 45.0]
+	#waveManager.wave_delays = [35.0, 45.0]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -77,7 +77,7 @@ func _ready():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 	
 	Global.resetSunflowerCount()
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
@@ -89,15 +89,6 @@ func _ready():
 	finish_ready()
 
 
-func finish_ready():
-	toolTips.show()
-	_setup_tutorial()
-	go_to_step("FORCE_SELECT_HIVE")
-	levelSwitcher.update_level(level06, level06Alt)
-	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
-	Global.unHidePlantSelectionMenu()
-
-
 func _configure_waves():
 	zombie_spawner_1.waves = [{}, {"Erupter": 2, "Flesheater": 2, "Reanimator": 1, "Severed": 5}, {"Erupter": 1, "Flesheater": 2, "Reanimator": 1, "Severed": 2, "Unhallower": 1}]
 	zombie_spawner_2.waves = [{"Severed": 2, "Sundered": 3}, {"Erupter": 2, "Flesheater": 1, "Reborn": 1, "Severed": 2, "Sundered": 3, "Unhallower": 2}, {"Erupter": 3, "Flesheater": 1, "Sundered": 4, "Unhallower": 2}]
@@ -106,6 +97,15 @@ func _configure_waves():
 	zombie_spawner_5.waves = [{}, {"Erupter": 2, "Flesheater": 1, "Severed": 2, "Unhallower": 4}, {"Reborn": 8, "Severed": 1, "Sundered": 3}]
 	zombie_spawner_6.waves = [{"Unhallower": 2}, {"Reanimator": 1, "Reborn": 5, "Unhallower": 2}, {"Flesheater": 3, "Severed": 6, "Sundered": 4, "Unhallower": 4}]
 	zombie_spawner_7.waves = [{}, {"Flesheater": 2, "Severed": 1}, {"Unhallower": 2}]
+
+
+func finish_ready():
+	toolTips.show()
+	_setup_tutorial()
+	go_to_step("FORCE_SELECT_HIVE")
+	levelSwitcher.update_level(level06, level06Alt)
+	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
+	Global.unHideDemonSelectionMenu()
 
 
 func getIsPurpleDimension():
@@ -124,23 +124,27 @@ func _start_force_select_hive():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 	
 	show_only_plant_buttons(["Hive"])
-	hbox.get_node("Hive").visible = true
-	plantSelectionMenu.add_pulsing_button_highlight(hive_button)
+	hide_all_demon_buttons_with_exception(["Hive"])
+	#hbox.get_node("Hive").visible = true
+	if hive_pulse_added == false:
+		demonSelectionMenu.add_pulsing_button_highlight(hive_button)
+		hive_pulse_added = true
 	waveManager.can_start = false
-	plantSelectionMenu.canSwapScenes = false
+	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_hive():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_HIVE,false)
 	
-	plantSelectionMenu.remove_button_highlight(hive_button)
+#	demonSelectionMenu.remove_button_highlight(hive_button)
+	demonSelectionMenu.stop_glow_pulse(hive_button)
 	hide_spotlight()
 
 
 func _start_tutorial_p1_done():
 	toolTips.hide()
 	_show_all_buttons()
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 
 
 func start_game():
@@ -152,7 +156,7 @@ func start_game():
 		return
 
 	_show_all_buttons()
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
 
@@ -227,8 +231,8 @@ func _show_all_buttons():
 	# Also show non-plant UI and parent containers
 	for container_name in ALL_DEMON_CONTAINERS:
 		hbox.get_node(container_name).visible = true
-	hbox.get_node("WorldSwap").visible = true
-	hbox.get_node("Codex").visible = true
+	world_swap_button.show()
+	codex_button.show()
 
 
 func show_guide():

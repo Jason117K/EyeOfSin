@@ -18,7 +18,6 @@ const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_Plac
 const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 
 # Plant button container names
-const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peashooter"]
 
 # Cached button references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -28,8 +27,8 @@ const ALL_DEMON_CONTAINERS = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Peas
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
-@onready var wyrm_button = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/Egg/EggButton")
-@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var wyrm_button = demonSelectionMenu.get_wyrm_button()
+@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -60,7 +59,8 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.wave_delays = [35.0, 45.0]
+	#waveManager.wave_delays = [35.0, 45.0]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -70,7 +70,7 @@ func _ready():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	
 	Global.resetSunflowerCount()
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
@@ -82,16 +82,6 @@ func _ready():
 	finish_ready()
 
 
-func finish_ready():
-	toolTips.show()
-	_setup_tutorial()
-	go_to_step("FORCE_SELECT_WYRM")
-	levelSwitcher.update_level(level05, level05Alt)
-	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
-	levelSwitcher.visible = false
-	Global.unHidePlantSelectionMenu()
-
-
 func _configure_waves():
 	zombie_spawner_1.waves = [{"Flesheater": 1, "Severed": 2}, {"Severed": 5, "Unhallower": 2}, {"Flesheater": 2, "Reborn": 3, "Unhallower": 2}]
 	zombie_spawner_2.waves = [{"Severed": 2}, {"Reanimator": 1, "Severed": 4, "Unhallower": 2}, {"Reborn": 6, "Unhallower": 2}]
@@ -100,6 +90,16 @@ func _configure_waves():
 	zombie_spawner_5.waves = [{"Reborn": 2, "Unhallower": 2}, {"Reborn": 4, "Severed": 3}, {"Severed": 4, "Unhallower": 2}]
 	zombie_spawner_6.waves = [{"Reborn": 1, "Severed": 2}, {"Severed": 2, "Unhallower": 6}, {"Flesheater": 3, "Unhallower": 2}]
 	zombie_spawner_7.waves = [{}, {"Severed": 2}, {"Flesheater": 1, "Reanimator": 1, "Severed": 1, "Unhallower": 2}]
+
+
+func finish_ready():
+	toolTips.show()
+	_setup_tutorial()
+	go_to_step("FORCE_SELECT_WYRM")
+	levelSwitcher.update_level(level05, level05Alt)
+	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
+	levelSwitcher.visible = false
+	Global.unHideDemonSelectionMenu()
 
 
 func getIsPurpleDimension():
@@ -117,24 +117,27 @@ func _input(event):
 func _start_force_select_wyrm():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	
-	show_only_plant_buttons(["Egg"])
-	hbox.get_node("Egg").visible = true
-	plantSelectionMenu.add_pulsing_button_highlight(wyrm_button)
+	#show_only_plant_buttons(["Egg"])
+	hide_all_demon_buttons_with_exception(["Wyrm"])
+	#hbox.get_node("Egg").visible = true
+	
+	demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
 	waveManager.can_start = false
-	plantSelectionMenu.canSwapScenes = false
+	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_wyrm():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WYRM, false)
 	
-	plantSelectionMenu.remove_button_highlight(wyrm_button)
+	#demonSelectionMenu.remove_button_highlight(wyrm_button)
+	demonSelectionMenu.stop_glow_pulse(wyrm_button)
 	hide_spotlight()
 
 
 func _start_tutorial_p1_done():
 	toolTips.hide()
 	_show_all_buttons()
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 
 
 func start_game():
@@ -146,7 +149,7 @@ func start_game():
 		return
 
 	_show_all_buttons()
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
 
@@ -209,12 +212,13 @@ func show_only_plant_buttons(visible_containers: Array):
 
 func _show_all_buttons():
 	show_only_plant_buttons(["Sunflower", "Walnut", "Egg", "Maw", "Peashooter"])
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw", "Wyrm"])
 	# Also show non-plant UI
-	hbox.get_node("Sunflower").visible = true
-	hbox.get_node("Walnut").visible = true
-	hbox.get_node("Maw").visible = true
-	hbox.get_node("WorldSwap").visible = true
-	hbox.get_node("Codex").visible = true
+	#hbox.get_node("Sunflower").visible = true
+	#hbox.get_node("Walnut").visible = true
+	#hbox.get_node("Maw").visible = true
+	#hbox.get_node("WorldSwap").visible = true
+	#hbox.get_node("Codex").visible = true
 
 
 func remove_empty_blocker_plant(grid_pos):

@@ -1,15 +1,17 @@
 extends LevelTemplate
 
-@onready var zombie_spawner_2_green := $GameLayer/ZombieSpawner2Green
+@onready var zombie_spawner_green := $GameLayer/ZombieSpawner2Green
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	#attach_script_to_sway_children()
+	attach_script_to_sway_children()
 	_configure_waves()
 
 
 func _configure_waves():
-	zombie_spawner_2_green.waves = [{}, {"Reborn": 5}, {"Reborn": 3, "Severed": 2}]
+	zombie_spawner_green.waves = [{}, {"Reborn": 5}, {"Reborn": 3, "Severed": 2}]
 
 
 func setup_wave_2_ui():

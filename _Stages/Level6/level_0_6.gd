@@ -23,7 +23,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
-@onready var hbox = plantSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 var gameStarted := false
@@ -47,7 +47,8 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	waveManager = get_parent().get_node("WaveManager")
-	waveManager.wave_delays = [35.0, 45.0]
+	#waveManager.wave_delays = [60.0, 100.0]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -56,22 +57,13 @@ func _ready():
 	pause_Button.set_restart_levels(level06, level06Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.resetSunflowerCount()
-	attach_script_to_sway_children("res://Scripts/Environment/sway.gd")
+	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 
 	Dialogic.timeline_ended.connect(finish_ready)
 	finish_ready()
-
-
-func finish_ready():
-	_setup_tutorial()
-	go_to_step("GAME_READY")
-	levelSwitcher.update_level(endScreen, endScreenAlt)
-	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
-	Global.unHidePlantSelectionMenu()
-	plantSelectionMenu.canSwapScenes = true
 
 
 func _configure_waves():
@@ -82,6 +74,15 @@ func _configure_waves():
 	zombie_spawner_5.waves = [{"Amalgam": 5, "Reanimator": 1, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Amalgam": 2, "Reborn": 10, "Unhallower": 12}, {"Amalgam": 9, "Erupter": 4, "Reanimator": 1, "Severed": 5, "Unhallower": 3}]
 	zombie_spawner_6.waves = [{"Amalgam": 1, "Flesheater": 1, "Reanimator": 1, "Reborn": 1, "Severed": 1, "Sundered": 5, "Unhallower": 4}, {"Flesheater": 1, "Severed": 5, "Sundered": 3}, {"Amalgam": 5, "Severed": 4, "Unhallower": 11}]
 	zombie_spawner_7.waves = [{"Amalgam": 1, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Amalgam": 4, "Reborn": 8, "Severed": 1, "Sundered": 3}, {"Erupter": 1, "Reborn": 18, "Severed": 7, "Unhallower": 6}]
+
+
+func finish_ready():
+	_setup_tutorial()
+	go_to_step("GAME_READY")
+	levelSwitcher.update_level(endScreen, endScreenAlt)
+	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
+	Global.unHideDemonSelectionMenu()
+	demonSelectionMenu.canSwapScenes = true
 
 
 func getIsPurpleDimension():
@@ -95,7 +96,7 @@ func _start_game_ready():
 
 
 func start_game():
-	plantSelectionMenu.canSwapScenes = true
+	demonSelectionMenu.canSwapScenes = true
 	for node in get_parent().get_children():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node

@@ -85,6 +85,10 @@ func _ready():
 	finish_ready()
 
 
+func _configure_waves():
+	zombie_spawner.waves = [{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}]
+
+
 func finish_ready():
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_SPYDER")
