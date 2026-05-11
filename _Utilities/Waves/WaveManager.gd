@@ -36,6 +36,7 @@ func _ready():
 
 
 func _setup():
+	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
 
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
@@ -72,9 +73,9 @@ func get_current_wave() -> int:
 
 ## Called when the player clicks the Start button (gated by can_start).
 func _on_game_start_requested() -> void:
-	#print("START REEEEEEE")
+	print("START REEEEEEE")
 	if not can_start:
-		#print("CANNOT START")
+		print("CANNOT START")
 		return
 	_start_wave(0)
 
@@ -117,6 +118,7 @@ func _start_wave(index: int) -> void:
 		print("Index Is ",index, " & wave_delays.size() is ",wave_delays.size() )
 		var delay: float = wave_delays[index]
 		if delay > 0:
+			print("Wave Delay Timer At Index ", index, " has a wait time of ", delay)
 			waveDelayTimer.wait_time = delay
 			waveDelayTimer.start()
 

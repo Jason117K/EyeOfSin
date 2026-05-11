@@ -1,14 +1,14 @@
 extends Control
 
-var level0_3 = ("res://Scenes/LevelScenes/Level0-3.tscn")
-var level0_3Alt = ("res://Scenes/LevelScenes/Level0-3_Alternate.tscn")
+var level0_3 = ("res://_Stages/Level3/Level0-3.tscn")
+var level0_3Alt = ("res://_Stages/Level3/Level0-3_Alternate.tscn")
 
 @export var restartScene : String 
 @export  var restartSceneAlt  : String 
 
 
 func set_restart_levels(newLevel,newAltLevel):
-	#print(newLevel,newAltLevel, "RESTART LEVELS SET")
+	print(newLevel,newAltLevel, "RESTART LEVELS SET")
 	restartScene = newLevel
 	restartSceneAlt = newAltLevel
 	#print(restartScene,restartSceneAlt, "RESTART LEVELS SET2")
@@ -28,7 +28,7 @@ func _on_return_to_menu_pressed() -> void:
 		#toolTips.visble = false
 	#toolTips.hide()
 	get_parent().hide_toolTip()
-	Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/StartScreen.tscn")
+	Global.game_controller.change_from_dual_scenes("res://_Stages/StartScreen/StartScreen.tscn")
 
 
 func _on_restart_pressed() -> void:

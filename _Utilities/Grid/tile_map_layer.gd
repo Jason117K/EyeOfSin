@@ -80,7 +80,7 @@ func set_hue_shift_value(value: float) -> void:
 ## start_row: First row (inclusive)
 ## end_row: Last row (inclusive)
 func place_rectangles_on_rows(start_row: int, end_row: int) -> void:
-#	print("rectrectrectrectrectrectrect")
+	#print("rectrectrectrectrectrectrect")
 	if rectangle_scene == null:
 		push_error("Rectangle scene not assigned!")
 		return
@@ -101,7 +101,7 @@ func place_rectangles_on_rows(start_row: int, end_row: int) -> void:
 			#print("Spawn Recttttppppp")
 			_spawn_rectangle_at_cell(cell_coords)
 			
-				
+	#print("All Rectangles Should be placed on rows")			
 	## Spawns a single rectangle centered on the given tile cell
 func _spawn_rectangle_at_cell(cell_coords: Vector2i) -> void:
 #	print("Spawn Rectttt")

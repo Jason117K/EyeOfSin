@@ -36,7 +36,7 @@ signal call_wave_early_requested
 									erupterLabel, reanimatorLabel, wretchLabel, \
 									flesheaterLabel, amalgamLabel, sunderedLabel]
 
-var preview_lead_time = 25
+var preview_lead_time = 15
 var _spawner: ZombieSpawner
 var _preview_wave_index: int = -1
 var progressing := false 
@@ -58,7 +58,7 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 	$Area2D/CollisionShape2D.disabled = false
 	next_wave_timer.start()
 	if Global.get_wave_manager()._current_wave > -1:
-		
+		print("Make visible, current wave is ",Global.get_wave_manager()._current_wave )
 		wave_progress_bar.visible = true 
 	else:
 		wave_progress_bar.visible = false 

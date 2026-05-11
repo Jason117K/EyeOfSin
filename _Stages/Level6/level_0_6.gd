@@ -5,10 +5,9 @@ extends LevelTemplate
 var amalgam_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
 # Level paths
-var thisLevel := "res://Scenes/LevelScenes/Level0-6.tscn"
-var thisAltLevel := "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
-var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
-var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
+var thisLevel := "res://_Stages/Level6/Level0-6.tscn"
+var thisAltLevel := "res://_Stages/Level6/Level0-6_Alternate.tscn"
+
 var endScreen = "res://Scenes/LevelScenes/EndScreen.tscn"
 var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
 
@@ -54,7 +53,7 @@ func _ready():
 	_configure_waves()
 
 	setup_plant_selection_menu()
-	pause_Button.set_restart_levels(level06, level06Alt)
+	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.resetSunflowerCount()
 	attach_script_to_sway_children()
@@ -150,5 +149,5 @@ func _show_all_buttons():
 
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 #endregion

@@ -5,10 +5,9 @@ extends LevelTemplate
 var summoner_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/summoner_zombie_demo.tscn")
 
 # Level paths
-var thisLevel := "res://Scenes/LevelScenes/Level0-4.tscn"
-var thisAltLevel := "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
-var level04 = "res://Scenes/LevelScenes/Level0-4.tscn"
-var level04Alt = "res://Scenes/LevelScenes/Level0-4_Alternate.tscn"
+var thisLevel := "res://_Stages/Level4/Level0-4.tscn"
+var thisAltLevel := "res://_Stages/Level4/Level0-4_Alternate.tscn"
+
 var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
 var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
 
@@ -65,7 +64,7 @@ func _ready():
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
 
-	pause_Button.set_restart_levels(level04, level04Alt)
+	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	
@@ -211,7 +210,7 @@ func show_only_plant_buttons(visible_containers: Array):
 
 
 func _show_all_buttons():
-	show_only_plant_buttons(["Sunflower", "Walnut", "Egg", "Maw", "Peashooter"])
+	#show_only_plant_buttons(["Sunflower", "Walnut", "Egg", "Maw", "Peashooter"])
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw", "Wyrm"])
 	# Also show non-plant UI
 	#hbox.get_node("Sunflower").visible = true
@@ -226,5 +225,5 @@ func remove_empty_blocker_plant(grid_pos):
 
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 #endregion

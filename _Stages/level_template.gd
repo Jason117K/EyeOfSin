@@ -39,7 +39,7 @@ const TUTORIAL_GREEN_DIMENSION = "res://_Assets/Text/TextFiles/Level0_1_Tutorial
 const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
-const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal"]
+const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler"] #,"Portal"]
 const ALL_EXTRA_BUTTONS = []
 
 func get_demon_manager():
@@ -106,7 +106,7 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []):
 ## Optionally pass extra non-plant UI names to also show (e.g. "WorldSwap", "Codex").
 func show_all_demon_buttons(extras: Array = []):
 	for container_name in ALL_DEMON_CONTAINERS:
-		if _plant_hbox.get_node(container_name) != null:
+		if _plant_hbox.get_node(container_name) != null :
 			var container = _plant_hbox.get_node(container_name)
 			container.visible = true
 			for child in container.get_children():

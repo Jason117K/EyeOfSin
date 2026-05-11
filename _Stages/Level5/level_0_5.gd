@@ -6,10 +6,9 @@ var erupter_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTuto
 var lancer_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/lancer_zombie_demo.tscn")
 
 # Level paths
-var thisLevel := "res://Scenes/LevelScenes/Level0-5.tscn"
-var thisAltLevel := "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
-var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
-var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
+var thisLevel := "res://_Stages/Level5/Level0-5.tscn"
+var thisAltLevel := "res://_Stages/Level5/Level0-5_Alternate.tscn"
+
 var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
 var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
 var hive_pulse_added := false 
@@ -72,7 +71,7 @@ func _ready():
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
 
-	pause_Button.set_restart_levels(level05, level05Alt)
+	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 	
@@ -236,5 +235,5 @@ func _show_all_buttons():
 
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 #endregion

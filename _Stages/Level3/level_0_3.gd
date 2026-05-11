@@ -151,6 +151,7 @@ func _start_tutorial_p1_done():
 	#show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
 	demonSelectionMenu.canSwapScenes = true
+	waveManager.can_start = true
 
 
 func start_game():
@@ -163,7 +164,7 @@ func start_game():
 
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
 	demonSelectionMenu.canSwapScenes = true
-	waveManager.can_start = true
+	
 	green_dimension.start_game()
 
 
@@ -263,5 +264,5 @@ func show_only_plant_buttons(visible_containers: Array):
 
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 19)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 10)
 #endregion

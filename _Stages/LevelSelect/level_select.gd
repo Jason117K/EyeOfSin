@@ -8,7 +8,7 @@ var canPlayLevel5 := false
 var canPlayLevel6 := false 
 var canPlayLevel7 := false 
 
-var startScreen = ("res://Scenes/LevelScenes/StartScreen.tscn")
+var startScreen = ("res://_Stages/StartScreen/StartScreen.tscn")
 
 
 

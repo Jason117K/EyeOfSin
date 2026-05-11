@@ -206,7 +206,7 @@ func _start_force_select_spyder_after_blood():
 	demonSelectionMenu.add_pulsing_button_highlight(crawler_button)
 	print("Add Glow Pulse A")
 	#show_spotlight_at_node(crawler_button)
-	waveManager.can_start = false
+	
 	demonSelectionMenu.canSwapScenes = false
 	get_tree().paused = true
 

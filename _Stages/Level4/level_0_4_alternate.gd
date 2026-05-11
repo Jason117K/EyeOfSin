@@ -39,5 +39,5 @@ func start_game():
 	purple_dimension.start_game()
 
 func show_guide():
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 8)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 	

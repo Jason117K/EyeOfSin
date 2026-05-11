@@ -189,9 +189,11 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
+visible = false
 layout_mode = 2
 
 [node name="PortalButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1249797751]
+visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 5

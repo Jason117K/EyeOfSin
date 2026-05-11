@@ -1,6 +1,6 @@
 extends Control
 
-var startScreen = ("res://Scenes/LevelScenes/StartScreen.tscn")
+var startScreen = ("res://_Stages/StartScreen/StartScreen.tscn")
 var backButton 
 
 func _ready() -> void:

@@ -2,6 +2,10 @@ extends LevelTemplate
 
 var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
 var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
+var wave_1_completed := false 
+var current_completed_wave_number := 0 
+var wave3StartTimer : Timer
+@export var this_wave_3_start_time := 20
 
 @onready var crawler_button = demonSelectionMenu.get_crawler_button()
 @onready var zombie_spawner := $GameLayer/ZombieSpawner
@@ -66,7 +70,8 @@ func _ready():
 	Global.resetSunflowerCount()
 	Global.reset_swap_ability()
 
-	waveManager.wave_delays = [-1, -1]
+	#waveManager.wave_delays = [-1, -1]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -82,6 +87,9 @@ func _ready():
 	crawler_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
 
 	toolTips.hide()
+	zombie_spawner.wave_exhausted.connect(wave_exhausted)
+	waveManager.preview_lead_time = 8
+	
 	finish_ready()
 
 
@@ -92,8 +100,10 @@ func _configure_waves():
 func finish_ready():
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_SPYDER")
-	Global.unHidedemonSelectionMenu()
+	Global.unHideDemonSelectionMenu()
 
+func wave_exhausted():
+	wave_1_completed = true 
 
 #endregion
 
@@ -110,7 +120,7 @@ func _start_force_select_spyder():
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#hide_all_plant_buttons_except_spyder()
 	highlight_spyder_button()
-	waveManager.can_start = false
+	waveManager.can_start = true
 	demonSelectionMenu.canSwapScenes = false
 
 
@@ -248,10 +258,10 @@ func _physics_process(_delta):
 			for zombie in alive_zombies:
 				if not zombie.is_in_group("Green"):
 					purple_zombies.append(zombie)
-
-			if purple_zombies.size() == 0 and wave_1_active:
-				wave_1_complete = true
-				go_to_step("FORCE_PRESS_Y")
+			if wave_1_completed :
+				if purple_zombies.size() == 0 and wave_1_active:
+					wave_1_complete = true
+					go_to_step("FORCE_PRESS_Y")
 #endregion
 
 

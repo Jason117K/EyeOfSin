@@ -101,18 +101,18 @@ mouse_filter = 2
 [node name="CooldownVisual" type="ColorRect" parent="Control" unique_id=1209554020]
 material = SubResource("ShaderMaterial_bupko")
 layout_mode = 0
-offset_left = 607.0
-offset_top = 314.0
-offset_right = 667.0
-offset_bottom = 373.0
+offset_left = 576.955
+offset_top = 338.0
+offset_right = 636.955
+offset_bottom = 397.0
 mouse_filter = 2
 
 [node name="Button" type="Button" parent="Control" unique_id=84739555]
 layout_mode = 0
-offset_left = 605.045
-offset_top = 311.0
-offset_right = 1033.045
-offset_bottom = 739.0
+offset_left = 575.0
+offset_top = 335.0
+offset_right = 1003.00006
+offset_bottom = 763.0
 scale = Vector2(0.15, 0.15)
 mouse_filter = 2
 icon = ExtResource("4_m1ym1")
