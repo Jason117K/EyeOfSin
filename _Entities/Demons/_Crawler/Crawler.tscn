@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="25_82rcb"]
 [ext_resource type="Shader" uid="uid://bm6i26uu8obx0" path="res://_Utilities/TentacleDemo/shaders/canvas_group_shadow.gdshader" id="25_kcbs3"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="30_tifvr"]
+[ext_resource type="Script" uid="uid://gxw8uvbcs0fo" path="res://_Entities/Demons/ShootComponent/ProjectileShootComponent.gd" id="33_kupbo"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -1606,8 +1607,11 @@ script = ExtResource("5_kupbo")
 walnutHealth = 375
 health = 200
 buffedHealth = 400
+healthRegen = 0.1
+buffedHealthRegen = 0.6
 maxHealth = 200
 buffedMaxHealth = 400
+blood_spawn_time = 5
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1385105491]
 autostart = true
@@ -1777,7 +1781,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 110.36739, 130.00409, 106.44025, 131.40955, 102.70862, 131.99243, 100.810326, 130.37883, 98.31688, 129.20816, 94.4245, 130.6673, 90.65116, 131.80905, 89.25787, 130.17152)
+points = PackedVector2Array(112.595, 131.435, 108.627235, 132.56956, 104.86126, 133.36372, 103.2122, 131.65215, 101.02724, 130.25233, 97.149666, 131.33615, 93.39926, 132.09216, 91.7152, 130.47066, 90.57608, 128.70702)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1789,7 +1793,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 110.36739, 123.12909, 106.44025, 122.65955, 102.70862, 121.36743, 100.810326, 117.87884, 98.31688, 114.83316, 94.4245, 114.4173, 90.65116, 113.68405, 89.25787, 110.171524)
+points = PackedVector2Array(112.595, 126.435, 108.627235, 125.69457, 104.86126, 124.61372, 103.2122, 121.02714, 101.02724, 117.752335, 97.149666, 116.96115, 93.39926, 115.84217, 91.7152, 112.345665, 90.57608, 108.707016)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1810,7 +1814,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 112.97006, 130.81665, 115.19113, 131.52534, 116.737686, 131.41689, 116.558235, 130.76387, 117.30015, 130.23836, 119.49603, 130.92943, 121.33386, 131.20268, 120.52453, 130.82994)
+points = PackedVector2Array(112.595, 131.435, 114.50317, 131.61504, 114.28854, 130.9644, 114.698875, 130.34285, 116.76209, 130.71826, 118.44489, 130.71725, 118.19435, 130.10071, 118.07177, 129.53362, 120.19193, 130.30031)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1818,7 +1822,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 112.97006, 123.94166, 115.19113, 122.775345, 116.737686, 120.791885, 116.558235, 118.26388, 117.30015, 115.86335, 119.49603, 114.67943, 121.33386, 113.077675, 120.52453, 110.82993)
+points = PackedVector2Array(112.595, 126.435, 114.50317, 124.740036, 114.28854, 122.21441, 114.698875, 119.71785, 116.76209, 118.21827, 118.44489, 116.342255, 118.19435, 113.85071, 118.07177, 111.40862, 120.19193, 110.30031)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1831,6 +1835,9 @@ visible = false
 position = Vector2(-2, -13)
 
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("30_tifvr")]
+
+[node name="ProjectileShootComponent" type="Node2D" parent="." unique_id=1394948807]
+script = ExtResource("33_kupbo")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

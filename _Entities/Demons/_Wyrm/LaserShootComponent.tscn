@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ktsfsnvej37r"]
 
-[ext_resource type="Script" uid="uid://c2n83quwwqpg5" path="res://_Entities/Demons/ShootComponent/ShootComponent.gd" id="1"]
+[ext_resource type="Script" uid="uid://c2n83quwwqpg5" path="res://_Entities/Demons/ShootComponent/LaserShootComponent.gd" id="1"]
 
 
 [node name="LaserShootComponent" type="Node2D"]
