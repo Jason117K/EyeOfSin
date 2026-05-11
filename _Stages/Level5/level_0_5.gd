@@ -22,6 +22,13 @@ const TUTORIAL_EXPLAIN_LANCER = "res://_Assets/Text/TextFiles/ZombieDescriptions
 
 
 # Cached button references
+@onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
+@onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
+@onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
+@onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
+@onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
+@onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hive_button = demonSelectionMenu.get_hive_button()
 @onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
@@ -63,6 +70,7 @@ func _ready():
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	pause_Button.set_restart_levels(level05, level05Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -79,6 +87,16 @@ func _ready():
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	finish_ready()
+
+
+func _configure_waves():
+	zombie_spawner_1.waves = [{}, {"Erupter": 2, "Flesheater": 2, "Reanimator": 1, "Severed": 5}, {"Erupter": 1, "Flesheater": 2, "Reanimator": 1, "Severed": 2, "Unhallower": 1}]
+	zombie_spawner_2.waves = [{"Severed": 2, "Sundered": 3}, {"Erupter": 2, "Flesheater": 1, "Reborn": 1, "Severed": 2, "Sundered": 3, "Unhallower": 2}, {"Erupter": 3, "Flesheater": 1, "Sundered": 4, "Unhallower": 2}]
+	zombie_spawner_3.waves = [{"Reborn": 4, "Severed": 2, "Sundered": 1}, {"Erupter": 2, "Reborn": 6, "Severed": 2, "Sundered": 3}, {"Erupter": 4, "Reanimator": 1, "Reborn": 2, "Severed": 1, "Unhallower": 3}]
+	zombie_spawner_4.waves = [{"Flesheater": 1, "Reborn": 2, "Sundered": 3}, {"Severed": 3, "Sundered": 2, "Unhallower": 2}, {"Erupter": 3, "Reanimator": 1, "Reborn": 4, "Severed": 2, "Unhallower": 3}]
+	zombie_spawner_5.waves = [{}, {"Erupter": 2, "Flesheater": 1, "Severed": 2, "Unhallower": 4}, {"Reborn": 8, "Severed": 1, "Sundered": 3}]
+	zombie_spawner_6.waves = [{"Unhallower": 2}, {"Reanimator": 1, "Reborn": 5, "Unhallower": 2}, {"Flesheater": 3, "Severed": 6, "Sundered": 4, "Unhallower": 4}]
+	zombie_spawner_7.waves = [{}, {"Flesheater": 2, "Severed": 1}, {"Unhallower": 2}]
 
 
 func finish_ready():

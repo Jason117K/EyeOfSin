@@ -24,6 +24,11 @@ var maw_pulse_added := false
 # Plant button container names
 
 # Cached button references
+@onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
+@onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
+@onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
+@onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var maw_button = demonSelectionMenu.get_maw_button()
 @onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
@@ -69,6 +74,7 @@ func _ready():
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(level03, level03Alt)
@@ -87,6 +93,14 @@ func _ready():
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	finish_ready()
+
+
+func _configure_waves():
+	zombie_spawner_1.waves = [{"Reborn": 2}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}]
+	zombie_spawner_2.waves = [{"Reborn": 1, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}]
+	zombie_spawner_3.waves = [{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}]
+	zombie_spawner_4.waves = [{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}]
+	zombie_spawner_5.waves = [{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}]
 
 
 func finish_ready():

@@ -74,6 +74,7 @@ func _ready():
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	setup_plant_selection_menu()
 	pause_Button.set_restart_levels(current_level, current_level_alt)
@@ -92,6 +93,10 @@ func _ready():
 	
 
 	finish_ready()
+
+
+func _configure_waves():
+	zombie_spawner.waves = [{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}]
 
 
 func finish_ready():

@@ -20,6 +20,13 @@ const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptio
 # Plant button container names
 
 # Cached button references
+@onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
+@onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
+@onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
+@onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
+@onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
+@onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
+@onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var wyrm_button = demonSelectionMenu.get_wyrm_button()
 @onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
@@ -56,6 +63,7 @@ func _ready():
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	_configure_waves()
 
 	pause_Button.set_restart_levels(level04, level04Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -72,6 +80,16 @@ func _ready():
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	finish_ready()
+
+
+func _configure_waves():
+	zombie_spawner_1.waves = [{"Flesheater": 1, "Severed": 2}, {"Severed": 5, "Unhallower": 2}, {"Flesheater": 2, "Reborn": 3, "Unhallower": 2}]
+	zombie_spawner_2.waves = [{"Severed": 2}, {"Reanimator": 1, "Severed": 4, "Unhallower": 2}, {"Reborn": 6, "Unhallower": 2}]
+	zombie_spawner_3.waves = [{}, {"Reanimator": 1, "Reborn": 5, "Unhallower": 2}, {"Reanimator": 1, "Reborn": 5, "Severed": 3}]
+	zombie_spawner_4.waves = [{}, {"Reborn": 3, "Unhallower": 2}, {"Reanimator": 2, "Reborn": 1, "Unhallower": 3}]
+	zombie_spawner_5.waves = [{"Reborn": 2, "Unhallower": 2}, {"Reborn": 4, "Severed": 3}, {"Severed": 4, "Unhallower": 2}]
+	zombie_spawner_6.waves = [{"Reborn": 1, "Severed": 2}, {"Severed": 2, "Unhallower": 6}, {"Flesheater": 3, "Unhallower": 2}]
+	zombie_spawner_7.waves = [{}, {"Severed": 2}, {"Flesheater": 1, "Reanimator": 1, "Severed": 1, "Unhallower": 2}]
 
 
 func finish_ready():
