@@ -26,8 +26,9 @@ var drone_rest_positions = {}                      # Dictionary to store rest po
 var isEggWyrmBuffed := false 
 var isSpyderBuffed := false
 var isSunflowerBuffed:= false 
-var isMawBuffed := false 
-@onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
+var isMawBuffed := false
+var drones_to_respawn: int = 0
+@onready var droneRespawnTimer = $DroneRespawnTimer
 var PlantManager                                   # RefCounted to PlantManager 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
@@ -85,7 +86,7 @@ func receiveBuff(bufferName):
 		if("Peashooter" in bufferName.name) && !isSpyderBuffed:
 			for drone in available_drones:
 				drone.makeExplode()
-				drone.isSpiderBuffed = true
+				drone.isSpyderBuffed = true
 			isSpyderBuffed = true 
 		if("Sun" in bufferName.name):
 			droneRespawnTimer.wait_time = buffedWaitTime
@@ -136,6 +137,7 @@ func kill_all_drones():
 	available_drones.clear()
 	drone_assignments.clear()
 	drone_rest_positions.clear()
+	drones_to_respawn = 0
 		
 		
 	
@@ -143,6 +145,12 @@ func kill_all_drones():
 func calculate_rest_position(index):
 	var angle = (2 * PI * index) / MAX_DRONES
 	return Vector2(cos(angle), sin(angle)) * 10
+
+func get_total_drone_count() -> int:
+	var count = available_drones.size()
+	for drones in drone_assignments.values():
+		count += drones.size()
+	return count
 
 # Spawns an assembles the initial number of drones 	
 func spawn_initial_drones():
@@ -221,38 +229,17 @@ func _on_enemy_died(enemy):
 
 #Handle assignment clean-up on drone death 
 func _on_drone_died(drone):
-	print("DRONE DEAD")
-	
-	
-	
-	
-	print("Drone to kill is ", drone )
-	print("Drone Assignments Is ",drone_assignments )
-	print("Drone Assignments.KEYS Is ",drone_assignments.keys())
-	print("Available Drones is ", available_drones)
-	print("Drone Rest Positions is, ", drone_rest_positions)
-	
-	for this_drone in available_drones:
-		if this_drone == drone:
-			available_drones.erase(this_drone)
-			pass
-	
-	
-	
-	
-	# Remove drone from assignments
+	available_drones.erase(drone)
+
 	for enemy in drone_assignments.keys():
 		if drone in drone_assignments[enemy]:
-			#print("Will Now Erase ", drone)
-			#print("Drone Assign B4 Erase ", drone_assignments)
 			drone_assignments[enemy].erase(drone)
-			#print("Drone Assign After Erase ", drone_assignments)
-	
-	# Remove rest position
+
 	drone_rest_positions.erase(drone)
-	
-	#Start Respawn Timer 
-	droneRespawnTimer.start()
+
+	drones_to_respawn += 1
+	if droneRespawnTimer.is_stopped():
+		droneRespawnTimer.start()
 
 #Assigns the optimal number of drones based on availablity and enemy presence 
 func optimize_drone_assignments():
@@ -296,9 +283,7 @@ func optimize_drone_assignments():
 	for enemy in enemies_to_assign:
 		#print("Enemy is ", enemy)
 		if !(enemy.get_parent().get_parent() == get_parent().get_parent()):
-			#print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
-			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
-			break
+			continue
 		else:
 		#	print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
 			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
@@ -331,29 +316,31 @@ func command_drone_to_attack(drone, enemy):
 
 #Respawns a drone and re-optimizes assignmnets 
 func _on_DroneRespawnTimer_timeout():
-	# Create new drone
+	if drones_to_respawn <= 0 or get_total_drone_count() >= MAX_DRONES:
+		drones_to_respawn = 0
+		return
+
 	var new_drone = DroneScene.instantiate()
-	print("Drone Parent is : ",self.get_parent())
 	get_parent().add_child(new_drone)
 	available_drones.append(new_drone)
 	if self.is_in_group("Green"):
 		new_drone.add_to_group("Green")
-	else: #Purple
+	else:
 		new_drone.add_to_group("Purple")
-	#print("Availablle Drone just got : ", new_drone)
-	
-	# Calculate and store rest position for new drone
+
 	var rest_pos = calculate_rest_position(available_drones.size() - 1)
-	
 	drone_rest_positions[new_drone] = rest_pos
 	new_drone.global_position = self.global_position + rest_pos
-	
+
 	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
-	
+
 	if isMawBuffed:
 		new_drone.doubleDamage()
-	
-	# Optimize assignments with new drone
+
+	drones_to_respawn -= 1
+	if drones_to_respawn > 0 and get_total_drone_count() < MAX_DRONES:
+		droneRespawnTimer.start()
+
 	optimize_drone_assignments()
 
 # Add this helper function to scripts that deal with combat
