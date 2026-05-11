@@ -122,6 +122,7 @@ GreenLevel=""
 HeartBuff=""
 Portal=""
 EntrancePortal=""
+Drone=""
 
 [gui]
 

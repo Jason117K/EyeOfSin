@@ -162,7 +162,7 @@ size = Vector2(22, 31)
 
 [sub_resource type="CircleShape2D" id="21"]
 
-[node name="Drone" type="Area2D" unique_id=1376268587 groups=["Plants"]]
+[node name="Drone" type="Area2D" unique_id=1376268587 groups=["Drone", "Plants"]]
 z_index = 1
 script = ExtResource("2")
 health = 100

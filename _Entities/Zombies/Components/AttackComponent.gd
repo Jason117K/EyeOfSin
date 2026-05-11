@@ -25,6 +25,17 @@ func getAttackState():
 
 # Sets is_attacking to true and plays the audio will also starting the attack cooldown timer
 func attack_plant(collider):
+	
+	if collider.is_in_group("Drone"):
+		if collider.get_is_in_combat() == true:
+			if collider.get_enemy_combatant() != self:
+				return
+			else:
+				pass 
+		else:
+			pass
+			collider.enter_combat(self)
+			
 	is_attacking = true
 	target_plant = collider
 	#print("TName is ", target_plant.name)
@@ -108,15 +119,15 @@ func _process(_delta):
 					if("PoleVaultZombie" in parent.name):
 						#print(parent.name, " - canSpecialPP: ", canSpecial)
 						#print("PP Parent Is Pole Vault")
-						if canSpecial:
+						if canSpecial && !collider.is_in_group("Drone"):
 						#	print("PP Pole Vault Special Mo")
 							parent.special_move()
 							canSpecial = false
 							pass
-						else:
-							if parent.getBusy() == false:
-								pass
-							else:
-								attack_plant(collider)
+						else: #If Special Move Is Not Finished
+							#if parent.getIsMoveFinished() == false:
+								#pass
+							#else:
+							attack_plant(collider)
 					else:
 						attack_plant(collider)

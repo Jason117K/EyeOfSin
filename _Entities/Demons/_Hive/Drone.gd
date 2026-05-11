@@ -11,7 +11,7 @@ signal drone_died(drone)
 @export var health = 75          # Drone Health
 @export var attack_damage = 7    # Attack Damage
 @export var attack_speed = 1.0   # Attacks per second
-@export var move_speed = 150     # Pixels per second
+@export var move_speed = 200     # Pixels per second
 @export var rotation_speed = 5.0 # How fast the drone rotates to face target
 @export var attack_range = 50    # How close the drone needs to be to attack
 @export var return_threshold = 5 # How close to rest position is considered "arrived"
@@ -25,6 +25,8 @@ var rest_position = null
 var explodeBuff = false
 var isSpyderBuffed = false
 var base_attack_damage: int
+var is_in_combat = false 
+var current_zombie_to_fight
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
@@ -106,27 +108,35 @@ func return_to_position(pos):
 	rest_position = pos
 	current_target = null
 	state = State.RETURNING
+	exit_combat()
 
 
 func _physics_process(delta):
 	match state:
 		State.PURSUING:
+			
 			if not current_target or not is_instance_valid(current_target):
-				state = State.IDLE
+				state = State.RETURNING
 				velocity = Vector2.ZERO
 				return
 			var direction = current_target.global_position - global_position
+			
 			var distance = direction.length()
 			if distance > attack_range:
 				velocity = direction.normalized() * move_speed
 				position += velocity * delta
 			else:
-				velocity = Vector2.ZERO
-				state = State.ATTACKING
+				if direction.x < 0:
+					print(self.get_name(), " Drone is behind enemy , ", current_target)
+					state = State.PURSUING
+					self.global_position = self.global_position + Vector2(-32,0)
+				else:
+					velocity = Vector2.ZERO
+					state = State.ATTACKING
 
 		State.ATTACKING:
 			if not current_target or not is_instance_valid(current_target):
-				state = State.IDLE
+				state = State.RETURNING
 				velocity = Vector2.ZERO
 				return
 			var distance = global_position.distance_to(current_target.global_position)
@@ -134,9 +144,9 @@ func _physics_process(delta):
 				state = State.PURSUING
 
 		State.RETURNING:
-			if not rest_position:
-				state = State.IDLE
-				return
+			#if not rest_position:
+				#state = State.IDLE
+				#return
 			var direction = rest_position - position
 			var distance = direction.length()
 			if distance > return_threshold:
@@ -157,3 +167,20 @@ func _on_attack_timer_timeout():
 		var distance = global_position.distance_to(current_target.global_position)
 		if distance <= attack_range:
 			current_target.getCompManager().take_damage(attack_damage)
+
+
+func get_is_in_combat():
+	return is_in_combat
+
+func enter_combat(zombie):
+	current_zombie_to_fight = zombie
+	is_in_combat = true 
+		
+func exit_combat():
+	is_in_combat = false
+	current_zombie_to_fight = null
+	
+func get_enemy_combatant():
+	return current_zombie_to_fight
+	
+	

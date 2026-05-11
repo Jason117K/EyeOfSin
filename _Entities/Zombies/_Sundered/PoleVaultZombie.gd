@@ -12,5 +12,5 @@ func special_move():
 	compManager.special_move()
 	
 # Gets whether or not the special Move has finished executing 
-func getBusy():
+func getIsMoveFinished():
 	return specialMoveComp.isMoveFinished()
