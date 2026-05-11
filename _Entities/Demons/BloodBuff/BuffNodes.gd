@@ -105,6 +105,7 @@ func _process(_delta):
 						#print("Plant to Buff is ", plantToBuff.name)
 						bloodTileVisible = true 
 						#Check our list of valid plants to buff
+						#print("Plant buff name is : ", plantToBuff.name)
 						for plantActor in giveBuffTo:
 
 							
@@ -113,7 +114,7 @@ func _process(_delta):
 							if plantActor in plantToBuff.name:
 								#Handle Special EggWorm Buff Case, as both plants 'receive' a buff
 								if ( "WalnutTree" in plantToBuff.name) && ("EggWorm" in plant.name):
-									#print("ZZZ Special Buff Case")
+									print("ZZZ Special Buff Case")
 									plant.receiveBuff(plantToBuff)
 								#print("Plant to buff : ", plantToBuff.name , " will now receive buff from ", plant.name)
 								plantToBuff.receiveBuff(plant)

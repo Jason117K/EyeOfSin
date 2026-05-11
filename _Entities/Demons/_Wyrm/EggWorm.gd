@@ -95,7 +95,8 @@ func receiveBuff(plant):
 	var plantName = truncate_string(plant.name)
 	
 	if !isCurrentlyBuffed :
-		print(self.name, " Buff Received from ", plantName)
+		print(self.name, " Buff Received from ", plantName, " var is ", isCurrentlyBuffed)
+		isCurrentlyBuffed = true
 		match plantName:
 			"Sunflower":
 				shell_sprite.change_form("Sunflower")
@@ -121,6 +122,7 @@ func receiveBuff(plant):
 				#animSpriteComp.change_form("Wasp")
 			"Maw":
 				#TODO Make Buff Heal Via Signals From Zombie
+				print("Calling change form to adjust global pos of maw worm ")
 				shell_sprite.change_form("Maw")
 				#health = mawBuffed_health
 				laserShootComp1.isDisabled = false
@@ -130,7 +132,7 @@ func receiveBuff(plant):
 				$Worm1.z_index = 2
 				#animSpriteComp.change_form("Maw")
 				
-		isCurrentlyBuffed = true		
+		#isCurrentlyBuffed = true		
 				
 		#shell_sprite.make_buff_glow()
 		#Increases Speed and Range From Peashooter Buff
@@ -244,9 +246,6 @@ func truncate_string(input_string: String) -> String:
 	return input_string
 
 
-func _on_timer_timeout() -> void:
-	isCurrentlyBuffed = false
-
 
 func _on_mouse_entered() -> void:
 	$PreviewNodes/AnimatedSprite2D.visible = false
@@ -261,7 +260,7 @@ func on_demon_area_entered(new_area: Area2D):
 	#print(self, "New Area Heart is ", new_area)
 	if new_area.is_in_group("HeartBuff"):
 		print(self, "will now receive heart buff")
-		receive_heart_buff()
+		#receive_heart_buff()
 
 
 	
@@ -271,3 +270,33 @@ func receive_heart_buff():
 	self.health = self.health + 400
 	pass
 	
+func adjust_position(new_form):
+	pass
+	#match new_form:
+		#"Sunflower":
+			#print("Self pos was ", self.global_position)
+			#self.global_position = self.global_position + Vector2(0,-2)
+			#print("Self pos IS ", self.global_position)
+#
+		#"Peashooter":
+			#print("Self pos was ", self.global_position)
+			#self.global_position = self.global_position + Vector2(0,-2)
+			#print("Self pos IS ", self.global_position)
+			#
+		#"Walnut" :
+			#print("Self pos was ", self.global_position)
+			#self.global_position = self.global_position + Vector2(0,-2)
+			#print("Self pos IS ", self.global_position)
+			#
+		#"Wyrm":
+			#pass
+			#
+		#"Wasp":
+			#print("Self pos was ", self.global_position)
+			#self.global_position = self.global_position + Vector2(0,-2)
+			#print("Self pos IS ", self.global_position)
+			#
+		#"Maw":
+			#print("Self pos was ", self.global_position)
+			#self.global_position = self.global_position + Vector2(0,-2)
+			#print("Self pos IS ", self.global_position)	

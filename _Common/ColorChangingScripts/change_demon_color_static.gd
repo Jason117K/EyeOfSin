@@ -91,10 +91,10 @@ func change_form(new_form):
 		"Maw":
 			shell.texture = shell_maw
 			worm1.texture = worm1_maw
-			print("global pos is ", worm1.global_position)
+			print("Maw worm global pos is ", worm1.global_position)
 			worm1.global_position = worm1.global_position + Vector2(-15,0)
 			worm1Animator.initial_sprite_position = worm1Animator.initial_sprite_position  + Vector2(-15,0)
-			print("global pos is NOW ", worm1.global_position)
+			print("Maw worm global pos is NOW ", worm1.global_position)
 			worm1Animator.adjustParams(new_form)
 			#worm2.texture = shell_wyrm
 			#worm3.texture = shell_wyrm

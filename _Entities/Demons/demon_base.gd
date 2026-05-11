@@ -26,7 +26,8 @@ func on_demon_area_entered(new_area: Area2D):
 	#print(self, "New Area Heart is ", new_area)
 	if new_area.is_in_group("HeartBuff"):
 		#print(self, "will now receive heart buff")
-		receive_heart_buff()
+		pass
+		#receive_heart_buff()
 		
 func on_demon_area_exited(old_area: Area2D):
 	if old_area.is_in_group("HeartBuff"):
