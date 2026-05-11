@@ -22,6 +22,7 @@
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://_Utilities/TentacleDemo/shaders/canvas_group_two_tone.gdshader" id="18_cpfsp"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="19_s2bgg"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_ntueb"]
+[ext_resource type="Script" path="res://_Entities/Demons/_Hive/SwarmManager.gd" id="21_swarm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
@@ -1489,6 +1490,7 @@ visible = false
 shape = SubResource("11")
 
 [node name="Swarm" type="Node2D" parent="." unique_id=1594848500]
+script = ExtResource("21_swarm")
 
 [node name="DetectionComp" type="Area2D" parent="." unique_id=299923120]
 collision_layer = 0
@@ -1691,9 +1693,9 @@ position = Vector2(21, -10)
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSpriteComp_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
-[connection signal="area_entered" from="DetectionComp" to="." method="_on_enemy_entered"]
-[connection signal="area_exited" from="DetectionComp" to="." method="_on_enemy_exited"]
-[connection signal="timeout" from="DroneRespawnTimer" to="." method="_on_DroneRespawnTimer_timeout"]
+[connection signal="area_entered" from="DetectionComp" to="Swarm" method="_on_enemy_entered"]
+[connection signal="area_exited" from="DetectionComp" to="Swarm" method="_on_enemy_exited"]
+[connection signal="timeout" from="DroneRespawnTimer" to="Swarm" method="_on_DroneRespawnTimer_timeout"]
 [connection signal="timeout" from="PlayAnimTimer" to="." method="_on_play_anim_timer_timeout"]
 
 [editable path="BuffNodesComponent"]
