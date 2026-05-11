@@ -16,13 +16,13 @@ signal drone_died(drone)
 @export var attack_range = 50    # How close the drone needs to be to attack
 @export var return_threshold = 5 # How close to rest position is considered "arrived"
 
-# Internal state tracking
-var current_target = null       # Holds the current drone target
-var can_attack = true           # Whether or not the drone can attack
-var velocity = Vector2.ZERO     # Drone Velocity 
-var rest_position = null        # The Location of the Drone Resting Position   
-var is_returning = false        # Whether or not the drone is returning to rest
-var explodeBuff = false         # Whether or not the drone is buffed
+enum State { IDLE, PURSUING, ATTACKING, RETURNING }
+
+var state: State = State.IDLE
+var current_target = null
+var velocity = Vector2.ZERO
+var rest_position = null
+var explodeBuff = false
 var isSpyderBuffed = false
 var base_attack_damage: int
 
@@ -99,52 +99,61 @@ func attack_target(enemy):
 		enemy.fightDroneExplode()
 	if isSpyderBuffed:
 		enemy.make_spawn_slow_on_death()
-	is_returning = false
+	state = State.PURSUING
 
 # Sends the drone back to it's original resting position 
 func return_to_position(pos):
 	rest_position = pos
 	current_target = null
-	is_returning = true
+	state = State.RETURNING
 
 
 func _physics_process(delta):
-	if current_target and is_instance_valid(current_target):
-		# Handle combat movement
-		var direction = (current_target.global_position - global_position)
-		var distance = direction.length()
-		direction = direction.normalized()
-		
-		if distance > attack_range:
-			velocity = direction * move_speed
-			position += velocity * delta
-		else:
+	match state:
+		State.PURSUING:
+			if not current_target or not is_instance_valid(current_target):
+				state = State.IDLE
+				velocity = Vector2.ZERO
+				return
+			var direction = current_target.global_position - global_position
+			var distance = direction.length()
+			if distance > attack_range:
+				velocity = direction.normalized() * move_speed
+				position += velocity * delta
+			else:
+				velocity = Vector2.ZERO
+				state = State.ATTACKING
+
+		State.ATTACKING:
+			if not current_target or not is_instance_valid(current_target):
+				state = State.IDLE
+				velocity = Vector2.ZERO
+				return
+			var distance = global_position.distance_to(current_target.global_position)
+			if distance > attack_range:
+				state = State.PURSUING
+
+		State.RETURNING:
+			if not rest_position:
+				state = State.IDLE
+				return
+			var direction = rest_position - position
+			var distance = direction.length()
+			if distance > return_threshold:
+				velocity = direction.normalized() * move_speed
+				position += velocity * delta
+			else:
+				position = rest_position
+				velocity = Vector2.ZERO
+				state = State.IDLE
+
+		State.IDLE:
 			velocity = Vector2.ZERO
-			
-	elif is_returning and rest_position:
-		# Handle return movement
-		var direction = (rest_position - position)
-		var distance = direction.length()
-		
-		if distance > return_threshold:
-			direction = direction.normalized()
-			velocity = direction * move_speed
-			position += velocity * delta
-		else:
-			# We've arrived at rest position
-			position = rest_position  # Snap to exact position
-			velocity = Vector2.ZERO
-			is_returning = false
-	else:
-		# No target and not returning
-		current_target = null
-		velocity = Vector2.ZERO
 
 # Handles the drone dealing attack damage 
 func _on_attack_timer_timeout():
-	if current_target and can_attack and is_instance_valid(current_target):
+	if state == State.ATTACKING and current_target and is_instance_valid(current_target):
 		animatedSpriteComp.animation = "attack"
-		#Check if in range before attacking
 		var distance = global_position.distance_to(current_target.global_position)
 		if distance <= attack_range:
 			current_target.getCompManager().take_damage(attack_damage)
