@@ -8,15 +8,12 @@ extends Node2D
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/PeaProjectile.tscn")  # Load the projectile scene
 
 
-var PlantManager
 var canAttack = false   # Whether or not the peashooter can attack 
 var second_shot_timer : Timer
 var hiveBuffed = false 
 var walnutBuffed = false
 var sunBuffed = false
 var wyrmBuffed = false
-var mawBuffed = false
-var canAttackSetTrueOnce = false
 
 
 func _ready() -> void:
