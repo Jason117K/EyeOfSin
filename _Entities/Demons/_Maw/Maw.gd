@@ -6,6 +6,17 @@ const WEB_BALL_SCENE := preload("res://_Entities/Demons/Projectile/WebBall.tscn"
 const INSTAKILL_DAMAGE := 9999
 const WALNUT_HEAL_AMOUNT := 100
 
+# Buff dispatch table. Iterated in order in receiveBuff/debuff — the first
+# `key` found inside `bufferName` wins. Walnut's remove is a deliberate
+# no-op (buff is permanent).
+const _BUFF_HANDLERS := [
+	{"key": "EggWorm",    "apply": "_apply_eggworm_buff",    "remove": "_remove_eggworm_buff"},
+	{"key": "Peashooter", "apply": "_apply_peashooter_buff", "remove": "_remove_peashooter_buff"},
+	{"key": "Hive",       "apply": "_apply_hive_buff",       "remove": "_remove_hive_buff"},
+	{"key": "Sunflower",  "apply": "_apply_sunflower_buff",  "remove": "_remove_sunflower_buff"},
+	{"key": "Walnut",     "apply": "_apply_walnut_buff",     "remove": "_remove_walnut_buff"},
+]
+
 # === Node references ===
 @onready var tentacle1: Tentacle = $Tentacle1
 @onready var tentacle2: Tentacle = $Tentacle2
@@ -182,8 +193,8 @@ func _on_DigestionTimer_timeout():
 		generate_sun()
 
 
-# Handles receiving buffs from EggWorm, Peashooter, Hive, Sunflower, Walnut.
-# First buff wins — subsequent buffs are ignored by design.
+# Receive a buff from a neighbor plant. First buff wins —
+# subsequent buffs are ignored by design.
 func receiveBuff(plant):
 	animSpriteComp.receiveBuff(plant)
 	if isBuffed:
@@ -192,36 +203,74 @@ func receiveBuff(plant):
 	super(plant)
 	bufferName = plant.name
 
-	if "EggWorm" in bufferName and not isEggWyrmBuffed:
-		digestionTimer.wait_time = buffedDigestTime
-		isEggWyrmBuffed = true
-	elif "Peashooter" in bufferName and not isSpyderBuffed:
-		willBelchWebs = true
-		isSpyderBuffed = true
-	elif "Hive" in bufferName and not isHiveBuffed:
-		detectionAreaShape.shape.radius = detectionAreaShape.shape.radius * 1.2
-		isHiveBuffed = true
-	elif "Sunflower" in bufferName and not isSunflowerBuffed:
-		willBelchSun = true
-		isSunflowerBuffed = true
-	elif "Walnut" in bufferName:
-		isWalnutBuffed = true
+	var entry := _find_buff_handler()
+	if not entry.is_empty():
+		call(entry.apply)
 
 	isBuffed = true
 
 
 func debuff():
-	if "EggWorm" in bufferName:
-		digestionTimer.wait_time = ogDigestTime
-	elif "Peashooter" in bufferName:
-		willBelchWebs = false
-	elif "Hive" in bufferName:
-		if debug_mode:
-			print("[Maw] Debuff: reverting detection radius from ", detectionAreaShape.shape.radius)
-		detectionAreaShape.shape.radius = ogDetectionRadius
-	elif "Sunflower" in bufferName:
-		willBelchSun = false
+	var entry := _find_buff_handler()
+	if not entry.is_empty():
+		call(entry.remove)
 	isBuffed = false
+
+
+# Locate the dispatch entry whose key appears in `bufferName`.
+# Returns an empty dictionary if no entry matches.
+func _find_buff_handler() -> Dictionary:
+	for entry in _BUFF_HANDLERS:
+		if entry.key in bufferName:
+			return entry
+	return {}
+
+
+# === Per-buff apply / remove handlers ===
+
+func _apply_eggworm_buff():
+	if isEggWyrmBuffed: return
+	digestionTimer.wait_time = buffedDigestTime
+	isEggWyrmBuffed = true
+
+func _remove_eggworm_buff():
+	digestionTimer.wait_time = ogDigestTime
+
+
+func _apply_peashooter_buff():
+	if isSpyderBuffed: return
+	willBelchWebs = true
+	isSpyderBuffed = true
+
+func _remove_peashooter_buff():
+	willBelchWebs = false
+
+
+func _apply_hive_buff():
+	if isHiveBuffed: return
+	detectionAreaShape.shape.radius *= 1.2
+	isHiveBuffed = true
+
+func _remove_hive_buff():
+	if debug_mode:
+		print("[Maw] Debuff: reverting detection radius from ", detectionAreaShape.shape.radius)
+	detectionAreaShape.shape.radius = ogDetectionRadius
+
+
+func _apply_sunflower_buff():
+	if isSunflowerBuffed: return
+	willBelchSun = true
+	isSunflowerBuffed = true
+
+func _remove_sunflower_buff():
+	willBelchSun = false
+
+
+func _apply_walnut_buff():
+	isWalnutBuffed = true
+
+func _remove_walnut_buff():
+	pass  # Walnut buff is permanent by design
 
 
 # Sun generation (sunflower buff payout)
