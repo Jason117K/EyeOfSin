@@ -13,55 +13,34 @@ extends Control
 @onready var outcome_label = $CenterContainer/VBoxContainer/OutcomeLabel
 @onready var continue_button = $CenterContainer/VBoxContainer/Continue
 
-var level02 = "res://_Stages/Level2/Level0-2.tscn"
-var level02Alt = "res://_Stages/Level2/Level0-2_Alternate.tscn"
-
-var level03 = "res://_Stages/Level3/Level0-3.tscn"
-var level03Alt = "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
 
 func _ready() -> void:
 	self.visible = false 
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	next_level = level02
-	next_level_alt = level02Alt
+
 	
 #Moves onto next level 
 func _on_Continue_pressed():
-	#$ButtonClickPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	#assert(get_tree().change_scene_to_packed(nextLevel) == OK)
-	#Global.game_controller.change_scene(next_level)
-	#Global.game_controller.change_from_dual_scenes("res://Scenes/LevelScenes/StartScreen.tscn")
-	#Global.game_controller.change_dual_scenes(next_level,next_level_alt)
 	Global.game_controller.change_from_dual_scenes("res://_Stages/LevelSelect/LevelSelect_Map.tscn")
 	self.visible = false 
 	Global.unlockLevel(level_unlocked)
 
 #Restarts the current level
 func _on_PlayAgain_pressed():
-	#$ButtonClickPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	#assert(get_tree().change_scene_to_file(get_parent().get_scene_file_path()) == OK)
-	#Global.game_controller.change_scene(get_parent().get_scene_file_path())
 	self.visible = false 
 	Global.game_controller.change_dual_scenes(current_level,current_level_alt)
 	Global.unlockLevel(level_unlocked)
 
 func _on_return_to_menu_pressed() -> void:
-	#print("Tooltip AAAAAAAAA")
-	# Ensure proper cleanup before changing scene
 	get_tree().root.set_input_as_handled()
-	#$ButtonClickPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	# Add a small delay to ensure clean transition
 	await get_tree().create_timer(0.1).timeout
-#	assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn") == OK)
-	#TODO Will this work with current setup?
-	#toolTips.visble = false
-	#toolTips.hide()
-	#print("Tooltip Hide")
-	Global.game_controller.change_scene("res://Scenes/LevelScenes/StartScreen.tscn")
+	self.visible = false 
+	Global.game_controller.change_from_dual_scenes("res://_Stages/StartScreen/StartScreen.tscn")
 	Global.unlockLevel(level_unlocked)
 
 func update_level(this_upcomingLevel,this_upcomingLevelAlt):

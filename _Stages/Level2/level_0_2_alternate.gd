@@ -27,7 +27,7 @@ func start_game():
 func _on_walnut_placed(grid_pos: Vector2):
 	print("[Tutorial] Walnut placement complete - tutorial finished")
 	toolTips.hide()
-	hide_all_demon_buttons_with_exception(["Occulum", "Crawler"])
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler","SpinalOcculum"])
 	# Tutorial complete - no further forced actions
 	
 
