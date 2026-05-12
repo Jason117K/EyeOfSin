@@ -69,11 +69,10 @@ func check_attack_rays():
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
 				if collider and collider.is_in_group("Zombie"):
-					print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
+					#print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
 						canAttack = true
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
-						print("CAN ATTACK IS TRUUUUUUUUUUUUUUUUUUUUU")
 						canAttack = true
 						
 						
