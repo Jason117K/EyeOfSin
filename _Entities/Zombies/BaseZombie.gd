@@ -10,6 +10,8 @@ signal zombie_death
 
 var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
 
+@export var charge_cost := 1
+
 func _ready() -> void:
 	Global.register_zombie(self)
 	if self.is_in_group("Green"):
@@ -93,7 +95,10 @@ func blood_slow():
 	
 func undoBloodSlow():
 	compManager.undoBloodSlow()
-	
+
+func get_charge_cost():
+	return charge_cost
+		
 	
 	
 	
