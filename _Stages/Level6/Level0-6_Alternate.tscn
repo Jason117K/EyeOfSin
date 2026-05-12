@@ -426,6 +426,7 @@ offset_bottom = 150.0
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1692939267]
 stream = ExtResource("22_x84xy")
 volume_db = -80.0
+bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=844790892]
 position = Vector2(370, 208)

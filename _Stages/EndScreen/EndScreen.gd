@@ -25,7 +25,3 @@ func _on_Button_pressed():
 #Handle reestarting th game
 func _on_PlayAgain_pressed():
 	Global.game_controller.change_from_dual_scenes("res://_Stages/StartScreen/StartScreen.tscn")
-	pass
-	
-	# Switch to the Main scene
-	#assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn")   ==OK)

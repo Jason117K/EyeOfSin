@@ -406,6 +406,7 @@ offset_bottom = 137.0
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=817263993]
 stream = ExtResource("22_2i5fe")
 autoplay = true
+bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=482512615]
 position = Vector2(370, 208)

@@ -39,14 +39,6 @@
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_7in2w"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="26_hwxwv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgfqe"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8, 0, 0, 1)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyyd"]
 texture = ExtResource("12_c63eg")
 texture_region_size = Vector2i(32, 32)
@@ -1200,9 +1192,6 @@ offset_left = -152.0
 offset_top = -2036.5
 offset_right = 152.0
 offset_bottom = 2036.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgfqe")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=120109506]
 position = Vector2(370, 208)
@@ -1210,6 +1199,7 @@ position = Vector2(370, 208)
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1910969798]
 stream = ExtResource("25_7in2w")
 volume_db = -80.0
+bus = &"music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=59155517]
 environment = ExtResource("21_sy2g0")

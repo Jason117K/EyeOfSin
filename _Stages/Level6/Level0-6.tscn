@@ -404,6 +404,7 @@ offset_bottom = 137.0
 stream = ExtResource("21_a4agt")
 volume_db = -80.0
 autoplay = true
+bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1612504723]
 position = Vector2(370, 208)
@@ -452,7 +453,7 @@ script = ExtResource("24_7nw23")
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

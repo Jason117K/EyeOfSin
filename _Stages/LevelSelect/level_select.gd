@@ -85,15 +85,7 @@ func _on_level_6_pressed() -> void:
 		Global.game_controller.change_dual_scenes(level0_6,level0_6Alt)
 
 
-func _on_level_7_pressed() -> void:
-	if canPlayLevel7:
-		#assert(get_tree().change_scene_to_file(level7) ==OK)
-		Global.game_controller.change_dual_scenes(level7,"res://Scenes/LevelScenes/Level7_Alternate.tscn" )
-	#	Global.game_controller.change_scene(level7)
 
 
 func _on_back_pressed() -> void:
-	#get_tree().root.set_input_as_handled()
-	#await get_tree().create_timer(0.1).timeout
-	#assert(get_tree().change_scene_to_file("res://Scenes/LevelScenes/StartScreen.tscn") == OK)
 	Global.game_controller.change_scene(startScreen)

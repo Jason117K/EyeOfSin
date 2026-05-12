@@ -79,7 +79,7 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 			sound_effect.change_audio_count(1)
 			var new_audio: AudioStreamPlayer = AudioStreamPlayer.new()
 			add_child(new_audio)
-			
+			new_audio.bus = "sfx"
 			new_audio.stream = sound_effect.sound_effect
 			new_audio.volume_db = sound_effect.volume
 			new_audio.pitch_scale = sound_effect.pitch_scale

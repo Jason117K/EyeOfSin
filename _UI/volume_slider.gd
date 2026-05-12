@@ -28,4 +28,4 @@ func on_value_changed(value : float ):
 		busIndex,
 		linear_to_db(value)
 	)
-	print("Changed Volume to ", value, " or ", linear_to_db(value))
+	print("bus Changed Volume to ", value, " or ", linear_to_db(value))

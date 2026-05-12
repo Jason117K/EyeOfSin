@@ -2,9 +2,9 @@
 extends EditorScript
 ## Once customized, automatically adds all SoundEffect resources found in the [member folder_path] that are not already in the [member audio_manager_path]'s sound_effects Array to that array, so they can be called via the AudioManager.
 
-var audio_manager_path: String = "res://Scenes/Audio/audio_manager.tscn" ## The path to the audio manager scene.
+var audio_manager_path: String = "res://_Utilities/Audio/audio_manager.tscn" ## The path to the audio manager scene.
 var audio_manage_scene: PackedScene = load(audio_manager_path) ## Loads the audio manage scene so the tool can modify it.
-var folder_path: String = "res://Assets/Audio/" ## The path to your folder containing your SoundEffect resources.
+var folder_path: String = "res://_Assets/Audio/" ## The path to your folder containing your SoundEffect resources.
 var files: PackedStringArray = DirAccess.get_files_at(folder_path) ## Get a list of all files in the [member folder_path].
 var modified: bool ## Stores if the audio manager scene is updated, we only need to resave if updated.
 

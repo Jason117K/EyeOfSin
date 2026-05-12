@@ -71,6 +71,7 @@ busName = "sfx"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1214672174]
 stream = ExtResource("4_0gbsf")
 autoplay = true
+bus = &"music"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1850809017]
 z_index = -1

@@ -3896,6 +3896,7 @@ flip_h = true
 stream = ExtResource("38_g88e2")
 volume_db = -80.0
 autoplay = true
+bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1805725339]
 position = Vector2(370, 208)

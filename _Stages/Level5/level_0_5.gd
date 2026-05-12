@@ -9,8 +9,8 @@ var lancer_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutor
 var thisLevel := "res://_Stages/Level5/Level0-5.tscn"
 var thisAltLevel := "res://_Stages/Level5/Level0-5_Alternate.tscn"
 
-var level06 = "res://Scenes/LevelScenes/Level0-6.tscn"
-var level06Alt = "res://Scenes/LevelScenes/Level0-6_Alternate.tscn"
+var level06 = "res://_Stages/Level6/Level0-6.tscn"
+var level06Alt = "res://_Stages/Level6/Level0-6_Alternate.tscn"
 var hive_pulse_added := false 
 
 # Text file paths

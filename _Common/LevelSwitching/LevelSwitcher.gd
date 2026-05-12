@@ -3,7 +3,6 @@ extends Control
 
 #Switches the Level to the next level
 
-#@export var nextLevel = preload("res://Scenes/LevelScenes/EmptyScene.tscn")  # Load the next scene
 @export var next_level = "res://_Stages/Empty/EmptyScene.tscn"
 @export var next_level_alt = "res://_Stages/Empty/EmptyScene.tscn"
 @export var current_level = "res://_Stages/Empty/EmptyScene.tscn"

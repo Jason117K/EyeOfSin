@@ -33,9 +33,6 @@ var purple_portal_icon = preload("res://_Assets/UI/DemonCard_Portal.png")
 var demon_normal_stylebox_default = preload("res://_Common/StyleBoxes/demon_normal_button.tres")
 var demon_highlight_stylebox = preload("res://_Common/StyleBoxes/demon_highlight_stylebox.tres")
 
-#var demon_hover_stylebox = preload()
-
-#var hive_scene = preload("res://Scenes/PlantScenes/phantom_hive.tscn")
 
 # Label for Current Plant 
 var currentPlantLabel

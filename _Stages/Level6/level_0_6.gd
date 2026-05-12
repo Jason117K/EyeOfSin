@@ -8,8 +8,8 @@ var amalgam_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTuto
 var thisLevel := "res://_Stages/Level6/Level0-6.tscn"
 var thisAltLevel := "res://_Stages/Level6/Level0-6_Alternate.tscn"
 
-var endScreen = "res://Scenes/LevelScenes/EndScreen.tscn"
-var endScreenAlt = "res://Scenes/LevelScenes/EndScreen.tscn"
+var endScreen = "res://_Stages/EndScreen/EndScreen.tscn"
+var endScreenAlt = "res://_Stages/EndScreen/EndScreen.tscn"
 
 # Text file paths
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"

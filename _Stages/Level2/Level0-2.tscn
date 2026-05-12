@@ -3620,6 +3620,7 @@ offset_bottom = 2021.5
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=2012856353]
 stream = ExtResource("25_71bjb")
 autoplay = true
+bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=931209720]
 position = Vector2(370, 208)
@@ -3908,7 +3909,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

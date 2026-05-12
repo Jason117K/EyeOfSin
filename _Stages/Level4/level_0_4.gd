@@ -8,8 +8,8 @@ var summoner_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTut
 var thisLevel := "res://_Stages/Level4/Level0-4.tscn"
 var thisAltLevel := "res://_Stages/Level4/Level0-4_Alternate.tscn"
 
-var level05 = "res://Scenes/LevelScenes/Level0-5.tscn"
-var level05Alt = "res://Scenes/LevelScenes/Level0-5_Alternate.tscn"
+var level05 = "res://_Stages/Level5/Level0-5.tscn"
+var level05Alt = "res://_Stages/Level5/Level0-5_Alternate.tscn"
 
 # Text file paths
 const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
