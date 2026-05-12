@@ -5,12 +5,12 @@ extends Demon
 enum State {IDLE, EXTENDING, ATTACHED, RETRACTING, DIGESTING}
 
 const GRAB_DISTANCE_THRESHOLD := 10.0
-const RETRACT_DISTANCE_THRESHOLD := 5.0
 const ATTACH_DURATION := 0.1
 const MAX_EXTEND_TIME := 3.0           # Timeout for stuck tentacles
 const DIGESTION_TIME := 4.5
-const EXTEND_DURATION := 0.75
-const RETRACT_DURATION := 0.5
+const EXTEND_TIME_CONSTANT := 0.75     # Exponential homing rate while EXTENDING
+const RETRACT_DURATION := 0.5          # Tween duration while RETRACTING
+const ABORT_RETURN_DURATION := 0.4     # Tween duration when returning to idle
 const INSTAKILL_DAMAGE := 9999
 const WALNUT_HEAL_AMOUNT := 100
 
@@ -33,6 +33,7 @@ class TentacleState:
 	var enemy: Node2D
 	var timer: float = 0.0
 	var extend_timer: float = 0.0  # Timeout tracking
+	var movement_tween: Tween      # Active retract/abort tween, if any
 
 	func _init(p_arm: Arm, p_target: ArmTarget):
 		arm = p_arm
@@ -41,6 +42,14 @@ class TentacleState:
 		enemy = null
 		timer = 0.0
 		extend_timer = 0.0
+		movement_tween = null
+
+	# Cancel any tween currently driving the target. Call before starting a
+	# new state that wants control of target.global_position.
+	func kill_tween() -> void:
+		if movement_tween and movement_tween.is_valid():
+			movement_tween.kill()
+		movement_tween = null
 
 
 # === Node references ===
@@ -142,6 +151,7 @@ func assign_tentacle_to_target(target):
 		return
 
 	var tentacle: TentacleState = available_tentacles.pop_front()
+	tentacle.kill_tween()  # Cancel any in-flight abort/retract tween
 	tentacle.state = State.EXTENDING
 	tentacle.enemy = target
 	tentacle.timer = 0.0
@@ -183,9 +193,10 @@ func update_tentacles(delta: float) -> void:
 				update_retracting_state(tentacle, enemy, delta)
 
 
-# EXTENDING: tentacle chasing enemy
+# EXTENDING: tentacle chasing enemy. Framerate-independent exponential approach,
+# so the target tracks moving enemies and the pacing doesn't change with FPS.
 func update_extending_state(tentacle: TentacleState, enemy: Node2D, delta: float) -> void:
-	var lerp_weight = delta / EXTEND_DURATION
+	var lerp_weight = 1.0 - exp(-delta / EXTEND_TIME_CONSTANT)
 	tentacle.target.global_position = tentacle.target.global_position.lerp(enemy.global_position, lerp_weight)
 
 	tentacle.extend_timer += delta
@@ -216,22 +227,23 @@ func update_attached_state(tentacle: TentacleState, enemy: Node2D, delta: float)
 		start_tentacle_retraction(tentacle)
 
 
-# RETRACTING: pulling enemy back to maw center
-func update_retracting_state(tentacle: TentacleState, enemy: Node2D, delta: float) -> void:
-	var maw_center = animSpriteComp.global_position
-	var lerp_weight = delta / RETRACT_DURATION
-	tentacle.target.global_position = tentacle.target.global_position.lerp(maw_center, lerp_weight)
-
-	var arm_tip_global = tentacle.arm.to_global(tentacle.arm.get_segments()[-1])
+# RETRACTING: the tween (set up in start_tentacle_retraction) drives the target.
+# Each frame we just pin the enemy to the arm tip.
+func update_retracting_state(tentacle: TentacleState, enemy: Node2D, _delta: float) -> void:
 	if is_instance_valid(enemy):
+		var arm_tip_global = tentacle.arm.to_global(tentacle.arm.get_segments()[-1])
 		enemy.global_position = arm_tip_global
-
-	if arm_tip_global.distance_to(maw_center) < RETRACT_DISTANCE_THRESHOLD:
-		finish_tentacle_retraction(tentacle)
 
 
 func start_tentacle_retraction(tentacle: TentacleState) -> void:
 	tentacle.state = State.RETRACTING
+	tentacle.kill_tween()
+
+	var maw_center = animSpriteComp.global_position
+	tentacle.movement_tween = create_tween()
+	tentacle.movement_tween.tween_property(tentacle.target, "global_position", maw_center, RETRACT_DURATION)
+	tentacle.movement_tween.tween_callback(finish_tentacle_retraction.bind(tentacle))
+
 	if debug_mode:
 		print("[Maw] Starting tentacle retraction")
 
@@ -265,6 +277,7 @@ func finish_tentacle_retraction(tentacle: TentacleState) -> void:
 
 	tentacle.state = State.DIGESTING
 	tentacle.timer = 0.0
+	tentacle.movement_tween = null  # Tween finished naturally; drop the ref
 	charges -= 1
 	attacking_tentacles.erase(tentacle)
 
@@ -272,12 +285,13 @@ func finish_tentacle_retraction(tentacle: TentacleState) -> void:
 		print("[Maw] Retraction complete, starting digestion (charges: %d)" % charges)
 
 
-# Abort current attack and return tentacle to idle
+# Abort current attack and ease tentacle back to idle position.
 func abort_tentacle(tentacle: TentacleState) -> void:
 	tentacle.state = State.IDLE
 	tentacle.enemy = null
 	tentacle.timer = 0.0
 	tentacle.extend_timer = 0.0
+	tentacle.kill_tween()
 
 	if not tentacle in available_tentacles:
 		available_tentacles.append(tentacle)
@@ -285,7 +299,9 @@ func abort_tentacle(tentacle: TentacleState) -> void:
 
 	var tentacle_index = tentacles.find(tentacle)
 	if tentacle_index >= 0:
-		tentacle.target.global_position = global_position + IDLE_OFFSETS[tentacle_index]
+		var idle_pos = global_position + IDLE_OFFSETS[tentacle_index]
+		tentacle.movement_tween = create_tween()
+		tentacle.movement_tween.tween_property(tentacle.target, "global_position", idle_pos, ABORT_RETURN_DURATION)
 
 	_process_queue()
 
