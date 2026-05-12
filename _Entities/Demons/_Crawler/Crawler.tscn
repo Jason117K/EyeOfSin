@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="25_82rcb"]
 [ext_resource type="Shader" uid="uid://bm6i26uu8obx0" path="res://_Utilities/TentacleDemo/shaders/canvas_group_shadow.gdshader" id="25_kcbs3"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="30_tifvr"]
-[ext_resource type="Script" uid="uid://gxw8uvbcs0fo" path="res://_Entities/Demons/ShootComponent/ProjectileShootComponent.gd" id="33_kupbo"]
+[ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="33_kupbo"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -1782,7 +1782,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 110.15224, 130.16214, 108.40578, 128.55719, 104.54972, 129.63206, 100.68514, 130.78242, 98.4474, 129.4007, 96.55719, 127.8572, 92.80413, 128.80362, 89.02948, 131.15321)
+points = PackedVector2Array(112.595, 131.435, 109.424774, 130.97624, 108.1785, 129.17433, 104.635544, 129.36215, 100.72816, 130.83928, 97.96321, 129.92009, 96.542656, 128.17136, 93.20545, 128.15051, 89.516556, 130.87631)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1794,7 +1794,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 110.15224, 123.28715, 108.40578, 119.80719, 104.54972, 119.00707, 100.68514, 118.282425, 98.4474, 115.025696, 96.55719, 111.6072, 92.80413, 110.67861, 89.02948, 111.15321)
+points = PackedVector2Array(112.595, 126.435, 109.424774, 124.10124, 108.1785, 120.42434, 104.635544, 118.737144, 100.72816, 118.33928, 97.96321, 115.54509, 96.542656, 111.92136, 93.20545, 110.02551, 89.516556, 110.87631)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1815,7 +1815,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 114.75269, 131.88844, 114.95822, 131.232, 114.86148, 130.58524, 116.67519, 130.67587, 118.67392, 131.01903, 118.89818, 130.39627, 118.437874, 129.85516, 119.88404, 129.80716)
+points = PackedVector2Array(112.595, 131.435, 114.96345, 132.09396, 116.264496, 131.80391, 115.67357, 131.2317, 116.430725, 130.70709, 118.561104, 131.21933, 119.89275, 130.96783, 119.4022, 130.40228, 119.36651, 129.8473)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1823,7 +1823,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 114.75269, 125.01344, 114.95822, 122.48199, 114.86148, 119.960236, 116.67519, 118.17588, 118.67392, 116.64402, 118.89818, 114.14627, 118.437874, 111.73016, 119.88404, 109.80716)
+points = PackedVector2Array(112.595, 126.435, 114.96345, 125.21897, 116.264496, 123.05391, 115.67357, 120.60671, 116.430725, 118.207085, 118.561104, 116.84433, 119.89275, 114.717834, 119.4022, 112.27728, 119.36651, 109.847305)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1837,8 +1837,7 @@ position = Vector2(-2, -13)
 
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("30_tifvr")]
 
-[node name="ProjectileShootComponent" type="Node2D" parent="." unique_id=1394948807]
-script = ExtResource("33_kupbo")
+[node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("33_kupbo")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

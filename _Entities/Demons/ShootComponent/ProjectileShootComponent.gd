@@ -7,6 +7,7 @@ extends Node2D
 @onready var base_shoot_interval = 3.0
 @onready var parent_demon : Demon = get_parent()
 
+@export var attack_speed_mult := 1.0
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/PeaProjectile.tscn")  # Load the projectile scene
 # Map of animation_name -> which frame triggers the shot
 const SHOOT_FRAMES = {"attack": 3, "attack_Wasp": 3, "attack_Maw": 3, "attack_Spider": 3, "attack_Sunflower": 3, "attack_Wyrm": 3 }
@@ -20,7 +21,7 @@ var wyrmBuffed = false
 
 
 func _ready() -> void:
-	
+	set_attack_speed(attack_speed_mult)
 	if parent_demon.is_in_group("Green"):
 		print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
 		attack_ray.collision_mask = 3

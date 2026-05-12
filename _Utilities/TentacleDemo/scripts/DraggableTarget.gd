@@ -16,7 +16,6 @@ func get_grabbing_position():
 	global_position = get_parent().get_end_location()
 	return global_position
 
-
 func revert_to_normal_position():
 	global_position = og_global_position
 	return global_position

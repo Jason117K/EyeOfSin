@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dtfy6ty0x64ad"]
+
+[ext_resource type="Script" uid="uid://gxw8uvbcs0fo" path="res://_Entities/Demons/ShootComponent/ProjectileShootComponent.gd" id="1_3p4kq"]
+
+[node name="ProjectileShootComponent" type="Node2D" unique_id=509514022]
+script = ExtResource("1_3p4kq")
+attack_speed_mult = 2.0
