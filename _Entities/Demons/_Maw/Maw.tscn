@@ -20,8 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="9_drv5f"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="10"]
 [ext_resource type="Script" uid="uid://bvyppv52ukt2q" path="res://_Entities/Demons/_Maw/maw_animated_sprite_component.gd" id="14_xf387"]
-[ext_resource type="PackedScene" path="res://_Entities/Demons/Tentacles/Tentacle.tscn" id="22_tent"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="21_8vtaw"]
+[ext_resource type="PackedScene" uid="uid://dfiqbxbm26q0l" path="res://_Entities/Demons/Tentacles/Tentacle.tscn" id="22_tent"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
 shader = ExtResource("2_fxtok")
@@ -1474,7 +1474,7 @@ script = ExtResource("4")
 cost = 250
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
-digestTime = 15.0
+digestTime = 5.0
 buffedDigestTime = 11.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_colwa")]
@@ -1677,15 +1677,18 @@ position = Vector2(16, 1)
 sprite_frames = SubResource("127")
 animation = &"New Anim"
 
-[node name="Tentacle1" parent="." instance=ExtResource("22_tent")]
+[node name="Tentacle1" parent="." unique_id=179826061 instance=ExtResource("22_tent")]
+visible = false
 position = Vector2(259, 256)
 idle_offset = Vector2(48, 26)
 
-[node name="Tentacle2" parent="." instance=ExtResource("22_tent")]
+[node name="Tentacle2" parent="." unique_id=1524614868 instance=ExtResource("22_tent")]
+visible = false
 position = Vector2(259, 256)
 idle_offset = Vector2(-53, 37)
 
-[node name="Tentacle3" parent="." instance=ExtResource("22_tent")]
+[node name="Tentacle3" parent="." unique_id=1983148260 instance=ExtResource("22_tent")]
+visible = false
 position = Vector2(259, 256)
 idle_offset = Vector2(-57, -32)
 

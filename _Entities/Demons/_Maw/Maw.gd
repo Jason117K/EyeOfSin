@@ -271,6 +271,8 @@ func _remove_walnut_buff():
 	pass  # Walnut buff is permanent by design
 
 
+## -------------------------------------------------------------------------------------------------------------------------------------
+
 # Sun generation (sunflower buff payout)
 func generate_sun():
 	var sun_instance = BLOOD_SCENE.instantiate()
