@@ -3,7 +3,7 @@ extends Demon
 
 @export var cost = 75
 
-var projectile_scene = preload("res://_Entities/Demons/_Crawler/PeaProjectile.tscn")  # Load the projectile scene
+var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  # Load the projectile scene
 var spiderling_scene = preload("res://_Entities/Demons/_Crawler/spiderling.tscn")
 var PlantManager
 var canAttack = false   # Whether or not the peashooter can attack 

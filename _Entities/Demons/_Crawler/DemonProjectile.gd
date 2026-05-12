@@ -1,5 +1,5 @@
 extends Area2D
-#PeaProjectile.gd
+#DemonProjectile.gd
 
 
 @export var speed = 300  # Speed of the projectile
@@ -18,23 +18,19 @@ var canGenBlood := false
 
 func _ready() -> void:
 	pass
-	#if wyrmBuff:
-		#$LightningZone.visible = true 
-		#$LightningZone.monitoring = true 
-		#$AnimatedSprite2D.visible = true 
 
 func _process(delta):
-	#if wyrmBuff:
-		#$LightningZone.visible = true 
-		#$LightningZone.monitoring = true 
-		#$AnimatedSprite2D.visible = true 
-		#$LightningZone/CollisionShape2D.disabled = false
 	position.x += speed * delta  # Move the projectile to the right
 
 	# Remove the projectile if it goes off-screen
 	if position.x > get_viewport_rect().size.x:
 		queue_free()  # Remove projectile if off-screen
 
+func setup_lightning_zone():
+	$LightningZone.visible = true 
+	$LightningZone.monitoring = true 
+	$AnimatedSprite2D.visible = true 
+	$LightningZone/CollisionShape2D.disabled = false
 
 # Handles projectile collison and damage application 
 func _on_PeaProjectile_area_entered(area):

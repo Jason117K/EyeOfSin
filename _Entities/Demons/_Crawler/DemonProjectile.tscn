@@ -1,49 +1,49 @@
 [gd_scene format=3 uid="uid://c35ses7btlwqk"]
 
-[ext_resource type="Script" uid="uid://bk1ka6qbmryci" path="res://_Entities/Demons/_Crawler/PeaProjectile.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/Projectile/WebBallwOutline.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://_Entities/Demons/Explosion/blueboom.png" id="3_r2e76"]
+[ext_resource type="Script" uid="uid://bk1ka6qbmryci" path="res://_Entities/Demons/_Crawler/DemonProjectile.gd" id="1_q5oco"]
+[ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/Projectile/WebBallwOutline.png" id="2_pnqjf"]
+[ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://_Entities/Demons/Explosion/blueboom.png" id="3_abrjb"]
 
 [sub_resource type="CircleShape2D" id="1"]
 
 [sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="6"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(1024, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="7"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(1280, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="8"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(1536, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(1792, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="10"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(2048, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="11"]
-atlas = ExtResource("3_r2e76")
+atlas = ExtResource("3_abrjb")
 region = Rect2(2304, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_frnp6"]
@@ -138,17 +138,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2e76"]
 size = Vector2(76, 76)
 
-[node name="PeaProjectile" type="Area2D" unique_id=1562559125]
+[node name="DemonProjectile" type="Area2D" unique_id=1562559125]
 z_index = 1
 collision_layer = 6
 collision_mask = 6
-script = ExtResource("1")
+script = ExtResource("1_q5oco")
 speed = 325
 damage = 60
 lightning_damage = 15
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=636634696]
-texture = ExtResource("2")
+texture = ExtResource("2_pnqjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037487616 groups=["Zombie"]]
 shape = SubResource("1")

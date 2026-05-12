@@ -8,7 +8,7 @@ class_name ProjectileShootComponent extends Node2D
 @export var projectile_spawn_offest :Vector2 = Vector2(32, 0)
 
 var attack_rays = []
-var projectile_scene = preload("res://_Entities/Demons/_Crawler/PeaProjectile.tscn")  
+var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  
 var canAttack = false   
 var hiveBuffed = false 
 var walnutBuffed = false

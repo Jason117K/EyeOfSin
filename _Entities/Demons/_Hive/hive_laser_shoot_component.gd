@@ -36,7 +36,7 @@ var isSunBuffed := false
 @onready var collision_shape := CollisionShape2D.new()
 @onready var attack_ray = $"../DMG_RayCast2D"
 var projectile_scene = preload("res://_Entities/Demons/_Wyrm/EggProjectile.tscn")  # Load the projectile scene
-var projectile_scene_slow = preload("res://_Entities/Demons/_Crawler/PeaProjectile.gd")
+var projectile_scene_slow = preload("res://_Entities/Demons/_Crawler/DemonProjectile.gd")
 var cooldown_timer := Timer.new() 
 # State variables 
 var current_length := 0.0

@@ -1,30 +1,14 @@
 extends Demon
 #HeartDemon.gd
 
-# Adjustbale health, cost, attack speed 
-#@export var health = 1000
 @export var cost = 0
 
-#var projectile_scene = preload("res://_Entities/Demons/_Crawler/PeaProjectile.tscn")  # Load the projectile scene
 var PlantManager
-#var canAttack = false   # Whether or not the peashooter can attack 
-#var canAttackSetTrueOnce = false
-#var spawnAnimDone = false
 var duration : float 
-#var has_shot := false 
 
-# Raycast to detect zombies in front
-#@onready var attack_ray = $DMG_RayCast2D
-#@onready var attack_ray_2 = $DMG_RayCast2D2
-#@onready var attack_ray_3 = $DMG_RayCast2D3
-#@onready var damage_zone := $DMGZone
-# Buff Nodes Comp 
 @onready var buffNodes = $BuffNodesComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
-#Shoot Location References 
-#@onready var shootPosition1 = $ShootSpawn1
-#@onready var shootPosition2 = $ShootSpawn2
-#@onready var shootPosition3 = $ShootSpawn3
+
 
 #Circle Sprite for Special Move
 #@onready var beatOfDeathCirle = $BeatOfDeathCircle
