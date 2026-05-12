@@ -23,7 +23,6 @@ const _BUFF_HANDLERS := [
 @onready var tentacle3: Tentacle = $Tentacle3
 
 @onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
-@onready var digestionTimer = $DigestionTimer
 @onready var detection_area = $DetectionComponent
 @onready var buffNodes = $BuffNodesComponent
 @onready var ogDetectionRadius = detectionAreaShape.shape.radius
@@ -84,6 +83,8 @@ func setup_tentacles():
 		tentacle.ready_again.connect(_on_tentacle_ready_again.bind(tentacle))
 		tentacle.aborted.connect(_on_tentacle_aborted.bind(tentacle))
 
+	_set_tentacle_digestion_time(digestTime)
+
 	if debug_mode:
 		print("[Maw] Setup complete: %d tentacles ready" % tentacles.size())
 
@@ -91,6 +92,13 @@ func setup_tentacles():
 # Tentacles retract toward the Maw's animated sprite center, not the Maw root.
 func _get_retraction_center() -> Vector2:
 	return animSpriteComp.global_position
+
+
+# Apply a digestion duration to every active tentacle. Used by setup and
+# by the EggWorm buff (which lengthens digestion).
+func _set_tentacle_digestion_time(t: float) -> void:
+	for tentacle in tentacles:
+		tentacle.digestion_time = t
 
 
 # Assign a target to a tentacle, or queue it if none are free.
@@ -183,16 +191,6 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 	_process_queue()
 
 
-# Legacy DigestionTimer handler. The Timer node is never started in the
-# current flow; retained until the cleanup pass deletes the node.
-func _on_DigestionTimer_timeout():
-	charges += 1
-	if charges > tentacles.size():
-		charges = tentacles.size()
-	if willBelchSun:
-		generate_sun()
-
-
 # Receive a buff from a neighbor plant. First buff wins —
 # subsequent buffs are ignored by design.
 func receiveBuff(plant):
@@ -230,11 +228,11 @@ func _find_buff_handler() -> Dictionary:
 
 func _apply_eggworm_buff():
 	if isEggWyrmBuffed: return
-	digestionTimer.wait_time = buffedDigestTime
+	_set_tentacle_digestion_time(buffedDigestTime)
 	isEggWyrmBuffed = true
 
 func _remove_eggworm_buff():
-	digestionTimer.wait_time = ogDigestTime
+	_set_tentacle_digestion_time(ogDigestTime)
 
 
 func _apply_peashooter_buff():
