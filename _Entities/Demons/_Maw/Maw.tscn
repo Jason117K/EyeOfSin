@@ -416,7 +416,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="8"]
 resource_local_to_scene = true
-radius = 65.0
+radius = 69.0
 
 [sub_resource type="RectangleShape2D" id="9"]
 size = Vector2(55, 21)
@@ -1503,7 +1503,6 @@ autoplay = "spawn"
 script = ExtResource("14_xf387")
 
 [node name="DetectionComponent" type="Area2D" parent="." unique_id=366524875]
-visible = false
 position = Vector2(256, 256)
 collision_mask = 6
 

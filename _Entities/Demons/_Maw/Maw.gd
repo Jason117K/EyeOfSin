@@ -73,7 +73,7 @@ func get_cost():
 # Tentacle3 exists in the scene but is intentionally inactive for balance
 # tuning. Append it to `tentacles` to enable.
 func setup_tentacles():
-	tentacles = [tentacle1, tentacle2]
+	tentacles = [tentacle1, tentacle2,tentacle3]
 	available_tentacles = tentacles.duplicate()
 
 	for tentacle in tentacles:
@@ -111,6 +111,7 @@ func assign_tentacle_to_target(target):
 
 	if available_tentacles.is_empty() or charges <= 0:
 		if not target in enemies_to_eat:
+			print("No available tentacles, assinging to array , ", target)
 			enemies_to_eat.append(target)
 		return
 
@@ -128,6 +129,7 @@ func _process_queue():
 	while not enemies_to_eat.is_empty() and not available_tentacles.is_empty():
 		var enemy = enemies_to_eat.pop_front()
 		if is_instance_valid(enemy):
+			print("Should Eat This enemy with tentacle " , enemy)
 			assign_tentacle_to_target(enemy)
 
 
@@ -190,6 +192,7 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 
 	_process_queue()
 
+#region Rewrite LMAO
 
 # Receive a buff from a neighbor plant. First buff wins —
 # subsequent buffs are ignored by design.
@@ -270,8 +273,7 @@ func _apply_walnut_buff():
 func _remove_walnut_buff():
 	pass  # Walnut buff is permanent by design
 
-
-## -------------------------------------------------------------------------------------------------------------------------------------
+#endregion 
 
 # Sun generation (sunflower buff payout)
 func generate_sun():
@@ -313,6 +315,7 @@ func die_fromClearSpace():
 func show_tentacles():
 	tentacle1.visible = true
 	tentacle2.visible = true
+	tentacle3.visible = true 
 
 
 func _on_mouse_entered() -> void:
