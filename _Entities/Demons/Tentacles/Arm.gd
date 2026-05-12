@@ -103,7 +103,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 ## Runs on scene load and sets up segments.
 ## Separate from _initialize_segments() so setters can rebuild segments during editing.
 func _ready() -> void:
-	print_scene_tree()
+	#print_scene_tree()
 	# Work in Arm's local space - base is always at origin
 	_base_position = Vector2.ZERO
 	_initialize_segments()

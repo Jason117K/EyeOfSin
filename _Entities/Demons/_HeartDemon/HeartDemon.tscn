@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cmmvuo0uc4nvr" path="res://_Entities/Demons/_HeartDemon/hero_ability_component.tscn" id="14_tfp6l"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="16_ay5kv"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="17_omvog"]
+[ext_resource type="Script" uid="uid://2r7np5gothcu" path="res://_Entities/Demons/_HeartDemon/heart_projectile_shoot_component.gd" id="18_f3mxg"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="18_qifgx"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="20_eny5u"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="21_mgr0t"]
@@ -1167,6 +1168,8 @@ position = Vector2(32, 3)
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_ay5kv")]
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("17_omvog")]
+script = ExtResource("18_f3mxg")
+attack_speed_mult = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

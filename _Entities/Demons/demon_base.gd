@@ -14,6 +14,7 @@ var isBuffed := false
 func _ready() -> void:
 	pass
 	await get_tree().physics_frame
+	#self.set_process(false)
 	print(self, " Heart Connect")
 	for new_area in get_overlapping_areas():
 		print("New Area is ", new_area)
@@ -32,6 +33,9 @@ func on_demon_area_entered(new_area: Area2D):
 func on_demon_area_exited(old_area: Area2D):
 	if old_area.is_in_group("HeartBuff"):
 		remove_heart_buff()		
+
+func get_animSpriteComp():
+	return animSpriteComp
 	
 #TODO Call ReceiveBuff On ALL Components Here
 #TODO Set All isDemonBuffed Variables Here As Well

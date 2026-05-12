@@ -70,7 +70,7 @@ func _ready():
 	timer.wait_time = attack_length
 	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
 	timer.start()
-	print_scene_tree()
+	#print_scene_tree()
 
 # Handles the drone taking damage
 func take_damage(amount):

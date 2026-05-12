@@ -5,7 +5,6 @@
 [ext_resource type="Shader" uid="uid://dvcmoaj2bkbf3" path="res://_Utilities/TentacleDemo/shaders/outline.gdshader" id="3_o1qxq"]
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://_Utilities/TentacleDemo/shaders/canvas_group_two_tone.gdshader" id="4_gowua"]
 
-
 [sub_resource type="Curve" id="Curve_pi6jo"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.988764, 0.334413), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -28,18 +27,18 @@ shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
 shader_parameter/dark_color = Color(0.160784, 0, 0.0627451, 1)
 shader_parameter/shade_ratio = 0.53
 
-[node name="Arm" type="Node2D" node_paths=PackedStringArray("base_node", "shadow_node")]
+[node name="Arm" type="Node2D" unique_id=31777929 node_paths=PackedStringArray("base_node", "shadow_node")]
 script = ExtResource("1_k0nq1")
 base_node = NodePath("OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup/BaseLine")
 shadow_node = NodePath("OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup/ShadowLine")
 width_curve = SubResource("Curve_pi6jo")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=351397755]
 position = Vector2(258, 255)
 zoom = Vector2(5, 5)
 editor_draw_screen = false
 
-[node name="OutlinedSubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="OutlinedSubViewportContainer" type="SubViewportContainer" parent="." unique_id=919528686]
 material = SubResource("ShaderMaterial_pi6jo")
 offset_left = -225.0
 offset_top = -253.0
@@ -47,29 +46,29 @@ offset_right = 287.0
 offset_bottom = 259.0
 mouse_filter = 2
 
-[node name="SubViewport" type="SubViewport" parent="OutlinedSubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="OutlinedSubViewportContainer" unique_id=1073598609]
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="ShadowCanvasGroup" type="CanvasGroup" parent="OutlinedSubViewportContainer/SubViewport"]
+[node name="ShadowCanvasGroup" type="CanvasGroup" parent="OutlinedSubViewportContainer/SubViewport" unique_id=648045698]
 material = SubResource("ShaderMaterial_5pek0")
 
-[node name="ShadowLine" type="Line2D" parent="OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup"]
+[node name="ShadowLine" type="Line2D" parent="OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=1872142284]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 109.227, 136.468, 104.392, 139.755, 99.4359, 142.831, 94.6551, 146.195, 90.1903, 149.973, 86.0899, 154.142, 82.3646, 158.673, 79.0298, 163.551, 75.7362, 168.484, 72.141, 173.175, 68.1884, 177.492, 63.9179, 181.397, 59.3615, 184.878, 54.5364, 187.914, 49.6623, 190.905, 44.9639, 194.241, 40.5582, 198.002, 36.4925, 202.158, 32.7845, 206.679, 29.4559, 211.556, 26.1566, 216.493, 22.5457, 221.191, 18.5762, 225.512, 14.3089, 229.403)
+points = PackedVector2Array(112.595, 131.435, 117.23535, 128.88795, 122.68741, 128.53168, 128.22415, 128.98628, 133.75671, 129.67139, 139.25935, 130.03934, 144.6677, 129.87245, 149.92055, 129.15141, 154.98904, 127.90675, 159.85736, 126.163666, 164.72127, 124.35294, 169.79256, 122.97121, 175.05753, 122.21164, 180.43256, 122.12601, 185.8428, 122.72522, 191.22327, 124.00554, 196.58884, 125.515755, 202.00055, 126.70972, 207.42227, 127.38769, 212.79283, 127.518936, 218.07114, 127.118835, 223.2233, 126.19381, 228.3564, 125.17965, 233.59727, 124.58005, 238.91582, 124.56989)
 width = 24.0
 width_curve = SubResource("Curve_pi6jo")
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="TwoToneCanvasGroup" type="CanvasGroup" parent="OutlinedSubViewportContainer/SubViewport"]
+[node name="TwoToneCanvasGroup" type="CanvasGroup" parent="OutlinedSubViewportContainer/SubViewport" unique_id=2001686121]
 material = SubResource("ShaderMaterial_arm")
 
-[node name="BaseLine" type="Line2D" parent="OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup"]
+[node name="BaseLine" type="Line2D" parent="OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=1903972213]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 109.227, 130.843, 104.392, 133.505, 99.4359, 135.956, 94.6551, 138.695, 90.1903, 141.848, 86.0899, 145.392, 82.3646, 149.298, 79.0298, 153.551, 75.7362, 157.859, 72.141, 161.925, 68.1884, 165.617, 63.9179, 168.897, 59.3615, 171.753, 54.5364, 174.164, 49.6623, 176.53, 44.9639, 179.241, 40.5582, 182.377, 36.4925, 185.908, 32.7845, 189.804, 29.4559, 194.056, 26.1566, 198.368, 22.5457, 202.441, 18.5762, 206.137, 14.3089, 209.403)
+points = PackedVector2Array(112.595, 126.435, 117.23535, 123.262955, 122.68741, 122.28168, 128.22415, 122.11128, 133.75671, 122.17139, 139.25935, 121.91434, 144.6677, 121.12246, 149.92055, 119.776405, 154.98904, 117.90675, 159.85736, 115.538666, 164.72127, 113.10294, 169.79256, 111.09621, 175.05753, 109.71164, 180.43256, 109.00101, 185.8428, 108.97522, 191.22327, 109.63054, 196.58884, 110.515755, 202.00055, 111.08472, 207.42227, 111.13769, 212.79283, 110.643936, 218.07114, 109.618835, 223.2233, 108.06881, 228.3564, 106.42965, 233.59727, 105.20505, 238.91582, 104.56989)
 width = 24.0
 width_curve = SubResource("Curve_pi6jo")
 joint_mode = 2

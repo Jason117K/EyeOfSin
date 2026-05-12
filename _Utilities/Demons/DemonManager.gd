@@ -290,7 +290,8 @@ func place_empty_blocker_plant(grid_pos):
 			grid_map[grid_pos] = plant_instance
 	
 		#Add To The GameLayer 
-		get_parent().get_node("GameLayer").add_child(plant_instance)
+		#plant_instance.set_process(false)
+		get_parent().get_node("GameLayer").call_deferred("add_child",plant_instance)
 
 		
 		#Play the sound
@@ -393,7 +394,8 @@ func place_plant(grid_pos: Vector2):
 			grid_map[grid_pos] = plant_instance
 	
 		#Add To The GameLayer 
-		get_parent().get_node("GameLayer").add_child(plant_instance)
+		#plant_instance.set_process(false)
+		get_parent().get_node("GameLayer").call_deferred("add_child", plant_instance)
 
 		#Reduce Sun Points
 		sun_points -= plant_cost
