@@ -176,7 +176,6 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Heart" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=957864529]
-visible = false
 layout_mode = 2
 
 [node name="HeartButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1081347700]

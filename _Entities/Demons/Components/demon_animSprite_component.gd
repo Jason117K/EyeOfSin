@@ -15,6 +15,7 @@ var demon : Demon
 var currentAnim := "idle"
 var currentAttackAnim := "attack"
 var spawnAnimDone = false
+signal frame_changed_signal(animation_name: String, frame_index: int)
 
 
 func _ready() -> void:

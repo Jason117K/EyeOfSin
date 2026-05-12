@@ -20,6 +20,7 @@ var duration : float
 #@onready var damage_zone := $DMGZone
 # Buff Nodes Comp 
 @onready var buffNodes = $BuffNodesComponent
+@onready var projectile_shoot_component := $ProjectileShootComponent
 #Shoot Location References 
 #@onready var shootPosition1 = $ShootSpawn1
 #@onready var shootPosition2 = $ShootSpawn2
@@ -38,20 +39,16 @@ func _ready():
 	$PreviewNodes/AnimatedSprite2D.hide()
 	#set_attack_collision()
 
-
 	PlantManager = get_parent().get_parent().get_node("PlantManager")
-
 
 	# Calculate duration from the current animation's frame count and speed
 	var frame_count: int = animSpriteComp.sprite_frames.get_frame_count(animSpriteComp.currentAttackAnim)
 	var fps: float = animSpriteComp.sprite_frames.get_animation_speed(animSpriteComp.currentAttackAnim)
 	duration = frame_count / fps	
 	
-
-
-
-						
-						
+func set_attack_collision():
+	projectile_shoot_component.set_attack_rays_collision()
+	
 #Cost getter 
 func get_cost():
 	#print("Return , ", cost )
@@ -63,13 +60,9 @@ func receiveBuff(newPlant):
 	pass
 
 
-
-
-
-		
+func get_can_attack():
+	return projectile_shoot_component.canAttack
 	
-
-
 					
 func die():
 	PlantManager.clear_space(self.global_position)
@@ -82,7 +75,6 @@ func die_fromClearSpace():
 	queue_free()		
 	
 	
-
 func _on_mouse_entered() -> void:
 	$PreviewNodes.visible = true 
 
@@ -90,7 +82,6 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
 
-	
 	
 #func beat_of_death():
 	## Reset sprite to starting state
@@ -109,25 +100,5 @@ func _on_mouse_exited() -> void:
 	#$BuffZone/CollisionShape2D.disabled = false
 	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	#for attacking_ray in attack_rays:
-		#if self.is_in_group("Green"):
-			#attacking_ray.collision_mask = 3
-			#attacking_ray.set_collision_mask_value(1,false)
-			#attacking_ray.set_collision_mask_value(2,false)
-			#attacking_ray.set_collision_mask_value(3,true)
-		#else:
-			#attacking_ray.set_collision_mask_value(1,false)
-			#attacking_ray.set_collision_mask_value(2,true)
-			#attacking_ray.set_collision_mask_value(3,false)
-	
+
 	

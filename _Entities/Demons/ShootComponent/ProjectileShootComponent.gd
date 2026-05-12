@@ -1,6 +1,5 @@
 class_name ProjectileShootComponent extends Node2D
 
-
 @onready var shootTimer := $"../ShootTimer"
 @onready var base_shoot_interval = 3.0
 @onready var parent_demon : Demon = get_parent()
@@ -20,11 +19,12 @@ var animSpriteComp
 var node_ready = false
 
 # Map of animation_name -> which frame triggers the shot
+# Might Have to Have Heart Specific in Future 
 const SHOOT_FRAMES = {"attack": 3, "attack_Wasp": 3, "attack_Maw": 3, "attack_Spider": 3, "attack_Sunflower": 3, "attack_Wyrm": 3 }
 
 func _ready() -> void:
 	animSpriteComp = $"../AnimatedSpriteComponent"
-	node_ready = true 
+	#node_ready = true 
 	print(parent_demon.get_name(), " has an AnimSpriteComp of ", animSpriteComp)
 	set_attack_speed(attack_speed_mult)
 	set_attack_rays_collision()
@@ -35,7 +35,7 @@ func _ready() -> void:
 	
 	
 func set_attack_rays_collision():
-	if self.is_in_group("Green"):
+	if parent_demon.is_in_group("Green"):
 		for attacking_ray in attack_rays:
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,false)
@@ -69,9 +69,11 @@ func check_attack_rays():
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
 				if collider and collider.is_in_group("Zombie"):
+					print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
 						canAttack = true
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
+						print("CAN ATTACK IS TRUUUUUUUUUUUUUUUUUUUUU")
 						canAttack = true
 						
 						

@@ -327,6 +327,7 @@ func place_plant(grid_pos: Vector2):
 	if "Alternate" in get_parent().name :
 		plant_instance.add_to_group("Green")
 	else:
+		print("Add ", plant_instance, " to purple group")
 		plant_instance.add_to_group("Purple")
 	
 	#Check if Spot is Occupied

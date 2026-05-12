@@ -12,6 +12,7 @@ func _ready() -> void:
 	second_shot_timer.one_shot = true  # Do not Repeat continuously
 	second_shot_timer.autostart = false  # Don't start automatically
 	second_shot_timer.timeout.connect(second_shoot_projectile)
+	node_ready = true 
 
 func shoot_projectile():
 	super()
