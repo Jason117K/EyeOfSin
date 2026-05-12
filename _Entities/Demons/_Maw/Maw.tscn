@@ -20,8 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="9_drv5f"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="10"]
 [ext_resource type="Script" uid="uid://bvyppv52ukt2q" path="res://_Entities/Demons/_Maw/maw_animated_sprite_component.gd" id="14_xf387"]
-[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="19_elvfo"]
-[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="20_6aeqa"]
+[ext_resource type="PackedScene" path="res://_Entities/Demons/Tentacles/Tentacle.tscn" id="22_tent"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="21_8vtaw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
@@ -1472,9 +1471,6 @@ animations = [{
 [node name="Maw" type="Area2D" unique_id=1021710121 groups=["Plants"]]
 z_index = 1
 script = ExtResource("4")
-tentacle1_start_color = Color(0.552941, 0, 0, 1)
-tentacle2_start_color = Color(0.552941, 0, 0, 1)
-tentacle3_start_color = Color(0.552941, 0, 0, 1)
 cost = 250
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
@@ -1513,10 +1509,6 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent" unique_id=96664600]
 shape = SubResource("8")
-
-[node name="DigestionTimer" type="Timer" parent="." unique_id=531900449]
-wait_time = 9.0
-one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1101145556]
 position = Vector2(256, 256)
@@ -1685,59 +1677,22 @@ position = Vector2(16, 1)
 sprite_frames = SubResource("127")
 animation = &"New Anim"
 
-[node name="Arm" parent="." unique_id=2047821289 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
-visible = false
+[node name="Tentacle1" parent="." instance=ExtResource("22_tent")]
 position = Vector2(259, 256)
-target = NodePath("../ArmTarget")
-max_length = 60.0
-wave_speed = 2.0
-line_width = 5.0
+idle_offset = Vector2(48, 26)
 
-[node name="SubViewport" parent="Arm/OutlinedSubViewportContainer" index="0"]
-render_target_update_mode = 0
-
-[node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 131.435, 115.15251, 133.20517, 116.52696, 136.27438, 117.58876, 139.5584, 119.14574, 142.59064, 121.27033, 145.07092, 123.77546, 146.83948, 126.46288, 147.82579, 129.15901, 148.1005, 131.82523, 148.05121, 134.59268, 148.95241, 137.11499, 150.74585, 139.11412, 153.25905, 140.35132, 156.31711, 140.65674, 159.67714, 140.73149, 163.08527, 141.81775, 166.30371, 143.84062, 168.88248, 146.45247, 170.47284, 149.19785, 170.78389, 151.45923, 169.77988, 153.44107, 168.43542, 155.95465, 167.91228, 158.6454, 168.64511, 160.92761, 170.4834)
-width = 5.0
-
-[node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0"]
-points = PackedVector2Array(112.595, 126.435, 115.15251, 127.58017, 116.52696, 130.02438, 117.58876, 132.6834, 119.14574, 135.09064, 121.27033, 136.94592, 123.77546, 138.08948, 126.46288, 138.45079, 129.15901, 138.1005, 131.82523, 137.42621, 134.59268, 137.70241, 137.11499, 138.87086, 139.11412, 140.75905, 140.35132, 143.19211, 140.65674, 145.92714, 140.73149, 148.71027, 141.81775, 151.30371, 143.84062, 153.25749, 146.45247, 154.22282, 149.19785, 153.90889, 151.45923, 152.27988, 153.44107, 150.31042, 155.95465, 149.16228, 158.6454, 149.27011, 160.92761, 150.4834)
-width = 5.0
-
-[node name="Arm2" parent="." unique_id=766619732 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
-visible = false
+[node name="Tentacle2" parent="." instance=ExtResource("22_tent")]
 position = Vector2(259, 256)
-target = NodePath("../ArmTarget2")
-max_length = 60.0
-wave_speed = 2.0
-line_width = 5.0
+idle_offset = Vector2(-53, 37)
 
-[node name="Arm3" parent="." unique_id=1786597405 node_paths=PackedStringArray("target") instance=ExtResource("19_elvfo")]
-visible = false
+[node name="Tentacle3" parent="." instance=ExtResource("22_tent")]
 position = Vector2(259, 256)
-target = NodePath("../ArmTarget3")
-max_length = 60.0
-wave_speed = 2.0
-line_width = 5.0
-
-[node name="ArmTarget" parent="." unique_id=1664757267 instance=ExtResource("20_6aeqa")]
-visible = false
-position = Vector2(307, 282)
-
-[node name="ArmTarget2" parent="." unique_id=945713582 instance=ExtResource("20_6aeqa")]
-visible = false
-position = Vector2(206, 293)
-
-[node name="ArmTarget3" parent="." unique_id=1263773246 instance=ExtResource("20_6aeqa")]
-visible = false
-position = Vector2(202, 224)
+idle_offset = Vector2(-57, -32)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
 [connection signal="area_entered" from="DetectionComponent" to="." method="_on_detection_component_area_entered"]
-[connection signal="timeout" from="DigestionTimer" to="." method="_on_DigestionTimer_timeout"]
 
 [editable path="BuffNodesComponent"]
-[editable path="Arm"]

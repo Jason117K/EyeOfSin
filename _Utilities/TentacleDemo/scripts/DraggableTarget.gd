@@ -1,8 +1,10 @@
 @tool
 @icon("res://sprites/target.png")
-class_name ArmTarget extends Node2D
+extends Node2D
 
 ## Left-click and drag to move the target around the viewport.
+## NOTE: `class_name ArmTarget` moved to res://_Entities/Demons/Tentacles/ArmTarget.gd.
+## This script is kept for the TentacleDemo only — referenced by path, not class name.
 
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
