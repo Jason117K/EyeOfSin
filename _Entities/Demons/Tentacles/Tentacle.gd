@@ -1,8 +1,9 @@
 class_name Tentacle extends Node2D
 ## Procedural tentacle controller. Wraps an Arm (IK visual) and an
 ## ArmTarget (Node2D the IK chases). Owns its own
-## attack -> grab -> retract -> digest state machine; the parent demon
-## coordinates via signals.
+## attack -> grab -> retract -> wait -> digest state machine; the parent
+## demon coordinates via signals and (for multi-tentacle eats) by calling
+## begin_digestion() once every participating tentacle has retracted.
 
 # === Tunables ===
 const GRAB_DISTANCE_THRESHOLD := 10.0
@@ -13,7 +14,9 @@ const RETRACT_DURATION := 0.5          # Tween duration while RETRACTING
 const ABORT_RETURN_DURATION := 0.4     # Tween duration when easing back to idle
 
 # === States ===
-enum State { IDLE, EXTENDING, ATTACHED, RETRACTING, DIGESTING }
+# WAITING_FOR_DIGESTION: retraction tween has completed; arm hidden;
+# awaiting external begin_digestion() so multi-tentacle groups can sync.
+enum State { IDLE, EXTENDING, ATTACHED, RETRACTING, WAITING_FOR_DIGESTION, DIGESTING }
 
 # === Signals ===
 signal grabbed_enemy(enemy: Node2D)         # Arm tip reached enemy
@@ -35,6 +38,11 @@ var state: State = State.IDLE
 var enemy: Node2D = null
 var retraction_center_provider: Callable  # Optional: called for retract destination
 
+# When false, this tentacle is a "secondary" in a multi-tentacle eat —
+# it animates alongside the primary but does NOT pin the enemy each frame.
+# Reset to true on every attack() call.
+var is_primary_grabber: bool = true
+
 var _timer: float = 0.0
 var _extend_timer: float = 0.0
 var _movement_tween: Tween = null
@@ -49,10 +57,13 @@ func is_available() -> bool:
 
 
 # Public — kick off an attack on a target enemy.
-func attack(target_enemy: Node2D) -> void:
+# `is_primary` controls whether this tentacle pins the enemy. When two
+# or more tentacles share an enemy (cost > 1), only one is primary.
+func attack(target_enemy: Node2D, is_primary: bool = true) -> void:
 	_kill_tween()
 	state = State.EXTENDING
 	enemy = target_enemy
+	is_primary_grabber = is_primary
 	_timer = 0.0
 	_extend_timer = 0.0
 	arm_target.global_position = target_enemy.global_position
@@ -62,9 +73,13 @@ func attack(target_enemy: Node2D) -> void:
 func abort() -> void:
 	state = State.IDLE
 	enemy = null
+	is_primary_grabber = true
 	_timer = 0.0
 	_extend_timer = 0.0
 	_kill_tween()
+	# Restore arm visibility in case we aborted from WAITING_FOR_DIGESTION
+	# or DIGESTING, where the arm was hidden.
+	_set_arm_visible(true)
 
 	var idle_pos = global_position + idle_offset
 	_movement_tween = create_tween()
@@ -72,12 +87,23 @@ func abort() -> void:
 	aborted.emit()
 
 
+# Public — start the digestion timer. The Maw calls this once all
+# participating tentacles in an eating group have completed RETRACTING,
+# so digestion starts and ends in sync across the group.
+func begin_digestion() -> void:
+	state = State.DIGESTING
+	enemy = null
+	_timer = 0.0
+
+
 func _process(delta: float) -> void:
-	if state == State.IDLE:
+	if state == State.IDLE or state == State.WAITING_FOR_DIGESTION:
 		return
 
-	# Active-attack states require a valid enemy
-	if state in [State.EXTENDING, State.ATTACHED, State.RETRACTING] and not is_instance_valid(enemy):
+	# Only the pre-commit phases bail on enemy loss. Once RETRACTING is
+	# under way the primary has (or is about to) apply damage, so a
+	# now-invalid enemy is expected — let the retraction run to completion.
+	if state in [State.EXTENDING, State.ATTACHED] and not is_instance_valid(enemy):
 		if debug_mode:
 			print("[Tentacle %s] Enemy became invalid, aborting" % name)
 		abort()
@@ -114,9 +140,10 @@ func _tick_extending(delta: float) -> void:
 
 
 func _tick_attached(delta: float) -> void:
-	# Pin enemy to arm tip; leave the target alone to avoid drift loop
-	var arm_tip = arm.to_global(arm.get_segments()[-1])
-	enemy.global_position = arm_tip
+	# Only primary pins the enemy — secondaries trail along visually.
+	if is_primary_grabber and is_instance_valid(enemy):
+		var arm_tip = arm.to_global(arm.get_segments()[-1])
+		enemy.global_position = arm_tip
 
 	_timer += delta
 	if _timer >= ATTACH_DURATION:
@@ -125,7 +152,9 @@ func _tick_attached(delta: float) -> void:
 
 func _tick_retracting(_delta: float) -> void:
 	# Tween drives the target; per-frame work is just pinning the enemy
-	if is_instance_valid(enemy):
+	# (primary only; secondary's enemy may already be invalid after the
+	# primary's damage step fires, which is fine).
+	if is_primary_grabber and is_instance_valid(enemy):
 		var arm_tip = arm.to_global(arm.get_segments()[-1])
 		enemy.global_position = arm_tip
 
@@ -145,12 +174,13 @@ func _start_retraction() -> void:
 	_movement_tween.tween_callback(_on_retraction_complete)
 
 
+# Retraction tween finished. Park in WAITING_FOR_DIGESTION with the arm
+# hidden until the Maw calls begin_digestion() (after all group members
+# have likewise retracted).
 func _on_retraction_complete() -> void:
 	var captured := enemy
 	_movement_tween = null
-	enemy = null
-	state = State.DIGESTING
-	_timer = 0.0
+	state = State.WAITING_FOR_DIGESTION
 	_set_arm_visible(false)
 	retraction_finished.emit(captured)
 
@@ -164,6 +194,7 @@ func _tick_digesting(delta: float) -> void:
 func _complete_digestion() -> void:
 	state = State.IDLE
 	enemy = null
+	is_primary_grabber = true
 	_set_arm_visible(true)
 	arm_target.global_position = global_position + idle_offset
 	ready_again.emit()
