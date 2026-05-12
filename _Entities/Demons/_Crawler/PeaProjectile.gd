@@ -5,10 +5,16 @@ extends Area2D
 @export var speed = 300  # Speed of the projectile
 @export var damage = 20 #2   # Damage dealt to zombies
 @export var lightning_damage = 10 #2   # Damage dealt to zombies
+var blood_scene = preload("res://_Entities/Demons/Blood/Sun.tscn")  # Adjust the path to your sun sprite scene
 
 var walnutBuff := false 
 var sunBuff := false 
 var wyrmBuff := false
+
+var piercing := false 
+var is_slowing := true 
+var canGenBlood := false 
+
 
 func _ready() -> void:
 	pass
@@ -38,7 +44,8 @@ func _on_PeaProjectile_area_entered(area):
 			return
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
-		compManager.slow()
+		if is_slowing:
+			compManager.slow()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
 		if walnutBuff:
 			compManager.knockBack()
@@ -49,7 +56,13 @@ func _on_PeaProjectile_area_entered(area):
 				plant_manager.add_sun(2.0)  # Add 25 sun points (or whatever amount)
 				plant_manager.play_sun_collect()
 			#compManager.increaseBloodWorth()
-		queue_free()  # Remove the projectile # Replace with function body.
+		if damage < 18.5 && canGenBlood:
+			generate_blood()
+			canGenBlood = false
+		if piercing == false:
+			queue_free() 
+		else:
+			damage = damage - 0.5
 
 
 func _on_lightning_zone_area_entered(area: Area2D) -> void:
@@ -65,3 +78,10 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 		compManager.take_damage(lightning_damage)  # Call take_damage() on the zombie
 	else:
 		print(area, " is not in Zombie Group")
+		
+# Function to handle sun generation
+func generate_blood():
+	var blood_instance = blood_scene.instantiate()  # Create a new instance of the sun
+	get_parent().add_child(blood_instance)  # Add the sun to the scene as a child of gamelayer
+	#Set the sun pos to above the sunflower
+	blood_instance.global_position = self.global_position + Vector2(0,-40)

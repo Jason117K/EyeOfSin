@@ -6,6 +6,7 @@ var second_shot_timer : Timer
 func _ready() -> void:
 	attack_rays = [attack_ray_1]
 	super()
+	"res://_Entities/Demons/_Wyrm/EggProjectile.tscn"
 	second_shot_timer = Timer.new()
 	add_child(second_shot_timer)
 	second_shot_timer.wait_time = 0.2  # Wait 2 seconds

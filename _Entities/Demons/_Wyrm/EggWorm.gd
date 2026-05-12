@@ -100,13 +100,15 @@ func receiveBuff(plant):
 		match plantName:
 			"Sunflower":
 				shell_sprite.change_form("Sunflower")
-				$Worm2/LaserShootComponent.isSunBuffed = true 
+				$ProjectileShootComponent.isSunBuffed = true
+				#$Worm2/LaserShootComponent.isSunBuffed = true 
 				laserShootComp2.sunBuff()
 				#animSpriteComp.change_form("Sunflower")
 			"Peashooter":
 				shell_sprite.change_form("Peashooter")
-				$Worm2/LaserShootComponent.isSlowingProjectile = true 
-				$Worm3/LaserShootComponent.isSlowingProjectile = true 
+				#$Worm2/LaserShootComponent.isSlowingProjectile = true 
+				#$Worm3/LaserShootComponent.isSlowingProjectile = true 
+				$ProjectileShootComponent.isCrawlerBuffed = true
 				print("Change to SPIDER")
 				#animSpriteComp.change_form("Peashooter")
 			"WalnutTree" : 
@@ -132,25 +134,6 @@ func receiveBuff(plant):
 				$Worm1.z_index = 2
 				#animSpriteComp.change_form("Maw")
 				
-		#isCurrentlyBuffed = true		
-				
-		#shell_sprite.make_buff_glow()
-		#Increases Speed and Range From Peashooter Buff
-		#if("Peashooter" in plant.name) && !isSpyderBuffed:
-			#laserShootComp.extension_speed = 80000
-			#laserShootComp.max_length = 40000
-			#isSpyderBuffed = true 
-		##Applies a different buff to the laser projectile 
-		#elif("WalnutTree" in plant.name) && !isSpineBuffed:
-			#if (laserShootComp.isBuffed):
-				#pass
-			#else:
-				#laserShootComp.buff(plant.position)
-			#isSpineBuffed = true 
-		#elif("Sunflower" in plant.name) && !isSunflowerBuffed:
-			#laserShootComp.sunBuff()
-			#isSunflowerBuffed = true 
-			##print("Got buff from", plant.name)
 
 #Handles Eggworm Buffing 
 func debuff():

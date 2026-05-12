@@ -20,7 +20,10 @@ signal frame_changed_signal(animation_name: String, frame_index: int)
 
 func _ready() -> void:
 	#make_buff_glow()
-	animation = "spawn"
+	if get_parent().is_in_group("Wyrm"):
+		pass
+	else:
+		animation = "spawn"
 	self.animation_finished.connect(_on_animation_finished)
 	#print(self, " PARENT Is " , get_parent())
 	demon = get_parent()

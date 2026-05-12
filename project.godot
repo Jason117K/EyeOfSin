@@ -123,6 +123,7 @@ HeartBuff=""
 Portal=""
 EntrancePortal=""
 Drone=""
+Wyrm=""
 
 [gui]
 

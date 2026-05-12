@@ -138,7 +138,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2e76"]
 size = Vector2(76, 76)
 
-[node name="PeaProjectile" type="Area2D"]
+[node name="PeaProjectile" type="Area2D" unique_id=1562559125]
 z_index = 1
 collision_layer = 6
 collision_mask = 6
@@ -147,20 +147,20 @@ speed = 325
 damage = 60
 lightning_damage = 15
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636634696]
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Zombie"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037487616 groups=["Zombie"]]
 shape = SubResource("1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1465907550]
 visible = false
 offset_left = 1.0
 offset_right = 41.0
 offset_bottom = 40.0
 color = Color(0.231373, 0.847059, 0.0823529, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=835272938]
 visible = false
 self_modulate = Color(0.882353, 0.0352941, 0.0352941, 1)
 scale = Vector2(0.5, 0.5)
@@ -168,12 +168,12 @@ sprite_frames = SubResource("SpriteFrames_frnp6")
 animation = &"lightning"
 autoplay = "lightning"
 
-[node name="LightningZone" type="Area2D" parent="."]
+[node name="LightningZone" type="Area2D" parent="." unique_id=2040273443]
 collision_layer = 2
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LightningZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightningZone" unique_id=918614259]
 position = Vector2(-4, 4)
 shape = SubResource("RectangleShape2D_r2e76")
 disabled = true

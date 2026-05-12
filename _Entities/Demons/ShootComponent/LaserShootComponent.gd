@@ -35,8 +35,8 @@ var isSunBuffed := false
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
 @onready var attack_ray = $"../../DMG_RayCast2D"
-var projectile_scene = preload("res://_Entities/Demons/_Wyrm/EggProjectile.tscn")  # Load the projectile scene
-var projectile_scene_slow = preload("res://_Entities/Demons/_Crawler/PeaProjectile.gd")
+#var projectile_scene = preload("res://_Entities/Demons/_Wyrm/EggProjectile.tscn")  # Load the projectile scene
+#var projectile_scene_slow = preload("res://_Entities/Demons/_Crawler/PeaProjectile.gd")
 var cooldown_timer := Timer.new() 
 # State variables 
 var current_length := 0.0
@@ -44,9 +44,11 @@ var is_firing := false
 var timer := Timer.new()
 var hit_enemies = {}  # Dictionary to track hit enemies
 var isBuffed := false
-var canAttack := false
+#var canAttack := false
 var isSlowingProjectile := false
 @export var isDisabled := false
+
+@onready var projectile_shoot_component := $"../../ProjectileShootComponent"
 
 func _ready() -> void:
 	if isDisabled:
@@ -84,41 +86,11 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_on_laser_timeout"))
 	
-	if auto_fire:
-		print("AUTO FIRE TRUUUU")
-		cooldown_timer = Timer.new()
-		add_child(cooldown_timer)
-		cooldown_timer.wait_time = cooldown
-		cooldown_timer.connect("timeout", Callable(self, "fire"))
-		#cooldown_timer.one_shot = true
-		cooldown_timer.start()
 
-	# Initialize a set to track currently overlapping areas
-	#var currently_overlapping_areas = []
 
 func _process(delta: float) -> void: 
 	if isDisabled:
 		return
-	if attack_ray.is_colliding():
-		var collider = attack_ray.get_collider()
-		#print("ppp ray collider is" , collider)
-		if collider:
-			#print("Collider Name is ", collider.name)
-			if collider.is_in_group("Zombie"):
-				#if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent().get_parent():
-					#return
-				if collider.is_in_group("Green"):
-					if self.is_in_group("Purple"):
-						return
-				elif collider.is_in_group("Purple"):
-					if self.is_in_group("Green"):
-						return
-				#print("PPP can attack is true")
-				canAttack = true 
-				#line2D.visible = true
-			else:
-				canAttack = false
-				#line2D.visible = false
 	if is_firing:
 		self.visible = true
 		if current_length < max_length:
@@ -126,24 +98,7 @@ func _process(delta: float) -> void:
 			current_length = min(current_length, max_length)
 			_update_laser()
 			_update_collision_shape()
-## Handle updating the laser firing if we are firing 
-#func _physics_process(delta: float) -> void:
-	#if attack_ray.is_colliding():
-		#var collider = attack_ray.get_collider()
-		#if collider:
-			##print("Collider Name is ", collider.name)
-			#if collider.is_in_group("Zombie"):
-				#canAttack = true 
-			#else:
-				#canAttack = false
-	#if is_firing:
-		#if current_length < max_length:
-			#current_length += extension_speed * delta
-			#current_length = min(current_length, max_length)
-			#_update_laser()
-			#_update_collision_shape()
 			
-
 
 func _on_area_exited(area: Area2D) -> void:
 	if isDisabled:
@@ -158,58 +113,21 @@ func _process_collision(area: Area2D) -> void:
 		print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
 		var compManager = area.getCompManager()
-		
-		
-func shoot_projectile():
-	if isDisabled:
-		return
-	print("Shoot Projectile ZZ")
-	var projectile
-	if isSlowingProjectile:
-		
-		projectile = projectile_scene.instantiate()
-		projectile.isSlow = true 
-		
-	else:
-		projectile = projectile_scene.instantiate()
-	projectile.set_damage(damage)
-	projectile.global_position = self.global_position
-	if isSunBuffed:
-		projectile.canGenSun = true 
-	#projectile.position = position + Vector2(32, 8)  # Adjust starting position
-	get_parent().get_parent().get_parent().add_child(projectile)  # Add the projectile to the game layer
-	
-	
+
 	
 # Fire a new laser 
 func fire() -> void:
 	if isDisabled:
 		return
-	#print("FIRE CALLED")
-	if attack_ray.is_colliding():
-		var collider = attack_ray.get_collider()
-		if collider:
-			#print("ppp Collider Name is ", collider.name)
-			if collider.is_in_group("Zombie") : # &&  collider.get_parent().get_parent() == self.get_parent().get_parent().get_parent().get_parent(): #Dimension Check
-				if collider.is_in_group("Green"):
-					if self.is_in_group("Purple"):
-						return
-				elif collider.is_in_group("Purple"):
-					if self.is_in_group("Green"):
-						return
-				if !is_firing:
-					#print("ppp Shoot Proj")
-					shoot_projectile()
-					AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
-					is_firing = true
-					current_length = 0.0
-					hit_enemies.clear()  # Clear the hit enemies when firing a new laser
-					timer.wait_time = duration
-					timer.start()
-				else:
-					pass
-					#print("ppp is_firing is ", is_firing)
-					
+	if !is_firing:
+		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
+		is_firing = true
+		current_length = 0.0
+		hit_enemies.clear()  # Clear the hit enemies when firing a new laser
+		timer.wait_time = duration
+		timer.start()
+	else:
+		pass
 
 # Update the laser points specifically, also taking into account buffs
 func _update_laser() -> void:

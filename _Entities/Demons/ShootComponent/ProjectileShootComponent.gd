@@ -17,6 +17,7 @@ var wyrmBuffed = false
 var projectile 
 var animSpriteComp
 var node_ready = false
+var shoot_positions = []
 
 # Map of animation_name -> which frame triggers the shot
 # Might Have to Have Heart Specific in Future 
@@ -54,22 +55,27 @@ func _on_sprite_frame_changed(animation_name: String, frame_index: int):
 			
 			
 func _process(_delta):
-	if node_ready :
+	if node_ready && animSpriteComp != null:
 		if animSpriteComp.animation == "spawn":
 			return
 		else:
 			if canAttack == false:
 				check_attack_rays()
+	else:
+		pass
+		#print("NOOOOOO")
 
 
 func check_attack_rays():
 	canAttack = false
 	for ray in attack_rays:
 		if ray.is_colliding():
+			#print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
+				#print(" and collider is ",collider )
 				if collider and collider.is_in_group("Zombie"):
-					#print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
+				#	print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
 						canAttack = true
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
@@ -78,10 +84,22 @@ func check_attack_rays():
 						
 func shoot_projectile():
 	AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
-	projectile = projectile_scene.instantiate()
-	projectile.position = parent_demon.position + projectile_spawn_offest 
-	parent_demon.get_parent().add_child(projectile)  
-	canAttack = false	
+	if shoot_positions.is_empty():
+			projectile = projectile_scene.instantiate()
+			projectile.position = parent_demon.position + projectile_spawn_offest 
+			parent_demon.get_parent().add_child(projectile)  
+			apply_buffs_to_projectile(projectile)
+	else:
+		for shoot_pos in shoot_positions:
+			projectile = projectile_scene.instantiate()
+			projectile.position = shoot_pos.global_position
+			parent_demon.get_parent().call_deferred("add_child", projectile)
+			apply_buffs_to_projectile(projectile)
+			
+	canAttack = false
+	
+func apply_buffs_to_projectile(projectile_to_buff):
+	pass
 	
 	
 func set_attack_speed(multiplier: float):

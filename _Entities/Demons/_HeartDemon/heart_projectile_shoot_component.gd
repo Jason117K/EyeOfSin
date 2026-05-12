@@ -7,9 +7,10 @@ extends ProjectileShootComponent
 @onready var shootPosition1 = $"../ShootSpawn1"
 @onready var shootPosition2 = $"../ShootSpawn2"
 @onready var shootPosition3 = $"../ShootSpawn3"
-@onready var shoot_positions = [shootPosition1, shootPosition2,shootPosition3]
+#@onready var shoot_positions = [shootPosition1, shootPosition2,shootPosition3]
 
 func _ready() -> void:
+	shoot_positions = [shootPosition1, shootPosition2,shootPosition3]
 	attack_rays = [$"../DMG_RayCast2D",attack_ray_2,attack_ray_3]
 	print("Attack Rays is ", attack_rays)
 	super()
@@ -18,12 +19,13 @@ func _ready() -> void:
 
 
 func shoot_projectile():
-	AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
-	for shoot_pos in shoot_positions:
-		projectile = projectile_scene.instantiate()
-		projectile.position = shoot_pos.global_position
-		parent_demon.get_parent().call_deferred("add_child", projectile)
-	canAttack = false
+	super()
+	#AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
+	#for shoot_pos in shoot_positions:
+		#projectile = projectile_scene.instantiate()
+		#projectile.position = shoot_pos.global_position
+		#parent_demon.get_parent().call_deferred("add_child", projectile)
+	#canAttack = false
 
 
 func set_damage_zone_collision():
