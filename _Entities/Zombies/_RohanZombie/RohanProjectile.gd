@@ -11,17 +11,14 @@ func _process(delta):
 
 	# Remove the projectile if it goes off-screen
 	if global_position.x < get_viewport_rect().position.x:
-		print("REMOVE PROJECTILE FOR ZOMBIE")
-		queue_free()  # Remove projectile if off-screen
+		queue_free()
 
 
 # Handles projectile collison and damage application 
 func _on_PeaProjectile_area_entered(area):
-	print("PLANT HIT: ", area)
 	var plant = area
 
 	if plant.is_in_group("Plants"):
-		print("IS IN GROUP")
 		if plant.get_parent().get_parent() != self.get_parent().get_parent():
 			return
 		if(plant.get_health() >= 0):

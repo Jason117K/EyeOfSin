@@ -17,6 +17,9 @@ var halfHealth = health/2
 var explode = false    #Determines whether or not the zombie will explode 
 @onready var maxHealth := health
 
+func _ready():
+	if healthRegen <= 0.0:
+		set_process(false)
 
 # Declare the death signal
 signal enemy_died(enemy)
@@ -31,9 +34,8 @@ func take_damage(damage):
 	
 
 	health -= damage
-	
-	print(zombie.name, " is taking : ", damage, " damage, jj health now ", health) 
-	
+	injured = health < halfHealth
+
 	#hitAudioPlayer.play()
 	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	#Handles killing the zombie if health hits 0
@@ -65,17 +67,14 @@ func take_damage(damage):
 
 #Applies small passive health regen and determines injured status 
 func _process(_delta):
-	pass
 	if health < maxHealth:
-		health = health + healthRegen
-	if health < halfHealth:
-		injured = true
-	else:
-		injured = false
+		health += healthRegen
+		injured = health < halfHealth
 		
 # Returns the health to it's original value 
 func resetHealth():
 	health = (halfHealth * 2)
+	injured = false
 
 #Sets explode to true
 func willExplode():

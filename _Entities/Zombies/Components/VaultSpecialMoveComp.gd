@@ -19,28 +19,18 @@ func _ready():
 
 # Perform the pole vault 
 func executeMove():
-	print("PP Pole Vault Execute ")
-	
-	# Start the animation and make the speed dependent on the tween 
 	animatedSprite.animation = "Vault"
 	speedComp.setSpeed(0)
-	
-	# Create and configure timer
+
 	var vaultTimer = Timer.new()
 	add_child(vaultTimer)
 	vaultTimer.wait_time = move_duration
 	vaultTimer.one_shot = true
 	vaultTimer.connect("timeout", Callable(self, "_on_vault_timer_timeout"))
-	
-	# Start the tween movement
+
 	var start_pos = parent.position
 	var end_pos = start_pos + Vector2(vault_distance, 0)
-	
-	print("Tween is, " , tween)
-	print("Parent is: ", parent)
-	print("Parent has position? ", "position" in parent)
-	print("End pos is: ", end_pos, " (Type: ", typeof(end_pos), ")")
-	print("Move duration: ", move_duration)
+
 	var tweener = tween.tween_property(parent, "position", end_pos, move_duration)
 	if tweener:  # Check if tween was created successfully
 		tweener.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)

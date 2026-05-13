@@ -23,12 +23,14 @@ var isSlow
 var isInjured
 @onready var zombie = 	get_parent()
 @onready var attackComp = $"../AttackComponent"
+@onready var compManager = $"../ComponentManager"
 #@onready var attack_audio_player = $"../AttackAudioPlayer"
 @onready var healthComp  =  $"../HealthComponent"
 
 var isDead = false
-var specialMove = false 
+var specialMove = false
 var set_hue := false
+var _current_target_anim: StringName = &""
 
 #Allow Summons While Webbed?
 #Maybe Give Zombies With Special Animations Own Sprite Comp Controller
@@ -60,84 +62,75 @@ func _ready() -> void:
 	
 func setSpecialMoveTrue():
 	specialMove = true
-	
+	_current_target_anim = &""
+
 func setSpecialMoveFalse():
 	specialMove = false
+	_current_target_anim = &""
 	
-#Handles Animation 
+func _play_if_changed(anim_name: StringName) -> void:
+	if anim_name != _current_target_anim:
+		_current_target_anim = anim_name
+		play(anim_name)
+
 func _process(_delta):
-	pass
-	if attackComp != null && isDead == false:
-		# Predetermine the state of attacking, being injured, and being slowed 
-		is_attacking = attackComp.getAttackState()
-		isInjured = healthComp.getInjured()
-		isSlow = zombie.getCompManager().getSlow()
-		
-		#Handle each combination of the above cases in the below block 
-		if not specialMove:
-			#Slow Webbed Block
-			#--------------------------------------------------------------------------
-			if isSlow > 0:
-				#Dancer Specific 
-				if(zombie.name == "DancerZombie"):
-					if(self.animation == "Summon"):
-						pass
-					else:
-						if(not is_attacking):
-							self.play("WebWalk")     
+	if attackComp == null or isDead:
+		return
+	is_attacking = attackComp.is_attacking
+	isInjured = healthComp.injured
+	isSlow = compManager.isSlow
 
-				if isInjured: #Injured and Webbed 
-					if not is_attacking:
-						if sprite_frames.has_animation("InjuredWebWalk"):
-							self.play("InjuredWebWalk")    #InjuredWebWalk
-						else : 
-							self.play("WebWalk") #InjuredWebWalk
-					else:
-						if sprite_frames.has_animation("InjuredWebAttack"):
-							self.play("InjuredWebAttack")    #InjuredWebAttack
-						else : 
-							self.play("WebAttack") 
-							
-				else: #Not Injured, Are Webbed
-					if not is_attacking:
-						if sprite_frames.has_animation("WebWalk"):
-							self.play("WebWalk")    #WebWalk
-							#print("Playing WebWalk Right nw")
-						else : 
-							self.play("Walk") #WebWalk
-					else:
-						if sprite_frames.has_animation("WebAttack"):
-							self.play("WebAttack")    #WebAttack
-						else : 
-							self.play("Attack") #WebAttack
-			#--------------------------------------------------------------------------
-				
-			#Not Slow Block
-			else: #isSlow <= 0
-				#print("NOT SLOW")
+	if specialMove:
+		return
 
-				#Dancer Specific 
-				if(zombie.name == "DancerZombie"):
-					if(self.animation == "Summon"):
-						pass
-					else:
-						if(not is_attacking):
-							self.play("Walk")
+	if isSlow > 0:
+		if zombie.name == "DancerZombie":
+			if self.animation == "Summon":
+				pass
+			else:
+				if not is_attacking:
+					_play_if_changed(&"WebWalk")
 
-				if isInjured: #Injured and NOT Webbed 
-					if not is_attacking:
-						self.play("Walk") #InjuredWalk
-					else:
-						self.play("Attack") #InjuredAttack
-				else: #Not Injured, NOT Webbed
-					if not is_attacking:
-						#print("Walk Nw")
-						self.play("Walk")
-					else:
-						self.play("Attack")
-						
+		if isInjured:
+			if not is_attacking:
+				if sprite_frames.has_animation("InjuredWebWalk"):
+					_play_if_changed(&"InjuredWebWalk")
+				else:
+					_play_if_changed(&"WebWalk")
+			else:
+				if sprite_frames.has_animation("InjuredWebAttack"):
+					_play_if_changed(&"InjuredWebAttack")
+				else:
+					_play_if_changed(&"WebAttack")
 		else:
-			pass
+			if not is_attacking:
+				if sprite_frames.has_animation("WebWalk"):
+					_play_if_changed(&"WebWalk")
+				else:
+					_play_if_changed(&"Walk")
+			else:
+				if sprite_frames.has_animation("WebAttack"):
+					_play_if_changed(&"WebAttack")
+				else:
+					_play_if_changed(&"Attack")
+	else:
+		if zombie.name == "DancerZombie":
+			if self.animation == "Summon":
+				pass
+			else:
+				if not is_attacking:
+					_play_if_changed(&"Walk")
+
+		if isInjured:
+			if not is_attacking:
+				_play_if_changed(&"Walk")
+			else:
+				_play_if_changed(&"Attack")
+		else:
+			if not is_attacking:
+				_play_if_changed(&"Walk")
+			else:
+				_play_if_changed(&"Attack")
 
 #Makes it so Pole Vaulters can only special move once 
 func _on_AnimatedSprite_animation_finished():

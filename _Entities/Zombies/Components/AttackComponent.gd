@@ -15,10 +15,10 @@ var canSpecial = true # Determines whether or not a special move can be performe
 #@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
 @onready var parent = get_parent() # Parent Zombie Attacking 
 @onready var zombie = 	get_parent()
+var my_level: Node
 
 func _ready() -> void:
-	pass
-	#print("FFParent is ", parent.get_name())
+	my_level = parent.get_parent().get_parent()
 # Attack State Getter 
 func getAttackState():
 	return is_attacking
@@ -84,7 +84,6 @@ func _on_AttackTimer_timeout():
 						get_parent().die()
 				if target_plant.has_method("walnutWyrmBuffed"):
 					if target_plant.can_damage_zombie == true :
-						print("Demon Hive Can Damage Me While I Eat")
 						zombie.getCompManager().take_damage(10)
 						
 				target_plant.take_damage(attack_power)
@@ -103,7 +102,6 @@ func stop_attack():
 	attack_timer.stop()
 
 func _process(_delta):
-	pass
 	if not is_attacking:
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
@@ -111,9 +109,8 @@ func _process(_delta):
 			if collider:
 				if collider.is_in_group("Plants"):
 					#print("Collider In Right Group")
-					if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
-						if collider.get_parent().get_parent().get_parent() != self.get_parent().get_parent().get_parent():
-							#print("Collider Early Return")
+					if collider.get_parent().get_parent() != my_level:
+						if collider.get_parent().get_parent().get_parent() != my_level:
 							return
 				#	print(collider.name , " is in group plants")
 					if("PoleVaultZombie" in parent.name):
