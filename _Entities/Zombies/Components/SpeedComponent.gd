@@ -4,19 +4,18 @@ extends Node2D
 #Onready variables to store zombie & attack comp
 @onready var zombie = 	get_parent()
 @onready var attackComp = $"../AttackComponent"
+@onready var animatedSprite = $"../AnimatedSprite2D"
 
 #Adjustable movement speed
 @export var speed = 20 #40 #26 #30 # Movement speed, was 34  #37
 
 # Store the original speed and whether or not the zombie is attacking
-var originalSpeed 
+var originalSpeed
 var is_attacking
+var slow_timer: Timer = null
 
 # Set the original speed immidiately
 func _ready():
-	#yspeed = randf_range(19,24)
-	if zombie.get_name() == "DancerZombie":
-		print("THE DANCER POS IS ", zombie.position)
 	originalSpeed = speed
 
 #Setter for Speed
@@ -29,7 +28,7 @@ func getOriginalSpeed():
 
 #Handles moving the zombie unless it's attacking 
 func _process(delta):
-	if attackComp != null && $"../AnimatedSprite2D".isDead == false:
+	if attackComp != null && animatedSprite.isDead == false:
 		is_attacking = attackComp.getAttackState()
 		if not is_attacking:
 			# Only move if not attacking 
@@ -38,22 +37,14 @@ func _process(delta):
 #Applies slow debuff to zombie
 func slow():
 	if speed >= originalSpeed:
-		#speed = speed / 2
 		speed = speed * 0.75
-		var endSpeedDebuff = Timer.new()
-		# Configure the timer
-		endSpeedDebuff.one_shot = true  # Timer will run only once
-		endSpeedDebuff.wait_time = 4.0  # Set timer for 5 seconds
-	
-		# Add timer as a child of the current node
-		add_child(endSpeedDebuff)
-	
-		# Connect timer's timeout signal to the _on_timer_timeout method
-		# The 'assert' ensures the connection was successful
-		#assert(endSpeedDebuff.connect("timeout", Callable(self, "_on_endSpeedDebuff_timeout")) == OK)
-		endSpeedDebuff.connect("timeout", Callable(self, "_on_endSpeedDebuff_timeout"))
-		# Start the timer
-		endSpeedDebuff.start()
+		if slow_timer == null:
+			slow_timer = Timer.new()
+			slow_timer.one_shot = true
+			slow_timer.wait_time = 4.0
+			add_child(slow_timer)
+			slow_timer.connect("timeout", Callable(self, "_on_endSpeedDebuff_timeout"))
+		slow_timer.start()
 
 #Reset speed to original when debuff expires		
 func _on_endSpeedDebuff_timeout():

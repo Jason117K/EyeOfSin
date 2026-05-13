@@ -1,4 +1,4 @@
-extends AttackComponent
+﻿extends AttackComponent
 
 @export var shootProbability = 20
 
@@ -51,7 +51,6 @@ func _on_TeleportTimer_timeout():
 
 
 func changeGroup():
-	print("CHANGING GROUP")
 	if(self.parent.is_in_group("Green")):
 		parent.remove_from_group("Green")
 		parent.add_to_group("Purple")
@@ -87,26 +86,21 @@ func _on_AttackTimer_timeout():
 	else:
 		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
-	print("TARGET PLANTS: ", target_plants)
 	if target_plants == null:
 		return
 	for plant in target_plants:
 		if(is_instance_valid(plant)):
-			print("PLANT NAME: ", plant)
 			if(((plant.is_in_group("Green") && self.parent.is_in_group("Green"))
 		|| (plant.is_in_group("Purple") && self.parent.is_in_group("Purple")))):
 				if(plant.get_health() >= 0):
 					if plant.has_method("mawBuffed"):
 						if plant.can_eat_zombie == true :
-							print("Demon Can Eat Me Time to Die")
 							plant.eat_zombie()
 							get_parent().die()
 					if plant.has_method("walnutWyrmBuffed"):
 						if plant.can_damage_zombie == true :
-							print("Demon Hive Can Damage Me While I Eat")
 							zombie.getCompManager().take_damage(10)
 							
-					print("MELEE ATTACK", plant)
 					plant.take_damage(attack_power)
 				else:
 					stop_attack()
@@ -140,14 +134,9 @@ func _process(_delta):
 						#print("Collider In Right Group")
 						if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
 							if collider.get_parent().get_parent().get_parent() != self.get_parent().get_parent().get_parent():
-								print("Collider Early Return")
 								return
-						print(collider.name , " is in group plants")
 						if("PoleVaultZombie" in parent.name):
-							print(parent.name, " - canSpecialPP: ", canSpecial)
-							print("PP Parent Is Pole Vault")
 							if canSpecial:
-								print("PP Pole Vault Special Mo")
 								parent.special_move()
 								canSpecial = false
 								pass

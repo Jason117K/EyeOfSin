@@ -61,7 +61,6 @@ func reset_speed():
 	
 #Special Move handler for pole vaulter specifically 
 func special_move():
-	print("PP Comp Manager Special Move")
 	var specialMoveComp = $"../SpecialMoveComp"
 	#print("Pole Vault Special COMP Manager")
 	specialMoveComp.executeMove()
@@ -77,9 +76,9 @@ func getSlow():
 	
 # Debuffs zombie with slow effect
 func slow():
-	#print("SLOWING rr")
-	isSlow = isSlow + 100 
+	isSlow = isSlow + 100
 	speedComp.slow()
+	$DebuffDegrade.start()
 	
 #Returns the health component 
 func getHealthComponent():
@@ -129,9 +128,6 @@ func _on_JustNowSpawned_timeout():
 		pass
 		
 	add_to_group("Alive-Enemies")
-	#print("JUSTZ SPAWNED")
-	#print("Alive Enemies is now ", get_tree().get_nodes_in_group("Alive-Enemies").size())
-	var group_size = get_tree().get_nodes_in_group("Alive-Enemies").size()
 
 # Changes sprite color 
 func setMaterial(newAnimatedSprite):
@@ -161,8 +157,11 @@ func _on_ResetThisColor_timeout():
 
 # Slowly gets rid of slow debuff
 func _on_DebuffDegrade_timeout():
-	if((isSlow - 10) >= 0):
-		isSlow = isSlow - 10
+	if isSlow > 0:
+		isSlow -= 10
+		if isSlow <= 0:
+			isSlow = 0
+			$DebuffDegrade.stop()
 
 
 func _on_blood_hit_animation_finished() -> void:

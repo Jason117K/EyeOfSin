@@ -8,7 +8,6 @@ extends Zombie
 
 # Specific Pole Vault Special Move 
 func special_move():
-	print("Pole Vault Special DOS 2")
 	compManager.special_move()
 	
 # Gets whether or not the special Move has finished executing 

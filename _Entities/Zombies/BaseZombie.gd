@@ -72,22 +72,18 @@ func spawn_slow_field_on_death():
 	
 	
 func change_dimensions(new_position):
-	print("Swap Parent Was ", get_parent())
 	self.reparent(Global.get_game_controller().get_alt_dimension().get_node("GameLayer"))
 	if self.is_in_group("Green"):
-		print("Swap Green to Purple")
 		self.remove_from_group("Green")
 		self.add_to_group("Purple")
 		self.set_collision_layer_value(2,true)
 		set_hue_shift(-86)
 	else:
-		print("Swap Purple to Green")
 		self.remove_from_group("Purple")
 		self.add_to_group("Green")
 		self.set_collision_layer_value(3,true)
 		set_hue_shift(125)
 	self.global_position = new_position
-	print("Swa Parent IS ", get_parent())
 	
 func blood_slow():
 	compManager.blood_slow()

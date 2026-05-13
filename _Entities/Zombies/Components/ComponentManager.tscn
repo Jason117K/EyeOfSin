@@ -15,7 +15,6 @@ autostart = true
 wait_time = 0.3
 
 [node name="DebuffDegrade" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="JustNowSpawned" to="." method="_on_JustNowSpawned_timeout"]
 [connection signal="timeout" from="ResetThisColor" to="." method="_on_ResetThisColor_timeout"]
