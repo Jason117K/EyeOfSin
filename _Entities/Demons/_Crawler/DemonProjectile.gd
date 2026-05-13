@@ -15,16 +15,26 @@ var piercing := false
 var is_slowing := true 
 var canGenBlood := false 
 
+var collision 
 
 func _ready() -> void:
-	pass
+	self.area_entered.connect(on_hit)
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
+	## Code For CharacterBody2D
+	#velocity = Vector2(speed,0)
+	#collision = move_and_collide(velocity*delta)
+	#if collision:
+		#print("Collision Projectile DetectedDDDDDDDD")
+		#on_hit(collision.get_collider())
+		
 	position.x += speed * delta  # Move the projectile to the right
 
 	# Remove the projectile if it goes off-screen
 	if position.x > get_viewport_rect().size.x:
 		queue_free()  # Remove projectile if off-screen
+		
+	
 
 func setup_lightning_zone():
 	$LightningZone.visible = true 
@@ -33,7 +43,7 @@ func setup_lightning_zone():
 	$LightningZone/CollisionShape2D.disabled = false
 
 # Handles projectile collison and damage application 
-func _on_PeaProjectile_area_entered(area):
+func on_hit(area):
 
 	if area.is_in_group("Zombie"):
 		if area.get_parent().get_parent() != self.get_parent().get_parent():

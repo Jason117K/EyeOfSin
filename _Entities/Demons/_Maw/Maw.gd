@@ -204,6 +204,7 @@ func _on_tentacle_grabbed(_enemy: Node2D, _tentacle: Tentacle) -> void:
 
 
 func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void:
+	print("TENT RETRACT FINDEDDDDDDDD")
 	var group = eating_groups.get(tentacle)
 	if group == null:
 		# Tentacle was aborted out from under us; nothing to coordinate.

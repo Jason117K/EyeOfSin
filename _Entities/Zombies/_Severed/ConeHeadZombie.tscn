@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="12_ebmmd"]
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://_Entities/Zombies/_Severed/HeadLessConeZombie-SheetWEB.png" id="13"]
 
-
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(24, 35)
 
@@ -343,39 +342,38 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ConeHeadZombie" type="Area2D" groups=["Zombie"]]
+[node name="ConeHeadZombie" type="Area2D" unique_id=680803281 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("2")
 
-[node name="BloodHit" type="AnimatedSprite2D" parent="."]
+[node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1104212746]
 visible = false
 position = Vector2(-8, 1)
 sprite_frames = ExtResource("2_tbvgb")
 animation = &"hit"
 
-[node name="ComponentManager" parent="." instance=ExtResource("11")]
+[node name="ComponentManager" parent="." unique_id=691615172 instance=ExtResource("11")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("10")]
+[node name="HealthComponent" parent="." unique_id=384784267 instance=ExtResource("10")]
 position = Vector2(4, 4)
 health = 200
 bloodWorth = 4.0
 
-[node name="SpeedComponent" parent="." instance=ExtResource("8")]
+[node name="SpeedComponent" parent="." unique_id=303606292 instance=ExtResource("8")]
 
-[node name="AttackComponent" parent="." instance=ExtResource("9")]
+[node name="AttackComponent" parent="." unique_id=1640668777 instance=ExtResource("9")]
 
-[node name="HurtBoxComponent" type="CollisionShape2D" parent="."]
-visible = false
+[node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=605777344]
 position = Vector2(4, 1.5)
 shape = SubResource("1")
 
-[node name="Shadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1805378366]
 self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
 position = Vector2(1, 16)
 texture = ExtResource("12_ebmmd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=904310645]
 material = SubResource("31")
 sprite_frames = SubResource("17")
 animation = &"Walk"
@@ -385,11 +383,11 @@ script = ExtResource("12")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(1, 0.145098, 0.168627, 1)
 
-[node name="DMGRayCast2D" type="RayCast2D" parent="."]
+[node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1851277821]
 target_position = Vector2(-8, 0)
 collide_with_areas = true
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=2128140176]
 
 [connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

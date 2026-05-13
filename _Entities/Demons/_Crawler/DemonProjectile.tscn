@@ -138,7 +138,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2e76"]
 size = Vector2(76, 76)
 
-[node name="DemonProjectile" type="Area2D" unique_id=1562559125]
+[node name="DemonProjectile" type="Area2D" unique_id=1588651862]
 z_index = 1
 collision_layer = 6
 collision_mask = 6
@@ -169,6 +169,7 @@ animation = &"lightning"
 autoplay = "lightning"
 
 [node name="LightningZone" type="Area2D" parent="." unique_id=2040273443]
+visible = false
 collision_layer = 2
 collision_mask = 2
 monitoring = false
@@ -178,6 +179,4 @@ position = Vector2(-4, 4)
 shape = SubResource("RectangleShape2D_r2e76")
 disabled = true
 
-[connection signal="area_entered" from="." to="." method="_on_PeaProjectile_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_PeaProjectile_body_entered"]
 [connection signal="area_entered" from="LightningZone" to="." method="_on_lightning_zone_area_entered"]

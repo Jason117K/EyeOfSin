@@ -236,7 +236,7 @@ func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_runni
 	
 func get_current_scene_filepath():
 	return current_scene.scene_file_path
-	pass
+
 
 func restore_previous_scene():
 	var scene_to_restore = previous_scenes.back()

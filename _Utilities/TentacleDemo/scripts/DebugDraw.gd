@@ -1,5 +1,5 @@
 @tool
-@icon("res://sprites/debug.png")
+@icon("res://_Utilities/TentacleDemo/sprites/debug.png")
 extends Node2D
 ## Debug visualization for understanding IK solver behavior.
 enum VisualizationMode {

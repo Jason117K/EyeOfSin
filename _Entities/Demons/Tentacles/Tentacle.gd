@@ -189,9 +189,13 @@ func _tick_digesting(delta: float) -> void:
 	_timer += delta
 	if _timer >= digestion_time:
 		_complete_digestion()
+	else:
+		pass
+		#print("timer is ", _timer)
 
 
 func _complete_digestion() -> void:
+	print("Digestion Complete")
 	state = State.IDLE
 	enemy = null
 	is_primary_grabber = true

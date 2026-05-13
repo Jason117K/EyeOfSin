@@ -96,9 +96,9 @@ func _ready():
 	OcculumButton.pressed.connect(_on_OcculumButton_pressed)
 	SpinalOcculumButton.pressed.connect(_on_SpinalOcculumButton_pressed)
 	WyrmButton.pressed.connect(_on_WyrmButton_pressed)
-	MawButton.pressed.connect(_on_MawButton_pressed)
-	HiveButton.pressed.connect(_on_HiveButton_pressed)
-	HeartButton.pressed.connect(_on_heart_button_pressed)
+#	MawButton.pressed.connect(_on_MawButton_pressed)
+#	HiveButton.pressed.connect(_on_HiveButton_pressed)
+#	HeartButton.pressed.connect(_on_heart_button_pressed)
 
 	
 	OcculumCostLabel.text = str(Global.get_demon_cost("Occulum"))
@@ -480,7 +480,7 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 	
 	start_glow_pulse(button, panel, highlight_style)
 
-func start_glow_pulse(button: TextureButton, panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
+func start_glow_pulse(button: TextureButton, _panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
 	if button.has_meta("glow_tween"):
 		var old_tween: Tween = button.get_meta("glow_tween")
 		if old_tween and old_tween.is_valid():

@@ -26,11 +26,11 @@ var isSpinalOcculumBuffed := false
 var isHeartBuffed:= false  
 
 func get_health():
-	print(demon, " is getting health from comp, returning ", health)
+	#print(demon, " is getting health from comp, returning ", health)
 	return health
 	
 func take_damage(damage):
-	print(demon, " is taking DAMAGE health is ", health)
+	#print(demon, " is taking DAMAGE health is ", health)
 	health = health - damage
 	if(health <= 0):
 		demon.die()
