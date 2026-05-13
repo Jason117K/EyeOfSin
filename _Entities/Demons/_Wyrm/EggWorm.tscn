@@ -935,6 +935,10 @@ position = Vector2(64, 0)
 sprite_frames = SubResource("90")
 animation = &"New Anim 2"
 
+[node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=1010593057]
+points = PackedVector2Array(16, 0, 300, 0)
+default_color = Color(1, 0, 0, 0.47058824)
+
 [node name="BuffNodesComponent" parent="." unique_id=1891567804 instance=ExtResource("12")]
 giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "", "Hive", "Maw", "None", "None"]
 
@@ -1036,6 +1040,8 @@ script = ExtResource("19_qxnbo")
 cooldown = 3.0
 sun_buff_cooldown = 0.9
 auto_fire = true
+projectile_speed = 600
+projectile_damage = 20
 attack_speed_mult = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

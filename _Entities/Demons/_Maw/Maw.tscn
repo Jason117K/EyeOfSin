@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="9_drv5f"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="10"]
 [ext_resource type="Script" uid="uid://bvyppv52ukt2q" path="res://_Entities/Demons/_Maw/maw_animated_sprite_component.gd" id="14_xf387"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="19_7va85"]
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="20_l3bye"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="21_4s0e3"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="21_8vtaw"]
 [ext_resource type="PackedScene" uid="uid://dfiqbxbm26q0l" path="res://_Entities/Demons/Tentacles/Tentacle.tscn" id="22_tent"]
 
@@ -1162,6 +1165,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve2D" id="Curve2D_mg35w"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 35.76849, 64.762794, 0, 35.76849, 0, -35.76849, 0, 0, 64.762794, 0, 35.76849, 0, -35.76849, -64.762794, 0, -35.76849, 0, 35.76849, 0, 0, -64.762794, 0, -35.76849, 0, 0, 64.762794, 0)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_054w2"]
+resource_local_to_scene = true
+script = ExtResource("21_4s0e3")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqdb"]
 atlas = ExtResource("7")
 region = Rect2(0, 0, 32, 32)
@@ -1587,6 +1601,32 @@ z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_7t2yj")
 animation = &"New Anim"
+
+[node name="RangeVisual" type="Node2D" parent="PreviewNodes" unique_id=1062207704 node_paths=PackedStringArray("polygon", "line")]
+position = Vector2(0, -3)
+script = ExtResource("19_7va85")
+polygon = NodePath("Fill")
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_mg35w")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_054w2")
+shape_type = 2
+size = Vector2(129.52559, 129.52559)
+rx = 64.762794
+ry = 64.762794
+
+[node name="Fill" type="Polygon2D" parent="PreviewNodes/RangeVisual" unique_id=2061361469]
+color = Color(1, 0, 0, 0.27450982)
+polygon = PackedVector2Array(64.762794, 0, 64.428444, 6.6217823, 63.447086, 13.052244, 61.85127, 19.25884, 59.673553, 25.20902, 56.946472, 30.870234, 53.702587, 36.209927, 49.97444, 41.19556, 45.79458, 45.794582, 41.195564, 49.974438, 36.20993, 53.702587, 30.870232, 56.946472, 25.209019, 59.67355, 19.258839, 61.851273, 13.052244, 63.447086, 6.621782, 64.428444, 0, 64.762794, -6.6217823, 64.428444, -13.052244, 63.447086, -19.25884, 61.85127, -25.20902, 59.673553, -30.870234, 56.946472, -36.209927, 53.702587, -41.19556, 49.97444, -45.794582, 45.79458, -49.974438, 41.195564, -53.702587, 36.20993, -56.946472, 30.870232, -59.67355, 25.209019, -61.851273, 19.258839, -63.447086, 13.052244, -64.428444, 6.621782, -64.762794, 0, -64.428444, -6.6217823, -63.447086, -13.052244, -61.85127, -19.25884, -59.673553, -25.20902, -56.946472, -30.870234, -53.702587, -36.209927, -49.97444, -41.19556, -45.79458, -45.794582, -41.195564, -49.974438, -36.20993, -53.702587, -30.870232, -56.946472, -25.209019, -59.67355, -19.258839, -61.851273, -13.052244, -63.447086, -6.621782, -64.428444, 0, -64.762794, 6.6217823, -64.428444, 13.052244, -63.447086, 19.25884, -61.85127, 25.20902, -59.673553, 30.870234, -56.946472, 36.209927, -53.702587, 41.19556, -49.97444, 45.794582, -45.79458, 49.974438, -41.195564, 53.702587, -36.20993, 56.946472, -30.870232, 59.67355, -25.209019, 61.851273, -19.258839, 63.447086, -13.052244, 64.428444, -6.621782)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="PreviewNodes/RangeVisual" unique_id=1748518252]
+visible = false
+points = PackedVector2Array(64.762794, 0, 64.428444, 6.6217823, 63.447086, 13.052244, 61.85127, 19.25884, 59.673553, 25.20902, 56.946472, 30.870234, 53.702587, 36.209927, 49.97444, 41.19556, 45.79458, 45.794582, 41.195564, 49.974438, 36.20993, 53.702587, 30.870232, 56.946472, 25.209019, 59.67355, 19.258839, 61.851273, 13.052244, 63.447086, 6.621782, 64.428444, 0, 64.762794, -6.6217823, 64.428444, -13.052244, 63.447086, -19.25884, 61.85127, -25.20902, 59.673553, -30.870234, 56.946472, -36.209927, 53.702587, -41.19556, 49.97444, -45.794582, 45.79458, -49.974438, 41.195564, -53.702587, 36.20993, -56.946472, 30.870232, -59.67355, 25.209019, -61.851273, 19.258839, -63.447086, 13.052244, -64.428444, 6.621782, -64.762794, 0, -64.428444, -6.6217823, -63.447086, -13.052244, -61.85127, -19.25884, -59.673553, -25.20902, -56.946472, -30.870234, -53.702587, -36.209927, -49.97444, -41.19556, -45.79458, -45.794582, -41.195564, -49.974438, -36.20993, -53.702587, -30.870232, -56.946472, -25.209019, -59.67355, -19.258839, -61.851273, -13.052244, -63.447086, -6.621782, -64.428444, 0, -64.762794, 6.6217823, -64.428444, 13.052244, -63.447086, 19.25884, -61.85127, 25.20902, -59.673553, 30.870234, -56.946472, 36.209927, -53.702587, 41.19556, -49.97444, 45.794582, -45.79458, 49.974438, -41.195564, 53.702587, -36.20993, 56.946472, -30.870232, 59.67355, -25.209019, 61.851273, -19.258839, 63.447086, -13.052244, 64.428444, -6.621782)
+closed = true
+default_color = Color(1, 0, 0, 0.27450982)
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
 
 [node name="BuffNodesComponent" parent="." unique_id=464042542 instance=ExtResource("8")]
 position = Vector2(256, 256)

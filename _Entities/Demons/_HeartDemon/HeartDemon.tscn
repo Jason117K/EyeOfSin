@@ -1033,6 +1033,10 @@ sprite_frames = SubResource("55")
 animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
+[node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=2099422050]
+points = PackedVector2Array(16, 0, 540, 0)
+default_color = Color(1, 0, 0, 0.47058824)
+
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=369866782]
 position = Vector2(33, 6)
 shape = SubResource("RectangleShape2D_a06ib")
