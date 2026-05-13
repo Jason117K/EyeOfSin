@@ -24,7 +24,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		print_scene_tree(child, indent + 1)
 		
 func _ready() -> void:
-	print_scene_tree()
+	#print_scene_tree()
 	self.area_entered.connect(on_hit)
 	
 func _physics_process(delta: float) -> void:

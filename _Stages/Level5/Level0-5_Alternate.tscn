@@ -121,7 +121,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1105065544 instance=ExtResource("3_4xikw")]
-position = Vector2(740, 273)
+position = Vector2(740, 269)
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=87244267 instance=ExtResource("4_otain")]
@@ -129,7 +129,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1086465909 instance=ExtResource("3_4xikw")]
-position = Vector2(740, 302)
+position = Vector2(740, 301)
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1195128336 instance=ExtResource("4_otain")]

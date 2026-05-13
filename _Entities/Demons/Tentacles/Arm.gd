@@ -98,7 +98,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
 	print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)
 		
 ## Runs on scene load and sets up segments.
 ## Separate from _initialize_segments() so setters can rebuild segments during editing.

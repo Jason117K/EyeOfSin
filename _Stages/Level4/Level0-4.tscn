@@ -79,49 +79,49 @@ sun_points = 999
 process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1266507284 instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 107)
+position = Vector2(740, 109)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=190382878 instance=ExtResource("4_0d8pj")]
 z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=356471345 instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 139)
+position = Vector2(740, 141)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=604752674 instance=ExtResource("4_0d8pj")]
 z_index = 1
 position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=158084544 instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 171)
+position = Vector2(740, 173)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1567803049 instance=ExtResource("4_0d8pj")]
 z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=510491429 instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 203)
+position = Vector2(740, 205)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=2136933917 instance=ExtResource("4_0d8pj")]
 z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=1381902616 instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 235)
+position = Vector2(740, 237)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=25597821 instance=ExtResource("4_0d8pj")]
 z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1955720190 instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 270)
+position = Vector2(740, 269)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1458409933 instance=ExtResource("4_0d8pj")]
 z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=556796398 instance=ExtResource("3_xdg5i")]
-position = Vector2(740, 300)
+position = Vector2(740, 301)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=2006322359 instance=ExtResource("4_0d8pj")]
 z_index = 1

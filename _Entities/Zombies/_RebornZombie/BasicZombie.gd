@@ -11,7 +11,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 
 func _ready() -> void:
 	super()
-	print_scene_tree()
+	#print_scene_tree()
 	
 
 #Kills the Zombie 

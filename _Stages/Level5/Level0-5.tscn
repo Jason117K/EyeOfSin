@@ -136,7 +136,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1909322556 instance=ExtResource("3_e2mf6")]
-position = Vector2(740, 272)
+position = Vector2(740, 269)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_3au0f")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1878050468 instance=ExtResource("4_51x2f")]
@@ -144,7 +144,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1811656157 instance=ExtResource("3_e2mf6")]
-position = Vector2(740, 302)
+position = Vector2(740, 301)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_1cdkr")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=696550527 instance=ExtResource("4_51x2f")]

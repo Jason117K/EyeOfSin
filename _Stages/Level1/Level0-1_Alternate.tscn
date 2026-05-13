@@ -2024,7 +2024,7 @@ sun_points = 90
 process_mode = 1
 
 [node name="ZombieSpawner2Green" parent="GameLayer" unique_id=1797020608 instance=ExtResource("3_7r54f")]
-position = Vector2(746, 137.305)
+position = Vector2(746, 141)
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2Green" unique_id=172472147 instance=ExtResource("4_vll5p")]

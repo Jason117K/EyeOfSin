@@ -397,7 +397,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BucketHeadZombie" type="Area2D" unique_id=1375769904 groups=["Zombie"]]
+[node name="Unhallower" type="Area2D" unique_id=1375769904 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("2")

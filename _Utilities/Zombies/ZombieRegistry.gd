@@ -14,6 +14,7 @@ const SCENES: Dictionary = {
 
 const Y_OFFSETS: Dictionary = {
 	"Erupter": -3,
-	"Flesheater": -4,
-	"Amalgam": -3,
+	"Flesheater": -2,
+	"Amalgam": -2,
+	"Unhallower": 2,
 }

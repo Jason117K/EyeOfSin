@@ -332,7 +332,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="29"]
 size = Vector2(146.833, 31.3334)
 
-[node name="TickerZombie" type="Area2D" unique_id=1467824159 groups=["Zombie"]]
+[node name="Erupter" type="Area2D" unique_id=1467824159 groups=["Zombie"]]
 position = Vector2(0, -15)
 collision_layer = 2
 script = ExtResource("6")

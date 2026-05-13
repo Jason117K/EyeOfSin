@@ -118,7 +118,12 @@ func _on_spawn_timer_timeout() -> void:
 func _get_type_key(zombie_name: String) -> String:
 	for type_name in ZombieRegistry.Y_OFFSETS:
 		if type_name in zombie_name:
+			#print("Will Return ", zombie_name, " with type name ", type_name)
 			return type_name
+		else:
+			pass
+			#print(type_name ," was not right NAME")
+	#print("Not Retunring NOTHING FOUND NO NAME FOR ", zombie_name)
 	return ""
 
 

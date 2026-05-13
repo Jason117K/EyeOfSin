@@ -66,7 +66,8 @@ func _ready():
 
 
 func _configure_waves():
-	#zombie_spawner_1.set_waves_from_dicts([{"Amalgam": 1, "Erupter": 3, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Flesheater": 2, "Reanimator": 1, "Reborn": 11, "Severed": 5, "Unhallower": 3}, {"Erupter": 3, "Flesheater": 3, "Reborn": 8, "Severed": 7, "Sundered": 4, "Unhallower": 5}])
+	pass
+	zombie_spawner_1.set_waves_from_dicts([{"Amalgam": 1, "Erupter": 3, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Flesheater": 2, "Reanimator": 1, "Reborn": 11, "Severed": 5, "Unhallower": 3}, {"Erupter": 3, "Flesheater": 3, "Reborn": 8, "Severed": 7, "Sundered": 4, "Unhallower": 5}])
 	zombie_spawner_2.set_waves_from_dicts([{"Erupter": 2, "Flesheater": 1, "Reanimator": 1, "Reborn": 1, "Severed": 3, "Unhallower": 4}, {"Erupter": 3, "Flesheater": 1, "Severed": 1, "Unhallower": 6}, {"Flesheater": 5, "Reborn": 10, "Severed": 3, "Unhallower": 6}])
 	zombie_spawner_3.set_waves_from_dicts([{"Amalgam": 1, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Sundered": 4, "Unhallower": 8}, {"Reborn": 8, "Severed": 2, "Sundered": 6, "Unhallower": 4}, {"Erupter": 2, "Reanimator": 1, "Severed": 7, "Sundered": 5, "Unhallower": 3}])
 	zombie_spawner_4.set_waves_from_dicts([{"Amalgam": 1, "Flesheater": 2, "Reborn": 12, "Severed": 1, "Sundered": 5}, {"Erupter": 4, "Reanimator": 1, "Unhallower": 4}, {"Erupter": 5, "Flesheater": 2, "Rohan": 1, "Severed": 8, "Unhallower": 3}])

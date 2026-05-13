@@ -342,7 +342,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ConeHeadZombie" type="Area2D" unique_id=680803281 groups=["Zombie"]]
+[node name="Severed" type="Area2D" unique_id=680803281 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("2")

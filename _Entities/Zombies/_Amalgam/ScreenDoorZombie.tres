@@ -1,42 +1,41 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://cxttx6t0ho11k"]
 
-[ext_resource type="Texture2D" uid="uid://y2o6u55mftgl" path="res://_Entities/Zombies/_Amalgam/DocOcWalk-Sheet.png" id="1_loi7v"]
 [ext_resource type="Texture2D" uid="uid://y2o6u55mftgl" path="res://_Entities/Zombies/_Amalgam/DocOcWalk-Sheet.png" id="1_um2hw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c14pr"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(0, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyltk"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(62, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqcsh"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(124, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_po56j"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(186, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fot0v"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(248, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4xhd"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(310, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eeumy"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(372, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1nq8v"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(434, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7cdf"]
-atlas = ExtResource("1_loi7v")
+atlas = ExtResource("1_um2hw")
 region = Rect2(496, 0, 62, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um2hw"]

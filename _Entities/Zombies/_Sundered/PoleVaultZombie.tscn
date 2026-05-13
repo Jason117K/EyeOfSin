@@ -385,7 +385,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PoleVaultZombie" type="Area2D" unique_id=540429334 groups=["Zombie"]]
+[node name="Sundered" type="Area2D" unique_id=540429334 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_2rcxa")
