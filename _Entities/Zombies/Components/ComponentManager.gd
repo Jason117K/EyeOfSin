@@ -26,6 +26,10 @@ var spawn_slow_field := false
 
 var reset_speed_timer : Timer
 
+func _process(delta):
+	speedComp.tick(delta)
+	animatedSprite.tick(delta)
+
 func blood_slow():
 	#print("BLOOD Slow")
 	speedComp.setSpeed(speedComp.getOriginalSpeed()/3)

@@ -17,6 +17,7 @@ var slow_timer: Timer = null
 # Set the original speed immidiately
 func _ready():
 	originalSpeed = speed
+	set_process(false)
 
 #Setter for Speed
 func setSpeed(newSpeed):
@@ -26,8 +27,8 @@ func setSpeed(newSpeed):
 func getOriginalSpeed():
 	return originalSpeed
 
-#Handles moving the zombie unless it's attacking 
-func _process(delta):
+#Handles moving the zombie unless it's attacking
+func tick(delta):
 	if attackComp != null && animatedSprite.isDead == false:
 		is_attacking = attackComp.getAttackState()
 		if not is_attacking:
