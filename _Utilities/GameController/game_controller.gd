@@ -18,6 +18,12 @@ var plant_manager
 
 @onready var pauseButton = $PauseButton
 
+func print_scene_tree(node: Node = self, indent: int = 0) -> void:
+	var prefix := "\t".repeat(indent)
+	print(prefix + node.name + "(" + node.get_class() + ")")
+	for child in node.get_children():
+		print_scene_tree(child, indent + 1)
+		
 func _ready() -> void:
 	Global.game_controller = self 
 	#TODO safsfaafsafe
@@ -32,6 +38,7 @@ func _ready() -> void:
 	
 func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool = true, keep_running : bool = false) -> void:
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	print_scene_tree()
 	pauseButton.visible = true 
 	#print("Changing scene to ", new_scene1 , " AND ", new_scene2)
 	if !current_scenes.is_empty():
