@@ -17,23 +17,53 @@ var canGenBlood := false
 
 var collision 
 
+func print_scene_tree(node: Node = self, indent: int = 0) -> void:
+	var prefix := "\t".repeat(indent)
+	print(prefix + node.name + "(" + node.get_class() + ")")
+	for child in node.get_children():
+		print_scene_tree(child, indent + 1)
+		
 func _ready() -> void:
+	print_scene_tree()
 	self.area_entered.connect(on_hit)
-
+	
 func _physics_process(delta: float) -> void:
-	## Code For CharacterBody2D
-	#velocity = Vector2(speed,0)
-	#collision = move_and_collide(velocity*delta)
-	#if collision:
-		#print("Collision Projectile DetectedDDDDDDDD")
-		#on_hit(collision.get_collider())
-		
-	position.x += speed * delta  # Move the projectile to the right
+	var travel_distance = speed * delta
+	
+	# Raycast along travel path to prevent tunneling at high speeds
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + Vector2(travel_distance, 0)
+		)
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	query.collision_mask = collision_mask
+	query.exclude = [self.get_rid()]
 
-	# Remove the projectile if it goes off-screen
+	var result = space_state.intersect_ray(query)
+	if result:
+		# Clamp movement to the hit point — projectile arrives at its natural speed
+		position.x += result.position.x - global_position.x
+	else:
+		position.x += travel_distance
 	if position.x > get_viewport_rect().size.x:
-		queue_free()  # Remove projectile if off-screen
+		queue_free()
 		
+#func _physics_process(delta: float) -> void:
+	### Code For CharacterBody2D
+	##velocity = Vector2(speed,0)
+	##collision = move_and_collide(velocity*delta)
+	##if collision:
+		##print("Collision Projectile DetectedDDDDDDDD")
+		##on_hit(collision.get_collider())
+		#
+	#position.x += speed * delta  # Move the projectile to the right
+#
+	## Remove the projectile if it goes off-screen
+	#if position.x > get_viewport_rect().size.x:
+		#queue_free()  # Remove projectile if off-screen
+		#
 	
 
 func setup_lightning_zone():

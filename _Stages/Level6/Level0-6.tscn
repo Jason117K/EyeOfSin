@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_au3v8"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_7nw23"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_0g5v1"]
+[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="4_eiai6"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_bik1u"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://_Assets/Environment/Props/CoralSmall_PROP.png" id="8_fqkpm"]
 [ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://_Assets/Environment/Props/CoralBig_Prop.png" id="9_f40rf"]
@@ -23,6 +24,10 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_au3v8"]
 [ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="23_vmdu7"]
 [ext_resource type="Script" uid="uid://d3yjo4efg0sgs" path="res://_UI/Buttons/button_breathe.gd" id="24_7nw23"]
+
+[sub_resource type="Resource" id="Resource_qwcty"]
+script = ExtResource("4_eiai6")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("10_bpnmg")
@@ -84,6 +89,7 @@ process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("3_7nw23")]
 position = Vector2(740, 109)
+waves = Array[ExtResource("4_eiai6")]([SubResource("Resource_qwcty")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=288115831 instance=ExtResource("4_0g5v1")]
 z_index = 1

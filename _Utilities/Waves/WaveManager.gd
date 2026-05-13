@@ -52,14 +52,14 @@ func _setup():
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
 
-	$Area2D.connect("area_entered", _on_damage_area_entered)
+	#$Area2D.connect("area_entered", _on_damage_area_entered)
 
 	# Show wave 0 preview with start button so the player can begin
 	for preview in _wave_previews:
 		preview.show_preview(0, true)
 	
-	waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
-	previewTimer.timeout.connect(_on_preview_timer_timeout)
+	#waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
+	#previewTimer.timeout.connect(_on_preview_timer_timeout)
 	
 
 
