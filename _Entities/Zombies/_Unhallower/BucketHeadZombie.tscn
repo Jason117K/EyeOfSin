@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
 
 [sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 30)
 
 [sub_resource type="ShaderMaterial" id="44"]
 shader = ExtResource("6_5lnjy")
@@ -426,7 +427,6 @@ speed = 12
 attack_power = 51
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=891501287]
-visible = false
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=932071441]

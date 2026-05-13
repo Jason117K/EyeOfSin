@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ComponentManager.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id="25"]
-size = Vector2(23, 38)
+size = Vector2(23, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_26b7w"]
 shader = ExtResource("6_vgguy")
@@ -279,7 +279,6 @@ speed = 8
 [node name="AttackComponent" parent="." unique_id=1819790260 instance=ExtResource("4")]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1968111864]
-visible = false
 position = Vector2(6.5, 3)
 shape = SubResource("25")
 

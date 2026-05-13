@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dbb8fpk51mb8l" path="res://_Entities/Zombies/Components/VaultSpecialMoveComp.gd" id="15_ofj7h"]
 
 [sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(20, 30)
 
 [sub_resource type="ShaderMaterial" id="44"]
 shader = ExtResource("8_d8djs")
@@ -412,6 +413,7 @@ speed = 19
 [node name="AttackComponent" parent="." unique_id=1985651506 instance=ExtResource("7_j17np")]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1194648662]
+position = Vector2(0, 2)
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=201131400]

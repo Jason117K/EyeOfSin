@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" path="res://_Entities/Zombies/Components/HealthComponent.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(20, 30.3334)
+size = Vector2(20, 30)
 
 [sub_resource type="ShaderMaterial" id="20"]
 shader = ExtResource("6_ldf7h")

@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://d4b0cn82fjmj8" path="res://_Entities/Zombies/_Amalgam/DocOcWalkINJURED-Sheet.png" id="16"]
 
 [sub_resource type="RectangleShape2D" id="17"]
-size = Vector2(8.75, 21)
+size = Vector2(8.75, 30)
 
 [sub_resource type="ShaderMaterial" id="27"]
 shader = ExtResource("6_1r4m2")
@@ -726,11 +726,11 @@ speed = 14
 attack_power = 35
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1685427958]
-position = Vector2(-9.375, 0)
+position = Vector2(-9.375, 5)
 shape = SubResource("17")
 
 [node name="HurtBoxComponent2" type="CollisionShape2D" parent="." unique_id=1190064755]
-position = Vector2(2, 6)
+position = Vector2(2, 5)
 shape = SubResource("17")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=268856653]
