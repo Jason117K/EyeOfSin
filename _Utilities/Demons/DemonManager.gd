@@ -153,7 +153,7 @@ func _input(event):
 					place_plant(grid_pos)
 				
 			else:
-				if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
+				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
 					#print(get_parent(), "QQOtro Place Plant " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_plant(grid_pos)
@@ -308,7 +308,7 @@ func place_empty_blocker_plant(grid_pos):
 func place_plant(grid_pos: Vector2):
 	#print(get_parent(), "QQ Grid Map Place Plant is ", grid_map)
 	#print("About to Place Plant")
-	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
+	if(grid_pos.x<769 && grid_pos.y<336 && grid_pos.y > 48):
 		pass
 	else:
 		#print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
