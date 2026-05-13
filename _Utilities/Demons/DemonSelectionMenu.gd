@@ -171,6 +171,7 @@ func deselect_plant():
 
 # Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 
 func _on_CrawlerButton_pressed():
+	Global.hide_notification_bar()
 	setCanRemoveFalse()
 	selected_plant = peashooter_scene
 	var temp_instance = peashooter_scene.instantiate()
@@ -193,6 +194,7 @@ func increaseSunflowerCost():
 	
 # Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
 func _on_OcculumButton_pressed():
+	Global.hide_notification_bar()
 	setCanRemoveFalse()
 	selected_plant = sunflower_scene
 	var temp_instance = sunflower_scene.instantiate()
@@ -217,6 +219,7 @@ func _on_OcculumButton_pressed():
 
 # Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
 func _on_SpinalOcculumButton_pressed():
+	Global.hide_notification_bar()
 	selected_plant = walnut_scene
 	var temp_instance = walnut_scene.instantiate()
 	create_preview(walnut_scene)
@@ -234,6 +237,7 @@ func _on_SpinalOcculumButton_pressed():
 
 # Plays Sound and Makes the Maw the current selected plant, changing label & preview image 
 func _on_MawButton_pressed():
+	Global.hide_notification_bar()
 	selected_plant = maw_scene
 	var temp_instance = maw_scene.instantiate()	
 	create_preview(maw_scene)
@@ -250,6 +254,7 @@ func _on_MawButton_pressed():
 
 # Plays Sound and Makes the EggWorm the current selected plant, changing label & preview image 
 func _on_WyrmButton_pressed():
+	Global.hide_notification_bar()
 	selected_plant = egg_scene
 	create_preview(egg_scene)
 	add_button_highlight(WyrmButton)
@@ -269,6 +274,7 @@ func _on_WyrmButton_pressed():
 # Plays Sound and Makes the Hive the current selected plant, changing label & preview image 
 func _on_HiveButton_pressed():
 	selected_plant = hive_scene
+	Global.hide_notification_bar()
 	create_preview(hive_scene)
 	add_button_highlight(HiveButton)
 	var temp_instance = hive_scene.instantiate()
@@ -593,6 +599,7 @@ func _on_open_demon_codex_button_pressed() -> void:
 
 
 func _on_world_swap_button_pressed() -> void:
+	Global.hide_notification_bar()
 	if canSwapScenes:
 	#	print("Can Swap Scenes is ", canSwapScenes)
 		#Global.game_controller.swap_scenes()
@@ -600,11 +607,13 @@ func _on_world_swap_button_pressed() -> void:
 
 
 func _on_codex_button_pressed() -> void:
+	Global.hide_notification_bar()
 	codex_clicked.emit()
 	Global.game_controller.change_scene_with_pause("res://_UI/LoreBooks/lore_book_opener.tscn")
 
 
 func _on_fast_forward_pressed() -> void:
+
 	if doubleSpeed : 
 		Engine.time_scale = 2
 		doubleSpeed = false
@@ -614,6 +623,7 @@ func _on_fast_forward_pressed() -> void:
 
 
 func _on_heart_button_pressed() -> void:
+	Global.hide_notification_bar()
 	if Global.hero_demon_is_summoned():
 		return 
 	
@@ -632,6 +642,7 @@ func _on_heart_button_pressed() -> void:
 
 
 func _on_portal_button_pressed() -> void:
+	Global.hide_notification_bar()
 	if Global.game_controller.on_purple_scene():
 		if Global.purple_portal != null:
 			if Global.green_portal != null:

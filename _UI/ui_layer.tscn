@@ -142,6 +142,7 @@ texture = ExtResource("4_kfr0o")
 
 [node name="BloodAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Blood_VBox" unique_id=209762597]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nx033")
 text = "100"
 horizontal_alignment = 1
 
@@ -157,5 +158,6 @@ texture = ExtResource("5_kni87")
 
 [node name="HealthAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=291366460]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nx033")
 text = "10"
 horizontal_alignment = 1

@@ -11,3 +11,7 @@ func _ready() -> void:
 	#print("MawPREY Collision Mask: ", collision_mask)
 	#print("MawPREY Monitoring: ", monitoring)
 	#print("MawPREY Monitorable: ", monitorable)
+
+
+func get_zombie_name():
+	return " UNHALLOWER "

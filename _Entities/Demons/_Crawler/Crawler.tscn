@@ -1788,7 +1788,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 109.02452, 131.63193, 107.74307, 129.81345, 104.697914, 129.20595, 100.77263, 130.70981, 97.511246, 130.39842, 96.184494, 128.60947, 93.48511, 127.76328, 89.7688, 130.31378)
+points = PackedVector2Array(112.595, 131.435, 109.09306, 131.50412, 107.8522, 129.68024, 104.692, 129.22562, 100.76988, 130.7495, 97.60668, 130.2995, 96.2888, 128.51003, 93.44134, 127.82005, 89.74022, 130.45432)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1800,7 +1800,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 109.02452, 124.75693, 107.74307, 121.06344, 104.697914, 118.58095, 100.77263, 118.20981, 97.511246, 116.023415, 96.184494, 112.35947, 93.48511, 109.63828, 89.7688, 110.31378)
+points = PackedVector2Array(112.595, 126.435, 109.09306, 124.62912, 107.8522, 120.93023, 104.692, 118.60061, 100.76988, 118.249504, 97.60668, 115.92449, 96.2888, 112.260025, 93.44134, 109.69505, 89.74022, 110.45432)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1821,7 +1821,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.39417, 131.47911, 116.40686, 131.89453, 116.34418, 131.24394, 116.35864, 130.59903, 118.24006, 130.76904, 120.21103, 131.10564, 120.25724, 130.51128, 119.29122, 130.167)
+points = PackedVector2Array(112.595, 131.435, 114.66695, 131.69547, 116.50988, 131.8618, 116.26871, 131.21227, 116.414696, 130.56752, 118.39498, 130.84473, 120.23237, 131.01299, 120.05616, 130.40979, 119.27953, 129.98354)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1829,7 +1829,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.39417, 124.60412, 116.40686, 123.14453, 116.34418, 120.618935, 116.35864, 118.09902, 118.24006, 116.39405, 120.21103, 114.85563, 120.25724, 112.38628, 119.29122, 110.16701)
+points = PackedVector2Array(112.595, 126.435, 114.66695, 124.82046, 116.50988, 123.11179, 116.26871, 120.58726, 116.414696, 118.06752, 118.39498, 116.469734, 120.23237, 114.762985, 120.05616, 112.28479, 119.27953, 109.983536)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 

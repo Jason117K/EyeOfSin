@@ -436,6 +436,7 @@ collide_with_areas = true
 [node name="SpecialMoveComp" type="Node2D" parent="." unique_id=1717731723]
 script = ExtResource("15_ofj7h")
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

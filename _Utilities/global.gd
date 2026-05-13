@@ -15,6 +15,7 @@ var wave_manager
 var all_zombies := []
 var game_controller : GameController
 var plant_selection_menu 
+var notification_bar
 var green_portal = null
 var purple_portal = null 
 var gameIsStarted := false
@@ -192,7 +193,8 @@ func swap_scenes():
 func register_swap_ability(new_swap_ability):
 	swap_ability = new_swap_ability
 	
-
+func register_notification_bar(new_notification_bar):
+	notification_bar = new_notification_bar
 	
 
 func start_swap_ability():
@@ -218,6 +220,15 @@ func deregister_zombie(zombie_to_delete):
 	
 func get_all_zombies():
 	return all_zombies
+	
+func set_zombie_info_bar(zombie):
+	#print(" notification_bar" , notification_bar)
+	notification_bar.set_zombie_info(zombie)
+	pass
+	
+func hide_notification_bar():
+	if notification_bar != null:
+		notification_bar.hide()
 	
 	
 	

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="6_c6rbx"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
+[ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 
 [node name="GameController" type="Node" unique_id=324431877 node_paths=PackedStringArray("scene")]
 script = ExtResource("1_ip61f")
@@ -53,5 +54,8 @@ offset_left = 672.0
 offset_top = 381.0
 offset_right = 729.0
 offset_bottom = 409.0
+
+[node name="NotifMarginContainer" parent="." unique_id=1498960940 instance=ExtResource("9_ip61f")]
+demon_info_disappear_time = 3.7
 
 [editable path="CurrentScene/DemonSelectionMenu"]

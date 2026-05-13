@@ -27,3 +27,7 @@ func transform():
 	startSprite.visible = false
 	compManager.setMaterial(altSprite)
 	healthCom.resetHealth()
+	
+	
+func get_zombie_name():
+	return " AMALGAM "

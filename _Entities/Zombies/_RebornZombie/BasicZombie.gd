@@ -28,3 +28,12 @@ func die():
 
 func kill_zombie():
 	queue_free()
+
+
+func get_zombie_name():
+	return " REBORN "
+	
+	
+	
+	
+	

@@ -38,7 +38,7 @@ func _ready() -> void:
 	
 func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool = true, keep_running : bool = false) -> void:
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	print_scene_tree()
+	#print_scene_tree()
 	pauseButton.visible = true 
 	#print("Changing scene to ", new_scene1 , " AND ", new_scene2)
 	if !current_scenes.is_empty():
@@ -104,6 +104,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 func swap_scenes():
 	Global.start_swap_ability()
 	if can_swap:
+		Global.hide_notification_bar()
 		can_swap = false
 	#check
 	

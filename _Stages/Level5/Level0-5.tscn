@@ -428,13 +428,6 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=99321584]
 position = Vector2(370, 208)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2012467734]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 372.0
-offset_right = 115.0
-offset_bottom = 412.0
-
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]

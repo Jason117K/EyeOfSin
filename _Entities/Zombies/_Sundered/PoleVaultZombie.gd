@@ -13,3 +13,6 @@ func special_move():
 # Gets whether or not the special Move has finished executing 
 func getIsMoveFinished():
 	return specialMoveComp.isMoveFinished()
+
+func get_zombie_name():
+	return " SUNDERED "

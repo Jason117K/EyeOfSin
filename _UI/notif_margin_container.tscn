@@ -1,0 +1,215 @@
+[gd_scene format=3 uid="uid://bad645hkxklbv"]
+
+[ext_resource type="Script" uid="uid://ql5up1ivfel0" path="res://_Utilities/notification_bar.gd" id="1_mv388"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_x5ffb"]
+[ext_resource type="Script" uid="uid://dujwffpetvtnu" path="res://_Utilities/notif_label.gd" id="3_4nnmc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3au0f"]
+bg_color = Color(0, 0, 0, 0.8509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10a2h"]
+bg_color = Color(0, 0, 0, 0.25882354)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cdkr"]
+bg_color = Color(0, 0, 0, 0.53333336)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="NotifMarginContainer" type="MarginContainer" unique_id=1498960940]
+visible = false
+z_index = 2
+custom_minimum_size = Vector2(730, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 730.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 2
+script = ExtResource("1_mv388")
+
+[node name="NotificationPanel" type="PanelContainer" parent="." unique_id=1756737207]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3au0f")
+
+[node name="NotificationHbox" type="HBoxContainer" parent="NotificationPanel" unique_id=2107392246]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="NotifLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox" unique_id=1939787612]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_10a2h")
+text = " REBORN ZOMBIE "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4nnmc")
+
+[node name="StatsContainer" type="VBoxContainer" parent="NotificationPanel/NotificationHbox" unique_id=235216703]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = -2
+
+[node name="HealthPanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer" unique_id=461478313]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
+
+[node name="HealthContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel" unique_id=58029458]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="HealthLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel/HealthContainer" unique_id=816145961]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 32
+text = " HEALTH"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 2
+script = ExtResource("3_4nnmc")
+
+[node name="HealthAmountLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel/HealthContainer" unique_id=921425368]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 32
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("3_4nnmc")
+
+[node name="SpeedPanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer" unique_id=988558454]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
+
+[node name="SpeedContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer/SpeedPanel" unique_id=438913869]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="SpeedLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer/SpeedPanel/SpeedContainer" unique_id=1591189294]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 32
+text = " SPEED"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 2
+script = ExtResource("3_4nnmc")
+
+[node name="SpeedAmountLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer/SpeedPanel/SpeedContainer" unique_id=1156085424]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 32
+text = ": 100"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("3_4nnmc")
+
+[node name="StatsContainer2" type="VBoxContainer" parent="NotificationPanel/NotificationHbox" unique_id=1691035932]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="DamagePanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2" unique_id=951309112]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
+
+[node name="DamageContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2/DamagePanel" unique_id=1149467852]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="DamageLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer2/DamagePanel/DamageContainer" unique_id=752012393]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 32
+text = " DAMAGE"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 2
+script = ExtResource("3_4nnmc")
+
+[node name="DamageAmountLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer2/DamagePanel/DamageContainer" unique_id=1973075628]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 32
+text = ": 100"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("3_4nnmc")
+
+[node name="SpecialPanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2" unique_id=1641026521]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
+
+[node name="SpecialContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2/SpecialPanel" unique_id=1848576590]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="SpeedLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer2/SpecialPanel/SpecialContainer" unique_id=65848755]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_font_sizes/normal_font_size = 16
+text = "HIGH ARMOR"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 2
+script = ExtResource("3_4nnmc")

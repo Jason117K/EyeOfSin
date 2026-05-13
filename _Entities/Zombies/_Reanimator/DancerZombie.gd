@@ -10,3 +10,7 @@ func ready():
 
 func _on_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
+
+
+func get_zombie_name():
+	return " REANIMATOR "

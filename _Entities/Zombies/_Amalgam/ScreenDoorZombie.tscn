@@ -760,5 +760,6 @@ collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1381605633]
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

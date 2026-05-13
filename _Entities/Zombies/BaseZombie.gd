@@ -7,6 +7,9 @@ class_name Zombie
 signal zombie_death
 
 @onready var compManager = $ComponentManager
+@onready var healthComp = $HealthComponent
+@onready var speedComp = $SpeedComponent
+@onready var attackComp = $AttackComponent
 
 var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
 
@@ -96,6 +99,18 @@ func get_charge_cost():
 	return charge_cost
 		
 	
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print(self, " was clicked ")
+		Global.set_zombie_info_bar(self)
+		pass
+
+func get_health():
+	return healthComp.health
 	
+func get_speed():
+	return speedComp.speed
 	
+func get_damage():
+	return attackComp.attack_power
 	

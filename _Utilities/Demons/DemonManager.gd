@@ -3,6 +3,7 @@ extends Node2D
 
 # Get a reference to the plant selection menu 
 @onready var selection_menu = get_parent().get_parent().get_node("DemonSelectionMenu")
+@onready var notification_bar = Global.notification_bar
 @onready var parentName = get_parent().get_name()
 
 @export var sun_points = 200 # Holds how many sun points we have currently 
@@ -46,7 +47,6 @@ func get_selected_plant():
 
 # Handles Player Interaction with the Plant Menu 
 func _input(event):
-
 	# Dynamically get the selected plant	
 	selected_plant_scene = get_selected_plant()  
 	
@@ -74,7 +74,7 @@ func _input(event):
 				var temp_instance = selected_plant_scene.instantiate()
 				
 				var cost = temp_instance.get_cost()
-				#print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
+				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 				if(parentName == "Level3"):
 					#print("Grid map size is ", grid_map.size())
 					if grid_map.size() == 0 && selected_plant_scene:
@@ -90,7 +90,9 @@ func _input(event):
 				# early return if no sun points
 				if sun_points < cost:
 					selection_menu.clear_preview()
-				#	print("Sun Points is : ", sun_points, "which is less than ", cost)
+					Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
+					selection_menu.deselect_plant()
+					print("Sun Points is : ", sun_points, " which is less than ", cost)
 					return
 			else: #Plant Scene Null
 				#TODO Make Double Click
@@ -376,7 +378,7 @@ func place_plant(grid_pos: Vector2):
 	
 	#Get The Cost 
 	plant_cost = plant_instance.get_cost()
-	#print("Plant CCost is : ", plant_cost)
+	print("Plant CCost is : ", plant_cost)
 	
 	if sun_points >= plant_cost: 
 		
@@ -440,6 +442,9 @@ func place_plant(grid_pos: Vector2):
 		#selection_menu.clear_preview()
 		
 	else:
+		print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+		#Global.notification_bar.show()
+		#Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
 		pass
 		#print("Not enough sun points!")
 	
