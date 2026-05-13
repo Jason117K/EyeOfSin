@@ -21,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_07b0m"]
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="21_a4agt"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_au3v8"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="23_vmdu7"]
 [ext_resource type="Script" uid="uid://d3yjo4efg0sgs" path="res://_UI/Buttons/button_breathe.gd" id="24_7nw23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
@@ -55,13 +54,6 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("23_vmdu7")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0g5v1"]
 bg_color = Color(0, 0, 0, 1)
@@ -420,17 +412,6 @@ offset_right = 535.0
 offset_bottom = 228.0
 mouse_filter = 2
 
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=1775191434]
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=163275607]
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -49.0
-offset_top = -65.0
-offset_right = 804.0
-offset_bottom = 435.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Button" type="Button" parent="." unique_id=1840711756]
 visible = false
 custom_minimum_size = Vector2(32, 32)
@@ -453,7 +434,7 @@ script = ExtResource("24_7nw23")
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

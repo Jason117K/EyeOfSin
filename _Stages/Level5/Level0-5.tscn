@@ -448,6 +448,13 @@ offset_bottom = 435.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2012467734]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 372.0
+offset_right = 115.0
+offset_bottom = 412.0
+
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
