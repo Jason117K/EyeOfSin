@@ -57,7 +57,8 @@ func _ready() -> void:
 		thisMaterial.set_shader_parameter("target_color", targetColor)
 		thisMaterial.set_shader_parameter("replace_color",replaceColor)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
-		pass	
+		pass
+	set_process(false)
 	
 	
 func setSpecialMoveTrue():
@@ -73,7 +74,7 @@ func _play_if_changed(anim_name: StringName) -> void:
 		_current_target_anim = anim_name
 		play(anim_name)
 
-func _process(_delta):
+func tick(_delta):
 	if attackComp == null or isDead:
 		return
 	is_attacking = attackComp.is_attacking

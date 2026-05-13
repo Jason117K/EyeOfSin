@@ -8,6 +8,7 @@ class_name AttackComponent
 var is_attacking = false  # Whether or not we attacking
 var target_plant = null  # Holds reference to the plant being attacked
 var canSpecial = true # Determines whether or not a special move can be performed
+var _frame_counter: int = 0
 
 @onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect plants in front of the zombie
 @onready var zombieSprite = $"../AnimatedSprite2D" # RefCounted to sprite comp 
@@ -19,6 +20,7 @@ var my_level: Node
 
 func _ready() -> void:
 	my_level = parent.get_parent().get_parent()
+	_frame_counter = randi() % 3
 # Attack State Getter 
 func getAttackState():
 	return is_attacking
@@ -103,6 +105,9 @@ func stop_attack():
 
 func _process(_delta):
 	if not is_attacking:
+		_frame_counter += 1
+		if _frame_counter % 3 != 0:
+			return
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
 			#print(parent.name , " Its collding with ", collider.name )
