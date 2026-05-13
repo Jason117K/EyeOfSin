@@ -9,7 +9,7 @@ func _ready()-> void :
 	print("busName: ", busName)
 	busIndex = AudioServer.get_bus_index(busName)
 	print("busIndex: ", busIndex)
-	#value_changed.connect(on_value_changed)
+	value_changed.connect(on_value_changed)
 
 	if busIndex >= 0:
 		var db_value = AudioServer.get_bus_volume_db(busIndex)

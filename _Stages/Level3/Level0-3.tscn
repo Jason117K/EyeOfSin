@@ -40,7 +40,6 @@
 [ext_resource type="PackedScene" uid="uid://dsy2hsulw3a7q" path="res://_Common/Misc/white_rectangle.tscn" id="24_qsfc0"]
 [ext_resource type="Texture2D" uid="uid://br72hmo02lek" path="res://_Assets/Environment/Tilesets/Earth3SpecialTile1Alt2.png" id="25_c7r4k"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_qjdmx"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="26_ltvfb"]
 [ext_resource type="Texture2D" uid="uid://dt0doyptw5ye6" path="res://_Assets/Environment/Tilesets/Earth3SpecialTile2.png" id="27_w02yh"]
 [ext_resource type="Texture2D" uid="uid://8kk2f4tvad3l" path="res://_Assets/Environment/Props/Grave_shadow1_4.png" id="42_yf6p8"]
 [ext_resource type="Texture2D" uid="uid://c5lgi2bplvvrv" path="res://_Assets/Environment/Props/Grave_shadow1_1.png" id="43_xyvkd"]
@@ -3612,13 +3611,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("26_ltvfb")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
-
 [node name="Level0-3" type="Control" unique_id=4920149 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -4058,17 +4050,6 @@ bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1679277948]
 position = Vector2(370, 208)
-
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=804948922]
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=461965486]
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -81.0
-offset_top = -67.0
-offset_right = 772.0
-offset_bottom = 433.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]

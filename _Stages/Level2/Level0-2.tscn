@@ -25,7 +25,6 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_kmsuw"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_oidxx"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_71bjb"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="26_d7fgi"]
 [ext_resource type="Texture2D" uid="uid://w74nfa4bai7c" path="res://_Assets/Environment/Props/BookProp1.png" id="27_w8is8"]
 [ext_resource type="Texture2D" uid="uid://d3rsdc3gf1i0i" path="res://_Assets/Environment/Props/BookProp3.png" id="28_cycam"]
 [ext_resource type="Texture2D" uid="uid://bbrlm3dg1tnxx" path="res://_Assets/Environment/Props/Ritual-Dodeca.png" id="29_37eso"]
@@ -3581,13 +3580,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("26_d7fgi")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
-
 [node name="Level0-2" type="Control" unique_id=1174717248 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -3894,17 +3886,6 @@ position = Vector2(705, 92)
 sprite_frames = SubResource("SpriteFrames_gktj4")
 autoplay = "default"
 flip_h = true
-
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=968997974]
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=944499667]
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -49.0
-offset_top = -65.0
-offset_right = 804.0
-offset_bottom = 435.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]

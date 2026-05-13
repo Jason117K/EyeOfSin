@@ -52,14 +52,14 @@ func _setup():
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
 
-	#$Area2D.connect("area_entered", _on_damage_area_entered)
+	$Area2D.connect("area_entered", _on_damage_area_entered)
 
 	# Show wave 0 preview with start button so the player can begin
 	for preview in _wave_previews:
 		preview.show_preview(0, true)
 	
-	#waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
-	#previewTimer.timeout.connect(_on_preview_timer_timeout)
+	waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
+	previewTimer.timeout.connect(_on_preview_timer_timeout)
 	
 
 
@@ -80,7 +80,7 @@ func _on_game_start_requested() -> void:
 	_start_wave(0)
 
 func _on_call_early_wave_requested():
-	#print("Requested Early Wave, current wave is ",_current_wave )
+	print("Requested Early Wave, current wave is ",_current_wave )
 	#_start_wave(_current_wave + 1)
 	if (_current_wave + 1) < wave_delays.size():
 		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
@@ -91,12 +91,13 @@ func _on_call_early_wave_requested():
 
 ## Manually start the next wave (for tutorial-controlled progression).
 func start_next_wave() -> void:
+	print("Manual Call Start Next Wave")
 	_start_wave(_current_wave + 1)
 
 
 
 func _start_wave(index: int) -> void:
-	#print("START WAVEEEEEEEEE ", index)
+	print("START WAVEEEEEEEEE ", index)
 	if index < 0 or index >= _total_waves:
 		return
 
@@ -133,6 +134,7 @@ func _start_wave(index: int) -> void:
 
 
 func _on_wave_delay_timer_timeout() -> void:
+	print("Start Da Wave Here")
 	_start_wave(_current_wave + 1)
 
 

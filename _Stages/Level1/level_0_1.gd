@@ -202,6 +202,7 @@ func _filter_only_allow_y(event: InputEvent):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.swap_scenes()
+			print("Advancing Tutorial Should Explian Green")
 			advance_tutorial() # → EXPLAIN_GREEN_DIMENSION
 			return
 		else:
@@ -239,6 +240,7 @@ func _on_wave_started(wave_index: int):
 	match wave_index:
 		0:
 			wave_1_active = true
+			print("Advacning Tutoiral Should Explain Basic Zomvie")
 			advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
 		2:
 			go_to_step("EXPLAIN_SEVERED_ZOMBIE")

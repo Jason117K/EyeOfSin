@@ -96,9 +96,9 @@ func _ready():
 	OcculumButton.pressed.connect(_on_OcculumButton_pressed)
 	SpinalOcculumButton.pressed.connect(_on_SpinalOcculumButton_pressed)
 	WyrmButton.pressed.connect(_on_WyrmButton_pressed)
-#	MawButton.pressed.connect(_on_MawButton_pressed)
-#	HiveButton.pressed.connect(_on_HiveButton_pressed)
-#	HeartButton.pressed.connect(_on_heart_button_pressed)
+	MawButton.pressed.connect(_on_MawButton_pressed)
+	HiveButton.pressed.connect(_on_HiveButton_pressed)
+	HeartButton.pressed.connect(_on_heart_button_pressed)
 
 	
 	OcculumCostLabel.text = str(Global.get_demon_cost("Occulum"))

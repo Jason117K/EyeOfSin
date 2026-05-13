@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="22_vmwmq"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="23_aiy7s"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_7in2w"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="26_hwxwv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgyyd"]
 texture = ExtResource("12_c63eg")
@@ -1157,13 +1156,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("26_hwxwv")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
-
 [node name="Level0-2_Alternate" type="Control" unique_id=775620608 groups=["Green", "GreenLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -1493,17 +1485,6 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=1089840020]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
-
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=393600860]
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=245956923]
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -29.0
-offset_top = -41.0
-offset_right = 824.0
-offset_bottom = 459.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
 [connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]

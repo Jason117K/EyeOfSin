@@ -42,7 +42,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_hcyne"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="23_eu4n5"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="26_adj10"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="27_j7igl"]
 
 [sub_resource type="Shader" id="Shader_654uq"]
 code = "
@@ -1973,13 +1972,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("27_j7igl")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
-
 [node name="Level0-1_Alternate" type="Control" unique_id=1284067696 groups=["Green", "GreenLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -2295,19 +2287,6 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=1125289580]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
-
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=1191022978]
-visible = false
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=98365042]
-visible = false
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -49.0
-offset_top = -65.0
-offset_right = 804.0
-offset_bottom = 435.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]

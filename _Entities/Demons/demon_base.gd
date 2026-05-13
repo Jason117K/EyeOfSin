@@ -21,7 +21,7 @@ func _ready() -> void:
 		if new_area.is_in_group("HeartBuff"):
 			receive_heart_buff()
 	self.area_entered.connect(on_demon_area_entered)
-	#self.area_exited.connect(on_demon_area_exited)
+	self.area_exited.connect(on_demon_area_exited)
 	
 func on_demon_area_entered(new_area: Area2D):
 	#print(self, "New Area Heart is ", new_area)

@@ -21,7 +21,6 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_cmthx"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_i62ex"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_j4lsd"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="26_4vi7a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsj0e"]
 shader = ExtResource("10_ebhwi")
@@ -54,13 +53,6 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("26_4vi7a")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
 
 [node name="Level03Alternate" type="Control" unique_id=247872464 groups=["Green", "GreenLevel"]]
 layout_mode = 3
@@ -422,19 +414,6 @@ bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1950662302]
 position = Vector2(370, 208)
-
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=1624587899]
-visible = false
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=1520725221]
-visible = false
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -49.0
-offset_top = -65.0
-offset_right = 804.0
-offset_bottom = 435.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1920464950]
 

@@ -53,7 +53,7 @@ func _ready() -> void:
 	material = thisMaterial
 	# Set initial shader parameters
 	if thisMaterial:
-		print("Made h")
+		#print("Made h")
 		thisMaterial.set_shader_parameter("target_color", targetColor)
 		thisMaterial.set_shader_parameter("replace_color",replaceColor)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)

@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://jmiumnuidyj1" path="res://_Assets/Environment/Props/rifts-2-Sheet.png" id="36_v1k3w"]
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://_Assets/Environment/Props/rifts-alt-Sheet.png" id="37_8ymh3"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="38_g88e2"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="39_0eisp"]
 
 [sub_resource type="Environment" id="Environment_xl50p"]
 background_mode = 3
@@ -3591,13 +3590,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("39_0eisp")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
-
 [node name="Level0-1" type="Control" unique_id=1190772074 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -3900,18 +3892,5 @@ bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1805725339]
 position = Vector2(370, 208)
-
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=152894022]
-visible = false
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=2013615666]
-visible = false
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -49.0
-offset_top = -65.0
-offset_right = 804.0
-offset_bottom = 435.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [editable path="GameLayer/GridManager"]

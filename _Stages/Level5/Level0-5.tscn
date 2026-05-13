@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="20_icbpr"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_k4d0o"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_uqvme"]
-[ext_resource type="Shader" uid="uid://8ybpndce5vd8" path="res://_Common/Shaders/Glow.gdshader" id="23_d4dk4"]
 
 [sub_resource type="Resource" id="Resource_3au0f"]
 script = ExtResource("4_pkv84")
@@ -71,13 +70,6 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4yey"]
-shader = ExtResource("23_d4dk4")
-shader_parameter/hpass = 1.0
-shader_parameter/vpass = 1.0
-shader_parameter/radius = 65
-shader_parameter/unit = Vector2(1, 1)
 
 [node name="Level0-5" type="Control" unique_id=1688530805 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
@@ -435,18 +427,6 @@ bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=99321584]
 position = Vector2(370, 208)
-
-[node name="GlowShaderPass" type="CanvasLayer" parent="." unique_id=1860596312]
-
-[node name="GlowPass" type="ColorRect" parent="GlowShaderPass" unique_id=346028238]
-visible = false
-material = SubResource("ShaderMaterial_o4yey")
-offset_left = -49.0
-offset_top = -65.0
-offset_right = 804.0
-offset_bottom = 435.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2012467734]
 layout_mode = 0
