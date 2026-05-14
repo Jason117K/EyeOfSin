@@ -3623,6 +3623,7 @@ script = ExtResource("1_3xvj4")
 wave2StartTime = 35
 
 [node name="DemonManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
+blood_points = 325
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=89289254]
 process_mode = 1
@@ -4051,7 +4052,7 @@ bus = &"music"
 position = Vector2(370, 208)
 
 [connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

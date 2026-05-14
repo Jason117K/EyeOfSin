@@ -65,6 +65,7 @@ mouse_filter = 2
 script = ExtResource("1_e23m8")
 
 [node name="DemonManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
+blood_points = 300
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1094768339]
 process_mode = 1

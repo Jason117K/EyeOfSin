@@ -411,8 +411,11 @@ func place_demon(grid_pos: Vector2):
 		#Play the sound
 		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 		#$PlaceDemonAudioPlayer.play()
-		#print("Pdemon name is ", demon_instance.name)
-		if "Occulum" in demon_instance.name:
+		print("Pdemon name is ", demon_instance.name)
+		if "SpinalOcculum" in demon_instance.name:
+			spinalOcculum_placed.emit(grid_pos)
+			pass
+		elif "Occulum" in demon_instance.name:
 			print("Selected Demon Scene is : ", demon_instance.name)
 			#demon_instance.position = Vector2(grid_pos.x,grid_pos.y + 13 )
 			#TODO change to occulum_placed
@@ -425,9 +428,7 @@ func place_demon(grid_pos: Vector2):
 			spyder_placed.emit(grid_pos)
 			spyder_not_placed = false
 			pass
-		elif "SpinalOcculum" in demon_instance.name:
-			spinalOcculum_placed.emit(grid_pos)
-			pass
+
 		elif "Bomb" in demon_instance.name:
 			eyeBomb_placed.emit(grid_pos)
 		elif "Wyrm" in demon_instance.name:

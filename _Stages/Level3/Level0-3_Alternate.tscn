@@ -66,6 +66,7 @@ script = ExtResource("1_pwl3v")
 isGreenDimension = true
 
 [node name="DemonManager" parent="." unique_id=44492489 instance=ExtResource("2_fsj0e")]
+blood_points = 375
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=839164457]
 process_mode = 1

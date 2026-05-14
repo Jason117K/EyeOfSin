@@ -82,6 +82,7 @@ mouse_filter = 2
 script = ExtResource("1_ehl8e")
 
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
+blood_points = 400
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1937544684]
 process_mode = 1
@@ -428,7 +429,7 @@ bus = &"music"
 position = Vector2(370, 208)
 
 [connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

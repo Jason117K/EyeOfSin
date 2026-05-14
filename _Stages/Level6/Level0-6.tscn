@@ -69,6 +69,7 @@ mouse_filter = 2
 script = ExtResource("1_a4agt")
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]
+blood_points = 750
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
@@ -431,7 +432,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0g5v1")
 script = ExtResource("24_7nw23")
 
 [connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]
