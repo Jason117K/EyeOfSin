@@ -159,5 +159,5 @@ texture = ExtResource("5_kni87")
 [node name="HealthAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=291366460]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nx033")
-text = "10"
+text = "9999"
 horizontal_alignment = 1
