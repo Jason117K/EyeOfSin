@@ -64,7 +64,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xw2pb")
 
-[node name="PlantManager" parent="." unique_id=1939348814 instance=ExtResource("2_60dyi")]
+[node name="DemonManager" parent="." unique_id=1939348814 instance=ExtResource("2_60dyi")]
 blood_points = 300
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1754723991]
@@ -403,7 +403,6 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=482512615]
 position = Vector2(370, 208)
 
-[connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

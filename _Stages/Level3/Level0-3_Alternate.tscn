@@ -417,7 +417,6 @@ position = Vector2(370, 208)
 
 [node name="Timer" type="Timer" parent="." unique_id=1920464950]
 
-[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

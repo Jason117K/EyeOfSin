@@ -156,9 +156,11 @@ func start_wave_1():
 		#print("Current Level is Null")
 	
 func show_guide():
+	print("UNDO THE CLEAR AND SHOW THE GUIDE FROM GLOBAL")
 	game_controller.show_guide()	
 	
 func clear_guide():
+	print("CLEAR THE GUIDE GAMECONTROLLER")
 	game_controller.clear_guide()		
 	
 func get_game_controller():

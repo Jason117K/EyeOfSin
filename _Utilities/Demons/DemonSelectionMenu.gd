@@ -163,6 +163,7 @@ func setPanelContainerWidth(newWidth: int):
 
 		
 func deselect_demon():
+	print("Clearing Preview Because of Deselect")
 	clear_preview()
 	release_all_focus()
 	selected_demon = null 			
@@ -289,6 +290,7 @@ func _on_HiveButton_pressed():
 func create_preview(demon_scene):
 	#print("MAKE A PREVIEW", demon_scene)
 	# Clear the last preview 
+	print("Clearing Preview Because of Create Preview")
 	clear_preview()
 	
 	Global.show_guide()
@@ -585,6 +587,7 @@ func _on_wave_manager_wave_2_almost_start() -> void:
 
 
 func _on_remove_demon_button_pressed() -> void:
+		print("Clear Guide Because Remove Demon Button Pressed")
 		clear_preview()
 		
 		selected_demon = null 

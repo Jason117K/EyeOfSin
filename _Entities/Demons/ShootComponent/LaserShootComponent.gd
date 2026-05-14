@@ -207,7 +207,7 @@ func buff(bufferLocation):
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
 	damage = damage * 2.0
 
-func bloodBuff():
+func occulumBuff():
 	if isDisabled:
 		return
 	cooldown = blood_buff_cooldown

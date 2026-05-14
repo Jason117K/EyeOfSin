@@ -819,8 +819,11 @@ spinalOcculumBuffed_health = 550
 mawBuffed_health = 350
 health = 150
 buffedHealth = 300
+healthRegen = 0.1
+buffedHealthRegen = 0.6
 maxHealth = 150
 buffedMaxHealth = 300
+blood_spawn_time = 5
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
 sprite_frames = SubResource("SpriteFrames_qxnbo")
@@ -1037,7 +1040,7 @@ autostart = true
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("18_pfhft")]
 script = ExtResource("19_qxnbo")
 cooldown = 3.0
-sun_buff_cooldown = 0.9
+occulum_buff_cooldown = 0.9
 auto_fire = true
 projectile_speed = 600
 projectile_damage = 20
