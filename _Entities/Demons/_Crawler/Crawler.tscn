@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://chtib6ixf30ex"]
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://_Entities/Demons/_Crawler/RedSpider-Sheet.png" id="1"]
-[ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://_Entities/Demons/_Crawler/Peashooter.gd" id="2"]
+[ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://_Entities/Demons/_Crawler/Crawler.gd" id="2"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_4vrps"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_druvk"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_hvfi3"]
 [ext_resource type="Texture2D" uid="uid://c30lgql0xnwsx" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Maw-Sheet.png" id="3_a06ib"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="4_ol6r1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Sun-Sheet.png" id="5_0i0o1"]
+[ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Occulum-Sheet.png" id="5_0i0o1"]
 [ext_resource type="Script" uid="uid://cexywbegs7b6b" path="res://_Entities/Demons/_Crawler/crawler_health_component.gd" id="5_kupbo"]
 [ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_SpinalOcculum-Sheet.png" id="6_hvfi3"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="7"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://duguavrw707dc" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_MAW-Sheet.png" id="9_82rcb"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="10"]
-[ext_resource type="Texture2D" uid="uid://jy54hb8pml7g" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SUN-Sheet.png" id="10_jwcrf"]
+[ext_resource type="Texture2D" uid="uid://jy54hb8pml7g" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_OCCULUM-Sheet.png" id="10_jwcrf"]
 [ext_resource type="Texture2D" uid="uid://gbme1d2t6p3t" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SpinalOcculum-Sheet.png" id="11_druvk"]
 [ext_resource type="Texture2D" uid="uid://cwkfu3np0gnrm" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Base-Sheet.png" id="11_io8k3"]
 [ext_resource type="Texture2D" uid="uid://1bypqcyxtbl0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Hive-Sheet.png" id="12_kcbs3"]
@@ -1787,7 +1787,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 111.03996, 129.59491, 107.37751, 129.97757, 103.44873, 131.55052, 100.72453, 130.55629, 99.008286, 128.89166, 95.41746, 129.20895, 91.55694, 131.10632, 88.59004, 130.61528)
+points = PackedVector2Array(112.595, 131.435, 110.84518, 129.696, 107.04238, 130.4575, 103.13924, 131.75024, 100.72125, 130.47997, 98.816864, 128.91118, 95.06958, 129.64618, 91.21622, 131.40385, 88.69632, 130.44943)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1799,7 +1799,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 111.03996, 122.71992, 107.37751, 121.22756, 103.44873, 120.92552, 100.72453, 118.05628, 99.008286, 114.51666, 95.41746, 112.958954, 91.55694, 112.98132, 88.59004, 110.61528)
+points = PackedVector2Array(112.595, 126.435, 110.84518, 122.82101, 107.04238, 121.707504, 103.13924, 121.12524, 100.72125, 117.97996, 98.816864, 114.53619, 95.06958, 113.39619, 91.21622, 113.278854, 88.69632, 110.44943)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1820,7 +1820,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 112.11217, 130.71289, 113.23827, 130.33382, 115.55205, 131.23758, 116.828735, 130.94545, 116.61952, 130.30623, 117.7012, 129.91946, 119.9572, 130.7549, 121.76427, 131.01047)
+points = PackedVector2Array(112.595, 131.435, 112.24601, 130.74188, 113.927704, 130.73405, 116.1331, 131.41212, 116.76572, 130.83951, 116.63133, 130.20418, 118.25182, 130.16876, 120.49352, 131.01437, 121.63399, 130.76251)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1828,7 +1828,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 112.11217, 123.83788, 113.23827, 121.583824, 115.55205, 120.61258, 116.828735, 118.44545, 116.61952, 115.93124, 117.7012, 113.669464, 119.9572, 112.6299, 121.76427, 111.01047)
+points = PackedVector2Array(112.595, 126.435, 112.24601, 123.86688, 113.927704, 121.984055, 116.1331, 120.787125, 116.76572, 118.339516, 116.63133, 115.82918, 118.25182, 113.91877, 120.49352, 112.889366, 121.63399, 110.76251)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1846,7 +1846,8 @@ script = ExtResource("32_p30cy")
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("33_kupbo")]
 script = ExtResource("35_jut13")
-attack_speed_mult = 1.0
+attack_speed_mult = null
+projectile_spawn_offest = null
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

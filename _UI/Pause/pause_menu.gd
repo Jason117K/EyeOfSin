@@ -27,7 +27,7 @@ func _on_return_to_menu_pressed() -> void:
 	self.visible = false 
 		#toolTips.visble = false
 	#toolTips.hide()
-	get_parent().hide_toolTip()
+	#get_parent().hide_toolTip()
 	Global.game_controller.change_from_dual_scenes("res://_Stages/StartScreen/StartScreen.tscn")
 
 

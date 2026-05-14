@@ -11,14 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://m5be4wtpwb4u" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Spider-Sheet.png" id="5_elvfo"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://dlooruj7v3bo2" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Sun-Sheet.png" id="6_6aeqa"]
+[ext_resource type="Texture2D" uid="uid://dlooruj7v3bo2" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Occulum-Sheet.png" id="6_6aeqa"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://c05bqxnmc2aor" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_SpinalOcculum-Sheet.png" id="7_0xvi3"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dvmo00thwrc38" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Hive-Sheet.png" id="8_5v7ar"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="9_drv5f"]
-[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle.png" id="10"]
 [ext_resource type="Script" uid="uid://bvyppv52ukt2q" path="res://_Entities/Demons/_Maw/maw_animated_sprite_component.gd" id="14_xf387"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="19_7va85"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="20_l3bye"]
@@ -1486,7 +1486,7 @@ frame_progress = 1.0
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
 sprite_frames = SubResource("7")
-animation = &"idle_Hive"
+animation = &"idle_Crawler"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
 

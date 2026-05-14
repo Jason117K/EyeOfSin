@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://brv3a2utkd0gc"]
 
-[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="1_3qyju"]
-[ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle-Sheet.png" id="1_x2n65"]
+[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle.png" id="1_3qyju"]
+[ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle-Sheet.png" id="1_x2n65"]
 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7adph"]

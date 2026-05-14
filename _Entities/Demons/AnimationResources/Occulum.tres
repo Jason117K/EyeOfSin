@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://ra82gmsbaapu"]
 
-[ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle-Sheet.png" id="1_hdgfo"]
-[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="2_d1yew"]
+[ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle-Sheet.png" id="1_hdgfo"]
+[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle.png" id="2_d1yew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7adph"]
 atlas = ExtResource("1_hdgfo")

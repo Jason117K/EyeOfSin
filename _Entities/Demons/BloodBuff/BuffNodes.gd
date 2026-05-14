@@ -15,7 +15,7 @@ extends Node2D
 # Parent demon with these buffNodes
 @onready var demon = get_parent()
 
-enum Demons { EYESUN,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
+enum Demons { OCCULUM,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 
 # The tile areas representing the area being buffed 
 @export var activeTiles = [ # (Array, NodePath)

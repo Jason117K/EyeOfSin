@@ -17,7 +17,7 @@ var shell_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Shell
 var shell_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_ShellNoBlood.png")
 var shell_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_SpinalOcculum_Shell.png")
 var shell_crawler = preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Shell.png")
-var shell_sun := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Sun_Shell.png")
+var shell_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Occulum_Shell.png")
 var shell_maw := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Maw_Shell.png")
 var worm1_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Worm1.png")
 var worm2_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Worm2.png")
@@ -27,7 +27,7 @@ var worm3_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_Worm3
 var worm1_crawler := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm1.png")
 var worm2_crawler := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm2.png")
 var worm1_maw := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Maw_Worm.png")
-var worm1_sun := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Sun_Worm1.png")
+var worm1_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Occulum_Worm1.png")
 var worm1_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_SpinalOcculum_Worm1.png")
 var worm2_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_SpinalOcculum_Worm2.png")
 
@@ -43,8 +43,8 @@ func change_form(new_form):
 	
 	match new_form:
 		"Occulum":
-			shell.texture = shell_sun
-			worm2.texture = worm1_sun
+			shell.texture = shell_occulum
+			worm2.texture = worm1_occulum
 			worm2.global_position = worm2.global_position + Vector2(7,-5)
 			worm2Animator.initial_sprite_position = worm2Animator.initial_sprite_position  + Vector2(7,-5)
 			#worm2.texture = shell_wyrm

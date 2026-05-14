@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://_UI/ToolTips/ToolTips.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_c1ynx"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
-[ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_spider_buff.tscn" id="6_imaxi"]
+[ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_crawler_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="7_qvk3g"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="8_x1rij"]

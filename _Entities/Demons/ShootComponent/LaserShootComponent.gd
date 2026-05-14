@@ -21,9 +21,9 @@ var og_damage
 
 
 @export var cooldown: float = 3
-@export var sun_buff_cooldown: float = 0.9
+@export var blood_buff_cooldown: float = 0.9
 var og_cooldown 
-var isSunBuffed := false 
+var isOcculumBuffed := false 
 
 # Zigzag parameters
 @export var zigzag_height: float = 50.0  # Height of the zigzag
@@ -207,14 +207,14 @@ func buff(bufferLocation):
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
 	damage = damage * 2.0
 
-func sunBuff():
+func bloodBuff():
 	if isDisabled:
 		return
-	cooldown = sun_buff_cooldown
+	cooldown = blood_buff_cooldown
 	cooldown_timer.wait_time = cooldown
 	#cooldown = cooldown * 0.5
 
-func unSunBuff():
+func unOcculumBuff():
 	if isDisabled:
 		return
 	cooldown = og_cooldown

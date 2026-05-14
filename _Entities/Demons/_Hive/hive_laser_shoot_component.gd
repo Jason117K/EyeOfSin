@@ -21,9 +21,9 @@ var og_damage
 
 
 @export var cooldown: float = 3
-@export var sun_buff_cooldown: float = 0.9
+@export var blood_buff_cooldown: float = 0.9
 var og_cooldown 
-var isSunBuffed := false 
+var isOcculumBuffed := false 
 
 # Zigzag parameters
 @export var zigzag_height: float = 50.0  # Height of the zigzag
@@ -177,8 +177,8 @@ func shoot_projectile():
 		projectile = projectile_scene.instantiate()
 	projectile.set_damage(damage)
 	projectile.global_position = self.global_position
-	if isSunBuffed:
-		projectile.canGenSun = true 
+	if isOcculumBuffed:
+		projectile.canGenBlood = true 
 	#projectile.position = position + Vector2(32, 8)  # Adjust starting position
 	get_parent().get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
@@ -291,14 +291,14 @@ func buff(bufferLocation):
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
 	damage = damage * 2.0
 
-func sunBuff():
+func bloodBuff():
 	if isDisabled:
 		return
-	cooldown = sun_buff_cooldown
+	cooldown = blood_buff_cooldown
 	cooldown_timer.wait_time = cooldown
 	#cooldown = cooldown * 0.5
 
-func unSunBuff():
+func unOcculumBuff():
 	if isDisabled:
 		return
 	cooldown = og_cooldown

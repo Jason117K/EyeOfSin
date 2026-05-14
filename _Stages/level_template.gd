@@ -4,7 +4,7 @@ var wave_1_active: bool = false
 var wave_1_complete: bool = false
 var wave2Started : bool = false 
 
-var spyder_already_selected = false
+var crawler_already_selected = false
 
 var current_level = ("res://_Stages/Level1/Level0-1.tscn")
 var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
@@ -31,8 +31,8 @@ var has_pulsed := false
 var green_dimension 
 
 # Text file paths
-const TUTORIAL_SELECT_SPYDER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectSpyder.txt"
-const TUTORIAL_PLACE_SPYDER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceSpyder.txt"
+const TUTORIAL_SELECT_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_Selectcrawler.txt"
+const TUTORIAL_PLACE_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_Placecrawler.txt"
 const TUTORIAL_BLOOD_COST = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
 const TUTORIAL_PRESS_Y = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
 const TUTORIAL_GREEN_DIMENSION = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"

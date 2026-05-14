@@ -6,7 +6,7 @@ extends Node2D
 @onready var notification_bar = Global.notification_bar
 @onready var parentName = get_parent().get_name()
 
-@export var blood_points = 200 # Holds how many sun points we have currently 
+@export var blood_points = 200 # Holds how many blood points we have currently 
 
 var selected_demon_scene = null  # Holds the selected demon scene
 var grid_size = 32 # Defines the size of each grid cell 
@@ -17,11 +17,11 @@ var demon_highlighted := false
 var highlight_demon_global_pos 
 var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
 var empty_demon_scene := preload("res://_Entities/Demons/Empty/EmptyDemon.tscn")
-var spyder_not_placed := true 
+var crawler_not_placed := true 
 var hero_demon : Demon 
 
 signal demon_placed(grid_position: Vector2)
-signal spyder_placed(grid_position: Vector2)
+signal crawler_placed(grid_position: Vector2)
 signal spinalOcculum_placed(grid_position: Vector2)
 signal wyrm_placed(grid_position: Vector2)
 signal wasp_placed(grid_position: Vector2)
@@ -29,8 +29,10 @@ signal maw_placed(grid_position: Vector2)
 signal test_signal()
 
 func _ready() -> void:
-	if get_parent().has_method("spyder_placed"):
-		self.connect("_on_spyder_placed", Callable(get_parent(), "spyder_placed"))
+	if get_parent().has_method("crawler_placed"):
+		self.connect("_on_crawler_placed", Callable(get_parent(), "crawler_placed"))
+	print("blood_points is ", blood_points, str(blood_points))
+	get_parent().get_node("UILayer").set_initial_blood(str(blood_points))
 
 
 # Reference the DemonSelectionMenu dynamically
@@ -88,12 +90,12 @@ func _unhandled_input(event: InputEvent) -> void:
 							return
 					
 				temp_instance.queue_free()
-				# early return if no sun points
+				# early return if no blood points
 				if blood_points < cost:
 					selection_menu.clear_preview()
 					Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
 					selection_menu.deselect_demon()
-					print("Sun Points is : ", blood_points, " which is less than ", cost)
+					print("Blood Points is : ", blood_points, " which is less than ", cost)
 					return
 			else: #Demon Scene Null
 				#TODO Make Double Click
@@ -278,7 +280,7 @@ func place_empty_blocker_demon(grid_pos):
 	
 	if blood_points >= -99999: 
 		
-		#print("Have enough sun, placing demon ")
+		#print("Have enough blood, placing demon ")
 		#Maw Handling, occupies two cells
 		if "Maw" in demon_instance.name:
 			demon_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
@@ -302,7 +304,7 @@ func place_empty_blocker_demon(grid_pos):
 
 	else:
 		pass
-		#print("Not enough sun points!")
+		#print("Not enough blood points!")
 	
 	#print(get_parent(), "QQ Blocker Demon Was Placed At " , demon_instance.position)
 	
@@ -383,7 +385,7 @@ func place_demon(grid_pos: Vector2):
 	
 	if blood_points >= demon_cost: 
 		
-		#print("Have enough sun, placing demon ")
+		#print("Have enough blood, placing demon ")
 		#Maw Handling, occupies two cells
 		if "Maw" in demon_instance.name:
 			demon_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
@@ -401,7 +403,7 @@ func place_demon(grid_pos: Vector2):
 		#demon_instance.set_process(false)
 		get_parent().get_node("GameLayer").call_deferred("add_child", demon_instance)
 
-		#Reduce Sun Points
+		#Reduce Blood Points
 		blood_points -= demon_cost
 		
 		#Global.ui_layer.set_blood(str(blood_points))
@@ -422,10 +424,10 @@ func place_demon(grid_pos: Vector2):
 			Global.incrementOcculumCount()
 			pass
 		elif "Crawler" in demon_instance.name:
-			#if spyder_not_placed:
-			print("[TUTORIAL] Emit Spyder Placed")
-			spyder_placed.emit(grid_pos)
-			spyder_not_placed = false
+			#if crawler_not_placed:
+			print("[TUTORIAL] Emit Crawler Placed")
+			crawler_placed.emit(grid_pos)
+			crawler_not_placed = false
 			pass
 
 		elif "Wyrm" in demon_instance.name:
@@ -446,7 +448,7 @@ func place_demon(grid_pos: Vector2):
 		#Global.notification_bar.show()
 		#Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
 		pass
-		#print("Not enough sun points!")
+		#print("Not enough blood points!")
 	
 	#print("QQZ Demon Was Placed At " , demon_instance.position)
 	selection_menu.deselect_demon()
@@ -475,20 +477,19 @@ func generate_unique_name(base_name: String) -> String:
 	#print("Will Return PP ", base_name + str(candidate))
 	return base_name + str(candidate)
 	
-#Add sun to total 
-func add_sun(amount):
-	#print("Add SunWW: " , amount)
+#Add blood to total 
+func add_blood(amount):
 	blood_points += amount
 	#Global.ui_layer.set_blood(str(blood_points))
 	get_parent().get_node("UILayer").set_blood(str(blood_points))
 	
-# Play the sun collection sound 
-func play_sun_collect():
+# Play the blood collection sound 
+func play_blood_collect():
 	#$SunCollectPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	
-# Set the starting sun amount depending on level 
-func _on_SetSun_timeout():
+# Set the starting blood amount depending on level 
+func _on_SetBlood_timeout():
 	if(get_parent().name == "Main"):
 		#blood_points = 300 #75
 		#Global.ui_layer.set_blood(str(blood_points))

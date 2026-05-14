@@ -12,7 +12,7 @@ var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.
 var canAttack = false   
 var hiveBuffed = false 
 var spinalOcculumBuffed = false
-var sunBuffed = false
+var occulumBuffed = false
 var wyrmBuffed = false
 var projectile 
 var animSpriteComp

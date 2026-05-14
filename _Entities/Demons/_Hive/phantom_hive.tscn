@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxvsyovquiybq" path="res://_Entities/Demons/_Hive/phantom_hive.gd" id="1_0jps5"]
 [ext_resource type="Texture2D" uid="uid://cstwb0v7bi5gg" path="res://_Entities/Demons/SpriteSheets/Maw/HiveIdle_Maw-Sheet.png" id="3_epr6x"]
 [ext_resource type="Texture2D" uid="uid://nvskmyfvcv34" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Spider-Sheet.png" id="4_0pvdy"]
-[ext_resource type="Texture2D" uid="uid://c2o6y18483huo" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Sun-Sheet.png" id="5_lo175"]
+[ext_resource type="Texture2D" uid="uid://c2o6y18483huo" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Occulum-Sheet.png" id="5_lo175"]
 [ext_resource type="Texture2D" uid="uid://bnsjwg6h5xoxn" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_SpinalOcculum-Sheet.png" id="6_t38li"]
 [ext_resource type="Texture2D" uid="uid://dljm8b4c8pmnm" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Wyrm-Sheet.png" id="7_yirur"]
 [ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/_Hive/Hive-Sheet.png" id="8_co07h"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="10_jhebh"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="12_kcyt0"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="13_5ukcw"]
-[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="14_7sn1f"]
+[ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle.png" id="14_7sn1f"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="15_gnucj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]

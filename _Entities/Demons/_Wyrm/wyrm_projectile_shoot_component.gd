@@ -1,6 +1,6 @@
 extends ProjectileShootComponent
 
-var isSunBuffed := false 
+var isOcculumBuffed := false 
 var isCrawlerBuffed := false
 var cooldown_timer : Timer 
 
@@ -11,7 +11,7 @@ var cooldown_timer : Timer
 @onready var laser_shoot_comp_2 := $"../Worm2/LaserShootComponent"
 
 @export var cooldown: float = 3
-@export var sun_buff_cooldown: float = 0.9
+@export var occulum_buff_cooldown: float = 0.9
 @export var auto_fire := true 
 @export var projectile_speed := 600
 @export var projectile_damage := 20
@@ -50,5 +50,5 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	if isCrawlerBuffed:
 		projectile_to_buff.is_slowing = true
 		
-	if isSunBuffed:
+	if isOcculumBuffed:
 		projectile_to_buff.canGenBlood = true 

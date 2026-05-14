@@ -100,9 +100,9 @@ func receiveBuff(demon):
 		match demonName:
 			"Occulum":
 				shell_sprite.change_form("Occulum")
-				$ProjectileShootComponent.isSunBuffed = true
-				#$Worm2/LaserShootComponent.isSunBuffed = true 
-				laserShootComp2.sunBuff()
+				$ProjectileShootComponent.isOcculumBuffed = true
+				#$Worm2/LaserShootComponent.isOcculumBuffed = true 
+				laserShootComp2.occulumBuff()
 				#animSpriteComp.change_form("Occulum")
 			"Crawler":
 				shell_sprite.change_form("Crawler")
@@ -142,7 +142,7 @@ func debuff():
 		laserShootComp2.max_length = laserShootComp2.ogMax_Length
 		#Applies a different buff to the laser projectile 
 	elif("Occulum" in bufferName):
-		laserShootComp2.unSunBuff()
+		laserShootComp2.unBloodBuff()
 			
 	isBuffed = false 
 		
@@ -210,11 +210,11 @@ func die_fromClearSpace():
 #func spawn_done():
 	#
 	#if spawnAnimDone:
-		#print("Spyder Self Spawn Adjust 1")
+		#print("Crawler Self Spawn Adjust 1")
 		#animSpriteComp.animation = animSpriteComp.currentAnim
 		#animSpriteComp.play()
 	#else:
-		#print("Spyder Self Spawn Adjust 2")
+		#print("Crawler Self Spawn Adjust 2")
 		#animSpriteComp.position = Vector2(animSpriteComp.position.x, animSpriteComp.position.y -8.5)
 		#animSpriteComp.animation = animSpriteComp.currentAnim
 		#animSpriteComp.play()

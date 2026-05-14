@@ -17,8 +17,8 @@ const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive",
 func _setup_tutorial():
 	define_tutorial_steps([
 		{
-			"name": "FORCE_SELECT_SPYDER",
-			"enter": _start_force_select_spyder,
+			"name": "FORCE_SELECT_CRAWLER",
+			"enter": _start_force_select_crawler,
 			"input_filter": _filter_block_keyboard,
 		},
 		{
@@ -81,10 +81,10 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
 
-	demonManager.spyder_placed.connect(func(_grid_position): _on_spyder_placed())
-	crawler_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
+	demonManager.crawler_placed.connect(func(_grid_position): _on_crawler_placed())
+	crawler_button.connect("pressed", Callable(self, "_on_crawler_button_pressed"))
 
 	toolTips.hide()
 	zombie_spawner.wave_exhausted.connect(wave_exhausted)
@@ -99,7 +99,7 @@ func _configure_waves():
 
 func finish_ready():
 	_setup_tutorial()
-	go_to_step("FORCE_SELECT_SPYDER")
+	go_to_step("FORCE_SELECT_CRAWLER")
 	Global.unHideDemonSelectionMenu()
 
 func wave_exhausted():
@@ -115,21 +115,21 @@ func _input(event):
 
 
 #region Step Entry Functions (same sequential order as definitions above)
-func _start_force_select_spyder():
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
+func _start_force_select_crawler():
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
-	#hide_all_demon_buttons_except_spyder()
+	#hide_all_demon_buttons_except_crawler()
 	if has_pulsed == false:
-		highlight_spyder_button()
+		highlight_crawler_button()
 		has_pulsed = true 
 	waveManager.can_start = true
 	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_demon():
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SPYDER, false)
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_CRAWLER, false)
 	
-	unhighlight_spyder_button()
+	unhighlight_crawler_button()
 	hide_spotlight()
 
 
@@ -224,14 +224,14 @@ func _on_tooltip_hidden():
 			go_to_step("WAVE_2_ACTIVE")
 
 
-func _on_spyder_placed():
+func _on_crawler_placed():
 	if get_current_step_name() == "FORCE_PLACE_demon":
 		print("Advancing YTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → EXPLAIN_BLOOD_COST
 
 
-func _on_spyder_button_pressed():
-	if get_current_step_name() == "FORCE_SELECT_SPYDER":
+func _on_crawler_button_pressed():
+	if get_current_step_name() == "FORCE_SELECT_CRAWLER":
 		print("Advancing WTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → FORCE_PLACE_demon
 
@@ -246,8 +246,8 @@ func _on_wave_started(wave_index: int):
 			go_to_step("EXPLAIN_SEVERED_ZOMBIE")
 
 
-func _on_demon_manager_spyder_placed(_grid_position: Vector2) -> void:
-	_on_spyder_placed()
+func _on_demon_manager_crawler_placed(_grid_position: Vector2) -> void:
+	_on_crawler_placed()
 #endregion
 
 
@@ -279,11 +279,11 @@ func setup_demon_selection_menu():
 	demonSelectionMenu.get_panel_container().size.x = 71
 
 
-func highlight_spyder_button():
+func highlight_crawler_button():
 	demonSelectionMenu.add_pulsing_button_highlight(crawler_button)
 
 
-func unhighlight_spyder_button():
+func unhighlight_crawler_button():
 	demonSelectionMenu.remove_button_highlight(crawler_button)
 	demonSelectionMenu.stop_glow_pulse(crawler_button)
 

@@ -57,8 +57,8 @@ func take_damage(damage):
 		if demon_manager:  # If the DemonManager or GameManager is set
 			#$CollectAudioPlayer.play()
 			#print("ADDING WW Blood Worth : ", bloodWorth)
-			demon_manager.add_sun(bloodWorth)  # Add 25 sun points (or whatever amount)
-			#demon_manager.play_sun_collect()
+			demon_manager.add_blood(bloodWorth)  # Add 25 blood points (or whatever amount)
+			#demon_manager.play_blood_collect()
 		else:
 			pass
 			#print("Demon Manager is NULLWWWW")

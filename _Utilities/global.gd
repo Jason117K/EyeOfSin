@@ -57,6 +57,7 @@ func get_wave_manager():
 	
 func register_ui_layer(new_ui_layer):
 	ui_layer = new_ui_layer
+	#ui_layer.set_health(DemonMan)
 
 func hideDemonSelectionMenu():
 	if demon_selection_menu != null:

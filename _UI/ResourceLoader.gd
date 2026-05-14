@@ -45,47 +45,47 @@ func _initialize_resource_caches():
 func _load_resources():
 							  		#DemonType         , FileName
 	_load_demon_type_image_resource(DemonType.OCCULUM, "Occulum.png")
-	_load_demon_type_image_resource(DemonType.CRAWLER, "Spyder.png")
+	_load_demon_type_image_resource(DemonType.CRAWLER, "Crawler.png")
 	_load_demon_type_image_resource(DemonType.SPINALOCCULUM, "SpinalOcculum.png")
 	_load_demon_type_image_resource(DemonType.WYRM, "Wyrm.png")
 	_load_demon_type_image_resource(DemonType.HIVE, "Hive.png")
 	_load_demon_type_image_resource(DemonType.MAW, "MawImage.png")
 	
-	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_MAW.png")
-	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_HIVE.png")
-	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_SPYDER.png")
-	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_SPINALOCCULUM.png")
-	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "EyeSunTowerIdle_WYRM.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "OcculumTowerIdle_MAW.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "OcculumTowerIdle_HIVE.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "OcculumTowerIdle_CRAWLER.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "OcculumTowerIdle_SPINALOCCULUM.png")
+	_load_demon_type_image_resource_variation(DemonType.OCCULUM, "OcculumTowerIdle_WYRM.png")
 	
-	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_Hive.png")
-	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_MAW.png")
-	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_SUN.png")
-	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_SpinalOcculum.png")
-	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "SpiderIdle_Wyrm.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "CrawlerIdle_Hive.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "CrawlerIdle_MAW.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "CrawlerIdle_OCCULUM.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "CrawlerIdle_SpinalOcculum.png")
+	_load_demon_type_image_resource_variation(DemonType.CRAWLER, "CrawlerIdle_Wyrm.png")
 	
-	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_EYESUN.png")
+	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_OCCULUM.png")
 	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_HIVE.png")
 	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_MAW.png")
-	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_SPYDER.png")
+	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_CRAWLER.png")
 	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_WYRM.png")
 	
 	
 	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Eye.png")
 	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Hive.png")
 	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Maw.png")
-	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Spider.png")
+	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Crawler.png")
 	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_SpinalOcculum.png")
 	
 		
 	_load_demon_type_image_resource_variation(DemonType.HIVE,"Hive_Maw.png" )
-	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Spider.png")
-	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Sun.png")
+	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Crawler.png")
+	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Occulum.png")
 	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_SpinalOcculum.png")
 	_load_demon_type_image_resource_variation(DemonType.HIVE, "Hive_Wyrm.png")
 	
 	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Hive.png")
-	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Spider.png")
-	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Sun.png")
+	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Crawler.png")
+	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Occulum.png")
 	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_SpinalOcculum.png")
 	_load_demon_type_image_resource_variation(DemonType.MAW, "Maw_Wyrm.png")
 		
@@ -103,7 +103,7 @@ func _load_resources():
 	
 	
 	_load_demon_type_animation_resource(DemonType.OCCULUM, "Occulum.tres")
-	_load_demon_type_animation_resource(DemonType.CRAWLER, "Spyder.tres")
+	_load_demon_type_animation_resource(DemonType.CRAWLER, "Crawler.tres")
 	_load_demon_type_animation_resource(DemonType.SPINALOCCULUM, "SpinalOcculum.tres")
 	_load_demon_type_animation_resource(DemonType.WYRM, "Wyrm.tres")
 	_load_demon_type_animation_resource(DemonType.HIVE, "Hive.tres")

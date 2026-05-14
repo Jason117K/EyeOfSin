@@ -25,7 +25,7 @@ func _on_reset_blood_spawn_cooldown() -> void:
 	
 func receiveBuff(bufferName):
 	if !demon.get_is_buffed() :		
-		if "Sun" in bufferName.name && !isOcculumBuffed:
+		if "Occulum" in bufferName.name && !isOcculumBuffed:
 			canGenBlood = true
 			health = buffedHealth
 			maxHealth = buffedMaxHealth

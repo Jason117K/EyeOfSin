@@ -1,7 +1,7 @@
 extends Demon
 #Maw.gd
 
-const BLOOD_SCENE := preload("res://_Entities/Demons/Blood/Sun.tscn")
+const BLOOD_SCENE := preload("res://_Entities/Demons/Blood/Blood.tscn")
 const WEB_BALL_SCENE := preload("res://_Entities/Demons/Projectile/WebBall.tscn")
 const INSTAKILL_DAMAGE := 9999
 const SPINAL_OCCULUM_HEAL_AMOUNT := 100
@@ -29,7 +29,7 @@ const _BUFF_HANDLERS := [
 @onready var ogDetectionRadius = detectionAreaShape.shape.radius
 
 # === Exports ===
-@export var cost = 200                       # Demon cost (sun cost to place)
+@export var cost = 200                       # Demon cost (blood cost to place)
 @export var alt_target_color: Color
 @export var alt_replace_color: Color
 @export var debug_mode: bool = false
@@ -61,7 +61,7 @@ var eating_groups: Dictionary = {}
 
 # Buff state
 var willBelchWebs := false                        
-var willBelchSun := false
+var willBelchBlood := false
 var isWyrmBuffed := false
 var isCrawlerBuffed := false
 var isHiveBuffed := false
@@ -252,12 +252,12 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 
 	group.pending_ready_again -= 1
 	if group.pending_ready_again == 0:
-		# Whole group has finished digesting. Fire once-per-eat sun belch,
+		# Whole group has finished digesting. Fire once-per-eat blood belch,
 		# then erase every entry that still points to this group (some
 		# tentacles may already have been reassigned within this frame,
 		# so we only erase entries that still match).
-		if willBelchSun:
-			generate_sun()
+		if willBelchBlood:
+			generate_blood()
 		for t in group.tentacles:
 			if eating_groups.get(t) == group:
 				eating_groups.erase(t)
@@ -361,11 +361,11 @@ func _remove_hive_buff():
 
 func _apply_occulum_buff():
 	if isOcculumBuffed: return
-	willBelchSun = true
+	willBelchBlood = true
 	isOcculumBuffed = true
 
 func _remove_occulum_buff():
-	willBelchSun = false
+	willBelchBlood = false
 
 
 func _apply_spinalOcculum_buff():
@@ -376,12 +376,12 @@ func _remove_spinalOcculum_buff():
 
 #endregion
 
-# Sun generation (occulum buff payout)
-func generate_sun():
-	var sun_instance = BLOOD_SCENE.instantiate()
-	add_child(sun_instance)
-	sun_instance.setWorth(bloodAmount)
-	sun_instance.global_position = self.global_position + Vector2(0, -40)
+# Blood generation (occulum buff payout)
+func generate_blood():
+	var blood_instance = BLOOD_SCENE.instantiate()
+	add_child(blood_instance)
+	blood_instance.setWorth(bloodAmount)
+	blood_instance.global_position = self.global_position + Vector2(0, -40)
 
 
 func _on_detection_component_area_entered(area: Area2D) -> void:

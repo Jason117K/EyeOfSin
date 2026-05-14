@@ -177,14 +177,13 @@ func _on_CrawlerButton_pressed():
 	add_button_highlight(CrawlerButton)
 	
 	#currentDemonLabel.text = "CRAWLER SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerCostLabel
 	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
 	print("Crawler selected")
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	var CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	#remove_button_highlight(CrawlerButton)
 
 func increaseOcculumCost():
@@ -561,7 +560,6 @@ func remove_button_highlight(button: TextureButton) -> void:
 
 
 func _on_demon_manager_demon_placed() -> void:
-	var CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	CrawlerButton.visible = true 
 	crawlerCostLabel.visible = true 
 	#add_button_highlight(CrawlerButton)

@@ -31,8 +31,8 @@ func _on_spinalOcculum_placed(grid_pos: Vector2):
 	# Tutorial complete - no further forced actions
 	
 
-func add_sun(sunAmount):
-	demonManager.add_sun(sunAmount)
+func add_blood(bloodAmount):
+	demonManager.add_blood(bloodAmount)
 
 
 func show_guide():

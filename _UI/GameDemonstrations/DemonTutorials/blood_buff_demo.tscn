@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cafee4rlp0oq3"]
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_7254w"]
-[ext_resource type="Texture2D" uid="uid://jy54hb8pml7g" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SUN-Sheet.png" id="2_uumsr"]
+[ext_resource type="Texture2D" uid="uid://jy54hb8pml7g" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_OCCULUM-Sheet.png" id="2_uumsr"]
 [ext_resource type="Texture2D" uid="uid://c30lgql0xnwsx" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Maw-Sheet.png" id="3_4oyl0"]
-[ext_resource type="Texture2D" uid="uid://j4nuwsywnax5" path="res://_Entities/Demons/SpriteSheets/Maw/EyeSunTowerIdle_SPYDER-Sheet.png" id="3_qlcry"]
-[ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Sun-Sheet.png" id="5_5oyfw"]
+[ext_resource type="Texture2D" uid="uid://j4nuwsywnax5" path="res://_Entities/Demons/SpriteSheets/Maw/OcculumTowerIdle_CRAWLER-Sheet.png" id="3_qlcry"]
+[ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Occulum-Sheet.png" id="5_5oyfw"]
 [ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_SpinalOcculum-Sheet.png" id="6_5oect"]
 [ext_resource type="Texture2D" uid="uid://lojdao7nw8m1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Hive-Sheet.png" id="7_1b484"]
 [ext_resource type="Texture2D" uid="uid://cugwyj56vu68w" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Wyrm-Sheet.png" id="8_vla4k"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="17_lad36"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="18_eanlj"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="19_e1p4d"]
-[ext_resource type="Texture2D" uid="uid://cyvwcuast06ux" path="res://_Entities/Demons/SpriteSheets/Maw/EyeSunTowerIdle_Base-Sheet.png" id="21_utr1l"]
+[ext_resource type="Texture2D" uid="uid://cyvwcuast06ux" path="res://_Entities/Demons/SpriteSheets/Maw/OcculumTowerIdle_Base-Sheet.png" id="21_utr1l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lj1o"]
 bg_color = Color(0.15, 0.15, 0.15, 1)

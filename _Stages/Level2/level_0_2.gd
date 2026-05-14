@@ -3,8 +3,8 @@ extends LevelTemplate
 
 # Preloaded demo scenes
 var hive_wyrm_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/wyrm_spine_buff.tscn")
-var spyder_sun_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_spyder_buff.tscn")
-var sun_spyder_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/spyder_occulum_buff.tscn")
+var crawler_occulum_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_crawler_buff.tscn")
+var occulum_crawler_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/crawler_occulum_buff.tscn")
 var buff_demo_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/blood_buff_demo.tscn")
 var buckethead_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
 
@@ -21,12 +21,12 @@ const TUTORIAL_SELECT_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_
 const TUTORIAL_PLACE_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt"
 const TUTORIAL_PLACE_SPINALOCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
 const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
-const TUTORIAL_SELECT_SPYDER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
+const TUTORIAL_SELECT_CRAWLER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_Selectcrawler.txt"
 const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
 const TUTORIAL_BLOOD_BUFFS_2 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
-const TUTORIAL_INVALID_SPYDER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
+const TUTORIAL_INVALID_CRAWLER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidcrawlerPlacement.txt"
 const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
-var tutorial_place_spyder = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
+var tutorial_place_crawler = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_Placecrawler.txt"
 
 # Tutorial tracking
 var tutorial_occulum = null
@@ -34,7 +34,7 @@ var waiting_for_blood = false
 var bucketHeadExplained = false
 var blood_before_pickup = 0
 var tutorial_occulum_grid_pos: Vector2 = Vector2.ZERO
-var tutorial_sun_instance: Node2D = null
+var tutorial_blood_instance: Node2D = null
 var occulum_glow_added := false 
 var crawler_placed := false 
 
@@ -68,13 +68,13 @@ func _setup_tutorial():
 			"enter": _start_explain_blood_gen,
 		},
 		{
-			"name": "FORCE_SELECT_SPYDER",
-			"enter": _start_force_select_spyder_after_blood,
+			"name": "FORCE_SELECT_CRAWLER",
+			"enter": _start_force_select_crawler_after_blood,
 			"input_filter": _filter_block_keyboard,
 		},
 		{
-			"name": "FORCE_PLACE_SPYDER_BEHIND",
-			"enter": _start_force_place_spyder_behind,
+			"name": "FORCE_PLACE_CRAWLER_BEHIND",
+			"enter": _start_force_place_crawler_behind,
 			"input_filter": _filter_block_deselect,
 		},
 		{
@@ -131,11 +131,11 @@ func _ready():
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	demonManager.connect("demon_placed", Callable(self, "_on_occulum_placed"))
-	demonManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
+	demonManager.connect("crawler_placed", Callable(self, "_on_crawler_placed"))
 	demonManager.connect("spinalOcculum_placed", Callable(self, "_on_spinalOcculum_placed"))
 
 	occulum_button.connect("pressed", Callable(self, "_on_occulum_button_pressed"))
-	crawler_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
+	crawler_button.connect("pressed", Callable(self, "_on_crawler_button_pressed"))
 	spinal_occulum_button.connect("pressed", Callable(self, "_on_spinalOcculum_button_pressed"))
 
 	toolTips.hide()
@@ -205,8 +205,8 @@ func _start_explain_blood_gen():
 	blood_before_pickup = demonManager.blood_points
 
 
-func _start_force_select_spyder_after_blood():
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER_AFTER, false)
+func _start_force_select_crawler_after_blood():
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER_AFTER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#show_only_demon_buttons(["Crawler"])
 	print("Crawler Button is now : ", crawler_button)
@@ -218,9 +218,9 @@ func _start_force_select_spyder_after_blood():
 	get_tree().paused = true
 
 
-func _start_force_place_spyder_behind():
+func _start_force_place_crawler_behind():
 	Global.is_blocking = true 
-	toolTips.set_visual_tutorial_text(tutorial_place_spyder)
+	toolTips.set_visual_tutorial_text(tutorial_place_crawler)
 	toolTips.set_visual_tutorial_visual(buff_demo_scene.instantiate())
 	
 	#demonSelectionMenu.remove_button_highlight(crawler_button)
@@ -234,13 +234,13 @@ func _start_force_place_spyder_behind():
 func _start_explain_blood_buffs():
 	get_tree().paused = true
 	toolTips.set_visual_tutorial_text(TUTORIAL_BLOOD_BUFFS)
-	toolTips.set_visual_tutorial_visual(spyder_sun_buff_scene.instantiate())
+	toolTips.set_visual_tutorial_visual(crawler_occulum_buff_scene.instantiate())
 
 
 func _start_explain_blood_buffs_2():
 	get_tree().paused = true
 	toolTips.set_visual_tutorial_text(TUTORIAL_BLOOD_BUFFS_2)
-	toolTips.set_visual_tutorial_visual(sun_spyder_buff_scene.instantiate())
+	toolTips.set_visual_tutorial_visual(occulum_crawler_buff_scene.instantiate())
 
 
 func _start_wave_1():
@@ -273,8 +273,8 @@ func _start_force_select_spinalOcculum():
 	demonSelectionMenu.get_spinal_occulum_button().show()
 	#hbox.get_node("SpinalOcculum").visible = true
 	#show_spotlight_at_node(spinal_occulum_button)
-	demonManager.add_sun(50.0)
-	green_dimension.add_sun(50.0)
+	demonManager.add_blood(50.0)
+	green_dimension.add_blood(50.0)
 
 
 func _start_force_place_spinalOcculum():
@@ -339,7 +339,7 @@ func _on_tooltip_hidden():
 			get_tree().paused = false
 			# No transition — wait for wave3Started signal
 
-		"FORCE_PLACE_SPYDER_BEHIND":
+		"FORCE_PLACE_CRAWLER_BEHIND":
 			# Error tooltip acknowledged — player retries placement
 			get_tree().paused = false
 
@@ -369,31 +369,31 @@ func _on_occulum_placed(grid_pos: Vector2):
 			tutorial_occulum = demon
 			break
 
-	if tutorial_occulum and tutorial_occulum.has_method("generate_sun"):
+	if tutorial_occulum and tutorial_occulum.has_method("generate_blood"):
 		advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
-		tutorial_sun_instance = tutorial_occulum.generate_sun()
+		tutorial_blood_instance = tutorial_occulum.generate_blood()
 		print("Should Generate Blood ")
 
-		if tutorial_sun_instance and tutorial_sun_instance.has_node("Auto_pick_up_timer"):
-			tutorial_sun_instance.get_node("Auto_pick_up_timer").stop()
+		if tutorial_blood_instance and tutorial_blood_instance.has_node("Auto_pick_up_timer"):
+			tutorial_blood_instance.get_node("Auto_pick_up_timer").stop()
 
 		await get_tree().create_timer(0.15).timeout
-		if tutorial_sun_instance:
+		if tutorial_blood_instance:
 			#TODO Add Highlight
 			pass
-			#show_spotlight_at_position(tutorial_sun_instance.global_position, 0.12)
+			#show_spotlight_at_position(tutorial_blood_instance.global_position, 0.12)
 	print("Advancing Tutorial 222222")
 #	advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
 
 
-func _on_spyder_button_pressed():
-	if get_current_step_name() == "FORCE_SELECT_SPYDER":
+func _on_crawler_button_pressed():
+	if get_current_step_name() == "FORCE_SELECT_CRAWLER":
 		print("Advancing7 Tutorial 12222222222222232132323424")
-		advance_tutorial() # → FORCE_PLACE_SPYDER_BEHIND
+		advance_tutorial() # → FORCE_PLACE_CRAWLER_BEHIND
 
 
-func _on_spyder_placed(grid_pos: Vector2):
-	if get_current_step_name() != "FORCE_PLACE_SPYDER_BEHIND":
+func _on_crawler_placed(grid_pos: Vector2):
+	if get_current_step_name() != "FORCE_PLACE_CRAWLER_BEHIND":
 		print("Current Step Is ", get_current_step_name())
 		return
 	else:
@@ -405,9 +405,9 @@ func _on_spyder_placed(grid_pos: Vector2):
 			# Invalid placement — delete, refund, show error, let player retry
 			await get_tree().create_timer(0.15).timeout
 			demonManager.clear_space(grid_pos)
-			demonManager.add_sun(50)
+			demonManager.add_blood(50)
 			get_tree().paused = true
-			toolTips.set_basic_tutorial_text(TUTORIAL_INVALID_SPYDER, true)
+			toolTips.set_basic_tutorial_text(TUTORIAL_INVALID_CRAWLER, true)
 			#TODO Add Highlight
 			#show_spotlight_at_position(expected_pos, 0.12)
 		else:
@@ -451,7 +451,7 @@ func _physics_process(_delta):
 		hide_spotlight()
 		get_tree().paused = false
 		print("Advancing Tutorial 1")
-		advance_tutorial() # → FORCE_SELECT_SPYDER
+		advance_tutorial() # → FORCE_SELECT_CRAWLER
 #endregion
 
 

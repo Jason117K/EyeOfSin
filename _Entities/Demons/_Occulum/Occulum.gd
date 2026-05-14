@@ -6,16 +6,16 @@ extends Demon
 #@export var health = 100
 #@export var maw_health = 500 
 @export var cost = 50
-#Keep a reference to our sun scene 
-var SunScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  # Adjust the path to your sun sprite scene
+#Keep a reference to our blood scene 
+var BloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
 var DemonManager
 #@onready var animSpriteComp = $AnimatedSprite2D
-@onready var sunTimer = $SunTimer
+@onready var bloodTimer = $BloodTimer
 @onready var resetEatingTimer = $ResetEatingSpeed
-@export var sunWaitTime := 30.0
-@export var wyrmSunWaitTime :=  50.0
-@export var hiveSunWaitTime := 23.0
-@export var buffedSunWaitTime := 19.0 
+@export var bloodWaitTime := 30.0
+@export var wyrmBloodWaitTime :=  50.0
+@export var hiveOcculumWaitTime := 23.0
+@export var buffedBloodWaitTime := 19.0 
 @onready var buffNodes = $BuffNodesComponent
 @onready var healTimer = $HealTimer
 @onready var healInvisTimer = $HealInvisTimer
@@ -40,11 +40,11 @@ var can_eat_zombie = false
 func _ready():
 	super()
 	print("Made Tutorial Blood is ", madeTutorialBlood)
-	sunTimer.wait_time = sunWaitTime
+	bloodTimer.wait_time = bloodWaitTime
 	DemonManager = get_parent().get_parent().get_node("DemonManager") 
-	$SunTimer.start()  # Start the timer
+	$BloodTimer.start()  # Start the timer
 	#assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
-	$SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout"))
+	$BloodTimer.connect("timeout", Callable(self, "_on_BloodTimer_timeout"))
 	healTimer.wait_time = lerp_duration
 
 	
@@ -67,12 +67,12 @@ func toggle_highlight():
 	else:
 		animSpriteComp.material = original_material	
 
-# Called every time the sun timer reaches timeout
-func _on_SunTimer_timeout():
-	generate_sun()
 
-# Function to handle sun generation
-func generate_sun() -> Node2D:
+func _on_BloodTimer_timeout():
+	generate_blood()
+
+
+func generate_blood() -> Node2D:
 	print("MadeTutorial Blood when it counts is ",madeTutorialBlood )
 	if "Level0-2" in get_parent().get_parent().get_true_name():
 		if madeTutorialBlood == false:
@@ -88,15 +88,15 @@ func generate_sun() -> Node2D:
 	print("Generating BLood")
 	if mawBuff:
 		can_eat_zombie = true
-	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
+	var blood_instance = BloodScene.instantiate()  
 	if wyrmBuff:
-		sun_instance.wyrm_buff()
+		blood_instance.wyrm_buff()
 	if hiveBuff:
-		sun_instance.hive_buff()
-	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
-	#Set the sun pos to above the occulum
-	sun_instance.global_position = self.global_position + Vector2(0,-40)
-	return sun_instance
+		blood_instance.hive_buff()
+	get_parent().add_child(blood_instance) 
+	#Set the blood pos to above the occulum
+	blood_instance.global_position = self.global_position + Vector2(0,-40)
+	return blood_instance
 
 
 # TODO Implement occulum buff 
@@ -128,20 +128,20 @@ func receiveBuff(newDemon):
 			"Wyrm":
 
 				wyrmBuff = true
-				sunTimer.wait_time = wyrmSunWaitTime
-				$SunTimer.start()
+				bloodTimer.wait_time = wyrmBloodWaitTime
+				$BloodTimer.start()
 			"Hive":
 
 				hiveBuff = true
-				sunTimer.wait_time = hiveSunWaitTime
-				$SunTimer.start()
+				bloodTimer.wait_time = hiveOcculumWaitTime
+				$BloodTimer.start()
 			"Maw":
 
 				#health = maw_health
 				can_eat_zombie = true
 				mawBuff = true 
 				
-		#sunTimer.wait_time = buffedSunWaitTime
+		#bloodTimer.wait_time = buffedOcculumWaitTime
 		
 		isBuffed = true 
 			
@@ -157,7 +157,7 @@ func truncate_string(input_string: String) -> String:
 	
 	
 func debuff():
-	sunTimer.wait_time = sunWaitTime
+	bloodTimer.wait_time = bloodWaitTime
 	isBuffed = false
 	pass
 
@@ -290,15 +290,15 @@ func eat_zombie():
 
 func _on_reset_eating_speed_timeout() -> void:
 	animSpriteComp.speed_scale = 1
-	generate_sun_alt()
+	generate_blood_alt()
 
 
-func generate_sun_alt() -> Node2D:
-	var sun_instance = SunScene.instantiate()  # Create a new instance of the sun
-	get_parent().add_child(sun_instance)  # Add the sun to the scene as a child of gamelayer
-	#Set the sun pos to above the occulum
-	sun_instance.global_position = self.global_position + Vector2(0,-40)
-	return sun_instance
+func generate_blood_alt() -> Node2D:
+	var blood_instance = BloodScene.instantiate()  
+	get_parent().add_child(blood_instance)  
+	#Set the blood pos to above the occulum
+	blood_instance.global_position = self.global_position + Vector2(0,-40)
+	return blood_instance
 
 
 func _on_mouse_entered() -> void:

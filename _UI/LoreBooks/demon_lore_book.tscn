@@ -5,15 +5,15 @@
 [ext_resource type="Script" uid="uid://bov2qdtt14vx5" path="res://_UI/LoreBooks/demon_lore_book_controller.gd" id="3_gh3ig"]
 [ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://_Entities/Demons/_Hive/Hive.tres" id="4_chrhc"]
 [ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://_Entities/Demons/_Occulum/Occulum.png" id="5_jm2ht"]
-[ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://_Entities/Demons/_Crawler/Spyder.png" id="6_28t4q"]
+[ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://_Entities/Demons/_Crawler/Crawler.png" id="6_28t4q"]
 [ext_resource type="Texture2D" uid="uid://oewg178qt0kr" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum.png" id="7_tpmsq"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://_Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="8_n4a1q"]
 [ext_resource type="Texture2D" uid="uid://p88orx55tm4w" path="res://_Entities/Demons/_Maw/MawImage.png" id="9_btjlo"]
 [ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://_Entities/Demons/_Wyrm/Wyrm.png" id="11_mcd4t"]
 [ext_resource type="Texture2D" uid="uid://dr854umtud4nf" path="res://_Entities/Demons/_Hive/Hive.png" id="12_i2p6p"]
-[ext_resource type="Texture2D" uid="uid://c20e4aa6kqxl2" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_MAW.png" id="13_hqwrb"]
-[ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_WYRM.png" id="14_te31g"]
-[ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_Base.png" id="15_8exk2"]
+[ext_resource type="Texture2D" uid="uid://c20e4aa6kqxl2" path="res://_Entities/Demons/Icons/OcculumTowerIdle_MAW.png" id="13_hqwrb"]
+[ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://_Entities/Demons/Icons/OcculumTowerIdle_WYRM.png" id="14_te31g"]
+[ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/OcculumTowerIdle_Base.png" id="15_8exk2"]
 [ext_resource type="StyleBox" uid="uid://c3c28155s7n1n" path="res://_Common/StyleBoxes/black_flat.tres" id="15_gyohk"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g75u1"]
@@ -75,7 +75,12 @@ layout_mode = 2
 expand_mode = 5
 script = ExtResource("3_gh3ig")
 sprites = ExtResource("4_chrhc")
+frame_index = null
+speed_scale = null
+auto_play = null
 playing = true
+targetGlowColor = null
+hue_shift = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1376691575]
 layout_mode = 0

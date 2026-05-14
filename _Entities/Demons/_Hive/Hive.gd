@@ -15,7 +15,7 @@ var thisBufferName: String
 @onready var swarm = $Swarm
 
 const SPINAL_OCCULUM_BUFF_MAX_DRONES = 4
-const SUN_BUFF_MAX_DRONES = 5
+const OCCULUM_BUFF_MAX_DRONES = 5
 
 
 func _ready():
@@ -53,10 +53,10 @@ func receiveBuff(bufferName):
 				drone.makeExplode()
 				drone.isCrawlerBuffed = true
 			isCrawlerBuffed = true
-		if("Sun" in bufferName.name):
+		if("Occulum" in bufferName.name):
 			swarm.set_respawn_wait_time(buffedWaitTime)
 			isOcculumBuffed = true
-			swarm.set_max_drones(SUN_BUFF_MAX_DRONES)
+			swarm.set_max_drones(OCCULUM_BUFF_MAX_DRONES)
 			swarm.kill_all_and_respawn()
 		if("SpinalOcculum" in bufferName.name):
 			swarm.set_max_drones(SPINAL_OCCULUM_BUFF_MAX_DRONES)

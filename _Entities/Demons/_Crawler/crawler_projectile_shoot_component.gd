@@ -23,8 +23,8 @@ func shoot_projectile():
 		second_shot_timer.start()
 	if spinalOcculumBuffed:
 		projectile.spinalOcculumBuff = true 
-	if sunBuffed:
-		projectile.sunBuff = true 
+	if occulumBuffed:
+		projectile.bloodBuff = true 
 	if wyrmBuffed:
 		projectile.wyrmBuff = true
 

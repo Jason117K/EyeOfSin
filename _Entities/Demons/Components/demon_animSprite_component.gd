@@ -66,9 +66,10 @@ func change_form(new_form):
 		"Crawler":
 			currentAnim = "idle_Crawler"
 			currentAttackAnim = "attack_Crawler"
-			if "Sun" in parent.get_name():
-				
-				$"../Webs".visible = true 
+			#Refactor
+			#if "Occulum" in parent.get_name():
+				#
+				#$"../Webs".visible = true 
 			animation = "spawn"
 		"SpinalOcculum" :
 			currentAnim = "idle_SpinalOcculum"

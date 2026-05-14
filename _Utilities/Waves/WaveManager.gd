@@ -60,6 +60,12 @@ func _setup():
 	
 	waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
 	previewTimer.timeout.connect(_on_preview_timer_timeout)
+	#var purple = get_tree().get_first_node_in_group("Purple")
+	#var green = get_tree().get_first_node_in_group("Green")
+	#if purple and purple.has_method("get_health_ui"):
+		#purple.get_health_ui().text = str(health_points)
+	#if green and green.has_method("get_health_ui"):
+		#green.get_health_ui().text = str(health_points)
 	
 
 

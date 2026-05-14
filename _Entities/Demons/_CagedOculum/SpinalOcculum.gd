@@ -11,14 +11,14 @@ var isWyrmBuffed := false
 var isMawBuffed := false 
 var isOcculumBuffed:= false 
 var hiveBuffed:= false
-var sunBuffed = false
+var occulumBuffed = false
 var WyrmBuffed := false 
 
 var DemonManager
 var thisBufferName : String
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
 var can_damage_zombie= false 
-var bloodScene = preload("res://_Entities/Demons/Blood/Sun.tscn")  
+var bloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn")  
 
 func _ready():
 	super()
@@ -30,8 +30,8 @@ func receiveBuff(bufferName):
 		super(bufferName)
 		healthComp.receiveBuff(bufferName)
 		
-		if "Sun" in bufferName.name && !isOcculumBuffed:
-			sunBuffed = true 
+		if "Occulum" in bufferName.name && !isOcculumBuffed:
+			occulumBuffed = true 
 			isOcculumBuffed = true 
 		elif "Wyrm" in bufferName.name && !isWyrmBuffed:
 			WyrmBuffed = true 
@@ -41,7 +41,7 @@ func receiveBuff(bufferName):
 			isMawBuffed = true 
 			#TODO Re Implement Color Changes
 			#$AnimatedSpriteComponent.change_color()
-		elif "Pea" in bufferName.name :
+		elif "Crawler" in bufferName.name :
 			$Web.visible  = true 
 			$Web/Area2D.monitoring= true
 		elif "Hive" in bufferName.name:
@@ -87,7 +87,7 @@ func spawnPhantomHive():
 	var hive_instance = phantomHive.instantiate()
 	print("Spawn HIVE")
 	get_parent().add_child(hive_instance)  # Add the phantom hive to the scene as a child of gamelayer
-	#Set the sun pos to above the occulum
+	#Set the blood pos to above the occulum
 	hive_instance.global_position = self.global_position 
 
 
