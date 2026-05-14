@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 
-[node name="GameController" type="Node" unique_id=324431877 node_paths=PackedStringArray("scene")]
+[node name="GameController" type="Node" unique_id=324431877 node_paths=PackedStringArray("scene_container")]
 script = ExtResource("1_ip61f")
-scene = NodePath("CurrentScene")
+scene_container = NodePath("CurrentScene")
 
 [node name="CurrentScene" type="Control" parent="." unique_id=1857333946]
 layout_mode = 3
