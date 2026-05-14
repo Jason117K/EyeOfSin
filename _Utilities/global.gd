@@ -8,13 +8,13 @@ var canPlayLevel4 : bool = true
 var canPlayLevel5 : bool = true
 var canPlayLevel6 : bool = true
 var canPlayLevel7 : bool = true
-var sunflowerCount := 0  
-var sunflowerCountVisual := 0  
+var occulumCount := 0  
+var occulumCountVisual := 0  
 var wave_manager
 
 var all_zombies := []
 var game_controller : GameController
-var plant_selection_menu 
+var demon_selection_menu 
 var notification_bar
 var green_portal = null
 var purple_portal = null 
@@ -31,15 +31,15 @@ func _load_demon_costs():
 	demon_scenes = {
 		"Occulum": "res://_Entities/Demons/_Occulum/Occulum.tscn",
 		"Crawler": "res://_Entities/Demons/_Crawler/Crawler.tscn",
-		"SpinalOcculum": "res://_Entities/Demons/_CagedOculum/WalnutTree.tscn",
-		"Wyrm": "res://_Entities/Demons/_Wyrm/EggWorm.tscn",
+		"SpinalOcculum": "res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn",
+		"Wyrm": "res://_Entities/Demons/_Wyrm/Wyrm.tscn",
 		"Maw": "res://_Entities/Demons/_Maw/Maw.tscn",
 		"Hive": "res://_Entities/Demons/_Hive/Hive.tscn",
 	}
 	for demon_name in demon_scenes:
 		var scene: PackedScene = load(demon_scenes[demon_name])
 		var instance: Node = scene.instantiate()
-		demon_costs[demon_name] = instance.cost  # each plant script has an @export var cost: int
+		demon_costs[demon_name] = instance.cost  # each demon script has an @export var cost: int
 		instance.queue_free()
 
 func get_demon_cost(demon_name: String) -> int:
@@ -58,33 +58,33 @@ func register_ui_layer(new_ui_layer):
 	ui_layer = new_ui_layer
 
 func hideDemonSelectionMenu():
-	if plant_selection_menu != null:
-		plant_selection_menu.visible = false 
+	if demon_selection_menu != null:
+		demon_selection_menu.visible = false 
 	
 func unHideDemonSelectionMenu():
-	if plant_selection_menu != null:
-		plant_selection_menu.visible = true 	
+	if demon_selection_menu != null:
+		demon_selection_menu.visible = true 	
 		
 func swap_portal_button():
-	plant_selection_menu.swap_portal_button()
+	demon_selection_menu.swap_portal_button()
 	
-func resetSunflowerCount():
-	sunflowerCount = 0
+func resetOcculumCount():
+	occulumCount = 0
 	gameIsStarted = false
 	
-func incrementSunflowerCount():
-	sunflowerCount += 1
-	plant_selection_menu.increaseSunflowerCost()
+func incrementOcculumCount():
+	occulumCount += 1
+	demon_selection_menu.increaseOcculumCost()
 	
-func incrementSunflowerCountVisual():
-	sunflowerCountVisual += 1
+func incrementOcculumCountVisual():
+	occulumCountVisual += 1
 	
-func getSunflowerCount():
-	#print("SSReturn , ", sunflowerCount)
-	return sunflowerCount
+func getOcculumCount():
+	#print("SSReturn , ", occulumCount)
+	return occulumCount
 
-func getSunflowerCountVisual():
-	return sunflowerCountVisual
+func getOcculumCountVisual():
+	return occulumCountVisual
 	
 func setCanPlayLevel2():
 	canPlayLevel2 = true  

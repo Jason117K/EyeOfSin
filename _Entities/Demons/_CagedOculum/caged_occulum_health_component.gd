@@ -7,7 +7,7 @@ var thisBufferName : String
 
 func take_damage(damage):
 	super(damage)
-	if isSunflowerBuffed:
+	if isOcculumBuffed:
 		if canGenBlood:
 			generate_blood()
 
@@ -25,19 +25,19 @@ func _on_reset_blood_spawn_cooldown() -> void:
 	
 func receiveBuff(bufferName):
 	if !demon.get_is_buffed() :		
-		if "Sun" in bufferName.name && !isSunflowerBuffed:
+		if "Sun" in bufferName.name && !isOcculumBuffed:
 			canGenBlood = true
 			health = buffedHealth
 			maxHealth = buffedMaxHealth
-			isSunflowerBuffed = true 
+			isOcculumBuffed = true 
 			blood_spawn_timer = Timer.new()
 			blood_spawn_timer.autostart = false 
 			blood_spawn_timer.one_shot = false
 			blood_spawn_timer.wait_time = blood_spawn_time
 			blood_spawn_timer.timeout.connect(_on_reset_blood_spawn_cooldown)
 			blood_spawn_timer.start()
-		elif "EggWorm" in bufferName.name && !isEggWyrmBuffed:
-			isEggWyrmBuffed = true 
+		elif "Wyrm" in bufferName.name && !isWyrmBuffed:
+			isWyrmBuffed = true 
 			can_damage_zombie = true 
 		elif "Maw" in bufferName.name && !isMawBuffed:
 			healthRegen = buffedHealthRegen

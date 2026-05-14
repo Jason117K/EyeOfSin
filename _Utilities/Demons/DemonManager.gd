@@ -1,17 +1,17 @@
 extends Node2D
-#PlantManager.gd
+#DemonManager.gd
 
-# Get a reference to the plant selection menu 
+# Get a reference to the demon selection menu 
 @onready var selection_menu = get_parent().get_parent().get_node("DemonSelectionMenu")
 @onready var notification_bar = Global.notification_bar
 @onready var parentName = get_parent().get_name()
 
 @export var blood_points = 200 # Holds how many sun points we have currently 
 
-var selected_demon_scene = null  # Holds the selected plant scene
+var selected_demon_scene = null  # Holds the selected demon scene
 var grid_size = 32 # Defines the size of each grid cell 
 var grid_map = {}  # Dictionary to store occupied cells
-var demon_cost = 25  # Holds the cost of the currently selected plant 
+var demon_cost = 25  # Holds the cost of the currently selected demon 
 var demon_to_move
 var demon_highlighted := false
 var highlight_demon_global_pos 
@@ -20,11 +20,11 @@ var empty_demon_scene := preload("res://_Entities/Demons/Empty/EmptyDemon.tscn")
 var spyder_not_placed := true 
 var hero_demon : Demon 
 
-signal plant_placed(grid_position: Vector2)
+signal demon_placed(grid_position: Vector2)
 signal spyder_placed(grid_position: Vector2)
-signal walnut_placed(grid_position: Vector2)
+signal spinalOcculum_placed(grid_position: Vector2)
 signal eyeBomb_placed(grid_position: Vector2)
-signal eggWorm_placed(grid_position: Vector2)
+signal wyrm_placed(grid_position: Vector2)
 signal wasp_placed(grid_position: Vector2)
 signal maw_placed(grid_position: Vector2)
 signal test_signal()
@@ -39,23 +39,23 @@ func get_selected_demon():
 	#print("Emit Test")
 	test_signal.emit()
 	if demon_highlighted:
-		#print("Returning HighLight Sunflower.R")
+		#print("Returning HighLight Occulum.R")
 		return occulum_scene
 	else:
-		return get_parent().get_parent().get_node("DemonSelectionMenu").selected_plant
+		return get_parent().get_parent().get_node("DemonSelectionMenu").selected_demon
 
 
-# Handles Player Interaction with the Plant Menu 
+# Handles Player Interaction with the Demon Menu 
 func _input(event):
-	# Dynamically get the selected plant	
+	# Dynamically get the selected demon	
 	selected_demon_scene = get_selected_demon()  
 	
 	if selected_demon_scene == null:
-		#print("Plant Scene is Null")
+		#print("Demon Scene is Null")
 		pass
 	
 	if event is InputEventMouseButton and event.pressed:
-		# If they left click, grab the positon and place a plant there 
+		# If they left click, grab the positon and place a demon there 
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if get_parent().visible == false:
 				#print(get_parent(), " is not visible, return early qqx")
@@ -68,7 +68,7 @@ func _input(event):
 			#print("GRID POS IS NOW ", grid_pos)
 			
 			if demon_highlighted:
-				move_plant(demon_to_move, grid_pos)
+				move_demon(demon_to_move, grid_pos)
 
 			if selected_demon_scene != null:
 				var temp_instance = selected_demon_scene.instantiate()
@@ -79,9 +79,9 @@ func _input(event):
 					#print("Grid map size is ", grid_map.size())
 					if grid_map.size() == 0 && selected_demon_scene:
 					
-						if "Egg" in temp_instance.get_name():
-							#print("Place Plant11 " , grid_pos)
-							place_plant(grid_pos)
+						if "Wyrm" in temp_instance.get_name():
+							#print("Place Demon11 " , grid_pos)
+							place_demon(grid_pos)
 							return
 						else:
 							return
@@ -91,45 +91,45 @@ func _input(event):
 				if blood_points < cost:
 					selection_menu.clear_preview()
 					Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
-					selection_menu.deselect_plant()
+					selection_menu.deselect_demon()
 					print("Sun Points is : ", blood_points, " which is less than ", cost)
 					return
-			else: #Plant Scene Null
+			else: #Demon Scene Null
 				#TODO Make Double Click
-				#print("Clicked1 and Plant Scene Null NN")
+				#print("Clicked1 and Demon Scene Null NN")
 				if selection_menu.getCanRemove():
 					#print("Clicked1 and Time to Clear Space")
 					clear_space(grid_pos)
 					#selection_menu.setCanRemoveFalse()
-				if detect_plant(grid_pos):
-				#	print("Plant Detected")
-					highlight_plant(grid_pos)
+				if detect_demon(grid_pos):
+				#	print("Demon Detected")
+					highlight_demon(grid_pos)
 					pass
 				return 
-			# Place the plant assuming it's within bounds of the level
+			# Place the demon assuming it's within bounds of the level
 			if(parentName == "Main"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
-					print("Place Plant " , grid_pos)
+					print("Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
-					place_plant(grid_pos)
+					place_demon(grid_pos)
 			elif(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
-					print("Place Plant " , grid_pos)
+					print("Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
-					place_plant(grid_pos)
+					place_demon(grid_pos)
 			elif(parentName == "Level0-2" || parentName == "Level0-2_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
-					print("Place Plant " , grid_pos)
+					print("Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
-					place_plant(grid_pos)
+					place_demon(grid_pos)
 			elif(parentName == "Level3"):
 				print("Grid map size is ", grid_map.size())
 				if grid_map.size() == 0 && selected_demon_scene:
 					var temp_instance = selected_demon_scene.instantiate()
-					if "Egg" in temp_instance.get_name():
-						print("Place Plant1 " , grid_pos)
+					if "Wyrm" in temp_instance.get_name():
+						print("Place Demon1 " , grid_pos)
 						Global.game_controller.place_empty_in_alt_scene(grid_pos)
-						place_plant(grid_pos)
+						place_demon(grid_pos)
 					temp_instance.queue_free()
 					
 				if grid_map.size() == 1:
@@ -144,96 +144,96 @@ func _input(event):
 					
 					if  abs(first_key.x - grid_pos.x) < 65 &&  (abs(first_key.y - grid_pos.y) < 32):
 						if grid_pos.x > first_key.x:
-							print("Try place plant")
+							print("Try place demon")
 							Global.game_controller.place_empty_in_alt_scene(grid_pos)
-							place_plant(grid_pos)
+							place_demon(grid_pos)
 					else:
 						pass
 				else:
-					#print("Place Plant2 " , grid_pos)
+					#print("Place Demon2 " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
-					place_plant(grid_pos)
+					place_demon(grid_pos)
 				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
-					#print(get_parent(), "QQOtro Place Plant " , grid_pos)
+					#print(get_parent(), "QQOtro Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
-					place_plant(grid_pos)
+					place_demon(grid_pos)
 
 # Convert mouse position to a grid cell position
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
 
-# Clear a space for a new plant to go 
+# Clear a space for a new demon to go 
 func clear_space(passed_grid_pos):
 	#print("QQ Grid Map is ", grid_map)
-	#print(" QQ Erase Plant At :", passed_grid_pos)
-	var plant_node = grid_map.get(passed_grid_pos)
-	#print(" QQ Plant to Erase Is  ", plant_node)
-	#plantToErase.die()
-	if plant_node != null:
-		plant_node.die_fromClearSpace()
+	#print(" QQ Erase Demon At :", passed_grid_pos)
+	var demon_node = grid_map.get(passed_grid_pos)
+	#print(" QQ Demon to Erase Is  ", demon_node)
+	#demonToErase.die()
+	if demon_node != null:
+		demon_node.die_fromClearSpace()
 		#print("The Right DDDDDDD Function is Being Called ")
-		#if "Empty" in plant_node.name:
+		#if "Empty" in demon_node.name:
 			##return
 			#pass
 		#else:
-			#plant_node.die_fromClearSpace()
-		#plant_node.queue_free()
+			#demon_node.die_fromClearSpace()
+		#demon_node.queue_free()
 	grid_map.erase(passed_grid_pos)
 	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
 func clear_space_alt(passed_grid_pos):
 #	print("QQ Grid Map is ", grid_map)
-	#print(" QQ Erase Plant At :", passed_grid_pos)
-	var plant_node = grid_map.get(passed_grid_pos)
-	#print(" QQ Plant to Erase Is  ", plant_node)
-	#plantToErase.die()
-	if plant_node != null:
-		plant_node.die_fromClearSpace()
+	#print(" QQ Erase Demon At :", passed_grid_pos)
+	var demon_node = grid_map.get(passed_grid_pos)
+	#print(" QQ Demon to Erase Is  ", demon_node)
+	#demonToErase.die()
+	if demon_node != null:
+		demon_node.die_fromClearSpace()
 		#print("The Right DDDDDDD Function is Being Called ")
-		#if "Empty" in plant_node.name:
+		#if "Empty" in demon_node.name:
 			##return
 			#pass
 		#else:
-			#plant_node.die_fromClearSpace()
-		#plant_node.queue_free()
+			#demon_node.die_fromClearSpace()
+		#demon_node.queue_free()
 	grid_map.erase(passed_grid_pos)
 	#Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 	
-func detect_plant(passed_grid_pos):
+func detect_demon(passed_grid_pos):
 	#print("QQ Grid Map is ", grid_map)
-	var plant_node = grid_map.get(passed_grid_pos)
+	var demon_node = grid_map.get(passed_grid_pos)
 	
-	if plant_node != null:
-		#print("Plant Node is , ",plant_node, " returning true" )
+	if demon_node != null:
+		#print("Demon Node is , ",demon_node, " returning true" )
 		return true
 	else:
-		#print("Plant Node is , ",plant_node, " returning false" )
+		#print("Demon Node is , ",demon_node, " returning false" )
 		return false 
 	
-func highlight_plant(passed_grid_pos):
+func highlight_demon(passed_grid_pos):
 	#print("QQ Grid Map is ", grid_map)
-	var plant_node = grid_map.get(passed_grid_pos)
-	demon_to_move = plant_node
-	if plant_node.has_method("highlight"):
+	var demon_node = grid_map.get(passed_grid_pos)
+	demon_to_move = demon_node
+	if demon_node.has_method("highlight"):
 	#	print("HighLight Should Turn On")
-		highlight_demon_global_pos = plant_node.global_position 
-		plant_node.toggle_highlight()
+		highlight_demon_global_pos = demon_node.global_position 
+		demon_node.toggle_highlight()
 		demon_highlighted = true
 		
 		
 		pass
 
-func move_plant(this_demon_to_move, passed_new_grid_pos):
+func move_demon(this_demon_to_move, passed_new_grid_pos):
 	this_demon_to_move.toggle_highlight()
 	#print("QQ Grid Map is ", grid_map)
 	#print("HighLight Should Turn Off")
-	#print("HighLight Selected Plant is ", selected_demon_scene)
+	#print("HighLight Selected Demon is ", selected_demon_scene)
 	selected_demon_scene = occulum_scene
-#	print("HighLight Selected Plant is NOW ", selected_demon_scene)
-	#print("HighLight OLD Plant is ", this_demon_to_move)
-	place_plant(passed_new_grid_pos)
+#	print("HighLight Selected Demon is NOW ", selected_demon_scene)
+	#print("HighLight OLD Demon is ", this_demon_to_move)
+	place_demon(passed_new_grid_pos)
 	#Doesnt Work
 	#clear_space(passed_new_grid_pos)
 	
@@ -242,12 +242,12 @@ func move_plant(this_demon_to_move, passed_new_grid_pos):
 	clear_space(highlight_demon_global_pos)
 	pass
 	
-func place_empty_blocker_plant(grid_pos):
+func place_empty_blocker_demon(grid_pos):
 	#print(get_parent(), " QQ1 Grid Map is ", grid_map)
 	#Add Scene Names 
-	#print("Should Place Block Plant")
+	#print("Should Place Block Demon")
 	selected_demon_scene = empty_demon_scene
-#	print("About to Place Plant")
+#	print("About to Place Demon")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
 	else:
@@ -256,12 +256,12 @@ func place_empty_blocker_plant(grid_pos):
 	
 	
 	if selected_demon_scene == null:
-		print("No plant selected!")
+		print("No demon selected!")
 		return
 	
-	var plant_instance = selected_demon_scene.instantiate()
-	#print("Will Make PPName From ",plant_instance.name)
-	plant_instance.name = generate_unique_name(plant_instance.name)
+	var demon_instance = selected_demon_scene.instantiate()
+	#print("Will Make PPName From ",demon_instance.name)
+	demon_instance.name = generate_unique_name(demon_instance.name)
 	
 	
 	#Check if Spot is Occupied
@@ -270,67 +270,67 @@ func place_empty_blocker_plant(grid_pos):
 		return
 	
 	#Maw is larger, check neighboring cell
-	if  "Maw" in plant_instance.name:
+	if  "Maw" in demon_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			print(get_parent(), "QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 	
 	if blood_points >= -99999: 
 		
-		#print("Have enough sun, placing plant ")
+		#print("Have enough sun, placing demon ")
 		#Maw Handling, occupies two cells
-		if "Maw" in plant_instance.name:
-			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
-			grid_map[grid_pos] = plant_instance
+		if "Maw" in demon_instance.name:
+			demon_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
+			grid_map[grid_pos] = demon_instance
 			#print(get_parent(), "QQZGirdMap Now Contains",grid_pos)
-			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
+			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = demon_instance
 			#print(get_parent(), "QQZGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
-			plant_instance.position = Vector2(grid_pos.x,grid_pos.y)
-			grid_map[grid_pos] = plant_instance
+			demon_instance.position = Vector2(grid_pos.x,grid_pos.y)
+			grid_map[grid_pos] = demon_instance
 	
 		#Add To The GameLayer 
-		#plant_instance.set_process(false)
-		get_parent().get_node("GameLayer").call_deferred("add_child",plant_instance)
+		#demon_instance.set_process(false)
+		get_parent().get_node("GameLayer").call_deferred("add_child",demon_instance)
 
 		
 		#Play the sound
-		AudioManager.create_2d_audio_at_location(plant_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
+		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 
 	else:
 		pass
 		#print("Not enough sun points!")
 	
-	#print(get_parent(), "QQ Blocker Plant Was Placed At " , plant_instance.position)
+	#print(get_parent(), "QQ Blocker Demon Was Placed At " , demon_instance.position)
 	
 	
-# Place the selected plant on the grid
-func place_plant(grid_pos: Vector2):
-	#print(get_parent(), "QQ Grid Map Place Plant is ", grid_map)
-	#print("About to Place Plant")
+# Place the selected demon on the grid
+func place_demon(grid_pos: Vector2):
+	#print(get_parent(), "QQ Grid Map Place Demon is ", grid_map)
+	#print("About to Place Demon")
 	if(grid_pos.x<769 && grid_pos.y<336 && grid_pos.y > 48):
 		pass
 	else:
 		#print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
 		return 
 	
-	# Dynamically get the selected plant	
+	# Dynamically get the selected demon	
 	selected_demon_scene = get_selected_demon()  
 	
 	if selected_demon_scene == null:
-		print("No plant selected!")
+		print("No demon selected!")
 		return
 	
-	var plant_instance = selected_demon_scene.instantiate()
-	#print("Will Make PPName From ",plant_instance.name)
-	plant_instance.name = generate_unique_name(plant_instance.name)
+	var demon_instance = selected_demon_scene.instantiate()
+	#print("Will Make PPName From ",demon_instance.name)
+	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
-		plant_instance.add_to_group("Green")
+		demon_instance.add_to_group("Green")
 	else:
-		print("Add ", plant_instance, " to purple group")
-		plant_instance.add_to_group("Purple")
+		print("Add ", demon_instance, " to purple group")
+		demon_instance.add_to_group("Purple")
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
@@ -338,13 +338,13 @@ func place_plant(grid_pos: Vector2):
 		return
 	
 	#Maw is larger, check neighboring cell
-	if  "Maw" in plant_instance.name:
+	if  "Maw" in demon_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			#print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 		else:
 			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
-	if "Heart" in plant_instance.name:
+	if "Heart" in demon_instance.name:
 		#print("About to Place Heart Demon")
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			return 
@@ -359,12 +359,12 @@ func place_plant(grid_pos: Vector2):
 		if Vector2(grid_pos.x-32,grid_pos.y) in grid_map:
 			return 
 			
-		grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
-		grid_map[Vector2(grid_pos.x+32,grid_pos.y+32)] = plant_instance
-		grid_map[Vector2(grid_pos.x+32,grid_pos.y-32)] = plant_instance
-		grid_map[Vector2(grid_pos.x,grid_pos.y+32)] = plant_instance
-		grid_map[Vector2(grid_pos.x,grid_pos.y-32)] = plant_instance
-		grid_map[Vector2(grid_pos.x-32,grid_pos.y)] = plant_instance
+		grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = demon_instance
+		grid_map[Vector2(grid_pos.x+32,grid_pos.y+32)] = demon_instance
+		grid_map[Vector2(grid_pos.x+32,grid_pos.y-32)] = demon_instance
+		grid_map[Vector2(grid_pos.x,grid_pos.y+32)] = demon_instance
+		grid_map[Vector2(grid_pos.x,grid_pos.y-32)] = demon_instance
+		grid_map[Vector2(grid_pos.x-32,grid_pos.y)] = demon_instance
 		
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y+32))
@@ -372,33 +372,33 @@ func place_plant(grid_pos: Vector2):
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32))
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y-32))
 		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y))
-		hero_demon = plant_instance  
+		hero_demon = demon_instance  
 		Global.game_controller.register_heart_alt_scene(hero_demon)
 		print("Heart Demon Should Be Placed : ", hero_demon)
 	
 	#Get The Cost 
-	demon_cost = plant_instance.get_cost()
-	print("Plant CCost is : ", demon_cost)
+	demon_cost = demon_instance.get_cost()
+	print("Demon CCost is : ", demon_cost)
 	
 	if blood_points >= demon_cost: 
 		
-		#print("Have enough sun, placing plant ")
+		#print("Have enough sun, placing demon ")
 		#Maw Handling, occupies two cells
-		if "Maw" in plant_instance.name:
-			plant_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
-			plant_instance.position = Vector2(plant_instance.position.x-256,plant_instance.position.y-256)
-			grid_map[grid_pos] = plant_instance
+		if "Maw" in demon_instance.name:
+			demon_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
+			demon_instance.position = Vector2(demon_instance.position.x-256,demon_instance.position.y-256)
+			grid_map[grid_pos] = demon_instance
 			#print("QQGirdMap Now Contains",grid_pos)
-			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = plant_instance
+			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = demon_instance
 		#	print("QQGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
-			plant_instance.position = Vector2(grid_pos.x,grid_pos.y )
-			grid_map[grid_pos] = plant_instance
+			demon_instance.position = Vector2(grid_pos.x,grid_pos.y )
+			grid_map[grid_pos] = demon_instance
 	
 		#Add To The GameLayer 
-		#plant_instance.set_process(false)
-		get_parent().get_node("GameLayer").call_deferred("add_child", plant_instance)
+		#demon_instance.set_process(false)
+		get_parent().get_node("GameLayer").call_deferred("add_child", demon_instance)
 
 		#Reduce Sun Points
 		blood_points -= demon_cost
@@ -407,35 +407,35 @@ func place_plant(grid_pos: Vector2):
 		get_parent().get_node("UILayer").set_blood(str(blood_points))
 		
 		#Play the sound
-		AudioManager.create_2d_audio_at_location(plant_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
-		#$PlacePlantAudioPlayer.play()
-		#print("PPLant name is ", plant_instance.name)
-		if "Sunflower" in plant_instance.name:
-			print("Selected Plant Scene is : ", plant_instance.name)
-			#plant_instance.position = Vector2(grid_pos.x,grid_pos.y + 13 )
-			#TODO change to sunflower_placed
-			plant_placed.emit(grid_pos)
-			Global.incrementSunflowerCount()
+		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
+		#$PlaceDemonAudioPlayer.play()
+		#print("Pdemon name is ", demon_instance.name)
+		if "Occulum" in demon_instance.name:
+			print("Selected Demon Scene is : ", demon_instance.name)
+			#demon_instance.position = Vector2(grid_pos.x,grid_pos.y + 13 )
+			#TODO change to occulum_placed
+			demon_placed.emit(grid_pos)
+			Global.incrementOcculumCount()
 			pass
-		elif "Peashooter" in plant_instance.name:
+		elif "Crawler" in demon_instance.name:
 			#if spyder_not_placed:
 			print("[TUTORIAL] Emit Spyder Placed")
 			spyder_placed.emit(grid_pos)
 			spyder_not_placed = false
 			pass
-		elif "Walnut" in plant_instance.name:
-			walnut_placed.emit(grid_pos)
+		elif "SpinalOcculum" in demon_instance.name:
+			spinalOcculum_placed.emit(grid_pos)
 			pass
-		elif "Bomb" in plant_instance.name:
+		elif "Bomb" in demon_instance.name:
 			eyeBomb_placed.emit(grid_pos)
-		elif "EggWorm" in plant_instance.name:
-			eggWorm_placed.emit(grid_pos)
-		elif "Hive" in plant_instance.name:
+		elif "Wyrm" in demon_instance.name:
+			wyrm_placed.emit(grid_pos)
+		elif "Hive" in demon_instance.name:
 			wasp_placed.emit(grid_pos)
-		elif "Maw" in plant_instance.name:
+		elif "Maw" in demon_instance.name:
 			maw_placed.emit(grid_pos)
 			
-		#print("Selected Plant Scene is : ", plant_instance)
+		#print("Selected Demon Scene is : ", demon_instance)
 		
 		
 		# Clear preview after successful placement, or do this when deselect Hit 
@@ -448,8 +448,8 @@ func place_plant(grid_pos: Vector2):
 		pass
 		#print("Not enough sun points!")
 	
-	#print("QQZ Plant Was Placed At " , plant_instance.position)
-	selection_menu.deselect_plant()
+	#print("QQZ Demon Was Placed At " , demon_instance.position)
+	selection_menu.deselect_demon()
 
 # Helper function to generate sequential names
 func generate_unique_name(base_name: String) -> String:

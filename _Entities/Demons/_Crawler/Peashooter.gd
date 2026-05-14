@@ -1,15 +1,15 @@
 extends Demon
-#Peashooter.gd
+#Crawler.gd
 
 @export var cost = 75
 
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  # Load the projectile scene
 var spiderling_scene = preload("res://_Entities/Demons/_Crawler/spiderling.tscn")
-var PlantManager
-var canAttack = false   # Whether or not the peashooter can attack 
+var DemonManager
+var canAttack = false  
 var second_shot_timer : Timer
 var hiveBuffed = false 
-var walnutBuffed = false
+var spinalOcculumBuffed = false
 var sunBuffed = false
 var wyrmBuffed = false
 var mawBuffed = false
@@ -19,10 +19,10 @@ var canAttackSetTrueOnce = false
 @onready var buffNodes = $BuffNodesComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
 
-#Grab plantmanager, start default anim and connect/start relevant timers 
+#Grab demonmanager, start default anim and connect/start relevant timers 
 func _ready():
 	super()
-	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	
 
 #Cost getter 
@@ -31,23 +31,23 @@ func get_cost():
 	
 					
 # Doubles attack speed when receiving a buff 
-func receiveBuff(newPlant):
-	#print("Buff Name is ", newPlant.name)
-	super(newPlant)
-	healthComp.receiveBuff(newPlant)
-	animSpriteComp.receiveBuff(newPlant)
-	var plantName = truncate_string(newPlant.name)
+func receiveBuff(newDemon):
+	#print("Buff Name is ", newDemon.name)
+	super(newDemon)
+	healthComp.receiveBuff(newDemon)
+	animSpriteComp.receiveBuff(newDemon)
+	var demonName = truncate_string(newDemon.name)
 	
 	if !isBuffed :
 		
-		match plantName:
-			"Sunflower":
+		match demonName:
+			"Occulum":
 				sunBuffed = true 
-			"Peashooter":
+			"Crawler":
 				mawBuffed = true 
-			"WalnutTree" :
-				walnutBuffed = true 
-			"EggWorm":
+			"SpinalOcculum" :
+				spinalOcculumBuffed = true 
+			"Wyrm":
 				wyrmBuffed = true 
 			"Hive":
 				hiveBuffed = true 
@@ -61,7 +61,7 @@ func debuff():
 
 			
 func die():
-	PlantManager.clear_space(self.global_position)
+	DemonManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
 	queue_free()	
 	

@@ -4,12 +4,12 @@
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_r6hpg"]
 [ext_resource type="Script" uid="uid://bov2qdtt14vx5" path="res://_UI/LoreBooks/demon_lore_book_controller.gd" id="3_gh3ig"]
 [ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://_Entities/Demons/_Hive/Hive.tres" id="4_chrhc"]
-[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://_Entities/Demons/_Occulum/Sunflower.png" id="5_jm2ht"]
+[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://_Entities/Demons/_Occulum/Occulum.png" id="5_jm2ht"]
 [ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://_Entities/Demons/_Crawler/Spyder.png" id="6_28t4q"]
-[ext_resource type="Texture2D" uid="uid://oewg178qt0kr" path="res://_Entities/Demons/_CagedOculum/Walnut.png" id="7_tpmsq"]
+[ext_resource type="Texture2D" uid="uid://oewg178qt0kr" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum.png" id="7_tpmsq"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://_Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="8_n4a1q"]
 [ext_resource type="Texture2D" uid="uid://p88orx55tm4w" path="res://_Entities/Demons/_Maw/MawImage.png" id="9_btjlo"]
-[ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://_Entities/Demons/_Wyrm/EggWyrm.png" id="11_mcd4t"]
+[ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://_Entities/Demons/_Wyrm/Wyrm.png" id="11_mcd4t"]
 [ext_resource type="Texture2D" uid="uid://dr854umtud4nf" path="res://_Entities/Demons/_Hive/Hive.png" id="12_i2p6p"]
 [ext_resource type="Texture2D" uid="uid://c20e4aa6kqxl2" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_MAW.png" id="13_hqwrb"]
 [ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://_Entities/Demons/Icons/EyeSunTowerIdle_WYRM.png" id="14_te31g"]
@@ -101,7 +101,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_jm2ht")
 stretch_mode = 4
 
-[node name="Peashooter" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=342407816]
+[node name="Crawler" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=342407816]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("6_28t4q")
@@ -177,7 +177,7 @@ texture_normal = SubResource("CompressedTexture2D_g75u1")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=2085581078]
+[node name="Wyrm" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=2085581078]
 visible = false
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -373,12 +373,12 @@ theme_override_styles/normal = ExtResource("15_gyohk")
 text = "BACK"
 
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Sunflower" to="VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Peashooter" to="VBoxContainer/TextureRect" method="_on_peashooter_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/EyeBomb" to="VBoxContainer/TextureRect" method="_on_eye_bomb_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]

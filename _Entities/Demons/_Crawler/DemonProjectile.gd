@@ -7,7 +7,7 @@ extends Area2D
 @export var lightning_damage = 10 #2   # Damage dealt to zombies
 var blood_scene = preload("res://_Entities/Demons/Blood/Sun.tscn")  # Adjust the path to your sun sprite scene
 
-var walnutBuff := false 
+var spinalOcculumBuff := false 
 var sunBuff := false 
 var wyrmBuff := false
 
@@ -83,14 +83,14 @@ func on_hit(area):
 		if is_slowing:
 			compManager.slow()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
-		if walnutBuff:
+		if spinalOcculumBuff:
 			compManager.knockBack()
 		if sunBuff:
-			var plant_manager = get_parent().get_parent().get_node("PlantManager")
-			if plant_manager:  # If the PlantManager or GameManager is set
+			var demon_manager = get_parent().get_parent().get_node("DemonManager")
+			if demon_manager:  # If the DemonManager or GameManager is set
 				#$CollectAudioPlayer.play()
-				plant_manager.add_sun(2.0)  # Add 25 sun points (or whatever amount)
-				plant_manager.play_sun_collect()
+				demon_manager.add_sun(2.0)  # Add 25 sun points (or whatever amount)
+				demon_manager.play_sun_collect()
 			#compManager.increaseBloodWorth()
 		if damage < 18.5 && canGenBlood:
 			generate_blood()
@@ -119,5 +119,5 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 func generate_blood():
 	var blood_instance = blood_scene.instantiate()  # Create a new instance of the sun
 	get_parent().add_child(blood_instance)  # Add the sun to the scene as a child of gamelayer
-	#Set the sun pos to above the sunflower
+	#Set the sun pos to above the occulum
 	blood_instance.global_position = self.global_position + Vector2(0,-40)

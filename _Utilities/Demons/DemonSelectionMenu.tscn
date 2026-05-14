@@ -213,11 +213,11 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="RemovePlant" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
+[node name="RemoveDemon" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="RemovePlantButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=311546539]
+[node name="RemoveDemonButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon" unique_id=311546539]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -226,7 +226,7 @@ texture_normal = ExtResource("12_yqvs4")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RemovePlantLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemovePlant" unique_id=77291499]
+[node name="RemoveDemonLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon" unique_id=77291499]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
@@ -281,7 +281,7 @@ stretch_mode = 0
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton" to="." method="_on_remove_plant_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]

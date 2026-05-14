@@ -1,7 +1,7 @@
 extends Demon
 #Hive.gd
 
-# Hive Plant Script
+# Hive Demon Script
 
 #Export variables
 @export var cost = 25
@@ -21,13 +21,13 @@ var drone_assignments = {}                         # Dictionary mapping enemies 
 var enemy_queue = []                               # Enemies in order of entry
 var active_enemies = []                            # All enemies currently in range
 var drone_rest_positions = {}                      # Dictionary to store rest positions for each drone
-var isEggWyrmBuffed := false 
-var isSpyderBuffed := false
-var isSunflowerBuffed:= false 
+var isWyrmBuffed := false 
+var isCrawlerBuffed := false
+var isOcculumBuffed:= false 
 
 @onready var droneRespawnTimer = $DroneRespawnTimer # Respawn Timer 
 #var isBuffed = false                               # Tracks Current Buff State Of Drone  
-var PlantManager                                   # RefCounted to PlantManager 
+var DemonManager                                   # RefCounted to DemonManager 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
 #@onready var buffNodes = $BuffNodesComponent
@@ -40,21 +40,20 @@ func _ready():
 	
 	animSpriteComp = $AnimatedSpriteComp
 	
-	# Initialize drones & Plant Manager 
+	# Initialize drones & Demon Manager 
 	spawn_initial_drones()
-	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	animSpriteComp.animation = "spawn"
 	droneRespawnTimer.wait_time = waitTime
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 	
-#Getter for plant cost 
+#Getter for demon cost 
 func get_cost():
 	return cost
 
 
 
 
-#Handles receiving EggWorm & Peashooter Buffs, can only receive one at a time
 func receiveBuff(bufferName):
 	#print("BUFF HIVE")
 	super(bufferName)
@@ -62,30 +61,30 @@ func receiveBuff(bufferName):
 		drone.make_drone_glow()
 	#animSpriteComp.make_drone_glow()
 	#Apply a double damage buff to every drone 
-	if("EggWorm" in bufferName.name) && !isEggWyrmBuffed:
+	if("Wyrm" in bufferName.name) && !isWyrmBuffed:
 		for drone in available_drones:
 			drone.doubleDamage()
-		isEggWyrmBuffed = true 
-	#Make the drones explode if it's a peashooter buff 
-	if("Peashooter" in bufferName.name) && !isSpyderBuffed:
+		isWyrmBuffed = true 
+	#Make the drones explode if it's a crawler buff 
+	if("Crawler" in bufferName.name) && !isCrawlerBuffed:
 		for drone in available_drones:
 			drone.makeExplode()
-			drone.isSpiderBuffed = true
-		isSpyderBuffed = true 
-	if("Sunflower" in bufferName.name) && !isSunflowerBuffed:
+			drone.isCrawlerBuffed = true
+		isCrawlerBuffed = true 
+	if("Occulum" in bufferName.name) && !isOcculumBuffed:
 		droneRespawnTimer.wait_time = buffedWaitTime
-		isSunflowerBuffed = true 
+		isOcculumBuffed = true 
 			
 	thisBufferName = bufferName.name
 
 func debuff():
-	if("EggWorm" in thisBufferName):
+	if("Wyrm" in thisBufferName):
 		for drone in available_drones:
 			drone.regularDamage()
-	if("Peashooter" in thisBufferName):
+	if("Crawler" in thisBufferName):
 		for drone in available_drones:
 			drone.makeNotExplode()
-	if("Sunflower" in thisBufferName):
+	if("Occulum" in thisBufferName):
 		droneRespawnTimer.wait_time = waitTime
 			
 	isBuffed = false 
@@ -344,7 +343,7 @@ func _on_AnimatedSprite_animation_finished():
 		
 		
 func die():
-	PlantManager.clear_space(self.global_position)
+	DemonManager.clear_space(self.global_position)
 	#buffNodes.clearBuffs()
 	queue_free()	
 	

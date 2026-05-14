@@ -23,7 +23,7 @@ var current_target = null
 var velocity = Vector2.ZERO
 var rest_position = null
 var explodeBuff = false
-var isSpyderBuffed = false
+var isCrawlerBuffed = false
 var base_attack_damage: int
 var is_in_combat = false 
 var current_zombie_to_fight
@@ -99,7 +99,7 @@ func attack_target(enemy):
 	current_target = enemy
 	if explodeBuff:
 		enemy.fightDroneExplode()
-	if isSpyderBuffed:
+	if isCrawlerBuffed:
 		enemy.make_spawn_slow_on_death()
 	state = State.PURSUING
 

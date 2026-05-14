@@ -65,8 +65,7 @@ mouse_filter = 2
 script = ExtResource("1_pwl3v")
 isGreenDimension = true
 
-[node name="PlantManager" parent="." unique_id=44492489 instance=ExtResource("2_fsj0e")]
-sun_points = 375
+[node name="DemonManager" parent="." unique_id=44492489 instance=ExtResource("2_fsj0e")]
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=839164457]
 process_mode = 1
@@ -417,9 +416,7 @@ position = Vector2(370, 208)
 
 [node name="Timer" type="Timer" parent="." unique_id=1920464950]
 
-[connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
-[connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
+[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

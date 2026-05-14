@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c2o6y18483huo" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Sun-Sheet.png" id="5_ip36g"]
 [ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="5_pd78h"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://bnsjwg6h5xoxn" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Walnut-Sheet.png" id="6_q5gob"]
+[ext_resource type="Texture2D" uid="uid://bnsjwg6h5xoxn" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_SpinalOcculum-Sheet.png" id="6_q5gob"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://dljm8b4c8pmnm" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Wyrm-Sheet.png" id="7_ijvem"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="8"]

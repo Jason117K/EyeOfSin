@@ -1,13 +1,13 @@
 extends DemonHealthComponent
 
-@export var walnutHealth = 375
+@export var spinalOcculumHealth = 375
 
 func receiveBuff(demonName):
-	#print("Buff Name is ", newPlant.name)
+	#print("Buff Name is ", newDemon.name)
 	if !demon.get_is_buffed():
 		match demonName:
-			"WalnutTree" :
-				health = walnutHealth
+			"SpinalOcculum" :
+				health = spinalOcculumHealth
 				isSpinalOcculumBuffed = true 
 
 

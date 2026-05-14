@@ -64,8 +64,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_e23m8")
 
-[node name="PlantManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
-sun_points = 300
+[node name="DemonManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1094768339]
 process_mode = 1
@@ -413,9 +412,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=901939064]
 position = Vector2(370, 208)
 
-[connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
-[connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
+[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

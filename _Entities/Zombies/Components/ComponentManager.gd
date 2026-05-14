@@ -10,7 +10,7 @@ extends Node2D
 
 #State tracking variables 
 var is_attacking = false #Whether or not we attacking
-var target_plant = null  #Holds reference to the plant being attacked
+var target_demon = null  #Holds reference to the demon being attacked
 var isSlow = 0  #how much slow the zombie has
 var thisMaterial  
 var thisMaterial2

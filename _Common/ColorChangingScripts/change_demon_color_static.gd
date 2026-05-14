@@ -15,8 +15,8 @@ var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
 
 var shell_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Shell.png")
 var shell_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_ShellNoBlood.png")
-var shell_walnut := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Walnut_Shell.png")
-var shell_spider = preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Shell.png")
+var shell_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_SpinalOcculum_Shell.png")
+var shell_crawler = preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Shell.png")
 var shell_sun := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Sun_Shell.png")
 var shell_maw := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Maw_Shell.png")
 var worm1_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Worm1.png")
@@ -24,12 +24,12 @@ var worm2_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Worm2
 var worm1_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_Worm1.png")
 var worm2_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_Worm2.png")
 var worm3_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_Worm3.png")
-var worm1_spider := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm1.png")
-var worm2_spider := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm2.png")
+var worm1_crawler := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm1.png")
+var worm2_crawler := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Worm2.png")
 var worm1_maw := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Maw_Worm.png")
 var worm1_sun := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Sun_Worm1.png")
-var worm1_walnut := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Walnut_Worm1.png")
-var worm2_walnut := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Walnut_Worm2.png")
+var worm1_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_SpinalOcculum_Worm1.png")
+var worm2_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_SpinalOcculum_Worm2.png")
 
 
 func _ready() -> void:
@@ -42,7 +42,7 @@ func change_form(new_form):
 		parent.adjust_position(new_form)
 	
 	match new_form:
-		"Sunflower":
+		"Occulum":
 			shell.texture = shell_sun
 			worm2.texture = worm1_sun
 			worm2.global_position = worm2.global_position + Vector2(7,-5)
@@ -51,21 +51,21 @@ func change_form(new_form):
 			#worm3.texture = shell_wyrm
 			worm1.visible = false 
 			worm3.visible = false
-		"Peashooter":
-			shell.texture = shell_spider
-			worm1.texture = worm1_spider
-			worm2.texture = worm2_spider
+		"Crawler":
+			shell.texture = shell_crawler
+			worm1.texture = worm1_crawler
+			worm2.texture = worm2_crawler
 			worm1Animator.adjustParams(new_form)
 			worm2Animator.adjustParams(new_form)
 			#worm3.texture = shell_wyrm
 			worm3.visible = false
-		"Walnut" :
-			shell.texture = shell_walnut
-			worm1.texture = worm1_walnut
+		"SpinalOcculum" :
+			shell.texture = shell_spinal_occulum
+			worm1.texture = worm1_spinal_occulum
 			#worm1.global_position = worm1.global_position + Vector2(-8,3)
 			worm1.global_position = worm1.global_position + Vector2(-10,3)
 			worm1Animator.initial_sprite_position = worm1Animator.initial_sprite_position  + Vector2(-10,3)
-			worm2.texture = worm2_walnut
+			worm2.texture = worm2_spinal_occulum
 		#	worm3.texture = shell_wyrm
 			worm2.global_position = worm1.global_position + Vector2(14,-4)
 			worm2Animator.initial_sprite_position = worm2Animator.initial_sprite_position  + Vector2(14,-4)
@@ -104,7 +104,7 @@ func change_form(new_form):
 func make_buff_glow():
 	if material == null:
 		material = ShaderMaterial.new()
-		material.shader = demon_glow #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:

@@ -4,18 +4,18 @@ extends Demon
 const BLOOD_SCENE := preload("res://_Entities/Demons/Blood/Sun.tscn")
 const WEB_BALL_SCENE := preload("res://_Entities/Demons/Projectile/WebBall.tscn")
 const INSTAKILL_DAMAGE := 9999
-const WALNUT_HEAL_AMOUNT := 100
+const SPINAL_OCCULUM_HEAL_AMOUNT := 100
 const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost()
 
 # Buff dispatch table. Iterated in order in receiveBuff/debuff — the first
-# `key` found inside `bufferName` wins. Walnut's remove is a deliberate
+# `key` found inside `bufferName` wins. SpinalOcculum's remove is a deliberate
 # no-op (buff is permanent).
 const _BUFF_HANDLERS := [
-	{"key": "EggWorm",    "apply": "_apply_eggworm_buff",    "remove": "_remove_eggworm_buff"},
-	{"key": "Peashooter", "apply": "_apply_peashooter_buff", "remove": "_remove_peashooter_buff"},
+	{"key": "Wyrm",    "apply": "_appwyrmorm_buff",    "remove": "_remove_wyrm_buff"},
+	{"key": "Crawler", "apply": "_apply_crawler_buff", "remove": "_remove_crawler_buff"},
 	{"key": "Hive",       "apply": "_apply_hive_buff",       "remove": "_remove_hive_buff"},
-	{"key": "Sunflower",  "apply": "_apply_sunflower_buff",  "remove": "_remove_sunflower_buff"},
-	{"key": "Walnut",     "apply": "_apply_walnut_buff",     "remove": "_remove_walnut_buff"},
+	{"key": "Occulum",  "apply": "_apply_occulum_buff",  "remove": "_remove_occulum_buff"},
+	{"key": "SpinalOcculum",     "apply": "_apply_spinalOcculum_buff",     "remove": "_remove_spinalOcculum_buff"},
 ]
 
 # === Node references ===
@@ -29,7 +29,7 @@ const _BUFF_HANDLERS := [
 @onready var ogDetectionRadius = detectionAreaShape.shape.radius
 
 # === Exports ===
-@export var cost = 200                       # Plant cost (sun cost to place)
+@export var cost = 200                       # Demon cost (sun cost to place)
 @export var alt_target_color: Color
 @export var alt_replace_color: Color
 @export var debug_mode: bool = false
@@ -40,7 +40,7 @@ const _BUFF_HANDLERS := [
 @onready var ogDigestTime = digestTime
 
 # === Runtime state ===
-var PlantManager                                  # PlantManager RefCounted
+var DemonManager                                  # DemonManager RefCounted
 var tentacles: Array[Tentacle] = []               # All Tentacles owned by this Maw
 var available_tentacles: Array[Tentacle] = []     # Currently free for assignment
 var enemies_to_eat: Array = []                    # Detected zombies waiting for room
@@ -54,30 +54,30 @@ var enemies_to_eat: Array = []                    # Detected zombies waiting for
 #   "primary":             Tentacle,
 #   "pending_retract":     int,   # decremented each retraction_finished
 #   "pending_ready_again": int,   # decremented each ready_again
-#   "damage_applied":      bool,  # gate for damage / walnut / web ball
+#   "damage_applied":      bool,  # gate for damage  / web ball
 #   "aborted":             bool,  # gate for cascade-abort
 # }
 var eating_groups: Dictionary = {}
 
 # Buff state
-var willBelchWebs := false                        # Peashooter buff
+var willBelchWebs := false                        
 var willBelchSun := false
-var isEggWyrmBuffed := false
-var isSpyderBuffed := false
+var isWyrmBuffed := false
+var isCrawlerBuffed := false
 var isHiveBuffed := false
-var isSunflowerBuffed := false
-var isWalnutBuffed := false
+var isOcculumBuffed := false
+var isSpinalOcculumBuffed := false
 var bufferName: String
 
 
 func _ready():
 	super()
 	collision_mask = 2
-	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	setup_tentacles()
 
 
-# Plant cost getter
+# Demon cost getter
 func get_cost():
 	return cost
 
@@ -106,7 +106,7 @@ func _get_retraction_center() -> Vector2:
 
 
 # Apply a digestion duration to every active tentacle. Used by setup and
-# by the EggWorm buff (which lengthens digestion).
+# by the Wyrm buff (which lengthens digestion).
 func _set_tentacle_digestion_time(t: float) -> void:
 	for tentacle in tentacles:
 		tentacle.digestion_time = t
@@ -220,10 +220,10 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 			var enemyCompManager = enemy.getCompManager()
 			enemyCompManager.take_damage(INSTAKILL_DAMAGE)
 
-			if isWalnutBuffed:
-				healthComp.health += WALNUT_HEAL_AMOUNT
+			if isSpinalOcculumBuffed:
+				healthComp.health += SPINAL_OCCULUM_HEAL_AMOUNT
 
-			# Web belch (spyder buff + slowed enemy)
+			# Web belch (crawler buff + slowed enemy)
 			var slow = enemyCompManager.getSlow()
 			if slow > 0 and willBelchWebs:
 				var web_ball = WEB_BALL_SCENE.instantiate()
@@ -295,15 +295,15 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 
 #region Rewrite LMAO
 
-# Receive a buff from a neighbor plant. First buff wins —
+# Receive a buff from a neighbor demon. First buff wins —
 # subsequent buffs are ignored by design.
-func receiveBuff(plant):
-	animSpriteComp.receiveBuff(plant)
+func receiveBuff(demon):
+	animSpriteComp.receiveBuff(demon)
 	if isBuffed:
 		return
 
-	super(plant)
-	bufferName = plant.name
+	super(demon)
+	bufferName = demon.name
 
 	var entry := _find_buff_handler()
 	if not entry.is_empty():
@@ -330,21 +330,21 @@ func _find_buff_handler() -> Dictionary:
 
 # === Per-buff apply / remove handlers ===
 
-func _apply_eggworm_buff():
-	if isEggWyrmBuffed: return
+func _appwyrmorm_buff():
+	if isWyrmBuffed: return
 	_set_tentacle_digestion_time(buffedDigestTime)
-	isEggWyrmBuffed = true
+	isWyrmBuffed = true
 
-func _remove_eggworm_buff():
+func _remove_wyrm_buff():
 	_set_tentacle_digestion_time(ogDigestTime)
 
 
-func _apply_peashooter_buff():
-	if isSpyderBuffed: return
+func _apply_crawler_buff():
+	if isCrawlerBuffed: return
 	willBelchWebs = true
-	isSpyderBuffed = true
+	isCrawlerBuffed = true
 
-func _remove_peashooter_buff():
+func _remove_crawler_buff():
 	willBelchWebs = false
 
 
@@ -359,24 +359,24 @@ func _remove_hive_buff():
 	detectionAreaShape.shape.radius = ogDetectionRadius
 
 
-func _apply_sunflower_buff():
-	if isSunflowerBuffed: return
+func _apply_occulum_buff():
+	if isOcculumBuffed: return
 	willBelchSun = true
-	isSunflowerBuffed = true
+	isOcculumBuffed = true
 
-func _remove_sunflower_buff():
+func _remove_occulum_buff():
 	willBelchSun = false
 
 
-func _apply_walnut_buff():
-	isWalnutBuffed = true
+func _apply_spinalOcculum_buff():
+	isSpinalOcculumBuffed = true
 
-func _remove_walnut_buff():
-	pass  # Walnut buff is permanent by design
+func _remove_spinalOcculum_buff():
+	pass  # SpinalOcculum buff is permanent by design
 
 #endregion
 
-# Sun generation (sunflower buff payout)
+# Sun generation (occulum buff payout)
 func generate_sun():
 	var sun_instance = BLOOD_SCENE.instantiate()
 	add_child(sun_instance)
@@ -402,8 +402,8 @@ func die():
 	if tentacle2: tentacle2.queue_free()
 	if tentacle3: tentacle3.queue_free()
 
-	PlantManager.clear_space(Vector2(self.global_position.x - 16, self.global_position.y))
-	PlantManager.clear_space(Vector2(self.global_position.x + 16, self.global_position.y))
+	DemonManager.clear_space(Vector2(self.global_position.x - 16, self.global_position.y))
+	DemonManager.clear_space(Vector2(self.global_position.x + 16, self.global_position.y))
 	buffNodes.clearBuffs()
 	queue_free()
 

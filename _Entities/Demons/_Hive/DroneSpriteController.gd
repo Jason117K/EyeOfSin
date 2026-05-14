@@ -17,7 +17,7 @@ func _apply_hue_shift() -> void:
 	# Create material if needed
 	if material == null:
 		material = ShaderMaterial.new()
-		material.shader = demon_hue_shift #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+		material.shader = demon_hue_shift #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:
@@ -68,7 +68,7 @@ func make_glow():
 	if material == null:
 		#print("PRE LOL")
 		material = ShaderMaterial.new()
-		material.shader = demon_glow #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:

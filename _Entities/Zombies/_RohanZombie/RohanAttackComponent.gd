@@ -1,17 +1,17 @@
-﻿extends AttackComponent
+extends AttackComponent
 
 @export var shootProbability = 20
 
 @onready var attack_rays = [$"../DMGRayCast2D_1", $"../DMGRayCast2D_2", $"../DMGRayCast2D_3"]
 @onready var shoot_ray = $"../DMGRayCast2D_Shoot"
-@onready var target_plants = []
+@onready var target_demons = []
 @onready var teleport_timer = $"../TeleportTimer"
 @onready var shoot_timer = $"../ShootTimer"
 var projectile_scene = preload("res://_Entities/Zombies/_RohanZombie/RohanProjectile.tscn" )
 var rng = RandomNumberGenerator.new()
 var laneYPositions = [77.0, 109.0, 141.0, 173.0, 205.0, 239.15, 272.0]
 
-func attack_plant(collider):
+func attack_demon(collider):
 	pass
 	
 
@@ -39,7 +39,7 @@ func _on_TeleportTimer_timeout():
 	
 
 #if self.is_in_group("Green"):
-		#print(" I AM GREEN SPIDER I WILL ATTACK GREEN")
+		#print(" I AM GREEN CRAWLER I WILL ATTACK GREEN")
 		#$DMG_RayCast2D.collision_mask = 3
 		#$DMG_RayCast2D.set_collision_mask_value(1,false)
 		#$DMG_RayCast2D.set_collision_mask_value(2,false)
@@ -86,22 +86,22 @@ func _on_AttackTimer_timeout():
 	else:
 		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
-	if target_plants == null:
+	if target_demons == null:
 		return
-	for plant in target_plants:
-		if(is_instance_valid(plant)):
-			if(((plant.is_in_group("Green") && self.parent.is_in_group("Green"))
-		|| (plant.is_in_group("Purple") && self.parent.is_in_group("Purple")))):
-				if(plant.get_health() >= 0):
-					if plant.has_method("mawBuffed"):
-						if plant.can_eat_zombie == true :
-							plant.eat_zombie()
+	for demon in target_demons:
+		if(is_instance_valid(demon)):
+			if(((demon.is_in_group("Green") && self.parent.is_in_group("Green"))
+		|| (demon.is_in_group("Purple") && self.parent.is_in_group("Purple")))):
+				if(demon.get_health() >= 0):
+					if demon.has_method("mawBuffed"):
+						if demon.can_eat_zombie == true :
+							demon.eat_zombie()
 							get_parent().die()
-					if plant.has_method("walnutWyrmBuffed"):
-						if plant.can_damage_zombie == true :
+					if demon.has_method("spinalOcculumWyrmBuffed"):
+						if demon.can_damage_zombie == true :
 							zombie.getCompManager().take_damage(10)
 							
-					plant.take_damage(attack_power)
+					demon.take_damage(attack_power)
 				else:
 					stop_attack()
 					return
@@ -110,16 +110,16 @@ func _on_AttackTimer_timeout():
 			else:
 				stop_attack()
 				return
-	if(target_plants.size() > 0):
+	if(target_demons.size() > 0):
 		zombieSprite.play("Stomp_End")
 		await zombieSprite.animation_finished
-	target_plants = []
+	target_demons = []
 	stop_attack()
 # Stops the attack and resumes movement
 func stop_attack():
 	#print("Stopping Attack")
 	is_attacking = false
-	target_plants = null
+	target_demons = null
 	attack_timer.stop()
 
 func _process(_delta):
@@ -130,7 +130,7 @@ func _process(_delta):
 				var collider = ray.get_collider()
 				#print(parent.name , " Its collding with ", collider.name )
 				if collider:
-					if collider.is_in_group("Plants"):
+					if collider.is_in_group("Demons"):
 						#print("Collider In Right Group")
 						if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
 							if collider.get_parent().get_parent().get_parent() != self.get_parent().get_parent().get_parent():
@@ -150,7 +150,7 @@ func _process(_delta):
 		#this code block is for attacking multiple enemies at a time
 		if colliders.size() > 0:
 			is_attacking = true
-			target_plants = colliders
+			target_demons = colliders
 			zombieSprite.play("Stomp_Start")
 			await zombieSprite.animation_finished
 			if "Bucket" in parent.name:
@@ -160,12 +160,12 @@ func _process(_delta):
 			elif "Screen" in parent.name:
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 			else:
-				#print("Playing ZOMBIE DEAL DAMAGE in attack_plant for parent ", parent.name)
+				#print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 			attack_timer.start()
 		else:
 			if shoot_ray.is_colliding() && 1 == rng.randi_range(1, (shootProbability)):
-				if shoot_ray.get_collider().is_in_group("Plants"):
+				if shoot_ray.get_collider().is_in_group("Demons"):
 					shoot()
 
 

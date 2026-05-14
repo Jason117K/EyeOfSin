@@ -6,7 +6,7 @@ var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
 var swap_ability_instance : Node
 
 var root
-var selected_plant = occulum_scene  # Holds the currently selected plant scene
+var selected_demon = occulum_scene  # Holds the currently selected demon scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
 #var is_previewing: bool = false
 
@@ -18,12 +18,13 @@ var purple_scene := true
 signal clicked_Eye
 signal codex_clicked
 
-# Preload the plant scenes
-var peashooter_scene = preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
+
+# Preload the demon scenes
+var crawler_scene = preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
 var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
-var walnut_scene = preload("res://_Entities/Demons/_CagedOculum/WalnutTree.tscn")
+var spinalOcculum_scene = preload("res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn")
 var maw_scene = preload("res://_Entities/Demons/_Maw/Maw.tscn")
-var egg_scene = preload("res://_Entities/Demons/_Wyrm/EggWorm.tscn")
+var wyrm_scene = preload("res://_Entities/Demons/_Wyrm/Wyrm.tscn")
 var hive_scene = preload("res://_Entities/Demons/_Hive/Hive.tscn")
 var heart_scene = preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
 var portal_scene = preload("res://_Entities/SpecialElementsPortal/Portal.tscn")
@@ -34,16 +35,16 @@ var demon_normal_stylebox_default = preload("res://_Common/StyleBoxes/demon_norm
 var demon_highlight_stylebox = preload("res://_Common/StyleBoxes/demon_highlight_stylebox.tres")
 
 
-# Label for Current Plant 
-var currentPlantLabel
-var currentPlantCost
+# Label for Current Demon 
+var currentDemonLabel
+var currentDemonCost
 var deselectText = " PRESS [X] TO DESELECT"
 
 @onready var preview_container = Node2D.new()
 @onready var panelContainer = $PanelContainer
 @onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 @onready var swapButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
-@onready var removeDemonButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemovePlant/RemovePlantButton
+@onready var removeDemonButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton
 @onready var codexButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2/CodexButton
 @onready var fastForwardButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton
 @onready var all_extra_buttons := [fastForwardButton,swapButton,removeDemonButton, codexButton]
@@ -88,8 +89,8 @@ func _ready():
 	#get_parent().call_deferred("add_child", swap_ability_instance)
 
 	
-	Global.plant_selection_menu = self
-	Global.resetSunflowerCount()
+	Global.demon_selection_menu = self
+	Global.resetOcculumCount()
 	Global._load_demon_costs()
 	
 	CrawlerButton.pressed.connect(_on_CrawlerButton_pressed)
@@ -114,8 +115,8 @@ func _ready():
 	# Connect button signals to their respective functions
 	root = get_parent().get_name()
 	
-	#Set Up Label for Displaying Current Plant
-	#currentPlantLabel = $CurrentPlantLabel
+	#Set Up Label for Displaying Current Demon
+	#currentDemonLabel = $CurrentDemonLabel
 	
 
 # Handle Deselection
@@ -124,10 +125,10 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		#print("Key Pressed")
 		if event.keycode == KEY_X:
-			deselect_plant()
+			deselect_demon()
 			#clear_preview()
 			#release_all_focus()
-			#selected_plant = null 
+			#selected_demon = null 
 		if event.keycode == KEY_Y:
 			#print("Y Key Pressed")
 			if canSwapScenes:
@@ -161,131 +162,130 @@ func setPanelContainerWidth(newWidth: int):
 	#print("Panel Container Dimensions is ", panelContainer.size)
 
 		
-func deselect_plant():
+func deselect_demon():
 	clear_preview()
 	release_all_focus()
-	selected_plant = null 			
+	selected_demon = null 			
 	setCanRemoveFalse()
 
-# Plays Sound and Makes the Peashooter the current selected plant, changing label & preview image 
 func _on_CrawlerButton_pressed():
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
-	selected_plant = peashooter_scene
-	var temp_instance = peashooter_scene.instantiate()
-	create_preview(peashooter_scene)
+	selected_demon = crawler_scene
+	var temp_instance = crawler_scene.instantiate()
+	create_preview(crawler_scene)
 	add_button_highlight(CrawlerButton)
 	
-	#currentPlantLabel.text = "SPIDER SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
-	#currentPlantCost.text = str(temp_instance.get_cost())
+	#currentDemonLabel.text = "CRAWLER SELECTED " + deselectText
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterLabel
+	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
-	print("Peashooter selected")
+	print("Crawler selected")
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	var CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	#remove_button_highlight(CrawlerButton)
 
-func increaseSunflowerCost():
-	OcculumCostLabel.text = str(50+(Global.getSunflowerCount()*5))
+func increaseOcculumCost():
+	OcculumCostLabel.text = str(50+(Global.getOcculumCount()*5))
 	
-# Plays Sound and Makes the Sunflower the current selected plant, changing label & preview image 
+# Plays Sound and Makes the Occulum the current selected demon, changing label & preview image 
 func _on_OcculumButton_pressed():
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
-	selected_plant = occulum_scene
+	selected_demon = occulum_scene
 	var temp_instance = occulum_scene.instantiate()
 	create_preview(occulum_scene)
 	add_button_highlight(OcculumButton)
 	
-	#currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunFlowerLabel
-	#currentPlantCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
+	#currentDemonLabel.text = "EVIL EYE SELECTED " + deselectText
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumLabel
+	#currentDemonCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
 	OcculumCost  += 5
 	
 	
-	#currentPlantCost.text = "Penis"
+	#currentDemonCost.text = "Penis"
 	temp_instance.queue_free()
 	
 ##	print("3Label text is ", OcculumCostLabel.text)
-#	print("Sunflower selected", temp_instance.get_name())
+#	print("Occulum selected", temp_instance.get_name())
 #	$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	clicked_Eye.emit()
 
 
-# Plays Sound and Makes the Walnut the current selected plant, changing label & preview image 
+# Plays Sound and Makes the SpinalOcculum the current selected demon, changing label & preview image 
 func _on_SpinalOcculumButton_pressed():
 	Global.hide_notification_bar()
-	selected_plant = walnut_scene
-	var temp_instance = walnut_scene.instantiate()
-	create_preview(walnut_scene)
+	selected_demon = spinalOcculum_scene
+	var temp_instance = spinalOcculum_scene.instantiate()
+	create_preview(spinalOcculum_scene)
 	add_button_highlight(SpinalOcculumButton)
 	setCanRemoveFalse()
-	#currentPlantLabel.text = "OCCULAR SPINE SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/WalnutLabel
-	#currentPlantCost.text = str(temp_instance.get_cost())
+	#currentDemonLabel.text = "OCCULAR SPINE SELECTED " + deselectText
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumLabel
+	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
-	var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/SpinalOcculumButton
+	var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
 	#SpinalOcculumButton.release_focus()
-	print("Walnut selected")
+	print("SpinalOcculum selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	#$UIClickAudio.play()
 
-# Plays Sound and Makes the Maw the current selected plant, changing label & preview image 
+# Plays Sound and Makes the Maw the current selected demon, changing label & preview image 
 func _on_MawButton_pressed():
 	Global.hide_notification_bar()
-	selected_plant = maw_scene
+	selected_demon = maw_scene
 	var temp_instance = maw_scene.instantiate()	
 	create_preview(maw_scene)
 	add_button_highlight(MawButton)
 	setCanRemoveFalse()
-	#currentPlantLabel.text = "MAW SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
-	#currentPlantCost.text = str(temp_instance.get_cost())
+	#currentDemonLabel.text = "MAW SELECTED " + deselectText
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
+	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 		
 	print("Maw Selected")
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
-# Plays Sound and Makes the EggWorm the current selected plant, changing label & preview image 
+# Plays Sound and Makes the Wyrm the current selected demon, changing label & preview image 
 func _on_WyrmButton_pressed():
 	Global.hide_notification_bar()
-	selected_plant = egg_scene
-	create_preview(egg_scene)
+	selected_demon = wyrm_scene
+	create_preview(wyrm_scene)
 	add_button_highlight(WyrmButton)
-	var temp_instance = egg_scene.instantiate()
+	var temp_instance = wyrm_scene.instantiate()
 	setCanRemoveFalse()
-	#currentPlantLabel.text = "EGGWORM SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Egg/EggLabel
-	#currentPlantCost.text = str(temp_instance.get_cost())
+	#currentDemonLabel.text = "wyrm SELECTED " + deselectText
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmLabel
+	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	
-	print("EggWorm Selected")
+	print("Wyrm Selected")
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
 
 	
-# Plays Sound and Makes the Hive the current selected plant, changing label & preview image 
+# Plays Sound and Makes the Hive the current selected demon, changing label & preview image 
 func _on_HiveButton_pressed():
-	selected_plant = hive_scene
+	selected_demon = hive_scene
 	Global.hide_notification_bar()
 	create_preview(hive_scene)
 	add_button_highlight(HiveButton)
 	var temp_instance = hive_scene.instantiate()
 	setCanRemoveFalse()	
-	#currentPlantLabel.text = "HIVE SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
-	#currentPlantCost.text = str(temp_instance.get_cost())
+	#currentDemonLabel.text = "HIVE SELECTED " + deselectText
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
+	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 		
 	print("Hive Selected")
 	#$UIClickAudio.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-# Creates a transparent preview image for a given plant scene 
+# Creates a transparent preview image for a given demon scene 
 
 func create_preview(demon_scene):
 	#print("MAKE A PREVIEW", demon_scene)
@@ -294,8 +294,8 @@ func create_preview(demon_scene):
 	
 	Global.show_guide()
 	
-	var temp_plant = demon_scene.instantiate()
-	var preview_node = find_preview_nodes(temp_plant)
+	var temp_demon = demon_scene.instantiate()
+	var preview_node = find_preview_nodes(temp_demon)
 	
 	if preview_node:
 		#print("Found Preview Node : ", preview_node)
@@ -328,7 +328,7 @@ func create_preview(demon_scene):
 	#	print("Preview sprites count: ", preview_sprites.size())
 
 	
-	temp_plant.queue_free()
+	temp_demon.queue_free()
 	
 # Clears the current preview image 
 func clear_preview():
@@ -342,7 +342,7 @@ func clear_preview():
 		#print("Demon Button ia ",demonButton )
 		remove_button_highlight(demonButton)
 	preview_sprites.clear()
-	#currentPlantLabel.text = ""
+	#currentDemonLabel.text = ""
 	is_previewing = false
 
 func release_all_focus():
@@ -453,6 +453,9 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 	var margin := highlight_border_thickness + 4
 	panel.global_position = button.global_position - Vector2(margin, margin)
 	panel.size = button.size + Vector2(margin * 2, margin * 2)	
+	print("Button Global Pos Is  : ", button.global_position)
+	print("Margin Is ", margin)
+	print("Crawler Button Panel Global Pos is ",panel.global_position  )
 	#panel.offset_left = -margin
 	#panel.offset_top = -margin
 	#panel.offset_right = margin
@@ -481,7 +484,7 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 
 
 
-	
+	print("Crawler Button is ", button, " panel is ", panel )
 	start_glow_pulse(button, panel, highlight_style)
 
 func start_glow_pulse(button: TextureButton, _panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
@@ -524,6 +527,11 @@ func stop_glow_pulse(button: TextureButton) -> void:
 		if is_instance_valid(panel):
 			panel.queue_free()
 		button.remove_meta("highlight_panel")
+	if button.get_child(0) != null:
+		if button.get_child(0).name == "HighlightPanel":
+			print("Going to queue free button highlight : ", button.get_child(0))
+			button.get_child(0).queue_free()
+			pass
 		
 func remove_pulsing_button_highlight(button: TextureButton) -> void:
 	if button.has_meta("glow_tween"):
@@ -548,14 +556,14 @@ func remove_button_highlight(button: TextureButton) -> void:
 		
 
 
-func _on_plant_manager_plant_placed() -> void:
+func _on_demon_manager_demon_placed() -> void:
 	var CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Peashooter/PeashooterButton2
 	CrawlerButton.visible = true 
 	crawlerCostLabel.visible = true 
 	#add_button_highlight(CrawlerButton)
 
 func showEyeSummon():
-	var OcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Sunflower/SunflowerButton
+	var OcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
 	OcculumButton.visible = true 
 	OcculumCostLabel.visible = true 
 
@@ -563,21 +571,21 @@ func showEyeSummon():
 func _on_wave_manager_wave_2_almost_start() -> void:
 	if root == "Main":
 		
-		var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Walnut/SpinalOcculumButton
+		var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
 		SpinalOcculumCostLabel.visible = true 
 		SpinalOcculumButton.visible = true 
 		
 	elif root == "Level2":
-		var WyrmButton = $VBoxContainer/HBoxContainer/Egg/WyrmButton
+		var WyrmButton = $VBoxContainer/HBoxContainer/Wyrm/WyrmButton
 		wyrmCostLabel.visible = true 
 		WyrmButton.visible = true 
 		
 
 
-func _on_remove_plant_button_pressed() -> void:
+func _on_remove_demon_button_pressed() -> void:
 		clear_preview()
 		
-		selected_plant = null 
+		selected_demon = null 
 		canRemove = true 
 		
 func setCanRemoveFalse():
@@ -625,13 +633,13 @@ func _on_heart_button_pressed() -> void:
 	if Global.hero_demon_is_summoned():
 		return 
 	
-	selected_plant = heart_scene
+	selected_demon = heart_scene
 	var temp_instance = heart_scene.instantiate()
 	create_preview(heart_scene)
 	setCanRemoveFalse()
-	#currentPlantLabel.text = "HEART DEMON SELECTED " + deselectText
-	currentPlantCost = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartLabel
-	#currentPlantCost.text = str(temp_instance.get_cost())
+	#currentDemonLabel.text = "HEART DEMON SELECTED " + deselectText
+	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartLabel
+	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
 	var HeartButton = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 	#SpinalOcculumButton.release_focus()
@@ -652,13 +660,13 @@ func _on_portal_button_pressed() -> void:
 				portalButton.self_modulate = Color("7575756b")
 			return
 		
-	selected_plant = portal_scene
+	selected_demon = portal_scene
 	var temp_instance = portal_scene.instantiate()
 	create_preview(portal_scene)
 	setCanRemoveFalse()
-	currentPlantCost = 0
-	#currentPlantCost.text = "0"
-	#currentPlantLabel.text = "PORTAL SELECTED " + deselectText
+	currentDemonCost = 0
+	#currentDemonCost.text = "0"
+	#currentDemonLabel.text = "PORTAL SELECTED " + deselectText
 	temp_instance.queue_free()
 	print("Portal selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)

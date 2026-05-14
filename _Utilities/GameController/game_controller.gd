@@ -14,7 +14,7 @@ var swap_cooldown_timer
 var cooldown = 0.1
 var can_swap := true 
 
-var plant_manager
+var demon_manager
 
 @onready var pauseButton = $PauseButton
 
@@ -40,7 +40,7 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	#print_scene_tree()
 	pauseButton.visible = true 
-	#print("Changing scene to ", new_scene1 , " AND ", new_scene2)
+	print("Changing scene to ", new_scene1 , " AND ", new_scene2)
 	if !current_scenes.is_empty():
 		if delete:
 		#	print("Current Scenes is ",current_scenes )
@@ -82,6 +82,8 @@ func change_dual_scenes(new_scene1 : String, new_scene2 : String, delete: bool =
 	scene.add_child(new1)
 	current_scene = new1 
 	current_scenes.append(new1)
+	
+	#new1._ready()
 
 	var new2 = load(new_scene2).instantiate()
 	new2.visible = false 
@@ -112,32 +114,32 @@ func swap_scenes():
 	#	print("Swap Scenes")
 		#current_scene.visible = false 
 		if on_scene_1:
-			plant_manager = current_scenes[0].get_demon_manager()
-			plant_manager.clear_hero_demon()
+			demon_manager = current_scenes[0].get_demon_manager()
+			demon_manager.clear_hero_demon()
 			
 			current_scenes[1].visible = true 
-			plant_manager = current_scenes[1].get_demon_manager()
+			demon_manager = current_scenes[1].get_demon_manager()
 			current_scenes[1].set_process_input(true)
 			current_scenes[0].visible = false 
 			current_scenes[1].set_process_input(false)
 			on_scene_1 = false 
 		else:
-			plant_manager = current_scenes[1].get_demon_manager()
-			plant_manager.clear_hero_demon()
+			demon_manager = current_scenes[1].get_demon_manager()
+			demon_manager.clear_hero_demon()
 			
 			current_scenes[1].visible = false 
 			current_scenes[1].set_process_input(false)
 			current_scenes[0].visible = true 
-			plant_manager = current_scenes[0].get_demon_manager()
+			demon_manager = current_scenes[0].get_demon_manager()
 			current_scenes[0].set_process_input(true)
 			on_scene_1 = true 		
 			
 		swap_cooldown_timer.start()
 	#for child in current_scene
-	#plant_manager = current_scene.find_child("PlantManager")
-	print("PlantManager Is ", plant_manager)
+	#demon_manager = current_scene.find_child("DemonManager")
+	print("DemonManager Is ", demon_manager)
 	#Swap Hero Heart Demon Here 
-	plant_manager.swap_heart()
+	demon_manager.swap_heart()
 	
 func get_alt_dimension():
 	if on_scene_1:
@@ -156,17 +158,17 @@ func place_empty_in_alt_scene(grid_pos):
 	#print("Placing Empty in Alt At QQ ", grid_pos)
 	if current_scenes[1].visible == false :
 	#	print("current_scenes[1] is", current_scenes[1])
-		current_scenes[1].place_empty_blocker_plant(grid_pos)
+		current_scenes[1].place_empty_blocker_demon(grid_pos)
 	elif current_scenes[0].visible == false :
-		current_scenes[0].place_empty_blocker_plant(grid_pos)
+		current_scenes[0].place_empty_blocker_demon(grid_pos)
 
 func remove_empty_in_alt_scene(grid_pos):	
 	#print("Removing Empty in Alt At QQ ", grid_pos)
 	if current_scenes[1].visible == false :
 	#	print("current_scenes[1] is", current_scenes[1])
-		current_scenes[1].remove_empty_blocker_plant(grid_pos)
+		current_scenes[1].remove_empty_blocker_demon(grid_pos)
 	elif current_scenes[0].visible == false :
-		current_scenes[0].remove_empty_blocker_plant(grid_pos)	
+		current_scenes[0].remove_empty_blocker_demon(grid_pos)	
 	
 	
 func change_from_dual_scenes(new_scene : String, delete: bool = true, keep_running : bool = false) -> void:

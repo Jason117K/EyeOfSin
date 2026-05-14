@@ -2,9 +2,9 @@ extends LevelTemplate
 # level_0_2.gd - Level 0-2 Tutorial Controller
 
 # Preloaded demo scenes
-var hive_egg_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/egg_spine_buff.tscn")
-var spyder_sun_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/sunflower_spyder_buff.tscn")
-var sun_spyder_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/spyder_sunflower_buff.tscn")
+var hive_wyrm_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/wyrm_spine_buff.tscn")
+var spyder_sun_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_spyder_buff.tscn")
+var sun_spyder_buff_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/spyder_occulum_buff.tscn")
 var buff_demo_scene = preload("res://_UI/GameDemonstrations/DemonTutorials/blood_buff_demo.tscn")
 var buckethead_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
 
@@ -17,9 +17,9 @@ var level03 = "res://_Stages/Level3/Level0-3.tscn"
 var level03Alt = "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
 # Text file paths
-const TUTORIAL_SELECT_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSunflower.txt"
-const TUTORIAL_PLACE_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSunflower.txt"
-const TUTORIAL_PLACE_WALNUT = "res://_Assets/Text/TextFiles/DemonDescriptions/WalnutDescription.txt"
+const TUTORIAL_SELECT_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectOcculum.txt"
+const TUTORIAL_PLACE_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt"
+const TUTORIAL_PLACE_SPINALOCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
 const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
 const TUTORIAL_SELECT_SPYDER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
 const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
@@ -94,13 +94,13 @@ func _setup_tutorial():
 			"enter": _start_explain_buckethead_zombie,
 		},
 		{
-			"name": "FORCE_SELECT_WALNUT",
-			"enter": _start_force_select_walnut,
+			"name": "FORCE_SELECT_SPINALOCCULUM",
+			"enter": _start_force_select_spinalOcculum,
 			"input_filter": _filter_block_keyboard,
 		},
 		{
-			"name": "FORCE_PLACE_WALNUT",
-			"enter": _start_force_place_walnut,
+			"name": "FORCE_PLACE_SPINALOCCULUM",
+			"enter": _start_force_place_spinalOcculum,
 			"input_filter": _filter_block_deselect,
 		},
 	])
@@ -120,26 +120,27 @@ func _ready():
 	_configure_waves()
 	attach_script_to_sway_children()
 
-	setup_plant_selection_menu()
+	setup_demon_selection_menu()
 	pause_Button.set_restart_levels(level02, level02Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_OCCULUM, false)
 	
-	Global.resetSunflowerCount()
+	Global.resetOcculumCount()
 	call_deferred("_find_green_dimension")
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	plantManager.connect("plant_placed", Callable(self, "_on_occulum_placed"))
-	plantManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
-	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
+	demonManager.connect("demon_placed", Callable(self, "_on_occulum_placed"))
+	demonManager.connect("spyder_placed", Callable(self, "_on_spyder_placed"))
+	demonManager.connect("spinalOcculum_placed", Callable(self, "_on_spinalOcculum_placed"))
 
 	occulum_button.connect("pressed", Callable(self, "_on_occulum_button_pressed"))
 	crawler_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
-	spinal_occulum_button.connect("pressed", Callable(self, "_on_walnut_button_pressed"))
+	spinal_occulum_button.connect("pressed", Callable(self, "_on_spinalOcculum_button_pressed"))
 
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
+	print("Crawler Button at ready is : ", crawler_button)
 	finish_ready()
 
 
@@ -174,7 +175,7 @@ func _input(event):
 func _start_force_select_occulum():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_OCCULUM,false)
 	
-	#show_only_plant_buttons(["Occulum"])
+	#show_only_demon_buttons(["Occulum"])
 	hide_all_demon_buttons_with_exception(["Occulum"])
 	if occulum_glow_added == false:
 		demonSelectionMenu.add_pulsing_button_highlight(occulum_button)
@@ -197,13 +198,14 @@ func _start_explain_blood_gen():
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_GEN, false)
 	
 	waiting_for_blood = true
-	blood_before_pickup = plantManager.blood_points
+	blood_before_pickup = demonManager.blood_points
 
 
 func _start_force_select_spyder_after_blood():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER_AFTER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
-	#show_only_plant_buttons(["Crawler"])
+	#show_only_demon_buttons(["Crawler"])
+	print("Crawler Button is now : ", crawler_button)
 	demonSelectionMenu.add_pulsing_button_highlight(crawler_button)
 	print("Add Glow Pulse A")
 	#show_spotlight_at_node(crawler_button)
@@ -242,7 +244,7 @@ func _start_wave_1():
 	green_dimension.start_game()
 	print("Sussy31")
 	hide_all_demon_buttons_with_exception(["Occulum","Crawler"])
-	#show_only_plant_buttons(["Occulum", "Crawler"])
+	#show_only_demon_buttons(["Occulum", "Crawler"])
 	wave_1_active = false
 	wave_1_complete = false
 
@@ -257,22 +259,22 @@ func _start_explain_buckethead_zombie():
 	toolTips.set_visual_tutorial_visual(buckethead_zombie_demo_scene.instantiate())
 
 
-func _start_force_select_walnut():
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WALNUT, false)
+func _start_force_select_spinalOcculum():
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SPINALOCCULUM, false)
 	hide_all_demon_buttons_with_exception(["SpinalOcculum"])
 	print("Add Glow Pulse C")
-	#show_only_plant_buttons(["Walnut"])
+	#show_only_demon_buttons(["SpinalOcculum"])
 	demonSelectionMenu.add_pulsing_button_highlight(spinal_occulum_button)
 	demonSelectionMenu.get_spinal_occulum_button().show()
-	#hbox.get_node("Walnut").visible = true
+	#hbox.get_node("SpinalOcculum").visible = true
 	#show_spotlight_at_node(spinal_occulum_button)
-	plantManager.add_sun(50.0)
+	demonManager.add_sun(50.0)
 	green_dimension.add_sun(50.0)
 
 
-func _start_force_place_walnut():
+func _start_force_place_spinalOcculum():
 	print("PLACING WALL NUT")
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WALNUT, false)
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SPINALOCCULUM, false)
 	
 	#demonSelectionMenu.remove_button_highlight(spinal_occulum_button)
 	demonSelectionMenu.stop_glow_pulse(spinal_occulum_button)
@@ -326,6 +328,7 @@ func _on_occulum_button_pressed():
 
 
 func _on_occulum_placed(grid_pos: Vector2):
+	print("OCCULUM PLACED")
 	if get_current_step_name() != "FORCE_PLACE_OCCULUM":
 		return
 
@@ -334,14 +337,19 @@ func _on_occulum_placed(grid_pos: Vector2):
 	# Wait for occulum to instantiate, then force blood generation
 	await get_tree().create_timer(0.3).timeout
 
-	var occulums = get_tree().get_nodes_in_group("Plants")
-	for plant in occulums:
-		if "Sunflower" in plant.name:
-			tutorial_occulum = plant
+	var occulums = get_tree().get_nodes_in_group("Demons")
+	print("occulums is ", occulums)
+	for demon in occulums:
+		print("DEMON IS ", demon)
+		if "Occulum" in demon.name:
+			print("OCCULUM FOUND")
+			tutorial_occulum = demon
 			break
 
 	if tutorial_occulum and tutorial_occulum.has_method("generate_sun"):
+		advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
 		tutorial_sun_instance = tutorial_occulum.generate_sun()
+		print("Should Generate Blood ")
 
 		if tutorial_sun_instance and tutorial_sun_instance.has_node("Auto_pick_up_timer"):
 			tutorial_sun_instance.get_node("Auto_pick_up_timer").stop()
@@ -352,7 +360,7 @@ func _on_occulum_placed(grid_pos: Vector2):
 			pass
 			#show_spotlight_at_position(tutorial_sun_instance.global_position, 0.12)
 	print("Advancing Tutorial 222222")
-	advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
+#	advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
 
 
 func _on_spyder_button_pressed():
@@ -373,8 +381,8 @@ func _on_spyder_placed(grid_pos: Vector2):
 		if grid_pos != expected_pos:
 			# Invalid placement — delete, refund, show error, let player retry
 			await get_tree().create_timer(0.15).timeout
-			plantManager.clear_space(grid_pos)
-			plantManager.add_sun(50)
+			demonManager.clear_space(grid_pos)
+			demonManager.add_sun(50)
 			get_tree().paused = true
 			toolTips.set_basic_tutorial_text(TUTORIAL_INVALID_SPYDER, true)
 			#TODO Add Highlight
@@ -385,16 +393,16 @@ func _on_spyder_placed(grid_pos: Vector2):
 			advance_tutorial() # → EXPLAIN_BLOOD_BUFFS
 
 
-func _on_walnut_button_pressed():
-	if get_current_step_name() == "FORCE_SELECT_WALNUT":
+func _on_spinalOcculum_button_pressed():
+	if get_current_step_name() == "FORCE_SELECT_SPINALOCCULUM":
 		print("Advancing Tutorial 1Nut")
-		advance_tutorial() # → FORCE_PLACE_WALNUT
+		advance_tutorial() # → FORCE_PLACE_SPINALOCCULUM
 
 
-func _on_walnut_placed(grid_pos: Vector2):
-	if get_current_step_name() == "FORCE_PLACE_WALNUT":
+func _on_spinalOcculum_placed(grid_pos: Vector2):
+	if get_current_step_name() == "FORCE_PLACE_SPINALOCCULUM":
 		toolTips.hide()
-		#show_only_plant_buttons(["Occulum", "Crawler", "Spinal-Occulum"])
+		#show_only_demon_buttons(["Occulum", "Crawler", "Spinal-Occulum"])
 		hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
 
 
@@ -402,19 +410,19 @@ func _on_wave_started(wave_index: int):
 	match wave_index:
 		0:
 			print("Sussy1")
-			#show_only_plant_buttons(["Occulum", "Crawler"])
+			#show_only_demon_buttons(["Occulum", "Crawler"])
 			hide_all_demon_buttons_with_exception(["Occulum", "Crawler"])
 			wave_1_active = true
 		1:
 			go_to_step("EXPLAIN_BUCKETHEAD_ZOMBIE")
 		2:
-			go_to_step("FORCE_SELECT_WALNUT")
+			go_to_step("FORCE_SELECT_SPINALOCCULUM")
 #endregion
 
 
 #region Blood Pickup Detection
 func _physics_process(_delta):
-	if waiting_for_blood and plantManager.blood_points > blood_before_pickup:
+	if waiting_for_blood and demonManager.blood_points > blood_before_pickup:
 		waiting_for_blood = false
 		toolTips.hide()
 		hide_spotlight()
@@ -425,11 +433,11 @@ func _physics_process(_delta):
 
 
 #region UI Helpers
-func setup_plant_selection_menu():
+func setup_demon_selection_menu():
 	hide_all_demon_buttons_with_exception(["Occulum"])
 
 
-func show_only_plant_buttons(visible_containers: Array):
+func show_only_demon_buttons(visible_containers: Array):
 	for container_name in ALL_DEMON_CONTAINERS:
 		var container = hbox.get_node(container_name)
 		var should_show = container_name in visible_containers
@@ -441,3 +449,6 @@ func show_only_plant_buttons(visible_containers: Array):
 func show_guide():
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 5)
 #endregion
+
+func get_true_name():
+	return "Level0-2"

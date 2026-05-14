@@ -21,8 +21,8 @@ func shoot_projectile():
 	
 	if hiveBuffed:
 		second_shot_timer.start()
-	if walnutBuffed:
-		projectile.walnutBuff = true 
+	if spinalOcculumBuffed:
+		projectile.spinalOcculumBuff = true 
 	if sunBuffed:
 		projectile.sunBuff = true 
 	if wyrmBuffed:
@@ -30,7 +30,7 @@ func shoot_projectile():
 
 
 func second_shoot_projectile():
-	print("Shoot 2nd Proj From Spider ")
+	print("Shoot 2nd Proj From Crawler ")
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	projectile = projectile_scene.instantiate()
 	projectile.position = parent_demon.position + Vector2(32, 0)  # Adjust starting position

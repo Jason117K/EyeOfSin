@@ -75,12 +75,12 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 	
-	Global.resetSunflowerCount()
+	Global.resetOcculumCount()
 	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	plantManager.connect("wasp_placed", Callable(self, "_on_hive_placed"))
+	demonManager.connect("wasp_placed", Callable(self, "_on_hive_placed"))
 	hive_button.connect("pressed", Callable(self, "_on_hive_button_pressed"))
 
 	toolTips.hide()
@@ -123,7 +123,7 @@ func _input(event):
 func _start_force_select_hive():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 	
-	show_only_plant_buttons(["Hive"])
+	show_only_demon_buttons(["Hive"])
 	hide_all_demon_buttons_with_exception(["Hive"])
 	#hbox.get_node("Hive").visible = true
 	if hive_pulse_added == false:
@@ -218,7 +218,7 @@ func _on_wave_started(wave_index: int):
 
 
 #region UI Helpers
-func show_only_plant_buttons(visible_containers: Array):
+func show_only_demon_buttons(visible_containers: Array):
 	for container_name in ALL_DEMON_CONTAINERS:
 		var container = hbox.get_node(container_name)
 		var should_show = container_name in visible_containers
@@ -227,8 +227,8 @@ func show_only_plant_buttons(visible_containers: Array):
 
 
 func _show_all_buttons():
-	show_only_plant_buttons(ALL_DEMON_CONTAINERS)
-	# Also show non-plant UI and parent containers
+	show_only_demon_buttons(ALL_DEMON_CONTAINERS)
+	# Also show non-demon UI and parent containers
 	for container_name in ALL_DEMON_CONTAINERS:
 		hbox.get_node(container_name).visible = true
 	world_swap_button.show()

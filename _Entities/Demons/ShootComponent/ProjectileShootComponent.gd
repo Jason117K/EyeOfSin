@@ -11,7 +11,7 @@ var attack_rays = []
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  
 var canAttack = false   
 var hiveBuffed = false 
-var walnutBuffed = false
+var spinalOcculumBuffed = false
 var sunBuffed = false
 var wyrmBuffed = false
 var projectile 
@@ -21,7 +21,7 @@ var shoot_positions = []
 
 # Map of animation_name -> which frame triggers the shot
 # Might Have to Have Heart Specific in Future 
-const SHOOT_FRAMES = {"attack": 3, "attack_Wasp": 3, "attack_Maw": 3, "attack_Spider": 3, "attack_Sunflower": 3, "attack_Wyrm": 3 }
+const SHOOT_FRAMES = {"attack": 3, "attack_Wasp": 3, "attack_Maw": 3, "attack_Crawler": 3, "attack_Occulum": 3, "attack_Wyrm": 3 }
 
 func _ready() -> void:
 	animSpriteComp = $"../AnimatedSpriteComponent"

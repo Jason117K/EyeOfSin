@@ -3,7 +3,7 @@ extends Area2D
 
 
 @export var speed = 300  # Speed of the projectile
-@export var damage = 500 #2   # Damage dealt to plant
+@export var damage = 500 #2   # Damage dealt to demon
 
 
 func _process(delta):
@@ -16,11 +16,11 @@ func _process(delta):
 
 # Handles projectile collison and damage application 
 func _on_PeaProjectile_area_entered(area):
-	var plant = area
+	var demon = area
 
-	if plant.is_in_group("Plants"):
-		if plant.get_parent().get_parent() != self.get_parent().get_parent():
+	if demon.is_in_group("Demons"):
+		if demon.get_parent().get_parent() != self.get_parent().get_parent():
 			return
-		if(plant.get_health() >= 0):
-			plant.take_damage(damage)
+		if(demon.get_health() >= 0):
+			demon.take_damage(damage)
 			queue_free()  # Remove the projectile # Replace with function body.

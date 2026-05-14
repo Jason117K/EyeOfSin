@@ -12,10 +12,10 @@ extends Node2D
 @onready var bloodTile8 = $BloodTile8
 @onready var bloodTile9 = $BloodTile9
 
-# Parent plant with these buffNodes
-@onready var plant = get_parent()
+# Parent demon with these buffNodes
+@onready var demon = get_parent()
 
-enum Demons { EYESUN,SPIDER,WALNUT,WYRM,HIVE, MAW, }
+enum Demons { EYESUN,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 
 # The tile areas representing the area being buffed 
 @export var activeTiles = [ # (Array, NodePath)
@@ -29,10 +29,10 @@ enum Demons { EYESUN,SPIDER,WALNUT,WYRM,HIVE, MAW, }
 	"TileArea8"
 ]
 
-# Adjustable variable to store which plants this plant can buff
-@export var giveBuffTo = ["Sunflower","Peashooter","WalnutTree","EggWorm","Hive","Maw","None","None"]
+# Adjustable variable to store which demons this demon can buff
+@export var giveBuffTo = ["Occulum","Crawler","SpinalOcculum","Wyrm","Hive","Maw","None","None"]
 
-var buffedPlants = []
+var buffedDemons = []
 
 func _ready():
 	# Make sure all the bloodTiles are not visible
@@ -47,11 +47,11 @@ func _ready():
 	bloodTile9.visible = false
 
 func clearBuffs():
-	#print("DDD Buffed Plants is ", buffedPlants)
-	for plant in buffedPlants:
-		#print("Now DDD Buffing ", plant)
-		if plant != null:
-			plant.debuff()
+	#print("DDD Buffed Demons is ", buffedDemons)
+	for demon in buffedDemons:
+		#print("Now DDD Buffing ", demon)
+		if demon != null:
+			demon.debuff()
 	pass
 	
 	
@@ -67,7 +67,7 @@ func _process(_delta):
 	# Go through all children of BuffNodes
 	for child in get_children():
 		
-		#If a Child Isn't Visible, the Plant Cannot Buff There
+		#If a Child Isn't Visible, the Demon Cannot Buff There
 		if not child.visible:
 			continue
 			
@@ -89,39 +89,39 @@ func _process(_delta):
 				
 				var bloodTileVisible = false 
 				
-				# Check for plants in the overlapped areas
-				for plantToBuff in overlapping_areas:
-					#print("Plant buff is : ", plantToBuff)
-					#print("Plant buff name is : ", plantToBuff.name)
+				# Check for demons in the overlapped areas
+				for demonToBuff in overlapping_areas:
+					#print("Demon buff is : ", demonToBuff)
+					#print("Demon buff name is : ", demonToBuff.name)
 					
-					# If the plantToBuff is a valid plant & not a drone
-					if(plantToBuff.is_in_group("Plants") && !("Drone" in plantToBuff.name)):      # &&   #plantToBuff.get_parent() ==   plant.get_parent()  ):
-						if plantToBuff.is_in_group("Green"):
-							if plant.is_in_group("Purple"):
+					# If the demonToBuff is a valid demon & not a drone
+					if(demonToBuff.is_in_group("Demons") && !("Drone" in demonToBuff.name)):      # &&   #demonToBuff.get_parent() ==   demon.get_parent()  ):
+						if demonToBuff.is_in_group("Green"):
+							if demon.is_in_group("Purple"):
 								continue
-						elif plantToBuff.is_in_group("Purple"):
-							if plant.is_in_group("Green"):
+						elif demonToBuff.is_in_group("Purple"):
+							if demon.is_in_group("Green"):
 								continue
-						#print("Plant to Buff is ", plantToBuff.name)
+						#print("Demon to Buff is ", demonToBuff.name)
 						bloodTileVisible = true 
-						#Check our list of valid plants to buff
-						#print("Plant buff name is : ", plantToBuff.name)
-						for plantActor in giveBuffTo:
+						#Check our list of valid demons to buff
+						#print("Demon buff name is : ", demonToBuff.name)
+						for demonActor in giveBuffTo:
 
 							
 									
 							#Handle Rest of Buffs
-							if plantActor in plantToBuff.name:
-								#Handle Special EggWorm Buff Case, as both plants 'receive' a buff
-								if ( "WalnutTree" in plantToBuff.name) && ("EggWorm" in plant.name):
+							if demonActor in demonToBuff.name:
+								#Handle Special Wyrm Buff Case, as both demons 'receive' a buff
+								if ( "SpinalOcculum" in demonToBuff.name) && ("Wyrm" in demon.name):
 									print("ZZZ Special Buff Case")
-									plant.receiveBuff(plantToBuff)
-								#print("Plant to buff : ", plantToBuff.name , " will now receive buff from ", plant.name)
-								plantToBuff.receiveBuff(plant)
-								if plantToBuff in buffedPlants:
+									demon.receiveBuff(demonToBuff)
+								#print("Demon to buff : ", demonToBuff.name , " will now receive buff from ", demon.name)
+								demonToBuff.receiveBuff(demon)
+								if demonToBuff in buffedDemons:
 									pass
 								else:
-									buffedPlants.append(plantToBuff)
+									buffedDemons.append(demonToBuff)
 								#blood_tile.visible = true
 								break
 				blood_tile.visible = bloodTileVisible

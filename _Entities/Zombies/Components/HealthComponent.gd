@@ -53,15 +53,15 @@ func take_damage(damage):
 		var currentLevel = gameLayer.get_parent()
 		#print("WWCurrentLevel is", currentLevel)
 
-		var plant_manager = currentLevel.get_node("PlantManager")
-		if plant_manager:  # If the PlantManager or GameManager is set
+		var demon_manager = currentLevel.get_node("DemonManager")
+		if demon_manager:  # If the DemonManager or GameManager is set
 			#$CollectAudioPlayer.play()
 			#print("ADDING WW Blood Worth : ", bloodWorth)
-			plant_manager.add_sun(bloodWorth)  # Add 25 sun points (or whatever amount)
-			#plant_manager.play_sun_collect()
+			demon_manager.add_sun(bloodWorth)  # Add 25 sun points (or whatever amount)
+			#demon_manager.play_sun_collect()
 		else:
 			pass
-			#print("Plant Manager is NULLWWWW")
+			#print("Demon Manager is NULLWWWW")
 		zombie.die()
 
 

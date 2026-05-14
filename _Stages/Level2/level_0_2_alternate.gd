@@ -11,7 +11,7 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	attach_script_to_sway_children()
 	_configure_waves()
-	plantManager.connect("walnut_placed", Callable(self, "_on_walnut_placed"))
+	demonManager.connect("spinalOcculum_placed", Callable(self, "_on_spinalOcculum_placed"))
 
 
 func _configure_waves():
@@ -24,15 +24,15 @@ func start_game():
 	pass
 
 
-func _on_walnut_placed(grid_pos: Vector2):
-	print("[Tutorial] Walnut placement complete - tutorial finished")
+func _on_spinalOcculum_placed(grid_pos: Vector2):
+	print("[Tutorial] Spinal Occulum placement complete - tutorial finished")
 	toolTips.hide()
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler","SpinalOcculum"])
 	# Tutorial complete - no further forced actions
 	
 
 func add_sun(sunAmount):
-	plantManager.add_sun(sunAmount)
+	demonManager.add_sun(sunAmount)
 
 
 func show_guide():

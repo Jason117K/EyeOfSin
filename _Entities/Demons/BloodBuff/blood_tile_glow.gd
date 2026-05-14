@@ -9,7 +9,7 @@ func make_buff_glow():
 	if material == null:
 		print("PRE LOL")
 		material = ShaderMaterial.new()
-		material.shader = demon_glow #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:

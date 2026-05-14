@@ -145,6 +145,7 @@ func _on_preview_timer_timeout() -> void:
 func _show_preview_for_next_wave() -> void:
 	var next := _current_wave + 1
 	if next < _total_waves:
+		print("Wave Previews Is ", _wave_previews)
 		for preview in _wave_previews:
 			preview.show_preview(next,true)
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct2xdafdtut66"]
 
-[ext_resource type="Script" uid="uid://kjyi7ykyorhn" path="res://_Entities/Demons/_Occulum/Sunflower.gd" id="1"]
+[ext_resource type="Script" uid="uid://kjyi7ykyorhn" path="res://_Entities/Demons/_Occulum/Occulum.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://lg8ggykkyq8x" path="res://_Entities/Demons/Decals/Web_Small.png" id="2_3r88c"]
 [ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle-Sheet.png" id="2_bufnm"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://wh85hj3u24vx" path="res://_Entities/Demons/_Occulum/Spritesheets/EyeSunTowerIdle_SPYDER-Sheet.png" id="6_ixnkm"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="7"]
-[ext_resource type="Texture2D" uid="uid://cbytmdkwyv53a" path="res://_Entities/Demons/_Occulum/Spritesheets/EyeSunTowerIdle_WALNUT-Sheet.png" id="7_3r88c"]
+[ext_resource type="Texture2D" uid="uid://cbytmdkwyv53a" path="res://_Entities/Demons/_Occulum/Spritesheets/EyeSunTowerIdle_SPINALOCCULUM-Sheet.png" id="7_3r88c"]
 [ext_resource type="Texture2D" uid="uid://ceviomuixqede" path="res://_Entities/Demons/_Occulum/Spritesheets/EyeSunTowerIdle_Base-Sheet.png" id="7_ixnkm"]
 [ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://_Entities/Demons/_Occulum/Spritesheets/EyeSunTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://_Entities/Demons/_Occulum/Spritesheets/EyeSunTowerIdle_WYRM-Sheet.png" id="9_00tae"]
@@ -972,7 +972,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Sunflower" type="Area2D" unique_id=1389197860 groups=["Plants"]]
+[node name="Occulum" type="Area2D" unique_id=1389197860 groups=["Demons", "Plants"]]
 z_index = 1
 position = Vector2(0, 1)
 collision_mask = 3

@@ -1,7 +1,7 @@
 extends Node2D
 # ShootComponent.gd
 
-# Handles Shooting the EggWorm Laser 
+# Handles Shooting the Wyrm Laser 
 #Red Color : b00000
 #Magenta : b00075
 # Configuration parameters
@@ -35,7 +35,7 @@ var isSunBuffed := false
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
 @onready var attack_ray = $"../DMG_RayCast2D"
-var projectile_scene = preload("res://_Entities/Demons/_Wyrm/EggProjectile.tscn")  # Load the projectile scene
+var projectile_scene = preload("res://_Entities/Demons/_Wyrm/WyrmProjectile.tscn")  # Load the projectile scene
 var projectile_scene_slow = preload("res://_Entities/Demons/_Crawler/DemonProjectile.gd")
 var cooldown_timer := Timer.new() 
 # State variables 
@@ -282,7 +282,7 @@ func set_laser_width(width: float) -> void:
 	laser_width = width
 	line2D.width = width
 
-# Make the laser more powerful when EggWorm is buffed 
+# Make the laser more powerful when Wyrm is buffed 
 func buff(bufferLocation):
 	if isDisabled:
 		return

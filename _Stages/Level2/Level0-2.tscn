@@ -3590,8 +3590,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_te6yt")
 
-[node name="PlantManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
-sun_points = 105
+[node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
 
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("20_17c31")]
 layout_mode = 1
@@ -3887,10 +3886,8 @@ sprite_frames = SubResource("SpriteFrames_gktj4")
 autoplay = "default"
 flip_h = true
 
-[connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
-[connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

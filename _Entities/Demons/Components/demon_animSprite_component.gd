@@ -58,23 +58,22 @@ func change_form(new_form):
 		parent.adjust_position(new_form)
 
 	match new_form:
-		"Sunflower":
-			currentAnim = "idle_Sunflower"
-			currentAttackAnim = "attack_Sunflower"
-			#animation = "idle_Sunflower"
+		"Occulum":
+			currentAnim = "idle_Occulum"
+			currentAttackAnim = "attack_Occulum"
+			#animation = "idle_Occulum"
 			animation = "spawn"
-		"Peashooter":
-			currentAnim = "idle_Spider"
-			currentAttackAnim = "attack_Spider"
+		"Crawler":
+			currentAnim = "idle_Crawler"
+			currentAttackAnim = "attack_Crawler"
 			if "Sun" in parent.get_name():
 				
 				$"../Webs".visible = true 
-			#animation = "idle_Spider"
 			animation = "spawn"
-		"Walnut" :
-			currentAnim = "idle_Walnut"
-			currentAttackAnim = "attack_Walnut"
-			#animation = "idle_Walnut"
+		"SpinalOcculum" :
+			currentAnim = "idle_SpinalOcculum"
+			currentAttackAnim = "attack_SpinalOcculum"
+			#animation = "idle_SpinalOcculum"
 			animation = "spawn"
 		"Wyrm":
 			currentAnim = "idle_Wyrm"
@@ -101,7 +100,7 @@ func make_buff_glow():
 	if material == null:
 		print("PRE LOL")
 		material = ShaderMaterial.new()
-		material.shader = demon_glow #preload("res://Scripts/Plants/Shaders/DemonHueShift.gdshader")
+		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:

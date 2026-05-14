@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://b76ra3pkv4sq0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Sun-Sheet.png" id="5_0i0o1"]
 [ext_resource type="Script" uid="uid://cexywbegs7b6b" path="res://_Entities/Demons/_Crawler/crawler_health_component.gd" id="5_kupbo"]
-[ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Walnut-Sheet.png" id="6_hvfi3"]
+[ext_resource type="Texture2D" uid="uid://b5skyquxry8i1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_SpinalOcculum-Sheet.png" id="6_hvfi3"]
 [ext_resource type="Texture2D" uid="uid://cknlnhveldd4h" path="res://_Entities/Demons/TestBloodBSheet.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://lojdao7nw8m1" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Hive-Sheet.png" id="7_io8k3"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="8"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://duguavrw707dc" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_MAW-Sheet.png" id="9_82rcb"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="10"]
 [ext_resource type="Texture2D" uid="uid://jy54hb8pml7g" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SUN-Sheet.png" id="10_jwcrf"]
-[ext_resource type="Texture2D" uid="uid://gbme1d2t6p3t" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Walnut-Sheet.png" id="11_druvk"]
+[ext_resource type="Texture2D" uid="uid://gbme1d2t6p3t" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SpinalOcculum-Sheet.png" id="11_druvk"]
 [ext_resource type="Texture2D" uid="uid://cwkfu3np0gnrm" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Base-Sheet.png" id="11_io8k3"]
 [ext_resource type="Texture2D" uid="uid://1bypqcyxtbl0" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Hive-Sheet.png" id="12_kcbs3"]
 [ext_resource type="Texture2D" uid="uid://bsirqr2554xjt" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Wyrm-Sheet.png" id="13_u7x5w"]
@@ -70,30 +70,6 @@ region = Rect2(160, 0, 40, 40)
 atlas = ExtResource("17_hvfi3")
 region = Rect2(200, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8gj4d"]
-atlas = ExtResource("3_a06ib")
-region = Rect2(0, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_stug7"]
-atlas = ExtResource("3_a06ib")
-region = Rect2(40, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7urnp"]
-atlas = ExtResource("3_a06ib")
-region = Rect2(80, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5g82q"]
-atlas = ExtResource("3_a06ib")
-region = Rect2(120, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l53v6"]
-atlas = ExtResource("3_a06ib")
-region = Rect2(160, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vur2p"]
-atlas = ExtResource("3_a06ib")
-region = Rect2(200, 0, 40, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_l66ve"]
 atlas = ExtResource("17_hvfi3")
 region = Rect2(0, 0, 40, 40)
@@ -116,6 +92,30 @@ region = Rect2(160, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7us8"]
 atlas = ExtResource("17_hvfi3")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gj4d"]
+atlas = ExtResource("3_a06ib")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stug7"]
+atlas = ExtResource("3_a06ib")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7urnp"]
+atlas = ExtResource("3_a06ib")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g82q"]
+atlas = ExtResource("3_a06ib")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l53v6"]
+atlas = ExtResource("3_a06ib")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vur2p"]
+atlas = ExtResource("3_a06ib")
 region = Rect2(200, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlf35"]
@@ -230,22 +230,6 @@ region = Rect2(80, 0, 40, 40)
 atlas = ExtResource("11_io8k3")
 region = Rect2(120, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ji2b8"]
-atlas = ExtResource("9_82rcb")
-region = Rect2(0, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6p6vv"]
-atlas = ExtResource("9_82rcb")
-region = Rect2(40, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eomw1"]
-atlas = ExtResource("9_82rcb")
-region = Rect2(80, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nq6q3"]
-atlas = ExtResource("9_82rcb")
-region = Rect2(120, 0, 40, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_twbjw"]
 atlas = ExtResource("11_io8k3")
 region = Rect2(0, 0, 40, 40)
@@ -260,6 +244,22 @@ region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1buyr"]
 atlas = ExtResource("11_io8k3")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji2b8"]
+atlas = ExtResource("9_82rcb")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p6vv"]
+atlas = ExtResource("9_82rcb")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eomw1"]
+atlas = ExtResource("9_82rcb")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq6q3"]
+atlas = ExtResource("9_82rcb")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3doi5"]
@@ -493,6 +493,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_l66ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64arl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t52d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okgsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn8o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7us8")
+}],
+"loop": false,
+"name": &"attack_Crawler",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8gj4d")
 }, {
 "duration": 1.0,
@@ -512,29 +535,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_Maw",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l66ve")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_64arl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t52d5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_okgsi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gn8o8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d7us8")
-}],
-"loop": false,
-"name": &"attack_Spider",
 "speed": 5.0
 }, {
 "frames": [{
@@ -648,6 +648,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_twbjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elcqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rshdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1buyr")
+}],
+"loop": false,
+"name": &"idle_Crawler",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ji2b8")
 }, {
 "duration": 1.0,
@@ -661,23 +678,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_Maw",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_twbjw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_elcqw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rshdt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1buyr")
-}],
-"loop": false,
-"name": &"idle_Spider",
 "speed": 5.0
 }, {
 "frames": [{
@@ -768,7 +768,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_igwro")
 }],
 "loop": false,
-"name": &"redSpiderAttack",
+"name": &"redCrawlerAttack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -791,7 +791,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_88d23")
 }],
 "loop": false,
-"name": &"redSpiderAttack1",
+"name": &"redCrawlerAttack1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -808,7 +808,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6rbsg")
 }],
 "loop": false,
-"name": &"redSpiderDefault",
+"name": &"redCrawlerDefault",
 "speed": 5.0
 }, {
 "frames": [{
@@ -825,7 +825,7 @@ animations = [{
 "texture": SubResource("152")
 }],
 "loop": false,
-"name": &"redSpiderDefault1",
+"name": &"redCrawlerDefault1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1583,7 +1583,7 @@ shader_parameter/shade_ratio = 0.53
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.558477), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Peashooter" type="Area2D" unique_id=675421916 groups=["Plants"]]
+[node name="Crawler" type="Area2D" unique_id=675421916 groups=["Plants"]]
 z_index = 1
 script = ExtResource("2")
 cost = 50
@@ -1606,7 +1606,7 @@ texture = ExtResource("2_hvfi3")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("4_ol6r1")]
 script = ExtResource("5_kupbo")
-walnutHealth = 375
+spinalOcculumHealth = 375
 health = 200
 buffedHealth = 400
 healthRegen = 0.1
@@ -1622,7 +1622,7 @@ autostart = true
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"spawn"
+animation = &"redCrawlerDefault1"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("21_ol6r1")
@@ -1633,8 +1633,8 @@ visible = false
 [node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1617410873 groups=["Invis"]]
 position = Vector2(0, -8.5)
 sprite_frames = SubResource("9")
-animation = &"redSpiderDefault"
-autoplay = "redSpiderDefault"
+animation = &"redCrawlerDefault"
+autoplay = "redCrawlerDefault"
 flip_h = true
 
 [node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1137944680]
@@ -1788,7 +1788,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 109.09306, 131.50412, 107.8522, 129.68024, 104.692, 129.22562, 100.76988, 130.7495, 97.60668, 130.2995, 96.2888, 128.51003, 93.44134, 127.82005, 89.74022, 130.45432)
+points = PackedVector2Array(112.595, 131.435, 108.52581, 133.07715, 105.04216, 133.10571, 103.695274, 131.26859, 101.00108, 130.26811, 97.07837, 131.67117, 93.57879, 131.78944, 92.26846, 130.00813, 90.42472, 128.54482)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1800,7 +1800,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 109.09306, 124.62912, 107.8522, 120.93023, 104.692, 118.60061, 100.76988, 118.249504, 97.60668, 115.92449, 96.2888, 112.260025, 93.44134, 109.69505, 89.74022, 110.45432)
+points = PackedVector2Array(112.595, 126.435, 108.52581, 126.20215, 105.04216, 124.35571, 103.695274, 120.64358, 101.00108, 117.76812, 97.07837, 117.296165, 93.57879, 115.539444, 92.26846, 111.88313, 90.42472, 108.544815)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1821,7 +1821,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.66695, 131.69547, 116.50988, 131.8618, 116.26871, 131.21227, 116.414696, 130.56752, 118.39498, 130.84473, 120.23237, 131.01299, 120.05616, 130.40979, 119.27953, 129.98354)
+points = PackedVector2Array(112.595, 131.435, 113.929756, 131.214, 113.33118, 130.70195, 114.68958, 130.48306, 116.851944, 131.09366, 117.747894, 130.62997, 117.33624, 130.06194, 118.38737, 129.74571, 120.76968, 131.39633)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1829,7 +1829,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.66695, 124.82046, 116.50988, 123.11179, 116.26871, 120.58726, 116.414696, 118.06752, 118.39498, 116.469734, 120.23237, 114.762985, 120.05616, 112.28479, 119.27953, 109.983536)
+points = PackedVector2Array(112.595, 126.435, 113.929756, 124.339, 113.33118, 121.95195, 114.68958, 119.85806, 116.851944, 118.593666, 117.747894, 116.254974, 117.33624, 113.81194, 118.38737, 111.62071, 120.76968, 111.396324)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 

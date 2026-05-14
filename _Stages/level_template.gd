@@ -15,14 +15,14 @@ var has_pulsed := false
 @export var wave3StartTime := 60
 
 @onready var toolTips = $"../ToolTips"
-@onready var plantManager = $PlantManager
+@onready var demonManager = $DemonManager
 @onready var demonSelectionMenu := $"../DemonSelectionMenu" 
 #@onready var waveManager = $GameLayer/WaveManager
 @onready var waveManager = get_parent().get_node("WaveManager")
 @onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button = $"../../PauseButton"
 @onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var _plant_hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var _demon_hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 @onready var world_swap_button = demonSelectionMenu.get_world_swap_button()
 @onready var codex_button = demonSelectionMenu.get_codex_button()
 @onready var sway_script_path := "res://_Common/EnvironmentScripts/sway.gd"
@@ -43,7 +43,7 @@ const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive",
 const ALL_EXTRA_BUTTONS = []
 
 func get_demon_manager():
-	return plantManager
+	return demonManager
 
 
 func _on_level_ended():
@@ -67,18 +67,18 @@ func _on_end_dialog_finished():
 	#waveManager.Wave2StartTime = 20
 	#waveManager.Wave3StartTime = 30
 #
-	#setup_plant_selection_menu()
+	#setup_demon_selection_menu()
 	#pause_Button.set_restart_levels(current_level,current_level_alt)
 	#process_mode = Node.PROCESS_MODE_ALWAYS
 	#
 #
-	#Global.resetSunflowerCount()
+	#Global.resetOcculumCount()
 	#Global.reset_swap_ability()
 #
 	## Connect signals
 	#toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-## Hides all plant buttons except those in the exceptions array.
-## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Sunflower"]
+## Hides all demon buttons except those in the exceptions array.
+## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]
 func hide_all_demon_buttons_with_exception(exceptions: Array = []):
 	print("Exceptions Are ",exceptions)
 	for container_name in ALL_DEMON_CONTAINERS:
@@ -92,9 +92,9 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []):
 		
 		
 		#print("container_name is ",container_name)
-		#print("demon box is is ",_plant_hbox)
-		if _plant_hbox.get_node(container_name) != null:
-			var container = _plant_hbox.get_node(container_name)
+		#print("demon box is is ",_demon_hbox)
+		if _demon_hbox.get_node(container_name) != null:
+			var container = _demon_hbox.get_node(container_name)
 			
 			var should_show = container_name in exceptions
 			#print(should_show, " container is IS ",container)
@@ -103,12 +103,12 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []):
 				child.visible = should_show
  
  
-## Shows all plant buttons and their parent containers.
-## Optionally pass extra non-plant UI names to also show (e.g. "WorldSwap", "Codex").
+## Shows all demon buttons and their parent containers.
+## Optionally pass extra non-demon UI names to also show (e.g. "WorldSwap", "Codex").
 func show_all_demon_buttons(extras: Array = []):
 	for container_name in ALL_DEMON_CONTAINERS:
-		if _plant_hbox.get_node(container_name) != null :
-			var container = _plant_hbox.get_node(container_name)
+		if _demon_hbox.get_node(container_name) != null :
+			var container = _demon_hbox.get_node(container_name)
 			container.visible = true
 			for child in container.get_children():
 				child.visible = true
@@ -118,18 +118,18 @@ func show_all_demon_buttons(extras: Array = []):
 				button_instance.visible = true
 
 	
-func setup_plant_selection_menu():
+func setup_demon_selection_menu():
 	pass
 	
 # Helper Methods
 func make_camera_current():
 	$Camera2D.make_current()
 
-func place_empty_blocker_plant(grid_pos):
-	plantManager.place_empty_blocker_plant(grid_pos)
+func place_empty_blocker_demon(grid_pos):
+	demonManager.place_empty_blocker_demon(grid_pos)
 
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos)
+func remove_empty_blocker_demon(grid_pos):
+	demonManager.clear_space_alt(grid_pos)
 
 # Spotlight helper functions - ADD THESE NEW FUNCTIONS
 
@@ -255,3 +255,6 @@ func attach_script_to_sway_children():                                       #sc
 		child.set_script(script_to_attach)
 		if child.is_inside_tree() and child.has_method("_ready"):
 			child._ready()
+
+func get_true_name():
+	return ""

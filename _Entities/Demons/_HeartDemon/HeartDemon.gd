@@ -3,7 +3,7 @@ extends Demon
 
 @export var cost = 0
 
-var PlantManager
+var DemonManager
 var duration : float 
 
 @onready var buffNodes = $BuffNodesComponent
@@ -16,14 +16,14 @@ var duration : float
 const EXPAND_SCALE: Vector2 = Vector2(0.35, 0.35)  # How large the sprite grows
 const START_SCALE: Vector2 = Vector2(0.1, 0.1)
 
-#Grab plantmanager, start default anim and connect/start relevant timers 
+#Grab demonmanager, start default anim and connect/start relevant timers 
 func _ready():
 	print("Hero DEMON Ready")
 	Global.register_hero_demon(self)
 	$PreviewNodes/AnimatedSprite2D.hide()
 	#set_attack_collision()
 
-	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	DemonManager = get_parent().get_parent().get_node("DemonManager")
 
 	# Calculate duration from the current animation's frame count and speed
 	var frame_count: int = animSpriteComp.sprite_frames.get_frame_count(animSpriteComp.currentAttackAnim)
@@ -40,7 +40,7 @@ func get_cost():
 	
 					
 # Doubles attack speed when receiving a buff 
-func receiveBuff(newPlant):
+func receiveBuff(newDemon):
 	pass
 
 
@@ -49,7 +49,7 @@ func get_can_attack():
 	
 					
 func die():
-	PlantManager.clear_space(self.global_position)
+	DemonManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
 	queue_free()	
 	

@@ -78,11 +78,11 @@ func _process(delta):
 func adjustParams(new_form):
 	
 	match new_form:
-		"Sunflower":
+		"Occulum":
 			pass
-		"Peashooter":
+		"Crawler":
 			bob_height = 1
-		"Walnut" :
+		"SpinalOcculum" :
 			pass
 		"Wyrm":
 			pass

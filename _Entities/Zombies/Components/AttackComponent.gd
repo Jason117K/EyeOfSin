@@ -1,16 +1,16 @@
 extends Node2D
 # AttackComp.gd 
-# Handles Zombie attacking Plant Behavior 
+# Handles Zombie attacking Demon Behavior 
 
 class_name AttackComponent
 
 @export var attack_power = 33 # Adjustable reference to attack damage
 var is_attacking = false  # Whether or not we attacking
-var target_plant = null  # Holds reference to the plant being attacked
+var target_demon = null  # Holds reference to the demon being attacked
 var canSpecial = true # Determines whether or not a special move can be performed
 var _frame_counter: int = 0
 
-@onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect plants in front of the zombie
+@onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect demons in front of the zombie
 @onready var zombieSprite = $"../AnimatedSprite2D" # RefCounted to sprite comp 
 @onready var attack_timer = $"../AttackTimer" # Adjustable timer to control attack speed
 #@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
@@ -26,7 +26,7 @@ func getAttackState():
 	return is_attacking
 
 # Sets is_attacking to true and plays the audio will also starting the attack cooldown timer
-func attack_plant(collider):
+func attack_demon(collider):
 	
 	if collider.is_in_group("Drone"):
 		if collider.get_is_in_combat() == true:
@@ -39,8 +39,8 @@ func attack_plant(collider):
 			collider.enter_combat(self)
 			
 	is_attacking = true
-	target_plant = collider
-	#print("TName is ", target_plant.name)
+	target_demon = collider
+	#print("TName is ", target_demon.name)
 	#print("I am " , self.name)
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
@@ -52,7 +52,7 @@ func attack_plant(collider):
 	elif "Screen" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		#print("Playing ZOMBIE DEAL DAMAGE in attack_plant for parent ", parent.name)
+		#print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	
 	attack_timer.start()
@@ -60,7 +60,7 @@ func attack_plant(collider):
 		#print("Ticker Should Die ")
 		#parent.queue_free()
 
-# Damages the target plant and decides whether or not to keep attacking
+# Damages the target demon and decides whether or not to keep attacking
 func _on_AttackTimer_timeout():
 	#print("Basic Zombie Attack Timer Timeout")
 		#TODO Make Attacking Sounds More Efficient
@@ -74,21 +74,21 @@ func _on_AttackTimer_timeout():
 		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
-	if(is_instance_valid(target_plant) && target_plant.is_in_group("Portal") != true ):
-		#print("target demon name is ", target_plant.name)
-		if(target_plant.has_method("get_health") && (target_plant.get_health()!=null)): 
+	if(is_instance_valid(target_demon) && target_demon.is_in_group("Portal") != true ):
+		#print("target demon name is ", target_demon.name)
+		if(target_demon.has_method("get_health") && (target_demon.get_health()!=null)): 
 			#TODO Give Spiderling Get Health
-			if(target_plant.get_health() >= 0):
-				if target_plant.has_method("mawBuffed"):
-					if target_plant.can_eat_zombie == true :
+			if(target_demon.get_health() >= 0):
+				if target_demon.has_method("mawBuffed"):
+					if target_demon.can_eat_zombie == true :
 					#	print("Demon Can Eat Me Time to Die")
-						target_plant.eat_zombie()
+						target_demon.eat_zombie()
 						get_parent().die()
-				if target_plant.has_method("walnutWyrmBuffed"):
-					if target_plant.can_damage_zombie == true :
+				if target_demon.has_method("spinalOcculumWyrmBuffed"):
+					if target_demon.can_damage_zombie == true :
 						zombie.getCompManager().take_damage(10)
 						
-				target_plant.take_damage(attack_power)
+				target_demon.take_damage(attack_power)
 			else:
 				stop_attack()
 		if "Ticker" in parent.get_name():
@@ -100,7 +100,7 @@ func _on_AttackTimer_timeout():
 func stop_attack():
 	#print("Stopping Attack")
 	is_attacking = false
-	target_plant = null
+	target_demon = null
 	attack_timer.stop()
 
 func _process(_delta):
@@ -112,12 +112,12 @@ func _process(_delta):
 			var collider = attack_ray.get_collider()
 			#print(parent.name , " Its collding with ", collider.name )
 			if collider:
-				if collider.is_in_group("Plants"):
+				if collider.is_in_group("Demons"):
 					#print("Collider In Right Group")
 					if collider.get_parent().get_parent() != my_level:
 						if collider.get_parent().get_parent().get_parent() != my_level:
 							return
-				#	print(collider.name , " is in group plants")
+				#	print(collider.name , " is in group demons")
 					if("PoleVaultZombie" in parent.name):
 						#print(parent.name, " - canSpecialPP: ", canSpecial)
 						#print("PP Parent Is Pole Vault")
@@ -130,6 +130,6 @@ func _process(_delta):
 							#if parent.getIsMoveFinished() == false:
 								#pass
 							#else:
-							attack_plant(collider)
+							attack_demon(collider)
 					else:
-						attack_plant(collider)
+						attack_demon(collider)

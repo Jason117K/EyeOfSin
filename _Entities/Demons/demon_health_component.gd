@@ -17,9 +17,9 @@ class_name DemonHealthComponent extends Node
 @onready var demon : Demon = get_parent()
 
 
-var isEggWyrmBuffed := false 
+var isWyrmBuffed := false 
 var isMawBuffed := false 
-var isSunflowerBuffed:= false 
+var isOcculumBuffed:= false 
 var isHiveBuffed:= false
 var isCrawlerBuffed:= false
 var isSpinalOcculumBuffed := false
@@ -53,8 +53,8 @@ func debuff():
 	maxHealth = ogMaxHealth
 	healthRegen = ogHealthRegen
 	
-	isEggWyrmBuffed = false 
-	isSunflowerBuffed = false
+	isWyrmBuffed = false 
+	isOcculumBuffed = false
 	isMawBuffed = false
 	isHiveBuffed = false 
 	isCrawlerBuffed = false

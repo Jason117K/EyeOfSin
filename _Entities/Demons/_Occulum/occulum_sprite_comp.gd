@@ -100,10 +100,10 @@ extends DemonSpriteComp
 	#if pivot != Pivot.CENTER:
 		#match pivot:
 			#Pivot.BOTTOM:
-				## When scale grows, push offset further up to keep bottom planted
+				## When scale grows, push offset further up to keep bottom demoned
 				#final_offset.y = _base_offset.y - (13) * final_scale.y
 			#Pivot.TOP:
-				## When scale grows, push offset further down to keep top planted
+				## When scale grows, push offset further down to keep top demoned
 				#final_offset.y = _base_offset.y + (14) * final_scale.y
 #
 	## Create and run the tween

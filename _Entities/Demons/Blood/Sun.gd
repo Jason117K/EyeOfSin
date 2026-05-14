@@ -4,7 +4,7 @@ extends Area2D
 #Adjustable sun value 
 @export var SunValue = 50
 
-var plants_to_heal = []
+var demons_to_heal = []
 
 
 func _ready() -> void:
@@ -21,19 +21,19 @@ func _on_Sun_mouse_entered():
 	#$CollectAudioPlayer.play()
 	#AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 
-	var plant_manager = get_parent().get_parent().get_node("PlantManager")
-	if plant_manager:  # If the PlantManager or GameManager is set
+	var demon_manager = get_parent().get_parent().get_node("DemonManager")
+	if demon_manager:  # If the DemonManager or GameManager is set
 		#$CollectAudioPlayer.play()
-		plant_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
-		plant_manager.play_sun_collect()
-		heal_plants()
+		demon_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
+		demon_manager.play_sun_collect()
+		heal_demons()
 	# Queue the sun for deletion (simulate absorption)
 	queue_free()
 
-func heal_plants():
-	for demon in plants_to_heal:
+func heal_demons():
+	for demon in demons_to_heal:
 		if demon == null:
-			plants_to_heal.erase(demon)
+			demons_to_heal.erase(demon)
 		if demon != null:
 			if demon.is_node_ready():
 			#	print("Demon is ", demon )
@@ -48,13 +48,13 @@ func _on_auto_pick_up_timer_timeout() -> void:
 	SunValue = SunValue / 2
 	#var root = get_tree().current_scene
 	#print("SS root is ", root )
-	var plant_manager = get_parent().get_parent().get_node("PlantManager")
-	#print("PlantManager SS : ", plant_manager)
-	if plant_manager:  # If the PlantManager or GameManager is set
+	var demon_manager = get_parent().get_parent().get_node("DemonManager")
+	#print("DemonManager SS : ", demon_manager)
+	if demon_manager:  # If the DemonManager or GameManager is set
 		#$CollectAudioPlayer.play()
-		plant_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
-		plant_manager.play_sun_collect()
-		heal_plants()
+		demon_manager.add_sun(SunValue)  # Add 25 sun points (or whatever amount)
+		demon_manager.play_sun_collect()
+		heal_demons()
 	# Queue the sun for deletion (simulate absorption)
 	queue_free()
 
@@ -75,5 +75,5 @@ func hive_buff():
 
 
 func _on_heal_zone_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Plants"):
-		plants_to_heal.append(area)
+	if area.is_in_group("Demons"):
+		demons_to_heal.append(area)

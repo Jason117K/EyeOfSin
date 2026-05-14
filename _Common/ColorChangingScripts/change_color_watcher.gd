@@ -10,7 +10,7 @@ func _apply_hue_shift() -> void:
 	if material == null:
 		material = ShaderMaterial.new()
 		#TODO Is the right?
-		material.shader = preload("res://_Common/Shaders/Sunflower.gdshader")
+		material.shader = preload("res://_Common/Shaders/Occulum.gdshader")
 	
 	# Update shader parameter
 	if material is ShaderMaterial:

@@ -8,11 +8,9 @@ func _ready():
 func spawn_done():
 	
 	if spawnAnimDone:
-		#print("Spyder Self Spawn Adjust 1")
 		animation = currentAnim
 		play()
 	else:
-		#print("Spyder Self Spawn Adjust 2")
 		position = Vector2(position.x, position.y -8.5)
 		animation = currentAnim
 		play()
@@ -23,13 +21,11 @@ func _on_AnimatedSprite_frame_changed():
 		#if(animation.contains("ttack")):
 			##print("The frame is ", animSpriteComp.frame)
 			#if(frame == 3):
-				##print("ABOUT Shoot Proj From Spider ")
 				#demon.shoot_projectile()
 
 func _on_animation_finished():
 	super()
 	if demon.get_can_attack():
-		#print(self, "Should Be Red Spider AttackZ")
 		animation = currentAttackAnim
 		play()
 	else:
@@ -37,10 +33,10 @@ func _on_animation_finished():
 			play()
 
 func receiveBuff(demonName):
-	#print("Buff Name is ", newPlant.name)
+	#print("Buff Name is ", newDemon.name)
 	if !demon.get_is_buffed():
 		match demonName:
-			"WalnutTree" :
+			"SpinalOcculum" :
 				speed_scale = 0.7
 			"Hive":
 				speed_scale = 1.3

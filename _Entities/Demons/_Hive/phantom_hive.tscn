@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://070m1f4lec1y"]
 
 [ext_resource type="Script" uid="uid://dxvsyovquiybq" path="res://_Entities/Demons/_Hive/phantom_hive.gd" id="1_0jps5"]
-[ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/_Hive/Hive-Sheet.png" id="2_yx6ga"]
 [ext_resource type="Texture2D" uid="uid://cstwb0v7bi5gg" path="res://_Entities/Demons/SpriteSheets/Maw/HiveIdle_Maw-Sheet.png" id="3_epr6x"]
 [ext_resource type="Texture2D" uid="uid://nvskmyfvcv34" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Spider-Sheet.png" id="4_0pvdy"]
 [ext_resource type="Texture2D" uid="uid://c2o6y18483huo" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Sun-Sheet.png" id="5_lo175"]
-[ext_resource type="Texture2D" uid="uid://bnsjwg6h5xoxn" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Walnut-Sheet.png" id="6_t38li"]
+[ext_resource type="Texture2D" uid="uid://bnsjwg6h5xoxn" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_SpinalOcculum-Sheet.png" id="6_t38li"]
 [ext_resource type="Texture2D" uid="uid://dljm8b4c8pmnm" path="res://_Entities/Demons/SpriteSheets/Maw/Hive_Wyrm-Sheet.png" id="7_yirur"]
 [ext_resource type="Texture2D" uid="uid://15uffwh4days" path="res://_Entities/Demons/_Hive/Hive-Sheet.png" id="8_co07h"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="9_0406r"]
@@ -15,43 +14,42 @@
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/EyeSunTowerIdle.png" id="14_7sn1f"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="15_gnucj"]
 
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pd78h"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awm0g"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2bgg"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q3sqy"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ethfs"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wby7u"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_psjym"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1026"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wc7k"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rvh2"]
@@ -949,39 +947,39 @@ atlas = ExtResource("15_gnucj")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cimh"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttn30"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qnq4q"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8d8y"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fom8w"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hga4l"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxd8j"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aw6lg"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4pod"]
-atlas = ExtResource("2_yx6ga")
+atlas = ExtResource("8_co07h")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="127"]
@@ -1195,12 +1193,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="PhantomHive" type="Area2D" groups=["Plants"]]
+[node name="PhantomHive" type="Area2D" unique_id=1251917546 groups=["Demons", "Plants"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_0jps5")
 
-[node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSpriteComp" type="AnimatedSprite2D" parent="." unique_id=1166083427]
 visible = false
 material = SubResource("ShaderMaterial_7f7y1")
 position = Vector2(0, -3)
@@ -1209,69 +1207,69 @@ animation = &"idle_Sunflower"
 autoplay = "spawn"
 script = ExtResource("10_jhebh")
 
-[node name="HurtBoxComp" type="CollisionShape2D" parent="."]
+[node name="HurtBoxComp" type="CollisionShape2D" parent="." unique_id=257182492]
 visible = false
 disabled = true
 
-[node name="Swarm" type="Node2D" parent="."]
+[node name="Swarm" type="Node2D" parent="." unique_id=1452512551]
 
-[node name="DetectionComp" type="Area2D" parent="."]
+[node name="DetectionComp" type="Area2D" parent="." unique_id=1941076558]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComp"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComp" unique_id=2131831590]
 position = Vector2(50, 0)
 rotation = 1.5708
 shape = SubResource("12")
 debug_color = Color(0.646999, 0.521384, 0, 0.42)
 
-[node name="DroneRespawnTimer" type="Timer" parent="."]
+[node name="DroneRespawnTimer" type="Timer" parent="." unique_id=1120136437]
 wait_time = 6.0
 one_shot = true
 
-[node name="PreviewNodes" type="Node2D" parent="."]
+[node name="PreviewNodes" type="Node2D" parent="." unique_id=881894042]
 visible = false
 
-[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=242487317]
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 3
 
-[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=228421160]
 z_index = 6
 position = Vector2(-32, 32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 2
 
-[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1739797955]
 z_index = 6
 position = Vector2(-32, -32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 1
 
-[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=600625851]
 z_index = 6
 position = Vector2(0, -32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 
-[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=359814453]
 z_index = 6
 position = Vector2(0, 32)
 sprite_frames = SubResource("142")
 animation = &"New Anim"
 frame = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1422666367]
 sprite_frames = SubResource("152")
 animation = &"new_animation"
 autoplay = "new_animation"
 
-[node name="PlayAnimTimer" type="Timer" parent="."]
+[node name="PlayAnimTimer" type="Timer" parent="." unique_id=346032101]
 wait_time = 0.5
 one_shot = true
 autostart = true

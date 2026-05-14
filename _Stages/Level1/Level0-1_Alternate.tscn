@@ -2009,8 +2009,7 @@ position = Vector2(370, 208)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=115014598]
 environment = ExtResource("21_kx3dj")
 
-[node name="PlantManager" parent="." unique_id=987854628 instance=ExtResource("2_6jrws")]
-sun_points = 90
+[node name="DemonManager" parent="." unique_id=987854628 instance=ExtResource("2_6jrws")]
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=719022700]
 process_mode = 1
@@ -2289,8 +2288,6 @@ position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
-[connection signal="plant_placed" from="PlantManager" to="." method="_on_plant_manager_plant_placed"]
-[connection signal="spyder_placed" from="PlantManager" to="." method="_on_plant_manager_spyder_placed"]
-[connection signal="walnut_placed" from="PlantManager" to="." method="_on_plant_manager_walnut_placed"]
+[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 
 [editable path="GameLayer/GridManager"]

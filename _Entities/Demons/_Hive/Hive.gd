@@ -4,24 +4,24 @@ extends Demon
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
 
-var isEggWyrmBuffed := false
-var isSpyderBuffed := false
-var isSunflowerBuffed := false
+var isWyrmBuffed := false
+var isCrawlerBuffed := false
+var isOcculumBuffed := false
 var isMawBuffed := false
-var PlantManager
+var DemonManager
 var thisBufferName: String
 
 @onready var buffNodes = $BuffNodesComponent
 @onready var swarm = $Swarm
 
-const WALNUT_BUFF_MAX_DRONES = 4
+const SPINAL_OCCULUM_BUFF_MAX_DRONES = 4
 const SUN_BUFF_MAX_DRONES = 5
 
 
 func _ready():
 	super()
 	swarm.initialize(waitTime)
-	PlantManager = get_parent().get_parent().get_node("PlantManager")
+	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 
 	if self.is_in_group("Green"):
@@ -44,22 +44,22 @@ func receiveBuff(bufferName):
 		super(bufferName)
 		for drone in swarm.get_available_drones():
 			drone.make_drone_glow()
-		if("EggWorm" in bufferName.name):
+		if("Wyrm" in bufferName.name):
 			$HiveLaserShootComp.isDisabled = false
 			$HiveLaserShootComp._ready()
-			isEggWyrmBuffed = true
-		if("Peashooter" in bufferName.name) && !isSpyderBuffed:
+			isWyrmBuffed = true
+		if("Crawler" in bufferName.name) && !isCrawlerBuffed:
 			for drone in swarm.get_available_drones():
 				drone.makeExplode()
-				drone.isSpyderBuffed = true
-			isSpyderBuffed = true
+				drone.isCrawlerBuffed = true
+			isCrawlerBuffed = true
 		if("Sun" in bufferName.name):
 			swarm.set_respawn_wait_time(buffedWaitTime)
-			isSunflowerBuffed = true
+			isOcculumBuffed = true
 			swarm.set_max_drones(SUN_BUFF_MAX_DRONES)
 			swarm.kill_all_and_respawn()
-		if("Walnut" in bufferName.name):
-			swarm.set_max_drones(WALNUT_BUFF_MAX_DRONES)
+		if("SpinalOcculum" in bufferName.name):
+			swarm.set_max_drones(SPINAL_OCCULUM_BUFF_MAX_DRONES)
 			swarm.kill_all_and_respawn()
 		if("Maw" in bufferName.name):
 			isMawBuffed = true
@@ -70,20 +70,20 @@ func receiveBuff(bufferName):
 
 
 func debuff():
-	if("EggWorm" in thisBufferName):
+	if("Wyrm" in thisBufferName):
 		for drone in swarm.get_available_drones():
 			drone.regularDamage()
-	if("Peashooter" in thisBufferName):
+	if("Crawler" in thisBufferName):
 		for drone in swarm.get_available_drones():
 			drone.makeNotExplode()
-	if("Sunflower" in thisBufferName):
+	if("Occulum" in thisBufferName):
 		swarm.set_respawn_wait_time(waitTime)
 	isBuffed = false
 
 
 func die():
 	swarm.kill_all_drones()
-	PlantManager.clear_space(self.global_position)
+	DemonManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
 	queue_free()
 

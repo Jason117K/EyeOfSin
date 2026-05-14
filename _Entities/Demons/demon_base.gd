@@ -39,21 +39,21 @@ func get_animSpriteComp():
 	
 #TODO Call ReceiveBuff On ALL Components Here
 #TODO Set All isDemonBuffed Variables Here As Well
-func receiveBuff(newPlant):
-	#print("Buff Name is ", newPlant.name)
-	var plantName = truncate_string(newPlant.name)
+func receiveBuff(newDemon):
+	#print("Buff Name is ", newDemon.name)
+	var demonName = truncate_string(newDemon.name)
 	
 	if !isCurrentlyBuffed :
-		print(self.name, " Buff Received from ", plantName)
-		match plantName:
-			"Sunflower":
-				animSpriteComp.change_form("Sunflower")
-			"Peashooter":
-				print("Change to SPIDER")
-				animSpriteComp.change_form("Peashooter")
-			"WalnutTree" :
-				animSpriteComp.change_form("Walnut")
-			"EggWorm":
+		print(self.name, " Buff Received from ", demonName)
+		match demonName:
+			"Occulum":
+				animSpriteComp.change_form("Occulum")
+			"Crawler":
+				print("Change to CRAWLER")
+				animSpriteComp.change_form("Crawler")
+			"SpinalOcculum" :
+				animSpriteComp.change_form("SpinalOcculum")
+			"Wyrm":
 				animSpriteComp.change_form("Wyrm")
 			"Hive":
 				animSpriteComp.change_form("Wasp")

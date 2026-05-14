@@ -21,7 +21,7 @@ const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.t
 
 var maw_pulse_added := false 
 
-# Plant button container names
+# Demon button container names
 
 # Cached button references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -76,17 +76,17 @@ func _ready():
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
 
-	setup_plant_selection_menu()
+	setup_demon_selection_menu()
 	pause_Button.set_restart_levels(level03, level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 
-	Global.resetSunflowerCount()
+	Global.resetOcculumCount()
 	Global.reset_swap_ability()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	plantManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
+	demonManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
 	demonSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
 
@@ -149,7 +149,6 @@ func _start_force_place_maw():
 
 func _start_tutorial_p1_done():
 	toolTips.hide()
-	#show_only_plant_buttons(["Sunflower", "Peashooter", "Walnut", "Maw"])
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
@@ -245,18 +244,18 @@ func _on_wave_started(wave_index: int):
 
 
 #region UI Helpers
-func setup_plant_selection_menu():
+func setup_demon_selection_menu():
 	#hbox.get_node("Maw").visible = true
 	demonSelectionMenu.get_maw_button().show()
 	#hbox.get_node("WorldSwap").visible = true
 	demonSelectionMenu.get_world_swap_button().show()
-	#hbox.get_node("RemovePlant").visible = true
+	#hbox.get_node("RemoveDemon").visible = true
 	demonSelectionMenu.get_remove_demon_button().show()
 # 	hbox.get_node("Codex").visible = true
 	demonSelectionMenu.get_codex_button().show()
 
 
-func show_only_plant_buttons(visible_containers: Array):
+func show_only_demon_buttons(visible_containers: Array):
 	for container_name in ALL_DEMON_CONTAINERS:
 		var container = hbox.get_node(container_name)
 		var should_show = container_name in visible_containers

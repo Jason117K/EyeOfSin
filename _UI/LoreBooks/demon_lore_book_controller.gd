@@ -1,11 +1,11 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var sunflowerButton = $"../AllDemonRows/Row1/Sunflower"
-@onready var peashooterButton = $"../AllDemonRows/Row1/Peashooter"
-@onready var walnutButton = $"../AllDemonRows/Row1/Walnut"
+@onready var occulumButton = $"../AllDemonRows/Row1/Occulum"
+@onready var crawlerButton = $"../AllDemonRows/Row1/Crawler"
+@onready var spinalOcculumButton = $"../AllDemonRows/Row1/SpinalOcculum"
 @onready var eyeBombButton = $"../AllDemonRows/Row2/EyeBomb"
-@onready var eggWyrmButton = $"../AllDemonRows/Row2/EggWrym" 
+@onready var wyrmButton = $"../AllDemonRows/Row2/Wrym" 
 @onready var hiveButton = $"../AllDemonRows/Row2/Hive" 
 @onready var mawButton = $"../AllDemonRows/Row3/Maw"
 
@@ -26,24 +26,24 @@ extends AnimatedTextureRect
 var is_in_synergy = false
 
 #Demon Text Descriptions
-var sunflowerDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/SunflowerDescription.txt"
-var peashooterDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/PeashooterDescription.txt"
-var walnutDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/WalnutDescription.txt"
+var occulumDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
+var crawlerDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/PeashooterDescription.txt"
+var spinalOcculumDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
 var eyeBombDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/EyeBombDescription.txt"
-var eggWyrmDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/EggWyrmDescription.txt"
+var wyrmDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt"
 var hiveDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/HiveDescription.txt"
 var mawDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt"
 
 
-var mawSpyderText =  "res://_Assets/Text/TextFiles/SpiderMawBuff.txt"
-var mawEggText = "res://_Assets/Text/TextFiles/EggMawBuff.txt"
+var mawCrawlerText =  "res://_Assets/Text/TextFiles/SpiderMawBuff.txt"
+var mawWyrmText = "res://_Assets/Text/TextFiles/MawBuff.txt"
 var spineMawText =  "res://_Assets/Text/TextFiles/SpineMawBuff.txt"
 var hiveMawText = "res://_Assets/Text/TextFiles/HiveMawBuff.txt"
-var hiveEggText = "res://_Assets/Text/TextFiles/WaspEggBuff.txt"
+var hiveWyrmText = "res://_Assets/Text/TextFiles/WaspWyrmBuff.txt"
 var hiveSpyderText = "res://_Assets/Text/TextFiles/hiveSpyderBuff.txt"
-var eggSpineText = "res://_Assets/Text/TextFiles/eggSpineBuff.txt"
+var wyrmSpineText = "res://_Assets/Text/TextFiles/wyrmSpineBuff.txt"
 var sunSpyderText = "res://_Assets/Text/TextFiles/SunSpyderBuff.txt"
-var sunEggText = "res://_Assets/Text/TextFiles/SunEggWyrmBuff.txt"
+var sunWyrmText = "res://_Assets/Text/TextFiles/SunWyrmBuff.txt"
 var sunMawText = "res://_Assets/Text/TextFiles/SunMawBuff.txt"
 var sunSpineText = "res://_Assets/Text/TextFiles/SunSpineBuff.txt"
 var sunHiveText = "res://_Assets/Text/TextFiles/SunHiveBuff.txt"
@@ -53,35 +53,35 @@ var occulumBase = "res://_Assets/Text/TextFiles/Synergies/EyeBase.txt"
 var occulumHive = "res://_Assets/Text/TextFiles/Synergies/EyeHive.txt"
 var occulumMaw = "res://_Assets/Text/TextFiles/Synergies/EyeMaw.txt"
 var occulumSpyder = "res://_Assets/Text/TextFiles/Synergies/EyeSpyder.txt"
-var occulumWalnut = "res://_Assets/Text/TextFiles/Synergies/EyeWalnut.txt"
+var occulumSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/EyeSpinalOcculum.txt"
 var occulumWyrm = "res://_Assets/Text/TextFiles/Synergies/EyeWyrm.txt"
 
 var spyderBase = "res://_Assets/Text/TextFiles/Synergies/SpyderBase.txt"
 var spyderEye = "res://_Assets/Text/TextFiles/Synergies/SpyderEye.txt"
 var spyderHive = "res://_Assets/Text/TextFiles/Synergies/SpyderHive.txt"
 var spyderMaw = "res://_Assets/Text/TextFiles/Synergies/SpyderMaw.txt"
-var spyderWalnut = "res://_Assets/Text/TextFiles/Synergies/SpyderWalnut.txt"
+var spyderSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/SpyderSpinalOcculum.txt"
 var spyderWyrm = "res://_Assets/Text/TextFiles/Synergies/SpyderWyrm.txt"
 
 var hiveBase = "res://_Assets/Text/TextFiles/Synergies/HiveBase.txt"
 var hiveEye = "res://_Assets/Text/TextFiles/Synergies/HiveEye.txt"
 var hiveMaw = "res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt"
 var hiveSpyder = "res://_Assets/Text/TextFiles/Synergies/HiveSpyder.txt"
-var hiveWalnut = "res://_Assets/Text/TextFiles/Synergies/HiveWalnut.txt"
+var hiveSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/HiveSpinalOcculum.txt"
 var hiveWyrm = "res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt"
 
-var walnutBase = "res://_Assets/Text/TextFiles/Synergies/WalnutBase.txt"
-var walnutEye = "res://_Assets/Text/TextFiles/Synergies/WalnutEye.txt"
-var walnutHive = "res://_Assets/Text/TextFiles/Synergies/WalnutHive.txt"
-var walnutMaw = "res://_Assets/Text/TextFiles/Synergies/WalnutMaw.txt"
-var walnutSpyder = "res://_Assets/Text/TextFiles/Synergies/WalnutSpyder.txt"
-var walnutWyrm = "res://_Assets/Text/TextFiles/Synergies/WalnutWyrm.txt"
+var spinalOcculumBase = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumBase.txt"
+var spinalOcculumEye = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumEye.txt"
+var spinalOcculumHive = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumHive.txt"
+var spinalOcculumMaw = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumMaw.txt"
+var spinalOcculumSpyder = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumSpyder.txt"
+var spinalOcculumWyrm = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumWyrm.txt"
 
 var mawBase = "res://_Assets/Text/TextFiles/Synergies/MawBase.txt"
 var mawEye = "res://_Assets/Text/TextFiles/Synergies/MawEye.txt"
 var mawHive = "res://_Assets/Text/TextFiles/Synergies/MawHive.txt"
 var mawSpyder = "res://_Assets/Text/TextFiles/Synergies/MawSpyder.txt"
-var mawWalnut = "res://_Assets/Text/TextFiles/Synergies/MawWalnut.txt"
+var mawSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt"
 var mawWyrm = "res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt"
 
 var wyrmBase = "res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt"
@@ -89,19 +89,19 @@ var wyrmEye ="res://_Assets/Text/TextFiles/Synergies/WyrmEye.txt"
 var wyrmHive ="res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt"
 var wyrmMaw ="res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt"
 var wyrmSpyder ="res://_Assets/Text/TextFiles/Synergies/WyrmSpyder.txt"
-var wyrmWalnut ="res://_Assets/Text/TextFiles/Synergies/WyrmWalnut.txt"
+var wyrmSpinalOcculum ="res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum.txt"
 
 
 
-var mawSpyderScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_spider_buff.tscn")
-var mawEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_egg_buff.tscn")
+var mawCrawlerScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_spider_buff.tscn")
+var mawWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_wyrm_buff.tscn")
 var spineMawScene = preload("res://_UI/GameDemonstrations/DemonTutorials/spine_maw_buff.tscn")
 var hiveMawScene  = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_hive_buff.tscn")
-var spineEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/egg_spine_buff.tscn")
-var hiveEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/hive_egg_buff.tscn")
+var spineWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/wyrm_spine_buff.tscn")
+var hiveWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/hive_wyrm_buff.tscn")
 var hiveSpyderScene = preload("res://_UI/GameDemonstrations/DemonTutorials/hive_spyder_buff.tscn")
-var sunSpyderScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sunflower_spyder_buff.tscn")
-var sunEggScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_egg_buff.tscn")
+var sunSpyderScene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_spyder_buff.tscn")
+var sunWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_wyrm_buff.tscn")
 var sunHiveScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_hive_buff.tscn")
 var sunSpineScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_spine_buff.tscn")
 var sunMawScene = preload("res://_UI/GameDemonstrations/DemonTutorials/sun_maw_buff.tscn")
@@ -150,19 +150,19 @@ func _ready() -> void:
 func _update_button_textures():
 	
 	# Set Melee Alien buttons
-	if sunflowerButton != null:
-		sunflowerButton.texture_normal = GlobalResourceLoader.get_demon_image(
+	if occulumButton != null:
+		occulumButton.texture_normal = GlobalResourceLoader.get_demon_image(
 			GlobalResourceLoader.DemonType.OCCULUM)
-	if peashooterButton != null:
-		peashooterButton.texture_normal = GlobalResourceLoader.get_demon_image(
+	if crawlerButton != null:
+		crawlerButton.texture_normal = GlobalResourceLoader.get_demon_image(
 			GlobalResourceLoader.DemonType.CRAWLER)
-	if walnutButton != null:
-		walnutButton.texture_normal = GlobalResourceLoader.get_demon_image(
+	if spinalOcculumButton != null:
+		spinalOcculumButton.texture_normal = GlobalResourceLoader.get_demon_image(
 			GlobalResourceLoader.DemonType.SPINALOCCULUM)
 	
 
-	if eggWyrmButton != null:
-		eggWyrmButton.texture_normal = GlobalResourceLoader.get_demon_image(
+	if wyrmButton != null:
+		wyrmButton.texture_normal = GlobalResourceLoader.get_demon_image(
 			GlobalResourceLoader.DemonType.WYRM)
 	if hiveButton != null:
 		hiveButton.texture_normal = GlobalResourceLoader.get_demon_image(
@@ -215,7 +215,7 @@ func set_demon_variations(newDemon : GlobalResourceLoader.DemonType):
 	
 	pass
 	
-func _on_sunflower_pressed() -> void:
+func _on_occulum_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	
@@ -225,10 +225,10 @@ func _on_sunflower_pressed() -> void:
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.OCCULUM)
 	play()
-	set_text(sunflowerDescription)
+	set_text(occulumDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.OCCULUM)
 
-func _on_peashooter_pressed() -> void:
+func _on_crawler_pressed() -> void:
 	visible = true
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
@@ -237,11 +237,11 @@ func _on_peashooter_pressed() -> void:
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.CRAWLER)
 	play()
-	set_text(peashooterDescription)
+	set_text(crawlerDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.CRAWLER)
 
 
-func _on_walnut_pressed() -> void:
+func _on_spinalOcculum_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
@@ -250,12 +250,12 @@ func _on_walnut_pressed() -> void:
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.SPINALOCCULUM)
 	play()
-	set_text(walnutDescription)
+	set_text(spinalOcculumDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.SPINALOCCULUM)
 
 
 
-func _on_egg_wrym_pressed() -> void:
+func _on_wrym_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
@@ -264,7 +264,7 @@ func _on_egg_wrym_pressed() -> void:
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.WYRM)
 	play()
-	set_text(eggWyrmDescription)
+	set_text(wyrmDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.WYRM)
 
 func _on_hive_pressed() -> void:
@@ -332,20 +332,20 @@ func _on_more_info_button_pressed() -> void:
 			synergyPanel.set_visual_tutorial_text(sunSpyderText)
 			synergyPanel.set_visual_tutorial_visual(sunSpyderScene.instantiate())
 		DEMON.CRAWLER:
-			synergyPanel.set_visual_tutorial_text(mawSpyderText)
-			synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
+			synergyPanel.set_visual_tutorial_text(mawCrawlerText)
+			synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())
 		DEMON.SPINALOCCULUM:
-			synergyPanel.set_visual_tutorial_text(eggSpineText)
-			synergyPanel.set_visual_tutorial_visual(spineEggScene.instantiate())	
+			synergyPanel.set_visual_tutorial_text(wyrmSpineText)
+			synergyPanel.set_visual_tutorial_visual(spineWyrmScene.instantiate())	
 		DEMON.WYRM:
-			synergyPanel.set_visual_tutorial_text(mawEggText)
-			synergyPanel.set_visual_tutorial_visual(mawEggScene.instantiate())
+			synergyPanel.set_visual_tutorial_text(mawWyrmText)
+			synergyPanel.set_visual_tutorial_visual(mawWyrmScene.instantiate())
 		DEMON.HIVE:
 			synergyPanel.set_visual_tutorial_text(hiveMawText)
 			synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
 		DEMON.MAW:
-			synergyPanel.set_visual_tutorial_text(mawSpyderText)
-			synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
+			synergyPanel.set_visual_tutorial_text(mawCrawlerText)
+			synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())
 
 
 func _on_back_out_details_pressed() -> void:
@@ -370,8 +370,8 @@ func setNextSynergyScene(current_demon,this_count):
 					synergyPanel.set_visual_tutorial_text(sunSpyderText)
 					synergyPanel.set_visual_tutorial_visual(sunSpyderScene.instantiate())
 				1:
-					synergyPanel.set_visual_tutorial_text(sunEggText)
-					synergyPanel.set_visual_tutorial_visual(sunEggScene.instantiate())
+					synergyPanel.set_visual_tutorial_text(sunWyrmText)
+					synergyPanel.set_visual_tutorial_visual(sunWyrmScene.instantiate())
 				2:
 					synergyPanel.set_visual_tutorial_text(sunHiveText)
 					synergyPanel.set_visual_tutorial_visual(sunHiveScene.instantiate())
@@ -386,8 +386,8 @@ func setNextSynergyScene(current_demon,this_count):
 		DEMON.CRAWLER:
 			match this_count:
 				0:
-					synergyPanel.set_visual_tutorial_text(mawSpyderText)
-					synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())
+					synergyPanel.set_visual_tutorial_text(mawCrawlerText)
+					synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())
 				1:
 					synergyPanel.set_visual_tutorial_text(hiveSpyderText)
 					synergyPanel.set_visual_tutorial_visual(hiveSpyderScene.instantiate())
@@ -395,8 +395,8 @@ func setNextSynergyScene(current_demon,this_count):
 		DEMON.SPINALOCCULUM:
 			match this_count:
 				0:
-					synergyPanel.set_visual_tutorial_text(eggSpineText)
-					synergyPanel.set_visual_tutorial_visual(spineEggScene.instantiate())	
+					synergyPanel.set_visual_tutorial_text(wyrmSpineText)
+					synergyPanel.set_visual_tutorial_visual(spineWyrmScene.instantiate())	
 				1:
 					synergyPanel.set_visual_tutorial_text(spineMawText)
 					synergyPanel.set_visual_tutorial_visual(spineMawScene.instantiate())
@@ -404,14 +404,14 @@ func setNextSynergyScene(current_demon,this_count):
 		DEMON.WYRM:
 			match this_count:
 				0:
-					synergyPanel.set_visual_tutorial_text(mawEggText)
-					synergyPanel.set_visual_tutorial_visual(mawEggScene.instantiate())
+					synergyPanel.set_visual_tutorial_text(mawWyrmText)
+					synergyPanel.set_visual_tutorial_visual(mawWyrmScene.instantiate())
 				1:
-					synergyPanel.set_visual_tutorial_text(eggSpineText)
-					synergyPanel.set_visual_tutorial_visual(spineEggScene.instantiate())
+					synergyPanel.set_visual_tutorial_text(wyrmSpineText)
+					synergyPanel.set_visual_tutorial_visual(spineWyrmScene.instantiate())
 				2:
-					synergyPanel.set_visual_tutorial_text(hiveEggText)
-					synergyPanel.set_visual_tutorial_visual(hiveEggScene.instantiate())
+					synergyPanel.set_visual_tutorial_text(hiveWyrmText)
+					synergyPanel.set_visual_tutorial_visual(hiveWyrmScene.instantiate())
 					count = -1
 		DEMON.HIVE:
 			match this_count:
@@ -423,17 +423,17 @@ func setNextSynergyScene(current_demon,this_count):
 					synergyPanel.set_visual_tutorial_visual(hiveSpyderScene.instantiate())
 					
 				2:
-					synergyPanel.set_visual_tutorial_text(hiveEggText)
-					synergyPanel.set_visual_tutorial_visual(hiveEggScene.instantiate())
+					synergyPanel.set_visual_tutorial_text(hiveWyrmText)
+					synergyPanel.set_visual_tutorial_visual(hiveWyrmScene.instantiate())
 					count = -1
 		DEMON.MAW:
 			match this_count:
 				0:
-					synergyPanel.set_visual_tutorial_text(mawSpyderText)
-					synergyPanel.set_visual_tutorial_visual(mawSpyderScene.instantiate())	
+					synergyPanel.set_visual_tutorial_text(mawCrawlerText)
+					synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())	
 				1:
-					synergyPanel.set_visual_tutorial_text(mawEggText)
-					synergyPanel.set_visual_tutorial_visual(mawEggScene.instantiate())
+					synergyPanel.set_visual_tutorial_text(mawWyrmText)
+					synergyPanel.set_visual_tutorial_visual(mawWyrmScene.instantiate())
 				2:
 					synergyPanel.set_visual_tutorial_text(spineMawText)
 					synergyPanel.set_visual_tutorial_visual(spineMawScene.instantiate())
@@ -459,7 +459,7 @@ func _on_alt_1_pressed() -> void:
 			set_text(spyderBase)
 		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt1.texture_normal
-			set_text(walnutBase)
+			set_text(spinalOcculumBase)
 		DEMON.WYRM:
 			staticPreview.texture = alt1.texture_normal
 			set_text(wyrmBase)
@@ -485,7 +485,7 @@ func _on_alt_2_pressed() -> void:
 			set_text(spyderHive)
 		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt2.texture_normal
-			set_text(walnutEye)
+			set_text(spinalOcculumEye)
 		DEMON.WYRM:
 			staticPreview.texture = alt2.texture_normal
 			set_text(wyrmEye)
@@ -511,7 +511,7 @@ func _on_alt_3_pressed() -> void:
 			set_text(spyderMaw)
 		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt3.texture_normal
-			set_text(walnutHive)
+			set_text(spinalOcculumHive)
 		DEMON.WYRM:
 			staticPreview.texture = alt3.texture_normal
 			set_text(wyrmHive)
@@ -537,7 +537,7 @@ func _on_alt_4_pressed() -> void:
 			set_text(spyderEye)
 		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt4.texture_normal
-			set_text(walnutMaw)
+			set_text(spinalOcculumMaw)
 		DEMON.WYRM:
 			staticPreview.texture = alt4.texture_normal
 			set_text(wyrmMaw)
@@ -557,22 +557,22 @@ func _on_alt_5_pressed() -> void:
 	match current_demon:
 		DEMON.OCCULUM:
 			staticPreview.texture = alt5.texture_normal
-			set_text(occulumWalnut)
+			set_text(occulumSpinalOcculum)
 		DEMON.CRAWLER:
 			staticPreview.texture = alt5.texture_normal
-			set_text(spyderWalnut)
+			set_text(spyderSpinalOcculum)
 		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt5.texture_normal
-			set_text(walnutSpyder)
+			set_text(spinalOcculumSpyder)
 		DEMON.WYRM:
 			staticPreview.texture = alt5.texture_normal
 			set_text(wyrmSpyder)
 		DEMON.HIVE:
 			staticPreview.texture = alt5.texture_normal
-			set_text(hiveWalnut)
+			set_text(hiveSpinalOcculum)
 		DEMON.MAW:
 			staticPreview.texture = alt5.texture_normal
-			set_text(mawWalnut)
+			set_text(mawSpinalOcculum)
 
 
 func _on_alt_6_pressed() -> void:
@@ -589,10 +589,10 @@ func _on_alt_6_pressed() -> void:
 			set_text(spyderWyrm)
 		DEMON.SPINALOCCULUM:
 			staticPreview.texture = alt6.texture_normal
-			set_text(walnutWyrm)
+			set_text(spinalOcculumWyrm)
 		DEMON.WYRM:
 			staticPreview.texture = alt6.texture_normal
-			set_text(wyrmWalnut)
+			set_text(wyrmSpinalOcculum)
 		DEMON.HIVE:
 			staticPreview.texture = alt6.texture_normal
 			set_text(hiveWyrm)

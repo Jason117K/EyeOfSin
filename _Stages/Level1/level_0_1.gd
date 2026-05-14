@@ -10,7 +10,7 @@ var wave3StartTimer : Timer
 @onready var crawler_button = demonSelectionMenu.get_crawler_button()
 @onready var zombie_spawner := $GameLayer/ZombieSpawner
 
-const HIDEABLE_PLANT_NAMES = ["Sunflower", "Walnut", "Egg", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]
+const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -22,8 +22,8 @@ func _setup_tutorial():
 			"input_filter": _filter_block_keyboard,
 		},
 		{
-			"name": "FORCE_PLACE_PLANT",
-			"enter": _start_force_place_plant,
+			"name": "FORCE_PLACE_demon",
+			"enter": _start_force_place_demon,
 			"input_filter": _filter_block_deselect_and_swap,
 		},
 		{
@@ -67,7 +67,7 @@ func _ready():
 	Dialogic.timeline_ended.connect(finish_ready)
 
 	Global.current_level = self
-	Global.resetSunflowerCount()
+	Global.resetOcculumCount()
 	Global.reset_swap_ability()
 
 	#waveManager.wave_delays = [-1, -1]
@@ -76,14 +76,14 @@ func _ready():
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
 
-	setup_plant_selection_menu()
+	setup_demon_selection_menu()
 	pause_Button.set_restart_levels(current_level, current_level_alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
 
-	plantManager.spyder_placed.connect(func(_grid_position): _on_spyder_placed())
+	demonManager.spyder_placed.connect(func(_grid_position): _on_spyder_placed())
 	crawler_button.connect("pressed", Callable(self, "_on_spyder_button_pressed"))
 
 	toolTips.hide()
@@ -118,7 +118,7 @@ func _input(event):
 func _start_force_select_spyder():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_SPYDER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
-	#hide_all_plant_buttons_except_spyder()
+	#hide_all_demon_buttons_except_spyder()
 	if has_pulsed == false:
 		highlight_spyder_button()
 		has_pulsed = true 
@@ -126,7 +126,7 @@ func _start_force_select_spyder():
 	demonSelectionMenu.canSwapScenes = false
 
 
-func _start_force_place_plant():
+func _start_force_place_demon():
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SPYDER, false)
 	
 	unhighlight_spyder_button()
@@ -225,7 +225,7 @@ func _on_tooltip_hidden():
 
 
 func _on_spyder_placed():
-	if get_current_step_name() == "FORCE_PLACE_PLANT":
+	if get_current_step_name() == "FORCE_PLACE_demon":
 		print("Advancing YTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → EXPLAIN_BLOOD_COST
 
@@ -233,7 +233,7 @@ func _on_spyder_placed():
 func _on_spyder_button_pressed():
 	if get_current_step_name() == "FORCE_SELECT_SPYDER":
 		print("Advancing WTutorial Here from : ", get_current_step_name())
-		advance_tutorial() # → FORCE_PLACE_PLANT
+		advance_tutorial() # → FORCE_PLACE_demon
 
 
 func _on_wave_started(wave_index: int):
@@ -246,7 +246,7 @@ func _on_wave_started(wave_index: int):
 			go_to_step("EXPLAIN_SEVERED_ZOMBIE")
 
 
-func _on_plant_manager_spyder_placed(_grid_position: Vector2) -> void:
+func _on_demon_manager_spyder_placed(_grid_position: Vector2) -> void:
 	_on_spyder_placed()
 #endregion
 
@@ -270,7 +270,8 @@ func _physics_process(_delta):
 
 
 #region UI Helpers
-func setup_plant_selection_menu():
+func setup_demon_selection_menu():
+	print("Demon Selection Menu is ", demonSelectionMenu)
 	demonSelectionMenu.get_world_swap_button().visible = false
 	demonSelectionMenu.get_remove_demon_button().visible = false 
 	demonSelectionMenu.get_codex_button().visible = false 

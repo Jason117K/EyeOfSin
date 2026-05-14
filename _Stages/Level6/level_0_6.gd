@@ -1,5 +1,5 @@
 extends LevelTemplate
-# level_0_6.gd - Level 0-6 Controller (no forced plant tutorial, just zombie explanation)
+# level_0_6.gd - Level 0-6 Controller (no forced demon tutorial, just zombie explanation)
 
 # Preloaded demo scenes
 var amalgam_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
@@ -58,10 +58,10 @@ func _ready():
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
 
-	setup_plant_selection_menu()
+	setup_demon_selection_menu()
 	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	Global.resetSunflowerCount()
+	Global.resetOcculumCount()
 	attach_script_to_sway_children()
 
 	# Connect signals
@@ -137,7 +137,7 @@ func _on_wave_started(wave_index: int):
 
 
 #region UI Helpers
-func setup_plant_selection_menu():
+func setup_demon_selection_menu():
 	show_all_demon_buttons()
 	
 	world_swap_button.visible = true 

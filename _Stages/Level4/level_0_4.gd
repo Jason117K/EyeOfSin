@@ -16,7 +16,7 @@ const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_Sel
 const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
 const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 
-# Plant button container names
+# Demon button container names
 
 # Cached button references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -68,12 +68,12 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	
-	Global.resetSunflowerCount()
+	Global.resetOcculumCount()
 	attach_script_to_sway_children()
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	plantManager.connect("eggWorm_placed", Callable(self, "_on_wyrm_placed"))
+	demonManager.connect("wyrm_placed", Callable(self, "_on_wyrm_placed"))
 	wyrm_button.connect("pressed", Callable(self, "_on_wyrm_button_pressed"))
 
 	toolTips.hide()
@@ -116,10 +116,7 @@ func _input(event):
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_wyrm():
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
-	
-	#show_only_plant_buttons(["Egg"])
 	hide_all_demon_buttons_with_exception(["Wyrm"])
-	#hbox.get_node("Egg").visible = true
 	if has_pulsed == false:
 		has_pulsed = true 
 		demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
@@ -203,7 +200,7 @@ func _on_wave_started(wave_index: int):
 
 
 #region UI Helpers
-func show_only_plant_buttons(visible_containers: Array):
+func show_only_demon_buttons(visible_containers: Array):
 	for container_name in ALL_DEMON_CONTAINERS:
 		var container = hbox.get_node(container_name)
 		var should_show = container_name in visible_containers
@@ -212,18 +209,17 @@ func show_only_plant_buttons(visible_containers: Array):
 
 
 func _show_all_buttons():
-	#show_only_plant_buttons(["Sunflower", "Walnut", "Egg", "Maw", "Peashooter"])
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw", "Wyrm"])
-	# Also show non-plant UI
-	#hbox.get_node("Sunflower").visible = true
-	#hbox.get_node("Walnut").visible = true
+	# Also show non-demon UI
+	#hbox.get_node("Occulum").visible = true
+	#hbox.get_node("SpinalOcculum").visible = true
 	#hbox.get_node("Maw").visible = true
 	#hbox.get_node("WorldSwap").visible = true
 	#hbox.get_node("Codex").visible = true
 
 
-func remove_empty_blocker_plant(grid_pos):
-	plantManager.clear_space_alt(grid_pos)
+func remove_empty_blocker_demon(grid_pos):
+	demonManager.clear_space_alt(grid_pos)
 
 
 func show_guide():
