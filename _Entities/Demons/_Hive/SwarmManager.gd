@@ -81,6 +81,7 @@ func spawn_initial_drones():
 		var rest_pos = calculate_rest_position(i)
 		drone_rest_positions[drone] = rest_pos
 		drone.global_position = hive.global_position + rest_pos
+		drone.rest_position = rest_pos
 
 		drone.connect("drone_died", Callable(self, "_on_drone_died"))
 		if is_maw_buffed:
@@ -198,7 +199,7 @@ func _on_DroneRespawnTimer_timeout():
 	var rest_pos = calculate_rest_position(available_drones.size() - 1)
 	drone_rest_positions[new_drone] = rest_pos
 	new_drone.global_position = hive.global_position + rest_pos
-
+	new_drone.rest_position = rest_pos
 	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
 
 	if is_maw_buffed:

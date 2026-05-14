@@ -14,7 +14,7 @@ signal level_ended
 @export var preview_lead_time: float = 25.0
 
 ## Player health — will be extracted to a separate node later.
-@export var health_points: int = 10
+@export var health_points: int = 9999
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
@@ -25,7 +25,7 @@ var _spawners: Array = []
 var _wave_previews: Array = []
 var _current_wave: int = -1
 var _total_waves: int = 0
-var _spawners_finished: int = 0
+@onready var _spawners_finished: int = 0
 var _all_spawning_done: bool = false
 
 var elapsed_time_preview_on_screen

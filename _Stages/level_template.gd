@@ -53,6 +53,7 @@ func _on_level_ended():
 
 
 func _on_end_dialog_finished():
+	print("This Is makign level switcher visible")
 	levelSwitcher.visible = true
 	$"../ToolTips".visible = false
 	get_tree().paused = true
