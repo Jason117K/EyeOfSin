@@ -448,16 +448,18 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 	button.add_child(panel)
 	for child in button.get_children():
 		print(button, " children are ", child)
-	panel.top_level = true
+	#panel.top_level = true
 	#panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 	# Expand slightly beyond the button to create a border effect
 	var margin := highlight_border_thickness + 4
-	panel.global_position = button.global_position - Vector2(margin, margin)
-	panel.size = button.size + Vector2(margin * 2, margin * 2)	
-	print("Button Global Pos Is  : ", button.global_position)
-	print("Margin Is ", margin)
-	print("Crawler Button Panel Global Pos is ",panel.global_position  )
+	#panel.global_position = button.global_position - Vector2(margin, margin)
+	#panel.size = button.size + Vector2(margin * 2, margin * 2)	
+	panel.position = Vector2(-margin, -margin)
+	panel.size = button.size + Vector2(margin * 2, margin * 2)
+	#print("Button Global Pos Is  : ", button.global_position)
+	#print("Margin Is ", margin)
+	#print("Crawler Button Panel Global Pos is ",panel.global_position  )
 	#panel.offset_left = -margin
 	#panel.offset_top = -margin
 	#panel.offset_right = margin
