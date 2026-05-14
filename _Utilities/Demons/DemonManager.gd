@@ -23,7 +23,6 @@ var hero_demon : Demon
 signal demon_placed(grid_position: Vector2)
 signal spyder_placed(grid_position: Vector2)
 signal spinalOcculum_placed(grid_position: Vector2)
-signal eyeBomb_placed(grid_position: Vector2)
 signal wyrm_placed(grid_position: Vector2)
 signal wasp_placed(grid_position: Vector2)
 signal maw_placed(grid_position: Vector2)
@@ -429,8 +428,6 @@ func place_demon(grid_pos: Vector2):
 			spyder_not_placed = false
 			pass
 
-		elif "Bomb" in demon_instance.name:
-			eyeBomb_placed.emit(grid_pos)
 		elif "Wyrm" in demon_instance.name:
 			wyrm_placed.emit(grid_pos)
 		elif "Hive" in demon_instance.name:
