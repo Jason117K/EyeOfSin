@@ -62,42 +62,6 @@ region = Rect2(224, 0, 32, 32)
 atlas = ExtResource("5_awm0g")
 region = Rect2(256, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rvh2"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12ike"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1522h"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fuop"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x55j7"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fii4j"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1j6u1"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kx1pl"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7310"]
-atlas = ExtResource("3_fprn4")
-region = Rect2(256, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_k24vi"]
 atlas = ExtResource("4_lnyhe")
 region = Rect2(0, 0, 32, 32)
@@ -132,6 +96,42 @@ region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krvim"]
 atlas = ExtResource("4_lnyhe")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rvh2"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12ike"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1522h"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fuop"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x55j7"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fii4j"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j6u1"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx1pl"]
+atlas = ExtResource("3_fprn4")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7310"]
+atlas = ExtResource("3_fprn4")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tocfb"]
@@ -374,6 +374,70 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_k24vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fmlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2bfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehurt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f137b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eruq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iadp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rq4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krvim")
+}],
+"loop": false,
+"name": &"idle_Crawler",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd78h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awm0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2bgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3sqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ethfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wby7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psjym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1026")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wc7k")
+}],
+"loop": false,
+"name": &"idle_Hive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6rvh2")
 }, {
 "duration": 1.0,
@@ -406,38 +470,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k24vi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8fmlh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d2bfo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ehurt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f137b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6eruq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iadp4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3rq4g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_krvim")
-}],
-"loop": false,
-"name": &"idle_Spider",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_tocfb")
 }, {
 "duration": 1.0,
@@ -465,7 +497,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_tcygy")
 }],
 "loop": false,
-"name": &"idle_Sunflower",
+"name": &"idle_Occulum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -497,39 +529,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_rv5ex")
 }],
 "loop": false,
-"name": &"idle_Walnut",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pd78h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awm0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s2bgg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q3sqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ethfs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wby7u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_psjym")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c1026")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8wc7k")
-}],
-"loop": false,
-"name": &"idle_Wasp",
+"name": &"idle_SpinalOcculum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1454,7 +1454,7 @@ shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
 shader_parameter/dark_color = Color(0.01, 0, 0.00383333, 1)
 shader_parameter/shade_ratio = 0.53
 
-[node name="Hive" type="Area2D" unique_id=1078490386 groups=["Plants"]]
+[node name="Hive" type="Area2D" unique_id=1078490386 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
 cost = 50
@@ -1463,7 +1463,7 @@ buffedWaitTime = 3.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_cvsxw")]
 script = ExtResource("3_k5wuc")
-walnutHealth = 650
+spinalOcculumHealth = 650
 health = 300
 buffedHealth = 500
 healthRegen = 0.1
@@ -1481,7 +1481,7 @@ texture = ExtResource("2_cpfsp")
 material = SubResource("ShaderMaterial_7f7y1")
 position = Vector2(0, -3)
 sprite_frames = SubResource("10")
-animation = &"idle_Maw"
+animation = &"idle_Hive"
 autoplay = "spawn"
 script = ExtResource("5_pd78h")
 
@@ -1505,7 +1505,6 @@ one_shot = true
 
 [node name="BuffNodesComponent" parent="." unique_id=1342001150 instance=ExtResource("3")]
 position = Vector2(-0.588235, 0)
-giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "", "Maw", "None", "None"]
 
 [node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
@@ -1650,14 +1649,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(37171657, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 111.26578, 130.53708, 109.36383, 130.71413, 107.37312, 131.66699, 105.34198, 132.43137, 103.41089, 132.51692, 101.85082, 132.027, 100.73921, 131.25371, 101.07242, 130.20555, 99.29466, 130.09964, 97.5426, 129.70142, 95.6104, 129.69774, 93.657745, 130.35883, 91.97611, 131.72926, 90.99548, 133.81837, 89.146515, 134.12123, 87.17978, 134.73918, 85.289566, 134.74493, 83.84606, 134.05559, 83.17862, 132.91745, 83.55667, 131.74678, 84.875046, 131.10638, 85.94993, 130.287, 85.87343, 129.14459, 84.97506, 128.3095)
+points = PackedVector2Array(112.595, 131.435, 110.697365, 131.51204, 109.580025, 130.52753, 108.88878, 129.24792, 107.79702, 128.1524, 106.180595, 127.610146, 104.32279, 127.85792, 102.63593, 129.00468, 101.964455, 128.03256, 100.07542, 128.23302, 98.24776, 127.930214, 96.83768, 126.98866, 96.03996, 125.65958, 95.28741, 124.46996, 96.6495, 124.921974, 95.43054, 123.78491, 94.143555, 122.67034, 92.43621, 122.10255, 90.484764, 122.43604, 88.74324, 123.77344, 87.75061, 125.95008, 87.36792, 128.35458, 86.032776, 130.19809, 84.25487, 130.96231, 82.68709, 130.87552)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 111.26578, 124.91208, 109.36383, 124.464134, 107.37312, 124.792, 105.34198, 124.931366, 103.41089, 124.39193, 101.85082, 123.27699, 100.73921, 121.878716, 101.07242, 120.20554, 99.29466, 119.47465, 97.5426, 118.451416, 95.6104, 117.82273, 93.657745, 117.858826, 91.97611, 118.604256, 90.99548, 120.06838, 89.146515, 119.74623, 87.17978, 119.73918, 85.289566, 119.11993, 83.84606, 117.80559, 83.17862, 116.04244, 83.55667, 114.24679, 84.875046, 112.98138, 85.94993, 111.537, 85.87343, 109.7696, 84.97506, 108.309494)
+points = PackedVector2Array(112.595, 126.435, 110.697365, 125.88704, 109.580025, 124.277534, 108.88878, 122.37293, 107.79702, 120.652405, 106.180595, 119.485146, 104.32279, 119.10792, 102.63593, 119.629684, 101.964455, 118.03256, 100.07542, 117.60802, 98.24776, 116.680214, 96.83768, 115.11366, 96.03996, 113.15958, 95.28741, 111.34496, 96.6495, 111.171974, 95.43054, 109.40991, 94.143555, 107.67034, 92.43621, 106.47755, 90.484764, 106.18604, 88.74324, 106.89844, 87.75061, 108.45008, 87.36792, 110.22958, 86.032776, 111.44809, 84.25487, 111.58731, 82.68709, 110.87552)
 width = 4.0
 
 [node name="Arm2" parent="." unique_id=848670294 node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
@@ -1672,14 +1671,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(848670294, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.61233, 132.02461, 116.15972, 131.46039, 117.13955, 130.32307, 118.28589, 129.26927, 119.920685, 128.7397, 121.795105, 128.93608, 123.58496, 129.87595, 124.847595, 131.70892, 126.537506, 131.5, 128.41914, 131.51488, 130.04716, 130.98598, 131.04063, 129.9386, 131.1507, 128.7086, 130.34352, 127.74325, 131.00717, 126.70246, 130.96759, 125.50488, 131.98515, 124.603, 133.71384, 124.67709, 135.29402, 126.118286, 135.44843, 128.52013, 134.18657, 130.47592, 132.8775, 132.35522, 132.57439, 134.71634, 133.48053, 136.78757)
+points = PackedVector2Array(112.595, 131.435, 113.94249, 130.61957, 115.88902, 131.00568, 117.90526, 131.92513, 119.966385, 132.39099, 121.78831, 132.05774, 122.96498, 131.07062, 123.17952, 129.86153, 124.735, 130.92427, 125.66448, 129.837, 127.25617, 129.1938, 129.20337, 129.28954, 131.11256, 130.27916, 132.55008, 132.09413, 133.26453, 134.39963, 134.89713, 135.91287, 136.641, 137.19217, 138.42668, 137.32587, 139.50163, 136.48195, 139.20988, 135.34431, 137.55627, 135.23114, 135.7478, 136.18254, 133.9549, 136.65875, 132.85257, 135.9218, 132.97128, 134.84695)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.61233, 126.39962, 116.15972, 125.21039, 117.13955, 123.44808, 118.28589, 121.76927, 119.920685, 120.6147, 121.795105, 120.18608, 123.58496, 120.500946, 124.847595, 121.70892, 126.537506, 120.87501, 128.41914, 120.26488, 130.04716, 119.11098, 131.04063, 117.43859, 131.1507, 115.58361, 130.34352, 113.99325, 131.00717, 112.32746, 130.96759, 110.50488, 131.98515, 108.978, 133.71384, 108.42709, 135.29402, 109.243286, 135.44843, 111.020134, 134.18657, 112.35092, 132.8775, 113.60522, 132.57439, 115.34133, 133.48053, 116.78756)
+points = PackedVector2Array(112.595, 126.435, 113.94249, 124.99457, 115.88902, 124.755684, 117.90526, 125.05013, 119.966385, 124.89099, 121.78831, 123.93273, 122.96498, 122.32061, 123.17952, 120.486534, 124.735, 120.92426, 125.66448, 119.212006, 127.25617, 117.9438, 129.20337, 117.414536, 131.11256, 117.77915, 132.55008, 118.96914, 133.26453, 120.64963, 134.89713, 121.537865, 136.641, 122.19218, 138.42668, 121.700874, 139.50163, 120.23195, 139.20988, 118.46931, 137.55627, 117.73115, 135.7478, 118.05754, 133.9549, 117.90875, 132.85257, 116.54679, 132.97128, 114.846954)
 width = 4.0
 
 [node name="ArmTarget" parent="." unique_id=2013687383 instance=ExtResource("19_s2bgg")]

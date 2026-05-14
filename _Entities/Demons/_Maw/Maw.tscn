@@ -71,18 +71,6 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("2")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_isgow"]
-atlas = ExtResource("3_38s27")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnoe8"]
-atlas = ExtResource("3_38s27")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opv5f"]
-atlas = ExtResource("3_38s27")
-region = Rect2(128, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5x47"]
 atlas = ExtResource("5_elvfo")
 region = Rect2(0, 0, 64, 64)
@@ -95,16 +83,28 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("5_elvfo")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g67sh"]
-atlas = ExtResource("5_elvfo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5dig"]
+atlas = ExtResource("8_5v7ar")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wuj0c"]
-atlas = ExtResource("5_elvfo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l11s1"]
+atlas = ExtResource("8_5v7ar")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_17i1y"]
-atlas = ExtResource("5_elvfo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x5a5"]
+atlas = ExtResource("8_5v7ar")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isgow"]
+atlas = ExtResource("3_38s27")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnoe8"]
+atlas = ExtResource("3_38s27")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opv5f"]
+atlas = ExtResource("3_38s27")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k65hl"]
@@ -129,18 +129,6 @@ region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xnhl5"]
 atlas = ExtResource("7_0xvi3")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5dig"]
-atlas = ExtResource("8_5v7ar")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l11s1"]
-atlas = ExtResource("8_5v7ar")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4x5a5"]
-atlas = ExtResource("8_5v7ar")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76buk"]
@@ -270,6 +258,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w5x47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi11l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h74m")
+}],
+"loop": false,
+"name": &"idle_Crawler",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5dig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l11s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x5a5")
+}],
+"loop": false,
+"name": &"idle_Hive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_isgow")
 }, {
 "duration": 1.0,
@@ -284,34 +300,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w5x47")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yi11l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3h74m")
-}],
-"loop": false,
-"name": &"idle_Peashooter",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g67sh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wuj0c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_17i1y")
-}],
-"loop": false,
-"name": &"idle_Spider",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_k65hl")
 }, {
 "duration": 1.0,
@@ -321,7 +309,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5k376")
 }],
 "loop": false,
-"name": &"idle_Sunflower",
+"name": &"idle_Occulum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -335,21 +323,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xnhl5")
 }],
 "loop": false,
-"name": &"idle_Walnut",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i5dig")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l11s1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4x5a5")
-}],
-"loop": false,
-"name": &"idle_Wasp",
+"name": &"idle_SpinalOcculum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1482,7 +1456,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Maw" type="Area2D" unique_id=1021710121 groups=["Plants"]]
+[node name="Maw" type="Area2D" unique_id=1021710121 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("4")
 cost = 250
@@ -1493,7 +1467,7 @@ buffedDigestTime = 11.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_colwa")]
 script = ExtResource("3_xf387")
-walnutHealth = 600
+spinalOcculumHealth = 600
 health = 800
 buffedHealth = 1200
 healthRegen = 0.1
@@ -1512,7 +1486,7 @@ frame_progress = 1.0
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
 sprite_frames = SubResource("7")
-animation = &"idle"
+animation = &"idle_Hive"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
 
@@ -1606,6 +1580,7 @@ animation = &"New Anim"
 position = Vector2(0, -3)
 script = ExtResource("19_7va85")
 polygon = NodePath("Fill")
+stroke_color = Color(1, 0, 0, 0.27450982)
 line = NodePath("Stroke")
 curve = SubResource("Curve2D_mg35w")
 update_curve_at_runtime = true
@@ -1630,7 +1605,6 @@ metadata/_edit_lock_ = true
 
 [node name="BuffNodesComponent" parent="." unique_id=464042542 instance=ExtResource("8")]
 position = Vector2(256, 256)
-giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "EggWorm", "Hive", "", "None", "None"]
 
 [node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 position = Vector2(48, 0)

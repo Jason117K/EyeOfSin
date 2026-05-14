@@ -46,7 +46,9 @@ func get_selected_demon():
 
 
 # Handles Player Interaction with the Demon Menu 
-func _input(event):
+func _unhandled_input(event: InputEvent) -> void:
+	if Global.is_blocking:
+		return 
 	# Dynamically get the selected demon	
 	selected_demon_scene = get_selected_demon()  
 	

@@ -168,6 +168,9 @@ func finish_ready():
 #region Input
 func _input(event):
 	_filter_tutorial_input(event)
+#func _unhandled_input(event: InputEvent) -> void:
+	#_filter_tutorial_input(event)
+	
 #endregion
 
 
@@ -187,6 +190,7 @@ func _start_force_select_occulum():
 
 
 func _start_force_place_occulum():
+	
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_OCCULUM,false)
 	
 	#demonSelectionMenu.remove_button_highlight(occulum_button)
@@ -215,6 +219,7 @@ func _start_force_select_spyder_after_blood():
 
 
 func _start_force_place_spyder_behind():
+	Global.is_blocking = true 
 	toolTips.set_visual_tutorial_text(tutorial_place_spyder)
 	toolTips.set_visual_tutorial_visual(buff_demo_scene.instantiate())
 	
@@ -289,6 +294,24 @@ func _filter_block_keyboard(event: InputEvent):
 
 
 func _filter_block_deselect(event: InputEvent):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_X:
+			get_viewport().set_input_as_handled()
+
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.pressed:
+		#_filter_block_place_demon_and_deselect(event)
+		
+func _filter_block_place_demon_and_deselect(event: InputEvent):
+	
+	if event is InputEventMouseButton and event.pressed:
+		print("TRYING TO FILTER INPUT")
+		if get_viewport().is_input_handled():
+			print(event, " Event WAS Handled")
+			pass
+		else:
+			print(event, " Event WAS NOT Handled")
+			get_viewport().set_input_as_handled()
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_X:
 			get_viewport().set_input_as_handled()

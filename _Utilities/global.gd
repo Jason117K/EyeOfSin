@@ -11,6 +11,7 @@ var canPlayLevel7 : bool = true
 var occulumCount := 0  
 var occulumCountVisual := 0  
 var wave_manager
+var is_blocking := false 
 
 var all_zombies := []
 var game_controller : GameController
@@ -69,6 +70,7 @@ func swap_portal_button():
 	demon_selection_menu.swap_portal_button()
 	
 func resetOcculumCount():
+	is_blocking = false 
 	occulumCount = 0
 	gameIsStarted = false
 	

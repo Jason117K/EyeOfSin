@@ -107,7 +107,7 @@ func _process(_delta):
 						#Check our list of valid demons to buff
 						#print("Demon buff name is : ", demonToBuff.name)
 						for demonActor in giveBuffTo:
-
+							#print("Demon Actor is ",demonActor )
 							
 									
 							#Handle Rest of Buffs

@@ -9,6 +9,7 @@ extends Control
 @onready var visualTutorialButton := $VisualTutorialVBox/VisualTutorialUnderstoodButton
 @onready var visualTutorialVisual : CenterContainer = $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialVisual
 @onready var visualTutorialVisualParent := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox
+#@onready var blockInputPanel := $BlockInput
 
 @export var max_basic_tutorial_characters := 100
 @export var small_basic_tutorial_text := 16
@@ -80,6 +81,7 @@ func set_visual_tutorial_text(newFile : String, show_button : bool = true):
 	else:
 		visualTutorialLabel.add_theme_font_size_override("normal_font_size", large_visual_tutorial_text)
 	if show_button:
+		#blockInputPanel.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
 		visualTutorialButton.show()
 		pass
 	else:
@@ -101,8 +103,8 @@ func set_visual_tutorial_visual(newVisual : CenterContainer, show_button : bool 
 		visualTutorialButton.hide()	
 	
 func _on_visual_tutorial_understood_button_pressed() -> void:
+	Global.is_blocking = false 
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
-
-	
+	#blockInputPanel.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE

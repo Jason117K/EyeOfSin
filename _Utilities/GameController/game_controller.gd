@@ -82,7 +82,7 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 	current_scene = null
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node = load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	current_scene = new_node
 
@@ -106,12 +106,12 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 
 	await get_tree().process_frame
 
-	var new1 := load(scene1_path).instantiate()
+	var new1 = load(scene1_path).instantiate()
 	scene_container.add_child(new1)
 	current_scene = new1
 	current_scenes.append(new1)
 
-	var new2 := load(scene2_path).instantiate()
+	var new2 = load(scene2_path).instantiate()
 	new2.visible = false
 	scene_container.add_child(new2)
 	current_scenes.append(new2)
@@ -138,7 +138,7 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node = load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	current_scene = new_node
 
@@ -158,7 +158,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node = load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	previous_scenes.append(current_scene)
 	current_scene = new_node
@@ -174,7 +174,7 @@ func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node = load(new_scene_path).instantiate()
 	new_node.visible = true
 	scene_container.add_child(new_node)
 	current_scene = new_node

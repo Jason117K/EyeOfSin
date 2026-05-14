@@ -803,7 +803,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjgjf"]
 size = Vector2(20, 1.275)
 
-[node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Plants", "Wyrm"]]
+[node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Demons", "Plants", "Wyrm"]]
 z_index = 1
 script = ExtResource("4")
 cost = 100
@@ -940,7 +940,6 @@ points = PackedVector2Array(16, 0, 300, 0)
 default_color = Color(1, 0, 0, 0.47058824)
 
 [node name="BuffNodesComponent" parent="." unique_id=1891567804 instance=ExtResource("12")]
-giveBuffTo = ["Sunflower", "Peashooter", "WalnutTree", "", "Hive", "Maw", "None", "None"]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 visible = false

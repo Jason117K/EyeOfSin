@@ -94,6 +94,30 @@ region = Rect2(160, 0, 40, 40)
 atlas = ExtResource("17_hvfi3")
 region = Rect2(200, 0, 40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7c83"]
+atlas = ExtResource("7_io8k3")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmqcw"]
+atlas = ExtResource("7_io8k3")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulfsp"]
+atlas = ExtResource("7_io8k3")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q8hq"]
+atlas = ExtResource("7_io8k3")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmdlp"]
+atlas = ExtResource("7_io8k3")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3roi5"]
+atlas = ExtResource("7_io8k3")
+region = Rect2(200, 0, 40, 40)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gj4d"]
 atlas = ExtResource("3_a06ib")
 region = Rect2(0, 0, 40, 40)
@@ -166,30 +190,6 @@ region = Rect2(160, 0, 40, 40)
 atlas = ExtResource("6_hvfi3")
 region = Rect2(200, 0, 40, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7c83"]
-atlas = ExtResource("7_io8k3")
-region = Rect2(0, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmqcw"]
-atlas = ExtResource("7_io8k3")
-region = Rect2(40, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ulfsp"]
-atlas = ExtResource("7_io8k3")
-region = Rect2(80, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1q8hq"]
-atlas = ExtResource("7_io8k3")
-region = Rect2(120, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hmdlp"]
-atlas = ExtResource("7_io8k3")
-region = Rect2(160, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3roi5"]
-atlas = ExtResource("7_io8k3")
-region = Rect2(200, 0, 40, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiln1"]
 atlas = ExtResource("8_mmfac")
 region = Rect2(0, 0, 40, 40)
@@ -246,6 +246,22 @@ region = Rect2(80, 0, 40, 40)
 atlas = ExtResource("11_io8k3")
 region = Rect2(120, 0, 40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tat17"]
+atlas = ExtResource("12_kcbs3")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxxjx"]
+atlas = ExtResource("12_kcbs3")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp0yt"]
+atlas = ExtResource("12_kcbs3")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq4vi"]
+atlas = ExtResource("12_kcbs3")
+region = Rect2(120, 0, 40, 40)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ji2b8"]
 atlas = ExtResource("9_82rcb")
 region = Rect2(0, 0, 40, 40)
@@ -292,22 +308,6 @@ region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j45lx"]
 atlas = ExtResource("11_druvk")
-region = Rect2(120, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tat17"]
-atlas = ExtResource("12_kcbs3")
-region = Rect2(0, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxxjx"]
-atlas = ExtResource("12_kcbs3")
-region = Rect2(40, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wp0yt"]
-atlas = ExtResource("12_kcbs3")
-region = Rect2(80, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xq4vi"]
-atlas = ExtResource("12_kcbs3")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kufjc"]
@@ -516,6 +516,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_k7c83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmqcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulfsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q8hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmdlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3roi5")
+}],
+"loop": false,
+"name": &"attack_Hive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8gj4d")
 }, {
 "duration": 1.0,
@@ -557,7 +580,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_hqx0h")
 }],
 "loop": false,
-"name": &"attack_Sunflower",
+"name": &"attack_Occulum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -580,30 +603,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_858au")
 }],
 "loop": false,
-"name": &"attack_Walnut",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k7c83")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jmqcw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ulfsp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1q8hq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hmdlp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3roi5")
-}],
-"loop": false,
-"name": &"attack_Wasp",
+"name": &"attack_SpinalOcculum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -665,6 +665,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tat17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxxjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp0yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq4vi")
+}],
+"loop": false,
+"name": &"idle_Hive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ji2b8")
 }, {
 "duration": 1.0,
@@ -694,7 +711,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8wx41")
 }],
 "loop": false,
-"name": &"idle_Sunflower",
+"name": &"idle_Occulum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -711,24 +728,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_j45lx")
 }],
 "loop": false,
-"name": &"idle_Walnut",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tat17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cxxjx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wp0yt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xq4vi")
-}],
-"loop": false,
-"name": &"idle_Wasp",
+"name": &"idle_SpinalOcculum",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1583,7 +1583,7 @@ shader_parameter/shade_ratio = 0.53
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.558477), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Crawler" type="Area2D" unique_id=675421916 groups=["Plants"]]
+[node name="Crawler" type="Area2D" unique_id=675421916 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
 cost = 50
@@ -1622,7 +1622,7 @@ autostart = true
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"redCrawlerDefault1"
+animation = &"attack_Hive"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("21_ol6r1")
@@ -1672,7 +1672,6 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="BuffNodesComponent" parent="." unique_id=321485823 instance=ExtResource("10")]
-giveBuffTo = ["Sunflower", "", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
 [node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
 visible = false
@@ -1788,7 +1787,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 108.52581, 133.07715, 105.04216, 133.10571, 103.695274, 131.26859, 101.00108, 130.26811, 97.07837, 131.67117, 93.57879, 131.78944, 92.26846, 130.00813, 90.42472, 128.54482)
+points = PackedVector2Array(112.595, 131.435, 111.03996, 129.59491, 107.37751, 129.97757, 103.44873, 131.55052, 100.72453, 130.55629, 99.008286, 128.89166, 95.41746, 129.20895, 91.55694, 131.10632, 88.59004, 130.61528)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1800,7 +1799,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 108.52581, 126.20215, 105.04216, 124.35571, 103.695274, 120.64358, 101.00108, 117.76812, 97.07837, 117.296165, 93.57879, 115.539444, 92.26846, 111.88313, 90.42472, 108.544815)
+points = PackedVector2Array(112.595, 126.435, 111.03996, 122.71992, 107.37751, 121.22756, 103.44873, 120.92552, 100.72453, 118.05628, 99.008286, 114.51666, 95.41746, 112.958954, 91.55694, 112.98132, 88.59004, 110.61528)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1821,7 +1820,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 113.929756, 131.214, 113.33118, 130.70195, 114.68958, 130.48306, 116.851944, 131.09366, 117.747894, 130.62997, 117.33624, 130.06194, 118.38737, 129.74571, 120.76968, 131.39633)
+points = PackedVector2Array(112.595, 131.435, 112.11217, 130.71289, 113.23827, 130.33382, 115.55205, 131.23758, 116.828735, 130.94545, 116.61952, 130.30623, 117.7012, 129.91946, 119.9572, 130.7549, 121.76427, 131.01047)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1829,7 +1828,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 113.929756, 124.339, 113.33118, 121.95195, 114.68958, 119.85806, 116.851944, 118.593666, 117.747894, 116.254974, 117.33624, 113.81194, 118.38737, 111.62071, 120.76968, 111.396324)
+points = PackedVector2Array(112.595, 126.435, 112.11217, 123.83788, 113.23827, 121.583824, 115.55205, 120.61258, 116.828735, 118.44545, 116.61952, 115.93124, 117.7012, 113.669464, 119.9572, 112.6299, 121.76427, 111.01047)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
