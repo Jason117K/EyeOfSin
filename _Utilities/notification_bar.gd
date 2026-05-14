@@ -76,13 +76,6 @@ func set_zombie_info(zombie):
 	speed_amount_label.text = str(zombie.get_speed())
 	damage_amount_label.text = str(zombie.get_damage())
 	if Global.game_controller.on_purple_scene():
-		#set_label_border_color(speed_label, Color.WEB_PURPLE)
-		#set_label_border_color(health_label, Color.WEB_PURPLE)
-		#set_label_border_color(damage_label, Color.WEB_PURPLE)
-		#
-		#set_label_border_color(speed_amount_label, Color.WEB_PURPLE)
-		#set_label_border_color(health_amount_label, Color.WEB_PURPLE)
-		#set_label_border_color(speed_amount_label, Color.WEB_PURPLE)
 		health_amount_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
 		speed_amount_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
 		damage_amount_label.add_theme_color_override("default_color",Color.WEB_PURPLE)

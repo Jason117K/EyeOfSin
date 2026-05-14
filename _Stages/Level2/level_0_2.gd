@@ -22,20 +22,21 @@ const TUTORIAL_PLACE_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_P
 const TUTORIAL_PLACE_WALNUT = "res://_Assets/Text/TextFiles/DemonDescriptions/WalnutDescription.txt"
 const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
 const TUTORIAL_SELECT_SPYDER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectSpyder.txt"
-var tutorial_place_spyder = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
 const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
 const TUTORIAL_BLOOD_BUFFS_2 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
 const TUTORIAL_INVALID_SPYDER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidSpyderPlacement.txt"
 const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
+var tutorial_place_spyder = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceSpyder.txt"
 
 # Tutorial tracking
 var tutorial_occulum = null
 var waiting_for_blood = false
 var bucketHeadExplained = false
-var sun_before_pickup = 0
+var blood_before_pickup = 0
 var tutorial_occulum_grid_pos: Vector2 = Vector2.ZERO
 var tutorial_sun_instance: Node2D = null
 var occulum_glow_added := false 
+var crawler_placed := false 
 
 
 
@@ -196,7 +197,7 @@ func _start_explain_blood_gen():
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_GEN, false)
 	
 	waiting_for_blood = true
-	sun_before_pickup = plantManager.sun_points
+	blood_before_pickup = plantManager.blood_points
 
 
 func _start_force_select_spyder_after_blood():
@@ -362,22 +363,26 @@ func _on_spyder_button_pressed():
 
 func _on_spyder_placed(grid_pos: Vector2):
 	if get_current_step_name() != "FORCE_PLACE_SPYDER_BEHIND":
+		print("Current Step Is ", get_current_step_name())
 		return
-
-	var expected_pos = tutorial_occulum_grid_pos - Vector2(32, 0)
-
-	if grid_pos != expected_pos:
-		# Invalid placement — delete, refund, show error, let player retry
-		await get_tree().create_timer(0.15).timeout
-		plantManager.clear_space(grid_pos)
-		plantManager.add_sun(50)
-		get_tree().paused = true
-		toolTips.set_basic_tutorial_text(TUTORIAL_INVALID_SPYDER, true)
-		#TODO Add Highlight
-		#show_spotlight_at_position(expected_pos, 0.12)
 	else:
-		print("Advancing Tutorial 91")
-		advance_tutorial() # → EXPLAIN_BLOOD_BUFFS
+		print("Current Step Is " , get_current_step_name())
+	if crawler_placed == false :
+		var expected_pos = tutorial_occulum_grid_pos - Vector2(32, 0)
+
+		if grid_pos != expected_pos:
+			# Invalid placement — delete, refund, show error, let player retry
+			await get_tree().create_timer(0.15).timeout
+			plantManager.clear_space(grid_pos)
+			plantManager.add_sun(50)
+			get_tree().paused = true
+			toolTips.set_basic_tutorial_text(TUTORIAL_INVALID_SPYDER, true)
+			#TODO Add Highlight
+			#show_spotlight_at_position(expected_pos, 0.12)
+		else:
+			print("Advancing Tutorial 91")
+			crawler_placed = true 
+			advance_tutorial() # → EXPLAIN_BLOOD_BUFFS
 
 
 func _on_walnut_button_pressed():
@@ -409,12 +414,11 @@ func _on_wave_started(wave_index: int):
 
 #region Blood Pickup Detection
 func _physics_process(_delta):
-	if waiting_for_blood and plantManager.sun_points > sun_before_pickup:
+	if waiting_for_blood and plantManager.blood_points > blood_before_pickup:
 		waiting_for_blood = false
 		toolTips.hide()
 		hide_spotlight()
 		get_tree().paused = false
-	#	if canA
 		print("Advancing Tutorial 1")
 		advance_tutorial() # → FORCE_SELECT_SPYDER
 #endregion

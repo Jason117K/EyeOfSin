@@ -6,7 +6,7 @@ var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
 var swap_ability_instance : Node
 
 var root
-var selected_plant = sunflower_scene  # Holds the currently selected plant scene
+var selected_plant = occulum_scene  # Holds the currently selected plant scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
 #var is_previewing: bool = false
 
@@ -20,7 +20,7 @@ signal codex_clicked
 
 # Preload the plant scenes
 var peashooter_scene = preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
-var sunflower_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
+var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
 var walnut_scene = preload("res://_Entities/Demons/_CagedOculum/WalnutTree.tscn")
 var maw_scene = preload("res://_Entities/Demons/_Maw/Maw.tscn")
 var egg_scene = preload("res://_Entities/Demons/_Wyrm/EggWorm.tscn")
@@ -118,8 +118,6 @@ func _ready():
 	#currentPlantLabel = $CurrentPlantLabel
 	
 
-	
-	
 # Handle Deselection
 func _input(event):
 	
@@ -196,9 +194,9 @@ func increaseSunflowerCost():
 func _on_OcculumButton_pressed():
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
-	selected_plant = sunflower_scene
-	var temp_instance = sunflower_scene.instantiate()
-	create_preview(sunflower_scene)
+	selected_plant = occulum_scene
+	var temp_instance = occulum_scene.instantiate()
+	create_preview(occulum_scene)
 	add_button_highlight(OcculumButton)
 	
 	#currentPlantLabel.text = "EVIL EYE SELECTED " + deselectText
@@ -289,14 +287,14 @@ func _on_HiveButton_pressed():
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 # Creates a transparent preview image for a given plant scene 
 
-func create_preview(plant_scene):
-	#print("MAKE A PREVIEW", plant_scene)
+func create_preview(demon_scene):
+	#print("MAKE A PREVIEW", demon_scene)
 	# Clear the last preview 
 	clear_preview()
 	
 	Global.show_guide()
 	
-	var temp_plant = plant_scene.instantiate()
+	var temp_plant = demon_scene.instantiate()
 	var preview_node = find_preview_nodes(temp_plant)
 	
 	if preview_node:

@@ -6,16 +6,16 @@ extends Node2D
 @onready var notification_bar = Global.notification_bar
 @onready var parentName = get_parent().get_name()
 
-@export var sun_points = 200 # Holds how many sun points we have currently 
+@export var blood_points = 200 # Holds how many sun points we have currently 
 
-var selected_plant_scene = null  # Holds the selected plant scene
+var selected_demon_scene = null  # Holds the selected plant scene
 var grid_size = 32 # Defines the size of each grid cell 
 var grid_map = {}  # Dictionary to store occupied cells
-var plant_cost = 25  # Holds the cost of the currently selected plant 
-var plant_to_move
-var plant_highlighted := false
-var highlight_plant_global_pos 
-var sunflower_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
+var demon_cost = 25  # Holds the cost of the currently selected plant 
+var demon_to_move
+var demon_highlighted := false
+var highlight_demon_global_pos 
+var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
 var empty_demon_scene := preload("res://_Entities/Demons/Empty/EmptyDemon.tscn")
 var spyder_not_placed := true 
 var hero_demon : Demon 
@@ -35,12 +35,12 @@ func _ready() -> void:
 
 
 # Reference the DemonSelectionMenu dynamically
-func get_selected_plant():
+func get_selected_demon():
 	#print("Emit Test")
 	test_signal.emit()
-	if plant_highlighted:
+	if demon_highlighted:
 		#print("Returning HighLight Sunflower.R")
-		return sunflower_scene
+		return occulum_scene
 	else:
 		return get_parent().get_parent().get_node("DemonSelectionMenu").selected_plant
 
@@ -48,9 +48,9 @@ func get_selected_plant():
 # Handles Player Interaction with the Plant Menu 
 func _input(event):
 	# Dynamically get the selected plant	
-	selected_plant_scene = get_selected_plant()  
+	selected_demon_scene = get_selected_demon()  
 	
-	if selected_plant_scene == null:
+	if selected_demon_scene == null:
 		#print("Plant Scene is Null")
 		pass
 	
@@ -67,17 +67,17 @@ func _input(event):
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
 			#print("GRID POS IS NOW ", grid_pos)
 			
-			if plant_highlighted:
-				move_plant(plant_to_move, grid_pos)
+			if demon_highlighted:
+				move_plant(demon_to_move, grid_pos)
 
-			if selected_plant_scene != null:
-				var temp_instance = selected_plant_scene.instantiate()
+			if selected_demon_scene != null:
+				var temp_instance = selected_demon_scene.instantiate()
 				
 				var cost = temp_instance.get_cost()
 				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 				if(parentName == "Level3"):
 					#print("Grid map size is ", grid_map.size())
-					if grid_map.size() == 0 && selected_plant_scene:
+					if grid_map.size() == 0 && selected_demon_scene:
 					
 						if "Egg" in temp_instance.get_name():
 							#print("Place Plant11 " , grid_pos)
@@ -88,11 +88,11 @@ func _input(event):
 					
 				temp_instance.queue_free()
 				# early return if no sun points
-				if sun_points < cost:
+				if blood_points < cost:
 					selection_menu.clear_preview()
 					Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
 					selection_menu.deselect_plant()
-					print("Sun Points is : ", sun_points, " which is less than ", cost)
+					print("Sun Points is : ", blood_points, " which is less than ", cost)
 					return
 			else: #Plant Scene Null
 				#TODO Make Double Click
@@ -124,8 +124,8 @@ func _input(event):
 					place_plant(grid_pos)
 			elif(parentName == "Level3"):
 				print("Grid map size is ", grid_map.size())
-				if grid_map.size() == 0 && selected_plant_scene:
-					var temp_instance = selected_plant_scene.instantiate()
+				if grid_map.size() == 0 && selected_demon_scene:
+					var temp_instance = selected_demon_scene.instantiate()
 					if "Egg" in temp_instance.get_name():
 						print("Place Plant1 " , grid_pos)
 						Global.game_controller.place_empty_in_alt_scene(grid_pos)
@@ -215,38 +215,38 @@ func detect_plant(passed_grid_pos):
 func highlight_plant(passed_grid_pos):
 	#print("QQ Grid Map is ", grid_map)
 	var plant_node = grid_map.get(passed_grid_pos)
-	plant_to_move = plant_node
+	demon_to_move = plant_node
 	if plant_node.has_method("highlight"):
 	#	print("HighLight Should Turn On")
-		highlight_plant_global_pos = plant_node.global_position 
+		highlight_demon_global_pos = plant_node.global_position 
 		plant_node.toggle_highlight()
-		plant_highlighted = true
+		demon_highlighted = true
 		
 		
 		pass
 
-func move_plant(this_plant_to_move, passed_new_grid_pos):
-	this_plant_to_move.toggle_highlight()
+func move_plant(this_demon_to_move, passed_new_grid_pos):
+	this_demon_to_move.toggle_highlight()
 	#print("QQ Grid Map is ", grid_map)
 	#print("HighLight Should Turn Off")
-	#print("HighLight Selected Plant is ", selected_plant_scene)
-	selected_plant_scene = sunflower_scene
-#	print("HighLight Selected Plant is NOW ", selected_plant_scene)
-	#print("HighLight OLD Plant is ", this_plant_to_move)
+	#print("HighLight Selected Plant is ", selected_demon_scene)
+	selected_demon_scene = occulum_scene
+#	print("HighLight Selected Plant is NOW ", selected_demon_scene)
+	#print("HighLight OLD Plant is ", this_demon_to_move)
 	place_plant(passed_new_grid_pos)
 	#Doesnt Work
 	#clear_space(passed_new_grid_pos)
 	
 	#Works 
-	plant_highlighted = false
-	clear_space(highlight_plant_global_pos)
+	demon_highlighted = false
+	clear_space(highlight_demon_global_pos)
 	pass
 	
 func place_empty_blocker_plant(grid_pos):
 	#print(get_parent(), " QQ1 Grid Map is ", grid_map)
 	#Add Scene Names 
 	#print("Should Place Block Plant")
-	selected_plant_scene = empty_demon_scene
+	selected_demon_scene = empty_demon_scene
 #	print("About to Place Plant")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
@@ -255,11 +255,11 @@ func place_empty_blocker_plant(grid_pos):
 		return 
 	
 	
-	if selected_plant_scene == null:
+	if selected_demon_scene == null:
 		print("No plant selected!")
 		return
 	
-	var plant_instance = selected_plant_scene.instantiate()
+	var plant_instance = selected_demon_scene.instantiate()
 	#print("Will Make PPName From ",plant_instance.name)
 	plant_instance.name = generate_unique_name(plant_instance.name)
 	
@@ -275,7 +275,7 @@ func place_empty_blocker_plant(grid_pos):
 			print(get_parent(), "QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 	
-	if sun_points >= -99999: 
+	if blood_points >= -99999: 
 		
 		#print("Have enough sun, placing plant ")
 		#Maw Handling, occupies two cells
@@ -317,13 +317,13 @@ func place_plant(grid_pos: Vector2):
 		return 
 	
 	# Dynamically get the selected plant	
-	selected_plant_scene = get_selected_plant()  
+	selected_demon_scene = get_selected_demon()  
 	
-	if selected_plant_scene == null:
+	if selected_demon_scene == null:
 		print("No plant selected!")
 		return
 	
-	var plant_instance = selected_plant_scene.instantiate()
+	var plant_instance = selected_demon_scene.instantiate()
 	#print("Will Make PPName From ",plant_instance.name)
 	plant_instance.name = generate_unique_name(plant_instance.name)
 	if "Alternate" in get_parent().name :
@@ -377,10 +377,10 @@ func place_plant(grid_pos: Vector2):
 		print("Heart Demon Should Be Placed : ", hero_demon)
 	
 	#Get The Cost 
-	plant_cost = plant_instance.get_cost()
-	print("Plant CCost is : ", plant_cost)
+	demon_cost = plant_instance.get_cost()
+	print("Plant CCost is : ", demon_cost)
 	
-	if sun_points >= plant_cost: 
+	if blood_points >= demon_cost: 
 		
 		#print("Have enough sun, placing plant ")
 		#Maw Handling, occupies two cells
@@ -401,10 +401,10 @@ func place_plant(grid_pos: Vector2):
 		get_parent().get_node("GameLayer").call_deferred("add_child", plant_instance)
 
 		#Reduce Sun Points
-		sun_points -= plant_cost
+		blood_points -= demon_cost
 		
-		#Global.ui_layer.set_blood(str(sun_points))
-		get_parent().get_node("UILayer").set_blood(str(sun_points))
+		#Global.ui_layer.set_blood(str(blood_points))
+		get_parent().get_node("UILayer").set_blood(str(blood_points))
 		
 		#Play the sound
 		AudioManager.create_2d_audio_at_location(plant_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
@@ -418,10 +418,10 @@ func place_plant(grid_pos: Vector2):
 			Global.incrementSunflowerCount()
 			pass
 		elif "Peashooter" in plant_instance.name:
-			if spyder_not_placed:
-				print("[TUTORIAL] Emit Spyder Placed")
-				spyder_placed.emit(grid_pos)
-				spyder_not_placed = false
+			#if spyder_not_placed:
+			print("[TUTORIAL] Emit Spyder Placed")
+			spyder_placed.emit(grid_pos)
+			spyder_not_placed = false
 			pass
 		elif "Walnut" in plant_instance.name:
 			walnut_placed.emit(grid_pos)
@@ -478,9 +478,9 @@ func generate_unique_name(base_name: String) -> String:
 #Add sun to total 
 func add_sun(amount):
 	#print("Add SunWW: " , amount)
-	sun_points += amount
-	#Global.ui_layer.set_blood(str(sun_points))
-	get_parent().get_node("UILayer").set_blood(str(sun_points))
+	blood_points += amount
+	#Global.ui_layer.set_blood(str(blood_points))
+	get_parent().get_node("UILayer").set_blood(str(blood_points))
 	
 # Play the sun collection sound 
 func play_sun_collect():
@@ -490,13 +490,13 @@ func play_sun_collect():
 # Set the starting sun amount depending on level 
 func _on_SetSun_timeout():
 	if(get_parent().name == "Main"):
-		#sun_points = 300 #75
-		#Global.ui_layer.set_blood(str(sun_points))
-		get_parent().get_node("UILayer").set_blood(str(sun_points))
+		#blood_points = 300 #75
+		#Global.ui_layer.set_blood(str(blood_points))
+		get_parent().get_node("UILayer").set_blood(str(blood_points))
 	else:
-		#sun_points = 900 #700
-		#Global.ui_layer.set_blood(str(sun_points))
-		get_parent().get_node("UILayer").set_blood(str(sun_points))
+		#blood_points = 900 #700
+		#Global.ui_layer.set_blood(str(blood_points))
+		get_parent().get_node("UILayer").set_blood(str(blood_points))
 
 func swap_heart():
 	#print("Hero Demon Is ", hero_demon)
