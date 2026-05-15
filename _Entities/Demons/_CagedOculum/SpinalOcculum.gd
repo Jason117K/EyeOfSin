@@ -25,10 +25,10 @@ func _ready():
 	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	
 
-func receiveBuff(bufferName):
+func receive_buff(bufferName):
 	if !isBuffed :
 		super(bufferName)
-		healthComp.receiveBuff(bufferName)
+		healthComp.receive_buff(bufferName)
 		
 		if "Occulum" in bufferName.name && !isOcculumBuffed:
 			occulumBuffed = true 

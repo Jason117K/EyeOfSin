@@ -4,7 +4,7 @@ extends DemonHealthComponent
 @export var mawBuffed_health = 350
 
 
-func receiveBuff(demonName):
+func receive_buff(demonName):
 	#print("Buff Name is ", newDemon.name)
 	if !demon.get_is_buffed():
 		match demonName:

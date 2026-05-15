@@ -394,7 +394,6 @@ offset_bottom = 137.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
 stream = ExtResource("21_a4agt")
-volume_db = -80.0
 autoplay = true
 bus = &"music"
 
@@ -431,7 +430,6 @@ offset_bottom = 128.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0g5v1")
 script = ExtResource("24_7nw23")
 
-[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

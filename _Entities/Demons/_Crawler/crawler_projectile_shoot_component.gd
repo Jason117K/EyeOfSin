@@ -35,3 +35,22 @@ func second_shoot_projectile():
 	projectile = projectile_scene.instantiate()
 	projectile.position = parent_demon.position + Vector2(32, 0)  # Adjust starting position
 	parent_demon.get_parent().add_child(projectile)  # Add the projectile to the game layer
+	
+	
+
+func receive_buff(newDemon):
+	match newDemon:
+		"Occulum":
+			pass
+		"Crawler":
+			pass
+		"SpinalOcculum" :
+			pass
+		"Wyrm":
+			pass
+		"Hive":
+			pass
+		"Maw":
+			pass
+	
+	

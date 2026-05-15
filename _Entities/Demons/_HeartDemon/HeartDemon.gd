@@ -40,7 +40,7 @@ func get_cost():
 	
 					
 # Doubles attack speed when receiving a buff 
-func receiveBuff(newDemon):
+func receive_buff(newDemon):
 	pass
 
 

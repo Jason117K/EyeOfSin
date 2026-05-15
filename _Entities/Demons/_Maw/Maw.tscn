@@ -1489,6 +1489,8 @@ sprite_frames = SubResource("7")
 animation = &"idle_Crawler"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
+targetGlowColor = null
+modulate_factor = null
 
 [node name="DetectionComponent" type="Area2D" parent="." unique_id=366524875]
 position = Vector2(256, 256)

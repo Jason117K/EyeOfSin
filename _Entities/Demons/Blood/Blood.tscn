@@ -54,7 +54,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rabkd"]
-radius = 83.75
+radius = 139.99998
 
 [node name="Blood" type="Area2D" unique_id=2009687380]
 process_mode = 1
@@ -82,15 +82,15 @@ autoplay = "default"
 frame = 1
 
 [node name="AutoPickUpTimer" type="Timer" parent="." unique_id=1516947771]
-wait_time = 6.0
+wait_time = 9.0
 one_shot = true
-autostart = true
 
-[node name="HealZone" type="Area2D" parent="." unique_id=974004821]
+[node name="AOEZone" type="Area2D" parent="." unique_id=974004821]
+collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HealZone" unique_id=1480185012]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AOEZone" unique_id=1480185012]
 shape = SubResource("CircleShape2D_rabkd")
 
 [connection signal="timeout" from="AutoPickUpTimer" to="." method="_on_auto_pick_up_timer_timeout"]
-[connection signal="area_entered" from="HealZone" to="." method="_on_heal_zone_area_entered"]
+[connection signal="area_entered" from="AOEZone" to="." method="_on_heal_zone_area_entered"]
+[connection signal="area_exited" from="AOEZone" to="." method="_on_aoe_zone_area_exited"]

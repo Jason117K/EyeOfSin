@@ -31,15 +31,15 @@ func get_cost():
 	
 					
 # Doubles attack speed when receiving a buff 
-func receiveBuff(newDemon):
+func receive_buff(newDemon):
 	#print("Buff Name is ", newDemon.name)
-	super(newDemon)
-	healthComp.receiveBuff(newDemon)
-	animSpriteComp.receiveBuff(newDemon)
+	
+	#healthComp.receive_buff(newDemon)
+	#animSpriteComp.receive_buff(newDemon)
 	var demonName = truncate_string(newDemon.name)
 	
 	if !isBuffed :
-		
+		super(newDemon)
 		match demonName:
 			"Occulum":
 				occulumBuffed = true 

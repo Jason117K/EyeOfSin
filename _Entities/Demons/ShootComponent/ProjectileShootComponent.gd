@@ -109,6 +109,8 @@ func set_attack_speed(multiplier: float):
 	
 	
 	
+func receive_buff(newDemon):
+	pass
 	
 	
 	

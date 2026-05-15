@@ -54,7 +54,7 @@ func get_cost():
 
 
 
-func receiveBuff(bufferName):
+func receive_buff(bufferName):
 	#print("BUFF HIVE")
 	super(bufferName)
 	for drone in available_drones:

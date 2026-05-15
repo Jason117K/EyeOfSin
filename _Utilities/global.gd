@@ -44,6 +44,8 @@ func _load_demon_costs():
 		instance.queue_free()
 
 func get_demon_cost(demon_name: String) -> int:
+	if demon_costs == null:
+		return -1
 	return demon_costs.get(demon_name, -1)
 	
 func get_current_scene_filepath():

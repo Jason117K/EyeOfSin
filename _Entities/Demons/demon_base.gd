@@ -8,6 +8,13 @@ var isCurrentlyBuffed := false
 var area : Area2D
 var isBuffed := false
 
+var wyrmBuff = false
+var hiveBuff = false 
+var spinalOcculumBuff = false
+var mawBuff = false
+var crawlerBuff = false
+var occulumBuff = false 
+
 @onready var animSpriteComp := $AnimatedSpriteComponent
 @onready var healthComp := $HealthComponent
 
@@ -37,32 +44,35 @@ func on_demon_area_exited(old_area: Area2D):
 func get_animSpriteComp():
 	return animSpriteComp
 	
-#TODO Call ReceiveBuff On ALL Components Here
+#TODO Call receive_buff On ALL Components Here
 #TODO Set All isDemonBuffed Variables Here As Well
-func receiveBuff(newDemon):
+func receive_buff(newDemon):
 	#print("Buff Name is ", newDemon.name)
-	var demonName = truncate_string(newDemon.name)
-	
-	if !isCurrentlyBuffed :
-		print(self.name, " Buff Received from ", demonName)
-		match demonName:
+	#var demonName = truncate_string(newDemon.name)
+	if !isBuffed :
+		print(self.name, " Buff Received from ", newDemon)
+		healthComp.receive_buff(newDemon)
+		animSpriteComp.receive_buff(newDemon)
+		isBuffed = true 
+		match newDemon:
 			"Occulum":
-				animSpriteComp.change_form("Occulum")
+				print("Change to Occulum")
+				occulumBuff = true
 			"Crawler":
-				print("Change to CRAWLER")
-				animSpriteComp.change_form("Crawler")
+				print("Change to Crawler")
+				crawlerBuff = true 
 			"SpinalOcculum" :
-				animSpriteComp.change_form("SpinalOcculum")
+				print("Change to SpinalOcculum")
+				spinalOcculumBuff = true
 			"Wyrm":
-				animSpriteComp.change_form("Wyrm")
+				print("Change to Wyrm")
+				wyrmBuff = true
 			"Hive":
-				animSpriteComp.change_form("Wasp")
+				print("Change to Hive")
+				hiveBuff = true
 			"Maw":
-				animSpriteComp.change_form("Maw")
-
-		
-		isCurrentlyBuffed = true 
-			
+				print("Change to Maw")
+				mawBuff = true 
 		#animSpriteComp.make_buff_glow()
 
 

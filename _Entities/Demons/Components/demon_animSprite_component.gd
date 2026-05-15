@@ -51,7 +51,7 @@ func _on_animation_finished():
 		
 		
 		
-func change_form(new_form):
+func receive_buff(new_form):
 	var parent = get_parent()
 	
 	if parent.has_method("adjust_position"):
@@ -81,9 +81,9 @@ func change_form(new_form):
 			currentAttackAnim = "attack_Wyrm"
 			#animation = "idle_Wyrm"
 			animation = "spawn"
-		"Wasp":
-			currentAnim = "idle_Wasp"
-			currentAttackAnim = "attack_Wasp"
+		"Hive":
+			currentAnim = "idle_Hive"
+			currentAttackAnim = "attack_Hive"
 			#animation = "idle_Wasp"
 			animation = "spawn"
 		"Maw":

@@ -88,7 +88,7 @@ func _spawn_next() -> void:
 
 	var y_offset: float = ZombieRegistry.Y_OFFSETS.get(_get_type_key(zombie.name), 0.0)
 	zombie.position = self.position + Vector2(25, y_offset)
-
+	zombie.add_to_group("Zombie")
 	get_parent().add_child(zombie)
 
 	if make_green:

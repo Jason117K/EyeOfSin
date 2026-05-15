@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_ln36l"]
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/Components/AttackComponent.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/Components/SpeedComponent.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://_Entities/Zombies/Components/HealthComponent.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/HealthComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://hqk27c6jaac0" path="res://_Entities/Zombies/_Erupter/TickerZombie.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_g5eid"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="9"]

@@ -23,9 +23,9 @@ func _on_reset_blood_spawn_cooldown() -> void:
 	canGenBlood = true 
 
 	
-func receiveBuff(bufferName):
+func receive_buff(bufferName):
 	if !demon.get_is_buffed() :		
-		if "Occulum" in bufferName.name && !isOcculumBuffed:
+		if "Occulum" in bufferName && !isOcculumBuffed:
 			canGenBlood = true
 			health = buffedHealth
 			maxHealth = buffedMaxHealth
@@ -44,7 +44,7 @@ func receiveBuff(bufferName):
 			isMawBuffed = true 
 			#TODO Re Implement Color Changes
 			#$AnimatedSpriteComponent.change_color()
-		thisBufferName = bufferName.name
+		thisBufferName = bufferName
 
 func debuff():
 	super() 

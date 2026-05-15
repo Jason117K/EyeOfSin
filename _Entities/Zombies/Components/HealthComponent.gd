@@ -17,6 +17,11 @@ var halfHealth = health/2
 var explode = false    #Determines whether or not the zombie will explode 
 @onready var maxHealth := health
 
+func receive_buff():
+	pass
+	
+
+
 func _ready():
 	if healthRegen <= 0.0:
 		set_process(false)

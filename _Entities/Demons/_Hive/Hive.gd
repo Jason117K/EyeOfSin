@@ -39,7 +39,7 @@ func get_cost():
 	return cost
 
 
-func receiveBuff(bufferName):
+func receive_buff(bufferName):
 	if !isBuffed:
 		super(bufferName)
 		for drone in swarm.get_available_drones():

@@ -1,32 +1,24 @@
 extends Demon
 #Occulum.gd
 
-
-# Adjustable health and cost 
-#@export var health = 100
-#@export var maw_health = 500 
 @export var cost = 50
-#Keep a reference to our blood scene 
-var BloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
-var DemonManager
-#@onready var animSpriteComp = $AnimatedSprite2D
+
+@onready var madeTutorialBlood = false
 @onready var bloodTimer = $BloodTimer
 @onready var resetEatingTimer = $ResetEatingSpeed
 @export var bloodWaitTime := 30.0
 @export var wyrmBloodWaitTime :=  50.0
-@export var hiveOcculumWaitTime := 23.0
-@export var buffedBloodWaitTime := 19.0 
+@export var hiveBloodWaitTime := 17.0
+@export var crawlerBloodWaitTime := 22.0 
 @onready var buffNodes = $BuffNodesComponent
 @onready var healTimer = $HealTimer
 @onready var healInvisTimer = $HealInvisTimer
 @onready var webbing_aoe_sprite = $Webs
 
+var BloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
+var DemonManager
 var spawnAnimDone = false
 var tween
-var wyrmBuff = false
-var hiveBuff = false 
-var isSpinalOcculumBuffed = false
-var mawBuff = false
 var highlight_active = false
 var highlight_material = null
 var original_material = null
@@ -34,7 +26,8 @@ var demons_to_heal = []
 var max_alpha = 0.2
 var lerp_duration = 2.5
 var can_eat_zombie = false 
-@onready var madeTutorialBlood = false
+
+
 
 #Assign DemonManager and connect the apprioprate timers 
 func _ready():
@@ -43,20 +36,8 @@ func _ready():
 	bloodTimer.wait_time = bloodWaitTime
 	DemonManager = get_parent().get_parent().get_node("DemonManager") 
 	$BloodTimer.start()  # Start the timer
-	#assert($SunTimer.connect("timeout", Callable(self, "_on_SunTimer_timeout")) == OK)
 	$BloodTimer.connect("timeout", Callable(self, "_on_BloodTimer_timeout"))
 	healTimer.wait_time = lerp_duration
-
-	
-	## Store the original material
-	#original_material = animSpriteComp.material
-	#
-	## Create the highlight material (shader)
-	#highlight_material = ShaderMaterial.new()
-	#highlight_material.shader = load("res://Scripts/Shaders/outline_shader.gdshader")
-	#highlight_material.set_shader_parameter("outline_width", 5.0)
-	#highlight_material.set_shader_parameter("outline_color", Color(1.0, 0.7, 0.0, 1.0)) # Golden highlight	
-	
 	
 func toggle_highlight():
 	print("Highlight Toggled")
@@ -67,12 +48,12 @@ func toggle_highlight():
 	else:
 		animSpriteComp.material = original_material	
 
-
 func _on_BloodTimer_timeout():
 	generate_blood()
-
-
+	
+#TODO Rip Out and Put in Component
 func generate_blood() -> Node2D:
+	
 	print("MadeTutorial Blood when it counts is ",madeTutorialBlood )
 	if "Level0-2" in get_parent().get_parent().get_true_name():
 		if madeTutorialBlood == false:
@@ -86,66 +67,63 @@ func generate_blood() -> Node2D:
 		print("NOT Generating BLood, Parent is : ",get_parent().get_parent().get_true_name())
 		return 
 	print("Generating BLood")
+	
+	
 	if mawBuff:
 		can_eat_zombie = true
+
+		
 	var blood_instance = BloodScene.instantiate()  
 	if wyrmBuff:
 		blood_instance.wyrm_buff()
 	if hiveBuff:
 		blood_instance.hive_buff()
+	if crawlerBuff:
+		blood_instance.crawler_buff()
+	
+	if self.is_in_group("Green"):
+		blood_instance.add_to_group("Green")
+	else:
+		blood_instance.add_to_group("Purple")
+		
 	get_parent().add_child(blood_instance) 
 	#Set the blood pos to above the occulum
 	blood_instance.global_position = self.global_position + Vector2(0,-40)
 	return blood_instance
 
 
-# TODO Implement occulum buff 
-# Handles all pontential occulum buffs 
-func receiveBuff(newDemon):
-	#print("Buff Name is ", newDemon.name)
-	super(newDemon)
+			
+func receive_buff(newDemon):
 	var demonName = truncate_string(newDemon.name)
-	
 	if !isBuffed :
+		super(demonName)
 		print("Occulum Buff Received from ", demonName)
 		match demonName:
 			"Occulum":
 				pass
-				
 			"Crawler":
-				print("Change to Crawler")
-				$Webs.visible = true 
-				webbing_aoe_sprite.visible = true 
-				$SlowField.monitoring = true 
-
+				#$Webs.visible = true 
+				#webbing_aoe_sprite.visible = true 
+				#$SlowField.monitoring = true 
+				bloodTimer.wait_time = crawlerBloodWaitTime
+				bloodTimer.start()
+				pass
 			"SpinalOcculum" :
-
 				$HealZone.visible = true 
 				healTimer.start()
 				start_alpha_pulse()
 				tween.play()
-				isSpinalOcculumBuffed = true
 			"Wyrm":
-
-				wyrmBuff = true
 				bloodTimer.wait_time = wyrmBloodWaitTime
 				$BloodTimer.start()
 			"Hive":
-
-				hiveBuff = true
-				bloodTimer.wait_time = hiveOcculumWaitTime
+				bloodTimer.wait_time = hiveBloodWaitTime
 				$BloodTimer.start()
 			"Maw":
-
-				#health = maw_health
 				can_eat_zombie = true
 				mawBuff = true 
-				
-		#bloodTimer.wait_time = buffedOcculumWaitTime
-		
 		isBuffed = true 
-			
-		#animSpriteComp.make_buff_glow()
+
 
 
 func truncate_string(input_string: String) -> String:

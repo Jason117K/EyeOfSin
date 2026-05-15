@@ -7,7 +7,7 @@ const INSTAKILL_DAMAGE := 9999
 const SPINAL_OCCULUM_HEAL_AMOUNT := 100
 const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost()
 
-# Buff dispatch table. Iterated in order in receiveBuff/debuff — the first
+# Buff dispatch table. Iterated in order in receive_buff/debuff — the first
 # `key` found inside `bufferName` wins. SpinalOcculum's remove is a deliberate
 # no-op (buff is permanent).
 const _BUFF_HANDLERS := [
@@ -297,8 +297,9 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 
 # Receive a buff from a neighbor demon. First buff wins —
 # subsequent buffs are ignored by design.
-func receiveBuff(demon):
-	animSpriteComp.receiveBuff(demon)
+func receive_buff(demon):
+	
+	#animSpriteComp.receive_buff(demon)
 	if isBuffed:
 		return
 

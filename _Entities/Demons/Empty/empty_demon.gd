@@ -14,7 +14,7 @@ func on_demon_area_entered(new_area: Area2D):
 func on_demon_area_exited(old_area: Area2D):
 	pass
 	
-func receiveBuff(newDemon):
+func receive_buff(newDemon):
 	pass
 
 

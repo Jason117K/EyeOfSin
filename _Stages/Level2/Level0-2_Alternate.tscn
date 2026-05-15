@@ -1486,7 +1486,6 @@ visible = false
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
-[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

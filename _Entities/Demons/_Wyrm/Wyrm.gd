@@ -91,10 +91,12 @@ func get_cost():
 
 
 #Handles wyrm Buffing 
-func receiveBuff(demon):
+func receive_buff(demon):
+	
 	var demonName = truncate_string(demon.name)
 	
 	if !isCurrentlyBuffed :
+		super(demon)
 		print(self.name, " Buff Received from ", demonName, " var is ", isCurrentlyBuffed)
 		isCurrentlyBuffed = true
 		match demonName:
