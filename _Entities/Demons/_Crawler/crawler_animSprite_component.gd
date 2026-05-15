@@ -33,10 +33,9 @@ func _on_animation_finished():
 			play()
 
 func receive_buff(demonName):
-	#print("Buff Name is ", newDemon.name)
-	if !demon.get_is_buffed():
-		match demonName:
-			"SpinalOcculum" :
-				speed_scale = 0.7
-			"Hive":
-				speed_scale = 1.3
+	super(demonName)
+	match demonName:
+		"SpinalOcculum" :
+			speed_scale = 0.7
+		"Hive":
+			speed_scale = 1.3

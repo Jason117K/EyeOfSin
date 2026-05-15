@@ -6,15 +6,21 @@ extends Area2D
 @export var BloodDamage := 50 
 @export var default_auto_pickup_wait_time := 6.0
 @export var crawler_buff_auto_pickup_wait_time := 10.0
+@export var wyrm_buff_auto_pickup_wait_time := 10.0
+
 @onready var aoe : Area2D = $AOEZone
 @onready var auto_pickup_timer :Timer = $AutoPickUpTimer
+@onready var demon_manager = get_parent().get_parent().get_node("DemonManager")
+var blood_spell = preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
 var crawlerBuff := false
+var wyrmBuff := false
+var hiveBuff := false
 var demons_to_heal = []
 var nearby_zombies = []
 var temp_zombie_container = []
 var current_zombie_target :Zombie 
 var dissappear_time := 0.75
-
+var origin_occulum : Demon 
 
 func _ready() -> void:
 	input_pickable = true
@@ -24,6 +30,8 @@ func _ready() -> void:
 	
 	if crawlerBuff:
 		auto_pickup_timer.wait_time = crawler_buff_auto_pickup_wait_time
+	if wyrmBuff:
+		auto_pickup_timer.wait_time = wyrm_buff_auto_pickup_wait_time
 		
 	auto_pickup_timer.start()
 		
@@ -39,21 +47,23 @@ func _ready() -> void:
 	
 #TODO Add SFX
 func _on_Blood_mouse_entered():
-	var demon_manager = get_parent().get_parent().get_node("DemonManager")
+	#var demon_manager = get_parent().get_parent().get_node("DemonManager")
 	if demon_manager:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()
 		heal_demons()
+		
 	if crawlerBuff:
 		temp_zombie_container = aoe.get_overlapping_areas()
 		for zombie in temp_zombie_container:
 			if zombie.is_in_group("Zombie"):
-				nearby_zombies.append(zombie)		
+				nearby_zombies.append(zombie)
 		if nearby_zombies.is_empty() == true:
 			print("NO NEARBY ZOMBIES : ", nearby_zombies)
 			queue_free()
 		else:
-			nearby_zombies = aoe.get_overlapping_areas()
+			#nearby_zombies = aoe.get_overlapping_areas()
+			#TODO Make Sort By Health
 			for zombie in nearby_zombies:
 				if zombie.is_in_group("Zombie"):
 					current_zombie_target = zombie 
@@ -61,6 +71,15 @@ func _on_Blood_mouse_entered():
 			#TODO Sort By Health
 			attack_zombie(current_zombie_target)
 			return
+			
+	if wyrmBuff:
+		summon_blood_swords()
+	if hiveBuff:
+		if origin_occulum != null:
+			origin_occulum.burst_heal()
+
+
+
 	queue_free()
 
 func free_blood():
@@ -69,6 +88,35 @@ func free_blood():
 		current_zombie_target.getCompManager().slow()
 	queue_free()
 
+func summon_blood_swords():
+	if origin_occulum != null:
+		print("Summon Blood Sword")
+	else:
+		queue_free()
+	spawn_blood_sword(Vector2(49,-8))
+	spawn_blood_sword(Vector2(113,-8))
+
+	
+func spawn_blood_sword(offset):
+	var blood_spell_instance = blood_spell.instantiate()
+	if self.is_in_group("Green"):
+		blood_spell_instance.set_collision_mask_value(1,false)
+		blood_spell_instance.set_collision_mask_value(2,false)
+		blood_spell_instance.set_collision_mask_value(3,true)
+	else:
+		blood_spell_instance.set_collision_mask_value(1,false)
+		blood_spell_instance.set_collision_mask_value(2,true)
+		blood_spell_instance.set_collision_mask_value(3,false)
+	
+	blood_spell_instance.global_position = origin_occulum.global_position + offset
+	origin_occulum.get_parent().add_child(blood_spell_instance)
+	
+	
+	
+func set_origin_occulum(parent_occulum):
+	origin_occulum = parent_occulum
+		
+	
 func attack_zombie(zombie_to_attack):
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
@@ -113,10 +161,13 @@ func crawler_buff():
 func wyrm_buff():
 	self.scale = Vector2(1.2,1.2)
 	BloodValue = 150 
+	wyrmBuff = true 
 	
 func hive_buff():
-	pass
-	
+	hiveBuff = true 
+
+func maw_buff():
+	BloodValue = 100
 
 
 func _on_heal_zone_area_entered(area: Area2D) -> void:

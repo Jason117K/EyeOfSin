@@ -19,10 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://cbytmdkwyv53a" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_SPINALOCCULUM-Sheet.png" id="7_3r88c"]
 [ext_resource type="Texture2D" uid="uid://ceviomuixqede" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_Base-Sheet.png" id="7_ixnkm"]
 [ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
+[ext_resource type="PackedScene" uid="uid://dfiqbxbm26q0l" path="res://_Entities/Demons/Tentacles/Tentacle.tscn" id="8_hu5wo"]
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_WYRM-Sheet.png" id="9_00tae"]
 [ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://_Entities/Demons/_Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_pomd1"]
-[ext_resource type="Texture2D" uid="uid://dwyiagm4n2bd5" path="res://_Entities/Demons/RedBloodVerticalSpell-Sheet.png" id="23_0ypr0"]
+[ext_resource type="Texture2D" uid="uid://b6g8l1371ylsr" path="res://_Entities/Demons/_Occulum/HealingFlameCircle.png" id="23_0ypr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3r88c"]
 radius = 61.2046
@@ -975,109 +976,57 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hu5wo"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(0, 0, 96, 48)
+region = Rect2(0, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni4ch"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(96, 0, 96, 48)
+region = Rect2(82, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h7ci"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(192, 0, 96, 48)
+region = Rect2(164, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7hbb"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(288, 0, 96, 48)
+region = Rect2(246, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwfy3"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(384, 0, 96, 48)
+region = Rect2(328, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_he6yk"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(480, 0, 96, 48)
+region = Rect2(410, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlgaq"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(576, 0, 96, 48)
+region = Rect2(492, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d0n3"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(672, 0, 96, 48)
+region = Rect2(574, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyku2"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(768, 0, 96, 48)
+region = Rect2(656, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11far"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(864, 0, 96, 48)
+region = Rect2(738, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkbdm"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(960, 0, 96, 48)
+region = Rect2(820, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7l7df"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(1056, 0, 96, 48)
+region = Rect2(902, 0, 82, 73)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3nmy"]
 atlas = ExtResource("23_0ypr0")
-region = Rect2(1152, 0, 96, 48)
+region = Rect2(984, 0, 82, 73)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1248, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7trr"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1344, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tehxr"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1440, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccapn"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1536, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wdw5"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1632, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2beku"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1728, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk37d"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1824, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pifce"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(1920, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ov4q1"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(2016, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qipa"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(2112, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8f2a"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(2208, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d3smc"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(2304, 0, 96, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5untl"]
-atlas = ExtResource("23_0ypr0")
-region = Rect2(2400, 0, 96, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lskl7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7eju"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -1118,60 +1067,17 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a3nmy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m7eju")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j7trr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tehxr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ccapn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4wdw5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2beku")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uk37d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pifce")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ov4q1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6qipa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p8f2a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d3smc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5untl")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 15.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ypr0"]
-size = Vector2(64, 34)
 
 [node name="Occulum" type="Area2D" unique_id=1389197860 groups=["Demons", "Plants"]]
 z_index = 1
 position = Vector2(0, 1)
 collision_mask = 3
 script = ExtResource("1")
-crawlerBloodWaitTime = 5.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_m5mcc")]
 script = ExtResource("3_0ypr0")
@@ -1241,10 +1147,22 @@ shape = SubResource("89")
 [node name="BloodTimer" type="Timer" parent="." unique_id=447707411]
 wait_time = 30.0
 
+[node name="Tentacle1" parent="." unique_id=611075784 instance=ExtResource("8_hu5wo")]
+visible = false
+z_index = 7
+position = Vector2(0, 3)
+
+[node name="ArmTarget" parent="Tentacle1" index="0" unique_id=138643601]
+position = Vector2(1, -6)
+
+[node name="Arm" parent="Tentacle1" index="1" unique_id=634789705]
+num__segments = 17
+max_length = 50.0
+
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
-animation = &"idle_Hive"
+animation = &"idle_Maw"
 autoplay = "spawn"
 script = ExtResource("16_kvwqv")
 
@@ -1399,12 +1317,6 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="HealTimer" type="Timer" parent="." unique_id=1622921667]
-
-[node name="HealInvisTimer" type="Timer" parent="." unique_id=978471311]
-wait_time = 0.1
-one_shot = true
-
 [node name="ResetEatingSpeed" type="Timer" parent="." unique_id=1062269006]
 wait_time = 5.0
 one_shot = true
@@ -1412,31 +1324,11 @@ one_shot = true
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("20_pomd1")]
 animation = &"change_form"
 
-[node name="BloodSpell" type="AnimatedSprite2D" parent="." unique_id=1892734687]
-position = Vector2(49, -8)
-sprite_frames = SubResource("SpriteFrames_lskl7")
+[node name="HealingAnimSprite" type="AnimatedSprite2D" parent="." unique_id=590144160]
+visible = false
+sprite_frames = SubResource("SpriteFrames_m7eju")
 frame = 9
-frame_progress = 0.72594434
-
-[node name="Area2D" type="Area2D" parent="BloodSpell" unique_id=248211632]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BloodSpell/Area2D" unique_id=255515403]
-position = Vector2(-1, 7)
-shape = SubResource("RectangleShape2D_0ypr0")
-
-[node name="BloodSpell2" type="AnimatedSprite2D" parent="." unique_id=1408544464]
-visible = false
-position = Vector2(145, -8)
-sprite_frames = SubResource("SpriteFrames_lskl7")
-frame = 6
-frame_progress = 0.97177184
-
-[node name="BloodSpell3" type="AnimatedSprite2D" parent="." unique_id=360654227]
-visible = false
-position = Vector2(241, -8)
-sprite_frames = SubResource("SpriteFrames_lskl7")
-frame = 5
-frame_progress = 0.8875398
+frame_progress = 0.0531529
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
@@ -1446,8 +1338,8 @@ frame_progress = 0.8875398
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
 [connection signal="timeout" from="Timer" to="AnimatedSpriteComponent" method="_on_timer_timeout"]
-[connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
-[connection signal="timeout" from="HealInvisTimer" to="." method="_on_heal_invis_timer_timeout"]
 [connection signal="timeout" from="ResetEatingSpeed" to="." method="_on_reset_eating_speed_timeout"]
+[connection signal="animation_finished" from="HealingAnimSprite" to="." method="_on_healing_anim_sprite_animation_finished"]
 
+[editable path="Tentacle1"]
 [editable path="BuffNodesComponent"]

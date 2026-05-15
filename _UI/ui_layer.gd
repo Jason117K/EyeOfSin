@@ -7,7 +7,8 @@ var blood_amount
 
 func _ready() -> void:
 	Global.register_ui_layer(self)
-	blood_label.text = blood_amount
+	if blood_label != null:
+		blood_label.text = blood_amount
 
 func get_the_health():
 	return health_label

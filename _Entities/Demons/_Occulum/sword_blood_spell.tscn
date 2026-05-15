@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://bdr6p4s2ypdw8"]
+
+[ext_resource type="Script" uid="uid://cf6qhupurtf4s" path="res://_Entities/Demons/_Occulum/sword_blood_spell.gd" id="1_b40rw"]
+[ext_resource type="Texture2D" uid="uid://dwyiagm4n2bd5" path="res://_Entities/Demons/RedBloodVerticalSpell-Sheet.png" id="1_rvf2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ypr0"]
+size = Vector2(64, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu5wo"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni4ch"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h7ci"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7hbb"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(288, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwfy3"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(384, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he6yk"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(480, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlgaq"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(576, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d0n3"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(672, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyku2"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(768, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11far"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(864, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkbdm"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(960, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l7df"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1056, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3nmy"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1152, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1248, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7trr"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1344, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tehxr"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1440, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccapn"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1536, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wdw5"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1632, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2beku"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1728, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk37d"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1824, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pifce"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(1920, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4q1"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(2016, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qipa"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(2112, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8f2a"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(2208, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3smc"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(2304, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5untl"]
+atlas = ExtResource("1_rvf2e")
+region = Rect2(2400, 0, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lskl7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu5wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni4ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h7ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7hbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwfy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he6yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlgaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d0n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyku2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11far")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkbdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l7df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3nmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7eju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7trr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tehxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccapn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wdw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2beku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk37d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pifce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8f2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3smc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5untl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="SwordBloodSpell" type="Area2D" unique_id=2026496036]
+z_index = 9
+script = ExtResource("1_b40rw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1772793892]
+position = Vector2(-1, 6.5)
+shape = SubResource("RectangleShape2D_0ypr0")
+
+[node name="BloodSpellSprite" type="AnimatedSprite2D" parent="." unique_id=1099596436]
+sprite_frames = SubResource("SpriteFrames_lskl7")
+autoplay = "default"
+frame = 9
+frame_progress = 0.72594434
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="BloodSpellSprite" to="." method="_on_blood_spell_sprite_animation_finished"]

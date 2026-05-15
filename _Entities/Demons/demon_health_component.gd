@@ -28,6 +28,10 @@ var isHeartBuffed:= false
 func get_health():
 	#print(demon, " is getting health from comp, returning ", health)
 	return health
+
+func get_max_health():
+	return maxHealth
+	
 	
 func take_damage(damage):
 	#print(demon, " is taking DAMAGE health is ", health)
@@ -44,7 +48,7 @@ func increase_max_health(added_max_health_amount):
 	maxHealth = maxHealth + added_max_health_amount
 	
 func _process(delta):
-	if health != null && healthRegen != null:	
+	if health != null && healthRegen != null && health < maxHealth:	
 		health = health + healthRegen
 
 

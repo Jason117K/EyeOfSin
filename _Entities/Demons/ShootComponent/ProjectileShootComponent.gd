@@ -3,7 +3,7 @@ class_name ProjectileShootComponent extends Node2D
 @onready var shootTimer := $"../ShootTimer"
 @onready var base_shoot_interval = 3.0
 @onready var parent_demon : Demon = get_parent()
-
+@export var damage := 60
 @export var attack_speed_mult := 1.0
 @export var projectile_spawn_offest :Vector2 = Vector2(32, 0)
 
@@ -87,12 +87,14 @@ func shoot_projectile():
 	if shoot_positions.is_empty():
 			projectile = projectile_scene.instantiate()
 			projectile.position = parent_demon.position + projectile_spawn_offest 
+			projectile.damage = damage
 			parent_demon.get_parent().add_child(projectile)  
 			apply_buffs_to_projectile(projectile)
 	else:
 		for shoot_pos in shoot_positions:
 			projectile = projectile_scene.instantiate()
 			projectile.position = shoot_pos.global_position
+			projectile.damage = damage
 			parent_demon.get_parent().call_deferred("add_child", projectile)
 			apply_buffs_to_projectile(projectile)
 			
@@ -106,7 +108,8 @@ func set_attack_speed(multiplier: float):
 	shootTimer.wait_time = base_shoot_interval / multiplier
 	animSpriteComp.speed_scale = multiplier  # only for attack animation
 	
-	
+func get_damage():
+	return damage 
 	
 	
 func receive_buff(newDemon):

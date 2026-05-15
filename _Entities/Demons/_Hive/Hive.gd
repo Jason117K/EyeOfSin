@@ -3,6 +3,7 @@ extends Demon
 @export var cost = 25
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
+@export var drone_attack_damage = 7    
 
 var isWyrmBuffed := false
 var isCrawlerBuffed := false
@@ -23,7 +24,7 @@ func _ready():
 	swarm.initialize(waitTime)
 	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
-
+	swarm.set_damage(drone_attack_damage)
 	if self.is_in_group("Green"):
 		$DetectionComp.collision_mask = 3
 		$DetectionComp.set_collision_mask_value(1, false)
@@ -34,39 +35,50 @@ func _ready():
 		$DetectionComp.set_collision_mask_value(2, true)
 		$DetectionComp.set_collision_mask_value(3, false)
 
-
+func get_demon_name():
+	return "HIVE"
+	
+func get_damage():
+	return drone_attack_damage
+	
 func get_cost():
 	return cost
 
 
 func receive_buff(bufferName):
+	var demonName = truncate_string(bufferName.name)
 	if !isBuffed:
-		super(bufferName)
+		super(demonName)
 		for drone in swarm.get_available_drones():
 			drone.make_drone_glow()
-		if("Wyrm" in bufferName.name):
-			$HiveLaserShootComp.isDisabled = false
-			$HiveLaserShootComp._ready()
-			isWyrmBuffed = true
-		if("Crawler" in bufferName.name) && !isCrawlerBuffed:
-			for drone in swarm.get_available_drones():
-				drone.makeExplode()
-				drone.isCrawlerBuffed = true
-			isCrawlerBuffed = true
-		if("Occulum" in bufferName.name):
-			swarm.set_respawn_wait_time(buffedWaitTime)
-			isOcculumBuffed = true
-			swarm.set_max_drones(OCCULUM_BUFF_MAX_DRONES)
-			swarm.kill_all_and_respawn()
-		if("SpinalOcculum" in bufferName.name):
-			swarm.set_max_drones(SPINAL_OCCULUM_BUFF_MAX_DRONES)
-			swarm.kill_all_and_respawn()
-		if("Maw" in bufferName.name):
-			isMawBuffed = true
-			swarm.set_maw_buffed(true)
-			swarm.kill_all_and_respawn()
-		isBuffed = true
-		thisBufferName = bufferName.name
+			
+		match demonName:
+			"Occulum":
+				swarm.set_respawn_wait_time(buffedWaitTime)
+				isOcculumBuffed = true
+				swarm.set_max_drones(OCCULUM_BUFF_MAX_DRONES)
+				swarm.kill_all_and_respawn()
+			"Crawler":
+				for drone in swarm.get_available_drones():
+					drone.makeExplode()
+					drone.isCrawlerBuffed = true
+
+			"SpinalOcculum" :
+				swarm.set_max_drones(SPINAL_OCCULUM_BUFF_MAX_DRONES)
+				swarm.kill_all_and_respawn()
+
+			"Wyrm":
+				$HiveLaserShootComp.isDisabled = false
+				$HiveLaserShootComp._ready()
+			"Hive":
+				pass
+
+			"Maw":	
+				isMawBuffed = true
+				swarm.set_maw_buffed(true)
+				swarm.kill_all_and_respawn()		
+				
+			
 
 
 func debuff():

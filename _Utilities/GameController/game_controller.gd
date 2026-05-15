@@ -69,6 +69,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 # --- Single Scene Transitions ---
 
 func change_scene(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
+	Global.hide_notification_bar()
 	pause_button.visible = false
 
 	if current_scene != null:
@@ -90,6 +91,7 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 # --- Dual Scene Transitions ---
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
+	Global.hide_notification_bar()
 	pause_button.visible = true
 
 	if delete:
@@ -146,6 +148,7 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 # --- Pause Overlay Transitions ---
 
 func change_scene_with_pause(new_scene_path: String) -> void:
+	Global.hide_notification_bar()
 	pause_button.visible = false
 
 	if current_scene != null:
@@ -165,6 +168,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 
 
 func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
+	Global.hide_notification_bar()
 	pause_button.visible = false
 
 	for s in current_scenes:

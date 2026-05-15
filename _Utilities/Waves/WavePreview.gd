@@ -58,7 +58,7 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 	$Area2D/CollisionShape2D.disabled = false
 	next_wave_timer.start()
 	if Global.get_wave_manager()._current_wave > -1:
-		print("Make visible, current wave is ",Global.get_wave_manager()._current_wave )
+		#print("Make visible, current wave is ",Global.get_wave_manager()._current_wave )
 		wave_progress_bar.visible = true 
 	else:
 		wave_progress_bar.visible = false 

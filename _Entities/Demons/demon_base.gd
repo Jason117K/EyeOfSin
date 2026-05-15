@@ -4,16 +4,15 @@ class_name Demon
 
 #Handle Area Detection for Buffs, Buffs, Storing Cost, Showing Preview Nodes
 
-var isCurrentlyBuffed := false 
 var area : Area2D
 var isBuffed := false
 
-var wyrmBuff = false
-var hiveBuff = false 
-var spinalOcculumBuff = false
-var mawBuff = false
-var crawlerBuff = false
-var occulumBuff = false 
+@export var wyrmBuff = false
+@export var hiveBuff = false 
+@export var spinalOcculumBuff = false
+@export var mawBuff = false
+@export var crawlerBuff = false
+@export var occulumBuff = false 
 
 @onready var animSpriteComp := $AnimatedSpriteComponent
 @onready var healthComp := $HealthComponent
@@ -22,6 +21,7 @@ func _ready() -> void:
 	pass
 	await get_tree().physics_frame
 	#self.set_process(false)
+	input_event.connect(_on_input_event)
 	print(self, " Heart Connect")
 	for new_area in get_overlapping_areas():
 		print("New Area is ", new_area)
@@ -75,7 +75,6 @@ func receive_buff(newDemon):
 				mawBuff = true 
 		#animSpriteComp.make_buff_glow()
 
-
 func truncate_string(input_string: String) -> String:
 	for i in range(input_string.length()):
 		var character = input_string[i]
@@ -115,9 +114,11 @@ func take_damage(damage):
 	healthComp.take_damage(damage)
 
 func get_health():
-	#print(self, " now getting the health")
+	#print(self, " now getting the health, should return ",  healthComp.get_health())
 	return healthComp.get_health()
 	
+func get_max_health():
+	return healthComp.get_max_health()
 	
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
@@ -126,8 +127,10 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		print_scene_tree(child, indent + 1)
 	
 	
-	
-	
-	
-	
-	
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		print(self, " was clicked ")
+		Global.set_demon_info_bar(self)
+		pass
+#
+	#

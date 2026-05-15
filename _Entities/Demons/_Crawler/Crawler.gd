@@ -25,17 +25,20 @@ func _ready():
 	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	
 
+func get_damage():
+	return projectile_shoot_component.damage
+	
 #Cost getter 
 func get_cost():
 	return cost
-	
+
+func get_demon_name():
+	return "CRAWLER"
 					
 # Doubles attack speed when receiving a buff 
 func receive_buff(newDemon):
 	#print("Buff Name is ", newDemon.name)
-	
-	#healthComp.receive_buff(newDemon)
-	#animSpriteComp.receive_buff(newDemon)
+
 	var demonName = truncate_string(newDemon.name)
 	
 	if !isBuffed :

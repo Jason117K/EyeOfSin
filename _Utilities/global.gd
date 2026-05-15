@@ -46,6 +46,8 @@ func _load_demon_costs():
 func get_demon_cost(demon_name: String) -> int:
 	if demon_costs == null:
 		return -1
+	if demon_costs.size() < 1:
+		_load_demon_costs()
 	return demon_costs.get(demon_name, -1)
 	
 func get_current_scene_filepath():
@@ -232,7 +234,13 @@ func set_zombie_info_bar(zombie):
 	#print(" notification_bar" , notification_bar)
 	notification_bar.set_zombie_info(zombie)
 	pass
+
+func set_demon_info_bar(demon):
+	notification_bar.set_demon_info(demon)
+	pass
 	
+
+		
 func hide_notification_bar():
 	if notification_bar != null:
 		notification_bar.hide()

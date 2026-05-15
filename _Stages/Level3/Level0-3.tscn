@@ -3623,7 +3623,7 @@ script = ExtResource("1_3xvj4")
 wave2StartTime = 35
 
 [node name="DemonManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
-blood_points = 325
+blood_points = 3250
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=89289254]
 process_mode = 1

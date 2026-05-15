@@ -23,6 +23,7 @@ extends Demon
 @onready var sprite = get_node(sprite_path) if sprite_path else null
 @onready var laserShootComp1 = $Worm1/LaserShootComponent
 @onready var laserShootComp2 = $Worm2/LaserShootComponent
+@onready var projectile_shoot_component := $ProjectileShootComponent
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
 var projectile_scene = preload("res://_Entities/Demons/_Wyrm/WyrmProjectile.tscn")  # Load the projectile scene
@@ -80,9 +81,11 @@ func _ready():
 	 
 	
 
-	
+func get_demon_name():
+	return "WYRM"
 		
-		
+func get_damage():
+	return projectile_shoot_component.attack_power		
 		
 # Returns the demons cost 
 func get_cost():
@@ -95,10 +98,9 @@ func receive_buff(demon):
 	
 	var demonName = truncate_string(demon.name)
 	
-	if !isCurrentlyBuffed :
+	if !isBuffed :
 		super(demon)
-		print(self.name, " Buff Received from ", demonName, " var is ", isCurrentlyBuffed)
-		isCurrentlyBuffed = true
+		print(self.name, " Buff Received from ", demonName, " var is ", isBuffed)
 		match demonName:
 			"Occulum":
 				shell_sprite.change_form("Occulum")

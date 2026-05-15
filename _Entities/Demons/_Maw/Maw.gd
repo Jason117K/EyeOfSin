@@ -293,89 +293,49 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 
 	_process_queue()
 
-#region Rewrite LMAO
+func get_demon_name():
+	return "MAW"
+	
+func get_damage():
+	return "INSTAKILL"
+	
+
 
 # Receive a buff from a neighbor demon. First buff wins —
 # subsequent buffs are ignored by design.
 func receive_buff(demon):
 	
-	#animSpriteComp.receive_buff(demon)
-	if isBuffed:
-		return
+	var demonName = truncate_string(demon.name)
+	if !isBuffed:
+		super(demonName)
 
-	super(demon)
-	bufferName = demon.name
+		match demonName:
+			"Occulum":
+				willBelchBlood = true
 
-	var entry := _find_buff_handler()
-	if not entry.is_empty():
-		call(entry.apply)
+			"Crawler":
+				willBelchWebs = true
 
-	isBuffed = true
+			"SpinalOcculum" :
+				pass
+
+			"Wyrm":
+				_set_tentacle_digestion_time(buffedDigestTime)
+				isWyrmBuffed = true
+
+			"Hive":
+				detectionAreaShape.shape.radius *= 1.2
+
+			"Maw":
+				pass
+
 
 
 func debuff():
-	var entry := _find_buff_handler()
-	if not entry.is_empty():
-		call(entry.remove)
-	isBuffed = false
+	pass
 
 
-# Locate the dispatch entry whose key appears in `bufferName`.
-# Returns an empty dictionary if no entry matches.
-func _find_buff_handler() -> Dictionary:
-	for entry in _BUFF_HANDLERS:
-		if entry.key in bufferName:
-			return entry
-	return {}
 
-
-# === Per-buff apply / remove handlers ===
-
-func _appwyrmorm_buff():
-	if isWyrmBuffed: return
-	_set_tentacle_digestion_time(buffedDigestTime)
-	isWyrmBuffed = true
-
-func _remove_wyrm_buff():
-	_set_tentacle_digestion_time(ogDigestTime)
-
-
-func _apply_crawler_buff():
-	if isCrawlerBuffed: return
-	willBelchWebs = true
-	isCrawlerBuffed = true
-
-func _remove_crawler_buff():
-	willBelchWebs = false
-
-
-func _apply_hive_buff():
-	if isHiveBuffed: return
-	detectionAreaShape.shape.radius *= 1.2
-	isHiveBuffed = true
-
-func _remove_hive_buff():
-	if debug_mode:
-		print("[Maw] Debuff: reverting detection radius from ", detectionAreaShape.shape.radius)
-	detectionAreaShape.shape.radius = ogDetectionRadius
-
-
-func _apply_occulum_buff():
-	if isOcculumBuffed: return
-	willBelchBlood = true
-	isOcculumBuffed = true
-
-func _remove_occulum_buff():
-	willBelchBlood = false
-
-
-func _apply_spinalOcculum_buff():
-	isSpinalOcculumBuffed = true
-
-func _remove_spinalOcculum_buff():
-	pass  # SpinalOcculum buff is permanent by design
-
-#endregion
 
 # Blood generation (occulum buff payout)
 func generate_blood():

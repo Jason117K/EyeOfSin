@@ -1280,7 +1280,6 @@ script = ExtResource("15_kwpry")
 script = ExtResource("17_mko7f")
 health = 500
 buffedHealth = 700
-healthRegen = 0.1
 buffedHealthRegen = 0.6
 maxHealth = 500
 buffedMaxHealth = 700

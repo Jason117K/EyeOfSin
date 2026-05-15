@@ -79,10 +79,10 @@ func _on_AttackTimer_timeout():
 		if(target_demon.has_method("get_health") && (target_demon.get_health()!=null)): 
 			#TODO Give Spiderling Get Health
 			if(target_demon.get_health() >= 0):
-				if target_demon.has_method("mawBuffed"):
+				if target_demon.has_method("eat_zombie"):
 					if target_demon.can_eat_zombie == true :
 					#	print("Demon Can Eat Me Time to Die")
-						target_demon.eat_zombie()
+						target_demon.eat_zombie(self)
 						get_parent().die()
 				if target_demon.has_method("spinalOcculumWyrmBuffed"):
 					if target_demon.can_damage_zombie == true :

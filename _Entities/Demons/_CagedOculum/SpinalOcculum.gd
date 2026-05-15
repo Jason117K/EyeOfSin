@@ -7,15 +7,8 @@ extends Demon
 @onready var AOEComp = $AOEDamageComponent
 @onready var buffNodes = $BuffNodesComponent
 
-var isWyrmBuffed := false 
-var isMawBuffed := false 
-var isOcculumBuffed:= false 
-var hiveBuffed:= false
-var occulumBuffed = false
-var WyrmBuffed := false 
 
 var DemonManager
-var thisBufferName : String
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
 var can_damage_zombie= false 
 var bloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn")  
@@ -26,28 +19,27 @@ func _ready():
 	
 
 func receive_buff(bufferName):
+	var demonName = truncate_string(bufferName.name)
 	if !isBuffed :
 		super(bufferName)
-		healthComp.receive_buff(bufferName)
-		
-		if "Occulum" in bufferName.name && !isOcculumBuffed:
-			occulumBuffed = true 
-			isOcculumBuffed = true 
-		elif "Wyrm" in bufferName.name && !isWyrmBuffed:
-			WyrmBuffed = true 
-			isWyrmBuffed = true 
-			can_damage_zombie = true 
-		elif "Maw" in bufferName.name && !isMawBuffed:
-			isMawBuffed = true 
-			#TODO Re Implement Color Changes
-			#$AnimatedSpriteComponent.change_color()
-		elif "Crawler" in bufferName.name :
-			$Web.visible  = true 
-			$Web/Area2D.monitoring= true
-		elif "Hive" in bufferName.name:
-			spawnPhantomHive()
-		thisBufferName = bufferName.name
-		isBuffed = true 
+		match bufferName:
+			"Occulum":
+				pass
+			"Crawler":
+				$Web.visible  = true 
+				$Web/Area2D.monitoring= true
+			"SpinalOcculum" :
+				pass
+			"Wyrm":
+				can_damage_zombie = true 
+			"Hive":
+				spawnPhantomHive()
+			"Maw":
+				#TODO Re Implement Color Changes
+				#$AnimatedSpriteComponent.change_color()
+				pass
+
+
 
 
 func debuff():
@@ -55,14 +47,16 @@ func debuff():
 	#Call Debuff On Rest of Components Here
 	isBuffed = false
 
-
+func get_demon_name():
+	return "SPINAL OCCULUM"
+	
 func get_cost():
 	return cost
 
 
 #TODO Move to AOE Damage Component that gets Added
 func _on_aoe_damage_timer_timeout() -> void:
-	if WyrmBuffed:
+	if wyrmBuff:
 		for area in AOEComp.get_overlapping_areas():
 			if area.is_in_group("Zombies"):
 				var compManager = area.getCompManager()
@@ -111,3 +105,7 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
+	
+	
+func get_damage():
+	return "NONE"

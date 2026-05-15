@@ -24,8 +24,8 @@ func _on_reset_blood_spawn_cooldown() -> void:
 
 	
 func receive_buff(bufferName):
-	if !demon.get_is_buffed() :		
-		if "Occulum" in bufferName && !isOcculumBuffed:
+	match bufferName:
+		"Occulum":
 			canGenBlood = true
 			health = buffedHealth
 			maxHealth = buffedMaxHealth
@@ -36,15 +36,23 @@ func receive_buff(bufferName):
 			blood_spawn_timer.wait_time = blood_spawn_time
 			blood_spawn_timer.timeout.connect(_on_reset_blood_spawn_cooldown)
 			blood_spawn_timer.start()
-		elif "Wyrm" in bufferName.name && !isWyrmBuffed:
-			isWyrmBuffed = true 
+		"Crawler":
+			pass
+
+		"SpinalOcculum" :
+			pass
+
+		"Wyrm":
 			can_damage_zombie = true 
-		elif "Maw" in bufferName.name && !isMawBuffed:
+
+		"Hive":
+			pass
+
+		"Maw":
 			healthRegen = buffedHealthRegen
-			isMawBuffed = true 
-			#TODO Re Implement Color Changes
-			#$AnimatedSpriteComponent.change_color()
-		thisBufferName = bufferName
+
+
+
 
 func debuff():
 	super() 

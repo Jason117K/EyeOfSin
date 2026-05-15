@@ -108,6 +108,8 @@ func _ready():
 	wyrmCostLabel.text = str(Global.get_demon_cost("Wyrm"))
 	mawCostLabel.text = str(Global.get_demon_cost("Maw"))
 	hiveCostLabel.text = str(Global.get_demon_cost("Hive"))
+	
+	removeDemonButton.pressed.connect(_on_remove_demon_button_pressed)
 
 	#add_button_highlight
 	set_process_input(true)

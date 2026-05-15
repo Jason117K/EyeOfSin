@@ -394,6 +394,7 @@ offset_bottom = 137.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
 stream = ExtResource("21_a4agt")
+volume_db = -80.0
 autoplay = true
 bus = &"music"
 

@@ -98,16 +98,17 @@ func _unhandled_input(event: InputEvent) -> void:
 					print("Blood Points is : ", blood_points, " which is less than ", cost)
 					return
 			else: #Demon Scene Null
-				#TODO Make Double Click
+				#TODO Make Demons Handle Their Own Selection After Being Placed
 				#print("Clicked1 and Demon Scene Null NN")
 				if selection_menu.getCanRemove():
-					#print("Clicked1 and Time to Clear Space")
+					print("Clicked1 and Time to Clear Space")
 					clear_space(grid_pos)
 					#selection_menu.setCanRemoveFalse()
 				if detect_demon(grid_pos):
 				#	print("Demon Detected")
-					highlight_demon(grid_pos)
+					#highlight_demon(grid_pos)
 					pass
+				Global.hide_notification_bar()
 				return 
 			# Place the demon assuming it's within bounds of the level
 			if(parentName == "Main"):
@@ -175,6 +176,7 @@ func clear_space(passed_grid_pos):
 	#print(" QQ Demon to Erase Is  ", demon_node)
 	#demonToErase.die()
 	if demon_node != null:
+		print(demon_node , " Demon Node will DIE from CLEAR SPACE")
 		demon_node.die_fromClearSpace()
 		#print("The Right DDDDDDD Function is Being Called ")
 		#if "Empty" in demon_node.name:
@@ -242,6 +244,7 @@ func move_demon(this_demon_to_move, passed_new_grid_pos):
 	
 	#Works 
 	demon_highlighted = false
+	print("TRIED MOVE and Time to Clear Space")
 	clear_space(highlight_demon_global_pos)
 	pass
 	

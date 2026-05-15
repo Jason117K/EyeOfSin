@@ -1016,6 +1016,15 @@ visible = false
 [node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
 
+[node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("18_pfhft")]
+script = ExtResource("19_qxnbo")
+cooldown = 3.0
+occulum_buff_cooldown = 0.9
+auto_fire = true
+projectile_speed = 600
+projectile_damage = 20
+attack_speed_mult = 1.0
+
 [node name="DMG_RayCast2DPhony" type="RayCast2D" parent="." unique_id=1610026642]
 visible = false
 scale = Vector2(1.08712, 3.82142)
@@ -1036,15 +1045,6 @@ collide_with_bodies = false
 wait_time = 2.0
 one_shot = true
 autostart = true
-
-[node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("18_pfhft")]
-script = ExtResource("19_qxnbo")
-cooldown = 3.0
-occulum_buff_cooldown = 0.9
-auto_fire = true
-projectile_speed = 600
-projectile_damage = 20
-attack_speed_mult = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

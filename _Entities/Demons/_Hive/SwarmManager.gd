@@ -10,6 +10,7 @@ var active_enemies: Array = []
 var drone_rest_positions: Dictionary = {}
 var drones_to_respawn: int = 0
 var is_maw_buffed: bool = false
+var drone_damage
 
 @onready var hive: Node = get_parent()
 @onready var respawn_timer: Timer = get_parent().get_node("DroneRespawnTimer")
@@ -182,13 +183,21 @@ func command_drone_to_attack(drone, enemy):
 		drone.enable_hurtbox()
 		drone.attack_target(enemy)
 
-
+func set_damage(newDroneDamage):
+	drone_damage = newDroneDamage
+	
+	
+	
+	
+	
+	
 func _on_DroneRespawnTimer_timeout():
 	if drones_to_respawn <= 0 or get_total_drone_count() >= max_drones:
 		drones_to_respawn = 0
 		return
 
 	var new_drone = DroneScene.instantiate()
+	new_drone.set_damage(drone_damage)
 	hive.get_parent().add_child(new_drone)
 	available_drones.append(new_drone)
 	if hive.is_in_group("Green"):

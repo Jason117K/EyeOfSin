@@ -9,6 +9,7 @@ signal drone_died(drone)
 
 # Export variables 
 @export var health = 75          # Drone Health
+@export var max_health = 75
 @export var attack_damage = 7    # Attack Damage
 @export var attack_speed = 1.0   # Attacks per second
 @export var move_speed = 200     # Pixels per second
@@ -82,11 +83,19 @@ func take_damage(amount):
 func get_health():
 	return health
 
+func increase_health(added_health_amount):
+	if max_health != null:
+		health = clamp(health + added_health_amount, 0, max_health)
+		
 # Changes the drone's current animation 
 func setAnimation(newAnimation):
 	animatedSpriteComp.animation = newAnimation
 
-# Kills drone
+func set_damage(new_damage):
+	attack_damage = new_damage
+
+
+
 func die():
 	emit_signal("drone_died", self)
 	queue_free()

@@ -16,6 +16,7 @@ var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tsc
 @export var charge_cost := 1
 
 func _ready() -> void:
+	
 	Global.register_zombie(self)
 	if self.is_in_group("Green"):
 	#	print("SET TO GTREEEEEEEN SO CAN ATTTACK GREEEN")
@@ -101,12 +102,15 @@ func get_charge_cost():
 	
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		print(self, " was clicked ")
+		#print(self, " was clicked ")
 		Global.set_zombie_info_bar(self)
 		pass
 
 func get_health():
 	return healthComp.health
+	
+func get_max_health():
+	return healthComp.maxHealth
 	
 func get_speed():
 	return speedComp.speed
