@@ -27,14 +27,19 @@ func _ready():
 	swarm.set_damage(drone_attack_damage)
 	if self.is_in_group("Green"):
 		$DetectionComp.collision_mask = 3
-		$DetectionComp.set_collision_mask_value(1, false)
-		$DetectionComp.set_collision_mask_value(2, false)
-		$DetectionComp.set_collision_mask_value(3, true)
+		$DetectionComp.set_collision_mask_value(1,false)
+		$DetectionComp.set_collision_mask_value(2,false)
+		$DetectionComp.set_collision_mask_value(3,false)
+		$DetectionComp.set_collision_mask_value(4,false)
+		$DetectionComp.set_collision_mask_value(5,true)
 	else:
-		$DetectionComp.set_collision_mask_value(1, false)
-		$DetectionComp.set_collision_mask_value(2, true)
-		$DetectionComp.set_collision_mask_value(3, false)
+		$DetectionComp.set_collision_mask_value(1,false)
+		$DetectionComp.set_collision_mask_value(2,false)
+		$DetectionComp.set_collision_mask_value(3,false)
+		$DetectionComp.set_collision_mask_value(4,true)
 
+		
+		
 func get_demon_name():
 	return "HIVE"
 	

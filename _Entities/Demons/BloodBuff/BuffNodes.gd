@@ -45,6 +45,17 @@ func _ready():
 	bloodTile7.visible = false
 	bloodTile8.visible = false
 	bloodTile9.visible = false
+	
+	for child in get_children():
+		if child is Area2D and "TileArea" in child.name:
+			if demon.is_in_group("Green"):
+				child.set_collision_mask_value(1,false)
+				child.set_collision_mask_value(2,false)
+				child.set_collision_mask_value(3,true)
+			else:
+				child.set_collision_mask_value(1,false)
+				child.set_collision_mask_value(2,true)
+				child.set_collision_mask_value(3,false)
 
 func clearBuffs():
 	#print("DDD Buffed Demons is ", buffedDemons)

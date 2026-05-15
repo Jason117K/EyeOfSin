@@ -2,17 +2,15 @@ extends Demon
 #Crawler.gd
 
 @export var cost = 75
+@export var spiderling_wait_time := 2
 
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  # Load the projectile scene
 var spiderling_scene = preload("res://_Entities/Demons/_Crawler/spiderling.tscn")
 var DemonManager
 var canAttack = false  
 var second_shot_timer : Timer
-var hiveBuffed = false 
-var spinalOcculumBuffed = false
-var occulumBuffed = false
-var wyrmBuffed = false
-var mawBuffed = false
+var spiderling_timer : Timer
+
 var canAttackSetTrueOnce = false
 
 @onready var attack_ray = $DMG_RayCast2D
@@ -42,20 +40,26 @@ func receive_buff(newDemon):
 	var demonName = truncate_string(newDemon.name)
 	
 	if !isBuffed :
-		super(newDemon)
+		super(demonName)
+		projectile_shoot_component.receive_buff(demonName)
 		match demonName:
 			"Occulum":
-				occulumBuffed = true 
+				pass 
 			"Crawler":
-				mawBuffed = true 
+				pass
 			"SpinalOcculum" :
-				spinalOcculumBuffed = true 
+				pass
 			"Wyrm":
-				wyrmBuffed = true 
+				pass
 			"Hive":
-				hiveBuffed = true 
+				pass
 			"Maw":
-				mawBuffed = true
+				spiderling_timer = Timer.new()
+				spiderling_timer.wait_time = spiderling_wait_time
+				spiderling_timer.one_shot = false
+				spiderling_timer.timeout.connect(_on_spawn_spiderling_timeout)
+				add_child(spiderling_timer)
+				spiderling_timer.start()
 
 #TODO Move to Parent Class
 func debuff():
@@ -73,10 +77,14 @@ func die_fromClearSpace():
 	queue_free()		
 
 func _on_spawn_spiderling_timeout() -> void:
-	if mawBuffed:
+	if mawBuff:
 		var spiderling = spiderling_scene.instantiate()
-		spiderling.position = position + Vector2(8, -4)  # Adjust starting position
-		get_parent().add_child(spiderling)  # Add the projectile to the game layer
+		spiderling.position = position + Vector2(8, -4) 
+		if self.is_in_group("Green"):
+			spiderling.add_to_group("Green")
+		else:
+			spiderling.add_to_group("Purple")
+		get_parent().add_child(spiderling)  
 
 func _on_mouse_entered() -> void:
 	$PreviewNodes/Spider.visible = false

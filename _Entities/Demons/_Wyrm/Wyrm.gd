@@ -59,15 +59,18 @@ func _ready():
 	self.area_entered.connect(on_demon_area_entered)	
 	if self.is_in_group("Green"):
 		print(" I AM GREEN WYRM I WILL ATTACK GREEN")
-		$DMG_RayCast2D.collision_mask = 3
 		$DMG_RayCast2D.set_collision_mask_value(1,false)
 		$DMG_RayCast2D.set_collision_mask_value(2,false)
-		$DMG_RayCast2D.set_collision_mask_value(3,true)
+		$DMG_RayCast2D.set_collision_mask_value(3,false)
+		$DMG_RayCast2D.set_collision_mask_value(4,false)
+		$DMG_RayCast2D.set_collision_mask_value(5,true)
 	else:
 		$DMG_RayCast2D.set_collision_mask_value(1,false)
-		$DMG_RayCast2D.set_collision_mask_value(2,true)
+		$DMG_RayCast2D.set_collision_mask_value(2,false)
 		$DMG_RayCast2D.set_collision_mask_value(3,false)
-		
+		$DMG_RayCast2D.set_collision_mask_value(4,true)		
+	
+
 		# Get reference to demon manager
 	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	#Verify sprite is set up correctly 

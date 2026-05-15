@@ -56,7 +56,7 @@ func receive_buff(new_form):
 	
 	if parent.has_method("adjust_position"):
 		parent.adjust_position(new_form)
-
+	print("APPLYING BUFF FROM ",new_form )
 	match new_form:
 		"Occulum":
 			currentAnim = "idle_Occulum"

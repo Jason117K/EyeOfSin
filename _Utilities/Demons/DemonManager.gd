@@ -334,10 +334,16 @@ func place_demon(grid_pos: Vector2):
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
 		demon_instance.add_to_group("Green")
+		demon_instance.set_collision_layer_value(1,false)
+		demon_instance.set_collision_layer_value(2,false)
+		demon_instance.set_collision_layer_value(3,true)
 	else:
 		print("Add ", demon_instance, " to purple group")
 		demon_instance.add_to_group("Purple")
-	
+		demon_instance.set_collision_layer_value(1,false)
+		demon_instance.set_collision_layer_value(2,true)
+		demon_instance.set_collision_layer_value(3,false)	
+
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
 		#print(get_parent(), grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)

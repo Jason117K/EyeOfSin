@@ -10,10 +10,14 @@ class_name ProjectileShootComponent extends Node2D
 var attack_rays = []
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  
 var canAttack = false   
+
 var hiveBuffed = false 
 var spinalOcculumBuffed = false
 var occulumBuffed = false
 var wyrmBuffed = false
+var crawlerBuffed := false
+var mawBuffed := false 
+
 var projectile 
 var animSpriteComp
 var node_ready = false
@@ -21,7 +25,7 @@ var shoot_positions = []
 
 # Map of animation_name -> which frame triggers the shot
 # Might Have to Have Heart Specific in Future 
-const SHOOT_FRAMES = {"attack": 3, "attack_Wasp": 3, "attack_Maw": 3, "attack_Crawler": 3, "attack_Occulum": 3, "attack_Wyrm": 3 }
+const SHOOT_FRAMES = {"attack": 3, "attack_Hive": 3, "attack_Maw": 3, "attack_Crawler": 3, "attack_Occulum": 3, "attack_Wyrm": 3, "attack_SpinalOcculum": 3 }
 
 func _ready() -> void:
 	animSpriteComp = $"../AnimatedSpriteComponent"
@@ -38,15 +42,24 @@ func _ready() -> void:
 func set_attack_rays_collision():
 	if parent_demon.is_in_group("Green"):
 		for attacking_ray in attack_rays:
+			attacking_ray.max_results = 30
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,false)
-			attacking_ray.set_collision_mask_value(3,true)
+			attacking_ray.set_collision_mask_value(3,false)
+			attacking_ray.set_collision_mask_value(4,false)
+			attacking_ray.set_collision_mask_value(5,true)
 	else:
 		for attacking_ray in attack_rays:
+			attacking_ray.max_results = 30
 			attacking_ray.set_collision_mask_value(1,false)
-			attacking_ray.set_collision_mask_value(2,true)
+			attacking_ray.set_collision_mask_value(2,false)
 			attacking_ray.set_collision_mask_value(3,false)
-			
+			attacking_ray.set_collision_mask_value(4,true)
+
+
+		
+		
+					
 				
 func _on_sprite_frame_changed(animation_name: String, frame_index: int):
 	if SHOOT_FRAMES.has(animation_name):
@@ -73,9 +86,11 @@ func check_attack_rays():
 			#print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
-				#print(" and collider is ",collider )
+				print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
+				if collider == null:
+					continue  # guard against freed/invalid colliders
 				if collider and collider.is_in_group("Zombie"):
-				#	print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
+					print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
 						canAttack = true
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
@@ -85,18 +100,30 @@ func check_attack_rays():
 func shoot_projectile():
 	AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	if shoot_positions.is_empty():
+			print("SHOOTING HERE")
 			projectile = projectile_scene.instantiate()
 			projectile.position = parent_demon.position + projectile_spawn_offest 
 			projectile.damage = damage
-			parent_demon.get_parent().add_child(projectile)  
 			apply_buffs_to_projectile(projectile)
+			if get_parent().is_in_group("Green"):
+				projectile.add_to_group("Green")
+			else:
+				projectile.add_to_group("Purple")
+			parent_demon.get_parent().add_child(projectile)  
+
 	else:
+		print("NAH SHOOTING HERE")
 		for shoot_pos in shoot_positions:
 			projectile = projectile_scene.instantiate()
 			projectile.position = shoot_pos.global_position
 			projectile.damage = damage
-			parent_demon.get_parent().call_deferred("add_child", projectile)
 			apply_buffs_to_projectile(projectile)
+			if get_parent().is_in_group("Green"):
+				projectile.add_to_group("Green")
+			else:
+				projectile.add_to_group("Purple")
+			parent_demon.get_parent().call_deferred("add_child", projectile)
+			
 			
 	canAttack = false
 	
@@ -113,7 +140,19 @@ func get_damage():
 	
 	
 func receive_buff(newDemon):
-	pass
+	match newDemon:
+		"Occulum":
+			occulumBuffed = true
+		"Crawler":
+			crawlerBuffed = true 
+		"SpinalOcculum" :
+			spinalOcculumBuffed = true
+		"Wyrm":
+			wyrmBuffed = true
+		"Hive":
+			hiveBuffed = true
+		"Maw":
+			mawBuffed = true 
 	
 	
 	

@@ -75,8 +75,22 @@ func _ready():
 	collision_mask = 2
 	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	setup_tentacles()
+	
+	if self.is_in_group("Green"):
+		detection_area.set_collision_mask_value(1,false)
+		detection_area.set_collision_mask_value(2,false)
+		detection_area.set_collision_mask_value(3,false)
+		detection_area.set_collision_mask_value(4,false)
+		detection_area.set_collision_mask_value(5,true)
+	else:
+		detection_area.set_collision_mask_value(1,false)
+		detection_area.set_collision_mask_value(2,false)
+		detection_area.set_collision_mask_value(3,false)
+		detection_area.set_collision_mask_value(4,true)
 
 
+		
+		
 # Demon cost getter
 func get_cost():
 	return cost

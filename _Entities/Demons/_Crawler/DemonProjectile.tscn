@@ -161,16 +161,17 @@ offset_right = 41.0
 offset_bottom = 40.0
 color = Color(0.231373, 0.847059, 0.0823529, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=835272938]
+[node name="LightningZoneAnimSprite" type="AnimatedSprite2D" parent="." unique_id=835272938]
 visible = false
 self_modulate = Color(0.882353, 0.0352941, 0.0352941, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_frnp6")
 animation = &"lightning"
 autoplay = "lightning"
+frame = 1
+frame_progress = 0.15262394
 
 [node name="LightningZone" type="Area2D" parent="." unique_id=2040273443]
-visible = false
 collision_layer = 2
 collision_mask = 2
 monitoring = false

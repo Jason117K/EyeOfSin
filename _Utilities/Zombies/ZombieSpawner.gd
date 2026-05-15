@@ -89,17 +89,20 @@ func _spawn_next() -> void:
 	var y_offset: float = ZombieRegistry.Y_OFFSETS.get(_get_type_key(zombie.name), 0.0)
 	zombie.position = self.position + Vector2(25, y_offset)
 	zombie.add_to_group("Zombie")
-	get_parent().add_child(zombie)
+	
 
 	if make_green:
 		zombie.add_to_group("Green")
+		get_parent().add_child(zombie)
 		zombie.collision_layer = 3
 		zombie.set_hue_shift(125)
 		zombie._ready()
 	else:
 		zombie.add_to_group("Purple")
+		get_parent().add_child(zombie)
 		zombie.set_hue_shift(-86)
-
+		
+	
 	if not _spawn_pool.is_empty():
 		$SpawnTimer.wait_time = _get_weighted_spawn_delay()
 		$SpawnTimer.start()

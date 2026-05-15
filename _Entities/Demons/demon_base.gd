@@ -50,7 +50,7 @@ func receive_buff(newDemon):
 	#print("Buff Name is ", newDemon.name)
 	#var demonName = truncate_string(newDemon.name)
 	if !isBuffed :
-		print(self.name, " Buff Received from ", newDemon)
+		print(self.name, " Received Buff from ", newDemon)
 		healthComp.receive_buff(newDemon)
 		animSpriteComp.receive_buff(newDemon)
 		isBuffed = true 

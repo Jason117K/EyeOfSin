@@ -32,8 +32,18 @@ func set_damage_zone_collision():
 	if parent_demon.is_in_group("Green"):
 		damage_zone.set_collision_mask_value(1,false)
 		damage_zone.set_collision_mask_value(2,false)
-		damage_zone.set_collision_mask_value(3,true)
+		damage_zone.set_collision_mask_value(3,false)
+		damage_zone.set_collision_mask_value(4,false)
+		damage_zone.set_collision_mask_value(5,true)
 	else:
 		damage_zone.set_collision_mask_value(1,false)
-		damage_zone.set_collision_mask_value(2,true)
+		damage_zone.set_collision_mask_value(2,false)
 		damage_zone.set_collision_mask_value(3,false)
+		damage_zone.set_collision_mask_value(4,true)
+
+
+
+		
+		
+		
+		

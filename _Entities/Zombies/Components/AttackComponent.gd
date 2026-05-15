@@ -21,6 +21,18 @@ var my_level: Node
 func _ready() -> void:
 	my_level = parent.get_parent().get_parent()
 	_frame_counter = randi() % 3
+	if parent.is_in_group("Green"):
+		#print(parent," DOING GREEN SET FOOOOOR ", attack_ray)
+		attack_ray.set_collision_mask_value(1,false)
+		attack_ray.set_collision_mask_value(2,false)
+		attack_ray.set_collision_mask_value(3,true)
+	else:
+		#print(parent," DOING PURPLE SET FOOOOOR ", attack_ray)
+		attack_ray.set_collision_mask_value(1,false)
+		attack_ray.set_collision_mask_value(2,true)
+		attack_ray.set_collision_mask_value(3,false)
+	
+	
 # Attack State Getter 
 func getAttackState():
 	return is_attacking
@@ -114,10 +126,16 @@ func _process(_delta):
 			if collider:
 				if collider.is_in_group("Demons"):
 					#print("Collider In Right Group")
-					if collider.get_parent().get_parent() != my_level:
-						if collider.get_parent().get_parent().get_parent() != my_level:
+					#print(parent.name , " is collding setting with ", collider.name )
+					#if collider.get_parent().get_parent() != my_level:
+						#if collider.get_parent().get_parent().get_parent() != my_level:
+							#print(parent, " early return cos level mismatch")
+					if collider.has_method("spiderling_busy"):
+						if collider.spiderling_busy(parent):
+							#print(parent, " early return cos busy")
 							return
-				#	print(collider.name , " is in group demons")
+						
+					#print(collider.name , " is NOT busy")
 					if("PoleVaultZombie" in parent.name):
 						#print(parent.name, " - canSpecialPP: ", canSpecial)
 						#print("PP Parent Is Pole Vault")

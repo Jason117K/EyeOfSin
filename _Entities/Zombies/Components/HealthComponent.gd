@@ -1,5 +1,5 @@
 extends Node2D
-#HealthComponent.gd
+#ZombieHealthComponent.gd
 
 #Health Component for all zombie enemies
 
@@ -20,7 +20,10 @@ var explode = false    #Determines whether or not the zombie will explode
 func receive_buff():
 	pass
 	
-
+func add_blood_worth(blood_worth_to_add):
+	print("New Blood Worth")
+	bloodWorth = bloodWorth + blood_worth_to_add
+	
 
 func _ready():
 	if healthRegen <= 0.0:

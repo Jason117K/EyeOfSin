@@ -22,11 +22,14 @@ func _ready() -> void:
 	#	print("SET TO GTREEEEEEEN SO CAN ATTTACK GREEEN")
 		self.set_collision_layer_value(1,false)
 		self.set_collision_layer_value(2,false)
-		self.set_collision_layer_value(3,true)
+		self.set_collision_layer_value(3,false)
+		self.set_collision_layer_value(3,false)
+		self.set_collision_layer_value(5,true)
 	else:
 		self.set_collision_layer_value(1,false)
-		self.set_collision_layer_value(2,true)
+		self.set_collision_layer_value(2,false)
 		self.set_collision_layer_value(3,false)
+		self.set_collision_layer_value(4,true)
 	#set_hue_shift
 # Component Manager Getter
 func getCompManager():

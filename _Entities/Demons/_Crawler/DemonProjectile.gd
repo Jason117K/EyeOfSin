@@ -1,14 +1,18 @@
 extends Area2D
 #DemonProjectile.gd
 
+@onready var lightning_detection_zone : Area2D = $LightningZone
+@onready var lightning_zone_visual := $LightningZoneAnimSprite
 
 @export var speed = 300  # Speed of the projectile
 @export var damage = 20 #2   # Damage dealt to zombies
 @export var lightning_damage = 10 #2   # Damage dealt to zombies
+@export var blood_worth_to_add = 1
+
 var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
 
 var spinalOcculumBuff := false 
-var bloodBuff := false 
+var give_blood_on_death := false 
 var wyrmBuff := false
 
 var piercing := false 
@@ -26,7 +30,22 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 func _ready() -> void:
 	#print_scene_tree()
 	self.area_entered.connect(on_hit)
-	
+	if wyrmBuff:
+		print("SETUP LIGHTNING ZONE")
+		setup_lightning_zone()
+	if self.is_in_group("Green"):
+		self.set_collision_mask_value(1,false)
+		self.set_collision_mask_value(2,false)
+		self.set_collision_mask_value(3,false)
+		self.set_collision_mask_value(4,false)
+		self.set_collision_mask_value(5,true)
+	else:
+		self.set_collision_mask_value(1,false)
+		self.set_collision_mask_value(2,false)
+		self.set_collision_mask_value(3,false)
+		self.set_collision_mask_value(4,true)	
+		
+				
 func _physics_process(delta: float) -> void:
 	var travel_distance = speed * delta
 	
@@ -67,10 +86,23 @@ func _physics_process(delta: float) -> void:
 	
 
 func setup_lightning_zone():
-	$LightningZone.visible = true 
-	$LightningZone.monitoring = true 
-	$AnimatedSprite2D.visible = true 
-	$LightningZone/CollisionShape2D.disabled = false
+	if self.is_in_group("Green"):
+		lightning_detection_zone.set_collision_mask_value(1,false)
+		lightning_detection_zone.set_collision_mask_value(2,false)
+		lightning_detection_zone.set_collision_mask_value(3,false)
+		lightning_detection_zone.set_collision_mask_value(4,false)
+		lightning_detection_zone.set_collision_mask_value(5,true)
+	else:
+		lightning_detection_zone.set_collision_mask_value(1,false)
+		lightning_detection_zone.set_collision_mask_value(2,false)
+		lightning_detection_zone.set_collision_mask_value(3,false)
+		lightning_detection_zone.set_collision_mask_value(4,true)		
+	lightning_zone_visual.show()
+	lightning_zone_visual.play()
+	lightning_detection_zone.show()
+	lightning_detection_zone.monitoring = true 
+	lightning_detection_zone.get_child(0).disabled = false 
+
 
 # Handles projectile collison and damage application 
 func on_hit(area):
@@ -85,12 +117,14 @@ func on_hit(area):
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
 		if spinalOcculumBuff:
 			compManager.knockBack()
-		if bloodBuff:
-			var demon_manager = get_parent().get_parent().get_node("DemonManager")
-			if demon_manager:  # If the DemonManager or GameManager is set
-				#$CollectAudioPlayer.play()
-				demon_manager.add_blood(2.0)  # Add 25 blood points (or whatever amount)
-				demon_manager.play_blood_collect()
+		if give_blood_on_death:
+			healthComp.add_blood_worth(blood_worth_to_add)
+			
+			#var demon_manager = get_parent().get_parent().get_node("DemonManager")
+			#if demon_manager:  # If the DemonManager or GameManager is set
+				##$CollectAudioPlayer.play()
+				#demon_manager.add_blood(2.0)  # Add 25 blood points (or whatever amount)
+				#demon_manager.play_blood_collect()
 			#compManager.increaseBloodWorth()
 		if damage < 18.5 && canGenBlood:
 			generate_blood()
