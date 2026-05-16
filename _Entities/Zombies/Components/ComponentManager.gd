@@ -15,6 +15,8 @@ var isSlow = 0  #how much slow the zombie has
 var thisMaterial  
 var thisMaterial2
 var spawn_slow_field := false 
+var spawn_drone_on_death := false
+var should_column_explode := false 
 
 #Onready variables for tracking nodes 
 @onready var animatedSprite = $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
@@ -57,7 +59,7 @@ func fightDrone():
 	
 #Make the zombie explode because it fought a buffed drone 
 func fightDroneExplode():
-	healthComp.willExplode()
+	healthComp.willExplodeFromDrone()
 	
 #Tells the zombie to stop one on one drone combat
 func reset_speed():
@@ -162,7 +164,9 @@ func _on_ResetThisColor_timeout():
 		thisMaterial2.set_shader_parameter("tolerance", 0.1)
 		
 	
-
+func column_explode():
+	should_column_explode = true
+	
 # Slowly gets rid of slow debuff
 func _on_DebuffDegrade_timeout():
 	if isSlow > 0:
@@ -171,7 +175,9 @@ func _on_DebuffDegrade_timeout():
 			isSlow = 0
 			$DebuffDegrade.stop()
 
-
+func spawn_drone_on_zombie_death():
+	spawn_drone_on_death = true  
+	
 func _on_blood_hit_animation_finished() -> void:
 	bloodHit.visible = false
 	bloodHit.rotation_degrees = 0

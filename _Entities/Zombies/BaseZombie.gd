@@ -11,7 +11,9 @@ signal zombie_death
 @onready var speedComp = $SpeedComponent
 @onready var attackComp = $AttackComponent
 
+var column_explosion
 var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
+const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
 
 @export var charge_cost := 1
 
@@ -62,13 +64,28 @@ func set_hue_shift(hue_shift_degrees):
 #Kills the Zombie 
 func die():
 	Global.deregister_zombie(self)
+	print(self, " dying")
 	if compManager.spawn_slow_field == true :
 		spawn_slow_field_on_death()
+	if compManager.spawn_drone_on_death == true :
+		print("Should Spawn Drone")
+		spawn_drone_on_death()
+	if compManager.should_column_explode:
+		print(self, "Should MAKE AN EXPLOSION")
+		column_explosion = Global.get_column_death_explosion().instantiate()
+		column_explosion.global_position = global_position
+		get_parent().add_child(column_explosion)
 	#if compMana
 #	print("Should die")
 	zombie_death.emit()
-	queue_free()
 
+	if $AnimatedSprite2D.sprite_frames.has_animation("death"):
+		$AnimatedSprite2D.isDead = true 
+		$AnimatedSprite2D.play("death")
+	queue_free()
+	
+	
+	
 func spawn_slow_field_on_death():
 	var slow_field
 	slow_field = slow_field_scene.instantiate()
@@ -121,3 +138,20 @@ func get_speed():
 func get_damage():
 	return attackComp.attack_power
 	
+func spawn_drone_on_death():
+	var drone = DroneScene.instantiate()
+	drone.is_stationary = true 
+	get_parent().add_child(drone)
+	if self.is_in_group("Green"):
+		drone.add_to_group("Green")
+	else:
+		drone.add_to_group("Purple")
+		
+		
+	drone.global_position = global_position
+
+			
+			
+			
+			
+			

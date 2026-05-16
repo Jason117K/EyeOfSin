@@ -28,6 +28,8 @@ var ui_layer : Control
 var demon_costs: Dictionary = {}
 var demon_scenes : Dictionary
 
+var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
+
 func _load_demon_costs():
 	demon_scenes = {
 		"Occulum": "res://_Entities/Demons/_Occulum/Occulum.tscn",
@@ -239,7 +241,8 @@ func set_demon_info_bar(demon):
 	notification_bar.set_demon_info(demon)
 	pass
 	
-
+func get_column_death_explosion():
+	return column_death_explosion
 		
 func hide_notification_bar():
 	if notification_bar != null:

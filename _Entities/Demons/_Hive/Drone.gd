@@ -31,6 +31,24 @@ var current_zombie_to_fight
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
+
+
+func _ready():
+	base_attack_damage = attack_damage
+	animatedSpriteComp.animation = "idle"
+	
+	
+	# Create & configure attack timer
+	var timer = Timer.new()
+	add_child(timer)
+	var attack_length = animatedSpriteComp.get_animation_length("attack")
+	#print("Attack animation is ", attack_length, " seconds long")
+	timer.wait_time = attack_length
+	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
+	timer.start()
+	#print_scene_tree()
+	
+	
 func make_drone_glow():
 	animatedSpriteComp.make_glow()
 	
@@ -58,20 +76,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		print_scene_tree(child, indent + 1)
 		
 		
-func _ready():
-	base_attack_damage = attack_damage
-	animatedSpriteComp.animation = "idle"
-	
-	
-	# Create & configure attack timer
-	var timer = Timer.new()
-	add_child(timer)
-	var attack_length = animatedSpriteComp.get_animation_length("attack")
-	#print("Attack animation is ", attack_length, " seconds long")
-	timer.wait_time = attack_length
-	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
-	timer.start()
-	#print_scene_tree()
+
 
 # Handles the drone taking damage
 func take_damage(amount):

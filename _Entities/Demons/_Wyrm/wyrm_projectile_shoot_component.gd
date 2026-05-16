@@ -3,6 +3,7 @@ extends ProjectileShootComponent
 var isOcculumBuffed := false 
 var isCrawlerBuffed := false
 var isWyrmBleedBuffed := false 
+var hiveSpawnDroneBuffed := false 
 var cooldown_timer : Timer 
 
 @onready var attack_ray_1 = $"../DMG_RayCast2D"
@@ -59,6 +60,12 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	
 	if isWyrmBleedBuffed:
 		projectile_to_buff.increase_bleed_damage(bleed_damage_increase)
+		
+	if hiveSpawnDroneBuffed:
+		projectile_to_buff.spawn_drone_on_zombie_death = true 
+	
+	if mawBuffed:
+		projectile_to_buff.column_explode = true 
 		
 func wyrm_bleed_buff():
 	isWyrmBleedBuffed = true 

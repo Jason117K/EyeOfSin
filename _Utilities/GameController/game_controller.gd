@@ -290,14 +290,14 @@ func get_current_scene_filepath() -> String:
 
 func show_guide() -> void:
 	#print("Undo Clear and SHOW THE GUIDE for ", current_scene, " and ", get_alt_dimension())
-	print("Undo Clear and SHOW THE GUIDE for ", current_scenes[0], " and ", current_scenes[1])
+	#print("Undo Clear and SHOW THE GUIDE for ", current_scenes[0], " and ", current_scenes[1])
 	if current_scene and current_scenes.size() >= 2:
 		current_scenes[0].show_guide()
 		current_scenes[1].show_guide()
 
 func clear_guide() -> void:
-	print("Should Clear Guide")
+	#print("Should Clear Guide")
 	if current_scene and current_scenes.size() >= 2:
-		print("Should DEF Clear Both Guides")
+		#print("Should DEF Clear Both Guides")
 		current_scenes[0].hide_guide()
 		current_scenes[1].hide_guide()

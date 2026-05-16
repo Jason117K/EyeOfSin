@@ -1021,7 +1021,7 @@ cooldown = 3.0
 occulum_buff_cooldown = 0.9
 auto_fire = true
 projectile_speed = 600
-projectile_damage = 20
+projectile_damage = 80
 bleed_damage_increase = 2
 attack_speed_mult = 1.0
 

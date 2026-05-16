@@ -18,7 +18,7 @@ var injured = false
 var halfHealth = health/2
 var should_bleed := false 
 
-var explode = false    #Determines whether or not the zombie will explode 
+var explode_from_drone = false   
 @onready var maxHealth := health
 
 func receive_buff():
@@ -52,8 +52,7 @@ func take_damage(damage):
 	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	#Handles killing the zombie if health hits 0
 	if health <= 0:
-		#Spawns Bomb on Zombie if it was set to explode 
-		if(explode):
+		if(explode_from_drone):
 			var bomb = bomb_scene.instantiate()
 			bomb.position = zombie.position + Vector2(0, 0)  # Adjust starting position
 			#print(((get_parent().get_parent()).name), "is parent")
@@ -61,19 +60,13 @@ func take_damage(damage):
 		emit_signal("enemy_died", self)
 		
 		var gameLayer = get_parent().get_parent()
-		#print("WWGameLayer is", gameLayer)
 		var currentLevel = gameLayer.get_parent()
-		#print("WWCurrentLevel is", currentLevel)
 
 		var demon_manager = currentLevel.get_node("DemonManager")
-		if demon_manager:  # If the DemonManager or GameManager is set
-			#$CollectAudioPlayer.play()
-			#print("ADDING WW Blood Worth : ", bloodWorth)
-			demon_manager.add_blood(bloodWorth)  # Add 25 blood points (or whatever amount)
-			#demon_manager.play_blood_collect()
+		if demon_manager:  
+			demon_manager.add_blood(bloodWorth) 
 		else:
 			pass
-			#print("Demon Manager is NULLWWWW")
 		zombie.die()
 
 func bleed(bleed_damage):
@@ -108,8 +101,8 @@ func resetHealth():
 
 
 #Sets explode to true
-func willExplode():
-	explode = true
+func willExplodeFromDrone():
+	explode_from_drone = true
 
 
 	

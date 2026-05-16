@@ -114,7 +114,7 @@ func receive_buff(demon):
 				shell_sprite.change_form("Crawler")
 				#$Worm2/LaserShootComponent.isSlowingProjectile = true 
 				#$Worm3/LaserShootComponent.isSlowingProjectile = true 
-				$ProjectileShootComponent.isCrawlerBuffed = true
+				projectile_shoot_component.isCrawlerBuffed = true
 				print("Change to CRAWLER")
 				#animSpriteComp.change_form("Crawler")
 			"SpinalOcculum" : 
@@ -127,17 +127,17 @@ func receive_buff(demon):
 			"Hive":
 				shell_sprite.change_form("Wasp")
 				attack_ray.target_position = attack_ray.target_position + Vector2(100,0)
+				projectile_shoot_component.hiveSpawnDroneBuffed = true 
 				#animSpriteComp.change_form("Wasp")
 			"Maw":
 				#TODO Make Buff Heal Via Signals From Zombie
-				print("Calling change form to adjust global pos of maw worm ")
 				shell_sprite.change_form("Maw")
-				#health = mawBuffed_health
 				laserShootComp1.isDisabled = false
 				laserShootComp1._ready()
 				$ShellBack.visible = false 
 				laserShootComp1.mawBuff()
 				$Worm1.z_index = 2
+				projectile_shoot_component.mawBuffed = true 
 				#animSpriteComp.change_form("Maw")
 				
 

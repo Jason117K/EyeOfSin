@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bu3h8781o57xe"]
+
+[ext_resource type="Texture2D" uid="uid://2s487dobdp7v" path="res://_Entities/Demons/_Wyrm/Ball Tank 48x32 sprite sheet.png" id="1_m846o"]
+[ext_resource type="Script" uid="uid://c4lxxurhw0xx0" path="res://_Entities/Demons/_Wyrm/zombie_death_explosion.gd" id="1_t451l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t451l"]
+atlas = ExtResource("1_m846o")
+region = Rect2(0, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5wnb"]
+atlas = ExtResource("1_m846o")
+region = Rect2(48, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbfgh"]
+atlas = ExtResource("1_m846o")
+region = Rect2(96, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt386"]
+atlas = ExtResource("1_m846o")
+region = Rect2(144, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7b1d"]
+atlas = ExtResource("1_m846o")
+region = Rect2(192, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcm3j"]
+atlas = ExtResource("1_m846o")
+region = Rect2(240, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6r6p"]
+atlas = ExtResource("1_m846o")
+region = Rect2(288, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keauk"]
+atlas = ExtResource("1_m846o")
+region = Rect2(336, 160, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nr22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t451l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5wnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbfgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt386")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7b1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcm3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6r6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keauk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mk03"]
+size = Vector2(32, 96)
+
+[node name="ZombieDeathExplosion" type="Area2D" unique_id=1899045676]
+script = ExtResource("1_t451l")
+
+[node name="ExplosionAnimFX" type="AnimatedSprite2D" parent="." unique_id=1802849512]
+sprite_frames = SubResource("SpriteFrames_4nr22")
+autoplay = "default"
+
+[node name="ExplosionAnimFX2" type="AnimatedSprite2D" parent="." unique_id=62169658]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_4nr22")
+autoplay = "default"
+
+[node name="ExplosionAnimFX3" type="AnimatedSprite2D" parent="." unique_id=663949037]
+position = Vector2(0, 32)
+sprite_frames = SubResource("SpriteFrames_4nr22")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=844453333]
+shape = SubResource("RectangleShape2D_1mk03")
+
+[connection signal="animation_finished" from="ExplosionAnimFX" to="." method="_on_explosion_anim_fx_animation_finished"]

@@ -74,7 +74,7 @@ func _process(_delta):
 			return
 		else:
 			if canAttack == false:
-				print("Check Attack Rays")
+				#print("Check Attack Rays")
 				check_attack_rays()
 	else:
 		pass
@@ -84,16 +84,16 @@ func _process(_delta):
 func check_attack_rays():
 	canAttack = false
 	for ray in attack_rays:
-		print("Checking Ray ", ray)
+		#print("Checking Ray ", ray)
 		if ray.is_colliding():
-			print(" Ray Colling ",self )
+			#print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
-				print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
+				#print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
 				if collider == null:
 					continue  # guard against freed/invalid colliders
 				if collider and collider.is_in_group("Zombie"):
-					print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
+					#print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
 						canAttack = true
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):

@@ -1,83 +1,83 @@
-[gd_scene format=3 uid="uid://xia8qyghjoqw"]
+[gd_scene format=3 uid="uid://bonxb2q3vqoqc"]
 
-[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/_Hive/Wasp 16x16 Sprite Sheet.png" id="1"]
-[ext_resource type="Script" uid="uid://mbwu3w6n5a3x" path="res://_Entities/Demons/_Hive/Drone.gd" id="2"]
-[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_8cfhw"]
-[ext_resource type="Script" uid="uid://cjpy3j8mq8mfa" path="res://_Entities/Demons/_Hive/DroneSpriteController.gd" id="3"]
+[ext_resource type="Script" uid="uid://blndd3caa356" path="res://_Entities/Demons/demon_minion.gd" id="1_27xlj"]
+[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_kpp0v"]
+[ext_resource type="Texture2D" uid="uid://b3otj05uawvvb" path="res://_Entities/Demons/_Hive/Wasp 16x16 Sprite Sheet.png" id="3_d0hi7"]
+[ext_resource type="Script" uid="uid://cjpy3j8mq8mfa" path="res://_Entities/Demons/_Hive/DroneSpriteController.gd" id="4_6xx1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10gu7"]
 resource_local_to_scene = true
-shader = ExtResource("2_8cfhw")
+shader = ExtResource("2_kpp0v")
 shader_parameter/glow_color = Color(223, 66, 66, 256)
 shader_parameter/modulate_factor = Vector4(99, 99, 99, 1)
 shader_parameter/glow_tolerance = 0.2
 
 [sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="6"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(80, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="7"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="8"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="10"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="11"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(64, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="12"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="13"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="14"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="15"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="16"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="17"]
-atlas = ExtResource("1")
+atlas = ExtResource("3_d0hi7")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="18"]
@@ -157,12 +157,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="22"]
 size = Vector2(22, 30.5)
 
-[node name="Drone" type="Area2D" unique_id=1376268587 groups=["Demons", "Drone", "Plants"]]
+[node name="Drone" type="Area2D" unique_id=1376268587 groups=["Demons", "Plants"]]
 z_index = 1
-script = ExtResource("2")
-health = 100
-attack_damage = 13
-attack_range = 20
+script = ExtResource("1_27xlj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1401582092]
 material = SubResource("ShaderMaterial_10gu7")
@@ -170,7 +167,7 @@ sprite_frames = SubResource("18")
 animation = &"attack"
 autoplay = "idle"
 flip_h = true
-script = ExtResource("3")
+script = ExtResource("4_6xx1g")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="HurtBox" type="CollisionShape2D" parent="." unique_id=215887546]

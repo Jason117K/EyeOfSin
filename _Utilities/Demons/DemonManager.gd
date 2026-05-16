@@ -170,21 +170,10 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 
 # Clear a space for a new demon to go 
 func clear_space(passed_grid_pos):
-	#print("QQ Grid Map is ", grid_map)
-	#print(" QQ Erase Demon At :", passed_grid_pos)
 	var demon_node = grid_map.get(passed_grid_pos)
-	#print(" QQ Demon to Erase Is  ", demon_node)
-	#demonToErase.die()
 	if demon_node != null:
 		print(demon_node , " Demon Node will DIE from CLEAR SPACE")
 		demon_node.die_fromClearSpace()
-		#print("The Right DDDDDDD Function is Being Called ")
-		#if "Empty" in demon_node.name:
-			##return
-			#pass
-		#else:
-			#demon_node.die_fromClearSpace()
-		#demon_node.queue_free()
 	grid_map.erase(passed_grid_pos)
 	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 

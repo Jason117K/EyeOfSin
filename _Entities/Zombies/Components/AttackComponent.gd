@@ -130,8 +130,8 @@ func _process(_delta):
 					#if collider.get_parent().get_parent() != my_level:
 						#if collider.get_parent().get_parent().get_parent() != my_level:
 							#print(parent, " early return cos level mismatch")
-					if collider.has_method("spiderling_busy"):
-						if collider.spiderling_busy(parent):
+					if collider.has_method("demon_minion_busy"):
+						if collider.demon_minion_busy(parent):
 							#print(parent, " early return cos busy")
 							return
 						

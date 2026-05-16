@@ -14,12 +14,14 @@ var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn")
 
 var spinalOcculumBuff := false 
 var give_blood_on_death := false 
+var spawn_drone_on_zombie_death := false 
 var wyrmBuff := false
 
 var piercing := false 
 var is_slowing := true 
 var canGenBlood := false 
 var bleed := false 
+var column_explode := false
 
 var collision 
 
@@ -116,23 +118,22 @@ func on_hit(area):
 		var healthComp = compManager.getHealthComponent()
 		if is_slowing:
 			compManager.slow()
-		compManager.take_damage(damage)  # Call take_damage() on the zombie
 		if spinalOcculumBuff:
 			compManager.knockBack()
 		if give_blood_on_death:
 			healthComp.add_blood_worth(blood_worth_to_add)
-			
-			#var demon_manager = get_parent().get_parent().get_node("DemonManager")
-			#if demon_manager:  # If the DemonManager or GameManager is set
-				##$CollectAudioPlayer.play()
-				#demon_manager.add_blood(2.0)  # Add 25 blood points (or whatever amount)
-				#demon_manager.play_blood_collect()
-			#compManager.increaseBloodWorth()
+		if spawn_drone_on_zombie_death:
+			compManager.spawn_drone_on_zombie_death()
 		if damage < 18.5 && canGenBlood:
 			generate_blood()
 			canGenBlood = false
 		if bleed:
 			compManager.bleed(bleed_damage)
+		if column_explode:
+			compManager.column_explode()
+			column_explode = false
+			
+		compManager.take_damage(damage)  # Call take_damage() on the zombie
 		if piercing == false:
 			queue_free() 
 		else:
