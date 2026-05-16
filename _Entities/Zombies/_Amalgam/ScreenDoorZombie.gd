@@ -10,7 +10,11 @@ extends Zombie
 # Stores death count for transformation purposes 
 var deathCount = 0 
 
-
+func silence():
+	deathCount = 2
+	$SilenceFX.show()
+	$SilenceFX.play()
+	
 # First transforms zombie 'death' 1, then kills zombie 'death' 2
 func die():
 	#TODO Restore to work with Maw

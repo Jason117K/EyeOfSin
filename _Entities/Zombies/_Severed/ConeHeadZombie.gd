@@ -6,3 +6,6 @@ extends Zombie
 
 func get_zombie_name():
 	return " SEVERED "
+
+
+	

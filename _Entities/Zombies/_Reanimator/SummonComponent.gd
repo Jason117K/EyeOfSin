@@ -20,11 +20,16 @@ extends Node2D
 
 #Load the zombie we will summon
 var BackUpDancerScene = preload("res://_Entities/Zombies/_Wretch/BackUpDancerZombie.tscn")
-
+var is_silenced := false 
 var is_attacking #Whether or not we are attacking 
+
+func silence():
+	is_silenced = true 
 
 #Summon the Floating Tentacle head backup dancers 
 func summon_backup():
+	if is_silenced:
+		return
 	#print("Summoning ",dancerZombie.position.y)
 	# Get reference to GameLayer
 	var game_layer = get_parent().get_parent()

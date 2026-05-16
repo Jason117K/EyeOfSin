@@ -66,6 +66,12 @@ func moveFinished():
 	speedComp.setSpeed(26)
 	moveDone = true
 
+func silence():
+	animatedSprite.setSpecialMoveFalse()
+	speedComp.setSpeed(26)
+	moveDone = true
+	#TODO Add Ability to Recover From Being Silenced?
+
 # Informs whether or not the move was performed 
 func isMoveFinished():
 	return moveDone

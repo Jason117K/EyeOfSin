@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bplktshlxk4fi" path="res://_Entities/Demons/_CagedOculum/OccularSpineHurt2-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://dfkobn3p1i8at" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum.gd" id="2"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_6a3v0"]
+[ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="2_hi55n"]
 [ext_resource type="PackedScene" uid="uid://l1w5vga5fve" path="res://_Entities/Demons/WebTile/web_tile_slow.tscn" id="2_j6nbb"]
 [ext_resource type="Texture2D" uid="uid://c6ui5cj8lb6mf" path="res://_Entities/Demons/_CagedOculum/OccularSpineIdle-Sheet.png" id="2_ksu1o"]
+[ext_resource type="Script" uid="uid://b7wg8t5tm6jjf" path="res://_Entities/Demons/_CagedOculum/silence_field.gd" id="2_mek0b"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://blmlmra0kwots" path="res://_Entities/Demons/_CagedOculum/OccularSpineHurt1-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/_CagedOculum/OccularSpine-Sheet.png" id="6"]
@@ -23,6 +25,46 @@
 [ext_resource type="Script" uid="uid://byyf1oyb22s4e" path="res://_Entities/Demons/_CagedOculum/caged_occulum_health_component.gd" id="17_mko7f"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_yv2yc"]
 [ext_resource type="PackedScene" uid="uid://hfvmbg6ru4b8" path="res://_Entities/Demons/_CagedOculum/spike_rock.tscn" id="21_gxw7u"]
+[ext_resource type="Texture2D" uid="uid://cw6mguuoeytjd" path="res://_Entities/Demons/_CagedOculum/DemonLightningCrackle-Sheet.png" id="25_mek0b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxa6h"]
+atlas = ExtResource("2_hi55n")
+region = Rect2(800, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egyvc"]
+atlas = ExtResource("2_hi55n")
+region = Rect2(832, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8bpw"]
+atlas = ExtResource("2_hi55n")
+region = Rect2(864, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvtdc"]
+atlas = ExtResource("2_hi55n")
+region = Rect2(896, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyyvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxa6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egyvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8bpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvtdc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktms3"]
+size = Vector2(79, 26)
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(34, 32)
@@ -1261,20 +1303,117 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2agi"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npfyy"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dp5i"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogidr"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fluxn"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emrru"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qut1i"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18gky"]
+atlas = ExtResource("25_mek0b")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uslvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2agi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npfyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dp5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogidr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fluxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emrru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qut1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18gky")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
 [node name="SpinalOcculum" type="Area2D" unique_id=106028571 groups=["Demons", "Plants"]]
 z_index = 1
 collision_mask = 3
 script = ExtResource("2")
 cost = 50
 
+[node name="SilenceField" type="Area2D" parent="." unique_id=1451195478]
+visible = false
+script = ExtResource("2_mek0b")
+
+[node name="SilenceFieldAnim" type="AnimatedSprite2D" parent="SilenceField" unique_id=998540908]
+visible = false
+position = Vector2(22, 0)
+sprite_frames = SubResource("SpriteFrames_wyyvc")
+
+[node name="SilenceFieldAnim2" type="AnimatedSprite2D" parent="SilenceField" unique_id=1376470315]
+visible = false
+position = Vector2(41, 0)
+sprite_frames = SubResource("SpriteFrames_wyyvc")
+frame_progress = 0.03571566
+
+[node name="SilenceFieldAnim3" type="AnimatedSprite2D" parent="SilenceField" unique_id=1172866621]
+visible = false
+position = Vector2(61, 0)
+sprite_frames = SubResource("SpriteFrames_wyyvc")
+
+[node name="SilenceFieldAnim4" type="AnimatedSprite2D" parent="SilenceField" unique_id=1073035961]
+visible = false
+position = Vector2(85, 0)
+sprite_frames = SubResource("SpriteFrames_wyyvc")
+frame_progress = 0.03571566
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SilenceField" unique_id=691977309]
+position = Vector2(57.5, 1)
+shape = SubResource("RectangleShape2D_ktms3")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2004042112]
+visible = false
 shape = SubResource("1")
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]
 material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = SubResource("79")
-animation = &"idle_SpinalOcculum"
+animation = &"idle_Maw"
 autoplay = "spawn"
+frame = 2
+frame_progress = 0.47315103
 script = ExtResource("15_kwpry")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_kwpry")]
@@ -1364,6 +1503,7 @@ wait_time = 1.5
 autostart = true
 
 [node name="SpikeRock" parent="." unique_id=869057113 instance=ExtResource("21_gxw7u")]
+visible = false
 
 [node name="BuffNodesComponent" parent="." unique_id=1843409871 instance=ExtResource("10_7agvn")]
 
@@ -1446,6 +1586,13 @@ wait_time = 5.0
 autostart = true
 
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("20_yv2yc")]
+
+[node name="LightningCrackle" type="AnimatedSprite2D" parent="." unique_id=1940548327]
+visible = false
+position = Vector2(9, -3)
+sprite_frames = SubResource("SpriteFrames_uslvt")
+frame = 4
+frame_progress = 0.8728944
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

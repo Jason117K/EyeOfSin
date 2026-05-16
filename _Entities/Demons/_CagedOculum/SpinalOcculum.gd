@@ -8,6 +8,7 @@ extends Demon
 @onready var buffNodes = $BuffNodesComponent
 @onready var web := $Web
 @onready var spike_rock := $SpikeRock
+@onready var silence_field := $SilenceField
 
 var DemonManager
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
@@ -39,7 +40,9 @@ func receive_buff(bufferName):
 				spike_rock.activate()
 				
 			"Hive":
-				spawnPhantomHive()
+				silence_field.activate()
+				pass
+				#spawnPhantomHive()
 			"Maw":
 				#TODO Re Implement Color Changes
 				#$AnimatedSpriteComponent.change_color()

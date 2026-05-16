@@ -68,7 +68,7 @@ func reset_speed():
 #Special Move handler for pole vaulter specifically 
 func special_move():
 	var specialMoveComp = $"../SpecialMoveComp"
-	#print("Pole Vault Special COMP Manager")
+	print("Pole Vault Special COMP Manager")
 	specialMoveComp.executeMove()
 	animatedSprite.setSpecialMoveTrue()
 	
@@ -89,6 +89,7 @@ func slow():
 func bleed(bleed_damage):
 	#print("Health Comp Should Bleed")
 	healthComp.bleed(bleed_damage)
+
 	
 #Returns the health component 
 func getHealthComponent():

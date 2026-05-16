@@ -4,7 +4,7 @@ extends Zombie
 # Handles PoleVault Zombie specific functionality
 
 @onready var specialMoveComp = $SpecialMoveComp
-
+@onready var attack_comp := $AttackComponent
 
 # Specific Pole Vault Special Move 
 func special_move():
@@ -16,3 +16,10 @@ func getIsMoveFinished():
 
 func get_zombie_name():
 	return " SUNDERED "
+
+func silence():
+	print(self, "Is Silenced")
+	specialMoveComp.silence()
+	attack_comp.canSpecial = false
+	$SilenceFX.show()
+	$SilenceFX.play()

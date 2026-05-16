@@ -9,10 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/HealthComponent.tscn" id="5"]
 [ext_resource type="Script" uid="uid://hqk27c6jaac0" path="res://_Entities/Zombies/_Erupter/TickerZombie.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_g5eid"]
+[ext_resource type="Script" uid="uid://cy74mob5fxlps" path="res://_Entities/Zombies/_Erupter/erupter_attack_component.gd" id="8_6u8xu"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="9"]
 [ext_resource type="Texture2D" uid="uid://ngjx3kqoe6yb" path="res://_Entities/Zombies/_Erupter/TickerHitEffect-Sheet.png" id="11"]
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://_Entities/Zombies/Components/AOEHit.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://_Entities/Zombies/_Erupter/Ticker-WebSheet.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="15_nfk22"]
 
 [sub_resource type="RectangleShape2D" id="15"]
 size = Vector2(18, 30)
@@ -313,6 +315,9 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": SubResource("24")
 }, {
 "duration": 1.0,
@@ -323,14 +328,102 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("27")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [sub_resource type="RectangleShape2D" id="29"]
 size = Vector2(146.833, 31.3334)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bu15"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dca1n"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_070vu"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u428y"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j17np"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8djs"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(576, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3mi8"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn7wu"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhkpv"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(672, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c862"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(704, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgkoy"]
+atlas = ExtResource("15_nfk22")
+region = Rect2(736, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhymm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bu15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dca1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_070vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u428y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j17np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8djs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3mi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn7wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhkpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c862")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgkoy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Erupter" type="Area2D" unique_id=1467824159 groups=["Zombie"]]
 position = Vector2(0, -15)
@@ -358,7 +451,7 @@ bloodWorth = 3.0
 speed = 30
 
 [node name="AttackComponent" parent="." unique_id=676536374 instance=ExtResource("3")]
-attack_power = 700
+script = ExtResource("8_6u8xu")
 
 [node name="HurtBoxComp" type="CollisionShape2D" parent="." unique_id=1481959043]
 position = Vector2(-1, 5)
@@ -381,20 +474,20 @@ collide_with_areas = true
 [node name="AttackTimer" type="Timer" parent="." unique_id=1792880751]
 
 [node name="AOEHit" type="Node2D" parent="." unique_id=1988105042]
+visible = false
 script = ExtResource("12")
 
 [node name="Hit1" type="AnimatedSprite2D" parent="AOEHit" unique_id=1170111202]
-visible = false
 position = Vector2(-24, 4)
 sprite_frames = SubResource("28")
+frame = 5
+frame_progress = 1.0
 
 [node name="Hit2" type="AnimatedSprite2D" parent="AOEHit" unique_id=989858234]
-visible = false
 position = Vector2(-96.6667, 4)
 sprite_frames = SubResource("28")
 
 [node name="Hit3" type="AnimatedSprite2D" parent="AOEHit" unique_id=195472902]
-visible = false
 position = Vector2(-54.6667, 4)
 sprite_frames = SubResource("28")
 
@@ -403,15 +496,21 @@ visible = false
 position = Vector2(-140, 4.66667)
 sprite_frames = SubResource("28")
 
-[node name="HitBoxComponent" type="Area2D" parent="." unique_id=479543309 groups=["Zombie"]]
+[node name="HitBoxComponent" type="Area2D" parent="AOEHit" unique_id=479543309 groups=["Zombie"]]
 z_index = 2
 collision_layer = 0
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" unique_id=951792518]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AOEHit/HitBoxComponent" unique_id=951792518]
 position = Vector2(-62.5834, 4.66667)
 shape = SubResource("29")
+
+[node name="SilenceFX" type="AnimatedSprite2D" parent="." unique_id=969298929]
+visible = false
+position = Vector2(-1, 3)
+sprite_frames = SubResource("SpriteFrames_rhymm")
+frame = 2
+frame_progress = 0.010774751
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]

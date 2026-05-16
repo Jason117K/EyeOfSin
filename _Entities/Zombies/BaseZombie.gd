@@ -61,6 +61,9 @@ func special_move():
 func set_hue_shift(hue_shift_degrees):
 	compManager.set_hue_shift(hue_shift_degrees)
 	
+func silence():
+	pass
+
 #Kills the Zombie 
 func die():
 	Global.deregister_zombie(self)

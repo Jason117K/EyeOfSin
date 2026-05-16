@@ -134,9 +134,9 @@ func _process(_delta):
 						if collider.demon_minion_busy(parent):
 							#print(parent, " early return cos busy")
 							return
-						
+					#TODO Make Sundered Extend Attack Comp
 					#print(collider.name , " is NOT busy")
-					if("PoleVaultZombie" in parent.name):
+					if("Sundered" in parent.name):
 						#print(parent.name, " - canSpecialPP: ", canSpecial)
 						#print("PP Parent Is Pole Vault")
 						if canSpecial && !collider.is_in_group("Drone"):

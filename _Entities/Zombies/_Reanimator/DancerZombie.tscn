@@ -8,10 +8,11 @@
 [ext_resource type="Script" uid="uid://cvurb2cp3ea7n" path="res://_Entities/Zombies/_Reanimator/DancerZombie.gd" id="5"]
 [ext_resource type="Script" uid="uid://b2uvykwloafcm" path="res://_Entities/Zombies/_Reanimator/SummonComponent.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_vgguy"]
-[ext_resource type="PackedScene" path="res://_Entities/Zombies/Components/HealthComponent.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/HealthComponent.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://_Entities/Zombies/_Reanimator/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ComponentManager.tscn" id="11"]
+[ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="13_442bf"]
 
 [sub_resource type="RectangleShape2D" id="25"]
 size = Vector2(23, 30)
@@ -252,6 +253,91 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bu15"]
+atlas = ExtResource("13_442bf")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dca1n"]
+atlas = ExtResource("13_442bf")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_070vu"]
+atlas = ExtResource("13_442bf")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u428y"]
+atlas = ExtResource("13_442bf")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j17np"]
+atlas = ExtResource("13_442bf")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8djs"]
+atlas = ExtResource("13_442bf")
+region = Rect2(576, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3mi8"]
+atlas = ExtResource("13_442bf")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn7wu"]
+atlas = ExtResource("13_442bf")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhkpv"]
+atlas = ExtResource("13_442bf")
+region = Rect2(672, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c862"]
+atlas = ExtResource("13_442bf")
+region = Rect2(704, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgkoy"]
+atlas = ExtResource("13_442bf")
+region = Rect2(736, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvy7m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bu15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dca1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_070vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u428y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j17np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8djs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3mi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn7wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhkpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c862")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgkoy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Reanimator" type="Area2D" unique_id=1568648356 groups=["Zombie"]]
 collision_layer = 2
 script = ExtResource("5")
@@ -329,6 +415,13 @@ autostart = true
 visible = false
 target_position = Vector2(-28, 0)
 collide_with_areas = true
+
+[node name="SilenceFX" type="AnimatedSprite2D" parent="." unique_id=923180577]
+visible = false
+position = Vector2(5, 2)
+sprite_frames = SubResource("SpriteFrames_gvy7m")
+frame = 1
+frame_progress = 0.6684441
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

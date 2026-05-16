@@ -63,7 +63,7 @@ func _ready() -> void:
 	
 func setSpecialMoveTrue():
 	specialMove = true
-	_current_target_anim = &""
+	_current_target_anim = "Vault"
 
 func setSpecialMoveFalse():
 	specialMove = false
@@ -140,15 +140,6 @@ func _on_AnimatedSprite_animation_finished():
 	if("death" in self.animation):
 		zombie.kill_zombie()
 
-#Handles Ticker Zombie Explosion Animation 
-func _on_AnimatedSprite_frame_changed():
-	if("Ticker" in zombie.name):
-		if self.animation == "Attack" || self.animation == "WebAttack":
-			if self.frame == 3:
-				var AOEHit = $"../AOEHit"
-				AOEHit.goBoom()
-	else:
-		pass
 
 func _apply_hue_shift() -> void:
 	#print("Apply Hue Shift ", count)
