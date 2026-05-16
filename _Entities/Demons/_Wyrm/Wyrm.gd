@@ -55,6 +55,9 @@ var DemonManager
 
 
 func _ready():
+	super()
+	#print_scene_tree()
+	
 	if self.is_in_group("Green"):
 		print(" I AM GREEN WYRM I WILL ATTACK GREEN")
 		$DMG_RayCast2D.set_collision_mask_value(1,false)
@@ -86,7 +89,7 @@ func get_demon_name():
 	return "WYRM"
 		
 func get_damage():
-	return projectile_shoot_component.attack_power		
+	return projectile_shoot_component.projectile_damage
 		
 # Returns the demons cost 
 func get_cost():
@@ -96,11 +99,10 @@ func get_cost():
 
 #Handles wyrm Buffing 
 func receive_buff(demon):
-	
 	var demonName = truncate_string(demon.name)
 	
 	if !isBuffed :
-		super(demon)
+		super(demonName)
 		print(self.name, " Buff Received from ", demonName, " var is ", isBuffed)
 		match demonName:
 			"Occulum":
@@ -117,8 +119,10 @@ func receive_buff(demon):
 				#animSpriteComp.change_form("Crawler")
 			"SpinalOcculum" : 
 				shell_sprite.change_form("SpinalOcculum")
+				projectile_shoot_component.wyrm_bleed_buff()
 			"Wyrm":
 				shell_sprite.change_form("Wyrm")
+				
 				#animSpriteComp.change_form("Wyrm")
 			"Hive":
 				shell_sprite.change_form("Wasp")

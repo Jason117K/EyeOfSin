@@ -5,7 +5,7 @@ extends DemonHealthComponent
 
 
 func receive_buff(demonName):
-	#print("Buff Name is ", newDemon.name)
+	print("Buff Name is ", demonName)
 
 	match demonName:
 		"SpinalOcculum" :

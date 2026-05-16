@@ -70,9 +70,11 @@ func _on_sprite_frame_changed(animation_name: String, frame_index: int):
 func _process(_delta):
 	if node_ready && animSpriteComp != null:
 		if animSpriteComp.animation == "spawn":
+			print("Early")
 			return
 		else:
 			if canAttack == false:
+				print("Check Attack Rays")
 				check_attack_rays()
 	else:
 		pass
@@ -82,8 +84,9 @@ func _process(_delta):
 func check_attack_rays():
 	canAttack = false
 	for ray in attack_rays:
+		print("Checking Ray ", ray)
 		if ray.is_colliding():
-			#print(" Ray Colling ",self )
+			print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
 				print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)

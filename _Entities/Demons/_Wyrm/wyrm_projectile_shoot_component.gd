@@ -2,6 +2,7 @@ extends ProjectileShootComponent
 
 var isOcculumBuffed := false 
 var isCrawlerBuffed := false
+var isWyrmBleedBuffed := false 
 var cooldown_timer : Timer 
 
 @onready var attack_ray_1 = $"../DMG_RayCast2D"
@@ -15,6 +16,7 @@ var cooldown_timer : Timer
 @export var auto_fire := true 
 @export var projectile_speed := 600
 @export var projectile_damage := 20
+@export var bleed_damage_increase := 2
 
 func _ready() -> void:
 	shoot_positions = [shootPosition1, shootPosition2]
@@ -54,4 +56,10 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	if isOcculumBuffed:
 		print("Setting Can Gen Blood To True ")
 		projectile_to_buff.canGenBlood = true 
+	
+	if isWyrmBleedBuffed:
+		projectile_to_buff.increase_bleed_damage(bleed_damage_increase)
 		
+func wyrm_bleed_buff():
+	isWyrmBleedBuffed = true 
+	

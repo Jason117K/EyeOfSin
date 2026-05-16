@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://detf6cv0bgq0d" path="res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_ShellBack.png" id="3_t7jjk"]
 [ext_resource type="Texture2D" uid="uid://b3tnuprj1j3dg" path="res://_Entities/Demons/_Wyrm/WyrmSmolSHELL.png" id="3_vkg27"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://_Entities/Demons/_Wyrm/Wyrm.gd" id="4"]
-[ext_resource type="Script" uid="uid://cejo333asumse" path="res://_Entities/Demons/Components/demon_animSprite_component.gd" id="4_yjgjf"]
+[ext_resource type="Script" uid="uid://bohqvho50f566" path="res://_Entities/Demons/_Wyrm/wyrm_animated_sprite_component.gd" id="4_3fijn"]
 [ext_resource type="Script" uid="uid://ba55ljhixst0w" path="res://_Entities/Demons/_Wyrm/Worm2Animator.gd" id="5"]
 [ext_resource type="Script" uid="uid://houv2w5xud0" path="res://_Common/ColorChangingScripts/change_demon_color_static.gd" id="5_hls8g"]
 [ext_resource type="PackedScene" uid="uid://ktsfsnvej37r" path="res://_Entities/Demons/_Wyrm/LaserShootComponent.tscn" id="6"]
@@ -827,7 +827,7 @@ blood_spawn_time = 5
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
 sprite_frames = SubResource("SpriteFrames_qxnbo")
-script = ExtResource("4_yjgjf")
+script = ExtResource("4_3fijn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=738991279]
 visible = false
@@ -1022,15 +1022,8 @@ occulum_buff_cooldown = 0.9
 auto_fire = true
 projectile_speed = 600
 projectile_damage = 20
+bleed_damage_increase = 2
 attack_speed_mult = 1.0
-
-[node name="DMG_RayCast2DPhony" type="RayCast2D" parent="." unique_id=1610026642]
-visible = false
-scale = Vector2(1.08712, 3.82142)
-target_position = Vector2(275, 0)
-collision_mask = 2
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=477860220]
 position = Vector2(2, 1)

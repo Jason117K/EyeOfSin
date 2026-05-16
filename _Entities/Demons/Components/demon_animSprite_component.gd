@@ -11,7 +11,6 @@ var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
 @onready var lightning_spawn := $"../LightningSpawn"   # $"../LightningSpawn"
 #@onready var demon : Demon = get_parent()
 var demon : Demon
-
 var currentAnim := "idle"
 var currentAttackAnim := "attack"
 var spawnAnimDone = false

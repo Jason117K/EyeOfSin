@@ -8,6 +8,7 @@ extends Area2D
 @export var damage = 20 #2   # Damage dealt to zombies
 @export var lightning_damage = 10 #2   # Damage dealt to zombies
 @export var blood_worth_to_add = 1
+@export var bleed_damage := 1
 
 var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
 
@@ -131,12 +132,15 @@ func on_hit(area):
 			generate_blood()
 			canGenBlood = false
 		if bleed:
-			compManager.bleed()
+			compManager.bleed(bleed_damage)
 		if piercing == false:
 			queue_free() 
 		else:
 			damage = damage - 0.5
 
+func increase_bleed_damage(bleed_damage_increase):
+	bleed_damage = bleed_damage + bleed_damage_increase
+	
 
 func _on_lightning_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):

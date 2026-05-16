@@ -9,7 +9,7 @@ extends Node2D
 @export var health := 76 #25 # Health of the zombie
 @export var healthRegen = 0.0 # Health regen rate
 @export var bloodWorth := 1.0
-@export var bleed_tick_damage := 2
+@export var bleed_tick_damage := 0
 
 
 var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
@@ -76,8 +76,9 @@ func take_damage(damage):
 			#print("Demon Manager is NULLWWWW")
 		zombie.die()
 
-func bleed():
+func bleed(bleed_damage):
 	if should_bleed == false:
+		bleed_tick_damage = bleed_damage
 		bleed_proc_timer = Timer.new()
 		bleed_proc_timer.autostart = false
 		bleed_proc_timer.one_shot = false
