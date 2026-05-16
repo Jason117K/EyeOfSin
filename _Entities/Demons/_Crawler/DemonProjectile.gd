@@ -110,7 +110,6 @@ func setup_lightning_zone():
 
 # Handles projectile collison and damage application 
 func on_hit(area):
-
 	if area.is_in_group("Zombie"):
 		if area.get_parent().get_parent() != self.get_parent().get_parent():
 			return

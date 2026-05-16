@@ -1,5 +1,11 @@
 extends DemonHealthComponent
 
+
+@export var blood_spawn_time := 5 
+@export var occulum_buffed_health := 850
+@export var occulum_buffed_max_health := 800
+@export var occulum_buffed_health_regen := 0.1
+
 var blood_spawn_timer : Timer
 var can_damage_zombie := false 
 var canGenBlood := false
@@ -7,16 +13,14 @@ var thisBufferName : String
 
 func take_damage(damage):
 	super(damage)
-	if isOcculumBuffed:
-		if canGenBlood:
-			generate_blood()
+	if canGenBlood:
+		generate_blood()
 
 #Move to Generate Blood Component That Gets Added
 func generate_blood():
 	var blood_instance = demon.bloodScene.instantiate()
-	#print("Spawn Blood")
-	get_parent().add_child(blood_instance)  
-	blood_instance.global_position = self.global_position + Vector2(0,-40)
+	demon.get_parent().add_child(blood_instance)  
+	blood_instance.global_position = demon.global_position + Vector2(0,-40)
 	canGenBlood = false 
 	
 func _on_reset_blood_spawn_cooldown() -> void:
@@ -24,12 +28,13 @@ func _on_reset_blood_spawn_cooldown() -> void:
 
 	
 func receive_buff(bufferName):
+	healthRegen = occulum_buffed_health_regen
+	start_regen()
 	match bufferName:
 		"Occulum":
 			canGenBlood = true
-			health = buffedHealth
-			maxHealth = buffedMaxHealth
-			isOcculumBuffed = true 
+			health = occulum_buffed_health
+			maxHealth = occulum_buffed_max_health
 			blood_spawn_timer = Timer.new()
 			blood_spawn_timer.autostart = false 
 			blood_spawn_timer.one_shot = false
@@ -49,7 +54,7 @@ func receive_buff(bufferName):
 			pass
 
 		"Maw":
-			healthRegen = buffedHealthRegen
+			healthRegen = occulum_buffed_health_regen
 
 
 

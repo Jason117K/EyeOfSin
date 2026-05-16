@@ -54,6 +54,7 @@ func _ready() -> void:
 #TODO Add SFX
 func _on_Blood_mouse_entered():
 	#var demon_manager = get_parent().get_parent().get_node("DemonManager")
+	print("Demon Manager is ", demon_manager)
 	if demon_manager:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()

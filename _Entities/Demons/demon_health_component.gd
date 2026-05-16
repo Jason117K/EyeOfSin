@@ -1,21 +1,19 @@
 class_name DemonHealthComponent extends Node
 
+@export var regen_wait_time := 1
+
 @export var health = 800
-@export var buffedHealth = 1200
 @onready var ogHealth = health
 
-@export var healthRegen = 0.1
-@export var buffedHealthRegen = 0.6
+@export var healthRegen = 0.0
 @onready var ogHealthRegen = healthRegen
 
 @export var maxHealth = 800
-@export var buffedMaxHealth = 1000
 @onready var ogMaxHealth = maxHealth
-
-@export var blood_spawn_time := 5 
 
 @onready var demon : Demon = get_parent()
 
+var regen_timer : Timer 
 
 var isWyrmBuffed := false 
 var isMawBuffed := false 
@@ -47,9 +45,15 @@ func increase_health(added_health_amount):
 func increase_max_health(added_max_health_amount):
 	maxHealth = maxHealth + added_max_health_amount
 	
-func _process(delta):
-	if health != null && healthRegen != null && health < maxHealth:	
-		health = health + healthRegen
+
+func start_regen():
+	regen_timer = Timer.new()
+	regen_timer.autostart = false 
+	regen_timer.one_shot = false 
+	regen_timer.wait_time = regen_wait_time
+	regen_timer.timeout.connect(increase_health.bind(healthRegen))
+	add_child(regen_timer)
+	regen_timer.start()
 
 
 func debuff():

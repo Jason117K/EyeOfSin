@@ -6,7 +6,8 @@ extends Demon
 
 @onready var AOEComp = $AOEDamageComponent
 @onready var buffNodes = $BuffNodesComponent
-
+@onready var web := $Web
+@onready var spike_rock := $SpikeRock
 
 var DemonManager
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
@@ -20,18 +21,23 @@ func _ready():
 
 func receive_buff(bufferName):
 	var demonName = truncate_string(bufferName.name)
+	
 	if !isBuffed :
-		super(bufferName)
-		match bufferName:
+		super(demonName)
+		match demonName:
 			"Occulum":
 				pass
 			"Crawler":
-				$Web.visible  = true 
-				$Web/Area2D.monitoring= true
+				if self.is_in_group("Green"):
+					web.add_to_group("Green")
+				else:
+					web.add_to_group("Purple")
+				web.activate()
 			"SpinalOcculum" :
 				pass
 			"Wyrm":
-				can_damage_zombie = true 
+				spike_rock.activate()
+				
 			"Hive":
 				spawnPhantomHive()
 			"Maw":

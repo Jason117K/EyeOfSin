@@ -49,6 +49,8 @@ func get_animSpriteComp():
 func receive_buff(newDemon):
 	#print("Buff Name is ", newDemon.name)
 	#var demonName = truncate_string(newDemon.name)
+	if newDemon == truncate_string(self.get_name()):
+		return
 	if !isBuffed :
 		print(self.name, " Received Buff from ", newDemon)
 		healthComp.receive_buff(newDemon)

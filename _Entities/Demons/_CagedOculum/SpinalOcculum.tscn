@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="16_kwpry"]
 [ext_resource type="Script" uid="uid://byyf1oyb22s4e" path="res://_Entities/Demons/_CagedOculum/caged_occulum_health_component.gd" id="17_mko7f"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_yv2yc"]
+[ext_resource type="PackedScene" uid="uid://hfvmbg6ru4b8" path="res://_Entities/Demons/_CagedOculum/spike_rock.tscn" id="21_gxw7u"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(34, 32)
@@ -1278,12 +1279,13 @@ script = ExtResource("15_kwpry")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_kwpry")]
 script = ExtResource("17_mko7f")
-health = 500
-buffedHealth = 700
-buffedHealthRegen = 0.6
-maxHealth = 500
-buffedMaxHealth = 700
 blood_spawn_time = 5
+occulum_buffed_health = 850
+occulum_buffed_max_health = 800
+occulum_buffed_health_regen = 0.1
+health = 500
+healthRegen = 0.0
+maxHealth = 500
 
 [node name="Web" parent="." unique_id=1241820489 instance=ExtResource("2_j6nbb")]
 visible = false
@@ -1360,6 +1362,8 @@ shape = SubResource("RectangleShape2D_hdljx")
 [node name="AOEDamageTimer" type="Timer" parent="." unique_id=1673717192]
 wait_time = 1.5
 autostart = true
+
+[node name="SpikeRock" parent="." unique_id=869057113 instance=ExtResource("21_gxw7u")]
 
 [node name="BuffNodesComponent" parent="." unique_id=1843409871 instance=ExtResource("10_7agvn")]
 
