@@ -63,7 +63,7 @@ func _ready() -> void:
 	
 func setSpecialMoveTrue():
 	specialMove = true
-	_current_target_anim = "Vault"
+	_current_target_anim = &""
 
 func setSpecialMoveFalse():
 	specialMove = false

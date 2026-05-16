@@ -6,6 +6,10 @@ extends DemonHealthComponent
 @export var occulum_buffed_max_health := 800
 @export var occulum_buffed_health_regen := 0.1
 
+@export var maw_buffed_health := 850
+@export var maw_buffed_max_health := 800
+@export var maw_buffed_health_regen := 0.1
+
 var blood_spawn_timer : Timer
 var can_damage_zombie := false 
 var canGenBlood := false
@@ -15,6 +19,7 @@ func take_damage(damage):
 	super(damage)
 	if canGenBlood:
 		generate_blood()
+
 
 #Move to Generate Blood Component That Gets Added
 func generate_blood():
@@ -54,7 +59,9 @@ func receive_buff(bufferName):
 			pass
 
 		"Maw":
-			healthRegen = occulum_buffed_health_regen
+			healthRegen = maw_buffed_health_regen
+			health = maw_buffed_health
+			maxHealth = maw_buffed_max_health
 
 
 

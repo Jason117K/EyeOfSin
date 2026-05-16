@@ -99,7 +99,9 @@ func _on_AttackTimer_timeout():
 				if target_demon.has_method("spinalOcculumWyrmBuffed"):
 					if target_demon.can_damage_zombie == true :
 						zombie.getCompManager().take_damage(10)
-						
+				if target_demon.has_method("lightning_maw_buff"):
+					if target_demon.is_lightning_maw_buff:
+						zombie.getCompManager().take_damage(target_demon.get_lightning_damage())
 				target_demon.take_damage(attack_power)
 			else:
 				stop_attack()
@@ -125,29 +127,16 @@ func _process(_delta):
 			#print(parent.name , " Its collding with ", collider.name )
 			if collider:
 				if collider.is_in_group("Demons"):
-					#print("Collider In Right Group")
-					#print(parent.name , " is collding setting with ", collider.name )
-					#if collider.get_parent().get_parent() != my_level:
-						#if collider.get_parent().get_parent().get_parent() != my_level:
-							#print(parent, " early return cos level mismatch")
 					if collider.has_method("demon_minion_busy"):
 						if collider.demon_minion_busy(parent):
-							#print(parent, " early return cos busy")
 							return
 					#TODO Make Sundered Extend Attack Comp
-					#print(collider.name , " is NOT busy")
 					if("Sundered" in parent.name):
-						#print(parent.name, " - canSpecialPP: ", canSpecial)
-						#print("PP Parent Is Pole Vault")
 						if canSpecial && !collider.is_in_group("Drone"):
-						#	print("PP Pole Vault Special Mo")
 							parent.special_move()
 							canSpecial = false
 							pass
-						else: #If Special Move Is Not Finished
-							#if parent.getIsMoveFinished() == false:
-								#pass
-							#else:
+						else:
 							attack_demon(collider)
 					else:
 						attack_demon(collider)

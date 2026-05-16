@@ -3,12 +3,15 @@ extends Demon
 
 @export var cost = 100
 @export var aoeDamage = 4
+@export var lightning_damage := 10
 
 @onready var AOEComp = $AOEDamageComponent
 @onready var buffNodes = $BuffNodesComponent
 @onready var web := $Web
 @onready var spike_rock := $SpikeRock
 @onready var silence_field := $SilenceField
+@onready var maw_lightning := $LightningCrackle
+var is_lightning_maw_buff := false 
 
 var DemonManager
 var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
@@ -44,11 +47,11 @@ func receive_buff(bufferName):
 				pass
 				#spawnPhantomHive()
 			"Maw":
-				#TODO Re Implement Color Changes
-				#$AnimatedSpriteComponent.change_color()
+				lightning_maw_buff()
 				pass
 
 
+	
 
 
 func debuff():
@@ -71,7 +74,15 @@ func _on_aoe_damage_timer_timeout() -> void:
 				var compManager = area.getCompManager()
 				compManager.take_damage(aoeDamage) 
 			
-		
+func lightning_maw_buff():
+	maw_lightning.play()
+	maw_lightning.show()
+	
+	is_lightning_maw_buff = true 
+
+func get_lightning_damage():
+	return lightning_damage
+			
 func die():
 	DemonManager.clear_space(self.global_position)
 	if buffNodes != null:

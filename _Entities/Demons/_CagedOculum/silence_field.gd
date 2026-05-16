@@ -13,10 +13,10 @@ func activate():
 	silence_field_3.animation_finished.connect(func(): silence_field_3.hide())
 	silence_field_4.animation_finished.connect(func(): silence_field_4.hide())
 	
-	area_entered.connect(silence_zombies)
+	
 	show()
 	monitoring = true 
-	if self.is_in_group("Green"):
+	if get_parent().is_in_group("Green"):
 		self.set_collision_mask_value(1,false)
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
@@ -27,10 +27,14 @@ func activate():
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)
-		
+	area_entered.connect(func(area): 
+		if area.is_in_group("Zombie"):
+			area.silence()
+			)
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
 			area.silence()
+	silence_zombies()
 	show_silence_fields()
 	silence_field_timer = Timer.new()
 	silence_field_timer.autostart = false
@@ -70,6 +74,7 @@ func show_silence_fields():
 
 
 func silence_zombies():
+	print("SILENCE ZOMBIES CALLED",  get_overlapping_areas())
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
 			print(area, " Is Silenced")
