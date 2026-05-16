@@ -1,18 +1,22 @@
 extends Node2D
 #ZombieHealthComponent.gd
 
-#Health Component for all zombie enemies
 
 #@onready var hitAudioPlayer = $"../HitAudioPlayer"
 @onready var zombie = get_parent()
-var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 
+@export var time_between_bleed := 1
 @export var health := 76 #25 # Health of the zombie
 @export var healthRegen = 0.0 # Health regen rate
 @export var bloodWorth := 1.0
+@export var bleed_tick_damage := 2
 
+
+var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
+var bleed_proc_timer : Timer 
 var injured = false 
 var halfHealth = health/2
+var should_bleed := false 
 
 var explode = false    #Determines whether or not the zombie will explode 
 @onready var maxHealth := health
@@ -72,17 +76,35 @@ func take_damage(damage):
 			#print("Demon Manager is NULLWWWW")
 		zombie.die()
 
+func bleed():
+	if should_bleed == false:
+		bleed_proc_timer = Timer.new()
+		bleed_proc_timer.autostart = false
+		bleed_proc_timer.one_shot = false
+		bleed_proc_timer.wait_time = time_between_bleed
+		bleed_proc_timer.timeout.connect(bleed_tick)
+		add_child(bleed_proc_timer)
+		bleed_proc_timer.start()
+		should_bleed = true 
+
+func bleed_tick():
+	take_damage(bleed_tick_damage)
+
+
 
 #Applies small passive health regen and determines injured status 
 func _process(_delta):
 	if health < maxHealth:
 		health += healthRegen
 		injured = health < halfHealth
+
 		
 # Returns the health to it's original value 
 func resetHealth():
 	health = (halfHealth * 2)
 	injured = false
+	
+
 
 #Sets explode to true
 func willExplode():

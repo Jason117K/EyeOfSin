@@ -41,6 +41,7 @@ func fire_laser():
 	
 		
 func apply_buffs_to_projectile(projectile_to_buff):
+	projectile_to_buff.bleed = true 
 	projectile_to_buff.piercing = true 
 	projectile_to_buff.is_slowing = false
 	projectile_to_buff.damage = projectile_damage

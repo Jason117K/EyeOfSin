@@ -83,6 +83,10 @@ func slow():
 	isSlow = isSlow + 100
 	speedComp.slow()
 	$DebuffDegrade.start()
+
+func bleed():
+	print("Health Comp Should Bleed")
+	healthComp.bleed()
 	
 #Returns the health component 
 func getHealthComponent():

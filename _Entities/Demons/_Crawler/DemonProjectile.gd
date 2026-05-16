@@ -18,6 +18,7 @@ var wyrmBuff := false
 var piercing := false 
 var is_slowing := true 
 var canGenBlood := false 
+var bleed := false 
 
 var collision 
 
@@ -129,6 +130,8 @@ func on_hit(area):
 		if damage < 18.5 && canGenBlood:
 			generate_blood()
 			canGenBlood = false
+		if bleed:
+			compManager.bleed()
 		if piercing == false:
 			queue_free() 
 		else:
