@@ -91,6 +91,5 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AOEZone" unique_id=1480185012]
 shape = SubResource("CircleShape2D_rabkd")
 
-[connection signal="timeout" from="AutoPickUpTimer" to="." method="_on_auto_pick_up_timer_timeout"]
 [connection signal="area_entered" from="AOEZone" to="." method="_on_heal_zone_area_entered"]
 [connection signal="area_exited" from="AOEZone" to="." method="_on_aoe_zone_area_exited"]

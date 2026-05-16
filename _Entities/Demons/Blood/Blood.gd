@@ -7,6 +7,7 @@ extends Area2D
 @export var default_auto_pickup_wait_time := 6.0
 @export var crawler_buff_auto_pickup_wait_time := 10.0
 @export var wyrm_buff_auto_pickup_wait_time := 10.0
+@export var fast_pick_up_time := 1.0
 
 @onready var aoe : Area2D = $AOEZone
 @onready var auto_pickup_timer :Timer = $AutoPickUpTimer
@@ -21,6 +22,7 @@ var temp_zombie_container = []
 var current_zombie_target :Zombie 
 var dissappear_time := 0.75
 var origin_occulum : Demon 
+var decrease_blood_val := true 
 
 func _ready() -> void:
 	input_pickable = true
@@ -32,7 +34,8 @@ func _ready() -> void:
 		auto_pickup_timer.wait_time = crawler_buff_auto_pickup_wait_time
 	if wyrmBuff:
 		auto_pickup_timer.wait_time = wyrm_buff_auto_pickup_wait_time
-		
+	
+	auto_pickup_timer.timeout.connect(_on_auto_pick_up_timer_timeout)
 	auto_pickup_timer.start()
 		
 	if self.is_in_group("Green"):
@@ -146,8 +149,10 @@ func heal_demons():
 		pass
 
 func _on_auto_pick_up_timer_timeout() -> void:
+	print("Wait Time When Gen Was ", auto_pickup_timer.wait_time)
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
-	BloodValue = BloodValue / 2
+	if decrease_blood_val:
+		BloodValue = BloodValue / 2
 	var demon_manager = get_parent().get_parent().get_node("DemonManager")
 	if demon_manager:  # If the DemonManager or GameManager is set
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
@@ -171,6 +176,16 @@ func hive_buff():
 
 func maw_buff():
 	BloodValue = 100
+
+func set_fast_pickup_time():
+	auto_pickup_timer.wait_time = fast_pick_up_time
+	auto_pickup_timer.start()
+	decrease_blood_val = false 
+	self.scale = Vector2(0.3,0.3)
+	BloodValue = 2.0
+	#BloodValue = 150 
+	
+	
 
 
 func _on_heal_zone_area_entered(area: Area2D) -> void:

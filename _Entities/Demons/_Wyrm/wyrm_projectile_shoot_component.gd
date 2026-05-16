@@ -51,4 +51,6 @@ func apply_buffs_to_projectile(projectile_to_buff):
 		projectile_to_buff.is_slowing = true
 		
 	if isOcculumBuffed:
+		print("Setting Can Gen Blood To True ")
 		projectile_to_buff.canGenBlood = true 
+		

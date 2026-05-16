@@ -107,10 +107,9 @@ func receive_buff(demon):
 		match demonName:
 			"Occulum":
 				shell_sprite.change_form("Occulum")
-				$ProjectileShootComponent.isOcculumBuffed = true
+				projectile_shoot_component.isOcculumBuffed = true
 				#$Worm2/LaserShootComponent.isOcculumBuffed = true 
 				laserShootComp2.occulumBuff()
-				#animSpriteComp.change_form("Occulum")
 			"Crawler":
 				shell_sprite.change_form("Crawler")
 				#$Worm2/LaserShootComponent.isSlowingProjectile = true 

@@ -151,7 +151,10 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 		
 # Function to handle blood generation
 func generate_blood():
+	print("Generating Blood")
 	var blood_instance = blood_scene.instantiate()  
-	get_parent().add_child(blood_instance)  
+	
+	get_parent().add_child(blood_instance) 
+	blood_instance.set_fast_pickup_time() 
 	#Set the blood pos to above the occulum
-	blood_instance.global_position = self.global_position + Vector2(0,-40)
+	blood_instance.global_position = self.global_position + Vector2(0,-9)
