@@ -55,8 +55,6 @@ var DemonManager
 
 
 func _ready():
-	print(self, " Heart Connect")
-	self.area_entered.connect(on_demon_area_entered)	
 	if self.is_in_group("Green"):
 		print(" I AM GREEN WYRM I WILL ATTACK GREEN")
 		$DMG_RayCast2D.set_collision_mask_value(1,false)
@@ -119,8 +117,6 @@ func receive_buff(demon):
 				#animSpriteComp.change_form("Crawler")
 			"SpinalOcculum" : 
 				shell_sprite.change_form("SpinalOcculum")
-				#health = spinalOcculumBuffed_health
-				#animSpriteComp.change_form("SpinalOcculum")
 			"Wyrm":
 				shell_sprite.change_form("Wyrm")
 				#animSpriteComp.change_form("Wyrm")
@@ -226,13 +222,6 @@ func die_fromClearSpace():
 		#animSpriteComp.play()
 		#spawnAnimDone = true 
 		
-		
-func truncate_string(input_string: String) -> String:
-	for i in range(input_string.length()):
-		var character = input_string[i]
-		if character.is_valid_int():
-			return input_string.substr(0, i)
-	return input_string
 
 
 
@@ -245,11 +234,6 @@ func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
 
 
-func on_demon_area_entered(new_area: Area2D):
-	#print(self, "New Area Heart is ", new_area)
-	if new_area.is_in_group("HeartBuff"):
-		print(self, "will now receive heart buff")
-		#receive_heart_buff()
 
 
 	

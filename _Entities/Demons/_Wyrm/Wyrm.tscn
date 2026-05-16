@@ -815,7 +815,7 @@ bounce_elasticity = 0.01
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_tvvdq")]
 script = ExtResource("3_pfhft")
-spinalOcculumBuffed_health = 550
+spinalOcculumBuffed_health = 650
 mawBuffed_health = 350
 health = 150
 buffedHealth = 300
@@ -913,7 +913,6 @@ zigzag_width = 160.0
 autostart = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=615257564]
-visible = false
 position = Vector2(-1, -2.5)
 shape = SubResource("1")
 

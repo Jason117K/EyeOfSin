@@ -1,6 +1,6 @@
 extends DemonHealthComponent
 
-@export var spinalOcculumBuffed_health = 550
+@export var spinalOcculumBuffed_health = 650
 @export var mawBuffed_health = 350
 
 
