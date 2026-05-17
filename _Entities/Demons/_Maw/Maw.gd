@@ -378,7 +378,7 @@ func devour_zombies():
 	if devour_done:
 		print("Should Devour ")
 		consume_zombie_group.get_highest_zombie_concentration_and_eat()
-		#devour_done = false
+		devour_done = false
 	else:
 		print("Cannot Devour")
 	

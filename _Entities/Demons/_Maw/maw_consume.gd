@@ -118,7 +118,8 @@ func drag_down(zombie_to_drag):
 	
 func kill_zombie(zombie_to_kill):
 	pass
-	zombie_to_kill.die()
+	if is_instance_valid(zombie_to_kill):
+		zombie_to_kill.die()
 
 
 

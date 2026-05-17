@@ -486,15 +486,11 @@ func play_blood_collect():
 	#$SunCollectPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	
-# Set the starting blood amount depending on level 
+
 func _on_SetBlood_timeout():
 	if(get_parent().name == "Main"):
-		#blood_points = 300 #75
-		#Global.ui_layer.set_blood(str(blood_points))
 		get_parent().get_node("UILayer").set_blood(str(blood_points))
 	else:
-		#blood_points = 900 #700
-		#Global.ui_layer.set_blood(str(blood_points))
 		get_parent().get_node("UILayer").set_blood(str(blood_points))
 
 func swap_heart():
