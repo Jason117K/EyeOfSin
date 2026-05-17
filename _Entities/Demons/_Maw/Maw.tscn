@@ -1462,14 +1462,14 @@ script = ExtResource("4")
 cost = 250
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
-digestTime = 0.0
+digestTime = 5.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_colwa")]
 script = ExtResource("3_xf387")
 spinalOcculumHealth = 600
-health = 800
+health = 99999
 healthRegen = 0.1
-maxHealth = 800
+maxHealth = 99999
 
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("21_8vtaw")]
 position = Vector2(256, 205)
@@ -1484,8 +1484,6 @@ sprite_frames = SubResource("7")
 animation = &"idle_Crawler"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
-targetGlowColor = null
-modulate_factor = null
 
 [node name="DetectionComponent" type="Area2D" parent="." unique_id=366524875]
 visible = false

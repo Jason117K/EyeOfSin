@@ -31,6 +31,7 @@ var demon_scenes : Dictionary
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn")
 var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
+var consume_zombie_group_scene = preload("res://_Entities/Demons/_Maw/maw_consume.tscn")
 
 
 func _load_demon_costs():
@@ -256,4 +257,14 @@ func get_blood_scene():
 
 func get_bomb_scene():
 	return bomb_scene
+	
+func get_consume_zombie_group_scene():
+	return consume_zombie_group_scene
+
+	
+	
+	
+	
+	
+	
 	

@@ -75,6 +75,8 @@ func receive_buff(bufferName):
 
 			"Wyrm":
 				hive_laser_shoot_comp.isDisabled = false
+				await get_tree().physics_frame
+				await get_tree().physics_frame
 				hive_laser_shoot_comp._ready()
 			"Hive":
 				pass

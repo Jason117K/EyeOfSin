@@ -38,7 +38,7 @@ var isOcculumBuffed := false
 
 var cooldown_timer := Timer.new() 
 # State variables 
-var current_length := 0.0
+var current_length := 99.0
 var is_firing := false
 var timer := Timer.new()
 var hit_enemies = {}  # Dictionary to track hit enemies

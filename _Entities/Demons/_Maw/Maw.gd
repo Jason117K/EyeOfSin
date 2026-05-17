@@ -26,7 +26,7 @@ const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost(
 @export var bloodAmount = 10
 @export var digestTime: float = 15.0
 @export var wyrm_buffed_digestion_time : float = 5.0
-
+@export var consume_zombie_group_wait_time := 5.0
 @onready var ogDigestTime = digestTime
 
 # === Runtime state ===
@@ -35,12 +35,15 @@ var tentacles: Array[Tentacle] = []               # All Tentacles owned by this 
 var available_tentacles: Array[Tentacle] = []     # Currently free for assignment
 var enemies_to_eat: Array = []                    # Detected zombies waiting for room
 var eating_groups: Dictionary = {}
+var consume_zombie_group_timer : Timer 
 
 # Buff state
 var willBelchWebs := false                        
 var willBelchBlood := false
 var will_spawn_swords := false
 var bufferName: String
+var consume_zombie_group
+var devour_done := true 
 
 
 func _ready():
@@ -266,6 +269,23 @@ func spawn_swords():
 	get_parent().add_child(blood_sword_spell)
 	blood_sword_spell.set_maw_parent()
 	blood_sword_spell.setup_collision_and_damage_zombies()
+
+func add_consume_zombie_group_component():
+	consume_zombie_group = (Global.get_consume_zombie_group_scene()).instantiate()
+
+	consume_zombie_group.global_position = self.global_position 
+	consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(256,256)
+	consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(32,0)
+	if self.is_in_group("Green"):
+		consume_zombie_group.add_to_group("Green")
+	else:
+		consume_zombie_group.add_to_group("Purple")
+	
+	get_parent().add_child(consume_zombie_group)
+	consume_zombie_group.set_all_areas()
+	consume_zombie_group.done_eating.connect(devour_complete)
+
+	
 	
 func belch_webs():
 	var web_ball = WEB_BALL_SCENE.instantiate()
@@ -339,11 +359,32 @@ func receive_buff(demon):
 
 			"Hive":
 				detectionAreaShape.shape.radius *= 1.2
+				consume_zombie_group_timer = Timer.new()
+				consume_zombie_group_timer.autostart = false 
+				consume_zombie_group_timer.one_shot = false
+				consume_zombie_group_timer.wait_time = consume_zombie_group_wait_time
+				consume_zombie_group_timer.timeout.connect(devour_zombies)
+				add_consume_zombie_group_component()
+				add_child(consume_zombie_group_timer)
+				consume_zombie_group_timer.start()
+				
+				
 
 			"Maw":
 				pass
 
-
+func devour_zombies():
+	if devour_done:
+		print("Should Devour ")
+		consume_zombie_group.get_highest_zombie_concentration_and_eat()
+		#devour_done = false
+	else:
+		print("Cannot Devour")
+	
+func devour_complete():
+	print("Should Set Devour Done to True")
+	devour_done = true 
+	
 
 func debuff():
 	pass

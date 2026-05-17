@@ -33,6 +33,10 @@ func _ready() -> void:
 		self.set_collision_layer_value(3,false)
 		self.set_collision_layer_value(4,true)
 	#set_hue_shift
+	
+func freeze():
+	speedComp.freeze()
+	
 # Component Manager Getter
 func getCompManager():
 	return compManager

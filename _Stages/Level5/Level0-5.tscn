@@ -394,6 +394,15 @@ sprite_frames = SubResource("SpriteFrames_b1vmi")
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.000002
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Node" type="Node2D" parent="." unique_id=243040236]
 visible = false
@@ -428,7 +437,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=99321584]
 position = Vector2(370, 208)
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

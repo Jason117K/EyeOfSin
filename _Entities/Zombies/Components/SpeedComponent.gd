@@ -22,6 +22,9 @@ func _ready():
 #Setter for Speed
 func setSpeed(newSpeed):
 	speed = newSpeed
+
+func freeze():
+	speed = 0 
 	
 #Getter for speed
 func getOriginalSpeed():
