@@ -14,6 +14,7 @@ var thisBufferName: String
 
 @onready var buffNodes = $BuffNodesComponent
 @onready var swarm = $Swarm
+@onready var hive_laser_shoot_comp := $HiveLaserShootComp
 
 const SPINAL_OCCULUM_BUFF_MAX_DRONES = 4
 const OCCULUM_BUFF_MAX_DRONES = 5
@@ -73,8 +74,8 @@ func receive_buff(bufferName):
 				swarm.kill_all_and_respawn()
 
 			"Wyrm":
-				$HiveLaserShootComp.isDisabled = false
-				$HiveLaserShootComp._ready()
+				hive_laser_shoot_comp.isDisabled = false
+				hive_laser_shoot_comp._ready()
 			"Hive":
 				pass
 
@@ -88,15 +89,16 @@ func receive_buff(bufferName):
 
 
 func debuff():
-	if("Wyrm" in thisBufferName):
-		for drone in swarm.get_available_drones():
-			drone.regularDamage()
-	if("Crawler" in thisBufferName):
-		for drone in swarm.get_available_drones():
-			drone.makeNotExplode()
-	if("Occulum" in thisBufferName):
-		swarm.set_respawn_wait_time(waitTime)
-	isBuffed = false
+	pass
+	#if("Wyrm" in thisBufferName):
+		#for drone in swarm.get_available_drones():
+			#drone.regularDamage()
+	#if("Crawler" in thisBufferName):
+		#for drone in swarm.get_available_drones():
+			#drone.makeNotExplode()
+	#if("Occulum" in thisBufferName):
+		#swarm.set_respawn_wait_time(waitTime)
+	#isBuffed = false
 
 
 func die():

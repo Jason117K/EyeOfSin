@@ -1,4 +1,4 @@
-extends ProjectileShootComponent
+class_name WyrmProjectileShootComponent extends ProjectileShootComponent
 
 var isOcculumBuffed := false 
 var isCrawlerBuffed := false

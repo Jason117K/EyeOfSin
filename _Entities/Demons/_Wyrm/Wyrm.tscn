@@ -818,12 +818,8 @@ script = ExtResource("3_pfhft")
 spinalOcculumBuffed_health = 650
 mawBuffed_health = 350
 health = 150
-buffedHealth = 300
 healthRegen = 0.1
-buffedHealthRegen = 0.6
 maxHealth = 150
-buffedMaxHealth = 300
-blood_spawn_time = 5
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
 sprite_frames = SubResource("SpriteFrames_qxnbo")

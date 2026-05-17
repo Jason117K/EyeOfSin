@@ -119,6 +119,7 @@ func fire() -> void:
 	if isDisabled:
 		return
 	if !is_firing:
+		print("Not Firing No Return Cos Diabled Do Sutff")
 		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 		is_firing = true
 		current_length = 0.0
@@ -175,7 +176,9 @@ func _update_collision_shape() -> void:
 # Stop firing the laser on a cooldown 
 func _on_laser_timeout() -> void:
 	if isDisabled:
+		print("We are diasabled return")
 		return
+	print("No Return Make Length 0")
 	is_firing = false
 	current_length = 0.0
 	hit_enemies.clear()  # Clear the hit enemies when the laser times out

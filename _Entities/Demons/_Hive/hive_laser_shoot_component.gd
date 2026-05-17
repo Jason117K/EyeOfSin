@@ -70,15 +70,7 @@ func _ready() -> void:
 	laser_area.collision_mask = 2
 	var shape = RectangleShape2D.new()
 	collision_shape.shape = shape
-	
-	
-	# Set up debug marker
-	#var debug_marker = ColorRect.new()
-	#add_child(debug_marker)
-	#debug_marker.size = Vector2(5, 5)
-	#debug_marker.position = Vector2(-2.5, -2.5)
-	#debug_marker.color = Color.YELLOW
-	
+
 	# Set up timer
 	add_child(timer)
 	timer.one_shot = true
@@ -92,9 +84,6 @@ func _ready() -> void:
 		cooldown_timer.connect("timeout", Callable(self, "fire"))
 		#cooldown_timer.one_shot = true
 		cooldown_timer.start()
-
-	# Initialize a set to track currently overlapping areas
-	#var currently_overlapping_areas = []
 
 func _process(delta: float) -> void: 
 	if isDisabled:
@@ -129,23 +118,6 @@ func _process(delta: float) -> void:
 			current_length = min(current_length, max_length)
 			_update_laser()
 			_update_collision_shape()
-## Handle updating the laser firing if we are firing 
-#func _physics_process(delta: float) -> void:
-	#if attack_ray.is_colliding():
-		#var collider = attack_ray.get_collider()
-		#if collider:
-			##print("Collider Name is ", collider.name)
-			#if collider.is_in_group("Zombie"):
-				#canAttack = true 
-			#else:
-				#canAttack = false
-	#if is_firing:
-		#if current_length < max_length:
-			#current_length += extension_speed * delta
-			#current_length = min(current_length, max_length)
-			#_update_laser()
-			#_update_collision_shape()
-			
 
 
 func _on_area_exited(area: Area2D) -> void:

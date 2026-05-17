@@ -1609,12 +1609,8 @@ texture = ExtResource("2_hvfi3")
 script = ExtResource("5_kupbo")
 spinalOcculumHealth = 375
 health = 200
-buffedHealth = 400
 healthRegen = 0.1
-buffedHealthRegen = 0.6
 maxHealth = 200
-buffedMaxHealth = 400
-blood_spawn_time = 5
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1385105491]
 wait_time = 3.0
@@ -1784,7 +1780,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 108.85155, 131.99522, 107.36584, 130.22403, 104.68501, 129.21037, 100.757935, 130.56967, 97.23154, 130.7055, 95.78354, 128.95143, 93.555595, 127.70091, 89.7875, 129.83093)
+points = PackedVector2Array(112.595, 131.435, 111.02572, 129.6022, 107.349106, 130.01833, 103.42158, 131.57042, 100.72402, 130.5499, 98.99518, 128.89139, 95.38887, 129.24437, 91.528824, 131.1334, 88.596146, 130.6009)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1796,7 +1792,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 108.85155, 125.12022, 107.36584, 121.47403, 104.68501, 118.58537, 100.757935, 118.06967, 97.23154, 116.330505, 95.78354, 112.70142, 93.555595, 109.57591, 89.7875, 109.83093)
+points = PackedVector2Array(112.595, 126.435, 111.02572, 122.7272, 107.349106, 121.26832, 103.42158, 120.94542, 100.72402, 118.0499, 98.99518, 114.516396, 95.38887, 112.99437, 91.528824, 113.00841, 88.596146, 110.60091)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1817,7 +1813,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 113.37848, 130.9508, 115.650955, 131.87032, 116.63536, 131.45175, 116.341354, 130.8372, 117.585266, 130.5396, 119.79411, 131.2906, 121.04902, 131.0849, 119.82227, 130.90724)
+points = PackedVector2Array(112.595, 131.435, 112.10934, 130.7186, 113.27808, 130.36258, 115.58973, 131.26506, 116.81934, 130.94582, 116.60797, 130.3081, 117.731995, 129.94257, 119.98898, 130.7835, 121.75455, 130.99532)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1825,7 +1821,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 113.37848, 124.0758, 115.650955, 123.120316, 116.63536, 120.82675, 116.341354, 118.3372, 117.585266, 116.1646, 119.79411, 115.0406, 121.04902, 112.9599, 119.82227, 110.90725)
+points = PackedVector2Array(112.595, 126.435, 112.10934, 123.8436, 113.27808, 121.61258, 115.58973, 120.64006, 116.81934, 118.445816, 116.60797, 115.933105, 117.731995, 113.69257, 119.98898, 112.658485, 121.75455, 110.995316)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1843,8 +1839,10 @@ script = ExtResource("32_p30cy")
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("33_kupbo")]
 script = ExtResource("35_jut13")
-blood_worth_to_add = 10.0
-attack_speed_mult = 1.0
+blood_worth_to_add = null
+damage = null
+attack_speed_mult = null
+projectile_spawn_offest = null
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -257,7 +257,7 @@ func spawn_swords():
 
 	blood_sword_spell.global_position = self.global_position 
 	blood_sword_spell.global_position = blood_sword_spell.global_position + Vector2(256,256)
-	blood_sword_spell.global_position = blood_sword_spell.global_position #+ Vector2(0,-16)
+	blood_sword_spell.global_position = blood_sword_spell.global_position + Vector2(32,0)
 	if self.is_in_group("Green"):
 		blood_sword_spell.add_to_group("Green")
 	else:

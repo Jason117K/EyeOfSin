@@ -1,6 +1,6 @@
 class_name ProjectileShootComponent extends Node2D
 
-@onready var shootTimer := $"../ShootTimer"
+#@onready var shootTimer := $"../ShootTimer"
 @onready var base_shoot_interval = 3.0
 @onready var parent_demon : Demon = get_parent()
 @export var damage := 60
@@ -34,8 +34,8 @@ func _ready() -> void:
 	set_attack_speed(attack_speed_mult)
 	set_attack_rays_collision()
 
-	shootTimer.start()  # Start the shoot timer
-	shootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
+	#shootTimer.start()  # Start the shoot timer
+	#shootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	animSpriteComp.frame_changed_signal.connect(_on_sprite_frame_changed)
 	
 	
@@ -84,20 +84,25 @@ func _process(_delta):
 func check_attack_rays():
 	canAttack = false
 	for ray in attack_rays:
-		#print("Checking Ray ", ray)
+		print("Checking Ray ", ray)
 		if ray.is_colliding():
-			#print(" Ray Colling ",self )
+			print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
-				#print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
+				print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
 				if collider == null:
 					continue  # guard against freed/invalid colliders
 				if collider and collider.is_in_group("Zombie"):
-					#print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
+					print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
+						print("Green Can Attack True")
 						canAttack = true
+						return
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
 						canAttack = true
+						print("Purple Can Attack True")
+						return 
+				#	if parent_demon.is_in_group()
 						
 						
 func shoot_projectile():
@@ -135,7 +140,7 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	
 	
 func set_attack_speed(multiplier: float):
-	shootTimer.wait_time = base_shoot_interval / multiplier
+	#shootTimer.wait_time = base_shoot_interval / multiplier
 	animSpriteComp.speed_scale = multiplier  # only for attack animation
 	
 func get_damage():

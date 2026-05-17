@@ -32,6 +32,8 @@ func setup_collision_and_damage_zombies():
 			sword.set_collision_mask_value(2,false)
 			sword.set_collision_mask_value(3,false)
 			sword.set_collision_mask_value(4,true)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 			
 	for blood_sword in all_swords:
 		blood_sword.is_maw_parent = true 
