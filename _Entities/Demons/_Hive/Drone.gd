@@ -6,6 +6,7 @@ extends Area2D
 
 # Signals
 signal drone_died(drone)
+var current_zombie : Zombie = null
 
 # Export variables 
 @export var health = 75          # Drone Health
@@ -16,6 +17,9 @@ signal drone_died(drone)
 @export var rotation_speed = 5.0 # How fast the drone rotates to face target
 @export var attack_range = 50    # How close the drone needs to be to attack
 @export var return_threshold = 5 # How close to rest position is considered "arrived"
+@export var spinal_occulum_buffed_health = 200
+@export var spinal_occulum_buffed_max_health = 200
+
 
 enum State { IDLE, PURSUING, ATTACKING, RETURNING }
 
@@ -70,7 +74,24 @@ func _ready():
 		set_collision_layer_value(1,false)
 		set_collision_layer_value(2,true)
 		set_collision_layer_value(3,false)
+
+func current_zombie_dead():
+	print(self, " received 77 zombie dead signal")
+	current_zombie = null
 	
+func demon_minion_busy(questioning_zombie):
+	if current_zombie == null:
+		current_zombie = questioning_zombie
+		print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
+		current_zombie.zombie_death.connect(current_zombie_dead)
+		return false 
+	else:
+		return true
+				
+func spinal_occulum_buff():
+	self.health = spinal_occulum_buffed_health
+	self.max_health = spinal_occulum_buffed_max_health
+		
 	
 func occulum_buff():
 	blood_on_death = true 

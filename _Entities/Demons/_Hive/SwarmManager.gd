@@ -13,6 +13,7 @@ var is_maw_buffed: bool = false
 var occulum_buff := false 
 var drone_damage
 var is_crawler_buffed = false 
+var is_spinal_occulum_buffed := false
 
 @onready var hive: Node = get_parent()
 @onready var respawn_timer: Timer = get_parent().get_node("DroneRespawnTimer")
@@ -29,11 +30,6 @@ func get_available_drones() -> Array:
 
 func set_max_drones(new_max: int):
 	max_drones = new_max
-
-
-#func set_maw_buffed(buffed: bool):
-	#is_maw_buffed = buffed
-
 
 func set_respawn_wait_time(time: float):
 	respawn_timer.wait_time = time
@@ -80,6 +76,8 @@ func spawn_initial_drones():
 			drone.maw_buff()
 		if is_crawler_buffed:
 			drone.crawler_buff()
+		if is_spinal_occulum_buffed:
+			drone.spinal_occulum_buff()	
 		hive.get_parent().add_child(drone)
 		if hive.is_in_group("Green"):
 			drone.add_to_group("Green")
@@ -93,8 +91,6 @@ func spawn_initial_drones():
 		drone.rest_position = rest_pos
 
 		drone.connect("drone_died", Callable(self, "_on_drone_died"))
-		#if is_maw_buffed:
-			#drone.doubleDamage()
 
 
 func _on_enemy_entered(area):
@@ -210,6 +206,11 @@ func _on_DroneRespawnTimer_timeout():
 		new_drone.occulum_buff()
 	if is_maw_buffed:
 		new_drone.maw_buff()
+	if is_crawler_buffed:
+		new_drone.crawler_buff()
+	if is_spinal_occulum_buffed:
+		new_drone.spinal_occulum_buff()	
+		
 	hive.get_parent().add_child(new_drone)
 	available_drones.append(new_drone)
 	if hive.is_in_group("Green"):
@@ -222,9 +223,6 @@ func _on_DroneRespawnTimer_timeout():
 	new_drone.global_position = hive.global_position + rest_pos
 	new_drone.rest_position = rest_pos
 	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
-
-	#if is_maw_buffed:
-		#new_drone.doubleDamage()
 
 	drones_to_respawn -= 1
 	if drones_to_respawn > 0 and get_total_drone_count() < max_drones:

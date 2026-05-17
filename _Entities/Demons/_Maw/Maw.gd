@@ -5,7 +5,6 @@ const BLOOD_SCENE := preload("res://_Entities/Demons/Blood/Blood.tscn")
 const WEB_BALL_SCENE := preload("res://_Entities/Demons/Projectile/WebBall.tscn")
 const DIGEST_SWORD_SCENE := preload("res://_Entities/Demons/_Maw/digest_sword_attack.tscn")
 const INSTAKILL_DAMAGE := 9999
-const SPINAL_OCCULUM_HEAL_AMOUNT := 100
 const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost()
 
 # === Node references ===
@@ -26,6 +25,9 @@ const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost(
 @export var bloodAmount = 10
 @export var digestTime: float = 15.0
 @export var wyrm_buffed_digestion_time : float = 5.0
+@export var spinal_occulum_buffed_digestion_time : float = 9.0
+@export var spinal_occulum_heal_amount := 300
+
 @export var consume_zombie_group_wait_time := 5.0
 @onready var ogDigestTime = digestTime
 
@@ -208,13 +210,7 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 		if is_instance_valid(enemy):
 			enemy.visible = false
 			var enemyCompManager = enemy.getCompManager()
-			enemyCompManager.take_damage(INSTAKILL_DAMAGE)
-
-			if spinalOcculumBuff:
-				healthComp.health += SPINAL_OCCULUM_HEAL_AMOUNT
-
-			# Web belch (crawler buff + slowed enemy)
-			
+			enemyCompManager.take_damage(INSTAKILL_DAMAGE)			
 
 	group.pending_retract -= 1
 	if group.pending_retract == 0:
@@ -247,6 +243,9 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 			belch_webs()
 		if will_spawn_swords:
 			spawn_swords()
+			
+		if spinalOcculumBuff:
+			healthComp.increase_health(spinal_occulum_heal_amount)
 			
 		for t in group.tentacles:
 			if eating_groups.get(t) == group:
@@ -351,7 +350,7 @@ func receive_buff(demon):
 				willBelchWebs = true
 
 			"SpinalOcculum" :
-				pass
+				_set_tentacle_digestion_time(spinal_occulum_buffed_digestion_time)
 
 			"Wyrm":
 				_set_tentacle_digestion_time(wyrm_buffed_digestion_time)

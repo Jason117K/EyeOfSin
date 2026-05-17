@@ -1,6 +1,6 @@
 extends DemonHealthComponent
 
-@export var spinalOcculumHealth := 650
+@export var spinalOcculumHealth := 800
 
 
 func receive_buff(demonName):

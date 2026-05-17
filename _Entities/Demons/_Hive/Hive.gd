@@ -71,6 +71,7 @@ func receive_buff(bufferName):
 
 			"SpinalOcculum" :
 				swarm.set_max_drones(SPINAL_OCCULUM_BUFF_MAX_DRONES)
+				swarm.is_spinal_occulum_buffed = true 
 				swarm.kill_all_and_respawn()
 
 			"Wyrm":

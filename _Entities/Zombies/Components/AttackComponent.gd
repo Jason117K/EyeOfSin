@@ -124,11 +124,13 @@ func _process(_delta):
 			return
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
-			#print(parent.name , " Its collding with ", collider.name )
+			print(parent.name , " Its 77 collding with ", collider.name )
 			if collider:
 				if collider.is_in_group("Demons"):
 					if collider.has_method("demon_minion_busy"):
+						print("Calling Demon 77 Minion Busy On ", collider)
 						if collider.demon_minion_busy(parent):
+							print(collider, " is busy early return 77")
 							return
 					#TODO Make Sundered Extend Attack Comp
 					if("Sundered" in parent.name):
