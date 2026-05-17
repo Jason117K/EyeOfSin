@@ -11,7 +11,7 @@ extends Area2D
 @export var bleed_damage := 1
 
 var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
-
+var num_zombies_hit = 0 
 var spinalOcculumBuff := false 
 var give_blood_on_death := false 
 var spawn_drone_on_zombie_death := false 
@@ -123,7 +123,7 @@ func on_hit(area):
 			healthComp.add_blood_worth(blood_worth_to_add)
 		if spawn_drone_on_zombie_death:
 			compManager.spawn_drone_on_zombie_death()
-		if damage < 18.5 && canGenBlood:
+		if num_zombies_hit > 3 && canGenBlood:
 			generate_blood()
 			canGenBlood = false
 		if bleed:
@@ -137,6 +137,7 @@ func on_hit(area):
 			queue_free() 
 		else:
 			damage = damage - 0.5
+			num_zombies_hit += 1 
 
 func increase_bleed_damage(bleed_damage_increase):
 	bleed_damage = bleed_damage + bleed_damage_increase

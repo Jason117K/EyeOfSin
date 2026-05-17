@@ -5,13 +5,26 @@ extends Area2D
 
 @export var damage = 100 # Adjustable damage  
 var enemiesToHit = [] # Stores all the valid enemies to hit 
-var enemiesToHitTemp # Stores enemies to hit, some of which are invalid targets
+var enemiesToHitTemp = [] # Stores enemies to hit, some of which are invalid targets
 @onready var deathTimer = $DeathTimer # Timer to trigger explosion and destroy bomb
 
 
 # Add this helper function to scripts that deal with combat
 func is_instance_valid_and_alive(node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
+
+func _ready() -> void:
+	if self.is_in_group("Green"):
+		self.set_collision_mask_value(1,false)
+		self.set_collision_mask_value(2,false)
+		self.set_collision_mask_value(3,false)
+		self.set_collision_mask_value(4,false)
+		self.set_collision_mask_value(5,true)
+	else:
+		self.set_collision_mask_value(1,false)
+		self.set_collision_mask_value(2,false)
+		self.set_collision_mask_value(3,false)
+		self.set_collision_mask_value(4,true)
 
 # Triggers explosion and destroys bomb
 func _on_DeathTimer_timeout():
@@ -21,7 +34,7 @@ func _on_DeathTimer_timeout():
 	
 	# Gets & stores all the actual zombies from enemiesToHitTemp 
 	for enemy in enemiesToHitTemp:
-		if "Zombie" in enemy.name:
+		if enemy.is_in_group("Zombie"):
 			enemiesToHit.append(enemy)
 	
 	# Damages all enemies in area after checking they are still valid and alive

@@ -1078,17 +1078,14 @@ z_index = 1
 position = Vector2(0, 1)
 collision_mask = 3
 script = ExtResource("1")
+wyrmBloodWaitTime = 5.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_m5mcc")]
 script = ExtResource("3_0ypr0")
 maw_health = 500
 health = 150
-buffedHealth = 500
 healthRegen = 0.1
-buffedHealthRegen = 0.6
 maxHealth = 150
-buffedMaxHealth = 500
-blood_spawn_time = 5
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false
@@ -1146,6 +1143,7 @@ shape = SubResource("89")
 
 [node name="BloodTimer" type="Timer" parent="." unique_id=447707411]
 wait_time = 30.0
+one_shot = true
 
 [node name="Tentacle1" parent="." unique_id=611075784 instance=ExtResource("8_hu5wo")]
 visible = false

@@ -6,7 +6,7 @@ extends Area2D
 # Export variables for easy editing in inspector
 @export var target_position = Vector2(): set = set_target
 @export var travel_time = 1.0: set = set_travel_time
-
+@onready var detection_area := $HitBoxComponent
 # Internal variables
 var start_position = Vector2()
 var time = 0
@@ -22,17 +22,28 @@ func _ready():
 		target_position = start_position + Vector2(200, 0)
 	
 	calculate_trajectory()
-	#create_debug_marker()
+	if self.is_in_group("Green"):
+		self.set_collision_mask_value(1,false)
+		self.set_collision_mask_value(2,false)
+		self.set_collision_mask_value(3,false)
+		self.set_collision_mask_value(4,false)
+		self.set_collision_mask_value(5,true)
+	else:
+		self.set_collision_mask_value(1,false)
+		self.set_collision_mask_value(2,false)
+		self.set_collision_mask_value(3,false)
+		self.set_collision_mask_value(4,true)
 
 # Get all valid enemies and then apply a slow effect to them
 func die():
 	var valid_enemies = []
-	
+	for area in get_overlapping_areas():
+		if area.is_in_group("Zombie"):
+			enemiesToWeb.append(area)
 	# First, filter out any invalid enemies
 	for enemy in enemiesToWeb:
 		if is_instance_valid(enemy) and not enemy.is_queued_for_deletion():
-			if enemy.is_in_group("Zombie"):
-				valid_enemies.append(enemy)
+			valid_enemies.append(enemy)
 	# Then slow the valid enemies 
 	for enemy in valid_enemies:
 		if enemy.is_in_group("Zombie"):
@@ -108,8 +119,3 @@ func create_debug_marker():
 class DebugMarker extends Node2D:
 	func _draw():
 		draw_circle(Vector2.ZERO, 5, Color.BLUE)
-
-# Add enemies to enemiesToWeb when they enter the area 
-func _on_WebBall_area_entered(area):
-	#print("The Webbed Enemy is ", area.name)
-	enemiesToWeb.append(area)

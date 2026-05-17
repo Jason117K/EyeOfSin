@@ -60,13 +60,13 @@ func receive_buff(bufferName):
 		match demonName:
 			"Occulum":
 				swarm.set_respawn_wait_time(buffedWaitTime)
-				isOcculumBuffed = true
 				swarm.set_max_drones(OCCULUM_BUFF_MAX_DRONES)
 				swarm.kill_all_and_respawn()
+				swarm.occulum_buff = true 
 			"Crawler":
 				for drone in swarm.get_available_drones():
-					drone.makeExplode()
-					drone.isCrawlerBuffed = true
+					drone.crawler_buff()
+				swarm.is_crawler_buffed = true 
 
 			"SpinalOcculum" :
 				swarm.set_max_drones(SPINAL_OCCULUM_BUFF_MAX_DRONES)
@@ -79,9 +79,10 @@ func receive_buff(bufferName):
 				pass
 
 			"Maw":	
-				isMawBuffed = true
-				swarm.set_maw_buffed(true)
-				swarm.kill_all_and_respawn()		
+				for drone in swarm.get_available_drones():
+					drone.maw_buff()
+					
+				swarm.is_maw_buffed = true 
 				
 			
 

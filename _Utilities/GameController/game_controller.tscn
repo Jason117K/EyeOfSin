@@ -56,6 +56,5 @@ offset_right = 729.0
 offset_bottom = 409.0
 
 [node name="NotifMarginContainer" parent="." unique_id=1498960940 instance=ExtResource("9_ip61f")]
-demon_info_disappear_time = 3.7
 
 [editable path="CurrentScene/DemonSelectionMenu"]

@@ -3,20 +3,10 @@ extends Demon
 
 const BLOOD_SCENE := preload("res://_Entities/Demons/Blood/Blood.tscn")
 const WEB_BALL_SCENE := preload("res://_Entities/Demons/Projectile/WebBall.tscn")
+const DIGEST_SWORD_SCENE := preload("res://_Entities/Demons/_Maw/digest_sword_attack.tscn")
 const INSTAKILL_DAMAGE := 9999
 const SPINAL_OCCULUM_HEAL_AMOUNT := 100
 const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost()
-
-# Buff dispatch table. Iterated in order in receive_buff/debuff — the first
-# `key` found inside `bufferName` wins. SpinalOcculum's remove is a deliberate
-# no-op (buff is permanent).
-const _BUFF_HANDLERS := [
-	{"key": "Wyrm",    "apply": "_appwyrmorm_buff",    "remove": "_remove_wyrm_buff"},
-	{"key": "Crawler", "apply": "_apply_crawler_buff", "remove": "_remove_crawler_buff"},
-	{"key": "Hive",       "apply": "_apply_hive_buff",       "remove": "_remove_hive_buff"},
-	{"key": "Occulum",  "apply": "_apply_occulum_buff",  "remove": "_remove_occulum_buff"},
-	{"key": "SpinalOcculum",     "apply": "_apply_spinalOcculum_buff",     "remove": "_remove_spinalOcculum_buff"},
-]
 
 # === Node references ===
 @onready var tentacle1: Tentacle = $Tentacle1
@@ -34,8 +24,8 @@ const _BUFF_HANDLERS := [
 @export var alt_replace_color: Color
 @export var debug_mode: bool = false
 @export var bloodAmount = 10
-@export var digestTime: float
-@export var buffedDigestTime: float
+@export var digestTime: float = 15.0
+@export var wyrm_buffed_digestion_time : float = 5.0
 
 @onready var ogDigestTime = digestTime
 
@@ -44,29 +34,12 @@ var DemonManager                                  # DemonManager RefCounted
 var tentacles: Array[Tentacle] = []               # All Tentacles owned by this Maw
 var available_tentacles: Array[Tentacle] = []     # Currently free for assignment
 var enemies_to_eat: Array = []                    # Detected zombies waiting for room
-
-# Multi-tentacle eat coordination. Each entry maps a tentacle to the
-# *shared* group dictionary that represents one in-progress eat.
-# Group dict shape:
-# {
-#   "enemy":               Node2D,
-#   "tentacles":           Array[Tentacle],
-#   "primary":             Tentacle,
-#   "pending_retract":     int,   # decremented each retraction_finished
-#   "pending_ready_again": int,   # decremented each ready_again
-#   "damage_applied":      bool,  # gate for damage  / web ball
-#   "aborted":             bool,  # gate for cascade-abort
-# }
 var eating_groups: Dictionary = {}
 
 # Buff state
 var willBelchWebs := false                        
 var willBelchBlood := false
-var isWyrmBuffed := false
-var isCrawlerBuffed := false
-var isHiveBuffed := false
-var isOcculumBuffed := false
-var isSpinalOcculumBuffed := false
+var will_spawn_swords := false
 var bufferName: String
 
 
@@ -234,16 +207,11 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 			var enemyCompManager = enemy.getCompManager()
 			enemyCompManager.take_damage(INSTAKILL_DAMAGE)
 
-			if isSpinalOcculumBuffed:
+			if spinalOcculumBuff:
 				healthComp.health += SPINAL_OCCULUM_HEAL_AMOUNT
 
 			# Web belch (crawler buff + slowed enemy)
-			var slow = enemyCompManager.getSlow()
-			if slow > 0 and willBelchWebs:
-				var web_ball = WEB_BALL_SCENE.instantiate()
-				add_child(web_ball)
-				web_ball.target_position = Vector2(100, 0)
-				web_ball.travel_time = 1.5
+			
 
 	group.pending_retract -= 1
 	if group.pending_retract == 0:
@@ -272,14 +240,46 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 		# so we only erase entries that still match).
 		if willBelchBlood:
 			generate_blood()
+		if willBelchWebs:
+			belch_webs()
+		if will_spawn_swords:
+			spawn_swords()
+			
 		for t in group.tentacles:
 			if eating_groups.get(t) == group:
 				eating_groups.erase(t)
 		if debug_mode:
 			print("[Maw] Group complete — Available: %d" % available_tentacles.size())
-
 	_process_queue()
+	
+func spawn_swords():
+	var blood_sword_spell := DIGEST_SWORD_SCENE.instantiate()
 
+	blood_sword_spell.global_position = self.global_position 
+	blood_sword_spell.global_position = blood_sword_spell.global_position + Vector2(256,256)
+	blood_sword_spell.global_position = blood_sword_spell.global_position #+ Vector2(0,-16)
+	if self.is_in_group("Green"):
+		blood_sword_spell.add_to_group("Green")
+	else:
+		blood_sword_spell.add_to_group("Purple")
+	
+	get_parent().add_child(blood_sword_spell)
+	blood_sword_spell.set_maw_parent()
+	blood_sword_spell.setup_collision_and_damage_zombies()
+	
+func belch_webs():
+	var web_ball = WEB_BALL_SCENE.instantiate()
+	
+	web_ball.global_position = self.global_position 
+	web_ball.global_position = web_ball.global_position + Vector2(256,256)
+	if self.is_in_group("Green"):
+		web_ball.add_to_group("Green")
+	else:
+		web_ball.add_to_group("Purple")
+	get_parent().add_child(web_ball)
+	
+	web_ball.target_position = web_ball.global_position + Vector2(128, 0)
+	web_ball.travel_time = 2.0
 
 # When one tentacle of a multi-tentacle group aborts, drag the whole
 # group down with it: no charge was "earned", so all participants should
@@ -334,8 +334,8 @@ func receive_buff(demon):
 				pass
 
 			"Wyrm":
-				_set_tentacle_digestion_time(buffedDigestTime)
-				isWyrmBuffed = true
+				_set_tentacle_digestion_time(wyrm_buffed_digestion_time)
+				will_spawn_swords = true 
 
 			"Hive":
 				detectionAreaShape.shape.radius *= 1.2
@@ -354,9 +354,12 @@ func debuff():
 # Blood generation (occulum buff payout)
 func generate_blood():
 	var blood_instance = BLOOD_SCENE.instantiate()
-	add_child(blood_instance)
+	get_parent().add_child(blood_instance)
 	blood_instance.setWorth(bloodAmount)
-	blood_instance.global_position = self.global_position + Vector2(0, -40)
+	#demon_instance.position = Vector2(demon_instance.position.x-256,demon_instance.position.y-256)
+	blood_instance.global_position = self.global_position 
+	blood_instance.global_position = blood_instance.global_position + Vector2(256,256)
+	blood_instance.global_position = blood_instance.global_position + Vector2(0,-16)
 
 
 func _on_detection_component_area_entered(area: Area2D) -> void:

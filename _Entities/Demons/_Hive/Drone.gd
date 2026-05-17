@@ -28,6 +28,9 @@ var isCrawlerBuffed = false
 var base_attack_damage: int
 var is_in_combat = false 
 var current_zombie_to_fight
+var blood_on_death := false 
+var is_maw_buffed := false 
+var is_crawler_buffed := false 
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
@@ -46,9 +49,38 @@ func _ready():
 	timer.wait_time = attack_length
 	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
 	timer.start()
-	#print_scene_tree()
+	if self.is_in_group("Green"):
+		print(self, "THIS DEMON MINION IS GREEN")
+		set_collision_mask_value(1,false)
+		set_collision_mask_value(2,false)
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,false)
+		set_collision_mask_value(5,true)
+		
+		set_collision_layer_value(1,false)
+		set_collision_layer_value(2,false)
+		set_collision_layer_value(3,true)
+	else:
+		print(self, "THIS DEMON MINION IS PURPLE")
+		set_collision_mask_value(1,false)
+		set_collision_mask_value(2,false)
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,true)
+		
+		set_collision_layer_value(1,false)
+		set_collision_layer_value(2,true)
+		set_collision_layer_value(3,false)
 	
 	
+func occulum_buff():
+	blood_on_death = true 
+		
+func crawler_buff():
+	is_crawler_buffed = true 
+	
+func maw_buff():
+	is_maw_buffed = true 
+		
 func make_drone_glow():
 	animatedSpriteComp.make_glow()
 	
@@ -103,18 +135,45 @@ func set_damage(new_damage):
 
 func die():
 	emit_signal("drone_died", self)
+	if blood_on_death:
+		pass
+		generate_blood()
+	if is_maw_buffed:
+		death_explode()
+	if is_crawler_buffed:
+		death_slow()
 	queue_free()
-
+	
+func death_slow():
+	current_zombie_to_fight.get_parent().getCompManager().slow()
+	
+func death_explode():
+	var death_bomb = Global.get_bomb_scene().instantiate()
+	death_bomb.global_position = self.global_position
+	if self.is_in_group("Green"):
+		death_bomb.add_to_group("Green")
+	else:
+		death_bomb.add_to_group("Purple")
+	get_parent().get_parent().add_child(death_bomb)
+	
+func generate_blood():
+	print("Generating Blood")
+	var blood_instance = Global.get_blood_scene().instantiate()  
+	get_parent().add_child(blood_instance) 
+	blood_instance.set_fast_pickup_time() 
+	blood_instance.global_position = self.global_position 
+	
+	
 func enable_hurtbox():
 	$HurtBox.disabled = false
 # Attacks a given enemy without buffs 
 func attack_target(enemy):
 	$HurtBox.disabled = false
 	current_target = enemy
-	if explodeBuff:
-		enemy.fightDroneExplode()
-	if isCrawlerBuffed:
-		enemy.make_spawn_slow_on_death()
+	#if explodeBuff:
+		#enemy.fightDroneExplode()
+	#if isCrawlerBuffed:
+		#enemy.make_spawn_slow_on_death()
 	state = State.PURSUING
 
 # Sends the drone back to it's original resting position 
@@ -143,7 +202,7 @@ func _physics_process(delta):
 				if direction.x < 0:
 					print(self.get_name(), " Drone is behind enemy , ", current_target)
 					state = State.PURSUING
-					self.global_position = self.global_position + Vector2(-32,0)
+					self.global_position = self.global_position + Vector2(-40,0)
 				else:
 					velocity = Vector2.ZERO
 					state = State.ATTACKING

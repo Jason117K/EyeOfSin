@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://qaxvtgvgxlla"]
+
+[ext_resource type="Script" uid="uid://bhwfvfnn32q6x" path="res://_Entities/Demons/_Maw/digest_sword_anim.gd" id="1_dnruy"]
+[ext_resource type="PackedScene" uid="uid://bdr6p4s2ypdw8" path="res://_Entities/Demons/_Occulum/sword_blood_spell.tscn" id="2_a825f"]
+[ext_resource type="Texture2D" uid="uid://cw6mguuoeytjd" path="res://_Entities/Demons/_CagedOculum/DemonLightningCrackle-Sheet.png" id="3_fro5i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2agi"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npfyy"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dp5i"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogidr"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fluxn"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emrru"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qut1i"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18gky"]
+atlas = ExtResource("3_fro5i")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uslvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2agi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npfyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dp5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogidr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fluxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emrru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qut1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18gky")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="DigestSwordAnim" type="Node2D" unique_id=65645657]
+script = ExtResource("1_dnruy")
+
+[node name="SwordBloodSpell" parent="." unique_id=2026496036 instance=ExtResource("2_a825f")]
+position = Vector2(29, -7)
+
+[node name="BloodSpellSprite" parent="SwordBloodSpell" index="1" unique_id=1099596436]
+position = Vector2(-2, 0)
+flip_h = true
+
+[node name="SwordBloodSpell2" parent="." unique_id=832205729 instance=ExtResource("2_a825f")]
+position = Vector2(29, 26)
+
+[node name="SwordBloodSpell3" parent="." unique_id=968139375 instance=ExtResource("2_a825f")]
+position = Vector2(29, -40)
+
+[node name="LightningCrackle" type="AnimatedSprite2D" parent="." unique_id=497386139]
+z_index = 2
+position = Vector2(22, -37)
+sprite_frames = SubResource("SpriteFrames_uslvt")
+autoplay = "default"
+frame = 5
+frame_progress = 0.60812026
+flip_h = true
+
+[node name="LightningCrackle2" type="AnimatedSprite2D" parent="." unique_id=646293214]
+z_index = 2
+position = Vector2(37, -3)
+sprite_frames = SubResource("SpriteFrames_uslvt")
+autoplay = "default"
+frame = 3
+frame_progress = 0.6350555
+
+[node name="LightningCrackle3" type="AnimatedSprite2D" parent="." unique_id=564320624]
+z_index = 2
+position = Vector2(21, 27)
+sprite_frames = SubResource("SpriteFrames_uslvt")
+autoplay = "default"
+frame = 6
+frame_progress = 0.4416043
+flip_h = true
+
+[editable path="SwordBloodSpell"]

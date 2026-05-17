@@ -59,6 +59,7 @@ func toggle_highlight():
 
 func _on_BloodTimer_timeout():
 	generate_blood()
+	bloodTimer.start()
 	
 #TODO Rip Out and Put in Component
 func generate_blood() -> Node2D:
@@ -153,8 +154,9 @@ func truncate_string(input_string: String) -> String:
 	
 	
 func debuff():
-	bloodTimer.wait_time = bloodWaitTime
-	isBuffed = false
+	pass
+	#bloodTimer.wait_time = bloodWaitTime
+	#isBuffed = false
 	pass
 
 

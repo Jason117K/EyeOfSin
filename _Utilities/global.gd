@@ -29,6 +29,9 @@ var demon_costs: Dictionary = {}
 var demon_scenes : Dictionary
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
+var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn")
+var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
+
 
 func _load_demon_costs():
 	demon_scenes = {
@@ -248,6 +251,9 @@ func hide_notification_bar():
 	if notification_bar != null:
 		notification_bar.hide()
 	
-	
-	
+func get_blood_scene():
+	return blood_scene
+
+func get_bomb_scene():
+	return bomb_scene
 	

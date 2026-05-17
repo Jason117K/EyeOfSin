@@ -7,7 +7,7 @@ extends Area2D
 @export var default_auto_pickup_wait_time := 6.0
 @export var crawler_buff_auto_pickup_wait_time := 10.0
 @export var wyrm_buff_auto_pickup_wait_time := 10.0
-@export var fast_pick_up_time := 1.0
+@export var fast_pick_up_time := 1.5
 
 @onready var aoe : Area2D = $AOEZone
 @onready var auto_pickup_timer :Timer = $AutoPickUpTimer
@@ -105,18 +105,22 @@ func summon_blood_swords():
 
 	
 func spawn_blood_sword(offset):
-	var blood_spell_instance = blood_spell.instantiate()
-	if self.is_in_group("Green"):
-		blood_spell_instance.set_collision_mask_value(1,false)
-		blood_spell_instance.set_collision_mask_value(2,false)
-		blood_spell_instance.set_collision_mask_value(3,true)
-	else:
-		blood_spell_instance.set_collision_mask_value(1,false)
-		blood_spell_instance.set_collision_mask_value(2,true)
-		blood_spell_instance.set_collision_mask_value(3,false)
-	
-	blood_spell_instance.global_position = origin_occulum.global_position + offset
-	origin_occulum.get_parent().add_child(blood_spell_instance)
+	if origin_occulum != null:
+		var blood_spell_instance = blood_spell.instantiate()
+		if self.is_in_group("Green"):
+			blood_spell_instance.set_collision_mask_value(1,false)
+			blood_spell_instance.set_collision_mask_value(2,false)
+			blood_spell_instance.set_collision_mask_value(3,false)
+			blood_spell_instance.set_collision_mask_value(4,false)
+			blood_spell_instance.set_collision_mask_value(5,true)
+		else:
+			blood_spell_instance.set_collision_mask_value(1,false)
+			blood_spell_instance.set_collision_mask_value(2,false)
+			blood_spell_instance.set_collision_mask_value(3,false)
+			blood_spell_instance.set_collision_mask_value(4,true)
+		
+		blood_spell_instance.global_position = origin_occulum.global_position + offset
+		origin_occulum.get_parent().add_child(blood_spell_instance)
 	
 	
 	
