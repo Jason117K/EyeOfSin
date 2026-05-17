@@ -84,7 +84,7 @@ func _process(_delta):
 func check_attack_rays():
 	canAttack = false
 	for ray in attack_rays:
-		print("Checking Ray ", ray)
+		#print("Checking Ray ", ray)
 		if ray.is_colliding():
 			print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):

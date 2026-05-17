@@ -53,6 +53,7 @@ func _ready():
 	collision_mask = 2
 	DemonManager = get_parent().get_parent().get_node("DemonManager")
 	setup_tentacles()
+	print_scene_tree()
 	
 	if self.is_in_group("Green"):
 		detection_area.set_collision_mask_value(1,false)
@@ -283,6 +284,7 @@ func add_consume_zombie_group_component():
 	get_parent().add_child(consume_zombie_group)
 	consume_zombie_group.set_all_areas()
 	consume_zombie_group.done_eating.connect(devour_complete)
+	print_scene_tree(consume_zombie_group)
 
 	
 	
