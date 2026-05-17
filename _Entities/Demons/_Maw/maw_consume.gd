@@ -55,10 +55,13 @@ func get_highest_zombie_concentration_and_eat():
 	set_all_areas()
 	zombie_counts = [0, 0, 0, 0, 0, 0]
 
+	var zombies_per_area: Array[Array] = [[], [], [], [], [], []]
+
 	for i in all_detection_areas.size():
 		for area in all_detection_areas[i].get_overlapping_areas():
 			if area.is_in_group("Zombie"):
 				zombie_counts[i] += 1
+				zombies_per_area[i].append(area)
 
 	zombie_count_area_1 = zombie_counts[0]
 	zombie_count_area_2 = zombie_counts[1]
@@ -68,53 +71,45 @@ func get_highest_zombie_concentration_and_eat():
 	zombie_count_area_6 = zombie_counts[5]
 
 	highest_index = 0
-	
+
 	for i in zombie_counts.size():
 		if zombie_counts[i] > zombie_counts[highest_index]:
 			highest_index = i
 
 	if zombie_counts[highest_index] > 0:
-		#death_zone_area.global_position = all_detection_areas[highest_index].global_position 
-		death_zone_area.position = all_detection_areas[highest_index].position 
-		pull_from_below()
+		death_zone_area.position = all_detection_areas[highest_index].position
+		pull_from_below(zombies_per_area[highest_index])
 	else:
 		print("Emiting Done Eat Early So Devour Sooner")
 		done_eating.emit()
 		
 		
 		
-func pull_from_below():
+func pull_from_below(zombies_found: Array):
+	zombies_to_kill = zombies_found.duplicate()
+
+	for zombie in zombies_to_kill:
+		if is_instance_valid(zombie):
+			zombie.freeze()
+
 	pull_from_below_animation.show()
 	pull_from_below_animation.play()
 
-	for area in death_zone_area.get_overlapping_areas():
-		if area.is_in_group("Zombie"):
-			print("Wants to Devour ", area)
-			zombies_to_kill.append(area)
-			
 	for zombie in zombies_to_kill:
-		zombie.freeze()
-	pull_from_below_animation.play()
-	for zombie in zombies_to_kill:
-		drag_down(zombie)
-		
-	for zombie in zombies_to_kill:
-		pass
-		#kill_zombie(zombie)		
+		if is_instance_valid(zombie):
+			drag_down(zombie)
+
 	zombies_to_kill.clear()
-	print("Emiting Done Eat Normal Time So Devour ")
-	done_eating.emit()
 			
 	
 func drag_down(zombie_to_drag):
 	zombie_to_drag.reparent(zombie_hiding_rect)
 	var sprite_frames = pull_from_below_animation.sprite_frames
 	var anim_name = pull_from_below_animation.animation
-	var duration = sprite_frames.get_frame_count(anim_name) / sprite_frames.get_animation_speed(anim_name)
+	var duration = sprite_frames.get_frame_count(anim_name) / float(sprite_frames.get_animation_speed(anim_name))
 	var tween = create_tween()
 	tween.tween_property(zombie_to_drag, "position", zombie_to_drag.position + Vector2(0, 42), duration)
 	tween.tween_callback(kill_zombie.bind(zombie_to_drag))
-	pull_from_below_animation.hide()
 	
 func kill_zombie(zombie_to_kill):
 	pass
@@ -126,4 +121,6 @@ func kill_zombie(zombie_to_kill):
 
 
 func _on_pull_from_below_anim_animation_finished() -> void:
-	pass # Replace with function body.
+	pull_from_below_animation.hide()
+	print("Emiting Done Eat Normal Time So Devour ")
+	done_eating.emit()
