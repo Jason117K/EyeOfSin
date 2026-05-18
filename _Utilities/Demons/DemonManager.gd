@@ -60,7 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		# If they left click, grab the positon and place a demon there 
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if get_parent().visible == false:
+			if get_parent() != Global.game_controller.get_active_dimension():
 				#print(get_parent(), " is not visible, return early qqx")
 				return 
 			#print(get_parent()," QQx Grid Map on Click is ", grid_map)

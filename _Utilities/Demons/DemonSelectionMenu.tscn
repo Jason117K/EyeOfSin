@@ -275,6 +275,18 @@ texture_normal = ExtResource("15_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="PipToggle" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="PipToggleButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PipToggle"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("15_e3ig8")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="." method="_on_EggButton_pressed"]
@@ -285,3 +297,4 @@ stretch_mode = 0
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PipToggle/PipToggleButton" to="." method="_on_pip_toggle_button_pressed"]
