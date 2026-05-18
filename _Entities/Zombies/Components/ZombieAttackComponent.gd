@@ -145,6 +145,7 @@ func _process(_delta):
 						if canSpecial && !collider.is_in_group("Drone"):
 							parent.special_move()
 							canSpecial = false
+							is_attacking = true
 							pass
 						else:
 							attack_demon(collider)

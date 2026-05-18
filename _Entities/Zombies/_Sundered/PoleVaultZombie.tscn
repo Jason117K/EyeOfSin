@@ -422,13 +422,15 @@ material = SubResource("44")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
 animation = &"Vault"
+frame = 12
+frame_progress = 0.4597536
 flip_h = true
 script = ExtResource("14_wnede")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.85098, 0.101961, 0.101961, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=391425766 groups=["Zombie"]]
-target_position = Vector2(-30, 0)
+target_position = Vector2(-26, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1879321742]

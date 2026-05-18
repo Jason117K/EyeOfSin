@@ -3,12 +3,13 @@ extends Node2D
 
 @onready var animatedSprite = $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
 @onready var speedComp = $"../SpeedComponent"       # RefCounted to speed component 
+@onready var attack_comp := $"../AttackComponent"
 @onready var parent = get_parent()                  # RefCounted to parent 
  
 #@onready var tween = Tween.new()  # Create new Tween node
 var tween
 var move_duration = 3.3  # Duration of the vault movement in seconds
-var vault_distance = -150  # Distance to move left (negative for leftward movement)
+var vault_distance = -110  # Distance to move left (negative for leftward movement)
 var moveDone = false
 
 func _ready():
@@ -64,6 +65,7 @@ func _on_vault_timer_timeout():
 func moveFinished():
 	animatedSprite.setSpecialMoveFalse()
 	speedComp.setSpeed(26)
+	attack_comp.stop_attack()
 	moveDone = true
 
 func silence():
