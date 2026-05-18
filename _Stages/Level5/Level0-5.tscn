@@ -23,15 +23,17 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_k4d0o"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_uqvme"]
 
+[sub_resource type="Resource" id="Resource_gtg2i"]
+script = ExtResource("4_pkv84")
+Unhallower = 1
+
 [sub_resource type="Resource" id="Resource_3au0f"]
 script = ExtResource("4_pkv84")
 Unhallower = 1
-Sundered = 4
 
 [sub_resource type="Resource" id="Resource_10a2h"]
 script = ExtResource("4_pkv84")
-Reborn = 1
-Unhallower = 1
+Severed = 2
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="Resource" id="Resource_1cdkr"]
@@ -88,7 +90,7 @@ process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=64591417 instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 109)
-waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_3au0f")])
+waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_gtg2i")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1882869662 instance=ExtResource("4_51x2f")]
 z_index = 1
@@ -436,7 +438,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=99321584]
 position = Vector2(370, 208)
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

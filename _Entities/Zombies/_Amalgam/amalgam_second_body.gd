@@ -1,24 +1,11 @@
-extends Area2D
-#BaseZombie.gd
+extends Zombie
 
-class_name Zombie 
-# Defines basic behavior for all zombie types
 
-signal zombie_death
+func get_zombie():
+	return get_parent()
 
-@onready var compManager : ZombieComponentManager = $ComponentManager
-@onready var healthComp : ZombieHealthComponent = $HealthComponent
-@onready var speedComp = $SpeedComponent
-@onready var attackComp = $AttackComponent
 
-var column_explosion
-var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
-const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
-var silence_field
-var is_silenced := false
-@export var silence_field_position : Vector2
 
-@export var charge_cost := 1
 
 func _ready() -> void:
 	
@@ -148,23 +135,10 @@ func get_max_health():
 	return healthComp.maxHealth
 	
 func get_speed():
-	return speedComp.speed
+	return 1
 	
 func get_damage():
-	return attackComp.attack_power
+	return 0
 	
 func spawn_drone_on_death():
-	var drone = DroneScene.instantiate()
-	drone.is_stationary = true 
-	get_parent().add_child(drone)
-	if self.is_in_group("Green"):
-		drone.add_to_group("Green")
-	else:
-		drone.add_to_group("Purple")
-		
-		
-	drone.global_position = global_position
-
-
-			
-			
+	pass

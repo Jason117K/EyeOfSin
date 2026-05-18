@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cadtk2jnur3sy"]
 
-[ext_resource type="Script" uid="uid://duyow4yun5tj8" path="res://_Entities/Zombies/Components/ComponentManager.gd" id="1"]
+[ext_resource type="Script" uid="uid://duyow4yun5tj8" path="res://_Entities/Zombies/Components/ZombieComponentManager.gd" id="1"]
+
 
 
 [node name="ComponentManager" type="Node2D"]

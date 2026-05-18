@@ -3,7 +3,7 @@ extends Control
 @onready var blood_label := $HUD_Panel/HUD_HBox/Blood_VBox/BloodAmountLabel
 @onready var health_label := $HUD_Panel/HUD_HBox/Health_VBox/HealthAmountLabel
 
-var blood_amount
+var blood_amount = 50
 
 func _ready() -> void:
 	Global.register_ui_layer(self)

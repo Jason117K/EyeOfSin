@@ -1,4 +1,4 @@
-extends Node2D
+class_name ZombieHealthComponent extends Node2D
 #ZombieHealthComponent.gd
 
 
@@ -42,9 +42,9 @@ func getInjured():
 	
 	
 # Function to handle zombie taking damage
-func take_damage(damage):
+func take_damage(damage, piercing : bool = false):
 	
-
+	print(zombie.name, " just took, ", damage)
 	health -= damage
 	injured = health < halfHealth
 
@@ -95,7 +95,7 @@ func _process(_delta):
 		
 # Returns the health to it's original value 
 func resetHealth():
-	health = (halfHealth * 2)
+	health = maxHealth
 	injured = false
 	
 

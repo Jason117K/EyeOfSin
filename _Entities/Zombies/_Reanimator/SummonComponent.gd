@@ -31,13 +31,11 @@ func summon_backup():
 	if is_silenced:
 		return
 	#print("Summoning ",dancerZombie.position.y)
-	# Get reference to GameLayer
+
 	var game_layer = get_parent().get_parent()
 	var root = get_tree().current_scene
 	var level = root.get_name()
-	
-	#TODO double check these postions 
-	
+		
 	
 	# Don't spawn them in unreachable areas 
 	if(dancerZombie.position.y < 128):

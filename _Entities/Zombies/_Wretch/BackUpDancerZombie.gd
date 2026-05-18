@@ -6,3 +6,7 @@ extends Zombie
 
 func get_zombie_name():
 	return " WRETCH "
+
+func silence():
+	super()
+	attackComp.silence()

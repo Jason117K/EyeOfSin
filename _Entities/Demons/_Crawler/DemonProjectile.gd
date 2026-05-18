@@ -47,6 +47,10 @@ func _ready() -> void:
 	if wyrmBuff:
 		#print("SETUP LIGHTNING ZONE")
 		setup_lightning_zone()
+	else:
+		lightning_detection_zone.monitoring = false
+		lightning_detection_zone.get_child(0).disabled = true
+		lightning_zone_visual.hide()
 	if self.is_in_group("Green"):
 		self.set_collision_mask_value(1,false)
 		self.set_collision_mask_value(2,false)
@@ -58,7 +62,7 @@ func _ready() -> void:
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)	
-		
+	print("area_entered connections: ", self.area_entered.get_connections())
 				
 func _physics_process(delta: float) -> void:
 	if not _spawn_initialized:
@@ -79,35 +83,15 @@ func _physics_process(delta: float) -> void:
 	query.collide_with_bodies = false
 	query.collision_mask = collision_mask
 	query.exclude = [self.get_rid()]
-	#var result = space_state.intersect_ray(query)
-	#if result:
-		## Clamp movement to the hit point — projectile arrives at its natural speed
-		#position.x += result.position.x - global_position.x
-		#distance_traveled = position.x - spawn_position.x
-	#else:
+
 	position.x += travel_distance
 	distance_traveled = position.x - spawn_position.x
-	print(self, " Projectile 6Position Is ", self.position)
+	#print(self, " Projectile 6Position Is ", self.position)
 	if distance_traveled > max_distance_can_travel:
 		if max_distance_can_travel > 0:
 			#print(self, " Traveled Too Far, ", distance_traveled , " is greater than ", max_distance_can_travel, " Time to Die ")
 			queue_free()
 		
-#func _physics_process(delta: float) -> void:
-	### Code For CharacterBody2D
-	##velocity = Vector2(speed,0)
-	##collision = move_and_collide(velocity*delta)
-	##if collision:
-		##print("Collision Projectile DetectedDDDDDDDD")
-		##on_hit(collision.get_collider())
-		#
-	#position.x += speed * delta  # Move the projectile to the right
-#
-	## Remove the projectile if it goes off-screen
-	#if position.x > get_viewport_rect().size.x:
-		#queue_free()  # Remove projectile if off-screen
-		#
-	
 
 func setup_lightning_zone():
 	if self.is_in_group("Green"):
@@ -133,6 +117,7 @@ func on_hit(area):
 	if area.is_in_group("Zombie"):
 		if area.get_parent().get_parent() != self.get_parent().get_parent():
 			return
+		print("Area Hit Is ", area)
 		var compManager = area.getCompManager()
 		var healthComp = compManager.getHealthComponent()
 		if is_slowing:
@@ -153,7 +138,8 @@ func on_hit(area):
 			column_explode = false
 		if silencing:
 			area.silence()
-		compManager.take_damage(damage)  # Call take_damage() on the zombie
+		print("Calling Take Damage On ", area)
+		compManager.take_damage(damage,piercing)  # Call take_damage() on the zombie
 		if piercing == false:
 			queue_free() 
 		else:
@@ -176,14 +162,13 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 		compManager.slow()
 		compManager.take_damage(lightning_damage)  # Call take_damage() on the zombie
 	else:
-		print(area, " is not in Zombie Group")
+		pass
+		#print(area, " is not in Zombie Group")
 		
 # Function to handle blood generation
 func generate_blood():
 	print("Generating Blood")
 	var blood_instance = blood_scene.instantiate()  
-	
 	get_parent().add_child(blood_instance) 
 	blood_instance.set_fast_pickup_time() 
-	#Set the blood pos to above the occulum
 	blood_instance.global_position = self.global_position + Vector2(0,-9)

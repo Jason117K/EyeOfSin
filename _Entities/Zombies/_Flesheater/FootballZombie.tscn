@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c2c4na1yww6up" path="res://_Entities/Zombies/_Flesheater/FootballZombie.gd" id="1_43cmf"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="2_uh7t5"]
-[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ComponentManager.tscn" id="3_3bdmc"]
-[ext_resource type="PackedScene" path="res://_Entities/Zombies/Components/HealthComponent.tscn" id="4_jtaao"]
-[ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/Components/SpeedComponent.tscn" id="5_sola1"]
-[ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/Components/AttackComponent.tscn" id="6_fa81k"]
+[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ZombieComponentManager.tscn" id="3_3bdmc"]
+[ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/ZombieHealthComponent.tscn" id="4_jtaao"]
+[ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/Components/ZombieSpeedComponent.tscn" id="5_sola1"]
+[ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/Components/ZombieAttackComponent.tscn" id="6_fa81k"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="7_2m731"]
 [ext_resource type="Texture2D" uid="uid://ce1kshsbddsup" path="res://_Entities/Zombies/_Flesheater/FootballZombie-Sheet.png" id="8_3ru2w"]
 [ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://_Entities/Zombies/_Flesheater/FootballZombie-SheetWEB.png" id="9_vy6vh"]
@@ -291,11 +291,7 @@ position = Vector2(0, -2)
 sprite_frames = SubResource("9")
 animation = &"WebWalk"
 script = ExtResource("10_g8toj")
-hue_shift = null
-targetColorString = null
-targetColor = null
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
-replaceColor = null
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=910183991]
 target_position = Vector2(-17, 0)

@@ -1,93 +1,79 @@
-extends Node2D
-#Comp Manager
+class_name ZombieComponentManager extends Node2D
 
-#Component Manager Script for All Zombies 
-
-# Adjustable Stat Variables 
-#@export var health = 17 #Zombie Health
-#@export var speed = 29  #Zombie Movement Speed
-#@export var attack_power = 33   #Damage zombie deals when attacking
 
 #State tracking variables 
-var is_attacking = false #Whether or not we attacking
-var target_demon = null  #Holds reference to the demon being attacked
-var isSlow = 0  #how much slow the zombie has
+var is_attacking = false
+var target_demon = null
+var isSlow = 0  
 var thisMaterial  
 var thisMaterial2
 var spawn_slow_field := false 
 var spawn_drone_on_death := false
 var should_column_explode := false 
+var reset_speed_timer : Timer
 
-#Onready variables for tracking nodes 
-@onready var animatedSprite = $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
-@onready var attack_ray = $"../DMGRayCast2D" # RefCounted to Damage Raycast
-@onready var healthComp = $"../HealthComponent" # RefCounted to health comp 
-@onready var speedComp =  $"../SpeedComponent"   # RefCounted to Speed Comp
+@onready var animatedSprite = $"../AnimatedSprite2D"  
+@onready var attack_ray = $"../DMGRayCast2D" 
+@onready var healthComp = $"../HealthComponent" 
+@onready var speedComp =  $"../SpeedComponent"   
 @onready var zombie : Zombie = get_parent()
 @onready var bloodHit := $"../BloodHit"
+@onready var damage_vfx_spawn_locations = [bloodHit]
 
-var reset_speed_timer : Timer
 
 func _process(delta):
 	speedComp.tick(delta)
 	animatedSprite.tick(delta)
 
+
 func blood_slow():
-	#print("BLOOD Slow")
 	speedComp.setSpeed(speedComp.getOriginalSpeed()/3)
 	set_hue_shift(0)
 	
-func undoBloodSlow():
-	#print("UNDO BLOOD Slow")
-	reset_speed()
-	#print("OG Hue Shift Is ", animatedSprite.original_hue_shift)
-	set_hue_shift(animatedSprite.original_hue_shift)
 	
+func undoBloodSlow():
+	reset_speed()
+	set_hue_shift(animatedSprite.original_hue_shift)	
 	
 	
 func knockBack():
 	zombie.global_position = zombie.global_position + Vector2(9,0) 
 	
+	
 func set_hue_shift(hue_shift_degrees):
 	animatedSprite.set_hue_shift(hue_shift_degrees)
 	
-#Tells the zombie it's locked in single combat with a drone
-func fightDrone():
-	pass
-	#$"../AttackComponent"
-	#speedComp.setSpeed(0)
 	
 #Make the zombie explode because it fought a buffed drone 
 func fightDroneExplode():
 	healthComp.willExplodeFromDrone()
 	
-#Tells the zombie to stop one on one drone combat
+	
 func reset_speed():
 	speedComp.setSpeed(speedComp.getOriginalSpeed())
 	
-#Special Move handler for pole vaulter specifically 
+
 func special_move():
 	var specialMoveComp = $"../SpecialMoveComp"
 	print("Pole Vault Special COMP Manager")
 	specialMoveComp.executeMove()
 	animatedSprite.setSpecialMoveTrue()
 	
-# Generoic special move setter 
+	
 func special_move2():
 	animatedSprite.setSpecialMoveTrue()
 	
-# Returns current slow amount
+	
 func getSlow():  
 	return isSlow 
 	
-# Debuffs zombie with slow effect
+	
 func slow():
 	isSlow = isSlow + 100
 	speedComp.slow()
 	$DebuffDegrade.start()
 
 func bleed(bleed_damage):
-	#print("Health Comp Should Bleed")
 	healthComp.bleed(bleed_damage)
 
 	
@@ -95,19 +81,27 @@ func bleed(bleed_damage):
 func getHealthComponent():
 	return healthComp
 
+func append_blood_hit(new_blood_hit):
+	damage_vfx_spawn_locations.append(new_blood_hit)
+	
+func erase_blood_hit(blood_hit_to_erase):
+	damage_vfx_spawn_locations.erase(blood_hit_to_erase)
+	
+	
 # Handles the zombie taking damage 
-func take_damage(damage):
-#	print(zombie.name, " jjust took, ", damage)
-	bloodHit.visible = true 
-	bloodHit.rotation_degrees = randf_range(-60, 60)
-	if zombie.is_in_group("Purple"):
-		bloodHit.play("hit_purple")
-	else:
-		bloodHit.play("hit_green")
+func take_damage(damage,piercing : bool = false):
+	
+	for blood_hit in damage_vfx_spawn_locations:
+		blood_hit.visible = true 
+		blood_hit.rotation_degrees = randf_range(-60, 60)
+		if zombie.is_in_group("Purple"):
+			blood_hit.play("hit_purple")
+		else:
+			blood_hit.play("hit_green")
 	
 	
 	
-	healthComp.take_damage(damage)
+	healthComp.take_damage(damage,piercing)
 	
 	# Adds a visual effect for damage 
 	#TODO Review Damage Hit Flash Visusal Effects HitFlash
@@ -124,8 +118,8 @@ func take_damage(damage):
 	
 func increaseBloodWorth():
 	healthComp.bloodWorth = healthComp.bloodWorth + 10.0
-#Set the enemy colors on spawn 
-#Set the enemy colors on spawn 
+
+
 func _on_JustNowSpawned_timeout():
 #Create a unique material instance for this zombie
 	thisMaterial = animatedSprite.material.duplicate()

@@ -38,15 +38,6 @@ var _current_target_anim: StringName = &""
 
 
 func _ready() -> void:
-	#print(get_parent(), "Apply Hue SHIFT ", count)
-	#if get_parent().is_in_group("Purple"):
-		#print("Apply Parent Is Purple And Hue Shift is : ", hue_shift)
-	#if get_parent().is_in_group("Green"):
-		#print("Apply Parent Is Green And Hue Shift is : ", hue_shift)
-	#_apply_hue_shift()
-	# Ensure updates on animation changes
-	#animation_changed.connect(_apply_hue_shift)
-	#frame_changed.connect(_apply_hue_shift)
 	
 	self.connect("animation_changed",_on_animation_changed)
 	thisMaterial = material.duplicate()
@@ -138,7 +129,7 @@ func _on_AnimatedSprite_animation_finished():
 	if("Vault" in self.animation):
 		specialMove = false
 	if("death" in self.animation):
-		zombie.kill_zombie()
+		zombie.die()
 
 
 func _apply_hue_shift() -> void:

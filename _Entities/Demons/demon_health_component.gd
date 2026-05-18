@@ -32,8 +32,9 @@ func get_max_health():
 	
 	
 func take_damage(damage):
-	#print(demon, " is taking DAMAGE health is ", health)
+	
 	health = health - damage
+	print(demon, " is taking DAMAGE health is now ", health)
 	if(health <= 0):
 		demon.die()
 

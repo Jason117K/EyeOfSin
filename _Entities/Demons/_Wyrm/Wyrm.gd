@@ -26,7 +26,6 @@ extends Demon
 @onready var projectile_shoot_component := $ProjectileShootComponent
 # Raycast to detect zombies in front of the spider
 @onready var attack_ray = $DMG_RayCast2D
-var projectile_scene = preload("res://_Entities/Demons/_Wyrm/WyrmProjectile.tscn")  # Load the projectile scene
 @onready var shootTimer = $ShootTimer
 @onready var buffNodes = $BuffNodesComponent
 @onready var shell_sprite = $Egg

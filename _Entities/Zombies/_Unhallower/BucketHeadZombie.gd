@@ -1,17 +1,11 @@
 extends Zombie
 # BucketHeadZombie.gd
 
-# Handles Any BucketHeadZombie Specific Logic 
-
-func _ready() -> void:
-	super()
-	pass
-	#print("MawPREY Area2D: ", name)
-	#print("MawPREY Collision Layer: ", collision_layer)
-	#print("MawPREY Collision Mask: ", collision_mask)
-	#print("MawPREY Monitoring: ", monitoring)
-	#print("MawPREY Monitorable: ", monitorable)
-
 
 func get_zombie_name():
 	return " UNHALLOWER "
+	
+	
+func silence():
+	super()
+	attackComp.silence()

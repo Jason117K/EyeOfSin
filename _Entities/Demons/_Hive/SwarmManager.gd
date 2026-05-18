@@ -42,12 +42,21 @@ func kill_all_and_respawn():
 
 func kill_all_drones():
 	for enemy in drone_assignments.keys():
-		for drone in drone_assignments[enemy]:
+		var drones = drone_assignments[enemy]
+		for i in range(drones.size() - 1, -1, -1):
+			if is_instance_valid(drones[i]):
+				drones[i].die()
+		while drone_assignments[enemy].size() > 0:
+			var drone = available_drones.pop_back()
 			if is_instance_valid(drone):
 				drone.die()
-	for drone in available_drones:
+	print("Avaliable Drones is " , available_drones)
+	
+	while available_drones.size() > 0:
+		var drone = available_drones.pop_back()
 		if is_instance_valid(drone):
 			drone.die()
+		
 	available_drones.clear()
 	drone_assignments.clear()
 	drone_rest_positions.clear()
@@ -84,6 +93,7 @@ func spawn_initial_drones():
 		else:
 			drone.add_to_group("Purple")
 		available_drones.append(drone)
+		print("Avaliable Drones WAS " , available_drones)
 
 		var rest_pos = calculate_rest_position(i)
 		drone_rest_positions[drone] = rest_pos

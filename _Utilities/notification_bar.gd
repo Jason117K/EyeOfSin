@@ -84,6 +84,8 @@ func show_main_notification_only():
 	
 func _on_hide_bar_timer_timeout():
 	hide()
+	current_demon = null
+	current_zombie = null
 	
 	
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
@@ -95,6 +97,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		
 		
 func set_demon_info(demon):
+	current_zombie = null
 	hide_bar_timer.wait_time = info_disappear_time
 	current_demon = demon
 	show_demon_notification()
@@ -117,6 +120,8 @@ func set_demon_info(demon):
 	set_label_border_color(notifLabel, Color.RED)	
 			
 func set_zombie_info(zombie):
+	current_demon = null
+	print("Setting Bar For ", zombie)
 	hide_bar_timer.wait_time = info_disappear_time
 	current_zombie = zombie
 	show_zombie_notification()

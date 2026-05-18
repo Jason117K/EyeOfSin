@@ -20,7 +20,7 @@ var cooldown_timer : Timer
 @export var bleed_damage_increase := 2
 
 func _ready() -> void:
-	shoot_positions = [shootPosition1, shootPosition2]
+	shoot_positions = [shootPosition1] #shootPosition2]
 	attack_rays = [attack_ray_1]
 	super()
 	
@@ -40,7 +40,8 @@ func fire_laser():
 		laser_shoot_comp_2.fire()
 		shoot_projectile()
 	else:
-		print("Cannot Attack")
+		pass
+		#print("Cannot Attack")
 	
 		
 func apply_buffs_to_projectile(projectile_to_buff):
@@ -49,7 +50,7 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	projectile_to_buff.is_slowing = false
 	projectile_to_buff.damage = projectile_damage
 	projectile_to_buff.speed = projectile_speed 
-	projectile_to_buff.hide()
+	#projectile_to_buff.hide()
 	
 	if isCrawlerBuffed:
 		projectile_to_buff.is_slowing = true

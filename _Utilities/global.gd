@@ -33,6 +33,7 @@ var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn")
 var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 var consume_zombie_group_scene = preload("res://_Entities/Demons/_Maw/maw_consume.tscn")
 var silence_field = preload("res://_Entities/Zombies/silence_fx.tscn")
+var severed_spriteframes = preload("res://_Entities/Zombies/_Severed/Severed.tres")
 
 
 
@@ -266,7 +267,8 @@ func get_consume_zombie_group_scene():
 func get_silence_field():
 	return silence_field
 	
-	
+func get_severed_spriteframes():
+	return severed_spriteframes
 	
 	
 	
