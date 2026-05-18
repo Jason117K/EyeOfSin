@@ -91,6 +91,7 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 # --- Dual Scene Transitions ---
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
+	print_scene_tree()
 	Global.hide_notification_bar()
 	pause_button.visible = true
 
