@@ -6,7 +6,7 @@ var silence_field_timer : Timer
 @onready var silence_field_2 :AnimatedSprite2D = $SilenceFieldAnim2
 @onready var silence_field_3 :AnimatedSprite2D = $SilenceFieldAnim3
 @onready var silence_field_4 :AnimatedSprite2D = $SilenceFieldAnim4
-
+  
 func activate():
 	silence_field_1.animation_finished.connect(func(): silence_field_1.hide())
 	silence_field_2.animation_finished.connect(func(): silence_field_2.hide())
@@ -29,6 +29,7 @@ func activate():
 		self.set_collision_mask_value(4,true)
 	area_entered.connect(func(area): 
 		if area.is_in_group("Zombie"):
+			print("Silence ", area)
 			area.silence()
 			)
 	for area in get_overlapping_areas():
@@ -43,6 +44,7 @@ func activate():
 	silence_field_timer.timeout.connect(show_silence_fields)
 	add_child(silence_field_timer)
 	silence_field_timer.start()
+
 
 func show_silence_fields():
 	var fields = [silence_field_1, silence_field_2, silence_field_3, silence_field_4]

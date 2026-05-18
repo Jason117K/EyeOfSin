@@ -9,12 +9,17 @@ extends Node2D
 @onready var hit2 = $Hit3
 @onready var hit3 = $Hit4
 @onready var hitBoxComp = $HitBoxComponent
+@onready var erupter_zombie_parent := get_parent()
 
 # Adjustable Explosion Damage
 @export var attack_power = 1000
 
+var silenced := false 
+
+
 # Play the Animation and Make it Visible 
 func goBoom():
+
 	print("TickerRRRRRRR going boom ")
 	if get_parent().is_in_group("Green"):
 		hitBoxComp.set_collision_mask_value(1,false)
@@ -24,8 +29,12 @@ func goBoom():
 		hitBoxComp.set_collision_mask_value(1,false)
 		hitBoxComp.set_collision_mask_value(2,true)
 		hitBoxComp.set_collision_mask_value(3,false)
+		
+	if silenced:
+		hide()
+	else:
+		show()
 
-	show()
 	hit1.play()
 	hit2.play()
 	hit3.play()
@@ -34,6 +43,8 @@ func goBoom():
 
 # When the last animation is finished, damage all towers caught in the area
 func _on_Hit3_animation_finished():
+	if silenced:
+		erupter_zombie_parent.die()
 	#print("Ticker DEF About Die")
 	# Make the animation invisible & stop it 
 	self.visible = false 
@@ -60,6 +71,15 @@ func _on_Hit3_animation_finished():
 	var parent = get_parent()
 	parent.die()
 	#print("TTicker Should Die")
+
+func silence():
+	attack_power = 0
+	silenced = true 
+	
+	
+	
+	
+	
 	
 
 	
