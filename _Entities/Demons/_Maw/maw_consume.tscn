@@ -333,7 +333,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvtxa"]
-size = Vector2(64, 32)
+size = Vector2(64, 20)
 
 [node name="MawConsume" type="Area2D" unique_id=785544487]
 script = ExtResource("1_jh8wo")
@@ -357,42 +357,36 @@ frame = 20
 frame_progress = 0.6965423
 
 [node name="DetectZombieArea1" type="Area2D" parent="." unique_id=2067928707]
-visible = false
 position = Vector2(-80, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZombieArea1" unique_id=772538374]
 shape = SubResource("RectangleShape2D_xvtxa")
 
 [node name="DetectZombieArea2" type="Area2D" parent="." unique_id=1451444935]
-visible = false
 position = Vector2(-48, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZombieArea2" unique_id=522652460]
 shape = SubResource("RectangleShape2D_xvtxa")
 
 [node name="DetectZombieArea3" type="Area2D" parent="." unique_id=2145487123]
-visible = false
 position = Vector2(-16, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZombieArea3" unique_id=763615325]
 shape = SubResource("RectangleShape2D_xvtxa")
 
 [node name="DetectZombieArea4" type="Area2D" parent="." unique_id=775115891]
-visible = false
 position = Vector2(16, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZombieArea4" unique_id=1899472949]
 shape = SubResource("RectangleShape2D_xvtxa")
 
 [node name="DetectZombieArea5" type="Area2D" parent="." unique_id=1332979380]
-visible = false
 position = Vector2(48, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZombieArea5" unique_id=474971685]
 shape = SubResource("RectangleShape2D_xvtxa")
 
 [node name="DetectZombieArea6" type="Area2D" parent="." unique_id=507601565]
-visible = false
 position = Vector2(80, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZombieArea6" unique_id=1692182199]

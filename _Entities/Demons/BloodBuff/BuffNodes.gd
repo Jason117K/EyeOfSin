@@ -62,7 +62,8 @@ func clearBuffs():
 	for demon in buffedDemons:
 		#print("Now DDD Buffing ", demon)
 		if demon != null:
-			demon.debuff()
+			pass
+			#demon.debuff()
 	pass
 	
 	

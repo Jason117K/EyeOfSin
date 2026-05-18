@@ -1468,9 +1468,9 @@ digestTime = 5.0
 script = ExtResource("3_xf387")
 spinalOcculumHealth = 1500
 spinal_occulum_max_health = 1500
-health = 800
+health = 9999
 healthRegen = 0.1
-maxHealth = 800
+maxHealth = 9999
 
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("21_8vtaw")]
 position = Vector2(256, 205)

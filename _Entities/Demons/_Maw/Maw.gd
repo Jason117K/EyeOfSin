@@ -48,6 +48,8 @@ var consume_zombie_group
 var devour_done := true 
 
 
+
+
 func _ready():
 	super()
 	collision_mask = 2
@@ -275,13 +277,14 @@ func add_consume_zombie_group_component():
 
 	consume_zombie_group.global_position = self.global_position 
 	consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(256,256)
-	consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(32,0)
+	consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(144,0)
 	if self.is_in_group("Green"):
 		consume_zombie_group.add_to_group("Green")
 	else:
 		consume_zombie_group.add_to_group("Purple")
-	
+	demon_die.connect(consume_zombie_group.die)
 	get_parent().add_child(consume_zombie_group)
+
 	consume_zombie_group.set_all_areas()
 	consume_zombie_group.done_eating.connect(devour_complete)
 	print_scene_tree(consume_zombie_group)
@@ -336,8 +339,7 @@ func get_damage():
 	
 
 
-# Receive a buff from a neighbor demon. First buff wins —
-# subsequent buffs are ignored by design.
+
 func receive_buff(demon):
 	
 	var demonName = truncate_string(demon.name)
@@ -375,10 +377,11 @@ func receive_buff(demon):
 				pass
 
 func devour_zombies():
+	print("Devour Zombies Func Called, devour_done is ", devour_done)
 	if devour_done:
 		print("Should Devour ")
-		consume_zombie_group.get_highest_zombie_concentration_and_eat()
 		devour_done = false
+		consume_zombie_group.get_highest_zombie_concentration_and_eat()
 	else:
 		print("Cannot Devour")
 	
@@ -418,6 +421,7 @@ func _on_detection_component_area_entered(area: Area2D) -> void:
 
 
 func die():
+	super()
 	if tentacle1: tentacle1.queue_free()
 	if tentacle2: tentacle2.queue_free()
 	if tentacle3: tentacle3.queue_free()
@@ -427,10 +431,13 @@ func die():
 	buffNodes.clearBuffs()
 	queue_free()
 
-
 func die_fromClearSpace():
-	buffNodes.clearBuffs()
-	queue_free()
+	super()
+	if buffNodes != null:
+		buffNodes.clearBuffs()
+	queue_free()				
+		
+
 
 
 func show_tentacles():

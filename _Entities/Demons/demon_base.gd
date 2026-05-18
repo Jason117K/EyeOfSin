@@ -17,6 +17,8 @@ var isBuffed := false
 @onready var animSpriteComp := $AnimatedSpriteComponent
 @onready var healthComp := $HealthComponent
 
+signal demon_die
+
 func _ready() -> void:
 	pass
 	await get_tree().physics_frame
@@ -122,6 +124,12 @@ func get_health():
 func get_max_health():
 	return healthComp.get_max_health()
 	
+func die():
+	demon_die.emit()
+
+func die_fromClearSpace():
+	demon_die.emit()
+
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
 	print(prefix + node.name + "(" + node.get_class() + ")")
