@@ -619,6 +619,10 @@ func _on_world_swap_button_pressed() -> void:
 		Global.swap_scenes()
 
 
+func _on_pip_toggle_button_pressed() -> void:
+	Global.game_controller.toggle_pip_size()
+
+
 func _on_codex_button_pressed() -> void:
 	Global.hide_notification_bar()
 	codex_clicked.emit()

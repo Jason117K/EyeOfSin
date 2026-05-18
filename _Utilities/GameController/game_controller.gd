@@ -13,6 +13,12 @@ var swap_cooldown_timer: Timer
 var demon_manager
 
 @onready var pause_button: Button = $PauseButton
+@onready var pip := $PipRoot
+
+# Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
+const DIM_BITS := [1 << 1, 1 << 2]
+const UI_BIT := 1
+var _default_root_cull_mask := 0xFFFFFFFF
 
 
 func _ready() -> void:
@@ -24,6 +30,9 @@ func _ready() -> void:
 	swap_cooldown_timer.one_shot = true
 	swap_cooldown_timer.timeout.connect(func(): can_swap = true)
 	add_child(swap_cooldown_timer)
+
+	_default_root_cull_mask = get_viewport().canvas_cull_mask
+	get_tree().node_added.connect(_on_node_added)
 
 
 # --- Internal Helpers ---
@@ -46,17 +55,16 @@ func _cleanup_all_scenes() -> void:
 		_remove_and_free(current_scene)
 	current_scenes.clear()
 	current_scene = null
+	pip.hide_pip()
+	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
 
 func _apply_dimension_visibility() -> void:
 	if current_scenes.size() < 2:
 		return
-	var active_idx := 0 if on_scene_1 else 1
-	var hidden_idx := 1 if on_scene_1 else 0
-	current_scenes[active_idx].visible = true
-	current_scenes[active_idx].set_process_input(true)
-	current_scenes[hidden_idx].visible = false
-	current_scenes[hidden_idx].set_process_input(false)
+	current_scenes[0].visible = true
+	current_scenes[1].visible = true
+	_apply_view_masks()
 
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
@@ -115,11 +123,17 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	current_scenes.append(new1)
 
 	var new2 = load(scene2_path).instantiate()
-	new2.visible = false
+	new2.visible = true
 	scene_container.add_child(new2)
 	current_scenes.append(new2)
 
 	on_scene_1 = true
+	_stamp_scene(current_scenes[0], DIM_BITS[0])
+	_stamp_scene(current_scenes[1], DIM_BITS[1])
+	_apply_view_masks()
+	current_scenes[0].get_node("Camera2D").make_current()
+	pip.show_pip()
+
 	$CurrentScene/WaveManager.call_deferred("_ready")
 	await get_tree().process_frame
 	get_tree().paused = false
@@ -127,6 +141,8 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	pause_button.visible = false
+	pip.hide_pip()
+	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
 	if delete:
 		_cleanup_all_scenes()
@@ -152,6 +168,8 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 	Global.hide_notification_bar()
 	pause_button.visible = false
 
+	pip.hide_pip()
+
 	if current_scene != null:
 		current_scene.visible = false
 
@@ -171,6 +189,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 	Global.hide_notification_bar()
 	pause_button.visible = false
+	pip.hide_pip()
 
 	for s in current_scenes:
 		if is_instance_valid(s):
@@ -208,6 +227,7 @@ func restore_dual_scenes() -> void:
 	await get_tree().process_frame
 	get_tree().paused = false
 	_apply_dimension_visibility()
+	pip.show_pip()
 
 	if on_scene_1:
 		current_scene = current_scenes[0]
@@ -229,12 +249,10 @@ func swap_scenes() -> void:
 	var entering_idx := 1 if on_scene_1 else 0
 
 	current_scenes[leaving_idx].get_demon_manager().clear_hero_demon()
-	current_scenes[leaving_idx].visible = false
-	current_scenes[leaving_idx].set_process_input(false)
-	current_scenes[entering_idx].visible = true
-	current_scenes[entering_idx].set_process_input(true)
-
 	on_scene_1 = !on_scene_1
+	_apply_view_masks()
+	current_scenes[entering_idx].get_node("Camera2D").make_current()
+
 	demon_manager = current_scenes[entering_idx].get_demon_manager()
 
 	swap_cooldown_timer.start()
@@ -243,6 +261,41 @@ func swap_scenes() -> void:
 
 func on_purple_scene() -> bool:
 	return on_scene_1
+
+
+func get_active_dimension() -> Node:
+	if current_scenes.size() < 2:
+		return current_scene
+	return current_scenes[0] if on_scene_1 else current_scenes[1]
+
+
+func toggle_pip_size() -> void:
+	pip.toggle_size()
+
+
+func _on_node_added(node: Node) -> void:
+	if current_scenes.size() < 2 or not (node is CanvasItem):
+		return
+	for i in 2:
+		var s: Node = current_scenes[i]
+		if is_instance_valid(s) and (node == s or s.is_ancestor_of(node)):
+			node.visibility_layer = DIM_BITS[i]
+			return
+
+
+func _stamp_scene(scene: Node, layer: int) -> void:
+	if scene is CanvasItem:
+		scene.visibility_layer = layer
+	for child in scene.get_children():
+		_stamp_scene(child, layer)
+
+
+func _apply_view_masks() -> void:
+	var active_bit: int = DIM_BITS[0] if on_scene_1 else DIM_BITS[1]
+	get_viewport().canvas_cull_mask = UI_BIT | active_bit
+	var inactive_idx := 1 if on_scene_1 else 0
+	pip.set_pip_cull_mask(DIM_BITS[inactive_idx])
+	pip.set_mirror_camera(current_scenes[inactive_idx].get_node("Camera2D"))
 
 
 # --- Alt-Dimension Helpers ---
