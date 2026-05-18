@@ -292,7 +292,7 @@ func _stamp_scene(scene: Node, layer: int) -> void:
 
 func _apply_view_masks() -> void:
 	var active_bit: int = DIM_BITS[0] if on_scene_1 else DIM_BITS[1]
-	get_viewport().canvas_cull_mask = UI_BIT | active_bit
+	get_viewport().canvas_cull_mask = UI_BIT | active_bit | (1 << 9)
 	var inactive_idx := 1 if on_scene_1 else 0
 	pip.set_pip_cull_mask(DIM_BITS[inactive_idx])
 	pip.set_mirror_camera(current_scenes[inactive_idx].get_node("Camera2D"))

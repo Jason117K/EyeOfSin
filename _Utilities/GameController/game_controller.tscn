@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
-[ext_resource type="Script" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
+[ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mahd0"]
+viewport_path = NodePath("PipViewport")
 
 [node name="GameController" type="Node" unique_id=324431877 node_paths=PackedStringArray("scene_container")]
 script = ExtResource("1_ip61f")
@@ -58,27 +61,41 @@ offset_bottom = 409.0
 
 [node name="NotifMarginContainer" parent="." unique_id=1498960940 instance=ExtResource("9_ip61f")]
 
-[node name="PipViewport" type="SubViewport" parent="."]
+[node name="PipViewport" type="SubViewport" parent="." unique_id=882279929]
+disable_3d = true
+transparent_bg = true
 size = Vector2i(740, 412)
 render_target_update_mode = 4
-transparent_bg = true
-canvas_cull_mask = 4
 
-[node name="PipCamera" type="Camera2D" parent="PipViewport"]
+[node name="ColorRect" type="ColorRect" parent="PipViewport" unique_id=814420552]
+custom_minimum_size = Vector2(1000, 1000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -294.0
+offset_right = 130.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
 
-[node name="PipRoot" type="Control" parent="."]
+[node name="PipCamera" type="Camera2D" parent="PipViewport" unique_id=1390905299]
+
+[node name="PipRoot" type="Control" parent="." unique_id=780481794]
 z_index = 2
-script = ExtResource("10_pip")
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("10_pip")
 
-[node name="Backdrop" type="ColorRect" parent="PipRoot"]
+[node name="Backdrop" type="ColorRect" parent="PipRoot" unique_id=117443804]
 visible = false
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -86,13 +103,15 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.6)
 
-[node name="PipView" type="TextureRect" parent="PipRoot"]
+[node name="PipView" type="TextureRect" parent="PipRoot" unique_id=1141650341]
+texture_filter = 1
+layout_mode = 0
 offset_left = 530.0
 offset_top = 300.0
 offset_right = 730.0
 offset_bottom = 402.0
 mouse_filter = 2
-texture_filter = 1
+texture = SubResource("ViewportTexture_mahd0")
 expand_mode = 1
 stretch_mode = 5
 

@@ -425,7 +425,6 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=844790892]
 position = Vector2(370, 208)
 
-[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

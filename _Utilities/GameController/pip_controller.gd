@@ -5,7 +5,7 @@ extends Control
 @onready var _backdrop: ColorRect = $Backdrop
 @onready var _viewport: SubViewport = get_parent().get_node("PipViewport")
 @onready var _pip_camera: Camera2D = _viewport.get_node("PipCamera")
-
+var _restamp_accum := 0.0
 const SMALL_RECT := Rect2(530, 300, 200, 102)   # bottom-right corner
 const LARGE_RECT := Rect2(70, 36, 600, 340)     # big centered overlay
 
@@ -16,24 +16,34 @@ var enlarged := false
 func _ready() -> void:
 	# Share the main world so both dimensions render from the same scene tree.
 	_viewport.world_2d = get_viewport().world_2d
-	_pip_camera.enabled = true
-	_pip_camera.make_current()                   # current within the SubViewport only
-	_view.texture = _viewport.get_texture()
+	_pip_camera.enabled = false          # don't let it override canvas_transform
+	#_view.texture = _viewport.get_texture()
 	_apply_rect(SMALL_RECT)
 	visible = false
+	visibility_layer = 1 << 9        # PipRoot, reserved "PiP chrome" layer (512)
+	_backdrop.visibility_layer = 1 << 9
+	_view.visibility_layer = 1 << 9
 
 
-func _process(_dt: float) -> void:
-	if _mirror_camera and is_instance_valid(_mirror_camera):
-		_pip_camera.global_transform = _mirror_camera.global_transform
-		_pip_camera.zoom = _mirror_camera.zoom
+func _process(dt: float) -> void:
+	pass
+	#_viewport.canvas_transform = get_viewport().canvas_transform
+	#_restamp_accum += dt
+	#if _restamp_accum >= 0.25:
+		#_restamp_accum = 0.0
+		#var gc = Global.game_controller
+		#if gc.current_scenes.size() == 2:
+			#gc._stamp_scene(gc.current_scenes[0], gc.DIM_BITS[0])
+			#gc._stamp_scene(gc.current_scenes[1], gc.DIM_BITS[1])
+
 
 
 func set_mirror_camera(cam: Camera2D) -> void:
 	_mirror_camera = cam
 
 
-func set_pip_cull_mask(mask: int) -> void:
+func set_pip_cull_mask(layer: int) -> void:
+	var mask = (1 << (layer - 1)) | 1   # Enable layer 'layer' and layer 1
 	_viewport.canvas_cull_mask = mask
 
 
