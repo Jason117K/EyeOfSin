@@ -422,7 +422,6 @@ material = SubResource("44")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
 animation = &"Vault"
-frame_progress = 0.972076
 flip_h = true
 script = ExtResource("14_wnede")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
