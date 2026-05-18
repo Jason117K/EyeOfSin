@@ -8,7 +8,6 @@ var swap_ability_instance : Node
 var root
 var selected_demon = occulum_scene  # Holds the currently selected demon scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
-#var is_previewing: bool = false
 
 var preview_sprites: Array = [] # Holds array of preview sprites 
 var is_previewing: bool = false # Whether or not we are currently previewing 
@@ -117,9 +116,6 @@ func _ready():
 	# Connect button signals to their respective functions
 	root = get_parent().get_name()
 	
-	#Set Up Label for Displaying Current Demon
-	#currentDemonLabel = $CurrentDemonLabel
-	
 
 # Handle Deselection
 func _input(event):
@@ -128,14 +124,9 @@ func _input(event):
 		#print("Key Pressed")
 		if event.keycode == KEY_X:
 			deselect_demon()
-			#clear_preview()
-			#release_all_focus()
-			#selected_demon = null 
 		if event.keycode == KEY_Y:
 			#print("Y Key Pressed")
 			if canSwapScenes:
-				#print("Can Swap Scenes is ", canSwapScenes)
-				#Global.game_controller.swap_scenes()
 				Global.swap_scenes()
 			else:
 				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
@@ -170,124 +161,47 @@ func deselect_demon():
 	release_all_focus()
 	selected_demon = null 			
 	setCanRemoveFalse()
+	
+func on_demon_button_pressed(demon_scene,demon_button,demon_label):
+	Global.hide_notification_bar()
+	setCanRemoveFalse()
+	selected_demon = demon_scene
+	var temp_instance = demon_scene.instantiate()
+	create_preview(demon_scene)
+	add_button_highlight(demon_button)
+	temp_instance.queue_free()
+	print(demon_scene, " selected")
+	currentDemonCost = demon_label
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)	
 
 func _on_CrawlerButton_pressed():
-	Global.hide_notification_bar()
-	setCanRemoveFalse()
-	selected_demon = crawler_scene
-	var temp_instance = crawler_scene.instantiate()
-	create_preview(crawler_scene)
-	add_button_highlight(CrawlerButton)
-	
-	#currentDemonLabel.text = "CRAWLER SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerCostLabel
-	#currentDemonCost.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-	
-	print("Crawler selected")
-	#$UIClickAudio.play()
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	#remove_button_highlight(CrawlerButton)
+	on_demon_button_pressed(crawler_scene,CrawlerButton,crawlerCostLabel)
 
+
+func _on_OcculumButton_pressed():
+	on_demon_button_pressed(occulum_scene,OcculumButton,OcculumCostLabel)
+	OcculumCost  += 5
+	clicked_Eye.emit()
+	
 func increaseOcculumCost():
 	OcculumCostLabel.text = str(50+(Global.getOcculumCount()*5))
-	
-# Plays Sound and Makes the Occulum the current selected demon, changing label & preview image 
-func _on_OcculumButton_pressed():
-	Global.hide_notification_bar()
-	setCanRemoveFalse()
-	selected_demon = occulum_scene
-	var temp_instance = occulum_scene.instantiate()
-	create_preview(occulum_scene)
-	add_button_highlight(OcculumButton)
-	
-	#currentDemonLabel.text = "EVIL EYE SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumLabel
-	#currentDemonCost.text = str(temp_instance.get_name(), "IS", temp_instance.get_cost())
-	OcculumCost  += 5
-	
-	
-	#currentDemonCost.text = "Penis"
-	temp_instance.queue_free()
-	
-##	print("3Label text is ", OcculumCostLabel.text)
-#	print("Occulum selected", temp_instance.get_name())
-#	$UIClickAudio.play()
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	clicked_Eye.emit()
 
 
-# Plays Sound and Makes the SpinalOcculum the current selected demon, changing label & preview image 
 func _on_SpinalOcculumButton_pressed():
-	Global.hide_notification_bar()
-	selected_demon = spinalOcculum_scene
-	var temp_instance = spinalOcculum_scene.instantiate()
-	create_preview(spinalOcculum_scene)
-	add_button_highlight(SpinalOcculumButton)
-	setCanRemoveFalse()
-	#currentDemonLabel.text = "OCCULAR SPINE SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumLabel
-	#currentDemonCost.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-	var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
-	#SpinalOcculumButton.release_focus()
-	print("SpinalOcculum selected")
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	#$UIClickAudio.play()
+	on_demon_button_pressed(spinalOcculum_scene,SpinalOcculumButton,SpinalOcculumCostLabel)
 
-# Plays Sound and Makes the Maw the current selected demon, changing label & preview image 
+
 func _on_MawButton_pressed():
-	Global.hide_notification_bar()
-	selected_demon = maw_scene
-	var temp_instance = maw_scene.instantiate()	
-	create_preview(maw_scene)
-	add_button_highlight(MawButton)
-	setCanRemoveFalse()
-	#currentDemonLabel.text = "MAW SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawLabel
-	#currentDemonCost.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-		
-	print("Maw Selected")
-	#$UIClickAudio.play()
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+	on_demon_button_pressed(maw_scene,MawButton,mawCostLabel)
 
-# Plays Sound and Makes the Wyrm the current selected demon, changing label & preview image 
+
 func _on_WyrmButton_pressed():
-	Global.hide_notification_bar()
-	selected_demon = wyrm_scene
-	create_preview(wyrm_scene)
-	add_button_highlight(WyrmButton)
-	var temp_instance = wyrm_scene.instantiate()
-	setCanRemoveFalse()
-	#currentDemonLabel.text = "wyrm SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmLabel
-	#currentDemonCost.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-	
-	print("Wyrm Selected")
-	#$UIClickAudio.play()
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
+	on_demon_button_pressed(wyrm_scene,WyrmButton,wyrmCostLabel)
 
 
-	
-# Plays Sound and Makes the Hive the current selected demon, changing label & preview image 
 func _on_HiveButton_pressed():
-	selected_demon = hive_scene
-	Global.hide_notification_bar()
-	create_preview(hive_scene)
-	add_button_highlight(HiveButton)
-	var temp_instance = hive_scene.instantiate()
-	setCanRemoveFalse()	
-	#currentDemonLabel.text = "HIVE SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveLabel
-	#currentDemonCost.text = str(temp_instance.get_cost())
-	temp_instance.queue_free()
-		
-	print("Hive Selected")
-	#$UIClickAudio.play()
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-# Creates a transparent preview image for a given demon scene 
+	on_demon_button_pressed(hive_scene,HiveButton,hiveCostLabel)
+
 
 func create_preview(demon_scene):
 	#print("MAKE A PREVIEW", demon_scene)
@@ -316,21 +230,11 @@ func create_preview(demon_scene):
 			# Store original position and print it
 			var original_pos = Vector2(child.position.x, child.position.y)
 			preview_sprite.set_meta("original_offset", original_pos)
-			#print(preview_container.name)
 			
 			# Add the preview sprite to the container and array 
 			preview_container.add_child(preview_sprite)
 			preview_sprites.append(preview_sprite)
-		for sprite in preview_sprites:
-			if sprite is AnimatedSprite2D:
-				pass
-				#print("Preview Animation: ", sprite.animation, " | Frame: ", sprite.frame, " | Frames: ", sprite.sprite_frames)		
-		is_previewing = true
-	#	print("Preview container visible: ", preview_container.visible)
-		#print("Preview container global pos: ", preview_container.global_position)
-	#	print("Preview sprites count: ", preview_sprites.size())
-
-	
+		is_previewing = true	
 	temp_demon.queue_free()
 	
 # Clears the current preview image 
@@ -405,24 +309,7 @@ func add_button_highlight(button: TextureButton) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
-	## Set the background to be transparent or match button's original background
-	#highlight_style.bg_color = Color.TRANSPARENT
-	#
-	## Configure the border
-	#highlight_style.border_width_left = highlight_border_thickness
-	#highlight_style.border_width_right = highlight_border_thickness  
-	#highlight_style.border_width_top = highlight_border_thickness
-	#highlight_style.border_width_bottom = highlight_border_thickness
-	#highlight_style.border_color = highlight_border_color
-	#
-	#
-	## Apply some corner rounding for a smoother look
-	#highlight_style.corner_radius_top_left = 4
-	#highlight_style.corner_radius_top_right = 4
-	#highlight_style.corner_radius_bottom_left = 4
-	#highlight_style.corner_radius_bottom_right = 4
-	#
-	
+		
 	# Store the original style so we can restore it later
 	if not button.has_meta("original_normal_style"):
 		button.set_meta("original_normal_style", button.get_theme_stylebox("normal"))
@@ -451,23 +338,12 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 	button.add_child(panel)
 	for child in button.get_children():
 		print(button, " children are ", child)
-	#panel.top_level = true
-	#panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+
 
 	# Expand slightly beyond the button to create a border effect
 	var margin := highlight_border_thickness + 4
-	#panel.global_position = button.global_position - Vector2(margin, margin)
-	#panel.size = button.size + Vector2(margin * 2, margin * 2)	
 	panel.position = Vector2(-margin, -margin)
 	panel.size = button.size + Vector2(margin * 2, margin * 2)
-	#print("Button Global Pos Is  : ", button.global_position)
-	#print("Margin Is ", margin)
-	#print("Crawler Button Panel Global Pos is ",panel.global_position  )
-	#panel.offset_left = -margin
-	#panel.offset_top = -margin
-	#panel.offset_right = margin
-	#panel.offset_bottom = margin
-	#panel.z_index = -1  # Draw behind the button's textures
 	panel.z_index = 2
 
 	# Build the stylebox for the panel
@@ -556,8 +432,7 @@ func remove_button_highlight(button: TextureButton) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
-	#button.remove_theme_stylebox_override("normal")
-	#print("Button to REMOVVE Is ", button)
+
 	button.add_theme_stylebox_override("normal", demon_normal_stylebox_default )
 		#
 		
@@ -569,22 +444,9 @@ func _on_demon_manager_demon_placed() -> void:
 	#add_button_highlight(CrawlerButton)
 
 func showEyeSummon():
-	var OcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
 	OcculumButton.visible = true 
 	OcculumCostLabel.visible = true 
 
-
-func _on_wave_manager_wave_2_almost_start() -> void:
-	if root == "Main":
-		
-		var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
-		SpinalOcculumCostLabel.visible = true 
-		SpinalOcculumButton.visible = true 
-		
-	elif root == "Level2":
-		var WyrmButton = $VBoxContainer/HBoxContainer/Wyrm/WyrmButton
-		wyrmCostLabel.visible = true 
-		WyrmButton.visible = true 
 		
 
 

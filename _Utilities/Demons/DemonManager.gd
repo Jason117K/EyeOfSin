@@ -111,12 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				Global.hide_notification_bar()
 				return 
 			# Place the demon assuming it's within bounds of the level
-			if(parentName == "Main"):
-				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
-					print("Place Demon " , grid_pos)
-					Global.game_controller.place_empty_in_alt_scene(grid_pos)
-					place_demon(grid_pos)
-			elif(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
+			if(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
 					print("Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
@@ -124,37 +119,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif(parentName == "Level0-2" || parentName == "Level0-2_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
 					print("Place Demon " , grid_pos)
-					Global.game_controller.place_empty_in_alt_scene(grid_pos)
-					place_demon(grid_pos)
-			elif(parentName == "Level3"):
-				print("Grid map size is ", grid_map.size())
-				if grid_map.size() == 0 && selected_demon_scene:
-					var temp_instance = selected_demon_scene.instantiate()
-					if "Wyrm" in temp_instance.get_name():
-						print("Place Demon1 " , grid_pos)
-						Global.game_controller.place_empty_in_alt_scene(grid_pos)
-						place_demon(grid_pos)
-					temp_instance.queue_free()
-					
-				if grid_map.size() == 1:
-					var keys = grid_map.keys()
-					
-					var first_key = keys[0]
-					var first_value = grid_map[first_key]
-					print("First key: ", first_key, ", First value: ", first_value)
-					print("Thiss grd: ", grid_pos)
-					print(abs(first_key.x - grid_pos.x))
-							
-					
-					if  abs(first_key.x - grid_pos.x) < 65 &&  (abs(first_key.y - grid_pos.y) < 32):
-						if grid_pos.x > first_key.x:
-							print("Try place demon")
-							Global.game_controller.place_empty_in_alt_scene(grid_pos)
-							place_demon(grid_pos)
-					else:
-						pass
-				else:
-					#print("Place Demon2 " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_demon(grid_pos)
 				
@@ -178,20 +142,9 @@ func clear_space(passed_grid_pos):
 	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
 func clear_space_alt(passed_grid_pos):
-#	print("QQ Grid Map is ", grid_map)
-	#print(" QQ Erase Demon At :", passed_grid_pos)
 	var demon_node = grid_map.get(passed_grid_pos)
-	#print(" QQ Demon to Erase Is  ", demon_node)
-	#demonToErase.die()
 	if demon_node != null:
 		demon_node.die_fromClearSpace()
-		#print("The Right DDDDDDD Function is Being Called ")
-		#if "Empty" in demon_node.name:
-			##return
-			#pass
-		#else:
-			#demon_node.die_fromClearSpace()
-		#demon_node.queue_free()
 	grid_map.erase(passed_grid_pos)
 	#Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 	
@@ -206,27 +159,10 @@ func detect_demon(passed_grid_pos):
 		#print("Demon Node is , ",demon_node, " returning false" )
 		return false 
 	
-func highlight_demon(passed_grid_pos):
-	#print("QQ Grid Map is ", grid_map)
-	var demon_node = grid_map.get(passed_grid_pos)
-	demon_to_move = demon_node
-	if demon_node.has_method("highlight"):
-	#	print("HighLight Should Turn On")
-		highlight_demon_global_pos = demon_node.global_position 
-		demon_node.toggle_highlight()
-		demon_highlighted = true
-		
-		
-		pass
 
 func move_demon(this_demon_to_move, passed_new_grid_pos):
 	this_demon_to_move.toggle_highlight()
-	#print("QQ Grid Map is ", grid_map)
-	#print("HighLight Should Turn Off")
-	#print("HighLight Selected Demon is ", selected_demon_scene)
 	selected_demon_scene = occulum_scene
-#	print("HighLight Selected Demon is NOW ", selected_demon_scene)
-	#print("HighLight OLD Demon is ", this_demon_to_move)
 	place_demon(passed_new_grid_pos)
 	#Doesnt Work
 	#clear_space(passed_new_grid_pos)
@@ -238,17 +174,12 @@ func move_demon(this_demon_to_move, passed_new_grid_pos):
 	pass
 	
 func place_empty_blocker_demon(grid_pos):
-	#print(get_parent(), " QQ1 Grid Map is ", grid_map)
-	#Add Scene Names 
-	#print("Should Place Block Demon")
 	selected_demon_scene = empty_demon_scene
-#	print("About to Place Demon")
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
 	else:
 		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
 		return 
-	
 	
 	if selected_demon_scene == null:
 		print("No demon selected!")
@@ -271,16 +202,12 @@ func place_empty_blocker_demon(grid_pos):
 			return 
 	
 	if blood_points >= -99999: 
-		
-		#print("Have enough blood, placing demon ")
 		#Maw Handling, occupies two cells
 		if "Maw" in demon_instance.name:
 			demon_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			grid_map[grid_pos] = demon_instance
-			#print(get_parent(), "QQZGirdMap Now Contains",grid_pos)
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = demon_instance
-			#print(get_parent(), "QQZGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
-			#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
+
 			
 		else: #Only occupies one cell
 			demon_instance.position = Vector2(grid_pos.x,grid_pos.y)
@@ -290,25 +217,20 @@ func place_empty_blocker_demon(grid_pos):
 		#demon_instance.set_process(false)
 		get_parent().get_node("GameLayer").call_deferred("add_child",demon_instance)
 
-		
 		#Play the sound
 		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 
 	else:
 		pass
 		#print("Not enough blood points!")
-	
-	#print(get_parent(), "QQ Blocker Demon Was Placed At " , demon_instance.position)
+
 	
 	
 # Place the selected demon on the grid
 func place_demon(grid_pos: Vector2):
-	#print(get_parent(), "QQ Grid Map Place Demon is ", grid_map)
-	#print("About to Place Demon")
 	if(grid_pos.x<769 && grid_pos.y<336 && grid_pos.y > 48):
 		pass
 	else:
-		#print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
 		return 
 	
 	# Dynamically get the selected demon	
@@ -319,7 +241,6 @@ func place_demon(grid_pos: Vector2):
 		return
 	
 	var demon_instance = selected_demon_scene.instantiate()
-	#print("Will Make PPName From ",demon_instance.name)
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
 		demon_instance.add_to_group("Green")
@@ -366,13 +287,7 @@ func place_demon(grid_pos: Vector2):
 		grid_map[Vector2(grid_pos.x,grid_pos.y+32)] = demon_instance
 		grid_map[Vector2(grid_pos.x,grid_pos.y-32)] = demon_instance
 		grid_map[Vector2(grid_pos.x-32,grid_pos.y)] = demon_instance
-		
-		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y))
-		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y+32))
-		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y-32))
-		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32))
-		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y-32))
-		#Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y))
+
 		hero_demon = demon_instance  
 		Global.game_controller.register_heart_alt_scene(hero_demon)
 		print("Heart Demon Should Be Placed : ", hero_demon)
@@ -382,23 +297,18 @@ func place_demon(grid_pos: Vector2):
 	print("Demon CCost is : ", demon_cost)
 	
 	if blood_points >= demon_cost: 
-		
-		#print("Have enough blood, placing demon ")
 		#Maw Handling, occupies two cells
 		if "Maw" in demon_instance.name:
 			demon_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
 			demon_instance.position = Vector2(demon_instance.position.x-256,demon_instance.position.y-256)
 			grid_map[grid_pos] = demon_instance
-			#print("QQGirdMap Now Contains",grid_pos)
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = demon_instance
-		#	print("QQGirdMap Now Contains",Vector2(grid_pos.x+32,grid_pos.y))
 			
 		else: #Only occupies one cell
 			demon_instance.position = Vector2(grid_pos.x,grid_pos.y )
 			grid_map[grid_pos] = demon_instance
 	
 		#Add To The GameLayer 
-		#demon_instance.set_process(false)
 		get_parent().get_node("GameLayer").call_deferred("add_child", demon_instance)
 
 		#Reduce Blood Points
@@ -407,48 +317,35 @@ func place_demon(grid_pos: Vector2):
 		#Global.ui_layer.set_blood(str(blood_points))
 		get_parent().get_node("UILayer").set_blood(str(blood_points))
 		
-		#Play the sound
 		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
-		#$PlaceDemonAudioPlayer.play()
+
 		print("Pdemon name is ", demon_instance.name)
 		if "SpinalOcculum" in demon_instance.name:
 			spinalOcculum_placed.emit(grid_pos)
 			pass
 		elif "Occulum" in demon_instance.name:
 			print("Selected Demon Scene is : ", demon_instance.name)
-			#demon_instance.position = Vector2(grid_pos.x,grid_pos.y + 13 )
 			#TODO change to occulum_placed
 			demon_placed.emit(grid_pos)
 			Global.incrementOcculumCount()
-			pass
 		elif "Crawler" in demon_instance.name:
-			#if crawler_not_placed:
 			print("[TUTORIAL] Emit Crawler Placed")
 			crawler_placed.emit(grid_pos)
 			crawler_not_placed = false
-			pass
-
 		elif "Wyrm" in demon_instance.name:
 			wyrm_placed.emit(grid_pos)
 		elif "Hive" in demon_instance.name:
 			wasp_placed.emit(grid_pos)
 		elif "Maw" in demon_instance.name:
 			maw_placed.emit(grid_pos)
-			
-		#print("Selected Demon Scene is : ", demon_instance)
-		
-		
-		# Clear preview after successful placement, or do this when deselect Hit 
-		#selection_menu.clear_preview()
+
 		
 	else:
 		print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
 		#Global.notification_bar.show()
 		#Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
 		pass
-		#print("Not enough blood points!")
-	
-	#print("QQZ Demon Was Placed At " , demon_instance.position)
+
 	selection_menu.deselect_demon()
 
 # Helper function to generate sequential names
@@ -456,15 +353,13 @@ func generate_unique_name(base_name: String) -> String:
 	var used_numbers = []
 	# Collect all existing numbers from siblings
 	for child in get_parent().get_node("GameLayer").get_children():
-		#print("PPChild is ", child.name)
 		if child.name.begins_with(base_name):
 			var suffix = child.name.substr(base_name.length())
-			#print("PPSuffix Is ", suffix)
 			if suffix.is_valid_int():
 				used_numbers.append(suffix.to_int())
 					
 	used_numbers.sort()
-	#print("Used PP Numbers is ",used_numbers )
+
 	# Find first available number (fills gaps)
 	var candidate = 1
 	for num in used_numbers: 
@@ -472,18 +367,16 @@ func generate_unique_name(base_name: String) -> String:
 			break  # Gap found
 		if candidate == num:
 			candidate = num + 1
-	#print("Will Return PP ", base_name + str(candidate))
 	return base_name + str(candidate)
 	
-#Add blood to total 
+ 
 func add_blood(amount):
 	blood_points += amount
 	#Global.ui_layer.set_blood(str(blood_points))
 	get_parent().get_node("UILayer").set_blood(str(blood_points))
 	
-# Play the blood collection sound 
+
 func play_blood_collect():
-	#$SunCollectPlayer.play()
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	
 
