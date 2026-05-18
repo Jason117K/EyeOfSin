@@ -8,8 +8,8 @@ func ready():
 	print("Dancer Self Pos Is :", self.position)
 
 func silence():
-	$SilenceFX.show()
-	$SilenceFX.play()
+	super()
+	silence_field.position = silence_field_position
 
 func _on_area_entered(area: Area2D) -> void:
 	summon_comp.silence()

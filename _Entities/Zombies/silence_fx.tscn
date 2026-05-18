@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cqwcjalbkmjg4"]
+
+[ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="1_kgymi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bu15"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dca1n"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_070vu"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u428y"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j17np"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8djs"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(576, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3mi8"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn7wu"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhkpv"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(672, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c862"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(704, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgkoy"]
+atlas = ExtResource("1_kgymi")
+region = Rect2(736, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvm6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bu15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dca1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_070vu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u428y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j17np")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8djs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3mi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn7wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhkpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c862")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgkoy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="SilenceFX" type="AnimatedSprite2D" unique_id=290496487]
+sprite_frames = SubResource("SpriteFrames_xvm6u")
+frame_progress = 0.18463719

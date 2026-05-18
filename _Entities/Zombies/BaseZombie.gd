@@ -14,6 +14,9 @@ signal zombie_death
 var column_explosion
 var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
+var silence_field
+var is_silenced := false
+@export var silence_field_position : Vector2
 
 @export var charge_cost := 1
 
@@ -66,7 +69,14 @@ func set_hue_shift(hue_shift_degrees):
 	compManager.set_hue_shift(hue_shift_degrees)
 	
 func silence():
-	pass
+	if !is_silenced:
+		silence_field = (Global.get_silence_field()).instantiate()
+		add_child(silence_field)
+		silence_field.play()
+		is_silenced = true
+	else:
+		return 
+	
 
 #Kills the Zombie 
 func die():

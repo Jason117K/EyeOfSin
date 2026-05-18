@@ -31,7 +31,12 @@ func _ready() -> void:
 		attack_ray.set_collision_mask_value(1,false)
 		attack_ray.set_collision_mask_value(2,true)
 		attack_ray.set_collision_mask_value(3,false)
+
+func silence():
+	attack_power = attack_power/2
 	
+	
+		
 	
 # Attack State Getter 
 func getAttackState():
@@ -124,13 +129,13 @@ func _process(_delta):
 			return
 		if attack_ray.is_colliding():
 			var collider = attack_ray.get_collider()
-			print(parent.name , " Its 77 collding with ", collider.name )
 			if collider:
+				#print(parent.name , " Its 77 collding with ", collider.name )
 				if collider.is_in_group("Demons"):
 					if collider.has_method("demon_minion_busy"):
-						print("Calling Demon 77 Minion Busy On ", collider)
+						#print("Calling Demon 77 Minion Busy On ", collider)
 						if collider.demon_minion_busy(parent):
-							print(collider, " is busy early return 77")
+							#print(collider, " is busy early return 77")
 							return
 					#TODO Make Sundered Extend Attack Comp
 					if("Sundered" in parent.name):

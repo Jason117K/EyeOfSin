@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://ngjx3kqoe6yb" path="res://_Entities/Zombies/_Erupter/TickerHitEffect-Sheet.png" id="11"]
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://_Entities/Zombies/Components/AOEHit.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://_Entities/Zombies/_Erupter/Ticker-WebSheet.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="15_nfk22"]
 
 [sub_resource type="RectangleShape2D" id="15"]
 size = Vector2(18, 30)
@@ -340,95 +339,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="29"]
 size = Vector2(146.833, 31.3334)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6bu15"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(416, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dca1n"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(448, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_070vu"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(480, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u428y"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(512, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j17np"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(544, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8djs"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(576, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3mi8"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(608, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vn7wu"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(640, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nhkpv"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(672, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6c862"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(704, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgkoy"]
-atlas = ExtResource("15_nfk22")
-region = Rect2(736, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rhymm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6bu15")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dca1n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_070vu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u428y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j17np")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d8djs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b3mi8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vn7wu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nhkpv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6c862")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgkoy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
-
 [node name="Erupter" type="Area2D" unique_id=1467824159 groups=["Zombie"]]
 position = Vector2(0, -15)
 collision_layer = 2
 script = ExtResource("6")
+silence_field_position = Vector2(-1, 3)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=421056127]
 visible = false
@@ -504,13 +419,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AOEHit/HitBoxComponent" unique_id=951792518]
 position = Vector2(-62.5834, 4.66667)
 shape = SubResource("29")
-
-[node name="SilenceFX" type="AnimatedSprite2D" parent="." unique_id=969298929]
-visible = false
-position = Vector2(-1, 3)
-sprite_frames = SubResource("SpriteFrames_rhymm")
-frame = 2
-frame_progress = 0.010774751
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]

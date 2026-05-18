@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://b2tlmdhp3jklg" path="res://_Entities/Demons/_Hive/SwarmManager.gd" id="21_swarm"]
 [ext_resource type="PackedScene" uid="uid://ktsfsnvej37r" path="res://_Entities/Demons/_Wyrm/LaserShootComponent.tscn" id="23_k5wuc"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="24_x5esn"]
-[ext_resource type="Script" path="res://_Entities/Demons/_Hive/hive_wyrm_projectile_shoot_component.gd" id="25_oioeg"]
+[ext_resource type="Script" uid="uid://bv6wfp8xuy7qd" path="res://_Entities/Demons/_Hive/hive_wyrm_projectile_shoot_component.gd" id="25_oioeg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
@@ -653,7 +653,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ijvem"]
-points = PackedVector2Array(0, -24, 0, 24, 192, 15, 192, 0, 192, -15)
+points = PackedVector2Array(0, -24, 0, 24, 170, 15, 170, 0, 170, -15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqdb"]
 atlas = ExtResource("5")
@@ -1637,14 +1637,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(37171657, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 111.25489, 130.46814, 110.29636, 129.32886, 108.93139, 128.49863, 107.21391, 128.25215, 105.40203, 128.71959, 103.89212, 130.20152, 102.57879, 129.52782, 100.77087, 129.38994, 99.12579, 128.89253, 97.957054, 127.97441, 97.483536, 126.83052, 97.98157, 125.78508, 96.42022, 125.42468, 95.204315, 124.51959, 93.608955, 123.9624, 91.72233, 124.11297, 89.89194, 125.12799, 88.58031, 127.02785, 87.09504, 128.68553, 86.033676, 130.76184, 84.22156, 131.6006, 82.66518, 131.26501, 82.00754, 130.22551, 82.45842, 129.18945)
+points = PackedVector2Array(112.595, 131.435, 110.80816, 131.259, 109.88481, 130.13863, 109.03424, 128.92593, 107.70805, 128.04082, 106.006035, 127.75088, 104.19798, 128.1795, 102.68553, 129.65599, 101.369835, 128.9694, 99.59559, 128.73547, 98.01936, 128.1306, 96.97256, 127.116234, 96.674034, 125.92195, 97.286865, 124.903885, 95.873215, 124.35918, 94.92137, 123.29433, 93.48512, 122.55844, 91.644714, 122.52586, 89.762474, 123.37034, 88.29324, 125.11806, 87.54516, 127.42036, 86.79292, 129.69106, 85.096176, 130.9333, 83.40187, 130.99583, 82.27455, 130.31795)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 111.25489, 124.84314, 110.29636, 123.07886, 108.93139, 121.62363, 107.21391, 120.752144, 105.40203, 120.59459, 103.89212, 121.45152, 102.57879, 120.152824, 100.77087, 119.38994, 99.12579, 118.26753, 97.957054, 116.72441, 97.483536, 114.95552, 97.98157, 113.28508, 96.42022, 112.29968, 95.204315, 110.76959, 93.608955, 109.5874, 91.72233, 109.11297, 89.89194, 109.50299, 88.58031, 110.77785, 87.09504, 111.81053, 86.033676, 113.26183, 84.22156, 113.47559, 82.66518, 112.515015, 82.00754, 110.85051, 82.45842, 109.18945)
+points = PackedVector2Array(112.595, 126.435, 110.80816, 125.634, 109.88481, 123.888626, 109.03424, 122.05094, 107.70805, 120.54082, 106.006035, 119.62588, 104.19798, 119.42951, 102.68553, 120.28099, 101.369835, 118.969406, 99.59559, 118.11047, 98.01936, 116.8806, 96.97256, 115.241234, 96.674034, 113.42195, 97.286865, 111.778885, 95.873215, 110.60918, 94.92137, 108.91933, 93.48512, 107.55844, 91.644714, 106.90086, 89.762474, 107.12034, 88.29324, 108.24306, 87.54516, 109.92036, 86.79292, 111.566055, 85.096176, 112.183304, 83.40187, 111.62084, 82.27455, 110.31795)
 width = 4.0
 
 [node name="Arm2" parent="." unique_id=848670294 node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
@@ -1659,14 +1659,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(848670294, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.6624, 131.82047, 116.66557, 132.59962, 118.62581, 132.81793, 120.24234, 132.36385, 121.223755, 131.4247, 121.327805, 130.29796, 123.08018, 130.42564, 124.54377, 129.79004, 126.36016, 129.63602, 128.30823, 130.28368, 129.96706, 131.75787, 130.94945, 133.84665, 132.68134, 134.13269, 134.35696, 135.51205, 136.21729, 135.97906, 137.61957, 135.39435, 137.87184, 134.22205, 136.66943, 133.505, 134.8358, 134.11658, 133.0497, 135.02043, 131.54805, 134.72621, 131.62708, 133.61017, 133.07574, 133.28534, 134.75043, 134.19531)
+points = PackedVector2Array(112.595, 131.435, 114.14707, 130.87364, 116.12017, 131.54881, 118.1405, 132.33626, 120.10795, 132.5194, 121.707954, 132.03333, 122.65562, 131.07642, 122.69702, 129.94855, 124.44528, 130.02118, 125.95131, 129.42267, 127.79016, 129.31389, 129.73518, 130.02725, 131.34424, 131.58638, 132.19188, 133.75754, 133.94653, 134.34245, 135.38544, 136.07803, 137.21999, 136.87767, 138.75327, 136.50812, 139.15752, 135.38576, 137.98915, 134.65688, 136.15602, 135.31743, 134.37431, 136.29562, 132.7774, 136.1581, 132.50305, 135.06621, 133.44318, 134.27393)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.6624, 126.19546, 116.66557, 126.349625, 118.62581, 125.94294, 120.24234, 124.86384, 121.223755, 123.2997, 121.327805, 121.54796, 123.08018, 121.050644, 124.54377, 119.79003, 126.36016, 119.01102, 128.30823, 119.033676, 129.96706, 119.88287, 130.94945, 121.34666, 132.68134, 121.00769, 134.35696, 121.762054, 136.21729, 121.60407, 137.61957, 120.39435, 137.87184, 118.59704, 136.66943, 117.255005, 134.8358, 117.24157, 133.0497, 117.52043, 131.54805, 116.601204, 131.62708, 114.86017, 133.07574, 113.91035, 134.75043, 114.19531)
+points = PackedVector2Array(112.595, 126.435, 114.14707, 125.248634, 116.12017, 125.298805, 118.1405, 125.461266, 120.10795, 125.019394, 121.707954, 123.908325, 122.65562, 122.326416, 122.69702, 120.57355, 124.44528, 120.02118, 125.95131, 118.79767, 127.79016, 118.06389, 129.73518, 118.15226, 131.34424, 119.08638, 132.19188, 120.63254, 133.94653, 120.592445, 135.38544, 121.70303, 137.21999, 121.87767, 138.75327, 120.88311, 139.15752, 119.13576, 137.98915, 117.781876, 136.15602, 117.81742, 134.37431, 118.17062, 132.7774, 117.40809, 132.50305, 115.6912, 133.44318, 114.273926)
 width = 4.0
 
 [node name="ArmTarget" parent="." unique_id=2013687383 instance=ExtResource("19_s2bgg")]
@@ -1681,6 +1681,10 @@ position = Vector2(21, -10)
 
 [node name="HiveLaserShootComp" parent="." unique_id=1002991769 instance=ExtResource("23_k5wuc")]
 position = Vector2(12, -11)
+scale = Vector2(1, 1)
+extension_speed = 600.0
+max_length = 170.0
+laser_width = 1.0
 isDisabled = true
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("24_x5esn")]
@@ -1696,7 +1700,7 @@ attack_speed_mult = 1.0
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=1977872644]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_x5esn")
-target_position = Vector2(287, -1)
+target_position = Vector2(157.455, -1)
 collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false

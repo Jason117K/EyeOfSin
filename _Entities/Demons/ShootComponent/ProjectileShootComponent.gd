@@ -27,6 +27,7 @@ var shoot_positions = []
 # Might Have to Have Heart Specific in Future 
 const SHOOT_FRAMES = {"attack": 3, "attack_Hive": 3, "attack_Maw": 3, "attack_Crawler": 3, "attack_Occulum": 3, "attack_Wyrm": 3, "attack_SpinalOcculum": 3 }
 
+
 func _ready() -> void:
 	animSpriteComp = $"../AnimatedSpriteComponent"
 	#node_ready = true 
@@ -70,7 +71,7 @@ func _on_sprite_frame_changed(animation_name: String, frame_index: int):
 func _process(_delta):
 	if node_ready && animSpriteComp != null:
 		if animSpriteComp.animation == "spawn":
-			print("Early")
+			#print("Early")
 			return
 		else:
 			if canAttack == false:
@@ -86,21 +87,21 @@ func check_attack_rays():
 	for ray in attack_rays:
 		#print("Checking Ray ", ray)
 		if ray.is_colliding():
-			print(" Ray Colling ",self )
+			#print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
 				var collider = ray.get_collider(i)
-				print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
+				#print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
 				if collider == null:
 					continue  # guard against freed/invalid colliders
 				if collider and collider.is_in_group("Zombie"):
 					print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
-						print("Green Can Attack True")
+						#print("Green Can Attack True")
 						canAttack = true
 						return
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
 						canAttack = true
-						print("Purple Can Attack True")
+						#print("Purple Can Attack True")
 						return 
 				#	if parent_demon.is_in_group()
 						
@@ -110,7 +111,7 @@ func shoot_projectile():
 	if shoot_positions.is_empty():
 			print("SHOOTING HERE")
 			projectile = projectile_scene.instantiate()
-			projectile.position = parent_demon.position + projectile_spawn_offest 
+			projectile.global_position = parent_demon.position + projectile_spawn_offest 
 			projectile.damage = damage
 			apply_buffs_to_projectile(projectile)
 			if get_parent().is_in_group("Green"):
@@ -123,7 +124,6 @@ func shoot_projectile():
 		print("NAH SHOOTING HERE")
 		for shoot_pos in shoot_positions:
 			projectile = projectile_scene.instantiate()
-			projectile.position = shoot_pos.global_position
 			projectile.damage = damage
 			apply_buffs_to_projectile(projectile)
 			if get_parent().is_in_group("Green"):
@@ -131,7 +131,8 @@ func shoot_projectile():
 			else:
 				projectile.add_to_group("Purple")
 			parent_demon.get_parent().call_deferred("add_child", projectile)
-			
+			projectile.set_deferred("global_position", shoot_pos.global_position)
+				
 			
 	canAttack = false
 	

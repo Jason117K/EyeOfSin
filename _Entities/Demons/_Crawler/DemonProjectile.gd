@@ -9,6 +9,8 @@ extends Area2D
 @export var lightning_damage = 10 #2   # Damage dealt to zombies
 @export var blood_worth_to_add = 1
 @export var bleed_damage := 1
+var max_distance_can_travel := 0
+
 
 var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
 var num_zombies_hit = 0 
@@ -22,8 +24,12 @@ var is_slowing := true
 var canGenBlood := false 
 var bleed := false 
 var column_explode := false
+var silencing := false 
 
 var collision 
+var distance_traveled := 0 
+var _spawn_initialized := false
+var spawn_position: Vector2
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
@@ -32,10 +38,14 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		print_scene_tree(child, indent + 1)
 		
 func _ready() -> void:
+	#print(self, " Projectile Ready Position Is ", self.position)
 	#print_scene_tree()
+	if max_distance_can_travel == 0:
+		max_distance_can_travel = get_viewport_rect().size.x
+
 	self.area_entered.connect(on_hit)
 	if wyrmBuff:
-		print("SETUP LIGHTNING ZONE")
+		#print("SETUP LIGHTNING ZONE")
 		setup_lightning_zone()
 	if self.is_in_group("Green"):
 		self.set_collision_mask_value(1,false)
@@ -51,7 +61,13 @@ func _ready() -> void:
 		
 				
 func _physics_process(delta: float) -> void:
+	if not _spawn_initialized:
+		spawn_position = position
+		_spawn_initialized = true
+	
+	#print(self, " Projectile 4Position Is ", self.position)
 	var travel_distance = speed * delta
+	distance_traveled = position.x - spawn_position.x
 	
 	# Raycast along travel path to prevent tunneling at high speeds
 	var space_state = get_world_2d().direct_space_state
@@ -63,15 +79,19 @@ func _physics_process(delta: float) -> void:
 	query.collide_with_bodies = false
 	query.collision_mask = collision_mask
 	query.exclude = [self.get_rid()]
-
-	var result = space_state.intersect_ray(query)
-	if result:
-		# Clamp movement to the hit point — projectile arrives at its natural speed
-		position.x += result.position.x - global_position.x
-	else:
-		position.x += travel_distance
-	if position.x > get_viewport_rect().size.x:
-		queue_free()
+	#var result = space_state.intersect_ray(query)
+	#if result:
+		## Clamp movement to the hit point — projectile arrives at its natural speed
+		#position.x += result.position.x - global_position.x
+		#distance_traveled = position.x - spawn_position.x
+	#else:
+	position.x += travel_distance
+	distance_traveled = position.x - spawn_position.x
+	print(self, " Projectile 6Position Is ", self.position)
+	if distance_traveled > max_distance_can_travel:
+		if max_distance_can_travel > 0:
+			#print(self, " Traveled Too Far, ", distance_traveled , " is greater than ", max_distance_can_travel, " Time to Die ")
+			queue_free()
 		
 #func _physics_process(delta: float) -> void:
 	### Code For CharacterBody2D
@@ -131,7 +151,8 @@ func on_hit(area):
 		if column_explode:
 			compManager.column_explode()
 			column_explode = false
-			
+		if silencing:
+			area.silence()
 		compManager.take_damage(damage)  # Call take_damage() on the zombie
 		if piercing == false:
 			queue_free() 
@@ -145,7 +166,7 @@ func increase_bleed_damage(bleed_damage_increase):
 
 func _on_lightning_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		print(area, " is INDEED in Zombie Group")
+		#print(area, " is INDEED in Zombie Group")
 		if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#print("Early Return Rr")
 			pass

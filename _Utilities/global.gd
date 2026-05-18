@@ -32,6 +32,8 @@ var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death
 var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn")
 var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 var consume_zombie_group_scene = preload("res://_Entities/Demons/_Maw/maw_consume.tscn")
+var silence_field = preload("res://_Entities/Zombies/silence_fx.tscn")
+
 
 
 func _load_demon_costs():
@@ -261,7 +263,8 @@ func get_bomb_scene():
 func get_consume_zombie_group_scene():
 	return consume_zombie_group_scene
 
-	
+func get_silence_field():
+	return silence_field
 	
 	
 	

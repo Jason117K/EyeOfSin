@@ -346,6 +346,7 @@ animations = [{
 z_index = 1
 collision_layer = 2
 script = ExtResource("2")
+silence_field_position = Vector2(2, 3)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1104212746]
 visible = false

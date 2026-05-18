@@ -21,16 +21,18 @@ func _ready() -> void:
 		
 func fire_laser():
 	print("Try Fire Laser")
-	if canAttack:
+	if canAttack && laser_shoot_comp.done_firing:
 		laser_shoot_comp.fire()
 		shoot_projectile()
 	else:
 		print("Cannot Attack")
 		
 func apply_buffs_to_projectile(projectile_to_buff):
-	projectile_to_buff.bleed = true 
+	projectile_to_buff.max_distance_can_travel = laser_shoot_comp.max_length
+	projectile_to_buff.bleed = false 
 	projectile_to_buff.piercing = true 
 	projectile_to_buff.is_slowing = false
+	projectile_to_buff.silencing = true 
 	projectile_to_buff.damage = projectile_damage
 	projectile_to_buff.speed = projectile_speed 
 	projectile_to_buff.hide()

@@ -82,7 +82,7 @@ func current_zombie_dead():
 func demon_minion_busy(questioning_zombie):
 	if current_zombie == null:
 		current_zombie = questioning_zombie
-		print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
+		#print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
 		current_zombie.zombie_death.connect(current_zombie_dead)
 		return false 
 	else:

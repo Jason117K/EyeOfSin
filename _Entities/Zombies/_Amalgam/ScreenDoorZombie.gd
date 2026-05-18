@@ -11,9 +11,10 @@ extends Zombie
 var deathCount = 0 
 
 func silence():
+	super()
 	deathCount = 2
-	$SilenceFX.show()
-	$SilenceFX.play()
+	silence_field.position = silence_field_position
+
 	
 # First transforms zombie 'death' 1, then kills zombie 'death' 2
 func die():

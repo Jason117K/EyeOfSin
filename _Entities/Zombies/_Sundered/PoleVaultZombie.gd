@@ -19,7 +19,7 @@ func get_zombie_name():
 
 func silence():
 	print(self, "Is Silenced")
+	super()
 	specialMoveComp.silence()
 	attack_comp.canSpecial = false
-	$SilenceFX.show()
-	$SilenceFX.play()
+	silence_field.position = silence_field_position

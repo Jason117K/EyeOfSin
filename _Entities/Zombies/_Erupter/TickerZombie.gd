@@ -9,10 +9,9 @@ func get_zombie_name():
 
 
 func silence():
+	super()
 	aoe.attack_power = 0
-	$SilenceFX.show()
-	$SilenceFX.play()
-	
+	silence_field.position = silence_field_position
 
 func _ready() -> void:
 	if self.is_in_group("Green"):

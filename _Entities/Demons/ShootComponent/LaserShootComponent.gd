@@ -43,6 +43,7 @@ var is_firing := false
 var timer := Timer.new()
 var hit_enemies = {}  # Dictionary to track hit enemies
 var isBuffed := false
+var done_firing := true 
 #var canAttack := false
 var isSlowingProjectile := false
 @export var isDisabled := false
@@ -124,7 +125,9 @@ func fire() -> void:
 		is_firing = true
 		current_length = 0.0
 		hit_enemies.clear()  # Clear the hit enemies when firing a new laser
-		timer.wait_time = duration
+		#timer.wait_time = duration
+		done_firing = false
+		timer.wait_time = (max_length / extension_speed) + duration
 		timer.start()
 	else:
 		pass
@@ -184,6 +187,7 @@ func _on_laser_timeout() -> void:
 	hit_enemies.clear()  # Clear the hit enemies when the laser times out
 	_update_laser()
 	_update_collision_shape()
+	done_firing = true 
 	cooldown_timer.start()
 
 
