@@ -70,7 +70,7 @@ func _load_resources():
 	_load_demon_type_image_resource_variation(DemonType.SPINALOCCULUM, "OccularSpineIdle_WYRM.png")
 	
 	
-	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Eye.png")
+	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Occulum.png")
 	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Hive.png")
 	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Maw.png")
 	_load_demon_type_image_resource_variation(DemonType.WYRM, "Wyrm_Crawler.png")

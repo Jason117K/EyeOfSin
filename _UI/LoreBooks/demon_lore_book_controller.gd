@@ -1,12 +1,12 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var occulumButton = $"../AllDemonRows/Row1/Occulum"
-@onready var crawlerButton = $"../AllDemonRows/Row1/Crawler"
-@onready var spinalOcculumButton = $"../AllDemonRows/Row1/SpinalOcculum"
-@onready var wyrmButton = $"../AllDemonRows/Row2/Wrym" 
-@onready var hiveButton = $"../AllDemonRows/Row2/Hive" 
-@onready var mawButton = $"../AllDemonRows/Row3/Maw"
+@onready var occulumButton = $"../../HBoxContainer/AllDemonRows/Row1/Occulum"
+@onready var crawlerButton = $"../../HBoxContainer/AllDemonRows/Row1/Crawler"
+@onready var spinalOcculumButton = $"../../HBoxContainer/AllDemonRows/Row2/Walnut"
+@onready var wyrmButton = $"../../HBoxContainer/AllDemonRows/Row3/Wyrm"
+@onready var hiveButton = $"../../HBoxContainer/AllDemonRows/Row2/Hive"
+@onready var mawButton = $"../../HBoxContainer/AllDemonRows/Row2/Maw"
 
 @onready var currentDemonLabel = $"../../CurrentDemonLabel"
 @onready var bgDarken = $"../../BGDarkEn"
@@ -143,6 +143,11 @@ func _ready() -> void:
 		refresh_rate = sprites.get_frame_duration(current_animation, frame_index)
 		if auto_play:
 			play()
+			
+	occulumButton.pressed.connect(_on_occulum_pressed)
+	wyrmButton.pressed.connect(_on_wrym_pressed)
+	spinalOcculumButton.pressed.connect(_on_spinalOcculum_pressed)
+	
 
 # Update all button textures based on current color settings
 func _update_button_textures():
@@ -213,7 +218,8 @@ func set_demon_variations(newDemon : GlobalResourceLoader.DemonType):
 	
 	pass
 	
-func _on_occulum_pressed() -> void:
+func _on_occulum_pressed():
+	print("Occulum Pressed")
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	
@@ -239,7 +245,7 @@ func _on_crawler_pressed() -> void:
 	set_demon_variations(GlobalResourceLoader.DemonType.CRAWLER)
 
 
-func _on_spinalOcculum_pressed() -> void:
+func _on_spinalOcculum_pressed():
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true
@@ -253,7 +259,7 @@ func _on_spinalOcculum_pressed() -> void:
 
 
 
-func _on_wrym_pressed() -> void:
+func _on_wrym_pressed():
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = true

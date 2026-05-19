@@ -8,7 +8,7 @@ class_name AnimatedTextureRect extends TextureRect
 @export var auto_play := false
 @export var playing := false
 @export var targetGlowColor : Color
-@onready var textBox = $"../Text"
+#@onready var textBox = $"../Text"
 @export_range(-180, 180) var hue_shift: float = -86.0: #25.0
 	set(value):
 		hue_shift = clamp(value, -180.0, 180.0)

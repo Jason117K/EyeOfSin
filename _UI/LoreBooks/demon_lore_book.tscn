@@ -16,8 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/OcculumTowerIdle_Base.png" id="15_8exk2"]
 [ext_resource type="StyleBox" uid="uid://c3c28155s7n1n" path="res://_Common/StyleBoxes/black_flat.tres" id="15_gyohk"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g75u1"]
-
 [node name="DemonLoreBook" type="Control" unique_id=97848138]
 process_mode = 3
 layout_mode = 3
@@ -75,12 +73,7 @@ layout_mode = 2
 expand_mode = 5
 script = ExtResource("3_gh3ig")
 sprites = ExtResource("4_chrhc")
-frame_index = null
-speed_scale = null
-auto_play = null
 playing = true
-targetGlowColor = null
-hue_shift = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1376691575]
 layout_mode = 0
@@ -100,7 +93,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="Sunflower" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=1900871465]
+[node name="Occulum" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=1900871465]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("5_jm2ht")
@@ -110,14 +103,6 @@ stretch_mode = 4
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("6_28t4q")
-stretch_mode = 5
-
-[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=1696769767]
-visible = false
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-texture_normal = ExtResource("7_tpmsq")
-ignore_texture_size = true
 stretch_mode = 5
 
 [node name="DemonNames1" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1209401893]
@@ -171,30 +156,6 @@ stretch_mode = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("9_btjlo")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="EyeBomb" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=22459720]
-visible = false
-custom_minimum_size = Vector2(125, 125)
-layout_mode = 2
-texture_normal = SubResource("CompressedTexture2D_g75u1")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Wyrm" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=2085581078]
-visible = false
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-texture_normal = ExtResource("11_mcd4t")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Hive" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=510701508]
-visible = false
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-texture_normal = ExtResource("12_i2p6p")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -253,7 +214,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 
-[node name="EggWrym" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row3" unique_id=1306419466]
+[node name="Wyrm" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row3" unique_id=1306419466]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture_normal = ExtResource("11_mcd4t")
@@ -377,15 +338,10 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("15_gyohk")
 text = "BACK"
 
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Sunflower" to="VBoxContainer/TextureRect" method="_on_sunflower_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/EyeBomb" to="VBoxContainer/TextureRect" method="_on_eye_bomb_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/EggWrym" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
