@@ -27,16 +27,19 @@ signal demon_die
 
 func _ready() -> void:
 	pass
-	await get_tree().physics_frame
-	#self.set_process(false)
-	input_event.connect(_on_input_event)
-	print(self, " Heart Connect")
-	for new_area in get_overlapping_areas():
-		print("New Area is ", new_area)
-		if new_area.is_in_group("HeartBuff"):
-			receive_heart_buff()
-	self.area_entered.connect(on_demon_area_entered)
-	self.area_exited.connect(on_demon_area_exited)
+	if "Demo" in get_parent().name :
+		pass
+	else:
+		await get_tree().physics_frame
+		#self.set_process(false)
+		input_event.connect(_on_input_event)
+		print(self, " Heart Connect")
+		for new_area in get_overlapping_areas():
+			print("New Area is ", new_area)
+			if new_area.is_in_group("HeartBuff"):
+				receive_heart_buff()
+		self.area_entered.connect(on_demon_area_entered)
+		self.area_exited.connect(on_demon_area_exited)
 	
 func on_demon_area_entered(new_area: Area2D):
 	#print(self, "New Area Heart is ", new_area)

@@ -25,7 +25,10 @@ var canAttackSetTrueOnce = false
 #Grab demonmanager, start default anim and connect/start relevant timers 
 func _ready():
 	super()
-	DemonManager = get_parent().get_parent().get_node("DemonManager")
+	if "Demo" in get_parent().name :
+		pass
+	else:
+		DemonManager = get_parent().get_parent().get_node("DemonManager")
 	
 
 func get_damage():
