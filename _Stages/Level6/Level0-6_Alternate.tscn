@@ -65,6 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_01won")
+isGreenDimension = true
 
 [node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("2_0v3x8")]
 blood_points = 750
@@ -388,6 +389,7 @@ sprite_frames = SubResource("SpriteFrames_b1vmi")
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("20_21wrt")]
 layout_mode = 1
+make_green = true
 
 [node name="Node" type="Node2D" parent="." unique_id=1891481991]
 visible = false

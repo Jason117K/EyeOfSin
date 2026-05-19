@@ -242,7 +242,7 @@ func swap_scenes() -> void:
 	Global.start_swap_ability()
 	if !can_swap:
 		return
-	
+
 	Global.hide_notification_bar()
 	if on_scene_1:
 		demon_selection_menu.visibility_layer = 0
@@ -285,18 +285,18 @@ func toggle_pip_size() -> void:
 func _on_node_added(node: Node) -> void:
 	if current_scenes.size() < 2 or not (node is CanvasItem):
 		return
-	for i in 2:
-		var s: Node = current_scenes[i]
-		if is_instance_valid(s) and (node == s or s.is_ancestor_of(node)):
-			print(" Node ", node , " will have visibility layer set to DIM_BITS[",i,"]")
-			node.visibility_layer = DIM_BITS[i]
-			return
+	#for i in 2:
+		#var s: Node = current_scenes[i]
+		#if is_instance_valid(s) and (node == s or s.is_ancestor_of(node)):
+			#print(" Node ", node , " will have visibility layer set to DIM_BITS[",i,"]")
+			#node.visibility_layer = DIM_BITS[i]
+			#return
 
 
 func _stamp_scene(scene: Node, layer: int) -> void:
 	if scene is CanvasItem:
 		#if "control" in scene.name:
-		print(scene.name , " will have visibility layer set to ", layer, scene.get_name())
+		#print(scene.name , " will have visibility layer set to ", layer, scene.get_name())
 		scene.visibility_layer = layer
 	for child in scene.get_children():
 		_stamp_scene(child, layer)
@@ -321,32 +321,35 @@ func get_alt_dimension() -> Node:
 	return current_scenes[0]
 
 
-func _get_hidden_scene() -> Node:
-	if current_scenes.size() < 2:
-		return null
-	if !current_scenes[1].visible:
+func get_other_dimension():
+	if on_purple_scene():
 		return current_scenes[1]
-	if !current_scenes[0].visible:
+	else:
 		return current_scenes[0]
-	return null
 
 
 func place_empty_in_alt_scene(grid_pos) -> void:
-	var hidden := _get_hidden_scene()
-	if hidden:
-		hidden.place_empty_blocker_demon(grid_pos)
+	print("Should Place Empty Block Demon at ", grid_pos)
+	var other_dimension = get_other_dimension()
+	if other_dimension:
+		other_dimension.place_empty_blocker_demon(grid_pos)
 
 
 func remove_empty_in_alt_scene(grid_pos) -> void:
-	var hidden := _get_hidden_scene()
-	if hidden:
-		hidden.remove_empty_blocker_demon(grid_pos)
+	var other_dimension = get_other_dimension()
+	if on_purple_scene():
+		other_dimension = current_scenes[1]
+	else:
+		other_dimension = current_scenes[0]
+		
+	if other_dimension:
+		other_dimension.remove_empty_blocker_demon(grid_pos)
 
 
 func register_heart_alt_scene(new_hero_demon) -> void:
-	var hidden := _get_hidden_scene()
-	if hidden:
-		hidden.get_child(0).hero_demon = new_hero_demon
+	var other_dimension = get_other_dimension()
+	if other_dimension:
+		other_dimension.get_child(0).hero_demon = new_hero_demon
 
 
 func get_current_scene_filepath() -> String:

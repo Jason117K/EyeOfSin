@@ -2,6 +2,7 @@ extends Control
 
 @onready var blood_label := $HUD_Panel/HUD_HBox/Blood_VBox/BloodAmountLabel
 @onready var health_label := $HUD_Panel/HUD_HBox/Health_VBox/HealthAmountLabel
+@export var make_green := false 
 
 var blood_amount = 50
 

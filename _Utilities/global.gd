@@ -24,7 +24,7 @@ var hero_demon_summoned := false
 var swap_ability 
 var current_level
 var hero_demon 
-var ui_layer : Control
+var ui_layers  := []
 var demon_costs: Dictionary = {}
 var demon_scenes : Dictionary
 
@@ -68,7 +68,7 @@ func get_wave_manager():
 	return wave_manager
 	
 func register_ui_layer(new_ui_layer):
-	ui_layer = new_ui_layer
+	ui_layers.append(new_ui_layer)
 	#ui_layer.set_health(DemonMan)
 
 func hideDemonSelectionMenu():
@@ -208,6 +208,18 @@ func hero_demon_is_summoned():
 
 func swap_scenes():
 	game_controller.swap_scenes()
+	for this_ui_layer in ui_layers:
+		if game_controller.on_scene_1:
+			if this_ui_layer.make_green == true :
+				this_ui_layer.hide()
+			else:
+				this_ui_layer.show()
+		else:
+			if this_ui_layer.make_green == true :
+				this_ui_layer.show()
+			else:
+				this_ui_layer.hide()		
+				
 	swap_portal_button()
 	
 func register_swap_ability(new_swap_ability):
