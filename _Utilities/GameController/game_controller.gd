@@ -14,6 +14,7 @@ var demon_manager
 
 @onready var pause_button: Button = $PauseButton
 @onready var pip := $PipRoot
+@onready var demon_selection_menu := $CurrentScene/DemonSelectionMenu
 
 # Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
 const DIM_BITS := [1 << 1, 1 << 2]
@@ -99,7 +100,7 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 # --- Dual Scene Transitions ---
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
-	print_scene_tree()
+	#print_scene_tree()
 	Global.hide_notification_bar()
 	pause_button.visible = true
 
@@ -241,8 +242,16 @@ func swap_scenes() -> void:
 	Global.start_swap_ability()
 	if !can_swap:
 		return
-
+	
 	Global.hide_notification_bar()
+	if on_scene_1:
+		demon_selection_menu.visibility_layer = 0
+		demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer 
+	else:
+		demon_selection_menu.visibility_layer = 0
+		demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
+		
+		
 	can_swap = false
 
 	var leaving_idx := 0 if on_scene_1 else 1
@@ -279,15 +288,19 @@ func _on_node_added(node: Node) -> void:
 	for i in 2:
 		var s: Node = current_scenes[i]
 		if is_instance_valid(s) and (node == s or s.is_ancestor_of(node)):
+			print(" Node ", node , " will have visibility layer set to DIM_BITS[",i,"]")
 			node.visibility_layer = DIM_BITS[i]
 			return
 
 
 func _stamp_scene(scene: Node, layer: int) -> void:
 	if scene is CanvasItem:
+		#if "control" in scene.name:
+		print(scene.name , " will have visibility layer set to ", layer, scene.get_name())
 		scene.visibility_layer = layer
 	for child in scene.get_children():
 		_stamp_scene(child, layer)
+		#print("Calling stamp scene on child ", child, " and/on layer ", layer  )
 
 
 func _apply_view_masks() -> void:

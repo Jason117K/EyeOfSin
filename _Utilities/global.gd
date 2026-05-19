@@ -36,7 +36,6 @@ var silence_field = preload("res://_Entities/Zombies/silence_fx.tscn")
 var severed_spriteframes = preload("res://_Entities/Zombies/_Severed/Severed.tres")
 
 
-
 func _load_demon_costs():
 	demon_scenes = {
 		"Occulum": "res://_Entities/Demons/_Occulum/Occulum.tscn",
@@ -91,6 +90,9 @@ func resetOcculumCount():
 func incrementOcculumCount():
 	occulumCount += 1
 	demon_selection_menu.increaseOcculumCost()
+
+
+
 	
 func incrementOcculumCountVisual():
 	occulumCountVisual += 1

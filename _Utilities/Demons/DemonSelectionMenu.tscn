@@ -28,6 +28,7 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 
 [node name="DemonSelectionMenu" type="Control" unique_id=1988977493]
+visibility_layer = 2
 z_index = 2
 layout_mode = 3
 anchors_preset = 15
@@ -275,10 +276,10 @@ texture_normal = ExtResource("15_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PipToggle" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="PipToggle" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=423146321]
 layout_mode = 2
 
-[node name="PipToggleButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PipToggle"]
+[node name="PipToggleButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PipToggle" unique_id=1225723318]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4

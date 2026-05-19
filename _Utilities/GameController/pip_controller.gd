@@ -42,9 +42,10 @@ func set_mirror_camera(cam: Camera2D) -> void:
 	_mirror_camera = cam
 
 
-func set_pip_cull_mask(layer: int) -> void:
-	var mask = (1 << (layer - 1)) | 1   # Enable layer 'layer' and layer 1
-	_viewport.canvas_cull_mask = mask
+func set_pip_cull_mask(bit: int) -> void:
+	_viewport.canvas_cull_mask = bit | 1
+	print("Setting Cull Mask To ", bit, " (actual mask: ", bit | 1, ")")
+	
 
 
 func show_pip() -> void:
