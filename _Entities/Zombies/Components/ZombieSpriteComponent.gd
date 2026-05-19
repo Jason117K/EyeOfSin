@@ -23,7 +23,6 @@ var isSlow
 var isInjured
 @onready var zombie = 	get_parent()
 @onready var attackComp = $"../AttackComponent"
-@onready var compManager = $"../ComponentManager"
 #@onready var attack_audio_player = $"../AttackAudioPlayer"
 @onready var healthComp  =  $"../HealthComponent"
 
@@ -70,7 +69,7 @@ func tick(_delta):
 		return
 	is_attacking = attackComp.is_attacking
 	isInjured = healthComp.injured
-	isSlow = compManager.isSlow
+	isSlow = zombie.isSlow
 
 	if specialMove:
 		return

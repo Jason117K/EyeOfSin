@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cvf357kn8knle" path="res://_Entities/Zombies/_RohanZombie/RohanZombie.gd" id="1_gima6"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="2_1x2dv"]
-[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ZombieComponentManager.tscn" id="2_fcwo0"]
 [ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/ZombieHealthComponent.tscn" id="3_mqmnj"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/Components/ZombieSpeedComponent.tscn" id="4_l212a"]
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/Components/ZombieAttackComponent.tscn" id="5_x8a86"]
@@ -572,19 +571,13 @@ position = Vector2(4, -8)
 sprite_frames = ExtResource("2_1x2dv")
 animation = &"hit"
 
-[node name="ComponentManager" parent="." unique_id=818004876 instance=ExtResource("2_fcwo0")]
-
 [node name="HealthComponent" parent="." unique_id=51473187 instance=ExtResource("3_mqmnj")]
-health = 900000
-bloodWorth = 50.0
 
 [node name="SpeedComponent" parent="." unique_id=1018819060 instance=ExtResource("4_l212a")]
-speed = 25
 
 [node name="AttackComponent" parent="." unique_id=431096804 instance=ExtResource("5_x8a86")]
 script = ExtResource("6_qlel4")
 shootProbability = 250
-attack_power = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383555117]
 material = SubResource("ShaderMaterial_oaedh")
@@ -632,8 +625,22 @@ wait_time = 20.0
 [node name="TeleportTimer" type="Timer" parent="." unique_id=1937033987]
 wait_time = 3.0
 
-[connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
+
+[node name="JustNowSpawned" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="ResetThisColor" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="DebuffDegrade" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="AttackComponent" method="_on_ShootTimer_timeout"]
 [connection signal="timeout" from="TeleportTimer" to="AttackComponent" method="_on_TeleportTimer_timeout"]
+[connection signal="timeout" from="JustNowSpawned" to="." method="_on_JustNowSpawned_timeout"]
+[connection signal="timeout" from="ResetThisColor" to="." method="_on_ResetThisColor_timeout"]
+[connection signal="timeout" from="DebuffDegrade" to="." method="_on_DebuffDegrade_timeout"]

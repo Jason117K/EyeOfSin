@@ -71,8 +71,7 @@ func _on_aoe_damage_timer_timeout() -> void:
 	if wyrmBuff:
 		for area in AOEComp.get_overlapping_areas():
 			if area.is_in_group("Zombies"):
-				var compManager = area.getCompManager()
-				compManager.take_damage(aoeDamage) 
+				area.take_damage(aoeDamage) 
 			
 func lightning_maw_buff():
 	maw_lightning.play()
@@ -112,10 +111,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		print("Zombie Entered Slow Field")
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
-		var compManager = area.getCompManager()
-		var enemyHealthComp = compManager.getHealthComponent()
 		#TODO Balance
-		compManager.slow()
+		area.slow()
 
 #TODO Move to Parent Class
 func _on_mouse_entered() -> void:

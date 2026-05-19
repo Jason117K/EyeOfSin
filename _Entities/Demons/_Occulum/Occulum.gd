@@ -223,10 +223,8 @@ func _on_slow_field_area_entered(area: Area2D) -> void:
 		#print("Zombie Entered Slow Field")
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
-		var compManager = area.getCompManager()
-		var healthComp = compManager.getHealthComponent()
 		#TODO Balance
-		compManager.slow()
+		area.slow()
 
 func burst_heal():
 	pass
@@ -248,10 +246,8 @@ func _on_slow_field_body_entered(body: Node2D) -> void:
 		#print("Zombie Entered Slow Field")
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
-		var compManager = body.getCompManager()
-		var healthComp = compManager.getHealthComponent()
 		#TODO Balance
-		compManager.slow()
+		body.slow()
 
 
 func _on_heal_zone_area_entered(area: Area2D) -> void:

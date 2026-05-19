@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/ZombieHealthComponent.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://_Entities/Zombies/_Reanimator/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
-[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ZombieComponentManager.tscn" id="11"]
 [ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="13_442bf"]
 
 [sub_resource type="RectangleShape2D" id="25"]
@@ -354,14 +353,9 @@ self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
 position = Vector2(8, 20)
 texture = ExtResource("2_26b7w")
 
-[node name="ComponentManager" parent="." unique_id=1452143294 instance=ExtResource("11")]
-
 [node name="HealthComponent" parent="." unique_id=1825179096 instance=ExtResource("7")]
-health = 150
-bloodWorth = 15.0
 
 [node name="SpeedComponent" parent="." unique_id=18633547 instance=ExtResource("1")]
-speed = 8
 
 [node name="AttackComponent" parent="." unique_id=1819790260 instance=ExtResource("4")]
 
@@ -424,9 +418,23 @@ sprite_frames = SubResource("SpriteFrames_gvy7m")
 frame = 1
 frame_progress = 0.6684441
 
+
+[node name="JustNowSpawned" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="ResetThisColor" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="DebuffDegrade" type="Timer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
+[connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="SummonComponent" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="SummonComponent/SummonTimer" to="SummonComponent" method="_on_SummonTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="JustNowSpawned" to="." method="_on_JustNowSpawned_timeout"]
+[connection signal="timeout" from="ResetThisColor" to="." method="_on_ResetThisColor_timeout"]
+[connection signal="timeout" from="DebuffDegrade" to="." method="_on_DebuffDegrade_timeout"]

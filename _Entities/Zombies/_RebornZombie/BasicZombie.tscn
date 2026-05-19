@@ -9,7 +9,6 @@
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_ldf7h"]
 [ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/Components/ZombieSpeedComponent.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://_Entities/Zombies/_RebornZombie/GhoulWebbedSheet.png" id="9"]
-[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ZombieComponentManager.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/ZombieHealthComponent.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -371,23 +370,22 @@ self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
 position = Vector2(0, 16)
 texture = ExtResource("2_80ohr")
 
-[node name="ComponentManager" parent="." unique_id=2087176819 instance=ExtResource("10")]
-
 [node name="HealthComponent" parent="." unique_id=1239328095 instance=ExtResource("11")]
 position = Vector2(0, 1.83333)
-time_between_bleed = null
-health = 80
-healthRegen = null
-bleed_tick_damage = null
-speed = null
-attack_power = null
-bloodWorth = 2.0
 
 [node name="SpeedComponent" parent="." unique_id=55652203 instance=ExtResource("8")]
-speed = 15
 
 [node name="AttackComponent" parent="." unique_id=1686378787 instance=ExtResource("5")]
-attack_power = 20
+
+[node name="JustNowSpawned" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="ResetThisColor" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="DebuffDegrade" type="Timer" parent="."]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1516634289]
 position = Vector2(0, 1.83333)
@@ -409,6 +407,9 @@ collide_with_areas = true
 [node name="AttackTimer" type="Timer" parent="." unique_id=1643109957]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
+[connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
+[connection signal="timeout" from="JustNowSpawned" to="." method="_on_JustNowSpawned_timeout"]
+[connection signal="timeout" from="ResetThisColor" to="." method="_on_ResetThisColor_timeout"]
+[connection signal="timeout" from="DebuffDegrade" to="." method="_on_DebuffDegrade_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

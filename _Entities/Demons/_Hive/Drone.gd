@@ -166,7 +166,7 @@ func die():
 	queue_free()
 	
 func death_slow():
-	current_zombie_to_fight.get_parent().getCompManager().slow()
+	current_zombie_to_fight.slow()
 	
 func death_explode():
 	var death_bomb = Global.get_bomb_scene().instantiate()
@@ -260,7 +260,7 @@ func _on_attack_timer_timeout():
 		animatedSpriteComp.animation = "attack"
 		var distance = global_position.distance_to(current_target.global_position)
 		if distance <= attack_range:
-			current_target.getCompManager().take_damage(attack_damage)
+			current_target.take_damage(attack_damage)
 
 
 func get_is_in_combat():

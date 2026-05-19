@@ -112,7 +112,7 @@ func _process_collision(area: Area2D) -> void:
 	if "Zombie" in area.name and not hit_enemies.has(area):
 		print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
-		var compManager = area.getCompManager()
+
 
 	
 # Fire a new laser 

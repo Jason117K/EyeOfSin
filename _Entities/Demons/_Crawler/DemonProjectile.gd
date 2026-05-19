@@ -118,28 +118,27 @@ func on_hit(area):
 		if area.get_parent().get_parent() != self.get_parent().get_parent():
 			return
 		print("Area Hit Is ", area)
-		var compManager = area.getCompManager()
-		var healthComp = compManager.getHealthComponent()
+		var healthComp = area.getHealthComponent()
 		if is_slowing:
-			compManager.slow()
+			area.slow()
 		if spinalOcculumBuff:
-			compManager.knockBack()
+			area.knockBack()
 		if give_blood_on_death:
 			healthComp.add_blood_worth(blood_worth_to_add)
 		if spawn_drone_on_zombie_death:
-			compManager.spawn_drone_on_zombie_death()
+			area.spawn_drone_on_zombie_death()
 		if num_zombies_hit > 3 && canGenBlood:
 			generate_blood()
 			canGenBlood = false
 		if bleed:
-			compManager.bleed(bleed_damage)
+			area.bleed(bleed_damage)
 		if column_explode:
-			compManager.column_explode()
+			area.column_explode()
 			column_explode = false
 		if silencing:
 			area.silence()
 		print("Calling Take Damage On ", area)
-		compManager.take_damage(damage,piercing)  # Call take_damage() on the zombie
+		area.take_damage(damage,piercing)
 		if piercing == false:
 			queue_free() 
 		else:
@@ -157,10 +156,8 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 			#print("Early Return Rr")
 			pass
 			return
-		var compManager = area.getCompManager()
-		var healthComp = compManager.getHealthComponent()
-		compManager.slow()
-		compManager.take_damage(lightning_damage)  # Call take_damage() on the zombie
+		area.slow()
+		area.take_damage(lightning_damage)
 	else:
 		pass
 		#print(area, " is not in Zombie Group")

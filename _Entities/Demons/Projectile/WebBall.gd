@@ -47,9 +47,7 @@ func die():
 	# Then slow the valid enemies 
 	for enemy in valid_enemies:
 		if enemy.is_in_group("Zombie"):
-			var compManager = enemy.getCompManager()
-			var healthComp = compManager.getHealthComponent()
-			compManager.slow()
+			enemy.slow()
 			
 	queue_free()  # Remove the projectile # Replace with function body.
 		

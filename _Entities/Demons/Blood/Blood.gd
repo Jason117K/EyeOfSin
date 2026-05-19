@@ -91,8 +91,8 @@ func _on_Blood_mouse_entered():
 
 func free_blood():
 	if current_zombie_target != null:
-		current_zombie_target.getCompManager().take_damage(BloodDamage)
-		current_zombie_target.getCompManager().slow()
+		current_zombie_target.take_damage(BloodDamage)
+		current_zombie_target.slow()
 	queue_free()
 
 func summon_blood_swords():

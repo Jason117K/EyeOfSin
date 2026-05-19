@@ -212,8 +212,7 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 		group.damage_applied = true
 		if is_instance_valid(enemy):
 			enemy.visible = false
-			var enemyCompManager = enemy.getCompManager()
-			enemyCompManager.take_damage(INSTAKILL_DAMAGE)			
+			enemy.take_damage(INSTAKILL_DAMAGE)			
 
 	group.pending_retract -= 1
 	if group.pending_retract == 0:

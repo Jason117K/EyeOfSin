@@ -19,5 +19,5 @@ func _ready() -> void:
 func _on_explosion_anim_fx_animation_finished() -> void:
 	for area in self.get_overlapping_areas():
 		if area.is_in_group("Zombie"):
-			area.getCompManager().take_damage(damage)
+			area.take_damage(damage)
 	queue_free()

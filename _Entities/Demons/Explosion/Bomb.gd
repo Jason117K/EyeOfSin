@@ -41,7 +41,5 @@ func _on_DeathTimer_timeout():
 	for enemy in enemiesToHit:
 		if is_instance_valid_and_alive(enemy):	
 			if(enemy != null):
-				var compManager = enemy.getCompManager()
-				var healthComp = compManager.getHealthComponent()
-				compManager.take_damage(damage)  
+				enemy.take_damage(damage)  
 	queue_free()

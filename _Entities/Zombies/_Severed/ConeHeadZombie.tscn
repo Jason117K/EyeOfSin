@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/Components/ZombieAttackComponent.tscn" id="9"]
 [ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="9_bkie4"]
 [ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/ZombieHealthComponent.tscn" id="10"]
-[ext_resource type="PackedScene" uid="uid://cadtk2jnur3sy" path="res://_Entities/Zombies/Components/ZombieComponentManager.tscn" id="11"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="12_ebmmd"]
 
@@ -36,12 +35,8 @@ position = Vector2(-8, 1)
 sprite_frames = ExtResource("2_tbvgb")
 animation = &"hit"
 
-[node name="ComponentManager" parent="." unique_id=691615172 instance=ExtResource("11")]
-
 [node name="HealthComponent" parent="." unique_id=384784267 instance=ExtResource("10")]
 position = Vector2(4, 4)
-health = 200
-bloodWorth = 4.0
 
 [node name="SpeedComponent" parent="." unique_id=303606292 instance=ExtResource("8")]
 
@@ -72,7 +67,21 @@ collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=2128140176]
 
+
+[node name="JustNowSpawned" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="ResetThisColor" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="DebuffDegrade" type="Timer" parent="."]
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="animation_finished" from="BloodHit" to="ComponentManager" method="_on_blood_hit_animation_finished"]
+[connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="JustNowSpawned" to="." method="_on_JustNowSpawned_timeout"]
+[connection signal="timeout" from="ResetThisColor" to="." method="_on_ResetThisColor_timeout"]
+[connection signal="timeout" from="DebuffDegrade" to="." method="_on_DebuffDegrade_timeout"]

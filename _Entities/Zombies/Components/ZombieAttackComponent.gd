@@ -4,7 +4,7 @@ extends Node2D
 
 class_name AttackComponent
 
-@export var attack_power = 33 # Adjustable reference to attack damage
+var attack_power : float
 var is_attacking = false  # Whether or not we attacking
 var target_demon = null  # Holds reference to the demon being attacked
 var canSpecial = true # Determines whether or not a special move can be performed
@@ -19,6 +19,7 @@ var _frame_counter: int = 0
 var my_level: Node
 
 func _ready() -> void:
+	attack_power = parent.attack_power
 	my_level = parent.get_parent().get_parent()
 	_frame_counter = randi() % 3
 	if parent.is_in_group("Green"):
@@ -105,10 +106,10 @@ func _on_AttackTimer_timeout():
 						get_parent().die()
 				if target_demon.has_method("spinalOcculumWyrmBuffed"):
 					if target_demon.can_damage_zombie == true :
-						zombie.getCompManager().take_damage(10)
+						zombie.take_damage(10)
 				if target_demon.has_method("lightning_maw_buff"):
 					if target_demon.is_lightning_maw_buff:
-						zombie.getCompManager().take_damage(target_demon.get_lightning_damage())
+						zombie.take_damage(target_demon.get_lightning_damage())
 				print(attack_power ," Calling Take Damage on ", target_demon)
 				target_demon.take_damage(attack_power)
 			else:

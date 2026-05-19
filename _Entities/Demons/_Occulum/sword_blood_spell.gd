@@ -26,7 +26,7 @@ func damage_zombies():
 	print("Zombies to damage is ", zombies_to_damage)
 	for zombie in zombies_to_damage:
 		print("Zombie is ", zombie)
-		zombie.getCompManager().take_damage(blood_damage)
+		zombie.take_damage(blood_damage)
 		if is_maw_parent:
 			#TODO Add Armor Stripping 
 			pass 		
@@ -48,4 +48,4 @@ func _on_area_entered(area: Area2D) -> void:
 			pass
 		else:
 			pass
-			#area.getCompManager().take_damage(blood_damage)
+			#area.take_damage(blood_damage)

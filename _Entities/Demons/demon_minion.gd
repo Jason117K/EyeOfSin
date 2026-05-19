@@ -48,7 +48,7 @@ func _ready() -> void:
 		
 func attack_zombie():
 	if current_zombie != null:
-		current_zombie.getCompManager().take_damage(minion_damage)
+		current_zombie.take_damage(minion_damage)
 	
 func _physics_process(delta: float) -> void:
 	if is_stationary:

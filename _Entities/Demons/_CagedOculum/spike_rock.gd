@@ -22,7 +22,7 @@ func activate():
 	spike_rock_sprite.play()
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
-			area.getCompManager().take_damage(damage)
+			area.take_damage(damage)
 	
 	spike_timer = Timer.new()
 	spike_timer.autostart = false
@@ -36,5 +36,5 @@ func spike_attack():
 	spike_rock_sprite.play()
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
-			area.getCompManager().take_damage(damage)
+			area.take_damage(damage)
 	

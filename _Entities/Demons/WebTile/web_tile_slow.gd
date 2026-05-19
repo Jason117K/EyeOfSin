@@ -18,9 +18,9 @@ func activate():
 		
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
-			area.getCompManager().slow()
+			area.slow()
 
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		area.getCompManager().slow()
+		area.slow()

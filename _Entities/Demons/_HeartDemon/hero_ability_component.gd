@@ -83,7 +83,7 @@ func damage_all_zombies_in_range():
 	beat_of_death()
 	for new_area in damage_zone.get_overlapping_areas():
 		if new_area.is_in_group("Zombie"):
-			new_area.getCompManager().take_damage(damage)
+			new_area.take_damage(damage)
 				
 	
 	
