@@ -30,7 +30,7 @@ enum Demons { OCCULUM,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 ]
 
 # Adjustable variable to store which demons this demon can buff
-@export var giveBuffTo = ["Occulum","Crawler","SpinalOcculum","Wyrm","Hive","Maw","None","None"]
+var giveBuffTo = ["Occulum","Crawler","SpinalOcculum","Wyrm","Hive","Maw","None","None"]
 
 var buffedDemons = []
 
