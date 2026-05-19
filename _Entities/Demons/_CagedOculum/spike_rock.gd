@@ -1,12 +1,13 @@
 extends Area2D
-@export var spike_damage := 20
+var spike_damage := 20
 var spike_wait_time := 5
 var spike_timer : Timer
 @onready var spike_rock_sprite := $AnimatedSprite2D
 	
 func activate():
+	spike_damage = get_parent().spike_damage
 	show()
-	monitoring = true 
+	monitoring = true
 	if self.is_in_group("Green"):
 		self.set_collision_mask_value(1,false)
 		self.set_collision_mask_value(2,false)

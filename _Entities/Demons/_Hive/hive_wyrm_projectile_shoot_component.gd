@@ -6,7 +6,12 @@ extends WyrmProjectileShootComponent
 @onready var laser_shoot_comp := $"../HiveLaserShootComp"
 
 func _ready() -> void:
-	animSpriteComp =  $"../AnimatedSpriteComponent"
+	cooldown = parent_demon.projectile_cooldown
+	auto_fire = parent_demon.projectile_auto_fire
+	projectile_speed = parent_demon.projectile_speed
+	projectile_damage = parent_demon.projectile_damage
+
+	animSpriteComp = $"../AnimatedSpriteComponent"
 	shoot_positions = [shootPosition]
 	attack_rays = [attack_ray]
 	set_attack_rays_collision()

@@ -1,19 +1,28 @@
 class_name DemonHealthComponent extends Node
 
-@export var regen_wait_time := 1
+var regen_wait_time := 1
 
-@export var health = 800
-@onready var ogHealth = health
+var health = 800
+var ogHealth
 
-@export var healthRegen = 0.0
-@onready var ogHealthRegen = healthRegen
+var healthRegen = 0.0
+var ogHealthRegen
 
-@export var maxHealth = 800
-@onready var ogMaxHealth = maxHealth
+var maxHealth = 800
+var ogMaxHealth
 
 @onready var demon : Demon = get_parent()
 
-var regen_timer : Timer 
+var regen_timer : Timer
+
+func _ready():
+	health = demon.health
+	healthRegen = demon.healthRegen
+	maxHealth = demon.maxHealth
+	regen_wait_time = demon.regen_wait_time
+	ogHealth = health
+	ogMaxHealth = maxHealth
+	ogHealthRegen = healthRegen
 
 var isWyrmBuffed := false 
 var isMawBuffed := false 

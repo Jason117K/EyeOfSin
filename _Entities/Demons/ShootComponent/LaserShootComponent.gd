@@ -1,29 +1,30 @@
 extends Node2D
 # ShootComponent.gd
 
-# Handles Shooting the Wyrm Laser 
+# Handles Shooting the Wyrm Laser
 #Red Color : b00000
 #Magenta : b00075
 # Configuration parameters
-@export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)  # Default red laser
-@export var extension_speed: float = 1000.0  # Pixels per second
-@onready var ogExtension_Speed := extension_speed
+var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)
+var extension_speed: float = 1000.0
+var ogExtension_Speed: float
 
-@export var max_length: float = 1000.0
-@onready var ogMax_Length := max_length
+var max_length: float = 1000.0
+var ogMax_Length: float
 
-@export var laser_width: float = 4.0  # Increased for visibility
-@export var damage: float = 20
+var laser_width: float = 4.0
+var damage: float = 20
 var og_damage
-@export var maw_damage: float = 60
-@export var duration: float = 0.5
-@export var auto_fire: bool = false
+var maw_damage: float = 60
+var duration: float = 0.5
+var auto_fire: bool = false
 
+var cooldown: float = 3
+var blood_buff_cooldown: float = 0.9
+var og_cooldown
+var isOcculumBuffed := false
 
-@export var cooldown: float = 3
-@export var blood_buff_cooldown: float = 0.9
-var og_cooldown 
-var isOcculumBuffed := false 
+var demon: Demon
 
 # Zigzag parameters
 @export var zigzag_height: float = 50.0  # Height of the zigzag
@@ -50,11 +51,35 @@ var isSlowingProjectile := false
 
 @onready var projectile_shoot_component := $"../../ProjectileShootComponent"
 
+func _find_demon_ancestor() -> Demon:
+	var node = get_parent()
+	while node != null:
+		if node is Demon:
+			return node
+		node = node.get_parent()
+	return null
+
 func _ready() -> void:
+	demon = _find_demon_ancestor()
+	if demon:
+		laser_color = demon.laser_color
+		extension_speed = demon.extension_speed
+		max_length = demon.max_length
+		laser_width = demon.laser_width
+		damage = demon.laser_damage
+		maw_damage = demon.maw_damage
+		duration = demon.duration
+		auto_fire = demon.laser_auto_fire
+		cooldown = demon.laser_cooldown
+		blood_buff_cooldown = demon.blood_buff_cooldown
+
+	ogExtension_Speed = extension_speed
+	ogMax_Length = max_length
+
 	if isDisabled:
 		return
 	og_cooldown = cooldown
-	og_damage =damage
+	og_damage = damage
 	self.visible = false
 	# Set up Line2D
 	add_child(line2D)

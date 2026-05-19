@@ -3,9 +3,9 @@ class_name ProjectileShootComponent extends Node2D
 #@onready var shootTimer := $"../ShootTimer"
 @onready var base_shoot_interval = 3.0
 @onready var parent_demon : Demon = get_parent()
-@export var damage := 60
-@export var attack_speed_mult := 1.0
-@export var projectile_spawn_offest :Vector2 = Vector2(32, 0)
+var damage := 60
+var attack_speed_mult := 1.0
+var projectile_spawn_offest :Vector2 = Vector2(32, 0)
 
 var attack_rays = []
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  

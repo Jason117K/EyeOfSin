@@ -1,11 +1,15 @@
 extends ProjectileShootComponent
 
-@export var blood_worth_to_add := 10.0
+var blood_worth_to_add := 10.0
 @onready var attack_ray_1 := $"../DMG_RayCast2D"
 var second_shot_timer : Timer
 
 func _ready() -> void:
 	attack_rays = [attack_ray_1]
+	damage = parent_demon.damage
+	attack_speed_mult = parent_demon.attack_speed_mult
+	projectile_spawn_offest = parent_demon.projectile_spawn_offest
+	blood_worth_to_add = parent_demon.blood_worth_to_add
 	super()
 	
 	second_shot_timer = Timer.new()

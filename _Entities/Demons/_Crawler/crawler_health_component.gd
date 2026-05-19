@@ -1,6 +1,10 @@
 extends DemonHealthComponent
 
-@export var spinalOcculumHealth = 375
+var spinalOcculumHealth = 375
+
+func _ready():
+	super()
+	spinalOcculumHealth = demon.spinalOcculumHealth
 
 func receive_buff(demonName):
 	#print("Buff Name is ", newDemon.name)

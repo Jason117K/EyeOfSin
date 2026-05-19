@@ -1,19 +1,28 @@
 extends DemonHealthComponent
 
+var blood_spawn_time := 5
+var occulum_buffed_health := 850
+var occulum_buffed_max_health := 800
+var occulum_buffed_health_regen := 0.1
 
-@export var blood_spawn_time := 5 
-@export var occulum_buffed_health := 850
-@export var occulum_buffed_max_health := 800
-@export var occulum_buffed_health_regen := 0.1
-
-@export var maw_buffed_health := 850
-@export var maw_buffed_max_health := 800
-@export var maw_buffed_health_regen := 0.1
+var maw_buffed_health := 850
+var maw_buffed_max_health := 800
+var maw_buffed_health_regen := 0.1
 
 var blood_spawn_timer : Timer
 var can_damage_zombie := false 
 var canGenBlood := false
 var thisBufferName : String
+
+func _ready():
+	super()
+	blood_spawn_time = demon.blood_spawn_time
+	occulum_buffed_health = demon.occulum_buffed_health
+	occulum_buffed_max_health = demon.occulum_buffed_max_health
+	occulum_buffed_health_regen = demon.occulum_buffed_health_regen
+	maw_buffed_health = demon.maw_buffed_health
+	maw_buffed_max_health = demon.maw_buffed_max_health
+	maw_buffed_health_regen = demon.maw_buffed_health_regen
 
 func take_damage(damage):
 	super(damage)

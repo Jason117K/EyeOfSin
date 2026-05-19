@@ -1,10 +1,10 @@
 class_name WyrmProjectileShootComponent extends ProjectileShootComponent
 
-var isOcculumBuffed := false 
+var isOcculumBuffed := false
 var isCrawlerBuffed := false
-var isWyrmBleedBuffed := false 
-var hiveSpawnDroneBuffed := false 
-var cooldown_timer : Timer 
+var isWyrmBleedBuffed := false
+var hiveSpawnDroneBuffed := false
+var cooldown_timer : Timer
 
 @onready var attack_ray_1 = $"../DMG_RayCast2D"
 @onready var shootPosition1 = $"../Worm1/LaserShootComponent"
@@ -12,14 +12,22 @@ var cooldown_timer : Timer
 @onready var laser_shoot_comp_1 := $"../Worm1/LaserShootComponent"
 @onready var laser_shoot_comp_2 := $"../Worm2/LaserShootComponent"
 
-@export var cooldown: float = 3
-@export var occulum_buff_cooldown: float = 0.9
-@export var auto_fire := true 
-@export var projectile_speed := 600
-@export var projectile_damage := 20
-@export var bleed_damage_increase := 2
+var cooldown: float = 3
+var occulum_buff_cooldown: float = 0.9
+var auto_fire := true
+var projectile_speed := 600
+var projectile_damage := 20
+var bleed_damage_increase := 2
 
 func _ready() -> void:
+	cooldown = parent_demon.projectile_cooldown
+	auto_fire = parent_demon.projectile_auto_fire
+	occulum_buff_cooldown = parent_demon.occulum_buff_cooldown
+	projectile_speed = parent_demon.projectile_speed
+	projectile_damage = parent_demon.projectile_damage
+	bleed_damage_increase = parent_demon.bleed_damage_increase
+	damage = projectile_damage
+
 	shoot_positions = [shootPosition1] #shootPosition2]
 	attack_rays = [attack_ray_1]
 	super()

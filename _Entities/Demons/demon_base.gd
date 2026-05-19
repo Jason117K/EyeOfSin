@@ -12,8 +12,13 @@ var isBuffed := false
 @export var spinalOcculumBuff = false
 @export var mawBuff = false
 @export var crawlerBuff = false
-@export var occulumBuff = false 
+@export var occulumBuff = false
 @export var cost : float = 50
+
+@export var health = 800
+@export var healthRegen = 0.0
+@export var maxHealth = 800
+@export var regen_wait_time := 1
 
 @onready var animSpriteComp := $AnimatedSpriteComponent
 @onready var healthComp := $HealthComponent

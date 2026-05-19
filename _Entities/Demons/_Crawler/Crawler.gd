@@ -2,6 +2,12 @@ extends Demon
 #Crawler.gd
 
 @export var spiderling_wait_time := 2
+@export var spinalOcculumHealth = 375
+
+@export var damage := 60
+@export var attack_speed_mult := 1.0
+@export var projectile_spawn_offest: Vector2 = Vector2(32, 0)
+@export var blood_worth_to_add := 10.0
 
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  # Load the projectile scene
 var spiderling_scene = preload("res://_Entities/Demons/_Crawler/spiderling.tscn")

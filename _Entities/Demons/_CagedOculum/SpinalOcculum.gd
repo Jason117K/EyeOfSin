@@ -4,6 +4,16 @@ extends Demon
 @export var aoeDamage = 4
 @export var lightning_damage := 10
 
+@export var blood_spawn_time := 5
+@export var occulum_buffed_health := 850
+@export var occulum_buffed_max_health := 800
+@export var occulum_buffed_health_regen := 0.1
+@export var maw_buffed_health := 850
+@export var maw_buffed_max_health := 800
+@export var maw_buffed_health_regen := 0.1
+
+@export var spike_damage := 20
+
 @onready var AOEComp = $AOEDamageComponent
 @onready var buffNodes = $BuffNodesComponent
 @onready var web := $Web

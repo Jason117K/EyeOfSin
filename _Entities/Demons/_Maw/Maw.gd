@@ -18,7 +18,6 @@ const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost(
 @onready var ogDetectionRadius = detectionAreaShape.shape.radius
 
 # === Exports ===
-@export var cost = 200                       # Demon cost (blood cost to place)
 @export var alt_target_color: Color
 @export var alt_replace_color: Color
 @export var debug_mode: bool = false
@@ -29,6 +28,10 @@ const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost(
 @export var spinal_occulum_heal_amount := 300
 
 @export var consume_zombie_group_wait_time := 5.0
+
+@export var spinalOcculumHealth = 1500
+@export var spinal_occulum_max_health = 1500
+
 @onready var ogDigestTime = digestTime
 
 # === Runtime state ===

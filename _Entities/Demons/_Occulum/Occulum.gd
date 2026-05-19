@@ -1,7 +1,7 @@
 extends Demon
 #Occulum.gd
 
-@export var cost = 50
+
 
 @onready var madeTutorialBlood = false
 @onready var bloodTimer = $BloodTimer
@@ -13,6 +13,8 @@ extends Demon
 @export var heal_interval_wait_time := 2
 @export var hive_burst_heal_amount := 50
 @export var spinal_occulum_heal_over_time_amount := 5
+
+@export var maw_health = 500
 
 @onready var buffNodes = $BuffNodesComponent
 @onready var healTimer : Timer

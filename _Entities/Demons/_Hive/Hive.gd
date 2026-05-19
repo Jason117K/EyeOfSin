@@ -2,7 +2,25 @@ extends Demon
 
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
-@export var drone_attack_damage = 7    
+@export var drone_attack_damage = 7
+@export var spinalOcculumHealth := 800
+
+@export var projectile_cooldown: float = 3
+@export var projectile_auto_fire := true
+@export var occulum_buff_cooldown: float = 0.9
+@export var projectile_speed := 600
+@export var projectile_damage := 20
+
+@export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)
+@export var extension_speed: float = 1000.0
+@export var max_length: float = 1000.0
+@export var laser_width: float = 4.0
+@export var laser_damage: float = 20
+@export var maw_damage: float = 60
+@export var duration: float = 0.5
+@export var laser_auto_fire: bool = false
+@export var laser_cooldown: float = 3
+@export var blood_buff_cooldown: float = 0.9
 
 var isWyrmBuffed := false
 var isCrawlerBuffed := false
