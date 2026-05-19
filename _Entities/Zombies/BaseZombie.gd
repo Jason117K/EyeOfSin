@@ -18,7 +18,7 @@ signal zombie_death
 
 @export_category("BloodWorth")
 @export var bloodWorth := 1.0
-
+@export_category("Misc")
 @export var charge_cost := 1
 @export var silence_field_position : Vector2
 
