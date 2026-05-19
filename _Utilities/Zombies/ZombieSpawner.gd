@@ -94,9 +94,9 @@ func _spawn_next() -> void:
 	if make_green:
 		zombie.add_to_group("Green")
 		get_parent().add_child(zombie)
-		zombie.collision_layer = 3
+		#zombie.collision_layer = 3
 		zombie.set_hue_shift(125)
-		zombie._ready()
+		#zombie._ready()
 	else:
 		zombie.add_to_group("Purple")
 		get_parent().add_child(zombie)

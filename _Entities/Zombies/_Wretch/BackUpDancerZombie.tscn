@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cnr47vvtfeg2g" path="res://_Entities/Zombies/_Wretch/BackUpDancerZombie.gd" id="5"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_naxm4"]
 [ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/ZombieHealthComponent.tscn" id="7"]
+[ext_resource type="Script" uid="uid://cei3441guygaq" path="res://_Entities/Zombies/_Wretch/wretch_zombie_attack_component.gd" id="7_1osc0"]
 [ext_resource type="Texture2D" uid="uid://l6dgn4pcxpf6" path="res://_Entities/Zombies/_Wretch/BackUpDancerFloat-SheetWEB.png" id="8"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
 
@@ -143,6 +144,7 @@ texture = ExtResource("2_tq53n")
 [node name="SpeedComponent" parent="." unique_id=1650849000 instance=ExtResource("3")]
 
 [node name="AttackComponent" parent="." unique_id=1247281237 instance=ExtResource("2")]
+script = ExtResource("7_1osc0")
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1484982092]
 position = Vector2(3, 2.5)

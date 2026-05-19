@@ -70,7 +70,7 @@ func summon_backup():
 			zombie_instance.add_to_group("Green")
 			zombie_instance.collision_layer = 3
 			zombie_instance.set_hue_shift(125)
-			zombie_instance._ready()
+			#zombie_instance._ready()
 		else:
 			#print("Summoner Spawned Purple")
 			zombie_instance.add_to_group("Purple")

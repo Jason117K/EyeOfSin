@@ -68,6 +68,7 @@ size = Vector2i(740, 412)
 render_target_update_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="PipViewport" unique_id=814420552]
+visible = false
 custom_minimum_size = Vector2(1000, 1000)
 anchors_preset = 15
 anchor_right = 1.0

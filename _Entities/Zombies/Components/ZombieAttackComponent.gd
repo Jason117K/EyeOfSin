@@ -29,7 +29,8 @@ func _ready() -> void:
 		attack_ray.set_collision_mask_value(2,false)
 		attack_ray.set_collision_mask_value(3,true)
 	else:
-		#print(parent," DOING PURPLE SET FOOOOOR ", attack_ray)
+		if attack_ray == null:
+			print(parent," DOING PURPLE SET FOOOOOR ", attack_ray)
 		attack_ray.set_collision_mask_value(1,false)
 		attack_ray.set_collision_mask_value(2,true)
 		attack_ray.set_collision_mask_value(3,false)
