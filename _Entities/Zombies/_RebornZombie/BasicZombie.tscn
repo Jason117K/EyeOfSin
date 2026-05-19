@@ -377,15 +377,15 @@ position = Vector2(0, 1.83333)
 
 [node name="AttackComponent" parent="." unique_id=1686378787 instance=ExtResource("5")]
 
-[node name="JustNowSpawned" type="Timer" parent="."]
+[node name="JustNowSpawned" type="Timer" parent="." unique_id=752428092]
 wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="ResetThisColor" type="Timer" parent="."]
+[node name="ResetThisColor" type="Timer" parent="." unique_id=1608095232]
 wait_time = 0.3
 
-[node name="DebuffDegrade" type="Timer" parent="."]
+[node name="DebuffDegrade" type="Timer" parent="." unique_id=1885821975]
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1516634289]
 position = Vector2(0, 1.83333)
@@ -408,8 +408,5 @@ collide_with_areas = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
-[connection signal="timeout" from="JustNowSpawned" to="." method="_on_JustNowSpawned_timeout"]
-[connection signal="timeout" from="ResetThisColor" to="." method="_on_ResetThisColor_timeout"]
-[connection signal="timeout" from="DebuffDegrade" to="." method="_on_DebuffDegrade_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

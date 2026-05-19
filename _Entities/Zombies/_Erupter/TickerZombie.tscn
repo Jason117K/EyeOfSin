@@ -414,22 +414,18 @@ monitorable = false
 position = Vector2(-62.5834, 4.66667)
 shape = SubResource("29")
 
-
-[node name="JustNowSpawned" type="Timer" parent="."]
+[node name="JustNowSpawned" type="Timer" parent="." unique_id=1212849359]
 wait_time = 0.1
 one_shot = true
 autostart = true
 
-[node name="ResetThisColor" type="Timer" parent="."]
+[node name="ResetThisColor" type="Timer" parent="." unique_id=579328549]
 wait_time = 0.3
 
-[node name="DebuffDegrade" type="Timer" parent="."]
+[node name="DebuffDegrade" type="Timer" parent="." unique_id=1443121671]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]
 [connection signal="animation_finished" from="AOEHit/Hit3" to="AOEHit" method="_on_Hit3_animation_finished"]
-[connection signal="timeout" from="JustNowSpawned" to="." method="_on_JustNowSpawned_timeout"]
-[connection signal="timeout" from="ResetThisColor" to="." method="_on_ResetThisColor_timeout"]
-[connection signal="timeout" from="DebuffDegrade" to="." method="_on_DebuffDegrade_timeout"]

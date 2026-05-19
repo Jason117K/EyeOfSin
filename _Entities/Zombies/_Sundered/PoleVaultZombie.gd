@@ -8,7 +8,9 @@ extends Zombie
 
 # Specific Pole Vault Special Move 
 func special_move():
-	compManager.special_move()
+	#compManager.special_move()
+	specialMoveComp.executeMove()
+	animatedSprite.setSpecialMoveTrue()
 	
 # Gets whether or not the special Move has finished executing 
 func getIsMoveFinished():

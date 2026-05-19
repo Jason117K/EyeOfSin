@@ -30,6 +30,9 @@ signal zombie_death
 @onready var attack_ray = $DMGRayCast2D
 @onready var bloodHit := $BloodHit
 @onready var damage_vfx_spawn_locations = [bloodHit]
+@onready var debuff_degrade_timer : Timer = $DebuffDegrade
+@onready var reset_color_timer : Timer = $ResetThisColor
+@onready var just_spawned_timer : Timer = $JustNowSpawned
 
 # --- Preloads ---
 var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
@@ -60,7 +63,10 @@ func _ready() -> void:
 		self.set_collision_layer_value(2, false)
 		self.set_collision_layer_value(3, false)
 		self.set_collision_layer_value(4, true)
-
+		
+	debuff_degrade_timer.timeout.connect(_on_DebuffDegrade_timeout)
+	reset_color_timer.timeout.connect(_on_ResetThisColor_timeout)
+	just_spawned_timer.timeout.connect(_on_JustNowSpawned_timeout)
 
 func _process(delta):
 	speedComp.tick(delta)
