@@ -1,12 +1,9 @@
 extends Node2D
 
 @onready var zombie = get_parent()
-@onready var attackComp = $"../AttackComponent"
-@onready var animatedSprite = $"../AnimatedSprite2D"
 
 var speed : float
 var originalSpeed : float
-var is_attacking
 var slow_timer: Timer = null
 
 
@@ -29,10 +26,7 @@ func getOriginalSpeed():
 
 
 func tick(delta):
-	if attackComp != null && animatedSprite.isDead == false:
-		is_attacking = attackComp.getAttackState()
-		if not is_attacking:
-			zombie.position.x -= speed * delta
+	zombie.position.x -= speed * delta
 
 
 func slow():

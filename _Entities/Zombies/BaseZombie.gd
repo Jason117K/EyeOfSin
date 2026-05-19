@@ -15,6 +15,8 @@ signal zombie_death
 
 @export_category("Attack")
 @export var attack_power = 33
+@export var attack_speed := 1.0
+@export_range(0.1, 1.0) var attack_damage_point := 0.667
 
 @export_category("BloodWorth")
 @export var bloodWorth := 1.0
@@ -69,7 +71,25 @@ func _ready() -> void:
 	just_spawned_timer.timeout.connect(_on_JustNowSpawned_timeout)
 
 func _process(delta):
-	speedComp.tick(delta)
+	if animatedSprite.isDead:
+		return
+
+	# --- State Update ---
+	# 1. Health: regen is timer-driven, injured flag updated on damage/regen
+
+	# 2. Speed & status: event/timer-driven, no per-frame work
+	#    (reserved slot for future per-frame state updates)
+
+	# --- Decision & Action ---
+	# 3. Attack: assess targets, initiate or continue attacks
+	attackComp.tick(delta)
+
+	# 4. Movement: move only if not attacking
+	if not attackComp.is_attacking:
+		speedComp.tick(delta)
+
+	# --- Visuals ---
+	# 5. Animation: select correct animation for current state
 	animatedSprite.tick(delta)
 
 

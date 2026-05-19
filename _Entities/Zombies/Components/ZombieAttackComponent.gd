@@ -9,6 +9,7 @@ var is_attacking = false  # Whether or not we attacking
 var target_demon = null  # Holds reference to the demon being attacked
 var canSpecial = true # Determines whether or not a special move can be performed
 var _frame_counter: int = 0
+var base_anim_duration: float
 
 @onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect demons in front of the zombie
 @onready var zombieSprite : AnimatedSprite2D = $"../AnimatedSprite2D" # RefCounted to sprite comp 
@@ -32,8 +33,12 @@ func _ready() -> void:
 		attack_ray.set_collision_mask_value(1,false)
 		attack_ray.set_collision_mask_value(2,true)
 		attack_ray.set_collision_mask_value(3,false)
-	#Set Wait time to 2/3 of Anim Duration (framecount/fps)
-	attack_timer.wait_time = ((zombieSprite.sprite_frames.get_frame_count("Attack") / zombieSprite.sprite_frames.get_animation_speed("Attack")) / 3) * 2
+	# Compute base animation duration and set timer for first hit
+	base_anim_duration = zombieSprite.sprite_frames.get_frame_count("Attack") / zombieSprite.sprite_frames.get_animation_speed("Attack")
+	attack_timer.one_shot = true
+	var safe_speed = max(parent.attack_speed, 0.01)
+	attack_timer.wait_time = base_anim_duration * parent.attack_damage_point / safe_speed
+	set_process(false)
 
 func silence():
 	attack_power = attack_power/2
@@ -62,6 +67,7 @@ func attack_demon(collider):
 	target_demon = collider
 	#print("TName is ", target_demon.name)
 	#print("I am " , self.name)
+	zombieSprite.speed_scale = parent.attack_speed
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
 	#TODO Make Attacking Sounds More Efficient
@@ -112,6 +118,10 @@ func _on_AttackTimer_timeout():
 						zombie.take_damage(target_demon.get_lightning_damage())
 				print(attack_power ," Calling Take Damage on ", target_demon)
 				target_demon.take_damage(attack_power)
+				# Schedule next hit at same animation fraction in next loop
+				var safe_speed = max(parent.attack_speed, 0.01)
+				attack_timer.wait_time = base_anim_duration / safe_speed
+				attack_timer.start()
 			else:
 				stop_attack()
 		if "Ticker" in parent.get_name():
@@ -125,8 +135,9 @@ func stop_attack():
 	is_attacking = false
 	target_demon = null
 	attack_timer.stop()
+	zombieSprite.speed_scale = 1.0
 
-func _process(_delta):
+func tick(_delta):
 	if not is_attacking:
 		_frame_counter += 1
 		if _frame_counter % 3 != 0:

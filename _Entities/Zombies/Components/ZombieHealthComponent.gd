@@ -10,6 +10,7 @@ var bleed_tick_damage : float
 
 var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 var bleed_proc_timer : Timer
+var regen_timer : Timer
 var injured = false
 var halfHealth : float
 var maxHealth : float
@@ -27,8 +28,14 @@ func _ready():
 	bleed_tick_damage = zombie.bleed_tick_damage
 	maxHealth = health
 	halfHealth = health / 2.0
-	if healthRegen <= 0.0:
-		set_process(false)
+	set_process(false)
+	if healthRegen > 0.0:
+		regen_timer = Timer.new()
+		regen_timer.wait_time = 0.5
+		regen_timer.one_shot = false
+		regen_timer.autostart = true
+		regen_timer.timeout.connect(_on_regen_tick)
+		add_child(regen_timer)
 
 
 func receive_buff():
@@ -80,9 +87,9 @@ func bleed_tick():
 	take_damage(bleed_tick_damage)
 
 
-func _process(_delta):
+func _on_regen_tick():
 	if health < maxHealth:
-		health += healthRegen
+		health = min(health + healthRegen, maxHealth)
 		injured = health < halfHealth
 
 
