@@ -1,6 +1,37 @@
 class_name ZombieComponentManager extends Node2D
 
 
+@export_category("Health")
+@export var time_between_bleed := 1
+@export var health := 76 #25 # Health of the zombie
+@export var healthRegen = 0.0 # Health regen rate
+@export var bleed_tick_damage := 0
+
+
+@export_category("Speed")
+@export var speed = 20 
+
+@export_category("Attack")
+@export var attack_power = 33 # Adjustable reference to attack damage
+
+@export_category("BloodWorth")
+@export var bloodWorth := 1.0
+
+
+func get_blood_worth():
+	return bloodWorth
+func get_bleed_interval_time():
+	return time_between_bleed
+func get_speed():
+	return speed
+func get_attack_power():
+	return attack_power
+func get_bleed_tick_damage():
+	return bleed_tick_damage
+func get_health():
+	return health 
+
+
 #State tracking variables 
 var is_attacking = false
 var target_demon = null
@@ -19,6 +50,10 @@ var reset_speed_timer : Timer
 @onready var zombie : Zombie = get_parent()
 @onready var bloodHit := $"../BloodHit"
 @onready var damage_vfx_spawn_locations = [bloodHit]
+
+
+
+
 
 
 func _process(delta):

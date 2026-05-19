@@ -3,23 +3,24 @@ class_name ZombieHealthComponent extends Node2D
 
 
 #@onready var hitAudioPlayer = $"../HitAudioPlayer"
-@onready var zombie = get_parent()
+#@onready var zombie : Zombie = get_parent()
+@onready var component_manager :ZombieComponentManager = zombie.getCompManager()
 
-@export var time_between_bleed := 1
-@export var health := 76 #25 # Health of the zombie
-@export var healthRegen = 0.0 # Health regen rate
-@export var bloodWorth := 1.0
-@export var bleed_tick_damage := 0
+#@export var time_between_bleed := 1
+#@export var health := 76 #25 # Health of the zombie
+#@export var healthRegen = 0.0 # Health regen rate
+#@export var bloodWorth := 1.0
+#@export var bleed_tick_damage := 0
 
 
 var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 var bleed_proc_timer : Timer 
 var injured = false 
-var halfHealth = health/2
+var halfHealth = 1#health/2
 var should_bleed := false 
 
 var explode_from_drone = false   
-@onready var maxHealth := health
+@onready var maxHealth : float = zombie.getCompManager().get_health()
 
 func receive_buff():
 	pass

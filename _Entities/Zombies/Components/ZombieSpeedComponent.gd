@@ -6,8 +6,8 @@ extends Node2D
 @onready var attackComp = $"../AttackComponent"
 @onready var animatedSprite = $"../AnimatedSprite2D"
 
-#Adjustable movement speed
-@export var speed = 20 #40 #26 #30 # Movement speed, was 34  #37
+##Adjustable movement speed
+#@export var speed = 20 #40 #26 #30 # Movement speed, was 34  #37
 
 # Store the original speed and whether or not the zombie is attacking
 var originalSpeed
