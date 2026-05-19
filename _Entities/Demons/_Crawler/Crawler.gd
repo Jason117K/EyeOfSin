@@ -1,7 +1,6 @@
 extends Demon
 #Crawler.gd
 
-@export var cost = 75
 @export var spiderling_wait_time := 2
 
 var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  # Load the projectile scene

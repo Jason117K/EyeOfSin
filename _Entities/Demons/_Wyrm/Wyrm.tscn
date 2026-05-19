@@ -806,7 +806,6 @@ size = Vector2(20, 1.275)
 [node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Demons", "Plants", "Wyrm"]]
 z_index = 1
 script = ExtResource("4")
-cost = 100
 bob_speed = 1.7
 bob_height = 3.0
 squash_amount = 0.2

@@ -1,7 +1,6 @@
 extends Demon
 #HeartDemon.gd
 
-@export var cost = 0
 
 var DemonManager
 var duration : float 

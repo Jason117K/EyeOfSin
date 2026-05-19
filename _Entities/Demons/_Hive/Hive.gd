@@ -1,6 +1,5 @@
 extends Demon
 
-@export var cost = 25
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
 @export var drone_attack_damage = 7    

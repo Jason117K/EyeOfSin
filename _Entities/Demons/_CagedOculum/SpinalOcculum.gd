@@ -1,7 +1,6 @@
 extends Demon
 #SpinalOcculum.gd
 
-@export var cost = 100
 @export var aoeDamage = 4
 @export var lightning_damage := 10
 
@@ -14,7 +13,6 @@ extends Demon
 var is_lightning_maw_buff := false 
 
 var DemonManager
-var phantomHive = preload("res://_Entities/Demons/_Hive/phantom_hive.tscn")
 var can_damage_zombie= false 
 var bloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn")  
 
@@ -45,7 +43,6 @@ func receive_buff(bufferName):
 			"Hive":
 				silence_field.activate()
 				pass
-				#spawnPhantomHive()
 			"Maw":
 				lightning_maw_buff()
 				pass
@@ -95,13 +92,6 @@ func die_fromClearSpace():
 	queue_free()				
 		
 
-#TODO Move to PhantomHiveSpawner Component That Gets Added
-func spawnPhantomHive():
-	var hive_instance = phantomHive.instantiate()
-	print("Spawn HIVE")
-	get_parent().add_child(hive_instance)  # Add the phantom hive to the scene as a child of gamelayer
-	#Set the blood pos to above the occulum
-	hive_instance.global_position = self.global_position 
 
 
 #TODO Move to Slow Field Component That Gets Added

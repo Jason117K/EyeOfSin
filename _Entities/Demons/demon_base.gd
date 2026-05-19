@@ -13,6 +13,7 @@ var isBuffed := false
 @export var mawBuff = false
 @export var crawlerBuff = false
 @export var occulumBuff = false 
+@export var cost : float = 50
 
 @onready var animSpriteComp := $AnimatedSpriteComponent
 @onready var healthComp := $HealthComponent

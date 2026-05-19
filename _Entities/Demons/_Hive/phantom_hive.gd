@@ -4,7 +4,6 @@ extends Demon
 # Hive Demon Script
 
 #Export variables
-@export var cost = 25
 @export var health = 50
 
 # Preload the drone scene

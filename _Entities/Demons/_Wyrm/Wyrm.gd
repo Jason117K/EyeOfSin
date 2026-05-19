@@ -6,7 +6,7 @@ extends Demon
 #var og_health
 #@export var spinalOcculumBuffed_health = 550
 #@export var mawBuffed_health = 350
-@export var cost = 150
+
 
 # Animation parameters
 @export var bob_speed = 2.0  
