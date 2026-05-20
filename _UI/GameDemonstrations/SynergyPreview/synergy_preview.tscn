@@ -4,11 +4,7 @@
 [ext_resource type="Script" path="res://_UI/GameDemonstrations/SynergyPreview/preview_demon_manager.gd" id="2_dm"]
 
 [node name="SynergyPreview" type="CenterContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(200, 200)
 script = ExtResource("1_sp")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
