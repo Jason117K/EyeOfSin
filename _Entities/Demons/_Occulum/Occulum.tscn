@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://_Entities/Demons/_Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_pomd1"]
 [ext_resource type="Texture2D" uid="uid://b6g8l1371ylsr" path="res://_Entities/Demons/_Occulum/HealingFlameCircle.png" id="23_0ypr0"]
+[ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="25_ni4ch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3r88c"]
 radius = 61.2046
@@ -1082,10 +1083,6 @@ wyrmBloodWaitTime = 5.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_m5mcc")]
 script = ExtResource("3_0ypr0")
-maw_health = 500
-health = 150
-healthRegen = 0.1
-maxHealth = 150
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false
@@ -1160,7 +1157,7 @@ max_length = 50.0
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
-animation = &"idle_Maw"
+animation = &"spawn"
 autoplay = "spawn"
 script = ExtResource("16_kvwqv")
 
@@ -1327,6 +1324,26 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_m7eju")
 frame = 9
 frame_progress = 0.0531529
+
+[node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=61841955]
+visible = false
+modulate = Color(1, 0, 0, 1)
+position = Vector2(6, 3)
+rotation = -2.966554
+sprite_frames = ExtResource("25_ni4ch")
+animation = &"hit"
+frame = 3
+frame_progress = 0.642196
+
+[node name="BloodHit2" type="AnimatedSprite2D" parent="." unique_id=1927064326]
+visible = false
+modulate = Color(1, 0, 0, 1)
+position = Vector2(1.9999998, 5.000001)
+rotation = -2.2018707
+sprite_frames = ExtResource("25_ni4ch")
+animation = &"hit"
+frame = 1
+frame_progress = 0.83588886
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

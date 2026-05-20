@@ -125,9 +125,11 @@ func _process(_delta):
 							#Handle Rest of Buffs
 							if demonActor in demonToBuff.name:
 								#Handle Special Wyrm Buff Case, as both demons 'receive' a buff
+								#TODO Are We Keeping This?
 								if ( "SpinalOcculum" in demonToBuff.name) && ("Wyrm" in demon.name):
-									print("ZZZ Special Buff Case")
-									demon.receive_buff(demonToBuff)
+									#print("ZZZ Special Buff Case")
+									#demon.receive_buff(demonToBuff)
+									pass
 								#print("Demon to buff : ", demonToBuff.name , " will now receive buff from ", demon.name)
 								demonToBuff.receive_buff(demon)
 								if demonToBuff in buffedDemons:

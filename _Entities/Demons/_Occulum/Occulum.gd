@@ -23,7 +23,8 @@ extends Demon
 @onready var healZone := $HealZone
 @onready var webbing_aoe_sprite = $Webs
 @onready var tentacle := $Tentacle1
-
+@onready var eat_zombie_blood_fx = [$BloodHit,$BloodHit2]
+@onready var blood_hit_1 := $BloodHit
 
 var BloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
 var DemonManager
@@ -39,6 +40,8 @@ var can_eat_zombie = false
 var num_healing_zone_sprite_plays := 0
 var max_num_healing_zone_sprite_plays := 5
 
+var num_blood_plays := 0
+var max_num_blood_plays := 3
 
 
 func _ready():
@@ -48,6 +51,8 @@ func _ready():
 	DemonManager = get_parent().get_parent().get_node("DemonManager") 
 	bloodTimer.start()  
 	bloodTimer.connect("timeout", Callable(self, "_on_BloodTimer_timeout"))
+	blood_hit_1.animation_looped.connect(zombie_gore_fx)
+	#animSpriteComp.play("spawn")
 
 	
 func toggle_highlight():
@@ -105,10 +110,9 @@ func generate_blood() -> Node2D:
 	blood_instance.global_position = self.global_position + Vector2(0,-40)
 	return blood_instance
 
-
 			
 func receive_buff(newDemon):
-	var demonName = truncate_string(newDemon.name)
+	var demonName =  (newDemon.get_demon_true_name()) #truncate_string(newDemon.name)
 	if !isBuffed :
 		super(demonName)
 		print("Occulum Buff Received from ", demonName)
@@ -265,7 +269,8 @@ func _on_heal_timer_timeout() -> void:
 	for demon in demons_to_heal:
 		if demon != null:
 			demon.increase_health(spinal_occulum_heal_over_time_amount)
-
+func get_demon_true_name():
+	return "Occulum"
 func get_demon_name():
 	return "OCCULUM"
 	
@@ -308,6 +313,18 @@ func hide_tentacle():
 func _on_reset_eating_speed_timeout() -> void:
 	animSpriteComp.speed_scale = 1
 	generate_blood_alt()
+	for effect in eat_zombie_blood_fx:
+		effect.show()
+		effect.play()
+
+func zombie_gore_fx():
+	num_blood_plays += 1
+	if num_blood_plays <= max_num_blood_plays:
+		pass
+	else:
+		for effect in eat_zombie_blood_fx:
+			effect.hide()
+
 
 
 func generate_blood_alt() -> Node2D:

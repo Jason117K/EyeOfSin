@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://_Entities/Demons/Icons/OcculumTowerIdle_WYRM.png" id="14_te31g"]
 [ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/OcculumTowerIdle_Base.png" id="15_8exk2"]
 [ext_resource type="StyleBox" uid="uid://c3c28155s7n1n" path="res://_Common/StyleBoxes/black_flat.tres" id="15_gyohk"]
+[ext_resource type="PackedScene" uid="uid://br5uv5svgqnxm" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn" id="16_r6hpg"]
 
 [node name="DemonLoreBook" type="Control" unique_id=97848138]
 process_mode = 3
@@ -32,6 +33,7 @@ offset_bottom = 412.0
 color = Color(0.490196, 0.0588235, 0.121569, 1)
 
 [node name="InteractiveBook2D" parent="." unique_id=1863075210 instance=ExtResource("1_gyohk")]
+visible = false
 position = Vector2(370, 164)
 scale = Vector2(12.1563, 8.09375)
 
@@ -39,11 +41,12 @@ scale = Vector2(12.1563, 8.09375)
 position = Vector2(370, 206)
 
 [node name="CurrentDemonLabel" type="RichTextLabel" parent="." unique_id=2124714015]
+visible = false
 layout_mode = 0
-offset_left = 401.0
+offset_left = 329.0
 offset_top = 244.0
-offset_right = 660.0
-offset_bottom = 309.0
+offset_right = 725.0
+offset_bottom = 393.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_r6hpg")
@@ -54,6 +57,7 @@ text = "Resilient and fast-growing, the Oculum are densely populated and serve b
 "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1961918662]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -68,6 +72,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1929164251]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 expand_mode = 5
@@ -77,10 +82,10 @@ playing = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1376691575]
 layout_mode = 0
-offset_left = 93.0
-offset_top = 43.0
-offset_right = 831.0
-offset_bottom = 454.0
+offset_left = 26.0
+offset_top = 19.0
+offset_right = 764.0
+offset_bottom = 430.0
 mouse_filter = 2
 theme_override_constants/separation = 10
 
@@ -293,18 +298,6 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 0
 
-[node name="BackOutDetails" type="Button" parent="." unique_id=682929152]
-visible = false
-z_index = 2
-layout_mode = 0
-offset_left = 436.0
-offset_top = 4.0
-offset_right = 736.0
-offset_bottom = 29.0
-theme_override_fonts/font = ExtResource("8_n4a1q")
-theme_override_font_sizes/font_size = 16
-text = "BACK"
-
 [node name="BGDarkEn" type="ColorRect" parent="." unique_id=1722038336]
 visible = false
 layout_mode = 0
@@ -328,15 +321,30 @@ expand_mode = 1
 [node name="BackButton" type="Button" parent="." unique_id=992794287]
 custom_minimum_size = Vector2(300, 35)
 layout_mode = 0
-offset_left = 223.0
-offset_top = 346.0
-offset_right = 523.0
-offset_bottom = 384.0
+offset_left = 11.0
+offset_top = 362.0
+offset_right = 311.0
+offset_bottom = 402.0
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_r6hpg")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("15_gyohk")
 text = "BACK"
+
+[node name="CurrentDemonVboxContainer" type="VBoxContainer" parent="." unique_id=1790534077]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -416.0
+offset_top = 18.0
+offset_right = -24.0
+offset_bottom = 242.0
+grow_horizontal = 0
+
+[node name="SynergyPreview" parent="CurrentDemonVboxContainer" unique_id=1133102798 instance=ExtResource("16_r6hpg")]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
@@ -349,5 +357,4 @@ text = "BACK"
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
-[connection signal="pressed" from="BackOutDetails" to="VBoxContainer/TextureRect" method="_on_back_out_details_pressed"]
 [connection signal="pressed" from="BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]

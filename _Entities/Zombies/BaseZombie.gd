@@ -306,6 +306,7 @@ func make_spawn_slow_on_death():
 
 func silence():
 	if !is_silenced:
+		print(self, " SILENCE ----------------------------------------------------------------------------------------")
 		silence_field = (Global.get_silence_field()).instantiate()
 		add_child(silence_field)
 		silence_field.play()

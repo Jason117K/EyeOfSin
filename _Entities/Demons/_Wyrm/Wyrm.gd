@@ -103,7 +103,8 @@ func _ready():
 	#animSpriteComp.animation = "spawn"
 	 
 	
-
+func get_demon_true_name():
+	return "Wyrm"
 func get_demon_name():
 	return "WYRM"
 		
@@ -118,7 +119,7 @@ func get_cost():
 
 #Handles wyrm Buffing 
 func receive_buff(demon):
-	var demonName = truncate_string(demon.name)
+	var demonName = (demon.get_demon_true_name())
 	
 	if !isBuffed :
 		super(demonName)

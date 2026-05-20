@@ -37,7 +37,8 @@ func get_damage():
 #Cost getter 
 func get_cost():
 	return cost
-
+func get_demon_true_name():
+	return "Crawler"
 func get_demon_name():
 	return "CRAWLER"
 					
@@ -45,7 +46,7 @@ func get_demon_name():
 func receive_buff(newDemon):
 	#print("Buff Name is ", newDemon.name)
 
-	var demonName = truncate_string(newDemon.name)
+	var demonName = (newDemon.get_demon_true_name())
 	
 	if !isBuffed :
 		super(demonName)

@@ -46,6 +46,7 @@ func fire_laser():
 	if canAttack:
 		laser_shoot_comp_1.fire()
 		laser_shoot_comp_2.fire()
+		print("Shoot that proj")
 		shoot_projectile()
 	else:
 		pass

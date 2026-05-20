@@ -32,7 +32,7 @@ func _ready():
 	
 
 func receive_buff(bufferName):
-	var demonName = truncate_string(bufferName.name)
+	var demonName = (bufferName.get_demon_true_name())
 	
 	if !isBuffed :
 		super(demonName)
@@ -65,6 +65,9 @@ func debuff():
 	healthComp.debuff()
 	#Call Debuff On Rest of Components Here
 	isBuffed = false
+
+func get_demon_true_name():
+	return "SpinalOcculum"
 
 func get_demon_name():
 	return "SPINAL OCCULUM"

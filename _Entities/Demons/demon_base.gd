@@ -31,6 +31,7 @@ func _ready() -> void:
 		#pass
 	#else:
 	await get_tree().physics_frame
+	await get_tree().physics_frame
 	#self.set_process(false)
 	input_event.connect(_on_input_event)
 	print(self, " Heart Connect")
@@ -63,6 +64,9 @@ func on_demon_area_exited(old_area: Area2D):
 
 func get_animSpriteComp():
 	return animSpriteComp
+
+func get_preview_nodes():
+	return $PreviewNodes
 	
 #TODO Call receive_buff On ALL Components Here
 #TODO Set All isDemonBuffed Variables Here As Well
@@ -162,3 +166,11 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		pass
 #
 	#
+func set_anim_spawn_speed_mult(new_speed_mult):
+	animSpriteComp.set_spawn_mult(new_speed_mult)
+	
+
+
+func get_true_name():
+	pass
+	

@@ -335,7 +335,8 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 
 func get_demon_name():
 	return "MAW"
-	
+func get_demon_true_name():
+	return "Maw"	
 func get_damage():
 	return "INSTAKILL"
 	
@@ -344,7 +345,7 @@ func get_damage():
 
 func receive_buff(demon):
 	
-	var demonName = truncate_string(demon.name)
+	var demonName = (demon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 

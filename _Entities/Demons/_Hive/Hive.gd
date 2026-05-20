@@ -6,7 +6,7 @@ extends Demon
 @export var spinalOcculumHealth := 800
 
 @export var projectile_cooldown: float = 3
-@export var projectile_auto_fire := true
+@export var projectile_auto_fire := false
 @export var occulum_buff_cooldown: float = 0.9
 @export var projectile_speed := 600
 @export var projectile_damage := 20
@@ -60,7 +60,8 @@ func _ready():
 		
 func get_demon_name():
 	return "HIVE"
-	
+func get_demon_true_name():
+	return "Hive"	
 func get_damage():
 	return drone_attack_damage
 	
@@ -69,7 +70,7 @@ func get_cost():
 
 
 func receive_buff(bufferName):
-	var demonName = truncate_string(bufferName.name)
+	var demonName =  (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		for drone in swarm.get_available_drones():

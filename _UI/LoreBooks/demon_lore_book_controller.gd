@@ -22,6 +22,8 @@ var current_synergy_preview: Node = null
 @onready var alt5 = $"../../HBoxContainer/AllDemonRows/AltRow3/Alt5"
 @onready var alt6 = $"../../HBoxContainer/AllDemonRows/AltRow3/Alt6"
 
+@onready var preview := $"../../CurrentDemonVboxContainer/SynergyPreview"
+
 var is_in_synergy = false
 
 #Demon Text Descriptions
@@ -168,7 +170,8 @@ func _update_button_textures():
 			
 			
 func _create_synergy_preview(demon_a: String, demon_b: String) -> CenterContainer:
-	var preview = SynergyPreviewScene.instantiate()
+	#var preview = SynergyPreviewScene.instantiate()
+	preview.show()
 	preview.setup(demon_a, demon_b)
 	return preview
 
@@ -183,14 +186,17 @@ func _show_synergy_preview(demon_a: String, demon_b: String) -> void:
 
 func _clear_synergy_preview() -> void:
 	if current_synergy_preview and is_instance_valid(current_synergy_preview):
-		current_synergy_preview.queue_free()
-		current_synergy_preview = null
+		#current_synergy_preview.queue_free()
+		#current_synergy_preview = null
+		current_synergy_preview.hide()
+		current_synergy_preview.clear_preview()
 
 #Sets the current Demon Description Text
 func set_text(newFile : String):
 	var file = FileAccess.open(newFile, FileAccess.READ)
 	var newText = file.get_as_text()
 	file.close()
+	currentDemonLabel.show()
 	currentDemonLabel.text = newText
 
 func set_demon_variations(newDemon : GlobalResourceLoader.DemonType):
@@ -238,6 +244,7 @@ func _on_occulum_pressed():
 	play()
 	set_text(occulumDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.OCCULUM)
+	_on_alt_1_pressed()
 
 func _on_crawler_pressed() -> void:
 	visible = true
@@ -251,6 +258,8 @@ func _on_crawler_pressed() -> void:
 	play()
 	set_text(crawlerDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.CRAWLER)
+	_on_alt_1_pressed()
+
 
 
 func _on_spinalOcculum_pressed():
@@ -265,6 +274,7 @@ func _on_spinalOcculum_pressed():
 	play()
 	set_text(spinalOcculumDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.SPINALOCCULUM)
+	_on_alt_1_pressed()
 
 
 
@@ -280,6 +290,7 @@ func _on_wrym_pressed():
 	play()
 	set_text(wyrmDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.WYRM)
+	_on_alt_1_pressed()
 
 func _on_hive_pressed() -> void:
 	current_page = current_page + 1
@@ -293,6 +304,7 @@ func _on_hive_pressed() -> void:
 	play()
 	set_text(hiveDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.HIVE)
+	_on_alt_1_pressed()
 
 
 func _on_maw_pressed() -> void:
@@ -307,6 +319,7 @@ func _on_maw_pressed() -> void:
 	play()
 	set_text(mawDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.MAW)
+	_on_alt_1_pressed()
 	
 
 

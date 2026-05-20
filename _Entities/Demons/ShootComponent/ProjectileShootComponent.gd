@@ -65,6 +65,7 @@ func set_attack_rays_collision():
 func _on_sprite_frame_changed(animation_name: String, frame_index: int):
 	if SHOOT_FRAMES.has(animation_name):
 		if frame_index == SHOOT_FRAMES[animation_name] and canAttack:
+			print(get_parent(), " shoooot projectile ")
 			shoot_projectile()
 			
 			

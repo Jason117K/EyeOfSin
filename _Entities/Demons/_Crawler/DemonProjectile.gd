@@ -62,7 +62,7 @@ func _ready() -> void:
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)	
-	print(get_world_2d().direct_space_state , " area_entered connections: ", self.area_entered.get_connections())
+	#print(get_world_2d().direct_space_state , " area_entered connections: ", self.area_entered.get_connections())
 	#print("AREA OVERLAPP", get_overlapping_areas() )
 				
 func _physics_process(delta: float) -> void:

@@ -25,7 +25,7 @@ func _ready() -> void:
 	node_ready = true 
 		
 func fire_laser():
-	#print("Try Fire Laser")
+	print("Try Fire Laser")
 	if canAttack && laser_shoot_comp.done_firing:
 		laser_shoot_comp.fire()
 		shoot_projectile()
@@ -38,6 +38,7 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	projectile_to_buff.bleed = false 
 	projectile_to_buff.piercing = true 
 	projectile_to_buff.is_slowing = false
+	print("Set Silencing To True, parent is ", get_parent())
 	projectile_to_buff.silencing = true 
 	projectile_to_buff.damage = projectile_damage
 	projectile_to_buff.speed = projectile_speed 

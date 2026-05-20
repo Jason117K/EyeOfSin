@@ -16,22 +16,31 @@ var currentAttackAnim := "attack"
 var spawnAnimDone = false
 signal frame_changed_signal(animation_name: String, frame_index: int)
 
+var anim_spawn_speed_mult := 1 
+var default_anim_speed_scale := 1 
 
 func _ready() -> void:
 	#make_buff_glow()
 	if get_parent().is_in_group("Wyrm"):
 		pass
 	else:
+		speed_scale = speed_scale * anim_spawn_speed_mult
 		animation = "spawn"
 	self.animation_finished.connect(_on_animation_finished)
 	#print(self, " PARENT Is " , get_parent())
 	demon = get_parent()
 	pass
+
+func set_spawn_mult(new_speed_mult):
+	anim_spawn_speed_mult = new_speed_mult 
+	speed_scale = speed_scale * anim_spawn_speed_mult
 	
 func spawn_done():
+	print(demon, " spawn done ")
 	if spawnAnimDone:
 		pass
 	else:
+		speed_scale = default_anim_speed_scale
 		spawnAnimDone = true 
 		
 		
