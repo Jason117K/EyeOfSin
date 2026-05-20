@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene format=3 uid="uid://b7012xcajumow"]
 
-[ext_resource type="Script" path="res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.gd" id="1_pz"]
+[ext_resource type="Script" uid="uid://om1h0uu5yn80" path="res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.gd" id="1_pz"]
 [ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://_Entities/Zombies/_RebornZombie/Ghoul Sprite Sheet 62 x 33.png" id="2_gs"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="3_sh"]
 
@@ -74,21 +74,21 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="PreviewZombie" type="Area2D" groups=["Zombie"]]
+[node name="PreviewZombie" type="Area2D" unique_id=78290624 groups=["Zombie"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_pz")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1037291881]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_pz1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896266687]
 material = SubResource("ShaderMaterial_pz1")
 sprite_frames = SubResource("SpriteFrames_pz1")
 animation = &"Walk"
 flip_h = true
 
-[node name="RespawnTimer" type="Timer" parent="."]
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1205750618]
 wait_time = 1.5
 one_shot = true

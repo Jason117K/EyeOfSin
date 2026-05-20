@@ -12,12 +12,25 @@ var is_dead := false
 var original_speed : float
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	original_speed = walk_speed
 	respawn_timer.wait_time = respawn_delay
 	respawn_timer.one_shot = true
 	respawn_timer.timeout.connect(_on_respawn)
 	sprite.play("Walk")
-
+	if self.is_in_group("Green"):
+		self.set_collision_layer_value(1, false)
+		self.set_collision_layer_value(2, false)
+		self.set_collision_layer_value(3, false)
+		self.set_collision_layer_value(5, true)
+	else:
+		self.set_collision_layer_value(1, false)
+		self.set_collision_layer_value(2, false)
+		self.set_collision_layer_value(3, false)
+		self.set_collision_layer_value(4, true)
+	print("Area is in world space ", get_world_2d().direct_space_state)
+		
+		
 func _process(delta: float) -> void:
 	if is_dead:
 		return

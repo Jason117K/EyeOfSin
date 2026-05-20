@@ -62,13 +62,14 @@ func _ready() -> void:
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)	
-	print("area_entered connections: ", self.area_entered.get_connections())
+	print(get_world_2d().direct_space_state , " area_entered connections: ", self.area_entered.get_connections())
+	print("AREA OVERLAPP", get_overlapping_areas() )
 				
 func _physics_process(delta: float) -> void:
 	if not _spawn_initialized:
 		spawn_position = position
 		_spawn_initialized = true
-	
+	print("AREA OVERLAPP", get_overlapping_areas() )
 	#print(self, " Projectile 4Position Is ", self.position)
 	var travel_distance = speed * delta
 	distance_traveled = position.x - spawn_position.x
@@ -114,9 +115,10 @@ func setup_lightning_zone():
 
 # Handles projectile collison and damage application 
 func on_hit(area):
+	print("Area Hit Is ", area)
 	if area.is_in_group("Zombie"):
-		if area.get_parent().get_parent() != self.get_parent().get_parent():
-			return
+		#if area.get_parent().get_parent() != self.get_parent().get_parent():
+			#return
 		print("Area Hit Is ", area)
 		var healthComp = area.getHealthComponent()
 		if is_slowing:

@@ -48,7 +48,8 @@ func _spawn_demons() -> void:
 
 	demon_a_instance = scene_a.instantiate()
 	demon_b_instance = scene_b.instantiate()
-
+	demon_a_instance.add_to_group("Purple")  
+	demon_b_instance.add_to_group("Purple")   
 	demo_slot_a.add_child(demon_a_instance)
 	demo_slot_b.add_child(demon_b_instance)
 
@@ -57,6 +58,8 @@ func _spawn_demons() -> void:
 
 func _spawn_zombie() -> void:
 	preview_zombie = PreviewZombieScene.instantiate()
+	preview_zombie.add_to_group("Purple")             
+	#preview_zombie.set_collision_layer_value(4, true)   
 	preview_world.add_child(preview_zombie)
 	preview_zombie.position = zombie_spawn.position
 

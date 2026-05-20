@@ -177,7 +177,8 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 	for s in current_scenes:
 		if is_instance_valid(s):
 			s.visible = false
-			s.get_tree().paused = true
+			set_node_and_children_process_mode_disabled(s)
+			#s.get_tree().paused = true
 
 	await get_tree().process_frame
 
@@ -227,6 +228,10 @@ func restore_dual_scenes() -> void:
 
 	await get_tree().process_frame
 	get_tree().paused = false
+	for s in current_scenes:
+		if is_instance_valid(s):
+			s.visible = false
+			set_node_and_children_process_mode_inherit(s)
 	_apply_dimension_visibility()
 	pip.show_pip()
 
@@ -234,8 +239,23 @@ func restore_dual_scenes() -> void:
 		current_scene = current_scenes[0]
 	else:
 		current_scene = current_scenes[1]
+		
+func set_node_and_children_process_mode_disabled(root: Node) -> void:
+	if root == null:
+		return
+	root.process_mode = Node.PROCESS_MODE_DISABLED
+	for child in root.get_children():
+		set_node_and_children_process_mode_disabled(child)
 
 
+func set_node_and_children_process_mode_inherit(root: Node) -> void:
+	if root == null:
+		return
+	root.process_mode = Node.PROCESS_MODE_INHERIT
+	for child in root.get_children():
+		set_node_and_children_process_mode_inherit(child)
+		
+		
 # --- Dimension Swapping ---
 
 func swap_scenes() -> void:

@@ -238,7 +238,6 @@ func _on_occulum_pressed():
 	play()
 	set_text(occulumDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.OCCULUM)
-	_on_more_info_button_pressed()
 
 func _on_crawler_pressed() -> void:
 	visible = true
@@ -335,25 +334,11 @@ func _on_back_button_pressed() -> void:
 		$"../../InteractiveBook2D".go_to_page(current_page)
 	
 	
-	
-
-
-
-
-func _on_more_info_button_pressed() -> void:
-	pass
-
 
 func _on_back_out_details_pressed() -> void:
 	if is_in_synergy == false:
 		bgDarken.visible = false
 		backOutDetailsButton.visible = false
-
-		
-
-
-func _on_button_2_pressed() -> void:
-	pass
 
 
 func _on_alt_1_pressed() -> void:

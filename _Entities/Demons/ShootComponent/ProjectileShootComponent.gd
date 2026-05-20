@@ -101,7 +101,7 @@ func check_attack_rays():
 						return
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
 						canAttack = true
-						#print("Purple Can Attack True")
+						print("Purple Can Attack True")
 						return 
 				#	if parent_demon.is_in_group()
 						

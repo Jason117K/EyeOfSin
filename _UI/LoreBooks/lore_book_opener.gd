@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 func _on_demon_codex_button_pressed() -> void:
 	print("PAUSE GAME AND OPEN DEMON CODEX")
-	get_tree().paused = true
+	#get_tree().paused = true
 	Global.game_controller.change_scene_with_pause("res://_UI/LoreBooks/demon_lore_book.tscn")
 	
 

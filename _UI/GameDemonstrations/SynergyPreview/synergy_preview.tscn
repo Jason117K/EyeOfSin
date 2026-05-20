@@ -1,47 +1,98 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://br5uv5svgqnxm"]
 
-[ext_resource type="Script" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview_controller.gd" id="1_sp"]
-[ext_resource type="Script" path="res://_UI/GameDemonstrations/SynergyPreview/preview_demon_manager.gd" id="2_dm"]
+[ext_resource type="Script" uid="uid://yqh46i3yoatp" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview_controller.gd" id="1_sp"]
+[ext_resource type="Script" uid="uid://jcbqg6n3tkx7" path="res://_UI/GameDemonstrations/SynergyPreview/preview_demon_manager.gd" id="2_dm"]
+[ext_resource type="PackedScene" uid="uid://c35ses7btlwqk" path="res://_Entities/Demons/_Crawler/DemonProjectile.tscn" id="2_dtqyh"]
+[ext_resource type="Texture2D" uid="uid://gbme1d2t6p3t" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SpinalOcculum-Sheet.png" id="3_hfe2m"]
 
-[node name="SynergyPreview" type="CenterContainer"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtqyh"]
+atlas = ExtResource("3_hfe2m")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08ifs"]
+atlas = ExtResource("3_hfe2m")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lqbi"]
+atlas = ExtResource("3_hfe2m")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cnsf"]
+atlas = ExtResource("3_hfe2m")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8en1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtqyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08ifs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lqbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cnsf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SynergyPreview" type="CenterContainer" unique_id=1133102798]
+process_mode = 3
 custom_minimum_size = Vector2(200, 200)
 script = ExtResource("1_sp")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-custom_minimum_size = Vector2(198, 200)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2002148593]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-own_world_2d = true
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1610506073]
 handle_input_locally = false
-size = Vector2i(198, 200)
-render_target_update_mode = 3
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(200, 200)
+render_target_update_mode = 4
 
-[node name="PreviewWorld" type="Node2D" parent="SubViewportContainer/SubViewport"]
+[node name="PreviewWorld" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1068491563]
 
-[node name="BG" type="ColorRect" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+[node name="DemonProjectile" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=1588651862 instance=ExtResource("2_dtqyh")]
+position = Vector2(11, 103)
+collision_mask = 4294967295
+speed = 45
+
+[node name="BG" type="ColorRect" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=1187863294]
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 210.0
 offset_bottom = 210.0
-color = Color(0.08, 0.06, 0.1, 1)
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=1450164329]
 position = Vector2(99, 100)
 
-[node name="DemonManager" type="Node" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+[node name="DemonManager" type="Node" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=1831697741]
 script = ExtResource("2_dm")
 
-[node name="DemoSlotA" type="Node2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
-position = Vector2(55, 110)
+[node name="DemoSlotA" type="Node2D" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=562885398]
+position = Vector2(21, 110)
 
-[node name="DemoSlotB" type="Node2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
-position = Vector2(95, 110)
+[node name="DemoSlotB" type="Node2D" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=785580881]
+position = Vector2(61, 110)
 
-[node name="ZombieSpawnPoint" type="Marker2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+[node name="ZombieSpawnPoint" type="Marker2D" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=1019539688]
 position = Vector2(190, 110)
 
-[node name="BuffTimer" type="Timer" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=1549267345]
+position = Vector2(52, 164)
+sprite_frames = SubResource("SpriteFrames_n8en1")
+autoplay = "default"
+flip_h = true
+
+[node name="BuffTimer" type="Timer" parent="." unique_id=1090020173]
 wait_time = 0.5
 one_shot = true
