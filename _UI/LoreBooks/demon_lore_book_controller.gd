@@ -91,18 +91,7 @@ var wyrmSpinalOcculum ="res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum
 
 
 
-var mawCrawlerScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_crawler_buff.tscn")
-var mawWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_wyrm_buff.tscn")
-var spineMawScene = preload("res://_UI/GameDemonstrations/DemonTutorials/spine_maw_buff.tscn")
-var hiveMawScene  = preload("res://_UI/GameDemonstrations/DemonTutorials/maw_hive_buff.tscn")
-var spineWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/wyrm_spine_buff.tscn")
-var hiveWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/hive_wyrm_buff.tscn")
-var hiveCrawlerScene = preload("res://_UI/GameDemonstrations/DemonTutorials/hive_crawler_buff.tscn")
-var occulumCrawlerScene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_crawler_buff.tscn")
-var occulumWyrmScene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_wyrm_buff.tscn")
-var occulumHiveScene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_hive_buff.tscn")
-var occulumSpineScene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_spine_buff.tscn")
-var occulumMawScene = preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_maw_buff.tscn")
+var SynergyPreviewScene = preload("res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn")
 
 var count := 0
 var current_page := 2
@@ -179,6 +168,11 @@ func _update_button_textures():
 			
 			
 			
+func _create_synergy_preview(demon_a: String, demon_b: String) -> CenterContainer:
+	var preview = SynergyPreviewScene.instantiate()
+	preview.setup(demon_a, demon_b)
+	return preview
+
 #Sets the current Demon Description Text
 func set_text(newFile : String):
 	var file = FileAccess.open(newFile, FileAccess.READ)
@@ -334,22 +328,22 @@ func _on_more_info_button_pressed() -> void:
 	match current_demon:
 		DEMON.OCCULUM:
 			synergyPanel.set_visual_tutorial_text(occulumCrawlerText)
-			synergyPanel.set_visual_tutorial_visual(occulumCrawlerScene.instantiate())
+			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Crawler"))
 		DEMON.CRAWLER:
 			synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-			synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())
+			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
 		DEMON.SPINALOCCULUM:
 			synergyPanel.set_visual_tutorial_text(wyrmSpineText)
-			synergyPanel.set_visual_tutorial_visual(spineWyrmScene.instantiate())	
+			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Wyrm"))
 		DEMON.WYRM:
 			synergyPanel.set_visual_tutorial_text(mawWyrmText)
-			synergyPanel.set_visual_tutorial_visual(mawWyrmScene.instantiate())
+			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Wyrm"))
 		DEMON.HIVE:
 			synergyPanel.set_visual_tutorial_text(hiveMawText)
-			synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
+			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Maw"))
 		DEMON.MAW:
 			synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-			synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())
+			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
 
 
 func _on_back_out_details_pressed() -> void:
@@ -372,80 +366,78 @@ func setNextSynergyScene(current_demon,this_count):
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(occulumCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(occulumCrawlerScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Crawler"))
 				1:
 					synergyPanel.set_visual_tutorial_text(occulumWyrmText)
-					synergyPanel.set_visual_tutorial_visual(occulumWyrmScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Wyrm"))
 				2:
 					synergyPanel.set_visual_tutorial_text(occulumHiveText)
-					synergyPanel.set_visual_tutorial_visual(occulumHiveScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Hive"))
 				3:
 					synergyPanel.set_visual_tutorial_text(occulumSpineText)
-					synergyPanel.set_visual_tutorial_visual(occulumSpineScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "SpinalOcculum"))
 				4:
 					synergyPanel.set_visual_tutorial_text(occulumMawText)
-					synergyPanel.set_visual_tutorial_visual(occulumMawScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Maw"))
 					count = -1
-			
+
 		DEMON.CRAWLER:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
 				1:
 					synergyPanel.set_visual_tutorial_text(hiveCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(hiveCrawlerScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Crawler"))
 					count = -1
 		DEMON.SPINALOCCULUM:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(wyrmSpineText)
-					synergyPanel.set_visual_tutorial_visual(spineWyrmScene.instantiate())	
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Wyrm"))
 				1:
 					synergyPanel.set_visual_tutorial_text(spineMawText)
-					synergyPanel.set_visual_tutorial_visual(spineMawScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Maw"))
 					count = -1
 		DEMON.WYRM:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(mawWyrmText)
-					synergyPanel.set_visual_tutorial_visual(mawWyrmScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Wyrm"))
 				1:
 					synergyPanel.set_visual_tutorial_text(wyrmSpineText)
-					synergyPanel.set_visual_tutorial_visual(spineWyrmScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Wyrm", "SpinalOcculum"))
 				2:
 					synergyPanel.set_visual_tutorial_text(hiveWyrmText)
-					synergyPanel.set_visual_tutorial_visual(hiveWyrmScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Wyrm"))
 					count = -1
 		DEMON.HIVE:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(hiveMawText)
-					synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Maw"))
 				1:
 					synergyPanel.set_visual_tutorial_text(hiveCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(hiveCrawlerScene.instantiate())
-					
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Crawler"))
 				2:
 					synergyPanel.set_visual_tutorial_text(hiveWyrmText)
-					synergyPanel.set_visual_tutorial_visual(hiveWyrmScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Wyrm"))
 					count = -1
 		DEMON.MAW:
 			match this_count:
 				0:
 					synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(mawCrawlerScene.instantiate())	
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
 				1:
 					synergyPanel.set_visual_tutorial_text(mawWyrmText)
-					synergyPanel.set_visual_tutorial_visual(mawWyrmScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Wyrm"))
 				2:
 					synergyPanel.set_visual_tutorial_text(spineMawText)
-					synergyPanel.set_visual_tutorial_visual(spineMawScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Maw"))
 				3:
 					synergyPanel.set_visual_tutorial_text(hiveMawText)
-					synergyPanel.set_visual_tutorial_visual(hiveMawScene.instantiate())
+					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Maw"))
 					count = -1
-					#print("CCCCC Count is ", count)
 
 
 func _on_alt_1_pressed() -> void:

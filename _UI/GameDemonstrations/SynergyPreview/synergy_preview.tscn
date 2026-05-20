@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview_controller.gd" id="1_sp"]
+[ext_resource type="Script" path="res://_UI/GameDemonstrations/SynergyPreview/preview_demon_manager.gd" id="2_dm"]
+
+[node name="SynergyPreview" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sp")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(198, 200)
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_2d = true
+handle_input_locally = false
+size = Vector2i(198, 200)
+render_target_update_mode = 3
+
+[node name="PreviewWorld" type="Node2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="BG" type="ColorRect" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 210.0
+offset_bottom = 210.0
+color = Color(0.08, 0.06, 0.1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+position = Vector2(99, 100)
+
+[node name="DemonManager" type="Node" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+script = ExtResource("2_dm")
+
+[node name="DemoSlotA" type="Node2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+position = Vector2(55, 110)
+
+[node name="DemoSlotB" type="Node2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+position = Vector2(95, 110)
+
+[node name="ZombieSpawnPoint" type="Marker2D" parent="SubViewportContainer/SubViewport/PreviewWorld"]
+position = Vector2(190, 110)
+
+[node name="BuffTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

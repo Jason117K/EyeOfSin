@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.gd" id="1_pz"]
+[ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://_Entities/Zombies/_RebornZombie/Ghoul Sprite Sheet 62 x 33.png" id="2_gs"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="3_sh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pz1"]
+size = Vector2(20, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pz1"]
+shader = ExtResource("3_sh")
+shader_parameter/hue_shift_degrees = 0.0
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(8, 8, 8, 1)
+shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.061
+
+[sub_resource type="AtlasTexture" id="walk_0"]
+atlas = ExtResource("2_gs")
+region = Rect2(0, 33, 62, 33)
+
+[sub_resource type="AtlasTexture" id="walk_1"]
+atlas = ExtResource("2_gs")
+region = Rect2(62, 33, 62, 33)
+
+[sub_resource type="AtlasTexture" id="walk_2"]
+atlas = ExtResource("2_gs")
+region = Rect2(124, 33, 62, 33)
+
+[sub_resource type="AtlasTexture" id="walk_3"]
+atlas = ExtResource("2_gs")
+region = Rect2(186, 33, 62, 33)
+
+[sub_resource type="AtlasTexture" id="walk_4"]
+atlas = ExtResource("2_gs")
+region = Rect2(248, 33, 62, 33)
+
+[sub_resource type="AtlasTexture" id="walk_5"]
+atlas = ExtResource("2_gs")
+region = Rect2(310, 33, 62, 33)
+
+[sub_resource type="AtlasTexture" id="walk_6"]
+atlas = ExtResource("2_gs")
+region = Rect2(372, 33, 62, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pz1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("walk_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("walk_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("walk_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("walk_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("walk_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("walk_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("walk_6")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[node name="PreviewZombie" type="Area2D" groups=["Zombie"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_pz")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_pz1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pz1")
+sprite_frames = SubResource("SpriteFrames_pz1")
+animation = &"Walk"
+flip_h = true
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
