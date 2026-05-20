@@ -10,10 +10,10 @@ extends AnimatedTextureRect
 
 @onready var currentDemonLabel = $"../../CurrentDemonLabel"
 @onready var bgDarken = $"../../BGDarkEn"
-@onready var synergyPanel = $"../../ToolTips"
 @onready var backOutDetailsButton = $"../../BackOutDetails"
-#@onready var moreInfoButton =$"../../HBoxContainer/AllDemonRows/HBoxContainer/MoreInfoButton"
 @onready var staticPreview := $"../../StaticPreview"
+
+var current_synergy_preview: Node = null
 
 @onready var alt1 = $"../../HBoxContainer/AllDemonRows/AltRow1/Alt1"
 @onready var alt2 = $"../../HBoxContainer/AllDemonRows/AltRow1/Alt2"
@@ -93,7 +93,6 @@ var wyrmSpinalOcculum ="res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum
 
 var SynergyPreviewScene = preload("res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn")
 
-var count := 0
 var current_page := 2
 
 enum DEMON {
@@ -173,6 +172,20 @@ func _create_synergy_preview(demon_a: String, demon_b: String) -> CenterContaine
 	preview.setup(demon_a, demon_b)
 	return preview
 
+func _show_synergy_preview(demon_a: String, demon_b: String) -> void:
+	_clear_synergy_preview()
+	staticPreview.visible = false
+	current_synergy_preview = _create_synergy_preview(demon_a, demon_b)
+	current_synergy_preview.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	current_synergy_preview.position = staticPreview.position
+	current_synergy_preview.size = staticPreview.size
+	staticPreview.get_parent().add_child(current_synergy_preview)
+
+func _clear_synergy_preview() -> void:
+	if current_synergy_preview and is_instance_valid(current_synergy_preview):
+		current_synergy_preview.queue_free()
+		current_synergy_preview = null
+
 #Sets the current Demon Description Text
 func set_text(newFile : String):
 	var file = FileAccess.open(newFile, FileAccess.READ)
@@ -216,9 +229,9 @@ func _on_occulum_pressed():
 	print("Occulum Pressed")
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	
+	_clear_synergy_preview()
 	visible = true
-	staticPreview.visible = false 
+	staticPreview.visible = false
 	current_demon = DEMON.OCCULUM
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.OCCULUM)
@@ -230,7 +243,8 @@ func _on_crawler_pressed() -> void:
 	visible = true
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	staticPreview.visible = false 
+	_clear_synergy_preview()
+	staticPreview.visible = false
 	current_demon = DEMON.CRAWLER
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.CRAWLER)
@@ -242,8 +256,9 @@ func _on_crawler_pressed() -> void:
 func _on_spinalOcculum_pressed():
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
+	_clear_synergy_preview()
 	visible = true
-	staticPreview.visible = false 
+	staticPreview.visible = false
 	current_demon = DEMON.SPINALOCCULUM
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.SPINALOCCULUM)
@@ -256,8 +271,9 @@ func _on_spinalOcculum_pressed():
 func _on_wrym_pressed():
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
+	_clear_synergy_preview()
 	visible = true
-	staticPreview.visible = false 
+	staticPreview.visible = false
 	current_demon = DEMON.WYRM
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.WYRM)
@@ -268,8 +284,9 @@ func _on_wrym_pressed():
 func _on_hive_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
+	_clear_synergy_preview()
 	visible = true
-	staticPreview.visible = false 
+	staticPreview.visible = false
 	current_demon = DEMON.HIVE
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.HIVE)
@@ -281,8 +298,9 @@ func _on_hive_pressed() -> void:
 func _on_maw_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
+	_clear_synergy_preview()
 	visible = true
-	staticPreview.visible = false 
+	staticPreview.visible = false
 	current_demon = DEMON.MAW
 	sprites = GlobalResourceLoader.get_demon_animation(
 		GlobalResourceLoader.DemonType.MAW)
@@ -293,12 +311,13 @@ func _on_maw_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	_clear_synergy_preview()
 	if is_in_synergy == false:
-		get_parent().get_parent().visible = false 
+		get_parent().get_parent().visible = false
 
 		print("BBack Button Pressed")
-		self.visible = false 
-		
+		self.visible = false
+
 		#Global.unHideDemonSelectionMenu()
 		#Global.game_controller.restore_dual_scenes()
 		Global.game_controller.restore_previous_scene()
@@ -321,129 +340,25 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_more_info_button_pressed() -> void:
-	bgDarken.visible = true 
-	backOutDetailsButton.visible = true 
-	synergyPanel.visible = true 
-	
-	match current_demon:
-		DEMON.OCCULUM:
-			synergyPanel.set_visual_tutorial_text(occulumCrawlerText)
-			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Crawler"))
-		DEMON.CRAWLER:
-			synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
-		DEMON.SPINALOCCULUM:
-			synergyPanel.set_visual_tutorial_text(wyrmSpineText)
-			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Wyrm"))
-		DEMON.WYRM:
-			synergyPanel.set_visual_tutorial_text(mawWyrmText)
-			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Wyrm"))
-		DEMON.HIVE:
-			synergyPanel.set_visual_tutorial_text(hiveMawText)
-			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Maw"))
-		DEMON.MAW:
-			synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-			synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
+	pass
 
 
 func _on_back_out_details_pressed() -> void:
 	if is_in_synergy == false:
-		bgDarken.visible = false 
-		backOutDetailsButton.visible = false 
-		synergyPanel.visible = false 
+		bgDarken.visible = false
+		backOutDetailsButton.visible = false
 
 		
 
 
 func _on_button_2_pressed() -> void:
-	#print("CCount is ", count)
-	count += 1
-	setNextSynergyScene(current_demon,count)
-
-func setNextSynergyScene(current_demon,this_count):
-	match current_demon:
-		DEMON.OCCULUM:
-			match this_count:
-				0:
-					synergyPanel.set_visual_tutorial_text(occulumCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Crawler"))
-				1:
-					synergyPanel.set_visual_tutorial_text(occulumWyrmText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Wyrm"))
-				2:
-					synergyPanel.set_visual_tutorial_text(occulumHiveText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Hive"))
-				3:
-					synergyPanel.set_visual_tutorial_text(occulumSpineText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "SpinalOcculum"))
-				4:
-					synergyPanel.set_visual_tutorial_text(occulumMawText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Occulum", "Maw"))
-					count = -1
-
-		DEMON.CRAWLER:
-			match this_count:
-				0:
-					synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
-				1:
-					synergyPanel.set_visual_tutorial_text(hiveCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Crawler"))
-					count = -1
-		DEMON.SPINALOCCULUM:
-			match this_count:
-				0:
-					synergyPanel.set_visual_tutorial_text(wyrmSpineText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Wyrm"))
-				1:
-					synergyPanel.set_visual_tutorial_text(spineMawText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Maw"))
-					count = -1
-		DEMON.WYRM:
-			match this_count:
-				0:
-					synergyPanel.set_visual_tutorial_text(mawWyrmText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Wyrm"))
-				1:
-					synergyPanel.set_visual_tutorial_text(wyrmSpineText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Wyrm", "SpinalOcculum"))
-				2:
-					synergyPanel.set_visual_tutorial_text(hiveWyrmText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Wyrm"))
-					count = -1
-		DEMON.HIVE:
-			match this_count:
-				0:
-					synergyPanel.set_visual_tutorial_text(hiveMawText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Maw"))
-				1:
-					synergyPanel.set_visual_tutorial_text(hiveCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Crawler"))
-				2:
-					synergyPanel.set_visual_tutorial_text(hiveWyrmText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Wyrm"))
-					count = -1
-		DEMON.MAW:
-			match this_count:
-				0:
-					synergyPanel.set_visual_tutorial_text(mawCrawlerText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Crawler"))
-				1:
-					synergyPanel.set_visual_tutorial_text(mawWyrmText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Maw", "Wyrm"))
-				2:
-					synergyPanel.set_visual_tutorial_text(spineMawText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("SpinalOcculum", "Maw"))
-				3:
-					synergyPanel.set_visual_tutorial_text(hiveMawText)
-					synergyPanel.set_visual_tutorial_visual(_create_synergy_preview("Hive", "Maw"))
-					count = -1
+	pass
 
 
 func _on_alt_1_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	
+	_clear_synergy_preview()
 	visible = false
 	staticPreview.visible = true
 	match current_demon:
@@ -470,128 +385,123 @@ func _on_alt_1_pressed() -> void:
 func _on_alt_2_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	staticPreview.visible = true
 	visible = false
 	match current_demon:
 		DEMON.OCCULUM:
-			staticPreview.texture = alt2.texture_normal
 			set_text(occulumMaw)
+			_show_synergy_preview("Occulum", "Maw")
 		DEMON.CRAWLER:
-			staticPreview.texture = alt2.texture_normal
 			set_text(crawlerHive)
+			_show_synergy_preview("Crawler", "Hive")
 		DEMON.SPINALOCCULUM:
-			staticPreview.texture = alt2.texture_normal
 			set_text(spinalOcculumOcculum)
+			_show_synergy_preview("SpinalOcculum", "Occulum")
 		DEMON.WYRM:
-			staticPreview.texture = alt2.texture_normal
 			set_text(wyrmOcculum)
+			_show_synergy_preview("Wyrm", "Occulum")
 		DEMON.HIVE:
-			staticPreview.texture = alt2.texture_normal
 			set_text(hiveMaw)
+			_show_synergy_preview("Hive", "Maw")
 		DEMON.MAW:
-			staticPreview.texture = alt2.texture_normal
 			set_text(mawHive)
+			_show_synergy_preview("Maw", "Hive")
 
 
 func _on_alt_3_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	staticPreview.visible = true
 	visible = false
 	match current_demon:
 		DEMON.OCCULUM:
-			staticPreview.texture = alt3.texture_normal
 			set_text(occulumHive)
+			_show_synergy_preview("Occulum", "Hive")
 		DEMON.CRAWLER:
-			staticPreview.texture = alt3.texture_normal
 			set_text(crawlerMaw)
+			_show_synergy_preview("Crawler", "Maw")
 		DEMON.SPINALOCCULUM:
-			staticPreview.texture = alt3.texture_normal
 			set_text(spinalOcculumHive)
+			_show_synergy_preview("SpinalOcculum", "Hive")
 		DEMON.WYRM:
-			staticPreview.texture = alt3.texture_normal
 			set_text(wyrmHive)
+			_show_synergy_preview("Wyrm", "Hive")
 		DEMON.HIVE:
-			staticPreview.texture = alt3.texture_normal
 			set_text(hiveCrawler)
+			_show_synergy_preview("Hive", "Crawler")
 		DEMON.MAW:
-			staticPreview.texture = alt3.texture_normal
 			set_text(mawCrawler)
+			_show_synergy_preview("Maw", "Crawler")
 
 
 func _on_alt_4_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	staticPreview.visible = true
 	visible = false
 	match current_demon:
 		DEMON.OCCULUM:
-			staticPreview.texture = alt4.texture_normal
 			set_text(occulumCrawler)
+			_show_synergy_preview("Occulum", "Crawler")
 		DEMON.CRAWLER:
-			staticPreview.texture = alt4.texture_normal
 			set_text(crawlerOcculum)
+			_show_synergy_preview("Crawler", "Occulum")
 		DEMON.SPINALOCCULUM:
-			staticPreview.texture = alt4.texture_normal
 			set_text(spinalOcculumMaw)
+			_show_synergy_preview("SpinalOcculum", "Maw")
 		DEMON.WYRM:
-			staticPreview.texture = alt4.texture_normal
 			set_text(wyrmMaw)
+			_show_synergy_preview("Wyrm", "Maw")
 		DEMON.HIVE:
-			staticPreview.texture = alt4.texture_normal
 			set_text(hiveOcculum)
+			_show_synergy_preview("Hive", "Occulum")
 		DEMON.MAW:
-			staticPreview.texture = alt4.texture_normal
 			set_text(mawOcculum)
+			_show_synergy_preview("Maw", "Occulum")
 
 
 func _on_alt_5_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	staticPreview.visible = true
 	visible = false
 	match current_demon:
 		DEMON.OCCULUM:
-			staticPreview.texture = alt5.texture_normal
 			set_text(occulumSpinalOcculum)
+			_show_synergy_preview("Occulum", "SpinalOcculum")
 		DEMON.CRAWLER:
-			staticPreview.texture = alt5.texture_normal
 			set_text(crawlerSpinalOcculum)
+			_show_synergy_preview("Crawler", "SpinalOcculum")
 		DEMON.SPINALOCCULUM:
-			staticPreview.texture = alt5.texture_normal
 			set_text(spinalOcculumCrawler)
+			_show_synergy_preview("SpinalOcculum", "Crawler")
 		DEMON.WYRM:
-			staticPreview.texture = alt5.texture_normal
 			set_text(wyrmCrawler)
+			_show_synergy_preview("Wyrm", "Crawler")
 		DEMON.HIVE:
-			staticPreview.texture = alt5.texture_normal
 			set_text(hiveSpinalOcculum)
+			_show_synergy_preview("Hive", "SpinalOcculum")
 		DEMON.MAW:
-			staticPreview.texture = alt5.texture_normal
 			set_text(mawSpinalOcculum)
+			_show_synergy_preview("Maw", "SpinalOcculum")
 
 
 func _on_alt_6_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
-	staticPreview.visible = true
 	visible = false
 	match current_demon:
 		DEMON.OCCULUM:
-			staticPreview.texture = alt6.texture_normal
 			set_text(occulumWyrm)
+			_show_synergy_preview("Occulum", "Wyrm")
 		DEMON.CRAWLER:
-			staticPreview.texture = alt6.texture_normal
 			set_text(crawlerWyrm)
+			_show_synergy_preview("Crawler", "Wyrm")
 		DEMON.SPINALOCCULUM:
-			staticPreview.texture = alt6.texture_normal
 			set_text(spinalOcculumWyrm)
+			_show_synergy_preview("SpinalOcculum", "Wyrm")
 		DEMON.WYRM:
-			staticPreview.texture = alt6.texture_normal
 			set_text(wyrmSpinalOcculum)
+			_show_synergy_preview("Wyrm", "SpinalOcculum")
 		DEMON.HIVE:
-			staticPreview.texture = alt6.texture_normal
 			set_text(hiveWyrm)
+			_show_synergy_preview("Hive", "Wyrm")
 		DEMON.MAW:
-			staticPreview.texture = alt6.texture_normal
 			set_text(mawWyrm)
+			_show_synergy_preview("Maw", "Wyrm")
