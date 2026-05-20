@@ -225,6 +225,7 @@ func _on_occulum_pressed():
 	play()
 	set_text(occulumDescription)
 	set_demon_variations(GlobalResourceLoader.DemonType.OCCULUM)
+	_on_more_info_button_pressed()
 
 func _on_crawler_pressed() -> void:
 	visible = true
