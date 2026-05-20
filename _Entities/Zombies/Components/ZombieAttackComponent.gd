@@ -10,6 +10,7 @@ var target_demon = null  # Holds reference to the demon being attacked
 var canSpecial = true # Determines whether or not a special move can be performed
 var _frame_counter: int = 0
 var base_anim_duration: float
+var attack_starting_pos : Vector2 
 
 @onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect demons in front of the zombie
 @onready var zombieSprite : AnimatedSprite2D = $"../AnimatedSprite2D" # RefCounted to sprite comp 
@@ -53,7 +54,7 @@ func getAttackState():
 
 # Sets is_attacking to true and plays the audio will also starting the attack cooldown timer
 func attack_demon(collider):
-	
+
 	if collider.is_in_group("Drone"):
 		if collider.get_is_in_combat() == true:
 			if collider.get_enemy_combatant() != self:
@@ -89,6 +90,10 @@ func attack_demon(collider):
 
 # Damages the target demon and decides whether or not to keep attacking
 func _on_AttackTimer_timeout():
+	print(global_position, " Attack Demon Again ",attack_starting_pos)
+	if abs(attack_starting_pos.x - global_position.x) > 2:
+		stop_attack()
+		return 
 	#print("Basic Zombie Attack Timer Timeout")
 		#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent.name:
@@ -137,6 +142,7 @@ func stop_attack():
 	target_demon = null
 	attack_timer.stop()
 	zombieSprite.speed_scale = 1.0
+	
 
 func tick(_delta):
 	if not is_attacking:
@@ -161,6 +167,8 @@ func tick(_delta):
 							is_attacking = true
 							pass
 						else:
+							attack_starting_pos = global_position
 							attack_demon(collider)
 					else:
+						attack_starting_pos = global_position
 						attack_demon(collider)

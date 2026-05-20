@@ -52,9 +52,15 @@ var should_spawn_drone_on_death := false
 var should_column_explode := false
 var reset_speed_timer : Timer
 
+var is_demo := false 
+var is_dead := false 
+var respawn_timer : Timer 
+var demo_original_speed : float 
+@export var spawn_x := 180.0
+@export var despawn_x := -20.0
+@export var respawn_delay := 1.5
 
 func _ready() -> void:
-	Global.register_zombie(self)
 	if self.is_in_group("Green"):
 		self.set_collision_layer_value(1, false)
 		self.set_collision_layer_value(2, false)
@@ -65,10 +71,26 @@ func _ready() -> void:
 		self.set_collision_layer_value(2, false)
 		self.set_collision_layer_value(3, false)
 		self.set_collision_layer_value(4, true)
-		
 	debuff_degrade_timer.timeout.connect(_on_DebuffDegrade_timeout)
 	reset_color_timer.timeout.connect(_on_ResetThisColor_timeout)
 	just_spawned_timer.timeout.connect(_on_JustNowSpawned_timeout)
+	if is_demo:
+		respawn_timer = Timer.new()
+		process_mode = Node.PROCESS_MODE_ALWAYS
+		demo_original_speed = speed
+		respawn_timer.wait_time = respawn_delay
+		respawn_timer.one_shot = true
+		respawn_timer.timeout.connect(_on_respawn)
+	else:
+		Global.register_zombie(self)
+
+			
+
+
+func make_demo():
+	
+	is_demo = true 
+	print("Should Make is_demo ", is_demo)
 
 func _process(delta):
 	if animatedSprite.isDead:
@@ -94,25 +116,42 @@ func _process(delta):
 
 
 # --- Death ---
+func _demo_die() -> void:
+	_start_respawn()
 
+func _start_respawn() -> void:
+	is_dead = true
+	animatedSprite.visible = false
+	speed = demo_original_speed
+	respawn_timer.start()
+
+func _on_respawn() -> void:
+	position.x = spawn_x
+	is_dead = false
+	animatedSprite.visible = true
+	animatedSprite.play("Walk")
+	
 func die():
-	Global.deregister_zombie(self)
-	print(self, " dying")
-	if should_spawn_slow_field:
-		spawn_slow_field_on_death()
-	if should_spawn_drone_on_death:
-		print("Should Spawn Drone")
-		_do_spawn_drone_on_death()
-	if should_column_explode:
-		print(self, "Should MAKE AN EXPLOSION")
-		column_explosion = Global.get_column_death_explosion().instantiate()
-		column_explosion.global_position = global_position
-		get_parent().add_child(column_explosion)
-	zombie_death.emit()
-	if $AnimatedSprite2D.sprite_frames.has_animation("death"):
-		$AnimatedSprite2D.isDead = true
-		$AnimatedSprite2D.play("death")
-	queue_free()
+	if false:
+		_demo_die()
+	else:
+		Global.deregister_zombie(self)
+		print(self, " dying")
+		if should_spawn_slow_field:
+			spawn_slow_field_on_death()
+		if should_spawn_drone_on_death:
+			print("Should Spawn Drone")
+			_do_spawn_drone_on_death()
+		if should_column_explode:
+			print(self, "Should MAKE AN EXPLOSION")
+			column_explosion = Global.get_column_death_explosion().instantiate()
+			column_explosion.global_position = global_position
+			get_parent().add_child(column_explosion)
+		zombie_death.emit()
+		if $AnimatedSprite2D.sprite_frames.has_animation("death"):
+			$AnimatedSprite2D.isDead = true
+			$AnimatedSprite2D.play("death")
+		queue_free()
 
 
 func spawn_slow_field_on_death():

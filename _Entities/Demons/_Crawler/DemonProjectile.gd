@@ -63,13 +63,13 @@ func _ready() -> void:
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)	
 	print(get_world_2d().direct_space_state , " area_entered connections: ", self.area_entered.get_connections())
-	print("AREA OVERLAPP", get_overlapping_areas() )
+	#print("AREA OVERLAPP", get_overlapping_areas() )
 				
 func _physics_process(delta: float) -> void:
 	if not _spawn_initialized:
 		spawn_position = position
 		_spawn_initialized = true
-	print("AREA OVERLAPP", get_overlapping_areas() )
+	#print("AREA OVERLAPP", get_overlapping_areas() )
 	#print(self, " Projectile 4Position Is ", self.position)
 	var travel_distance = speed * delta
 	distance_traveled = position.x - spawn_position.x

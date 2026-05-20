@@ -10,6 +10,9 @@ const DEMON_SCENES := {
 }
 
 const PreviewZombieScene = preload("res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.tscn")
+var AltPreviewZombieScene := preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.tscn")
+
+var current_zombie_scene: PackedScene = ZombieRegistry.SCENES["Unhallower"]
 
 @export var demon_a_name := "Occulum"
 @export var demon_b_name := "Crawler"
@@ -57,10 +60,13 @@ func _spawn_demons() -> void:
 	demon_b_instance.position = Vector2.ZERO
 
 func _spawn_zombie() -> void:
-	preview_zombie = PreviewZombieScene.instantiate()
-	preview_zombie.add_to_group("Purple")             
+	preview_zombie = current_zombie_scene.instantiate()
+	preview_zombie.add_to_group("Purple")      
+	preview_zombie.make_demo() 
+	preview_zombie.zombie_death.connect(_spawn_zombie)
 	#preview_zombie.set_collision_layer_value(4, true)   
 	preview_world.add_child(preview_zombie)
+	
 	preview_zombie.position = zombie_spawn.position
 
 func _apply_buffs() -> void:
