@@ -222,6 +222,12 @@ func swap_scenes():
 				
 	swap_portal_button()
 	
+func is_on_purple_dimension():
+	if game_controller.on_scene_1:
+		return true 
+	else:
+		return false 
+	
 func register_swap_ability(new_swap_ability):
 	swap_ability = new_swap_ability
 	

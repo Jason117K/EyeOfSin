@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://om1h0uu5yn80" path="res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.gd" id="1_pz"]
 [ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://_Entities/Zombies/_RebornZombie/Ghoul Sprite Sheet 62 x 33.png" id="2_gs"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="3_sh"]
+[ext_resource type="Script" uid="uid://dhricfuetk0gr" path="res://_UI/GameDemonstrations/SynergyPreview/preview_zombie_sprite.gd" id="4_plcxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pz1"]
 size = Vector2(20, 30)
@@ -84,10 +85,12 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_pz1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1896266687]
+process_mode = 3
 material = SubResource("ShaderMaterial_pz1")
 sprite_frames = SubResource("SpriteFrames_pz1")
 animation = &"Walk"
 flip_h = true
+script = ExtResource("4_plcxb")
 
 [node name="RespawnTimer" type="Timer" parent="." unique_id=1205750618]
 wait_time = 1.5

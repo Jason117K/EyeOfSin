@@ -36,8 +36,8 @@ const DEMON_SLOT_B := {
 }
 
 # Map Slot 5B to 4A, 4B to 5A, 3B to 6A, 7B to 6A, 1B to 5A 
-const PreviewZombieScene = preload("res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.tscn")
-var AltPreviewZombieScene := preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.tscn")
+#const PreviewZombieScene = preload("res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.tscn")
+#var AltPreviewZombieScene := preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.tscn")
 
 var current_zombie_scene: PackedScene = ZombieRegistry.SCENES["Unhallower"]
 
@@ -155,10 +155,15 @@ func _spawn_demons() -> void:
 func _spawn_zombie() -> void:
 	preview_zombie = current_zombie_scene.instantiate()
 	preview_zombie.add_to_group("Purple")      
+
 	preview_zombie.make_demo() 
 	preview_zombie.zombie_death.connect(_respawn_zombie)
 	#preview_zombie.set_collision_layer_value(4, true)   
 	preview_world.add_child(preview_zombie)
+	if Global.is_on_purple_dimension():
+		preview_zombie.set_hue_shift(-86)
+	else:
+		preview_zombie.set_hue_shift(125)
 	
 	preview_zombie.position = zombie_spawn.position
 
