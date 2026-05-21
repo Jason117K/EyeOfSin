@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://obsbqcftfxyw" path="res://_Utilities/TentacleDemo/scripts/DraggableTarget.gd" id="32_p30cy"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="33_kupbo"]
 [ext_resource type="Script" uid="uid://dt0eojddtmla2" path="res://_Entities/Demons/_Crawler/crawler_projectile_shoot_component.gd" id="35_jut13"]
+[ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="36_0syxb"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -1583,6 +1584,189 @@ shader_parameter/shade_ratio = 0.53
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.558477), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyyvc"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(0, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktms3"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(76, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uslvt"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(152, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efimi"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(228, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oksli"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(304, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dekk7"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(380, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js1mr"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(456, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlgco"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(532, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06hkd"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(608, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2cf"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(684, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hso8o"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(760, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4785a"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(836, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dktch"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(912, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co331"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(988, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktkux"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1064, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yav7p"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1140, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3w55"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1216, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0k21"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1292, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e54eh"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1368, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f8pb"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1444, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qphnw"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1520, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq0uo"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1596, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4c6"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1672, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxjol"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1748, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6g7"]
+atlas = ExtResource("36_0syxb")
+region = Rect2(1824, 0, 76, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8u2uv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyyvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktms3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uslvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efimi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oksli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dekk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js1mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlgco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06hkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hso8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4785a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dktch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co331")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktkux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yav7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3w55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0k21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e54eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f8pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qphnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq0uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxjol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6g7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Crawler" type="Area2D" unique_id=675421916 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -1775,7 +1959,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 109.5247, 130.84099, 108.23486, 129.05568, 104.6186, 129.40326, 100.715546, 130.84358, 98.04617, 129.82889, 96.56996, 128.10098, 93.13799, 128.24997, 89.44025, 130.9489)
+points = PackedVector2Array(112.595, 131.435, 108.52754, 133.05438, 105.01685, 133.13678, 103.65483, 131.30461, 101.001526, 130.26659, 97.08, 131.65237, 93.55619, 131.81946, 92.22576, 130.04488, 90.43891, 128.55032)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1787,7 +1971,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 109.5247, 123.96598, 108.23486, 120.30567, 104.6186, 118.77827, 100.715546, 118.34358, 98.04617, 115.45389, 96.56996, 111.85099, 93.13799, 110.12497, 89.44025, 110.948906)
+points = PackedVector2Array(112.595, 126.435, 108.52754, 126.179375, 105.01685, 124.38678, 103.65483, 120.6796, 101.001526, 117.76658, 97.08, 117.27738, 93.55619, 115.56946, 92.22576, 111.919876, 90.43891, 108.55032)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1808,7 +1992,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.96373, 132.1334, 116.11866, 131.76807, 115.50737, 131.20825, 116.44331, 130.74861, 118.57988, 131.28029, 119.76684, 130.94662, 119.24853, 130.39142, 119.422066, 129.8455)
+points = PackedVector2Array(112.595, 131.435, 114.00297, 131.26152, 113.40322, 130.746, 114.66082, 130.46516, 116.8284, 131.08139, 117.80898, 130.65286, 117.38412, 130.08633, 118.3121, 129.71567, 120.69084, 131.34439)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1816,7 +2000,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.96373, 125.2584, 116.11866, 123.018074, 115.50737, 120.583244, 116.44331, 118.24861, 118.57988, 116.90529, 119.76684, 114.69663, 119.24853, 112.266426, 119.422066, 109.845505)
+points = PackedVector2Array(112.595, 126.435, 114.00297, 124.38653, 113.40322, 121.996, 114.66082, 119.840164, 116.8284, 118.5814, 117.80898, 116.27787, 117.38412, 113.83633, 118.3121, 111.59067, 120.69084, 111.34439)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -1834,6 +2018,12 @@ script = ExtResource("32_p30cy")
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("33_kupbo")]
 script = ExtResource("35_jut13")
+
+[node name="HealAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1453647357]
+position = Vector2(-2, -4)
+sprite_frames = SubResource("SpriteFrames_8u2uv")
+frame = 24
+frame_progress = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

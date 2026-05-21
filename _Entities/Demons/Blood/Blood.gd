@@ -8,9 +8,11 @@ extends Area2D
 @export var crawler_buff_auto_pickup_wait_time := 10.0
 @export var wyrm_buff_auto_pickup_wait_time := 10.0
 @export var fast_pick_up_time := 1.5
+var demo_blood_pickup_time := 1.25 
 
 @onready var aoe : Area2D = $AOEZone
 @onready var auto_pickup_timer :Timer = $AutoPickUpTimer
+@onready var heal_anim := $HealingAnimSprite
 @onready var demon_manager = get_parent().get_parent().get_node("DemonManager")
 var blood_spell = preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
 var crawlerBuff := false
@@ -37,16 +39,16 @@ func _ready() -> void:
 	
 	auto_pickup_timer.timeout.connect(_on_auto_pick_up_timer_timeout)
 	auto_pickup_timer.start()
-		
+	#Must Look For Zombies AND Demons
 	if self.is_in_group("Green"):
 		aoe.set_collision_mask_value(1,false)
 		aoe.set_collision_mask_value(2,false)
-		aoe.set_collision_mask_value(3,false)
+		aoe.set_collision_mask_value(3,true)
 		aoe.set_collision_mask_value(4,false)
 		aoe.set_collision_mask_value(5,true)
 	else:
 		aoe.set_collision_mask_value(1,false)
-		aoe.set_collision_mask_value(2,false)
+		aoe.set_collision_mask_value(2,true)
 		aoe.set_collision_mask_value(3,false)
 		aoe.set_collision_mask_value(4,true)
 
@@ -58,7 +60,10 @@ func _on_Blood_mouse_entered():
 	if demon_manager:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()
-		heal_demons()
+		if hiveBuff:
+			print("About to Heal Demons")
+			heal_demons()
+			return
 		
 	if crawlerBuff:
 		temp_zombie_container = aoe.get_overlapping_areas()
@@ -143,26 +148,42 @@ func attack_zombie(zombie_to_attack):
 	
 	
 func heal_demons():
+	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	for entity in aoe.get_overlapping_areas():
+		if entity.is_in_group("Demons"):
+			demons_to_heal.append(entity)
+	print("Demons to heal is ", demons_to_heal)
+
 	for demon in demons_to_heal:
 		if demon == null:
 			demons_to_heal.erase(demon)
 		if demon != null:
 			if demon.is_node_ready():
-			#	print("Demon is ", demon )
+				print("Demon is ", demon )
 				demon.increase_health(100)
-			
-		pass
+			else:
+				print("Demon is not ready ", demon)
+	heal_anim.play()
+	clear_heal_aoe()
+
+func clear_heal_aoe():
+	while demons_to_heal.size() > 0:
+		demons_to_heal.pop_back()
+	demons_to_heal.clear()
 
 func _on_auto_pick_up_timer_timeout() -> void:
 	print("Wait Time When Gen Was ", auto_pickup_timer.wait_time)
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
 		BloodValue = BloodValue / 2
-	var demon_manager = get_parent().get_parent().get_node("DemonManager")
+
 	if demon_manager:  # If the DemonManager or GameManager is set
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()
-		heal_demons()
+		if hiveBuff:
+			print("About to Heal Demons")
+			heal_demons()
+			return
 	queue_free()
 
 func setWorth(bloodWorth):
@@ -193,10 +214,20 @@ func set_fast_pickup_time():
 	
 
 
-func _on_heal_zone_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Demons"):
-		demons_to_heal.append(area)
+#func _on_heal_zone_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("Demons"):
+		#demons_to_heal.append(area)
+#
+#func _on_aoe_zone_area_exited(area: Area2D) -> void:
+	#if area.is_in_group("Demons"):
+		#demons_to_heal.erase(area)
 
-func _on_aoe_zone_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Demons"):
-		demons_to_heal.erase(area)
+func set_demo_true():
+	auto_pickup_timer.wait_time = demo_blood_pickup_time
+
+	auto_pickup_timer.start()
+	
+
+
+func _on_healing_anim_sprite_animation_finished() -> void:
+	queue_free()

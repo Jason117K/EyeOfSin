@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://csushx4jkpqkt" path="res://_Entities/Demons/Blood/Blood.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://swqg421sexsx" path="res://_Assets/Audio/SunCollect.mp3" id="3"]
 [ext_resource type="Texture2D" uid="uid://c30blenge7e7r" path="res://_Entities/Demons/Blood/BloodBeating.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b6g8l1371ylsr" path="res://_Entities/Demons/_Occulum/HealingFlameCircle.png" id="5_715s3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pvv4n"]
 
@@ -56,6 +57,108 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rabkd"]
 radius = 139.99998
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu5wo"]
+atlas = ExtResource("5_715s3")
+region = Rect2(0, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni4ch"]
+atlas = ExtResource("5_715s3")
+region = Rect2(82, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h7ci"]
+atlas = ExtResource("5_715s3")
+region = Rect2(164, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7hbb"]
+atlas = ExtResource("5_715s3")
+region = Rect2(246, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwfy3"]
+atlas = ExtResource("5_715s3")
+region = Rect2(328, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he6yk"]
+atlas = ExtResource("5_715s3")
+region = Rect2(410, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlgaq"]
+atlas = ExtResource("5_715s3")
+region = Rect2(492, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d0n3"]
+atlas = ExtResource("5_715s3")
+region = Rect2(574, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyku2"]
+atlas = ExtResource("5_715s3")
+region = Rect2(656, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11far"]
+atlas = ExtResource("5_715s3")
+region = Rect2(738, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkbdm"]
+atlas = ExtResource("5_715s3")
+region = Rect2(820, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l7df"]
+atlas = ExtResource("5_715s3")
+region = Rect2(902, 0, 82, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3nmy"]
+atlas = ExtResource("5_715s3")
+region = Rect2(984, 0, 82, 73)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmwl7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu5wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni4ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h7ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7hbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwfy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he6yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlgaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d0n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyku2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11far")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkbdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l7df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3nmy")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Blood" type="Area2D" unique_id=2009687380]
 process_mode = 1
 modulate = Color(2.4, 1.2, 1, 1)
@@ -91,5 +194,11 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AOEZone" unique_id=1480185012]
 shape = SubResource("CircleShape2D_rabkd")
 
+[node name="HealingAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1658361398]
+sprite_frames = SubResource("SpriteFrames_hmwl7")
+frame = 13
+frame_progress = 1.0
+
 [connection signal="area_entered" from="AOEZone" to="." method="_on_heal_zone_area_entered"]
 [connection signal="area_exited" from="AOEZone" to="." method="_on_aoe_zone_area_exited"]
+[connection signal="animation_finished" from="HealingAnimSprite" to="." method="_on_healing_anim_sprite_animation_finished"]

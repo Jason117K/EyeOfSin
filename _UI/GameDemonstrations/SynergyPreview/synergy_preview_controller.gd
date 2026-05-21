@@ -46,10 +46,11 @@ const DEFAULT_ZOMBIE_CONFIG := [{"type": "Unhallower", "lane": 1}]
 
 const SYNERGY_ZOMBIE_CONFIGS := {
 	"Occulum+Maw":            [{"type": "Unhallower", "lane": 1}],
-	"Occulum+Hive":           [{"type": "Unhallower", "lane": 1}],
+	"Occulum+Hive":           [],
 	"Occulum+Crawler":        [{"type": "Unhallower", "lane": 1}],
 	"Occulum+SpinalOcculum":  [{"type": "Unhallower", "lane": 1}],
-	"Occulum+Wyrm":           [{"type": "Unhallower", "lane": 1}],
+	"Occulum+Wyrm":           [{"type": "Reborn", "lane": 1}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 30}],
 
 	"Crawler+Hive":           [{"type": "Unhallower", "lane": 1}],
 	"Crawler+Maw":            [{"type": "Unhallower", "lane": 1}],
@@ -71,7 +72,7 @@ const SYNERGY_ZOMBIE_CONFIGS := {
 
 	"Hive+Maw":               [{"type": "Unhallower", "lane": 1}],
 	"Hive+Crawler":           [{"type": "Unhallower", "lane": 1}],
-	"Hive+Occulum":           [{"type": "Unhallower", "lane": 1}],
+	"Hive+Occulum":           [{"type": "Unhallower", "lane": 0}],
 	"Hive+SpinalOcculum":     [{"type": "Unhallower", "lane": 1}],
 	"Hive+Wyrm":              [{"type": "Unhallower", "lane": 1}],
 
@@ -196,6 +197,9 @@ func _spawn_demons() -> void:
 	if demon_a_name == "Maw":
 		demon_a_instance.animSpriteComp.position = demon_a_instance.animSpriteComp.position - Vector2(256,256)
 		demon_a_instance.get_preview_nodes().position = demon_a_instance.get_preview_nodes().position- Vector2(256,256)
+	
+	if demon_a_name == "Occulum":
+		demon_a_instance.demo_blood_pickup()
 		
 func _get_zombie_config() -> Array:
 	var key = demon_a_name + "+" + demon_b_name

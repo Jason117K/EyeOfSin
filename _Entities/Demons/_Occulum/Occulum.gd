@@ -13,8 +13,8 @@ extends Demon
 @export var heal_interval_wait_time := 2
 @export var hive_burst_heal_amount := 50
 @export var spinal_occulum_heal_over_time_amount := 5
-
 @export var maw_health = 500
+var demo_fast_wait_time := 3.0
 
 @onready var buffNodes = $BuffNodesComponent
 @onready var healTimer : Timer
@@ -39,6 +39,7 @@ var lerp_duration = 2.5
 var can_eat_zombie = false 
 var num_healing_zone_sprite_plays := 0
 var max_num_healing_zone_sprite_plays := 5
+var is_demo := false 
 
 var num_blood_plays := 0
 var max_num_blood_plays := 3
@@ -72,17 +73,18 @@ func _on_BloodTimer_timeout():
 func generate_blood() -> Node2D:
 	
 	print("MadeTutorial Blood when it counts is ",madeTutorialBlood )
-	if "Level0-2" in get_parent().get_parent().get_true_name():
-		if madeTutorialBlood == false:
-			pass
-			print("Just Setting Made Tut Blood to True ")
-			madeTutorialBlood = true 
+	if get_parent().get_parent().has_method("get_true_name"):
+		if "Level0-2" in get_parent().get_parent().get_true_name():
+			if madeTutorialBlood == false:
+				pass
+				print("Just Setting Made Tut Blood to True ")
+				madeTutorialBlood = true 
+			elif Global.gameIsStarted == false:
+				print("NOT ON LEVEL 2",madeTutorialBlood )
+				return 
 		elif Global.gameIsStarted == false:
-			print("NOT ON LEVEL 2",madeTutorialBlood )
+			print("NOT Generating BLood, Parent is : ",get_parent().get_parent().get_true_name())
 			return 
-	elif Global.gameIsStarted == false:
-		print("NOT Generating BLood, Parent is : ",get_parent().get_parent().get_true_name())
-		return 
 	print("Generating BLood")
 	
 	
@@ -99,6 +101,7 @@ func generate_blood() -> Node2D:
 		blood_instance.crawler_buff()
 	if mawBuff:
 		blood_instance.maw_buff()
+
 	
 	if self.is_in_group("Green"):
 		blood_instance.add_to_group("Green")
@@ -106,6 +109,8 @@ func generate_blood() -> Node2D:
 		blood_instance.add_to_group("Purple")
 	blood_instance.set_origin_occulum(self)
 	get_parent().add_child(blood_instance) 
+	if is_demo:
+		blood_instance.set_demo_true()
 	#Set the blood pos to above the occulum
 	blood_instance.global_position = self.global_position + Vector2(0,-40)
 	return blood_instance
@@ -140,6 +145,8 @@ func receive_buff(newDemon):
 				bloodTimer.start()
 			"Maw":
 				can_eat_zombie = true
+	if is_demo:
+		demo_blood_pickup()
 
 
 func set_up_healing():
@@ -346,6 +353,13 @@ func _on_mouse_exited() -> void:
 
 func _on_healing_anim_sprite_animation_finished() -> void:
 	pass # Replace with function body.
+	
+	
+func demo_blood_pickup():
+	is_demo = true 
+	if isBuffed && mawBuff == false:
+		bloodTimer.wait_time = demo_fast_wait_time
+		bloodTimer.start()  
 	
 	
 	

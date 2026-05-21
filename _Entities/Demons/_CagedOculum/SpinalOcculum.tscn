@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_yv2yc"]
 [ext_resource type="PackedScene" uid="uid://hfvmbg6ru4b8" path="res://_Entities/Demons/_CagedOculum/spike_rock.tscn" id="21_gxw7u"]
 [ext_resource type="Texture2D" uid="uid://cw6mguuoeytjd" path="res://_Entities/Demons/_CagedOculum/DemonLightningCrackle-Sheet.png" id="25_mek0b"]
+[ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="27_yxa6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxa6h"]
 atlas = ExtResource("2_hi55n")
@@ -1367,6 +1368,189 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyyvc"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(0, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktms3"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(76, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uslvt"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(152, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efimi"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(228, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oksli"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(304, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dekk7"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(380, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js1mr"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(456, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlgco"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(532, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06hkd"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(608, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2cf"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(684, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hso8o"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(760, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4785a"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(836, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dktch"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(912, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co331"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(988, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktkux"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1064, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yav7p"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1140, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3w55"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1216, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0k21"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1292, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e54eh"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1368, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f8pb"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1444, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qphnw"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1520, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq0uo"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1596, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4c6"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1672, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxjol"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1748, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6g7"]
+atlas = ExtResource("27_yxa6h")
+region = Rect2(1824, 0, 76, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4wgq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyyvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktms3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uslvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efimi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oksli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dekk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js1mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlgco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06hkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hso8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4785a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dktch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co331")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktkux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yav7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3w55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0k21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e54eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f8pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qphnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq0uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxjol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6g7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="SpinalOcculum" type="Area2D" unique_id=106028571 groups=["Demons", "Plants"]]
 z_index = 1
 collision_mask = 3
@@ -1417,16 +1601,6 @@ script = ExtResource("15_kwpry")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_kwpry")]
 script = ExtResource("17_mko7f")
-blood_spawn_time = 5
-occulum_buffed_health = 850
-occulum_buffed_max_health = 800
-occulum_buffed_health_regen = 0.1
-maw_buffed_health = 850
-maw_buffed_max_health = 800
-maw_buffed_health_regen = 0.1
-health = 500
-healthRegen = 0.0
-maxHealth = 500
 
 [node name="Web" parent="." unique_id=1241820489 instance=ExtResource("2_j6nbb")]
 visible = false
@@ -1595,6 +1769,12 @@ position = Vector2(9, -3)
 sprite_frames = SubResource("SpriteFrames_uslvt")
 frame = 4
 frame_progress = 0.8728944
+
+[node name="HealAnimSprite" type="AnimatedSprite2D" parent="." unique_id=689548658]
+position = Vector2(2, -8)
+sprite_frames = SubResource("SpriteFrames_d4wgq")
+frame = 24
+frame_progress = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

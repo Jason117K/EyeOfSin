@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://br5uv5svgqnxm"]
 
 [ext_resource type="Script" uid="uid://yqh46i3yoatp" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview_controller.gd" id="1_sp"]
+[ext_resource type="Script" uid="uid://jcbqg6n3tkx7" path="res://_UI/GameDemonstrations/SynergyPreview/preview_demon_manager.gd" id="2_txcik"]
 
 [node name="SynergyPreview" type="CenterContainer" unique_id=1133102798]
 process_mode = 3
@@ -37,6 +38,7 @@ color = Color(0.21230483, 0.21230483, 0.21230483, 1)
 position = Vector2(99, 100)
 
 [node name="DemonManager" type="Node" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=1831697741]
+script = ExtResource("2_txcik")
 
 [node name="DemonReceivingBuffSlot" type="Node2D" parent="SubViewportContainer/SubViewport/PreviewWorld" unique_id=562885398]
 position = Vector2(21, 243)

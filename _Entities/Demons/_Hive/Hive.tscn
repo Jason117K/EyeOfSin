@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://ktsfsnvej37r" path="res://_Entities/Demons/_Wyrm/LaserShootComponent.tscn" id="23_k5wuc"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="24_x5esn"]
 [ext_resource type="Script" uid="uid://bv6wfp8xuy7qd" path="res://_Entities/Demons/_Hive/hive_wyrm_projectile_shoot_component.gd" id="25_oioeg"]
+[ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="26_oioeg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
@@ -1459,6 +1460,189 @@ shader_parameter/shade_ratio = 0.53
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5esn"]
 size = Vector2(20, 1.275)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyyvc"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(0, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktms3"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(76, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uslvt"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(152, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efimi"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(228, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oksli"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(304, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dekk7"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(380, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js1mr"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(456, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlgco"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(532, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06hkd"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(608, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2cf"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(684, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hso8o"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(760, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4785a"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(836, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dktch"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(912, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co331"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(988, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktkux"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1064, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yav7p"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1140, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3w55"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1216, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0k21"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1292, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e54eh"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1368, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f8pb"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1444, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qphnw"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1520, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq0uo"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1596, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4c6"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1672, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxjol"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1748, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6g7"]
+atlas = ExtResource("26_oioeg")
+region = Rect2(1824, 0, 76, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5638"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyyvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktms3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uslvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efimi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oksli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dekk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js1mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlgco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06hkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hso8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4785a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dktch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co331")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktkux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yav7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3w55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0k21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e54eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f8pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qphnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq0uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxjol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6g7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Hive" type="Area2D" unique_id=1078490386 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -1632,14 +1816,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(37171657, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 110.364235, 131.53139, 108.71017, 131.02069, 107.78799, 129.9816, 107.60047, 128.77042, 106.20861, 128.08937, 104.865974, 127.26852, 103.060524, 127.0149, 101.07878, 127.58023, 99.40315, 129.00986, 99.139084, 128.06868, 97.1665, 128.76657, 95.19832, 128.76709, 93.58357, 128.14168, 92.61095, 127.078094, 92.420975, 125.87801, 93.30386, 124.956604, 92.36688, 123.91312, 91.373665, 122.81529, 89.87252, 122.13289, 88.02042, 122.20026, 86.20381, 123.14877, 84.90126, 124.951324, 85.09033, 127.274826, 85.027985, 129.5828)
+points = PackedVector2Array(112.595, 131.435, 110.3264, 132.04388, 108.28822, 132.30016, 106.56347, 131.9293, 105.457756, 131.0357, 105.25385, 129.91727, 103.5025, 130.51309, 102.25255, 129.67976, 100.657074, 129.10988, 98.77414, 129.14827, 96.905365, 129.96854, 95.45323, 131.58409, 94.276344, 130.90437, 92.36445, 131.4307, 90.47792, 131.43268, 88.98142, 130.75853, 88.2048, 129.62231, 88.338936, 128.38878, 89.235504, 127.41222, 88.939156, 126.1798, 88.2513, 125.03848, 86.7243, 124.553696, 84.87837, 125.105835, 83.39495, 126.71445, 82.99093, 129.00244)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
 material = SubResource("ShaderMaterial_q3sqy")
 
 [node name="BaseLine" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 110.364235, 125.90639, 108.71017, 124.7707, 107.78799, 123.1066, 107.60047, 121.27042, 106.20861, 119.96436, 104.865974, 118.51852, 103.060524, 117.6399, 101.07878, 117.58023, 99.40315, 118.38485, 99.139084, 116.81868, 97.1665, 116.89156, 95.19832, 116.2671, 93.58357, 115.01668, 92.61095, 113.328094, 92.420975, 111.50301, 93.30386, 109.956604, 92.36688, 108.28812, 91.373665, 106.56529, 89.87252, 105.25789, 88.02042, 104.70026, 86.20381, 105.02377, 84.90126, 106.201324, 85.09033, 107.899826, 85.027985, 109.58279)
+points = PackedVector2Array(112.595, 126.435, 110.3264, 126.418884, 108.28822, 126.05016, 106.56347, 125.054306, 105.457756, 123.53571, 105.25385, 121.79227, 103.5025, 121.76309, 102.25255, 120.304756, 100.657074, 119.109886, 98.77414, 118.52326, 96.905365, 118.71853, 95.45323, 119.70909, 94.276344, 118.404366, 92.36445, 118.30569, 90.47792, 117.68267, 88.98142, 116.38353, 88.2048, 114.62232, 88.338936, 112.76377, 89.235504, 111.16222, 88.939156, 109.3048, 88.2513, 107.53848, 86.7243, 106.428696, 84.87837, 106.355835, 83.39495, 107.33945, 82.99093, 109.00244)
 width = 4.0
 
 [node name="Arm2" parent="." unique_id=848670294 node_paths=PackedStringArray("target") instance=ExtResource("17_ijvem")]
@@ -1654,14 +1838,14 @@ line_width = 4.0
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(848670294, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.062775, 130.29968, 115.82138, 129.9571, 117.725266, 130.51103, 119.45651, 131.78265, 121.24549, 131.7551, 123.11475, 131.81334, 124.66863, 131.24463, 125.69908, 130.27623, 126.32898, 129.2412, 125.3989, 128.44226, 126.80189, 127.71091, 128.32053, 126.9709, 130.17072, 126.75966, 132.13164, 127.38759, 133.78694, 128.91295, 134.65411, 131.17177, 134.91267, 133.6124, 136.08887, 135.6302, 137.89784, 136.45135, 139.34718, 136.01184, 139.56561, 134.8874, 138.2582, 134.3584, 136.54146, 135.26297, 134.96402, 136.52946)
+points = PackedVector2Array(112.595, 131.435, 113.76587, 130.11389, 115.15253, 129.19348, 116.938194, 128.90993, 118.831604, 129.46715, 120.40416, 130.89264, 121.397156, 130.09148, 123.312294, 130.61888, 125.205345, 130.5967, 126.731766, 129.93549, 127.63913, 128.86931, 127.92598, 127.7127, 126.97339, 126.87327, 128.10945, 125.95375, 129.56384, 125.241104, 131.42505, 125.2786, 133.24324, 126.410385, 134.26944, 128.54892, 133.82889, 130.94215, 132.62868, 132.92532, 132.26262, 135.28401, 133.5222, 137.1263, 135.23018, 137.3824, 136.03667, 136.47787, 135.49452, 135.49681)
 width = 4.0
 
 [node name="TwoToneCanvasGroup" parent="Arm2/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
 material = SubResource("ShaderMaterial_ethfs")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.062775, 124.674675, 115.82138, 123.707115, 117.725266, 123.63603, 119.45651, 124.28265, 121.24549, 123.6301, 123.11475, 123.06333, 124.66863, 121.86964, 125.69908, 120.27624, 126.32898, 118.616196, 125.3989, 117.19227, 126.80189, 115.83591, 128.32053, 114.4709, 130.17072, 113.63466, 132.13164, 113.63759, 133.78694, 114.53795, 134.65411, 116.17177, 134.91267, 117.987404, 136.08887, 119.3802, 137.89784, 119.57636, 139.34718, 118.51185, 139.56561, 116.762405, 138.2582, 115.6084, 136.54146, 115.88798, 134.96402, 116.529465)
+points = PackedVector2Array(112.595, 126.435, 113.76587, 124.48889, 115.15253, 122.943474, 116.938194, 122.034935, 118.831604, 121.967155, 120.40416, 122.76764, 121.397156, 121.34148, 123.312294, 121.24388, 125.205345, 120.596695, 126.731766, 119.310486, 127.63913, 117.61931, 127.92598, 115.8377, 126.97339, 114.37327, 128.10945, 112.82875, 129.56384, 111.491104, 131.42505, 110.9036, 133.24324, 111.410385, 134.26944, 112.92392, 133.82889, 114.69216, 132.62868, 116.05032, 132.26262, 117.78402, 133.5222, 119.0013, 135.23018, 118.6324, 136.03667, 117.102875, 135.49452, 115.49681)
 width = 4.0
 
 [node name="ArmTarget" parent="." unique_id=2013687383 instance=ExtResource("19_s2bgg")]
@@ -1689,6 +1873,12 @@ target_position = Vector2(157.455, -1)
 collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="HealAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1510351437]
+position = Vector2(1, -11)
+sprite_frames = SubResource("SpriteFrames_w5638")
+frame = 24
+frame_progress = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

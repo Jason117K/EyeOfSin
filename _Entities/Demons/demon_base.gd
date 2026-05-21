@@ -22,6 +22,7 @@ var isBuffed := false
 
 @onready var animSpriteComp := $AnimatedSpriteComponent
 @onready var healthComp := $HealthComponent
+@onready var heal_anim_sprite := $HealAnimSprite
 
 signal demon_die
 
@@ -124,6 +125,10 @@ func finish_spawn():
 	animSpriteComp.visible = true		
 	animSpriteComp.animation = animSpriteComp.currentAnim
 	animSpriteComp.play()
+
+func play_healing_anim():
+	heal_anim_sprite.play()
+	
 
 func get_is_buffed():
 	return isBuffed

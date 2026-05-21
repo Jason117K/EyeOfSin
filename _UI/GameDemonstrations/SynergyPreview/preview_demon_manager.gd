@@ -7,3 +7,5 @@ func clear_space(_pos) -> void:
 func add_blood(blood):
 	pass
 	
+func play_blood_collect():
+	pass

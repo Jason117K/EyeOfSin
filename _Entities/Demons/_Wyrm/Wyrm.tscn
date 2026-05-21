@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="18_pfhft"]
 [ext_resource type="Script" uid="uid://c1nu6cgi2l8tb" path="res://_Entities/Demons/_Wyrm/wyrm_projectile_shoot_component.gd" id="19_qxnbo"]
+[ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="21_b83ow"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qxnbo"]
 
@@ -803,6 +804,189 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjgjf"]
 size = Vector2(20, 1.275)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyyvc"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(0, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktms3"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(76, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uslvt"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(152, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efimi"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(228, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oksli"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(304, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dekk7"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(380, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js1mr"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(456, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlgco"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(532, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06hkd"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(608, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2cf"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(684, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hso8o"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(760, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4785a"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(836, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dktch"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(912, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co331"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(988, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktkux"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1064, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yav7p"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1140, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3w55"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1216, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0k21"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1292, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e54eh"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1368, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f8pb"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1444, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qphnw"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1520, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq0uo"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1596, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4c6"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1672, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxjol"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1748, 0, 76, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6g7"]
+atlas = ExtResource("21_b83ow")
+region = Rect2(1824, 0, 76, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wr0b4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyyvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktms3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uslvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efimi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oksli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dekk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js1mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlgco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06hkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv2cf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hso8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4785a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dktch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co331")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktkux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yav7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3w55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0k21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e54eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f8pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qphnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq0uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxjol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6g7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Demons", "Plants", "Wyrm"]]
 z_index = 1
 script = ExtResource("4")
@@ -814,11 +998,6 @@ bounce_elasticity = 0.01
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_tvvdq")]
 script = ExtResource("3_pfhft")
-spinalOcculumBuffed_health = 650
-mawBuffed_health = 350
-health = 150
-healthRegen = 0.1
-maxHealth = 150
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
 sprite_frames = SubResource("SpriteFrames_qxnbo")
@@ -856,10 +1035,6 @@ script = ExtResource("5_hls8g")
 
 [node name="LaserShootComponent" parent="Worm1" unique_id=379337331 instance=ExtResource("6")]
 position = Vector2(-7, -3)
-extension_speed = 30000.0
-max_length = 20000.0
-laser_width = 10.0
-duration = 1.0
 zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
@@ -881,10 +1056,6 @@ script = ExtResource("5_hls8g")
 
 [node name="LaserShootComponent" parent="Worm2" unique_id=1577011033 instance=ExtResource("6")]
 position = Vector2(14, -9)
-extension_speed = 30000.0
-max_length = 20000.0
-laser_width = 10.0
-duration = 1.0
 zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
@@ -896,10 +1067,6 @@ script = ExtResource("5_hls8g")
 
 [node name="LaserShootComponent" parent="Worm3" unique_id=1439520591 instance=ExtResource("6")]
 position = Vector2(14, -9)
-extension_speed = 30000.0
-max_length = 20000.0
-laser_width = 10.0
-duration = 1.0
 zigzag_height = 160.0
 zigzag_position = 3500.0
 zigzag_width = 160.0
@@ -1012,13 +1179,6 @@ visible = false
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("18_pfhft")]
 script = ExtResource("19_qxnbo")
-cooldown = 3.0
-occulum_buff_cooldown = 0.9
-auto_fire = true
-projectile_speed = 600
-projectile_damage = 40
-bleed_damage_increase = 2
-attack_speed_mult = 1.0
 
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=477860220]
 position = Vector2(2, 1)
@@ -1032,6 +1192,12 @@ collide_with_bodies = false
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="HealAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1613917085]
+position = Vector2(1, -11)
+sprite_frames = SubResource("SpriteFrames_wr0b4")
+frame = 24
+frame_progress = 1.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
