@@ -82,10 +82,10 @@ playing = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1376691575]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 19.0
-offset_right = 764.0
-offset_bottom = 430.0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 749.0
+offset_bottom = 422.0
 mouse_filter = 2
 theme_override_constants/separation = 10
 
@@ -336,14 +336,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -416.0
-offset_top = 18.0
-offset_right = -24.0
-offset_bottom = 242.0
+offset_left = -483.0
+offset_top = 11.0
+offset_right = -9.0
+offset_bottom = 235.0
 grow_horizontal = 0
 
 [node name="SynergyPreview" parent="CurrentDemonVboxContainer" unique_id=1133102798 instance=ExtResource("16_r6hpg")]
-visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]

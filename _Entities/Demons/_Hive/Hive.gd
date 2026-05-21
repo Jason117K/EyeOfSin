@@ -28,6 +28,7 @@ var isOcculumBuffed := false
 var isMawBuffed := false
 var DemonManager
 var thisBufferName: String
+var is_demo := false
 
 @onready var buffNodes = $BuffNodesComponent
 @onready var swarm = $Swarm
@@ -68,6 +69,10 @@ func get_damage():
 func get_cost():
 	return cost
 
+func set_is_demo():
+	$DetectionComp/CollisionShape2D.disabled = true 
+	$DetectionComp/CollisionShape2D2.disabled = false
+	swarm.is_demo = true 
 
 func receive_buff(bufferName):
 	var demonName =  (bufferName.get_demon_true_name())
@@ -97,14 +102,17 @@ func receive_buff(bufferName):
 				await get_tree().physics_frame
 				await get_tree().physics_frame
 				hive_laser_shoot_comp._ready()
+				$ProjectileShootComponent.auto_fire = true 
+				$ProjectileShootComponent._ready()
 			"Hive":
 				pass
 
 			"Maw":	
+				swarm.is_maw_buffed = true 
 				for drone in swarm.get_available_drones():
 					drone.maw_buff()
-					
-				swarm.is_maw_buffed = true 
+				swarm.kill_all_and_respawn()
+				
 				
 			
 

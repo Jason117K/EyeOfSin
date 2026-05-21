@@ -14,6 +14,7 @@ var occulum_buff := false
 var drone_damage
 var is_crawler_buffed = false 
 var is_spinal_occulum_buffed := false
+var is_demo := false 
 
 @onready var hive: Node = get_parent()
 @onready var respawn_timer: Timer = get_parent().get_node("DroneRespawnTimer")
@@ -38,6 +39,7 @@ func set_respawn_wait_time(time: float):
 func kill_all_and_respawn():
 	kill_all_drones()
 	spawn_initial_drones()
+	optimize_drone_assignments()
 
 
 func kill_all_drones():
@@ -87,6 +89,8 @@ func spawn_initial_drones():
 			drone.crawler_buff()
 		if is_spinal_occulum_buffed:
 			drone.spinal_occulum_buff()	
+		if is_demo:
+			drone.is_demo = true
 		hive.get_parent().add_child(drone)
 		if hive.is_in_group("Green"):
 			drone.add_to_group("Green")
@@ -104,6 +108,7 @@ func spawn_initial_drones():
 
 
 func _on_enemy_entered(area):
+	print("Area Entered ", area)
 	if area.is_in_group("Zombie"):
 		enemy_queue.append(area)
 		active_enemies.append(area)
@@ -169,6 +174,7 @@ func optimize_drone_assignments():
 		return
 
 	var enemies_to_assign = enemy_queue.slice(0, min(enemy_queue.size(), max_drones))
+	print("Enemies to ass is ", enemies_to_assign)
 	if enemies_to_assign.is_empty():
 		return
 
@@ -177,8 +183,8 @@ func optimize_drone_assignments():
 
 	var dimension_parent = hive.get_parent().get_parent()
 	for enemy in enemies_to_assign:
-		if enemy.get_parent().get_parent() != dimension_parent:
-			continue
+		#if enemy.get_parent().get_parent() != dimension_parent:
+			#continue
 		var num_drones = drones_per_enemy
 		if extra_drones > 0:
 			num_drones += 1
@@ -193,6 +199,7 @@ func optimize_drone_assignments():
 
 
 func command_drone_to_attack(drone, enemy):
+	print("Drone ", drone, " is being commaned to attack enemy : ", enemy)
 	if is_instance_valid(enemy) and not enemy.is_queued_for_deletion():
 		drone.enable_hurtbox()
 		drone.attack_target(enemy)
@@ -220,7 +227,8 @@ func _on_DroneRespawnTimer_timeout():
 		new_drone.crawler_buff()
 	if is_spinal_occulum_buffed:
 		new_drone.spinal_occulum_buff()	
-		
+	if is_demo:
+		new_drone.is_demo = true		
 	hive.get_parent().add_child(new_drone)
 	available_drones.append(new_drone)
 	if hive.is_in_group("Green"):

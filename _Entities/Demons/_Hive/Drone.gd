@@ -35,6 +35,7 @@ var current_zombie_to_fight
 var blood_on_death := false 
 var is_maw_buffed := false 
 var is_crawler_buffed := false 
+var is_demo := false 
 
 @onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
 
@@ -100,6 +101,7 @@ func crawler_buff():
 	is_crawler_buffed = true 
 	
 func maw_buff():
+	print("Maw Buff Drone so Drone Go Boom")
 	is_maw_buffed = true 
 		
 func make_drone_glow():
@@ -160,6 +162,7 @@ func die():
 		pass
 		generate_blood()
 	if is_maw_buffed:
+		print("Should Death BOOM BOOM")
 		death_explode()
 	if is_crawler_buffed:
 		death_slow()
@@ -170,12 +173,21 @@ func death_slow():
 	
 func death_explode():
 	var death_bomb = Global.get_bomb_scene().instantiate()
-	death_bomb.global_position = self.global_position
-	if self.is_in_group("Green"):
-		death_bomb.add_to_group("Green")
+	if is_demo:
+		print("DRONE GO BOOM")
+		get_parent().get_parent().add_child(death_bomb)
+		death_bomb.global_position = self.global_position
+		if self.is_in_group("Green"):
+			death_bomb.add_to_group("Green")
+		else:
+			death_bomb.add_to_group("Purple")
 	else:
-		death_bomb.add_to_group("Purple")
-	get_parent().get_parent().add_child(death_bomb)
+		death_bomb.global_position = self.global_position
+		if self.is_in_group("Green"):
+			death_bomb.add_to_group("Green")
+		else:
+			death_bomb.add_to_group("Purple")
+		get_parent().get_parent().add_child(death_bomb)
 	
 func generate_blood():
 	print("Generating Blood")

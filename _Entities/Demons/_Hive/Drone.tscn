@@ -160,7 +160,7 @@ size = Vector2(22, 30.5)
 [node name="Drone" type="Area2D" unique_id=1376268587 groups=["Demons", "Drone", "Plants"]]
 z_index = 1
 script = ExtResource("2")
-health = 100
+health = 50
 attack_damage = 13
 attack_range = 20
 

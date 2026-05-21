@@ -12,6 +12,6 @@ visible = false
 
 [node name="Arm" parent="." unique_id=634789705 node_paths=PackedStringArray("target") instance=ExtResource("2_arm")]
 target = NodePath("../ArmTarget")
-max_length = 67.0
+max_length = 80.0
 wave_speed = 2.0
 line_width = 5.0

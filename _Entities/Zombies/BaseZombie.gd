@@ -146,8 +146,12 @@ func die():
 		if should_column_explode:
 			print(self, "Should MAKE AN EXPLOSION")
 			column_explosion = Global.get_column_death_explosion().instantiate()
-			column_explosion.global_position = global_position
-			get_parent().add_child(column_explosion)
+			if is_demo:
+				get_parent().add_child(column_explosion)
+				column_explosion.global_position = global_position
+			else:
+				column_explosion.global_position = global_position
+				get_parent().add_child(column_explosion)
 		zombie_death.emit()
 		if $AnimatedSprite2D.sprite_frames.has_animation("death"):
 			$AnimatedSprite2D.isDead = true

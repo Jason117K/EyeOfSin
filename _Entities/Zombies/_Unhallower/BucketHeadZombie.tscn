@@ -402,6 +402,7 @@ z_index = 1
 collision_layer = 2
 script = ExtResource("2")
 health = 700
+attack_power = 51
 silence_field_position = Vector2(-2, 0)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=727919602]
@@ -437,7 +438,7 @@ targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1030967930]
-target_position = Vector2(-21, 0)
+target_position = Vector2(-15, 0)
 collide_with_areas = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=454725612]

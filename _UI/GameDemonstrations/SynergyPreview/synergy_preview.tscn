@@ -8,10 +8,11 @@ process_mode = 3
 offset_right = 224.0
 offset_bottom = 128.0
 script = ExtResource("1_sp")
+respawn_timer_wait_time = 7.25
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2002148593]
 texture_filter = 1
-custom_minimum_size = Vector2(392, 224)
+custom_minimum_size = Vector2(474, 224)
 layout_mode = 2
 stretch = true
 
@@ -19,7 +20,7 @@ stretch = true
 handle_input_locally = false
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(392, 224)
+size = Vector2i(474, 224)
 render_target_update_mode = 4
 
 [node name="PreviewWorld" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1068491563]

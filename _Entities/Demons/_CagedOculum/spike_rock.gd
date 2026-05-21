@@ -6,6 +6,7 @@ var spike_timer : Timer
 	
 func activate():
 	spike_damage = get_parent().spike_damage
+	print("Spike Damage On Activate is ", spike_damage)
 	show()
 	monitoring = true
 	if self.is_in_group("Green"):
@@ -38,5 +39,6 @@ func spike_attack():
 	spike_rock_sprite.play()
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
+			print("Spike Damage is ", spike_damage)
 			area.take_damage(spike_damage)
 	

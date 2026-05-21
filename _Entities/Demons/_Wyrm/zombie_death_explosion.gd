@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var damage := 50 
+@export var damage := 75 
 
 func _ready() -> void:
 	if self.is_in_group("Green"):

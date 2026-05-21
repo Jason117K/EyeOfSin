@@ -1555,6 +1555,8 @@ animations = [{
 z_index = 1
 collision_mask = 3
 script = ExtResource("2")
+lightning_damage = 25
+spike_damage = 34
 
 [node name="SilenceField" type="Area2D" parent="." unique_id=1451195478]
 visible = false

@@ -31,7 +31,7 @@ const DEFAULT_CHARGE_COST := 1   # Fallback when an enemy lacks get_charge_cost(
 
 @export var spinalOcculumHealth = 1500
 @export var spinal_occulum_max_health = 1500
-
+@export var web_belch_distance := Vector2(128, 0)
 @onready var ogDigestTime = digestTime
 
 # === Runtime state ===
@@ -49,6 +49,7 @@ var will_spawn_swords := false
 var bufferName: String
 var consume_zombie_group
 var devour_done := true 
+var is_demo:=false
 
 
 
@@ -97,6 +98,8 @@ func setup_tentacles():
 	if debug_mode:
 		print("[Maw] Setup complete: %d tentacles ready" % tentacles.size())
 
+func get_tentacles():
+	return available_tentacles
 
 # Tentacles retract toward the Maw's animated sprite center, not the Maw root.
 func _get_retraction_center() -> Vector2:
@@ -261,51 +264,106 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 	
 func spawn_swords():
 	var blood_sword_spell := DIGEST_SWORD_SCENE.instantiate()
-
-	blood_sword_spell.global_position = self.global_position 
-	blood_sword_spell.global_position = blood_sword_spell.global_position + Vector2(256,256)
-	blood_sword_spell.global_position = blood_sword_spell.global_position + Vector2(32,0)
-	if self.is_in_group("Green"):
-		blood_sword_spell.add_to_group("Green")
+	if is_demo:
+		get_parent().add_child(blood_sword_spell)
+		blood_sword_spell.global_position = animSpriteComp.global_position + Vector2(32,0)
+		if self.is_in_group("Green"):
+			blood_sword_spell.add_to_group("Green")
+		else:
+			blood_sword_spell.add_to_group("Purple")
+		
+		blood_sword_spell.set_maw_parent()
+		blood_sword_spell.setup_collision_and_damage_zombies()
 	else:
-		blood_sword_spell.add_to_group("Purple")
-	
-	get_parent().add_child(blood_sword_spell)
-	blood_sword_spell.set_maw_parent()
-	blood_sword_spell.setup_collision_and_damage_zombies()
+		blood_sword_spell.global_position = self.global_position 
+		blood_sword_spell.global_position = blood_sword_spell.global_position + Vector2(256,256)
+		blood_sword_spell.global_position = blood_sword_spell.global_position + Vector2(32,0)
+		if self.is_in_group("Green"):
+			blood_sword_spell.add_to_group("Green")
+		else:
+			blood_sword_spell.add_to_group("Purple")
+		
+		get_parent().add_child(blood_sword_spell)
+		blood_sword_spell.set_maw_parent()
+		blood_sword_spell.setup_collision_and_damage_zombies()
 
 func add_consume_zombie_group_component():
 	consume_zombie_group = (Global.get_consume_zombie_group_scene()).instantiate()
-
-	consume_zombie_group.global_position = self.global_position 
-	consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(256,256)
-	consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(144,0)
-	if self.is_in_group("Green"):
-		consume_zombie_group.add_to_group("Green")
+	
+	if is_demo:
+		get_parent().add_child(consume_zombie_group)
+		consume_zombie_group.global_position = animSpriteComp.global_position + Vector2(96,0)
+		if self.is_in_group("Green"):
+			consume_zombie_group.add_to_group("Green")
+		else:
+			consume_zombie_group.add_to_group("Purple")
+		
+		consume_zombie_group.set_all_areas()
+		consume_zombie_group.done_eating.connect(devour_complete)
 	else:
-		consume_zombie_group.add_to_group("Purple")
-	demon_die.connect(consume_zombie_group.die)
-	get_parent().add_child(consume_zombie_group)
 
-	consume_zombie_group.set_all_areas()
-	consume_zombie_group.done_eating.connect(devour_complete)
-	print_scene_tree(consume_zombie_group)
+		consume_zombie_group.global_position = self.global_position 
+		consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(256,256)
+		consume_zombie_group.global_position = consume_zombie_group.global_position + Vector2(144,0)
+		if self.is_in_group("Green"):
+			consume_zombie_group.add_to_group("Green")
+		else:
+			consume_zombie_group.add_to_group("Purple")
+		demon_die.connect(consume_zombie_group.die)
+		get_parent().add_child(consume_zombie_group)
+
+		consume_zombie_group.set_all_areas()
+		consume_zombie_group.done_eating.connect(devour_complete)
+		print_scene_tree(consume_zombie_group)
 
 	
 	
 func belch_webs():
 	var web_ball = WEB_BALL_SCENE.instantiate()
 	
-	web_ball.global_position = self.global_position 
-	web_ball.global_position = web_ball.global_position + Vector2(256,256)
-	if self.is_in_group("Green"):
-		web_ball.add_to_group("Green")
+	if is_demo:
+		get_parent().add_child(web_ball)
+		web_ball.global_position = animSpriteComp.global_position + Vector2(256,256)
+		if self.is_in_group("Green"):
+			web_ball.add_to_group("Green")
+		else:
+			web_ball.add_to_group("Purple")
+		
+		web_ball.target_position = web_ball.start_position +  Vector2(96 ,0)
+		web_ball.travel_time = 2.0
 	else:
-		web_ball.add_to_group("Purple")
-	get_parent().add_child(web_ball)
+		web_ball.global_position = self.global_position + Vector2(256,256)
+		if self.is_in_group("Green"):
+			web_ball.add_to_group("Green")
+		else:
+			web_ball.add_to_group("Purple")
+		get_parent().add_child(web_ball)
+		web_ball.target_position = web_ball.global_position + web_belch_distance
+		web_ball.travel_time = 2.0
+		
 	
-	web_ball.target_position = web_ball.global_position + Vector2(128, 0)
-	web_ball.travel_time = 2.0
+	
+	
+	
+	#get_parent().add_child(web_ball)
+	##web_ball.global_position = animSpriteComp.global_position 
+	#web_ball.global_position = self.global_position + Vector2(256,256)
+	##web_ball.global_position = $AnimatedSpriteComponent/WebBallPos.global_position 
+	##web_ball.global_position = web_ball.global_position #+ Vector2(256,256)
+	#if self.is_in_group("Green"):
+		#web_ball.add_to_group("Green")
+	#else:
+		#web_ball.add_to_group("Purple")
+	##get_parent().add_child(web_ball)
+	#
+	#web_ball.target_position = web_ball.global_position + web_belch_distance
+	#web_ball.travel_time = 2.0
+
+func set_demo_digest():
+	digestTime = 3.0
+	_set_tentacle_digestion_time(digestTime)
+	is_demo = true 
+	consume_zombie_group_wait_time = 4.0
 
 # When one tentacle of a multi-tentacle group aborts, drag the whole
 # group down with it: no charge was "earned", so all participants should
@@ -405,8 +463,8 @@ func generate_blood():
 	get_parent().add_child(blood_instance)
 	blood_instance.setWorth(bloodAmount)
 	#demon_instance.position = Vector2(demon_instance.position.x-256,demon_instance.position.y-256)
-	blood_instance.global_position = self.global_position 
-	blood_instance.global_position = blood_instance.global_position + Vector2(256,256)
+	blood_instance.global_position = animSpriteComp.global_position 
+	blood_instance.global_position = blood_instance.global_position #+ Vector2(256,256)
 	blood_instance.global_position = blood_instance.global_position + Vector2(0,-16)
 
 
@@ -448,6 +506,10 @@ func show_tentacles():
 	tentacle2.visible = true
 	tentacle3.visible = true
 
+func get_out_of_place_nodes():
+	return [$DetectionComponent,$CollisionShape2D,$PreviewNodes,]
+	pass
+	
 
 func _on_mouse_entered() -> void:
 	$PreviewNodes/AnimatedSprite2.visible = false

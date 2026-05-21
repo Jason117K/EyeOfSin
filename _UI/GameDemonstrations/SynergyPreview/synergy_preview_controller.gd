@@ -19,15 +19,15 @@ const DEMON_SCENES := {
 	#"Maw": 1,
 #}
 const SLOT_B_TO_SLOT_A := {
-	5: 4,
-	4: 5,
+	6: 4,
+	4: 6,
 	2: 5,
-	7: 6,
+	7: 5,
 	1: 5,
 }
 # Slot index for demon_b_name (matches DemonPosition1–7). Tune per demon.
 const DEMON_SLOT_B := {
-	"Occulum": 5,
+	"Occulum": 6,
 	"Crawler": 4,
 	"SpinalOcculum": 2,
 	"Wyrm": 4,
@@ -64,28 +64,73 @@ const SYNERGY_ZOMBIE_CONFIGS := {
 									{"type": "Reborn", "lane": 0}],
 
 	"SpinalOcculum+Occulum":  [{"type": "Unhallower", "lane": 1}],
-	"SpinalOcculum+Hive":     [{"type": "Unhallower", "lane": 1}],
-	"SpinalOcculum+Maw":      [{"type": "Unhallower", "lane": 1}],
-	"SpinalOcculum+Crawler":  [{"type": "Unhallower", "lane": 1}],
-	"SpinalOcculum+Wyrm":     [{"type": "Unhallower", "lane": 1}],
+	"SpinalOcculum+Hive":     [{"type": "Sundered", "lane": 1}],
+	"SpinalOcculum+Maw":      [{"type": "Reborn", "lane": 1}],
+	"SpinalOcculum+Crawler":  [{"type": "Unhallower", "lane": 1}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 32},
+								{"type": "Reborn", "lane": 1, "x_offset": 64}],
+	"SpinalOcculum+Wyrm":     [{"type": "Reborn", "lane": 1}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 25}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 50}],
 
-	"Wyrm+Occulum":           [{"type": "Unhallower", "lane": 1}],
-	"Wyrm+Hive":              [{"type": "Unhallower", "lane": 1}],
-	"Wyrm+Maw":               [{"type": "Unhallower", "lane": 1}],
-	"Wyrm+Crawler":           [{"type": "Unhallower", "lane": 1}],
-	"Wyrm+SpinalOcculum":     [{"type": "Unhallower", "lane": 1}],
+	"Wyrm+Occulum":           [{"type": "Reborn", "lane": 1},
+								{"type": "Reborn", "lane": 1, "x_offset": 16},
+								{"type": "Reborn", "lane": 1, "x_offset": 32},
+								{"type": "Reborn", "lane": 1, "x_offset": 48},
+								{"type": "Reborn", "lane": 1, "x_offset": 64}],
+								
+	"Wyrm+Hive":              [{"type": "Reborn", "lane": 1, "x_offset": 150}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 180}, \
+								{"type": "Unhallower", "lane": 1, "x_offset": 220}],
+								
+	"Wyrm+Maw":               [{"type": "Reborn", "lane": 1,  "x_offset": 64}, \
+								{"type": "Reborn", "lane": 0,  "x_offset": 64}, \
+								{"type": "Reborn", "lane": 2,  "x_offset": 64}, \
+								{"type": "Reborn", "lane": 1,  "x_offset": 96}],
+								
+	"Wyrm+Crawler":           [{"type": "Reborn", "lane": 1},
+								{"type": "Reborn", "lane": 1, "x_offset": 16},
+								{"type": "Reborn", "lane": 1, "x_offset": 32},
+								{"type": "Reborn", "lane": 1, "x_offset": 48},
+								{"type": "Reborn", "lane": 1, "x_offset": 64}],
+								
+	"Wyrm+SpinalOcculum":     [{"type": "Reborn", "lane": 1},
+								{"type": "Reborn", "lane": 1, "x_offset": 16},
+								{"type": "Reborn", "lane": 1, "x_offset": 32},
+								{"type": "Reborn", "lane": 1, "x_offset": 48},
+								{"type": "Reborn", "lane": 1, "x_offset": 64}],
 
-	"Hive+Maw":               [{"type": "Unhallower", "lane": 1}],
-	"Hive+Crawler":           [{"type": "Unhallower", "lane": 1}],
-	"Hive+Occulum":           [{"type": "Unhallower", "lane": 0}],
-	"Hive+SpinalOcculum":     [{"type": "Unhallower", "lane": 1}],
-	"Hive+Wyrm":              [{"type": "Unhallower", "lane": 1}],
+	"Hive+Maw":               [{"type": "Reborn", "lane": 1, "x_offset": 0} , 
+								{"type": "Reborn", "lane": 1, "x_offset": 16}],
+	"Hive+Crawler":           [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
+	"Hive+Occulum":           [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
+	"Hive+SpinalOcculum":     [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
+	"Hive+Wyrm":              [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
 
-	"Maw+Hive":               [{"type": "Unhallower", "lane": 1}],
-	"Maw+Crawler":            [{"type": "Unhallower", "lane": 1}],
+	"Maw+Hive":               [{"type": "Unhallower", "lane": 1},
+								{"type": "Reborn", "lane": 0, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 2, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 96}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 106}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 116}],
+								
+	"Maw+Crawler":            [{"type": "Unhallower", "lane": 1}, \
+								{"type": "Reborn", "lane": 0, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 2, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 0, "x_offset": 96}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 96}, \
+								{"type": "Reborn", "lane": 2, "x_offset": 96}],
+								
 	"Maw+Occulum":            [{"type": "Unhallower", "lane": 1}],
 	"Maw+SpinalOcculum":      [{"type": "Unhallower", "lane": 1}],
-	"Maw+Wyrm":               [{"type": "Unhallower", "lane": 1}],
+	"Maw+Wyrm":               [{"type": "Unhallower", "lane": 1},\
+								{"type": "Reborn", "lane": 0, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 2, "x_offset": 64}, \
+								{"type": "Reborn", "lane": 0, "x_offset": 96}, \
+								{"type": "Reborn", "lane": 1, "x_offset": 96}, \
+								{"type": "Reborn", "lane": 2, "x_offset": 96}],
 }
 
 @export var demon_a_name := "Occulum"
@@ -120,6 +165,8 @@ var zombies_alive: int = 0
 @onready var slot_a = demon_slot_1
 
 @onready var respawn_zombie_timer := $RespawnZombieTimer
+
+var maw_adjust_offset := Vector2(0,0)
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -200,11 +247,24 @@ func _spawn_demons() -> void:
 	demon_b_instance.set_anim_spawn_speed_mult(2)
 	if demon_b_name == "Maw":
 		demon_b_instance.animSpriteComp.position = demon_b_instance.animSpriteComp.position - Vector2(256,256)
-		demon_b_instance.get_preview_nodes().position = demon_b_instance.get_preview_nodes().position- Vector2(256,256)
+		for node in demon_b_instance.get_out_of_place_nodes():
+			node.position = node.position - Vector2(256,256)
+		for tentacle in demon_b_instance.get_tentacles():
+			tentacle.position = tentacle.position - Vector2(256,256)
 
 	if demon_a_name == "Maw":
-		demon_a_instance.animSpriteComp.position = demon_a_instance.animSpriteComp.position - Vector2(256,256)
-		demon_a_instance.get_preview_nodes().position = demon_a_instance.get_preview_nodes().position- Vector2(256,256)
+		demon_a_instance.set_demo_digest()
+		if demon_b_name == "Occulum":
+			maw_adjust_offset = Vector2(16,0)
+		demon_a_instance.animSpriteComp.position = demon_a_instance.animSpriteComp.position - Vector2(256,256) + maw_adjust_offset
+		for node in demon_a_instance.get_out_of_place_nodes():
+			node.position = node.position - Vector2(256,256) + maw_adjust_offset 
+		for tentacle in demon_a_instance.get_tentacles():
+			tentacle.position = tentacle.position - Vector2(256,256) + maw_adjust_offset
+	
+	if demon_a_name == "Hive":
+		demon_a_instance.set_is_demo()
+
 	
 	if demon_a_name == "Occulum":
 		demon_a_instance.demo_blood_pickup()

@@ -59,7 +59,7 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	projectile_to_buff.is_slowing = false
 	projectile_to_buff.damage = projectile_damage
 	projectile_to_buff.speed = projectile_speed 
-	#projectile_to_buff.hide()
+	projectile_to_buff.hide()
 	
 	if isCrawlerBuffed:
 		projectile_to_buff.is_slowing = true
@@ -75,6 +75,7 @@ func apply_buffs_to_projectile(projectile_to_buff):
 		projectile_to_buff.spawn_drone_on_zombie_death = true 
 	
 	if mawBuffed:
+		projectile_to_buff.damage = parent_demon.maw_damage
 		projectile_to_buff.column_explode = true 
 		
 func wyrm_bleed_buff():

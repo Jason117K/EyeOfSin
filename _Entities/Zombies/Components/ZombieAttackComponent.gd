@@ -63,7 +63,7 @@ func attack_demon(collider):
 				pass 
 		else:
 			pass
-			collider.enter_combat(self)
+			collider.enter_combat(zombie)
 			
 	is_attacking = true
 	target_demon = collider
