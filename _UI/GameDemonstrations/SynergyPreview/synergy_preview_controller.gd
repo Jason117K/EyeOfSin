@@ -39,14 +39,56 @@ const DEMON_SLOT_B := {
 #const PreviewZombieScene = preload("res://_UI/GameDemonstrations/SynergyPreview/preview_zombie.tscn")
 #var AltPreviewZombieScene := preload("res://_Entities/Zombies/_RebornZombie/BasicZombie.tscn")
 
-var current_zombie_scene: PackedScene = ZombieRegistry.SCENES["Unhallower"]
+const LANE_Y := [68, 100, 132]
+const SPAWN_X := 200
+
+const DEFAULT_ZOMBIE_CONFIG := [{"type": "Unhallower", "lane": 1}]
+
+const SYNERGY_ZOMBIE_CONFIGS := {
+	"Occulum+Maw":            [{"type": "Unhallower", "lane": 1}],
+	"Occulum+Hive":           [{"type": "Unhallower", "lane": 1}],
+	"Occulum+Crawler":        [{"type": "Unhallower", "lane": 1}],
+	"Occulum+SpinalOcculum":  [{"type": "Unhallower", "lane": 1}],
+	"Occulum+Wyrm":           [{"type": "Unhallower", "lane": 1}],
+
+	"Crawler+Hive":           [{"type": "Unhallower", "lane": 1}],
+	"Crawler+Maw":            [{"type": "Unhallower", "lane": 1}],
+	"Crawler+Occulum":        [{"type": "Unhallower", "lane": 1}],
+	"Crawler+SpinalOcculum":  [{"type": "Unhallower", "lane": 1}],
+	"Crawler+Wyrm":           [{"type": "Unhallower", "lane": 1}],
+
+	"SpinalOcculum+Occulum":  [{"type": "Unhallower", "lane": 1}],
+	"SpinalOcculum+Hive":     [{"type": "Unhallower", "lane": 1}],
+	"SpinalOcculum+Maw":      [{"type": "Unhallower", "lane": 1}],
+	"SpinalOcculum+Crawler":  [{"type": "Unhallower", "lane": 1}],
+	"SpinalOcculum+Wyrm":     [{"type": "Unhallower", "lane": 1}],
+
+	"Wyrm+Occulum":           [{"type": "Unhallower", "lane": 1}],
+	"Wyrm+Hive":              [{"type": "Unhallower", "lane": 1}],
+	"Wyrm+Maw":               [{"type": "Unhallower", "lane": 1}],
+	"Wyrm+Crawler":           [{"type": "Unhallower", "lane": 1}],
+	"Wyrm+SpinalOcculum":     [{"type": "Unhallower", "lane": 1}],
+
+	"Hive+Maw":               [{"type": "Unhallower", "lane": 1}],
+	"Hive+Crawler":           [{"type": "Unhallower", "lane": 1}],
+	"Hive+Occulum":           [{"type": "Unhallower", "lane": 1}],
+	"Hive+SpinalOcculum":     [{"type": "Unhallower", "lane": 1}],
+	"Hive+Wyrm":              [{"type": "Unhallower", "lane": 1}],
+
+	"Maw+Hive":               [{"type": "Unhallower", "lane": 1}],
+	"Maw+Crawler":            [{"type": "Unhallower", "lane": 1}],
+	"Maw+Occulum":            [{"type": "Unhallower", "lane": 1}],
+	"Maw+SpinalOcculum":      [{"type": "Unhallower", "lane": 1}],
+	"Maw+Wyrm":               [{"type": "Unhallower", "lane": 1}],
+}
 
 @export var demon_a_name := "Occulum"
 @export var demon_b_name := "Crawler"
 
 var demon_a_instance: Node
 var demon_b_instance: Node
-var preview_zombie: Node
+var preview_zombies: Array = []
+var zombies_alive: int = 0
 
 @onready var sub_viewport : SubViewport = $SubViewportContainer/SubViewport
 @onready var preview_world : Node2D = $SubViewportContainer/SubViewport/PreviewWorld
@@ -88,12 +130,15 @@ func setup(a_name: String, b_name: String) -> void:
 	demon_a_name = a_name
 	demon_b_name = b_name
 	_spawn_demons()
-	_spawn_zombie()
+	_spawn_zombies()
 	buff_timer.start()
 
 func clear_preview():
-	if preview_zombie != null:
-		preview_zombie.queue_free()
+	for zombie in preview_zombies:
+		if is_instance_valid(zombie):
+			zombie.queue_free()
+	preview_zombies.clear()
+	zombies_alive = 0
 	for child in slot_b.get_children():
 		child.queue_free()
 	for child in slot_a.get_children():
@@ -152,28 +197,48 @@ func _spawn_demons() -> void:
 		demon_a_instance.animSpriteComp.position = demon_a_instance.animSpriteComp.position - Vector2(256,256)
 		demon_a_instance.get_preview_nodes().position = demon_a_instance.get_preview_nodes().position- Vector2(256,256)
 		
-func _spawn_zombie() -> void:
-	preview_zombie = current_zombie_scene.instantiate()
-	preview_zombie.add_to_group("Purple")      
+func _get_zombie_config() -> Array:
+	var key = demon_a_name + "+" + demon_b_name
+	if SYNERGY_ZOMBIE_CONFIGS.has(key):
+		return SYNERGY_ZOMBIE_CONFIGS[key]
+	return DEFAULT_ZOMBIE_CONFIG
 
-	preview_zombie.make_demo() 
-	preview_zombie.zombie_death.connect(_respawn_zombie)
-	#preview_zombie.set_collision_layer_value(4, true)   
-	preview_world.add_child(preview_zombie)
-	if Global.is_on_purple_dimension():
-		preview_zombie.set_hue_shift(-86)
-	else:
-		preview_zombie.set_hue_shift(125)
-	
-	preview_zombie.position = zombie_spawn.position
+func _spawn_zombies() -> void:
+	var config = _get_zombie_config()
+	zombies_alive = config.size()
+	for entry in config:
+		var zombie_type: String = entry.get("type", "Unhallower")
+		var lane: int = entry.get("lane", 1)
+		var x_offset: int = entry.get("x_offset", 0)
+
+		if not ZombieRegistry.SCENES.has(zombie_type):
+			push_warning("SynergyPreview: unknown zombie type '%s'" % zombie_type)
+			zombies_alive -= 1
+			continue
+
+		var zombie = ZombieRegistry.SCENES[zombie_type].instantiate()
+		zombie.add_to_group("Purple")
+		zombie.make_demo()
+		zombie.zombie_death.connect(_on_zombie_died)
+		preview_world.add_child(zombie)
+
+		if Global.is_on_purple_dimension():
+			zombie.set_hue_shift(-86)
+		else:
+			zombie.set_hue_shift(125)
+
+		zombie.position = Vector2(SPAWN_X + x_offset, LANE_Y[lane])
+		preview_zombies.append(zombie)
 
 func reset_scene():
 	#clear_preview()
 	setup(demon_a_name,demon_b_name)
 
 
-func _respawn_zombie():
-	respawn_zombie_timer.start()
+func _on_zombie_died() -> void:
+	zombies_alive -= 1
+	if zombies_alive <= 0:
+		respawn_zombie_timer.start()
 
 func _apply_buffs() -> void:
 	if demon_a_instance and demon_a_instance.has_method("receive_buff"):
