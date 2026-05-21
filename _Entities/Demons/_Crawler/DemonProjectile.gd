@@ -154,10 +154,7 @@ func increase_bleed_damage(bleed_damage_increase):
 func _on_lightning_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 		#print(area, " is INDEED in Zombie Group")
-		if area.get_parent().get_parent() != self.get_parent().get_parent():
-			#print("Early Return Rr")
-			pass
-			return
+
 		area.slow()
 		area.take_damage(lightning_damage)
 	else:

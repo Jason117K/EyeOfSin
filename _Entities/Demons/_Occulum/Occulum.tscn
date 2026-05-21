@@ -1443,6 +1443,9 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 1
 
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea4" parent_id_path=PackedInt32Array(1007137061, 1195978361) index="0" unique_id=1425430868]
+visible = true
+
 [node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
@@ -1488,6 +1491,9 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_vcved")
 frame = 27
 
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea10" parent_id_path=PackedInt32Array(1007137061, 1590585108) index="0" unique_id=1606136775]
+visible = true
+
 [node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
 
@@ -1506,8 +1512,8 @@ animation = &"change_form"
 [node name="HealingAnimSprite" type="AnimatedSprite2D" parent="." unique_id=590144160]
 visible = false
 sprite_frames = SubResource("SpriteFrames_m7eju")
-frame = 9
-frame_progress = 0.0531529
+frame = 12
+frame_progress = 1.0
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=61841955]
 visible = false

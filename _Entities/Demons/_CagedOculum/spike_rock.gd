@@ -1,5 +1,5 @@
 extends Area2D
-var spike_damage := 20
+var spike_damage := 18.5
 var spike_wait_time := 5
 var spike_timer : Timer
 @onready var spike_rock_sprite := $AnimatedSprite2D
@@ -21,6 +21,7 @@ func activate():
 		self.set_collision_mask_value(4,true)
 		
 	spike_rock_sprite.play()
+	
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
 			area.take_damage(spike_damage)

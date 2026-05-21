@@ -197,6 +197,7 @@ animations = [{
 }]
 
 [node name="SwordBloodSpell" type="Area2D" unique_id=2026496036]
+process_mode = 3
 z_index = 2
 script = ExtResource("1_b40rw")
 

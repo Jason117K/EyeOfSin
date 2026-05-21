@@ -37,9 +37,10 @@ var demons_to_heal = []
 var max_alpha = 0.2
 var lerp_duration = 2.5
 var can_eat_zombie = false 
-var num_healing_zone_sprite_plays := 0
+var num_healing_zone_sprite_plays := 4
 var max_num_healing_zone_sprite_plays := 5
 var is_demo := false 
+var is_demo_blood_spawn := false
 
 var num_blood_plays := 0
 var max_num_blood_plays := 3
@@ -145,7 +146,7 @@ func receive_buff(newDemon):
 				bloodTimer.start()
 			"Maw":
 				can_eat_zombie = true
-	if is_demo:
+	if is_demo && !is_demo_blood_spawn:
 		demo_blood_pickup()
 
 
@@ -155,6 +156,7 @@ func set_up_healing():
 	healTimer.timeout.connect(_on_heal_timer_timeout)
 	add_child(healTimer)
 	healTimer.start()
+	print("SetUp Healing Should Show and Play Sprite")
 	healing_zone_sprite.show()
 	healing_zone_sprite.play()
 
@@ -271,11 +273,13 @@ func _on_heal_zone_area_entered(area: Area2D) -> void:
 func _on_heal_timer_timeout() -> void:
 	num_healing_zone_sprite_plays += 1
 	if num_healing_zone_sprite_plays == max_num_healing_zone_sprite_plays:
+		print("Play Healing Others Sprite")
 		healing_zone_sprite.play()
 		num_healing_zone_sprite_plays = 0
 	for demon in demons_to_heal:
 		if demon != null:
-			demon.increase_health(spinal_occulum_heal_over_time_amount)
+			if demon != self:
+				demon.increase_health(spinal_occulum_heal_over_time_amount)
 func get_demon_true_name():
 	return "Occulum"
 func get_demon_name():
@@ -358,6 +362,8 @@ func _on_healing_anim_sprite_animation_finished() -> void:
 func demo_blood_pickup():
 	is_demo = true 
 	if isBuffed && mawBuff == false:
+		is_demo_blood_spawn = true 
+		print("Should Fast Spawn Blood")
 		bloodTimer.wait_time = demo_fast_wait_time
 		bloodTimer.start()  
 	

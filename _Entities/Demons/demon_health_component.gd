@@ -50,7 +50,8 @@ func take_damage(damage):
 func increase_health(added_health_amount):
 	if maxHealth != null:
 		health = clamp(health + added_health_amount, 0, maxHealth)
-		demon.play_healing_anim()
+		if added_health_amount > 4.0:
+			demon.play_healing_anim()
 	pass
 	
 func increase_max_health(added_max_health_amount):

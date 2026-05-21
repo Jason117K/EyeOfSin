@@ -72,7 +72,7 @@ func undoBloodSlow():
 	
 	
 func knockBack():
-	zombie.global_position = zombie.global_position + Vector2(9,0) 
+	zombie.global_position = zombie.global_position + Vector2(32,0) 
 	
 	
 func set_hue_shift(hue_shift_degrees):
@@ -125,14 +125,14 @@ func erase_blood_hit(blood_hit_to_erase):
 	
 # Handles the zombie taking damage 
 func take_damage(damage,piercing : bool = false):
-	
-	for blood_hit in damage_vfx_spawn_locations:
-		blood_hit.visible = true 
-		blood_hit.rotation_degrees = randf_range(-60, 60)
-		if zombie.is_in_group("Purple"):
-			blood_hit.play("hit_purple")
-		else:
-			blood_hit.play("hit_green")
+	if damage > 5:
+		for blood_hit in damage_vfx_spawn_locations:
+			blood_hit.visible = true 
+			blood_hit.rotation_degrees = randf_range(-60, 60)
+			if zombie.is_in_group("Purple"):
+				blood_hit.play("hit_purple")
+			else:
+				blood_hit.play("hit_green")
 	
 	
 	

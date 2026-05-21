@@ -25,6 +25,8 @@ var current_zombie_target :Zombie
 var dissappear_time := 0.75
 var origin_occulum : Demon 
 var decrease_blood_val := true 
+var highest_health := -1
+var current_target_health := 1
 
 func _ready() -> void:
 	input_pickable = true
@@ -66,32 +68,14 @@ func _on_Blood_mouse_entered():
 			return
 		
 	if crawlerBuff:
-		temp_zombie_container = aoe.get_overlapping_areas()
-		for zombie in temp_zombie_container:
-			if zombie.is_in_group("Zombie"):
-				nearby_zombies.append(zombie)
-		if nearby_zombies.is_empty() == true:
-			print("NO NEARBY ZOMBIES : ", nearby_zombies)
-			queue_free()
-		else:
-			#nearby_zombies = aoe.get_overlapping_areas()
-			#TODO Make Sort By Health
-			for zombie in nearby_zombies:
-				if zombie.is_in_group("Zombie"):
-					current_zombie_target = zombie 
-			print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
-			#TODO Sort By Health
-			attack_zombie(current_zombie_target)
-			return
+		crawler_blood_pickup()
+		return
 			
 	if wyrmBuff:
 		summon_blood_swords()
-	if hiveBuff:
-		if origin_occulum != null:
-			origin_occulum.burst_heal()
-
-
-
+	#if hiveBuff:
+		#if origin_occulum != null:
+			#origin_occulum.burst_heal()
 	queue_free()
 
 func free_blood():
@@ -100,10 +84,35 @@ func free_blood():
 		current_zombie_target.slow()
 	queue_free()
 
+func crawler_blood_pickup():
+	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	temp_zombie_container = aoe.get_overlapping_areas()
+	for zombie in temp_zombie_container:
+		if zombie.is_in_group("Zombie"):
+			nearby_zombies.append(zombie)
+	if nearby_zombies.is_empty() == true:
+		print("NO NEARBY ZOMBIES : ", nearby_zombies)
+		queue_free()
+	else:
+		#nearby_zombies = aoe.get_overlapping_areas()
+		#TODO Make Sort By Health
+		highest_health = -1
+		for zombie in nearby_zombies:
+			if not zombie.has_method("get_health"):
+				continue
+			current_target_health = zombie.get_health()
+			if current_target_health > highest_health:
+				highest_health = current_target_health
+				current_zombie_target = zombie
+		print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
+		#TODO Sort By Health
+		attack_zombie(current_zombie_target)
+
 func summon_blood_swords():
 	if origin_occulum != null:
 		print("Summon Blood Sword")
 	else:
+		print("Origin Occulum is now ", origin_occulum)
 		queue_free()
 	spawn_blood_sword(Vector2(49,-8))
 	spawn_blood_sword(Vector2(113,-8))
@@ -124,12 +133,15 @@ func spawn_blood_sword(offset):
 			blood_spell_instance.set_collision_mask_value(3,false)
 			blood_spell_instance.set_collision_mask_value(4,true)
 		
-		blood_spell_instance.global_position = origin_occulum.global_position + offset
+		#blood_spell_instance.global_position = origin_occulum.global_position # + offset
 		origin_occulum.get_parent().add_child(blood_spell_instance)
+		blood_spell_instance.global_position = origin_occulum.global_position + offset
+		print("Blood Sword Damage Zombies SHOULD BE at position global : ", blood_spell_instance.global_position , " and position local ", blood_spell_instance.position )
 	
 	
 	
 func set_origin_occulum(parent_occulum):
+	print("Origin Occulum is ", parent_occulum)
 	origin_occulum = parent_occulum
 		
 	
@@ -184,6 +196,11 @@ func _on_auto_pick_up_timer_timeout() -> void:
 			print("About to Heal Demons")
 			heal_demons()
 			return
+		if crawlerBuff:
+			crawler_blood_pickup()
+			return
+		if wyrmBuff:
+			summon_blood_swords()
 	queue_free()
 
 func setWorth(bloodWorth):

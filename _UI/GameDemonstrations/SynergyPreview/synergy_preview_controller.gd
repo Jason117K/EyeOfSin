@@ -47,16 +47,21 @@ const DEFAULT_ZOMBIE_CONFIG := [{"type": "Unhallower", "lane": 1}]
 const SYNERGY_ZOMBIE_CONFIGS := {
 	"Occulum+Maw":            [{"type": "Unhallower", "lane": 1}],
 	"Occulum+Hive":           [],
-	"Occulum+Crawler":        [{"type": "Unhallower", "lane": 1}],
-	"Occulum+SpinalOcculum":  [{"type": "Unhallower", "lane": 1}],
+	"Occulum+Crawler":        [{"type": "Reborn", "lane": 1}, \
+								{"type": "Unhallower", "lane": 1, "x_offset": 45}],
+	"Occulum+SpinalOcculum":  [],
 	"Occulum+Wyrm":           [{"type": "Reborn", "lane": 1}, \
 								{"type": "Reborn", "lane": 1, "x_offset": 30}],
 
-	"Crawler+Hive":           [{"type": "Unhallower", "lane": 1}],
-	"Crawler+Maw":            [{"type": "Unhallower", "lane": 1}],
-	"Crawler+Occulum":        [{"type": "Unhallower", "lane": 1}],
+	"Crawler+Hive":           [{"type": "Reborn", "lane": 1}, 
+								{"type": "Reborn", "lane": 2},
+									{"type": "Reborn", "lane": 0}],
+	"Crawler+Maw":            [{"type": "Unhallower", "lane": 1, "x_offset": 30}],
+	"Crawler+Occulum":        [{"type": "Reborn", "lane": 1}],
 	"Crawler+SpinalOcculum":  [{"type": "Unhallower", "lane": 1}],
-	"Crawler+Wyrm":           [{"type": "Unhallower", "lane": 1}],
+	"Crawler+Wyrm":           [{"type": "Reborn", "lane": 1}, 
+								{"type": "Reborn", "lane": 2},
+									{"type": "Reborn", "lane": 0}],
 
 	"SpinalOcculum+Occulum":  [{"type": "Unhallower", "lane": 1}],
 	"SpinalOcculum+Hive":     [{"type": "Unhallower", "lane": 1}],
@@ -85,6 +90,7 @@ const SYNERGY_ZOMBIE_CONFIGS := {
 
 @export var demon_a_name := "Occulum"
 @export var demon_b_name := "Crawler"
+@export var respawn_timer_wait_time := 6.0
 
 var demon_a_instance: Node
 var demon_b_instance: Node
@@ -122,6 +128,7 @@ func _ready() -> void:
 	buff_timer.one_shot = true
 	buff_timer.timeout.connect(_apply_buffs)
 	respawn_zombie_timer.one_shot = true 
+	respawn_zombie_timer.wait_time = respawn_timer_wait_time
 	respawn_zombie_timer.timeout.connect(reset_scene)
 
 
@@ -174,6 +181,7 @@ func _spawn_demons() -> void:
 	demon_a_instance.add_to_group("Purple")
 	demon_b_instance.add_to_group("Purple")
 	print(demon_b_instance , " Demon B is ", demon_b_name)
+	print(demon_a_instance , " Demon A is ", demon_a_name)
 
 	# B: from demon name → slot number → node
 	var slot_b_number := get_slot_b_number(demon_b_name)
@@ -245,7 +253,8 @@ func _on_zombie_died() -> void:
 		respawn_zombie_timer.start()
 
 func _apply_buffs() -> void:
+	pass
 	if demon_a_instance and demon_a_instance.has_method("receive_buff"):
 		demon_a_instance.receive_buff(demon_b_instance)
-	if demon_b_instance and demon_b_instance.has_method("receive_buff"):
-		demon_b_instance.receive_buff(demon_a_instance)
+	#if demon_b_instance and demon_b_instance.has_method("receive_buff"):
+		#demon_b_instance.receive_buff(demon_a_instance)
