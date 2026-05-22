@@ -331,6 +331,7 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 
 	# Create a Panel as a child to act as the border/glow
 	var panel := Panel.new()
+	panel.scale = Vector2(0.8,0.8)
 	panel.name = "HighlightPanel"
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
 
@@ -342,7 +343,8 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 
 	# Expand slightly beyond the button to create a border effect
 	var margin := highlight_border_thickness + 4
-	panel.position = Vector2(-margin, -margin)
+	#panel.position = Vector2(-margin, -margin)
+	panel.position = Vector2(0,0)
 	panel.size = button.size + Vector2(margin * 2, margin * 2)
 	panel.z_index = 2
 

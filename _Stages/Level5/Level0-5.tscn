@@ -86,6 +86,18 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ehl8e")
 
+[node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.000002
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
 blood_points = 999
 
@@ -311,19 +323,19 @@ flip_h = true
 
 [node name="Fish" parent="Environment/Fish" unique_id=1588429973 instance=ExtResource("16_wrar4")]
 z_index = -1
-position = Vector2(542, 386)
+position = Vector2(531, 374)
 
 [node name="Fish2" parent="Environment/Fish" unique_id=1692028757 instance=ExtResource("16_wrar4")]
 z_index = -1
-position = Vector2(515, 353)
+position = Vector2(306, 392)
 
 [node name="Fish5" parent="Environment/Fish" unique_id=1920619631 instance=ExtResource("16_wrar4")]
 z_index = -1
-position = Vector2(180, 329)
+position = Vector2(239, 364)
 
 [node name="Fish6" parent="Environment/Fish" unique_id=1356390607 instance=ExtResource("16_wrar4")]
 z_index = -1
-position = Vector2(37, 326)
+position = Vector2(34, 365)
 
 [node name="Fish7" parent="Environment/Fish" unique_id=1111632075 instance=ExtResource("16_wrar4")]
 z_index = -1
@@ -331,7 +343,7 @@ position = Vector2(573, 19)
 
 [node name="Fish8" parent="Environment/Fish" unique_id=1355592197 instance=ExtResource("16_wrar4")]
 z_index = -1
-position = Vector2(455, 394)
+position = Vector2(338, 369)
 
 [node name="Fish9" parent="Environment/Fish" unique_id=1161040525 instance=ExtResource("16_wrar4")]
 z_index = -1
@@ -339,11 +351,11 @@ position = Vector2(315, 14)
 
 [node name="Fish3" parent="Environment/Fish" unique_id=141710872 instance=ExtResource("16_wrar4")]
 z_index = -1
-position = Vector2(573, 342)
+position = Vector2(683, 38)
 
 [node name="Fish4" parent="Environment/Fish" unique_id=887910897 instance=ExtResource("16_wrar4")]
 z_index = -1
-position = Vector2(633, 395)
+position = Vector2(638, 372)
 
 [node name="Shrubs" type="Node2D" parent="Environment" unique_id=684092618]
 visible = false
@@ -397,18 +409,6 @@ visible = false
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
-[node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
-layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 2.000002
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="Node" type="Node2D" parent="." unique_id=243040236]
 visible = false
 z_index = -1
@@ -442,7 +442,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=99321584]
 position = Vector2(370, 208)
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

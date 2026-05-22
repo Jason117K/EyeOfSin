@@ -24,8 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://_Assets/Environment/TX Tileset Grass.png" id="16_42ryq"]
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="16_vgyyd"]
 [ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://_Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="17_7in2w"]
-[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://_Entities/LevelDecorations/Shrub.tscn" id="17_wf2gn"]
-[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://_Assets/Environment/BloodTree.png" id="18_4kn7w"]
 [ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="18_hwxwv"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="19_1jmrx"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="19_uv6up"]
@@ -1248,6 +1246,7 @@ tile_set = SubResource("TileSet_4kn7w")
 [node name="Environment" type="Node2D" parent="." unique_id=2057032927]
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=346497372]
+z_index = 2
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=1008811198]
 position = Vector2(543, 347)
@@ -1398,87 +1397,52 @@ texture = ExtResource("15_gxdr2")
 flip_h = true
 
 [node name="Fish" type="Node2D" parent="Environment" unique_id=1222362094]
+z_index = 1
 
 [node name="Fish" parent="Environment/Fish" unique_id=1721377575 instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(538, 368)
+position = Vector2(586, 368)
+makeGreen = true
 
 [node name="Fish2" parent="Environment/Fish" unique_id=2041871874 instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(515, 353)
+makeGreen = true
 
 [node name="Fish5" parent="Environment/Fish" unique_id=298974351 instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(180, 329)
+makeGreen = true
 
 [node name="Fish6" parent="Environment/Fish" unique_id=60393874 instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(37, 326)
+makeGreen = true
 
 [node name="Fish7" parent="Environment/Fish" unique_id=816429778 instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(565, 30)
+position = Vector2(559, 77)
+makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" unique_id=795112116 instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(434, 370)
+makeGreen = true
 
 [node name="Fish9" parent="Environment/Fish" unique_id=81798201 instance=ExtResource("16_vgyyd")]
 z_index = -1
-position = Vector2(309, 27)
+position = Vector2(445, 35)
+makeGreen = true
 
 [node name="Fish3" parent="Environment/Fish" unique_id=739490211 instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(573, 342)
+makeGreen = true
 
 [node name="Fish4" parent="Environment/Fish" unique_id=1298296312 instance=ExtResource("16_vgyyd")]
 z_index = -1
 position = Vector2(639, 380)
-
-[node name="Shrubs" type="Node2D" parent="Environment" unique_id=561683588]
-visible = false
-
-[node name="Shrub" parent="Environment/Shrubs" unique_id=1522822237 instance=ExtResource("17_wf2gn")]
-position = Vector2(560, 13)
-scale = Vector2(1, 1)
-
-[node name="Shrub2" parent="Environment/Shrubs" unique_id=1160214836 instance=ExtResource("17_wf2gn")]
-position = Vector2(474, 339)
-scale = Vector2(1, 1)
-
-[node name="Shrub3" parent="Environment/Shrubs" unique_id=2020806320 instance=ExtResource("17_wf2gn")]
-position = Vector2(521, 392)
-scale = Vector2(1, 1)
-
-[node name="Shrub4" parent="Environment/Shrubs" unique_id=237220216 instance=ExtResource("17_wf2gn")]
-position = Vector2(193, 327)
-scale = Vector2(1, 1)
-
-[node name="Shrub5" parent="Environment/Shrubs" unique_id=209996196 instance=ExtResource("17_wf2gn")]
-position = Vector2(433, 330)
-scale = Vector2(1, 1)
-
-[node name="Shrub6" parent="Environment/Shrubs" unique_id=826622325 instance=ExtResource("17_wf2gn")]
-position = Vector2(658, 403)
-scale = Vector2(1, 1)
-
-[node name="Shrub7" parent="Environment/Shrubs" unique_id=49007824 instance=ExtResource("17_wf2gn")]
-position = Vector2(297, 14)
-scale = Vector2(1, 1)
-
-[node name="Trees" type="Node2D" parent="Environment" unique_id=1424772316]
-visible = false
-
-[node name="BloodTree" type="Sprite2D" parent="Environment/Trees" unique_id=268014280]
-z_index = 1
-position = Vector2(561, 364)
-texture = ExtResource("18_4kn7w")
-flip_h = true
-
-[node name="BloodTree2" type="Sprite2D" parent="Environment/Trees" unique_id=850039130]
-z_index = 1
-position = Vector2(396, 7)
-texture = ExtResource("18_4kn7w")
+makeGreen = true
 
 [node name="Special" type="Node2D" parent="Environment" unique_id=1354197484]
 visible = false

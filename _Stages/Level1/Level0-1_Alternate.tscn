@@ -2204,17 +2204,17 @@ makeGreen = true
 
 [node name="Fish5" parent="Environment/Fish" unique_id=1222719762 instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(180, 329)
+position = Vector2(183, 371)
 makeGreen = true
 
 [node name="Fish6" parent="Environment/Fish" unique_id=554304915 instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(37, 326)
+position = Vector2(59, 311)
 makeGreen = true
 
 [node name="Fish7" parent="Environment/Fish" unique_id=1294845331 instance=ExtResource("16_654uq")]
 z_index = -1
-position = Vector2(564, 30)
+position = Vector2(523, 40)
 makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" unique_id=2123952703 instance=ExtResource("16_654uq")]

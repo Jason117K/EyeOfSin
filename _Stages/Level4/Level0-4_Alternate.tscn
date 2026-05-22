@@ -64,6 +64,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_e23m8")
 
+[node name="UILayer" parent="." unique_id=1561045702 instance=ExtResource("20_hgpp1")]
+layout_mode = 1
+make_green = true
+
 [node name="DemonManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
 blood_points = 300
 
@@ -135,6 +139,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="Environment" type="Node2D" parent="." unique_id=2129594410]
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=970040930]
+z_index = 1
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=871050628]
 position = Vector2(543, 347)
@@ -285,42 +290,52 @@ texture = ExtResource("15_r8h13")
 flip_h = true
 
 [node name="Fish" type="Node2D" parent="Environment" unique_id=886522770]
+z_index = 1
 
 [node name="Fish" parent="Environment/Fish" unique_id=884033207 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(542, 386)
+makeGreen = true
 
 [node name="Fish2" parent="Environment/Fish" unique_id=898755978 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(515, 353)
+makeGreen = true
 
 [node name="Fish5" parent="Environment/Fish" unique_id=1321578443 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(180, 329)
+makeGreen = true
 
 [node name="Fish6" parent="Environment/Fish" unique_id=124812612 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(37, 326)
+makeGreen = true
 
 [node name="Fish7" parent="Environment/Fish" unique_id=266872182 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(573, 19)
+makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" unique_id=1969748402 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(455, 394)
+makeGreen = true
 
 [node name="Fish9" parent="Environment/Fish" unique_id=1255095283 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(315, 14)
+makeGreen = true
 
 [node name="Fish3" parent="Environment/Fish" unique_id=1761949836 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(573, 342)
+makeGreen = true
 
 [node name="Fish4" parent="Environment/Fish" unique_id=902180568 instance=ExtResource("16_pj6d7")]
 z_index = -1
 position = Vector2(633, 395)
+makeGreen = true
 
 [node name="Shrubs" type="Node2D" parent="Environment" unique_id=1849874255]
 visible = false
@@ -373,10 +388,6 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=1508470647]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
-
-[node name="UILayer" parent="." unique_id=1561045702 instance=ExtResource("20_hgpp1")]
-layout_mode = 1
-make_green = true
 
 [node name="Node" type="Node2D" parent="." unique_id=645442377]
 visible = false

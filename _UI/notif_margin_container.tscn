@@ -35,7 +35,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(1, 0, 0, 1)
 
 [node name="NotifMarginContainer" type="MarginContainer" unique_id=1498960940]
-z_index = 2
+z_index = 4
 custom_minimum_size = Vector2(730, 0)
 anchors_preset = 2
 anchor_top = 1.0

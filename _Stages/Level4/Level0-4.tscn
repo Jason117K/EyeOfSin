@@ -64,6 +64,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xw2pb")
 
+[node name="UILayer" parent="." unique_id=2013472037 instance=ExtResource("20_d40up")]
+layout_mode = 1
+
 [node name="DemonManager" parent="." unique_id=1939348814 instance=ExtResource("2_60dyi")]
 blood_points = 3000
 
@@ -127,6 +130,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="Environment" type="Node2D" parent="." unique_id=601819310]
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=338173170]
+z_index = 1
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=389805910]
 position = Vector2(543, 347)
@@ -225,7 +229,7 @@ position = Vector2(438, 4)
 texture = ExtResource("13_styow")
 
 [node name="FetusProp2" type="Sprite2D" parent="Environment/Coral" unique_id=138380055]
-position = Vector2(465, 347)
+position = Vector2(348, 381)
 texture = ExtResource("13_styow")
 
 [node name="Bramble" type="Node2D" parent="Environment" unique_id=340084947]
@@ -275,6 +279,7 @@ texture = ExtResource("15_eh88k")
 flip_h = true
 
 [node name="Fish" type="Node2D" parent="Environment" unique_id=1680046316]
+z_index = 1
 
 [node name="Fish" parent="Environment/Fish" unique_id=57108319 instance=ExtResource("16_hkc7h")]
 z_index = -1
@@ -282,15 +287,15 @@ position = Vector2(542, 386)
 
 [node name="Fish2" parent="Environment/Fish" unique_id=594890288 instance=ExtResource("16_hkc7h")]
 z_index = -1
-position = Vector2(515, 353)
+position = Vector2(508, 364)
 
 [node name="Fish5" parent="Environment/Fish" unique_id=1159590021 instance=ExtResource("16_hkc7h")]
 z_index = -1
-position = Vector2(180, 329)
+position = Vector2(222, 363)
 
 [node name="Fish6" parent="Environment/Fish" unique_id=1147620215 instance=ExtResource("16_hkc7h")]
 z_index = -1
-position = Vector2(37, 326)
+position = Vector2(46, 368)
 
 [node name="Fish7" parent="Environment/Fish" unique_id=935500311 instance=ExtResource("16_hkc7h")]
 z_index = -1
@@ -298,7 +303,7 @@ position = Vector2(573, 19)
 
 [node name="Fish8" parent="Environment/Fish" unique_id=712139288 instance=ExtResource("16_hkc7h")]
 z_index = -1
-position = Vector2(455, 394)
+position = Vector2(399, 371)
 
 [node name="Fish9" parent="Environment/Fish" unique_id=1319091871 instance=ExtResource("16_hkc7h")]
 z_index = -1
@@ -306,11 +311,11 @@ position = Vector2(315, 14)
 
 [node name="Fish3" parent="Environment/Fish" unique_id=1325083478 instance=ExtResource("16_hkc7h")]
 z_index = -1
-position = Vector2(573, 342)
+position = Vector2(587, 362)
 
 [node name="Fish4" parent="Environment/Fish" unique_id=1005545972 instance=ExtResource("16_hkc7h")]
 z_index = -1
-position = Vector2(633, 395)
+position = Vector2(638, 381)
 
 [node name="Shrubs" type="Node2D" parent="Environment" unique_id=610690813]
 visible = false
@@ -364,9 +369,6 @@ visible = false
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
-[node name="UILayer" parent="." unique_id=2013472037 instance=ExtResource("20_d40up")]
-layout_mode = 1
-
 [node name="Node" type="Node2D" parent="." unique_id=1364861356]
 visible = false
 z_index = -1
@@ -403,7 +405,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=482512615]
 position = Vector2(370, 208)
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

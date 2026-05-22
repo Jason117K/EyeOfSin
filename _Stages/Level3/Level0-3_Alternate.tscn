@@ -65,6 +65,10 @@ mouse_filter = 2
 script = ExtResource("1_pwl3v")
 isGreenDimension = true
 
+[node name="UILayer" parent="." unique_id=1323073708 instance=ExtResource("20_hca0k")]
+layout_mode = 1
+make_green = true
+
 [node name="DemonManager" parent="." unique_id=44492489 instance=ExtResource("2_fsj0e")]
 blood_points = 375
 
@@ -281,7 +285,7 @@ flip_h = true
 
 [node name="Fish" parent="Environment/Fish" unique_id=158074674 instance=ExtResource("16_62s3s")]
 z_index = -1
-position = Vector2(415, 286)
+position = Vector2(525, 303)
 makeGreen = true
 
 [node name="Fish2" parent="Environment/Fish" unique_id=1886427977 instance=ExtResource("16_62s3s")]
@@ -291,7 +295,7 @@ makeGreen = true
 
 [node name="Fish5" parent="Environment/Fish" unique_id=348127956 instance=ExtResource("16_62s3s")]
 z_index = -1
-position = Vector2(610, 268)
+position = Vector2(618, 303)
 makeGreen = true
 
 [node name="Fish6" parent="Environment/Fish" unique_id=1322629153 instance=ExtResource("16_62s3s")]
@@ -306,7 +310,7 @@ makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" unique_id=267342238 instance=ExtResource("16_62s3s")]
 z_index = -1
-position = Vector2(455, 394)
+position = Vector2(333, 365)
 makeGreen = true
 
 [node name="Fish9" parent="Environment/Fish" unique_id=2039615286 instance=ExtResource("16_62s3s")]
@@ -375,10 +379,6 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=814781211]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_xeusr")
-
-[node name="UILayer" parent="." unique_id=1323073708 instance=ExtResource("20_hca0k")]
-layout_mode = 1
-make_green = true
 
 [node name="Node" type="Node2D" parent="." unique_id=1221650945]
 visible = false

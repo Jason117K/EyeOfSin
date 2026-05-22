@@ -68,6 +68,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_a4agt")
 
+[node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
+layout_mode = 1
+
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]
 blood_points = 750
 
@@ -284,7 +287,7 @@ flip_h = true
 
 [node name="Fish" parent="Environment/Fish" unique_id=1368306985 instance=ExtResource("16_bft4u")]
 z_index = -1
-position = Vector2(542, 386)
+position = Vector2(583, 381)
 
 [node name="Fish2" parent="Environment/Fish" unique_id=34004921 instance=ExtResource("16_bft4u")]
 z_index = -1
@@ -292,11 +295,11 @@ position = Vector2(515, 353)
 
 [node name="Fish5" parent="Environment/Fish" unique_id=584181545 instance=ExtResource("16_bft4u")]
 z_index = -1
-position = Vector2(180, 329)
+position = Vector2(209, 354)
 
 [node name="Fish6" parent="Environment/Fish" unique_id=386926567 instance=ExtResource("16_bft4u")]
 z_index = -1
-position = Vector2(37, 326)
+position = Vector2(27, 353)
 
 [node name="Fish7" parent="Environment/Fish" unique_id=1876254730 instance=ExtResource("16_bft4u")]
 z_index = -1
@@ -304,7 +307,7 @@ position = Vector2(573, 19)
 
 [node name="Fish8" parent="Environment/Fish" unique_id=1723648838 instance=ExtResource("16_bft4u")]
 z_index = -1
-position = Vector2(455, 394)
+position = Vector2(507, 397)
 
 [node name="Fish9" parent="Environment/Fish" unique_id=1137711555 instance=ExtResource("16_bft4u")]
 z_index = -1
@@ -312,7 +315,7 @@ position = Vector2(315, 14)
 
 [node name="Fish3" parent="Environment/Fish" unique_id=788925231 instance=ExtResource("16_bft4u")]
 z_index = -1
-position = Vector2(573, 342)
+position = Vector2(580, 351)
 
 [node name="Fish4" parent="Environment/Fish" unique_id=674175233 instance=ExtResource("16_bft4u")]
 z_index = -1
@@ -369,9 +372,6 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=1865497151]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
-
-[node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
-layout_mode = 1
 
 [node name="Node" type="Node2D" parent="." unique_id=1293493975]
 z_index = -1
@@ -432,7 +432,7 @@ offset_bottom = 128.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0g5v1")
 script = ExtResource("24_7nw23")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

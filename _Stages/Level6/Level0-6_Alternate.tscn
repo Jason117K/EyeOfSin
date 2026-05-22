@@ -65,6 +65,10 @@ mouse_filter = 2
 script = ExtResource("1_01won")
 isGreenDimension = true
 
+[node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("20_21wrt")]
+layout_mode = 1
+make_green = true
+
 [node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("2_0v3x8")]
 blood_points = 750
 
@@ -295,27 +299,27 @@ makeGreen = true
 
 [node name="Fish2" parent="Environment/Fish" unique_id=176731053 instance=ExtResource("16_24nsx")]
 z_index = -1
-position = Vector2(515, 353)
+position = Vector2(509, 362)
 makeGreen = true
 
 [node name="Fish5" parent="Environment/Fish" unique_id=134143655 instance=ExtResource("16_24nsx")]
 z_index = -1
-position = Vector2(180, 329)
+position = Vector2(257, 360)
 makeGreen = true
 
 [node name="Fish6" parent="Environment/Fish" unique_id=702250833 instance=ExtResource("16_24nsx")]
 z_index = -1
-position = Vector2(37, 326)
+position = Vector2(27, 360)
 makeGreen = true
 
 [node name="Fish7" parent="Environment/Fish" unique_id=2135909495 instance=ExtResource("16_24nsx")]
 z_index = -1
-position = Vector2(573, 19)
+position = Vector2(598, 22)
 makeGreen = true
 
 [node name="Fish8" parent="Environment/Fish" unique_id=303309710 instance=ExtResource("16_24nsx")]
 z_index = -1
-position = Vector2(455, 394)
+position = Vector2(456, 377)
 makeGreen = true
 
 [node name="Fish9" parent="Environment/Fish" unique_id=958960345 instance=ExtResource("16_24nsx")]
@@ -325,7 +329,7 @@ makeGreen = true
 
 [node name="Fish3" parent="Environment/Fish" unique_id=1426103068 instance=ExtResource("16_24nsx")]
 z_index = -1
-position = Vector2(573, 342)
+position = Vector2(596, 359)
 makeGreen = true
 
 [node name="Fish4" parent="Environment/Fish" unique_id=1362037375 instance=ExtResource("16_24nsx")]
@@ -384,10 +388,6 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=93583273]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
-
-[node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("20_21wrt")]
-layout_mode = 1
-make_green = true
 
 [node name="Node" type="Node2D" parent="." unique_id=1891481991]
 visible = false
