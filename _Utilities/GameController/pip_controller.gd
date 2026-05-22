@@ -5,6 +5,7 @@ extends Control
 @onready var _backdrop: ColorRect = $Backdrop
 @onready var _viewport: SubViewport = get_parent().get_node("PipViewport")
 @onready var _pip_camera: Camera2D = _viewport.get_node("PipCamera")
+@onready var panel_container :PanelContainer= $PanelContainer
 var _restamp_accum := 0.0
 #const SMALL_RECT := Rect2(530, 300, 200, 102)   # bottom-right corner
 const SMALL_RECT := Rect2(530, 325, 200, 82) 
@@ -46,8 +47,18 @@ func set_mirror_camera(cam: Camera2D) -> void:
 func set_pip_cull_mask(bit: int) -> void:
 	_viewport.canvas_cull_mask = bit | 1
 	print("Setting Cull Mask To ", bit, " (actual mask: ", bit | 1, ")")
+	if bit == 4:
+		#_set_pip_border(Color("1e0530"))
+		_set_pip_border(Color("042b17"))
+	else:
+		#_set_pip_border(Color("042b17"))
+		_set_pip_border(Color("1e0530"))
 	
-
+	
+func _set_pip_border(color: Color) -> void:
+	var stylebox := panel_container.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+	stylebox.border_color = color
+	panel_container.add_theme_stylebox_override("panel", stylebox)
 
 func show_pip() -> void:
 	print("Pip Should SHow")
