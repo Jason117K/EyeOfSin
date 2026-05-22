@@ -69,7 +69,9 @@ func _ready():
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 
 	Dialogic.timeline_ended.connect(finish_ready)
-	finish_ready()
+	Dialogic.start(level_6_start_dialog)
+	Global.hide_ui_layer()
+	#finish_ready()
 
 #TODO Re-Implement Rohan 
 func _configure_waves():
@@ -84,12 +86,14 @@ func _configure_waves():
 
 
 func finish_ready():
+	Global.show_pip()
 	_setup_tutorial()
 	go_to_step("GAME_READY")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.canSwapScenes = true
+	Global.unhide_ui_layer()
 
 
 func getIsPurpleDimension():

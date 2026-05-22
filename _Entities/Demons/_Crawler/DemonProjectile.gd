@@ -115,11 +115,11 @@ func setup_lightning_zone():
 
 # Handles projectile collison and damage application 
 func on_hit(area):
-	print("Area Hit Is ", area)
+	#print("Area Hit Is ", area)
 	if area.is_in_group("Zombie"):
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
-		print("Area Hit Is ", area)
+		#print("Area Hit Is ", area)
 		var healthComp = area.getHealthComponent()
 		if is_slowing:
 			area.slow()
@@ -139,7 +139,7 @@ func on_hit(area):
 			column_explode = false
 		if silencing:
 			area.silence()
-		print("Calling Take Damage On ", area)
+		#print("Calling Take Damage On ", area)
 		area.take_damage(damage,piercing)
 		if piercing == false:
 			queue_free() 

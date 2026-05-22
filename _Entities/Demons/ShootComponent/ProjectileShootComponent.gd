@@ -110,7 +110,7 @@ func check_attack_rays():
 func shoot_projectile():
 	AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	if shoot_positions.is_empty():
-			print("SHOOTING HERE")
+			#print("SHOOTING HERE")
 			projectile = projectile_scene.instantiate()
 			projectile.global_position = parent_demon.position + projectile_spawn_offest 
 			projectile.damage = damage
@@ -122,7 +122,7 @@ func shoot_projectile():
 			parent_demon.get_parent().add_child(projectile)  
 
 	else:
-		print("NAH SHOOTING HERE")
+		#print("NAH SHOOTING HERE")
 		for shoot_pos in shoot_positions:
 			projectile = projectile_scene.instantiate()
 			projectile.damage = damage

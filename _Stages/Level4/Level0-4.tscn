@@ -63,6 +63,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xw2pb")
+new_end_dialog = "res://_Assets/Dialog/level_04_end_dialog.dtl"
+skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=2013472037 instance=ExtResource("20_d40up")]
 layout_mode = 1

@@ -93,7 +93,9 @@ func _ready():
 
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
-	finish_ready()
+	Dialogic.start(level_3_start_dialog)
+	Global.hide_ui_layer()
+	#finish_ready()
 
 
 func _configure_waves():
@@ -105,12 +107,14 @@ func _configure_waves():
 
 
 func finish_ready():
+	Global.show_pip()
 	toolTips.show()
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_MAW")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
+	Global.unhide_ui_layer()
 
 
 func getIsPurpleDimension():

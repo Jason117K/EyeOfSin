@@ -30,6 +30,16 @@ var has_pulsed := false
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
 var green_dimension 
 
+var level_1_start_dialog := preload("res://_Assets/Dialog/level_0_start_dialog.dtl")
+var level_2_start_dialog := preload("res://_Assets/Dialog/level_02_start_dialog.dtl")
+var level_3_start_dialog := preload("res://_Assets/Dialog/level_03_start_dialog.dtl")
+var level_4_start_dialog := preload("res://_Assets/Dialog/level_04_start_dialog.dtl")
+var level_5_start_dialog := preload("res://_Assets/Dialog/level_05_start_dialog.dtl")
+var level_6_start_dialog := preload("res://_Assets/Dialog/level_06_start_dialog.dtl")
+
+
+@export var skip_end_dialog := true 
+
 # Text file paths
 const TUTORIAL_SELECT_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_Selectcrawler.txt"
 const TUTORIAL_PLACE_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_Placecrawler.txt"
@@ -47,9 +57,12 @@ func get_demon_manager():
 
 
 func _on_level_ended():
-	#Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
-	#Dialogic.start(new_end_dialog)
-	_on_end_dialog_finished()
+	if skip_end_dialog:
+		_on_end_dialog_finished()
+	else:
+		Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
+		Dialogic.start(new_end_dialog)
+	#_on_end_dialog_finished()
 
 
 func _on_end_dialog_finished():

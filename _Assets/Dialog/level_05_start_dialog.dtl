@@ -1,6 +1,6 @@
-join Syn_Lucretia right
+join Syn_Lucretia rightmost
 Syn_Lucretia: The statue is getting closer.
-join Lucretia left
+join Lucretia leftmost
 Lucretia: Hm?
 Syn_Lucretia: The one I’ve been walking towards. I think it’ll be my ticket out of here, if I can get to it.
 Lucretia: Be careful. I don’t even want to think about what would happen if one of us…

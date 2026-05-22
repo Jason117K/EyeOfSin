@@ -1,6 +1,6 @@
-join Syn_Lucretia right
+join Syn_Lucretia rightmost
 Syn_Lucretia: Alright, they’re gone. Now tell me why in the world you would agree to this “deal.”
-join Lucretia left
+join Lucretia leftmost
 Lucretia: I didn’t have any other choice. I was trapped in my room and the zombies were killing everyone. I had no hope of fighting back… but I swear, I didn’t know he would do this to us.
 Syn_Lucretia: “Us.” So it’s true then. We’re both Lucretia, right?
 Lucretia: In exchange for the powers, he asked to take half of my soul back to his home realm. I didn’t realize the other half would still be conscious, but… yeah.

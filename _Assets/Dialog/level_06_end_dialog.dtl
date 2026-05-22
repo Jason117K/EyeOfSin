@@ -1,4 +1,4 @@
-join Lucretia left
+join Lucretia leftmost
 Lucretia: Rohan, I’m sorry…
 join Rohan_Moore center
 Rohan_Moore: Do not waste your breath. T-This was my own doing… my whole life… my own doing…
@@ -6,7 +6,7 @@ leave Rohan_Moore
 Lucretia: …
 Syn_Lucretia: Ahhh, I can’t fight these zombies much longer! There’s too many!
 Lucretia: I-I can feel it, please, try to hold on… I need to get to Argus…
-join Argus center
+join Argus right
 Argus: I appreciate both of your dedications, Lucretias. But please, try not to fight it. What has been done cannot be undone.
 Syn_Lucretia: No! I will not accept this! You can’t keep me here!
 Argus: Don’t worry, girls. You will realize your purpose soon enough.

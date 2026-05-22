@@ -28,6 +28,7 @@ var ui_layers  := []
 var wave_previews := []
 var demon_costs: Dictionary = {}
 var demon_scenes : Dictionary
+var should_hide_ui := false
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -220,52 +221,80 @@ func swap_scenes():
 	adjust_ui_layer()					
 	swap_portal_button()
 
-#And Wave Preview
-func adjust_ui_layer():
+func unhide_ui_layer():
+	should_hide_ui = false
 	var real_ui_layers := [] 
-	var real_wave_previews := [] 
-	
+		
 	for item in ui_layers:
 		if item == null:
 			pass
 		else:
 			real_ui_layers.append(item)
+	for this_ui_layer in real_ui_layers:		
+		this_ui_layer.show()
+	adjust_ui_layer()
 
-	for preview_item in wave_previews:
-		if preview_item == null:
+func hide_ui_layer():
+	should_hide_ui = true 
+	var real_ui_layers := [] 
+		
+	for item in ui_layers:
+		if item == null:
 			pass
 		else:
-			real_wave_previews.append(preview_item)
-			
-	for this_ui_layer in real_ui_layers:
-		print("SHOULD CHECKING UI LAYER ", this_ui_layer)
-		if game_controller.on_purple_scene():
-			print("ON PURPLE SCENE SHOULD HIDE GREEN")
-			if this_ui_layer.make_green == true :
-				this_ui_layer.hide()
+			real_ui_layers.append(item)
+	for this_ui_layer in real_ui_layers:		
+		print("Should Hide Ui Layer ", this_ui_layer)
+		this_ui_layer.hide()
+		
+		
+#And Wave Preview
+func adjust_ui_layer():
+	if !should_hide_ui:
+		var real_ui_layers := [] 
+		var real_wave_previews := [] 
+		
+		for item in ui_layers:
+			if item == null:
+				pass
 			else:
-				this_ui_layer.show()
-		else:
-			print("ON GREEN SCENE SHOULD HIDE PURPLE")
-			if this_ui_layer.make_green == true :
-				this_ui_layer.show()
+				real_ui_layers.append(item)
+
+		for preview_item in wave_previews:
+			if preview_item == null:
+				pass
 			else:
-				this_ui_layer.hide()
+				real_wave_previews.append(preview_item)
 				
-	for this_preview in real_wave_previews:
-		print("SHOULD CHECKING PREVIEW ", this_preview)
-		if game_controller.on_purple_scene():
-			print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
-			if this_preview.is_green == true :
-				this_preview.hide()
+		for this_ui_layer in real_ui_layers:
+			print("SHOULD CHECKING UI LAYER ", this_ui_layer)
+			if game_controller.on_purple_scene():
+				print("ON PURPLE SCENE SHOULD HIDE GREEN")
+				if this_ui_layer.make_green == true :
+					this_ui_layer.hide()
+				else:
+					this_ui_layer.show()
 			else:
-				this_preview.show()
-		else:
-			print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
-			if this_preview.is_green == true :
-				this_preview.show()
+				print("ON GREEN SCENE SHOULD HIDE PURPLE")
+				if this_ui_layer.make_green == true :
+					this_ui_layer.show()
+				else:
+					this_ui_layer.hide()
+					
+		for this_preview in real_wave_previews:
+			print("SHOULD CHECKING PREVIEW ", this_preview)
+			if game_controller.on_purple_scene():
+				print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
+				if this_preview.is_green == true :
+					this_preview.hide()
+				else:
+					this_preview.show()
 			else:
-				this_preview.hide()
+				print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
+				if this_preview.is_green == true :
+					this_preview.show()
+				else:
+					this_preview.hide()
 		
 	
 	

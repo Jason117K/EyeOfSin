@@ -64,7 +64,7 @@ func _setup_tutorial():
 #region Lifecycle
 func _ready():
 	super()
-	Dialogic.Inputs.auto_skip.enabled = true
+	#Dialogic.Inputs.auto_skip.enabled = true
 	Dialogic.timeline_ended.connect(finish_ready)
 
 	Global.current_level = self
@@ -86,12 +86,13 @@ func _ready():
 
 	demonManager.crawler_placed.connect(func(_grid_position): _on_crawler_placed())
 	crawler_button.connect("pressed", Callable(self, "_on_crawler_button_pressed"))
-
+ 
 	toolTips.hide()
 	zombie_spawner.wave_exhausted.connect(wave_exhausted)
 	waveManager.preview_lead_time = 8
-	
-	finish_ready()
+	Dialogic.start(level_1_start_dialog)
+	Global.hide_ui_layer()
+	#finish_ready()
 
 
 func _configure_waves():
@@ -99,9 +100,11 @@ func _configure_waves():
 
 
 func finish_ready():
-	Global.hide_pip()
+	#Global.hide_pip()
+	
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_CRAWLER")
+	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
 
 func wave_exhausted():
@@ -126,7 +129,7 @@ func _start_force_select_crawler():
 		has_pulsed = true 
 	waveManager.can_start = true
 	demonSelectionMenu.canSwapScenes = false
-	Global.hide_pip()
+	#Global.hide_pip()
 
 
 func _start_force_place_demon():

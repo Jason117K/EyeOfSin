@@ -1,6 +1,6 @@
-join Lucretia left
+join Lucretia leftmost
 Lucretia: We made a deal, Argus and I.
-join Syn_Lucretia right
+join Syn_Lucretia rightmost
 Syn_Lucretia: You’re telling me that guy – no, that monster – that just appeared, you agreed to let him do this to us?
 Lucretia: …Yes.
 Syn_Lucretia: So you’re the reason I’m here, trapped in this eldritch hellscape–

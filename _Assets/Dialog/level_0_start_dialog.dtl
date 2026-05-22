@@ -1,6 +1,6 @@
-join Lucretia left
+join Lucretia leftmost
 Lucretia: augh, I… t-the room is spinning… my head…
-join Syn_Lucretia right
+join Syn_Lucretia rightmost
 Syn_Lucretia: uuuggguuh–
 Lucretia: –Hello?? Is someone there?
 Syn_Lucretia: ugghh…what…w-where are you? What is the hell going on?

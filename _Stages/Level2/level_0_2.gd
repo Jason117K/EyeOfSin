@@ -142,7 +142,10 @@ func _ready():
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	print("Crawler Button at ready is : ", crawler_button)
-	finish_ready()
+	Global.hide_ui_layer()
+	Dialogic.start(level_2_start_dialog)
+	Global.hide_ui_layer()
+	#finish_ready()
 
 
 func _configure_waves():
@@ -156,6 +159,7 @@ func _find_green_dimension():
 
 
 func finish_ready():
+	Global.show_pip()
 	toolTips.show()
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_OCCULUM")
@@ -163,6 +167,7 @@ func finish_ready():
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	levelSwitcher.visible = false
 	Global.unHideDemonSelectionMenu()
+	Global.unhide_ui_layer()
 #endregion
 
 

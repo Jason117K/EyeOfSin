@@ -122,7 +122,7 @@ func _on_AttackTimer_timeout():
 				if target_demon.has_method("lightning_maw_buff"):
 					if target_demon.is_lightning_maw_buff:
 						zombie.take_damage(target_demon.get_lightning_damage())
-				print(attack_power ," Calling Take Damage on ", target_demon)
+				#print(attack_power ," Calling Take Damage on ", target_demon)
 				target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
 				var safe_speed = max(parent.attack_speed, 0.01)
@@ -137,7 +137,7 @@ func _on_AttackTimer_timeout():
 
 # Stops the attack and resumes movement
 func stop_attack():
-	print("Stopping Attack no damage")
+	#print("Stopping Attack no damage")
 	is_attacking = false
 	target_demon = null
 	attack_timer.stop()

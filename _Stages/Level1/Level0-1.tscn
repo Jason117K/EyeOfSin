@@ -3601,10 +3601,11 @@ mouse_filter = 2
 script = ExtResource("1_fb4rh")
 wave2StartTime = -1
 wave3StartTime = 23
+skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1087850493 instance=ExtResource("2_umbnb")]
+visible = false
 layout_mode = 1
-metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1131491396]
 environment = SubResource("Environment_xl50p")

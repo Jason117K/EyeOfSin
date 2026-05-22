@@ -15,6 +15,7 @@ var demon_manager
 @onready var pause_button: Button = $PauseButton
 @onready var pip := $PipRoot
 @onready var demon_selection_menu := $CurrentScene/DemonSelectionMenu
+@onready var level_switcher := $CurrentScene/LevelSwitcher
 
 # Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
 const DIM_BITS := [1 << 1, 1 << 2]
@@ -138,7 +139,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		pass
 	else:
 		print(scene1_path , "This Should Make Pip Show")
-		pip.show_pip()
+		#pip.show_pip()
 
 	$CurrentScene/WaveManager.call_deferred("_ready")
 	await get_tree().process_frame
@@ -153,6 +154,9 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	
 	pause_button.visibility_layer = 0
 	pause_button.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
+	
+	level_switcher.visibility_layer = 0
+	level_switcher.set_visibility_layer_bit(1,true)
 	Global.adjust_ui_layer()
 
 
@@ -284,13 +288,17 @@ func swap_scenes() -> void:
 	if on_scene_1:
 		demon_selection_menu.visibility_layer = 0
 		pause_button.visibility_layer = 0
+		level_switcher.visibility_layer = 0
 		demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer \
 		pause_button.set_visibility_layer_bit(2, true)
+		level_switcher.set_visibility_layer_bit(2,true)
 	else:
 		demon_selection_menu.visibility_layer = 0
 		pause_button.visibility_layer = 0
+		level_switcher.visibility_layer = 0
 		demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
 		pause_button.set_visibility_layer_bit(1, true)
+		level_switcher.set_visibility_layer_bit(1,true)
 		
 		
 	can_swap = false

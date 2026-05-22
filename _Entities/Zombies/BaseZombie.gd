@@ -61,7 +61,7 @@ var demo_original_speed : float
 @export var respawn_delay := 1.5
 
 func _ready() -> void:
-	print("Zombie world2d: ", get_world_2d(), " rid: ", get_world_2d().get_rid())
+	#print("Zombie world2d: ", get_world_2d(), " rid: ", get_world_2d().get_rid())
 	if self.is_in_group("Green"):
 		self.set_collision_layer_value(1, false)
 		self.set_collision_layer_value(2, false)

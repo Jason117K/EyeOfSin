@@ -1,6 +1,6 @@
-join Lucretia left
+join Lucretia leftmost
 Lucretia: See, this is why I never trust businessmen.
-join Syn_Lucretia right
+join Syn_Lucretia rightmost
 Syn_Lucretia: And suddenly I remember why we never had any friends in school. Can’t trust anybody.
 Lucretia: Why should we? Everybody sucks and just looks out for themselves.
 Syn_Lucretia: Listen, I agree. So explain to me why you’re trying to save the world?
