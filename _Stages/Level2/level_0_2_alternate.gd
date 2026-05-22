@@ -8,6 +8,7 @@ extends LevelTemplate
 
 
 func _ready():
+	super()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	attach_script_to_sway_children()
 	_configure_waves()

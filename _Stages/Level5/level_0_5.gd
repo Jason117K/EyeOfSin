@@ -63,6 +63,7 @@ func _setup_tutorial():
 
 #region Lifecycle
 func _ready():
+	super()
 	Dialogic.Inputs.auto_skip.enabled = true
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]

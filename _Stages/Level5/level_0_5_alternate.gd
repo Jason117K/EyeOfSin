@@ -15,6 +15,7 @@ var purple_dimension : Control
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
 func _ready() -> void:
+	super()
 	attach_script_to_sway_children()
 	_configure_waves()
 

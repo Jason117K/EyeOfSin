@@ -139,6 +139,13 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	await get_tree().process_frame
 	get_tree().paused = false
 
+	#if on_scene_1:
+	#demon_selection_menu.visibility_layer = 0
+	#demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer 
+	#else:
+	demon_selection_menu.visibility_layer = 0
+	demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
+
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	pause_button.visible = false
@@ -161,6 +168,7 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 	var new_node = load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	current_scene = new_node
+	on_scene_1 = true 
 
 
 # --- Pause Overlay Transitions ---

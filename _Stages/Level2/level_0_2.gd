@@ -109,6 +109,7 @@ func _setup_tutorial():
 
 #region Lifecycle
 func _ready():
+	super()
 	levelSwitcher.visible = false
 	demonSelectionMenu.visible = false
 	get_tree().paused = false

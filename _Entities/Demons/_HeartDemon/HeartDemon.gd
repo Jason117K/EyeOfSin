@@ -2,10 +2,10 @@ extends Demon
 #HeartDemon.gd
 
 
-var DemonManager
+#var DemonManager
 var duration : float 
 
-@onready var buffNodes = $BuffNodesComponent
+#@onready var buffNodes = $BuffNodesComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
 
 

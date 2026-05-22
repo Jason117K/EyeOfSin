@@ -86,6 +86,8 @@ func resetOcculumCount():
 	is_blocking = false 
 	occulumCount = 0
 	gameIsStarted = false
+	#game_controller.on_scene_1 = true 
+	
 	
 func incrementOcculumCount():
 	occulumCount += 1
@@ -207,20 +209,36 @@ func hero_demon_is_summoned():
 	return hero_demon_summoned
 
 func swap_scenes():
+	print("SWAP SCENES SHOULD")
 	game_controller.swap_scenes()
-	for this_ui_layer in ui_layers:
-		if game_controller.on_scene_1:
+	adjust_ui_layer()					
+	swap_portal_button()
+
+func adjust_ui_layer():
+	var real_ui_layers := [] 
+	for item in ui_layers:
+		if item == null:
+			pass
+		else:
+			real_ui_layers.append(item)
+
+	for this_ui_layer in real_ui_layers:
+		print("CHECKING UI LAYER ", this_ui_layer)
+		if game_controller.on_purple_scene():
+			print("ON PURPLE SCENE SHOULD HIDE GREEN")
 			if this_ui_layer.make_green == true :
 				this_ui_layer.hide()
 			else:
 				this_ui_layer.show()
 		else:
+			print("ON GREEN SCENE SHOULD HIDE PURPLE")
 			if this_ui_layer.make_green == true :
 				this_ui_layer.show()
 			else:
-				this_ui_layer.hide()		
-				
-	swap_portal_button()
+				this_ui_layer.hide()
+
+		
+	
 	
 func is_on_purple_dimension():
 	if game_controller.on_scene_1:

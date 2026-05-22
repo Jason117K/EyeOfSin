@@ -31,16 +31,18 @@ func _ready() -> void:
 	demon = get_parent()
 	pass
 
-func set_spawn_mult(new_speed_mult):
-	anim_spawn_speed_mult = new_speed_mult 
-	speed_scale = speed_scale * anim_spawn_speed_mult
+func set_spawn_anim_speed(new_spawn_anim_speed):
+	sprite_frames.set_animation_speed("spawn", 20)
+
 	
 func spawn_done():
 	print(demon, " spawn done ")
 	if spawnAnimDone:
 		pass
 	else:
+		print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
 		speed_scale = default_anim_speed_scale
+		play()
 		spawnAnimDone = true 
 		
 		

@@ -69,6 +69,7 @@ func _setup_tutorial():
 
 #region Lifecycle
 func _ready():
+	super()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [37.0, 50.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime]

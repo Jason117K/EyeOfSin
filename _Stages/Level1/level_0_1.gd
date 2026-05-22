@@ -63,6 +63,7 @@ func _setup_tutorial():
 
 #region Lifecycle
 func _ready():
+	super()
 	Dialogic.Inputs.auto_skip.enabled = true
 	Dialogic.timeline_ended.connect(finish_ready)
 

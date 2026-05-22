@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://_Assets/UI/ButtonSprite.png" id="5_gy6r3"]
 [ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://_Assets/UI/ButtonSpriteHover.png" id="6_1pxcl"]
 
-[node name="LevelSelect" type="Control"]
+[node name="LevelSelect" type="Control" unique_id=1931621207]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,11 +16,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1cl4n")
 
-[node name="GridManager" parent="." instance=ExtResource("2_d8a26")]
+[node name="GridManager" parent="." unique_id=85682451 instance=ExtResource("2_d8a26")]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1331838528]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1855044012]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,80 +33,80 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 use_top_left = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1585470043]
 layout_mode = 2
 theme_override_constants/separation = 80
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1368245011]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Levels1-4" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3"]
+[node name="Levels1-4" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1787863630]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4" unique_id=1445393715]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Level1" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level1" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer" unique_id=1127226470]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 1"
 
-[node name="Level2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer" unique_id=286316235]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 2"
 
-[node name="Level3" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level3" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer" unique_id=839978419]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level  3"
 
-[node name="Level1Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level1Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer" unique_id=224401083]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
 
-[node name="Level1Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level1Button"]
+[node name="Level1Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level1Button" unique_id=1830919333]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,14 +123,14 @@ theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 1"
 
-[node name="Level2Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level2Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer" unique_id=749809800]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
 
-[node name="Level2Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level2Button"]
+[node name="Level2Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level2Button" unique_id=1714909424]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -147,14 +147,14 @@ theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 2"
 
-[node name="Level3Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer"]
+[node name="Level3Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer" unique_id=967374257]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
 
-[node name="Level3Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level3Button"]
+[node name="Level3Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels1-4/VBoxContainer/Level3Button" unique_id=7387156]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -171,90 +171,90 @@ theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 3"
 
-[node name="Levels5-7" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3"]
+[node name="Levels5-7" type="HBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=519807393]
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7"]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7" unique_id=1288992394]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Level4" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level4" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox" unique_id=1456984641]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 4"
 
-[node name="Level5" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level5" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox" unique_id=765883764]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 5
 "
 
-[node name="Level6" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level6" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox" unique_id=1478277311]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 6"
 
-[node name="Level7" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level7" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox" unique_id=2126417414]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Level 7"
 
-[node name="Level4Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level4Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox" unique_id=1326804860]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
 
-[node name="Level4Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level4Button"]
+[node name="Level4Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level4Button" unique_id=921368755]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -271,14 +271,14 @@ theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 4"
 
-[node name="Level5Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level5Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox" unique_id=1363671232]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
 
-[node name="Level5Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level5Button"]
+[node name="Level5Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level5Button" unique_id=1422428317]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -295,14 +295,14 @@ theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 5"
 
-[node name="Level6Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox"]
+[node name="Level6Button" type="TextureButton" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox" unique_id=676350516]
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 2
 texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 6
 
-[node name="Level6Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level6Button"]
+[node name="Level6Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer3/Levels5-7/VBox/Level6Button" unique_id=1120468998]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -319,24 +319,24 @@ theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 6"
 
-[node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2081735928]
 visible = false
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_d8a26")
 theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = ExtResource("4_d8a26")
 text = "Back"
 
-[node name="CenterContainer2" type="CenterContainer" parent="."]
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=43735624]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -347,7 +347,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BackButton" type="TextureButton" parent="CenterContainer2"]
+[node name="BackButton" type="TextureButton" parent="CenterContainer2" unique_id=1439353619]
 custom_minimum_size = Vector2(500, 60)
 layout_mode = 2
 tooltip_text = "Stuff
@@ -356,7 +356,7 @@ texture_normal = ExtResource("5_gy6r3")
 texture_hover = ExtResource("6_1pxcl")
 stretch_mode = 5
 
-[node name="BackLabel" type="Label" parent="CenterContainer2/BackButton"]
+[node name="BackLabel" type="Label" parent="CenterContainer2/BackButton" unique_id=711400198]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

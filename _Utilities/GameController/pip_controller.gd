@@ -33,7 +33,7 @@ func _process(dt: float) -> void:
 		#_restamp_accum = 0.0
 		#var gc = Global.game_controller
 		#if gc.current_scenes.size() == 2:
-			#gc._stamp_scene(gc.current_scenes[0], gc.DIM_BITS[0])
+			#gc.y(gc.current_scenes[0], gc.DIM_BITS[0])
 			#gc._stamp_scene(gc.current_scenes[1], gc.DIM_BITS[1])
 
 

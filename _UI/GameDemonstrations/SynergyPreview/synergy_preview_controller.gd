@@ -251,8 +251,8 @@ func _spawn_demons() -> void:
 		slot_a.add_child(demon_a_instance)
 	demon_a_instance.position = Vector2.ZERO
 	demon_b_instance.position = Vector2.ZERO
-	demon_a_instance.set_anim_spawn_speed_mult(2)
-	demon_b_instance.set_anim_spawn_speed_mult(2)
+	demon_a_instance.set_spawn_anim_speed(20)
+	demon_b_instance.set_spawn_anim_speed(20)
 	if demon_b_name == "Maw":
 		demon_b_instance.animSpriteComp.position = demon_b_instance.animSpriteComp.position - Vector2(256,256)
 		for node in demon_b_instance.get_out_of_place_nodes():

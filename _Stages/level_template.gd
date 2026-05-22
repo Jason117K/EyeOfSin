@@ -58,26 +58,12 @@ func _on_end_dialog_finished():
 	$"../ToolTips".visible = false
 	get_tree().paused = true
 
-#TODO Refactor to Make Children Use Ready
-#func _ready():
-	#Dialogic.Inputs.auto_skip.enabled = true 
-	#Global.current_level = self
-	#waveManager.set_dialog_end(new_end_dialog)
-	#
-	##TODO Need Refactor
-	#waveManager.Wave2StartTime = 20
-	#waveManager.Wave3StartTime = 30
-#
-	#setup_demon_selection_menu()
-	#pause_Button.set_restart_levels(current_level,current_level_alt)
-	#process_mode = Node.PROCESS_MODE_ALWAYS
-	#
-#
-	#Global.resetOcculumCount()
-	#Global.reset_swap_ability()
-#
-	## Connect signals
-	#toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
+func _ready() -> void:
+	pass
+	Global.adjust_ui_layer()
+
+
+
 ## Hides all demon buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]
 func hide_all_demon_buttons_with_exception(exceptions: Array = []):
