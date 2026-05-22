@@ -1,12 +1,13 @@
 extends Control
 # pip_controller.gd — view-only picture-in-picture of the inactive dimension.
 
-@onready var _view: TextureRect = $PipView
+@onready var _view: TextureRect = $PanelContainer/PipView#$PipView
 @onready var _backdrop: ColorRect = $Backdrop
 @onready var _viewport: SubViewport = get_parent().get_node("PipViewport")
 @onready var _pip_camera: Camera2D = _viewport.get_node("PipCamera")
 var _restamp_accum := 0.0
-const SMALL_RECT := Rect2(530, 300, 200, 102)   # bottom-right corner
+#const SMALL_RECT := Rect2(530, 300, 200, 102)   # bottom-right corner
+const SMALL_RECT := Rect2(530, 325, 200, 82) 
 const LARGE_RECT := Rect2(70, 36, 600, 340)     # big centered overlay
 
 var _mirror_camera: Camera2D = null              # inactive dimension's Camera2D
@@ -49,10 +50,12 @@ func set_pip_cull_mask(bit: int) -> void:
 
 
 func show_pip() -> void:
+	print("Pip Should SHow")
 	visible = true
 
 
 func hide_pip() -> void:
+	print("Pip Should Hide")
 	visible = false
 
 

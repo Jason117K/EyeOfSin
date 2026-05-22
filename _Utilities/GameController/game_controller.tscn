@@ -11,6 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
+bg_color = Color(0.9507242, 0.0010939157, 0.9998469, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0, 0, 0.14117648)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_mahd0"]
 viewport_path = NodePath("PipViewport")
 
@@ -52,14 +60,14 @@ layout_mode = 1
 position = Vector2(-64, 200)
 
 [node name="PauseButton" parent="." unique_id=94770946 instance=ExtResource("9_4wufg")]
-visible = false
 z_index = 1
-offset_left = 672.0
-offset_top = 381.0
-offset_right = 729.0
-offset_bottom = 409.0
+offset_left = 674.0
+offset_top = 11.0
+offset_right = 731.0
+offset_bottom = 39.0
 
 [node name="NotifMarginContainer" parent="." unique_id=1498960940 instance=ExtResource("9_ip61f")]
+visible = false
 
 [node name="PipViewport" type="SubViewport" parent="." unique_id=882279929]
 disable_3d = true
@@ -104,16 +112,25 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.6)
 
-[node name="PipView" type="TextureRect" parent="PipRoot" unique_id=1141650341]
+[node name="PanelContainer" type="PanelContainer" parent="PipRoot" unique_id=1665965625]
+custom_minimum_size = Vector2(200, 82)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -86.0
+offset_right = 204.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mahd0")
+
+[node name="PipView" type="TextureRect" parent="PipRoot/PanelContainer" unique_id=1141650341]
 texture_filter = 1
-layout_mode = 0
-offset_left = 530.0
-offset_top = 300.0
-offset_right = 730.0
-offset_bottom = 402.0
+layout_mode = 2
 mouse_filter = 2
 texture = SubResource("ViewportTexture_mahd0")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 6
 
 [editable path="CurrentScene/DemonSelectionMenu"]

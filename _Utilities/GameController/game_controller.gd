@@ -133,7 +133,11 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	_stamp_scene(current_scenes[1], DIM_BITS[1])
 	_apply_view_masks()
 	current_scenes[0].get_node("Camera2D").make_current()
-	pip.show_pip()
+	if "Level1/Level0-1" in scene1_path:
+		pass
+	else:
+		print(scene1_path , "This Should Make Pip Show")
+		pip.show_pip()
 
 	$CurrentScene/WaveManager.call_deferred("_ready")
 	await get_tree().process_frame

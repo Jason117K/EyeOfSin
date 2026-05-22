@@ -378,6 +378,7 @@ sprite_frames = SubResource("SpriteFrames_xeusr")
 
 [node name="UILayer" parent="." unique_id=1323073708 instance=ExtResource("20_hca0k")]
 layout_mode = 1
+make_green = true
 
 [node name="Node" type="Node2D" parent="." unique_id=1221650945]
 visible = false

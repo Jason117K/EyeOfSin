@@ -277,6 +277,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PipToggle" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=423146321]
+visible = false
 layout_mode = 2
 
 [node name="PipToggleButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PipToggle" unique_id=1225723318]

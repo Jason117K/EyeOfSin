@@ -387,6 +387,7 @@ sprite_frames = SubResource("SpriteFrames_b1vmi")
 
 [node name="UILayer" parent="." unique_id=1182954165 instance=ExtResource("20_nsrc7")]
 layout_mode = 1
+make_green = true
 
 [node name="Node" type="Node2D" parent="." unique_id=1442712269]
 visible = false
@@ -424,7 +425,6 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=546743593]
 position = Vector2(370, 208)
 
-[connection signal="spyder_placed" from="DemonManager" to="." method="_on_plant_manager_spyder_placed"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

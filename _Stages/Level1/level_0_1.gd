@@ -99,6 +99,7 @@ func _configure_waves():
 
 
 func finish_ready():
+	Global.hide_pip()
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_CRAWLER")
 	Global.unHideDemonSelectionMenu()
@@ -125,6 +126,7 @@ func _start_force_select_crawler():
 		has_pulsed = true 
 	waveManager.can_start = true
 	demonSelectionMenu.canSwapScenes = false
+	Global.hide_pip()
 
 
 func _start_force_place_demon():
@@ -166,6 +168,7 @@ func _start_explain_green_dimension():
 
 
 func _start_wave_2_both_dimensions():
+	Global.show_pip()
 	var green_dimension = get_parent().get_node("Level0-1_Alternate")
 	if green_dimension and green_dimension.has_method("setup_wave_2_ui"):
 		green_dimension.setup_wave_2_ui()

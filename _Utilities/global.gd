@@ -223,7 +223,7 @@ func adjust_ui_layer():
 			real_ui_layers.append(item)
 
 	for this_ui_layer in real_ui_layers:
-		print("CHECKING UI LAYER ", this_ui_layer)
+		print("SHOULD CHECKING UI LAYER ", this_ui_layer)
 		if game_controller.on_purple_scene():
 			print("ON PURPLE SCENE SHOULD HIDE GREEN")
 			if this_ui_layer.make_green == true :
@@ -308,6 +308,13 @@ func get_silence_field():
 func get_severed_spriteframes():
 	return severed_spriteframes
 	
+func hide_pip():
+	print("Should hide ", game_controller.pip)
+	game_controller.pip.hide()
+	game_controller.pip.hide_pip()
+	
+func show_pip():
+	game_controller.pip.show()
 	
 	
 	
