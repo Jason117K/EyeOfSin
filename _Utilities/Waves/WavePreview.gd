@@ -42,11 +42,22 @@ var _preview_wave_index: int = -1
 var progressing := false 
 var elapsed :float = 0.0 
 
+var ui_layer_is_green := false
+var is_green := false
 
 func _ready():
+	Global.register_wave_preview(self)
 	_spawner = get_parent() as ZombieSpawner
 	start_game_button.pressed.connect(_on_start_game_button_pressed)
 	hide_preview()
+	ui_layer_is_green = get_parent().get_parent().get_parent().get_node("UILayer").make_green
+	if ui_layer_is_green == true :
+		is_green = true
+
+func set_green():
+	ui_layer_is_green = get_parent().get_parent().get_parent().get_node("UILayer").make_green
+	if ui_layer_is_green == true :
+		is_green = true			
 
 
 func show_preview(wave_index: int, show_start_button: bool = false) -> void:
@@ -146,3 +157,5 @@ func set_preview_lead_time(new_preview_lead_time):
 	preview_lead_time = new_preview_lead_time
 	wave_progress_bar.max_value = preview_lead_time
 	next_wave_timer.wait_time = preview_lead_time
+	
+	

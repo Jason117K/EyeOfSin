@@ -49,6 +49,7 @@ func _setup():
 			preview.game_start_requested.connect(_on_game_start_requested)
 			preview.call_wave_early_requested.connect(_on_call_early_wave_requested)
 			preview.set_preview_lead_time(preview_lead_time)
+			preview.set_green()
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
 

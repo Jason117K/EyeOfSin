@@ -25,6 +25,7 @@ var swap_ability
 var current_level
 var hero_demon 
 var ui_layers  := []
+var wave_previews := []
 var demon_costs: Dictionary = {}
 var demon_scenes : Dictionary
 
@@ -70,6 +71,11 @@ func get_wave_manager():
 func register_ui_layer(new_ui_layer):
 	ui_layers.append(new_ui_layer)
 	#ui_layer.set_health(DemonMan)
+
+func register_wave_preview(new_wave_preview)->void:
+	wave_previews.append(new_wave_preview)
+	pass
+	
 
 func hideDemonSelectionMenu():
 	if demon_selection_menu != null:
@@ -214,14 +220,23 @@ func swap_scenes():
 	adjust_ui_layer()					
 	swap_portal_button()
 
+#And Wave Preview
 func adjust_ui_layer():
 	var real_ui_layers := [] 
+	var real_wave_previews := [] 
+	
 	for item in ui_layers:
 		if item == null:
 			pass
 		else:
 			real_ui_layers.append(item)
 
+	for preview_item in wave_previews:
+		if preview_item == null:
+			pass
+		else:
+			real_wave_previews.append(preview_item)
+			
 	for this_ui_layer in real_ui_layers:
 		print("SHOULD CHECKING UI LAYER ", this_ui_layer)
 		if game_controller.on_purple_scene():
@@ -236,7 +251,21 @@ func adjust_ui_layer():
 				this_ui_layer.show()
 			else:
 				this_ui_layer.hide()
-
+				
+	for this_preview in real_wave_previews:
+		print("SHOULD CHECKING PREVIEW ", this_preview)
+		if game_controller.on_purple_scene():
+			print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
+			if this_preview.is_green == true :
+				this_preview.hide()
+			else:
+				this_preview.show()
+		else:
+			print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
+			if this_preview.is_green == true :
+				this_preview.show()
+			else:
+				this_preview.hide()
 		
 	
 	
