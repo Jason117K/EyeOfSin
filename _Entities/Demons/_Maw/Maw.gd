@@ -486,9 +486,9 @@ func die():
 	if tentacle1: tentacle1.queue_free()
 	if tentacle2: tentacle2.queue_free()
 	if tentacle3: tentacle3.queue_free()
-
-	DemonManager.clear_space(Vector2(self.global_position.x - 16, self.global_position.y))
-	DemonManager.clear_space(Vector2(self.global_position.x + 16, self.global_position.y))
+	if DemonManager != null:
+		DemonManager.clear_space(Vector2(self.global_position.x - 16, self.global_position.y))
+		DemonManager.clear_space(Vector2(self.global_position.x + 16, self.global_position.y))
 	buffNodes.clearBuffs()
 	queue_free()
 

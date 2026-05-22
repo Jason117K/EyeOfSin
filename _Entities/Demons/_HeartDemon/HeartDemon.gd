@@ -48,7 +48,8 @@ func get_can_attack():
 	
 					
 func die():
-	DemonManager.clear_space(self.global_position)
+	if DemonManager != null:
+		DemonManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
 	queue_free()	
 	

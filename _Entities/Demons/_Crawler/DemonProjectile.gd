@@ -155,7 +155,7 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 		#print(area, " is INDEED in Zombie Group")
 
-		area.slow()
+		#area.slow()
 		area.take_damage(lightning_damage)
 	else:
 		pass

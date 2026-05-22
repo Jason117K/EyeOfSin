@@ -93,7 +93,8 @@ func get_lightning_damage():
 	return lightning_damage
 			
 func die():
-	DemonManager.clear_space(self.global_position)
+	if DemonManager != null:
+		DemonManager.clear_space(self.global_position)
 	if buffNodes != null:
 		buffNodes.clearBuffs()
 	queue_free()			

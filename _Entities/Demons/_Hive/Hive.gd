@@ -29,7 +29,7 @@ var isMawBuffed := false
 var DemonManager
 var thisBufferName: String
 var is_demo := false
-
+var buzz_audio: AudioStreamPlayer2D
 @onready var buffNodes = $BuffNodesComponent
 @onready var swarm = $Swarm
 @onready var hive_laser_shoot_comp := $HiveLaserShootComp
@@ -42,7 +42,8 @@ func _ready():
 	super()
 	swarm.initialize(waitTime)
 	DemonManager = get_parent().get_parent().get_node("DemonManager")
-	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
+	#AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
+	buzz_audio = AudioManager.create_return_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 	swarm.set_damage(drone_attack_damage)
 	if self.is_in_group("Green"):
 		$DetectionComp.collision_mask = 3
@@ -111,7 +112,7 @@ func receive_buff(bufferName):
 				swarm.is_maw_buffed = true 
 				for drone in swarm.get_all_drones() :
 					drone.maw_buff()
-				swarm.kill_all_and_respawn()
+				#swarm.kill_all_and_respawn()
 				
 				
 
@@ -131,16 +132,21 @@ func debuff():
 
 func die():
 	swarm.kill_all_drones()
-	DemonManager.clear_space(self.global_position)
+	if DemonManager != null:
+		DemonManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
 	queue_free()
-
+	if buzz_audio and is_instance_valid(buzz_audio):
+		buzz_audio.stop()
+		buzz_audio.queue_free()
 
 func die_fromClearSpace():
 	swarm.kill_all_drones()
 	buffNodes.clearBuffs()
 	queue_free()
-
+	if buzz_audio and is_instance_valid(buzz_audio):
+		buzz_audio.stop()
+		buzz_audio.queue_free()
 
 func _on_play_anim_timer_timeout() -> void:
 	pass

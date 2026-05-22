@@ -179,10 +179,6 @@ func _show_synergy_preview(demon_a: String, demon_b: String) -> void:
 	_clear_synergy_preview()
 	staticPreview.visible = false
 	current_synergy_preview = _create_synergy_preview(demon_a, demon_b)
-	current_synergy_preview.set_anchors_preset(Control.PRESET_TOP_LEFT)
-	current_synergy_preview.position = staticPreview.position
-	current_synergy_preview.size = staticPreview.size
-	staticPreview.get_parent().add_child(current_synergy_preview)
 
 func _clear_synergy_preview() -> void:
 	if current_synergy_preview and is_instance_valid(current_synergy_preview):

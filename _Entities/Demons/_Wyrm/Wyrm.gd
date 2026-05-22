@@ -219,7 +219,8 @@ func _process(delta):
 	sprite.scale = Vector2(scale_x, scale_y)
 	
 func die():
-	DemonManager.clear_space(self.global_position)
+	if DemonManager != null:
+		DemonManager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
 	queue_free()	
 

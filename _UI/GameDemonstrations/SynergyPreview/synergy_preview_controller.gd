@@ -59,9 +59,9 @@ const SYNERGY_ZOMBIE_CONFIGS := {
 	"Crawler+Maw":            [{"type": "Unhallower", "lane": 1, "x_offset": 30}],
 	"Crawler+Occulum":        [{"type": "Reborn", "lane": 1}],
 	"Crawler+SpinalOcculum":  [{"type": "Unhallower", "lane": 1}],
-	"Crawler+Wyrm":           [{"type": "Reborn", "lane": 1}, 
-								{"type": "Reborn", "lane": 2},
-									{"type": "Reborn", "lane": 0}],
+	"Crawler+Wyrm":           [{"type": "Unhallower", "lane": 1, "x_offset": 55}, 
+								{"type": "Reborn", "lane": 2, "x_offset": 60},
+									{"type": "Reborn", "lane": 0,"x_offset": 55}],
 
 	"SpinalOcculum+Occulum":  [{"type": "Unhallower", "lane": 1}],
 	"SpinalOcculum+Hive":     [{"type": "Sundered", "lane": 1}],
@@ -102,7 +102,9 @@ const SYNERGY_ZOMBIE_CONFIGS := {
 
 	"Hive+Maw":               [{"type": "Reborn", "lane": 1, "x_offset": 0} , 
 								{"type": "Reborn", "lane": 1, "x_offset": 16}],
-	"Hive+Crawler":           [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
+	"Hive+Crawler":           [{"type": "Unhallower", "lane": 1, "x_offset": 64} , \
+								{"type": "Reborn", "lane": 1, "x_offset": 96} , \
+								{"type": "Reborn", "lane": 1, "x_offset": 96}],
 	"Hive+Occulum":           [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
 	"Hive+SpinalOcculum":     [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
 	"Hive+Wyrm":              [{"type": "Unhallower", "lane": 1, "x_offset": 64}],
@@ -195,9 +197,15 @@ func clear_preview():
 	preview_zombies.clear()
 	zombies_alive = 0
 	for child in slot_b.get_children():
-		child.queue_free()
+		if child.has_method("die"):
+			child.die()
+		else:
+			child.queue_free()
 	for child in slot_a.get_children():
-		child.queue_free()
+		if child.has_method("die"):
+			child.die()
+		else:
+			child.queue_free()
 		
 func get_slot_b_number(demon_name: String) -> int:
 	if not DEMON_SLOT_B.has(demon_name):

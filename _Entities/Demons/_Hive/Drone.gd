@@ -9,16 +9,16 @@ signal drone_died(drone)
 var current_zombie : Zombie = null
 
 # Export variables 
-@export var health = 75          # Drone Health
-@export var max_health = 75
-@export var attack_damage = 7    # Attack Damage
-@export var attack_speed = 1.0   # Attacks per second
-@export var move_speed = 200     # Pixels per second
-@export var rotation_speed = 5.0 # How fast the drone rotates to face target
-@export var attack_range = 50    # How close the drone needs to be to attack
-@export var return_threshold = 5 # How close to rest position is considered "arrived"
-@export var spinal_occulum_buffed_health = 200
-@export var spinal_occulum_buffed_max_health = 200
+@export var health := 75          # Drone Health
+@export var max_health := 75
+@export var attack_damage := 7    # Attack Damage
+@export var attack_speed := 1.0   # Attacks per second
+@export var move_speed := 200     # Pixels per second
+@export var rotation_speed := 5.0 # How fast the drone rotates to face target
+@export var attack_range := 50    # How close the drone needs to be to attack
+@export var return_threshold := 5 # How close to rest position is considered "arrived"
+@export var spinal_occulum_buffed_health := 200
+@export var spinal_occulum_buffed_max_health := 200
 
 
 enum State { IDLE, PURSUING, ATTACKING, RETURNING }
@@ -41,7 +41,7 @@ var is_demo := false
 
 
 
-func _ready():
+func _ready() -> void:
 	base_attack_damage = attack_damage
 	animatedSpriteComp.animation = "idle"
 	
@@ -76,11 +76,11 @@ func _ready():
 		set_collision_layer_value(2,true)
 		set_collision_layer_value(3,false)
 
-func current_zombie_dead():
+func current_zombie_dead() -> void:
 	print(self, " received 77 zombie dead signal")
 	current_zombie = null
 	
-func demon_minion_busy(questioning_zombie):
+func demon_minion_busy(questioning_zombie) -> bool:
 	if current_zombie == null:
 		current_zombie = questioning_zombie
 		#print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
@@ -89,18 +89,18 @@ func demon_minion_busy(questioning_zombie):
 	else:
 		return true
 				
-func spinal_occulum_buff():
+func spinal_occulum_buff() -> void:
 	self.health = spinal_occulum_buffed_health
 	self.max_health = spinal_occulum_buffed_max_health
 		
 	
-func occulum_buff():
+func occulum_buff() -> void:
 	blood_on_death = true 
 		
-func crawler_buff():
+func crawler_buff() -> void:
 	is_crawler_buffed = true 
 	
-func maw_buff():
+func maw_buff() -> void:
 	print("Maw Buff Drone so Drone Go Boom")
 	is_maw_buffed = true 
 		
@@ -169,7 +169,8 @@ func die():
 	queue_free()
 	
 func death_slow():
-	current_zombie_to_fight.slow()
+	if current_zombie_to_fight != null:
+		current_zombie_to_fight.slow()
 	
 func death_explode():
 	var death_bomb = Global.get_bomb_scene().instantiate()
@@ -182,12 +183,13 @@ func death_explode():
 		else:
 			death_bomb.add_to_group("Purple")
 	else:
-		death_bomb.global_position = self.global_position
+		
 		if self.is_in_group("Green"):
 			death_bomb.add_to_group("Green")
 		else:
 			death_bomb.add_to_group("Purple")
 		get_parent().get_parent().add_child(death_bomb)
+		death_bomb.global_position = self.global_position
 	
 func generate_blood():
 	print("Generating Blood")
@@ -266,7 +268,7 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 
 # Handles the drone dealing attack damage 
-func _on_attack_timer_timeout():
+func _on_attack_timer_timeout() -> void:
 	if state == State.ATTACKING and current_target and is_instance_valid(current_target):
 		animatedSpriteComp.animation = "attack"
 		var distance = global_position.distance_to(current_target.global_position)
