@@ -44,3 +44,11 @@ func apply_buffs_to_projectile(projectile_to_buff):
 	projectile_to_buff.speed = projectile_speed 
 	projectile_to_buff.hide()
 	
+func enable_auto_fire():
+	auto_fire = true
+	if cooldown_timer == null:
+		cooldown_timer = Timer.new()
+		add_child(cooldown_timer)
+		cooldown_timer.wait_time = cooldown
+		cooldown_timer.connect("timeout", Callable(self, "fire_laser"))
+	cooldown_timer.start()

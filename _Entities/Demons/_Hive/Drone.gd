@@ -253,16 +253,15 @@ func _physics_process(delta):
 			#if not rest_position:
 				#state = State.IDLE
 				#return
-			var direction = rest_position - position
+			var direction = rest_position - global_position
 			var distance = direction.length()
 			if distance > return_threshold:
 				velocity = direction.normalized() * move_speed
-				position += velocity * delta
+				global_position += velocity * delta
 			else:
-				position = rest_position
+				global_position = rest_position
 				velocity = Vector2.ZERO
 				state = State.IDLE
-
 		State.IDLE:
 			velocity = Vector2.ZERO
 

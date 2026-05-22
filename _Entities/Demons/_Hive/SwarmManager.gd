@@ -40,7 +40,13 @@ func kill_all_and_respawn():
 	kill_all_drones()
 	spawn_initial_drones()
 	optimize_drone_assignments()
-
+	
+# In SwarmManager.gd:
+func get_all_drones() -> Array:
+	var all := available_drones.duplicate()
+	for drones in drone_assignments.values():
+		all.append_array(drones)
+	return all
 
 func kill_all_drones():
 	for enemy in drone_assignments.keys():
