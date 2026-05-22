@@ -1064,9 +1064,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdljx"]
-size = Vector2(39, 29)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqdb"]
 atlas = ExtResource("11_crbeh")
 region = Rect2(0, 0, 32, 32)
@@ -1556,7 +1553,13 @@ z_index = 1
 collision_mask = 3
 script = ExtResource("2")
 lightning_damage = 25
+occulum_buffed_health = 1000
+occulum_buffed_max_health = 1000
+maw_buffed_health = 1200
+maw_buffed_max_health = 1200
 spike_damage = 34
+health = 500
+maxHealth = 500
 
 [node name="SilenceField" type="Area2D" parent="." unique_id=1451195478]
 visible = false
@@ -1668,17 +1671,6 @@ position = Vector2(0, 32)
 sprite_frames = SubResource("SpriteFrames_8bvum")
 animation = &"New Anim"
 
-[node name="AOEDamageComponent" type="Area2D" parent="." unique_id=172305962]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AOEDamageComponent" unique_id=2131184995]
-position = Vector2(9.5, -0.5)
-shape = SubResource("RectangleShape2D_hdljx")
-
-[node name="AOEDamageTimer" type="Timer" parent="." unique_id=1673717192]
-wait_time = 1.5
-autostart = true
-
 [node name="SpikeRock" parent="." unique_id=869057113 instance=ExtResource("21_gxw7u")]
 visible = false
 
@@ -1781,7 +1773,6 @@ frame_progress = 1.0
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSpriteComponent" to="AnimatedSpriteComponent" method="_on_frame_changed"]
-[connection signal="timeout" from="AOEDamageTimer" to="." method="_on_aoe_damage_timer_timeout"]
 [connection signal="timeout" from="ResetSunCooldown" to="." method="_on_reset_sun_cooldown_timeout"]
 
 [editable path="BuffNodesComponent"]

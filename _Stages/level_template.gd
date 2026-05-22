@@ -60,6 +60,7 @@ func _on_end_dialog_finished():
 
 func _ready() -> void:
 	pass
+	print("Level Is Readying Itselffffffffff")
 	Global.adjust_ui_layer()
 
 

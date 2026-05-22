@@ -261,6 +261,10 @@ z_index = 1
 position = Vector2(-16, -30)
 collision_layer = 2
 script = ExtResource("1_43cmf")
+health = 450
+speed = 25
+attack_power = 49
+bloodWorth = 50.0
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1432943854]
 visible = false

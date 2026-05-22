@@ -61,10 +61,10 @@ position = Vector2(-64, 200)
 
 [node name="PauseButton" parent="." unique_id=94770946 instance=ExtResource("9_4wufg")]
 z_index = 1
-offset_left = 674.0
-offset_top = 11.0
-offset_right = 731.0
-offset_bottom = 39.0
+offset_left = -70.0
+offset_top = 15.0
+offset_right = -13.0
+offset_bottom = 43.0
 
 [node name="NotifMarginContainer" parent="." unique_id=1498960940 instance=ExtResource("9_ip61f")]
 visible = false

@@ -342,6 +342,9 @@ size = Vector2(146.833, 31.3334)
 position = Vector2(0, -15)
 collision_layer = 2
 script = ExtResource("6")
+health = 130
+speed = 30
+bloodWorth = 3.0
 silence_field_position = Vector2(-1, 3)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=421056127]

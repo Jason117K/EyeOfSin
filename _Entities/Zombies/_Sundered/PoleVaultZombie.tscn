@@ -389,6 +389,8 @@ animations = [{
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_2rcxa")
+health = 80
+speed = 19
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1122814664]
 visible = false

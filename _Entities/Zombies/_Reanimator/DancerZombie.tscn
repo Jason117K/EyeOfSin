@@ -340,6 +340,9 @@ animations = [{
 [node name="Reanimator" type="Area2D" unique_id=1568648356 groups=["Zombie"]]
 collision_layer = 2
 script = ExtResource("5")
+health = 150
+speed = 8
+bloodWorth = 15.0
 silence_field_position = Vector2(-1, 3)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=715740053]

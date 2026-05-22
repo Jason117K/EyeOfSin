@@ -1646,6 +1646,13 @@ script = ExtResource("4")
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
 debug_mode = true
+wyrm_buffed_digestion_time = 10.0
+spinal_occulum_buffed_digestion_time = 11.0
+spinalOcculumHealth = 1000
+spinal_occulum_max_health = 1000
+cost = 250.0
+health = 450
+maxHealth = 450
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_colwa")]
 script = ExtResource("3_xf387")

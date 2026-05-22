@@ -5,24 +5,33 @@
 [ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://_UI/Pause/PauseMenu.tscn" id="3_e4pn3"]
 
 [node name="PauseButton" type="Button" unique_id=1779459745]
-offset_left = 676.0
-offset_top = 6.0
-offset_right = 733.0
-offset_bottom = 34.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_top = 9.0
+offset_right = -16.0
+offset_bottom = 37.0
+grow_horizontal = 0
 theme_override_fonts/font = ExtResource("1_tkp42")
 text = "PAUSE"
 script = ExtResource("2_w1yst")
 
 [node name="PauseMenu" parent="." unique_id=585202617 instance=ExtResource("3_e4pn3")]
 visible = false
-layout_mode = 1
-offset_left = -310.0
-offset_top = -178.885
-offset_right = -310.0
-offset_bottom = -178.885
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -317.0
+offset_top = 215.0
+offset_right = -317.0
+offset_bottom = 215.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Sprite2D" parent="PauseMenu" index="0"]
-position = Vector2(28.61, -0.08)
+position = Vector2(5, -13)
 
 [node name="CenterContainer" parent="PauseMenu" index="2"]
 offset_left = -142.5

@@ -36,6 +36,7 @@ func _ready() -> void:
 	get_tree().node_added.connect(_on_node_added)
 
 
+
 # --- Internal Helpers ---
 
 func _remove_and_free(node: Node) -> void:
@@ -149,6 +150,10 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	#else:
 	demon_selection_menu.visibility_layer = 0
 	demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
+	
+	pause_button.visibility_layer = 0
+	pause_button.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
+	Global.adjust_ui_layer()
 
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
@@ -278,10 +283,14 @@ func swap_scenes() -> void:
 	Global.hide_notification_bar()
 	if on_scene_1:
 		demon_selection_menu.visibility_layer = 0
-		demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer 
+		pause_button.visibility_layer = 0
+		demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer \
+		pause_button.set_visibility_layer_bit(2, true)
 	else:
 		demon_selection_menu.visibility_layer = 0
+		pause_button.visibility_layer = 0
 		demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
+		pause_button.set_visibility_layer_bit(1, true)
 		
 		
 	can_swap = false

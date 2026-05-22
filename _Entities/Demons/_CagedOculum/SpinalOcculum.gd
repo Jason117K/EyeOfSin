@@ -2,7 +2,6 @@ extends Demon
 #SpinalOcculum.gd
 
 # --- Exports ---
-@export var aoeDamage = 4
 @export var lightning_damage := 10
 
 @export var blood_spawn_time := 5
@@ -19,7 +18,6 @@ extends Demon
 var bloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn")
 
 # --- Component References ---
-@onready var AOEComp = $AOEDamageComponent
 @onready var web := $Web
 @onready var spike_rock := $SpikeRock
 @onready var silence_field := $SilenceField
@@ -96,15 +94,6 @@ func lightning_maw_buff():
 	maw_lightning.play()
 	maw_lightning.show()
 	is_lightning_maw_buff = true
-
-
-# --- AOE Damage ---
-
-func _on_aoe_damage_timer_timeout() -> void:
-	if wyrmBuff:
-		for area in AOEComp.get_overlapping_areas():
-			if area.is_in_group("Zombies"):
-				area.take_damage(aoeDamage)
 
 
 # --- Slow Field ---

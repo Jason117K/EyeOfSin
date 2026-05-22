@@ -25,16 +25,20 @@
 
 [sub_resource type="Resource" id="Resource_gtg2i"]
 script = ExtResource("4_pkv84")
-Unhallower = 1
+Reborn = 1
 
 [sub_resource type="Resource" id="Resource_3au0f"]
 script = ExtResource("4_pkv84")
-Sundered = 1
+Amalgam = 1
 
 [sub_resource type="Resource" id="Resource_10a2h"]
 script = ExtResource("4_pkv84")
-Severed = 2
+Severed = 1
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_pkv84"]
+script = ExtResource("4_pkv84")
+Sundered = 1
 
 [sub_resource type="Resource" id="Resource_1cdkr"]
 script = ExtResource("4_pkv84")
@@ -130,7 +134,7 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1909322556 instance=ExtResource("3_e2mf6")]
 position = Vector2(740, 269)
-waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_3au0f")])
+waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_pkv84")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1878050468 instance=ExtResource("4_51x2f")]
 z_index = 1
