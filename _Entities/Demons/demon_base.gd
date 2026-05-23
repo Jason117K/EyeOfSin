@@ -55,7 +55,7 @@ class_name Demon
 # --- State ---
 var area: Area2D
 var isBuffed := false
-var demon_manager: DemonManager
+var demon_manager
 
 # --- Signals ---
 signal demon_die

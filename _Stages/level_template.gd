@@ -13,7 +13,7 @@ var has_pulsed := false
 @export var new_end_dialog = "res://_Assets/Dialog/level_0_end_dialog.dtl"
 @export var wave2StartTime := 30
 @export var wave3StartTime := 60
-
+@export var debug := true 
 @onready var toolTips = $"../ToolTips"
 @onready var demonManager = $DemonManager
 @onready var demonSelectionMenu := $"../DemonSelectionMenu" 
