@@ -92,14 +92,23 @@ func _ready():
 	Global.resetOcculumCount()
 	Global._load_demon_costs()
 	
-	CrawlerButton.pressed.connect(_on_CrawlerButton_pressed)
-	OcculumButton.pressed.connect(_on_OcculumButton_pressed)
-	SpinalOcculumButton.pressed.connect(_on_SpinalOcculumButton_pressed)
-	WyrmButton.pressed.connect(_on_WyrmButton_pressed)
-	MawButton.pressed.connect(_on_MawButton_pressed)
-	HiveButton.pressed.connect(_on_HiveButton_pressed)
+	if not CrawlerButton.pressed.is_connected(_on_CrawlerButton_pressed):
+		CrawlerButton.pressed.connect(_on_CrawlerButton_pressed)
+	if not OcculumButton.pressed.is_connected(_on_OcculumButton_pressed):
+		OcculumButton.pressed.connect(_on_OcculumButton_pressed)
+	if not SpinalOcculumButton.pressed.is_connected(_on_SpinalOcculumButton_pressed):
+		SpinalOcculumButton.pressed.connect(_on_SpinalOcculumButton_pressed)
+	if not WyrmButton.pressed.is_connected(_on_WyrmButton_pressed):
+		WyrmButton.pressed.connect(_on_WyrmButton_pressed)
+	if not MawButton.pressed.is_connected(_on_MawButton_pressed):
+		MawButton.pressed.connect(_on_MawButton_pressed)
+	if not HiveButton.pressed.is_connected(_on_HiveButton_pressed):
+		HiveButton.pressed.connect(_on_HiveButton_pressed)
+		
+	if not HeartButton.pressed.is_connected(_on_heart_button_pressed):
+		HeartButton.pressed.connect(_on_heart_button_pressed)		
 
-	HeartButton.pressed.connect(_on_heart_button_pressed)
+
 
 	
 	OcculumCostLabel.text = str(Global.get_demon_cost("Occulum"))

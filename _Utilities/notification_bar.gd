@@ -113,6 +113,8 @@ func set_demon_info(demon : Demon) -> void:
 	damage_amount_label.text = str(demon.get_damage())
 	
 	notif_icon.texture = demon.get_demon_icon()
+	notif_icon.hue_shift = 0.0
+	notif_icon._apply_hue_shift()
 	special_label.text = demon.get_special_description()
 	
 	health_progress_bar.add_theme_color_override("default_color",Color.RED)
@@ -172,6 +174,9 @@ func set_zombie_info(zombie : Zombie) -> void:
 		fill_style.bg_color = Color.WEB_PURPLE
 		health_progress_bar.add_theme_stylebox_override("fill", fill_style)
 		
+		notif_icon.hue_shift = 0.0
+		notif_icon._apply_hue_shift()
+		
 
 		
 	else:
@@ -192,7 +197,12 @@ func set_zombie_info(zombie : Zombie) -> void:
 		
 		fill_style.bg_color = Color.DARK_GREEN
 		health_progress_bar.add_theme_stylebox_override("fill", fill_style)
-	
+
+
+		notif_icon.hue_shift = -125.0
+		notif_icon._apply_hue_shift()
+		
+		
 func show_zombie_notification() -> void:
 	show()
 	stats_container.show()

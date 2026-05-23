@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ql5up1ivfel0" path="res://_Utilities/notification_bar.gd" id="1_mv388"]
 [ext_resource type="Texture2D" uid="uid://1vv56xu5e06h" path="res://_Entities/Zombies/Notif_Icons/BasicZombie.png" id="2_kbdbf"]
+[ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="2_osf5l"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_x5ffb"]
+[ext_resource type="Script" uid="uid://dq1uima7b5he3" path="res://_UI/notif_texture_icon.gd" id="3_2o6rf"]
 [ext_resource type="Script" uid="uid://dujwffpetvtnu" path="res://_Utilities/notif_label.gd" id="3_4nnmc"]
 [ext_resource type="Texture2D" uid="uid://bhqt5knrhvk4o" path="res://_Assets/UI/Health_Icon1.png" id="4_x5ffb"]
 [ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="5_2o6rf"]
@@ -21,6 +23,16 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.12852, 0.061199997, 0.18, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_idw6e"]
+shader = ExtResource("2_osf5l")
+shader_parameter/hue_shift_degrees = 0.0
+shader_parameter/target_color = Color(0, 0, 0, 1)
+shader_parameter/replace_color = Color(0, 0, 0, 1)
+shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader_parameter/modulate_factor = Vector4(5, 5, 5, 1)
+shader_parameter/tolerance = 0.0
+shader_parameter/glow_tolerance = 0.2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10a2h"]
 bg_color = Color(0, 0, 0, 0.25882354)
@@ -91,10 +103,12 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_osf5l")
 
 [node name="NotifTextureIcon" type="TextureRect" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/IconPanel" unique_id=573970359]
+material = SubResource("ShaderMaterial_idw6e")
 layout_mode = 2
 texture = ExtResource("2_kbdbf")
 expand_mode = 3
 stretch_mode = 6
+script = ExtResource("3_2o6rf")
 
 [node name="NameHealthVboxContainer" type="VBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox" unique_id=331348365]
 layout_mode = 2
