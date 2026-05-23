@@ -3591,6 +3591,7 @@ mouse_filter = 2
 script = ExtResource("1_te6yt")
 new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
 wave3StartTime = 40
+debug = false
 skip_end_dialog = false
 
 [node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]

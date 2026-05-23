@@ -83,14 +83,14 @@ func get_current_wave() -> int:
 
 ## Called when the player clicks the Start button (gated by can_start).
 func _on_game_start_requested() -> void:
-	print("START REEEEEEE")
+	#print("START REEEEEEE")
 	if not can_start:
-		print("CANNOT START")
+		#print("CANNOT START")
 		return
 	_start_wave(0)
 
 func _on_call_early_wave_requested():
-	print("Requested Early Wave, current wave is ",_current_wave )
+	#print("Requested Early Wave, current wave is ",_current_wave )
 	#_start_wave(_current_wave + 1)
 	if (_current_wave + 1) < wave_delays.size():
 		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
@@ -101,7 +101,7 @@ func _on_call_early_wave_requested():
 
 ## Manually start the next wave (for tutorial-controlled progression).
 func start_next_wave() -> void:
-	print("Manual Call Start Next Wave")
+	#print("Manual Call Start Next Wave")
 	_start_wave(_current_wave + 1)
 
 
@@ -129,7 +129,7 @@ func _start_wave(index: int) -> void:
 		print("Index Is ",index, " & wave_delays.size() is ",wave_delays.size() )
 		var delay: float = wave_delays[index]
 		if delay > 0:
-			print("Wave Delay Timer At Index ", index, " has a wait time of ", delay)
+			#print("Wave Delay Timer At Index ", index, " has a wait time of ", delay)
 			waveDelayTimer.wait_time = delay
 			waveDelayTimer.start()
 
@@ -144,7 +144,7 @@ func _start_wave(index: int) -> void:
 
 
 func _on_wave_delay_timer_timeout() -> void:
-	print("Start Da Wave Here")
+	#print("Start Da Wave Here")
 	_start_wave(_current_wave + 1)
 
 
@@ -155,7 +155,7 @@ func _on_preview_timer_timeout() -> void:
 func _show_preview_for_next_wave() -> void:
 	var next := _current_wave + 1
 	if next < _total_waves:
-		print("Wave Previews Is ", _wave_previews)
+		#print("Wave Previews Is ", _wave_previews)
 		for preview in _wave_previews:
 			preview.show_preview(next,true)
 

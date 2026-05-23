@@ -36,11 +36,11 @@ func set_spawn_anim_speed(new_spawn_anim_speed: float) -> void:
 
 
 func spawn_done() -> void:
-	print(demon, " spawn done ")
+	#print(demon, " spawn done ")
 	if spawnAnimDone:
 		pass
 	else:
-		print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
+		#print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
 		speed_scale = default_anim_speed_scale
 		play()
 		spawnAnimDone = true

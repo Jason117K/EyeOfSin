@@ -136,7 +136,7 @@ func set_demon_info(demon : Demon) -> void:
 		
 func set_zombie_info(zombie : Zombie) -> void:
 	current_demon = null
-	print("Setting Bar For ", zombie)
+	#print("Setting Bar For ", zombie)
 	hide_bar_timer.wait_time = info_disappear_time
 	current_zombie = zombie
 	show_zombie_notification()

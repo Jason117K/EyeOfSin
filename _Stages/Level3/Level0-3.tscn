@@ -3620,6 +3620,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_3xvj4")
+debug = false
+skip_end_dialog = false
 
 [node name="DemonManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
 blood_points = 325

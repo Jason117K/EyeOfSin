@@ -238,7 +238,7 @@ func place_demon(grid_pos: Vector2) -> void:
 	selected_demon_scene = get_selected_demon()  
 	
 	if selected_demon_scene == null:
-		print("No demon selected!")
+		#print("No demon selected!")
 		return
 	
 	var demon_instance = selected_demon_scene.instantiate()
@@ -295,7 +295,7 @@ func place_demon(grid_pos: Vector2) -> void:
 	
 	#Get The Cost 
 	demon_cost = demon_instance.get_cost()
-	print("Demon CCost is : ", demon_cost)
+	#print("Demon CCost is : ", demon_cost)
 	
 	if blood_points >= demon_cost: 
 		#Maw Handling, occupies two cells
