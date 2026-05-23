@@ -217,7 +217,13 @@ func start_alpha_pulse():
 func _on_healing_anim_sprite_animation_finished() -> void:
 	pass
 
-
+func get_demon_icon()->CompressedTexture2D:
+	return Global.occulum_icon
+	
+func get_special_description()->String:
+	return Global.occulum_special_description
+	
+	
 # --- Slow Field ---
 
 func _on_slow_field_area_entered(area: Area2D) -> void:

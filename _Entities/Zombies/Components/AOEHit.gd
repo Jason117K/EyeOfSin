@@ -18,9 +18,9 @@ var silenced := false
 
 
 # Play the Animation and Make it Visible 
-func goBoom():
+func goBoom()->void:
 
-	print("TickerRRRRRRR going boom ")
+	#print("TickerRRRRRRR going boom ")
 	if get_parent().is_in_group("Green"):
 		hitBoxComp.set_collision_mask_value(1,false)
 		hitBoxComp.set_collision_mask_value(2,false)

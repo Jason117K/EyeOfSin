@@ -44,5 +44,9 @@ func get_zombie_name():
 	return " AMALGAM "
 	
 	
+func get_special_description():
+	return amalgam_special_description
+
 	
-	
+func get_zombie_icon()->CompressedTexture2D:
+	return Global.amalgam_icon

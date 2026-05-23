@@ -10,3 +10,6 @@ func get_zombie_name():
 func silence():
 	super()
 	attackComp.silence()
+
+func get_special_description():
+	return wretch_special_description

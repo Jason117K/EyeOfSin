@@ -247,6 +247,12 @@ func set_spawn_anim_speed(new_speed_speed: float) -> void:
 	animSpriteComp.set_spawn_anim_speed(new_speed_speed)
 
 
+func get_special_description():
+	return ""
+
+
+
+
 # --- Utilities ---
 
 func truncate_string(input_string: String) -> String:

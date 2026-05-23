@@ -1,12 +1,26 @@
 [gd_scene format=3 uid="uid://bad645hkxklbv"]
 
 [ext_resource type="Script" uid="uid://ql5up1ivfel0" path="res://_Utilities/notification_bar.gd" id="1_mv388"]
+[ext_resource type="Texture2D" uid="uid://1vv56xu5e06h" path="res://_Entities/Zombies/Notif_Icons/BasicZombie.png" id="2_kbdbf"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_x5ffb"]
 [ext_resource type="Script" uid="uid://dujwffpetvtnu" path="res://_Utilities/notif_label.gd" id="3_4nnmc"]
 [ext_resource type="Texture2D" uid="uid://bhqt5knrhvk4o" path="res://_Assets/UI/Health_Icon1.png" id="4_x5ffb"]
+[ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="5_2o6rf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3au0f"]
 bg_color = Color(0, 0, 0, 0.8509804)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osf5l"]
+bg_color = Color(0.36078432, 0.36078432, 0.36078432, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12852, 0.061199997, 0.18, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10a2h"]
 bg_color = Color(0, 0, 0, 0.25882354)
@@ -15,6 +29,9 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cdkr"]
 bg_color = Color(0, 0, 0, 0.53333336)
@@ -36,11 +53,12 @@ bg_color = Color(1, 0, 0, 1)
 
 [node name="NotifMarginContainer" type="MarginContainer" unique_id=1498960940]
 z_index = 4
-custom_minimum_size = Vector2(730, 0)
+custom_minimum_size = Vector2(515, 0)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -50.0
+offset_left = 215.0
+offset_top = -58.0
 offset_right = 730.0
 grow_vertical = 0
 mouse_filter = 2
@@ -51,115 +69,157 @@ info_disappear_time = 6.0
 
 [node name="NotificationPanel" type="PanelContainer" parent="." unique_id=1756737207]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3au0f")
 
-[node name="NotificationHbox" type="HBoxContainer" parent="NotificationPanel" unique_id=2107392246]
-custom_minimum_size = Vector2(720, 0)
+[node name="NotifMarginContainer" type="MarginContainer" parent="NotificationPanel" unique_id=79000888]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="NotificationHbox" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer" unique_id=2107392246]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 3
 
-[node name="NotifLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox" unique_id=1939787612]
+[node name="IconPanel" type="PanelContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox" unique_id=654285839]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_osf5l")
+
+[node name="NotifTextureIcon" type="TextureRect" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/IconPanel" unique_id=573970359]
+layout_mode = 2
+texture = ExtResource("2_kbdbf")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="NameHealthVboxContainer" type="VBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox" unique_id=331348365]
+layout_mode = 2
+
+[node name="NameSpecialHbox" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer" unique_id=486452573]
+layout_mode = 2
+
+[node name="NotifNameLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/NameSpecialHbox" unique_id=1939787612]
+layout_mode = 2
+size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_x5ffb")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_10a2h")
-text = "SPINAL OCCULUM"
+text = " REBORN "
 fit_content = true
-autowrap_mode = 2
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_4nnmc")
 
-[node name="StatsContainer" type="VBoxContainer" parent="NotificationPanel/NotificationHbox" unique_id=235216703]
+[node name="SpecialMarginContainer" type="MarginContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/NameSpecialHbox" unique_id=448726676]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/separation = -2
+theme_override_constants/margin_top = -8
 
-[node name="HealthPanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer" unique_id=461478313]
+[node name="SpecialLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/NameSpecialHbox/SpecialMarginContainer" unique_id=65848755]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_fonts/italics_font = ExtResource("5_2o6rf")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/italics_font_size = 10
+bbcode_enabled = true
+text = "[i]*SHOTS SLOW ENEMIES"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 2
+script = ExtResource("3_4nnmc")
+
+[node name="StatsHboxContainer" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer" unique_id=1474373201]
+layout_mode = 2
+
+[node name="HealthPanel" type="PanelContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer" unique_id=461478313]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
 
-[node name="MarginContainer" type="MarginContainer" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel" unique_id=1332338471]
+[node name="HealthContainer" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/HealthPanel" unique_id=58029458]
 layout_mode = 2
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="HealthContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel/MarginContainer" unique_id=58029458]
-layout_mode = 2
-size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Health_Icon" type="TextureRect" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel/MarginContainer/HealthContainer" unique_id=1078498812]
-layout_mode = 2
-size_flags_vertical = 8
-texture = ExtResource("4_x5ffb")
-
-[node name="HealthProgressBar" type="ProgressBar" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel/MarginContainer/HealthContainer" unique_id=1705418812]
-custom_minimum_size = Vector2(200, 35)
+[node name="HealthProgressBar" type="ProgressBar" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/HealthPanel/HealthContainer" unique_id=1705418812]
+custom_minimum_size = Vector2(135.315, 16)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
+size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_4nnmc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kbdbf")
 value = 99.0
 show_percentage = false
 
-[node name="ProgressBarLabel" type="Label" parent="NotificationPanel/NotificationHbox/StatsContainer/HealthPanel/MarginContainer/HealthContainer/HealthProgressBar" unique_id=1536128300]
+[node name="Health_Icon" type="TextureRect" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/HealthPanel/HealthContainer/HealthProgressBar" unique_id=1078498812]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 18.0
+offset_bottom = 18.0
+size_flags_vertical = 8
+texture = ExtResource("4_x5ffb")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="HealthProgressBarLabel" type="Label" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/HealthPanel/HealthContainer/HealthProgressBar" unique_id=1536128300]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -40.0
-offset_right = 100.0
+offset_left = -105.5
+offset_top = -30.0
+offset_right = 94.5
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_x5ffb")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "99/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DamagePanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer" unique_id=951309112]
+[node name="DamagePanel" type="PanelContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer" unique_id=951309112]
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
 
-[node name="DamageContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer/DamagePanel" unique_id=1149467852]
+[node name="DamageContainer" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/DamagePanel" unique_id=1149467852]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="DamageLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer/DamagePanel/DamageContainer" unique_id=752012393]
+[node name="DamageLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/DamagePanel/DamageContainer" unique_id=752012393]
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_x5ffb")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 16
 text = " DAMAGE"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 2
 script = ExtResource("3_4nnmc")
 
-[node name="DamageAmountLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer/DamagePanel/DamageContainer" unique_id=1973075628]
+[node name="DamageAmountLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/DamagePanel/DamageContainer" unique_id=1973075628]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_x5ffb")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 16
 text = ": 100"
 fit_content = true
 scroll_active = false
@@ -167,67 +227,39 @@ autowrap_mode = 0
 vertical_alignment = 1
 script = ExtResource("3_4nnmc")
 
-[node name="StatsContainer2" type="VBoxContainer" parent="NotificationPanel/NotificationHbox" unique_id=1691035932]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-
-[node name="SpeedPanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2" unique_id=988558454]
+[node name="SpeedPanel" type="PanelContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer" unique_id=988558454]
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
 
-[node name="SpeedContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2/SpeedPanel" unique_id=438913869]
+[node name="SpeedContainer" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/SpeedPanel" unique_id=438913869]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="SpeedLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer2/SpeedPanel/SpeedContainer" unique_id=1591189294]
+[node name="SpeedLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/SpeedPanel/SpeedContainer" unique_id=1591189294]
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_x5ffb")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 16
 text = " SPEED"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 2
 script = ExtResource("3_4nnmc")
 
-[node name="SpeedAmountLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer2/SpeedPanel/SpeedContainer" unique_id=1156085424]
+[node name="SpeedAmountLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/SpeedPanel/SpeedContainer" unique_id=1156085424]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_x5ffb")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 16
 text = ": 100"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
-script = ExtResource("3_4nnmc")
-
-[node name="SpecialPanel" type="PanelContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2" unique_id=1641026521]
-visible = false
-layout_mode = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1cdkr")
-
-[node name="SpecialContainer" type="HBoxContainer" parent="NotificationPanel/NotificationHbox/StatsContainer2/SpecialPanel" unique_id=1848576590]
-visible = false
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-
-[node name="SpeedLabel" type="RichTextLabel" parent="NotificationPanel/NotificationHbox/StatsContainer2/SpecialPanel/SpecialContainer" unique_id=65848755]
-layout_mode = 2
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_x5ffb")
-theme_override_font_sizes/normal_font_size = 16
-text = "HIGH ARMOR"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 2
 script = ExtResource("3_4nnmc")

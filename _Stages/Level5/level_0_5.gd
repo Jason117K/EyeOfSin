@@ -86,12 +86,16 @@ func _ready():
 
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
-	Dialogic.start(level_5_start_dialog)
 	Global.hide_ui_layer()
+	if debug:
+		finish_ready()
+	else:
+		Dialogic.start(level_5_start_dialog)
+	
 	#finish_ready()
 
 
-func _configure_waves():
+func _configure_waves()->void:
 	pass
 	#zombie_spawner_1.set_waves_from_dicts([{}, {"Erupter": 2, "Flesheater": 2, "Reanimator": 1, "Severed": 5}, {"Erupter": 1, "Flesheater": 2, "Reanimator": 1, "Severed": 2, "Unhallower": 1}])
 	#zombie_spawner_2.set_waves_from_dicts([{"Severed": 2, "Sundered": 3}, {"Erupter": 2, "Flesheater": 1, "Reborn": 1, "Severed": 2, "Sundered": 3, "Unhallower": 2}, {"Erupter": 3, "Flesheater": 1, "Sundered": 4, "Unhallower": 2}])

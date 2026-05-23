@@ -66,6 +66,15 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
 
+
+func get_demon_icon()->CompressedTexture2D:
+	return Global.crawler_icon
+	
+func get_special_description()->String:
+	return Global.crawler_special_description
+	
+	
+	
 	
 #func beat_of_death():
 	## Reset sprite to starting state

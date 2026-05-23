@@ -80,7 +80,13 @@ func debuff():
 	healthComp.debuff()
 	super()
 
-
+func get_demon_icon()->CompressedTexture2D:
+	return Global.spinal_occulum_icon
+	
+func get_special_description()->String:
+	return Global.spinal_occulum_special_description
+	
+	
 # --- Death ---
 
 func _cleanup():

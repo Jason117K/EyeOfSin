@@ -143,18 +143,20 @@ func _ready():
 	Dialogic.timeline_ended.connect(finish_ready)
 	print("Crawler Button at ready is : ", crawler_button)
 	Global.hide_ui_layer()
-	Dialogic.start(level_2_start_dialog)
-	Global.hide_ui_layer()
+	if debug:
+		finish_ready()
+	else:
+		Dialogic.start(level_2_start_dialog)
 	#finish_ready()
 
 
-func _configure_waves():
+func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{}, {"Reborn": 3, "Severed": 1}, {"Unhallower": 3}])
 	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 1, "Severed": 1}, {"Reborn": 2, "Severed": 1}, {"Severed": 4, "Unhallower": 1}])
 	zombie_spawner_3.set_waves_from_dicts([{"Severed": 1}, {"Reborn": 2, "Unhallower": 1}, {"Reborn": 6, "Unhallower": 2}])
 
 
-func _find_green_dimension():
+func _find_green_dimension() -> void:
 	green_dimension = get_parent().get_node("Level0-2_Alternate")
 
 

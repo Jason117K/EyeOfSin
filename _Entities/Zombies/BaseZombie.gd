@@ -7,14 +7,14 @@ signal zombie_death
 @export_category("Health")
 @export var time_between_bleed := 1
 @export var health := 76
-@export var healthRegen = 0.0
+@export var healthRegen := 0.0
 @export var bleed_tick_damage := 0
 
 @export_category("Speed")
-@export var speed = 20
+@export var speed := 20
 
 @export_category("Attack")
-@export var attack_power = 33
+@export var attack_power := 33
 @export var attack_speed := 1.0
 @export_range(0.1, 1.0) var attack_damage_point := 0.667
 
@@ -26,25 +26,36 @@ signal zombie_death
 
 # --- Component references ---
 @onready var healthComp : ZombieHealthComponent = $HealthComponent
-@onready var speedComp = $SpeedComponent
+@onready var speedComp := $SpeedComponent
 @onready var attackComp : AttackComponent = $AttackComponent
 @onready var animatedSprite : ZombieSpriteComp = $AnimatedSprite2D
-@onready var attack_ray = $DMGRayCast2D
+@onready var attack_ray := $DMGRayCast2D
 @onready var bloodHit := $BloodHit
-@onready var damage_vfx_spawn_locations = [bloodHit]
+@onready var damage_vfx_spawn_locations := [bloodHit]
 @onready var debuff_degrade_timer : Timer = $DebuffDegrade
 @onready var reset_color_timer : Timer = $ResetThisColor
 @onready var just_spawned_timer : Timer = $JustNowSpawned
 
 # --- Preloads ---
-var slow_field_scene = preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
+var slow_field_scene := preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
+
+var reborn_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt", FileAccess.READ).get_as_text()
+var severed_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt", FileAccess.READ).get_as_text()
+var unhallower_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt", FileAccess.READ).get_as_text()
+var reanimator_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt", FileAccess.READ).get_as_text()
+var wretch_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt", FileAccess.READ).get_as_text()
+var erupter_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt", FileAccess.READ).get_as_text()
+var amalgam_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt", FileAccess.READ).get_as_text()
+var flesheater_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt", FileAccess.READ).get_as_text()
+var sundered_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt", FileAccess.READ).get_as_text()
+
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
 
 # --- State ---
 var column_explosion
 var silence_field
 var is_silenced := false
-var isSlow = 0
+var isSlow := 0
 var thisMaterial
 var thisMaterial2
 var should_spawn_slow_field := false
@@ -88,10 +99,16 @@ func _ready() -> void:
 			
 
 
-func make_demo():
+func make_demo()->void:
 	
 	is_demo = true 
 	print("Should Make is_demo ", is_demo)
+
+func get_special_description():
+	return "Zombie"
+	
+func get_zombie_icon()->CompressedTexture2D:
+	return Global.reborn_icon
 
 func _process(delta):
 	if animatedSprite.isDead:
@@ -137,7 +154,7 @@ func die():
 		_demo_die()
 	else:
 		Global.deregister_zombie(self)
-		print(self, " dying")
+		#print(self, " dying")
 		if should_spawn_slow_field:
 			spawn_slow_field_on_death()
 		if should_spawn_drone_on_death:

@@ -31,14 +31,40 @@ var demon_scenes : Dictionary
 var should_hide_ui := false
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
-var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn")
-var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
-var consume_zombie_group_scene = preload("res://_Entities/Demons/_Maw/maw_consume.tscn")
-var silence_field = preload("res://_Entities/Zombies/silence_fx.tscn")
-var severed_spriteframes = preload("res://_Entities/Zombies/_Severed/Severed.tres")
+var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
+var bomb_scene := preload("res://_Entities/Demons/Explosion/Bomb.tscn")
+var consume_zombie_group_scene := preload("res://_Entities/Demons/_Maw/maw_consume.tscn")
+var silence_field := preload("res://_Entities/Zombies/silence_fx.tscn")
+var severed_spriteframes := preload("res://_Entities/Zombies/_Severed/Severed.tres")
 
 
-func _load_demon_costs():
+var reborn_icon := preload("res://_Entities/Zombies/Notif_Icons/BasicZombie.png")
+var severed_icon := preload("res://_Entities/Zombies/Notif_Icons/ConeHeadZombie.png")
+var unhallower_icon := preload("res://_Entities/Zombies/Notif_Icons/BucketHeadZombie.png")
+var reanimator_icon := preload("res://_Entities/Zombies/Notif_Icons/SummonerZombie.png")
+var wretch_icon := preload("res://_Entities/Zombies/Notif_Icons/BackUpDancer.png")
+var sundered_icon := preload("res://_Entities/Zombies/Notif_Icons/PoleVaultZombie.png")
+var erupter_icon := preload("res://_Entities/Zombies/Notif_Icons/TickerZombie.png")
+var flesheater_icon := preload("res://_Entities/Zombies/Notif_Icons/FootBallZombie.png")
+var amalgam_icon := preload("res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png")
+
+var occulum_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt", FileAccess.READ).get_as_text()
+var crawler_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt", FileAccess.READ).get_as_text()
+var wyrm_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt", FileAccess.READ).get_as_text()
+var spinal_occulum_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt", FileAccess.READ).get_as_text()
+var hive_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt", FileAccess.READ).get_as_text()
+var maw_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt", FileAccess.READ).get_as_text()
+
+var occulum_icon := preload("res://_Assets/Sprites/Occulum.png")
+var crawler_icon := preload("res://_Assets/Sprites/Crawler.png")
+var wyrm_icon := preload("res://_Assets/Sprites/Wyrm.png")
+var spinal_occulum_icon := preload("res://_Assets/Sprites/SpinalOcculum.png")
+var hive_icon := preload("res://_Assets/Sprites/Hive.png")
+var maw_icon := preload("res://_Assets/Sprites/MawImage.png")
+
+
+
+func _load_demon_costs() -> void:
 	demon_scenes = {
 		"Occulum": "res://_Entities/Demons/_Occulum/Occulum.tscn",
 		"Crawler": "res://_Entities/Demons/_Crawler/Crawler.tscn",

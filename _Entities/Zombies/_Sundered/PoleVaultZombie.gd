@@ -25,3 +25,10 @@ func silence():
 	specialMoveComp.silence()
 	attack_comp.canSpecial = false
 	silence_field.position = silence_field_position
+
+func get_special_description():
+	return sundered_special_description
+	
+	
+func get_zombie_icon()->CompressedTexture2D:
+	return Global.sundered_icon

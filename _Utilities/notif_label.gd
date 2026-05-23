@@ -4,17 +4,17 @@ var original_position: Vector2
 #var default_shake_intensity: float = 5.0
 #var default_shake_duration: float = 0.5
 
-func _ready():
+func _ready() -> void:
 	original_position = position
 
 # Call this function to trigger a shake
-func shake(shake_intensity: float = 5.0, shake_duration: float = 0.5):
-	var tween = create_tween()
-	var elapsed = 0.0
-	var step = 0.05   # time between position changes
+func shake(shake_intensity: float = 5.0, shake_duration: float = 0.5) -> void:
+	var tween := create_tween()
+	var elapsed := 0.0
+	var step := 0.05   # time between position changes
 
 	while elapsed < shake_duration:
-		var offset = Vector2(
+		var offset := Vector2(
 			randf_range(-shake_intensity, shake_intensity),
 			randf_range(-shake_intensity, shake_intensity)
 			)

@@ -142,6 +142,15 @@ func _cleanup():
 		buzz_audio.queue_free()
 	super()
 
+func get_demon_icon()->CompressedTexture2D:
+	return Global.hive_icon
+	
+func get_special_description()->String:
+	return Global.hive_special_description
+	
+	
+	
+	
 
 # --- Preview ---
 

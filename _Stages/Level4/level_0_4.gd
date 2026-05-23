@@ -79,8 +79,12 @@ func _ready():
 
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
-	Dialogic.start(level_4_start_dialog)
 	Global.hide_ui_layer()
+	if debug:
+		finish_ready()
+	else:
+		Dialogic.start(level_4_start_dialog)
+
 	#finish_ready()
 
 

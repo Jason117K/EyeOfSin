@@ -204,6 +204,13 @@ func _process(delta):
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
 
+func get_demon_icon()->CompressedTexture2D:
+	return Global.wyrm_icon
+	
+func get_special_description()->String:
+	return Global.wyrm_special_description
+	
+	
 
 # --- Preview ---
 

@@ -90,16 +90,20 @@ func _ready():
 	toolTips.hide()
 	zombie_spawner.wave_exhausted.connect(wave_exhausted)
 	waveManager.preview_lead_time = 8
-	Dialogic.start(level_1_start_dialog)
 	Global.hide_ui_layer()
+	if debug:
+		finish_ready()
+	else:
+		Dialogic.start(level_1_start_dialog)
+
 	#finish_ready()
 
 
-func _configure_waves():
+func _configure_waves() -> void:
 	zombie_spawner.set_waves_from_dicts([{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}])
 
 
-func finish_ready():
+func finish_ready() -> void:
 	#Global.hide_pip()
 	
 	_setup_tutorial()
@@ -107,7 +111,7 @@ func finish_ready():
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
 
-func wave_exhausted():
+func wave_exhausted() -> void:
 	wave_1_completed = true 
 
 #endregion

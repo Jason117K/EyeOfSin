@@ -440,7 +440,14 @@ func show_tentacles() -> void:
 func get_out_of_place_nodes() -> Array:
 	return [$DetectionComponent, $CollisionShape2D, $PreviewNodes]
 
-
+func get_demon_icon()->CompressedTexture2D:
+	return Global.maw_icon
+	
+func get_special_description()->String:
+	return Global.maw_special_description
+	
+	
+	
 # --- Preview ---
 
 func _on_mouse_entered() -> void:

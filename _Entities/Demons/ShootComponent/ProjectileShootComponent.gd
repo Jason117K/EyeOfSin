@@ -40,7 +40,7 @@ func _ready() -> void:
 	animSpriteComp.frame_changed_signal.connect(_on_sprite_frame_changed)
 	
 	
-func set_attack_rays_collision():
+func set_attack_rays_collision()->void:
 	if parent_demon.is_in_group("Green"):
 		for attacking_ray in attack_rays:
 			attacking_ray.max_results = 30
@@ -62,14 +62,14 @@ func set_attack_rays_collision():
 		
 					
 				
-func _on_sprite_frame_changed(animation_name: String, frame_index: int):
+func _on_sprite_frame_changed(animation_name: String, frame_index: int) -> void:
 	if SHOOT_FRAMES.has(animation_name):
 		if frame_index == SHOOT_FRAMES[animation_name] and canAttack:
-			print(get_parent(), " shoooot projectile ")
+			#print(get_parent(), " shoooot projectile ")
 			shoot_projectile()
 			
 			
-func _process(_delta):
+func _process(_delta) ->void:
 	if node_ready && animSpriteComp != null:
 		if animSpriteComp.animation == "spawn":
 			#print("Early")
@@ -83,7 +83,7 @@ func _process(_delta):
 		#print("NOOOOOO")
 
 
-func check_attack_rays():
+func check_attack_rays() -> void:
 	canAttack = false
 	for ray in attack_rays:
 		#print("Checking Ray ", ray)
@@ -95,14 +95,14 @@ func check_attack_rays():
 				if collider == null:
 					continue  # guard against freed/invalid colliders
 				if collider and collider.is_in_group("Zombie"):
-					print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
+					#print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
 						#print("Green Can Attack True")
 						canAttack = true
 						return
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
 						canAttack = true
-						print("Purple Can Attack True")
+						#print("Purple Can Attack True")
 						return 
 				#	if parent_demon.is_in_group()
 						
