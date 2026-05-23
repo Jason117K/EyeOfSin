@@ -21,7 +21,7 @@ var spiderling_timer: Timer
 var canAttackSetTrueOnce: bool = false
 
 # --- Component References ---
-@onready var attack_ray: RayCast2D = $DMG_RayCast2D
+@onready var attack_ray: ShapeCast2D = $DMG_RayCast2D
 @onready var projectile_shoot_component := $ProjectileShootComponent
 
 

@@ -47,8 +47,8 @@ class_name Demon
 @export var regen_wait_time := 1
 @export var is_empty := false 
 # --- Component References ---
-@onready var animSpriteComp: DemonSpriteComp = $AnimatedSpriteComponent
-@onready var healthComp: DemonHealthComponent = $HealthComponent
+@onready var animSpriteComp: AnimatedSprite2D = $AnimatedSpriteComponent
+@onready var healthComp: Node = $HealthComponent
 @onready var heal_anim_sprite: AnimatedSprite2D = $HealAnimSprite
 @onready var buffNodes: Node = $BuffNodesComponent
 
