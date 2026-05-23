@@ -33,29 +33,29 @@ class_name Demon
 # ============================================================
 
 # --- Exports ---
-@export var wyrmBuff = false
-@export var hiveBuff = false
-@export var spinalOcculumBuff = false
-@export var mawBuff = false
-@export var crawlerBuff = false
-@export var occulumBuff = false
-@export var cost : float = 50
+@export var wyrmBuff: bool = false
+@export var hiveBuff: bool = false
+@export var spinalOcculumBuff: bool = false
+@export var mawBuff: bool = false
+@export var crawlerBuff: bool = false
+@export var occulumBuff: bool = false
+@export var cost: float = 50
 
-@export var health = 800
-@export var healthRegen = 0.0
-@export var maxHealth = 800
+@export var health: float = 800
+@export var healthRegen: float = 0.0
+@export var maxHealth: float = 800
 @export var regen_wait_time := 1
 @export var is_empty := false 
 # --- Component References ---
-@onready var animSpriteComp := $AnimatedSpriteComponent
-@onready var healthComp := $HealthComponent
-@onready var heal_anim_sprite := $HealAnimSprite
-@onready var buffNodes = $BuffNodesComponent
+@onready var animSpriteComp: DemonSpriteComp = $AnimatedSpriteComponent
+@onready var healthComp: DemonHealthComponent = $HealthComponent
+@onready var heal_anim_sprite: AnimatedSprite2D = $HealAnimSprite
+@onready var buffNodes: Node = $BuffNodesComponent
 
 # --- State ---
-var area : Area2D
+var area: Area2D
 var isBuffed := false
-var DemonManager
+var demon_manager: DemonManager
 
 # --- Signals ---
 signal demon_die
@@ -77,7 +77,7 @@ func _ready() -> void:
 	# --- Phase 4: Post-spawn detection (deferred, async) ---
 	_schedule_post_spawn()
 
-func _init_collision():
+func _init_collision() -> void:
 	if is_in_group("Green"):
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(2, false)
@@ -87,25 +87,25 @@ func _init_collision():
 		set_collision_layer_value(2, true)
 		set_collision_layer_value(3, false)
 
-func _wire_signals():
+func _wire_signals() -> void:
 	input_event.connect(_on_input_event)
 	area_entered.connect(on_demon_area_entered)
 	area_exited.connect(on_demon_area_exited)
 
-func _init_demon_manager():
-	var _dm_parent = get_parent()
+func _init_demon_manager() -> void:
+	var _dm_parent: Node = get_parent()
 	if _dm_parent:
-		var _dm_grandparent = _dm_parent.get_parent()
+		var _dm_grandparent: Node = _dm_parent.get_parent()
 		if _dm_grandparent and _dm_grandparent.has_node("DemonManager"):
-			DemonManager = _dm_grandparent.get_node("DemonManager")
+			demon_manager = _dm_grandparent.get_node("DemonManager")
 
-func _schedule_post_spawn():
+func _schedule_post_spawn() -> void:
 	# Heart buff detection requires physics overlap resolution
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	_detect_heart_buffs()
 
-func _detect_heart_buffs():
+func _detect_heart_buffs() -> void:
 	for new_area in get_overlapping_areas():
 		if new_area.is_in_group("HeartBuff"):
 			receive_heart_buff()
@@ -125,7 +125,7 @@ func receive_buff(demonName):
 		isBuffed = true
 		_set_buff_flag(demonName)
 
-func _set_buff_flag(demonName):
+func _set_buff_flag(demonName: String) -> void:
 	match demonName:
 		"Occulum": occulumBuff = true
 		"Crawler": crawlerBuff = true
@@ -134,11 +134,11 @@ func _set_buff_flag(demonName):
 		"Hive": hiveBuff = true
 		"Maw": mawBuff = true
 
-func debuff():
+func debuff() -> void:
 	isBuffed = false
 	_reset_buff_flags()
 
-func _reset_buff_flags():
+func _reset_buff_flags() -> void:
 	wyrmBuff = false
 	hiveBuff = false
 	spinalOcculumBuff = false
@@ -146,74 +146,74 @@ func _reset_buff_flags():
 	crawlerBuff = false
 	occulumBuff = false
 
-func get_is_buffed():
+func get_is_buffed() -> bool:
 	return isBuffed
 
 
 # --- Death ---
 
-func die():
+func die() -> void:
 	demon_die.emit()
 	_cleanup_manager()
 	_cleanup()
 	queue_free()
 
-func die_fromClearSpace():
+func die_fromClearSpace() -> void:
 	demon_die.emit()
 	_cleanup()
 	queue_free()
 
-func _cleanup_manager():
-	if DemonManager != null:
-		DemonManager.clear_space(self.global_position)
+func _cleanup_manager() -> void:
+	if demon_manager != null:
+		demon_manager.clear_space(self.global_position)
 
-func _cleanup():
+func _cleanup() -> void:
 	if buffNodes:
 		buffNodes.clearBuffs()
 
 
 # --- Health Delegation ---
 
-func receive_heart_buff():
+func receive_heart_buff() -> void:
 	print(self.name, " receive Heart Buff")
 	buffNodes.get_child(0).visible = true
 	increase_max_health(400)
 	increase_health(400)
 
-func remove_heart_buff():
+func remove_heart_buff() -> void:
 	print(self.name, " remove Heart Buff")
 	buffNodes.get_child(0).visible = false
 
-func increase_health(added_health_amount):
+func increase_health(added_health_amount: float) -> void:
 	if healthComp.is_node_ready():
 		healthComp.increase_health(added_health_amount)
 
-func increase_max_health(added_health_amount):
+func increase_max_health(added_health_amount: float) -> void:
 	healthComp.increase_max_health(added_health_amount)
 
-func take_damage(damage):
+func take_damage(damage: float) -> void:
 	healthComp.take_damage(damage)
 
-func play_healing_anim():
+func play_healing_anim() -> void:
 	heal_anim_sprite.play()
 
 
 # --- Getters ---
 
-func get_health():
+func get_health() -> float:
 	return healthComp.get_health()
 
-func get_max_health():
+func get_max_health() -> float:
 	return healthComp.get_max_health()
 
-func get_animSpriteComp():
+func get_animSpriteComp() -> DemonSpriteComp:
 	return animSpriteComp
 
-func get_preview_nodes():
+func get_preview_nodes() -> Node:
 	return $PreviewNodes
 
-func get_true_name():
-	pass
+func get_true_name() -> String:
+	return ""
 
 
 # --- Input ---
@@ -226,24 +226,24 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 # --- Heart Buff Area Detection ---
 
-func on_demon_area_entered(new_area: Area2D):
+func on_demon_area_entered(new_area: Area2D) -> void:
 	if new_area.is_in_group("HeartBuff"):
 		pass
 		#receive_heart_buff()
 
-func on_demon_area_exited(old_area: Area2D):
+func on_demon_area_exited(old_area: Area2D) -> void:
 	if old_area.is_in_group("HeartBuff"):
 		remove_heart_buff()
 
 
 # --- Spawn ---
 
-func finish_spawn():
+func finish_spawn() -> void:
 	animSpriteComp.visible = true
 	animSpriteComp.animation = animSpriteComp.currentAnim
 	animSpriteComp.play()
 
-func set_spawn_anim_speed(new_speed_speed):
+func set_spawn_anim_speed(new_speed_speed: float) -> void:
 	animSpriteComp.set_spawn_anim_speed(new_speed_speed)
 
 

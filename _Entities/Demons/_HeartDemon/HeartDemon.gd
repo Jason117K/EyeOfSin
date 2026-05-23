@@ -3,7 +3,7 @@ extends Demon
 
 
 #var DemonManager
-var duration : float 
+var duration: float
 
 #@onready var buffNodes = $BuffNodesComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
@@ -16,44 +16,44 @@ const EXPAND_SCALE: Vector2 = Vector2(0.35, 0.35)  # How large the sprite grows
 const START_SCALE: Vector2 = Vector2(0.1, 0.1)
 
 #Grab demonmanager, start default anim and connect/start relevant timers 
-func _ready():
+func _ready() -> void:
 	print("Hero DEMON Ready")
 	Global.register_hero_demon(self)
 	$PreviewNodes/AnimatedSprite2D.hide()
 	#set_attack_collision()
 
-	DemonManager = get_parent().get_parent().get_node("DemonManager")
+	demon_manager = get_parent().get_parent().get_node("DemonManager")
 
 	# Calculate duration from the current animation's frame count and speed
 	var frame_count: int = animSpriteComp.sprite_frames.get_frame_count(animSpriteComp.currentAttackAnim)
 	var fps: float = animSpriteComp.sprite_frames.get_animation_speed(animSpriteComp.currentAttackAnim)
 	duration = frame_count / fps	
 	
-func set_attack_collision():
+func set_attack_collision() -> void:
 	projectile_shoot_component.set_attack_rays_collision()
-	
-#Cost getter 
-func get_cost():
+
+#Cost getter
+func get_cost() -> float:
 	#print("Return , ", cost )
 	return cost
 	
 					
-# Doubles attack speed when receiving a buff 
-func receive_buff(newDemon):
+# Doubles attack speed when receiving a buff
+func receive_buff(newDemon) -> void:
 	pass
 
 
-func get_can_attack():
+func get_can_attack() -> bool:
 	return projectile_shoot_component.canAttack
 	
 					
-func die():
-	if DemonManager != null:
-		DemonManager.clear_space(self.global_position)
+func die() -> void:
+	if demon_manager != null:
+		demon_manager.clear_space(self.global_position)
 	buffNodes.clearBuffs()
-	queue_free()	
-	
-func die_fromClearSpace():
+	queue_free()
+
+func die_fromClearSpace() -> void:
 	#print("DD YYYING ---------------------------------")
 	buffNodes.clearBuffs()
 	queue_free()		

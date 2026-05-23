@@ -3,21 +3,21 @@ class_name DemonSpriteComp extends AnimatedSprite2D
 
 #TODO Get Rid of Preload 
 
-var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
+var demon_glow: Shader = preload("res://_Common/Shaders/DemonGlow.gdshader")
 
-@export var targetGlowColor : Color
-@export var modulate_factor : Vector4 = Vector4(7,7,7,1)
+@export var targetGlowColor: Color
+@export var modulate_factor: Vector4 = Vector4(7,7,7,1)
 
-@onready var lightning_spawn := $"../LightningSpawn"   # $"../LightningSpawn"
+@onready var lightning_spawn: AnimatedSprite2D = $"../LightningSpawn"   # $"../LightningSpawn"
 #@onready var demon : Demon = get_parent()
-var demon : Demon
+var demon: Demon
 var currentAnim := "idle"
 var currentAttackAnim := "attack"
-var spawnAnimDone = false
+var spawnAnimDone := false
 signal frame_changed_signal(animation_name: String, frame_index: int)
 
-var anim_spawn_speed_mult := 1 
-var default_anim_speed_scale := 1 
+var anim_spawn_speed_mult := 1
+var default_anim_speed_scale := 1
 
 func _ready() -> void:
 	#make_buff_glow()
@@ -31,11 +31,11 @@ func _ready() -> void:
 	demon = get_parent()
 	pass
 
-func set_spawn_anim_speed(new_spawn_anim_speed):
+func set_spawn_anim_speed(new_spawn_anim_speed: float) -> void:
 	sprite_frames.set_animation_speed("spawn", 20)
 
-	
-func spawn_done():
+
+func spawn_done() -> void:
 	print(demon, " spawn done ")
 	if spawnAnimDone:
 		pass
@@ -43,10 +43,10 @@ func spawn_done():
 		print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
 		speed_scale = default_anim_speed_scale
 		play()
-		spawnAnimDone = true 
-		
-		
-func _on_animation_finished():
+		spawnAnimDone = true
+
+
+func _on_animation_finished() -> void:
 	#print(self, "PARENT Is" , get_parent())
 	if animation == "spawn":
 		if spawnAnimDone:
@@ -61,7 +61,7 @@ func _on_animation_finished():
 		
 		
 		
-func receive_buff(new_form):
+func receive_buff(new_form) -> void:
 	var parent = get_parent()
 	
 	if parent.has_method("adjust_position"):
@@ -106,16 +106,16 @@ func receive_buff(new_form):
 				$"../Arm2".visible = true 
 
 
-func make_buff_glow():
+func make_buff_glow() -> void:
 	#return
 	if material == null:
 		print("PRE LOL")
 		material = ShaderMaterial.new()
 		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
-	
+
 	# Update shader parameter
 	if material is ShaderMaterial:
-		
+
 		#material.shader = demon_glow
 		print("LOL" , material)
 		material.set_shader_parameter("glow_color", targetGlowColor)
@@ -129,9 +129,9 @@ func _on_timer_timeout() -> void:
 	#make_buff_glow()
 	pass
 
-func make_drone_glow():
+func make_drone_glow() -> void:
 	pass
-	
-	
-func debuff():
+
+
+func debuff() -> void:
 	speed_scale = 1

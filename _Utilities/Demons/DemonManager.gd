@@ -1,24 +1,25 @@
+class_name DemonManager
 extends Node2D
 #DemonManager.gd
 
-# Get a reference to the demon selection menu 
-@onready var selection_menu = get_parent().get_parent().get_node("DemonSelectionMenu")
-@onready var notification_bar = Global.notification_bar
-@onready var parentName = get_parent().get_name()
+# Get a reference to the demon selection menu
+@onready var selection_menu: Control = get_parent().get_parent().get_node("DemonSelectionMenu")
+@onready var notification_bar: MarginContainer = Global.notification_bar
+@onready var parentName: String = get_parent().get_name()
 
-@export var blood_points = 200 # Holds how many blood points we have currently 
+@export var blood_points: int = 200 # Holds how many blood points we have currently
 
-var selected_demon_scene = null  # Holds the selected demon scene
-var grid_size = 32 # Defines the size of each grid cell 
-var grid_map = {}  # Dictionary to store occupied cells
-var demon_cost = 25  # Holds the cost of the currently selected demon 
-var demon_to_move
+var selected_demon_scene: PackedScene = null  # Holds the selected demon scene
+var grid_size: int = 32 # Defines the size of each grid cell
+var grid_map: Dictionary = {}  # Dictionary to store occupied cells
+var demon_cost: int = 25  # Holds the cost of the currently selected demon
+var demon_to_move: Demon
 var demon_highlighted := false
-var highlight_demon_global_pos 
+var highlight_demon_global_pos: Vector2
 var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
 var empty_demon_scene := preload("res://_Entities/Demons/Empty/EmptyDemon.tscn")
-var crawler_not_placed := true 
-var hero_demon : Demon 
+var crawler_not_placed := true
+var hero_demon: Demon
 
 signal demon_placed(grid_position: Vector2)
 signal crawler_placed(grid_position: Vector2)
@@ -36,7 +37,7 @@ func _ready() -> void:
 
 
 # Reference the DemonSelectionMenu dynamically
-func get_selected_demon():
+func get_selected_demon() -> PackedScene:
 	#print("Emit Test")
 	test_signal.emit()
 	if demon_highlighted:
@@ -133,24 +134,24 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
 
 # Clear a space for a new demon to go 
-func clear_space(passed_grid_pos):
-	var demon_node = grid_map.get(passed_grid_pos)
+func clear_space(passed_grid_pos: Vector2) -> void:
+	var demon_node: Demon = grid_map.get(passed_grid_pos)
 	if demon_node != null:
 		print(demon_node , " Demon Node will DIE from CLEAR SPACE")
 		demon_node.die_fromClearSpace()
 	grid_map.erase(passed_grid_pos)
 	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
-func clear_space_alt(passed_grid_pos):
-	var demon_node = grid_map.get(passed_grid_pos)
+func clear_space_alt(passed_grid_pos: Vector2) -> void:
+	var demon_node: Demon = grid_map.get(passed_grid_pos)
 	if demon_node != null:
 		demon_node.die_fromClearSpace()
 	grid_map.erase(passed_grid_pos)
 	#Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 	
-func detect_demon(passed_grid_pos):
+func detect_demon(passed_grid_pos: Vector2) -> bool:
 	#print("QQ Grid Map is ", grid_map)
-	var demon_node = grid_map.get(passed_grid_pos)
+	var demon_node: Demon = grid_map.get(passed_grid_pos)
 	
 	if demon_node != null:
 		#print("Demon Node is , ",demon_node, " returning true" )
@@ -160,7 +161,7 @@ func detect_demon(passed_grid_pos):
 		return false 
 	
 
-func move_demon(this_demon_to_move, passed_new_grid_pos):
+func move_demon(this_demon_to_move: Demon, passed_new_grid_pos: Vector2) -> void:
 	this_demon_to_move.toggle_highlight()
 	selected_demon_scene = occulum_scene
 	place_demon(passed_new_grid_pos)
@@ -173,7 +174,7 @@ func move_demon(this_demon_to_move, passed_new_grid_pos):
 	clear_space(highlight_demon_global_pos)
 	pass
 	
-func place_empty_blocker_demon(grid_pos):
+func place_empty_blocker_demon(grid_pos: Vector2) -> void:
 	selected_demon_scene = empty_demon_scene
 	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
 		pass
@@ -227,7 +228,7 @@ func place_empty_blocker_demon(grid_pos):
 	
 	
 # Place the selected demon on the grid
-func place_demon(grid_pos: Vector2):
+func place_demon(grid_pos: Vector2) -> void:
 	if(grid_pos.x<769 && grid_pos.y<336 && grid_pos.y > 48):
 		pass
 	else:
@@ -350,7 +351,7 @@ func place_demon(grid_pos: Vector2):
 
 # Helper function to generate sequential names
 func generate_unique_name(base_name: String) -> String:
-	var used_numbers = []
+	var used_numbers: Array = []
 	# Collect all existing numbers from siblings
 	for child in get_parent().get_node("GameLayer").get_children():
 		if child.name.begins_with(base_name):
@@ -370,23 +371,23 @@ func generate_unique_name(base_name: String) -> String:
 	return base_name + str(candidate)
 	
  
-func add_blood(amount):
+func add_blood(amount: int) -> void:
 	blood_points += amount
 	#Global.ui_layer.set_blood(str(blood_points))
 	get_parent().get_node("UILayer").set_blood(str(blood_points))
 	
 
-func play_blood_collect():
+func play_blood_collect() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	
 
-func _on_SetBlood_timeout():
+func _on_SetBlood_timeout() -> void:
 	if(get_parent().name == "Main"):
 		get_parent().get_node("UILayer").set_blood(str(blood_points))
 	else:
 		get_parent().get_node("UILayer").set_blood(str(blood_points))
 
-func swap_heart():
+func swap_heart() -> void:
 	#print("Hero Demon Is ", hero_demon)
 	if hero_demon != null:
 		if "Alternate" in get_parent().name :
@@ -416,7 +417,7 @@ func swap_heart():
 			grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
 
 #Clear Hero Demon When Swapping Dimensions 
-func clear_hero_demon():
+func clear_hero_demon() -> void:
 	if hero_demon != null:
 		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = empty_demon_scene
 		grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = empty_demon_scene

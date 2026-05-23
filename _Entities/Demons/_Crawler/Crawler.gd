@@ -3,31 +3,31 @@ extends Demon
 
 # --- Exports ---
 @export var spiderling_wait_time := 2
-@export var spinalOcculumHealth = 375
+@export var spinalOcculumHealth: float = 375
 
-@export var damage := 60
+@export var damage: float = 60
 @export var attack_speed_mult := 1.0
 @export var projectile_spawn_offest: Vector2 = Vector2(32, 0)
 @export var blood_worth_to_add := 10.0
 
 # --- Preloads ---
-var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")
-var spiderling_scene = preload("res://_Entities/Demons/_Crawler/spiderling.tscn")
+var projectile_scene: PackedScene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")
+var spiderling_scene: PackedScene = preload("res://_Entities/Demons/_Crawler/spiderling.tscn")
 
 # --- State ---
-var canAttack = false
-var second_shot_timer : Timer
-var spiderling_timer : Timer
-var canAttackSetTrueOnce = false
+var canAttack: bool = false
+var second_shot_timer: Timer
+var spiderling_timer: Timer
+var canAttackSetTrueOnce: bool = false
 
 # --- Component References ---
-@onready var attack_ray = $DMG_RayCast2D
+@onready var attack_ray: RayCast2D = $DMG_RayCast2D
 @onready var projectile_shoot_component := $ProjectileShootComponent
 
 
 # --- Lifecycle ---
 
-func _ready():
+func _ready() -> void:
 	super()
 
 
@@ -36,23 +36,23 @@ func _ready():
 func get_damage():
 	return projectile_shoot_component.damage
 
-func get_cost():
+func get_cost() -> int:
 	return cost
 
-func get_demon_true_name():
+func get_demon_true_name() -> String:
 	return "Crawler"
 
-func get_demon_name():
+func get_demon_name() -> String:
 	return "CRAWLER"
 
-func get_can_attack():
+func get_can_attack() -> bool:
 	return projectile_shoot_component.canAttack
 
 
 # --- Buff System ---
 
-func receive_buff(newDemon):
-	var demonName = (newDemon.get_demon_true_name())
+func receive_buff(newDemon) -> void:
+	var demonName: String = (newDemon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		projectile_shoot_component.receive_buff(demonName)
@@ -75,14 +75,14 @@ func receive_buff(newDemon):
 				add_child(spiderling_timer)
 				spiderling_timer.start()
 
-func debuff():
+func debuff() -> void:
 	animSpriteComp.debuff()
 	super()
 
 
 # --- Death ---
 
-func _cleanup():
+func _cleanup() -> void:
 	# No demon-specific cleanup needed beyond base
 	super()
 
@@ -91,7 +91,7 @@ func _cleanup():
 
 func _on_spawn_spiderling_timeout() -> void:
 	if mawBuff:
-		var spiderling = spiderling_scene.instantiate()
+		var spiderling: Node2D = spiderling_scene.instantiate()
 		spiderling.position = position + Vector2(8, -4)
 		if self.is_in_group("Green"):
 			spiderling.add_to_group("Green")

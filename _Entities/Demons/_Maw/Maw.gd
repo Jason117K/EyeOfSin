@@ -14,31 +14,31 @@ const DEFAULT_CHARGE_COST := 1
 @export var alt_target_color: Color
 @export var alt_replace_color: Color
 @export var debug_mode: bool = false
-@export var bloodAmount = 10
+@export var bloodAmount: int = 10
 @export var digestTime: float = 15.0
 @export var wyrm_buffed_digestion_time : float = 5.0
 @export var spinal_occulum_buffed_digestion_time : float = 9.0
 @export var spinal_occulum_heal_amount := 300
 @export var consume_zombie_group_wait_time := 5.0
-@export var spinalOcculumHealth = 1500
-@export var spinal_occulum_max_health = 1500
+@export var spinalOcculumHealth: float = 1500
+@export var spinal_occulum_max_health: float = 1500
 @export var web_belch_distance := Vector2(128, 0)
 
 # --- Component References ---
 @onready var tentacle1: Tentacle = $Tentacle1
 @onready var tentacle2: Tentacle = $Tentacle2
 @onready var tentacle3: Tentacle = $Tentacle3
-@onready var detectionAreaShape = $DetectionComponent/CollisionShape2D
-@onready var detection_area = $DetectionComponent
-@onready var ogDetectionRadius = detectionAreaShape.shape.radius
-@onready var ogDigestTime = digestTime
+@onready var detectionAreaShape: CollisionShape2D = $DetectionComponent/CollisionShape2D
+@onready var detection_area: Area2D = $DetectionComponent
+@onready var ogDetectionRadius: float = detectionAreaShape.shape.radius
+@onready var ogDigestTime: float = digestTime
 
 # --- State ---
 var tentacles: Array[Tentacle] = []
 var available_tentacles: Array[Tentacle] = []
 var enemies_to_eat: Array = []
 var eating_groups: Dictionary = {}
-var consume_zombie_group_timer : Timer
+var consume_zombie_group_timer: Timer
 
 # Buff state
 var willBelchWebs := false
@@ -52,7 +52,7 @@ var is_demo := false
 
 # --- Lifecycle ---
 
-func _ready():
+func _ready() -> void:
 	super()
 	collision_mask = 2
 	# --- Tentacle setup ---
@@ -60,7 +60,7 @@ func _ready():
 	# --- Demon-specific collision ---
 	_init_demon_collision()
 
-func _init_demon_collision():
+func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):
 		detection_area.set_collision_mask_value(1, false)
 		detection_area.set_collision_mask_value(2, false)
@@ -76,23 +76,23 @@ func _init_demon_collision():
 
 # --- Getters ---
 
-func get_cost():
+func get_cost() -> float:
 	return cost
 
-func get_demon_name():
+func get_demon_name() -> String:
 	return "MAW"
 
-func get_demon_true_name():
+func get_demon_true_name() -> String:
 	return "Maw"
 
-func get_damage():
+func get_damage() -> String:
 	return "INSTAKILL"
 
 
 # --- Buff System ---
 
-func receive_buff(demon):
-	var demonName = (demon.get_demon_true_name())
+func receive_buff(demon) -> void:
+	var demonName: String = (demon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		match demonName:
@@ -118,19 +118,19 @@ func receive_buff(demon):
 			"Maw":
 				pass
 
-func debuff():
+func debuff() -> void:
 	super()
 
 
 # --- Death ---
 
-func _cleanup_manager():
+func _cleanup_manager() -> void:
 	# Maw occupies two grid spaces
-	if DemonManager != null:
-		DemonManager.clear_space(Vector2(self.global_position.x - 16, self.global_position.y))
-		DemonManager.clear_space(Vector2(self.global_position.x + 16, self.global_position.y))
+	if demon_manager != null:
+		demon_manager.clear_space(Vector2(self.global_position.x - 16, self.global_position.y))
+		demon_manager.clear_space(Vector2(self.global_position.x + 16, self.global_position.y))
 
-func _cleanup():
+func _cleanup() -> void:
 	# Free tentacles before base cleanup
 	if tentacle1: tentacle1.queue_free()
 	if tentacle2: tentacle2.queue_free()
@@ -140,7 +140,7 @@ func _cleanup():
 
 # --- Tentacle System ---
 
-func setup_tentacles():
+func setup_tentacles() -> void:
 	tentacles = [tentacle1, tentacle2, tentacle3]
 	available_tentacles = tentacles.duplicate()
 
@@ -156,7 +156,7 @@ func setup_tentacles():
 	if debug_mode:
 		print("[Maw] Setup complete: %d tentacles ready" % tentacles.size())
 
-func get_tentacles():
+func get_tentacles() -> Array[Tentacle]:
 	return available_tentacles
 
 func _get_retraction_center() -> Vector2:
@@ -178,7 +178,7 @@ func _is_being_eaten(target) -> bool:
 			return true
 	return false
 
-func assign_tentacle_to_target(target):
+func assign_tentacle_to_target(target) -> void:
 	if _is_being_eaten(target):
 		if debug_mode:
 			print("[Maw] Target already being eaten, skipping")
@@ -218,7 +218,7 @@ func assign_tentacle_to_target(target):
 	if debug_mode:
 		print("[Maw] Assigned %d tentacles to cost-%d %s — Available: %d" % [cost, cost, target.name, available_tentacles.size()])
 
-func _process_queue():
+func _process_queue() -> void:
 	var made_progress := true
 	while made_progress and not enemies_to_eat.is_empty():
 		made_progress = false
@@ -314,7 +314,7 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 
 # --- Digest Effects ---
 
-func spawn_swords():
+func spawn_swords() -> void:
 	var blood_sword_spell := DIGEST_SWORD_SCENE.instantiate()
 	if is_demo:
 		get_parent().add_child(blood_sword_spell)
@@ -337,15 +337,15 @@ func spawn_swords():
 		blood_sword_spell.set_maw_parent()
 		blood_sword_spell.setup_collision_and_damage_zombies()
 
-func generate_blood():
-	var blood_instance = BLOOD_SCENE.instantiate()
+func generate_blood() -> void:
+	var blood_instance: Node = BLOOD_SCENE.instantiate()
 	get_parent().add_child(blood_instance)
 	blood_instance.setWorth(bloodAmount)
 	blood_instance.global_position = animSpriteComp.global_position
 	blood_instance.global_position = blood_instance.global_position + Vector2(0, -16)
 
-func belch_webs():
-	var web_ball = WEB_BALL_SCENE.instantiate()
+func belch_webs() -> void:
+	var web_ball: Node = WEB_BALL_SCENE.instantiate()
 	if is_demo:
 		get_parent().add_child(web_ball)
 		web_ball.global_position = animSpriteComp.global_position + Vector2(256, 256)
@@ -368,7 +368,7 @@ func belch_webs():
 
 # --- Consume Zombie Group (Hive Buff) ---
 
-func add_consume_zombie_group_component():
+func add_consume_zombie_group_component() -> void:
 	consume_zombie_group = (Global.get_consume_zombie_group_scene()).instantiate()
 
 	if is_demo:
@@ -394,12 +394,12 @@ func add_consume_zombie_group_component():
 		consume_zombie_group.done_eating.connect(devour_complete)
 		print_scene_tree(consume_zombie_group)
 
-func devour_zombies():
+func devour_zombies() -> void:
 	if devour_done:
 		devour_done = false
 		consume_zombie_group.get_highest_zombie_concentration_and_eat()
 
-func devour_complete():
+func devour_complete() -> void:
 	devour_done = true
 
 
@@ -419,7 +419,7 @@ func _on_detection_component_area_entered(area: Area2D) -> void:
 
 # --- Demo ---
 
-func set_demo_digest():
+func set_demo_digest() -> void:
 	digestTime = 3.0
 	_set_tentacle_digestion_time(digestTime)
 	is_demo = true
@@ -428,16 +428,16 @@ func set_demo_digest():
 
 # --- Spawn ---
 
-func finish_spawn():
+func finish_spawn() -> void:
 	super()
 	show_tentacles()
 
-func show_tentacles():
+func show_tentacles() -> void:
 	tentacle1.visible = true
 	tentacle2.visible = true
 	tentacle3.visible = true
 
-func get_out_of_place_nodes():
+func get_out_of_place_nodes() -> Array:
 	return [$DetectionComponent, $CollisionShape2D, $PreviewNodes]
 
 
