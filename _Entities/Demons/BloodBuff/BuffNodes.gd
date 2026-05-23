@@ -90,7 +90,7 @@ func _process(_delta: float) -> void:
 			var area_number := child.name.replace("TileArea", "")
 
 			# Look for overlapping areas
-			var overlapping_areas := child.get_overlapping_areas()
+			var overlapping_areas :Array[Area2D]= child.get_overlapping_areas()
 
 			# Find the corresponding BloodTile
 			var blood_tile_name := "BloodTile" + area_number

@@ -1,11 +1,11 @@
 extends Node2D
 #VaultSpecialMoveComp.gd
 
-@onready var animatedSprite = $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
+@onready var animatedSprite := $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
 @onready var speedComp = $"../SpeedComponent"       # RefCounted to speed component 
 @onready var attack_comp := $"../AttackComponent"
 @onready var parent = get_parent()                  # RefCounted to parent 
- 
+var vaultTimer :Timer
 #@onready var tween = Tween.new()  # Create new Tween node
 var tween
 var move_duration = 3.3  # Duration of the vault movement in seconds
@@ -23,7 +23,7 @@ func executeMove():
 	animatedSprite.animation = "Vault"
 	speedComp.setSpeed(0)
 
-	var vaultTimer = Timer.new()
+	vaultTimer = Timer.new()
 	add_child(vaultTimer)
 	vaultTimer.wait_time = move_duration
 	vaultTimer.one_shot = true
@@ -55,9 +55,9 @@ func _on_vault_timer_timeout():
 		tween.stop()
 	
 	# Clean up the timer
-	var timer = get_node("Timer")
-	if timer:
-		timer.queue_free()
+
+	if vaultTimer:
+		vaultTimer.queue_free()
 	
 	moveFinished()
 

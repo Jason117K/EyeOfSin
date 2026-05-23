@@ -14,7 +14,7 @@ signal level_ended
 @export var preview_lead_time: float = 25.0
 
 ## Player health — will be extracted to a separate node later.
-@export var health_points: int = 10
+@export var health_points: int = 1000
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
@@ -52,15 +52,18 @@ func _setup():
 			preview.set_green()
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
-
-	$Area2D.connect("area_entered", _on_damage_area_entered)
+		
+	if not $Area2D.area_entered.is_connected(_on_damage_area_entered):
+		$Area2D.connect("area_entered", _on_damage_area_entered)
 
 	# Show wave 0 preview with start button so the player can begin
 	for preview in _wave_previews:
 		preview.show_preview(0, true)
-	
-	waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
-	previewTimer.timeout.connect(_on_preview_timer_timeout)
+	if not waveDelayTimer.timeout.is_connected(_on_wave_delay_timer_timeout):
+		waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
+	if not previewTimer.timeout.is_connected(_on_preview_timer_timeout):
+		previewTimer.timeout.connect(_on_preview_timer_timeout)
+
 	#var purple = get_tree().get_first_node_in_group("Purple")
 	#var green = get_tree().get_first_node_in_group("Green")
 	#if purple and purple.has_method("get_health_ui"):

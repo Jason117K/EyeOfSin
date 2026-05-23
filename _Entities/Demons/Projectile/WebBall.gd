@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# Calculate current position using quadratic bezier curve
-	var t := time / travel_time
+	var t : float = time / travel_time
 	var mid_point := calculate_mid_point()
 	var p0 = start_position
 	var p1 = mid_point
@@ -88,8 +88,8 @@ func calculate_trajectory() -> void:
 
 # Calculate the midpoint of the curve 
 func calculate_mid_point() -> Vector2:
-	var mid_x := (start_position.x + target_position.x) / 2
-	var mid_y := min(start_position.y, target_position.y) - \
+	var mid_x :float = (start_position.x + target_position.x) / 2
+	var mid_y :float = min(start_position.y, target_position.y) - \
 				start_position.distance_to(target_position) * 0.3
 	return Vector2(mid_x, mid_y)
 

@@ -35,7 +35,8 @@ var demon: Demon
 @onready var line2D := Line2D.new()
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
-@onready var attack_ray := $"../../DMG_RayCast2D"
+#@onready var attack_ray := $"../../DMG_RayCast2D"
+var attack_ray : Node
 
 var cooldown_timer := Timer.new() 
 # State variables 
@@ -49,7 +50,8 @@ var done_firing := true
 var isSlowingProjectile := false
 @export var isDisabled := false
 
-@onready var projectile_shoot_component := $"../../ProjectileShootComponent"
+#@onready var projectile_shoot_component := $"../../ProjectileShootComponent"
+var projectile_shoot_component : Node
 
 func _find_demon_ancestor() -> Demon:
 	var node = get_parent()
@@ -60,6 +62,10 @@ func _find_demon_ancestor() -> Demon:
 	return null
 
 func _ready() -> void:
+	attack_ray =get_node_or_null("../../DMG_RayCast2D")
+	projectile_shoot_component = get_node_or_null("../../ProjectileShootComponent")
+	
+	
 	demon = _find_demon_ancestor()
 	if demon:
 		laser_color = demon.laser_color
@@ -213,7 +219,7 @@ func _on_laser_timeout() -> void:
 	_update_laser()
 	_update_collision_shape()
 	done_firing = true 
-	cooldown_timer.start()
+	#cooldown_timer.start()
 
 
 # Set the laser color 

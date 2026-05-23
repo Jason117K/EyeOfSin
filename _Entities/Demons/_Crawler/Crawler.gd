@@ -74,6 +74,9 @@ func receive_buff(newDemon) -> void:
 				spiderling_timer.timeout.connect(_on_spawn_spiderling_timeout)
 				add_child(spiderling_timer)
 				spiderling_timer.start()
+				if $"../Arm" != null:
+					$"../Arm".visible = true 
+					$"../Arm2".visible = true 
 
 func debuff() -> void:
 	animSpriteComp.debuff()

@@ -120,7 +120,7 @@ func on_hit(area: Area2D) -> void:
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
 		#print("Area Hit Is ", area)
-		var healthComp := area.getHealthComponent()
+		var healthComp :ZombieHealthComponent = area.getHealthComponent()
 		if is_slowing:
 			area.slow()
 		if spinalOcculumBuff:

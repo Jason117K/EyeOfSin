@@ -33,7 +33,7 @@ func _ready() -> void:
 	if get_parent().has_method("crawler_placed"):
 		self.connect("_on_crawler_placed", Callable(get_parent(), "crawler_placed"))
 	print("blood_points is ", blood_points, str(blood_points))
-	get_parent().get_node("UILayer").set_initial_blood(str(blood_points))
+	get_parent().get_node("UILayer").set_initial_blood(blood_points)
 
 
 # Reference the DemonSelectionMenu dynamically
@@ -316,21 +316,21 @@ func place_demon(grid_pos: Vector2) -> void:
 		blood_points -= demon_cost
 		
 		#Global.ui_layer.set_blood(str(blood_points))
-		get_parent().get_node("UILayer").set_blood(str(blood_points))
+		get_parent().get_node("UILayer").set_blood(blood_points)
 		
 		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 
-		print("Pdemon name is ", demon_instance.name)
+		#print("Pdemon name is ", demon_instance.name)
 		if "SpinalOcculum" in demon_instance.name:
 			spinalOcculum_placed.emit(grid_pos)
 			pass
 		elif "Occulum" in demon_instance.name:
-			print("Selected Demon Scene is : ", demon_instance.name)
+			#print("Selected Demon Scene is : ", demon_instance.name)
 			#TODO change to occulum_placed
 			demon_placed.emit(grid_pos)
 			Global.incrementOcculumCount()
 		elif "Crawler" in demon_instance.name:
-			print("[TUTORIAL] Emit Crawler Placed")
+			#print("[TUTORIAL] Emit Crawler Placed")
 			crawler_placed.emit(grid_pos)
 			crawler_not_placed = false
 		elif "Wyrm" in demon_instance.name:
@@ -342,7 +342,7 @@ func place_demon(grid_pos: Vector2) -> void:
 
 		
 	else:
-		print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+		#print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
 		#Global.notification_bar.show()
 		#Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
 		pass
@@ -374,7 +374,7 @@ func generate_unique_name(base_name: String) -> String:
 func add_blood(amount: int) -> void:
 	blood_points += amount
 	#Global.ui_layer.set_blood(str(blood_points))
-	get_parent().get_node("UILayer").set_blood(str(blood_points))
+	get_parent().get_node("UILayer").set_blood(blood_points)
 	
 
 func play_blood_collect() -> void:
@@ -383,9 +383,9 @@ func play_blood_collect() -> void:
 
 func _on_SetBlood_timeout() -> void:
 	if(get_parent().name == "Main"):
-		get_parent().get_node("UILayer").set_blood(str(blood_points))
+		get_parent().get_node("UILayer").set_blood(blood_points)
 	else:
-		get_parent().get_node("UILayer").set_blood(str(blood_points))
+		get_parent().get_node("UILayer").set_blood(blood_points)
 
 func swap_heart() -> void:
 	#print("Hero Demon Is ", hero_demon)

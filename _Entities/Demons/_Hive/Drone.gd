@@ -49,7 +49,7 @@ func _ready() -> void:
 	# Create & configure attack timer
 	var timer := Timer.new()
 	add_child(timer)
-	var attack_length := animatedSpriteComp.get_animation_length("attack")
+	var attack_length : float = animatedSpriteComp.get_animation_length("attack")
 	#print("Attack animation is ", attack_length, " seconds long")
 	timer.wait_time = attack_length
 	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
@@ -77,7 +77,7 @@ func _ready() -> void:
 		set_collision_layer_value(3,false)
 
 func current_zombie_dead() -> void:
-	print(self, " received 77 zombie dead signal")
+	#print(self, " received 77 zombie dead signal")
 	current_zombie = null
 	
 func demon_minion_busy(questioning_zombie: Zombie) -> bool:
@@ -137,7 +137,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
-		print("Die Cos Health too Low")
+		#print("Die Cos Health too Low")
 		die()
 
 func get_health() -> int:
@@ -173,7 +173,7 @@ func death_slow() -> void:
 		current_zombie_to_fight.slow()
 	
 func death_explode() -> void:
-	var death_bomb := Global.get_bomb_scene().instantiate()
+	var death_bomb :Area2D= Global.get_bomb_scene().instantiate()
 	if is_demo:
 		print("DRONE GO BOOM")
 		get_parent().get_parent().add_child(death_bomb)
@@ -193,17 +193,18 @@ func death_explode() -> void:
 	
 func generate_blood() -> void:
 	print("Generating Blood")
-	var blood_instance := Global.get_blood_scene().instantiate()
+	var blood_instance :Area2D= Global.get_blood_scene().instantiate()
 	get_parent().add_child(blood_instance)
 	blood_instance.set_fast_pickup_time()
 	blood_instance.global_position = self.global_position
 
 
 func enable_hurtbox() -> void:
-	$HurtBox.disabled = false
+	$HurtBox.set_deferred("disabled", false)
+	
 # Attacks a given enemy without buffs 
 func attack_target(enemy: Area2D) -> void:
-	$HurtBox.disabled = false
+	$HurtBox.set_deferred("disabled", false)
 	current_target = enemy
 	#if explodeBuff:
 		#enemy.fightDroneExplode()
@@ -227,7 +228,7 @@ func _physics_process(delta: float) -> void:
 				state = State.RETURNING
 				velocity = Vector2.ZERO
 				return
-			var direction := current_target.global_position - global_position
+			var direction :Vector2= current_target.global_position - global_position
 
 			var distance := direction.length()
 			if distance > attack_range:
@@ -255,7 +256,7 @@ func _physics_process(delta: float) -> void:
 			#if not rest_position:
 				#state = State.IDLE
 				#return
-			var direction := rest_position - global_position
+			var direction :Vector2= rest_position - global_position
 			var distance := direction.length()
 			if distance > return_threshold:
 				velocity = direction.normalized() * move_speed
@@ -289,4 +290,3 @@ func exit_combat() -> void:
 
 func get_enemy_combatant():
 	return current_zombie_to_fight
-

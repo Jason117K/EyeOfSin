@@ -36,7 +36,7 @@ var demo_fast_wait_time := 3.0
 # --- Component References ---
 @onready var bloodTimer = $BloodTimer
 @onready var resetEatingTimer = $ResetEatingSpeed
-@onready var healInvisTimer = $HealInvisTimer
+#@onready var healInvisTimer = $HealInvisTimer
 @onready var healing_zone_sprite = $HealingAnimSprite
 @onready var healZone := $HealZone
 @onready var webbing_aoe_sprite = $Webs
@@ -49,7 +49,7 @@ var healTimer : Timer
 
 # --- Lifecycle ---
 
-func _ready():
+func _ready()->void:
 	super()
 	# --- Timer setup ---
 	bloodTimer.wait_time = bloodWaitTime

@@ -43,8 +43,8 @@ func _ready():
 
 
 	bgMusic.playing = true
-	
-	levelSelectButton.pressed.connect(_on_level_select_button_pressed)
+	if not levelSelectButton.pressed.is_connected(_on_level_select_button_pressed):
+		levelSelectButton.pressed.connect(_on_level_select_button_pressed)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	Global.hideDemonSelectionMenu()

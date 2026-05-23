@@ -192,6 +192,7 @@ func assign_tentacle_to_target(target) -> void:
 	if available_tentacles.size() < cost:
 		if not target in enemies_to_eat:
 			if debug_mode:
+				
 				print("[Maw] Not enough tentacles for cost-%d %s; queueing" % [cost, target.name])
 			enemies_to_eat.append(target)
 		return

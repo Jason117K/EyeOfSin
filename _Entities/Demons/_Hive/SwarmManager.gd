@@ -50,18 +50,18 @@ func get_all_drones() -> Array:
 
 func kill_all_drones() -> void:
 	for enemy in drone_assignments.keys():
-		var drones := drone_assignments[enemy]
+		var drones :Array = drone_assignments[enemy]
 		for i in range(drones.size() - 1, -1, -1):
 			if is_instance_valid(drones[i]):
 				drones[i].die()
 		while drone_assignments[enemy].size() > 0:
-			var drone := available_drones.pop_back()
+			var drone :Area2D= available_drones.pop_back()
 			if is_instance_valid(drone):
 				drone.die()
 	print("Avaliable Drones is " , available_drones)
 	
 	while available_drones.size() > 0:
-		var drone := available_drones.pop_back()
+		var drone :Area2D= available_drones.pop_back()
 		if is_instance_valid(drone):
 			drone.die()
 		
@@ -114,11 +114,13 @@ func spawn_initial_drones() -> void:
 
 
 func _on_enemy_entered(area: Area2D) -> void:
-	print("Area Entered ", area)
+	#print("Area Entered ", area)
 	if area.is_in_group("Zombie"):
 		enemy_queue.append(area)
 		active_enemies.append(area)
-		area.connect("enemy_died", Callable(self, "_on_enemy_died"))
+	#	area.connect("zombie_death", Callable(self, "_on_enemy_died"))
+		if not area.zombie_death.is_connected(_on_enemy_died.bind(area)):
+			area.zombie_death.connect(_on_enemy_died.bind(area))
 		optimize_drone_assignments()
 
 
@@ -128,7 +130,7 @@ func _on_enemy_exited(area: Area2D) -> void:
 		active_enemies.erase(area)
 
 		if area in drone_assignments:
-			var freed_drones := drone_assignments[area]
+			var freed_drones :Array = drone_assignments[area]
 			available_drones.append_array(freed_drones)
 			drone_assignments.erase(area)
 
@@ -141,7 +143,7 @@ func _on_enemy_exited(area: Area2D) -> void:
 			return_drones_to_rest()
 
 
-func _on_enemy_died(enemy: Area2D) -> void:
+func _on_enemy_died(enemy: Zombie) -> void:
 	_on_enemy_exited(enemy)
 
 
@@ -180,7 +182,7 @@ func optimize_drone_assignments() -> void:
 		return
 
 	var enemies_to_assign := enemy_queue.slice(0, min(enemy_queue.size(), max_drones))
-	print("Enemies to ass is ", enemies_to_assign)
+	#print("Enemies to ass is ", enemies_to_assign)
 	if enemies_to_assign.is_empty():
 		return
 
@@ -199,13 +201,13 @@ func optimize_drone_assignments() -> void:
 		for _i in range(num_drones):
 			if available_drones.is_empty():
 				break
-			var drone := available_drones.pop_front()
+			var drone :Area2D= available_drones.pop_front()
 			drone_assignments[enemy].append(drone)
 			command_drone_to_attack(drone, enemy)
 
 
 func command_drone_to_attack(drone: Node, enemy: Area2D) -> void:
-	print("Drone ", drone, " is being commaned to attack enemy : ", enemy)
+	#print("Drone ", drone, " is being commaned to attack enemy : ", enemy)
 	if is_instance_valid(enemy) and not enemy.is_queued_for_deletion():
 		drone.enable_hurtbox()
 		drone.attack_target(enemy)

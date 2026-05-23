@@ -3,26 +3,26 @@ extends Node2D
 
 
 # Animation parameters
-@export var bob_speed = 2.0  # Speed of the up/down motion
-@export var bob_height = 30.0  # How far the worm moves up/down
-@export var squash_amount = 0.3  # How much the worm squashes (0-1)
-@export var stretch_amount = 0.3  # How much the worm stretches (0-1)
-@export var bounce_elasticity = 0.3  # How "bouncy" the squash/stretch is (0-1)
-@export var animation_exaggeration = 1.0  # Overall multiplier for animation effects
+@export var bob_speed := 2.0  # Speed of the up/down motion
+@export var bob_height := 30.0  # How far the worm moves up/down
+@export var squash_amount := 0.3  # How much the worm squashes (0-1)
+@export var stretch_amount := 0.3  # How much the worm stretches (0-1)
+@export var bounce_elasticity := 0.3  # How "bouncy" the squash/stretch is (0-1)
+@export var animation_exaggeration := 1.0  # Overall multiplier for animation effects
 
 # Node references
 @export var sprite_path: NodePath  
 @export var sprite_path2: NodePath  
 @onready var sprite = get_node(sprite_path) if sprite_path else null
-@onready var sprite2 = get_node(sprite_path2) if sprite_path else null
+#@onready var sprite2 = get_node(sprite_path2) if sprite_path else null
 # Internal animation state
-var time = 0.0
-var current_squash = 0.0
-var current_stretch = 0.0
-var target_squash = 0.0
-var target_stretch = 0.0
-var velocity = 0.0
-var prev_y = 0.0
+var time := 0.0
+var current_squash := 0.0
+var current_stretch := 0.0
+var target_squash := 0.0
+var target_stretch := 0.0
+var velocity := 0.0
+var prev_y := 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  # Store the initial position
 

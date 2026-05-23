@@ -7,10 +7,15 @@ var hiveSpawnDroneBuffed := false
 var cooldown_timer : Timer
 
 @onready var attack_ray_1 = $"../DMG_RayCast2D"
-@onready var shootPosition1 = $"../Worm1/LaserShootComponent"
-@onready var shootPosition2 = $"../Worm2/LaserShootComponent"
-@onready var laser_shoot_comp_1 := $"../Worm1/LaserShootComponent"
-@onready var laser_shoot_comp_2 := $"../Worm2/LaserShootComponent"
+#@onready var shootPosition1 = $"../Worm1/LaserShootComponent"
+#@onready var shootPosition2 = $"../Worm2/LaserShootComponent"
+#@onready var laser_shoot_comp_1 := $"../Worm1/LaserShootComponent"
+#@onready var laser_shoot_comp_2 := $"../Worm2/LaserShootComponent"
+
+var shootPosition1 : Node
+var shootPosition2 : Node
+var laser_shoot_comp_1 : Node
+var laser_shoot_comp_2 : Node
 
 var cooldown: float = 3
 var occulum_buff_cooldown: float = 0.9
@@ -20,6 +25,13 @@ var projectile_damage := 20
 var bleed_damage_increase := 2
 
 func _ready() -> void:
+	laser_shoot_comp_1 = get_node_or_null("../Worm1/LaserShootComponent")
+	laser_shoot_comp_2 = get_node_or_null("../Worm2/LaserShootComponent")
+	shootPosition1 = get_node_or_null("../Worm1/LaserShootComponent")
+	shootPosition2 = get_node_or_null("../Worm2/LaserShootComponent")
+	
+	
+	
 	cooldown = parent_demon.projectile_cooldown
 	auto_fire = parent_demon.projectile_auto_fire
 	occulum_buff_cooldown = parent_demon.occulum_buff_cooldown
@@ -33,7 +45,7 @@ func _ready() -> void:
 	super()
 	
 	if auto_fire:
-		print("AUTO FIRE TRUUUU")
+		#print("AUTO FIRE TRUUUU")
 		cooldown_timer = Timer.new()
 		add_child(cooldown_timer)
 		cooldown_timer.wait_time = cooldown
@@ -46,7 +58,7 @@ func fire_laser():
 	if canAttack:
 		laser_shoot_comp_1.fire()
 		laser_shoot_comp_2.fire()
-		print("Shoot that proj")
+		#print("Shoot that proj")
 		shoot_projectile()
 	else:
 		pass

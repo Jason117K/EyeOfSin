@@ -1645,7 +1645,6 @@ z_index = 1
 script = ExtResource("4")
 alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
-debug_mode = true
 wyrm_buffed_digestion_time = 10.0
 spinal_occulum_buffed_digestion_time = 11.0
 spinalOcculumHealth = 1000

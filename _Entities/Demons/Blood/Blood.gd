@@ -58,12 +58,12 @@ func _ready() -> void:
 #TODO Add SFX
 func _on_Blood_mouse_entered() -> void:
 	#var demon_manager = get_parent().get_parent().get_node("DemonManager")
-	print("Demon Manager is ", demon_manager)
+	#print("Demon Manager is ", demon_manager)
 	if demon_manager:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()
 		if hiveBuff:
-			print("About to Heal Demons")
+			#print("About to Heal Demons")
 			heal_demons()
 			return
 		
@@ -85,13 +85,13 @@ func free_blood() -> void:
 	queue_free()
 
 func crawler_blood_pickup() -> void:
-	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	temp_zombie_container = aoe.get_overlapping_areas()
 	for zombie in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			nearby_zombies.append(zombie)
 	if nearby_zombies.is_empty() == true:
-		print("NO NEARBY ZOMBIES : ", nearby_zombies)
+		#print("NO NEARBY ZOMBIES : ", nearby_zombies)
 		queue_free()
 	else:
 		#nearby_zombies = aoe.get_overlapping_areas()
@@ -104,7 +104,7 @@ func crawler_blood_pickup() -> void:
 			if current_target_health > highest_health:
 				highest_health = current_target_health
 				current_zombie_target = zombie
-		print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
+		#print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
 		#TODO Sort By Health
 		attack_zombie(current_zombie_target)
 
@@ -160,11 +160,11 @@ func attack_zombie(zombie_to_attack) -> void:
 	
 	
 func heal_demons() -> void:
-	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	for entity in aoe.get_overlapping_areas():
 		if entity.is_in_group("Demons"):
 			demons_to_heal.append(entity)
-	print("Demons to heal is ", demons_to_heal)
+	#print("Demons to heal is ", demons_to_heal)
 
 	for demon in demons_to_heal:
 		if demon == null:

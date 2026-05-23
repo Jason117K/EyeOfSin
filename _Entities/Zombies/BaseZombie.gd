@@ -183,10 +183,11 @@ func spawn_slow_field_on_death():
 	get_parent().add_child(slow_field)
 
 
-func _do_spawn_drone_on_death():
-	var drone = DroneScene.instantiate()
+func _do_spawn_drone_on_death()->void:
+	var drone :Area2D = DroneScene.instantiate()
 	drone.is_stationary = true
-	get_parent().add_child(drone)
+	#get_parent().add_child(drone)
+	get_parent().call_deferred("add_child", drone)
 	if self.is_in_group("Green"):
 		drone.add_to_group("Green")
 	else:

@@ -90,7 +90,7 @@ func check_attack_rays() -> void:
 		if ray.is_colliding():
 			#print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
-				var collider := ray.get_collider(i)
+				var collider : Area2D = ray.get_collider(i)
 				#print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
 				if collider == null:
 					continue  # guard against freed/invalid colliders

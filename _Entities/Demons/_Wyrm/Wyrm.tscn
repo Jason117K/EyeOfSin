@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="18_pfhft"]
 [ext_resource type="Script" uid="uid://c1nu6cgi2l8tb" path="res://_Entities/Demons/_Wyrm/wyrm_projectile_shoot_component.gd" id="19_qxnbo"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="21_b83ow"]
+[ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="22_wr0b4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qxnbo"]
 
@@ -1203,6 +1204,8 @@ position = Vector2(1, -11)
 sprite_frames = SubResource("SpriteFrames_wr0b4")
 frame = 24
 frame_progress = 1.0
+
+[node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("22_wr0b4")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

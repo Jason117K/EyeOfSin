@@ -98,6 +98,7 @@ func _ready():
 	WyrmButton.pressed.connect(_on_WyrmButton_pressed)
 	MawButton.pressed.connect(_on_MawButton_pressed)
 	HiveButton.pressed.connect(_on_HiveButton_pressed)
+
 	HeartButton.pressed.connect(_on_heart_button_pressed)
 
 	

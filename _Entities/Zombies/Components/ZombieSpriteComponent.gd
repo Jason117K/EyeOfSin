@@ -37,8 +37,9 @@ var _current_target_anim: StringName = &""
 
 
 func _ready() -> void:
-	
-	self.connect("animation_changed",_on_animation_changed)
+	if not animation_changed.is_connected(_on_animation_changed):
+		animation_changed.connect(_on_animation_changed)
+	#self.connect("animation_changed",_on_animation_changed)
 	thisMaterial = material.duplicate()
 	material = thisMaterial
 	# Set initial shader parameters

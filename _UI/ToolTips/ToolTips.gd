@@ -25,8 +25,11 @@ signal ToolTipHid
 
 func _ready() -> void:
 	hide()
-	basicTutorialButton.pressed.connect(_on_basic_tutorial_understood_button_pressed)
-	visualTutorialButton.pressed.connect(_on_visual_tutorial_understood_button_pressed)
+	if not basicTutorialButton.pressed.is_connected(_on_basic_tutorial_understood_button_pressed):
+		basicTutorialButton.pressed.connect(_on_basic_tutorial_understood_button_pressed)
+	if not visualTutorialButton.pressed.is_connected(_on_visual_tutorial_understood_button_pressed):
+		visualTutorialButton.pressed.connect(_on_visual_tutorial_understood_button_pressed)
+
 	index = visualTutorialVisual.get_index()
 	
 func set_basic_tutorial_text(newFile : String, shouldPause : bool):

@@ -91,7 +91,7 @@ func set_is_demo() -> void:
 # --- Buff System ---
 
 func receive_buff(bufferName) -> void:
-	var demonName := (bufferName.get_demon_true_name())
+	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		for drone in swarm.get_available_drones():
@@ -120,6 +120,9 @@ func receive_buff(bufferName) -> void:
 				swarm.is_maw_buffed = true
 				for drone in swarm.get_all_drones():
 					drone.maw_buff()
+				if $"../Arm" != null:
+					$"../Arm".visible = true 
+					$"../Arm2".visible = true 
 
 # Isolates async from receive_buff — laser re-init needs physics frames
 func _activate_wyrm_buff() -> void:

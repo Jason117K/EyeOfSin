@@ -101,9 +101,9 @@ func receive_buff(new_form) -> void:
 			currentAttackAnim = "attack_Maw"
 			#animation = "idle_Maw"
 			animation = "spawn"
-			if $"../Arm" != null:
-				$"../Arm".visible = true 
-				$"../Arm2".visible = true 
+			#if $"../Arm" != null:
+				#$"../Arm".visible = true 
+				#$"../Arm2".visible = true 
 
 
 func make_buff_glow() -> void:

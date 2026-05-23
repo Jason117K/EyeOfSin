@@ -65,17 +65,23 @@ func summon_backup():
 		
 		# Set the zombie's global position
 		zombie_instance.global_position = global_spawn_pos
+
 		if self.get_parent().is_in_group("Green"):
-			#print("Summoner Spawned Green")
 			zombie_instance.add_to_group("Green")
-			zombie_instance.collision_layer = 3
 			zombie_instance.set_hue_shift(125)
-			#zombie_instance._ready()
+			zombie_instance.set_collision_layer_value(1, false)
+			zombie_instance.set_collision_layer_value(2, false)
+			zombie_instance.set_collision_layer_value(3, false)
+			zombie_instance.set_collision_layer_value(5, true)
 		else:
-			#print("Summoner Spawned Purple")
 			zombie_instance.add_to_group("Purple")
 			zombie_instance.set_hue_shift(-86)
-
+			zombie_instance.set_collision_layer_value(1, false)
+			zombie_instance.set_collision_layer_value(2, false)
+			zombie_instance.set_collision_layer_value(3, false)
+			zombie_instance.set_collision_layer_value(4, true)
+			
+			
 #Start the summon again by setting the animation 
 func _on_SummonTimer_timeout():
 	animatedSpriteComp.animation = "Summon"
