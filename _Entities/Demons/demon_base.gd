@@ -45,7 +45,7 @@ class_name Demon
 @export var healthRegen = 0.0
 @export var maxHealth = 800
 @export var regen_wait_time := 1
-
+@export var is_empty := false 
 # --- Component References ---
 @onready var animSpriteComp := $AnimatedSpriteComponent
 @onready var healthComp := $HealthComponent
@@ -64,6 +64,9 @@ signal demon_die
 # --- Lifecycle (_ready) ---
 
 func _ready() -> void:
+	if is_empty:
+		set_process(false)
+		return
 	set_process(false)
 	# --- Phase 1: Collision layers (Green/Purple) ---
 	_init_collision()

@@ -90,7 +90,7 @@ func attack_demon(collider):
 
 # Damages the target demon and decides whether or not to keep attacking
 func _on_AttackTimer_timeout():
-	print(global_position, " Attack Demon Again ",attack_starting_pos)
+	#print(global_position, " Attack Demon Again ",attack_starting_pos)
 	if abs(attack_starting_pos.x - global_position.x) > 2:
 		stop_attack()
 		return 

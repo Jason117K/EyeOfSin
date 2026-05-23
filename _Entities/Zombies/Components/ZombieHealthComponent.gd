@@ -52,7 +52,7 @@ func getInjured():
 
 
 func take_damage(damage, piercing : bool = false):
-	print(zombie.name, " just took, ", damage)
+	#print(zombie.name, " just took, ", damage)
 	health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)

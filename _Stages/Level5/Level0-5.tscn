@@ -101,7 +101,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
-blood_points = 999
+blood_points = 400
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1937544684]
 process_mode = 1

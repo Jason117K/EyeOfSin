@@ -3625,7 +3625,7 @@ wave2StartTime = 35
 skip_end_dialog = false
 
 [node name="DemonManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
-blood_points = 3250
+blood_points = 325
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=89289254]
 process_mode = 1

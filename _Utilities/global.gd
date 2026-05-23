@@ -180,11 +180,11 @@ func start_wave_1():
 		#print("Current Level is Null")
 	
 func show_guide():
-	print("UNDO THE CLEAR AND SHOW THE GUIDE FROM GLOBAL")
+#	print("UNDO THE CLEAR AND SHOW THE GUIDE FROM GLOBAL")
 	game_controller.show_guide()	
 	
 func clear_guide():
-	print("CLEAR THE GUIDE GAMECONTROLLER")
+	#print("CLEAR THE GUIDE GAMECONTROLLER")
 	game_controller.clear_guide()		
 	
 func get_game_controller():
@@ -216,7 +216,7 @@ func hero_demon_is_summoned():
 	return hero_demon_summoned
 
 func swap_scenes():
-	print("SWAP SCENES SHOULD")
+	#print("SWAP SCENES SHOULD")
 	game_controller.swap_scenes()
 	adjust_ui_layer()					
 	swap_portal_button()
@@ -244,7 +244,7 @@ func hide_ui_layer():
 		else:
 			real_ui_layers.append(item)
 	for this_ui_layer in real_ui_layers:		
-		print("Should Hide Ui Layer ", this_ui_layer)
+		#print("Should Hide Ui Layer ", this_ui_layer)
 		this_ui_layer.hide()
 		
 		
@@ -267,30 +267,30 @@ func adjust_ui_layer():
 				real_wave_previews.append(preview_item)
 				
 		for this_ui_layer in real_ui_layers:
-			print("SHOULD CHECKING UI LAYER ", this_ui_layer)
+		#	print("SHOULD CHECKING UI LAYER ", this_ui_layer)
 			if game_controller.on_purple_scene():
-				print("ON PURPLE SCENE SHOULD HIDE GREEN")
+			#	print("ON PURPLE SCENE SHOULD HIDE GREEN")
 				if this_ui_layer.make_green == true :
 					this_ui_layer.hide()
 				else:
 					this_ui_layer.show()
 			else:
-				print("ON GREEN SCENE SHOULD HIDE PURPLE")
+			#	print("ON GREEN SCENE SHOULD HIDE PURPLE")
 				if this_ui_layer.make_green == true :
 					this_ui_layer.show()
 				else:
 					this_ui_layer.hide()
 					
 		for this_preview in real_wave_previews:
-			print("SHOULD CHECKING PREVIEW ", this_preview)
+		#	print("SHOULD CHECKING PREVIEW ", this_preview)
 			if game_controller.on_purple_scene():
-				print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
+				#print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
 				if this_preview.is_green == true :
 					this_preview.hide()
 				else:
 					this_preview.show()
 			else:
-				print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
+				#print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
 				if this_preview.is_green == true :
 					this_preview.show()
 				else:

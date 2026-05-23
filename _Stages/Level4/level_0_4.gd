@@ -85,7 +85,7 @@ func _ready():
 
 
 func _configure_waves():
-	pass
+
 	zombie_spawner_1.set_waves_from_dicts([{ "Flesheater": 1, "Severed": 2}, {"Severed": 5, "Unhallower": 2}, {"Flesheater": 2, "Reborn": 3, "Unhallower": 2}])
 	zombie_spawner_2.set_waves_from_dicts([{"Severed": 2}, {"Reanimator": 1, "Severed": 4, "Unhallower": 2}, {"Reborn": 6, "Unhallower": 2}])
 	zombie_spawner_3.set_waves_from_dicts([{}, {"Reanimator": 1, "Reborn": 5, "Unhallower": 2}, {"Reanimator": 1, "Reborn": 5, "Severed": 3}])
