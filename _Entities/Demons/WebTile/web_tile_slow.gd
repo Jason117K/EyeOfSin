@@ -1,7 +1,7 @@
 extends Area2D
 
 	
-func activate():
+func activate() -> void:
 	show()
 	monitoring = true 
 	if self.is_in_group("Green"):

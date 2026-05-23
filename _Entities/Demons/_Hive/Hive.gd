@@ -3,7 +3,7 @@ extends Demon
 # --- Exports ---
 @export var waitTime := 7.0
 @export var buffedWaitTime := 4.0
-@export var drone_attack_damage = 7
+@export var drone_attack_damage := 7
 @export var spinalOcculumHealth := 800
 
 @export var projectile_cooldown: float = 3
@@ -37,13 +37,13 @@ var is_demo := false
 var buzz_audio: AudioStreamPlayer2D
 
 # --- Component References ---
-@onready var swarm = $Swarm
+@onready var swarm := $Swarm
 @onready var hive_laser_shoot_comp := $HiveLaserShootComp
 
 
 # --- Lifecycle ---
 
-func _ready():
+func _ready() -> void:
 	super()
 	# --- Component init ---
 	swarm.initialize(waitTime)
@@ -53,7 +53,7 @@ func _ready():
 	# --- Demon-specific collision ---
 	_init_demon_collision()
 
-func _init_demon_collision():
+func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):
 		$DetectionComp.collision_mask = 3
 		$DetectionComp.set_collision_mask_value(1, false)
@@ -70,19 +70,19 @@ func _init_demon_collision():
 
 # --- Getters ---
 
-func get_demon_name():
+func get_demon_name() -> String:
 	return "HIVE"
 
-func get_demon_true_name():
+func get_demon_true_name() -> String:
 	return "Hive"
 
-func get_damage():
+func get_damage() -> int:
 	return drone_attack_damage
 
-func get_cost():
+func get_cost() -> int:
 	return cost
 
-func set_is_demo():
+func set_is_demo() -> void:
 	$DetectionComp/CollisionShape2D.disabled = true
 	$DetectionComp/CollisionShape2D2.disabled = false
 	swarm.is_demo = true
@@ -90,8 +90,8 @@ func set_is_demo():
 
 # --- Buff System ---
 
-func receive_buff(bufferName):
-	var demonName = (bufferName.get_demon_true_name())
+func receive_buff(bufferName) -> void:
+	var demonName := (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		for drone in swarm.get_available_drones():
@@ -122,19 +122,19 @@ func receive_buff(bufferName):
 					drone.maw_buff()
 
 # Isolates async from receive_buff — laser re-init needs physics frames
-func _activate_wyrm_buff():
+func _activate_wyrm_buff() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	hive_laser_shoot_comp._ready()
 	$ProjectileShootComponent.enable_auto_fire()
 
-func debuff():
+func debuff() -> void:
 	super()
 
 
 # --- Death ---
 
-func _cleanup():
+func _cleanup() -> void:
 	# Kill drones and stop audio before base cleanup
 	swarm.kill_all_drones()
 	if buzz_audio and is_instance_valid(buzz_audio):
@@ -142,15 +142,12 @@ func _cleanup():
 		buzz_audio.queue_free()
 	super()
 
-func get_demon_icon()->CompressedTexture2D:
+func get_demon_icon() -> CompressedTexture2D:
 	return Global.hive_icon
-	
-func get_special_description()->String:
+
+func get_special_description() -> String:
 	return Global.hive_special_description
-	
-	
-	
-	
+
 
 # --- Preview ---
 

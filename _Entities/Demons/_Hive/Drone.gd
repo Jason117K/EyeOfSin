@@ -25,19 +25,19 @@ enum State { IDLE, PURSUING, ATTACKING, RETURNING }
 
 var state: State = State.IDLE
 var current_target = null
-var velocity = Vector2.ZERO
+var velocity := Vector2.ZERO
 var rest_position = null
-var explodeBuff = false
-var isCrawlerBuffed = false
+var explodeBuff := false
+var isCrawlerBuffed := false
 var base_attack_damage: int
-var is_in_combat = false 
+var is_in_combat := false
 var current_zombie_to_fight
-var blood_on_death := false 
-var is_maw_buffed := false 
-var is_crawler_buffed := false 
-var is_demo := false 
+var blood_on_death := false
+var is_maw_buffed := false
+var is_crawler_buffed := false
+var is_demo := false
 
-@onready var animatedSpriteComp = $AnimatedSprite2D  # RefCounted to Sprite2D Comp 
+@onready var animatedSpriteComp := $AnimatedSprite2D  # RefCounted to Sprite2D Comp
 
 
 
@@ -47,9 +47,9 @@ func _ready() -> void:
 	
 	
 	# Create & configure attack timer
-	var timer = Timer.new()
+	var timer := Timer.new()
 	add_child(timer)
-	var attack_length = animatedSpriteComp.get_animation_length("attack")
+	var attack_length := animatedSpriteComp.get_animation_length("attack")
 	#print("Attack animation is ", attack_length, " seconds long")
 	timer.wait_time = attack_length
 	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
@@ -80,7 +80,7 @@ func current_zombie_dead() -> void:
 	print(self, " received 77 zombie dead signal")
 	current_zombie = null
 	
-func demon_minion_busy(questioning_zombie) -> bool:
+func demon_minion_busy(questioning_zombie: Zombie) -> bool:
 	if current_zombie == null:
 		current_zombie = questioning_zombie
 		#print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
@@ -95,32 +95,32 @@ func spinal_occulum_buff() -> void:
 		
 	
 func occulum_buff() -> void:
-	blood_on_death = true 
-		
+	blood_on_death = true
+
 func crawler_buff() -> void:
-	is_crawler_buffed = true 
-	
+	is_crawler_buffed = true
+
 func maw_buff() -> void:
 	print("Maw Buff Drone so Drone Go Boom")
-	is_maw_buffed = true 
-		
-func make_drone_glow():
+	is_maw_buffed = true
+
+func make_drone_glow() -> void:
 	animatedSpriteComp.make_glow()
-	
-	
-func doubleDamage():
+
+
+func doubleDamage() -> void:
 	attack_damage = base_attack_damage * 2
 	animatedSpriteComp.buff()
 
-func regularDamage():
+func regularDamage() -> void:
 	attack_damage = base_attack_damage
 	animatedSpriteComp.debuff()
-	
+
 # Activates the drone explosion buff
-func makeExplode():
+func makeExplode() -> void:
 	explodeBuff = true
 
-func makeNotExplode():
+func makeNotExplode() -> void:
 	explodeBuff = false
 
 
@@ -134,29 +134,29 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 
 
 # Handles the drone taking damage
-func take_damage(amount):
+func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
 		print("Die Cos Health too Low")
 		die()
 
-func get_health():
+func get_health() -> int:
 	return health
 
-func increase_health(added_health_amount):
+func increase_health(added_health_amount: int) -> void:
 	if max_health != null:
 		health = clamp(health + added_health_amount, 0, max_health)
-		
-# Changes the drone's current animation 
-func setAnimation(newAnimation):
+
+# Changes the drone's current animation
+func setAnimation(newAnimation: String) -> void:
 	animatedSpriteComp.animation = newAnimation
 
-func set_damage(new_damage):
+func set_damage(new_damage: int) -> void:
 	attack_damage = new_damage
 
 
 
-func die():
+func die() -> void:
 	emit_signal("drone_died", self)
 	if blood_on_death:
 		pass
@@ -167,13 +167,13 @@ func die():
 	if is_crawler_buffed:
 		death_slow()
 	queue_free()
-	
-func death_slow():
+
+func death_slow() -> void:
 	if current_zombie_to_fight != null:
 		current_zombie_to_fight.slow()
 	
-func death_explode():
-	var death_bomb = Global.get_bomb_scene().instantiate()
+func death_explode() -> void:
+	var death_bomb := Global.get_bomb_scene().instantiate()
 	if is_demo:
 		print("DRONE GO BOOM")
 		get_parent().get_parent().add_child(death_bomb)
@@ -191,18 +191,18 @@ func death_explode():
 		get_parent().get_parent().add_child(death_bomb)
 		death_bomb.global_position = self.global_position
 	
-func generate_blood():
+func generate_blood() -> void:
 	print("Generating Blood")
-	var blood_instance = Global.get_blood_scene().instantiate()  
-	get_parent().add_child(blood_instance) 
-	blood_instance.set_fast_pickup_time() 
-	blood_instance.global_position = self.global_position 
-	
-	
-func enable_hurtbox():
+	var blood_instance := Global.get_blood_scene().instantiate()
+	get_parent().add_child(blood_instance)
+	blood_instance.set_fast_pickup_time()
+	blood_instance.global_position = self.global_position
+
+
+func enable_hurtbox() -> void:
 	$HurtBox.disabled = false
 # Attacks a given enemy without buffs 
-func attack_target(enemy):
+func attack_target(enemy: Area2D) -> void:
 	$HurtBox.disabled = false
 	current_target = enemy
 	#if explodeBuff:
@@ -211,25 +211,25 @@ func attack_target(enemy):
 		#enemy.make_spawn_slow_on_death()
 	state = State.PURSUING
 
-# Sends the drone back to it's original resting position 
-func return_to_position(pos):
+# Sends the drone back to it's original resting position
+func return_to_position(pos: Vector2) -> void:
 	rest_position = pos
 	current_target = null
 	state = State.RETURNING
 	exit_combat()
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	match state:
 		State.PURSUING:
-			
+
 			if not current_target or not is_instance_valid(current_target):
 				state = State.RETURNING
 				velocity = Vector2.ZERO
 				return
-			var direction = current_target.global_position - global_position
-			
-			var distance = direction.length()
+			var direction := current_target.global_position - global_position
+
+			var distance := direction.length()
 			if distance > attack_range:
 				velocity = direction.normalized() * move_speed
 				position += velocity * delta
@@ -247,7 +247,7 @@ func _physics_process(delta):
 				state = State.RETURNING
 				velocity = Vector2.ZERO
 				return
-			var distance = global_position.distance_to(current_target.global_position)
+			var distance := global_position.distance_to(current_target.global_position)
 			if distance > attack_range:
 				state = State.PURSUING
 
@@ -255,8 +255,8 @@ func _physics_process(delta):
 			#if not rest_position:
 				#state = State.IDLE
 				#return
-			var direction = rest_position - global_position
-			var distance = direction.length()
+			var direction := rest_position - global_position
+			var distance := direction.length()
 			if distance > return_threshold:
 				velocity = direction.normalized() * move_speed
 				global_position += velocity * delta
@@ -271,23 +271,22 @@ func _physics_process(delta):
 func _on_attack_timer_timeout() -> void:
 	if state == State.ATTACKING and current_target and is_instance_valid(current_target):
 		animatedSpriteComp.animation = "attack"
-		var distance = global_position.distance_to(current_target.global_position)
+		var distance := global_position.distance_to(current_target.global_position)
 		if distance <= attack_range:
 			current_target.take_damage(attack_damage)
 
 
-func get_is_in_combat():
+func get_is_in_combat() -> bool:
 	return is_in_combat
 
-func enter_combat(zombie):
+func enter_combat(zombie: Area2D) -> void:
 	current_zombie_to_fight = zombie
-	is_in_combat = true 
-		
-func exit_combat():
+	is_in_combat = true
+
+func exit_combat() -> void:
 	is_in_combat = false
 	current_zombie_to_fight = null
-	
+
 func get_enemy_combatant():
 	return current_zombie_to_fight
-	
-	
+

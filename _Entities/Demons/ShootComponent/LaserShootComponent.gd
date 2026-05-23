@@ -35,14 +35,14 @@ var demon: Demon
 @onready var line2D := Line2D.new()
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
-@onready var attack_ray = $"../../DMG_RayCast2D"
+@onready var attack_ray := $"../../DMG_RayCast2D"
 
 var cooldown_timer := Timer.new() 
 # State variables 
 var current_length := 99.0
 var is_firing := false
 var timer := Timer.new()
-var hit_enemies = {}  # Dictionary to track hit enemies
+var hit_enemies: Dictionary = {}  # Dictionary to track hit enemies
 var isBuffed := false
 var done_firing := true 
 #var canAttack := false
@@ -95,7 +95,7 @@ func _ready() -> void:
 	add_child(laser_area)
 	laser_area.add_child(collision_shape)
 	laser_area.collision_mask = 2
-	var shape = RectangleShape2D.new()
+	var shape := RectangleShape2D.new()
 	collision_shape.shape = shape
 	
 	
@@ -161,7 +161,7 @@ func fire() -> void:
 func _update_laser() -> void:
 	if isDisabled:
 		return
-	var points = PackedVector2Array()
+	var points := PackedVector2Array()
 	points.append(Vector2.ZERO)  # Starting point
 		
 	if isBuffed:
@@ -194,7 +194,7 @@ func _update_collision_shape() -> void:
 	if isDisabled:
 		return
 	# Update collision shape to follow the laser path
-	var rect_shape = collision_shape.shape as RectangleShape2D
+	var rect_shape := collision_shape.shape as RectangleShape2D
 	rect_shape.extents = Vector2(current_length / 2, laser_width ) #/2
 	collision_shape.position = Vector2(current_length / 2, 0) 
 
@@ -231,7 +231,7 @@ func set_laser_width(width: float) -> void:
 	line2D.width = width
 
 # Make the laser more powerful when Wyrm is buffed 
-func buff(bufferLocation):
+func buff(bufferLocation) -> void:
 	if isDisabled:
 		return
 	isBuffed = true
@@ -239,14 +239,14 @@ func buff(bufferLocation):
 	zigzag_position = self.position.x + (bufferLocation.x - 96)
 	damage = damage * 2.0
 
-func occulumBuff():
+func occulumBuff() -> void:
 	if isDisabled:
 		return
 	cooldown = blood_buff_cooldown
 	cooldown_timer.wait_time = cooldown
 	#cooldown = cooldown * 0.5
 
-func unOcculumBuff():
+func unOcculumBuff() -> void:
 	if isDisabled:
 		return
 	cooldown = og_cooldown
@@ -257,8 +257,8 @@ func getIsBuffed():
 	if isDisabled:
 		return
 	return isBuffed
-	
-func mawBuff():
+
+func mawBuff() -> void:
 	damage = maw_damage
 	
 	

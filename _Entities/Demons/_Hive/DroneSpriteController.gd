@@ -7,11 +7,11 @@ extends AnimatedSprite2D
 		hue_shift = clamp(value, -180.0, 180.0)
 		_apply_hue_shift()
 
-var demon_hue_shift = preload("res://_Common/Shaders/DemonHueShift.gdshader")
+var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
 
-#TODO Get Rid of Preload 
-var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
-@export var targetGlowColor : Color
+#TODO Get Rid of Preload
+var demon_glow := preload("res://_Common/Shaders/DemonGlow.gdshader")
+@export var targetGlowColor: Color
 
 func _apply_hue_shift() -> void:
 	# Create material if needed
@@ -48,22 +48,22 @@ func shift_hue(degrees: float) -> void:
 func get_animation_length(anim_name: String) -> float:
 
 	if sprite_frames.has_animation(anim_name):
-		var frame_count = sprite_frames.get_frame_count(anim_name)
-		var frame_rate = sprite_frames.get_animation_speed(anim_name)
+		var frame_count := sprite_frames.get_frame_count(anim_name)
+		var frame_rate := sprite_frames.get_animation_speed(anim_name)
 		# Don't forget to account for the speed scale if it's been modified
-		var this_speed_scale = speed_scale
+		var this_speed_scale := speed_scale
 		return (frame_count / frame_rate) / this_speed_scale
 	return 0.0
 
-#Changes drone color to indicate buff 
-func buff():
+#Changes drone color to indicate buff
+func buff() -> void:
 	self_modulate = Color("d91a1a")
 
-func debuff():
+func debuff() -> void:
 	self_modulate = Color("ffffff")
 
 
-func make_glow():
+func make_glow() -> void:
 	#print("Make Drone Glow")
 	if material == null:
 		#print("PRE LOL")

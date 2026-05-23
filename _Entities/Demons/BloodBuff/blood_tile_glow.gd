@@ -1,10 +1,10 @@
 extends AnimatedSprite2D
 
-var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
-@export var targetGlowColor : Color
-@export var modulate_factor : Vector4 = Vector4(7,7,7,1)
+var demon_glow := preload("res://_Common/Shaders/DemonGlow.gdshader")
+@export var targetGlowColor: Color
+@export var modulate_factor: Vector4 = Vector4(7,7,7,1)
 
-func make_buff_glow():
+func make_buff_glow() -> void:
 	#return
 	if material == null:
 		print("PRE LOL")

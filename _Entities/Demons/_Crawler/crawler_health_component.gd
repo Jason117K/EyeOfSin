@@ -1,19 +1,19 @@
 extends DemonHealthComponent
 
-var spinalOcculumHealth = 375
+var spinalOcculumHealth := 375
 
-func _ready():
+func _ready() -> void:
 	super()
 	spinalOcculumHealth = demon.spinalOcculumHealth
 
-func receive_buff(demonName):
+func receive_buff(demonName: String) -> void:
 	#print("Buff Name is ", newDemon.name)
 
 	match demonName:
 		"SpinalOcculum" :
 			health = spinalOcculumHealth
-			isSpinalOcculumBuffed = true 
+			isSpinalOcculumBuffed = true
 
 
-func debuff():
-	super() 
+func debuff() -> void:
+	super()

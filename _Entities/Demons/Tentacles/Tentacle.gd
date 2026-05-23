@@ -81,7 +81,7 @@ func abort() -> void:
 	# or DIGESTING, where the arm was hidden.
 	_set_arm_visible(true)
 
-	var idle_pos = global_position + idle_offset
+	var idle_pos := global_position + idle_offset
 	_movement_tween = create_tween()
 	_movement_tween.tween_property(arm_target, "global_position", idle_pos, ABORT_RETURN_DURATION)
 	aborted.emit()
@@ -122,7 +122,7 @@ func _process(delta: float) -> void:
 
 func _tick_extending(delta: float) -> void:
 	# Framerate-independent exponential approach
-	var t = 1.0 - exp(-delta / EXTEND_TIME_CONSTANT)
+	var t := 1.0 - exp(-delta / EXTEND_TIME_CONSTANT)
 	arm_target.global_position = arm_target.global_position.lerp(enemy.global_position, t)
 
 	_extend_timer += delta
@@ -132,7 +132,7 @@ func _tick_extending(delta: float) -> void:
 		abort()
 		return
 
-	var arm_tip = arm.to_global(arm.get_segments()[-1])
+	var arm_tip := arm.to_global(arm.get_segments()[-1])
 	if arm_tip.distance_to(enemy.global_position) < GRAB_DISTANCE_THRESHOLD:
 		state = State.ATTACHED
 		_timer = 0.0
@@ -142,7 +142,7 @@ func _tick_extending(delta: float) -> void:
 func _tick_attached(delta: float) -> void:
 	# Only primary pins the enemy — secondaries trail along visually.
 	if is_primary_grabber and is_instance_valid(enemy):
-		var arm_tip = arm.to_global(arm.get_segments()[-1])
+		var arm_tip := arm.to_global(arm.get_segments()[-1])
 		enemy.global_position = arm_tip
 
 	_timer += delta
@@ -155,7 +155,7 @@ func _tick_retracting(_delta: float) -> void:
 	# (primary only; secondary's enemy may already be invalid after the
 	# primary's damage step fires, which is fine).
 	if is_primary_grabber and is_instance_valid(enemy):
-		var arm_tip = arm.to_global(arm.get_segments()[-1])
+		var arm_tip := arm.to_global(arm.get_segments()[-1])
 		enemy.global_position = arm_tip
 
 

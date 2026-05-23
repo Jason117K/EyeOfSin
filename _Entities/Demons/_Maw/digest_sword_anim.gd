@@ -12,13 +12,13 @@ extends Node2D
 func _ready() -> void:
 	pass
 	
-func set_maw_parent():
+func set_maw_parent() -> void:
 	print("SETTING Blood Sword Parent As MAW")
 	for blood_sword in all_swords:
-		blood_sword.is_maw_parent = true 
+		blood_sword.is_maw_parent = true
 		blood_sword.blood_spell_finished.connect(end_spell)
-		
-func setup_collision_and_damage_zombies():
+
+func setup_collision_and_damage_zombies() -> void:
 	print("Setting Blood Sword Collision")
 	for sword in all_swords:
 		if self.is_in_group("Green"):
@@ -43,6 +43,6 @@ func setup_collision_and_damage_zombies():
 		pass
 		
 	
-func end_spell():
+func end_spell() -> void:
 	print("Should Free BLOOD Spell Sword Digest ")
 	queue_free()

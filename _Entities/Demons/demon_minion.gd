@@ -2,14 +2,14 @@ extends Area2D
 
 @export var attack_timer_wait_time := 3
 @export var minion_damage := 10
-@export var health = 100
-var attack_timer : Timer
+@export var health := 100
+var attack_timer: Timer
 
-var speed = 60
-var canMove = true 
-var zombies = []
-var current_zombie : Zombie = null
-var is_stationary := false 
+var speed := 60
+var canMove := true
+var zombies: Array = []
+var current_zombie: Zombie = null
+var is_stationary := false
 
 
 func _ready() -> void:
@@ -46,7 +46,7 @@ func _ready() -> void:
 
 		
 		
-func attack_zombie():
+func attack_zombie() -> void:
 	if current_zombie != null:
 		current_zombie.take_damage(minion_damage)
 	
@@ -59,13 +59,13 @@ func _physics_process(delta: float) -> void:
 		position.x += speed * delta  # Move right across the screen
 	
 	
-func current_zombie_dead():
+func current_zombie_dead() -> void:
 	print(self, " received zombie dead signal")
 	attack_timer.stop()
 	current_zombie = null
 	canMove = true 
 		
-func demon_minion_busy(questioning_zombie):
+func demon_minion_busy(questioning_zombie) -> bool:
 	if current_zombie == null:
 		current_zombie = questioning_zombie
 		canMove = false
@@ -77,11 +77,11 @@ func demon_minion_busy(questioning_zombie):
 		return true
 	
 
-func take_damage(amount):
+func take_damage(amount) -> void:
 	health -= amount
 	if health <= 0:
 		#print("Die Cos Health too Low")
 		queue_free()
 
-func get_health():
+func get_health() -> int:
 	return health

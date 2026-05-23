@@ -4,16 +4,16 @@ extends Area2D
 @onready var lightning_detection_zone : Area2D = $LightningZone
 @onready var lightning_zone_visual := $LightningZoneAnimSprite
 
-@export var speed = 300  # Speed of the projectile
-@export var damage = 20 #2   # Damage dealt to zombies
-@export var lightning_damage = 10 #2   # Damage dealt to zombies
-@export var blood_worth_to_add = 1
+@export var speed := 300  # Speed of the projectile
+@export var damage := 20 #2   # Damage dealt to zombies
+@export var lightning_damage := 10 #2   # Damage dealt to zombies
+@export var blood_worth_to_add := 1
 @export var bleed_damage := 1
 var max_distance_can_travel := 0
 
 
-var blood_scene = preload("res://_Entities/Demons/Blood/Blood.tscn") 
-var num_zombies_hit = 0 
+var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
+var num_zombies_hit := 0
 var spinalOcculumBuff := false 
 var give_blood_on_death := false 
 var spawn_drone_on_zombie_death := false 
@@ -27,7 +27,7 @@ var column_explode := false
 var silencing := false 
 
 var collision 
-var distance_traveled := 0 
+var distance_traveled := 0
 var _spawn_initialized := false
 var spawn_position: Vector2
 
@@ -71,12 +71,12 @@ func _physics_process(delta: float) -> void:
 		_spawn_initialized = true
 	#print("AREA OVERLAPP", get_overlapping_areas() )
 	#print(self, " Projectile 4Position Is ", self.position)
-	var travel_distance = speed * delta
+	var travel_distance := speed * delta
 	distance_traveled = position.x - spawn_position.x
 	
 	# Raycast along travel path to prevent tunneling at high speeds
-	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(
+	var space_state := get_world_2d().direct_space_state
+	var query := PhysicsRayQueryParameters2D.create(
 		global_position,
 		global_position + Vector2(travel_distance, 0)
 		)
@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 			queue_free()
 		
 
-func setup_lightning_zone():
+func setup_lightning_zone() -> void:
 	if self.is_in_group("Green"):
 		lightning_detection_zone.set_collision_mask_value(1,false)
 		lightning_detection_zone.set_collision_mask_value(2,false)
@@ -114,13 +114,13 @@ func setup_lightning_zone():
 
 
 # Handles projectile collison and damage application 
-func on_hit(area):
+func on_hit(area: Area2D) -> void:
 	#print("Area Hit Is ", area)
 	if area.is_in_group("Zombie"):
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
 		#print("Area Hit Is ", area)
-		var healthComp = area.getHealthComponent()
+		var healthComp := area.getHealthComponent()
 		if is_slowing:
 			area.slow()
 		if spinalOcculumBuff:
@@ -147,7 +147,7 @@ func on_hit(area):
 			damage = damage - 0.5
 			num_zombies_hit += 1 
 
-func increase_bleed_damage(bleed_damage_increase):
+func increase_bleed_damage(bleed_damage_increase: int) -> void:
 	bleed_damage = bleed_damage + bleed_damage_increase
 	
 
@@ -162,9 +162,9 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 		#print(area, " is not in Zombie Group")
 		
 # Function to handle blood generation
-func generate_blood():
+func generate_blood() -> void:
 	print("Generating Blood")
-	var blood_instance = blood_scene.instantiate()  
+	var blood_instance := blood_scene.instantiate()
 	get_parent().add_child(blood_instance) 
 	blood_instance.set_fast_pickup_time() 
 	blood_instance.global_position = self.global_position + Vector2(0,-9)

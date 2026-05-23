@@ -1,27 +1,27 @@
 class_name ProjectileShootComponent extends Node2D
 
 #@onready var shootTimer := $"../ShootTimer"
-@onready var base_shoot_interval = 3.0
-@onready var parent_demon : Demon = get_parent()
+@onready var base_shoot_interval := 3.0
+@onready var parent_demon: Demon = get_parent()
 var damage := 60
 var attack_speed_mult := 1.0
-var projectile_spawn_offest :Vector2 = Vector2(32, 0)
+var projectile_spawn_offest: Vector2 = Vector2(32, 0)
 
-var attack_rays = []
-var projectile_scene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")  
-var canAttack = false   
+var attack_rays: Array = []
+var projectile_scene := preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")
+var canAttack := false
 
-var hiveBuffed = false 
-var spinalOcculumBuffed = false
-var occulumBuffed = false
-var wyrmBuffed = false
+var hiveBuffed := false
+var spinalOcculumBuffed := false
+var occulumBuffed := false
+var wyrmBuffed := false
 var crawlerBuffed := false
-var mawBuffed := false 
+var mawBuffed := false
 
-var projectile 
+var projectile
 var animSpriteComp
-var node_ready = false
-var shoot_positions = []
+var node_ready := false
+var shoot_positions: Array = []
 
 # Map of animation_name -> which frame triggers the shot
 # Might Have to Have Heart Specific in Future 
@@ -90,7 +90,7 @@ func check_attack_rays() -> void:
 		if ray.is_colliding():
 			#print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
-				var collider = ray.get_collider(i)
+				var collider := ray.get_collider(i)
 				#print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
 				if collider == null:
 					continue  # guard against freed/invalid colliders
@@ -107,7 +107,7 @@ func check_attack_rays() -> void:
 				#	if parent_demon.is_in_group()
 						
 						
-func shoot_projectile():
+func shoot_projectile() -> void:
 	AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	if shoot_positions.is_empty():
 			#print("SHOOTING HERE")
@@ -137,19 +137,19 @@ func shoot_projectile():
 			
 	canAttack = false
 	
-func apply_buffs_to_projectile(projectile_to_buff):
+func apply_buffs_to_projectile(projectile_to_buff) -> void:
 	pass
-	
-	
-func set_attack_speed(multiplier: float):
+
+
+func set_attack_speed(multiplier: float) -> void:
 	#shootTimer.wait_time = base_shoot_interval / multiplier
 	animSpriteComp.speed_scale = multiplier  # only for attack animation
-	
-func get_damage():
-	return damage 
-	
-	
-func receive_buff(newDemon):
+
+func get_damage() -> int:
+	return damage
+
+
+func receive_buff(newDemon) -> void:
 	match newDemon:
 		"Occulum":
 			occulumBuffed = true

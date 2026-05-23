@@ -2,23 +2,23 @@ extends Node2D
 #BuffNodes.gd
 
 # All of the possible "blood tile" (buffed) visual effects 
-@onready var bloodTile1 = $BloodTile1
-@onready var bloodTile2 = $BloodTile2
-@onready var bloodTile3 = $BloodTile3
-@onready var bloodTile4 = $BloodTile4
-@onready var bloodTile5 = $BloodTile5
-@onready var bloodTile6 = $BloodTile6
-@onready var bloodTile7 = $BloodTile7
-@onready var bloodTile8 = $BloodTile8
-@onready var bloodTile9 = $BloodTile9
+@onready var bloodTile1 := $BloodTile1
+@onready var bloodTile2 := $BloodTile2
+@onready var bloodTile3 := $BloodTile3
+@onready var bloodTile4 := $BloodTile4
+@onready var bloodTile5 := $BloodTile5
+@onready var bloodTile6 := $BloodTile6
+@onready var bloodTile7 := $BloodTile7
+@onready var bloodTile8 := $BloodTile8
+@onready var bloodTile9 := $BloodTile9
 
 # Parent demon with these buffNodes
-@onready var demon = get_parent()
+@onready var demon := get_parent()
 
 enum Demons { OCCULUM,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 
 # The tile areas representing the area being buffed 
-@export var activeTiles = [ # (Array, NodePath)
+@export var activeTiles: Array = [ # (Array, NodePath)
 	"TileArea1",
 	"TileArea2",
 	"TileArea3",
@@ -30,11 +30,11 @@ enum Demons { OCCULUM,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 ]
 
 # Adjustable variable to store which demons this demon can buff
-var giveBuffTo = ["Occulum","Crawler","SpinalOcculum","Wyrm","Hive","Maw","None","None"]
+var giveBuffTo: Array = ["Occulum","Crawler","SpinalOcculum","Wyrm","Hive","Maw","None","None"]
 
-var buffedDemons = []
+var buffedDemons: Array = []
 
-func _ready():
+func _ready() -> void:
 	# Make sure all the bloodTiles are not visible
 	bloodTile1.visible = false
 	bloodTile2.visible = false
@@ -57,7 +57,7 @@ func _ready():
 				child.set_collision_mask_value(2,true)
 				child.set_collision_mask_value(3,false)
 
-func clearBuffs():
+func clearBuffs() -> void:
 	#print("DDD Buffed Demons is ", buffedDemons)
 	for demon in buffedDemons:
 		#print("Now DDD Buffing ", demon)
@@ -71,7 +71,7 @@ func clearBuffs():
 	
 	
 	
-func _process(_delta):
+func _process(_delta: float) -> void:
 	pass
 	
 	#print("I Am ", get_parent().name)
@@ -87,19 +87,19 @@ func _process(_delta):
 		if child is Area2D and "TileArea" in child.name:
 			
 			# Get the number from the TileArea name
-			var area_number = child.name.replace("TileArea", "")
-			
+			var area_number := child.name.replace("TileArea", "")
+
 			# Look for overlapping areas
-			var overlapping_areas = child.get_overlapping_areas()
-			
+			var overlapping_areas := child.get_overlapping_areas()
+
 			# Find the corresponding BloodTile
-			var blood_tile_name = "BloodTile" + area_number
-			var blood_tile = get_node_or_null(blood_tile_name)
+			var blood_tile_name := "BloodTile" + area_number
+			var blood_tile := get_node_or_null(blood_tile_name)
 			
 			#If we have a valid blood tile 
 			if blood_tile:
 				
-				var bloodTileVisible = false 
+				var bloodTileVisible := false
 				
 				# Check for demons in the overlapped areas
 				for demonToBuff in overlapping_areas:

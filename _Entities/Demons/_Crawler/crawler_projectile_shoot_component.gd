@@ -2,7 +2,7 @@ extends ProjectileShootComponent
 
 var blood_worth_to_add := 10.0
 @onready var attack_ray_1 := $"../DMG_RayCast2D"
-var second_shot_timer : Timer
+var second_shot_timer: Timer
 
 func _ready() -> void:
 	attack_rays = [attack_ray_1]
@@ -18,9 +18,9 @@ func _ready() -> void:
 	second_shot_timer.one_shot = true  # Do not Repeat continuously
 	second_shot_timer.autostart = false  # Don't start automatically
 	second_shot_timer.timeout.connect(second_shoot_projectile)
-	node_ready = true 
+	node_ready = true
 
-func shoot_projectile():
+func shoot_projectile() -> void:
 	super()
 	#if hiveBuffed:
 		#second_shot_timer.start()
@@ -30,13 +30,13 @@ func shoot_projectile():
 		add_projectile(Vector2(0, -32))
 
 
-func second_shoot_projectile():
+func second_shoot_projectile() -> void:
 	print("Shoot 2nd Proj From Crawler ")
 	add_projectile(Vector2(30, 32))
 	add_projectile(Vector2(30, -32))
 
-	
-func add_projectile(offset):
+
+func add_projectile(offset: Vector2) -> void:
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	projectile = projectile_scene.instantiate()
 	projectile.position = parent_demon.position + offset  # Adjust starting position
@@ -46,7 +46,7 @@ func add_projectile(offset):
 		projectile.add_to_group("Purple")
 	parent_demon.get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
-func apply_buffs_to_projectile(projectile_to_buff):
+func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	if spinalOcculumBuffed:
 		print("Buff Projectile With Spine")
 		projectile_to_buff.spinalOcculumBuff = true 
@@ -60,7 +60,7 @@ func apply_buffs_to_projectile(projectile_to_buff):
 		
 		
 
-func receive_buff(newDemon):
+func receive_buff(newDemon: String) -> void:
 	super(newDemon)
 	match newDemon:
 		"Occulum":

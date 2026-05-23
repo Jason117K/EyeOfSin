@@ -1,16 +1,16 @@
 extends Node
 
-var stop_ability_timer : Timer 
-var beat_of_death_timer : Timer
+var stop_ability_timer: Timer
+var beat_of_death_timer: Timer
 var ability_duration := 6.0
 var beat_of_death_duration := 1.5
-var cooldown_timer : Timer
+var cooldown_timer: Timer
 var cooldown_duration := 5.0
 var is_active := false
 var is_on_cooldown := false
-var cooldown_elapsed = 0.0
+var cooldown_elapsed := 0.0
 var cooldown_fill_amount := 0.0
-var _beat_tween : Tween 
+var _beat_tween: Tween
 
 @onready var cooldown_visual := $Control/CooldownVisual
 @onready var damage_zone := $"../DMGZone"
@@ -39,12 +39,12 @@ func _ready() -> void:
 	is_on_cooldown = true 
 
 	
-func reset_cooldown():
+func reset_cooldown() -> void:
 	is_on_cooldown = false
 
 
-	
-func begin():
+
+func begin() -> void:
 	pass
 	print("Hero Ability Trying")
 	if is_on_cooldown:
@@ -79,7 +79,7 @@ func begin():
 	add_child(stop_ability_timer)
 	stop_ability_timer.start()
 	
-func damage_all_zombies_in_range():
+func damage_all_zombies_in_range() -> void:
 	beat_of_death()
 	for new_area in damage_zone.get_overlapping_areas():
 		if new_area.is_in_group("Zombie"):
@@ -87,7 +87,7 @@ func damage_all_zombies_in_range():
 				
 	
 	
-func ability_end():
+func ability_end() -> void:
 	is_active = false
 	cooldown_timer.wait_time = cooldown_duration
 	cooldown_timer.start()
@@ -108,7 +108,7 @@ func _physics_process(delta: float) -> void:
 		cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
 
 
-func beat_of_death():
+func beat_of_death() -> void:
 	
 	if _beat_tween and _beat_tween.is_running():
 		_beat_tween.kill()

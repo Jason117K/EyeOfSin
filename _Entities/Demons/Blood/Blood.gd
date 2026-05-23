@@ -2,29 +2,29 @@ extends Area2D
 #Blood.gd
 
 
-@export var BloodValue = 50
-@export var BloodDamage := 50 
+@export var BloodValue := 50
+@export var BloodDamage := 50
 @export var default_auto_pickup_wait_time := 6.0
 @export var crawler_buff_auto_pickup_wait_time := 10.0
 @export var wyrm_buff_auto_pickup_wait_time := 10.0
 @export var fast_pick_up_time := 1.5
-var demo_blood_pickup_time := 1.25 
+var demo_blood_pickup_time := 1.25
 
-@onready var aoe : Area2D = $AOEZone
-@onready var auto_pickup_timer :Timer = $AutoPickUpTimer
+@onready var aoe: Area2D = $AOEZone
+@onready var auto_pickup_timer: Timer = $AutoPickUpTimer
 @onready var heal_anim := $HealingAnimSprite
 @onready var demon_manager = get_parent().get_parent().get_node("DemonManager")
-var blood_spell = preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
+var blood_spell := preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
 var crawlerBuff := false
 var wyrmBuff := false
 var hiveBuff := false
-var demons_to_heal = []
-var nearby_zombies = []
-var temp_zombie_container = []
-var current_zombie_target :Zombie 
+var demons_to_heal: Array = []
+var nearby_zombies: Array = []
+var temp_zombie_container: Array = []
+var current_zombie_target: Zombie
 var dissappear_time := 0.75
-var origin_occulum : Demon 
-var decrease_blood_val := true 
+var origin_occulum: Demon
+var decrease_blood_val := true
 var highest_health := -1
 var current_target_health := 1
 
@@ -56,7 +56,7 @@ func _ready() -> void:
 
 	
 #TODO Add SFX
-func _on_Blood_mouse_entered():
+func _on_Blood_mouse_entered() -> void:
 	#var demon_manager = get_parent().get_parent().get_node("DemonManager")
 	print("Demon Manager is ", demon_manager)
 	if demon_manager:
@@ -78,13 +78,13 @@ func _on_Blood_mouse_entered():
 			#origin_occulum.burst_heal()
 	queue_free()
 
-func free_blood():
+func free_blood() -> void:
 	if current_zombie_target != null:
 		current_zombie_target.take_damage(BloodDamage)
 		current_zombie_target.slow()
 	queue_free()
 
-func crawler_blood_pickup():
+func crawler_blood_pickup() -> void:
 	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	temp_zombie_container = aoe.get_overlapping_areas()
 	for zombie in temp_zombie_container:
@@ -108,7 +108,7 @@ func crawler_blood_pickup():
 		#TODO Sort By Health
 		attack_zombie(current_zombie_target)
 
-func summon_blood_swords():
+func summon_blood_swords() -> void:
 	if origin_occulum != null:
 		print("Summon Blood Sword")
 	else:
@@ -118,9 +118,9 @@ func summon_blood_swords():
 	spawn_blood_sword(Vector2(113,-8))
 
 	
-func spawn_blood_sword(offset):
+func spawn_blood_sword(offset: Vector2) -> void:
 	if origin_occulum != null:
-		var blood_spell_instance = blood_spell.instantiate()
+		var blood_spell_instance := blood_spell.instantiate()
 		if self.is_in_group("Green"):
 			blood_spell_instance.set_collision_mask_value(1,false)
 			blood_spell_instance.set_collision_mask_value(2,false)
@@ -140,17 +140,17 @@ func spawn_blood_sword(offset):
 	
 	
 	
-func set_origin_occulum(parent_occulum):
+func set_origin_occulum(parent_occulum) -> void:
 	print("Origin Occulum is ", parent_occulum)
 	origin_occulum = parent_occulum
 		
 	
-func attack_zombie(zombie_to_attack):
-	var tween = create_tween()
+func attack_zombie(zombie_to_attack) -> void:
+	var tween := create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", zombie_to_attack.global_position, dissappear_time)
-	var disappear_timer = Timer.new()
+	var disappear_timer := Timer.new()
 	disappear_timer.timeout.connect(free_blood)
 	disappear_timer.wait_time = dissappear_time
 	add_child(disappear_timer)
@@ -159,7 +159,7 @@ func attack_zombie(zombie_to_attack):
 
 	
 	
-func heal_demons():
+func heal_demons() -> void:
 	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	for entity in aoe.get_overlapping_areas():
 		if entity.is_in_group("Demons"):
@@ -178,7 +178,7 @@ func heal_demons():
 	heal_anim.play()
 	clear_heal_aoe()
 
-func clear_heal_aoe():
+func clear_heal_aoe() -> void:
 	while demons_to_heal.size() > 0:
 		demons_to_heal.pop_back()
 	demons_to_heal.clear()
@@ -203,27 +203,27 @@ func _on_auto_pick_up_timer_timeout() -> void:
 			summon_blood_swords()
 	queue_free()
 
-func setWorth(bloodWorth):
+func setWorth(bloodWorth: int) -> void:
 	BloodValue = bloodWorth
-	
-func crawler_buff():
-	crawlerBuff = true
-	
-func wyrm_buff():
-	self.scale = Vector2(1.2,1.2)
-	BloodValue = 150 
-	wyrmBuff = true 
-	
-func hive_buff():
-	hiveBuff = true 
 
-func maw_buff():
+func crawler_buff() -> void:
+	crawlerBuff = true
+
+func wyrm_buff() -> void:
+	self.scale = Vector2(1.2,1.2)
+	BloodValue = 150
+	wyrmBuff = true
+
+func hive_buff() -> void:
+	hiveBuff = true
+
+func maw_buff() -> void:
 	BloodValue = 100
 
-func set_fast_pickup_time():
+func set_fast_pickup_time() -> void:
 	auto_pickup_timer.wait_time = fast_pick_up_time
 	auto_pickup_timer.start()
-	decrease_blood_val = false 
+	decrease_blood_val = false
 	self.scale = Vector2(0.3,0.3)
 	BloodValue = 2.0
 	#BloodValue = 150 
@@ -239,7 +239,7 @@ func set_fast_pickup_time():
 	#if area.is_in_group("Demons"):
 		#demons_to_heal.erase(area)
 
-func set_demo_true():
+func set_demo_true() -> void:
 	auto_pickup_timer.wait_time = demo_blood_pickup_time
 
 	auto_pickup_timer.start()

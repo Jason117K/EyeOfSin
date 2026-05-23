@@ -1,6 +1,6 @@
 extends DemonSpriteComp
 
-func receive_buff(demonName):
+func receive_buff(demonName: String) -> void:
 	super(demonName)
 	match demonName:
 		"SpinalOcculum" :

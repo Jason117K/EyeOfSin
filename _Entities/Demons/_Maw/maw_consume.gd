@@ -5,7 +5,7 @@ extends Area2D
 @onready var detect_zombie_area2 := $DetectZombieArea2
 @onready var detect_zombie_area3 := $DetectZombieArea3
 @onready var detect_zombie_area4 := $DetectZombieArea4
-@onready var detect_zombie_area5 = $DetectZombieArea5
+@onready var detect_zombie_area5 := $DetectZombieArea5
 @onready var detect_zombie_area6 := $DetectZombieArea6
 
 @onready var all_areas := [death_zone_area,detect_zombie_area1,detect_zombie_area2,detect_zombie_area3, \
@@ -16,7 +16,7 @@ extends Area2D
 														
 @onready var zombie_hiding_rect := $ShouldHideZombies
 
-@onready var pull_from_below_animation : AnimatedSprite2D = $DeathZoneArea/PullFromBelowAnim
+@onready var pull_from_below_animation: AnimatedSprite2D = $DeathZoneArea/PullFromBelowAnim
 
 var zombie_count_area_1 := 0
 var zombie_count_area_2 := 0
@@ -35,7 +35,7 @@ func _ready() -> void:
 	set_all_areas()
 
 	
-func set_all_areas():
+func set_all_areas() -> void:
 	for area in all_areas:
 		if self.is_in_group("Green"):
 			area.set_collision_mask_value(1,false)
@@ -50,7 +50,7 @@ func set_all_areas():
 			area.set_collision_mask_value(4,true)
 
 
-func get_highest_zombie_concentration_and_eat():
+func get_highest_zombie_concentration_and_eat() -> void:
 	print("Should Devour NOW")
 	set_all_areas()
 	zombie_counts = [0, 0, 0, 0, 0, 0]
@@ -86,7 +86,7 @@ func get_highest_zombie_concentration_and_eat():
 		
 		
 		
-func pull_from_below(zombies_found: Array):
+func pull_from_below(zombies_found: Array) -> void:
 	zombies_to_kill = zombies_found.duplicate()
 	print("Should Devour Zombies to Kill : ", zombies_to_kill)
 	for zombie in zombies_to_kill:
@@ -105,16 +105,16 @@ func pull_from_below(zombies_found: Array):
 	zombies_to_kill.clear()
 			
 	
-func drag_down(zombie_to_drag):
+func drag_down(zombie_to_drag: Node) -> void:
 	zombie_to_drag.reparent(zombie_hiding_rect)
-	var sprite_frames = pull_from_below_animation.sprite_frames
-	var anim_name = pull_from_below_animation.animation
-	var duration = sprite_frames.get_frame_count(anim_name) / float(sprite_frames.get_animation_speed(anim_name))
-	var tween = create_tween()
+	var sprite_frames := pull_from_below_animation.sprite_frames
+	var anim_name := pull_from_below_animation.animation
+	var duration := sprite_frames.get_frame_count(anim_name) / float(sprite_frames.get_animation_speed(anim_name))
+	var tween := create_tween()
 	tween.tween_property(zombie_to_drag, "position", zombie_to_drag.position + Vector2(0, 42), duration)
 	tween.tween_callback(kill_zombie.bind(zombie_to_drag))
 	
-func kill_zombie(zombie_to_kill):
+func kill_zombie(zombie_to_kill: Node) -> void:
 	pass
 	if is_instance_valid(zombie_to_kill):
 		zombie_to_kill.die()
@@ -125,5 +125,5 @@ func _on_pull_from_below_anim_animation_finished() -> void:
 	done_eating.emit()
 
 
-func die():
+func die() -> void:
 	queue_free()

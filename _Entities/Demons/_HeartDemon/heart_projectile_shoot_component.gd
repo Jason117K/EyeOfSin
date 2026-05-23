@@ -1,12 +1,12 @@
 extends ProjectileShootComponent
 
-@onready var attack_ray_1 = $"../DMG_RayCast2D"
-@onready var attack_ray_2 = $"../DMG_RayCast2D2"
-@onready var attack_ray_3 = $"../DMG_RayCast2D3"
+@onready var attack_ray_1 := $"../DMG_RayCast2D"
+@onready var attack_ray_2 := $"../DMG_RayCast2D2"
+@onready var attack_ray_3 := $"../DMG_RayCast2D3"
 @onready var damage_zone := $"../DMGZone"
-@onready var shootPosition1 = $"../ShootSpawn1"
-@onready var shootPosition2 = $"../ShootSpawn2"
-@onready var shootPosition3 = $"../ShootSpawn3"
+@onready var shootPosition1 := $"../ShootSpawn1"
+@onready var shootPosition2 := $"../ShootSpawn2"
+@onready var shootPosition3 := $"../ShootSpawn3"
 #@onready var shoot_positions = [shootPosition1, shootPosition2,shootPosition3]
 
 func _ready() -> void:
@@ -15,10 +15,10 @@ func _ready() -> void:
 	print("Attack Rays is ", attack_rays)
 	super()
 	set_damage_zone_collision()
-	node_ready = true 
+	node_ready = true
 
 
-func shoot_projectile():
+func shoot_projectile() -> void:
 	super()
 	#AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	#for shoot_pos in shoot_positions:
@@ -28,7 +28,7 @@ func shoot_projectile():
 	#canAttack = false
 
 
-func set_damage_zone_collision():
+func set_damage_zone_collision() -> void:
 	if parent_demon.is_in_group("Green"):
 		damage_zone.set_collision_mask_value(1,false)
 		damage_zone.set_collision_mask_value(2,false)

@@ -8,13 +8,13 @@ extends Area2D
 @export var travel_time = 1.0: set = set_travel_time
 @onready var detection_area := $HitBoxComponent
 # Internal variables
-var start_position = Vector2()
-var time = 0
-var velocity = Vector2()
+var start_position := Vector2()
+var time := 0.0
+var velocity := Vector2()
 var debug_marker: Node2D
-var enemiesToWeb = []
+var enemiesToWeb: Array = []
 
-func _ready():
+func _ready() -> void:
 	start_position = position
 	
 	# If no target position is set, default to 200 pixels in front
@@ -35,8 +35,8 @@ func _ready():
 		self.set_collision_mask_value(4,true)
 
 # Get all valid enemies and then apply a slow effect to them
-func die():
-	var valid_enemies = []
+func die() -> void:
+	var valid_enemies: Array = []
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
 			enemiesToWeb.append(area)
@@ -53,7 +53,7 @@ func die():
 		
 
 # Handle the math of launching a ball in an arc 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	time += delta
 	
 	if time >= travel_time:
@@ -62,34 +62,34 @@ func _physics_process(delta):
 		return
 	
 	# Calculate current position using quadratic bezier curve
-	var t = time / travel_time
-	var mid_point = calculate_mid_point()
+	var t := time / travel_time
+	var mid_point := calculate_mid_point()
 	var p0 = start_position
 	var p1 = mid_point
 	var p2 = target_position
 	
 	# Quadratic bezier formula: B(t) = (1-t)²p0 + 2(1-t)tp1 + t²p2
-	var one_minus_t = 1 - t
+	var one_minus_t := 1 - t
 	position = one_minus_t * one_minus_t * p0 + \
 			   2 * one_minus_t * t * p1 + \
 			   t * t * p2
 
 # Calculate the trajectory
-func calculate_trajectory():
+func calculate_trajectory() -> void:
 	# Reset time when recalculating
-	time = 0
-	
+	time = 0.0
+
 	# Calculate arc height based on distance
-	var distance = start_position.distance_to(target_position)
-	var arc_height = distance * 0.3  # Arc height is 30% of distance
+	var distance := start_position.distance_to(target_position)
+	var arc_height := distance * 0.3  # Arc height is 30% of distance
 
 	# Store calculated values
 	velocity = (target_position - start_position) / travel_time
 
 # Calculate the midpoint of the curve 
 func calculate_mid_point() -> Vector2:
-	var mid_x = (start_position.x + target_position.x) / 2
-	var mid_y = min(start_position.y, target_position.y) - \
+	var mid_x := (start_position.x + target_position.x) / 2
+	var mid_y := min(start_position.y, target_position.y) - \
 				start_position.distance_to(target_position) * 0.3
 	return Vector2(mid_x, mid_y)
 
@@ -108,12 +108,12 @@ func set_travel_time(new_time: float):
 		calculate_trajectory()
 
 # Creates a visual debug marker at the target position
-func create_debug_marker():
+func create_debug_marker() -> void:
 	debug_marker = DebugMarker.new()
 	get_parent().add_child(debug_marker)
 	debug_marker.position = target_position
 
 # Inner class for debug marker
 class DebugMarker extends Node2D:
-	func _draw():
+	func _draw() -> void:
 		draw_circle(Vector2.ZERO, 5, Color.BLUE)

@@ -7,10 +7,10 @@ func _ready() -> void:
 	frame_changed.connect(_on_AnimatedSprite_frame_changed)
 	#animation_finished.connect(_on_AnimatedSprite_animation_finished)
 
-func _on_AnimatedSprite_frame_changed():
+func _on_AnimatedSprite_frame_changed() -> void:
 	emit_signal("frame_changed_signal", animation, frame)
-				
-func _on_animation_finished():
+
+func _on_animation_finished() -> void:
 	super()
 	if demon.get_can_attack():
 		animation = currentAttackAnim
@@ -38,7 +38,7 @@ func _on_animation_finished():
 	#
 	#play()
 	
-func spawn_done():
+func spawn_done() -> void:
 	if spawnAnimDone:
 		animation = currentAnim
 		play()

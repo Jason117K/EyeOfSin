@@ -10,9 +10,9 @@ const END_COLOR = Color(0, 1, 0, 1)   # Green
 
 const START_COLOR2 = Color.FUCHSIA
 
-func _ready():
+func _ready() -> void:
 	# Create new gradient
-	var new_gradient = Gradient.new()
+	var new_gradient := Gradient.new()
 	
 	# Set gradient colors and offsets exactly
 	new_gradient.set_offset(0, 0.0)  # First color at start (0.0)
