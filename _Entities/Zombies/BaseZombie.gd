@@ -164,6 +164,7 @@ func _on_respawn() -> void:
 	animatedSprite.play("Walk")
 	
 func die() -> void:
+	set_process(false)
 	if false:
 		_demo_die()
 	else:
