@@ -268,7 +268,7 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 	if not tentacle in available_tentacles:
 		available_tentacles.append(tentacle)
 
-	var group:Node = eating_groups.get(tentacle)
+	var group:Dictionary = eating_groups.get(tentacle)
 	if group == null:
 		_process_queue()
 		return

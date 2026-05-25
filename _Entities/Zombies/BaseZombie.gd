@@ -421,6 +421,7 @@ func _on_JustNowSpawned_timeout() -> void:
 
 
 func _on_ResetThisColor_timeout() -> void:
+
 	thisMaterial.set_shader_parameter("target_color", Color.BLACK)
 	thisMaterial.set_shader_parameter("replace_color", Color.BLACK)
 	thisMaterial.set_shader_parameter("tolerance", 0.1)

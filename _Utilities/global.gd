@@ -280,7 +280,7 @@ func adjust_ui_layer() -> void:
 		var real_ui_layers := []
 		var real_wave_previews := []
 		
-		for item : Node in ui_layers:
+		for item in ui_layers:
 			if item == null:
 				pass
 			else:
