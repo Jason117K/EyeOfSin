@@ -33,38 +33,28 @@ func summon_backup() -> void:
 	#print("Summoning ",dancerZombie.position.y)
 
 	var game_layer := get_parent().get_parent()
-	var root := get_tree().current_scene
-	var _level := root.get_name()
+	var is_green := get_parent().is_in_group("Green")
 
-	# Don't spawn them in unreachable areas
-	if(dancerZombie.position.y < 128):
-		points.erase(point1)
-		points.erase(point2)
-		points.erase(point3)
+	var spawn_points := points.duplicate()
 
-		
-	if(dancerZombie.position.y > 288):
-		points.erase(point7)
-		points.erase(point8)
-		points.erase(point9)
-		
+	if dancerZombie.position.y < 128:
+		spawn_points.erase(point1)
+		spawn_points.erase(point2)
+		spawn_points.erase(point3)
 
+	if dancerZombie.position.y > 288:
+		spawn_points.erase(point7)
+		spawn_points.erase(point8)
+		spawn_points.erase(point9)
 
-	#Spawn a backUp dancer at every available point 
-	for point:Node in points:
-		#print("Adding Zombie to ", point.name)
+	for point:Node in spawn_points:
+		if not is_instance_valid(dancerZombie):
+			return
 		var zombie_instance := BackUpDancerScene.instantiate()
-
-		# Convert spawn point's position to global coordinates
-		var global_spawn_pos :Vector2= point.global_position
-		
-		# Add zombie to GameLayer
 		game_layer.add_child(zombie_instance)
-		
-		# Set the zombie's global position
-		zombie_instance.global_position = global_spawn_pos
+		zombie_instance.global_position = point.global_position
 
-		if self.get_parent().is_in_group("Green"):
+		if is_green:
 			zombie_instance.add_to_group("Green")
 			zombie_instance.set_hue_shift(125)
 			zombie_instance.set_collision_layer_value(1, false)
@@ -78,6 +68,8 @@ func summon_backup() -> void:
 			zombie_instance.set_collision_layer_value(2, false)
 			zombie_instance.set_collision_layer_value(3, false)
 			zombie_instance.set_collision_layer_value(4, true)
+
+		await get_tree().process_frame
 			
 			
 #Start the summon again by setting the animation

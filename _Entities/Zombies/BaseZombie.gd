@@ -39,15 +39,30 @@ signal zombie_death
 # --- Preloads ---
 var slow_field_scene := preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
 
-var reborn_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt", FileAccess.READ).get_as_text()
-var severed_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt", FileAccess.READ).get_as_text()
-var unhallower_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt", FileAccess.READ).get_as_text()
-var reanimator_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt", FileAccess.READ).get_as_text()
-var wretch_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt", FileAccess.READ).get_as_text()
-var erupter_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt", FileAccess.READ).get_as_text()
-var amalgam_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt", FileAccess.READ).get_as_text()
-var flesheater_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt", FileAccess.READ).get_as_text()
-var sundered_special_description := FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt", FileAccess.READ).get_as_text()
+static var reborn_special_description: String
+static var severed_special_description: String
+static var unhallower_special_description: String
+static var reanimator_special_description: String
+static var wretch_special_description: String
+static var erupter_special_description: String
+static var amalgam_special_description: String
+static var flesheater_special_description: String
+static var sundered_special_description: String
+static var _descriptions_loaded := false
+
+static func _load_descriptions() -> void:
+	if _descriptions_loaded:
+		return
+	reborn_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt", FileAccess.READ).get_as_text()
+	severed_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt", FileAccess.READ).get_as_text()
+	unhallower_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt", FileAccess.READ).get_as_text()
+	reanimator_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt", FileAccess.READ).get_as_text()
+	wretch_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt", FileAccess.READ).get_as_text()
+	erupter_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt", FileAccess.READ).get_as_text()
+	amalgam_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt", FileAccess.READ).get_as_text()
+	flesheater_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt", FileAccess.READ).get_as_text()
+	sundered_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt", FileAccess.READ).get_as_text()
+	_descriptions_loaded = true
 
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
 
@@ -72,7 +87,7 @@ var demo_original_speed: float
 @export var respawn_delay := 1.5
 
 func _ready() -> void:
-	#print("Zombie world2d: ", get_world_2d(), " rid: ", get_world_2d().get_rid())
+	Zombie._load_descriptions()
 	if self.is_in_group("Green"):
 		self.set_collision_layer_value(1, false)
 		self.set_collision_layer_value(2, false)
