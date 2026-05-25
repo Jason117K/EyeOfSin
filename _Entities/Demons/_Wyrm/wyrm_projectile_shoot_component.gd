@@ -4,18 +4,18 @@ var isOcculumBuffed := false
 var isCrawlerBuffed := false
 var isWyrmBleedBuffed := false
 var hiveSpawnDroneBuffed := false
-var cooldown_timer : Timer
+var cooldown_timer: Timer
 
-@onready var attack_ray_1 = $"../DMG_RayCast2D"
+@onready var attack_ray_1 := $"../DMG_RayCast2D"
 #@onready var shootPosition1 = $"../Worm1/LaserShootComponent"
 #@onready var shootPosition2 = $"../Worm2/LaserShootComponent"
 #@onready var laser_shoot_comp_1 := $"../Worm1/LaserShootComponent"
 #@onready var laser_shoot_comp_2 := $"../Worm2/LaserShootComponent"
 
-var shootPosition1 : Node
-var shootPosition2 : Node
-var laser_shoot_comp_1 : Node
-var laser_shoot_comp_2 : Node
+var shootPosition1: Node
+var shootPosition2: Node
+var laser_shoot_comp_1: Node
+var laser_shoot_comp_2: Node
 
 var cooldown: float = 3
 var occulum_buff_cooldown: float = 0.9
@@ -52,9 +52,9 @@ func _ready() -> void:
 		cooldown_timer.connect("timeout", Callable(self, "fire_laser"))
 		#cooldown_timer.one_shot = true
 		cooldown_timer.start()
-	node_ready = true 
-		
-func fire_laser():
+	node_ready = true
+
+func fire_laser() -> void:
 	if canAttack:
 		laser_shoot_comp_1.fire()
 		laser_shoot_comp_2.fire()
@@ -65,12 +65,12 @@ func fire_laser():
 		#print("Cannot Attack")
 	
 		
-func apply_buffs_to_projectile(projectile_to_buff):
-	projectile_to_buff.bleed = true 
-	projectile_to_buff.piercing = true 
+func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
+	projectile_to_buff.bleed = true
+	projectile_to_buff.piercing = true
 	projectile_to_buff.is_slowing = false
 	projectile_to_buff.damage = projectile_damage
-	projectile_to_buff.speed = projectile_speed 
+	projectile_to_buff.speed = projectile_speed
 	projectile_to_buff.hide()
 	
 	if isCrawlerBuffed:
@@ -78,18 +78,18 @@ func apply_buffs_to_projectile(projectile_to_buff):
 		
 	if isOcculumBuffed:
 		#print("Setting Can Gen Blood To True ")
-		projectile_to_buff.canGenBlood = true 
-	
+		projectile_to_buff.canGenBlood = true
+
 	if isWyrmBleedBuffed:
 		projectile_to_buff.increase_bleed_damage(bleed_damage_increase)
 		
 	if hiveSpawnDroneBuffed:
-		projectile_to_buff.spawn_drone_on_zombie_death = true 
-	
+		projectile_to_buff.spawn_drone_on_zombie_death = true
+
 	if mawBuffed:
 		projectile_to_buff.damage = parent_demon.maw_damage
-		projectile_to_buff.column_explode = true 
-		
-func wyrm_bleed_buff():
-	isWyrmBleedBuffed = true 
-	
+		projectile_to_buff.column_explode = true
+
+func wyrm_bleed_buff() -> void:
+	isWyrmBleedBuffed = true
+

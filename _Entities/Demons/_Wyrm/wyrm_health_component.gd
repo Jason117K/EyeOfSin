@@ -1,14 +1,14 @@
 extends DemonHealthComponent
 
-var spinalOcculumBuffed_health = 650
-var mawBuffed_health = 350
+var spinalOcculumBuffed_health := 650
+var mawBuffed_health := 350
 
-func _ready():
+func _ready() -> void:
 	super()
 	spinalOcculumBuffed_health = demon.spinalOcculumBuffed_health
 	mawBuffed_health = demon.mawBuffed_health
 
-func receive_buff(demonName):
+func receive_buff(demonName: String) -> void:
 	#print("Buff Name is ", demonName)
 
 	match demonName:

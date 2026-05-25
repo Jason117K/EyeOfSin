@@ -20,7 +20,7 @@ var _current_wave: int = -1
 var _spawn_pool: Array[PackedScene] = []
 
 
-func _ready():
+func _ready() -> void:
 	add_to_group("ZombieSpawners")
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout)
 

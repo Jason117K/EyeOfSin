@@ -4,14 +4,14 @@ extends Area2D
 @export var spawn_x := 180.0
 @export var despawn_x := -20.0
 @export var respawn_delay := 1.5
-@export var health := 100 
-@export var damage := 15 
+@export var health := 100
+@export var damage := 15
 
-@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var respawn_timer : Timer = $RespawnTimer
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var respawn_timer: Timer = $RespawnTimer
 
 var is_dead := false
-var original_speed : float
+var original_speed: float
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -42,12 +42,12 @@ func _process(delta: float) -> void:
 
 func take_damage(_damage, _piercing: bool = false) -> void:
 	health = health - damage
-	if health < 0 : 
+	if health < 0:
 		die()
 	if is_dead:
 		return
 	sprite.modulate = Color.WHITE * 3.0
-	var tw = create_tween()
+	var tw := create_tween()
 	tw.tween_property(sprite, "modulate", Color.WHITE, 0.15)
 
 func slow() -> void:

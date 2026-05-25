@@ -2,7 +2,7 @@ extends Control
 
 @onready var creditsText := $CenterContainer/VBoxContainer/RichTextLabel
 
-var startScreen = ("res://_Stages/StartScreen/StartScreen.tscn")
+var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
 
 func _ready() -> void:
 	creditsText.append_text("Creative Director : Jason King\n")

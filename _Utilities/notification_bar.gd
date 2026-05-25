@@ -25,19 +25,19 @@ extends MarginContainer
 @export var cannot_afford_label_disappear_time := 2.0
 @export var info_disappear_time := 5.0
 
-var hide_bar_timer : Timer 
-var current_zombie : Zombie 
-var current_demon : Demon 
+var hide_bar_timer: Timer
+var current_zombie: Zombie
+var current_demon: Demon
 var should_hide := false
-var fill_style : StyleBoxFlat
+var fill_style: StyleBoxFlat
 
 func _ready() -> void:
 	#print_scene_tree()
 	hide()
 	Global.register_notification_bar(self)
 	hide_bar_timer = Timer.new()
-	hide_bar_timer.one_shot = true 
-	hide_bar_timer.autostart = false 
+	hide_bar_timer.one_shot = true
+	hide_bar_timer.autostart = false
 	hide_bar_timer.timeout.connect(_on_hide_bar_timer_timeout)
 	add_child(hide_bar_timer)
 	
@@ -49,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 				health_progress_bar.max_value = current_zombie.get_max_health()
 				health_progress_bar_label.text = str(current_zombie.get_health()) + " / " + str(current_zombie.get_max_health())
 			else:
-				should_hide = true 
+				should_hide = true
 		if current_demon != null:
 			if current_demon.get_health() > 0:
 				health_progress_bar.max_value = int(current_demon.get_max_health())
@@ -70,7 +70,7 @@ func set_label_border_color(label: RichTextLabel, color: Color) -> void:
 	stylebox.border_color = color
 	label.add_theme_stylebox_override("normal", stylebox)
 
-func set_text(new_text : String) -> void:
+func set_text(new_text: String) -> void:
 	hide_bar_timer.wait_time = cannot_afford_label_disappear_time
 	show_main_notification_only()
 	notifLabel.text = new_text
@@ -100,7 +100,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		print_scene_tree(child, indent + 1)
 		
 		
-func set_demon_info(demon : Demon) -> void:
+func set_demon_info(demon: Demon) -> void:
 	current_zombie = null
 	hide_bar_timer.wait_time = info_disappear_time
 	current_demon = demon
@@ -134,7 +134,7 @@ func set_demon_info(demon : Demon) -> void:
 	health_progress_bar.add_theme_stylebox_override("fill", fill_style)
 					
 		
-func set_zombie_info(zombie : Zombie) -> void:
+func set_zombie_info(zombie: Zombie) -> void:
 	current_demon = null
 	#print("Setting Bar For ", zombie)
 	hide_bar_timer.wait_time = info_disappear_time

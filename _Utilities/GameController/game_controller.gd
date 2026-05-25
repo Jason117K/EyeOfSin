@@ -94,7 +94,7 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 	current_scene = null
 	await get_tree().process_frame
 
-	var new_node = load(new_scene_path).instantiate()
+	var new_node := load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	current_scene = new_node
 
@@ -120,12 +120,12 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 
 	await get_tree().process_frame
 
-	var new1 = load(scene1_path).instantiate()
+	var new1 := load(scene1_path).instantiate()
 	scene_container.add_child(new1)
 	current_scene = new1
 	current_scenes.append(new1)
 
-	var new2 = load(scene2_path).instantiate()
+	var new2 := load(scene2_path).instantiate()
 	new2.visible = true
 	scene_container.add_child(new2)
 	current_scenes.append(new2)
@@ -178,10 +178,10 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 
 	await get_tree().process_frame
 
-	var new_node = load(new_scene_path).instantiate()
+	var new_node := load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	current_scene = new_node
-	on_scene_1 = true 
+	on_scene_1 = true
 
 
 # --- Pause Overlay Transitions ---
@@ -203,7 +203,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 
 	await get_tree().process_frame
 
-	var new_node = load(new_scene_path).instantiate()
+	var new_node := load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	previous_scenes.append(current_scene)
 	current_scene = new_node
@@ -221,7 +221,7 @@ func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 
 	await get_tree().process_frame
 
-	var new_node = load(new_scene_path).instantiate()
+	var new_node := load(new_scene_path).instantiate()
 	new_node.visible = true
 	scene_container.add_child(new_node)
 	current_scene = new_node
@@ -379,13 +379,13 @@ func get_other_dimension():
 
 func place_empty_in_alt_scene(grid_pos) -> void:
 	print("Should Place Empty Block Demon at ", grid_pos)
-	var other_dimension = get_other_dimension()
+	var other_dimension := get_other_dimension()
 	if other_dimension:
 		other_dimension.place_empty_blocker_demon(grid_pos)
 
 
 func remove_empty_in_alt_scene(grid_pos) -> void:
-	var other_dimension = get_other_dimension()
+	var other_dimension := get_other_dimension()
 	if on_purple_scene():
 		other_dimension = current_scenes[1]
 	else:
@@ -396,7 +396,7 @@ func remove_empty_in_alt_scene(grid_pos) -> void:
 
 
 func register_heart_alt_scene(new_hero_demon) -> void:
-	var other_dimension = get_other_dimension()
+	var other_dimension := get_other_dimension()
 	if other_dimension:
 		other_dimension.get_child(0).hero_demon = new_hero_demon
 

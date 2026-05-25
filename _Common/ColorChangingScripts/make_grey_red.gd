@@ -1,8 +1,8 @@
 extends AnimatedSprite2D
 
 var thisMaterial
-@export var target_color : Color 
-@export var replace_color : Color 
+@export var target_color: Color
+@export var replace_color: Color
 
 func _ready() -> void:
 	pass

@@ -15,7 +15,7 @@ extends Demon
 @export var spike_damage := 20
 
 # --- Preloads ---
-var bloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn")
+var bloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 
 # --- Component References ---
 @onready var web := $Web
@@ -24,38 +24,38 @@ var bloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn")
 @onready var maw_lightning := $LightningCrackle
 
 # --- State ---
-var can_damage_zombie = false
+var can_damage_zombie := false
 var is_lightning_maw_buff := false
 
 
 # --- Lifecycle ---
 
-func _ready():
+func _ready() -> void:
 	super()
 
 
 # --- Getters ---
 
-func get_demon_true_name():
+func get_demon_true_name() -> String:
 	return "SpinalOcculum"
 
-func get_demon_name():
+func get_demon_name() -> String:
 	return "SPINAL OCCULUM"
 
-func get_cost():
+func get_cost() -> int:
 	return cost
 
-func get_damage():
+func get_damage() -> String:
 	return "NONE"
 
-func get_lightning_damage():
+func get_lightning_damage() -> int:
 	return lightning_damage
 
 
 # --- Buff System ---
 
-func receive_buff(bufferName):
-	var demonName = (bufferName.get_demon_true_name())
+func receive_buff(bufferName) -> void:
+	var demonName := (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		match demonName:
@@ -76,27 +76,27 @@ func receive_buff(bufferName):
 			"Maw":
 				lightning_maw_buff()
 
-func debuff():
+func debuff() -> void:
 	healthComp.debuff()
 	super()
 
-func get_demon_icon()->CompressedTexture2D:
+func get_demon_icon() -> CompressedTexture2D:
 	return Global.spinal_occulum_icon
-	
-func get_special_description()->String:
+
+func get_special_description() -> String:
 	return Global.spinal_occulum_special_description
-	
-	
+
+
 # --- Death ---
 
-func _cleanup():
+func _cleanup() -> void:
 	# No extra cleanup beyond base buffNodes
 	super()
 
 
 # --- Lightning (Maw Buff) ---
 
-func lightning_maw_buff():
+func lightning_maw_buff() -> void:
 	maw_lightning.play()
 	maw_lightning.show()
 	is_lightning_maw_buff = true

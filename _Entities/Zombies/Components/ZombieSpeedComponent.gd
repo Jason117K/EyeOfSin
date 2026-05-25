@@ -1,35 +1,35 @@
 extends Node2D
 
-@onready var zombie = get_parent()
+@onready var zombie := get_parent()
 
-var speed : float
-var originalSpeed : float
+var speed: float
+var originalSpeed: float
 var slow_timer: Timer = null
 
 
-func _ready():
+func _ready() -> void:
 	speed = zombie.speed
 	originalSpeed = speed
 	set_process(false)
 
 
-func setSpeed(newSpeed):
+func setSpeed(newSpeed: float) -> void:
 	speed = newSpeed
 
 
-func freeze():
+func freeze() -> void:
 	speed = 0
 
 
-func getOriginalSpeed():
+func getOriginalSpeed() -> float:
 	return originalSpeed
 
 
-func tick(delta):
+func tick(delta: float) -> void:
 	zombie.position.x -= speed * delta
 
 
-func slow():
+func slow() -> void:
 	if speed >= originalSpeed:
 		speed = speed * 0.75
 		if slow_timer == null:
@@ -41,5 +41,5 @@ func slow():
 		slow_timer.start()
 
 
-func _on_endSpeedDebuff_timeout():
+func _on_endSpeedDebuff_timeout() -> void:
 	speed = originalSpeed

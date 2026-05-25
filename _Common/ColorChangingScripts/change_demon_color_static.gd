@@ -1,22 +1,22 @@
 extends Sprite2D
 
 #TODO Get Rid of Preload 
-var demon_glow = preload("res://_Common/Shaders/DemonGlow.gdshader")
-@export var targetGlowColor : Color
+var demon_glow := preload("res://_Common/Shaders/DemonGlow.gdshader")
+@export var targetGlowColor: Color
 
-@onready var shell = $"."
-@onready var worm1 = $"../Worm1"
-@onready var worm2 = $"../Worm2"
-@onready var worm3 = $"../Worm3"
+@onready var shell := $"."
+@onready var worm1 := $"../Worm1"
+@onready var worm2 := $"../Worm2"
+@onready var worm3 := $"../Worm3"
 
 
-@onready var worm1Animator :=  $"../Worm1Animator"
-@onready var worm2Animator :=  $"../Worm2Animator"
+@onready var worm1Animator := $"../Worm1Animator"
+@onready var worm2Animator := $"../Worm2Animator"
 
 var shell_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Shell.png")
 var shell_hive := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Hive_ShellNoBlood.png")
 var shell_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_SpinalOcculum_Shell.png")
-var shell_crawler = preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Shell.png")
+var shell_crawler := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Spider_Shell.png")
 var shell_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Occulum_Shell.png")
 var shell_maw := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Maw_Shell.png")
 var worm1_wyrm := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_Base_Worm1.png")
@@ -35,9 +35,9 @@ var worm2_spinal_occulum := preload("res://_Entities/Demons/_Wyrm/Wyrm_PNG/Wyrm_
 func _ready() -> void:
 	
 	pass
-func change_form(new_form):
-	var parent = get_parent()
-	
+func change_form(new_form: String) -> void:
+	var parent := get_parent()
+
 	if parent.has_method("adjust_position"):
 		parent.adjust_position(new_form)
 	
@@ -49,7 +49,7 @@ func change_form(new_form):
 			worm2Animator.initial_sprite_position = worm2Animator.initial_sprite_position  + Vector2(7,-5)
 			#worm2.texture = shell_wyrm
 			#worm3.texture = shell_wyrm
-			worm1.visible = false 
+			worm1.visible = false
 			worm3.visible = false
 		"Crawler":
 			shell.texture = shell_crawler
@@ -59,7 +59,7 @@ func change_form(new_form):
 			worm2Animator.adjustParams(new_form)
 			#worm3.texture = shell_wyrm
 			worm3.visible = false
-		"SpinalOcculum" :
+		"SpinalOcculum":
 			shell.texture = shell_spinal_occulum
 			worm1.texture = worm1_spinal_occulum
 			#worm1.global_position = worm1.global_position + Vector2(-8,3)
@@ -98,10 +98,10 @@ func change_form(new_form):
 			worm1Animator.adjustParams(new_form)
 			#worm2.texture = shell_wyrm
 			#worm3.texture = shell_wyrm
-			worm2.visible = false 
+			worm2.visible = false
 			worm3.visible = false
 
-func make_buff_glow():
+func make_buff_glow() -> void:
 	if material == null:
 		material = ShaderMaterial.new()
 		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")

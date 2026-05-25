@@ -67,7 +67,7 @@ func create_return_2d_audio_at_location(location: Vector2, type: SoundEffect.SOU
 func get_audio_length(type: SoundEffect.SOUND_EFFECT_TYPE) -> float:
 	if sound_effect_dict.has(type):
 		var sound_effect: SoundEffect = sound_effect_dict[type]
-		var sfx_length = sound_effect.sound_effect.get_length()
+		var sfx_length := sound_effect.sound_effect.get_length()
 		return sfx_length
 	return 1
 

@@ -2,12 +2,12 @@ class_name AnimatedTextureRect extends TextureRect
 #Tower Lore Scene Button
 
 @export var sprites : SpriteFrames
-@export var current_animation = "gif"
+@export var current_animation := "gif"
 @export var frame_index := 0
-@export_range(0.0, INF, 0.001) var speed_scale := 1.0 
+@export_range(0.0, INF, 0.001) var speed_scale := 1.0
 @export var auto_play := false
 @export var playing := false
-@export var targetGlowColor : Color
+@export var targetGlowColor: Color
 #@onready var textBox = $"../Text"
 @export_range(-180, 180) var hue_shift: float = -86.0: #25.0
 	set(value):
@@ -17,16 +17,16 @@ class_name AnimatedTextureRect extends TextureRect
 #@onready var speedTextBox =  $"../Speed"
 #@onready var uniqueTextBox =  $"../Unique Properties"
 
-var text : String
-var damageText : String
-var rangeText : String
-var speedText : String 
-var uniquePropertyText : String
+var text: String
+var damageText: String
+var rangeText: String
+var speedText: String
+var uniquePropertyText: String
 
-var refresh_rate = 1.0
-var fps = 30.0
-var frame_delta = 0
-var demon_hue_shift = preload("res://_Common/Shaders/DemonHueShift.gdshader")
+var refresh_rate := 1.0
+var fps := 30.0
+var frame_delta := 0
+var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
 var original_hue_shift := -86
 
 func _ready() -> void:
@@ -42,7 +42,7 @@ func _ready() -> void:
 	if sprites != null:
 		if not sprites.has_animation(current_animation):
 			#print("Sprites not null")
-			var animations = sprites.get_animation_names()
+			var animations := sprites.get_animation_names()
 			if animations.size() > 0:
 				current_animation = animations[0]
 		
@@ -52,7 +52,7 @@ func _ready() -> void:
 			play()
 
 # Handle scene switching with _notification
-func _notification(what):
+func _notification(what) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		#print("AnimatedTextureRect: Visibility changed, visible =", visible)
 		if visible:
@@ -62,7 +62,7 @@ func _notification(what):
 		call_deferred("_restart_animation")
 
 # Restart animation (called after scene changes)
-func _restart_animation():
+func _restart_animation() -> void:
 	#print("AnimatedTextureRect: Restarting animation")
 	
 	
@@ -72,8 +72,9 @@ func _restart_animation():
 
 func _process(delta: float) -> void:
 	if sprites == null or playing == false:
-		return 
-		
+		return
+
+
 	if sprites.has_animation(current_animation) == false:
 		playing = false
 		#print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
@@ -86,14 +87,14 @@ func _process(delta: float) -> void:
 		texture = get_next_frame()
 		frame_delta = 0.0
 
-func play(animation_name :String = current_animation):
+func play(animation_name: String = current_animation) -> void:
 	frame_index = 0
 	frame_delta = 0.0
 	current_animation = animation_name
 	get_animation_data(current_animation)
 	playing = true
 	
-func get_animation_data(animation):
+func get_animation_data(animation) -> void:
 	#print("Animation is ", animation)
 	#print("Current Animation  is ", current_animation)
 	#print("sprites is", sprites)
@@ -102,7 +103,7 @@ func get_animation_data(animation):
 	
 func get_next_frame():
 	frame_index += 1
-	var frame_count = sprites.get_frame_count(current_animation)
+	var frame_count := sprites.get_frame_count(current_animation)
 	if frame_index >= frame_count:
 		frame_index = 0
 		if not sprites.get_animation_loop(current_animation):
@@ -110,13 +111,13 @@ func get_next_frame():
 	get_animation_data(current_animation)
 	return sprites.get_frame_texture(current_animation, frame_index)
 	
-func resume():
+func resume() -> void:
 	playing = true
-	
-func pause():
+
+func pause() -> void:
 	playing = false
 
-func stop():
+func stop() -> void:
 	frame_index = 0
 	playing = false
 	

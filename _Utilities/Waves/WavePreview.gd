@@ -5,47 +5,47 @@ signal call_wave_early_requested
 
 @onready var preview_text: RichTextLabel = $Node2D/Control/EnemyPreviewText
 @onready var start_game_button: Button = $StartGameButton
-@onready var wave_progress_bar : TextureProgressBar = $WaveProgressBar
-@onready var next_wave_timer : Timer = $NextWaveTimer
+@onready var wave_progress_bar: TextureProgressBar = $WaveProgressBar
+@onready var next_wave_timer: Timer = $NextWaveTimer
 
-@onready var rebornTexture : TextureRect = $Node2D/Control/AllZombieRowTextures/Row1/RebornTexture
-@onready var severedTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row1/SeveredTexture
-@onready var unhallowerTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row1/UnhallowerTexture
-@onready var erupterTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row2/ErupterTexture
-@onready var reanimatorTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row2/ReanimatorTexture
-@onready var wretchTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row2/WretchTexture
-@onready var flesheaterTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row3/FlesheaterTexture
-@onready var amalgamTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row3/AmalgamTexture
-@onready var sunderedTexture : TextureRect =  $Node2D/Control/AllZombieRowTextures/Row3/SunderedTexture
+@onready var rebornTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row1/RebornTexture
+@onready var severedTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row1/SeveredTexture
+@onready var unhallowerTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row1/UnhallowerTexture
+@onready var erupterTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row2/ErupterTexture
+@onready var reanimatorTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row2/ReanimatorTexture
+@onready var wretchTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row2/WretchTexture
+@onready var flesheaterTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row3/FlesheaterTexture
+@onready var amalgamTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row3/AmalgamTexture
+@onready var sunderedTexture: TextureRect = $Node2D/Control/AllZombieRowTextures/Row3/SunderedTexture
 
-@onready var ALL_ZOMBIE_TEXTURES = [rebornTexture,severedTexture,unhallowerTexture, \
+@onready var ALL_ZOMBIE_TEXTURES := [rebornTexture,severedTexture,unhallowerTexture, \
 									erupterTexture,reanimatorTexture,wretchTexture, \
 									flesheaterTexture,amalgamTexture , sunderedTexture]
 									
-@onready var rebornLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1/Reborn
-@onready var severedabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1/Severed
-@onready var unhallowerLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1/Unhallower
-@onready var erupterLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Erupter
-@onready var reanimatorLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Reanimator
-@onready var wretchLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Wretch
-@onready var flesheaterLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Flesheater
-@onready var amalgamLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Amalgam
-@onready var sunderedLabel : Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Sundered
+@onready var rebornLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1/Reborn
+@onready var severedabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1/Severed
+@onready var unhallowerLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row1/Unhallower
+@onready var erupterLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Erupter
+@onready var reanimatorLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Reanimator
+@onready var wretchLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Wretch
+@onready var flesheaterLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Flesheater
+@onready var amalgamLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Amalgam
+@onready var sunderedLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Sundered
 
-@onready var ALL_ZOMBIE_LABELS = [rebornLabel,severedabel,unhallowerLabel, \
+@onready var ALL_ZOMBIE_LABELS := [rebornLabel,severedabel,unhallowerLabel, \
 									erupterLabel, reanimatorLabel, wretchLabel, \
 									flesheaterLabel, amalgamLabel, sunderedLabel]
 
-var preview_lead_time = 15
+var preview_lead_time := 15
 var _spawner: ZombieSpawner
 var _preview_wave_index: int = -1
-var progressing := false 
-var elapsed :float = 0.0 
+var progressing := false
+var elapsed: float = 0.0
 
 var ui_layer_is_green := false
 var is_green := false
 
-func _ready():
+func _ready() -> void:
 	Global.register_wave_preview(self)
 	_spawner = get_parent() as ZombieSpawner
 	start_game_button.pressed.connect(_on_start_game_button_pressed)
@@ -54,7 +54,7 @@ func _ready():
 	if ui_layer_is_green == true :
 		is_green = true
 
-func set_green():
+func set_green() -> void:
 	ui_layer_is_green = get_parent().get_parent().get_parent().get_node("UILayer").make_green
 	if ui_layer_is_green == true :
 		is_green = true			
@@ -70,11 +70,11 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 	next_wave_timer.start()
 	if Global.get_wave_manager()._current_wave > -1:
 		#print("Make visible, current wave is ",Global.get_wave_manager()._current_wave )
-		wave_progress_bar.visible = true 
+		wave_progress_bar.visible = true
 	else:
-		wave_progress_bar.visible = false 
+		wave_progress_bar.visible = false
 		#print("Global Current Wave is , ",  Global.get_wave_manager()._current_wave)
-	progressing = true 
+	progressing = true
 	
 
 
@@ -86,12 +86,12 @@ func hide_preview() -> void:
 	start_game_button.visible = false
 	$Area2D/CollisionShape2D.disabled = true
 	preview_text.clear()
-	wave_progress_bar.visible = false 
+	wave_progress_bar.visible = false
 	next_wave_timer.stop()
 	progressing = false
 
 
-func _on_Area2D_mouse_entered():
+func _on_Area2D_mouse_entered() -> void:
 	if _preview_wave_index < 0 or not $PreviewSprite.visible:
 		return
 	var config := _spawner.get_wave_config(_preview_wave_index)
@@ -99,7 +99,7 @@ func _on_Area2D_mouse_entered():
 	
 	for this_label in ALL_ZOMBIE_LABELS:
 		this_label.hide()
-		var base_name = this_label.get_name()
+		var base_name := this_label.get_name()
 		this_label.text = base_name + " x"
 	for this_image in ALL_ZOMBIE_TEXTURES:
 		this_image.hide()
@@ -119,7 +119,7 @@ func _on_Area2D_mouse_entered():
 					this_image.show()
 	$Node2D/Control.visible = true
 
-func set_image_value(this_type_name,this_count):
+func set_image_value(this_type_name, this_count) -> void:
 	for this_label in ALL_ZOMBIE_LABELS:
 		if this_type_name in this_label.get_name():
 			this_label.show()
@@ -133,7 +133,7 @@ func set_image_value(this_type_name,this_count):
 		else:
 			this_image.hide()
 
-func _on_Area2D_mouse_exited():
+func _on_Area2D_mouse_exited() -> void:
 	$Node2D/Control.visible = false
 	preview_text.clear()
 
@@ -153,7 +153,7 @@ func _process(delta: float) -> void:
 		wave_progress_bar.value = next_wave_timer.wait_time - next_wave_timer.time_left
 		#wave_progress_bar.value = max(next_wave_timer.wait_time - elapsed, 0.0)
 
-func set_preview_lead_time(new_preview_lead_time):
+func set_preview_lead_time(new_preview_lead_time) -> void:
 	preview_lead_time = new_preview_lead_time
 	wave_progress_bar.max_value = preview_lead_time
 	next_wave_timer.wait_time = preview_lead_time

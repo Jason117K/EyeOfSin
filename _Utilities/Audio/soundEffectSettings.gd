@@ -1,4 +1,4 @@
-class_name SoundEffect 
+class_name SoundEffect
 extends Resource
 ## Sound effect resource, used to configure unique sound effects for use with the AudioManager. 
 ## Passed to [method AudioManager.create_2d_audio_at_location()] and [method AudioManager.create_audio()] to play sound effects.

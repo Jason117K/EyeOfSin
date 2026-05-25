@@ -1,26 +1,26 @@
 class_name ZombieHealthComponent extends Node2D
 
-@onready var zombie : Zombie = get_parent()
+@onready var zombie: Zombie = get_parent()
 
-var health : float
-var healthRegen : float
-var bloodWorth : float
-var time_between_bleed : float
-var bleed_tick_damage : float
+var health: float
+var healthRegen: float
+var bloodWorth: float
+var time_between_bleed: float
+var bleed_tick_damage: float
 
-var bomb_scene = preload("res://_Entities/Demons/Explosion/Bomb.tscn")
-var bleed_proc_timer : Timer
-var regen_timer : Timer
-var injured = false
-var halfHealth : float
-var maxHealth : float
+var bomb_scene := preload("res://_Entities/Demons/Explosion/Bomb.tscn")
+var bleed_proc_timer: Timer
+var regen_timer: Timer
+var injured := false
+var halfHealth: float
+var maxHealth: float
 var should_bleed := false
-var explode_from_drone = false
+var explode_from_drone := false
 
 signal enemy_died(enemy)
 
 
-func _ready():
+func _ready() -> void:
 	health = zombie.health
 	healthRegen = zombie.healthRegen
 	bloodWorth = zombie.bloodWorth
@@ -38,39 +38,39 @@ func _ready():
 		add_child(regen_timer)
 
 
-func receive_buff():
+func receive_buff() -> void:
 	pass
 
 
-func add_blood_worth(blood_worth_to_add):
+func add_blood_worth(blood_worth_to_add: float) -> void:
 	print("New Blood Worth")
 	bloodWorth = bloodWorth + blood_worth_to_add
 
 
-func getInjured():
+func getInjured() -> bool:
 	return injured
 
 
-func take_damage(damage, piercing : bool = false):
+func take_damage(damage: float, piercing: bool = false) -> void:
 	#print(zombie.name, " just took, ", damage)
 	health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	if health <= 0:
 		if explode_from_drone:
-			var bomb = bomb_scene.instantiate()
+			var bomb := bomb_scene.instantiate()
 			bomb.position = zombie.position + Vector2(0, 0)
 			get_parent().get_parent().add_child(bomb)
 		emit_signal("enemy_died", self)
-		var gameLayer = get_parent().get_parent()
-		var currentLevel = gameLayer.get_parent()
-		var demon_manager = currentLevel.get_node("DemonManager")
+		var gameLayer := get_parent().get_parent()
+		var currentLevel := gameLayer.get_parent()
+		var demon_manager := currentLevel.get_node("DemonManager")
 		if demon_manager:
 			demon_manager.add_blood(bloodWorth)
 		zombie.die()
 
 
-func bleed(bleed_damage):
+func bleed(bleed_damage: float) -> void:
 	if should_bleed == false:
 		bleed_tick_damage = bleed_damage
 		bleed_proc_timer = Timer.new()
@@ -83,20 +83,20 @@ func bleed(bleed_damage):
 		should_bleed = true
 
 
-func bleed_tick():
+func bleed_tick() -> void:
 	take_damage(bleed_tick_damage)
 
 
-func _on_regen_tick():
+func _on_regen_tick() -> void:
 	if health < maxHealth:
 		health = min(health + healthRegen, maxHealth)
 		injured = health < halfHealth
 
 
-func resetHealth():
+func resetHealth() -> void:
 	health = maxHealth
 	injured = false
 
 
-func willExplodeFromDrone():
+func willExplodeFromDrone() -> void:
 	explode_from_drone = true

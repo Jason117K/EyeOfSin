@@ -144,27 +144,27 @@ var demon_b_instance: Node
 var preview_zombies: Array = []
 var zombies_alive: int = 0
 
-@onready var sub_viewport : SubViewport = $SubViewportContainer/SubViewport
-@onready var preview_world : Node2D = $SubViewportContainer/SubViewport/PreviewWorld
-@onready var demon_receiving_buff_slot_a : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonReceivingBuffSlot
-@onready var demon_giving_buff_slot_b : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonGivingBuffSlot
-@onready var demon_slot_1 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition1
-@onready var demon_slot_2 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition2
-@onready var demon_slot_3 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition3
-@onready var demon_slot_4 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition4
-@onready var demon_slot_5 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition5
-@onready var demon_slot_6 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition6
-@onready var demon_slot_7 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition7
-@onready var demon_slot_8 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition8
-@onready var demon_slot_9 : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition9
+@onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
+@onready var preview_world: Node2D = $SubViewportContainer/SubViewport/PreviewWorld
+@onready var demon_receiving_buff_slot_a: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonReceivingBuffSlot
+@onready var demon_giving_buff_slot_b: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonGivingBuffSlot
+@onready var demon_slot_1: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition1
+@onready var demon_slot_2: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition2
+@onready var demon_slot_3: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition3
+@onready var demon_slot_4: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition4
+@onready var demon_slot_5: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition5
+@onready var demon_slot_6: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition6
+@onready var demon_slot_7: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition7
+@onready var demon_slot_8: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition8
+@onready var demon_slot_9: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/DemonPosition9
 
 @onready var all_demon_slots := [demon_slot_1,demon_slot_2,demon_slot_3,demon_slot_4,demon_slot_5,demon_slot_6,demon_slot_7]
 
-@onready var zombie_spawn : Node2D = $SubViewportContainer/SubViewport/PreviewWorld/ZombieSpawnPoint
-@onready var buff_timer : Timer = $BuffTimer
+@onready var zombie_spawn: Node2D = $SubViewportContainer/SubViewport/PreviewWorld/ZombieSpawnPoint
+@onready var buff_timer: Timer = $BuffTimer
 
-@onready var slot_b = demon_slot_1
-@onready var slot_a = demon_slot_1
+@onready var slot_b := demon_slot_1
+@onready var slot_a := demon_slot_1
 
 @onready var respawn_zombie_timer := $RespawnZombieTimer
 
@@ -176,7 +176,7 @@ func _ready() -> void:
 	buff_timer.wait_time = 0.5
 	buff_timer.one_shot = true
 	buff_timer.timeout.connect(_apply_buffs)
-	respawn_zombie_timer.one_shot = true 
+	respawn_zombie_timer.one_shot = true
 	respawn_zombie_timer.wait_time = respawn_timer_wait_time
 	respawn_zombie_timer.timeout.connect(reset_scene)
 
@@ -190,7 +190,7 @@ func setup(a_name: String, b_name: String) -> void:
 	_spawn_zombies()
 	buff_timer.start()
 
-func clear_preview():
+func clear_preview() -> void:
 	for zombie in preview_zombies:
 		if is_instance_valid(zombie):
 			zombie.queue_free()
@@ -229,8 +229,8 @@ func get_slot_node(slot_number: int) -> Node2D:
 func _spawn_demons() -> void:
 	if not DEMON_SCENES.has(demon_a_name) or not DEMON_SCENES.has(demon_b_name):
 		return
-	var scene_a = load(DEMON_SCENES[demon_a_name])
-	var scene_b = load(DEMON_SCENES[demon_b_name])
+	var scene_a := load(DEMON_SCENES[demon_a_name])
+	var scene_b := load(DEMON_SCENES[demon_b_name])
 	demon_a_instance = scene_a.instantiate()
 	demon_b_instance = scene_b.instantiate()
 	demon_a_instance.add_to_group("Purple")
@@ -278,13 +278,13 @@ func _spawn_demons() -> void:
 		demon_a_instance.demo_blood_pickup()
 		
 func _get_zombie_config() -> Array:
-	var key = demon_a_name + "+" + demon_b_name
+	var key := demon_a_name + "+" + demon_b_name
 	if SYNERGY_ZOMBIE_CONFIGS.has(key):
 		return SYNERGY_ZOMBIE_CONFIGS[key]
 	return DEFAULT_ZOMBIE_CONFIG
 
 func _spawn_zombies() -> void:
-	var config = _get_zombie_config()
+	var config := _get_zombie_config()
 	zombies_alive = config.size()
 	for entry in config:
 		var zombie_type: String = entry.get("type", "Unhallower")
@@ -296,7 +296,7 @@ func _spawn_zombies() -> void:
 			zombies_alive -= 1
 			continue
 
-		var zombie = ZombieRegistry.SCENES[zombie_type].instantiate()
+		var zombie := ZombieRegistry.SCENES[zombie_type].instantiate()
 		zombie.add_to_group("Purple")
 		zombie.make_demo()
 		zombie.zombie_death.connect(_on_zombie_died)
@@ -310,7 +310,7 @@ func _spawn_zombies() -> void:
 		zombie.position = Vector2(SPAWN_X + x_offset, LANE_Y[lane])
 		preview_zombies.append(zombie)
 
-func reset_scene():
+func reset_scene() -> void:
 	#clear_preview()
 	setup(demon_a_name,demon_b_name)
 

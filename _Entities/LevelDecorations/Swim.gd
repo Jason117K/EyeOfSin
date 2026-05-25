@@ -15,10 +15,10 @@ extends AnimatedSprite2D
 var moveAmount: float
 var distanceMoved: float = 0.0
 var startPosition: Vector2
-var speed : float
+var speed: float
 var make_green := false
 
-func _ready():
+func _ready() -> void:
 	if make_green:
 		change_animation()
 		#_setup_shader()
@@ -44,9 +44,9 @@ func _ready():
 	else:
 		stop()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# Calculate movement for this frame
-	var movement = speed * delta
+	var movement := speed * delta
 	
 	# Move sprite based on flip direction
 	if flip_h:
@@ -63,9 +63,9 @@ func _process(delta):
 		# Reset distance tracking
 		distanceMoved = 0
 
-func updateAnim():
+func updateAnim() -> void:
 	change_animation()
 
 
-func change_animation():
+func change_animation() -> void:
 	animation = "green"

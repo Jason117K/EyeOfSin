@@ -1,7 +1,7 @@
 class_name ZombieSpriteComp extends AnimatedSprite2D
 #ZombieSpriteComp
 
-var count = 1
+var count := 1
 
 @export_range(-180, 180) var hue_shift: float = -86.0: #25.0
 	set(value):
@@ -9,25 +9,25 @@ var count = 1
 		#print(hue_shift,"Apply HUE Shift ", count)
 		_apply_hue_shift()
 
-var demon_hue_shift = preload("res://_Common/Shaders/DemonHueShift.gdshader")
+var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
 var thisMaterial
 var original_hue_shift := -86
 
 @export var targetColorString := "ff0013"
-@export var targetColor : Color 
-@export var targetGlowColor : Color
-@export var replaceColor : Color = Color.BLACK
+@export var targetColor: Color
+@export var targetGlowColor: Color
+@export var replaceColor: Color = Color.BLACK
 
 var is_attacking
 var isSlow
 var isInjured
-@onready var zombie = 	get_parent()
-@onready var attackComp = $"../AttackComponent"
+@onready var zombie := get_parent()
+@onready var attackComp := $"../AttackComponent"
 #@onready var attack_audio_player = $"../AttackAudioPlayer"
-@onready var healthComp  =  $"../HealthComponent"
+@onready var healthComp := $"../HealthComponent"
 
-var isDead = false
-var specialMove = false
+var isDead := false
+var specialMove := false
 var set_hue := false
 var _current_target_anim: StringName = &""
 
@@ -52,11 +52,11 @@ func _ready() -> void:
 	set_process(false)
 	
 	
-func setSpecialMoveTrue():
+func setSpecialMoveTrue() -> void:
 	specialMove = true
 	_current_target_anim = &""
 
-func setSpecialMoveFalse():
+func setSpecialMoveFalse() -> void:
 	specialMove = false
 	_current_target_anim = &""
 	
@@ -65,7 +65,7 @@ func _play_if_changed(anim_name: StringName) -> void:
 		_current_target_anim = anim_name
 		play(anim_name)
 
-func tick(_delta):
+func tick(_delta: float) -> void:
 	if attackComp == null or isDead:
 		return
 	is_attacking = attackComp.is_attacking
@@ -124,8 +124,8 @@ func tick(_delta):
 			else:
 				_play_if_changed(&"Attack")
 
-#Makes it so Pole Vaulters can only special move once 
-func _on_AnimatedSprite_animation_finished():
+#Makes it so Pole Vaulters can only special move once
+func _on_AnimatedSprite_animation_finished() -> void:
 	if("Vault" in self.animation):
 		specialMove = false
 	if("death" in self.animation):
@@ -147,9 +147,9 @@ func _apply_hue_shift() -> void:
 		material.set_shader_parameter("hue_shift_degrees", hue_shift)
 		if set_hue == false && hue_shift != 0:
 			original_hue_shift = hue_shift
-			set_hue = true 
+			set_hue = true
 			#print(original_hue_shift, "Apply Hue Shift First ", count)
-	count += 1 
+	count += 1
 		
 		
 		

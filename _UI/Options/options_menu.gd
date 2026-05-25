@@ -1,12 +1,12 @@
 extends Control
 
-var startScreen = ("res://_Stages/StartScreen/StartScreen.tscn")
+var startScreen := "res://_Stages/StartScreen/StartScreen.tscn"
 var backButton 
 
 func _ready() -> void:
 	# Set process mode to handle input even when paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
+
 	print("=== OptionsMenu _ready() Debug ===")
 	print("Master slider exists: ", $CenterContainer/VBoxContainer/masterVolumeSlider != null)
 	print("Music slider exists: ", $CenterContainer/VBoxContainer/musicVolumeSlider != null)
@@ -22,7 +22,7 @@ func _ready() -> void:
 	print("Process mode: ", process_mode)
 	print("Tree paused: ", get_tree().paused)
 	backButton.connect("pressed",_on_back_button_pressed)
-	
+
 func _on_back_button_pressed() -> void:
 	print("=== BACK BUTTON CLICKED ===")
 	print("About to change scene to: ", startScreen)
