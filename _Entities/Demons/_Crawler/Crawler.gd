@@ -33,10 +33,10 @@ func _ready() -> void:
 
 # --- Getters ---
 
-func get_damage():
+func get_damage()->float:
 	return projectile_shoot_component.damage
 
-func get_cost() -> int:
+func get_cost() -> float:
 	return cost
 
 func get_demon_true_name() -> String:

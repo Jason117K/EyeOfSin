@@ -36,7 +36,7 @@ func _ready() -> void:
 
 	
 func set_all_areas() -> void:
-	for area in all_areas:
+	for area : Node in all_areas:
 		if self.is_in_group("Green"):
 			area.set_collision_mask_value(1,false)
 			area.set_collision_mask_value(2,false)
@@ -58,7 +58,7 @@ func get_highest_zombie_concentration_and_eat() -> void:
 	var zombies_per_area: Array[Array] = [[], [], [], [], [], []]
 
 	for i in all_detection_areas.size():
-		for area in all_detection_areas[i].get_overlapping_areas():
+		for area:Area2D in all_detection_areas[i].get_overlapping_areas():
 			if area.is_in_group("Zombie"):
 				zombie_counts[i] += 1
 				zombies_per_area[i].append(area)
@@ -89,7 +89,7 @@ func get_highest_zombie_concentration_and_eat() -> void:
 func pull_from_below(zombies_found: Array) -> void:
 	zombies_to_kill = zombies_found.duplicate()
 	#print("Should Devour Zombies to Kill : ", zombies_to_kill)
-	for zombie in zombies_to_kill:
+	for zombie : Node in zombies_to_kill:
 		if is_instance_valid(zombie):
 			#print("Should Devour & Freeze ", zombie)
 			zombie.freeze()
@@ -97,7 +97,7 @@ func pull_from_below(zombies_found: Array) -> void:
 	pull_from_below_animation.show()
 	pull_from_below_animation.play()
 
-	for zombie in zombies_to_kill:
+	for zombie : Node in zombies_to_kill:
 		if is_instance_valid(zombie):
 			#print("Should Devour & Drag ", zombie)
 			drag_down(zombie)

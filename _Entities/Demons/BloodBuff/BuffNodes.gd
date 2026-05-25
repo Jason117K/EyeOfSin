@@ -59,9 +59,9 @@ func _ready() -> void:
 
 func clearBuffs() -> void:
 	#print("DDD Buffed Demons is ", buffedDemons)
-	for demon in buffedDemons:
+	for this_demon : Demon in buffedDemons:
 		#print("Now DDD Buffing ", demon)
-		if demon != null:
+		if this_demon != null:
 			pass
 			#demon.debuff()
 	pass
@@ -118,7 +118,7 @@ func _process(_delta: float) -> void:
 						bloodTileVisible = true 
 						#Check our list of valid demons to buff
 						#print("Demon buff name is : ", demonToBuff.name)
-						for demonActor in giveBuffTo:
+						for demonActor:String in giveBuffTo:
 							#print("Demon Actor is ",demonActor )
 							
 									

@@ -23,12 +23,12 @@ var has_pulsed := false
 @onready var pause_Button := $"../../PauseButton"
 @onready var levelSwitcher := $"../LevelSwitcher"
 @onready var _demon_hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
-@onready var world_swap_button := demonSelectionMenu.get_world_swap_button()
-@onready var codex_button := demonSelectionMenu.get_codex_button()
+@onready var world_swap_button :TextureButton= demonSelectionMenu.get_world_swap_button()
+@onready var codex_button :TextureButton= demonSelectionMenu.get_codex_button()
 @onready var sway_script_path := "res://_Common/EnvironmentScripts/sway.gd"
 
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
-var green_dimension
+var green_dimension : Node
 
 var level_1_start_dialog := preload("res://_Assets/Dialog/level_0_start_dialog.dtl")
 var level_2_start_dialog := preload("res://_Assets/Dialog/level_02_start_dialog.dtl")
@@ -52,7 +52,7 @@ const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDesc
 const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler"] #,"Portal"]
 const ALL_EXTRA_BUTTONS = []
 
-func get_demon_manager():
+func get_demon_manager()->Node:
 	return demonManager
 
 
@@ -82,7 +82,7 @@ func _ready() -> void:
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]
 func hide_all_demon_buttons_with_exception(exceptions: Array = []) -> void:
 	print("Exceptions Are ",exceptions)
-	for container_name in ALL_DEMON_CONTAINERS:
+	for container_name:String in ALL_DEMON_CONTAINERS:
 		if container_name in exceptions:
 			pass
 			#print(container_name , " is in ",exceptions )
@@ -97,7 +97,7 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []) -> void:
 		if _demon_hbox.get_node(container_name) != null:
 			var container := _demon_hbox.get_node(container_name)
 
-			var should_show := container_name in exceptions
+			var should_show :bool= container_name in exceptions
 			#print(should_show, " container is IS ",container)
 			container.visible = should_show
 			for child in container.get_children():
@@ -107,14 +107,14 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []) -> void:
 ## Shows all demon buttons and their parent containers.
 ## Optionally pass extra non-demon UI names to also show (e.g. "WorldSwap", "Codex").
 func show_all_demon_buttons(extras: Array = []) -> void:
-	for container_name in ALL_DEMON_CONTAINERS:
+	for container_name:String in ALL_DEMON_CONTAINERS:
 		if _demon_hbox.get_node(container_name) != null:
 			var container := _demon_hbox.get_node(container_name)
 			container.visible = true
 			for child in container.get_children():
 				child.visible = true
-	for extra_name in extras:
-		for button_instance in demonSelectionMenu.get_all_extra_buttons():
+	for extra_name:String in extras:
+		for button_instance:TextureButton in demonSelectionMenu.get_all_extra_buttons():
 			if extra_name == button_instance.get_name():
 				button_instance.visible = true
 
@@ -126,16 +126,16 @@ func setup_demon_selection_menu() -> void:
 func make_camera_current() -> void:
 	$Camera2D.make_current()
 
-func place_empty_blocker_demon(grid_pos) -> void:
+func place_empty_blocker_demon(grid_pos:Vector2) -> void:
 	demonManager.place_empty_blocker_demon(grid_pos)
 
-func remove_empty_blocker_demon(grid_pos) -> void:
+func remove_empty_blocker_demon(grid_pos:Vector2) -> void:
 	demonManager.clear_space_alt(grid_pos)
 
 # Spotlight helper functions - ADD THESE NEW FUNCTIONS
 
 ## Shows spotlight centered on a Control node
-func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
+func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0)->void:
 	if not target_node or not spotlight_overlay:
 		print("NOT SHOWING SPOTLIGHT")
 		return
@@ -153,18 +153,18 @@ func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
 	show_spotlight_at_position(center, uv_size)
 
 ## Shows spotlight at specific screen position
-func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15) -> void:
+func show_spotlight_at_position(screen_pos: Vector2, this_size: float = 0.15) -> void:
 	if not spotlight_overlay:
 		return
 	var viewport_size := get_viewport().get_visible_rect().size
 	var uv_pos := screen_pos / viewport_size
-	print("[SHOW SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
+	print("[SHOW SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", this_size)
 	#var viewport_size = get_viewport().get_visible_rect().size
 	#var uv_pos = screen_pos / viewport_size
 
 	var spotlight_rect := spotlight_overlay.get_node("SpotlightRect")
 	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
-	spotlight_rect.material.set_shader_parameter("circle_size", size)
+	spotlight_rect.material.set_shader_parameter("circle_size", this_size)
 	spotlight_overlay.visible = true
 
 ## Hides spotlight overlay
@@ -176,11 +176,11 @@ func hide_spotlight() -> void:
 func hide_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.clear_rectangles()
 
-func get_health_ui():
+func get_health_ui()->Control:
 	return $UILayer.get_the_health()
 
 
-func get_game_layer():
+func get_game_layer()->Node:
 	return $GameLayer
 	
 	

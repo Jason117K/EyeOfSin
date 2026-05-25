@@ -22,7 +22,7 @@ func set_sprite_visual_shader(new_shader: VisualShader) -> void:
 	else:
 		push_warning("Attempted to set null shader")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if set_shader:
 		return
 	else:

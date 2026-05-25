@@ -1,6 +1,7 @@
 extends DemonSpriteComp
 
 var has_shot := false 
+signal frame_changed_signal(animation_name: String, frame_index: int)
 
 func _ready() -> void:
 	super()

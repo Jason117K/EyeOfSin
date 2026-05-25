@@ -10,20 +10,20 @@ var canPlayLevel6: bool = true
 var canPlayLevel7: bool = true
 var occulumCount := 0
 var occulumCountVisual := 0
-var wave_manager
+var wave_manager : Node
 var is_blocking := false
 
 var all_zombies := []
 var game_controller: GameController
-var demon_selection_menu
-var notification_bar
-var green_portal = null
-var purple_portal = null
+var demon_selection_menu : Control
+var notification_bar : Control 
+var green_portal :Node = null
+var purple_portal :Node= null
 var gameIsStarted := false
 var hero_demon_summoned := false
-var swap_ability
-var current_level
-var hero_demon
+var swap_ability : Node
+var current_level : Node
+var hero_demon : Node
 var ui_layers  := []
 var wave_previews := []
 var demon_costs: Dictionary = {}
@@ -73,7 +73,7 @@ func _load_demon_costs() -> void:
 		"Maw": "res://_Entities/Demons/_Maw/Maw.tscn",
 		"Hive": "res://_Entities/Demons/_Hive/Hive.tscn",
 	}
-	for demon_name in demon_scenes:
+	for demon_name : String in demon_scenes:
 		var scene: PackedScene = load(demon_scenes[demon_name])
 		var instance: Node = scene.instantiate()
 		demon_costs[demon_name] = instance.cost  # each demon script has an @export var cost: int
@@ -89,17 +89,17 @@ func get_demon_cost(demon_name: String) -> int:
 func get_current_scene_filepath() -> String:
 	return game_controller.get_current_scene_filepath()
 
-func register_wave_manager(new_wavemanager) -> void:
+func register_wave_manager(new_wavemanager : Node) -> void:
 	wave_manager = new_wavemanager
 
-func get_wave_manager():
+func get_wave_manager()->Node:
 	return wave_manager
 
-func register_ui_layer(new_ui_layer) -> void:
+func register_ui_layer(new_ui_layer:Control) -> void:
 	ui_layers.append(new_ui_layer)
 	#ui_layer.set_health(DemonMan)
 
-func register_wave_preview(new_wave_preview) -> void:
+func register_wave_preview(new_wave_preview:Node) -> void:
 	wave_previews.append(new_wave_preview)
 	pass
 	
@@ -180,7 +180,7 @@ func setCanPlayLevel7() -> void:
 func getCanPlayLevel7() -> bool:
 	return canPlayLevel7
 
-func unlockLevel(levelUnlocked) -> void:
+func unlockLevel(levelUnlocked : int) -> void:
 	match levelUnlocked:
 		1:
 			pass
@@ -213,16 +213,16 @@ func clear_guide() -> void:
 	#print("CLEAR THE GUIDE GAMECONTROLLER")
 	game_controller.clear_guide()		
 	
-func get_game_controller():
+func get_game_controller() -> GameController:
 	return game_controller
 	
-func register_green_portal(new_green_portal) -> void:
+func register_green_portal(new_green_portal : Node) -> void:
 	if purple_portal == null:
 		new_green_portal.add_to_group("EntrancePortal")
 	green_portal = new_green_portal
 
 
-func register_purple_portal(new_purple_portal) -> void:
+func register_purple_portal(new_purple_portal : Node) -> void:
 	if green_portal == null:
 		new_purple_portal.add_to_group("EntrancePortal")
 	purple_portal = new_purple_portal
@@ -234,7 +234,7 @@ func get_green_portal_location() -> Vector2:
 	return green_portal.global_position
 	
 	
-func register_hero_demon(new_hero_demon) -> void:
+func register_hero_demon(new_hero_demon : Demon) -> void:
 	hero_demon = new_hero_demon
 	hero_demon_summoned = true
 
@@ -251,12 +251,12 @@ func unhide_ui_layer() -> void:
 	should_hide_ui = false
 	var real_ui_layers := []
 		
-	for item in ui_layers:
+	for item:Node in ui_layers:
 		if item == null:
 			pass
 		else:
 			real_ui_layers.append(item)
-	for this_ui_layer in real_ui_layers:		
+	for this_ui_layer:Control in real_ui_layers:		
 		this_ui_layer.show()
 	adjust_ui_layer()
 
@@ -264,12 +264,12 @@ func hide_ui_layer() -> void:
 	should_hide_ui = true
 	var real_ui_layers := []
 		
-	for item in ui_layers:
+	for item : Node in ui_layers:
 		if item == null:
 			pass
 		else:
 			real_ui_layers.append(item)
-	for this_ui_layer in real_ui_layers:		
+	for this_ui_layer : Control in real_ui_layers:		
 		#print("Should Hide Ui Layer ", this_ui_layer)
 		this_ui_layer.hide()
 		
@@ -280,19 +280,19 @@ func adjust_ui_layer() -> void:
 		var real_ui_layers := []
 		var real_wave_previews := []
 		
-		for item in ui_layers:
+		for item : Node in ui_layers:
 			if item == null:
 				pass
 			else:
 				real_ui_layers.append(item)
 
-		for preview_item in wave_previews:
+		for preview_item:Node in wave_previews:
 			if preview_item == null:
 				pass
 			else:
 				real_wave_previews.append(preview_item)
 				
-		for this_ui_layer in real_ui_layers:
+		for this_ui_layer : Control in real_ui_layers:
 		#	print("SHOULD CHECKING UI LAYER ", this_ui_layer)
 			if game_controller.on_purple_scene():
 			#	print("ON PURPLE SCENE SHOULD HIDE GREEN")
@@ -307,7 +307,7 @@ func adjust_ui_layer() -> void:
 				else:
 					this_ui_layer.hide()
 					
-		for this_preview in real_wave_previews:
+		for this_preview : Node in real_wave_previews:
 		#	print("SHOULD CHECKING PREVIEW ", this_preview)
 			if game_controller.on_purple_scene():
 				#print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
@@ -330,10 +330,10 @@ func is_on_purple_dimension() -> bool:
 	else:
 		return false
 	
-func register_swap_ability(new_swap_ability) -> void:
+func register_swap_ability(new_swap_ability : Node) -> void:
 	swap_ability = new_swap_ability
 
-func register_notification_bar(new_notification_bar) -> void:
+func register_notification_bar(new_notification_bar : Control) -> void:
 	notification_bar = new_notification_bar
 	
 
@@ -349,47 +349,47 @@ func reset_swap_ability() -> void:
 	if swap_ability != null:
 		swap_ability.reset_on_game_start()
 	
-func register_zombie(new_zombie) -> void:
+func register_zombie(new_zombie : Zombie) -> void:
 	all_zombies.append(new_zombie)
 	if swap_ability != null:
 		swap_ability.append_new_zombie(new_zombie)
 	
 	
-func deregister_zombie(zombie_to_delete) -> void:
+func deregister_zombie(zombie_to_delete : Zombie) -> void:
 	all_zombies.erase(zombie_to_delete)
 	
-func get_all_zombies():
+func get_all_zombies() -> Array:
 	return all_zombies
 	
-func set_zombie_info_bar(zombie) -> void:
+func set_zombie_info_bar(zombie : Zombie) -> void:
 	#print(" notification_bar" , notification_bar)
 	notification_bar.set_zombie_info(zombie)
 	pass
 
-func set_demon_info_bar(demon) -> void:
+func set_demon_info_bar(demon : Demon) -> void:
 	notification_bar.set_demon_info(demon)
 	pass
 	
-func get_column_death_explosion():
+func get_column_death_explosion() -> PackedScene:
 	return column_death_explosion
 		
 func hide_notification_bar() -> void:
 	if notification_bar != null:
 		notification_bar.hide()
 	
-func get_blood_scene():
+func get_blood_scene() -> PackedScene:
 	return blood_scene
 
-func get_bomb_scene():
+func get_bomb_scene() -> PackedScene:
 	return bomb_scene
 	
-func get_consume_zombie_group_scene():
+func get_consume_zombie_group_scene() -> PackedScene:
 	return consume_zombie_group_scene
 
-func get_silence_field():
+func get_silence_field() -> PackedScene :
 	return silence_field
 	
-func get_severed_spriteframes():
+func get_severed_spriteframes()-> SpriteFrames:
 	return severed_spriteframes
 	
 func hide_pip() -> void:

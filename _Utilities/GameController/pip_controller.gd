@@ -6,7 +6,7 @@ extends Control
 @onready var _viewport: SubViewport = get_parent().get_node("PipViewport")
 @onready var _pip_camera: Camera2D = _viewport.get_node("PipCamera")
 @onready var panel_container: PanelContainer = $PanelContainer
-var _restamp_accum := 0.0
+#var _restamp_accum : float = 0.0
 #const SMALL_RECT := Rect2(530, 300, 200, 102)   # bottom-right corner
 const SMALL_RECT := Rect2(530, 325, 200, 82)
 const LARGE_RECT := Rect2(70, 36, 600, 340)     # big centered overlay
@@ -27,7 +27,7 @@ func _ready() -> void:
 	_view.visibility_layer = 1 << 9
 
 
-func _process(dt: float) -> void:
+func _process(_dt: float) -> void:
 	pass
 	#_viewport.canvas_transform = get_viewport().canvas_transform
 	#_restamp_accum += dt

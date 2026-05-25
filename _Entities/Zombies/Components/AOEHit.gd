@@ -53,10 +53,10 @@ func _on_Hit3_animation_finished() -> void:
 	#hit3.stop()
 	
 	# Get the Towers to Damage
-	var areasToDamage := hitBoxComp.get_overlapping_areas()
+	var areasToDamage :Array= hitBoxComp.get_overlapping_areas()
 	
 	# Damage all the Towers & Then Kill the Parent/Ticker Zombie 
-	for area in areasToDamage:
+	for area:Area2D in areasToDamage:
 		print("This area is ", area.name)
 		if(is_instance_valid(area)):
 			if area.is_in_group("Demons"):

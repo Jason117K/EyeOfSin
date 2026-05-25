@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://i2ubkdlb3dw"]
+
+[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="1_62lgs"]
+
+[resource]
+script = ExtResource("1_62lgs")
+Flesheater = 3
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"

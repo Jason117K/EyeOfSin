@@ -10,7 +10,7 @@ var on_scene_1 := true
 var can_swap := true
 var swap_cooldown_timer: Timer
 
-var demon_manager
+var demon_manager : Node
 
 @onready var pause_button: Button = $PauseButton
 @onready var pip := $PipRoot
@@ -30,7 +30,7 @@ func _ready() -> void:
 	swap_cooldown_timer = Timer.new()
 	swap_cooldown_timer.wait_time = 0.1
 	swap_cooldown_timer.one_shot = true
-	swap_cooldown_timer.timeout.connect(func(): can_swap = true)
+	swap_cooldown_timer.timeout.connect(func()->void: can_swap = true)
 	add_child(swap_cooldown_timer)
 
 	_default_root_cull_mask = get_viewport().canvas_cull_mask
@@ -50,7 +50,7 @@ func _remove_and_free(node: Node) -> void:
 
 func _cleanup_all_scenes() -> void:
 	var freed_nodes: Array = []
-	for s in current_scenes:
+	for s:Node in current_scenes:
 		if is_instance_valid(s) and s not in freed_nodes:
 			_remove_and_free(s)
 			freed_nodes.append(s)
@@ -94,7 +94,7 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 	current_scene = null
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node :Control = load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	current_scene = new_node
 
@@ -112,7 +112,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		if current_scene:
 			current_scene.visible = false
 	else:
-		for s in current_scenes:
+		for s:Node in current_scenes:
 			if is_instance_valid(s):
 				scene_container.remove_child(s)
 		current_scenes.clear()
@@ -120,12 +120,12 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 
 	await get_tree().process_frame
 
-	var new1 := load(scene1_path).instantiate()
+	var new1 : Control = load(scene1_path).instantiate()
 	scene_container.add_child(new1)
 	current_scene = new1
 	current_scenes.append(new1)
 
-	var new2 := load(scene2_path).instantiate()
+	var new2 : Control = load(scene2_path).instantiate()
 	new2.visible = true
 	scene_container.add_child(new2)
 	current_scenes.append(new2)
@@ -138,7 +138,8 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	if "Level1/Level0-1" in scene1_path:
 		pass
 	else:
-		print(scene1_path , "This Should Make Pip Show")
+		pass
+		#print(scene1_path , "This Should Make Pip Show")
 		#pip.show_pip()
 
 	$CurrentScene/WaveManager.call_deferred("_ready")
@@ -178,7 +179,7 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node :Control= load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	current_scene = new_node
 	on_scene_1 = true
@@ -195,7 +196,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 	if current_scene != null:
 		current_scene.visible = false
 
-	for s in current_scenes:
+	for s:Node in current_scenes:
 		if is_instance_valid(s):
 			s.visible = false
 			set_node_and_children_process_mode_disabled(s)
@@ -203,7 +204,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node :Control= load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)
 	previous_scenes.append(current_scene)
 	current_scene = new_node
@@ -214,14 +215,14 @@ func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 	pause_button.visible = false
 	pip.hide_pip()
 
-	for s in current_scenes:
+	for s:Node in current_scenes:
 		if is_instance_valid(s):
 			s.visible = false
 			s.get_tree().paused = true
 
 	await get_tree().process_frame
 
-	var new_node := load(new_scene_path).instantiate()
+	var new_node :Control = load(new_scene_path).instantiate()
 	new_node.visible = true
 	scene_container.add_child(new_node)
 	current_scene = new_node
@@ -249,7 +250,7 @@ func restore_dual_scenes() -> void:
 
 	await get_tree().process_frame
 	get_tree().paused = false
-	for s in current_scenes:
+	for s:Node in current_scenes:
 		if is_instance_valid(s):
 			s.visible = false
 			set_node_and_children_process_mode_inherit(s)
@@ -370,21 +371,21 @@ func get_alt_dimension() -> Node:
 	return current_scenes[0]
 
 
-func get_other_dimension():
+func get_other_dimension() -> Node:
 	if on_purple_scene():
 		return current_scenes[1]
 	else:
 		return current_scenes[0]
 
 
-func place_empty_in_alt_scene(grid_pos) -> void:
+func place_empty_in_alt_scene(grid_pos : Vector2) -> void:
 	print("Should Place Empty Block Demon at ", grid_pos)
 	var other_dimension := get_other_dimension()
 	if other_dimension:
 		other_dimension.place_empty_blocker_demon(grid_pos)
 
 
-func remove_empty_in_alt_scene(grid_pos) -> void:
+func remove_empty_in_alt_scene(grid_pos : Vector2) -> void:
 	var other_dimension := get_other_dimension()
 	if on_purple_scene():
 		other_dimension = current_scenes[1]
@@ -395,7 +396,7 @@ func remove_empty_in_alt_scene(grid_pos) -> void:
 		other_dimension.remove_empty_blocker_demon(grid_pos)
 
 
-func register_heart_alt_scene(new_hero_demon) -> void:
+func register_heart_alt_scene(new_hero_demon : Demon) -> void:
 	var other_dimension := get_other_dimension()
 	if other_dimension:
 		other_dimension.get_child(0).hero_demon = new_hero_demon

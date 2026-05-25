@@ -2,8 +2,8 @@ extends Area2D
 #Blood.gd
 
 
-@export var BloodValue := 50
-@export var BloodDamage := 50
+@export var BloodValue :float = 50
+@export var BloodDamage :float = 50
 @export var default_auto_pickup_wait_time := 6.0
 @export var crawler_buff_auto_pickup_wait_time := 10.0
 @export var wyrm_buff_auto_pickup_wait_time := 10.0
@@ -13,7 +13,7 @@ var demo_blood_pickup_time := 1.25
 @onready var aoe: Area2D = $AOEZone
 @onready var auto_pickup_timer: Timer = $AutoPickUpTimer
 @onready var heal_anim := $HealingAnimSprite
-@onready var demon_manager = get_parent().get_parent().get_node("DemonManager")
+@onready var demon_manager : Node = get_parent().get_parent().get_node("DemonManager")
 var blood_spell := preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
 var crawlerBuff := false
 var wyrmBuff := false
@@ -25,8 +25,8 @@ var current_zombie_target: Zombie
 var dissappear_time := 0.75
 var origin_occulum: Demon
 var decrease_blood_val := true
-var highest_health := -1
-var current_target_health := 1
+var highest_health :float = -1
+var current_target_health :float = 1
 
 func _ready() -> void:
 	input_pickable = true
@@ -87,7 +87,7 @@ func free_blood() -> void:
 func crawler_blood_pickup() -> void:
 	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	temp_zombie_container = aoe.get_overlapping_areas()
-	for zombie in temp_zombie_container:
+	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			nearby_zombies.append(zombie)
 	if nearby_zombies.is_empty() == true:
@@ -97,7 +97,7 @@ func crawler_blood_pickup() -> void:
 		#nearby_zombies = aoe.get_overlapping_areas()
 		#TODO Make Sort By Health
 		highest_health = -1
-		for zombie in nearby_zombies:
+		for zombie:Zombie in nearby_zombies:
 			if not zombie.has_method("get_health"):
 				continue
 			current_target_health = zombie.get_health()
@@ -140,12 +140,12 @@ func spawn_blood_sword(offset: Vector2) -> void:
 	
 	
 	
-func set_origin_occulum(parent_occulum) -> void:
+func set_origin_occulum(parent_occulum : Demon) -> void:
 	print("Origin Occulum is ", parent_occulum)
 	origin_occulum = parent_occulum
 		
 	
-func attack_zombie(zombie_to_attack) -> void:
+func attack_zombie(zombie_to_attack : Zombie) -> void:
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -166,7 +166,7 @@ func heal_demons() -> void:
 			demons_to_heal.append(entity)
 	#print("Demons to heal is ", demons_to_heal)
 
-	for demon in demons_to_heal:
+	for demon:Demon in demons_to_heal:
 		if demon == null:
 			demons_to_heal.erase(demon)
 		if demon != null:
@@ -187,7 +187,7 @@ func _on_auto_pick_up_timer_timeout() -> void:
 	print("Wait Time When Gen Was ", auto_pickup_timer.wait_time)
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
-		BloodValue = BloodValue / 2
+		BloodValue = BloodValue / 2.0
 
 	if demon_manager:  # If the DemonManager or GameManager is set
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)

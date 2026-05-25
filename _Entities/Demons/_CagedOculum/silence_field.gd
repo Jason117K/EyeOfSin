@@ -8,10 +8,10 @@ var silence_field_timer: Timer
 @onready var silence_field_4: AnimatedSprite2D = $SilenceFieldAnim4
 
 func activate() -> void:
-	silence_field_1.animation_finished.connect(func(): silence_field_1.hide())
-	silence_field_2.animation_finished.connect(func(): silence_field_2.hide())
-	silence_field_3.animation_finished.connect(func(): silence_field_3.hide())
-	silence_field_4.animation_finished.connect(func(): silence_field_4.hide())
+	silence_field_1.animation_finished.connect(func()->void: silence_field_1.hide())
+	silence_field_2.animation_finished.connect(func()->void: silence_field_2.hide())
+	silence_field_3.animation_finished.connect(func()->void: silence_field_3.hide())
+	silence_field_4.animation_finished.connect(func()->void: silence_field_4.hide())
 	
 	
 	show()
@@ -27,7 +27,7 @@ func activate() -> void:
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)
-	area_entered.connect(func(area): 
+	area_entered.connect(func(area:Area2D)->void: 
 		if area.is_in_group("Zombie"):
 			print("Silence ", area)
 			area.silence()
@@ -51,7 +51,7 @@ func show_silence_fields() -> void:
 	fields.shuffle()
 
 	for i in fields.size():
-		var field := fields[i]
+		var field :Node= fields[i]
 		if i == 0:
 			field.show()
 			field.play_backwards("default")
@@ -61,11 +61,11 @@ func show_silence_fields() -> void:
 			delay_timer.autostart = false
 			add_child(delay_timer)
 			
-			var frames_per_second := fields[0].sprite_frames.get_animation_speed("default")
-			var frame_duration := 1.0 / frames_per_second
+			var frames_per_second : float = fields[0].sprite_frames.get_animation_speed("default")
+			var frame_duration : float = 1.0 / frames_per_second
 			delay_timer.wait_time = frame_duration * 2 * i
 			
-			delay_timer.timeout.connect(func():
+			delay_timer.timeout.connect(func()->void:
 				field.show()
 				field.play_backwards("default")
 				delay_timer.queue_free()

@@ -26,6 +26,12 @@ var level0_6 := ("res://_Stages/Level6/Level0-6.tscn")
 var level0_6Alt := ("res://_Stages/Level6/Level0-6_Alternate.tscn")
 var level7 := ("res://_Stages/Level7/Level7.tscn")
 
+var testing_gus_0 := "res://_Stages/Level-Testing/TestLevel0/Level0-TestingGus.tscn"
+var testing_gus_0Alt := "res://_Stages/Level-Testing/TestLevel0/Level0-TestingGus_Alternate.tscn"
+
+
+var testing_gus_1 := "res://_Stages/Level-Testing/TestLevel0/Level02-TestingGus.tscn"
+var testing_gus_1Alt := "res://_Stages/Level-Testing/TestLevel0/Level02-TestingGus_Alternate.tscn"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -89,3 +95,11 @@ func _on_level_6_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	Global.game_controller.change_scene(startScreen)
+
+
+func _on_testing_gus_button_0_pressed() -> void:
+	Global.game_controller.change_dual_scenes(testing_gus_0, testing_gus_0Alt)
+
+
+func _on_testing_gus_button_1_pressed() -> void:
+	Global.game_controller.change_dual_scenes(testing_gus_1, testing_gus_1Alt)

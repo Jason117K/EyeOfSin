@@ -14,14 +14,14 @@ var ogMax_Length: float
 
 var laser_width: float = 4.0
 var damage: float = 20
-var og_damage
+var og_damage : float 
 var maw_damage: float = 60
 var duration: float = 0.5
 var auto_fire: bool = false
 
 var cooldown: float = 3
 var blood_buff_cooldown: float = 0.9
-var og_cooldown
+var og_cooldown : float 
 var isOcculumBuffed := false
 
 var demon: Demon
@@ -54,7 +54,7 @@ var isSlowingProjectile := false
 var projectile_shoot_component : Node
 
 func _find_demon_ancestor() -> Demon:
-	var node = get_parent()
+	var node := get_parent()
 	while node != null:
 		if node is Demon:
 			return node
@@ -237,7 +237,7 @@ func set_laser_width(width: float) -> void:
 	line2D.width = width
 
 # Make the laser more powerful when Wyrm is buffed 
-func buff(bufferLocation) -> void:
+func buff(bufferLocation:Vector2) -> void:
 	if isDisabled:
 		return
 	isBuffed = true
@@ -259,9 +259,9 @@ func unOcculumBuff() -> void:
 	#cooldown = cooldown/2
 
 # getter for buffed status
-func getIsBuffed():
-	if isDisabled:
-		return
+func getIsBuffed()->bool:
+	#if isDisabled:
+		#false
 	return isBuffed
 
 func mawBuff() -> void:

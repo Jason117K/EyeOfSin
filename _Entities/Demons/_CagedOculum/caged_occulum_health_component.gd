@@ -32,7 +32,7 @@ func take_damage(damage: float) -> void:
 
 #Move to Generate Blood Component That Gets Added
 func generate_blood() -> void:
-	var blood_instance := demon.bloodScene.instantiate()
+	var blood_instance :Node = demon.bloodScene.instantiate()
 	demon.get_parent().add_child(blood_instance)
 	blood_instance.global_position = demon.global_position + Vector2(0,-40)
 	canGenBlood = false

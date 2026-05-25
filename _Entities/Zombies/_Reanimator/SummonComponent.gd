@@ -21,7 +21,7 @@ extends Node2D
 #Load the zombie we will summon
 var BackUpDancerScene := preload("res://_Entities/Zombies/_Wretch/BackUpDancerZombie.tscn")
 var is_silenced := false
-var is_attacking #Whether or not we are attacking
+var is_attacking:bool #Whether or not we are attacking
 
 func silence() -> void:
 	is_silenced = true
@@ -34,7 +34,7 @@ func summon_backup() -> void:
 
 	var game_layer := get_parent().get_parent()
 	var root := get_tree().current_scene
-	var level := root.get_name()
+	var _level := root.get_name()
 
 	# Don't spawn them in unreachable areas
 	if(dancerZombie.position.y < 128):
@@ -51,12 +51,12 @@ func summon_backup() -> void:
 
 
 	#Spawn a backUp dancer at every available point 
-	for point in points:
+	for point:Node in points:
 		#print("Adding Zombie to ", point.name)
 		var zombie_instance := BackUpDancerScene.instantiate()
 
 		# Convert spawn point's position to global coordinates
-		var global_spawn_pos := point.global_position
+		var global_spawn_pos :Vector2= point.global_position
 		
 		# Add zombie to GameLayer
 		game_layer.add_child(zombie_instance)

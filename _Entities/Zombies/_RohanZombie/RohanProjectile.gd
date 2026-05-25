@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 
 
 # Handles projectile collison and damage application
-func _on_PeaProjectile_area_entered(area) -> void:
-	var demon := area
+func _on_PeaProjectile_area_entered(area:Area2D) -> void:
+	var demon :Area2D= area
 
 	if demon.is_in_group("Demons"):
 		if demon.get_parent().get_parent() != self.get_parent().get_parent():

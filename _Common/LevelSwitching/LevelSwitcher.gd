@@ -42,11 +42,11 @@ func _on_return_to_menu_pressed() -> void:
 	Global.game_controller.change_from_dual_scenes("res://_Stages/StartScreen/StartScreen.tscn")
 	Global.unlockLevel(level_unlocked)
 
-func update_level(this_upcomingLevel, this_upcomingLevelAlt) -> void:
+func update_level(this_upcomingLevel:String, this_upcomingLevelAlt:String) -> void:
 	next_level = this_upcomingLevel
 	next_level_alt = this_upcomingLevelAlt
 
-func update_current_level(this_current_Level, this_current_LevelAlt) -> void:
+func update_current_level(this_current_Level:String, this_current_LevelAlt:String) -> void:
 	current_level = this_current_Level
 	current_level_alt = this_current_LevelAlt
 

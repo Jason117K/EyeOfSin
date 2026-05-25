@@ -11,7 +11,7 @@ var drone_rest_positions: Dictionary = {}
 var drones_to_respawn: int = 0
 var is_maw_buffed: bool = false
 var occulum_buff := false
-var drone_damage
+var drone_damage : float
 var is_crawler_buffed := false
 var is_spinal_occulum_buffed := false
 var is_demo := false
@@ -44,12 +44,12 @@ func kill_all_and_respawn() -> void:
 # In SwarmManager.gd:
 func get_all_drones() -> Array:
 	var all := available_drones.duplicate()
-	for drones in drone_assignments.values():
+	for drones:Array in drone_assignments.values():
 		all.append_array(drones)
 	return all
 
 func kill_all_drones() -> void:
-	for enemy in drone_assignments.keys():
+	for enemy:Node in drone_assignments.keys():
 		var drones :Array = drone_assignments[enemy]
 		for i in range(drones.size() - 1, -1, -1):
 			if is_instance_valid(drones[i]):
@@ -73,7 +73,7 @@ func kill_all_drones() -> void:
 
 func get_total_drone_count() -> int:
 	var count := available_drones.size()
-	for drones in drone_assignments.values():
+	for drones:Array in drone_assignments.values():
 		count += drones.size()
 	return count
 
@@ -134,7 +134,7 @@ func _on_enemy_exited(area: Area2D) -> void:
 			available_drones.append_array(freed_drones)
 			drone_assignments.erase(area)
 
-		for drone in available_drones:
+		for drone:Node in available_drones:
 			drone.setAnimation("idle")
 
 		optimize_drone_assignments()
@@ -148,7 +148,7 @@ func _on_enemy_died(enemy: Zombie) -> void:
 
 
 func return_drones_to_rest() -> void:
-	for drone in available_drones:
+	for drone:Node in available_drones:
 		if is_instance_valid(drone):
 			drone.return_to_position(hive.global_position + drone_rest_positions[drone])
 			drone.setAnimation("idle")
@@ -157,7 +157,7 @@ func return_drones_to_rest() -> void:
 func _on_drone_died(drone: Node) -> void:
 	available_drones.erase(drone)
 
-	for enemy in drone_assignments.keys():
+	for enemy:Node in drone_assignments.keys():
 		if drone in drone_assignments[enemy]:
 			drone_assignments[enemy].erase(drone)
 
@@ -170,7 +170,7 @@ func _on_drone_died(drone: Node) -> void:
 
 func optimize_drone_assignments() -> void:
 	var all_drones: Array = []
-	for drones in drone_assignments.values():
+	for drones:Array in drone_assignments.values():
 		all_drones.append_array(drones)
 	all_drones.append_array(available_drones)
 
@@ -189,8 +189,8 @@ func optimize_drone_assignments() -> void:
 	var drones_per_enemy := int(max_drones / enemies_to_assign.size())
 	var extra_drones := max_drones % enemies_to_assign.size()
 
-	var dimension_parent := hive.get_parent().get_parent()
-	for enemy in enemies_to_assign:
+	var _dimension_parent := hive.get_parent().get_parent()
+	for enemy:Node in enemies_to_assign:
 		#if enemy.get_parent().get_parent() != dimension_parent:
 			#continue
 		var num_drones := drones_per_enemy

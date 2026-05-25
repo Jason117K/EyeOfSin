@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://8gjjcy015jc8" path="res://_Assets/Environment/Tilesets/Earth3WalkTile.png" id="7_uhmsm"]
 [ext_resource type="Texture2D" uid="uid://b35bpqpjftktv" path="res://_Assets/Environment/Tilesets/SpecialTile1-Green.png" id="8_f2sh1"]
 [ext_resource type="Texture2D" uid="uid://bne3yycsqxclr" path="res://_Assets/Environment/Tilesets/Earth3WalkTile2.png" id="8_n7741"]
+[ext_resource type="Texture2D" uid="uid://3hli3x35y7ur" path="res://_Assets/Environment/Skulls_NoSummonTile.png" id="9_7poqo"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="9_ce0dd"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="11"]
@@ -291,6 +292,12 @@ texture = ExtResource("8_n7741")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bp4ny"]
+texture = ExtResource("9_7poqo")
+texture_region_size = Vector2i(32, 32)
+use_texture_padding = false
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qm12r"]
 texture = ExtResource("4_lkj57")
@@ -837,6 +844,7 @@ sources/3 = SubResource("TileSetAtlasSource_yfffi")
 sources/6 = SubResource("TileSetAtlasSource_mhr2o")
 sources/13 = SubResource("TileSetAtlasSource_3a1hl")
 sources/14 = SubResource("TileSetAtlasSource_7424c")
+sources/15 = SubResource("TileSetAtlasSource_bp4ny")
 
 [node name="GridManager" type="Node2D" unique_id=1538178973]
 script = ExtResource("6")

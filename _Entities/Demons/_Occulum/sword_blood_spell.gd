@@ -22,11 +22,11 @@ func damage_zombies() -> void:
 	#print("Sword world2d: ", get_world_2d(), " rid: ", get_world_2d().get_rid())
 	temp_zombie_container = get_overlapping_areas()
 	#print("Zombie Temp Container is ", temp_zombie_container)
-	for zombie in temp_zombie_container:
+	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			zombies_to_damage.append(zombie)
 	#print("Zombies to damage is ", zombies_to_damage)
-	for zombie in zombies_to_damage:
+	for zombie:Node in zombies_to_damage:
 		#print("Zombie is ", zombie)
 		zombie.take_damage(blood_damage)
 		if is_maw_parent:

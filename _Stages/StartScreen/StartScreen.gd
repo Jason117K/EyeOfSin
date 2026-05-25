@@ -24,7 +24,7 @@ func _ready() -> void:
 	#print("Button instance ID: ", startGameButton.get_instance_id() if startGameButton else "null")
 	
 	if startGameButton and not startGameButton.pressed.is_connected(_on_start_game_pressed):
-		var result := startGameButton.pressed.connect(_on_start_game_pressed)
+		var result : int = startGameButton.pressed.connect(_on_start_game_pressed)
 		print("Connection result: ", result)
 		
 	#$GridManager.set_tiles_for_rows(0,1, 68)

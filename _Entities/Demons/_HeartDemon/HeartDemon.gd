@@ -39,7 +39,7 @@ func get_cost() -> float:
 	
 					
 # Doubles attack speed when receiving a buff
-func receive_buff(newDemon) -> void:
+func receive_buff(_newDemon:String) -> void:
 	pass
 
 

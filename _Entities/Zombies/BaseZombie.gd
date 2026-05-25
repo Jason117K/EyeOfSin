@@ -11,7 +11,7 @@ signal zombie_death
 @export var bleed_tick_damage := 0
 
 @export_category("Speed")
-@export var speed := 20
+@export var speed : float = 20
 
 @export_category("Attack")
 @export var attack_power := 33
@@ -52,12 +52,12 @@ var sundered_special_description := FileAccess.open("res://_Assets/Text/TextFile
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
 
 # --- State ---
-var column_explosion
-var silence_field
+var column_explosion : Node 
+var silence_field : Node
 var is_silenced := false
 var isSlow := 0
-var thisMaterial
-var thisMaterial2
+var thisMaterial : Material
+var thisMaterial2 : Material 
 var should_spawn_slow_field := false
 var should_spawn_drone_on_death := false
 var should_column_explode := false
@@ -196,7 +196,7 @@ func _do_spawn_drone_on_death() -> void:
 # --- Damage ---
 
 func take_damage(damage: float, piercing: bool = false) -> void:
-	for blood_hit in damage_vfx_spawn_locations:
+	for blood_hit:Node in damage_vfx_spawn_locations:
 		blood_hit.visible = true
 		blood_hit.rotation_degrees = randf_range(-60, 60)
 		if self.is_in_group("Purple"):
@@ -273,7 +273,7 @@ func make_glow() -> void:
 	pass
 
 
-func setMaterial(newAnimatedSprite) -> void:
+func setMaterial(newAnimatedSprite:Node) -> void:
 	thisMaterial2 = newAnimatedSprite.material.duplicate()
 	newAnimatedSprite.material = thisMaterial2
 	if newAnimatedSprite:
@@ -284,11 +284,11 @@ func setMaterial(newAnimatedSprite) -> void:
 
 # --- Blood Hit VFX ---
 
-func append_blood_hit(new_blood_hit) -> void:
+func append_blood_hit(new_blood_hit:Node) -> void:
 	damage_vfx_spawn_locations.append(new_blood_hit)
 
 
-func erase_blood_hit(blood_hit_to_erase) -> void:
+func erase_blood_hit(blood_hit_to_erase:Node) -> void:
 	damage_vfx_spawn_locations.erase(blood_hit_to_erase)
 
 
@@ -338,7 +338,7 @@ func silence() -> void:
 
 # --- Dimension Change ---
 
-func change_dimensions(new_position) -> void:
+func change_dimensions(new_position : Vector2) -> void:
 	self.reparent(Global.get_game_controller().get_alt_dimension().get_node("GameLayer"))
 	if self.is_in_group("Green"):
 		self.remove_from_group("Green")

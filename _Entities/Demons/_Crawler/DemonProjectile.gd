@@ -5,11 +5,11 @@ extends Area2D
 @onready var lightning_zone_visual := $LightningZoneAnimSprite
 
 @export var speed := 300  # Speed of the projectile
-@export var damage := 20 #2   # Damage dealt to zombies
+@export var damage :float= 20 #2   # Damage dealt to zombies
 @export var lightning_damage := 10 #2   # Damage dealt to zombies
 @export var blood_worth_to_add := 1
 @export var bleed_damage := 1
-var max_distance_can_travel := 0
+var max_distance_can_travel :float= 0
 
 
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -26,8 +26,8 @@ var bleed := false
 var column_explode := false
 var silencing := false 
 
-var collision 
-var distance_traveled := 0
+var collision : Node
+var distance_traveled :float= 0
 var _spawn_initialized := false
 var spawn_position: Vector2
 
@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 	distance_traveled = position.x - spawn_position.x
 	
 	# Raycast along travel path to prevent tunneling at high speeds
-	var space_state := get_world_2d().direct_space_state
+	var _space_state :PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
 	var query := PhysicsRayQueryParameters2D.create(
 		global_position,
 		global_position + Vector2(travel_distance, 0)

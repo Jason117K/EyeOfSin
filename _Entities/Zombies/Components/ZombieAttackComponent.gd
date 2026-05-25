@@ -6,7 +6,7 @@ class_name AttackComponent
 
 var attack_power: float
 var is_attacking := false  # Whether or not we attacking
-var target_demon = null  # Holds reference to the demon being attacked
+var target_demon :Node = null  # Holds reference to the demon being attacked
 var canSpecial := true # Determines whether or not a special move can be performed
 var _frame_counter: int = 0
 var base_anim_duration: float
@@ -38,7 +38,7 @@ func _ready() -> void:
 	# Compute base animation duration and set timer for first hit
 	base_anim_duration = zombieSprite.sprite_frames.get_frame_count("Attack") / zombieSprite.sprite_frames.get_animation_speed("Attack")
 	attack_timer.one_shot = true
-	var safe_speed := max(parent.attack_speed, 0.01)
+	var safe_speed : float = max(parent.attack_speed, 0.01)
 	attack_timer.wait_time = base_anim_duration * parent.attack_damage_point / safe_speed
 	set_process(false)
 
@@ -51,7 +51,7 @@ func getAttackState() -> bool:
 	return is_attacking
 
 # Sets is_attacking to true and plays the audio will also starting the attack cooldown timer
-func attack_demon(collider) -> void:
+func attack_demon(collider:Node) -> void:
 	if collider.is_in_group("Drone"):
 		if collider.get_is_in_combat() == true:
 			if collider.get_enemy_combatant() != self:
@@ -122,7 +122,7 @@ func _on_AttackTimer_timeout() -> void:
 				#print(attack_power ," Calling Take Damage on ", target_demon)
 				target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
-				var safe_speed := max(parent.attack_speed, 0.01)
+				var safe_speed : float = max(parent.attack_speed, 0.01)
 				attack_timer.wait_time = base_anim_duration / safe_speed
 				attack_timer.start()
 			else:
@@ -147,7 +147,7 @@ func tick(_delta: float) -> void:
 		if _frame_counter % 3 != 0:
 			return
 		if attack_ray.is_colliding():
-			var collider := attack_ray.get_collider()
+			var collider : Node = attack_ray.get_collider()
 			if collider:
 				#print(parent.name , " Its 77 collding with ", collider.name )
 				if collider.is_in_group("Demons"):

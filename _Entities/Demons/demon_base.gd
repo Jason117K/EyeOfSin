@@ -55,7 +55,7 @@ class_name Demon
 # --- State ---
 var area: Area2D
 var isBuffed := false
-var demon_manager
+var demon_manager : Node
 
 # --- Signals ---
 signal demon_die
@@ -115,7 +115,7 @@ func _detect_heart_buffs() -> void:
 
 # Called by children after extracting demonName string from the buffing demon node.
 # Order: guard → healthComp → animSpriteComp → flag set
-func receive_buff(demonName):
+func receive_buff(demonName : String) -> void:
 	if demonName == truncate_string(self.get_name()):
 		return
 	if !isBuffed:
@@ -247,7 +247,7 @@ func set_spawn_anim_speed(new_speed_speed: float) -> void:
 	animSpriteComp.set_spawn_anim_speed(new_speed_speed)
 
 
-func get_special_description():
+func get_special_description()->String:
 	return ""
 
 
@@ -257,7 +257,7 @@ func get_special_description():
 
 func truncate_string(input_string: String) -> String:
 	for i in range(input_string.length()):
-		var character = input_string[i]
+		var character :String = input_string[i]
 		if character.is_valid_int():
 			return input_string.substr(0, i)
 	return input_string

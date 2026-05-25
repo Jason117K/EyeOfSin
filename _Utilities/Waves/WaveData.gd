@@ -17,7 +17,7 @@ class_name WaveData extends Resource
 ## Convert to Dictionary for systems that still expect {type_name: count}.
 func to_dict() -> Dictionary:
 	var d := {}
-	for type_name in ZombieRegistry.SCENES:
+	for type_name:String in ZombieRegistry.SCENES:
 		var count: int = get(type_name)
 		if count > 0:
 			d[type_name] = count
@@ -27,7 +27,7 @@ func to_dict() -> Dictionary:
 ## Create a WaveData from a {type_name: count} Dictionary.
 static func from_dict(d: Dictionary) -> WaveData:
 	var w := WaveData.new()
-	for key in d:
+	for key:String in d:
 		if key in ZombieRegistry.SCENES:
 			w.set(key, d[key])
 		else:

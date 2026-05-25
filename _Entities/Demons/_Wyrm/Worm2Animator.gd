@@ -13,7 +13,7 @@ extends Node2D
 # Node references
 @export var sprite_path: NodePath  
 @export var sprite_path2: NodePath  
-@onready var sprite = get_node(sprite_path) if sprite_path else null
+@onready var sprite :Node = get_node(sprite_path) if sprite_path else null
 #@onready var sprite2 = get_node(sprite_path2) if sprite_path else null
 # Internal animation state
 var time := 0.0
@@ -44,8 +44,8 @@ func _process(delta: float) -> void:
 	
 	# Calculate smooth up/down motion with slight ease-in/out
 	var raw_bob := sin(time)
-	var smoothed_bob := sign(raw_bob) * pow(abs(raw_bob), 0.7)
-	var y_offset := smoothed_bob * bob_height * animation_exaggeration
+	var smoothed_bob : float = sign(raw_bob) * pow(abs(raw_bob), 0.7)
+	var y_offset : float = smoothed_bob * bob_height * animation_exaggeration
 
 	# Calculate velocity for squash/stretch
 	var new_velocity := (y_offset - prev_y) / delta
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 	prev_y = y_offset
 	#test
 	# Determine target squash/stretch based on motion
-	var normalized_velocity := clamp(velocity / (bob_height * 2), -1, 1)
+	var normalized_velocity : float = clamp(velocity / (bob_height * 2), -1, 1)
 	
 	if abs(normalized_velocity) > 0.1:
 		target_stretch = normalized_velocity * stretch_amount * animation_exaggeration

@@ -28,7 +28,7 @@ func _ready() -> void:
 
 # Initialize the resource cache dictionaries
 func _initialize_resource_caches() -> void:
-	for this_demonType in DemonType.values():
+	for this_demonType : int in DemonType.values():
 		print("PP : ", this_demonType)
 		demon_images[this_demonType] = {}
 		demon_animations[this_demonType] = {}
@@ -36,7 +36,7 @@ func _initialize_resource_caches() -> void:
 		#for this_demonType2 in DemonType.values():
 			#demon_variation_images[this_demonType2] = {}
 		
-	for this_zombieType in ZombieType.values():
+	for this_zombieType : int in ZombieType.values():
 		print("ZZ : ", this_zombieType)
 		zombie_images[this_zombieType] = {}
 		zombie_animations[this_zombieType] = {}		
@@ -123,7 +123,7 @@ func _load_resources() -> void:
 	
 	
 # Helper function to load resources for a specific tower type
-func _load_demon_type_image_resource(demon_type, file_name) -> void:
+func _load_demon_type_image_resource(demon_type : int, file_name : String) -> void:
 	var img_base_path := "res://_Assets/Sprites/"
 	var img_path: String = img_base_path + file_name
 
@@ -133,7 +133,7 @@ func _load_demon_type_image_resource(demon_type, file_name) -> void:
 	demon_images[demon_type] = img_resource
 	demon_variation_images[demon_type].append(img_resource)
 	
-func _load_demon_type_image_resource_variation(demon_type, file_name) -> void:
+func _load_demon_type_image_resource_variation(demon_type : int, file_name : String) -> void:
 	#var img_base_path =  "res://Assets/Demons/Icons/"
 	var img_base_path := "res://_Entities/Demons/Icons/"
 	var img_path: String = img_base_path + file_name
@@ -144,7 +144,7 @@ func _load_demon_type_image_resource_variation(demon_type, file_name) -> void:
 	demon_variation_images[demon_type].append(img_resource)
 
 # Helper function to load resources for a specific tower type
-func _load_demon_type_animation_resource(demon_type, file_name) -> void:
+func _load_demon_type_animation_resource(demon_type : int, file_name : String) -> void:
 	var anim_base_path := "res://_Entities/Demons/AnimationResources/"
 	var anim_path: String = anim_base_path + file_name
 
@@ -156,18 +156,18 @@ func _load_demon_type_animation_resource(demon_type, file_name) -> void:
 
 
 # Get a alien image by type, 
-func get_demon_image(demon_type):
+func get_demon_image(demon_type : int)->Node:
 	if not demon_images.has(demon_type):
 		print("ResourceManager: Error - Resource not found for image:",demon_type)
 		return null
 	return demon_images[demon_type]
 	
-func get_demon_image_variations(demon_type):
+func get_demon_image_variations(demon_type:int) -> Node:
 	
 	return demon_variation_images[demon_type]
 	
 # Get a alien animation by type,
-func get_demon_animation(demon_type):
+func get_demon_animation(demon_type:int)-> Node:
 	if not demon_animations.has(demon_type):
 		print("ResourceManager: Error - Resource not found for animation:", demon_type)
 		return null
@@ -177,7 +177,7 @@ func get_demon_animation(demon_type):
 
 
 # Helper function to load resources for a specific zombie type
-func _load_zombie_type_image_resource(zombie_type, file_name) -> void:
+func _load_zombie_type_image_resource(zombie_type:int, file_name:String) -> void:
 	var img_base_path := "res://_Entities/Zombies/ImgAnimationResources/"
 	var img_path: String = img_base_path + file_name
 
@@ -189,7 +189,7 @@ func _load_zombie_type_image_resource(zombie_type, file_name) -> void:
 
 
 # Helper function to load resources for a specific tower type
-func _load_zombie_type_animation_resource(zombie_type, file_name) -> void:
+func _load_zombie_type_animation_resource(zombie_type:int, file_name:String) -> void:
 	var anim_base_path := "res://_Entities/Zombies/ImgAnimationResources/"
 	var anim_path: String = anim_base_path + file_name
 
@@ -201,21 +201,21 @@ func _load_zombie_type_animation_resource(zombie_type, file_name) -> void:
 
 
 # Get a alien image by type, 
-func get_zombie_image(zombie_type):
+func get_zombie_image(zombie_type:int)-> Node:
 	if not zombie_images.has(zombie_type):
 		print("ResourceManager: Error - Resource not found for image:",zombie_type)
 		return null
 	return zombie_images[zombie_type]
 	
 # Get a alien animation by type,
-func get_zombie_animation(zombie_type):
+func get_zombie_animation(zombie_type:int)->Node:
 	if not zombie_animations.has(zombie_type):
 		print("ResourceManager: Error - Resource not found for animation:", zombie_type)
 		return null
 	print("This ", zombie_animations[zombie_type])
 	return zombie_animations[zombie_type]
 	
-func get_empty():
+func get_empty()->Resource:
 	return empty_animation
 	
 	

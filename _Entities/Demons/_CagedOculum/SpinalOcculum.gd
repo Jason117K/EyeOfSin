@@ -42,7 +42,7 @@ func get_demon_true_name() -> String:
 func get_demon_name() -> String:
 	return "SPINAL OCCULUM"
 
-func get_cost() -> int:
+func get_cost() -> float:
 	return cost
 
 func get_damage() -> String:
@@ -55,7 +55,7 @@ func get_lightning_damage() -> int:
 # --- Buff System ---
 
 func receive_buff(bufferName) -> void:
-	var demonName := (bufferName.get_demon_true_name())
+	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		match demonName:
@@ -104,9 +104,9 @@ func lightning_maw_buff() -> void:
 
 # --- Slow Field ---
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Zombie"):
-		area.slow()
+func _on_area_2d_area_entered(this_area: Area2D) -> void:
+	if this_area.is_in_group("Zombie"):
+		this_area.slow()
 
 
 # --- Preview ---

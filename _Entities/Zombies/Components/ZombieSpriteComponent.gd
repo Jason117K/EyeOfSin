@@ -10,17 +10,17 @@ var count := 1
 		_apply_hue_shift()
 
 var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
-var thisMaterial
-var original_hue_shift := -86
+var thisMaterial : Material
+var original_hue_shift : float = -86
 
 @export var targetColorString := "ff0013"
 @export var targetColor: Color
 @export var targetGlowColor: Color
 @export var replaceColor: Color = Color.BLACK
 
-var is_attacking
-var isSlow
-var isInjured
+var is_attacking : bool 
+var isSlow : float 
+var isInjured : bool 
 @onready var zombie := get_parent()
 @onready var attackComp := $"../AttackComponent"
 #@onready var attack_audio_player = $"../AttackAudioPlayer"

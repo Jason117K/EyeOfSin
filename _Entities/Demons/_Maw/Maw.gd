@@ -45,7 +45,7 @@ var willBelchWebs := false
 var willBelchBlood := false
 var will_spawn_swords := false
 var bufferName: String
-var consume_zombie_group
+var consume_zombie_group : Node
 var devour_done := true
 var is_demo := false
 
@@ -166,25 +166,25 @@ func _set_tentacle_digestion_time(t: float) -> void:
 	for tentacle in tentacles:
 		tentacle.digestion_time = t
 
-func _get_charge_cost(enemy) -> int:
+func _get_charge_cost(enemy:Node) -> int:
 	if enemy.has_method("get_charge_cost"):
 		return enemy.get_charge_cost()
 	push_warning("[Maw] Enemy %s missing get_charge_cost(); falling back to %d" % [enemy.name, DEFAULT_CHARGE_COST])
 	return DEFAULT_CHARGE_COST
 
-func _is_being_eaten(target) -> bool:
-	for group in eating_groups.values():
+func _is_being_eaten(target:Node) -> bool:
+	for group:Dictionary in eating_groups.values():
 		if group.enemy == target:
 			return true
 	return false
 
-func assign_tentacle_to_target(target) -> void:
+func assign_tentacle_to_target(target:Node) -> void:
 	if _is_being_eaten(target):
 		if debug_mode:
 			print("[Maw] Target already being eaten, skipping")
 		return
 
-	var cost: int = _get_charge_cost(target)
+	cost = _get_charge_cost(target)
 	if cost > tentacles.size():
 		push_warning("[Maw] Enemy %s charge_cost (%d) exceeds tentacle count (%d) — will never be eaten" % [target.name, cost, tentacles.size()])
 		return
@@ -224,16 +224,16 @@ func _process_queue() -> void:
 	while made_progress and not enemies_to_eat.is_empty():
 		made_progress = false
 		for i in range(enemies_to_eat.size()):
-			var enemy = enemies_to_eat[i]
+			var enemy:Node = enemies_to_eat[i]
 			if not is_instance_valid(enemy):
 				enemies_to_eat.remove_at(i)
 				made_progress = true
 				break
-			var cost = _get_charge_cost(enemy)
-			if available_tentacles.size() >= cost:
+			var enemy_cost :float= _get_charge_cost(enemy)
+			if available_tentacles.size() >= enemy_cost:
 				enemies_to_eat.remove_at(i)
 				if debug_mode:
-					print("[Maw] Dequeueing %s (cost %d)" % [enemy.name, cost])
+					print("[Maw] Dequeueing %s (enemy_cost %d)" % [enemy.name, enemy_cost])
 				assign_tentacle_to_target(enemy)
 				made_progress = true
 				break
@@ -247,7 +247,7 @@ func _on_tentacle_grabbed(_enemy: Node2D, _tentacle: Tentacle) -> void:
 		print("[Maw] Tentacle grabbed enemy")
 
 func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void:
-	var group = eating_groups.get(tentacle)
+	var group:Dictionary = eating_groups.get(tentacle)
 	if group == null:
 		return
 
@@ -259,7 +259,7 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 
 	group.pending_retract -= 1
 	if group.pending_retract == 0:
-		for t in group.tentacles:
+		for t:Node in group.tentacles:
 			t.begin_digestion()
 		if debug_mode:
 			print("[Maw] Group of %d entered DIGESTING" % group.tentacles.size())
@@ -268,7 +268,7 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 	if not tentacle in available_tentacles:
 		available_tentacles.append(tentacle)
 
-	var group = eating_groups.get(tentacle)
+	var group:Node = eating_groups.get(tentacle)
 	if group == null:
 		_process_queue()
 		return
@@ -285,7 +285,7 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 		if spinalOcculumBuff:
 			healthComp.increase_health(spinal_occulum_heal_amount)
 
-		for t in group.tentacles:
+		for t:Node in group.tentacles:
 			if eating_groups.get(t) == group:
 				eating_groups.erase(t)
 		if debug_mode:
@@ -296,10 +296,10 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 	if not tentacle in available_tentacles:
 		available_tentacles.append(tentacle)
 
-	var group = eating_groups.get(tentacle)
+	var group:Dictionary = eating_groups.get(tentacle)
 	if group != null and not group.aborted:
 		group.aborted = true
-		for sibling in group.tentacles:
+		for sibling:Node in group.tentacles:
 			if sibling == tentacle:
 				continue
 			if eating_groups.get(sibling) == group:
@@ -406,16 +406,16 @@ func devour_complete() -> void:
 
 # --- Detection ---
 
-func _on_detection_component_area_entered(area: Area2D) -> void:
-	if not area.is_in_group("Zombie"):
+func _on_detection_component_area_entered(this_area: Area2D) -> void:
+	if not this_area.is_in_group("Zombie"):
 		return
-	if area.is_in_group("Green") and self.is_in_group("Purple"):
+	if this_area.is_in_group("Green") and self.is_in_group("Purple"):
 		return
-	if area.is_in_group("Purple") and self.is_in_group("Green"):
+	if this_area.is_in_group("Purple") and self.is_in_group("Green"):
 		return
-	if "Boss" in area.get_name():
+	if "Boss" in this_area.get_name():
 		return
-	assign_tentacle_to_target(area)
+	assign_tentacle_to_target(this_area)
 
 
 # --- Demo ---

@@ -4,8 +4,8 @@ extends Area2D
 # Ball that spawns when buffed Maws eat an enemy covered in webs
 
 # Export variables for easy editing in inspector
-@export var target_position = Vector2(): set = set_target
-@export var travel_time = 1.0: set = set_travel_time
+@export var target_position :Vector2 = Vector2(): set = set_target
+@export var travel_time :float = 1.0: set = set_travel_time
 @onready var detection_area := $HitBoxComponent
 # Internal variables
 var start_position := Vector2()
@@ -41,11 +41,11 @@ func die() -> void:
 		if area.is_in_group("Zombie"):
 			enemiesToWeb.append(area)
 	# First, filter out any invalid enemies
-	for enemy in enemiesToWeb:
+	for enemy:Node in enemiesToWeb:
 		if is_instance_valid(enemy) and not enemy.is_queued_for_deletion():
 			valid_enemies.append(enemy)
 	# Then slow the valid enemies 
-	for enemy in valid_enemies:
+	for enemy : Zombie in valid_enemies:
 		if enemy.is_in_group("Zombie"):
 			enemy.slow()
 			
@@ -64,9 +64,9 @@ func _physics_process(delta: float) -> void:
 	# Calculate current position using quadratic bezier curve
 	var t : float = time / travel_time
 	var mid_point := calculate_mid_point()
-	var p0 = start_position
-	var p1 = mid_point
-	var p2 = target_position
+	var p0 :Vector2= start_position
+	var p1 :Vector2= mid_point
+	var p2 :Vector2= target_position
 	
 	# Quadratic bezier formula: B(t) = (1-t)²p0 + 2(1-t)tp1 + t²p2
 	var one_minus_t := 1 - t
@@ -81,7 +81,7 @@ func calculate_trajectory() -> void:
 
 	# Calculate arc height based on distance
 	var distance := start_position.distance_to(target_position)
-	var arc_height := distance * 0.3  # Arc height is 30% of distance
+	var _arc_height :float = distance * 0.3  # Arc height is 30% of distance
 
 	# Store calculated values
 	velocity = (target_position - start_position) / travel_time
@@ -94,7 +94,7 @@ func calculate_mid_point() -> Vector2:
 	return Vector2(mid_x, mid_y)
 
 # Set a target for the ball to hit 
-func set_target(new_target: Vector2):
+func set_target(new_target: Vector2)->void:
 	target_position = new_target
 	if is_inside_tree():
 		calculate_trajectory()
@@ -102,7 +102,7 @@ func set_target(new_target: Vector2):
 			debug_marker.position = target_position
 
 # Set how long the ball will travel for 
-func set_travel_time(new_time: float):
+func set_travel_time(new_time: float)->void:
 	travel_time = new_time
 	if is_inside_tree():
 		calculate_trajectory()

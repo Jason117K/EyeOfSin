@@ -9,20 +9,20 @@ extends Node2D
 var dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
-var og_global_position
+var og_global_position : Vector2
 
 func _ready() -> void:
 	og_global_position = global_position
 
-func get_grabbing_position():
+func get_grabbing_position()->Vector2:
 	global_position = get_parent().get_end_location()
 	return global_position
 
-func revert_to_normal_position():
+func revert_to_normal_position()->Vector2:
 	global_position = og_global_position
 	return global_position
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#if isGrabbing:
 		#global_position = get_parent().get_end_location()
 	pass

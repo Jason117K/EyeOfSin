@@ -11,7 +11,7 @@ var projectile_scene := preload("res://_Entities/Zombies/_RohanZombie/RohanProje
 var rng := RandomNumberGenerator.new()
 var laneYPositions := [77.0, 109.0, 141.0, 173.0, 205.0, 239.15, 272.0]
 
-func attack_demon(collider) -> void:
+func attack_demon(_collider:Node) -> void:
 	pass
 
 
@@ -87,7 +87,7 @@ func _on_AttackTimer_timeout() -> void:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	if target_demons == null:
 		return
-	for demon in target_demons:
+	for demon:Demon in target_demons:
 		if(is_instance_valid(demon)):
 			if(((demon.is_in_group("Green") && self.parent.is_in_group("Green"))
 		|| (demon.is_in_group("Purple") && self.parent.is_in_group("Purple")))):
@@ -118,15 +118,16 @@ func _on_AttackTimer_timeout() -> void:
 func stop_attack() -> void:
 	#print("Stopping Attack")
 	is_attacking = false
-	target_demons = null
+	#target_demons = null
+	target_demons.clear()
 	attack_timer.stop()
 
 func _process(_delta: float) -> void:
 	if not is_attacking:
 		var colliders := []
-		for ray in attack_rays:
+		for ray:Node in attack_rays:
 			if ray.is_colliding():
-				var collider := ray.get_collider()
+				var collider :Node= ray.get_collider()
 				#print(parent.name , " Its collding with ", collider.name )
 				if collider:
 					if collider.is_in_group("Demons"):

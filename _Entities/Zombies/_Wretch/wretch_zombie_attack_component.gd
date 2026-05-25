@@ -13,7 +13,7 @@ func getAttackState() -> bool:
 	return false
 
 # Sets is_attacking to true and plays the audio will also starting the attack cooldown timer
-func attack_demon(collider) -> void:
+func attack_demon(_collider:Node) -> void:
 	pass
 
 # Damages the target demon and decides whether or not to keep attacking

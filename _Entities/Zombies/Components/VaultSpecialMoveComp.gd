@@ -7,7 +7,7 @@ extends Node2D
 @onready var parent := get_parent()                  # RefCounted to parent
 var vaultTimer: Timer
 #@onready var tween = Tween.new()  # Create new Tween node
-var tween
+var tween : Tween
 var move_duration := 3.3  # Duration of the vault movement in seconds
 var vault_distance := -110  # Distance to move left (negative for leftward movement)
 var moveDone := false
@@ -29,10 +29,10 @@ func executeMove() -> void:
 	vaultTimer.one_shot = true
 	vaultTimer.connect("timeout", Callable(self, "_on_vault_timer_timeout"))
 
-	var start_pos := parent.position
-	var end_pos := start_pos + Vector2(vault_distance, 0)
+	var start_pos :Vector2= parent.position
+	var end_pos :Vector2= start_pos + Vector2(vault_distance, 0)
 
-	var tweener := tween.tween_property(parent, "position", end_pos, move_duration)
+	var tweener : PropertyTweener = tween.tween_property(parent, "position", end_pos, move_duration)
 	if tweener:  # Check if tween was created successfully
 		tweener.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	else:

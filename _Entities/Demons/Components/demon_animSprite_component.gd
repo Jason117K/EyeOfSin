@@ -14,7 +14,6 @@ var demon: Demon
 var currentAnim := "idle"
 var currentAttackAnim := "attack"
 var spawnAnimDone := false
-signal frame_changed_signal(animation_name: String, frame_index: int)
 
 var anim_spawn_speed_mult := 1
 var default_anim_speed_scale := 1
@@ -31,7 +30,7 @@ func _ready() -> void:
 	demon = get_parent()
 	pass
 
-func set_spawn_anim_speed(new_spawn_anim_speed: float) -> void:
+func set_spawn_anim_speed(_new_spawn_anim_speed: float) -> void:
 	sprite_frames.set_animation_speed("spawn", 20)
 
 
@@ -61,8 +60,8 @@ func _on_animation_finished() -> void:
 		
 		
 		
-func receive_buff(new_form) -> void:
-	var parent = get_parent()
+func receive_buff(new_form : String) -> void:
+	var parent :Demon = get_parent()
 	
 	if parent.has_method("adjust_position"):
 		parent.adjust_position(new_form)

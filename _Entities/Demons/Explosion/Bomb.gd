@@ -10,7 +10,7 @@ var enemiesToHitTemp: Array = [] # Stores enemies to hit, some of which are inva
 
 
 # Add this helper function to scripts that deal with combat
-func is_instance_valid_and_alive(node) -> bool:
+func is_instance_valid_and_alive(node : Node) -> bool:
 	return is_instance_valid(node) and not node.is_queued_for_deletion()
 
 func _ready() -> void:
@@ -33,12 +33,12 @@ func _on_DeathTimer_timeout() -> void:
 	#print("Spawned Bomb : ", enemiesToHitTemp)
 	
 	# Gets & stores all the actual zombies from enemiesToHitTemp 
-	for enemy in enemiesToHitTemp:
+	for enemy : Node in enemiesToHitTemp:
 		if enemy.is_in_group("Zombie"):
 			enemiesToHit.append(enemy)
 	
 	# Damages all enemies in area after checking they are still valid and alive
-	for enemy in enemiesToHit:
+	for enemy : Zombie in enemiesToHit:
 		if is_instance_valid_and_alive(enemy):	
 			if(enemy != null):
 				enemy.take_damage(damage)  

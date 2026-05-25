@@ -2,7 +2,7 @@ extends Area2D
 
 @export var attack_timer_wait_time := 3
 @export var minion_damage := 10
-@export var health := 100
+@export var health : float = 100
 var attack_timer: Timer
 
 var speed := 60
@@ -65,7 +65,7 @@ func current_zombie_dead() -> void:
 	current_zombie = null
 	canMove = true 
 		
-func demon_minion_busy(questioning_zombie) -> bool:
+func demon_minion_busy(questioning_zombie : Zombie) -> bool:
 	if current_zombie == null:
 		current_zombie = questioning_zombie
 		canMove = false
@@ -77,11 +77,11 @@ func demon_minion_busy(questioning_zombie) -> bool:
 		return true
 	
 
-func take_damage(amount) -> void:
+func take_damage(amount : float) -> void:
 	health -= amount
 	if health <= 0:
 		#print("Die Cos Health too Low")
 		queue_free()
 
-func get_health() -> int:
+func get_health() -> float:
 	return health

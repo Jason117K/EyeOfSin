@@ -17,7 +17,7 @@ var maxHealth: float
 var should_bleed := false
 var explode_from_drone := false
 
-signal enemy_died(enemy)
+signal enemy_died(enemy : Node)
 
 
 func _ready() -> void:
@@ -51,7 +51,7 @@ func getInjured() -> bool:
 	return injured
 
 
-func take_damage(damage: float, piercing: bool = false) -> void:
+func take_damage(damage: float, _piercing: bool = false) -> void:
 	#print(zombie.name, " just took, ", damage)
 	health -= damage
 	injured = health < halfHealth

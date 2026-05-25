@@ -79,7 +79,7 @@ func get_demon_true_name() -> String:
 func get_damage() -> int:
 	return drone_attack_damage
 
-func get_cost() -> int:
+func get_cost() -> float:
 	return cost
 
 func set_is_demo() -> void:
@@ -94,7 +94,7 @@ func receive_buff(bufferName) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
-		for drone in swarm.get_available_drones():
+		for drone:Node in swarm.get_available_drones():
 			drone.make_drone_glow()
 
 		match demonName:
@@ -104,7 +104,7 @@ func receive_buff(bufferName) -> void:
 				swarm.kill_all_and_respawn()
 				swarm.occulum_buff = true
 			"Crawler":
-				for drone in swarm.get_available_drones():
+				for drone:Node in swarm.get_available_drones():
 					drone.crawler_buff()
 				swarm.is_crawler_buffed = true
 			"SpinalOcculum":
@@ -118,7 +118,7 @@ func receive_buff(bufferName) -> void:
 				pass
 			"Maw":
 				swarm.is_maw_buffed = true
-				for drone in swarm.get_all_drones():
+				for drone:Area2D in swarm.get_all_drones():
 					drone.maw_buff()
 				if $"../Arm" != null:
 					$"../Arm".visible = true 

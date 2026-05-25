@@ -5,7 +5,7 @@ extends Control
 var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
 var swap_ability_instance: Node
 
-var root
+var root : String
 var selected_demon := occulum_scene  # Holds the currently selected demon scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
 
@@ -35,8 +35,8 @@ var demon_highlight_stylebox := preload("res://_Common/StyleBoxes/demon_highligh
 
 
 # Label for Current Demon 
-var currentDemonLabel
-var currentDemonCost
+var currentDemonLabel : Control
+var currentDemonCostLabel : Label
 var deselectText := " PRESS [X] TO DESELECT"
 
 @onready var preview_container := Node2D.new()
@@ -128,7 +128,7 @@ func _ready() -> void:
 	
 
 # Handle Deselection
-func _input(event) -> void:
+func _input(event:InputEvent) -> void:
 
 	if event is InputEventKey and event.pressed:
 		#print("Key Pressed")
@@ -172,16 +172,16 @@ func deselect_demon() -> void:
 	selected_demon = null 			
 	setCanRemoveFalse()
 	
-func on_demon_button_pressed(demon_scene, demon_button, demon_label) -> void:
+func on_demon_button_pressed(demon_scene:PackedScene, demon_button:Control, demon_label:Control) -> void:
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
 	selected_demon = demon_scene
-	var temp_instance := demon_scene.instantiate()
+	var temp_instance :Demon= demon_scene.instantiate()
 	create_preview(demon_scene)
 	add_button_highlight(demon_button)
 	temp_instance.queue_free()
 	print(demon_scene, " selected")
-	currentDemonCost = demon_label
+	currentDemonCostLabel = demon_label
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)	
 
 func _on_CrawlerButton_pressed() -> void:
@@ -213,7 +213,7 @@ func _on_HiveButton_pressed() -> void:
 	on_demon_button_pressed(hive_scene,HiveButton,hiveCostLabel)
 
 
-func create_preview(demon_scene) -> void:
+func create_preview(demon_scene:PackedScene) -> void:
 	#print("MAKE A PREVIEW", demon_scene)
 	# Clear the last preview
 	#print("Clearing Preview Because of Create Preview")
@@ -221,8 +221,8 @@ func create_preview(demon_scene) -> void:
 
 	Global.show_guide()
 
-	var temp_demon := demon_scene.instantiate()
-	var preview_node := find_preview_nodes(temp_demon)
+	var temp_demon : Demon = demon_scene.instantiate()
+	var preview_node : Node = find_preview_nodes(temp_demon)
 	
 	if preview_node:
 		#print("Found Preview Node : ", preview_node)
@@ -230,20 +230,20 @@ func create_preview(demon_scene) -> void:
 		for child in preview_node.get_children():
 			#print("Preview Node Child is ", child)
 			# Create the preview sprite and make it semi-transparent 
-			var preview_sprite := child.duplicate()
-			preview_sprite.modulate = Color(1, 1, 1, 0.5)
-			preview_sprite.scale = Vector2(1.25,1.25)
-			preview_sprite.z_index = 100
-			if preview_sprite is AnimatedSprite2D:
-				preview_sprite.play()
+			var this_preview_sprite : Node = child.duplicate()
+			this_preview_sprite.modulate = Color(1, 1, 1, 0.5)
+			this_preview_sprite.scale = Vector2(1.25,1.25)
+			this_preview_sprite.z_index = 100
+			if this_preview_sprite is AnimatedSprite2D:
+				this_preview_sprite.play()
 			
 			# Store original position and print it
 			var original_pos := Vector2(child.position.x, child.position.y)
-			preview_sprite.set_meta("original_offset", original_pos)
+			this_preview_sprite.set_meta("original_offset", original_pos)
 			
 			# Add the preview sprite to the container and array 
-			preview_container.add_child(preview_sprite)
-			preview_sprites.append(preview_sprite)
+			preview_container.add_child(this_preview_sprite)
+			preview_sprites.append(this_preview_sprite)
 		is_previewing = true	
 	temp_demon.queue_free()
 	
@@ -251,11 +251,11 @@ func create_preview(demon_scene) -> void:
 func clear_preview() -> void:
 	#print("Clear BUTTON PReview")
 	Global.clear_guide()
-	for sprite in preview_sprites:
+	for sprite:Node in preview_sprites:
 		if sprite:
 			sprite.visible = false
 			#sprite.queue_free()
-	for demonButton in all_demon_buttons:
+	for demonButton:TextureButton in all_demon_buttons:
 		#print("Demon Button ia ",demonButton )
 		remove_button_highlight(demonButton)
 	preview_sprites.clear()
@@ -274,43 +274,43 @@ func release_all_focus() -> void:
 
 
 # Gets all the previewNodes
-func find_preview_nodes(node):
+func find_preview_nodes(node:Node) -> Node:
 	#print("Must Find Preview For : ", node)
 	if node.name == "PreviewNodes":
 		return node
 	
-	for child in node.get_children():
-		var result := find_preview_nodes(child)
+	for child:Node in node.get_children():
+		var result : Node = find_preview_nodes(child)
 		if result:
 			return result
 	return null
 
 
-func find_preview_sprite(node):
+func find_preview_sprite(node:Node)->Node:
 	# Recursively search for AnimatedSprite node
 	if node is AnimatedSprite2D:
 		if("Preview" in node.name):
 			return node
 			
 	return null
-	
+
 # Drags the preview sprite around with the cursor 
-func _process(_delta) -> void:
+func _process(_delta:float) -> void:
 	if is_previewing and not preview_sprites.is_empty():
 		var base_pos := get_global_mouse_position()
 
-		for sprite in preview_sprites:
+		for sprite:Node in preview_sprites:
 			if sprite and sprite.has_meta("original_offset"):
 				var offset := sprite.get_meta("original_offset") as Vector2
 				sprite.global_position = base_pos + offset
 
-func find_animated_sprite(node):
+func find_animated_sprite(node:Node)->Node:
 	# Recursively search for AnimatedSprite node
 	if node is AnimatedSprite2D:
 		return node
 	
 	for child in node.get_children():
-		var result := find_animated_sprite(child)
+		var result : Node = find_animated_sprite(child)
 		if result:
 			return result
 	return null
@@ -392,15 +392,15 @@ func start_glow_pulse(button: TextureButton, _panel: Panel, style: StyleBoxFlat,
 	tween.set_loops()
 
 	tween.tween_method(
-		func(val: float) -> void:
-			style.shadow_size = lerpf(4, 12, val)
+		func(val: int) -> void:
+			style.shadow_size = int(lerpf(4, 12, val))
 			style.shadow_color = Color(glow_color, lerpf(0.2, 0.6, val)),
 		0.0, 1.0, 0.8
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	tween.tween_method(
-		func(val: float) -> void:
-			style.shadow_size = lerpf(12, 4, val)
+		func(val: int) -> void:
+			style.shadow_size = int(lerpf(12, 4, val))
 			style.shadow_color = Color(glow_color, lerpf(0.6, 0.2, val)),
 		0.0, 1.0, 0.8
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -523,10 +523,10 @@ func _on_heart_button_pressed() -> void:
 	create_preview(heart_scene)
 	setCanRemoveFalse()
 	#currentDemonLabel.text = "HEART DEMON SELECTED " + deselectText
-	currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartLabel
+	#currentDemonCost = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartLabel
 	#currentDemonCost.text = str(temp_instance.get_cost())
 	temp_instance.queue_free()
-	var HeartButton = $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
+	#var HeartButton :TextureButton= $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 	#SpinalOcculumButton.release_focus()
 	print("Heart selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
@@ -549,7 +549,7 @@ func _on_portal_button_pressed() -> void:
 	var temp_instance := portal_scene.instantiate()
 	create_preview(portal_scene)
 	setCanRemoveFalse()
-	currentDemonCost = 0
+	#currentDemonCost = 0
 	#currentDemonCost.text = "0"
 	#currentDemonLabel.text = "PORTAL SELECTED " + deselectText
 	temp_instance.queue_free()
@@ -567,35 +567,35 @@ func swap_portal_button() -> void:
 		purple_scene = true
 		return
 		
-func get_crawler_button():
+func get_crawler_button() -> TextureButton:
 	return CrawlerButton
 
-func get_occulum_button():
+func get_occulum_button() -> TextureButton:
 	return OcculumButton
 	
-func get_wyrm_button():
+func get_wyrm_button() -> TextureButton:
 	return WyrmButton
 	
-func get_hive_button():
+func get_hive_button() -> TextureButton:
 	return HiveButton
 	
-func get_spinal_occulum_button():
+func get_spinal_occulum_button() -> TextureButton:
 	return SpinalOcculumButton
 	
-func get_maw_button():
+func get_maw_button() -> TextureButton:
 	return MawButton
 	
-func get_world_swap_button():
+func get_world_swap_button() -> TextureButton:
 	return swapButton
 	
-func get_remove_demon_button():
+func get_remove_demon_button() -> TextureButton:
 	return removeDemonButton
 	
-func get_codex_button():
+func get_codex_button() -> TextureButton:
 	return codexButton
 	
-func get_panel_container():
+func get_panel_container()->Control:
 	return panelContainer
 
-func get_all_extra_buttons():
+func get_all_extra_buttons()->Array:
 	return all_extra_buttons

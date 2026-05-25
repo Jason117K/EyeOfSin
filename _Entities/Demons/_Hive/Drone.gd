@@ -5,7 +5,7 @@ extends Area2D
 
 
 # Signals
-signal drone_died(drone)
+signal drone_died(drone:Node)
 var current_zombie : Zombie = null
 
 # Export variables 
@@ -24,14 +24,14 @@ var current_zombie : Zombie = null
 enum State { IDLE, PURSUING, ATTACKING, RETURNING }
 
 var state: State = State.IDLE
-var current_target = null
+var current_target : Node
 var velocity := Vector2.ZERO
-var rest_position = null
+var rest_position : Vector2
 var explodeBuff := false
 var isCrawlerBuffed := false
 var base_attack_damage: int
 var is_in_combat := false
-var current_zombie_to_fight
+var current_zombie_to_fight : Area2D
 var blood_on_death := false
 var is_maw_buffed := false
 var is_crawler_buffed := false
@@ -288,5 +288,5 @@ func exit_combat() -> void:
 	is_in_combat = false
 	current_zombie_to_fight = null
 
-func get_enemy_combatant():
+func get_enemy_combatant()->Area2D:
 	return current_zombie_to_fight

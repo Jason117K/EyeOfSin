@@ -18,8 +18,8 @@ var wyrmBuffed := false
 var crawlerBuffed := false
 var mawBuffed := false
 
-var projectile
-var animSpriteComp
+var projectile : Node
+var animSpriteComp : AnimatedSprite2D
 var node_ready := false
 var shoot_positions: Array = []
 
@@ -42,7 +42,7 @@ func _ready() -> void:
 	
 func set_attack_rays_collision()->void:
 	if parent_demon.is_in_group("Green"):
-		for attacking_ray in attack_rays:
+		for attacking_ray : Node in attack_rays:
 			attacking_ray.max_results = 30
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,false)
@@ -50,7 +50,7 @@ func set_attack_rays_collision()->void:
 			attacking_ray.set_collision_mask_value(4,false)
 			attacking_ray.set_collision_mask_value(5,true)
 	else:
-		for attacking_ray in attack_rays:
+		for attacking_ray : Node in attack_rays:
 			attacking_ray.max_results = 30
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,false)
@@ -69,7 +69,7 @@ func _on_sprite_frame_changed(animation_name: String, frame_index: int) -> void:
 			shoot_projectile()
 			
 			
-func _process(_delta) ->void:
+func _process(_delta:float) ->void:
 	if node_ready && animSpriteComp != null:
 		if animSpriteComp.animation == "spawn":
 			#print("Early")
@@ -85,7 +85,7 @@ func _process(_delta) ->void:
 
 func check_attack_rays() -> void:
 	canAttack = false
-	for ray in attack_rays:
+	for ray : Node in attack_rays:
 		#print("Checking Ray ", ray)
 		if ray.is_colliding():
 			#print(" Ray Colling ",self )
@@ -123,7 +123,7 @@ func shoot_projectile() -> void:
 
 	else:
 		#print("NAH SHOOTING HERE")
-		for shoot_pos in shoot_positions:
+		for shoot_pos:Node in shoot_positions:
 			projectile = projectile_scene.instantiate()
 			projectile.damage = damage
 			apply_buffs_to_projectile(projectile)
@@ -137,7 +137,7 @@ func shoot_projectile() -> void:
 			
 	canAttack = false
 	
-func apply_buffs_to_projectile(projectile_to_buff) -> void:
+func apply_buffs_to_projectile(_projectile_to_buff:Node) -> void:
 	pass
 
 
@@ -149,7 +149,7 @@ func get_damage() -> int:
 	return damage
 
 
-func receive_buff(newDemon) -> void:
+func receive_buff(newDemon:String) -> void:
 	match newDemon:
 		"Occulum":
 			occulumBuffed = true

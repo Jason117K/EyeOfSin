@@ -17,10 +17,10 @@ var BloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 
 # --- State ---
 var spawnAnimDone := false
-var tween
+var tween : Tween
 var highlight_active := false
-var highlight_material = null
-var original_material = null
+var highlight_material :Material = null
+var original_material :Material = null
 var demons_to_heal: Array = []
 var max_alpha := 0.2
 var lerp_duration := 2.5
@@ -69,7 +69,7 @@ func get_demon_name() -> String:
 func get_damage() -> String:
 	return "NONE"
 
-func get_cost() -> int:
+func get_cost() -> float:
 	cost = cost + (5 * Global.getOcculumCount())
 	return cost
 
@@ -77,7 +77,7 @@ func get_cost() -> int:
 # --- Buff System ---
 
 func receive_buff(newDemon) -> void:
-	var demonName := (newDemon.get_demon_true_name())
+	var demonName :String= (newDemon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		match demonName:
@@ -182,16 +182,16 @@ func set_up_healing() -> void:
 	healing_zone_sprite.show()
 	healing_zone_sprite.play()
 
-func _on_heal_zone_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Demons"):
-		demons_to_heal.append(area)
+func _on_heal_zone_area_entered(this_area: Area2D) -> void:
+	if this_area.is_in_group("Demons"):
+		demons_to_heal.append(this_area)
 
 func _on_heal_timer_timeout() -> void:
 	num_healing_zone_sprite_plays += 1
 	if num_healing_zone_sprite_plays == max_num_healing_zone_sprite_plays:
 		healing_zone_sprite.play()
 		num_healing_zone_sprite_plays = 0
-	for demon in demons_to_heal:
+	for demon:Demon in demons_to_heal:
 		if demon != null:
 			if demon != self:
 				demon.increase_health(spinal_occulum_heal_over_time_amount)
@@ -201,7 +201,7 @@ func burst_heal() -> void:
 	healing_zone_sprite.show()
 	healing_zone_sprite.play()
 	healing_zone_sprite.animation_finished.connect(finish_burst)
-	for demon in demons_to_heal:
+	for demon : Demon in demons_to_heal:
 		if demon != null:
 			demon.increase_health(hive_burst_heal_amount)
 
@@ -226,9 +226,9 @@ func get_special_description() -> String:
 
 # --- Slow Field ---
 
-func _on_slow_field_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Zombie"):
-		area.slow()
+func _on_slow_field_area_entered(this_area: Area2D) -> void:
+	if this_area.is_in_group("Zombie"):
+		this_area.slow()
 
 func _on_slow_field_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Zombie"):
@@ -237,7 +237,7 @@ func _on_slow_field_body_entered(body: Node2D) -> void:
 
 # --- Eat Zombie (Maw Buff) ---
 
-func eat_zombie(zombie_to_eat: Area2D) -> void:
+func eat_zombie(_zombie_to_eat: Area2D) -> void:
 	animSpriteComp.speed_scale = 4
 	resetEatingTimer.start()
 	can_eat_zombie = false
@@ -251,7 +251,7 @@ func hide_tentacle() -> void:
 func _on_reset_eating_speed_timeout() -> void:
 	animSpriteComp.speed_scale = 1
 	generate_blood_alt()
-	for effect in eat_zombie_blood_fx:
+	for effect:Node in eat_zombie_blood_fx:
 		effect.show()
 		effect.play()
 
@@ -260,7 +260,7 @@ func zombie_gore_fx() -> void:
 	if num_blood_plays <= max_num_blood_plays:
 		pass
 	else:
-		for effect in eat_zombie_blood_fx:
+		for effect:Node in eat_zombie_blood_fx:
 			effect.hide()
 
 

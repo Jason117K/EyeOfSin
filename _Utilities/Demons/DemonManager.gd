@@ -65,8 +65,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				#print(get_parent(), " is not visible, return early qqx")
 				return 
 			#print(get_parent()," QQx Grid Map on Click is ", grid_map)
-			var mouse_pos = get_global_mouse_position()
-			var grid_pos = mouse_pos_to_grid(mouse_pos)
+			var mouse_pos :Vector2= get_global_mouse_position()
+			var grid_pos :Vector2= mouse_pos_to_grid(mouse_pos)
 			#print("GRID POS IS ", grid_pos)
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
 			#print("GRID POS IS NOW ", grid_pos)
@@ -75,9 +75,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				move_demon(demon_to_move, grid_pos)
 
 			if selected_demon_scene != null:
-				var temp_instance = selected_demon_scene.instantiate()
+				var temp_instance :Demon= selected_demon_scene.instantiate()
 				
-				var cost = temp_instance.get_cost()
+				var cost :float= temp_instance.get_cost()
 				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 				if(parentName == "Level3"):
 					#print("Grid map size is ", grid_map.size())
@@ -186,7 +186,7 @@ func place_empty_blocker_demon(grid_pos: Vector2) -> void:
 		print("No demon selected!")
 		return
 	
-	var demon_instance = selected_demon_scene.instantiate()
+	var demon_instance :Demon= selected_demon_scene.instantiate()
 	#print("Will Make PPName From ",demon_instance.name)
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	
@@ -241,7 +241,7 @@ func place_demon(grid_pos: Vector2) -> void:
 		#print("No demon selected!")
 		return
 	
-	var demon_instance = selected_demon_scene.instantiate()
+	var demon_instance :Demon= selected_demon_scene.instantiate()
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
 		demon_instance.add_to_group("Green")
@@ -355,15 +355,15 @@ func generate_unique_name(base_name: String) -> String:
 	# Collect all existing numbers from siblings
 	for child in get_parent().get_node("GameLayer").get_children():
 		if child.name.begins_with(base_name):
-			var suffix = child.name.substr(base_name.length())
+			var suffix :String= child.name.substr(base_name.length())
 			if suffix.is_valid_int():
 				used_numbers.append(suffix.to_int())
 					
 	used_numbers.sort()
 
 	# Find first available number (fills gaps)
-	var candidate = 1
-	for num in used_numbers: 
+	var candidate :int= 1
+	for num:int in used_numbers: 
 		if candidate < num:
 			break  # Gap found
 		if candidate == num:

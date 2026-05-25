@@ -101,7 +101,7 @@ func finish_ready() -> void:
 	Global.unhide_ui_layer()
 
 
-func getIsPurpleDimension():
+func getIsPurpleDimension()->void:
 	return
 #endregion
 
@@ -155,7 +155,7 @@ func setup_demon_selection_menu() -> void:
 
 
 func _show_all_buttons() -> void:
-	for container_name in ALL_DEMON_CONTAINERS:
+	for container_name:String in ALL_DEMON_CONTAINERS:
 		if container_name == "Hive":
 			continue
 		var container := hbox.get_node(container_name)

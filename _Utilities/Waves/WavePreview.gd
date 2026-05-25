@@ -36,7 +36,7 @@ signal call_wave_early_requested
 									erupterLabel, reanimatorLabel, wretchLabel, \
 									flesheaterLabel, amalgamLabel, sunderedLabel]
 
-var preview_lead_time := 15
+var preview_lead_time :float= 15
 var _spawner: ZombieSpawner
 var _preview_wave_index: int = -1
 var progressing := false
@@ -97,37 +97,37 @@ func _on_Area2D_mouse_entered() -> void:
 	var config := _spawner.get_wave_config(_preview_wave_index)
 	preview_text.clear()
 	
-	for this_label in ALL_ZOMBIE_LABELS:
+	for this_label:Label in ALL_ZOMBIE_LABELS:
 		this_label.hide()
-		var base_name := this_label.get_name()
+		var base_name :String= this_label.get_name()
 		this_label.text = base_name + " x"
-	for this_image in ALL_ZOMBIE_TEXTURES:
+	for this_image:TextureRect in ALL_ZOMBIE_TEXTURES:
 		this_image.hide()
 		
-	for type_name in config:
+	for type_name:String in config:
 		
 		var count: int = config[type_name]
 		#print("Type Name is ", type_name, " with count ", count)
 		if count > 0:
 			preview_text.append_text(str(type_name) + " : " + str(count) + "\n")
-			for this_label in ALL_ZOMBIE_LABELS:
+			for this_label:Label in ALL_ZOMBIE_LABELS:
 				if str(type_name) in this_label.get_name():
 					this_label.text = this_label.get_name() + " x" + str(count)
 					this_label.show()
-			for this_image in ALL_ZOMBIE_TEXTURES:
+			for this_image:TextureRect in ALL_ZOMBIE_TEXTURES:
 				if str(type_name) in this_image.get_name():
 					this_image.show()
 	$Node2D/Control.visible = true
 
-func set_image_value(this_type_name, this_count) -> void:
-	for this_label in ALL_ZOMBIE_LABELS:
+func set_image_value(this_type_name:String, this_count:int) -> void:
+	for this_label:Label in ALL_ZOMBIE_LABELS:
 		if this_type_name in this_label.get_name():
 			this_label.show()
 			this_label.text = this_label.text + str(this_count)
 #			this_label.append_text(this_count)
 		else:
 			this_label.hide()
-	for this_image in ALL_ZOMBIE_TEXTURES:
+	for this_image:TextureRect in ALL_ZOMBIE_TEXTURES:
 		if this_type_name in this_image.get_name():
 			this_image.show()
 		else:
@@ -153,7 +153,7 @@ func _process(delta: float) -> void:
 		wave_progress_bar.value = next_wave_timer.wait_time - next_wave_timer.time_left
 		#wave_progress_bar.value = max(next_wave_timer.wait_time - elapsed, 0.0)
 
-func set_preview_lead_time(new_preview_lead_time) -> void:
+func set_preview_lead_time(new_preview_lead_time:float) -> void:
 	preview_lead_time = new_preview_lead_time
 	wave_progress_bar.max_value = preview_lead_time
 	next_wave_timer.wait_time = preview_lead_time

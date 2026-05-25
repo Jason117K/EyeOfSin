@@ -52,15 +52,16 @@ func get_weighted_range_speed() -> float:
 
 # Debug function to test distribution (call from _ready() to see results)
 func test_distribution(sample_size: int = 1000) -> void:
-	var slow_count := 0
-	var fast_count := 0
+
 
 	for i in sample_size:
 		var speed := get_weighted_range_speed()  # Change this to test different methods
+		var _slow_count := 0
+		var _fast_count := 0
 		if speed <= 1.3:
-			slow_count += 1
+			_slow_count += 1
 		else:
-			fast_count += 1
+			_fast_count += 1
 	
 	#print("Distribution test (", sample_size, " samples):")
 	#print("Slow speeds (1.0-1.3): ", (slow_count * 100.0 / sample_size), "%")

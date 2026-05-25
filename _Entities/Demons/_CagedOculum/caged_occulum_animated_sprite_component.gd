@@ -1,6 +1,6 @@
 extends DemonSpriteComp
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if animation == "spawn":
 		return
 	else:

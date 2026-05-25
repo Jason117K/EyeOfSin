@@ -47,7 +47,7 @@ func get_wave_preview() -> Node:
 ## e.g. set_waves_from_dicts([{"Reborn": 3, "Severed": 2}, {"Unhallower": 1}])
 func set_waves_from_dicts(data: Array) -> void:
 	waves = []
-	for d in data:
+	for d:Dictionary in data:
 		waves.append(WaveData.from_dict(d))
 
 
@@ -55,7 +55,7 @@ func begin_wave(wave_index: int) -> void:
 	_current_wave = wave_index
 	_spawn_pool = _build_pool(wave_index)
 	_spawn_pool.shuffle()
-	$SpawnTimer.wait_time = randf_range(0.1, 0.5)
+	$SpawnTimer.wait_time = _get_weighted_spawn_delay()
 	$SpawnTimer.start()
 
 
@@ -64,7 +64,7 @@ func _build_pool(wave_index: int) -> Array[PackedScene]:
 	if wave_index < 0 or wave_index >= waves.size():
 		return pool
 	var wave: WaveData = waves[wave_index]
-	for type_name in ZombieRegistry.SCENES:
+	for type_name:String in ZombieRegistry.SCENES:
 		var count: int = wave.get(type_name)
 		if count <= 0:
 			continue
@@ -119,7 +119,7 @@ func _on_spawn_timer_timeout() -> void:
 
 
 func _get_type_key(zombie_name: String) -> String:
-	for type_name in ZombieRegistry.Y_OFFSETS:
+	for type_name : String in ZombieRegistry.Y_OFFSETS:
 		if type_name in zombie_name:
 			#print("Will Return ", zombie_name, " with type name ", type_name)
 			return type_name

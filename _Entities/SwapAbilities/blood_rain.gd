@@ -53,7 +53,7 @@ func begin() -> void:
 		if child.has_method("show"):
 			child.show()
 		
-	for zombie in Global.get_all_zombies():
+	for zombie : Zombie in Global.get_all_zombies():
 		if zombie != null:
 			zombie.blood_slow()
 		
@@ -72,7 +72,7 @@ func ability_full_duration_end() -> void:
 
 func undoBloodSlow() -> void:
 	if is_active:
-		for zombie in Global.get_all_zombies():
+		for zombie : Zombie in Global.get_all_zombies():
 			if zombie != null:
 				zombie.undoBloodSlow()
 		stop()
@@ -90,7 +90,7 @@ func stop() -> void:
 	cooldown_elapsed = 0.0
 
 
-func append_new_zombie(new_zombie) -> void:
+func append_new_zombie(new_zombie : Zombie) -> void:
 	if is_active == true:
 		new_zombie.blood_slow()
 		

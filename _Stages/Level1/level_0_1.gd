@@ -7,7 +7,7 @@ var current_completed_wave_number := 0
 var wave3StartTimer: Timer
 @export var this_wave_3_start_time := 20
 
-@onready var crawler_button := demonSelectionMenu.get_crawler_button()
+@onready var crawler_button :TextureButton= demonSelectionMenu.get_crawler_button()
 @onready var zombie_spawner := $GameLayer/ZombieSpawner
 
 const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]

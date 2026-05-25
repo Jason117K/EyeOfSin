@@ -37,7 +37,7 @@ extends Demon
 @export var sprite_path: NodePath
 
 # --- Component References ---
-@onready var sprite = get_node(sprite_path) if sprite_path else null
+@onready var sprite :Node= get_node(sprite_path) if sprite_path else null
 @onready var laserShootComp1 := $Worm1/LaserShootComponent
 @onready var laserShootComp2 := $Worm2/LaserShootComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
@@ -105,14 +105,14 @@ func get_demon_name() -> String:
 func get_damage() -> int:
 	return projectile_shoot_component.projectile_damage
 
-func get_cost() -> int:
+func get_cost() -> float:
 	return cost
 
 
 # --- Buff System ---
 
 func receive_buff(demon) -> void:
-	var demonName := (demon.get_demon_true_name())
+	var demonName : String = (demon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		match demonName:
@@ -173,8 +173,8 @@ func _process(delta: float) -> void:
 
 	# Calculate smooth up/down motion with slight ease-in/out
 	var raw_bob := sin(time)
-	var smoothed_bob := sign(raw_bob) * pow(abs(raw_bob), 0.7)
-	var y_offset := smoothed_bob * bob_height * animation_exaggeration
+	var smoothed_bob : float = sign(raw_bob) * pow(abs(raw_bob), 0.7)
+	var y_offset : float = smoothed_bob * bob_height * animation_exaggeration
 
 	# Calculate velocity for squash/stretch
 	var new_velocity := (y_offset - prev_y) / delta
@@ -182,7 +182,7 @@ func _process(delta: float) -> void:
 	prev_y = y_offset
 
 	# Determine target squash/stretch based on motion
-	var normalized_velocity = clamp(velocity / (bob_height * 2), -1, 1)
+	var normalized_velocity : float = clamp(velocity / (bob_height * 2), -1, 1)
 
 	if abs(normalized_velocity) > 0.1:
 		target_stretch = normalized_velocity * stretch_amount * animation_exaggeration
@@ -196,8 +196,8 @@ func _process(delta: float) -> void:
 	current_stretch = lerp(current_stretch, target_stretch, bounce_elasticity)
 
 	# Apply transformations to the sprite
-	var scale_y = initial_sprite_scale.y * (1.0 + current_squash)
-	var scale_x = initial_sprite_scale.x * (1.0 + current_stretch)
+	var scale_y:float = initial_sprite_scale.y * (1.0 + current_squash)
+	var scale_x:float = initial_sprite_scale.x * (1.0 + current_stretch)
 
 	# Update sprite's transform relative to its initial position
 	sprite.position.x = initial_sprite_position.x
@@ -224,10 +224,10 @@ func _on_mouse_exited() -> void:
 
 # --- Heart Buff ---
 
-func receive_heart_buff():
+func receive_heart_buff()->void:
 	print(self.name, " receive Heart Buff")
 	buffNodes.get_child(0).visible = true
 	self.health = self.health + 400
 
-func adjust_position(new_form):
+func adjust_position(_new_form:String)->void:
 	pass

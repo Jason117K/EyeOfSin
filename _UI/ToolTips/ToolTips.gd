@@ -18,8 +18,8 @@ extends Control
 @export var small_visual_tutorial_text := 20
 @export var large_visual_tutorial_text := 24
 
-var char_count 
-var index
+var char_count : int
+var index : int
 
 signal ToolTipHid
 

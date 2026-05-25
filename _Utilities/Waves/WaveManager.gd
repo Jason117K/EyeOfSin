@@ -28,7 +28,7 @@ var _total_waves: int = 0
 @onready var _spawners_finished: int = 0
 var _all_spawning_done: bool = false
 
-var elapsed_time_preview_on_screen
+var elapsed_time_preview_on_screen : float
 
 func _ready() -> void:
 	Global.register_wave_manager(self)
@@ -42,8 +42,8 @@ func _setup() -> void:
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
 
 	_wave_previews = []
-	for spawner in _spawners:
-		var preview := spawner.get_wave_preview()
+	for spawner:Node in _spawners:
+		var preview : Node = spawner.get_wave_preview()
 		if preview != null:
 			_wave_previews.append(preview)
 			preview.game_start_requested.connect(_on_game_start_requested)
@@ -57,7 +57,7 @@ func _setup() -> void:
 		$Area2D.connect("area_entered", _on_damage_area_entered)
 
 	# Show wave 0 preview with start button so the player can begin
-	for preview in _wave_previews:
+	for preview:Node in _wave_previews:
 		preview.show_preview(0, true)
 	if not waveDelayTimer.timeout.is_connected(_on_wave_delay_timer_timeout):
 		waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
@@ -114,11 +114,11 @@ func _start_wave(index: int) -> void:
 	_current_wave = index
 
 	# Hide previews for the wave that's now starting
-	for preview in _wave_previews:
+	for preview:Node in _wave_previews:
 		preview.hide_preview()
 
 	# Tell every spawner to begin this wave
-	for spawner in _spawners:
+	for spawner:Node in _spawners:
 		if index < spawner.get_wave_count():
 			spawner.begin_wave(index)
 
@@ -156,7 +156,7 @@ func _show_preview_for_next_wave() -> void:
 	var next := _current_wave + 1
 	if next < _total_waves:
 		#print("Wave Previews Is ", _wave_previews)
-		for preview in _wave_previews:
+		for preview : Node in _wave_previews:
 			preview.show_preview(next,true)
 
 
@@ -187,8 +187,8 @@ func _on_damage_area_entered(area: Area2D) -> void:
 
 func subtract_health() -> void:
 	health_points -= 1
-	var purple = get_tree().get_first_node_in_group("Purple")
-	var green = get_tree().get_first_node_in_group("Green")
+	var purple : Node = get_tree().get_first_node_in_group("Purple")
+	var green : Node = get_tree().get_first_node_in_group("Green")
 	if purple and purple.has_method("get_health_ui"):
 		purple.get_health_ui().text = str(health_points)
 	if green and green.has_method("get_health_ui"):
