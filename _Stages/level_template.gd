@@ -2,33 +2,33 @@ class_name LevelTemplate extends Control
 
 var wave_1_active: bool = false
 var wave_1_complete: bool = false
-var wave2Started : bool = false 
+var wave2Started: bool = false
 
-var crawler_already_selected = false
+var crawler_already_selected := false
 
-var current_level = ("res://_Stages/Level1/Level0-1.tscn")
-var current_level_alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
+var current_level := ("res://_Stages/Level1/Level0-1.tscn")
+var current_level_alt := ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 var has_pulsed := false
 
-@export var new_end_dialog = "res://_Assets/Dialog/level_0_end_dialog.dtl"
+@export var new_end_dialog := "res://_Assets/Dialog/level_0_end_dialog.dtl"
 @export var wave2StartTime := 30
 @export var wave3StartTime := 60
-@export var debug := true 
-@onready var toolTips = $"../ToolTips"
-@onready var demonManager = $DemonManager
-@onready var demonSelectionMenu := $"../DemonSelectionMenu" 
+@export var debug := true
+@onready var toolTips := $"../ToolTips"
+@onready var demonManager := $DemonManager
+@onready var demonSelectionMenu := $"../DemonSelectionMenu"
 #@onready var waveManager = $GameLayer/WaveManager
-@onready var waveManager = get_parent().get_node("WaveManager")
-@onready var spotlight_overlay = $"../SpotlightOverlay"  # Reference to CanvasLayer
-@onready var pause_Button = $"../../PauseButton"
-@onready var levelSwitcher = 	$"../LevelSwitcher"
-@onready var _demon_hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
-@onready var world_swap_button = demonSelectionMenu.get_world_swap_button()
-@onready var codex_button = demonSelectionMenu.get_codex_button()
+@onready var waveManager := get_parent().get_node("WaveManager")
+@onready var spotlight_overlay := $"../SpotlightOverlay"  # Reference to CanvasLayer
+@onready var pause_Button := $"../../PauseButton"
+@onready var levelSwitcher := $"../LevelSwitcher"
+@onready var _demon_hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var world_swap_button := demonSelectionMenu.get_world_swap_button()
+@onready var codex_button := demonSelectionMenu.get_codex_button()
 @onready var sway_script_path := "res://_Common/EnvironmentScripts/sway.gd"
 
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
-var green_dimension 
+var green_dimension
 
 var level_1_start_dialog := preload("res://_Assets/Dialog/level_0_start_dialog.dtl")
 var level_2_start_dialog := preload("res://_Assets/Dialog/level_02_start_dialog.dtl")
@@ -38,7 +38,7 @@ var level_5_start_dialog := preload("res://_Assets/Dialog/level_05_start_dialog.
 var level_6_start_dialog := preload("res://_Assets/Dialog/level_06_start_dialog.dtl")
 
 
-@export var skip_end_dialog := true 
+@export var skip_end_dialog := true
 
 # Text file paths
 const TUTORIAL_SELECT_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_Selectcrawler.txt"
@@ -56,7 +56,7 @@ func get_demon_manager():
 	return demonManager
 
 
-func _on_level_ended():
+func _on_level_ended() -> void:
 	if skip_end_dialog:
 		_on_end_dialog_finished()
 	else:
@@ -65,7 +65,7 @@ func _on_level_ended():
 	#_on_end_dialog_finished()
 
 
-func _on_end_dialog_finished():
+func _on_end_dialog_finished() -> void:
 	print("This Is makign level switcher visible")
 	levelSwitcher.visible = true
 	$"../ToolTips".visible = false
@@ -80,7 +80,7 @@ func _ready() -> void:
 
 ## Hides all demon buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]
-func hide_all_demon_buttons_with_exception(exceptions: Array = []):
+func hide_all_demon_buttons_with_exception(exceptions: Array = []) -> void:
 	print("Exceptions Are ",exceptions)
 	for container_name in ALL_DEMON_CONTAINERS:
 		if container_name in exceptions:
@@ -95,9 +95,9 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []):
 		#print("container_name is ",container_name)
 		#print("demon box is is ",_demon_hbox)
 		if _demon_hbox.get_node(container_name) != null:
-			var container = _demon_hbox.get_node(container_name)
-			
-			var should_show = container_name in exceptions
+			var container := _demon_hbox.get_node(container_name)
+
+			var should_show := container_name in exceptions
 			#print(should_show, " container is IS ",container)
 			container.visible = should_show
 			for child in container.get_children():
@@ -106,10 +106,10 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []):
  
 ## Shows all demon buttons and their parent containers.
 ## Optionally pass extra non-demon UI names to also show (e.g. "WorldSwap", "Codex").
-func show_all_demon_buttons(extras: Array = []):
+func show_all_demon_buttons(extras: Array = []) -> void:
 	for container_name in ALL_DEMON_CONTAINERS:
-		if _demon_hbox.get_node(container_name) != null :
-			var container = _demon_hbox.get_node(container_name)
+		if _demon_hbox.get_node(container_name) != null:
+			var container := _demon_hbox.get_node(container_name)
 			container.visible = true
 			for child in container.get_children():
 				child.visible = true
@@ -119,17 +119,17 @@ func show_all_demon_buttons(extras: Array = []):
 				button_instance.visible = true
 
 	
-func setup_demon_selection_menu():
+func setup_demon_selection_menu() -> void:
 	pass
-	
+
 # Helper Methods
-func make_camera_current():
+func make_camera_current() -> void:
 	$Camera2D.make_current()
 
-func place_empty_blocker_demon(grid_pos):
+func place_empty_blocker_demon(grid_pos) -> void:
 	demonManager.place_empty_blocker_demon(grid_pos)
 
-func remove_empty_blocker_demon(grid_pos):
+func remove_empty_blocker_demon(grid_pos) -> void:
 	demonManager.clear_space_alt(grid_pos)
 
 # Spotlight helper functions - ADD THESE NEW FUNCTIONS
@@ -142,44 +142,44 @@ func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0):
 	print("Showing Spotlight At Node", target_node, size_multiplier)
 
 	# Get center of target in screen coordinates
-	var global_rect = target_node.get_global_rect()
-	var center = global_rect.get_center()
+	var global_rect := target_node.get_global_rect()
+	var center := global_rect.get_center()
 
 	# Calculate appropriate spotlight size based on button size
-	var viewport_size = get_viewport().get_visible_rect().size
-	var button_diagonal = global_rect.size.length()
-	var uv_size = (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
+	var viewport_size := get_viewport().get_visible_rect().size
+	var button_diagonal := global_rect.size.length()
+	var uv_size := (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
 
 	show_spotlight_at_position(center, uv_size)
 
 ## Shows spotlight at specific screen position
-func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15):
+func show_spotlight_at_position(screen_pos: Vector2, size: float = 0.15) -> void:
 	if not spotlight_overlay:
 		return
-	var viewport_size = get_viewport().get_visible_rect().size
-	var uv_pos = screen_pos / viewport_size
+	var viewport_size := get_viewport().get_visible_rect().size
+	var uv_pos := screen_pos / viewport_size
 	print("[SHOW SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", size)
 	#var viewport_size = get_viewport().get_visible_rect().size
 	#var uv_pos = screen_pos / viewport_size
 
-	var spotlight_rect = spotlight_overlay.get_node("SpotlightRect")
+	var spotlight_rect := spotlight_overlay.get_node("SpotlightRect")
 	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
 	spotlight_rect.material.set_shader_parameter("circle_size", size)
 	spotlight_overlay.visible = true
 
 ## Hides spotlight overlay
-func hide_spotlight():
+func hide_spotlight() -> void:
 	if spotlight_overlay:
 		spotlight_overlay.visible = false
 
-	
-func hide_guide():
-	$GameLayer/GridManager/TileMapLayer.clear_rectangles()		
+
+func hide_guide() -> void:
+	$GameLayer/GridManager/TileMapLayer.clear_rectangles()
 
 func get_health_ui():
 	return $UILayer.get_the_health()
-	
-	
+
+
 func get_game_layer():
 	return $GameLayer
 	
@@ -216,9 +216,9 @@ func go_to_step_index(index: int) -> void:
 	if index < 0 or index >= _tutorial_steps.size():
 		push_warning("[Tutorial] Step index out of range: " + str(index))
 		return
-	var old_name = get_current_step_name()
+	var old_name := get_current_step_name()
 	_current_step_index = index
-	var step = _tutorial_steps[_current_step_index]
+	var step := _tutorial_steps[_current_step_index]
 	print("[Tutorial] Transition: ", old_name, " → ", step["name"])
 	if step.has("enter"):
 		step["enter"].call()
@@ -237,17 +237,17 @@ func get_current_step() -> Dictionary:
 
 
 func _filter_tutorial_input(event: InputEvent) -> void:
-	var step = get_current_step()
+	var step := get_current_step()
 	if step.has("input_filter"):
 		step["input_filter"].call(event)
 	
-func attach_script_to_sway_children():                                       #script_path: String) -> void:
-	var coral_node = get_node("Environment/Coral")
+func attach_script_to_sway_children() -> void:                                       #script_path: String) -> void:
+	var coral_node := get_node("Environment/Coral")
 	if coral_node == null:
 		push_error("Coral node not found at Environment/Coral")
 		return
 
-	var script_to_attach = load(sway_script_path)
+	var script_to_attach := load(sway_script_path)
 	if script_to_attach == null:
 		push_error("Failed to load script at: " + sway_script_path)
 		return
@@ -257,5 +257,5 @@ func attach_script_to_sway_children():                                       #sc
 		if child.is_inside_tree() and child.has_method("_ready"):
 			child._ready()
 
-func get_true_name():
+func get_true_name() -> String:
 	return ""

@@ -1,10 +1,10 @@
 extends HSlider
 
-@export var busName : String
-var busIndex : int
+@export var busName: String
+var busIndex: int
 
 
-func _ready()-> void : 
+func _ready() -> void:
 	print("=== VolumeSlider _ready() Debug ===")
 	print("busName: ", busName)
 	busIndex = AudioServer.get_bus_index(busName)
@@ -12,14 +12,14 @@ func _ready()-> void :
 	value_changed.connect(on_value_changed)
 
 	if busIndex >= 0:
-		var db_value = AudioServer.get_bus_volume_db(busIndex)
+		var db_value := AudioServer.get_bus_volume_db(busIndex)
 		print("Current bus volume (db): ", db_value)
 		value = db_to_linear(db_value)
 		print("Setting slider value to: ", value)
 	else:
 		print("ERROR: Invalid bus index for bus: ", busName)
 
-func on_value_changed(value : float ):
+func on_value_changed(value: float) -> void:
 	print("=== SLIDER VALUE CHANGED ===")
 	print("Slider for bus: ", busName, " changed to: ", value)
 	busIndex = AudioServer.get_bus_index(busName)

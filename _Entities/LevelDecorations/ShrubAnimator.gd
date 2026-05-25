@@ -18,9 +18,9 @@ extends AnimatedSprite2D
 # Choose randomization method
 @export_enum("Power Curve", "Weighted Ranges", "Exponential Decay") var randomization_method: int = 1
 
-func _ready():
+func _ready() -> void:
 	randomize()
-	
+
 	if minSpeed > 0:
 		var final_speed: float
 		
@@ -39,8 +39,8 @@ func _ready():
 
 #Weighted ranges - explicitly define speed ranges with weights
 func get_weighted_range_speed() -> float:
-	var total_weight = slow_weight + fast_weight
-	var random_weight = randf() * total_weight
+	var total_weight := slow_weight + fast_weight
+	var random_weight := randf() * total_weight
 	
 	if random_weight <= slow_weight:
 		# Pick from slow range
@@ -51,12 +51,12 @@ func get_weighted_range_speed() -> float:
 
 
 # Debug function to test distribution (call from _ready() to see results)
-func test_distribution(sample_size: int = 1000):
-	var slow_count = 0
-	var fast_count = 0
-	
+func test_distribution(sample_size: int = 1000) -> void:
+	var slow_count := 0
+	var fast_count := 0
+
 	for i in sample_size:
-		var speed = get_weighted_range_speed()  # Change this to test different methods
+		var speed := get_weighted_range_speed()  # Change this to test different methods
 		if speed <= 1.3:
 			slow_count += 1
 		else:

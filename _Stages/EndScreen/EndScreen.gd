@@ -2,7 +2,7 @@ extends Control
 #EndScreen.gd
 
 #SetUp The Rows in The EndScreen 
-func _ready():
+func _ready() -> void:
 	pass
 	#$GridManager.set_tiles_for_rows(0,1, 68)
 	#$GridManager.set_tiles_for_rows(1,2, 66)
@@ -19,9 +19,9 @@ func _ready():
 
 
 #Handle quiting the game
-func _on_Button_pressed():
+func _on_Button_pressed() -> void:
 	get_tree().quit()
 
 #Handle reestarting th game
-func _on_PlayAgain_pressed():
+func _on_PlayAgain_pressed() -> void:
 	Global.game_controller.change_from_dual_scenes("res://_Stages/StartScreen/StartScreen.tscn")

@@ -1,18 +1,18 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var baseZombieButton = $"../../AllZombieRows/Row1/BaseZombie"
-@onready var coneHeadZombieButton = $"../../AllZombieRows/Row1/ConeHeadZombie"
-@onready var bucketHeadZombieButton = $"../../AllZombieRows/Row1/BucketHeadZombie"
-@onready var dancerZombieButton = $"../../AllZombieRows/Row2/DancerZombie" 
-@onready var backUpDanceerZombieButton = $"../../AllZombieRows/Row2/BackUpDancerZombie"
-@onready var tickerZombieButton = $"../../AllZombieRows/Row2/TickerZombie"
-@onready var screenDoorZombieButton = $"../../AllZombieRows/Row3/ScreenDoorZombie"
-@onready var footBallZombieButton = $"../../AllZombieRows/Row3/FootballZombie"
-@onready var poleVaultZombieButton = $"../../AllZombieRows/Row3/PoleVaultZombie"
+@onready var baseZombieButton := $"../../AllZombieRows/Row1/BaseZombie"
+@onready var coneHeadZombieButton := $"../../AllZombieRows/Row1/ConeHeadZombie"
+@onready var bucketHeadZombieButton := $"../../AllZombieRows/Row1/BucketHeadZombie"
+@onready var dancerZombieButton := $"../../AllZombieRows/Row2/DancerZombie"
+@onready var backUpDanceerZombieButton := $"../../AllZombieRows/Row2/BackUpDancerZombie"
+@onready var tickerZombieButton := $"../../AllZombieRows/Row2/TickerZombie"
+@onready var screenDoorZombieButton := $"../../AllZombieRows/Row3/ScreenDoorZombie"
+@onready var footBallZombieButton := $"../../AllZombieRows/Row3/FootballZombie"
+@onready var poleVaultZombieButton := $"../../AllZombieRows/Row3/PoleVaultZombie"
 
-@onready var currentZombieLabel = $"../../CurrentZombieLabel"
-@onready var currentZombieTitle = $"../../CurrentZombieTitle"
+@onready var currentZombieLabel := $"../../CurrentZombieLabel"
+@onready var currentZombieTitle := $"../../CurrentZombieTitle"
 
 @onready var tempFleshEaterAnimSprite := $"../../TEMPFlesheater"
 
@@ -36,7 +36,7 @@ var screenDoorZombieTitle := "Amalgams"
 var footballZombieTitle := "Flesheater"
 var poleVaultZombieTitle := "Sundered"
 
-@onready var zombieBookVisual = $"../../InteractiveBook2D"
+@onready var zombieBookVisual := $"../../InteractiveBook2D"
 var current_page := 2
 
 func _ready() -> void:
@@ -49,7 +49,7 @@ func _ready() -> void:
 	
 	# Set initial sprites if none are set
 	#if sprites == null:
-	var zombie_type = GlobalResourceLoader.ZombieType.CONEHEAD
+	var zombie_type := GlobalResourceLoader.ZombieType.CONEHEAD
 	sprites = GlobalResourceLoader.get_zombie_animation(zombie_type)
 	
 	# Initialize animation data
@@ -66,7 +66,7 @@ func _ready() -> void:
 	set_text(coneheadZombieDescription)
 	set_title(coneHeadZombieTitle)
 # Update all button textures based on current color settings
-func _update_button_textures():
+func _update_button_textures() -> void:
 	
 	# Set
 	if baseZombieButton != null:
@@ -104,17 +104,17 @@ func _update_button_textures():
 	_apply_hue_shift()
 			
 #Sets the current Zombie Description Text
-func set_text(newFile : String):
-	var file = FileAccess.open(newFile, FileAccess.READ)
-	var newText = file.get_as_text()
+func set_text(newFile: String) -> void:
+	var file := FileAccess.open(newFile, FileAccess.READ)
+	var newText := file.get_as_text()
 	file.close()
 	currentZombieLabel.text = newText
 
-func set_title(newTitle : String):
+func set_title(newTitle: String) -> void:
 	currentZombieTitle.text = newTitle
 
 func _on_base_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().visible = false
 	get_parent().position = Vector2(431,-25)
 	get_parent().show()
@@ -126,11 +126,11 @@ func _on_base_zombie_pressed() -> void:
 	play()
 	set_text(baseZombieDescription)
 	set_title(baseZombieTitle)
-	self.flip_h = true 
+	self.flip_h = true
 
 
 func _on_cone_head_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().position = Vector2(431,-25)
 	
 	current_page = current_page + 1
@@ -140,10 +140,10 @@ func _on_cone_head_zombie_pressed() -> void:
 	play()
 	set_text(coneheadZombieDescription)
 	set_title(coneHeadZombieTitle)
-	self.flip_h = true 
+	self.flip_h = true
 
 func _on_bucket_head_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().position = Vector2(431,-25)
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
@@ -153,11 +153,11 @@ func _on_bucket_head_zombie_pressed() -> void:
 	set_text(bucketHeadZombieDescription)
 	set_title(bucketHeadZombieTitle)
 	_apply_hue_shift()
-	self.flip_h = true 
+	self.flip_h = true
 
 #was 431.0
 func _on_dancer_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().position = Vector2(475,-25)
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
@@ -166,10 +166,10 @@ func _on_dancer_zombie_pressed() -> void:
 	play()
 	set_text(dancerZombieDescription)
 	set_title(dancerZombieTitle)
-	self.flip_h = true 
+	self.flip_h = true
 
 func _on_back_up_dancer_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().position = Vector2(431,-25)
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
@@ -178,11 +178,11 @@ func _on_back_up_dancer_zombie_pressed() -> void:
 	play()
 	set_text(backUpDancerZombieDescription)
 	set_title(backUpDancerZombieTitle)
-	self.flip_h = true 
+	self.flip_h = true
 
 
 func _on_ticker_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().position = Vector2(450,1)
 
 	current_page = current_page + 1
@@ -192,11 +192,11 @@ func _on_ticker_zombie_pressed() -> void:
 	play()
 	set_text(tickerZombieDescription)
 	set_title(tickerZombieTitle)
-	self.flip_h = true 
+	self.flip_h = true
 
 
 func _on_screen_door_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().position = Vector2(431,-25)
 	
 	current_page = current_page + 1
@@ -211,7 +211,7 @@ func _on_screen_door_zombie_pressed() -> void:
 
 func _on_football_zombie_pressed() -> void:
 	get_parent().position = Vector2(431,-25)
-	tempFleshEaterAnimSprite.visible = true 
+	tempFleshEaterAnimSprite.visible = true
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
 	#sprites = GlobalResourceLoader.get_zombie_animation(
@@ -224,7 +224,7 @@ func _on_football_zombie_pressed() -> void:
 
 
 func _on_pole_vault_zombie_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	get_parent().position = Vector2(431,-25)
 	
 	current_page = current_page + 1
@@ -238,9 +238,9 @@ func _on_pole_vault_zombie_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	tempFleshEaterAnimSprite.visible = false 
+	tempFleshEaterAnimSprite.visible = false
 	current_page = current_page - 1
 	zombieBookVisual.go_to_page(current_page)
-	get_parent().get_parent().visible = false 
+	get_parent().get_parent().visible = false
 	print("BBack Button Pressed")
 	Global.game_controller.restore_previous_scene()

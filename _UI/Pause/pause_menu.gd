@@ -1,13 +1,13 @@
 extends Control
 
-var level0_3 = ("res://_Stages/Level3/Level0-3.tscn")
-var level0_3Alt = ("res://_Stages/Level3/Level0-3_Alternate.tscn")
+var level0_3 := "res://_Stages/Level3/Level0-3.tscn"
+var level0_3Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
-@export var restartScene : String 
-@export  var restartSceneAlt  : String 
+@export var restartScene: String
+@export var restartSceneAlt: String
 
 
-func set_restart_levels(newLevel,newAltLevel):
+func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
 	print(newLevel,newAltLevel, "RESTART LEVELS SET")
 	restartScene = newLevel
 	restartSceneAlt = newAltLevel
@@ -15,7 +15,7 @@ func set_restart_levels(newLevel,newAltLevel):
 
 func _on_resume_pressed() -> void:
 	print("UNPPAUSE HERE")
-	get_tree().paused = false 
+	get_tree().paused = false
 
 func _on_return_to_menu_pressed() -> void:
 	# Ensure proper cleanup before changing scene
@@ -24,7 +24,7 @@ func _on_return_to_menu_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	# Add a small delay to ensure clean transition
 	await get_tree().create_timer(0.1).timeout
-	self.visible = false 
+	self.visible = false
 		#toolTips.visble = false
 	#toolTips.hide()
 	#get_parent().hide_toolTip()

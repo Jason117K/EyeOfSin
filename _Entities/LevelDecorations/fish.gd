@@ -5,5 +5,5 @@ extends Area2D
 
 func _ready() -> void:
 	if makeGreen:
-		$Swim.make_green = true 
+		$Swim.make_green = true
 		$Swim.updateAnim()

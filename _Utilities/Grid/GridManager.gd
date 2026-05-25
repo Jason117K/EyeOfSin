@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var tilemapLayer = $TileMapLayer
+@onready var tilemapLayer := $TileMapLayer
 
 # Define the grid dimensions for your game
 const GRID_COLUMNS = 24  # Adjust based on your game's design
@@ -8,16 +8,16 @@ const GRID_ROWS = 13      # Adjust based on your game's design
 
 @export var make_green := false
 
-func _ready():
+func _ready() -> void:
 	tilemapLayer._ready()
 	if make_green:
-		tilemapLayer.make_green = true 
+		tilemapLayer.make_green = true
 		tilemapLayer._setup_shader()
 
 # Function to set tiles in a given range of rows
-func set_tiles_for_rows(row_start: int, row_end: int, tile_id: int):
+func set_tiles_for_rows(row_start: int, row_end: int, tile_id: int) -> void:
 	# Use predefined grid width instead of get_used_rect()
-	var map_width = GRID_COLUMNS
+	var map_width := GRID_COLUMNS
 	
 	# Alternatively, calculate based on viewport and tile size:
 	# var tile_size = tilemapLayer.tile_set.tile_size
@@ -29,11 +29,11 @@ func set_tiles_for_rows(row_start: int, row_end: int, tile_id: int):
 	# - source_id (typically 0 for the first tileset)
 	# - atlas_coords (Vector2i for the tile coordinates in the atlas)
 	
-	var source_id = tile_id  # First tileset source
-	
+	var source_id := tile_id  # First tileset source
+
 	# Calculate atlas coordinates from tile_id
 	# Adjust this based on how your tileset is organized
-	var atlas_coords = Vector2i(0, 0)
+	var atlas_coords := Vector2i(0, 0)
 	
 	# If your tileset has multiple rows of tiles:
 	# var tileset_columns = 10  # Number of columns in your tileset
@@ -48,9 +48,9 @@ func set_tiles_for_rows(row_start: int, row_end: int, tile_id: int):
 			tilemapLayer.set_cell(Vector2i(x, y), source_id, atlas_coords)
 
 # Alternative function that takes explicit grid dimensions
-func set_tiles_for_rows_with_width(row_start: int, row_end: int, tile_id: int, grid_width: int):
-	var source_id = 0
-	var atlas_coords = Vector2i(tile_id, 0)
+func set_tiles_for_rows_with_width(row_start: int, row_end: int, tile_id: int, grid_width: int) -> void:
+	var source_id := 0
+	var atlas_coords := Vector2i(tile_id, 0)
 	
 	for y in range(row_start, row_end):
 		for x in range(grid_width):

@@ -2,8 +2,8 @@ extends Demon
 #Wyrm.gd
 
 # --- Exports: Health Buff Values ---
-@export var spinalOcculumBuffed_health = 650
-@export var mawBuffed_health = 350
+@export var spinalOcculumBuffed_health := 650
+@export var mawBuffed_health := 350
 
 # --- Exports: Projectile ---
 @export var projectile_cooldown: float = 3
@@ -26,47 +26,47 @@ extends Demon
 @export var blood_buff_cooldown: float = 0.9
 
 # --- Exports: Animation ---
-@export var bob_speed = 2.0
-@export var bob_height = 30.0
-@export var squash_amount = 0.3
-@export var stretch_amount = 0.3
-@export var bounce_elasticity = 0.3
-@export var animation_exaggeration = 1.0
+@export var bob_speed := 2.0
+@export var bob_height := 30.0
+@export var squash_amount := 0.3
+@export var stretch_amount := 0.3
+@export var bounce_elasticity := 0.3
+@export var animation_exaggeration := 1.0
 
 # --- Exports: Sprite Path ---
 @export var sprite_path: NodePath
 
 # --- Component References ---
 @onready var sprite = get_node(sprite_path) if sprite_path else null
-@onready var laserShootComp1 = $Worm1/LaserShootComponent
-@onready var laserShootComp2 = $Worm2/LaserShootComponent
+@onready var laserShootComp1 := $Worm1/LaserShootComponent
+@onready var laserShootComp2 := $Worm2/LaserShootComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
-@onready var attack_ray = $DMG_RayCast2D
-@onready var shootTimer = $ShootTimer
-@onready var shell_sprite = $Egg
+@onready var attack_ray := $DMG_RayCast2D
+@onready var shootTimer := $ShootTimer
+@onready var shell_sprite := $Egg
 
 # --- State ---
 var isCrawlerBuffed := false
 var isSpineBuffed := false
 var isOcculumBuffed := false
-var spawnAnimDone = false
+var spawnAnimDone := false
 
 # Animation state
-var time = 0.0
-var current_squash = 0.0
-var current_stretch = 0.0
-var target_squash = 0.0
-var target_stretch = 0.0
-var velocity = 0.0
-var prev_y = 0.0
+var time := 0.0
+var current_squash := 0.0
+var current_stretch := 0.0
+var target_squash := 0.0
+var target_stretch := 0.0
+var velocity := 0.0
+var prev_y := 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2
-var bufferName : String
+var bufferName: String
 
 
 # --- Lifecycle ---
 
-func _ready():
+func _ready() -> void:
 	super()
 	set_process(true)  # Bob animation requires per-frame updates
 	# --- Demon-specific collision ---
@@ -80,7 +80,7 @@ func _ready():
 	# --- Timer config ---
 	shootTimer.wait_time = laser_cooldown
 
-func _init_demon_collision():
+func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):
 		$DMG_RayCast2D.set_collision_mask_value(1, false)
 		$DMG_RayCast2D.set_collision_mask_value(2, false)
@@ -96,23 +96,23 @@ func _init_demon_collision():
 
 # --- Getters ---
 
-func get_demon_true_name():
+func get_demon_true_name() -> String:
 	return "Wyrm"
 
-func get_demon_name():
+func get_demon_name() -> String:
 	return "WYRM"
 
-func get_damage():
+func get_damage() -> int:
 	return projectile_shoot_component.projectile_damage
 
-func get_cost():
+func get_cost() -> int:
 	return cost
 
 
 # --- Buff System ---
 
-func receive_buff(demon):
-	var demonName = (demon.get_demon_true_name())
+func receive_buff(demon) -> void:
+	var demonName := (demon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		match demonName:
@@ -141,7 +141,7 @@ func receive_buff(demon):
 				$Worm1.z_index = 2
 				projectile_shoot_component.mawBuffed = true
 
-func debuff():
+func debuff() -> void:
 	if("Crawler" in bufferName):
 		laserShootComp2.extension_speed = laserShootComp2.ogExtension_Speed
 		laserShootComp2.max_length = laserShootComp2.ogMax_Length
@@ -152,32 +152,32 @@ func debuff():
 
 # --- Death ---
 
-func _cleanup():
+func _cleanup() -> void:
 	# No extra cleanup beyond base buffNodes
 	super()
 
 
 # --- Damage ---
 
-func take_damage(damage):
+func take_damage(damage: float) -> void:
 	healthComp.take_damage(damage)
 
 
 # --- Animation (_process) ---
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if not sprite:
 		return
 
 	time += delta * bob_speed
 
 	# Calculate smooth up/down motion with slight ease-in/out
-	var raw_bob = sin(time)
-	var smoothed_bob = sign(raw_bob) * pow(abs(raw_bob), 0.7)
-	var y_offset = smoothed_bob * bob_height * animation_exaggeration
+	var raw_bob := sin(time)
+	var smoothed_bob := sign(raw_bob) * pow(abs(raw_bob), 0.7)
+	var y_offset := smoothed_bob * bob_height * animation_exaggeration
 
 	# Calculate velocity for squash/stretch
-	var new_velocity = (y_offset - prev_y) / delta
+	var new_velocity := (y_offset - prev_y) / delta
 	velocity = lerp(velocity, new_velocity, 0.5)
 	prev_y = y_offset
 

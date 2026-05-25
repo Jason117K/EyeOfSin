@@ -30,12 +30,12 @@ var _all_spawning_done: bool = false
 
 var elapsed_time_preview_on_screen
 
-func _ready():
+func _ready() -> void:
 	Global.register_wave_manager(self)
 	call_deferred("_setup")
 
 
-func _setup():
+func _setup() -> void:
 	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
 
@@ -43,7 +43,7 @@ func _setup():
 
 	_wave_previews = []
 	for spawner in _spawners:
-		var preview = spawner.get_wave_preview()
+		var preview := spawner.get_wave_preview()
 		if preview != null:
 			_wave_previews.append(preview)
 			preview.game_start_requested.connect(_on_game_start_requested)
@@ -89,7 +89,7 @@ func _on_game_start_requested() -> void:
 		return
 	_start_wave(0)
 
-func _on_call_early_wave_requested():
+func _on_call_early_wave_requested() -> void:
 	#print("Requested Early Wave, current wave is ",_current_wave )
 	#_start_wave(_current_wave + 1)
 	if (_current_wave + 1) < wave_delays.size():

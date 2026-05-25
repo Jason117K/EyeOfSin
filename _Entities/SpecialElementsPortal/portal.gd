@@ -35,13 +35,13 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_area_exited(area: Area2D) -> void:
 	pass # Replace with function body.
 
-func get_cost():
-	return 0 
+func get_cost() -> int:
+	return 0
 
 
 func _on_lightning_spawn_animation_finished() -> void:
 	$LightningSpawn.hide()
-	
-	
-func finish_spawn():
+
+
+func finish_spawn() -> void:
 	pass

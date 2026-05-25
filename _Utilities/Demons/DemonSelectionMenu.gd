@@ -3,44 +3,44 @@ extends Control
 
 @export var is_alt := false
 var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
-var swap_ability_instance : Node
+var swap_ability_instance: Node
 
 var root
-var selected_demon = occulum_scene  # Holds the currently selected demon scene
+var selected_demon := occulum_scene  # Holds the currently selected demon scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
 
 var preview_sprites: Array = [] # Holds array of preview sprites 
 var is_previewing: bool = false # Whether or not we are currently previewing 
-var canRemove := false 
-var purple_scene := true 
+var canRemove := false
+var purple_scene := true
 
 signal clicked_Eye
 signal codex_clicked
 
 
 # Preload the demon scenes
-var crawler_scene = preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
+var crawler_scene := preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
 var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
-var spinalOcculum_scene = preload("res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn")
-var maw_scene = preload("res://_Entities/Demons/_Maw/Maw.tscn")
-var wyrm_scene = preload("res://_Entities/Demons/_Wyrm/Wyrm.tscn")
-var hive_scene = preload("res://_Entities/Demons/_Hive/Hive.tscn")
-var heart_scene = preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
-var portal_scene = preload("res://_Entities/SpecialElementsPortal/Portal.tscn")
-var green_portal_icon = preload("res://_Assets/UI/DemonCard_Portal_GreenButton.png")
-var purple_portal_icon = preload("res://_Assets/UI/DemonCard_Portal.png")
+var spinalOcculum_scene := preload("res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn")
+var maw_scene := preload("res://_Entities/Demons/_Maw/Maw.tscn")
+var wyrm_scene := preload("res://_Entities/Demons/_Wyrm/Wyrm.tscn")
+var hive_scene := preload("res://_Entities/Demons/_Hive/Hive.tscn")
+var heart_scene := preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
+var portal_scene := preload("res://_Entities/SpecialElementsPortal/Portal.tscn")
+var green_portal_icon := preload("res://_Assets/UI/DemonCard_Portal_GreenButton.png")
+var purple_portal_icon := preload("res://_Assets/UI/DemonCard_Portal.png")
 
-var demon_normal_stylebox_default = preload("res://_Common/StyleBoxes/demon_normal_button.tres")
-var demon_highlight_stylebox = preload("res://_Common/StyleBoxes/demon_highlight_stylebox.tres")
+var demon_normal_stylebox_default := preload("res://_Common/StyleBoxes/demon_normal_button.tres")
+var demon_highlight_stylebox := preload("res://_Common/StyleBoxes/demon_highlight_stylebox.tres")
 
 
 # Label for Current Demon 
 var currentDemonLabel
 var currentDemonCost
-var deselectText = " PRESS [X] TO DESELECT"
+var deselectText := " PRESS [X] TO DESELECT"
 
-@onready var preview_container = Node2D.new()
-@onready var panelContainer = $PanelContainer
+@onready var preview_container := Node2D.new()
+@onready var panelContainer := $PanelContainer
 @onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 @onready var swapButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
 @onready var removeDemonButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton
@@ -48,15 +48,15 @@ var deselectText = " PRESS [X] TO DESELECT"
 @onready var fastForwardButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton
 @onready var all_extra_buttons := [fastForwardButton,swapButton,removeDemonButton, codexButton]
 
-@onready var OcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
-@onready var SpinalOcculumButton = $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
-@onready var  WyrmButton = $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton
-@onready var  MawButton = $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton
-@onready var HiveButton = $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
-@onready var  CrawlerButton = $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton
+@onready var OcculumButton := $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
+@onready var SpinalOcculumButton := $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
+@onready var WyrmButton := $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton
+@onready var MawButton := $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton
+@onready var HiveButton := $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
+@onready var CrawlerButton := $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton
 @onready var HeartButton := $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 
-@onready var all_demon_buttons = [OcculumButton,SpinalOcculumButton,
+@onready var all_demon_buttons := [OcculumButton,SpinalOcculumButton,
 							WyrmButton,MawButton,HiveButton,
 							CrawlerButton]
 
@@ -70,7 +70,7 @@ var deselectText = " PRESS [X] TO DESELECT"
 
 @onready var OcculumCost := 50
 
-var canSwapScenes = false
+var canSwapScenes := false
 
 # Thickness of the highlight border (in pixels)
 @export var highlight_border_thickness: int = 4
@@ -78,9 +78,9 @@ var canSwapScenes = false
 # Color of the highlight border
 @export var highlight_border_color: Color = Color.RED
 
-var doubleSpeed = false 
+var doubleSpeed := false
 
-func _ready():
+func _ready() -> void:
 	add_child(preview_container)
 	#Future Swap Ability Code
 	#swap_ability_instance = swap_ability.instantiate()
@@ -128,8 +128,8 @@ func _ready():
 	
 
 # Handle Deselection
-func _input(event):
-	
+func _input(event) -> void:
+
 	if event is InputEventKey and event.pressed:
 		#print("Key Pressed")
 		if event.keycode == KEY_X:
@@ -159,24 +159,24 @@ func _input(event):
 			print("6 Key Pressed")
 			_on_HiveButton_pressed()			
 
-func setPanelContainerWidth(_newWidth: int)->void:
+func setPanelContainerWidth(_newWidth: int) -> void:
 	#print("Panel Container Dimensions is ", panelContainer.size)
 	panelContainer.size.x = 71
 	#print("Panel Container Dimensions is ", panelContainer.size)
 
 		
-func deselect_demon()->void:
+func deselect_demon() -> void:
 	#print("Clearing Preview Because of Deselect")
 	clear_preview()
 	release_all_focus()
 	selected_demon = null 			
 	setCanRemoveFalse()
 	
-func on_demon_button_pressed(demon_scene,demon_button,demon_label):
+func on_demon_button_pressed(demon_scene, demon_button, demon_label) -> void:
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
 	selected_demon = demon_scene
-	var temp_instance = demon_scene.instantiate()
+	var temp_instance := demon_scene.instantiate()
 	create_preview(demon_scene)
 	add_button_highlight(demon_button)
 	temp_instance.queue_free()
@@ -184,45 +184,45 @@ func on_demon_button_pressed(demon_scene,demon_button,demon_label):
 	currentDemonCost = demon_label
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)	
 
-func _on_CrawlerButton_pressed():
+func _on_CrawlerButton_pressed() -> void:
 	on_demon_button_pressed(crawler_scene,CrawlerButton,crawlerCostLabel)
 
 
-func _on_OcculumButton_pressed():
+func _on_OcculumButton_pressed() -> void:
 	on_demon_button_pressed(occulum_scene,OcculumButton,OcculumCostLabel)
 	OcculumCost  += 5
 	clicked_Eye.emit()
 	
-func increaseOcculumCost():
+func increaseOcculumCost() -> void:
 	OcculumCostLabel.text = str(50+(Global.getOcculumCount()*5))
 
 
-func _on_SpinalOcculumButton_pressed():
+func _on_SpinalOcculumButton_pressed() -> void:
 	on_demon_button_pressed(spinalOcculum_scene,SpinalOcculumButton,SpinalOcculumCostLabel)
 
 
-func _on_MawButton_pressed():
+func _on_MawButton_pressed() -> void:
 	on_demon_button_pressed(maw_scene,MawButton,mawCostLabel)
 
 
-func _on_WyrmButton_pressed():
+func _on_WyrmButton_pressed() -> void:
 	on_demon_button_pressed(wyrm_scene,WyrmButton,wyrmCostLabel)
 
 
-func _on_HiveButton_pressed():
+func _on_HiveButton_pressed() -> void:
 	on_demon_button_pressed(hive_scene,HiveButton,hiveCostLabel)
 
 
-func create_preview(demon_scene):
+func create_preview(demon_scene) -> void:
 	#print("MAKE A PREVIEW", demon_scene)
-	# Clear the last preview 
+	# Clear the last preview
 	#print("Clearing Preview Because of Create Preview")
 	clear_preview()
-	
+
 	Global.show_guide()
-	
-	var temp_demon = demon_scene.instantiate()
-	var preview_node = find_preview_nodes(temp_demon)
+
+	var temp_demon := demon_scene.instantiate()
+	var preview_node := find_preview_nodes(temp_demon)
 	
 	if preview_node:
 		#print("Found Preview Node : ", preview_node)
@@ -230,7 +230,7 @@ func create_preview(demon_scene):
 		for child in preview_node.get_children():
 			#print("Preview Node Child is ", child)
 			# Create the preview sprite and make it semi-transparent 
-			var preview_sprite = child.duplicate()
+			var preview_sprite := child.duplicate()
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
 			preview_sprite.scale = Vector2(1.25,1.25)
 			preview_sprite.z_index = 100
@@ -238,7 +238,7 @@ func create_preview(demon_scene):
 				preview_sprite.play()
 			
 			# Store original position and print it
-			var original_pos = Vector2(child.position.x, child.position.y)
+			var original_pos := Vector2(child.position.x, child.position.y)
 			preview_sprite.set_meta("original_offset", original_pos)
 			
 			# Add the preview sprite to the container and array 
@@ -248,7 +248,7 @@ func create_preview(demon_scene):
 	temp_demon.queue_free()
 	
 # Clears the current preview image 
-func clear_preview():
+func clear_preview() -> void:
 	#print("Clear BUTTON PReview")
 	Global.clear_guide()
 	for sprite in preview_sprites:
@@ -262,7 +262,7 @@ func clear_preview():
 	#currentDemonLabel.text = ""
 	is_previewing = false
 
-func release_all_focus():
+func release_all_focus() -> void:
 		
 	OcculumButton.release_focus()
 	SpinalOcculumButton.release_focus()
@@ -280,12 +280,12 @@ func find_preview_nodes(node):
 		return node
 	
 	for child in node.get_children():
-		var result = find_preview_nodes(child)
+		var result := find_preview_nodes(child)
 		if result:
 			return result
 	return null
-	
-	
+
+
 func find_preview_sprite(node):
 	# Recursively search for AnimatedSprite node
 	if node is AnimatedSprite2D:
@@ -295,13 +295,13 @@ func find_preview_sprite(node):
 	return null
 	
 # Drags the preview sprite around with the cursor 
-func _process(_delta):
+func _process(_delta) -> void:
 	if is_previewing and not preview_sprites.is_empty():
-		var base_pos = get_global_mouse_position()
+		var base_pos := get_global_mouse_position()
 
 		for sprite in preview_sprites:
 			if sprite and sprite.has_meta("original_offset"):
-				var offset = sprite.get_meta("original_offset") as Vector2
+				var offset := sprite.get_meta("original_offset") as Vector2
 				sprite.global_position = base_pos + offset
 
 func find_animated_sprite(node):
@@ -310,7 +310,7 @@ func find_animated_sprite(node):
 		return node
 	
 	for child in node.get_children():
-		var result = find_animated_sprite(child)
+		var result := find_animated_sprite(child)
 		if result:
 			return result
 	return null
@@ -451,13 +451,13 @@ func remove_button_highlight(button: TextureButton) -> void:
 
 
 func _on_demon_manager_demon_placed() -> void:
-	CrawlerButton.visible = true 
-	crawlerCostLabel.visible = true 
+	CrawlerButton.visible = true
+	crawlerCostLabel.visible = true
 	#add_button_highlight(CrawlerButton)
 
-func showEyeSummon():
-	OcculumButton.visible = true 
-	OcculumCostLabel.visible = true 
+func showEyeSummon() -> void:
+	OcculumButton.visible = true
+	OcculumCostLabel.visible = true
 
 		
 
@@ -466,13 +466,13 @@ func _on_remove_demon_button_pressed() -> void:
 		print("Clear Guide Because Remove Demon Button Pressed")
 		clear_preview()
 		
-		selected_demon = null 
-		canRemove = true 
-		
-func setCanRemoveFalse():
-	canRemove = false 
-	
-func getCanRemove():
+		selected_demon = null
+		canRemove = true
+
+func setCanRemoveFalse() -> void:
+	canRemove = false
+
+func getCanRemove() -> bool:
 	return canRemove
 	
 
@@ -510,16 +510,16 @@ func _on_fast_forward_pressed() -> void:
 		doubleSpeed = false
 	else:
 		Engine.time_scale = 1
-		doubleSpeed = true 
+		doubleSpeed = true
 
 
 func _on_heart_button_pressed() -> void:
 	Global.hide_notification_bar()
 	if Global.hero_demon_is_summoned():
-		return 
-	
+		return
+
 	selected_demon = heart_scene
-	var temp_instance = heart_scene.instantiate()
+	var temp_instance := heart_scene.instantiate()
 	create_preview(heart_scene)
 	setCanRemoveFalse()
 	#currentDemonLabel.text = "HEART DEMON SELECTED " + deselectText
@@ -546,7 +546,7 @@ func _on_portal_button_pressed() -> void:
 			return
 		
 	selected_demon = portal_scene
-	var temp_instance = portal_scene.instantiate()
+	var temp_instance := portal_scene.instantiate()
 	create_preview(portal_scene)
 	setCanRemoveFalse()
 	currentDemonCost = 0
@@ -557,15 +557,15 @@ func _on_portal_button_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	
 	
-func swap_portal_button():
+func swap_portal_button() -> void:
 	if purple_scene:
 		portalButton.texture_normal = purple_portal_icon#green_portal_icon
 		purple_scene = false
-		return 
+		return
 	else:
 		portalButton.texture_normal = green_portal_icon #purple_portal_icon
-		purple_scene = true 
-		return 
+		purple_scene = true
+		return
 		
 func get_crawler_button():
 	return CrawlerButton

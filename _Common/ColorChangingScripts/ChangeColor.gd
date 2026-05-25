@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
-@export var target_color : Color 
-@export var replace_color : Color 
+@export var target_color: Color
+@export var replace_color: Color
 @export var tolerance := 0.1
 var thisMaterial
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
 		pass
 
-func change_color():
+func change_color() -> void:
 	if thisMaterial:
 		#print("Made h")
 		thisMaterial.set_shader_parameter("target_color", target_color) #Color("#272727"))

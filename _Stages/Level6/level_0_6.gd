@@ -2,14 +2,14 @@ extends LevelTemplate
 # level_0_6.gd - Level 0-6 Controller (no forced demon tutorial, just zombie explanation)
 
 # Preloaded demo scenes
-var amalgam_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
+var amalgam_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
 # Level paths
 var thisLevel := "res://_Stages/Level6/Level0-6.tscn"
 var thisAltLevel := "res://_Stages/Level6/Level0-6_Alternate.tscn"
 
-var endScreen = "res://_Stages/EndScreen/EndScreen.tscn"
-var endScreenAlt = "res://_Stages/EndScreen/EndScreen.tscn"
+var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
+var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
 
 # Text file paths
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
@@ -22,14 +22,14 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
-@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 var gameStarted := false
 
 
 #region Tutorial Step Definitions
-func _setup_tutorial():
+func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
 			"name": "GAME_READY",
@@ -49,7 +49,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		print_scene_tree(child, indent + 1)
 		
 #region Lifecycle
-func _ready():
+func _ready() -> void:
 	super()
 	#print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
@@ -79,7 +79,7 @@ func _ready():
 	#finish_ready()
 
 #TODO Re-Implement Rohan 
-func _configure_waves()->void:
+func _configure_waves() -> void:
 	pass
 	zombie_spawner_1.set_waves_from_dicts([{"Amalgam": 1, "Erupter": 3, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Flesheater": 2, "Reanimator": 1, "Reborn": 11, "Severed": 5, "Unhallower": 3}, {"Erupter": 3, "Flesheater": 3, "Reborn": 8, "Severed": 7, "Sundered": 4, "Unhallower": 5}])
 	zombie_spawner_2.set_waves_from_dicts([{"Erupter": 2, "Flesheater": 1, "Reanimator": 1, "Reborn": 1, "Severed": 3, "Unhallower": 4}, {"Erupter": 3, "Flesheater": 1, "Severed": 1, "Unhallower": 6}, {"Flesheater": 5, "Reborn": 10, "Severed": 3, "Unhallower": 6}])
@@ -90,7 +90,7 @@ func _configure_waves()->void:
 	zombie_spawner_7.set_waves_from_dicts([{"Amalgam": 1, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Amalgam": 4, "Reborn": 8, "Severed": 1, "Sundered": 3}, {"Erupter": 1, "Reborn": 18, "Severed": 7, "Unhallower": 6}])
 
 
-func finish_ready():
+func finish_ready() -> void:
 	Global.show_pip()
 	_setup_tutorial()
 	go_to_step("GAME_READY")
@@ -107,11 +107,11 @@ func getIsPurpleDimension():
 
 
 #region Step Entry Functions
-func _start_game_ready():
+func _start_game_ready() -> void:
 	_show_all_buttons()
 
 
-func start_game():
+func start_game() -> void:
 	demonSelectionMenu.canSwapScenes = true
 	for node in get_parent().get_children():
 		if node.has_method("getIsGreenDimension"):
@@ -125,14 +125,14 @@ func start_game():
 	gameStarted = true
 
 
-func _start_explain_amalgam_zombie():
+func _start_explain_amalgam_zombie() -> void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_AMALGAM)
 	toolTips.set_visual_tutorial_visual(amalgam_zombie_demo_scene.instantiate())
 #endregion
 
 
 #region Signal Handlers
-func _on_tooltip_hidden():
+func _on_tooltip_hidden() -> void:
 	hide_spotlight()
 
 	match get_current_step_name():
@@ -140,31 +140,31 @@ func _on_tooltip_hidden():
 			get_tree().paused = false
 
 
-func _on_wave_started(wave_index: int):
+func _on_wave_started(wave_index: int) -> void:
 	if wave_index == 0:
 		go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion
 
 
 #region UI Helpers
-func setup_demon_selection_menu():
+func setup_demon_selection_menu() -> void:
 	show_all_demon_buttons()
-	
-	world_swap_button.visible = true 
-	codex_button.visible = true 
+
+	world_swap_button.visible = true
+	codex_button.visible = true
 
 
-func _show_all_buttons():
+func _show_all_buttons() -> void:
 	for container_name in ALL_DEMON_CONTAINERS:
 		if container_name == "Hive":
 			continue
-		var container = hbox.get_node(container_name)
+		var container := hbox.get_node(container_name)
 		container.visible = true
 		for child in container.get_children():
 			pass
 			#child.visible = true
 
 
-func show_guide():
+func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 #endregion

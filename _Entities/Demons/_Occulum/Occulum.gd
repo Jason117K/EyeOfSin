@@ -2,7 +2,7 @@ extends Demon
 #Occulum.gd
 
 # --- Exports ---
-@onready var madeTutorialBlood = false
+@onready var madeTutorialBlood := false
 @export var bloodWaitTime := 30.0
 @export var wyrmBloodWaitTime := 50.0
 @export var hiveBloodWaitTime := 17.0
@@ -10,21 +10,21 @@ extends Demon
 @export var heal_interval_wait_time := 2
 @export var hive_burst_heal_amount := 50
 @export var spinal_occulum_heal_over_time_amount := 5
-@export var maw_health = 500
+@export var maw_health := 500
 
 # --- Preloads ---
-var BloodScene = preload("res://_Entities/Demons/Blood/Blood.tscn")
+var BloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 
 # --- State ---
-var spawnAnimDone = false
+var spawnAnimDone := false
 var tween
-var highlight_active = false
+var highlight_active := false
 var highlight_material = null
 var original_material = null
-var demons_to_heal = []
-var max_alpha = 0.2
-var lerp_duration = 2.5
-var can_eat_zombie = false
+var demons_to_heal: Array = []
+var max_alpha := 0.2
+var lerp_duration := 2.5
+var can_eat_zombie := false
 var num_healing_zone_sprite_plays := 4
 var max_num_healing_zone_sprite_plays := 5
 var is_demo := false
@@ -34,22 +34,22 @@ var max_num_blood_plays := 3
 var demo_fast_wait_time := 3.0
 
 # --- Component References ---
-@onready var bloodTimer = $BloodTimer
-@onready var resetEatingTimer = $ResetEatingSpeed
-#@onready var healInvisTimer = $HealInvisTimer
-@onready var healing_zone_sprite = $HealingAnimSprite
+@onready var bloodTimer := $BloodTimer
+@onready var resetEatingTimer := $ResetEatingSpeed
+#@onready var healInvisTimer := $HealInvisTimer
+@onready var healing_zone_sprite := $HealingAnimSprite
 @onready var healZone := $HealZone
-@onready var webbing_aoe_sprite = $Webs
+@onready var webbing_aoe_sprite := $Webs
 @onready var tentacle := $Tentacle1
-@onready var eat_zombie_blood_fx = [$BloodHit, $BloodHit2]
+@onready var eat_zombie_blood_fx := [$BloodHit, $BloodHit2]
 @onready var blood_hit_1 := $BloodHit
 
-var healTimer : Timer
+var healTimer: Timer
 
 
 # --- Lifecycle ---
 
-func _ready()->void:
+func _ready() -> void:
 	super()
 	# --- Timer setup ---
 	bloodTimer.wait_time = bloodWaitTime
@@ -60,24 +60,24 @@ func _ready()->void:
 
 # --- Getters ---
 
-func get_demon_true_name():
+func get_demon_true_name() -> String:
 	return "Occulum"
 
-func get_demon_name():
+func get_demon_name() -> String:
 	return "OCCULUM"
 
-func get_damage():
+func get_damage() -> String:
 	return "NONE"
 
-func get_cost():
+func get_cost() -> int:
 	cost = cost + (5 * Global.getOcculumCount())
 	return cost
 
 
 # --- Buff System ---
 
-func receive_buff(newDemon):
-	var demonName = (newDemon.get_demon_true_name())
+func receive_buff(newDemon) -> void:
+	var demonName := (newDemon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
 		match demonName:
@@ -99,33 +99,33 @@ func receive_buff(newDemon):
 		if is_demo && !is_demo_blood_spawn:
 			demo_blood_pickup()
 
-func debuff():
+func debuff() -> void:
 	super()
 
 
 # --- Death ---
 
-func _cleanup():
+func _cleanup() -> void:
 	# No extra cleanup beyond base buffNodes
 	super()
 
 
 # --- Highlight ---
 
-func toggle_highlight():
+func toggle_highlight() -> void:
 	highlight_active = !highlight_active
 	if highlight_active:
 		animSpriteComp.material = highlight_material
 	else:
 		animSpriteComp.material = original_material
 
-func highlight():
+func highlight() -> void:
 	print("Highlight Here")
 
 
 # --- Blood Generation ---
 
-func _on_BloodTimer_timeout():
+func _on_BloodTimer_timeout() -> void:
 	generate_blood()
 	bloodTimer.start()
 
@@ -143,7 +143,7 @@ func generate_blood() -> Node2D:
 	if mawBuff:
 		can_eat_zombie = true
 
-	var blood_instance = BloodScene.instantiate()
+	var blood_instance := BloodScene.instantiate()
 	if wyrmBuff:
 		blood_instance.wyrm_buff()
 	if hiveBuff:
@@ -165,7 +165,7 @@ func generate_blood() -> Node2D:
 	return blood_instance
 
 func generate_blood_alt() -> Node2D:
-	var blood_instance = BloodScene.instantiate()
+	var blood_instance := BloodScene.instantiate()
 	get_parent().add_child(blood_instance)
 	blood_instance.global_position = self.global_position + Vector2(0, -40)
 	return blood_instance
@@ -173,7 +173,7 @@ func generate_blood_alt() -> Node2D:
 
 # --- Healing (SpinalOcculum Buff) ---
 
-func set_up_healing():
+func set_up_healing() -> void:
 	healTimer = Timer.new()
 	healTimer.wait_time = heal_interval_wait_time
 	healTimer.timeout.connect(_on_heal_timer_timeout)
@@ -196,7 +196,7 @@ func _on_heal_timer_timeout() -> void:
 			if demon != self:
 				demon.increase_health(spinal_occulum_heal_over_time_amount)
 
-func burst_heal():
+func burst_heal() -> void:
 	pass
 	healing_zone_sprite.show()
 	healing_zone_sprite.play()
@@ -205,10 +205,10 @@ func burst_heal():
 		if demon != null:
 			demon.increase_health(hive_burst_heal_amount)
 
-func finish_burst():
+func finish_burst() -> void:
 	healing_zone_sprite.hide()
 
-func start_alpha_pulse():
+func start_alpha_pulse() -> void:
 	$HealZone.modulate.a = 0.0
 	tween = create_tween().set_loops()
 	tween.tween_property($HealZone, "modulate:a", max_alpha, lerp_duration).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
@@ -217,13 +217,13 @@ func start_alpha_pulse():
 func _on_healing_anim_sprite_animation_finished() -> void:
 	pass
 
-func get_demon_icon()->CompressedTexture2D:
+func get_demon_icon() -> CompressedTexture2D:
 	return Global.occulum_icon
-	
-func get_special_description()->String:
+
+func get_special_description() -> String:
 	return Global.occulum_special_description
-	
-	
+
+
 # --- Slow Field ---
 
 func _on_slow_field_area_entered(area: Area2D) -> void:
@@ -237,15 +237,15 @@ func _on_slow_field_body_entered(body: Node2D) -> void:
 
 # --- Eat Zombie (Maw Buff) ---
 
-func eat_zombie(zombie_to_eat):
+func eat_zombie(zombie_to_eat: Area2D) -> void:
 	animSpriteComp.speed_scale = 4
 	resetEatingTimer.start()
 	can_eat_zombie = false
 
-func assign_tentacle_to_target(target):
+func assign_tentacle_to_target(target: Node2D) -> void:
 	tentacle.attack(target, true)
 
-func hide_tentacle():
+func hide_tentacle() -> void:
 	tentacle.hide()
 
 func _on_reset_eating_speed_timeout() -> void:
@@ -255,7 +255,7 @@ func _on_reset_eating_speed_timeout() -> void:
 		effect.show()
 		effect.play()
 
-func zombie_gore_fx():
+func zombie_gore_fx() -> void:
 	num_blood_plays += 1
 	if num_blood_plays <= max_num_blood_plays:
 		pass
@@ -276,7 +276,7 @@ func _on_mouse_exited() -> void:
 
 # --- Position Adjustment ---
 
-func adjust_position(new_form):
+func adjust_position(new_form: String) -> void:
 	match new_form:
 		"Occulum":
 			pass
@@ -296,7 +296,7 @@ func adjust_position(new_form):
 
 func truncate_string(input_string: String) -> String:
 	for i in range(input_string.length()):
-		var character = input_string[i]
+		var character := input_string[i]
 		if character.is_valid_int():
 			return input_string.substr(0, i)
 	return input_string
@@ -304,7 +304,7 @@ func truncate_string(input_string: String) -> String:
 
 # --- Demo ---
 
-func demo_blood_pickup():
+func demo_blood_pickup() -> void:
 	is_demo = true
 	if isBuffed && mawBuff == false:
 		is_demo_blood_spawn = true

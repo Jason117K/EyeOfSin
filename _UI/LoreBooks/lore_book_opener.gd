@@ -17,7 +17,7 @@ func _on_zombie_codex_button_pressed() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	self.visible = false 
+	self.visible = false
 	print("BBack Button Pressed")
 	Global.unHideDemonSelectionMenu()
 	Global.game_controller.restore_dual_scenes()

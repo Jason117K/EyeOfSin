@@ -4,20 +4,20 @@ extends Node2D
 
 class_name AttackComponent
 
-var attack_power : float
-var is_attacking = false  # Whether or not we attacking
+var attack_power: float
+var is_attacking := false  # Whether or not we attacking
 var target_demon = null  # Holds reference to the demon being attacked
-var canSpecial = true # Determines whether or not a special move can be performed
+var canSpecial := true # Determines whether or not a special move can be performed
 var _frame_counter: int = 0
 var base_anim_duration: float
-var attack_starting_pos : Vector2 
+var attack_starting_pos: Vector2
 
-@onready var attack_ray = $"../DMGRayCast2D" # Raycast to detect demons in front of the zombie
-@onready var zombieSprite : AnimatedSprite2D = $"../AnimatedSprite2D" # RefCounted to sprite comp 
-@onready var attack_timer = $"../AttackTimer" # Adjustable timer to control attack speed
-#@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio 
-@onready var parent = get_parent() # Parent Zombie Attacking 
-@onready var zombie = 	get_parent()
+@onready var attack_ray := $"../DMGRayCast2D" # Raycast to detect demons in front of the zombie
+@onready var zombieSprite: AnimatedSprite2D = $"../AnimatedSprite2D" # RefCounted to sprite comp
+@onready var attack_timer := $"../AttackTimer" # Adjustable timer to control attack speed
+#@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio
+@onready var parent := get_parent() # Parent Zombie Attacking
+@onready var zombie := get_parent()
 var my_level: Node
 
 func _ready() -> void:
@@ -38,23 +38,20 @@ func _ready() -> void:
 	# Compute base animation duration and set timer for first hit
 	base_anim_duration = zombieSprite.sprite_frames.get_frame_count("Attack") / zombieSprite.sprite_frames.get_animation_speed("Attack")
 	attack_timer.one_shot = true
-	var safe_speed = max(parent.attack_speed, 0.01)
+	var safe_speed := max(parent.attack_speed, 0.01)
 	attack_timer.wait_time = base_anim_duration * parent.attack_damage_point / safe_speed
 	set_process(false)
 
-func silence():
+func silence() -> void:
 	attack_power = attack_power/2
-	
-	
-		
-	
-# Attack State Getter 
-func getAttackState():
+
+
+# Attack State Getter
+func getAttackState() -> bool:
 	return is_attacking
 
 # Sets is_attacking to true and plays the audio will also starting the attack cooldown timer
-func attack_demon(collider):
-
+func attack_demon(collider) -> void:
 	if collider.is_in_group("Drone"):
 		if collider.get_is_in_combat() == true:
 			if collider.get_enemy_combatant() != self:
@@ -89,11 +86,11 @@ func attack_demon(collider):
 		#parent.queue_free()
 
 # Damages the target demon and decides whether or not to keep attacking
-func _on_AttackTimer_timeout():
+func _on_AttackTimer_timeout() -> void:
 	#print(global_position, " Attack Demon Again ",attack_starting_pos)
 	if abs(attack_starting_pos.x - global_position.x) > 2:
 		stop_attack()
-		return 
+		return
 	#print("Basic Zombie Attack Timer Timeout")
 		#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent.name:
@@ -125,7 +122,7 @@ func _on_AttackTimer_timeout():
 				#print(attack_power ," Calling Take Damage on ", target_demon)
 				target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
-				var safe_speed = max(parent.attack_speed, 0.01)
+				var safe_speed := max(parent.attack_speed, 0.01)
 				attack_timer.wait_time = base_anim_duration / safe_speed
 				attack_timer.start()
 			else:
@@ -136,21 +133,21 @@ func _on_AttackTimer_timeout():
 		stop_attack()
 
 # Stops the attack and resumes movement
-func stop_attack():
+func stop_attack() -> void:
 	#print("Stopping Attack no damage")
 	is_attacking = false
 	target_demon = null
 	attack_timer.stop()
 	zombieSprite.speed_scale = 1.0
-	
 
-func tick(_delta):
+
+func tick(_delta: float) -> void:
 	if not is_attacking:
 		_frame_counter += 1
 		if _frame_counter % 3 != 0:
 			return
 		if attack_ray.is_colliding():
-			var collider = attack_ray.get_collider()
+			var collider := attack_ray.get_collider()
 			if collider:
 				#print(parent.name , " Its 77 collding with ", collider.name )
 				if collider.is_in_group("Demons"):

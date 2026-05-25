@@ -8,26 +8,26 @@ enum ZombieType {BASEZOMBIE, CONEHEAD,BUCKETHEAD,DANCERZOMBIE,BACKUPDANCERZOMBIE
 FOOTBALLZOMBIE,POLEVAULTZOMBIE,SCREENDOORZOMBIE,TICKER}
 
 # Resource Caches
-var demon_images = {}
-var demon_variation_images = {}
+var demon_images: Dictionary = {}
+var demon_variation_images: Dictionary = {}
 
-var demon_animations = {}
+var demon_animations: Dictionary = {}
 
-var zombie_images = {}
-var zombie_animations = {}
+var zombie_images: Dictionary = {}
+var zombie_animations: Dictionary = {}
 
 @onready var empty_animation := ResourceLoader.load("res://_Entities/Zombies/ImgAnimationResources/empty.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
 
 # Called when the node enters the scene tree for the first time
-func _ready():
+func _ready() -> void:
 	print("GlobalResourceManager: Initializing...")
 	_initialize_resource_caches()
 	_load_resources()
 	print("GlobalResourceManager: Resources loaded and ready")
-	
-	
+
+
 # Initialize the resource cache dictionaries
-func _initialize_resource_caches():
+func _initialize_resource_caches() -> void:
 	for this_demonType in DemonType.values():
 		print("PP : ", this_demonType)
 		demon_images[this_demonType] = {}
@@ -42,7 +42,7 @@ func _initialize_resource_caches():
 		zombie_animations[this_zombieType] = {}		
 
 # Load all Resources
-func _load_resources():
+func _load_resources() -> void:
 							  		#DemonType         , FileName
 	_load_demon_type_image_resource(DemonType.OCCULUM, "Occulum.png")
 	_load_demon_type_image_resource(DemonType.CRAWLER, "Crawler.png")
@@ -123,34 +123,34 @@ func _load_resources():
 	
 	
 # Helper function to load resources for a specific tower type
-func _load_demon_type_image_resource(demon_type,file_name):
-	var img_base_path = "res://_Assets/Sprites/" 
-	var img_path:String = img_base_path + file_name 
-	
+func _load_demon_type_image_resource(demon_type, file_name) -> void:
+	var img_base_path := "res://_Assets/Sprites/"
+	var img_path: String = img_base_path + file_name
+
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading image from " + img_path)
-	var img_resource = ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
+	var img_resource := ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	demon_images[demon_type] = img_resource
 	demon_variation_images[demon_type].append(img_resource)
 	
-func _load_demon_type_image_resource_variation(demon_type,file_name):
+func _load_demon_type_image_resource_variation(demon_type, file_name) -> void:
 	#var img_base_path =  "res://Assets/Demons/Icons/"
-	var img_base_path =  "res://_Entities/Demons/Icons/"
-	var img_path:String = img_base_path + file_name 
-	
+	var img_base_path := "res://_Entities/Demons/Icons/"
+	var img_path: String = img_base_path + file_name
+
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading image from " + img_path)
-	var img_resource = ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
+	var img_resource := ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	demon_variation_images[demon_type].append(img_resource)
 
 # Helper function to load resources for a specific tower type
-func _load_demon_type_animation_resource(demon_type,file_name):
-	var anim_base_path = "res://_Entities/Demons/AnimationResources/"
-	var anim_path:String = anim_base_path + file_name 
-	
+func _load_demon_type_animation_resource(demon_type, file_name) -> void:
+	var anim_base_path := "res://_Entities/Demons/AnimationResources/"
+	var anim_path: String = anim_base_path + file_name
+
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading animation from " + anim_path)
-	var anim_resource = ResourceLoader.load(anim_path, "", ResourceLoader.CACHE_MODE_REPLACE)
+	var anim_resource := ResourceLoader.load(anim_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	print("Added : ", anim_resource)
 	demon_animations[demon_type]= anim_resource
 
@@ -177,25 +177,25 @@ func get_demon_animation(demon_type):
 
 
 # Helper function to load resources for a specific zombie type
-func _load_zombie_type_image_resource(zombie_type,file_name):
-	var img_base_path = "res://_Entities/Zombies/ImgAnimationResources/"
-	var img_path:String = img_base_path + file_name 
-	
+func _load_zombie_type_image_resource(zombie_type, file_name) -> void:
+	var img_base_path := "res://_Entities/Zombies/ImgAnimationResources/"
+	var img_path: String = img_base_path + file_name
+
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading image from " + img_path)
-	var img_resource = ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
+	var img_resource := ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	zombie_images[zombie_type] = img_resource
 	
 
 
 # Helper function to load resources for a specific tower type
-func _load_zombie_type_animation_resource(zombie_type,file_name):
-	var anim_base_path = "res://_Entities/Zombies/ImgAnimationResources/"
-	var anim_path:String = anim_base_path + file_name 
-	
+func _load_zombie_type_animation_resource(zombie_type, file_name) -> void:
+	var anim_base_path := "res://_Entities/Zombies/ImgAnimationResources/"
+	var anim_path: String = anim_base_path + file_name
+
 	# Force immediate loading with ResourceLoader
 	print("ResourceLoader: Loading animation from " + anim_path)
-	var anim_resource = ResourceLoader.load(anim_path, "", ResourceLoader.CACHE_MODE_REPLACE)
+	var anim_resource := ResourceLoader.load(anim_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	print("Added : ", anim_resource)
 	zombie_animations[zombie_type]= anim_resource
 

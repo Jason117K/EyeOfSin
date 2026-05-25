@@ -61,12 +61,12 @@ var thisMaterial2
 var should_spawn_slow_field := false
 var should_spawn_drone_on_death := false
 var should_column_explode := false
-var reset_speed_timer : Timer
+var reset_speed_timer: Timer
 
-var is_demo := false 
-var is_dead := false 
-var respawn_timer : Timer 
-var demo_original_speed : float 
+var is_demo := false
+var is_dead := false
+var respawn_timer: Timer
+var demo_original_speed: float
 @export var spawn_x := 180.0
 @export var despawn_x := -20.0
 @export var respawn_delay := 1.5
@@ -99,18 +99,17 @@ func _ready() -> void:
 			
 
 
-func make_demo()->void:
-	
-	is_demo = true 
+func make_demo() -> void:
+	is_demo = true
 	print("Should Make is_demo ", is_demo)
 
-func get_special_description():
+func get_special_description() -> String:
 	return "Zombie"
-	
-func get_zombie_icon()->CompressedTexture2D:
+
+func get_zombie_icon() -> CompressedTexture2D:
 	return Global.reborn_icon
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if animatedSprite.isDead:
 		return
 
@@ -149,7 +148,7 @@ func _on_respawn() -> void:
 	animatedSprite.visible = true
 	animatedSprite.play("Walk")
 	
-func die():
+func die() -> void:
 	if false:
 		_demo_die()
 	else:
@@ -176,15 +175,14 @@ func die():
 		queue_free()
 
 
-func spawn_slow_field_on_death():
-	var slow_field
-	slow_field = slow_field_scene.instantiate()
+func spawn_slow_field_on_death() -> void:
+	var slow_field := slow_field_scene.instantiate()
 	slow_field.global_position = self.global_position
 	get_parent().add_child(slow_field)
 
 
-func _do_spawn_drone_on_death()->void:
-	var drone :Area2D = DroneScene.instantiate()
+func _do_spawn_drone_on_death() -> void:
+	var drone: Area2D = DroneScene.instantiate()
 	drone.is_stationary = true
 	#get_parent().add_child(drone)
 	get_parent().call_deferred("add_child", drone)
@@ -197,7 +195,7 @@ func _do_spawn_drone_on_death()->void:
 
 # --- Damage ---
 
-func take_damage(damage, piercing : bool = false):
+func take_damage(damage: float, piercing: bool = false) -> void:
 	for blood_hit in damage_vfx_spawn_locations:
 		blood_hit.visible = true
 		blood_hit.rotation_degrees = randf_range(-60, 60)
@@ -217,65 +215,65 @@ func take_damage(damage, piercing : bool = false):
 		$ResetThisColor.start()
 
 
-func bleed(bleed_damage):
+func bleed(bleed_damage: float) -> void:
 	healthComp.bleed(bleed_damage)
 
 
-func getHealthComponent():
+func getHealthComponent() -> ZombieHealthComponent:
 	return healthComp
 
 
-func increaseBloodWorth():
+func increaseBloodWorth() -> void:
 	healthComp.bloodWorth = healthComp.bloodWorth + 10.0
 
 
 # --- Speed / Slow ---
 
-func freeze():
+func freeze() -> void:
 	speedComp.freeze()
 
 
-func reset_speed():
+func reset_speed() -> void:
 	speedComp.setSpeed(speedComp.getOriginalSpeed())
 
 
-func blood_slow():
+func blood_slow() -> void:
 	speedComp.setSpeed(speedComp.getOriginalSpeed() / 3)
 	set_hue_shift(0)
 
 
-func undoBloodSlow():
+func undoBloodSlow() -> void:
 	reset_speed()
 	set_hue_shift(animatedSprite.original_hue_shift)
 
 
-func slow():
+func slow() -> void:
 	isSlow = isSlow + 100
 	speedComp.slow()
 	$DebuffDegrade.start()
 
 
-func getSlow():
+func getSlow() -> int:
 	return isSlow
 
 
 # --- Knockback ---
 
-func knockBack():
+func knockBack() -> void:
 	global_position = global_position + Vector2(9, 0)
 
 
 # --- Visual ---
 
-func set_hue_shift(hue_shift_degrees):
+func set_hue_shift(hue_shift_degrees: float) -> void:
 	animatedSprite.set_hue_shift(hue_shift_degrees)
 
 
-func make_glow():
+func make_glow() -> void:
 	pass
 
 
-func setMaterial(newAnimatedSprite):
+func setMaterial(newAnimatedSprite) -> void:
 	thisMaterial2 = newAnimatedSprite.material.duplicate()
 	newAnimatedSprite.material = thisMaterial2
 	if newAnimatedSprite:
@@ -286,48 +284,48 @@ func setMaterial(newAnimatedSprite):
 
 # --- Blood Hit VFX ---
 
-func append_blood_hit(new_blood_hit):
+func append_blood_hit(new_blood_hit) -> void:
 	damage_vfx_spawn_locations.append(new_blood_hit)
 
 
-func erase_blood_hit(blood_hit_to_erase):
+func erase_blood_hit(blood_hit_to_erase) -> void:
 	damage_vfx_spawn_locations.erase(blood_hit_to_erase)
 
 
 # --- Combat ---
 
-func fightDroneExplode():
+func fightDroneExplode() -> void:
 	healthComp.willExplodeFromDrone()
 
 
-func special_move():
-	var specialMoveComp = $SpecialMoveComp
+func special_move() -> void:
+	var specialMoveComp := $SpecialMoveComp
 	print("Pole Vault Special COMP Manager")
 	specialMoveComp.executeMove()
 	animatedSprite.setSpecialMoveTrue()
 
 
-func special_move2():
+func special_move2() -> void:
 	animatedSprite.setSpecialMoveTrue()
 
 
 # --- Death Flags ---
 
-func column_explode():
+func column_explode() -> void:
 	should_column_explode = true
 
 
-func spawn_drone_on_zombie_death():
+func spawn_drone_on_zombie_death() -> void:
 	should_spawn_drone_on_death = true
 
 
-func make_spawn_slow_on_death():
+func make_spawn_slow_on_death() -> void:
 	should_spawn_slow_field = true
 
 
 # --- Silence ---
 
-func silence():
+func silence() -> void:
 	if !is_silenced:
 		print(self, " SILENCE ----------------------------------------------------------------------------------------")
 		silence_field = (Global.get_silence_field()).instantiate()
@@ -340,7 +338,7 @@ func silence():
 
 # --- Dimension Change ---
 
-func change_dimensions(new_position):
+func change_dimensions(new_position) -> void:
 	self.reparent(Global.get_game_controller().get_alt_dimension().get_node("GameLayer"))
 	if self.is_in_group("Green"):
 		self.remove_from_group("Green")
@@ -357,31 +355,31 @@ func change_dimensions(new_position):
 
 # --- Getters ---
 
-func get_blood_worth():
+func get_blood_worth() -> float:
 	return bloodWorth
 
-func get_bleed_interval_time():
+func get_bleed_interval_time() -> int:
 	return time_between_bleed
 
-func get_health():
+func get_health() -> float:
 	return healthComp.health
 
-func get_max_health():
+func get_max_health() -> float:
 	return healthComp.maxHealth
 
-func get_speed():
+func get_speed() -> float:
 	return speedComp.speed
 
-func get_damage():
+func get_damage() -> float:
 	return attackComp.attack_power
 
-func get_attack_power():
+func get_attack_power() -> float:
 	return attackComp.attack_power
 
-func get_bleed_tick_damage():
+func get_bleed_tick_damage() -> int:
 	return bleed_tick_damage
 
-func get_charge_cost():
+func get_charge_cost() -> int:
 	return charge_cost
 
 
@@ -396,7 +394,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 # --- Timer Handlers ---
 
-func _on_JustNowSpawned_timeout():
+func _on_JustNowSpawned_timeout() -> void:
 	thisMaterial = animatedSprite.material.duplicate()
 	animatedSprite.material = thisMaterial
 	if thisMaterial:
@@ -406,7 +404,7 @@ func _on_JustNowSpawned_timeout():
 	add_to_group("Alive-Enemies")
 
 
-func _on_ResetThisColor_timeout():
+func _on_ResetThisColor_timeout() -> void:
 	thisMaterial.set_shader_parameter("target_color", Color.BLACK)
 	thisMaterial.set_shader_parameter("replace_color", Color.BLACK)
 	thisMaterial.set_shader_parameter("tolerance", 0.1)
@@ -416,7 +414,7 @@ func _on_ResetThisColor_timeout():
 		thisMaterial2.set_shader_parameter("tolerance", 0.1)
 
 
-func _on_DebuffDegrade_timeout():
+func _on_DebuffDegrade_timeout() -> void:
 	if isSlow > 0:
 		isSlow -= 10
 		if isSlow <= 0:

@@ -2,16 +2,16 @@ extends LevelTemplate
 # level_0_3.gd - Level 0-3 Tutorial Controller
 
 # Preloaded demo scenes
-var fleshEater_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
-var codex_demo = preload("res://_UI/GameDemonstrations/codex_demo.tscn")
+var fleshEater_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
+var codex_demo := preload("res://_UI/GameDemonstrations/codex_demo.tscn")
 
 # Level paths
 var thisLevel := "res://_Stages/Level3/Level0-3.tscn"
 var thisAltLevel := "res://_Stages/Level3/Level0-3_Alternate.tscn"
-var level03 = "res://_Stages/Level3/Level0-3.tscn"
-var level03Alt = "res://_Stages/Level3/Level0-3_Alternate.tscn"
-var level04 = "res://_Stages/Level4/Level0-4.tscn"
-var level04Alt = "res://_Stages/Level4/Level0-4_Alternate.tscn"
+var level03 := "res://_Stages/Level3/Level0-3.tscn"
+var level03Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
+var level04 := "res://_Stages/Level4/Level0-4.tscn"
+var level04Alt := "res://_Stages/Level4/Level0-4_Alternate.tscn"
 
 # Text file paths
 const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
@@ -19,7 +19,7 @@ const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_Place
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
 
-var maw_pulse_added := false 
+var maw_pulse_added := false
 
 # Demon button container names
 
@@ -29,13 +29,13 @@ var maw_pulse_added := false
 @onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
 @onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
-@onready var maw_button = demonSelectionMenu.get_maw_button()
-@onready var hbox = demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var maw_button := demonSelectionMenu.get_maw_button()
+@onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
-func _setup_tutorial():
+func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
 			"name": "FORCE_SELECT_MAW",
@@ -68,7 +68,7 @@ func _setup_tutorial():
 
 
 #region Lifecycle
-func _ready():
+func _ready() -> void:
 	super()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [37.0, 50.0]
@@ -102,7 +102,7 @@ func _ready():
 	#finish_ready()
 
 
-func _configure_waves()->void:
+func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{"Reborn": 3}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}])
 	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 3, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}])
 	zombie_spawner_3.set_waves_from_dicts([{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}])
@@ -110,7 +110,7 @@ func _configure_waves()->void:
 	zombie_spawner_5.set_waves_from_dicts([{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}])
 
 
-func finish_ready():
+func finish_ready() -> void:
 	Global.show_pip()
 	toolTips.show()
 	_setup_tutorial()
@@ -127,43 +127,43 @@ func getIsPurpleDimension():
 
 
 #region Input
-func _input(event):
+func _input(event: InputEvent) -> void:
 	_filter_tutorial_input(event)
 #endregion
 
 
 #region Step Entry Functions (same sequential order as definitions above)
-func _start_force_select_maw():
+func _start_force_select_maw() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
-	
+
 	hide_all_demon_buttons_with_exception(["Maw"])
-	
-	if maw_pulse_added == false :
+
+	if maw_pulse_added == false:
 		print("Add Glow Pulse SD")
 		demonSelectionMenu.add_pulsing_button_highlight(maw_button)
-		maw_pulse_added = true 
+		maw_pulse_added = true
 	#show_spotlight_at_node(maw_button)
 	waveManager.can_start = false
 	demonSelectionMenu.canSwapScenes = false
 
 
-func _start_force_place_maw():
+func _start_force_place_maw() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
-	
+
 	#demonSelectionMenu.remove_button_highlight(maw_button)
 	print("Stop GLOW Pulse")
 	demonSelectionMenu.stop_glow_pulse(maw_button)
 	hide_spotlight()
 
 
-func _start_tutorial_p1_done():
+func _start_tutorial_p1_done() -> void:
 	toolTips.hide()
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 
 
-func start_game():
+func start_game() -> void:
 	for node in get_parent().get_children():
 		if node.has_method("getIsGreenDimension"):
 			green_dimension = node
@@ -177,12 +177,12 @@ func start_game():
 	green_dimension.start_game()
 
 
-func _start_explain_fleshEater_zombie():
+func _start_explain_fleshEater_zombie() -> void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_FLESHEATER)
 	toolTips.set_visual_tutorial_visual(fleshEater_zombie_demo_scene.instantiate())
 
 
-func _start_explain_codex():
+func _start_explain_codex() -> void:
 	#hbox.get_node("Codex").visible = true
 	codex_button.show()
 	codex_button.visible = true
@@ -197,19 +197,19 @@ func _start_explain_codex():
 	#show_spotlight_at_node(codex_button)
 
 
-func _start_tutorial_p2_done():
+func _start_tutorial_p2_done() -> void:
 	demonSelectionMenu.stop_glow_pulse(demonSelectionMenu.get_codex_button())
 	#toolTips._on_Button_pressed()
 #endregion
 
 
 #region Input Filters
-func _filter_block_keyboard(event: InputEvent):
+func _filter_block_keyboard(event: InputEvent) -> void:
 	if event is InputEventKey:
 		get_viewport().set_input_as_handled()
 
 
-func _filter_block_deselect(event: InputEvent):
+func _filter_block_deselect(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_X:
 			get_viewport().set_input_as_handled()
@@ -217,7 +217,7 @@ func _filter_block_deselect(event: InputEvent):
 
 
 #region Signal Handlers
-func _on_tooltip_hidden():
+func _on_tooltip_hidden() -> void:
 	hide_spotlight()
 
 	match get_current_step_name():
@@ -231,21 +231,21 @@ func _on_tooltip_hidden():
 			_start_explain_codex()
 
 
-func _on_maw_button_pressed():
+func _on_maw_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_MAW":
 		advance_tutorial() # → FORCE_PLACE_MAW
 
 
-func _on_maw_placed(_grid_pos: Vector2):
+func _on_maw_placed(_grid_pos: Vector2) -> void:
 	if get_current_step_name() == "FORCE_PLACE_MAW":
 		advance_tutorial() # → TUTORIAL_P1_DONE
 
 
-func _on_codex_button_pressed():
+func _on_codex_button_pressed() -> void:
 	go_to_step("TUTORIAL_P2_DONE")
 
 
-func _on_wave_started(wave_index: int):
+func _on_wave_started(wave_index: int) -> void:
 	match wave_index:
 		1: go_to_step("EXPLAIN_FLESHEATER_ZOMBIE")
 		2: go_to_step("EXPLAIN_CODEX")
@@ -253,7 +253,7 @@ func _on_wave_started(wave_index: int):
 
 
 #region UI Helpers
-func setup_demon_selection_menu():
+func setup_demon_selection_menu() -> void:
 	#hbox.get_node("Maw").visible = true
 	demonSelectionMenu.get_maw_button().show()
 	#hbox.get_node("WorldSwap").visible = true
@@ -264,14 +264,14 @@ func setup_demon_selection_menu():
 	demonSelectionMenu.get_codex_button().show()
 
 
-func show_only_demon_buttons(visible_containers: Array):
+func show_only_demon_buttons(visible_containers: Array) -> void:
 	for container_name in ALL_DEMON_CONTAINERS:
-		var container = hbox.get_node(container_name)
-		var should_show = container_name in visible_containers
+		var container := hbox.get_node(container_name)
+		var should_show := container_name in visible_containers
 		for child in container.get_children():
 			child.visible = should_show
 
 
-func show_guide():
+func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 10)
 #endregion

@@ -26,8 +26,8 @@ var prev_y := 0.0
 var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2  # Store the initial position
 
-#Stores initial sprite values 
-func _ready():
+#Stores initial sprite values
+func _ready() -> void:
 
 	if sprite:
 		initial_sprite_scale = sprite.scale
@@ -35,25 +35,25 @@ func _ready():
 	else:
 		push_warning("No sprite assigned to animate!")
 
-#Handles worm sprite bobbing 
-func _process(delta):
+#Handles worm sprite bobbing
+func _process(delta: float) -> void:
 	if not sprite:
 		return
 		
 	time += delta * bob_speed
 	
 	# Calculate smooth up/down motion with slight ease-in/out
-	var raw_bob = sin(time)
-	var smoothed_bob = sign(raw_bob) * pow(abs(raw_bob), 0.7)
-	var y_offset = smoothed_bob * bob_height * animation_exaggeration
-	
+	var raw_bob := sin(time)
+	var smoothed_bob := sign(raw_bob) * pow(abs(raw_bob), 0.7)
+	var y_offset := smoothed_bob * bob_height * animation_exaggeration
+
 	# Calculate velocity for squash/stretch
-	var new_velocity = (y_offset - prev_y) / delta
+	var new_velocity := (y_offset - prev_y) / delta
 	velocity = lerp(velocity, new_velocity, 0.5)
 	prev_y = y_offset
 	#test
 	# Determine target squash/stretch based on motion
-	var normalized_velocity = clamp(velocity / (bob_height * 2), -1, 1)
+	var normalized_velocity := clamp(velocity / (bob_height * 2), -1, 1)
 	
 	if abs(normalized_velocity) > 0.1:
 		target_stretch = normalized_velocity * stretch_amount * animation_exaggeration
@@ -67,16 +67,16 @@ func _process(delta):
 	current_stretch = lerp(current_stretch, target_stretch, bounce_elasticity)
 	
 	# Apply transformations to the sprite
-	var scale_y = initial_sprite_scale.y * (1.0 + current_squash)
-	var scale_x = initial_sprite_scale.x * (1.0 + current_stretch)
-	
+	var scale_y := initial_sprite_scale.y * (1.0 + current_squash)
+	var scale_x := initial_sprite_scale.x * (1.0 + current_stretch)
+
 	# Update sprite's transform relative to its initial position
 	sprite.position.x = initial_sprite_position.x
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
 	
-func adjustParams(new_form):
-	
+func adjustParams(new_form: String) -> void:
+
 	match new_form:
 		"Occulum":
 			pass

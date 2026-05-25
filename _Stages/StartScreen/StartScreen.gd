@@ -1,16 +1,16 @@
 extends Control
 #StartScreen.gd
 
-@onready var startGameButton = $CenterContainer/VBoxContainer/StartGam
-@onready var levelSelectButton = $CenterContainer/VBoxContainer/LevelSelectButto
-@onready var bgMusic = $BackGroundMuisc
+@onready var startGameButton := $CenterContainer/VBoxContainer/StartGam
+@onready var levelSelectButton := $CenterContainer/VBoxContainer/LevelSelectButto
+@onready var bgMusic := $BackGroundMuisc
 #Sets up the startscreen tiles
 #var ownerScript = preload("res://Scripts/LevelLogic/Main_Controller.gd")
-var level0_1 = ("res://_Stages/Level1/Level0-1.tscn")
-var level0_1Alt = ("res://_Stages/Level1/Level0-1_Alternate.tscn")
+var level0_1 := ("res://_Stages/Level1/Level0-1.tscn")
+var level0_1Alt := ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
-func _ready():
-	
+func _ready() -> void:
+
 	# Get fresh reference
 	startGameButton = $CenterContainer/VBoxContainer/StartGame
 		# Always disconnect any existing connections first
@@ -24,7 +24,7 @@ func _ready():
 	#print("Button instance ID: ", startGameButton.get_instance_id() if startGameButton else "null")
 	
 	if startGameButton and not startGameButton.pressed.is_connected(_on_start_game_pressed):
-		var result = startGameButton.pressed.connect(_on_start_game_pressed)
+		var result := startGameButton.pressed.connect(_on_start_game_pressed)
 		print("Connection result: ", result)
 		
 	#$GridManager.set_tiles_for_rows(0,1, 68)
@@ -60,7 +60,7 @@ func _on_level_select_button_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit() 
+	get_tree().quit()
 
 
 func _on_credits_pressed() -> void:
@@ -70,5 +70,5 @@ func _on_credits_pressed() -> void:
 func _on_options_pressed() -> void:
 	Global.game_controller.change_scene("res://_UI/Options/OptionsMenu.tscn")
 
-func make_camera_current():
+func make_camera_current() -> void:
 	$Camera2D.make_current()

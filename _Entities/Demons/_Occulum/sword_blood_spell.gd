@@ -1,10 +1,10 @@
 extends Area2D
 
 @export var blood_damage := 25
-var is_maw_parent := false 
+var is_maw_parent := false
 @onready var spell_anim := $BloodSpellSprite
-var zombies_to_damage = []
-var temp_zombie_container = []
+var zombies_to_damage: Array = []
+var temp_zombie_container: Array = []
 signal blood_spell_finished
 
 func _ready() -> void:
@@ -16,7 +16,7 @@ func _ready() -> void:
 		damage_zombies()
 
 			
-func damage_zombies():
+func damage_zombies() -> void:
 	#print("Blood Sword Damage Zombies Called at position global : ", global_position , " and position local ", position )
 	spell_anim.animation_finished.connect(_on_blood_spell_sprite_animation_finished)
 	#print("Sword world2d: ", get_world_2d(), " rid: ", get_world_2d().get_rid())

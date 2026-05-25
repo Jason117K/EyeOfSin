@@ -2,32 +2,32 @@ extends Node
 
 #Tracks Which Levels Have Been Unlocked
 
-var canPlayLevel2 : bool = true
-var canPlayLevel3 : bool  = true
-var canPlayLevel4 : bool = true
-var canPlayLevel5 : bool = true
-var canPlayLevel6 : bool = true
-var canPlayLevel7 : bool = true
-var occulumCount := 0  
-var occulumCountVisual := 0  
+var canPlayLevel2: bool = true
+var canPlayLevel3: bool = true
+var canPlayLevel4: bool = true
+var canPlayLevel5: bool = true
+var canPlayLevel6: bool = true
+var canPlayLevel7: bool = true
+var occulumCount := 0
+var occulumCountVisual := 0
 var wave_manager
-var is_blocking := false 
+var is_blocking := false
 
 var all_zombies := []
-var game_controller : GameController
-var demon_selection_menu 
+var game_controller: GameController
+var demon_selection_menu
 var notification_bar
 var green_portal = null
-var purple_portal = null 
+var purple_portal = null
 var gameIsStarted := false
 var hero_demon_summoned := false
-var swap_ability 
+var swap_ability
 var current_level
-var hero_demon 
+var hero_demon
 var ui_layers  := []
 var wave_previews := []
 var demon_costs: Dictionary = {}
-var demon_scenes : Dictionary
+var demon_scenes: Dictionary
 var should_hide_ui := false
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
@@ -86,101 +86,101 @@ func get_demon_cost(demon_name: String) -> int:
 		_load_demon_costs()
 	return demon_costs.get(demon_name, -1)
 	
-func get_current_scene_filepath():
+func get_current_scene_filepath() -> String:
 	return game_controller.get_current_scene_filepath()
-	
-func register_wave_manager(new_wavemanager):
+
+func register_wave_manager(new_wavemanager) -> void:
 	wave_manager = new_wavemanager
 
 func get_wave_manager():
 	return wave_manager
-	
-func register_ui_layer(new_ui_layer):
+
+func register_ui_layer(new_ui_layer) -> void:
 	ui_layers.append(new_ui_layer)
 	#ui_layer.set_health(DemonMan)
 
-func register_wave_preview(new_wave_preview)->void:
+func register_wave_preview(new_wave_preview) -> void:
 	wave_previews.append(new_wave_preview)
 	pass
 	
 
-func hideDemonSelectionMenu():
+func hideDemonSelectionMenu() -> void:
 	if demon_selection_menu != null:
-		demon_selection_menu.visible = false 
-	
-func unHideDemonSelectionMenu():
+		demon_selection_menu.visible = false
+
+func unHideDemonSelectionMenu() -> void:
 	if demon_selection_menu != null:
-		demon_selection_menu.visible = true 	
+		demon_selection_menu.visible = true
 		
-func swap_portal_button():
+func swap_portal_button() -> void:
 	demon_selection_menu.swap_portal_button()
-	
-func resetOcculumCount():
-	is_blocking = false 
+
+func resetOcculumCount() -> void:
+	is_blocking = false
 	occulumCount = 0
 	gameIsStarted = false
 	#game_controller.on_scene_1 = true 
 	
 	
-func incrementOcculumCount():
+func incrementOcculumCount() -> void:
 	occulumCount += 1
 	demon_selection_menu.increaseOcculumCost()
 
 
 
 	
-func incrementOcculumCountVisual():
+func incrementOcculumCountVisual() -> void:
 	occulumCountVisual += 1
 	
-func getOcculumCount():
+func getOcculumCount() -> int:
 	#print("SSReturn , ", occulumCount)
 	return occulumCount
 
-func getOcculumCountVisual():
+func getOcculumCountVisual() -> int:
 	return occulumCountVisual
 	
-func setCanPlayLevel2():
-	canPlayLevel2 = true  
-	
-func getCanPlayLevel2():
-	return canPlayLevel2    
-	
-	
-func setCanPlayLevel3():
-	canPlayLevel3 = true  
+func setCanPlayLevel2() -> void:
+	canPlayLevel2 = true
 
-func getCanPlayLevel3():
-	return canPlayLevel3 
-	
-	
-func setCanPlayLevel4():
-	canPlayLevel4 = true 
-	
-func getCanPlayLevel4():
+func getCanPlayLevel2() -> bool:
+	return canPlayLevel2
+
+
+func setCanPlayLevel3() -> void:
+	canPlayLevel3 = true
+
+func getCanPlayLevel3() -> bool:
+	return canPlayLevel3
+
+
+func setCanPlayLevel4() -> void:
+	canPlayLevel4 = true
+
+func getCanPlayLevel4() -> bool:
 	return canPlayLevel4
-	 
 
-func setCanPlayLevel5():
-	canPlayLevel5 = true  
-	
-func getCanPlayLevel5():
-	return canPlayLevel5 
-	
-	
-func setCanPlayLevel6():
-	canPlayLevel6 = true  
-	
-func getCanPlayLevel6():
-	return canPlayLevel6 
-	
-		
-func setCanPlayLevel7():
-	canPlayLevel7 = true  
-	
-func getCanPlayLevel7():
-	return canPlayLevel7 
 
-func unlockLevel(levelUnlocked):
+func setCanPlayLevel5() -> void:
+	canPlayLevel5 = true
+
+func getCanPlayLevel5() -> bool:
+	return canPlayLevel5
+
+
+func setCanPlayLevel6() -> void:
+	canPlayLevel6 = true
+
+func getCanPlayLevel6() -> bool:
+	return canPlayLevel6
+
+
+func setCanPlayLevel7() -> void:
+	canPlayLevel7 = true
+
+func getCanPlayLevel7() -> bool:
+	return canPlayLevel7
+
+func unlockLevel(levelUnlocked) -> void:
 	match levelUnlocked:
 		1:
 			pass
@@ -197,7 +197,7 @@ func unlockLevel(levelUnlocked):
 		7:
 			setCanPlayLevel7()
 	
-func start_wave_1():
+func start_wave_1() -> void:
 	if current_level != null:
 		current_level.wave_1_active = true	
 		#print("Current Level is ", current_level, " wave 1 active is ", current_level.wave_1_active)
@@ -205,51 +205,51 @@ func start_wave_1():
 		pass
 		#print("Current Level is Null")
 	
-func show_guide():
+func show_guide() -> void:
 #	print("UNDO THE CLEAR AND SHOW THE GUIDE FROM GLOBAL")
 	game_controller.show_guide()	
 	
-func clear_guide():
+func clear_guide() -> void:
 	#print("CLEAR THE GUIDE GAMECONTROLLER")
 	game_controller.clear_guide()		
 	
 func get_game_controller():
 	return game_controller
 	
-func register_green_portal(new_green_portal):
-	if purple_portal == null :
+func register_green_portal(new_green_portal) -> void:
+	if purple_portal == null:
 		new_green_portal.add_to_group("EntrancePortal")
 	green_portal = new_green_portal
 
 
-func register_purple_portal(new_purple_portal):
-	if green_portal == null :
+func register_purple_portal(new_purple_portal) -> void:
+	if green_portal == null:
 		new_purple_portal.add_to_group("EntrancePortal")
 	purple_portal = new_purple_portal
 	
-func get_purple_portal_location():
+func get_purple_portal_location() -> Vector2:
 	return purple_portal.global_position
-	
-func get_green_portal_location():
+
+func get_green_portal_location() -> Vector2:
 	return green_portal.global_position
 	
 	
-func register_hero_demon(new_hero_demon):
-	hero_demon = new_hero_demon 
-	hero_demon_summoned = true 
-	
-func hero_demon_is_summoned():
+func register_hero_demon(new_hero_demon) -> void:
+	hero_demon = new_hero_demon
+	hero_demon_summoned = true
+
+func hero_demon_is_summoned() -> bool:
 	return hero_demon_summoned
 
-func swap_scenes():
+func swap_scenes() -> void:
 	#print("SWAP SCENES SHOULD")
 	game_controller.swap_scenes()
 	adjust_ui_layer()					
 	swap_portal_button()
 
-func unhide_ui_layer():
+func unhide_ui_layer() -> void:
 	should_hide_ui = false
-	var real_ui_layers := [] 
+	var real_ui_layers := []
 		
 	for item in ui_layers:
 		if item == null:
@@ -260,9 +260,9 @@ func unhide_ui_layer():
 		this_ui_layer.show()
 	adjust_ui_layer()
 
-func hide_ui_layer():
-	should_hide_ui = true 
-	var real_ui_layers := [] 
+func hide_ui_layer() -> void:
+	should_hide_ui = true
+	var real_ui_layers := []
 		
 	for item in ui_layers:
 		if item == null:
@@ -275,10 +275,10 @@ func hide_ui_layer():
 		
 		
 #And Wave Preview
-func adjust_ui_layer():
+func adjust_ui_layer() -> void:
 	if !should_hide_ui:
-		var real_ui_layers := [] 
-		var real_wave_previews := [] 
+		var real_ui_layers := []
+		var real_wave_previews := []
 		
 		for item in ui_layers:
 			if item == null:
@@ -324,56 +324,56 @@ func adjust_ui_layer():
 		
 	
 	
-func is_on_purple_dimension():
+func is_on_purple_dimension() -> bool:
 	if game_controller.on_scene_1:
-		return true 
+		return true
 	else:
-		return false 
+		return false
 	
-func register_swap_ability(new_swap_ability):
+func register_swap_ability(new_swap_ability) -> void:
 	swap_ability = new_swap_ability
-	
-func register_notification_bar(new_notification_bar):
+
+func register_notification_bar(new_notification_bar) -> void:
 	notification_bar = new_notification_bar
 	
 
-func start_swap_ability():
+func start_swap_ability() -> void:
 	if swap_ability != null:
 		swap_ability.begin()
-	
-func stop_swap_ability():
+
+func stop_swap_ability() -> void:
 	if swap_ability != null:
 		swap_ability.stop()
-		
-func reset_swap_ability():
+
+func reset_swap_ability() -> void:
 	if swap_ability != null:
 		swap_ability.reset_on_game_start()
 	
-func register_zombie(new_zombie):
+func register_zombie(new_zombie) -> void:
 	all_zombies.append(new_zombie)
 	if swap_ability != null:
 		swap_ability.append_new_zombie(new_zombie)
 	
 	
-func deregister_zombie(zombie_to_delete):
+func deregister_zombie(zombie_to_delete) -> void:
 	all_zombies.erase(zombie_to_delete)
 	
 func get_all_zombies():
 	return all_zombies
 	
-func set_zombie_info_bar(zombie):
+func set_zombie_info_bar(zombie) -> void:
 	#print(" notification_bar" , notification_bar)
 	notification_bar.set_zombie_info(zombie)
 	pass
 
-func set_demon_info_bar(demon):
+func set_demon_info_bar(demon) -> void:
 	notification_bar.set_demon_info(demon)
 	pass
 	
 func get_column_death_explosion():
 	return column_death_explosion
 		
-func hide_notification_bar():
+func hide_notification_bar() -> void:
 	if notification_bar != null:
 		notification_bar.hide()
 	
@@ -392,12 +392,12 @@ func get_silence_field():
 func get_severed_spriteframes():
 	return severed_spriteframes
 	
-func hide_pip():
+func hide_pip() -> void:
 	print("Should hide ", game_controller.pip)
 	game_controller.pip.hide()
 	game_controller.pip.hide_pip()
 	
-func show_pip():
+func show_pip() -> void:
 	game_controller.pip.show()
 	
 	

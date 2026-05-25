@@ -1,20 +1,20 @@
 extends LevelTemplate
 
-var basic_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
-var severed_zombie_demo_scene = preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
-var wave_1_completed := false 
-var current_completed_wave_number := 0 
-var wave3StartTimer : Timer
+var basic_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
+var severed_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
+var wave_1_completed := false
+var current_completed_wave_number := 0
+var wave3StartTimer: Timer
 @export var this_wave_3_start_time := 20
 
-@onready var crawler_button = demonSelectionMenu.get_crawler_button()
+@onready var crawler_button := demonSelectionMenu.get_crawler_button()
 @onready var zombie_spawner := $GameLayer/ZombieSpawner
 
 const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
-func _setup_tutorial():
+func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
 			"name": "FORCE_SELECT_CRAWLER",
@@ -62,7 +62,7 @@ func _setup_tutorial():
 
 
 #region Lifecycle
-func _ready():
+func _ready() -> void:
 	super()
 	#Dialogic.Inputs.auto_skip.enabled = true
 	Dialogic.timeline_ended.connect(finish_ready)
@@ -105,78 +105,78 @@ func _configure_waves() -> void:
 
 func finish_ready() -> void:
 	#Global.hide_pip()
-	
+
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_CRAWLER")
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
 
 func wave_exhausted() -> void:
-	wave_1_completed = true 
+	wave_1_completed = true
 
 #endregion
 
 
 #region Input
-func _input(event):
+func _input(event: InputEvent) -> void:
 	_filter_tutorial_input(event)
 #endregion
 
 
 #region Step Entry Functions (same sequential order as definitions above)
-func _start_force_select_crawler():
+func _start_force_select_crawler() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#hide_all_demon_buttons_except_crawler()
 	if has_pulsed == false:
 		highlight_crawler_button()
-		has_pulsed = true 
+		has_pulsed = true
 	waveManager.can_start = true
 	demonSelectionMenu.canSwapScenes = false
 	#Global.hide_pip()
 
 
-func _start_force_place_demon():
+func _start_force_place_demon() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_CRAWLER, false)
-	
+
 	unhighlight_crawler_button()
 	hide_spotlight()
 
 
-func _start_explain_blood_cost():
+func _start_explain_blood_cost() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, true)
 	#TODO Add Highlight
 	#show_spotlight_at_position(Vector2(10, 0))
 
 
-func _start_wave_1():
+func _start_wave_1() -> void:
 	waveManager.can_start = true
 	wave_1_active = false
 	wave_1_complete = false
 
 
-func start_game():
+func start_game() -> void:
 	_start_wave_1()
 
 
-func _start_explain_basic_zombie():
+func _start_explain_basic_zombie() -> void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate())
 
 
-func _start_force_press_y():
+func _start_force_press_y() -> void:
 	demonSelectionMenu.get_world_swap_button().visible = true
 	#demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
 	toolTips.set_basic_tutorial_text(TUTORIAL_PRESS_Y, false)
 
 
-func _start_explain_green_dimension():
+func _start_explain_green_dimension() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_GREEN_DIMENSION, true)
 
 
-func _start_wave_2_both_dimensions():
+func _start_wave_2_both_dimensions() -> void:
 	Global.show_pip()
-	var green_dimension = get_parent().get_node("Level0-1_Alternate")
+	var green_dimension := get_parent().get_node("Level0-1_Alternate")
 	if green_dimension and green_dimension.has_method("setup_wave_2_ui"):
 		green_dimension.setup_wave_2_ui()
 
@@ -184,7 +184,7 @@ func _start_wave_2_both_dimensions():
 	demonSelectionMenu.canSwapScenes = true
 
 
-func _start_explain_severed_zombie():
+func _start_explain_severed_zombie() -> void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(severed_zombie_demo_scene.instantiate())
 
@@ -192,24 +192,24 @@ func _start_explain_severed_zombie():
 
 
 #region Input Filters
-func _filter_block_keyboard(event: InputEvent):
+func _filter_block_keyboard(event: InputEvent) -> void:
 	if event is InputEventKey:
 		get_viewport().set_input_as_handled()
 
 
-func _filter_block_deselect_and_swap(event: InputEvent):
+func _filter_block_deselect_and_swap(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_X or event.keycode == KEY_Y:
 			get_viewport().set_input_as_handled()
 
 
-func _filter_block_swap(event: InputEvent):
+func _filter_block_swap(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			get_viewport().set_input_as_handled()
 
 
-func _filter_only_allow_y(event: InputEvent):
+func _filter_only_allow_y(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.swap_scenes()
@@ -224,7 +224,7 @@ func _filter_only_allow_y(event: InputEvent):
 
 
 #region Signal Handlers
-func _on_tooltip_hidden():
+func _on_tooltip_hidden() -> void:
 	print("Tooltip Was Hidden, Current Step is ", get_current_step_name() )
 	hide_spotlight()
 	match get_current_step_name():
@@ -235,13 +235,13 @@ func _on_tooltip_hidden():
 			go_to_step("WAVE_2_ACTIVE")
 
 
-func _on_crawler_placed():
+func _on_crawler_placed() -> void:
 	if get_current_step_name() == "FORCE_PLACE_demon":
 		print("Advancing YTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → EXPLAIN_BLOOD_COST
 
 
-func _on_crawler_button_pressed():
+func _on_crawler_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_CRAWLER":
 		print("Advancing WTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → FORCE_PLACE_demon
@@ -263,13 +263,13 @@ func _on_demon_manager_crawler_placed(_grid_position: Vector2) -> void:
 
 
 #region Wave Completion Detection
-func _physics_process(_delta):
-	var step_name = get_current_step_name()
+func _physics_process(_delta: float) -> void:
+	var step_name := get_current_step_name()
 	if step_name == "WAVE_1_ACTIVE" or step_name == "EXPLAIN_BASIC_ZOMBIE":
 		if not wave_1_complete:
-			var alive_zombies = get_tree().get_nodes_in_group("Alive-Enemies")
+			var alive_zombies := get_tree().get_nodes_in_group("Alive-Enemies")
 
-			var purple_zombies = []
+			var purple_zombies: Array = []
 			for zombie in alive_zombies:
 				if not zombie.is_in_group("Green"):
 					purple_zombies.append(zombie)
@@ -281,25 +281,25 @@ func _physics_process(_delta):
 
 
 #region UI Helpers
-func setup_demon_selection_menu():
+func setup_demon_selection_menu() -> void:
 	print("Demon Selection Menu is ", demonSelectionMenu)
 	demonSelectionMenu.get_world_swap_button().visible = false
-	demonSelectionMenu.get_remove_demon_button().visible = false 
-	demonSelectionMenu.get_codex_button().visible = false 
+	demonSelectionMenu.get_remove_demon_button().visible = false
+	demonSelectionMenu.get_codex_button().visible = false
 	#TODO Should We Adjust Size Here?
 	demonSelectionMenu.get_panel_container().size.x = 71
 
 
-func highlight_crawler_button():
+func highlight_crawler_button() -> void:
 	demonSelectionMenu.add_pulsing_button_highlight(crawler_button)
 
 
-func unhighlight_crawler_button():
+func unhighlight_crawler_button() -> void:
 	demonSelectionMenu.remove_button_highlight(crawler_button)
 	demonSelectionMenu.stop_glow_pulse(crawler_button)
 
 
-func show_guide():
+func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(4, 4)
 	
 #endregion

@@ -4,8 +4,8 @@ var thisMaterial
 
 @export var targetColorString := "ff0013"
 @export var replaceColorString := "ff0013"
-@export var target_color : Color 
-@export var replace_color : Color 
+@export var target_color: Color
+@export var replace_color: Color
 @export var isDisabled := true
 
 var isAlt := false
@@ -84,7 +84,7 @@ func _on_frame_changed() -> void:
 		pass
 		#print("GGG NOT DISABLED ")
 		
-func change_color():
+func change_color() -> void:
 	isDisabled = false
 	thisMaterial = material.duplicate()
 	material = thisMaterial
@@ -94,7 +94,7 @@ func change_color():
 		thisMaterial.set_shader_parameter("replace_color", replaceColorString)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
 		
-func change_color_specific(new_target_color, new_replace_color):
+func change_color_specific(new_target_color, new_replace_color) -> void:
 	target_color = new_target_color
 	replace_color = new_replace_color
 	isDisabled = false

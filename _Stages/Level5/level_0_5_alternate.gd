@@ -4,7 +4,7 @@ extends LevelTemplate
 
 
 @export var isGreenDimension := false
-var purple_dimension : Control
+var purple_dimension: Control
 
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
 @onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
@@ -20,7 +20,7 @@ func _ready() -> void:
 	_configure_waves()
 
 
-func _configure_waves():
+func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{}, {"Flesheater": 1, "Reanimator": 1, "Reborn": 7, "Sundered": 3}, {"Erupter": 3, "Flesheater": 1, "Reanimator": 1, "Severed": 7, "Sundered": 4, "Unhallower": 3}])
 	zombie_spawner_2.set_waves_from_dicts([{"Reanimator": 1, "Reborn": 3, "Sundered": 1}, {"Erupter": 2, "Reanimator": 1, "Reborn": 7, "Severed": 3}, {"Flesheater": 1, "Reanimator": 1, "Reborn": 7, "Severed": 3, "Sundered": 6, "Unhallower": 1}])
 	zombie_spawner_3.set_waves_from_dicts([{}, {"Erupter": 3, "Flesheater": 1, "Reanimator": 2, "Severed": 2, "Sundered": 2, "Unhallower": 2}, {"Erupter": 2, "Flesheater": 1, "Reanimator": 1, "Reborn": 3, "Severed": 2, "Sundered": 5, "Unhallower": 6}])
@@ -30,11 +30,11 @@ func _configure_waves():
 	zombie_spawner_7.set_waves_from_dicts([{}, {"Erupter": 1, "Flesheater": 4, "Reanimator": 1, "Reborn": 12, "Severed": 1, "Unhallower": 1}, {"Erupter": 3, "Flesheater": 3, "Reanimator": 1, "Severed": 3, "Sundered": 1}])
 
 
-func getIsGreenDimension():
+func getIsGreenDimension() -> bool:
 	return isGreenDimension
 
 
-func start_game():
+func start_game() -> void:
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
 	for node in get_parent().get_children():
 		if node.has_method("getIsPurpleDimension"):
@@ -42,6 +42,6 @@ func start_game():
 	purple_dimension.start_game()
 
 
-func show_guide():
+func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 	

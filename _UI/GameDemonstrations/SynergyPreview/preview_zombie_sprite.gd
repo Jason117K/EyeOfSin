@@ -1,13 +1,13 @@
 extends AnimatedSprite2D
 
 
-@export var targetGlowColor : Color = Color("df4242")
+@export var targetGlowColor: Color = Color("df4242")
 @export_range(-180, 180) var hue_shift: float = -86.0: #25.0
 	set(value):
 		hue_shift = clamp(value, -180.0, 180.0)
 		#print(hue_shift,"Apply HUE Shift ", count)
 		_apply_hue_shift()
-var demon_hue_shift = preload("res://_Common/Shaders/DemonHueShift.gdshader")
+var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
 
 
 func _ready() -> void:

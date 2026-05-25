@@ -1,30 +1,30 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var occulumButton = $"../../HBoxContainer/AllDemonRows/Row1/Occulum"
-@onready var crawlerButton = $"../../HBoxContainer/AllDemonRows/Row1/Crawler"
-@onready var spinalOcculumButton = $"../../HBoxContainer/AllDemonRows/Row2/Walnut"
-@onready var wyrmButton = $"../../HBoxContainer/AllDemonRows/Row3/Wyrm"
-@onready var hiveButton = $"../../HBoxContainer/AllDemonRows/Row2/Hive"
-@onready var mawButton = $"../../HBoxContainer/AllDemonRows/Row2/Maw"
+@onready var occulumButton := $"../../HBoxContainer/AllDemonRows/Row1/Occulum"
+@onready var crawlerButton := $"../../HBoxContainer/AllDemonRows/Row1/Crawler"
+@onready var spinalOcculumButton := $"../../HBoxContainer/AllDemonRows/Row2/Walnut"
+@onready var wyrmButton := $"../../HBoxContainer/AllDemonRows/Row3/Wyrm"
+@onready var hiveButton := $"../../HBoxContainer/AllDemonRows/Row2/Hive"
+@onready var mawButton := $"../../HBoxContainer/AllDemonRows/Row2/Maw"
 
-@onready var currentDemonLabel = $"../../CurrentDemonLabel"
-@onready var bgDarken = $"../../BGDarkEn"
-@onready var backOutDetailsButton = $"../../BackOutDetails"
+@onready var currentDemonLabel := $"../../CurrentDemonLabel"
+@onready var bgDarken := $"../../BGDarkEn"
+@onready var backOutDetailsButton := $"../../BackOutDetails"
 @onready var staticPreview := $"../../StaticPreview"
 
 var current_synergy_preview: Node = null
 
-@onready var alt1 = $"../../HBoxContainer/AllDemonRows/AltRow1/Alt1"
-@onready var alt2 = $"../../HBoxContainer/AllDemonRows/AltRow1/Alt2"
-@onready var alt3 = $"../../HBoxContainer/AllDemonRows/AltRow2/Alt3"
-@onready var alt4 = $"../../HBoxContainer/AllDemonRows/AltRow2/Alt4"
-@onready var alt5 = $"../../HBoxContainer/AllDemonRows/AltRow3/Alt5"
-@onready var alt6 = $"../../HBoxContainer/AllDemonRows/AltRow3/Alt6"
+@onready var alt1 := $"../../HBoxContainer/AllDemonRows/AltRow1/Alt1"
+@onready var alt2 := $"../../HBoxContainer/AllDemonRows/AltRow1/Alt2"
+@onready var alt3 := $"../../HBoxContainer/AllDemonRows/AltRow2/Alt3"
+@onready var alt4 := $"../../HBoxContainer/AllDemonRows/AltRow2/Alt4"
+@onready var alt5 := $"../../HBoxContainer/AllDemonRows/AltRow3/Alt5"
+@onready var alt6 := $"../../HBoxContainer/AllDemonRows/AltRow3/Alt6"
 
 @onready var preview := $"../../CurrentDemonVboxContainer/SynergyPreview"
 
-var is_in_synergy = false
+var is_in_synergy := false
 
 #Demon Text Descriptions
 var occulumDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
@@ -35,65 +35,65 @@ var hiveDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/HiveDescr
 var mawDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt"
 
 
-var mawCrawlerText =  "res://_Assets/Text/TextFiles/CrawlerMawBuff.txt"
-var mawWyrmText = "res://_Assets/Text/TextFiles/MawBuff.txt"
-var spineMawText =  "res://_Assets/Text/TextFiles/SpineMawBuff.txt"
-var hiveMawText = "res://_Assets/Text/TextFiles/HiveMawBuff.txt"
-var hiveWyrmText = "res://_Assets/Text/TextFiles/WaspWyrmBuff.txt"
-var hiveCrawlerText = "res://_Assets/Text/TextFiles/hiveCrawlerBuff.txt"
-var wyrmSpineText = "res://_Assets/Text/TextFiles/wyrmSpineBuff.txt"
-var occulumCrawlerText = "res://_Assets/Text/TextFiles/OcculumCrawlerBuff.txt"
-var occulumWyrmText = "res://_Assets/Text/TextFiles/OcculumWyrmBuff.txt"
-var occulumMawText = "res://_Assets/Text/TextFiles/OcculumMawBuff.txt"
-var occulumSpineText = "res://_Assets/Text/TextFiles/OcculumSpineBuff.txt"
-var occulumHiveText = "res://_Assets/Text/TextFiles/OcculumHiveBuff.txt"
+var mawCrawlerText := "res://_Assets/Text/TextFiles/CrawlerMawBuff.txt"
+var mawWyrmText := "res://_Assets/Text/TextFiles/MawBuff.txt"
+var spineMawText := "res://_Assets/Text/TextFiles/SpineMawBuff.txt"
+var hiveMawText := "res://_Assets/Text/TextFiles/HiveMawBuff.txt"
+var hiveWyrmText := "res://_Assets/Text/TextFiles/WaspWyrmBuff.txt"
+var hiveCrawlerText := "res://_Assets/Text/TextFiles/hiveCrawlerBuff.txt"
+var wyrmSpineText := "res://_Assets/Text/TextFiles/wyrmSpineBuff.txt"
+var occulumCrawlerText := "res://_Assets/Text/TextFiles/OcculumCrawlerBuff.txt"
+var occulumWyrmText := "res://_Assets/Text/TextFiles/OcculumWyrmBuff.txt"
+var occulumMawText := "res://_Assets/Text/TextFiles/OcculumMawBuff.txt"
+var occulumSpineText := "res://_Assets/Text/TextFiles/OcculumSpineBuff.txt"
+var occulumHiveText := "res://_Assets/Text/TextFiles/OcculumHiveBuff.txt"
 
 
-var occulumBase = "res://_Assets/Text/TextFiles/Synergies/OcculumBase.txt"
-var occulumHive = "res://_Assets/Text/TextFiles/Synergies/OcculumHive.txt"
-var occulumMaw = "res://_Assets/Text/TextFiles/Synergies/OcculumMaw.txt"
-var occulumCrawler = "res://_Assets/Text/TextFiles/Synergies/OcculumCrawler.txt"
-var occulumSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/OcculumSpinalOcculum.txt"
-var occulumWyrm = "res://_Assets/Text/TextFiles/Synergies/OcculumWyrm.txt"
+var occulumBase := "res://_Assets/Text/TextFiles/Synergies/OcculumBase.txt"
+var occulumHive := "res://_Assets/Text/TextFiles/Synergies/OcculumHive.txt"
+var occulumMaw := "res://_Assets/Text/TextFiles/Synergies/OcculumMaw.txt"
+var occulumCrawler := "res://_Assets/Text/TextFiles/Synergies/OcculumCrawler.txt"
+var occulumSpinalOcculum := "res://_Assets/Text/TextFiles/Synergies/OcculumSpinalOcculum.txt"
+var occulumWyrm := "res://_Assets/Text/TextFiles/Synergies/OcculumWyrm.txt"
 
-var crawlerBase = "res://_Assets/Text/TextFiles/Synergies/CrawlerBase.txt"
-var crawlerOcculum = "res://_Assets/Text/TextFiles/Synergies/CrawlerOcculum.txt"
-var crawlerHive = "res://_Assets/Text/TextFiles/Synergies/CrawlerHive.txt"
-var crawlerMaw = "res://_Assets/Text/TextFiles/Synergies/CrawlerMaw.txt"
-var crawlerSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/CrawlerSpinalOcculum.txt"
-var crawlerWyrm = "res://_Assets/Text/TextFiles/Synergies/CrawlerWyrm.txt"
+var crawlerBase := "res://_Assets/Text/TextFiles/Synergies/CrawlerBase.txt"
+var crawlerOcculum := "res://_Assets/Text/TextFiles/Synergies/CrawlerOcculum.txt"
+var crawlerHive := "res://_Assets/Text/TextFiles/Synergies/CrawlerHive.txt"
+var crawlerMaw := "res://_Assets/Text/TextFiles/Synergies/CrawlerMaw.txt"
+var crawlerSpinalOcculum := "res://_Assets/Text/TextFiles/Synergies/CrawlerSpinalOcculum.txt"
+var crawlerWyrm := "res://_Assets/Text/TextFiles/Synergies/CrawlerWyrm.txt"
 
-var hiveBase = "res://_Assets/Text/TextFiles/Synergies/HiveBase.txt"
-var hiveOcculum = "res://_Assets/Text/TextFiles/Synergies/HiveOcculum.txt"
-var hiveMaw = "res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt"
-var hiveCrawler = "res://_Assets/Text/TextFiles/Synergies/HiveCrawler.txt"
-var hiveSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/HiveSpinalOcculum.txt"
-var hiveWyrm = "res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt"
+var hiveBase := "res://_Assets/Text/TextFiles/Synergies/HiveBase.txt"
+var hiveOcculum := "res://_Assets/Text/TextFiles/Synergies/HiveOcculum.txt"
+var hiveMaw := "res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt"
+var hiveCrawler := "res://_Assets/Text/TextFiles/Synergies/HiveCrawler.txt"
+var hiveSpinalOcculum := "res://_Assets/Text/TextFiles/Synergies/HiveSpinalOcculum.txt"
+var hiveWyrm := "res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt"
 
-var spinalOcculumBase = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumBase.txt"
-var spinalOcculumOcculum = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumOcculum.txt"
-var spinalOcculumHive = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumHive.txt"
-var spinalOcculumMaw = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumMaw.txt"
-var spinalOcculumCrawler = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumCrawler.txt"
-var spinalOcculumWyrm = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumWyrm.txt"
+var spinalOcculumBase := "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumBase.txt"
+var spinalOcculumOcculum := "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumOcculum.txt"
+var spinalOcculumHive := "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumHive.txt"
+var spinalOcculumMaw := "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumMaw.txt"
+var spinalOcculumCrawler := "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumCrawler.txt"
+var spinalOcculumWyrm := "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumWyrm.txt"
 
-var mawBase = "res://_Assets/Text/TextFiles/Synergies/MawBase.txt"
-var mawOcculum = "res://_Assets/Text/TextFiles/Synergies/MawOcculum.txt"
-var mawHive = "res://_Assets/Text/TextFiles/Synergies/MawHive.txt"
-var mawCrawler = "res://_Assets/Text/TextFiles/Synergies/MawCrawler.txt"
-var mawSpinalOcculum = "res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt"
-var mawWyrm = "res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt"
+var mawBase := "res://_Assets/Text/TextFiles/Synergies/MawBase.txt"
+var mawOcculum := "res://_Assets/Text/TextFiles/Synergies/MawOcculum.txt"
+var mawHive := "res://_Assets/Text/TextFiles/Synergies/MawHive.txt"
+var mawCrawler := "res://_Assets/Text/TextFiles/Synergies/MawCrawler.txt"
+var mawSpinalOcculum := "res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt"
+var mawWyrm := "res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt"
 
-var wyrmBase = "res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt"
-var wyrmOcculum ="res://_Assets/Text/TextFiles/Synergies/WyrmOcculum.txt"
-var wyrmHive ="res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt"
-var wyrmMaw ="res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt"
-var wyrmCrawler ="res://_Assets/Text/TextFiles/Synergies/WyrmCrawler.txt"
-var wyrmSpinalOcculum ="res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum.txt"
+var wyrmBase := "res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt"
+var wyrmOcculum := "res://_Assets/Text/TextFiles/Synergies/WyrmOcculum.txt"
+var wyrmHive := "res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt"
+var wyrmMaw := "res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt"
+var wyrmCrawler := "res://_Assets/Text/TextFiles/Synergies/WyrmCrawler.txt"
+var wyrmSpinalOcculum := "res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum.txt"
 
 
 
-var SynergyPreviewScene = preload("res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn")
+var SynergyPreviewScene := preload("res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn")
 
 var current_page := 2
 
@@ -106,7 +106,7 @@ enum DEMON {
 	MAW,
 }
 
-var current_demon = DEMON.OCCULUM
+var current_demon := DEMON.OCCULUM
 
 func _ready() -> void:
 	pass
@@ -119,7 +119,7 @@ func _ready() -> void:
 	
 	# Set initial sprites if none are set
 	#if sprites == null:
-	var demon_type = GlobalResourceLoader.DemonType.OCCULUM
+	var demon_type := GlobalResourceLoader.DemonType.OCCULUM
 	sprites = GlobalResourceLoader.get_demon_animation(demon_type)
 	
 	# Initialize animation data
@@ -140,7 +140,7 @@ func _ready() -> void:
 	
 
 # Update all button textures based on current color settings
-func _update_button_textures():
+func _update_button_textures() -> void:
 	
 	# Set Melee Alien buttons
 	if occulumButton != null:
@@ -188,26 +188,26 @@ func _clear_synergy_preview() -> void:
 		current_synergy_preview.clear_preview()
 
 #Sets the current Demon Description Text
-func set_text(newFile : String):
-	var file = FileAccess.open(newFile, FileAccess.READ)
-	var newText = file.get_as_text()
+func set_text(newFile: String) -> void:
+	var file := FileAccess.open(newFile, FileAccess.READ)
+	var newText := file.get_as_text()
 	file.close()
 	currentDemonLabel.show()
 	currentDemonLabel.text = newText
 
-func set_demon_variations(newDemon : GlobalResourceLoader.DemonType):
-	is_in_synergy = true 
-	var new_images = []
+func set_demon_variations(newDemon: GlobalResourceLoader.DemonType) -> void:
+	is_in_synergy = true
+	var new_images := []
 	new_images = GlobalResourceLoader.get_demon_image_variations(newDemon)
 	$"../../HBoxContainer/AllDemonRows/Row1".visible = false
 	$"../../HBoxContainer/AllDemonRows/Row2".visible = false
 	$"../../HBoxContainer/AllDemonRows/Row3".visible = false
 	
-	$"../../HBoxContainer/AllDemonRows/AltRow1".visible = true 
-	$"../../HBoxContainer/AllDemonRows/AltRow2".visible = true 
-	$"../../HBoxContainer/AllDemonRows/AltRow3".visible = true 
-	
-	var count = 0 
+	$"../../HBoxContainer/AllDemonRows/AltRow1".visible = true
+	$"../../HBoxContainer/AllDemonRows/AltRow2".visible = true
+	$"../../HBoxContainer/AllDemonRows/AltRow3".visible = true
+
+	var count := 0
 	for this_image in new_images:
 		match count:
 			0:
@@ -227,7 +227,7 @@ func set_demon_variations(newDemon : GlobalResourceLoader.DemonType):
 	
 	pass
 	
-func _on_occulum_pressed():
+func _on_occulum_pressed() -> void:
 	print("Occulum Pressed")
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
@@ -258,7 +258,7 @@ func _on_crawler_pressed() -> void:
 
 
 
-func _on_spinalOcculum_pressed():
+func _on_spinalOcculum_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
@@ -274,7 +274,7 @@ func _on_spinalOcculum_pressed():
 
 
 
-func _on_wrym_pressed():
+func _on_wrym_pressed() -> void:
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
@@ -336,9 +336,9 @@ func _on_back_button_pressed() -> void:
 		$"../../HBoxContainer/AllDemonRows/Row2".visible = true
 		$"../../HBoxContainer/AllDemonRows/Row3".visible = true
 	
-		$"../../HBoxContainer/AllDemonRows/AltRow1".visible = false 
-		$"../../HBoxContainer/AllDemonRows/AltRow2".visible = false 
-		$"../../HBoxContainer/AllDemonRows/AltRow3".visible = false 
+		$"../../HBoxContainer/AllDemonRows/AltRow1".visible = false
+		$"../../HBoxContainer/AllDemonRows/AltRow2".visible = false
+		$"../../HBoxContainer/AllDemonRows/AltRow3".visible = false
 		current_page = current_page - 1
 		$"../../InteractiveBook2D".go_to_page(current_page)
 	

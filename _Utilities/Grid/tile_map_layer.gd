@@ -22,7 +22,7 @@ func _ready() -> void:
 		_setup_shader()
 
 func _setup_shader() -> void:
-	var shader = Shader.new()
+	var shader := Shader.new()
 	shader.code = """
 shader_type canvas_item;
 

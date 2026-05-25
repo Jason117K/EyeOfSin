@@ -1,16 +1,16 @@
 extends Node
 
-var stop_ability_timer : Timer 
+var stop_ability_timer: Timer
 var ability_duration := 3.0
-var cooldown_timer : Timer
+var cooldown_timer: Timer
 var cooldown_duration := 6.0
 var is_active := false
 var is_on_cooldown := false
-var cooldown_elapsed = 0.0
+var cooldown_elapsed := 0.0
 var cooldown_fill_amount := 0.0
 
 @onready var cooldown_length_special := cooldown_duration - 2.5
-@onready var cooldown_length_normal := cooldown_duration 
+@onready var cooldown_length_normal := cooldown_duration
 @onready var cooldown_visual := $Control/CooldownVisual
 
 const STEP := 0.1
@@ -20,23 +20,22 @@ func _ready() -> void:
 	cooldown_visual.material.set_shader_parameter("fill_amount", 0.0)
 	Global.register_swap_ability(self)
 	cooldown_timer = Timer.new()
-	cooldown_timer.one_shot = true 
+	cooldown_timer.one_shot = true
 	cooldown_timer.autostart = false
 	cooldown_timer.wait_time = cooldown_duration
 	cooldown_timer.timeout.connect(reset_cooldown)
 	add_child(cooldown_timer)
 	#cooldown_timer.start()
-	
-func reset_cooldown():
+
+func reset_cooldown() -> void:
 	is_on_cooldown = false
 
-func reset_on_game_start():
-	
+func reset_on_game_start() -> void:
 	cooldown_fill_amount = 0
-	is_on_cooldown = true 
+	is_on_cooldown = true
 	cooldown_timer.start()
-	
-func begin():
+
+func begin() -> void:
 	pass
 	print("BLOOD BEGUIN")
 	#Stopped too soon, longer cooldown
@@ -46,9 +45,9 @@ func begin():
 		return
 	
 	if is_on_cooldown:
-		return 
-		
-	is_active = true 
+		return
+
+	is_active = true
 	cooldown_fill_amount = 0.0
 	for child in get_children():
 		if child.has_method("show"):
@@ -59,28 +58,26 @@ func begin():
 			zombie.blood_slow()
 		
 	stop_ability_timer = Timer.new()
-	stop_ability_timer.one_shot = true 
+	stop_ability_timer.one_shot = true
 	stop_ability_timer.autostart = false
 	stop_ability_timer.wait_time = ability_duration
 	stop_ability_timer.timeout.connect(ability_full_duration_end)
 	add_child(stop_ability_timer)
 	stop_ability_timer.start()
-	
-	
-	
-func ability_full_duration_end():
+
+
+func ability_full_duration_end() -> void:
 	cooldown_duration = cooldown_length_special
 	undoBloodSlow()
-	
-func undoBloodSlow():
-	
+
+func undoBloodSlow() -> void:
 	if is_active:
 		for zombie in Global.get_all_zombies():
 			if zombie != null:
 				zombie.undoBloodSlow()
 		stop()
 		
-func stop():
+func stop() -> void:
 	#for child in get_children():
 		#if child.has_method("hide"):
 			#child.hide()
@@ -89,11 +86,11 @@ func stop():
 	is_active = false
 	cooldown_timer.wait_time = cooldown_duration
 	cooldown_timer.start()
-	is_on_cooldown = true 
+	is_on_cooldown = true
 	cooldown_elapsed = 0.0
 
 
-func append_new_zombie(new_zombie):
+func append_new_zombie(new_zombie) -> void:
 	if is_active == true:
 		new_zombie.blood_slow()
 		

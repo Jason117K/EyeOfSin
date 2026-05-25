@@ -1,18 +1,18 @@
 extends AnimatedSprite2D
 class_name InteractiveBook2D
 
-@export var page_count : int = 9001 # total pages in the book, keep this to at leat 5 if you want all animations to work
+@export var page_count: int = 9001 # total pages in the book, keep this to at leat 5 if you want all animations to work
 
-var current_page : int = 0 # tracks the current page the book is displaying
+var current_page: int = 0 # tracks the current page the book is displaying
 
 # - set the book to be closed when the scene is loaded
-func _ready():
+func _ready() -> void:
 	current_page = 0
 	go_to_page(1)
 
 # - Use this to always get a page number that is within the set page count
 # - Cycles the number when a value outside the accepted range is provided
-func clamp_current_page(new_page : int) -> int:
+func clamp_current_page(new_page: int) -> int:
 	# - negative values are interpreted as wanting to go to the last page
 	if new_page < 0:
 		new_page = page_count
@@ -29,7 +29,7 @@ func clamp_current_page(new_page : int) -> int:
 # - Correct unique animation played if matching criteria found
 # - If no unqiue animation is needed, it plays a standard next or previous page animation
 # - Which one it chooses is based on if the given number is higher or lower than the current page 
-func go_to_page(page : int):
+func go_to_page(page: int) -> void:
 	# do nothing if already at the given page
 	if current_page == page:
 		return
@@ -78,13 +78,13 @@ func go_to_page(page : int):
 	current_page = page # set current page to the new page
 
 # - recieves signal from NextPageButton
-func _on_next_page_button_button_down():
+func _on_next_page_button_button_down() -> void:
 	go_to_page(clamp_current_page(current_page + 1))
 
 # - recieves signal from PreviousPageButton
-func _on_previous_page_button_button_down():
+func _on_previous_page_button_button_down() -> void:
 	go_to_page(clamp_current_page(current_page - 1))
 
 # - recieves signal from CloseButton
-func _on_close_button_button_down():
+func _on_close_button_button_down() -> void:
 	go_to_page(clamp_current_page(0))

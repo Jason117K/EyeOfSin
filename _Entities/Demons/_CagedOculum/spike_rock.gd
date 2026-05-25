@@ -1,10 +1,10 @@
 extends Area2D
 var spike_damage := 18.5
 var spike_wait_time := 5
-var spike_timer : Timer
+var spike_timer: Timer
 @onready var spike_rock_sprite := $AnimatedSprite2D
 	
-func activate():
+func activate() -> void:
 	spike_damage = get_parent().spike_damage
 	print("Spike Damage On Activate is ", spike_damage)
 	show()
@@ -29,13 +29,13 @@ func activate():
 	
 	spike_timer = Timer.new()
 	spike_timer.autostart = false
-	spike_timer.one_shot = false 
+	spike_timer.one_shot = false
 	spike_timer.wait_time = spike_wait_time
 	spike_timer.timeout.connect(spike_attack)
 	add_child(spike_timer)
 	spike_timer.start()
 
-func spike_attack():
+func spike_attack() -> void:
 	spike_rock_sprite.play()
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):

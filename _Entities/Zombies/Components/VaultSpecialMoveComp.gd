@@ -2,24 +2,24 @@ extends Node2D
 #VaultSpecialMoveComp.gd
 
 @onready var animatedSprite := $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
-@onready var speedComp = $"../SpeedComponent"       # RefCounted to speed component 
+@onready var speedComp := $"../SpeedComponent"       # RefCounted to speed component
 @onready var attack_comp := $"../AttackComponent"
-@onready var parent = get_parent()                  # RefCounted to parent 
-var vaultTimer :Timer
+@onready var parent := get_parent()                  # RefCounted to parent
+var vaultTimer: Timer
 #@onready var tween = Tween.new()  # Create new Tween node
 var tween
-var move_duration = 3.3  # Duration of the vault movement in seconds
-var vault_distance = -110  # Distance to move left (negative for leftward movement)
-var moveDone = false
+var move_duration := 3.3  # Duration of the vault movement in seconds
+var vault_distance := -110  # Distance to move left (negative for leftward movement)
+var moveDone := false
 
-func _ready():
+func _ready() -> void:
 	# Add Tween as child of this node
 	tween = create_tween()
 	tween.stop()
 
 
 # Perform the pole vault 
-func executeMove():
+func executeMove() -> void:
 	animatedSprite.animation = "Vault"
 	speedComp.setSpeed(0)
 
@@ -29,10 +29,10 @@ func executeMove():
 	vaultTimer.one_shot = true
 	vaultTimer.connect("timeout", Callable(self, "_on_vault_timer_timeout"))
 
-	var start_pos = parent.position
-	var end_pos = start_pos + Vector2(vault_distance, 0)
+	var start_pos := parent.position
+	var end_pos := start_pos + Vector2(vault_distance, 0)
 
-	var tweener = tween.tween_property(parent, "position", end_pos, move_duration)
+	var tweener := tween.tween_property(parent, "position", end_pos, move_duration)
 	if tweener:  # Check if tween was created successfully
 		tweener.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	else:
@@ -49,7 +49,7 @@ func executeMove():
 	tween.play()
 
 # Stop the tween and delete the timer 
-func _on_vault_timer_timeout():
+func _on_vault_timer_timeout() -> void:
 	# Stop the tween if it's still running
 	if tween and tween.is_running():
 		tween.stop()
@@ -62,18 +62,18 @@ func _on_vault_timer_timeout():
 	moveFinished()
 
 # Make it so the polevaulter cannot vault again and starts walking normally 
-func moveFinished():
+func moveFinished() -> void:
 	animatedSprite.setSpecialMoveFalse()
 	speedComp.setSpeed(26)
 	attack_comp.stop_attack()
 	moveDone = true
 
-func silence():
+func silence() -> void:
 	animatedSprite.setSpecialMoveFalse()
 	speedComp.setSpeed(26)
 	moveDone = true
 	#TODO Add Ability to Recover From Being Silenced?
 
 # Informs whether or not the move was performed 
-func isMoveFinished():
+func isMoveFinished() -> bool:
 	return moveDone

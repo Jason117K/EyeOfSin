@@ -1,22 +1,21 @@
 extends AttackComponent
 
-@export var shootProbability = 20
+@export var shootProbability := 20
 
-@onready var attack_rays = [$"../DMGRayCast2D_1", $"../DMGRayCast2D_2", $"../DMGRayCast2D_3"]
-@onready var shoot_ray = $"../DMGRayCast2D_Shoot"
-@onready var target_demons = []
-@onready var teleport_timer = $"../TeleportTimer"
-@onready var shoot_timer = $"../ShootTimer"
-var projectile_scene = preload("res://_Entities/Zombies/_RohanZombie/RohanProjectile.tscn" )
-var rng = RandomNumberGenerator.new()
-var laneYPositions = [77.0, 109.0, 141.0, 173.0, 205.0, 239.15, 272.0]
+@onready var attack_rays := [$"../DMGRayCast2D_1", $"../DMGRayCast2D_2", $"../DMGRayCast2D_3"]
+@onready var shoot_ray := $"../DMGRayCast2D_Shoot"
+@onready var target_demons := []
+@onready var teleport_timer := $"../TeleportTimer"
+@onready var shoot_timer := $"../ShootTimer"
+var projectile_scene := preload("res://_Entities/Zombies/_RohanZombie/RohanProjectile.tscn")
+var rng := RandomNumberGenerator.new()
+var laneYPositions := [77.0, 109.0, 141.0, 173.0, 205.0, 239.15, 272.0]
 
-func attack_demon(collider):
+func attack_demon(collider) -> void:
 	pass
-	
 
-	
-func _on_TeleportTimer_timeout():
+
+func _on_TeleportTimer_timeout() -> void:
 	teleport_timer.stop()
 	stop_attack()
 	teleport_timer.wait_time = rng.randf_range(2, 15)
@@ -24,11 +23,11 @@ func _on_TeleportTimer_timeout():
 	zombieSprite.play("Teleport_Start")
 	await zombieSprite.animation_finished
 	if self.parent.is_in_group("Purple"):
-		var alternate_scene = get_tree().get_first_node_in_group("Green")
+		var alternate_scene := get_tree().get_first_node_in_group("Green")
 		parent.reparent(alternate_scene.get_game_layer())
 		changeGroup()
 	elif self.parent.is_in_group("Green"):
-		var alternate_scene = get_tree().get_first_node_in_group("Purple")
+		var alternate_scene := get_tree().get_first_node_in_group("Purple")
 		parent.reparent(alternate_scene.get_game_layer())
 		changeGroup()
 	parent.position = Vector2(650, laneYPositions[rng.randi_range(0, laneYPositions.size() - 1)])
@@ -36,7 +35,7 @@ func _on_TeleportTimer_timeout():
 	await zombieSprite.animation_finished
 	is_attacking = false
 	shoot_timer.start()
-	
+
 
 #if self.is_in_group("Green"):
 		#print(" I AM GREEN CRAWLER I WILL ATTACK GREEN")
@@ -50,7 +49,7 @@ func _on_TeleportTimer_timeout():
 		#$DMG_RayCast2D.set_collision_mask_value(3,false)
 
 
-func changeGroup():
+func changeGroup() -> void:
 	if(self.parent.is_in_group("Green")):
 		parent.remove_from_group("Green")
 		parent.add_to_group("Purple")
@@ -71,8 +70,8 @@ func changeGroup():
 		self.parent.set_collision_layer_value(1,false)
 		self.parent.set_collision_layer_value(2,false)
 		self.parent.set_collision_layer_value(3,true)
-	
-func _on_AttackTimer_timeout():
+
+func _on_AttackTimer_timeout() -> void:
 	if(teleport_timer.is_stopped()):
 		teleport_timer.start()
 	#print("Basic Zombie Attack Timer Timeout")
@@ -116,18 +115,18 @@ func _on_AttackTimer_timeout():
 	target_demons = []
 	stop_attack()
 # Stops the attack and resumes movement
-func stop_attack():
+func stop_attack() -> void:
 	#print("Stopping Attack")
 	is_attacking = false
 	target_demons = null
 	attack_timer.stop()
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if not is_attacking:
-		var colliders = []
+		var colliders := []
 		for ray in attack_rays:
 			if ray.is_colliding():
-				var collider = ray.get_collider()
+				var collider := ray.get_collider()
 				#print(parent.name , " Its collding with ", collider.name )
 				if collider:
 					if collider.is_in_group("Demons"):
@@ -169,14 +168,14 @@ func _process(_delta):
 					shoot()
 
 
-func shoot():
+func shoot() -> void:
 	stop_attack()
 	is_attacking = true
 	zombieSprite.play("Shoot_Start")
 	await zombieSprite.animation_finished
-	
+
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
-	var projectile = projectile_scene.instantiate()
+	var projectile := projectile_scene.instantiate()
 	projectile.global_position = global_position - Vector2(32, 0)  # Adjust starting position
 	get_parent().get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
