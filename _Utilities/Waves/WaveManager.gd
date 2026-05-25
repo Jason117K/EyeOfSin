@@ -11,7 +11,7 @@ signal level_ended
 @export var wave_delays: Array = []
 
 ## Seconds before a wave starts that the preview icon appears.
-@export var preview_lead_time: float = 25.0
+@export var preview_lead_time: float = 20.0
 
 ## Player health — will be extracted to a separate node later.
 @export var health_points: int = 1000

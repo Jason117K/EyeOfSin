@@ -3590,8 +3590,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_te6yt")
 new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
-wave3StartTime = 40
-debug = false
+wave2StartTime = 45
 skip_end_dialog = false
 
 [node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
@@ -3891,7 +3890,7 @@ sprite_frames = SubResource("SpriteFrames_gktj4")
 autoplay = "default"
 flip_h = true
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]
