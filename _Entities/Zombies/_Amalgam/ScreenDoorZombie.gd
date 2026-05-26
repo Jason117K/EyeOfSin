@@ -9,6 +9,10 @@ extends Zombie
 # Stores death count for transformation purposes
 var deathCount := 0
 
+func _ready() -> void:
+	super()
+	healthComp = AmalgamHealthRefCounted.new(self)
+
 func silence() -> void:
 	super()
 	deathCount = 2

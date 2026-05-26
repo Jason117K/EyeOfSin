@@ -57,7 +57,6 @@ func _physics_process(_delta: float) -> void:
 				health_progress_bar_label.text = str(int(current_demon.get_health())) + " / " + str(int(current_demon.get_max_health()))
 	pass
 	
-	Object
 	
 func set_panel_border_color(panel: PanelContainer, color: Color) -> void:
 	var stylebox := panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat

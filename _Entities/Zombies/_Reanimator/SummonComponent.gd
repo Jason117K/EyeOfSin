@@ -5,7 +5,7 @@ extends Node2D
 @onready var summonTimer := $SummonTimer
 @onready var dancerZombie := get_parent()
 @onready var animatedSpriteComp := get_parent().get_node("AnimatedSprite2D")
-@onready var attackComp := $"../AttackComponent"
+@onready var attackComp :ZombieAttackRefCountedComponent    #= dancerZombie.get_attack_comp() # $"../AttackComponent"
 
 #Summon Points for BackUp Dancers
 @onready var point1 := $SummonPoint1

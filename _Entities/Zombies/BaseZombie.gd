@@ -9,6 +9,9 @@ signal zombie_death
 @export var health := 76
 @export var healthRegen := 0.0
 @export var bleed_tick_damage := 0
+@export var hit_flash_duration := 0.3
+@export var should_health_regen := false 
+@export var time_between_health_regen := 5
 
 @export_category("Speed")
 @export var speed : float = 20
@@ -25,16 +28,20 @@ signal zombie_death
 @export var silence_field_position : Vector2
 
 # --- Component references ---
-@onready var healthComp : ZombieHealthComponent = $HealthComponent
-@onready var speedComp := $SpeedComponent
-@onready var attackComp : AttackComponent = $AttackComponent
+#@onready var healthComp : ZombieHealthComponent = $HealthComponent
+var healthComp : ZombieHealthRefCountedComponent
+#@onready var speedComp := $SpeedComponent
+var speedComp : ZombieSpeedRefCountedComponent
+#@onready var attackComp : AttackComponent = $AttackComponent
+var attackComp : ZombieAttackRefCountedComponent
 @onready var animatedSprite : ZombieSpriteComp = $AnimatedSprite2D
 @onready var attack_ray := $DMGRayCast2D
 @onready var bloodHit := $BloodHit
+#@onready var attack_timer := $AttackTimer
 @onready var damage_vfx_spawn_locations := [bloodHit]
-@onready var debuff_degrade_timer : Timer = $DebuffDegrade
-@onready var reset_color_timer : Timer = $ResetThisColor
-@onready var just_spawned_timer : Timer = $JustNowSpawned
+#@onready var debuff_degrade_timer : Timer = $DebuffDegrade
+#@onready var reset_color_timer : Timer = $ResetThisColor
+#@onready var just_spawned_timer : Timer = $JustNowSpawned
 
 # --- Preloads ---
 var slow_field_scene := preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
@@ -70,6 +77,9 @@ const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
 var column_explosion : Node 
 var silence_field : Node
 var is_silenced := false
+var is_debuffed := false 
+var time_since_debuff_applied : float = 0 
+@export var debuff_duration := 1.0
 var isSlow := 0
 var thisMaterial : Material
 var thisMaterial2 : Material 
@@ -77,6 +87,8 @@ var should_spawn_slow_field := false
 var should_spawn_drone_on_death := false
 var should_column_explode := false
 var reset_speed_timer: Timer
+var hit_flash_active : bool = false 
+var time_since_hit : float = 0.0 
 
 var is_demo := false
 var is_dead := false
@@ -85,8 +97,15 @@ var demo_original_speed: float
 @export var spawn_x := 180.0
 @export var despawn_x := -20.0
 @export var respawn_delay := 1.5
+var time_since_spawn : float = 0 
 
 func _ready() -> void:
+	speedComp = ZombieSpeedRefCountedComponent.new(self)
+	healthComp = ZombieHealthRefCountedComponent.new(self)
+	attackComp = ZombieAttackRefCountedComponent.new(self)
+
+	animatedSprite.attackComp = attackComp
+	
 	Zombie._load_descriptions()
 	if self.is_in_group("Green"):
 		self.set_collision_layer_value(1, false)
@@ -98,9 +117,9 @@ func _ready() -> void:
 		self.set_collision_layer_value(2, false)
 		self.set_collision_layer_value(3, false)
 		self.set_collision_layer_value(4, true)
-	debuff_degrade_timer.timeout.connect(_on_DebuffDegrade_timeout)
-	reset_color_timer.timeout.connect(_on_ResetThisColor_timeout)
-	just_spawned_timer.timeout.connect(_on_JustNowSpawned_timeout)
+	#debuff_degrade_timer.timeout.connect(_on_DebuffDegrade_timeout)
+	#reset_color_timer.timeout.connect(_on_ResetThisColor_timeout)
+	#just_spawned_timer.timeout.connect(_on_JustNowSpawned_timeout)
 	if is_demo:
 		respawn_timer = Timer.new()
 		process_mode = Node.PROCESS_MODE_ALWAYS
@@ -112,7 +131,8 @@ func _ready() -> void:
 		Global.register_zombie(self)
 
 			
-
+func get_attack_comp()->ZombieAttackRefCountedComponent:
+	return attackComp
 
 func make_demo() -> void:
 	is_demo = true
@@ -127,9 +147,27 @@ func get_zombie_icon() -> CompressedTexture2D:
 func _process(delta: float) -> void:
 	if animatedSprite.isDead:
 		return
-
+	
+	if time_since_spawn < 1.0:
+		time_since_spawn += delta
+		if time_since_spawn > 0.1:
+			_on_JustNowSpawned_timeout()
+	if hit_flash_active:
+		time_since_hit += delta
+		if time_since_hit >= hit_flash_duration:
+			hit_flash_active = false
+			time_since_hit = 0
+			_on_ResetThisColor_timeout()
+	if is_debuffed:
+		time_since_debuff_applied += delta 
+		if time_since_debuff_applied >= debuff_duration:
+			time_since_debuff_applied = 0
+			_on_DebuffDegrade_timeout()
+		
+			
 	# --- State Update ---
 	# 1. Health: regen is timer-driven, injured flag updated on damage/regen
+	healthComp.tick(delta)
 
 	# 2. Speed & status: event/timer-driven, no per-frame work
 	#    (reserved slot for future per-frame state updates)
@@ -190,7 +228,9 @@ func die() -> void:
 			$AnimatedSprite2D.play("death")
 		queue_free()
 
-
+func setSpeed(newSpeed:float)->void:
+	speedComp.setSpeed(newSpeed)
+	
 func spawn_slow_field_on_death() -> void:
 	var slow_field := slow_field_scene.instantiate()
 	slow_field.global_position = self.global_position
@@ -228,14 +268,15 @@ func take_damage(damage: float, piercing: bool = false) -> void:
 			thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
 			thisMaterial2.set_shader_parameter("replace_color", Color.WHITE)
 			thisMaterial2.set_shader_parameter("tolerance", 1)
-		$ResetThisColor.start()
+		#$ResetThisColor.start()
+	hit_flash_active = true
 
 
 func bleed(bleed_damage: float) -> void:
 	healthComp.bleed(bleed_damage)
 
 
-func getHealthComponent() -> ZombieHealthComponent:
+func getHealthComponent() -> ZombieHealthRefCountedComponent:
 	return healthComp
 
 
@@ -266,7 +307,9 @@ func undoBloodSlow() -> void:
 func slow() -> void:
 	isSlow = isSlow + 100
 	speedComp.slow()
-	$DebuffDegrade.start()
+	is_debuffed = true 
+	time_since_debuff_applied = 0
+
 
 
 func getSlow() -> int:
@@ -419,9 +462,12 @@ func _on_JustNowSpawned_timeout() -> void:
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
 	add_to_group("Alive-Enemies")
 
+func get_is_injured()->bool:
+	return healthComp.injured
+
 
 func _on_ResetThisColor_timeout() -> void:
-
+	pass
 	thisMaterial.set_shader_parameter("target_color", Color.BLACK)
 	thisMaterial.set_shader_parameter("replace_color", Color.BLACK)
 	thisMaterial.set_shader_parameter("tolerance", 0.1)
@@ -436,7 +482,7 @@ func _on_DebuffDegrade_timeout() -> void:
 		isSlow -= 10
 		if isSlow <= 0:
 			isSlow = 0
-			$DebuffDegrade.stop()
+
 
 
 func _on_blood_hit_animation_finished() -> void:

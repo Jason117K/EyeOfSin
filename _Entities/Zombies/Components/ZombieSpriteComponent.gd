@@ -22,9 +22,9 @@ var is_attacking : bool
 var isSlow : float 
 var isInjured : bool 
 @onready var zombie := get_parent()
-@onready var attackComp := $"../AttackComponent"
+@onready var attackComp :ZombieAttackRefCountedComponent #= zombie.get_attack_comp()  #$"../AttackComponent"
 #@onready var attack_audio_player = $"../AttackAudioPlayer"
-@onready var healthComp := $"../HealthComponent"
+#@onready var healthComp := $"../HealthComponent"
 
 var isDead := false
 var specialMove := false
@@ -80,7 +80,7 @@ func tick(_delta: float) -> void:
 	if _sprite_frame_counter % 5 != 0:
 		return
 	is_attacking = attackComp.is_attacking
-	isInjured = healthComp.injured
+	isInjured = zombie.get_is_injured()
 	isSlow = zombie.isSlow
 
 	if specialMove:

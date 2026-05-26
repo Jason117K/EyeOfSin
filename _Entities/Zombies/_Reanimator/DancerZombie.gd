@@ -4,6 +4,10 @@ extends Zombie
 # Handles Any DancerZombie Specific Logic
 @onready var summon_comp := $SummonComponent
 
+
+func _ready() -> void:
+	super()
+	summon_comp.attackComp = attackComp
 func silence() -> void:
 	super()
 	summon_comp.silence()

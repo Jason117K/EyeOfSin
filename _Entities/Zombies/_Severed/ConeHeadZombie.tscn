@@ -3,10 +3,7 @@
 [ext_resource type="Script" uid="uid://bs1do4ve65fp4" path="res://_Entities/Zombies/_Severed/ConeHeadZombie.gd" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="2_tbvgb"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_pt70x"]
-[ext_resource type="PackedScene" uid="uid://dwam11o25ryno" path="res://_Entities/Zombies/Components/ZombieSpeedComponent.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://qja2a0tk4rba" path="res://_Entities/Zombies/Components/ZombieAttackComponent.tscn" id="9"]
 [ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="9_bkie4"]
-[ext_resource type="PackedScene" uid="uid://bo6fgcv3jv8fe" path="res://_Entities/Zombies/Components/ZombieHealthComponent.tscn" id="10"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="12_ebmmd"]
 
@@ -37,13 +34,6 @@ position = Vector2(-8, 1)
 sprite_frames = ExtResource("2_tbvgb")
 animation = &"hit"
 
-[node name="HealthComponent" parent="." unique_id=384784267 instance=ExtResource("10")]
-position = Vector2(4, 4)
-
-[node name="SpeedComponent" parent="." unique_id=303606292 instance=ExtResource("8")]
-
-[node name="AttackComponent" parent="." unique_id=1640668777 instance=ExtResource("9")]
-
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=605777344]
 position = Vector2(4, 2.5)
 shape = SubResource("1")
@@ -67,19 +57,6 @@ targetGlowColor = Color(1, 0.145098, 0.168627, 1)
 target_position = Vector2(-8, 0)
 collide_with_areas = true
 
-[node name="AttackTimer" type="Timer" parent="." unique_id=2128140176]
-
-[node name="JustNowSpawned" type="Timer" parent="." unique_id=1780924888]
-wait_time = 0.1
-one_shot = true
-autostart = true
-
-[node name="ResetThisColor" type="Timer" parent="." unique_id=1321230890]
-wait_time = 0.3
-
-[node name="DebuffDegrade" type="Timer" parent="." unique_id=118109827]
-
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="timeout" from="AttackTimer" to="AttackComponent" method="_on_AttackTimer_timeout"]

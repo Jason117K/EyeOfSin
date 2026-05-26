@@ -3,6 +3,9 @@ extends Zombie
 
 # Handles Any BackUpDancerZombie Specific Logic
 
+func _ready() -> void:
+	super()
+	attackComp = WretchAttackRefCounted.new(self)
 
 func get_zombie_name() -> String:
 	return " WRETCH "

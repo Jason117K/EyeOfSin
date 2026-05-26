@@ -4,7 +4,11 @@ extends Zombie
 # Handles PoleVault Zombie specific functionality
 
 @onready var specialMoveComp := $SpecialMoveComp
-@onready var attack_comp := $AttackComponent
+
+
+func _ready() -> void:
+	super()
+	specialMoveComp.attack_comp = attackComp
 
 # Specific Pole Vault Special Move
 func special_move() -> void:
@@ -23,7 +27,7 @@ func silence() -> void:
 	print(self, "Is Silenced")
 	super()
 	specialMoveComp.silence()
-	attack_comp.canSpecial = false
+	attackComp.canSpecial = false
 	silence_field.position = silence_field_position
 
 func get_special_description() -> String:

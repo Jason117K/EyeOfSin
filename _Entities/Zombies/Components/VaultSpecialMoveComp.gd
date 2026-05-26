@@ -2,9 +2,10 @@ extends Node2D
 #VaultSpecialMoveComp.gd
 
 @onready var animatedSprite := $"../AnimatedSprite2D"  # RefCounted to animated Sprite2D
-@onready var speedComp := $"../SpeedComponent"       # RefCounted to speed component
-@onready var attack_comp := $"../AttackComponent"
-@onready var parent := get_parent()                  # RefCounted to parent
+#@onready var speedComp := $"../SpeedComponent"       # RefCounted to speed component
+@onready var parent :Zombie= get_parent()                  # RefCounted to parent
+@onready var attack_comp :ZombieAttackRefCountedComponent   #= parent.get_attack_comp()# $"../AttackComponent"
+
 var vaultTimer: Timer
 #@onready var tween = Tween.new()  # Create new Tween node
 var tween : Tween
@@ -21,7 +22,7 @@ func _ready() -> void:
 # Perform the pole vault 
 func executeMove() -> void:
 	animatedSprite.animation = "Vault"
-	speedComp.setSpeed(0)
+	parent.setSpeed(0)
 
 	vaultTimer = Timer.new()
 	add_child(vaultTimer)
@@ -64,13 +65,13 @@ func _on_vault_timer_timeout() -> void:
 # Make it so the polevaulter cannot vault again and starts walking normally 
 func moveFinished() -> void:
 	animatedSprite.setSpecialMoveFalse()
-	speedComp.setSpeed(26)
+	parent.setSpeed(26)
 	attack_comp.stop_attack()
 	moveDone = true
 
 func silence() -> void:
 	animatedSprite.setSpecialMoveFalse()
-	speedComp.setSpeed(26)
+	parent.setSpeed(26)
 	moveDone = true
 	#TODO Add Ability to Recover From Being Silenced?
 

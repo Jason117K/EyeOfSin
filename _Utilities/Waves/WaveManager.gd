@@ -14,7 +14,7 @@ signal level_ended
 @export var preview_lead_time: float = 20.0
 
 ## Player health — will be extracted to a separate node later.
-@export var health_points: int = 1000
+@export var health_points: int = 9999
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
@@ -172,6 +172,7 @@ func _check_level_end() -> void:
 	if not _all_spawning_done:
 		return
 	if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
+		print("Emitting Level End Cos No Enmeies In Group")
 		level_ended.emit()
 	else:
 		get_tree().create_timer(1.0).timeout.connect(_check_level_end)

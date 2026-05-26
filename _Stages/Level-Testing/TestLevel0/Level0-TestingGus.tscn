@@ -24,18 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="40_pfiab"]
 [ext_resource type="Script" uid="uid://d3yjo4efg0sgs" path="res://_UI/Buttons/button_breathe.gd" id="41_sdtya"]
 
-[sub_resource type="Resource" id="Resource_0qdba"]
+[sub_resource type="Resource" id="Resource_x0iwp"]
 script = ExtResource("5_x0iwp")
-Reborn = 1
-Flesheater = 1
-metadata/_custom_type_script = "uid://crr67tmp2yh8d"
-
-[sub_resource type="Resource" id="Resource_wsteu"]
-script = ExtResource("5_x0iwp")
-metadata/_custom_type_script = "uid://crr67tmp2yh8d"
-
-[sub_resource type="Resource" id="Resource_uxjs4"]
-script = ExtResource("5_x0iwp")
+Reborn = 7
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
@@ -94,7 +85,6 @@ process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 109)
-waves = Array[ExtResource("5_x0iwp")]([SubResource("Resource_0qdba"), SubResource("Resource_wsteu"), SubResource("Resource_uxjs4")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=288115831 instance=ExtResource("5_a2wpy")]
 z_index = 1
@@ -116,6 +106,7 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 205)
+waves = Array[ExtResource("5_x0iwp")]([SubResource("Resource_x0iwp")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=477558108 instance=ExtResource("5_a2wpy")]
 z_index = 1

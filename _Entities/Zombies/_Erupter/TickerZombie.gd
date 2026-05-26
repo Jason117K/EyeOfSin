@@ -4,6 +4,11 @@ extends Zombie
 # Handles Any Ticker Zombie Specific Logic
 @onready var aoe := $AOEHit
 
+
+func _ready() -> void:
+	super()
+	attackComp = ErupterAttackRefCounted.new(self)
+
 func get_zombie_name() -> String:
 	return " ERUPTER "
 
@@ -18,3 +23,6 @@ func get_special_description() -> String:
 
 func get_zombie_icon() -> CompressedTexture2D:
 	return Global.erupter_icon
+
+func goBoom()->void:
+	aoe.goBoom()
