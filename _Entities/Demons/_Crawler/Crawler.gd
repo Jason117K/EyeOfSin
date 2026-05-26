@@ -9,6 +9,7 @@ extends Demon
 @export var attack_speed_mult := 1.0
 @export var projectile_spawn_offest: Vector2 = Vector2(32, 0)
 @export var blood_worth_to_add := 10.0
+@export var shoot_interval := 2.0
 
 # --- Preloads ---
 var projectile_scene: PackedScene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")

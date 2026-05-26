@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://cejp4o21lifwa"]
+
+[ext_resource type="Script" uid="uid://bp7x68x133j1s" path="res://_Entities/Demons/Tentacles/Tentacle.gd" id="1_2tmg0"]
+[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="2_5kkha"]
+[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="3_4vtjq"]
+[ext_resource type="Shader" uid="uid://dvcmoaj2bkbf3" path="res://_Utilities/TentacleDemo/shaders/outline.gdshader" id="4_a1t5f"]
+[ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://_Utilities/TentacleDemo/shaders/canvas_group_two_tone.gdshader" id="5_qqx1f"]
+[ext_resource type="Texture2D" uid="uid://dey55mcq10gc0" path="res://_Entities/Zombies/_Severed/HeadLessConeZombie-Sheet.png" id="6_u5nqp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_meb0m"]
+shader = ExtResource("4_a1t5f")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 0.0
+shader_parameter/alpha_threshold = 0.8
+shader_parameter/outline_samples = 4
+shader_parameter/shade_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h10go"]
+shader = ExtResource("5_qqx1f")
+shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
+shader_parameter/dark_color = Color(0.36078432, 0, 0.047058824, 1)
+shader_parameter/shade_ratio = 0.53
+
+[sub_resource type="Curve" id="Curve_t6ywv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2yqj"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(0, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdnlr"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(62, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_608yw"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(124, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_retgs"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(186, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25ukm"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(248, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o67n5"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(310, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nu5u"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(372, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl3c6"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(434, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x54j7"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(496, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsv0j"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(620, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg8sn"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(682, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nvx7"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(744, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg7g5"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(806, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0c34"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(868, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj2jm"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(930, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywvcn"]
+atlas = ExtResource("6_u5nqp")
+region = Rect2(992, 0, 62, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tsbbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2yqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdnlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_608yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_retgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25ukm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o67n5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nu5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl3c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x54j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsv0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg8sn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nvx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg7g5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0c34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj2jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywvcn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ConeTentTest" type="Node2D" unique_id=1473598916]
+
+[node name="Tentacle" type="Node2D" parent="." unique_id=611075784]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_2tmg0")
+
+[node name="ArmTarget" parent="Tentacle" unique_id=138643601 instance=ExtResource("2_5kkha")]
+position = Vector2(-14, -28)
+
+[node name="Arm" parent="Tentacle" unique_id=634789705 instance=ExtResource("3_4vtjq")]
+position = Vector2(-2, 2)
+width_curve = null
+
+[node name="OutlinedSubViewportContainer" parent="Tentacle/Arm" index="1" unique_id=919528686]
+material = SubResource("ShaderMaterial_meb0m")
+
+[node name="ShadowLine" parent="Tentacle/Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(634789705, 648045698) index="0" unique_id=1872142284]
+visible = false
+points = PackedVector2Array(112.595, 131.435, 111.50639, 131.07828, 110.95846, 130.431, 110.940956, 129.68155, 111.381546, 128.99901, 111.99662, 128.37962, 112.37093, 127.66776, 112.35468, 126.91522, 111.92162, 126.24963, 111.0796, 125.816025, 109.895706, 125.7648, 108.632904, 125.838646, 107.555916, 125.5924, 106.87533, 125.01481, 106.74298, 124.276146, 107.25892, 123.63817, 108.35437, 123.42175, 109.64365, 123.50041, 110.81418, 123.35442, 111.60907, 122.84198, 111.81076, 122.11835, 111.29315, 121.50844, 110.1681, 121.43732, 108.875656, 121.88985, 107.63714, 122.21767)
+width = 1.0
+
+[node name="TwoToneCanvasGroup" parent="Tentacle/Arm/OutlinedSubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(634789705, 1073598609) index="1" unique_id=2001686121]
+material = SubResource("ShaderMaterial_h10go")
+
+[node name="BaseLine" parent="Tentacle/Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
+points = PackedVector2Array(112.595, 126.435, 111.50639, 125.45328, 110.95846, 124.181, 110.940956, 122.80655, 111.381546, 121.49901, 111.99662, 120.25462, 112.37093, 118.91776, 112.35468, 117.54022, 111.92162, 116.24963, 111.0796, 115.191025, 109.895706, 114.5148, 108.632904, 113.963646, 107.555916, 113.0924, 106.87533, 111.88981, 106.74298, 110.526146, 107.25892, 109.26317, 108.35437, 108.42175, 109.64365, 107.87541, 110.81418, 107.10442, 111.60907, 105.96698, 111.81076, 104.61835, 111.29315, 103.38344, 110.1681, 102.68732, 108.875656, 102.51485, 107.63714, 102.21767)
+width = 2.0
+width_curve = SubResource("Curve_t6ywv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1788027208]
+position = Vector2(1, -2)
+sprite_frames = SubResource("SpriteFrames_tsbbd")
+frame = 3
+frame_progress = 0.67139393
+
+[editable path="Tentacle/Arm"]

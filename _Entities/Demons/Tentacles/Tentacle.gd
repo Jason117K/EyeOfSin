@@ -50,6 +50,8 @@ var _movement_tween: Tween = null
 
 func _ready() -> void:
 	arm_target.global_position = global_position + idle_offset
+	
+
 
 
 func is_available() -> bool:

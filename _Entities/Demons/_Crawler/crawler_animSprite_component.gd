@@ -26,12 +26,8 @@ func _on_AnimatedSprite_frame_changed() -> void:
 
 func _on_animation_finished() -> void:
 	super()
-	if demon.get_can_attack():
-		animation = currentAttackAnim
-		play()
-	else:
-			animation = currentAnim
-			play()
+	# Attack timing is now controlled by the shoot timer,
+	# not by checking canAttack on animation finish.
 
 func receive_buff(demonName: String) -> void:
 	super(demonName)

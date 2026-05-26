@@ -1,6 +1,8 @@
 extends ProjectileShootComponent
 
 var blood_worth_to_add := 10.0
+var shoot_interval: float
+var shoot_timer: Timer
 @onready var attack_ray_1 := $"../DMG_RayCast2D"
 var second_shot_timer: Timer
 
@@ -10,15 +12,37 @@ func _ready() -> void:
 	attack_speed_mult = parent_demon.attack_speed_mult
 	projectile_spawn_offest = parent_demon.projectile_spawn_offest
 	blood_worth_to_add = parent_demon.blood_worth_to_add
+	shoot_interval = parent_demon.shoot_interval
 	super()
-	
+
 	second_shot_timer = Timer.new()
 	add_child(second_shot_timer)
-	second_shot_timer.wait_time = 0.2  # Wait 2 seconds
-	second_shot_timer.one_shot = true  # Do not Repeat continuously
-	second_shot_timer.autostart = false  # Don't start automatically
+	second_shot_timer.wait_time = 0.2
+	second_shot_timer.one_shot = true
+	second_shot_timer.autostart = false
 	second_shot_timer.timeout.connect(second_shoot_projectile)
+
+	# Shoot timer — controls fire rate, decoupled from animation speed
+	shoot_timer = Timer.new()
+	shoot_timer.wait_time = shoot_interval
+	shoot_timer.one_shot = false
+	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
+	add_child(shoot_timer)
+	shoot_timer.start()
 	node_ready = true
+
+# Override: stop per-frame ray checking — shoot timer controls attack timing
+func _process(_delta: float) -> void:
+	pass
+
+func _on_shoot_timer_timeout() -> void:
+	# Don't interrupt an in-progress attack animation
+	if animSpriteComp.animation == animSpriteComp.currentAttackAnim:
+		return
+	check_attack_rays()
+	if canAttack:
+		animSpriteComp.animation = animSpriteComp.currentAttackAnim
+		animSpriteComp.play()
 
 func shoot_projectile() -> void:
 	super()

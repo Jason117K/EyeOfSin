@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dcjt1howwcndm"]
+
+[ext_resource type="Script" uid="uid://bp7x68x133j1s" path="res://_Entities/Demons/Tentacles/Tentacle.gd" id="1_384ys"]
+[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="2_ya6rc"]
+[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="3_64i2h"]
+
+[node name="Tentacle" type="Node2D" unique_id=611075784]
+script = ExtResource("1_384ys")
+
+[node name="ArmTarget" parent="." unique_id=138643601 instance=ExtResource("2_ya6rc")]
+position = Vector2(1, -91)
+
+[node name="Arm" parent="." unique_id=634789705 node_paths=PackedStringArray("target") instance=ExtResource("3_64i2h")]
+target = NodePath("../ArmTarget")
+max_length = 80.0
+wave_speed = 2.0
+line_width = 5.0
