@@ -9,6 +9,7 @@ uniform vec4 modulate_factor = vec4(5, 5,5, 1.0);
 uniform float tolerance : hint_range(0.0, 1.0);
 //const float glow_tolerance = 0.2;
 uniform float glow_tolerance : hint_range(0.0, 1.0) = 0.2;
+instance uniform float hit_flash : hint_range(0.0, 1.0) = 0.0;
 
 // Optimized HSV conversion
 vec3 rgb2hsv(vec3 c) {
@@ -58,5 +59,5 @@ void fragment() {
 
 
 
-    COLOR = alternate_tex_color;
+    COLOR = mix(alternate_tex_color, vec4(1.0, 1.0, 1.0, alternate_tex_color.a), hit_flash);
 }
