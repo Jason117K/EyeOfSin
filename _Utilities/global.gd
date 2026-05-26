@@ -64,6 +64,14 @@ var maw_icon := preload("res://_Assets/Sprites/MawImage.png")
 
 
 
+func _process(delta: float) -> void:
+	if get_tree().paused:
+		return
+	var zombies := all_zombies.duplicate()
+	for zombie: Zombie in zombies:
+		zombie.tick(delta)
+
+
 func _load_demon_costs() -> void:
 	demon_scenes = {
 		"Occulum": "res://_Entities/Demons/_Occulum/Occulum.tscn",

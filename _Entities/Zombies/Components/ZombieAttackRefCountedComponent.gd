@@ -93,11 +93,9 @@ func attack_demon(collider:Node) -> void:
 
 # Damages the target demon and decides whether or not to keep attacking
 func _on_AttackTimer_timeout() -> void:
-	print(parent_zombie.global_position, " Attack Demon Again ",attack_starting_pos)
 	if abs(attack_starting_pos.x - parent_zombie.global_position.x) > 2:
 		stop_attack()
 		return
-	print("Basic Zombie Attack Timer Timeout")
 		#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent_zombie.name:
 		AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)
@@ -125,7 +123,6 @@ func _on_AttackTimer_timeout() -> void:
 				if target_demon.has_method("lightning_maw_buff"):
 					if target_demon.is_lightning_maw_buff:
 						parent_zombie.take_damage(target_demon.get_lightning_damage())
-				print(attack_power ," Calling Take Damage on ", target_demon)
 				target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
 				var safe_speed : float = max(parent_zombie.attack_speed, 0.01)

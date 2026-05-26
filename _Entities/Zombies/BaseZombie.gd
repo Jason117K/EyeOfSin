@@ -97,7 +97,8 @@ var demo_original_speed: float
 @export var spawn_x := 180.0
 @export var despawn_x := -20.0
 @export var respawn_delay := 1.5
-var time_since_spawn : float = 0 
+var time_since_spawn : float = 0
+var _spawn_setup_done := false
 
 func _ready() -> void:
 	speedComp = ZombieSpeedRefCountedComponent.new(self)
@@ -128,6 +129,7 @@ func _ready() -> void:
 		respawn_timer.one_shot = true
 		respawn_timer.timeout.connect(_on_respawn)
 	else:
+		set_process(false)
 		Global.register_zombie(self)
 
 			
@@ -145,13 +147,17 @@ func get_zombie_icon() -> CompressedTexture2D:
 	return Global.reborn_icon
 
 func _process(delta: float) -> void:
+	tick(delta)
+
+func tick(delta: float) -> void:
 	if animatedSprite.isDead:
 		return
-	
-	if time_since_spawn < 1.0:
+
+	if not _spawn_setup_done:
 		time_since_spawn += delta
 		if time_since_spawn > 0.1:
 			_on_JustNowSpawned_timeout()
+			_spawn_setup_done = true
 	if hit_flash_active:
 		time_since_hit += delta
 		if time_since_hit >= hit_flash_duration:
@@ -159,29 +165,17 @@ func _process(delta: float) -> void:
 			time_since_hit = 0
 			_on_ResetThisColor_timeout()
 	if is_debuffed:
-		time_since_debuff_applied += delta 
+		time_since_debuff_applied += delta
 		if time_since_debuff_applied >= debuff_duration:
 			time_since_debuff_applied = 0
 			_on_DebuffDegrade_timeout()
-		
-			
-	# --- State Update ---
-	# 1. Health: regen is timer-driven, injured flag updated on damage/regen
+
 	healthComp.tick(delta)
-
-	# 2. Speed & status: event/timer-driven, no per-frame work
-	#    (reserved slot for future per-frame state updates)
-
-	# --- Decision & Action ---
-	# 3. Attack: assess targets, initiate or continue attacks
 	attackComp.tick(delta)
 
-	# 4. Movement: move only if not attacking
 	if not attackComp.is_attacking:
 		speedComp.tick(delta)
 
-	# --- Visuals ---
-	# 5. Animation: select correct animation for current state
 	animatedSprite.tick(delta)
 
 
@@ -211,10 +205,8 @@ func die() -> void:
 		if should_spawn_slow_field:
 			spawn_slow_field_on_death()
 		if should_spawn_drone_on_death:
-			print("Should Spawn Drone")
 			_do_spawn_drone_on_death()
 		if should_column_explode:
-			print(self, "Should MAKE AN EXPLOSION")
 			column_explosion = Global.get_column_death_explosion().instantiate()
 			if is_demo:
 				get_parent().add_child(column_explosion)
@@ -386,7 +378,6 @@ func make_spawn_slow_on_death() -> void:
 
 func silence() -> void:
 	if !is_silenced:
-		print(self, " SILENCE ----------------------------------------------------------------------------------------")
 		silence_field = (Global.get_silence_field()).instantiate()
 		add_child(silence_field)
 		silence_field.play()
