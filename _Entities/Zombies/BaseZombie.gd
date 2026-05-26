@@ -445,6 +445,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 # --- Timer Handlers ---
 
 func _on_JustNowSpawned_timeout() -> void:
+	#print
 	thisMaterial = animatedSprite.material.duplicate()
 	animatedSprite.material = thisMaterial
 	if thisMaterial:
