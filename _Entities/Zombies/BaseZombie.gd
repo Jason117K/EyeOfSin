@@ -251,9 +251,9 @@ func take_damage(damage: float, piercing: bool = false) -> void:
 		else:
 			blood_hit.play("hit_green")
 	healthComp.take_damage(damage, piercing)
-	animatedSprite.modulate = Color(2, 2, 2)
+	animatedSprite.set_instance_shader_parameter("hit_flash", 1.0)
 	if _secondary_flash_sprite:
-		_secondary_flash_sprite.modulate = Color(2, 2, 2)
+		_secondary_flash_sprite.set_instance_shader_parameter("hit_flash", 1.0)
 	hit_flash_active = true
 
 
@@ -440,9 +440,9 @@ func get_is_injured()->bool:
 
 
 func _on_ResetThisColor_timeout() -> void:
-	animatedSprite.modulate = Color.WHITE
+	animatedSprite.set_instance_shader_parameter("hit_flash", 0.0)
 	if _secondary_flash_sprite:
-		_secondary_flash_sprite.modulate = Color.WHITE
+		_secondary_flash_sprite.set_instance_shader_parameter("hit_flash", 0.0)
 
 
 func _on_DebuffDegrade_timeout() -> void:
