@@ -354,12 +354,10 @@ animations = [{
 z_index = 1
 collision_layer = 2
 script = ExtResource("1")
-health = 80
+health = 50
 healthRegen = 1.0
-should_health_regen = true
 time_between_health_regen = 3
 attack_power = 20
-bloodWorth = 2.0
 silence_field_position = Vector2(-3, 3)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1502085221]

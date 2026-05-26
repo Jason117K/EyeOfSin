@@ -44,9 +44,9 @@ var crawler_placed := false
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
 @onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
 @onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
-@onready var occulum_button := demonSelectionMenu.get_occulum_button()
-@onready var crawler_button := demonSelectionMenu.get_crawler_button()
-@onready var spinal_occulum_button := demonSelectionMenu.get_spinal_occulum_button()
+@onready var occulum_button :TextureButton= demonSelectionMenu.get_occulum_button()
+@onready var crawler_button :TextureButton= demonSelectionMenu.get_crawler_button()
+@onready var spinal_occulum_button :TextureButton= demonSelectionMenu.get_spinal_occulum_button()
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
@@ -471,7 +471,7 @@ func setup_demon_selection_menu() -> void:
 func show_only_demon_buttons(visible_containers: Array) -> void:
 	for container_name in ALL_DEMON_CONTAINERS:
 		var container := hbox.get_node(container_name)
-		var should_show := container_name in visible_containers
+		var should_show :bool= container_name in visible_containers
 		for child in container.get_children():
 			child.visible = should_show
 

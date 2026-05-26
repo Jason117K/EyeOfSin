@@ -7,7 +7,7 @@ extends Area2D
 @export var speed := 300  # Speed of the projectile
 @export var damage :float= 20 #2   # Damage dealt to zombies
 @export var lightning_damage := 10 #2   # Damage dealt to zombies
-@export var blood_worth_to_add := 1
+@export var blood_worth_to_add := 5.0
 @export var bleed_damage := 1
 var max_distance_can_travel :float= 0
 

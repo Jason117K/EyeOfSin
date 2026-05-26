@@ -96,6 +96,7 @@ func _on_call_early_wave_requested() -> void:
 		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
 										- (waveDelayTimer.time_left)
 	_start_wave(_current_wave + 1)
+	Global.add_blood_from_wave(25)
 	#_start_wave(_current_wave + 1)
 
 
@@ -110,7 +111,7 @@ func _start_wave(index: int) -> void:
 	print("START WAVEEEEEEEEE ", index)
 	if index < 0 or index >= _total_waves:
 		return
-
+	Global.add_blood_from_wave(25)
 	_current_wave = index
 
 	# Hide previews for the wave that's now starting

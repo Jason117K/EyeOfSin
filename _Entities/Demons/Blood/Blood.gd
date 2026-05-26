@@ -2,7 +2,7 @@ extends Area2D
 #Blood.gd
 
 
-@export var BloodValue :float = 50
+@export var BloodValue :float = 25
 @export var BloodDamage :float = 50
 @export var default_auto_pickup_wait_time := 6.0
 @export var crawler_buff_auto_pickup_wait_time := 10.0
@@ -83,6 +83,10 @@ func free_blood() -> void:
 		current_zombie_target.take_damage(BloodDamage)
 		current_zombie_target.slow()
 	queue_free()
+	
+func _on_zombie_died(dead_zombie:Zombie):
+	nearby_zombies.erase(dead_zombie)
+	pass
 
 func crawler_blood_pickup() -> void:
 	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
@@ -90,6 +94,7 @@ func crawler_blood_pickup() -> void:
 	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			nearby_zombies.append(zombie)
+			zombie.this_zombie_died.connect(_on_zombie_died)
 	if nearby_zombies.is_empty() == true:
 		#print("NO NEARBY ZOMBIES : ", nearby_zombies)
 		queue_free()
@@ -101,7 +106,7 @@ func crawler_blood_pickup() -> void:
 			if not zombie.has_method("get_health"):
 				continue
 			current_target_health = zombie.get_health()
-			if current_target_health > highest_health:
+			if current_target_health > highest_health && zombie != null:
 				highest_health = current_target_health
 				current_zombie_target = zombie
 		#print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )

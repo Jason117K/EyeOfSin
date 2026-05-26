@@ -29,6 +29,7 @@ var wave_previews := []
 var demon_costs: Dictionary = {}
 var demon_scenes: Dictionary
 var should_hide_ui := false
+var demon_managers :Array= []
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -68,8 +69,9 @@ func _process(delta: float) -> void:
 	if get_tree().paused:
 		return
 	var zombies := all_zombies.duplicate()
-	for zombie: Zombie in zombies:
-		zombie.tick(delta)
+	for zombie in zombies:
+		if zombie != null:
+			zombie.tick(delta)
 
 
 func _load_demon_costs() -> void:
@@ -110,7 +112,10 @@ func register_ui_layer(new_ui_layer:Control) -> void:
 func register_wave_preview(new_wave_preview:Node) -> void:
 	wave_previews.append(new_wave_preview)
 	pass
-	
+
+func add_blood_from_wave(blood_to_add:int)->void:
+	for demon_manager in demon_managers:
+		demon_manager.add_blood(blood_to_add)	
 
 func hideDemonSelectionMenu() -> void:
 	if demon_selection_menu != null:
@@ -123,10 +128,21 @@ func unHideDemonSelectionMenu() -> void:
 func swap_portal_button() -> void:
 	demon_selection_menu.swap_portal_button()
 
+func register_demon_managers(new_demon_manager:DemonManager)->void:
+	demon_managers.append(new_demon_manager)
+
 func resetOcculumCount() -> void:
 	is_blocking = false
 	occulumCount = 0
 	gameIsStarted = false
+	var demon_managers_temp : Array = []
+	for demon_manager in demon_managers:
+		if demon_manager == null:
+			pass
+		else:
+			demon_managers_temp.append(demon_manager)
+	demon_managers.clear()
+	demon_managers = demon_managers_temp
 	#game_controller.on_scene_1 = true 
 	
 	
@@ -259,7 +275,7 @@ func unhide_ui_layer() -> void:
 	should_hide_ui = false
 	var real_ui_layers := []
 		
-	for item:Node in ui_layers:
+	for item in ui_layers:
 		if item == null:
 			pass
 		else:
@@ -272,12 +288,12 @@ func hide_ui_layer() -> void:
 	should_hide_ui = true
 	var real_ui_layers := []
 		
-	for item : Node in ui_layers:
+	for item  in ui_layers:
 		if item == null:
 			pass
 		else:
 			real_ui_layers.append(item)
-	for this_ui_layer : Control in real_ui_layers:		
+	for this_ui_layer  in real_ui_layers:		
 		#print("Should Hide Ui Layer ", this_ui_layer)
 		this_ui_layer.hide()
 		
@@ -294,13 +310,13 @@ func adjust_ui_layer() -> void:
 			else:
 				real_ui_layers.append(item)
 
-		for preview_item:Node in wave_previews:
+		for preview_item in wave_previews:
 			if preview_item == null:
 				pass
 			else:
 				real_wave_previews.append(preview_item)
 				
-		for this_ui_layer : Control in real_ui_layers:
+		for this_ui_layer in real_ui_layers:
 		#	print("SHOULD CHECKING UI LAYER ", this_ui_layer)
 			if game_controller.on_purple_scene():
 			#	print("ON PURPLE SCENE SHOULD HIDE GREEN")
@@ -315,7 +331,7 @@ func adjust_ui_layer() -> void:
 				else:
 					this_ui_layer.hide()
 					
-		for this_preview : Node in real_wave_previews:
+		for this_preview in real_wave_previews:
 		#	print("SHOULD CHECKING PREVIEW ", this_preview)
 			if game_controller.on_purple_scene():
 				#print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")

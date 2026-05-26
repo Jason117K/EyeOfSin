@@ -2,6 +2,7 @@ extends Area2D
 class_name Zombie
 
 signal zombie_death
+signal this_zombie_died(deadZombie)
 
 # --- Exports (Phase 2 will replace these with a single ZombieStats resource) ---
 @export_category("Health")
@@ -22,7 +23,7 @@ signal zombie_death
 @export_range(0.1, 1.0) var attack_damage_point := 0.667
 
 @export_category("BloodWorth")
-@export var bloodWorth := 1.0
+@export var bloodWorth := 0.0
 @export_category("Misc")
 @export var charge_cost := 1
 @export var silence_field_position : Vector2
@@ -214,6 +215,7 @@ func die() -> void:
 				column_explosion.global_position = global_position
 				get_parent().add_child(column_explosion)
 		zombie_death.emit()
+		this_zombie_died.emit(self)
 		if $AnimatedSprite2D.sprite_frames.has_animation("death"):
 			$AnimatedSprite2D.isDead = true
 			$AnimatedSprite2D.play("death")
@@ -304,7 +306,7 @@ func getSlow() -> int:
 # --- Knockback ---
 
 func knockBack() -> void:
-	global_position = global_position + Vector2(9, 0)
+	global_position = global_position + Vector2(32, 0)
 
 
 # --- Visual ---

@@ -5,6 +5,7 @@ extends LevelTemplate
 
 func _ready() -> void:
 	super()
+	waveManager.wave_started.connect(_on_wave_started)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	#attach_script_to_sway_children()
 	attach_script_to_sway_children()
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner_green.set_waves_from_dicts([{}, {"Reborn": 5}, {"Reborn": 3, "Severed": 2}])
+	zombie_spawner_green.set_waves_from_dicts([{}, {"Reborn": 5}, {"Reborn": 3, "Severed": 1}])
 
 
 func setup_wave_2_ui() -> void:
@@ -21,3 +22,12 @@ func setup_wave_2_ui() -> void:
 
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(4, 4)
+
+func _on_wave_started(wave_index: int)->void:
+	match wave_index:
+		0:
+			pass
+		1:
+			demonManager.add_blood(50)
+		2:
+			demonManager.add_blood(50)

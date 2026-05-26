@@ -20,6 +20,7 @@ var should_bleed := false
 var should_health_regen := false 
 var time_between_health_regen :float 
 var explode_from_drone := false
+var blood_worth_added : bool = false 
 
 signal enemy_died(enemy : Node)
 
@@ -36,8 +37,6 @@ func _init(new_parent_zombie : Zombie) -> void:
 	maxHealth = health
 	halfHealth = health / 2.0
 
-	if healthRegen > 0.0:
-		should_health_regen = true 
 	
 
 
@@ -46,8 +45,11 @@ func receive_buff() -> void:
 
 
 func add_blood_worth(blood_worth_to_add: float) -> void:
-	print("New Blood Worth")
-	bloodWorth = bloodWorth + blood_worth_to_add
+	if !blood_worth_added:
+		#print("New Blood Worth Added 1 ", blood_worth_to_add)
+		bloodWorth = bloodWorth + blood_worth_to_add
+		blood_worth_added = true
+		print(bloodWorth , " N ew Blood Worth Added 1 ", blood_worth_to_add)
 
 
 func getInjured() -> bool:

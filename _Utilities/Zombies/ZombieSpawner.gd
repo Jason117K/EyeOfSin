@@ -9,12 +9,12 @@ signal all_waves_exhausted
 @export var make_green: bool = false
 
 @export_group("Spawn Timing")
-@export var large_gap_min: float = 0.8
-@export var large_gap_max: float = 1.9
-@export var large_gap_weight: float = 80.0
-@export var small_gap_min: float = 0.3
-@export var small_gap_max: float = 0.65
-@export var small_gap_weight: float = 20.0
+@export var large_gap_min: float = 0.9
+@export var large_gap_max: float = 2.6
+@export var large_gap_weight: float = 75.0
+@export var small_gap_min: float = 0.4
+@export var small_gap_max: float = 0.8
+@export var small_gap_weight: float = 25.0
 
 var _current_wave: int = -1
 var _spawn_pool: Array[PackedScene] = []

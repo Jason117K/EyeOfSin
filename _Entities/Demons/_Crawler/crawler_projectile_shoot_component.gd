@@ -5,10 +5,12 @@ var shoot_interval: float
 var shoot_timer: Timer
 @onready var attack_ray_1 := $"../DMG_RayCast2D"
 var second_shot_timer: Timer
+var damage_increase := 10
 
 func _ready() -> void:
 	attack_rays = [attack_ray_1]
 	damage = parent_demon.damage
+	damage_increase = parent_demon.general_damage_increase
 	attack_speed_mult = parent_demon.attack_speed_mult
 	projectile_spawn_offest = parent_demon.projectile_spawn_offest
 	blood_worth_to_add = parent_demon.blood_worth_to_add
@@ -86,6 +88,7 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 
 func receive_buff(newDemon: String) -> void:
 	super(newDemon)
+	damage = damage + damage_increase
 	match newDemon:
 		"Occulum":
 			pass

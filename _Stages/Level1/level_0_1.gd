@@ -65,6 +65,8 @@ func _setup_tutorial() -> void:
 func _ready() -> void:
 	super()
 	#Dialogic.Inputs.auto_skip.enabled = true
+	
+	
 	Dialogic.timeline_ended.connect(finish_ready)
 
 	Global.current_level = self
@@ -100,7 +102,7 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner.set_waves_from_dicts([{"Reborn": 3}, {"Reborn": 5}, {"Reborn": 7}])
+	zombie_spawner.set_waves_from_dicts([{"Reborn": 3}, {"Reborn": 5}, {"Severed": 3}])
 
 
 func finish_ready() -> void:
@@ -175,6 +177,7 @@ func _start_explain_green_dimension() -> void:
 
 
 func _start_wave_2_both_dimensions() -> void:
+	
 	Global.show_pip()
 	var green_dimension := get_parent().get_node("Level0-1_Alternate")
 	if green_dimension and green_dimension.has_method("setup_wave_2_ui"):
@@ -247,14 +250,19 @@ func _on_crawler_button_pressed() -> void:
 		advance_tutorial() # → FORCE_PLACE_demon
 
 
-func _on_wave_started(wave_index: int):
+func _on_wave_started(wave_index: int) -> void:
 	match wave_index:
 		0:
 			wave_1_active = true
 			print("Advacning Tutoiral Should Explain Basic Zomvie")
 			advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
-		2:
+		1:
+			demonManager.add_blood(50)
+		2: #Last Wave
+			demonManager.add_blood(50)
 			go_to_step("EXPLAIN_SEVERED_ZOMBIE")
+			
+
 
 
 func _on_demon_manager_crawler_placed(_grid_position: Vector2) -> void:

@@ -903,6 +903,442 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0syxb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qq15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3byx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y16w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdofu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7b5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1mma")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l66ve")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_64arl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t52d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okgsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn8o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7us8")
+}],
+"loop": true,
+"name": &"attack_Crawler",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l66ve")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_64arl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t52d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okgsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn8o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7us8")
+}],
+"loop": true,
+"name": &"attack_Crawler_2",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7c83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmqcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulfsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q8hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmdlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3roi5")
+}],
+"loop": false,
+"name": &"attack_Hive",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gj4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stug7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7urnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g82q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l53v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vur2p")
+}],
+"loop": false,
+"name": &"attack_Maw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlf35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxfih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmvyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ki1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xrcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqx0h")
+}],
+"loop": false,
+"name": &"attack_Occulum",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5bpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l6jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqs8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oiph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50j2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_858au")
+}],
+"loop": false,
+"name": &"attack_SpinalOcculum",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiln1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kesyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6pvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yjuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llyi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mfhx")
+}],
+"loop": false,
+"name": &"attack_Wyrm",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxc8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4oik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvfgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1md3")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twbjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elcqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rshdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1buyr")
+}],
+"loop": false,
+"name": &"idle_Crawler",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tat17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxxjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp0yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq4vi")
+}],
+"loop": false,
+"name": &"idle_Hive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji2b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p6vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eomw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq6q3")
+}],
+"loop": false,
+"name": &"idle_Maw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3doi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18632")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtun7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wx41")
+}],
+"loop": false,
+"name": &"idle_Occulum",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1xet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb44r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us14y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j45lx")
+}],
+"loop": false,
+"name": &"idle_SpinalOcculum",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kufjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r3k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0mdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyjfu")
+}],
+"loop": false,
+"name": &"idle_Wyrm",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rls5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww0yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jign0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mvci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0bdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igwro")
+}],
+"loop": false,
+"name": &"redCrawlerAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtdvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku7o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sbse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppntc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07yo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88d23")
+}],
+"loop": false,
+"name": &"redCrawlerAttack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo8pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl2n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdxah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rbsg")
+}],
+"loop": false,
+"name": &"redCrawlerDefault",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("149")
+}, {
+"duration": 1.0,
+"texture": SubResource("150")
+}, {
+"duration": 1.0,
+"texture": SubResource("151")
+}, {
+"duration": 1.0,
+"texture": SubResource("152")
+}],
+"loop": false,
+"name": &"redCrawlerDefault1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("128")
+}, {
+"duration": 1.0,
+"texture": SubResource("129")
+}, {
+"duration": 1.0,
+"texture": SubResource("130")
+}, {
+"duration": 1.0,
+"texture": SubResource("131")
+}, {
+"duration": 1.0,
+"texture": SubResource("132")
+}, {
+"duration": 1.0,
+"texture": SubResource("133")
+}, {
+"duration": 1.0,
+"texture": SubResource("134")
+}, {
+"duration": 1.0,
+"texture": SubResource("135")
+}, {
+"duration": 1.0,
+"texture": SubResource("136")
+}, {
+"duration": 1.0,
+"texture": SubResource("137")
+}, {
+"duration": 1.0,
+"texture": SubResource("138")
+}, {
+"duration": 1.0,
+"texture": SubResource("139")
+}, {
+"duration": 1.0,
+"texture": SubResource("140")
+}, {
+"duration": 1.0,
+"texture": SubResource("141")
+}, {
+"duration": 1.0,
+"texture": SubResource("142")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 10.0
+}]
+
 [sub_resource type="AtlasTexture" id="90"]
 atlas = ExtResource("9")
 region = Rect2(0, 0, 32, 32)
@@ -1794,6 +2230,8 @@ animations = [{
 z_index = 1
 script = ExtResource("2")
 spiderling_wait_time = 4
+shoot_interval = 1.3
+buffed_range_target_pos = Vector2(550, 0)
 health = 900.0
 maxHealth = 900.0
 
@@ -1829,7 +2267,7 @@ visible = false
 
 [node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1617410873 groups=["Invis"]]
 position = Vector2(0, -8.5)
-sprite_frames = SubResource("9")
+sprite_frames = SubResource("SpriteFrames_0syxb")
 animation = &"redCrawlerDefault"
 autoplay = "redCrawlerDefault"
 flip_h = true
@@ -1863,7 +2301,7 @@ default_color = Color(1, 0, 0, 0.47058824)
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=299414353]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_a06ib")
-target_position = Vector2(500, 0)
+target_position = Vector2(275, 0)
 collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
@@ -1980,7 +2418,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 108.9883, 131.6696, 105.1167, 133.22253, 102.91832, 131.83646, 101.11985, 130.21783, 97.38446, 130.82336, 93.51751, 132.18376, 91.2095, 130.96939, 90.629654, 129.09058)
+points = PackedVector2Array(112.595, 131.435, 108.5252, 133.15446, 105.17843, 132.94054, 103.88206, 131.08891, 100.99754, 130.27826, 97.07246, 131.74393, 93.69766, 131.63484, 92.46466, 129.83034, 90.35308, 128.53267)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -1992,7 +2430,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 108.9883, 124.7946, 105.1167, 124.472534, 102.91832, 121.211464, 101.11985, 117.71784, 97.38446, 116.448364, 93.51751, 115.93376, 91.2095, 112.84439, 90.629654, 109.090576)
+points = PackedVector2Array(112.595, 126.435, 108.5252, 126.27946, 105.17843, 124.19054, 103.88206, 120.46392, 100.99754, 117.77826, 97.07246, 117.36893, 93.69766, 115.38484, 92.46466, 111.70533, 90.35308, 108.53268)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -2013,7 +2451,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.87396, 132.0706, 115.42819, 131.48492, 115.022644, 130.88542, 116.5525, 130.75076, 118.65137, 131.24231, 119.26556, 130.6889, 118.73836, 130.15276, 119.68141, 129.805)
+points = PackedVector2Array(112.595, 131.435, 113.46325, 130.95848, 113.05727, 130.40666, 114.874306, 130.55171, 116.96872, 131.04475, 117.45451, 130.44604, 117.2288, 129.846, 118.856346, 129.89613, 121.24113, 131.45662)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -2021,7 +2459,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.87396, 125.19561, 115.42819, 122.734924, 115.022644, 120.260414, 116.5525, 118.250755, 118.65137, 116.86731, 119.26556, 114.4389, 118.73836, 112.027756, 119.68141, 109.805)
+points = PackedVector2Array(112.595, 126.435, 113.46325, 124.08349, 113.05727, 121.65667, 114.874306, 119.92671, 116.96872, 118.54476, 117.45451, 116.071045, 117.2288, 113.596, 118.856346, 111.77113, 121.24113, 111.45661)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 

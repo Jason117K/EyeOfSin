@@ -34,6 +34,8 @@ func _ready() -> void:
 		self.connect("_on_crawler_placed", Callable(get_parent(), "crawler_placed"))
 	print("blood_points is ", blood_points, str(blood_points))
 	get_parent().get_node("UILayer").set_initial_blood(blood_points)
+	
+	Global.register_demon_managers(self)
 
 
 # Reference the DemonSelectionMenu dynamically

@@ -3600,9 +3600,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_fb4rh")
 wave2StartTime = -1
-wave3StartTime = 23
-debug = false
-skip_end_dialog = false
+wave3StartTime = 30
 
 [node name="UILayer" parent="." unique_id=1087850493 instance=ExtResource("2_umbnb")]
 visible = false
@@ -3612,7 +3610,7 @@ layout_mode = 1
 environment = SubResource("Environment_xl50p")
 
 [node name="DemonManager" parent="." unique_id=1210520917 instance=ExtResource("4_07bn3")]
-blood_points = 90
+blood_points = 50
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=198300004]
 process_mode = 1

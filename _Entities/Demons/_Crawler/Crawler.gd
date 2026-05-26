@@ -5,11 +5,13 @@ extends Demon
 @export var spiderling_wait_time := 2
 @export var spinalOcculumHealth: float = 375
 
-@export var damage: float = 60
+@export var damage: float = 10
+@export var general_damage_increase := 10.0
 @export var attack_speed_mult := 1.0
 @export var projectile_spawn_offest: Vector2 = Vector2(32, 0)
 @export var blood_worth_to_add := 10.0
-@export var shoot_interval := 2.0
+@export var shoot_interval := 2.0 #Fire time is this val + anim time, currently +0.6
+@export var buffed_range_target_pos := Vector2(450.0,0)
 
 # --- Preloads ---
 var projectile_scene: PackedScene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")
@@ -56,10 +58,11 @@ func receive_buff(newDemon) -> void:
 	var demonName: String = (newDemon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
+		
 		projectile_shoot_component.receive_buff(demonName)
 		match demonName:
 			"Occulum":
-				pass
+				_increase_range()
 			"Crawler":
 				pass
 			"SpinalOcculum":
@@ -122,8 +125,10 @@ func get_special_description()->String:
 	
 	
 	
-	
-	
+func _increase_range()->void:
+	attack_ray.target_position = buffed_range_target_pos
+	pass
+		
 	
 	
 	

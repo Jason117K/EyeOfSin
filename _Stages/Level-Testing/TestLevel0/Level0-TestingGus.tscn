@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="5_a2wpy"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="5_x0iwp"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="6_5mb5y"]
+[ext_resource type="Resource" uid="uid://dc5pc7v4cxxq" path="res://_Stages/WaveData/value_testing.tres" id="6_hyxam"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="8_hyxam"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="9_athtc"]
 [ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="10_dux41"]
@@ -42,11 +43,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="39_isx2x"]
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="40_pfiab"]
 [ext_resource type="Script" uid="uid://d3yjo4efg0sgs" path="res://_UI/Buttons/button_breathe.gd" id="41_sdtya"]
-
-[sub_resource type="Resource" id="Resource_x0iwp"]
-script = ExtResource("5_x0iwp")
-Reborn = 7
-metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_keoxs"]
 texture = ExtResource("8_hyxam")
@@ -926,6 +922,7 @@ process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 109)
+waves = Array[ExtResource("5_x0iwp")]([ExtResource("6_hyxam")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=288115831 instance=ExtResource("5_a2wpy")]
 z_index = 1
@@ -933,6 +930,7 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 141)
+waves = Array[ExtResource("5_x0iwp")]([ExtResource("6_hyxam")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("5_a2wpy")]
 z_index = 1
@@ -940,6 +938,7 @@ position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 173)
+waves = Array[ExtResource("5_x0iwp")]([ExtResource("6_hyxam")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=197908073 instance=ExtResource("5_a2wpy")]
 z_index = 1
@@ -947,7 +946,7 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 205)
-waves = Array[ExtResource("5_x0iwp")]([SubResource("Resource_x0iwp")])
+waves = Array[ExtResource("5_x0iwp")]([ExtResource("6_hyxam")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=477558108 instance=ExtResource("5_a2wpy")]
 z_index = 1
@@ -955,6 +954,7 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=40172816 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 237)
+waves = Array[ExtResource("5_x0iwp")]([ExtResource("6_hyxam")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=366118389 instance=ExtResource("5_a2wpy")]
 z_index = 1
@@ -962,6 +962,7 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=816215242 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 269)
+waves = Array[ExtResource("5_x0iwp")]([ExtResource("6_hyxam")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1257123650 instance=ExtResource("5_a2wpy")]
 z_index = 1
@@ -969,6 +970,7 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1922773539 instance=ExtResource("4_xim7y")]
 position = Vector2(740, 301)
+waves = Array[ExtResource("5_x0iwp")]([ExtResource("6_hyxam")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1043848066 instance=ExtResource("5_a2wpy")]
 z_index = 1

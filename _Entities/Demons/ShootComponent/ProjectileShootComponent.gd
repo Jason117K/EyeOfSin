@@ -5,7 +5,7 @@ class_name ProjectileShootComponent extends Node2D
 @onready var parent_demon: Demon = get_parent()
 var damage := 60
 var attack_speed_mult := 1.0
-var projectile_spawn_offest: Vector2 = Vector2(32, 0)
+var projectile_spawn_offest: Vector2 = Vector2(16, 0)
 
 var attack_rays: Array = []
 var projectile_scene := preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")
