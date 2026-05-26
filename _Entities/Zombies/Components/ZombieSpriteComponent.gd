@@ -10,8 +10,9 @@ var count := 1
 		_apply_hue_shift()
 
 var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
-var thisMaterial : Material
 var original_hue_shift : float = -86
+var _original_material: ShaderMaterial = null
+static var _material_cache: Dictionary = {}
 
 @export var targetColorString := "ff0013"
 @export var targetColor: Color
@@ -43,14 +44,6 @@ var _has_injured_web_attack: bool = false
 
 
 func _ready() -> void:
-	if not animation_changed.is_connected(_on_animation_changed):
-		animation_changed.connect(_on_animation_changed)
-	thisMaterial = material.duplicate()
-	material = thisMaterial
-	if thisMaterial:
-		thisMaterial.set_shader_parameter("target_color", targetColor)
-		thisMaterial.set_shader_parameter("replace_color",replaceColor)
-		thisMaterial.set_shader_parameter("tolerance", 0.1)
 	set_process(false)
 	_sprite_frame_counter = randi() % 5
 	_is_dancer = zombie.name == "DancerZombie"
@@ -138,22 +131,26 @@ func _on_AnimatedSprite_animation_finished() -> void:
 
 
 func _apply_hue_shift() -> void:
-	#print("Apply Hue Shift ", count)
-	
-	# Create material if needed
-	if material == null:
-		material = ShaderMaterial.new()
-		material.shader = demon_hue_shift #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
-	
-	# Update shader parameter
-	if material is ShaderMaterial:
-		material.shader = demon_hue_shift
-		material.set_shader_parameter("glow_color", targetGlowColor)
-		material.set_shader_parameter("hue_shift_degrees", hue_shift)
-		if set_hue == false && hue_shift != 0:
-			original_hue_shift = hue_shift
-			set_hue = true
-			#print(original_hue_shift, "Apply Hue Shift First ", count)
+	if _original_material == null:
+		_original_material = material as ShaderMaterial
+		if _original_material == null:
+			_original_material = ShaderMaterial.new()
+			_original_material.shader = demon_hue_shift
+
+	var key := "%d_%.0f" % [_original_material.get_instance_id(), hue_shift]
+	if _material_cache.has(key):
+		material = _material_cache[key]
+	else:
+		var mat := _original_material.duplicate() as ShaderMaterial
+		mat.shader = demon_hue_shift
+		mat.set_shader_parameter("hue_shift_degrees", hue_shift)
+		mat.set_shader_parameter("glow_color", targetGlowColor)
+		_material_cache[key] = mat
+		material = mat
+
+	if set_hue == false && hue_shift != 0:
+		original_hue_shift = hue_shift
+		set_hue = true
 	count += 1
 		
 		
@@ -170,12 +167,6 @@ func shift_hue(degrees: float) -> void:
 
 
 
-func _on_animation_changed() -> void:
-	if thisMaterial:
-		#print("Made PPInk")
-		thisMaterial.set_shader_parameter("target_color", Color(targetColorString))
-		thisMaterial.set_shader_parameter("replace_color", Color.DEEP_PINK)
-		thisMaterial.set_shader_parameter("tolerance", 0.3)
 
 
 

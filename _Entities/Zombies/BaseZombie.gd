@@ -81,8 +81,7 @@ var is_debuffed := false
 var time_since_debuff_applied : float = 0 
 @export var debuff_duration := 1.0
 var isSlow := 0
-var thisMaterial : Material
-var thisMaterial2 : Material 
+var _secondary_flash_sprite : Node = null
 var should_spawn_slow_field := false
 var should_spawn_drone_on_death := false
 var should_column_explode := false
@@ -252,15 +251,9 @@ func take_damage(damage: float, piercing: bool = false) -> void:
 		else:
 			blood_hit.play("hit_green")
 	healthComp.take_damage(damage, piercing)
-	if thisMaterial:
-		thisMaterial.set_shader_parameter("target_color", Color.BLACK)
-		thisMaterial.set_shader_parameter("replace_color", Color.WHITE)
-		thisMaterial.set_shader_parameter("tolerance", 1)
-		if thisMaterial2:
-			thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
-			thisMaterial2.set_shader_parameter("replace_color", Color.WHITE)
-			thisMaterial2.set_shader_parameter("tolerance", 1)
-		#$ResetThisColor.start()
+	animatedSprite.modulate = Color(2, 2, 2)
+	if _secondary_flash_sprite:
+		_secondary_flash_sprite.modulate = Color(2, 2, 2)
 	hit_flash_active = true
 
 
@@ -325,12 +318,7 @@ func make_glow() -> void:
 
 
 func setMaterial(newAnimatedSprite:Node) -> void:
-	thisMaterial2 = newAnimatedSprite.material.duplicate()
-	newAnimatedSprite.material = thisMaterial2
-	if newAnimatedSprite:
-		thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
-		thisMaterial2.set_shader_parameter("replace_color", Color.BLACK)
-		thisMaterial2.set_shader_parameter("tolerance", 0.1)
+	_secondary_flash_sprite = newAnimatedSprite
 
 
 # --- Blood Hit VFX ---
@@ -445,13 +433,6 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 # --- Timer Handlers ---
 
 func _on_JustNowSpawned_timeout() -> void:
-	#print
-	thisMaterial = animatedSprite.material.duplicate()
-	animatedSprite.material = thisMaterial
-	if thisMaterial:
-		thisMaterial.set_shader_parameter("target_color", Color.BLACK)
-		thisMaterial.set_shader_parameter("replace_color", Color.BLACK)
-		thisMaterial.set_shader_parameter("tolerance", 0.1)
 	add_to_group("Alive-Enemies")
 
 func get_is_injured()->bool:
@@ -459,14 +440,9 @@ func get_is_injured()->bool:
 
 
 func _on_ResetThisColor_timeout() -> void:
-	pass
-	thisMaterial.set_shader_parameter("target_color", Color.BLACK)
-	thisMaterial.set_shader_parameter("replace_color", Color.BLACK)
-	thisMaterial.set_shader_parameter("tolerance", 0.1)
-	if thisMaterial2:
-		thisMaterial2.set_shader_parameter("target_color", Color.BLACK)
-		thisMaterial2.set_shader_parameter("replace_color", Color.BLACK)
-		thisMaterial2.set_shader_parameter("tolerance", 0.1)
+	animatedSprite.modulate = Color.WHITE
+	if _secondary_flash_sprite:
+		_secondary_flash_sprite.modulate = Color.WHITE
 
 
 func _on_DebuffDegrade_timeout() -> void:
