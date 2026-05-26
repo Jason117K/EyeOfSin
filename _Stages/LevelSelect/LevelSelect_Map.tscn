@@ -226,7 +226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
-text = "LEVEL0GUS"
+text = "LEVEL O GUS"
 
 [node name="TestingGusButton1" type="TextureButton" parent="." unique_id=724059801]
 custom_minimum_size = Vector2(1000, 200)
@@ -255,7 +255,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
-text = "LEVEL0GUS"
+text = "LEVEL O 2 GUS"
 
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=331079586]
 layout_mode = 1

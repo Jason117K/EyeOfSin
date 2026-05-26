@@ -14,7 +14,7 @@ signal zombie_death
 @export var time_between_health_regen := 5
 
 @export_category("Speed")
-@export var speed : float = 20
+@export var speed : float = 16
 
 @export_category("Attack")
 @export var attack_power := 33
