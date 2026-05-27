@@ -962,7 +962,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_oaclh")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_oaclh")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lk4we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk4we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q86g")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3q86g")
@@ -970,9 +979,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j7mp6")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_purple",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -989,7 +998,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_purple",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1006,12 +1015,12 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_red_purple",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="Curve" id="Curve_flftm"]
-_data = [Vector2(0, 0.9926912), 0.0, -2.1717708, 0, 0, Vector2(0.4839744, 0.5492879), -0.5233609, -0.5233609, 0, 0, Vector2(1, 0), -0.062369477, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_sqxus"]
 _data = {
@@ -1047,6 +1056,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_a4agt")
 new_end_dialog = "res://_Assets/Dialog/level_06_end_dialog.dtl"
+wave2StartTime = 45
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
 layout_mode = 1
@@ -1067,7 +1077,7 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("3_7nw23")]
 position = Vector2(740, 141)
-waves = Array[ExtResource("5_lk4we")]([ExtResource("6_3q86g")])
+waves = Array[ExtResource("5_lk4we")]([ExtResource("6_3q86g"), ExtResource("6_3q86g"), ExtResource("6_3q86g")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("4_0g5v1")]
 z_index = 1
@@ -1437,17 +1447,11 @@ script = ExtResource("24_7nw23")
 [node name="SynShark" type="AnimatedSprite2D" parent="." unique_id=577141404 node_paths=PackedStringArray("path") groups=["Purple"]]
 position = Vector2(664, 386)
 sprite_frames = SubResource("SpriteFrames_k2xji")
-animation = &"attack_purple"
+animation = &"idle_red_purple"
 autoplay = "idle_purple"
 script = ExtResource("45_6knlj")
 position_curve = SubResource("Curve_flftm")
-travel_time = null
 path = NodePath("../Path2D")
-max_lightning_per_rain = null
-max_lightning_per_rain_1 = null
-max_lightning_per_rain_2 = null
-max_lightning_per_rain_3 = null
-lightning_wave_delay = null
 
 [node name="LightningTimer" type="Timer" parent="SynShark" unique_id=980584099]
 wait_time = 5.0

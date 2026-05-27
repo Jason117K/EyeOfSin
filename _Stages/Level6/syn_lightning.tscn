@@ -71,7 +71,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 9.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n2v7"]
@@ -301,7 +301,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"alt_shock",
-"speed": 12.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -357,7 +357,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default_shock",
-"speed": 12.0
+"speed": 13.0
 }]
 
 [node name="SynLightning" type="Area2D" unique_id=999441652]
