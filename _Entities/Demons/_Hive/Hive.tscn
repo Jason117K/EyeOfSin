@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://_Entities/Demons/_Hive/Hive.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_cpfsp"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_cvsxw"]
+[ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_np53a"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cstwb0v7bi5gg" path="res://_Entities/Demons/SpriteSheets/Maw/HiveIdle_Maw-Sheet.png" id="3_fprn4"]
 [ext_resource type="Script" uid="uid://cimou1h0fdgqs" path="res://_Entities/Demons/_Hive/hive_health_component.gd" id="3_k5wuc"]
@@ -26,6 +27,50 @@
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="24_x5esn"]
 [ext_resource type="Script" uid="uid://bv6wfp8xuy7qd" path="res://_Entities/Demons/_Hive/hive_wyrm_projectile_shoot_component.gd" id="25_oioeg"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="26_oioeg"]
+[ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="27_w5638"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
+atlas = ExtResource("2_np53a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7trr"]
+atlas = ExtResource("2_np53a")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tehxr"]
+atlas = ExtResource("2_np53a")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccapn"]
+atlas = ExtResource("2_np53a")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wdw5"]
+atlas = ExtResource("2_np53a")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dvp3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7eju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7trr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tehxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccapn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wdw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7f7y1"]
 
@@ -1653,6 +1698,12 @@ waitTime = 6.0
 buffedWaitTime = 3.0
 cost = 175.0
 
+[node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=958772671]
+position = Vector2(3, -19)
+sprite_frames = SubResource("SpriteFrames_dvp3m")
+frame = 1
+frame_progress = 0.29809347
+
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_cvsxw")]
 script = ExtResource("3_k5wuc")
 
@@ -1887,6 +1938,11 @@ position = Vector2(1, -11)
 sprite_frames = SubResource("SpriteFrames_w5638")
 frame = 24
 frame_progress = 1.0
+
+[node name="TempBloodHalo" type="Sprite2D" parent="." unique_id=397724747]
+visible = false
+position = Vector2(0, -31)
+texture = ExtResource("27_w5638")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://p8shvofaoy5d"]
 
 [ext_resource type="Texture2D" uid="uid://2bti3iudanb6" path="res://_Entities/Demons/_Wyrm/Worm1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_pyfr7"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_tvvdq"]
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://_Entities/Demons/_Wyrm/Worm2.png" id="3"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="3_hls8g"]
@@ -22,6 +23,50 @@
 [ext_resource type="Script" uid="uid://c1nu6cgi2l8tb" path="res://_Entities/Demons/_Wyrm/wyrm_projectile_shoot_component.gd" id="19_qxnbo"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="21_b83ow"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="22_wr0b4"]
+[ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="23_aoc4y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
+atlas = ExtResource("2_pyfr7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7trr"]
+atlas = ExtResource("2_pyfr7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tehxr"]
+atlas = ExtResource("2_pyfr7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccapn"]
+atlas = ExtResource("2_pyfr7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wdw5"]
+atlas = ExtResource("2_pyfr7")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kf5mr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7eju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7trr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tehxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccapn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wdw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qxnbo"]
 
@@ -1004,6 +1049,12 @@ cost = 175.0
 health = 100.0
 maxHealth = 60.0
 
+[node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=1905228460]
+position = Vector2(2, -20)
+sprite_frames = SubResource("SpriteFrames_kf5mr")
+frame = 2
+frame_progress = 0.9030614
+
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_tvvdq")]
 script = ExtResource("3_pfhft")
 
@@ -1208,6 +1259,11 @@ frame = 24
 frame_progress = 1.0
 
 [node name="LightningSpawn" parent="." unique_id=1587484739 instance=ExtResource("22_wr0b4")]
+
+[node name="TempBloodHalo" type="Sprite2D" parent="." unique_id=2055527589]
+visible = false
+position = Vector2(0, -27)
+texture = ExtResource("23_aoc4y")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

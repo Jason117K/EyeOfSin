@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://hfvmbg6ru4b8" path="res://_Entities/Demons/_CagedOculum/spike_rock.tscn" id="21_gxw7u"]
 [ext_resource type="Texture2D" uid="uid://cw6mguuoeytjd" path="res://_Entities/Demons/_CagedOculum/DemonLightningCrackle-Sheet.png" id="25_mek0b"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="27_yxa6h"]
+[ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="28_egyvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxa6h"]
 atlas = ExtResource("2_hi55n")
@@ -1598,10 +1599,8 @@ shape = SubResource("1")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]
 material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = SubResource("79")
-animation = &"idle_Maw"
+animation = &"idle"
 autoplay = "spawn"
-frame = 2
-frame_progress = 0.47315103
 script = ExtResource("15_kwpry")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_kwpry")]
@@ -1769,6 +1768,10 @@ position = Vector2(2, -8)
 sprite_frames = SubResource("SpriteFrames_d4wgq")
 frame = 24
 frame_progress = 1.0
+
+[node name="TempBloodHalo" type="Sprite2D" parent="." unique_id=2054448822]
+position = Vector2(0, -25)
+texture = ExtResource("28_egyvc")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

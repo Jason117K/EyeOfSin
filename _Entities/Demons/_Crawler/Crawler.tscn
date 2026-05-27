@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_4vrps"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_druvk"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_hvfi3"]
+[ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_jphsv"]
 [ext_resource type="Texture2D" uid="uid://c30lgql0xnwsx" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Maw-Sheet.png" id="3_a06ib"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="4_ol6r1"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="5"]
@@ -36,6 +37,50 @@
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="33_kupbo"]
 [ext_resource type="Script" uid="uid://dt0eojddtmla2" path="res://_Entities/Demons/_Crawler/crawler_projectile_shoot_component.gd" id="35_jut13"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="36_0syxb"]
+[ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="37_8u2uv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
+atlas = ExtResource("2_jphsv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7trr"]
+atlas = ExtResource("2_jphsv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tehxr"]
+atlas = ExtResource("2_jphsv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccapn"]
+atlas = ExtResource("2_jphsv")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wdw5"]
+atlas = ExtResource("2_jphsv")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0n853"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7eju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7trr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tehxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccapn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wdw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 10)
@@ -2237,6 +2282,10 @@ cost = 75.0
 health = 100.0
 maxHealth = 60.0
 
+[node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=1580291180]
+position = Vector2(3, -10)
+sprite_frames = SubResource("SpriteFrames_0n853")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434290327]
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
@@ -2259,7 +2308,7 @@ script = ExtResource("5_kupbo")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"spawn"
+animation = &"idle_Crawler"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("21_ol6r1")
@@ -2420,7 +2469,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 108.67141, 132.42473, 104.8728, 133.36887, 103.14374, 131.69762, 101.04049, 130.24617, 97.18002, 131.25366, 93.39867, 132.12523, 91.6187, 130.55508, 90.595024, 128.7591)
+points = PackedVector2Array(112.595, 131.435, 116.345, 133.31, 120.095, 135.185, 123.845, 137.06, 127.595, 138.935, 131.345, 140.81, 135.095, 142.685, 138.845, 144.56, 142.595, 146.435)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -2432,7 +2481,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 108.67141, 125.54972, 104.8728, 124.618866, 103.14374, 121.07262, 101.04049, 117.74616, 97.18002, 116.87866, 93.39867, 115.87523, 91.6187, 112.430084, 90.595024, 108.75909)
+points = PackedVector2Array(112.595, 126.435, 116.345, 126.435, 120.095, 126.435, 123.845, 126.435, 127.595, 126.435, 131.345, 126.435, 135.095, 126.435, 138.845, 126.435, 142.595, 126.435)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -2453,7 +2502,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 114.56958, 131.67139, 114.45639, 131.00533, 114.74513, 130.36255, 116.76163, 130.66847, 118.53903, 130.7537, 118.38025, 130.12645, 118.13677, 129.56458, 120.12429, 130.10265)
+points = PackedVector2Array(112.595, 131.435, 114.97, 133.31, 117.345, 135.185, 119.72, 137.06, 122.095, 138.935, 124.47, 140.81, 126.845, 142.685, 129.22, 144.56, 131.595, 146.435)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -2461,7 +2510,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 114.56958, 124.79638, 114.45639, 122.25533, 114.74513, 119.73754, 116.76163, 118.168465, 118.53903, 116.3787, 118.38025, 113.87645, 118.13677, 111.43957, 120.12429, 110.102646)
+points = PackedVector2Array(112.595, 126.435, 114.97, 126.435, 117.345, 126.435, 119.72, 126.435, 122.095, 126.435, 124.47, 126.435, 126.845, 126.435, 129.22, 126.435, 131.595, 126.435)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -2485,6 +2534,11 @@ position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_8u2uv")
 frame = 24
 frame_progress = 1.0
+
+[node name="TempBloodHalo" type="Sprite2D" parent="." unique_id=350909358]
+visible = false
+position = Vector2(0, -9)
+texture = ExtResource("37_8u2uv")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

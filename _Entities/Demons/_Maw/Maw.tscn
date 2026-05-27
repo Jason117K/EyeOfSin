@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://_Entities/Demons/_Maw/MawMouthSpriteSheet.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_colwa"]
 [ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="2_fxtok"]
+[ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_mg35w"]
 [ext_resource type="Texture2D" uid="uid://347bq70xelxl" path="res://_Entities/Zombies/_Wretch/BackUpDancerHead.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dlft4k3qhircs" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Base-Sheet.png" id="3_38s27"]
 [ext_resource type="Script" uid="uid://cgts6jvr1vng3" path="res://_Entities/Demons/_Maw/maw_health_component.gd" id="3_xf387"]
@@ -26,6 +27,50 @@
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="21_8vtaw"]
 [ext_resource type="PackedScene" uid="uid://dfiqbxbm26q0l" path="res://_Entities/Demons/Tentacles/Tentacle.tscn" id="22_tent"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="26_l3bye"]
+[ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="28_054w2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
+atlas = ExtResource("2_mg35w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7trr"]
+atlas = ExtResource("2_mg35w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tehxr"]
+atlas = ExtResource("2_mg35w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccapn"]
+atlas = ExtResource("2_mg35w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wdw5"]
+atlas = ExtResource("2_mg35w")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elaex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7eju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7trr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tehxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccapn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wdw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
 shader = ExtResource("2_fxtok")
@@ -1649,6 +1694,11 @@ wyrm_buffed_digestion_time = 10.0
 spinal_occulum_buffed_digestion_time = 11.0
 cost = 300.0
 
+[node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=625929278]
+position = Vector2(257, 228)
+sprite_frames = SubResource("SpriteFrames_elaex")
+frame = 4
+
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_colwa")]
 script = ExtResource("3_xf387")
 
@@ -1662,7 +1712,7 @@ frame_progress = 1.0
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
 sprite_frames = SubResource("7")
-animation = &"idle_Crawler"
+animation = &"idle_Hive"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
 
@@ -1673,9 +1723,11 @@ position = Vector2(256, 256)
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent" unique_id=96664600]
+visible = false
 shape = SubResource("8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1101145556]
+visible = false
 position = Vector2(256, 256)
 shape = SubResource("9")
 
@@ -1890,6 +1942,11 @@ position = Vector2(255, 243)
 sprite_frames = SubResource("SpriteFrames_4s0e3")
 frame = 24
 frame_progress = 1.0
+
+[node name="TempBloodHalo" type="Sprite2D" parent="." unique_id=919462657]
+visible = false
+position = Vector2(255, 230)
+texture = ExtResource("28_054w2")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
