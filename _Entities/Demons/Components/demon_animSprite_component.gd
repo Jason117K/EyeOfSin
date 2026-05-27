@@ -46,7 +46,7 @@ func spawn_done() -> void:
 
 
 func _on_animation_finished() -> void:
-	#print(self, "PARENT Is" , get_parent())
+	print(self,animation, " Anim Finshed, PARENT Is" , get_parent(), " spawn done is ", spawnAnimDone)
 	if animation == "spawn":
 		if spawnAnimDone:
 			lightning_spawn.animation = "change_form"

@@ -2257,7 +2257,7 @@ script = ExtResource("5_kupbo")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"attack_Hive"
+animation = &"spawn"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("21_ol6r1")
@@ -2418,7 +2418,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 108.5252, 133.15446, 105.17843, 132.94054, 103.88206, 131.08891, 100.99754, 130.27826, 97.07246, 131.74393, 93.69766, 131.63484, 92.46466, 129.83034, 90.35308, 128.53267)
+points = PackedVector2Array(112.595, 131.435, 110.427216, 129.95871, 106.50531, 131.29407, 102.74108, 131.97058, 100.7879, 130.38528, 98.374886, 129.14954, 94.48934, 130.537, 90.69613, 131.77982, 89.16176, 130.20056)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -2430,7 +2430,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 108.5252, 126.27946, 105.17843, 124.19054, 103.88206, 120.46392, 100.99754, 117.77826, 97.07246, 117.36893, 93.69766, 115.38484, 92.46466, 111.70533, 90.35308, 108.53268)
+points = PackedVector2Array(112.595, 126.435, 110.427216, 123.08372, 106.50531, 122.54407, 102.74108, 121.34558, 100.7879, 117.88528, 98.374886, 114.77453, 94.48934, 114.287, 90.69613, 113.65482, 89.16176, 110.200554)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -2451,7 +2451,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 113.46325, 130.95848, 113.05727, 130.40666, 114.874306, 130.55171, 116.96872, 131.04475, 117.45451, 130.44604, 117.2288, 129.846, 118.856346, 129.89613, 121.24113, 131.45662)
+points = PackedVector2Array(112.595, 131.435, 112.889435, 130.79091, 115.07963, 131.41542, 116.73085, 131.38301, 116.61489, 130.71771, 117.23473, 130.15373, 119.41077, 130.7987, 121.34971, 131.19029, 120.72806, 130.75734)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -2459,7 +2459,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 113.46325, 124.08349, 113.05727, 121.65667, 114.874306, 119.92671, 116.96872, 118.54476, 117.45451, 116.071045, 117.2288, 113.596, 118.856346, 111.77113, 121.24113, 111.45661)
+points = PackedVector2Array(112.595, 126.435, 112.889435, 123.91592, 115.07963, 122.66542, 116.73085, 120.75801, 116.61489, 118.21771, 117.23473, 115.778725, 119.41077, 114.5487, 121.34971, 113.06529, 120.72806, 110.75734)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -2487,10 +2487,6 @@ frame_progress = 1.0
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="frame_changed" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_frame_changed"]
-[connection signal="animation_finished" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_animation_finished"]
-[connection signal="frame_changed" from="PreviewNodes/Spider" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="Timer" to="AnimatedSpriteComponent" method="_on_timer_timeout"]
 
 [editable path="BuffNodesComponent"]

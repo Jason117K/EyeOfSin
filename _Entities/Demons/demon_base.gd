@@ -56,7 +56,7 @@ class_name Demon
 var area: Area2D
 var isBuffed := false
 var demon_manager : Node
-
+var spawn_done := false 
 # --- Signals ---
 signal demon_die
 
@@ -239,6 +239,7 @@ func on_demon_area_exited(old_area: Area2D) -> void:
 # --- Spawn ---
 
 func finish_spawn() -> void:
+	spawn_done = true 
 	animSpriteComp.visible = true
 	animSpriteComp.animation = animSpriteComp.currentAnim
 	animSpriteComp.play()

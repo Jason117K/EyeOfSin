@@ -42,7 +42,7 @@ func _on_shoot_timer_timeout() -> void:
 	if animSpriteComp.animation == animSpriteComp.currentAttackAnim:
 		return
 	check_attack_rays()
-	if canAttack:
+	if canAttack && parent_demon.spawn_done:
 		animSpriteComp.animation = animSpriteComp.currentAttackAnim
 		animSpriteComp.play()
 
