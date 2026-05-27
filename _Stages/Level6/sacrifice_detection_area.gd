@@ -4,7 +4,7 @@ extends Area2D
 
 var zombies_to_give_charge = []
 var charge :float = 0
-var total_charge_needed := 3.0
+var total_charge_needed := 5.0
 var off_cooldown := true
 
 signal lightning_storm
@@ -44,7 +44,7 @@ func add_charge()->void:
 		lightning_storm.emit()
 		charge = 0
 		off_cooldown = false
-		cooldown_timer.start()
+		#cooldown_timer.start()
 		
 		
 	

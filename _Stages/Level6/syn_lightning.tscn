@@ -69,9 +69,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4u1d4")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 1.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n2v7"]
@@ -373,7 +373,7 @@ sprite_frames = SubResource("SpriteFrames_g04d4")
 frame = 3
 frame_progress = 0.3050755
 
-[node name="AfterShocks" type="Node" parent="." unique_id=1357022641]
+[node name="AfterShocks" type="Node2D" parent="." unique_id=1331021843]
 
 [node name="AfterShock" type="AnimatedSprite2D" parent="AfterShocks" unique_id=2085456256]
 position = Vector2(1, -4)
@@ -399,7 +399,7 @@ animation = &"default_shock"
 position = Vector2(7, -43)
 sprite_frames = SubResource("SpriteFrames_pmvvv")
 animation = &"default_shock"
-frame_progress = 0.068228535
+frame_progress = 0.9238414
 
 [node name="AfterShock6" type="AnimatedSprite2D" parent="AfterShocks" unique_id=1798169165]
 position = Vector2(77, -38)

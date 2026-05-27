@@ -60,6 +60,7 @@ func summon_backup() -> void:
 			zombie_instance.set_collision_layer_value(1, false)
 			zombie_instance.set_collision_layer_value(2, false)
 			zombie_instance.set_collision_layer_value(3, false)
+			zombie_instance.set_collision_layer_value(4, false)
 			zombie_instance.set_collision_layer_value(5, true)
 		else:
 			zombie_instance.add_to_group("Purple")

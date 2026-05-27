@@ -1761,8 +1761,8 @@ autostart = true
 visible = false
 position = Vector2(9, -3)
 sprite_frames = SubResource("SpriteFrames_uslvt")
-frame = 4
-frame_progress = 0.8728944
+frame = 5
+frame_progress = 0.3001443
 
 [node name="HealAnimSprite" type="AnimatedSprite2D" parent="." unique_id=689548658]
 position = Vector2(2, -8)

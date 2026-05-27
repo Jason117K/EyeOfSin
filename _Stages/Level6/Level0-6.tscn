@@ -47,7 +47,6 @@
 [ext_resource type="Texture2D" uid="uid://drxg2xulwp8jh" path="res://_Entities/LevelSpecial/SynShark_PurpleSheet.png" id="43_83onn"]
 [ext_resource type="Texture2D" uid="uid://cty5pujg0pwjm" path="res://_Entities/LevelSpecial/SynShark_REDPurpleSheet.png" id="44_m5aj2"]
 [ext_resource type="Script" uid="uid://c3r7dyhk4np8e" path="res://_Stages/Level6/syn_shark.gd" id="45_6knlj"]
-[ext_resource type="PackedScene" uid="uid://i75f2fvorw3g" path="res://_Stages/Level6/syn_lightning.tscn" id="46_6knlj"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="48_oaclh"]
 [ext_resource type="PackedScene" uid="uid://cd0jfk3m2t8g2" path="res://_Stages/Level6/sacrifice_detection_area.tscn" id="49_lk4we"]
 
@@ -1011,14 +1010,17 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_flftm"]
-_data = [Vector2(0, 0.84895056), 0.0, 0.0, 0, 0, Vector2(0.7419872, 0.47376317), 0.0, 0.0, 0, 0, Vector2(1, 0.18140936), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.9926912), 0.0, -2.1717708, 0, 0, Vector2(0.4839744, 0.5492879), -0.5233609, -0.5233609, 0, 0, Vector2(1, 0), -0.062369477, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_sqxus"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 390, 0, 0, 0, 0, 700, 390)
+"points": PackedVector2Array(0, 0, 0, 0, -100, 390, 0, 0, 0, 0, 824, 390)
 }
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6knlj"]
+size = Vector2(742, 226)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g04d4"]
 atlas = ExtResource("48_oaclh")
@@ -1034,9 +1036,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6knlj"]
-size = Vector2(742, 226)
 
 [node name="Level0-6" type="Control" unique_id=1992174859 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
@@ -1426,6 +1425,7 @@ offset_bottom = 96.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0g5v1")
 
 [node name="Button2" type="Button" parent="." unique_id=2010084811]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_top = 96.0
@@ -1437,21 +1437,36 @@ script = ExtResource("24_7nw23")
 [node name="SynShark" type="AnimatedSprite2D" parent="." unique_id=577141404 node_paths=PackedStringArray("path") groups=["Purple"]]
 position = Vector2(664, 386)
 sprite_frames = SubResource("SpriteFrames_k2xji")
-animation = &"idle_purple"
+animation = &"attack_purple"
 autoplay = "idle_purple"
-frame_progress = 0.79799914
 script = ExtResource("45_6knlj")
 position_curve = SubResource("Curve_flftm")
+travel_time = null
 path = NodePath("../Path2D")
+max_lightning_per_rain = null
+max_lightning_per_rain_1 = null
+max_lightning_per_rain_2 = null
+max_lightning_per_rain_3 = null
+lightning_wave_delay = null
+
+[node name="LightningTimer" type="Timer" parent="SynShark" unique_id=980584099]
+wait_time = 5.0
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1050826576]
 curve = SubResource("Curve2D_sqxus")
 
-[node name="SynLightning" parent="." unique_id=2140904973 instance=ExtResource("46_6knlj")]
-position = Vector2(1023, 147)
-
 [node name="SacrificeDetectionArea" parent="." unique_id=110802928 instance=ExtResource("49_lk4we")]
 position = Vector2(576, 191)
+
+[node name="LightningArea" type="Area2D" parent="." unique_id=1681147643 groups=["Purple"]]
+visible = false
+position = Vector2(367, 207)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightningArea" unique_id=2095600345]
+position = Vector2(10, -1)
+shape = SubResource("RectangleShape2D_6knlj")
 
 [node name="CircleGlowContainer" type="Node" parent="." unique_id=149802219]
 
@@ -1483,17 +1498,8 @@ sprite_frames = SubResource("SpriteFrames_bl8gp")
 position = Vector2(576, 111)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
-[node name="LightningArea" type="Area2D" parent="." unique_id=1681147643 groups=["Purple"]]
-visible = false
-position = Vector2(367, 207)
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LightningArea" unique_id=2095600345]
-position = Vector2(10, -1)
-shape = SubResource("RectangleShape2D_6knlj")
-
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="timeout" from="SynShark/LightningTimer" to="SynShark" method="_on_lightning_timer_timeout"]
 
 [editable path="GameLayer/GridManager"]
