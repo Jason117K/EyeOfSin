@@ -17,7 +17,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="PVZ0.1"
 run/main_scene="uid://0tcqey8apvy0"
 config/features=PackedStringArray("4.6")
-run/max_fps=90
 
 [audio]
 
@@ -29,6 +28,7 @@ Global="*res://_Utilities/global.gd"
 GlobalResourceLoader="*res://_UI/ResourceLoader.gd"
 AudioManager="*res://_Utilities/Audio/audio_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
+GlobalTentacleManager="*uid://c28hwvj6hyqjx"
 
 [debug]
 
