@@ -10,6 +10,9 @@ class_name Arm extends Node2D
 ## 4. Final constraint pass keeps everything in check. ¯\_(⊙_ʖ⊙)_/¯
 ##
 ## The @tool annotation makes it work in the editor, cool.
+##
+## When a TentacleManager autoload is present (C++ GDExtension), IK solving
+## is offloaded to native code. Otherwise falls back to GDScript solver.
 
 #region Exports
 @export_group("Node References")
@@ -92,34 +95,65 @@ var _segment_lengths: Array[float] = []
 var _base_position: Vector2
 var _wave_time: float = 0.0
 
+var _manager: Node = null
+var _manager_arm_id: int = -1
+
 #endregion
 
 
-		
+
 ## Runs on scene load and sets up segments.
 ## Separate from _initialize_segments() so setters can rebuild segments during editing.
 func _ready() -> void:
 	# Work in Arm's local space - base is always at origin
 	_base_position = Vector2.ZERO
 	_initialize_segments()
+	_register_with_manager()
+
+
+func _exit_tree() -> void:
+	if _manager and _manager_arm_id >= 0:
+		_manager.unregister_arm(_manager_arm_id)
+		_manager_arm_id = -1
+		_manager = null
 
 
 ## Runs each physics frame applying IK, constraints, wave motion, then constraints again.
 func _physics_process(delta: float) -> void:
-	var target_global :Vector2
-	# Get target in parent scene global space
-	target_global= target.global_position if target else get_global_mouse_position()
+	if _manager_arm_id >= 0:
+		var solved: PackedVector2Array = _manager.get_solved_segments(_manager_arm_id)
+		if solved.size() == _segments.size():
+			for i in range(solved.size()):
+				_segments[i] = solved[i]
+			update_line2d()
+			return
 
-	# Convert to Arm's local coordinate space
+	# Fallback: GDScript solver (editor mode or no manager)
+	_solve_locally(delta)
+
+
+#region Manager Integration
+
+func _register_with_manager() -> void:
+	var manager_node = get_node_or_null("/root/TentacleManager")
+	if manager_node:
+		_manager = manager_node
+		_manager_arm_id = _manager.register_arm(self)
+
+
+#endregion
+
+
+#region GDScript Fallback Solver
+
+func _solve_locally(delta: float) -> void:
+	var target_global: Vector2
+	target_global = target.global_position if target else get_global_mouse_position()
 	var target_local: Vector2 = to_local(target_global)
-
-	# Solve IK in Arm's local space
 	solve_ik(target_local)
-
 	apply_constraints()
 	apply_wave_motion(delta)
 	apply_constraints()
-
 	update_line2d()
 
 
@@ -211,29 +245,36 @@ func apply_wave_motion(delta: float) -> void:
 		var wave_offset: float = sin(wave_phase) * wave_amplitude
 		_segments[i] += perpendicular * wave_offset
 
+#endregion
 
-## Updates Line2D points
+
+#region Visual Updates
+
+## Updates Line2D points using bulk assignment.
 ## Shadow offset interpolates from small (base) to large (tip) for depth trick.
 func update_line2d() -> void:
-	base_node.clear_points()
+	var subviewport_offset: Vector2 = base_node.position
 
-	# BaseLine is centered at this position in SubViewport
-	var subviewport_offset: Vector2 = base_node.position  # Dynamic, typically (256, 256)
-
-	for pos in _segments:
-		# pos is in Arm's local space
-		# Add SubViewport offset to center the arm in the rendering viewport
-		var point: Vector2 = pos + subviewport_offset
-		base_node.add_point(point)
+	var points := PackedVector2Array()
+	points.resize(_segments.size())
+	for i in range(_segments.size()):
+		points[i] = _segments[i] + subviewport_offset
+	base_node.points = points
 
 	if shadow_node:
-		shadow_node.clear_points()
+		var shadow_points := PackedVector2Array()
+		shadow_points.resize(_segments.size())
+		var seg_count_f := float(_segments.size() - 1)
 		for i in range(_segments.size()):
-			var t: float = float(i) / float(_segments.size() - 1)
+			var t: float = float(i) / seg_count_f
 			var shadow_offset: Vector2 = min_shadow_offset.lerp(max_shadow_offset, t)
-			var offset_pos: Vector2 = _segments[i] + shadow_offset + subviewport_offset
-			shadow_node.add_point(offset_pos)
+			shadow_points[i] = _segments[i] + shadow_offset + subviewport_offset
+		shadow_node.points = shadow_points
 
+#endregion
+
+
+#region Initialization & Visual Sync
 
 ## Rebuilds segment arrays when num__segments or max_length change.
 ## Starts with straight horizontal line so IK has valid initial positions.
@@ -279,6 +320,10 @@ func _apply_width_curve() -> void:
 	if shadow_node:
 		shadow_node.width_curve = width_curve
 
+#endregion
+
+
+#region Public API
 
 ## Returns live segment positions for external nodes to read. (Debug Draw etc)
 func get_segments() -> Array[Vector2]:
@@ -288,3 +333,5 @@ func get_segments() -> Array[Vector2]:
 ## Returns target segment lengths for constraint visualization
 func get_segment_lengths() -> Array:
 	return _segment_lengths
+
+#endregion
