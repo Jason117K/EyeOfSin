@@ -1,7 +1,7 @@
 extends SwapAbility
 
 
-
+@onready var grasp_container := $AllGrasp
 
 
 func apply_swap_ability()->void:
