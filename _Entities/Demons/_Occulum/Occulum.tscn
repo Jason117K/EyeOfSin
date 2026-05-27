@@ -1266,11 +1266,16 @@ script = ExtResource("1")
 bloodWaitTime = 31.0
 wyrmBloodWaitTime = 42.0
 crawlerBloodWaitTime = 22.0
-health = 100
-maxHealth = 100
+health = 100.0
+maxHealth = 60.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_m5mcc")]
 script = ExtResource("3_0ypr0")
+maw_health = 425
+spinal_occulum_buffed_health = 500
+crawler_buffed_health = 375
+wyrm_buffed_health = 375
+hive_buffed_health = 375
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false

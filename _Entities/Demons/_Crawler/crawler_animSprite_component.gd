@@ -29,7 +29,7 @@ func _on_AnimatedSprite_frame_changed() -> void:
 func _on_animation_finished() -> void:
 	super()
 	if !true_once:
-		print("Should Have Called Anim Finished")
+		#print("Should Have Called Anim Finished")
 		true_once = true
 	# Attack timing is now controlled by the shoot timer,
 	# not by checking canAttack on animation finish.

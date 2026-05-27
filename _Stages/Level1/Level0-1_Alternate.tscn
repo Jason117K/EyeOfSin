@@ -2011,7 +2011,7 @@ position = Vector2(370, 208)
 environment = ExtResource("21_kx3dj")
 
 [node name="DemonManager" parent="." unique_id=987854628 instance=ExtResource("2_6jrws")]
-blood_points = 50
+blood_points = 100
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=719022700]
 process_mode = 1

@@ -26,6 +26,7 @@ collision_layer = 2
 script = ExtResource("2")
 health = 150
 speed = 24.0
+attack_power = 30
 silence_field_position = Vector2(2, 3)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1104212746]

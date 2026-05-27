@@ -257,9 +257,10 @@ func _on_wave_started(wave_index: int) -> void:
 			print("Advacning Tutoiral Should Explain Basic Zomvie")
 			advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
 		1:
-			demonManager.add_blood(50)
+			pass
+			#demonManager.add_blood(50)
 		2: #Last Wave
-			demonManager.add_blood(50)
+			demonManager.add_blood(25)
 			go_to_step("EXPLAIN_SEVERED_ZOMBIE")
 			
 

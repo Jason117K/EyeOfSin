@@ -30,6 +30,7 @@ var demon_costs: Dictionary = {}
 var demon_scenes: Dictionary
 var should_hide_ui := false
 var demon_managers :Array= []
+var all_registered_occulum : Array = []
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -424,5 +425,10 @@ func hide_pip() -> void:
 func show_pip() -> void:
 	game_controller.pip.show()
 	
+func start_game()->void:
+	for occulum in all_registered_occulum:
+		occulum.start_blood_timer()
+	pass
 	
-	
+func register_occulum(new_occulum:Demon)->void:
+	all_registered_occulum.append(new_occulum)

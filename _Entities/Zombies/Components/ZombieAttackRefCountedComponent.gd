@@ -44,7 +44,7 @@ func _init(new_parent_zombie:Zombie) -> void:
 		base_anim_duration = zombieSprite.sprite_frames.get_frame_count("Attack") / zombieSprite.sprite_frames.get_animation_speed("Attack")
 	#attack_timer.one_shot = true
 	var safe_speed : float = max(new_parent_zombie.attack_speed, 0.01)
-	attack_time_wait_time = base_anim_duration * new_parent_zombie.attack_damage_point / safe_speed
+	attack_time_wait_time = new_parent_zombie.attack_damage_point / safe_speed
 
 
 
@@ -72,7 +72,7 @@ func attack_demon(collider:Node) -> void:
 	target_demon = collider
 	#print("TName is ", target_demon.name)
 	#print("I am " , self.name)
-	zombieSprite.speed_scale = parent_zombie.attack_speed
+	zombieSprite.speed_scale = base_anim_duration * parent_zombie.attack_speed
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
 	#TODO Make Attacking Sounds More Efficient
@@ -133,7 +133,7 @@ func _on_AttackTimer_timeout() -> void:
 				target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
 				var safe_speed : float = max(parent_zombie.attack_speed, 0.01)
-				attack_time_wait_time = base_anim_duration / safe_speed
+				attack_time_wait_time = 1.0 / safe_speed
 				attack_timer_started = true 
 			else:
 				stop_attack()

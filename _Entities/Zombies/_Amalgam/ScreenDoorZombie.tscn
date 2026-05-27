@@ -697,7 +697,7 @@ z_index = 2
 collision_layer = 2
 script = ExtResource("1")
 health = 250
-attack_power = 70
+attack_power = 60
 bloodWorth = 10.0
 silence_field_position = Vector2(-7, 1)
 

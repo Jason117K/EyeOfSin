@@ -144,6 +144,7 @@ func _on_start_game_button_pressed() -> void:
 		call_wave_early_requested.emit()
 		return
 	print("starttttttSSS")
+	Global.start_game()
 	Global.gameIsStarted = true
 	game_start_requested.emit()
 

@@ -1553,13 +1553,14 @@ z_index = 1
 collision_mask = 3
 script = ExtResource("2")
 lightning_damage = 25
-occulum_buffed_health = 1000
-occulum_buffed_max_health = 1000
-maw_buffed_health = 1200
-maw_buffed_max_health = 1200
+occulum_buffed_health = 1200
+occulum_buffed_max_health = 1200
+maw_buffed_health = 1500
+maw_buffed_max_health = 1500
 spike_damage = 34
-health = 500
-maxHealth = 500
+cost = 75.0
+health = 600.0
+maxHealth = 600.0
 
 [node name="SilenceField" type="Area2D" parent="." unique_id=1451195478]
 visible = false

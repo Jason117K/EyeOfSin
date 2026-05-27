@@ -28,6 +28,8 @@ func _on_wave_started(wave_index: int)->void:
 		0:
 			pass
 		1:
-			demonManager.add_blood(50)
+			pass
+			#demonManager.add_blood(50)
 		2:
-			demonManager.add_blood(50)
+			pass
+			demonManager.add_blood(25)

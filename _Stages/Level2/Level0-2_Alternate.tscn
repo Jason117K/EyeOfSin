@@ -1165,7 +1165,7 @@ mouse_filter = 2
 script = ExtResource("1_xmbdx")
 
 [node name="DemonManager" parent="." unique_id=282479321 instance=ExtResource("2_m8syp")]
-blood_points = 190
+blood_points = 215
 
 [node name="UILayer" parent="." unique_id=1044800332 instance=ExtResource("20_c63eg")]
 layout_mode = 1

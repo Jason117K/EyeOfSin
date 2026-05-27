@@ -357,7 +357,7 @@ script = ExtResource("1")
 health = 50
 healthRegen = 1.0
 time_between_health_regen = 3
-attack_power = 20
+attack_power = 10
 silence_field_position = Vector2(-3, 3)
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1502085221]

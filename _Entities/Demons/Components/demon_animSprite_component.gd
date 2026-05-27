@@ -46,7 +46,7 @@ func spawn_done() -> void:
 
 
 func _on_animation_finished() -> void:
-	print(self,animation, " Anim Finshed, PARENT Is" , get_parent(), " spawn done is ", spawnAnimDone)
+	#print(self,animation, " Anim Finshed, PARENT Is" , get_parent(), " spawn done is ", spawnAnimDone)
 	if animation == "spawn":
 		if spawnAnimDone:
 			lightning_spawn.animation = "change_form"
@@ -65,7 +65,7 @@ func receive_buff(new_form : String) -> void:
 	
 	if parent.has_method("adjust_position"):
 		parent.adjust_position(new_form)
-	print("APPLYING BUFF FROM ",new_form )
+	#print("APPLYING BUFF FROM ",new_form )
 	match new_form:
 		"Occulum":
 			currentAnim = "idle_Occulum"

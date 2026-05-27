@@ -3610,7 +3610,7 @@ layout_mode = 1
 environment = SubResource("Environment_xl50p")
 
 [node name="DemonManager" parent="." unique_id=1210520917 instance=ExtResource("4_07bn3")]
-blood_points = 50
+blood_points = 100
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=198300004]
 process_mode = 1

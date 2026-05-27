@@ -166,6 +166,7 @@ light_mask = 31
 z_index = 99
 scale = Vector2(0.8, 0.8)
 script = ExtResource("2")
+BloodDamage = 75.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=376210607]
 visible = false

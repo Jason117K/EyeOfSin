@@ -35,10 +35,7 @@ func _setup_tutorial() -> void:
 			"name": "GAME_READY",
 			"enter": _start_game_ready,
 		},
-		{
-			"name": "EXPLAIN_AMALGAM_ZOMBIE",
-			"enter": _start_explain_amalgam_zombie,
-		},
+
 	])
 #endregion
 
@@ -78,16 +75,13 @@ func _ready() -> void:
 
 	#finish_ready()
 
-#TODO Re-Implement Rohan 
+
 func _configure_waves() -> void:
-	pass
-	#zombie_spawner_1.set_waves_from_dicts([{"Amalgam": 1, "Erupter": 3, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Flesheater": 2, "Reanimator": 1, "Reborn": 11, "Severed": 5, "Unhallower": 3}, {"Erupter": 3, "Flesheater": 3, "Reborn": 8, "Severed": 7, "Sundered": 4, "Unhallower": 5}])
-	#zombie_spawner_2.set_waves_from_dicts([{"Erupter": 2, "Flesheater": 1, "Reanimator": 1, "Reborn": 1, "Severed": 3, "Unhallower": 4}, {"Erupter": 3, "Flesheater": 1, "Severed": 1, "Unhallower": 6}, {"Flesheater": 5, "Reborn": 10, "Severed": 3, "Unhallower": 6}])
-	#zombie_spawner_3.set_waves_from_dicts([{"Amalgam": 1, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Sundered": 4, "Unhallower": 8}, {"Reborn": 8, "Severed": 2, "Sundered": 6, "Unhallower": 4}, {"Erupter": 2, "Reanimator": 1, "Severed": 7, "Sundered": 5, "Unhallower": 3}])
-	#zombie_spawner_4.set_waves_from_dicts([{"Amalgam": 1, "Flesheater": 2, "Reborn": 12, "Severed": 1, "Sundered": 5}, {"Erupter": 4, "Reanimator": 1, "Unhallower": 4}, {"Erupter": 5, "Flesheater": 2, "Severed": 8, "Unhallower": 3}])
-	#zombie_spawner_5.set_waves_from_dicts([{"Amalgam": 5, "Reanimator": 1, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Amalgam": 2, "Reborn": 10, "Unhallower": 12}, {"Amalgam": 9, "Erupter": 4, "Reanimator": 1, "Severed": 5, "Unhallower": 3}])
-	#zombie_spawner_6.set_waves_from_dicts([{"Amalgam": 1, "Flesheater": 1, "Reanimator": 1, "Reborn": 1, "Severed": 1, "Sundered": 5, "Unhallower": 4}, {"Flesheater": 1, "Severed": 5, "Sundered": 3}, {"Amalgam": 5, "Severed": 4, "Unhallower": 11}])
-	#zombie_spawner_7.set_waves_from_dicts([{"Amalgam": 1, "Flesheater": 2, "Reborn": 1, "Severed": 1, "Unhallower": 8}, {"Amalgam": 4, "Reborn": 8, "Severed": 1, "Sundered": 3}, {"Erupter": 1, "Reborn": 18, "Severed": 7, "Unhallower": 6}])
+	zombie_spawner_1.set_waves_from_dicts([{"Reborn": 3}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}])
+	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 3, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}])
+	zombie_spawner_3.set_waves_from_dicts([{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}])
+	zombie_spawner_4.set_waves_from_dicts([{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}])
+	zombie_spawner_5.set_waves_from_dicts([{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}])
 
 
 func finish_ready() -> void:
@@ -125,9 +119,7 @@ func start_game() -> void:
 	gameStarted = true
 
 
-func _start_explain_amalgam_zombie() -> void:
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_AMALGAM)
-	toolTips.set_visual_tutorial_visual(amalgam_zombie_demo_scene.instantiate())
+
 #endregion
 
 

@@ -43,7 +43,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="39_isx2x"]
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="40_pfiab"]
 [ext_resource type="Script" uid="uid://d3yjo4efg0sgs" path="res://_UI/Buttons/button_breathe.gd" id="41_sdtya"]
-[ext_resource type="PackedScene" uid="uid://c5nf65oj07plx" path="res://_Entities/Demons/Tentacles/Tentacle_Small_Test.tscn" id="43_hyxam"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_keoxs"]
 texture = ExtResource("8_hyxam")
@@ -988,18 +987,6 @@ tile_map_data = PackedByteArray("AAAWAAYADgABAAAAAAAWAAUADgABAAAAAAAWAAQADgABAAA
 tile_set = SubResource("TileSet_p0qqf")
 script = ExtResource("26_22v33")
 hue_shift = 0.57
-
-[node name="ConeTentTest" parent="GameLayer" unique_id=1473598916 instance=ExtResource("43_hyxam")]
-position = Vector2(197, 232)
-
-[node name="ConeTentTest2" parent="GameLayer" unique_id=872478847 instance=ExtResource("43_hyxam")]
-position = Vector2(205, 262)
-
-[node name="ConeTentTest3" parent="GameLayer" unique_id=1872917547 instance=ExtResource("43_hyxam")]
-position = Vector2(205, 193)
-
-[node name="ConeTentTest4" parent="GameLayer" unique_id=937649599 instance=ExtResource("43_hyxam")]
-position = Vector2(151, 215)
 
 [node name="Environment" type="Node2D" parent="." unique_id=761127064]
 z_index = 1

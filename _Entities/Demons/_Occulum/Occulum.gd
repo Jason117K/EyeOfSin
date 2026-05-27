@@ -51,12 +51,16 @@ var healTimer: Timer
 
 func _ready() -> void:
 	super()
+	Global.register_occulum(self)
 	# --- Timer setup ---
 	bloodTimer.wait_time = bloodWaitTime
-	bloodTimer.start()
 	bloodTimer.connect("timeout", Callable(self, "_on_BloodTimer_timeout"))
 	blood_hit_1.animation_looped.connect(zombie_gore_fx)
+	if Global.gameIsStarted:
+		bloodTimer.start()
 
+func start_blood_timer()->void:
+	bloodTimer.start()
 
 # --- Getters ---
 

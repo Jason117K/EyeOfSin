@@ -208,7 +208,7 @@ func get_zombie_image(zombie_type:int)-> Node:
 	return zombie_images[zombie_type]
 	
 # Get a alien animation by type,
-func get_zombie_animation(zombie_type:int)->Node:
+func get_zombie_animation(zombie_type:int)->SpriteFrames:
 	if not zombie_animations.has(zombie_type):
 		print("ResourceManager: Error - Resource not found for animation:", zombie_type)
 		return null

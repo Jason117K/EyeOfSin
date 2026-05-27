@@ -120,17 +120,8 @@ func _exit_tree() -> void:
 
 ## Runs each physics frame applying IK, constraints, wave motion, then constraints again.
 func _physics_process(delta: float) -> void:
-	if _manager_arm_id >= 0:
-		var solved: PackedVector2Array = _manager.get_solved_segments(_manager_arm_id)
-		if solved.size() == _segments.size():
-			for i in range(solved.size()):
-				_segments[i] = solved[i]
-			update_line2d()
-			return
-		else:
-			print("SIZE MISMATCH: solved=%d local=%d" % [solved.size(), _segments.size()])
-		print("FALLBACK id=%d" % _manager_arm_id)
-		_solve_locally(delta)
+	pass
+	####DANGER Runs Even When Scene Not Playing ????????
 	#if _manager_arm_id >= 0:
 		#var solved: PackedVector2Array = _manager.get_solved_segments(_manager_arm_id)
 		#if solved.size() == _segments.size():
@@ -138,6 +129,17 @@ func _physics_process(delta: float) -> void:
 				#_segments[i] = solved[i]
 			#update_line2d()
 			#return
+		#else:
+			#print("SIZE MISMATCH: solved=%d local=%d" % [solved.size(), _segments.size()])
+		#print("FALLBACK id=%d" % _manager_arm_id)
+		#_solve_locally(delta)
+	##if _manager_arm_id >= 0:
+		##var solved: PackedVector2Array = _manager.get_solved_segments(_manager_arm_id)
+		##if solved.size() == _segments.size():
+			##for i in range(solved.size()):
+				##_segments[i] = solved[i]
+			##update_line2d()
+			##return
 #
 	## Fallback: GDScript solver (editor mode or no manager)
 	#_solve_locally(delta)

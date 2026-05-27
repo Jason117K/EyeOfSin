@@ -26,7 +26,7 @@ const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptio
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
-@onready var wyrm_button := demonSelectionMenu.get_wyrm_button()
+@onready var wyrm_button :TextureButton= demonSelectionMenu.get_wyrm_button()
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 
 
@@ -212,7 +212,7 @@ func _on_wave_started(wave_index: int) -> void:
 func show_only_demon_buttons(visible_containers: Array) -> void:
 	for container_name in ALL_DEMON_CONTAINERS:
 		var container := hbox.get_node(container_name)
-		var should_show := container_name in visible_containers
+		var should_show :bool= container_name in visible_containers
 		for child in container.get_children():
 			child.visible = should_show
 

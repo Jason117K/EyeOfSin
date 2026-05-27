@@ -59,7 +59,7 @@ func _ready() -> void:
 
 func clearBuffs() -> void:
 	#print("DDD Buffed Demons is ", buffedDemons)
-	for this_demon : Demon in buffedDemons:
+	for this_demon in buffedDemons:
 		#print("Now DDD Buffing ", demon)
 		if this_demon != null:
 			pass
