@@ -298,6 +298,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d1bwg")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"alt_shock",
@@ -354,6 +357,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xn5y8")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"default_shock",

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="4_hstmo"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="5_c2s5l"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="6_ir2xs"]
+[ext_resource type="Resource" uid="uid://i2ubkdlb3dw" path="res://_Stages/WaveData/waveOfReborn.tres" id="6_ljnus"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="6_wjpx4"]
 [ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://_Assets/Environment/Props/Pustules-export.png" id="7_4b4t3"]
 [ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://_Assets/Environment/Props/Pustules_shadow1_Medium.png" id="8_0ldat"]
@@ -22,11 +23,6 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="19_aiqih"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="20_77uu8"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="21_c3xs0"]
-
-[sub_resource type="Resource" id="Resource_ljnus"]
-script = ExtResource("6_ir2xs")
-Reborn = 5
-metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("9_n2gek")
@@ -82,6 +78,7 @@ process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=128186070 instance=ExtResource("4_hstmo")]
 position = Vector2(740, 109)
+waves = Array[ExtResource("6_ir2xs")]([ExtResource("6_ljnus")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1497888431 instance=ExtResource("5_c2s5l")]
@@ -90,6 +87,7 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("4_hstmo")]
 position = Vector2(740, 141)
+waves = Array[ExtResource("6_ir2xs")]([ExtResource("6_ljnus")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("5_c2s5l")]
@@ -98,6 +96,7 @@ position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1689922068 instance=ExtResource("4_hstmo")]
 position = Vector2(740, 173)
+waves = Array[ExtResource("6_ir2xs")]([ExtResource("6_ljnus")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=326913154 instance=ExtResource("5_c2s5l")]
@@ -106,6 +105,7 @@ position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=2041524300 instance=ExtResource("4_hstmo")]
 position = Vector2(740, 205)
+waves = Array[ExtResource("6_ir2xs")]([ExtResource("6_ljnus")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1681998341 instance=ExtResource("5_c2s5l")]
@@ -114,7 +114,7 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=228284926 instance=ExtResource("4_hstmo")]
 position = Vector2(740, 237)
-waves = Array[ExtResource("6_ir2xs")]([SubResource("Resource_ljnus")])
+waves = Array[ExtResource("6_ir2xs")]([ExtResource("6_ljnus")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1236080942 instance=ExtResource("5_c2s5l")]
@@ -123,6 +123,7 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1329179264 instance=ExtResource("4_hstmo")]
 position = Vector2(740, 269)
+waves = Array[ExtResource("6_ir2xs")]([ExtResource("6_ljnus")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1772735517 instance=ExtResource("5_c2s5l")]
@@ -131,6 +132,7 @@ position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=2003164474 instance=ExtResource("4_hstmo")]
 position = Vector2(740, 301)
+waves = Array[ExtResource("6_ir2xs")]([ExtResource("6_ljnus")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=633272156 instance=ExtResource("5_c2s5l")]

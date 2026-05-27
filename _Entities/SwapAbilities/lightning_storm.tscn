@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://jtpt8u7iyrvj"]
+
+[ext_resource type="Script" uid="uid://bxvlds22qlm18" path="res://_Entities/SwapAbilities/lightning_storm.gd" id="1_gmgj3"]
+[ext_resource type="Shader" uid="uid://jpbopnm12rwv" path="res://_Common/Shaders/cooldown.gdshader" id="4_51lr7"]
+[ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="5_mbvdf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bupko"]
+shader = ExtResource("4_51lr7")
+shader_parameter/fill_amount = 0.0
+shader_parameter/fill_color = Color(1, 0, 0, 1)
+shader_parameter/empty_color = Color(0, 0, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_046s3"]
+size = Vector2(753, 418)
+
+[node name="LightningStorm" type="Node" unique_id=534558046]
+script = ExtResource("1_gmgj3")
+
+[node name="Control" type="Control" parent="." unique_id=2060507732]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CooldownVisual" type="ColorRect" parent="Control" unique_id=1209554020]
+material = SubResource("ShaderMaterial_bupko")
+layout_mode = 0
+offset_left = 576.955
+offset_top = 338.0
+offset_right = 636.955
+offset_bottom = 397.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Control" unique_id=84739555]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 335.0
+offset_right = 1003.00006
+offset_bottom = 763.0
+scale = Vector2(0.15, 0.15)
+mouse_filter = 2
+icon = ExtResource("5_mbvdf")
+
+[node name="LightningSpawnArea" type="Area2D" parent="." unique_id=109663788]
+position = Vector2(354, 190)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightningSpawnArea" unique_id=1007282924]
+position = Vector2(18.5, 14)
+shape = SubResource("RectangleShape2D_046s3")

@@ -12,12 +12,12 @@ func _ready() -> void:
 	if self.is_in_group("Green"):
 		self.set_collision_mask_value(1,false)
 		self.set_collision_mask_value(2,false)
-		self.set_collision_mask_value(3,true)
+		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,false)
 		self.set_collision_mask_value(5,true)
 	else:
 		self.set_collision_mask_value(1,false)
-		self.set_collision_mask_value(2,true)
+		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)
 		
@@ -31,7 +31,7 @@ func _on_animation_finished() -> void:
 	queue_free()
 		
 		
-func _on_syn_lightning_frame_changed():
+func _on_syn_lightning_frame_changed()->void:
 	if syn_lightning_animation.frame == 2:
 		for shock in all_aftershocks.get_children():
 			shock.play()

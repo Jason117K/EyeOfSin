@@ -9,6 +9,7 @@ var previous_scenes: Array = []
 var on_scene_1 := true
 var can_swap := true
 var swap_cooldown_timer: Timer
+var swap_ability : Node 
 
 var demon_manager : Node
 
@@ -26,7 +27,7 @@ var _default_root_cull_mask := 0xFFFFFFFF
 func _ready() -> void:
 	Global.game_controller = self
 	current_scene = scene_container.get_child(0)
-
+	swap_ability = Global.swap_ability
 	swap_cooldown_timer = Timer.new()
 	swap_cooldown_timer.wait_time = 0.1
 	swap_cooldown_timer.one_shot = true
@@ -150,6 +151,8 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	#demon_selection_menu.visibility_layer = 0
 	#demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer 
 	#else:
+	swap_ability.set_current_visibility_layer(1)
+	swap_ability.set_collision()
 	demon_selection_menu.visibility_layer = 0
 	demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
 	
@@ -287,6 +290,7 @@ func swap_scenes() -> void:
 
 	Global.hide_notification_bar()
 	if on_scene_1:
+		swap_ability.set_current_visibility_layer(2)
 		demon_selection_menu.visibility_layer = 0
 		pause_button.visibility_layer = 0
 		level_switcher.visibility_layer = 0
@@ -294,6 +298,7 @@ func swap_scenes() -> void:
 		pause_button.set_visibility_layer_bit(2, true)
 		level_switcher.set_visibility_layer_bit(2,true)
 	else:
+		swap_ability.set_current_visibility_layer(1)
 		demon_selection_menu.visibility_layer = 0
 		pause_button.visibility_layer = 0
 		level_switcher.visibility_layer = 0

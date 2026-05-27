@@ -74,6 +74,12 @@ func _process(delta: float) -> void:
 		if zombie != null:
 			zombie.tick(delta)
 
+func reset_all_variables()->void:
+	gameIsStarted = false
+	reset_swap_ability()
+	resetOcculumCount()
+	reset_demon_managers()
+	reset_all_zombies()
 
 func _load_demon_costs() -> void:
 	demon_scenes = {
@@ -132,10 +138,7 @@ func swap_portal_button() -> void:
 func register_demon_managers(new_demon_manager:DemonManager)->void:
 	demon_managers.append(new_demon_manager)
 
-func resetOcculumCount() -> void:
-	is_blocking = false
-	occulumCount = 0
-	gameIsStarted = false
+func reset_demon_managers()->void:
 	var demon_managers_temp : Array = []
 	for demon_manager in demon_managers:
 		if demon_manager == null:
@@ -144,6 +147,10 @@ func resetOcculumCount() -> void:
 			demon_managers_temp.append(demon_manager)
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
+
+func resetOcculumCount() -> void:
+	is_blocking = false
+	occulumCount = 0
 	#game_controller.on_scene_1 = true 
 	
 	
@@ -385,6 +392,9 @@ func deregister_zombie(zombie_to_delete : Zombie) -> void:
 	
 func get_all_zombies() -> Array:
 	return all_zombies
+
+func reset_all_zombies()->void:
+	all_zombies.clear()
 	
 func set_zombie_info_bar(zombie : Zombie) -> void:
 	#print(" notification_bar" , notification_bar)

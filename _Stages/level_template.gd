@@ -75,6 +75,8 @@ func _ready() -> void:
 	pass
 	#print("Level Is Readying Itselffffffffff")
 	Global.adjust_ui_layer()
+	Global.reset_all_variables()
+	
 
 
 
