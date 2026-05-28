@@ -246,6 +246,9 @@ region = Rect2(1938, 0, 114, 43)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4n2v7")
 }, {
 "duration": 1.0,
@@ -320,6 +323,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bem2v")
 }, {
 "duration": 1.0,
@@ -388,8 +394,6 @@ shape = SubResource("RectangleShape2D_35nct")
 [node name="SynLightning" type="AnimatedSprite2D" parent="." unique_id=2140904973]
 position = Vector2(-4, -175)
 sprite_frames = SubResource("SpriteFrames_g04d4")
-frame = 3
-frame_progress = 0.3050755
 
 [node name="AfterShocks" type="Node2D" parent="." unique_id=1331021843]
 

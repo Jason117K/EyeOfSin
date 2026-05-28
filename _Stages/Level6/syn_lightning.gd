@@ -23,16 +23,24 @@ func _ready() -> void:
 		
 	syn_lightning_animation.play()
 
- 
+
 func _on_animation_finished() -> void:
-	for area in self.get_overlapping_areas():
-		if area.is_in_group("Zombie"):
-			area.take_damage(lightning_damage)
+	#for area in self.get_overlapping_areas():
+		#if area.is_in_group("Zombie"):
+			#area.take_damage(lightning_damage)
 	queue_free()
 		
 		
 func _on_syn_lightning_frame_changed()->void:
+	print("Syn Lightning Animation Frame Changed Checking Loop ", syn_lightning_animation.frame)
+	if syn_lightning_animation.frame == 1:
+		for area in self.get_overlapping_areas():
+			if area.is_in_group("Zombie"):
+				area.take_damage(lightning_damage)
+				
 	if syn_lightning_animation.frame == 2:
 		for shock in all_aftershocks.get_children():
+			print("Loop setting: ", shock.sprite_frames.get_animation_loop(shock.animation))
+			print("Animation: ", shock.animation)
 			shock.play()
 			
