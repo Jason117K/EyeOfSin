@@ -14,7 +14,7 @@ func _ready() -> void:
 	attack_rays = [$"../DMG_RayCast2D",attack_ray_2,attack_ray_3]
 	print("Attack Rays is ", attack_rays)
 	super()
-	set_damage_zone_collision()
+	#set_damage_zone_collision()
 	node_ready = true
 
 func apply_buffs_to_projectile(projectile)->void:
@@ -31,22 +31,22 @@ func shoot_projectile() -> void:
 	#canAttack = false
 
 
-func set_damage_zone_collision() -> void:
-	if parent_demon.is_in_group("Green"):
-		damage_zone.set_collision_mask_value(1,false)
-		damage_zone.set_collision_mask_value(2,false)
-		damage_zone.set_collision_mask_value(3,false)
-		damage_zone.set_collision_mask_value(4,false)
-		damage_zone.set_collision_mask_value(5,true)
-	else:
-		damage_zone.set_collision_mask_value(1,false)
-		damage_zone.set_collision_mask_value(2,false)
-		damage_zone.set_collision_mask_value(3,false)
-		damage_zone.set_collision_mask_value(4,true)
-
-
-
-		
-		
+#func set_damage_zone_collision() -> void:
+	#if parent_demon.is_in_group("Green"):
+		#damage_zone.set_collision_mask_value(1,false)
+		#damage_zone.set_collision_mask_value(2,false)
+		#damage_zone.set_collision_mask_value(3,false)
+		#damage_zone.set_collision_mask_value(4,false)
+		#damage_zone.set_collision_mask_value(5,true)
+	#else:
+		#damage_zone.set_collision_mask_value(1,false)
+		#damage_zone.set_collision_mask_value(2,false)
+		#damage_zone.set_collision_mask_value(3,false)
+		#damage_zone.set_collision_mask_value(4,true)
+#
+#
+#
+		#
+		#
 		
 		
