@@ -18,7 +18,8 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kni87"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfr0o"]
+resource_local_to_scene = true
 atlas = ExtResource("5_kfr0o")
 region = Rect2(32, 0, 32, 32)
 
@@ -158,7 +159,7 @@ size_flags_vertical = 0
 [node name="Health_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=186687710]
 layout_mode = 2
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_kni87")
+texture = SubResource("AtlasTexture_kfr0o")
 
 [node name="HealthAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=291366460]
 layout_mode = 2

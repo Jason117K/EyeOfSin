@@ -14,8 +14,8 @@ func _ready() -> void:
 		blood_label.text = str(blood_amount)
 	
 	if make_green:
-		rect_region = Rect2(32,0,32,32)
-		#health_icon.texture.draw_rect_region(rect_region)
+		rect_region = Rect2(0,0,32,32)
+		health_icon.texture.region = rect_region
 
 func get_the_health() -> Node:
 	return health_label
