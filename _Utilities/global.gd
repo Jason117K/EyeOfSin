@@ -269,6 +269,9 @@ func get_green_portal_location() -> Vector2:
 func register_hero_demon(new_hero_demon : Demon) -> void:
 	hero_demon = new_hero_demon
 	hero_demon_summoned = true
+	for demon_manager in demon_managers:
+		if demon_manager != null:
+			demon_manager.hero_demon = new_hero_demon
 
 func hero_demon_is_summoned() -> bool:
 	return hero_demon_summoned
@@ -278,6 +281,28 @@ func swap_scenes() -> void:
 	game_controller.swap_scenes()
 	adjust_ui_layer()					
 	swap_portal_button()
+	swap_hero_demon()
+	#demon_manager.swap_heart()
+
+func swap_hero_demon()->void:
+	pass
+	print("Swap Hero Demon")
+	if hero_demon != null:
+		if hero_demon.is_in_group("Purple"):
+			print("Hero Was Purple")
+			hero_demon.add_to_group("Green")
+			hero_demon.remove_from_group("Purple")
+			if hero_demon.is_in_group("Purple"):
+				print("Hero Still Purple Lmao")
+			hero_demon.reparent(game_controller.get_active_dimension().game_layer)
+			hero_demon.swap_scenes()
+		else:
+			print("Hero Was Green")
+			hero_demon.add_to_group("Purple")
+			hero_demon.remove_from_group("Green")
+			hero_demon.reparent(game_controller.get_active_dimension().game_layer)
+			hero_demon.swap_scenes()
+	
 
 func unhide_ui_layer() -> void:
 	should_hide_ui = false

@@ -943,7 +943,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Heart" type="Area2D" unique_id=1977454691 groups=["Plants"]]
+[node name="Heart" type="Area2D" unique_id=1977454691 groups=["Demons", "Plants"]]
 z_index = 3
 collision_layer = 3
 script = ExtResource("1_c8ds1")
@@ -1063,7 +1063,6 @@ collide_with_bodies = false
 
 [node name="BuffNodesComponent" parent="." unique_id=1843542822 instance=ExtResource("23_f8a43")]
 visible = false
-giveBuffTo = ["Sunflower", "", "WalnutTree", "EggWorm", "Hive", "Maw", "None", "None"]
 
 [node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
@@ -1173,7 +1172,6 @@ position = Vector2(32, 3)
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("17_omvog")]
 script = ExtResource("18_f3mxg")
-attack_speed_mult = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

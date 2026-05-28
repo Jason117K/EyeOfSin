@@ -5,6 +5,7 @@ extends Demon
 #var DemonManager
 var duration: float
 
+
 #@onready var buffNodes = $BuffNodesComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
 
@@ -36,8 +37,19 @@ func set_attack_collision() -> void:
 func get_cost() -> float:
 	#print("Return , ", cost )
 	return cost
-	
-					
+
+func swap_scenes()->void:
+	projectile_shoot_component.set_attack_rays_collision()
+	if is_in_group("Green"):
+		set_collision_layer_value(1, false)
+		set_collision_layer_value(2, false)
+		set_collision_layer_value(3, true)
+	else:
+		set_collision_layer_value(1, false)
+		set_collision_layer_value(2, true)
+		set_collision_layer_value(3, false)
+		
+		
 # Doubles attack speed when receiving a buff
 func receive_buff(_newDemon:String) -> void:
 	pass

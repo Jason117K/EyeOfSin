@@ -51,6 +51,8 @@ class_name Demon
 @onready var healthComp: Node = $HealthComponent
 @onready var heal_anim_sprite: AnimatedSprite2D = $HealAnimSprite
 @onready var buffNodes: Node = $BuffNodesComponent
+@onready var erase_button : TextureButton = $EraseButton
+@onready var erase_mouse_area : Area2D = $EraseMouseArea
 
 # --- State ---
 var area: Area2D
@@ -76,6 +78,9 @@ func _ready() -> void:
 	_init_demon_manager()
 	# --- Phase 4: Post-spawn detection (deferred, async) ---
 	_schedule_post_spawn()
+	erase_button.mouse_entered.connect(show_erase_button)
+	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
+	erase_button.pressed.connect(die_fromClearSpace)
 
 func _init_collision() -> void:
 	if is_in_group("Green"):
@@ -222,9 +227,17 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		#print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)
-	if event is InputEventMouseButton :#&& double click
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
+	# your double-click logic here
+		show_erase_button()
 		pass
 
+func show_erase_button()->void:
+	erase_button.show()
+	pass
+	
+func hide_erase_button_on_mouse_leave()->void:
+	erase_button.hide()
 
 # --- Heart Buff Area Detection ---
 

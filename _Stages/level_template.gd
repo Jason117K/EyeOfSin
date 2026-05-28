@@ -18,6 +18,7 @@ var has_pulsed := false
 @onready var demonManager := $DemonManager
 @onready var demonSelectionMenu := $"../DemonSelectionMenu"
 #@onready var waveManager = $GameLayer/WaveManager
+@onready var game_layer := $GameLayer
 @onready var waveManager := get_parent().get_node("WaveManager")
 @onready var spotlight_overlay := $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button :=   $"../DemonSelectionMenu/PanelContainer2/UtilityVBoxContainer/HBoxContainer/PauseButton"

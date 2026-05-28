@@ -17,6 +17,9 @@ func _ready() -> void:
 	set_damage_zone_collision()
 	node_ready = true
 
+func apply_buffs_to_projectile(projectile)->void:
+	super(projectile)
+	#projectile.damage = 1
 
 func shoot_projectile() -> void:
 	super()

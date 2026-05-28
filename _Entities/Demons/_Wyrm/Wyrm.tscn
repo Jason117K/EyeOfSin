@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="21_b83ow"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="22_wr0b4"]
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="23_aoc4y"]
+[ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_kf5mr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_pyfr7")
@@ -1033,6 +1034,9 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhncc"]
+size = Vector2(59, 56)
+
 [node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Demons", "Plants", "Wyrm"]]
 z_index = 1
 script = ExtResource("4")
@@ -1264,6 +1268,22 @@ frame_progress = 1.0
 visible = false
 position = Vector2(0, -27)
 texture = ExtResource("23_aoc4y")
+
+[node name="EraseButton" type="TextureButton" parent="." unique_id=1915163654]
+offset_left = -33.0
+offset_top = -36.0
+offset_right = 9.0
+offset_bottom = 6.0
+scale = Vector2(0.395, 0.395)
+mouse_filter = 1
+texture_normal = ExtResource("25_kf5mr")
+
+[node name="EraseMouseArea" type="Area2D" parent="." unique_id=1488447784]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=615408492]
+position = Vector2(-7.5, -11)
+shape = SubResource("RectangleShape2D_lhncc")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

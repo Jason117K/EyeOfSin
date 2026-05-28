@@ -198,7 +198,6 @@ layout_mode = 2
 theme_override_constants/separation = -5
 
 [node name="HeartButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1081347700]
-visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 5

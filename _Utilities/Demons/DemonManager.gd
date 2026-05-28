@@ -390,14 +390,14 @@ func _on_SetBlood_timeout() -> void:
 		get_parent().get_node("UILayer").set_blood(blood_points)
 
 func swap_heart() -> void:
-	#print("Hero Demon Is ", hero_demon)
+	print("Hero Demon Is ", hero_demon)
 	if hero_demon != null:
 		if "Alternate" in get_parent().name :
-			hero_demon.add_to_group("Green")
-			hero_demon.remove_from_group("Purple")
-			hero_demon.reparent(get_parent().get_node("GameLayer"))
-			hero_demon.set_attack_collision()
-			
+			#hero_demon.add_to_group("Green")
+			#hero_demon.remove_from_group("Purple")
+			#hero_demon.reparent(get_parent().get_node("GameLayer"))
+			#hero_demon.set_attack_collision()
+			#
 			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
 			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
 			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon
@@ -406,11 +406,11 @@ func swap_heart() -> void:
 			grid_map[Vector2(hero_demon.global_position.x-32,hero_demon.global_position.y)] = hero_demon
 			
 		else:
-			hero_demon.add_to_group("Purple")
-			hero_demon.remove_from_group("Green")
-			hero_demon.reparent(get_parent().get_node("GameLayer"))
-			hero_demon.set_attack_collision()
-			
+			#hero_demon.add_to_group("Purple")
+			#hero_demon.remove_from_group("Green")
+			#hero_demon.reparent(get_parent().get_node("GameLayer"))
+			#hero_demon.set_attack_collision()
+			#
 			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y)] = hero_demon
 			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y+32)] = hero_demon
 			grid_map[Vector2(hero_demon.global_position.x+32,hero_demon.global_position.y-32)] = hero_demon

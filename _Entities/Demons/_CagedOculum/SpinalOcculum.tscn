@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cw6mguuoeytjd" path="res://_Entities/Demons/_CagedOculum/DemonLightningCrackle-Sheet.png" id="25_mek0b"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="27_yxa6h"]
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="28_egyvc"]
+[ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_r8bpw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxa6h"]
 atlas = ExtResource("2_hi55n")
@@ -1549,6 +1550,9 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvtdc"]
+size = Vector2(59, 56)
+
 [node name="SpinalOcculum" type="Area2D" unique_id=106028571 groups=["Demons", "Plants"]]
 z_index = 1
 collision_mask = 3
@@ -1772,6 +1776,22 @@ frame_progress = 1.0
 [node name="TempBloodHalo" type="Sprite2D" parent="." unique_id=2054448822]
 position = Vector2(0, -25)
 texture = ExtResource("28_egyvc")
+
+[node name="EraseButton" type="TextureButton" parent="." unique_id=185795330]
+offset_left = -33.0
+offset_top = -36.0
+offset_right = 9.0
+offset_bottom = 6.0
+scale = Vector2(0.395, 0.395)
+mouse_filter = 1
+texture_normal = ExtResource("29_r8bpw")
+
+[node name="EraseMouseArea" type="Area2D" parent="." unique_id=1928357118]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2080345614]
+position = Vector2(-7.5, -11)
+shape = SubResource("RectangleShape2D_rvtdc")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

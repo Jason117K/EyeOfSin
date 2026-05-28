@@ -43,7 +43,7 @@ func _ready() -> void:
 func set_attack_rays_collision()->void:
 	if parent_demon.is_in_group("Green"):
 		for attacking_ray : Node in attack_rays:
-			attacking_ray.max_results = 30
+			#attacking_ray.max_results = 30
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,false)
 			attacking_ray.set_collision_mask_value(3,false)
@@ -51,7 +51,7 @@ func set_attack_rays_collision()->void:
 			attacking_ray.set_collision_mask_value(5,true)
 	else:
 		for attacking_ray : Node in attack_rays:
-			attacking_ray.max_results = 30
+			#attacking_ray.max_results = 30
 			attacking_ray.set_collision_mask_value(1,false)
 			attacking_ray.set_collision_mask_value(2,false)
 			attacking_ray.set_collision_mask_value(3,false)

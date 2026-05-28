@@ -404,7 +404,8 @@ func remove_empty_in_alt_scene(grid_pos : Vector2) -> void:
 func register_heart_alt_scene(new_hero_demon : Demon) -> void:
 	var other_dimension := get_other_dimension()
 	if other_dimension:
-		other_dimension.get_child(0).hero_demon = new_hero_demon
+		pass
+		#other_dimension.get_child(0).hero_demon = new_hero_demon
 
 
 func get_current_scene_filepath() -> String:
