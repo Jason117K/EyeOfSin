@@ -124,12 +124,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_dc01u"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 200, 200, 0, 0, 0, 0, 400, 250, 0, 0, 0, 0, 650, 200)
-}
-point_count = 3
-
 [node name="BaalGaze" type="Node2D" unique_id=20619193]
 script = ExtResource("1_ylf2v")
 
@@ -182,13 +176,10 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_us4db")
 script = ExtResource("8_rk0kd")
 position_curve = SubResource("Curve_rk0kd")
-path = NodePath("../IrisPathTest")
+path = NodePath("../IrisPath")
 
 [node name="IrisPath" type="Path2D" parent="." unique_id=329439647]
 curve = SubResource("Curve2D_vyc53")
 
 [node name="BallPath" type="Path2D" parent="." unique_id=573495917]
 curve = SubResource("Curve2D_rk0kd")
-
-[node name="IrisPathTest" type="Path2D" parent="." unique_id=817835049]
-curve = SubResource("Curve2D_dc01u")
