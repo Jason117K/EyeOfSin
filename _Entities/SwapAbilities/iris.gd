@@ -4,11 +4,22 @@ extends Sprite2D
 @export var travel_time : float = 4.0
 @export var path : Path2D
 @export var baal_eye : AnimatedSprite2D
+
+@export var center := Vector2(370, 88)
+@export var radius := 40.0
+@export var k := radius * 0.5523
+
 var sample_point : float = 0.0
 var dir : int = 1
+var curve : Curve2D
 
-
-
+func _ready() -> void:
+	curve = path.curve
+	curve.clear_points()
+	curve.add_point(center + Vector2(-radius, 0), Vector2.ZERO, Vector2(0, k))
+	curve.add_point(center + Vector2(0, radius), Vector2(-k, 0), Vector2(k, 0))
+	curve.add_point(center + Vector2(radius, 0), Vector2(0, k), Vector2.ZERO)
+	
 func _physics_process(delta: float) -> void:
 	if sample_point > 1.0 or sample_point < 0.0:
 		dir = -dir 
