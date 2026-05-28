@@ -1137,6 +1137,7 @@ script = ExtResource("25_bjemo")
 hue_shift = 0.57
 
 [node name="TileMapLayer5" type="TileMapLayer" parent="GameLayer/GridManager" unique_id=366976207]
+visible = false
 modulate = Color(0.54, 0.54, 0.54, 1)
 tile_map_data = PackedByteArray("AAASAAYADgABAAAAAAAWAAUADgABAAAAAAASAAUADgABAAAAAAAWAAQADgABAAAAAAASAAQADgABAAAAAAASAAMADgABAAAAAAAWAAMADgABAAAAAAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAASAAcADgABAAAAAAARAAMADgABAAAAAAARAAQADgABAAAAAAARAAUADgABAAAAAAARAAYADgABAAAAAAARAAcADgABAAAAAAARAAgADgABAAAAAAARAAkADgABAAAAAAASAAgADgABAAAAAAASAAkADgABAAAAAAA=")
 tile_set = SubResource("TileSet_uxv6d")
@@ -1460,7 +1461,11 @@ wait_time = 5.0
 curve = SubResource("Curve2D_sqxus")
 
 [node name="SacrificeDetectionArea" parent="." unique_id=110802928 instance=ExtResource("49_lk4we")]
+visible = false
 position = Vector2(576, 191)
+
+[node name="CollisionShape2D" parent="SacrificeDetectionArea" index="0" unique_id=659152858]
+disabled = true
 
 [node name="LightningArea" type="Area2D" parent="." unique_id=1681147643 groups=["Purple"]]
 visible = false
@@ -1475,30 +1480,37 @@ shape = SubResource("RectangleShape2D_6knlj")
 [node name="CircleGlowContainer" type="Node" parent="." unique_id=149802219]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CircleGlowContainer" unique_id=181838886]
+visible = false
 position = Vector2(576, 175)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CircleGlowContainer" unique_id=525759040]
+visible = false
 position = Vector2(576, 143)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CircleGlowContainer" unique_id=1506958623]
+visible = false
 position = Vector2(576, 207)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CircleGlowContainer" unique_id=894768727]
+visible = false
 position = Vector2(576, 239)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="CircleGlowContainer" unique_id=1923503386]
+visible = false
 position = Vector2(576, 271)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="CircleGlowContainer" unique_id=1028412616]
+visible = false
 position = Vector2(576, 303)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="CircleGlowContainer" unique_id=1664672522]
+visible = false
 position = Vector2(576, 111)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
@@ -1507,3 +1519,4 @@ sprite_frames = SubResource("SpriteFrames_bl8gp")
 [connection signal="timeout" from="SynShark/LightningTimer" to="SynShark" method="_on_lightning_timer_timeout"]
 
 [editable path="GameLayer/GridManager"]
+[editable path="SacrificeDetectionArea"]

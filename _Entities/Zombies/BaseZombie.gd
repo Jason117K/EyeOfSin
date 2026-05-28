@@ -280,6 +280,37 @@ func freeze() -> void:
 func reset_speed() -> void:
 	speedComp.setSpeed(speedComp.getOriginalSpeed())
 
+func switch_sides()->void:
+	pass
+	set_hue_shift(0)
+	animatedSprite.flip_h = !animatedSprite.flip_h 
+	speedComp.setSpeed(-speed)
+	#Collision Mask,Layer, Group, 
+	self.remove_from_group("Zombie")
+	self.add_to_group("Demons")
+	attackComp.switch_sides()
+	if self.is_in_group("Green"):
+		print(self, " this green zombie switched sides")
+		set_collision_mask_value(1,false)
+		set_collision_mask_value(2,false)
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,false)
+		set_collision_mask_value(5,true)
+		
+		set_collision_layer_value(1,false)
+		set_collision_layer_value(2,false)
+		set_collision_layer_value(3,true)
+	else:
+		print(self, " this purple zombie switched sides")
+		set_collision_mask_value(1,false)
+		set_collision_mask_value(2,false)
+		set_collision_mask_value(3,false)
+		set_collision_mask_value(4,true)
+		
+		set_collision_layer_value(1,false)
+		set_collision_layer_value(2,true)
+		set_collision_layer_value(3,false)
+	
 
 func blood_slow() -> void:
 	speedComp.setSpeed(speedComp.getOriginalSpeed() / 3)

@@ -19,6 +19,7 @@ var zombieSprite: AnimatedSprite2D #= $"../AnimatedSprite2D" # RefCounted to spr
 #@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio
 var parent_zombie : Zombie
 var my_level: Node
+var target_group : String = "Demons"
 
 func _init(new_parent_zombie:Zombie) -> void:
 	parent_zombie = new_parent_zombie
@@ -166,7 +167,7 @@ func tick(delta: float) -> void:
 			var collider : Node = attack_ray.get_collider()
 			if collider:
 				#print(parent.name , " Its 77 collding with ", collider.name )
-				if collider.is_in_group("Demons"):
+				if collider.is_in_group(target_group):
 					if collider.has_method("demon_minion_busy"):
 						#print("Calling Demon 77 Minion Busy On ", collider)
 						if collider.demon_minion_busy(parent_zombie):
@@ -185,3 +186,28 @@ func tick(delta: float) -> void:
 					else:
 						attack_starting_pos = parent_zombie.global_position
 						attack_demon(collider)
+func switch_sides()->void:
+	target_group = "Zombie"
+	if parent_zombie != null:
+		if parent_zombie.is_in_group("Green"):
+			attack_ray.set_collision_mask_value(1,false)
+			attack_ray.set_collision_mask_value(2,false)
+			attack_ray.set_collision_mask_value(3,false)
+			attack_ray.set_collision_mask_value(4,false)
+			attack_ray.set_collision_mask_value(5,true)
+		else:
+			attack_ray.set_collision_mask_value(1,false)
+			attack_ray.set_collision_mask_value(2,false)
+			attack_ray.set_collision_mask_value(3,false)
+			attack_ray.set_collision_mask_value(4,true)
+
+
+
+
+
+
+
+
+
+
+##

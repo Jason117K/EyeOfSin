@@ -3,21 +3,25 @@ extends SwapAbility
 
 @onready var grasp_container := $AllGrasp
 @export var grasp_speed := 300.0
+@export var max_num_zombies_turned := 10
 var is_sweeping := false
 var start_x := -150.0
 var end_x: float
-var slowed_zombies: Array = []
+var num_zombies_turned := 0 
+var turned_zombies: Array = []
 var _signals_connected := false
 
 
+
 func apply_swap_ability() -> void:
+	num_zombies_turned = 0
 	end_x = get_viewport().get_visible_rect().size.x + 50.0
 	if !_signals_connected:
 		for grasp: AnimatedSprite2D in grasp_container.get_children():
 			grasp.get_node("Area2D").area_entered.connect(_on_grasp_hit.bind(grasp))
 		_signals_connected = true
 	set_collision()
-	slowed_zombies.clear()
+	turned_zombies.clear()
 	for grasp: AnimatedSprite2D in grasp_container.get_children():
 		grasp.position.x = start_x
 		grasp.play("move")
@@ -42,10 +46,12 @@ func _physics_process(delta: float) -> void:
 func _on_grasp_hit(area: Area2D, grasp: AnimatedSprite2D) -> void:
 	if !is_sweeping or !is_instance_valid(area):
 		return
-	if area.is_in_group("Zombie") and area not in slowed_zombies:
-		slowed_zombies.append(area)
-		area.blood_slow()
-		grasp.play("grab")
+	if area.is_in_group("Zombie") and area not in turned_zombies:
+		if num_zombies_turned < max_num_zombies_turned : 
+			turned_zombies.append(area)
+			area.switch_sides()
+			grasp.play("grab")
+			num_zombies_turned += 1 
 
 
 func set_collision() -> void:
