@@ -1,20 +1,22 @@
 [gd_scene format=3 uid="uid://ct0d53f75vuby"]
 
-[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="1_tkp42"]
+[ext_resource type="Texture2D" uid="uid://3yoth4ltebhp" path="res://_Entities/Demons/Cards/PAUSE_CARD_Smol.png" id="1_gxrmi"]
 [ext_resource type="Script" uid="uid://ct1f77uyefcnp" path="res://_UI/Pause/pause_button.gd" id="2_w1yst"]
 [ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://_UI/Pause/PauseMenu.tscn" id="3_e4pn3"]
 
-[node name="PauseButton" type="Button" unique_id=1779459745]
+[node name="PauseButton" type="TextureButton" unique_id=928782760]
+custom_minimum_size = Vector2(26, 26)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -73.0
-offset_top = 9.0
-offset_right = -16.0
-offset_bottom = 37.0
+offset_left = -31.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 29.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("1_tkp42")
-text = "PAUSE"
+texture_normal = ExtResource("1_gxrmi")
+ignore_texture_size = true
+stretch_mode = 4
 script = ExtResource("2_w1yst")
 
 [node name="PauseMenu" parent="." unique_id=585202617 instance=ExtResource("3_e4pn3")]
@@ -23,9 +25,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -317.0
+offset_left = -342.0
 offset_top = 215.0
-offset_right = -317.0
+offset_right = -342.0
 offset_bottom = 215.0
 grow_horizontal = 1
 grow_vertical = 1

@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://dxeohrwemsvwx"]
 
 [ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/SwapAbilities/blood_rain.gd" id="1_0b0fw"]
+[ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_17mp3"]
 [ext_resource type="Texture2D" uid="uid://dlibutqbo27r5" path="res://_Assets/Particles/RainText.png" id="2_m1ym1"]
 [ext_resource type="Texture2D" uid="uid://c0vryk05d320o" path="res://_Assets/Particles/Splashes-Sheet.png" id="3_17mp3"]
-[ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="4_m1ym1"]
-[ext_resource type="Shader" uid="uid://jpbopnm12rwv" path="res://_Common/Shaders/cooldown.gdshader" id="5_17mp3"]
 
 [sub_resource type="Curve" id="Curve_1a115"]
 _data = [Vector2(0.006211184, 0.012294054), 0.0, 0.0, 0, 0, Vector2(0.24637681, 0.50774527), 0.0, 0.0, 0, 0, Vector2(0.77639747, 0.5748709), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -53,14 +52,11 @@ alpha_curve = SubResource("CurveTexture_hnpjm")
 anim_speed_min = 4.0
 anim_speed_max = 4.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bupko"]
-shader = ExtResource("5_17mp3")
-shader_parameter/fill_amount = 0.0
-shader_parameter/fill_color = Color(1, 0, 0, 1)
-shader_parameter/empty_color = Color(0, 0, 0, 0)
-
 [node name="BloodRain" type="Node" unique_id=534558046]
 script = ExtResource("1_0b0fw")
+
+[node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_17mp3")]
+ability_name = "SORROW OF SYN"
 
 [node name="Raindrops" type="GPUParticles2D" parent="." unique_id=1356173960]
 visible = false
@@ -88,31 +84,3 @@ one_shot = true
 preprocess = 0.01
 explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_k4e5a")
-
-[node name="Control" type="Control" parent="." unique_id=2060507732]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CooldownVisual" type="ColorRect" parent="Control" unique_id=1209554020]
-material = SubResource("ShaderMaterial_bupko")
-layout_mode = 0
-offset_left = 576.955
-offset_top = 338.0
-offset_right = 636.955
-offset_bottom = 397.0
-mouse_filter = 2
-
-[node name="Button" type="Button" parent="Control" unique_id=84739555]
-layout_mode = 0
-offset_left = 575.0
-offset_top = 335.0
-offset_right = 1003.00006
-offset_bottom = 763.0
-scale = Vector2(0.15, 0.15)
-mouse_filter = 2
-icon = ExtResource("4_m1ym1")

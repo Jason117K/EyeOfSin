@@ -1,16 +1,9 @@
 [gd_scene format=3 uid="uid://q1xy6cykd6mj"]
 
 [ext_resource type="Script" uid="uid://bn0r8k81tu452" path="res://_Entities/SwapAbilities/lucretia_grasp.gd" id="1_hkd1k"]
+[ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_hkd1k"]
 [ext_resource type="Texture2D" uid="uid://c00u26tvt1dkt" path="res://_Entities/SwapAbilities/TempGraspPurple-Sheet.png" id="4_42c3p"]
-[ext_resource type="Shader" uid="uid://jpbopnm12rwv" path="res://_Common/Shaders/cooldown.gdshader" id="4_k1fmw"]
 [ext_resource type="Texture2D" uid="uid://tigxqyxcy0nf" path="res://_Entities/SwapAbilities/TempGrasp_Green.png" id="4_l1q03"]
-[ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="5_qvlhj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bupko"]
-shader = ExtResource("4_k1fmw")
-shader_parameter/fill_amount = 0.0
-shader_parameter/fill_color = Color(1, 0, 0, 1)
-shader_parameter/empty_color = Color(0, 0, 0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2p4s"]
 atlas = ExtResource("4_42c3p")
@@ -94,33 +87,8 @@ size = Vector2(110, 20)
 [node name="LucretiaGrasp" type="Node" unique_id=534558046]
 script = ExtResource("1_hkd1k")
 
-[node name="Control" type="Control" parent="." unique_id=2060507732]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CooldownVisual" type="ColorRect" parent="Control" unique_id=1209554020]
-material = SubResource("ShaderMaterial_bupko")
-layout_mode = 0
-offset_left = 576.955
-offset_top = 338.0
-offset_right = 636.955
-offset_bottom = 397.0
-mouse_filter = 2
-
-[node name="Button" type="Button" parent="Control" unique_id=84739555]
-layout_mode = 0
-offset_left = 575.0
-offset_top = 335.0
-offset_right = 1003.00006
-offset_bottom = 763.0
-scale = Vector2(0.15, 0.15)
-mouse_filter = 2
-icon = ExtResource("5_qvlhj")
+[node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_hkd1k")]
+ability_name = "GRASP OF LUCRETIA"
 
 [node name="AllGrasp" type="Node2D" parent="." unique_id=1520557252]
 position = Vector2(-113, 93)

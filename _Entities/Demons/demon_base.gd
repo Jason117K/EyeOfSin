@@ -222,6 +222,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		#print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)
+	if event is InputEventMouseButton :#&& double click
+		pass
 
 
 # --- Heart Buff Area Detection ---

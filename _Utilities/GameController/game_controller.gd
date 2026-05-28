@@ -13,7 +13,7 @@ var swap_ability : Node
 
 var demon_manager : Node
 
-@onready var pause_button: Button = $PauseButton
+#@onready var pause_button: Button = $PauseButton
 @onready var pip := $PipRoot
 @onready var demon_selection_menu := $CurrentScene/DemonSelectionMenu
 @onready var level_switcher := $CurrentScene/LevelSwitcher
@@ -82,7 +82,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 
 func change_scene(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	Global.hide_notification_bar()
-	pause_button.visible = false
+	#pause_button.visible = false
 
 	if current_scene != null:
 		if delete:
@@ -105,7 +105,7 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#print_scene_tree()
 	Global.hide_notification_bar()
-	pause_button.visible = true
+	#pause_button.visible = true
 
 	if delete:
 		_cleanup_all_scenes()
@@ -156,8 +156,8 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	demon_selection_menu.visibility_layer = 0
 	demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
 	
-	pause_button.visibility_layer = 0
-	pause_button.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
+	#pause_button.visibility_layer = 0
+	#pause_button.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
 	
 	level_switcher.visibility_layer = 0
 	level_switcher.set_visibility_layer_bit(1,true)
@@ -165,7 +165,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
-	pause_button.visible = false
+	#pause_button.visible = false
 	pip.hide_pip()
 	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
@@ -192,7 +192,7 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 
 func change_scene_with_pause(new_scene_path: String) -> void:
 	Global.hide_notification_bar()
-	pause_button.visible = false
+	#pause_button.visible = false
 
 	pip.hide_pip()
 
@@ -215,7 +215,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 
 func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 	Global.hide_notification_bar()
-	pause_button.visible = false
+	#pause_button.visible = false
 	pip.hide_pip()
 
 	for s:Node in current_scenes:
@@ -246,7 +246,7 @@ func restore_previous_scene() -> void:
 
 
 func restore_dual_scenes() -> void:
-	pause_button.visible = true
+	#pause_button.visible = true
 
 	if is_instance_valid(current_scene) and current_scene not in current_scenes:
 		_remove_and_free(current_scene)
@@ -292,18 +292,18 @@ func swap_scenes() -> void:
 	if on_scene_1:
 		swap_ability.set_current_visibility_layer(2)
 		demon_selection_menu.visibility_layer = 0
-		pause_button.visibility_layer = 0
+		#pause_button.visibility_layer = 0
 		level_switcher.visibility_layer = 0
 		demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer \
-		pause_button.set_visibility_layer_bit(2, true)
+		#pause_button.set_visibility_layer_bit(2, true)
 		level_switcher.set_visibility_layer_bit(2,true)
 	else:
 		swap_ability.set_current_visibility_layer(1)
 		demon_selection_menu.visibility_layer = 0
-		pause_button.visibility_layer = 0
+		#pause_button.visibility_layer = 0
 		level_switcher.visibility_layer = 0
 		demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
-		pause_button.set_visibility_layer_bit(1, true)
+		#pause_button.set_visibility_layer_bit(1, true)
 		level_switcher.set_visibility_layer_bit(1,true)
 		
 		

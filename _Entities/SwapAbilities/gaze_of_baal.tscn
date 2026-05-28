@@ -1,19 +1,12 @@
 [gd_scene format=3 uid="uid://chf4hchr0gy8r"]
 
 [ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/SwapAbilities/blood_rain.gd" id="1_ylf2v"]
-[ext_resource type="Shader" uid="uid://jpbopnm12rwv" path="res://_Common/Shaders/cooldown.gdshader" id="4_rk0kd"]
+[ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_ekoey"]
 [ext_resource type="Texture2D" uid="uid://c6b8q051g8rjl" path="res://_Entities/SwapAbilities/BaalAOETemp.png" id="4_us4db"]
 [ext_resource type="Texture2D" uid="uid://b28lnr0s13vsh" path="res://_Entities/SwapAbilities/EyeBoss_BallTemp.png" id="4_ylf2v"]
-[ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="5_dc01u"]
 [ext_resource type="Texture2D" uid="uid://c0ejo1yaqoch3" path="res://_Entities/SwapAbilities/BigIris.png" id="5_us4db"]
 [ext_resource type="Script" uid="uid://bn7c58qa67oo4" path="res://_Entities/SwapAbilities/baal_eye.gd" id="6_ekoey"]
 [ext_resource type="Script" uid="uid://dlyg43wxh4hdi" path="res://_Entities/SwapAbilities/iris.gd" id="8_rk0kd"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bupko"]
-shader = ExtResource("4_rk0kd")
-shader_parameter/fill_amount = 0.0
-shader_parameter/fill_color = Color(1, 0, 0, 1)
-shader_parameter/empty_color = Color(0, 0, 0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyc53"]
 atlas = ExtResource("4_us4db")
@@ -126,34 +119,10 @@ point_count = 2
 
 [node name="BaalGaze" type="Node" unique_id=656116311]
 script = ExtResource("1_ylf2v")
+cooldown_duration = 9.0
 
-[node name="Control" type="Control" parent="." unique_id=2060507732]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CooldownVisual" type="ColorRect" parent="Control" unique_id=1209554020]
-material = SubResource("ShaderMaterial_bupko")
-layout_mode = 0
-offset_left = 576.955
-offset_top = 338.0
-offset_right = 636.955
-offset_bottom = 397.0
-mouse_filter = 2
-
-[node name="Button" type="Button" parent="Control" unique_id=84739555]
-layout_mode = 0
-offset_left = 575.0
-offset_top = 335.0
-offset_right = 1003.00006
-offset_bottom = 763.0
-scale = Vector2(0.15, 0.15)
-mouse_filter = 2
-icon = ExtResource("5_dc01u")
+[node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_ekoey")]
+ability_name = "GAZE OF BAAL"
 
 [node name="BaalAOE" type="AnimatedSprite2D" parent="." unique_id=1870355713]
 position = Vector2(354, 52)
@@ -161,6 +130,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dti0f")
 
 [node name="BaalEye" type="AnimatedSprite2D" parent="." unique_id=1409846967 node_paths=PackedStringArray("path")]
+z_index = 3
 position = Vector2(367, -100)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_vyc53")
@@ -171,6 +141,7 @@ position_curve = SubResource("Curve_dc01u")
 path = NodePath("../BallPath")
 
 [node name="Iris" type="Sprite2D" parent="." unique_id=123765848 node_paths=PackedStringArray("path", "baal_eye")]
+z_index = 3
 position = Vector2(775, -11)
 scale = Vector2(4, 4)
 texture = ExtResource("5_us4db")

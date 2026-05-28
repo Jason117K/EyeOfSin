@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dip27s2y8cu12"]
+
+[ext_resource type="Shader" uid="uid://jpbopnm12rwv" path="res://_Common/Shaders/cooldown.gdshader" id="1_60y3t"]
+[ext_resource type="Script" uid="uid://dlik5m2lq5kk" path="res://_Entities/SwapAbilities/swap_ability_cooldown_visual.gd" id="1_y6lur"]
+[ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="2_y6lur"]
+[ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="3_yn551"]
+[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_yrl2m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bupko"]
+shader = ExtResource("1_60y3t")
+shader_parameter/fill_amount = 0.0
+shader_parameter/fill_color = Color(1, 0, 0, 1)
+shader_parameter/empty_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyc53"]
+bg_color = Color(1, 0, 0, 0.047058824)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.36078432, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc01u"]
+bg_color = Color(0.76, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="Control" type="Control" unique_id=6644879]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_y6lur")
+
+[node name="CooldownVisual" type="ColorRect" parent="." unique_id=1551496724]
+visible = false
+material = SubResource("ShaderMaterial_bupko")
+layout_mode = 0
+offset_left = 576.955
+offset_top = 338.0
+offset_right = 636.955
+offset_bottom = 397.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="." unique_id=1630147789]
+visible = false
+layout_mode = 0
+offset_left = 575.0
+offset_top = 335.0
+offset_right = 1003.00006
+offset_bottom = 763.0
+scale = Vector2(0.15, 0.15)
+mouse_filter = 2
+icon = ExtResource("2_y6lur")
+
+[node name="SwapAbilityCooldownPanel" type="PanelContainer" parent="." unique_id=2041808164]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 326.0
+offset_right = 207.0
+offset_bottom = 346.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vyc53")
+
+[node name="SwapAbilityProgressBar" type="ProgressBar" parent="SwapAbilityCooldownPanel" unique_id=1153831516]
+custom_minimum_size = Vector2(196, 16)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_yn551")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/fill = SubResource("StyleBoxFlat_dc01u")
+value = 100.0
+show_percentage = false
+
+[node name="SwapAbilityLabel" type="Label" parent="SwapAbilityCooldownPanel/SwapAbilityProgressBar" unique_id=178262788]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 200.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_yrl2m")
+theme_override_font_sizes/font_size = 16
+text = "GAZE OF BAAL"
+horizontal_alignment = 1

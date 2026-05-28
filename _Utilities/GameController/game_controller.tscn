@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dpltvbm84xujg" path="res://_UI/Pause/spotlight_overlay.tscn" id="5_vtmjq"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="6_c6rbx"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
-[ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
 [ext_resource type="PackedScene" uid="uid://chf4hchr0gy8r" path="res://_Entities/SwapAbilities/gaze_of_baal.tscn" id="11_3rtt1"]
@@ -60,13 +59,6 @@ layout_mode = 1
 [node name="WaveManager" parent="CurrentScene" unique_id=275355790 instance=ExtResource("7_k31g3")]
 position = Vector2(-64, 200)
 
-[node name="PauseButton" parent="." unique_id=94770946 instance=ExtResource("9_4wufg")]
-z_index = 1
-offset_left = -70.0
-offset_top = 15.0
-offset_right = -13.0
-offset_bottom = 43.0
-
 [node name="NotifMarginContainer" parent="." unique_id=1498960940 instance=ExtResource("9_ip61f")]
 visible = false
 
@@ -114,15 +106,15 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.6)
 
 [node name="PanelContainer" type="PanelContainer" parent="PipRoot" unique_id=1665965625]
-custom_minimum_size = Vector2(200, 82)
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -85.0
-offset_right = 204.0
-offset_bottom = -3.0
+offset_left = 7.0
+offset_top = -69.0
+offset_right = 207.0
+offset_bottom = -6.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_mahd0")
 

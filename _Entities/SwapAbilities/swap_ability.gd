@@ -14,7 +14,7 @@ var on_purple := true
 @onready var cooldown_length_special := cooldown_duration - 2.5
 @onready var cooldown_length_normal := cooldown_duration
 @onready var cooldown_visual := $Control/CooldownVisual
-
+@onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/SwapAbilityProgressBar
 const STEP := 0.1
 
 func _ready() -> void:
@@ -95,15 +95,19 @@ func _physics_process(delta: float) -> void:
 	
 	if is_active == false && is_on_cooldown:
 		cooldown_elapsed += delta
-		cooldown_fill_amount = clampf(cooldown_elapsed / cooldown_duration, 0.0, 1.0)
-		cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
+		#cooldown_fill_amount = clampf(cooldown_elapsed / cooldown_duration, 0.0, 1.0)
+		#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
+		
+		cooldown_fill_amount = clampf((cooldown_elapsed / cooldown_duration)*100, 0.0, 100.0)
 		#print(cooldown_fill_amount , "Cooldown Duyration Is ", cooldown_duration)
 	elif is_active == true:
 		cooldown_fill_amount = 0.0
-		cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
+		#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
 		#print("Is Active ", is_active, "Is On Cooldown ", is_on_cooldown, "Fill Amount ", cooldown_fill_amount)
 			#
-		#
+	swap_cooldown_visual_bar.value = cooldown_fill_amount
+	
+	
 func set_current_visibility_layer(flag : int)->void:
 	if flag == 1:
 		for child in get_children(): 

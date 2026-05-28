@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 @onready var pauseMenu := $PauseMenu
 #@onready var toolTips = $"../ToolTips"

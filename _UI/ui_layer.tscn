@@ -13,10 +13,10 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.8, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfr0o"]
 resource_local_to_scene = true
@@ -30,9 +30,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = 3.0
+offset_top = 4.0
 offset_right = 3.0
-offset_bottom = 3.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.07, 1.07)
@@ -126,9 +126,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HUD_Panel" type="PanelContainer" parent="." unique_id=438712905]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 0
 offset_right = 70.0
-offset_bottom = 61.0
+offset_bottom = 54.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kfr0o")
 
 [node name="HUD_HBox" type="HBoxContainer" parent="HUD_Panel" unique_id=1642494369]
@@ -140,13 +141,18 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/separation = -5
 
 [node name="Blood_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Blood_VBox" unique_id=302539344]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("4_kfr0o")
 
 [node name="BloodAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Blood_VBox" unique_id=209762597]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_nx033")
 text = "100"
 horizontal_alignment = 1
@@ -155,6 +161,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/separation = -5
 
 [node name="Health_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=186687710]
 layout_mode = 2
