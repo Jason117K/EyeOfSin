@@ -123,6 +123,7 @@ mouse_filter = 2
 icon = ExtResource("5_qvlhj")
 
 [node name="AllGrasp" type="Node2D" parent="." unique_id=1520557252]
+position = Vector2(-113, 93)
 
 [node name="Grasp1" type="AnimatedSprite2D" parent="AllGrasp" unique_id=895639696]
 position = Vector2(10, 17)

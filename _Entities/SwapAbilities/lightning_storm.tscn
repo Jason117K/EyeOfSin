@@ -48,5 +48,6 @@ icon = ExtResource("5_mbvdf")
 position = Vector2(354, 190)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LightningSpawnArea" unique_id=1007282924]
+visible = false
 position = Vector2(18.5, 14)
 shape = SubResource("RectangleShape2D_046s3")
