@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="9_4wufg"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
-[ext_resource type="PackedScene" uid="uid://q1xy6cykd6mj" path="res://_Entities/SwapAbilities/lucretia_grasp.tscn" id="11_3rtt1"]
+[ext_resource type="PackedScene" uid="uid://chf4hchr0gy8r" path="res://_Entities/SwapAbilities/gaze_of_baal.tscn" id="11_3rtt1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
 bg_color = Color(0.9499998, 0, 1, 0)
@@ -134,6 +134,6 @@ texture = SubResource("ViewportTexture_mahd0")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="LucretiaGrasp" parent="." unique_id=534558046 instance=ExtResource("11_3rtt1")]
+[node name="BaalGaze" parent="." unique_id=20619193 instance=ExtResource("11_3rtt1")]
 
 [editable path="CurrentScene/DemonSelectionMenu"]

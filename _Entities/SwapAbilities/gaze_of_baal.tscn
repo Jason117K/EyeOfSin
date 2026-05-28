@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b28lnr0s13vsh" path="res://_Entities/SwapAbilities/EyeBoss_BallTemp.png" id="4_ylf2v"]
 [ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="5_dc01u"]
 [ext_resource type="Texture2D" uid="uid://c0ejo1yaqoch3" path="res://_Entities/SwapAbilities/BigIris.png" id="5_us4db"]
+[ext_resource type="Script" uid="uid://bn7c58qa67oo4" path="res://_Entities/SwapAbilities/baal_eye.gd" id="6_ekoey"]
+[ext_resource type="Script" uid="uid://dlyg43wxh4hdi" path="res://_Entities/SwapAbilities/iris.gd" id="8_rk0kd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bupko"]
 shader = ExtResource("4_rk0kd")
@@ -99,10 +101,36 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
-[node name="BaalGaze" type="Node" unique_id=534558046]
+[sub_resource type="Curve" id="Curve_dc01u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49519235, 0.5419791), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_rk0kd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49358976, 0.49081713), -3.1460528, -3.1460528, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_vyc53"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 319, 89, 0, 0, 0, 0, 329, 105, 0, 0, 0, 0, 342, 116, 0, 0, 0, 0, 369, 126, 0, 0, 0, 0, 399, 115, 0, 0, 0, 0, 414, 103, 0, 0, 0, 0, 420, 86)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_rk0kd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 370, 0, 0, 0, 0, 0, 370, 125)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_dc01u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, 200, 0, 0, 0, 0, 400, 250, 0, 0, 0, 0, 650, 200)
+}
+point_count = 3
+
+[node name="BaalGaze" type="Node2D" unique_id=20619193]
 script = ExtResource("1_ylf2v")
 
 [node name="Control" type="Control" parent="." unique_id=2060507732]
@@ -137,15 +165,30 @@ icon = ExtResource("5_dc01u")
 position = Vector2(354, 52)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dti0f")
-frame = 7
-frame_progress = 0.3932965
 
-[node name="BaalEye" type="AnimatedSprite2D" parent="." unique_id=1409846967]
-position = Vector2(350, 10)
+[node name="BaalEye" type="AnimatedSprite2D" parent="." unique_id=1409846967 node_paths=PackedStringArray("path")]
+position = Vector2(367, -100)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_vyc53")
-frame_progress = 0.57785684
+autoplay = "default"
+frame_progress = 0.021034751
+script = ExtResource("6_ekoey")
+position_curve = SubResource("Curve_dc01u")
+path = NodePath("../BallPath")
 
-[node name="Sprite2D" type="Sprite2D" parent="BaalEye" unique_id=123765848]
-position = Vector2(0.5, 14.5)
+[node name="Iris" type="Sprite2D" parent="." unique_id=123765848 node_paths=PackedStringArray("path")]
+position = Vector2(369, -56)
+scale = Vector2(4, 4)
 texture = ExtResource("5_us4db")
+script = ExtResource("8_rk0kd")
+position_curve = SubResource("Curve_rk0kd")
+path = NodePath("../IrisPathTest")
+
+[node name="IrisPath" type="Path2D" parent="." unique_id=329439647]
+curve = SubResource("Curve2D_vyc53")
+
+[node name="BallPath" type="Path2D" parent="." unique_id=573495917]
+curve = SubResource("Curve2D_rk0kd")
+
+[node name="IrisPathTest" type="Path2D" parent="." unique_id=817835049]
+curve = SubResource("Curve2D_dc01u")

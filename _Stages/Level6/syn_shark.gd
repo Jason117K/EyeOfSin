@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		flip_h = true
 		
-	var path_direction = path.curve.get_point_position(1) - path.curve.get_point_position(0)
+	var path_direction := path.curve.get_point_position(1) - path.curve.get_point_position(0)
 
 
 	if can_move:
