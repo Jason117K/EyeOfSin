@@ -3,10 +3,14 @@ extends SwapAbility
 
 
 @export var max_lightning_per_rain := 4
-@export var max_lightning_per_rain_1 := 2
-@export var max_lightning_per_rain_2 := 3
-@export var max_lightning_per_rain_3 := 5
-@export var lightning_wave_delay := 0.5
+@export var max_lightning_per_rain_1 := 1
+@export var max_lightning_per_rain_2 := 1
+@export var max_lightning_per_rain_3 := 2
+@export var max_lightning_per_rain_4 := 3
+@export var max_lightning_per_rain_5 := 4
+@export var max_lightning_per_rain_6 := 6
+
+@export var lightning_wave_delay := 0.9
 @export var lightning_delay := 0.7
 
 
@@ -18,11 +22,14 @@ var num_zombies_struck := 0
 var zombies_to_lightning_strike :Array= []
 var currently_available_zombies : Array = []
 var batches_struck := 0 
-		
+	
+#func _ready() -> void:
+	#ability_duration = lightning_wave_delay * 6 
+			
 
 func apply_swap_ability()->void:
 	set_collision()
-
+	ability_duration = lightning_wave_delay * 6 
 	await get_tree().create_timer(lightning_delay).timeout
 	rain_lightning()
 
@@ -42,14 +49,30 @@ func rain_lightning()->void :
 	_strike_batch(currently_available_zombies, max_lightning_per_rain_1)
 	await get_tree().create_timer(lightning_wave_delay).timeout
 	currently_available_zombies.shuffle()
+	
 	_strike_batch(currently_available_zombies, max_lightning_per_rain_2)
 	await get_tree().create_timer(lightning_wave_delay).timeout
 	currently_available_zombies.shuffle()
+	
 	_strike_batch(currently_available_zombies, max_lightning_per_rain_3)
+	await get_tree().create_timer(lightning_wave_delay).timeout
+	currently_available_zombies.shuffle()
+
+	_strike_batch(currently_available_zombies, max_lightning_per_rain_4)
+	await get_tree().create_timer(lightning_wave_delay).timeout
+	currently_available_zombies.shuffle()
+
+	_strike_batch(currently_available_zombies, max_lightning_per_rain_5)
+	await get_tree().create_timer(lightning_wave_delay).timeout
+	currently_available_zombies.shuffle()
+
+	_strike_batch(currently_available_zombies, max_lightning_per_rain_6)
+	await get_tree().create_timer(lightning_wave_delay).timeout
+	currently_available_zombies.shuffle()
 
 
 func _strike_batch(zombies: Array, num_zombies_to_strike: int) -> void:
-	print("Should Lightning Strike Batch ",currently_available_zombies)
+	#print("Should Lightning Strike Batch ",currently_available_zombies)
 	if !is_on_cooldown:
 		print("About to Lightning Strike")
 		num_zombies_struck = 0

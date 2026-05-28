@@ -28,31 +28,32 @@ var currently_available_zombies : Array = []
 var batches_struck := 0 
 
 func _ready() -> void:
-	sacrifice_area.lightning_storm.connect(start_lighting_timer)
-	self.animation_finished.connect(finish_rain_lightning)
-	if self.is_in_group("Green"):
-		lightning_spawn_area.set_collision_mask_value(1,false)
-		lightning_spawn_area.set_collision_mask_value(2,false)
-		lightning_spawn_area.set_collision_mask_value(3,true)
-		lightning_spawn_area.set_collision_mask_value(4,false)
-		lightning_spawn_area.set_collision_mask_value(5,true)
-
-		sacrifice_area.set_collision_mask_value(1,false)
-		sacrifice_area.set_collision_mask_value(2,false)
-		sacrifice_area.set_collision_mask_value(3,true)
-		sacrifice_area.set_collision_mask_value(4,false)
-		sacrifice_area.set_collision_mask_value(5,true)
-		
-	else:
-		lightning_spawn_area.set_collision_mask_value(1,false)
-		lightning_spawn_area.set_collision_mask_value(2,true)
-		lightning_spawn_area.set_collision_mask_value(3,false)
-		lightning_spawn_area.set_collision_mask_value(4,true)
-		
-		sacrifice_area.set_collision_mask_value(1,false)
-		sacrifice_area.set_collision_mask_value(2,true)
-		sacrifice_area.set_collision_mask_value(3,false)
-		sacrifice_area.set_collision_mask_value(4,true)
+	pass
+	#sacrifice_area.lightning_storm.connect(start_lighting_timer)
+	#self.animation_finished.connect(finish_rain_lightning)
+	#if self.is_in_group("Green"):
+		#lightning_spawn_area.set_collision_mask_value(1,false)
+		#lightning_spawn_area.set_collision_mask_value(2,false)
+		#lightning_spawn_area.set_collision_mask_value(3,true)
+		#lightning_spawn_area.set_collision_mask_value(4,false)
+		#lightning_spawn_area.set_collision_mask_value(5,true)
+#
+		#sacrifice_area.set_collision_mask_value(1,false)
+		#sacrifice_area.set_collision_mask_value(2,false)
+		#sacrifice_area.set_collision_mask_value(3,true)
+		#sacrifice_area.set_collision_mask_value(4,false)
+		#sacrifice_area.set_collision_mask_value(5,true)
+		#
+	#else:
+		#lightning_spawn_area.set_collision_mask_value(1,false)
+		#lightning_spawn_area.set_collision_mask_value(2,true)
+		#lightning_spawn_area.set_collision_mask_value(3,false)
+		#lightning_spawn_area.set_collision_mask_value(4,true)
+		#
+		#sacrifice_area.set_collision_mask_value(1,false)
+		#sacrifice_area.set_collision_mask_value(2,true)
+		#sacrifice_area.set_collision_mask_value(3,false)
+		#sacrifice_area.set_collision_mask_value(4,true)
 				
 		
 		
