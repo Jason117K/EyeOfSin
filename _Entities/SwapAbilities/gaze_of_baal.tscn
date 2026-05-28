@@ -170,13 +170,14 @@ script = ExtResource("6_ekoey")
 position_curve = SubResource("Curve_dc01u")
 path = NodePath("../BallPath")
 
-[node name="Iris" type="Sprite2D" parent="." unique_id=123765848 node_paths=PackedStringArray("path")]
-position = Vector2(369, -56)
+[node name="Iris" type="Sprite2D" parent="." unique_id=123765848 node_paths=PackedStringArray("path", "baal_eye")]
+position = Vector2(775, -11)
 scale = Vector2(4, 4)
 texture = ExtResource("5_us4db")
 script = ExtResource("8_rk0kd")
 position_curve = SubResource("Curve_rk0kd")
 path = NodePath("../IrisPath")
+baal_eye = NodePath("../BaalEye")
 
 [node name="IrisPath" type="Path2D" parent="." unique_id=329439647]
 curve = SubResource("Curve2D_vyc53")

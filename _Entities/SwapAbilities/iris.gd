@@ -3,8 +3,10 @@ extends Sprite2D
 @export var position_curve : Curve
 @export var travel_time : float = 4.0
 @export var path : Path2D
+@export var baal_eye : AnimatedSprite2D
 var sample_point : float = 0.0
 var dir : int = 1
+
 
 
 func _physics_process(delta: float) -> void:
