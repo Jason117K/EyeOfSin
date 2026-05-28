@@ -42,10 +42,10 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var preview_container := Node2D.new()
 @onready var panelContainer := $PanelContainer
 @onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
-@onready var swapButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
-@onready var removeDemonButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton
-@onready var codexButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2/CodexButton
-@onready var fastForwardButton := $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton
+@onready var swapButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
+@onready var removeDemonButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton
+@onready var codexButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton
+@onready var fastForwardButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton
 @onready var all_extra_buttons := [fastForwardButton,swapButton,removeDemonButton, codexButton]
 
 @onready var OcculumButton := $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nmylu60joqud" path="res://_Assets/UI/StatusBarVer1.2.png" id="1_nx033"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_nx033"]
 [ext_resource type="Texture2D" uid="uid://bfv6moe12kb0n" path="res://_Assets/UI/BloodIcon.png" id="4_kfr0o"]
-[ext_resource type="Texture2D" uid="uid://bhqt5knrhvk4o" path="res://_Assets/UI/Health_Icon1.png" id="5_kni87"]
+[ext_resource type="Texture2D" uid="uid://clmyla142y3ua" path="res://_Assets/DualHeart-Sheet.png" id="5_kfr0o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfr0o"]
 bg_color = Color(0, 0, 0, 0.88235295)
@@ -17,6 +17,10 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kni87"]
+atlas = ExtResource("5_kfr0o")
+region = Rect2(32, 0, 32, 32)
 
 [node name="UILayer" type="Control" unique_id=811942513]
 z_index = 2
@@ -154,7 +158,7 @@ size_flags_vertical = 0
 [node name="Health_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=186687710]
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("5_kni87")
+texture = SubResource("AtlasTexture_kni87")
 
 [node name="HealthAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=291366460]
 layout_mode = 2

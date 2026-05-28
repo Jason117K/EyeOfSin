@@ -124,7 +124,7 @@ _data = {
 }
 point_count = 2
 
-[node name="BaalGaze" type="Node2D" unique_id=20619193]
+[node name="BaalGaze" type="Node" unique_id=656116311]
 script = ExtResource("1_ylf2v")
 
 [node name="Control" type="Control" parent="." unique_id=2060507732]
@@ -178,6 +178,7 @@ script = ExtResource("8_rk0kd")
 position_curve = SubResource("Curve_rk0kd")
 path = NodePath("../IrisPath")
 baal_eye = NodePath("../BaalEye")
+radius = 20.0
 
 [node name="IrisPath" type="Path2D" parent="." unique_id=329439647]
 curve = SubResource("Curve2D_vyc53")

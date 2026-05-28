@@ -27,6 +27,17 @@ expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypqm0"]
+bg_color = Color(0, 0, 0, 0.79607844)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
 [node name="DemonSelectionMenu" type="Control" unique_id=1988977493]
 visibility_layer = 2
 z_index = 2
@@ -42,11 +53,11 @@ script = ExtResource("1")
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 custom_minimum_size = Vector2(0, 79)
 layout_mode = 0
-offset_left = 102.75
-offset_top = 7.0
-offset_right = 225.75
-offset_bottom = 82.0
-scale = Vector2(0.8, 0.8)
+offset_left = 96.0
+offset_top = 6.9999995
+offset_right = 346.0
+offset_bottom = 86.0
+scale = Vector2(0.7, 0.7)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
 
@@ -161,6 +172,7 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=640469747]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
@@ -208,21 +220,32 @@ texture_normal = ExtResource("10_bcru6")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=69711182]
+[node name="Node2D" type="Node2D" parent="." unique_id=797355327]
+position = Vector2(103, 2)
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1919938362]
+layout_mode = 0
+offset_left = 671.0
+offset_top = 6.0
+offset_right = 732.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ypqm0")
+
+[node name="UtilityVBoxContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=69711182]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1070210295]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/UtilityVBoxContainer" unique_id=1070210295]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="RemoveDemon" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1419068643]
+[node name="RemoveDemon" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer" unique_id=1419068643]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="RemoveDemonButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon" unique_id=311546539]
+[node name="RemoveDemonButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon" unique_id=311546539]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -231,18 +254,18 @@ texture_normal = ExtResource("12_yqvs4")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RemoveDemonLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon" unique_id=77291499]
+[node name="RemoveDemonLabel" type="Label" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon" unique_id=77291499]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
 horizontal_alignment = 1
 
-[node name="WorldSwap" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=767161417]
+[node name="WorldSwap" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer" unique_id=767161417]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="WorldSwapButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap" unique_id=1500723408]
+[node name="WorldSwapButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer/WorldSwap" unique_id=1500723408]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -251,15 +274,15 @@ texture_normal = ExtResource("13_vvged")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1782143364]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer2/UtilityVBoxContainer" unique_id=1782143364]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="Codex2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1905932608]
+[node name="Codex2" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2" unique_id=1905932608]
 layout_mode = 2
 
-[node name="CodexButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2" unique_id=919482886]
+[node name="CodexButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/Codex2" unique_id=919482886]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -268,10 +291,10 @@ texture_normal = ExtResource("14_04elx")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="FastForward" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=2101431720]
+[node name="FastForward" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2" unique_id=2101431720]
 layout_mode = 2
 
-[node name="FastForwardButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward" unique_id=167402646]
+[node name="FastForwardButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/FastForward" unique_id=167402646]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -280,11 +303,11 @@ texture_normal = ExtResource("15_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PipToggle" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=423146321]
+[node name="PipToggle" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2" unique_id=423146321]
 visible = false
 layout_mode = 2
 
-[node name="PipToggleButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PipToggle" unique_id=1225723318]
+[node name="PipToggleButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/PipToggle" unique_id=1225723318]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -292,9 +315,6 @@ size_flags_vertical = 4
 texture_normal = ExtResource("15_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="Node2D" type="Node2D" parent="." unique_id=797355327]
-position = Vector2(103, 2)
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
@@ -302,8 +322,8 @@ position = Vector2(103, 2)
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton" to="." method="_on_remove_plant_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PipToggle/PipToggleButton" to="." method="_on_pip_toggle_button_pressed"]
+[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
+[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]
+[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/PipToggle/PipToggleButton" to="." method="_on_pip_toggle_button_pressed"]

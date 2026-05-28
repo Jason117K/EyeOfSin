@@ -155,8 +155,8 @@ func _on_wave_started(wave_index: int) -> void:
 
 #region UI Helpers
 func setup_demon_selection_menu() -> void:
-	show_all_demon_buttons()
-
+	#show_all_demon_buttons()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
 	world_swap_button.visible = true
 	codex_button.visible = true
 
