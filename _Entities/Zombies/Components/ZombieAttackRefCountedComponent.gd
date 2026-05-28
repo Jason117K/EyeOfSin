@@ -100,6 +100,13 @@ func _on_AttackTimer_timeout() -> void:
 		stop_attack()
 		return
 	#print("Basic Zombie Attack Timer Timeout")
+	if target_demon != null:
+		if parent_zombie.is_in_group("Green"):
+			if target_demon.is_in_group("Purple"):
+				stop_attack()
+		if parent_zombie.is_in_group("Purple"):
+			if target_demon.is_in_group("Green"):
+				stop_attack()
 
 		#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent_zombie.name:

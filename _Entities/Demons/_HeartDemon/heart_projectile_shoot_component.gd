@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func apply_buffs_to_projectile(projectile)->void:
 	super(projectile)
-	#projectile.damage = 1
+	projectile.damage = 1
 
 func shoot_projectile() -> void:
 	super()

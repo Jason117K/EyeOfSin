@@ -2,7 +2,7 @@ class_name DemonHealthComponent extends Node
 
 var regen_wait_time := 1
 
-var health: float = 800
+@export var health: float = 800
 var ogHealth: float
 
 var healthRegen: float = 0.0

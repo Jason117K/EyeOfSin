@@ -128,7 +128,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
 					#print(get_parent(), "QQOtro Place Demon " , grid_pos)
-					Global.game_controller.place_empty_in_alt_scene(grid_pos)
+					var temp_check_instance =  get_selected_demon().instantiate()
+					if temp_check_instance.is_hero == false:
+						Global.game_controller.place_empty_in_alt_scene(grid_pos)
+					temp_check_instance.queue_free()
 					place_demon(grid_pos)
 
 # Convert mouse position to a grid cell position

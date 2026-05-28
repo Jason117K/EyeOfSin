@@ -8,10 +8,12 @@ var duration: float
 
 #@onready var buffNodes = $BuffNodesComponent
 @onready var projectile_shoot_component := $ProjectileShootComponent
-
-
+@onready var beat_of_death_damage_aoe := $BeatOfDeathDamage
+@onready var hero_ability_component := $HeroAbilityComponent
 #Circle Sprite for Special Move
 #@onready var beatOfDeathCirle = $BeatOfDeathCircle
+
+var is_hero = true 
 
 const EXPAND_SCALE: Vector2 = Vector2(0.35, 0.35)  # How large the sprite grows
 const START_SCALE: Vector2 = Vector2(0.1, 0.1)
@@ -30,6 +32,24 @@ func _ready() -> void:
 	var fps: float = animSpriteComp.sprite_frames.get_animation_speed(animSpriteComp.currentAttackAnim)
 	duration = frame_count / fps	
 	
+	
+	set_beat_of_death_collision()
+
+
+func set_beat_of_death_collision()->void:
+	if self.is_in_group("Green"):
+		
+		beat_of_death_damage_aoe.set_collision_mask_value(1,false)
+		beat_of_death_damage_aoe.set_collision_mask_value(2,false)
+		beat_of_death_damage_aoe.set_collision_mask_value(3,false)
+		beat_of_death_damage_aoe.set_collision_mask_value(4,false)
+		beat_of_death_damage_aoe.set_collision_mask_value(5,true)
+	else:
+		beat_of_death_damage_aoe.set_collision_mask_value(1,false)
+		beat_of_death_damage_aoe.set_collision_mask_value(2,false)
+		beat_of_death_damage_aoe.set_collision_mask_value(3,false)
+		beat_of_death_damage_aoe.set_collision_mask_value(4,true)			
+			
 func set_attack_collision() -> void:
 	projectile_shoot_component.set_attack_rays_collision()
 
@@ -40,6 +60,7 @@ func get_cost() -> float:
 
 func swap_scenes()->void:
 	projectile_shoot_component.set_attack_rays_collision()
+	set_beat_of_death_collision()
 	if is_in_group("Green"):
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(2, false)

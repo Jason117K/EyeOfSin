@@ -32,6 +32,7 @@ shader_parameter/empty_color = Color(0, 0, 0, 0)
 script = ExtResource("1_txri4")
 
 [node name="Control" type="Control" parent="." unique_id=417067064]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

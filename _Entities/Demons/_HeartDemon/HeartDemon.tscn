@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bxf1qjmdt7tbe" path="res://_Entities/Demons/_HeartDemon/HeartDemon.gd" id="1_c8ds1"]
 [ext_resource type="Texture2D" uid="uid://bnlhoalxw13qu" path="res://_Assets/Environment/Props/BeatOfDeathCircle.png" id="2_6ofan"]
+[ext_resource type="Texture2D" uid="uid://ol21qkx3gmrw" path="res://_Entities/Demons/_HeartDemon/BeatElectric-Sheet.png" id="2_ntx8r"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_x555b"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="3_2gwo5"]
+[ext_resource type="Texture2D" uid="uid://cakcy4g6awoyn" path="res://_Entities/Demons/_HeartDemon/EletricBeatAlt.png" id="3_j0rk1"]
 [ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="4_nbddu"]
 [ext_resource type="Texture2D" uid="uid://c4m14uxs4uhld" path="res://_Entities/Demons/SpriteSheets/HeartSplitterHero-Sheet.png" id="5_x555b"]
 [ext_resource type="Script" uid="uid://gmwocdw7gk2e" path="res://_Entities/Demons/_HeartDemon/heart_animated_sprite_component.gd" id="8_ay5kv"]
@@ -18,6 +20,173 @@
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="23_f8a43"]
 [ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="30_nb35r"]
 [ext_resource type="Script" uid="uid://d0pn63x1sa6ln" path="res://_Common/Misc/lightning_spawn.gd" id="31_w3l75"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cdbo"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hck68"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4l7d"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i38a"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md8pe"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b7r2"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd3pl"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xv7f"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0qol"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f16s"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7jym"]
+atlas = ExtResource("2_ntx8r")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggg1i"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hvo0"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg5c3"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ngkk"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78464"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otkat"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q7m8"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opi2d"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cv3o"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fk4y"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2kij"]
+atlas = ExtResource("3_j0rk1")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56joo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cdbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hck68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4l7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i38a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md8pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b7r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd3pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xv7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0qol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f16s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7jym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggg1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hvo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg5c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ngkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78464")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otkat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q7m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opi2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cv3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fk4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2kij")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 18.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ofan"]
 size = Vector2(129, 121)
@@ -129,6 +298,23 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x555b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gwo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbddu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd6tv")
+}],
+"loop": true,
+"name": &"beat_of_death",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -943,10 +1129,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3mxg"]
+radius = 44.28318
+
 [node name="Heart" type="Area2D" unique_id=1977454691 groups=["Demons", "Plants"]]
 z_index = 3
 collision_layer = 3
 script = ExtResource("1_c8ds1")
+
+[node name="BeatDMGAnim" type="AnimatedSprite2D" parent="." unique_id=1299817475]
+visible = false
+position = Vector2(1.19209275e-07, -2.0000005)
+scale = Vector2(1.37, 1.37)
+sprite_frames = SubResource("SpriteFrames_56joo")
+animation = &"new_animation"
+frame = 4
 
 [node name="BeatOfDeathCircle" type="Sprite2D" parent="." unique_id=346922753]
 visible = false
@@ -955,6 +1152,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_6ofan")
 
 [node name="DMGZone" type="Area2D" parent="." unique_id=1596722407 groups=["HeartBuff"]]
+visible = false
 collision_layer = 0
 collision_mask = 0
 monitoring = false
@@ -991,15 +1189,17 @@ shape = SubResource("1")
 autostart = true
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=554588261]
-visible = false
 material = SubResource("ShaderMaterial_4vrps")
-position = Vector2(0, 7)
+position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_mo0be")
-animation = &"idle"
+animation = &"beat_of_death"
 autoplay = "spawn"
+frame = 3
+frame_progress = 0.6548953
 script = ExtResource("8_ay5kv")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1396187383]
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1472732539]
 material = SubResource("ShaderMaterial_4vrps")
@@ -1167,11 +1367,23 @@ position = Vector2(36, 28)
 position = Vector2(32, 3)
 
 [node name="HeroAbilityComponent" parent="." unique_id=55620515 instance=ExtResource("14_tfp6l")]
+damage = 15.0
+cooldown_duration = 15.0
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("16_ay5kv")]
+health = 2000.0
 
 [node name="ProjectileShootComponent" parent="." unique_id=509514022 instance=ExtResource("17_omvog")]
 script = ExtResource("18_f3mxg")
+
+[node name="BeatOfDeathDamage" type="Area2D" parent="." unique_id=767763202]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeatOfDeathDamage" unique_id=45914958]
+shape = SubResource("CircleShape2D_f3mxg")
+
+[node name="LureTimer" type="Timer" parent="." unique_id=715421464]
+wait_time = 0.6
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
@@ -1182,5 +1394,7 @@ script = ExtResource("18_f3mxg")
 [connection signal="timeout" from="SpawnSpiderling" to="." method="_on_spawn_spiderling_timeout"]
 [connection signal="animation_finished" from="LightningSpawn" to="LightningSpawn" method="_on_animation_finished"]
 [connection signal="frame_changed" from="LightningSpawn" to="LightningSpawn" method="_on_frame_changed"]
+[connection signal="area_entered" from="BeatOfDeathDamage" to="HeroAbilityComponent" method="_on_beat_of_death_damage_area_entered"]
+[connection signal="timeout" from="LureTimer" to="HeroAbilityComponent" method="begin"]
 
 [editable path="BuffNodesComponent"]
