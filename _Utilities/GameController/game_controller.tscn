@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
+[ext_resource type="PackedScene" uid="uid://dp7s3dgsri7q6" path="res://_Entities/SynAbility/syn_ability_cooldown.tscn" id="11_2jv8n"]
 [ext_resource type="PackedScene" uid="uid://q1xy6cykd6mj" path="res://_Entities/SwapAbilities/lucretia_grasp.tscn" id="11_3rtt1"]
+[ext_resource type="Script" uid="uid://dpkjidp56efh6" path="res://_Entities/SynAbility/syn_ability.gd" id="11_vtmjq"]
+[ext_resource type="Texture2D" uid="uid://cai1pvmpbwlq3" path="res://_Entities/SynAbility/SynAbilityCrosshair1-Sheet.png" id="13_vtmjq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
 bg_color = Color(0.9499998, 0, 1, 0)
@@ -21,6 +24,49 @@ border_color = Color(0.09803922, 0.015686275, 0.16862746, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mahd0"]
 viewport_path = NodePath("PipViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx80q"]
+atlas = ExtResource("13_vtmjq")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scvdn"]
+atlas = ExtResource("13_vtmjq")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rfl7"]
+atlas = ExtResource("13_vtmjq")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50rhw"]
+atlas = ExtResource("13_vtmjq")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk3i1"]
+atlas = ExtResource("13_vtmjq")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c6rbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx80q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scvdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rfl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50rhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk3i1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="GameController" type="Node" unique_id=324431877 node_paths=PackedStringArray("scene_container")]
 script = ExtResource("1_ip61f")
@@ -128,4 +174,16 @@ stretch_mode = 6
 
 [node name="LucretiaGrasp" parent="." unique_id=534558046 instance=ExtResource("11_3rtt1")]
 
+[node name="SynAbility" type="Node" parent="." unique_id=1567375411]
+script = ExtResource("11_vtmjq")
+
+[node name="SynAbilityCooldown" parent="SynAbility" unique_id=658951173 instance=ExtResource("11_2jv8n")]
+
+[node name="SynAbilityCrosshair" type="AnimatedSprite2D" parent="SynAbility" unique_id=1089547091]
+visible = false
+position = Vector2(686, 368)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_c6rbx")
+
 [editable path="CurrentScene/DemonSelectionMenu"]
+[editable path="SynAbility/SynAbilityCooldown"]

@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dp7s3dgsri7q6"]
+
+[ext_resource type="Script" uid="uid://b44jkeoi1twtl" path="res://_Entities/SynAbility/syn_ability_cooldown_visual.gd" id="1_sukl5"]
+[ext_resource type="Texture2D" uid="uid://dgv2mrtncmvv4" path="res://_Entities/SynAbility/SynAbility_1_CARD.png" id="2_13k3d"]
+[ext_resource type="Texture2D" uid="uid://cai1pvmpbwlq3" path="res://_Entities/SynAbility/SynAbilityCrosshair1-Sheet.png" id="3_sukl5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx80q"]
+atlas = ExtResource("3_sukl5")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scvdn"]
+atlas = ExtResource("3_sukl5")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rfl7"]
+atlas = ExtResource("3_sukl5")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50rhw"]
+atlas = ExtResource("3_sukl5")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk3i1"]
+atlas = ExtResource("3_sukl5")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64wnw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx80q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scvdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rfl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50rhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk3i1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="SynAbilityCooldown" type="Control" unique_id=658951173]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sukl5")
+
+[node name="SynAbilityButton" type="TextureButton" parent="." unique_id=1941069963]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 335.0
+offset_right = 1083.0
+offset_bottom = 763.0
+scale = Vector2(0.15, 0.15)
+mouse_filter = 2
+texture_normal = ExtResource("2_13k3d")
+stretch_mode = 0
+
+[node name="SynAbilityCrosshair" type="AnimatedSprite2D" parent="." unique_id=1952306928]
+position = Vector2(600, 179)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_64wnw")
+frame_progress = 0.44627473
