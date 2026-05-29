@@ -46,6 +46,8 @@ class_name Demon
 @export var maxHealth: float = 800
 @export var regen_wait_time := 1
 @export var is_empty := false 
+@export var syn_shield_position := Vector2(-2,-6)
+
 # --- Component References ---
 @onready var animSpriteComp: AnimatedSprite2D = $AnimatedSpriteComponent
 @onready var healthComp: Node = $HealthComponent
@@ -54,11 +56,16 @@ class_name Demon
 @onready var erase_button : TextureButton = $EraseButton
 @onready var erase_mouse_area : Area2D = $EraseMouseArea
 
+var new_syn_shield_instance :AnimatedSprite2D 
+var syn_timer : Timer
+var invulnerable := false 
+
 # --- State ---
 var area: Area2D
 var isBuffed := false
 var demon_manager : Node
 var spawn_done := false 
+var is_hero = false
 # --- Signals ---
 signal demon_die
 
@@ -81,6 +88,7 @@ func _ready() -> void:
 	erase_button.mouse_entered.connect(show_erase_button)
 	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
 	erase_button.pressed.connect(die_fromClearSpace)
+	erase_button.hide()
 
 func _init_collision() -> void:
 	if is_in_group("Green"):
@@ -197,7 +205,8 @@ func increase_max_health(added_health_amount: float) -> void:
 	healthComp.increase_max_health(added_health_amount)
 
 func take_damage(damage: float) -> void:
-	healthComp.take_damage(damage)
+	if !invulnerable:
+		healthComp.take_damage(damage)
 
 func play_healing_anim() -> void:
 	heal_anim_sprite.play()
@@ -220,7 +229,27 @@ func get_preview_nodes() -> Node:
 func get_true_name() -> String:
 	return ""
 
-
+func shield(syn_shield:PackedScene,duration:float)->void:
+	new_syn_shield_instance = syn_shield.instantiate()
+	add_child(new_syn_shield_instance)
+	new_syn_shield_instance.global_position = syn_shield_position + global_position
+	new_syn_shield_instance.play("load")
+	syn_timer = Timer.new()
+	syn_timer.autostart = false
+	syn_timer.one_shot = true 
+	syn_timer.wait_time = duration
+	syn_timer.timeout.connect(end_shield)
+	add_child(syn_timer)
+	syn_timer.start()
+	
+	invulnerable = true 
+	
+func end_shield()->void:
+	#new_syn_shield_instance.queue_free()
+	#syn_timer.queue_free()
+	invulnerable = false 
+	
+	
 # --- Input ---
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

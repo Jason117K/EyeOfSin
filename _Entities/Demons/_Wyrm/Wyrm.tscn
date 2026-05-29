@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://p8shvofaoy5d"]
 
 [ext_resource type="Texture2D" uid="uid://2bti3iudanb6" path="res://_Entities/Demons/_Wyrm/Worm1.png" id="2"]
+[ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="2_1ds1s"]
 [ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_pyfr7"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_tvvdq"]
 [ext_resource type="Texture2D" uid="uid://d15h6uip8scwo" path="res://_Entities/Demons/_Wyrm/Worm2.png" id="3"]
@@ -25,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="22_wr0b4"]
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="23_aoc4y"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_kf5mr"]
+[ext_resource type="PackedScene" uid="uid://dhs0pt2nvnv00" path="res://_Entities/SynAbility/syn_shield_ability.tscn" id="26_1ds1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_pyfr7")
@@ -1053,7 +1055,16 @@ cost = 175.0
 health = 100.0
 maxHealth = 60.0
 
+[node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=1914990497]
+z_index = 1
+position = Vector2(-2, -22)
+sprite_frames = ExtResource("2_1ds1s")
+animation = &"top_glow"
+frame = 1
+frame_progress = 0.79174113
+
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=1905228460]
+visible = false
 position = Vector2(2, -20)
 sprite_frames = SubResource("SpriteFrames_kf5mr")
 frame = 2
@@ -1138,6 +1149,7 @@ zigzag_width = 160.0
 autostart = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=615257564]
+visible = false
 position = Vector2(-1, -2.5)
 shape = SubResource("1")
 
@@ -1270,6 +1282,7 @@ position = Vector2(0, -27)
 texture = ExtResource("23_aoc4y")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=1915163654]
+visible = false
 offset_left = -33.0
 offset_top = -36.0
 offset_right = 9.0
@@ -1279,11 +1292,16 @@ mouse_filter = 1
 texture_normal = ExtResource("25_kf5mr")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1488447784]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=615408492]
 position = Vector2(-7.5, -11)
 shape = SubResource("RectangleShape2D_lhncc")
+
+[node name="SynShield_Ability" parent="." unique_id=1105706297 instance=ExtResource("26_1ds1s")]
+position = Vector2(525, 258)
+script = null
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

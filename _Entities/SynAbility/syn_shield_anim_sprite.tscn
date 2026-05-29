@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bguahgpnadafv"]
+
+[ext_resource type="Texture2D" uid="uid://cevkcqyd38i5h" path="res://_Entities/SynAbility/Syn_Shield_Ability.png" id="1_sqrds"]
+[ext_resource type="Script" uid="uid://n0nlgn6dqso0" path="res://_Entities/SynAbility/syn_shield_anim_sprite.gd" id="2_b3m7n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3m7n"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(128, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3jut"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(160, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftgbn"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(192, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t0uc"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(224, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66imx"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(256, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tpc5"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(288, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfdu0"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(320, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgeue"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(352, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2sma"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(0, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipewn"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(32, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh82u"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(64, 0, 32, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn265"]
+atlas = ExtResource("1_sqrds")
+region = Rect2(96, 0, 32, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1owr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3m7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3jut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftgbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t0uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66imx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tpc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfdu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgeue")
+}],
+"loop": true,
+"name": &"cycle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2sma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipewn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh82u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn265")
+}],
+"loop": false,
+"name": &"load",
+"speed": 12.0
+}]
+
+[node name="SynShieldAnimSprite" type="AnimatedSprite2D" unique_id=1586053537]
+z_index = 2
+position = Vector2(-2, -1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_o1owr")
+animation = &"load"
+script = ExtResource("2_b3m7n")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

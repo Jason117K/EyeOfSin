@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://4lj1lfuhc3yu"]
+
+[ext_resource type="Script" uid="uid://cac4845an1www" path="res://_Entities/SynAbility/syn_torch_ability.gd" id="1_jlisg"]
+[ext_resource type="Texture2D" uid="uid://bmq6ihxua2m6t" path="res://_Entities/SynAbility/TorchShroomiePurple-Sheet.png" id="1_oj40p"]
+[ext_resource type="Texture2D" uid="uid://b4kajgmixxhsh" path="res://_Entities/SynAbility/TorchShroomieGreen-Sheet.png" id="2_t3n1b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fqdn"]
+atlas = ExtResource("2_t3n1b")
+region = Rect2(0, 0, 36, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sejod"]
+atlas = ExtResource("2_t3n1b")
+region = Rect2(36, 0, 36, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsj34"]
+atlas = ExtResource("2_t3n1b")
+region = Rect2(72, 0, 36, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60ftt"]
+atlas = ExtResource("2_t3n1b")
+region = Rect2(108, 0, 36, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlisg"]
+atlas = ExtResource("1_oj40p")
+region = Rect2(0, 0, 36, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3n1b"]
+atlas = ExtResource("1_oj40p")
+region = Rect2(36, 0, 36, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64bco"]
+atlas = ExtResource("1_oj40p")
+region = Rect2(72, 0, 36, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stgtb"]
+atlas = ExtResource("1_oj40p")
+region = Rect2(108, 0, 36, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fqdn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fqdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sejod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsj34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60ftt")
+}],
+"loop": true,
+"name": &"green",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlisg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3n1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64bco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stgtb")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sejod"]
+size = Vector2(34, 29)
+
+[node name="TorchShroom" type="Area2D" unique_id=1668627683]
+script = ExtResource("1_jlisg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1922744451]
+position = Vector2(3, 4)
+sprite_frames = SubResource("SpriteFrames_2fqdn")
+animation = &"green"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1298079090]
+position = Vector2(4, 3.5)
+shape = SubResource("RectangleShape2D_sejod")

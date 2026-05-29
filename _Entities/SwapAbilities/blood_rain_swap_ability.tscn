@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxeohrwemsvwx"]
 
-[ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/SwapAbilities/blood_rain.gd" id="1_0b0fw"]
+[ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/SwapAbilities/blood_rain_swap_ability.gd" id="1_0b0fw"]
 [ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_17mp3"]
 [ext_resource type="Texture2D" uid="uid://dlibutqbo27r5" path="res://_Assets/Particles/RainText.png" id="2_m1ym1"]
 [ext_resource type="Texture2D" uid="uid://c0vryk05d320o" path="res://_Assets/Particles/Splashes-Sheet.png" id="3_17mp3"]

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cd17phymp0lo1"]
+
+[ext_resource type="Script" uid="uid://dpkjidp56efh6" path="res://_Entities/SynAbility/syn_ability.gd" id="1_xmk26"]
+[ext_resource type="PackedScene" uid="uid://4lj1lfuhc3yu" path="res://_Entities/SynAbility/syn_torch_ability.tscn" id="2_8fkk2"]
+[ext_resource type="PackedScene" uid="uid://dp7s3dgsri7q6" path="res://_Entities/SynAbility/syn_ability_cooldown.tscn" id="3_cdwfe"]
+[ext_resource type="Texture2D" uid="uid://cai1pvmpbwlq3" path="res://_Entities/SynAbility/SynAbilityCrosshair1-Sheet.png" id="4_5qyit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx80q"]
+atlas = ExtResource("4_5qyit")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scvdn"]
+atlas = ExtResource("4_5qyit")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rfl7"]
+atlas = ExtResource("4_5qyit")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50rhw"]
+atlas = ExtResource("4_5qyit")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk3i1"]
+atlas = ExtResource("4_5qyit")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64wnw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx80q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scvdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rfl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50rhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk3i1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="SynAbility" type="Node" unique_id=1228459711]
+script = ExtResource("1_xmk26")
+syn_ability_instance = ExtResource("2_8fkk2")
+
+[node name="SynAbilityCooldown" parent="." unique_id=658951173 instance=ExtResource("3_cdwfe")]
+mouse_filter = 2
+
+[node name="SynAbilityCrosshair" type="AnimatedSprite2D" parent="." unique_id=529838522]
+position = Vector2(600, 179)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_64wnw")
+autoplay = "default"
+frame_progress = 0.010404813
+
+[editable path="SynAbilityCooldown"]

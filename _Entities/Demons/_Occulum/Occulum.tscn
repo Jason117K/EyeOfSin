@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_hwfy3"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_kvwqv"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_m5mcc"]
+[ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="2_qlgaq"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="3"]
 [ext_resource type="Script" uid="uid://cfqca1j76a6eh" path="res://_Entities/Demons/_Occulum/occulum_health_component.gd" id="3_0ypr0"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_muovt"]
@@ -1318,7 +1319,13 @@ crawlerBloodWaitTime = 22.0
 health = 100.0
 maxHealth = 60.0
 
+[node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=145781643]
+position = Vector2(-1, -9)
+sprite_frames = ExtResource("2_qlgaq")
+animation = &"back"
+
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=784473112]
+visible = false
 position = Vector2(3, -10)
 sprite_frames = SubResource("SpriteFrames_2beku")
 frame = 2
@@ -1381,6 +1388,7 @@ position = Vector2(0, 3)
 texture = ExtResource("2_3r88c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467600003]
+visible = false
 position = Vector2(0.5, 0.499999)
 scale = Vector2(3, 3)
 shape = SubResource("89")
@@ -1481,6 +1489,7 @@ sprite_frames = SubResource("55")
 animation = &"New Anim"
 
 [node name="BuffNodesComponent" parent="." unique_id=1007137061 instance=ExtResource("7")]
+visible = false
 
 [node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
@@ -1610,6 +1619,7 @@ position = Vector2(0, -23)
 texture = ExtResource("28_he6yk")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=706995954]
+visible = false
 offset_left = -33.0
 offset_top = -36.0
 offset_right = 9.0
@@ -1619,6 +1629,7 @@ mouse_filter = 1
 texture_normal = ExtResource("29_he6yk")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1414885338]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2047447869]

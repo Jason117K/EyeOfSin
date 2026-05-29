@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://l1w5vga5fve" path="res://_Entities/Demons/WebTile/web_tile_slow.tscn" id="2_j6nbb"]
 [ext_resource type="Texture2D" uid="uid://c6ui5cj8lb6mf" path="res://_Entities/Demons/_CagedOculum/OccularSpineIdle-Sheet.png" id="2_ksu1o"]
 [ext_resource type="Script" uid="uid://b7wg8t5tm6jjf" path="res://_Entities/Demons/_CagedOculum/silence_field.gd" id="2_mek0b"]
+[ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="2_rvtdc"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://blmlmra0kwots" path="res://_Entities/Demons/_CagedOculum/OccularSpineHurt1-Sheet.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://25jg5py622un" path="res://_Entities/Demons/_CagedOculum/OccularSpine-Sheet.png" id="6"]
@@ -1566,6 +1567,14 @@ spike_damage = 34
 cost = 75.0
 health = 600.0
 maxHealth = 600.0
+syn_shield_position = Vector2(-2, -3)
+
+[node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=494985065]
+z_index = 1
+position = Vector2(-1, -19)
+sprite_frames = ExtResource("2_rvtdc")
+animation = &"top_glow"
+frame_progress = 0.32509956
 
 [node name="SilenceField" type="Area2D" parent="." unique_id=1451195478]
 visible = false
@@ -1598,6 +1607,7 @@ position = Vector2(57.5, 1)
 shape = SubResource("RectangleShape2D_ktms3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2004042112]
+visible = false
 shape = SubResource("1")
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]
@@ -1774,10 +1784,12 @@ frame = 24
 frame_progress = 1.0
 
 [node name="TempBloodHalo" type="Sprite2D" parent="." unique_id=2054448822]
+visible = false
 position = Vector2(0, -25)
 texture = ExtResource("28_egyvc")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=185795330]
+visible = false
 offset_left = -33.0
 offset_top = -36.0
 offset_right = 9.0
@@ -1787,6 +1799,7 @@ mouse_filter = 1
 texture_normal = ExtResource("29_r8bpw")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1928357118]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2080345614]

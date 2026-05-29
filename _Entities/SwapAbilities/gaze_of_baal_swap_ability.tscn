@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chf4hchr0gy8r"]
 
-[ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/SwapAbilities/blood_rain.gd" id="1_ylf2v"]
+[ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/SwapAbilities/blood_rain_swap_ability.gd" id="1_ylf2v"]
 [ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_ekoey"]
 [ext_resource type="Texture2D" uid="uid://c6b8q051g8rjl" path="res://_Entities/SwapAbilities/BaalAOETemp.png" id="4_us4db"]
 [ext_resource type="Texture2D" uid="uid://b28lnr0s13vsh" path="res://_Entities/SwapAbilities/EyeBoss_BallTemp.png" id="4_ylf2v"]
@@ -98,8 +98,8 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_dc01u"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49519235, 0.5419791), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_rk0kd"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49358976, 0.49081713), -3.1460528, -3.1460528, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -113,9 +113,9 @@ point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_rk0kd"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 370, 0, 0, 0, 0, 0, 370, 125)
+"points": PackedVector2Array(0, 0, 0, 0, 370, 25, 0, 0, 0, 0, 370, 0, 0, 0, 0, 0, 370, -125)
 }
-point_count = 2
+point_count = 3
 
 [node name="BaalGaze" type="Node" unique_id=656116311]
 script = ExtResource("1_ylf2v")
@@ -125,9 +125,11 @@ cooldown_duration = 9.0
 ability_name = "GAZE OF BAAL"
 
 [node name="BaalAOE" type="AnimatedSprite2D" parent="." unique_id=1870355713]
+visible = false
 position = Vector2(354, 52)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dti0f")
+autoplay = "default"
 
 [node name="BaalEye" type="AnimatedSprite2D" parent="." unique_id=1409846967 node_paths=PackedStringArray("path")]
 z_index = 3
@@ -138,6 +140,7 @@ autoplay = "default"
 frame_progress = 0.021034751
 script = ExtResource("6_ekoey")
 position_curve = SubResource("Curve_dc01u")
+travel_time = 10.0
 path = NodePath("../BallPath")
 
 [node name="Iris" type="Sprite2D" parent="." unique_id=123765848 node_paths=PackedStringArray("path", "baal_eye")]

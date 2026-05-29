@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="26_l3bye"]
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="28_054w2"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_054w2"]
+[ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="30_elaex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_mg35w")
@@ -70,7 +71,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
@@ -1697,11 +1698,14 @@ alt_replace_color = Color(0.388235, 0, 0, 1)
 wyrm_buffed_digestion_time = 10.0
 spinal_occulum_buffed_digestion_time = 11.0
 cost = 300.0
+syn_shield_position = Vector2(253, 237)
 
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=625929278]
+visible = false
 position = Vector2(257, 228)
 sprite_frames = SubResource("SpriteFrames_elaex")
-frame = 4
+frame = 2
+frame_progress = 0.12067562
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_colwa")]
 script = ExtResource("3_xf387")
@@ -1953,6 +1957,7 @@ position = Vector2(255, 230)
 texture = ExtResource("28_054w2")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=652568913]
+visible = false
 offset_left = 225.0
 offset_top = 216.0
 offset_right = 267.0
@@ -1962,12 +1967,18 @@ mouse_filter = 1
 texture_normal = ExtResource("29_054w2")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=109868354]
+visible = false
 position = Vector2(258, 252)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=643286169]
 position = Vector2(-2.5, -11)
 shape = SubResource("RectangleShape2D_elaex")
+
+[node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=843438043]
+position = Vector2(255, 225)
+sprite_frames = ExtResource("30_elaex")
+animation = &"back"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -123,6 +123,11 @@ func debuff() -> void:
 	super()
 
 
+func shield(syn_shield:PackedScene,duration:float)->void:
+	super(syn_shield,duration)
+	new_syn_shield_instance.scale = Vector2(3.25,3.25)
+
+
 # --- Death ---
 
 func _cleanup_manager() -> void:

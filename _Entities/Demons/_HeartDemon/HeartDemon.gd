@@ -13,7 +13,7 @@ var duration: float
 #Circle Sprite for Special Move
 #@onready var beatOfDeathCirle = $BeatOfDeathCircle
 
-var is_hero = true 
+
 
 const EXPAND_SCALE: Vector2 = Vector2(0.35, 0.35)  # How large the sprite grows
 const START_SCALE: Vector2 = Vector2(0.1, 0.1)
@@ -21,6 +21,7 @@ const START_SCALE: Vector2 = Vector2(0.1, 0.1)
 #Grab demonmanager, start default anim and connect/start relevant timers 
 func _ready() -> void:
 	print("Hero DEMON Ready")
+	is_hero = true 
 	Global.register_hero_demon(self)
 	$PreviewNodes/AnimatedSprite2D.hide()
 	#set_attack_collision()
@@ -34,6 +35,9 @@ func _ready() -> void:
 	
 	
 	set_beat_of_death_collision()
+
+func shield(_syn_shield:PackedScene,_duration:float)->void:
+	pass
 
 
 func set_beat_of_death_collision()->void:

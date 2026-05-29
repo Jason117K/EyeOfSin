@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://q1xy6cykd6mj"]
 
-[ext_resource type="Script" uid="uid://bn0r8k81tu452" path="res://_Entities/SwapAbilities/lucretia_grasp.gd" id="1_hkd1k"]
+[ext_resource type="Script" uid="uid://bn0r8k81tu452" path="res://_Entities/SwapAbilities/lucretia_grasp_swap_ability.gd" id="1_hkd1k"]
 [ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_hkd1k"]
 [ext_resource type="Texture2D" uid="uid://c00u26tvt1dkt" path="res://_Entities/SwapAbilities/TempGraspPurple-Sheet.png" id="4_42c3p"]
 [ext_resource type="Texture2D" uid="uid://tigxqyxcy0nf" path="res://_Entities/SwapAbilities/TempGrasp_Green.png" id="4_l1q03"]

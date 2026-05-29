@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cp6xcabhkv21t"]
 
 [ext_resource type="Script" uid="uid://cqeauyk52r5cb" path="res://_Entities/Demons/_Hive/Hive.gd" id="2"]
+[ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="2_0lpgd"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_cpfsp"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_cvsxw"]
 [ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_np53a"]
@@ -1702,11 +1703,18 @@ waitTime = 6.0
 buffedWaitTime = 3.0
 cost = 175.0
 
+[node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=370828129]
+position = Vector2(-1, -20)
+sprite_frames = ExtResource("2_0lpgd")
+animation = &"back"
+frame_progress = 0.045479257
+
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=958772671]
+visible = false
 position = Vector2(3, -19)
 sprite_frames = SubResource("SpriteFrames_dvp3m")
-frame = 1
-frame_progress = 0.29809347
+frame = 4
+frame_progress = 0.4906676
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("2_cvsxw")]
 script = ExtResource("3_k5wuc")
@@ -1732,6 +1740,7 @@ shape = SubResource("11")
 script = ExtResource("21_swarm")
 
 [node name="DetectionComp" type="Area2D" parent="." unique_id=299923120]
+visible = false
 collision_layer = 0
 collision_mask = 0
 
@@ -1949,6 +1958,7 @@ position = Vector2(0, -31)
 texture = ExtResource("27_w5638")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=1835532117]
+visible = false
 offset_left = -33.0
 offset_top = -36.0
 offset_right = 9.0
@@ -1958,6 +1968,7 @@ mouse_filter = 1
 texture_normal = ExtResource("29_dvp3m")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=168888838]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2115581255]

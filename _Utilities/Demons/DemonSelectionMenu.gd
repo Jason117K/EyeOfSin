@@ -2,7 +2,7 @@ extends Control
 #DemonSelectionMenu.gd
 
 @export var is_alt := false
-var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain.tscn")
+var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain_swap_ability.tscn")
 var swap_ability_instance: Node
 
 var root : String

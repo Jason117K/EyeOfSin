@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="36_0syxb"]
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="37_8u2uv"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="39_0n853"]
+[ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="40_dq2o5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_jphsv")
@@ -2285,12 +2286,15 @@ buffed_range_target_pos = Vector2(600, 0)
 cost = 75.0
 health = 100.0
 maxHealth = 60.0
+syn_shield_position = Vector2(-5, -6.5)
 
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=1580291180]
+visible = false
 position = Vector2(3, -10)
 sprite_frames = SubResource("SpriteFrames_0n853")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434290327]
+visible = false
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
 shape = SubResource("1")
@@ -2545,6 +2549,7 @@ position = Vector2(0, -9)
 texture = ExtResource("37_8u2uv")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=1067851881]
+visible = false
 offset_left = -33.0
 offset_top = -19.0
 offset_right = 9.0
@@ -2554,12 +2559,19 @@ mouse_filter = 1
 texture_normal = ExtResource("39_0n853")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=894796709]
+visible = false
 position = Vector2(0, 17)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=582339312]
 position = Vector2(-10, -17.5)
 shape = SubResource("RectangleShape2D_dq2o5")
+
+[node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=609308179]
+position = Vector2(-2, -9)
+sprite_frames = ExtResource("40_dq2o5")
+animation = &"top_glow"
+frame_progress = 0.04860469
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

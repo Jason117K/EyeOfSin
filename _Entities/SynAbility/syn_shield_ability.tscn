@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dhs0pt2nvnv00"]
+
+[ext_resource type="Script" uid="uid://1koyp0868h1i" path="res://_Entities/SynAbility/syn_shield_ability.gd" id="1_wm5k7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc6p4"]
+size = Vector2(60, 60)
+
+[node name="SynShield_Ability" type="Area2D" unique_id=1105706297]
+script = ExtResource("1_wm5k7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1304535357]
+shape = SubResource("RectangleShape2D_xc6p4")
