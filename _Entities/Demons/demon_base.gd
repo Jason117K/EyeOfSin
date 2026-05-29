@@ -47,6 +47,7 @@ class_name Demon
 @export var regen_wait_time := 1
 @export var is_empty := false 
 @export var syn_shield_position := Vector2(-2,-6)
+@export var hit_flash_duration := 0.3
 
 # --- Component References ---
 @onready var animSpriteComp: AnimatedSprite2D = $AnimatedSpriteComponent
@@ -68,6 +69,8 @@ var isBuffed := false
 var demon_manager : Node
 var spawn_done := false 
 var is_hero = false
+var hit_flash_active : bool = false 
+var time_since_hit : float = 0.0 
 # --- Signals ---
 signal demon_die
 
@@ -78,7 +81,7 @@ func _ready() -> void:
 	if is_empty:
 		set_process(false)
 		return
-	set_process(false)
+	#set_process(false)
 	# --- Phase 1: Collision layers (Green/Purple) ---
 	_init_collision()
 	# --- Phase 2: Signal wiring ---
@@ -93,6 +96,14 @@ func _ready() -> void:
 	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
 	erase_button.pressed.connect(die_fromClearSpace)
 	erase_button.hide()
+
+func _process(delta: float) -> void:
+	if hit_flash_active:
+		time_since_hit += delta
+		if time_since_hit >= hit_flash_duration:
+			hit_flash_active = false
+			time_since_hit = 0
+			_on_ResetThisColor_timeout()
 
 func _init_collision() -> void:
 	if is_in_group("Green"):
@@ -221,7 +232,14 @@ func increase_max_health(added_health_amount: float) -> void:
 func take_damage(damage: float) -> void:
 	if !invulnerable:
 		healthComp.take_damage(damage)
+		animSpriteComp.set_instance_shader_parameter("hit_flash", 1.0)
+		hit_flash_active = true
+		
+func _on_ResetThisColor_timeout() -> void:
+	animSpriteComp.set_instance_shader_parameter("hit_flash", 0.0)
 
+		
+			
 func play_healing_anim() -> void:
 	heal_anim_sprite.play()
 
@@ -259,8 +277,8 @@ func shield(syn_shield:PackedScene,duration:float)->void:
 	invulnerable = true 
 	
 func end_shield()->void:
-	#new_syn_shield_instance.queue_free()
-	#syn_timer.queue_free()
+	new_syn_shield_instance.queue_free()
+	syn_timer.queue_free()
 	invulnerable = false 
 	
 	

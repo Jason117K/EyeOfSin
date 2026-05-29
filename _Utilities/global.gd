@@ -394,7 +394,7 @@ func is_on_purple_dimension() -> bool:
 	else:
 		return false
 	
-func register_swap_ability(new_swap_ability : Node) -> void:
+func register_swap_ability(new_swap_ability ) -> void:
 	swap_ability = new_swap_ability
 
 func register_notification_bar(new_notification_bar : Control) -> void:
@@ -404,6 +404,7 @@ func register_notification_bar(new_notification_bar : Control) -> void:
 func start_swap_ability() -> void:
 	if swap_ability != null:
 		swap_ability.begin()
+
 
 func stop_swap_ability() -> void:
 	if swap_ability != null:

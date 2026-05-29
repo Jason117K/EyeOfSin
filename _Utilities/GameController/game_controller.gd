@@ -151,8 +151,9 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	#demon_selection_menu.visibility_layer = 0
 	#demon_selection_menu.set_visibility_layer_bit(2, true)   # bit 3 -> layer 
 	#else:
-	swap_ability.set_current_visibility_layer(1)
-	swap_ability.set_collision()
+	if swap_ability != null:
+		swap_ability.set_current_visibility_layer(1)
+		swap_ability.set_collision()
 	demon_selection_menu.visibility_layer = 0
 	demon_selection_menu.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
 	
@@ -290,7 +291,8 @@ func swap_scenes() -> void:
 
 	Global.hide_notification_bar()
 	if on_scene_1:
-		swap_ability.set_current_visibility_layer(2)
+		if swap_ability != null:
+			swap_ability.set_current_visibility_layer(2)
 		demon_selection_menu.visibility_layer = 0
 		#pause_button.visibility_layer = 0
 		level_switcher.visibility_layer = 0
@@ -298,7 +300,8 @@ func swap_scenes() -> void:
 		#pause_button.set_visibility_layer_bit(2, true)
 		level_switcher.set_visibility_layer_bit(2,true)
 	else:
-		swap_ability.set_current_visibility_layer(1)
+		if swap_ability != null:
+			swap_ability.set_current_visibility_layer(1)
 		demon_selection_menu.visibility_layer = 0
 		#pause_button.visibility_layer = 0
 		level_switcher.visibility_layer = 0

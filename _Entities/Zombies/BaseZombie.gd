@@ -351,6 +351,7 @@ func make_glow() -> void:
 
 
 func setMaterial(newAnimatedSprite:Node) -> void:
+	print("Material Set Here Zombie")
 	_secondary_flash_sprite = newAnimatedSprite
 
 
