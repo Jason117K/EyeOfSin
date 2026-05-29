@@ -85,6 +85,8 @@ func _ready() -> void:
 	_init_demon_manager()
 	# --- Phase 4: Post-spawn detection (deferred, async) ---
 	_schedule_post_spawn()
+	Global.register_demon(self)
+	
 	erase_button.mouse_entered.connect(show_erase_button)
 	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
 	erase_button.pressed.connect(die_fromClearSpace)

@@ -10,10 +10,14 @@ var loop_start : float
 
 
 func _ready() -> void:
-	global_position = Vector2(367,-100)
+	#global_position = Vector2(367,-100)
 	var total_length := path.curve.get_baked_length()
 	var length_to_point2 := path.curve.get_closest_offset(path.curve.get_point_position(1))
 	loop_start = length_to_point2 / total_length
+
+	
+	loop_start = path.curve.get_closest_offset( path.curve.get_point_position(1)) / path.curve.get_baked_length()
+	print("LOOOOP ", loop_start)
 
 
 func _physics_process(delta: float) -> void:
