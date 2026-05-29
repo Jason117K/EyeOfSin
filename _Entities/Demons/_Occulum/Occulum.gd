@@ -267,6 +267,13 @@ func zombie_gore_fx() -> void:
 		for effect:Node in eat_zombie_blood_fx:
 			effect.hide()
 
+func baal_buff()->void:
+	super()
+	baal_halo.play("back")
+
+func undo_baal_buff()->void:
+	super()
+	
 
 # --- Preview ---
 

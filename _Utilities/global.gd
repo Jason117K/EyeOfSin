@@ -14,6 +14,7 @@ var wave_manager : Node
 var is_blocking := false
 
 var all_zombies := []
+var all_demons := []
 var game_controller: GameController
 var demon_selection_menu : Control
 var notification_bar : Control 
@@ -265,7 +266,13 @@ func get_purple_portal_location() -> Vector2:
 func get_green_portal_location() -> Vector2:
 	return green_portal.global_position
 	
-	
+func register_demon(new_demon : Demon)->void:
+	all_demons.append(new_demon)
+
+func get_all_demons()->Array:
+	return all_demons 
+		
+		
 func register_hero_demon(new_hero_demon : Demon) -> void:
 	hero_demon = new_hero_demon
 	hero_demon_summoned = true

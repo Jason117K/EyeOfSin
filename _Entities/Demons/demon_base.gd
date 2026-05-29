@@ -56,6 +56,8 @@ class_name Demon
 @onready var erase_button : TextureButton = $EraseButton
 @onready var erase_mouse_area : Area2D = $EraseMouseArea
 
+@onready var baal_halo : AnimatedSprite2D = $BaalHalo
+
 var new_syn_shield_instance :AnimatedSprite2D 
 var syn_timer : Timer
 var invulnerable := false 
@@ -127,6 +129,16 @@ func _detect_heart_buffs() -> void:
 
 
 # --- Buff System ---
+
+func baal_buff()->void:
+	print("Show Baal Halo")
+	animSpriteComp.speed_scale = animSpriteComp.speed_scale * 2
+	baal_halo.show()
+
+func undo_baal_buff()->void:
+	print("Hide Baal Halo")
+	baal_halo.hide()	
+	animSpriteComp.speed_scale = 1 #animSpriteComp.default_anim_speed_scale
 
 # Called by children after extracting demonName string from the buffing demon node.
 # Order: guard → healthComp → animSpriteComp → flag set

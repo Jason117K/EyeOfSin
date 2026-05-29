@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://chf4hchr0gy8r"]
 
-[ext_resource type="Script" uid="uid://cuacc5mqc8kww" path="res://_Entities/SwapAbilities/blood_rain_swap_ability.gd" id="1_ylf2v"]
+[ext_resource type="Script" uid="uid://y4r80v0wyagd" path="res://_Entities/SwapAbilities/gaze_of_baal_swap_ability.gd" id="1_1mmxp"]
 [ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_ekoey"]
+[ext_resource type="Script" uid="uid://daxi0tl82qmw6" path="res://_Entities/SwapAbilities/baal_aoe.gd" id="4_7cwk5"]
 [ext_resource type="Texture2D" uid="uid://c6b8q051g8rjl" path="res://_Entities/SwapAbilities/BaalAOETemp.png" id="4_us4db"]
 [ext_resource type="Texture2D" uid="uid://b28lnr0s13vsh" path="res://_Entities/SwapAbilities/EyeBoss_BallTemp.png" id="4_ylf2v"]
 [ext_resource type="Texture2D" uid="uid://c0ejo1yaqoch3" path="res://_Entities/SwapAbilities/BigIris.png" id="5_us4db"]
@@ -62,10 +63,58 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mm8jo")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"default",
-"speed": 11.0
+"speed": 9.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekoey"]
@@ -113,23 +162,28 @@ point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_rk0kd"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 370, 100, 0, 0, 0, 0, 370, 10, 0, 0, 0, 0, 370, -75)
+"points": PackedVector2Array(0, 0, 0, 0, 370, 100, 0, 0, 0, 0, 370, 55, 0, 0, 0, 0, 370, -55)
 }
 point_count = 3
 
 [node name="BaalGaze" type="Node" unique_id=656116311]
-script = ExtResource("1_ylf2v")
-cooldown_duration = 9.0
+script = ExtResource("1_1mmxp")
+ability_duration = 14.0
+cooldown_duration = 12.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_ekoey")]
 ability_name = "GAZE OF BAAL"
 
 [node name="BaalAOE" type="AnimatedSprite2D" parent="." unique_id=1870355713]
 visible = false
-position = Vector2(354, 52)
+self_modulate = Color(1, 1, 1, 0.32941177)
+position = Vector2(367, -62)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dti0f")
 autoplay = "default"
+frame = 11
+frame_progress = 0.34527734
+script = ExtResource("4_7cwk5")
 
 [node name="BaalEye" type="AnimatedSprite2D" parent="." unique_id=1409846967 node_paths=PackedStringArray("path")]
 z_index = 3

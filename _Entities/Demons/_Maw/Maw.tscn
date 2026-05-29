@@ -1976,6 +1976,7 @@ position = Vector2(-2.5, -11)
 shape = SubResource("RectangleShape2D_elaex")
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=843438043]
+visible = false
 position = Vector2(255, 225)
 sprite_frames = ExtResource("30_elaex")
 animation = &"back"

@@ -90,6 +90,10 @@ func set_is_demo() -> void:
 
 # --- Buff System ---
 
+func baal_buff()->void:
+	super()
+	baal_halo.play("back")
+	
 func receive_buff(bufferName) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:

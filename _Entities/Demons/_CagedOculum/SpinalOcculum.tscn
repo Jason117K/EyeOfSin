@@ -1570,6 +1570,7 @@ maxHealth = 600.0
 syn_shield_position = Vector2(-2, -3)
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=494985065]
+visible = false
 z_index = 1
 position = Vector2(-1, -19)
 sprite_frames = ExtResource("2_rvtdc")

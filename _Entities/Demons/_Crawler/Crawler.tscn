@@ -2568,10 +2568,10 @@ position = Vector2(-10, -17.5)
 shape = SubResource("RectangleShape2D_dq2o5")
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=609308179]
+visible = false
 position = Vector2(-2, -9)
 sprite_frames = ExtResource("40_dq2o5")
 animation = &"top_glow"
-frame_progress = 0.04860469
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

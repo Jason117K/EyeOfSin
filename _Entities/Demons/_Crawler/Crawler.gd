@@ -54,6 +54,11 @@ func get_can_attack() -> bool:
 
 # --- Buff System ---
 
+func baal_buff()->void:
+	super()
+	baal_halo.play("top_glow")
+	
+	
 func receive_buff(newDemon) -> void:
 	var demonName: String = (newDemon.get_demon_true_name())
 	if !isBuffed:

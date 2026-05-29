@@ -91,7 +91,11 @@ func get_damage() -> String:
 
 
 # --- Buff System ---
-
+func baal_buff()->void:
+	super()
+	baal_halo.play("back")
+	
+	
 func receive_buff(demon) -> void:
 	var demonName: String = (demon.get_demon_true_name())
 	if !isBuffed:

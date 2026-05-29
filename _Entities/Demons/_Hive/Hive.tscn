@@ -1704,10 +1704,11 @@ buffedWaitTime = 3.0
 cost = 175.0
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=370828129]
+visible = false
 position = Vector2(-1, -20)
 sprite_frames = ExtResource("2_0lpgd")
 animation = &"back"
-frame_progress = 0.045479257
+frame_progress = 0.9321373
 
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=958772671]
 visible = false

@@ -210,7 +210,9 @@ func get_demon_icon()->CompressedTexture2D:
 func get_special_description()->String:
 	return Global.wyrm_special_description
 	
-	
+func baal_buff()->void:
+	super()
+	baal_halo.play("top_glow")	
 
 # --- Preview ---
 

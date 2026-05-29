@@ -1056,6 +1056,7 @@ health = 100.0
 maxHealth = 60.0
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=1914990497]
+visible = false
 z_index = 1
 position = Vector2(-2, -22)
 sprite_frames = ExtResource("2_1ds1s")

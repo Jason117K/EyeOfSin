@@ -53,7 +53,11 @@ func get_lightning_damage() -> int:
 
 
 # --- Buff System ---
-
+func baal_buff()->void:
+	super()
+	baal_halo.play("top_glow")
+	
+	
 func receive_buff(bufferName) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
