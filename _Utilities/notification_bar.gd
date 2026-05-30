@@ -45,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 	if self.visible == true :
 		if current_zombie != null:
 			if current_zombie.get_health() > 0:
+				#print("Setting Current Zombie Health to ", current_zombie.get_health())
 				health_progress_bar.value = current_zombie.get_health()
 				health_progress_bar.max_value = current_zombie.get_max_health()
 				health_progress_bar_label.text = str(current_zombie.get_health()) + " / " + str(current_zombie.get_max_health())

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_ldf7h"]
 [ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://_Entities/Zombies/_RebornZombie/GhoulWebbedSheet.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="10_46gr7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
 atlas = ExtResource("2_0jfja")
@@ -456,9 +457,7 @@ shape = SubResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
 sprite_frames = SubResource("11")
-animation = &"Walk"
-frame = 3
-frame_progress = 0.049893524
+animation = &"WebAttack"
 flip_h = true
 script = ExtResource("6")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -468,6 +467,11 @@ targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 visible = false
 target_position = Vector2(-10.6667, 0)
 collide_with_areas = true
+
+[node name="SynMark" type="Sprite2D" parent="." unique_id=1927232363]
+position = Vector2(-1, -12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_46gr7")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

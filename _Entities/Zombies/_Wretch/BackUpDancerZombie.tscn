@@ -9,6 +9,7 @@
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_naxm4"]
 [ext_resource type="Texture2D" uid="uid://l6dgn4pcxpf6" path="res://_Entities/Zombies/_Wretch/BackUpDancerFloat-SheetWEB.png" id="8"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="10_c08em"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
 atlas = ExtResource("2_i013y")
@@ -196,6 +197,7 @@ script = ExtResource("5")
 health = 72
 silence_field_position = Vector2(1, 0)
 fire_fix_position = Vector2(6, -11)
+syn_mark_position = Vector2(2, -11)
 
 [node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=1694855434]
 visible = false
@@ -227,6 +229,11 @@ targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=560211467]
+
+[node name="SynMark" type="Sprite2D" parent="." unique_id=1667080116]
+position = Vector2(2, -11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_c08em")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

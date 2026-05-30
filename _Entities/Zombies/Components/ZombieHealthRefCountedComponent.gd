@@ -23,9 +23,9 @@ var time_between_health_regen :float
 var explode_from_drone := false
 var blood_worth_added : bool = false 
 var is_syn_marked : bool = false 
-var syn_dmg_mult := 1.5
+var syn_dmg_mult := 2.0
 var is_flame_dmg_linked := false 
-var link_damage_modifier := 0.3
+var link_damage_modifier := 0.5
 
 signal enemy_died(enemy : Node)
 

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d3w43txgdyuah" path="res://_Entities/Zombies/_Unhallower/SwordBucketZombie-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bjujkcy7ub8up" path="res://_Entities/Zombies/_Unhallower/BucketHeadZombie.gd" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="2_ey1sx"]
+[ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="2_o2tfe"]
 [ext_resource type="Texture2D" uid="uid://yhjvche568wh" path="res://_Entities/Zombies/GreenFire-Sheet.png" id="2_u3lv4"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_vjupx"]
 [ext_resource type="Texture2D" uid="uid://cy0n2mnllm0ms" path="res://_Entities/Zombies/BloodHitFX-Sheet.png" id="3_o2tfe"]
@@ -473,8 +474,15 @@ health = 500
 attack_power = 60
 silence_field_position = Vector2(-2, 0)
 fire_fix_position = Vector2(4, -14)
+syn_mark_position = Vector2(0, -19)
+
+[node name="SynMark" type="Sprite2D" parent="." unique_id=15035776]
+position = Vector2(0, -19)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_o2tfe")
 
 [node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=1690494510]
+visible = false
 position = Vector2(4, -14)
 sprite_frames = SubResource("SpriteFrames_kjnff")
 animation = &"green_fire"

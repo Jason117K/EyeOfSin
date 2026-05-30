@@ -9,11 +9,12 @@ signal all_waves_exhausted
 @export var make_green: bool = false
 
 @export_group("Spawn Timing")
+@export var default_spawn_wait_time := 1
 @export var large_gap_min: float = 0.9
 @export var large_gap_max: float = 2.6
 @export var large_gap_weight: float = 75.0
-@export var small_gap_min: float = 0.4
-@export var small_gap_max: float = 0.8
+@export var small_gap_min: float = 0.1
+@export var small_gap_max: float = 0.9
 @export var small_gap_weight: float = 25.0
 
 var _current_wave: int = -1
@@ -104,7 +105,8 @@ func _spawn_next() -> void:
 		
 	
 	if not _spawn_pool.is_empty():
-		$SpawnTimer.wait_time = _get_weighted_spawn_delay()
+		#$SpawnTimer.wait_time = _get_weighted_spawn_delay()
+		$SpawnTimer.wait_time = default_spawn_wait_time + abs(_get_small_weighted_spawn_delay())
 		$SpawnTimer.start()
 	else:
 		if _current_wave >= waves.size() - 1:
@@ -137,7 +139,9 @@ func _get_weighted_spawn_delay() -> float:
 		return randf_range(large_gap_min, large_gap_max)
 	else:
 		return randf_range(small_gap_min, small_gap_max)
-
+		
+func _get_small_weighted_spawn_delay() -> float:
+	return randf_range(small_gap_min, small_gap_max)
 
 func _generate_unique_name(base_name: String) -> String:
 	var used_numbers: Array[int] = []

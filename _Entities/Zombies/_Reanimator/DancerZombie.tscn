@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_vgguy"]
 [ext_resource type="Texture2D" uid="uid://c1vukd36b4yan" path="res://_Entities/Zombies/_Reanimator/Summoner-SheetWEB.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="12_86o74"]
 [ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="13_442bf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
@@ -413,6 +414,7 @@ attack_power = 30
 bloodWorth = 15.0
 silence_field_position = Vector2(-1, 3)
 fire_fix_position = Vector2(4, -10)
+syn_mark_position = Vector2(13, -12)
 
 [node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=5621365]
 position = Vector2(4, -10)
@@ -487,6 +489,11 @@ position = Vector2(5, 2)
 sprite_frames = SubResource("SpriteFrames_gvy7m")
 frame = 1
 frame_progress = 0.6684441
+
+[node name="SynMark" type="Sprite2D" parent="." unique_id=371836016]
+position = Vector2(13, -12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_86o74")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

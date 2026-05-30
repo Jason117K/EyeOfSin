@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cy0n2mnllm0ms" path="res://_Entities/Zombies/BloodHitFX-Sheet.png" id="3_n5jup"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_pt70x"]
 [ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="9_bkie4"]
+[ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="9_n5jup"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="12_ebmmd"]
 
@@ -100,6 +101,7 @@ speed = 24.0
 attack_power = 30
 silence_field_position = Vector2(2, 3)
 fire_fix_position = Vector2(5, -5)
+syn_mark_position = Vector2(0, -18)
 
 [node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=1401836334]
 position = Vector2(5, -5)
@@ -134,6 +136,11 @@ targetGlowColor = Color(1, 0.145098, 0.168627, 1)
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1851277821]
 target_position = Vector2(-8, 0)
 collide_with_areas = true
+
+[node name="SynMark" type="Sprite2D" parent="." unique_id=1048746352]
+position = Vector2(0, -18)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_n5jup")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

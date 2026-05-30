@@ -2,6 +2,7 @@ extends Area2D
 class_name Zombie
 
 signal zombie_death
+@warning_ignore("untyped_declaration")
 signal this_zombie_died(deadZombie)
 
 # --- Exports (Phase 2 will replace these with a single ZombieStats resource) ---
@@ -28,6 +29,7 @@ signal this_zombie_died(deadZombie)
 @export var charge_cost := 1
 @export var silence_field_position : Vector2
 @export var fire_fix_position := Vector2(2,-11)
+@export var syn_mark_position := Vector2(-1,-12)
 
 # --- Component references ---
 #@onready var healthComp : ZombieHealthComponent = $HealthComponent
@@ -40,6 +42,7 @@ var attackComp : ZombieAttackRefCountedComponent
 @onready var attack_ray := $DMGRayCast2D
 @onready var bloodHit := $BloodHit
 @onready var fire_fx := $FireFX
+@onready var syn_mark_sprite := $SynMark
 #@onready var attack_timer := $AttackTimer
 @onready var damage_vfx_spawn_locations := [bloodHit]
 #@onready var debuff_degrade_timer : Timer = $DebuffDegrade
@@ -83,7 +86,7 @@ var is_silenced := false
 var is_debuffed := false 
 var time_since_debuff_applied : float = 0 
 @export var debuff_duration := 1.0
-var isSlow := 0
+var slow_amount := 0
 var _secondary_flash_sprite : Node = null
 var should_spawn_slow_field := false
 var should_spawn_drone_on_death := false
@@ -112,6 +115,9 @@ func _ready() -> void:
 	
 	fire_fx.position = fire_fix_position
 	fire_fx.hide()
+	
+	syn_mark_sprite.position = syn_mark_position
+	syn_mark_sprite.hide()
 	
 	Zombie._load_descriptions()
 	if self.is_in_group("Green"):
@@ -334,30 +340,41 @@ func syn_mark()->void:
 	print("Syn Mark Called on ", self)
 	set_hue_shift(0)
 	is_syn_marked = true 
+	syn_mark_sprite.show()
 	healthComp.set_syn_mark(is_syn_marked)
 	pass
 	
 #TODO Change to Make Webs Red Instead 
-func blood_slow() -> void:
-	speedComp.setSpeed(speedComp.getOriginalSpeed() / 3)
-	set_hue_shift(0)
+func blood_slow(blood_slow_percent:float=0.33) -> void:
+	#speedComp.setSpeed(speedComp.getOriginalSpeed() / 3)
+	slow_amount = slow_amount + 9999
+	speedComp.slow(blood_slow_percent,true)
+	animatedSprite.blood_slow()
+	#set_hue_shift(0)
 
 
 func undoBloodSlow() -> void:
-	reset_speed()
-	set_hue_shift(animatedSprite.original_hue_shift)
+	#reset_speed()
+	#set_hue_shift(animatedSprite.original_hue_shift)
+	@warning_ignore("narrowing_conversion")
+	slow_amount = clampf(slow_amount - 9999,0,99999)
+	animatedSprite.undo_blood_slow()
+	speedComp.undo_blood_slow()
+	_on_DebuffDegrade_timeout()
 
 
-func slow() -> void:
-	isSlow = isSlow + 100
+func slow(added_slow_amount : float = 100) -> void:
+	@warning_ignore("narrowing_conversion")
+	slow_amount = slow_amount + added_slow_amount
 	speedComp.slow()
+	animatedSprite.slow()
 	is_debuffed = true 
 	time_since_debuff_applied = 0
 
 
 
 func getSlow() -> int:
-	return isSlow
+	return slow_amount
 
 
 # --- Knockback ---
@@ -506,10 +523,12 @@ func _on_ResetThisColor_timeout() -> void:
 
 
 func _on_DebuffDegrade_timeout() -> void:
-	if isSlow > 0:
-		isSlow -= 10
-		if isSlow <= 0:
-			isSlow = 0
+	if slow_amount > 0:
+		slow_amount -= 10
+	if slow_amount <= 0:
+		slow_amount = 0
+		speedComp.is_slow = false
+		animatedSprite.is_slow = false 
 
 
 

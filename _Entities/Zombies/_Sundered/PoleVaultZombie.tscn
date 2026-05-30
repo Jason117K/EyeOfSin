@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bvuac2bkqcyjr" path="res://_Entities/Zombies/_Sundered/headDragWalkSheet.png" id="11_nhkpv"]
 [ext_resource type="Texture2D" uid="uid://b78q3ipyvju71" path="res://_Entities/Zombies/_Sundered/HeadDragZombieWebAttack-Sheet.png" id="12_6c862"]
 [ext_resource type="Texture2D" uid="uid://brskuj7wo2ibg" path="res://_Entities/Zombies/_Sundered/HeadDragZombieWebWalk-Sheet.png" id="13_xgkoy"]
+[ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="14_32dev"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="14_wnede"]
 [ext_resource type="Script" uid="uid://dbb8fpk51mb8l" path="res://_Entities/Zombies/Components/VaultSpecialMoveComp.gd" id="15_ofj7h"]
 
@@ -459,6 +460,7 @@ collision_layer = 2
 script = ExtResource("1_2rcxa")
 health = 80
 fire_fix_position = Vector2(15, 1)
+syn_mark_position = Vector2(4, -13)
 
 [node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=317042705]
 position = Vector2(15, 1)
@@ -499,6 +501,11 @@ collide_with_areas = true
 
 [node name="SpecialMoveComp" type="Node2D" parent="." unique_id=1717731723]
 script = ExtResource("15_ofj7h")
+
+[node name="SynMark" type="Sprite2D" parent="." unique_id=1850861097]
+position = Vector2(4, -13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_32dev")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

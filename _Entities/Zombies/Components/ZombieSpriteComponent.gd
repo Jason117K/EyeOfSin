@@ -20,7 +20,7 @@ static var _material_cache: Dictionary = {}
 @export var replaceColor: Color = Color.BLACK
 
 var is_attacking : bool 
-var isSlow : float 
+var slow_amount : float 
 var isInjured : bool 
 @onready var zombie := get_parent()
 @onready var attackComp :ZombieAttackRefCountedComponent #= zombie.get_attack_comp()  #$"../AttackComponent"
@@ -37,6 +37,8 @@ var _has_web_walk: bool = false
 var _has_web_attack: bool = false
 var _has_injured_web_walk: bool = false
 var _has_injured_web_attack: bool = false
+var is_slow := false 
+var previous_hue_shift : int 
 
 #Allow Summons While Webbed?
 #Maybe Give Zombies With Special Animations Own Sprite Comp Controller
@@ -66,6 +68,9 @@ func _play_if_changed(anim_name: StringName) -> void:
 		_current_target_anim = anim_name
 		play(anim_name)
 
+func slow()->void:
+	is_slow = true 
+	
 func tick(_delta: float) -> void:
 	if attackComp == null or isDead:
 		return
@@ -74,12 +79,12 @@ func tick(_delta: float) -> void:
 		return
 	is_attacking = attackComp.is_attacking
 	isInjured = zombie.get_is_injured()
-	isSlow = zombie.isSlow
+	#slow_amount = zombie.slow_amount
 
 	if specialMove:
 		return
 
-	if isSlow > 0:
+	if is_slow :
 		if _is_dancer:
 			if self.animation == "Summon":
 				return
@@ -166,8 +171,19 @@ func shift_hue(degrees: float) -> void:
 	if hue_shift < -180: hue_shift += 360
 
 
+func blood_slow()->void:
+	slow()
+	previous_hue_shift = hue_shift
+	set_hue_shift(0)
+	material.set_shader_parameter("target_color", Color("ffffff"))
+	material.set_shader_parameter("replace_color", Color.RED)
+	material.set_shader_parameter("tolerance", 0.1)
 
-
+func undo_blood_slow()->void:
+	set_hue_shift(previous_hue_shift)
+	material.set_shader_parameter("target_color", Color("000000"))
+	material.set_shader_parameter("replace_color", Color("000000"))
+	material.set_shader_parameter("tolerance", 0.0)
 
 
 	

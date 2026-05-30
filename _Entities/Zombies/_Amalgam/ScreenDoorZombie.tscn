@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://_Entities/Zombies/_Severed/HeadLessConeZombie-SheetWEB.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://dlg0sfn1ax4sn" path="res://_Entities/Zombies/_Amalgam/DocOcWalkInjuredWeb-Sheet.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://d4b0cn82fjmj8" path="res://_Entities/Zombies/_Amalgam/DocOcWalkINJURED-Sheet.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="16_33jkh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
 atlas = ExtResource("2_dneok")
@@ -772,8 +773,10 @@ attack_power = 60
 bloodWorth = 10.0
 silence_field_position = Vector2(-7, 1)
 fire_fix_position = Vector2(5, -2)
+syn_mark_position = Vector2(-3, -14)
 
 [node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=54082174]
+visible = false
 position = Vector2(5, -2)
 sprite_frames = SubResource("SpriteFrames_jy5r0")
 animation = &"green_fire"
@@ -830,6 +833,11 @@ script = ExtResource("10")
 scale = Vector2(1, 2)
 target_position = Vector2(-28, 0)
 collide_with_areas = true
+
+[node name="SynMark" type="Sprite2D" parent="." unique_id=1737276736]
+position = Vector2(-3, -14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_33jkh")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
