@@ -21,6 +21,8 @@ var should_health_regen := false
 var time_between_health_regen :float 
 var explode_from_drone := false
 var blood_worth_added : bool = false 
+var is_syn_marked : bool = false 
+var syn_dmg_mult := 1.5
 
 signal enemy_died(enemy : Node)
 
@@ -58,6 +60,8 @@ func getInjured() -> bool:
 
 func take_damage(damage: float, _piercing: bool = false) -> void:
 	#print(zombie.name, " just took, ", damage)
+	if is_syn_marked:
+		damage = damage * syn_dmg_mult
 	health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
@@ -115,3 +119,12 @@ func resetHealth() -> void:
 
 func willExplodeFromDrone() -> void:
 	explode_from_drone = true
+	
+	
+func set_syn_mark(new_mark_value:bool)->void:
+	is_syn_marked = new_mark_value
+
+
+
+
+##

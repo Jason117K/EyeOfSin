@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bhslgubbfjjfh"]
+
+[ext_resource type="Script" uid="uid://cq3vq5d8cs0i8" path="res://_Entities/SynAbility/syn_marked_ability.gd" id="1_65car"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okw0m"]
+size = Vector2(32, 32)
+
+[node name="Syn_Mark_Area" type="Area2D" unique_id=714123939]
+script = ExtResource("1_65car")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=720673980]
+shape = SubResource("RectangleShape2D_okw0m")

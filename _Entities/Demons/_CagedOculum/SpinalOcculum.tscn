@@ -1636,7 +1636,7 @@ cost = 75.0
 health = 600.0
 maxHealth = 600.0
 syn_shield_position = Vector2(-2, -3)
-hit_flash_duration = 0.1
+hit_flash_duration = 0.25
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=494985065]
 visible = false

@@ -13,7 +13,7 @@ signal this_zombie_died(deadZombie)
 @export var hit_flash_duration := 0.3
 @export var should_health_regen := false 
 @export var time_between_health_regen := 5
-
+@export var is_syn_marked := false 
 @export_category("Speed")
 @export var speed : float = 16
 
@@ -312,6 +312,14 @@ func switch_sides()->void:
 		set_collision_layer_value(3,false)
 	
 
+func syn_mark()->void:
+	print("Syn Mark Called on ", self)
+	set_hue_shift(0)
+	is_syn_marked = true 
+	healthComp.set_syn_mark(is_syn_marked)
+	pass
+	
+#TODO Change to Make Webs Red Instead 
 func blood_slow() -> void:
 	speedComp.setSpeed(speedComp.getOriginalSpeed() / 3)
 	set_hue_shift(0)

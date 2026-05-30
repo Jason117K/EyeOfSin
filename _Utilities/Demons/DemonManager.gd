@@ -156,7 +156,7 @@ func clear_space_alt(passed_grid_pos: Vector2) -> void:
 	
 func detect_demon(passed_grid_pos: Vector2) -> bool:
 	#print("QQ Grid Map is ", grid_map)
-	var demon_node: Demon = grid_map.get(passed_grid_pos)
+	var demon_node = grid_map.get(passed_grid_pos)
 	
 	if demon_node != null:
 		#print("Demon Node is , ",demon_node, " returning true" )

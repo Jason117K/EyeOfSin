@@ -1,6 +1,7 @@
 extends Node
 
 @export var syn_ability_instance :PackedScene = preload("res://_Entities/SynAbility/syn_lightning_ability_bolt.tscn")
+@export var icon_texture := preload("res://_Entities/SynAbility/SynShieldCard.png")
 
 @onready var syn_ability_cooldown := $SynAbilityCooldown
 @onready var syn_ability_crosshair : AnimatedSprite2D = $SynAbilityCrosshair
@@ -9,6 +10,7 @@ var syn_crosshair_active := false
 func _ready() -> void:
 	syn_ability_cooldown.get_button().pressed.connect(set_ability_targeting_active)
 	syn_ability_crosshair.hide()
+	syn_ability_cooldown.set_icon(icon_texture)
 	
 	
 func set_ability_targeting_active()->void:
