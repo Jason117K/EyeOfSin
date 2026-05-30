@@ -84,7 +84,7 @@ func bleed(bleed_damage: float) -> void:
 
 
 func bleed_tick() -> void:
-	take_damage(bleed_tick_damage)
+	take_damage(false,bleed_tick_damage)
 
 
 func _on_regen_tick() -> void:

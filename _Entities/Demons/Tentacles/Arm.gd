@@ -148,14 +148,15 @@ func _physics_process(delta: float) -> void:
 #region Manager Integration
 
 func _register_with_manager() -> void:
-	var manager_node = get_node_or_null("/root/GlobalTentacleManager")
-	print("Looking for manager: ", manager_node)
-	if manager_node:
-		_manager = manager_node
-		_manager_arm_id = _manager.register_arm(self)
-		print("Registered with manager, id=", _manager_arm_id)
-	else:
-		print("Manager not found at /root/GlobalTentacleManager")
+	pass
+	#var manager_node = get_node_or_null("/root/GlobalTentacleManager")
+	#print("Looking for manager: ", manager_node)
+	#if manager_node:
+		#_manager = manager_node
+		#_manager_arm_id = _manager.register_arm(self)
+		#print("Registered with manager, id=", _manager_arm_id)
+	#else:
+		#print("Manager not found at /root/GlobalTentacleManager")
 
 #endregion
 

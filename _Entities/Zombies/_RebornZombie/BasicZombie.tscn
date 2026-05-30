@@ -2,11 +2,82 @@
 
 [ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://fkrxunlir2h" path="res://_Entities/Zombies/_RebornZombie/Ghoul Sprite Sheet 62 x 33.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://yhjvche568wh" path="res://_Entities/Zombies/GreenFire-Sheet.png" id="2_0jfja"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="2_5rxux"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_80ohr"]
+[ext_resource type="Texture2D" uid="uid://cy0n2mnllm0ms" path="res://_Entities/Zombies/BloodHitFX-Sheet.png" id="2_wb31u"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_ldf7h"]
 [ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://_Entities/Zombies/_RebornZombie/GhoulWebbedSheet.png" id="9"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
+atlas = ExtResource("2_0jfja")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw4i8"]
+atlas = ExtResource("2_0jfja")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kh4i"]
+atlas = ExtResource("2_0jfja")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oa8d"]
+atlas = ExtResource("2_0jfja")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jfja"]
+atlas = ExtResource("2_wb31u")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46gr7"]
+atlas = ExtResource("2_wb31u")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e38sq"]
+atlas = ExtResource("2_wb31u")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb4uw"]
+atlas = ExtResource("2_wb31u")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufnma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufnma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw4i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kh4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oa8d")
+}],
+"loop": true,
+"name": &"green_fire",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jfja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46gr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e38sq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb4uw")
+}],
+"loop": true,
+"name": &"purple_fire",
+"speed": 11.0
+}]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(20, 30)
@@ -360,6 +431,12 @@ time_between_health_regen = 3
 attack_power = 10
 silence_field_position = Vector2(-3, 3)
 
+[node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=1054494415]
+visible = false
+position = Vector2(2, -11)
+sprite_frames = SubResource("SpriteFrames_ufnma")
+animation = &"green_fire"
+
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=1502085221]
 visible = false
 position = Vector2(-8, 1)
@@ -372,19 +449,23 @@ position = Vector2(0, 16)
 texture = ExtResource("2_80ohr")
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1516634289]
+visible = false
 position = Vector2(0, 1.83333)
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
 sprite_frames = SubResource("11")
-animation = &"WebWalk"
+animation = &"Walk"
+frame = 3
+frame_progress = 0.049893524
 flip_h = true
 script = ExtResource("6")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1014709760]
+visible = false
 target_position = Vector2(-10.6667, 0)
 collide_with_areas = true
 

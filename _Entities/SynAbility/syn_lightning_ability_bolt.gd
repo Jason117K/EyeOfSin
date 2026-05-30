@@ -25,4 +25,4 @@ func damage_zombies()->void:
 	if lightning_anim.frame == 2:
 		for zombie in self.get_overlapping_areas():
 			if zombie.is_in_group("Zombie"):
-				zombie.take_damage(damage)
+				zombie.take_damage(false,damage,false)

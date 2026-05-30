@@ -48,7 +48,7 @@ func damage_all_zombies_in_range() -> void:
 		beats += 1
 		for new_area:Area2D in beat_of_death_damage_aoe.get_overlapping_areas():
 			if new_area.is_in_group("Zombie"):
-				new_area.take_damage(damage)
+				new_area.take_damage(false,damage,false)
 	else:
 		beat_of_death_timer.stop()
 		beats = 0

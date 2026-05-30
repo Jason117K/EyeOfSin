@@ -80,7 +80,7 @@ func _on_Blood_mouse_entered() -> void:
 
 func free_blood() -> void:
 	if current_zombie_target != null:
-		current_zombie_target.take_damage(BloodDamage)
+		current_zombie_target.take_damage(false,BloodDamage,false)
 		current_zombie_target.slow()
 	queue_free()
 	

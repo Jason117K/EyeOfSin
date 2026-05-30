@@ -2,7 +2,90 @@
 
 [ext_resource type="Script" uid="uid://bk1ka6qbmryci" path="res://_Entities/Demons/_Crawler/DemonProjectile.gd" id="1_q5oco"]
 [ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/Projectile/WebBallwOutline.png" id="2_pnqjf"]
+[ext_resource type="Texture2D" uid="uid://bu2xe78apat00" path="res://_Entities/Demons/Projectile/FlamingBalls-SheetGreen.png" id="3_a6n4p"]
 [ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://_Entities/Demons/Explosion/blueboom.png" id="3_abrjb"]
+[ext_resource type="Texture2D" uid="uid://dk1fxkw1ttmvo" path="res://_Entities/Demons/Projectile/FlamingBalls-Sheet.png" id="4_ggtey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5uua"]
+atlas = ExtResource("2_pnqjf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqpd0"]
+atlas = ExtResource("3_a6n4p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_morso"]
+atlas = ExtResource("3_a6n4p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5vhr"]
+atlas = ExtResource("3_a6n4p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i6x3"]
+atlas = ExtResource("3_a6n4p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxhkl"]
+atlas = ExtResource("4_ggtey")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quxdm"]
+atlas = ExtResource("4_ggtey")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31pfo"]
+atlas = ExtResource("4_ggtey")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfmx1"]
+atlas = ExtResource("4_ggtey")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5pg5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5uua")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqpd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_morso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5vhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i6x3")
+}],
+"loop": true,
+"name": &"GreenFlame",
+"speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxhkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quxdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31pfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfmx1")
+}],
+"loop": true,
+"name": &"PurpleFlame",
+"speed": 13.0
+}]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 6.0827627
@@ -139,19 +222,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2e76"]
 size = Vector2(76, 76)
 
-[node name="DemonProjectile" type="Area2D" unique_id=1588651862]
+[node name="DemonProjectile" type="Area2D" unique_id=1588651862 groups=["DemonProjectile"]]
 z_index = 1
-collision_layer = 6
+collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_q5oco")
 speed = 325
-damage = 60
 lightning_damage = 20
 
+[node name="ProjectileAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1077432265]
+sprite_frames = SubResource("SpriteFrames_h5pg5")
+animation = &"Default"
+autoplay = "Default"
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=636634696]
+visible = false
 texture = ExtResource("2_pnqjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037487616 groups=["Zombie"]]
+visible = false
 shape = SubResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1465907550]
@@ -172,6 +261,7 @@ frame = 1
 frame_progress = 0.15262394
 
 [node name="LightningZone" type="Area2D" parent="." unique_id=2040273443]
+visible = false
 collision_layer = 2
 collision_mask = 2
 monitoring = false

@@ -41,5 +41,5 @@ func _on_DeathTimer_timeout() -> void:
 	for enemy : Zombie in enemiesToHit:
 		if is_instance_valid_and_alive(enemy):	
 			if(enemy != null):
-				enemy.take_damage(damage)  
+				enemy.take_damage(false,damage,false)  
 	queue_free()

@@ -28,7 +28,7 @@ func damage_zombies() -> void:
 	#print("Zombies to damage is ", zombies_to_damage)
 	for zombie:Node in zombies_to_damage:
 		#print("Zombie is ", zombie)
-		zombie.take_damage(blood_damage)
+		zombie.take_damage(false,blood_damage,false)
 		if is_maw_parent:
 			#TODO Add Armor Stripping 
 			pass 		

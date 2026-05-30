@@ -3,6 +3,7 @@ extends Area2D
 
 @onready var lightning_detection_zone : Area2D = $LightningZone
 @onready var lightning_zone_visual := $LightningZoneAnimSprite
+@onready var projectile_anim_sprite := $ProjectileAnimSprite
 
 @export var speed := 300  # Speed of the projectile
 @export var damage :float= 20 #2   # Damage dealt to zombies
@@ -25,6 +26,7 @@ var canGenBlood := false
 var bleed := false 
 var column_explode := false
 var silencing := false 
+var is_on_fire := false 
 
 var collision : Node
 var distance_traveled :float= 0
@@ -57,11 +59,17 @@ func _ready() -> void:
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,false)
 		self.set_collision_mask_value(5,true)
+		
+		self.set_collision_layer_value(2,false)
+		self.set_collision_layer_value(3,true)
 	else:
 		self.set_collision_mask_value(1,false)
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,false)
 		self.set_collision_mask_value(4,true)	
+		
+		self.set_collision_layer_value(2,true)
+		self.set_collision_layer_value(3,false)
 	#print(get_world_2d().direct_space_state , " area_entered connections: ", self.area_entered.get_connections())
 	#print("AREA OVERLAPP", get_overlapping_areas() )
 				
@@ -139,8 +147,11 @@ func on_hit(area: Area2D) -> void:
 			column_explode = false
 		if silencing:
 			area.silence()
-		#print("Calling Take Damage On ", area)
-		area.take_damage(damage,piercing)
+		print("Calling Take Damage On ", area, " damage is ", damage)
+		if is_on_fire:
+			pass
+			area.set_on_fire()
+		area.take_damage(false,damage,piercing)
 		if piercing == false:
 			queue_free() 
 		else:
@@ -149,14 +160,22 @@ func on_hit(area: Area2D) -> void:
 
 func increase_bleed_damage(bleed_damage_increase: int) -> void:
 	bleed_damage = bleed_damage + bleed_damage_increase
-	
+
+func enflame(enflame_damage_mult : float)->void:
+	if self.is_in_group("Green"):
+		projectile_anim_sprite.play("GreenFlame")
+	else:
+		projectile_anim_sprite.play("PurpleFlame")
+	damage = damage * enflame_damage_mult
+	is_on_fire = true 
+		
 
 func _on_lightning_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 		#print(area, " is INDEED in Zombie Group")
 
 		#area.slow()
-		area.take_damage(lightning_damage)
+		area.take_damage(false,lightning_damage,false)
 	else:
 		pass
 		#print(area, " is not in Zombie Group")

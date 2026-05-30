@@ -274,7 +274,7 @@ func _on_attack_timer_timeout() -> void:
 		animatedSpriteComp.animation = "attack"
 		var distance := global_position.distance_to(current_target.global_position)
 		if distance <= attack_range:
-			current_target.take_damage(attack_damage)
+			current_target.take_damage(false,attack_damage,false)
 
 
 func get_is_in_combat() -> bool:

@@ -131,6 +131,7 @@ Drone=""
 Wyrm=""
 Demons=""
 Zombie=""
+DemonProjectile=""
 
 [gui]
 

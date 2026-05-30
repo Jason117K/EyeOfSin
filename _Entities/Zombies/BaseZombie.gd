@@ -27,6 +27,7 @@ signal this_zombie_died(deadZombie)
 @export_category("Misc")
 @export var charge_cost := 1
 @export var silence_field_position : Vector2
+@export var fire_fix_position := Vector2(2,-11)
 
 # --- Component references ---
 #@onready var healthComp : ZombieHealthComponent = $HealthComponent
@@ -38,6 +39,7 @@ var attackComp : ZombieAttackRefCountedComponent
 @onready var animatedSprite : ZombieSpriteComp = $AnimatedSprite2D
 @onready var attack_ray := $DMGRayCast2D
 @onready var bloodHit := $BloodHit
+@onready var fire_fx := $FireFX
 #@onready var attack_timer := $AttackTimer
 @onready var damage_vfx_spawn_locations := [bloodHit]
 #@onready var debuff_degrade_timer : Timer = $DebuffDegrade
@@ -99,6 +101,7 @@ var demo_original_speed: float
 @export var respawn_delay := 1.5
 var time_since_spawn : float = 0
 var _spawn_setup_done := false
+var is_flame_dmg_linked := false 
 
 func _ready() -> void:
 	speedComp = ZombieSpeedRefCountedComponent.new(self)
@@ -107,17 +110,22 @@ func _ready() -> void:
 
 	animatedSprite.attackComp = attackComp
 	
+	fire_fx.position = fire_fix_position
+	fire_fx.hide()
+	
 	Zombie._load_descriptions()
 	if self.is_in_group("Green"):
 		self.set_collision_layer_value(1, false)
 		self.set_collision_layer_value(2, false)
 		self.set_collision_layer_value(3, false)
 		self.set_collision_layer_value(5, true)
+		fire_fx.animation = "green_fire"
 	else:
 		self.set_collision_layer_value(1, false)
 		self.set_collision_layer_value(2, false)
 		self.set_collision_layer_value(3, false)
 		self.set_collision_layer_value(4, true)
+		fire_fx.animation = "purple_fire"
 	#debuff_degrade_timer.timeout.connect(_on_DebuffDegrade_timeout)
 	#reset_color_timer.timeout.connect(_on_ResetThisColor_timeout)
 	#just_spawned_timer.timeout.connect(_on_JustNowSpawned_timeout)
@@ -244,7 +252,8 @@ func _do_spawn_drone_on_death() -> void:
 
 # --- Damage ---
 
-func take_damage(damage: float, piercing: bool = false) -> void:
+func take_damage(is_link_damage : bool = false, damage: float = 1.0, piercing: bool = false) -> void:
+	print(self, " is taking damage ",damage )
 	for blood_hit:Node in damage_vfx_spawn_locations:
 		blood_hit.visible = true
 		blood_hit.rotation_degrees = randf_range(-60, 60)
@@ -252,12 +261,21 @@ func take_damage(damage: float, piercing: bool = false) -> void:
 			blood_hit.play("hit_purple")
 		else:
 			blood_hit.play("hit_green")
-	healthComp.take_damage(damage, piercing)
+	healthComp.take_damage(is_link_damage,damage, piercing)
+#	if !is_link_damage:
 	animatedSprite.set_instance_shader_parameter("hit_flash", 1.0)
 	if _secondary_flash_sprite:
 		_secondary_flash_sprite.set_instance_shader_parameter("hit_flash", 1.0)
 	hit_flash_active = true
 
+func set_on_fire()->void:
+	is_flame_dmg_linked = true 
+	healthComp.is_flame_dmg_linked = is_flame_dmg_linked
+	if self.is_in_group("Purple"):
+		fire_fx.play("purple_fire")
+	else:
+		fire_fx.play("green_fire")
+	fire_fx.visible = true
 
 func bleed(bleed_damage: float) -> void:
 	healthComp.bleed(bleed_damage)

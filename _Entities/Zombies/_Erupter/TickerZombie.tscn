@@ -2,13 +2,84 @@
 
 [ext_resource type="Texture2D" uid="uid://b7odd4ng7wfua" path="res://_Entities/Zombies/_Erupter/Ticker-Sheet.png" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="2_24hxe"]
+[ext_resource type="Texture2D" uid="uid://yhjvche568wh" path="res://_Entities/Zombies/GreenFire-Sheet.png" id="2_ifpmn"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_ln36l"]
+[ext_resource type="Texture2D" uid="uid://cy0n2mnllm0ms" path="res://_Entities/Zombies/BloodHitFX-Sheet.png" id="3_5glag"]
 [ext_resource type="Script" uid="uid://hqk27c6jaac0" path="res://_Entities/Zombies/_Erupter/TickerZombie.gd" id="6"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_g5eid"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="9"]
 [ext_resource type="Texture2D" uid="uid://ngjx3kqoe6yb" path="res://_Entities/Zombies/_Erupter/TickerHitEffect-Sheet.png" id="11"]
 [ext_resource type="Script" uid="uid://csetut0885nmx" path="res://_Entities/Zombies/Components/AOEHit.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://d0u3yuqmw204b" path="res://_Entities/Zombies/_Erupter/Ticker-WebSheet.png" id="13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
+atlas = ExtResource("2_ifpmn")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw4i8"]
+atlas = ExtResource("2_ifpmn")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kh4i"]
+atlas = ExtResource("2_ifpmn")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oa8d"]
+atlas = ExtResource("2_ifpmn")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jfja"]
+atlas = ExtResource("3_5glag")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46gr7"]
+atlas = ExtResource("3_5glag")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e38sq"]
+atlas = ExtResource("3_5glag")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb4uw"]
+atlas = ExtResource("3_5glag")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3defl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufnma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw4i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kh4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oa8d")
+}],
+"loop": true,
+"name": &"green_fire",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jfja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46gr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e38sq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb4uw")
+}],
+"loop": true,
+"name": &"purple_fire",
+"speed": 11.0
+}]
 
 [sub_resource type="RectangleShape2D" id="15"]
 size = Vector2(18, 30)
@@ -342,6 +413,11 @@ health = 130
 attack_power = 40
 bloodWorth = 3.0
 silence_field_position = Vector2(-1, 3)
+
+[node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=1736712464]
+position = Vector2(6, -11)
+sprite_frames = SubResource("SpriteFrames_3defl")
+animation = &"green_fire"
 
 [node name="BloodHit" type="AnimatedSprite2D" parent="." unique_id=421056127]
 visible = false

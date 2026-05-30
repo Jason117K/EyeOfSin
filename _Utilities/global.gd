@@ -169,6 +169,16 @@ func getOcculumCount() -> int:
 	#print("SSReturn , ", occulumCount)
 	return occulumCount
 
+func damage_all_zombies_with_link(damage : float, zombie_to_exclude : Zombie)->void:
+	print("Checking Link DMG on ", all_zombies)
+	for zombie in all_zombies:
+		if zombie.is_flame_dmg_linked && zombie != zombie_to_exclude:
+			print("Calling Link Damage on ", zombie)
+			zombie.take_damage(true,damage,false)
+	pass
+	
+
+
 func getOcculumCountVisual() -> int:
 	return occulumCountVisual
 	

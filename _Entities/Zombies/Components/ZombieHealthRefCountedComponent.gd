@@ -12,6 +12,7 @@ var bleed_tick_damage: float
 var bleed_elapsed_time : float = 0
 var health_regen_elapsed_time : float = 0 
 
+
 var bomb_scene := preload("res://_Entities/Demons/Explosion/Bomb.tscn")
 var injured := false
 var halfHealth: float
@@ -23,6 +24,8 @@ var explode_from_drone := false
 var blood_worth_added : bool = false 
 var is_syn_marked : bool = false 
 var syn_dmg_mult := 1.5
+var is_flame_dmg_linked := false 
+var link_damage_modifier := 0.3
 
 signal enemy_died(enemy : Node)
 
@@ -58,10 +61,12 @@ func getInjured() -> bool:
 	return injured
 
 
-func take_damage(damage: float, _piercing: bool = false) -> void:
+func take_damage(is_link_damage : bool = false, damage: float = 1.0, _piercing: bool = false) -> void:
 	#print(zombie.name, " just took, ", damage)
 	if is_syn_marked:
 		damage = damage * syn_dmg_mult
+	if is_flame_dmg_linked && !is_link_damage:
+		Global.damage_all_zombies_with_link(damage*link_damage_modifier,parent_zombie)
 	health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
@@ -103,7 +108,7 @@ func bleed(bleed_damage: float) -> void:
 
 
 func bleed_tick() -> void:
-	take_damage(bleed_tick_damage)
+	take_damage(false,bleed_tick_damage,false)
 
 
 func _on_regen_tick() -> void:

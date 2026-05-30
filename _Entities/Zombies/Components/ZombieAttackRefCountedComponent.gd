@@ -131,10 +131,10 @@ func _on_AttackTimer_timeout() -> void:
 						parent_zombie.die()
 				if target_demon.has_method("spinalOcculumWyrmBuffed"):
 					if target_demon.can_damage_zombie == true :
-						parent_zombie.take_damage(10)
+						parent_zombie.take_damage(false,10,false)
 				if target_demon.has_method("lightning_maw_buff"):
 					if target_demon.is_lightning_maw_buff:
-						parent_zombie.take_damage(target_demon.get_lightning_damage())
+						parent_zombie.take_damage(false,target_demon.get_lightning_damage(),false)
 
 				#print(attack_power ," Calling Take Damage on ", target_demon)
 

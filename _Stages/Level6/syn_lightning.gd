@@ -36,7 +36,7 @@ func _on_syn_lightning_frame_changed()->void:
 	if syn_lightning_animation.frame == 1:
 		for area in self.get_overlapping_areas():
 			if area.is_in_group("Zombie"):
-				area.take_damage(lightning_damage)
+				area.take_damage(false,lightning_damage,false)
 				
 	if syn_lightning_animation.frame == 2:
 		for shock in all_aftershocks.get_children():

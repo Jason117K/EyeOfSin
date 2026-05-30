@@ -25,7 +25,7 @@ func activate() -> void:
 	
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
-			area.take_damage(spike_damage)
+			area.take_damage(false,spike_damage,false)
 	
 	spike_timer = Timer.new()
 	spike_timer.autostart = false

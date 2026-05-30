@@ -4,6 +4,5 @@
 
 [resource]
 script = ExtResource("1_62lgs")
-Reborn = 12
-Unhallower = 2
+Unhallower = 4
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
