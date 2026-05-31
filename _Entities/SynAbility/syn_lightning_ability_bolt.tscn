@@ -164,7 +164,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8qcob")
 }],
-"loop": true,
+"loop": false,
 "name": &"green",
 "speed": 11.0
 }, {
@@ -199,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8qj2h")
 }],
-"loop": true,
+"loop": false,
 "name": &"purple",
 "speed": 11.0
 }, {
@@ -776,6 +776,9 @@ region = Rect2(336, 0, 48, 128)
 [sub_resource type="SpriteFrames" id="SpriteFrames_pe3fq"]
 animations = [{
 "frames": [{
+"duration": 0.5,
+"texture": null
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tqoki")
 }, {
@@ -802,7 +805,7 @@ script = ExtResource("1_y2ihn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156082583]
 position = Vector2(0, -42)
 sprite_frames = SubResource("SpriteFrames_uqiv3")
-animation = &"purple"
+animation = &"green"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1453894486]
 position = Vector2(0, 3.5)
@@ -828,15 +831,21 @@ shape = SubResource("RectangleShape2D_op087")
 
 [node name="ShockDMGTimer" type="Timer" parent="." unique_id=742127272]
 
+[node name="LightningPivot" type="Node2D" parent="." unique_id=1163492512]
+position = Vector2(-1.0000038, 12.999998)
+rotation = -1.5679725
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="LightningConnector" type="AnimatedSprite2D" parent="LightningPivot" unique_id=365987290]
+position = Vector2(0.18072012, 63.999737)
+sprite_frames = SubResource("SpriteFrames_pe3fq")
+frame = 2
+frame_progress = 0.17695256
+
 [node name="LightningConnectorLine2D" type="Line2D" parent="." unique_id=918810594]
 position = Vector2(0, 13)
 rotation = 0.00038851134
 points = PackedVector2Array(0, 0, 125.715, 0)
 
-[node name="LightningConnector" type="AnimatedSprite2D" parent="LightningConnectorLine2D" unique_id=365987290]
-position = Vector2(63.99996, 0.08192539)
-rotation = -1.568361
-scale = Vector2(1.0000001, 1.0000001)
-sprite_frames = SubResource("SpriteFrames_pe3fq")
-frame = 1
-frame_progress = 0.69733614
+[node name="AftershockDurationTimer" type="Timer" parent="." unique_id=1760046103]
+one_shot = true

@@ -153,19 +153,35 @@ func reset_demon_managers()->void:
 	demon_managers = demon_managers_temp
 
 func register_lightning_ball(new_lightning_ball:Area2D)->void:
-	registered_lightning_balls.append(new_lightning_ball)
+	
 	if new_lightning_ball.is_in_group("Purple"):
+		if purple_lightning_ball == null:
+			registered_lightning_balls.append(new_lightning_ball)
 		purple_lightning_ball = new_lightning_ball
+		
 	else: 
+		if green_lightning_ball == null:
+			registered_lightning_balls.append(new_lightning_ball)
 		green_lightning_ball = new_lightning_ball
 		
 	if registered_lightning_balls.size() >= 2:
 		connect_lightning_balls()
+	else:
+		print(registered_lightning_balls, " Cannot connect not enough balls : ",registered_lightning_balls.size() )
 		
 func connect_lightning_balls()->void:
 	green_lightning_ball.connect_lightning(purple_lightning_ball)
 	purple_lightning_ball.connect_lightning(green_lightning_ball)
 
+func deregister_lightning_ball(new_lightning_ball:Area2D)->void:
+	registered_lightning_balls.erase(new_lightning_ball)
+	if new_lightning_ball.is_in_group("Purple"):
+		purple_lightning_ball = null
+	else:
+		green_lightning_ball = null
+	print(registered_lightning_balls, " now has size lightning balls : ",registered_lightning_balls.size() )
+	
+	
 func resetOcculumCount() -> void:
 	is_blocking = false
 	occulumCount = 0
