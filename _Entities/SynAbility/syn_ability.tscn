@@ -56,10 +56,15 @@ syn_ability_instance = ExtResource("2_8fkk2")
 mouse_filter = 2
 
 [node name="SynAbilityCrosshair" type="AnimatedSprite2D" parent="." unique_id=529838522]
+visible = false
 position = Vector2(600, 179)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_64wnw")
 autoplay = "default"
 frame_progress = 0.010404813
+
+[node name="SynAbilityCooldownTimerPurple" type="Timer" parent="." unique_id=1883039]
+
+[node name="SynAbilityCooldownTimerGreen" type="Timer" parent="." unique_id=2090129418]
 
 [editable path="SynAbilityCooldown"]

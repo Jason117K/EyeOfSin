@@ -1,4 +1,4 @@
-extends Area2D
+extends Syn_Ability_Instance
 
 var highest_health := -1 
 var current_target_health : int 
@@ -8,23 +8,11 @@ var max_targets_marked := 3
 var targets_marked : Array = []
 
 func _ready() -> void:
-	if self.is_in_group("Green"):
-		self.set_collision_mask_value(1,false)
-		self.set_collision_mask_value(2,false)
-		self.set_collision_mask_value(3,false)
-		self.set_collision_mask_value(4,false)
-		self.set_collision_mask_value(5,true)
-	else:
-		self.set_collision_mask_value(1,false)
-		self.set_collision_mask_value(2,false)
-		self.set_collision_mask_value(3,false)
-		self.set_collision_mask_value(4,true)
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	await get_tree().physics_frame	
-	mark_zombies()
+	detect_zombies = true 
+	super()	
+	#mark_zombies()
 	
-func mark_zombies()->void:
+func activate_ability()->void:
 	for zombie in get_overlapping_areas():
 		if zombie != null && !(zombie in targets_marked):
 			current_target_health = zombie.get_health()
@@ -34,8 +22,13 @@ func mark_zombies()->void:
 					
 	if current_zombie_target != null && !(current_zombie_target in targets_marked):
 		if num_targets_marked < max_targets_marked:
-			current_zombie_target.syn_mark()
+			current_zombie_target.syn_mark(ability_duration)
 			targets_marked.append(current_zombie_target)
 			num_targets_marked += 1 
 			highest_health = -1 
-			mark_zombies()
+			activate_ability()
+
+func connect_ability(_marked_to_connect : Area2D)->void:
+	print(self, " syn ability mark will now light on fire : ", targets_marked)
+	for target in targets_marked:
+		target.set_on_fire()

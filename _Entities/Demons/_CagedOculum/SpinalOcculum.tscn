@@ -1677,7 +1677,6 @@ position = Vector2(57.5, 1)
 shape = SubResource("RectangleShape2D_ktms3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2004042112]
-visible = false
 shape = SubResource("1")
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]

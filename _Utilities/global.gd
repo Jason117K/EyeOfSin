@@ -40,6 +40,10 @@ var registered_syn_shields : Array = []
 var purple_syn_shield : Area2D
 var green_syn_shield : Area2D
 
+var registered_syn_abilities : Array = []
+var purple_syn_ability : Area2D
+var green_syn_ability : Area2D
+
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 var bomb_scene := preload("res://_Entities/Demons/Explosion/Bomb.tscn")
@@ -156,6 +160,44 @@ func reset_demon_managers()->void:
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
 	
+func register_syn_ability(new_syn_ability : Area2D)->void:
+	if new_syn_ability.is_in_group("Purple"):
+		if purple_syn_ability == null:
+			registered_syn_abilities.append(new_syn_ability)
+		purple_syn_ability = new_syn_ability
+		
+	else: 
+		if green_syn_ability == null:
+			registered_syn_abilities.append(new_syn_ability)
+		green_syn_ability = new_syn_ability
+		
+	if registered_syn_abilities.size() >= 2:
+		connect_syn_abilities()
+	else:
+		print(registered_syn_abilities, " Cannot connect not enough syn sheilds : ",registered_syn_abilities.size() )	
+		
+func connect_syn_abilities()->void:
+	print("Should Start connect Syn Abilities")
+	if green_syn_ability.is_dual_connection:
+		green_syn_ability.connect_ability(purple_syn_ability)
+		purple_syn_ability.connect_ability(green_syn_ability)
+	else:
+		if green_syn_ability.global_position.x > purple_syn_ability.global_position.x:
+			green_syn_ability.connect_ability(purple_syn_ability)
+		else:
+			purple_syn_ability.connect_ability(green_syn_ability)
+
+func deregister_syn_ability(new_syn_ability:Area2D)->void:
+	registered_syn_abilities.erase(new_syn_ability)
+	if new_syn_ability.is_in_group("Purple"):
+		purple_syn_ability = null
+	else:
+		green_syn_ability = null
+	print(registered_syn_abilities, " now has size syn abilitys : ",registered_syn_abilities.size() )		
+		
+		
+		
+		
 func register_syn_shield(new_shield:Area2D)->void:
 	if new_shield.is_in_group("Purple"):
 		if purple_syn_shield == null:
@@ -173,8 +215,11 @@ func register_syn_shield(new_shield:Area2D)->void:
 		print(registered_syn_shields, " Cannot connect not enough syn sheilds : ",registered_syn_shields.size() )
 
 func connect_syn_shields()->void:
-	green_syn_shield.connect_shield(purple_syn_shield)
-	purple_syn_shield.connect_shield(green_syn_shield)
+	print("Should Start connect shields s")
+	if green_syn_shield.global_position.x > purple_syn_shield.global_position.x:
+		green_syn_shield.connect_shield(purple_syn_shield)
+	else:
+		purple_syn_shield.connect_shield(green_syn_shield)
 
 func deregister_syn_shield(new_shield:Area2D)->void:
 	registered_syn_shields.erase(new_shield)

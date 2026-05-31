@@ -7,6 +7,8 @@ size = Vector2(32, 32)
 
 [node name="Syn_Mark_Area" type="Area2D" unique_id=714123939]
 script = ExtResource("1_65car")
+ability_duration = 9.0
+ability_cooldown_duration = 27.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=720673980]
 shape = SubResource("RectangleShape2D_okw0m")

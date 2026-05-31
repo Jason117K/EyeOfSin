@@ -9,6 +9,7 @@ var is_on_cooldown := false
 var cooldown_elapsed := 0.0
 var cooldown_fill_amount := 0.0
 var on_purple := true 
+var affected_zombies : Array = []
 
 #Reduced Cooldown If Full Ability Transpires 
 @onready var cooldown_length_special := cooldown_duration - 2.5

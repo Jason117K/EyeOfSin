@@ -181,7 +181,7 @@ func move_demon(this_demon_to_move: Demon, passed_new_grid_pos: Vector2) -> void
 	
 func place_empty_blocker_demon(grid_pos: Vector2) -> void:
 	selected_demon_scene = empty_demon_scene
-	if(grid_pos.x<769 && grid_pos.y<304 && grid_pos.y > 48):
+	if(grid_pos.x<769 && grid_pos.y<305 && grid_pos.y > 48):
 		pass
 	else:
 		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")

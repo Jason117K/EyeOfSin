@@ -56,12 +56,14 @@ class_name Demon
 @onready var buffNodes: Node = $BuffNodesComponent
 @onready var erase_button : TextureButton = $EraseButton
 @onready var erase_mouse_area : Area2D = $EraseMouseArea
-
+@onready var spawn_juice_anim := $SpawnJuiceAnim
 @onready var baal_halo : AnimatedSprite2D = $BaalHalo
 
 var new_syn_shield_instance :AnimatedSprite2D 
 var syn_timer : Timer
 var invulnerable := false 
+var is_shielded = false
+var reduced_damage_percent := 0.0
 
 # --- State ---
 var area: Area2D
@@ -96,6 +98,8 @@ func _ready() -> void:
 	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
 	erase_button.pressed.connect(die_fromClearSpace)
 	erase_button.hide()
+	
+	spawn_juice_anim.play()
 
 func _process(delta: float) -> void:
 	if hit_flash_active:
@@ -262,6 +266,7 @@ func get_true_name() -> String:
 	return ""
 
 func shield(syn_shield:PackedScene,duration:float)->void:
+	print("Will Now Shield ", self)
 	new_syn_shield_instance = syn_shield.instantiate()
 	add_child(new_syn_shield_instance)
 	new_syn_shield_instance.global_position = syn_shield_position + global_position
@@ -275,6 +280,12 @@ func shield(syn_shield:PackedScene,duration:float)->void:
 	syn_timer.start()
 	
 	invulnerable = true 
+
+func weak_shield(syn_shield:PackedScene,duration:float)->void:
+	shield(syn_shield,duration)
+	invulnerable = false 
+	reduced_damage_percent = 0.3
+
 	
 func end_shield()->void:
 	new_syn_shield_instance.queue_free()
@@ -288,6 +299,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		#print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)
+		pass
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
 	# your double-click logic here
 		show_erase_button()

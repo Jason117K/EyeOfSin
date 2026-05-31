@@ -49,6 +49,8 @@ var attackComp : ZombieAttackRefCountedComponent
 #@onready var reset_color_timer : Timer = $ResetThisColor
 #@onready var just_spawned_timer : Timer = $JustNowSpawned
 
+var syn_timer : Timer
+
 # --- Preloads ---
 var slow_field_scene := preload("res://_Entities/Demons/WebTile/web_tile_slow.tscn")
 
@@ -286,6 +288,11 @@ func set_on_fire()->void:
 		fire_fx.play("green_fire")
 	fire_fx.visible = true
 
+func set_off_fire()->void:
+	is_flame_dmg_linked = false 
+	healthComp.is_flame_dmg_linked = is_flame_dmg_linked
+	fire_fx.visible = false
+
 func bleed(bleed_damage: float) -> void:
 	healthComp.bleed(bleed_damage)
 
@@ -341,13 +348,30 @@ func switch_sides()->void:
 		set_collision_layer_value(3,false)
 	
 
-func syn_mark()->void:
+func syn_mark(duration:float)->void:
 	print("Syn Mark Called on ", self)
-	set_hue_shift(0)
+	animatedSprite.lucretia_hue_shift()
 	is_syn_marked = true 
 	syn_mark_sprite.show()
 	healthComp.set_syn_mark(is_syn_marked)
+	syn_timer = Timer.new()
+	syn_timer.autostart = false
+	syn_timer.one_shot = true 
+	syn_timer.wait_time = duration
+	syn_timer.timeout.connect(remove_syn_mark)
+	add_child(syn_timer)
+	syn_timer.start()
 	pass
+	
+func remove_syn_mark()->void:
+	animatedSprite.undo_lucretia_hue_shift()
+	is_syn_marked = false 
+	healthComp.set_syn_mark(is_syn_marked)
+	syn_mark_sprite.hide()
+	syn_timer.queue_free()
+	if is_flame_dmg_linked:
+		set_off_fire()
+	
 	
 #TODO Change to Make Webs Red Instead 
 func blood_slow(blood_slow_percent:float=0.33) -> void:

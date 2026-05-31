@@ -170,17 +170,22 @@ func shift_hue(degrees: float) -> void:
 	if hue_shift > 180: hue_shift -= 360
 	if hue_shift < -180: hue_shift += 360
 
+func lucretia_hue_shift()->void:
+	#previous_hue_shift = hue_shift
+	set_hue_shift(0)
+
+func undo_lucretia_hue_shift()->void:
+	set_hue_shift(original_hue_shift)
 
 func blood_slow()->void:
 	slow()
-	previous_hue_shift = hue_shift
-	set_hue_shift(0)
+	lucretia_hue_shift()
 	material.set_shader_parameter("target_color", Color("ffffff"))
 	material.set_shader_parameter("replace_color", Color.RED)
 	material.set_shader_parameter("tolerance", 0.1)
 
 func undo_blood_slow()->void:
-	set_hue_shift(previous_hue_shift)
+	undo_lucretia_hue_shift()
 	material.set_shader_parameter("target_color", Color("000000"))
 	material.set_shader_parameter("replace_color", Color("000000"))
 	material.set_shader_parameter("tolerance", 0.0)

@@ -1,4 +1,4 @@
-extends Area2D
+extends Syn_Ability_Instance
 
 @export var damage := 100
 @export var aftershock_dmg := 25 
@@ -19,12 +19,12 @@ extends Area2D
 @onready var default_connector_length : float = lightning_connector_line.points[1].length()
 @onready var lightning_connector_area : Area2D = $LightningPivot/LightningConnectorArea
 
-var grid_pos :Vector2
-var grid_size: int = 32 
+
 var is_on_green := false 
 var is_lightning_connected := false
 
 func _ready() -> void:
+	detect_zombies = true 
 	lightning_ball_anim.hide()
 	lightning_aftershock_anim.hide()
 	lightning_connector_line.hide()
@@ -34,38 +34,14 @@ func _ready() -> void:
 	
 	grid_pos = mouse_pos_to_grid(global_position)
 	self.global_position = grid_pos	
-	
-
-	
-	Global.register_lightning_ball(self)
+		
+	set_detect_zombies(lightning_connector_area)
 
 	
 	if self.is_in_group("Green"):
-		self.set_collision_mask_value(1,false)
-		self.set_collision_mask_value(2,false)
-		self.set_collision_mask_value(3,false)
-		self.set_collision_mask_value(4,false)
-		self.set_collision_mask_value(5,true)
-		
-		lightning_connector_area.set_collision_mask_value(1,false)
-		lightning_connector_area.set_collision_mask_value(2,false)
-		lightning_connector_area.set_collision_mask_value(3,false)
-		lightning_connector_area.set_collision_mask_value(4,false)
-		lightning_connector_area.set_collision_mask_value(5,true)
-		
 		lightning_anim_current = "green"
 		is_on_green = true 
 	else:
-		self.set_collision_mask_value(1,false)
-		self.set_collision_mask_value(2,false)
-		self.set_collision_mask_value(3,false)
-		self.set_collision_mask_value(4,true)
-
-		lightning_connector_area.set_collision_mask_value(1,false)
-		lightning_connector_area.set_collision_mask_value(2,false)
-		lightning_connector_area.set_collision_mask_value(3,false)
-		lightning_connector_area.set_collision_mask_value(4,true)
-		
 		lightning_anim_current = "purple"
 		is_on_green = false 
 	
@@ -81,6 +57,8 @@ func _ready() -> void:
 	lightning_strike_anim.frame_changed.connect(damage_zombies)
 	lightning_strike_anim.show()
 	lightning_strike_anim.play()
+	
+	super()
 
 	
 func damage_zombies()->void:
@@ -111,7 +89,7 @@ func aftershock_damage()->void:
 			if zombie.is_in_group("Zombie"):
 				zombie.take_damage(aftershock_dmg)
 	
-func connect_lightning(lightning_to_connect : Area2D)->void:
+func connect_ability(lightning_to_connect : Area2D)->void:
 	print("Attempt Connect Lightning")
 	lightning_connector_line.hide()
 	var target_local :Vector2 = lightning_connector_line.to_local(lightning_to_connect.global_position)
@@ -139,7 +117,7 @@ func place_shadow_orb(new_position:Vector2)->void:
 
 		
 func end_ability()->void:
-	Global.deregister_lightning_ball(self)
+	Global.deregister_syn_ability(self)
 	queue_free()
 		
 	

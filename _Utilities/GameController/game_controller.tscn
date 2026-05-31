@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cd17phymp0lo1" path="res://_Entities/SynAbility/syn_ability.tscn" id="10_3rtt1"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
 [ext_resource type="PackedScene" uid="uid://dxeohrwemsvwx" path="res://_Entities/SwapAbilities/blood_rain_swap_ability.tscn" id="10_vtmjq"]
-[ext_resource type="PackedScene" uid="uid://dplu1yfhsrc7j" path="res://_Entities/SynAbility/syn_lightning_ability_bolt.tscn" id="12_c6rbx"]
+[ext_resource type="PackedScene" uid="uid://bhslgubbfjjfh" path="res://_Entities/SynAbility/syn_ability_mark.tscn" id="11_vtmjq"]
 [ext_resource type="Texture2D" uid="uid://cbllpjwciwdsi" path="res://_Entities/SynAbility/MarkedForDeath_CARD.png" id="12_vtmjq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
@@ -134,7 +134,7 @@ ability_duration = 5.0
 cooldown_duration = 9.0
 
 [node name="SynAbility" parent="." unique_id=1228459711 instance=ExtResource("10_3rtt1")]
-syn_ability_instance = ExtResource("12_c6rbx")
+syn_ability_instance = ExtResource("11_vtmjq")
 icon_texture = ExtResource("12_vtmjq")
 
 [editable path="CurrentScene/DemonSelectionMenu"]

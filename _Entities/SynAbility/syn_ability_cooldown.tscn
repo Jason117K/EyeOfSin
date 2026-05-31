@@ -3,6 +3,27 @@
 [ext_resource type="Script" uid="uid://b44jkeoi1twtl" path="res://_Entities/SynAbility/syn_ability_cooldown_visual.gd" id="1_sukl5"]
 [ext_resource type="Texture2D" uid="uid://dgv2mrtncmvv4" path="res://_Entities/SynAbility/SynAbility_1_CARD.png" id="2_13k3d"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13k3d"]
+bg_color = Color(0, 0, 0, 0.81960785)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sukl5"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
 [node name="SynAbilityCooldown" type="Control" unique_id=658951173]
 z_index = 2
 layout_mode = 3
@@ -22,3 +43,16 @@ offset_bottom = 763.0
 scale = Vector2(0.15, 0.15)
 texture_normal = ExtResource("2_13k3d")
 stretch_mode = 0
+
+[node name="SynAbilityProgressBar" type="ProgressBar" parent="." unique_id=271757253]
+custom_minimum_size = Vector2(16, 64)
+layout_mode = 0
+offset_left = 721.0
+offset_top = 335.0
+offset_right = 737.0
+offset_bottom = 362.0
+theme_override_styles/background = SubResource("StyleBoxFlat_13k3d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sukl5")
+value = 100.0
+fill_mode = 3
+show_percentage = false
