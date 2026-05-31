@@ -181,6 +181,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("141")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"spawn",
@@ -1453,6 +1456,7 @@ script = ExtResource("1_rfapi")
 is_empty = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589969452]
+visible = false
 position = Vector2(0.5, 0.499999)
 scale = Vector2(3, 3)
 shape = SubResource("89")
@@ -1461,11 +1465,13 @@ disabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=495141167]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
-animation = &"new_animation"
+animation = &"spawn"
 autoplay = "spawn"
+frame = 15
+frame_progress = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838057780]
-self_modulate = Color(1, 0, 0, 0.0784314)
+self_modulate = Color(1, 0, 0, 0.078431375)
 texture = ExtResource("3_geop3")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("4_a60rt")]
@@ -1550,6 +1556,7 @@ sprite_frames = SubResource("SpriteFrames_lrcpw")
 visible = false
 
 [node name="HealAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1975646581]
+visible = false
 position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_1q6ta")
 

@@ -1936,7 +1936,6 @@ mouse_filter = 1
 texture_normal = ExtResource("29_r8bpw")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1928357118]
-visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2080345614]
