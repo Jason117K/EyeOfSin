@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="23_aoc4y"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_kf5mr"]
 [ext_resource type="PackedScene" uid="uid://dhs0pt2nvnv00" path="res://_Entities/SynAbility/syn_shield_ability.tscn" id="26_1ds1s"]
+[ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="28_b5dvj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_pyfr7")
@@ -1039,6 +1040,73 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhncc"]
 size = Vector2(59, 56)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2beku"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk37d"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pifce"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4q1"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qipa"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8f2a"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3smc"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5untl"]
+atlas = ExtResource("28_b5dvj")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ftpd4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2beku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk37d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pifce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8f2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3smc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5untl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Demons", "Plants", "Wyrm"]]
 z_index = 1
 script = ExtResource("4")
@@ -1303,6 +1371,9 @@ shape = SubResource("RectangleShape2D_lhncc")
 [node name="SynShield_Ability" parent="." unique_id=1105706297 instance=ExtResource("26_1ds1s")]
 position = Vector2(525, 258)
 script = null
+
+[node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1935238962]
+sprite_frames = SubResource("SpriteFrames_ftpd4")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

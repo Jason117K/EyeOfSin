@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="28_054w2"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_054w2"]
 [ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="30_elaex"]
+[ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="31_0yhcl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_mg35w")
@@ -436,7 +437,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 10.0
+"speed": 25.0
 }]
 
 [sub_resource type="CircleShape2D" id="8"]
@@ -1690,6 +1691,73 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elaex"]
 size = Vector2(69, 56)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2beku"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk37d"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pifce"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4q1"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qipa"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8f2a"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3smc"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5untl"]
+atlas = ExtResource("31_0yhcl")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltsea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2beku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk37d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pifce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8f2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3smc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5untl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Maw" type="Area2D" unique_id=1021710121 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("4")
@@ -1720,7 +1788,7 @@ frame_progress = 1.0
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
 sprite_frames = SubResource("7")
-animation = &"idle_Hive"
+animation = &"spawn"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
 
@@ -1980,6 +2048,9 @@ visible = false
 position = Vector2(255, 225)
 sprite_frames = ExtResource("30_elaex")
 animation = &"back"
+
+[node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1195651765]
+sprite_frames = SubResource("SpriteFrames_ltsea")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

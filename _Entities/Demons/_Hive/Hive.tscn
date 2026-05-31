@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="26_oioeg"]
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="27_w5638"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_dvp3m"]
+[ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="31_kl3hl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_np53a")
@@ -694,7 +695,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 10.0
+"speed": 25.0
 }]
 
 [sub_resource type="RectangleShape2D" id="11"]
@@ -1696,6 +1697,73 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lpgd"]
 size = Vector2(59, 56)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2beku"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk37d"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pifce"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4q1"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qipa"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8f2a"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3smc"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5untl"]
+atlas = ExtResource("31_kl3hl")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fuab8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2beku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk37d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pifce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8f2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3smc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5untl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Hive" type="Area2D" unique_id=1078490386 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -1729,7 +1797,7 @@ texture = ExtResource("2_cpfsp")
 material = SubResource("ShaderMaterial_7f7y1")
 position = Vector2(0, -3)
 sprite_frames = SubResource("10")
-animation = &"idle_Hive"
+animation = &"spawn"
 autoplay = "spawn"
 script = ExtResource("5_pd78h")
 
@@ -1975,6 +2043,9 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2115581255]
 position = Vector2(-7.5, -11)
 shape = SubResource("RectangleShape2D_0lpgd")
+
+[node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=975246740]
+sprite_frames = SubResource("SpriteFrames_fuab8")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

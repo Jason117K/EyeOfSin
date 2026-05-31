@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="37_8u2uv"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="39_0n853"]
 [ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="40_dq2o5"]
+[ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="41_an04s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_jphsv")
@@ -947,7 +948,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 10.0
+"speed": 25.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0syxb"]
@@ -2276,6 +2277,73 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dq2o5"]
 size = Vector2(54, 43)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2beku"]
+atlas = ExtResource("41_an04s")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk37d"]
+atlas = ExtResource("41_an04s")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pifce"]
+atlas = ExtResource("41_an04s")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4q1"]
+atlas = ExtResource("41_an04s")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qipa"]
+atlas = ExtResource("41_an04s")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8f2a"]
+atlas = ExtResource("41_an04s")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3smc"]
+atlas = ExtResource("41_an04s")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5untl"]
+atlas = ExtResource("41_an04s")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_78twq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2beku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk37d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pifce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8f2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3smc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5untl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Crawler" type="Area2D" unique_id=675421916 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -2316,7 +2384,7 @@ script = ExtResource("5_kupbo")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"idle_Crawler"
+animation = &"spawn"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("21_ol6r1")
@@ -2572,6 +2640,9 @@ visible = false
 position = Vector2(-2, -9)
 sprite_frames = ExtResource("40_dq2o5")
 animation = &"top_glow"
+
+[node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1604686838]
+sprite_frames = SubResource("SpriteFrames_78twq")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
