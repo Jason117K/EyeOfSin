@@ -9,7 +9,6 @@ func _ready() -> void:
 		self.set_collision_mask_value(1,false)
 		self.set_collision_mask_value(2,false)
 		self.set_collision_mask_value(3,true)
-
 	else:
 		self.set_collision_mask_value(1,false)
 		self.set_collision_mask_value(2,true)
@@ -26,4 +25,7 @@ func shield_demons()->void:
 			print("Shield Demon ", demon)
 			demon.shield(syn_shield,ability_duration)
 	queue_free()
+	
+func connect_shields(shield_to_connect : Area2D)->void:
+	print("Attempt Connect Shields")
 	

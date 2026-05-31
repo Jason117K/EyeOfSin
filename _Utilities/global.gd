@@ -36,6 +36,10 @@ var registered_lightning_balls : Array = []
 var purple_lightning_ball : Area2D
 var green_lightning_ball : Area2D
 
+var registered_syn_shields : Array = []
+var purple_syn_shield : Area2D
+var green_syn_shield : Area2D
+
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 var bomb_scene := preload("res://_Entities/Demons/Explosion/Bomb.tscn")
@@ -151,7 +155,35 @@ func reset_demon_managers()->void:
 			demon_managers_temp.append(demon_manager)
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
+	
+func register_syn_shield(new_shield:Area2D)->void:
+	if new_shield.is_in_group("Purple"):
+		if purple_syn_shield == null:
+			registered_syn_shields.append(new_shield)
+		purple_syn_shield = new_shield
+		
+	else: 
+		if green_syn_shield == null:
+			registered_syn_shields.append(new_shield)
+		green_syn_shield = new_shield
+		
+	if registered_syn_shields.size() >= 2:
+		connect_syn_shields()
+	else:
+		print(registered_syn_shields, " Cannot connect not enough syn sheilds : ",registered_syn_shields.size() )
 
+func connect_syn_shields()->void:
+	green_syn_shield.connect_shield(purple_syn_shield)
+	purple_syn_shield.connect_shield(green_syn_shield)
+
+func deregister_syn_shield(new_shield:Area2D)->void:
+	registered_syn_shields.erase(new_shield)
+	if new_shield.is_in_group("Purple"):
+		purple_syn_shield = null
+	else:
+		green_syn_shield = null
+	print(registered_syn_shields, " now has size syn shields : ",registered_syn_shields.size() )
+		
 func register_lightning_ball(new_lightning_ball:Area2D)->void:
 	
 	if new_lightning_ball.is_in_group("Purple"):
