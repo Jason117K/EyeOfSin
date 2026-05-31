@@ -7,13 +7,13 @@ var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
 func _ready() -> void:
 	creditsText.append_text("Creative Director : Jason King\n")
 	creditsText.append_text("Gameplay Designers : Augustus Sabino, Jason King\n")
-	creditsText.append_text("Artists : Tobi, Eren, Jason King\n")
+	creditsText.append_text("Artists : Tobi, Jason King\n")
 	creditsText.append_text("Writers : Meg Thurmeier., Jason King\n")
 	creditsText.append_text("Project Management : Darrow Mohammed-Hall\n")
 	creditsText.append_text("Marketing : Kamryn Driver, Jason King\n")
-	creditsText.append_text("Music : Autumn Kirkpatrick\n")
+	creditsText.append_text("Music : August, Autumn Kirkpatrick\n")
 	creditsText.append_text("SFX : Sourced from Zapsplat\n")
-	creditsText.append_text("Asset Packs Used From : Admurin and Penusbmic\n")
+	creditsText.append_text("Asset Packs Used From : Aurora Sprites, Admurin and Penusbmic\n")
 	
 	#$GridManager.set_tiles_for_rows(0,1, 68)
 	#$GridManager.set_tiles_for_rows(1,2, 66)
@@ -29,4 +29,5 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
+	print("Change to Start ", startScreen)
 	Global.game_controller.change_scene(startScreen)

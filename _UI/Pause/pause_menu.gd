@@ -3,6 +3,8 @@ extends Control
 var level0_3 := "res://_Stages/Level3/Level0-3.tscn"
 var level0_3Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
+var options_menu := "res://_UI/Options/OptionsMenu.tscn"
+
 @export var restartScene: String
 @export var restartSceneAlt: String
 
@@ -37,3 +39,20 @@ func _on_restart_pressed() -> void:
 	#print("CCUrent Scene Is ", current_scene_filepath) 
 	Global.game_controller.change_dual_scenes(restartScene,restartSceneAlt )
 	#Global.game_controller.change_scene(current_scene_filepath)
+
+
+	
+
+func _on_options_pressed() -> void:
+	Global.hideDemonSelectionMenu()
+	Global.hide_notification_bar()
+	self.hide()
+	Global.game_controller.change_scene_with_pause(options_menu)
+	
+	
+
+	
+	
+	
+	
+	

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dndt0jcjj7xpo" path="res://_UI/Pause/PauseMenu.tscn" id="3_e4pn3"]
 
 [node name="PauseButton" type="TextureButton" unique_id=928782760]
+process_mode = 3
 custom_minimum_size = Vector2(26, 26)
 anchors_preset = 1
 anchor_left = 1.0
@@ -32,10 +33,10 @@ offset_bottom = 215.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Sprite2D" parent="PauseMenu" index="0"]
+[node name="Sprite2D" parent="PauseMenu" index="0" unique_id=1276259639]
 position = Vector2(5, -13)
 
-[node name="CenterContainer" parent="PauseMenu" index="2"]
+[node name="CenterContainer" parent="PauseMenu" index="2" unique_id=957756947]
 offset_left = -142.5
 offset_top = -166.115
 offset_right = 141.5

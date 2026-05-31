@@ -190,6 +190,21 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 
 
 # --- Pause Overlay Transitions ---
+func help_show_pause_menu_with_pause()->void:
+	Global.hide_notification_bar()
+
+	pip.hide_pip()
+
+	#if current_scene != null:
+		#current_scene.visible = false
+
+	for s:Node in current_scenes:
+		if is_instance_valid(s):
+			#s.visible = false
+			set_node_and_children_process_mode_disabled(s)
+
+	await get_tree().process_frame
+
 
 func change_scene_with_pause(new_scene_path: String) -> void:
 	Global.hide_notification_bar()
@@ -212,6 +227,8 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 	scene_container.add_child(new_node)
 	previous_scenes.append(current_scene)
 	current_scene = new_node
+	if current_scene.has_method("make_from_dual_scene_true"):
+		current_scene.make_from_dual_scene_true()
 
 
 func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
@@ -265,7 +282,30 @@ func restore_dual_scenes() -> void:
 		current_scene = current_scenes[0]
 	else:
 		current_scene = current_scenes[1]
+
+func restore_dual_scenes_with_pause() -> void:
+	#pause_button.visible = true
+
+	if is_instance_valid(current_scene) and current_scene not in current_scenes:
+		_remove_and_free(current_scene)
+
+	await get_tree().process_frame
+	get_tree().paused = false
+	for s:Node in current_scenes:
+		if is_instance_valid(s):
+			s.visible = false
+			set_node_and_children_process_mode_inherit(s)
+	_apply_dimension_visibility()
+	pip.show_pip()
+
+	if on_scene_1:
+		current_scene = current_scenes[0]
+		current_scene.click_pause_button()
+	else:
+		current_scene = current_scenes[1]
+		current_scene.click_pause_button()
 		
+				
 func set_node_and_children_process_mode_disabled(root: Node) -> void:
 	if root == null:
 		return

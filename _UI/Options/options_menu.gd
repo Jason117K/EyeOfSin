@@ -2,6 +2,7 @@ extends Control
 
 var startScreen := "res://_Stages/StartScreen/StartScreen.tscn"
 var backButton 
+var returning_to_dual_scene := false
 
 func _ready() -> void:
 	# Set process mode to handle input even when paused
@@ -26,4 +27,21 @@ func _ready() -> void:
 func _on_back_button_pressed() -> void:
 	print("=== BACK BUTTON CLICKED ===")
 	print("About to change scene to: ", startScreen)
-	Global.game_controller.change_scene(startScreen)
+#	Global.game_controller.change_scene(startScreen)
+	if !returning_to_dual_scene:
+		Global.game_controller.change_scene(startScreen)
+	else:
+		Global.unHideDemonSelectionMenu()
+		Global.game_controller.restore_dual_scenes_with_pause()
+
+
+func make_from_dual_scene_true()->void:
+	returning_to_dual_scene = true
+
+func make_from_dual_scene_false()->void:
+	returning_to_dual_scene = false
+	
+	
+	
+	
+	##	

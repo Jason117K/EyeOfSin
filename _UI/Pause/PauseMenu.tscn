@@ -4,9 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_0buc1"]
 [ext_resource type="AudioStream" uid="uid://cr4bfn051tkfs" path="res://_Assets/Audio/Win1.mp3" id="2_epntb"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_0buc1"]
+[ext_resource type="StyleBox" uid="uid://bi4n5o0yaborm" path="res://_UI/Buttons/button_normal.tres" id="5_dg4q1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehyka"]
+bg_color = Color(0, 0, 0, 0.94509804)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.3, 0, 0, 1)
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=1425559866]
 process_mode = 3
 z_index = 3
 layout_mode = 3
@@ -19,15 +27,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0buc1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1276259639]
+visible = false
 position = Vector2(370, 206)
 texture = ExtResource("2_0buc1")
 
-[node name="BGAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="BGAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=854706639]
 stream = ExtResource("2_epntb")
 autoplay = true
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=957756947]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,17 +50,22 @@ offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
-visible = false
-custom_minimum_size = Vector2(350, 350)
+[node name="PauseMenuPanel" type="PanelContainer" parent="CenterContainer" unique_id=912087661]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ehyka")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="PauseMenuMarginContainer" type="MarginContainer" parent="CenterContainer/PauseMenuPanel" unique_id=1994411539]
+layout_mode = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer" unique_id=73275476]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PauseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="PauseLabel" type="Label" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=82248075]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -60,27 +74,49 @@ theme_override_font_sizes/font_size = 64
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 60)
+[node name="Resume" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=439155358]
+custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("5_dg4q1")
 text = "RESUME"
 
-[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 60)
+[node name="Restart" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=938324446]
+custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("5_dg4q1")
 text = "RESTART"
 
-[node name="ReturnToMenu" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 60)
+[node name="Options" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=35136128]
+custom_minimum_size = Vector2(250, 48)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("5_dg4q1")
+text = "OPTIONS"
+
+[node name="ReturnToMenu" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=402001552]
+custom_minimum_size = Vector2(250, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_0buc1")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("5_dg4q1")
 text = "RETURN TO MAIN"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=824847993]
+visible = false
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

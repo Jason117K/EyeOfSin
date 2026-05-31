@@ -12,10 +12,14 @@ func _process(_delta: float) -> void:
 		pauseMenu.visible = false
 
 func _on_pressed() -> void:
-	print("PP Pause Button Pressed")
-	print("PAUSE GAME")
+	#print("PP Pause Button Pressed")
+	#print("PAUSE GAME")
 	get_tree().paused = true
+	#pauseMenu.visible = true
 	pauseMenu.visible = true
+	Global.hide_notification_bar()
+	#Global.game_controller.help_show_pause_menu_with_pause() 
+	
 
 func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
 	pauseMenu.set_restart_levels(newLevel,newAltLevel)

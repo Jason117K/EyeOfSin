@@ -132,6 +132,9 @@ func make_camera_current() -> void:
 func place_empty_blocker_demon(grid_pos:Vector2) -> void:
 	demonManager.place_empty_blocker_demon(grid_pos)
 
+func click_pause_button()->void:
+	pause_Button._on_pressed()
+	
 func remove_empty_blocker_demon(grid_pos:Vector2) -> void:
 	demonManager.clear_space_alt(grid_pos)
 
