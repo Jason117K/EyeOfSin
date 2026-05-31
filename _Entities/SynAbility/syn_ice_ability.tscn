@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cifsywnehsly5"]
+
+[ext_resource type="Script" uid="uid://1johrumubr7p" path="res://_Entities/SynAbility/syn_ice_ability.gd" id="1_gnd0g"]
+[ext_resource type="Texture2D" uid="uid://wf74edotc85k" path="res://_Entities/SynAbility/Syn_Ice_Ability-Sheet.png" id="2_vsheg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x37pf"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(0, 0, 71, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp4hh"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(71, 0, 71, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5g4n"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(142, 0, 71, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmf8f"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(213, 0, 71, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7irv"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(284, 0, 71, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d51uf"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(355, 0, 71, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8pqb"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(426, 0, 71, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwce1"]
+atlas = ExtResource("2_vsheg")
+region = Rect2(497, 0, 71, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djr3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x37pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp4hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5g4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmf8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7irv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d51uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8pqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwce1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxxmw"]
+size = Vector2(65, 45)
+
+[node name="Syn_Ice_Ability" type="Area2D" unique_id=208492696]
+script = ExtResource("1_gnd0g")
+
+[node name="Blood_Ice_Anim" type="AnimatedSprite2D" parent="." unique_id=1364422233]
+sprite_frames = SubResource("SpriteFrames_djr3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=106952942]
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_fxxmw")

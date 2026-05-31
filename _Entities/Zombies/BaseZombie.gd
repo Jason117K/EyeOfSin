@@ -260,6 +260,14 @@ func _do_spawn_drone_on_death() -> void:
 
 func take_damage(is_link_damage : bool = false, damage: float = 1.0, piercing: bool = false) -> void:
 	print(self, " is taking damage ",damage )
+	healthComp.take_damage(is_link_damage,damage, piercing)
+#	if !is_link_damage:
+	animatedSprite.set_instance_shader_parameter("hit_flash", 1.0)
+	if _secondary_flash_sprite:
+		_secondary_flash_sprite.set_instance_shader_parameter("hit_flash", 1.0)
+	hit_flash_active = true
+
+func _on_hit_dmg_effect()->void:
 	for blood_hit:Node in damage_vfx_spawn_locations:
 		blood_hit.visible = true
 		blood_hit.rotation_degrees = randf_range(-60, 60)
@@ -267,12 +275,6 @@ func take_damage(is_link_damage : bool = false, damage: float = 1.0, piercing: b
 			blood_hit.play("hit_purple")
 		else:
 			blood_hit.play("hit_green")
-	healthComp.take_damage(is_link_damage,damage, piercing)
-#	if !is_link_damage:
-	animatedSprite.set_instance_shader_parameter("hit_flash", 1.0)
-	if _secondary_flash_sprite:
-		_secondary_flash_sprite.set_instance_shader_parameter("hit_flash", 1.0)
-	hit_flash_active = true
 
 func set_on_fire()->void:
 	is_flame_dmg_linked = true 
@@ -286,6 +288,8 @@ func set_on_fire()->void:
 func bleed(bleed_damage: float) -> void:
 	healthComp.bleed(bleed_damage)
 
+
+	
 
 func getHealthComponent() -> ZombieHealthRefCountedComponent:
 	return healthComp

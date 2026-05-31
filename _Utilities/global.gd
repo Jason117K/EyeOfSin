@@ -32,6 +32,9 @@ var demon_scenes: Dictionary
 var should_hide_ui := false
 var demon_managers :Array= []
 var all_registered_occulum : Array = []
+var registered_lightning_balls : Array = []
+var purple_lightning_ball : Area2D
+var green_lightning_ball : Area2D
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -148,6 +151,20 @@ func reset_demon_managers()->void:
 			demon_managers_temp.append(demon_manager)
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
+
+func register_lightning_ball(new_lightning_ball:Area2D)->void:
+	registered_lightning_balls.append(new_lightning_ball)
+	if new_lightning_ball.is_in_group("Purple"):
+		purple_lightning_ball = new_lightning_ball
+	else: 
+		green_lightning_ball = new_lightning_ball
+		
+	if registered_lightning_balls.size() >= 2:
+		connect_lightning_balls()
+		
+func connect_lightning_balls()->void:
+	green_lightning_ball.connect_lightning(purple_lightning_ball)
+	purple_lightning_ball.connect_lightning(green_lightning_ball)
 
 func resetOcculumCount() -> void:
 	is_blocking = false

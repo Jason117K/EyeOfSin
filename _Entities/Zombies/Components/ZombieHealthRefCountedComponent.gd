@@ -99,8 +99,8 @@ func tick(delta: float) -> void:
 			
 			
 func bleed(bleed_damage: float) -> void:
-	if should_bleed == false:
-		should_bleed = true
+	should_bleed = true
+	if bleed_damage > bleed_tick_damage:
 		bleed_tick_damage = bleed_damage
 
 		
@@ -109,6 +109,7 @@ func bleed(bleed_damage: float) -> void:
 
 func bleed_tick() -> void:
 	take_damage(false,bleed_tick_damage,false)
+	parent_zombie._on_hit_dmg_effect()
 
 
 func _on_regen_tick() -> void:
