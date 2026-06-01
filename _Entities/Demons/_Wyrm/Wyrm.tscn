@@ -1223,7 +1223,6 @@ position = Vector2(-1, -2.5)
 shape = SubResource("1")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1120460148]
-visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=481485503]
 sprite_frames = SubResource("4")
@@ -1246,6 +1245,8 @@ animation = &"New Anim 2"
 [node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=1010593057]
 points = PackedVector2Array(16, 0, 300, 0)
 default_color = Color(1, 0, 0, 0.47058824)
+end_cap_mode = 2
+round_precision = 2
 
 [node name="BuffNodesComponent" parent="." unique_id=1891567804 instance=ExtResource("12")]
 

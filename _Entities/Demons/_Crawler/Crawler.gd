@@ -11,7 +11,7 @@ extends Demon
 @export var projectile_spawn_offest: Vector2 = Vector2(32, 0)
 @export var blood_worth_to_add := 10.0
 @export var shoot_interval := 2.0 #Fire time is this val + anim time, currently +0.6
-@export var buffed_range_target_pos := Vector2(450.0,0)
+@export var buffed_range_target_pos := Vector2(375.0,0)
 
 # --- Preloads ---
 var projectile_scene: PackedScene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")
@@ -27,13 +27,18 @@ var canAttackSetTrueOnce: bool = false
 @onready var attack_ray: ShapeCast2D = $DMG_RayCast2D
 @onready var projectile_shoot_component := $ProjectileShootComponent
 
+@onready var range_line_indicator = $PreviewNodes/RangeIndicatorLine2D
+
 
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
 
-
+func update_range_preview()->void:
+	var global_target := attack_ray.to_global(attack_ray.target_position)
+	range_line_indicator.set_point_position(1, Vector2(attack_ray.target_position.x,range_line_indicator.get_point_position(1).y))
+	
 # --- Getters ---
 
 func get_damage()->float:
@@ -86,6 +91,7 @@ func receive_buff(newDemon) -> void:
 				if $"../Arm" != null:
 					$"../Arm".visible = true 
 					$"../Arm2".visible = true 
+		
 
 func debuff() -> void:
 	animSpriteComp.debuff()
@@ -131,7 +137,10 @@ func get_special_description()->String:
 	
 	
 func _increase_range()->void:
+	print("Old Target Pos ",attack_ray.target_position )
 	attack_ray.target_position = buffed_range_target_pos
+	print("New Target Pos ",attack_ray.target_position )
+	update_range_preview()
 	pass
 		
 	

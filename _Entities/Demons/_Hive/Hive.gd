@@ -23,6 +23,7 @@ extends Demon
 @export var laser_cooldown: float = 3
 @export var blood_buff_cooldown: float = 0.9
 
+@onready var hive_attack_ray := $DMG_RayCast2D
 # --- Constants ---
 const SPINAL_OCCULUM_BUFF_MAX_DRONES = 4
 const OCCULUM_BUFF_MAX_DRONES = 5
@@ -39,6 +40,7 @@ var buzz_audio: AudioStreamPlayer2D
 # --- Component References ---
 @onready var swarm := $Swarm
 @onready var hive_laser_shoot_comp := $HiveLaserShootComp
+@onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 
 
 # --- Lifecycle ---
@@ -86,7 +88,10 @@ func set_is_demo() -> void:
 	$DetectionComp/CollisionShape2D.disabled = true
 	$DetectionComp/CollisionShape2D2.disabled = false
 	swarm.is_demo = true
-
+	
+func update_range_preview()->void:
+	range_line_indicator.set_point_position(1, Vector2(hive_attack_ray.target_position.x,range_line_indicator.get_point_position(1).y))
+	
 
 # --- Buff System ---
 

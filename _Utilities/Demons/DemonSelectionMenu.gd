@@ -232,7 +232,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 			# Create the preview sprite and make it semi-transparent 
 			var this_preview_sprite : Node = child.duplicate()
 			this_preview_sprite.modulate = Color(1, 1, 1, 0.5)
-			this_preview_sprite.scale = Vector2(1.25,1.25)
+			#this_preview_sprite.scale = Vector2(1.25,1.25)
 			this_preview_sprite.z_index = 100
 			if this_preview_sprite is AnimatedSprite2D:
 				this_preview_sprite.play()

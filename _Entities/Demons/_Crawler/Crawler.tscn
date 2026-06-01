@@ -2350,7 +2350,7 @@ script = ExtResource("2")
 spiderling_wait_time = 4
 spinalOcculumHealth = 500.0
 shoot_interval = 1.3
-buffed_range_target_pos = Vector2(600, 0)
+buffed_range_target_pos = Vector2(450, 0)
 cost = 75.0
 health = 100.0
 maxHealth = 60.0
@@ -2390,7 +2390,6 @@ flip_h = true
 script = ExtResource("21_ol6r1")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
-visible = false
 
 [node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1617410873 groups=["Invis"]]
 position = Vector2(0, -8.5)
@@ -2422,8 +2421,10 @@ animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
 [node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=1660729825]
-points = PackedVector2Array(16, 0, 500, 0)
+points = PackedVector2Array(16, 0, 275, 0)
 default_color = Color(1, 0, 0, 0.47058824)
+end_cap_mode = 2
+round_precision = 2
 
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=299414353]
 position = Vector2(0, 6)

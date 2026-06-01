@@ -45,6 +45,9 @@ extends Demon
 @onready var shootTimer := $ShootTimer
 @onready var shell_sprite := $Egg
 
+@onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
+
+
 # --- State ---
 var isCrawlerBuffed := false
 var isSpineBuffed := false
@@ -93,7 +96,9 @@ func _init_demon_collision() -> void:
 		$DMG_RayCast2D.set_collision_mask_value(3, false)
 		$DMG_RayCast2D.set_collision_mask_value(4, true)
 
-
+func update_range_preview()->void:
+	range_line_indicator.set_point_position(1, Vector2(attack_ray.target_position.x,range_line_indicator.get_point_position(1).y))
+	
 # --- Getters ---
 
 func get_demon_true_name() -> String:
