@@ -1,6 +1,0 @@
-bin/
-godot-cpp/
-*.obj
-*.o
-*.os
-.sconsign.dblite

@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://c28hwvj6hyqjx"]
-
-[node name="TentacleManager" type="TentacleManager" unique_id=819387495]
-process_physics_priority = -100

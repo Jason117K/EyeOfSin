@@ -69,7 +69,7 @@ func _ready() -> void:
 	
 	Dialogic.timeline_ended.connect(finish_ready)
 
-	Global.current_level = self
+	#Global.current_level = self
 	Global.resetOcculumCount()
 	Global.reset_swap_ability()
 
@@ -233,7 +233,7 @@ func _on_tooltip_hidden() -> void:
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_COST":
 			pass
-			#go_to_step("WAVE_1_ACTIVE")
+			go_to_step("WAVE_1_ACTIVE")
 		"EXPLAIN_GREEN_DIMENSION":
 			go_to_step("WAVE_2_ACTIVE")
 

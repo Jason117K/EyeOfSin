@@ -59,7 +59,7 @@ func _ready() -> void:
 	setup_tentacles()
 	# --- Demon-specific collision ---
 	_init_demon_collision()
-	print("Tentacle Is Active Num ", GlobalTentacleManager.get_active_arm_count())
+	#print("Tentacle Is Active Num ", GlobalTentacleManager.get_active_arm_count())
 
 func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):
