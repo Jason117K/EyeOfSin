@@ -84,7 +84,8 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
+	if not skip_tutorials:
+		toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
 
 	demonManager.crawler_placed.connect(func(_grid_position): _on_crawler_placed())
 	crawler_button.connect("pressed", Callable(self, "_on_crawler_button_pressed"))
@@ -93,7 +94,7 @@ func _ready() -> void:
 	zombie_spawner.wave_exhausted.connect(wave_exhausted)
 	waveManager.preview_lead_time = 8
 	Global.hide_ui_layer()
-	if debug:
+	if debug or skip_tutorials:
 		finish_ready()
 	else:
 		Dialogic.start(level_1_start_dialog)
@@ -108,8 +109,24 @@ func _configure_waves() -> void:
 func finish_ready() -> void:
 	#Global.hide_pip()
 
+	if skip_tutorials:
+		_start_free_play()
+		return
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_CRAWLER")
+	Global.unhide_ui_layer()
+	Global.unHideDemonSelectionMenu()
+
+
+func _start_free_play() -> void:
+	hide_all_demon_buttons_with_exception(["Crawler"])
+	world_swap_button.visible = true
+	demonSelectionMenu.canSwapScenes = true
+	waveManager.can_start = true
+	Global.show_pip()
+	var green := get_parent().get_node("Level0-1_Alternate")
+	if green and green.has_method("setup_wave_2_ui"):
+		green.setup_wave_2_ui()
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
 
@@ -251,6 +268,8 @@ func _on_crawler_button_pressed() -> void:
 
 
 func _on_wave_started(wave_index: int) -> void:
+	if skip_tutorials:
+		return
 	match wave_index:
 		0:
 			wave_1_active = true

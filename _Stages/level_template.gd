@@ -14,6 +14,7 @@ var has_pulsed := false
 @export var wave2StartTime := 30
 @export var wave3StartTime := 60
 @export var debug := true
+@export var skip_tutorials := false  # true = skip all tutorial messages; level free-plays
 @onready var toolTips := $"../ToolTips"
 @onready var demonManager := $DemonManager
 @onready var demonSelectionMenu := $"../DemonSelectionMenu"
@@ -123,6 +124,10 @@ func show_all_demon_buttons(extras: Array = []) -> void:
 
 	
 func setup_demon_selection_menu() -> void:
+	pass
+
+## Levels override this to set up normal play when skip_tutorials is true.
+func _start_free_play() -> void:
 	pass
 
 # Helper Methods
