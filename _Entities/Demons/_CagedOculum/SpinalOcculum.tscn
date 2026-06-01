@@ -1701,8 +1701,6 @@ maw_buffed_health = 1500
 maw_buffed_max_health = 1500
 spike_damage = 34
 cost = 75.0
-health = 600.0
-maxHealth = 600.0
 syn_shield_position = Vector2(-2, -3)
 hit_flash_duration = 0.25
 

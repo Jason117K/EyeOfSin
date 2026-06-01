@@ -156,18 +156,18 @@ func _load_demon_type_animation_resource(demon_type : int, file_name : String) -
 
 
 # Get a alien image by type, 
-func get_demon_image(demon_type : int)->Node:
+func get_demon_image(demon_type : int)->CompressedTexture2D:
 	if not demon_images.has(demon_type):
 		print("ResourceManager: Error - Resource not found for image:",demon_type)
 		return null
 	return demon_images[demon_type]
 	
-func get_demon_image_variations(demon_type:int) -> Node:
+func get_demon_image_variations(demon_type:int) -> Array:
 	
 	return demon_variation_images[demon_type]
 	
 # Get a alien animation by type,
-func get_demon_animation(demon_type:int)-> Node:
+func get_demon_animation(demon_type:int):
 	if not demon_animations.has(demon_type):
 		print("ResourceManager: Error - Resource not found for animation:", demon_type)
 		return null
@@ -201,7 +201,7 @@ func _load_zombie_type_animation_resource(zombie_type:int, file_name:String) -> 
 
 
 # Get a alien image by type, 
-func get_zombie_image(zombie_type:int)-> Node:
+func get_zombie_image(zombie_type:int)-> CompressedTexture2D:
 	if not zombie_images.has(zombie_type):
 		print("ResourceManager: Error - Resource not found for image:",zombie_type)
 		return null

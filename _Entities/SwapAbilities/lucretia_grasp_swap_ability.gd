@@ -11,7 +11,8 @@ var num_zombies_turned := 0
 var turned_zombies: Array = []
 var _signals_connected := false
 
-
+func get_icon()->Texture:
+	return Global.lucretia_grasp_icon
 
 func apply_swap_ability() -> void:
 	num_zombies_turned = 0

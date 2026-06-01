@@ -6,6 +6,7 @@ extends Node2D
 @onready var parent :Zombie= get_parent()                  # RefCounted to parent
 @onready var attack_comp :ZombieAttackRefCountedComponent   #= parent.get_attack_comp()# $"../AttackComponent"
 
+var pre_special_speed
 var vaultTimer: Timer
 #@onready var tween = Tween.new()  # Create new Tween node
 var tween : Tween
@@ -20,7 +21,8 @@ func _ready() -> void:
 
 
 # Perform the pole vault 
-func executeMove() -> void:
+func executeMove(old_speed) -> void:
+	pre_special_speed = old_speed
 	animatedSprite.animation = "Vault"
 	parent.setSpeed(0)
 
@@ -65,7 +67,7 @@ func _on_vault_timer_timeout() -> void:
 # Make it so the polevaulter cannot vault again and starts walking normally 
 func moveFinished() -> void:
 	animatedSprite.setSpecialMoveFalse()
-	parent.setSpeed(26)
+	parent.setSpeed(pre_special_speed)
 	attack_comp.stop_attack()
 	moveDone = true
 

@@ -229,8 +229,9 @@ func _on_pole_vault_zombie_pressed() -> void:
 	
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
-	sprites = GlobalResourceLoader.get_zombie_animation(
-		GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
+	#sprites = GlobalResourceLoader.get_zombie_animation(
+		#GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
+	sprites = GlobalResourceLoader.get_empty()
 	play()
 	set_text(poleVaultZombieDescription)
 	set_title(poleVaultZombieTitle)

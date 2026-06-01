@@ -318,7 +318,8 @@ func reset_speed() -> void:
 
 func switch_sides()->void:
 	pass
-	set_hue_shift(0)
+	#set_hue_shift(0)
+	animatedSprite.lucretia_hue_shift()
 	animatedSprite.flip_h = !animatedSprite.flip_h 
 	speedComp.setSpeed(-speed)
 	#Collision Mask,Layer, Group, 

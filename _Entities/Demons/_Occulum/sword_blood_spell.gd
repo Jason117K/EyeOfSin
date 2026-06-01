@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var blood_damage := 25
+@export var blood_damage := 75
 var is_maw_parent := false
 @onready var spell_anim := $BloodSpellSprite
 var zombies_to_damage: Array = []

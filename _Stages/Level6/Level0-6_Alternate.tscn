@@ -66,13 +66,15 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_01won")
 isGreenDimension = true
+debug = false
+skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("20_21wrt")]
 layout_mode = 1
 make_green = true
 
 [node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("2_0v3x8")]
-blood_points = 750
+blood_points = 1500
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1288006005]
 process_mode = 1

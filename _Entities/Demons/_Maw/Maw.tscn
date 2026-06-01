@@ -1765,7 +1765,7 @@ alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
 wyrm_buffed_digestion_time = 10.0
 spinal_occulum_buffed_digestion_time = 11.0
-cost = 300.0
+cost = 275.0
 syn_shield_position = Vector2(253, 237)
 
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=625929278]

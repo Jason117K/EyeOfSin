@@ -57,7 +57,10 @@ directories/dtl_directory={
 "level_0_end_dialog": "res://_Assets/Dialog/level_0_end_dialog.dtl",
 "level_0_start_dialog": "res://_Assets/Dialog/level_0_start_dialog.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://New_File.tres",
+"New_File": "res://New_File.tres"
+}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -93,6 +96,8 @@ audio/channel_defaults={
 }
 text/autoadvance_enabled=true
 text/autoadvance_fixed_delay=0.5
+layout/style_list=["res://New_File.tres"]
+layout/default_style="res://New_File.tres"
 
 [display]
 

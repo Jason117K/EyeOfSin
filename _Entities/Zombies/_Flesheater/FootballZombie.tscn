@@ -331,6 +331,7 @@ position = Vector2(-16, -30)
 collision_layer = 2
 script = ExtResource("1_43cmf")
 health = 450
+speed = 32.0
 attack_power = 60
 bloodWorth = 50.0
 fire_fix_position = Vector2(9, -10)

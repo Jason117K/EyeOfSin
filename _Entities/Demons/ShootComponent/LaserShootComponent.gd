@@ -35,7 +35,7 @@ var demon: Demon
 @onready var line2D := Line2D.new()
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
-@onready var blood_spit_fx := $"../../Worm2/BloodSpitFX"
+var blood_spit_fx #:= $"../../Worm2/BloodSpitFX"
 #@onready var attack_ray := $"../../DMG_RayCast2D"
 var attack_ray : Node
 
@@ -63,6 +63,7 @@ func _find_demon_ancestor() -> Demon:
 	return null
 
 func _ready() -> void:
+	blood_spit_fx =get_node_or_null("../../Worm2/BloodSpitFX")
 	attack_ray =get_node_or_null("../../DMG_RayCast2D")
 	projectile_shoot_component = get_node_or_null("../../ProjectileShootComponent")
 	
@@ -161,7 +162,8 @@ func fire() -> void:
 		done_firing = false
 		timer.wait_time = (max_length / extension_speed) + duration
 		timer.start()
-		blood_spit_fx.play("blood_spit")
+		if blood_spit_fx != null:
+			blood_spit_fx.play("blood_spit")
 	else:
 		pass
 

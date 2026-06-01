@@ -84,3 +84,5 @@ func connect_ability(shield_to_connect: Area2D) -> void:
 
 	weak_shield_demons()
 	
+func get_icon()->Texture:
+	return Global.shield_button_icon

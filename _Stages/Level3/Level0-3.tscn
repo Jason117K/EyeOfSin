@@ -3620,10 +3620,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_3xvj4")
+wave2StartTime = 65
+wave3StartTime = 80
+debug = false
 skip_end_dialog = false
 
 [node name="DemonManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
-blood_points = 325
+blood_points = 600
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=89289254]
 process_mode = 1
@@ -4051,7 +4054,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1679277948]
 position = Vector2(370, 208)
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

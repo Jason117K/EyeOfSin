@@ -142,6 +142,7 @@ func generate_blood() -> Node2D:
 			elif Global.gameIsStarted == false:
 				return
 		elif Global.gameIsStarted == false:
+			print("Game Not Started Cannot Generate")
 			return
 
 	if mawBuff:

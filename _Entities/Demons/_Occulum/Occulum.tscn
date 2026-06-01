@@ -1384,8 +1384,9 @@ script = ExtResource("1")
 bloodWaitTime = 31.0
 wyrmBloodWaitTime = 42.0
 crawlerBloodWaitTime = 22.0
-health = 100.0
-maxHealth = 60.0
+maw_health = 600
+health = 125.0
+maxHealth = 125.0
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=145781643]
 visible = false

@@ -102,16 +102,18 @@ func crawler_blood_pickup() -> void:
 		#nearby_zombies = aoe.get_overlapping_areas()
 		#TODO Make Sort By Health
 		highest_health = -1
-		for zombie:Zombie in nearby_zombies:
-			if not zombie.has_method("get_health"):
-				continue
-			current_target_health = zombie.get_health()
-			if current_target_health > highest_health && zombie != null:
-				highest_health = current_target_health
-				current_zombie_target = zombie
+		for zombie in nearby_zombies:
+			if zombie != null && is_instance_valid(zombie):
+				if not zombie.has_method("get_health"):
+					continue
+				current_target_health = zombie.get_health()
+				if current_target_health > highest_health && zombie != null:
+					highest_health = current_target_health
+					current_zombie_target = zombie
 		#print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
 		#TODO Sort By Health
-		attack_zombie(current_zombie_target)
+		if current_zombie_target != null && is_instance_valid(current_zombie_target):
+			attack_zombie(current_zombie_target)
 
 func summon_blood_swords() -> void:
 	if origin_occulum != null:
@@ -171,7 +173,7 @@ func heal_demons() -> void:
 			demons_to_heal.append(entity)
 	#print("Demons to heal is ", demons_to_heal)
 
-	for demon:Demon in demons_to_heal:
+	for demon in demons_to_heal:
 		if demon == null:
 			demons_to_heal.erase(demon)
 		if demon != null:

@@ -76,6 +76,21 @@ var spinal_occulum_icon := preload("res://_Assets/Sprites/SpinalOcculum.png")
 var hive_icon := preload("res://_Assets/Sprites/Hive.png")
 var maw_icon := preload("res://_Assets/Sprites/MawImage.png")
 
+var syn_ability_manager_scene := preload("res://_Entities/SynAbility/syn_ability.tscn")
+
+var syn_ability_manager
+
+@onready var blood_rain_icon := preload("res://_Entities/SwapAbilities/Blood_Rain_Swap_Card.png")
+@onready var lucretia_grasp_icon := preload("res://_Entities/SwapAbilities/Lucretia_Grasp_Swap_Card.png")
+@onready var lightning_storm_icon :=  preload("res://_Entities/SwapAbilities/Lightning_Storm_Swap_Card.png")
+@onready var baal_gaze_icon :=  preload("res://_Entities/SwapAbilities/Baal_Gaze_Swap_Card.png")
+
+@onready var lightning_strike_button_icon :=  preload("res://_Entities/SynAbility/SynAbility_1_CARD.png")
+@onready var shield_button_icon :=  preload("res://_Entities/SynAbility/SynShieldCard.png")
+@onready var blood_ice_button_icon :=  preload("res://_Entities/SynAbility/BloodIceSpike_Card.png")
+@onready var death_mark_button_icon :=  preload("res://_Entities/SynAbility/MarkedForDeath_CARD.png")
+@onready var shroomie_button_icon := preload("res://_Entities/SynAbility/TorchShroomie_Card.png")
+
 
 
 func _process(delta: float) -> void:
@@ -134,7 +149,8 @@ func register_wave_preview(new_wave_preview:Node) -> void:
 
 func add_blood_from_wave(blood_to_add:int)->void:
 	for demon_manager in demon_managers:
-		demon_manager.add_blood(blood_to_add)	
+		if demon_manager != null:
+			demon_manager.add_blood(blood_to_add)	
 
 func hideDemonSelectionMenu() -> void:
 	if demon_selection_menu != null:
@@ -160,7 +176,8 @@ func reset_demon_managers()->void:
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
 	
-func register_syn_ability(new_syn_ability : Area2D)->void:
+func register_syn_ability_instance(new_syn_ability : Area2D)->void:
+	
 	if new_syn_ability.is_in_group("Purple"):
 		if purple_syn_ability == null:
 			registered_syn_abilities.append(new_syn_ability)
@@ -171,24 +188,26 @@ func register_syn_ability(new_syn_ability : Area2D)->void:
 			registered_syn_abilities.append(new_syn_ability)
 		green_syn_ability = new_syn_ability
 		
-	if registered_syn_abilities.size() >= 2:
+	if registered_syn_abilities.size() >= 2 :
 		connect_syn_abilities()
 	else:
 		print(registered_syn_abilities, " Cannot connect not enough syn sheilds : ",registered_syn_abilities.size() )	
 		
 func connect_syn_abilities()->void:
 	print("Should Start connect Syn Abilities")
-	if green_syn_ability.is_dual_connection:
-		green_syn_ability.connect_ability(purple_syn_ability)
-		purple_syn_ability.connect_ability(green_syn_ability)
-	else:
-		if green_syn_ability.global_position.x > purple_syn_ability.global_position.x:
+	if green_syn_ability != null && purple_syn_ability != null:
+		if green_syn_ability.is_dual_connection:
 			green_syn_ability.connect_ability(purple_syn_ability)
-		else:
 			purple_syn_ability.connect_ability(green_syn_ability)
+		else:
+			if green_syn_ability.global_position.x > purple_syn_ability.global_position.x:
+				green_syn_ability.connect_ability(purple_syn_ability)
+			else:
+				purple_syn_ability.connect_ability(green_syn_ability)
 
 func deregister_syn_ability(new_syn_ability:Area2D)->void:
 	registered_syn_abilities.erase(new_syn_ability)
+	syn_ability_manager.deregister_ability_instance(new_syn_ability)
 	if new_syn_ability.is_in_group("Purple"):
 		purple_syn_ability = null
 	else:
@@ -258,10 +277,13 @@ func deregister_lightning_ball(new_lightning_ball:Area2D)->void:
 		green_lightning_ball = null
 	print(registered_lightning_balls, " now has size lightning balls : ",registered_lightning_balls.size() )
 	
+
+
 	
 func resetOcculumCount() -> void:
 	is_blocking = false
 	occulumCount = 0
+	all_registered_occulum.clear()
 	#game_controller.on_scene_1 = true 
 	
 	
@@ -513,13 +535,43 @@ func is_on_purple_dimension() -> bool:
 		return true
 	else:
 		return false
+
+func register_syn_ability_manager(new_syn_ability_manager)->void:
+	syn_ability_manager = new_syn_ability_manager
 	
 func register_swap_ability(new_swap_ability ) -> void:
+	if swap_ability != null:
+		swap_ability.queue_free()
+	swap_ability = new_swap_ability.instantiate()
+	game_controller.add_child(swap_ability)
+func register_syn_ability(new_syn_ability)->void:
+	if syn_ability_manager == null:
+		syn_ability_manager = syn_ability_manager_scene.instantiate()
+		game_controller.add_child(syn_ability_manager)
+	syn_ability_manager.set_syn_ability(new_syn_ability)
+	var temp_syn_holder = new_syn_ability.instantiate()
+	
+	syn_ability_manager.set_icon(temp_syn_holder.get_icon())
+	temp_syn_holder.queue_free()
+	#register_syn_ability_instance(new_syn_ability.instantiate())
+
+func register_swap_ability_instance(new_swap_ability ) -> void:
 	swap_ability = new_swap_ability
 
 func register_notification_bar(new_notification_bar : Control) -> void:
 	notification_bar = new_notification_bar
+
+func get_swap_icon()->Texture:
+	if swap_ability != null:
+		return swap_ability.get_icon()
+	else:
+		return blood_rain_icon
 	
+func get_syn_icon()->Texture:
+	if swap_ability != null:
+		return syn_ability_manager.get_icon()
+	else:
+		return lightning_storm_icon	
 
 func start_swap_ability() -> void:
 	if swap_ability != null:

@@ -127,7 +127,7 @@ func _on_AttackTimer_timeout() -> void:
 				if target_demon.has_method("eat_zombie"):
 					if target_demon.can_eat_zombie == true :
 					#	print("Demon Can Eat Me Time to Die")
-						target_demon.eat_zombie(self)
+						target_demon.eat_zombie(parent_zombie)
 						parent_zombie.die()
 				if target_demon.has_method("spinalOcculumWyrmBuffed"):
 					if target_demon.can_damage_zombie == true :
@@ -182,7 +182,8 @@ func tick(delta: float) -> void:
 							return
 					#TODO Make Sundered Extend Attack Comp
 					if("Sundered" in parent_zombie.name):
-						if canSpecial && !collider.is_in_group("Drone"):
+						if canSpecial && !collider.is_in_group("Drone") && collider.is_in_group("Demons"):
+							print("Sundered Special Move Pole Vault")
 							parent_zombie.special_move()
 							canSpecial = false
 							is_attacking = true

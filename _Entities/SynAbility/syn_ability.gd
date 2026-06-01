@@ -34,6 +34,16 @@ func _ready() -> void:
 	syn_ability_green_cooldown_timer.autostart = false
 	syn_ability_green_cooldown_timer.one_shot = true 
 	syn_ability_green_cooldown_timer.timeout.connect(green_off_cooldown)
+
+	Global.register_syn_ability_manager(self)
+
+func set_icon(new_texture):
+	icon_texture = new_texture
+	syn_ability_cooldown.set_icon(icon_texture)
+	syn_ability_cooldown.show()
+	
+func get_icon()->Texture:
+	return icon_texture
 	
 func purple_off_cooldown()->void:
 	is_purple_ability_on_cooldown = false 
@@ -41,7 +51,7 @@ func purple_off_cooldown()->void:
 func green_off_cooldown()->void:
 	is_green_ability_on_cooldown = false 
 		
-func set_syn_ability(new_syn_ability:PackedScene)->void:
+func set_syn_ability(new_syn_ability)->void:
 	syn_ability_instance = new_syn_ability
 
 func set_syn_ability_icon(new_icon_texture:CompressedTexture2D)->void:
@@ -117,7 +127,7 @@ func _input(event: InputEvent) -> void:
 func activate_syn_ability(target_pos:Vector2)->void:
 	var new_syn_ability_instance :Node= syn_ability_instance.instantiate()
 	new_syn_ability_instance.global_position = target_pos
-	new_syn_ability_instance.syn_controller = self 
+	#new_syn_ability_instance.syn_controller = self 
 	if Global.is_on_purple_dimension():
 		new_syn_ability_instance.add_to_group("Purple")
 		active_purple_syn_ability = new_syn_ability_instance

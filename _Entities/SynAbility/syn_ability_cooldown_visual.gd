@@ -8,6 +8,8 @@ func get_button()->TextureButton:
 	
 func set_icon(new_icon_texture)->void:
 	syn_ability_button.texture_normal = new_icon_texture
+	syn_ability_button.show()
+	syn_ability_progress_bar.show()
 
 func set_progress_bar(new_val:float)->void:
 	syn_ability_progress_bar.value = new_val

@@ -13,7 +13,7 @@ func _ready() -> void:
 # Specific Pole Vault Special Move
 func special_move() -> void:
 	#compManager.special_move()
-	specialMoveComp.executeMove()
+	specialMoveComp.executeMove(get_speed())
 	animatedSprite.setSpecialMoveTrue()
 
 # Gets whether or not the special Move has finished executing

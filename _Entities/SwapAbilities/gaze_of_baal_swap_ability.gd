@@ -5,7 +5,7 @@ func apply_swap_ability()->void:
 	baal_eye.descend()
 	baal_eye_aoe.show()
 	for demon : Demon in Global.get_all_demons():
-		if demon != null:
+		if demon != null && is_instance_valid(demon):
 			if Global.is_on_purple_dimension():
 				if !demon.is_in_group("Purple"):
 					demon.baal_buff()
@@ -23,3 +23,5 @@ func undo_swap_ability() -> void:
 	baal_eye.stop_descend()
 	baal_eye_aoe.hide()
 	
+func get_icon()->Texture:
+	return Global.baal_gaze_icon

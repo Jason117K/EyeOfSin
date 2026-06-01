@@ -1,4 +1,4 @@
-extends Area2D
+extends Syn_Ability_Instance
 
 @export var ice_bleed_amount := 7
 @export var on_hit_damage := 25 
@@ -47,7 +47,8 @@ func end_attack()->void:
 	
 	
 	
-	
+func get_icon()->Texture:
+	return Global.blood_ice_button_icon
 	
 	
 	

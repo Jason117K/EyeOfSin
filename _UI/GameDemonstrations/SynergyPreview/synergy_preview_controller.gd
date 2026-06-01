@@ -296,7 +296,7 @@ func _spawn_zombies() -> void:
 			zombies_alive -= 1
 			continue
 
-		var zombie := ZombieRegistry.SCENES[zombie_type].instantiate()
+		var zombie = ZombieRegistry.SCENES[zombie_type].instantiate()
 		zombie.add_to_group("Purple")
 		zombie.make_demo()
 		zombie.zombie_death.connect(_on_zombie_died)

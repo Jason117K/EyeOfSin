@@ -86,6 +86,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ehl8e")
 new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
+wave2StartTime = 75
+wave3StartTime = 100
+debug = false
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
@@ -101,7 +104,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
-blood_points = 700
+blood_points = 1300
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1937544684]
 process_mode = 1

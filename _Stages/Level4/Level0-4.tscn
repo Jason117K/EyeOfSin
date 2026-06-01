@@ -21,7 +21,6 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_60dyi"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_u00xe"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_2i5fe"]
-[ext_resource type="Texture2D" uid="uid://c7kl45rtuyp0e" path="res://_Entities/LevelSpecial/TempSharkSheet.png" id="22_t4smf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("10_27ghl")
@@ -55,42 +54,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj0hr"]
-atlas = ExtResource("22_t4smf")
-region = Rect2(592, 0, 148, 141)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx4ts"]
-atlas = ExtResource("22_t4smf")
-region = Rect2(740, 0, 148, 141)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpff7"]
-atlas = ExtResource("22_t4smf")
-region = Rect2(888, 0, 148, 141)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_17nyl"]
-atlas = ExtResource("22_t4smf")
-region = Rect2(1036, 0, 148, 141)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3u4xe"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yj0hr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rx4ts")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rpff7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_17nyl")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
-
 [node name="Level0-4" type="Control" unique_id=806621439 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -101,12 +64,16 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xw2pb")
 new_end_dialog = "res://_Assets/Dialog/level_04_end_dialog.dtl"
+wave2StartTime = 75
+wave3StartTime = 95
+debug = false
+skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=2013472037 instance=ExtResource("20_d40up")]
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1939348814 instance=ExtResource("2_60dyi")]
-blood_points = 300
+blood_points = 900
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1754723991]
 process_mode = 1
@@ -443,13 +410,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=482512615]
 position = Vector2(370, 208)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=702668485]
-position = Vector2(415, 389)
-sprite_frames = SubResource("SpriteFrames_3u4xe")
-autoplay = "default"
-frame_progress = 0.08544177
-
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

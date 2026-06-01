@@ -12,14 +12,22 @@ var detect_demons := false
 var detect_zombies := false 
 var syn_controller : Node 
 
-func _ready() -> void:
-	grid_pos = mouse_pos_to_grid(global_position)
+func _enter_tree() -> void:
 	death_timer = Timer.new()
 	death_timer.timeout.connect(stop_ability)
 	death_timer.wait_time = ability_duration
 	death_timer.one_shot = true 
 	death_timer.autostart = false
 	add_child(death_timer)
+	
+func _ready() -> void:
+	grid_pos = mouse_pos_to_grid(global_position)
+	#death_timer = Timer.new()
+	#death_timer.timeout.connect(stop_ability)
+	#death_timer.wait_time = ability_duration
+	#death_timer.one_shot = true 
+	#death_timer.autostart = false
+	#add_child(death_timer)
 
 	
 	
@@ -34,7 +42,7 @@ func _ready() -> void:
 	await get_tree().physics_frame	
 	
 	activate_ability()
-	Global.register_syn_ability(self)
+	Global.register_syn_ability_instance(self)
 	death_timer.start()
 	
 func activate_ability()->void:
@@ -44,7 +52,7 @@ func activate_ability()->void:
 				
 func stop_ability()->void:
 	Global.deregister_syn_ability(self)
-	syn_controller.deregister_ability_instance(self)
+	#syn_controller.deregister_ability_instance(self)
 	queue_free()
 	
 func connect_abilities(_syn_ability_to_connect: Area2D) -> void:

@@ -1981,6 +1981,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_83ut0")
+debug = false
+skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=836634407 instance=ExtResource("20_qm12r")]
 layout_mode = 1

@@ -26,7 +26,9 @@ var batches_struck := 0
 #func _ready() -> void:
 	#ability_duration = lightning_wave_delay * 6 
 			
-
+func get_icon()->Texture:
+	return Global.lightning_storm_icon
+	
 func apply_swap_ability()->void:
 	set_collision()
 	ability_duration = lightning_wave_delay * 6 

@@ -157,9 +157,10 @@ func return_drones_to_rest() -> void:
 func _on_drone_died(drone: Node) -> void:
 	available_drones.erase(drone)
 
-	for enemy:Node in drone_assignments.keys():
-		if drone in drone_assignments[enemy]:
-			drone_assignments[enemy].erase(drone)
+	for enemy in drone_assignments.keys():
+		if enemy != null && is_instance_valid(enemy):
+			if drone in drone_assignments[enemy]:
+				drone_assignments[enemy].erase(drone)
 
 	drone_rest_positions.erase(drone)
 

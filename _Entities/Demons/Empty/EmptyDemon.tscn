@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="20_mffyy"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="21_3mt6c"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="22_xejua"]
+[ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="23_ereen"]
+[ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="24_wnqex"]
+[ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_bpsi6"]
 
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)
@@ -1450,6 +1453,76 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2beku"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk37d"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pifce"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4q1"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qipa"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8f2a"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3smc"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5untl"]
+atlas = ExtResource("24_wnqex")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_linjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2beku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk37d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pifce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8f2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3smc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5untl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hmpt"]
+size = Vector2(69, 56)
+
 [node name="Empty" type="Area2D" unique_id=422311796 groups=["Plants"]]
 position = Vector2(0, 1)
 script = ExtResource("1_rfapi")
@@ -1559,5 +1632,35 @@ visible = false
 visible = false
 position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_1q6ta")
+
+[node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=1609885331]
+visible = false
+position = Vector2(255, 225)
+sprite_frames = ExtResource("23_ereen")
+animation = &"back"
+
+[node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1661402310]
+visible = false
+sprite_frames = SubResource("SpriteFrames_linjw")
+
+[node name="EraseButton" type="TextureButton" parent="." unique_id=1633231041]
+visible = false
+offset_left = 225.0
+offset_top = 216.0
+offset_right = 267.0
+offset_bottom = 258.0
+scale = Vector2(0.395, 0.395)
+mouse_filter = 1
+texture_normal = ExtResource("25_bpsi6")
+
+[node name="EraseMouseArea" type="Area2D" parent="." unique_id=1801336632]
+visible = false
+position = Vector2(258, 252)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2041239742]
+visible = false
+position = Vector2(-2.5, -11)
+shape = SubResource("RectangleShape2D_6hmpt")
 
 [editable path="BuffNodesComponent"]

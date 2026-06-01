@@ -53,7 +53,14 @@ script = ExtResource("1_xmk26")
 syn_ability_instance = ExtResource("2_8fkk2")
 
 [node name="SynAbilityCooldown" parent="." unique_id=658951173 instance=ExtResource("3_cdwfe")]
+visible = false
 mouse_filter = 2
+
+[node name="SynAbilityButton" parent="SynAbilityCooldown" index="0" unique_id=1941069963]
+visible = false
+
+[node name="SynAbilityProgressBar" parent="SynAbilityCooldown" index="1" unique_id=271757253]
+visible = false
 
 [node name="SynAbilityCrosshair" type="AnimatedSprite2D" parent="." unique_id=529838522]
 visible = false

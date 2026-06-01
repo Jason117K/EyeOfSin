@@ -38,7 +38,8 @@ func undo_swap_ability() -> void:
 		stop()	
 	affected_zombies.clear()
 	
-
+func get_icon()->Texture:
+	return Global.blood_rain_icon
 	
 	
 	

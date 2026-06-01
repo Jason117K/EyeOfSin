@@ -21,7 +21,7 @@ const STEP := 0.1
 func _ready() -> void:
 	print("Swap Ability Ready")
 	cooldown_visual.material.set_shader_parameter("fill_amount", 0.0)
-	Global.register_swap_ability(self)
+	Global.register_swap_ability_instance(self)
 	cooldown_timer = Timer.new()
 	cooldown_timer.one_shot = true
 	cooldown_timer.autostart = false

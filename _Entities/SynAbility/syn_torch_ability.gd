@@ -1,11 +1,10 @@
-extends Area2D
+extends Syn_Ability_Instance
 
 @export var enflame_damage_mult := 2.0 
 
 @onready var torch_anim_sprite := $AnimatedSprite2D
 
-var grid_pos :Vector2
-var grid_size: int = 32 
+
 
 func _ready() -> void:
 	if self.is_in_group("Green"):
@@ -32,3 +31,10 @@ func enflame_projectile(projectile_to_enflame : Area2D)->void:
 	
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
+
+func get_icon()->Texture:
+	return Global.shroomie_button_icon
+	
+	
+	
+	

@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="20_hca0k"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_cmthx"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_i62ex"]
-[ext_resource type="Texture2D" uid="uid://c7kl45rtuyp0e" path="res://_Entities/LevelSpecial/TempSharkSheet.png" id="22_r3i21"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_j4lsd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsj0e"]
@@ -55,42 +54,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj0hr"]
-atlas = ExtResource("22_r3i21")
-region = Rect2(592, 0, 148, 141)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx4ts"]
-atlas = ExtResource("22_r3i21")
-region = Rect2(740, 0, 148, 141)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpff7"]
-atlas = ExtResource("22_r3i21")
-region = Rect2(888, 0, 148, 141)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_17nyl"]
-atlas = ExtResource("22_r3i21")
-region = Rect2(1036, 0, 148, 141)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_l7eb0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yj0hr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rx4ts")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rpff7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_17nyl")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Level03Alternate" type="Control" unique_id=247872464 groups=["Green", "GreenLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -101,13 +64,15 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_pwl3v")
 isGreenDimension = true
+debug = false
+skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1323073708 instance=ExtResource("20_hca0k")]
 layout_mode = 1
 make_green = true
 
 [node name="DemonManager" parent="." unique_id=44492489 instance=ExtResource("2_fsj0e")]
-blood_points = 375
+blood_points = 600
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=839164457]
 process_mode = 1
@@ -454,11 +419,6 @@ bus = &"music"
 position = Vector2(370, 208)
 
 [node name="Timer" type="Timer" parent="." unique_id=1920464950]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007193125]
-position = Vector2(440, 343)
-sprite_frames = SubResource("SpriteFrames_l7eb0")
-frame_progress = 0.6632817
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

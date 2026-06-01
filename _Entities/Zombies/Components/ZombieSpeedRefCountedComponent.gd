@@ -27,7 +27,7 @@ func _init(new_parent_zombie:Area2D) -> void:
 
 func tick(delta: float) -> void:
 	parent_zombie.position.x -= speed * delta
-	if !is_slow && !is_blood_slow:
+	if !is_slow && !is_blood_slow && speed > 0:
 		speed = originalSpeed
 	#if is_slow:
 		#slow_duration -= delta 

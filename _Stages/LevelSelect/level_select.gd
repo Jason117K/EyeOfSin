@@ -33,6 +33,10 @@ var testing_gus_0Alt := "res://_Stages/Level-Testing/TestLevel0/Level0-TestingGu
 var testing_gus_1 := "res://_Stages/Level-Testing/TestLevel0/Level02-TestingGus.tscn"
 var testing_gus_1Alt := "res://_Stages/Level-Testing/TestLevel0/Level02-TestingGus_Alternate.tscn"
 
+var ability_screen := "res://_UI/ability_control_panel.tscn"
+@onready var swap_icon := $SorceryPanel/MarginContainer/VBoxContainer/SwapSorcery
+@onready var syn_icon := $SorceryPanel/MarginContainer/VBoxContainer/SynSorcery
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	canPlayLevel2 = Global.getCanPlayLevel2()
@@ -43,6 +47,12 @@ func _ready() -> void:
 	canPlayLevel7 = Global.getCanPlayLevel7()
 	
 	Global.hideDemonSelectionMenu()
+	swap_icon.texture = Global.get_swap_icon()
+	syn_icon.texture = Global.get_syn_icon()
+	
+	
+	
+	
 	#$GridManager.set_tiles_for_rows(0,1, 68)
 	#$GridManager.set_tiles_for_rows(1,2, 66)
 	#
@@ -103,3 +113,7 @@ func _on_testing_gus_button_0_pressed() -> void:
 
 func _on_testing_gus_button_1_pressed() -> void:
 	Global.game_controller.change_dual_scenes(testing_gus_1, testing_gus_1Alt)
+
+
+func _on_button_pressed() -> void:
+	Global.game_controller.change_scene(ability_screen)

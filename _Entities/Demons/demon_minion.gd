@@ -43,7 +43,8 @@ func _ready() -> void:
 		set_collision_layer_value(3,false)
 
 
-
+func increase_health(added_health_amount: int) -> void:
+	pass
 		
 		
 func attack_zombie() -> void:

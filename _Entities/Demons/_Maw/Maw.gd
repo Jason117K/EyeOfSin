@@ -234,7 +234,7 @@ func _process_queue() -> void:
 	while made_progress and not enemies_to_eat.is_empty():
 		made_progress = false
 		for i in range(enemies_to_eat.size()):
-			var enemy:Node = enemies_to_eat[i]
+			var enemy = enemies_to_eat[i]
 			if not is_instance_valid(enemy):
 				enemies_to_eat.remove_at(i)
 				made_progress = true

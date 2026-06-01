@@ -80,14 +80,14 @@ func spawn_aftershock()->void:
 	shock_dmg_timer.start()
 
 func aftershock_damage()->void:
-	print("Aftershock Damage Called")
+	print("Aftershock Damage Called ", aftershock_dmg)
 	for zombie in get_overlapping_areas():
 		if zombie.is_in_group("Zombie"):
-			zombie.take_damage(aftershock_dmg)
+			zombie.take_damage(false,aftershock_dmg,false)
 	if is_lightning_connected:
 		for zombie in lightning_connector_area.get_overlapping_areas():
 			if zombie.is_in_group("Zombie"):
-				zombie.take_damage(aftershock_dmg)
+				zombie.take_damage(false,aftershock_dmg,false)
 	
 func connect_ability(lightning_to_connect : Area2D)->void:
 	print("Attempt Connect Lightning")
@@ -129,7 +129,8 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
 	
 	
-	
+func get_icon()->Texture:
+	return Global.lightning_strike_button_icon	
 	
 	
 	
