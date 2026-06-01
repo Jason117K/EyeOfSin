@@ -35,6 +35,7 @@ var demon: Demon
 @onready var line2D := Line2D.new()
 @onready var laser_area := Area2D.new()
 @onready var collision_shape := CollisionShape2D.new()
+@onready var blood_spit_fx := $"../../Worm2/BloodSpitFX"
 #@onready var attack_ray := $"../../DMG_RayCast2D"
 var attack_ray : Node
 
@@ -160,6 +161,7 @@ func fire() -> void:
 		done_firing = false
 		timer.wait_time = (max_length / extension_speed) + duration
 		timer.start()
+		blood_spit_fx.play("blood_spit")
 	else:
 		pass
 

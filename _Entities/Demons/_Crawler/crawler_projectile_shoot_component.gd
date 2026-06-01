@@ -4,6 +4,7 @@ var blood_worth_to_add := 10.0
 var shoot_interval: float
 var shoot_timer: Timer
 @onready var attack_ray_1 := $"../DMG_RayCast2D"
+@onready var web_spit_fx := $"../AnimatedSpriteComponent/WebSpitFX"
 var second_shot_timer: Timer
 var damage_increase := 10
 
@@ -103,4 +104,9 @@ func receive_buff(newDemon: String) -> void:
 		"Maw":
 			pass
 	
-	
+func _on_sprite_frame_changed(animation_name: String, frame_index: int) -> void:
+	super(animation_name,frame_index)
+	if "attack" in animation_name:
+		if frame_index == 3:
+			web_spit_fx.play("web_spit")
+			web_spit_fx.show()

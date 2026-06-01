@@ -1207,11 +1207,10 @@ zigzag_width = 160.0
 [node name="BloodSpitFX" type="AnimatedSprite2D" parent="Worm2" unique_id=1052488203]
 position = Vector2(16, -8)
 rotation = 2.6188812
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.57, 0.57)
 sprite_frames = ExtResource("15_ftpd4")
 animation = &"blood_spit"
 frame = 4
-frame_progress = 1.0
 
 [node name="Worm3" type="Sprite2D" parent="." unique_id=638135112]
 material = SubResource("ShaderMaterial_5n28x")

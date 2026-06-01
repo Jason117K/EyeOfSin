@@ -1,0 +1,79 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://68t447nxiwkb"]
+
+[ext_resource type="Texture2D" uid="uid://bnsow4dobvlc" path="res://_Entities/Demons/Blood_Spit_FX.png" id="1_b2swy"]
+[ext_resource type="Texture2D" uid="uid://dkqhbiot268xt" path="res://_Entities/Demons/Web_Spit_FX.png" id="1_o13tm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a223p"]
+atlas = ExtResource("1_b2swy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5bax"]
+atlas = ExtResource("1_b2swy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdgli"]
+atlas = ExtResource("1_b2swy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rocbc"]
+atlas = ExtResource("1_b2swy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x87ev"]
+atlas = ExtResource("1_o13tm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqfjf"]
+atlas = ExtResource("1_o13tm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f1n2"]
+atlas = ExtResource("1_o13tm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2212"]
+atlas = ExtResource("1_o13tm")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a223p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5bax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdgli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rocbc")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"blood_spit",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x87ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqfjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f1n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2212")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"web_spit",
+"speed": 16.0
+}]

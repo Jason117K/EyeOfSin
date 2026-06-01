@@ -7,6 +7,8 @@ var hiveSpawnDroneBuffed := false
 var cooldown_timer: Timer
 
 @onready var attack_ray_1 := $"../DMG_RayCast2D"
+
+
 #@onready var shootPosition1 = $"../Worm1/LaserShootComponent"
 #@onready var shootPosition2 = $"../Worm2/LaserShootComponent"
 #@onready var laser_shoot_comp_1 := $"../Worm1/LaserShootComponent"
@@ -60,6 +62,8 @@ func fire_laser() -> void:
 		laser_shoot_comp_2.fire()
 		#print("Shoot that proj")
 		shoot_projectile()
+		
+
 	else:
 		pass
 		#print("Cannot Attack")
@@ -92,4 +96,3 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 
 func wyrm_bleed_buff() -> void:
 	isWyrmBleedBuffed = true
-
