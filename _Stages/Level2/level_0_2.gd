@@ -143,17 +143,26 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(finish_ready)
 	print("Crawler Button at ready is : ", crawler_button)
 	Global.hide_ui_layer()
-	if debug:
+	if debug or skip_tutorials:
 		finish_ready()
 	else:
 		Dialogic.start(level_2_start_dialog)
 	#finish_ready()
-
+	
+func _start_free_play() -> void:
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum",])
+	world_swap_button.visible = true
+	demonSelectionMenu.canSwapScenes = true
+	waveManager.can_start = true
+	Global.show_pip()
+	Global.unhide_ui_layer()
+	Global.unHideDemonSelectionMenu()
 
 func _configure_waves() -> void:
-	zombie_spawner_1.set_waves_from_dicts([{}, {"Reborn": 3, "Severed": 1}, {"Unhallower": 3}])
-	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 1, "Severed": 1}, {"Reborn": 2, "Severed": 1}, {"Severed": 4, "Unhallower": 1}])
-	zombie_spawner_3.set_waves_from_dicts([{"Severed": 1}, {"Reborn": 2, "Unhallower": 1}, {"Reborn": 6, "Unhallower": 2}])
+	pass
+	zombie_spawner_1.set_waves_from_dicts([{}, {"Reborn": 3, "Severed": 2}, {"Severed": 5}])
+	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 5}, {"Reborn": 4, "Severed": 2}, {"Severed": 3, "Reborn": 6}])
+	zombie_spawner_3.set_waves_from_dicts([{"Reborn": 3}, {"Reborn": 6, "Severed": 1}, {"Severed": 6}])
 
 
 func _find_green_dimension() -> void:
@@ -162,6 +171,9 @@ func _find_green_dimension() -> void:
 
 func finish_ready() -> void:
 	Global.show_pip()
+	if skip_tutorials:
+		_start_free_play()
+		return
 	toolTips.show()
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_OCCULUM")
@@ -379,7 +391,7 @@ func _on_occulum_placed(grid_pos: Vector2) -> void:
 
 	if tutorial_occulum and tutorial_occulum.has_method("generate_blood"):
 		advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
-		tutorial_blood_instance = tutorial_occulum.generate_blood()
+		tutorial_blood_instance = tutorial_occulum.force_generate_blood()
 		print("Should Generate Blood ")
 
 		if tutorial_blood_instance and tutorial_blood_instance.has_node("Auto_pick_up_timer"):

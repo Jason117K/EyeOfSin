@@ -74,6 +74,7 @@ func attack_demon(collider:Node) -> void:
 	#print("TName is ", target_demon.name)
 	#print("I am " , self.name)
 	zombieSprite.speed_scale = base_anim_duration * parent_zombie.attack_speed
+	print("Now Attack Demon")
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
 	#TODO Make Attacking Sounds More Efficient
@@ -189,9 +190,11 @@ func tick(delta: float) -> void:
 							is_attacking = true
 							pass
 						else:
+							print(self, " time to attack demon here ")
 							attack_starting_pos = parent_zombie.global_position
 							attack_demon(collider)
 					else:
+						print(self, " time to attack demon")
 						attack_starting_pos = parent_zombie.global_position
 						attack_demon(collider)
 func switch_sides()->void:

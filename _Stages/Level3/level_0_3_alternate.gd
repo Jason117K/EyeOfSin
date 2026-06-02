@@ -17,11 +17,33 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner_1.set_waves_from_dicts([{"Erupter": 1}, {"Flesheater": 1, "Severed": 2}, {"Flesheater": 1, "Reborn": 3}])
-	zombie_spawner_2.set_waves_from_dicts([{"Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Reborn": 3, "Severed": 1}])
-	zombie_spawner_3.set_waves_from_dicts([{}, {"Severed": 1}, {"Flesheater": 1}])
-	zombie_spawner_4.set_waves_from_dicts([{}, {"Reborn": 2, "Severed": 1}, {"Flesheater": 1, "Severed": 3}])
-	zombie_spawner_5.set_waves_from_dicts([{"Unhallower": 1}, {"Severed": 2, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 3}])
+	#pass
+	zombie_spawner_1.set_waves_from_dicts([{"Reborn": 4, "Severed": 1}, 
+											{"Reborn": 1, "Severed": 2},
+											{"Reborn": 1, "Severed": 3}, 
+											{ "Severed": 4}])
+	zombie_spawner_2.set_waves_from_dicts([{},
+											{}, 
+											{"Severed": 1, "Reborn": 5}, 
+											{"Severed": 2, "Unhallower": 1}])
+	zombie_spawner_3.set_waves_from_dicts([{},
+											{"Severed": 2},
+											{"Severed": 3}, 
+											{"Reborn": 6, "Unhallower": 2}])
+	zombie_spawner_4.set_waves_from_dicts([{},
+											{},
+											{"Severed": 3, "Reborn":2}, 
+											{"Severed": 1, "Reborn": 4, "Unhallower": 1}])
+	zombie_spawner_5.set_waves_from_dicts([{"Severed": 2}, 
+											{"Severed": 2, "Reborn":3},
+											{"Reborn": 4, "Severed": 1}, 
+											{"Severed": 4}])
+											
+	#zombie_spawner_1.set_waves_from_dicts([{"Erupter": 1}, {"Flesheater": 1, "Severed": 2}, {"Flesheater": 1, "Reborn": 3}])
+	#zombie_spawner_2.set_waves_from_dicts([{"Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Reborn": 3, "Severed": 1}])
+	#zombie_spawner_3.set_waves_from_dicts([{}, {"Severed": 1}, {"Flesheater": 1}])
+	#zombie_spawner_4.set_waves_from_dicts([{}, {"Reborn": 2, "Severed": 1}, {"Flesheater": 1, "Severed": 3}])
+	#zombie_spawner_5.set_waves_from_dicts([{"Unhallower": 1}, {"Severed": 2, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 3}])
 
 
 func getIsGreenDimension() -> bool:

@@ -6,8 +6,8 @@ var fleshEater_zombie_demo_scene := preload("res://_UI/GameDemonstrations/Zombie
 var codex_demo := preload("res://_UI/GameDemonstrations/codex_demo.tscn")
 
 # Level paths
-var thisLevel := "res://_Stages/Level3/Level0-3.tscn"
-var thisAltLevel := "res://_Stages/Level3/Level0-3_Alternate.tscn"
+var thisLevel := "res://_Stages/Level2/Level0-3B.tscn"
+var thisAltLevel := "res://_Stages/Level3/Level0-3_Alternate_B.tscn"
 var level03 := "res://_Stages/Level3/Level0-3.tscn"
 var level03Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
 var level04 := "res://_Stages/Level4/Level0-4.tscn"
@@ -72,7 +72,7 @@ func _ready() -> void:
 	super()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [37.0, 50.0]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -80,7 +80,7 @@ func _ready() -> void:
 	setup_demon_selection_menu()
 	pause_Button.set_restart_levels(level03, level03Alt)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
+	
 
 	Global.resetOcculumCount()
 	Global.reset_swap_ability()
@@ -94,7 +94,7 @@ func _ready() -> void:
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
-	if debug:
+	if debug or skip_tutorials:
 		finish_ready()
 	else:
 		Dialogic.start(level_3_start_dialog)
@@ -103,23 +103,60 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner_1.set_waves_from_dicts([{"Reborn": 3}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}])
-	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 3, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}])
-	zombie_spawner_3.set_waves_from_dicts([{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}])
-	zombie_spawner_4.set_waves_from_dicts([{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}])
-	zombie_spawner_5.set_waves_from_dicts([{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}])
+	pass
+	zombie_spawner_1.set_waves_from_dicts([{},
+											{}, 
+											{"Severed": 1, "Reborn": 5}, 
+											{"Severed": 2, "Unhallower": 1}])
+	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 4, "Severed": 1}, 
+											{"Reborn": 1, "Severed": 2},
+											{"Reborn": 1, "Severed": 3}, 
+											{ "Severed": 4}])
+	zombie_spawner_3.set_waves_from_dicts([{"Unhallower":1},
+											{"Severed": 2},
+											{"Severed": 3}, 
+											{"Reborn": 6, "Unhallower": 2}])
+	zombie_spawner_4.set_waves_from_dicts([{"Severed": 2}, 
+											{"Severed": 2, "Reborn":3},
+											{"Reborn": 4, "Severed": 1}, 
+											{"Severed": 4}])
+	zombie_spawner_5.set_waves_from_dicts([{},
+											{},
+											{"Severed": 3, "Reborn":2}, 
+											{"Severed": 1, "Reborn": 4, "Unhallower": 1}])
+
+
+	#zombie_spawner_1.set_waves_from_dicts([{"Reborn": 3}, {"Flesheater": 1, "Reborn": 2}, {"Reborn": 1, "Unhallower": 2}])
+	#zombie_spawner_2.set_waves_from_dicts([{"Reborn": 3, "Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Severed": 2}])
+	#zombie_spawner_3.set_waves_from_dicts([{"Reborn": 2, "Severed": 1}, {"Flesheater": 1}, {"Reborn": 5, "Unhallower": 2}])
+	#zombie_spawner_4.set_waves_from_dicts([{}, {"Flesheater": 1, "Severed": 1}, {"Unhallower": 2}])
+	#zombie_spawner_5.set_waves_from_dicts([{}, {"Severed": 3, "Sundered": 1, "Unhallower": 1}, {"Flesheater": 1, "Reborn": 1, "Unhallower": 1}])
 
 
 func finish_ready() -> void:
 	Global.show_pip()
+	
+	if skip_tutorials:
+		_start_free_play()
+		return
 	toolTips.show()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	_setup_tutorial()
+	print("Go To Step Maw Select")
 	go_to_step("FORCE_SELECT_MAW")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
 	Global.unhide_ui_layer()
-
+	
+func _start_free_play() -> void:
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
+	world_swap_button.visible = true
+	demonSelectionMenu.canSwapScenes = true
+	waveManager.can_start = true
+	Global.show_pip()
+	Global.unhide_ui_layer()
+	Global.unHideDemonSelectionMenu()
 
 func getIsPurpleDimension():
 	return
@@ -134,6 +171,7 @@ func _input(event: InputEvent) -> void:
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_maw() -> void:
+	print("Force Selecting Maw")
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 
 	hide_all_demon_buttons_with_exception(["Maw"])
@@ -148,6 +186,7 @@ func _start_force_select_maw() -> void:
 
 
 func _start_force_place_maw() -> void:
+	print("Force Placing Maw")
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
 
 	#demonSelectionMenu.remove_button_highlight(maw_button)
@@ -178,6 +217,7 @@ func start_game() -> void:
 
 
 func _start_explain_fleshEater_zombie() -> void:
+	print("Should Explain Flesheaster")
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_FLESHEATER)
 	toolTips.set_visual_tutorial_visual(fleshEater_zombie_demo_scene.instantiate())
 
@@ -188,6 +228,7 @@ func _start_explain_codex() -> void:
 	codex_button.visible = true
 	codex_button.pressed.connect(toolTips._on_visual_tutorial_understood_button_pressed)
 	#toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CODEX, false)
+	print("Codex Explain")
 	toolTips.set_visual_tutorial_text(TUTORIAL_SELECT_CODEX)
 	
 	demonSelectionMenu.add_pulsing_button_highlight(demonSelectionMenu.get_codex_button())
@@ -273,5 +314,5 @@ func show_only_demon_buttons(visible_containers: Array) -> void:
 
 
 func show_guide() -> void:
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 10)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 6)
 #endregion

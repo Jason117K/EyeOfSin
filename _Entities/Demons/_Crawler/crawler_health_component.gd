@@ -12,6 +12,7 @@ func receive_buff(demonName: String) -> void:
 	match demonName:
 		"SpinalOcculum" :
 			health = spinalOcculumHealth
+			maxHealth = spinalOcculumHealth
 			isSpinalOcculumBuffed = true
 
 

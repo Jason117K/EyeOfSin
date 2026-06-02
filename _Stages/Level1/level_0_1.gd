@@ -12,6 +12,7 @@ var wave3StartTimer: Timer
 
 const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Heart", "Portal", "WorldSwap"]
 
+@export var debug_wave_2_start_time := 30
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
 func _setup_tutorial() -> void:
@@ -75,6 +76,8 @@ func _ready() -> void:
 
 	#waveManager.wave_delays = [-1, -1]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
+
+		
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -103,13 +106,14 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner.set_waves_from_dicts([{"Reborn": 3}, {"Reborn": 5}, {"Severed": 3}])
+	zombie_spawner.set_waves_from_dicts([{"Reborn": 2}, {"Reborn": 4}, {"Reborn": 5, "Severed" : 1}])
 
 
 func finish_ready() -> void:
 	#Global.hide_pip()
 
 	if skip_tutorials:
+		waveManager.wave_delays = [debug_wave_2_start_time,wave3StartTime]
 		_start_free_play()
 		return
 	_setup_tutorial()
@@ -179,6 +183,7 @@ func start_game() -> void:
 
 
 func _start_explain_basic_zombie() -> void:
+	print("Explain Basic Zombie")
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate())
 

@@ -522,13 +522,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5qq15")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_3byx0")
 }, {
-"duration": 1.0,
+"duration": 1.6,
 "texture": SubResource("AtlasTexture_2y16w")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_bdofu")
 }, {
 "duration": 1.0,
@@ -539,7 +539,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -2350,13 +2350,11 @@ z_index = 1
 script = ExtResource("2")
 spiderling_wait_time = 4
 spinalOcculumHealth = 500.0
-damage = 20.0
-general_damage_increase = 20.0
 shoot_interval = 1.3
 buffed_range_target_pos = Vector2(450, 0)
 cost = 75.0
 health = 100.0
-maxHealth = 60.0
+maxHealth = 100.0
 syn_shield_position = Vector2(-5, -6.5)
 
 [node name="TempFleshHalo" type="AnimatedSprite2D" parent="." unique_id=1580291180]
@@ -2383,14 +2381,15 @@ texture = ExtResource("2_hvfi3")
 
 [node name="HealthComponent" parent="." unique_id=1763284674 instance=ExtResource("4_ol6r1")]
 script = ExtResource("5_kupbo")
+health = 800.0
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"attack_Crawler"
+animation = &"attack"
 autoplay = "spawn"
 frame = 5
-frame_progress = 0.6078307
+frame_progress = 1.0
 flip_h = true
 script = ExtResource("21_ol6r1")
 
@@ -2560,7 +2559,7 @@ material = SubResource("ShaderMaterial_5pek0")
 
 [node name="ShadowLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" unique_id=2079547033]
 position = Vector2(112.12, 120)
-points = PackedVector2Array(112.595, 131.435, 110.195854, 130.14584, 106.26559, 131.73479, 102.64853, 132.04118, 100.889435, 130.36502, 98.16701, 129.40189, 94.266266, 131.02805, 90.57417, 131.85045, 89.55329, 130.08911)
+points = PackedVector2Array(112.595, 131.435, 109.020325, 131.64, 107.735756, 129.82202, 104.69812, 129.205, 100.77266, 130.70709, 97.50511, 130.40479, 96.17727, 128.61604, 93.48761, 127.76016, 89.7702, 130.30435)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -2572,7 +2571,7 @@ material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" type="Line2D" parent="Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" unique_id=522286972]
 position = Vector2(112.595, 126.435)
-points = PackedVector2Array(112.595, 126.435, 110.195854, 123.27085, 106.26559, 122.98479, 102.64853, 121.416176, 100.889435, 117.86503, 98.16701, 115.026886, 94.266266, 114.778046, 90.57417, 113.72546, 89.55329, 110.08912)
+points = PackedVector2Array(112.595, 126.435, 109.020325, 124.765, 107.735756, 121.07202, 104.69812, 118.579994, 100.77266, 118.20709, 97.50511, 116.02979, 96.17727, 112.36604, 93.48761, 109.63516, 89.7702, 110.30435)
 width = 3.0
 width_curve = SubResource("Curve_io8k3")
 joint_mode = 2
@@ -2593,7 +2592,7 @@ width_curve = SubResource("Curve_mmfac")
 render_target_update_mode = 0
 
 [node name="ShadowLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(542749670, 648045698) index="0" unique_id=1872142284]
-points = PackedVector2Array(112.595, 131.435, 113.2891, 130.91995, 115.56092, 131.82323, 116.66799, 131.45993, 116.37536, 130.84198, 117.52523, 130.4931, 119.73845, 131.24866, 121.1227, 131.12627, 119.935776, 130.92674)
+points = PackedVector2Array(112.595, 131.435, 114.37269, 131.46378, 116.39623, 131.89738, 116.3482, 131.24733, 116.35404, 130.60283, 118.227554, 130.7652, 120.20712, 131.114, 120.27172, 130.52129, 119.29326, 130.18326)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 
@@ -2601,7 +2600,7 @@ width_curve = SubResource("Curve_mmfac")
 material = SubResource("ShaderMaterial_jwcrf")
 
 [node name="BaseLine" parent="Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
-points = PackedVector2Array(112.595, 126.435, 113.2891, 124.04496, 115.56092, 123.07323, 116.66799, 120.83492, 116.37536, 118.34198, 117.52523, 116.11811, 119.73845, 114.99866, 121.1227, 113.00127, 119.935776, 110.92675)
+points = PackedVector2Array(112.595, 126.435, 114.37269, 124.58878, 116.39623, 123.14739, 116.3482, 120.62232, 116.35404, 118.10283, 118.227554, 116.390205, 120.20712, 114.864, 120.27172, 112.39629, 119.29326, 110.18326)
 width = 3.0
 width_curve = SubResource("Curve_mmfac")
 

@@ -16,8 +16,14 @@ var level0_1 := ("res://_Stages/Level1/Level0-1.tscn")
 var level0_1Alt := ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 var level0_2 := ("res://_Stages/Level2/Level0-2.tscn")
 var level0_2Alt := ("res://_Stages/Level2/Level0-2_Alternate.tscn")
-var level0_3 := ("res://_Stages/Level3/Level0-3.tscn")
-var level0_3Alt := ("res://_Stages/Level3/Level0-3_Alternate.tscn")
+
+
+var level0_3 := ("res://_Stages/Level2/Level0-3B.tscn")
+var level0_3Alt := ("res://_Stages/Level3/Level0-3_Alternate_B.tscn")
+
+
+#var level0_3 := ("res://_Stages/Level3/Level0-3.tscn")
+#var level0_3Alt := ("res://_Stages/Level3/Level0-3_Alternate.tscn")
 var level0_4 := ("res://_Stages/Level4/Level0-4.tscn")
 var level0_4Alt := ("res://_Stages/Level4/Level0-4_Alternate.tscn")
 var level0_5 := ("res://_Stages/Level5/Level0-5.tscn")

@@ -15,6 +15,8 @@ signal this_zombie_died(deadZombie)
 @export var should_health_regen := false 
 @export var time_between_health_regen := 5
 @export var is_syn_marked := false 
+@export var has_armor := false 
+
 @export_category("Speed")
 @export var speed : float = 16
 

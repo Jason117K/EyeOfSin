@@ -138,4 +138,4 @@ func _process(_delta: float) -> void:
 									buffedDemons.append(demonToBuff)
 								#blood_tile.visible = true
 								break
-				blood_tile.visible = bloodTileVisible
+				#blood_tile.visible = bloodTileVisible

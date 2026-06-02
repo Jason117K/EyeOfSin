@@ -89,20 +89,20 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 
 func receive_buff(newDemon: String) -> void:
 	super(newDemon)
-	damage = damage + damage_increase
+	
 	match newDemon:
 		"Occulum":
-			pass
+			damage = damage + damage_increase
 		"Crawler":
 			pass
 		"SpinalOcculum" :
-			pass
+			damage = damage + damage_increase
 		"Wyrm":
-			pass
+			damage = damage + damage_increase
 		"Hive":
-			pass
+			damage = damage + damage_increase
 		"Maw":
-			pass
+			damage = damage + damage_increase
 	
 func _on_sprite_frame_changed(animation_name: String, frame_index: int) -> void:
 	super(animation_name,frame_index)

@@ -13,6 +13,7 @@ var has_pulsed := false
 @export var new_end_dialog := "res://_Assets/Dialog/level_0_end_dialog.dtl"
 @export var wave2StartTime := 30
 @export var wave3StartTime := 60
+@export var wave4StartTime := 75
 @export var debug := true
 @export var skip_tutorials := false  # true = skip all tutorial messages; level free-plays
 @onready var toolTips := $"../ToolTips"

@@ -26,7 +26,7 @@ var is_syn_marked : bool = false
 var syn_dmg_mult := 2.0
 var is_flame_dmg_linked := false 
 var link_damage_modifier := 0.5
-
+var has_armor := false 
 signal enemy_died(enemy : Node)
 
 
@@ -39,6 +39,7 @@ func _init(new_parent_zombie : Zombie) -> void:
 	bloodWorth = new_parent_zombie.bloodWorth
 	time_between_bleed = new_parent_zombie.time_between_bleed
 	bleed_tick_damage = new_parent_zombie.bleed_tick_damage
+	has_armor = new_parent_zombie.has_armor
 	maxHealth = health
 	halfHealth = health / 2.0
 
@@ -67,6 +68,13 @@ func take_damage(is_link_damage : bool = false, damage: float = 1.0, _piercing: 
 		damage = damage * syn_dmg_mult
 	if is_flame_dmg_linked && !is_link_damage:
 		Global.damage_all_zombies_with_link(damage*link_damage_modifier,parent_zombie)
+	if has_armor:
+		if _piercing == false:
+			if damage >= 10:
+				damage = damage - 5
+			elif damage < 10:
+				damage = damage / 2
+			
 	health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)

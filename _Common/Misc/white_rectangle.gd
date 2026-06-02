@@ -13,6 +13,8 @@ extends Sprite2D
 @export var max_scale: float = 0.9
 @export var breath_duration: float = 1.0
 
+var default_self_modulate := Color("00000081")
+@export var hover_self_modulate : Color
 var _breath_tween: Tween
 var _initial_scale: Vector2
 
@@ -20,7 +22,7 @@ var _initial_scale: Vector2
 func _ready() -> void:
 	_initial_scale = scale
 	#print("Rect Is Alive")
-	
+	visibility_layer = get_parent().get_parent().visibility_layer
 	if breathing:
 		_start_breathing()
 
@@ -43,3 +45,11 @@ func _stop_breathing() -> void:
 	if _breath_tween and _breath_tween.is_valid():
 		_breath_tween.kill()
 	scale = _initial_scale
+
+
+func _on_area_2d_mouse_entered() -> void:
+	self_modulate = hover_self_modulate
+
+
+func _on_area_2d_mouse_exited() -> void:
+	self_modulate = default_self_modulate

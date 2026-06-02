@@ -132,18 +132,20 @@ func highlight() -> void:
 func _on_BloodTimer_timeout() -> void:
 	generate_blood()
 	bloodTimer.start()
-
+	
+func force_generate_blood()->Node2D:
+	var blood_instance := BloodScene.instantiate()
+	if self.is_in_group("Green"):
+		blood_instance.add_to_group("Green")
+	else:
+		blood_instance.add_to_group("Purple")
+	blood_instance.global_position = self.global_position + Vector2(0, -40)
+	return blood_instance
+	
 func generate_blood() -> Node2D:
-	if get_parent().get_parent().has_method("get_true_name"):
-		if "Level0-2" in get_parent().get_parent().get_true_name():
-			if madeTutorialBlood == false:
-				pass
-				madeTutorialBlood = true
-			elif Global.gameIsStarted == false:
-				return
-		elif Global.gameIsStarted == false:
-			print("Game Not Started Cannot Generate")
-			return
+	if Global.gameIsStarted == false:
+		print("Game Not Started Cannot Generate")
+		return
 
 	if mawBuff:
 		can_eat_zombie = true
