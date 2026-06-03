@@ -22,7 +22,7 @@ var has_pulsed := false
 #@onready var waveManager = $GameLayer/WaveManager
 @onready var game_layer := $GameLayer
 @onready var waveManager := get_parent().get_node("WaveManager")
-@onready var spotlight_overlay := $"../SpotlightOverlay"  # Reference to CanvasLayer
+#@onready var spotlight_overlay := $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button :=   $"../DemonSelectionMenu/PanelContainer2/UtilityVBoxContainer/HBoxContainer/PauseButton"
 @onready var levelSwitcher := $"../LevelSwitcher"
 @onready var _demon_hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
@@ -148,43 +148,7 @@ func remove_empty_blocker_demon(grid_pos:Vector2) -> void:
 
 # Spotlight helper functions - ADD THESE NEW FUNCTIONS
 
-## Shows spotlight centered on a Control node
-func show_spotlight_at_node(target_node: Control, size_multiplier: float = 1.0)->void:
-	if not target_node or not spotlight_overlay:
-		print("NOT SHOWING SPOTLIGHT")
-		return
-	print("Showing Spotlight At Node", target_node, size_multiplier)
 
-	# Get center of target in screen coordinates
-	var global_rect := target_node.get_global_rect()
-	var center := global_rect.get_center()
-
-	# Calculate appropriate spotlight size based on button size
-	var viewport_size := get_viewport().get_visible_rect().size
-	var button_diagonal := global_rect.size.length()
-	var uv_size := (button_diagonal / viewport_size.y) * 0.6 * size_multiplier
-
-	show_spotlight_at_position(center, uv_size)
-
-## Shows spotlight at specific screen position
-func show_spotlight_at_position(screen_pos: Vector2, this_size: float = 0.15) -> void:
-	if not spotlight_overlay:
-		return
-	var viewport_size := get_viewport().get_visible_rect().size
-	var uv_pos := screen_pos / viewport_size
-	print("[SHOW SPOTLIGHT] Screen pos: ", screen_pos, " → UV: ", uv_pos, " Size: ", this_size)
-	#var viewport_size = get_viewport().get_visible_rect().size
-	#var uv_pos = screen_pos / viewport_size
-
-	var spotlight_rect := spotlight_overlay.get_node("SpotlightRect")
-	spotlight_rect.material.set_shader_parameter("circle_position", uv_pos)
-	spotlight_rect.material.set_shader_parameter("circle_size", this_size)
-	spotlight_overlay.visible = true
-
-## Hides spotlight overlay
-func hide_spotlight() -> void:
-	if spotlight_overlay:
-		spotlight_overlay.visible = false
 
 
 func hide_guide() -> void:

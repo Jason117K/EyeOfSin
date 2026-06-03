@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://_Assets/Environment/Props/Bramble1.png" id="10_vgtya"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://_Assets/Environment/Props/Bramble2PROP.png" id="11_4ojxa"]
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="12_bcgeo"]
-[ext_resource type="PackedScene" uid="uid://c7qxb81x4h2ne" path="res://_Entities/Demons/Tentacles/arm_line.tscn" id="13_bcgeo"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://_Entities/LevelDecorations/Shrub.tscn" id="13_hj78q"]
 [ext_resource type="Texture2D" uid="uid://doopqiivdy4f2" path="res://_Assets/Misc/TitleCard.png" id="14_4ojxa"]
 [ext_resource type="FontFile" uid="uid://dw8o777s6dcqi" path="res://_Assets/Fonts/Fleshandblood-MVA5x.ttf" id="14_4rth8"]
@@ -641,25 +640,6 @@ position = Vector2(-35.4, 9.2)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("18_vgtya")
 flip_v = true
-
-[node name="ArmLine" parent="." unique_id=1650852918 instance=ExtResource("13_bcgeo")]
-position = Vector2(-11, 412)
-metadata/_edit_lock_ = true
-
-[node name="ArmLine2" parent="." unique_id=1250489295 instance=ExtResource("13_bcgeo")]
-position = Vector2(751, -2)
-rotation = -3.14159
-metadata/_edit_lock_ = true
-
-[node name="ArmLine3" parent="." unique_id=1322033599 instance=ExtResource("13_bcgeo")]
-position = Vector2(744, 416)
-rotation = -1.5708
-metadata/_edit_lock_ = true
-
-[node name="ArmLine4" parent="." unique_id=172362847 instance=ExtResource("13_bcgeo")]
-position = Vector2(-1, -82)
-rotation = 1.5708
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

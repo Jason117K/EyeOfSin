@@ -170,7 +170,7 @@ func _start_force_place_wyrm() -> void:
 
 	#demonSelectionMenu.remove_button_highlight(wyrm_button)
 	demonSelectionMenu.stop_glow_pulse(wyrm_button)
-	hide_spotlight()
+	#hide_spotlight()
 
 
 func _start_tutorial_p1_done() -> void:
@@ -214,7 +214,7 @@ func _filter_block_deselect(event: InputEvent) -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
-	hide_spotlight()
+	#hide_spotlight()
 
 	match get_current_step_name():
 		"FORCE_PLACE_WYRM":

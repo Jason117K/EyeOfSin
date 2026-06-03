@@ -174,7 +174,7 @@ func _start_force_place_demon() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_CRAWLER, false)
 
 	unhighlight_crawler_button()
-	hide_spotlight()
+#	#hide_spotlight()
 
 
 func _start_explain_blood_cost() -> void:
@@ -266,7 +266,7 @@ func _filter_only_allow_y(event: InputEvent) -> void:
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
 	print("Tooltip Was Hidden, Current Step is ", get_current_step_name() )
-	hide_spotlight()
+	#hide_spotlight()
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_COST":
 			pass

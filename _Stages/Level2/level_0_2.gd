@@ -215,7 +215,7 @@ func _start_force_place_occulum() -> void:
 	
 	#demonSelectionMenu.remove_button_highlight(occulum_button)
 	demonSelectionMenu.stop_glow_pulse(occulum_button)
-	hide_spotlight()
+	#hide_spotlight()
 
 
 func _start_explain_blood_gen() -> void:
@@ -303,7 +303,7 @@ func _start_force_place_spinalOcculum() -> void:
 	
 	#demonSelectionMenu.remove_button_highlight(spinal_occulum_button)
 	demonSelectionMenu.stop_glow_pulse(spinal_occulum_button)
-	hide_spotlight()
+	#hide_spotlight()
 #endregion
 
 
@@ -340,7 +340,7 @@ func _filter_block_place_demon_and_deselect(event: InputEvent) -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
-	hide_spotlight()
+	#hide_spotlight()
 
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_BUFFS":
@@ -468,7 +468,7 @@ func _physics_process(_delta: float) -> void:
 	if waiting_for_blood and demonManager.blood_points > blood_before_pickup:
 		waiting_for_blood = false
 		toolTips.hide()
-		hide_spotlight()
+		#hide_spotlight()
 		get_tree().paused = false
 		print("Advancing Tutorial 1")
 		advance_tutorial() # → FORCE_SELECT_CRAWLER

@@ -25,6 +25,8 @@ var _default_root_cull_mask := 0xFFFFFFFF
 
 
 func _ready() -> void:
+	Engine.max_fps = DisplayServer.screen_get_refresh_rate()
+	print("Max FPS Set to " , Engine.max_fps)
 	Global.game_controller = self
 	current_scene = scene_container.get_child(0)
 	swap_ability = Global.swap_ability

@@ -4,11 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cwnxaalr7lrsd" path="res://_Stages/StartScreen/StartScreen.tscn" id="2_mahd0"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://_Common/LevelSwitching/LevelSwitcher.tscn" id="3_3rtt1"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_2jv8n"]
-[ext_resource type="PackedScene" uid="uid://dpltvbm84xujg" path="res://_UI/Pause/spotlight_overlay.tscn" id="5_vtmjq"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="6_c6rbx"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
-[ext_resource type="PackedScene" uid="uid://cd17phymp0lo1" path="res://_Entities/SynAbility/syn_ability.tscn" id="10_3rtt1"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
@@ -47,9 +45,6 @@ current_level_alt = "res://Scenes/LevelScenes/Level0-1_Alternate.tscn"
 [node name="ToolTips" parent="CurrentScene" unique_id=728556310 instance=ExtResource("4_2jv8n")]
 visible = false
 layout_mode = 1
-
-[node name="SpotlightOverlay" parent="CurrentScene" unique_id=1663549642 instance=ExtResource("5_vtmjq")]
-visible = false
 
 [node name="DemonSelectionMenu" parent="CurrentScene" unique_id=980103445 instance=ExtResource("6_c6rbx")]
 process_mode = 3
@@ -125,7 +120,5 @@ mouse_filter = 2
 texture = SubResource("ViewportTexture_mahd0")
 expand_mode = 1
 stretch_mode = 6
-
-[node name="SynAbility" parent="." unique_id=1228459711 instance=ExtResource("10_3rtt1")]
 
 [editable path="CurrentScene/DemonSelectionMenu"]

@@ -133,7 +133,7 @@ func _start_explain_amalgam_zombie() -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
-	hide_spotlight()
+	#hide_spotlight()
 
 	match get_current_step_name():
 		"EXPLAIN_AMALGAM_ZOMBIE":
