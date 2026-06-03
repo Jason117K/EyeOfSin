@@ -71,7 +71,7 @@ layout_mode = 1
 make_green = true
 
 [node name="DemonManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
-blood_points = 5000
+blood_points = 500
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1094768339]
 process_mode = 1

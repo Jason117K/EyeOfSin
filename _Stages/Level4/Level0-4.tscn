@@ -3609,7 +3609,7 @@ skip_end_dialog = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1939348814 instance=ExtResource("2_60dyi")]
-blood_points = 5000
+blood_points = 500
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1754723991]
 process_mode = 1
