@@ -42,6 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_hcyne"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="23_eu4n5"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="26_adj10"]
+[ext_resource type="Texture2D" uid="uid://xnmh8u6wirep" path="res://_Stages/SynMantaRay-Sheet.png" id="43_qbruy"]
+[ext_resource type="Script" uid="uid://cjto6m715op88" path="res://_Stages/syn_manta_ray.gd" id="44_casp2"]
 
 [sub_resource type="Shader" id="Shader_654uq"]
 code = "
@@ -1972,6 +1974,80 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_468no"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(0, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np61k"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(196, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1esa2"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(392, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_717xy"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(588, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbu8j"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(784, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2121"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(980, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85tew"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(1176, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81h6e"]
+atlas = ExtResource("43_qbruy")
+region = Rect2(1372, 0, 196, 188)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01j72"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_468no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np61k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1esa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_717xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbu8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2121")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85tew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81h6e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Curve" id="Curve_rexr6"]
+_data = [Vector2(0, 1), 0.0, 0.1529608, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_qbruy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -250, 300, 0, 0, 0, 0, 900, 300)
+}
+point_count = 2
+
 [node name="Level0-1_Alternate" type="Control" unique_id=1284067696 groups=["Green", "GreenLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -2290,6 +2366,18 @@ visible = false
 [node name="EyeStalk" type="AnimatedSprite2D" parent="Environment/Special" unique_id=1125289580]
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
+
+[node name="SynMantaRay" type="AnimatedSprite2D" parent="." unique_id=1389841702 node_paths=PackedStringArray("path")]
+position = Vector2(112, 331)
+sprite_frames = SubResource("SpriteFrames_01j72")
+autoplay = "default"
+script = ExtResource("44_casp2")
+position_curve = SubResource("Curve_rexr6")
+travel_time = 25.0
+path = NodePath("../Path2D")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1977748920]
+curve = SubResource("Curve2D_qbruy")
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

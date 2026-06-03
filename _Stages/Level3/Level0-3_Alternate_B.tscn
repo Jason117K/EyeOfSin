@@ -7,15 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="5_cfq71"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="6_7fyap"]
 [ext_resource type="Texture2D" uid="uid://ch7x4yluo887e" path="res://_Assets/Environment/Tilesets/Ground_Rock_GreenVer1.png" id="7_1rolb"]
-[ext_resource type="Texture2D" uid="uid://mel1dtr6mh8m" path="res://_Assets/Environment/Props/CoralSmall_PROP-GREEN.png" id="7_hf7a2"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="8_jhxut"]
 [ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://_Common/EnvironmentScripts/sway.gd" id="8_nlpi7"]
-[ext_resource type="Texture2D" uid="uid://lv3q8rfmk8qp" path="res://_Assets/Environment/Props/CoralBig_PropGREEN.png" id="9_0gp8h"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="9_lgc8d"]
 [ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="10_dk2pv"]
 [ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://_Common/Shaders/swayShader.tres" id="10_hu21d"]
 [ext_resource type="Texture2D" uid="uid://brt2p4mtk3uyg" path="res://_Assets/Environment/Tilesets/SpecialTile1.png" id="11_4uwwf"]
-[ext_resource type="Texture2D" uid="uid://cxhrh8bhif8xv" path="res://_Assets/Environment/Props/Coral_ExtraBig-GREEN.png" id="11_8qd0j"]
 [ext_resource type="Texture2D" uid="uid://uiw11ovkt4qo" path="res://_Assets/Environment/Props/FetusProp-Green.png" id="12_h4ilf"]
 [ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://_Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="12_o3smw"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://_Assets/Environment/Props/Bramble1.png" id="13_gfggt"]
@@ -37,6 +34,11 @@
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="21_4uwwf"]
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="21_x8fgy"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="22_j0e34"]
+[ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://_Assets/Environment/Props/Pustules-export.png" id="23_lgc8d"]
+[ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://_Assets/Environment/Props/Pustules_shadow1_Medium.png" id="25_dk2pv"]
+[ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://_Assets/Environment/Props/Pustules_shadow1_big.png" id="27_4uwwf"]
+[ext_resource type="Texture2D" uid="uid://xnmh8u6wirep" path="res://_Stages/SynMantaRay-Sheet.png" id="38_lgc8d"]
+[ext_resource type="Script" uid="uid://cjto6m715op88" path="res://_Stages/syn_manta_ray.gd" id="39_dk2pv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4le5d"]
 texture = ExtResource("7_1rolb")
@@ -1156,6 +1158,80 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_468no"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(0, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np61k"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(196, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1esa2"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(392, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_717xy"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(588, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbu8j"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(784, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2121"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(980, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85tew"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(1176, 0, 196, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81h6e"]
+atlas = ExtResource("38_lgc8d")
+region = Rect2(1372, 0, 196, 188)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4uwwf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_468no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np61k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1esa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_717xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbu8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2121")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85tew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81h6e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Curve" id="Curve_o3smw"]
+_data = [Vector2(0, 1), 0.0, 0.1529608, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_lgc8d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -250, 364, 0, 0, 0, 0, 900, 364)
+}
+point_count = 2
+
 [node name="Level03Alternate_B" type="Control" unique_id=247872464 groups=["Green", "GreenLevel"]]
 layout_mode = 3
 anchors_preset = 15
@@ -1244,104 +1320,104 @@ z_index = 1
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=861571528]
 position = Vector2(543, 347)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 script = ExtResource("8_nlpi7")
 
 [node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral" unique_id=2018345397]
 position = Vector2(499, 335)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 script = ExtResource("8_nlpi7")
 
 [node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral" unique_id=731535768]
 position = Vector2(670, 400)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 flip_h = true
 script = ExtResource("8_nlpi7")
 
 [node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral" unique_id=1966091586]
 position = Vector2(601, 401)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 flip_h = true
 script = ExtResource("8_nlpi7")
 
 [node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral" unique_id=1447269909]
 position = Vector2(718, 321)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 script = ExtResource("8_nlpi7")
 
 [node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral" unique_id=1220685096]
 position = Vector2(420, 382)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 
 [node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral" unique_id=742940410]
 position = Vector2(113, 323)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 
 [node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral" unique_id=1774229735]
 position = Vector2(262, 8)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 flip_h = true
 
 [node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral" unique_id=1943972156]
 position = Vector2(497, 16)
-texture = ExtResource("7_hf7a2")
+texture = ExtResource("23_lgc8d")
 
 [node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral" unique_id=550502791]
 position = Vector2(618, 344)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 
 [node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral" unique_id=44014870]
 position = Vector2(406, 333)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 flip_h = true
 
 [node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral" unique_id=639303807]
 position = Vector2(707, 397)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 flip_h = true
 
 [node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral" unique_id=1429400154]
 position = Vector2(724, 4)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 flip_h = true
 
 [node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral" unique_id=1665115608]
 position = Vector2(263, 323)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 flip_h = true
 
 [node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral" unique_id=571056879]
 position = Vector2(490, 396)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 flip_h = true
 
 [node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral" unique_id=692009692]
 position = Vector2(620, 3)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 flip_h = true
 
 [node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral" unique_id=1656216815]
 position = Vector2(609, 15)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 flip_h = true
 
 [node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral" unique_id=172514367]
 position = Vector2(353, 14)
-texture = ExtResource("9_0gp8h")
+texture = ExtResource("25_dk2pv")
 
 [node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral" unique_id=1422230742]
 material = SubResource("ShaderMaterial_fsj0e")
 position = Vector2(563, 378)
-texture = ExtResource("11_8qd0j")
+texture = ExtResource("27_4uwwf")
 script = ExtResource("8_nlpi7")
 
 [node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral" unique_id=499845784]
 position = Vector2(662, 343)
-texture = ExtResource("11_8qd0j")
+texture = ExtResource("27_4uwwf")
 
 [node name="Biggest_Coral3" type="Sprite2D" parent="Environment/Coral" unique_id=666623613]
 position = Vector2(344, 342)
-texture = ExtResource("11_8qd0j")
+texture = ExtResource("27_4uwwf")
 
 [node name="FetusProp" type="Sprite2D" parent="Environment/Coral" unique_id=498413513]
 position = Vector2(438, 4)
@@ -1533,6 +1609,18 @@ bus = &"music"
 position = Vector2(370, 208)
 
 [node name="Timer" type="Timer" parent="." unique_id=1920464950]
+
+[node name="SynMantaRay" type="AnimatedSprite2D" parent="." unique_id=970756652 node_paths=PackedStringArray("path")]
+position = Vector2(176, 360)
+sprite_frames = SubResource("SpriteFrames_4uwwf")
+autoplay = "default"
+script = ExtResource("39_dk2pv")
+position_curve = SubResource("Curve_o3smw")
+travel_time = 20.0
+path = NodePath("../Path2D")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=137838850]
+curve = SubResource("Curve2D_lgc8d")
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

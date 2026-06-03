@@ -73,12 +73,12 @@ var deselectText := " PRESS [X] TO DESELECT"
 var canSwapScenes := false
 
 # Thickness of the highlight border (in pixels)
-@export var highlight_border_thickness: int = 4
+@export var highlight_border_thickness: int = 1
 
 # Color of the highlight border
 @export var highlight_border_color: Color = Color.RED
 
-var doubleSpeed := false
+var doubleSpeed := true
 
 func _ready() -> void:
 	add_child(preview_container)
@@ -328,7 +328,7 @@ func add_button_highlight(button: TextureButton) -> void:
 	button.add_theme_stylebox_override("normal", demon_highlight_stylebox)
 	
 	
-func add_pulsing_button_highlight(button: TextureButton) -> void:
+func add_pulsing_button_highlight(button: TextureButton, should_pulse : bool = true) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
@@ -341,7 +341,7 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 
 	# Create a Panel as a child to act as the border/glow
 	var panel := Panel.new()
-	panel.scale = Vector2(0.8,0.8)
+	#panel.scale = Vector2(0.8,0.8)
 	panel.name = "HighlightPanel"
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
 
@@ -352,10 +352,10 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 
 
 	# Expand slightly beyond the button to create a border effect
-	var margin := highlight_border_thickness + 4
+	var margin := highlight_border_thickness #+ 4
 	#panel.position = Vector2(-margin, -margin)
-	panel.position = Vector2(0,0)
-	panel.size = button.size + Vector2(margin * 2, margin * 2)
+	#panel.position = Vector2(0,0)
+	panel.size = button.size #+ Vector2(margin * 2, margin * 2)
 	panel.z_index = 2
 
 	# Build the stylebox for the panel
@@ -367,12 +367,12 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 	highlight_style.border_width_bottom = highlight_border_thickness
 	highlight_style.border_color = highlight_border_color
 	highlight_style.shadow_color = Color(highlight_border_color, 0.5)
-	highlight_style.shadow_size = 8
+	highlight_style.shadow_size = 2
 	highlight_style.shadow_offset = Vector2.ZERO
-	highlight_style.corner_radius_top_left = 4
-	highlight_style.corner_radius_top_right = 4
-	highlight_style.corner_radius_bottom_left = 4
-	highlight_style.corner_radius_bottom_right = 4
+	highlight_style.corner_radius_top_left = 2
+	highlight_style.corner_radius_top_right = 2
+	highlight_style.corner_radius_bottom_left = 2
+	highlight_style.corner_radius_bottom_right = 2
 
 	panel.add_theme_stylebox_override("panel", highlight_style)
 	button.set_meta("highlight_panel", panel)
@@ -380,7 +380,8 @@ func add_pulsing_button_highlight(button: TextureButton) -> void:
 
 
 	print("Crawler Button is ", button, " panel is ", panel )
-	start_glow_pulse(button, panel, highlight_style)
+	if should_pulse:
+		start_glow_pulse(button, panel, highlight_style)
 
 func start_glow_pulse(button: TextureButton, _panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
 	if button.has_meta("glow_tween"):
@@ -393,16 +394,16 @@ func start_glow_pulse(button: TextureButton, _panel: Panel, style: StyleBoxFlat,
 
 	tween.tween_method(
 		func(val: int) -> void:
-			style.shadow_size = int(lerpf(4, 12, val))
-			style.shadow_color = Color(glow_color, lerpf(0.2, 0.6, val)),
-		0.0, 1.0, 0.8
+			style.shadow_size = int(lerpf(4, 8, val))
+			style.shadow_color = Color(glow_color, lerpf(0.2, 0.4, val)),
+		0.0, 1.0, 1.2
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	tween.tween_method(
 		func(val: int) -> void:
-			style.shadow_size = int(lerpf(12, 4, val))
-			style.shadow_color = Color(glow_color, lerpf(0.6, 0.2, val)),
-		0.0, 1.0, 0.8
+			style.shadow_size = int(lerpf(8, 4, val))
+			style.shadow_color = Color(glow_color, lerpf(0.4, 0.2, val)),
+		0.0, 1.0, 1.2
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	button.set_meta("glow_tween", tween)
@@ -504,11 +505,14 @@ func _on_codex_button_pressed() -> void:
 
 
 func _on_fast_forward_pressed() -> void:
-
+	
 	if doubleSpeed : 
+		add_pulsing_button_highlight(fastForwardButton,false)
 		Engine.time_scale = 2
 		doubleSpeed = false
 	else:
+		stop_glow_pulse(fastForwardButton)
+		remove_button_highlight(fastForwardButton)
 		Engine.time_scale = 1
 		doubleSpeed = true
 

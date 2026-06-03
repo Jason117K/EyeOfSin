@@ -62,4 +62,5 @@ shape = SubResource("1")
 
 [node name="Swim" type="AnimatedSprite2D" parent="." unique_id=572653150]
 sprite_frames = SubResource("4")
+animation = &"green"
 script = ExtResource("4")
