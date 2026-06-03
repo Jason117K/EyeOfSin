@@ -20,34 +20,34 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner_1.set_waves_from_dicts([{"Reborn":4,"Severed":2},
-											{"Severed": 2},
-											{"Severed": 3}, 
-											{"Reborn": 6, "Unhallower": 2}])
+	zombie_spawner_1.set_waves_from_dicts([{"Reborn":6,"Severed":2},
+											{"Severed": 5},
+											{"Severed": 3, "Unhallower":1}, 
+											{"Reborn": 6, "Unhallower": 3, "Reanimator":2}])
 	zombie_spawner_2.set_waves_from_dicts([{},
-											{"Severed" : 1}, 
-											{"Severed": 1, "Reborn": 5}, 
-											{"Severed": 2, "Unhallower": 1}])
+											{"Severed" : 3}, 
+											{"Severed": 2, "Reborn": 6}, 
+											{"Severed": 2, "Unhallower": 1, "Reanimator" : 1}])
 	zombie_spawner_3.set_waves_from_dicts([{},
 											{}, 
 											{"Reborn": 1, "Severed": 3}, 
-											{ "Severed": 4}])
-	zombie_spawner_4.set_waves_from_dicts([{"Reborn": 3}, 
-											{"Severed": 2, "Reborn":3},
+											{ "Severed": 9}])
+	zombie_spawner_4.set_waves_from_dicts([{"Severed": 4}, 
+											{"Severed": 3, "Reborn":5},
 											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 4}]) 
+											{"Severed": 6, "Unhallower":2}]) 
 	zombie_spawner_5.set_waves_from_dicts([{},
 											{}, 
 											{"Reborn": 4, "Severed": 1}, 
 											{"Severed": 4}])
 	zombie_spawner_6.set_waves_from_dicts([{}, 
-											{"Severed": 2, "Reborn":3},
+											{"Severed": 4, "Reborn":9},
 											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 4}]) 
-	zombie_spawner_7.set_waves_from_dicts([{"Unhallower":1}, 
-											{"Severed": 2, "Reborn":3},
-											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 4}])
+											{"Severed": 8}]) 
+	zombie_spawner_7.set_waves_from_dicts([{"Reborn":5,"Severed":2}, 
+											{"Severed": 2, "Reborn":6, "Unhallower":1},
+											{"Reborn": 4, "Severed": 1, "Reanimator":1}, 
+											{"Reborn": 9, "Reanimator":2}])
 func getIsGreenDimension() -> bool:
 	return isGreenDimension
 

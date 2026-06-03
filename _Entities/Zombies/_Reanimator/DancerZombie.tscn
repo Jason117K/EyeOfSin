@@ -474,7 +474,7 @@ position = Vector2(0, 32)
 position = Vector2(32, 32)
 
 [node name="SummonTimer" type="Timer" parent="SummonComponent" unique_id=1361586840]
-wait_time = 25.0
+wait_time = 17.0
 autostart = true
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=326477493]

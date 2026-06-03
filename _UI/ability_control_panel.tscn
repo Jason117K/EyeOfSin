@@ -534,13 +534,13 @@ theme_override_constants/margin_left = 2
 layout_mode = 2
 
 [node name="BloodRainButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/SwapAbilitiesMargin/SwapAbilitiesHbox" unique_id=1735394826]
+visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture_normal = ExtResource("5_cffer")
 stretch_mode = 5
 
 [node name="LightningStormButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/SwapAbilitiesMargin/SwapAbilitiesHbox" unique_id=163531993]
-visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture_normal = ExtResource("2_oeg55")

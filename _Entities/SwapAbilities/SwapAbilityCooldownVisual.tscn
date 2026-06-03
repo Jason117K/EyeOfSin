@@ -78,7 +78,6 @@ size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_yn551")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/fill = SubResource("StyleBoxFlat_dc01u")
-value = 100.0
 show_percentage = false
 
 [node name="SwapAbilityLabel" type="Label" parent="SwapAbilityCooldownPanel/SwapAbilityProgressBar" unique_id=178262788]

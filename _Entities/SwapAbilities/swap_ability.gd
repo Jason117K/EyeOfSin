@@ -30,13 +30,18 @@ func _ready() -> void:
 	add_child(cooldown_timer)
 	#cooldown_timer.start()
 
+func game_start():
+	print("Game Start For Swap Ability Called")
+	cooldown_timer.start()
+	
+
 func reset_cooldown() -> void:
 	is_on_cooldown = false
 
 func reset_on_game_start() -> void:
 	cooldown_fill_amount = 0
 	is_on_cooldown = true
-	cooldown_timer.start()
+	#cooldown_timer.start()
 
 func begin() -> void:
 	pass
@@ -82,6 +87,7 @@ func stop() -> void:
 			child.hide()
 	is_active = false
 	cooldown_timer.wait_time = cooldown_duration
+	print("Game Start for swap aaa here")
 	cooldown_timer.start()
 	is_on_cooldown = true
 	cooldown_elapsed = 0.0
@@ -93,20 +99,20 @@ func append_new_zombie(new_zombie : Zombie) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	
-	if is_active == false && is_on_cooldown:
-		cooldown_elapsed += delta
-		#cooldown_fill_amount = clampf(cooldown_elapsed / cooldown_duration, 0.0, 1.0)
-		#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
-		
-		cooldown_fill_amount = clampf((cooldown_elapsed / cooldown_duration)*100, 0.0, 100.0)
-		#print(cooldown_fill_amount , "Cooldown Duyration Is ", cooldown_duration)
-	elif is_active == true:
-		cooldown_fill_amount = 0.0
-		#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
-		#print("Is Active ", is_active, "Is On Cooldown ", is_on_cooldown, "Fill Amount ", cooldown_fill_amount)
-			#
-	swap_cooldown_visual_bar.value = cooldown_fill_amount
+	if Global.gameIsStarted:
+		if is_active == false && is_on_cooldown:
+			cooldown_elapsed += delta
+			#cooldown_fill_amount = clampf(cooldown_elapsed / cooldown_duration, 0.0, 1.0)
+			#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
+			
+			cooldown_fill_amount = clampf((cooldown_elapsed / cooldown_duration)*100, 0.0, 100.0)
+			#print(cooldown_fill_amount , "Cooldown Duyration Is ", cooldown_duration)
+		elif is_active == true:
+			cooldown_fill_amount = 0.0
+			#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
+			#print("Is Active ", is_active, "Is On Cooldown ", is_on_cooldown, "Fill Amount ", cooldown_fill_amount)
+				#
+		swap_cooldown_visual_bar.value = cooldown_fill_amount
 	
 	
 func set_current_visibility_layer(flag : int)->void:

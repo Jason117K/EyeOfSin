@@ -131,7 +131,7 @@ func activate_syn_ability(target_pos:Vector2)->void:
 	charge["cooldown_duration"] = new_syn_ability_instance.get_ability_cooldown_duration()
 
 	get_parent().get_active_dimension().add_child(new_syn_ability_instance)
-
+	new_syn_ability_instance.global_position = get_parent().get_active_dimension().get_global_mouse_position()
 # Called by Global.deregister_syn_ability when an instance dies / is removed.
 func deregister_ability_instance(old_ability:Area2D)->void:
 	var color := "Purple" if old_ability.is_in_group("Purple") else "Green"

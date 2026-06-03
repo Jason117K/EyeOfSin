@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="6_c6rbx"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
+[ext_resource type="PackedScene" uid="uid://cd17phymp0lo1" path="res://_Entities/SynAbility/syn_ability.tscn" id="10_3rtt1"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
@@ -120,5 +121,7 @@ mouse_filter = 2
 texture = SubResource("ViewportTexture_mahd0")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="SynAbility" parent="." unique_id=1228459711 instance=ExtResource("10_3rtt1")]
 
 [editable path="CurrentScene/DemonSelectionMenu"]

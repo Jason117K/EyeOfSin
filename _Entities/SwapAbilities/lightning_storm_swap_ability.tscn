@@ -8,8 +8,8 @@ size = Vector2(753, 418)
 
 [node name="LightningStorm" type="Node" unique_id=534558046]
 script = ExtResource("1_oghj6")
-ability_duration = 8.0
-cooldown_duration = 35.0
+ability_duration = 9.0
+cooldown_duration = 24.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_plh2v")]
 ability_name = "WRATH OF SYN"

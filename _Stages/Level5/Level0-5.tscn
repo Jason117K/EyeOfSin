@@ -88,7 +88,7 @@ script = ExtResource("1_ehl8e")
 new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
 wave2StartTime = 75
 wave3StartTime = 100
-debug = false
+skip_tutorials = true
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
@@ -104,7 +104,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
-blood_points = 1300
+blood_points = 700
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1937544684]
 process_mode = 1
@@ -447,7 +447,7 @@ bus = &"music"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=99321584]
 position = Vector2(370, 208)
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

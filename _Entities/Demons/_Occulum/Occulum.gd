@@ -75,9 +75,9 @@ func get_damage() -> String:
 	return "NONE"
 
 func get_cost() -> float:
-	if Global.getOcculumCount() > 3:
-		cost_flat_modifier = 10
-	cost = cost + (5 * Global.getOcculumCount())
+	#if Global.getOcculumCount() > 3:
+		#cost_flat_modifier = 10
+	cost = cost + (10 * Global.getOcculumCount())
 	return cost + cost_flat_modifier
 
 

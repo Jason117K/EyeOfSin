@@ -647,6 +647,8 @@ func show_pip() -> void:
 	game_controller.pip.show()
 	
 func start_game()->void:
+	if swap_ability != null:
+		swap_ability.game_start()
 	for occulum in all_registered_occulum:
 		occulum.start_blood_timer()
 	pass

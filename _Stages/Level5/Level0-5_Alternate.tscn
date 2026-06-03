@@ -73,7 +73,7 @@ layout_mode = 1
 make_green = true
 
 [node name="DemonManager" parent="." unique_id=1718086426 instance=ExtResource("2_iid74")]
-blood_points = 1300
+blood_points = 700
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=819774608]
 process_mode = 1
@@ -86,21 +86,21 @@ make_green = true
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner3" parent="GameLayer" unique_id=406937831 instance=ExtResource("3_4xikw")]
-position = Vector2(740, 141)
-make_green = true
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=866564976 instance=ExtResource("4_otain")]
-z_index = 1
-position = Vector2(-32, 1)
-
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=582696796 instance=ExtResource("3_4xikw")]
-position = Vector2(740, 173)
+position = Vector2(740, 141)
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1814117221 instance=ExtResource("4_otain")]
 z_index = 1
 position = Vector2(-32, 0)
+
+[node name="ZombieSpawner3" parent="GameLayer" unique_id=406937831 instance=ExtResource("3_4xikw")]
+position = Vector2(740, 173)
+make_green = true
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=866564976 instance=ExtResource("4_otain")]
+z_index = 1
+position = Vector2(-32, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=866825408 instance=ExtResource("3_4xikw")]
 position = Vector2(740, 205)

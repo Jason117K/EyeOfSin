@@ -7,8 +7,8 @@ extends SwapAbility
 @export var max_lightning_per_rain_2 := 1
 @export var max_lightning_per_rain_3 := 2
 @export var max_lightning_per_rain_4 := 3
-@export var max_lightning_per_rain_5 := 4
-@export var max_lightning_per_rain_6 := 6
+@export var max_lightning_per_rain_5 := 5
+#@export var max_lightning_per_rain_6 := 6
 
 @export var lightning_wave_delay := 0.9
 @export var lightning_delay := 0.7
@@ -68,9 +68,9 @@ func rain_lightning()->void :
 	await get_tree().create_timer(lightning_wave_delay).timeout
 	currently_available_zombies.shuffle()
 
-	_strike_batch(currently_available_zombies, max_lightning_per_rain_6)
-	await get_tree().create_timer(lightning_wave_delay).timeout
-	currently_available_zombies.shuffle()
+	#_strike_batch(currently_available_zombies, max_lightning_per_rain_6)
+	#await get_tree().create_timer(lightning_wave_delay).timeout
+	#currently_available_zombies.shuffle()
 
 
 func _strike_batch(zombies: Array, num_zombies_to_strike: int) -> void:

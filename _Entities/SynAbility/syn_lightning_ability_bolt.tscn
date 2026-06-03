@@ -1085,8 +1085,7 @@ animations = [{
 [node name="SynLightningAbility_Bolt" type="Area2D" unique_id=1741660532]
 script = ExtResource("1_y2ihn")
 aftershock_interval = 0.8
-ability_duration = 25.0
-ability_cooldown_duration = 25.0
+ability_duration = 15.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156082583]
 position = Vector2(0, -42)
