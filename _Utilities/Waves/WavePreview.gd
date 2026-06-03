@@ -3,6 +3,7 @@ extends Node2D
 signal game_start_requested
 signal call_wave_early_requested
 
+
 @onready var preview_text: RichTextLabel = $Node2D/Control/EnemyPreviewText
 @onready var start_game_button: Button = $StartGameButton
 @onready var wave_progress_bar: TextureProgressBar = $WaveProgressBar
@@ -75,6 +76,8 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 		wave_progress_bar.visible = false
 		#print("Global Current Wave is , ",  Global.get_wave_manager()._current_wave)
 	progressing = true
+	#get_parent().emit_show_preview()
+	get_parent().emit_signal("show_preview_icon")
 	
 
 

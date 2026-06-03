@@ -52,6 +52,8 @@ const TUTORIAL_GREEN_DIMENSION = "res://_Assets/Text/TextFiles/Level0_1_Tutorial
 const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 
+const TUTORIAL_EXPLAIN_WAVES = "res://_Assets/Text/TextFiles/Tutorial_Explain_Waves.txt"
+
 const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler"] #,"Portal"]
 const ALL_EXTRA_BUTTONS = []
 

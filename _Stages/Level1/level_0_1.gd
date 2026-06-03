@@ -3,6 +3,7 @@ extends LevelTemplate
 var basic_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
 var severed_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
 var wave_1_completed := false
+var wave_2_completed := false 
 var current_completed_wave_number := 0
 var wave3StartTimer: Timer
 @export var this_wave_3_start_time := 20
@@ -54,6 +55,10 @@ func _setup_tutorial() -> void:
 			"name": "WAVE_2_ACTIVE",
 			"enter": _start_wave_2_both_dimensions,
 		},
+		#{
+			#"name": "EXPLAIN_CALL_WAVE_EARLY",
+			##"enter": _start_wave_2_both_dimensions,
+		#},
 		{
 			"name": "EXPLAIN_SEVERED_ZOMBIE",
 			"enter": _start_explain_severed_zombie,
@@ -95,6 +100,7 @@ func _ready() -> void:
  
 	toolTips.hide()
 	zombie_spawner.wave_exhausted.connect(wave_exhausted)
+	
 	waveManager.preview_lead_time = 8
 	Global.hide_ui_layer()
 	if debug or skip_tutorials:
@@ -135,7 +141,12 @@ func _start_free_play() -> void:
 	Global.unHideDemonSelectionMenu()
 
 func wave_exhausted() -> void:
+	if wave_1_completed:
+		zombie_spawner.show_preview_icon.connect(_start_explain_early_wave_call)
+		wave_2_completed = true 
+		#_start_explain_early_wave_call()
 	wave_1_completed = true
+
 
 #endregion
 
@@ -208,6 +219,10 @@ func _start_wave_2_both_dimensions() -> void:
 	waveManager.start_next_wave()
 	demonSelectionMenu.canSwapScenes = true
 
+func _start_explain_early_wave_call()->void:
+	if wave_2_completed:
+		toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_WAVES,false)
+		toolTips.show_basic_tutorial_button()
 
 func _start_explain_severed_zombie() -> void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)

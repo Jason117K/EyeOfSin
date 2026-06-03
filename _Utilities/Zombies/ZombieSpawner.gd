@@ -3,6 +3,7 @@ class_name ZombieSpawner
 
 signal wave_exhausted
 signal all_waves_exhausted
+signal show_preview_icon
 
 ## Each entry is a WaveData resource mapping zombie type name to count.
 @export var waves: Array[WaveData] = []
@@ -74,6 +75,8 @@ func _build_pool(wave_index: int) -> Array[PackedScene]:
 			pool.append(scene)
 	return pool
 
+func emit_show_preview():
+	show_preview_icon.emit()
 
 func _spawn_next() -> void:
 	if _spawn_pool.is_empty():
