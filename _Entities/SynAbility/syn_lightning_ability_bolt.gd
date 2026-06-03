@@ -3,7 +3,7 @@ extends Syn_Ability_Instance
 @export var damage := 100
 @export var aftershock_dmg := 25 
 @export var aftershock_interval := 1.2
-@export var aftershock_duration := 10
+#@export var aftershock_duration := 10
 
 @onready var lightning_strike_anim := $AnimatedSprite2D
 @onready var lightning_aftershock_anim := $Aftershock
@@ -29,8 +29,8 @@ func _ready() -> void:
 	lightning_aftershock_anim.hide()
 	lightning_connector_line.hide()
 	
-	aftershock_duration_timer.wait_time = aftershock_duration
-	aftershock_duration_timer.timeout.connect(end_ability)
+	#aftershock_duration_timer.wait_time = aftershock_duration
+	#aftershock_duration_timer.timeout.connect(ability_duration)
 	
 	grid_pos = mouse_pos_to_grid(global_position)
 	self.global_position = grid_pos	

@@ -27,3 +27,4 @@ func set_blood(new_blood_amount: float) -> void:
 func set_initial_blood(new_blood_amount: float) -> void:
 	#print("SETTING NEW BLOOD ", new_blood_amount)
 	blood_amount = new_blood_amount
+	blood_label.text = str(blood_amount)

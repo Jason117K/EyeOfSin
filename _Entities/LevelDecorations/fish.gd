@@ -7,3 +7,5 @@ func _ready() -> void:
 	if makeGreen:
 		$Swim.make_green = true
 		$Swim.updateAnim()
+	else:
+		$Swim.updateAnim()

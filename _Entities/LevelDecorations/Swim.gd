@@ -64,7 +64,11 @@ func _process(delta: float) -> void:
 		distanceMoved = 0
 
 func updateAnim() -> void:
-	change_animation()
+	if make_green:
+		animation = "green"
+	else:
+		animation = "default"
+#	change_animation()
 
 
 func change_animation() -> void:

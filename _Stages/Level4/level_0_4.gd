@@ -60,7 +60,7 @@ func _ready() -> void:
 	super()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -80,7 +80,7 @@ func _ready() -> void:
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
-	if debug:
+	if debug or skip_tutorials:
 		finish_ready()
 	else:
 		Dialogic.start(level_4_start_dialog)
@@ -89,18 +89,42 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-
-	zombie_spawner_1.set_waves_from_dicts([{ "Severed": 2}, {"Severed": 3, "Unhallower": 1}, {"Flesheater": 2, "Reborn": 3, "Unhallower": 2}])
-	zombie_spawner_2.set_waves_from_dicts([{"Severed": 2}, {"Severed": 4, "Unhallower": 2}, {"Reborn": 4, "Unhallower": 2}])
-	zombie_spawner_3.set_waves_from_dicts([{}, {"Reanimator": 1, "Reborn": 4, "Unhallower": 2}, {"Reanimator": 1, "Reborn": 5, "Severed": 3}])
-	zombie_spawner_4.set_waves_from_dicts([{}, {"Reborn": 3, "Unhallower": 1}, {"Reanimator": 1, "Reborn": 1, "Unhallower": 2}])
-	zombie_spawner_5.set_waves_from_dicts([{"Reborn": 2, "Unhallower": 1}, {"Reborn": 4, "Severed": 3}, {"Severed": 4, "Unhallower": 2}])
-	zombie_spawner_6.set_waves_from_dicts([{"Reborn": 1, "Severed": 2}, {"Severed": 2, "Unhallower": 2}, {"Flesheater": 2, "Unhallower": 2}])
-	zombie_spawner_7.set_waves_from_dicts([{}, {"Severed": 2}, {"Flesheater": 1, "Reanimator": 1, "Severed": 1, "Unhallower": 2}])
-
-
+## 3 -> 5 ->7
+	zombie_spawner_1.set_waves_from_dicts([{},
+											{}, 
+											{"Reborn": 1, "Severed": 3}, 
+											{ "Severed": 4}])
+	zombie_spawner_2.set_waves_from_dicts([{},
+											{"Severed" : 3}, 
+											{"Severed": 1, "Reborn": 5}, 
+											{"Severed": 2, "Unhallower": 1}])
+	zombie_spawner_3.set_waves_from_dicts([{"Reborn":6,"Severed":3},
+											{"Severed": 8},
+											{"Severed": 3}, 
+											{"Reborn": 6, "Unhallower": 2}])
+	zombie_spawner_4.set_waves_from_dicts([{"Severed": 5}, 
+											{"Severed": 2, "Reborn":3},
+											{"Reborn": 4, "Severed": 1}, 
+											{"Severed": 4}]) 
+	zombie_spawner_5.set_waves_from_dicts([{"Reborn":6,"Severed":3}, 
+											{"Severed": 6, "Reborn":7},
+											{"Reborn": 4, "Severed": 1}, 
+											{"Severed": 4}])
+	zombie_spawner_6.set_waves_from_dicts([{}, 
+											{"Severed": 2, "Reborn":7},
+											{"Reborn": 4, "Severed": 1}, 
+											{"Severed": 4}]) 
+	zombie_spawner_7.set_waves_from_dicts([{},
+											{}, 
+											{"Reborn": 4, "Severed": 1}, 
+											{"Severed": 4}])
+											
+											
 func finish_ready() -> void:
 	Global.show_pip()
+	if skip_tutorials:
+		_start_free_play()
+		return
 	toolTips.show()
 	_setup_tutorial()
 	go_to_step("FORCE_SELECT_WYRM")
@@ -110,7 +134,15 @@ func finish_ready() -> void:
 	Global.unHideDemonSelectionMenu()
 	Global.unhide_ui_layer()
 
-
+func _start_free_play() -> void:
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
+	world_swap_button.visible = true
+	demonSelectionMenu.canSwapScenes = true
+	waveManager.can_start = true
+	Global.show_pip()
+	Global.unhide_ui_layer()
+	Global.unHideDemonSelectionMenu()
+	
 func getIsPurpleDimension():
 	return
 #endregion
@@ -232,5 +264,5 @@ func remove_empty_blocker_demon(grid_pos) -> void:
 
 
 func show_guide() -> void:
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 11)
 #endregion
