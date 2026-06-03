@@ -89,14 +89,14 @@ func _on_zombie_died(dead_zombie:Zombie):
 	pass
 
 func crawler_blood_pickup() -> void:
-	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	temp_zombie_container = aoe.get_overlapping_areas()
 	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			nearby_zombies.append(zombie)
 			zombie.this_zombie_died.connect(_on_zombie_died)
 	if nearby_zombies.is_empty() == true:
-		#print("NO NEARBY ZOMBIES : ", nearby_zombies)
+		print("NO NEARBY ZOMBIES : ", nearby_zombies)
 		queue_free()
 	else:
 		#nearby_zombies = aoe.get_overlapping_areas()
@@ -110,10 +110,12 @@ func crawler_blood_pickup() -> void:
 				if current_target_health > highest_health && zombie != null:
 					highest_health = current_target_health
 					current_zombie_target = zombie
-		#print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
+		print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
 		#TODO Sort By Health
 		if current_zombie_target != null && is_instance_valid(current_zombie_target):
 			attack_zombie(current_zombie_target)
+		else:
+			queue_free()
 
 func summon_blood_swords() -> void:
 	if origin_occulum != null:

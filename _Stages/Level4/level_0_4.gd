@@ -93,27 +93,27 @@ func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{},
 											{}, 
 											{"Reborn": 1, "Severed": 3}, 
-											{ "Severed": 4}])
+											{ "Severed": 9}])
 	zombie_spawner_2.set_waves_from_dicts([{},
 											{"Severed" : 3}, 
-											{"Severed": 1, "Reborn": 5}, 
-											{"Severed": 2, "Unhallower": 1}])
+											{"Severed": 2, "Reborn": 12}, 
+											{"Severed": 2, "Unhallower": 1, "Reanimator" : 1}])
 	zombie_spawner_3.set_waves_from_dicts([{"Reborn":6,"Severed":3},
 											{"Severed": 8},
-											{"Severed": 3}, 
-											{"Reborn": 6, "Unhallower": 2}])
+											{"Severed": 3, "Unhallower":1}, 
+											{"Reborn": 6, "Unhallower": 3, "Reanimator":2}])
 	zombie_spawner_4.set_waves_from_dicts([{"Severed": 5}, 
-											{"Severed": 2, "Reborn":3},
+											{"Severed": 3, "Reborn":6},
 											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 4}]) 
+											{"Severed": 7, "Unhallower":2}]) 
 	zombie_spawner_5.set_waves_from_dicts([{"Reborn":6,"Severed":3}, 
-											{"Severed": 6, "Reborn":7},
-											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 4}])
+											{"Severed": 6, "Reborn":7, "Unhallower":1},
+											{"Reborn": 4, "Severed": 1, "Reanimator":1}, 
+											{"Reborn": 12, "Reanimator":2}])
 	zombie_spawner_6.set_waves_from_dicts([{}, 
-											{"Severed": 2, "Reborn":7},
+											{"Severed": 4, "Reborn":9},
 											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 4}]) 
+											{"Severed": 9}]) 
 	zombie_spawner_7.set_waves_from_dicts([{},
 											{}, 
 											{"Reborn": 4, "Severed": 1}, 

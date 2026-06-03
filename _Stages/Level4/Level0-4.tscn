@@ -62,6 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://cci1m6lpfeyk8" path="res://_Assets/Environment/Props/PurpleDeadTree3.png" id="57_aay3a"]
 [ext_resource type="Texture2D" uid="uid://b2570yv5xwfwa" path="res://_Assets/Environment/Props/Objects.png" id="58_hhcjx"]
 [ext_resource type="Texture2D" uid="uid://cutsd2jwatt7y" path="res://_Assets/Environment/Props/Dead_arm_shadow1_1.png" id="59_k4i7f"]
+[ext_resource type="Script" uid="uid://x3g0tevnjlod" path="res://_Stages/Level4/label.gd" id="63_gs3u6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx6g2"]
 texture = ExtResource("7_albfy")
@@ -3600,6 +3601,7 @@ script = ExtResource("1_xw2pb")
 new_end_dialog = "res://_Assets/Dialog/level_04_end_dialog.dtl"
 wave2StartTime = 75
 wave3StartTime = 95
+wave4StartTime = 100
 skip_tutorials = true
 skip_end_dialog = false
 
@@ -3885,6 +3887,7 @@ texture = ExtResource("59_k4i7f")
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Node" unique_id=287863575]
+visible = false
 offset_left = -56.0
 offset_top = -58.0
 offset_right = 792.0
@@ -3915,6 +3918,15 @@ bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=482512615]
 position = Vector2(370, 208)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=179482603]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1915991110]
+offset_left = 143.0
+offset_top = 32.0
+offset_right = 183.0
+offset_bottom = 55.0
+script = ExtResource("63_gs3u6")
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]

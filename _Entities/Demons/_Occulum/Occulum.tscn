@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://cbytmdkwyv53a" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_SPINALOCCULUM-Sheet.png" id="7_3r88c"]
 [ext_resource type="Texture2D" uid="uid://ceviomuixqede" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_Base-Sheet.png" id="7_ixnkm"]
 [ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
-[ext_resource type="PackedScene" uid="uid://dfiqbxbm26q0l" path="res://_Entities/Demons/Tentacles/Tentacle.tscn" id="8_hu5wo"]
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_WYRM-Sheet.png" id="9_00tae"]
 [ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://_Entities/Demons/_Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_pomd1"]
@@ -1467,18 +1466,6 @@ shape = SubResource("89")
 wait_time = 30.0
 one_shot = true
 
-[node name="Tentacle1" parent="." unique_id=611075784 instance=ExtResource("8_hu5wo")]
-visible = false
-z_index = 7
-position = Vector2(0, 3)
-
-[node name="ArmTarget" parent="Tentacle1" index="0" unique_id=138643601]
-position = Vector2(1, -6)
-
-[node name="Arm" parent="Tentacle1" index="1" unique_id=634789705]
-num__segments = 17
-max_length = 50.0
-
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
@@ -1723,5 +1710,4 @@ frame_progress = 0.075980306
 [connection signal="timeout" from="ResetEatingSpeed" to="." method="_on_reset_eating_speed_timeout"]
 [connection signal="animation_finished" from="HealingAnimSprite" to="." method="_on_healing_anim_sprite_animation_finished"]
 
-[editable path="Tentacle1"]
 [editable path="BuffNodesComponent"]

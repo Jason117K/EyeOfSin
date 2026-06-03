@@ -99,6 +99,7 @@ var _wave_time: float = 0.0
 ## Runs on scene load and sets up segments.
 ## Separate from _initialize_segments() so setters can rebuild segments during editing.
 func _ready() -> void:
+	print("Arm Entered Scene ", self )
 	# Work in Arm's local space - base is always at origin
 	_base_position = Vector2.ZERO
 	_initialize_segments()
