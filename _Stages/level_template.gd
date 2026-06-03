@@ -222,7 +222,7 @@ func _filter_tutorial_input(event: InputEvent) -> void:
 func attach_script_to_sway_children(make_green : bool = false) -> void:                                       #script_path: String) -> void:
 	var coral_node := get_node("Environment/Coral")
 	if coral_node == null:
-		push_error("Coral node not found at Environment/Coral")
+		#push_error("Coral node not found at Environment/Coral")
 		return
 
 	var script_to_attach := load(sway_script_path)

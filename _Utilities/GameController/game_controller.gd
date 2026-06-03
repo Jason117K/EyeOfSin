@@ -25,6 +25,7 @@ var _default_root_cull_mask := 0xFFFFFFFF
 
 
 func _ready() -> void:
+	print(Input.is_using_accumulated_input(), " balls")
 	Engine.max_fps = DisplayServer.screen_get_refresh_rate()
 	print("Max FPS Set to " , Engine.max_fps)
 	Global.game_controller = self

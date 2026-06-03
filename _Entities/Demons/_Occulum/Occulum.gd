@@ -32,6 +32,7 @@ var is_demo_blood_spawn := false
 var num_blood_plays := 0
 var max_num_blood_plays := 3
 var demo_fast_wait_time := 3.0
+var cost_flat_modifier := 0 
 
 # --- Component References ---
 @onready var bloodTimer := $BloodTimer
@@ -40,7 +41,7 @@ var demo_fast_wait_time := 3.0
 @onready var healing_zone_sprite := $HealingAnimSprite
 @onready var healZone := $HealZone
 @onready var webbing_aoe_sprite := $Webs
-@onready var tentacle := $Tentacle1
+#@onready var tentacle := $Tentacle1
 @onready var eat_zombie_blood_fx := [$BloodHit, $BloodHit2]
 @onready var blood_hit_1 := $BloodHit
 
@@ -74,8 +75,10 @@ func get_damage() -> String:
 	return "NONE"
 
 func get_cost() -> float:
+	if Global.getOcculumCount() > 3:
+		cost_flat_modifier = 10
 	cost = cost + (5 * Global.getOcculumCount())
-	return cost
+	return cost + cost_flat_modifier
 
 
 # --- Buff System ---
@@ -249,11 +252,11 @@ func eat_zombie(_zombie_to_eat: Area2D) -> void:
 	resetEatingTimer.start()
 	can_eat_zombie = false
 
-func assign_tentacle_to_target(target: Node2D) -> void:
-	tentacle.attack(target, true)
-
-func hide_tentacle() -> void:
-	tentacle.hide()
+#func assign_tentacle_to_target(target: Node2D) -> void:
+	#tentacle.attack(target, true)
+#
+#func hide_tentacle() -> void:
+	#tentacle.hide()
 
 func _on_reset_eating_speed_timeout() -> void:
 	animSpriteComp.speed_scale = 1

@@ -94,7 +94,8 @@ func crawler_blood_pickup() -> void:
 	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			nearby_zombies.append(zombie)
-			zombie.this_zombie_died.connect(_on_zombie_died)
+			if not zombie.this_zombie_died.is_connected(_on_zombie_died):
+				zombie.this_zombie_died.connect(_on_zombie_died)
 	if nearby_zombies.is_empty() == true:
 		print("NO NEARBY ZOMBIES : ", nearby_zombies)
 		queue_free()

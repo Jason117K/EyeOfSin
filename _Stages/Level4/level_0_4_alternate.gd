@@ -1,5 +1,5 @@
 extends LevelTemplate
-
+#500
 
 
 @export var isGreenDimension := false

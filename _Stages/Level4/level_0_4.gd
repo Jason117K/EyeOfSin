@@ -1,6 +1,6 @@
 extends LevelTemplate
 # level_0_4.gd - Level 0-4 Tutorial Controller
-
+#500
 # Preloaded demo scenes
 var summoner_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/summoner_zombie_demo.tscn")
 
@@ -96,24 +96,24 @@ func _configure_waves() -> void:
 											{ "Severed": 9}])
 	zombie_spawner_2.set_waves_from_dicts([{},
 											{"Severed" : 3}, 
-											{"Severed": 2, "Reborn": 12}, 
+											{"Severed": 2, "Reborn": 9}, 
 											{"Severed": 2, "Unhallower": 1, "Reanimator" : 1}])
-	zombie_spawner_3.set_waves_from_dicts([{"Reborn":6,"Severed":3},
-											{"Severed": 8},
+	zombie_spawner_3.set_waves_from_dicts([{"Reborn":6,"Severed":2},
+											{"Severed": 6},
 											{"Severed": 3, "Unhallower":1}, 
 											{"Reborn": 6, "Unhallower": 3, "Reanimator":2}])
 	zombie_spawner_4.set_waves_from_dicts([{"Severed": 5}, 
 											{"Severed": 3, "Reborn":6},
 											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 7, "Unhallower":2}]) 
+											{"Severed": 6, "Unhallower":2}]) 
 	zombie_spawner_5.set_waves_from_dicts([{"Reborn":6,"Severed":3}, 
-											{"Severed": 6, "Reborn":7, "Unhallower":1},
+											{"Severed": 3, "Reborn":7, "Unhallower":1},
 											{"Reborn": 4, "Severed": 1, "Reanimator":1}, 
-											{"Reborn": 12, "Reanimator":2}])
+											{"Reborn": 9, "Reanimator":2}])
 	zombie_spawner_6.set_waves_from_dicts([{}, 
 											{"Severed": 4, "Reborn":9},
 											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 9}]) 
+											{"Severed": 8}]) 
 	zombie_spawner_7.set_waves_from_dicts([{},
 											{}, 
 											{"Reborn": 4, "Severed": 1}, 
