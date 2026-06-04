@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="10_uqscy"]
 [ext_resource type="Texture2D" uid="uid://dgv2mrtncmvv4" path="res://_Entities/SynAbility/SynAbility_1_CARD.png" id="11_l1rr8"]
 [ext_resource type="Texture2D" uid="uid://brkb10lkjyant" path="res://_Entities/SwapAbilities/Blood_Rain_Swap_Card.png" id="12_a0ark"]
+[ext_resource type="Script" uid="uid://bi2qj4g5ic2tq" path="res://_Stages/LevelSelect/disable_dialog.gd" id="14_4uoky"]
+[ext_resource type="Script" uid="uid://bn180f0hyc5ns" path="res://_Stages/LevelSelect/disable_tutorials.gd" id="15_uqscy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw0uq"]
 atlas = ExtResource("7_yuujs")
@@ -465,6 +467,30 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uoky"]
+bg_color = Color(0.6, 0.6, 0.6, 0.1254902)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.23, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqscy"]
+bg_color = Color(0.6, 0.6, 0.6, 0.1254902)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.23, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
 [node name="LevelSelect" type="Control" unique_id=7423103]
 layout_mode = 3
 anchors_preset = 15
@@ -642,6 +668,7 @@ theme_override_font_sizes/font_size = 144
 text = "LEVEL 5"
 
 [node name="Level6Button" type="TextureButton" parent="." unique_id=1918536202]
+visible = false
 z_index = 1
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 0
@@ -1046,6 +1073,7 @@ sharp_limit = 90.0
 metadata/_edit_lock_ = true
 
 [node name="LevelCircleNested6" type="Node2D" parent="." unique_id=1228291419 node_paths=PackedStringArray("polygon", "line")]
+visible = false
 position = Vector2(294, 252.99998)
 scale = Vector2(0.14, 0.14)
 script = ExtResource("8_nj8lg")
@@ -1148,6 +1176,42 @@ offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("3_lwmcq")
 text = "CHECK OUT SORCERIES->"
 
+[node name="DisableDialog" type="Button" parent="." unique_id=1437203228]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 339.0
+offset_right = 144.0
+offset_bottom = 370.0
+theme_override_styles/normal = ExtResource("7_nj8lg")
+text = "DISABLE DIALOG"
+script = ExtResource("14_4uoky")
+
+[node name="Panel" type="Panel" parent="DisableDialog" unique_id=1273605137]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 1.0
+offset_right = 177.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4uoky")
+
+[node name="DisableTutorials" type="Button" parent="." unique_id=1937453655]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 375.0
+offset_right = 144.0
+offset_bottom = 406.0
+theme_override_styles/normal = ExtResource("7_nj8lg")
+text = "DISABLE TUTORIALS"
+script = ExtResource("15_uqscy")
+
+[node name="Panel" type="Panel" parent="DisableTutorials" unique_id=227684557]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 2.0
+offset_right = 196.0
+offset_bottom = 31.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uqscy")
+
 [connection signal="pressed" from="Level1Button" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2Button" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="Level3Button" to="." method="_on_level_3_pressed"]
@@ -1159,3 +1223,5 @@ text = "CHECK OUT SORCERIES->"
 [connection signal="pressed" from="BackPlainButton" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="SorceryPanel/MarginContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="DisableDialog" to="DisableDialog" method="_on_pressed"]
+[connection signal="pressed" from="DisableTutorials" to="DisableTutorials" method="_on_pressed"]

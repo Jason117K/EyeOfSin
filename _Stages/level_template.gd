@@ -47,16 +47,33 @@ var level_6_start_dialog := preload("res://_Assets/Dialog/level_06_start_dialog.
 const TUTORIAL_SELECT_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectCrawler.txt"
 const TUTORIAL_PLACE_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceCrawler.txt"
 const TUTORIAL_BLOOD_COST = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
+const TUTORIAL_CLICK_SKULL = "res://_Assets/Text/TextFiles/Tutorial_Click_Skull.txt"
 const TUTORIAL_PRESS_Y = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt"
 const TUTORIAL_GREEN_DIMENSION = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt"
 const TUTORIAL_EXPLAIN_BASIC_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
-
+const TUTORIAL_SELECT_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectOcculum.txt"
+const TUTORIAL_PLACE_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt"
+const TUTORIAL_EXPLAIN_HEALTH = "res://_Assets/Text/TextFiles/Tutorial_Explain_Health.txt"
+const TUTORIAL_DEMON_HOVER_CLICK = "res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt"
+const TUTORIAL_PLACE_SPINALOCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
+const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
+const TUTORIAL_SELECT_CRAWLER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectCrawler.txt"
+const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
+const TUTORIAL_BLOOD_BUFFS_2 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
+const TUTORIAL_INVALID_CRAWLER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidCrawlerPlacement.txt"
+const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
 const TUTORIAL_EXPLAIN_WAVES = "res://_Assets/Text/TextFiles/Tutorial_Explain_Waves.txt"
-
+const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
+const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
+const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
+const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
 const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler"] #,"Portal"]
 const ALL_EXTRA_BUTTONS = []
 
+func demon_clicked()->void:
+	pass 
+	
 func get_demon_manager()->Node:
 	return demonManager
 
@@ -239,3 +256,33 @@ func attach_script_to_sway_children(make_green : bool = false) -> void:         
 
 func get_true_name() -> String:
 	return ""
+
+
+func _filter_block_keyboard(event: InputEvent) -> void:
+	if event is InputEventKey:
+		get_viewport().set_input_as_handled()
+
+
+func _filter_block_deselect_and_swap(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_X or event.keycode == KEY_Y:
+			get_viewport().set_input_as_handled()
+
+
+func _filter_block_swap(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_Y:
+			get_viewport().set_input_as_handled()
+
+
+func _filter_only_allow_y(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_Y:
+			Global.swap_scenes()
+			print("Advancing Tutorial Should Explian Green")
+			advance_tutorial() # → EXPLAIN_GREEN_DIMENSION
+			return
+		else:
+			get_viewport().set_input_as_handled()
+	elif event is InputEventMouseButton:
+		get_viewport().set_input_as_handled()

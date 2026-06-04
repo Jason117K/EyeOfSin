@@ -17,6 +17,12 @@ func _ready() -> void:
 		rect_region = Rect2(0,0,32,32)
 		health_icon.texture.region = rect_region
 
+func get_blood_panel()->Control:
+	return $HUD_Panel/HUD_HBox/Blood_VBox/Blood_Icon
+
+func get_health_panel()->Control:
+	return $HUD_Panel/HUD_HBox/Health_VBox/Health_Icon
+
 func get_the_health() -> Node:
 	return health_label
 

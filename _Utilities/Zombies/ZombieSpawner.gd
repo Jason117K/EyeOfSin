@@ -26,6 +26,8 @@ func _ready() -> void:
 	add_to_group("ZombieSpawners")
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout)
 
+func get_preview_icon_panel()->Control:
+	return get_child(1).get_preview_icon_panel()
 
 func get_wave_count() -> int:
 	return waves.size()

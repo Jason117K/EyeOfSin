@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://_UI/ToolTips/ToolTips.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_c1ynx"]
+[ext_resource type="FontFile" uid="uid://deyk678r085k8" path="res://_Assets/Fonts/Cormorant-Bold.ttf" id="4_53ev6"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_crawler_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]
@@ -63,10 +64,13 @@ script = ExtResource("1")
 max_basic_tutorial_characters = 115
 
 [node name="BasicTutorialMessage" type="Control" parent="." unique_id=504267282]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -64.0
+offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -128,7 +132,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ygqpy")
 text = "UNDERSTOOD"
 
 [node name="VisualTutorialVBox" type="VBoxContainer" parent="." unique_id=771461667]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -172,13 +175,21 @@ custom_minimum_size = Vector2(490, 148.595)
 layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
+theme_override_fonts/bold_font = ExtResource("4_53ev6")
 theme_override_font_sizes/normal_font_size = 24
-text = "The first of the mutated zombies, now just average eldritch footsoldiers. They retain most of their human form and all of their undead hunger. 
-Speed: Low
-Health: Low
-Numbers: High
-Damage: Low
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "New Enemy : [color=#9b42df] Severed [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Moderate
+[b][color=#9b42df] Health :[/color][/b] 175
+[b][color=#9b42df] Numbers :[/color][/b] High
+[b][color=#9b42df] Damage :[/color][/b]  30
+[hr width=100%]
+When the mutation in a Reborn grows, their upper is torn apart and the Severed is born.
+
 "
+fit_content = true
 
 [node name="VisualTutorialUnderstoodButton" type="Button" parent="VisualTutorialVBox" unique_id=1590243430]
 layout_mode = 2

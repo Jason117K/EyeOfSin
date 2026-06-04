@@ -120,7 +120,7 @@ shape = SubResource("1")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1805378366]
 self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
-position = Vector2(1, 16)
+position = Vector2(8, 16)
 texture = ExtResource("12_ebmmd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=904310645]

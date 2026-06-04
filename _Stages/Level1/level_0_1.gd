@@ -33,6 +33,16 @@ func _setup_tutorial() -> void:
 			"enter": _start_explain_blood_cost,
 		},
 		{
+			"name": "EXPLAIN_DEMON_HOVER_CLICK",
+			"enter": _start_explain_demon_hover_click,
+		},
+		{
+			"name":"EXPLAIN_CLICK_SKULL",
+			"enter": _start_explain_click_skull,
+			"input_filter": _filter_block_deselect_and_swap,
+			
+		},
+		{
 			"name": "WAVE_1_ACTIVE",
 			"enter": _start_wave_1,
 			"input_filter": _filter_block_swap,
@@ -40,6 +50,16 @@ func _setup_tutorial() -> void:
 		{
 			"name": "EXPLAIN_BASIC_ZOMBIE",
 			"enter": _start_explain_basic_zombie,
+			"input_filter": _filter_block_swap,
+		},
+		{
+			"name": "EXPLAIN_HEALTH",
+			"enter": _start_explain_health,
+			"input_filter": _filter_block_swap,
+		},
+		{
+			"name": "CONTINUE_WAVE_1",
+			"enter": _continue_wave_1,
 			"input_filter": _filter_block_swap,
 		},
 		{
@@ -123,6 +143,7 @@ func finish_ready() -> void:
 		_start_free_play()
 		return
 	_setup_tutorial()
+	zombie_spawner.hide()
 	go_to_step("FORCE_SELECT_CRAWLER")
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
@@ -179,11 +200,26 @@ func _start_force_place_demon() -> void:
 
 func _start_explain_blood_cost() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, true)
-	#TODO Add Highlight
-	#show_spotlight_at_position(Vector2(10, 0))
+	toolTips.add_pulsing_button_highlight(Global.get_blood_panel())
 
+func _start_explain_demon_hover_click() -> void:
+	toolTips.stop_glow_pulse(Global.get_blood_panel())
+	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_HOVER_CLICK, false)
+	pass
+	
+func demon_clicked():
+	toolTips.hide()
+	_on_tooltip_hidden()
+		
+
+func _start_explain_click_skull()->void:
+	zombie_spawner.show()
+	
+	toolTips.add_pulsing_button_highlight(zombie_spawner.get_preview_icon_panel())
+	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, true, Vector2(0,-32))
 
 func _start_wave_1() -> void:
+	toolTips.stop_glow_pulse(zombie_spawner.get_preview_icon_panel())
 	waveManager.can_start = true
 	wave_1_active = false
 	wave_1_complete = false
@@ -195,10 +231,18 @@ func start_game() -> void:
 
 func _start_explain_basic_zombie() -> void:
 	print("Explain Basic Zombie")
+	Global.hide_notification_bar()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
-	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate())
+	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,-16))
 
+func _start_explain_health()->void:
+	toolTips.add_pulsing_button_highlight(Global.get_health_panel())
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_HEALTH,true,Vector2(0,-32))
 
+func _continue_wave_1()->void:
+	print("Should Stop the Glow Pulse")
+	toolTips.stop_glow_pulse(Global.get_health_panel())
+	
 func _start_force_press_y() -> void:
 	demonSelectionMenu.get_world_swap_button().visible = true
 	#demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer/WorldSwap").visible = true
@@ -270,7 +314,16 @@ func _on_tooltip_hidden() -> void:
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_COST":
 			pass
+			go_to_step("EXPLAIN_DEMON_HOVER_CLICK")
+		"EXPLAIN_DEMON_HOVER_CLICK":
+			print("Should Go To Step Click Skull")
+			go_to_step("EXPLAIN_CLICK_SKULL")
+		"EXPLAIN_CLICK_SKULL":
 			go_to_step("WAVE_1_ACTIVE")
+		"EXPLAIN_BASIC_ZOMBIE":
+			go_to_step("EXPLAIN_HEALTH")
+		"EXPLAIN_HEALTH":
+			go_to_step("CONTINUE_WAVE_1")
 		"EXPLAIN_GREEN_DIMENSION":
 			go_to_step("WAVE_2_ACTIVE")
 
@@ -313,7 +366,7 @@ func _on_demon_manager_crawler_placed(_grid_position: Vector2) -> void:
 #region Wave Completion Detection
 func _physics_process(_delta: float) -> void:
 	var step_name := get_current_step_name()
-	if step_name == "WAVE_1_ACTIVE" or step_name == "EXPLAIN_BASIC_ZOMBIE":
+	if step_name == "WAVE_1_ACTIVE" or step_name == "EXPLAIN_BASIC_ZOMBIE" or "CONTINUE_WAVE_1":
 		if not wave_1_complete:
 			var alive_zombies := get_tree().get_nodes_in_group("Alive-Enemies")
 

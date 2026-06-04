@@ -71,10 +71,13 @@ func _ready() -> void:
 	#$GridManager.set_tiles_for_rows(7,8, 66)
 	#$GridManager.set_tiles_for_rows(8,9, 69)
 
+
+
 func _on_level_1_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level1) ==OK)
 	#Global.game_controller.change_scene(level1)
-	Global.game_controller.change_dual_scenes(level0_1,level0_1Alt )
+	Global.game_controller.change_dual_scenes(level0_1,level0_1Alt)
+
 	
 
 
@@ -85,15 +88,18 @@ func _on_level_2_pressed() -> void:
 		Global.game_controller.change_dual_scenes(level0_2, level0_2Alt)
 
 
+
 func _on_level_3_pressed() -> void:
 	if canPlayLevel3:
 		#assert(get_tree().change_scene_to_file(level3) ==OK)
 		Global.game_controller.change_dual_scenes(level0_3, level0_3Alt)
 
+
 func _on_level_4_pressed() -> void:
 	if canPlayLevel4:
 		#assert(get_tree().change_scene_to_file(level4) ==OK)
 		Global.game_controller.change_dual_scenes(level0_4, level0_4Alt)
+
 
 func _on_level_5_pressed() -> void:
 	if canPlayLevel5:
@@ -101,10 +107,12 @@ func _on_level_5_pressed() -> void:
 		Global.game_controller.change_dual_scenes(level0_5, level0_5Alt)
 
 
+
 func _on_level_6_pressed() -> void:
 	if canPlayLevel6:
 		#assert(get_tree().change_scene_to_file(level6) ==OK)
 		Global.game_controller.change_dual_scenes(level0_6, level0_6Alt)
+
 
 
 

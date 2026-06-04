@@ -249,6 +249,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="RemoveDemonButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon" unique_id=311546539]
+visible = false
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -277,7 +278,7 @@ texture_normal = ExtResource("13_vvged")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PauseButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer" unique_id=928782760 instance=ExtResource("16_dur3e")]
+[node name="PauseButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer" unique_id=1098734131 instance=ExtResource("16_dur3e")]
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer2/UtilityVBoxContainer" unique_id=1782143364]

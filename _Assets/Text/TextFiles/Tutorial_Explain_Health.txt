@@ -1,0 +1,2 @@
+If a zombie reaches the end, it will take away your HEALTH 
+Lose all your health and you DIE 

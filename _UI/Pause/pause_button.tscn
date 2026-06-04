@@ -21,27 +21,15 @@ stretch_mode = 4
 script = ExtResource("2_w1yst")
 
 [node name="PauseMenu" parent="." unique_id=585202617 instance=ExtResource("3_e4pn3")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -342.0
-offset_top = 215.0
-offset_right = -342.0
-offset_bottom = 215.0
+offset_left = -338.0
+offset_top = 406.0
+offset_right = -338.0
+offset_bottom = 406.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Sprite2D" parent="PauseMenu" index="0" unique_id=1276259639]
-position = Vector2(5, -13)
-
-[node name="CenterContainer" parent="PauseMenu" index="2" unique_id=957756947]
-offset_left = -142.5
-offset_top = -166.115
-offset_right = 141.5
-offset_bottom = 137.885
-
 [connection signal="pressed" from="." to="." method="_on_pressed"]
-
-[editable path="PauseMenu"]

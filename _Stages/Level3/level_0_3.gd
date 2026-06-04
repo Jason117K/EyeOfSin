@@ -1,24 +1,22 @@
 extends LevelTemplate
 # level_0_3.gd - Level 0-3 Tutorial Controller
 
+#55,80,70
+
 # Preloaded demo scenes
 var fleshEater_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/fleshEater_zombie_demo.tscn")
 var codex_demo := preload("res://_UI/GameDemonstrations/codex_demo.tscn")
-
+var buckethead_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
 # Level paths
 var thisLevel := "res://_Stages/Level2/Level0-3B.tscn"
 var thisAltLevel := "res://_Stages/Level3/Level0-3_Alternate_B.tscn"
-var level03 := "res://_Stages/Level3/Level0-3.tscn"
-var level03Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
+
 var level04 := "res://_Stages/Level4/Level0-4.tscn"
 var level04Alt := "res://_Stages/Level4/Level0-4_Alternate.tscn"
 
 # Text file paths
-const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
-const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
-const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
-const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
 
+var bucketHeadExplained := false
 var maw_pulse_added := false
 
 # Demon button container names
@@ -31,38 +29,33 @@ var maw_pulse_added := false
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var maw_button :TextureButton= demonSelectionMenu.get_maw_button()
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
-
+@onready var spinal_occulum_button :TextureButton= demonSelectionMenu.get_spinal_occulum_button()
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
-			"name": "FORCE_SELECT_MAW",
-			"enter": _start_force_select_maw,
+			"name": "FORCE_SELECT_SPINALOCCULUM",
+			"enter": _start_force_select_spinal_occulum,
 			"input_filter": _filter_block_keyboard,
 		},
 		{
-			"name": "FORCE_PLACE_MAW",
-			"enter": _start_force_place_maw,
-			"input_filter": _filter_block_deselect,
+			"name": "FORCE_PLACE_SPINAL_OCCULUM",
+			"enter": _start_force_place_spinal_occulum,
+			"input_filter": _filter_block_deselect_and_swap,
 		},
 		{
-			"name": "TUTORIAL_P1_DONE",
-			"enter": _start_tutorial_p1_done,
+			"name": "EXPLAIN_UNHALLOWER",
+			"enter": _start_explain_unhallower,
+			"input_filter": _filter_block_keyboard,
 		},
 		{
-			"name": "EXPLAIN_FLESHEATER_ZOMBIE",
-			"enter": _start_explain_fleshEater_zombie,
+			"name": "RESUME_GAME",
+			"enter": _resume_game,
+			"input_filter": _filter_block_keyboard,
 		},
-		{
-			"name": "EXPLAIN_CODEX",
-			"enter": _start_explain_codex,
-		},
-		{
-			"name": "TUTORIAL_P2_DONE",
-			"enter": _start_tutorial_p2_done,
-		},
+
 	])
 #endregion
 
@@ -78,7 +71,7 @@ func _ready() -> void:
 	_configure_waves()
 
 	setup_demon_selection_menu()
-	pause_Button.set_restart_levels(level03, level03Alt)
+	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 
@@ -90,6 +83,10 @@ func _ready() -> void:
 	demonManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
 	demonSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
+	spinal_occulum_button.pressed.connect(_on_spinal_occulum_button_pressed)
+	demonManager.spinalOcculum_placed.connect(_on_spinal_occulum_placed)
+	waveManager.wave_started.connect(_on_wave_started)
+
 
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
@@ -143,7 +140,7 @@ func finish_ready() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	_setup_tutorial()
 	print("Go To Step Maw Select")
-	go_to_step("FORCE_SELECT_MAW")
+	go_to_step("FORCE_SELECT_SPINALOCCULUM")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
@@ -170,6 +167,29 @@ func _input(event: InputEvent) -> void:
 
 
 #region Step Entry Functions (same sequential order as definitions above)
+
+func _start_force_select_spinal_occulum()->void:
+	print("Starting Force Select")
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SPINALOCCULUM, false)
+	hide_all_demon_buttons_with_exception(["SpinalOcculum"])
+	demonSelectionMenu.add_pulsing_button_highlight(spinal_occulum_button)
+	demonSelectionMenu.get_spinal_occulum_button().show()
+
+func _start_force_place_spinal_occulum()->void:
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
+	demonSelectionMenu.stop_glow_pulse(spinal_occulum_button)
+
+
+func _start_explain_unhallower() -> void:
+	bucketHeadExplained = true
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE)
+	toolTips.set_visual_tutorial_visual(buckethead_zombie_demo_scene.instantiate())
+
+func _resume_game()->void:
+	pass
+	
+	
 func _start_force_select_maw() -> void:
 	print("Force Selecting Maw")
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
@@ -260,8 +280,16 @@ func _filter_block_deselect(event: InputEvent) -> void:
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
 	#hide_spotlight()
-
+	print("Tooltip Hidden")
 	match get_current_step_name():
+		#"FORCE_SELECT_SPINALOCCULUM":
+			#print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
+			#go_to_step("FORCE_PLACE_SPINAL_OCCULUM")
+			
+		"FORCE_PLACE_SPINAL_OCCULUM":
+			pass
+		"EXPLAIN_UNHALLOWER":
+			go_to_step("RESUME_GAME")
 		"FORCE_PLACE_MAW":
 			get_tree().paused = false
 
@@ -271,7 +299,32 @@ func _on_tooltip_hidden() -> void:
 		"EXPLAIN_CODEX":
 			_start_explain_codex()
 
+func _on_spinal_occulum_button_pressed() -> void:
+	if get_current_step_name() == "FORCE_SELECT_SPINALOCCULUM":
+		print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
+		go_to_step("FORCE_PLACE_SPINAL_OCCULUM")
 
+func _on_spinal_occulum_placed(_grid_position) -> void:
+	if get_current_step_name() == "FORCE_PLACE_SPINAL_OCCULUM":
+		print("Should Hide ToolTip")
+		toolTips.hide()
+	else:
+		print("Current Step is ", get_current_step_name())
+				
+func _on_wave_started(wave_index: int) -> void:
+	if skip_tutorials:
+		return
+	match wave_index:
+		0:
+			pass
+		1:
+			pass
+		2: 
+			pass
+		3:
+			go_to_step("EXPLAIN_UNHALLOWER")
+			
+			
 func _on_maw_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_MAW":
 		advance_tutorial() # → FORCE_PLACE_MAW
@@ -286,10 +339,10 @@ func _on_codex_button_pressed() -> void:
 	go_to_step("TUTORIAL_P2_DONE")
 
 
-func _on_wave_started(wave_index: int) -> void:
-	match wave_index:
-		1: go_to_step("EXPLAIN_FLESHEATER_ZOMBIE")
-		2: go_to_step("EXPLAIN_CODEX")
+#func _on_wave_started(wave_index: int) -> void:
+	#match wave_index:
+		#1: go_to_step("EXPLAIN_FLESHEATER_ZOMBIE")
+		#2: go_to_step("EXPLAIN_CODEX")
 #endregion
 
 

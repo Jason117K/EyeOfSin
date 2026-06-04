@@ -17,15 +17,7 @@ var level03 := "res://_Stages/Level3/Level0-3.tscn"
 var level03Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
 # Text file paths
-const TUTORIAL_SELECT_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectOcculum.txt"
-const TUTORIAL_PLACE_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt"
-const TUTORIAL_PLACE_SPINALOCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
-const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
-const TUTORIAL_SELECT_CRAWLER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectCrawler.txt"
-const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
-const TUTORIAL_BLOOD_BUFFS_2 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
-const TUTORIAL_INVALID_CRAWLER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidCrawlerPlacement.txt"
-const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
+
 var tutorial_place_crawler := "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceCrawler.txt"
 
 # Tutorial tracking
@@ -89,20 +81,7 @@ func _setup_tutorial() -> void:
 			"name": "WAVE_1_ACTIVE",
 			"enter": _start_wave_1,
 		},
-		{
-			"name": "EXPLAIN_BUCKETHEAD_ZOMBIE",
-			"enter": _start_explain_buckethead_zombie,
-		},
-		{
-			"name": "FORCE_SELECT_SPINALOCCULUM",
-			"enter": _start_force_select_spinalOcculum,
-			"input_filter": _filter_block_keyboard,
-		},
-		{
-			"name": "FORCE_PLACE_SPINALOCCULUM",
-			"enter": _start_force_place_spinalOcculum,
-			"input_filter": _filter_block_deselect,
-		},
+
 	])
 #endregion
 

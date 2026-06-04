@@ -332,7 +332,7 @@ func add_pulsing_button_highlight(button: TextureButton, should_pulse : bool = t
 	if not button:
 		push_error("Button node is null!")
 		return
-	print("Button Global START Pos Is  : ", button.global_position)
+	#print("Button Global START Pos Is  : ", button.global_position)
 	# Remove any existing highlight
 	if button.has_meta("highlight_panel"):
 		var old: Panel = button.get_meta("highlight_panel")
@@ -348,7 +348,8 @@ func add_pulsing_button_highlight(button: TextureButton, should_pulse : bool = t
 
 	button.add_child(panel)
 	for child in button.get_children():
-		print(button, " children are ", child)
+		#print(button, " children are ", child)
+		pass
 
 
 	# Expand slightly beyond the button to create a border effect
@@ -379,7 +380,7 @@ func add_pulsing_button_highlight(button: TextureButton, should_pulse : bool = t
 
 
 
-	print("Crawler Button is ", button, " panel is ", panel )
+
 	if should_pulse:
 		start_glow_pulse(button, panel, highlight_style)
 

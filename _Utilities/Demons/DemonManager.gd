@@ -325,10 +325,10 @@ func place_demon(grid_pos: Vector2) -> void:
 		
 		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 
-		#print("Pdemon name is ", demon_instance.name)
+		print("Pdemon name is ", demon_instance.name)
 		if "SpinalOcculum" in demon_instance.name:
 			spinalOcculum_placed.emit(grid_pos)
-			pass
+			print("Spinal Occulum Should Emit")
 		elif "Occulum" in demon_instance.name:
 			#print("Selected Demon Scene is : ", demon_instance.name)
 			#TODO change to occulum_placed

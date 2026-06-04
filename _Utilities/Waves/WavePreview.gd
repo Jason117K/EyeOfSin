@@ -140,6 +140,9 @@ func _on_Area2D_mouse_exited() -> void:
 	$Node2D/Control.visible = false
 	preview_text.clear()
 
+func get_preview_icon_panel()->Control:
+	return start_game_button
+
 func _on_start_game_button_pressed() -> void:
 	
 	if Global.gameIsStarted:

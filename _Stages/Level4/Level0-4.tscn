@@ -3599,10 +3599,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xw2pb")
 new_end_dialog = "res://_Assets/Dialog/level_04_end_dialog.dtl"
-wave2StartTime = 75
-wave3StartTime = 95
-wave4StartTime = 90
-skip_end_dialog = false
+wave2StartTime = 55
+wave3StartTime = 80
+wave4StartTime = 70
 
 [node name="UILayer" parent="." unique_id=2013472037 instance=ExtResource("20_d40up")]
 layout_mode = 1
@@ -3921,6 +3920,7 @@ position = Vector2(370, 208)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=179482603]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1915991110]
+visible = false
 offset_left = 143.0
 offset_top = 32.0
 offset_right = 183.0

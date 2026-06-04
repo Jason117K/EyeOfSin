@@ -3602,7 +3602,7 @@ mouse_filter = 2
 script = ExtResource("1_h73le")
 wave2StartTime = 55
 wave3StartTime = 80
-skip_tutorials = true
+wave4StartTime = 70
 
 [node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_23sq5")]
 blood_points = 330

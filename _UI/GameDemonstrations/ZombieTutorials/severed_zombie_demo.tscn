@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_jws62"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_2mcn8"]
 [ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_n6xao"]
-[ext_resource type="Texture2D" uid="uid://bgma2h15leoe1" path="res://_Entities/Zombies/_Severed/ConeHeadZombie.png" id="20_1rxh2"]
+[ext_resource type="Texture2D" uid="uid://cqrpdhio5ru6i" path="res://_Entities/Zombies/_Severed/Severed Zombie-NewSheet.png" id="20_mcdey"]
 [ext_resource type="Script" uid="uid://t70aqhp8gia7" path="res://_UI/GameDemonstrations/simple_demo_hue_shift.gd" id="21_mcdey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rt11t"]
@@ -3127,9 +3127,73 @@ region = Rect2(930, 0, 62, 33)
 atlas = ExtResource("1_bgn1j")
 region = Rect2(992, 0, 62, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcdey"]
-atlas = ExtResource("20_1rxh2")
-region = Rect2(0, 0, 62, 33)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwu8x"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gif0u"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjt74"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_airqb"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi225"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtsb7"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us50m"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pncbi"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwxw0"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(384, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7paco"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(432, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8278"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(480, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev1yy"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(528, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jws62"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(576, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mcn8"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(624, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6xao"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(672, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt11t"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(720, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl2bf"]
+atlas = ExtResource("20_mcdey")
+region = Rect2(768, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ihw76"]
 animations = [{
@@ -3188,7 +3252,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcdey")
+"texture": SubResource("AtlasTexture_fwu8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gif0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjt74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_airqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi225")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtsb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us50m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pncbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwxw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7paco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8278")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev1yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jws62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mcn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6xao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt11t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl2bf")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -3253,7 +3365,8 @@ theme_override_styles/panel = ExtResource("18_n6xao")
 position = Vector2(94, 78)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ihw76")
-autoplay = "default"
+animation = &"new_animation"
+autoplay = "new_animation"
 flip_h = true
 script = ExtResource("21_mcdey")
 

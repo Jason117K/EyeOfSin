@@ -1,5 +1,8 @@
-The first of the mutated zombies, now just average eldritch footsoldiers. They retain most of their human form and all of their undead hunger. 
-Speed: Low
-Health: Low
-Numbers: High
-Damage: Low
+New Enemy : [color=#9b42df] Reborn [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Slow
+[b][color=#9b42df] Health :[/color][/b] 50
+[b][color=#9b42df] Numbers :[/color][/b] High
+[b][color=#9b42df] Damage :[/color][/b]  10
+[hr width=100%]
+Undead footsoldiers exhibiting the most minimal signs of eldritch mutation. They seek to overwhelm with numbers and consume.

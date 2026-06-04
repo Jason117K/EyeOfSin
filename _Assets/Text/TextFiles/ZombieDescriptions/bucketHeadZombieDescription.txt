@@ -1,5 +1,8 @@
-The Unhallowers are a mysterious sub-species of Reborn. Initial theories suggest that a person’s soul can embrace Argus’ influence, turning them into heralds of eldritch destruction. 
-Speed: Very Low
-Health: High
-Numbers: Low
-Damage: High
+New Enemy : [color=#9b42df] Unhallower [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Slow
+[b][color=#9b42df] Health :[/color][/b] 550
+[b][color=#9b42df] Numbers :[/color][/b] Low
+[b][color=#9b42df] Damage :[/color][/b]  110
+[hr width=100%]
+A rare sub-species of Reborn. Initial theories suggest that a person’s soul can embrace Argus’ influence, turning them into heralds of eldritch destruction. 

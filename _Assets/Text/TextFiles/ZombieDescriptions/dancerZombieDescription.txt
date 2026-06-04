@@ -1,5 +1,8 @@
-A horrible creation of zombie corpses and severed limbs pieced together. Argus doesn’t let anything go to waste in the apocalypse. 
-Speed: Low
-Health: High
-Numbers: Low
-Damage: Medium
+New Enemy : [color=#9b42df] Reanimator [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Slow
+[b][color=#9b42df] Health :[/color][/b] 375
+[b][color=#9b42df] Numbers :[/color][/b] Low
+[b][color=#9b42df] Damage :[/color][/b]  30
+[hr width=100%]
+Dangerous fusions of multiple Reborn that can [b][color=#9b42df]summon[/color][/b] Wretches to bypass defenses. 

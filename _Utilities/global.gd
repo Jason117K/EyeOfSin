@@ -13,6 +13,9 @@ var occulumCountVisual := 0
 var wave_manager : Node
 var is_blocking := false
 
+var dialog_is_disabled := true 
+var skip_tutorials := false 
+
 var all_zombies := []
 var all_demons := []
 var game_controller: GameController
@@ -97,7 +100,16 @@ var syn_ability_manager
 @onready var death_mark_button_icon :=  preload("res://_Entities/SynAbility/MarkedForDeath_CARD.png")
 @onready var shroomie_button_icon := preload("res://_Entities/SynAbility/TorchShroomie_Card.png")
 
+@onready var blood_rain := preload("res://_Entities/SwapAbilities/blood_rain_swap_ability.tscn")
+@onready var lucretia_grasp := preload("res://_Entities/SwapAbilities/lucretia_grasp_swap_ability.tscn")
+@onready var lightning_storm := preload("res://_Entities/SwapAbilities/lightning_storm_swap_ability.tscn")
+@onready var baal_gaze := preload("res://_Entities/SwapAbilities/gaze_of_baal_swap_ability.tscn")
 
+@onready var lightning_strike := preload("res://_Entities/SynAbility/syn_lightning_ability_bolt.tscn")
+@onready var syn_shield := preload("res://_Entities/SynAbility/syn_shield_ability.tscn")
+@onready var blood_ice := preload("res://_Entities/SynAbility/syn_ice_ability.tscn")
+@onready var death_mark := preload("res://_Entities/SynAbility/syn_ability_mark.tscn")
+@onready var shroomie := preload("res://_Entities/SynAbility/syn_torch_ability.tscn")
 
 func _process(delta: float) -> void:
 	if get_tree().paused:
@@ -148,6 +160,24 @@ func get_wave_manager()->Node:
 func register_ui_layer(new_ui_layer:Control) -> void:
 	ui_layers.append(new_ui_layer)
 	#ui_layer.set_health(DemonMan)
+
+func get_blood_panel()->Control:
+	for this_ui_layer in ui_layers:
+		if this_ui_layer != null:
+			if !this_ui_layer.make_green:
+				#print("Will Return ", this_ui_layer)
+				return this_ui_layer.get_blood_panel()
+	#print("Return Null L")
+	return null
+
+func get_health_panel()->Control:
+	for this_ui_layer in ui_layers:
+		if this_ui_layer != null:
+			if !this_ui_layer.make_green:
+				#print("Will Return ", this_ui_layer)
+				return this_ui_layer.get_health_panel()
+	#print("Return Null L")
+	return null
 
 func register_wave_preview(new_wave_preview:Node) -> void:
 	wave_previews.append(new_wave_preview)
@@ -620,7 +650,14 @@ func set_zombie_info_bar(zombie : Zombie) -> void:
 
 func set_demon_info_bar(demon : Demon) -> void:
 	notification_bar.set_demon_info(demon)
+	game_controller.get_active_dimension().demon_clicked()
 	pass
+	
+	
+func set_dialog_disabled()->void:
+	pass
+	
+	
 	
 func get_column_death_explosion() -> PackedScene:
 	return column_death_explosion

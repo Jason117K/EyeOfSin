@@ -2,6 +2,8 @@ extends Sprite2D
 
 var sway_shader: VisualShader = preload("res://_Common/Shaders/swayShader.tres")
 var set_shader: bool = false
+var shader_time := 0.0
+var paused := false
 
 func _ready() -> void:
 	#print(name ," READY ")
@@ -22,8 +24,10 @@ func set_sprite_visual_shader(new_shader: VisualShader) -> void:
 	else:
 		push_warning("Attempted to set null shader")
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if set_shader:
+		shader_time += delta
+		material.set_shader_parameter("shader_time", shader_time)
 		return
 	else:
 		set_sprite_visual_shader(sway_shader)

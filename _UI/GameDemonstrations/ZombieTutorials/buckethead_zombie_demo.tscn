@@ -21,6 +21,7 @@
 [ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_ghexw"]
 [ext_resource type="Texture2D" uid="uid://c37wmrvd3fs5w" path="res://_Entities/Zombies/_Unhallower/BucketHeadZombie.png" id="20_1mr2s"]
 [ext_resource type="Script" uid="uid://t70aqhp8gia7" path="res://_UI/GameDemonstrations/simple_demo_hue_shift.gd" id="21_6d88c"]
+[ext_resource type="Texture2D" uid="uid://wf06xhhhsnhv" path="res://_Entities/Zombies/_Unhallower/UnhallowerNew-Sheet.png" id="21_tbufh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7vv4l"]
 texture = ExtResource("2_ghexw")
@@ -3163,6 +3164,126 @@ region = Rect2(1600, 0, 64, 33)
 atlas = ExtResource("20_1mr2s")
 region = Rect2(0, 0, 64, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhts3"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(0, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kychq"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(160, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soxvm"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(320, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s5f8"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(480, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx372"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(640, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcflx"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(800, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_740s0"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(960, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdly1"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(1120, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1do08"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(1280, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p33ca"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(1440, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcgu3"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(1600, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw3wo"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(1760, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vv4l"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(1920, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lir0w"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(2080, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1snc"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(2240, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nyoi"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(2400, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lrfb"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(2560, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20gny"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(2720, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjlth"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(2880, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kqmb"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(3040, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi3nb"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(3200, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17veu"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(3360, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7umf"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(3520, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygbvt"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(3680, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjv3t"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(3840, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0xtj"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(4000, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucgu8"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(4160, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qfqg"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(4320, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txsuw"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(4480, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t22pp"]
+atlas = ExtResource("21_tbufh")
+region = Rect2(4640, 0, 160, 59)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ytq1"]
 animations = [{
 "frames": [{
@@ -3249,6 +3370,101 @@ animations = [{
 "loop": true,
 "name": &"new_animation",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhts3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kychq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soxvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s5f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx372")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcflx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_740s0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdly1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1do08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p33ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcgu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw3wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vv4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lir0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1snc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nyoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lrfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20gny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjlth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kqmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi3nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17veu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7umf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygbvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjv3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0xtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucgu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qfqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txsuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t22pp")
+}],
+"loop": true,
+"name": &"updated",
+"speed": 8.0
 }]
 
 [node name="BasicZombieDemo" type="CenterContainer" unique_id=409128122]
@@ -3260,10 +3476,10 @@ grow_vertical = 2
 
 [node name="BG" type="ColorRect" parent="." unique_id=462985712]
 clip_children = 1
-custom_minimum_size = Vector2(197.845, 159.56)
+clip_contents = true
+custom_minimum_size = Vector2(210, 189.55)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
 
 [node name="GridManager" parent="BG" unique_id=1538178973 instance=ExtResource("1_vp4eu")]
 position = Vector2(-298, -188)
@@ -3301,15 +3517,17 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_m5efi")
 
 [node name="Panel" type="Panel" parent="." unique_id=727484671]
-custom_minimum_size = Vector2(197.935, 160.785)
+custom_minimum_size = Vector2(210, 191.315)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("18_ghexw")
 
 [node name="BucketHeadZombie" type="AnimatedSprite2D" parent="Panel" unique_id=1027522135]
-position = Vector2(96, 74)
-scale = Vector2(4.64, 4.64)
+position = Vector2(108, 72)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_8ytq1")
-autoplay = "default"
+animation = &"updated"
+autoplay = "updated"
+frame_progress = 0.5249598
 flip_h = true
 script = ExtResource("21_6d88c")
 

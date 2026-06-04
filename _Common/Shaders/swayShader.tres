@@ -15,6 +15,10 @@ qualifier = 2
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_3kb82"]
 function = 0
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rrdlb"]
+parameter_name = "shader_time"
+default_value_enabled = true
+
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jm42h"]
 expanded_output_ports = [0]
 input_name = "uv"
@@ -53,7 +57,7 @@ nodes/vertex/3/position = Vector2(-440, 80)
 nodes/vertex/4/node = SubResource("VisualShaderNodeFloatOp_fl7fn")
 nodes/vertex/4/position = Vector2(260, -200)
 nodes/vertex/5/node = SubResource("VisualShaderNodeInput_4mvh1")
-nodes/vertex/5/position = Vector2(-940, 820)
+nodes/vertex/5/position = Vector2(-1160, 773.3333)
 nodes/vertex/6/node = SubResource("VisualShaderNodeInput_uk2bn")
 nodes/vertex/6/position = Vector2(-880, -240)
 nodes/vertex/7/node = SubResource("VisualShaderNodeVectorDecompose_7ljww")
@@ -68,7 +72,9 @@ nodes/vertex/11/node = SubResource("VisualShaderNodeFloatParameter_7tb8j")
 nodes/vertex/11/position = Vector2(-1060, 1040)
 nodes/vertex/12/node = SubResource("VisualShaderNodeFloatFunc_3kb82")
 nodes/vertex/12/position = Vector2(-99.3578, 965.512)
-nodes/vertex/connections = PackedInt32Array(2, 2, 3, 0, 6, 0, 7, 0, 7, 0, 4, 0, 3, 0, 8, 0, 8, 0, 4, 1, 4, 0, 9, 0, 7, 1, 9, 1, 9, 0, 0, 0, 5, 0, 10, 0, 11, 0, 10, 1, 10, 0, 12, 0, 12, 0, 8, 1)
+nodes/vertex/13/node = SubResource("VisualShaderNodeFloatParameter_rrdlb")
+nodes/vertex/13/position = Vector2(-1093.3334, 520)
+nodes/vertex/connections = PackedInt32Array(2, 2, 3, 0, 6, 0, 7, 0, 7, 0, 4, 0, 3, 0, 8, 0, 8, 0, 4, 1, 4, 0, 9, 0, 7, 1, 9, 1, 9, 0, 0, 0, 11, 0, 10, 1, 10, 0, 12, 0, 12, 0, 8, 1, 5, 0, 10, 0)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_a7j6x")
 nodes/fragment/2/position = Vector2(-880, 40)
 nodes/fragment/3/node = SubResource("VisualShaderNodeRemap_jgkvs")

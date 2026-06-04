@@ -50,6 +50,9 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	super()
+	Global.register_syn_ability(Global.lightning_strike)
+	Global.register_swap_ability(Global.lightning_storm)
+	
 	Dialogic.Inputs.auto_skip.enabled = true
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]
@@ -106,6 +109,7 @@ func finish_ready() -> void:
 	go_to_step("EXPLAIN_SWAP_ABILITY")
 	levelSwitcher.update_level(level06, level06Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
+	demonSelectionMenu.canSwapScenes = true
 	Global.unHideDemonSelectionMenu()
 	Global.unhide_ui_layer()
 	

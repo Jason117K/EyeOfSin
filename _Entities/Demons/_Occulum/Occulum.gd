@@ -137,11 +137,14 @@ func _on_BloodTimer_timeout() -> void:
 	bloodTimer.start()
 	
 func force_generate_blood()->Node2D:
+	print("Force Blood Gen")
 	var blood_instance := BloodScene.instantiate()
 	if self.is_in_group("Green"):
 		blood_instance.add_to_group("Green")
 	else:
 		blood_instance.add_to_group("Purple")
+	blood_instance.set_origin_occulum(self)
+	get_parent().add_child(blood_instance)
 	blood_instance.global_position = self.global_position + Vector2(0, -40)
 	return blood_instance
 	

@@ -31,7 +31,7 @@ const SHOOT_FRAMES = {"attack": 3, "attack_Hive": 3, "attack_Maw": 3, "attack_Cr
 func _ready() -> void:
 	animSpriteComp = $"../AnimatedSpriteComponent"
 	#node_ready = true 
-	print(parent_demon.get_name(), " has an AnimSpriteComp of ", animSpriteComp)
+	#print(parent_demon.get_name(), " has an AnimSpriteComp of ", animSpriteComp)
 	set_attack_speed(attack_speed_mult)
 	set_attack_rays_collision()
 

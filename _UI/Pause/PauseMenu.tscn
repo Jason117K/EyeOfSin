@@ -38,17 +38,16 @@ autoplay = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=957756947]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -111.0
-offset_right = 142.0
-offset_bottom = 111.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -104.0
+offset_right = 134.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="PauseMenuPanel" type="PanelContainer" parent="CenterContainer" unique_id=912087661]
 layout_mode = 2
@@ -63,60 +62,60 @@ theme_override_constants/margin_bottom = 9
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer" unique_id=73275476]
 layout_mode = 2
-theme_override_constants/separation = 15
 
 [node name="PauseLabel" type="Label" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=82248075]
-custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 16
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="Resume" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=439155358]
-custom_minimum_size = Vector2(250, 48)
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=1664631598]
+layout_mode = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer" unique_id=439155358]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
 text = "RESUME"
 
-[node name="Restart" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=938324446]
-custom_minimum_size = Vector2(250, 48)
+[node name="Restart" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer" unique_id=938324446]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
 text = "RESTART"
 
-[node name="Options" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=35136128]
-custom_minimum_size = Vector2(250, 48)
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=1777330376]
+layout_mode = 2
+alignment = 1
+
+[node name="Options" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer2" unique_id=35136128]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
 text = "OPTIONS"
 
-[node name="ReturnToMenu" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=402001552]
-custom_minimum_size = Vector2(250, 48)
+[node name="ReturnToMenu" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer2" unique_id=402001552]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
-text = "RETURN TO MAIN"
+text = "MAIN MENU"
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=824847993]
-visible = false
-custom_minimum_size = Vector2(350, 350)
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer2/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer2/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

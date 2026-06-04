@@ -100,7 +100,7 @@ func set_visual_tutorial_text(newFile: String, show_button: bool = true) -> void
 		
 	
 		
-func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = true) -> void:
+func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = true, location : Vector2 = Vector2(0,0)) -> void:
 	visualTutorialVisualParent.remove_child(visualTutorialVisual)
 	visualTutorialVisual.queue_free()
 	visualTutorialVisualParent.add_child(newVisual)
@@ -111,6 +111,7 @@ func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = 
 		pass
 	else:
 		visualTutorialButton.hide()	
+	visualTutorialContainer.position = visualTutorialContainer.position + location
 	
 func _on_visual_tutorial_understood_button_pressed() -> void:
 	Global.is_blocking = false
@@ -123,7 +124,7 @@ func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
-	print("Button Global START Pos Is  : ", button.global_position)
+	#print("Button Global START Pos Is  : ", button.global_position)
 	# Remove any existing highlight
 	if button.has_meta("highlight_panel"):
 		var old: Panel = button.get_meta("highlight_panel")
@@ -135,11 +136,12 @@ func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
 	#panel.scale = Vector2(0.8,0.8)
 	panel.name = "HighlightPanel"
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
-
+	
 
 	button.add_child(panel)
 	for child in button.get_children():
-		print(button, " children are ", child)
+		#print(button, " children are ", child)
+		pass
 
 
 	# Expand slightly beyond the button to create a border effect
@@ -147,6 +149,7 @@ func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
 	#panel.position = Vector2(-margin, -margin)
 	#panel.position = Vector2(0,0)
 	panel.size = button.size #+ Vector2(margin * 2, margin * 2)
+	#print(panel.size , " Glow Container Size is ", button.size)
 	panel.z_index = 2
 
 	# Build the stylebox for the panel
@@ -170,7 +173,6 @@ func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
 
 
 
-	print("Crawler Button is ", button, " panel is ", panel )
 	if should_pulse:
 		start_glow_pulse(button, panel, highlight_style)
 

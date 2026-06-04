@@ -3592,7 +3592,6 @@ script = ExtResource("1_te6yt")
 new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
 wave2StartTime = 55
 wave3StartTime = 75
-skip_tutorials = true
 
 [node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
 

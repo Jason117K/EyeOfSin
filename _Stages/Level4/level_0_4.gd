@@ -1,6 +1,7 @@
 extends LevelTemplate
 # level_0_4.gd - Level 0-4 Tutorial Controller
 #500
+#75,95,90
 # Preloaded demo scenes
 var summoner_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/summoner_zombie_demo.tscn")
 
@@ -41,6 +42,16 @@ func _setup_tutorial() -> void:
 			"name": "PRE_START_GAME",
 			"enter": _pre_start_game,
 		},
+		{
+			"name": "EXPLAIN_REANIMATOR",
+			"enter": _start_explain_reanimator,
+			"input_filter": _filter_block_keyboard,
+		},
+		{
+			"name": "RESUME_GAME",
+			"enter": _resume_game,
+			"input_filter": _filter_block_keyboard,
+		},
 	])
 #endregion
 
@@ -48,6 +59,7 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	super()
+	Global.register_syn_ability(Global.lightning_strike)
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime]
@@ -98,12 +110,12 @@ func _configure_waves() -> void:
 											{"Severed": 6, "Unhallower":2}]) 
 	zombie_spawner_5.set_waves_from_dicts([{"Reborn":5,"Severed":2}, 
 											{"Severed": 2, "Reborn":6, "Unhallower":1},
-											{"Reborn": 4, "Severed": 1, "Reanimator":1}, 
+											{"Reborn": 4, "Severed": 1, "Unhallower":2}, 
 											{"Reborn": 9, "Reanimator":2}])
 	zombie_spawner_6.set_waves_from_dicts([{}, 
 											{"Severed": 4, "Reborn":9},
 											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 8}]) 
+											{"Severed": 6,"Reanimator":1}]) 
 	zombie_spawner_7.set_waves_from_dicts([{},
 											{}, 
 											{"Reborn": 4, "Severed": 1}, 
@@ -154,7 +166,14 @@ func _start_explain_syn_ability()->void:
 func _pre_start_game()->void:
 	toolTips.stop_glow_pulse(Global.get_syn_button())
 	
+func _start_explain_reanimator() -> void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUMMONER)
+	toolTips.set_visual_tutorial_visual(summoner_zombie_demo_scene.instantiate())
+
+func _resume_game()->void:
+	pass
 	
+		
 func _start_force_select_wyrm() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	hide_all_demon_buttons_with_exception(["Wyrm"])
@@ -193,9 +212,7 @@ func start_game() -> void:
 	green_dimension.start_game()
 
 
-func _start_explain_summoner_zombie() -> void:
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUMMONER)
-	toolTips.set_visual_tutorial_visual(summoner_zombie_demo_scene.instantiate())
+
 #endregion
 
 
@@ -236,9 +253,20 @@ func _on_wyrm_placed(_grid_pos: Vector2) -> void:
 		advance_tutorial() # → TUTORIAL_P1_DONE
 
 
+
 func _on_wave_started(wave_index: int) -> void:
-	if wave_index == 1:
-		go_to_step("EXPLAIN_SUMMONER_ZOMBIE")
+	if skip_tutorials:
+		return
+	match wave_index:
+		0:
+			pass
+		1:
+			pass
+		2: 
+			pass
+		3:
+			go_to_step("EXPLAIN_REANIMATOR")
+			
 #endregion
 
 

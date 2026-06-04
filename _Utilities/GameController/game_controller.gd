@@ -123,8 +123,26 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		current_scene = null
 
 	await get_tree().process_frame
+	
 
+		
 	var new1 : Control = load(scene1_path).instantiate()
+	
+	
+	if Global.dialog_is_disabled:
+		new1.debug = true 
+		new1.skip_end_dialog = true 
+	else:
+		new1.debug = false 
+		new1.skip_end_dialog = false
+		
+	if Global.skip_tutorials:
+		new1.skip_tutorials = true 
+	else:
+		new1.skip_tutorials = false 
+	
+	
+	
 	scene_container.add_child(new1)
 	current_scene = new1
 	current_scenes.append(new1)
@@ -166,6 +184,16 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	level_switcher.visibility_layer = 0
 	level_switcher.set_visibility_layer_bit(1,true)
 	Global.adjust_ui_layer()
+
+	if Global.dialog_is_disabled:
+		current_scenes[0].debug = true 
+	else:
+		current_scenes[0].debug = false 
+		
+	if Global.skip_tutorials:
+		current_scenes[0].skip_tutorials = true 
+	else:
+		current_scenes[0].skip_tutorials = false 
 
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
@@ -430,7 +458,7 @@ func get_other_dimension() -> Node:
 
 
 func place_empty_in_alt_scene(grid_pos : Vector2) -> void:
-	print("Should Place Empty Block Demon at ", grid_pos)
+	#print("Should Place Empty Block Demon at ", grid_pos)
 	var other_dimension := get_other_dimension()
 	if other_dimension:
 		other_dimension.place_empty_blocker_demon(grid_pos)
