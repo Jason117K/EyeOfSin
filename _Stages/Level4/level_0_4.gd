@@ -15,7 +15,7 @@ var level05Alt := "res://_Stages/Level5/Level0-5_Alternate.tscn"
 const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
 const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
 const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
-
+const TUTORIAL_EXPLAIN_SYN_ABILITY = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability.txt"
 # Demon button container names
 
 # Cached button references
@@ -34,22 +34,12 @@ const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptio
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
-			"name": "FORCE_SELECT_WYRM",
-			"enter": _start_force_select_wyrm,
-			"input_filter": _filter_block_keyboard,
+			"name": "EXPLAIN_SYN_ABILITY",
+			"enter": _start_explain_syn_ability,
 		},
 		{
-			"name": "FORCE_PLACE_WYRM",
-			"enter": _start_force_place_wyrm,
-			"input_filter": _filter_block_deselect,
-		},
-		{
-			"name": "TUTORIAL_P1_DONE",
-			"enter": _start_tutorial_p1_done,
-		},
-		{
-			"name": "EXPLAIN_SUMMONER_ZOMBIE",
-			"enter": _start_explain_summoner_zombie,
+			"name": "PRE_START_GAME",
+			"enter": _pre_start_game,
 		},
 	])
 #endregion
@@ -127,7 +117,8 @@ func finish_ready() -> void:
 		return
 	toolTips.show()
 	_setup_tutorial()
-	go_to_step("FORCE_SELECT_WYRM")
+	go_to_step("EXPLAIN_SYN_ABILITY")
+	demonSelectionMenu.canSwapScenes = true
 	levelSwitcher.update_level(level05, level05Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	levelSwitcher.visible = false
@@ -155,6 +146,15 @@ func _input(event: InputEvent) -> void:
 
 
 #region Step Entry Functions (same sequential order as definitions above)
+
+func _start_explain_syn_ability()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY,true,Vector2(0,-80))
+	toolTips.add_pulsing_button_highlight(Global.get_syn_button())
+
+func _pre_start_game()->void:
+	toolTips.stop_glow_pulse(Global.get_syn_button())
+	
+	
 func _start_force_select_wyrm() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
 	hide_all_demon_buttons_with_exception(["Wyrm"])
@@ -217,6 +217,8 @@ func _on_tooltip_hidden() -> void:
 	#hide_spotlight()
 
 	match get_current_step_name():
+		"EXPLAIN_SYN_ABILITY":
+			go_to_step("PRE_START_GAME")
 		"FORCE_PLACE_WYRM":
 			get_tree().paused = false
 

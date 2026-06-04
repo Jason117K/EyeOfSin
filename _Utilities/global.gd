@@ -564,6 +564,9 @@ func register_syn_ability(new_syn_ability)->void:
 func register_swap_ability_instance(new_swap_ability ) -> void:
 	swap_ability = new_swap_ability
 
+func get_swap_ability_panel()->PanelContainer:
+	return swap_ability.get_panel_container()
+
 func register_notification_bar(new_notification_bar : Control) -> void:
 	notification_bar = new_notification_bar
 
@@ -578,6 +581,9 @@ func get_syn_icon()->Texture:
 		return syn_ability_manager.get_icon()
 	else:
 		return lightning_storm_icon	
+
+func get_syn_button()->Control:
+	return syn_ability_manager.get_syn_button()
 
 func start_swap_ability() -> void:
 	if swap_ability != null:

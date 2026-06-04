@@ -14,6 +14,7 @@ var affected_zombies : Array = []
 #Reduced Cooldown If Full Ability Transpires 
 @onready var cooldown_length_special := cooldown_duration - 2.5
 @onready var cooldown_length_normal := cooldown_duration
+@onready var cooldown_controller := $Control
 @onready var cooldown_visual := $Control/CooldownVisual
 @onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/SwapAbilityProgressBar
 const STEP := 0.1
@@ -34,6 +35,8 @@ func game_start():
 	print("Game Start For Swap Ability Called")
 	cooldown_timer.start()
 	
+func get_panel_container()->PanelContainer:
+	return cooldown_controller.get_panel_container()
 
 func reset_cooldown() -> void:
 	is_on_cooldown = false

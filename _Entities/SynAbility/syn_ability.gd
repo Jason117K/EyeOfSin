@@ -38,6 +38,9 @@ func set_icon(new_texture):
 func get_icon()->Texture:
 	return icon_texture
 
+func get_syn_button()->Control:
+	return $SynAbilityCooldown/SynAbilityButton
+
 func set_syn_ability(new_syn_ability)->void:
 	syn_ability_instance = new_syn_ability
 

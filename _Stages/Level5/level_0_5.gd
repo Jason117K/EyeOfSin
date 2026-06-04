@@ -18,7 +18,7 @@ const TUTORIAL_SELECT_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_Sel
 const TUTORIAL_PLACE_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_PlaceHive.txt"
 const TUTORIAL_EXPLAIN_ERUPTER = "res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
 const TUTORIAL_EXPLAIN_LANCER = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
-
+const TUTORIAL_EXPLAIN_SWAP = "res://_Assets/Text/TextFiles/Tutorial_Explain_Swap.txt"
 
 # Cached button references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -36,26 +36,12 @@ const TUTORIAL_EXPLAIN_LANCER = "res://_Assets/Text/TextFiles/ZombieDescriptions
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
-			"name": "FORCE_SELECT_HIVE",
-			"enter": _start_force_select_hive,
-			"input_filter": _filter_block_keyboard,
+			"name": "EXPLAIN_SWAP_ABILITY",
+			"enter": _start_explain_swap,
 		},
 		{
-			"name": "FORCE_PLACE_HIVE",
-			"enter": _start_force_place_hive,
-			"input_filter": _filter_block_deselect,
-		},
-		{
-			"name": "TUTORIAL_P1_DONE",
-			"enter": _start_tutorial_p1_done,
-		},
-		{
-			"name": "EXPLAIN_LANCER_ZOMBIE",
-			"enter": _start_explain_lancer_zombie,
-		},
-		{
-			"name": "EXPLAIN_ERUPTER_ZOMBIE",
-			"enter": _start_explain_erupter_zombie,
+			"name": "PRE_START_GAME",
+			"enter": _pre_start_game,
 		},
 	])
 #endregion
@@ -117,7 +103,7 @@ func finish_ready() -> void:
 		return
 	toolTips.show()
 	_setup_tutorial()
-	go_to_step("FORCE_SELECT_HIVE")
+	go_to_step("EXPLAIN_SWAP_ABILITY")
 	levelSwitcher.update_level(level06, level06Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
@@ -144,6 +130,14 @@ func _input(event: InputEvent) -> void:
 
 
 #region Step Entry Functions (same sequential order as definitions above)
+
+func _start_explain_swap()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SWAP,true,Vector2(0,-80))
+	toolTips.add_pulsing_button_highlight(Global.get_swap_ability_panel())
+
+func _pre_start_game()->void:
+	toolTips.stop_glow_pulse(Global.get_swap_ability_panel())
+
 func _start_force_select_hive() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
 
@@ -214,6 +208,8 @@ func _on_tooltip_hidden() -> void:
 	#hide_spotlight()
 
 	match get_current_step_name():
+		"EXPLAIN_SWAP_ABILITY":
+			go_to_step("PRE_START_GAME")
 		"FORCE_PLACE_HIVE":
 			get_tree().paused = false
 

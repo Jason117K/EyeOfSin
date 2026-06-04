@@ -20,7 +20,11 @@ extends Control
 
 var char_count : int
 var index : int
+# Thickness of the highlight border (in pixels)
+@export var highlight_border_thickness: int = 1
 
+# Color of the highlight border
+@export var highlight_border_color: Color = Color.RED
 signal ToolTipHid
 
 func _ready() -> void:
@@ -32,10 +36,11 @@ func _ready() -> void:
 
 	index = visualTutorialVisual.get_index()
 	
-func set_basic_tutorial_text(newFile: String, shouldPause: bool) -> void:
+func set_basic_tutorial_text(newFile: String, shouldPause: bool, location : Vector2 = Vector2(0,0)) -> void:
 	show()
 	hide_basic_tutorial_button()
 	basicTutorialMessageContainer.visible = true
+	basicTutorialMessageContainer.position = location
 	visualTutorialContainer.visible = false
 
 	var file := FileAccess.open(newFile, FileAccess.READ)
@@ -53,6 +58,8 @@ func set_basic_tutorial_text(newFile: String, shouldPause: bool) -> void:
 		show_basic_tutorial_button()
 		get_tree().paused = true
 
+func get_basic_tutorial_container()->Control:
+	return basicTutorialMessageContainer
 
 func show_basic_tutorial_button() -> void:
 	basicTutorialButton.show()
@@ -111,3 +118,107 @@ func _on_visual_tutorial_understood_button_pressed() -> void:
 	ToolTipHid.emit()
 	get_tree().paused = false
 	#blockInputPanel.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
+
+func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
+	if not button:
+		push_error("Button node is null!")
+		return
+	print("Button Global START Pos Is  : ", button.global_position)
+	# Remove any existing highlight
+	if button.has_meta("highlight_panel"):
+		var old: Panel = button.get_meta("highlight_panel")
+		if is_instance_valid(old):
+			old.queue_free()
+
+	# Create a Panel as a child to act as the border/glow
+	var panel := Panel.new()
+	#panel.scale = Vector2(0.8,0.8)
+	panel.name = "HighlightPanel"
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
+
+
+	button.add_child(panel)
+	for child in button.get_children():
+		print(button, " children are ", child)
+
+
+	# Expand slightly beyond the button to create a border effect
+	var margin := highlight_border_thickness #+ 4
+	#panel.position = Vector2(-margin, -margin)
+	#panel.position = Vector2(0,0)
+	panel.size = button.size #+ Vector2(margin * 2, margin * 2)
+	panel.z_index = 2
+
+	# Build the stylebox for the panel
+	var highlight_style := StyleBoxFlat.new()
+	highlight_style.bg_color = Color.TRANSPARENT
+	highlight_style.border_width_left = highlight_border_thickness
+	highlight_style.border_width_right = highlight_border_thickness
+	highlight_style.border_width_top = highlight_border_thickness
+	highlight_style.border_width_bottom = highlight_border_thickness
+	highlight_style.border_color = highlight_border_color
+	highlight_style.shadow_color = Color(highlight_border_color, 0.5)
+	highlight_style.shadow_size = 2
+	highlight_style.shadow_offset = Vector2.ZERO
+	highlight_style.corner_radius_top_left = 2
+	highlight_style.corner_radius_top_right = 2
+	highlight_style.corner_radius_bottom_left = 2
+	highlight_style.corner_radius_bottom_right = 2
+
+	panel.add_theme_stylebox_override("panel", highlight_style)
+	button.set_meta("highlight_panel", panel)
+
+
+
+	print("Crawler Button is ", button, " panel is ", panel )
+	if should_pulse:
+		start_glow_pulse(button, panel, highlight_style)
+
+
+func start_glow_pulse(button, _panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
+	if button.has_meta("glow_tween"):
+		var old_tween: Tween = button.get_meta("glow_tween")
+		if old_tween and old_tween.is_valid():
+			old_tween.kill()
+
+	var tween = button.create_tween()
+	tween.set_loops()
+
+	tween.tween_method(
+		func(val: int) -> void:
+			style.shadow_size = int(lerpf(4, 8, val))
+			style.shadow_color = Color(glow_color, lerpf(0.2, 0.4, val)),
+		0.0, 1.0, 1.2
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_method(
+		func(val: int) -> void:
+			style.shadow_size = int(lerpf(8, 4, val))
+			style.shadow_color = Color(glow_color, lerpf(0.4, 0.2, val)),
+		0.0, 1.0, 1.2
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	button.set_meta("glow_tween", tween)
+	
+	
+		
+	
+func stop_glow_pulse(button) -> void:
+	print("STOP PULSE")
+	if button.has_meta("glow_tween"):
+		var tween: Tween = button.get_meta("glow_tween")
+		if tween and tween.is_valid():
+			tween.kill()
+		button.remove_meta("glow_tween")
+	
+	# Remove the highlight panel
+	if button.has_meta("highlight_panel"):
+		var panel: Panel = button.get_meta("highlight_panel")
+		if is_instance_valid(panel):
+			panel.queue_free()
+		button.remove_meta("highlight_panel")
+	if button.get_child(0) != null:
+		if button.get_child(0).name == "HighlightPanel":
+			print("Going to queue free button highlight : ", button.get_child(0))
+			button.get_child(0).queue_free()
+			pass
