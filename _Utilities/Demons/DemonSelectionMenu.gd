@@ -194,7 +194,7 @@ func _on_OcculumButton_pressed() -> void:
 	clicked_Eye.emit()
 	
 func increaseOcculumCost() -> void:
-	OcculumCostLabel.text = str(50+(Global.getOcculumCount()*5))
+	OcculumCostLabel.text = str(50+(Global.getOcculumCount()*10))
 
 
 func _on_SpinalOcculumButton_pressed() -> void:

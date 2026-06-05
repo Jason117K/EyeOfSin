@@ -47,6 +47,9 @@ var registered_syn_abilities : Array = []
 var purple_syn_ability : Area2D
 var green_syn_ability : Area2D
 
+@onready var sway_shader: VisualShader = preload("res://_Common/Shaders/swayShader.tres")
+
+
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 var bomb_scene := preload("res://_Entities/Demons/Explosion/Bomb.tscn")

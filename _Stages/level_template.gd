@@ -238,8 +238,9 @@ func _filter_tutorial_input(event: InputEvent) -> void:
 	
 func attach_script_to_sway_children(make_green : bool = false) -> void:                                       #script_path: String) -> void:
 	var coral_node := get_node("Environment/Coral")
+	print("Should Attach Scripts to Children of ", coral_node)
 	if coral_node == null:
-		#push_error("Coral node not found at Environment/Coral")
+		push_error("Coral node not found at Environment/Coral")
 		return
 
 	var script_to_attach := load(sway_script_path)
@@ -251,6 +252,7 @@ func attach_script_to_sway_children(make_green : bool = false) -> void:         
 		child.set_script(script_to_attach)
 		if child.is_inside_tree() and child.has_method("_ready"):
 			child._ready()
+			print(child, " is ready has attached ", script_to_attach)
 			#if make_green:
 				#child.make_green()
 
