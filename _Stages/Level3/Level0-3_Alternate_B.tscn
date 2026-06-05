@@ -1128,6 +1128,7 @@ sources/6 = SubResource("TileSetAtlasSource_qoltk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsj0e"]
 shader = ExtResource("10_hu21d")
+shader_parameter/shader_time = 0.0
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("18_jhxut")
@@ -1314,6 +1315,7 @@ tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAA
 tile_set = SubResource("TileSet_ivupi")
 
 [node name="Environment" type="Node2D" parent="." unique_id=1608530611]
+process_mode = 1
 z_index = 1
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=1517817421]

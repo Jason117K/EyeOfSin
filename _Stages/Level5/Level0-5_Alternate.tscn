@@ -24,6 +24,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("10_8ewtc")
+shader_parameter/shader_time = 0.0
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("19_806i3")
@@ -55,6 +56,7 @@ animations = [{
 }]
 
 [node name="Level05Alternate" type="Control" unique_id=2024626130 groups=["Green", "GreenLevel"]]
+process_mode = 1
 z_index = 1
 layout_mode = 3
 anchors_preset = 15

@@ -27,6 +27,7 @@ func set_sprite_visual_shader(new_shader: VisualShader) -> void:
 func _physics_process(delta: float) -> void:
 	if set_shader:
 		shader_time += delta
+		print(name, " shader_time=", shader_time)
 		material.set_shader_parameter("shader_time", shader_time)
 		return
 	else:

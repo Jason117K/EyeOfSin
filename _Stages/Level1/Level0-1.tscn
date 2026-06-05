@@ -3657,6 +3657,7 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_gawxv")
 
 [node name="Environment" type="Node2D" parent="." unique_id=1494196821]
+process_mode = 1
 
 [node name="BookProp1" type="Sprite2D" parent="Environment" unique_id=686416484]
 position = Vector2(27, 194)
