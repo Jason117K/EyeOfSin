@@ -539,7 +539,7 @@ shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 shader_parameter/hovering = 0.0
-shader_parameter/spin_speed = 0.0
+shader_parameter/spin_speed = 1.0
 shader_parameter/rand_trans_power = 0.075
 shader_parameter/rand_seed = 2.46
 shader_parameter/vortex_amt = 0.0
@@ -618,9 +618,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1")
-is_alt = null
-highlight_border_thickness = null
-highlight_border_color = null
 
 [node name="3DTest" type="TextureRect" parent="." unique_id=799279206]
 visible = false
