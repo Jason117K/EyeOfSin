@@ -13,9 +13,24 @@
 [ext_resource type="Texture2D" uid="uid://87mvflvt25ip" path="res://_Entities/Zombies/_Flesheater/FootBallZombie.png" id="11_47ah1"]
 [ext_resource type="Texture2D" uid="uid://boehiq0ysreqy" path="res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.png" id="12_ubrib"]
 [ext_resource type="Texture2D" uid="uid://csockxqf1ab8l" path="res://_Entities/Zombies/_Sundered/PoleVaultZombie.png" id="13_whwra"]
+[ext_resource type="FontFile" uid="uid://deyk678r085k8" path="res://_Assets/Fonts/Cormorant-Bold.ttf" id="14_sf2ok"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="15_hksyf"]
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="16_47ah1"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="17_ubrib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qtyv"]
 size = Vector2(69, 66)
+
+[sub_resource type="Curve2D" id="Curve2D_whwra"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 27.615, 50, 0, 27.615, 0, -27.615, 0, 0, 50, 0, 27.615, 0, -27.615, -50, 0, -27.615, 0, 27.615, 0, 0, -50, 0, -27.615, 0, 0, 50, 0)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_8gou2"]
+resource_local_to_scene = true
+script = ExtResource("17_ubrib")
 
 [node name="WavePreview" type="Node2D" unique_id=2004771555]
 script = ExtResource("2")
@@ -282,6 +297,45 @@ scale = Vector2(1.1, 1.1)
 [node name="NextWaveTimer" type="Timer" parent="." unique_id=1900916118]
 wait_time = 25.0
 one_shot = true
+
+[node name="TimerLabel" type="Label" parent="." unique_id=873103154]
+visible = false
+z_index = 1
+offset_left = -18.0
+offset_top = -37.735
+offset_right = 22.0
+offset_bottom = 21.265
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_sf2ok")
+theme_override_font_sizes/font_size = 48
+text = "25"
+
+[node name="Ellipse" type="Node2D" parent="TimerLabel" unique_id=491763347 node_paths=PackedStringArray("polygon", "line")]
+z_index = -1
+position = Vector2(18, 38)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("15_hksyf")
+polygon = NodePath("Fill")
+stroke_color = Color(0, 0, 0, 1)
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_whwra")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_8gou2")
+shape_type = 2
+rx = 50.0
+ry = 50.0
+
+[node name="Fill" type="Polygon2D" parent="TimerLabel/Ellipse" unique_id=1315196227]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="TimerLabel/Ellipse" unique_id=1524576207]
+points = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
+closed = true
+default_color = Color(0, 0, 0, 1)
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

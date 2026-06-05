@@ -9,6 +9,9 @@ var canPlayLevel5: bool = true
 var canPlayLevel6: bool = true
 var canPlayLevel7: bool = true
 var occulumCount := 0
+var green_occulum_count := 0
+var purple_occulum_count := 0 
+
 var occulumCountVisual := 0
 var wave_manager : Node
 var is_blocking := false
@@ -19,6 +22,7 @@ var skip_tutorials := false
 var all_zombies := []
 var all_demons := []
 var game_controller: GameController
+var demon_selection_menus : Array = []
 var demon_selection_menu : Control
 var notification_bar : Control 
 var green_portal :Node = null
@@ -191,16 +195,35 @@ func add_blood_from_wave(blood_to_add:int)->void:
 		if demon_manager != null:
 			demon_manager.add_blood(blood_to_add)	
 
+func register_demon_selection_menu(new_demon_selection_menu)->void:
+	var temp_menu_holder :Array = []
+	for menu in demon_selection_menus:
+		if menu != null && is_instance_valid(menu):
+			temp_menu_holder.append(menu)
+			
+	demon_selection_menus = temp_menu_holder
+	demon_selection_menus.append(new_demon_selection_menu)
+
 func hideDemonSelectionMenu() -> void:
-	if demon_selection_menu != null:
-		demon_selection_menu.visible = false
+	for menu in demon_selection_menus:
+		if menu != null:
+			menu.visible = false 
+			
+	#if demon_selection_menu != null:
+		#demon_selection_menu.visible = false
 
 func unHideDemonSelectionMenu() -> void:
-	if demon_selection_menu != null:
-		demon_selection_menu.visible = true
+	for menu in demon_selection_menus:
+		if menu != null:
+			menu.visible = true 
+			 
+	#if demon_selection_menu != null:
+		#demon_selection_menu.visible = true
 		
 func swap_portal_button() -> void:
-	demon_selection_menu.swap_portal_button()
+	#TODO
+	pass
+	#demon_selection_menu.swap_portal_button()
 
 func register_demon_managers(new_demon_manager:DemonManager)->void:
 	demon_managers.append(new_demon_manager)
@@ -322,13 +345,31 @@ func deregister_lightning_ball(new_lightning_ball:Area2D)->void:
 func resetOcculumCount() -> void:
 	is_blocking = false
 	occulumCount = 0
+	green_occulum_count = 0
+	purple_occulum_count = 0
 	all_registered_occulum.clear()
 	#game_controller.on_scene_1 = true 
 	
 	
 func incrementOcculumCount() -> void:
-	occulumCount += 1
-	demon_selection_menu.increaseOcculumCost()
+	if game_controller.on_purple_scene():
+		purple_occulum_count += 1
+		for menu in demon_selection_menus:
+			if menu != null:
+				if !menu.is_alt:
+					menu.increaseOcculumCost() 
+	else: #Green
+		green_occulum_count += 1
+		for menu in demon_selection_menus:
+			if menu != null:
+				if menu.is_alt:
+					menu.increaseOcculumCost() 
+				
+	#occulumCount += 1
+	#for menu in demon_selection_menus:
+		#if menu != null:
+			#menu.increaseOcculumCost() 
+	##demon_selection_menu.increaseOcculumCost()
 
 
 
@@ -338,7 +379,11 @@ func incrementOcculumCountVisual() -> void:
 	
 func getOcculumCount() -> int:
 	#print("SSReturn , ", occulumCount)
-	return occulumCount
+	if game_controller.on_purple_scene():
+		return purple_occulum_count
+	else:
+		return green_occulum_count
+	#return occulumCount
 
 func damage_all_zombies_with_link(damage : float, zombie_to_exclude : Zombie)->void:
 	print("Checking Link DMG on ", all_zombies)

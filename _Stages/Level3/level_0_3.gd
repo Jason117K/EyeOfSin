@@ -139,6 +139,7 @@ func finish_ready() -> void:
 	toolTips.show()
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	_setup_tutorial()
+	demonSelectionMenu.canSwapScenes = true
 	print("Go To Step Maw Select")
 	go_to_step("FORCE_SELECT_SPINALOCCULUM")
 	levelSwitcher.update_level(level04, level04Alt)

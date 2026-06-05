@@ -2,7 +2,7 @@ extends LevelTemplate
 #500
 
 
-@export var isGreenDimension := false
+
 var purple_dimension: Control
 
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1

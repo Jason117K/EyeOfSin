@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b3olngowkc40m" path="res://_Stages/Level1/level_0_1_alternate.gd" id="1_83ut0"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_6jrws"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_7r54f"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="4_casp2"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_vll5p"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_8snc0"]
 [ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://_Assets/Environment/Props/Pustules-export.png" id="8_opuci"]
@@ -2077,6 +2078,9 @@ offset_left = -152.0
 offset_top = -2036.5
 offset_right = 152.0
 offset_bottom = 2036.5
+
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("4_casp2")]
+layout_mode = 1
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1870227525]
 stream = ExtResource("26_adj10")

@@ -3,7 +3,7 @@ extends Node2D
 #DemonManager.gd
 
 # Get a reference to the demon selection menu
-@onready var selection_menu: Control = get_parent().get_parent().get_node("DemonSelectionMenu")
+@onready var selection_menu: Control = get_parent().get_node("DemonSelectionMenu")
 @onready var notification_bar: MarginContainer = Global.notification_bar
 @onready var parentName: String = get_parent().get_name()
 
@@ -46,7 +46,7 @@ func get_selected_demon() -> PackedScene:
 		#print("Returning HighLight Occulum.R")
 		return occulum_scene
 	else:
-		return get_parent().get_parent().get_node("DemonSelectionMenu").selected_demon
+		return get_parent().get_node("DemonSelectionMenu").selected_demon
 
 
 # Handles Player Interaction with the Demon Menu 

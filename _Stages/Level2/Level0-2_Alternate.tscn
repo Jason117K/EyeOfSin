@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://diucjdb6h3ho6" path="res://_Stages/Level2/level_0_2_alternate.gd" id="1_xmbdx"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_m8syp"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="2_np61k"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_b1irm"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_b2r3q"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_uwsnf"]
@@ -1243,8 +1244,8 @@ script = ExtResource("1_xmbdx")
 debug = false
 skip_end_dialog = false
 
-[node name="DemonManager" parent="." unique_id=282479321 instance=ExtResource("2_m8syp")]
-blood_points = 215
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_np61k")]
+layout_mode = 1
 
 [node name="UILayer" parent="." unique_id=1044800332 instance=ExtResource("20_c63eg")]
 layout_mode = 1
@@ -1262,6 +1263,9 @@ offset_left = -152.0
 offset_top = -2036.5
 offset_right = 152.0
 offset_bottom = 2036.5
+
+[node name="DemonManager" parent="." unique_id=282479321 instance=ExtResource("2_m8syp")]
+blood_points = 215
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=120109506]
 position = Vector2(370, 208)

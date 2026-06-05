@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_qrjcg"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_qtrot"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_cheg3"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="4_i0lp8"]
 [ext_resource type="Texture2D" uid="uid://mel1dtr6mh8m" path="res://_Assets/Environment/Props/CoralSmall_PROP-GREEN.png" id="7_1d2r2"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="7_j2slm"]
 [ext_resource type="Texture2D" uid="uid://lv3q8rfmk8qp" path="res://_Assets/Environment/Props/CoralBig_PropGREEN.png" id="8_i0lp8"]
@@ -71,6 +72,22 @@ skip_end_dialog = false
 [node name="UILayer" parent="." unique_id=1561045702 instance=ExtResource("20_hgpp1")]
 layout_mode = 1
 make_green = true
+
+[node name="ToolTips" parent="." unique_id=1766270770 instance=ExtResource("21_hbnda")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("4_i0lp8")]
+layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
 blood_points = 500
@@ -406,19 +423,6 @@ color = Color(0, 0, 0, 0.0784314)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=425088924]
 environment = ExtResource("21_qrjcg")
-
-[node name="ToolTips" parent="." unique_id=1766270770 instance=ExtResource("21_hbnda")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=536692018]
 stream = ExtResource("22_fdf6c")

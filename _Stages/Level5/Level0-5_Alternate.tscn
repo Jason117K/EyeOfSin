@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bkw61xtelagah" path="res://_Stages/Level5/level_0_5_alternate.gd" id="1_iid74"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_iid74"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_4xikw"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_p55b7"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_otain"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="7_vx8y4"]
 [ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://_Assets/Environment/Props/Pustules-export.png" id="8_cku2c"]
@@ -73,6 +74,12 @@ skip_end_dialog = false
 [node name="UILayer" parent="." unique_id=1182954165 instance=ExtResource("20_nsrc7")]
 layout_mode = 1
 make_green = true
+
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_p55b7")]
+layout_mode = 1
+is_alt = null
+highlight_border_thickness = null
+highlight_border_color = null
 
 [node name="DemonManager" parent="." unique_id=1718086426 instance=ExtResource("2_iid74")]
 blood_points = 700

@@ -50,6 +50,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1")
+is_alt = null
+highlight_border_thickness = null
+highlight_border_color = null
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 custom_minimum_size = Vector2(0, 79)

@@ -3,6 +3,7 @@ extends Node2D
 signal game_start_requested
 signal call_wave_early_requested
 
+@onready var visual_preview_container := $Node2D/Control
 
 @onready var preview_text: RichTextLabel = $Node2D/Control/EnemyPreviewText
 @onready var start_game_button: Button = $StartGameButton
@@ -32,6 +33,8 @@ signal call_wave_early_requested
 @onready var flesheaterLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Flesheater
 @onready var amalgamLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Amalgam
 @onready var sunderedLabel: Label = $Node2D/Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row3/Sundered
+
+@onready var timer_label : Label = $TimerLabel
 
 @onready var ALL_ZOMBIE_LABELS := [rebornLabel,severedabel,unhallowerLabel, \
 									erupterLabel, reanimatorLabel, wretchLabel, \
@@ -72,8 +75,10 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 	if Global.get_wave_manager()._current_wave > -1:
 		#print("Make visible, current wave is ",Global.get_wave_manager()._current_wave )
 		wave_progress_bar.visible = true
+		#timer_label.visible = true
 	else:
 		wave_progress_bar.visible = false
+		timer_label.visible = false 
 		#print("Global Current Wave is , ",  Global.get_wave_manager()._current_wave)
 	progressing = true
 	#get_parent().emit_show_preview()
@@ -120,7 +125,13 @@ func _on_Area2D_mouse_entered() -> void:
 			for this_image:TextureRect in ALL_ZOMBIE_TEXTURES:
 				if str(type_name) in this_image.get_name():
 					this_image.show()
-	$Node2D/Control.visible = true
+					
+	visual_preview_container.visible = true
+	
+	if Global.get_wave_manager()._current_wave > -1:
+		timer_label.visible = true
+	else:
+		timer_label.visible = false 
 
 func set_image_value(this_type_name:String, this_count:int) -> void:
 	for this_label:Label in ALL_ZOMBIE_LABELS:
@@ -137,7 +148,8 @@ func set_image_value(this_type_name:String, this_count:int) -> void:
 			this_image.hide()
 
 func _on_Area2D_mouse_exited() -> void:
-	$Node2D/Control.visible = false
+	visual_preview_container.visible = false
+	timer_label.visible = false 
 	preview_text.clear()
 
 func get_preview_icon_panel()->Control:
@@ -158,6 +170,7 @@ func _process(delta: float) -> void:
 	if progressing:
 		elapsed += delta
 		wave_progress_bar.value = next_wave_timer.wait_time - next_wave_timer.time_left
+		timer_label.text = str(int(next_wave_timer.time_left))
 		#wave_progress_bar.value = max(next_wave_timer.wait_time - elapsed, 0.0)
 
 func set_preview_lead_time(new_preview_lead_time:float) -> void:

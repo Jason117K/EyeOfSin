@@ -159,6 +159,12 @@ func _show_preview_for_next_wave() -> void:
 		#print("Wave Previews Is ", _wave_previews)
 		for preview : Node in _wave_previews:
 			preview.show_preview(next,true)
+			if Global.game_controller.on_purple_scene():
+				if preview.is_green:
+					preview.hide()
+			else:
+				if preview.is_green:
+					preview.show()
 
 
 func _on_spawner_all_waves_exhausted() -> void:

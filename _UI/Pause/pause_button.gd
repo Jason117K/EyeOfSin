@@ -22,6 +22,7 @@ func _on_pressed() -> void:
 	
 
 func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
+	print("Set restart levels ot ", newAltLevel,newLevel)
 	pauseMenu.set_restart_levels(newLevel,newAltLevel)
 
 #func hide_toolTip():

@@ -1,6 +1,7 @@
 extends LevelTemplate
 # level_0_5.gd - Level 0-5 Tutorial Controller
 #400
+#75, 100, 75
 # Preloaded demo scenes
 var erupter_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/erupter_zombie_demo.tscn")
 var lancer_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/lancer_zombie_demo.tscn")
@@ -60,7 +61,7 @@ func _ready() -> void:
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
-
+	print("Set Restart Levels to ", thisLevel,thisAltLevel)
 	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)

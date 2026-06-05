@@ -9,7 +9,7 @@ var crawler_already_selected := false
 var current_level := ("res://_Stages/Level1/Level0-1.tscn")
 var current_level_alt := ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 var has_pulsed := false
-
+@export var isGreenDimension := false
 @export var new_end_dialog := "res://_Assets/Dialog/level_0_end_dialog.dtl"
 @export var wave2StartTime := 30
 @export var wave3StartTime := 60
@@ -18,12 +18,12 @@ var has_pulsed := false
 @export var skip_tutorials := false  # true = skip all tutorial messages; level free-plays
 @onready var toolTips := $"../ToolTips"
 @onready var demonManager := $DemonManager
-@onready var demonSelectionMenu := $"../DemonSelectionMenu"
+@onready var demonSelectionMenu := $DemonSelectionMenu
 #@onready var waveManager = $GameLayer/WaveManager
 @onready var game_layer := $GameLayer
 @onready var waveManager := get_parent().get_node("WaveManager")
 #@onready var spotlight_overlay := $"../SpotlightOverlay"  # Reference to CanvasLayer
-@onready var pause_Button :=   $"../DemonSelectionMenu/PanelContainer2/UtilityVBoxContainer/HBoxContainer/PauseButton"
+@onready var pause_Button :=   $"DemonSelectionMenu/PanelContainer2/UtilityVBoxContainer/HBoxContainer/PauseButton"
 @onready var levelSwitcher := $"../LevelSwitcher"
 @onready var _demon_hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
 @onready var world_swap_button :TextureButton= demonSelectionMenu.get_world_swap_button()
@@ -77,6 +77,11 @@ func demon_clicked()->void:
 func get_demon_manager()->Node:
 	return demonManager
 
+func show_demon_selection_menu()->void:
+	demonSelectionMenu.show()
+
+func hide_demon_selection_menu()->void:
+	demonSelectionMenu.hide()
 
 func _on_level_ended() -> void:
 	if skip_end_dialog:

@@ -81,6 +81,7 @@ var canSwapScenes := false
 var doubleSpeed := true
 
 func _ready() -> void:
+	is_alt = get_parent().isGreenDimension
 	add_child(preview_container)
 	#Future Swap Ability Code
 	#swap_ability_instance = swap_ability.instantiate()
@@ -88,7 +89,8 @@ func _ready() -> void:
 	#get_parent().call_deferred("add_child", swap_ability_instance)
 
 	
-	Global.demon_selection_menu = self
+	#Global.demon_selection_menu = self
+	Global.register_demon_selection_menu(self)
 	Global.resetOcculumCount()
 	Global._load_demon_costs()
 	
@@ -194,7 +196,7 @@ func _on_OcculumButton_pressed() -> void:
 	clicked_Eye.emit()
 	
 func increaseOcculumCost() -> void:
-	OcculumCostLabel.text = str(50+(Global.getOcculumCount()*10))
+	OcculumCostLabel.text = str(50+(Global.getOcculumCount() * 10))
 
 
 func _on_SpinalOcculumButton_pressed() -> void:
@@ -214,7 +216,7 @@ func _on_HiveButton_pressed() -> void:
 
 
 func create_preview(demon_scene:PackedScene) -> void:
-	#print("MAKE A PREVIEW", demon_scene)
+	print("MAKE A PREVIEW", demon_scene)
 	# Clear the last preview
 	#print("Clearing Preview Because of Create Preview")
 	clear_preview()
@@ -225,7 +227,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 	var preview_node : Node = find_preview_nodes(temp_demon)
 	
 	if preview_node:
-		#print("Found Preview Node : ", preview_node)
+		print("Found Preview Node : ", preview_node)
 		# Duplicate all child sprites
 		for child in preview_node.get_children():
 			#print("Preview Node Child is ", child)
@@ -242,6 +244,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 			this_preview_sprite.set_meta("original_offset", original_pos)
 			
 			# Add the preview sprite to the container and array 
+			print("Add ", this_preview_sprite , " to preview container")
 			preview_container.add_child(this_preview_sprite)
 			preview_sprites.append(this_preview_sprite)
 		is_previewing = true	
@@ -302,7 +305,9 @@ func _process(_delta:float) -> void:
 		for sprite:Node in preview_sprites:
 			if sprite and sprite.has_meta("original_offset"):
 				var offset := sprite.get_meta("original_offset") as Vector2
+				
 				sprite.global_position = base_pos + offset
+				print(sprite, " sprite new global pos is ",sprite.global_position )
 
 func find_animated_sprite(node:Node)->Node:
 	# Recursively search for AnimatedSprite node

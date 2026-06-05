@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cs4qat1lxac3t" path="res://_Stages/Level3/level_0_3_alternate.gd" id="1_8xsco"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_bk44w"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="2_dk2pv"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="3_fysat"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="4_x35ys"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="5_cfq71"]
@@ -1242,6 +1243,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8xsco")
+
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_dk2pv")]
+layout_mode = 1
 
 [node name="UILayer" parent="." unique_id=1323073708 instance=ExtResource("2_bk44w")]
 layout_mode = 1

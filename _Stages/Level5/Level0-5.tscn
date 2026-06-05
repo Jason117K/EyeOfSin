@@ -4,6 +4,7 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="2_e2mf6"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_uuukh"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_e2mf6"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_pkv84"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_51x2f"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="4_pkv84"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_fpxyx"]
@@ -87,8 +88,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ehl8e")
 new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
-wave2StartTime = 75
-wave3StartTime = 100
+wave2StartTime = 20
+wave3StartTime = 20
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1
@@ -101,6 +102,9 @@ offset_right = 2.0
 offset_bottom = 2.000002
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_pkv84")]
+layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
 blood_points = 700

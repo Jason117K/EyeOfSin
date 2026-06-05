@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dm2navsh6rvfd" path="res://_Stages/Level1/level_0_1.gd" id="1_fb4rh"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_umbnb"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_17ad1"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="4_07bn3"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="5_fhu8f"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="6_6ct43"]
@@ -3604,6 +3605,9 @@ wave3StartTime = 30
 
 [node name="UILayer" parent="." unique_id=1087850493 instance=ExtResource("2_umbnb")]
 visible = false
+layout_mode = 1
+
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_17ad1")]
 layout_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1131491396]

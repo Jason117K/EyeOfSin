@@ -34,7 +34,7 @@ func _on_return_to_menu_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-#	print(restartScene,restartSceneAlt, "RESTART LEVELS SET2364553645463564564645645465")
+	print(restartScene,restartSceneAlt, "RESTART LEVELS SET2364553645463564564645645465")
 	#var current_scene_filepath = Global.get_current_scene_filepath()
 	#print("CCUrent Scene Is ", current_scene_filepath) 
 	Global.game_controller.change_dual_scenes(restartScene,restartSceneAlt )

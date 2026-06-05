@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://b1wygljns8kh2"]
 
 [ext_resource type="Script" uid="uid://cf23o6rna857e" path="res://_Stages/Level3/level_0_3.gd" id="1_h73le"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="2_3m502"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_23sq5"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="3_qqn1e"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_3m502"]
@@ -3604,8 +3605,8 @@ wave2StartTime = 55
 wave3StartTime = 80
 wave4StartTime = 70
 
-[node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_23sq5")]
-blood_points = 330
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_3m502")]
+layout_mode = 1
 
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("3_qqn1e")]
 layout_mode = 1
@@ -3622,6 +3623,9 @@ offset_left = -132.0
 offset_top = -2051.5
 offset_right = 172.0
 offset_bottom = 2021.5
+
+[node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_23sq5")]
+blood_points = 330
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=2012856353]
 stream = ExtResource("5_qsicn")
