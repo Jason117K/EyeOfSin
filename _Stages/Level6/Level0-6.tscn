@@ -1086,21 +1086,21 @@ waves = Array[ExtResource("5_lk4we")]([ExtResource("6_3q86g")])
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("3_7nw23")]
-position = Vector2(740, 141)
-waves = Array[ExtResource("5_lk4we")]([ExtResource("6_3q86g"), ExtResource("6_3q86g"), ExtResource("6_3q86g")])
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("4_0g5v1")]
-z_index = 1
-position = Vector2(-32, 1)
-
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("3_7nw23")]
-position = Vector2(740, 173)
+position = Vector2(740, 141)
 waves = Array[ExtResource("5_lk4we")]([ExtResource("6_3q86g")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=197908073 instance=ExtResource("4_0g5v1")]
 z_index = 1
 position = Vector2(-32, 0)
+
+[node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("3_7nw23")]
+position = Vector2(740, 173)
+waves = Array[ExtResource("5_lk4we")]([ExtResource("6_3q86g"), ExtResource("6_3q86g"), ExtResource("6_3q86g")])
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("4_0g5v1")]
+z_index = 1
+position = Vector2(-32, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("3_7nw23")]
 position = Vector2(740, 205)

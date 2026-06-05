@@ -80,6 +80,10 @@ func _ready() -> void:
 		initial_sprite_position = sprite.position
 	else:
 		push_warning("No sprite assigned to animate!")
+		
+	var scale_x = laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
+	laserShootComp2.max_length =  attack_ray.target_position.x / scale_x
+
 	# --- Timer config ---
 	shootTimer.wait_time = laser_cooldown
 
@@ -147,11 +151,11 @@ func receive_buff(demon) -> void:
 				projectile_shoot_component.mawBuffed = true
 
 func debuff() -> void:
-	if("Crawler" in bufferName):
-		laserShootComp2.extension_speed = laserShootComp2.ogExtension_Speed
-		laserShootComp2.max_length = laserShootComp2.ogMax_Length
-	elif("Occulum" in bufferName):
-		laserShootComp2.unBloodBuff()
+	#if("Crawler" in bufferName):
+		#laserShootComp2.extension_speed = laserShootComp2.ogExtension_Speed
+		#laserShootComp2.max_length = laserShootComp2.ogMax_Length
+	#elif("Occulum" in bufferName):
+		#laserShootComp2.unBloodBuff()
 	super()
 
 

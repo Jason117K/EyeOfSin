@@ -77,6 +77,9 @@ make_green = true
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_wf2ra")]
 layout_mode = 1
+is_alt = false
+highlight_border_thickness = 1
+highlight_border_color = Color(1, 0, 0, 1)
 
 [node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("2_0v3x8")]
 blood_points = 700
@@ -93,23 +96,23 @@ make_green = true
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("3_2irmp")]
-position = Vector2(740, 141)
-waves = Array[ExtResource("5_mywjt")]([ExtResource("6_wf2ra")])
-make_green = true
-
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("4_mqw32")]
-z_index = 1
-position = Vector2(-32, 1)
-
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1689922068 instance=ExtResource("3_2irmp")]
-position = Vector2(740, 173)
+position = Vector2(740, 141)
 waves = Array[ExtResource("5_mywjt")]([ExtResource("6_wf2ra")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=326913154 instance=ExtResource("4_mqw32")]
 z_index = 1
 position = Vector2(-32, 0)
+
+[node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("3_2irmp")]
+position = Vector2(740, 173)
+waves = Array[ExtResource("5_mywjt")]([ExtResource("6_wf2ra")])
+make_green = true
+
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("4_mqw32")]
+z_index = 1
+position = Vector2(-32, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=2041524300 instance=ExtResource("3_2irmp")]
 position = Vector2(740, 205)

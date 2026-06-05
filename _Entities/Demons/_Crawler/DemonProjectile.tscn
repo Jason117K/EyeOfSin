@@ -228,7 +228,7 @@ collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_q5oco")
 speed = 325
-lightning_damage = 20
+lightning_damage = 15
 bleed_damage = 4
 
 [node name="ProjectileAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1077432265]

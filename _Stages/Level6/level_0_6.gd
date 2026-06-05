@@ -82,32 +82,32 @@ func _ready() -> void:
 func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{},
 											{}, 
-											{}, 
-											{ "Amalgam": 3}])
-	zombie_spawner_2.set_waves_from_dicts([{"Reanimator":1, "Reborn":7},
-											{"Reanimator" : 1, "Reborn":12}, 
+											{"Severed":3}, 
+											{ "Amalgam": 2}])
+	zombie_spawner_2.set_waves_from_dicts([{"Reanimator":1, "Reborn":10},
+											{"Reanimator" : 1, "Reborn":9, "Severed":3}, 
 											{"Reanimator": 2, "Severed": 7}, 
-											{"Reanimator": 3, "Unhallower": 1, "Severed" : 7}])
+											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
 	zombie_spawner_3.set_waves_from_dicts([{},
 											{},
-											{"Reborn": 6, "Unhallower":1}, 
-											{"Severed": 6, "Unhallower": 1,"Amalgam":1 }])
+											{"Reborn": 10, "Unhallower":2}, 
+											{"Severed": 3, "Unhallower": 1,"Amalgam":1 }])
 	zombie_spawner_4.set_waves_from_dicts([{"Unhallower": 1}, 
-											{"Unhallower": 1, "Reborn": 5},
-											{"Unhallower": 1, "Severed": 5}, 
+											{"Unhallower": 1, "Reborn": 6},
+											{"Unhallower": 1, "Severed": 6}, 
 											{"Unhallower": 2, "Reanimator":1}]) 
 	zombie_spawner_5.set_waves_from_dicts([{},
 											{},
-											{"Reborn": 6, "Unhallower":1}, 
-											{"Severed": 6, "Unhallower": 1,"Amalgam":1 }])
-	zombie_spawner_6.set_waves_from_dicts([{"Reanimator":1, "Reborn":7},
-											{"Reanimator" : 1, "Reborn":12}, 
+											{"Reborn": 10, "Unhallower":2}, 
+											{"Severed": 4, "Unhallower": 1,"Amalgam":1 }])
+	zombie_spawner_6.set_waves_from_dicts([{"Reanimator":1, "Reborn":10},
+											{"Reanimator" : 1, "Reborn":9,"Severed":3}, 
 											{"Reanimator": 2, "Severed": 7}, 
-											{"Reanimator": 3, "Unhallower": 1, "Severed" : 7}])
+											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
 	zombie_spawner_7.set_waves_from_dicts([{},
 											{}, 
-											{}, 
-											{"Amalgam": 3}])
+											{"Severed":3}, 
+											{"Amalgam": 2}])
 
 
 func finish_ready() -> void:

@@ -37,7 +37,7 @@ func transform() -> void:
 	anim_sprite_comp.play()
 	#compManager.setMaterial(altSprite)
 	erase_blood_hit(extra_blood_hit)
-	healthComp.resetHealth()
+	healthComp.resetHealth(175.0)
 
 func check_for_maw(damage: float) -> void:
 	if damage > 9000:

@@ -126,8 +126,9 @@ func _on_regen_tick() -> void:
 		injured = health < halfHealth
 
 
-func resetHealth() -> void:
-	health = maxHealth
+func resetHealth(new_max_health : float = maxHealth) -> void:
+	health = new_max_health
+	maxHealth = new_max_health
 	injured = false
 
 
