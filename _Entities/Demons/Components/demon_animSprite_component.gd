@@ -43,6 +43,7 @@ func spawn_done() -> void:
 		speed_scale = default_anim_speed_scale
 		play()
 		spawnAnimDone = true
+		demon.can_show_preview = true 
 
 
 func _on_animation_finished() -> void:

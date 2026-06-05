@@ -24,7 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_WYRM-Sheet.png" id="9_00tae"]
 [ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://_Entities/Demons/_Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_pomd1"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="21_dyku2"]
+[ext_resource type="Texture2D" uid="uid://cpg3mwahpywqo" path="res://_Entities/Demons/Cards/Empty_Display_CARD_Outline.png" id="22_11far"]
 [ext_resource type="Texture2D" uid="uid://b6g8l1371ylsr" path="res://_Entities/Demons/_Occulum/HealingFlameCircle.png" id="23_0ypr0"]
+[ext_resource type="Texture2D" uid="uid://7tr2bmwgk48m" path="res://_Entities/Demons/DemonSynergyBuffOutline_CARD.png" id="23_3d0n3"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="25_ni4ch"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="26_4h7ci"]
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="28_he6yk"]
@@ -356,7 +359,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_644qc")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -548,243 +551,6 @@ animations = [{
 }]
 
 [sub_resource type="SpriteFrames" id="11"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_38s27"]
-atlas = ExtResource("6")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_elvfo"]
-atlas = ExtResource("6")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6aeqa"]
-atlas = ExtResource("6")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xvi3"]
-atlas = ExtResource("6")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5v7ar"]
-atlas = ExtResource("6")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_drv5f"]
-atlas = ExtResource("6")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_abdxb"]
-atlas = ExtResource("6")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q2ohk"]
-atlas = ExtResource("6")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3ghh"]
-atlas = ExtResource("6")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6gbb"]
-atlas = ExtResource("6")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2empk"]
-atlas = ExtResource("6")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vq5lu"]
-atlas = ExtResource("6")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ah0m"]
-atlas = ExtResource("6")
-region = Rect2(384, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbyus"]
-atlas = ExtResource("6")
-region = Rect2(416, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfx0t"]
-atlas = ExtResource("6")
-region = Rect2(448, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_81mme"]
-atlas = ExtResource("6")
-region = Rect2(480, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mlc60"]
-atlas = ExtResource("6")
-region = Rect2(512, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_71i1v"]
-atlas = ExtResource("6")
-region = Rect2(544, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yvdbm"]
-atlas = ExtResource("6")
-region = Rect2(576, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctykl"]
-atlas = ExtResource("6")
-region = Rect2(608, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yub8t"]
-atlas = ExtResource("6")
-region = Rect2(640, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vyedq"]
-atlas = ExtResource("6")
-region = Rect2(672, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_duibo"]
-atlas = ExtResource("6")
-region = Rect2(704, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_swya0"]
-atlas = ExtResource("6")
-region = Rect2(736, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibhw8"]
-atlas = ExtResource("6")
-region = Rect2(768, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jimoc"]
-atlas = ExtResource("6")
-region = Rect2(800, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8l2bg"]
-atlas = ExtResource("6")
-region = Rect2(832, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1m6u2"]
-atlas = ExtResource("6")
-region = Rect2(864, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kcu8n"]
-atlas = ExtResource("5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_421ka"]
-atlas = ExtResource("5")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mro22"]
-atlas = ExtResource("5")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mkfo7"]
-atlas = ExtResource("5")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="55"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_38s27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_elvfo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6aeqa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0xvi3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5v7ar")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_drv5f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_abdxb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q2ohk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s3ghh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6gbb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2empk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vq5lu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ah0m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bbyus")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lfx0t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_81mme")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mlc60")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_71i1v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yvdbm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ctykl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yub8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vyedq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_duibo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_swya0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ibhw8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jimoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8l2bg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1m6u2")
-}],
-"loop": true,
-"name": &"Drip",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kcu8n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_421ka")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mro22")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mkfo7")
-}],
-"loop": true,
-"name": &"New Anim",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_48h4a"]
 atlas = ExtResource("6")
@@ -1484,68 +1250,26 @@ sprite_frames = SubResource("11")
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=487174492]
 visible = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1694872563]
+[node name="PreviewCard" type="Sprite2D" parent="PreviewNodes" unique_id=335363415]
+z_index = -1
+texture = ExtResource("21_dyku2")
+
+[node name="PreviewCardSprite" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1694872563]
 sprite_frames = SubResource("6")
 animation = &"idle"
+autoplay = "idle"
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=777905841]
-z_index = 6
-position = Vector2(-64, 0)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
+[node name="PreviewCardOutline" type="Sprite2D" parent="PreviewNodes" unique_id=347267632]
+position = Vector2(-1, 0)
+texture = ExtResource("22_11far")
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=473168645]
-visible = false
-z_index = 6
-position = Vector2(32, 32)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 3
-
-[node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1883590278]
-visible = false
-z_index = 6
-position = Vector2(32, -32)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 2
-
-[node name="BloodTile4" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1552514547]
-z_index = 6
+[node name="BuffOutline" type="Sprite2D" parent="PreviewNodes" unique_id=474754277]
 position = Vector2(-32, 0)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 2
+texture = ExtResource("23_3d0n3")
 
-[node name="BloodTile5" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1319060389]
-visible = false
-z_index = 6
-position = Vector2(-32, 32)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 1
-
-[node name="BloodTile6" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=2080494736]
-visible = false
-z_index = 6
-position = Vector2(-32, -32)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
-
-[node name="BloodTile7" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=2138636444]
-visible = false
-z_index = 6
-position = Vector2(0, -32)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
-frame = 3
-
-[node name="BloodTile8" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=10734453]
-visible = false
-z_index = 6
-position = Vector2(0, 32)
-sprite_frames = SubResource("55")
-animation = &"New Anim"
+[node name="BuffOutline2" type="Sprite2D" parent="PreviewNodes" unique_id=1110710287]
+position = Vector2(-64, 0)
+texture = ExtResource("23_3d0n3")
 
 [node name="BuffNodesComponent" parent="." unique_id=1007137061 instance=ExtResource("7")]
 visible = false

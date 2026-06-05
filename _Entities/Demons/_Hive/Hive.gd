@@ -167,7 +167,7 @@ func _on_play_anim_timer_timeout() -> void:
 	pass
 
 func _on_mouse_entered() -> void:
-	$PreviewNodes/AnimatedSprite2D.visible = false
+	#$PreviewNodes/AnimatedSprite2D.visible = false
 	$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:

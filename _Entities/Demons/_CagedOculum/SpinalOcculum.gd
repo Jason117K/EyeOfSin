@@ -32,7 +32,13 @@ var is_lightning_maw_buff := false
 
 func _ready() -> void:
 	super()
+	
+	hide_old_preview()
 
+func hide_old_preview()->void:
+	$PreviewNodes/PreviewCard.visible = false 
+	$PreviewNodes/PreviewCardSprite.visible = false 
+	
 
 # --- Getters ---
 
@@ -116,8 +122,9 @@ func _on_area_2d_area_entered(this_area: Area2D) -> void:
 # --- Preview ---
 
 func _on_mouse_entered() -> void:
-	$PreviewNodes/AnimatedSpriteComponent2.visible = false
-	$PreviewNodes.visible = true
+	#$PreviewNodes/AnimatedSpriteComponent2.visible = false
+	if can_show_preview:
+		$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false

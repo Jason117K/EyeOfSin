@@ -13,6 +13,7 @@ var preview_sprites: Array = [] # Holds array of preview sprites
 var is_previewing: bool = false # Whether or not we are currently previewing 
 var canRemove := false
 var purple_scene := true
+var preview_sprite_modulation := Color(1,1,1,0.8)
 
 signal clicked_Eye
 signal codex_clicked
@@ -233,7 +234,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 			#print("Preview Node Child is ", child)
 			# Create the preview sprite and make it semi-transparent 
 			var this_preview_sprite : Node = child.duplicate()
-			this_preview_sprite.modulate = Color(1, 1, 1, 0.5)
+			this_preview_sprite.modulate = preview_sprite_modulation
 			#this_preview_sprite.scale = Vector2(1.25,1.25)
 			this_preview_sprite.z_index = 100
 			if this_preview_sprite is AnimatedSprite2D:

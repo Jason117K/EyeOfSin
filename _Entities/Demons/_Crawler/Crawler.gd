@@ -27,13 +27,19 @@ var canAttackSetTrueOnce: bool = false
 @onready var attack_ray: ShapeCast2D = $DMG_RayCast2D
 @onready var projectile_shoot_component := $ProjectileShootComponent
 
-@onready var range_line_indicator = $PreviewNodes/RangeIndicatorLine2D
+@onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 
 
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
+	hide_old_preview()
+
+func hide_old_preview()->void:
+	$PreviewNodes/PreviewCard.visible = false 
+	$PreviewNodes/PreviewCardSprite.visible = false 
+	
 
 func update_range_preview()->void:
 	var global_target := attack_ray.to_global(attack_ray.target_position)
@@ -121,7 +127,7 @@ func _on_spawn_spiderling_timeout() -> void:
 # --- Preview ---
 
 func _on_mouse_entered() -> void:
-	$PreviewNodes/Spider.visible = false
+	#$PreviewNodes/Spider.visible = false
 	$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:

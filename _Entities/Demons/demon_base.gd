@@ -59,10 +59,11 @@ class_name Demon
 @onready var spawn_juice_anim := $SpawnJuiceAnim
 @onready var baal_halo : AnimatedSprite2D = $BaalHalo
 
+var can_show_preview := false
 var new_syn_shield_instance :AnimatedSprite2D 
 var syn_timer : Timer
 var invulnerable := false 
-var is_shielded = false
+var is_shielded := false
 var reduced_damage_percent := 0.0
 
 # --- State ---
@@ -70,7 +71,7 @@ var area: Area2D
 var isBuffed := false
 var demon_manager : Node
 var spawn_done := false 
-var is_hero = false
+var is_hero := false
 var hit_flash_active : bool = false 
 var time_since_hit : float = 0.0 
 # --- Signals ---

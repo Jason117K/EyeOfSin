@@ -1,16 +1,27 @@
 extends TextureButton
 @onready var mat: ShaderMaterial = self.material
 
-func _on_mouse_entered()->void: set_hover(1.0)
-func _on_mouse_exited()->void:  set_hover(0.0)
+# How quickly the hover tilt eases toward its target. Higher = snappier.
+const HOVER_SPEED: float = 10.0
 
-func set_hover(target:float)->void:
-	var current :float = mat.get_shader_parameter("hovering")
-	mat.set_shader_parameter("hovering", lerp(current, target, 0.2))
-	
-	
-	
-func _process(_delta:float)->void:
+# Where the hover effect is easing toward: 1.0 = hovering, 0.0 = not hovering.
+var hover_target: float = 0.0
+
+func _ready() -> void:
+	# Start at rest so the card isn't tilted before the first hover.
+#	mat.set_shader_parameter("hovering", 0.0)
+	pass
+
+func _on_mouse_entered() -> void: hover_target = 1.0
+func _on_mouse_exited() -> void:  hover_target = 0.0
+
+func _process(delta: float) -> void:
+	# Frame-rate independent ease toward the target. The exp() weight makes the
+	# approach speed consistent regardless of frame rate, unlike a fixed lerp.
+	var current: float = mat.get_shader_parameter("hovering")
+	var weight: float = 1.0 - exp(-HOVER_SPEED * delta)
+	mat.set_shader_parameter("hovering", lerp(current, hover_target, weight))
+
 	RenderingServer.global_shader_parameter_set(
 		"mouse_screen_pos", get_global_mouse_position()
 	)

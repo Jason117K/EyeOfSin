@@ -59,7 +59,15 @@ func _ready() -> void:
 	blood_hit_1.animation_looped.connect(zombie_gore_fx)
 	if Global.gameIsStarted:
 		bloodTimer.start()
+	
+	hide_old_preview()
 
+
+func hide_old_preview()->void:
+	$PreviewNodes/PreviewCard.visible = false 
+	$PreviewNodes/PreviewCardSprite.visible = false 
+	
+	
 func start_blood_timer()->void:
 	bloodTimer.start()
 
@@ -287,9 +295,8 @@ func undo_baal_buff()->void:
 # --- Preview ---
 
 func _on_mouse_entered() -> void:
-	$PreviewNodes/AnimatedSprite2D.visible = false
-	$PreviewNodes.visible = true
-
+	if can_show_preview:
+		$PreviewNodes.visible = true
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
 

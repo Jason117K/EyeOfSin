@@ -462,7 +462,7 @@ func get_special_description()->String:
 # --- Preview ---
 
 func _on_mouse_entered() -> void:
-	$PreviewNodes/AnimatedSprite2.visible = false
+	#$PreviewNodes/AnimatedSprite2.visible = false
 	$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:

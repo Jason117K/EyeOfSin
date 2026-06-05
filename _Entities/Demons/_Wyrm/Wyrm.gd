@@ -86,7 +86,14 @@ func _ready() -> void:
 
 	# --- Timer config ---
 	shootTimer.wait_time = laser_cooldown
+	
+	hide_old_preview()
+	
 
+func hide_old_preview()->void:
+	$PreviewNodes/PreviewCard.visible = false 
+	$PreviewNodes/PreviewCardSprite.visible = false 
+	
 func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):
 		$DMG_RayCast2D.set_collision_mask_value(1, false)
@@ -226,8 +233,8 @@ func baal_buff()->void:
 # --- Preview ---
 
 func _on_mouse_entered() -> void:
-	$PreviewNodes/AnimatedSprite2D.visible = false
-	$PreviewNodes.visible = true
+	if can_show_preview:
+		$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
