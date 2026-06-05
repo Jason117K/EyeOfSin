@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://di5w0fuql2vat" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Base-Sheet.png" id="17_hvfi3"]
 [ext_resource type="Script" uid="uid://bjsd0o8c8pqlb" path="res://_Entities/Demons/_Crawler/crawler_animSprite_component.gd" id="21_ol6r1"]
 [ext_resource type="SpriteFrames" uid="uid://68t447nxiwkb" path="res://_Entities/Demons/projectile_spit.tres" id="23_78twq"]
+[ext_resource type="Texture2D" uid="uid://csbrjj1wgdbam" path="res://_Entities/Demons/_Crawler/Crawler_Display_CARD.png" id="24_8u2uv"]
+[ext_resource type="Texture2D" uid="uid://7tr2bmwgk48m" path="res://_Entities/Demons/DemonSynergyBuffOutline_CARD.png" id="25_jphsv"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="30_tifvr"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="33_kupbo"]
 [ext_resource type="Script" uid="uid://dt0eojddtmla2" path="res://_Entities/Demons/_Crawler/crawler_projectile_shoot_component.gd" id="35_jut13"]
@@ -2371,7 +2373,24 @@ animation = &"web_spit"
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
 visible = false
 
+[node name="Sprite2D" type="Sprite2D" parent="PreviewNodes" unique_id=1408633848]
+position = Vector2(-1, 0)
+texture = ExtResource("24_8u2uv")
+
+[node name="BloodTile4" type="Sprite2D" parent="PreviewNodes" unique_id=946456994]
+position = Vector2(32, 0)
+texture = ExtResource("25_jphsv")
+
+[node name="BloodTile6" type="Sprite2D" parent="PreviewNodes" unique_id=948379919]
+position = Vector2(-32, 0)
+texture = ExtResource("25_jphsv")
+
+[node name="BloodTile5" type="Sprite2D" parent="PreviewNodes" unique_id=1594273121]
+position = Vector2(-64, 0)
+texture = ExtResource("25_jphsv")
+
 [node name="Spider" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1617410873 groups=["Invis"]]
+visible = false
 position = Vector2(0, -8.5)
 sprite_frames = SubResource("SpriteFrames_0syxb")
 animation = &"redCrawlerDefault"
@@ -2379,6 +2398,7 @@ autoplay = "redCrawlerDefault"
 flip_h = true
 
 [node name="BloodTile1" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1137944680]
+visible = false
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
@@ -2387,6 +2407,7 @@ animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
 [node name="BloodTile2" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1860243133]
+visible = false
 z_index = 6
 position = Vector2(-64, 0)
 sprite_frames = SubResource("55")
@@ -2394,6 +2415,7 @@ animation = &"New Anim 2"
 autoplay = "New Anim 2"
 
 [node name="BloodTile3" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1030965472]
+visible = false
 z_index = 6
 position = Vector2(-32, 0)
 sprite_frames = SubResource("55")
@@ -2517,6 +2539,7 @@ mouse_filter = 1
 texture_normal = ExtResource("39_0n853")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=894796709]
+visible = false
 position = Vector2(0, 17)
 collision_mask = 0
 

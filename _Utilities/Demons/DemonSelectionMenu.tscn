@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://802bvw3m4n0a"]
 
 [ext_resource type="Script" uid="uid://50ndsqbawhp3" path="res://_Utilities/Demons/DemonSelectionMenu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://b6vva031ql0r0" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText1.png" id="3_yqvs4"]
+[ext_resource type="Shader" uid="uid://dfeg3bofdecff" path="res://_Utilities/Demons/3DCardEffect.gdshader" id="2_bcru6"]
+[ext_resource type="Texture2D" uid="uid://cso424ya4brsw" path="res://_Entities/Demons/_Occulum/Occulum_Banner_CARD.png" id="3_dur3e"]
+[ext_resource type="Script" uid="uid://b261snjdqg7m7" path="res://_Utilities/Demons/3Dtest.gd" id="4_1iw26"]
+[ext_resource type="Texture2D" uid="uid://b5bbk2s6gdlwp" path="res://_Entities/Demons/_Crawler/Crawler_Banner_CARD.png" id="4_bcru6"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_vvged"]
-[ext_resource type="Texture2D" uid="uid://cdlvi1sqbawix" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText4.png" id="5_vvged"]
-[ext_resource type="Texture2D" uid="uid://b13m4nfeccjgl" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText2.png" id="6_04elx"]
+[ext_resource type="Texture2D" uid="uid://clp6hgsrn4mm0" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum_Banner_CARD.png" id="5_1iw26"]
 [ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://_Entities/Demons/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
+[ext_resource type="Texture2D" uid="uid://6v3f6wxq551c" path="res://_Entities/Demons/_Wyrm/Wyrm_Banner_CARD.png" id="7_nabk1"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://bowkp4mknv1ul" path="res://_Assets/UI/DemonCard_Portal_GreenButton.png" id="10_bcru6"]
-[ext_resource type="Texture2D" uid="uid://cs7hq3cbnjody" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText5.png" id="10_iafbj"]
 [ext_resource type="Texture2D" uid="uid://bajbuwbiesujh" path="res://_Entities/Demons/Cards/DemonCard_HEART.png" id="11_iafbj"]
 [ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://_Entities/Demons/Cards/DESELECT_CARD.png" id="12_yqvs4"]
@@ -17,16 +19,38 @@
 [ext_resource type="Texture2D" uid="uid://chfuimepfak3s" path="res://_Assets/UI/DemonCard_FastForward.png" id="15_e3ig8"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="16_dur3e"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1iw26"]
+shader = ExtResource("2_bcru6")
+shader_parameter/debug = false
+shader_parameter/border_scale = 2.0
+shader_parameter/shadow_offset = Vector2(0, -100)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/blur_amount = 0.0
+shader_parameter/shadow_scale = 1.5
+shader_parameter/disable_rotating = false
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+shader_parameter/hovering = 0.0
+shader_parameter/rand_trans_power = 1.0
+shader_parameter/rand_seed = 0.0
+shader_parameter/vortex_amt = 0.0
+shader_parameter/rotation = 0.0
+shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
-bg_color = Color(0, 0, 0, 0.788235)
+bg_color = Color(0, 0, 0, 0.92941177)
 border_color = Color(1, 0, 0, 0)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypqm0"]
 bg_color = Color(0, 0, 0, 0.79607844)
@@ -54,6 +78,20 @@ is_alt = null
 highlight_border_thickness = null
 highlight_border_color = null
 
+[node name="3DTest" type="TextureRect" parent="." unique_id=799279206]
+material = SubResource("ShaderMaterial_1iw26")
+use_parent_material = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_left = 342.0
+offset_top = 77.0
+offset_right = 422.0
+offset_bottom = 119.0
+texture = ExtResource("3_dur3e")
+expand_mode = 5
+stretch_mode = 4
+script = ExtResource("4_1iw26")
+
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 custom_minimum_size = Vector2(0, 79)
 layout_mode = 0
@@ -78,66 +116,81 @@ theme_override_constants/separation = 2
 [node name="Occulum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
 z_index = 4
 layout_mode = 2
-theme_override_constants/separation = -5
-
-[node name="OcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("3_yqvs4")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_constants/separation = -16
 
 [node name="OcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=875715703]
+z_index = 1
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_vvged")
+theme_override_font_sizes/font_size = 14
 text = "50"
 horizontal_alignment = 1
 
-[node name="Crawler" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
-layout_mode = 2
-theme_override_constants/separation = -5
-
-[node name="CrawlerButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=972339713]
-z_index = 3
-custom_minimum_size = Vector2(60, 60)
+[node name="OcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("5_vvged")
+texture_normal = ExtResource("3_dur3e")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Crawler" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
+layout_mode = 2
+theme_override_constants/separation = -16
+
 [node name="CrawlerCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=752286747]
+z_index = 4
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
+theme_override_font_sizes/font_size = 15
 text = "50"
 horizontal_alignment = 1
+
+[node name="CrawlerButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=972339713]
+z_index = 3
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_bcru6")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="SpinalOcculum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=560354734]
 layout_mode = 2
-theme_override_constants/separation = -5
-
-[node name="SpinalOcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=133221191]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-texture_normal = ExtResource("6_04elx")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_constants/separation = -16
 
 [node name="SpinalOcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=1640644905]
+z_index = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
+theme_override_font_sizes/font_size = 15
 text = "50"
 horizontal_alignment = 1
 
-[node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
+[node name="SpinalOcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=133221191]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-theme_override_constants/separation = -5
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture_normal = ExtResource("5_1iw26")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="MawCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
+z_index = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_vvged")
+theme_override_font_sizes/font_size = 15
+text = "50"
+horizontal_alignment = 1
 
 [node name="MawButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
 custom_minimum_size = Vector2(60, 60)
@@ -148,32 +201,26 @@ texture_normal = ExtResource("7_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="MawCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
+[node name="Wyrm" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="WyrmCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=925628958]
+z_index = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
+theme_override_font_sizes/font_size = 15
 text = "50"
 horizontal_alignment = 1
 
-[node name="Wyrm" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
-layout_mode = 2
-theme_override_constants/separation = -5
-
 [node name="WyrmButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=629061683]
-visible = false
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
-texture_normal = ExtResource("10_iafbj")
+texture_normal = ExtResource("7_nabk1")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="WyrmCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=925628958]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_vvged")
-text = "50"
-horizontal_alignment = 1
 
 [node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=640469747]
 visible = false
