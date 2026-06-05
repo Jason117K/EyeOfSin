@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b5bbk2s6gdlwp" path="res://_Entities/Demons/_Crawler/Crawler_Banner_CARD.png" id="4_bcru6"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_vvged"]
 [ext_resource type="Texture2D" uid="uid://clp6hgsrn4mm0" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum_Banner_CARD.png" id="5_1iw26"]
+[ext_resource type="Material" uid="uid://byaqmevnj1wtf" path="res://_Entities/Demons/Cards/SelectionCard.tres" id="5_3emsw"]
+[ext_resource type="Script" uid="uid://cv072pvphcjfq" path="res://_Utilities/Demons/demon_button.gd" id="6_q10kc"]
 [ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://_Entities/Demons/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
 [ext_resource type="Texture2D" uid="uid://6v3f6wxq551c" path="res://_Entities/Demons/_Wyrm/Wyrm_Banner_CARD.png" id="7_nabk1"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
@@ -20,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="16_dur3e"]
 [ext_resource type="Script" uid="uid://cho0s6lvv3v5h" path="res://_Utilities/Demons/sprite_2d.gd" id="19_nabk1"]
 
-[sub_resource type="Shader" id="Shader_3emsw"]
+[sub_resource type="Shader" id="Shader_q10kc"]
 code = "shader_type canvas_item;
 
 uniform bool debug = false;
@@ -54,6 +56,13 @@ uniform float vortex_amt:hint_range(-10.0, 10.0, 0.1);
 
 uniform float rotation:hint_range(-10.0, 10.0, 0.1) = 0.0;
 
+// Size of the TextureRect in pixels. A Control's vertices start at its
+// top-left (0..size) rather than being centered like a Sprite2D, so the
+// shader needs the rect size to expand/center the quad correctly. Set this
+// from the node's script (self.size) for an exact match; the default is just
+// a reasonable fallback so the effect still renders without a script.
+uniform vec2 rect_size = vec2(70.0, 70.0);
+
 varying flat vec4 modulate;
 varying flat float sprite_rotation;
 
@@ -74,140 +83,82 @@ varying flat vec2 region_rate;
 varying flat mat3 inv_rot_mat;
 
 vec2 rotate(vec2 uv, vec2 pivot_r, float angle)
-
 {
-
-
-
 	mat2 rotation_mat = mat2(vec2(cos(angle), -sin(angle)),
-
 						vec2(sin(angle), cos(angle)));
-
 	uv -= pivot_r;
-
 	uv = uv * rotation_mat;
-
 	uv += pivot_r;
-
 	return uv;
-
 }
 
 // Creates rotation matrix
-
 void vertex(){
 
-	vec2 my_region_rate = abs(VERTEX) *2.0;
-
-	region_rate = TEXTURE_PIXEL_SIZE * my_region_rate;
-
-	if(VERTEX_ID == 0 ){
-
-		pivot = UV ;
-
-		}
-
-	if(VERTEX_ID == 1){
-
-
-
-		pivot = UV - vec2(0.0, region_rate.y);
-
-
-
-	}
-
-	if(VERTEX_ID == 2){
-
-		pivot = UV - vec2(region_rate.x, region_rate.y);
-
-	}
-
-	if(VERTEX_ID == 3){
-
-		pivot = UV - vec2(region_rate.x, 0.0);
-
-	}
+	// TextureRect/Control: the quad covers the whole texture, UV spans 0..1,
+	// and VERTEX runs from (0,0) at the top-left to rect_size at the
+	// bottom-right. The \"region\" is therefore the entire texture.
+	region_rate = vec2(1.0);
+	pivot = vec2(0.0);
 
 	float rand_angel = rand_trans_power * mod(TIME * (0.9 + mod(rand_seed, 0.5)), 2.0 * PI);
-
 	vec2 rand_vec = vec2(cos(rand_angel), sin(rand_angel));
 
-	transformed_world_to_canvas_coordinates = (inverse(MODEL_MATRIX) * vec4(mouse_screen_pos, 0.0, 1.0) ).xy;
+	// Mouse position in this control's local pixel space, made relative to
+	// the card's center so the hover tilt is balanced around the middle.
+	vec2 local_mouse = (inverse(MODEL_MATRIX) * vec4(mouse_screen_pos, 0.0, 1.0)).xy;
+	transformed_world_to_canvas_coordinates = local_mouse - rect_size * 0.5;
 
-	vec2 mouse_force = hovering * 0.5* (transformed_world_to_canvas_coordinates )/ length(region_rate/TEXTURE_PIXEL_SIZE) + rand_vec*0.05 *rand_trans_power;
-
-	
+	vec2 mouse_force = hovering * 0.5 * transformed_world_to_canvas_coordinates / length(rect_size)
+		+ rand_vec * 0.05 * rand_trans_power;
 
 	float sin_b = sin(y_rot / 180.0 * PI + mouse_force.x);
-
 	float cos_b = cos(y_rot / 180.0 * PI + mouse_force.x);
-
 	float sin_c = sin(x_rot / 180.0 * PI + -mouse_force.y);
-
 	float cos_c = cos(x_rot / 180.0 * PI + -mouse_force.y);
 
-	
-
-	inv_rot_mat;
-
 	inv_rot_mat[0][0] = cos_b;
-
 	inv_rot_mat[0][1] = 0.0;
-
 	inv_rot_mat[0][2] = -sin_b;
 
-	
-
 	inv_rot_mat[1][0] = sin_b * sin_c;
-
 	inv_rot_mat[1][1] = cos_c;
-
 	inv_rot_mat[1][2] = cos_b * sin_c;
 
-	
-
 	inv_rot_mat[2][0] = sin_b * cos_c;
-
 	inv_rot_mat[2][1] = -sin_c;
-
 	inv_rot_mat[2][2] = cos_b * cos_c;
 
-	
-
-	
-
-	vec2 uv = (UV - pivot ) / region_rate;
-
-
+	vec2 uv = (UV - pivot) / region_rate;   // == UV
 
 	float t = tan(fov / 360.0 * PI);
 
+	// Expand the quad outward (in pixels) so the tilted card isn't clipped.
+	VERTEX += (uv - 0.5) * rect_size * t * (1.0 - inset);
 
+	// Grow the quad for the border/shadow room, scaling around the card's
+	// center rather than the top-left origin.
+	float final_scale = max(border_scale, border_scale * shadow_scale);
+	vec2 card_center = rect_size * 0.5;
+	VERTEX.xy = (VERTEX.xy - card_center) * final_scale + card_center;
 
-	VERTEX += (uv - 0.5) * 1.0*my_region_rate * t * (1.0 - inset);
-
-
-    float final_scale = max(border_scale, border_scale * shadow_scale);
-    VERTEX.xy *= vec2(final_scale);
-    modulate = COLOR;
-    sprite_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
-
+	modulate = COLOR;
+	sprite_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
 }
 
 vec4 sample_texture_safe(sampler2D tex, vec2 uv) {
-    return (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) 
-        ? vec4(0.0) 
+    return (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
+        ? vec4(0.0)
         : texture(tex, uv);
 }
 
 vec4 apply_gaussian_blur(sampler2D tex, vec2 uv, vec2 pixel_size) {
     if (blur_amount <= 0.0) return sample_texture_safe(tex, uv);
-    
+
     vec4 color_blur = vec4(0.0);
     float total_weight = 0.0;
     int kernel_size = int(blur_amount * 3.0);
-    
+
     for (int x = -kernel_size; x <= kernel_size; x++) {
         for (int y = -kernel_size; y <= kernel_size; y++) {
             vec2 blur_offset = vec2(float(x), float(y)) * pixel_size;
@@ -216,7 +167,7 @@ vec4 apply_gaussian_blur(sampler2D tex, vec2 uv, vec2 pixel_size) {
             total_weight += weight;
         }
     }
-    
+
     return total_weight > 0.0 ? color_blur / total_weight : vec4(0.0);
 }
 
@@ -242,12 +193,12 @@ vec4 process_texture(vec2 uv, sampler2D tex, bool is_main, vec2 pixel_size) {
     if (is_main) {
         return sample_texture_safe(tex, uv) * modulate;
     }
-    
+
     vec4 blurred = apply_gaussian_blur(tex, uv, pixel_size);
     float fade_x = calculate_fade(uv.x, shadow_scale);
     float fade_y = calculate_fade(uv.y, shadow_scale);
     float fade = smoothstep(0.0, 1.0, min(fade_x, fade_y));
-    
+
     return vec4(color.rgb, (blurred.a - (1.0 - color.a)) * modulate.a * fade);
 }
 
@@ -293,16 +244,16 @@ void fragment(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q10kc"]
-shader = SubResource("Shader_3emsw")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wixct"]
+shader = SubResource("Shader_q10kc")
 shader_parameter/debug = false
-shader_parameter/border_scale = 2.0
-shader_parameter/shadow_offset = Vector2(0, -100)
+shader_parameter/border_scale = 1.0
+shader_parameter/shadow_offset = Vector2(-2, -2)
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/blur_amount = 0.0
 shader_parameter/shadow_scale = 1.5
 shader_parameter/disable_rotating = false
-shader_parameter/fov = 90.0
+shader_parameter/fov = 1.0
 shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
@@ -312,6 +263,7 @@ shader_parameter/rand_trans_power = 1.0
 shader_parameter/rand_seed = 0.0
 shader_parameter/vortex_amt = 0.0
 shader_parameter/rotation = 0.0
+shader_parameter/rect_size = Vector2(70, 70)
 shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
@@ -325,6 +277,251 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 3.0
+
+[sub_resource type="Shader" id="Shader_lv7j8"]
+code = "shader_type canvas_item;
+
+uniform bool debug = false;
+uniform float border_scale = 2.0;
+uniform vec2 shadow_offset = vec2(0, -100.0);
+uniform vec4 color : source_color;
+uniform float blur_amount : hint_range(0.0, 5.0) = 0.0;
+uniform float shadow_scale = 1.5;
+uniform bool disable_rotating = false;
+
+//This is for the 3D effect
+uniform float fov : hint_range(1, 179) = 90;
+
+uniform bool cull_back = true;
+
+uniform float y_rot : hint_range(-180, 180) = 0.0;
+
+uniform float x_rot : hint_range(-180, 180) = 0.0;
+
+uniform float inset : hint_range(0, 1) = 0.0;
+
+// Consider changing this to a uniform and changing it from code
+
+uniform float hovering;
+uniform float spin_speed : hint_range(0.0, 2.0) = 1.0;
+uniform float rand_trans_power = 1.0;
+
+uniform float rand_seed;
+
+uniform float vortex_amt:hint_range(-10.0, 10.0, 0.1);
+
+uniform float rotation:hint_range(-10.0, 10.0, 0.1) = 0.0;
+
+// Size of the TextureRect in pixels. A Control's vertices start at its
+// top-left (0..size) rather than being centered like a Sprite2D, so the
+// shader needs the rect size to expand/center the quad correctly. Set this
+// from the node's script (self.size) for an exact match; the default is just
+// a reasonable fallback so the effect still renders without a script.
+uniform vec2 rect_size = vec2(70.0, 70.0);
+
+varying flat vec4 modulate;
+varying flat float sprite_rotation;
+
+global uniform vec2 mouse_screen_pos = vec2(0.0, 0.0);
+
+uniform vec2 mouse_screen_pos_test = vec2(0.0, 0.0);
+
+varying flat vec2 o;
+
+varying vec3 p;
+
+varying vec2 transformed_world_to_canvas_coordinates;
+
+varying flat vec2 pivot;
+
+varying flat vec2 region_rate;
+
+varying flat mat3 inv_rot_mat;
+
+vec2 rotate(vec2 uv, vec2 pivot_r, float angle)
+{
+	mat2 rotation_mat = mat2(vec2(cos(angle), -sin(angle)),
+						vec2(sin(angle), cos(angle)));
+	uv -= pivot_r;
+	uv = uv * rotation_mat;
+	uv += pivot_r;
+	return uv;
+}
+
+// Creates rotation matrix
+void vertex(){
+
+	// TextureRect/Control: the quad covers the whole texture, UV spans 0..1,
+	// and VERTEX runs from (0,0) at the top-left to rect_size at the
+	// bottom-right. The \"region\" is therefore the entire texture.
+	region_rate = vec2(1.0);
+	pivot = vec2(0.0);
+
+
+	float rand_angel = rand_trans_power * mod(TIME * spin_speed * (0.9 + mod(rand_seed, 0.5)), 2.0 * PI);
+	vec2 rand_vec = vec2(cos(rand_angel), sin(rand_angel));
+
+	// Mouse position in this control's local pixel space, made relative to
+	// the card's center so the hover tilt is balanced around the middle.
+	vec2 local_mouse = (inverse(MODEL_MATRIX) * vec4(mouse_screen_pos, 0.0, 1.0)).xy;
+	transformed_world_to_canvas_coordinates = local_mouse - rect_size * 0.5;
+
+	vec2 mouse_force = hovering * 0.5 * transformed_world_to_canvas_coordinates / length(rect_size)
+		+ rand_vec * 0.05 * rand_trans_power;
+
+	float sin_b = sin(y_rot / 180.0 * PI + mouse_force.x);
+	float cos_b = cos(y_rot / 180.0 * PI + mouse_force.x);
+	float sin_c = sin(x_rot / 180.0 * PI + -mouse_force.y);
+	float cos_c = cos(x_rot / 180.0 * PI + -mouse_force.y);
+
+	inv_rot_mat[0][0] = cos_b;
+	inv_rot_mat[0][1] = 0.0;
+	inv_rot_mat[0][2] = -sin_b;
+
+	inv_rot_mat[1][0] = sin_b * sin_c;
+	inv_rot_mat[1][1] = cos_c;
+	inv_rot_mat[1][2] = cos_b * sin_c;
+
+	inv_rot_mat[2][0] = sin_b * cos_c;
+	inv_rot_mat[2][1] = -sin_c;
+	inv_rot_mat[2][2] = cos_b * cos_c;
+
+	vec2 uv = (UV - pivot) / region_rate;   // == UV
+
+	float t = tan(fov / 360.0 * PI);
+
+	// Expand the quad outward (in pixels) so the tilted card isn't clipped.
+	VERTEX += (uv - 0.5) * rect_size * t * (1.0 - inset);
+
+	// Grow the quad for the border/shadow room. Expanding symmetrically about
+	// (uv - 0.5) keeps the card centered even when rect_size isn't exact.
+	float final_scale = max(border_scale, border_scale * shadow_scale);
+	VERTEX += (final_scale - 1.0) * (uv - 0.5) * rect_size * (1.0 + t * (1.0 - inset));
+
+	modulate = COLOR;
+	sprite_rotation = atan(MODEL_MATRIX[0][1], MODEL_MATRIX[0][0]);
+}
+
+vec4 sample_texture_safe(sampler2D tex, vec2 uv) {
+    return (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
+        ? vec4(0.0)
+        : texture(tex, uv);
+}
+
+vec4 apply_gaussian_blur(sampler2D tex, vec2 uv, vec2 pixel_size) {
+    if (blur_amount <= 0.0) return sample_texture_safe(tex, uv);
+
+    vec4 color_blur = vec4(0.0);
+    float total_weight = 0.0;
+    int kernel_size = int(blur_amount * 3.0);
+
+    for (int x = -kernel_size; x <= kernel_size; x++) {
+        for (int y = -kernel_size; y <= kernel_size; y++) {
+            vec2 blur_offset = vec2(float(x), float(y)) * pixel_size;
+            float weight = exp(-0.5 * (float(x * x + y * y)) / (blur_amount * blur_amount));
+            color_blur += sample_texture_safe(tex, uv + blur_offset) * weight;
+            total_weight += weight;
+        }
+    }
+
+    return total_weight > 0.0 ? color_blur / total_weight : vec4(0.0);
+}
+
+vec2 rotate_point(vec2 point, float angle) {
+    float s = sin(angle);
+    float c = cos(angle);
+    return vec2(
+        point.x * c - point.y * s,
+        point.x * s + point.y * c
+    );
+}
+
+float calculate_fade(float coord, float scale) {
+    if (coord < 0.0) {
+        return 1.0 + (coord / (scale - 1.0));
+    } else if (coord > 1.0) {
+        return 1.0 - ((coord - 1.0) / (scale - 1.0));
+    }
+    return 1.0;
+}
+
+vec4 process_texture(vec2 uv, sampler2D tex, bool is_main, vec2 pixel_size) {
+    if (is_main) {
+        return sample_texture_safe(tex, uv) * modulate;
+    }
+
+    vec4 blurred = apply_gaussian_blur(tex, uv, pixel_size);
+    float fade_x = calculate_fade(uv.x, shadow_scale);
+    float fade_y = calculate_fade(uv.y, shadow_scale);
+    float fade = smoothstep(0.0, 1.0, min(fade_x, fade_y));
+
+    return vec4(color.rgb, (blurred.a - (1.0 - color.a)) * modulate.a * fade);
+}
+
+void fragment(){
+
+    vec2 uv = (UV - pivot ) / region_rate;
+
+    float t = tan(fov / 360.0 * PI);
+    p = inv_rot_mat * vec3((uv - 0.5), 0.5 / t);
+    float v = (0.5 / t) + 0.5;
+    p.xy *= v * inv_rot_mat[2].z;
+    o = v * inv_rot_mat[2].xy;
+
+    if (cull_back && p.z <= 0.0) discard;
+    uv = (p.xy / p.z).xy - o;
+    uv += 0.5;
+    float asp = (region_rate/TEXTURE_PIXEL_SIZE).y/ (region_rate/TEXTURE_PIXEL_SIZE).x;
+    uv.y *= asp;
+    uv = rotate(uv, vec2(0.5, 0.5), rotation + rand_trans_power*0.05*sin(TIME * spin_speed * (0.9 + mod(rand_seed, 0.5)) + rand_seed * 123.8985));
+    uv.y /= asp;
+
+    if(uv.x >1.0 || uv.x < 0.0){
+        discard;
+    }
+    if(uv.y >1.0 || uv.y < 0.0){
+        discard;
+    }
+    vec2 perspective_uv = pivot + uv * region_rate;
+
+    float final_scale = max(border_scale, border_scale * shadow_scale);
+    vec2 scaled_uv = perspective_uv * final_scale - (0.5 * (final_scale - 1.0));
+
+    vec4 main_texture = process_texture(scaled_uv, TEXTURE, true, TEXTURE_PIXEL_SIZE);
+
+    vec2 adjusted_offset = disable_rotating ? shadow_offset : rotate_point(shadow_offset, -sprite_rotation);
+    vec2 shadow_uv = scaled_uv + adjusted_offset * TEXTURE_PIXEL_SIZE;
+
+    vec4 shadow = process_texture(shadow_uv, TEXTURE, false, TEXTURE_PIXEL_SIZE);
+
+    vec4 res = mix(shadow, main_texture, main_texture.a);
+    vec4 debug_layer = vec4(1.0, 0.0, 0.0, 0.3);
+    COLOR = mix(debug ? debug_layer : res, res, res.a);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q10kc"]
+shader = SubResource("Shader_lv7j8")
+shader_parameter/debug = false
+shader_parameter/border_scale = 1.0
+shader_parameter/shadow_offset = Vector2(0, -100)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/blur_amount = 0.0
+shader_parameter/shadow_scale = 1.5
+shader_parameter/disable_rotating = false
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+shader_parameter/hovering = 0.0
+shader_parameter/spin_speed = 1.0000000475
+shader_parameter/rand_trans_power = 0.075
+shader_parameter/rand_seed = 0.0
+shader_parameter/vortex_amt = 0.0
+shader_parameter/rotation = 0.0
+shader_parameter/rect_size = Vector2(80, 80)
+shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypqm0"]
 bg_color = Color(0, 0, 0, 0.79607844)
@@ -352,10 +549,12 @@ shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 shader_parameter/hovering = 0.0
+shader_parameter/spin_speed = 1.0
 shader_parameter/rand_trans_power = 1.0
 shader_parameter/rand_seed = 0.0
 shader_parameter/vortex_amt = 0.0
 shader_parameter/rotation = 0.0
+shader_parameter/rect_size = Vector2(70, 70)
 shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nabk1"]
@@ -377,13 +576,14 @@ highlight_border_thickness = null
 highlight_border_color = null
 
 [node name="3DTest" type="TextureRect" parent="." unique_id=799279206]
-material = SubResource("ShaderMaterial_q10kc")
+visible = false
+material = SubResource("ShaderMaterial_wixct")
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 0
-offset_left = 342.0
-offset_top = 77.0
-offset_right = 422.0
-offset_bottom = 119.0
+offset_left = 236.0
+offset_top = 111.0
+offset_right = 316.0
+offset_bottom = 191.0
 texture = ExtResource("3_dur3e")
 expand_mode = 5
 stretch_mode = 4
@@ -413,6 +613,7 @@ theme_override_constants/separation = 2
 [node name="Occulum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
 z_index = 4
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = -16
 
 [node name="OcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=875715703]
@@ -425,6 +626,7 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="OcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
+material = SubResource("ShaderMaterial_q10kc")
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -432,6 +634,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("3_dur3e")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("6_q10kc")
 
 [node name="Crawler" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
 layout_mode = 2
@@ -447,6 +650,7 @@ horizontal_alignment = 1
 
 [node name="CrawlerButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=972339713]
 z_index = 3
+material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -468,6 +672,7 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="SpinalOcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=133221191]
+material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -511,6 +716,7 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="WyrmButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=629061683]
+material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -671,6 +877,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1270255954]
+visible = false
 material = SubResource("ShaderMaterial_l4ncj")
 position = Vector2(437, 156)
 texture = ExtResource("3_dur3e")
@@ -683,6 +890,8 @@ shape = SubResource("RectangleShape2D_nabk1")
 
 [connection signal="mouse_entered" from="3DTest" to="3DTest" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="3DTest" to="3DTest" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" to="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" to="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="." method="_on_WalnutButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="." method="_on_EggButton_pressed"]
