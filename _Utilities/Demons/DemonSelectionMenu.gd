@@ -307,7 +307,7 @@ func _process(_delta:float) -> void:
 				var offset := sprite.get_meta("original_offset") as Vector2
 				
 				sprite.global_position = base_pos + offset
-				print(sprite, " sprite new global pos is ",sprite.global_position )
+				#print(sprite, " sprite new global pos is ",sprite.global_position )
 
 func find_animated_sprite(node:Node)->Node:
 	# Recursively search for AnimatedSprite node

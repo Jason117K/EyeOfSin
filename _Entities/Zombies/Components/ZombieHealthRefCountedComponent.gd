@@ -74,7 +74,7 @@ func take_damage(is_link_damage : bool = false, damage: float = 1.0, _piercing: 
 				damage = damage - 5
 			elif damage < 10:
 				damage = damage / 2
-			
+	health_regen_elapsed_time = 0
 	health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)

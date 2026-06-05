@@ -668,7 +668,6 @@ theme_override_font_sizes/font_size = 144
 text = "LEVEL 5"
 
 [node name="Level6Button" type="TextureButton" parent="." unique_id=1918536202]
-visible = false
 z_index = 1
 custom_minimum_size = Vector2(1000, 200)
 layout_mode = 0
@@ -1073,7 +1072,6 @@ sharp_limit = 90.0
 metadata/_edit_lock_ = true
 
 [node name="LevelCircleNested6" type="Node2D" parent="." unique_id=1228291419 node_paths=PackedStringArray("polygon", "line")]
-visible = false
 position = Vector2(294, 252.99998)
 scale = Vector2(0.14, 0.14)
 script = ExtResource("8_nj8lg")

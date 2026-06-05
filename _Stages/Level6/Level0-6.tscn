@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c4jlf7l0jh1tt" path="res://_Stages/Level6/level_0_6.gd" id="1_a4agt"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_au3v8"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_7nw23"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_lk4we"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_0g5v1"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_bik1u"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="5_lk4we"]
@@ -874,6 +875,7 @@ sources/15 = SubResource("TileSetAtlasSource_cjad8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("10_bpnmg")
+shader_parameter/shader_time = 0.0
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("19_2cexd")
@@ -1064,8 +1066,14 @@ skip_end_dialog = false
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
 layout_mode = 1
 
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_lk4we")]
+layout_mode = 1
+is_alt = false
+highlight_border_thickness = 1
+highlight_border_color = Color(1, 0, 0, 1)
+
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]
-blood_points = 1500
+blood_points = 700
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
@@ -1516,8 +1524,8 @@ visible = false
 position = Vector2(576, 111)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="timeout" from="SynShark/LightningTimer" to="SynShark" method="_on_lightning_timer_timeout"]
 
 [editable path="GameLayer/GridManager"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ddj2tjw1108e2" path="res://_Stages/Level6/level_0_6_alternate.gd" id="1_01won"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_0v3x8"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_2irmp"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_wf2ra"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_mqw32"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="5_mywjt"]
 [ext_resource type="Resource" uid="uid://i2ubkdlb3dw" path="res://_Stages/WaveData/waveOfReborn.tres" id="6_wf2ra"]
@@ -26,6 +27,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
 shader = ExtResource("10_qtmkw")
+shader_parameter/shader_time = 0.0
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("19_smx1k")
@@ -73,8 +75,11 @@ skip_end_dialog = false
 layout_mode = 1
 make_green = true
 
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_wf2ra")]
+layout_mode = 1
+
 [node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("2_0v3x8")]
-blood_points = 1500
+blood_points = 700
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1288006005]
 process_mode = 1

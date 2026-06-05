@@ -75,7 +75,10 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	projectile_to_buff.is_slowing = false
 	projectile_to_buff.damage = projectile_damage
 	projectile_to_buff.speed = projectile_speed
-	projectile_to_buff.hide()
+	to_global(attack_rays[0].target_position)
+	projectile_to_buff.max_distance_can_travel = (attack_rays[0].target_position).x
+	print()
+	#projectile_to_buff.hide()
 	
 	if isCrawlerBuffed:
 		projectile_to_buff.is_slowing = true
