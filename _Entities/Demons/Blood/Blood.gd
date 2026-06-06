@@ -14,6 +14,8 @@ var demo_blood_pickup_time := 1.25
 @onready var auto_pickup_timer: Timer = $AutoPickUpTimer
 @onready var heal_anim := $HealingAnimSprite
 @onready var demon_manager : Node = get_parent().get_parent().get_node("DemonManager")
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+
 var blood_spell := preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
 var crawlerBuff := false
 var wyrmBuff := false
@@ -76,7 +78,8 @@ func _on_Blood_mouse_entered() -> void:
 	#if hiveBuff:
 		#if origin_occulum != null:
 			#origin_occulum.burst_heal()
-	queue_free()
+	animation_player.play("pickup")
+	#queue_free()
 
 func free_blood() -> void:
 	if current_zombie_target != null:
