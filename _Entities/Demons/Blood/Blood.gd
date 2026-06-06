@@ -254,7 +254,6 @@ func set_fast_pickup_time() -> void:
 
 func set_demo_true() -> void:
 	auto_pickup_timer.wait_time = demo_blood_pickup_time
-
 	auto_pickup_timer.start()
 	
 

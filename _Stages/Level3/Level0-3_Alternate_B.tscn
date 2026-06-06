@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://_Assets/Environment/Props/Pustules_shadow1_big.png" id="27_4uwwf"]
 [ext_resource type="Texture2D" uid="uid://xnmh8u6wirep" path="res://_Stages/SynMantaRay-Sheet.png" id="38_lgc8d"]
 [ext_resource type="Script" uid="uid://cjto6m715op88" path="res://_Stages/syn_manta_ray.gd" id="39_dk2pv"]
+[ext_resource type="Texture2D" uid="uid://t26u55e6p81" path="res://_Stages/Level3/SynSkull.png" id="41_4uwwf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4le5d"]
 texture = ExtResource("7_1rolb")
@@ -1617,6 +1618,7 @@ position = Vector2(370, 208)
 [node name="Timer" type="Timer" parent="." unique_id=1920464950]
 
 [node name="SynMantaRay" type="AnimatedSprite2D" parent="." unique_id=970756652 node_paths=PackedStringArray("path")]
+visible = false
 position = Vector2(176, 360)
 sprite_frames = SubResource("SpriteFrames_4uwwf")
 autoplay = "default"
@@ -1627,6 +1629,10 @@ path = NodePath("../Path2D")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=137838850]
 curve = SubResource("Curve2D_lgc8d")
+
+[node name="SynSkull" type="Sprite2D" parent="." unique_id=849848012]
+position = Vector2(604, 342)
+texture = ExtResource("41_4uwwf")
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

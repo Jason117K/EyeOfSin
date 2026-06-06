@@ -43,8 +43,10 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_hcyne"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="23_eu4n5"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="26_adj10"]
+[ext_resource type="Texture2D" uid="uid://ddu0fqxy1l4ey" path="res://_Stages/Level1/SynPlant2.png" id="39_rexr6"]
 [ext_resource type="Texture2D" uid="uid://xnmh8u6wirep" path="res://_Stages/SynMantaRay-Sheet.png" id="43_qbruy"]
 [ext_resource type="Script" uid="uid://cjto6m715op88" path="res://_Stages/syn_manta_ray.gd" id="44_casp2"]
+[ext_resource type="Texture2D" uid="uid://btve2tvi2v5yc" path="res://_Stages/Level1/SynPlant1.png" id="46_01j72"]
 
 [sub_resource type="Shader" id="Shader_654uq"]
 code = "
@@ -2125,6 +2127,18 @@ process_mode = 1
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=794103586]
 
+[node name="SynPlant1" type="Sprite2D" parent="Environment/Coral" unique_id=1636757153]
+position = Vector2(611, 230)
+texture = ExtResource("46_01j72")
+
+[node name="SynPlant2" type="Sprite2D" parent="Environment/Coral" unique_id=499875797]
+position = Vector2(216, 331)
+texture = ExtResource("46_01j72")
+
+[node name="SynPlant3" type="Sprite2D" parent="Environment/Coral" unique_id=485151982]
+position = Vector2(394, 68)
+texture = ExtResource("46_01j72")
+
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=582964907]
 position = Vector2(583, 294)
 texture = ExtResource("8_opuci")
@@ -2226,6 +2240,10 @@ texture = ExtResource("13_l7yxw")
 visible = false
 position = Vector2(465, 347)
 texture = ExtResource("13_l7yxw")
+
+[node name="SynPlant4" type="Sprite2D" parent="Environment/Coral" unique_id=379662005]
+position = Vector2(403, 251)
+texture = ExtResource("39_rexr6")
 
 [node name="Bramble" type="Node2D" parent="Environment" unique_id=1311134715]
 visible = false
