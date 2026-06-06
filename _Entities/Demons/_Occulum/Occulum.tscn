@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://_Entities/Demons/_Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_pomd1"]
 [ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="21_dyku2"]
+[ext_resource type="Script" uid="uid://bq3yj6bgyweg0" path="res://_Entities/Demons/_Occulum/preview_nodes.gd" id="21_nkbdm"]
 [ext_resource type="Texture2D" uid="uid://cpg3mwahpywqo" path="res://_Entities/Demons/Cards/Empty_Display_CARD_Outline.png" id="22_11far"]
 [ext_resource type="Texture2D" uid="uid://b6g8l1371ylsr" path="res://_Entities/Demons/_Occulum/HealingFlameCircle.png" id="23_0ypr0"]
 [ext_resource type="Texture2D" uid="uid://7tr2bmwgk48m" path="res://_Entities/Demons/DemonSynergyBuffOutline_CARD.png" id="23_3d0n3"]
@@ -1233,6 +1234,7 @@ wait_time = 30.0
 one_shot = true
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
+visible = false
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
 animation = &"spawn"
@@ -1248,7 +1250,13 @@ visible = false
 sprite_frames = SubResource("11")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=487174492]
-visible = false
+script = ExtResource("21_nkbdm")
+
+[node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1979715381]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 5)
+texture = ExtResource("21_dyku2")
 
 [node name="PreviewCard" type="Sprite2D" parent="PreviewNodes" unique_id=335363415]
 z_index = -1
@@ -1412,6 +1420,7 @@ mouse_filter = 1
 texture_normal = ExtResource("29_he6yk")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1414885338]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2047447869]
@@ -1419,6 +1428,7 @@ position = Vector2(-7.5, -11)
 shape = SubResource("RectangleShape2D_he6yk")
 
 [node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1770091349]
+visible = false
 sprite_frames = SubResource("SpriteFrames_lskl7")
 frame = 2
 frame_progress = 0.075980306

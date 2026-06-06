@@ -278,6 +278,7 @@ corner_radius_bottom_left = 2
 expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="Shader" id="Shader_lv7j8"]
 code = "shader_type canvas_item;
@@ -656,7 +657,7 @@ theme_override_constants/separation = 2
 z_index = 4
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = -1
+theme_override_constants/separation = 1
 
 [node name="OcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
 material = SubResource("ShaderMaterial_q10kc")
