@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_hbnda"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_qrjcg"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_fdf6c"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="23_45m1m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i68oy"]
 shader = ExtResource("10_6yhwr")
@@ -429,8 +430,7 @@ stream = ExtResource("22_fdf6c")
 volume_db = -80.0
 bus = &"music"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=901939064]
-position = Vector2(370, 208)
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("23_45m1m")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

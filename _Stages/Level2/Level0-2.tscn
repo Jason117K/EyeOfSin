@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bjwxrvjpwvxbp" path="res://_Assets/Environment/Props/Blood_Stain_Anim_2-Sheet.png" id="37_8vhqs"]
 [ext_resource type="Texture2D" uid="uid://jmiumnuidyj1" path="res://_Assets/Environment/Props/rifts-2-Sheet.png" id="38_vp86k"]
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://_Assets/Environment/Props/rifts-alt-Sheet.png" id="39_myyu6"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_lrpgx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gh0wm"]
 texture = ExtResource("6_r12fy")
@@ -3620,9 +3621,6 @@ stream = ExtResource("25_71bjb")
 autoplay = true
 bus = &"music"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=931209720]
-position = Vector2(370, 208)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=764205938]
 environment = ExtResource("21_kmsuw")
 
@@ -3894,7 +3892,9 @@ sprite_frames = SubResource("SpriteFrames_gktj4")
 autoplay = "default"
 flip_h = true
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("40_lrpgx")]
+
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

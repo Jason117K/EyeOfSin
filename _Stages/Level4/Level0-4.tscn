@@ -64,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://b2570yv5xwfwa" path="res://_Assets/Environment/Props/Objects.png" id="58_hhcjx"]
 [ext_resource type="Texture2D" uid="uid://cutsd2jwatt7y" path="res://_Assets/Environment/Props/Dead_arm_shadow1_1.png" id="59_k4i7f"]
 [ext_resource type="Script" uid="uid://x3g0tevnjlod" path="res://_Stages/Level4/label.gd" id="63_gs3u6"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="64_rqakg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx6g2"]
 texture = ExtResource("7_albfy")
@@ -3919,8 +3920,7 @@ stream = ExtResource("22_2i5fe")
 autoplay = true
 bus = &"music"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=482512615]
-position = Vector2(370, 208)
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("64_rqakg")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=179482603]
 
@@ -3932,7 +3932,7 @@ offset_right = 183.0
 offset_bottom = 55.0
 script = ExtResource("63_gs3u6")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

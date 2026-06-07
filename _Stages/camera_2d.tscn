@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://t5ghcfxwbcom"]
+
+[ext_resource type="Script" uid="uid://cnt3sapc61ec8" path="res://_Stages/camera_2d.gd" id="1_hkpjr"]
+
+[node name="Camera2D" type="Camera2D" unique_id=1729019829]
+position = Vector2(370, 206)
+script = ExtResource("1_hkpjr")

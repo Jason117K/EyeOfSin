@@ -802,7 +802,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 25.0
+"speed": 30.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l03of"]
@@ -1526,7 +1526,12 @@ visible = false
 position = Vector2(30, 0)
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=241713253]
-visible = false
+
+[node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1098131537]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(0, 4)
+texture = ExtResource("25_hlgco")
 
 [node name="PreviewCard" type="Sprite2D" parent="PreviewNodes" unique_id=1604668709]
 z_index = -1

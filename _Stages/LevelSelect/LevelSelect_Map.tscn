@@ -697,6 +697,36 @@ theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 144
 text = "LEVEL 6"
 
+[node name="Level7Button" type="TextureButton" parent="." unique_id=1980754854]
+z_index = 1
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 0
+offset_left = 295.0
+offset_top = 288.0
+offset_right = 1295.0
+offset_bottom = 488.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("5_g2cgg")
+texture_hover = ExtResource("6_r3hyu")
+stretch_mode = 6
+
+[node name="Level7Label" type="Label" parent="Level7Button" unique_id=1755343074]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_lwmcq")
+theme_override_font_sizes/font_size = 144
+text = "LEVEL 7"
+
 [node name="TestingGusButton0" type="TextureButton" parent="." unique_id=956304434]
 visible = false
 z_index = 1
@@ -1216,6 +1246,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_uqscy")
 [connection signal="pressed" from="Level4Button" to="." method="_on_level_4_pressed"]
 [connection signal="pressed" from="Level5Button" to="." method="_on_level_5_pressed"]
 [connection signal="pressed" from="Level6Button" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="Level7Button" to="." method="_on_level_7_button_pressed"]
 [connection signal="pressed" from="TestingGusButton0" to="." method="_on_testing_gus_button_0_pressed"]
 [connection signal="pressed" from="TestingGusButton1" to="." method="_on_testing_gus_button_1_pressed"]
 [connection signal="pressed" from="BackPlainButton" to="." method="_on_back_pressed"]

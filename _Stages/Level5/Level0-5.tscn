@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="20_icbpr"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_k4d0o"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_uqvme"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="24_3au0f"]
 
 [sub_resource type="Resource" id="Resource_gtg2i"]
 script = ExtResource("4_pkv84")
@@ -448,10 +449,9 @@ stream = ExtResource("22_uqvme")
 autoplay = true
 bus = &"music"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=99321584]
-position = Vector2(370, 208)
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("24_3au0f")]
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

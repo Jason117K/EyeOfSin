@@ -93,6 +93,7 @@ func _ready() -> void:
 func hide_old_preview()->void:
 	$PreviewNodes/PreviewCard.visible = false 
 	$PreviewNodes/PreviewCardSprite.visible = false 
+	$PreviewNodes/PreviewCardShadow.visible = false 
 	
 func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):

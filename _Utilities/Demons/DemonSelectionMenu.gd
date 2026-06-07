@@ -18,6 +18,14 @@ var preview_sprite_modulation := Color(1,1,1,0.8)
 signal clicked_Eye
 signal codex_clicked
 
+@export var card_spring: float = 150.0
+@export var card_damp: float = 10.0
+@export var card_velocity_multiplier: float = 2.0
+
+var preview_card_sprites: Array = []   # the rotating card duplicates
+var preview_last_mouse: Vector2
+var card_osc_velocity: float = 0.0
+var card_displacement: float = 0.0
 
 # Preload the demon scenes
 var crawler_scene := preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
@@ -72,7 +80,7 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var OcculumCost := 50
 
 var canSwapScenes := false
-
+const MAX_SHADOW_OFFSET := 8.0
 # Thickness of the highlight border (in pixels)
 @export var highlight_border_thickness: int = 1
 
@@ -224,7 +232,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 
 	Global.show_guide()
 
-	var temp_demon : Demon = demon_scene.instantiate()
+	var temp_demon  = demon_scene.instantiate()
 	var preview_node : Node = find_preview_nodes(temp_demon)
 	
 	if preview_node:
@@ -247,8 +255,16 @@ func create_preview(demon_scene:PackedScene) -> void:
 			# Add the preview sprite to the container and array 
 			print("Add ", this_preview_sprite , " to preview container")
 			preview_container.add_child(this_preview_sprite)
+			
+			if this_preview_sprite.name.begins_with("PreviewCard"): #\
+			#and not this_preview_sprite.name.begins_with("PreviewCardShadow"):
+				preview_card_sprites.append(this_preview_sprite)
+				
 			preview_sprites.append(this_preview_sprite)
-		is_previewing = true	
+		is_previewing = true
+		preview_last_mouse = get_global_mouse_position()
+		card_osc_velocity = 0.0
+		card_displacement = 0.0
 	temp_demon.queue_free()
 	
 # Clears the current preview image 
@@ -263,8 +279,13 @@ func clear_preview() -> void:
 		#print("Demon Button ia ",demonButton )
 		remove_button_highlight(demonButton)
 	preview_sprites.clear()
+	print("Preview Spries Is ", preview_sprites)
+	preview_card_sprites.clear()
 	#currentDemonLabel.text = ""
 	is_previewing = false
+	
+	for child in preview_container.get_children():
+		child.queue_free()
 
 func release_all_focus() -> void:
 		
@@ -299,15 +320,34 @@ func find_preview_sprite(node:Node)->Node:
 	return null
 
 # Drags the preview sprite around with the cursor 
-func _process(_delta:float) -> void:
+func _process(delta:float) -> void:
 	if is_previewing and not preview_sprites.is_empty():
 		var base_pos := get_global_mouse_position()
+		var center_x := get_viewport_rect().size.x / 2.0
 
 		for sprite:Node in preview_sprites:
 			if sprite and sprite.has_meta("original_offset"):
 				var offset := sprite.get_meta("original_offset") as Vector2
+				var extra := Vector2.ZERO
+				if sprite.name.begins_with("PreviewCardShadow"):
+					var dist := base_pos.x - center_x
+					var shadow_x := lerpf(0.0, -signf(dist) * MAX_SHADOW_OFFSET,
+											clampf(absf(dist / center_x), 0.0, 1.0))
+					extra.x = shadow_x
+				sprite.global_position = base_pos + offset + extra
 				
-				sprite.global_position = base_pos + offset
+		if not preview_card_sprites.is_empty() and delta > 0.0:
+			var velocity := (base_pos - preview_last_mouse) / delta
+			preview_last_mouse = base_pos
+
+			card_osc_velocity += velocity.normalized().x * card_velocity_multiplier
+			var force := -card_spring * card_displacement - card_damp * card_osc_velocity
+			card_osc_velocity += force * delta
+			card_displacement += card_osc_velocity * delta
+
+			for card in preview_card_sprites:
+				if card:
+					card.rotation = card_displacement
 				#print(sprite, " sprite new global pos is ",sprite.global_position )
 
 func find_animated_sprite(node:Node)->Node:

@@ -19,6 +19,7 @@ enum SOUND_EFFECT_TYPE {
 	WASP_BUZZ,
 	MAW_CHEW,
 	WYRM_FIRE,
+	DEMON_PLACE,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.

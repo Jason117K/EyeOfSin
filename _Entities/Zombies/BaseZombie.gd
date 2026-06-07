@@ -486,17 +486,20 @@ func silence() -> void:
 # --- Dimension Change ---
 
 func change_dimensions(new_position : Vector2) -> void:
-	self.reparent(Global.get_game_controller().get_alt_dimension().get_node("GameLayer"))
-	if self.is_in_group("Green"):
+	if new_position == Vector2.ONE:
+		return 
+	if self.is_in_group("Green"): #Green->Purple
 		self.remove_from_group("Green")
 		self.add_to_group("Purple")
 		self.set_collision_layer_value(2, true)
-		set_hue_shift(-86)
-	else:
+		#set_hue_shift(-86)
+		self.reparent(Global.get_game_controller().get_purple_dimension().get_node("GameLayer"))
+	else:#Purple->Green
 		self.remove_from_group("Purple")
 		self.add_to_group("Green")
 		self.set_collision_layer_value(3, true)
-		set_hue_shift(125)
+		#set_hue_shift(125)
+		self.reparent(Global.get_game_controller().get_green_dimension().get_node("GameLayer"))
 	self.global_position = new_position
 
 

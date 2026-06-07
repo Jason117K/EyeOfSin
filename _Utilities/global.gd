@@ -487,9 +487,13 @@ func register_purple_portal(new_purple_portal : Node) -> void:
 	purple_portal = new_purple_portal
 	
 func get_purple_portal_location() -> Vector2:
+	if purple_portal == null:
+		return Vector2.ONE
 	return purple_portal.global_position
 
 func get_green_portal_location() -> Vector2:
+	if green_portal == null:
+		return Vector2.ONE
 	return green_portal.global_position
 	
 func register_demon(new_demon : Demon)->void:

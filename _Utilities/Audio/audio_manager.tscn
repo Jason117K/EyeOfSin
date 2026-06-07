@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c085maienahs3" path="res://_Assets/Audio/HiveBuzz.wav" id="14_de70p"]
 [ext_resource type="AudioStream" uid="uid://c0hgslt1e5i81" path="res://_Assets/Audio/MawChew.wav" id="15_de70p"]
 [ext_resource type="AudioStream" uid="uid://dyrsctrr5rj6s" path="res://_Assets/Audio/WyrmFire.wav" id="16_rb65j"]
+[ext_resource type="AudioStream" uid="uid://dxlgdjcj6hhfl" path="res://_Assets/Audio/Cinematic_2_3.wav" id="17_3ha7c"]
 
 [sub_resource type="Resource" id="Resource_djtss"]
 script = ExtResource("2_ccgv0")
@@ -126,6 +127,12 @@ sound_effect = ExtResource("16_rb65j")
 volume = -10.0
 metadata/_custom_type_script = "uid://4eiirlwgrgs8"
 
+[sub_resource type="Resource" id="Resource_wsf6j"]
+script = ExtResource("2_ccgv0")
+type = 14
+sound_effect = ExtResource("17_3ha7c")
+metadata/_custom_type_script = "uid://4eiirlwgrgs8"
+
 [node name="AudioManager" type="Node2D" unique_id=1595553561]
 script = ExtResource("1_od13e")
-sound_effects = Array[ExtResource("2_ccgv0")]([SubResource("Resource_djtss"), SubResource("Resource_wgcmg"), SubResource("Resource_jo6nm"), SubResource("Resource_icebg"), SubResource("Resource_54sv8"), SubResource("Resource_7xj7y"), SubResource("Resource_d0fwp"), SubResource("Resource_eunjc"), SubResource("Resource_rybe5"), SubResource("Resource_de70p"), SubResource("Resource_rb65j"), SubResource("Resource_h1slu"), SubResource("Resource_atiok"), SubResource("Resource_178v7")])
+sound_effects = Array[ExtResource("2_ccgv0")]([SubResource("Resource_djtss"), SubResource("Resource_wgcmg"), SubResource("Resource_jo6nm"), SubResource("Resource_icebg"), SubResource("Resource_54sv8"), SubResource("Resource_7xj7y"), SubResource("Resource_d0fwp"), SubResource("Resource_eunjc"), SubResource("Resource_rybe5"), SubResource("Resource_de70p"), SubResource("Resource_rb65j"), SubResource("Resource_h1slu"), SubResource("Resource_atiok"), SubResource("Resource_178v7"), SubResource("Resource_wsf6j")])

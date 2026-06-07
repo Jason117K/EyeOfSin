@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://csbrjj1wgdbam" path="res://_Entities/Demons/_Crawler/Crawler_Display_CARD.png" id="7_wixct"]
 [ext_resource type="Texture2D" uid="uid://bmr70mtnhode1" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum_Display_CARD.png" id="8_c3fhf"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
-[ext_resource type="Texture2D" uid="uid://bowkp4mknv1ul" path="res://_Assets/UI/DemonCard_Portal_GreenButton.png" id="10_bcru6"]
 [ext_resource type="Texture2D" uid="uid://bajbuwbiesujh" path="res://_Entities/Demons/Cards/DemonCard_HEART.png" id="11_iafbj"]
 [ext_resource type="Texture2D" uid="uid://bkrpjoje3pedw" path="res://_Entities/Demons/_Wyrm/Wyrm_Display_CARD.png" id="11_jfwei"]
 [ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
@@ -21,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://w4n34nhafrdq" path="res://_Entities/Demons/Cards/WORDSWAP_CARD.png" id="13_vvged"]
 [ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://_Assets/Misc/CODEX_CARD.png" id="14_04elx"]
 [ext_resource type="Texture2D" uid="uid://chfuimepfak3s" path="res://_Assets/UI/DemonCard_FastForward.png" id="15_e3ig8"]
+[ext_resource type="Texture2D" uid="uid://dcmst4lacr57c" path="res://_Entities/SpecialElementsPortal/GreenPortalCard.png" id="15_wixct"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="16_dur3e"]
 [ext_resource type="Script" uid="uid://cho0s6lvv3v5h" path="res://_Utilities/Demons/sprite_2d.gd" id="19_nabk1"]
 
@@ -619,6 +619,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1")
+card_spring = 900.0
+card_damp = 25.0
+card_velocity_multiplier = 1.0
 
 [node name="3DTest" type="TextureRect" parent="." unique_id=799279206]
 visible = false
@@ -805,16 +808,15 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
 [node name="PortalButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1249797751]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
-texture_normal = ExtResource("10_bcru6")
+texture_normal = ExtResource("15_wixct")
 ignore_texture_size = true
 stretch_mode = 0
 

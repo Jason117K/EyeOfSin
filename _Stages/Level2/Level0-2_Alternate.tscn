@@ -38,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_7in2w"]
 [ext_resource type="Texture2D" uid="uid://xnmh8u6wirep" path="res://_Stages/SynMantaRay-Sheet.png" id="36_ycqcl"]
 [ext_resource type="Script" uid="uid://cjto6m715op88" path="res://_Stages/syn_manta_ray.gd" id="37_468no"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="39_1esa2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wm3w0"]
 texture = ExtResource("12_c63eg")
@@ -1267,9 +1268,6 @@ offset_bottom = 2036.5
 [node name="DemonManager" parent="." unique_id=282479321 instance=ExtResource("2_m8syp")]
 blood_points = 215
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=120109506]
-position = Vector2(370, 208)
-
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1910969798]
 stream = ExtResource("25_7in2w")
 volume_db = -80.0
@@ -1547,6 +1545,8 @@ path = NodePath("../Path2D")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1770972485]
 curve = SubResource("Curve2D_468no")
+
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("39_1esa2")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

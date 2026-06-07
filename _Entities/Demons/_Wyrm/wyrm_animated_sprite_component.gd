@@ -14,6 +14,7 @@ func receive_buff(new_form: String) -> void:
 	pass
 
 func spawn_done() -> void:
+	print("Wyrm Spawn Done Called ")
 	if spawnAnimDone:
 		pass
 	else:
@@ -22,6 +23,7 @@ func spawn_done() -> void:
 		play()
 		spawnAnimDone = true
 		demon.can_show_preview = true 
+		print("Wyrm Can Show Pre")
 		
 		
 		

@@ -9,6 +9,8 @@ extends Node2D
 
 @export var blood_points: int = 200 # Holds how many blood points we have currently
 
+@onready var camera : Camera2D = get_parent().get_node("Camera2D")
+
 var selected_demon_scene: PackedScene = null  # Holds the selected demon scene
 var grid_size: int = 32 # Defines the size of each grid cell
 var grid_map: Dictionary = {}  # Dictionary to store occupied cells
@@ -77,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				move_demon(demon_to_move, grid_pos)
 
 			if selected_demon_scene != null:
-				var temp_instance :Demon= selected_demon_scene.instantiate()
+				var temp_instance = selected_demon_scene.instantiate()
 				
 				var cost :float= temp_instance.get_cost()
 				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
@@ -129,8 +131,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
 					#print(get_parent(), "QQOtro Place Demon " , grid_pos)
 					var temp_check_instance =  get_selected_demon().instantiate()
-					if temp_check_instance.is_hero == false:
-						Global.game_controller.place_empty_in_alt_scene(grid_pos)
+					#if temp_check_instance.is_hero == false:
+					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					temp_check_instance.queue_free()
 					place_demon(grid_pos)
 
@@ -246,7 +248,7 @@ func place_demon(grid_pos: Vector2) -> void:
 		#print("No demon selected!")
 		return
 	
-	var demon_instance :Demon= selected_demon_scene.instantiate()
+	var demon_instance = selected_demon_scene.instantiate()
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
 		demon_instance.add_to_group("Green")
@@ -315,6 +317,8 @@ func place_demon(grid_pos: Vector2) -> void:
 			grid_map[grid_pos] = demon_instance
 	
 		#Add To The GameLayer 
+		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
+		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_PLACE)
 		get_parent().get_node("GameLayer").call_deferred("add_child", demon_instance)
 
 		#Reduce Blood Points
@@ -323,7 +327,8 @@ func place_demon(grid_pos: Vector2) -> void:
 		#Global.ui_layer.set_blood(str(blood_points))
 		get_parent().get_node("UILayer").set_blood(blood_points)
 		
-		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
+		
+		camera.screen_shake(1.25,0.7)
 
 		print("Pdemon name is ", demon_instance.name)
 		if "SpinalOcculum" in demon_instance.name:

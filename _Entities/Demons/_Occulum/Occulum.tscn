@@ -548,7 +548,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 25.0
+"speed": 33.0
 }]
 
 [sub_resource type="SpriteFrames" id="11"]
@@ -1234,7 +1234,6 @@ wait_time = 30.0
 one_shot = true
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
-visible = false
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = SubResource("6")
 animation = &"spawn"
@@ -1250,12 +1249,13 @@ visible = false
 sprite_frames = SubResource("11")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=487174492]
+visible = false
 script = ExtResource("21_nkbdm")
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1979715381]
 self_modulate = Color(0, 0, 0, 1)
 z_index = -1
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 texture = ExtResource("21_dyku2")
 
 [node name="PreviewCard" type="Sprite2D" parent="PreviewNodes" unique_id=335363415]
@@ -1268,7 +1268,6 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="PreviewCardOutline" type="Sprite2D" parent="PreviewNodes" unique_id=347267632]
-position = Vector2(-1, 0)
 texture = ExtResource("22_11far")
 
 [node name="BuffOutline" type="Sprite2D" parent="PreviewNodes" unique_id=474754277]
@@ -1428,7 +1427,6 @@ position = Vector2(-7.5, -11)
 shape = SubResource("RectangleShape2D_he6yk")
 
 [node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1770091349]
-visible = false
 sprite_frames = SubResource("SpriteFrames_lskl7")
 frame = 2
 frame_progress = 0.075980306

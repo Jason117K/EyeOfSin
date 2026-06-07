@@ -31,6 +31,7 @@ var level0_5Alt := ("res://_Stages/Level5/Level0-5_Alternate.tscn")
 var level0_6 := ("res://_Stages/Level6/Level0-6.tscn")
 var level0_6Alt := ("res://_Stages/Level6/Level0-6_Alternate.tscn")
 var level7 := ("res://_Stages/Level7/Level7.tscn")
+var level7_alt := ("res://_Stages/Level7/Level7_Alternate.tscn")
 
 var testing_gus_0 := "res://_Stages/Level-Testing/TestLevel0/Level0-TestingGus.tscn"
 var testing_gus_0Alt := "res://_Stages/Level-Testing/TestLevel0/Level0-TestingGus_Alternate.tscn"
@@ -113,7 +114,8 @@ func _on_level_6_pressed() -> void:
 		#assert(get_tree().change_scene_to_file(level6) ==OK)
 		Global.game_controller.change_dual_scenes(level0_6, level0_6Alt)
 
-
+func _on_level_7_button_pressed() -> void:
+	Global.game_controller.change_dual_scenes(level7, level7_alt)
 
 
 

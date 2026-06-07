@@ -944,7 +944,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 25.0
+"speed": 33.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0syxb"]
@@ -1918,10 +1918,8 @@ health = 800.0
 z_index = 1
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = SubResource("9")
-animation = &"attack"
+animation = &"spawn"
 autoplay = "spawn"
-frame = 5
-frame_progress = 1.0
 flip_h = true
 script = ExtResource("21_ol6r1")
 
@@ -1934,7 +1932,12 @@ sprite_frames = ExtResource("23_78twq")
 animation = &"web_spit"
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
-visible = false
+
+[node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1908163688]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(-1, 4)
+texture = ExtResource("24_8u2uv")
 
 [node name="PreviewCard" type="Sprite2D" parent="PreviewNodes" unique_id=1408633848]
 z_index = -1

@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://_Assets/Environment/Props/rifts-alt-Sheet.png" id="37_8ymh3"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="38_g88e2"]
 [ext_resource type="Texture2D" uid="uid://b4g25fs8qx38m" path="res://_Stages/Level1/PurpleEarthCrystal.png" id="39_fb4rh"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_umbnb"]
 
 [sub_resource type="Environment" id="Environment_xl50p"]
 background_mode = 3
@@ -3896,9 +3897,6 @@ volume_db = -80.0
 autoplay = true
 bus = &"music"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1805725339]
-position = Vector2(370, 208)
-
 [node name="PurpleEarthCrystal" type="Sprite2D" parent="." unique_id=2037134299]
 position = Vector2(644, 90)
 texture = ExtResource("39_fb4rh")
@@ -3911,5 +3909,7 @@ texture = ExtResource("39_fb4rh")
 position = Vector2(690, 274)
 texture = ExtResource("39_fb4rh")
 flip_h = true
+
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("40_umbnb")]
 
 [editable path="GameLayer/GridManager"]
