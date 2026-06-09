@@ -1,9 +1,11 @@
 extends Node2D
 #SummonComponent.gd
 
+@export var slow_summon_wait_time := 17
+
 #Various node references
 @onready var summonTimer := $SummonTimer
-@onready var dancerZombie := get_parent()
+@onready var dancerZombie :Zombie = get_parent()
 @onready var animatedSpriteComp := get_parent().get_node("AnimatedSprite2D")
 @onready var attackComp :ZombieAttackRefCountedComponent    #= dancerZombie.get_attack_comp() # $"../AttackComponent"
 
@@ -22,6 +24,9 @@ extends Node2D
 var BackUpDancerScene := preload("res://_Entities/Zombies/_Wretch/BackUpDancerZombie.tscn")
 var is_silenced := false
 var is_attacking:bool #Whether or not we are attacking
+
+func _ready() -> void:
+	pass
 
 func silence() -> void:
 	is_silenced = true
@@ -75,6 +80,9 @@ func summon_backup() -> void:
 			
 #Start the summon again by setting the animation
 func _on_SummonTimer_timeout() -> void:
+	summonTimer.wait_time = slow_summon_wait_time
+	summonTimer.start()
+	dancerZombie.setSpeed(0)
 	animatedSpriteComp.animation = "Summon"
 	animatedSpriteComp.setSpecialMoveTrue()
 
@@ -82,6 +90,7 @@ func _on_SummonTimer_timeout() -> void:
 func _on_AnimatedSprite_animation_finished() -> void:
 	#print(animatedSpriteComp.animation, " just finished playing")
 	if(animatedSpriteComp.animation == "Summon"):
+		dancerZombie.reset_speed()
 		#print(animatedSpriteComp.animation)
 		#print("AnimPlayed")
 		summon_backup()

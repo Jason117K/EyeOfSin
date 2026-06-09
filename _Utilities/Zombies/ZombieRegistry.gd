@@ -16,5 +16,6 @@ const Y_OFFSETS: Dictionary = {
 	"Erupter": -3,
 	"Flesheater": -2,
 	"Amalgam": -2,
-	"Unhallower": 2,
+	"Unhallower": 0,
+	
 }

@@ -45,6 +45,7 @@ var attackComp : ZombieAttackRefCountedComponent
 @onready var bloodHit := $BloodHit
 @onready var fire_fx := $FireFX
 @onready var syn_mark_sprite := $SynMark
+@onready var death_blood : AnimatedSprite2D = $DeathBlood
 #@onready var attack_timer := $AttackTimer
 @onready var damage_vfx_spawn_locations := [bloodHit]
 #@onready var debuff_degrade_timer : Timer = $DebuffDegrade
@@ -114,6 +115,8 @@ func _ready() -> void:
 	speedComp = ZombieSpeedRefCountedComponent.new(self)
 	healthComp = ZombieHealthRefCountedComponent.new(self)
 	attackComp = ZombieAttackRefCountedComponent.new(self)
+	
+	death_blood.animation_finished.connect(free_zombie)
 
 	animatedSprite.attackComp = attackComp
 	
@@ -234,10 +237,26 @@ func die() -> void:
 				get_parent().add_child(column_explosion)
 		zombie_death.emit()
 		this_zombie_died.emit(self)
-		if $AnimatedSprite2D.sprite_frames.has_animation("death"):
-			$AnimatedSprite2D.isDead = true
-			$AnimatedSprite2D.play("death")
-		queue_free()
+		if animatedSprite.sprite_frames.has_animation("death"):
+			animatedSprite.animation_finished.connect(hide_on_death)
+			animatedSprite.isDead = true
+			animatedSprite.play("death")
+		else:
+			pass
+			#freeze_on_death()
+		death_blood.show()
+		death_blood.play()
+		#queue_free()
+
+func freeze_on_death()->void:
+	animatedSprite.stop()
+
+func hide_on_death()->void:
+	animatedSprite.hide()
+
+func free_zombie()->void:
+	queue_free()
+
 
 func setSpeed(newSpeed:float)->void:
 	speedComp.setSpeed(newSpeed)
@@ -419,6 +438,7 @@ func knockBack() -> void:
 
 func set_hue_shift(hue_shift_degrees: float) -> void:
 	animatedSprite.set_hue_shift(hue_shift_degrees)
+	death_blood.set_hue_shift(hue_shift_degrees)
 
 
 func make_glow() -> void:

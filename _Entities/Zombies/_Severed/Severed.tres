@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cqrpdhio5ru6i" path="res://_Entities/Zombies/_Severed/Severed Zombie-NewSheet.png" id="1_lgxsd"]
 [ext_resource type="Texture2D" uid="uid://bbdtybge71epw" path="res://_Entities/Zombies/_Severed/Severed_Zombie_Web-NewSheet.png" id="4_jafcw"]
 [ext_resource type="Texture2D" uid="uid://cusp8tjvptahm" path="res://_Entities/Zombies/_Severed/HeadLessConeZombie-SheetWEB.png" id="4_lgxsd"]
+[ext_resource type="Texture2D" uid="uid://befq8rkeimt6x" path="res://_Entities/Zombies/_Severed/Severed_Death-Sheet.png" id="6_jafcw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_elnri"]
 atlas = ExtResource("1_lgxsd")
@@ -270,6 +271,50 @@ region = Rect2(434, 0, 62, 33)
 atlas = ExtResource("4_lgxsd")
 region = Rect2(496, 0, 62, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv57o"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(0, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffnsw"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(62, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rn73"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(124, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0up0"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(186, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyfwj"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(248, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p41ul"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(310, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwu8t"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(372, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp4b2"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(434, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjcnv"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(496, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v7pl"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(558, 0, 62, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6ug8"]
+atlas = ExtResource("6_jafcw")
+region = Rect2(620, 0, 62, 33)
+
 [resource]
 animations = [{
 "frames": [{
@@ -509,4 +554,42 @@ animations = [{
 "loop": true,
 "name": &"WebWalk_Old",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv57o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffnsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rn73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0up0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyfwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p41ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwu8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp4b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjcnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v7pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6ug8")
+}],
+"loop": false,
+"name": &"death",
+"speed": 15.0
 }]

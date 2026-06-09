@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="6_ldf7h"]
 [ext_resource type="Texture2D" uid="uid://dkp6a2sygdlsm" path="res://_Entities/Zombies/_RebornZombie/GhoulWebbedSheet.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="10_46gr7"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="11_e38sq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
 atlas = ExtResource("2_0jfja")
@@ -384,16 +385,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_80ohr")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_5rxux")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_vd1v8")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_vut8x")
 }, {
 "duration": 1.0,
@@ -416,6 +417,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h8ogj")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"death",
@@ -449,6 +453,11 @@ self_modulate = Color(0.5, 0.5, 0.5, 0.72549)
 position = Vector2(0, 16)
 texture = ExtResource("2_80ohr")
 
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("11_e38sq")]
+position = Vector2(23, -12)
+frame = 6
+frame_progress = 1.0
+
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1516634289]
 visible = false
 position = Vector2(0, 1.83333)
@@ -457,7 +466,7 @@ shape = SubResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
 sprite_frames = SubResource("11")
-animation = &"WebAttack"
+animation = &"Walk"
 flip_h = true
 script = ExtResource("6")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -469,6 +478,7 @@ target_position = Vector2(-10.6667, 0)
 collide_with_areas = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=1927232363]
+visible = false
 position = Vector2(-1, -12)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_46gr7")

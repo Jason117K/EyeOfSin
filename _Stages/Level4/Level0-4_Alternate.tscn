@@ -67,6 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_e23m8")
+isGreenDimension = true
 debug = false
 skip_end_dialog = false
 

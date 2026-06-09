@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ce1kshsbddsup" path="res://_Entities/Zombies/_Flesheater/FootballZombie-Sheet.png" id="8_3ru2w"]
 [ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="9_hyqrl"]
 [ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://_Entities/Zombies/_Flesheater/FootballZombie-SheetWEB.png" id="9_vy6vh"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="10_32v0v"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10_g8toj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
@@ -366,9 +367,15 @@ target_position = Vector2(-17, 0)
 collide_with_areas = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=436756212]
+visible = false
 position = Vector2(5, -12)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_hyqrl")
+
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("10_32v0v")]
+position = Vector2(29, -22)
+frame = 6
+frame_progress = 1.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

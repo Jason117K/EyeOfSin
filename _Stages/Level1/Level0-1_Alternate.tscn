@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://xnmh8u6wirep" path="res://_Stages/SynMantaRay-Sheet.png" id="43_qbruy"]
 [ext_resource type="Script" uid="uid://cjto6m715op88" path="res://_Stages/syn_manta_ray.gd" id="44_casp2"]
 [ext_resource type="Texture2D" uid="uid://btve2tvi2v5yc" path="res://_Stages/Level1/SynPlant1.png" id="46_01j72"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="48_cja0j"]
 
 [sub_resource type="Shader" id="Shader_654uq"]
 code = "
@@ -2061,6 +2062,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_83ut0")
+isGreenDimension = true
 debug = false
 skip_end_dialog = false
 
@@ -2089,9 +2091,6 @@ is_alt = true
 stream = ExtResource("26_adj10")
 volume_db = -80.0
 bus = &"music"
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=712513444]
-position = Vector2(370, 208)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=115014598]
 environment = ExtResource("21_kx3dj")
@@ -2403,6 +2402,8 @@ path = NodePath("../Path2D")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1977748920]
 curve = SubResource("Curve2D_qbruy")
+
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("48_cja0j")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

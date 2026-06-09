@@ -1061,6 +1061,7 @@ script = ExtResource("1_a4agt")
 new_end_dialog = "res://_Assets/Dialog/level_06_end_dialog.dtl"
 wave2StartTime = 70
 wave3StartTime = 100
+wave4StartTime = 80
 debug = false
 skip_end_dialog = false
 

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://m72ynoh4bg71"]
+
+[ext_resource type="Texture2D" uid="uid://ckb1fiau11443" path="res://_Entities/Zombies/BloodVFX-Sheet.png" id="1_b6vyi"]
+[ext_resource type="Script" uid="uid://drb4eskwaylxl" path="res://_Common/ColorChangingScripts/change_color_watcher.gd" id="2_mggmo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xydcr"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(0, 186, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_785gh"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(110, 186, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke02k"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(220, 186, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w1fe"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(330, 186, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e0et"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(440, 186, 110, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eiab8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xydcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_785gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke02k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w1fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e0et")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="DeathBlood" type="AnimatedSprite2D" unique_id=183842228]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_eiab8")
+script = ExtResource("2_mggmo")

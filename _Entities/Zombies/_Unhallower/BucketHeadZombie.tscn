@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://behdfh75j1wph" path="res://_Entities/Zombies/_Unhallower/SwordBucketZombie-SheeWEBt.png" id="9"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://ci85dw00qxll1" path="res://_Entities/Zombies/_Unhallower/UnhallowerNew_Web-Sheet.png" id="10_8vgu3"]
+[ext_resource type="Texture2D" uid="uid://dwddgo3me4t7" path="res://_Entities/Zombies/_Unhallower/GuardianDeath-Sheet.png" id="12_1bjrm"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="13_8vgu3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
 atlas = ExtResource("2_u3lv4")
@@ -527,6 +529,50 @@ region = Rect2(448, 0, 64, 33)
 atlas = ExtResource("9")
 region = Rect2(512, 0, 64, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc8l8"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(0, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk57y"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(160, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnl7g"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(320, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rffws"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(480, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocmkl"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(640, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmjj8"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(800, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqr4l"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(960, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7h4m"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(1120, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3y4n"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(1280, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4la2"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(1440, 0, 160, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgccc"]
+atlas = ExtResource("12_1bjrm")
+region = Rect2(1600, 0, 160, 59)
+
 [sub_resource type="SpriteFrames" id="9"]
 animations = [{
 "frames": [{
@@ -892,6 +938,44 @@ animations = [{
 "loop": true,
 "name": &"WebWalkOld",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc8l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk57y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnl7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rffws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocmkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmjj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqr4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7h4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3y4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4la2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgccc")
+}],
+"loop": false,
+"name": &"death",
+"speed": 15.0
 }]
 
 [node name="Unhallower" type="Area2D" unique_id=1375769904 groups=["Zombie"]]
@@ -936,7 +1020,7 @@ shape = SubResource("1")
 material = SubResource("44")
 position = Vector2(-1, -12)
 sprite_frames = SubResource("9")
-animation = &"Attack"
+animation = &"death"
 flip_h = true
 script = ExtResource("10")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -945,6 +1029,11 @@ targetGlowColor = Color(1, 0, 0, 1)
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1030967930]
 target_position = Vector2(-15, 0)
 collide_with_areas = true
+
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("13_8vgu3")]
+position = Vector2(26, -24)
+frame = 6
+frame_progress = 1.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
