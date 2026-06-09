@@ -15,9 +15,9 @@ var purple_dimension: Control
 
 func _ready() -> void:
 	super()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	attach_script_to_sway_children()
 	_configure_waves()
-
 
 func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{"Reborn":6,"Severed":2},

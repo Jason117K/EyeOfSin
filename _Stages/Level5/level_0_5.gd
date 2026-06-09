@@ -113,6 +113,7 @@ func finish_ready() -> void:
 	demonSelectionMenu.canSwapScenes = true
 	Global.unHideDemonSelectionMenu()
 	Global.unhide_ui_layer()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	
 func _start_free_play() -> void:
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])

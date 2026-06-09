@@ -24,6 +24,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsj0e"]
 shader = ExtResource("10_ebhwi")
+shader_parameter/shader_time = 0.0
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("19_3v5al")

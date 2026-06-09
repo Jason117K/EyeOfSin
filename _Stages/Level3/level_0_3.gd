@@ -137,6 +137,7 @@ func finish_ready() -> void:
 		_start_free_play()
 		return
 	toolTips.show()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	_setup_tutorial()
 	demonSelectionMenu.canSwapScenes = true

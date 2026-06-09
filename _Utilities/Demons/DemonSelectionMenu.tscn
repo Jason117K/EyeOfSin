@@ -278,7 +278,6 @@ corner_radius_bottom_left = 2
 expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
-expand_margin_bottom = 2.0
 
 [sub_resource type="Shader" id="Shader_lv7j8"]
 code = "shader_type canvas_item;
@@ -619,7 +618,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1")
-card_spring = 1500.0
+card_spring = 5000.0
 card_damp = 35.0
 card_velocity_multiplier = 1.0
 
@@ -641,8 +640,8 @@ script = ExtResource("4_1iw26")
 layout_mode = 0
 offset_left = 85.0
 offset_top = 3.999999
-offset_right = 259.0
-offset_bottom = 59.0
+offset_right = 127.0
+offset_bottom = 61.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
 
@@ -683,6 +682,7 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Crawler" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -1
 
@@ -704,6 +704,7 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="SpinalOcculum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=560354734]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -1
 
@@ -749,6 +750,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Wyrm" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -1
 
@@ -808,10 +810,12 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
 [node name="PortalButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1249797751]
+visible = false
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5

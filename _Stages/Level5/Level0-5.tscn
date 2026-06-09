@@ -89,20 +89,11 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ehl8e")
 new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
-wave2StartTime = 20
-wave3StartTime = 20
+wave2StartTime = 75
+wave3StartTime = 100
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 2.000002
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_pkv84")]
 layout_mode = 1

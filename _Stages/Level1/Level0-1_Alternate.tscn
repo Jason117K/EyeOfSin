@@ -2124,6 +2124,7 @@ script = ExtResource("23_eu4n5")
 
 [node name="Environment" type="Node2D" parent="." unique_id=1697962376]
 process_mode = 1
+z_index = 1
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=794103586]
 

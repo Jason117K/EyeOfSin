@@ -5,6 +5,7 @@ extends LevelTemplate
 
 func _ready() -> void:
 	super()
+	hide_all_demon_buttons_with_exception(["Crawler"])
 	waveManager.wave_started.connect(_on_wave_started)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	#attach_script_to_sway_children()

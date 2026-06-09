@@ -80,7 +80,7 @@ var deselectText := " PRESS [X] TO DESELECT"
 
 @onready var OcculumCost := 50
 
-var canSwapScenes := false
+var canSwapScenes := true
 const MAX_SHADOW_OFFSET := 8.0
 # Thickness of the highlight border (in pixels)
 @export var highlight_border_thickness: int = 1
@@ -259,7 +259,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 			this_preview_sprite.set_meta("original_offset", original_pos)
 			
 			# Add the preview sprite to the container and array 
-			print("Add ", this_preview_sprite , " to preview container")
+			#print("Add ", this_preview_sprite , " to preview container")
 			preview_container.add_child(this_preview_sprite)
 			
 			if this_preview_sprite.name.begins_with("PreviewCard"): #\
@@ -350,10 +350,10 @@ func _process(delta:float) -> void:
 			var force := -card_spring * card_displacement - card_damp * card_osc_velocity
 			card_osc_velocity += force * delta
 			card_displacement += card_osc_velocity * delta
-
-			for card in preview_card_sprites:
-				if card:
-					card.rotation = card_displacement
+#
+			#for card in preview_card_sprites:
+				#if card:
+					#card.rotation = card_displacement
 				#print(sprite, " sprite new global pos is ",sprite.global_position )
 
 func find_animated_sprite(node:Node)->Node:
@@ -545,6 +545,8 @@ func _on_world_swap_button_pressed() -> void:
 	#	print("Can Swap Scenes is ", canSwapScenes)
 		#Global.game_controller.swap_scenes()
 		Global.swap_scenes()
+	else:
+		print("Can Swap Scenes is false")
 
 
 func _on_pip_toggle_button_pressed() -> void:

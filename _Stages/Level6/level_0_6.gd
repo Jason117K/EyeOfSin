@@ -71,7 +71,7 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
 	
-	if debug:
+	if debug :
 		finish_ready()
 	else:
 		Dialogic.start(level_6_start_dialog)

@@ -136,6 +136,7 @@ func finish_ready() -> void:
 	levelSwitcher.visible = false
 	Global.unHideDemonSelectionMenu()
 	Global.unhide_ui_layer()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 
 func _start_free_play() -> void:
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])

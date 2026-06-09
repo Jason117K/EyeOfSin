@@ -441,6 +441,7 @@ volume_db = -80.0
 bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("25_epp3e")]
+position = Vector2(370, 208)
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
