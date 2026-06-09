@@ -5,8 +5,8 @@ extends LevelTemplate
 var amalgam_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
 # Level paths
-var thisLevel := "res://_Stages/Level6/Level0-6.tscn"
-var thisAltLevel := "res://_Stages/Level6/Level0-6_Alternate.tscn"
+var thisLevel :=  "res://_Stages/Level7/Level7.tscn"
+var thisAltLevel := "res://_Stages/Level7/Level7_Alternate.tscn"
 
 var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
@@ -119,7 +119,7 @@ func finish_ready() -> void:
 	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.canSwapScenes = true
 	Global.unhide_ui_layer()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal"])
 
 
 func getIsPurpleDimension()->void:

@@ -3608,15 +3608,6 @@ wave4StartTime = 70
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -167.0
-offset_right = 172.0
-offset_bottom = 137.0
 
 [node name="UILayer" parent="." unique_id=2013472037 instance=ExtResource("20_d40up")]
 layout_mode = 1

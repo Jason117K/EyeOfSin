@@ -19,6 +19,8 @@ var level04Alt := "res://_Stages/Level4/Level0-4_Alternate.tscn"
 var bucketHeadExplained := false
 var maw_pulse_added := false
 
+var spinal_occulum_demo_scene = load("res://_UI/GameDemonstrations/DemonTutorials/spinal_occulum_demo_scene.tscn")
+
 # Demon button container names
 
 # Cached button references
@@ -35,6 +37,10 @@ var maw_pulse_added := false
 #region Tutorial Step Definitions (sequential order — read top to bottom)
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
+		{
+			"name": "EXPLAIN_SPINAL_OCCULUM",
+			"enter": _start_explain_spinal_occulum,
+		},
 		{
 			"name": "FORCE_SELECT_SPINALOCCULUM",
 			"enter": _start_force_select_spinal_occulum,
@@ -79,13 +85,16 @@ func _ready() -> void:
 	Global.reset_swap_ability()
 
 	# Connect signals
-	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
+	#toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
+	if not toolTips.ToolTipHid.is_connected(_on_tooltip_hidden):
+		toolTips.ToolTipHid.connect(_on_tooltip_hidden)
 	demonManager.connect("maw_placed", Callable(self, "_on_maw_placed"))
 	demonSelectionMenu.connect("codex_clicked", Callable(self, "_on_codex_button_pressed"))
 	maw_button.connect("pressed", Callable(self, "_on_maw_button_pressed"))
 	spinal_occulum_button.pressed.connect(_on_spinal_occulum_button_pressed)
 	demonManager.spinalOcculum_placed.connect(_on_spinal_occulum_placed)
-	waveManager.wave_started.connect(_on_wave_started)
+	if not waveManager.wave_started.is_connected(_on_wave_started):
+		waveManager.wave_started.connect(_on_wave_started)
 
 
 	toolTips.hide()
@@ -142,7 +151,7 @@ func finish_ready() -> void:
 	_setup_tutorial()
 	demonSelectionMenu.canSwapScenes = true
 	print("Go To Step Maw Select")
-	go_to_step("FORCE_SELECT_SPINALOCCULUM")
+	go_to_step("EXPLAIN_SPINAL_OCCULUM")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
@@ -170,9 +179,15 @@ func _input(event: InputEvent) -> void:
 
 #region Step Entry Functions (same sequential order as definitions above)
 
+func _start_explain_spinal_occulum() -> void:
+	print("Explain Spinal Occulum Demon")
+	Global.hide_notification_bar()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SPINAL_OCCULUM)
+	toolTips.set_visual_tutorial_visual(spinal_occulum_demo_scene.instantiate(),true,Vector2(0,0))
+
 func _start_force_select_spinal_occulum()->void:
 	print("Starting Force Select")
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_SPINALOCCULUM, false)
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_DEMON, false)
 	hide_all_demon_buttons_with_exception(["SpinalOcculum"])
 	demonSelectionMenu.add_pulsing_button_highlight(spinal_occulum_button)
 	demonSelectionMenu.get_spinal_occulum_button().show()
@@ -287,7 +302,8 @@ func _on_tooltip_hidden() -> void:
 		#"FORCE_SELECT_SPINALOCCULUM":
 			#print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
 			#go_to_step("FORCE_PLACE_SPINAL_OCCULUM")
-			
+		"EXPLAIN_SPINAL_OCCULUM":
+			go_to_step("FORCE_SELECT_SPINALOCCULUM")
 		"FORCE_PLACE_SPINAL_OCCULUM":
 			pass
 		"EXPLAIN_UNHALLOWER":

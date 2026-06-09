@@ -13,7 +13,7 @@ var level05 := "res://_Stages/Level5/Level0-5.tscn"
 var level05Alt := "res://_Stages/Level5/Level0-5_Alternate.tscn"
 
 # Text file paths
-const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
+#const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_SelectWyrm.txt"
 const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
 const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SYN_ABILITY = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability.txt"

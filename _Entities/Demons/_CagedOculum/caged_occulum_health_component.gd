@@ -54,6 +54,7 @@ func receive_buff(bufferName: String) -> void:
 			blood_spawn_timer.one_shot = false
 			blood_spawn_timer.wait_time = blood_spawn_time
 			blood_spawn_timer.timeout.connect(_on_reset_blood_spawn_cooldown)
+			add_child(blood_spawn_timer)
 			blood_spawn_timer.start()
 		"Crawler":
 			pass

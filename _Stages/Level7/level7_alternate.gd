@@ -14,7 +14,7 @@ var purple_dimension: Control
 func _ready() -> void:
 	super()
 	attach_script_to_sway_children()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal"])
 	_configure_waves()
 
 

@@ -15,6 +15,7 @@ var demo_blood_pickup_time := 1.25
 @onready var heal_anim := $HealingAnimSprite
 @onready var demon_manager : Node = get_parent().get_parent().get_node("DemonManager")
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 var blood_spell := preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
 var crawlerBuff := false
@@ -31,6 +32,8 @@ var highest_health :float = -1
 var current_target_health :float = 1
 
 func _ready() -> void:
+	
+	animation_player.animation_finished.connect(alt_free_blood)
 	input_pickable = true
 	aoe.set_collision_mask_value(self.collision_mask,true)
 	#AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
@@ -38,6 +41,8 @@ func _ready() -> void:
 	
 	if crawlerBuff:
 		auto_pickup_timer.wait_time = crawler_buff_auto_pickup_wait_time
+		anim_sprite.animation = "web_beat"
+		self.modulate = Color(1.697, 1.2, 1.001)
 	if wyrmBuff:
 		auto_pickup_timer.wait_time = wyrm_buff_auto_pickup_wait_time
 	
@@ -81,6 +86,10 @@ func _on_Blood_mouse_entered() -> void:
 	animation_player.play("pickup")
 	#queue_free()
 
+func alt_free_blood()->void:
+	queue_free()
+
+
 func free_blood() -> void:
 	if current_zombie_target != null:
 		current_zombie_target.take_damage(false,BloodDamage,false)
@@ -101,7 +110,8 @@ func crawler_blood_pickup() -> void:
 				zombie.this_zombie_died.connect(_on_zombie_died)
 	if nearby_zombies.is_empty() == true:
 		print("NO NEARBY ZOMBIES : ", nearby_zombies)
-		queue_free()
+		animation_player.play("pickup")
+		#queue_free()
 	else:
 		#nearby_zombies = aoe.get_overlapping_areas()
 		#TODO Make Sort By Health

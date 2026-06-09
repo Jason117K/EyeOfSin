@@ -7,7 +7,7 @@ extends Control
 @export var next_level_alt := "res://_Stages/Empty/EmptyScene.tscn"
 @export var current_level := "res://_Stages/Empty/EmptyScene.tscn"
 @export var current_level_alt := "res://_Stages/Empty/EmptyScene.tscn"
-@onready var toolTips := $"../ToolTips"
+#@onready var toolTips := $"../ToolTips"
 @export var level_unlocked := 2
 @onready var outcome_label := $CenterContainer/VBoxContainer/OutcomeLabel
 @onready var continue_button := $CenterContainer/VBoxContainer/Continue

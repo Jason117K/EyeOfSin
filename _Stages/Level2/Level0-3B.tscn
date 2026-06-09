@@ -3615,15 +3615,6 @@ layout_mode = 1
 [node name="ToolTips" parent="." unique_id=1825277382 instance=ExtResource("4_3m502")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -2051.5
-offset_right = 172.0
-offset_bottom = 2021.5
 
 [node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_23sq5")]
 blood_points = 330

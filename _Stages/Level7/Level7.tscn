@@ -45,6 +45,7 @@
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="43_wn5ss"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_u53wd"]
 [ext_resource type="Script" uid="uid://d3yjo4efg0sgs" path="res://_UI/Buttons/button_breathe.gd" id="45_745lj"]
+[ext_resource type="PackedScene" uid="uid://cm6m7oqcnnpok" path="res://_Stages/SpecialTiles/flower_tile.tscn" id="46_4fca4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mvmla"]
 texture = ExtResource("10_tnl3t")
@@ -1302,6 +1303,27 @@ offset_right = 32.0
 offset_bottom = 128.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_0g5v1")
 script = ExtResource("45_745lj")
+
+[node name="FlowerTile" parent="." unique_id=1493116393 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 116)
+
+[node name="FlowerTile2" parent="." unique_id=998494745 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 148)
+
+[node name="FlowerTile3" parent="." unique_id=1382783001 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 180)
+
+[node name="FlowerTile4" parent="." unique_id=828783709 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 212)
+
+[node name="FlowerTile5" parent="." unique_id=1862808082 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 244)
+
+[node name="FlowerTile6" parent="." unique_id=1047588340 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 276)
+
+[node name="FlowerTile7" parent="." unique_id=1767163720 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 308)
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

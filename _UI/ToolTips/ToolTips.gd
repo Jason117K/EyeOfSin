@@ -97,7 +97,11 @@ func set_visual_tutorial_text(newFile: String, show_button: bool = true) -> void
 	else:
 		visualTutorialButton.hide()
 		
-		
+func set_modulate_invis()->void:
+	#print("SET INVIS")
+	self.modulate = Color(1,1,1,0)
+	pass
+			
 	
 		
 func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = true, location : Vector2 = Vector2(0,0)) -> void:
@@ -206,7 +210,7 @@ func start_glow_pulse(button, _panel: Panel, style: StyleBoxFlat, glow_color: Co
 		
 	
 func stop_glow_pulse(button) -> void:
-	print("STOP PULSE")
+	#print("STOP PULSE")
 	if button.has_meta("glow_tween"):
 		var tween: Tween = button.get_meta("glow_tween")
 		if tween and tween.is_valid():

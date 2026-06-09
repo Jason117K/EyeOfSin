@@ -1,5 +1,6 @@
 extends Control
 
+@onready var pause_button := $".."
 var level0_3 := "res://_Stages/Level3/Level0-3.tscn"
 var level0_3Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
 
@@ -21,6 +22,7 @@ func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
 
 func _on_resume_pressed() -> void:
 	print("UNPPAUSE HERE")
+	pause_button.undo_toolTip_change()
 	get_tree().paused = false
 
 func _on_return_to_menu_pressed() -> void:

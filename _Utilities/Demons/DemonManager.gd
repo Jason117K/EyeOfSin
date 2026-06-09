@@ -24,6 +24,7 @@ var crawler_not_placed := true
 var hero_demon: Demon
 
 signal demon_placed(grid_position: Vector2)
+signal occulum_placed(grid_position: Vector2)
 signal crawler_placed(grid_position: Vector2)
 signal spinalOcculum_placed(grid_position: Vector2)
 signal wyrm_placed(grid_position: Vector2)
@@ -118,12 +119,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Place the demon assuming it's within bounds of the level
 			if(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
-					print("Place Demon " , grid_pos)
+					#print("Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_demon(grid_pos)
 			elif(parentName == "Level0-2" || parentName == "Level0-2_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
-					print("Place Demon " , grid_pos)
+					#print("Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_demon(grid_pos)
 				
@@ -331,13 +332,14 @@ func place_demon(grid_pos: Vector2) -> void:
 		camera.screen_shake(1.25,0.7)
 
 		print("Pdemon name is ", demon_instance.name)
+		demon_placed.emit(grid_pos)
 		if "SpinalOcculum" in demon_instance.name:
 			spinalOcculum_placed.emit(grid_pos)
 			print("Spinal Occulum Should Emit")
 		elif "Occulum" in demon_instance.name:
 			#print("Selected Demon Scene is : ", demon_instance.name)
 			#TODO change to occulum_placed
-			demon_placed.emit(grid_pos)
+			occulum_placed.emit(grid_pos)
 			Global.incrementOcculumCount()
 		elif "Crawler" in demon_instance.name:
 			#print("[TUTORIAL] Emit Crawler Placed")

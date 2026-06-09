@@ -1386,7 +1386,7 @@ texture = ExtResource("9_eycat")
 flip_h = true
 
 [node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral" unique_id=311233483]
-position = Vector2(724, 4)
+position = Vector2(657, 17)
 texture = ExtResource("9_eycat")
 flip_h = true
 

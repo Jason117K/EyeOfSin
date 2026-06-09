@@ -164,6 +164,9 @@ func register_wave_manager(new_wavemanager : Node) -> void:
 func get_wave_manager()->Node:
 	return wave_manager
 
+func lose_game()->void:
+	wave_manager._lose()
+
 func register_ui_layer(new_ui_layer:Control) -> void:
 	ui_layers.append(new_ui_layer)
 	#ui_layer.set_health(DemonMan)

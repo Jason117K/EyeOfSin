@@ -65,6 +65,7 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var HiveButton := $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
 @onready var CrawlerButton := $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton
 @onready var HeartButton := $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
+@onready var PortalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 
 @onready var all_demon_buttons := [OcculumButton,SpinalOcculumButton,
 							WyrmButton,MawButton,HiveButton,
@@ -77,6 +78,8 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var wyrmCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmCostLabel
 @onready var mawCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawCostLabel
 @onready var hiveCostLabel   := $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveCostLabel
+
+@onready var alt_portal_texture : Texture2D = preload("res://_Entities/SpecialElementsPortal/PurplePortalCard.png")
 
 @onready var OcculumCost := 50
 
@@ -93,13 +96,9 @@ var doubleSpeed := true
 func _ready() -> void:
 	is_alt = get_parent().isGreenDimension
 	add_child(preview_container)
-	#Future Swap Ability Code
-	#swap_ability_instance = swap_ability.instantiate()
-	##print("swap_ability_instance is : ",  swap_ability_instance)
-	#get_parent().call_deferred("add_child", swap_ability_instance)
-
-	
-	#Global.demon_selection_menu = self
+	if is_alt:
+		PortalButton.texture_normal = alt_portal_texture
+		
 	Global.register_demon_selection_menu(self)
 	Global.resetOcculumCount()
 	Global._load_demon_costs()
@@ -272,6 +271,10 @@ func create_preview(demon_scene:PackedScene) -> void:
 		card_osc_velocity = 0.0
 		card_displacement = 0.0
 	temp_demon.queue_free()
+
+func get_tooltips()->Control:
+	return $"../ToolTips"
+
 	
 # Clears the current preview image 
 func clear_preview() -> void:
@@ -285,7 +288,7 @@ func clear_preview() -> void:
 		#print("Demon Button ia ",demonButton )
 		remove_button_highlight(demonButton)
 	preview_sprites.clear()
-	print("Preview Spries Is ", preview_sprites)
+	#print("Preview Sprites Is ", preview_sprites)
 	preview_card_sprites.clear()
 	#currentDemonLabel.text = ""
 	is_previewing = false
@@ -463,7 +466,7 @@ func start_glow_pulse(button: TextureButton, _panel: Panel, style: StyleBoxFlat,
 
 
 func stop_glow_pulse(button: TextureButton) -> void:
-	print("STOP PULSE")
+	#print("STOP PULSE")
 	if button.has_meta("glow_tween"):
 		var tween: Tween = button.get_meta("glow_tween")
 		if tween and tween.is_valid():

@@ -10,6 +10,12 @@
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="8_x1rij"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="9_komxe"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53ev6"]
+bg_color = Color(0, 0, 0, 0.91764706)
+border_width_top = 30
+border_width_bottom = 30
+border_color = Color(0, 0, 0, 0.91764706)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygqpy"]
 bg_color = Color(0.6, 0, 0, 1)
 border_width_bottom = 4
@@ -76,6 +82,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BasicTutorialBG" type="ColorRect" parent="BasicTutorialMessage" unique_id=233338250]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -114,6 +121,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
 theme_override_font_sizes/normal_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_53ev6")
 text = "Good job, you survived.
 PRESS Y to travel to another dimension.
 Be warned: Both dimensions are under attack!"
@@ -189,7 +197,6 @@ text = "New Enemy : [color=#9b42df] Severed [/color]
 When the mutation in a Reborn grows, their upper is torn apart and the Severed is born.
 
 "
-fit_content = true
 
 [node name="VisualTutorialUnderstoodButton" type="Button" parent="VisualTutorialVBox" unique_id=1590243430]
 layout_mode = 2

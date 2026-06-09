@@ -9,10 +9,7 @@ var dir : int = 1
 
 
 
-@onready var sacrifice_area := $"../SacrificeDetectionArea"
-@onready var lightning_spawn_area := $"../LightningArea"
-@onready var syn_lightning := preload("res://_Stages/Level6/syn_lightning.tscn")
-@onready var lightning_timer := $LightningTimer
+
 
 var epsilon := 0.001
 var slope :float  

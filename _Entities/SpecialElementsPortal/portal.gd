@@ -7,10 +7,11 @@ func _ready() -> void:
 	if self.is_in_group("Green"):
 		Global.register_green_portal(self)
 		self.set_collision_mask_value(5,true)
+		animSprite.animation = "Purple"
 	elif self.is_in_group("Purple"):
 		Global.register_purple_portal(self)
 		self.set_collision_mask_value(4,true)
-		animSprite.animation = "Purple"
+		animSprite.animation = "Green"
 		
  
 

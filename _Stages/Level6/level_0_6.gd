@@ -11,6 +11,8 @@ var thisAltLevel := "res://_Stages/Level6/Level0-6_Alternate.tscn"
 var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
 
+var wyrm_demo_scene = load("res://_UI/GameDemonstrations/DemonTutorials/wyrm_demo_scene.tscn")
+
 # Text file paths
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
 
@@ -23,6 +25,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var wyrm_button :TextureButton = demonSelectionMenu.get_wyrm_button()
 
 
 var gameStarted := false
@@ -31,6 +34,20 @@ var gameStarted := false
 #region Tutorial Step Definitions
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
+		{
+			"name": "EXPLAIN_WYRM",
+			"enter": _start_explain_wyrm,
+		},
+		{
+			"name": "FORCE_SELECT_WYRM",
+			"enter": _start_force_select_wyrm,
+			"input_filter": _filter_block_keyboard,
+		},
+		{
+			"name": "FORCE_PLACE_WYRM",
+			"enter": _start_force_place_wyrm,
+			"input_filter": _filter_block_deselect,
+		},
 		{
 			"name": "GAME_READY",
 			"enter": _start_game_ready,
@@ -67,6 +84,9 @@ func _ready() -> void:
 
 	# Connect signals
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
+	wyrm_button.connect("pressed", Callable(self, "_on_wyrm_button_pressed"))
+	demonManager.connect("demon_placed", Callable(self, "_on_wyrm_placed"))
+	demonManager.demon_placed.connect(_on_wyrm_placed)
 
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
@@ -116,10 +136,13 @@ func finish_ready() -> void:
 	go_to_step("GAME_READY")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
+	toolTips.show()
+	_setup_tutorial()
+	go_to_step("EXPLAIN_WYRM")
 	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.canSwapScenes = true
 	Global.unhide_ui_layer()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
+	hide_all_demon_buttons_with_exception(["Wyrm"])
 
 
 func getIsPurpleDimension()->void:
@@ -128,8 +151,29 @@ func getIsPurpleDimension()->void:
 
 
 #region Step Entry Functions
+func _start_explain_wyrm() -> void:
+	print("Explain Wyrm Demon")
+	Global.hide_notification_bar()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_WYRM)
+	toolTips.set_visual_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
+
+func _start_force_select_wyrm() -> void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_DEMON,false)
+	hide_all_demon_buttons_with_exception(["Wyrm"])
+	demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
+	waveManager.can_start = false
+	demonSelectionMenu.canSwapScenes = false
+
+
+func _start_force_place_wyrm() -> void:
+
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW,false)
+	demonSelectionMenu.stop_glow_pulse(wyrm_button)
+		
 func _start_game_ready() -> void:
-	_show_all_buttons()
+	toolTips.hide()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
+	#_show_all_buttons()
 
 
 func start_game() -> void:
@@ -153,14 +197,28 @@ func _start_explain_amalgam_zombie() -> void:
 
 
 #region Signal Handlers
+
+
 func _on_tooltip_hidden() -> void:
 	#hide_spotlight()
 
 	match get_current_step_name():
+		"EXPLAIN_WYRM":
+			go_to_step("FORCE_SELECT_WYRM")
 		"EXPLAIN_AMALGAM_ZOMBIE":
 			get_tree().paused = false
 
+func _on_wyrm_button_pressed() -> void:
+	if get_current_step_name() == "FORCE_SELECT_WYRM":
+		go_to_step("FORCE_PLACE_WYRM")
 
+func _on_wyrm_placed(grid_pos: Vector2) -> void:
+	print("WYRM PLACED")
+	if get_current_step_name() != "FORCE_PLACE_WYRM":
+		print("Current Step is ", get_current_step_name())
+		return
+	go_to_step("GAME_READY")
+		
 func _on_wave_started(wave_index: int) -> void:
 	if wave_index == 0:
 		go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
@@ -189,3 +247,10 @@ func _show_all_buttons() -> void:
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 #endregion
+
+
+
+func _filter_block_deselect(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_X:
+			get_viewport().set_input_as_handled()

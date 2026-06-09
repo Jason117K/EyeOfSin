@@ -238,7 +238,8 @@ func die() -> void:
 		zombie_death.emit()
 		this_zombie_died.emit(self)
 		if animatedSprite.sprite_frames.has_animation("death"):
-			animatedSprite.animation_finished.connect(hide_on_death)
+			if not animatedSprite.animation_finished.is_connected(hide_on_death):
+				animatedSprite.animation_finished.connect(hide_on_death)
 			animatedSprite.isDead = true
 			animatedSprite.play("death")
 		else:

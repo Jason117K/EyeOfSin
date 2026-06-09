@@ -144,9 +144,9 @@ func get_special_description()->String:
 	
 	
 func _increase_range()->void:
-	print("Old Target Pos ",attack_ray.target_position )
+	#print("Old Target Pos ",attack_ray.target_position )
 	attack_ray.target_position = buffed_range_target_pos
-	print("New Target Pos ",attack_ray.target_position )
+	#print("New Target Pos ",attack_ray.target_position )
 	update_range_preview()
 	pass
 		

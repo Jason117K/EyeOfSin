@@ -16,7 +16,7 @@ var has_pulsed := false
 @export var wave4StartTime := 75
 @export var debug := true
 @export var skip_tutorials := false  # true = skip all tutorial messages; level free-plays
-@onready var toolTips := $"../ToolTips"
+@onready var toolTips := $ToolTips
 @onready var demonManager := $DemonManager
 @onready var demonSelectionMenu := $DemonSelectionMenu
 #@onready var waveManager = $GameLayer/WaveManager
@@ -44,6 +44,11 @@ var level_6_start_dialog := preload("res://_Assets/Dialog/level_06_start_dialog.
 @export var skip_end_dialog := true
 
 # Text file paths
+const TUTORIAL_EXPLAIN_SPINAL_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
+const TUTORIAL_SELECT_DEMON = "res://_Assets/Text/TextFiles/Tutorial_Select_Demon.txt"
+const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt"
+const TUTORIAL_EXPLAIN_WYRM = "res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt"
+const TUTORIAL_EXPLAIN_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
 const TUTORIAL_SELECT_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectCrawler.txt"
 const TUTORIAL_PLACE_CRAWLER = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceCrawler.txt"
 const TUTORIAL_BLOOD_COST = "res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt"
@@ -68,7 +73,7 @@ const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_Sele
 const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
-const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler"] #,"Portal"]
+const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal"]
 const ALL_EXTRA_BUTTONS = []
 
 func demon_clicked()->void:

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://l1w5vga5fve"]
 
-[ext_resource type="Texture2D" uid="uid://bqnfdl80avvi" path="res://_Entities/Demons/Decals/1TileDecal.png" id="1_0udyw"]
+[ext_resource type="Texture2D" uid="uid://bqnfdl80avvi" path="res://_Entities/Demons/Decals/1Tile_Web_Decal.png" id="1_0udyw"]
 [ext_resource type="Script" uid="uid://c8qwna1nhmu33" path="res://_Entities/Demons/WebTile/web_tile_slow.gd" id="2_62gwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8qau"]

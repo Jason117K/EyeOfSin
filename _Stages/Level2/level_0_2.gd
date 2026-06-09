@@ -8,6 +8,7 @@ var occulum_crawler_buff_scene := preload("res://_UI/GameDemonstrations/DemonTut
 var buff_demo_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/blood_buff_demo.tscn")
 var buckethead_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
 
+var occulum_demo_scene = load("res://_UI/GameDemonstrations/DemonTutorials/occulum_demo_scene.tscn")
 # Level paths
 var thisLevel := "res://_Stages/Level2/Level0-2.tscn"
 var thisAltLevel := "res://_Stages/Level2/Level0-2_Alternate.tscn"
@@ -45,6 +46,10 @@ var crawler_placed := false
 #region Tutorial Step Definitions (sequential order — read top to bottom)
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
+		{
+			"name": "EXPLAIN_OCCULUM",
+			"enter": _start_explain_occulum,
+		},
 		{
 			"name": "FORCE_SELECT_OCCULUM",
 			"enter": _start_force_select_occulum,
@@ -109,8 +114,10 @@ func _ready() -> void:
 	call_deferred("_find_green_dimension")
 
 	# Connect signals
-	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	demonManager.connect("demon_placed", Callable(self, "_on_occulum_placed"))
+	if not toolTips.ToolTipHid.is_connected(_on_tooltip_hidden):
+		toolTips.ToolTipHid.connect(_on_tooltip_hidden)
+	#toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
+	demonManager.connect("occulum_placed", Callable(self, "_on_occulum_placed"))
 	demonManager.connect("crawler_placed", Callable(self, "_on_crawler_placed"))
 	demonManager.connect("spinalOcculum_placed", Callable(self, "_on_spinalOcculum_placed"))
 
@@ -155,7 +162,7 @@ func finish_ready() -> void:
 		return
 	toolTips.show()
 	_setup_tutorial()
-	go_to_step("FORCE_SELECT_OCCULUM")
+	go_to_step("EXPLAIN_OCCULUM")
 	levelSwitcher.update_level(level03, level03Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	levelSwitcher.visible = false
@@ -174,6 +181,14 @@ func _input(event: InputEvent) -> void:
 
 
 #region Step Entry Functions (same sequential order as definitions above)
+
+func _start_explain_occulum() -> void:
+	print("Explain Occulum Demon")
+	Global.hide_notification_bar()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_OCCULUM)
+	toolTips.set_visual_tutorial_visual(occulum_demo_scene.instantiate(),true,Vector2(0,0))
+
+
 func _start_force_select_occulum() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_OCCULUM,false)
 
@@ -246,7 +261,6 @@ func _start_wave_1() -> void:
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
-	print("Sussy31")
 	hide_all_demon_buttons_with_exception(["Occulum","Crawler"])
 	#show_only_demon_buttons(["Occulum", "Crawler"])
 	wave_1_active = false
@@ -322,6 +336,8 @@ func _on_tooltip_hidden() -> void:
 	#hide_spotlight()
 
 	match get_current_step_name():
+		"EXPLAIN_OCCULUM":
+			go_to_step("FORCE_SELECT_OCCULUM")
 		"EXPLAIN_BLOOD_BUFFS":
 			get_tree().paused = false
 			print("Advancing Tutorial2 1")

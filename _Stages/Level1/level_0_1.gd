@@ -233,7 +233,7 @@ func _start_explain_basic_zombie() -> void:
 	print("Explain Basic Zombie")
 	Global.hide_notification_bar()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
-	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,-16))
+	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,0))
 
 func _start_explain_health()->void:
 	toolTips.add_pulsing_button_highlight(Global.get_health_panel())
