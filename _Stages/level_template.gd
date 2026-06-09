@@ -257,7 +257,7 @@ func attach_script_to_sway_children(make_green : bool = false) -> void:         
 		child.set_script(script_to_attach)
 		if child.is_inside_tree() and child.has_method("_ready"):
 			child._ready()
-			print(child, " is ready has attached ", script_to_attach)
+			#print(child, " is ready has attached ", script_to_attach)
 			#if make_green:
 				#child.make_green()
 

@@ -213,10 +213,22 @@ func hideDemonSelectionMenu() -> void:
 		#demon_selection_menu.visible = false
 
 func unHideDemonSelectionMenu() -> void:
+	var on_purple = true 
+	if game_controller.on_purple_scene():
+		on_purple = true 
+	else:
+		on_purple = false 
+
 	for menu in demon_selection_menus:
 		if menu != null:
-			menu.visible = true 
-			 
+			menu.set_pause_process_mode()
+			if on_purple:
+				if !menu.is_alt:
+					menu.visible = true 
+			elif !on_purple:
+				if menu.is_alt:
+					menu.visible = true 
+						 
 	#if demon_selection_menu != null:
 		#demon_selection_menu.visible = true
 		
@@ -294,6 +306,9 @@ func register_syn_shield(new_shield:Area2D)->void:
 		connect_syn_shields()
 	else:
 		print(registered_syn_shields, " Cannot connect not enough syn sheilds : ",registered_syn_shields.size() )
+
+
+
 
 func connect_syn_shields()->void:
 	print("Should Start connect shields s")

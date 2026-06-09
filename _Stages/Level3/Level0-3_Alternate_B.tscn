@@ -1245,9 +1245,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8xsco")
+isGreenDimension = true
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_dk2pv")]
 layout_mode = 1
+is_alt = true
 
 [node name="UILayer" parent="." unique_id=1323073708 instance=ExtResource("2_bk44w")]
 layout_mode = 1

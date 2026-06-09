@@ -1,6 +1,5 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://b86x6c8xghsvs"]
 
-[ext_resource type="Texture2D" uid="uid://d3w43txgdyuah" path="res://_Entities/Zombies/_Unhallower/SwordBucketZombie-Sheet.png" id="1_n4cg3"]
 [ext_resource type="Texture2D" uid="uid://d3w43txgdyuah" path="res://_Entities/Zombies/_Unhallower/SwordBucketZombie-Sheet.png" id="1_tx2mr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3avx"]
@@ -40,39 +39,39 @@ atlas = ExtResource("1_tx2mr")
 region = Rect2(512, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx2mr"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(0, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnxqu"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(64, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7t86y"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(128, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bi6fa"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(192, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_22fvt"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(256, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcnon"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(320, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ljob3"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(384, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rnrm"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(448, 0, 64, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75k45"]
-atlas = ExtResource("1_n4cg3")
+atlas = ExtResource("1_tx2mr")
 region = Rect2(512, 0, 64, 33)
 
 [resource]

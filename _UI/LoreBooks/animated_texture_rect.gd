@@ -72,18 +72,20 @@ func _restart_animation() -> void:
 
 func _process(delta: float) -> void:
 	if sprites == null or playing == false:
+		#print("Early Return")
 		return
 
 
 	if sprites.has_animation(current_animation) == false:
 		playing = false
-		#print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
-		#print("Available animations:", sprites.get_animation_names())
+		print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
+		print("Available animations:", sprites.get_animation_names())
 		return
 		
 	get_animation_data(current_animation)
 	frame_delta += (speed_scale * delta)
 	if frame_delta >= refresh_rate/fps:
+		print("Texture should be ",get_next_frame())
 		texture = get_next_frame()
 		frame_delta = 0.0
 
@@ -106,8 +108,8 @@ func get_next_frame():
 	var frame_count := sprites.get_frame_count(current_animation)
 	if frame_index >= frame_count:
 		frame_index = 0
-		if not sprites.get_animation_loop(current_animation):
-			playing = false
+		#if not sprites.get_animation_loop(current_animation):
+			#playing = false
 	get_animation_data(current_animation)
 	return sprites.get_frame_texture(current_animation, frame_index)
 	

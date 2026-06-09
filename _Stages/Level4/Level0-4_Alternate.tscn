@@ -89,6 +89,7 @@ offset_bottom = 150.0
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("4_i0lp8")]
 layout_mode = 1
+is_alt = true
 
 [node name="DemonManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
 blood_points = 500

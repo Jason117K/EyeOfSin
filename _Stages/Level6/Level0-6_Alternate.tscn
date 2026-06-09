@@ -78,6 +78,7 @@ make_green = true
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_wf2ra")]
 layout_mode = 1
+is_alt = true
 
 [node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("2_0v3x8")]
 blood_points = 700

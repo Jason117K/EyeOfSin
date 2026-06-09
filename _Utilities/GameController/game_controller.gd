@@ -316,6 +316,7 @@ func restore_dual_scenes() -> void:
 			set_node_and_children_process_mode_inherit(s)
 	_apply_dimension_visibility()
 	pip.show_pip()
+	Global.unHideDemonSelectionMenu()
 
 	if on_scene_1:
 		current_scene = current_scenes[0]
@@ -356,7 +357,9 @@ func set_node_and_children_process_mode_disabled(root: Node) -> void:
 func set_node_and_children_process_mode_inherit(root: Node) -> void:
 	if root == null:
 		return
-	root.process_mode = Node.PROCESS_MODE_INHERIT
+	if root.process_mode != Node.PROCESS_MODE_ALWAYS:
+		#print("Root ", root , " process mode was ", root.process_mode )
+		root.process_mode = Node.PROCESS_MODE_INHERIT
 	for child in root.get_children():
 		set_node_and_children_process_mode_inherit(child)
 		

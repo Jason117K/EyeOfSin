@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="1_d8001"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="1_votx1"]
 [ext_resource type="Texture2D" uid="uid://bgma2h15leoe1" path="res://_Entities/Zombies/_Severed/ConeHeadZombie.png" id="2_brvkm"]
+[ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="2_v2ssp"]
+[ext_resource type="Script" uid="uid://drb4eskwaylxl" path="res://_Common/ColorChangingScripts/change_color_watcher.gd" id="3_nhj8y"]
 [ext_resource type="Texture2D" uid="uid://c37wmrvd3fs5w" path="res://_Entities/Zombies/_Unhallower/BucketHeadZombie.png" id="3_votx1"]
 [ext_resource type="Texture2D" uid="uid://b711gtmcyisf" path="res://_Entities/Zombies/_Reanimator/SummonerZombie.png" id="4_0r1la"]
+[ext_resource type="SpriteFrames" uid="uid://bykctpfyy664a" path="res://_Entities/Zombies/ImgAnimationResources/Severed.tres" id="4_kh7ht"]
 [ext_resource type="Texture2D" uid="uid://cb8ilmxxu5imp" path="res://_Entities/Zombies/_Wretch/BackUpDancer.png" id="5_13rm7"]
 [ext_resource type="Texture2D" uid="uid://vfleagnw1j4h" path="res://_Entities/Zombies/_Erupter/TickerZombie.png" id="6_nl6qu"]
 [ext_resource type="Texture2D" uid="uid://boehiq0ysreqy" path="res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.png" id="7_0cqbf"]
@@ -45,6 +48,16 @@ color = Color(0.184107, 0.0288, 0.32, 1)
 position = Vector2(370, 164)
 scale = Vector2(12.1563, 8.09375)
 
+[node name="CurrentZombieAnim" type="AnimatedSprite2D" parent="." unique_id=515070860]
+visible = false
+position = Vector2(539, 112)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_v2ssp")
+animation = &"Attack"
+flip_h = true
+script = ExtResource("3_nhj8y")
+hue_shift = -86.0
+
 [node name="CurrentZombieTitle" type="Label" parent="." unique_id=1648733437]
 layout_mode = 0
 offset_left = 395.0
@@ -67,6 +80,7 @@ offset_bottom = 317.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_votx1")
 theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=499311436]
 custom_minimum_size = Vector2(200, 200)
@@ -78,12 +92,17 @@ offset_bottom = 175.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=901773422]
+z_index = 5
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 expand_mode = 5
 stretch_mode = 5
 flip_h = true
 script = ExtResource("10_lexj7")
+sprites = ExtResource("4_kh7ht")
+current_animation = "Attack"
+auto_play = true
+playing = true
 targetGlowColor = Color(0.7882353, 0, 0.050980393, 1)
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1329874444]

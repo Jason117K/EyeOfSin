@@ -48,6 +48,7 @@ var currentDemonLabel : Control
 var currentDemonCostLabel : Label
 var deselectText := " PRESS [X] TO DESELECT"
 
+@onready var pause_button := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/PauseButton
 @onready var preview_container := Node2D.new()
 @onready var panelContainer := $PanelContainer
 @onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
@@ -169,6 +170,11 @@ func _input(event:InputEvent) -> void:
 		if event.keycode == KEY_6:
 			print("6 Key Pressed")
 			_on_HiveButton_pressed()			
+
+func set_pause_process_mode():
+	pause_button.set_pause_process_mode()
+
+
 
 func setPanelContainerWidth(_newWidth: int) -> void:
 	#print("Panel Container Dimensions is ", panelContainer.size)

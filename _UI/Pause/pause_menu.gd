@@ -8,6 +8,10 @@ var options_menu := "res://_UI/Options/OptionsMenu.tscn"
 @export var restartScene: String
 @export var restartSceneAlt: String
 
+func set_pause_process_mode():
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	for child : Control in $CenterContainer.get_children():
+		child.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
 	print(newLevel,newAltLevel, "RESTART LEVELS SET")
