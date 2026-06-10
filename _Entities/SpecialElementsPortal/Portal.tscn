@@ -184,7 +184,7 @@ position = Vector2(0.5, 0)
 shape = SubResource("1")
 
 [node name="LightningSpawn" type="AnimatedSprite2D" parent="." unique_id=243642338]
-position = Vector2(0, -51)
+position = Vector2(2, -44)
 sprite_frames = SubResource("SpriteFrames_vyedq")
 autoplay = "default"
 speed_scale = 5.0
