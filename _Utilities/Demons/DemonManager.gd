@@ -6,7 +6,7 @@ extends Node2D
 @onready var selection_menu: Control = get_parent().get_node("DemonSelectionMenu")
 @onready var notification_bar: MarginContainer = Global.notification_bar
 @onready var parentName: String = get_parent().get_name()
-
+@onready var grid_manager : Node2D = $"../GameLayer/GridManager"
 @export var blood_points: int = 200 # Holds how many blood points we have currently
 
 @onready var camera : Camera2D = get_parent().get_node("Camera2D")
@@ -240,6 +240,8 @@ func place_demon(grid_pos: Vector2) -> void:
 	if(grid_pos.x<769 && grid_pos.y<336 && grid_pos.y > 48):
 		pass
 	else:
+		return 
+	if grid_manager.is_blocked(grid_pos):
 		return 
 	
 	# Dynamically get the selected demon	

@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var tilemapLayer := $TileMapLayer
+var block_layer : TileMapLayer
 
 # Define the grid dimensions for your game
 const GRID_COLUMNS = 24  # Adjust based on your game's design
@@ -10,9 +11,28 @@ const GRID_ROWS = 13      # Adjust based on your game's design
 
 func _ready() -> void:
 	tilemapLayer._ready()
+	for tilemap_layer_child in self.get_children():
+		if "Block" in tilemap_layer_child.name:
+			block_layer = tilemap_layer_child
+
 	if make_green:
 		tilemapLayer.make_green = true
 		tilemapLayer._setup_shader()
+		block_layer._setup_shader()
+		
+	
+
+func is_blocked(grid_pos:Vector2)->bool:
+	if block_layer != null:
+		grid_pos = block_layer.local_to_map(block_layer.to_local(grid_pos))
+		var data: TileData = block_layer.get_cell_tile_data(grid_pos)
+		if data == null:
+			return false 
+		print("Return ", data.get_custom_data("block"))
+		return data.get_custom_data("block")	
+		
+	else:
+		return false 
 
 # Function to set tiles in a given range of rows
 func set_tiles_for_rows(row_start: int, row_end: int, tile_id: int) -> void:

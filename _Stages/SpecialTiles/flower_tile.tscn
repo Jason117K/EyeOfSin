@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://iqrtu5hm5h23" path="res://_Stages/SpecialTiles/BoneFlowerNoCross_Tiles.png" id="1_0kgym"]
 [ext_resource type="Script" uid="uid://i0jt4cqqcchb" path="res://_Stages/SpecialTiles/flower_tile.gd" id="1_wd00r"]
+[ext_resource type="Texture2D" uid="uid://bakemau4w5mbf" path="res://_Stages/SpecialTiles/BoneFlowerNoCross_Green_Tiles.png" id="3_qt07d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd00r"]
 size = Vector2(52, 11)
@@ -9,10 +10,15 @@ size = Vector2(52, 11)
 [node name="FlowerTile" type="Area2D" unique_id=1493116393]
 script = ExtResource("1_wd00r")
 
-[node name="Bones" type="Sprite2D" parent="." unique_id=1046460900]
+[node name="PurpleBones" type="Sprite2D" parent="." unique_id=1046460900]
+visible = false
 texture = ExtResource("1_0kgym")
 
+[node name="GreenBones" type="Sprite2D" parent="." unique_id=285025848]
+texture = ExtResource("3_qt07d")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185464124]
+visible = false
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_wd00r")
 

@@ -141,8 +141,12 @@ texture_region_size = Vector2i(32, 32)
 0:6/0 = 0
 1:6/0 = 0
 2:6/0 = 0
+3:6/next_alternative_id = 2
 3:6/0 = 0
+3:6/1 = 1
+4:6/next_alternative_id = 2
 4:6/0 = 0
+4:6/1 = 1
 5:6/0 = 0
 6:6/0 = 0
 7:6/0 = 0
@@ -826,6 +830,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="2"]
 tile_size = Vector2i(32, 32)
+custom_data_layer_0/name = "summon_blocked"
+custom_data_layer_0/type = 1
 sources/41 = SubResource("TileSetAtlasSource_as807")
 sources/63 = SubResource("TileSetAtlasSource_10lun")
 sources/64 = SubResource("TileSetAtlasSource_hokla")
