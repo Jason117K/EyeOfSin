@@ -38,12 +38,12 @@ extends Demon
 
 # --- Component References ---
 @onready var sprite :Node= get_node(sprite_path) if sprite_path else null
-@onready var laserShootComp1 := $Worm1/LaserShootComponent
-@onready var laserShootComp2 := $Worm2/LaserShootComponent
+@onready var laserShootComp1 := $LaserShootComponent
+@onready var laserShootComp2 := $LaserShootComponent2
 @onready var projectile_shoot_component := $ProjectileShootComponent
 @onready var attack_ray := $DMG_RayCast2D
 @onready var shootTimer := $ShootTimer
-@onready var shell_sprite := $Egg
+
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 
@@ -83,6 +83,7 @@ func _ready() -> void:
 		
 	var scale_x = laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
 	laserShootComp2.max_length =  attack_ray.target_position.x / scale_x
+	laserShootComp1.max_length =  attack_ray.target_position.x / scale_x
 
 	# --- Timer config ---
 	shootTimer.wait_time = laser_cooldown
@@ -134,23 +135,20 @@ func receive_buff(demon) -> void:
 		super(demonName)
 		match demonName:
 			"Occulum":
-				shell_sprite.change_form("Occulum")
 				projectile_shoot_component.isOcculumBuffed = true
 				laserShootComp2.occulumBuff()
+				laserShootComp1.isDisabled = true 
+				
 			"Crawler":
-				shell_sprite.change_form("Crawler")
 				projectile_shoot_component.isCrawlerBuffed = true
 			"SpinalOcculum":
-				shell_sprite.change_form("SpinalOcculum")
 				projectile_shoot_component.wyrm_bleed_buff()
 			"Wyrm":
-				shell_sprite.change_form("Wyrm")
+				pass
 			"Hive":
-				shell_sprite.change_form("Wasp")
 				attack_ray.target_position = attack_ray.target_position + Vector2(100, 0)
 				projectile_shoot_component.hiveSpawnDroneBuffed = true
 			"Maw":
-				shell_sprite.change_form("Maw")
 				laserShootComp1.isDisabled = false
 				laserShootComp1._ready()
 				$ShellBack.visible = false

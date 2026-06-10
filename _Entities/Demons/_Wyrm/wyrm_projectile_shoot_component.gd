@@ -27,10 +27,11 @@ var projectile_damage := 20
 var bleed_damage_increase := 2
 
 func _ready() -> void:
-	laser_shoot_comp_1 = get_node_or_null("../Worm1/LaserShootComponent")
-	laser_shoot_comp_2 = get_node_or_null("../Worm2/LaserShootComponent")
-	shootPosition1 = get_node_or_null("../Worm1/LaserShootComponent")
-	shootPosition2 = get_node_or_null("../Worm2/LaserShootComponent")
+
+	laser_shoot_comp_1 = get_node_or_null("../LaserShootComponent")
+	laser_shoot_comp_2 = get_node_or_null("../LaserShootComponent2")
+	shootPosition1 = get_node_or_null("../LaserShootComponent")
+	shootPosition2 = get_node_or_null("../LaserShootComponent")
 	
 	
 	
@@ -58,16 +59,24 @@ func _ready() -> void:
 
 func fire_laser() -> void:
 	if canAttack:
-		laser_shoot_comp_1.fire()
-		laser_shoot_comp_2.fire()
-		#print("Shoot that proj")
-		shoot_projectile()
-		
+		if parent_demon.spawn_done:
+			animSpriteComp.animation = animSpriteComp.currentAttackAnim
+			animSpriteComp.play()
 
+	
 	else:
 		pass
 		#print("Cannot Attack")
-	
+
+func _on_animated_sprite_component_frame_changed() -> void:
+	if animSpriteComp != null:
+		if "attack" in animSpriteComp.animation:
+			if animSpriteComp.frame == 4:
+				laser_shoot_comp_1.fire()
+				laser_shoot_comp_2.fire()
+				print("Shoot that proj")
+				shoot_projectile()
+		
 		
 func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	projectile_to_buff.bleed = true

@@ -63,7 +63,7 @@ func _find_demon_ancestor() -> Demon:
 	return null
 
 func _ready() -> void:
-	blood_spit_fx =get_node_or_null("../../Worm2/BloodSpitFX")
+	blood_spit_fx =get_node_or_null("../../BloodSpitFX")
 	attack_ray =get_node_or_null("../../DMG_RayCast2D")
 	projectile_shoot_component = get_node_or_null("../../ProjectileShootComponent")
 	
@@ -88,10 +88,11 @@ func _ready() -> void:
 		return
 	og_cooldown = cooldown
 	og_damage = damage
-	self.visible = false
+	#self.visible = false
 	# Set up Line2D
 	add_child(line2D)
-	#line2D.visible = false
+	line2D.visible = false
+	print("Line2D is ", line2D)
 	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
 	line2D.default_color = laser_color
 	line2D.width = laser_width
@@ -100,14 +101,13 @@ func _ready() -> void:
 	line2D.z_index = 1
 	
 	# Set up Area2D and CollisionShape2D
-	add_child(laser_area)
-	laser_area.add_child(collision_shape)
-	laser_area.collision_mask = 2
-	var shape := RectangleShape2D.new()
-	collision_shape.shape = shape
+	#add_child(laser_area)
+	#laser_area.add_child(collision_shape)
+	#laser_area.collision_mask = 2
+	#var shape := RectangleShape2D.new()
+	#collision_shape.shape = shape
 	
-	
-	# Set up debug marker
+	#Set up debug marker
 	#var debug_marker = ColorRect.new()
 	#add_child(debug_marker)
 	#debug_marker.size = Vector2(5, 5)
@@ -126,6 +126,7 @@ func _process(delta: float) -> void:
 		return
 	if is_firing:
 		self.visible = true
+		#print("Is Firing, Current Length is ", current_length, " max length is ", max_length)
 		if current_length < max_length:
 			current_length += extension_speed * delta
 			current_length = min(current_length, max_length)
@@ -143,7 +144,7 @@ func _process_collision(area: Area2D) -> void:
 	if isDisabled:
 		return
 	if "Zombie" in area.name and not hit_enemies.has(area):
-		print("Damaging via signal: ", area.name)
+		#print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
 
 
@@ -152,8 +153,12 @@ func _process_collision(area: Area2D) -> void:
 func fire() -> void:
 	if isDisabled:
 		return
+	else:
+		pass
+		#print("Not Disabled are we Firing?")
 	if !is_firing:
-		#print("Not Firing No Return Cos Diabled Do Sutff")
+		line2D.visible=true
+	#	print("Not Firing No Return Cos Diabled Do Sutff")
 		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 		is_firing = true
 		current_length = 0.0
@@ -165,6 +170,7 @@ func fire() -> void:
 		if blood_spit_fx != null:
 			blood_spit_fx.play("blood_spit")
 	else:
+	#	print("We are not firing")
 		pass
 
 # Update the laser points specifically, also taking into account buffs
@@ -204,10 +210,10 @@ func _update_collision_shape() -> void:
 	if isDisabled:
 		return
 	# Update collision shape to follow the laser path
-	var rect_shape := collision_shape.shape as RectangleShape2D
-	rect_shape.extents = Vector2(current_length / 2, laser_width ) #/2
-	collision_shape.position = Vector2(current_length / 2, 0) 
-
+	#var rect_shape := collision_shape.shape as RectangleShape2D
+	#rect_shape.extents = Vector2(current_length / 2, laser_width ) #/2
+	#collision_shape.position = Vector2(current_length / 2, 0) 
+#
 
 
 

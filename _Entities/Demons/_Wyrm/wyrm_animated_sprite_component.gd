@@ -5,13 +5,14 @@ signal frame_changed_signal(animation_name: String, frame_index: int)
 @onready var worm2 := $"../Worm2"
 @onready var shell_back := $"../ShellBack"
 @onready var egg := $"../Egg"
-func receive_buff(new_form: String) -> void:
-	var parent := get_parent()
-
-	if parent.has_method("adjust_position"):
-		parent.adjust_position(new_form)
-	print("APPLYING BUFF FROM ",new_form )
-	pass
+func receive_buff(demonName: String) -> void:
+	super(demonName)
+	#var parent := get_parent()
+#
+	#if parent.has_method("adjust_position"):
+		#parent.adjust_position(new_form)
+	#print("APPLYING BUFF FROM ",new_form )
+	#pass
 
 func spawn_done() -> void:
 	print("Wyrm Spawn Done Called ")

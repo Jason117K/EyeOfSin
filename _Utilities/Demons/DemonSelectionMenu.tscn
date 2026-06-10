@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://_Assets/Misc/CODEX_CARD.png" id="14_04elx"]
 [ext_resource type="Texture2D" uid="uid://chfuimepfak3s" path="res://_Assets/UI/DemonCard_FastForward.png" id="15_e3ig8"]
 [ext_resource type="Texture2D" uid="uid://dcmst4lacr57c" path="res://_Entities/SpecialElementsPortal/GreenPortalCard.png" id="15_wixct"]
+[ext_resource type="Script" uid="uid://b5aslnivgv4kb" path="res://_Utilities/Demons/portal_progress_bar.gd" id="16_c3fhf"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="16_dur3e"]
 [ext_resource type="Script" uid="uid://cho0s6lvv3v5h" path="res://_Utilities/Demons/sprite_2d.gd" id="19_nabk1"]
 
@@ -570,6 +571,18 @@ shader_parameter/rotation = 0.0
 shader_parameter/rect_size = Vector2(42, 42)
 shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wixct"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypqm0"]
 bg_color = Color(0, 0, 0, 0.79607844)
 corner_radius_top_left = 4
@@ -810,12 +823,10 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
-visible = false
 layout_mode = 2
-theme_override_constants/separation = -5
+theme_override_constants/separation = 4
 
 [node name="PortalButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1249797751]
-visible = false
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -823,6 +834,21 @@ size_flags_vertical = 5
 texture_normal = ExtResource("15_wixct")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="PortalProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=621438390]
+custom_minimum_size = Vector2(38, 7)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("6_wixct")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/fill = SubResource("StyleBoxFlat_wixct")
+value = 100.0
+show_percentage = false
+script = ExtResource("16_c3fhf")
+
+[node name="RechargeTimer" type="Timer" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalProgressBar" unique_id=92619545]
+one_shot = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=797355327]
 position = Vector2(103, 2)

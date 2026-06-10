@@ -96,6 +96,10 @@ var syn_ability_manager_scene := preload("res://_Entities/SynAbility/syn_ability
 
 var syn_ability_manager
 
+var portal_progress_bar : ProgressBar
+
+var portal_progress_bar_1 : ProgressBar 
+
 @onready var blood_rain_icon := preload("res://_Entities/SwapAbilities/Blood_Rain_Swap_Card.png")
 @onready var lucretia_grasp_icon := preload("res://_Entities/SwapAbilities/Lucretia_Grasp_Swap_Card.png")
 @onready var lightning_storm_icon :=  preload("res://_Entities/SwapAbilities/Lightning_Storm_Swap_Card.png")
@@ -147,6 +151,14 @@ func _load_demon_costs() -> void:
 		var instance: Node = scene.instantiate()
 		demon_costs[demon_name] = instance.cost  # each demon script has an @export var cost: int
 		instance.queue_free()
+
+
+func free_portals()->void:
+	purple_portal.queue_free()
+	green_portal.queue_free()
+	portal_progress_bar.recharge()
+	portal_progress_bar_1.recharge()
+
 
 func get_demon_cost(demon_name: String) -> int:
 	if demon_costs == null:
@@ -494,15 +506,32 @@ func get_game_controller() -> GameController:
 	return game_controller
 	
 func register_green_portal(new_green_portal : Node) -> void:
-	if purple_portal == null:
-		new_green_portal.add_to_group("EntrancePortal")
 	green_portal = new_green_portal
+	if purple_portal == null:
+		green_portal.add_to_group("EntrancePortal")
+	else:
+		purple_portal.start_cooldown()
+		green_portal.start_cooldown()
+	
+func register_portal_progess_bar(new_progress_bar : ProgressBar)->void:
+	if portal_progress_bar_1 == null:
+		portal_progress_bar_1 = new_progress_bar
+	else:
+		portal_progress_bar = new_progress_bar
 
+func get_portal_progress_bar(requesting_portal : Area2D)->ProgressBar:
+	if requesting_portal.is_in_group("Green"):
+		return portal_progress_bar
+	else:
+		return portal_progress_bar_1
 
 func register_purple_portal(new_purple_portal : Node) -> void:
-	if green_portal == null:
-		new_purple_portal.add_to_group("EntrancePortal")
 	purple_portal = new_purple_portal
+	if green_portal == null:
+		purple_portal.add_to_group("EntrancePortal")
+	else:
+		purple_portal.start_cooldown()
+		green_portal.start_cooldown()
 	
 func get_purple_portal_location() -> Vector2:
 	if purple_portal == null:

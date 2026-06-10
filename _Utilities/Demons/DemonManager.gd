@@ -133,7 +133,10 @@ func _unhandled_input(event: InputEvent) -> void:
 					#print(get_parent(), "QQOtro Place Demon " , grid_pos)
 					var temp_check_instance =  get_selected_demon().instantiate()
 					#if temp_check_instance.is_hero == false:
-					Global.game_controller.place_empty_in_alt_scene(grid_pos)
+					if temp_check_instance.is_in_group("Portal"):
+						pass
+					else:
+						Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					temp_check_instance.queue_free()
 					place_demon(grid_pos)
 

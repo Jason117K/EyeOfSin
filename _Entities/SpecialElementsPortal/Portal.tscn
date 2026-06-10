@@ -200,6 +200,9 @@ sprite_frames = SubResource("SpriteFrames_a3bgh")
 animation = &"Purple"
 autoplay = "Green"
 
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1052551111]
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
