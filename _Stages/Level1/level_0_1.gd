@@ -385,7 +385,7 @@ func _physics_process(_delta: float) -> void:
 func setup_demon_selection_menu() -> void:
 	print("Demon Selection Menu is ", demonSelectionMenu)
 	demonSelectionMenu.get_world_swap_button().visible = false
-	demonSelectionMenu.get_remove_demon_button().visible = false
+	#demonSelectionMenu.get_remove_demon_button().visible = false
 	demonSelectionMenu.get_codex_button().visible = false
 	#TODO Should We Adjust Size Here?
 	demonSelectionMenu.get_panel_container().size.x = 71

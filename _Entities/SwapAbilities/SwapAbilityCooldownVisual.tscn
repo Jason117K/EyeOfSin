@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dlik5m2lq5kk" path="res://_Entities/SwapAbilities/swap_ability_cooldown_visual.gd" id="1_y6lur"]
 [ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="2_y6lur"]
 [ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="3_yn551"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="4_yn551"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_yrl2m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bupko"]
@@ -12,24 +13,28 @@ shader_parameter/fill_amount = 0.0
 shader_parameter/fill_color = Color(1, 0, 0, 1)
 shader_parameter/empty_color = Color(0, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyc53"]
-bg_color = Color(1, 0, 0, 0.047058824)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrl2m"]
+texture = ExtResource("4_yn551")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc01u"]
+bg_color = Color(0.76, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.36078432, 0, 0, 1)
+border_color = Color(0.3, 0, 0, 1)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc01u"]
-bg_color = Color(0.76, 0, 0, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="Control" type="Control" unique_id=6644879]
 z_index = 2
@@ -66,24 +71,33 @@ icon = ExtResource("2_y6lur")
 [node name="SwapAbilityCooldownPanel" type="PanelContainer" parent="." unique_id=2041808164]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 326.0
+offset_top = 319.0
 offset_right = 207.0
-offset_bottom = 346.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vyc53")
+offset_bottom = 349.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_yrl2m")
 
-[node name="SwapAbilityProgressBar" type="ProgressBar" parent="SwapAbilityCooldownPanel" unique_id=1153831516]
-custom_minimum_size = Vector2(196, 16)
+[node name="MarginContainer" type="MarginContainer" parent="SwapAbilityCooldownPanel" unique_id=814662818]
 layout_mode = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -5
+theme_override_constants/margin_bottom = -5
+
+[node name="SwapAbilityProgressBar" type="ProgressBar" parent="SwapAbilityCooldownPanel/MarginContainer" unique_id=1153831516]
+custom_minimum_size = Vector2(186, 16)
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_yn551")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/fill = SubResource("StyleBoxFlat_dc01u")
+value = 100.0
 show_percentage = false
 
-[node name="SwapAbilityLabel" type="Label" parent="SwapAbilityCooldownPanel/SwapAbilityProgressBar" unique_id=178262788]
+[node name="SwapAbilityLabel" type="Label" parent="SwapAbilityCooldownPanel/MarginContainer/SwapAbilityProgressBar" unique_id=178262788]
 layout_mode = 0
 offset_top = -2.0
-offset_right = 200.0
+offset_right = 186.0
 offset_bottom = 18.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_yrl2m")

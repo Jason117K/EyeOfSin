@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="2_c0y8p"]
 [ext_resource type="Texture2D" uid="uid://c3p8ugved3erb" path="res://_Assets/Maps/EyeOfSynTempMap1.png" id="2_hrgqr"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="3_lwmcq"]
+[ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="4_d8cb5"]
 [ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://_Assets/UI/ButtonSprite.png" id="5_g2cgg"]
+[ext_resource type="StyleBox" uid="uid://bcfbsgfdihfxu" path="res://_UI/bordered_button_hover.tres" id="5_xu741"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="6_m5ufq"]
 [ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://_Assets/UI/ButtonSpriteHover.png" id="6_r3hyu"]
 [ext_resource type="StyleBox" uid="uid://bi4n5o0yaborm" path="res://_UI/Buttons/button_normal.tres" id="7_nj8lg"]
 [ext_resource type="Texture2D" uid="uid://bb6yquhrpa8c1" path="res://_UI/PurpleNoClouds_Earth-Sheet.png" id="7_yuujs"]
@@ -14,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dgv2mrtncmvv4" path="res://_Entities/SynAbility/SynAbility_1_CARD.png" id="11_l1rr8"]
 [ext_resource type="Texture2D" uid="uid://brkb10lkjyant" path="res://_Entities/SwapAbilities/Blood_Rain_Swap_Card.png" id="12_a0ark"]
 [ext_resource type="Script" uid="uid://bi2qj4g5ic2tq" path="res://_Stages/LevelSelect/disable_dialog.gd" id="14_4uoky"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="15_p8lcx"]
 [ext_resource type="Script" uid="uid://bn180f0hyc5ns" path="res://_Stages/LevelSelect/disable_tutorials.gd" id="15_uqscy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw0uq"]
@@ -455,17 +459,12 @@ point_count = 5
 resource_local_to_scene = true
 script = ExtResource("10_uqscy")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibkfb"]
-bg_color = Color(3.7230366e-05, 3.7230377e-05, 3.7230333e-05, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.5, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ld73"]
+texture = ExtResource("15_p8lcx")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uoky"]
 bg_color = Color(0.6, 0.6, 0.6, 0.1254902)
@@ -517,18 +516,16 @@ visible = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1171085700]
 
-[node name="Level1Button" type="TextureButton" parent="." unique_id=1616412574]
+[node name="Level1Button" type="Button" parent="." unique_id=981035269]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 77.0
 offset_top = 56.999985
-offset_right = 1077.0
-offset_bottom = 257.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_right = 177.0
+offset_bottom = 80.999985
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
 [node name="Level1Label" type="Label" parent="Level1Button" unique_id=154748707]
 layout_mode = 1
@@ -537,195 +534,190 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
+theme_override_fonts/font = ExtResource("6_m5ufq")
 text = "LEVEL 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level2Button" type="TextureButton" parent="." unique_id=1885615814]
+[node name="Level2Button" type="Button" parent="." unique_id=1115962743]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 241.0
 offset_top = 115.00001
-offset_right = 1241.0
-offset_bottom = 315.00003
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_right = 249.0
+offset_bottom = 123.00001
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
-[node name="Level2Label" type="Label" parent="Level2Button" unique_id=1142038373]
+[node name="Level2Label" type="Label" parent="Level2Button" unique_id=2127515294]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
+theme_override_fonts/font = ExtResource("6_m5ufq")
 text = "LEVEL 2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level3Button" type="TextureButton" parent="." unique_id=94327617]
+[node name="Level3Button" type="Button" parent="." unique_id=822309069]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 87.0
 offset_top = 168.99998
-offset_right = 1087.0
-offset_bottom = 369.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_right = 95.0
+offset_bottom = 176.99998
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
-[node name="Level3Label" type="Label" parent="Level3Button" unique_id=1910370097]
+[node name="Level3Label" type="Label" parent="Level3Button" unique_id=1620035499]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
+theme_override_fonts/font = ExtResource("6_m5ufq")
 text = "LEVEL 3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level4Button" type="TextureButton" parent="." unique_id=1918870513]
+[node name="Level4Button" type="Button" parent="." unique_id=1836283024]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 103.0
 offset_top = 227.99998
-offset_right = 1103.0
-offset_bottom = 428.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_right = 111.0
+offset_bottom = 235.99998
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
-[node name="Level4Label" type="Label" parent="Level4Button" unique_id=1343318947]
+[node name="Level4Label" type="Label" parent="Level4Button" unique_id=169349368]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
+theme_override_fonts/font = ExtResource("6_m5ufq")
 text = "LEVEL 4"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level5Button" type="TextureButton" parent="." unique_id=1003410823]
+[node name="Level5Button" type="Button" parent="." unique_id=1406014638]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 102.0
 offset_top = 288.0
-offset_right = 1102.0
-offset_bottom = 488.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_right = 110.0
+offset_bottom = 296.0
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
-[node name="Level5Label" type="Label" parent="Level5Button" unique_id=483188141]
+[node name="Level5Label" type="Label" parent="Level5Button" unique_id=2086454672]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
+theme_override_fonts/font = ExtResource("6_m5ufq")
 text = "LEVEL 5"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level6Button" type="TextureButton" parent="." unique_id=1918536202]
+[node name="Level6Button" type="Button" parent="." unique_id=2110323862]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 304.0
 offset_top = 216.99998
-offset_right = 1304.0
-offset_bottom = 417.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_right = 312.0
+offset_bottom = 224.99998
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
-[node name="Level6Label" type="Label" parent="Level6Button" unique_id=1523342138]
+[node name="Level6Label" type="Label" parent="Level6Button" unique_id=572830333]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
+theme_override_fonts/font = ExtResource("6_m5ufq")
 text = "LEVEL 6"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level7Button" type="TextureButton" parent="." unique_id=1980754854]
+[node name="Level7Button" type="Button" parent="." unique_id=729656740]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
 offset_left = 295.0
 offset_top = 288.0
-offset_right = 1295.0
-offset_bottom = 488.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_right = 303.0
+offset_bottom = 296.0
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
-[node name="Level7Label" type="Label" parent="Level7Button" unique_id=1755343074]
+[node name="Level7Label" type="Label" parent="Level7Button" unique_id=2110310167]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
+theme_override_fonts/font = ExtResource("6_m5ufq")
 text = "LEVEL 7"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TestingGusButton0" type="TextureButton" parent="." unique_id=956304434]
 visible = false
@@ -1157,7 +1149,7 @@ offset_left = 531.0
 offset_top = 12.0
 offset_right = 714.0
 offset_bottom = 326.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ibkfb")
+theme_override_styles/panel = SubResource("StyleBoxTexture_6ld73")
 
 [node name="MarginContainer" type="MarginContainer" parent="SorceryPanel" unique_id=619645048]
 layout_mode = 2

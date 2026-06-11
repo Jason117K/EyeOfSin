@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dcmst4lacr57c" path="res://_Entities/SpecialElementsPortal/GreenPortalCard.png" id="15_wixct"]
 [ext_resource type="Script" uid="uid://b5aslnivgv4kb" path="res://_Utilities/Demons/portal_progress_bar.gd" id="16_c3fhf"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="16_dur3e"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="17_jfwei"]
 [ext_resource type="Script" uid="uid://cho0s6lvv3v5h" path="res://_Utilities/Demons/sprite_2d.gd" id="19_nabk1"]
 
 [sub_resource type="Shader" id="Shader_q10kc"]
@@ -583,16 +584,12 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypqm0"]
-bg_color = Color(0, 0, 0, 0.79607844)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75hld"]
+texture = ExtResource("17_jfwei")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l4ncj"]
 shader = ExtResource("2_bcru6")
@@ -651,9 +648,9 @@ script = ExtResource("4_1iw26")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 layout_mode = 0
-offset_left = 85.0
+offset_left = 88.0
 offset_top = 3.999999
-offset_right = 127.0
+offset_right = 174.0
 offset_bottom = 61.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
@@ -853,30 +850,39 @@ one_shot = true
 [node name="Node2D" type="Node2D" parent="." unique_id=797355327]
 position = Vector2(103, 2)
 
-[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1919938362]
+[node name="UtilityPanelContainer" type="PanelContainer" parent="." unique_id=1919938362]
+self_modulate = Color(0.63, 0.63, 0.63, 1)
 layout_mode = 0
-offset_left = 681.0
-offset_top = 5.0
-offset_right = 734.0
-offset_bottom = 58.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ypqm0")
+offset_left = 677.0
+offset_top = 2.0
+offset_right = 744.0
+offset_bottom = 69.0
+scale = Vector2(0.9, 0.9)
+theme_override_styles/panel = SubResource("StyleBoxTexture_75hld")
 
-[node name="UtilityVBoxContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=69711182]
+[node name="MarginContainer" type="MarginContainer" parent="UtilityPanelContainer" unique_id=202259233]
+layout_mode = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -5
+theme_override_constants/margin_bottom = -5
+
+[node name="UtilityVBoxContainer" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer" unique_id=69711182]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/UtilityVBoxContainer" unique_id=1070210295]
+[node name="HBoxContainer" type="HBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer" unique_id=1070210295]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="RemoveDemon" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer" unique_id=1419068643]
+[node name="RemoveDemon" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer" unique_id=1419068643]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="RemoveDemonButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon" unique_id=311546539]
+[node name="RemoveDemonButton" type="TextureButton" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/RemoveDemon" unique_id=311546539]
 visible = false
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
@@ -886,18 +892,18 @@ texture_normal = ExtResource("12_yqvs4")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="RemoveDemonLabel" type="Label" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon" unique_id=77291499]
+[node name="RemoveDemonLabel" type="Label" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/RemoveDemon" unique_id=77291499]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_yqvs4")
 text = "50"
 horizontal_alignment = 1
 
-[node name="WorldSwap" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer" unique_id=767161417]
+[node name="WorldSwap" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer" unique_id=767161417]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="WorldSwapButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer/WorldSwap" unique_id=1500723408]
+[node name="WorldSwapButton" type="TextureButton" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/WorldSwap" unique_id=1500723408]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -906,18 +912,18 @@ texture_normal = ExtResource("13_vvged")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PauseButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer" unique_id=1098734131 instance=ExtResource("16_dur3e")]
+[node name="PauseButton" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer" unique_id=1098734131 instance=ExtResource("16_dur3e")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer2/UtilityVBoxContainer" unique_id=1782143364]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer" unique_id=1782143364]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="Codex2" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2" unique_id=1905932608]
+[node name="Codex2" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2" unique_id=1905932608]
 layout_mode = 2
 
-[node name="CodexButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/Codex2" unique_id=919482886]
+[node name="CodexButton" type="TextureButton" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/Codex2" unique_id=919482886]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -926,10 +932,10 @@ texture_normal = ExtResource("14_04elx")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="FastForward" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2" unique_id=2101431720]
+[node name="FastForward" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2" unique_id=2101431720]
 layout_mode = 2
 
-[node name="FastForwardButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/FastForward" unique_id=167402646]
+[node name="FastForwardButton" type="TextureButton" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/FastForward" unique_id=167402646]
 custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -938,11 +944,11 @@ texture_normal = ExtResource("15_e3ig8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PipToggle" type="VBoxContainer" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2" unique_id=423146321]
+[node name="PipToggle" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2" unique_id=423146321]
 visible = false
 layout_mode = 2
 
-[node name="PipToggleButton" type="TextureButton" parent="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/PipToggle" unique_id=1225723318]
+[node name="PipToggleButton" type="TextureButton" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/PipToggle" unique_id=1225723318]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -979,10 +985,10 @@ shape = SubResource("RectangleShape2D_nabk1")
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]
-[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton" to="." method="_on_remove_plant_button_pressed"]
-[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
-[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]
-[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]
-[connection signal="pressed" from="PanelContainer2/UtilityVBoxContainer/HBoxContainer2/PipToggle/PipToggleButton" to="." method="_on_pip_toggle_button_pressed"]
+[connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton" to="." method="_on_remove_plant_button_pressed"]
+[connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
+[connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]
+[connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton" to="." method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/PipToggle/PipToggleButton" to="." method="_on_pip_toggle_button_pressed"]
 [connection signal="mouse_entered" from="Sprite2D/Area2D" to="Sprite2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite2D/Area2D" to="Sprite2D" method="_on_mouse_exited"]

@@ -48,14 +48,14 @@ var currentDemonLabel : Control
 var currentDemonCostLabel : Label
 var deselectText := " PRESS [X] TO DESELECT"
 
-@onready var pause_button := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/PauseButton
+@onready var pause_button := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/PauseButton
 @onready var preview_container := Node2D.new()
 @onready var panelContainer := $PanelContainer
 @onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
-@onready var swapButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
+@onready var swapButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
 @onready var removeDemonButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton
-@onready var codexButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton
-@onready var fastForwardButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton
+@onready var codexButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton
+@onready var fastForwardButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton
 @onready var all_extra_buttons := [fastForwardButton,swapButton,removeDemonButton, codexButton]
 
 @onready var OcculumButton := $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
@@ -129,7 +129,7 @@ func _ready() -> void:
 	mawCostLabel.text = str(Global.get_demon_cost("Maw"))
 	hiveCostLabel.text = str(Global.get_demon_cost("Hive"))
 	
-	removeDemonButton.pressed.connect(_on_remove_demon_button_pressed)
+#	removeDemonButton.pressed.connect(_on_remove_demon_button_pressed)
 
 	#add_button_highlight
 	set_process_input(true)

@@ -371,7 +371,7 @@ func setup_demon_selection_menu() -> void:
 	#hbox.get_node("WorldSwap").visible = true
 	demonSelectionMenu.get_world_swap_button().show()
 	#hbox.get_node("RemoveDemon").visible = true
-	demonSelectionMenu.get_remove_demon_button().show()
+	#demonSelectionMenu.get_remove_demon_button().show()
 # 	hbox.get_node("Codex").visible = true
 	demonSelectionMenu.get_codex_button().show()
 

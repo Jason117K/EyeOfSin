@@ -1,7 +1,7 @@
 extends Control
 
-@onready var syn_ability_button := $SynAbilityButton
-@onready var syn_ability_progress_bar := $SynAbilityProgressBar
+@onready var syn_ability_button := $SynAbilityPanelContainer/MarginContainer/HBoxContainer/SynAbilityButton
+@onready var syn_ability_progress_bar := $SynAbilityPanelContainer/MarginContainer/HBoxContainer/SynAbilityProgressBar
 
 func get_button()->TextureButton:
 	return syn_ability_button

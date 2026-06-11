@@ -12,14 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="12_bcgeo"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://_Entities/LevelDecorations/Shrub.tscn" id="13_hj78q"]
 [ext_resource type="Texture2D" uid="uid://doopqiivdy4f2" path="res://_Assets/Misc/TitleCard.png" id="14_4ojxa"]
-[ext_resource type="FontFile" uid="uid://dw8o777s6dcqi" path="res://_Assets/Fonts/Fleshandblood-MVA5x.ttf" id="14_4rth8"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://_Assets/Environment/BloodTree.png" id="14_nyvis"]
-[ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="15_bcgeo"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="15_f7xvn"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="15_mrsis"]
-[ext_resource type="StyleBox" uid="uid://bu8cfo71nnluh" path="res://_Common/Tres Resources/Start_Button_Stylebox.tres" id="16_j88ag"]
-[ext_resource type="Texture2D" uid="uid://dlrvyqoulddmq" path="res://_Assets/UI/ButtonSprite.png" id="17_1p6mn"]
-[ext_resource type="Texture2D" uid="uid://cgu32xpdd2gbw" path="res://_Assets/UI/BorderSprite.png" id="18_vgtya"]
-[ext_resource type="Texture2D" uid="uid://b47plsmm1o3km" path="res://_Assets/UI/ButtonSpriteHover.png" id="19_vgtya"]
+[ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="16_rlj0q"]
+[ext_resource type="StyleBox" uid="uid://bcfbsgfdihfxu" path="res://_UI/bordered_button_hover.tres" id="17_rlj0q"]
+[ext_resource type="Texture2D" uid="uid://cgeju7igyhws4" path="res://_Stages/PurpleEarthClouds-Sheet.png" id="21_is81i"]
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("15_mrsis")
@@ -50,6 +48,434 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p22d2"]
+atlas = ExtResource("21_is81i")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wffg"]
+atlas = ExtResource("21_is81i")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwbxf"]
+atlas = ExtResource("21_is81i")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5mhl"]
+atlas = ExtResource("21_is81i")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1kog"]
+atlas = ExtResource("21_is81i")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qffj"]
+atlas = ExtResource("21_is81i")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y88js"]
+atlas = ExtResource("21_is81i")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oup5"]
+atlas = ExtResource("21_is81i")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elcja"]
+atlas = ExtResource("21_is81i")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhk0e"]
+atlas = ExtResource("21_is81i")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roog8"]
+atlas = ExtResource("21_is81i")
+region = Rect2(5000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khdyu"]
+atlas = ExtResource("21_is81i")
+region = Rect2(5500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydpyx"]
+atlas = ExtResource("21_is81i")
+region = Rect2(6000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un0tb"]
+atlas = ExtResource("21_is81i")
+region = Rect2(6500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5637"]
+atlas = ExtResource("21_is81i")
+region = Rect2(7000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvpah"]
+atlas = ExtResource("21_is81i")
+region = Rect2(7500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o13mk"]
+atlas = ExtResource("21_is81i")
+region = Rect2(8000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxj1h"]
+atlas = ExtResource("21_is81i")
+region = Rect2(8500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as74i"]
+atlas = ExtResource("21_is81i")
+region = Rect2(9000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ltc"]
+atlas = ExtResource("21_is81i")
+region = Rect2(9500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8ttl"]
+atlas = ExtResource("21_is81i")
+region = Rect2(10000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utw1s"]
+atlas = ExtResource("21_is81i")
+region = Rect2(10500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc6tk"]
+atlas = ExtResource("21_is81i")
+region = Rect2(11000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biqbh"]
+atlas = ExtResource("21_is81i")
+region = Rect2(11500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdht2"]
+atlas = ExtResource("21_is81i")
+region = Rect2(12000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8kue"]
+atlas = ExtResource("21_is81i")
+region = Rect2(12500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wixja"]
+atlas = ExtResource("21_is81i")
+region = Rect2(13000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4803"]
+atlas = ExtResource("21_is81i")
+region = Rect2(13500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pamjy"]
+atlas = ExtResource("21_is81i")
+region = Rect2(14000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfbu6"]
+atlas = ExtResource("21_is81i")
+region = Rect2(14500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aglvi"]
+atlas = ExtResource("21_is81i")
+region = Rect2(15000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viobv"]
+atlas = ExtResource("21_is81i")
+region = Rect2(15500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpyn7"]
+atlas = ExtResource("21_is81i")
+region = Rect2(16000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjdfq"]
+atlas = ExtResource("21_is81i")
+region = Rect2(16500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68b7o"]
+atlas = ExtResource("21_is81i")
+region = Rect2(17000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yycgj"]
+atlas = ExtResource("21_is81i")
+region = Rect2(17500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_say83"]
+atlas = ExtResource("21_is81i")
+region = Rect2(18000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmxjm"]
+atlas = ExtResource("21_is81i")
+region = Rect2(18500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx8ll"]
+atlas = ExtResource("21_is81i")
+region = Rect2(19000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh04b"]
+atlas = ExtResource("21_is81i")
+region = Rect2(19500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfn11"]
+atlas = ExtResource("21_is81i")
+region = Rect2(20000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qyic"]
+atlas = ExtResource("21_is81i")
+region = Rect2(20500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vlak"]
+atlas = ExtResource("21_is81i")
+region = Rect2(21000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyk33"]
+atlas = ExtResource("21_is81i")
+region = Rect2(21500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n12w"]
+atlas = ExtResource("21_is81i")
+region = Rect2(22000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4qtx"]
+atlas = ExtResource("21_is81i")
+region = Rect2(22500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xuk0"]
+atlas = ExtResource("21_is81i")
+region = Rect2(23000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b2ed"]
+atlas = ExtResource("21_is81i")
+region = Rect2(23500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v128h"]
+atlas = ExtResource("21_is81i")
+region = Rect2(24000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akqml"]
+atlas = ExtResource("21_is81i")
+region = Rect2(24500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5k37"]
+atlas = ExtResource("21_is81i")
+region = Rect2(25000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0ldo"]
+atlas = ExtResource("21_is81i")
+region = Rect2(25500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0dv4"]
+atlas = ExtResource("21_is81i")
+region = Rect2(26000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve65m"]
+atlas = ExtResource("21_is81i")
+region = Rect2(26500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8812q"]
+atlas = ExtResource("21_is81i")
+region = Rect2(27000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn3l7"]
+atlas = ExtResource("21_is81i")
+region = Rect2(27500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qtr1"]
+atlas = ExtResource("21_is81i")
+region = Rect2(28000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilqln"]
+atlas = ExtResource("21_is81i")
+region = Rect2(28500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nirs"]
+atlas = ExtResource("21_is81i")
+region = Rect2(29000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whpqb"]
+atlas = ExtResource("21_is81i")
+region = Rect2(29500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m308i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p22d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wffg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwbxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5mhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1kog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qffj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y88js")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oup5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elcja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhk0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roog8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khdyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydpyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un0tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5637")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvpah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o13mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxj1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as74i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ltc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8ttl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utw1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc6tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biqbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdht2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8kue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wixja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4803")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pamjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfbu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aglvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viobv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpyn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjdfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68b7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yycgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_say83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmxjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx8ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh04b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfn11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qyic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vlak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyk33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n12w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4qtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xuk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b2ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v128h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akqml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5k37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0ldo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0dv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve65m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8812q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn3l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qtr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilqln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nirs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whpqb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="StartScreen" type="Control" unique_id=1376711410]
 layout_mode = 3
 anchors_preset = 15
@@ -59,6 +485,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
 
+[node name="ColorRectPurple" type="ColorRect" parent="." unique_id=1770622814]
+layout_mode = 0
+offset_right = 776.0
+offset_bottom = 439.0
+color = Color(0.101960786, 0, 0.18039216, 1)
+
 [node name="GridManager" parent="." unique_id=329923945 instance=ExtResource("1")]
 metadata/_edit_lock_ = true
 
@@ -67,6 +499,7 @@ tile_map_data = PackedByteArray("AAACAAsAAQAJAAIAAAABAAsAAQAGAAkAAAAAAAsAAQAAAAk
 metadata/_edit_lock_ = true
 
 [node name="Environment" type="Node2D" parent="." unique_id=165747163]
+visible = false
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=1484505946]
 
@@ -319,10 +752,10 @@ offset_top = -157.0
 offset_right = 792.0
 offset_bottom = 620.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0.486275)
+color = Color(0, 0, 0, 0.8745098)
 
 [node name="EyeOfSynTitle" type="Sprite2D" parent="." unique_id=916376707]
-position = Vector2(372, 195)
+position = Vector2(371, 168)
 texture = ExtResource("14_4ojxa")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=3187112]
@@ -332,13 +765,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 14.0
-offset_top = 47.0
-offset_right = 14.0
-offset_bottom = 47.0
+offset_left = 185.0
+offset_top = 48.0
+offset_right = 185.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.2, 0.2)
 pivot_offset = Vector2(0, 17.23)
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -346,308 +778,121 @@ use_top_left = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=611729303]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 6
 
-[node name="StartGame" type="Button" parent="CenterContainer/VBoxContainer" unique_id=988144217]
-visible = false
-custom_minimum_size = Vector2(250, 50)
+[node name="StartGameButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=52421417]
+custom_minimum_size = Vector2(175, 40)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("15_bcgeo")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/normal = ExtResource("16_j88ag")
-text = "Start Game"
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_rlj0q")
+theme_override_styles/hover = ExtResource("17_rlj0q")
 
-[node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1062716716]
-visible = false
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/normal = ExtResource("16_j88ag")
-text = "LEVEL SELECT"
-
-[node name="Options" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2000528791]
-visible = false
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/normal = ExtResource("16_j88ag")
-text = "Options"
-
-[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1962099345]
-visible = false
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/normal = ExtResource("16_j88ag")
-text = "Credits"
-
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2033080751]
-visible = false
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("14_4rth8")
-theme_override_font_sizes/font_size = 128
-theme_override_styles/normal = ExtResource("16_j88ag")
-text = "Quit"
-
-[node name="ButtonSprite" type="Sprite2D" parent="CenterContainer/VBoxContainer" unique_id=281949170]
-visible = false
-position = Vector2(389, 23)
-scale = Vector2(6, 6)
-texture = ExtResource("17_1p6mn")
-
-[node name="Sprite2D2" type="Sprite2D" parent="CenterContainer/VBoxContainer" unique_id=7054385]
-visible = false
-modulate = Color(1, 0, 0, 1)
-position = Vector2(389, -54.88)
-scale = Vector2(6, 6)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="StartGam" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=925136712]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-texture_normal = ExtResource("17_1p6mn")
-texture_hover = ExtResource("19_vgtya")
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/StartGam" unique_id=822456382]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("15_bcgeo")
-theme_override_font_sizes/font_size = 144
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/StartGameButton" unique_id=1680523334]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 20
 text = "START GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LevelSelectButto" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=842462901]
-custom_minimum_size = Vector2(0, 200)
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2105763944]
+custom_minimum_size = Vector2(175, 40)
 layout_mode = 2
-texture_normal = ExtResource("17_1p6mn")
-texture_hover = ExtResource("19_vgtya")
-stretch_mode = 6
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_rlj0q")
+theme_override_styles/hover = ExtResource("17_rlj0q")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/LevelSelectButto" unique_id=1347707435]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("15_bcgeo")
-theme_override_font_sizes/font_size = 144
-text = "LEVEL SELECT"
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/LevelSelectButton" unique_id=1683306773]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 20
+text = "LEVEL  SELECT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Options2" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=510037907]
-custom_minimum_size = Vector2(0, 200)
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1817574960]
+custom_minimum_size = Vector2(175, 40)
 layout_mode = 2
-texture_normal = ExtResource("17_1p6mn")
-texture_hover = ExtResource("19_vgtya")
-stretch_mode = 6
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_rlj0q")
+theme_override_styles/hover = ExtResource("17_rlj0q")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Options2" unique_id=1228469968]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("15_bcgeo")
-theme_override_font_sizes/font_size = 144
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/OptionsButton" unique_id=1425450996]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 20
 text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Credit" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=1258618639]
-custom_minimum_size = Vector2(0, 200)
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1955213403]
+custom_minimum_size = Vector2(175, 40)
 layout_mode = 2
-texture_normal = ExtResource("17_1p6mn")
-texture_hover = ExtResource("19_vgtya")
-stretch_mode = 6
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_rlj0q")
+theme_override_styles/hover = ExtResource("17_rlj0q")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Credit" unique_id=1593612293]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("15_bcgeo")
-theme_override_font_sizes/font_size = 144
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CreditsButton" unique_id=1409388727]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 20
 text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Qui" type="TextureButton" parent="CenterContainer/VBoxContainer" unique_id=371985224]
-custom_minimum_size = Vector2(0, 200)
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1245053926]
+custom_minimum_size = Vector2(175, 40)
 layout_mode = 2
-texture_normal = ExtResource("17_1p6mn")
-texture_hover = ExtResource("19_vgtya")
-stretch_mode = 6
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_rlj0q")
+theme_override_styles/hover = ExtResource("17_rlj0q")
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/Qui" unique_id=2026059159]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("15_bcgeo")
-theme_override_font_sizes/font_size = 144
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/QuitButton" unique_id=1478388233]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 20
 text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1878373916]
 position = Vector2(370, 208)
 
-[node name="ButtonDecor" type="Node2D" parent="." unique_id=195740361]
-position = Vector2(384, 142)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=270581742]
+position = Vector2(176.00002, 253)
+scale = Vector2(0.54, 0.54)
+sprite_frames = SubResource("SpriteFrames_m308i")
+autoplay = "default"
 
-[node name="Decor" type="Sprite2D" parent="ButtonDecor" unique_id=1715951903]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(36.55, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor" unique_id=1902219077]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(-35.4, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="ButtonDecor4" type="Node2D" parent="." unique_id=247952555]
-position = Vector2(384, 391.125)
-rotation = -3.14159
-
-[node name="Decor" type="Sprite2D" parent="ButtonDecor4" unique_id=734031320]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(36.55, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor4" unique_id=1139884940]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(-35.4, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="ButtonDecor2" type="Node2D" parent="." unique_id=1415705880]
-position = Vector2(263, 266)
-rotation = -1.5708
-
-[node name="Decor" type="Sprite2D" parent="ButtonDecor2" unique_id=1578275141]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(36.55, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor2" unique_id=1045236277]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(-35.4, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="ButtonDecor3" type="Node2D" parent="." unique_id=2045721856]
-position = Vector2(503, 265)
-rotation = 1.5708
-
-[node name="Decor" type="Sprite2D" parent="ButtonDecor3" unique_id=1046473882]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(36.55, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[node name="Decor2" type="Sprite2D" parent="ButtonDecor3" unique_id=1786629991]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(-35.4, 9.2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("18_vgtya")
-flip_v = true
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGam" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelSelectButto" to="." method="_on_level_select_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Options2" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Credit" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Qui" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
 
 [editable path="GridManager"]

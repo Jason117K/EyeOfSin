@@ -1,22 +1,19 @@
 [gd_scene format=3 uid="uid://3ls67604vxxj"]
 
 [ext_resource type="Script" uid="uid://b11xe0h5a72s3" path="res://_UI/ui_layer.gd" id="1_nb644"]
-[ext_resource type="Texture2D" uid="uid://nmylu60joqud" path="res://_Assets/UI/StatusBarVer1.2.png" id="1_nx033"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_nx033"]
 [ext_resource type="Texture2D" uid="uid://bfv6moe12kb0n" path="res://_Assets/UI/BloodIcon.png" id="4_kfr0o"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="4_kni87"]
 [ext_resource type="Texture2D" uid="uid://clmyla142y3ua" path="res://_Assets/DualHeart-Sheet.png" id="5_kfr0o"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="5_kni87"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfr0o"]
-bg_color = Color(0, 0, 0, 0.88235295)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.8, 0, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i34nt"]
+texture = ExtResource("4_kni87")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.48, 0.48, 0.48, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfr0o"]
 resource_local_to_scene = true
@@ -29,36 +26,30 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 4.0
-offset_right = 3.0
-offset_bottom = 4.0
+offset_left = 1.0000002
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.07, 1.07)
 mouse_filter = 2
 script = ExtResource("1_nb644")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1502136170]
-visible = false
-position = Vector2(112, 31)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_nx033")
-
-[node name="SunCounter" type="Control" parent="." unique_id=2045410320]
+[node name="BloodCounter" type="Control" parent="." unique_id=2045410320]
 visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="SunCounter" unique_id=1798333393]
+[node name="ColorRect" type="ColorRect" parent="BloodCounter" unique_id=1798333393]
 visible = false
 custom_minimum_size = Vector2(225, 30)
 layout_mode = 0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="SunCounter" unique_id=409493326]
+[node name="ColorRect2" type="ColorRect" parent="BloodCounter" unique_id=409493326]
 visible = false
 custom_minimum_size = Vector2(221, 26)
 layout_mode = 0
@@ -68,7 +59,7 @@ offset_right = 223.0
 offset_bottom = 28.0
 color = Color(0.690196, 0, 0, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="SunCounter" unique_id=1198069521]
+[node name="ColorRect3" type="ColorRect" parent="BloodCounter" unique_id=1198069521]
 visible = false
 custom_minimum_size = Vector2(217, 22)
 layout_mode = 0
@@ -78,7 +69,7 @@ offset_right = 221.0
 offset_bottom = 26.0
 color = Color(0, 0, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SunCounter" unique_id=2118228249]
+[node name="HBoxContainer" type="HBoxContainer" parent="BloodCounter" unique_id=2118228249]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 1
 offset_top = 14.0
@@ -86,10 +77,10 @@ offset_right = 170.0
 offset_bottom = 74.0
 theme_override_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="SunCounter/HBoxContainer" unique_id=1459735488]
+[node name="MarginContainer" type="MarginContainer" parent="BloodCounter/HBoxContainer" unique_id=1459735488]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SunCounter/HBoxContainer" unique_id=291952641]
+[node name="Label" type="Label" parent="BloodCounter/HBoxContainer" unique_id=291952641]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -97,7 +88,7 @@ theme_override_fonts/font = ExtResource("2_nx033")
 text = "
 Blood :"
 
-[node name="BloodCounter" type="Label" parent="SunCounter/HBoxContainer" unique_id=2051083464]
+[node name="BloodCounter" type="Label" parent="BloodCounter/HBoxContainer" unique_id=2051083464]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -106,70 +97,77 @@ theme_override_fonts/font = ExtResource("2_nx033")
 text = "75
 "
 
-[node name="HealthPoints" type="Label" parent="SunCounter/HBoxContainer" unique_id=1180868006]
+[node name="HealthPoints" type="Label" parent="BloodCounter/HBoxContainer" unique_id=1180868006]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_nx033")
 text = "Health:10"
 
-[node name="Panel" type="Panel" parent="SunCounter" unique_id=1077436927]
+[node name="Panel" type="Panel" parent="BloodCounter" unique_id=1077436927]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="SunCounter" unique_id=1025576901]
+[node name="TextureRect" type="TextureRect" parent="BloodCounter" unique_id=1025576901]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HUD_Panel" type="PanelContainer" parent="." unique_id=438712905]
-custom_minimum_size = Vector2(0, 52)
 layout_mode = 0
-offset_right = 70.0
-offset_bottom = 54.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_kfr0o")
+offset_right = 74.0
+offset_bottom = 57.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i34nt")
 
-[node name="HUD_HBox" type="HBoxContainer" parent="HUD_Panel" unique_id=1642494369]
+[node name="MarginContainer" type="MarginContainer" parent="HUD_Panel" unique_id=379065495]
+layout_mode = 2
+theme_override_constants/margin_left = -7
+theme_override_constants/margin_top = -7
+theme_override_constants/margin_right = -7
+theme_override_constants/margin_bottom = -7
+
+[node name="HUD_HBox" type="HBoxContainer" parent="HUD_Panel/MarginContainer" unique_id=1642494369]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Blood_VBox" type="VBoxContainer" parent="HUD_Panel/MarginContainer/HUD_HBox" unique_id=1610694422]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_constants/separation = -1
 
-[node name="Blood_VBox" type="VBoxContainer" parent="HUD_Panel/HUD_HBox" unique_id=1610694422]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = -5
-
-[node name="Blood_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Blood_VBox" unique_id=302539344]
+[node name="Blood_Icon" type="TextureRect" parent="HUD_Panel/MarginContainer/HUD_HBox/Blood_VBox" unique_id=302539344]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_kfr0o")
 
-[node name="BloodAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Blood_VBox" unique_id=209762597]
+[node name="BloodAmountLabel" type="Label" parent="HUD_Panel/MarginContainer/HUD_HBox/Blood_VBox" unique_id=209762597]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("2_nx033")
+theme_override_fonts/font = ExtResource("5_kni87")
+theme_override_font_sizes/font_size = 10
 text = "100"
 horizontal_alignment = 1
 
-[node name="Health_VBox" type="VBoxContainer" parent="HUD_Panel/HUD_HBox" unique_id=241863994]
+[node name="Health_VBox" type="VBoxContainer" parent="HUD_Panel/MarginContainer/HUD_HBox" unique_id=241863994]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/separation = -5
+theme_override_constants/separation = -1
 
-[node name="Health_Icon" type="TextureRect" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=186687710]
+[node name="Health_Icon" type="TextureRect" parent="HUD_Panel/MarginContainer/HUD_HBox/Health_VBox" unique_id=186687710]
 layout_mode = 2
 size_flags_vertical = 0
 texture = SubResource("AtlasTexture_kfr0o")
 
-[node name="HealthAmountLabel" type="Label" parent="HUD_Panel/HUD_HBox/Health_VBox" unique_id=291366460]
+[node name="HealthAmountLabel" type="Label" parent="HUD_Panel/MarginContainer/HUD_HBox/Health_VBox" unique_id=291366460]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nx033")
+theme_override_fonts/font = ExtResource("5_kni87")
+theme_override_font_sizes/font_size = 10
 text = "10"
 horizontal_alignment = 1

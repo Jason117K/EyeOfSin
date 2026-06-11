@@ -3,7 +3,7 @@ extends TextureButton
 @onready var pauseMenu := $PauseMenu
 var toolTips : Control
 var previous_toolTip_visibility : bool
-@onready var demon_selection_menu := $"../../../.."
+@onready var demon_selection_menu := $"../../../../.."
 
 func _ready() -> void:
 	

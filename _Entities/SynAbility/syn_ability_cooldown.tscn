@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b44jkeoi1twtl" path="res://_Entities/SynAbility/syn_ability_cooldown_visual.gd" id="1_sukl5"]
 [ext_resource type="Texture2D" uid="uid://dgv2mrtncmvv4" path="res://_Entities/SynAbility/SynAbility_1_CARD.png" id="2_13k3d"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="2_sukl5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jx80q"]
+texture = ExtResource("2_sukl5")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13k3d"]
 bg_color = Color(0, 0, 0, 0.81960785)
@@ -34,23 +42,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sukl5")
 
-[node name="SynAbilityButton" type="TextureButton" parent="." unique_id=1941069963]
+[node name="SynAbilityPanelContainer" type="PanelContainer" parent="." unique_id=623219797]
 layout_mode = 0
-offset_left = 655.0
-offset_top = 335.0
-offset_right = 1083.0
-offset_bottom = 763.0
-scale = Vector2(0.15, 0.15)
+offset_left = 641.0
+offset_top = 326.0
+offset_right = 736.0
+offset_bottom = 402.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jx80q")
+
+[node name="MarginContainer" type="MarginContainer" parent="SynAbilityPanelContainer" unique_id=1161237615]
+layout_mode = 2
+theme_override_constants/margin_left = -6
+theme_override_constants/margin_top = -6
+theme_override_constants/margin_right = -6
+theme_override_constants/margin_bottom = -6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SynAbilityPanelContainer/MarginContainer" unique_id=2125328372]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="SynAbilityButton" type="TextureButton" parent="SynAbilityPanelContainer/MarginContainer/HBoxContainer" unique_id=1941069963]
+layout_mode = 2
 texture_normal = ExtResource("2_13k3d")
 stretch_mode = 0
 
-[node name="SynAbilityProgressBar" type="ProgressBar" parent="." unique_id=271757253]
+[node name="SynAbilityProgressBar" type="ProgressBar" parent="SynAbilityPanelContainer/MarginContainer/HBoxContainer" unique_id=271757253]
 custom_minimum_size = Vector2(16, 64)
-layout_mode = 0
-offset_left = 721.0
-offset_top = 335.0
-offset_right = 737.0
-offset_bottom = 362.0
+layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_13k3d")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sukl5")
 value = 100.0

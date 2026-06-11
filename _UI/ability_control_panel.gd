@@ -51,18 +51,21 @@ func _on_blood_rain_button_pressed() -> void:
 
 
 func _on_lightning_storm_button_pressed() -> void:
+	undo_swap_opacity()
 	swap_ability_display.texture = lightning_storm_button.texture_normal
 	Global.register_swap_ability(lightning_storm)
 	swap_label.text = "Summon a storm of lightning damaging zombies at random"
 	swap_title.text = "BLOOD RAIN"
 
 func _on_lucretia_grasp_button_pressed() -> void:
+	undo_swap_opacity()
 	swap_ability_display.texture = lucretia_grasp_button.texture_normal
 	Global.register_swap_ability(lucretia_grasp)
 	swap_label.text = "Summon forth hands that cross the screen and flip zombie allegiances"
 	swap_title.text = "GRASP OF LUCRETIA"
 	
 func _on_baal_gaze_button_pressed() -> void:
+	undo_swap_opacity()
 	swap_ability_display.texture = baal_gaze_button.texture_normal
 	Global.register_swap_ability(baal_gaze)
 

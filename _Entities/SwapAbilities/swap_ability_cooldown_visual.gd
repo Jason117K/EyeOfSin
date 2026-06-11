@@ -1,7 +1,7 @@
 extends Control
 
 @export var ability_name : String = "Swap Ability"
-@onready var swap_ability_label := $SwapAbilityCooldownPanel/SwapAbilityProgressBar/SwapAbilityLabel
+@onready var swap_ability_label := $SwapAbilityCooldownPanel/MarginContainer/SwapAbilityProgressBar/SwapAbilityLabel
 @onready var swap_ability_cooldown_panel := $SwapAbilityCooldownPanel
 
 func _ready() -> void:

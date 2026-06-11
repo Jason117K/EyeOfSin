@@ -15,13 +15,13 @@ var affected_zombies : Array = []
 @onready var cooldown_length_special := cooldown_duration - 2.5
 @onready var cooldown_length_normal := cooldown_duration
 @onready var cooldown_controller := $Control
-@onready var cooldown_visual := $Control/CooldownVisual
-@onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/SwapAbilityProgressBar
+@onready var cooldown_visual := $Control/SwapAbilityCooldownPanel
+@onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/MarginContainer/SwapAbilityProgressBar
 const STEP := 0.1
 
 func _ready() -> void:
 	print("Swap Ability Ready")
-	cooldown_visual.material.set_shader_parameter("fill_amount", 0.0)
+	#cooldown_visual.material.set_shader_parameter("fill_amount", 0.0)
 	Global.register_swap_ability_instance(self)
 	cooldown_timer = Timer.new()
 	cooldown_timer.one_shot = true
@@ -31,7 +31,7 @@ func _ready() -> void:
 	add_child(cooldown_timer)
 	#cooldown_timer.start()
 
-func game_start():
+func game_start()->void:
 	print("Game Start For Swap Ability Called")
 	cooldown_timer.start()
 	
@@ -119,13 +119,19 @@ func _physics_process(delta: float) -> void:
 	
 	
 func set_current_visibility_layer(flag : int)->void:
+	cooldown_visual = $Control/SwapAbilityCooldownPanel
+	print("CoolDown VIsual is ", cooldown_visual)
 	if flag == 1:
+		cooldown_visual.visibility_layer = 2
+	#	cooldown_visual.set_visibility_layer_bit(2, true)  
 		for child in get_children(): 
 			if child.has_method("hide"):
 				child.visibility_layer = 0
 				child.set_visibility_layer_bit(1, true)  
 				on_purple = true 
 	elif flag == 2:
+		cooldown_visual.visibility_layer = 3
+	#	cooldown_visual.set_visibility_layer_bit(2, true)  
 		for child in get_children(): 
 			if child.has_method("hide"):
 				child.visibility_layer = 0
