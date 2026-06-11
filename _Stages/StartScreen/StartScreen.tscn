@@ -477,6 +477,7 @@ animations = [{
 }]
 
 [node name="StartScreen" type="Control" unique_id=1376711410]
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

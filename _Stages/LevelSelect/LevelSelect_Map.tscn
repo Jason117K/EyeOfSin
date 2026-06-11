@@ -491,6 +491,7 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
 [node name="LevelSelect" type="Control" unique_id=7423103]
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

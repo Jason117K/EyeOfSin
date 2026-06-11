@@ -29,6 +29,7 @@
 
 [node name="ZombieLoreBook" type="Control" unique_id=720425845]
 process_mode = 3
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,6 +46,7 @@ scale = Vector2(18.6, 10.48)
 color = Color(0.184107, 0.0288, 0.32, 1)
 
 [node name="InteractiveBook2D" parent="." unique_id=640058282 instance=ExtResource("1_0r1la")]
+visible = false
 position = Vector2(370, 164)
 scale = Vector2(12.1563, 8.09375)
 

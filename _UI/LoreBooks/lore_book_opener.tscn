@@ -13,6 +13,7 @@ bg_color = Color(0.0980392, 0.0156863, 0.168627, 1)
 
 [node name="LoreBookOpener" type="Control" unique_id=1171146340]
 process_mode = 3
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
