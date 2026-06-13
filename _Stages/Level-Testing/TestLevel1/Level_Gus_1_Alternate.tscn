@@ -1,58 +1,57 @@
-[gd_scene format=4 uid="uid://b2nmdqhsqnu0b"]
+[gd_scene format=4 uid="uid://bd2o7dgekyi82"]
 
-[ext_resource type="Script" uid="uid://ci2r4u7kl48k1" path="res://_Stages/Level7/level7_alternate.gd" id="1_r2v3a"]
-[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_yqlhn"]
-[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_0kiqf"]
-[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="4_k5bij"]
-[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="5_6nkkc"]
-[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="6_jd28g"]
-[ext_resource type="Resource" uid="uid://i2ubkdlb3dw" path="res://_Stages/WaveData/waveOfReborn.tres" id="7_yhg8w"]
-[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="8_meqek"]
-[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="9_mwvn5"]
-[ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="10_dbi0a"]
-[ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://_Assets/Environment/Props/Pustules-export.png" id="10_udj3d"]
-[ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://_Assets/Environment/Props/Pustules_shadow1_Medium.png" id="11_6ahr3"]
-[ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="11_r1868"]
-[ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://_Common/Shaders/swayShader.tres" id="12_588ku"]
-[ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="12_cggt2"]
-[ext_resource type="Texture2D" uid="uid://brt2p4mtk3uyg" path="res://_Assets/Environment/Tilesets/SpecialTile1.png" id="13_5a0a7"]
-[ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://_Assets/Environment/Props/Pustules_shadow1_big.png" id="13_p5i4r"]
-[ext_resource type="Texture2D" uid="uid://ch7x4yluo887e" path="res://_Assets/Environment/Tilesets/Ground_Rock_GreenVer1.png" id="14_8mh0h"]
-[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://_Common/EnvironmentScripts/sway.gd" id="14_w6yuy"]
-[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://_Assets/Environment/Props/FetusProp.png" id="15_3ydmr"]
-[ext_resource type="Texture2D" uid="uid://8gjjcy015jc8" path="res://_Assets/Environment/Tilesets/Earth3WalkTile.png" id="15_yw3f0"]
-[ext_resource type="Texture2D" uid="uid://bne3yycsqxclr" path="res://_Assets/Environment/Tilesets/Earth3WalkTile2.png" id="16_a5ekq"]
-[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://_Assets/Environment/Props/Bramble1.png" id="16_wqb1p"]
-[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://_Assets/Environment/Props/Bramble2PROP.png" id="17_uqw6l"]
-[ext_resource type="Texture2D" uid="uid://3hli3x35y7ur" path="res://_Assets/Environment/Skulls_NoSummonTile.png" id="17_yg2bs"]
-[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="18_m3wt7"]
-[ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://_Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="18_nqrdi"]
-[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://_Entities/LevelDecorations/Shrub.tscn" id="19_3sr2i"]
-[ext_resource type="Texture2D" uid="uid://b35bpqpjftktv" path="res://_Assets/Environment/Tilesets/SpecialTile1-Green.png" id="19_ancwt"]
-[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://_Assets/Environment/BloodTree.png" id="20_f61u3"]
-[ext_resource type="Texture2D" uid="uid://8g35103qrcq8" path="res://_Assets/Environment/Tilesets/PurpleSwampTileset.png" id="20_wkru8"]
-[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="21_2yq3y"]
-[ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://_Assets/Environment/TX Tileset Grass.png" id="21_cfycl"]
-[ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="22_p1v8a"]
-[ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://_Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="22_xs8of"]
-[ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="23_55eqj"]
-[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="23_kmdjn"]
-[ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="24_hjlnn"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="24_vtryo"]
-[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="25_kjj4q"]
-[ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="25_nly6c"]
-[ext_resource type="Texture2D" uid="uid://be43mxb3vs0h" path="res://_Assets/Environment/Tilesets/Level1FloorProps.png" id="26_qe5kq"]
-[ext_resource type="PackedScene" uid="uid://cm6m7oqcnnpok" path="res://_Stages/SpecialTiles/flower_tile.tscn" id="26_ww5m7"]
-[ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="27_xi25j"]
-[ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="28_tiy2o"]
+[ext_resource type="Script" uid="uid://jksa3etpo6md" path="res://_Stages/Level-Testing/TestLevel1/level_Gus_1_alternate.gd" id="1_4mllw"]
+[ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_a7d3q"]
+[ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_qff7j"]
+[ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_pbrs1"]
+[ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_ypstb"]
+[ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="6_f1cuk"]
+[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="7_tivgi"]
+[ext_resource type="Resource" uid="uid://i2ubkdlb3dw" path="res://_Stages/WaveData/waveOfReborn.tres" id="8_66abj"]
+[ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="9_7lk0a"]
+[ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="10_xueye"]
+[ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="11_hn0t6"]
+[ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="12_e83ad"]
+[ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="13_0gh8p"]
+[ext_resource type="Texture2D" uid="uid://brt2p4mtk3uyg" path="res://_Assets/Environment/Tilesets/SpecialTile1.png" id="14_bvyi3"]
+[ext_resource type="Texture2D" uid="uid://ch7x4yluo887e" path="res://_Assets/Environment/Tilesets/Ground_Rock_GreenVer1.png" id="15_iy0nr"]
+[ext_resource type="Texture2D" uid="uid://8gjjcy015jc8" path="res://_Assets/Environment/Tilesets/Earth3WalkTile.png" id="16_6nf87"]
+[ext_resource type="Texture2D" uid="uid://bne3yycsqxclr" path="res://_Assets/Environment/Tilesets/Earth3WalkTile2.png" id="17_f5yiy"]
+[ext_resource type="Texture2D" uid="uid://3hli3x35y7ur" path="res://_Assets/Environment/Skulls_NoSummonTile.png" id="18_r1jig"]
+[ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://_Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="19_tectu"]
+[ext_resource type="Texture2D" uid="uid://b35bpqpjftktv" path="res://_Assets/Environment/Tilesets/SpecialTile1-Green.png" id="20_7gxx3"]
+[ext_resource type="Texture2D" uid="uid://8g35103qrcq8" path="res://_Assets/Environment/Tilesets/PurpleSwampTileset.png" id="21_ben1x"]
+[ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://_Assets/Environment/TX Tileset Grass.png" id="22_dgbx6"]
+[ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://_Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="23_gxkbk"]
+[ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="24_7okkn"]
+[ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="25_fun5i"]
+[ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="26_bncvg"]
+[ext_resource type="Texture2D" uid="uid://be43mxb3vs0h" path="res://_Assets/Environment/Tilesets/Level1FloorProps.png" id="27_8nmwc"]
+[ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="28_cpxx1"]
+[ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="29_ehunq"]
+[ext_resource type="Texture2D" uid="uid://bdl1bb0s6pu33" path="res://_Assets/Environment/Props/Pustules-export.png" id="30_vrau1"]
+[ext_resource type="Texture2D" uid="uid://bw1r7qy7j4vlm" path="res://_Assets/Environment/Props/Pustules_shadow1_Medium.png" id="31_8y32t"]
+[ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://_Common/Shaders/swayShader.tres" id="32_1l55o"]
+[ext_resource type="Texture2D" uid="uid://4vaoclus75nh" path="res://_Assets/Environment/Props/Pustules_shadow1_big.png" id="33_wi8aa"]
+[ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://_Common/EnvironmentScripts/sway.gd" id="34_15t1n"]
+[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://_Assets/Environment/Props/FetusProp.png" id="35_b8cw2"]
+[ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://_Assets/Environment/Props/Bramble1.png" id="36_50m3v"]
+[ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://_Assets/Environment/Props/Bramble2PROP.png" id="37_8ue1m"]
+[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="38_1y7qk"]
+[ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://_Entities/LevelDecorations/Shrub.tscn" id="39_yicbt"]
+[ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://_Assets/Environment/BloodTree.png" id="40_sxisr"]
+[ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="41_cfrjr"]
+[ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="42_t1a36"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="43_y21bh"]
+[ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_7o0bd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbi0a"]
-texture = ExtResource("10_dbi0a")
+texture = ExtResource("11_hn0t6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1868"]
-texture = ExtResource("11_r1868")
+texture = ExtResource("12_e83ad")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -258,7 +257,7 @@ texture_region_size = Vector2i(32, 32)
 17:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cggt2"]
-texture = ExtResource("12_cggt2")
+texture = ExtResource("13_0gh8p")
 margins = Vector2i(0, 16)
 texture_region_size = Vector2i(32, 32)
 3:4/0 = 0
@@ -295,12 +294,12 @@ texture_region_size = Vector2i(32, 32)
 8:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a0a7"]
-texture = ExtResource("13_5a0a7")
+texture = ExtResource("14_bvyi3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mh0h"]
-texture = ExtResource("14_8mh0h")
+texture = ExtResource("15_iy0nr")
 texture_region_size = Vector2i(32, 32)
 0:11/0 = 0
 1:11/0 = 0
@@ -310,24 +309,24 @@ texture_region_size = Vector2i(32, 32)
 1:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yw3f0"]
-texture = ExtResource("15_yw3f0")
+texture = ExtResource("16_6nf87")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5ekq"]
-texture = ExtResource("16_a5ekq")
+texture = ExtResource("17_f5yiy")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yg2bs"]
-texture = ExtResource("17_yg2bs")
+texture = ExtResource("18_r1jig")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqrdi"]
-texture = ExtResource("18_nqrdi")
+texture = ExtResource("19_tectu")
 texture_region_size = Vector2i(32, 32)
 0:0/animation_separation = Vector2i(1, 0)
 0:0/animation_frame_0/duration = 1.0
@@ -363,12 +362,12 @@ texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ancwt"]
-texture = ExtResource("19_ancwt")
+texture = ExtResource("20_7gxx3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wkru8"]
-texture = ExtResource("20_wkru8")
+texture = ExtResource("21_ben1x")
 texture_region_size = Vector2i(32, 32)
 0:1/animation_separation = Vector2i(1, 0)
 0:1/animation_mode = 1
@@ -408,7 +407,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cfycl"]
-texture = ExtResource("21_cfycl")
+texture = ExtResource("22_dgbx6")
 margins = Vector2i(128, 128)
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 8
@@ -434,7 +433,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/7/transpose = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xs8of"]
-texture = ExtResource("22_xs8of")
+texture = ExtResource("23_gxkbk")
 texture_region_size = Vector2i(32, 32)
 1:1/animation_separation = Vector2i(1, 0)
 1:1/animation_mode = 1
@@ -474,7 +473,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_55eqj"]
-texture = ExtResource("23_55eqj")
+texture = ExtResource("24_7okkn")
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -482,7 +481,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/1/flip_v = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjlnn"]
-texture = ExtResource("24_hjlnn")
+texture = ExtResource("25_fun5i")
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 8
 0:0/0 = 0
@@ -507,7 +506,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/7/transpose = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nly6c"]
-texture = ExtResource("25_nly6c")
+texture = ExtResource("26_bncvg")
 margins = Vector2i(128, 64)
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 8
@@ -552,7 +551,7 @@ texture_region_size = Vector2i(32, 32)
 3:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qe5kq"]
-texture = ExtResource("26_qe5kq")
+texture = ExtResource("27_8nmwc")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 0:1/0 = 0
@@ -565,7 +564,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xi25j"]
-texture = ExtResource("27_xi25j")
+texture = ExtResource("28_cpxx1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -577,7 +576,7 @@ texture_region_size = Vector2i(32, 32)
 3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tiy2o"]
-texture = ExtResource("12_cggt2")
+texture = ExtResource("13_0gh8p")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -875,19 +874,19 @@ sources/14 = SubResource("TileSetAtlasSource_a5ekq")
 sources/15 = SubResource("TileSetAtlasSource_yg2bs")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a0suq"]
-shader = ExtResource("12_588ku")
+shader = ExtResource("32_1l55o")
 shader_parameter/shader_time = 0.0
 
 [sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("21_2yq3y")
+atlas = ExtResource("41_cfrjr")
 region = Rect2(0, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("21_2yq3y")
+atlas = ExtResource("41_cfrjr")
 region = Rect2(32, 0, 32, 41)
 
 [sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("21_2yq3y")
+atlas = ExtResource("41_cfrjr")
 region = Rect2(64, 0, 32, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b1vmi"]
@@ -915,91 +914,90 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_r2v3a")
-isGreenDimension = true
+script = ExtResource("1_4mllw")
 
-[node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("2_yqlhn")]
+[node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("2_a7d3q")]
 layout_mode = 1
 make_green = true
 
-[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_0kiqf")]
+[node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_qff7j")]
 layout_mode = 1
 is_alt = true
 
-[node name="ToolTips" parent="." unique_id=1964781713 instance=ExtResource("23_kmdjn")]
+[node name="ToolTips" parent="." unique_id=1964781713 instance=ExtResource("4_pbrs1")]
 visible = false
 layout_mode = 1
 
-[node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("4_k5bij")]
+[node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("5_ypstb")]
 blood_points = 700
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1288006005]
 process_mode = 1
 
-[node name="ZombieSpawner1" parent="GameLayer" unique_id=128186070 instance=ExtResource("5_6nkkc")]
+[node name="ZombieSpawner1" parent="GameLayer" unique_id=128186070 instance=ExtResource("6_f1cuk")]
 position = Vector2(740, 109)
-waves = Array[ExtResource("6_jd28g")]([ExtResource("7_yhg8w")])
+waves = Array[ExtResource("7_tivgi")]([ExtResource("8_66abj")])
 make_green = true
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1497888431 instance=ExtResource("8_meqek")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1497888431 instance=ExtResource("9_7lk0a")]
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner2" parent="GameLayer" unique_id=1689922068 instance=ExtResource("5_6nkkc")]
+[node name="ZombieSpawner2" parent="GameLayer" unique_id=1689922068 instance=ExtResource("6_f1cuk")]
 position = Vector2(740, 141)
-waves = Array[ExtResource("6_jd28g")]([ExtResource("7_yhg8w")])
+waves = Array[ExtResource("7_tivgi")]([ExtResource("8_66abj")])
 make_green = true
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=326913154 instance=ExtResource("8_meqek")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=326913154 instance=ExtResource("9_7lk0a")]
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("5_6nkkc")]
+[node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("6_f1cuk")]
 position = Vector2(740, 173)
-waves = Array[ExtResource("6_jd28g")]([ExtResource("7_yhg8w")])
+waves = Array[ExtResource("7_tivgi")]([ExtResource("8_66abj")])
 make_green = true
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("8_meqek")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("9_7lk0a")]
 z_index = 1
 position = Vector2(-32, 1)
 
-[node name="ZombieSpawner4" parent="GameLayer" unique_id=2041524300 instance=ExtResource("5_6nkkc")]
+[node name="ZombieSpawner4" parent="GameLayer" unique_id=2041524300 instance=ExtResource("6_f1cuk")]
 position = Vector2(740, 205)
-waves = Array[ExtResource("6_jd28g")]([ExtResource("7_yhg8w")])
+waves = Array[ExtResource("7_tivgi")]([ExtResource("8_66abj")])
 make_green = true
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1681998341 instance=ExtResource("8_meqek")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1681998341 instance=ExtResource("9_7lk0a")]
 z_index = 1
 position = Vector2(-32, -1)
 
-[node name="ZombieSpawner5" parent="GameLayer" unique_id=228284926 instance=ExtResource("5_6nkkc")]
+[node name="ZombieSpawner5" parent="GameLayer" unique_id=228284926 instance=ExtResource("6_f1cuk")]
 position = Vector2(740, 237)
-waves = Array[ExtResource("6_jd28g")]([ExtResource("7_yhg8w")])
+waves = Array[ExtResource("7_tivgi")]([ExtResource("8_66abj")])
 make_green = true
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1236080942 instance=ExtResource("8_meqek")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1236080942 instance=ExtResource("9_7lk0a")]
 z_index = 1
 position = Vector2(-32, -1)
 
-[node name="ZombieSpawner6" parent="GameLayer" unique_id=1329179264 instance=ExtResource("5_6nkkc")]
+[node name="ZombieSpawner6" parent="GameLayer" unique_id=1329179264 instance=ExtResource("6_f1cuk")]
 position = Vector2(740, 269)
-waves = Array[ExtResource("6_jd28g")]([ExtResource("7_yhg8w")])
+waves = Array[ExtResource("7_tivgi")]([ExtResource("8_66abj")])
 make_green = true
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1772735517 instance=ExtResource("8_meqek")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1772735517 instance=ExtResource("9_7lk0a")]
 z_index = 1
 position = Vector2(-32, -1)
 
-[node name="ZombieSpawner7" parent="GameLayer" unique_id=2003164474 instance=ExtResource("5_6nkkc")]
+[node name="ZombieSpawner7" parent="GameLayer" unique_id=2003164474 instance=ExtResource("6_f1cuk")]
 position = Vector2(740, 301)
-waves = Array[ExtResource("6_jd28g")]([ExtResource("7_yhg8w")])
+waves = Array[ExtResource("7_tivgi")]([ExtResource("8_66abj")])
 make_green = true
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=633272156 instance=ExtResource("8_meqek")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=633272156 instance=ExtResource("9_7lk0a")]
 z_index = 1
 position = Vector2(-32, -1)
 
-[node name="GridManager" parent="GameLayer" unique_id=414650802 instance=ExtResource("9_mwvn5")]
+[node name="GridManager" parent="GameLayer" unique_id=414650802 instance=ExtResource("10_xueye")]
 make_green = true
 
 [node name="TileMapLayer" parent="GameLayer/GridManager" index="0" unique_id=456208734]
@@ -1008,7 +1006,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 [node name="Block_Layer" type="TileMapLayer" parent="GameLayer/GridManager" unique_id=1854864841]
 tile_map_data = PackedByteArray("AAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAALAAMAAQAAAAUAAAALAAQAAQAAAAUAAAALAAUAAQAAAAUAAAALAAYAAQAAAAUAAAALAAcAAQAAAAUAAAALAAgAAQAAAAUAAAALAAkAAQAAAAUAAAAKAAkAAQAAAAUAAAAKAAgAAQAAAAUAAAAKAAcAAQAAAAUAAAAKAAYAAQAAAAUAAAAKAAUAAQAAAAUAAAAKAAQAAQAAAAUAAAAKAAMAAQAAAAUAAAA=")
 tile_set = SubResource("TileSet_y6vlr")
-script = ExtResource("28_tiy2o")
+script = ExtResource("29_ehunq")
 hue_shift = 0.57
 
 [node name="Environment" type="Node2D" parent="." unique_id=584760565]
@@ -1018,195 +1016,195 @@ z_index = 1
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=2032957585]
 position = Vector2(543, 347)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 
 [node name="CoralSmallProp3" type="Sprite2D" parent="Environment/Coral" unique_id=30944252]
 position = Vector2(466, 358)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 
 [node name="CoralSmallProp2" type="Sprite2D" parent="Environment/Coral" unique_id=1286323804]
 position = Vector2(670, 400)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 flip_h = true
 
 [node name="CoralSmallProp4" type="Sprite2D" parent="Environment/Coral" unique_id=1720450002]
 position = Vector2(601, 401)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 flip_h = true
 
 [node name="CoralSmallProp5" type="Sprite2D" parent="Environment/Coral" unique_id=577588267]
 position = Vector2(718, 321)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 
 [node name="CoralSmallProp6" type="Sprite2D" parent="Environment/Coral" unique_id=431210701]
 position = Vector2(420, 382)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 
 [node name="CoralSmallProp8" type="Sprite2D" parent="Environment/Coral" unique_id=385795289]
 position = Vector2(122, 348)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 
 [node name="CoralSmallProp9" type="Sprite2D" parent="Environment/Coral" unique_id=1406611704]
 position = Vector2(262, 8)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 flip_h = true
 
 [node name="CoralSmallProp10" type="Sprite2D" parent="Environment/Coral" unique_id=222282912]
 position = Vector2(497, 16)
-texture = ExtResource("10_udj3d")
+texture = ExtResource("30_vrau1")
 
 [node name="CoralBigProp" type="Sprite2D" parent="Environment/Coral" unique_id=619757632]
 position = Vector2(618, 344)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 
 [node name="CoralBigProp2" type="Sprite2D" parent="Environment/Coral" unique_id=2143155032]
 position = Vector2(383, 360)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 flip_h = true
 
 [node name="CoralBigProp4" type="Sprite2D" parent="Environment/Coral" unique_id=55422625]
 position = Vector2(707, 397)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 flip_h = true
 
 [node name="CoralBigProp5" type="Sprite2D" parent="Environment/Coral" unique_id=678226946]
 position = Vector2(724, 4)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 flip_h = true
 
 [node name="CoralBigProp6" type="Sprite2D" parent="Environment/Coral" unique_id=716813488]
 position = Vector2(276, 368)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 flip_h = true
 
 [node name="CoralBigProp3" type="Sprite2D" parent="Environment/Coral" unique_id=650530418]
 position = Vector2(490, 396)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 flip_h = true
 
 [node name="CoralBigProp7" type="Sprite2D" parent="Environment/Coral" unique_id=1514891107]
 position = Vector2(620, 3)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 flip_h = true
 
 [node name="CoralBigProp8" type="Sprite2D" parent="Environment/Coral" unique_id=1785559325]
 position = Vector2(609, 15)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 flip_h = true
 
 [node name="CoralBigProp9" type="Sprite2D" parent="Environment/Coral" unique_id=1334911487]
 position = Vector2(353, 14)
-texture = ExtResource("11_6ahr3")
+texture = ExtResource("31_8y32t")
 
 [node name="Biggest_Coral" type="Sprite2D" parent="Environment/Coral" unique_id=1988758520]
 material = SubResource("ShaderMaterial_a0suq")
 position = Vector2(563, 378)
-texture = ExtResource("13_p5i4r")
-script = ExtResource("14_w6yuy")
+texture = ExtResource("33_wi8aa")
+script = ExtResource("34_15t1n")
 
 [node name="Biggest_Coral2" type="Sprite2D" parent="Environment/Coral" unique_id=2011577895]
 position = Vector2(698, 349)
-texture = ExtResource("13_p5i4r")
+texture = ExtResource("33_wi8aa")
 
 [node name="FetusProp" type="Sprite2D" parent="Environment/Coral" unique_id=389682889]
 visible = false
 position = Vector2(438, 4)
-texture = ExtResource("15_3ydmr")
+texture = ExtResource("35_b8cw2")
 
 [node name="FetusProp2" type="Sprite2D" parent="Environment/Coral" unique_id=158254436]
 visible = false
 position = Vector2(465, 347)
-texture = ExtResource("15_3ydmr")
+texture = ExtResource("35_b8cw2")
 
 [node name="Bramble" type="Node2D" parent="Environment" unique_id=89895609]
 visible = false
 
 [node name="Bramble1" type="Sprite2D" parent="Environment/Bramble" unique_id=467206355]
 position = Vector2(505, 328)
-texture = ExtResource("16_wqb1p")
+texture = ExtResource("36_50m3v")
 
 [node name="Bramble2" type="Sprite2D" parent="Environment/Bramble" unique_id=1331658160]
 position = Vector2(454, 388)
-texture = ExtResource("16_wqb1p")
+texture = ExtResource("36_50m3v")
 
 [node name="Bramble3" type="Sprite2D" parent="Environment/Bramble" unique_id=520608524]
 position = Vector2(584, 399)
-texture = ExtResource("16_wqb1p")
+texture = ExtResource("36_50m3v")
 
 [node name="Bramble4" type="Sprite2D" parent="Environment/Bramble" unique_id=1633180070]
 position = Vector2(640, 303)
-texture = ExtResource("16_wqb1p")
+texture = ExtResource("36_50m3v")
 
 [node name="Bramble5" type="Sprite2D" parent="Environment/Bramble" unique_id=1502993881]
 position = Vector2(483, 0)
-texture = ExtResource("16_wqb1p")
+texture = ExtResource("36_50m3v")
 
 [node name="Bramble6" type="Sprite2D" parent="Environment/Bramble" unique_id=1309582735]
 position = Vector2(660, 11)
-texture = ExtResource("16_wqb1p")
+texture = ExtResource("36_50m3v")
 
 [node name="BrambleSmall" type="Sprite2D" parent="Environment/Bramble" unique_id=1871586786]
 position = Vector2(366, 316)
-texture = ExtResource("17_uqw6l")
+texture = ExtResource("37_8ue1m")
 flip_h = true
 
 [node name="BrambleSmall2" type="Sprite2D" parent="Environment/Bramble" unique_id=1860462018]
 position = Vector2(455, 331)
-texture = ExtResource("17_uqw6l")
+texture = ExtResource("37_8ue1m")
 flip_h = true
 
 [node name="BrambleSmall3" type="Sprite2D" parent="Environment/Bramble" unique_id=1750048454]
 position = Vector2(402, 343)
-texture = ExtResource("17_uqw6l")
+texture = ExtResource("37_8ue1m")
 
 [node name="BrambleSmall4" type="Sprite2D" parent="Environment/Bramble" unique_id=1626721407]
 position = Vector2(428, 399)
-texture = ExtResource("17_uqw6l")
+texture = ExtResource("37_8ue1m")
 flip_h = true
 
 [node name="Fish" type="Node2D" parent="Environment" unique_id=565801820]
 
-[node name="Fish" parent="Environment/Fish" unique_id=1522067529 instance=ExtResource("18_m3wt7")]
+[node name="Fish" parent="Environment/Fish" unique_id=1522067529 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(542, 386)
 makeGreen = true
 
-[node name="Fish2" parent="Environment/Fish" unique_id=176731053 instance=ExtResource("18_m3wt7")]
+[node name="Fish2" parent="Environment/Fish" unique_id=176731053 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(509, 362)
 makeGreen = true
 
-[node name="Fish5" parent="Environment/Fish" unique_id=134143655 instance=ExtResource("18_m3wt7")]
+[node name="Fish5" parent="Environment/Fish" unique_id=134143655 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(257, 360)
 makeGreen = true
 
-[node name="Fish6" parent="Environment/Fish" unique_id=702250833 instance=ExtResource("18_m3wt7")]
+[node name="Fish6" parent="Environment/Fish" unique_id=702250833 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(27, 360)
 makeGreen = true
 
-[node name="Fish7" parent="Environment/Fish" unique_id=2135909495 instance=ExtResource("18_m3wt7")]
+[node name="Fish7" parent="Environment/Fish" unique_id=2135909495 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(598, 22)
 makeGreen = true
 
-[node name="Fish8" parent="Environment/Fish" unique_id=303309710 instance=ExtResource("18_m3wt7")]
+[node name="Fish8" parent="Environment/Fish" unique_id=303309710 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(456, 377)
 makeGreen = true
 
-[node name="Fish9" parent="Environment/Fish" unique_id=958960345 instance=ExtResource("18_m3wt7")]
+[node name="Fish9" parent="Environment/Fish" unique_id=958960345 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(315, 14)
 makeGreen = true
 
-[node name="Fish3" parent="Environment/Fish" unique_id=1426103068 instance=ExtResource("18_m3wt7")]
+[node name="Fish3" parent="Environment/Fish" unique_id=1426103068 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(596, 359)
 makeGreen = true
 
-[node name="Fish4" parent="Environment/Fish" unique_id=1362037375 instance=ExtResource("18_m3wt7")]
+[node name="Fish4" parent="Environment/Fish" unique_id=1362037375 instance=ExtResource("38_1y7qk")]
 z_index = -1
 position = Vector2(633, 395)
 makeGreen = true
@@ -1214,31 +1212,31 @@ makeGreen = true
 [node name="Shrubs" type="Node2D" parent="Environment" unique_id=1102603852]
 visible = false
 
-[node name="Shrub" parent="Environment/Shrubs" unique_id=1447349445 instance=ExtResource("19_3sr2i")]
+[node name="Shrub" parent="Environment/Shrubs" unique_id=1447349445 instance=ExtResource("39_yicbt")]
 position = Vector2(560, 13)
 scale = Vector2(1, 1)
 
-[node name="Shrub2" parent="Environment/Shrubs" unique_id=1032227093 instance=ExtResource("19_3sr2i")]
+[node name="Shrub2" parent="Environment/Shrubs" unique_id=1032227093 instance=ExtResource("39_yicbt")]
 position = Vector2(474, 339)
 scale = Vector2(1, 1)
 
-[node name="Shrub3" parent="Environment/Shrubs" unique_id=239901047 instance=ExtResource("19_3sr2i")]
+[node name="Shrub3" parent="Environment/Shrubs" unique_id=239901047 instance=ExtResource("39_yicbt")]
 position = Vector2(521, 392)
 scale = Vector2(1, 1)
 
-[node name="Shrub4" parent="Environment/Shrubs" unique_id=2002419907 instance=ExtResource("19_3sr2i")]
+[node name="Shrub4" parent="Environment/Shrubs" unique_id=2002419907 instance=ExtResource("39_yicbt")]
 position = Vector2(193, 327)
 scale = Vector2(1, 1)
 
-[node name="Shrub5" parent="Environment/Shrubs" unique_id=136354901 instance=ExtResource("19_3sr2i")]
+[node name="Shrub5" parent="Environment/Shrubs" unique_id=136354901 instance=ExtResource("39_yicbt")]
 position = Vector2(433, 330)
 scale = Vector2(1, 1)
 
-[node name="Shrub6" parent="Environment/Shrubs" unique_id=1587259487 instance=ExtResource("19_3sr2i")]
+[node name="Shrub6" parent="Environment/Shrubs" unique_id=1587259487 instance=ExtResource("39_yicbt")]
 position = Vector2(658, 403)
 scale = Vector2(1, 1)
 
-[node name="Shrub7" parent="Environment/Shrubs" unique_id=1208981988 instance=ExtResource("19_3sr2i")]
+[node name="Shrub7" parent="Environment/Shrubs" unique_id=1208981988 instance=ExtResource("39_yicbt")]
 position = Vector2(297, 14)
 scale = Vector2(1, 1)
 
@@ -1248,13 +1246,13 @@ visible = false
 [node name="BloodTree" type="Sprite2D" parent="Environment/Trees" unique_id=2107808389]
 z_index = 1
 position = Vector2(561, 364)
-texture = ExtResource("20_f61u3")
+texture = ExtResource("40_sxisr")
 flip_h = true
 
 [node name="BloodTree2" type="Sprite2D" parent="Environment/Trees" unique_id=1852459813]
 z_index = 1
 position = Vector2(396, 7)
-texture = ExtResource("20_f61u3")
+texture = ExtResource("40_sxisr")
 
 [node name="Special" type="Node2D" parent="Environment" unique_id=88688570]
 visible = false
@@ -1264,44 +1262,14 @@ position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=354028522]
-environment = ExtResource("22_p1v8a")
+environment = ExtResource("42_t1a36")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1692939267]
-stream = ExtResource("24_vtryo")
+stream = ExtResource("43_y21bh")
 volume_db = -80.0
 bus = &"music"
 
-[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("25_kjj4q")]
-
-[node name="FlowerTileContainer" type="Node" parent="." unique_id=1691710862]
-
-[node name="FlowerTile" parent="FlowerTileContainer" unique_id=1493116393 instance=ExtResource("26_ww5m7")]
-position = Vector2(358, 116)
-is_alt = true
-
-[node name="FlowerTile2" parent="FlowerTileContainer" unique_id=1110572315 instance=ExtResource("26_ww5m7")]
-position = Vector2(358, 148)
-is_alt = true
-
-[node name="FlowerTile3" parent="FlowerTileContainer" unique_id=460250799 instance=ExtResource("26_ww5m7")]
-position = Vector2(358, 180)
-is_alt = true
-
-[node name="FlowerTile4" parent="FlowerTileContainer" unique_id=723459990 instance=ExtResource("26_ww5m7")]
-position = Vector2(358, 212)
-is_alt = true
-
-[node name="FlowerTile5" parent="FlowerTileContainer" unique_id=2103991621 instance=ExtResource("26_ww5m7")]
-position = Vector2(358, 244)
-is_alt = true
-
-[node name="FlowerTile6" parent="FlowerTileContainer" unique_id=1018452568 instance=ExtResource("26_ww5m7")]
-position = Vector2(358, 276)
-is_alt = true
-
-[node name="FlowerTile7" parent="FlowerTileContainer" unique_id=1762575633 instance=ExtResource("26_ww5m7")]
-position = Vector2(358, 308)
-is_alt = true
+[node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("44_7o0bd")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

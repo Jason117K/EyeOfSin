@@ -178,6 +178,7 @@ animations = [{
 z_index = 1
 collision_mask = 3
 script = ExtResource("1_87sni")
+use_cooldown = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1422644504]
 position = Vector2(0.5, 0)

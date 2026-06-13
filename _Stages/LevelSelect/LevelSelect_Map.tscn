@@ -720,67 +720,34 @@ text = "LEVEL 7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TestingGusButton0" type="TextureButton" parent="." unique_id=956304434]
-visible = false
+[node name="TestGusLevel1" type="Button" parent="." unique_id=230476794]
 z_index = 1
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 0
-offset_left = 225.0
-offset_top = 20.0
-offset_right = 1225.0
-offset_bottom = 220.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
+offset_left = 379.0
+offset_top = 105.0
+offset_right = 479.0
+offset_bottom = 135.0
+theme_override_styles/normal = ExtResource("4_d8cb5")
+theme_override_styles/hover = ExtResource("5_xu741")
 
-[node name="Level6Label" type="Label" parent="TestingGusButton0" unique_id=1395253697]
+[node name="Level7Label" type="Label" parent="TestGusLevel1" unique_id=1895029462]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -45.0
+offset_top = -10.999985
+offset_right = 43.0
+offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
-text = "LEVEL O GUS"
-
-[node name="TestingGusButton1" type="TextureButton" parent="." unique_id=724059801]
-visible = false
-z_index = 1
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 0
-offset_left = 424.0
-offset_top = 18.0
-offset_right = 1424.0
-offset_bottom = 218.0
-scale = Vector2(0.15, 0.15)
-texture_normal = ExtResource("5_g2cgg")
-texture_hover = ExtResource("6_r3hyu")
-stretch_mode = 6
-
-[node name="Level6Label" type="Label" parent="TestingGusButton1" unique_id=1915534342]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_lwmcq")
-theme_override_font_sizes/font_size = 144
-text = "LEVEL O 2 GUS"
+theme_override_fonts/font = ExtResource("6_m5ufq")
+text = "GUS LEVEL 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackPlainButton" type="Button" parent="." unique_id=1411510281]
 layout_mode = 0
@@ -1240,8 +1207,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_uqscy")
 [connection signal="pressed" from="Level5Button" to="." method="_on_level_5_pressed"]
 [connection signal="pressed" from="Level6Button" to="." method="_on_level_6_pressed"]
 [connection signal="pressed" from="Level7Button" to="." method="_on_level_7_button_pressed"]
-[connection signal="pressed" from="TestingGusButton0" to="." method="_on_testing_gus_button_0_pressed"]
-[connection signal="pressed" from="TestingGusButton1" to="." method="_on_testing_gus_button_1_pressed"]
+[connection signal="pressed" from="TestGusLevel1" to="." method="_on_test_gus_level_1_pressed"]
 [connection signal="pressed" from="BackPlainButton" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="SorceryPanel/MarginContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

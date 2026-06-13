@@ -33,6 +33,9 @@ var level0_6Alt := ("res://_Stages/Level6/Level0-6_Alternate.tscn")
 var level7 := ("res://_Stages/Level7/Level7.tscn")
 var level7_alt := ("res://_Stages/Level7/Level7_Alternate.tscn")
 
+var level_Gus_1 := ("res://_Stages/Level-Testing/TestLevel1/Level_Gus_1.tscn")
+var level_Gus_1_alt := ("res://_Stages/Level-Testing/TestLevel1/Level_Gus_1_Alternate.tscn")
+
 var testing_gus_0 := "res://_Stages/Level-Testing/TestLevel0/Level0-TestingGus.tscn"
 var testing_gus_0Alt := "res://_Stages/Level-Testing/TestLevel0/Level0-TestingGus_Alternate.tscn"
 
@@ -133,3 +136,7 @@ func _on_testing_gus_button_1_pressed() -> void:
 
 func _on_button_pressed() -> void:
 	Global.game_controller.change_scene(ability_screen)
+
+
+func _on_test_gus_level_1_pressed() -> void:
+	Global.game_controller.change_dual_scenes(level_Gus_1, level_Gus_1_alt)

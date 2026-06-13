@@ -821,6 +821,26 @@ text = "LEVEL  SELECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CodexButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=369982415]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_rlj0q")
+theme_override_styles/hover = ExtResource("17_rlj0q")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CodexButton" unique_id=1741675482]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 20
+text = "CODEX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1817574960]
 custom_minimum_size = Vector2(175, 40)
 layout_mode = 2
@@ -892,6 +912,7 @@ autoplay = "default"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CodexButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

@@ -535,7 +535,6 @@ theme_override_constants/margin_left = 2
 layout_mode = 2
 
 [node name="BloodRainButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/SwapAbilitiesMargin/SwapAbilitiesHbox" unique_id=1735394826]
-visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture_normal = ExtResource("5_cffer")
@@ -548,14 +547,12 @@ texture_normal = ExtResource("2_oeg55")
 stretch_mode = 5
 
 [node name="LucretiaGraspButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/SwapAbilitiesMargin/SwapAbilitiesHbox" unique_id=1405792167]
-visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture_normal = ExtResource("6_b21a2")
 stretch_mode = 5
 
 [node name="BaalGazeButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/SwapAbilitiesMargin/SwapAbilitiesHbox" unique_id=594354810]
-visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture_normal = ExtResource("7_5frro")
@@ -607,28 +604,24 @@ texture_normal = ExtResource("4_m8mrx")
 stretch_mode = 0
 
 [node name="ShieldButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SynPanel/VBoxContainer/SynAbilitiesHbox" unique_id=293795192]
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("8_3iiq0")
 stretch_mode = 5
 
 [node name="BloodIceButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SynPanel/VBoxContainer/SynAbilitiesHbox" unique_id=377192243]
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("9_yt4uu")
 stretch_mode = 5
 
 [node name="DeathMarkButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SynPanel/VBoxContainer/SynAbilitiesHbox" unique_id=104674199]
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("10_f7bn3")
 stretch_mode = 5
 
 [node name="ShroomieButton" type="TextureButton" parent="PanelContainer/VBoxContainer/SynPanel/VBoxContainer/SynAbilitiesHbox" unique_id=376771167]
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("11_lhb5y")
