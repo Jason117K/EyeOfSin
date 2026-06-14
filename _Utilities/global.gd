@@ -969,7 +969,7 @@ func continue_navigate_to_buff(current_synergies : Array)->void:
 			demon_codex._on_maw_pressed()
 			await get_tree().physics_frame
 			await get_tree().physics_frame
-			#finish_navigate_to_buff_maw(demon_a)
+			finish_navigate_to_buff_maw(demon_a)
 		"Wyrm":
 			demon_codex._on_wrym_pressed()
 			await get_tree().physics_frame

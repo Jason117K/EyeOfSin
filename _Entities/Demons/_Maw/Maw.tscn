@@ -1912,7 +1912,6 @@ sharp_limit = 90.0
 metadata/_edit_lock_ = true
 
 [node name="BuffNodesComponent" parent="." unique_id=464042542 instance=ExtResource("8")]
-visible = false
 position = Vector2(256, 256)
 
 [node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
@@ -1940,9 +1939,11 @@ sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27
 
 [node name="TileArea4" parent="BuffNodesComponent" index="7" unique_id=1195978361]
+visible = false
 position = Vector2(-48, 0)
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
+visible = false
 position = Vector2(-48, 0)
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 27

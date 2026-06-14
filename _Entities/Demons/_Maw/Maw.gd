@@ -49,12 +49,13 @@ var consume_zombie_group : Node
 var devour_done := true
 var is_demo := false
 
-
+signal maw_buff_unlocked(buff_to_unlock:String)
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
 	collision_mask = 2
+	maw_buff_unlocked.connect(Global.unlock_buff)
 	# --- Tentacle setup ---
 	setup_tentacles()
 	# --- Demon-specific collision ---
@@ -100,6 +101,7 @@ func receive_buff(demon) -> void:
 	var demonName: String = (demon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
+		unlock_new_buff(demonName)
 		match demonName:
 			"Occulum":
 				willBelchBlood = true
@@ -127,6 +129,25 @@ func debuff() -> void:
 	super()
 
 
+func unlock_new_buff(demonName)->void:
+		if Global.game_controller.current_scenes.size()>1:
+			match demonName:
+				"Occulum":
+					maw_buff_unlocked.emit(Global.occulum_maw_synergy)
+				"Crawler":
+					maw_buff_unlocked.emit(Global.crawler_maw_synergy)
+				"SpinalOcculum":
+					maw_buff_unlocked.emit(Global.spinal_occulum_maw_synergy)
+				"Wyrm":
+					maw_buff_unlocked.emit(Global.wyrm_maw_synergy)
+				"Hive":
+					maw_buff_unlocked.emit(Global.hive_maw_synergy)
+				"Maw":
+					pass
+					
+					
+					
+					
 func shield(syn_shield:PackedScene,duration:float)->void:
 	super(syn_shield,duration)
 	new_syn_shield_instance.scale = Vector2(3.25,3.25)
