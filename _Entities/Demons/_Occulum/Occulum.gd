@@ -47,15 +47,7 @@ var cost_flat_modifier := 0
 
 var healTimer: Timer
 
-signal crawler_occulum
-signal spinal_occulum_occulum
-signal wyrm_occulum
-signal hive_occulum
-signal maw_occulum
-
-
-
-
+signal occulum_buff_unlocked(buff_to_unlock:String)
 
 
 
@@ -63,9 +55,9 @@ signal maw_occulum
 
 func _ready() -> void:
 	super()
-	crawler_occulum.connect(Global.unlockBuff)
-	
-	
+	occulum_buff_unlocked.connect(Global.unlock_buff)
+
+
 	
 	Global.register_occulum(self)
 	# --- Timer setup ---
@@ -110,10 +102,13 @@ func receive_buff(newDemon) -> void:
 	var demonName :String= (newDemon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
+		unlock_new_buff(demonName)
 		match demonName:
 			"Occulum":
 				pass
 			"Crawler":
+
+				
 				bloodTimer.wait_time = crawlerBloodWaitTime
 				bloodTimer.start()
 			"SpinalOcculum":
@@ -129,10 +124,28 @@ func receive_buff(newDemon) -> void:
 		if is_demo && !is_demo_blood_spawn:
 			demo_blood_pickup()
 
+
 func debuff() -> void:
 	super()
 
-
+func unlock_new_buff(demonName)->void:
+		if Global.game_controller.current_scenes.size()>1:
+			match demonName:
+				"Occulum":
+					pass
+				"Crawler":
+					occulum_buff_unlocked.emit(Global.crawler_occulum_synergy)
+				"SpinalOcculum":
+					occulum_buff_unlocked.emit(Global.spinal_occulum_occulum_synergy)
+				"Wyrm":
+					occulum_buff_unlocked.emit(Global.wyrm_occulum_synergy)
+				"Hive":
+					occulum_buff_unlocked.emit(Global.hive_occulum_synergy)
+				"Maw":
+					occulum_buff_unlocked.emit(Global.maw_occulum_synergy)
+					
+					
+					
 # --- Death ---
 
 func _cleanup() -> void:
@@ -150,7 +163,8 @@ func toggle_highlight() -> void:
 		animSpriteComp.material = original_material
 
 func highlight() -> void:
-	print("Highlight Here")
+	pass
+	#print("Highlight Here")
 
 
 # --- Blood Generation ---
@@ -160,7 +174,7 @@ func _on_BloodTimer_timeout() -> void:
 	bloodTimer.start()
 	
 func force_generate_blood()->Node2D:
-	print("Force Blood Gen")
+	#print("Force Blood Gen")
 	var blood_instance := BloodScene.instantiate()
 	if self.is_in_group("Green"):
 		blood_instance.add_to_group("Green")
@@ -173,7 +187,7 @@ func force_generate_blood()->Node2D:
 	
 func generate_blood() -> Node2D:
 	if Global.gameIsStarted == false:
-		print("Game Not Started Cannot Generate")
+		#print("Game Not Started Cannot Generate")
 		return
 
 	if mawBuff:

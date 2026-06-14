@@ -55,7 +55,7 @@ func add_blood_worth(blood_worth_to_add: float) -> void:
 		#print("New Blood Worth Added 1 ", blood_worth_to_add)
 		bloodWorth = bloodWorth + blood_worth_to_add
 		blood_worth_added = true
-		print(bloodWorth , " N ew Blood Worth Added 1 ", blood_worth_to_add)
+		#print(bloodWorth , " N ew Blood Worth Added 1 ", blood_worth_to_add)
 
 
 func getInjured() -> bool:

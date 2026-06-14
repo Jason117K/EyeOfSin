@@ -163,16 +163,33 @@ func get_demon_image(demon_type : int)->CompressedTexture2D:
 	return demon_images[demon_type]
 	
 func get_demon_image_variations(demon_type:int) -> Array:
-	
+	#print("Demon Varation Images is ", demon_variation_images[demon_type])
 	return demon_variation_images[demon_type]
 	
 # Get a alien animation by type,
-func get_demon_animation(demon_type:int):
+func get_demon_animation(demon_type:int)->Resource:
 	if not demon_animations.has(demon_type):
 		print("ResourceManager: Error - Resource not found for animation:", demon_type)
 		return null
-	print("This Demon Type : ", demon_type, " has animation : ", demon_animations[demon_type])
+	#print("This Demon Type : ", demon_type, " has animation : ", demon_animations[demon_type])
 	return demon_animations[demon_type]
+
+func get_demon_synergy_icon(demon_a:String,demon_b:String, demon_type:int)->CompressedTexture2D:
+	print("Demon A is ",demon_a)
+	print("Demon B is ", demon_b)
+	if demon_b == "Spinalocculum":
+		demon_b = "OccularSpine"
+		
+	for demon_image:CompressedTexture2D in get_demon_image_variations(demon_type):
+		print("Load Path is ", demon_image.load_path)
+		if demon_image.load_path.containsn(demon_a) && demon_image.load_path.containsn(demon_b):
+			#print("Found D Image ")
+			#print(demon_image)
+			return demon_image
+			pass
+	
+	return null
+	
 	
 
 
@@ -200,7 +217,7 @@ func _load_zombie_type_animation_resource(zombie_type:int, file_name:String) -> 
 	zombie_animations[zombie_type]= anim_resource
 
 
-# Get a alien image by type, 
+
 func get_zombie_image(zombie_type:int)-> CompressedTexture2D:
 	if not zombie_images.has(zombie_type):
 		print("ResourceManager: Error - Resource not found for image:",zombie_type)
@@ -214,6 +231,7 @@ func get_zombie_animation(zombie_type:int)->SpriteFrames:
 		return null
 	print("This ", zombie_animations[zombie_type])
 	return zombie_animations[zombie_type]
+	
 	
 func get_empty()->Resource:
 	return empty_animation

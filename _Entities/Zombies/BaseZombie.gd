@@ -159,7 +159,7 @@ func get_attack_comp()->ZombieAttackRefCountedComponent:
 
 func make_demo() -> void:
 	is_demo = true
-	print("Should Make is_demo ", is_demo)
+	#print("Should Make is_demo ", is_demo)
 
 func get_special_description() -> String:
 	return "Zombie"

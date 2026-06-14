@@ -27,11 +27,14 @@ var bloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 var can_damage_zombie := false
 var is_lightning_maw_buff := false
 
+signal spinal_occulum_buff_unlocked(buff_to_unlock:String)
 
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
+	spinal_occulum_buff_unlocked.connect(Global.unlock_buff)
+
 	
 	hide_old_preview()
 
@@ -69,6 +72,7 @@ func receive_buff(bufferName) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
+		unlock_new_buff(demonName)
 		match demonName:
 			"Occulum":
 				pass
@@ -88,9 +92,26 @@ func receive_buff(bufferName) -> void:
 				lightning_maw_buff()
 
 func debuff() -> void:
-	healthComp.debuff()
+	#healthComp.debuff()
 	super()
 
+func unlock_new_buff(demonName)->void:
+		if Global.game_controller.current_scenes.size()>1:
+			match demonName:
+				"Occulum":
+					spinal_occulum_buff_unlocked.emit(Global.occulum_spinal_occulum_synergy)
+				"Crawler":
+					spinal_occulum_buff_unlocked.emit(Global.crawler_spinal_occulum_synergy)
+				"SpinalOcculum":
+					pass
+				"Wyrm":
+					spinal_occulum_buff_unlocked.emit(Global.wyrm_spinal_occulum_synergy)
+				"Hive":
+					spinal_occulum_buff_unlocked.emit(Global.hive_spinal_occulum_synergy)
+				"Maw":
+					spinal_occulum_buff_unlocked.emit(Global.maw_spinal_occulum_synergy)
+					
+					
 func get_demon_icon() -> CompressedTexture2D:
 	return Global.spinal_occulum_icon
 

@@ -147,7 +147,7 @@ func on_hit(area: Area2D) -> void:
 			column_explode = false
 		if silencing:
 			area.silence()
-		print("Calling Take Damage On ", area, " damage is ", damage)
+		#print("Calling Take Damage On ", area, " damage is ", damage)
 		if is_on_fire:
 			pass
 			area.set_on_fire()

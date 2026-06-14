@@ -42,11 +42,13 @@ var buzz_audio: AudioStreamPlayer2D
 @onready var hive_laser_shoot_comp := $HiveLaserShootComp
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 
+signal hive_buff_unlocked(buff_to_unlock:String)
 
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
+	hive_buff_unlocked.connect(Global.unlock_buff)
 	# --- Component init ---
 	swarm.initialize(waitTime)
 	swarm.set_damage(drone_attack_damage)
@@ -103,6 +105,7 @@ func receive_buff(bufferName) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
+		unlock_new_buff(demonName)
 		for drone:Node in swarm.get_available_drones():
 			drone.make_drone_glow()
 
@@ -143,6 +146,23 @@ func _activate_wyrm_buff() -> void:
 func debuff() -> void:
 	super()
 
+func unlock_new_buff(demonName)->void:
+		if Global.game_controller.current_scenes.size()>1:
+			match demonName:
+				"Occulum":
+					hive_buff_unlocked.emit(Global.occulum_hive_synergy)
+				"Crawler":
+					hive_buff_unlocked.emit(Global.crawler_hive_synergy)
+				"SpinalOcculum":
+					hive_buff_unlocked.emit(Global.spinal_occulum_hive_synergy)
+				"Wyrm":
+					hive_buff_unlocked.emit(Global.wyrm_hive_synergy)
+				"Hive":
+					pass
+				"Maw":
+					hive_buff_unlocked.emit(Global.maw_hive_synergy)
+					
+					
 
 # --- Death ---
 

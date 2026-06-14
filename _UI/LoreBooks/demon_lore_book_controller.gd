@@ -134,9 +134,10 @@ var current_demon := DEMON.OCCULUM
 
 func _ready() -> void:
 	pass
+	Global.register_demon_codex(self)
 	synergy_preview_container.hide()
 	$"../../Camera2D".make_current()
-	print("Demon AnimatedTextureRect: _ready() called")
+	#print("Demon AnimatedTextureRect: _ready() called")
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	current_page = current_page + 1
 		# Set default button textures based on current colors
@@ -352,6 +353,10 @@ func _on_maw_pressed() -> void:
 	set_demon_variations(GlobalResourceLoader.DemonType.MAW)
 	_on_alt_1_pressed()
 	
+
+
+
+
 
 
 func _on_back_button_pressed() -> void:
@@ -614,7 +619,7 @@ func _on_alt_5_mouse_exited() -> void:
 
 func _on_alt_6_mouse_entered() -> void:
 	_on_mouse_entered(alt6)
-	print("Alt 6 Area Entered")
+	#print("Alt 6 Area Entered")
 	#red_hive.modulate = Color(1,1,1,1)
 
 

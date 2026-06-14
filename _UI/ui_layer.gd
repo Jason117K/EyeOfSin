@@ -1,14 +1,25 @@
 extends Control
 
+@export var make_green := false
+
 @onready var blood_label := $HUD_Panel/MarginContainer/HUD_HBox/Blood_VBox/BloodAmountLabel
 @onready var health_label := $HUD_Panel/MarginContainer/HUD_HBox/Health_VBox/HealthAmountLabel
-@export var make_green := false
 @onready var health_icon :TextureRect = $HUD_Panel/MarginContainer/HUD_HBox/Health_VBox/Health_Icon
+
+@onready var new_demon_unlocked_button : Button = $DemonUnlockedButton
+@onready var new_demon_icon := $DemonUnlockedButton/NewUnlock_Panel/MarginContainer/NewUnlock_Vbox/DemonUnlockedIcon
+
+@onready var demon_selection_menu := $"../DemonSelectionMenu"
+
+var current_demon_synergies : Array 
+var all_demon_types :Dictionary = {"Occulum":0 ,"Crawler" : 1, "Hive":2, "Maw":3,"Spinalocculum":4,"Wyrm":5}
+var synergy_split : Array
 
 var blood_amount: float = 50
 var rect_region : Rect2 
 
 func _ready() -> void:
+	new_demon_unlocked_button.hide()
 	Global.register_ui_layer(self)
 	if blood_label != null:
 		blood_label.text = str(blood_amount)
@@ -35,3 +46,43 @@ func set_initial_blood(new_blood_amount: float) -> void:
 	blood_amount = new_blood_amount
 	if blood_label != null:
 		blood_label.text = str(blood_amount)
+
+
+func set_unlock_notif(synergy : String)->void:
+	print("Set Unlock Notif For ", synergy)
+	if current_demon_synergies.has(synergy):
+		return 
+	current_demon_synergies.append(synergy)
+	new_demon_unlocked_button.show()
+	set_icon_texture(synergy)
+
+	
+func set_icon_texture(synergy:String)->void:
+	synergy_split = split_capitals(synergy)
+	new_demon_icon.texture = GlobalResourceLoader.get_demon_synergy_icon(synergy_split[0],synergy_split[1], all_demon_types[synergy_split[1]])
+	
+func split_capitals(s: String) -> Array:
+	var result: Array = []
+	var current: String = ""
+	for c in s:
+		if c == c.to_upper() and c != c.to_lower() and current != "":
+			result.append(current)
+			current = ""
+		current += c
+	if current != "":
+		result.append(current)
+	return result
+
+
+func _on_demon_unlocked_button_pressed() -> void:
+	print("Demon Unlock Button Pressed")
+	print("Current Demon Synergies was ",current_demon_synergies )
+	Global.navigate_to_buff(current_demon_synergies.pop_back())
+	print("Current Demon Synergies is now ",current_demon_synergies )
+	if current_demon_synergies.size() > 0:
+		set_icon_texture(current_demon_synergies[0])
+		return
+		
+	new_demon_unlocked_button.hide()
+	
+	

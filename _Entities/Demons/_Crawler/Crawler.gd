@@ -29,11 +29,13 @@ var canAttackSetTrueOnce: bool = false
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 
+signal crawler_buff_unlocked(buff_to_unlock:String)
 
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
+	crawler_buff_unlocked.connect(Global.unlock_buff)
 	hide_old_preview()
 
 func hide_old_preview()->void:
@@ -75,7 +77,7 @@ func receive_buff(newDemon) -> void:
 	var demonName: String = (newDemon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
-		
+		unlock_new_buff(demonName)
 		projectile_shoot_component.receive_buff(demonName)
 		match demonName:
 			"Occulum":
@@ -101,10 +103,28 @@ func receive_buff(newDemon) -> void:
 		
 
 func debuff() -> void:
-	animSpriteComp.debuff()
+	#animSpriteComp.debuff()
 	super()
 
 
+func unlock_new_buff(demonName)->void:
+		if Global.game_controller.current_scenes.size()>1:
+			match demonName:
+				"Occulum":
+					crawler_buff_unlocked.emit(Global.occulum_crawler_synergy)
+				"Crawler":
+					pass
+				"SpinalOcculum":
+					crawler_buff_unlocked.emit(Global.spinal_occulum_crawler_synergy)
+				"Wyrm":
+					crawler_buff_unlocked.emit(Global.wyrm_crawler_synergy)
+				"Hive":
+					crawler_buff_unlocked.emit(Global.hive_crawler_synergy)
+				"Maw":
+					crawler_buff_unlocked.emit(Global.maw_crawler_synergy)
+					
+					
+					
 # --- Death ---
 
 func _cleanup() -> void:

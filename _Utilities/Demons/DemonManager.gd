@@ -83,7 +83,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				var temp_instance = selected_demon_scene.instantiate()
 				
 				var cost :float= temp_instance.get_cost()
-				print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
+				#print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 				if(parentName == "Level3"):
 					#print("Grid map size is ", grid_map.size())
 					if grid_map.size() == 0 && selected_demon_scene:
@@ -107,7 +107,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				#TODO Make Demons Handle Their Own Selection After Being Placed
 				#print("Clicked1 and Demon Scene Null NN")
 				if selection_menu.getCanRemove():
-					print("Clicked1 and Time to Clear Space")
+					#print("Clicked1 and Time to Clear Space")
 					clear_space(grid_pos)
 					#selection_menu.setCanRemoveFalse()
 				if detect_demon(grid_pos):

@@ -66,11 +66,13 @@ var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2
 var bufferName: String
 
+signal wyrm_buff_unlocked(buff_to_unlock:String)
 
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
+	wyrm_buff_unlocked.connect(Global.unlock_buff)
 	set_process(true)  # Bob animation requires per-frame updates
 	# --- Demon-specific collision ---
 	_init_demon_collision()
@@ -133,6 +135,7 @@ func receive_buff(demon) -> void:
 	var demonName : String = (demon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
+		unlock_new_buff(demonName)
 		match demonName:
 			"Occulum":
 				projectile_shoot_component.isOcculumBuffed = true
@@ -164,7 +167,23 @@ func debuff() -> void:
 		#laserShootComp2.unBloodBuff()
 	super()
 
-
+func unlock_new_buff(demonName)->void:
+		if Global.game_controller.current_scenes.size()>1:
+			match demonName:
+				"Occulum":
+					wyrm_buff_unlocked.emit(Global.occulum_wyrm_synergy)
+				"Crawler":
+					wyrm_buff_unlocked.emit(Global.crawler_wyrm_synergy)
+				"SpinalOcculum":
+					wyrm_buff_unlocked.emit(Global.spinal_occulum_wyrm_synergy)
+				"Wyrm":
+					pass
+				"Hive":
+					wyrm_buff_unlocked.emit(Global.hive_wyrm_synergy)
+				"Maw":
+					wyrm_buff_unlocked.emit(Global.maw_wyrm_synergy)
+					
+					
 # --- Death ---
 
 func _cleanup() -> void:

@@ -220,7 +220,7 @@ func _cleanup() -> void:
 
 func hide_preview()->void:
 	if get_preview_nodes() != null:
-		print(get_preview_nodes())
+		#print(get_preview_nodes())
 		for node in get_preview_nodes().get_children():
 			node.hide()
 

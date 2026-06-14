@@ -289,6 +289,11 @@ func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 
 
 func restore_previous_scene() -> void:
+	print("Will Now Restore Previous Scene")
+	if current_scenes.size() > 1:
+		print("Should Restore Dual Scenes")
+		restore_dual_scenes()
+		return 
 	var scene_to_restore: Node = previous_scenes.pop_back()
 	if scene_to_restore == null:
 		return
@@ -303,11 +308,14 @@ func restore_previous_scene() -> void:
 
 
 func restore_dual_scenes() -> void:
+	print("Will Now Restore Dual Scenes")
 	#pause_button.visible = true
 	if current_scenes.size() < 2:
+		print("Should Instead Restore Previous Scenes ")
 		restore_previous_scene()
 		return 
 	if is_instance_valid(current_scene) and current_scene not in current_scenes:
+		print("Will Now Remove & Free ", current_scene)
 		_remove_and_free(current_scene)
 
 	await get_tree().process_frame

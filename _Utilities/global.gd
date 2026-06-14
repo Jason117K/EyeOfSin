@@ -122,6 +122,13 @@ var portal_progress_bar_1 : ProgressBar
 @onready var death_mark := preload("res://_Entities/SynAbility/syn_ability_mark.tscn")
 @onready var shroomie := preload("res://_Entities/SynAbility/syn_torch_ability.tscn")
 
+signal demon_buff_unlocked(synergy_unlocked : String) 
+
+var crawler_occulum_synergy  := "CrawlerOcculum" 
+var spinal_occulum_occulum_synergy := "SpinalocculumOcculum" 
+var wyrm_occulum_synergy := "WyrmOcculum" 
+var hive_occulum_synergy := "HiveOcculum" 
+var maw_occulum_synergy := "MawOcculum" 
 
 var is_crawler_occulum  := false 
 var is_spinal_occulum_occulum := false 
@@ -130,8 +137,98 @@ var is_hive_occulum := false
 var is_maw_occulum := false 
 
 
+var crawler_wyrm_synergy := "CrawlerWyrm"
+var occulum_wyrm_synergy := "OcculumWyrm"
+var spinal_occulum_wyrm_synergy := "SpinalocculumWyrm"
+var hive_wyrm_synergy := "HiveWyrm"
+var maw_wyrm_synergy := "MawWyrm"
+
+var is_crawler_wyrm  := false 
+var is_occulum_wyrm := false 
+var is_spinal_occulum_wyrm := false 
+var is_hive_wyrm := false 
+var is_maw_wyrm := false 
 
 
+var crawler_spinal_occulum_synergy := "CrawlerSpinalocculum"
+var occulum_spinal_occulum_synergy := "OcculumSpinalocculum"
+var wyrm_spinal_occulum_synergy := "WyrmSpinalocculum"
+var maw_spinal_occulum_synergy := "MawSpinalocculum"
+var hive_spinal_occulum_synergy := "HiveSpinalocculum"
+
+var is_crawler_spinal_occulum  := false 
+var is_occulum_spinal_occulum := false 
+var is_wyrm_spinal_occulum_synergy := false 
+var is_maw_spinal_occulum_synergy := false 
+var is_hive_spinal_occulum_synergy := false 
+
+
+
+var occulum_crawler_synergy := "OcculumCrawler"
+var spinal_occulum_crawler_synergy := "SpinalocculumCrawler"
+var wyrm_crawler_synergy := "WyrmCrawler"
+var maw_crawler_synergy := "MawCrawler"
+var hive_crawler_synergy := "HiveCrawler"
+
+var is_occulum_crawler  := false 
+var is_spinal_occulum_crawler := false 
+var is_wyrm_crawler := false 
+var is_maw_crawler := false 
+var is_hive_crawler := false 
+
+
+
+var maw_hive_synergy := "MawHive"
+var crawler_hive_synergy := "CrawlerHive"
+var wyrm_hive_synergy := "WyrmHive"
+var occulum_hive_synergy := "OcculumHive"
+var spinal_occulum_hive_synergy := "SpinalocculumHive"
+
+var is_maw_hive  := false 
+var is_crawler_hive := false 
+var is_wyrm_hive := false 
+var is_occulum_hive := false 
+var is_spinal_occulum_hive := false 
+
+
+
+var crawler_maw_synergy := "CrawlerMaw"
+var spinal_occulum_maw_synergy := "SpinalocculumMaw"
+var hive_maw_synergy := "HiveMaw"
+var wyrm_maw_synergy := "WyrmMaw"
+var occulum_maw_synergy := "OcculumMaw"
+
+var is_crawler_maw  := false 
+var is_spinal_occulum_maw := false 
+var is_hive_maw := false 
+var is_wyrm_maw := false 
+var is_occulum_maw := false 
+
+var all_demon_synergies : Array = [crawler_occulum_synergy,spinal_occulum_occulum_synergy, wyrm_occulum_synergy, 
+	hive_occulum_synergy,maw_occulum_synergy,crawler_wyrm_synergy,occulum_wyrm_synergy,spinal_occulum_wyrm_synergy,
+	hive_wyrm_synergy, maw_wyrm_synergy, crawler_spinal_occulum_synergy , occulum_spinal_occulum_synergy, 
+	wyrm_spinal_occulum_synergy, maw_spinal_occulum_synergy, hive_spinal_occulum_synergy, occulum_crawler_synergy,
+	spinal_occulum_crawler_synergy, wyrm_crawler_synergy,maw_crawler_synergy, hive_crawler_synergy, maw_hive_synergy,
+	crawler_hive_synergy, wyrm_hive_synergy, occulum_hive_synergy, spinal_occulum_hive_synergy, crawler_maw_synergy,
+	spinal_occulum_maw_synergy, hive_maw_synergy, wyrm_maw_synergy, occulum_maw_synergy]
+
+var unlocked_demon_synergies_dict : Dictionary = \
+	{crawler_occulum_synergy : is_crawler_occulum, spinal_occulum_occulum_synergy : is_spinal_occulum_occulum, 
+	wyrm_occulum_synergy : is_wyrm_occulum, hive_occulum_synergy : is_hive_occulum , maw_occulum_synergy : is_maw_occulum,
+	crawler_wyrm_synergy : is_crawler_wyrm, occulum_wyrm_synergy : is_occulum_wyrm, spinal_occulum_wyrm_synergy : is_spinal_occulum_wyrm,
+	hive_wyrm_synergy : is_hive_wyrm, maw_wyrm_synergy : is_maw_wyrm , crawler_spinal_occulum_synergy : is_crawler_spinal_occulum,
+	occulum_spinal_occulum_synergy : is_occulum_spinal_occulum ,wyrm_spinal_occulum_synergy : is_wyrm_spinal_occulum_synergy,
+	maw_spinal_occulum_synergy : is_maw_spinal_occulum_synergy,hive_spinal_occulum_synergy : is_hive_spinal_occulum_synergy,
+	occulum_crawler_synergy :is_occulum_crawler,spinal_occulum_crawler_synergy:is_spinal_occulum_crawler,wyrm_crawler_synergy : is_wyrm_crawler,
+	maw_crawler_synergy : is_maw_crawler, hive_crawler_synergy : is_hive_crawler,maw_hive_synergy : is_maw_hive, 
+	crawler_hive_synergy :is_crawler_hive,wyrm_hive_synergy:is_wyrm_hive,occulum_hive_synergy:is_occulum_hive,
+	spinal_occulum_hive_synergy: is_spinal_occulum_hive,crawler_maw_synergy: is_crawler_maw,spinal_occulum_maw_synergy : is_spinal_occulum_maw,
+	hive_maw_synergy :is_hive_maw, wyrm_maw_synergy : is_wyrm_maw, occulum_maw_synergy :  is_occulum_maw  }
+
+var current_synergies : Array 
+
+var demon_codex : Control 
+var should_navigate_demon_codex : bool 
 
 func _process(delta: float) -> void:
 	if get_tree().paused:
@@ -257,6 +354,7 @@ func unHideDemonSelectionMenu() -> void:
 						 
 	#if demon_selection_menu != null:
 		#demon_selection_menu.visible = true
+	
 		
 func swap_portal_button() -> void:
 	#TODO
@@ -808,3 +906,178 @@ func start_game()->void:
 	
 func register_occulum(new_occulum:Demon)->void:
 	all_registered_occulum.append(new_occulum)
+
+func get_current_ui_layer()->Control:
+	var on_purple :bool= game_controller.on_purple_scene()
+	for ui_layer in ui_layers:
+		if on_purple && ui_layer.make_green == false:
+			return ui_layer
+		if !on_purple && ui_layer.make_green == true:
+			return ui_layer
+	return null
+			
+	
+
+func unlock_buff(unlocked_buff : String)->void:
+	for synergy : String in all_demon_synergies:
+		if synergy == unlocked_buff:
+			print("this synergy ", synergy , " is A MATCH")
+			if unlocked_demon_synergies_dict[synergy] == false:
+				unlocked_demon_synergies_dict[synergy] = true
+				get_current_ui_layer().set_unlock_notif(synergy)
+			
+func navigate_to_buff(new_synergy:String)->void:
+	current_synergies = split_capitals(new_synergy)
+	game_controller.change_scene_with_pause("res://_UI/LoreBooks/demon_lore_book.tscn")
+	should_navigate_demon_codex = true 
+	
+func register_demon_codex(new_demon_codex : Control)->void:
+	demon_codex = new_demon_codex
+	await demon_codex.ready
+	if should_navigate_demon_codex:
+		should_navigate_demon_codex = false
+		continue_navigate_to_buff(current_synergies)
+	
+func continue_navigate_to_buff(current_synergies : Array)->void:
+	var demon_a :String= current_synergies[0]
+	var demon_b :String= current_synergies[1]
+	print("Demon A Is ", demon_a)
+	print("Demon B is ", demon_b)
+
+	match demon_b:
+		"Crawler":
+			demon_codex._on_crawler_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_crawler(demon_a)
+		"Occulum":
+			demon_codex._on_occulum_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_occulum(demon_a)
+		"Hive":
+			demon_codex._on_hive_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_hive(demon_a)
+		"Spinalocculum":
+			demon_codex._on_spinalOcculum_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_spinal_occulum(demon_a)
+		"Maw":
+			demon_codex._on_maw_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			#finish_navigate_to_buff_maw(demon_a)
+		"Wyrm":
+			demon_codex._on_wrym_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_wyrm(demon_a)
+	
+func finish_navigate_to_buff_occulum(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			demon_codex._on_alt_4_pressed()
+		"Occulum":
+			pass
+		"Hive":
+			demon_codex._on_alt_3_pressed()
+		"Spinalocculum":
+			demon_codex._on_alt_5_pressed()
+		"Maw":
+			demon_codex._on_alt_2_pressed()
+		"Wyrm":
+			demon_codex._on_alt_6_pressed()	
+
+func finish_navigate_to_buff_crawler(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			pass
+		"Occulum":
+			demon_codex._on_alt_4_pressed()
+		"Hive":
+			demon_codex._on_alt_2_pressed()
+		"Spinalocculum":
+			demon_codex._on_alt_5_pressed()
+		"Maw":
+			demon_codex._on_alt_3_pressed()
+		"Wyrm":
+			demon_codex._on_alt_6_pressed()	
+			
+func finish_navigate_to_buff_spinal_occulum(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			demon_codex._on_alt_5_pressed()
+		"Occulum":
+			demon_codex._on_alt_2_pressed()
+		"Hive":
+			demon_codex._on_alt_3_pressed()
+		"Spinalocculum":
+			pass
+		"Maw":
+			demon_codex._on_alt_4_pressed()
+		"Wyrm":
+			demon_codex._on_alt_6_pressed()	
+			
+func finish_navigate_to_buff_wyrm(demon_a:String)->void:
+	print("Demon A is still, ", demon_a)
+	match demon_a:
+		"Crawler":
+			demon_codex._on_alt_5_pressed()
+		"Occulum":
+			demon_codex._on_alt_2_pressed()
+		"Hive":
+			demon_codex._on_alt_3_pressed()
+		"Spinalocculum":
+			demon_codex._on_alt_6_pressed()
+		"Maw":
+			demon_codex._on_alt_4_pressed()
+		"Wyrm":
+			pass
+			
+func finish_navigate_to_buff_hive(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			demon_codex._on_alt_3_pressed()
+		"Occulum":
+			demon_codex._on_alt_4_pressed()
+		"Hive":
+			pass
+		"Spinalocculum":
+			demon_codex._on_alt_5_pressed()
+		"Maw":
+			demon_codex._on_alt_2_pressed()
+		"Wyrm":
+			demon_codex._on_alt_6_pressed()	
+			
+			
+func finish_navigate_to_buff_maw(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			demon_codex._on_alt_3_pressed()
+		"Occulum":
+			demon_codex._on_alt_4_pressed()
+		"Hive":
+			demon_codex._on_alt_2_pressed()
+		"Spinalocculum":
+			demon_codex._on_alt_5_pressed()
+		"Maw":
+			pass
+		"Wyrm":
+			demon_codex._on_alt_6_pressed()	
+			
+
+func split_capitals(s: String) -> Array:
+	var result: Array = []
+	var current: String = ""
+	for c in s:
+		if c == c.to_upper() and c != c.to_lower() and current != "":
+			result.append(current)
+			current = ""
+		current += c
+	if current != "":
+		result.append(current)
+	return result	
+	

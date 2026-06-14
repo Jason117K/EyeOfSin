@@ -196,17 +196,19 @@ func clear_preview() -> void:
 			zombie.queue_free()
 	preview_zombies.clear()
 	zombies_alive = 0
-	for child in slot_b.get_children():
-		if child.has_method("die"):
-			child.die()
-		else:
-			child.queue_free()
-	for child in slot_a.get_children():
-		if child.has_method("die"):
-			child.die()
-		else:
-			child.queue_free()
-		
+	if slot_b != null:
+		for child in slot_b.get_children():
+			if child.has_method("die"):
+				child.die()
+			else:
+				child.queue_free()
+	if slot_a != null:
+		for child in slot_a.get_children():
+			if child.has_method("die"):
+				child.die()
+			else:
+				child.queue_free()
+			
 func get_slot_b_number(demon_name: String) -> int:
 	if not DEMON_SLOT_B.has(demon_name):
 		push_warning("SynergyPreview: no B slot for '%s'" % demon_name)

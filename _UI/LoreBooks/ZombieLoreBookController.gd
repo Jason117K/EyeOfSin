@@ -44,7 +44,7 @@ var current_zobmie_texture : Texture2D
 var current_page := 2
 
 func _ready() -> void:
-	print("Zombie AnimatedTextureRect: _ready() called")
+	#print("Zombie AnimatedTextureRect: _ready() called")
 	zombieBookVisual.go_to_page(current_page)
 	current_page = current_page + 1
 	

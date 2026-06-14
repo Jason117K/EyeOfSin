@@ -31,7 +31,9 @@ var card_displacement: float = 0.0
 var crawler_scene := preload("res://_Entities/Demons/_Crawler/Crawler.tscn")
 var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
 var spinalOcculum_scene := preload("res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn")
+#var maw_scene := preload("res://_Entities/Demons/_Maw/MawTest.tscn")
 var maw_scene := preload("res://_Entities/Demons/_Maw/Maw.tscn")
+
 var wyrm_scene := preload("res://_Entities/Demons/_Wyrm/Wyrm.tscn")
 var hive_scene := preload("res://_Entities/Demons/_Hive/Hive.tscn")
 var heart_scene := preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
@@ -230,7 +232,7 @@ func _on_HiveButton_pressed() -> void:
 
 
 func create_preview(demon_scene:PackedScene) -> void:
-	print("MAKE A PREVIEW", demon_scene)
+	#print("MAKE A PREVIEW", demon_scene)
 	# Clear the last preview
 	#print("Clearing Preview Because of Create Preview")
 	clear_preview()
@@ -241,7 +243,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 	var preview_node : Node = find_preview_nodes(temp_demon)
 	
 	if preview_node:
-		print("Found Preview Node : ", preview_node)
+		#print("Found Preview Node : ", preview_node)
 		# Duplicate all child sprites
 		for child in preview_node.get_children():
 			#print("Preview Node Child is ", child)
