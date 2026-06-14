@@ -1,28 +1,48 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var occulumButton := $"../../HBoxContainer/AllDemonRows/Row1/Occulum"
-@onready var crawlerButton := $"../../HBoxContainer/AllDemonRows/Row1/Crawler"
-@onready var spinalOcculumButton := $"../../HBoxContainer/AllDemonRows/Row2/Walnut"
-@onready var wyrmButton := $"../../HBoxContainer/AllDemonRows/Row3/Wyrm"
-@onready var hiveButton := $"../../HBoxContainer/AllDemonRows/Row2/Hive"
-@onready var mawButton := $"../../HBoxContainer/AllDemonRows/Row2/Maw"
+@onready var occulumButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum"
+@onready var crawlerButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler"
+@onready var spinalOcculumButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut"
+@onready var wyrmButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm"
+@onready var hiveButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive"
+@onready var mawButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw"
+
+@onready var synergy_preview_container := $"../../CurrentDemonVboxContainer/SynergyPreviewContainer"
 
 @onready var currentDemonLabel := $"../../CurrentDemonLabel"
 @onready var bgDarken := $"../../BGDarkEn"
 @onready var backOutDetailsButton := $"../../BackOutDetails"
-@onready var staticPreview := $"../../StaticPreview"
+@onready var staticPreview := $"../../StaticPreviewPanelContainer/StaticPreview"
+@onready var static_preview_container := $"../../StaticPreviewPanelContainer"
 
 var current_synergy_preview: Node = null
 
-@onready var alt1 := $"../../HBoxContainer/AllDemonRows/AltRow1/Alt1"
-@onready var alt2 := $"../../HBoxContainer/AllDemonRows/AltRow1/Alt2"
-@onready var alt3 := $"../../HBoxContainer/AllDemonRows/AltRow2/Alt3"
-@onready var alt4 := $"../../HBoxContainer/AllDemonRows/AltRow2/Alt4"
-@onready var alt5 := $"../../HBoxContainer/AllDemonRows/AltRow3/Alt5"
-@onready var alt6 := $"../../HBoxContainer/AllDemonRows/AltRow3/Alt6"
+@onready var alt1 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1"
+@onready var alt2 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2"
+@onready var alt3 :=$"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3"
+@onready var alt4 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4"
+@onready var alt5 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5"
+@onready var alt6 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6"
 
-@onready var preview := $"../../CurrentDemonVboxContainer/SynergyPreview"
+@onready var alt_row_1 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1"
+@onready var alt_row_2 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2"
+@onready var alt_row_3 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3"
+
+@onready var row_1 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1"
+@onready var row_2 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2"
+@onready var row_3 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3"
+
+@onready var preview := $"../../CurrentDemonVboxContainer/SynergyPreviewContainer/SynergyMarginContainer/SynergyPreview"
+
+@onready var red_display_card := load("res://_Entities/Demons/_Maw/EmptyDisplayCard_RED.png")
+
+@onready var red_occulum  := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Occulum"
+@onready var red_crawler := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler"
+@onready var red_spinal_occulum := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut"
+@onready var red_maw := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw"
+@onready var red_wyrm := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm"
+@onready var red_hive := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive"
 
 var is_in_synergy := false
 
@@ -97,6 +117,10 @@ var SynergyPreviewScene := preload("res://_UI/GameDemonstrations/SynergyPreview/
 
 var current_page := 2
 
+var hover_target: float = 0.0
+
+var tween_hover : Tween
+
 enum DEMON {
 	OCCULUM,
 	CRAWLER,
@@ -110,6 +134,7 @@ var current_demon := DEMON.OCCULUM
 
 func _ready() -> void:
 	pass
+	synergy_preview_container.hide()
 	$"../../Camera2D".make_current()
 	print("Demon AnimatedTextureRect: _ready() called")
 	$"../../InteractiveBook2D".go_to_page(current_page)
@@ -141,7 +166,7 @@ func _ready() -> void:
 
 # Update all button textures based on current color settings
 func _update_button_textures() -> void:
-	
+	return
 	# Set Melee Alien buttons
 	if occulumButton != null:
 		occulumButton.texture_normal = GlobalResourceLoader.get_demon_image(
@@ -178,12 +203,14 @@ func _create_synergy_preview(demon_a: String, demon_b: String) -> CenterContaine
 func _show_synergy_preview(demon_a: String, demon_b: String) -> void:
 	_clear_synergy_preview()
 	staticPreview.visible = false
+	synergy_preview_container.show()
 	current_synergy_preview = _create_synergy_preview(demon_a, demon_b)
 
 func _clear_synergy_preview() -> void:
 	if current_synergy_preview and is_instance_valid(current_synergy_preview):
 		#current_synergy_preview.queue_free()
 		#current_synergy_preview = null
+		synergy_preview_container.hide()
 		current_synergy_preview.hide()
 		current_synergy_preview.clear_preview()
 
@@ -199,35 +226,38 @@ func set_demon_variations(newDemon: GlobalResourceLoader.DemonType) -> void:
 	is_in_synergy = true
 	var new_images := []
 	new_images = GlobalResourceLoader.get_demon_image_variations(newDemon)
-	$"../../HBoxContainer/AllDemonRows/Row1".visible = false
-	$"../../HBoxContainer/AllDemonRows/Row2".visible = false
-	$"../../HBoxContainer/AllDemonRows/Row3".visible = false
+	row_1.visible = false
+	row_2.visible = false
+	row_3.visible = false
 	
-	$"../../HBoxContainer/AllDemonRows/AltRow1".visible = true
-	$"../../HBoxContainer/AllDemonRows/AltRow2".visible = true
-	$"../../HBoxContainer/AllDemonRows/AltRow3".visible = true
+	alt_row_1.visible = true
+	alt_row_2.visible = true
+	alt_row_3.visible = true
 
 	var count := 0
+	
 	for this_image in new_images:
+		
 		match count:
 			0:
-				$"../../HBoxContainer/AllDemonRows/AltRow1/Alt1".texture_normal = this_image
+				alt1.texture_normal = this_image
 			1:
-				$"../../HBoxContainer/AllDemonRows/AltRow1/Alt2".texture_normal= this_image
+				alt2.texture_normal= this_image
 			2:
-				$"../../HBoxContainer/AllDemonRows/AltRow2/Alt3".texture_normal= this_image
+				alt3.texture_normal= this_image
 			3:
-				$"../../HBoxContainer/AllDemonRows/AltRow2/Alt4".texture_normal= this_image
+				alt4.texture_normal= this_image
 			4:
-				$"../../HBoxContainer/AllDemonRows/AltRow3/Alt5".texture_normal= this_image
+				alt5.texture_normal= this_image
 			5:
-				$"../../HBoxContainer/AllDemonRows/AltRow3/Alt6".texture_normal= this_image
+				alt6.texture_normal= this_image
 				
 		count+=1
 	
 	pass
 	
 func _on_occulum_pressed() -> void:
+	clear_all_focus()
 	print("Occulum Pressed")
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
@@ -243,6 +273,7 @@ func _on_occulum_pressed() -> void:
 	_on_alt_1_pressed()
 
 func _on_crawler_pressed() -> void:
+	clear_all_focus()
 	visible = true
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
@@ -259,6 +290,7 @@ func _on_crawler_pressed() -> void:
 
 
 func _on_spinalOcculum_pressed() -> void:
+	clear_all_focus()
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
@@ -275,6 +307,7 @@ func _on_spinalOcculum_pressed() -> void:
 
 
 func _on_wrym_pressed() -> void:
+	clear_all_focus()
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
@@ -289,6 +322,7 @@ func _on_wrym_pressed() -> void:
 	_on_alt_1_pressed()
 
 func _on_hive_pressed() -> void:
+	clear_all_focus()
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
@@ -304,6 +338,7 @@ func _on_hive_pressed() -> void:
 
 
 func _on_maw_pressed() -> void:
+	clear_all_focus()
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
@@ -332,14 +367,16 @@ func _on_back_button_pressed() -> void:
 		Global.game_controller.restore_previous_scene()
 	else:
 		is_in_synergy = false
-		$"../../HBoxContainer/AllDemonRows/Row1".visible = true
-		$"../../HBoxContainer/AllDemonRows/Row2".visible = true
-		$"../../HBoxContainer/AllDemonRows/Row3".visible = true
-	
-		$"../../HBoxContainer/AllDemonRows/AltRow1".visible = false
-		$"../../HBoxContainer/AllDemonRows/AltRow2".visible = false
-		$"../../HBoxContainer/AllDemonRows/AltRow3".visible = false
+		row_1.visible = true
+		row_2.visible = true
+		row_3.visible = true
+		clear_all_focus()
+		alt_row_1.visible = false
+		alt_row_2.visible = false
+		alt_row_3.visible = false
 		current_page = current_page - 1
+		staticPreview.show()
+		static_preview_container.show()
 		$"../../InteractiveBook2D".go_to_page(current_page)
 	
 	
@@ -351,11 +388,14 @@ func _on_back_out_details_pressed() -> void:
 
 
 func _on_alt_1_pressed() -> void:
+	clear_all_focus()
+	red_occulum.modulate = Color(1,1,1,1)
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
 	visible = false
 	staticPreview.visible = true
+	static_preview_container.show()
 	match current_demon:
 		DEMON.OCCULUM:
 			staticPreview.texture = alt1.texture_normal
@@ -378,9 +418,12 @@ func _on_alt_1_pressed() -> void:
 
 
 func _on_alt_2_pressed() -> void:
+	clear_all_focus()
+	red_crawler.modulate = Color(1,1,1,1)
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = false
+	static_preview_container.hide()
 	match current_demon:
 		DEMON.OCCULUM:
 			set_text(occulumMaw)
@@ -403,9 +446,12 @@ func _on_alt_2_pressed() -> void:
 
 
 func _on_alt_3_pressed() -> void:
+	clear_all_focus()
+	red_spinal_occulum.modulate = Color(1,1,1,1)
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = false
+	static_preview_container.hide()
 	match current_demon:
 		DEMON.OCCULUM:
 			set_text(occulumHive)
@@ -428,9 +474,12 @@ func _on_alt_3_pressed() -> void:
 
 
 func _on_alt_4_pressed() -> void:
+	clear_all_focus()
+	red_maw.modulate = Color(1,1,1,1)
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = false
+	static_preview_container.hide()
 	match current_demon:
 		DEMON.OCCULUM:
 			set_text(occulumCrawler)
@@ -453,9 +502,12 @@ func _on_alt_4_pressed() -> void:
 
 
 func _on_alt_5_pressed() -> void:
+	clear_all_focus()
+	red_wyrm.modulate = Color(1,1,1,1) 
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = false
+	static_preview_container.hide()
 	match current_demon:
 		DEMON.OCCULUM:
 			set_text(occulumSpinalOcculum)
@@ -478,9 +530,12 @@ func _on_alt_5_pressed() -> void:
 
 
 func _on_alt_6_pressed() -> void:
+	clear_all_focus()
+	red_hive.modulate = Color(1,1,1,1)
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	visible = false
+	static_preview_container.hide()
 	match current_demon:
 		DEMON.OCCULUM:
 			set_text(occulumWyrm)
@@ -500,3 +555,162 @@ func _on_alt_6_pressed() -> void:
 		DEMON.MAW:
 			set_text(mawWyrm)
 			_show_synergy_preview("Maw", "Wyrm")
+
+#Tween On Hover
+func _on_alt_1_mouse_entered() -> void:
+	_on_mouse_entered(alt1)
+	#red_occulum.modulate = Color(1,1,1,1)
+
+func _on_alt_1_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(alt1)
+	#red_occulum.modulate = Color(1,1,1,0)
+
+
+func _on_alt_2_mouse_entered() -> void:
+	_on_mouse_entered(alt2)
+	#red_crawler.modulate = Color(1,1,1,1)
+
+
+func _on_alt_2_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(alt2)
+	#red_crawler.modulate = Color(1,1,1,0)
+
+
+func _on_alt_3_mouse_entered() -> void:
+	_on_mouse_entered(alt3)
+	#red_spinal_occulum.modulate = Color(1,1,1,1)
+	pass
+
+
+func _on_alt_3_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(alt3)
+	#red_spinal_occulum.modulate = Color(1,1,1,0)
+
+
+func _on_alt_4_mouse_entered() -> void:
+	_on_mouse_entered(alt4)
+	#red_maw.modulate = Color(1,1,1,1)
+
+
+func _on_alt_4_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(alt4)
+	#red_maw.modulate = Color(1,1,1,0)
+
+
+func _on_alt_5_mouse_entered() -> void:
+	_on_mouse_entered(alt5)
+	#red_wyrm.modulate = Color(1,1,1,1)
+
+
+func _on_alt_5_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(alt5)
+	#red_wyrm.modulate = Color(1,1,1,0)
+
+
+func _on_alt_6_mouse_entered() -> void:
+	_on_mouse_entered(alt6)
+	print("Alt 6 Area Entered")
+	#red_hive.modulate = Color(1,1,1,1)
+
+
+func _on_alt_6_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(alt6)
+	#red_hive.modulate = Color(1,1,1,0)
+
+
+func _on_occulum_mouse_entered() -> void:
+	_on_mouse_entered(occulumButton)
+	#red_occulum.modulate = Color(1,1,1,1)
+
+
+func _on_occulum_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(occulumButton)
+	#red_occulum.modulate = Color(1,1,1,0)
+
+
+func _on_crawler_mouse_entered() -> void:
+	_on_mouse_entered(crawlerButton)
+	#red_crawler.modulate = Color(1,1,1,1)
+
+
+func _on_crawler_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(crawlerButton)
+	#red_crawler.modulate = Color(1,1,1,0)
+
+
+func _on_walnut_mouse_entered() -> void:
+	_on_mouse_entered(spinalOcculumButton)
+	#red_spinal_occulum.modulate = Color(1,1,1,1)
+
+
+func _on_walnut_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(spinalOcculumButton)
+	#red_spinal_occulum.modulate = Color(1,1,1,0)
+
+
+func _on_maw_mouse_entered() -> void:
+	_on_mouse_entered(mawButton)
+	#red_maw.modulate = Color(1,1,1,1)
+	
+
+func _on_maw_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(mawButton)
+	#red_maw.modulate = Color(1,1,1,0)
+
+
+func _on_wyrm_mouse_entered() -> void:
+	_on_mouse_entered(wyrmButton)
+	#red_wyrm.modulate = Color(1,1,1,1)
+
+
+func _on_wyrm_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(wyrmButton)
+	#red_wyrm.modulate = Color(1,1,1,0)
+
+
+func _on_hive_mouse_entered() -> void:
+	_on_mouse_entered(hiveButton)
+	#red_hive.modulate = Color(1,1,1,1)
+
+
+func _on_hive_mouse_exited() -> void:
+	pass
+	_on_mouse_exited(hiveButton)
+	#red_hive.modulate = Color(1,1,1,0)
+
+func clear_all_focus()->void:
+	red_occulum.modulate = Color(1,1,1,0)
+	red_crawler.modulate = Color(1,1,1,0)
+	red_spinal_occulum.modulate = Color(1,1,1,0)
+	red_maw.modulate = Color(1,1,1,0)
+	red_wyrm.modulate = Color(1,1,1,0)
+	red_hive.modulate = Color(1,1,1,0)
+
+func _on_mouse_entered(button_to_tween) -> void: 
+	hover_target = 1.0
+	if tween_hover and tween_hover.is_running():
+		tween_hover.kill()
+		
+	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween_hover.tween_property(button_to_tween,"scale",Vector2(1.05,1.05),0.5)
+	
+func _on_mouse_exited(button_to_tween) -> void:  
+	hover_target = 0.0
+	if tween_hover and tween_hover.is_running():
+		tween_hover.kill()	
+	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween_hover.tween_property(button_to_tween,"scale",Vector2.ONE,0.55)	
+	
+		
+	

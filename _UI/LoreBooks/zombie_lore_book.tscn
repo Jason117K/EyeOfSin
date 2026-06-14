@@ -3,29 +3,132 @@
 [ext_resource type="PackedScene" uid="uid://kf64j7pluy7o" path="res://_UI/LoreBooks/LoreBookVisual/interactive_book_2d.tscn" id="1_0r1la"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="1_d8001"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="1_votx1"]
-[ext_resource type="Texture2D" uid="uid://bgma2h15leoe1" path="res://_Entities/Zombies/_Severed/ConeHeadZombie.png" id="2_brvkm"]
 [ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="2_v2ssp"]
 [ext_resource type="Script" uid="uid://drb4eskwaylxl" path="res://_Common/ColorChangingScripts/change_color_watcher.gd" id="3_nhj8y"]
-[ext_resource type="Texture2D" uid="uid://c37wmrvd3fs5w" path="res://_Entities/Zombies/_Unhallower/BucketHeadZombie.png" id="3_votx1"]
-[ext_resource type="Texture2D" uid="uid://b711gtmcyisf" path="res://_Entities/Zombies/_Reanimator/SummonerZombie.png" id="4_0r1la"]
 [ext_resource type="SpriteFrames" uid="uid://bykctpfyy664a" path="res://_Entities/Zombies/ImgAnimationResources/Severed.tres" id="4_kh7ht"]
 [ext_resource type="Texture2D" uid="uid://cb8ilmxxu5imp" path="res://_Entities/Zombies/_Wretch/BackUpDancer.png" id="5_13rm7"]
 [ext_resource type="Texture2D" uid="uid://vfleagnw1j4h" path="res://_Entities/Zombies/_Erupter/TickerZombie.png" id="6_nl6qu"]
 [ext_resource type="Texture2D" uid="uid://boehiq0ysreqy" path="res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.png" id="7_0cqbf"]
+[ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="7_lvom0"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="8_eji6s"]
 [ext_resource type="Texture2D" uid="uid://87mvflvt25ip" path="res://_Entities/Zombies/_Flesheater/FootBallZombie.png" id="8_nhbtu"]
 [ext_resource type="Texture2D" uid="uid://csockxqf1ab8l" path="res://_Entities/Zombies/_Sundered/PoleVaultZombie.png" id="9_7frkv"]
+[ext_resource type="StyleBox" uid="uid://dhpm871ygprfn" path="res://_UI/LoreBooks/zombie_style_box_texture.tres" id="9_23n63"]
 [ext_resource type="Script" uid="uid://bwjh0i0w016sm" path="res://_UI/LoreBooks/ZombieLoreBookController.gd" id="10_lexj7"]
-[ext_resource type="StyleBox" uid="uid://c3c28155s7n1n" path="res://_Common/StyleBoxes/black_flat.tres" id="13_flm3c"]
+[ext_resource type="Texture2D" uid="uid://4335s5616i55" path="res://_Entities/Zombies/_Severed/Severed.png" id="11_k22sn"]
+[ext_resource type="Texture2D" uid="uid://cbqsu6sxf5odc" path="res://_Entities/Zombies/_Unhallower/Unhallower.png" id="12_c1n67"]
 [ext_resource type="Texture2D" uid="uid://87qm1rrctk1c" path="res://_Entities/Zombies/ImgAnimationResources/BasicZombie.png" id="14_832pj"]
+[ext_resource type="Texture2D" uid="uid://c0o0spwuo5xck" path="res://_Entities/Zombies/_Reanimator/Reanimator.png" id="14_mvwdc"]
 [ext_resource type="Texture2D" uid="uid://bb3cxxlmuhgiy" path="res://_Entities/Zombies/ImgAnimationResources/BucketHeadZombie.png" id="15_gi54o"]
 [ext_resource type="Texture2D" uid="uid://dvegdxhi772pa" path="res://_Entities/Zombies/ImgAnimationResources/ConeHeadZombie.png" id="16_flm3c"]
 [ext_resource type="Texture2D" uid="uid://crwdvyqlxewyg" path="res://_Entities/Zombies/ImgAnimationResources/FootBallZombie.png" id="17_kh7ht"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="18_eji6s"]
 [ext_resource type="Texture2D" uid="uid://y05tdhrpp4ee" path="res://_Entities/Zombies/ImgAnimationResources/PoleVaultZombie.png" id="18_v2ssp"]
+[ext_resource type="StyleBox" uid="uid://bcfbsgfdihfxu" path="res://_UI/bordered_button_hover.tres" id="19_k22sn"]
 [ext_resource type="Texture2D" uid="uid://d0ha36xj7m26c" path="res://_Entities/Zombies/ImgAnimationResources/ScreenDoorZombie.png" id="19_nhj8y"]
 [ext_resource type="Texture2D" uid="uid://ong3h0gfykwy" path="res://_Entities/Zombies/ImgAnimationResources/SummonerZombie.png" id="20_lvom0"]
 [ext_resource type="Texture2D" uid="uid://bvhu806m817t0" path="res://_Entities/Zombies/ImgAnimationResources/TickerZombie.png" id="21_eji6s"]
 [ext_resource type="SpriteFrames" uid="uid://bhv03xsgolkhx" path="res://_Entities/Zombies/_Flesheater/FootBall.tres" id="22_flm3c"]
 [ext_resource type="Script" uid="uid://t70aqhp8gia7" path="res://_UI/GameDemonstrations/simple_demo_hue_shift.gd" id="23_kh7ht"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0reyw"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_87cmw"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.6, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iecbp"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.67058825, 0.18039216, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eji6s"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_23n63"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k22sn"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1n67"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mvwdc"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hsuk"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3iacd"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_87cmw"]
+load_path = "res://.godot/imported/Empty_Display_CARD-Black.png-fac2e15e1c45f479b294bdbabe5df24a.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dshce"]
+texture = SubResource("CompressedTexture2D_87cmw")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.79999995, 0.5, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyoqj"]
+texture = ExtResource("8_eji6s")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
 
 [node name="ZombieLoreBook" type="Control" unique_id=720425845]
 process_mode = 3
@@ -43,16 +146,23 @@ offset_left = -2.0
 offset_right = 38.0
 offset_bottom = 40.0
 scale = Vector2(18.6, 10.48)
-color = Color(0.184107, 0.0288, 0.32, 1)
+color = Color(0.20712, 0.032399993, 0.36, 1)
 
 [node name="InteractiveBook2D" parent="." unique_id=640058282 instance=ExtResource("1_0r1la")]
 visible = false
 position = Vector2(370, 164)
 scale = Vector2(12.1563, 8.09375)
 
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1089549272]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 12.0
+offset_right = 669.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0reyw")
+
 [node name="CurrentZombieAnim" type="AnimatedSprite2D" parent="." unique_id=515070860]
-visible = false
-position = Vector2(539, 112)
+position = Vector2(536, 77)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_v2ssp")
 animation = &"Attack"
@@ -60,37 +170,68 @@ flip_h = true
 script = ExtResource("3_nhj8y")
 hue_shift = -86.0
 
-[node name="CurrentZombieTitle" type="Label" parent="." unique_id=1648733437]
+[node name="CurrentZombieTitleBG" type="Label" parent="." unique_id=731876667]
+visible = false
 layout_mode = 0
-offset_left = 395.0
-offset_top = 174.0
-offset_right = 673.0
-offset_bottom = 197.0
+offset_left = 469.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 168.0
+scale = Vector2(0.7, 0.7)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_votx1")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_87cmw")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="CurrentZombieTitle" type="Label" parent="." unique_id=1648733437]
+visible = false
+layout_mode = 0
+offset_left = 401.0
+offset_top = 106.0
+offset_right = 679.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_votx1")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("7_lvom0")
 text = "REBORN"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="CurrentZombieLabel" type="RichTextLabel" parent="." unique_id=1582129216]
+[node name="CurrentZombieLabelBG" type="RichTextLabel" parent="." unique_id=1993665799]
 layout_mode = 0
-offset_left = 401.0
-offset_top = 194.0
-offset_right = 660.0
-offset_bottom = 317.0
+offset_left = 344.0
+offset_top = 154.0
+offset_right = 540.5
+offset_bottom = 249.5
+scale = Vector2(2, 2)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_votx1")
 theme_override_font_sizes/normal_font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_iecbp")
 bbcode_enabled = true
+
+[node name="CurrentZombieLabel" type="RichTextLabel" parent="." unique_id=1582129216]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 167.0
+offset_right = 718.0
+offset_bottom = 331.0
+theme_override_colors/default_color = Color(0.89708984, 0.8970898, 0.89708984, 1)
+theme_override_fonts/normal_font = ExtResource("1_votx1")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum Lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=499311436]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
-offset_left = 431.0
-offset_top = -25.0
-offset_right = 631.0
-offset_bottom = 175.0
+offset_left = 420.0
+offset_top = -192.0
+offset_right = 620.0
+offset_bottom = 8.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=901773422]
@@ -102,101 +243,126 @@ stretch_mode = 5
 flip_h = true
 script = ExtResource("10_lexj7")
 sprites = ExtResource("4_kh7ht")
-current_animation = "Attack"
+current_animation = "default"
+frame_index = 2
 auto_play = true
 playing = true
 targetGlowColor = Color(0.7882353, 0, 0.050980393, 1)
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1329874444]
+[node name="AllZombieButtonsContainer" type="HBoxContainer" parent="." unique_id=1329874444]
 layout_mode = 0
-offset_right = 358.0
-offset_bottom = 333.0
+offset_right = 159.0
+offset_bottom = 159.0
+scale = Vector2(2, 2)
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2" unique_id=2025294099]
+[node name="MarginContainer" type="MarginContainer" parent="AllZombieButtonsContainer" unique_id=2025294099]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 56
-theme_override_constants/margin_top = 28
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 14
 
-[node name="AllZombieRows" type="VBoxContainer" parent="HBoxContainer2/MarginContainer" unique_id=773231943]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 9
-
-[node name="Row1" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/AllZombieRows" unique_id=540218189]
+[node name="AllZombieRows" type="VBoxContainer" parent="AllZombieButtonsContainer/MarginContainer" unique_id=773231943]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 9
 
-[node name="RebornButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row1" unique_id=330054041]
-custom_minimum_size = Vector2(94, 94)
+[node name="Row1" type="HBoxContainer" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows" unique_id=540218189]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 9
 
-[node name="SeveredButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row1" unique_id=713583399]
-custom_minimum_size = Vector2(94, 94)
+[node name="RebornButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row1" unique_id=330054041]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_eji6s")
+theme_override_styles/hover = ExtResource("9_23n63")
 
-[node name="UnhallowerButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row1" unique_id=1038885982]
-custom_minimum_size = Vector2(94, 94)
+[node name="SeveredButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row1" unique_id=713583399]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_23n63")
+theme_override_styles/hover = ExtResource("9_23n63")
 
-[node name="Row2" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/AllZombieRows" unique_id=1539750024]
+[node name="UnhallowerButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row1" unique_id=1038885982]
+custom_minimum_size = Vector2(47, 47)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_k22sn")
+theme_override_styles/hover = ExtResource("9_23n63")
+
+[node name="Row2" type="HBoxContainer" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows" unique_id=1539750024]
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="ErupterButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row2" unique_id=662356771]
-custom_minimum_size = Vector2(94, 94)
+[node name="ErupterButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row2" unique_id=662356771]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_c1n67")
+theme_override_styles/hover = ExtResource("9_23n63")
 
-[node name="ReanimatorButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row2" unique_id=603301817]
-custom_minimum_size = Vector2(94, 94)
+[node name="ReanimatorButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row2" unique_id=603301817]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_mvwdc")
+theme_override_styles/hover = ExtResource("9_23n63")
 
-[node name="WretchButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row2" unique_id=294776844]
-custom_minimum_size = Vector2(94, 94)
+[node name="WretchButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row2" unique_id=294776844]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_7hsuk")
+theme_override_styles/hover = ExtResource("9_23n63")
 
-[node name="Row3" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/AllZombieRows" unique_id=1146177018]
+[node name="Row3" type="HBoxContainer" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows" unique_id=1146177018]
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="FleshEaterButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row3" unique_id=483641515]
-custom_minimum_size = Vector2(94, 94)
+[node name="AmalgamButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row3" unique_id=987373304]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_3iacd")
+theme_override_styles/hover = ExtResource("9_23n63")
 
-[node name="AmalgamButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row3" unique_id=987373304]
-custom_minimum_size = Vector2(94, 94)
+[node name="LeaperButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row3" unique_id=712781886]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_dshce")
+theme_override_styles/pressed = ExtResource("9_23n63")
 
-[node name="LeaperButton" type="Button" parent="HBoxContainer2/MarginContainer/AllZombieRows/Row3" unique_id=712781886]
-custom_minimum_size = Vector2(94, 94)
+[node name="FleshEaterButton" type="Button" parent="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row3" unique_id=483641515]
+custom_minimum_size = Vector2(47, 47)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_cyoqj")
+theme_override_styles/hover = ExtResource("9_23n63")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=377373516]
-visible = false
+[node name="AllZombieSpritesContainer" type="HBoxContainer" parent="." unique_id=377373516]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 168.0
+offset_bottom = 96.0
+scale = Vector2(2, 2)
 mouse_filter = 2
 
-[node name="AllZombieRows" type="VBoxContainer" parent="HBoxContainer" unique_id=1459326017]
+[node name="MarginContainer" type="MarginContainer" parent="AllZombieSpritesContainer" unique_id=1416803408]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = -20
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 17
 
-[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllZombieRows" unique_id=317343720]
+[node name="AllZombieRows" type="VBoxContainer" parent="AllZombieSpritesContainer/MarginContainer" unique_id=1459326017]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/separation = -65
+theme_override_constants/separation = 15
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllZombieRows/Row1" unique_id=250746565]
+[node name="Row1" type="HBoxContainer" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows" unique_id=317343720]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/margin_right = 105
+theme_override_constants/separation = 9
 
-[node name="BaseZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row1" unique_id=2026905638]
-custom_minimum_size = Vector2(125, 125)
+[node name="BaseZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row1" unique_id=2026905638]
+custom_minimum_size = Vector2(47, 40)
 layout_mode = 2
 mouse_filter = 2
 texture_normal = ExtResource("1_d8001")
@@ -204,93 +370,107 @@ ignore_texture_size = true
 stretch_mode = 6
 flip_h = true
 
-[node name="ConeHeadZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row1" unique_id=1433774691]
-custom_minimum_size = Vector2(200, 125)
+[node name="ConeHeadZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row1" unique_id=1433774691]
+custom_minimum_size = Vector2(47, 40)
 layout_mode = 2
 mouse_filter = 2
-texture_normal = ExtResource("2_brvkm")
+texture_normal = ExtResource("11_k22sn")
 ignore_texture_size = true
 stretch_mode = 6
 flip_h = true
 
-[node name="BucketHeadZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row1" unique_id=1080003871]
-custom_minimum_size = Vector2(125, 125)
+[node name="BucketHeadZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row1" unique_id=1080003871]
+custom_minimum_size = Vector2(47, 40)
 layout_mode = 2
 mouse_filter = 2
-texture_normal = ExtResource("3_votx1")
+texture_normal = ExtResource("12_c1n67")
 ignore_texture_size = true
 stretch_mode = 6
 flip_h = true
 
-[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllZombieRows" unique_id=125444543]
+[node name="Row2" type="HBoxContainer" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows" unique_id=125444543]
+clip_contents = true
 layout_mode = 2
-theme_override_constants/separation = -66
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = -9
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllZombieRows/Row2" unique_id=69629513]
+[node name="MarginContainer" type="MarginContainer" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2" unique_id=1664437872]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_right = 146
+theme_override_constants/margin_right = 19
 
-[node name="TickerZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row2" unique_id=1618332936]
-custom_minimum_size = Vector2(125, 125)
+[node name="TickerZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2" unique_id=1618332936]
+custom_minimum_size = Vector2(47, 40)
 layout_mode = 2
+mouse_filter = 2
 texture_normal = ExtResource("6_nl6qu")
 ignore_texture_size = true
 stretch_mode = 6
 flip_h = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllZombieRows/Row2" unique_id=1667137096]
+[node name="MarginContainer3" type="MarginContainer" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2" unique_id=790086480]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_right = 60
+theme_override_constants/margin_right = 12
 
-[node name="DancerZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row2" unique_id=1301182301]
-custom_minimum_size = Vector2(125, 125)
+[node name="DancerZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2" unique_id=1301182301]
+custom_minimum_size = Vector2(47, 40)
 layout_mode = 2
-texture_normal = ExtResource("4_0r1la")
+mouse_filter = 2
+texture_normal = ExtResource("14_mvwdc")
 ignore_texture_size = true
 stretch_mode = 6
+flip_h = true
 
-[node name="BackUpDancerZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row2" unique_id=829370111]
-custom_minimum_size = Vector2(200, 125)
+[node name="MarginContainer2" type="MarginContainer" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2" unique_id=1606401198]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 31
+
+[node name="BackUpDancerZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2" unique_id=829370111]
+custom_minimum_size = Vector2(47, 40)
+layout_mode = 2
+mouse_filter = 2
 texture_normal = ExtResource("5_13rm7")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllZombieRows" unique_id=1980879077]
+[node name="Row3" type="HBoxContainer" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows" unique_id=1980879077]
 layout_mode = 2
-theme_override_constants/separation = -60
+mouse_filter = 2
+theme_override_constants/separation = -1
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllZombieRows/Row3" unique_id=1706916182]
+[node name="MarginContainer2" type="MarginContainer" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row3" unique_id=1317808607]
 layout_mode = 2
-theme_override_constants/margin_right = 19
+mouse_filter = 2
+theme_override_constants/margin_left = 5
 
-[node name="FootballZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row3" unique_id=1541448295]
-custom_minimum_size = Vector2(200, 125)
+[node name="ScreenDoorZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row3" unique_id=852542936]
+custom_minimum_size = Vector2(47, 40)
 layout_mode = 2
-texture_normal = ExtResource("8_nhbtu")
-ignore_texture_size = true
-stretch_mode = 6
-
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllZombieRows/Row3" unique_id=1973403817]
-layout_mode = 2
-theme_override_constants/margin_right = 122
-
-[node name="ScreenDoorZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row3" unique_id=852542936]
-custom_minimum_size = Vector2(125, 125)
-layout_mode = 2
+mouse_filter = 2
 texture_normal = ExtResource("7_0cqbf")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="PoleVaultZombie" type="TextureButton" parent="HBoxContainer/AllZombieRows/Row3" unique_id=837757847]
-custom_minimum_size = Vector2(125, 125)
+[node name="PoleVaultZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row3" unique_id=837757847]
+custom_minimum_size = Vector2(47, 40)
 layout_mode = 2
+mouse_filter = 2
 texture_normal = ExtResource("9_7frkv")
 ignore_texture_size = true
 stretch_mode = 6
 flip_h = true
+
+[node name="FootballZombie" type="TextureButton" parent="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row3" unique_id=1541448295]
+custom_minimum_size = Vector2(47, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+texture_normal = ExtResource("8_nhbtu")
+ignore_texture_size = true
+stretch_mode = 3
 
 [node name="BackButton" type="Button" parent="." unique_id=316313279]
 custom_minimum_size = Vector2(300, 35)
@@ -301,56 +481,78 @@ offset_right = 515.0
 offset_bottom = 394.0
 theme_override_fonts/font = ExtResource("1_votx1")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("13_flm3c")
+theme_override_styles/normal = ExtResource("7_lvom0")
+theme_override_styles/pressed = ExtResource("19_k22sn")
+
+[node name="Label" type="Label" parent="BackButton" unique_id=127167748]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_eji6s")
+theme_override_font_sizes/font_size = 24
 text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BasicZombie" type="Sprite2D" parent="." unique_id=616987007]
+visible = false
 position = Vector2(104.275, 79.385)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("14_832pj")
 flip_h = true
 
 [node name="BucketHeadZombie" type="Sprite2D" parent="." unique_id=416496073]
+visible = false
 position = Vector2(301, 73.4)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("15_gi54o")
 flip_h = true
 
 [node name="ConeHeadZombie" type="Sprite2D" parent="." unique_id=1279487444]
+visible = false
 position = Vector2(201, 73.4)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("16_flm3c")
 flip_h = true
 
 [node name="FootBallZombie" type="Sprite2D" parent="." unique_id=1803503960]
+visible = false
 position = Vector2(59.550003, 272)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("17_kh7ht")
 
 [node name="PoleVaultZombie" type="Sprite2D" parent="." unique_id=599001749]
+visible = false
 position = Vector2(300, 279)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("18_v2ssp")
 flip_h = true
 
 [node name="ScreenDoorZombie" type="Sprite2D" parent="." unique_id=1362271809]
+visible = false
 position = Vector2(225, 278)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("19_nhj8y")
 
 [node name="SummonerZombie" type="Sprite2D" parent="." unique_id=1752138127]
+visible = false
 position = Vector2(227.99998, 164)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("20_lvom0")
 flip_h = true
 
 [node name="TickerZombie" type="Sprite2D" parent="." unique_id=378110444]
+visible = false
 position = Vector2(123.950005, 168.4)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("21_eji6s")
 flip_h = true
 
 [node name="BackUpDancer" type="Sprite2D" parent="." unique_id=2077825420]
+visible = false
 position = Vector2(309, 177.99998)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("5_13rm7")
@@ -364,19 +566,19 @@ sprite_frames = ExtResource("22_flm3c")
 autoplay = "default"
 script = ExtResource("23_kh7ht")
 
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row1/RebornButton" to="VBoxContainer/TextureRect" method="_on_base_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row1/SeveredButton" to="VBoxContainer/TextureRect" method="_on_cone_head_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row1/UnhallowerButton" to="VBoxContainer/TextureRect" method="_on_bucket_head_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row2/ErupterButton" to="VBoxContainer/TextureRect" method="_on_ticker_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row2/ReanimatorButton" to="VBoxContainer/TextureRect" method="_on_dancer_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row2/WretchButton" to="VBoxContainer/TextureRect" method="_on_back_up_dancer_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row3/FleshEaterButton" to="VBoxContainer/TextureRect" method="_on_football_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row3/AmalgamButton" to="VBoxContainer/TextureRect" method="_on_screen_door_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer2/MarginContainer/AllZombieRows/Row3/LeaperButton" to="VBoxContainer/TextureRect" method="_on_pole_vault_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllZombieRows/Row2/TickerZombie" to="VBoxContainer/TextureRect" method="_on_ticker_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllZombieRows/Row2/DancerZombie" to="VBoxContainer/TextureRect" method="_on_dancer_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllZombieRows/Row2/BackUpDancerZombie" to="VBoxContainer/TextureRect" method="_on_back_up_dancer_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllZombieRows/Row3/FootballZombie" to="VBoxContainer/TextureRect" method="_on_football_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllZombieRows/Row3/ScreenDoorZombie" to="VBoxContainer/TextureRect" method="_on_screen_door_zombie_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllZombieRows/Row3/PoleVaultZombie" to="VBoxContainer/TextureRect" method="_on_pole_vault_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row1/RebornButton" to="VBoxContainer/TextureRect" method="_on_base_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row1/SeveredButton" to="VBoxContainer/TextureRect" method="_on_cone_head_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row1/UnhallowerButton" to="VBoxContainer/TextureRect" method="_on_bucket_head_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row2/ErupterButton" to="VBoxContainer/TextureRect" method="_on_ticker_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row2/ReanimatorButton" to="VBoxContainer/TextureRect" method="_on_dancer_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row2/WretchButton" to="VBoxContainer/TextureRect" method="_on_back_up_dancer_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row3/AmalgamButton" to="VBoxContainer/TextureRect" method="_on_screen_door_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row3/LeaperButton" to="VBoxContainer/TextureRect" method="_on_pole_vault_zombie_pressed"]
+[connection signal="pressed" from="AllZombieButtonsContainer/MarginContainer/AllZombieRows/Row3/FleshEaterButton" to="VBoxContainer/TextureRect" method="_on_football_zombie_pressed"]
+[connection signal="pressed" from="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2/TickerZombie" to="VBoxContainer/TextureRect" method="_on_ticker_zombie_pressed"]
+[connection signal="pressed" from="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2/DancerZombie" to="VBoxContainer/TextureRect" method="_on_dancer_zombie_pressed"]
+[connection signal="pressed" from="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row2/BackUpDancerZombie" to="VBoxContainer/TextureRect" method="_on_back_up_dancer_zombie_pressed"]
+[connection signal="pressed" from="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row3/ScreenDoorZombie" to="VBoxContainer/TextureRect" method="_on_screen_door_zombie_pressed"]
+[connection signal="pressed" from="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row3/PoleVaultZombie" to="VBoxContainer/TextureRect" method="_on_pole_vault_zombie_pressed"]
+[connection signal="pressed" from="AllZombieSpritesContainer/MarginContainer/AllZombieRows/Row3/FootballZombie" to="VBoxContainer/TextureRect" method="_on_football_zombie_pressed"]
 [connection signal="pressed" from="BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]

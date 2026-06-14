@@ -304,7 +304,9 @@ func restore_previous_scene() -> void:
 
 func restore_dual_scenes() -> void:
 	#pause_button.visible = true
-
+	if current_scenes.size() < 2:
+		restore_previous_scene()
+		return 
 	if is_instance_valid(current_scene) and current_scene not in current_scenes:
 		_remove_and_free(current_scene)
 

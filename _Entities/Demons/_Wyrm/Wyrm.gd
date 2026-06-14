@@ -151,9 +151,9 @@ func receive_buff(demon) -> void:
 			"Maw":
 				laserShootComp1.isDisabled = false
 				laserShootComp1._ready()
-				$ShellBack.visible = false
+				#$ShellBack.visible = false
 				laserShootComp1.mawBuff()
-				$Worm1.z_index = 2
+				#$Worm1.z_index = 2
 				projectile_shoot_component.mawBuffed = true
 
 func debuff() -> void:

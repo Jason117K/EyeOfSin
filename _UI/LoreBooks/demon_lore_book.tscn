@@ -2,20 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://kf64j7pluy7o" path="res://_UI/LoreBooks/LoreBookVisual/interactive_book_2d.tscn" id="1_gyohk"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_r6hpg"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="3_28t4q"]
 [ext_resource type="Script" uid="uid://bov2qdtt14vx5" path="res://_UI/LoreBooks/demon_lore_book_controller.gd" id="3_gh3ig"]
 [ext_resource type="SpriteFrames" uid="uid://byuio1krtgq8y" path="res://_Entities/Demons/_Hive/Hive.tres" id="4_chrhc"]
-[ext_resource type="Texture2D" uid="uid://bptsiudoc0ksf" path="res://_Entities/Demons/_Occulum/Occulum.png" id="5_jm2ht"]
-[ext_resource type="Texture2D" uid="uid://d08l8apnmyi1e" path="res://_Entities/Demons/_Crawler/Crawler.png" id="6_28t4q"]
-[ext_resource type="Texture2D" uid="uid://oewg178qt0kr" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum.png" id="7_tpmsq"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="5_gh3ig"]
+[ext_resource type="Texture2D" uid="uid://bsvip7ynvvsfb" path="res://_Assets/Sprites/Occulum.png" id="6_gh3ig"]
+[ext_resource type="Texture2D" uid="uid://chk4e2hs0suwg" path="res://_Assets/Sprites/Crawler.png" id="7_chrhc"]
+[ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="7_jm2ht"]
+[ext_resource type="Texture2D" uid="uid://b0xqgt3ryoajf" path="res://_Entities/Demons/_Maw/EmptyDisplayCard_RED.png" id="7_tpmsq"]
+[ext_resource type="StyleBox" uid="uid://bcfbsgfdihfxu" path="res://_UI/bordered_button_hover.tres" id="8_28t4q"]
 [ext_resource type="FontFile" uid="uid://dpge436uj6kg4" path="res://_Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="8_n4a1q"]
-[ext_resource type="Texture2D" uid="uid://p88orx55tm4w" path="res://_Entities/Demons/_Maw/MawImage.png" id="9_btjlo"]
-[ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://_Entities/Demons/_Wyrm/Wyrm.png" id="11_mcd4t"]
-[ext_resource type="Texture2D" uid="uid://dr854umtud4nf" path="res://_Entities/Demons/_Hive/Hive.png" id="12_i2p6p"]
+[ext_resource type="Texture2D" uid="uid://c7jnbj05l4pfo" path="res://_Assets/Sprites/SpinalOcculum.png" id="9_jm2ht"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="9_tpmsq"]
+[ext_resource type="Texture2D" uid="uid://dxiljdd5mblgg" path="res://_Assets/Sprites/Hive.png" id="12_jm2ht"]
+[ext_resource type="Texture2D" uid="uid://7wwfnfvi1oqa" path="res://_Assets/Sprites/MawImage.png" id="12_tpmsq"]
 [ext_resource type="Texture2D" uid="uid://c20e4aa6kqxl2" path="res://_Entities/Demons/Icons/OcculumTowerIdle_MAW.png" id="13_hqwrb"]
+[ext_resource type="Texture2D" uid="uid://dym7nudn0quv8" path="res://_Assets/Sprites/Wyrm.png" id="13_n4a1q"]
 [ext_resource type="Texture2D" uid="uid://dn6vc410827ju" path="res://_Entities/Demons/Icons/OcculumTowerIdle_WYRM.png" id="14_te31g"]
 [ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/OcculumTowerIdle_Base.png" id="15_8exk2"]
-[ext_resource type="StyleBox" uid="uid://c3c28155s7n1n" path="res://_Common/StyleBoxes/black_flat.tres" id="15_gyohk"]
 [ext_resource type="PackedScene" uid="uid://br5uv5svgqnxm" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn" id="16_r6hpg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpmsq"]
+texture = ExtResource("3_28t4q")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.6, 0.6, 0.6, 1)
 
 [node name="DemonLoreBook" type="Control" unique_id=97848138]
 process_mode = 3
@@ -31,7 +44,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 740.0
 offset_bottom = 412.0
-color = Color(0.490196, 0.0588235, 0.121569, 1)
+color = Color(0.28, 0, 0.041999895, 1)
 
 [node name="InteractiveBook2D" parent="." unique_id=1863075210 instance=ExtResource("1_gyohk")]
 visible = false
@@ -41,14 +54,26 @@ scale = Vector2(12.1563, 8.09375)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=627385222]
 position = Vector2(370, 206)
 
-[node name="CurrentDemonLabel" type="RichTextLabel" parent="." unique_id=2124714015]
-visible = false
+[node name="CurrentDemonLabelBG" type="RichTextLabel" parent="." unique_id=43450599]
 layout_mode = 0
-offset_left = 329.0
-offset_top = 244.0
-offset_right = 725.0
-offset_bottom = 393.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+offset_left = 234.0
+offset_top = 268.0
+offset_right = 482.5
+offset_bottom = 333.5
+scale = Vector2(2, 2)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_r6hpg")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpmsq")
+
+[node name="CurrentDemonLabel" type="RichTextLabel" parent="." unique_id=2124714015]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 282.0
+offset_right = 722.0
+offset_bottom = 385.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_r6hpg")
 theme_override_font_sizes/normal_font_size = 16
@@ -58,7 +83,6 @@ text = "Resilient and fast-growing, the Oculum are densely populated and serve b
 "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1961918662]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -73,7 +97,6 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1929164251]
-visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 expand_mode = 5
@@ -81,220 +104,402 @@ script = ExtResource("3_gh3ig")
 sprites = ExtResource("4_chrhc")
 playing = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1376691575]
+[node name="Card_BG_MarginContainer" type="MarginContainer" parent="." unique_id=686840469]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 11.0
-offset_right = 749.0
-offset_bottom = 422.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="DemonCardBacks" type="HBoxContainer" parent="Card_BG_MarginContainer" unique_id=21643920]
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="AllDemonRows" type="VBoxContainer" parent="HBoxContainer" unique_id=287999705]
+[node name="AllDemonRows" type="VBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks" unique_id=1796140127]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Row1" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1010203393]
+[node name="Row1" type="HBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=1569937242]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 8
 
-[node name="Occulum" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=1900871465]
-custom_minimum_size = Vector2(75, 75)
+[node name="Occulum" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=70317778]
+custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
-texture_normal = ExtResource("5_jm2ht")
+texture_normal = ExtResource("5_gh3ig")
+texture_hover = ExtResource("7_tpmsq")
+texture_focused = ExtResource("7_tpmsq")
 stretch_mode = 4
 
-[node name="Crawler" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row1" unique_id=342407816]
-custom_minimum_size = Vector2(75, 75)
+[node name="Crawler" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1041164036]
+custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
-texture_normal = ExtResource("6_28t4q")
+texture_normal = ExtResource("5_gh3ig")
 stretch_mode = 5
 
-[node name="DemonNames1" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1209401893]
-visible = false
+[node name="Row2" type="HBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=979816968]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 23
+theme_override_constants/separation = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1038732148]
+[node name="Walnut" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=1051577966]
+custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+texture_normal = ExtResource("5_gh3ig")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="EyeLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=2034527998]
+[node name="Maw" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=326798182]
+custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_n4a1q")
-theme_override_font_sizes/font_size = 16
-text = "EYE"
+texture_normal = ExtResource("5_gh3ig")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1217756370]
-layout_mode = 2
-theme_override_constants/margin_right = 55
-
-[node name="SpyderLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=987055448]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_n4a1q")
-theme_override_font_sizes/font_size = 16
-text = "SPYDER"
-
-[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1524718653]
-layout_mode = 2
-theme_override_constants/margin_right = 25
-
-[node name="WalnutLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames1" unique_id=1302543777]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_n4a1q")
-theme_override_font_sizes/font_size = 16
-text = "O-SPINE"
-
-[node name="Row2" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1178864748]
+[node name="Row3" type="HBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=736887385]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 8
 
-[node name="Walnut" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=337339227]
-custom_minimum_size = Vector2(75, 75)
+[node name="Wyrm" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=910381475]
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+texture_normal = ExtResource("5_gh3ig")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hive" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1470651034]
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+texture_normal = ExtResource("5_gh3ig")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RedCardOutlineMarginContainer" type="MarginContainer" parent="." unique_id=359595590]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="DemonCardBacks" type="HBoxContainer" parent="RedCardOutlineMarginContainer" unique_id=117808329]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="AllDemonRows" type="VBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks" unique_id=1306843940]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Row1" type="HBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=1523553477]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Occulum" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1967593460]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+texture_normal = ExtResource("7_tpmsq")
+texture_hover = ExtResource("7_tpmsq")
+texture_focused = ExtResource("7_tpmsq")
+stretch_mode = 4
+
+[node name="Crawler" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1091654482]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+texture_normal = ExtResource("7_tpmsq")
+stretch_mode = 5
+
+[node name="Row2" type="HBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=197705055]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Walnut" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=374126950]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
 texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Maw" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row2" unique_id=794088523]
-custom_minimum_size = Vector2(75, 75)
+[node name="Maw" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=1697021930]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
-texture_normal = ExtResource("9_btjlo")
+texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="DemonNames2" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=229843166]
+[node name="Row3" type="HBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=1928297582]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Wyrm" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1290776798]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+texture_normal = ExtResource("7_tpmsq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hive" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1577620339]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+texture_normal = ExtResource("7_tpmsq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DemonCardMarginContainer" type="MarginContainer" parent="." unique_id=758055256]
+layout_mode = 0
+offset_right = 228.0
+offset_bottom = 490.0
+mouse_filter = 2
+theme_override_constants/margin_left = 21
+theme_override_constants/margin_top = 19
+
+[node name="DemonHboxContainer" type="HBoxContainer" parent="DemonCardMarginContainer" unique_id=1376691575]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="AllDemonRows" type="VBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer" unique_id=287999705]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 30
+
+[node name="Row1" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1010203393]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 43
+
+[node name="Occulum" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1" unique_id=1900871465]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("6_gh3ig")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Crawler" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1" unique_id=342407816]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("7_chrhc")
+stretch_mode = 6
+flip_h = true
+
+[node name="DemonNames1" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1209401893]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 23
+
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1038732148]
+layout_mode = 2
+
+[node name="EyeLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=2034527998]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "EYE"
+
+[node name="MarginContainer2" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1217756370]
+layout_mode = 2
+theme_override_constants/margin_right = 55
+
+[node name="SpyderLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=987055448]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "SPYDER"
+
+[node name="MarginContainer3" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1524718653]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="WalnutLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1302543777]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_n4a1q")
+theme_override_font_sizes/font_size = 16
+text = "O-SPINE"
+
+[node name="Row2" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1178864748]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 34
+
+[node name="Walnut" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2" unique_id=337339227]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("9_jm2ht")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Maw" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2" unique_id=794088523]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("12_tpmsq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DemonNames2" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=229843166]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 22
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=493684138]
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=493684138]
 layout_mode = 2
 
-[node name="MawLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=1313293612]
+[node name="MawLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1313293612]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "MAW"
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=134442084]
+[node name="MarginContainer2" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=134442084]
 layout_mode = 2
 theme_override_constants/margin_right = 45
 
-[node name="WyrmLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=227279318]
+[node name="WyrmLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=227279318]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "WYRM"
 
-[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=1187907957]
+[node name="MarginContainer3" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1187907957]
 layout_mode = 2
 theme_override_constants/margin_right = 50
 
-[node name="HiveLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames2" unique_id=1428129755]
+[node name="HiveLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1428129755]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "HIVE"
 
-[node name="DemonNames3" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=113310672]
+[node name="DemonNames3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=113310672]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows/DemonNames3" unique_id=648118578]
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames3" unique_id=648118578]
 layout_mode = 2
 theme_override_constants/margin_right = 212
 
-[node name="MawLabel" type="Label" parent="HBoxContainer/AllDemonRows/DemonNames3" unique_id=771669505]
+[node name="MawLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames3" unique_id=771669505]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 32
 text = "MAW"
 
-[node name="Row3" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1772946496]
+[node name="Row3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1772946496]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 34
 
-[node name="Wyrm" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row3" unique_id=1306419466]
-custom_minimum_size = Vector2(75, 75)
+[node name="Wyrm" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3" unique_id=1306419466]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-texture_normal = ExtResource("11_mcd4t")
+texture_normal = ExtResource("13_n4a1q")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Hive" type="TextureButton" parent="HBoxContainer/AllDemonRows/Row3" unique_id=858027766]
-custom_minimum_size = Vector2(75, 75)
+[node name="Hive" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3" unique_id=858027766]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-texture_normal = ExtResource("12_i2p6p")
+texture_normal = ExtResource("12_jm2ht")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AltRow1" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=1802603340]
+[node name="Row1MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1645853633]
+layout_mode = 2
+
+[node name="AltRow1" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer" unique_id=1802603340]
 visible = false
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 33
 
-[node name="Alt1" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow1" unique_id=1360651257]
-custom_minimum_size = Vector2(75, 75)
+[node name="Alt1" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1" unique_id=1360651257]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt2" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow1" unique_id=249098203]
-custom_minimum_size = Vector2(75, 75)
+[node name="Alt2" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1" unique_id=249098203]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AltRow2" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=142716490]
+[node name="Row2MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1668397475]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AltRow2" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer" unique_id=142716490]
 visible = false
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 33
 
-[node name="Alt3" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow2" unique_id=2053529146]
-custom_minimum_size = Vector2(75, 75)
+[node name="Alt3" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2" unique_id=2053529146]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt4" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow2" unique_id=214639677]
-custom_minimum_size = Vector2(75, 75)
+[node name="Alt4" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2" unique_id=214639677]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AltRow3" type="HBoxContainer" parent="HBoxContainer/AllDemonRows" unique_id=2037741047]
+[node name="Row3MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1394589624]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AltRow3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer" unique_id=2037741047]
 visible = false
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 33
 
-[node name="Alt5" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow3" unique_id=217192327]
-custom_minimum_size = Vector2(75, 75)
+[node name="Alt5" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3" unique_id=217192327]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt6" type="TextureButton" parent="HBoxContainer/AllDemonRows/AltRow3" unique_id=71210810]
-custom_minimum_size = Vector2(75, 75)
+[node name="Alt6" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3" unique_id=71210810]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AllDemonRows" unique_id=1159880042]
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1159880042]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 0
@@ -309,27 +514,59 @@ offset_bottom = 618.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.717647)
 
-[node name="StaticPreview" type="TextureRect" parent="." unique_id=526117518]
-visible = false
+[node name="StaticPreviewPanelContainer" type="PanelContainer" parent="." unique_id=1745912256]
+z_index = 1
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_left = 430.0
-offset_top = 38.0
-offset_right = 630.0
-offset_bottom = 238.0
+offset_left = 374.0
+offset_top = 20.0
+offset_right = 448.0
+offset_bottom = 94.0
+scale = Vector2(3, 3)
+theme_override_styles/panel = ExtResource("7_jm2ht")
+
+[node name="StaticPreview" type="TextureRect" parent="StaticPreviewPanelContainer" unique_id=526117518]
+z_index = 1
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 texture = ExtResource("15_8exk2")
 expand_mode = 1
+stretch_mode = 4
 
 [node name="BackButton" type="Button" parent="." unique_id=992794287]
-custom_minimum_size = Vector2(300, 35)
 layout_mode = 0
-offset_left = 11.0
-offset_top = 362.0
-offset_right = 311.0
-offset_bottom = 402.0
+offset_left = 28.0
+offset_top = 342.0
+offset_right = 150.66667
+offset_bottom = 384.0
+scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_r6hpg")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("15_gyohk")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_jm2ht")
+theme_override_styles/hover = ExtResource("8_28t4q")
+
+[node name="MarginContainer" type="MarginContainer" parent="BackButton" unique_id=1578518721]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DarkenBG" type="ColorRect" parent="BackButton/MarginContainer" unique_id=1040434086]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.5294118)
+
+[node name="Label" type="Label" parent="BackButton/MarginContainer" unique_id=141457653]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("9_tpmsq")
+theme_override_font_sizes/font_size = 23
 text = "BACK"
 
 [node name="CurrentDemonVboxContainer" type="VBoxContainer" parent="." unique_id=1790534077]
@@ -343,18 +580,63 @@ offset_right = -9.0
 offset_bottom = 235.0
 grow_horizontal = 0
 
-[node name="SynergyPreview" parent="CurrentDemonVboxContainer" unique_id=1133102798 instance=ExtResource("16_r6hpg")]
+[node name="SynergyPreviewContainer" type="PanelContainer" parent="CurrentDemonVboxContainer" unique_id=1698959012]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_jm2ht")
+
+[node name="SynergyMarginContainer" type="MarginContainer" parent="CurrentDemonVboxContainer/SynergyPreviewContainer" unique_id=1938190184]
+layout_mode = 2
+theme_override_constants/margin_left = -7
+theme_override_constants/margin_top = -7
+theme_override_constants/margin_right = -7
+theme_override_constants/margin_bottom = -6
+
+[node name="SynergyPreview" parent="CurrentDemonVboxContainer/SynergyPreviewContainer/SynergyMarginContainer" unique_id=1133102798 instance=ExtResource("16_r6hpg")]
 layout_mode = 2
 
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
-[connection signal="pressed" from="HBoxContainer/AllDemonRows/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
+[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
+[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
+[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_mouse_exited"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wyrm_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wyrm_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
+[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_mouse_exited"]
+[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
 [connection signal="pressed" from="BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]

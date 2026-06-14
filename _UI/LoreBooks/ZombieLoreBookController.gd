@@ -69,6 +69,7 @@ func _ready() -> void:
 			play()
 	set_text(coneheadZombieDescription)
 	set_title(coneHeadZombieTitle)
+	_on_cone_head_zombie_pressed()
 # Update all button textures based on current color settings
 func _update_button_textures() -> void:
 	
@@ -119,9 +120,10 @@ func set_title(newTitle: String) -> void:
 
 func _on_base_zombie_pressed() -> void:
 	current_zombie_animation.show()
+	#current_zombie_animation.hide()
 	tempFleshEaterAnimSprite.visible = false
 	get_parent().visible = false
-	get_parent().position = Vector2(431,-25)
+	#get_parent().position = Vector2(431,-25)
 	get_parent().show()
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
@@ -144,9 +146,10 @@ func _on_base_zombie_pressed() -> void:
 
 func _on_cone_head_zombie_pressed() -> void:
 	current_zombie_animation.show()
-	tempFleshEaterAnimSprite.visible = false
-	get_parent().position = Vector2(431,-25)
 	
+	tempFleshEaterAnimSprite.visible = false
+	#get_parent().position = Vector2(431,-25)
+	#
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
@@ -167,7 +170,7 @@ func _on_cone_head_zombie_pressed() -> void:
 func _on_bucket_head_zombie_pressed() -> void:
 	current_zombie_animation.show()
 	tempFleshEaterAnimSprite.visible = false
-	get_parent().position = Vector2(431,-25)
+	#get_parent().position = Vector2(431,-25)
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
@@ -188,7 +191,7 @@ func _on_bucket_head_zombie_pressed() -> void:
 func _on_dancer_zombie_pressed() -> void:
 	current_zombie_animation.show()
 	tempFleshEaterAnimSprite.visible = false
-	get_parent().position = Vector2(475,-25)
+	#get_parent().position = Vector2(475,-25)
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
@@ -208,7 +211,7 @@ func _on_dancer_zombie_pressed() -> void:
 func _on_back_up_dancer_zombie_pressed() -> void:
 	current_zombie_animation.show()
 	tempFleshEaterAnimSprite.visible = false
-	get_parent().position = Vector2(431,-25)
+	#get_parent().position = Vector2(431,-25)
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
@@ -229,7 +232,7 @@ func _on_back_up_dancer_zombie_pressed() -> void:
 func _on_ticker_zombie_pressed() -> void:
 	current_zombie_animation.show()
 	tempFleshEaterAnimSprite.visible = false
-	get_parent().position = Vector2(450,1)
+	#get_parent().position = Vector2(450,1)
 
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
@@ -251,7 +254,7 @@ func _on_ticker_zombie_pressed() -> void:
 func _on_screen_door_zombie_pressed() -> void:
 	current_zombie_animation.show()
 	tempFleshEaterAnimSprite.visible = false
-	get_parent().position = Vector2(431,-25)
+	#get_parent().position = Vector2(431,-25)
 	
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
@@ -269,9 +272,9 @@ func _on_screen_door_zombie_pressed() -> void:
 
 
 func _on_football_zombie_pressed() -> void:
-	current_zombie_animation.hide()
-	get_parent().position = Vector2(431,-25)
-	tempFleshEaterAnimSprite.visible = true
+	current_zombie_animation.show()
+	#get_parent().position = Vector2(431,-25)
+	#tempFleshEaterAnimSprite.visible = true
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
 	#sprites = GlobalResourceLoader.get_zombie_animation(
@@ -279,10 +282,10 @@ func _on_football_zombie_pressed() -> void:
 	sprites = GlobalResourceLoader.get_empty()
 	play()
 	
-	#current_zombie_animation.sprite_frames = GlobalResourceLoader.get_zombie_animation(
-		#GlobalResourceLoader.ZombieType.SCREENDOORZOMBIE)
-	#current_zombie_animation.play()
-	#current_zombie_animation.flip_h = true 
+	current_zombie_animation.sprite_frames = GlobalResourceLoader.get_zombie_animation(
+		GlobalResourceLoader.ZombieType.FOOTBALLZOMBIE)
+	current_zombie_animation.play()
+	current_zombie_animation.flip_h = false 
 	
 	
 	set_text(footBallZombieDescription)
@@ -294,8 +297,8 @@ func _on_pole_vault_zombie_pressed() -> void:
 	current_zombie_animation.show()
 	current_zombie_animation.show()
 	tempFleshEaterAnimSprite.visible = false
-	get_parent().position = Vector2(431,-25)
-	
+	#get_parent().position = Vector2(431,-25)
+	#
 	current_page = current_page + 1
 	zombieBookVisual.go_to_page(current_page)
 	#sprites = GlobalResourceLoader.get_zombie_animation(

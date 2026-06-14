@@ -2107,8 +2107,17 @@ position = Vector2(358, 276)
 [node name="FlowerTile7" parent="FlowerTileContainer" unique_id=1767163720 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 308)
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=574585201]
+visible = false
+layout_mode = 0
+offset_left = -130.0
+offset_top = 91.0
+offset_right = 806.0
+offset_bottom = 538.0
+mouse_filter = 2
+
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

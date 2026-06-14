@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7wwfnfvi1oqa"
-path="res://.godot/imported/MawImage.png-1e8131da5d8e067117f42342112b7e1e.ctex"
+uid="uid://depqfbp4ha2f4"
+path="res://.godot/imported/Wyrm_Base.png-b0b10e78ee1c0f806d4bddd269409277.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Sprites/MawImage.png"
-dest_files=["res://.godot/imported/MawImage.png-1e8131da5d8e067117f42342112b7e1e.ctex"]
+source_file="res://_Entities/Demons/_Wyrm/Wyrm_Base.png"
+dest_files=["res://.godot/imported/Wyrm_Base.png-b0b10e78ee1c0f806d4bddd269409277.ctex"]
 
 [params]
 

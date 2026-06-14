@@ -245,6 +245,9 @@ func _spawn_demons() -> void:
 	var slot_a_number := get_slot_a_number_from_b(slot_b_number)
 	slot_a = get_slot_node(slot_a_number)
 
+	demon_a_instance.hide_preview()
+	demon_b_instance.hide_preview()
+	
 	if slot_b:
 		slot_b.add_child(demon_b_instance)
 	if slot_a:

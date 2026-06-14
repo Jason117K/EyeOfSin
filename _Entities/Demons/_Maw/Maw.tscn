@@ -1788,13 +1788,14 @@ frame_progress = 1.0
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
 sprite_frames = SubResource("7")
-animation = &"spawn"
+animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
 
 [node name="WebBallPos" type="Node2D" parent="AnimatedSpriteComponent" unique_id=1451023878]
 
 [node name="DetectionComponent" type="Area2D" parent="." unique_id=366524875]
+visible = false
 position = Vector2(256, 256)
 collision_mask = 6
 
@@ -1999,19 +2000,25 @@ sprite_frames = SubResource("127")
 animation = &"New Anim"
 
 [node name="Tentacle1" parent="." unique_id=179826061 instance=ExtResource("22_tent")]
-visible = false
 position = Vector2(259, 256)
 idle_offset = Vector2(48, 26)
 
+[node name="ArmTarget" parent="Tentacle1" index="0" unique_id=138643601]
+position = Vector2(24, -35)
+
 [node name="Tentacle2" parent="." unique_id=1524614868 instance=ExtResource("22_tent")]
-visible = false
 position = Vector2(259, 256)
 idle_offset = Vector2(-53, 37)
 
+[node name="ArmTarget" parent="Tentacle2" index="0" unique_id=138643601]
+position = Vector2(-40, 13)
+
 [node name="Tentacle3" parent="." unique_id=1983148260 instance=ExtResource("22_tent")]
-visible = false
 position = Vector2(259, 256)
 idle_offset = Vector2(-57, -32)
+
+[node name="ArmTarget" parent="Tentacle3" index="0" unique_id=138643601]
+position = Vector2(27, 25)
 
 [node name="HealAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1584832351]
 position = Vector2(255, 243)
@@ -2035,6 +2042,7 @@ mouse_filter = 1
 texture_normal = ExtResource("29_054w2")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=109868354]
+visible = false
 position = Vector2(258, 252)
 collision_mask = 0
 
@@ -2058,3 +2066,6 @@ sprite_frames = SubResource("SpriteFrames_ltsea")
 [connection signal="area_entered" from="DetectionComponent" to="." method="_on_detection_component_area_entered"]
 
 [editable path="BuffNodesComponent"]
+[editable path="Tentacle1"]
+[editable path="Tentacle2"]
+[editable path="Tentacle3"]

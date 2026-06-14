@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7wwfnfvi1oqa"
-path="res://.godot/imported/MawImage.png-1e8131da5d8e067117f42342112b7e1e.ctex"
+uid="uid://cbqsu6sxf5odc"
+path="res://.godot/imported/Unhallower.png-5b072f0ae93505766e1f2a915fed0b7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Sprites/MawImage.png"
-dest_files=["res://.godot/imported/MawImage.png-1e8131da5d8e067117f42342112b7e1e.ctex"]
+source_file="res://_Entities/Zombies/_Unhallower/Unhallower.png"
+dest_files=["res://.godot/imported/Unhallower.png-5b072f0ae93505766e1f2a915fed0b7a.ctex"]
 
 [params]
 

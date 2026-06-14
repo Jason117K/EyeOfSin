@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7wwfnfvi1oqa"
-path="res://.godot/imported/MawImage.png-1e8131da5d8e067117f42342112b7e1e.ctex"
+uid="uid://ci1830sxqb555"
+path="res://.godot/imported/Hive_Card_New.png-ef554de8744b7c8c907081501f2e483b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Sprites/MawImage.png"
-dest_files=["res://.godot/imported/MawImage.png-1e8131da5d8e067117f42342112b7e1e.ctex"]
+source_file="res://_Entities/Demons/_Hive/Hive_Card_New.png"
+dest_files=["res://.godot/imported/Hive_Card_New.png-ef554de8744b7c8c907081501f2e483b.ctex"]
 
 [params]
 

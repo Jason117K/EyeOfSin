@@ -72,3 +72,7 @@ func _on_options_pressed() -> void:
 
 func make_camera_current() -> void:
 	$Camera2D.make_current()
+
+
+func _on_codex_button_pressed() -> void:
+	Global.game_controller.change_scene_with_pause("res://_UI/LoreBooks/lore_book_opener.tscn")

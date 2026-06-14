@@ -214,6 +214,12 @@ func _cleanup() -> void:
 	if buffNodes:
 		buffNodes.clearBuffs()
 
+func hide_preview()->void:
+	if get_preview_nodes() != null:
+		print(get_preview_nodes())
+		for node in get_preview_nodes().get_children():
+			node.hide()
+
 
 # --- Health Delegation ---
 

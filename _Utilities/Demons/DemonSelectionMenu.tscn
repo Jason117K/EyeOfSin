@@ -9,13 +9,13 @@
 [ext_resource type="Material" uid="uid://byaqmevnj1wtf" path="res://_Entities/Demons/Cards/SelectionCard.tres" id="5_3emsw"]
 [ext_resource type="Script" uid="uid://cv072pvphcjfq" path="res://_Utilities/Demons/demon_button.gd" id="6_q10kc"]
 [ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="6_wixct"]
-[ext_resource type="Texture2D" uid="uid://grrmumkvto7w" path="res://_Entities/Demons/Cards/DemonCARD_BaseMaw_NOTEXTf/MawCardNoText.png" id="7_e3ig8"]
 [ext_resource type="Texture2D" uid="uid://csbrjj1wgdbam" path="res://_Entities/Demons/_Crawler/Crawler_Display_CARD.png" id="7_wixct"]
 [ext_resource type="Texture2D" uid="uid://bmr70mtnhode1" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum_Display_CARD.png" id="8_c3fhf"]
+[ext_resource type="Texture2D" uid="uid://bnf1svkhirytd" path="res://_Entities/Demons/_Maw/Maw_Card_New.png" id="9_jfwei"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://bajbuwbiesujh" path="res://_Entities/Demons/Cards/DemonCard_HEART.png" id="11_iafbj"]
-[ext_resource type="Texture2D" uid="uid://bkrpjoje3pedw" path="res://_Entities/Demons/_Wyrm/Wyrm_Display_CARD.png" id="11_jfwei"]
 [ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
+[ext_resource type="Texture2D" uid="uid://dli3rsa1e6fd7" path="res://_Entities/Demons/_Wyrm/Wyrm_Card_New.png" id="12_jfwei"]
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://_Entities/Demons/Cards/DESELECT_CARD.png" id="12_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://w4n34nhafrdq" path="res://_Entities/Demons/Cards/WORDSWAP_CARD.png" id="13_vvged"]
 [ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://_Assets/Misc/CODEX_CARD.png" id="14_04elx"]
@@ -738,9 +738,17 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = -2
+
+[node name="MawButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture_normal = ExtResource("9_jfwei")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="MawCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
 z_index = 2
@@ -750,17 +758,7 @@ theme_override_font_sizes/font_size = 15
 text = "50"
 horizontal_alignment = 1
 
-[node name="MawButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-texture_normal = ExtResource("7_e3ig8")
-ignore_texture_size = true
-stretch_mode = 0
-
 [node name="Wyrm" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = -1
 
@@ -770,7 +768,7 @@ custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
-texture_normal = ExtResource("11_jfwei")
+texture_normal = ExtResource("12_jfwei")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_q10kc")

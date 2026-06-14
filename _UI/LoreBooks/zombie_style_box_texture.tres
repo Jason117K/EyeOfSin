@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dhpm871ygprfn"]
+
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="1_poqkb"]
+
+[resource]
+texture = ExtResource("1_poqkb")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.67199993, 0.18, 1, 1)

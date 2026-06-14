@@ -121,7 +121,7 @@ func finish_ready() -> void:
 	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.canSwapScenes = true
 	Global.unhide_ui_layer()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal","Maw"])
 
 
 func getIsPurpleDimension()->void:
