@@ -21,3 +21,17 @@ collision_mask = 24
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1183948714]
 position = Vector2(-16, 40)
 shape = SubResource("1")
+
+[node name="DangerZone" type="Area2D" parent="." unique_id=1908742414]
+position = Vector2(96, 0)
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone" unique_id=2118464263]
+position = Vector2(-16, 40)
+shape = SubResource("1")
+
+[node name="CheckDangerZoneTimer" type="Timer" parent="." unique_id=530155188]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="CheckDangerZoneTimer" to="." method="_on_check_danger_zone_timer_timeout"]

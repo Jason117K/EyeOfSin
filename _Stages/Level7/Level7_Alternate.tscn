@@ -1277,30 +1277,44 @@ bus = &"music"
 
 [node name="FlowerTile" parent="FlowerTileContainer" unique_id=1493116393 instance=ExtResource("26_ww5m7")]
 position = Vector2(358, 116)
+monitoring = false
+monitorable = false
 is_alt = true
 
 [node name="FlowerTile2" parent="FlowerTileContainer" unique_id=1110572315 instance=ExtResource("26_ww5m7")]
 position = Vector2(358, 148)
+monitoring = false
+monitorable = false
 is_alt = true
 
 [node name="FlowerTile3" parent="FlowerTileContainer" unique_id=460250799 instance=ExtResource("26_ww5m7")]
 position = Vector2(358, 180)
+monitoring = false
+monitorable = false
 is_alt = true
 
 [node name="FlowerTile4" parent="FlowerTileContainer" unique_id=723459990 instance=ExtResource("26_ww5m7")]
 position = Vector2(358, 212)
+monitoring = false
+monitorable = false
 is_alt = true
 
 [node name="FlowerTile5" parent="FlowerTileContainer" unique_id=2103991621 instance=ExtResource("26_ww5m7")]
 position = Vector2(358, 244)
+monitoring = false
+monitorable = false
 is_alt = true
 
 [node name="FlowerTile6" parent="FlowerTileContainer" unique_id=1018452568 instance=ExtResource("26_ww5m7")]
 position = Vector2(358, 276)
+monitoring = false
+monitorable = false
 is_alt = true
 
 [node name="FlowerTile7" parent="FlowerTileContainer" unique_id=1762575633 instance=ExtResource("26_ww5m7")]
 position = Vector2(358, 308)
+monitoring = false
+monitorable = false
 is_alt = true
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]

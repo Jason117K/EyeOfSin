@@ -38,7 +38,8 @@ func _process(_dt: float) -> void:
 			#gc.y(gc.current_scenes[0], gc.DIM_BITS[0])
 			#gc._stamp_scene(gc.current_scenes[1], gc.DIM_BITS[1])
 
-
+func get_pip_panel()->Control:
+	return $PanelContainer
 
 func set_mirror_camera(cam: Camera2D) -> void:
 	_mirror_camera = cam

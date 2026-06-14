@@ -380,6 +380,7 @@ func swap_scenes() -> void:
 	Global.start_swap_ability()
 	if !can_swap:
 		return
+	Global.stop_pip_glow()
 	
 	Global.hide_notification_bar()
 	swap_ability = Global.swap_ability

@@ -18,6 +18,8 @@ signal level_ended
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
+@onready var take_damage_area := $Area2D
+@onready var danger_zone_area := $DangerZone
 
 var can_start: bool = true
 
@@ -27,6 +29,8 @@ var _current_wave: int = -1
 var _total_waves: int = 0
 @onready var _spawners_finished: int = 0
 var _all_spawning_done: bool = false
+
+var zombie_close : bool = false 
 
 var elapsed_time_preview_on_screen : float
 
@@ -53,9 +57,12 @@ func _setup() -> void:
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
 		
-	if not $Area2D.area_entered.is_connected(_on_damage_area_entered):
-		$Area2D.connect("area_entered", _on_damage_area_entered)
-
+	if not take_damage_area.area_entered.is_connected(_on_damage_area_entered):
+		take_damage_area.connect("area_entered", _on_damage_area_entered)
+		
+	if not danger_zone_area.area_entered.is_connected(_on_danger_zone_area_entered):
+		danger_zone_area.connect("area_entered", _on_danger_zone_area_entered)
+		
 	# Show wave 0 preview with start button so the player can begin
 	for preview:Node in _wave_previews:
 		preview.show_preview(0, true)
@@ -185,8 +192,14 @@ func _check_level_end() -> void:
 		get_tree().create_timer(1.0).timeout.connect(_check_level_end)
 
 
-# --- Player Health (temporary — extract to PlayerHealth node later) ---
+		
+	
 
+# --- Player Health (temporary — extract to PlayerHealth node later) ---
+func _on_danger_zone_area_entered(area: Area2D)->void:
+	if area.is_in_group("Zombie"):
+		Global.make_pip_glow()
+		
 func _on_damage_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 		area.die()
@@ -211,3 +224,17 @@ func _lose() -> void:
 			child.lose()
 			child.visible = true
 	get_tree().paused = true
+
+
+func _on_check_danger_zone_timer_timeout() -> void:
+	zombie_close = false 
+	for area : Area2D in danger_zone_area.get_overlapping_areas():
+		if area.is_in_group("Zombie"):
+			if area.is_in_group("Purple") && !Global.is_on_purple_scene():
+				zombie_close = true 
+				Global.make_pip_glow()
+			if area.is_in_group("Green") && Global.is_on_purple_scene():
+				zombie_close = true 
+				Global.make_pip_glow()
+	if zombie_close == false :
+		Global.stop_pip_glow()

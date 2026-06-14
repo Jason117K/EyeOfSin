@@ -1758,7 +1758,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("4_k8jit")]
-blood_points = 700
+blood_points = 2000
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
@@ -2088,24 +2088,38 @@ bus = &"music"
 
 [node name="FlowerTile" parent="FlowerTileContainer" unique_id=1493116393 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 116)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile2" parent="FlowerTileContainer" unique_id=998494745 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 148)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile3" parent="FlowerTileContainer" unique_id=1382783001 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 180)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile4" parent="FlowerTileContainer" unique_id=828783709 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 212)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile5" parent="FlowerTileContainer" unique_id=1862808082 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 244)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile6" parent="FlowerTileContainer" unique_id=1047588340 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 276)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile7" parent="FlowerTileContainer" unique_id=1767163720 instance=ExtResource("46_4fca4")]
 position = Vector2(358, 308)
+monitoring = false
+monitorable = false
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=574585201]
 visible = false
