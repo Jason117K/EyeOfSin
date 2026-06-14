@@ -122,6 +122,17 @@ var portal_progress_bar_1 : ProgressBar
 @onready var death_mark := preload("res://_Entities/SynAbility/syn_ability_mark.tscn")
 @onready var shroomie := preload("res://_Entities/SynAbility/syn_torch_ability.tscn")
 
+
+var is_crawler_occulum  := false 
+var is_spinal_occulum_occulum := false 
+var is_wyrm_occulum := false 
+var is_hive_occulum := false 
+var is_maw_occulum := false 
+
+
+
+
+
 func _process(delta: float) -> void:
 	if get_tree().paused:
 		return

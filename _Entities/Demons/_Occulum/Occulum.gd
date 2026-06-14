@@ -47,11 +47,26 @@ var cost_flat_modifier := 0
 
 var healTimer: Timer
 
+signal crawler_occulum
+signal spinal_occulum_occulum
+signal wyrm_occulum
+signal hive_occulum
+signal maw_occulum
+
+
+
+
+
+
 
 # --- Lifecycle ---
 
 func _ready() -> void:
 	super()
+	crawler_occulum.connect(Global.unlockBuff)
+	
+	
+	
 	Global.register_occulum(self)
 	# --- Timer setup ---
 	bloodTimer.wait_time = bloodWaitTime

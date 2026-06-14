@@ -78,6 +78,10 @@ var time_since_hit : float = 0.0
 signal demon_die
 
 
+
+
+
+
 # --- Lifecycle (_ready) ---
 
 func _ready() -> void:
