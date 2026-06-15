@@ -76,12 +76,12 @@ func _ready() -> void:
 	set_process(true)  # Bob animation requires per-frame updates
 	# --- Demon-specific collision ---
 	_init_demon_collision()
-	# --- Sprite setup ---
-	if sprite:
-		initial_sprite_scale = sprite.scale
-		initial_sprite_position = sprite.position
-	else:
-		push_warning("No sprite assigned to animate!")
+	## --- Sprite setup ---
+	#if sprite:
+		#initial_sprite_scale = sprite.scale
+		#initial_sprite_position = sprite.position
+	#else:
+		#push_warning("No sprite assigned to animate!")
 		
 	var scale_x = laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
 	laserShootComp2.max_length =  attack_ray.target_position.x / scale_x

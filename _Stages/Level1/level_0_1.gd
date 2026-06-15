@@ -15,6 +15,13 @@ const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive",
 
 @export var debug_wave_2_start_time := 30
 
+@onready var wave_preview := $GameLayer/ZombieSpawner/WavePreview
+
+var first_hover := false
+var demon_never_clicked := true 
+
+
+
 #region Tutorial Step Definitions (sequential order — read top to bottom)
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
@@ -33,8 +40,12 @@ func _setup_tutorial() -> void:
 			"enter": _start_explain_blood_cost,
 		},
 		{
-			"name": "EXPLAIN_DEMON_HOVER_CLICK",
-			"enter": _start_explain_demon_hover_click,
+			"name": "EXPLAIN_DEMON_HOVER",
+			"enter": _start_explain_demon_hover,
+		},
+		{
+			"name": "EXPLAIN_DEMON_CLICK",
+			"enter": _start_explain_demon_click,
 		},
 		{
 			"name":"EXPLAIN_CLICK_SKULL",
@@ -91,7 +102,11 @@ func _setup_tutorial() -> void:
 func _ready() -> void:
 	super()
 	#Dialogic.Inputs.auto_skip.enabled = true
-	
+	#progress_timer = Timer.new()
+	#progress_timer.wait_time = progress_timer_wait_time 
+	#progress_timer.timeout.connect(progress_tutorial)
+	#progress_timer.one_shot = true 
+	#progress_timer.autostart = false 
 	
 	Dialogic.timeline_ended.connect(finish_ready)
 
@@ -105,6 +120,7 @@ func _ready() -> void:
 		
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
+	wave_preview.game_start_requested.connect(_on_tooltip_hidden)
 	_configure_waves()
 
 	setup_demon_selection_menu()
@@ -199,26 +215,59 @@ func _start_force_place_demon() -> void:
 
 
 func _start_explain_blood_cost() -> void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, true)
+	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, false)
 	toolTips.add_pulsing_button_highlight(Global.get_blood_panel())
+	print("Set Check Progress True 1 ")
+	check_progress = true 
 
-func _start_explain_demon_hover_click() -> void:
+func _start_explain_demon_hover() -> void:
 	toolTips.stop_glow_pulse(Global.get_blood_panel())
-	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_HOVER_CLICK, false)
+	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_HOVER, false)
+	
+	check_progress = true 
+	print("Set Check Progress True 2", check_progress)
+	pass
+
+func _start_explain_demon_click()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_CLICK, false)
 	pass
 	
-func demon_clicked():
-	toolTips.hide()
-	_on_tooltip_hidden()
+
+	
+func demon_hover()->void:
+	print("Demon Hover", first_hover)
+	if first_hover:
+		toolTips.hide()
+		_on_tooltip_hidden()
+		first_hover = false 
+	
+func progress_time_passed()->void:
+	print("Progress Time Passed ")
+	match progress_count:
+		0:
+			print("Hide Button In Progress Time Passed")
+			toolTips._on_basic_tutorial_understood_button_pressed()
+		1:
+			first_hover = true 
+	progress_count += 1
+	
+	
+func demon_clicked()->void:
+	print("demon clicked")
+	if demon_never_clicked:
+		toolTips.hide()
+		_on_tooltip_hidden()
+		demon_never_clicked = false 
 		
 
 func _start_explain_click_skull()->void:
 	zombie_spawner.show()
 	
 	toolTips.add_pulsing_button_highlight(zombie_spawner.get_preview_icon_panel())
-	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, true, Vector2(0,-32))
+	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, false, Vector2(0,-32))
 
 func _start_wave_1() -> void:
+	print("STAT WAVE !1")
 	toolTips.stop_glow_pulse(zombie_spawner.get_preview_icon_panel())
 	waveManager.can_start = true
 	wave_1_active = false
@@ -309,13 +358,16 @@ func _filter_only_allow_y(event: InputEvent) -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
+	toolTips.visible = false 
 	print("Tooltip Was Hidden, Current Step is ", get_current_step_name() )
 	#hide_spotlight()
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_COST":
 			pass
-			go_to_step("EXPLAIN_DEMON_HOVER_CLICK")
-		"EXPLAIN_DEMON_HOVER_CLICK":
+			go_to_step("EXPLAIN_DEMON_HOVER")
+		"EXPLAIN_DEMON_HOVER":
+			go_to_step("EXPLAIN_DEMON_CLICK")
+		"EXPLAIN_DEMON_CLICK":
 			print("Should Go To Step Click Skull")
 			go_to_step("EXPLAIN_CLICK_SKULL")
 		"EXPLAIN_CLICK_SKULL":
@@ -343,6 +395,7 @@ func _on_crawler_button_pressed() -> void:
 func _on_wave_started(wave_index: int) -> void:
 	if skip_tutorials:
 		return
+	print("Wave Starteddd")
 	match wave_index:
 		0:
 			wave_1_active = true
@@ -404,3 +457,9 @@ func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(4, 4)
 	
 #endregion
+
+
+func progress_tutorial()->void:
+	toolTips._on_basic_tutorial_understood_button_pressed()
+	pass
+	

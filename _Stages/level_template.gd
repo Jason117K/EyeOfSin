@@ -30,6 +30,8 @@ var has_pulsed := false
 @onready var codex_button :TextureButton= demonSelectionMenu.get_codex_button()
 @onready var sway_script_path := "res://_Common/EnvironmentScripts/sway.gd"
 
+var progress_timer : Timer 
+
 #@onready var green_dimension = Global.game_controller.get_alt_dimension()
 var green_dimension : Node
 
@@ -39,8 +41,11 @@ var level_3_start_dialog := preload("res://_Assets/Dialog/level_03_start_dialog.
 var level_4_start_dialog := preload("res://_Assets/Dialog/level_04_start_dialog.dtl")
 var level_5_start_dialog := preload("res://_Assets/Dialog/level_05_start_dialog.dtl")
 var level_6_start_dialog := preload("res://_Assets/Dialog/level_06_start_dialog.dtl")
+var progress_count := 0
 
-
+@export var progress_timer_wait_time : float = 5
+@onready var og_progress_timer_wait_time := progress_timer_wait_time
+var check_progress := false 
 @export var skip_end_dialog := true
 
 # Text file paths
@@ -60,7 +65,9 @@ const TUTORIAL_EXPLAIN_SEVERED_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDesc
 const TUTORIAL_SELECT_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectOcculum.txt"
 const TUTORIAL_PLACE_OCCULUM = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt"
 const TUTORIAL_EXPLAIN_HEALTH = "res://_Assets/Text/TextFiles/Tutorial_Explain_Health.txt"
-const TUTORIAL_DEMON_HOVER_CLICK = "res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt"
+const TUTORIAL_DEMON_HOVER = "res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt"
+const TUTORIAL_DEMON_CLICK = "res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Click.txt"
+
 const TUTORIAL_PLACE_SPINALOCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
 const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt"
 const TUTORIAL_SELECT_CRAWLER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectCrawler.txt"
@@ -78,6 +85,11 @@ const ALL_EXTRA_BUTTONS = []
 
 func demon_clicked()->void:
 	pass 
+	
+func demon_hover()->void:
+	pass
+	
+	
 	
 func get_demon_manager()->Node:
 	return demonManager
@@ -109,8 +121,21 @@ func _ready() -> void:
 	Global.adjust_ui_layer()
 	Global.reset_all_variables()
 	
+func _process(delta: float) -> void:
+	if check_progress:
 
+		progress_timer_wait_time -= delta
 
+		if progress_timer_wait_time <= 0:
+			print("Call Progress Time Passed")
+			
+			progress_timer_wait_time = og_progress_timer_wait_time - 2 
+			check_progress = false
+			print("Time Up", check_progress)
+			progress_time_passed()
+			
+func progress_time_passed()->void:
+	pass
 
 ## Hides all demon buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]

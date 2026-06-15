@@ -307,7 +307,7 @@ func end_shield()->void:
 # --- Input ---
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed && spawn_done:
 		#print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)
 		pass

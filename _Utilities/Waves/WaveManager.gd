@@ -129,7 +129,7 @@ func _start_wave(index: int) -> void:
 	for spawner:Node in _spawners:
 		if index < spawner.get_wave_count():
 			spawner.begin_wave(index)
-
+	
 	wave_started.emit(index)
 
 	# Schedule next wave (if not the last and delay is positive)

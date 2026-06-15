@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://_UI/ToolTips/ToolTips.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_c1ynx"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="3_j4vri"]
 [ext_resource type="FontFile" uid="uid://deyk678r085k8" path="res://_Assets/Fonts/Cormorant-Bold.ttf" id="4_53ev6"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_crawler_buff.tscn" id="6_imaxi"]
@@ -10,11 +11,13 @@
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="8_x1rij"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="9_komxe"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53ev6"]
-bg_color = Color(0, 0, 0, 0.91764706)
-border_width_top = 30
-border_width_bottom = 30
-border_color = Color(0, 0, 0, 0.91764706)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3bqs"]
+texture = ExtResource("3_j4vri")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.17, 0.17, 0.17, 0.98039216)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygqpy"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -68,15 +71,13 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1")
 max_basic_tutorial_characters = 115
+tooltip_dissappear_wait_time = 9
 
 [node name="BasicTutorialMessage" type="Control" parent="." unique_id=504267282]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
-offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -105,26 +106,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -366.0
-offset_top = -11.0
-offset_right = 365.0
-offset_bottom = 176.0
+offset_left = -369.0
+offset_top = 25.0
+offset_right = 362.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="BasicTutorialLabel" type="RichTextLabel" parent="BasicTutorialMessage/BasicTutorialVbox" unique_id=1231091773]
-custom_minimum_size = Vector2(700, 100)
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
 theme_override_font_sizes/normal_font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_53ev6")
-text = "Good job, you survived.
-PRESS Y to travel to another dimension.
-Be warned: Both dimensions are under attack!"
+theme_override_styles/normal = SubResource("StyleBoxTexture_y3bqs")
+text = "Click a Demon Rune to Select It"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -155,13 +155,15 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="VisualTutorialPanelContainer" type="PanelContainer" parent="VisualTutorialVBox" unique_id=132621045]
-custom_minimum_size = Vector2(0, 230)
+custom_minimum_size = Vector2(490, 230)
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i1eds")
 
 [node name="VisualTutorialMarginContainer" type="MarginContainer" parent="VisualTutorialVBox/VisualTutorialPanelContainer" unique_id=1311181689]
 layout_mode = 2
+size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 4
@@ -169,17 +171,13 @@ theme_override_constants/margin_bottom = 3
 
 [node name="VisualTutorialHBox" type="HBoxContainer" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer" unique_id=2002964462]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="VisualTutorialVisual" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1492933373 instance=ExtResource("6_imaxi")]
-layout_mode = 2
-mouse_filter = 2
-
 [node name="VisualTutorialLabel" type="RichTextLabel" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1509879464]
-custom_minimum_size = Vector2(490, 148.595)
+custom_minimum_size = Vector2(252.91, 148.595)
 layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
@@ -198,8 +196,14 @@ When the mutation in a Reborn grows, their upper is torn apart and the Severed i
 
 "
 
-[node name="VisualTutorialUnderstoodButton" type="Button" parent="VisualTutorialVBox" unique_id=1590243430]
+[node name="VisualTutorialVisual" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1492933373 instance=ExtResource("6_imaxi")]
 layout_mode = 2
+mouse_filter = 2
+
+[node name="VisualTutorialUnderstoodButton" type="Button" parent="VisualTutorialVBox" unique_id=1590243430]
+custom_minimum_size = Vector2(490, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("6_m6aj6")
@@ -271,6 +275,10 @@ texture = ExtResource("9_komxe")
 visible = false
 position = Vector2(260, 201)
 texture = ExtResource("2_c1ynx")
+
+[node name="CountdownTimer" type="Timer" parent="." unique_id=731847931]
+wait_time = 14.245
+one_shot = true
 
 [connection signal="pressed" from="BasicTutorialMessage/BasicTutorialVbox/BasicTutorialUnderstoodButton" to="." method="_on_basic_tutorial_understood_button_pressed"]
 [connection signal="pressed" from="VisualTutorialVBox/VisualTutorialUnderstoodButton" to="." method="_on_visual_tutorial_understood_button_pressed"]

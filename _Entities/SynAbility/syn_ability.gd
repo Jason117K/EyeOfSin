@@ -6,6 +6,7 @@ extends Node
 
 @onready var syn_ability_cooldown := $SynAbilityCooldown
 @onready var syn_ability_crosshair : AnimatedSprite2D = $SynAbilityCrosshair
+@onready var syn_ability_button := $SynAbilityCooldown/SynAbilityPanelContainer/MarginContainer/HBoxContainer/SynAbilityButton
 
 enum ChargeState { READY, ACTIVE, COOLDOWN }
 
@@ -39,7 +40,7 @@ func get_icon()->Texture:
 	return icon_texture
 
 func get_syn_button()->Control:
-	return $SynAbilityCooldown/SynAbilityButton
+	return syn_ability_button
 
 func set_syn_ability(new_syn_ability)->void:
 	syn_ability_instance = new_syn_ability

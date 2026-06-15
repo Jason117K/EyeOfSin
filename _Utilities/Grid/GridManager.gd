@@ -18,6 +18,8 @@ func _ready() -> void:
 	if make_green:
 		tilemapLayer.make_green = true
 		tilemapLayer._setup_shader()
+		
+#		$TileMapLayer4._setup_shader()
 		if block_layer != null:
 			block_layer._setup_shader()
 		

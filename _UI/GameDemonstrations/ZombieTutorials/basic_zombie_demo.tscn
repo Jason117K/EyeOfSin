@@ -3229,10 +3229,12 @@ layout_mode = 2
 theme_override_styles/panel = ExtResource("18_k06w6")
 
 [node name="BasicZombie" type="AnimatedSprite2D" parent="Panel" unique_id=364899820]
-position = Vector2(96, 66)
-scale = Vector2(6.21, 6.21)
+position = Vector2(118, 82)
+scale = Vector2(3.645, 3.645)
 sprite_frames = SubResource("SpriteFrames_j0lt8")
 autoplay = "default"
+frame = 12
+frame_progress = 0.05644194
 flip_h = true
 
 [editable path="BG/GridManager"]

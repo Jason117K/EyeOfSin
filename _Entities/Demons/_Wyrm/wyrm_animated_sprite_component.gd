@@ -1,10 +1,10 @@
 extends DemonSpriteComp
 
 signal frame_changed_signal(animation_name: String, frame_index: int)
-@onready var worm1 := $"../Worm1"
-@onready var worm2 := $"../Worm2"
-@onready var shell_back := $"../ShellBack"
-@onready var egg := $"../Egg"
+#@onready var worm1 := $"../Worm1"
+#@onready var worm2 := $"../Worm2"
+#@onready var shell_back := $"../ShellBack"
+#@onready var egg := $"../Egg"
 func receive_buff(demonName: String) -> void:
 	super(demonName)
 	#var parent := get_parent()

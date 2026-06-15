@@ -30,6 +30,7 @@ var canAttackSetTrueOnce: bool = false
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 
 signal crawler_buff_unlocked(buff_to_unlock:String)
+signal is_hovering
 
 # --- Lifecycle ---
 
@@ -149,6 +150,8 @@ func _on_spawn_spiderling_timeout() -> void:
 
 func _on_mouse_entered() -> void:
 	#$PreviewNodes/Spider.visible = false
+
+	Global.game_controller.get_active_dimension().demon_hover()
 	$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:

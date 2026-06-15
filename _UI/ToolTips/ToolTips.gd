@@ -9,6 +9,7 @@ extends Control
 @onready var visualTutorialButton := $VisualTutorialVBox/VisualTutorialUnderstoodButton
 @onready var visualTutorialVisual: CenterContainer = $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialVisual
 @onready var visualTutorialVisualParent := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox
+@onready var countdown_timer : Timer = $CountdownTimer
 #@onready var blockInputPanel := $BlockInput
 
 @export var max_basic_tutorial_characters := 100
@@ -17,6 +18,8 @@ extends Control
 @export var max_visual_tutorial_characters := 200
 @export var small_visual_tutorial_text := 20
 @export var large_visual_tutorial_text := 24
+
+@export var tooltip_dissappear_wait_time := 5 
 
 var char_count : int
 var index : int
@@ -28,6 +31,9 @@ var index : int
 signal ToolTipHid
 
 func _ready() -> void:
+	countdown_timer.timeout.connect(hide_self)
+	countdown_timer.wait_time = tooltip_dissappear_wait_time
+	print("HIDEEE")
 	hide()
 	if not basicTutorialButton.pressed.is_connected(_on_basic_tutorial_understood_button_pressed):
 		basicTutorialButton.pressed.connect(_on_basic_tutorial_understood_button_pressed)
@@ -69,6 +75,7 @@ func hide_basic_tutorial_button() -> void:
 	basicTutorialButton.hide()
 		
 func _on_basic_tutorial_understood_button_pressed() -> void:
+	print("HIDEEE")
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
@@ -119,10 +126,23 @@ func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = 
 	
 func _on_visual_tutorial_understood_button_pressed() -> void:
 	Global.is_blocking = false
+	print("HIddDEEE")
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
 	#blockInputPanel.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
+
+func start_basic_countdown()->void:
+	pass
+	print("Start Basic Countdown")
+	#countdown_timer.start()
+
+func hide_self()->void:
+	pass
+	#print("Hide Self Called")
+	#_on_basic_tutorial_understood_button_pressed()
+	#ToolTipHid.emit()
+
 
 func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
 	if not button:

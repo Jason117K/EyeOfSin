@@ -1,2 +1,1 @@
-HOVER over a demon to see it's range and blood buff zones. 
-CLICK on a demon to see it's stats.
+HOVER over a DEMON to view its RANGE.

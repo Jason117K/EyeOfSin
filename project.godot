@@ -112,6 +112,7 @@ project/assembly_name="PVZ0.1"
 [editor]
 
 movie_writer/movie_file="C:/GodotGamesProjects/EyeOfSin/Clip1.avi"
+script/search_in_file_extensions=PackedStringArray("gd", "gdshader", "txt")
 
 [editor_plugins]
 

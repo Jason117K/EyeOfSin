@@ -283,7 +283,7 @@ func _do_spawn_drone_on_death() -> void:
 # --- Damage ---
 
 func take_damage(is_link_damage : bool = false, damage: float = 1.0, piercing: bool = false) -> void:
-	print(self, " is taking damage ",damage )
+	#print(self, " is taking damage ",damage )
 	_on_hit_dmg_effect()
 	healthComp.take_damage(is_link_damage,damage, piercing)
 #	if !is_link_damage:

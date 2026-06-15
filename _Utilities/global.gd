@@ -78,6 +78,14 @@ var amalgam_icon := preload("res://_Entities/Zombies/Notif_Icons/ScreenDoorZombi
 #var spinal_occulum_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt", FileAccess.READ).get_as_text()
 #var hive_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt", FileAccess.READ).get_as_text()
 #var maw_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt", FileAccess.READ).get_as_text()
+#var occulum_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt", FileAccess.READ).get_as_text()
+#var crawler_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt", FileAccess.READ).get_as_text()
+#var wyrm_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt", FileAccess.READ).get_as_text()
+#var spinal_occulum_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt", FileAccess.READ).get_as_text()
+#var hive_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt", FileAccess.READ).get_as_text()
+#var maw_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt", FileAccess.READ).get_as_text()
+
+
 var occulum_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt", FileAccess.READ).get_as_text()
 var crawler_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt", FileAccess.READ).get_as_text()
 var wyrm_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt", FileAccess.READ).get_as_text()
@@ -689,10 +697,10 @@ func swap_scenes() -> void:
 
 func swap_hero_demon()->void:
 	pass
-	print("Swap Hero Demon")
+	#print("Swap Hero Demon")
 	if hero_demon != null:
 		if hero_demon.is_in_group("Purple"):
-			print("Hero Was Purple")
+			#print("Hero Was Purple")
 			hero_demon.add_to_group("Green")
 			hero_demon.remove_from_group("Purple")
 			if hero_demon.is_in_group("Purple"):
@@ -700,7 +708,7 @@ func swap_hero_demon()->void:
 			hero_demon.reparent(game_controller.get_active_dimension().game_layer)
 			hero_demon.swap_scenes()
 		else:
-			print("Hero Was Green")
+		#	print("Hero Was Green")
 			hero_demon.add_to_group("Purple")
 			hero_demon.remove_from_group("Green")
 			hero_demon.reparent(game_controller.get_active_dimension().game_layer)
