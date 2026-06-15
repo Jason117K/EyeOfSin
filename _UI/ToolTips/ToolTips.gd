@@ -2,7 +2,8 @@ extends Control
 
 @onready var basicTutorialMessageContainer := $BasicTutorialMessage
 @onready var basicTutorialLabel := $BasicTutorialMessage/BasicTutorialVbox/BasicTutorialLabel
-@onready var basicTutorialButton := $BasicTutorialMessage/BasicTutorialVbox/BasicTutorialUnderstoodButton
+@onready var basicTutorialButton :=$BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer/BasicTutorialUnderstoodButton
+@onready var basicTutorialButton_Container := $BasicTutorialMessage/BasicTutorialVbox/PanelContainer
 
 @onready var visualTutorialContainer := $VisualTutorialVBox
 @onready var visualTutorialLabel := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialLabel
@@ -69,10 +70,12 @@ func get_basic_tutorial_container()->Control:
 
 func show_basic_tutorial_button() -> void:
 	basicTutorialButton.show()
+	basicTutorialButton_Container.show()
 
 
 func hide_basic_tutorial_button() -> void:
 	basicTutorialButton.hide()
+	basicTutorialButton_Container.hide()
 		
 func _on_basic_tutorial_understood_button_pressed() -> void:
 	print("HIDEEE")

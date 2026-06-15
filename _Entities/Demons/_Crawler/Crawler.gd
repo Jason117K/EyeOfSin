@@ -38,6 +38,11 @@ func _ready() -> void:
 	super()
 	crawler_buff_unlocked.connect(Global.unlock_buff)
 	hide_old_preview()
+	
+	if "Level0-1" in Global.game_controller.get_active_dimension().name:
+		$PreviewNodes/BloodTileFront.modulate = Color(1,1,1,0)
+		$PreviewNodes/BloodTileBack1.modulate = Color(1,1,1,0)
+		$PreviewNodes/BloodTileBack2.modulate = Color(1,1,1,0)
 
 func hide_old_preview()->void:
 	$PreviewNodes/PreviewCard.visible = false 
@@ -162,7 +167,9 @@ func get_demon_icon()->CompressedTexture2D:
 	return Global.crawler_icon
 	
 func get_special_description()->String:
-	return Global.crawler_special_description
+	var file := FileAccess.open(Global.crawler_special_description, FileAccess.READ)
+	var newText :String = file.get_as_text()
+	return newText
 	
 	
 	

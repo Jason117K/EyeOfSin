@@ -266,8 +266,14 @@ func create_preview(demon_scene:PackedScene) -> void:
 			if this_preview_sprite.name.begins_with("PreviewCard"): #\
 			#and not this_preview_sprite.name.begins_with("PreviewCardShadow"):
 				preview_card_sprites.append(this_preview_sprite)
+			if "Level0-1" in Global.game_controller.get_active_dimension().name:
+				if "BloodTile" in this_preview_sprite.name:
+					pass
+				else:
+					preview_sprites.append(this_preview_sprite)
+			else:
+				preview_sprites.append(this_preview_sprite)
 				
-			preview_sprites.append(this_preview_sprite)
 		is_previewing = true
 		preview_last_mouse = get_global_mouse_position()
 		card_osc_velocity = 0.0

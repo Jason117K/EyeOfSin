@@ -72,26 +72,15 @@ var erupter_icon := preload("res://_Entities/Zombies/Notif_Icons/TickerZombie.pn
 var flesheater_icon := preload("res://_Entities/Zombies/Notif_Icons/FootBallZombie.png")
 var amalgam_icon := preload("res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png")
 
-#var occulum_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt", FileAccess.READ).get_as_text()
-#var crawler_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt", FileAccess.READ).get_as_text()
-#var wyrm_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt", FileAccess.READ).get_as_text()
-#var spinal_occulum_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt", FileAccess.READ).get_as_text()
-#var hive_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt", FileAccess.READ).get_as_text()
-#var maw_special_description := FileAccess.open("res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt", FileAccess.READ).get_as_text()
-#var occulum_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt", FileAccess.READ).get_as_text()
-#var crawler_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt", FileAccess.READ).get_as_text()
-#var wyrm_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt", FileAccess.READ).get_as_text()
-#var spinal_occulum_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt", FileAccess.READ).get_as_text()
-#var hive_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt", FileAccess.READ).get_as_text()
-#var maw_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt", FileAccess.READ).get_as_text()
 
 
-var occulum_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt", FileAccess.READ).get_as_text()
-var crawler_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt", FileAccess.READ).get_as_text()
-var wyrm_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt", FileAccess.READ).get_as_text()
-var spinal_occulum_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt", FileAccess.READ).get_as_text()
-var hive_special_description :=""# FileAccess.open("res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt", FileAccess.READ).get_as_text()
-var maw_special_description := ""#FileAccess.open("res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt", FileAccess.READ).get_as_text()
+var occulum_special_description := "res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt"
+var crawler_special_description :="res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt"
+var wyrm_special_description := "res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt"
+var spinal_occulum_special_description := "res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt"
+var hive_special_description := "res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt"
+var maw_special_description := "res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt"
+
 
 var occulum_icon := preload("res://_Assets/Sprites/Occulum.png")
 var crawler_icon := preload("res://_Assets/Sprites/Crawler.png")

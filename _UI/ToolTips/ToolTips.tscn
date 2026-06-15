@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_c1ynx"]
 [ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="3_j4vri"]
 [ext_resource type="FontFile" uid="uid://deyk678r085k8" path="res://_Assets/Fonts/Cormorant-Bold.ttf" id="4_53ev6"]
+[ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="4_y3bqs"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_crawler_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]
@@ -129,8 +130,18 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="BasicTutorialUnderstoodButton" type="Button" parent="BasicTutorialMessage/BasicTutorialVbox" unique_id=1059101696]
-visible = false
+[node name="PanelContainer" type="PanelContainer" parent="BasicTutorialMessage/BasicTutorialVbox" unique_id=66757461]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_y3bqs")
+
+[node name="MarginContainer" type="MarginContainer" parent="BasicTutorialMessage/BasicTutorialVbox/PanelContainer" unique_id=1709388124]
+layout_mode = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="BasicTutorialUnderstoodButton" type="Button" parent="BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer" unique_id=1059101696]
 z_index = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -140,6 +151,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ygqpy")
 text = "UNDERSTOOD"
 
 [node name="VisualTutorialVBox" type="VBoxContainer" parent="." unique_id=771461667]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -280,5 +292,5 @@ texture = ExtResource("2_c1ynx")
 wait_time = 14.245
 one_shot = true
 
-[connection signal="pressed" from="BasicTutorialMessage/BasicTutorialVbox/BasicTutorialUnderstoodButton" to="." method="_on_basic_tutorial_understood_button_pressed"]
+[connection signal="pressed" from="BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer/BasicTutorialUnderstoodButton" to="." method="_on_basic_tutorial_understood_button_pressed"]
 [connection signal="pressed" from="VisualTutorialVBox/VisualTutorialUnderstoodButton" to="." method="_on_visual_tutorial_understood_button_pressed"]

@@ -271,6 +271,12 @@ func get_animSpriteComp() -> DemonSpriteComp:
 	return animSpriteComp
 
 func get_preview_nodes() -> Node:
+	print("Getting Preview Nodes")
+	if "Level0-1" in Global.game_controller.get_active_dimension().name:
+		print("Making Tile Alpha Invis")
+		$PreviewNodes/BloodTileFront.modulate = Color(1,1,1,0)
+		$PreviewNodes/BloodTileBack1.modulate = Color(1,1,1,0)
+		$PreviewNodes/BloodTileBack2.modulate = Color(1,1,1,0)
 	return $PreviewNodes
 
 func get_true_name() -> String:
