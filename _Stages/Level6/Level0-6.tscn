@@ -1060,8 +1060,8 @@ mouse_filter = 2
 script = ExtResource("1_a4agt")
 new_end_dialog = "res://_Assets/Dialog/level_06_end_dialog.dtl"
 wave2StartTime = 70
-wave3StartTime = 100
-wave4StartTime = 80
+wave3StartTime = 80
+wave4StartTime = 100
 debug = false
 skip_end_dialog = false
 
@@ -1515,8 +1515,8 @@ visible = false
 position = Vector2(576, 111)
 sprite_frames = SubResource("SpriteFrames_bl8gp")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="timeout" from="SynShark/LightningTimer" to="SynShark" method="_on_lightning_timer_timeout"]
 
 [editable path="GameLayer/GridManager"]

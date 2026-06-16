@@ -4,6 +4,7 @@ extends Control
 @onready var basicTutorialLabel := $BasicTutorialMessage/BasicTutorialVbox/BasicTutorialLabel
 @onready var basicTutorialButton :=$BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer/BasicTutorialUnderstoodButton
 @onready var basicTutorialButton_Container := $BasicTutorialMessage/BasicTutorialVbox/PanelContainer
+@onready var basicTutorialVbox := $BasicTutorialMessage/BasicTutorialVbox
 
 @onready var visualTutorialContainer := $VisualTutorialVBox
 @onready var visualTutorialLabel := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialLabel
@@ -45,6 +46,8 @@ func _ready() -> void:
 	
 func set_basic_tutorial_text(newFile: String, shouldPause: bool, location : Vector2 = Vector2(0,0)) -> void:
 	show()
+	basicTutorialButton_Container.show()
+	basicTutorialVbox.show()
 	hide_basic_tutorial_button()
 	basicTutorialMessageContainer.visible = true
 	basicTutorialMessageContainer.position = location
@@ -71,11 +74,13 @@ func get_basic_tutorial_container()->Control:
 func show_basic_tutorial_button() -> void:
 	basicTutorialButton.show()
 	basicTutorialButton_Container.show()
+	basicTutorialVbox.show()
 
 
 func hide_basic_tutorial_button() -> void:
 	basicTutorialButton.hide()
 	basicTutorialButton_Container.hide()
+	#basicTutorialVbox.hide()
 		
 func _on_basic_tutorial_understood_button_pressed() -> void:
 	print("HIDEEE")

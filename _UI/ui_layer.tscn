@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="5_kni87"]
 [ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="6_i34nt"]
 [ext_resource type="Texture2D" uid="uid://cjaxfiulbbg2q" path="res://_Entities/Demons/Icons/Wyrm_Crawler.png" id="7_krodo"]
+[ext_resource type="Texture2D" uid="uid://1vv56xu5e06h" path="res://_Entities/Zombies/Notif_Icons/BasicZombie.png" id="8_krodo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i34nt"]
 texture = ExtResource("4_kni87")
@@ -139,4 +140,53 @@ text = "DEMON
 UNLOCKED	!"
 horizontal_alignment = 1
 
+[node name="ZombieUnlockedButton" type="Button" parent="." unique_id=1585373430]
+layout_mode = 0
+offset_left = 2.8037376
+offset_top = 57.943916
+offset_right = 70.09346
+offset_bottom = 116.82242
+
+[node name="NewUnlock_Panel" type="PanelContainer" parent="ZombieUnlockedButton" unique_id=500093970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("6_i34nt")
+
+[node name="MarginContainer" type="MarginContainer" parent="ZombieUnlockedButton/NewUnlock_Panel" unique_id=1172895514]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -7
+theme_override_constants/margin_top = -7
+theme_override_constants/margin_right = -7
+theme_override_constants/margin_bottom = -7
+
+[node name="NewUnlock_Vbox" type="VBoxContainer" parent="ZombieUnlockedButton/NewUnlock_Panel/MarginContainer" unique_id=440027543]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -2
+
+[node name="ZombieUnlockedIcon" type="TextureRect" parent="ZombieUnlockedButton/NewUnlock_Panel/MarginContainer/NewUnlock_Vbox" unique_id=1986287597]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("8_krodo")
+expand_mode = 5
+
+[node name="ZombieUnlockedLabel" type="Label" parent="ZombieUnlockedButton/NewUnlock_Panel/MarginContainer/NewUnlock_Vbox" unique_id=2043884063]
+layout_mode = 2
+theme_override_constants/line_spacing = -3
+theme_override_fonts/font = ExtResource("5_kni87")
+theme_override_font_sizes/font_size = 8
+text = "ZOMBIE
+DISCOVERED!"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="DemonUnlockedButton" to="." method="_on_demon_unlocked_button_pressed"]
+[connection signal="pressed" from="ZombieUnlockedButton" to="." method="_on_zombie_unlocked_button_pressed"]

@@ -48,6 +48,12 @@ func _setup_tutorial() -> void:
 			"enter": _start_explain_demon_click,
 		},
 		{
+			"name":"EXPLAIN_HOVER_SKULL",
+			"enter": _start_explain_hover_skull,
+			"input_filter": _filter_block_deselect_and_swap,
+			
+		},
+		{
 			"name":"EXPLAIN_CLICK_SKULL",
 			"enter": _start_explain_click_skull,
 			"input_filter": _filter_block_deselect_and_swap,
@@ -58,11 +64,11 @@ func _setup_tutorial() -> void:
 			"enter": _start_wave_1,
 			"input_filter": _filter_block_swap,
 		},
-		{
-			"name": "EXPLAIN_BASIC_ZOMBIE",
-			"enter": _start_explain_basic_zombie,
-			"input_filter": _filter_block_swap,
-		},
+		#{
+			#"name": "EXPLAIN_BASIC_ZOMBIE",
+			#"enter": _start_explain_basic_zombie,
+			#"input_filter": _filter_block_swap,
+		#},
 		{
 			"name": "EXPLAIN_HEALTH",
 			"enter": _start_explain_health,
@@ -101,6 +107,7 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	super()
+	
 	#Dialogic.Inputs.auto_skip.enabled = true
 	#progress_timer = Timer.new()
 	#progress_timer.wait_time = progress_timer_wait_time 
@@ -121,6 +128,7 @@ func _ready() -> void:
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	wave_preview.game_start_requested.connect(_on_tooltip_hidden)
+	wave_preview.hover_over_preview.connect(_on_tooltip_hidden)
 	_configure_waves()
 
 	setup_demon_selection_menu()
@@ -137,7 +145,7 @@ func _ready() -> void:
 	toolTips.hide()
 	zombie_spawner.wave_exhausted.connect(wave_exhausted)
 	
-	waveManager.preview_lead_time = 8
+	waveManager.preview_lead_time = 15
 	Global.hide_ui_layer()
 	if debug or skip_tutorials:
 		finish_ready()
@@ -163,6 +171,7 @@ func finish_ready() -> void:
 	go_to_step("FORCE_SELECT_CRAWLER")
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
+	
 
 
 func _start_free_play() -> void:
@@ -196,6 +205,7 @@ func _input(event: InputEvent) -> void:
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_crawler() -> void:
+	print("Strart FORCE SELECR CRAWLER")
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#hide_all_demon_buttons_except_crawler()
@@ -227,6 +237,10 @@ func _start_explain_demon_hover() -> void:
 	check_progress = true 
 	print("Set Check Progress True 2", check_progress)
 	pass
+
+func _start_explain_hover_skull()->void:
+	zombie_spawner.show()
+	toolTips.set_basic_tutorial_text(TUTORIAL_SKULL_HOVER, false)
 
 func _start_explain_demon_click()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_CLICK, false)
@@ -277,12 +291,14 @@ func _start_wave_1() -> void:
 func start_game() -> void:
 	_start_wave_1()
 
+func show_zombie_tutorial()->void:
+	_start_explain_basic_zombie()
 
 func _start_explain_basic_zombie() -> void:
 	print("Explain Basic Zombie")
 	Global.hide_notification_bar()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
-	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,0))
+	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,-10))
 
 func _start_explain_health()->void:
 	toolTips.add_pulsing_button_highlight(Global.get_health_panel())
@@ -299,25 +315,30 @@ func _start_force_press_y() -> void:
 
 
 func _start_explain_green_dimension() -> void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_GREEN_DIMENSION, true)
+	green_dimension = Global.game_controller.get_green_dimension()
+	green_dimension.toolTips.set_basic_tutorial_text(TUTORIAL_GREEN_DIMENSION, true)
 
 
 func _start_wave_2_both_dimensions() -> void:
 	
 	Global.show_pip()
-	var green_dimension := get_parent().get_node("Level0-1_Alternate")
+	#green_dimension = get_parent().get_node("Level0-1_Alternate")
 	if green_dimension and green_dimension.has_method("setup_wave_2_ui"):
 		green_dimension.setup_wave_2_ui()
 
-	waveManager.start_next_wave()
+	#waveManager.start_next_wave()
 	demonSelectionMenu.canSwapScenes = true
+	_start_explain_early_wave_call()
 
 func _start_explain_early_wave_call()->void:
 	if wave_2_completed:
+		Global.game_controller.get_green_dimension().toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_WAVES,false)
 		toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_WAVES,false)
-		toolTips.show_basic_tutorial_button()
+		#toolTips.show_basic_tutorial_button()
 
 func _start_explain_severed_zombie() -> void:
+	if Global.game_controller.get_active_dimension() != Global.game_controller.get_purple_dimension():
+		Global.swap_scenes()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(severed_zombie_demo_scene.instantiate())
 
@@ -369,6 +390,8 @@ func _on_tooltip_hidden() -> void:
 			go_to_step("EXPLAIN_DEMON_CLICK")
 		"EXPLAIN_DEMON_CLICK":
 			print("Should Go To Step Click Skull")
+			go_to_step("EXPLAIN_HOVER_SKULL")
+		"EXPLAIN_HOVER_SKULL":
 			go_to_step("EXPLAIN_CLICK_SKULL")
 		"EXPLAIN_CLICK_SKULL":
 			go_to_step("WAVE_1_ACTIVE")
@@ -378,6 +401,8 @@ func _on_tooltip_hidden() -> void:
 			go_to_step("CONTINUE_WAVE_1")
 		"EXPLAIN_GREEN_DIMENSION":
 			go_to_step("WAVE_2_ACTIVE")
+		"WAVE_2_ACTIVE":
+			pass
 
 
 func _on_crawler_placed() -> void:
@@ -393,13 +418,15 @@ func _on_crawler_button_pressed() -> void:
 
 
 func _on_wave_started(wave_index: int) -> void:
+	if wave_2_completed:
+		_on_tooltip_hidden()
 	if skip_tutorials:
 		return
 	print("Wave Starteddd")
 	match wave_index:
 		0:
 			wave_1_active = true
-			print("Advacning Tutoiral Should Explain Basic Zomvie")
+			print("Advacning Tutoiral Should Explain Basic Zomvie / HEALTH FR")
 			advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
 		1:
 			pass

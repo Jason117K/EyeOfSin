@@ -2,6 +2,10 @@ extends Zombie
 # BasicZombie.gd
 
 
+func _ready() -> void:
+	super()
+	Global.unlock_zombie("Reborn")
+
 
 func get_zombie_name() -> String:
 	return " REBORN "

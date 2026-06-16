@@ -263,12 +263,12 @@ func create_preview(demon_scene:PackedScene) -> void:
 			#print("Add ", this_preview_sprite , " to preview container")
 			preview_container.add_child(this_preview_sprite)
 			
-			if this_preview_sprite.name.begins_with("PreviewCard"): #\
+			if this_preview_sprite.name.begins_with("PreviewCard"): 
 			#and not this_preview_sprite.name.begins_with("PreviewCardShadow"):
 				preview_card_sprites.append(this_preview_sprite)
 			if "Level0-1" in Global.game_controller.get_active_dimension().name:
 				if "BloodTile" in this_preview_sprite.name:
-					pass
+					this_preview_sprite.modulate = Color(1,1,1,0)
 				else:
 					preview_sprites.append(this_preview_sprite)
 			else:

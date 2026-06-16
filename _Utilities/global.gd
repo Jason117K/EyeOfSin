@@ -72,7 +72,8 @@ var erupter_icon := preload("res://_Entities/Zombies/Notif_Icons/TickerZombie.pn
 var flesheater_icon := preload("res://_Entities/Zombies/Notif_Icons/FootBallZombie.png")
 var amalgam_icon := preload("res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png")
 
-
+var all_zombie_notif_icons : Array = [reborn_icon,severed_icon,unhallower_icon,reanimator_icon,wretch_icon,
+								sundered_icon,erupter_icon,flesheater_icon,amalgam_icon,]
 
 var occulum_special_description := "res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt"
 var crawler_special_description :="res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt"
@@ -222,6 +223,9 @@ var unlocked_demon_synergies_dict : Dictionary = \
 	spinal_occulum_hive_synergy: is_spinal_occulum_hive,crawler_maw_synergy: is_crawler_maw,spinal_occulum_maw_synergy : is_spinal_occulum_maw,
 	hive_maw_synergy :is_hive_maw, wyrm_maw_synergy : is_wyrm_maw, occulum_maw_synergy :  is_occulum_maw  }
 
+
+var unlocked_zombie_array : Array = []
+
 # Thickness of the highlight border (in pixels)
 @export var highlight_border_thickness: int = 1
 
@@ -248,6 +252,7 @@ func reset_all_variables()->void:
 	resetOcculumCount()
 	reset_demon_managers()
 	reset_all_zombies()
+	
 
 func _load_demon_costs() -> void:
 	demon_scenes = {
@@ -769,15 +774,26 @@ func adjust_ui_layer() -> void:
 			if game_controller.on_purple_scene():
 				#print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
 				if this_preview.is_green == true :
-					this_preview.hide()
+					#this_preview.hide()
+					this_preview.set_detect_mouse(false)
+					this_preview.make_preview_visible()
+					
+					pass
 				else:
-					this_preview.show()
+					pass
+					this_preview.set_detect_mouse(true)
+					this_preview.make_preview_visible()
 			else:
 				#print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
 				if this_preview.is_green == true :
-					this_preview.show()
+					this_preview.set_detect_mouse(true)
+					this_preview.make_preview_visible()
+					pass
 				else:
-					this_preview.hide()
+					pass
+					this_preview.set_detect_mouse(false)
+					this_preview.make_preview_visible()
+					#this_preview.hide()
 		
 	
 	
@@ -923,13 +939,20 @@ func register_occulum(new_occulum:Demon)->void:
 func get_current_ui_layer()->Control:
 	var on_purple :bool= game_controller.on_purple_scene()
 	for ui_layer in ui_layers:
-		if on_purple && ui_layer.make_green == false:
-			return ui_layer
-		if !on_purple && ui_layer.make_green == true:
-			return ui_layer
+		if is_instance_valid(ui_layer):
+			if on_purple && ui_layer.make_green == false:
+				return ui_layer
+			if !on_purple && ui_layer.make_green == true:
+				return ui_layer
 	return null
 			
-	
+func unlock_zombie(unlocked_zombie : String)->void:
+	for zombie_name : String in ZombieRegistry.SCENES:
+		if zombie_name == unlocked_zombie && zombie_name not in unlocked_zombie_array:
+			print("Just Unlocked ", zombie_name)
+			unlocked_zombie_array.append(zombie_name)
+			get_current_ui_layer().set_zombie_unlock_notif(zombie_name)
+
 
 func unlock_buff(unlocked_buff : String)->void:
 	for synergy : String in all_demon_synergies:

@@ -65,6 +65,7 @@ func _setup() -> void:
 		
 	# Show wave 0 preview with start button so the player can begin
 	for preview:Node in _wave_previews:
+		pass
 		preview.show_preview(0, true)
 	if not waveDelayTimer.timeout.is_connected(_on_wave_delay_timer_timeout):
 		waveDelayTimer.timeout.connect(_on_wave_delay_timer_timeout)
@@ -165,6 +166,7 @@ func _show_preview_for_next_wave() -> void:
 	if next < _total_waves:
 		#print("Wave Previews Is ", _wave_previews)
 		for preview : Node in _wave_previews:
+			pass
 			preview.show_preview(next,true)
 			if Global.game_controller.on_purple_scene():
 				if preview.is_green:

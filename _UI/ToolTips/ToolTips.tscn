@@ -101,6 +101,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.91764706)
 
 [node name="BasicTutorialVbox" type="VBoxContainer" parent="BasicTutorialMessage" unique_id=645986828]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -108,9 +109,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -369.0
-offset_top = 25.0
+offset_top = -37.0
 offset_right = 362.0
-offset_bottom = 205.0
+offset_bottom = 143.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -125,6 +126,7 @@ theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_y3bqs")
+bbcode_enabled = true
 text = "Click a Demon Rune to Select It"
 fit_content = true
 scroll_active = false
@@ -151,7 +153,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ygqpy")
 text = "UNDERSTOOD"
 
 [node name="VisualTutorialVBox" type="VBoxContainer" parent="." unique_id=771461667]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -189,7 +190,7 @@ theme_override_constants/separation = 7
 alignment = 1
 
 [node name="VisualTutorialLabel" type="RichTextLabel" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1509879464]
-custom_minimum_size = Vector2(252.91, 148.595)
+custom_minimum_size = Vector2(410, 245)
 layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
@@ -199,14 +200,10 @@ theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "New Enemy : [color=#9b42df] Severed [/color]
 [hr width=100%]
-[b] [color=#9b42df]Speed :[/color][/b] Moderate
-[b][color=#9b42df] Health :[/color][/b] 175
-[b][color=#9b42df] Numbers :[/color][/b] High
-[b][color=#9b42df] Damage :[/color][/b]  30
+[b] [color=#9b42df]Speed :[/color][/b] Moderate [b][color=#9b42df] Health :[/color][/b] 175
+[b][color=#9b42df] Numbers :[/color][/b] High [b][color=#9b42df] Damage :[/color][/b]  30
 [hr width=100%]
-When the mutation in a Reborn grows, their upper is torn apart and the Severed is born.
-
-"
+When the mutation in a Reborn grows, their upper is torn apart and the Severed is born."
 
 [node name="VisualTutorialVisual" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1492933373 instance=ExtResource("6_imaxi")]
 layout_mode = 2

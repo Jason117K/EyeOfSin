@@ -26,6 +26,8 @@ func _ready() -> void:
 	add_to_group("ZombieSpawners")
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout)
 
+	
+
 func get_preview_icon_panel()->Control:
 	return get_child(1).get_preview_icon_panel()
 
@@ -53,7 +55,13 @@ func set_waves_from_dicts(data: Array) -> void:
 	waves = []
 	for d:Dictionary in data:
 		waves.append(WaveData.from_dict(d))
-
+	if get_parent().get_parent().name.containsn("Level0-1"):
+		pass
+	else:
+		return
+		for child in get_children():
+			if child is not Timer:
+				child._on_Area2D_mouse_entered()
 
 func begin_wave(wave_index: int) -> void:
 	_current_wave = wave_index
@@ -75,6 +83,13 @@ func _build_pool(wave_index: int) -> Array[PackedScene]:
 		var scene: PackedScene = ZombieRegistry.SCENES[type_name]
 		for _i in range(count):
 			pool.append(scene)
+	if get_parent().get_parent().name.containsn("Level0-1"):
+		pass
+	else:
+		return pool
+		for child in get_children():
+			if child is not Timer:
+				child._on_Area2D_mouse_entered()
 	return pool
 
 func emit_show_preview():

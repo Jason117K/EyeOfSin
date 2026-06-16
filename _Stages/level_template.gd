@@ -49,6 +49,8 @@ var check_progress := false
 @export var skip_end_dialog := true
 
 # Text file paths
+
+const TUTORIAL_SKULL_HOVER = "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt"
 const TUTORIAL_EXPLAIN_SPINAL_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
 const TUTORIAL_SELECT_DEMON = "res://_Assets/Text/TextFiles/Tutorial_Select_Demon.txt"
 const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt"
@@ -112,7 +114,7 @@ func _on_level_ended() -> void:
 func _on_end_dialog_finished() -> void:
 	print("This Is makign level switcher visible")
 	levelSwitcher.visible = true
-	$"../ToolTips".visible = false
+	toolTips.visible = false
 	get_tree().paused = true
 
 func _ready() -> void:

@@ -6,10 +6,19 @@ extends Control
 @onready var health_label := $HUD_Panel/MarginContainer/HUD_HBox/Health_VBox/HealthAmountLabel
 @onready var health_icon :TextureRect = $HUD_Panel/MarginContainer/HUD_HBox/Health_VBox/Health_Icon
 
+@onready var new_zombie_unlocked_button : Button = $ZombieUnlockedButton
+@onready var new_zombie_icon : TextureRect = $ZombieUnlockedButton/NewUnlock_Panel/MarginContainer/NewUnlock_Vbox/ZombieUnlockedIcon
+
 @onready var new_demon_unlocked_button : Button = $DemonUnlockedButton
 @onready var new_demon_icon := $DemonUnlockedButton/NewUnlock_Panel/MarginContainer/NewUnlock_Vbox/DemonUnlockedIcon
 
 @onready var demon_selection_menu := $"../DemonSelectionMenu"
+
+var unlocked_zombies : Array 
+var zombie_count := 0 
+
+var all_zombie_types :Dictionary 
+
 
 var current_demon_synergies : Array 
 var all_demon_types :Dictionary = {"Occulum":0 ,"Crawler" : 1, "Hive":2, "Maw":3,"Spinalocculum":4,"Wyrm":5}
@@ -19,6 +28,9 @@ var blood_amount: float = 50
 var rect_region : Rect2 
 
 func _ready() -> void:
+	build_zombie_types_array()
+	
+	new_zombie_unlocked_button.hide()
 	new_demon_unlocked_button.hide()
 	Global.register_ui_layer(self)
 	if blood_label != null:
@@ -27,6 +39,13 @@ func _ready() -> void:
 	if make_green:
 		rect_region = Rect2(0,0,32,32)
 		health_icon.texture.region = rect_region
+
+func build_zombie_types_array()->void:
+	for key in ZombieRegistry.SCENES.keys():
+		all_zombie_types.set(key,zombie_count)
+		zombie_count += 1
+	pass
+	
 
 func get_blood_panel()->Control:
 	return $HUD_Panel/MarginContainer/HUD_HBox/Blood_VBox/Blood_Icon
@@ -46,6 +65,21 @@ func set_initial_blood(new_blood_amount: float) -> void:
 	blood_amount = new_blood_amount
 	if blood_label != null:
 		blood_label.text = str(blood_amount)
+		
+func set_zombie_unlock_notif(unlocked_zombie : String)->void:
+	print("Set Zombie Unlock Notif For ", unlocked_zombie)
+	if unlocked_zombies.has(unlocked_zombie):
+		return 
+	unlocked_zombies.append(unlocked_zombie)
+	new_zombie_unlocked_button.show()
+	set_zombie_icon_texture(unlocked_zombie)
+
+func set_zombie_icon_texture(unlocked_zombie:String)->void:
+	for zombie_icon in Global.all_zombie_notif_icons:
+		if zombie_icon.get_name().containsn(unlocked_zombie):
+			new_zombie_icon.texture = zombie_icon
+			
+#	new_zombie_icon.texture = GlobalResourceLoader.get_zombie_image(all_zombie_types[unlocked_zombie])
 
 
 func set_unlock_notif(synergy : String)->void:
@@ -86,3 +120,20 @@ func _on_demon_unlocked_button_pressed() -> void:
 	new_demon_unlocked_button.hide()
 	
 	
+
+
+func _on_zombie_unlocked_button_pressed() -> void:
+	print("Zombie Unlocked Button Pressed")
+	new_zombie_unlocked_button.hide()
+	get_parent().show_zombie_tutorial()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	##

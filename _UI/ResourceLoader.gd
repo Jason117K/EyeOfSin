@@ -221,6 +221,7 @@ func _load_zombie_type_animation_resource(zombie_type:int, file_name:String) -> 
 func get_zombie_image(zombie_type:int)-> CompressedTexture2D:
 	if not zombie_images.has(zombie_type):
 		print("ResourceManager: Error - Resource not found for image:",zombie_type)
+		print(zombie_images)
 		return null
 	return zombie_images[zombie_type]
 	
