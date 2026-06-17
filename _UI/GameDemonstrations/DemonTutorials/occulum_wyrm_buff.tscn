@@ -3340,18 +3340,18 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_ikiyg")
 metadata/_edit_lock_ = true
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=1961017366]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=1961017366]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6qtxg")
 
-[node name="VisualTexture" type="TextureRect" parent="VisualContainer" unique_id=1917827886]
+[node name="VisualTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=1917827886]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Sunflower" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1004197089]
+[node name="Sunflower" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1004197089]
 material = SubResource("ShaderMaterial_f4j35")
 position = Vector2(54, 49)
 scale = Vector2(2, 2)
@@ -3360,7 +3360,7 @@ animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("7_l21nx")
 
-[node name="EggWyrm" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1601371280]
+[node name="EggWyrm" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1601371280]
 position = Vector2(145, 46)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sr5n0")

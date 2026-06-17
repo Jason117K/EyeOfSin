@@ -4,7 +4,8 @@ extends Zombie
 
 func _ready() -> void:
 	super()
-	Global.unlock_zombie("Reborn")
+	if Global.gameIsStarted && self.is_demo == false:
+		Global.unlock_zombie("Reborn")
 
 
 func get_zombie_name() -> String:

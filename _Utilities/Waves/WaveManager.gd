@@ -14,7 +14,7 @@ signal level_ended
 @export var preview_lead_time: float = 20.0
 
 ## Player health — will be extracted to a separate node later.
-@export var health_points: int = 20
+@export var health_points: int = 9999
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer

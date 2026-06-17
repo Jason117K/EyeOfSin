@@ -1,14 +1,22 @@
 extends Control
 
+#@onready var visual_tutorial_nine_patch := $VisualNinePatchBG
+var zombie_nine_patch_texture := preload("res://_UI/PurpleCard_WIP.png")
+var demon_nine_patch_texture := preload("res://_Entities/Demons/Cards/Empty_Display_CARD.png")
+
+#@onready var visual_tutorial_button_nine_patch := $VisualUnderStoodButton_9Patch
+
 @onready var basicTutorialMessageContainer := $BasicTutorialMessage
 @onready var basicTutorialLabel := $BasicTutorialMessage/BasicTutorialVbox/BasicTutorialLabel
 @onready var basicTutorialButton :=$BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer/BasicTutorialUnderstoodButton
 @onready var basicTutorialButton_Container := $BasicTutorialMessage/BasicTutorialVbox/PanelContainer
 @onready var basicTutorialVbox := $BasicTutorialMessage/BasicTutorialVbox
 
+@onready var visual_tutorial_panel_container := $VisualTutorialVBox/VisualTutorialPanelContainer
 @onready var visualTutorialContainer := $VisualTutorialVBox
 @onready var visualTutorialLabel := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialLabel
-@onready var visualTutorialButton := $VisualTutorialVBox/VisualTutorialUnderstoodButton
+@onready var visualTutorialButton := $VisualTutorialVBox/PanelContainer/MarginContainer/VisualTutorialUnderstoodButton
+								
 @onready var visualTutorialVisual: CenterContainer = $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialVisual
 @onready var visualTutorialVisualParent := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox
 @onready var countdown_timer : Timer = $CountdownTimer
@@ -45,6 +53,7 @@ func _ready() -> void:
 	index = visualTutorialVisual.get_index()
 	
 func set_basic_tutorial_text(newFile: String, shouldPause: bool, location : Vector2 = Vector2(0,0)) -> void:
+	#visual_tutorial_nine_patch.hide()
 	show()
 	basicTutorialButton_Container.show()
 	basicTutorialVbox.show()
@@ -108,9 +117,14 @@ func set_visual_tutorial_text(newFile: String, show_button: bool = true) -> void
 	if show_button:
 		#blockInputPanel.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
 		visualTutorialButton.show()
+		#visual_tutorial_button_nine_patch.show()
+		print(visualTutorialButton.global_position)
+		print(visualTutorialButton.position)
+		#visual_tutorial_button_nine_patch.position = visualTutorialButton.global_position
 		pass
 	else:
 		visualTutorialButton.hide()
+		#visual_tutorial_button_nine_patch.hide()
 		
 func set_modulate_invis()->void:
 	#print("SET INVIS")
@@ -119,7 +133,7 @@ func set_modulate_invis()->void:
 			
 	
 		
-func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = true, location : Vector2 = Vector2(0,0)) -> void:
+func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = true, location : Vector2 = Vector2(0,0), zombie_visual : bool = true) -> void:
 	visualTutorialVisualParent.remove_child(visualTutorialVisual)
 	visualTutorialVisual.queue_free()
 	visualTutorialVisualParent.add_child(newVisual)
@@ -132,7 +146,21 @@ func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = 
 		visualTutorialButton.hide()	
 	visualTutorialContainer.position = visualTutorialContainer.position + location
 	
+	##visual_tutorial_nine_patch.show()
+	if zombie_visual:
+		visual_tutorial_panel_container.get_theme_stylebox("panel").texture = zombie_nine_patch_texture
+		#pass
+		#
+		##visual_tutorial_nine_patch.custom_minimum_size = visual_tutorial_panel_container.size
+		#
+		##visual_tutorial_nine_patch.texture = zombie_nine_patch_texture 
+	else:
+		#visual_tutorial_nine_patch.custom_minimum_size = visual_tutorial_panel_container.size
+		visual_tutorial_panel_container.get_theme_stylebox("panel").texture = demon_nine_patch_texture 
+	#visual_tutorial_nine_patch.position = visual_tutorial_panel_container.global_position + Vector2(35,0)
+	
 func _on_visual_tutorial_understood_button_pressed() -> void:
+	print("V Button Pressed")
 	Global.is_blocking = false
 	print("HIddDEEE")
 	hide()

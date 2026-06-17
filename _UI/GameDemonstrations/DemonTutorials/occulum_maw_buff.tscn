@@ -3328,18 +3328,18 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_64i71")
 metadata/_edit_lock_ = true
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=1031881171]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=1031881171]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vwi6y")
 
-[node name="VisualTexture" type="TextureRect" parent="VisualContainer" unique_id=541642060]
+[node name="VisualTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=541642060]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Sunflower" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=738451067]
+[node name="Sunflower" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=738451067]
 material = SubResource("ShaderMaterial_f4j35")
 position = Vector2(47, 46)
 scale = Vector2(2, 2)
@@ -3348,7 +3348,7 @@ animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("9_hhdg0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=67681027]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=67681027]
 material = SubResource("ShaderMaterial_r2hv0")
 position = Vector2(140, 61)
 scale = Vector2(2, 2)

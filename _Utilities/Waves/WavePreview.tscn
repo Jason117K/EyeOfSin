@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://javwqvkctiff" path="res://_Utilities/Waves/WavePreview.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cp3hp8glu2u0p" path="res://_Assets/Misc/SkullIconNew.png" id="2_6qtyv"]
 [ext_resource type="Texture2D" uid="uid://hhpowqycojpq" path="res://_Assets/Shapes/Circle.png" id="2_r8vkn"]
+[ext_resource type="Script" uid="uid://ddnmdhdk6v8mv" path="res://_Utilities/Waves/glow_panel.gd" id="2_ubrib"]
 [ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="4_jr547"]
 [ext_resource type="Script" uid="uid://diprh6jfo5oi2" path="res://_Utilities/Waves/PreviewVisualBorder.gd" id="5_sf2ok"]
+[ext_resource type="Script" uid="uid://dq1uima7b5he3" path="res://_UI/notif_texture_icon.gd" id="7_47ah1"]
 [ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="7_hksyf"]
 [ext_resource type="Texture2D" uid="uid://cq8dk0gselol5" path="res://_Entities/Zombies/Notif_Icons/SummonerZombie.png" id="9_sf2ok"]
 [ext_resource type="Texture2D" uid="uid://1vv56xu5e06h" path="res://_Entities/Zombies/Notif_Icons/BasicZombie.png" id="14_a870w"]
@@ -19,7 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cy81nbf656x8o" path="res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png" id="18_ay8qy"]
 [ext_resource type="Texture2D" uid="uid://cm5r3ye5lej7b" path="res://_Entities/Zombies/Notif_Icons/FootBallZombie.png" id="19_iqvn7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hksyf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47ah1"]
+resource_local_to_scene = true
+bg_color = Color(0.14333335, 0, 0.2, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -48,20 +52,22 @@ script = ExtResource("17_ubrib")
 script = ExtResource("2")
 
 [node name="GlowPanel" type="Panel" parent="." unique_id=1359258289]
-offset_left = -36.0
-offset_top = -36.0
-offset_right = 4.0
-offset_bottom = 4.0
-scale = Vector2(1.82, 1.82)
+offset_left = -34.999996
+offset_top = -35.0
+offset_right = 5.000004
+offset_bottom = 5.0
+scale = Vector2(1.725, 1.725)
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hksyf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_47ah1")
+script = ExtResource("2_ubrib")
+bright_glow_mult = 30
 
 [node name="WaveProgressBar" type="TextureProgressBar" parent="." unique_id=1020930625]
-offset_left = -35.0
-offset_top = -35.0
-offset_right = 29.0
-offset_bottom = 29.0
-scale = Vector2(1.1, 1.1)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
 fill_mode = 4
 radial_initial_angle = 148.0
 texture_under = ExtResource("2_r8vkn")
@@ -69,7 +75,7 @@ texture_progress = ExtResource("2_r8vkn")
 tint_progress = Color(1, 0, 0.016666412, 1)
 
 [node name="PreviewSprite" type="Sprite2D" parent="." unique_id=471890236]
-scale = Vector2(2, 2)
+scale = Vector2(1.8, 1.8)
 texture = ExtResource("2_6qtyv")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=456039983]
@@ -125,12 +131,18 @@ size_flags_vertical = 4
 theme_override_constants/separation = 2
 alignment = 2
 
-[node name="RebornVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=352305890]
+[node name="PreviewZombiesGridContainer" type="GridContainer" parent="ZombiePreviewControl/ZombiePreviewPanel" unique_id=1824869659]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+columns = 4
+
+[node name="RebornHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=352305890]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -5
 
-[node name="RebornTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/RebornVbox" unique_id=1072798919]
+[node name="RebornTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RebornHbox" unique_id=1072798919]
 custom_minimum_size = Vector2(0, 59)
 layout_mode = 2
 size_flags_vertical = 4
@@ -138,157 +150,188 @@ texture = ExtResource("14_a870w")
 expand_mode = 3
 stretch_mode = 5
 flip_h = true
+script = ExtResource("7_47ah1")
 
-[node name="Reborn" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/RebornVbox" unique_id=950466433]
+[node name="Reborn" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RebornHbox" unique_id=1191636732]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SeveredVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=348868790]
+[node name="SeveredHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=348868790]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -3
 
-[node name="SeveredTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SeveredVbox" unique_id=2019104025]
+[node name="SeveredTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SeveredHbox" unique_id=2019104025]
 custom_minimum_size = Vector2(0, 52.045)
 layout_mode = 2
 texture = ExtResource("15_j4rru")
 expand_mode = 3
 stretch_mode = 5
 flip_h = true
+script = ExtResource("7_47ah1")
 
-[node name="Severed" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SeveredVbox" unique_id=216566400]
+[node name="Severed" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SeveredHbox" unique_id=648660304]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnhallowerVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=642245982]
+[node name="UnhallowerHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=642245982]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -4
 
-[node name="UnhallowerTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/UnhallowerVbox" unique_id=271591403]
+[node name="UnhallowerTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/UnhallowerHbox" unique_id=271591403]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 texture = ExtResource("16_jvv4h")
 expand_mode = 3
 stretch_mode = 5
 flip_h = true
+script = ExtResource("7_47ah1")
 
-[node name="Unhallower" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/UnhallowerVbox" unique_id=698269752]
+[node name="Unhallower" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/UnhallowerHbox" unique_id=1868656683]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ErupterVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=1054656688]
+[node name="ErupterHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=1054656688]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -5
 
-[node name="ErupterTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ErupterVbox" unique_id=998670378]
+[node name="ErupterTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ErupterHbox" unique_id=998670378]
 custom_minimum_size = Vector2(0, 59)
 layout_mode = 2
 texture = ExtResource("17_bs2g5")
 expand_mode = 3
 stretch_mode = 5
 flip_h = true
+script = ExtResource("7_47ah1")
 
-[node name="Erupter" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ErupterVbox" unique_id=741230636]
+[node name="Erupter" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ErupterHbox" unique_id=1560716355]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "X99
+"
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ReanimatorVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=1506510671]
+[node name="ReanimatorHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=1506510671]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -4
 
-[node name="ReanimatorTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ReanimatorVbox" unique_id=1115683]
+[node name="ReanimatorTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ReanimatorHbox" unique_id=1115683]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 texture = ExtResource("9_sf2ok")
 expand_mode = 3
 stretch_mode = 5
+script = ExtResource("7_47ah1")
 
-[node name="Reanimator" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ReanimatorVbox" unique_id=1104318734]
+[node name="Reanimator" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ReanimatorHbox" unique_id=1443883354]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AmalgamVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=337988947]
+[node name="AmalgamHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=337988947]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -2
 
-[node name="AmalgamTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/AmalgamVbox" unique_id=1488917405]
+[node name="AmalgamTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/AmalgamHbox" unique_id=1488917405]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = ExtResource("18_ay8qy")
 expand_mode = 3
 stretch_mode = 5
+script = ExtResource("7_47ah1")
 
-[node name="Amalgam" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/AmalgamVbox" unique_id=681345803]
+[node name="Amalgam" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/AmalgamHbox" unique_id=805370822]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FlesheaterVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=408427856]
+[node name="FlesheaterHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=408427856]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -5
 
-[node name="FlesheaterTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/FlesheaterVbox" unique_id=567647700]
+[node name="FlesheaterTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/FlesheaterHbox" unique_id=567647700]
 custom_minimum_size = Vector2(0, 59)
 layout_mode = 2
 texture = ExtResource("19_iqvn7")
 expand_mode = 3
 stretch_mode = 5
+script = ExtResource("7_47ah1")
 
-[node name="Flesheater" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/FlesheaterVbox" unique_id=812759410]
+[node name="Flesheater" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/FlesheaterHbox" unique_id=2140662552]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SunderedVbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox" unique_id=1413370858]
+[node name="SunderedHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=1413370858]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -1
 
-[node name="SunderedTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SunderedVbox" unique_id=2056682317]
+[node name="SunderedTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SunderedHbox" unique_id=2056682317]
 custom_minimum_size = Vector2(0, 59)
 layout_mode = 2
 texture = ExtResource("14_hksyf")
 expand_mode = 3
 stretch_mode = 5
 flip_h = true
+script = ExtResource("7_47ah1")
 
-[node name="Sundered" type="Label" parent="ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SunderedVbox" unique_id=556786204]
+[node name="Sundered" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SunderedHbox" unique_id=852727806]
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("7_hksyf")
-theme_override_font_sizes/font_size = 18
-text = "X99"
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StartGameButton" type="Button" parent="." unique_id=294501158]

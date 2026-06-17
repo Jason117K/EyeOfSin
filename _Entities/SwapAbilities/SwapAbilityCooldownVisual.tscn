@@ -72,9 +72,9 @@ icon = ExtResource("2_y6lur")
 z_index = 1
 layout_mode = 0
 offset_left = 7.0
-offset_top = 319.0
+offset_top = 318.0
 offset_right = 207.0
-offset_bottom = 349.0
+offset_bottom = 348.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_yrl2m")
 
 [node name="MarginContainer" type="MarginContainer" parent="SwapAbilityCooldownPanel" unique_id=814662818]

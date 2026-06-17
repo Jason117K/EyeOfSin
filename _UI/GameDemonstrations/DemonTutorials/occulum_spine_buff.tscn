@@ -3378,18 +3378,18 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_00nio")
 metadata/_edit_lock_ = true
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=1980008322]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=1980008322]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mimsl")
 
-[node name="VisualTexture" type="TextureRect" parent="VisualContainer" unique_id=992153970]
+[node name="VisualTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=992153970]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Sunflower" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=192983937]
+[node name="Sunflower" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=192983937]
 material = SubResource("ShaderMaterial_f4j35")
 position = Vector2(66, 42)
 scale = Vector2(2, 2)
@@ -3398,7 +3398,7 @@ animation = &"idle"
 autoplay = "spawn"
 script = ExtResource("9_3kbkf")
 
-[node name="OccularSpine" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1012999014]
+[node name="OccularSpine" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1012999014]
 material = SubResource("ShaderMaterial_wokno")
 position = Vector2(142, 42)
 scale = Vector2(2, 2)

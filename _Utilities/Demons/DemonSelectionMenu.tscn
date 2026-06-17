@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://dfeg3bofdecff" path="res://_Utilities/Demons/3DCardEffect.gdshader" id="2_bcru6"]
 [ext_resource type="Texture2D" uid="uid://cso424ya4brsw" path="res://_Entities/Demons/_Occulum/Occulum_Banner_CARD.png" id="3_dur3e"]
 [ext_resource type="Script" uid="uid://b261snjdqg7m7" path="res://_Utilities/Demons/3Dtest.gd" id="4_1iw26"]
+[ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="4_75hld"]
 [ext_resource type="Texture2D" uid="uid://wyp8cyf43yac" path="res://_Entities/Demons/_Occulum/Occulum_Display_CARD.png" id="4_l4ncj"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="4_vvged"]
 [ext_resource type="Material" uid="uid://byaqmevnj1wtf" path="res://_Entities/Demons/Cards/SelectionCard.tres" id="5_3emsw"]
@@ -269,17 +270,6 @@ shader_parameter/vortex_amt = 0.0
 shader_parameter/rotation = 0.0
 shader_parameter/rect_size = Vector2(70, 70)
 shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqvs4"]
-bg_color = Color(0, 0, 0, 0.92941177)
-border_color = Color(1, 0, 0, 0)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
 
 [sub_resource type="Shader" id="Shader_lv7j8"]
 code = "shader_type canvas_item;
@@ -648,30 +638,39 @@ script = ExtResource("4_1iw26")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=804482269]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 3.999999
-offset_right = 174.0
-offset_bottom = 61.0
+offset_left = 96.0
+offset_right = 328.0
+offset_bottom = 69.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yqvs4")
+theme_override_styles/panel = ExtResource("4_75hld")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=423638109]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1462024222]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -5
+theme_override_constants/margin_bottom = -7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=423638109]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=882467696]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=882467696]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
 
-[node name="Occulum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
+[node name="Occulum" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=739596472]
 z_index = 4
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="OcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
+[node name="OcculumButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
 material = SubResource("ShaderMaterial_q10kc")
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -682,7 +681,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_q10kc")
 
-[node name="OcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=875715703]
+[node name="OcculumCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=875715703]
 z_index = 1
 layout_mode = 2
 size_flags_vertical = 0
@@ -691,12 +690,11 @@ theme_override_font_sizes/font_size = 10
 text = "50"
 horizontal_alignment = 1
 
-[node name="Crawler" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
-visible = false
+[node name="Crawler" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=206893901]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="CrawlerButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=972339713]
+[node name="CrawlerButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=972339713]
 z_index = 3
 material = SubResource("ShaderMaterial_c3fhf")
 layout_mode = 2
@@ -705,7 +703,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("7_wixct")
 script = ExtResource("6_q10kc")
 
-[node name="CrawlerCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=752286747]
+[node name="CrawlerCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler" unique_id=752286747]
 z_index = 4
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_wixct")
@@ -713,12 +711,11 @@ theme_override_font_sizes/font_size = 10
 text = "50"
 horizontal_alignment = 1
 
-[node name="SpinalOcculum" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=560354734]
-visible = false
+[node name="SpinalOcculum" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=560354734]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="SpinalOcculumButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=133221191]
+[node name="SpinalOcculumButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=133221191]
 material = SubResource("ShaderMaterial_jfwei")
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -729,7 +726,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_q10kc")
 
-[node name="SpinalOcculumCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=1640644905]
+[node name="SpinalOcculumCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum" unique_id=1640644905]
 z_index = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_wixct")
@@ -737,11 +734,12 @@ theme_override_font_sizes/font_size = 10
 text = "50"
 horizontal_alignment = 1
 
-[node name="Maw" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
+[node name="Maw" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -2
 
-[node name="MawButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
+[node name="MawButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -750,7 +748,7 @@ texture_normal = ExtResource("9_jfwei")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="MawCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
+[node name="MawCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
 z_index = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
@@ -758,11 +756,11 @@ theme_override_font_sizes/font_size = 15
 text = "50"
 horizontal_alignment = 1
 
-[node name="Wyrm" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
+[node name="Wyrm" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
 layout_mode = 2
 theme_override_constants/separation = -1
 
-[node name="WyrmButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=629061683]
+[node name="WyrmButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=629061683]
 material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -773,7 +771,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_q10kc")
 
-[node name="WyrmCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=925628958]
+[node name="WyrmCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=925628958]
 z_index = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_wixct")
@@ -781,12 +779,12 @@ theme_override_font_sizes/font_size = 10
 text = "50"
 horizontal_alignment = 1
 
-[node name="Hive" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=640469747]
+[node name="Hive" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=640469747]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="HiveButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1601093442]
+[node name="HiveButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1601093442]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -795,19 +793,19 @@ texture_normal = ExtResource("11_js2vo")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="HiveCostLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1149167924]
+[node name="HiveCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1149167924]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vvged")
 text = "50"
 horizontal_alignment = 1
 
-[node name="Heart" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=957864529]
+[node name="Heart" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=957864529]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="HeartButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1081347700]
+[node name="HeartButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1081347700]
 visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -817,11 +815,11 @@ texture_normal = ExtResource("11_iafbj")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Portal" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
+[node name="Portal" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=452007544]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="PortalButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1249797751]
+[node name="PortalButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1249797751]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -830,7 +828,7 @@ texture_normal = ExtResource("15_wixct")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="PortalProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal" unique_id=621438390]
+[node name="PortalProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal" unique_id=621438390]
 custom_minimum_size = Vector2(38, 7)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -842,7 +840,7 @@ value = 100.0
 show_percentage = false
 script = ExtResource("16_c3fhf")
 
-[node name="RechargeTimer" type="Timer" parent="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalProgressBar" unique_id=92619545]
+[node name="RechargeTimer" type="Timer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalProgressBar" unique_id=92619545]
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=797355327]
@@ -969,20 +967,20 @@ shape = SubResource("RectangleShape2D_nabk1")
 
 [connection signal="mouse_entered" from="3DTest" to="3DTest" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="3DTest" to="3DTest" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" to="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" to="PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" to="PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" to="PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="." method="_on_WalnutButton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
-[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="." method="_on_EggButton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="." method="_on_WalnutButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="." method="_on_EggButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]
 [connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton" to="." method="_on_remove_plant_button_pressed"]
 [connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton" to="." method="_on_world_swap_button_pressed"]
 [connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton" to="." method="_on_codex_button_pressed"]

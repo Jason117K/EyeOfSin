@@ -83,6 +83,10 @@ func _on_Blood_mouse_entered() -> void:
 	#if hiveBuff:
 		#if origin_occulum != null:
 			#origin_occulum.burst_heal()
+	$CollisionShape2D.disabled = true 
+	self.monitoring = false
+	self.monitorable = false 
+	self.input_pickable = false
 	animation_player.play("pickup")
 	#queue_free()
 
@@ -110,6 +114,10 @@ func crawler_blood_pickup() -> void:
 				zombie.this_zombie_died.connect(_on_zombie_died)
 	if nearby_zombies.is_empty() == true:
 		print("NO NEARBY ZOMBIES : ", nearby_zombies)
+		$CollisionShape2D.disabled = true 
+		self.monitoring = false
+		self.monitorable = false 
+		self.input_pickable = false
 		animation_player.play("pickup")
 		#queue_free()
 	else:

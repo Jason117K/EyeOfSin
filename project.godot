@@ -102,6 +102,7 @@ layout/default_style="res://New_File.tres"
 
 window/size/viewport_width=740
 window/size/viewport_height=412
+window/size/mode=4
 window/stretch/mode="canvas_items"
 
 [dotnet]

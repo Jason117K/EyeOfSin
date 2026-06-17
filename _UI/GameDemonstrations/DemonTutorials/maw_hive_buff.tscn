@@ -3245,18 +3245,18 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_6iofb")
 metadata/_edit_lock_ = true
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=1285819969]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=1285819969]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wu7gr")
 
-[node name="VisualTexture" type="TextureRect" parent="VisualContainer" unique_id=482010246]
+[node name="VisualTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=482010246]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1545380503]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1545380503]
 material = SubResource("ShaderMaterial_h1cnc")
 position = Vector2(138, 57)
 scale = Vector2(2, 2)
@@ -3265,24 +3265,24 @@ script = ExtResource("2_xn45f")
 target_color = Color(0.152941, 0.152941, 0.152941, 1)
 replace_color = Color(0.39, 0, 0, 1)
 
-[node name="Hive" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1524853116]
+[node name="Hive" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1524853116]
 position = Vector2(52, 34)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_emqvu")
 frame = 3
 frame_progress = 0.871005
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=625999127]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=625999127]
 position = Vector2(15, 15)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8issj")
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=959507231]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=959507231]
 position = Vector2(52, 78)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8issj")
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1068501940]
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1068501940]
 position = Vector2(89, 13)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8issj")

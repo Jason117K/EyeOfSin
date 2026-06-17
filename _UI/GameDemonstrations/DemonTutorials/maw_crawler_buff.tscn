@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://jv8elo1rwwdc" path="res://_UI/GameDemonstrations/complexTutorialImage.gd" id="1_dcx1o"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="2_vvp1s"]
+[ext_resource type="PackedScene" uid="uid://bfyb6b7h6ii6n" path="res://_UI/GameDemonstrations/DemonTutorials/buff_nine_patch_rect.tscn" id="2_wjfx1"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="3_ofvx4"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="3_wjfx1"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="4_ofvx4"]
 [ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://_Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="5_utgac"]
@@ -3069,7 +3071,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.8, 0, 0, 1)
+border_color = Color(0.8, 0, 0, 0)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -3169,9 +3171,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dcx1o")
 
+[node name="NinePatchRect" parent="." unique_id=161082908 instance=ExtResource("2_wjfx1")]
+layout_mode = 2
+texture = ExtResource("3_ofvx4")
+
 [node name="BG" type="ColorRect" parent="." unique_id=1351350882]
 clip_children = 1
-custom_minimum_size = Vector2(197.845, 200)
+custom_minimum_size = Vector2(197.845, 194)
 layout_mode = 2
 
 [node name="GridManager" parent="BG" unique_id=1538178973 instance=ExtResource("2_vvp1s")]

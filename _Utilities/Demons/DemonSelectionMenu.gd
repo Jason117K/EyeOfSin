@@ -53,33 +53,33 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var pause_button := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/PauseButton
 @onready var preview_container := Node2D.new()
 @onready var panelContainer := $PanelContainer
-@onready var portalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
+@onready var portalButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 @onready var swapButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
 @onready var removeDemonButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton
 @onready var codexButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton
 @onready var fastForwardButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton
 @onready var all_extra_buttons := [fastForwardButton,swapButton,removeDemonButton, codexButton]
 
-@onready var OcculumButton := $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
-@onready var SpinalOcculumButton := $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
-@onready var WyrmButton := $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton
-@onready var MawButton := $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawButton
-@onready var HiveButton := $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
-@onready var CrawlerButton := $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton
-@onready var HeartButton := $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
-@onready var PortalButton := $PanelContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
+@onready var OcculumButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
+@onready var SpinalOcculumButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
+@onready var WyrmButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton
+@onready var MawButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton
+@onready var HiveButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton
+@onready var CrawlerButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton
+@onready var HeartButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
+@onready var PortalButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 
 @onready var all_demon_buttons := [OcculumButton,SpinalOcculumButton,
 							WyrmButton,MawButton,HiveButton,
 							CrawlerButton]
 
 
-@onready var OcculumCostLabel := $PanelContainer/VBoxContainer/HBoxContainer/Occulum/OcculumCostLabel
-@onready var crawlerCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerCostLabel
-@onready var SpinalOcculumCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumCostLabel
-@onready var wyrmCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmCostLabel
-@onready var mawCostLabel  := $PanelContainer/VBoxContainer/HBoxContainer/Maw/MawCostLabel
-@onready var hiveCostLabel   := $PanelContainer/VBoxContainer/HBoxContainer/Hive/HiveCostLabel
+@onready var OcculumCostLabel := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumCostLabel
+@onready var crawlerCostLabel  := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerCostLabel
+@onready var SpinalOcculumCostLabel  := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumCostLabel
+@onready var wyrmCostLabel  := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmCostLabel
+@onready var mawCostLabel  := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawCostLabel
+@onready var hiveCostLabel   := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveCostLabel
 
 @onready var alt_portal_texture : Texture2D = preload("res://_Entities/SpecialElementsPortal/PurplePortalCard.png")
 
@@ -138,6 +138,12 @@ func _ready() -> void:
 	
 	# Connect button signals to their respective functions
 	root = get_parent().get_name()
+	
+	reset_panel_size()
+	
+
+func reset_panel_size()->void:
+	panelContainer.reset_size()
 	
 
 # Handle Deselection

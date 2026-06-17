@@ -3674,48 +3674,48 @@ modulate = Color(3, 3, 3, 1)
 tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQA=")
 tile_set = SubResource("TileSet_fhn7k")
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=972794676]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=972794676]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_py8bd")
 
-[node name="TextureRect" type="TextureRect" parent="VisualContainer" unique_id=1177536]
+[node name="TextureRect" type="TextureRect" parent="DemoVisualContainer" unique_id=1177536]
 visible = false
 layout_mode = 2
 
-[node name="HiveEggTexture" type="TextureRect" parent="VisualContainer" unique_id=251002140]
+[node name="HiveEggTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=251002140]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="EggWyrm" type="AnimatedSprite2D" parent="VisualContainer/HiveEggTexture" unique_id=773319723]
+[node name="EggWyrm" type="AnimatedSprite2D" parent="DemoVisualContainer/HiveEggTexture" unique_id=773319723]
 position = Vector2(34, 49)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huswt")
 
-[node name="PreviewNodes" type="Node2D" parent="VisualContainer/HiveEggTexture" unique_id=1461851094]
+[node name="PreviewNodes" type="Node2D" parent="DemoVisualContainer/HiveEggTexture" unique_id=1461851094]
 position = Vector2(34, 49)
 scale = Vector2(2, 2)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualContainer/HiveEggTexture/PreviewNodes" unique_id=1108493718]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DemoVisualContainer/HiveEggTexture/PreviewNodes" unique_id=1108493718]
 sprite_frames = SubResource("SpriteFrames_bsw3h")
 
-[node name="BloodTile1" type="AnimatedSprite2D" parent="VisualContainer/HiveEggTexture/PreviewNodes" unique_id=1386818513]
+[node name="BloodTile1" type="AnimatedSprite2D" parent="DemoVisualContainer/HiveEggTexture/PreviewNodes" unique_id=1386818513]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_txmku")
 animation = &"New Anim 2"
 
-[node name="BloodTile2" type="AnimatedSprite2D" parent="VisualContainer/HiveEggTexture/PreviewNodes" unique_id=1051122924]
+[node name="BloodTile2" type="AnimatedSprite2D" parent="DemoVisualContainer/HiveEggTexture/PreviewNodes" unique_id=1051122924]
 modulate = Color(1.5, 1, 1, 1)
 z_index = 6
 position = Vector2(64, 0)
 sprite_frames = SubResource("SpriteFrames_txmku")
 animation = &"New Anim 2"
 
-[node name="OccularSpine-sheet" type="Sprite2D" parent="VisualContainer/HiveEggTexture" unique_id=1819573267]
+[node name="OccularSpine-sheet" type="Sprite2D" parent="DemoVisualContainer/HiveEggTexture" unique_id=1819573267]
 position = Vector2(162, 48)
 scale = Vector2(2, 2)
 texture = ExtResource("7_5pe3u")

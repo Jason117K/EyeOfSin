@@ -3252,40 +3252,40 @@ modulate = Color(3, 3, 3, 1)
 tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQA=")
 tile_set = SubResource("TileSet_krrb4")
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=936865065]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=936865065]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xdw45")
 
-[node name="TutorialTexture" type="TextureRect" parent="VisualContainer" unique_id=311142982]
+[node name="TutorialTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=311142982]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="EggWyrm" type="AnimatedSprite2D" parent="VisualContainer/TutorialTexture" unique_id=544270999]
+[node name="EggWyrm" type="AnimatedSprite2D" parent="DemoVisualContainer/TutorialTexture" unique_id=544270999]
 position = Vector2(56, 55)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_huswt")
 
-[node name="Hive" type="AnimatedSprite2D" parent="VisualContainer/TutorialTexture" unique_id=1754682487]
+[node name="Hive" type="AnimatedSprite2D" parent="DemoVisualContainer/TutorialTexture" unique_id=1754682487]
 position = Vector2(124, 53.5)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_b3h8d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualContainer/TutorialTexture" unique_id=498022431]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DemoVisualContainer/TutorialTexture" unique_id=498022431]
 self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(90.5, 14)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ndjyu")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="VisualContainer/TutorialTexture" unique_id=675961826]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="DemoVisualContainer/TutorialTexture" unique_id=675961826]
 self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(122, 98.5)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ndjyu")
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="VisualContainer/TutorialTexture" unique_id=1754694315]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="DemoVisualContainer/TutorialTexture" unique_id=1754694315]
 self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(154.5, 12)
 scale = Vector2(2, 2)

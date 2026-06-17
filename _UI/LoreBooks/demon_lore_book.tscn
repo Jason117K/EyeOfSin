@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://blpt4dqra2o6j"]
 
 [ext_resource type="PackedScene" uid="uid://kf64j7pluy7o" path="res://_UI/LoreBooks/LoreBookVisual/interactive_book_2d.tscn" id="1_gyohk"]
+[ext_resource type="Texture2D" uid="uid://56xpmsexudca" path="res://_Assets/Codex/CodexWip1.png" id="1_n4a1q"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_r6hpg"]
 [ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="3_28t4q"]
 [ext_resource type="Script" uid="uid://bov2qdtt14vx5" path="res://_UI/LoreBooks/demon_lore_book_controller.gd" id="3_gh3ig"]
@@ -45,6 +46,13 @@ layout_mode = 0
 offset_right = 740.0
 offset_bottom = 412.0
 color = Color(0.28, 0, 0.041999895, 1)
+
+[node name="Codex" type="Sprite2D" parent="." unique_id=1970702593]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(371, 206)
+scale = Vector2(0.515, 0.515)
+texture = ExtResource("1_n4a1q")
 
 [node name="InteractiveBook2D" parent="." unique_id=1863075210 instance=ExtResource("1_gyohk")]
 visible = false

@@ -145,7 +145,8 @@ func _ready() -> void:
 	toolTips.hide()
 	zombie_spawner.wave_exhausted.connect(wave_exhausted)
 	
-	waveManager.preview_lead_time = 15
+	waveManager.preview_lead_time = 20
+	
 	Global.hide_ui_layer()
 	if debug or skip_tutorials:
 		finish_ready()
@@ -278,7 +279,7 @@ func _start_explain_click_skull()->void:
 	zombie_spawner.show()
 	
 	toolTips.add_pulsing_button_highlight(zombie_spawner.get_preview_icon_panel())
-	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, false, Vector2(0,-32))
+	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, false, Vector2(0,0))
 
 func _start_wave_1() -> void:
 	print("STAT WAVE !1")
@@ -298,11 +299,11 @@ func _start_explain_basic_zombie() -> void:
 	print("Explain Basic Zombie")
 	Global.hide_notification_bar()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
-	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,-10))
+	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,20))
 
 func _start_explain_health()->void:
 	toolTips.add_pulsing_button_highlight(Global.get_health_panel())
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_HEALTH,true,Vector2(0,-32))
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_HEALTH,true,Vector2(0,-6))
 
 func _continue_wave_1()->void:
 	print("Should Stop the Glow Pulse")

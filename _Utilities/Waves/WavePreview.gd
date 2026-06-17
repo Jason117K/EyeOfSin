@@ -3,6 +3,8 @@ extends Node2D
 signal game_start_requested
 signal call_wave_early_requested
 
+@onready var glow_panel := $GlowPanel
+
 @onready var visual_preview_container := $ZombiePreviewControl
 
 #@onready var preview_text: RichTextLabel = $Control/EnemyPreviewText
@@ -10,29 +12,29 @@ signal call_wave_early_requested
 @onready var wave_progress_bar: TextureProgressBar = $WaveProgressBar
 @onready var next_wave_timer: Timer = $NextWaveTimer
 
-@onready var rebornTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/RebornVbox/RebornTexture
-@onready var severedTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SeveredVbox/SeveredTexture
-@onready var unhallowerTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/UnhallowerVbox/UnhallowerTexture
-@onready var erupterTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ErupterVbox/ErupterTexture
-@onready var reanimatorTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ReanimatorVbox/ReanimatorTexture
+@onready var rebornTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RebornHbox/RebornTexture
+@onready var severedTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SeveredHbox/SeveredTexture
+@onready var unhallowerTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/UnhallowerHbox/UnhallowerTexture
+@onready var erupterTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ErupterHbox/ErupterTexture
+@onready var reanimatorTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ReanimatorHbox/ReanimatorTexture
 #@onready var wretchTexture: TextureRect = 
-@onready var flesheaterTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/FlesheaterVbox/FlesheaterTexture
-@onready var amalgamTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/AmalgamVbox/AmalgamTexture
-@onready var sunderedTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SunderedVbox/SunderedTexture
+@onready var flesheaterTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/FlesheaterHbox/FlesheaterTexture
+@onready var amalgamTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/AmalgamHbox/AmalgamTexture
+@onready var sunderedTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SunderedHbox/SunderedTexture
 
 @onready var ALL_ZOMBIE_TEXTURES := [rebornTexture,severedTexture,unhallowerTexture, \
 									erupterTexture,reanimatorTexture, \
 									flesheaterTexture,amalgamTexture , sunderedTexture]
 									
-@onready var rebornLabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/RebornVbox/Reborn
-@onready var severedabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SeveredVbox/Severed
-@onready var unhallowerLabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/UnhallowerVbox/Unhallower
-@onready var erupterLabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ErupterVbox/Erupter 
-@onready var reanimatorLabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/ReanimatorVbox/Reanimator
-#@onready var wretchLabel: Label = $Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Wretch
-@onready var flesheaterLabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/FlesheaterVbox/Flesheater
-@onready var amalgamLabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/AmalgamVbox/Amalgam
-@onready var sunderedLabel: Label = $ZombiePreviewControl/ZombiePreviewPanel/AllZombieTexturesHBox/SunderedVbox/Sundered
+@onready var rebornLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RebornHbox/Reborn
+@onready var severedabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SeveredHbox/Severed
+@onready var unhallowerLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/UnhallowerHbox/Unhallower
+@onready var erupterLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ErupterHbox/Erupter 
+@onready var reanimatorLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/ReanimatorHbox/Reanimator
+#@onready var wretchLabel: RichTextLabel = $Control/ZombieLabelMarginContainer/AllZombieRowLabels/Row2/Wretch
+@onready var flesheaterLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/FlesheaterHbox/Flesheater
+@onready var amalgamLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/AmalgamHbox/Amalgam
+@onready var sunderedLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SunderedHbox/Sundered
 
 @onready var zombie_preview_panel : PanelContainer = $ZombiePreviewControl/ZombiePreviewPanel
 
@@ -43,6 +45,8 @@ signal call_wave_early_requested
 									flesheaterLabel, amalgamLabel, sunderedLabel]
 									
 @onready var zombie_preview_control := $ZombiePreviewControl
+
+
 
 var can_click := false 
 var preview_lead_time :float= 15
@@ -69,6 +73,8 @@ func _ready() -> void:
 	ui_layer_is_green = get_parent().get_parent().get_parent().get_node("UILayer").make_green
 	if ui_layer_is_green == true :
 		is_green = true
+	
+	glow_panel.set_color(is_green)
 		
 	#_on_Area2D_mouse_entered()
 
@@ -95,6 +101,7 @@ func make_preview_visible()->void:
 func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 	Global.adjust_ui_layer()
 	reset_panel_size()
+	glow_panel.show()
 	#print("SHOW PREVIEW")
 	_preview_wave_index = wave_index
 	$PreviewSprite.visible = true
@@ -120,6 +127,7 @@ func hide_preview() -> void:
 	reset_panel_size()
 	#print("HIDE PREIVEW")
 	_preview_wave_index = -1
+	glow_panel.hide()
 	$PreviewSprite.visible = false
 	zombie_preview_control.visible = false
 	start_game_button.visible = false
@@ -144,7 +152,7 @@ func _on_Area2D_mouse_entered() -> void:
 	var has_one_zombie : bool = false
 	#preview_text.clear()
 	
-	for this_label:Label in ALL_ZOMBIE_LABELS:
+	for this_label:RichTextLabel in ALL_ZOMBIE_LABELS:
 		this_label.hide()
 		var base_name :String= this_label.get_name()
 		this_label.text = base_name.to_upper() + " X"
@@ -158,22 +166,38 @@ func _on_Area2D_mouse_entered() -> void:
 		#print("Type Name is ", type_name, " with count ", count)
 		if count > 0:
 			#preview_text.append_text(str(type_name) + " : " + str(count) + "\n")
-			for this_label:Label in ALL_ZOMBIE_LABELS:
+			for this_label:RichTextLabel in ALL_ZOMBIE_LABELS:
 				if str(type_name) in this_label.get_name():
 					#this_label.text = this_label.get_name().to_upper() + " X" + str(count)
-					this_label.text = "X" + str(count)
+					#this_label.text = "x" + str(count)
+					if Global.game_controller.on_purple_scene():
+						this_label.text = "X[color=#9b42df]" + str(count) + "[/color]"
+					else:
+						this_label.text = "X[color=#0b8700]" + str(count) + "[/color]"
 					this_label.show()
 			for this_image:TextureRect in ALL_ZOMBIE_TEXTURES:
 				if str(type_name) in this_image.get_name():
+					if Global.game_controller.on_purple_scene():
+						this_image.hue_shift = 0.0
+						this_image._apply_hue_shift()
+					else:
+						print("Should Apply Green Hue Shift")
+						this_image.hue_shift = -125.0
+						this_image._apply_hue_shift()
+												
 					this_image.show()
 					this_image.get_parent().show()
 					has_one_zombie = true 
 	reset_panel_size()			
 	if has_one_zombie:	
 		self.visible = true 
+		#glow_panel.visible = true 
+		glow_panel.set_glow_factor(false)
 		visual_preview_container.visible = true
 	else:
 		self.visible = false 
+		#glow_panel.visible = false 
+		#glow_panel.set_glow_factor(true)
 		visual_preview_container.visible = false
 	
 	if Global.get_wave_manager()._current_wave > -1:
@@ -202,6 +226,8 @@ func _on_Area2D_mouse_exited() -> void:
 	reset_panel_size()
 	visual_preview_container.visible = false
 	timer_label.visible = false 
+	glow_panel.set_glow_factor(true)
+	#glow_panel.visible = false 
 	#preview_text.clear()
 
 func get_preview_icon_panel()->Control:

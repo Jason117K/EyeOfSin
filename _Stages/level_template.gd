@@ -25,7 +25,7 @@ var has_pulsed := false
 #@onready var spotlight_overlay := $"../SpotlightOverlay"  # Reference to CanvasLayer
 @onready var pause_Button :=$DemonSelectionMenu/UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/PauseButton
 @onready var levelSwitcher := $"../LevelSwitcher"
-@onready var _demon_hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var _demon_hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 @onready var world_swap_button :TextureButton= demonSelectionMenu.get_world_swap_button()
 @onready var codex_button :TextureButton= demonSelectionMenu.get_codex_button()
 @onready var sway_script_path := "res://_Common/EnvironmentScripts/sway.gd"
@@ -135,7 +135,11 @@ func _process(delta: float) -> void:
 			check_progress = false
 			print("Time Up", check_progress)
 			progress_time_passed()
-			
+	
+func show_zombie_tutorial()->void:
+	pass
+	
+	
 func progress_time_passed()->void:
 	pass
 
@@ -163,6 +167,7 @@ func hide_all_demon_buttons_with_exception(exceptions: Array = []) -> void:
 			container.visible = should_show
 			for child in container.get_children():
 				child.visible = should_show
+	demonSelectionMenu.reset_panel_size()
  
  
 ## Shows all demon buttons and their parent containers.

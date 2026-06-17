@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="1_klsyn"]
 [ext_resource type="Texture2D" uid="uid://b7odd4ng7wfua" path="res://_Entities/Zombies/_Erupter/Ticker-Sheet.png" id="1_llkjp"]
+[ext_resource type="PackedScene" uid="uid://bfyb6b7h6ii6n" path="res://_UI/GameDemonstrations/DemonTutorials/buff_nine_patch_rect.tscn" id="1_m4vcd"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="2_n1l2k"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="3_vmkvc"]
 [ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://_Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="4_m4vcd"]
@@ -3237,6 +3238,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="NinePatchRect" parent="." unique_id=161082908 instance=ExtResource("1_m4vcd")]
+layout_mode = 2
+
 [node name="BG" type="ColorRect" parent="." unique_id=41034103]
 clip_children = 1
 custom_minimum_size = Vector2(197.845, 159.56)
@@ -3278,12 +3282,12 @@ modulate = Color(3, 3, 3, 1)
 tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQA=")
 tile_set = SubResource("TileSet_tu83n")
 
-[node name="Panel" type="Panel" parent="." unique_id=1357711104]
+[node name="DemoVisualContainer" type="Panel" parent="." unique_id=1357711104]
 custom_minimum_size = Vector2(196.97, 158.685)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("18_rjs68")
 
-[node name="ErupterZombie" type="AnimatedSprite2D" parent="Panel" unique_id=2113103394]
+[node name="ErupterZombie" type="AnimatedSprite2D" parent="DemoVisualContainer" unique_id=2113103394]
 position = Vector2(135, 62)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2cf2j")

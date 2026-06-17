@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kpal5ggmjv70"]
 
 [ext_resource type="PackedScene" uid="uid://kf64j7pluy7o" path="res://_UI/LoreBooks/LoreBookVisual/interactive_book_2d.tscn" id="1_0r1la"]
+[ext_resource type="Texture2D" uid="uid://56xpmsexudca" path="res://_Assets/Codex/CodexWip1.png" id="1_c1n67"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="1_d8001"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="1_votx1"]
 [ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="2_v2ssp"]
@@ -140,7 +141,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Codex" type="Sprite2D" parent="." unique_id=1329565331]
+self_modulate = Color(0.46799976, 0, 0.72, 1)
+position = Vector2(371, 206)
+scale = Vector2(0.515, 0.515)
+texture = ExtResource("1_c1n67")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=130120643]
+visible = false
 layout_mode = 0
 offset_left = -2.0
 offset_right = 38.0
@@ -155,14 +163,14 @@ scale = Vector2(12.1563, 8.09375)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1089549272]
 layout_mode = 0
-offset_left = 408.0
-offset_top = 12.0
-offset_right = 669.0
-offset_bottom = 144.0
+offset_left = 405.0
+offset_top = 23.0
+offset_right = 666.0
+offset_bottom = 155.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_0reyw")
 
 [node name="CurrentZombieAnim" type="AnimatedSprite2D" parent="." unique_id=515070860]
-position = Vector2(536, 77)
+position = Vector2(539, 89)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_v2ssp")
 animation = &"Attack"
@@ -202,10 +210,10 @@ uppercase = true
 
 [node name="CurrentZombieLabelBG" type="RichTextLabel" parent="." unique_id=1993665799]
 layout_mode = 0
-offset_left = 344.0
-offset_top = 154.0
+offset_left = 381.0
+offset_top = 168.0
 offset_right = 540.5
-offset_bottom = 249.5
+offset_bottom = 263.5
 scale = Vector2(2, 2)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_votx1")
@@ -215,17 +223,18 @@ bbcode_enabled = true
 
 [node name="CurrentZombieLabel" type="RichTextLabel" parent="." unique_id=1582129216]
 layout_mode = 0
-offset_left = 366.0
-offset_top = 167.0
-offset_right = 718.0
-offset_bottom = 331.0
+offset_left = 398.0
+offset_top = 185.0
+offset_right = 689.0
+offset_bottom = 344.0
 theme_override_colors/default_color = Color(0.89708984, 0.8970898, 0.89708984, 1)
 theme_override_fonts/normal_font = ExtResource("1_votx1")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "Lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum Lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=499311436]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 offset_left = 420.0
@@ -251,9 +260,11 @@ targetGlowColor = Color(0.7882353, 0, 0.050980393, 1)
 
 [node name="AllZombieButtonsContainer" type="HBoxContainer" parent="." unique_id=1329874444]
 layout_mode = 0
-offset_right = 159.0
-offset_bottom = 159.0
-scale = Vector2(2, 2)
+offset_left = 57.0
+offset_top = 10.0
+offset_right = 223.0
+offset_bottom = 183.0
+scale = Vector2(1.74, 1.74)
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AllZombieButtonsContainer" unique_id=2025294099]
@@ -336,9 +347,11 @@ theme_override_styles/hover = ExtResource("9_23n63")
 
 [node name="AllZombieSpritesContainer" type="HBoxContainer" parent="." unique_id=377373516]
 layout_mode = 0
-offset_right = 168.0
-offset_bottom = 96.0
-scale = Vector2(2, 2)
+offset_left = 59.999996
+offset_top = 10.0
+offset_right = 228.0
+offset_bottom = 177.0
+scale = Vector2(1.74, 1.74)
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AllZombieSpritesContainer" unique_id=1416803408]
@@ -475,10 +488,10 @@ stretch_mode = 3
 [node name="BackButton" type="Button" parent="." unique_id=316313279]
 custom_minimum_size = Vector2(300, 35)
 layout_mode = 0
-offset_left = 215.0
-offset_top = 357.0
-offset_right = 515.0
-offset_bottom = 394.0
+offset_left = 55.0
+offset_top = 328.0
+offset_right = 355.0
+offset_bottom = 365.0
 theme_override_fonts/font = ExtResource("1_votx1")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_lvom0")

@@ -498,7 +498,17 @@ func resetOcculumCount() -> void:
 	occulumCount = 0
 	green_occulum_count = 0
 	purple_occulum_count = 0
+	var temp_occulum_array : Array = all_registered_occulum
+	
+	for occulum in all_registered_occulum:
+		if occulum != null:
+			temp_occulum_array.append(occulum)
+	
 	all_registered_occulum.clear()
+	
+	all_registered_occulum = temp_occulum_array
+	print("All Registered Occulum is ", all_registered_occulum)
+	
 	#game_controller.on_scene_1 = true 
 	
 	
@@ -930,7 +940,8 @@ func start_game()->void:
 	if swap_ability != null:
 		swap_ability.game_start()
 	for occulum in all_registered_occulum:
-		occulum.start_blood_timer()
+		if occulum != null && is_instance_valid(occulum):
+			occulum.start_blood_timer()
 	pass
 	
 func register_occulum(new_occulum:Demon)->void:

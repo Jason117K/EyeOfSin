@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="3_j4vri"]
 [ext_resource type="FontFile" uid="uid://deyk678r085k8" path="res://_Assets/Fonts/Cormorant-Bold.ttf" id="4_53ev6"]
 [ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="4_y3bqs"]
+[ext_resource type="Texture2D" uid="uid://dlxw36x32blc6" path="res://_UI/PurpleCard_WIP.png" id="5_i1eds"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_crawler_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]
@@ -25,17 +26,13 @@ bg_color = Color(0.6, 0, 0, 1)
 border_width_bottom = 4
 border_color = Color(0.6, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1eds"]
-bg_color = Color(0, 0, 0, 0.99607843)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1eds"]
+texture = ExtResource("5_i1eds")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.34, 0.34, 0.34, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4pib"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -43,7 +40,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 0)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -75,6 +72,7 @@ max_basic_tutorial_characters = 115
 tooltip_dissappear_wait_time = 9
 
 [node name="BasicTutorialMessage" type="Control" parent="." unique_id=504267282]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,42 +81,24 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BasicTutorialBG" type="ColorRect" parent="BasicTutorialMessage" unique_id=233338250]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -382.0
-offset_top = -218.0
-offset_right = 386.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.91764706)
-
 [node name="BasicTutorialVbox" type="VBoxContainer" parent="BasicTutorialMessage" unique_id=645986828]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -369.0
-offset_top = -37.0
-offset_right = 362.0
-offset_bottom = 143.0
+offset_left = -359.0
+offset_top = -21.0
+offset_right = 361.0
+offset_bottom = 159.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="BasicTutorialLabel" type="RichTextLabel" parent="BasicTutorialMessage/BasicTutorialVbox" unique_id=1231091773]
-custom_minimum_size = Vector2(720, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
@@ -134,6 +114,7 @@ horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="BasicTutorialMessage/BasicTutorialVbox" unique_id=66757461]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_styles/panel = ExtResource("4_y3bqs")
 
 [node name="MarginContainer" type="MarginContainer" parent="BasicTutorialMessage/BasicTutorialVbox/PanelContainer" unique_id=1709388124]
@@ -145,7 +126,9 @@ theme_override_constants/margin_bottom = -8
 
 [node name="BasicTutorialUnderstoodButton" type="Button" parent="BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer" unique_id=1059101696]
 z_index = 2
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_m6aj6")
 theme_override_font_sizes/font_size = 32
@@ -160,38 +143,43 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -359.0
-offset_top = -94.825
+offset_top = -129.0
 offset_right = 359.0
-offset_bottom = 187.17499
+offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="VisualTutorialPanelContainer" type="PanelContainer" parent="VisualTutorialVBox" unique_id=132621045]
-custom_minimum_size = Vector2(490, 230)
+custom_minimum_size = Vector2(490, 10)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i1eds")
+theme_override_styles/panel = SubResource("StyleBoxTexture_i1eds")
 
 [node name="VisualTutorialMarginContainer" type="MarginContainer" parent="VisualTutorialVBox/VisualTutorialPanelContainer" unique_id=1311181689]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_bottom = 3
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 11
 
 [node name="VisualTutorialHBox" type="HBoxContainer" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer" unique_id=2002964462]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/separation = 7
 alignment = 1
 
 [node name="VisualTutorialLabel" type="RichTextLabel" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1509879464]
-custom_minimum_size = Vector2(410, 245)
+custom_minimum_size = Vector2(410, 100)
 layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
 theme_override_fonts/bold_font = ExtResource("4_53ev6")
@@ -204,13 +192,29 @@ text = "New Enemy : [color=#9b42df] Severed [/color]
 [b][color=#9b42df] Numbers :[/color][/b] High [b][color=#9b42df] Damage :[/color][/b]  30
 [hr width=100%]
 When the mutation in a Reborn grows, their upper is torn apart and the Severed is born."
+fit_content = true
+scroll_active = false
 
 [node name="VisualTutorialVisual" parent="VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox" unique_id=1492933373 instance=ExtResource("6_imaxi")]
 layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="VisualTutorialUnderstoodButton" type="Button" parent="VisualTutorialVBox" unique_id=1590243430]
-custom_minimum_size = Vector2(490, 0)
+[node name="PanelContainer" type="PanelContainer" parent="VisualTutorialVBox" unique_id=1613727929]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("4_y3bqs")
+
+[node name="MarginContainer" type="MarginContainer" parent="VisualTutorialVBox/PanelContainer" unique_id=576258801]
+layout_mode = 2
+theme_override_constants/margin_left = -11
+theme_override_constants/margin_top = -11
+theme_override_constants/margin_right = -11
+theme_override_constants/margin_bottom = -11
+
+[node name="VisualTutorialUnderstoodButton" type="Button" parent="VisualTutorialVBox/PanelContainer/MarginContainer" unique_id=1590243430]
+z_index = 2
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -290,4 +294,4 @@ wait_time = 14.245
 one_shot = true
 
 [connection signal="pressed" from="BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer/BasicTutorialUnderstoodButton" to="." method="_on_basic_tutorial_understood_button_pressed"]
-[connection signal="pressed" from="VisualTutorialVBox/VisualTutorialUnderstoodButton" to="." method="_on_visual_tutorial_understood_button_pressed"]
+[connection signal="pressed" from="VisualTutorialVBox/PanelContainer/MarginContainer/VisualTutorialUnderstoodButton" to="." method="_on_visual_tutorial_understood_button_pressed"]

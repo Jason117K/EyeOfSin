@@ -3426,41 +3426,41 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_bhnn0")
 metadata/_edit_lock_ = true
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=709979366]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=709979366]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l7fqh")
 
-[node name="VisualTexture" type="TextureRect" parent="VisualContainer" unique_id=1258703180]
+[node name="VisualTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=1258703180]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Hive" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=184712079]
+[node name="Hive" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=184712079]
 position = Vector2(140, 49)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_b3h8d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1395277772]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1395277772]
 self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(103, 30)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ndjyu")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1917215831]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1917215831]
 self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(140, 93)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ndjyu")
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1558997034]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1558997034]
 self_modulate = Color(0.85098, 0.101961, 0.101961, 1)
 position = Vector2(177, 28)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ndjyu")
 
-[node name="Sunflower" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1157356613]
+[node name="Sunflower" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1157356613]
 material = SubResource("ShaderMaterial_f4j35")
 position = Vector2(37, 54)
 scale = Vector2(2, 2)

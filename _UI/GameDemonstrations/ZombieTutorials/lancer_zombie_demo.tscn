@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cebouuew8563s"]
 
+[ext_resource type="PackedScene" uid="uid://bfyb6b7h6ii6n" path="res://_UI/GameDemonstrations/DemonTutorials/buff_nine_patch_rect.tscn" id="1_68gg5"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="1_pegdo"]
 [ext_resource type="Texture2D" uid="uid://b05p1fsdblr4j" path="res://_Entities/Zombies/_Sundered/HeadDragZombie-Sheet.png" id="1_q35xs"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="2_kmmkn"]
@@ -3258,6 +3259,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="NinePatchRect" parent="." unique_id=161082908 instance=ExtResource("1_68gg5")]
+layout_mode = 2
+
 [node name="BG" type="ColorRect" parent="." unique_id=885484962]
 clip_children = 1
 custom_minimum_size = Vector2(197.845, 159.56)
@@ -3300,12 +3304,12 @@ modulate = Color(3, 3, 3, 1)
 tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQA=")
 tile_set = SubResource("TileSet_4668a")
 
-[node name="Panel" type="Panel" parent="." unique_id=1333577805]
+[node name="DemoVisualContainer" type="Panel" parent="." unique_id=1333577805]
 custom_minimum_size = Vector2(198.725, 159.945)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("18_1efvn")
 
-[node name="LancerZombie" type="AnimatedSprite2D" parent="Panel" unique_id=432095709]
+[node name="LancerZombie" type="AnimatedSprite2D" parent="DemoVisualContainer" unique_id=432095709]
 position = Vector2(86.00001, 60)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_o2waf")

@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://da4ats0qldrw6"]
 
+[ext_resource type="PackedScene" uid="uid://bfyb6b7h6ii6n" path="res://_UI/GameDemonstrations/DemonTutorials/buff_nine_patch_rect.tscn" id="1_fhugf"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="1_ts7l3"]
 [ext_resource type="Texture2D" uid="uid://y2o6u55mftgl" path="res://_Entities/Zombies/_Amalgam/DocOcWalk-Sheet.png" id="1_v1y0c"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="2_qd6cm"]
@@ -3200,6 +3201,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="NinePatchRect" parent="." unique_id=161082908 instance=ExtResource("1_fhugf")]
+layout_mode = 2
 
 [node name="BG" type="ColorRect" parent="." unique_id=1123390134]
 clip_children = 1

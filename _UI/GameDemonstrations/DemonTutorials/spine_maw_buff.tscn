@@ -3187,23 +3187,23 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_tin63")
 metadata/_edit_lock_ = true
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=1213434332]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=1213434332]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vi487")
 
-[node name="VisualTexture" type="TextureRect" parent="VisualContainer" unique_id=393798715]
+[node name="VisualTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=393798715]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Maw" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=623254819]
+[node name="Maw" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=623254819]
 position = Vector2(62, 65)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_m3nwt")
 
-[node name="OccularSpine" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1927192009]
+[node name="OccularSpine" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1927192009]
 material = SubResource("ShaderMaterial_t10a1")
 position = Vector2(161, 45)
 scale = Vector2(2, 2)

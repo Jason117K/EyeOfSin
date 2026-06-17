@@ -3232,18 +3232,18 @@ tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAA
 tile_set = SubResource("TileSet_00kn2")
 metadata/_edit_lock_ = true
 
-[node name="VisualContainer" type="PanelContainer" parent="." unique_id=1546264374]
+[node name="DemoVisualContainer" type="PanelContainer" parent="." unique_id=1546264374]
 custom_minimum_size = Vector2(0, 202)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_klg5l")
 
-[node name="VisualTexture" type="TextureRect" parent="VisualContainer" unique_id=45675771]
+[node name="VisualTexture" type="TextureRect" parent="DemoVisualContainer" unique_id=45675771]
 self_modulate = Color(0, 0, 0, 0.56078434)
 custom_minimum_size = Vector2(198, 100)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Spyder" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=1461717965]
+[node name="Spyder" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=1461717965]
 position = Vector2(59, 57.155)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_sj3fu")
@@ -3251,7 +3251,7 @@ animation = &"new_animation_1"
 autoplay = "new_animation_1"
 flip_h = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VisualContainer/VisualTexture" unique_id=2113999883]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DemoVisualContainer/VisualTexture" unique_id=2113999883]
 position = Vector2(141, 68)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_h1src")
