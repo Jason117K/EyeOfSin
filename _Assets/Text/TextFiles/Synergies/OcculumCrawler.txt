@@ -1,1 +1,2 @@
-Occulum emits moderate aoe slowing zone, zombies in zone are slow and generate blood on hit
+Produces blood faster 
+Blood becomes an auto-targeting projectile on pickup, damaging the highest health enemy in range

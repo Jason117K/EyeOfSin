@@ -1,1 +1,2 @@
-Increased fire speed, generates blood on multihit 
+Increased fire speed
+Generates blood on multihit 

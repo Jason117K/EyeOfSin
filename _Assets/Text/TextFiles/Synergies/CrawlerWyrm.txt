@@ -1,1 +1,2 @@
-Spyder shots have aoe zone that arcs blood web lightning to adjacent lanes, shoots slower 
+Shots now have a damaging lightning AOE 
+Shoots slower 

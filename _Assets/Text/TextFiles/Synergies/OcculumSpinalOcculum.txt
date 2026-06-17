@@ -1,1 +1,1 @@
-Occulum generates periodic healing aoe 
+Occulum heals units around itself

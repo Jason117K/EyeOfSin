@@ -1,3 +1,2 @@
 Increased Health
-Upgraded : 
-- increased damage when being attacked
+Increased Damage When Being Attacked 

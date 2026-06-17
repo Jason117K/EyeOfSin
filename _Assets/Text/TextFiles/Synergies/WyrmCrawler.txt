@@ -1,1 +1,1 @@
-Slightly slows all enemies hit with blood 
+Slows all enemies hit with blood 

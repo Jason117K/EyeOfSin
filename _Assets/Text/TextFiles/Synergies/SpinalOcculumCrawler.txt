@@ -1,3 +1,1 @@
-Walnut generates webs in front of it, slowing enemies.
-Upgraded :
-Extra slows enemies attacking it
+Generates webs on the ground in front of it, slowing zombies 

@@ -1,1 +1,3 @@
-Shoots slower, increased health, shots knock enemies back
+Increased Health
+Shots knock enemies back 
+Shoots slower 
