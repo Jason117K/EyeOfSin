@@ -520,14 +520,14 @@ func resetOcculumCount() -> void:
 	occulumCount = 0
 	green_occulum_count = 0
 	purple_occulum_count = 0
-	var temp_occulum_array : Array = all_registered_occulum
-	
+	# NOTE: must be a NEW array. Aliasing all_registered_occulum here and
+	# appending to it while iterating it is an infinite loop (froze on restart).
+	var temp_occulum_array : Array = []
+
 	for occulum in all_registered_occulum:
-		if occulum != null:
+		if occulum != null and is_instance_valid(occulum):
 			temp_occulum_array.append(occulum)
-	
-	all_registered_occulum.clear()
-	
+
 	all_registered_occulum = temp_occulum_array
 	#print("All Registered Occulum is ", all_registered_occulum)
 	
