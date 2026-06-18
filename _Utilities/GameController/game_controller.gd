@@ -520,7 +520,7 @@ func remove_empty_in_alt_scene(grid_pos : Vector2) -> void:
 		other_dimension.remove_empty_blocker_demon(grid_pos)
 
 
-func register_heart_alt_scene(new_hero_demon : Demon) -> void:
+func register_heart_alt_scene(_new_hero_demon : Demon) -> void:
 	var other_dimension := get_other_dimension()
 	if other_dimension:
 		pass

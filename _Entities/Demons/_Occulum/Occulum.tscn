@@ -900,7 +900,6 @@ position = Vector2(-64, 0)
 texture = ExtResource("23_3d0n3")
 
 [node name="BuffNodesComponent" parent="." unique_id=1007137061 instance=ExtResource("7")]
-visible = false
 
 [node name="TileArea1" parent="BuffNodesComponent" index="1" unique_id=1583416791]
 visible = false
@@ -928,6 +927,7 @@ frame = 1
 
 [node name="TileAreaCollision" parent="BuffNodesComponent/TileArea4" parent_id_path=PackedInt32Array(1007137061, 1195978361) index="0" unique_id=1425430868]
 visible = true
+debug_color = Color(0, 0.5950001, 0.7, 0.7529412)
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 visible = false
@@ -976,6 +976,7 @@ frame = 27
 
 [node name="TileAreaCollision" parent="BuffNodesComponent/TileArea10" parent_id_path=PackedInt32Array(1007137061, 1590585108) index="0" unique_id=1606136775]
 visible = true
+debug_color = Color(0, 0.5950001, 0.7, 0.8862745)
 
 [node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false

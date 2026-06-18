@@ -16,10 +16,14 @@ script = ExtResource("2_edfb1")
 hover_self_modulate = Color(1, 0, 0, 0.87500006)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=157863791]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1374982991]
+visible = false
 position = Vector2(0, -1.9278352e-06)
 shape = SubResource("RectangleShape2D_xvrxu")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

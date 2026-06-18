@@ -5,8 +5,13 @@ func die_fromClearSpace() -> void:
 	queue_free()
 
 func _ready() -> void:
-	pass
+	disable_buff_nodes()
 
+func disable_buff_nodes()->void:
+	for child in $BuffNodesComponent.get_children():
+		if child is Area2D:
+			child.monitorable = false
+			child.monitoring = false
 
 func on_demon_area_entered(_new_area: Area2D) -> void:
 	pass

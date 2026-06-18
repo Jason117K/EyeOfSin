@@ -424,7 +424,35 @@ func finish_spawn() -> void:
 func set_spawn_anim_speed(new_speed_speed: float) -> void:
 	animSpriteComp.set_spawn_anim_speed(new_speed_speed)
 
-
+func demon_selected()->void:
+	if buffNodes != null:
+		print("Demon ", self, " received demon selected signal")
+		var overlapping_areas
+		var area_birth_time
+		for this_buff_area in buffNodes.get_children():
+			if this_buff_area.visible == true && this_buff_area is Area2D:
+				print(self, " signal This buff area is ", this_buff_area)
+				this_buff_area.show_preview_square()
+				area_birth_time = this_buff_area.get_area_birth_time()
+				overlapping_areas = this_buff_area.get_overlapping_areas()
+				#for an_area in areas:
+					#print(self, " hide from OVERLAP area ", an_area.get_parent().get_parent())
+				print(self, " hide from Overlapping Areas is ", overlapping_areas)
+				for buff_area in overlapping_areas:
+					if buff_area.is_in_group("BloodTile") && buff_area.visible == true:
+						print(buff_area.name, " ",buff_area.get_parent().get_parent(), buff_area.global_position, " caller: ", self, this_buff_area.global_position)
+						if buff_area.get_area_birth_time() < area_birth_time:
+							print(self, " hide cos I am younger than than other node : ", buff_area.get_parent().get_parent())
+							this_buff_area.hide_preview_square()
+						if this_buff_area.buff_active == false:
+							print(self, " hide cos not active hide preview square")
+							this_buff_area.hide_preview_square()
+				
+func demon_deselected()->void:
+	if buffNodes != null:
+		for this_buff_area in buffNodes.get_children():
+			if this_buff_area.visible == true && this_buff_area is Area2D:
+				this_buff_area.hide_preview_square()
 
 func hide_highlight(new_demon_to_highlight : Demon = null)->void:
 	if new_demon_to_highlight != self:

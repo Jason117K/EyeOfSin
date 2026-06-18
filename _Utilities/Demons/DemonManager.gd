@@ -31,6 +31,7 @@ signal wyrm_placed(grid_position: Vector2)
 signal wasp_placed(grid_position: Vector2)
 signal maw_placed(grid_position: Vector2)
 signal test_signal()
+signal demon_deselected()
 
 func _ready() -> void:
 	if get_parent().has_method("crawler_placed"):
@@ -255,6 +256,11 @@ func place_demon(grid_pos: Vector2) -> void:
 		return
 	
 	var demon_instance = selected_demon_scene.instantiate()
+	
+	demon_deselected.connect(demon_instance.demon_deselected)
+	selection_menu.demon_deselected.connect(demon_instance.demon_deselected)
+	selection_menu.demon_selected.connect(demon_instance.demon_selected)
+	
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
 		demon_instance.add_to_group("Green")
@@ -338,6 +344,8 @@ func place_demon(grid_pos: Vector2) -> void:
 
 		print("Pdemon name is ", demon_instance.name)
 		demon_placed.emit(grid_pos)
+		demon_deselected.emit()
+		
 		if "SpinalOcculum" in demon_instance.name:
 			spinalOcculum_placed.emit(grid_pos)
 			print("Spinal Occulum Should Emit")

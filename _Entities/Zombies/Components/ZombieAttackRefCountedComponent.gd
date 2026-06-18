@@ -13,7 +13,7 @@ var attack_starting_pos: Vector2
 var attack_time_wait_time : float
 var attack_timer_started := false 
 var attack_time_elapsed : float = 0 
-var attack_ray  #= $"../DMGRayCast2D" # Raycast to detect demons in front of the zombie
+var attack_ray : RayCast2D #= $"../DMGRayCast2D" # Raycast to detect demons in front of the zombie
 var zombieSprite: AnimatedSprite2D #= $"../AnimatedSprite2D" # RefCounted to sprite comp
 #var attack_timer :Timer #= $"../AttackTimer" # Adjustable timer to control attack speed
 #@onready var attack_audio_player = $"../AttackAudioPlayer" # RefCounted to attack audio

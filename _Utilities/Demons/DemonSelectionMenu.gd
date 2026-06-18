@@ -96,6 +96,9 @@ const MAX_SHADOW_OFFSET := 8.0
 var doubleSpeed := true
 var can_click : bool = true 
 
+signal demon_deselected 
+signal demon_selected
+
 func _ready() -> void:
 	is_alt = get_parent().isGreenDimension
 	add_child(preview_container)
@@ -219,10 +222,12 @@ func deselect_demon() -> void:
 	release_all_focus()
 	selected_demon = null 			
 	setCanRemoveFalse()
+	demon_deselected.emit()
 	
 func on_demon_button_pressed(demon_scene:PackedScene, demon_button:Control, demon_label:Control) -> void:
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
+	demon_selected.emit()
 	selected_demon = demon_scene
 	var temp_instance :Demon= demon_scene.instantiate()
 	create_preview(demon_scene)

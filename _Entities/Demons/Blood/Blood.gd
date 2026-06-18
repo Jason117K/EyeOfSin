@@ -21,8 +21,8 @@ var blood_spell := preload("res://_Entities/Demons/_Occulum/sword_blood_spell.ts
 var crawlerBuff := false
 var wyrmBuff := false
 var hiveBuff := false
-var demons_to_heal: Array = [Demon]
-var nearby_zombies: Array = [Zombie]
+var demons_to_heal: Array[Demon]
+var nearby_zombies: Array[Zombie]
 var temp_zombie_container: Array = []
 var current_zombie_target: Zombie
 var dissappear_time := 0.75
@@ -100,7 +100,7 @@ func free_blood() -> void:
 		current_zombie_target.slow()
 	queue_free()
 	
-func _on_zombie_died(dead_zombie:Zombie):
+func _on_zombie_died(dead_zombie:Zombie)->void:
 	nearby_zombies.erase(dead_zombie)
 	pass
 

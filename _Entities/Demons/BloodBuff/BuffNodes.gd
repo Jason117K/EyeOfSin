@@ -52,10 +52,14 @@ func _ready() -> void:
 				child.set_collision_mask_value(1,false)
 				child.set_collision_mask_value(2,false)
 				child.set_collision_mask_value(3,true)
+				child.set_collision_mask_value(13,true)
+				child.set_collision_layer_value(13,true)
 			else:
 				child.set_collision_mask_value(1,false)
 				child.set_collision_mask_value(2,true)
 				child.set_collision_mask_value(3,false)
+				child.set_collision_mask_value(12,true)
+				child.set_collision_layer_value(12,true)
 
 func clearBuffs() -> void:
 	#print("DDD Buffed Demons is ", buffedDemons)
@@ -100,7 +104,17 @@ func _process(_delta: float) -> void:
 			if blood_tile:
 				
 				var bloodTileVisible := false
-				
+				var demon_detected := false 
+				for potential_demon in overlapping_areas:
+					if potential_demon.is_in_group("Demons"):
+						if potential_demon.is_in_group("Green") && demon.is_in_group("Green"):
+							demon_detected = true 
+						if potential_demon.is_in_group("Purple") && demon.is_in_group("Purple"):
+							demon_detected = true
+				#if demon_detected == false:
+					#child.set_buff_active()
+							
+							
 				# Check for demons in the overlapped areas
 				for demonToBuff in overlapping_areas:
 					#print("Demon buff is : ", demonToBuff)
@@ -131,7 +145,12 @@ func _process(_delta: float) -> void:
 									#demon.receive_buff(demonToBuff)
 									pass
 								#print("Demon to buff : ", demonToBuff.name , " will now receive buff from ", demon.name)
-								demonToBuff.receive_buff(demon)
+								if demonToBuff.isBuffed == false:
+									child.set_buff_inactive()
+									demonToBuff.receive_buff(demon)
+								else:
+									child.set_buff_inactive()
+									
 								if demonToBuff in buffedDemons:
 									pass
 								else:

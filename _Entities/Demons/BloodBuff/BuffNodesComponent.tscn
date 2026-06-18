@@ -4,10 +4,21 @@
 [ext_resource type="Script" uid="uid://cbg411w54cgi4" path="res://_Entities/Demons/BloodBuff/BuffNodes.gd" id="2"]
 [ext_resource type="SpriteFrames" uid="uid://brbpbxcqn0xja" path="res://_Common/Tres Resources/blood_buff_spriteframes.tres" id="2_flh7w"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cf7kvn7lwpsgl" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard3.png" id="3_hexwo"]
+[ext_resource type="Script" uid="uid://bjmp5inabhqnr" path="res://_Entities/Demons/BloodBuff/blood_tile.gd" id="3_yoa2g"]
 [ext_resource type="Script" uid="uid://byukjm6w77bql" path="res://_Entities/Demons/BloodBuff/blood_tile_glow.gd" id="5_kthrm"]
+[ext_resource type="Texture2D" uid="uid://b5hcf5mmtnpar" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard1.png" id="7_yoa2g"]
+[ext_resource type="Texture2D" uid="uid://cb7ierbaqq18s" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard5.png" id="8_ck8ha"]
+[ext_resource type="Texture2D" uid="uid://0tx7smcexigd" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard4.png" id="9_0grfn"]
+[ext_resource type="Texture2D" uid="uid://b0sesg6x8aqbt" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard2.png" id="10_ttn8q"]
+[ext_resource type="Texture2D" uid="uid://dujl0jsa18gt2" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard6.png" id="11_meori"]
+[ext_resource type="Texture2D" uid="uid://dgtag1fyerdf3" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard9.png" id="12_wiexk"]
+[ext_resource type="Texture2D" uid="uid://bvh68ny8decoj" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard.png" id="13_7xf5k"]
+[ext_resource type="Texture2D" uid="uid://c7utyogv3b0dm" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard8.png" id="14_508nu"]
+[ext_resource type="Texture2D" uid="uid://cdmg7e1y48sqw" path="res://_Entities/Demons/_PreviewIndicators/AltBuffCard7.png" id="15_0xuy5"]
 
 [sub_resource type="RectangleShape2D" id="88"]
-size = Vector2(21.3334, 21.3334)
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="60"]
 atlas = ExtResource("3")
@@ -254,14 +265,20 @@ visible = false
 sprite_frames = ExtResource("2_flh7w")
 autoplay = "default"
 
-[node name="TileArea1" type="Area2D" parent="." unique_id=1583416791]
+[node name="TileArea1" type="Area2D" parent="." unique_id=1583416791 groups=["BloodTile"]]
 position = Vector2(32, 0)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea1" unique_id=493772299]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea1" unique_id=1471020302]
+visible = false
+position = Vector2(-16, 0)
+texture = ExtResource("3_hexwo")
 
 [node name="BloodTile1" type="AnimatedSprite2D" parent="." unique_id=1525047237]
 z_index = 6
@@ -272,14 +289,20 @@ autoplay = "Drip"
 frame = 16
 script = ExtResource("5_kthrm")
 
-[node name="TileArea2" type="Area2D" parent="." unique_id=1222914378]
+[node name="TileArea2" type="Area2D" parent="." unique_id=1222914378 groups=["BloodTile"]]
 position = Vector2(32, 32)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea2" unique_id=838074481]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea2" unique_id=1964978121]
+visible = false
+position = Vector2(-16, -16)
+texture = ExtResource("7_yoa2g")
 
 [node name="BloodTile2" type="AnimatedSprite2D" parent="." unique_id=727498254]
 z_index = 6
@@ -289,14 +312,20 @@ animation = &"Drip"
 autoplay = "Drip"
 script = ExtResource("5_kthrm")
 
-[node name="TileArea3" type="Area2D" parent="." unique_id=963343398]
+[node name="TileArea3" type="Area2D" parent="." unique_id=963343398 groups=["BloodTile"]]
 position = Vector2(32, -32)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea3" unique_id=362020715]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea3" unique_id=1073279279]
+visible = false
+position = Vector2(-16, 16)
+texture = ExtResource("8_ck8ha")
 
 [node name="BloodTile3" type="AnimatedSprite2D" parent="." unique_id=2066119592]
 z_index = 6
@@ -307,14 +336,20 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("5_kthrm")
 
-[node name="TileArea4" type="Area2D" parent="." unique_id=1195978361]
+[node name="TileArea4" type="Area2D" parent="." unique_id=1195978361 groups=["BloodTile"]]
 position = Vector2(-32, 0)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea4" unique_id=1425430868]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea4" unique_id=682031960]
+visible = false
+position = Vector2(16, 0)
+texture = ExtResource("9_0grfn")
 
 [node name="BloodTile4" type="AnimatedSprite2D" parent="." unique_id=227563038]
 z_index = 6
@@ -325,14 +360,20 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("5_kthrm")
 
-[node name="TileArea5" type="Area2D" parent="." unique_id=334855413]
+[node name="TileArea5" type="Area2D" parent="." unique_id=334855413 groups=["BloodTile"]]
 position = Vector2(-32, 32)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea5" unique_id=1091949743]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea5" unique_id=1891324476]
+visible = false
+position = Vector2(16, -16)
+texture = ExtResource("10_ttn8q")
 
 [node name="BloodTile5" type="AnimatedSprite2D" parent="." unique_id=1290243908]
 z_index = 6
@@ -343,14 +384,20 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("5_kthrm")
 
-[node name="TileArea6" type="Area2D" parent="." unique_id=1969648199]
+[node name="TileArea6" type="Area2D" parent="." unique_id=1969648199 groups=["BloodTile"]]
 position = Vector2(-32, -32)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea6" unique_id=927270191]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea6" unique_id=1459967618]
+visible = false
+position = Vector2(16, 16)
+texture = ExtResource("11_meori")
 
 [node name="BloodTile6" type="AnimatedSprite2D" parent="." unique_id=748963459]
 z_index = 6
@@ -361,14 +408,20 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("5_kthrm")
 
-[node name="TileArea7" type="Area2D" parent="." unique_id=1022902709]
+[node name="TileArea7" type="Area2D" parent="." unique_id=1022902709 groups=["BloodTile"]]
 position = Vector2(0, -32)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea7" unique_id=1986470664]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea7" unique_id=1526153162]
+visible = false
+position = Vector2(0, 16)
+texture = ExtResource("12_wiexk")
 
 [node name="BloodTile7" type="AnimatedSprite2D" parent="." unique_id=1211874094]
 z_index = 6
@@ -379,14 +432,20 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("5_kthrm")
 
-[node name="TileArea8" type="Area2D" parent="." unique_id=1026513902]
+[node name="TileArea8" type="Area2D" parent="." unique_id=1026513902 groups=["BloodTile"]]
 position = Vector2(0, 32)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea8" unique_id=412606561]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea8" unique_id=263518924]
+visible = false
+position = Vector2(0, -16)
+texture = ExtResource("13_7xf5k")
 
 [node name="BloodTile8" type="AnimatedSprite2D" parent="." unique_id=523478326]
 z_index = 6
@@ -397,14 +456,20 @@ autoplay = "Drip"
 frame = 13
 script = ExtResource("5_kthrm")
 
-[node name="TileArea9" type="Area2D" parent="." unique_id=1370979832]
+[node name="TileArea9" type="Area2D" parent="." unique_id=1370979832 groups=["BloodTile"]]
 position = Vector2(64, 0)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea9" unique_id=70285421]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea9" unique_id=534471566]
+visible = false
+position = Vector2(-32, 0)
+texture = ExtResource("14_508nu")
 
 [node name="BloodTile9" type="AnimatedSprite2D" parent="." unique_id=352922726]
 z_index = 6
@@ -414,14 +479,20 @@ animation = &"Drip"
 autoplay = "Drip"
 script = ExtResource("5_kthrm")
 
-[node name="TileArea10" type="Area2D" parent="." unique_id=1590585108]
+[node name="TileArea10" type="Area2D" parent="." unique_id=1590585108 groups=["BloodTile"]]
 position = Vector2(-64, 0)
 collision_layer = 0
+script = ExtResource("3_yoa2g")
 
 [node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea10" unique_id=1606136775]
 visible = false
 position = Vector2(-1.43051e-06, -1.43051e-06)
 shape = SubResource("88")
+
+[node name="BuffIndicator" type="Sprite2D" parent="TileArea10" unique_id=62664714]
+visible = false
+position = Vector2(32, 0)
+texture = ExtResource("15_0xuy5")
 
 [node name="BloodTile10" type="AnimatedSprite2D" parent="." unique_id=364442034]
 z_index = 6

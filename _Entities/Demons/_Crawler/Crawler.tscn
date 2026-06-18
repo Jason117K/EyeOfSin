@@ -1591,8 +1591,10 @@ collide_with_bodies = false
 
 [node name="BuffNodesComponent" parent="." unique_id=321485823 instance=ExtResource("10")]
 
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea1" parent_id_path=PackedInt32Array(321485823, 1583416791) index="0" unique_id=493772299]
+visible = true
+
 [node name="BloodTile1" parent="BuffNodesComponent" index="2" unique_id=1525047237]
-visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 6
 
@@ -1611,6 +1613,9 @@ visible = false
 visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 3
+
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea4" parent_id_path=PackedInt32Array(321485823, 1195978361) index="0" unique_id=1425430868]
+visible = true
 
 [node name="BloodTile4" parent="BuffNodesComponent" index="8" unique_id=227563038]
 visible = false
@@ -1657,6 +1662,9 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_5qq15")
 frame = 15
 frame_progress = 0.606092
+
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea10" parent_id_path=PackedInt32Array(321485823, 1590585108) index="0" unique_id=1606136775]
+visible = true
 
 [node name="BloodTile10" parent="BuffNodesComponent" index="20" unique_id=364442034]
 visible = false
