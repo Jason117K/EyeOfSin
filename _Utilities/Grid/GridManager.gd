@@ -10,11 +10,7 @@ const GRID_ROWS = 13      # Adjust based on your game's design
 @export var make_green := false
 
 func _ready() -> void:
-	if Global.game_controller:
-		Global.game_controller._trace("    GridManager _ready TOP %s" % get_path())
 	tilemapLayer._ready()
-	if Global.game_controller:
-		Global.game_controller._trace("    GridManager after tilemapLayer._ready()")
 	for tilemap_layer_child in self.get_children():
 		if "Block" in tilemap_layer_child.name:
 			block_layer = tilemap_layer_child
@@ -26,8 +22,6 @@ func _ready() -> void:
 #		$TileMapLayer4._setup_shader()
 		if block_layer != null:
 			block_layer._setup_shader()
-	if Global.game_controller:
-		Global.game_controller._trace("    GridManager _ready BOTTOM make_green=%s" % make_green)
 		
 	
 

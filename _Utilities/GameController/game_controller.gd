@@ -24,10 +24,6 @@ const DIM_BITS := [1 << 1, 1 << 2]
 const UI_BIT := 1
 var _default_root_cull_mask := 0xFFFFFFFF
 
-# --- Freeze diagnostics (temporary) ---
-var _trace_file: FileAccess
-var _trace_node_adds := false
-
 
 func _ready() -> void:
 	print(Input.is_using_accumulated_input(), " balls")
@@ -49,19 +45,6 @@ func _ready() -> void:
 
 
 # --- Internal Helpers ---
-
-func _trace(msg: String) -> void:
-	# Flush-on-every-line logger so a hard freeze can't swallow the tail.
-	# One held handle (low overhead so it doesn't mask the timing race);
-	# truncates on first write per game launch. File:
-	# %APPDATA%\Godot\app_userdata\<Project>\hang_trace.log
-	if _trace_file == null:
-		_trace_file = FileAccess.open("user://hang_trace.log", FileAccess.WRITE)
-	if _trace_file == null:
-		return
-	_trace_file.store_line("[%d] %s" % [Time.get_ticks_msec(), msg])
-	_trace_file.flush()
-
 
 func _remove_and_free(node: Node) -> void:
 	if !is_instance_valid(node):
@@ -125,7 +108,6 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 # --- Dual Scene Transitions ---
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
-	_trace("ENTER change_dual_scenes scene1=%s paused=%s dialog_disabled=%s skip_tut=%s" % [scene1_path, get_tree().paused, Global.dialog_is_disabled, Global.skip_tutorials])
 	#print_scene_tree()
 	Global.hide_notification_bar()
 	#pause_button.visible = true
@@ -165,13 +147,9 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	print(scene1_path)
 	print("About to Add Child New1 ", new1)
 	print("Scene Container is ", scene_container)
-	_trace("BEFORE add_child new1=%s" % new1)
-	_trace_node_adds = true
 	scene_container.add_child(new1)
-	_trace("AFTER add_child new1")
 	print("About to Show Demon Slection Menu")
 	new1.show_demon_selection_menu()
-	_trace("AFTER show_demon_selection_menu")
 	
 	current_scene = new1
 	current_scenes.append(new1)
@@ -180,23 +158,17 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	
 	var new2 : Control = load(scene2_path).instantiate()
 	new2.visible = true
-	_trace("BEFORE add_child new2=%s" % new2)
 	scene_container.add_child(new2)
-	_trace("AFTER add_child new2")
-	_trace_node_adds = false
 	current_scenes.append(new2)
 	new2.hide_demon_selection_menu()
 
 	on_scene_1 = true
 	print("About to Stamp Scnes")
-	_trace("BEFORE stamp scenes")
 	_stamp_scene(current_scenes[0], DIM_BITS[0])
 	_stamp_scene(current_scenes[1], DIM_BITS[1])
 	_apply_view_masks()
 	print("About to Make Camera2D Currebt")
-	_trace("BEFORE make_current Camera2D")
 	current_scenes[0].get_node("Camera2D").make_current()
-	_trace("AFTER make_current Camera2D")
 	if "Level1/Level0-1" in scene1_path:
 		pass
 	else:
@@ -204,12 +176,9 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		#print(scene1_path , "This Should Make Pip Show")
 		#pip.show_pip()
 	print(scene1_path)
-	_trace("BEFORE WaveManager call_deferred _ready")
 	$CurrentScene/WaveManager.call_deferred("_ready")
-	_trace("AFTER WaveManager call_deferred _ready (before process_frame)")
 	await get_tree().process_frame
 	get_tree().paused = false
-	_trace("AFTER unpause (process_frame returned)")
 
 	#if on_scene_1:
 	#demon_selection_menu.visibility_layer = 0
@@ -237,11 +206,10 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		current_scenes[0].debug = false 
 		
 	if Global.skip_tutorials:
-		current_scenes[0].skip_tutorials = true
+		current_scenes[0].skip_tutorials = true 
 	else:
-		current_scenes[0].skip_tutorials = false
+		current_scenes[0].skip_tutorials = false 
 	print(scene1_path)
-	_trace("EXIT change_dual_scenes (completed normally)")
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
@@ -484,12 +452,6 @@ func toggle_pip_size() -> void:
 
 
 func _on_node_added(node: Node) -> void:
-	if _trace_node_adds and node.get_script() != null:
-		_trace("  +node %s (%s) path=%s" % [node.name, node.get_class(), node.get_path()])
-		# Log when this node finishes _ready(). The deadlocking node's ready
-		# never fires, so the deepest scripted node missing a "=ready" line
-		# (plus its ancestors) is the wedge.
-		node.ready.connect(_on_traced_node_ready.bind(node), CONNECT_ONE_SHOT)
 	if current_scenes.size() < 2 or not (node is CanvasItem):
 		return
 	#for i in 2:
@@ -498,11 +460,6 @@ func _on_node_added(node: Node) -> void:
 			#print(" Node ", node , " will have visibility layer set to DIM_BITS[",i,"]")
 			#node.visibility_layer = DIM_BITS[i]
 			#return
-
-
-func _on_traced_node_ready(node: Node) -> void:
-	if is_instance_valid(node):
-		_trace("  =ready %s path=%s" % [node.name, node.get_path()])
 
 
 func _stamp_scene(scene: Node, layer: int) -> void:
