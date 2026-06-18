@@ -26,6 +26,8 @@ func _ready() -> void:
 		_setup_shader()
 
 func _setup_shader() -> void:
+	if not Engine.is_editor_hint() and Global.game_controller:
+		Global.game_controller._trace("      setup_shader TOP %s" % get_path())
 	var shader := Shader.new()
 	shader.code = """
 shader_type canvas_item;
@@ -65,8 +67,14 @@ void fragment() {
 	_shader_material.shader = shader
 	modulate = Color.WHITE  # Ensure modulate isn't affecting things
 	self_modulate = Color.WHITE
+	if not Engine.is_editor_hint() and Global.game_controller:
+		Global.game_controller._trace("      setup_shader before assign material %s" % get_path())
 	material = _shader_material
+	if not Engine.is_editor_hint() and Global.game_controller:
+		Global.game_controller._trace("      setup_shader after assign material %s" % get_path())
 	_update_hue_shift()
+	if not Engine.is_editor_hint() and Global.game_controller:
+		Global.game_controller._trace("      setup_shader BOTTOM %s" % get_path())
 
 func _update_hue_shift() -> void:
 	if _shader_material and is_instance_valid(_shader_material):

@@ -24,6 +24,10 @@ const DIM_BITS := [1 << 1, 1 << 2]
 const UI_BIT := 1
 var _default_root_cull_mask := 0xFFFFFFFF
 
+# --- Freeze diagnostics (temporary) ---
+var _trace_file: FileAccess
+var _trace_node_adds := false
+
 
 func _ready() -> void:
 	print(Input.is_using_accumulated_input(), " balls")
@@ -48,13 +52,15 @@ func _ready() -> void:
 
 func _trace(msg: String) -> void:
 	# Flush-on-every-line logger so a hard freeze can't swallow the tail.
-	# Log file: %APPDATA%\Godot\app_userdata\<Project>\hang_trace.log
-	var path := "user://hang_trace.log"
-	var f := FileAccess.open(path, FileAccess.READ_WRITE) if FileAccess.file_exists(path) else FileAccess.open(path, FileAccess.WRITE)
-	f.seek_end()
-	f.store_line("[%d] %s" % [Time.get_ticks_msec(), msg])
-	f.flush()
-	f.close()
+	# One held handle (low overhead so it doesn't mask the timing race);
+	# truncates on first write per game launch. File:
+	# %APPDATA%\Godot\app_userdata\<Project>\hang_trace.log
+	if _trace_file == null:
+		_trace_file = FileAccess.open("user://hang_trace.log", FileAccess.WRITE)
+	if _trace_file == null:
+		return
+	_trace_file.store_line("[%d] %s" % [Time.get_ticks_msec(), msg])
+	_trace_file.flush()
 
 
 func _remove_and_free(node: Node) -> void:
@@ -160,6 +166,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	print("About to Add Child New1 ", new1)
 	print("Scene Container is ", scene_container)
 	_trace("BEFORE add_child new1=%s" % new1)
+	_trace_node_adds = true
 	scene_container.add_child(new1)
 	_trace("AFTER add_child new1")
 	print("About to Show Demon Slection Menu")
@@ -176,6 +183,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	_trace("BEFORE add_child new2=%s" % new2)
 	scene_container.add_child(new2)
 	_trace("AFTER add_child new2")
+	_trace_node_adds = false
 	current_scenes.append(new2)
 	new2.hide_demon_selection_menu()
 
@@ -476,6 +484,8 @@ func toggle_pip_size() -> void:
 
 
 func _on_node_added(node: Node) -> void:
+	if _trace_node_adds and node.get_script() != null:
+		_trace("  +node %s (%s) path=%s" % [node.name, node.get_class(), node.get_path()])
 	if current_scenes.size() < 2 or not (node is CanvasItem):
 		return
 	#for i in 2:
