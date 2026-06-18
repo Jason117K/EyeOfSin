@@ -486,6 +486,10 @@ func toggle_pip_size() -> void:
 func _on_node_added(node: Node) -> void:
 	if _trace_node_adds and node.get_script() != null:
 		_trace("  +node %s (%s) path=%s" % [node.name, node.get_class(), node.get_path()])
+		# Log when this node finishes _ready(). The deadlocking node's ready
+		# never fires, so the deepest scripted node missing a "=ready" line
+		# (plus its ancestors) is the wedge.
+		node.ready.connect(_on_traced_node_ready.bind(node), CONNECT_ONE_SHOT)
 	if current_scenes.size() < 2 or not (node is CanvasItem):
 		return
 	#for i in 2:
@@ -494,6 +498,11 @@ func _on_node_added(node: Node) -> void:
 			#print(" Node ", node , " will have visibility layer set to DIM_BITS[",i,"]")
 			#node.visibility_layer = DIM_BITS[i]
 			#return
+
+
+func _on_traced_node_ready(node: Node) -> void:
+	if is_instance_valid(node):
+		_trace("  =ready %s path=%s" % [node.name, node.get_path()])
 
 
 func _stamp_scene(scene: Node, layer: int) -> void:
