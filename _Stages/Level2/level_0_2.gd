@@ -94,7 +94,9 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	Global.game_controller._trace("L0_2 _ready TOP %s" % name)
 	super()
+	Global.game_controller._trace("L0_2 _ready after super()")
 	levelSwitcher.visible = false
 	demonSelectionMenu.visible = false
 	get_tree().paused = false
@@ -130,11 +132,13 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(finish_ready)
 	#print("Crawler Button at ready is : ", crawler_button)
 	Global.hide_ui_layer()
+	Global.game_controller._trace("L0_2 _ready before dialog/finish branch debug=%s skip_tutorials=%s" % [debug, skip_tutorials])
 	if debug or skip_tutorials:
 		finish_ready()
 	else:
 		Dialogic.start(level_2_start_dialog)
 	#finish_ready()
+	Global.game_controller._trace("L0_2 _ready BOTTOM")
 	
 func _start_free_play() -> void:
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum",])
