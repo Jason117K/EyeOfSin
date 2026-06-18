@@ -48,6 +48,7 @@ var attackComp : ZombieAttackRefCountedComponent
 @onready var death_blood : AnimatedSprite2D = $DeathBlood
 #@onready var attack_timer := $AttackTimer
 @onready var damage_vfx_spawn_locations := [bloodHit]
+@onready var highlight_circle := $HighlightCircle
 #@onready var debuff_degrade_timer : Timer = $DebuffDegrade
 #@onready var reset_color_timer : Timer = $ResetThisColor
 #@onready var just_spawned_timer : Timer = $JustNowSpawned
@@ -111,7 +112,12 @@ var time_since_spawn : float = 0
 var _spawn_setup_done := false
 var is_flame_dmg_linked := false 
 
+
+@onready var hide_highlight_timer : Timer = Timer.new()
+
 func _ready() -> void:
+	highlight_circle.hide()
+	
 	speedComp = ZombieSpeedRefCountedComponent.new(self)
 	healthComp = ZombieHealthRefCountedComponent.new(self)
 	attackComp = ZombieAttackRefCountedComponent.new(self)
@@ -152,7 +158,27 @@ func _ready() -> void:
 	else:
 		set_process(false)
 		Global.register_zombie(self)
+		
+	hide_highlight_timer.one_shot = true 
+	hide_highlight_timer.autostart = false
+	hide_highlight_timer.wait_time = 6.0
+	hide_highlight_timer.timeout.connect(hide_highlight)
+	add_child(hide_highlight_timer)
+	
+	highlight_circle.visibility_changed.connect(_on_highlight_circle_visibility_changed)
+	Global.notification_bar.show_new_zombie_notification.connect(hide_highlight)
 
+
+
+func _on_highlight_circle_visibility_changed() -> void:
+	if highlight_circle != null:
+		if highlight_circle.visible == true:
+			hide_highlight_timer.start()
+
+func hide_highlight(new_zombie_to_highlight : Zombie = null)->void:
+	if new_zombie_to_highlight != self:
+		highlight_circle.hide()
+					
 			
 func get_attack_comp()->ZombieAttackRefCountedComponent:
 	return attackComp
@@ -560,6 +586,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		#print(self, " was clicked ")
 		Global.set_zombie_info_bar(self)
+		highlight_circle.show()
 		pass
 
 

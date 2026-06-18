@@ -741,6 +741,7 @@ layout_mode = 2
 theme_override_constants/separation = -2
 
 [node name="MawButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
+material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -748,6 +749,7 @@ size_flags_vertical = 5
 texture_normal = ExtResource("9_jfwei")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("6_q10kc")
 
 [node name="MawCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
 z_index = 2
@@ -786,6 +788,7 @@ layout_mode = 2
 theme_override_constants/separation = -5
 
 [node name="HiveButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1601093442]
+material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -793,6 +796,7 @@ size_flags_vertical = 5
 texture_normal = ExtResource("11_js2vo")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("6_q10kc")
 
 [node name="HiveCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1149167924]
 visible = false
@@ -821,6 +825,7 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="PortalButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal" unique_id=1249797751]
+material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -828,6 +833,7 @@ size_flags_vertical = 5
 texture_normal = ExtResource("15_wixct")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("6_q10kc")
 
 [node name="PortalProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal" unique_id=621438390]
 custom_minimum_size = Vector2(38, 7)

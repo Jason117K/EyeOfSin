@@ -2,14 +2,28 @@
 
 [ext_resource type="Script" uid="uid://c2c4na1yww6up" path="res://_Entities/Zombies/_Flesheater/FootballZombie.gd" id="1_43cmf"]
 [ext_resource type="Texture2D" uid="uid://yhjvche568wh" path="res://_Entities/Zombies/GreenFire-Sheet.png" id="2_4813q"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_aejvc"]
 [ext_resource type="SpriteFrames" uid="uid://0l22rargtx3w" path="res://_Entities/Zombies/ZombieFX/Zombie_Hit_FX.tres" id="2_uh7t5"]
 [ext_resource type="Texture2D" uid="uid://cy0n2mnllm0ms" path="res://_Entities/Zombies/BloodHitFX-Sheet.png" id="3_hyqrl"]
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_pbeg5"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_v7unc"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="7_2m731"]
 [ext_resource type="Texture2D" uid="uid://ce1kshsbddsup" path="res://_Entities/Zombies/_Flesheater/FootballZombie-Sheet.png" id="8_3ru2w"]
 [ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="9_hyqrl"]
 [ext_resource type="Texture2D" uid="uid://bajcfxyns7opb" path="res://_Entities/Zombies/_Flesheater/FootballZombie-SheetWEB.png" id="9_vy6vh"]
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="10_32v0v"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10_g8toj"]
+
+[sub_resource type="Curve2D" id="Curve2D_fuqq8"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 11.618878, 21.03726, 0, 11.618878, 0, -11.618878, 0, 0, 21.03726, 0, 11.618878, 0, -11.618878, -21.03726, 0, -11.618878, 0, 11.618878, 0, 0, -21.03726, 0, -11.618878, 0, 0, 21.03726, 0)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_r0h8a"]
+resource_local_to_scene = true
+script = ExtResource("4_v7unc")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufnma"]
 atlas = ExtResource("2_4813q")
@@ -337,6 +351,35 @@ attack_power = 60
 bloodWorth = 50.0
 fire_fix_position = Vector2(9, -10)
 syn_mark_position = Vector2(5, -12)
+
+[node name="HighlightCircle" type="Node2D" parent="." unique_id=313751339 node_paths=PackedStringArray("polygon", "line")]
+position = Vector2(16, 16)
+scale = Vector2(0.42, 0.145)
+script = ExtResource("2_aejvc")
+polygon = NodePath("Fill")
+stroke_color = Color(0.31, 0, 0.62, 1)
+stroke_width = 3.0
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_fuqq8")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_r0h8a")
+shape_type = 2
+size = Vector2(62.593105, 62.593105)
+rx = 31.296553
+ry = 31.296553
+
+[node name="Fill" type="Polygon2D" parent="HighlightCircle" unique_id=68073842]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(31.296553, 0, 31.134977, 3.1999693, 30.660736, 6.3074837, 29.88956, 9.306814, 28.837183, 12.182232, 27.519323, 14.918007, 25.95172, 17.49841, 24.150097, 19.907711, 22.130184, 22.130182, 19.907711, 24.150095, 17.49841, 25.95172, 14.918007, 27.519323, 12.182232, 28.837181, 9.306814, 29.88956, 6.3074837, 30.660738, 3.1999693, 31.134977, 0, 31.296553, -3.1999693, 31.134977, -6.3074837, 30.660736, -9.306814, 29.88956, -12.182232, 28.837183, -14.918007, 27.519323, -17.49841, 25.95172, -19.907711, 24.150097, -22.130182, 22.130184, -24.150095, 19.907711, -25.95172, 17.49841, -27.519323, 14.918007, -28.837181, 12.182232, -29.88956, 9.306814, -30.660738, 6.3074837, -31.134977, 3.1999693, -31.296553, 0, -31.134977, -3.1999693, -30.660736, -6.3074837, -29.88956, -9.306814, -28.837183, -12.182232, -27.519323, -14.918007, -25.95172, -17.49841, -24.150097, -19.907711, -22.130184, -22.130182, -19.907711, -24.150095, -17.49841, -25.95172, -14.918007, -27.519323, -12.182232, -28.837181, -9.306814, -29.88956, -6.3074837, -30.660738, -3.1999693, -31.134977, 0, -31.296553, 3.1999693, -31.134977, 6.3074837, -30.660736, 9.306814, -29.88956, 12.182232, -28.837183, 14.918007, -27.519323, 17.49841, -25.95172, 19.907711, -24.150097, 22.130182, -22.130184, 24.150095, -19.907711, 25.95172, -17.49841, 27.519323, -14.918007, 28.837181, -12.182232, 29.88956, -9.306814, 30.660738, -6.3074837, 31.134977, -3.1999693)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="HighlightCircle" unique_id=997116555]
+points = PackedVector2Array(31.296553, 0, 31.134977, 3.1999693, 30.660736, 6.3074837, 29.88956, 9.306814, 28.837183, 12.182232, 27.519323, 14.918007, 25.95172, 17.49841, 24.150097, 19.907711, 22.130184, 22.130182, 19.907711, 24.150095, 17.49841, 25.95172, 14.918007, 27.519323, 12.182232, 28.837181, 9.306814, 29.88956, 6.3074837, 30.660738, 3.1999693, 31.134977, 0, 31.296553, -3.1999693, 31.134977, -6.3074837, 30.660736, -9.306814, 29.88956, -12.182232, 28.837183, -14.918007, 27.519323, -17.49841, 25.95172, -19.907711, 24.150097, -22.130182, 22.130184, -24.150095, 19.907711, -25.95172, 17.49841, -27.519323, 14.918007, -28.837181, 12.182232, -29.88956, 9.306814, -30.660738, 6.3074837, -31.134977, 3.1999693, -31.296553, 0, -31.134977, -3.1999693, -30.660736, -6.3074837, -29.88956, -9.306814, -28.837183, -12.182232, -27.519323, -14.918007, -25.95172, -17.49841, -24.150097, -19.907711, -22.130184, -22.130182, -19.907711, -24.150095, -17.49841, -25.95172, -14.918007, -27.519323, -12.182232, -28.837181, -9.306814, -29.88956, -6.3074837, -30.660738, -3.1999693, -31.134977, 0, -31.296553, 3.1999693, -31.134977, 6.3074837, -30.660736, 9.306814, -29.88956, 12.182232, -28.837183, 14.918007, -27.519323, 17.49841, -25.95172, 19.907711, -24.150097, 22.130182, -22.130184, 24.150095, -19.907711, 25.95172, -17.49841, 27.519323, -14.918007, 28.837181, -12.182232, 29.88956, -9.306814, 30.660738, -6.3074837, 31.134977, -3.1999693)
+closed = true
+width = 3.0
+default_color = Color(0.31, 0, 0.62, 1)
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
 
 [node name="FireFX" type="AnimatedSprite2D" parent="." unique_id=1651273887]
 visible = false

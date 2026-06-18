@@ -22,6 +22,8 @@ extends MarginContainer
 
 @onready var notif_icon := $NotificationPanel/NotifMarginContainer/NotificationHbox/IconPanel/NotifTextureIcon
 
+@onready var v_separator := $NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer/VSeparator
+
 @export var cannot_afford_label_disappear_time := 2.0
 @export var info_disappear_time := 5.0
 
@@ -32,6 +34,7 @@ var should_hide := false
 var fill_style: StyleBoxFlat
 
 signal show_new_demon_notification(highlighted_demon:Demon)
+signal show_new_zombie_notification(highlighted_zombie:Zombie)
 
 func _ready() -> void:
 	#print_scene_tree()
@@ -68,7 +71,7 @@ func set_panel_border_color(panel: PanelContainer, color: Color) -> void:
 	
 func set_panel_background_color(panel: PanelContainer, color: Color) -> void:
 	var stylebox := panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
-	stylebox.border_color = color
+	stylebox.bg_color = color
 	panel.add_theme_stylebox_override("panel", stylebox)
 	
 func set_label_border_color(label: RichTextLabel, color: Color) -> void:
@@ -122,12 +125,12 @@ func set_demon_info(demon: Demon) -> void:
 	notif_icon.texture = demon.get_demon_icon()
 	notif_icon.hue_shift = 0.0
 	notif_icon._apply_hue_shift()
-	special_label.text = demon.get_special_description()
+	special_label.text = (demon.get_special_description()).to_upper()
 	
 	health_progress_bar.add_theme_color_override("default_color",Color.RED)
 	damage_amount_label.add_theme_color_override("default_color",Color.RED)
-	damage_label.add_theme_color_override("default_color",Color.RED)
-	special_label.add_theme_color_override("default_color",Color.RED)
+	#damage_label.add_theme_color_override("default_color",Color.RED)
+	#special_label.add_theme_color_override("default_color",Color.RED)
 	notifLabel.add_theme_color_override("default_color",Color.RED)
 
 	set_panel_border_color(health_panel,Color.RED)
@@ -157,7 +160,7 @@ func set_zombie_info(zombie: Zombie) -> void:
 	damage_amount_label.text = str(zombie.get_damage())
 	
 	notif_icon.texture = zombie.get_zombie_icon()
-	special_label.text = zombie.get_special_description()
+	special_label.text = (zombie.get_special_description()).to_upper() 
 	
 	fill_style = StyleBoxFlat.new()
 	fill_style.bg_color = Color.WEB_PURPLE         
@@ -167,9 +170,9 @@ func set_zombie_info(zombie: Zombie) -> void:
 		speed_amount_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
 		damage_amount_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
 		#health_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
-		speed_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
-		damage_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
-		special_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
+		#speed_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
+		#damage_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
+		#special_label.add_theme_color_override("default_color",Color.WEB_PURPLE)
 		notifLabel.add_theme_color_override("default_color",Color.WEB_PURPLE)
 		
 		set_panel_border_color(health_panel,Color.WEB_PURPLE)
@@ -193,10 +196,10 @@ func set_zombie_info(zombie: Zombie) -> void:
 		speed_amount_label.add_theme_color_override("default_color",Color.DARK_GREEN)
 		damage_amount_label.add_theme_color_override("default_color",Color.DARK_GREEN)
 		#health_label.add_theme_color_override("default_color",Color.DARK_GREEN)
-		speed_label.add_theme_color_override("default_color",Color.DARK_GREEN)
-		damage_label.add_theme_color_override("default_color",Color.DARK_GREEN)
+		#speed_label.add_theme_color_override("default_color",Color.DARK_GREEN)
+		#damage_label.add_theme_color_override("default_color",Color.DARK_GREEN)
 		notifLabel.add_theme_color_override("default_color",Color.DARK_GREEN)
-		special_label.add_theme_color_override("default_color",Color.DARK_GREEN)	
+		#special_label.add_theme_color_override("default_color",Color.DARK_GREEN)	
 		set_panel_border_color(health_panel,Color.DARK_GREEN)
 		set_panel_border_color(speed_panel,Color.DARK_GREEN)
 		set_panel_border_color(damage_panel,Color.DARK_GREEN)
@@ -215,17 +218,23 @@ func set_zombie_info(zombie: Zombie) -> void:
 		
 func show_zombie_notification() -> void:
 	show()
+	v_separator.show()
 	stats_container.show()
 	speed_panel.show()
 	notifLabel.show()	
 	hide_bar_timer.start()
+	show_new_zombie_notification.emit(current_zombie)
 	
 	
 func show_demon_notification() -> void:
-	show()
-	stats_container.show()
+	if self.visible == false:
+		show()
+		stats_container.show()
+		notifLabel.show()
+		
+	v_separator.hide()
 	speed_panel.hide()
-	notifLabel.show()	
+	
 	hide_bar_timer.start()
 	show_new_demon_notification.emit(current_demon)
 	
@@ -234,6 +243,7 @@ func show_demon_notification() -> void:
 
 func _on_hidden() -> void:
 	show_new_demon_notification.emit(null)
+	show_new_zombie_notification.emit(null)
 
 
 
