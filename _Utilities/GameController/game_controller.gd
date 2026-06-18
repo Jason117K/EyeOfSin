@@ -147,28 +147,26 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	print(scene1_path)
 	print("About to Add Child New1 ", new1)
 	print("Scene Container is ", scene_container)
-	scene_container.add_child.call_deferred(new1)
-#	scene_container.add_child(new1)
+	scene_container.add_child(new1)
 	print("About to Show Demon Slection Menu")
-	new1.show_demon_selection_menu.call_deferred()
+	new1.show_demon_selection_menu()
 	
 	current_scene = new1
-	current_scenes.append.call_deferred(new1)
+	current_scenes.append(new1)
 	
 	print(scene2_path)
 	
 	var new2 : Control = load(scene2_path).instantiate()
 	new2.visible = true
-	scene_container.add_child.call_deferred(new2)
-	current_scenes.append.call_deferred(new2)
-	new2.hide_demon_selection_menu.call_deferred()
-	await get_tree().process_frame
-	await get_tree().process_frame
+	scene_container.add_child(new2)
+	current_scenes.append(new2)
+	new2.hide_demon_selection_menu()
+
 	on_scene_1 = true
 	print("About to Stamp Scnes")
-	_stamp_scene.call_deferred(current_scenes[0], DIM_BITS[0])
-	_stamp_scene.call_deferred(current_scenes[1], DIM_BITS[1])
-	_apply_view_masks.call_deferred()
+	_stamp_scene(current_scenes[0], DIM_BITS[0])
+	_stamp_scene(current_scenes[1], DIM_BITS[1])
+	_apply_view_masks()
 	print("About to Make Camera2D Currebt")
 	current_scenes[0].get_node("Camera2D").make_current()
 	if "Level1/Level0-1" in scene1_path:
