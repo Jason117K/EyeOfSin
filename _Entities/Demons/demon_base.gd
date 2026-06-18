@@ -61,6 +61,8 @@ class_name Demon
 
 @onready var preview_nodes := $PreviewNodes
 
+@onready var highlight_circle := $HighlightCircle
+
 var demon_buff_name : String = "None"
 
 var special_description_file : String
@@ -71,6 +73,8 @@ var syn_timer : Timer
 var invulnerable := false 
 var is_shielded := false
 var reduced_damage_percent := 0.0
+
+@onready var hide_highlight_timer : Timer = Timer.new()
 
 # --- State ---
 var area: Area2D
@@ -95,6 +99,7 @@ signal demon_die
 # --- Lifecycle (_ready) ---
 
 func _ready() -> void:
+	highlight_circle.hide()
 	if is_empty:
 		set_process(false)
 		return
@@ -115,6 +120,15 @@ func _ready() -> void:
 	erase_button.hide()
 	
 	spawn_juice_anim.play()
+	
+	hide_highlight_timer.one_shot = true 
+	hide_highlight_timer.autostart = false
+	hide_highlight_timer.wait_time = 6.0
+	hide_highlight_timer.timeout.connect(hide_highlight)
+	add_child(hide_highlight_timer)
+	
+	highlight_circle.visibility_changed.connect(_on_highlight_circle_visibility_changed)
+	Global.notification_bar.show_new_demon_notification.connect(hide_highlight)
 	
 
 func _process(delta: float) -> void:
@@ -373,6 +387,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed && spawn_done:
 		#print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)
+		highlight_circle.show()
 		pass
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
 	# your double-click logic here
@@ -411,9 +426,14 @@ func set_spawn_anim_speed(new_speed_speed: float) -> void:
 
 
 
+func hide_highlight(new_demon_to_highlight : Demon = null)->void:
+	if new_demon_to_highlight != self:
+		highlight_circle.hide()
 
-
-
+func _on_highlight_circle_visibility_changed() -> void:
+	if highlight_circle != null:
+		if highlight_circle.visible == true:
+			hide_highlight_timer.start()
 
 # --- Utilities ---
 

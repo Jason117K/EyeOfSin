@@ -280,3 +280,5 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 script = ExtResource("3_4nnmc")
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]

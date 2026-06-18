@@ -31,6 +31,8 @@ var current_demon: Demon
 var should_hide := false
 var fill_style: StyleBoxFlat
 
+signal show_new_demon_notification(highlighted_demon:Demon)
+
 func _ready() -> void:
 	#print_scene_tree()
 	hide()
@@ -224,11 +226,21 @@ func show_demon_notification() -> void:
 	stats_container.show()
 	speed_panel.hide()
 	notifLabel.show()	
-	hide_bar_timer.start()	
+	hide_bar_timer.start()
+	show_new_demon_notification.emit(current_demon)
 	
 			
-	
-	
-	
-	
-	
+
+
+func _on_hidden() -> void:
+	show_new_demon_notification.emit(null)
+
+
+
+
+
+
+
+
+
+##

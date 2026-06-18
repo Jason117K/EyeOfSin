@@ -3,9 +3,12 @@
 [ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="2_1ds1s"]
 [ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_pyfr7"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_tvvdq"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_u0laq"]
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_l4gaf"]
 [ext_resource type="Script" uid="uid://bmj40cxvi8eq4" path="res://_Entities/Demons/_Wyrm/wyrm_health_component.gd" id="3_pfhft"]
 [ext_resource type="Script" uid="uid://d271ya50mdmf5" path="res://_Entities/Demons/_Wyrm/Wyrm.gd" id="4"]
 [ext_resource type="Script" uid="uid://bohqvho50f566" path="res://_Entities/Demons/_Wyrm/wyrm_animated_sprite_component.gd" id="4_3fijn"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_ds7ka"]
 [ext_resource type="PackedScene" uid="uid://ktsfsnvej37r" path="res://_Entities/Demons/_Wyrm/LaserShootComponent.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://bkl4jk3ay1vo7" path="res://_Entities/Demons/_Wyrm/WyrmUpdated_Anims-Sheet.png" id="6_44800"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="6_l4gaf"]
@@ -28,6 +31,17 @@
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_kf5mr"]
 [ext_resource type="PackedScene" uid="uid://dhs0pt2nvnv00" path="res://_Entities/SynAbility/syn_shield_ability.tscn" id="26_1ds1s"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="28_b5dvj"]
+
+[sub_resource type="Curve2D" id="Curve2D_fuqq8"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 11.618878, 21.03726, 0, 11.618878, 0, -11.618878, 0, 0, 21.03726, 0, 11.618878, 0, -11.618878, -21.03726, 0, -11.618878, 0, 11.618878, 0, 0, -21.03726, 0, -11.618878, 0, 0, 21.03726, 0)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_r0h8a"]
+resource_local_to_scene = true
+script = ExtResource("4_ds7ka")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7eju"]
 atlas = ExtResource("2_pyfr7")
@@ -1151,6 +1165,35 @@ bounce_elasticity = 0.01
 cost = 125.0
 health = 100.0
 maxHealth = 100.0
+
+[node name="HighlightCircle" type="Node2D" parent="." unique_id=1158230395 node_paths=PackedStringArray("polygon", "line")]
+position = Vector2(0, 11.999999)
+scale = Vector2(0.705, 0.145)
+script = ExtResource("2_u0laq")
+polygon = NodePath("Fill")
+stroke_color = Color(1, 0, 0, 1)
+stroke_width = 3.0
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_fuqq8")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_r0h8a")
+shape_type = 2
+size = Vector2(42.07452, 42.07452)
+rx = 21.03726
+ry = 21.03726
+
+[node name="Fill" type="Polygon2D" parent="HighlightCircle" unique_id=1996205219]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(21.03726, 0, 20.92865, 2.1509902, 20.60987, 4.239834, 20.091494, 6.2559566, 19.384094, 8.188786, 18.498241, 10.027749, 17.444511, 11.762272, 16.233477, 13.381784, 14.87571, 14.87571, 13.3817835, 16.233477, 11.762273, 17.44451, 10.02775, 18.498241, 8.188786, 19.384094, 6.2559566, 20.091494, 4.239834, 20.60987, 2.1509905, 20.92865, 0, 21.03726, -2.1509902, 20.92865, -4.239834, 20.60987, -6.2559566, 20.091494, -8.188786, 19.384094, -10.027749, 18.498241, -11.762272, 17.444511, -13.381784, 16.233477, -14.87571, 14.87571, -16.233477, 13.3817835, -17.44451, 11.762273, -18.498241, 10.02775, -19.384094, 8.188786, -20.091494, 6.2559566, -20.60987, 4.239834, -20.92865, 2.1509905, -21.03726, 0, -20.92865, -2.1509902, -20.60987, -4.239834, -20.091494, -6.2559566, -19.384094, -8.188786, -18.498241, -10.027749, -17.444511, -11.762272, -16.233477, -13.381784, -14.87571, -14.87571, -13.3817835, -16.233477, -11.762273, -17.44451, -10.02775, -18.498241, -8.188786, -19.384094, -6.2559566, -20.091494, -4.239834, -20.60987, -2.1509905, -20.92865, 0, -21.03726, 2.1509902, -20.92865, 4.239834, -20.60987, 6.2559566, -20.091494, 8.188786, -19.384094, 10.027749, -18.498241, 11.762272, -17.444511, 13.381784, -16.233477, 14.87571, -14.87571, 16.233477, -13.3817835, 17.44451, -11.762273, 18.498241, -10.02775, 19.384094, -8.188786, 20.091494, -6.2559566, 20.60987, -4.239834, 20.92865, -2.1509905)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="HighlightCircle" unique_id=1976402685]
+points = PackedVector2Array(21.03726, 0, 20.92865, 2.1509902, 20.60987, 4.239834, 20.091494, 6.2559566, 19.384094, 8.188786, 18.498241, 10.027749, 17.444511, 11.762272, 16.233477, 13.381784, 14.87571, 14.87571, 13.3817835, 16.233477, 11.762273, 17.44451, 10.02775, 18.498241, 8.188786, 19.384094, 6.2559566, 20.091494, 4.239834, 20.60987, 2.1509905, 20.92865, 0, 21.03726, -2.1509902, 20.92865, -4.239834, 20.60987, -6.2559566, 20.091494, -8.188786, 19.384094, -10.027749, 18.498241, -11.762272, 17.444511, -13.381784, 16.233477, -14.87571, 14.87571, -16.233477, 13.3817835, -17.44451, 11.762273, -18.498241, 10.02775, -19.384094, 8.188786, -20.091494, 6.2559566, -20.60987, 4.239834, -20.92865, 2.1509905, -21.03726, 0, -20.92865, -2.1509902, -20.60987, -4.239834, -20.091494, -6.2559566, -19.384094, -8.188786, -18.498241, -10.027749, -17.444511, -11.762272, -16.233477, -13.381784, -14.87571, -14.87571, -13.3817835, -16.233477, -11.762273, -17.44451, -10.02775, -18.498241, -8.188786, -19.384094, -6.2559566, -20.091494, -4.239834, -20.60987, -2.1509905, -20.92865, 0, -21.03726, 2.1509902, -20.92865, 4.239834, -20.60987, 6.2559566, -20.091494, 8.188786, -19.384094, 10.027749, -18.498241, 11.762272, -17.444511, 13.381784, -16.233477, 14.87571, -14.87571, 16.233477, -13.3817835, 17.44451, -11.762273, 18.498241, -10.02775, 19.384094, -8.188786, 20.091494, -6.2559566, 20.60987, -4.239834, 20.92865, -2.1509905)
+closed = true
+width = 3.0
+default_color = Color(1, 0, 0, 1)
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=1914990497]
 visible = false

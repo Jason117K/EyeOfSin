@@ -25,6 +25,9 @@
 [ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="23_ereen"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="24_wnqex"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_bpsi6"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="26_linjw"]
+[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="27_6hmpt"]
+[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="28_1pm3a"]
 
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)
@@ -1523,6 +1526,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hmpt"]
 size = Vector2(69, 56)
 
+[sub_resource type="Curve2D" id="Curve2D_fuqq8"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 11.618878, 21.03726, 0, 11.618878, 0, -11.618878, 0, 0, 21.03726, 0, 11.618878, 0, -11.618878, -21.03726, 0, -11.618878, 0, 11.618878, 0, 0, -21.03726, 0, -11.618878, 0, 0, 21.03726, 0)
+}
+point_count = 5
+
+[sub_resource type="Resource" id="Resource_r0h8a"]
+resource_local_to_scene = true
+script = ExtResource("28_1pm3a")
+
 [node name="Empty" type="Area2D" unique_id=422311796 groups=["Plants"]]
 position = Vector2(0, 1)
 script = ExtResource("1_rfapi")
@@ -1662,5 +1676,35 @@ collision_mask = 0
 visible = false
 position = Vector2(-2.5, -11)
 shape = SubResource("RectangleShape2D_6hmpt")
+
+[node name="HighlightCircle" type="Node2D" parent="." unique_id=1514674395 node_paths=PackedStringArray("polygon", "line")]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 11.999999)
+scale = Vector2(0.705, 0.145)
+script = ExtResource("26_linjw")
+polygon = NodePath("Fill")
+stroke_color = Color(1, 0, 0, 1)
+stroke_width = 3.0
+line = NodePath("Stroke")
+curve = SubResource("Curve2D_fuqq8")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_r0h8a")
+shape_type = 2
+size = Vector2(42.07452, 42.07452)
+rx = 21.03726
+ry = 21.03726
+
+[node name="Fill" type="Polygon2D" parent="HighlightCircle" unique_id=1963718846]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(21.03726, 0, 20.92865, 2.1509902, 20.60987, 4.239834, 20.091494, 6.2559566, 19.384094, 8.188786, 18.498241, 10.027749, 17.444511, 11.762272, 16.233477, 13.381784, 14.87571, 14.87571, 13.3817835, 16.233477, 11.762273, 17.44451, 10.02775, 18.498241, 8.188786, 19.384094, 6.2559566, 20.091494, 4.239834, 20.60987, 2.1509905, 20.92865, 0, 21.03726, -2.1509902, 20.92865, -4.239834, 20.60987, -6.2559566, 20.091494, -8.188786, 19.384094, -10.027749, 18.498241, -11.762272, 17.444511, -13.381784, 16.233477, -14.87571, 14.87571, -16.233477, 13.3817835, -17.44451, 11.762273, -18.498241, 10.02775, -19.384094, 8.188786, -20.091494, 6.2559566, -20.60987, 4.239834, -20.92865, 2.1509905, -21.03726, 0, -20.92865, -2.1509902, -20.60987, -4.239834, -20.091494, -6.2559566, -19.384094, -8.188786, -18.498241, -10.027749, -17.444511, -11.762272, -16.233477, -13.381784, -14.87571, -14.87571, -13.3817835, -16.233477, -11.762273, -17.44451, -10.02775, -18.498241, -8.188786, -19.384094, -6.2559566, -20.091494, -4.239834, -20.60987, -2.1509905, -20.92865, 0, -21.03726, 2.1509902, -20.92865, 4.239834, -20.60987, 6.2559566, -20.091494, 8.188786, -19.384094, 10.027749, -18.498241, 11.762272, -17.444511, 13.381784, -16.233477, 14.87571, -14.87571, 16.233477, -13.3817835, 17.44451, -11.762273, 18.498241, -10.02775, 19.384094, -8.188786, 20.091494, -6.2559566, 20.60987, -4.239834, 20.92865, -2.1509905)
+metadata/_edit_lock_ = true
+
+[node name="Stroke" type="Line2D" parent="HighlightCircle" unique_id=1552771633]
+points = PackedVector2Array(21.03726, 0, 20.92865, 2.1509902, 20.60987, 4.239834, 20.091494, 6.2559566, 19.384094, 8.188786, 18.498241, 10.027749, 17.444511, 11.762272, 16.233477, 13.381784, 14.87571, 14.87571, 13.3817835, 16.233477, 11.762273, 17.44451, 10.02775, 18.498241, 8.188786, 19.384094, 6.2559566, 20.091494, 4.239834, 20.60987, 2.1509905, 20.92865, 0, 21.03726, -2.1509902, 20.92865, -4.239834, 20.60987, -6.2559566, 20.091494, -8.188786, 19.384094, -10.027749, 18.498241, -11.762272, 17.444511, -13.381784, 16.233477, -14.87571, 14.87571, -16.233477, 13.3817835, -17.44451, 11.762273, -18.498241, 10.02775, -19.384094, 8.188786, -20.091494, 6.2559566, -20.60987, 4.239834, -20.92865, 2.1509905, -21.03726, 0, -20.92865, -2.1509902, -20.60987, -4.239834, -20.091494, -6.2559566, -19.384094, -8.188786, -18.498241, -10.027749, -17.444511, -11.762272, -16.233477, -13.381784, -14.87571, -14.87571, -13.3817835, -16.233477, -11.762273, -17.44451, -10.02775, -18.498241, -8.188786, -19.384094, -6.2559566, -20.091494, -4.239834, -20.60987, -2.1509905, -20.92865, 0, -21.03726, 2.1509902, -20.92865, 4.239834, -20.60987, 6.2559566, -20.091494, 8.188786, -19.384094, 10.027749, -18.498241, 11.762272, -17.444511, 13.381784, -16.233477, 14.87571, -14.87571, 16.233477, -13.3817835, 17.44451, -11.762273, 18.498241, -10.02775, 19.384094, -8.188786, 20.091494, -6.2559566, 20.60987, -4.239834, 20.92865, -2.1509905)
+closed = true
+width = 3.0
+default_color = Color(1, 0, 0, 0)
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
 
 [editable path="BuffNodesComponent"]
