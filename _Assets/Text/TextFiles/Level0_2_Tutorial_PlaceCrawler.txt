@@ -1,4 +1,3 @@
-All DEMONS have BLOOD BUFF zones indicated by the red squares around them when placing them.
-When a Demon is placed in the BLOOD BUFF zone of another Demon, it transforms. Try it now
-
-Place the SPYDER directly BEHIND (to the left of) the Eye.
+[color=red]ALL DEMONS[/color] can [color=red]BLOOD BUFF[/color] other Demons. 
+Blood Buffs are activated by placing a Demon in the red [color=red]BLOOD BUFF[/color] ZONE of another.
+Summon the [color=red]CRAWLER[/color] in the [color=red]BLOOD BUFF[/color] ZONE of the [color=red]OCCULUM[/color].

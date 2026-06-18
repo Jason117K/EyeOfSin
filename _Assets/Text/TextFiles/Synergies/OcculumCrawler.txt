@@ -1,2 +1,2 @@
-Produces blood faster 
 Blood becomes an auto-targeting projectile on pickup, damaging the highest health enemy in range
+Produces blood faster 

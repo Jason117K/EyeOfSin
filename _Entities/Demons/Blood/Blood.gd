@@ -21,8 +21,8 @@ var blood_spell := preload("res://_Entities/Demons/_Occulum/sword_blood_spell.ts
 var crawlerBuff := false
 var wyrmBuff := false
 var hiveBuff := false
-var demons_to_heal: Array = []
-var nearby_zombies: Array = []
+var demons_to_heal: Array = [Demon]
+var nearby_zombies: Array = [Zombie]
 var temp_zombie_container: Array = []
 var current_zombie_target: Zombie
 var dissappear_time := 0.75
@@ -215,7 +215,7 @@ func clear_heal_aoe() -> void:
 	demons_to_heal.clear()
 
 func _on_auto_pick_up_timer_timeout() -> void:
-	print("Wait Time When Gen Was ", auto_pickup_timer.wait_time)
+	#print("Wait Time When Gen Was ", auto_pickup_timer.wait_time)
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
 		BloodValue = BloodValue / 2.0

@@ -1,2 +1,2 @@
-Increased Health
 Increased Damage When Being Attacked 
+Increased Health

@@ -56,6 +56,9 @@ func _ready() -> void:
 	buzz_audio = AudioManager.create_return_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 	# --- Demon-specific collision ---
 	_init_demon_collision()
+	
+	all_synergies = Global.all_hive_synergies
+	special_description_file = get_special_description_file(all_synergies,"Base")
 
 func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):
@@ -174,11 +177,6 @@ func _cleanup() -> void:
 		buzz_audio.queue_free()
 	super()
 
-func get_demon_icon() -> CompressedTexture2D:
-	return Global.hive_icon
-
-func get_special_description() -> String:
-	return Global.hive_special_description
 
 
 # --- Preview ---

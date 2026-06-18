@@ -91,6 +91,9 @@ func _ready() -> void:
 	shootTimer.wait_time = laser_cooldown
 	
 	hide_old_preview()
+
+	all_synergies = Global.all_wyrm_synergies
+	special_description_file = get_special_description_file(all_synergies,"Base")
 	
 
 func hide_old_preview()->void:
@@ -238,11 +241,8 @@ func _process(delta: float) -> void:
 	sprite.position.y = initial_sprite_position.y + y_offset
 	sprite.scale = Vector2(scale_x, scale_y)
 
-func get_demon_icon()->CompressedTexture2D:
-	return Global.wyrm_icon
-	
-func get_special_description()->String:
-	return Global.wyrm_special_description
+
+
 	
 func baal_buff()->void:
 	super()

@@ -23,6 +23,7 @@ var second_shot_timer: Timer
 var spiderling_timer: Timer
 var canAttackSetTrueOnce: bool = false
 
+
 # --- Component References ---
 @onready var attack_ray: ShapeCast2D = $DMG_RayCast2D
 @onready var projectile_shoot_component := $ProjectileShootComponent
@@ -38,6 +39,10 @@ func _ready() -> void:
 	super()
 	crawler_buff_unlocked.connect(Global.unlock_buff)
 	hide_old_preview()
+	
+	all_synergies = Global.all_crawler_synergies
+	special_description_file = get_special_description_file(all_synergies,"Base")
+
 	
 	if "Level0-1" in Global.game_controller.get_active_dimension().name:
 		$PreviewNodes/BloodTileFront.modulate = Color(1,1,1,0)
@@ -87,6 +92,7 @@ func receive_buff(newDemon) -> void:
 		projectile_shoot_component.receive_buff(demonName)
 		match demonName:
 			"Occulum":
+				
 				_increase_range()
 			"Crawler":
 				pass
@@ -107,6 +113,7 @@ func receive_buff(newDemon) -> void:
 					$"../Arm".visible = true 
 					$"../Arm2".visible = true 
 		
+
 
 func debuff() -> void:
 	#animSpriteComp.debuff()
@@ -163,14 +170,8 @@ func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
 
 	
-func get_demon_icon()->CompressedTexture2D:
-	return Global.crawler_icon
-	
-func get_special_description()->String:
-	var file := FileAccess.open(Global.crawler_special_description, FileAccess.READ)
-	var newText :String = file.get_as_text()
-	return newText
-	
+
+
 	
 	
 func _increase_range()->void:

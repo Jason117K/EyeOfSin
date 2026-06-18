@@ -37,6 +37,9 @@ func _ready() -> void:
 
 	
 	hide_old_preview()
+	
+	all_synergies = Global.all_spinalocculum_synergies
+	special_description_file = get_special_description_file(all_synergies,"Base")
 
 func hide_old_preview()->void:
 	$PreviewNodes/PreviewCard.visible = false 
@@ -112,12 +115,12 @@ func unlock_new_buff(demonName)->void:
 					spinal_occulum_buff_unlocked.emit(Global.maw_spinal_occulum_synergy)
 					
 					
-func get_demon_icon() -> CompressedTexture2D:
-	return Global.spinal_occulum_icon
 
-func get_special_description() -> String:
-	return Global.spinal_occulum_special_description
 
+
+
+
+	
 
 # --- Death ---
 

@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="15_mrska"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_0lph1"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_uc6ka"]
-[ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_dvieu"]
 [ext_resource type="Texture2D" uid="uid://c3w4al5u5k08x" path="res://_Entities/Demons/_Wyrm/Wyrm.png" id="19_mnbks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k06w6"]
@@ -3061,6 +3060,14 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_gxth4")
 sources/1 = SubResource("TileSetAtlasSource_5yecy")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfd1s"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60609996, 0.261, 0.87, 0)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_47ae5"]
 atlas = ExtResource("19_mnbks")
 region = Rect2(0, 0, 32, 32)
@@ -3125,10 +3132,10 @@ modulate = Color(3, 3, 3, 1)
 tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQA=")
 tile_set = SubResource("TileSet_gtfm1")
 
-[node name="Panel" type="Panel" parent="." unique_id=1551104587]
+[node name="Panel" type="PanelContainer" parent="." unique_id=194252018]
 custom_minimum_size = Vector2(200, 160)
 layout_mode = 2
-theme_override_styles/panel = ExtResource("18_dvieu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dfd1s")
 
 [node name="Occulum" type="AnimatedSprite2D" parent="Panel" unique_id=364899820]
 position = Vector2(98, 83)

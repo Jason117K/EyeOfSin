@@ -143,7 +143,7 @@ func _on_Area2D_mouse_entered() -> void:
 		print($Area2D, " was mouse EARLY RETURN entered ", get_parent().get_parent().get_parent())
 		print($Area2D, " input pickable was set to ", $Area2D.input_pickable)
 		return 
-	print($Area2D, " was mouse entered ", get_parent().get_parent().get_parent())
+	#print($Area2D, " was mouse entered ", get_parent().get_parent().get_parent())
 	reset_panel_size()
 	hover_over_preview.emit()
 	if _preview_wave_index < 0 or not $PreviewSprite.visible:
@@ -259,14 +259,14 @@ func set_preview_lead_time(new_preview_lead_time:float) -> void:
 	
 func set_detect_mouse(detection_enabled:bool)->void:
 	if detection_enabled:
-		print(self, " Enable detection for ", get_parent().get_parent().get_parent())
+		#print(self, " Enable detection for ", get_parent().get_parent().get_parent())
 		$Area2D.input_pickable = true
 		start_game_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		can_click = true
 
 		
 	else:
-		print(self, " Disable detection for ", get_parent().get_parent().get_parent())
+		#print(self, " Disable detection for ", get_parent().get_parent().get_parent())
 		$Area2D.input_pickable = false
 		start_game_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		can_click = false

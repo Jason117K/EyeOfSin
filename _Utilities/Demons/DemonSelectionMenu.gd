@@ -69,7 +69,7 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var HeartButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 @onready var PortalButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 
-@onready var all_demon_buttons := [OcculumButton,SpinalOcculumButton,
+@onready var all_demon_buttons :Array[TextureButton]= [OcculumButton,SpinalOcculumButton,
 							WyrmButton,MawButton,HiveButton,
 							CrawlerButton]
 
@@ -94,6 +94,7 @@ const MAX_SHADOW_OFFSET := 8.0
 @export var highlight_border_color: Color = Color.RED
 
 var doubleSpeed := true
+var can_click : bool = true 
 
 func _ready() -> void:
 	is_alt = get_parent().isGreenDimension
@@ -145,10 +146,33 @@ func _ready() -> void:
 func reset_panel_size()->void:
 	panelContainer.reset_size()
 	
+func block_clicks()->void:
+	pause_button.can_click = false 
+	can_click = false
+
+func unblock_clicks()->void:
+	pause_button.can_click = true 
+	can_click = true 
+	
+func adjust_highlights(blood_amount:int)->void:
+	var button_label : Control 
+	for button in all_demon_buttons:
+		button_label = button.get_parent().get_child(1)
+		#print("Button is ", button)
+		#print("Button parent is ", button.get_parent())
+		#print("Button Label is ", button_label,button_label.name)
+		if button.visible == true && button.get_parent().visible == true:
+			if blood_amount < int(button_label.text):
+				button.dim()
+			else:
+				button.brighten()
 
 # Handle Deselection
 func _input(event:InputEvent) -> void:
-
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			deselect_demon()
+			
 	if event is InputEventKey and event.pressed:
 		#print("Key Pressed")
 		if event.keycode == KEY_X:
@@ -495,7 +519,7 @@ func stop_glow_pulse(button: TextureButton) -> void:
 		button.remove_meta("highlight_panel")
 	if button.get_child(0) != null:
 		if button.get_child(0).name == "HighlightPanel":
-			print("Going to queue free button highlight : ", button.get_child(0))
+			#print("Going to queue free button highlight : ", button.get_child(0))
 			button.get_child(0).queue_free()
 			pass
 		
@@ -557,13 +581,14 @@ func _on_open_demon_codex_button_pressed() -> void:
 
 
 func _on_world_swap_button_pressed() -> void:
-	Global.hide_notification_bar()
-	if canSwapScenes:
-	#	print("Can Swap Scenes is ", canSwapScenes)
-		#Global.game_controller.swap_scenes()
-		Global.swap_scenes()
-	else:
-		print("Can Swap Scenes is false")
+	if can_click:
+		Global.hide_notification_bar()
+		if canSwapScenes:
+		#	print("Can Swap Scenes is ", canSwapScenes)
+			#Global.game_controller.swap_scenes()
+			Global.swap_scenes()
+		else:
+			print("Can Swap Scenes is false")
 
 
 func _on_pip_toggle_button_pressed() -> void:
@@ -571,22 +596,23 @@ func _on_pip_toggle_button_pressed() -> void:
 
 
 func _on_codex_button_pressed() -> void:
-	Global.hide_notification_bar()
-	codex_clicked.emit()
-	Global.game_controller.change_scene_with_pause("res://_UI/LoreBooks/lore_book_opener.tscn")
+	if can_click:
+		Global.hide_notification_bar()
+		codex_clicked.emit()
+		Global.game_controller.change_scene_with_pause("res://_UI/LoreBooks/lore_book_opener.tscn")
 
 
 func _on_fast_forward_pressed() -> void:
-	
-	if doubleSpeed : 
-		add_pulsing_button_highlight(fastForwardButton,false)
-		Engine.time_scale = 2
-		doubleSpeed = false
-	else:
-		stop_glow_pulse(fastForwardButton)
-		remove_button_highlight(fastForwardButton)
-		Engine.time_scale = 1
-		doubleSpeed = true
+	if can_click:
+		if doubleSpeed : 
+			add_pulsing_button_highlight(fastForwardButton,false)
+			Engine.time_scale = 2
+			doubleSpeed = false
+		else:
+			stop_glow_pulse(fastForwardButton)
+			remove_button_highlight(fastForwardButton)
+			Engine.time_scale = 1
+			doubleSpeed = true
 
 
 func _on_heart_button_pressed() -> void:

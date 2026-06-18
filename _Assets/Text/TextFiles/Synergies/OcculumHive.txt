@@ -1,3 +1,2 @@
+Blood heals demons behind on pickup
 Occulum has more health, produces slightly blood faster.
-Upgraded 
-- Blood heals demons behind on pickup

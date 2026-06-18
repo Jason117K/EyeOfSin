@@ -20,10 +20,19 @@ var demon_nine_patch_texture := preload("res://_Entities/Demons/Cards/Empty_Disp
 @onready var visualTutorialVisual: CenterContainer = $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox/VisualTutorialVisual
 @onready var visualTutorialVisualParent := $VisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialMarginContainer/VisualTutorialHBox
 @onready var countdown_timer : Timer = $CountdownTimer
+
+@onready var demon_visual_tutorial_vbox_container := $DemonVisualTutorialVBox
+@onready var demon_visual_tutorial_visual := $DemonVisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialVBox/VisualTutorialVisual
+@onready var demon_visual_tutorial_parent := $DemonVisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialVBox
+@onready var demon_visual_tutorial_button := $DemonVisualTutorialVBox/PanelContainer/MarginContainer/DemonVisualTutorialUnderstoodButton
+@onready var demon_visual_tutorial_panel_container := $DemonVisualTutorialVBox/VisualTutorialPanelContainer
+@onready var demon_visual_tutorial_label := $DemonVisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialVBox/VisualTutorialLabel
+@onready var demon_title_label := $DemonVisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialVBox/DemonTitle
+
 #@onready var blockInputPanel := $BlockInput
 
-@export var max_basic_tutorial_characters := 100
-@export var small_basic_tutorial_text := 16
+@export var max_basic_tutorial_characters := 200
+@export var small_basic_tutorial_text := 22
 @export var large_basic_tutorial_text := 32
 @export var max_visual_tutorial_characters := 200
 @export var small_visual_tutorial_text := 20
@@ -43,8 +52,9 @@ signal ToolTipHid
 func _ready() -> void:
 	countdown_timer.timeout.connect(hide_self)
 	countdown_timer.wait_time = tooltip_dissappear_wait_time
-	print("HIDEEE")
+	print("HIDEEE Ready")
 	hide()
+	demon_visual_tutorial_vbox_container.hide()
 	if not basicTutorialButton.pressed.is_connected(_on_basic_tutorial_understood_button_pressed):
 		basicTutorialButton.pressed.connect(_on_basic_tutorial_understood_button_pressed)
 	if not visualTutorialButton.pressed.is_connected(_on_visual_tutorial_understood_button_pressed):
@@ -92,7 +102,7 @@ func hide_basic_tutorial_button() -> void:
 	#basicTutorialVbox.hide()
 		
 func _on_basic_tutorial_understood_button_pressed() -> void:
-	print("HIDEEE")
+	print("HIDEEE Understood Bu")
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
@@ -115,16 +125,32 @@ func set_visual_tutorial_text(newFile: String, show_button: bool = true) -> void
 	else:
 		visualTutorialLabel.add_theme_font_size_override("normal_font_size", large_visual_tutorial_text)
 	if show_button:
-		#blockInputPanel.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
 		visualTutorialButton.show()
-		#visual_tutorial_button_nine_patch.show()
-		print(visualTutorialButton.global_position)
-		print(visualTutorialButton.position)
-		#visual_tutorial_button_nine_patch.position = visualTutorialButton.global_position
-		pass
 	else:
 		visualTutorialButton.hide()
-		#visual_tutorial_button_nine_patch.hide()
+	
+func set_visual_demon_tutorial_text(newFile: String, show_button: bool = true, demon_title : String = "") -> void:
+	show()
+	basicTutorialMessageContainer.visible = false
+	demon_visual_tutorial_vbox_container.visible = true
+	demon_title_label.text = demon_title
+
+	var file := FileAccess.open(newFile, FileAccess.READ)
+	var newText := file.get_as_text()
+	file.close()
+	
+	demon_visual_tutorial_label.text = newText
+	char_count = newText.length()
+	get_tree().paused = true
+	if char_count > max_visual_tutorial_characters:
+		demon_visual_tutorial_label.add_theme_font_size_override("normal_font_size", small_visual_tutorial_text)
+	else:
+		demon_visual_tutorial_label.add_theme_font_size_override("normal_font_size", large_visual_tutorial_text)
+	if show_button:
+		demon_visual_tutorial_button.show()
+	else:
+		demon_visual_tutorial_button.hide()
+			
 		
 func set_modulate_invis()->void:
 	#print("SET INVIS")
@@ -141,32 +167,55 @@ func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = 
 	visualTutorialVisual = newVisual
 	if show_button:
 		visualTutorialButton.show()
-		pass
 	else:
 		visualTutorialButton.hide()	
 	visualTutorialContainer.position = visualTutorialContainer.position + location
-	
-	##visual_tutorial_nine_patch.show()
 	if zombie_visual:
 		visual_tutorial_panel_container.get_theme_stylebox("panel").texture = zombie_nine_patch_texture
-		#pass
-		#
-		##visual_tutorial_nine_patch.custom_minimum_size = visual_tutorial_panel_container.size
-		#
-		##visual_tutorial_nine_patch.texture = zombie_nine_patch_texture 
 	else:
-		#visual_tutorial_nine_patch.custom_minimum_size = visual_tutorial_panel_container.size
 		visual_tutorial_panel_container.get_theme_stylebox("panel").texture = demon_nine_patch_texture 
-	#visual_tutorial_nine_patch.position = visual_tutorial_panel_container.global_position + Vector2(35,0)
+
+func set_visual_demon_tutorial_visual(newVisual: CenterContainer, show_button: bool = true, location : Vector2 = Vector2(0,0)) -> void:
+	demon_visual_tutorial_parent.remove_child(visualTutorialVisual)
+	demon_visual_tutorial_visual.queue_free()
+	demon_visual_tutorial_parent.add_child(newVisual)
+	demon_visual_tutorial_parent.move_child(newVisual, index)
+	demon_visual_tutorial_visual = newVisual
+	demon_visual_tutorial_panel_container.reset_size()
+	if show_button:
+		demon_visual_tutorial_button.show()
+	else:
+		demon_visual_tutorial_button.hide()
+		
+	demon_visual_tutorial_vbox_container.position = demon_visual_tutorial_vbox_container.position + location
+
+func new_demon_visual_minimum_size(new_size:Vector2 = Vector2.ZERO)->void:
+	demon_visual_tutorial_panel_container.custom_minimum_size = new_size
+	demon_visual_tutorial_panel_container.reset_size()
+		
+		
 	
 func _on_visual_tutorial_understood_button_pressed() -> void:
-	print("V Button Pressed")
+	#print("V Button Pressed")
 	Global.is_blocking = false
-	print("HIddDEEE")
+	#print("HIddDEEE")
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
-	#blockInputPanel.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
+
+
+func _on_demon_visual_tutorial_understood_button_pressed() -> void:
+	#print("Demon V Button Pressed")
+	Global.is_blocking = false
+	demon_visual_tutorial_vbox_container.hide()
+	#hide()
+	ToolTipHid.emit()
+	get_tree().paused = false
+
+
+
+
+
 
 func start_basic_countdown()->void:
 	pass
@@ -175,9 +224,7 @@ func start_basic_countdown()->void:
 
 func hide_self()->void:
 	pass
-	#print("Hide Self Called")
-	#_on_basic_tutorial_understood_button_pressed()
-	#ToolTipHid.emit()
+
 
 
 func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
@@ -281,6 +328,6 @@ func stop_glow_pulse(button) -> void:
 		button.remove_meta("highlight_panel")
 	if button.get_child(0) != null:
 		if button.get_child(0).name == "HighlightPanel":
-			print("Going to queue free button highlight : ", button.get_child(0))
+			#print("Going to queue free button highlight : ", button.get_child(0))
 			button.get_child(0).queue_free()
 			pass

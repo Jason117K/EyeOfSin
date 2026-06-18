@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bggspsu4uxjyx"]
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="1_64t84"]
+[ext_resource type="StyleBox" uid="uid://bcfbsgfdihfxu" path="res://_UI/bordered_button_hover.tres" id="1_pgbca"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="2_ii6vk"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="3_xyvyd"]
 [ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://_Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="4_noxxo"]
@@ -17,8 +18,43 @@
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="15_etgn0"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="16_ru3r0"]
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="17_g7wn5"]
-[ext_resource type="StyleBox" uid="uid://c2sbq6afjr8ep" path="res://_Common/StyleBoxes/zombie_tutorial_panel.tres" id="18_yu3u4"]
 [ext_resource type="Texture2D" uid="uid://vdqa4vds4v4x" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle-Sheet.png" id="19_pgbca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4jqa"]
+atlas = ExtResource("19_pgbca")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gflst"]
+atlas = ExtResource("19_pgbca")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl8ha"]
+atlas = ExtResource("19_pgbca")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps86s"]
+atlas = ExtResource("19_pgbca")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0lt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4jqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gflst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl8ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps86s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k06w6"]
 texture = ExtResource("2_ii6vk")
@@ -3061,48 +3097,25 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_gxth4")
 sources/1 = SubResource("TileSetAtlasSource_5yecy")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e4jqa"]
-atlas = ExtResource("19_pgbca")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gflst"]
-atlas = ExtResource("19_pgbca")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wl8ha"]
-atlas = ExtResource("19_pgbca")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ps86s"]
-atlas = ExtResource("19_pgbca")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j0lt8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e4jqa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gflst")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wl8ha")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ps86s")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.0
-}]
-
 [node name="OcculumDemonDemo" type="CenterContainer" unique_id=695442406]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1530123854]
+custom_minimum_size = Vector2(208, 170)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_pgbca")
+
+[node name="Occulum" type="AnimatedSprite2D" parent="Panel" unique_id=364899820]
+z_index = 1
+position = Vector2(98, 83)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_j0lt8")
+autoplay = "default"
+frame_progress = 0.47928375
 
 [node name="BG" type="ColorRect" parent="." unique_id=2120485374]
 clip_children = 1
@@ -3145,17 +3158,5 @@ visible = false
 modulate = Color(3, 3, 3, 1)
 tile_map_data = PackedByteArray("AAAEAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAAAAAQAAQABAAAAAAABAAQAAQACAAAAAAALAAQAAQAAAAIAAAAVAAQAAQAAAAIAAQACAAQAAQAAAAIAAQAJAAQAAQABAAAAAQAIAAQAAQACAAAAAQATAAQAAQACAAAAAQAUAAQAAQABAAAAAQASAAQAAQAAAAIAAQA=")
 tile_set = SubResource("TileSet_gtfm1")
-
-[node name="Panel" type="Panel" parent="." unique_id=1551104587]
-custom_minimum_size = Vector2(200, 160)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("18_yu3u4")
-
-[node name="Occulum" type="AnimatedSprite2D" parent="Panel" unique_id=364899820]
-position = Vector2(98, 83)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_j0lt8")
-autoplay = "default"
-frame_progress = 0.47928375
 
 [editable path="BG/GridManager"]

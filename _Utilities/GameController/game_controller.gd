@@ -144,23 +144,32 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		new1.skip_tutorials = false 
 	
 	
-	
-	scene_container.add_child(new1)
-	new1.show_demon_selection_menu()
+	print(scene1_path)
+	print("About to Add Child New1 ", new1)
+	print("Scene Container is ", scene_container)
+	scene_container.add_child.call_deferred(new1)
+#	scene_container.add_child(new1)
+	print("About to Show Demon Slection Menu")
+	new1.show_demon_selection_menu.call_deferred()
 	
 	current_scene = new1
-	current_scenes.append(new1)
-
+	current_scenes.append.call_deferred(new1)
+	
+	print(scene2_path)
+	
 	var new2 : Control = load(scene2_path).instantiate()
 	new2.visible = true
-	scene_container.add_child(new2)
-	current_scenes.append(new2)
-	new2.hide_demon_selection_menu()
-
+	scene_container.add_child.call_deferred(new2)
+	current_scenes.append.call_deferred(new2)
+	new2.hide_demon_selection_menu.call_deferred()
+	await get_tree().process_frame
+	await get_tree().process_frame
 	on_scene_1 = true
-	_stamp_scene(current_scenes[0], DIM_BITS[0])
-	_stamp_scene(current_scenes[1], DIM_BITS[1])
-	_apply_view_masks()
+	print("About to Stamp Scnes")
+	_stamp_scene.call_deferred(current_scenes[0], DIM_BITS[0])
+	_stamp_scene.call_deferred(current_scenes[1], DIM_BITS[1])
+	_apply_view_masks.call_deferred()
+	print("About to Make Camera2D Currebt")
 	current_scenes[0].get_node("Camera2D").make_current()
 	if "Level1/Level0-1" in scene1_path:
 		pass
@@ -168,7 +177,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		pass
 		#print(scene1_path , "This Should Make Pip Show")
 		#pip.show_pip()
-
+	print(scene1_path)
 	$CurrentScene/WaveManager.call_deferred("_ready")
 	await get_tree().process_frame
 	get_tree().paused = false
@@ -188,7 +197,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	
 	#pause_button.visibility_layer = 0
 	#pause_button.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
-	
+	print(scene1_path)
 	level_switcher.visibility_layer = 0
 	level_switcher.set_visibility_layer_bit(1,true)
 	Global.adjust_ui_layer()
@@ -202,7 +211,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		current_scenes[0].skip_tutorials = true 
 	else:
 		current_scenes[0].skip_tutorials = false 
-
+	print(scene1_path)
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false

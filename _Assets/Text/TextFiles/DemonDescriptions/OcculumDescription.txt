@@ -1,3 +1,1 @@
-Resilient and fast-growing, the Occulum are densely populated and serve both as the primary producers of blood energy on Syn and as spies for Argus. 
-
-- Generates blood energy over time 
+Generates [color=red]BLOOD[/color] over time 

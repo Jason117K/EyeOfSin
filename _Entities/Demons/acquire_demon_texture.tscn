@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://b0pc3q3ku2bkl"]
+
+[ext_resource type="Texture2D" uid="uid://67cehv8dyms8" path="res://_Entities/Demons/_Occulum/AcquireOcculumCard.png" id="1_70737"]
+[ext_resource type="Script" uid="uid://c7t404vaij72g" path="res://_Entities/Demons/acquire_demon_texture.gd" id="1_gfunb"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="2_70737"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkb75"]
+content_margin_top = 34.0
+
+[sub_resource type="Animation" id="Animation_11ixj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Acquire_BG:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.55, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8dbnt"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(688, 175), Vector2(627, 157), Vector2(559, 185)]
+}
+
+[sub_resource type="Animation" id="Animation_dd12e"]
+resource_name = "cover_bg"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Acquire_BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.55, 0, 0, 0), Color(0.55, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_70737"]
+resource_name = "pickup"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(559, 185), Vector2(305, 94)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11ixj"]
+_data = {
+&"RESET": SubResource("Animation_11ixj"),
+&"appear": SubResource("Animation_8dbnt"),
+&"cover_bg": SubResource("Animation_dd12e"),
+&"pickup": SubResource("Animation_70737")
+}
+
+[node name="AcquireDemonTexture" type="TextureButton" unique_id=195454887]
+z_index = 4
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -740.0
+offset_top = -206.0
+offset_right = -692.0
+offset_bottom = -139.99994
+grow_horizontal = 0
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("1_70737")
+texture_pressed = ExtResource("1_70737")
+texture_hover = ExtResource("1_70737")
+script = ExtResource("1_gfunb")
+
+[node name="Acquire_BG" type="ColorRect" parent="." unique_id=1196357648]
+z_index = 5
+layout_mode = 0
+offset_left = -1380.3334
+offset_top = -1273.0
+offset_right = 2724.6665
+offset_bottom = 1881.0
+mouse_filter = 2
+color = Color(0.55, 0, 0, 0)
+
+[node name="DemonTextVbox" type="VBoxContainer" parent="." unique_id=397697162]
+z_index = 2
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 65.5
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="DemonTextVbox" unique_id=839375433]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_70737")
+theme_override_font_sizes/normal_font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jkb75")
+text = "OCCULUM"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="DemonTextVbox" unique_id=1293720685]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.82, 0.82, 0.82, 1)
+theme_override_fonts/normal_font = ExtResource("2_70737")
+theme_override_font_sizes/normal_font_size = 5
+text = "GENERATES
+BLOOD"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="AcquireDemonAnimPlayer" type="AnimationPlayer" parent="." unique_id=1884395655]
+libraries/ = SubResource("AnimationLibrary_11ixj")
+speed_scale = 3.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="animation_finished" from="AcquireDemonAnimPlayer" to="." method="_on_acquire_demon_anim_player_animation_finished"]

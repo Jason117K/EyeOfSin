@@ -82,6 +82,12 @@ var spinal_occulum_special_description := "res://_Entities/Demons/SpecialDescrip
 var hive_special_description := "res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt"
 var maw_special_description := "res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt"
 
+@onready var all_crawler_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Crawler")
+@onready var all_occulum_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Occulum")
+@onready var all_spinalocculum_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Spinal")
+@onready var all_wyrm_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Wyrm")
+@onready var all_hive_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Hive")
+@onready var all_maw_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Maw")
 
 var occulum_icon := preload("res://_Assets/Sprites/Occulum.png")
 var crawler_icon := preload("res://_Assets/Sprites/Crawler.png")
@@ -252,7 +258,23 @@ func reset_all_variables()->void:
 	resetOcculumCount()
 	reset_demon_managers()
 	reset_all_zombies()
+
+func get_files_in_folder(path: String, prefix: String) -> Array[String]:
+	var files: Array[String] = []
+	var dir := DirAccess.open(path)
+	if dir == null:
+		push_error("Could not open directory: %s. Error: %d" % [path, DirAccess.get_open_error()])
+		return files
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.begins_with(prefix):
+			files.append(path.path_join(file_name))
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	return files
 	
+		
 
 func _load_demon_costs() -> void:
 	demon_scenes = {
@@ -507,7 +529,7 @@ func resetOcculumCount() -> void:
 	all_registered_occulum.clear()
 	
 	all_registered_occulum = temp_occulum_array
-	print("All Registered Occulum is ", all_registered_occulum)
+	#print("All Registered Occulum is ", all_registered_occulum)
 	
 	#game_controller.on_scene_1 = true 
 	
@@ -1230,7 +1252,7 @@ func stop_glow_pulse(button) -> void:
 		button.remove_meta("highlight_panel")
 	if button.get_child(0) != null:
 		if button.get_child(0).name == "HighlightPanel":
-			print("Going to queue free button highlight : ", button.get_child(0))
+			#print("Going to queue free button highlight : ", button.get_child(0))
 			button.get_child(0).queue_free()
 			pass
 			

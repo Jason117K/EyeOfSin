@@ -62,7 +62,12 @@ func _physics_process(_delta: float) -> void:
 func set_panel_border_color(panel: PanelContainer, color: Color) -> void:
 	var stylebox := panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 	stylebox.border_color = color
-	panel.add_theme_stylebox_override("panel", stylebox)	
+	panel.add_theme_stylebox_override("panel", stylebox)
+	
+func set_panel_background_color(panel: PanelContainer, color: Color) -> void:
+	var stylebox := panel.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+	stylebox.border_color = color
+	panel.add_theme_stylebox_override("panel", stylebox)
 	
 func set_label_border_color(label: RichTextLabel, color: Color) -> void:
 	var stylebox := label.get_theme_stylebox("normal").duplicate() as StyleBoxFlat
@@ -127,6 +132,7 @@ func set_demon_info(demon: Demon) -> void:
 	set_panel_border_color(speed_panel,Color.RED)
 	set_panel_border_color(damage_panel,Color.RED)
 	set_panel_border_color(icon_panel,Color.RED)
+	set_panel_background_color(icon_panel,Color("380001"))
 
 	set_label_border_color(notifLabel, Color.RED)	
 	fill_style = StyleBoxFlat.new()
@@ -168,6 +174,7 @@ func set_zombie_info(zombie: Zombie) -> void:
 		set_panel_border_color(speed_panel,Color.WEB_PURPLE)
 		set_panel_border_color(damage_panel,Color.WEB_PURPLE)
 		set_panel_border_color(icon_panel,Color.WEB_PURPLE)
+		set_panel_background_color(icon_panel,Color("2e005e"))
 		
 		set_label_border_color(notifLabel, Color.WEB_PURPLE)
 		
@@ -192,6 +199,7 @@ func set_zombie_info(zombie: Zombie) -> void:
 		set_panel_border_color(speed_panel,Color.DARK_GREEN)
 		set_panel_border_color(damage_panel,Color.DARK_GREEN)
 		set_panel_border_color(icon_panel,Color.DARK_GREEN)
+		set_panel_background_color(icon_panel,Color("033800"))
 		
 		set_label_border_color(notifLabel, Color.DARK_GREEN)
 		

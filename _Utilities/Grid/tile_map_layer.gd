@@ -15,6 +15,10 @@ var spawned_rectangles: Array[Node2D] = []
 
 var _shader_material: ShaderMaterial
 
+var available_rectangles : Array 
+
+
+
 func _ready() -> void:
 	#print("Rect Ready Called")
 	#place_rectangles_on_rows(2, 8)
@@ -74,7 +78,17 @@ func set_hue_shift_value(value: float) -> void:
 	
 	
 	
-	
+func highlight_rectangles(cells_to_highlight : Array[Vector2])->void:
+	for rect in spawned_rectangles:
+		for cell_coord in cells_to_highlight:
+			if cell_coord == rect.global_position:
+				rect.set_highlight()
+				
+func unhighlight_rectangles(cells_to_highlight : Array[Vector2])->void:
+	for rect in spawned_rectangles:
+		for cell_coord in cells_to_highlight:
+			if cell_coord == rect.global_position:
+				rect.undo_highlight()	
 	
 ## Places rectangle sprites centered over each tile in the specified row range.
 ## start_row: First row (inclusive)
@@ -99,10 +113,10 @@ func place_rectangles_on_rows(start_row: int, end_row: int) -> void:
 		#print("Spawn Rectzzzzzzttt")
 		if cell_coords.y >= start_row and cell_coords.y <= end_row:
 			#print("Spawn Recttttppppp")
+			available_rectangles.append(cell_coords)
 			_spawn_rectangle_at_cell(cell_coords)
 			
-	#print("All Rectangles Should be placed on rows")			
-	## Spawns a single rectangle centered on the given tile cell
+
 func _spawn_rectangle_at_cell(cell_coords: Vector2i) -> void:
 #	print("Spawn Rectttt")
 	var rect_instance: Node2D = rectangle_scene.instantiate()

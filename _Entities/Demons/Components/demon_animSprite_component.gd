@@ -14,7 +14,7 @@ var demon: Demon
 var currentAnim := "idle"
 var currentAttackAnim := "attack"
 var spawnAnimDone := false
-
+@onready var current_icon :Texture2D = sprite_frames.get_frame_texture(currentAnim, 0)
 var anim_spawn_speed_mult := 1
 var default_anim_speed_scale := 1
 
@@ -73,6 +73,7 @@ func receive_buff(new_form : String) -> void:
 			currentAttackAnim = "attack_Occulum"
 			#animation = "idle_Occulum"
 			animation = "spawn"
+			current_icon = sprite_frames.get_frame_texture(currentAnim, 0)
 		"Crawler":
 			currentAnim = "idle_Crawler"
 			currentAttackAnim = "attack_Crawler"
@@ -81,26 +82,31 @@ func receive_buff(new_form : String) -> void:
 				#
 				#$"../Webs".visible = true 
 			animation = "spawn"
+			current_icon = sprite_frames.get_frame_texture(currentAnim, 0)
 		"SpinalOcculum" :
 			currentAnim = "idle_SpinalOcculum"
 			currentAttackAnim = "attack_SpinalOcculum"
 			#animation = "idle_SpinalOcculum"
 			animation = "spawn"
+			current_icon = sprite_frames.get_frame_texture(currentAnim, 0)
 		"Wyrm":
 			currentAnim = "idle_Wyrm"
 			currentAttackAnim = "attack_Wyrm"
 			#animation = "idle_Wyrm"
 			animation = "spawn"
+			current_icon = sprite_frames.get_frame_texture(currentAnim, 0)
 		"Hive":
 			currentAnim = "idle_Hive"
 			currentAttackAnim = "attack_Hive"
 			#animation = "idle_Wasp"
 			animation = "spawn"
+			current_icon = sprite_frames.get_frame_texture(currentAnim, 0)
 		"Maw":
 			currentAnim = "idle_Maw"
 			currentAttackAnim = "attack_Maw"
 			#animation = "idle_Maw"
 			animation = "spawn"
+			current_icon = sprite_frames.get_frame_texture(currentAnim, 0)
 			#if $"../Arm" != null:
 				#$"../Arm".visible = true 
 				#$"../Arm2".visible = true 

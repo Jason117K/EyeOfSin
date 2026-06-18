@@ -1,8 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bi3ons7l4sy04"]
 
-[ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://_Entities/Demons/_Crawler/RedSpider-Sheet.png" id="1_0l1pg"]
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://_Entities/Demons/_Crawler/RedSpider-Sheet.png" id="1_ar0v1"]
-
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcumy"]
 atlas = ExtResource("1_ar0v1")
@@ -21,19 +19,19 @@ atlas = ExtResource("1_ar0v1")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ar0v1"]
-atlas = ExtResource("1_0l1pg")
+atlas = ExtResource("1_ar0v1")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_87n4f"]
-atlas = ExtResource("1_0l1pg")
+atlas = ExtResource("1_ar0v1")
 region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7ted"]
-atlas = ExtResource("1_0l1pg")
+atlas = ExtResource("1_ar0v1")
 region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clqot"]
-atlas = ExtResource("1_0l1pg")
+atlas = ExtResource("1_ar0v1")
 region = Rect2(120, 0, 40, 40)
 
 [resource]

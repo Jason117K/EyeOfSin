@@ -61,6 +61,9 @@ func _ready() -> void:
 	# --- Demon-specific collision ---
 	_init_demon_collision()
 	#print("Tentacle Is Active Num ", GlobalTentacleManager.get_active_arm_count())
+	
+	all_synergies = Global.all_maw_synergies
+	special_description_file = get_special_description_file(all_synergies,"Base")
 
 func _init_demon_collision() -> void:
 	if self.is_in_group("Green"):
@@ -472,14 +475,9 @@ func show_tentacles() -> void:
 func get_out_of_place_nodes() -> Array:
 	return [$DetectionComponent, $CollisionShape2D, $PreviewNodes]
 
-func get_demon_icon()->CompressedTexture2D:
-	return Global.maw_icon
+
 	
-func get_special_description()->String:
-	return Global.maw_special_description
-	
-	
-	
+
 # --- Preview ---
 
 func _on_mouse_entered() -> void:

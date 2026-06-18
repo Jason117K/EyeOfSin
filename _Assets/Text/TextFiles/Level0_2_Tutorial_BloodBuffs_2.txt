@@ -1,3 +1,4 @@
-SYNERGY UNLOCKED: Eye -> Spyder
-
-- Spyder projectiles now generate bloody on hit  
+- Crawler projectiles now generate [color=red]BLOOD[/color] on [color=red]HIT[/color]
+- Webbed enemies now give [color=red]BLOOD[/color] on [color=red]DEATH[/color]  
+- [color=red]RANGE INCREASED[/color]
+- [color=red]DAMAGE INCREASED[/color]

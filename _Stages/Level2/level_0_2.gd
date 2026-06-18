@@ -3,8 +3,8 @@ extends LevelTemplate
 
 # Preloaded demo scenes
 var hive_wyrm_buff_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/wyrm_spine_buff.tscn")
-var crawler_occulum_buff_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_crawler_buff.tscn")
-var occulum_crawler_buff_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/crawler_occulum_buff.tscn")
+var crawler_occulum_buff_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/crawler_occulum_buff.tscn")
+var occulum_crawler_buff_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/occulum_crawler_buff.tscn")
 var buff_demo_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/blood_buff_demo.tscn")
 var buckethead_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
 
@@ -22,7 +22,8 @@ var level03Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
 var tutorial_place_crawler := "res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceCrawler.txt"
 
 # Tutorial tracking
-var tutorial_occulum = null
+var tutorial_occulum : Demon = null
+var tutorial_crawler : Demon = null 
 var waiting_for_blood := false
 var bucketHeadExplained := false
 var blood_before_pickup := 0
@@ -127,7 +128,7 @@ func _ready() -> void:
 
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
-	print("Crawler Button at ready is : ", crawler_button)
+	#print("Crawler Button at ready is : ", crawler_button)
 	Global.hide_ui_layer()
 	if debug or skip_tutorials:
 		finish_ready()
@@ -183,13 +184,17 @@ func _input(event: InputEvent) -> void:
 #region Step Entry Functions (same sequential order as definitions above)
 
 func _start_explain_occulum() -> void:
-	print("Explain Occulum Demon")
+	print("Start Explain Occulum")
+	demonSelectionMenu.block_clicks()
 	Global.hide_notification_bar()
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_OCCULUM)
-	toolTips.set_visual_tutorial_visual(occulum_demo_scene.instantiate(),true,Vector2(0,0))
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_OCCULUM,true,"NEW DEMON : OCCULUM")
+	toolTips.set_visual_demon_tutorial_visual(occulum_demo_scene.instantiate(),true,Vector2(0,0))
+	toolTips.new_demon_visual_minimum_size()
 
 
 func _start_force_select_occulum() -> void:
+	print("Start Force Select Occulum")
+	demonSelectionMenu.unblock_clicks()
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_OCCULUM,false)
 
 	#show_only_demon_buttons(["Occulum"])
@@ -197,13 +202,14 @@ func _start_force_select_occulum() -> void:
 	if occulum_glow_added == false:
 		demonSelectionMenu.add_pulsing_button_highlight(occulum_button)
 		occulum_glow_added = true
-	print("Add Glow Pulse B")
+	
 	#show_spotlight_at_node(occulum_button)
 	waveManager.can_start = false
 	demonSelectionMenu.canSwapScenes = false
 
 
 func _start_force_place_occulum() -> void:
+	print("Start Force Place Occulum")
 
 	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_OCCULUM,false)
 	
@@ -213,6 +219,7 @@ func _start_force_place_occulum() -> void:
 
 
 func _start_explain_blood_gen() -> void:
+	print("Start Explain Blood Gen")
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_GEN, false)
 
 	waiting_for_blood = true
@@ -220,12 +227,13 @@ func _start_explain_blood_gen() -> void:
 
 
 func _start_force_select_crawler_after_blood() -> void:
+	print("Start Force Select Crawler After Blood")
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER_AFTER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#show_only_demon_buttons(["Crawler"])
-	print("Crawler Button is now : ", crawler_button)
+	#print("Crawler Button is now : ", crawler_button)
 	demonSelectionMenu.add_pulsing_button_highlight(crawler_button)
-	print("Add Glow Pulse A")
+	#print("Add Glow Pulse A")
 	#show_spotlight_at_node(crawler_button)
 	
 	demonSelectionMenu.canSwapScenes = false
@@ -233,31 +241,42 @@ func _start_force_select_crawler_after_blood() -> void:
 
 
 func _start_force_place_crawler_behind() -> void:
+	print("Start Force Place Crawler Behind")
 	Global.is_blocking = true
-	toolTips.set_visual_tutorial_text(tutorial_place_crawler)
-	toolTips.set_visual_tutorial_visual(buff_demo_scene.instantiate())
+	toolTips.set_visual_demon_tutorial_text(tutorial_place_crawler,true,"NEW ABILITY UNLOCKED : [color=red]BLOOD BUFFS[/color]")
+	toolTips.set_visual_demon_tutorial_visual(buff_demo_scene.instantiate())
+	toolTips.new_demon_visual_minimum_size(Vector2(600,0))
 	
 	#demonSelectionMenu.remove_button_highlight(crawler_button)
 	demonSelectionMenu.stop_glow_pulse(crawler_button)
+	tutorial_occulum.show_buff_preview_nodes()
 
-	var valid_pos := tutorial_occulum_grid_pos - Vector2(32, 0)
-	#TODO Add Highlight
+	var expected_pos_1 :Vector2= tutorial_occulum_grid_pos - Vector2(32, 0)
+	var expected_pos_2 :Vector2= tutorial_occulum_grid_pos - Vector2(64, 0)
+	var expected_pos_array : Array[Vector2] = [expected_pos_1,expected_pos_2]
+	$GameLayer/GridManager/TileMapLayer.highlight_rectangles(expected_pos_array)
 	#show_spotlight_at_position(valid_pos, 0.12)
 
 
 func _start_explain_blood_buffs() -> void:
+	print("Start Explain Blood Buffs")
+	
 	get_tree().paused = true
-	toolTips.set_visual_tutorial_text(TUTORIAL_BLOOD_BUFFS)
-	toolTips.set_visual_tutorial_visual(crawler_occulum_buff_scene.instantiate())
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_BLOOD_BUFFS,true, "SYNERGY UNLOCKED: [color=red]CRAWLEROCCULUM[/color]")
+	toolTips.set_visual_demon_tutorial_visual(crawler_occulum_buff_scene.instantiate())
 
 
 func _start_explain_blood_buffs_2() -> void:
+	print("Start Explain Blood Buffs 2")
 	get_tree().paused = true
-	toolTips.set_visual_tutorial_text(TUTORIAL_BLOOD_BUFFS_2)
-	toolTips.set_visual_tutorial_visual(occulum_crawler_buff_scene.instantiate())
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_BLOOD_BUFFS_2,true,"SYNERGY UNLOCKED: [color=red]OCCULUMCRAWLER[/color]")
+	toolTips.set_visual_demon_tutorial_visual(occulum_crawler_buff_scene.instantiate())
+	tutorial_occulum.hide_buff_preview_nodes()
+	tutorial_crawler.hide_buff_preview_nodes()
 
 
 func _start_wave_1() -> void:
+	print("Start Wave 1")
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 	green_dimension.start_game()
@@ -301,6 +320,8 @@ func _start_force_place_spinalOcculum() -> void:
 
 
 #region Input Filters
+
+
 func _filter_block_keyboard(event: InputEvent) -> void:
 	if event is InputEventKey:
 		get_viewport().set_input_as_handled()
@@ -340,14 +361,14 @@ func _on_tooltip_hidden() -> void:
 			go_to_step("FORCE_SELECT_OCCULUM")
 		"EXPLAIN_BLOOD_BUFFS":
 			get_tree().paused = false
-			print("Advancing Tutorial2 1")
+			#print("Advancing Tutorial2 1")
 			advance_tutorial() # → EXPLAIN_BLOOD_BUFFS_2
 
 		"EXPLAIN_BLOOD_BUFFS_2":
 			get_tree().paused = false
 			#hbox.get_node("WorldSwap").visible = true
 			demonSelectionMenu.get_world_swap_button().show()
-			print("Advancing Tutorial3 1")
+			#print("Advancing Tutorial3 1")
 			advance_tutorial() # → WAVE_1_ACTIVE
 
 		"EXPLAIN_BUCKETHEAD_ZOMBIE":
@@ -361,7 +382,7 @@ func _on_tooltip_hidden() -> void:
 
 func _on_occulum_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_OCCULUM":
-		print("Advancing Tutorial12 1")
+		#print("Advancing Tutorial12 1")
 		advance_tutorial() # → FORCE_PLACE_OCCULUM
 
 
@@ -376,11 +397,11 @@ func _on_occulum_placed(grid_pos: Vector2) -> void:
 	await get_tree().create_timer(0.3).timeout
 
 	var occulums := get_tree().get_nodes_in_group("Demons")
-	print("occulums is ", occulums)
+	#print("occulums is ", occulums)
 	for demon in occulums:
-		print("DEMON IS ", demon)
+		#print("DEMON IS ", demon)
 		if "Occulum" in demon.name:
-			print("OCCULUM FOUND")
+			#print("OCCULUM FOUND")
 			tutorial_occulum = demon
 			break
 
@@ -397,26 +418,28 @@ func _on_occulum_placed(grid_pos: Vector2) -> void:
 			#TODO Add Highlight
 			pass
 			#show_spotlight_at_position(tutorial_blood_instance.global_position, 0.12)
-	print("Advancing Tutorial 222222")
+	#print("Advancing Tutorial 222222")
 #	advance_tutorial() # → EXPLAIN_BLOOD_GENERATION
 
 
 func _on_crawler_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_CRAWLER":
-		print("Advancing7 Tutorial 12222222222222232132323424")
+		#print("Advancing7 Tutorial 12222222222222232132323424")
 		advance_tutorial() # → FORCE_PLACE_CRAWLER_BEHIND
 
 
 func _on_crawler_placed(grid_pos: Vector2) -> void:
+	
 	if get_current_step_name() != "FORCE_PLACE_CRAWLER_BEHIND":
 		print("Current Step Is ", get_current_step_name())
 		return
 	else:
 		print("Current Step Is " , get_current_step_name())
 	if crawler_placed == false:
-		var expected_pos := tutorial_occulum_grid_pos - Vector2(32, 0)
-
-		if grid_pos != expected_pos:
+		var expected_pos_1 := tutorial_occulum_grid_pos - Vector2(32, 0)
+		var expected_pos_2 := tutorial_occulum_grid_pos - Vector2(64, 0)
+	
+		if grid_pos != expected_pos_1 && grid_pos != expected_pos_2:
 			# Invalid placement — delete, refund, show error, let player retry
 			await get_tree().create_timer(0.15).timeout
 			demonManager.clear_space(grid_pos)
@@ -426,14 +449,25 @@ func _on_crawler_placed(grid_pos: Vector2) -> void:
 			#TODO Add Highlight
 			#show_spotlight_at_position(expected_pos, 0.12)
 		else:
-			print("Advancing Tutorial 91")
+			#print("Advancing Tutorial 91")
 			crawler_placed = true
-			advance_tutorial() # → EXPLAIN_BLOOD_BUFFS
+		await get_tree().create_timer(0.3).timeout
+		var crawlers := get_tree().get_nodes_in_group("Demons")
+		#print("Crawler is ", occulums)
+		#print("All CHuhDemons is ", crawlers)
+		for demon in crawlers:
+			#print("Looking for Crawler, DEMON IS ", demon)
+			if demon.name.contains("Crawler"):
+				#print("Crawler demon is ", demon)
+				tutorial_crawler = demon
+				break
+
+		advance_tutorial() # → EXPLAIN_BLOOD_BUFFS
 
 
 func _on_spinalOcculum_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_SPINALOCCULUM":
-		print("Advancing Tutorial 1Nut")
+		#print("Advancing Tutorial 1Nut")
 		advance_tutorial() # → FORCE_PLACE_SPINALOCCULUM
 
 
@@ -465,7 +499,7 @@ func _physics_process(_delta: float) -> void:
 		toolTips.hide()
 		#hide_spotlight()
 		get_tree().paused = false
-		print("Advancing Tutorial 1")
+		#print("Advancing Tutorial 1")
 		advance_tutorial() # → FORCE_SELECT_CRAWLER
 #endregion
 

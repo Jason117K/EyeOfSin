@@ -1,1 +1,1 @@
-Base Spyder
+- Shoots a web projectile that damages and slows the first enemy it contacts

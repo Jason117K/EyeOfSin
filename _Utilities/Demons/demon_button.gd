@@ -15,6 +15,16 @@ func _ready() -> void:
 #	mat.set_shader_parameter("hovering", 0.0)
 	pass
 
+func dim()->void:
+	print("Dim ", self)
+	self.self_modulate = Color("8a8a8a")
+	
+func brighten()->void:
+	print("Brighten ", self)
+	self.self_modulate = Color(1,1,1,1)
+	
+
+
 func _on_mouse_entered() -> void: 
 	hover_target = 1.0
 	if tween_hover and tween_hover.is_running():
@@ -22,8 +32,6 @@ func _on_mouse_entered() -> void:
 		
 	tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween_hover.tween_property(self,"scale",Vector2(1.05,1.05),0.5)
-	
-	
 	
 	
 func _on_mouse_exited() -> void:  

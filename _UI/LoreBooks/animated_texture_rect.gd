@@ -4,7 +4,8 @@ class_name AnimatedTextureRect extends TextureRect
 @export var sprites : SpriteFrames
 @export var current_animation := "gif"
 @export var frame_index := 0
-@export_range(0.0, INF, 0.001) var speed_scale := 1.0
+#@export_range(0.0, INF, 0.001) var speed_scale := 1.0
+var speed_scale :float = 1.0
 @export var auto_play := false
 @export var playing := false
 @export var targetGlowColor: Color
@@ -25,7 +26,7 @@ var uniquePropertyText: String
 
 var refresh_rate := 1.0
 var fps := 30.0
-var frame_delta := 0
+var frame_delta :float = 0
 var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
 var original_hue_shift := -86
 
@@ -72,22 +73,27 @@ func _restart_animation() -> void:
 
 func _process(delta: float) -> void:
 	if sprites == null or playing == false:
-		#print("Early Return")
+		#print("Early Return cos ",sprites,playing)
 		return
 
 
 	if sprites.has_animation(current_animation) == false:
 		playing = false
-		print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
-		print("Available animations:", sprites.get_animation_names())
+		#print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
+		#print("Available animations:", sprites.get_animation_names())
 		return
 		
 	get_animation_data(current_animation)
 	frame_delta += (speed_scale * delta)
 	if frame_delta >= refresh_rate/fps:
-		print("Texture should be ",get_next_frame())
+		#print("Texture should be ",get_next_frame())
 		texture = get_next_frame()
 		frame_delta = 0.0
+	#else:
+		#print("Frame Delta is ",frame_delta )
+		#print("Fps is ", fps)
+		#print("Refresh rate is ", refresh_rate)
+		#print("refresh_rate/fps is ", refresh_rate/fps)
 
 func play(animation_name: String = current_animation) -> void:
 	frame_index = 0
@@ -103,7 +109,7 @@ func get_animation_data(animation) -> void:
 	fps = sprites.get_animation_speed(current_animation)
 	refresh_rate = sprites.get_frame_duration(current_animation, frame_index)
 	
-func get_next_frame():
+func get_next_frame()->Texture2D:
 	frame_index += 1
 	var frame_count := sprites.get_frame_count(current_animation)
 	if frame_index >= frame_count:
@@ -111,6 +117,7 @@ func get_next_frame():
 		#if not sprites.get_animation_loop(current_animation):
 			#playing = false
 	get_animation_data(current_animation)
+	#print("Get next frame should return ", sprites.get_frame_texture(current_animation, frame_index))
 	return sprites.get_frame_texture(current_animation, frame_index)
 	
 func resume() -> void:

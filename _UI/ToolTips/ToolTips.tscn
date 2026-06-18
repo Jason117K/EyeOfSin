@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://cgkc7lr4bmh7r"]
 
 [ext_resource type="Script" uid="uid://cp66bedrctg6b" path="res://_UI/ToolTips/ToolTips.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c1xuf53x1h313" path="res://_Assets/UI/Box.png" id="2_c1ynx"]
 [ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="3_j4vri"]
 [ext_resource type="FontFile" uid="uid://deyk678r085k8" path="res://_Assets/Fonts/Cormorant-Bold.ttf" id="4_53ev6"]
 [ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="4_y3bqs"]
 [ext_resource type="Texture2D" uid="uid://dlxw36x32blc6" path="res://_UI/PurpleCard_WIP.png" id="5_i1eds"]
-[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="6_i1eds"]
 [ext_resource type="PackedScene" uid="uid://cqibbup7wggwi" path="res://_UI/GameDemonstrations/DemonTutorials/maw_crawler_buff.tscn" id="6_imaxi"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="6_m6aj6"]
-[ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="7_qvk3g"]
-[ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="8_x1rij"]
-[ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="9_komxe"]
+[ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="8_nlmqd"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="9_53ev6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3bqs"]
 texture = ExtResource("3_j4vri")
@@ -46,16 +43,13 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="Curve2D" id="Curve2D_bm0xk"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 27.615, 50, 0, 27.615, 0, -27.615, 0, 0, 50, 0, 27.615, 0, -27.615, -50, 0, -27.615, 0, 27.615, 0, 0, -50, 0, -27.615, 0, 0, 50, 0)
-}
-point_count = 5
-
-[sub_resource type="Resource" id="Resource_q07en"]
-resource_local_to_scene = true
-script = ExtResource("8_x1rij")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_53ev6"]
+texture = ExtResource("8_nlmqd")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="ToolTips" type="Control" unique_id=561144166]
 process_mode = 3
@@ -72,7 +66,7 @@ max_basic_tutorial_characters = 115
 tooltip_dissappear_wait_time = 9
 
 [node name="BasicTutorialMessage" type="Control" parent="." unique_id=504267282]
-visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,7 +96,6 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("6_m6aj6")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_y3bqs")
@@ -136,6 +129,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ygqpy")
 text = "UNDERSTOOD"
 
 [node name="VisualTutorialVBox" type="VBoxContainer" parent="." unique_id=771461667]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -224,70 +218,95 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_f4pib")
 text = "UNDERSTOOD"
 
-[node name="BasicZombieNotif" type="Node2D" parent="." unique_id=828084213]
-visible = false
-position = Vector2(50, 85)
-scale = Vector2(0.54, 0.54)
+[node name="DemonVisualTutorialVBox" type="VBoxContainer" parent="." unique_id=1361729839]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.0
+offset_top = -170.5
+offset_right = 359.0
+offset_bottom = 216.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Ellipse2" type="Node2D" parent="BasicZombieNotif" unique_id=150514345 node_paths=PackedStringArray("polygon", "line")]
-modulate = Color(0.60784316, 0.25882354, 0.8745098, 1)
-clip_children = 1
-position = Vector2(0, -1)
-scale = Vector2(1.23, 1.23)
-script = ExtResource("6_i1eds")
-polygon = NodePath("Fill")
-stroke_color = Color(0, 0, 0, 1)
-line = NodePath("Stroke")
-curve = SubResource("Curve2D_bm0xk")
-update_curve_at_runtime = true
-arc_list = SubResource("Resource_q07en")
-rx = 50.0
-ry = 50.0
+[node name="VisualTutorialPanelContainer" type="PanelContainer" parent="DemonVisualTutorialVBox" unique_id=1813605347]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_53ev6")
 
-[node name="Fill" type="Polygon2D" parent="BasicZombieNotif/Ellipse2" unique_id=2004185187]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
-metadata/_edit_lock_ = true
+[node name="VisualTutorialVBox" type="VBoxContainer" parent="DemonVisualTutorialVBox/VisualTutorialPanelContainer" unique_id=510861130]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 7
+alignment = 1
 
-[node name="Stroke" type="Line2D" parent="BasicZombieNotif/Ellipse2" unique_id=579480478]
-points = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
-closed = true
-default_color = Color(0, 0, 0, 1)
-sharp_limit = 90.0
-metadata/_edit_lock_ = true
+[node name="DemonTitle" type="RichTextLabel" parent="DemonVisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialVBox" unique_id=1408526813]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_53ev6")
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
 
-[node name="Ellipse" type="Node2D" parent="BasicZombieNotif" unique_id=928527820 node_paths=PackedStringArray("polygon", "line")]
-modulate = Color(0.60784316, 0.25882354, 0.8745098, 1)
-clip_children = 1
-position = Vector2(0, -1)
-script = ExtResource("6_i1eds")
-polygon = NodePath("Fill")
-line = NodePath("Stroke")
-curve = SubResource("Curve2D_bm0xk")
-update_curve_at_runtime = true
-arc_list = SubResource("Resource_q07en")
-rx = 50.0
-ry = 50.0
+[node name="VisualTutorialVisual" parent="DemonVisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialVBox" unique_id=267442315 instance=ExtResource("6_imaxi")]
+layout_mode = 2
+mouse_filter = 2
 
-[node name="Fill" type="Polygon2D" parent="BasicZombieNotif/Ellipse" unique_id=1506563546]
-polygon = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
-metadata/_edit_lock_ = true
+[node name="VisualTutorialLabel" type="RichTextLabel" parent="DemonVisualTutorialVBox/VisualTutorialPanelContainer/VisualTutorialVBox" unique_id=1909144140]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_m6aj6")
+theme_override_fonts/bold_font = ExtResource("4_53ev6")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "Generates BLOOD over time"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
-[node name="Stroke" type="Line2D" parent="BasicZombieNotif/Ellipse" unique_id=231622447]
-points = PackedVector2Array(50, 0, 49.741863, 5.112335, 48.984207, 10.076963, 47.752163, 14.868753, 46.070858, 19.462578, 43.965424, 23.833305, 41.460987, 27.95581, 38.582676, 31.80496, 35.355625, 35.355625, 31.804958, 38.582676, 27.95581, 41.460987, 23.833305, 43.965424, 19.462578, 46.07086, 14.868754, 47.752167, 10.076963, 48.984207, 5.112335, 49.741863, 0, 50, -5.112335, 49.741863, -10.076963, 48.984207, -14.868753, 47.752163, -19.462578, 46.070858, -23.833305, 43.965424, -27.95581, 41.460987, -31.80496, 38.582676, -35.355625, 35.355625, -38.582676, 31.804958, -41.460987, 27.95581, -43.965424, 23.833305, -46.07086, 19.462578, -47.752167, 14.868754, -48.984207, 10.076963, -49.741863, 5.112335, -50, 0, -49.741863, -5.112335, -48.984207, -10.076963, -47.752163, -14.868753, -46.070858, -19.462578, -43.965424, -23.833305, -41.460987, -27.95581, -38.582676, -31.80496, -35.355625, -35.355625, -31.804958, -38.582676, -27.95581, -41.460987, -23.833305, -43.965424, -19.462578, -46.07086, -14.868754, -47.752167, -10.076963, -48.984207, -5.112335, -49.741863, 0, -50, 5.112335, -49.741863, 10.076963, -48.984207, 14.868753, -47.752163, 19.462578, -46.070858, 23.833305, -43.965424, 27.95581, -41.460987, 31.80496, -38.582676, 35.355625, -35.355625, 38.582676, -31.804958, 41.460987, -27.95581, 43.965424, -23.833305, 46.07086, -19.462578, 47.752167, -14.868754, 48.984207, -10.076963, 49.741863, -5.112335)
-closed = true
-sharp_limit = 90.0
-metadata/_edit_lock_ = true
+[node name="VisualTutorialMarginContainer" type="MarginContainer" parent="DemonVisualTutorialVBox/VisualTutorialPanelContainer" unique_id=671955493]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 11
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 11
 
-[node name="BasicZombie" type="Sprite2D" parent="BasicZombieNotif" unique_id=409176380]
-position = Vector2(1, -1)
-scale = Vector2(4.62, 4.62)
-texture = ExtResource("9_komxe")
+[node name="PanelContainer" type="PanelContainer" parent="DemonVisualTutorialVBox" unique_id=2128136742]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("4_y3bqs")
 
-[node name="OldTutorialBG" type="Sprite2D" parent="." unique_id=762519585]
-visible = false
-position = Vector2(260, 201)
-texture = ExtResource("2_c1ynx")
+[node name="MarginContainer" type="MarginContainer" parent="DemonVisualTutorialVBox/PanelContainer" unique_id=511661967]
+layout_mode = 2
+theme_override_constants/margin_left = -11
+theme_override_constants/margin_top = -11
+theme_override_constants/margin_right = -11
+theme_override_constants/margin_bottom = -11
+
+[node name="DemonVisualTutorialUnderstoodButton" type="Button" parent="DemonVisualTutorialVBox/PanelContainer/MarginContainer" unique_id=1539365394]
+z_index = 2
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_m6aj6")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_f4pib")
+text = "UNDERSTOOD"
 
 [node name="CountdownTimer" type="Timer" parent="." unique_id=731847931]
 wait_time = 14.245
@@ -295,3 +314,4 @@ one_shot = true
 
 [connection signal="pressed" from="BasicTutorialMessage/BasicTutorialVbox/PanelContainer/MarginContainer/BasicTutorialUnderstoodButton" to="." method="_on_basic_tutorial_understood_button_pressed"]
 [connection signal="pressed" from="VisualTutorialVBox/PanelContainer/MarginContainer/VisualTutorialUnderstoodButton" to="." method="_on_visual_tutorial_understood_button_pressed"]
+[connection signal="pressed" from="DemonVisualTutorialVBox/PanelContainer/MarginContainer/DemonVisualTutorialUnderstoodButton" to="." method="_on_demon_visual_tutorial_understood_button_pressed"]

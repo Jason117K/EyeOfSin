@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bad645hkxklbv"]
 
 [ext_resource type="Script" uid="uid://ql5up1ivfel0" path="res://_Utilities/notification_bar.gd" id="1_mv388"]
+[ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="2_idw6e"]
 [ext_resource type="Texture2D" uid="uid://1vv56xu5e06h" path="res://_Entities/Zombies/Notif_Icons/BasicZombie.png" id="2_kbdbf"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="2_osf5l"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="2_x5ffb"]
@@ -8,16 +9,10 @@
 [ext_resource type="Script" uid="uid://dujwffpetvtnu" path="res://_Utilities/notif_label.gd" id="3_4nnmc"]
 [ext_resource type="Texture2D" uid="uid://bhqt5knrhvk4o" path="res://_Assets/UI/Health_Icon1.png" id="4_x5ffb"]
 [ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="5_2o6rf"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3au0f"]
-bg_color = Color(0, 0, 0, 0.8509804)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="8_xuysx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osf5l"]
-bg_color = Color(0.36078432, 0.36078432, 0.36078432, 1)
+bg_color = Color(0.22, 0, 0.0036666107, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -69,9 +64,9 @@ custom_minimum_size = Vector2(515, 0)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 215.0
-offset_top = -58.0
-offset_right = 730.0
+offset_left = 194.0
+offset_top = -70.0
+offset_right = 709.0
 grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/margin_left = 10
@@ -84,14 +79,14 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3au0f")
+theme_override_styles/panel = ExtResource("2_idw6e")
 
 [node name="NotifMarginContainer" type="MarginContainer" parent="NotificationPanel" unique_id=79000888]
 layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = -4
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = -4
+theme_override_constants/margin_bottom = -4
 
 [node name="NotificationHbox" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer" unique_id=2107392246]
 layout_mode = 2
@@ -112,11 +107,14 @@ script = ExtResource("3_2o6rf")
 
 [node name="NameHealthVboxContainer" type="VBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox" unique_id=331348365]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="NameSpecialHbox" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer" unique_id=486452573]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="NotifNameLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/NameSpecialHbox" unique_id=1939787612]
+custom_minimum_size = Vector2(85.58, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
@@ -126,32 +124,37 @@ theme_override_font_sizes/normal_font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_10a2h")
 text = " REBORN "
 fit_content = true
-autowrap_mode = 0
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_4nnmc")
 
 [node name="SpecialMarginContainer" type="MarginContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/NameSpecialHbox" unique_id=448726676]
 layout_mode = 2
-theme_override_constants/margin_top = -8
+size_flags_horizontal = 0
 
 [node name="SpecialLabel" type="RichTextLabel" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/NameSpecialHbox/SpecialMarginContainer" unique_id=65848755]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("2_x5ffb")
+theme_override_fonts/normal_font = ExtResource("8_xuysx")
 theme_override_fonts/italics_font = ExtResource("5_2o6rf")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 11
 theme_override_font_sizes/italics_font_size = 10
 bbcode_enabled = true
-text = "[i]*SHOTS SLOW ENEMIES"
+text = "- Shoots a web projectile that damages and slows the first enemy it contacts
+"
 fit_content = true
-autowrap_mode = 0
+scroll_active = false
 vertical_alignment = 2
 script = ExtResource("3_4nnmc")
 
 [node name="StatsHboxContainer" type="HBoxContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer" unique_id=1474373201]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="HealthPanel" type="PanelContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer" unique_id=461478313]
 custom_minimum_size = Vector2(0, 24)

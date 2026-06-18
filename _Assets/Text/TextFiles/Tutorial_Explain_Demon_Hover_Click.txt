@@ -1,1 +1,1 @@
-HOVER over a DEMON to view its RANGE.
+[color=red]HOVER[/color] over a [color=red]DEMON[/color] to view its [color=red]RANGE[/color].

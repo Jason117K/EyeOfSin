@@ -12,7 +12,8 @@ func _ready() -> void:
 		#print("Node Not Null Adjusting Nine Patch Size to ", panel_to_outline.size + padding)
 		self.custom_minimum_size = panel_to_outline.size + padding
 	else:
-		print("NODE WAS NULLL")
+		pass
+		#print("NODE WAS NULLL")
 	if get_parent().name.containsn("zombie"):
 		make_red = false
 	if make_red:

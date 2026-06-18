@@ -53,3 +53,16 @@ func _on_area_2d_mouse_entered() -> void:
 
 func _on_area_2d_mouse_exited() -> void:
 	self_modulate = default_self_modulate
+
+
+func set_highlight()->void:
+	self_modulate = hover_self_modulate
+
+func undo_highlight()->void:
+	self_modulate = default_self_modulate
+	
+
+
+
+
+##

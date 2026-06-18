@@ -71,9 +71,9 @@ icon = ExtResource("2_y6lur")
 [node name="SwapAbilityCooldownPanel" type="PanelContainer" parent="." unique_id=2041808164]
 z_index = 1
 layout_mode = 0
-offset_left = 7.0
+offset_left = 2.0
 offset_top = 318.0
-offset_right = 207.0
+offset_right = 202.0
 offset_bottom = 348.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_yrl2m")
 

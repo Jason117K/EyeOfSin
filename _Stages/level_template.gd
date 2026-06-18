@@ -97,6 +97,7 @@ func get_demon_manager()->Node:
 	return demonManager
 
 func show_demon_selection_menu()->void:
+	print("About to Show D Select Menu ", demonSelectionMenu)
 	demonSelectionMenu.show()
 
 func hide_demon_selection_menu()->void:
@@ -146,7 +147,7 @@ func progress_time_passed()->void:
 ## Hides all demon buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]
 func hide_all_demon_buttons_with_exception(exceptions: Array = []) -> void:
-	print("Exceptions Are ",exceptions)
+	#print("Exceptions Are ",exceptions)
 	for container_name:String in ALL_DEMON_CONTAINERS:
 		if container_name in exceptions:
 			pass
@@ -280,7 +281,7 @@ func _filter_tutorial_input(event: InputEvent) -> void:
 	
 func attach_script_to_sway_children(make_green : bool = false) -> void:                                       #script_path: String) -> void:
 	var coral_node := get_node("Environment/Coral")
-	print("Should Attach Scripts to Children of ", coral_node)
+	#print("Should Attach Scripts to Children of ", coral_node)
 	if coral_node == null:
 		push_error("Coral node not found at Environment/Coral")
 		return
@@ -323,7 +324,7 @@ func _filter_only_allow_y(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.swap_scenes()
-			print("Advancing Tutorial Should Explian Green")
+			#print("Advancing Tutorial Should Explian Green")
 			advance_tutorial() # → EXPLAIN_GREEN_DIMENSION
 			return
 		else:

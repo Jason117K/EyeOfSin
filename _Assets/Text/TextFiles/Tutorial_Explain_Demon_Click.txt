@@ -1,1 +1,1 @@
-Click a Demon to View its Stats
+Click a [color=red]DEMON[/color] to View its [color=red]INFO[/color]

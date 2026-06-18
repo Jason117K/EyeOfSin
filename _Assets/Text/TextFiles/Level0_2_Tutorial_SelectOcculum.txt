@@ -1,1 +1,2 @@
-You are almost out of blood. Select and place an Eye to generate more. 
+You are almost out of [color=red]BLOOD[/color].
+Select an [color=red]OCCULUM[/color] 

@@ -1,3 +1,2 @@
-SYNERGY UNLOCKED: Spyder -> Eye
-
-- Eye now slows all surrounding enemies 
+- Occulum [color=red]BLOOD[/color] now [color=red]DAMAGES[/color] nearby enemies on [color=red]PICKUP[/color]
+- Occulum now [color=red]GENERATES BLOOD FASTER[/color]

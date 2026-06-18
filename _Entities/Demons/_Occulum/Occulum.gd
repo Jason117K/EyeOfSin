@@ -69,6 +69,8 @@ func _ready() -> void:
 	
 	hide_old_preview()
 
+	all_synergies = Global.all_occulum_synergies
+	special_description_file = get_special_description_file(all_synergies,"Base")
 
 func hide_old_preview()->void:
 	$PreviewNodes/PreviewCard.visible = false 
@@ -267,11 +269,8 @@ func start_alpha_pulse() -> void:
 func _on_healing_anim_sprite_animation_finished() -> void:
 	pass
 
-func get_demon_icon() -> CompressedTexture2D:
-	return Global.occulum_icon
 
-func get_special_description() -> String:
-	return Global.occulum_special_description
+
 
 
 # --- Slow Field ---
@@ -328,6 +327,7 @@ func _on_mouse_entered() -> void:
 		$PreviewNodes.visible = true
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
+
 
 
 # --- Position Adjustment ---

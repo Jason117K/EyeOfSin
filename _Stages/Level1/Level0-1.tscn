@@ -41,6 +41,8 @@
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="38_g88e2"]
 [ext_resource type="Texture2D" uid="uid://b4g25fs8qx38m" path="res://_Stages/Level1/PurpleEarthCrystal.png" id="39_fb4rh"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_umbnb"]
+[ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_demon_texture.tscn" id="42_07bn3"]
+[ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockDemon.tscn" id="43_fhu8f"]
 
 [sub_resource type="Environment" id="Environment_xl50p"]
 background_mode = 3
@@ -3926,5 +3928,14 @@ texture = ExtResource("39_fb4rh")
 flip_h = true
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("40_umbnb")]
+
+[node name="AcquireDemonTexture" parent="." unique_id=195454887 instance=ExtResource("42_07bn3")]
+process_mode = 3
+layout_mode = 1
+
+[node name="UnlockDemon" parent="." unique_id=1731368497 instance=ExtResource("43_fhu8f")]
+process_mode = 3
+visible = false
+layout_mode = 1
 
 [editable path="GameLayer/GridManager"]

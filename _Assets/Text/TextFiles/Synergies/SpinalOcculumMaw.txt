@@ -1,4 +1,2 @@
-Increased health
-Upgraded :
-- Increases nearby demon damage
-- Nearby zombie deaths heal 
+Increases nearby demon damage & Nearby zombie deaths heal 
+Increased Health

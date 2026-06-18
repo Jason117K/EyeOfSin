@@ -98,10 +98,10 @@ func connect_ability(lightning_to_connect : Area2D)->void:
 	else:
 		lightning_connector_line.set_point_position(1, target_local)
 	
-	var angle = lightning_connector_pivot.global_position.angle_to_point(lightning_to_connect.global_position)
+	var angle :float = lightning_connector_pivot.global_position.angle_to_point(lightning_to_connect.global_position)
 	lightning_connector_pivot.global_rotation = angle - PI / 2.0
 	
-	var distance = lightning_connector_pivot.global_position.distance_to(lightning_to_connect.global_position)
+	var distance :float= lightning_connector_pivot.global_position.distance_to(lightning_to_connect.global_position)
 	lightning_connector_pivot.scale.y = distance / default_connector_length
 	
 	place_shadow_orb(lightning_to_connect.global_position)

@@ -17,6 +17,10 @@ const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive",
 
 @onready var wave_preview := $GameLayer/ZombieSpawner/WavePreview
 
+@onready var new_demon_unlock_rune := $AcquireDemonTexture
+
+@onready var unlock_demon := $UnlockDemon
+
 var first_hover := false
 var demon_never_clicked := true 
 
@@ -114,6 +118,9 @@ func _ready() -> void:
 	#progress_timer.timeout.connect(progress_tutorial)
 	#progress_timer.one_shot = true 
 	#progress_timer.autostart = false 
+	
+	unlock_demon.hide()
+	new_demon_unlock_rune.hide()
 	
 	Dialogic.timeline_ended.connect(finish_ready)
 
@@ -368,7 +375,7 @@ func _filter_only_allow_y(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.swap_scenes()
-			print("Advancing Tutorial Should Explian Green")
+			#print("Advancing Tutorial Should Explian Green")
 			advance_tutorial() # → EXPLAIN_GREEN_DIMENSION
 			return
 		else:
@@ -408,13 +415,13 @@ func _on_tooltip_hidden() -> void:
 
 func _on_crawler_placed() -> void:
 	if get_current_step_name() == "FORCE_PLACE_demon":
-		print("Advancing YTutorial Here from : ", get_current_step_name())
+		#print("Advancing YTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → EXPLAIN_BLOOD_COST
 
 
 func _on_crawler_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_CRAWLER":
-		print("Advancing WTutorial Here from : ", get_current_step_name())
+		#print("Advancing WTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → FORCE_PLACE_demon
 
 
@@ -490,4 +497,37 @@ func show_guide() -> void:
 func progress_tutorial()->void:
 	toolTips._on_basic_tutorial_understood_button_pressed()
 	pass
+
+
+
+func _on_level_ended() -> void:
+	if Global.game_controller.get_active_dimension() != Global.game_controller.get_purple_dimension():
+		Global.swap_scenes()
+	new_demon_unlock_rune.unlock_done.connect(show_new_demon)
+	new_demon_unlock_rune.activate()
+	#levelSwitcher.visible = true
+	toolTips.visible = false
+	get_tree().paused = true
 	
+	
+	#if skip_end_dialog:
+		#_on_end_dialog_finished()
+	#else:
+		#Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
+		#Dialogic.start(new_end_dialog)
+
+func show_new_demon()->void:
+	unlock_demon.show()
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		##

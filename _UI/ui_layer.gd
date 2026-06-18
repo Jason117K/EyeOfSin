@@ -19,13 +19,15 @@ var zombie_count := 0
 
 var all_zombie_types :Dictionary 
 
-
+var _blood_pulse_id := 0
 var current_demon_synergies : Array 
 var all_demon_types :Dictionary = {"Occulum":0 ,"Crawler" : 1, "Hive":2, "Maw":3,"Spinalocculum":4,"Wyrm":5}
 var synergy_split : Array
 
 var blood_amount: float = 50
 var rect_region : Rect2 
+
+signal blood_set(blood_val:int)
 
 func _ready() -> void:
 	build_zombie_types_array()
@@ -39,6 +41,8 @@ func _ready() -> void:
 	if make_green:
 		rect_region = Rect2(0,0,32,32)
 		health_icon.texture.region = rect_region
+		
+	self.blood_set.connect(demon_selection_menu.adjust_highlights)
 
 func build_zombie_types_array()->void:
 	for key in ZombieRegistry.SCENES.keys():
@@ -57,11 +61,24 @@ func get_the_health() -> Node:
 	return health_label
 
 func set_blood(new_blood_amount: float) -> void:
-	#print("SETTING NEW BLOOD ", new_blood_amount)
-	blood_label.text = str(new_blood_amount)
+	_blood_pulse_id += 1
+	var my_id := _blood_pulse_id
+	if new_blood_amount < blood_amount:
+		blood_label.text = "[wave amp=40 freq=8][pulse freq=4 color=#ffffff40]%s[/pulse][/wave]" % str(new_blood_amount)
+	else:
+		blood_label.text = "[wave amp=-40 freq=8][pulse freq=4 color=#ff0000]%s[/pulse][/wave]" % str(new_blood_amount)
+	
+	await get_tree().create_timer(0.8).timeout
+	if my_id == _blood_pulse_id:  # only reset if no newer call happened
+		blood_label.text = str(new_blood_amount)
+
+	blood_amount = new_blood_amount
+	blood_set.emit(new_blood_amount)
+	
 	
 func set_initial_blood(new_blood_amount: float) -> void:
 	#print("SETTING NEW BLOOD ", new_blood_amount)
+	blood_set.emit(new_blood_amount)
 	blood_amount = new_blood_amount
 	if blood_label != null:
 		blood_label.text = str(blood_amount)

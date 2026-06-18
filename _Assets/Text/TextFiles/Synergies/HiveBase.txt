@@ -1,1 +1,1 @@
-Base Hive
+Spawns Syn-Wasps that stall zombies 

@@ -671,6 +671,7 @@ mouse_filter = 2
 theme_override_constants/separation = 1
 
 [node name="OcculumButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum" unique_id=102864345]
+self_modulate = Color(0.54, 0.54, 0.54, 1)
 material = SubResource("ShaderMaterial_q10kc")
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2

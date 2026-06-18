@@ -59,6 +59,12 @@ class_name Demon
 @onready var spawn_juice_anim := $SpawnJuiceAnim
 @onready var baal_halo : AnimatedSprite2D = $BaalHalo
 
+@onready var preview_nodes := $PreviewNodes
+
+var demon_buff_name : String = "None"
+
+var special_description_file : String
+
 var can_show_preview := false
 var new_syn_shield_instance :AnimatedSprite2D 
 var syn_timer : Timer
@@ -74,6 +80,10 @@ var spawn_done := false
 var is_hero := false
 var hit_flash_active : bool = false 
 var time_since_hit : float = 0.0 
+
+var all_synergies : Array 
+
+
 # --- Signals ---
 signal demon_die
 
@@ -105,6 +115,7 @@ func _ready() -> void:
 	erase_button.hide()
 	
 	spawn_juice_anim.play()
+	
 
 func _process(delta: float) -> void:
 	if hit_flash_active:
@@ -129,6 +140,13 @@ func _wire_signals() -> void:
 	area_entered.connect(on_demon_area_entered)
 	area_exited.connect(on_demon_area_exited)
 
+func get_special_description_file(this_all_synergies : Array[String],demonName : String)->String:
+	for synergy_file_name in this_all_synergies:
+		if synergy_file_name.containsn(demonName):
+			return synergy_file_name 
+	return ""
+	
+	
 func _init_demon_manager() -> void:
 	var _dm_parent: Node = get_parent()
 	if _dm_parent:
@@ -147,6 +165,21 @@ func _detect_heart_buffs() -> void:
 		if new_area.is_in_group("HeartBuff"):
 			receive_heart_buff()
 
+func show_buff_preview_nodes()->void:
+	for node in preview_nodes.get_children():
+		if node.name.contains("Buff"):
+			node.visible = true
+		else:
+			node.visible = false 
+	preview_nodes.visible = true 
+
+func hide_buff_preview_nodes()->void:
+	preview_nodes.visible = false 
+
+	for node in preview_nodes.get_children():
+		node.visible = true  
+		
+		
 
 # --- Buff System ---
 
@@ -164,7 +197,9 @@ func undo_baal_buff()->void:
 # Order: guard → healthComp → animSpriteComp → flag set
 func receive_buff(demonName : String) -> void:
 	if demonName == truncate_string(self.get_name()):
+		
 		return
+	special_description_file = get_special_description_file(all_synergies,demonName)
 	if !isBuffed:
 		print(self.name, " Received Buff from ", demonName)
 		healthComp.receive_buff(demonName)
@@ -173,14 +208,36 @@ func receive_buff(demonName : String) -> void:
 		_set_buff_flag(demonName)
 
 func _set_buff_flag(demonName: String) -> void:
+	demon_buff_name = demonName
+	
 	match demonName:
-		"Occulum": occulumBuff = true
-		"Crawler": crawlerBuff = true
-		"SpinalOcculum": spinalOcculumBuff = true
-		"Wyrm": wyrmBuff = true
-		"Hive": hiveBuff = true
-		"Maw": mawBuff = true
+		"Occulum":
+				occulumBuff = true
+				
+		"Crawler": 
+				crawlerBuff = true
+		"SpinalOcculum":
+				spinalOcculumBuff = true
+		"Wyrm":
+				wyrmBuff = true
+		"Hive":
+				hiveBuff = true
+		"Maw":
+				mawBuff = true
 
+		
+	
+func get_special_description() -> String:
+	var file := FileAccess.open(special_description_file, FileAccess.READ)
+	if file == null:
+		push_error("Could not open file: %s. Error: %d" % [special_description_file, FileAccess.get_open_error()])
+		return ""
+	var first_line := file.get_line()
+	return first_line.to_upper()
+	
+func get_demon_icon() -> Texture2D:
+	return animSpriteComp.current_icon
+	
 func debuff() -> void:
 	isBuffed = false
 	_reset_buff_flags()
@@ -353,8 +410,7 @@ func set_spawn_anim_speed(new_speed_speed: float) -> void:
 	animSpriteComp.set_spawn_anim_speed(new_speed_speed)
 
 
-func get_special_description()->String:
-	return ""
+
 
 
 

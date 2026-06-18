@@ -67,13 +67,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_kfr0o")
 
-[node name="BloodAmountLabel" type="Label" parent="HUD_Panel/MarginContainer/HUD_HBox/Blood_VBox" unique_id=209762597]
+[node name="BloodAmountLabel" type="RichTextLabel" parent="HUD_Panel/MarginContainer/HUD_HBox/Blood_VBox" unique_id=1174423929]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("5_kni87")
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/normal_font = ExtResource("5_kni87")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
 text = "100"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 horizontal_alignment = 1
 
 [node name="Health_VBox" type="VBoxContainer" parent="HUD_Panel/MarginContainer/HUD_HBox" unique_id=241863994]

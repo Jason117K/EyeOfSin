@@ -1,1 +1,1 @@
-Hover Over a Skull to See Incoming Zombies 
+[color=red]HOVER[/color] over a [color=red]SKULL[/color] to see incoming [color=purple]Zombies[/color] 

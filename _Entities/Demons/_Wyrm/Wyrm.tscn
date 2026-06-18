@@ -1150,7 +1150,7 @@ stretch_amount = 0.1
 bounce_elasticity = 0.01
 cost = 125.0
 health = 100.0
-maxHealth = 60.0
+maxHealth = 100.0
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=1914990497]
 visible = false

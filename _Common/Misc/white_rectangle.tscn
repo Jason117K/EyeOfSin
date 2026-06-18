@@ -8,7 +8,8 @@ size = Vector2(160, 89.999886)
 
 [node name="WhiteRectangle" type="Sprite2D" unique_id=672153545]
 self_modulate = Color(0, 0, 0, 0.5058824)
-z_index = 2
+top_level = true
+z_index = 3
 scale = Vector2(0.2, 0.355556)
 texture = ExtResource("1_i8yx7")
 script = ExtResource("2_edfb1")

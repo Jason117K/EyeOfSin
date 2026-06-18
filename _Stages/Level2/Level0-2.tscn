@@ -3884,7 +3884,7 @@ flip_h = true
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("40_lrpgx")]
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]
