@@ -275,6 +275,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 	Global.show_guide()
 
 	var temp_demon  = demon_scene.instantiate()
+	
 	var preview_node : Node = find_preview_nodes(temp_demon)
 	
 	if preview_node:
@@ -289,6 +290,7 @@ func create_preview(demon_scene:PackedScene) -> void:
 			this_preview_sprite.z_index = 100
 			if this_preview_sprite is AnimatedSprite2D:
 				this_preview_sprite.play()
+				
 			
 			# Store original position and print it
 			var original_pos := Vector2(child.position.x, child.position.y)
@@ -387,6 +389,19 @@ func _process(delta:float) -> void:
 											clampf(absf(dist / center_x), 0.0, 1.0))
 					extra.x = shadow_x
 				sprite.global_position = base_pos + offset + extra
+				
+				if sprite is AnimatedSprite2D:
+					sprite.set_collision()
+					if sprite.get_overlapping_demon_areas().size() < 1:
+						sprite.play(sprite.autoplay)
+					else:
+						for demon_tile_area in sprite.get_overlapping_demon_areas():
+							print("Overlapping Area is ", demon_tile_area)
+							if demon_tile_area.is_in_group("BloodTile") && demon_tile_area.visible == true:
+								print("RECEIVE BUFF FROM ", demon_tile_area.get_parent().get_parent().get_demon_true_name())
+								#demon_tile_area.get_parent().get_parent().get_demon_true_name()
+								sprite.receive_buff(demon_tile_area.get_parent().get_parent().get_demon_true_name()) #Get True Name
+					
 				
 		if not preview_card_sprites.is_empty() and delta > 0.0:
 			var velocity := (base_pos - preview_last_mouse) / delta

@@ -13,15 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://bkl4jk3ay1vo7" path="res://_Entities/Demons/_Wyrm/WyrmUpdated_Anims-Sheet.png" id="6_44800"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="6_l4gaf"]
 [ext_resource type="Texture2D" uid="uid://ckua2osb4ktw4" path="res://_Entities/Demons/_Wyrm/Wyrm_Crawler_Updated-Sheet.png" id="7_2xs1v"]
-[ext_resource type="Texture2D" uid="uid://c0bdtwehrx0sh" path="res://_Entities/Demons/_Wyrm/WyrmSmolMERGED-Sheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://cm4xvp31grlmg" path="res://_Entities/Demons/_Wyrm/Wyrm_Occulum_New-Sheet.png" id="8_g8nmw"]
 [ext_resource type="Texture2D" uid="uid://dvmlqphdsvn52" path="res://_Entities/Demons/BloodBuff/BloodBuffTileBorderSheet.png" id="9"]
+[ext_resource type="SpriteFrames" uid="uid://cj5rsdhptcyd7" path="res://_Entities/Demons/_Wyrm/wyrm_sprite_frames.tres" id="9_l4gaf"]
 [ext_resource type="Texture2D" uid="uid://ggpot4n8t5ge" path="res://_Entities/Demons/_Wyrm/Wyrm_Spinal_New-Sheet.png" id="9_pwkl1"]
 [ext_resource type="Texture2D" uid="uid://cjnpt4jqwcrf0" path="res://_Entities/Demons/BloodBuff/BloodBuffTileDrip.png" id="11"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="12"]
 [ext_resource type="SpriteFrames" uid="uid://68t447nxiwkb" path="res://_Entities/Demons/projectile_spit.tres" id="15_ftpd4"]
 [ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="17_u0laq"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="18_pfhft"]
+[ext_resource type="Script" uid="uid://cy1djltqpfkrb" path="res://_Entities/Demons/preview_card_anim_sprite.gd" id="19_ds7ka"]
 [ext_resource type="Texture2D" uid="uid://cpg3mwahpywqo" path="res://_Entities/Demons/Cards/Empty_Display_CARD_Outline.png" id="19_l4gaf"]
 [ext_resource type="Script" uid="uid://c1nu6cgi2l8tb" path="res://_Entities/Demons/_Wyrm/wyrm_projectile_shoot_component.gd" id="19_qxnbo"]
 [ext_resource type="Texture2D" uid="uid://btgck4yrvd067" path="res://_Entities/Demons/BloodHeal-Sheet.png" id="21_b83ow"]
@@ -85,6 +86,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(38, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5dvj"]
 atlas = ExtResource("6_44800")
@@ -366,7 +370,7 @@ region = Rect2(416, 0, 32, 32)
 atlas = ExtResource("6_l4gaf")
 region = Rect2(448, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qxnbo"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ds7ka"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -627,30 +631,8 @@ animations = [{
 "speed": 33.0
 }]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(38, 33)
-
-[sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("8")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("8")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("2")
-}, {
-"duration": 1.0,
-"texture": SubResource("3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0laq"]
+size = Vector2(30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxqdb"]
 atlas = ExtResource("11")
@@ -1217,7 +1199,7 @@ health = 800.0
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
 position = Vector2(0, -2)
-sprite_frames = SubResource("SpriteFrames_qxnbo")
+sprite_frames = ExtResource("9_l4gaf")
 animation = &"attack_SpinalOcculum"
 autoplay = "spawn"
 script = ExtResource("4_3fijn")
@@ -1254,12 +1236,10 @@ frame_progress = 1.0
 autostart = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=615257564]
-visible = false
 position = Vector2(-1, -2.5)
 shape = SubResource("1")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1120460148]
-visible = false
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1086403001]
 self_modulate = Color(0, 0, 0, 1)
@@ -1273,7 +1253,17 @@ position = Vector2(-1, 0)
 texture = ExtResource("17_u0laq")
 
 [node name="PreviewCardSprite" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=481485503]
-sprite_frames = SubResource("4")
+sprite_frames = SubResource("SpriteFrames_ds7ka")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("19_ds7ka")
+
+[node name="PreviewArea" type="Area2D" parent="PreviewNodes/PreviewCardSprite" unique_id=1310586014]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreviewNodes/PreviewCardSprite/PreviewArea" unique_id=1879926517]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_u0laq")
 
 [node name="PreviewCardOutline" type="Sprite2D" parent="PreviewNodes" unique_id=641138943]
 position = Vector2(-1, 0)

@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="24_8u2uv"]
 [ext_resource type="Texture2D" uid="uid://cpg3mwahpywqo" path="res://_Entities/Demons/Cards/Empty_Display_CARD_Outline.png" id="25_8u2uv"]
 [ext_resource type="Texture2D" uid="uid://7tr2bmwgk48m" path="res://_Entities/Demons/DemonSynergyBuffOutline_CARD.png" id="25_jphsv"]
+[ext_resource type="Script" uid="uid://cy1djltqpfkrb" path="res://_Entities/Demons/preview_card_anim_sprite.gd" id="29_78twq"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="30_tifvr"]
 [ext_resource type="PackedScene" uid="uid://dtfy6ty0x64ad" path="res://_Entities/Demons/Components/projectile_shoot_component.tscn" id="33_kupbo"]
 [ext_resource type="Script" uid="uid://dt0eojddtmla2" path="res://_Entities/Demons/_Crawler/crawler_projectile_shoot_component.gd" id="35_jut13"]
@@ -962,6 +963,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an04s"]
+size = Vector2(30, 30)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a06ib"]
 size = Vector2(20, 1.275)
 
@@ -1523,6 +1527,7 @@ script = ExtResource("5_kupbo")
 health = 800.0
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1427083886]
+visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = ExtResource("8_jphsv")
@@ -1553,11 +1558,21 @@ position = Vector2(-1, 0)
 texture = ExtResource("24_8u2uv")
 
 [node name="PreviewCardSprite" type="AnimatedSprite2D" parent="PreviewNodes" unique_id=1617410873 groups=["Invis"]]
+z_index = 1
 position = Vector2(2, -6)
 sprite_frames = SubResource("SpriteFrames_0syxb")
 animation = &"redCrawlerDefault"
 autoplay = "redCrawlerDefault"
+frame_progress = 0.8373103
 flip_h = true
+script = ExtResource("29_78twq")
+
+[node name="PreviewArea" type="Area2D" parent="PreviewNodes/PreviewCardSprite" unique_id=262789209]
+position = Vector2(-2, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PreviewNodes/PreviewCardSprite/PreviewArea" unique_id=1328497709]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_an04s")
 
 [node name="PreviewCardOutline" type="Sprite2D" parent="PreviewNodes" unique_id=1962348889]
 position = Vector2(-1, 0)
