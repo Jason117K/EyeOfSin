@@ -147,11 +147,11 @@ func get_demon_manager()->Node:
 	return demonManager
 
 func show_demon_selection_menu()->void:
-	print("About to Show D Select Menu ", demonSelectionMenu)
+	#print("About to Show D Select Menu ", demonSelectionMenu)
 	demonSelectionMenu.show()
 
 func hide_demon_selection_menu()->void:
-	print("About to Hide D Select Menu ", demonSelectionMenu)
+	#print("About to Hide D Select Menu ", demonSelectionMenu)
 	demonSelectionMenu.hide()
 	#demonSelectionMenu.visible = false
 	#demonSelectionMenu.self_modulate = Color(1,1,1,0)
@@ -282,8 +282,9 @@ func _start_free_play() -> void:
 func make_camera_current() -> void:
 	$Camera2D.make_current()
 
-func place_empty_blocker_demon(grid_pos:Vector2) -> void:
-	demonManager.place_empty_blocker_demon(grid_pos)
+func place_empty_blocker_demon(grid_pos:Vector2,empty_demon_to_place:Demon) -> void:
+	print("Calling Demon Manager Place Empty From Level ", self)
+	demonManager.place_empty_blocker_demon(grid_pos,empty_demon_to_place)
 
 func click_pause_button()->void:
 	pause_Button._on_pressed()

@@ -121,7 +121,8 @@ func debuff() -> void:
 	super()
 	projectile_shoot_component.debuff()
 	attack_ray.target_position = og_range_target_pos
-	spiderling_timer.stop()
+	if spiderling_timer != null:
+		spiderling_timer.stop()
 	if $"../Arm" != null:
 		$"../Arm".visible = false 
 		$"../Arm2".visible = false 

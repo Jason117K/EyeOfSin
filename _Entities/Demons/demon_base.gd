@@ -89,6 +89,8 @@ var time_since_hit : float = 0.0
 var all_synergies : Array 
 var my_active_dimension : Control
 
+var grid_map_cell_pos : Vector2
+
 # --- Signals ---
 signal demon_die
 
@@ -244,7 +246,6 @@ func _set_buff_flag(demonName: String) -> void:
 	match demonName:
 		"Occulum":
 				occulumBuff = true
-				
 		"Crawler": 
 				crawlerBuff = true
 		"SpinalOcculum":
@@ -300,13 +301,21 @@ func die() -> void:
 	queue_free()
 
 func die_fromClearSpace() -> void:
+	demon_manager.add_blood(calc_blood_refund())
 	demon_die.emit()
+	_cleanup_manager()
 	_cleanup()
 	queue_free()
 
+func calc_blood_refund()->int:
+	var health_percent :float = get_health()/get_max_health()
+	return int(cost * health_percent)
+	
+
+	
 func _cleanup_manager() -> void:
 	if demon_manager != null:
-		demon_manager.clear_space(self.global_position)
+		demon_manager.clear_space(grid_map_cell_pos)
 
 func _cleanup() -> void:
 	if buffNodes:

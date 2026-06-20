@@ -502,11 +502,11 @@ func get_other_dimension() -> Node:
 		return current_scenes[0]
 
 
-func place_empty_in_alt_scene(grid_pos : Vector2) -> void:
+func place_empty_in_alt_scene(grid_pos : Vector2,empty_demon_to_place:Demon) -> void:
 	#print("Should Place Empty Block Demon at ", grid_pos)
 	var other_dimension := get_other_dimension()
 	if other_dimension:
-		other_dimension.place_empty_blocker_demon(grid_pos)
+		other_dimension.place_empty_blocker_demon(grid_pos,empty_demon_to_place)
 
 
 func remove_empty_in_alt_scene(grid_pos : Vector2) -> void:
