@@ -19,43 +19,40 @@ var all_rank_values : Array[SCORE_RANKS] = [time_rank_value,lives_lost_rank_valu
 @onready var overall_score_label := $CenterContainer/AllPanelsVbox/TotalScorePanel/TotalScoreHbox/TotalScoreNum
 @onready var overall_rank := $CenterContainer/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel/StyleRankLetterLabel
 
-@export var SSS_STYLE_POINTS_MIN := 2000
-@export var S_STYLE_POINTS_MIN := 1500
-@export var A_STYLE_POINTS_MIN := 1000
-@export var B_STYLE_POINTS_MIN := 700
-@export var C_STYLE_POINTS_MIN := 400
-@export var D_STYLE_POINTS_MIN := 100
+var SSS_STYLE_POINTS_MIN := 2000
+var S_STYLE_POINTS_MIN := 1500
+var A_STYLE_POINTS_MIN := 1000
+var B_STYLE_POINTS_MIN := 700
+var C_STYLE_POINTS_MIN := 400
+var D_STYLE_POINTS_MIN := 100
 
-var all_style_point_thresholds : Array[int] 
+@onready var all_style_point_thresholds :Array[int] = [SSS_STYLE_POINTS_MIN,S_STYLE_POINTS_MIN,
+		A_STYLE_POINTS_MIN,B_STYLE_POINTS_MIN,C_STYLE_POINTS_MIN,D_STYLE_POINTS_MIN]
 		
-@export var SSS_TIME_MIN := 120
-@export var S_TIME_MIN := 110
-@export var A_TIME_MIN := 100
-@export var B_TIME_MIN := 90
-@export var C_TIME_MIN := 80
-@export var D_TIME_MIN := 70
+var SSS_TIME_MIN := 120
+var S_TIME_MIN := 110
+var A_TIME_MIN := 100
+var B_TIME_MIN := 90
+var C_TIME_MIN := 80
+var D_TIME_MIN := 70
 
-var all_time_thresholds :Array[int] 
+@onready var all_time_thresholds :Array[int] = [SSS_TIME_MIN,S_TIME_MIN,A_TIME_MIN,B_TIME_MIN,
+											C_TIME_MIN,D_TIME_MIN]
 
-@export var SSS_TOTAL_POINTS_MIN := 5000
-@export var S_TOTAL_POINTS_MIN := 4000
-@export var A_TOTAL_POINTS_MIN := 3000
-@export var B_TOTAL_POINTS_MIN := 2000
-@export var C_TOTAL_POINTS_MIN := 1000
-@export var D_TOTAL_POINTS_MIN := 500
+var SSS_TOTAL_POINTS_MIN := 5000
+var S_TOTAL_POINTS_MIN := 4000
+var A_TOTAL_POINTS_MIN := 3000
+var B_TOTAL_POINTS_MIN := 2000
+var C_TOTAL_POINTS_MIN := 1000
+var D_TOTAL_POINTS_MIN := 500
 
-var all_total_point_thresholds :Array[int] 
+@onready var all_total_point_thresholds :Array[int]= [SSS_TOTAL_POINTS_MIN,S_TOTAL_POINTS_MIN,
+						A_TOTAL_POINTS_MIN,B_TOTAL_POINTS_MIN,C_TOTAL_POINTS_MIN,D_TOTAL_POINTS_MIN]
 
 enum SCORE_RANKS{SSS,S,A,B,C,D}
 
 func _ready() -> void:
 	
-	all_total_point_thresholds = [SSS_TOTAL_POINTS_MIN,S_TOTAL_POINTS_MIN,
-						A_TOTAL_POINTS_MIN,B_TOTAL_POINTS_MIN,C_TOTAL_POINTS_MIN,D_TOTAL_POINTS_MIN]
-	all_time_thresholds  = [SSS_TIME_MIN,S_TIME_MIN,A_TIME_MIN,B_TIME_MIN,
-											C_TIME_MIN,D_TIME_MIN]
-	all_style_point_thresholds = [SSS_STYLE_POINTS_MIN,S_STYLE_POINTS_MIN,
-		A_STYLE_POINTS_MIN,B_STYLE_POINTS_MIN,C_STYLE_POINTS_MIN,D_STYLE_POINTS_MIN]
 		
 	Global.register_style_menu(self)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -86,23 +83,24 @@ func _setup_score()->void:
 	self.show()
 	
 func set_time_rank()->void:
-	time_label.text = "TIME: " + str(int(ScoreManager.get_completion_time()))
-	if ScoreManager.get_completion_time() <= SSS_TIME_MIN: 
+	var completion_time : int = int(ScoreManager.get_completion_time())
+	time_label.text = "TIME: " + str(completion_time)
+	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.SSS]: 
 		time_rank.text = "SSS"
 		time_rank_value = SCORE_RANKS.SSS
-	if ScoreManager.get_completion_time() <= S_TIME_MIN: 
+	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.S]: 
 		time_rank.text = "S"
 		time_rank_value = SCORE_RANKS.S
-	if ScoreManager.get_completion_time() <= A_TIME_MIN: 
+	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.A]: 
 		time_rank.text = "A"
 		time_rank_value = SCORE_RANKS.A
-	if ScoreManager.get_completion_time() <= B_TIME_MIN: 
+	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.B]: 
 		time_rank.text = "B"
 		time_rank_value = SCORE_RANKS.B
-	if ScoreManager.get_completion_time() <= C_TIME_MIN: 
+	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.C]: 
 		time_rank.text = "C"
 		time_rank_value = SCORE_RANKS.C
-	if ScoreManager.get_completion_time() <= D_TIME_MIN: 
+	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.D]: 
 		time_rank.text = "D"
 		time_rank_value = SCORE_RANKS.D
 
@@ -116,41 +114,42 @@ func set_lives_lost_rank()->void:
 		lives_lost_rank_value = SCORE_RANKS.SSS
 	
 func set_style_rank()->void:
-	style_label.text = "DEMON POINTS: " + str(int(ScoreManager.get_style_points_before_bonus()))
-	if ScoreManager.get_style_points_before_bonus() >= SSS_STYLE_POINTS_MIN:
+	var points : int = int(ScoreManager.get_style_points_before_bonus())
+	style_label.text = "DEMON POINTS: " + str(points)
+	if points >= all_style_point_thresholds[SCORE_RANKS.SSS]:
 		style_rank.text = "SSS"
 		style_rank_value = SCORE_RANKS.SSS
-	elif ScoreManager.get_style_points_before_bonus() >= S_STYLE_POINTS_MIN:
+	elif points >= all_style_point_thresholds[SCORE_RANKS.S]:
 		style_rank.text = "S"
 		style_rank_value = SCORE_RANKS.S
-	elif ScoreManager.get_style_points_before_bonus() >= A_STYLE_POINTS_MIN:
+	elif points >= all_style_point_thresholds[SCORE_RANKS.A]:
 		style_rank.text = "A"
 		style_rank_value = SCORE_RANKS.A
-	elif ScoreManager.get_style_points_before_bonus() >= B_STYLE_POINTS_MIN:
+	elif points >= all_style_point_thresholds[SCORE_RANKS.B]:
 		style_rank.text = "B"
 		style_rank_value = SCORE_RANKS.B
-	elif ScoreManager.get_style_points_before_bonus() >= C_STYLE_POINTS_MIN:
+	elif points >= all_style_point_thresholds[SCORE_RANKS.C]:
 		style_rank.text = "C"
 		style_rank_value = SCORE_RANKS.C
-	elif ScoreManager.get_style_points_before_bonus() >= D_STYLE_POINTS_MIN:
+	elif points >= all_style_point_thresholds[SCORE_RANKS.D]:
 		style_rank.text = "D"
 		style_rank_value = SCORE_RANKS.D
 			
 func set_overall_rank()->void:
-	
 	ScoreManager.calc_total_level_score()
-	overall_score_label.text = str(int(ScoreManager.get_total_score()))
-	if ScoreManager.get_total_score() >= SSS_TOTAL_POINTS_MIN:
+	var points : int = int(ScoreManager.get_total_score())
+	overall_score_label.text = str(points)
+	if points >= all_total_point_thresholds[SCORE_RANKS.SSS]:
 		overall_rank.text = "SSS"
-	elif ScoreManager.get_total_score() >= S_TOTAL_POINTS_MIN:
+	elif points >= all_total_point_thresholds[SCORE_RANKS.S]:
 		overall_rank.text = "S"
-	elif ScoreManager.get_total_score() >= A_TOTAL_POINTS_MIN:
+	elif points >= all_total_point_thresholds[SCORE_RANKS.A]:
 		overall_rank.text = "A"	
-	elif ScoreManager.get_total_score() >= B_TOTAL_POINTS_MIN:
+	elif points >= all_total_point_thresholds[SCORE_RANKS.B]:
 		overall_rank.text = "B"	
-	elif ScoreManager.get_total_score() >= C_TOTAL_POINTS_MIN:
+	elif points >= all_total_point_thresholds[SCORE_RANKS.C]:
 		overall_rank.text = "C"	
-	elif ScoreManager.get_total_score() >= D_TOTAL_POINTS_MIN:
+	elif points >= all_total_point_thresholds[SCORE_RANKS.D]:
 		overall_rank.text = "D"
 
 func set_completion_times(new_completion_time_thresholds : Array)->void:
