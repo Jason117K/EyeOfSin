@@ -108,3 +108,14 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 
 func wyrm_bleed_buff() -> void:
 	isWyrmBleedBuffed = true
+	
+func debuff()->void:
+	super()
+	isCrawlerBuffed = false
+	isOcculumBuffed = false
+	isWyrmBleedBuffed = false
+	hiveSpawnDroneBuffed = false
+	mawBuffed = false
+	
+	
+	

@@ -4,6 +4,7 @@ class_name ProjectileShootComponent extends Node2D
 @onready var base_shoot_interval := 3.0
 @onready var parent_demon: Demon = get_parent()
 var damage := 60
+@onready var og_damage := damage
 var attack_speed_mult := 1.0
 var projectile_spawn_offest: Vector2 = Vector2(16, 0)
 
@@ -164,5 +165,11 @@ func receive_buff(newDemon:String) -> void:
 		"Maw":
 			mawBuffed = true 
 	
-	
-	
+func debuff()->void:
+	occulumBuffed = false
+	crawlerBuffed = false 
+	spinalOcculumBuffed = false
+	wyrmBuffed = false
+	hiveBuffed = false
+	mawBuffed = false 
+	damage = og_damage

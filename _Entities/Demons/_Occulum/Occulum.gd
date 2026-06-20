@@ -130,6 +130,7 @@ func receive_buff(newDemon) -> void:
 func debuff() -> void:
 	super()
 	bloodTimer.wait_time = bloodWaitTime
+	can_eat_zombie = false
 
 func unlock_new_buff(demonName)->void:
 		if Global.game_controller.current_scenes.size()>1:

@@ -62,10 +62,11 @@ func _ready() -> void:
 				child.set_collision_layer_value(12,true)
 
 func clearBuffs() -> void:
+	set_process(false)   
 	print("DDD Buffed Demons is ", buffedDemons)
 	for this_demon in buffedDemons:
 		print("Now DDD DeBuffing ", this_demon)
-		if this_demon != null:
+		if is_instance_valid(this_demon):
 			this_demon.debuff()
 	
 	

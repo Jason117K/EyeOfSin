@@ -30,6 +30,8 @@ var canAttackSetTrueOnce: bool = false
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 
+@onready var og_range_target_pos = attack_ray.target_position
+
 signal crawler_buff_unlocked(buff_to_unlock:String)
 signal is_hovering
 
@@ -116,8 +118,14 @@ func receive_buff(newDemon:Demon) -> void:
 
 
 func debuff() -> void:
-	#animSpriteComp.debuff()
 	super()
+	projectile_shoot_component.debuff()
+	attack_ray.target_position = og_range_target_pos
+	spiderling_timer.stop()
+	if $"../Arm" != null:
+		$"../Arm".visible = false 
+		$"../Arm2".visible = false 
+	update_range_preview()
 
 
 func unlock_new_buff(demonName:String)->void:

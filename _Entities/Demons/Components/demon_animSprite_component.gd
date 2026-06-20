@@ -145,3 +145,4 @@ func debuff() -> void:
 	currentAnim = "idle"
 	currentAttackAnim = "attack"
 	animation = currentAnim
+	current_icon = sprite_frames.get_frame_texture(currentAnim, 0)

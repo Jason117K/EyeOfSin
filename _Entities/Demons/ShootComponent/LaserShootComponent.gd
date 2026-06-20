@@ -277,5 +277,7 @@ func getIsBuffed()->bool:
 func mawBuff() -> void:
 	damage = maw_damage
 	
-	
+func debuff()->void:
+	unOcculumBuff()
+	damage = og_damage
 	

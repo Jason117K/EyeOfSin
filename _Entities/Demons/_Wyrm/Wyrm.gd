@@ -46,6 +46,7 @@ extends Demon
 
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
+@onready var og_target_position :Vector2 = attack_ray.target_position
 
 
 # --- State ---
@@ -163,12 +164,11 @@ func receive_buff(demon) -> void:
 				projectile_shoot_component.mawBuffed = true
 
 func debuff() -> void:
-	#if("Crawler" in bufferName):
-		#laserShootComp2.extension_speed = laserShootComp2.ogExtension_Speed
-		#laserShootComp2.max_length = laserShootComp2.ogMax_Length
-	#elif("Occulum" in bufferName):
-		#laserShootComp2.unBloodBuff()
 	super()
+	attack_ray.target_position = og_target_position
+	projectile_shoot_component.debuff()
+	laserShootComp1.debuff()
+	laserShootComp2.debuff()
 
 func unlock_new_buff(demonName:String)->void:
 		if Global.game_controller.current_scenes.size()>1:
