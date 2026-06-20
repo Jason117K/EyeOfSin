@@ -3591,9 +3591,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_te6yt")
+isGreenDimension = null
 new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
 wave2StartTime = 55
 wave3StartTime = 75
+wave4StartTime = null
+debug = null
+skip_tutorials = null
+progress_timer_wait_time = null
+skip_end_dialog = null
 
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("20_17c31")]
 layout_mode = 1
@@ -3619,7 +3625,6 @@ environment = ExtResource("21_kmsuw")
 process_mode = 1
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1246316753 instance=ExtResource("3_sg366")]
-visible = false
 position = Vector2(740, 109)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=288924910 instance=ExtResource("4_acmis")]
@@ -3627,7 +3632,6 @@ z_index = 1
 position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=56502486 instance=ExtResource("3_sg366")]
-visible = false
 position = Vector2(740, 141)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1159930713 instance=ExtResource("4_acmis")]
@@ -3635,7 +3639,6 @@ z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=407286159 instance=ExtResource("3_sg366")]
-visible = false
 position = Vector2(740, 173)
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1221651418 instance=ExtResource("4_acmis")]

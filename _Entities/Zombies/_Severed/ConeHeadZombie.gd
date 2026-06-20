@@ -1,6 +1,11 @@
 extends Zombie
 # ConeHeadZombie.gd
 
+func _ready()->void:
+	super()
+	if Global.gameIsStarted && self.is_demo == false:
+		Global.unlock_zombie("Severed")
+
 func get_zombie_name() -> String:
 	return " SEVERED "
 

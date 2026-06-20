@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://4eiirlwgrgs8"
 
 [sub_resource type="Resource" id="Resource_wgcmg"]
 script = ExtResource("2_ccgv0")
-limit = 2
+limit = 1
 type = 1
 sound_effect = ExtResource("4_54sv8")
 volume = -12.0

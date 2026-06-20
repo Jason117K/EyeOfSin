@@ -51,7 +51,7 @@ var check_progress := false
 # Text file paths
 
 const TUTORIAL_SKULL_HOVER = "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt"
-const TUTORIAL_EXPLAIN_SPINAL_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
+const TUTORIAL_EXPLAIN_SPINAL_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
 const TUTORIAL_SELECT_DEMON = "res://_Assets/Text/TextFiles/Tutorial_Select_Demon.txt"
 const TUTORIAL_SELECT_WYRM = "res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt"
 const TUTORIAL_EXPLAIN_WYRM = "res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt"
@@ -75,15 +75,26 @@ const TUTORIAL_BLOOD_GEN = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_Blood
 const TUTORIAL_SELECT_CRAWLER_AFTER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectCrawler.txt"
 const TUTORIAL_BLOOD_BUFFS = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt"
 const TUTORIAL_BLOOD_BUFFS_2 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt"
+const TUTORIAL_BLOOD_BUFFS_3 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_3.txt"
+const TUTORIAL_BLOOD_BUFFS_4 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_4.txt"
+const TUTORIAL_BLOOD_BUFFS_5 = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_5.txt"
+
 const TUTORIAL_INVALID_CRAWLER = "res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidCrawlerPlacement.txt"
 const TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE = "res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
+
+const TUTORIAL_EXPLAIN_PRE_PLACED_LVL2 = "res://_Assets/Text/TextFiles/Tutorial_Explain_PrePlaced_Spinal_Occulum.txt"
+
 const TUTORIAL_EXPLAIN_WAVES = "res://_Assets/Text/TextFiles/Tutorial_Explain_Waves.txt"
 const TUTORIAL_SELECT_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_SelectMaw.txt"
 const TUTORIAL_PLACE_MAW = "res://_Assets/Text/TextFiles/Level0-3_Tutorial_PlaceMaw.txt"
 const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
-const ALL_DEMON_CONTAINERS = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal"]
+const TUTORIAL_SPINAL_OCCULUM_UNLOCKED = "res://_Assets/Text/TextFiles/Tutorial_Spinal_Occulum_Unlocked.txt"
+
+const ALL_DEMON_CONTAINERS : Array [String]= ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal"]
 const ALL_EXTRA_BUTTONS = []
+
+var auto_advance : bool = false 
 
 func demon_clicked()->void:
 	pass 
@@ -91,8 +102,8 @@ func demon_clicked()->void:
 func demon_hover()->void:
 	pass
 	
-	
-	
+		
+
 func get_demon_manager()->Node:
 	return demonManager
 
@@ -101,7 +112,10 @@ func show_demon_selection_menu()->void:
 	demonSelectionMenu.show()
 
 func hide_demon_selection_menu()->void:
+	print("About to Hide D Select Menu ", demonSelectionMenu)
 	demonSelectionMenu.hide()
+	#demonSelectionMenu.visible = false
+	#demonSelectionMenu.self_modulate = Color(1,1,1,0)
 
 func _on_level_ended() -> void:
 	if skip_end_dialog:
@@ -111,6 +125,8 @@ func _on_level_ended() -> void:
 		Dialogic.start(new_end_dialog)
 	#_on_end_dialog_finished()
 
+func get_green_dimension():
+	return Global.game_controller.get_alt_dimension()
 
 func _on_end_dialog_finished() -> void:
 	print("This Is makign level switcher visible")
@@ -132,17 +148,24 @@ func _process(delta: float) -> void:
 		if progress_timer_wait_time <= 0:
 			print("Call Progress Time Passed")
 			
-			progress_timer_wait_time = og_progress_timer_wait_time - 2 
+			progress_timer_wait_time = og_progress_timer_wait_time
 			check_progress = false
 			print("Time Up", check_progress)
 			progress_time_passed()
+	
+func set_auto_advance_toolTip(new_progress_wait_time:float)->void:
+	progress_timer_wait_time = new_progress_wait_time
+	og_progress_timer_wait_time = new_progress_wait_time
+	check_progress = true 
+		
 	
 func show_zombie_tutorial()->void:
 	pass
 	
 	
 func progress_time_passed()->void:
-	pass
+	if auto_advance:
+		advance_tutorial()
 
 ## Hides all demon buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]
@@ -279,7 +302,7 @@ func _filter_tutorial_input(event: InputEvent) -> void:
 	if step.has("input_filter"):
 		step["input_filter"].call(event)
 	
-func attach_script_to_sway_children(make_green : bool = false) -> void:                                       #script_path: String) -> void:
+func attach_script_to_sway_children(_make_green : bool = false) -> void:                                       #script_path: String) -> void:
 	var coral_node := get_node("Environment/Coral")
 	#print("Should Attach Scripts to Children of ", coral_node)
 	if coral_node == null:

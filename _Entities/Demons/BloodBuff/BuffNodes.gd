@@ -32,7 +32,7 @@ enum Demons { OCCULUM,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 # Adjustable variable to store which demons this demon can buff
 var giveBuffTo: Array = ["Occulum","Crawler","SpinalOcculum","Wyrm","Hive","Maw","None","None"]
 
-var buffedDemons: Array = []
+var buffedDemons: Array = [Demon]
 
 func _ready() -> void:
 	# Make sure all the bloodTiles are not visible

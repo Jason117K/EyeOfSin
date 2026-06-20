@@ -104,7 +104,7 @@ func baal_buff()->void:
 	super()
 	baal_halo.play("back")
 	
-func receive_buff(bufferName) -> void:
+func receive_buff(bufferName:Demon) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
@@ -149,7 +149,7 @@ func _activate_wyrm_buff() -> void:
 func debuff() -> void:
 	super()
 
-func unlock_new_buff(demonName)->void:
+func unlock_new_buff(demonName:String)->void:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":
@@ -184,9 +184,6 @@ func _cleanup() -> void:
 func _on_play_anim_timer_timeout() -> void:
 	pass
 
-func _on_mouse_entered() -> void:
-	#$PreviewNodes/AnimatedSprite2D.visible = false
-	$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false

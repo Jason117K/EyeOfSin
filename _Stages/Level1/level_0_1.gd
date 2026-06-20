@@ -24,6 +24,8 @@ const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive",
 var first_hover := false
 var demon_never_clicked := true 
 
+var unlock_count := 0 
+
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -100,10 +102,10 @@ func _setup_tutorial() -> void:
 			#"name": "EXPLAIN_CALL_WAVE_EARLY",
 			##"enter": _start_wave_2_both_dimensions,
 		#},
-		{
-			"name": "EXPLAIN_SEVERED_ZOMBIE",
-			"enter": _start_explain_severed_zombie,
-		},
+		#{
+			#"name": "EXPLAIN_SEVERED_ZOMBIE",
+			#"enter": _start_explain_severed_zombie,
+		#},
 	])
 #endregion
 
@@ -236,13 +238,14 @@ func _start_explain_blood_cost() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, false)
 	toolTips.add_pulsing_button_highlight(Global.get_blood_panel())
 	print("Set Check Progress True 1 ")
-	check_progress = true 
+	set_auto_advance_toolTip(3)
+	#check_progress = true 
 
 func _start_explain_demon_hover() -> void:
 	toolTips.stop_glow_pulse(Global.get_blood_panel())
 	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_HOVER, false)
-	
-	check_progress = true 
+	set_auto_advance_toolTip(0.1)
+	#check_progress = true 
 	print("Set Check Progress True 2", check_progress)
 	pass
 
@@ -300,7 +303,12 @@ func start_game() -> void:
 	_start_wave_1()
 
 func show_zombie_tutorial()->void:
-	_start_explain_basic_zombie()
+	unlock_count += 1 
+	match unlock_count:
+		1:
+			_start_explain_basic_zombie()
+		2:
+			_start_explain_severed_zombie()
 
 func _start_explain_basic_zombie() -> void:
 	print("Explain Basic Zombie")
@@ -310,7 +318,7 @@ func _start_explain_basic_zombie() -> void:
 
 func _start_explain_health()->void:
 	toolTips.add_pulsing_button_highlight(Global.get_health_panel())
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_HEALTH,true,Vector2(0,-6))
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_HEALTH,true,Vector2(0,-26))
 
 func _continue_wave_1()->void:
 	print("Should Stop the Glow Pulse")
@@ -441,7 +449,7 @@ func _on_wave_started(wave_index: int) -> void:
 			#demonManager.add_blood(50)
 		2: #Last Wave
 			demonManager.add_blood(25)
-			go_to_step("EXPLAIN_SEVERED_ZOMBIE")
+			#go_to_step("EXPLAIN_SEVERED_ZOMBIE")
 			
 
 

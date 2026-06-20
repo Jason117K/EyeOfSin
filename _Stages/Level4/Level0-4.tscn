@@ -3600,10 +3600,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xw2pb")
+isGreenDimension = null
 new_end_dialog = "res://_Assets/Dialog/level_04_end_dialog.dtl"
 wave2StartTime = 55
 wave3StartTime = 80
 wave4StartTime = 70
+debug = null
+skip_tutorials = null
+progress_timer_wait_time = null
+skip_end_dialog = null
 
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false
@@ -3923,7 +3928,7 @@ offset_right = 183.0
 offset_bottom = 55.0
 script = ExtResource("63_gs3u6")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

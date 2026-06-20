@@ -322,9 +322,7 @@ func undo_baal_buff()->void:
 
 # --- Preview ---
 
-func _on_mouse_entered() -> void:
-	if can_show_preview:
-		$PreviewNodes.visible = true
+
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
 

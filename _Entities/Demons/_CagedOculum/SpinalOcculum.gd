@@ -71,7 +71,7 @@ func baal_buff()->void:
 	baal_halo.play("top_glow")
 	
 	
-func receive_buff(bufferName) -> void:
+func receive_buff(bufferName:Demon) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
@@ -98,7 +98,7 @@ func debuff() -> void:
 	#healthComp.debuff()
 	super()
 
-func unlock_new_buff(demonName)->void:
+func unlock_new_buff(demonName:String)->void:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":
@@ -147,9 +147,8 @@ func _on_area_2d_area_entered(this_area: Area2D) -> void:
 # --- Preview ---
 
 func _on_mouse_entered() -> void:
-	#$PreviewNodes/AnimatedSpriteComponent2.visible = false
-	if can_show_preview:
-		$PreviewNodes.visible = true
+	super()
+	print(self.global_position)
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false

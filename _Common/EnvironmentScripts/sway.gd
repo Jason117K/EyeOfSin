@@ -3,7 +3,7 @@ extends Sprite2D
 var set_shader: bool = false
 var shader_time := 0.0
 var paused := false
-var sway_shader
+var sway_shader : VisualShader
 
 func _ready() -> void:
 	#print(name ," READY ")

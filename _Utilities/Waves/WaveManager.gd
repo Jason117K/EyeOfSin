@@ -24,7 +24,7 @@ signal level_ended
 var can_start: bool = true
 
 var _spawners: Array = []
-var _wave_previews: Array = []
+var _wave_previews: Array = [Node]
 var _current_wave: int = -1
 var _total_waves: int = 0
 @onready var _spawners_finished: int = 0

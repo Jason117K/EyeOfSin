@@ -84,7 +84,7 @@ func baal_buff()->void:
 	baal_halo.play("top_glow")
 	
 	
-func receive_buff(newDemon) -> void:
+func receive_buff(newDemon:Demon) -> void:
 	var demonName: String = (newDemon.get_demon_true_name())
 	if !isBuffed:
 		super(demonName)
@@ -120,7 +120,7 @@ func debuff() -> void:
 	super()
 
 
-func unlock_new_buff(demonName)->void:
+func unlock_new_buff(demonName:String)->void:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":
@@ -161,10 +161,8 @@ func _on_spawn_spiderling_timeout() -> void:
 # --- Preview ---
 
 func _on_mouse_entered() -> void:
-	#$PreviewNodes/Spider.visible = false
-
+	super()
 	Global.game_controller.get_active_dimension().demon_hover()
-	$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false

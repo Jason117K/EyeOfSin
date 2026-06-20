@@ -117,6 +117,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					pass
 				Global.hide_notification_bar()
 				return 
+			print("ParentName is ", parentName)
 			# Place the demon assuming it's within bounds of the level
 			if(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
@@ -128,7 +129,11 @@ func _unhandled_input(event: InputEvent) -> void:
 					#print("Place Demon " , grid_pos)
 					Global.game_controller.place_empty_in_alt_scene(grid_pos)
 					place_demon(grid_pos)
-				
+			elif(parentName.contains("Level03")):
+				if(grid_pos.x<769 && grid_pos.y<=240 && grid_pos.y > 80):
+					#print("Place Demon " , grid_pos)
+					Global.game_controller.place_empty_in_alt_scene(grid_pos)
+					place_demon(grid_pos)				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
 					#print(get_parent(), "QQOtro Place Demon " , grid_pos)
@@ -163,9 +168,9 @@ func clear_space_alt(passed_grid_pos: Vector2) -> void:
 	
 func detect_demon(passed_grid_pos: Vector2) -> bool:
 	#print("QQ Grid Map is ", grid_map)
-	var demon_node = grid_map.get(passed_grid_pos)
+	#var demon_node = grid_map.get(passed_grid_pos)
 	
-	if demon_node != null:
+	if grid_map.get(passed_grid_pos) != null:
 		#print("Demon Node is , ",demon_node, " returning true" )
 		return true
 	else:
@@ -255,7 +260,7 @@ func place_demon(grid_pos: Vector2) -> void:
 		#print("No demon selected!")
 		return
 	
-	var demon_instance = selected_demon_scene.instantiate()
+	var demon_instance :Demon= selected_demon_scene.instantiate()
 	
 	demon_deselected.connect(demon_instance.demon_deselected)
 	selection_menu.demon_deselected.connect(demon_instance.demon_deselected)
@@ -413,7 +418,7 @@ func _on_SetBlood_timeout() -> void:
 		get_parent().get_node("UILayer").set_blood(blood_points)
 
 func swap_heart() -> void:
-	print("Hero Demon Is ", hero_demon)
+	#print("Hero Demon Is ", hero_demon)
 	if hero_demon != null:
 		if "Alternate" in get_parent().name :
 			#hero_demon.add_to_group("Green")

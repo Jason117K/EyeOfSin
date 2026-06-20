@@ -41,27 +41,46 @@ func _setup_tutorial() -> void:
 			"name": "EXPLAIN_SPINAL_OCCULUM",
 			"enter": _start_explain_spinal_occulum,
 		},
+		#{
+			#"name": "FORCE_SELECT_SPINALOCCULUM",
+			#"enter": _start_force_select_spinal_occulum,
+			#"input_filter": _filter_block_keyboard,
+		#},
+		#{
+			#"name": "FORCE_PLACE_SPINAL_OCCULUM",
+			#"enter": _start_force_place_spinal_occulum,
+			#"input_filter": _filter_block_deselect_and_swap,
+		#},
 		{
-			"name": "FORCE_SELECT_SPINALOCCULUM",
-			"enter": _start_force_select_spinal_occulum,
-			"input_filter": _filter_block_keyboard,
-		},
-		{
-			"name": "FORCE_PLACE_SPINAL_OCCULUM",
-			"enter": _start_force_place_spinal_occulum,
+			"name": "EXPLAIN_PRE_PLACED_SPINAL",
+			"enter": _explain_pre_placed_spinal_occulum,
 			"input_filter": _filter_block_deselect_and_swap,
-		},
-		{
-			"name": "EXPLAIN_UNHALLOWER",
-			"enter": _start_explain_unhallower,
-			"input_filter": _filter_block_keyboard,
 		},
 		{
 			"name": "RESUME_GAME",
 			"enter": _resume_game,
 			"input_filter": _filter_block_keyboard,
 		},
-
+		#{
+			#"name": "EXPLAIN_UNHALLOWER",
+			#"enter": _start_explain_unhallower,
+			#"input_filter": _filter_block_keyboard,
+		#},
+		{
+			"name": "RESUME_GAME",
+			"enter": _resume_game,
+			"input_filter": _filter_block_keyboard,
+		},
+		{
+			"name": "SPINAL_OCCULUM_UNLOCKED",
+			"enter": _spinal_occulum_unlocked,
+#			"input_filter": _filter_block_keyboard,
+		},
+		{
+			"name": "HIDE_SPINAL_HIGHLIGHT",
+			"enter": _hide_spinal_occulum_highlight,
+#			"input_filter": _filter_block_keyboard,
+		},
 	])
 #endregion
 
@@ -150,11 +169,11 @@ func finish_ready() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	_setup_tutorial()
 	demonSelectionMenu.canSwapScenes = true
-	print("Go To Step Maw Select")
+	print("Go To Step Spinal Occulum Select")
 	go_to_step("EXPLAIN_SPINAL_OCCULUM")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
-	Global.unHideDemonSelectionMenu()
+	#Global.unHideDemonSelectionMenu()
 	Global.unhide_ui_layer()
 	
 func _start_free_play() -> void:
@@ -180,61 +199,82 @@ func _input(event: InputEvent) -> void:
 #region Step Entry Functions (same sequential order as definitions above)
 
 func _start_explain_spinal_occulum() -> void:
+	await get_tree().physics_frame
+
 	print("Explain Spinal Occulum Demon")
 	Global.hide_notification_bar()
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SPINAL_OCCULUM)
-	toolTips.set_visual_tutorial_visual(spinal_occulum_demo_scene.instantiate(),true,Vector2(0,0))
+	
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SPINAL_OCCULUM, true, "NEW DEMON : SPINAL-OCCULUM")
+	toolTips.set_visual_demon_tutorial_visual(spinal_occulum_demo_scene.instantiate(),true,Vector2(0,-16))
+	hide_demon_selection_menu()
 
-func _start_force_select_spinal_occulum()->void:
-	print("Starting Force Select")
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_DEMON, false)
-	hide_all_demon_buttons_with_exception(["SpinalOcculum"])
-	demonSelectionMenu.add_pulsing_button_highlight(spinal_occulum_button)
-	demonSelectionMenu.get_spinal_occulum_button().show()
+#func _start_force_select_spinal_occulum()->void:
+#
+	#show_demon_selection_menu()
+	#print("Starting Force Select")
+	##Global.unHideDemonSelectionMenu()
+	#toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_DEMON, false)
+	#hide_all_demon_buttons_with_exception(["SpinalOcculum"])
+	#demonSelectionMenu.add_pulsing_button_highlight(spinal_occulum_button)
+	#demonSelectionMenu.get_spinal_occulum_button().show()
+#
+#func _start_force_place_spinal_occulum()->void:
+	#hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
+	#toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
+	#demonSelectionMenu.stop_glow_pulse(spinal_occulum_button)
 
-func _start_force_place_spinal_occulum()->void:
+func _explain_pre_placed_spinal_occulum()->void:
+	green_dimension = get_green_dimension()
+	print("Explain Pre Placed Spinal Occulum")
+	show_demon_selection_menu()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
-	demonSelectionMenu.stop_glow_pulse(spinal_occulum_button)
-
+	demonManager.add_blood(150)
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(176,240))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(176,112))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(176,176))
+	await get_tree().physics_frame
+	get_green_dimension().pre_place_spinal_occulum()
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_PRE_PLACED_LVL2, false)
+	auto_advance = true 
+	set_auto_advance_toolTip(7)
 
 func _start_explain_unhallower() -> void:
+	auto_advance = false
 	bucketHeadExplained = true
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE)
-	toolTips.set_visual_tutorial_visual(buckethead_zombie_demo_scene.instantiate())
+	toolTips.set_visual_tutorial_visual(buckethead_zombie_demo_scene.instantiate(),true,Vector2(0,32))
+
 
 func _resume_game()->void:
-	pass
+	toolTips.hide()
 	
 	
-func _start_force_select_maw() -> void:
-	print("Force Selecting Maw")
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
+func _spinal_occulum_unlocked()->void:
+	print("Spinal Occulum Unlocked")
+	green_dimension._spinal_occulum_unlocked()
+	auto_advance = true 
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
+	demonSelectionMenu.highlight_demon_card("SpinalOcculum")
+	toolTips.set_basic_tutorial_text(TUTORIAL_SPINAL_OCCULUM_UNLOCKED, false)
+	set_auto_advance_toolTip(7)
 
-	hide_all_demon_buttons_with_exception(["Maw"])
-
-	if maw_pulse_added == false:
-		print("Add Glow Pulse SD")
-		demonSelectionMenu.add_pulsing_button_highlight(maw_button)
-		maw_pulse_added = true
-	#show_spotlight_at_node(maw_button)
-	waveManager.can_start = false
-	demonSelectionMenu.canSwapScenes = false
-
-
-func _start_force_place_maw() -> void:
-	print("Force Placing Maw")
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_MAW, false)
-
-	#demonSelectionMenu.remove_button_highlight(maw_button)
-	print("Stop GLOW Pulse")
-	demonSelectionMenu.stop_glow_pulse(maw_button)
-	#hide_spotlight()
-
+func _hide_spinal_occulum_highlight()->void:
+	print("Hide Spinal Occulum Highlight")
+	demonSelectionMenu.unhighlight_demon_card("SpinalOcculum")
+	green_dimension._hide_spinal_occulum_highlight()
+	toolTips.hide()
+	
 
 func _start_tutorial_p1_done() -> void:
+	print("Start Tutorial P1 Done")
 	toolTips.hide()
-	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw"])
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
 
@@ -252,12 +292,9 @@ func start_game() -> void:
 	
 	green_dimension.start_game()
 
-
-func _start_explain_fleshEater_zombie() -> void:
-	print("Should Explain Flesheaster")
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_FLESHEATER)
-	toolTips.set_visual_tutorial_visual(fleshEater_zombie_demo_scene.instantiate())
-
+func show_zombie_tutorial()->void:
+	_start_explain_unhallower()
+	 
 
 func _start_explain_codex() -> void:
 	#hbox.get_node("Codex").visible = true
@@ -303,7 +340,7 @@ func _on_tooltip_hidden() -> void:
 			#print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
 			#go_to_step("FORCE_PLACE_SPINAL_OCCULUM")
 		"EXPLAIN_SPINAL_OCCULUM":
-			go_to_step("FORCE_SELECT_SPINALOCCULUM")
+			go_to_step("EXPLAIN_PRE_PLACED_SPINAL")
 		"FORCE_PLACE_SPINAL_OCCULUM":
 			pass
 		"EXPLAIN_UNHALLOWER":
@@ -338,9 +375,10 @@ func _on_wave_started(wave_index: int) -> void:
 		1:
 			pass
 		2: 
-			pass
+			go_to_step("SPINAL_OCCULUM_UNLOCKED")
 		3:
-			go_to_step("EXPLAIN_UNHALLOWER")
+			pass
+			#go_to_step("EXPLAIN_UNHALLOWER")
 			
 			
 func _on_maw_button_pressed() -> void:
@@ -355,6 +393,8 @@ func _on_maw_placed(_grid_pos: Vector2) -> void:
 
 func _on_codex_button_pressed() -> void:
 	go_to_step("TUTORIAL_P2_DONE")
+
+
 
 
 #func _on_wave_started(wave_index: int) -> void:
@@ -385,5 +425,5 @@ func show_only_demon_buttons(visible_containers: Array) -> void:
 
 
 func show_guide() -> void:
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 6)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 7)
 #endregion

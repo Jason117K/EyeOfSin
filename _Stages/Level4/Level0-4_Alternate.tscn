@@ -1002,7 +1002,6 @@ offset_right = 150.0
 offset_bottom = 150.0
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("4_i0lp8")]
-visible = false
 layout_mode = 1
 is_alt = true
 

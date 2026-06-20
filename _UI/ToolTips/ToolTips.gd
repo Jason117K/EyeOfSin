@@ -42,6 +42,11 @@ var demon_nine_patch_texture := preload("res://_Entities/Demons/Cards/Empty_Disp
 
 var char_count : int
 var index : int
+var og_visual_tutorial_location : Vector2
+var og_demon_visual_tutorial_vbox_container_position : Vector2
+
+
+
 # Thickness of the highlight border (in pixels)
 @export var highlight_border_thickness: int = 1
 
@@ -61,6 +66,10 @@ func _ready() -> void:
 		visualTutorialButton.pressed.connect(_on_visual_tutorial_understood_button_pressed)
 
 	index = visualTutorialVisual.get_index()
+	
+	og_visual_tutorial_location = visualTutorialContainer.position
+	og_demon_visual_tutorial_vbox_container_position = demon_visual_tutorial_vbox_container.position
+	
 	
 func set_basic_tutorial_text(newFile: String, shouldPause: bool, location : Vector2 = Vector2(0,0)) -> void:
 	#visual_tutorial_nine_patch.hide()
@@ -168,8 +177,10 @@ func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = 
 	if show_button:
 		visualTutorialButton.show()
 	else:
-		visualTutorialButton.hide()	
-	visualTutorialContainer.position = visualTutorialContainer.position + location
+		visualTutorialButton.hide()
+
+		
+	visualTutorialContainer.position = og_visual_tutorial_location + location
 	if zombie_visual:
 		visual_tutorial_panel_container.get_theme_stylebox("panel").texture = zombie_nine_patch_texture
 	else:
@@ -187,7 +198,7 @@ func set_visual_demon_tutorial_visual(newVisual: CenterContainer, show_button: b
 	else:
 		demon_visual_tutorial_button.hide()
 		
-	demon_visual_tutorial_vbox_container.position = demon_visual_tutorial_vbox_container.position + location
+	demon_visual_tutorial_vbox_container.position = og_demon_visual_tutorial_vbox_container_position + location
 
 func new_demon_visual_minimum_size(new_size:Vector2 = Vector2.ZERO)->void:
 	demon_visual_tutorial_panel_container.custom_minimum_size = new_size
@@ -227,7 +238,7 @@ func hide_self()->void:
 
 
 
-func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
+func add_pulsing_button_highlight(button:Node, should_pulse : bool = true) -> void:
 	if not button:
 		push_error("Button node is null!")
 		return
@@ -246,13 +257,13 @@ func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
 	
 
 	button.add_child(panel)
-	for child in button.get_children():
-		#print(button, " children are ", child)
-		pass
+	#for child in button.get_children():
+		##print(button, " children are ", child)
+		#pass
 
 
 	# Expand slightly beyond the button to create a border effect
-	var margin := highlight_border_thickness #+ 4
+	#var margin := highlight_border_thickness #+ 4
 	#panel.position = Vector2(-margin, -margin)
 	#panel.position = Vector2(0,0)
 	panel.size = button.size #+ Vector2(margin * 2, margin * 2)
@@ -284,13 +295,13 @@ func add_pulsing_button_highlight(button, should_pulse : bool = true) -> void:
 		start_glow_pulse(button, panel, highlight_style)
 
 
-func start_glow_pulse(button, _panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
+func start_glow_pulse(button:Node, _panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
 	if button.has_meta("glow_tween"):
 		var old_tween: Tween = button.get_meta("glow_tween")
 		if old_tween and old_tween.is_valid():
 			old_tween.kill()
 
-	var tween = button.create_tween()
+	var tween :Tween = button.create_tween()
 	tween.set_loops()
 
 	tween.tween_method(
@@ -312,7 +323,7 @@ func start_glow_pulse(button, _panel: Panel, style: StyleBoxFlat, glow_color: Co
 	
 		
 	
-func stop_glow_pulse(button) -> void:
+func stop_glow_pulse(button:Node) -> void:
 	#print("STOP PULSE")
 	if button.has_meta("glow_tween"):
 		var tween: Tween = button.get_meta("glow_tween")

@@ -9,7 +9,7 @@ func _ready() -> void:
 	creditsText.append_text("Gameplay Designers : Augustus Sabino, Jason King\n")
 	creditsText.append_text("Artists : Tobi, Jason King\n")
 	creditsText.append_text("Writers : Meg Thurmeier., Jason King\n")
-	creditsText.append_text("Project Management : Darrow Mohammed-Hall\n")
+	creditsText.append_text("Project Management : Darrow Mohammadi-Hall\n")
 	creditsText.append_text("Marketing : Kamryn Driver, Jason King\n")
 	creditsText.append_text("Music : August, Autumn Kirkpatrick\n")
 	creditsText.append_text("SFX : Sourced from Zapsplat\n")

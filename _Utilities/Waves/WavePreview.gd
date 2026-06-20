@@ -79,7 +79,7 @@ func _ready() -> void:
 	#_on_Area2D_mouse_entered()
 
 func reset_panel_size()->void:
-	var right_edge = zombie_preview_panel.position.x + zombie_preview_panel.size.x
+	var right_edge :float = zombie_preview_panel.position.x + zombie_preview_panel.size.x
 	zombie_preview_panel.reset_size()
 	zombie_preview_panel.position.x = right_edge - zombie_preview_panel.size.x
 	preview_setup.emit()

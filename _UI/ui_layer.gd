@@ -92,10 +92,8 @@ func set_zombie_unlock_notif(unlocked_zombie : String)->void:
 	set_zombie_icon_texture(unlocked_zombie)
 
 func set_zombie_icon_texture(unlocked_zombie:String)->void:
-	for zombie_icon in Global.all_zombie_notif_icons:
-		if zombie_icon.get_name().containsn(unlocked_zombie):
-			new_zombie_icon.texture = zombie_icon
-			
+	new_zombie_icon.texture = Global.zombie_notif_icons[unlocked_zombie]
+
 #	new_zombie_icon.texture = GlobalResourceLoader.get_zombie_image(all_zombie_types[unlocked_zombie])
 
 

@@ -66,6 +66,7 @@ max_basic_tutorial_characters = 115
 tooltip_dissappear_wait_time = 9
 
 [node name="BasicTutorialMessage" type="Control" parent="." unique_id=504267282]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -129,6 +130,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ygqpy")
 text = "UNDERSTOOD"
 
 [node name="VisualTutorialVBox" type="VBoxContainer" parent="." unique_id=771461667]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -235,6 +237,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="VisualTutorialPanelContainer" type="PanelContainer" parent="DemonVisualTutorialVBox" unique_id=1813605347]
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0

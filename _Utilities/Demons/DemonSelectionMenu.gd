@@ -95,9 +95,12 @@ const MAX_SHADOW_OFFSET := 8.0
 
 var doubleSpeed := true
 var can_click : bool = true 
+																						
+@onready var all_demon_buttons_dict := {"Occulum" : OcculumButton, "Crawler" : CrawlerButton, "SpinalOcculum":SpinalOcculumButton,
+								"Wyrm": WyrmButton, "Hive":HiveButton, "Maw":MawButton}
 
 signal demon_deselected 
-signal demon_selected
+signal demon_selected(Demon)
 
 func _ready() -> void:
 	is_alt = get_parent().isGreenDimension
@@ -227,9 +230,10 @@ func deselect_demon() -> void:
 func on_demon_button_pressed(demon_scene:PackedScene, demon_button:Control, demon_label:Control) -> void:
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
-	demon_selected.emit()
+	
 	selected_demon = demon_scene
 	var temp_instance :Demon= demon_scene.instantiate()
+	demon_selected.emit(temp_instance)
 	create_preview(demon_scene)
 	add_button_highlight(demon_button)
 	temp_instance.queue_free()
@@ -265,6 +269,15 @@ func _on_WyrmButton_pressed() -> void:
 func _on_HiveButton_pressed() -> void:
 	on_demon_button_pressed(hive_scene,HiveButton,hiveCostLabel)
 
+func highlight_demon_card(card_name : String)->void:
+	print("All Demon Buttons Dict is ", all_demon_buttons_dict)
+	var button_to_highlight :TextureButton = all_demon_buttons_dict[card_name]
+	Global.add_pulsing_button_highlight(button_to_highlight,true)
+	print("Button to Highlight is ", button_to_highlight)
+
+func unhighlight_demon_card(card_name : String)->void:
+	var button_to_highlight :TextureButton= all_demon_buttons_dict[card_name]
+	Global.remove_pulsing_button_highlight(button_to_highlight)
 
 func create_preview(demon_scene:PackedScene) -> void:
 	#print("MAKE A PREVIEW", demon_scene)
@@ -396,9 +409,9 @@ func _process(delta:float) -> void:
 						sprite.play(sprite.autoplay)
 					else:
 						for demon_tile_area in sprite.get_overlapping_demon_areas():
-							print("Overlapping Area is ", demon_tile_area)
+							#print("Overlapping Area is ", demon_tile_area)
 							if demon_tile_area.is_in_group("BloodTile") && demon_tile_area.visible == true:
-								print("RECEIVE BUFF FROM ", demon_tile_area.get_parent().get_parent().get_demon_true_name())
+								#print("RECEIVE BUFF FROM ", demon_tile_area.get_parent().get_parent().get_demon_true_name())
 								#demon_tile_area.get_parent().get_parent().get_demon_true_name()
 								sprite.receive_buff(demon_tile_area.get_parent().get_parent().get_demon_true_name()) #Get True Name
 					

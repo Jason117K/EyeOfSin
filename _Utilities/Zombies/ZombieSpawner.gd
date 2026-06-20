@@ -92,7 +92,7 @@ func _build_pool(wave_index: int) -> Array[PackedScene]:
 				child._on_Area2D_mouse_entered()
 	return pool
 
-func emit_show_preview():
+func emit_show_preview()->void:
 	show_preview_icon.emit()
 
 func _spawn_next() -> void:

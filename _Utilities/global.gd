@@ -64,7 +64,7 @@ var severed_spriteframes := preload("res://_Entities/Zombies/_Severed/Severed.tr
 
 var reborn_icon := preload("res://_Entities/Zombies/Notif_Icons/BasicZombie.png")
 var severed_icon := preload("res://_Entities/Zombies/Notif_Icons/ConeHeadZombie.png")
-var unhallower_icon := preload("res://_Entities/Zombies/Notif_Icons/BucketHeadZombie.png")
+var unhallower_icon := preload("res://_Entities/Zombies/_Unhallower/Unhallower.png")
 var reanimator_icon := preload("res://_Entities/Zombies/Notif_Icons/SummonerZombie.png")
 var wretch_icon := preload("res://_Entities/Zombies/Notif_Icons/BackUpDancer.png")
 var sundered_icon := preload("res://_Entities/Zombies/Notif_Icons/PoleVaultZombie.png")
@@ -75,6 +75,10 @@ var amalgam_icon := preload("res://_Entities/Zombies/Notif_Icons/ScreenDoorZombi
 var all_zombie_notif_icons : Array = [reborn_icon,severed_icon,unhallower_icon,reanimator_icon,wretch_icon,
 								sundered_icon,erupter_icon,flesheater_icon,amalgam_icon,]
 
+var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed_icon,"Unhallower": unhallower_icon,
+										"Reanimator":reanimator_icon, "Wretch":wretch_icon,"Sundered":sundered_icon,
+										"Erupter":erupter_icon,"Flesheater":flesheater_icon,"Amalgam":amalgam_icon}
+										
 var occulum_special_description := "res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt"
 var crawler_special_description :="res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt"
 var wyrm_special_description := "res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt"
@@ -244,6 +248,8 @@ var current_synergies : Array
 var demon_codex : Control 
 var should_navigate_demon_codex : bool 
 
+signal swap_scenes_signal
+
 func _process(delta: float) -> void:
 	if get_tree().paused:
 		return
@@ -365,6 +371,7 @@ func hideDemonSelectionMenu() -> void:
 	for menu in demon_selection_menus:
 		if menu != null:
 			menu.visible = false 
+			print(menu , " demon selection menu hide")
 			
 	#if demon_selection_menu != null:
 		#demon_selection_menu.visible = false
@@ -382,9 +389,11 @@ func unHideDemonSelectionMenu() -> void:
 			if on_purple:
 				if !menu.is_alt:
 					menu.visible = true 
+					print(menu , " demon selection menu show")
 			elif !on_purple:
 				if menu.is_alt:
-					menu.visible = true 
+					menu.visible = true
+					print(menu , " demon selection menu show") 
 						 
 	#if demon_selection_menu != null:
 		#demon_selection_menu.visible = true
@@ -409,7 +418,7 @@ func reset_demon_managers()->void:
 	demon_managers = demon_managers_temp
 	
 func register_syn_ability_instance(new_syn_ability : Area2D)->void:
-	
+	print("Register Syn Ability ", new_syn_ability)
 	if new_syn_ability.is_in_group("Purple"):
 		if purple_syn_ability == null:
 			registered_syn_abilities.append(new_syn_ability)
@@ -719,6 +728,7 @@ func swap_scenes() -> void:
 	adjust_ui_layer()					
 	swap_portal_button()
 	swap_hero_demon()
+	swap_scenes_signal.emit()
 	#demon_manager.swap_heart()
 
 func swap_hero_demon()->void:

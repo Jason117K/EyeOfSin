@@ -10,6 +10,8 @@ extends Node
 
 enum ChargeState { READY, ACTIVE, COOLDOWN }
 
+
+
 # One charge per dimension ("Purple" / "Green"), sharing a single card + bar.
 # Cooldown is driven by an accumulator advanced every frame in _process by
 # (delta * rate). The recharge rate is recomputed fresh each frame from game
@@ -18,12 +20,14 @@ enum ChargeState { READY, ACTIVE, COOLDOWN }
 #   READY    -> can cast
 #   ACTIVE   -> an instance is deployed in the world (its own death_timer runs)
 #   COOLDOWN -> instance gone, recharging; READY again when cooldown_left hits 0
-var charges := {
+var charges :Dictionary = {
 	"Purple": {"state": ChargeState.READY, "instance": null, "cooldown_left": 0.0, "cooldown_duration": 0.0},
 	"Green":  {"state": ChargeState.READY, "instance": null, "cooldown_left": 0.0, "cooldown_duration": 0.0},
 }
 
 var syn_crosshair_active := false
+
+signal syn_sorcery_activated
 
 func _ready() -> void:
 	syn_ability_cooldown.get_button().pressed.connect(set_ability_targeting_active)
@@ -120,6 +124,7 @@ func _input(event: InputEvent) -> void:
 			var color := _current_color()
 			if can_cast(color):
 				print(color, " Syn Ability CLICK")
+				syn_sorcery_activated.emit()
 				activate_syn_ability(get_viewport().get_mouse_position())
 			syn_crosshair_active = false
 

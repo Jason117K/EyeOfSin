@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bhqt5knrhvk4o" path="res://_Assets/UI/Health_Icon1.png" id="4_x5ffb"]
 [ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="5_2o6rf"]
 [ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="8_xuysx"]
-[ext_resource type="PackedScene" uid="uid://cd17phymp0lo1" path="res://_Entities/SynAbility/syn_ability.tscn" id="11_0xt66"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osf5l"]
 bg_color = Color(0.22, 0, 0.0036666107, 1)
@@ -80,9 +79,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 194.0
-offset_top = -86.0
+offset_top = -79.0
 offset_right = 709.0
-offset_bottom = -7.0
 grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/margin_left = 10
@@ -320,7 +318,5 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 script = ExtResource("3_4nnmc")
-
-[node name="SynAbility" parent="." unique_id=1228459711 instance=ExtResource("11_0xt66")]
 
 [connection signal="hidden" from="." to="." method="_on_hidden"]

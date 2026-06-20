@@ -132,7 +132,7 @@ func debuff() -> void:
 	super()
 
 
-func unlock_new_buff(demonName)->void:
+func unlock_new_buff(demonName:String)->void:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":
@@ -480,9 +480,6 @@ func get_out_of_place_nodes() -> Array:
 
 # --- Preview ---
 
-func _on_mouse_entered() -> void:
-	#$PreviewNodes/AnimatedSprite2.visible = false
-	$PreviewNodes.visible = true
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false

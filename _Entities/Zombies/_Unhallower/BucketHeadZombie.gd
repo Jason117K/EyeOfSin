@@ -1,6 +1,10 @@
 extends Zombie
 # BucketHeadZombie.gd
 
+func _ready()->void:
+	super()
+	if Global.gameIsStarted && self.is_demo == false:
+		Global.unlock_zombie("Unhallower")
 
 func get_zombie_name() -> String:
 	return " UNHALLOWER "

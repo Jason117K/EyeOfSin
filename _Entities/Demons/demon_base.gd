@@ -86,7 +86,7 @@ var hit_flash_active : bool = false
 var time_since_hit : float = 0.0 
 
 var all_synergies : Array 
-
+var my_active_dimension : Control
 
 # --- Signals ---
 signal demon_die
@@ -130,6 +130,11 @@ func _ready() -> void:
 	highlight_circle.visibility_changed.connect(_on_highlight_circle_visibility_changed)
 	Global.notification_bar.show_new_demon_notification.connect(hide_highlight)
 	
+	if self.is_in_group("Green"):
+		my_active_dimension = Global.game_controller.get_green_dimension()
+	else:
+		my_active_dimension = Global.game_controller.get_purple_dimension()
+	
 
 func _process(delta: float) -> void:
 	if hit_flash_active:
@@ -159,7 +164,12 @@ func get_special_description_file(this_all_synergies : Array[String],demonName :
 		if synergy_file_name.containsn(demonName):
 			return synergy_file_name 
 	return ""
-	
+
+func _on_mouse_entered() -> void:
+	if can_show_preview && Global.game_controller.get_active_dimension() == my_active_dimension:
+		$PreviewNodes.visible = true
+	else:
+		print("")
 	
 func _init_demon_manager() -> void:
 	var _dm_parent: Node = get_parent()
@@ -209,7 +219,7 @@ func undo_baal_buff()->void:
 
 # Called by children after extracting demonName string from the buffing demon node.
 # Order: guard → healthComp → animSpriteComp → flag set
-func receive_buff(demonName : String) -> void:
+func receive_buff(demonName) -> void:
 	if demonName == truncate_string(self.get_name()):
 		
 		return
@@ -424,16 +434,18 @@ func finish_spawn() -> void:
 func set_spawn_anim_speed(new_speed_speed: float) -> void:
 	animSpriteComp.set_spawn_anim_speed(new_speed_speed)
 
-func demon_selected() -> void:
+func demon_selected(selected_demon : Demon) -> void:
 	if buffNodes == null:
 		return
+	if selected_demon.get_demon_true_name() == self.get_demon_true_name():
+		return 
 	for tile in buffNodes.get_children():
 		if not (tile is Area2D and tile.visible):
 			continue
 		tile.show_preview_square()
 		var my_birth: float = tile.get_area_birth_time()
 		var should_hide := false
-		for other in tile.get_overlapping_areas():
+		for other : Area2D in tile.get_overlapping_areas():
 			if other == self:
 				continue  # don't let Maw/Heart's own body hide its tiles
 			if other.is_in_group("Demons") and not ("Drone" in other.name):
@@ -443,7 +455,7 @@ func demon_selected() -> void:
 				should_hide = true                       # rule 2: older zone wins
 				break
 		if should_hide:
-				tile.hide_preview_square()
+			tile.hide_preview_square()
 				
 func demon_deselected()->void:
 	if buffNodes != null:
@@ -451,6 +463,10 @@ func demon_deselected()->void:
 			if this_buff_area.visible == true && this_buff_area is Area2D:
 				this_buff_area.hide_preview_square()
 
+func get_demon_true_name() -> String:
+	return ""
+	
+	
 func hide_highlight(new_demon_to_highlight : Demon = null)->void:
 	if new_demon_to_highlight != self:
 		highlight_circle.hide()

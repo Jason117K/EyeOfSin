@@ -1,4 +1,1 @@
-Syn abilities are powerful sorceries commanded by Lucretia. 
-Click the icon then click the map to invoke the syn ability.
-Use them at the same time across dimensions for more powerful effects. 
-Use them at different times for faster cooldowns (an ability will recharge faster when it's being used in the other dimension.)
+Lucretia can command powerful [color=red]SYN SORCERIES[/color].

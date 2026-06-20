@@ -46,7 +46,7 @@ func rain_lightning()->void :
 	print("Calling Rain Lightning")
 	zombies_to_lightning_strike = lightning_spawn_area.get_overlapping_areas()
 	zombies_to_lightning_strike.shuffle()
-	currently_available_zombies = zombies_to_lightning_strike.filter(func(z): return z.is_in_group("Zombie"))
+	currently_available_zombies = zombies_to_lightning_strike.filter(func(z:Area2D): return z.is_in_group("Zombie"))
 
 	_strike_batch(currently_available_zombies, max_lightning_per_rain_1)
 	await get_tree().create_timer(lightning_wave_delay).timeout

@@ -175,13 +175,13 @@ func get_demon_animation(demon_type:int)->Resource:
 	return demon_animations[demon_type]
 
 func get_demon_synergy_icon(demon_a:String,demon_b:String, demon_type:int)->CompressedTexture2D:
-	print("Demon A is ",demon_a)
-	print("Demon B is ", demon_b)
+	#print("Demon A is ",demon_a)
+	#print("Demon B is ", demon_b)
 	if demon_b == "Spinalocculum":
 		demon_b = "OccularSpine"
 		
 	for demon_image:CompressedTexture2D in get_demon_image_variations(demon_type):
-		print("Load Path is ", demon_image.load_path)
+		#print("Load Path is ", demon_image.load_path)
 		if demon_image.load_path.containsn(demon_a) && demon_image.load_path.containsn(demon_b):
 			#print("Found D Image ")
 			#print(demon_image)

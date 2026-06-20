@@ -52,7 +52,7 @@ func getIsGreenDimension() -> bool:
 
 
 func start_game() -> void:
-	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler"])
 	for node in get_parent().get_children():
 		if node.has_method("getIsPurpleDimension"):
 			purple_dimension = node
@@ -61,3 +61,25 @@ func start_game() -> void:
 
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 7)
+	
+func _spinal_occulum_unlocked()->void:
+	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
+	demonSelectionMenu.highlight_demon_card("SpinalOcculum")
+	toolTips.set_basic_tutorial_text(TUTORIAL_SPINAL_OCCULUM_UNLOCKED, false)
+	
+func _hide_spinal_occulum_highlight()->void:
+	print("Green Hide Spinal Occulum Highlight")
+	demonSelectionMenu.unhighlight_demon_card("SpinalOcculum")
+	toolTips.hide()
+
+
+func pre_place_spinal_occulum()->void:
+	demonManager.add_blood(150)
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(304,112))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(304,176))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(304,240))

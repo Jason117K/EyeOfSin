@@ -18,6 +18,7 @@ func spawn_done() -> void:
 		animation = currentAnim
 		play()
 		spawnAnimDone = true 
+		demon.can_show_preview = true 
 
 func _on_AnimatedSprite_frame_changed() -> void:
 	emit_signal("frame_changed_signal", animation, frame)

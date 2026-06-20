@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="5_kni87"]
 [ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="6_i34nt"]
 [ext_resource type="Texture2D" uid="uid://cjaxfiulbbg2q" path="res://_Entities/Demons/Icons/Wyrm_Crawler.png" id="7_krodo"]
+[ext_resource type="StyleBox" uid="uid://b55eypceuy8cq" path="res://_UI/purple_button_border.tres" id="8_kpiwl"]
 [ext_resource type="Texture2D" uid="uid://1vv56xu5e06h" path="res://_Entities/Zombies/Notif_Icons/BasicZombie.png" id="8_krodo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i34nt"]
@@ -99,6 +100,7 @@ text = "10"
 horizontal_alignment = 1
 
 [node name="DemonUnlockedButton" type="Button" parent="." unique_id=178306112]
+visible = false
 layout_mode = 0
 offset_left = 2.8037376
 offset_top = 57.943916
@@ -159,7 +161,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = ExtResource("6_i34nt")
+theme_override_styles/panel = ExtResource("8_kpiwl")
 
 [node name="MarginContainer" type="MarginContainer" parent="ZombieUnlockedButton/NewUnlock_Panel" unique_id=1172895514]
 layout_mode = 2

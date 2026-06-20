@@ -83,7 +83,7 @@ func _ready() -> void:
 	#else:
 		#push_warning("No sprite assigned to animate!")
 		
-	var scale_x = laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
+	var scale_x :float= laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
 	laserShootComp2.max_length =  attack_ray.target_position.x / scale_x
 	laserShootComp1.max_length =  attack_ray.target_position.x / scale_x
 
@@ -170,7 +170,7 @@ func debuff() -> void:
 		#laserShootComp2.unBloodBuff()
 	super()
 
-func unlock_new_buff(demonName)->void:
+func unlock_new_buff(demonName:String)->void:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":
@@ -250,9 +250,7 @@ func baal_buff()->void:
 
 # --- Preview ---
 
-func _on_mouse_entered() -> void:
-	if can_show_preview:
-		$PreviewNodes.visible = true
+
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false

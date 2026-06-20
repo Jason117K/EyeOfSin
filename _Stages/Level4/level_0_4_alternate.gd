@@ -13,11 +13,19 @@ var purple_dimension: Control
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
+const TUTORIAL_EXPLAIN_SYN_ABILITY_5 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_5.txt"
+const TUTORIAL_EXPLAIN_SYN_ABILITY_6 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_6.txt"
+const TUTORIAL_EXPLAIN_SYN_ABILITY_7 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_7.txt"
+
+var _on_step_6 := false 
+var _on_step_7 := false 
+
 func _ready() -> void:
 	super()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	attach_script_to_sway_children()
 	_configure_waves()
+	#toolTips.ToolTipHid.connect(_on_tooltip_hidden)
 
 func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{"Reborn":6,"Severed":2},
@@ -60,4 +68,53 @@ func start_game() -> void:
 
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 11)
+
+func _start_explain_syn_ability_5()->void:
+	print("Start Syn 5")
+	Global.syn_ability_manager.syn_sorcery_activated.connect(_on_syn_sorcery_activated_again)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_5,false)
+
+func _on_syn_sorcery_activated_again()->void:
+	_start_explain_syn_ability_6()
+
+func _start_explain_syn_ability_6()->void:
+	print("Start Syn 6")
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_6,false)
+	auto_advance = true 
+	set_auto_advance_toolTip(5)
+	_on_step_6 = true
+
+#func _on_tooltip_hidden() -> void:
+	#if _on_step_6:
+		#_start_explain_syn_ability_7()
+	#if _on_step_7:
+		#toolTips.hide()
+
+func _start_explain_syn_ability_7()->void:
+	print("Start Syn 7")
+	_on_step_7 = true 
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_7,false)
+	#auto_advance = true 
+	#set_auto_advance_toolTip(5)
+
+
+
+func _pre_start_game()->void:
+	print("Hide Tooltips")
+	toolTips.hide()
+	pass
+	
+		
+func progress_time_passed()->void:
+	print("Progress Time Passed ")
+	if !_on_step_6:
+		_start_explain_syn_ability_6()
+	if _on_step_6:
+		_start_explain_syn_ability_7()
+	#if _on_step_7:
+		#toolTips.hide()
+	
+	
+	
+	
 	

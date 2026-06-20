@@ -87,8 +87,24 @@ func _setup_tutorial() -> void:
 			"name": "WAVE_1_ACTIVE",
 			"enter": _start_wave_1,
 		},
-
+		{
+			"name": "EXPLAIN_BLOOD_BUFFS_3",
+			"enter": _start_explain_blood_buffs_3,
+		},
+		{
+			"name": "EXPLAIN_BLOOD_BUFFS_4",
+			"enter": _start_explain_blood_buffs_4,
+		},
+		{
+			"name": "EXPLAIN_BLOOD_BUFFS_5",
+			"enter": _start_explain_blood_buffs_5,
+		},
+		{
+			"name": "HIDE_BUFF_FIVE",
+			"enter": _hide_blood_buff_5,
+		},
 	])
+	
 #endregion
 
 
@@ -284,11 +300,30 @@ func _start_wave_1() -> void:
 	#show_only_demon_buttons(["Occulum", "Crawler"])
 	wave_1_active = false
 	wave_1_complete = false
+	go_to_step("EXPLAIN_BLOOD_BUFFS_3")
 
+func _start_explain_blood_buffs_3() -> void:
+	print("Start Explain Blood Buffs 3")
+	auto_advance = true 
+	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_BUFFS_3,false)
+	set_auto_advance_toolTip(4)
+
+	
+func _start_explain_blood_buffs_4() -> void:
+	print("Start Explain Blood Buffs 4")
+	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_BUFFS_4,false)
+	set_auto_advance_toolTip(4)
+	
+func _start_explain_blood_buffs_5() -> void:
+	print("Start Explain Blood Buffs 5")
+	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_BUFFS_5,false)
+	set_auto_advance_toolTip(4)
 
 func start_game() -> void:
 	_start_wave_1()
 
+func _hide_blood_buff_5()->void:
+	toolTips.hide()
 
 func _start_explain_buckethead_zombie() -> void:
 	bucketHeadExplained = true

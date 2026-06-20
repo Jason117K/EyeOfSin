@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 # Perform the pole vault 
-func executeMove(old_speed) -> void:
+func executeMove(old_speed : float) -> void:
 	pre_special_speed = old_speed
 	animatedSprite.animation = "Vault"
 	parent.setSpeed(0)

@@ -17,7 +17,14 @@ var level05Alt := "res://_Stages/Level5/Level0-5_Alternate.tscn"
 const TUTORIAL_PLACE_WYRM = "res://_Assets/Text/TextFiles/Level0-4_Tutorial_PlaceWyrm.txt"
 const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SYN_ABILITY = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability.txt"
-# Demon button container names
+const TUTORIAL_EXPLAIN_SYN_ABILITY_2 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_2.txt"
+const TUTORIAL_EXPLAIN_SYN_ABILITY_3 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_3.txt"
+const TUTORIAL_EXPLAIN_SYN_ABILITY_4 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_4.txt"
+const TUTORIAL_EXPLAIN_SYN_ABILITY_5 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_5.txt"
+const TUTORIAL_EXPLAIN_SYN_ABILITY_6 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_6.txt"
+const TUTORIAL_EXPLAIN_SYN_ABILITY_7 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_7.txt"
+
+var syn_demo_scene := load("res://_UI/GameDemonstrations/syn_ability_demo.tscn")
 
 # Cached button references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -37,6 +44,30 @@ func _setup_tutorial() -> void:
 		{
 			"name": "EXPLAIN_SYN_ABILITY",
 			"enter": _start_explain_syn_ability,
+		},
+		{
+			"name": "EXPLAIN_SYN_ABILITY_2",
+			"enter": _start_explain_syn_ability_2,
+		},
+		{
+			"name": "EXPLAIN_SYN_ABILITY_3",
+			"enter": _start_explain_syn_ability_3,
+		},
+		{
+			"name": "EXPLAIN_SYN_ABILITY_4",
+			"enter": _start_explain_syn_ability_4,
+		},
+		{
+			"name": "EXPLAIN_SYN_ABILITY_5",
+			"enter": _start_explain_syn_ability_5,
+		},
+		{
+			"name": "EXPLAIN_SYN_ABILITY_6",
+			"enter": _start_explain_syn_ability_6,
+		},
+		{
+			"name": "EXPLAIN_SYN_ABILITY_7",
+			"enter": _start_explain_syn_ability_7,
 		},
 		{
 			"name": "PRE_START_GAME",
@@ -59,7 +90,7 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	super()
-	Global.register_syn_ability(Global.lightning_strike)
+	
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime]
@@ -86,8 +117,6 @@ func _ready() -> void:
 		finish_ready()
 	else:
 		Dialogic.start(level_4_start_dialog)
-
-	#finish_ready()
 
 
 func _configure_waves() -> void:
@@ -161,36 +190,63 @@ func _input(event: InputEvent) -> void:
 #region Step Entry Functions (same sequential order as definitions above)
 
 func _start_explain_syn_ability()->void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY,true,Vector2(0,-80))
-	toolTips.add_pulsing_button_highlight(Global.get_syn_button())
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY,true,"NEW ABILITY UNLOCKED : [color=red]SYN SOCERCIES[/color]")
+	toolTips.set_visual_demon_tutorial_visual(syn_demo_scene.instantiate(),true,Vector2(0,48))
+	
 
+func _start_explain_syn_ability_2()->void:
+	Global.register_syn_ability(Global.lightning_strike)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_2,false)
+	toolTips.add_pulsing_button_highlight(Global.get_syn_button())
+	Global.get_syn_button().pressed.connect(_on_syn_sorcery_pressed)
+	
+
+func _start_explain_syn_ability_3()->void:
+	Global.get_syn_button().pressed.disconnect(_on_syn_sorcery_pressed)
+	Global.syn_ability_manager.syn_sorcery_activated.connect(_on_syn_sorcery_activated)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_3,false)
+
+func _start_explain_syn_ability_4()->void:
+	Global.syn_ability_manager.syn_sorcery_activated.disconnect(_on_syn_sorcery_activated)
+	Global.swap_scenes_signal.connect(scenes_swapped)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_4,false)
+
+func _start_explain_syn_ability_5()->void:
+	green_dimension = Global.game_controller.get_green_dimension()
+	green_dimension._start_explain_syn_ability_5()
+	Global.syn_ability_manager.syn_sorcery_activated.connect(_on_syn_sorcery_activated_again)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_5,false)
+
+func _start_explain_syn_ability_6()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_6,false)
+	auto_advance = true 
+	set_auto_advance_toolTip(5)
+	
+func _start_explain_syn_ability_7()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_7,false)
+	auto_advance = true 
+	set_auto_advance_toolTip(3)
+			
+func scenes_swapped()->void:
+	Global.swap_scenes_signal.disconnect(scenes_swapped)
+	go_to_step("EXPLAIN_SYN_ABILITY_5")
+	
 func _pre_start_game()->void:
 	toolTips.stop_glow_pulse(Global.get_syn_button())
+	toolTips.hide()
+	green_dimension._pre_start_game()
 	
 func _start_explain_reanimator() -> void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUMMONER)
 	toolTips.set_visual_tutorial_visual(summoner_zombie_demo_scene.instantiate())
 
 func _resume_game()->void:
+	print("Resume Game")
+	toolTips.hide()
 	pass
 	
 		
-func _start_force_select_wyrm() -> void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_WYRM, false)
-	hide_all_demon_buttons_with_exception(["Wyrm"])
-	if has_pulsed == false:
-		has_pulsed = true
-		demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)
-	waveManager.can_start = false
-	demonSelectionMenu.canSwapScenes = false
 
-
-func _start_force_place_wyrm() -> void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_WYRM, false)
-
-	#demonSelectionMenu.remove_button_highlight(wyrm_button)
-	demonSelectionMenu.stop_glow_pulse(wyrm_button)
-	#hide_spotlight()
 
 
 func _start_tutorial_p1_done() -> void:
@@ -213,7 +269,6 @@ func start_game() -> void:
 	green_dimension.start_game()
 
 
-
 #endregion
 
 
@@ -232,27 +287,23 @@ func _filter_block_deselect(event: InputEvent) -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
-	#hide_spotlight()
-
 	match get_current_step_name():
 		"EXPLAIN_SYN_ABILITY":
-			go_to_step("PRE_START_GAME")
+			go_to_step("EXPLAIN_SYN_ABILITY_2")
+
 		"FORCE_PLACE_WYRM":
 			get_tree().paused = false
-
 		"EXPLAIN_SUMMONER_ZOMBIE":
 			get_tree().paused = false
 
+func _on_syn_sorcery_pressed()->void:
+	go_to_step("EXPLAIN_SYN_ABILITY_3")
 
-func _on_wyrm_button_pressed() -> void:
-	if get_current_step_name() == "FORCE_SELECT_WYRM":
-		advance_tutorial() # → FORCE_PLACE_WYRM
-
-
-func _on_wyrm_placed(_grid_pos: Vector2) -> void:
-	if get_current_step_name() == "FORCE_PLACE_WYRM":
-		advance_tutorial() # → TUTORIAL_P1_DONE
-
+func _on_syn_sorcery_activated()->void:
+	go_to_step("EXPLAIN_SYN_ABILITY_4")
+	
+func _on_syn_sorcery_activated_again()->void:
+	go_to_step("EXPLAIN_SYN_ABILITY_6")
 
 
 func _on_wave_started(wave_index: int) -> void:
@@ -282,15 +333,10 @@ func show_only_demon_buttons(visible_containers: Array) -> void:
 
 func _show_all_buttons() -> void:
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum", "Maw", "Wyrm"])
-	# Also show non-demon UI
-	#hbox.get_node("Occulum").visible = true
-	#hbox.get_node("SpinalOcculum").visible = true
-	#hbox.get_node("Maw").visible = true
-	#hbox.get_node("WorldSwap").visible = true
-	#hbox.get_node("Codex").visible = true
 
 
-func remove_empty_blocker_demon(grid_pos) -> void:
+
+func remove_empty_blocker_demon(grid_pos:Vector2) -> void:
 	demonManager.clear_space_alt(grid_pos)
 
 
