@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bcagkfrrfe7ix" path="res://_Stages/Level2/level_0_2.gd" id="1_te6yt"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_1uoo0"]
+[ext_resource type="PackedScene" uid="uid://coub7ytyumf5a" path="res://_UI/style_screen.tscn" id="2_650dd"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_28mt4"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_sg366"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_acmis"]
@@ -3591,15 +3592,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_te6yt")
-isGreenDimension = null
 new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
 wave2StartTime = 55
 wave3StartTime = 75
-wave4StartTime = null
-debug = null
-skip_tutorials = null
-progress_timer_wait_time = null
-skip_end_dialog = null
+
+[node name="Style_Screen" parent="." unique_id=1550670052 instance=ExtResource("2_650dd")]
+visible = false
+layout_mode = 1
 
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("20_17c31")]
 layout_mode = 1

@@ -98,6 +98,7 @@ func _on_game_start_requested() -> void:
 	_start_wave(0)
 
 func _on_call_early_wave_requested() -> void:
+	ScoreManager.wave_called_early()
 	#print("Requested Early Wave, current wave is ",_current_wave )
 	#_start_wave(_current_wave + 1)
 	if (_current_wave + 1) < wave_delays.size():
@@ -209,6 +210,7 @@ func _on_damage_area_entered(area: Area2D) -> void:
 
 
 func subtract_health() -> void:
+	ScoreManager.set_lives_lost()
 	health_points -= 1
 	var purple : Node = get_tree().get_first_node_in_group("Purple")
 	var green : Node = get_tree().get_first_node_in_group("Green")

@@ -45,6 +45,7 @@ var progress_count := 0
 
 @export var progress_timer_wait_time : float = 5
 @onready var og_progress_timer_wait_time := progress_timer_wait_time
+@onready var style_menu := $Style_Screen
 var check_progress := false 
 @export var skip_end_dialog := true
 
@@ -96,6 +97,9 @@ const ALL_EXTRA_BUTTONS = []
 
 var auto_advance : bool = false 
 
+var total_game_time : float = 0 
+
+
 func demon_clicked()->void:
 	pass 
 	
@@ -130,17 +134,23 @@ func get_green_dimension():
 
 func _on_end_dialog_finished() -> void:
 	print("This Is makign level switcher visible")
-	levelSwitcher.visible = true
+	style_menu.visible = true 
+	ScoreManager.calc_completion_time_bonus(total_game_time)
+	ScoreManager.level_ended.emit()
+	
+	#levelSwitcher.visible = true
 	toolTips.visible = false
 	get_tree().paused = true
 
 func _ready() -> void:
 	pass
+	
 	#print("Level Is Readying Itselffffffffff")
 	Global.adjust_ui_layer()
 	Global.reset_all_variables()
 	
 func _process(delta: float) -> void:
+	total_game_time += delta
 	if check_progress:
 
 		progress_timer_wait_time -= delta

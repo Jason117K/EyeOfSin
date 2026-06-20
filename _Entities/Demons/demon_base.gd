@@ -73,6 +73,7 @@ var syn_timer : Timer
 var invulnerable := false 
 var is_shielded := false
 var reduced_damage_percent := 0.0
+var game_time: float = 0.0
 
 @onready var hide_highlight_timer : Timer = Timer.new()
 
@@ -134,9 +135,15 @@ func _ready() -> void:
 		my_active_dimension = Global.game_controller.get_green_dimension()
 	else:
 		my_active_dimension = Global.game_controller.get_purple_dimension()
+		
+	ScoreManager.level_ended.connect(broadcast_time_alive)
+
+func broadcast_time_alive()->void:
+	ScoreManager.add_score_from_demon(game_time, get_is_buffed())
 	
 
 func _process(delta: float) -> void:
+	game_time += delta
 	if hit_flash_active:
 		time_since_hit += delta
 		if time_since_hit >= hit_flash_duration:
@@ -214,7 +221,7 @@ func baal_buff()->void:
 
 func undo_baal_buff()->void:
 	print("Hide Baal Halo")
-	baal_halo.hide()	
+	baal_halo.hide()
 	animSpriteComp.speed_scale = 1 #animSpriteComp.default_anim_speed_scale
 
 # Called by children after extracting demonName string from the buffing demon node.

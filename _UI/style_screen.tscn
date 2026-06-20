@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://coub7ytyumf5a"]
+
+[ext_resource type="Script" uid="uid://c43fvulnchex4" path="res://_UI/style_screen.gd" id="1_b4ha7"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="1_hp5a7"]
+
+[node name="Style_Screen" type="Control" unique_id=1550670052]
+process_mode = 3
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b4ha7")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1896880809]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AllPanelsVbox" type="VBoxContainer" parent="CenterContainer" unique_id=962257625]
+layout_mode = 2
+
+[node name="LevelTitlePanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox" unique_id=937837894]
+layout_mode = 2
+
+[node name="Level Title" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/LevelTitlePanel" unique_id=1972175762]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "0-1 : AWAKENING"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="ScoringHbox" type="HBoxContainer" parent="CenterContainer/AllPanelsVbox" unique_id=1509753184]
+layout_mode = 2
+
+[node name="MainCriteriaPanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox" unique_id=293355743]
+layout_mode = 2
+
+[node name="MainCriteriaHbox" type="HBoxContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel" unique_id=601873386]
+layout_mode = 2
+
+[node name="CriteriaLabelsVbox" type="VBoxContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox" unique_id=1949687614]
+layout_mode = 2
+
+[node name="TimeLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=1519083890]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "TIME : "
+fit_content = true
+autowrap_mode = 0
+
+[node name="LivesLostLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=1865431061]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "LIVES LOST : "
+fit_content = true
+autowrap_mode = 0
+
+[node name="StyleLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=184252167]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "STYLE : "
+fit_content = true
+autowrap_mode = 0
+
+[node name="CriteriaScoringRanksVbox" type="VBoxContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox" unique_id=1133778381]
+layout_mode = 2
+
+[node name="TimeRank" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=778657076]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "SSS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="LivesLostRank" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1863450050]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "SSS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StyleRank" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1227648075]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "SSS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="StyleRankLetterPanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox" unique_id=516361169]
+layout_mode = 2
+
+[node name="StyleRankLetterLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel" unique_id=1407775523]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+theme_override_font_sizes/normal_font_size = 59
+text = "SSS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TotalScorePanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox" unique_id=494232092]
+layout_mode = 2
+
+[node name="TotalScoreHbox" type="HBoxContainer" parent="CenterContainer/AllPanelsVbox/TotalScorePanel" unique_id=1239789954]
+layout_mode = 2
+
+[node name="TotalScoreTitle" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/TotalScorePanel/TotalScoreHbox" unique_id=355688203]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "Total Score "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TotalScoreNum" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/TotalScorePanel/TotalScoreHbox" unique_id=2132360036]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "9000"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
