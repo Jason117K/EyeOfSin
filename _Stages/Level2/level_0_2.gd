@@ -1,6 +1,9 @@
 extends LevelTemplate
 # level_0_2.gd - Level 0-2 Tutorial Controller
-
+#55
+#75
+#75
+#600
 # Preloaded demo scenes
 var hive_wyrm_buff_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/wyrm_spine_buff.tscn")
 var crawler_occulum_buff_scene := preload("res://_UI/GameDemonstrations/DemonTutorials/crawler_occulum_buff.tscn")

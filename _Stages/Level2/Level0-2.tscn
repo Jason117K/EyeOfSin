@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bcagkfrrfe7ix" path="res://_Stages/Level2/level_0_2.gd" id="1_te6yt"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_1uoo0"]
-[ext_resource type="PackedScene" uid="uid://coub7ytyumf5a" path="res://_UI/style_screen.tscn" id="2_650dd"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_28mt4"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_sg366"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_acmis"]
@@ -3593,12 +3592,27 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_te6yt")
 new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
-wave2StartTime = 55
-wave3StartTime = 75
-
-[node name="Style_Screen" parent="." unique_id=1550670052 instance=ExtResource("2_650dd")]
-visible = false
-layout_mode = 1
+wave2StartTime = 5
+wave3StartTime = 10
+wave4StartTime = 15
+SSS_Rank_Completion_Time = 80
+S_Rank_Completion_Time = 70
+A_Rank_Completion_Time = 60
+B_Rank_Completion_Time = 50
+C_Rank_Completion_Time = 40
+D_Rank_Completion_Time = 30
+SSS_STYLE_POINTS_MIN = 15000
+S_STYLE_POINTS_MIN = 12000
+A_STYLE_POINTS_MIN = 10000
+B_STYLE_POINTS_MIN = 9000
+C_STYLE_POINTS_MIN = 6000
+D_STYLE_POINTS_MIN = 5000
+SSS_TOTAL_POINTS_MIN = 15000
+S_TOTAL_POINTS_MIN = 12000
+A_TOTAL_POINTS_MIN = 11000
+B_TOTAL_POINTS_MIN = 10000
+C_TOTAL_POINTS_MIN = 9000
+D_TOTAL_POINTS_MIN = 8000
 
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("20_17c31")]
 layout_mode = 1
@@ -3611,6 +3625,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_1uoo0")]
+blood_points = 600
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=2012856353]
 stream = ExtResource("25_71bjb")

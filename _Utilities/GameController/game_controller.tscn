@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cpye6mrmxtywc" path="res://_Utilities/GameController/game_controller.gd" id="1_ip61f"]
 [ext_resource type="PackedScene" uid="uid://cwnxaalr7lrsd" path="res://_Stages/StartScreen/StartScreen.tscn" id="2_mahd0"]
+[ext_resource type="PackedScene" uid="uid://coub7ytyumf5a" path="res://_UI/style_screen.tscn" id="2_roe6v"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://_Common/LevelSwitching/LevelSwitcher.tscn" id="3_3rtt1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
@@ -21,6 +22,8 @@ viewport_path = NodePath("PipViewport")
 [node name="GameController" type="Node" unique_id=324431877 node_paths=PackedStringArray("scene_container")]
 script = ExtResource("1_ip61f")
 scene_container = NodePath("CurrentScene")
+
+[node name="Style_Screen" parent="." unique_id=1550670052 instance=ExtResource("2_roe6v")]
 
 [node name="CurrentScene" type="Control" parent="." unique_id=1857333946]
 layout_mode = 3

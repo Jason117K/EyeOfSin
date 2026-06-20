@@ -45,11 +45,43 @@ var progress_count := 0
 
 @export var progress_timer_wait_time : float = 5
 @onready var og_progress_timer_wait_time := progress_timer_wait_time
-@onready var style_menu := $Style_Screen
 var check_progress := false 
 @export var skip_end_dialog := true
 
-# Text file paths
+@export_category("Completion Time Thresholds")
+@export var SSS_Rank_Completion_Time : int = 120 
+@export var S_Rank_Completion_Time : int = 110
+@export var A_Rank_Completion_Time : int = 100
+@export var B_Rank_Completion_Time : int = 90
+@export var C_Rank_Completion_Time : int = 80
+@export var D_Rank_Completion_Time : int = 70
+
+@onready var all_time_thresholds :Array[int] = [SSS_Rank_Completion_Time,S_Rank_Completion_Time,
+	A_Rank_Completion_Time,B_Rank_Completion_Time,C_Rank_Completion_Time,D_Rank_Completion_Time]
+
+
+
+@export_category("Style Point Thresholds")
+@export var SSS_STYLE_POINTS_MIN := 2000
+@export var S_STYLE_POINTS_MIN := 1500
+@export var A_STYLE_POINTS_MIN := 1000
+@export var B_STYLE_POINTS_MIN := 700
+@export var C_STYLE_POINTS_MIN := 400
+@export var D_STYLE_POINTS_MIN := 100
+
+@onready var all_style_point_thresholds :Array[int] = [SSS_STYLE_POINTS_MIN,S_STYLE_POINTS_MIN,
+	A_STYLE_POINTS_MIN,B_STYLE_POINTS_MIN,C_STYLE_POINTS_MIN,D_STYLE_POINTS_MIN]
+
+@export_category("Total Score Thresholds")
+@export var SSS_TOTAL_POINTS_MIN := 5000
+@export var S_TOTAL_POINTS_MIN := 4000
+@export var A_TOTAL_POINTS_MIN := 3000
+@export var B_TOTAL_POINTS_MIN := 2000
+@export var C_TOTAL_POINTS_MIN := 1000
+@export var D_TOTAL_POINTS_MIN := 500
+
+@onready var all_total_point_thresholds :Array[int] = [SSS_TOTAL_POINTS_MIN,S_TOTAL_POINTS_MIN,
+	A_TOTAL_POINTS_MIN,B_TOTAL_POINTS_MIN,C_TOTAL_POINTS_MIN,D_TOTAL_POINTS_MIN]
 
 const TUTORIAL_SKULL_HOVER = "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt"
 const TUTORIAL_EXPLAIN_SPINAL_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
@@ -99,6 +131,11 @@ var auto_advance : bool = false
 
 var total_game_time : float = 0 
 
+func _ready() -> void:
+	Global.adjust_ui_layer()
+	Global.reset_all_variables()
+	
+	
 
 func demon_clicked()->void:
 	pass 
@@ -106,8 +143,6 @@ func demon_clicked()->void:
 func demon_hover()->void:
 	pass
 	
-		
-
 func get_demon_manager()->Node:
 	return demonManager
 
@@ -133,21 +168,38 @@ func get_green_dimension():
 	return Global.game_controller.get_alt_dimension()
 
 func _on_end_dialog_finished() -> void:
-	print("This Is makign level switcher visible")
-	style_menu.visible = true 
-	ScoreManager.calc_completion_time_bonus(total_game_time)
-	ScoreManager.level_ended.emit()
+	print(isGreenDimension, "-------------Style Menu Visible--------------", self)
+	if isGreenDimension:
+		return
+	else:
+		ScoreManager.set_completion_times(all_time_thresholds)
+		Global.style_menu.set_completion_times(all_time_thresholds)
+		
+		Global.style_menu.set_style_point_thresholds(all_style_point_thresholds)
+		
+		Global.style_menu.set_total_point_thresholds(all_total_point_thresholds)
+		
+		
+		ScoreManager.calc_completion_time_rank(total_game_time)
+		ScoreManager.level_ended.emit()
+		var wait_for_demon_points_timer :Timer = Timer.new()
+		wait_for_demon_points_timer.autostart = false
+		wait_for_demon_points_timer.one_shot = true
+		wait_for_demon_points_timer.wait_time = 0.5
+		wait_for_demon_points_timer.timeout.connect(finish_end_level)
+		add_child(wait_for_demon_points_timer)
+		wait_for_demon_points_timer.start()
 	
+	#style_menu.visible = true 
 	#levelSwitcher.visible = true
+func finish_end_level()->void:
+	print(self, " Setup Score")
+	Global.style_menu._setup_score()
 	toolTips.visible = false
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	get_tree().paused = true
-
-func _ready() -> void:
-	pass
-	
-	#print("Level Is Readying Itselffffffffff")
-	Global.adjust_ui_layer()
-	Global.reset_all_variables()
 	
 func _process(delta: float) -> void:
 	total_game_time += delta

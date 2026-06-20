@@ -1,6 +1,6 @@
 extends Node
 
-#Tracks Which Levels Have Been Unlocked
+var style_menu : Control
 
 var canPlayLevel2: bool = true
 var canPlayLevel3: bool = true
@@ -967,6 +967,11 @@ func make_pip_glow()->void:
 
 func stop_pip_glow()->void:
 	remove_pulsing_button_highlight(game_controller.pip.get_pip_panel())
+	
+func register_style_menu(new_style_menu)->void:
+	style_menu = new_style_menu
+	pass
+	
 	
 func start_game()->void:
 	if swap_ability != null:
