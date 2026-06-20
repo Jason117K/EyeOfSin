@@ -32,7 +32,7 @@ enum Demons { OCCULUM,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 # Adjustable variable to store which demons this demon can buff
 var giveBuffTo: Array = ["Occulum","Crawler","SpinalOcculum","Wyrm","Hive","Maw","None","None"]
 
-var buffedDemons: Array = [Demon]
+var buffedDemons: Array[Demon]
 
 func _ready() -> void:
 	# Make sure all the bloodTiles are not visible
@@ -62,13 +62,11 @@ func _ready() -> void:
 				child.set_collision_layer_value(12,true)
 
 func clearBuffs() -> void:
-	#print("DDD Buffed Demons is ", buffedDemons)
+	print("DDD Buffed Demons is ", buffedDemons)
 	for this_demon in buffedDemons:
-		#print("Now DDD Buffing ", demon)
+		print("Now DDD DeBuffing ", this_demon)
 		if this_demon != null:
-			pass
-			#demon.debuff()
-	pass
+			this_demon.debuff()
 	
 	
 	
@@ -154,6 +152,8 @@ func _process(_delta: float) -> void:
 								if demonToBuff in buffedDemons:
 									pass
 								else:
+									print("DD Demon to Buff is ", demonToBuff)
+									print("Self DD Demon is ", demon)
 									buffedDemons.append(demonToBuff)
 								#blood_tile.visible = true
 								break

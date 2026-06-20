@@ -95,8 +95,11 @@ func receive_buff(bufferName:Demon) -> void:
 				lightning_maw_buff()
 
 func debuff() -> void:
-	#healthComp.debuff()
 	super()
+	silence_field.deactivate()
+	spike_rock.deactivate()
+	web.deactivate()
+	undo_lightning_maw_buff()
 
 func unlock_new_buff(demonName:String)->void:
 		if Global.game_controller.current_scenes.size()>1:
@@ -136,7 +139,11 @@ func lightning_maw_buff() -> void:
 	maw_lightning.show()
 	is_lightning_maw_buff = true
 
-
+func undo_lightning_maw_buff() -> void:
+	maw_lightning.stop()
+	maw_lightning.hide()
+	is_lightning_maw_buff = false
+	
 # --- Slow Field ---
 
 func _on_area_2d_area_entered(this_area: Area2D) -> void:

@@ -157,12 +157,22 @@ func getIsPurpleDimension()->void:
 
 #region Step Entry Functions
 func _start_explain_wyrm() -> void:
+	await get_tree().physics_frame
+
 	print("Explain Wyrm Demon")
 	Global.hide_notification_bar()
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_WYRM)
-	toolTips.set_visual_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
+	
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_WYRM, true, "NEW DEMON : Wyrm")
+	toolTips.set_visual_demon_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
+	hide_demon_selection_menu()
+	
+	#print("Explain Wyrm Demon")
+	#Global.hide_notification_bar()
+	#toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_WYRM)
+	#toolTips.set_visual_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
 
 func _start_force_select_wyrm() -> void:
+	Global.unHideDemonSelectionMenu()
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_DEMON,false)
 	hide_all_demon_buttons_with_exception(["Wyrm"])
 	demonSelectionMenu.add_pulsing_button_highlight(wyrm_button)

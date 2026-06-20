@@ -140,4 +140,8 @@ func make_drone_glow() -> void:
 
 
 func debuff() -> void:
+	print("Anim Sprite Debuff")
 	speed_scale = 1
+	currentAnim = "idle"
+	currentAttackAnim = "attack"
+	animation = currentAnim

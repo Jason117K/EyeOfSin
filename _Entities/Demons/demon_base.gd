@@ -270,10 +270,16 @@ func get_demon_icon() -> Texture2D:
 	return animSpriteComp.current_icon
 	
 func debuff() -> void:
+	print(self,"Self Being Debuffed")
 	isBuffed = false
 	_reset_buff_flags()
+	healthComp.debuff()
+	animSpriteComp.debuff()
+	special_description_file = get_special_description_file(all_synergies,"Base")
+	
 
 func _reset_buff_flags() -> void:
+	demon_buff_name = "None"
 	wyrmBuff = false
 	hiveBuff = false
 	spinalOcculumBuff = false

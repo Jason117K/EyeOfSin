@@ -129,6 +129,7 @@ func receive_buff(newDemon) -> void:
 
 func debuff() -> void:
 	super()
+	bloodTimer.wait_time = bloodWaitTime
 
 func unlock_new_buff(demonName)->void:
 		if Global.game_controller.current_scenes.size()>1:
@@ -239,14 +240,15 @@ func _on_heal_zone_area_entered(this_area: Area2D) -> void:
 		demons_to_heal.append(this_area)
 
 func _on_heal_timer_timeout() -> void:
-	num_healing_zone_sprite_plays += 1
-	if num_healing_zone_sprite_plays == max_num_healing_zone_sprite_plays:
-		healing_zone_sprite.play()
-		num_healing_zone_sprite_plays = 0
-	for demon:Demon in demons_to_heal:
-		if demon != null:
-			if demon != self:
-				demon.increase_health(spinal_occulum_heal_over_time_amount)
+	if isBuffed:
+		num_healing_zone_sprite_plays += 1
+		if num_healing_zone_sprite_plays == max_num_healing_zone_sprite_plays:
+			healing_zone_sprite.play()
+			num_healing_zone_sprite_plays = 0
+		for demon:Demon in demons_to_heal:
+			if demon != null:
+				if demon != self:
+					demon.increase_health(spinal_occulum_heal_over_time_amount)
 
 func burst_heal() -> void:
 	pass

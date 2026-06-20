@@ -1,11 +1,1 @@
-For their entire lifespan, Wyrms reside entirely within the eggs they’re hatched in. As blood pools inside the shell, they consume its nutrients and channel it into a deadly projectile.  
-- Shoots a straight line of hyper pressurized blood that damages all enemies in a straight line from the demon 
-- The damage each zombie suffers is reduced for every zombie hit
-
-- Strong VS
-	- High Numbers
-	- High Speed 
-	
-- Weak VS 
-	- High Health
-	
+Shoots [color=red]PIERCING[/color] pressurized blood that can [color=red]HIT MULTIPLE ZOMBIES[/color]. Damage decreases per zombie hit. Gives buffs that generally increase [color=red]Area Of Effect potential[/color].

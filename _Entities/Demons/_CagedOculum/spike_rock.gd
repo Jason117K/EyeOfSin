@@ -4,6 +4,13 @@ var spike_wait_time := 5
 var spike_timer: Timer
 @onready var spike_rock_sprite := $AnimatedSprite2D
 	
+	
+func deactivate()->void:
+	hide()
+	monitoring = false 
+	spike_rock_sprite.stop()
+	spike_timer.stop()
+	
 func activate() -> void:
 	spike_damage = get_parent().spike_damage
 	print("Spike Damage On Activate is ", spike_damage)

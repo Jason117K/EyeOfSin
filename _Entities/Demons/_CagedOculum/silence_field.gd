@@ -7,6 +7,11 @@ var silence_field_timer: Timer
 @onready var silence_field_3: AnimatedSprite2D = $SilenceFieldAnim3
 @onready var silence_field_4: AnimatedSprite2D = $SilenceFieldAnim4
 
+func deactivate()->void:
+	hide()
+	monitoring = false 
+	
+	
 func activate() -> void:
 	silence_field_1.animation_finished.connect(func()->void: silence_field_1.hide())
 	silence_field_2.animation_finished.connect(func()->void: silence_field_2.hide())
