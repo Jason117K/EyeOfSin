@@ -85,7 +85,8 @@ func _strike_batch(zombies: Array, num_zombies_to_strike: int) -> void:
 				call_lighting(zombie)
 				num_zombies_struck += 1
 				#Could Remove From Array here if no want duplicates 
-
+	else:
+		print("IS ON COOLDOWN NO LIGHTNINGGGGGGGGGGGGG")
 	
 func call_lighting(zombie : Area2D)->void:
 	var syn_lightning_instance = syn_lightning.instantiate()
@@ -100,6 +101,7 @@ func call_lighting(zombie : Area2D)->void:
 	
 	
 func undo_swap_ability() -> void:
+	print("Stop Swap In Undo")
 	stop()
 
 	

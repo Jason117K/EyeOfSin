@@ -1,4 +1,3 @@
-Lucretia has access to powerful SWAP ABILITIES, which charge over time. 
-When you switch dimensions when fully charged, they activate automatically.
-Ensure the full ability plays out when you swap, or the cooldown will be longer. 
-Swap with intention. 
+Lucretia has access to powerful SWAP SOCERCIES that charge over time. 
+Swapping dimensions automatically activates the ability, unless the ability is locked (SPACEBAR)
+Swapping when an ability is activated will cancel it and lengthen the cooldown.

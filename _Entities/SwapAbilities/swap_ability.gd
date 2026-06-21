@@ -39,26 +39,31 @@ func game_start()->void:
 func _input(event:InputEvent) -> void:
 	if event.is_action_pressed("LockSwapAbility"):
 		cooldown_controller.lock_unlock_swap_ability()
-		lock_unlock_swap_ability()
+		#lock_unlock_swap_ability()
 		
 func lock_unlock_swap_ability()->void:
-	is_locked = !is_locked
+	if is_locked:
+		is_locked = false
+	else:
+		is_locked = true
 	
 		
 func get_panel_container()->PanelContainer:
 	return cooldown_controller.get_panel_container()
 
 func reset_cooldown() -> void:
+	print("Set Is On Cooldown to Faklse")
 	is_on_cooldown = false
 
 func reset_on_game_start() -> void:
+	print("Set Is On Cooldown to True")
 	cooldown_fill_amount = 0
 	is_on_cooldown = true
 	#cooldown_timer.start()
 
 func begin() -> void:
-	if is_locked:
-		return 
+	#if is_locked:
+		#return 
 	#Stopped too soon, longer cooldown
 	if is_active:
 		cooldown_duration = cooldown_length_normal
@@ -103,6 +108,7 @@ func stop() -> void:
 	cooldown_timer.wait_time = cooldown_duration
 	print("Game Start for swap aaa here")
 	cooldown_timer.start()
+	print("Set Is On Cooldown to Trueee")
 	is_on_cooldown = true
 	cooldown_elapsed = 0.0
 

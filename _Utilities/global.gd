@@ -723,7 +723,7 @@ func hero_demon_is_summoned() -> bool:
 	return hero_demon_summoned
 
 func swap_scenes() -> void:
-	#print("SWAP SCENES SHOULD")
+	print("SWAP SCENES SHOULD")
 	game_controller.swap_scenes()
 	adjust_ui_layer()					
 	swap_portal_button()
@@ -895,6 +895,7 @@ func start_swap_ability() -> void:
 
 func stop_swap_ability() -> void:
 	if swap_ability != null:
+		print("Stop Swap In Globa;l")
 		swap_ability.stop()
 
 func reset_swap_ability() -> void:

@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dip27s2y8cu12" path="res://_Entities/SwapAbilities/SwapAbilityCooldownVisual.tscn" id="2_plh2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_046s3"]
-size = Vector2(753, 418)
+size = Vector2(618, 271)
 
 [node name="LightningStorm" type="Node" unique_id=534558046]
 script = ExtResource("1_oghj6")
 ability_duration = 9.0
-cooldown_duration = 24.0
+cooldown_duration = 7.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_plh2v")]
 ability_name = "WRATH OF SYN"
@@ -18,6 +18,5 @@ ability_name = "WRATH OF SYN"
 position = Vector2(354, 190)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LightningSpawnArea" unique_id=1007282924]
-visible = false
-position = Vector2(18.5, 14)
+position = Vector2(23, 19.5)
 shape = SubResource("RectangleShape2D_046s3")

@@ -41,6 +41,14 @@ func _setup_tutorial() -> void:
 			"enter": _start_explain_swap,
 		},
 		{
+			"name": "EXPLAIN_SWAP_ABILITY_2",
+			"enter": _start_explain_swap,
+		},
+		{
+			"name": "EXPLAIN_SWAP_ABILITY_3",
+			"enter": _start_explain_swap,
+		},
+		{
 			"name": "PRE_START_GAME",
 			"enter": _pre_start_game,
 		},

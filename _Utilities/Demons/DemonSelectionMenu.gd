@@ -186,6 +186,7 @@ func _input(event:InputEvent) -> void:
 			deselect_demon()
 		if event.keycode == KEY_Y:
 			#print("Y Key Pressed")
+			Global.hide_notification_bar()
 			if canSwapScenes:
 				Global.swap_scenes()
 			else:
