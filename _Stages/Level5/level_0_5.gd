@@ -77,6 +77,10 @@ func _ready() -> void:
 	toolTips.hide()
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
+	
+
+	
+	
 	if debug or skip_tutorials:
 		finish_ready()
 	else:
@@ -142,7 +146,11 @@ func _start_explain_swap()->void:
 	toolTips.add_pulsing_button_highlight(Global.get_swap_ability_panel())
 
 func _pre_start_game()->void:
+	demonSelectionMenu.set_wyrm_queen()
+	demonManager.place_demon(Vector2(48,144),true)
 	toolTips.stop_glow_pulse(Global.get_swap_ability_panel())
+	green_dimension = Global.game_controller.get_green_dimension()
+	green_dimension.place_wyrm_queen()
 
 func _start_force_select_hive() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)

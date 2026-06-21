@@ -2,15 +2,15 @@ extends Node2D
 #BuffNodes.gd
 
 # All of the possible "blood tile" (buffed) visual effects 
-@onready var bloodTile1 := $BloodTile1
-@onready var bloodTile2 := $BloodTile2
-@onready var bloodTile3 := $BloodTile3
-@onready var bloodTile4 := $BloodTile4
-@onready var bloodTile5 := $BloodTile5
-@onready var bloodTile6 := $BloodTile6
-@onready var bloodTile7 := $BloodTile7
-@onready var bloodTile8 := $BloodTile8
-@onready var bloodTile9 := $BloodTile9
+#@onready var bloodTile1 := $BloodTile1
+#@onready var bloodTile2 := $BloodTile2
+#@onready var bloodTile3 := $BloodTile3
+#@onready var bloodTile4 := $BloodTile4
+#@onready var bloodTile5 := $BloodTile5
+#@onready var bloodTile6 := $BloodTile6
+#@onready var bloodTile7 := $BloodTile7
+#@onready var bloodTile8 := $BloodTile8
+#@onready var bloodTile9 := $BloodTile9
 
 # Parent demon with these buffNodes
 @onready var demon := get_parent()
@@ -36,15 +36,15 @@ var buffedDemons: Array[Demon]
 
 func _ready() -> void:
 	# Make sure all the bloodTiles are not visible
-	bloodTile1.visible = false
-	bloodTile2.visible = false
-	bloodTile3.visible = false
-	bloodTile4.visible = false
-	bloodTile5.visible = false
-	bloodTile6.visible = false
-	bloodTile7.visible = false
-	bloodTile8.visible = false
-	bloodTile9.visible = false
+	#bloodTile1.visible = false
+	#bloodTile2.visible = false
+	#bloodTile3.visible = false
+	#bloodTile4.visible = false
+	#bloodTile5.visible = false
+	#bloodTile6.visible = false
+	#bloodTile7.visible = false
+	#bloodTile8.visible = false
+	#bloodTile9.visible = false
 	
 	for child in get_children():
 		if child is Area2D and "TileArea" in child.name:
@@ -97,15 +97,17 @@ func _process(_delta: float) -> void:
 
 			# Find the corresponding BloodTile
 			var blood_tile_name := "BloodTile" + area_number
+			#print(blood_tile_name)
 			var blood_tile := get_node_or_null(blood_tile_name)
-			
+			#print(blood_tile)
 			#If we have a valid blood tile 
-			if blood_tile:
-				
+			#if blood_tile:
+			if true:
 				var bloodTileVisible := false
 				var demon_detected := false 
 				for potential_demon in overlapping_areas:
 					if potential_demon.is_in_group("Demons"):
+						#print(potential_demon)
 						if potential_demon.is_in_group("Green") && demon.is_in_group("Green"):
 							demon_detected = true 
 						if potential_demon.is_in_group("Purple") && demon.is_in_group("Purple"):

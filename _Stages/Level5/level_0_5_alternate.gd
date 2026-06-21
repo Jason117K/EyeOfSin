@@ -49,7 +49,11 @@ func start_game() -> void:
 	for node in get_parent().get_children():
 		if node.has_method("getIsPurpleDimension"):
 			purple_dimension = node
-	purple_dimension.start_game()
+	#purple_dimension.start_game()
+
+func place_wyrm_queen()->void:
+	demonSelectionMenu.set_wyrm_queen()
+	demonManager.place_demon(Vector2(48,208),true)
 
 
 func show_guide() -> void:

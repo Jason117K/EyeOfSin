@@ -175,6 +175,7 @@ func get_special_description_file(this_all_synergies : Array[String],demonName :
 	return ""
 
 func _on_mouse_entered() -> void:
+	print("Mouse Entered ",self)
 	if can_show_preview && Global.game_controller.get_active_dimension() == my_active_dimension:
 		$PreviewNodes.visible = true
 	else:
@@ -232,6 +233,7 @@ func receive_buff(demonName) -> void:
 	if demonName == truncate_string(self.get_name()):
 		
 		return
+	print(self.name, " Received Buff from ", demonName, " is buffed is ", isBuffed)
 	special_description_file = get_special_description_file(all_synergies,demonName)
 	if !isBuffed:
 		print(self.name, " Received Buff from ", demonName)

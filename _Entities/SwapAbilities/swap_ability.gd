@@ -10,6 +10,7 @@ var cooldown_elapsed := 0.0
 var cooldown_fill_amount := 0.0
 var on_purple := true 
 var affected_zombies : Array = []
+var is_locked := false 
 
 #Reduced Cooldown If Full Ability Transpires 
 @onready var cooldown_length_special := cooldown_duration - 2.5
@@ -35,6 +36,15 @@ func game_start()->void:
 	print("Game Start For Swap Ability Called")
 	cooldown_timer.start()
 	
+func _input(event:InputEvent) -> void:
+	if event.is_action_pressed("LockSwapAbility"):
+		cooldown_controller.lock_unlock_swap_ability()
+		lock_unlock_swap_ability()
+		
+func lock_unlock_swap_ability()->void:
+	is_locked = !is_locked
+	
+		
 func get_panel_container()->PanelContainer:
 	return cooldown_controller.get_panel_container()
 
@@ -47,7 +57,8 @@ func reset_on_game_start() -> void:
 	#cooldown_timer.start()
 
 func begin() -> void:
-	pass
+	if is_locked:
+		return 
 	#Stopped too soon, longer cooldown
 	if is_active:
 		cooldown_duration = cooldown_length_normal

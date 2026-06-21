@@ -22,6 +22,7 @@ var occulum_scene := preload("res://_Entities/Demons/_Occulum/Occulum.tscn")
 var empty_demon_scene := preload("res://_Entities/Demons/Empty/EmptyDemon.tscn")
 var crawler_not_placed := true
 var hero_demon: Demon
+var queen_placement_count := 0 
 
 var empty_demon_to_place :  Demon
 
@@ -67,7 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		pass
 	
 	if event is InputEventMouseButton and event.pressed:
-		empty_demon_to_place = empty_demon_scene.instantiate()
+		#empty_demon_to_place = empty_demon_scene.instantiate()
 		
 		# If they left click, grab the positon and place a demon there 
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -117,17 +118,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			if(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
 					#print("Place Demon " , grid_pos)
-					Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
+					#Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
 					place_demon(grid_pos)
 			elif(parentName == "Level0-2" || parentName == "Level0-2_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
 					#print("Place Demon " , grid_pos)
-					Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
+					#Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
 					place_demon(grid_pos)
 			elif(parentName.contains("Level03")):
 				if(grid_pos.x<769 && grid_pos.y<=240 && grid_pos.y > 80):
 					#print("Place Demon " , grid_pos)
-					Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
+					#Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
 					place_demon(grid_pos)				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
@@ -137,7 +138,8 @@ func _unhandled_input(event: InputEvent) -> void:
 					if temp_check_instance.is_in_group("Portal"):
 						pass
 					else:
-						Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
+						pass
+						#Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
 					temp_check_instance.queue_free()
 					place_demon(grid_pos)
 
@@ -173,6 +175,9 @@ func detect_demon(passed_grid_pos: Vector2) -> bool:
 		return false 
 	
 
+	
+	
+	
 func move_demon(this_demon_to_move: Demon, passed_new_grid_pos: Vector2) -> void:
 	this_demon_to_move.toggle_highlight()
 	selected_demon_scene = occulum_scene
@@ -243,7 +248,7 @@ func place_empty_blocker_demon(grid_pos: Vector2, this_empty_demon_to_place : De
 	
 	
 # Place the selected demon on the grid
-func place_demon(grid_pos: Vector2) -> void:
+func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	if(grid_pos.x<769 && grid_pos.y<336 && grid_pos.y > 48):
 		pass
 	else:
@@ -254,12 +259,17 @@ func place_demon(grid_pos: Vector2) -> void:
 	# Dynamically get the selected demon	
 	selected_demon_scene = get_selected_demon()  
 	
+	empty_demon_to_place = empty_demon_scene.instantiate()
+	
 	if selected_demon_scene == null:
 		#print("No demon selected!")
 		return
 	
 	var demon_instance :Demon= selected_demon_scene.instantiate()
-	demon_instance.grid_map_cell_pos = grid_pos
+	if is_queen:
+		demon_instance.grid_map_cell_pos = Vector2(grid_pos.x-16,grid_pos.y+16)
+	else:
+		demon_instance.grid_map_cell_pos = grid_pos
 	#demon_instance.demon_die.connect(empty_demon_to_place.remove_empty)
 	demon_deselected.connect(demon_instance.demon_deselected)
 	selection_menu.demon_deselected.connect(demon_instance.demon_deselected)
@@ -290,6 +300,24 @@ func place_demon(grid_pos: Vector2) -> void:
 			return 
 		else:
 			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y),empty_demon_to_place)
+	else:
+		if is_queen:
+			if !get_parent().isGreenDimension:
+				print(self, "placing wyrm in purple")
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place)
+				queen_placement_count += 1
+			else:
+				print(self, "placing wyrm in green")
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate())
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate())
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate())
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place)
+		else:
+			print(self, "placing regular demon ")
+			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place)
 	if "Heart" in demon_instance.name:
 		#print("About to Place Heart Demon")
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
@@ -328,8 +356,12 @@ func place_demon(grid_pos: Vector2) -> void:
 			grid_map[grid_pos] = demon_instance
 			grid_map[Vector2(grid_pos.x+32,grid_pos.y)] = demon_instance
 			
-		else: #Only occupies one cell
-			demon_instance.position = Vector2(grid_pos.x,grid_pos.y )
+		else: #Not Maw 
+			if is_queen:
+				demon_instance.position = Vector2(grid_pos.x-16,grid_pos.y+16)
+			else:
+				demon_instance.position = grid_pos
+				demon_instance.position = Vector2(grid_pos.x,grid_pos.y )
 			grid_map[grid_pos] = demon_instance
 	
 		#Add To The GameLayer 

@@ -48,7 +48,7 @@ func _ready() -> void:
 	super()
 	
 	if auto_fire:
-		#print("AUTO FIRE TRUUUU")
+		print("AUTO FIRE TRUUUU")
 		cooldown_timer = Timer.new()
 		add_child(cooldown_timer)
 		cooldown_timer.wait_time = cooldown
@@ -58,8 +58,11 @@ func _ready() -> void:
 	node_ready = true
 
 func fire_laser() -> void:
+	print("Wyrm Queen Checking Can Attack ", canAttack)
 	if canAttack:
+		print("Should Fire Laser Can Attack Queen")
 		if parent_demon.spawn_done:
+			print("Will Now Fire Laser Queen")
 			animSpriteComp.animation = animSpriteComp.currentAttackAnim
 			animSpriteComp.play()
 

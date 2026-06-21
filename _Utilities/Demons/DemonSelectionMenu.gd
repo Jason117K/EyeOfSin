@@ -34,6 +34,7 @@ var spinalOcculum_scene := preload("res://_Entities/Demons/_CagedOculum/SpinalOc
 #var maw_scene := preload("res://_Entities/Demons/_Maw/MawTest.tscn")
 var maw_scene := preload("res://_Entities/Demons/_Maw/Maw.tscn")
 
+var wyrm_queen_scene := preload("res://_Entities/Demons/_Wyrm/wyrm_queen.tscn")
 var wyrm_scene := preload("res://_Entities/Demons/_Wyrm/Wyrm.tscn")
 var hive_scene := preload("res://_Entities/Demons/_Hive/Hive.tscn")
 var heart_scene := preload("res://_Entities/Demons/_HeartDemon/HeartDemon.tscn")
@@ -363,7 +364,8 @@ func release_all_focus() -> void:
 	HiveButton.release_focus()
 	CrawlerButton.release_focus()
 	
-
+func set_wyrm_queen()->void:
+	selected_demon = wyrm_queen_scene
 
 # Gets all the previewNodes
 func find_preview_nodes(node:Node) -> Node:
