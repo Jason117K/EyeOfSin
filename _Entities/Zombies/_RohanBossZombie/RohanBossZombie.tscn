@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0dhomf7uibop"]
 
-[ext_resource type="Script" uid="uid://bjujkcy7ub8up" path="res://_Entities/Zombies/_Unhallower/BucketHeadZombie.gd" id="1_av2q5"]
+[ext_resource type="Script" uid="uid://c0vlco42c58c3" path="res://_Entities/Zombies/_RohanBossZombie/rohan_boss_zombie.gd" id="1_vvbwg"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_d34lv"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_abp6h"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_2aoub"]
@@ -327,66 +327,6 @@ region = Rect2(1885, 94, 145, 47)
 atlas = ExtResource("11_vvbwg")
 region = Rect2(2030, 94, 145, 47)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l7bkp"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(0, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjswu"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(145, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjkmg"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(290, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t5tb2"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(435, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqbsb"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(580, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bti54"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(725, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6jc2"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(870, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_deaek"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(1015, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ktvqq"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(1160, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jurjd"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(1305, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aps1e"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(1450, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_751x2"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(1595, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ar4ol"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(1740, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyqna"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(1885, 141, 145, 47)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pb8bg"]
-atlas = ExtResource("11_vvbwg")
-region = Rect2(2030, 141, 145, 47)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_opvcm"]
 atlas = ExtResource("11_vvbwg")
 region = Rect2(0, 0, 145, 47)
@@ -695,56 +635,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l7bkp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xjswu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hjkmg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t5tb2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kqbsb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bti54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f6jc2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_deaek")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ktvqq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jurjd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aps1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_751x2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ar4ol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lyqna")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pb8bg")
-}],
-"loop": true,
-"name": &"extended_attack",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_opvcm")
 }, {
 "duration": 1.0,
@@ -847,18 +737,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvbwg"]
+size = Vector2(26, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j75q0"]
+radius = 80.305664
+
 [node name="Rohan" type="Area2D" unique_id=1375769904 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
-script = ExtResource("1_av2q5")
-health = 550
-has_armor = true
-speed = 14.0
-attack_power = 110
-attack_speed = 0.5
-silence_field_position = Vector2(-2, 0)
-fire_fix_position = Vector2(4, -14)
-syn_mark_position = Vector2(0, -19)
+script = ExtResource("1_vvbwg")
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=871038836 node_paths=PackedStringArray("polygon", "line")]
 position = Vector2(2, 16)
@@ -918,7 +806,7 @@ shape = SubResource("1")
 material = SubResource("44")
 position = Vector2(-36, -8)
 sprite_frames = SubResource("SpriteFrames_qnxgt")
-animation = &"buff"
+animation = &"piercing_attack"
 flip_h = true
 script = ExtResource("16_h78d2")
 
@@ -930,6 +818,17 @@ collide_with_areas = true
 position = Vector2(26, -24)
 frame = 6
 frame_progress = 1.0
+
+[node name="DashZone" type="Area2D" parent="." unique_id=1321870608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashZone" unique_id=1641568766]
+position = Vector2(-72, 0)
+shape = SubResource("RectangleShape2D_vvbwg")
+
+[node name="BuffZone" type="Area2D" parent="." unique_id=1468409423]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuffZone" unique_id=1319428883]
+shape = SubResource("CircleShape2D_j75q0")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
