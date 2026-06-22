@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://sqwgavmk6n0l" path="res://_Entities/Zombies/_RohanBossZombie/rohan_sprite_comp.gd" id="12_vvbwg"]
 [ext_resource type="Texture2D" uid="uid://iuxeo2sxw6vb" path="res://_Entities/Zombies/Red_Zombie_Buff_Halo.png" id="14_j75q0"]
 [ext_resource type="Script" uid="uid://b23wxvthprmvk" path="res://_Entities/Zombies/buff_halo.gd" id="15_pkow4"]
+[ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="16_h78d2"]
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="17_s5ypw"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
@@ -329,6 +330,54 @@ region = Rect2(1885, 94, 145, 47)
 atlas = ExtResource("11_vvbwg")
 region = Rect2(2030, 94, 145, 47)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7bkp"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(0, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjswu"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(145, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjkmg"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(290, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5tb2"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(435, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqbsb"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(580, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bti54"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(725, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6jc2"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(870, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deaek"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(1015, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktvqq"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(1160, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jurjd"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(1305, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aps1e"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(1450, 235, 145, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_751x2"]
+atlas = ExtResource("11_vvbwg")
+region = Rect2(1595, 235, 145, 47)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_opvcm"]
 atlas = ExtResource("11_vvbwg")
 region = Rect2(0, 0, 145, 47)
@@ -637,6 +686,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_l7bkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjswu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjkmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5tb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqbsb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bti54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6jc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deaek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktvqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jurjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aps1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_751x2")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_opvcm")
 }, {
 "duration": 1.0,
@@ -748,6 +838,8 @@ radius = 80.305664
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j75q0"]
 size = Vector2(98, 20)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ar4ol"]
+
 [node name="Rohan" type="Area2D" unique_id=1375769904 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
@@ -813,10 +905,8 @@ shape = SubResource("1")
 material = SubResource("44")
 position = Vector2(-36, -8)
 sprite_frames = SubResource("SpriteFrames_qnxgt")
-animation = &"piercing_attack"
+animation = &"attack"
 autoplay = "idle"
-frame = 7
-frame_progress = 0.6972655
 flip_h = true
 script = ExtResource("12_vvbwg")
 
@@ -853,6 +943,10 @@ position = Vector2(-1, -17)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_j75q0")
 script = ExtResource("15_pkow4")
+
+[node name="Phase2AnimSprite" type="AnimatedSprite2D" parent="." unique_id=1673869301]
+sprite_frames = SubResource("SpriteFrames_ar4ol")
+script = ExtResource("16_h78d2")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
