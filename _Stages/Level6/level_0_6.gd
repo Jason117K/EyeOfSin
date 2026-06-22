@@ -18,6 +18,9 @@ var wyrm_demo_scene = load("res://_UI/GameDemonstrations/DemonTutorials/wyrm_dem
 
 # Text file paths
 const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
+const TUTORIAL_EXPLAIN_REMOVAL = "res://_Assets/Text/TextFiles/Tutorial_Demon_Removal.txt"
+const TUTORIAL_EXPLAIN_REMOVAL_2 = "res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_2.txt"
+const TUTORIAL_EXPLAIN_REMOVAL_3 = "res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_3.txt"
 
 # Cached references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -32,7 +35,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 
 
 var gameStarted := false
-
+var can_advance_to_start_game := false 
 
 #region Tutorial Step Definitions
 func _setup_tutorial() -> void:
@@ -42,15 +45,27 @@ func _setup_tutorial() -> void:
 			"enter": _start_explain_wyrm,
 		},
 		{
-			"name": "FORCE_SELECT_WYRM",
-			"enter": _start_force_select_wyrm,
-			"input_filter": _filter_block_keyboard,
+			"name": "EXPLAIN_REMOVAL",
+			"enter": _start_explain_removal,
 		},
 		{
-			"name": "FORCE_PLACE_WYRM",
-			"enter": _start_force_place_wyrm,
-			"input_filter": _filter_block_deselect,
+			"name": "EXPLAIN_REMOVAL_2",
+			"enter": _start_explain_removal_2,
 		},
+		{
+			"name": "EXPLAIN_REMOVAL_3",
+			"enter": _start_explain_removal_3,
+		},
+		#{
+			#"name": "FORCE_SELECT_WYRM",
+			#"enter": _start_force_select_wyrm,
+			#"input_filter": _filter_block_keyboard,
+		#},
+		#{
+			#"name": "FORCE_PLACE_WYRM",
+			#"enter": _start_force_place_wyrm,
+			#"input_filter": _filter_block_deselect,
+		#},
 		{
 			"name": "GAME_READY",
 			"enter": _start_game_ready,
@@ -171,6 +186,31 @@ func _start_explain_wyrm() -> void:
 	#toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_WYRM)
 	#toolTips.set_visual_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
 
+func _start_explain_removal()->void:
+	await get_tree().physics_frame
+	demonSelectionMenu._on_WyrmButton_pressed()
+	demonManager.place_demon(Vector2(624,176))
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_REMOVAL,true)
+
+func _start_explain_removal_2()->void:
+
+	Global.demon_was_removed.connect(advance_to_start_game)
+	can_advance_to_start_game = true 
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_REMOVAL_2,false)
+	
+func advance_to_start_game()->void:
+	if can_advance_to_start_game:
+		advance_tutorial()
+		Global.demon_was_removed.disconnect(advance_to_start_game)
+		can_advance_to_start_game = false 
+
+func _start_explain_removal_3()->void:
+	Global.unHideDemonSelectionMenu()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
+	auto_advance = true
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_REMOVAL_3,false)
+	set_auto_advance_toolTip(8)
+
 func _start_force_select_wyrm() -> void:
 	Global.unHideDemonSelectionMenu()
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_DEMON,false)
@@ -187,7 +227,7 @@ func _start_force_place_wyrm() -> void:
 		
 func _start_game_ready() -> void:
 	toolTips.hide()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
+	
 	#_show_all_buttons()
 
 
@@ -216,12 +256,12 @@ func _start_explain_amalgam_zombie() -> void:
 
 func _on_tooltip_hidden() -> void:
 	#hide_spotlight()
-
-	match get_current_step_name():
-		"EXPLAIN_WYRM":
-			go_to_step("FORCE_SELECT_WYRM")
-		"EXPLAIN_AMALGAM_ZOMBIE":
-			get_tree().paused = false
+	advance_tutorial()
+	#match get_current_step_name():
+		#"EXPLAIN_WYRM":
+			#go_to_step("FORCE_SELECT_WYRM")
+		#"EXPLAIN_AMALGAM_ZOMBIE":
+			#get_tree().paused = false
 
 func _on_wyrm_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_WYRM":

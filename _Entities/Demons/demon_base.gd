@@ -120,6 +120,7 @@ func _ready() -> void:
 	erase_button.mouse_entered.connect(show_erase_button)
 	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
 	erase_button.pressed.connect(die_fromClearSpace)
+	erase_button.pressed.connect(Global.demon_removed)
 	erase_button.hide()
 	
 	spawn_juice_anim.play()

@@ -251,6 +251,7 @@ var should_navigate_demon_codex : bool
 var skull_tile_highlight_area : Control 
 
 signal swap_scenes_signal
+signal demon_was_removed
 
 func _process(delta: float) -> void:
 	if get_tree().paused:
@@ -722,7 +723,9 @@ func register_demon(new_demon : Demon)->void:
 
 func get_all_demons()->Array:
 	return all_demons 
-		
+
+func demon_removed()->void:
+	demon_was_removed.emit()
 		
 func register_hero_demon(new_hero_demon : Demon) -> void:
 	hero_demon = new_hero_demon
