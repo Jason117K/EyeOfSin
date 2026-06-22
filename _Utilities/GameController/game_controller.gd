@@ -523,9 +523,18 @@ func remove_empty_in_alt_scene(grid_pos : Vector2) -> void:
 		other_dimension = current_scenes[1]
 	else:
 		other_dimension = current_scenes[0]
-		
+
 	if other_dimension:
 		other_dimension.remove_empty_blocker_demon(grid_pos)
+
+# Remove a blocker from the dimension OPPOSITE the source dimension, regardless of
+# which dimension is currently active. Portals are freed as a pair in a single frame
+# (Global.free_portals), so the active-relative remove_empty_in_alt_scene would clean
+# one portal's blocker twice and orphan the other's. The source decides the target here.
+func remove_empty_in_opposite_of(grid_pos : Vector2, source_is_purple : bool) -> void:
+	var target_dimension : Node = current_scenes[1] if source_is_purple else current_scenes[0]
+	if target_dimension:
+		target_dimension.remove_empty_blocker_demon(grid_pos)
 
 
 func register_heart_alt_scene(_new_hero_demon : Demon) -> void:

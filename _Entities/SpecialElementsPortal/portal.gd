@@ -41,7 +41,9 @@ func free_portals()->void:
 func free_portal()->void:
 	if demon_manager != null:
 		print("DM IS ", demon_manager)
-		demon_manager.clear_space(grid_map_cell_pos)
+		# Remove the blocker relative to THIS portal's dimension, not the active one —
+		# free_portals() frees both portals in one frame, so the active flag is wrong for one of them.
+		demon_manager.clear_space_for_source(grid_map_cell_pos, is_in_group("Purple"))
 	queue_free()
 	
 	

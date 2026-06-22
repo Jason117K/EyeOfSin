@@ -160,6 +160,13 @@ func clear_space(passed_grid_pos: Vector2) -> void:
 	grid_map.erase(passed_grid_pos)
 	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
+# Like clear_space, but removes the opposite-dimension blocker based on the source
+# dimension instead of the currently-active dimension. Used by portals, which are
+# freed as a pair (both dimensions) in one frame and so can't rely on the active flag.
+func clear_space_for_source(passed_grid_pos: Vector2, source_is_purple: bool) -> void:
+	grid_map.erase(passed_grid_pos)
+	Global.game_controller.remove_empty_in_opposite_of(passed_grid_pos, source_is_purple)
+
 func clear_space_alt(passed_grid_pos: Vector2) -> void:
 	var demon_node: Area2D = grid_map.get(passed_grid_pos)
 	if demon_node != null:
