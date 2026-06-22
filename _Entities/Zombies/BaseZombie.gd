@@ -503,6 +503,10 @@ func special_move() -> void:
 func special_move2() -> void:
 	animatedSprite.setSpecialMoveTrue()
 
+func _buff_zombie()->void:
+	pass
+	
+
 
 # --- Death Flags ---
 
@@ -528,6 +532,8 @@ func silence() -> void:
 		is_silenced = true
 	else:
 		return
+
+
 
 
 # --- Dimension Change ---
@@ -612,7 +618,6 @@ func _on_DebuffDegrade_timeout() -> void:
 		slow_amount = 0
 		speedComp.is_slow = false
 		animatedSprite.is_slow = false 
-
 
 
 func _on_blood_hit_animation_finished() -> void:

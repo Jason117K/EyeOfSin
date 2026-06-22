@@ -130,3 +130,15 @@ uniforms.
   below ~90 fps that are not game bugs.
 - **Perf ceiling ≈ 144 tentacles** (`curved_lines_2d` addon). LOD isn't viable; staggering deferred;
   GDExtension/compute under evaluation. Treat tentacle count as the perf-critical constraint.
+
+## Important File Paths 
+- ** res://_Utilities/global.gd **
+- ** res://_Utilities/GameController/game_controller.gd **
+- ** res://_Utilities/Waves/WaveManager.gd **
+- ** res://_Utilities/Zombies/ZombieSpawner.gd **
+- ** res://_Entities/Demons/demon_base.gd **
+- ** res://_Entities/Zombies/BaseZombie.gd **
+- ** res://_Utilities/Demons/DemonManager.gd **
+- ** res://_Utilities/Demons/DemonSelectionMenu.gd **
+- ** res://_Stages/level_template.gd **
+- ** **

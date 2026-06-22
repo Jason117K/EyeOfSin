@@ -4,10 +4,10 @@ extends Zombie
 func _ready()->void:
 	super()
 	if Global.gameIsStarted && self.is_demo == false:
-		Global.unlock_zombie("Unhallower")
+		Global.unlock_zombie("Rohan")
 
 func get_zombie_name() -> String:
-	return " UNHALLOWER "
+	return " ROHAN "
 
 
 func silence() -> void:

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rl210wbm7b8f"
-path="res://.godot/imported/The Tarnished Widow 188x90.png-38ab5d00abf022723a7f21d746db4413.ctex"
+path="res://.godot/imported/The Tarnished Widow 188x90.png-5ac65131c52f926d80b58a6df650010e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Entities/Zombies/_RohanZombie/The Tarnished Widow 188x90.png"
-dest_files=["res://.godot/imported/The Tarnished Widow 188x90.png-38ab5d00abf022723a7f21d746db4413.ctex"]
+source_file="res://_Entities/Zombies/_OldRohanZombie/The Tarnished Widow 188x90.png"
+dest_files=["res://.godot/imported/The Tarnished Widow 188x90.png-5ac65131c52f926d80b58a6df650010e.ctex"]
 
 [params]
 

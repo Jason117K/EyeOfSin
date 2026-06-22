@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cr2clputtql3q"]
+
+[ext_resource type="Script" uid="uid://cso6i4imurqei" path="res://_Entities/Zombies/_OldRohanZombie/OldRohanAttackComponent.gd" id="1_4bts8"]
+
+[node name="RohanAttackComponent" type="Node2D" unique_id=843500326]
+script = ExtResource("1_4bts8")

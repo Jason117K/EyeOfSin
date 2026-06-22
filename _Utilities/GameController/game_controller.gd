@@ -25,6 +25,7 @@ const UI_BIT := 1
 var _default_root_cull_mask := 0xFFFFFFFF
 
 func _input(event:InputEvent) -> void:
+			
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.hide_notification_bar()
