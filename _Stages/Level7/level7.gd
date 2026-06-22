@@ -170,7 +170,7 @@ func getIsPurpleDimension()->void:
 func _start_explain_skull_tiles()->void:
 	Global.hide_swap_and_pip()
 	toolTips.sideways_config()
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SKULL_TILE,true,Vector2(16,0))
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SKULL_TILE,true,Vector2(16,-8))
 	await get_tree().physics_frame
 	Global.hideDemonSelectionMenu()
 	Global.add_pulsing_button_highlight(Global.skull_tile_highlight_area)
