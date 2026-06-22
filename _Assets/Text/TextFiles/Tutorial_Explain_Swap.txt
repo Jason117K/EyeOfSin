@@ -1,3 +1,1 @@
-Lucretia has access to powerful SWAP SOCERCIES that charge over time. 
-Swapping dimensions automatically activates the ability, unless the ability is locked (SPACEBAR)
-Swapping when an ability is activated will cancel it and lengthen the cooldown.
+Lucretia can now command devastating [color=red]SWAP SOCERCIES[/color] that charge over time. 

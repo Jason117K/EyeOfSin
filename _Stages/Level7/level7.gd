@@ -24,20 +24,47 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
+const TUTORIAL_EXPLAIN_SKULL_TILE := "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt"
+const TUTORIAL_EXPLAIN_PORTALS := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt"
+const TUTORIAL_EXPLAIN_PORTALS_2 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_2.txt"
+const TUTORIAL_EXPLAIN_PORTALS_3 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_3.txt"
+const TUTORIAL_PLACE_PORTAL := "res://_Assets/Text/TextFiles/Tutorial_Place_Portal.txt"
+const TUTORIAL_PLACE_PORTAL_2 := "res://_Assets/Text/TextFiles/Tutorial_Place_Portal_2.txt"
+
 
 var gameStarted := false
-
+var portal_demo := load("res://_UI/GameDemonstrations/portal_ability_demo.tscn")
 
 #region Tutorial Step Definitions
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
-			"name": "GAME_READY",
-			"enter": _start_game_ready,
+			"name": "EXPLAIN_SKULL_TILES",
+			"enter": _start_explain_skull_tiles,
 		},
 		{
-			"name": "EXPLAIN_AMALGAM_ZOMBIE",
-			"enter": _start_explain_amalgam_zombie,
+			"name": "EXPLAIN_PORTAL",
+			"enter": _start_explain_portals,
+		},
+		{
+			"name": "EXPLAIN_PORTAL_2",
+			"enter": _start_explain_portals_2,
+		},
+		{
+			"name": "EXPLAIN_PORTAL_3",
+			"enter": _start_explain_portals_3,
+		},
+		{
+			"name": "PLACE_PORTAL_1",
+			"enter": _start_place_portals,
+		},
+		{
+			"name": "PLACE_PORTAL_2",
+			"enter": _start_place_portals_2,
+		},
+		{
+			"name": "GAME_READY",
+			"enter": _start_game_ready,
 		},
 	])
 #endregion
@@ -123,7 +150,7 @@ func _configure_waves() -> void:
 func finish_ready() -> void:
 	Global.show_pip()
 	_setup_tutorial()
-	go_to_step("GAME_READY")
+	go_to_step("EXPLAIN_SKULL_TILES")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
@@ -139,7 +166,62 @@ func getIsPurpleDimension()->void:
 
 
 #region Step Entry Functions
+
+func _start_explain_skull_tiles()->void:
+	Global.hide_swap_and_pip()
+	toolTips.sideways_config()
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SKULL_TILE,true,Vector2(16,0))
+	await get_tree().physics_frame
+	Global.hideDemonSelectionMenu()
+	Global.add_pulsing_button_highlight(Global.skull_tile_highlight_area)
+	#set_auto_advance_toolTip(5)
+	
+func _start_explain_portals()->void:
+	Global.remove_pulsing_button_highlight(Global.skull_tile_highlight_area)
+	Global.unHideDemonSelectionMenu()
+	toolTips.basic_config()
+	await get_tree().physics_frame
+	demonSelectionMenu.add_pulsing_button_highlight(demonSelectionMenu.PortalButton)
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_PORTALS,true,"NEW ABILITY UNLOCKED: [color=green]POR[/color][color=purple]TALS[/color]")
+	toolTips.set_visual_demon_tutorial_visual(portal_demo.instantiate(),true,Vector2(0,48))
+	
+	
+
+		
+		
+func _start_explain_portals_2()->void:
+	
+	
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_PORTALS_2,true)
+	auto_advance = true 
+	set_auto_advance_toolTip(12)
+	
+	
+func _start_explain_portals_3()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_PORTALS_3,true)
+	set_auto_advance_toolTip(12)
+		
+func _start_place_portals()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_PORTAL,false)
+	demonManager.portal_placed.connect(_on_tooltip_hidden)
+	
+	
+func _start_place_portals_2()->void:
+	demonManager.portal_placed.disconnect(_on_tooltip_hidden)
+	
+	green_dimension = get_green_dimension()
+	green_dimension.demonManager.portal_placed.connect(_on_tooltip_hidden)
+	
+	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_PORTAL_2,false)
+	
+			
 func _start_game_ready() -> void:
+	green_dimension.demonManager.portal_placed.disconnect(_on_tooltip_hidden)
+	Global.show_swap_and_pip()
+	demonSelectionMenu.remove_pulsing_button_highlight(demonSelectionMenu.PortalButton)
+	auto_advance = false
+	toolTips.hide()
+	
 	_show_all_buttons()
 
 
@@ -165,11 +247,8 @@ func _start_explain_amalgam_zombie() -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
-	#hide_spotlight()
-
-	match get_current_step_name():
-		"EXPLAIN_AMALGAM_ZOMBIE":
-			get_tree().paused = false
+	toolTips.visible = false
+	advance_tutorial()
 
 
 func _on_wave_started(wave_index: int) -> void:

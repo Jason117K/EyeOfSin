@@ -53,7 +53,7 @@ func start_game() -> void:
 
 func place_wyrm_queen()->void:
 	demonSelectionMenu.set_wyrm_queen()
-	demonManager.place_demon(Vector2(48,208),true)
+	demonManager.place_demon(Vector2(48,240),true)
 
 
 func show_guide() -> void:

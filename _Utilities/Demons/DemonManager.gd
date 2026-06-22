@@ -35,6 +35,7 @@ signal wasp_placed(grid_position: Vector2)
 signal maw_placed(grid_position: Vector2)
 signal test_signal()
 signal demon_deselected()
+signal portal_placed
 
 func _ready() -> void:
 	if get_parent().has_method("crawler_placed"):
@@ -149,17 +150,21 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 
 # Clear a space for a new demon to go 
 func clear_space(passed_grid_pos: Vector2) -> void:
-	var demon_node: Demon = grid_map.get(passed_grid_pos)
+	var demon_node: Area2D = grid_map.get(passed_grid_pos)
 	if demon_node != null:
 		print(demon_node , " Demon Node will DIE from CLEAR SPACE")
 		#demon_node.die_fromClearSpace()
+	#else:
+	print("GridMap To Clear Was ", grid_map)
+	print("Passed Grid Pos Was ", passed_grid_pos)
 	grid_map.erase(passed_grid_pos)
 	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
 func clear_space_alt(passed_grid_pos: Vector2) -> void:
-	var demon_node: Demon = grid_map.get(passed_grid_pos)
+	var demon_node: Area2D = grid_map.get(passed_grid_pos)
 	if demon_node != null:
 		demon_node.die_fromClearSpace()
+	print("Clear Alt Passed Grid Pos ", passed_grid_pos)
 	grid_map.erase(passed_grid_pos)
 	#Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 	
@@ -265,7 +270,8 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		#print("No demon selected!")
 		return
 	
-	var demon_instance :Demon= selected_demon_scene.instantiate()
+	
+	var demon_instance := selected_demon_scene.instantiate()
 	if is_queen:
 		demon_instance.grid_map_cell_pos = Vector2(grid_pos.x-16,grid_pos.y+16)
 	else:
@@ -378,8 +384,13 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		
 		camera.screen_shake(1.25,0.7)
 
-		print("Pdemon name is ", demon_instance.name)
-		demon_placed.emit(grid_pos)
+		#print("Pdemon name is ", demon_instance.name)
+		
+		if demon_instance.name.containsn("Portal"):
+			portal_placed.emit()
+		else:
+			demon_placed.emit(grid_pos)
+			
 		demon_deselected.emit()
 		
 		if "SpinalOcculum" in demon_instance.name:

@@ -66,7 +66,6 @@ max_basic_tutorial_characters = 115
 tooltip_dissappear_wait_time = 9
 
 [node name="BasicTutorialMessage" type="Control" parent="." unique_id=504267282]
-visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -78,17 +77,16 @@ mouse_filter = 2
 
 [node name="BasicTutorialVbox" type="VBoxContainer" parent="BasicTutorialMessage" unique_id=645986828]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -359.0
-offset_top = -21.0
-offset_right = 361.0
-offset_bottom = 159.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -180.0
+offset_right = 360.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 alignment = 1
 
@@ -221,6 +219,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_f4pib")
 text = "UNDERSTOOD"
 
 [node name="DemonVisualTutorialVBox" type="VBoxContainer" parent="." unique_id=1361729839]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8

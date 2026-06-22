@@ -58,7 +58,7 @@ ability_duration = 9.0
 cooldown_duration = 25.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_17mp3")]
-ability_name = "SORROW OF SYN"
+ability_name = "TORRENTIAL BLOOD"
 
 [node name="Raindrops" type="GPUParticles2D" parent="." unique_id=1356173960]
 visible = false

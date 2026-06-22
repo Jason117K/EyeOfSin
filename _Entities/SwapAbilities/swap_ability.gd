@@ -20,6 +20,7 @@ var is_locked := false
 @onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/MarginContainer/SwapAbilityProgressBar
 const STEP := 0.1
 
+
 func _ready() -> void:
 	print("Swap Ability Ready")
 	#cooldown_visual.material.set_shader_parameter("fill_amount", 0.0)
@@ -154,6 +155,15 @@ func set_current_visibility_layer(flag : int)->void:
 				child.visibility_layer = 0
 				child.set_visibility_layer_bit(2, true) 
 				on_purple = false
+
+
+func hide()->void:
+	cooldown_controller.hide()
+	
+func show()->void:
+	cooldown_controller.show()
+
+
 
 func set_collision()->void:
 	pass

@@ -248,6 +248,8 @@ var current_synergies : Array
 var demon_codex : Control 
 var should_navigate_demon_codex : bool 
 
+var skull_tile_highlight_area : Control 
+
 signal swap_scenes_signal
 
 func _process(delta: float) -> void:
@@ -279,7 +281,9 @@ func get_files_in_folder(path: String, prefix: String) -> Array[String]:
 		file_name = dir.get_next()
 	dir.list_dir_end()
 	return files
-	
+
+func register_skull_tile_highlight_area(new_skull_tile_highlight_area)->void:
+	skull_tile_highlight_area = new_skull_tile_highlight_area
 		
 
 func _load_demon_costs() -> void:
@@ -299,8 +303,8 @@ func _load_demon_costs() -> void:
 
 
 func free_portals()->void:
-	purple_portal.queue_free()
-	green_portal.queue_free()
+	purple_portal.free_portal()
+	green_portal.free_portal()
 	portal_progress_bar.recharge()
 	portal_progress_bar_1.recharge()
 
@@ -358,6 +362,14 @@ func add_blood_from_wave(blood_to_add:int)->void:
 		if demon_manager != null:
 			demon_manager.add_blood(blood_to_add)	
 
+func hide_swap_and_pip()->void:
+	swap_ability.hide()
+	hide_pip()
+	
+func show_swap_and_pip()->void:
+	swap_ability.show()
+	show_pip()
+	
 func register_demon_selection_menu(new_demon_selection_menu)->void:
 	var temp_menu_holder :Array = []
 	for menu in demon_selection_menus:
@@ -843,6 +855,7 @@ func is_on_purple_dimension() -> bool:
 	if game_controller.on_scene_1:
 		return true
 	else:
+		
 		return false
 
 func register_syn_ability_manager(new_syn_ability_manager)->void:

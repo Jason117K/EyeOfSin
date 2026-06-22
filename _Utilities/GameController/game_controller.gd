@@ -24,6 +24,12 @@ const DIM_BITS := [1 << 1, 1 << 2]
 const UI_BIT := 1
 var _default_root_cull_mask := 0xFFFFFFFF
 
+func _input(event:InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_Y:
+			Global.hide_notification_bar()
+			Global.swap_scenes()
+
 
 func _ready() -> void:
 	print(Input.is_using_accumulated_input(), " balls")

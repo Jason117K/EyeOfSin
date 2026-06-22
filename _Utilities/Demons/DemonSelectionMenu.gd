@@ -103,6 +103,7 @@ var can_click : bool = true
 signal demon_deselected 
 signal demon_selected(Demon)
 
+
 func _ready() -> void:
 	is_alt = get_parent().isGreenDimension
 	add_child(preview_container)
@@ -184,13 +185,13 @@ func _input(event:InputEvent) -> void:
 		#print("Key Pressed")
 		if event.keycode == KEY_X:
 			deselect_demon()
-		if event.keycode == KEY_Y:
-			#print("Y Key Pressed")
-			Global.hide_notification_bar()
-			if canSwapScenes:
-				Global.swap_scenes()
-			else:
-				print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
+		#if event.keycode == KEY_Y:
+			##print("Y Key Pressed")
+			#Global.hide_notification_bar()
+			#if canSwapScenes:
+				#Global.swap_scenes()
+			#else:
+				#print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
 		if event.keycode == KEY_1:
 			print("1 Key Pressed")
 			_on_OcculumButton_pressed()
@@ -230,6 +231,7 @@ func deselect_demon() -> void:
 	demon_deselected.emit()
 	
 func on_demon_button_pressed(demon_scene:PackedScene, demon_button:Control, demon_label:Control) -> void:
+
 	Global.hide_notification_bar()
 	setCanRemoveFalse()
 	
@@ -692,6 +694,7 @@ func _on_portal_button_pressed() -> void:
 	#currentDemonLabel.text = "PORTAL SELECTED " + deselectText
 	temp_instance.queue_free()
 	print("Portal selected")
+
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	
 	

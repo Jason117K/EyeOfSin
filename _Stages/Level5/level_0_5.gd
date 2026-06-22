@@ -20,6 +20,11 @@ const TUTORIAL_PLACE_HIVE = "res://_Assets/Text/TextFiles/Level0-5_Tutorial_Plac
 const TUTORIAL_EXPLAIN_ERUPTER = "res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
 const TUTORIAL_EXPLAIN_LANCER = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 const TUTORIAL_EXPLAIN_SWAP = "res://_Assets/Text/TextFiles/Tutorial_Explain_Swap.txt"
+const TUTORIAL_EXPLAIN_SWAP_2 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_2.txt"
+const TUTORIAL_EXPLAIN_SWAP_3 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_3.txt"
+const EXPLAIN_WYRM_QUEEN = "res://_Assets/Text/TextFiles/Tutorial_Explain_Wyrm_Queen.txt"
+
+var swap_demo_scene := load("res://_UI/GameDemonstrations/swap_ability_demo.tscn")
 
 # Cached button references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -42,11 +47,11 @@ func _setup_tutorial() -> void:
 		},
 		{
 			"name": "EXPLAIN_SWAP_ABILITY_2",
-			"enter": _start_explain_swap,
+			"enter": _start_explain_swap_2,
 		},
 		{
 			"name": "EXPLAIN_SWAP_ABILITY_3",
-			"enter": _start_explain_swap,
+			"enter": _start_explain_swap_3,
 		},
 		{
 			"name": "PRE_START_GAME",
@@ -119,13 +124,14 @@ func finish_ready() -> void:
 		return
 	toolTips.show()
 	_setup_tutorial()
+	#Global.unHideDemonSelectionMenu()
+	Global.unhide_ui_layer()
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	go_to_step("EXPLAIN_SWAP_ABILITY")
 	levelSwitcher.update_level(level06, level06Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	demonSelectionMenu.canSwapScenes = true
-	Global.unHideDemonSelectionMenu()
-	Global.unhide_ui_layer()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
+	
 	
 func _start_free_play() -> void:
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
@@ -150,35 +156,32 @@ func _input(event: InputEvent) -> void:
 #region Step Entry Functions (same sequential order as definitions above)
 
 func _start_explain_swap()->void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SWAP,true,Vector2(0,-80))
+	
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SWAP,true,"NEW ABILITY UNLOCKED : [color=red]SWAP SORCERIES[/color]")
+	toolTips.set_visual_demon_tutorial_visual(swap_demo_scene.instantiate())
 	toolTips.add_pulsing_button_highlight(Global.get_swap_ability_panel())
+	await get_tree().physics_frame
+	Global.hideDemonSelectionMenu()
 
+func _start_explain_swap_2()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SWAP_2,true,Vector2(0,-80))
+	toolTips.add_pulsing_button_highlight(Global.get_swap_ability_panel())
+	
+func _start_explain_swap_3()->void:
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SWAP_3,true,Vector2(0,-80))
+	toolTips.add_pulsing_button_highlight(Global.get_swap_ability_panel())
+	
 func _pre_start_game()->void:
+	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.set_wyrm_queen()
 	demonManager.place_demon(Vector2(48,144),true)
 	toolTips.stop_glow_pulse(Global.get_swap_ability_panel())
+	
+	toolTips.set_basic_tutorial_text(EXPLAIN_WYRM_QUEEN,true,Vector2(0,-80))
+	set_auto_advance_toolTip(9)
 	green_dimension = Global.game_controller.get_green_dimension()
 	green_dimension.place_wyrm_queen()
 
-func _start_force_select_hive() -> void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)
-
-	show_only_demon_buttons(["Hive"])
-	hide_all_demon_buttons_with_exception(["Hive"])
-	#hbox.get_node("Hive").visible = true
-	if hive_pulse_added == false:
-		demonSelectionMenu.add_pulsing_button_highlight(hive_button)
-		hive_pulse_added = true
-	waveManager.can_start = false
-	demonSelectionMenu.canSwapScenes = false
-
-
-func _start_force_place_hive() -> void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_HIVE,false)
-	
-#	demonSelectionMenu.remove_button_highlight(hive_button)
-	demonSelectionMenu.stop_glow_pulse(hive_button)
-	#hide_spotlight()
 
 
 func _start_tutorial_p1_done() -> void:
@@ -227,19 +230,19 @@ func _filter_block_deselect(event: InputEvent) -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
-	#hide_spotlight()
+	advance_tutorial()
 
-	match get_current_step_name():
-		"EXPLAIN_SWAP_ABILITY":
-			go_to_step("PRE_START_GAME")
-		"FORCE_PLACE_HIVE":
-			get_tree().paused = false
-
-		"EXPLAIN_LANCER_ZOMBIE":
-			get_tree().paused = false
-
-		"EXPLAIN_ERUPTER_ZOMBIE":
-			get_tree().paused = false
+	#match get_current_step_name():
+		#"EXPLAIN_SWAP_ABILITY":
+			#go_to_step("PRE_START_GAME")
+		#"FORCE_PLACE_HIVE":
+			#get_tree().paused = false
+#
+		#"EXPLAIN_LANCER_ZOMBIE":
+			#get_tree().paused = false
+#
+		#"EXPLAIN_ERUPTER_ZOMBIE":
+			#get_tree().paused = false
 
 
 func _on_hive_button_pressed() -> void:

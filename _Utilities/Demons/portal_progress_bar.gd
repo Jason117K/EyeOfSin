@@ -18,7 +18,7 @@ func recharge()->void:
 func _process(_delta: float) -> void:
 	if portal_button.disabled:
 		self.value = (abs((recharge_timer.time_left / recharge_timer.wait_time)-1.0)) * 100
-		print("Self Value is ", self.value)
+		#print("Self Value is ", self.value)
 	
 func make_portal_available()->void:
 	portal_button.disabled = false 

@@ -46,6 +46,8 @@
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="43_wn5ss"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_u53wd"]
 [ext_resource type="PackedScene" uid="uid://cm6m7oqcnnpok" path="res://_Stages/SpecialTiles/flower_tile.tscn" id="46_4fca4"]
+[ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="47_ri8pe"]
+[ext_resource type="Script" uid="uid://crgav0n87odt2" path="res://_Stages/Level7/skull_tile_highlight.gd" id="48_8bot6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4now0"]
 texture = ExtResource("10_tnl3t")
@@ -1293,6 +1295,17 @@ monitorable = false
 position = Vector2(358, 308)
 monitoring = false
 monitorable = false
+
+[node name="SkullTileHighlight" type="TextureRect" parent="FlowerTileContainer" unique_id=6941640]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 334.0
+offset_top = 113.0
+offset_right = 382.0
+offset_bottom = 316.0
+mouse_filter = 2
+texture = ExtResource("47_ri8pe")
+expand_mode = 1
+script = ExtResource("48_8bot6")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=574585201]
 visible = false

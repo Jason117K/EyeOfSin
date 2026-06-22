@@ -490,7 +490,7 @@ shape = SubResource("RectangleShape2D_1dndg")
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=491908974]
 
 [node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=1570954011]
-points = PackedVector2Array(16, 0, 300, 0)
+points = PackedVector2Array(16, 0, 500, 0)
 default_color = Color(1, 0, 0, 0.47058824)
 end_cap_mode = 2
 round_precision = 2
@@ -645,7 +645,7 @@ script = ExtResource("16_q2cmp")
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=948474511]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_5ad65")
-target_position = Vector2(250, -1)
+target_position = Vector2(500, -1)
 collision_mask = 0
 collide_with_areas = true
 collide_with_bodies = false
