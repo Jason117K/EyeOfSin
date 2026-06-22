@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="10_c08em"]
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="11_1osc0"]
+[ext_resource type="Texture2D" uid="uid://iuxeo2sxw6vb" path="res://_Entities/Zombies/Red_Zombie_Buff_Halo.png" id="15_w7pnj"]
+[ext_resource type="Script" uid="uid://b23wxvthprmvk" path="res://_Entities/Zombies/buff_halo.gd" id="16_gaaev"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -276,6 +278,7 @@ targetGlowColor = Color(0.87451, 0.258824, 0.258824, 1)
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=560211467]
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=1667080116]
+visible = false
 position = Vector2(2, -11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_c08em")
@@ -284,6 +287,12 @@ texture = ExtResource("10_c08em")
 position = Vector2(26, -21)
 frame = 6
 frame_progress = 1.0
+
+[node name="BuffHalo" type="Sprite2D" parent="." unique_id=498630706]
+position = Vector2(2, -10)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("15_w7pnj")
+script = ExtResource("16_gaaev")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

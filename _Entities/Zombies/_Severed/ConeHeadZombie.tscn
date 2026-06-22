@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="10_bkie4"]
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="12_ebmmd"]
+[ext_resource type="Texture2D" uid="uid://iuxeo2sxw6vb" path="res://_Entities/Zombies/Red_Zombie_Buff_Halo.png" id="14_sy856"]
+[ext_resource type="Script" uid="uid://b23wxvthprmvk" path="res://_Entities/Zombies/buff_halo.gd" id="15_fcqaf"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -186,9 +188,16 @@ target_position = Vector2(-8, 0)
 collide_with_areas = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=1048746352]
+visible = false
 position = Vector2(0, -18)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_n5jup")
+
+[node name="BuffHalo" type="Sprite2D" parent="." unique_id=1936706391]
+position = Vector2(1, -16)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("14_sy856")
+script = ExtResource("15_fcqaf")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

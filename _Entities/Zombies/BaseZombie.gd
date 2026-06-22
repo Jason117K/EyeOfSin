@@ -49,6 +49,9 @@ var attackComp : ZombieAttackRefCountedComponent
 #@onready var attack_timer := $AttackTimer
 @onready var damage_vfx_spawn_locations := [bloodHit]
 @onready var highlight_circle := $HighlightCircle
+@onready var buff_halo := $BuffHalo
+
+var is_buffed := false 
 #@onready var debuff_degrade_timer : Timer = $DebuffDegrade
 #@onready var reset_color_timer : Timer = $ResetThisColor
 #@onready var just_spawned_timer : Timer = $JustNowSpawned
@@ -131,6 +134,9 @@ func _ready() -> void:
 	
 	syn_mark_sprite.position = syn_mark_position
 	syn_mark_sprite.hide()
+	
+	buff_halo.hide()
+	buff_halo.set_hue_shift(animatedSprite.hue_shift)
 	
 	Zombie._load_descriptions()
 	if self.is_in_group("Green"):
@@ -504,7 +510,13 @@ func special_move2() -> void:
 	animatedSprite.setSpecialMoveTrue()
 
 func _buff_zombie()->void:
-	pass
+	buff_halo.show()
+	if !is_buffed:
+		attackComp.increase_damage(0.5)
+		speedComp.increase_speed(0.25)
+		is_buffed = true 
+	#animatedSprite.buff()
+	
 	
 
 

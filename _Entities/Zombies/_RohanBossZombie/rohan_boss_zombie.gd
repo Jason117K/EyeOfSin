@@ -20,8 +20,8 @@ enum State { MOVE, ATTACK, DASH, BUFF }
 @export_category("Rohan Boss")
 @export var piercing_cooldown: float = 9.0    # always counts down, in every state
 @export var buff_cooldown: float = 20.0       # only counts down while in MOVE
-@export var dash_speed: float = 120.0
-@export var dash_stop_gap: float = 12.0        # stop this far in front of the dash target
+@export var dash_speed: float = 110.0
+@export var dash_stop_gap: float = 32.0        # stop this far in front of the dash target
 
 var _state: State = State.MOVE
 var _piercing_cd: float = 0.0
@@ -38,12 +38,14 @@ var _dash_struck: bool = false
 
 @onready var dash_zone: Area2D = $DashZone
 @onready var buff_zone: Area2D = $BuffZone
+@onready var piercing_zone : Area2D = $PierceZone
 
 
 func _ready() -> void:
 	super()
 	if Global.gameIsStarted && self.is_demo == false:
-		Global.unlock_zombie("Rohan")
+		pass
+		#Global.unlock_zombie("Rohan")
 	_piercing_cd = piercing_cooldown
 	_buff_cd = buff_cooldown
 	_setup_zone_masks()
@@ -181,7 +183,8 @@ func _start_piercing(target) -> void:
 	_piercing_active = true
 	_piercing_cd = piercing_cooldown
 	animatedSprite.play(&"piercing_attack")   # one-shot
-	_strike(target)
+	#_strike(target)
+
 
 
 # AnimatedSprite2D.animation_finished is wired to this node in the scene. Only the
@@ -198,6 +201,9 @@ func _on_AnimatedSprite_animation_finished() -> void:
 				_enter_move()
 		&"piercing_attack":
 			_piercing_active = false
+			for demon in piercing_zone.get_overlapping_areas():
+				if demon.is_in_group("Demons"):
+					_strike(demon)
 			if _state != State.ATTACK:
 				_enter_move()
 
@@ -261,6 +267,7 @@ func _setup_zone_masks() -> void:
 	var zombie_bit := 5 if is_in_group("Green") else 4
 	_set_single_mask(dash_zone, demon_bit)
 	_set_single_mask(buff_zone, zombie_bit)
+	_set_single_mask(piercing_zone,demon_bit)
 
 
 func _set_single_mask(area: Area2D, bit: int) -> void:

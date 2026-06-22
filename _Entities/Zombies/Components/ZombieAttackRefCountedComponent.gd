@@ -47,6 +47,8 @@ func _init(new_parent_zombie:Zombie) -> void:
 	var safe_speed : float = max(new_parent_zombie.attack_speed, 0.01)
 	attack_time_wait_time = new_parent_zombie.attack_damage_point / safe_speed
 
+func increase_damage(damage_increase_percentage:float)->void:
+	attack_power = attack_power + (attack_power * damage_increase_percentage)
 
 
 func silence() -> void:

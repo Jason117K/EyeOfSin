@@ -36,7 +36,10 @@ func tick(delta: float) -> void:
 			#speed = originalSpeed
 			#is_slow = false
 		
-		
+func increase_speed(increase_speed_percentage : float)->void:
+	speed = speed + (speed * increase_speed_percentage)
+	originalSpeed = originalSpeed + (originalSpeed * increase_speed_percentage)
+	
 
 func setSpeed(newSpeed: float) -> void:
 	speed = newSpeed

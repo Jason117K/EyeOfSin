@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://ci85dw00qxll1" path="res://_Entities/Zombies/_Unhallower/UnhallowerNew_Web-Sheet.png" id="10_8vgu3"]
 [ext_resource type="Texture2D" uid="uid://dwddgo3me4t7" path="res://_Entities/Zombies/_Unhallower/GuardianDeath-Sheet.png" id="12_1bjrm"]
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="13_8vgu3"]
+[ext_resource type="Texture2D" uid="uid://iuxeo2sxw6vb" path="res://_Entities/Zombies/Red_Zombie_Buff_Halo.png" id="18_4h7yt"]
+[ext_resource type="Script" uid="uid://b23wxvthprmvk" path="res://_Entities/Zombies/buff_halo.gd" id="19_bw81x"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -1035,6 +1037,7 @@ sharp_limit = 90.0
 metadata/_edit_lock_ = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=15035776]
+visible = false
 position = Vector2(0, -19)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_o2tfe")
@@ -1057,6 +1060,7 @@ position = Vector2(1, 14)
 texture = ExtResource("2_vjupx")
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=891501287]
+visible = false
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=932071441]
@@ -1077,6 +1081,12 @@ collide_with_areas = true
 position = Vector2(26, -24)
 frame = 6
 frame_progress = 1.0
+
+[node name="BuffHalo" type="Sprite2D" parent="." unique_id=1765908037]
+position = Vector2(1, -16)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("18_4h7yt")
+script = ExtResource("19_bw81x")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

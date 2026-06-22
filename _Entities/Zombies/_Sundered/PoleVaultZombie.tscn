@@ -18,6 +18,8 @@
 [ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="14_wnede"]
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="15_2rcxa"]
 [ext_resource type="Script" uid="uid://dbb8fpk51mb8l" path="res://_Entities/Zombies/Components/VaultSpecialMoveComp.gd" id="15_ofj7h"]
+[ext_resource type="Texture2D" uid="uid://iuxeo2sxw6vb" path="res://_Entities/Zombies/Red_Zombie_Buff_Halo.png" id="19_070vu"]
+[ext_resource type="Script" uid="uid://b23wxvthprmvk" path="res://_Entities/Zombies/buff_halo.gd" id="20_u428y"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -556,6 +558,12 @@ texture = ExtResource("14_32dev")
 position = Vector2(27, -21)
 frame = 6
 frame_progress = 1.0
+
+[node name="BuffHalo" type="Sprite2D" parent="." unique_id=150334138]
+position = Vector2(8, -15)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("19_070vu")
+script = ExtResource("20_u428y")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

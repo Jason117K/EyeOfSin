@@ -109,14 +109,14 @@ func _ready() -> void:
 
 #TODO Re-Implement Rohan 
 func _configure_waves() -> void:
-	zombie_spawner_1._build_pool(0)
-	zombie_spawner_2._build_pool(0)
-	zombie_spawner_3._build_pool(0)
-	zombie_spawner_4._build_pool(0)
-	zombie_spawner_5._build_pool(0)
-	zombie_spawner_6._build_pool(0)
-	zombie_spawner_7._build_pool(0)
-	return
+	#zombie_spawner_1._build_pool(0)
+	#zombie_spawner_2._build_pool(0)
+	#zombie_spawner_3._build_pool(0)
+	#zombie_spawner_4._build_pool(0)
+	#zombie_spawner_5._build_pool(0)
+	#zombie_spawner_6._build_pool(0)
+	#zombie_spawner_7._build_pool(0)
+	#return
 	zombie_spawner_1.set_waves_from_dicts([{},
 											{}, 
 											{"Severed":3}, 
@@ -125,7 +125,7 @@ func _configure_waves() -> void:
 											{"Reanimator" : 1, "Reborn":9, "Severed":3}, 
 											{"Reanimator": 2, "Severed": 7}, 
 											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
-	zombie_spawner_3.set_waves_from_dicts([{},
+	zombie_spawner_3.set_waves_from_dicts([{"Rohan":1},
 											{},
 											{"Reborn": 10, "Unhallower":2}, 
 											{"Severed": 3, "Unhallower": 1,"Amalgam":1 }])
@@ -149,6 +149,9 @@ func _configure_waves() -> void:
 
 func finish_ready() -> void:
 	Global.show_pip()
+	if skip_tutorials:
+		_start_free_play()
+		return
 	_setup_tutorial()
 	go_to_step("EXPLAIN_SKULL_TILES")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
@@ -159,7 +162,15 @@ func finish_ready() -> void:
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal",])
 
 
-
+func _start_free_play() -> void:
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
+	world_swap_button.visible = true
+	demonSelectionMenu.canSwapScenes = true
+	waveManager.can_start = true
+	Global.show_pip()
+	Global.unhide_ui_layer()
+	Global.unHideDemonSelectionMenu()
+	
 func getIsPurpleDimension()->void:
 	return
 #endregion

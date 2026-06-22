@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://t1132wxfrfx0" path="res://_Entities/SynAbility/MarkedForDeath_Icon.png" id="12_86o74"]
 [ext_resource type="Texture2D" uid="uid://ll8utlihpbe0" path="res://_Entities/Glitch-Sheet.png" id="13_442bf"]
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="13_gvy7m"]
+[ext_resource type="Texture2D" uid="uid://iuxeo2sxw6vb" path="res://_Entities/Zombies/Red_Zombie_Buff_Halo.png" id="20_h3mrt"]
+[ext_resource type="Script" uid="uid://b23wxvthprmvk" path="res://_Entities/Zombies/buff_halo.gd" id="21_wv3cq"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -1247,6 +1249,12 @@ texture = ExtResource("12_86o74")
 position = Vector2(33, -22)
 frame = 6
 frame_progress = 1.0
+
+[node name="BuffHalo" type="Sprite2D" parent="." unique_id=1187118277]
+position = Vector2(7, -29)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("20_h3mrt")
+script = ExtResource("21_wv3cq")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

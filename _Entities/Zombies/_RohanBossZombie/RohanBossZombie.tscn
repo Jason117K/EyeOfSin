@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="9_gi55i"]
 [ext_resource type="Shader" uid="uid://s3h88ll2gq7x" path="res://_Common/Shaders/DemonHueShift.gdshader" id="10_h0ynx"]
 [ext_resource type="Texture2D" uid="uid://c1dtq4lu2lev7" path="res://_Entities/Zombies/_RohanBossZombie/Rohan_Purple_20_6.png" id="11_vvbwg"]
-[ext_resource type="Script" uid="uid://buvrfsirp05ad" path="res://_Entities/Zombies/Components/ZombieSpriteComponent.gd" id="16_h78d2"]
+[ext_resource type="Script" uid="uid://sqwgavmk6n0l" path="res://_Entities/Zombies/_RohanBossZombie/rohan_sprite_comp.gd" id="12_vvbwg"]
+[ext_resource type="Texture2D" uid="uid://iuxeo2sxw6vb" path="res://_Entities/Zombies/Red_Zombie_Buff_Halo.png" id="14_j75q0"]
+[ext_resource type="Script" uid="uid://b23wxvthprmvk" path="res://_Entities/Zombies/buff_halo.gd" id="15_pkow4"]
 [ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="17_s5ypw"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
@@ -513,7 +515,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -581,7 +583,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"buff",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -631,7 +633,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dash_attack",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -684,7 +686,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -734,19 +736,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"piercing_attack",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvbwg"]
-size = Vector2(26, 20)
+size = Vector2(66, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j75q0"]
 radius = 80.305664
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j75q0"]
+size = Vector2(98, 20)
 
 [node name="Rohan" type="Area2D" unique_id=1375769904 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_vvbwg")
+speed = 8.0
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=871038836 node_paths=PackedStringArray("polygon", "line")]
 position = Vector2(2, 16)
@@ -778,6 +784,7 @@ sharp_limit = 90.0
 metadata/_edit_lock_ = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=15035776]
+visible = false
 position = Vector2(0, -19)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_skct4")
@@ -807,11 +814,14 @@ material = SubResource("44")
 position = Vector2(-36, -8)
 sprite_frames = SubResource("SpriteFrames_qnxgt")
 animation = &"piercing_attack"
+autoplay = "idle"
+frame = 7
+frame_progress = 0.6972655
 flip_h = true
-script = ExtResource("16_h78d2")
+script = ExtResource("12_vvbwg")
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1030967930]
-target_position = Vector2(-15, 0)
+target_position = Vector2(-22, 0)
 collide_with_areas = true
 
 [node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("17_s5ypw")]
@@ -822,13 +832,27 @@ frame_progress = 1.0
 [node name="DashZone" type="Area2D" parent="." unique_id=1321870608]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashZone" unique_id=1641568766]
-position = Vector2(-72, 0)
+position = Vector2(-92, 0)
 shape = SubResource("RectangleShape2D_vvbwg")
 
 [node name="BuffZone" type="Area2D" parent="." unique_id=1468409423]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuffZone" unique_id=1319428883]
 shape = SubResource("CircleShape2D_j75q0")
+
+[node name="PierceZone" type="Area2D" parent="." unique_id=703091176]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PierceZone" unique_id=412439902]
+position = Vector2(-57, 0)
+shape = SubResource("RectangleShape2D_j75q0")
+
+[node name="BuffHalo" type="Sprite2D" parent="." unique_id=826318410]
+visible = false
+position = Vector2(-1, -17)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_j75q0")
+script = ExtResource("15_pkow4")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
