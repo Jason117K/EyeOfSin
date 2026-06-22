@@ -579,7 +579,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u436e")
 }],
-"loop": true,
+"loop": false,
 "name": &"buff",
 "speed": 5.0
 }, {
@@ -629,7 +629,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rjooo")
 }],
-"loop": true,
+"loop": false,
 "name": &"dash_attack",
 "speed": 5.0
 }, {
@@ -732,7 +732,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jmvjp")
 }],
-"loop": true,
+"loop": false,
 "name": &"piercing_attack",
 "speed": 5.0
 }]
