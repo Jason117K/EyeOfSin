@@ -63,8 +63,8 @@ func reset_on_game_start() -> void:
 	#cooldown_timer.start()
 
 func begin() -> void:
-	#if is_locked:
-		#return 
+	if is_locked:
+		return 
 	#Stopped too soon, longer cooldown
 	if is_active:
 		cooldown_duration = cooldown_length_normal

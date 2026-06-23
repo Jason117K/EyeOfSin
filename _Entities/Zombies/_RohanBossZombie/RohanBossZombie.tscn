@@ -725,7 +725,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_751x2")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -1230,7 +1230,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cjtgy")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -1261,7 +1261,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1285,7 +1285,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_my3wh")
 }],
-"loop": true,
+"loop": false,
 "name": &"phase_in",
 "speed": 5.0
 }, {
@@ -1311,7 +1311,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0p8jw")
 }],
-"loop": true,
+"loop": false,
 "name": &"phase_out",
 "speed": 5.0
 }]
@@ -1329,6 +1329,7 @@ size = Vector2(98, 20)
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_vvbwg")
+health = 500
 speed = 8.0
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=871038836 node_paths=PackedStringArray("polygon", "line")]
@@ -1395,10 +1396,8 @@ disabled = true
 material = SubResource("44")
 position = Vector2(-36, -8)
 sprite_frames = SubResource("SpriteFrames_qnxgt")
-animation = &"buff"
+animation = &"die"
 autoplay = "idle"
-frame = 20
-frame_progress = 1.0
 flip_h = true
 script = ExtResource("12_vvbwg")
 
@@ -1406,7 +1405,7 @@ script = ExtResource("12_vvbwg")
 visible = false
 position = Vector2(19, -50)
 sprite_frames = SubResource("SpriteFrames_ar4ol")
-animation = &"die"
+animation = &"idle"
 flip_h = true
 script = ExtResource("16_h78d2")
 targetGlowColor = Color(0.67058825, 0, 0, 1)
@@ -1420,6 +1419,7 @@ position = Vector2(13, -14)
 scale = Vector2(1, 6)
 enabled = false
 target_position = Vector2(-30, 0)
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("17_s5ypw")]
