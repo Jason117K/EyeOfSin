@@ -1,21 +1,35 @@
 extends Zombie
 # rohan_boss_zombie.gd
 #
-# Act 1 Boss — finite state machine.
-#   MOVE   : advance like a normal zombie (plays "idle"; Rohan has no Walk anim).
-#   ATTACK : melee a demon directly in front; every `piercing_cooldown` seconds the
-#            next strike is a "piercing_attack" instead of the looping "attack".
-#   DASH   : a demon was spotted in DashZone (but not in melee range and no buff/attack
-#            available) — close the gap and hit it. Only entered from MOVE.
-#   BUFF   : play "buff" and call _buff_zombie() on every allied zombie in BuffZone.
+# Act 1 Boss — two-phase finite state machine.
+#
+# PHASE 1 (State enum): MOVE / ATTACK / DASH / BUFF (unchanged).
+#   MOVE   : advance like a normal zombie (plays "idle").
+#   ATTACK : melee a demon in front; every `piercing_cooldown` seconds a one-shot
+#            "piercing_attack" AoEs every demon in PierceZone.
+#   DASH   : close the gap to a demon spotted in DashZone, only from MOVE.
+#   BUFF   : play "buff" and call _buff_zombie() on allied zombies in BuffZone.
+#
+# When phase-1 health first hits 0, die() is intercepted: the boss plays "die",
+# swaps to Phase2AnimSprite ("phase_in"), swaps its ray + hurtbox to the phase-2
+# nodes, refills health, and realm-swaps immediately.
+#
+# PHASE 2 (P2State enum): MOVE / ATTACK / REALMSWAP.
+#   MOVE      : advance, play phase-2 "idle".
+#   ATTACK    : melee a demon in front of Phase_2_DMGRayCast2D, play "attack".
+#   REALMSWAP : play "phase_out" -> change dimension -> "phase_in". Triggered when
+#               the swap cooldown expires OR after 10 consecutive attacks (a walk
+#               between attacks breaks the streak). Fires immediately on entering
+#               phase 2.
 #
 # Damage is sourced from attackComp.attack_power so the inherited silence() (which
-# halves attack_power) reduces Rohan's damage automatically. attackComp._init also
-# configures DMGRayCast2D's collision mask for the current dimension, so we reuse the
-# ray for melee detection. The state machine owns animation/movement/cadence directly
-# because the shared ZombieSpriteComp only knows "Walk"/"Attack", which Rohan lacks.
+# halves attack_power) reduces Rohan's damage automatically. The transition and
+# realm-swap sequences depend on "die" (phase 1), "phase_in" and "phase_out" being
+# NON-looping so their `animation_finished` fires.
 
 enum State { MOVE, ATTACK, DASH, BUFF }
+enum Phase { ONE, TRANSITION, TWO }
+enum P2State { MOVE, ATTACK, REALMSWAP }
 
 @export_category("Rohan Boss")
 @export var piercing_cooldown: float = 9.0    # always counts down, in every state
@@ -23,11 +37,18 @@ enum State { MOVE, ATTACK, DASH, BUFF }
 @export var dash_speed: float = 110.0
 @export var dash_stop_gap: float = 32.0        # stop this far in front of the dash target
 
+@export_category("Rohan Boss Phase 2")
+@export var realmswap_cooldown: float = 15.0
+@export var realmswap_attack_threshold: int = 10
+
+var _phase: Phase = Phase.ONE
+var _starting_health: float = 0.0
+
 var _state: State = State.MOVE
 var _piercing_cd: float = 0.0
 var _buff_cd: float = 0.0
 
-# ATTACK
+# ATTACK (shared by both phases — phases never run simultaneously)
 var _attack_elapsed: float = 0.0
 var _first_attack_done: bool = false
 var _piercing_active: bool = false
@@ -36,9 +57,18 @@ var _piercing_active: bool = false
 var _dash_target = null
 var _dash_struck: bool = false
 
+# PHASE 2
+var _p2_state: P2State = P2State.MOVE
+var _realmswap_cd: float = 0.0
+var _consecutive_attacks: int = 0
+
 @onready var dash_zone: Area2D = $DashZone
 @onready var buff_zone: Area2D = $BuffZone
 @onready var piercing_zone : Area2D = $PierceZone
+@onready var phase2_sprite: AnimatedSprite2D = $Phase2AnimSprite
+@onready var phase2_ray := $Phase_2_DMGRayCast2D
+@onready var hurtbox := $HurtBoxComponent
+@onready var phase2_hurtbox := $Phase_2_HurtBoxComponent
 
 
 func _ready() -> void:
@@ -48,7 +78,13 @@ func _ready() -> void:
 		#Global.unlock_zombie("Rohan")
 	_piercing_cd = piercing_cooldown
 	_buff_cd = buff_cooldown
+	_starting_health = healthComp.maxHealth
 	_setup_zone_masks()
+	_set_single_mask(phase2_ray, 3 if is_in_group("Green") else 2)
+	# Phase 2 nodes start inactive (the scene also sets these — kept explicit/robust).
+	phase2_sprite.visible = false
+	phase2_ray.enabled = false
+	phase2_hurtbox.disabled = true
 	_play(&"idle")
 
 
@@ -78,7 +114,21 @@ func tick(delta: float) -> void:
 			_on_DebuffDegrade_timeout()
 	healthComp.tick(delta)
 
-	# --- state machine ---
+	# --- phase dispatch ---
+	match _phase:
+		Phase.ONE:
+			_tick_phase1(delta)
+		Phase.TRANSITION:
+			pass   # death/phase-in coroutine owns the boss
+		Phase.TWO:
+			_tick_phase2(delta)
+
+
+# ============================================================
+# PHASE 1
+# ============================================================
+
+func _tick_phase1(delta: float) -> void:
 	_piercing_cd = maxf(0.0, _piercing_cd - delta)   # always counts down
 	match _state:
 		State.MOVE:
@@ -90,8 +140,6 @@ func tick(delta: float) -> void:
 		State.BUFF:
 			_tick_buff(delta)
 
-
-# --- States ---
 
 func _tick_move(delta: float) -> void:
 	_buff_cd = maxf(0.0, _buff_cd - delta)   # only decrements in MOVE
@@ -148,8 +196,6 @@ func _tick_buff(_delta: float) -> void:
 	pass   # buff is applied on entry; just wait for the "buff" animation to finish
 
 
-# --- Transitions ---
-
 func _enter_move() -> void:
 	_state = State.MOVE
 	_dash_target = null
@@ -186,9 +232,7 @@ func _start_piercing(target) -> void:
 	#_strike(target)
 
 
-
-# AnimatedSprite2D.animation_finished is wired to this node in the scene. Only the
-# non-looping action animations reach here ("idle"/"attack" loop forever).
+# Phase-1 AnimatedSprite2D.animation_finished is wired to this node in the scene.
 func _on_AnimatedSprite_animation_finished() -> void:
 	match animatedSprite.animation:
 		&"dash_attack":
@@ -208,7 +252,139 @@ func _on_AnimatedSprite_animation_finished() -> void:
 				_enter_move()
 
 
-# --- Helpers ---
+# ============================================================
+# PHASE 1 → PHASE 2 TRANSITION (death interception)
+# ============================================================
+
+func die() -> void:
+	match _phase:
+		Phase.ONE:
+			_enter_phase2()            # intercept: this is the phase change, not death
+		Phase.TRANSITION:
+			pass                       # invulnerable while transitioning
+		Phase.TWO:
+			phase2_sprite.play(&"die")
+			super()                    # real death
+
+
+# Async: die anim → reveal phase-2 sprite (phase_in) → swap ray/hurtbox → realm swap.
+func _enter_phase2() -> void:
+	_phase = Phase.TRANSITION
+	healthComp.resetHealth(_starting_health)   # refill (sync, before first await)
+
+	animatedSprite.play(&"die")
+	await animatedSprite.animation_finished
+
+	animatedSprite.visible = false
+	phase2_sprite.visible = true
+	phase2_sprite.play(&"phase_in")
+	await phase2_sprite.animation_finished
+
+	attack_ray.enabled = false
+	phase2_ray.enabled = true
+	hurtbox.disabled = true
+	phase2_hurtbox.disabled = false
+
+	_phase = Phase.TWO
+	_attack_elapsed = 0.0
+	_first_attack_done = false
+	_begin_realm_swap()                        # "realm swap immediately on entering phase 2"
+
+
+# ============================================================
+# PHASE 2
+# ============================================================
+
+func _tick_phase2(delta: float) -> void:
+	_realmswap_cd = maxf(0.0, _realmswap_cd - delta)
+	match _p2_state:
+		P2State.MOVE:
+			_p2_move(delta)
+		P2State.ATTACK:
+			_p2_attack(delta)
+		P2State.REALMSWAP:
+			pass   # phase_out/phase_in coroutine owns the boss
+
+
+func _p2_move(delta: float) -> void:
+	if _should_realm_swap():
+		_begin_realm_swap()
+		return
+	if _demon_in_front(phase2_ray) != null:
+		_enter_p2_attack()
+		return
+	speedComp.tick(delta)
+	_play_on(phase2_sprite, &"idle")
+
+
+func _p2_attack(delta: float) -> void:
+	if _should_realm_swap():
+		_begin_realm_swap()
+		return
+	var target = _demon_in_front(phase2_ray)
+	if target == null:
+		_consecutive_attacks = 0     # walking between attacks breaks the streak
+		_p2_state = P2State.MOVE
+		return
+	_play_on(phase2_sprite, &"attack")
+	_attack_elapsed += delta
+	var safe_speed := maxf(attack_speed, 0.01)
+	var interval := (attack_damage_point / safe_speed) if not _first_attack_done else (1.0 / safe_speed)
+	if _attack_elapsed >= interval:
+		_attack_elapsed = 0.0
+		_first_attack_done = true
+		_strike(target)
+		_consecutive_attacks += 1
+
+
+func _enter_p2_attack() -> void:
+	_p2_state = P2State.ATTACK
+	_attack_elapsed = 0.0
+	_first_attack_done = false
+	_play_on(phase2_sprite, &"attack")
+
+
+func _should_realm_swap() -> bool:
+	return _realmswap_cd <= 0.0 or _consecutive_attacks >= realmswap_attack_threshold
+
+
+func _begin_realm_swap() -> void:
+	_p2_state = P2State.REALMSWAP
+	_realm_swap_sequence()
+
+
+# Async: phase_out (current realm) → change dimension → phase_in (new realm).
+func _realm_swap_sequence() -> void:
+	phase2_sprite.play(&"phase_out")
+	await phase2_sprite.animation_finished
+	_swap_dimension()
+	phase2_sprite.play(&"phase_in")
+	await phase2_sprite.animation_finished
+	_realmswap_cd = realmswap_cooldown
+	_consecutive_attacks = 0
+	_p2_state = P2State.MOVE
+
+
+# Move Rohan to the opposite dimension's GameLayer and re-point every
+# dimension-specific binding (body layer + ray masks + zone masks) to it.
+func _swap_dimension() -> void:
+	if is_in_group("Purple"):
+		remove_from_group("Purple")
+		add_to_group("Green")
+		reparent(Global.get_game_controller().get_green_dimension().get_node("GameLayer"))
+	else:
+		remove_from_group("Green")
+		add_to_group("Purple")
+		reparent(Global.get_game_controller().get_purple_dimension().get_node("GameLayer"))
+	_setup_body_layer()
+	_setup_zone_masks()
+	_setup_ray_masks()
+	fire_fx.animation = "green_fire" if is_in_group("Green") else "purple_fire"
+
+
+# ============================================================
+# Helpers
+# ============================================================
 
 func _strike(target) -> void:
 	if not is_instance_valid(target):
@@ -223,8 +399,12 @@ func _strike(target) -> void:
 
 
 func _demon_in_attack_range():
-	if attack_ray.is_colliding():
-		var c = attack_ray.get_collider()
+	return _demon_in_front(attack_ray)
+
+
+func _demon_in_front(ray):
+	if ray.is_colliding():
+		var c = ray.get_collider()
 		if c != null and c.is_in_group("Demons") and not c.is_in_group("Portal"):
 			return c
 	return null
@@ -256,24 +436,42 @@ func _apply_buff() -> void:
 
 
 func _play(anim: StringName) -> void:
-	if animatedSprite.animation != anim:
-		animatedSprite.play(anim)
+	_play_on(animatedSprite, anim)
+
+
+func _play_on(sprite, anim: StringName) -> void:
+	if sprite.animation != anim:
+		sprite.play(anim)
 
 
 func _setup_zone_masks() -> void:
-	# Masks are assigned in code per dimension (README convention): DashZone detects
-	# enemy demons (Purple=2 / Green=3); BuffZone detects allied zombies (Purple=4 / Green=5).
+	# Masks are assigned in code per dimension (README convention): DashZone/PierceZone
+	# detect enemy demons (Purple=2 / Green=3); BuffZone detects allied zombies (Purple=4 / Green=5).
 	var demon_bit := 3 if is_in_group("Green") else 2
 	var zombie_bit := 5 if is_in_group("Green") else 4
 	_set_single_mask(dash_zone, demon_bit)
 	_set_single_mask(buff_zone, zombie_bit)
-	_set_single_mask(piercing_zone,demon_bit)
+	_set_single_mask(piercing_zone, demon_bit)
 
 
-func _set_single_mask(area: Area2D, bit: int) -> void:
+func _setup_ray_masks() -> void:
+	var demon_bit := 3 if is_in_group("Green") else 2
+	_set_single_mask(attack_ray, demon_bit)
+	_set_single_mask(phase2_ray, demon_bit)
+
+
+func _setup_body_layer() -> void:
+	set_collision_layer_value(1, false)
+	set_collision_layer_value(2, false)
+	set_collision_layer_value(3, false)
+	set_collision_layer_value(4, not is_in_group("Green"))   # Purple zombie
+	set_collision_layer_value(5, is_in_group("Green"))       # Green zombie
+
+
+func _set_single_mask(node, bit: int) -> void:
 	for i in range(1, 6):
-		area.set_collision_mask_value(i, false)
-	area.set_collision_mask_value(bit, true)
+		node.set_collision_mask_value(i, false)
+	node.set_collision_mask_value(bit, true)
 
 
 # --- Inherited overrides kept from the original boss script ---
