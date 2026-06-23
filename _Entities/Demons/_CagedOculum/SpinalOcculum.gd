@@ -102,6 +102,7 @@ func debuff() -> void:
 	undo_lightning_maw_buff()
 
 func unlock_new_buff(demonName:String)->void:
+	if isBuffed == false:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":

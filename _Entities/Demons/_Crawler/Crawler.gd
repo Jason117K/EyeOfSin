@@ -89,8 +89,9 @@ func baal_buff()->void:
 func receive_buff(newDemon:Demon) -> void:
 	var demonName: String = (newDemon.get_demon_true_name())
 	if !isBuffed:
-		super(demonName)
 		unlock_new_buff(demonName)
+		super(demonName)
+		
 		projectile_shoot_component.receive_buff(demonName)
 		match demonName:
 			"Occulum":
@@ -130,6 +131,9 @@ func debuff() -> void:
 
 
 func unlock_new_buff(demonName:String)->void:
+	
+	if isBuffed == false:
+		#print(isBuffed, " unlock Buff ", self)
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":

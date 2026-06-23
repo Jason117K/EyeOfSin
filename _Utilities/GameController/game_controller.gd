@@ -220,6 +220,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
+	Global.style_menu.hide()
 	pip.hide_pip()
 	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
@@ -373,7 +374,10 @@ func restore_dual_scenes_with_pause() -> void:
 func set_node_and_children_process_mode_disabled(root: Node) -> void:
 	if root == null:
 		return
-	root.process_mode = Node.PROCESS_MODE_DISABLED
+	if root.has_method("set_node_process_mode_inherit"):
+		root.set_node_process_mode_inherit()
+	else:
+		root.process_mode = Node.PROCESS_MODE_DISABLED
 	for child in root.get_children():
 		set_node_and_children_process_mode_disabled(child)
 
@@ -383,7 +387,10 @@ func set_node_and_children_process_mode_inherit(root: Node) -> void:
 		return
 	if root.process_mode != Node.PROCESS_MODE_ALWAYS:
 		#print("Root ", root , " process mode was ", root.process_mode )
-		root.process_mode = Node.PROCESS_MODE_INHERIT
+		if root.has_method("set_node_process_mode_inherit"):
+			root.set_node_process_mode_inherit()
+		else:
+			root.process_mode = Node.PROCESS_MODE_INHERIT
 	for child in root.get_children():
 		set_node_and_children_process_mode_inherit(child)
 		

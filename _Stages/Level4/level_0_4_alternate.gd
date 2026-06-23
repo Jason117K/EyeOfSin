@@ -21,7 +21,9 @@ var _on_step_6 := false
 var _on_step_7 := false 
 
 func _ready() -> void:
+	extended_new_power_description = "SUMMONS LIGHTNING ACROSS THE BATTLEFIELD. USE TO TURN THE TIDE"
 	super()
+	unlock_power.set_new_unlock_label("NEW SORCERCY")
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	attach_script_to_sway_children()
 	_configure_waves()

@@ -48,6 +48,8 @@
 [ext_resource type="PackedScene" uid="uid://cm6m7oqcnnpok" path="res://_Stages/SpecialTiles/flower_tile.tscn" id="46_4fca4"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="47_ri8pe"]
 [ext_resource type="Script" uid="uid://crgav0n87odt2" path="res://_Stages/Level7/skull_tile_highlight.gd" id="48_8bot6"]
+[ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="49_8dhhw"]
+[ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="50_oer7y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4now0"]
 texture = ExtResource("10_tnl3t")
@@ -1315,6 +1317,14 @@ offset_top = 91.0
 offset_right = 806.0
 offset_bottom = 538.0
 mouse_filter = 2
+
+[node name="AcquirePowerTexture" parent="." unique_id=195454887 instance=ExtResource("49_8dhhw")]
+visible = false
+layout_mode = 1
+
+[node name="UnlockPower" parent="." unique_id=1731368497 instance=ExtResource("50_oer7y")]
+visible = false
+layout_mode = 1
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]

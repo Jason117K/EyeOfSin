@@ -9,7 +9,8 @@ func deactivate()->void:
 	hide()
 	monitoring = false 
 	spike_rock_sprite.stop()
-	spike_timer.stop()
+	if spike_timer != null && is_instance_valid(spike_timer):
+		spike_timer.stop()
 	
 func activate() -> void:
 	spike_damage = get_parent().spike_damage

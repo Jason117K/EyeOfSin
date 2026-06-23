@@ -3,11 +3,15 @@ extends LevelTemplate
 @onready var zombie_spawner_green := $GameLayer/ZombieSpawner2Green
 @onready var wave_preview := $GameLayer/ZombieSpawner2Green/WavePreview
 
+var basic_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/basic_zombie_demo.tscn")
+var severed_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/severed_zombie_demo.tscn")
 var wave_1_completed := false
 var wave_2_completed := false 
 
 func _ready() -> void:
+	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
 	super()
+	
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	waveManager.wave_started.connect(_on_wave_started)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -49,7 +53,24 @@ func _on_wave_started(wave_index: int) -> void:
 			_on_tooltip_hidden()
 			demonManager.add_blood(25)
 			
+func show_zombie_tutorial(unlocked_zombie : String)->void:
+	print("Unlocked Zombie Is ", unlocked_zombie)
+	match unlocked_zombie:
+		"Reborn":
+			_start_explain_basic_zombie()
+		"Severed":
+			_start_explain_severed_zombie()
 			
-func _on_tooltip_hidden() -> void:
+func _start_explain_basic_zombie() -> void:
+	print("Explain Basic Zombie")
+	Global.hide_notification_bar()
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
+	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,20))
 	
+func _start_explain_severed_zombie() -> void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)
+	toolTips.set_visual_tutorial_visual(severed_zombie_demo_scene.instantiate())
+	
+								
+func _on_tooltip_hidden() -> void:
 	toolTips.visible = false 

@@ -213,9 +213,11 @@ func hide_buff_preview_nodes()->void:
 
 	for node in preview_nodes.get_children():
 		node.visible = true  
+	hide_old_preview()
 		
 		
-
+func hide_old_preview()->void:
+	pass
 # --- Buff System ---
 
 func baal_buff()->void:

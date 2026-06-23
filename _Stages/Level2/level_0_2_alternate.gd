@@ -9,6 +9,7 @@ extends LevelTemplate
 #215
 
 func _ready() -> void:
+	extended_new_power_description = "BLOCKS ZOMBIES. SYNERGIES IMPROVE DEFENSE & STALLING POTENTIAL."
 	super()
 	hide_all_demon_buttons_with_exception(["Occulum","Crawler"])
 	process_mode = Node.PROCESS_MODE_ALWAYS

@@ -2,6 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c43fvulnchex4" path="res://_UI/style_screen.gd" id="1_b4ha7"]
 [ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="1_hp5a7"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="2_t7jxp"]
+[ext_resource type="StyleBox" uid="uid://b01u6cir416ot" path="res://_UI/style_screen_panel_default.tres" id="3_ouhvv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvtxc"]
+texture = ExtResource("2_t7jxp")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.76, 0.76, 0.76, 0.9764706)
 
 [node name="Style_Screen" type="Control" unique_id=1550670052]
 process_mode = 3
@@ -16,19 +26,27 @@ script = ExtResource("1_b4ha7")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1896880809]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -65.5
+offset_right = 348.00018
+offset_bottom = 65.5
 grow_vertical = 2
 
-[node name="AllPanelsVbox" type="VBoxContainer" parent="CenterContainer" unique_id=962257625]
+[node name="StylePanel" type="PanelContainer" parent="CenterContainer" unique_id=1458025525]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qvtxc")
+
+[node name="AllPanelsVbox" type="VBoxContainer" parent="CenterContainer/StylePanel" unique_id=962257625]
 layout_mode = 2
 
-[node name="LevelTitlePanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox" unique_id=937837894]
+[node name="LevelTitlePanel" type="PanelContainer" parent="CenterContainer/StylePanel/AllPanelsVbox" unique_id=937837894]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("3_ouhvv")
 
-[node name="Level Title" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/LevelTitlePanel" unique_id=1972175762]
+[node name="Level Title" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/LevelTitlePanel" unique_id=1972175762]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "0-1 : AWAKENING"
@@ -36,67 +54,70 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ScoringHbox" type="HBoxContainer" parent="CenterContainer/AllPanelsVbox" unique_id=1509753184]
+[node name="ScoringHbox" type="HBoxContainer" parent="CenterContainer/StylePanel/AllPanelsVbox" unique_id=1509753184]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="MainCriteriaPanel" type="PanelContainer" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox" unique_id=293355743]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_ouhvv")
+
+[node name="MainCriteriaHbox" type="HBoxContainer" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel" unique_id=601873386]
 layout_mode = 2
 
-[node name="MainCriteriaPanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox" unique_id=293355743]
+[node name="CriteriaLabelsVbox" type="VBoxContainer" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox" unique_id=1949687614]
 layout_mode = 2
 
-[node name="MainCriteriaHbox" type="HBoxContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel" unique_id=601873386]
-layout_mode = 2
-
-[node name="CriteriaLabelsVbox" type="VBoxContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox" unique_id=1949687614]
-layout_mode = 2
-
-[node name="TimeLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=1519083890]
+[node name="TimeLabel" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=1519083890]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "TIME : "
 fit_content = true
 autowrap_mode = 0
 
-[node name="LivesLostLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=1865431061]
+[node name="LivesLostLabel" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=1865431061]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "LIVES LOST : "
 fit_content = true
 autowrap_mode = 0
 
-[node name="StyleLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=184252167]
+[node name="StyleLabel" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=184252167]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "STYLE : "
 fit_content = true
 autowrap_mode = 0
 
-[node name="CriteriaScoringRanksVbox" type="VBoxContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox" unique_id=1133778381]
+[node name="CriteriaScoringRanksVbox" type="VBoxContainer" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox" unique_id=1133778381]
 layout_mode = 2
 
-[node name="TimeRank" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=778657076]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_hp5a7")
-text = "SSS"
-fit_content = true
-autowrap_mode = 0
-
-[node name="LivesLostRank" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1863450050]
+[node name="TimeRank" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=778657076]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "SSS"
 fit_content = true
 autowrap_mode = 0
 
-[node name="StyleRank" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1227648075]
+[node name="LivesLostRank" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1863450050]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "SSS"
 fit_content = true
 autowrap_mode = 0
 
-[node name="StyleRankLetterPanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox/ScoringHbox" unique_id=516361169]
+[node name="StyleRank" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1227648075]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "SSS"
+fit_content = true
+autowrap_mode = 0
 
-[node name="StyleRankLetterLabel" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel" unique_id=1407775523]
+[node name="StyleRankLetterPanel" type="PanelContainer" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox" unique_id=516361169]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_ouhvv")
+
+[node name="StyleRankLetterLabel" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel" unique_id=1407775523]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 theme_override_font_sizes/normal_font_size = 59
@@ -104,21 +125,22 @@ text = "SSS"
 fit_content = true
 autowrap_mode = 0
 
-[node name="TotalScorePanel" type="PanelContainer" parent="CenterContainer/AllPanelsVbox" unique_id=494232092]
+[node name="TotalScorePanel" type="PanelContainer" parent="CenterContainer/StylePanel/AllPanelsVbox" unique_id=494232092]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_ouhvv")
+
+[node name="TotalScoreHbox" type="HBoxContainer" parent="CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel" unique_id=1239789954]
 layout_mode = 2
 
-[node name="TotalScoreHbox" type="HBoxContainer" parent="CenterContainer/AllPanelsVbox/TotalScorePanel" unique_id=1239789954]
-layout_mode = 2
-
-[node name="TotalScoreTitle" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/TotalScorePanel/TotalScoreHbox" unique_id=355688203]
+[node name="TotalScoreTitle" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel/TotalScoreHbox" unique_id=355688203]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
-text = "Total Score "
+text = "TOTAL SCORE :"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="TotalScoreNum" type="RichTextLabel" parent="CenterContainer/AllPanelsVbox/TotalScorePanel/TotalScoreHbox" unique_id=2132360036]
+[node name="TotalScoreNum" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel/TotalScoreHbox" unique_id=2132360036]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "9000"

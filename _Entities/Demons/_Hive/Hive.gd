@@ -107,8 +107,9 @@ func baal_buff()->void:
 func receive_buff(bufferName:Demon) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
-		super(demonName)
+		
 		unlock_new_buff(demonName)
+		super(demonName)
 		for drone:Node in swarm.get_available_drones():
 			drone.make_drone_glow()
 
@@ -150,6 +151,7 @@ func debuff() -> void:
 	super()
 
 func unlock_new_buff(demonName:String)->void:
+	if isBuffed == false:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":

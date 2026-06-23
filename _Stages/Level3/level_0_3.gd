@@ -40,17 +40,8 @@ func _setup_tutorial() -> void:
 		{
 			"name": "EXPLAIN_SPINAL_OCCULUM",
 			"enter": _start_explain_spinal_occulum,
+			"input_filter": _filter_block_deselect_and_swap,
 		},
-		#{
-			#"name": "FORCE_SELECT_SPINALOCCULUM",
-			#"enter": _start_force_select_spinal_occulum,
-			#"input_filter": _filter_block_keyboard,
-		#},
-		#{
-			#"name": "FORCE_PLACE_SPINAL_OCCULUM",
-			#"enter": _start_force_place_spinal_occulum,
-			#"input_filter": _filter_block_deselect_and_swap,
-		#},
 		{
 			"name": "EXPLAIN_PRE_PLACED_SPINAL",
 			"enter": _explain_pre_placed_spinal_occulum,
@@ -59,27 +50,14 @@ func _setup_tutorial() -> void:
 		{
 			"name": "RESUME_GAME",
 			"enter": _resume_game,
-			"input_filter": _filter_block_keyboard,
-		},
-		#{
-			#"name": "EXPLAIN_UNHALLOWER",
-			#"enter": _start_explain_unhallower,
-			#"input_filter": _filter_block_keyboard,
-		#},
-		{
-			"name": "RESUME_GAME",
-			"enter": _resume_game,
-			"input_filter": _filter_block_keyboard,
 		},
 		{
 			"name": "SPINAL_OCCULUM_UNLOCKED",
 			"enter": _spinal_occulum_unlocked,
-#			"input_filter": _filter_block_keyboard,
 		},
 		{
 			"name": "HIDE_SPINAL_HIGHLIGHT",
 			"enter": _hide_spinal_occulum_highlight,
-#			"input_filter": _filter_block_keyboard,
 		},
 	])
 #endregion
@@ -87,6 +65,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
 	super()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [37.0, 50.0]
@@ -102,6 +81,7 @@ func _ready() -> void:
 
 	Global.resetOcculumCount()
 	Global.reset_swap_ability()
+	unlock_power.set_new_unlock_label("NEW SORCERCY")
 
 	# Connect signals
 	#toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
@@ -292,7 +272,7 @@ func start_game() -> void:
 	
 	green_dimension.start_game()
 
-func show_zombie_tutorial()->void:
+func show_zombie_tutorial(unlocked_zombie : String)->void:
 	_start_explain_unhallower()
 	 
 

@@ -9,6 +9,12 @@ var crawler_already_selected := false
 var current_level := ("res://_Stages/Level1/Level0-1.tscn")
 var current_level_alt := ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 var has_pulsed := false
+
+@export_category("Completion Time Thresholds")
+@export var new_power_title : String 
+@export var new_power_description : String 
+@export var new_power_texture : Texture
+
 @export var isGreenDimension := false
 @export var new_end_dialog := "res://_Assets/Dialog/level_0_end_dialog.dtl"
 @export var wave2StartTime := 30
@@ -83,6 +89,10 @@ var check_progress := false
 @onready var all_total_point_thresholds :Array[int] = [SSS_TOTAL_POINTS_MIN,S_TOTAL_POINTS_MIN,
 	A_TOTAL_POINTS_MIN,B_TOTAL_POINTS_MIN,C_TOTAL_POINTS_MIN,D_TOTAL_POINTS_MIN]
 
+@onready var new_power_unlock_rune := $AcquirePowerTexture
+@onready var unlock_power := $UnlockPower
+
+
 const TUTORIAL_SKULL_HOVER = "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt"
 const TUTORIAL_EXPLAIN_SPINAL_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
 const TUTORIAL_SELECT_DEMON = "res://_Assets/Text/TextFiles/Tutorial_Select_Demon.txt"
@@ -131,11 +141,25 @@ var auto_advance : bool = false
 
 var total_game_time : float = 0 
 
+var new_power_unlocked := true 
+
+@onready var extended_new_power_description : String
+
 func _ready() -> void:
 	Global.adjust_ui_layer()
 	Global.reset_all_variables()
 	
+	waveManager.level_ended.connect(_on_level_ended)
 	
+	if new_power_texture != null:
+		new_power_unlock_rune.set_new_power_texture(new_power_texture)
+		unlock_power.set_new_power_texture(new_power_texture)
+		new_power_unlock_rune.set_new_power_title(new_power_title)
+		unlock_power.set_new_power_title(new_power_title)
+		new_power_unlock_rune.set_new_power_description(new_power_description)
+		unlock_power.set_new_power_description(extended_new_power_description)
+	unlock_power.hide()
+	new_power_unlock_rune.hide()
 
 func demon_clicked()->void:
 	pass 
@@ -156,50 +180,82 @@ func hide_demon_selection_menu()->void:
 	#demonSelectionMenu.visible = false
 	#demonSelectionMenu.self_modulate = Color(1,1,1,0)
 
+func show_new_demon()->void:
+	unlock_power.show()
+	
 func _on_level_ended() -> void:
-	if skip_end_dialog:
-		_on_end_dialog_finished()
-	else:
-		Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
-		Dialogic.start(new_end_dialog)
+	if isGreenDimension:
+		if Global.game_controller.get_active_dimension() != Global.game_controller.get_green_dimension():
+			print("Ended On Purple Early Return From Green")
+			return
+	elif !isGreenDimension:
+		if Global.game_controller.get_active_dimension() != Global.game_controller.get_purple_dimension():
+			print("Ended on Green Early Return From Purple")
+			return
+	print(self, " isGreen is:", isGreenDimension, " should show score then card")
+	handle_score()
+
+	
+	#if skip_end_dialog:
+		#_on_end_dialog_finished()
+	#else:
+		#Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
+		#Dialogic.start(new_end_dialog)
 	#_on_end_dialog_finished()
 
-func get_green_dimension():
-	return Global.game_controller.get_alt_dimension()
+
+	
+	
+func handle_score()->void:
+	ScoreManager.set_completion_times(all_time_thresholds)
+	
+	Global.style_menu.set_completion_times(all_time_thresholds)
+	Global.style_menu.set_style_point_thresholds(all_style_point_thresholds)
+	Global.style_menu.set_total_point_thresholds(all_total_point_thresholds)
+	
+	ScoreManager.calc_completion_time_rank(total_game_time)
+	ScoreManager.level_ended.emit()
+	
+	var wait_for_demon_points_timer :Timer = Timer.new()
+	wait_for_demon_points_timer.autostart = false
+	wait_for_demon_points_timer.one_shot = true
+	wait_for_demon_points_timer.wait_time = 0.3
+	wait_for_demon_points_timer.timeout.connect(handle_new_power_unlock)
+	add_child(wait_for_demon_points_timer)
+	wait_for_demon_points_timer.start()
+	
+func handle_new_power_unlock()->void:
+	Global.style_menu._setup_score()
+	if !new_power_unlocked:
+		finish_end_level()
+	new_power_unlock_rune.unlock_done.connect(show_new_demon)
+	new_power_unlock_rune.activate()
+	new_power_unlock_rune.process_mode = Node.PROCESS_MODE_ALWAYS
+	unlock_power.process_mode = Node.PROCESS_MODE_ALWAYS
+	#levelSwitcher.visible = true
+	toolTips.visible = false
+	get_tree().paused = true
+	
+	
+func finish_end_level()->void:
+	toolTips.visible = false
+	levelSwitcher.visible = true
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	get_tree().paused = true
+
 
 func _on_end_dialog_finished() -> void:
 	print(isGreenDimension, "-------------Style Menu Visible--------------", self)
 	if isGreenDimension:
 		return
 	else:
-		ScoreManager.set_completion_times(all_time_thresholds)
-		Global.style_menu.set_completion_times(all_time_thresholds)
-		
-		Global.style_menu.set_style_point_thresholds(all_style_point_thresholds)
-		
-		Global.style_menu.set_total_point_thresholds(all_total_point_thresholds)
-		
-		
-		ScoreManager.calc_completion_time_rank(total_game_time)
-		ScoreManager.level_ended.emit()
-		var wait_for_demon_points_timer :Timer = Timer.new()
-		wait_for_demon_points_timer.autostart = false
-		wait_for_demon_points_timer.one_shot = true
-		wait_for_demon_points_timer.wait_time = 0.5
-		wait_for_demon_points_timer.timeout.connect(finish_end_level)
-		add_child(wait_for_demon_points_timer)
-		wait_for_demon_points_timer.start()
+		handle_score()
 	
 	#style_menu.visible = true 
 	#levelSwitcher.visible = true
-func finish_end_level()->void:
-	print(self, " Setup Score")
-	Global.style_menu._setup_score()
-	toolTips.visible = false
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	get_tree().paused = true
+	
 	
 func _process(delta: float) -> void:
 	total_game_time += delta
@@ -221,9 +277,11 @@ func set_auto_advance_toolTip(new_progress_wait_time:float)->void:
 	check_progress = true 
 		
 	
-func show_zombie_tutorial()->void:
+func show_zombie_tutorial(unlocked_zombie:String)->void:
 	pass
-	
+
+func get_green_dimension():
+	return Global.game_controller.get_green_dimension()	
 	
 func progress_time_passed()->void:
 	if auto_advance:

@@ -2,22 +2,22 @@ extends Control
 
 # Should Only Grab values and parse Letter Grade from those values 
 
-@onready var time_label := $CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/TimeLabel
-@onready var time_rank := $CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/TimeRank
+@onready var time_label := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/TimeLabel
+@onready var time_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/TimeRank
 var time_rank_value : SCORE_RANKS
 
-@onready var lives_lost_label := $CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/LivesLostLabel
-@onready var lives_lost_rank := $CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/LivesLostRank
+@onready var lives_lost_label := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/LivesLostLabel
+@onready var lives_lost_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/LivesLostRank
 var lives_lost_rank_value : SCORE_RANKS
 
-@onready var style_label := $CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/StyleLabel
-@onready var style_rank := $CenterContainer/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/StyleRank
+@onready var style_label := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/StyleLabel
+@onready var style_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/StyleRank
 var style_rank_value : SCORE_RANKS
 
 var all_rank_values : Array[SCORE_RANKS] = [time_rank_value,lives_lost_rank_value,style_rank_value]
 
-@onready var overall_score_label := $CenterContainer/AllPanelsVbox/TotalScorePanel/TotalScoreHbox/TotalScoreNum
-@onready var overall_rank := $CenterContainer/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel/StyleRankLetterLabel
+@onready var overall_score_label := $CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel/TotalScoreHbox/TotalScoreNum
+@onready var overall_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel/StyleRankLetterLabel
 
 var SSS_STYLE_POINTS_MIN := 2000
 var S_STYLE_POINTS_MIN := 1500

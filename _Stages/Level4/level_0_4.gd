@@ -89,7 +89,9 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	extended_new_power_description = "SUMMONS LIGHTNING ACROSS THE BATTLEFIELD. USE TO TURN THE TIDE"
 	super()
+	unlock_power.set_new_unlock_label("NEW SORCERCY")
 	
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]
@@ -218,14 +220,15 @@ func _start_explain_syn_ability_5()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_5,false)
 
 func _start_explain_syn_ability_6()->void:
+	Global.syn_ability_manager.syn_sorcery_activated.disconnect(_on_syn_sorcery_activated_again)
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_6,false)
 	auto_advance = true 
-	set_auto_advance_toolTip(5)
+	set_auto_advance_toolTip(6)
 	
 func _start_explain_syn_ability_7()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_7,false)
 	auto_advance = true 
-	set_auto_advance_toolTip(3)
+	set_auto_advance_toolTip(6)
 			
 func scenes_swapped()->void:
 	Global.swap_scenes_signal.disconnect(scenes_swapped)
@@ -297,6 +300,7 @@ func _on_tooltip_hidden() -> void:
 			get_tree().paused = false
 
 func _on_syn_sorcery_pressed()->void:
+	Global.get_syn_button().pressed.disconnect(_on_syn_sorcery_pressed)
 	go_to_step("EXPLAIN_SYN_ABILITY_3")
 
 func _on_syn_sorcery_activated()->void:

@@ -88,7 +88,8 @@ func take_damage(is_link_damage : bool = false, damage: float = 1.0, _piercing: 
 		var currentLevel := gameLayer.get_parent()
 		var demon_manager := currentLevel.get_node("DemonManager")
 		if demon_manager:
-			demon_manager.add_blood(bloodWorth)
+			if bloodWorth > 0:
+				demon_manager.add_blood(bloodWorth)
 		parent_zombie.die()
 
 func tick(delta: float) -> void:

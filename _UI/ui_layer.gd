@@ -15,6 +15,7 @@ extends Control
 @onready var demon_selection_menu := $"../DemonSelectionMenu"
 
 var unlocked_zombies : Array 
+var current_unlocked_zombie : String
 var zombie_count := 0 
 
 var all_zombie_types :Dictionary 
@@ -85,6 +86,7 @@ func set_initial_blood(new_blood_amount: float) -> void:
 		
 func set_zombie_unlock_notif(unlocked_zombie : String)->void:
 	print("Set Zombie Unlock Notif For ", unlocked_zombie)
+	current_unlocked_zombie = unlocked_zombie
 	if unlocked_zombies.has(unlocked_zombie):
 		return 
 	unlocked_zombies.append(unlocked_zombie)
@@ -140,7 +142,7 @@ func _on_demon_unlocked_button_pressed() -> void:
 func _on_zombie_unlocked_button_pressed() -> void:
 	print("Zombie Unlocked Button Pressed")
 	new_zombie_unlocked_button.hide()
-	get_parent().show_zombie_tutorial()
+	get_parent().show_zombie_tutorial(current_unlocked_zombie)
 	
 	
 	

@@ -237,7 +237,7 @@ func new_demon_visual_minimum_size(new_size:Vector2 = Vector2.ZERO)->void:
 		
 	
 func _on_visual_tutorial_understood_button_pressed() -> void:
-	#print("V Button Pressed")
+	print("V Button Pressed")
 	Global.is_blocking = false
 	#print("HIddDEEE")
 	hide()
@@ -372,3 +372,8 @@ func stop_glow_pulse(button:Node) -> void:
 			#print("Going to queue free button highlight : ", button.get_child(0))
 			button.get_child(0).queue_free()
 			pass
+
+
+func set_node_process_mode_inherit()->void:
+	pass
+	

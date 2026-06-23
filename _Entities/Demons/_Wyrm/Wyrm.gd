@@ -139,8 +139,9 @@ func receive_buff(demon) -> void:
 	var demonName : String = (demon.get_demon_true_name())
 	print("WYRM SHOULD RECEICVE BUFF FROM ", demonName)
 	if !isBuffed:
-		super(demonName)
 		unlock_new_buff(demonName)
+		super(demonName)
+		
 		match demonName:
 			"Occulum":
 				projectile_shoot_component.isOcculumBuffed = true
@@ -172,6 +173,7 @@ func debuff() -> void:
 	laserShootComp2.debuff()
 
 func unlock_new_buff(demonName:String)->void:
+	if isBuffed == false:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":

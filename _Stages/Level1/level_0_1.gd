@@ -17,9 +17,7 @@ const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive",
 
 @onready var wave_preview := $GameLayer/ZombieSpawner/WavePreview
 
-@onready var new_demon_unlock_rune := $AcquireDemonTexture
 
-@onready var unlock_demon := $UnlockDemon
 
 var first_hover := false
 var demon_never_clicked := true 
@@ -112,6 +110,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
 	super()
 	
 	#Dialogic.Inputs.auto_skip.enabled = true
@@ -121,9 +120,11 @@ func _ready() -> void:
 	#progress_timer.one_shot = true 
 	#progress_timer.autostart = false 
 	
-	unlock_demon.hide()
-	new_demon_unlock_rune.hide()
+	#unlock_power.hide()
 	
+
+	
+			
 	Dialogic.timeline_ended.connect(finish_ready)
 
 	#Global.current_level = self
@@ -135,7 +136,7 @@ func _ready() -> void:
 
 		
 	waveManager.wave_started.connect(_on_wave_started)
-	waveManager.level_ended.connect(_on_level_ended)
+	#waveManager.level_ended.connect(_on_level_ended)
 	wave_preview.game_start_requested.connect(_on_tooltip_hidden)
 	wave_preview.hover_over_preview.connect(_on_tooltip_hidden)
 	_configure_waves()
@@ -145,8 +146,8 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
-	if not skip_tutorials:
-		toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
+	#if not skip_tutorials:
+		#toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
 
 	demonManager.crawler_placed.connect(func(_grid_position): _on_crawler_placed())
 	crawler_button.connect("pressed", Callable(self, "_on_crawler_button_pressed"))
@@ -251,7 +252,7 @@ func _start_explain_demon_hover() -> void:
 
 func _start_explain_hover_skull()->void:
 	zombie_spawner.show()
-	toolTips.set_basic_tutorial_text(TUTORIAL_SKULL_HOVER, false)
+	toolTips.set_basic_tutorial_text(TUTORIAL_SKULL_HOVER, false, Vector2(0,-48))
 
 func _start_explain_demon_click()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_CLICK, false)
@@ -289,7 +290,7 @@ func _start_explain_click_skull()->void:
 	zombie_spawner.show()
 	
 	toolTips.add_pulsing_button_highlight(zombie_spawner.get_preview_icon_panel())
-	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, false, Vector2(0,0))
+	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, false, Vector2(0,-48))
 
 func _start_wave_1() -> void:
 	print("STAT WAVE !1")
@@ -302,12 +303,13 @@ func _start_wave_1() -> void:
 func start_game() -> void:
 	_start_wave_1()
 
-func show_zombie_tutorial()->void:
+func show_zombie_tutorial(unlocked_zombie : String)->void:
+	print("Unlocked Zombie Is ", unlocked_zombie)
 	unlock_count += 1 
-	match unlock_count:
-		1:
+	match unlocked_zombie:
+		"Reborn":
 			_start_explain_basic_zombie()
-		2:
+		"Severed":
 			_start_explain_severed_zombie()
 
 func _start_explain_basic_zombie() -> void:
@@ -353,8 +355,6 @@ func _start_explain_early_wave_call()->void:
 		#toolTips.show_basic_tutorial_button()
 
 func _start_explain_severed_zombie() -> void:
-	if Global.game_controller.get_active_dimension() != Global.game_controller.get_purple_dimension():
-		Global.swap_scenes()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SEVERED_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(severed_zombie_demo_scene.instantiate())
 
@@ -509,13 +509,14 @@ func progress_tutorial()->void:
 
 
 func _on_level_ended() -> void:
-	if Global.game_controller.get_active_dimension() != Global.game_controller.get_purple_dimension():
-		Global.swap_scenes()
-	new_demon_unlock_rune.unlock_done.connect(show_new_demon)
-	new_demon_unlock_rune.activate()
-	#levelSwitcher.visible = true
-	toolTips.visible = false
-	get_tree().paused = true
+	super()
+	#if Global.game_controller.get_active_dimension() != Global.game_controller.get_purple_dimension():
+		#Global.swap_scenes()
+	#new_power_unlock_rune.unlock_done.connect(show_new_demon)
+	#new_power_unlock_rune.activate()
+	##levelSwitcher.visible = true
+	#toolTips.visible = false
+	#get_tree().paused = true
 	
 	
 	#if skip_end_dialog:
@@ -524,8 +525,6 @@ func _on_level_ended() -> void:
 		#Dialogic.timeline_ended.connect(_on_end_dialog_finished, CONNECT_ONE_SHOT)
 		#Dialogic.start(new_end_dialog)
 
-func show_new_demon()->void:
-	unlock_demon.show()
 		
 		
 		

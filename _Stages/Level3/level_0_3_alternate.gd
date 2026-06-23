@@ -11,10 +11,12 @@ var purple_dimension: Control
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 
 func _ready() -> void:
+	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
 	super()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	attach_script_to_sway_children()
 	_configure_waves()
+	unlock_power.set_new_unlock_label("NEW SORCERCY")
 
 
 func _configure_waves() -> void:

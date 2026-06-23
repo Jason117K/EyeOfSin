@@ -73,6 +73,7 @@ func _ready() -> void:
 	special_description_file = get_special_description_file(all_synergies,"Base")
 
 func hide_old_preview()->void:
+	print("Occulum Hide Old Preview")
 	$PreviewNodes/PreviewCard.visible = false 
 	$PreviewNodes/PreviewCardSprite.visible = false 
 	$PreviewNodes/PreviewCardShadow.visible = false 
@@ -103,8 +104,9 @@ func get_cost() -> float:
 func receive_buff(newDemon) -> void:
 	var demonName :String= (newDemon.get_demon_true_name())
 	if !isBuffed:
-		super(demonName)
 		unlock_new_buff(demonName)
+		super(demonName)
+		
 		match demonName:
 			"Occulum":
 				pass
@@ -133,6 +135,7 @@ func debuff() -> void:
 	can_eat_zombie = false
 
 func unlock_new_buff(demonName)->void:
+	if isBuffed == false:
 		if Global.game_controller.current_scenes.size()>1:
 			match demonName:
 				"Occulum":

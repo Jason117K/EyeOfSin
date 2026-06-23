@@ -113,6 +113,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	extended_new_power_description = "BLOCKS ZOMBIES. SYNERGIES IMPROVE DEFENSE & STALLING POTENTIAL."
 	super()
 	levelSwitcher.visible = false
 	demonSelectionMenu.visible = false

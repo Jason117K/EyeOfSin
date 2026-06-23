@@ -14,6 +14,7 @@ var purple_dimension: Control
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
 func _ready() -> void:
+	extended_new_power_description = "SHOOTS PIERCING BLOOD. SYNERGIES IMPROVE AOE DAMAGE. RIPS THROUGH HORDES"
 	super()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
 	attach_script_to_sway_children()

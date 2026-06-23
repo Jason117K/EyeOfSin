@@ -12,7 +12,9 @@ var purple_dimension: Control
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
 func _ready() -> void:
+	extended_new_power_description = "TELEPORTS ZOMBIES TO OPPOSITE DIMENSION PORTAL. CONTROL THE FIELD"
 	super()
+	unlock_power.set_new_unlock_label("NEW SORCERCY")
 	attach_script_to_sway_children()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
 	_configure_waves()
