@@ -466,6 +466,8 @@ func demon_selected(selected_demon : Demon) -> void:
 		return
 	if selected_demon.get_demon_true_name() == self.get_demon_true_name():
 		return 
+	if get_demon_true_name() == "Crawler":
+		print("[buffdbg] === Crawler demon_selected; dm_null=", demon_manager == null, " keys=", (demon_manager.grid_map.keys() if demon_manager != null else []))
 	for tile in buffNodes.get_children():
 		if not (tile is Area2D and tile.visible):
 			continue
@@ -473,15 +475,21 @@ func demon_selected(selected_demon : Demon) -> void:
 		var my_birth: float = tile.get_area_birth_time()
 		var should_hide := false
 		# Rule 1: is this cell already taken? Read occupancy from the DemonManager's
-		# authoritative grid_map instead of a live get_overlapping_areas() query.
-		# The live query is invalid for the first physics frames after a spawn and,
-		# worse, a buffed demon is nudged off-grid (DemonSpriteComp.receive_buff ->
-		# adjust_position) and re-spawned, so it can silently drop out of the overlap
-		# result and the square wrongly stays visible. grid_map is keyed by the
-		# placement cell, so it is immune to the nudge and to physics-frame timing.
+		# authoritative grid_map (immune to the buff nudge + physics-frame timing
+		# that broke the old live get_overlapping_areas() check). Snap from the
+		# tile's CollisionShape2D world position, NOT the TileArea node origin --
+		# the node sits at the demon's own cell and each tile's real cell lives in
+		# its child shape/sprite offset.
+		var shape_center := tile.global_position
+		for tile_child in tile.get_children():
+			if tile_child is CollisionShape2D:
+				shape_center = tile_child.global_position
+				break
 		if demon_manager != null:
-			var cell := Vector2(floor(tile.global_position.x / 32.0) * 32.0 + 16.0, floor(tile.global_position.y / 32.0) * 32.0 + 16.0)
+			var cell := Vector2(floor(shape_center.x / 32.0) * 32.0 + 16.0, floor(shape_center.y / 32.0) * 32.0 + 16.0)
 			var occupant = demon_manager.grid_map.get(cell)
+			if get_demon_true_name() == "Crawler":
+				print("[buffdbg] tile=", tile.name, " node=", tile.global_position, " shape=", shape_center, " cell=", cell, " occupant=", occupant)
 			if is_instance_valid(occupant) and occupant is Demon and occupant != self:
 				if not occupant.is_empty and not ("Drone" in occupant.name):
 					should_hide = true
