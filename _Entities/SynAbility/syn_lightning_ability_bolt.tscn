@@ -819,7 +819,7 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 0.5,
+"duration": 0.4,
 "texture": null
 }, {
 "duration": 1.0,
@@ -836,6 +836,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r3qas")
+}, {
+"duration": 0.1,
+"texture": null
 }],
 "loop": true,
 "name": &"purple",
@@ -1124,9 +1127,7 @@ scale = Vector2(1.0000001, 1.0000001)
 [node name="LightningConnector" type="AnimatedSprite2D" parent="LightningPivot" unique_id=365987290]
 position = Vector2(0.18072012, 63.999737)
 sprite_frames = SubResource("SpriteFrames_pe3fq")
-animation = &"green"
-frame = 4
-frame_progress = 0.3769704
+animation = &"purple"
 
 [node name="LightningConnectorArea" type="Area2D" parent="LightningPivot" unique_id=1930827518]
 

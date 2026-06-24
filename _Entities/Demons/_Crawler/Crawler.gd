@@ -195,12 +195,12 @@ func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if can_ult:
-		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if spawn_done:
-				trigger_ultimate()
-	else:
-		super(_viewport,event,_shape_idx)
+	#if can_ult:
+		#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			#if spawn_done:
+				#trigger_ultimate()
+	#else:
+	super(_viewport,event,_shape_idx)
 		#add_ellipse(event.position)
 	
 func trigger_ultimate()->void:

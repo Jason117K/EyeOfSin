@@ -155,6 +155,9 @@ func _configure_waves() -> void:
 
 func finish_ready() -> void:
 	Global.show_pip()
+	if skip_tutorials: 
+		_start_free_play()
+		return
 	_setup_tutorial()
 	go_to_step("GAME_READY")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
@@ -167,7 +170,15 @@ func finish_ready() -> void:
 	Global.unhide_ui_layer()
 	hide_all_demon_buttons_with_exception(["Wyrm"])
 
-
+func _start_free_play() -> void:
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
+	world_swap_button.visible = true
+	demonSelectionMenu.canSwapScenes = true
+	waveManager.can_start = true
+	Global.show_pip()
+	Global.unhide_ui_layer()
+	Global.unHideDemonSelectionMenu()
+	
 func getIsPurpleDimension()->void:
 	return
 #endregion
