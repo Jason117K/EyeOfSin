@@ -12,6 +12,7 @@ var purple_dimension: Control
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
 func _ready() -> void:
+	level_title = "0-7:ODE TO POWER"
 	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
 	super()
 	attach_script_to_sway_children()

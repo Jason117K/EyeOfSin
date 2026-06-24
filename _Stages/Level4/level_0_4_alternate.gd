@@ -25,6 +25,7 @@ var _on_step_6 := false
 var _on_step_7 := false 
 
 func _ready() -> void:
+	level_title = "0-4:REVELATIONS"
 	extended_new_power_description = "SUMMONS LIGHTNING ACROSS THE BATTLEFIELD. USE TO TURN THE TIDE"
 	super()
 	unlock_power.set_new_unlock_label("NEW SORCERCY")

@@ -46,7 +46,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_ouhvv")
 
-[node name="Level Title" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/LevelTitlePanel" unique_id=1972175762]
+[node name="Level_Title" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/LevelTitlePanel" unique_id=1972175762]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "0-1 : AWAKENING"

@@ -9,6 +9,7 @@ var wave_1_completed := false
 var wave_2_completed := false 
 
 func _ready() -> void:
+	level_title = "0-1:AWAKENING"
 	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
 	super()
 	

@@ -65,6 +65,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	level_title = "0-3:ACCEPTANCE"
 	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
 	super()
 	waveManager = get_parent().get_node("WaveManager")

@@ -47,7 +47,7 @@ extends Demon
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 @onready var og_target_position :Vector2 = attack_ray.target_position
-
+@export var buffed_range_target_pos := Vector2(450.0,0)
 
 # --- State ---
 var isCrawlerBuffed := false
@@ -144,6 +144,7 @@ func receive_buff(demon) -> void:
 		
 		match demonName:
 			"Occulum":
+				_increase_range()
 				projectile_shoot_component.isOcculumBuffed = true
 				laserShootComp2.occulumBuff()
 				laserShootComp1.isDisabled = true 
@@ -190,6 +191,16 @@ func unlock_new_buff(demonName:String)->void:
 					wyrm_buff_unlocked.emit(Global.maw_wyrm_synergy)
 					
 					
+					
+func _increase_range()->void:
+	#print("Old Target Pos ",attack_ray.target_position )
+	attack_ray.target_position = buffed_range_target_pos
+	#print("New Target Pos ",attack_ray.target_position )
+	update_range_preview()
+	
+						
+	
+	
 # --- Death ---
 
 func _cleanup() -> void:

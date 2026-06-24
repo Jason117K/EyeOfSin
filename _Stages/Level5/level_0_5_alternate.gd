@@ -14,6 +14,7 @@ var purple_dimension: Control
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
 func _ready() -> void:
+	level_title = "0-5:RIDE THE LIGHTNING"
 	extended_new_power_description = "SHOOTS PIERCING BLOOD. SYNERGIES IMPROVE AOE DAMAGE. RIPS THROUGH HORDES"
 	super()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])

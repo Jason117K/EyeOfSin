@@ -2,6 +2,8 @@ extends Control
 
 # Should Only Grab values and parse Letter Grade from those values 
 
+@onready var level_title := $CenterContainer/StylePanel/AllPanelsVbox/LevelTitlePanel/Level_Title
+
 @onready var time_label := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/TimeLabel
 @onready var time_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/TimeRank
 var time_rank_value : SCORE_RANKS
@@ -82,6 +84,11 @@ func _setup_score()->void:
 	set_overall_rank()
 	self.show()
 	
+func set_level_title(new_level_title_text : String)->void:
+	level_title.text = new_level_title_text
+	pass
+	
+		
 func set_time_rank()->void:
 	var completion_time : int = int(ScoreManager.get_completion_time())
 	time_label.text = "TIME: " + str(completion_time)

@@ -113,6 +113,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	level_title = "0-2:BETRAYAL"
 	extended_new_power_description = "BLOCKS ZOMBIES. SYNERGIES IMPROVE DEFENSE & STALLING POTENTIAL."
 	super()
 	levelSwitcher.visible = false

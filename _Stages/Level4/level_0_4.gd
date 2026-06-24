@@ -89,6 +89,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	level_title = "0-4:REVELATIONS"
 	extended_new_power_description = "SUMMONS LIGHTNING ACROSS THE BATTLEFIELD. USE TO TURN THE TIDE"
 	super()
 	unlock_power.set_new_unlock_label("NEW SORCERCY")

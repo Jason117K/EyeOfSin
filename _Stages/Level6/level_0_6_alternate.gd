@@ -17,6 +17,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 
 
 func _ready() -> void:
+	level_title = "0-6:BONDS"
 	extended_new_power_description = "TELEPORTS ZOMBIES TO OPPOSITE DIMENSION PORTAL. CONTROL THE FIELD"
 	super()
 	unlock_power.set_new_unlock_label("NEW SORCERCY")

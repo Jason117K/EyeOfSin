@@ -12,6 +12,7 @@ var buckethead_zombie_demo_scene := preload("res://_UI/GameDemonstrations/Zombie
 
 
 func _ready() -> void:
+	level_title = "0-3:ACCEPTANCE"
 	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
 	super()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])

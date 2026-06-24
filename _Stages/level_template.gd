@@ -10,6 +10,8 @@ var current_level := ("res://_Stages/Level1/Level0-1.tscn")
 var current_level_alt := ("res://_Stages/Level1/Level0-1_Alternate.tscn")
 var has_pulsed := false
 
+@onready var level_title : String 
+
 @export_category("Completion Time Thresholds")
 @export var new_power_title : String 
 @export var new_power_description : String 
@@ -209,6 +211,7 @@ func _on_level_ended() -> void:
 func handle_score()->void:
 	ScoreManager.set_completion_times(all_time_thresholds)
 	
+	Global.style_menu.set_level_title(level_title)
 	Global.style_menu.set_completion_times(all_time_thresholds)
 	Global.style_menu.set_style_point_thresholds(all_style_point_thresholds)
 	Global.style_menu.set_total_point_thresholds(all_total_point_thresholds)
