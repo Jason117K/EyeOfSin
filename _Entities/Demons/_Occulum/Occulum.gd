@@ -45,6 +45,8 @@ var cost_first_discount := 15
 @onready var eat_zombie_blood_fx := [$BloodHit, $BloodHit2]
 @onready var blood_hit_1 := $BloodHit
 
+@onready var num_cheap_occulum : int = Global.num_cheap_occulum
+
 var healTimer: Timer
 
 signal occulum_buff_unlocked(buff_to_unlock:String)
@@ -56,6 +58,7 @@ signal occulum_buff_unlocked(buff_to_unlock:String)
 func _ready() -> void:
 	super()
 	occulum_buff_unlocked.connect(Global.unlock_buff)
+	num_cheap_occulum = 4
 
 
 	
@@ -95,12 +98,16 @@ func get_damage() -> String:
 func get_cost() -> float:
 	#if Global.getOcculumCount() > 3:
 		#cost_flat_modifier = 10
-	if Global.getOcculumCount() < 4:
-		#cost = cost + (10 * Global.getOcculumCount())
-		cost = cost + 15 
+		
+	#15,25
+	
+	if Global.getOcculumCount() <= 4:
+		print("Cost in Occulum Was ", cost)
+		cost = cost + (Global.getOcculumCount() * 15)
+		print("Cost in Occulum Is Now ", cost)
 	else:
-		cost = cost + 25 
-		#cost = cost + (10 * Global.getOcculumCount()   )
+		cost = cost + ( ((Global.getOcculumCount()-4) * 25) + (4 * 15) )
+	print(Global.getOcculumCount() , " Cost in ",4 ,"Occulum is ", cost)
 	return cost 
 
 

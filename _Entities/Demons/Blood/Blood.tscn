@@ -304,6 +304,7 @@ animation = &"web_beat"
 autoplay = "default"
 
 [node name="AutoPickUpTimer" type="Timer" parent="." unique_id=1516947771]
+process_mode = 1
 wait_time = 9.0
 one_shot = true
 

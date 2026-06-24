@@ -40,10 +40,16 @@ func _ready() -> void:
 
 
 func _setup() -> void:
+	waveDelayTimer.stop()
+	previewTimer.stop()
+	_spawners_finished = 0
+	_all_spawning_done = false
+	
 	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
 
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
+	
 
 	_wave_previews = []
 	for spawner:Node in _spawners:

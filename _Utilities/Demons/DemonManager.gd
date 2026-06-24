@@ -312,15 +312,15 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 			#print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 		else:
-			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y),empty_demon_to_place)
+			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y),empty_demon_to_place,get_parent())
 	else:
 		if is_queen:
 			if !get_parent().isGreenDimension:
 				print(self, "placing wyrm in purple")
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate())
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate())
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate())
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place)
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate(),get_parent())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate(),get_parent())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate(),get_parent())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place,get_parent())
 				queen_placement_count += 1
 			else:
 				print(self, "placing wyrm in green")
@@ -330,7 +330,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place)
 		else:
 			print(self, "placing regular demon ")
-			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place)
+			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place,get_parent())
 	if "Heart" in demon_instance.name:
 		#print("About to Place Heart Demon")
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:

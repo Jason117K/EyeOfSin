@@ -30,6 +30,7 @@ var origin_occulum: Demon
 var decrease_blood_val := true
 var highest_health :float = -1
 var current_target_health :float = 1
+var counter :float = 0
 
 func _ready() -> void:
 	
@@ -45,9 +46,10 @@ func _ready() -> void:
 		self.modulate = Color(1.697, 1.2, 1.001)
 	if wyrmBuff:
 		auto_pickup_timer.wait_time = wyrm_buff_auto_pickup_wait_time
-	
+	print(self," time at start1 is ", counter, " has scale of ", self.scale)
 	auto_pickup_timer.timeout.connect(_on_auto_pick_up_timer_timeout)
 	auto_pickup_timer.start()
+	print(self," time at start2 is ", counter, " has scale of ", self.scale)
 	#Must Look For Zombies AND Demons
 	if self.is_in_group("Green"):
 		aoe.set_collision_mask_value(1,false)
@@ -75,6 +77,7 @@ func _on_Blood_mouse_entered() -> void:
 			return
 		
 	if crawlerBuff:
+		print("PickUp Crawler Blood Cos Mouse Entered")
 		crawler_blood_pickup()
 		return
 			
@@ -174,7 +177,7 @@ func spawn_blood_sword(offset: Vector2) -> void:
 	
 	
 func set_origin_occulum(parent_occulum : Demon) -> void:
-	print("Origin Occulum is ", parent_occulum)
+	#print("Origin Occulum is ", parent_occulum)
 	origin_occulum = parent_occulum
 		
 	
@@ -217,7 +220,10 @@ func clear_heal_aoe() -> void:
 	demons_to_heal.clear()
 
 func _on_auto_pick_up_timer_timeout() -> void:
+	print("Origin Occulum is ", origin_occulum)
 	print("Auto Wait Time When Gen Was ", auto_pickup_timer.wait_time)
+	print(self," time at pickup is ", counter)
+	
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
 		BloodValue = BloodValue / 2.0
@@ -230,6 +236,8 @@ func _on_auto_pick_up_timer_timeout() -> void:
 			heal_demons()
 			return
 		if crawlerBuff:
+			print("PickUp Crawler Blood Cos Time Ran Out",get_parent().get_parent())
+			print(self, " has scale of ", self.scale)
 			crawler_blood_pickup()
 			return
 		if wyrmBuff:
@@ -280,3 +288,8 @@ func set_demo_true() -> void:
 
 func _on_healing_anim_sprite_animation_finished() -> void:
 	queue_free()
+
+
+func _physics_process(delta: float) -> void:
+	if counter != null:
+		counter += delta

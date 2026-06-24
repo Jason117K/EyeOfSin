@@ -51,6 +51,8 @@ var registered_syn_abilities : Array = []
 var purple_syn_ability : Area2D
 var green_syn_ability : Area2D
 
+var num_cheap_occulum :int = 4 
+
 @onready var sway_shader: VisualShader = preload("res://_Common/Shaders/swayShader.tres")
 
 
