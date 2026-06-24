@@ -105,7 +105,7 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
-blood_points = 700
+blood_points = 750
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1937544684]
 process_mode = 1

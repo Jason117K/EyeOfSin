@@ -480,7 +480,7 @@ func demon_selected(selected_demon : Demon) -> void:
 		# tile's CollisionShape2D world position, NOT the TileArea node origin --
 		# the node sits at the demon's own cell and each tile's real cell lives in
 		# its child shape/sprite offset.
-		var shape_center := tile.global_position
+		var shape_center :Vector2= tile.global_position
 		for tile_child in tile.get_children():
 			if tile_child is CollisionShape2D:
 				shape_center = tile_child.global_position

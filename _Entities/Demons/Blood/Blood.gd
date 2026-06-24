@@ -242,7 +242,7 @@ func crawler_buff() -> void:
 
 func wyrm_buff() -> void:
 	self.scale = Vector2(1.2,1.2)
-	BloodValue = 150
+	BloodValue = 75
 	wyrmBuff = true
 
 func hive_buff() -> void:

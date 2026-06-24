@@ -289,12 +289,7 @@ light_mask = 31
 z_index = 2
 scale = Vector2(0.8, 0.8)
 script = ExtResource("2")
-BloodValue = null
 BloodDamage = 125.0
-default_auto_pickup_wait_time = null
-crawler_buff_auto_pickup_wait_time = null
-wyrm_buff_auto_pickup_wait_time = null
-fast_pick_up_time = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=806848830]
 visible = false
