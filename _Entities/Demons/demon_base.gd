@@ -466,8 +466,6 @@ func demon_selected(selected_demon : Demon) -> void:
 		return
 	if selected_demon.get_demon_true_name() == self.get_demon_true_name():
 		return 
-	if get_demon_true_name() == "Crawler":
-		print("[buffdbg] === Crawler demon_selected; dm_null=", demon_manager == null, " keys=", (demon_manager.grid_map.keys() if demon_manager != null else []))
 	for tile in buffNodes.get_children():
 		if not (tile is Area2D and tile.visible):
 			continue
@@ -488,8 +486,6 @@ func demon_selected(selected_demon : Demon) -> void:
 		if demon_manager != null:
 			var cell := Vector2(floor(shape_center.x / 32.0) * 32.0 + 16.0, floor(shape_center.y / 32.0) * 32.0 + 16.0)
 			var occupant = demon_manager.grid_map.get(cell)
-			if get_demon_true_name() == "Crawler":
-				print("[buffdbg] tile=", tile.name, " node=", tile.global_position, " shape=", shape_center, " cell=", cell, " occupant=", occupant)
 			if is_instance_valid(occupant) and occupant is Demon and occupant != self:
 				if not occupant.is_empty and not ("Drone" in occupant.name):
 					should_hide = true
@@ -506,9 +502,6 @@ func demon_selected(selected_demon : Demon) -> void:
 					break
 		if should_hide:
 			tile.hide_preview_square()
-		if get_demon_true_name() == "Crawler":
-			for k in tile.get_children():
-				print("[buffdbg2] ", tile.name, "/", k.name, " type=", k.get_class(), " visible=", (k.visible if k is CanvasItem else "n/a"), " should_hide=", should_hide)
 				
 func demon_deselected()->void:
 	if buffNodes != null:
