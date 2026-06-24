@@ -13,6 +13,10 @@ var swap_ability : Node
 
 var demon_manager : Node
 
+# DIAGNOSTIC (restart crash investigation): guards against overlapping/re-entrant
+# dual-scene transitions and logs why a scene load failed. Safe to remove later.
+var _is_transitioning := false
+
 #@onready var pause_button: Button = $PauseButton
 @onready var pip := $PipRoot
 #@onready var demon_selection_menu := $CurrentScene/DemonSelectionMenu
@@ -116,6 +120,19 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#print_scene_tree()
+	# DIAGNOSTIC: catch overlapping/re-entrant transitions (a leading suspect for the
+	# Level 4 restart crash). If this prints, two transitions raced and the second is aborted.
+	if _is_transitioning:
+		push_error("[RESTART] change_dual_scenes RE-ENTERED while a transition was in progress. " +
+			"scene1=" + str(scene1_path) + " scene2=" + str(scene2_path) +
+			" current_scenes.size=" + str(current_scenes.size()))
+		return
+	_is_transitioning = true
+	print("[RESTART] change_dual_scenes BEGIN scene1=", scene1_path,
+		" exists=", ResourceLoader.exists(scene1_path),
+		" scene2=", scene2_path, " exists=", ResourceLoader.exists(scene2_path),
+		" current_scenes.size=", current_scenes.size())
+
 	Global.hide_notification_bar()
 	#pause_button.visible = true
 
@@ -135,9 +152,17 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	
 
 	print(scene1_path)
-	var new1 : Control = load(scene1_path).instantiate()
-	
-	
+	# DIAGNOSTIC: guard the load so a null resource logs the cause instead of hard-crashing.
+	var packed1: Resource = load(scene1_path)
+	if packed1 == null:
+		push_error("[RESTART] load() returned NULL for scene1_path=" + str(scene1_path) +
+			" (ResourceLoader.exists=" + str(ResourceLoader.exists(scene1_path)) +
+			"). Aborting transition. See the engine error printed ABOVE this line for the real cause.")
+		_is_transitioning = false
+		return
+	var new1 : Control = packed1.instantiate()
+
+
 	if Global.dialog_is_disabled:
 		new1.debug = true 
 		new1.skip_end_dialog = true 
@@ -162,8 +187,16 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	current_scenes.append(new1)
 	
 	print(scene2_path)
-	
-	var new2 : Control = load(scene2_path).instantiate()
+
+	# DIAGNOSTIC: same guard for the alternate (green) scene.
+	var packed2: Resource = load(scene2_path)
+	if packed2 == null:
+		push_error("[RESTART] load() returned NULL for scene2_path=" + str(scene2_path) +
+			" (ResourceLoader.exists=" + str(ResourceLoader.exists(scene2_path)) +
+			"). Aborting transition. See the engine error printed ABOVE this line for the real cause.")
+		_is_transitioning = false
+		return
+	var new2 : Control = packed2.instantiate()
 	new2.visible = true
 	scene_container.add_child(new2)
 	current_scenes.append(new2)
@@ -215,8 +248,11 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	if Global.skip_tutorials:
 		current_scenes[0].skip_tutorials = true 
 	else:
-		current_scenes[0].skip_tutorials = false 
+		current_scenes[0].skip_tutorials = false
 	print(scene1_path)
+	# DIAGNOSTIC: transition finished cleanly; allow the next one.
+	_is_transitioning = false
+	print("[RESTART] change_dual_scenes END ok. current_scenes.size=", current_scenes.size())
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
