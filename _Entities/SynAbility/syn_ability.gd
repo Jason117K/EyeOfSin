@@ -77,12 +77,10 @@ func _process(delta: float) -> void:
 func _update_crosshair() -> void:
 	if syn_crosshair_active:
 		syn_ability_crosshair.global_position = get_viewport().get_mouse_position()
-		# DEBUG (temporary): diagnose Syn crosshair not showing in the Green
-		# dimension. If layer & mask == 0 the crosshair is being culled in Green.
-		print("crosshair layer=", syn_ability_crosshair.visibility_layer,
-			" mask=", get_viewport().canvas_cull_mask,
-			" visible=", syn_ability_crosshair.visible,
-			" pos=", syn_ability_crosshair.global_position)
+		# Render the reticle only in the active dimension, so it doesn't also
+		# appear in the PiP mirror (which renders the shared UI bit | inactive bit).
+		# DIM_BITS from game_controller: purple = 1<<1 (2), green = 1<<2 (4).
+		syn_ability_crosshair.visibility_layer = 2 if Global.is_on_purple_dimension() else 4
 	else:
 		syn_ability_crosshair.hide()
 
