@@ -72,8 +72,26 @@ func _cleanup_all_scenes() -> void:
 	current_scenes.clear()
 	current_scene = null
 	pip.hide_pip()
+	
+	hide_swap_syn()
+	
 	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
+func hide_swap_syn()->void:
+	
+	if swap_ability != null:
+		Global.swap_ability.hide_swap()
+		
+	if Global.syn_ability_manager != null:
+		Global.syn_ability_manager.hide_syn_ability()
+
+func show_swap_syn()->void:
+	
+	if swap_ability != null:
+		Global.swap_ability.show_swap()
+		
+	if Global.syn_ability_manager != null:
+		Global.syn_ability_manager.show_syn_ability()
 
 func _apply_dimension_visibility() -> void:
 	if current_scenes.size() < 2:
@@ -222,6 +240,9 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 	#pause_button.visible = false
 	Global.style_menu.hide()
 	pip.hide_pip()
+	
+	hide_swap_syn()
+	
 	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
 	if delete:
@@ -248,7 +269,7 @@ func help_show_pause_menu_with_pause()->void:
 	Global.hide_notification_bar()
 
 	pip.hide_pip()
-
+	hide_swap_syn()
 	#if current_scene != null:
 		#current_scene.visible = false
 
@@ -265,7 +286,7 @@ func change_scene_with_pause(new_scene_path: String) -> void:
 	#pause_button.visible = false
 
 	pip.hide_pip()
-
+	hide_swap_syn()
 	if current_scene != null:
 		current_scene.visible = false
 
@@ -289,7 +310,7 @@ func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 	Global.hide_notification_bar()
 	#pause_button.visible = false
 	pip.hide_pip()
-
+	hide_swap_syn()
 	for s:Node in current_scenes:
 		if is_instance_valid(s):
 			s.visible = false
@@ -341,6 +362,7 @@ func restore_dual_scenes() -> void:
 			set_node_and_children_process_mode_inherit(s)
 	_apply_dimension_visibility()
 	pip.show_pip()
+	show_swap_syn()
 	Global.unHideDemonSelectionMenu()
 
 	if on_scene_1:
@@ -362,7 +384,7 @@ func restore_dual_scenes_with_pause() -> void:
 			set_node_and_children_process_mode_inherit(s)
 	_apply_dimension_visibility()
 	pip.show_pip()
-
+	show_swap_syn()
 	if on_scene_1:
 		current_scene = current_scenes[0]
 		current_scene.click_pause_button()

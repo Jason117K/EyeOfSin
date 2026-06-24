@@ -215,7 +215,7 @@ func clear_heal_aoe() -> void:
 	demons_to_heal.clear()
 
 func _on_auto_pick_up_timer_timeout() -> void:
-	#print("Wait Time When Gen Was ", auto_pickup_timer.wait_time)
+	print("Auto Wait Time When Gen Was ", auto_pickup_timer.wait_time)
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
 		BloodValue = BloodValue / 2.0

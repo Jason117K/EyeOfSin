@@ -448,7 +448,7 @@ func register_syn_ability_instance(new_syn_ability : Area2D)->void:
 		print(registered_syn_abilities, " Cannot connect not enough syn sheilds : ",registered_syn_abilities.size() )	
 		
 func connect_syn_abilities()->void:
-	print("Should Start connect Syn Abilities")
+	#print("Should Start connect Syn Abilities")
 	if green_syn_ability != null && purple_syn_ability != null:
 		if green_syn_ability.is_dual_connection:
 			green_syn_ability.connect_ability(purple_syn_ability)
@@ -466,7 +466,7 @@ func deregister_syn_ability(new_syn_ability:Area2D)->void:
 		purple_syn_ability = null
 	else:
 		green_syn_ability = null
-	print(registered_syn_abilities, " now has size syn abilitys : ",registered_syn_abilities.size() )		
+	#print(registered_syn_abilities, " now has size syn abilitys : ",registered_syn_abilities.size() )		
 		
 		
 		
@@ -485,13 +485,14 @@ func register_syn_shield(new_shield:Area2D)->void:
 	if registered_syn_shields.size() >= 2:
 		connect_syn_shields()
 	else:
+		pass
 		print(registered_syn_shields, " Cannot connect not enough syn sheilds : ",registered_syn_shields.size() )
 
 
 
 
 func connect_syn_shields()->void:
-	print("Should Start connect shields s")
+	#print("Should Start connect shields s")
 	if green_syn_shield.global_position.x > purple_syn_shield.global_position.x:
 		green_syn_shield.connect_shield(purple_syn_shield)
 	else:

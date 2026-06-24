@@ -36,11 +36,18 @@ func _ready() -> void:
 func game_start()->void:
 	print("Game Start For Swap Ability Called")
 	cooldown_timer.start()
+
+func hide_swap()->void:
+	cooldown_controller.hide()
+	
+func show_swap()->void:
+	cooldown_controller.show()
+	
 	
 func _input(event:InputEvent) -> void:
 	if event.is_action_pressed("LockSwapAbility"):
 		cooldown_controller.lock_unlock_swap_ability()
-		#lock_unlock_swap_ability()
+		lock_unlock_swap_ability()
 		
 func lock_unlock_swap_ability()->void:
 	if is_locked:
@@ -64,8 +71,8 @@ func reset_on_game_start() -> void:
 	#cooldown_timer.start()
 
 func begin() -> void:
-	if is_locked:
-		return 
+	if is_locked:   
+		return
 	#Stopped too soon, longer cooldown
 	if is_active:
 		cooldown_duration = cooldown_length_normal

@@ -90,7 +90,7 @@ func aftershock_damage()->void:
 				zombie.take_damage(false,aftershock_dmg,false)
 	
 func connect_ability(lightning_to_connect : Area2D)->void:
-	print("Attempt Connect Lightning")
+	#print("Attempt Connect Lightning")
 	lightning_connector_line.hide()
 	var target_local :Vector2 = lightning_connector_line.to_local(lightning_to_connect.global_position)
 	if lightning_connector_line.get_point_count() < 2:

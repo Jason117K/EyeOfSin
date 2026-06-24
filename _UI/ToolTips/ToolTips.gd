@@ -57,7 +57,7 @@ signal ToolTipHid
 func _ready() -> void:
 	countdown_timer.timeout.connect(hide_self)
 	countdown_timer.wait_time = tooltip_dissappear_wait_time
-	print("HIDEEE Ready")
+	#print("HIDEEE Ready")
 	hide()
 	demon_visual_tutorial_vbox_container.hide()
 	if not basicTutorialButton.pressed.is_connected(_on_basic_tutorial_understood_button_pressed):

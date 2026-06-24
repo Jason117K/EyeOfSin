@@ -132,6 +132,14 @@ func _input(event: InputEvent) -> void:
 				activate_syn_ability(get_viewport().get_mouse_position())
 			syn_crosshair_active = false
 
+func hide_syn_ability()->void:
+	syn_ability_cooldown.hide()
+
+func show_syn_ability()->void:
+	syn_ability_cooldown.show()
+	
+
+
 func activate_syn_ability(target_pos:Vector2)->void:
 	var color := _current_color()
 	var new_syn_ability_instance :Node = syn_ability_instance.instantiate()
