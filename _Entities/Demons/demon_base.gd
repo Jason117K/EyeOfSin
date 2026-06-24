@@ -472,15 +472,30 @@ func demon_selected(selected_demon : Demon) -> void:
 		tile.show_preview_square()
 		var my_birth: float = tile.get_area_birth_time()
 		var should_hide := false
-		for other : Area2D in tile.get_overlapping_areas():
-			if other == self:
-				continue  # don't let Maw/Heart's own body hide its tiles
-			if other.is_in_group("Demons") and not ("Drone" in other.name):
-				should_hide = true                       # rule 1: occupied
-				break
-			if "TileArea" in other.name and other.visible and other.get_area_birth_time() < my_birth:
-				should_hide = true                       # rule 2: older zone wins
-				break
+		# Rule 1: is this cell already taken? Read occupancy from the DemonManager's
+		# authoritative grid_map instead of a live get_overlapping_areas() query.
+		# The live query is invalid for the first physics frames after a spawn and,
+		# worse, a buffed demon is nudged off-grid (DemonSpriteComp.receive_buff ->
+		# adjust_position) and re-spawned, so it can silently drop out of the overlap
+		# result and the square wrongly stays visible. grid_map is keyed by the
+		# placement cell, so it is immune to the nudge and to physics-frame timing.
+		if demon_manager != null:
+			var cell := Vector2(floor(tile.global_position.x / 32.0) * 32.0 + 16.0, floor(tile.global_position.y / 32.0) * 32.0 + 16.0)
+			var occupant = demon_manager.grid_map.get(cell)
+			if is_instance_valid(occupant) and occupant is Demon and occupant != self:
+				if not occupant.is_empty and not ("Drone" in occupant.name):
+					should_hide = true
+
+		# Rule 2: an older visible buff zone already owns this cell
+		# (oldest-overlapping-zone-wins). Still a live query, but the buff bug above
+		# does not affect a zone-vs-zone birth-time comparison.
+		if not should_hide:
+			for other : Area2D in tile.get_overlapping_areas():
+				if other == self:
+					continue  # don't let Maw/Heart's own body hide its tiles
+				if "TileArea" in other.name and other.visible and other.get_area_birth_time() < my_birth:
+					should_hide = true
+					break
 		if should_hide:
 			tile.hide_preview_square()
 				
