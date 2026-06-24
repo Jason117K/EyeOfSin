@@ -40,12 +40,11 @@ func _on_return_to_menu_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-	print(restartScene,restartSceneAlt, "RESTART LEVELS SET2364553645463564564645645465")
 	get_tree().paused = false
-	#var current_scene_filepath = Global.get_current_scene_filepath()
-	#print("CCUrent Scene Is ", current_scene_filepath) 
-	Global.game_controller.change_dual_scenes(restartScene,restartSceneAlt )
-	#Global.game_controller.change_scene(current_scene_filepath)
+	# Reload whichever two dimension scenes are currently live, instead of the per-menu
+	# restartScene/restartSceneAlt exports — those are never set on the green dimension's
+	# pause menu, so restarting from green passed empty paths and crashed on load("").
+	Global.game_controller.restart_current_dual_scenes()
 
 
 	

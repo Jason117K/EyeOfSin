@@ -118,6 +118,24 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 
 # --- Dual Scene Transitions ---
 
+# Reloads whichever two dimension scenes are currently live, regardless of which one is
+# active. Restart paths used to be duplicated onto each dimension's pause menu, but only the
+# purple level called set_restart_levels — restarting from the green dimension passed empty
+# strings to change_dual_scenes (load("") -> null instance -> crash). Deriving the paths from
+# the loaded scenes fixes restart from either dimension on every level and can't drift.
+func restart_current_dual_scenes() -> void:
+	if current_scenes.size() < 2 or not is_instance_valid(current_scenes[0]) or not is_instance_valid(current_scenes[1]):
+		push_error("[RESTART] restart_current_dual_scenes: expected 2 live scenes, have " + str(current_scenes.size()))
+		return
+	var purple_path: String = current_scenes[0].scene_file_path
+	var green_path: String = current_scenes[1].scene_file_path
+	if purple_path.is_empty() or green_path.is_empty():
+		push_error("[RESTART] restart_current_dual_scenes: a loaded scene has no scene_file_path " +
+			"(purple='" + purple_path + "' green='" + green_path + "')")
+		return
+	change_dual_scenes(purple_path, green_path)
+
+
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#print_scene_tree()
 	# DIAGNOSTIC: catch overlapping/re-entrant transitions (a leading suspect for the
