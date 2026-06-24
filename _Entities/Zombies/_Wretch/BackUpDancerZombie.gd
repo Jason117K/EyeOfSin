@@ -6,6 +6,7 @@ extends Zombie
 func _ready() -> void:
 	super()
 	attackComp = WretchAttackRefCounted.new(self)
+	Global.unlock_zombie("Wretch")
 
 func get_zombie_name() -> String:
 	return " WRETCH "

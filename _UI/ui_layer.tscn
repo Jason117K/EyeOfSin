@@ -29,13 +29,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0000002
-offset_top = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.07, 1.07)
 mouse_filter = 2
 script = ExtResource("1_nb644")
 
@@ -43,6 +38,7 @@ script = ExtResource("1_nb644")
 layout_mode = 0
 offset_right = 74.0
 offset_bottom = 57.0
+scale = Vector2(1.215, 1.215)
 theme_override_styles/panel = SubResource("StyleBoxTexture_i34nt")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD_Panel" unique_id=379065495]
@@ -100,12 +96,11 @@ text = "10"
 horizontal_alignment = 1
 
 [node name="DemonUnlockedButton" type="Button" parent="." unique_id=178306112]
-visible = false
 layout_mode = 0
-offset_left = 2.8037376
-offset_top = 57.943916
-offset_right = 70.09346
-offset_bottom = 116.82242
+offset_left = 604.0
+offset_top = 2.0
+offset_right = 671.28973
+offset_bottom = 60.8785
 
 [node name="NewUnlock_Panel" type="PanelContainer" parent="DemonUnlockedButton" unique_id=1726256574]
 layout_mode = 1
@@ -148,10 +143,10 @@ horizontal_alignment = 1
 
 [node name="ZombieUnlockedButton" type="Button" parent="." unique_id=1585373430]
 layout_mode = 0
-offset_left = 2.8037376
-offset_top = 57.943916
-offset_right = 70.09346
-offset_bottom = 116.82242
+offset_left = 605.0
+offset_top = 2.0
+offset_right = 672.28973
+offset_bottom = 60.8785
 
 [node name="NewUnlock_Panel" type="PanelContainer" parent="ZombieUnlockedButton" unique_id=500093970]
 layout_mode = 1

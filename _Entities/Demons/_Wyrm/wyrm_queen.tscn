@@ -404,6 +404,8 @@ animations = [{
 
 [node name="WyrmQueen" type="Area2D" unique_id=1613363677]
 script = ExtResource("1_ydpmf")
+extension_speed = 1500.0
+max_length = 2000.0
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=268165152 node_paths=PackedStringArray("polygon", "line")]
 visible = false
@@ -490,6 +492,7 @@ shape = SubResource("RectangleShape2D_1dndg")
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=491908974]
 
 [node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=1570954011]
+position = Vector2(0, -21)
 points = PackedVector2Array(16, 0, 500, 0)
 default_color = Color(1, 0, 0, 0.47058824)
 end_cap_mode = 2
@@ -643,7 +646,7 @@ visible = false
 script = ExtResource("16_q2cmp")
 
 [node name="DMG_RayCast2D" type="ShapeCast2D" parent="." unique_id=948474511]
-position = Vector2(2, 1)
+position = Vector2(2, -20)
 shape = SubResource("RectangleShape2D_5ad65")
 target_position = Vector2(500, -1)
 collision_mask = 0

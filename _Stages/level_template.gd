@@ -91,7 +91,7 @@ var check_progress := false
 
 @onready var new_power_unlock_rune := $AcquirePowerTexture
 @onready var unlock_power := $UnlockPower
-
+@onready var ui_layer := $UILayer
 
 const TUTORIAL_SKULL_HOVER = "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt"
 const TUTORIAL_EXPLAIN_SPINAL_OCCULUM = "res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt"
@@ -350,10 +350,10 @@ func click_pause_button()->void:
 func remove_empty_blocker_demon(grid_pos:Vector2) -> void:
 	demonManager.clear_space_alt(grid_pos)
 
-# Spotlight helper functions - ADD THESE NEW FUNCTIONS
 
 
-
+func show_unlock_zombie_button(new_zombie_unlock:String)->void:
+	pass
 
 func hide_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.clear_rectangles()

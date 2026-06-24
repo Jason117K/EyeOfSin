@@ -9,6 +9,7 @@ extends Zombie
 func _ready() -> void:
 	super()
 	specialMoveComp.attack_comp = attackComp
+	Global.unlock_zombie("Sundered")
 
 # Specific Pole Vault Special Move
 func special_move() -> void:

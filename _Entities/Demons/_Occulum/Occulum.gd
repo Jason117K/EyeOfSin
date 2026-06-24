@@ -95,8 +95,13 @@ func get_damage() -> String:
 func get_cost() -> float:
 	#if Global.getOcculumCount() > 3:
 		#cost_flat_modifier = 10
-	cost = cost + (10 * Global.getOcculumCount())
-	return cost + cost_flat_modifier
+	if Global.getOcculumCount() < 4:
+		#cost = cost + (10 * Global.getOcculumCount())
+		cost = cost + 15 
+	else:
+		cost = cost + 25 
+		#cost = cost + (10 * Global.getOcculumCount()   )
+	return cost 
 
 
 # --- Buff System ---

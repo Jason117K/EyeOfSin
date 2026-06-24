@@ -1,7 +1,5 @@
 extends LevelTemplate
 
-
-
 var purple_dimension: Control
 
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -9,6 +7,9 @@ var purple_dimension: Control
 @onready var zombie_spawner_3 := $GameLayer/ZombieSpawner3
 @onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
+
+var buckethead_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/buckethead_zombie_demo.tscn")
+
 
 func _ready() -> void:
 	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
@@ -85,3 +86,17 @@ func pre_place_spinal_occulum()->void:
 	await get_tree().physics_frame
 	demonSelectionMenu._on_SpinalOcculumButton_pressed()
 	demonManager.place_demon(Vector2(304,240))
+
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
+	_start_explain_unhallower()
+
+func _start_explain_unhallower() -> void:
+	auto_advance = false
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE)
+	toolTips.set_visual_tutorial_visual(buckethead_zombie_demo_scene.instantiate(),true,Vector2(0,32))
+	
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Unhallower":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)

@@ -8,6 +8,7 @@ extends Zombie
 func _ready() -> void:
 	super()
 	attackComp = ErupterAttackRefCounted.new(self)
+	Global.unlock_zombie("Erupter")
 
 func get_zombie_name() -> String:
 	return " ERUPTER "

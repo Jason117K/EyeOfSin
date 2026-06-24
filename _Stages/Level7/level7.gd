@@ -2,7 +2,7 @@ extends LevelTemplate
 # level_0_6.gd - Level 0-6 Controller (no forced demon tutorial, just zombie explanation)
 #750
 # Preloaded demo scenes
-var amalgam_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
+var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
 # Level paths
 var thisLevel :=  "res://_Stages/Level7/Level7.tscn"
@@ -12,7 +12,7 @@ var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
 
 # Text file paths
-const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
+const TUTORIAL_EXPLAIN_SUNDERED = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 
 # Cached references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -251,9 +251,7 @@ func start_game() -> void:
 	gameStarted = true
 
 
-func _start_explain_amalgam_zombie() -> void:
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_AMALGAM)
-	toolTips.set_visual_tutorial_visual(amalgam_zombie_demo_scene.instantiate())
+
 #endregion
 
 
@@ -262,10 +260,18 @@ func _on_tooltip_hidden() -> void:
 	toolTips.visible = false
 	advance_tutorial()
 
-
+func _start_explain_sundered()->void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUNDERED)
+	toolTips.set_visual_tutorial_visual(sundered_zombie_demo_scene.instantiate())
+	
+	
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
+	_start_explain_sundered()
+	
 func _on_wave_started(wave_index: int) -> void:
-	if wave_index == 0:
-		go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
+	pass
+	#if wave_index == 0:
+		#go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion
 
 
@@ -291,3 +297,10 @@ func _show_all_buttons() -> void:
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 #endregion
+
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Sundered":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)

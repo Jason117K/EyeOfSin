@@ -22,7 +22,6 @@ const HIDEABLE_demon_NAMES = ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive",
 var first_hover := false
 var demon_never_clicked := true 
 
-var unlock_count := 0 
 
 
 
@@ -305,7 +304,6 @@ func start_game() -> void:
 
 func show_zombie_tutorial(unlocked_zombie : String)->void:
 	print("Unlocked Zombie Is ", unlocked_zombie)
-	unlock_count += 1 
 	match unlocked_zombie:
 		"Reborn":
 			_start_explain_basic_zombie()
@@ -505,6 +503,20 @@ func show_guide() -> void:
 func progress_tutorial()->void:
 	toolTips._on_basic_tutorial_understood_button_pressed()
 	pass
+
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Reborn":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+		"Severed":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+			
+
+
+
 
 
 

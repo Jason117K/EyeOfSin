@@ -41,3 +41,10 @@ func add_blood(bloodAmount) -> void:
 
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 5)
+
+
+
+			
+			
+			
+			

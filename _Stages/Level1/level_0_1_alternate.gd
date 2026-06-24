@@ -74,3 +74,14 @@ func _start_explain_severed_zombie() -> void:
 								
 func _on_tooltip_hidden() -> void:
 	toolTips.visible = false 
+
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Reborn":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+		"Severed":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+			

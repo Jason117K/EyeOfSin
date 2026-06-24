@@ -18,7 +18,7 @@ extends Node2D
 @onready var point7 := $SummonPoint7
 @onready var point8 := $SummonPoint8
 @onready var point9 := $SummonPoint9
-@onready var points := [point1,point2,point3,point4,point6,point7,point8,point9]
+@onready var points := [point1,point3,point4,point6,point7,point9]
 
 #Load the zombie we will summon
 var BackUpDancerScene := preload("res://_Entities/Zombies/_Wretch/BackUpDancerZombie.tscn")

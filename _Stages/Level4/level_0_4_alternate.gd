@@ -16,6 +16,10 @@ var purple_dimension: Control
 const TUTORIAL_EXPLAIN_SYN_ABILITY_5 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_5.txt"
 const TUTORIAL_EXPLAIN_SYN_ABILITY_6 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_6.txt"
 const TUTORIAL_EXPLAIN_SYN_ABILITY_7 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_7.txt"
+const TUTORIAL_EXPLAIN_SUMMONER = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
+
+
+var summoner_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/summoner_zombie_demo.tscn")
 
 var _on_step_6 := false 
 var _on_step_7 := false 
@@ -77,6 +81,7 @@ func _start_explain_syn_ability_5()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_5,false)
 
 func _on_syn_sorcery_activated_again()->void:
+	Global.syn_ability_manager.syn_sorcery_activated.disconnect(_on_syn_sorcery_activated_again)
 	_start_explain_syn_ability_6()
 
 func _start_explain_syn_ability_6()->void:
@@ -96,8 +101,8 @@ func _start_explain_syn_ability_7()->void:
 	print("Start Syn 7")
 	_on_step_7 = true 
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_7,false)
-	#auto_advance = true 
-	#set_auto_advance_toolTip(5)
+	auto_advance = true 
+	set_auto_advance_toolTip(5)
 
 
 
@@ -113,10 +118,20 @@ func progress_time_passed()->void:
 		_start_explain_syn_ability_6()
 	if _on_step_6:
 		_start_explain_syn_ability_7()
-	#if _on_step_7:
-		#toolTips.hide()
+	if _on_step_7:
+		toolTips.hide()
 	
 	
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Reanimator":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+			
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
+	_start_explain_reanimator()
 	
 	
-	
+func _start_explain_reanimator() -> void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUMMONER)
+	toolTips.set_visual_tutorial_visual(summoner_zombie_demo_scene.instantiate())	

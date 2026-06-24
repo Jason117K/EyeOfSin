@@ -56,6 +56,9 @@ syn_ability_instance = ExtResource("2_8fkk2")
 z_index = 1
 mouse_filter = 2
 
+[node name="SynAbilityPanelContainer" parent="SynAbilityCooldown" index="0" unique_id=623219797]
+z_index = 2
+
 [node name="SynAbilityCrosshair" type="AnimatedSprite2D" parent="." unique_id=529838522]
 visible = false
 position = Vector2(600, 179)

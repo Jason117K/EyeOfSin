@@ -8,6 +8,9 @@ extends Zombie
 func _ready() -> void:
 	super()
 	summon_comp.attackComp = attackComp
+	Global.unlock_zombie("Reanimator")
+	
+	
 func silence() -> void:
 	super()
 	summon_comp.silence()

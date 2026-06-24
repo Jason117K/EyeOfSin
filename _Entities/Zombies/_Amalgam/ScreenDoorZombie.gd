@@ -12,6 +12,7 @@ var deathCount := 0
 func _ready() -> void:
 	super()
 	healthComp = AmalgamHealthRefCounted.new(self)
+	Global.unlock_zombie("Amalgam")
 
 func silence() -> void:
 	super()

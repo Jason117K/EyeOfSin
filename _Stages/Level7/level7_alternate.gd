@@ -65,3 +65,10 @@ func start_game() -> void:
 
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
+
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Sundered":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)

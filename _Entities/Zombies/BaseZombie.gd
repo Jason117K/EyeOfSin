@@ -358,7 +358,7 @@ func getHealthComponent() -> ZombieHealthRefCountedComponent:
 
 
 func increaseBloodWorth() -> void:
-	healthComp.bloodWorth = healthComp.bloodWorth + 10.0
+	healthComp.bloodWorth = healthComp.bloodWorth + 5.0
 
 
 # --- Speed / Slow ---

@@ -16,7 +16,7 @@ var level04Alt := "res://_Stages/Level4/Level0-4_Alternate.tscn"
 
 # Text file paths
 
-var bucketHeadExplained := false
+
 var maw_pulse_added := false
 
 var spinal_occulum_demo_scene = load("res://_UI/GameDemonstrations/DemonTutorials/spinal_occulum_demo_scene.tscn")
@@ -226,7 +226,6 @@ func _explain_pre_placed_spinal_occulum()->void:
 
 func _start_explain_unhallower() -> void:
 	auto_advance = false
-	bucketHeadExplained = true
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BUCKETHEAD_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(buckethead_zombie_demo_scene.instantiate(),true,Vector2(0,32))
 
@@ -272,7 +271,7 @@ func start_game() -> void:
 	
 	green_dimension.start_game()
 
-func show_zombie_tutorial(unlocked_zombie : String)->void:
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
 	_start_explain_unhallower()
 	 
 
@@ -407,3 +406,13 @@ func show_only_demon_buttons(visible_containers: Array) -> void:
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 7)
 #endregion
+
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Unhallower":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+
+			
+			

@@ -1,6 +1,9 @@
 extends Zombie
 # FootBallZombie.gd
 
+func _ready() -> void:
+	super()
+	Global.unlock_zombie("Flesheater")
 
 func get_zombie_name() -> String:
 	return " FLESHEATER "

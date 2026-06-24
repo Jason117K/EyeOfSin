@@ -86,6 +86,7 @@ func _ready() -> void:
 	phase2_ray.enabled = false
 	phase2_hurtbox.disabled = true
 	_play(&"idle")
+	Global.unlock_zombie("Rohan")
 
 
 # Rohan owns its per-frame behavior. The base tick() drives the shared sprite's

@@ -90,8 +90,9 @@ func set_zombie_unlock_notif(unlocked_zombie : String)->void:
 	if unlocked_zombies.has(unlocked_zombie):
 		return 
 	unlocked_zombies.append(unlocked_zombie)
-	new_zombie_unlocked_button.show()
-	set_zombie_icon_texture(unlocked_zombie)
+	get_parent().show_unlock_zombie_button(unlocked_zombie)
+	#new_zombie_unlocked_button.show()
+	#set_zombie_icon_texture(unlocked_zombie)
 
 func set_zombie_icon_texture(unlocked_zombie:String)->void:
 	new_zombie_icon.texture = Global.zombie_notif_icons[unlocked_zombie]

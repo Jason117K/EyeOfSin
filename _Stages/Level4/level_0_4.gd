@@ -73,11 +73,11 @@ func _setup_tutorial() -> void:
 			"name": "PRE_START_GAME",
 			"enter": _pre_start_game,
 		},
-		{
-			"name": "EXPLAIN_REANIMATOR",
-			"enter": _start_explain_reanimator,
-			"input_filter": _filter_block_keyboard,
-		},
+		#{
+			#"name": "EXPLAIN_REANIMATOR",
+			#"enter": _start_explain_reanimator,
+			#"input_filter": _filter_block_keyboard,
+		#},
 		{
 			"name": "RESUME_GAME",
 			"enter": _resume_game,
@@ -321,7 +321,8 @@ func _on_wave_started(wave_index: int) -> void:
 		2: 
 			pass
 		3:
-			go_to_step("EXPLAIN_REANIMATOR")
+			pass
+			#go_to_step("EXPLAIN_REANIMATOR")
 			
 #endregion
 
@@ -347,3 +348,18 @@ func remove_empty_blocker_demon(grid_pos:Vector2) -> void:
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 11)
 #endregion
+
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
+	_start_explain_reanimator()
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Reanimator":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+			
+			
+			
+			
+			
+			##

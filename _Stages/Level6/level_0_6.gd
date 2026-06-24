@@ -70,10 +70,10 @@ func _setup_tutorial() -> void:
 			"name": "GAME_READY",
 			"enter": _start_game_ready,
 		},
-		{
-			"name": "EXPLAIN_AMALGAM_ZOMBIE",
-			"enter": _start_explain_amalgam_zombie,
-		},
+		#{
+			#"name": "EXPLAIN_AMALGAM_ZOMBIE",
+			#"enter": _start_explain_amalgam_zombie,
+		#},
 	])
 #endregion
 
@@ -277,8 +277,9 @@ func _on_wyrm_placed(grid_pos: Vector2) -> void:
 	go_to_step("GAME_READY")
 		
 func _on_wave_started(wave_index: int) -> void:
-	if wave_index == 0:
-		go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
+	pass
+	#if wave_index == 0:
+		#go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion
 
 
@@ -311,3 +312,17 @@ func _filter_block_deselect(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_X:
 			get_viewport().set_input_as_handled()
+
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
+	_start_explain_amalgam_zombie()
+
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Amalgam":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+			
+			
+			
+			

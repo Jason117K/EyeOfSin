@@ -11,6 +11,11 @@ var purple_dimension: Control
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 
+var amalgam_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
+
+const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
+
+
 func _ready() -> void:
 	extended_new_power_description = "TELEPORTS ZOMBIES TO OPPOSITE DIMENSION PORTAL. CONTROL THE FIELD"
 	super()
@@ -66,3 +71,18 @@ func start_game() -> void:
 
 func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
+
+
+func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
+	match new_zombie_unlocked:
+		"Amalgam":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+			
+			
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
+	_start_explain_amalgam_zombie()
+
+func _start_explain_amalgam_zombie() -> void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_AMALGAM)
+	toolTips.set_visual_tutorial_visual(amalgam_zombie_demo_scene.instantiate())
