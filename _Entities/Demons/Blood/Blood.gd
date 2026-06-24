@@ -91,6 +91,7 @@ func _on_Blood_mouse_entered() -> void:
 	#queue_free()
 
 func alt_free_blood()->void:
+	print("Alt Free Blood Called")
 	queue_free()
 
 
@@ -98,6 +99,7 @@ func free_blood() -> void:
 	if current_zombie_target != null:
 		current_zombie_target.take_damage(false,BloodDamage,false)
 		current_zombie_target.slow()
+	print("Regular Free Blood Called")
 	queue_free()
 	
 func _on_zombie_died(dead_zombie:Zombie)->void:
