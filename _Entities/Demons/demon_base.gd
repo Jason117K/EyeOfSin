@@ -506,6 +506,9 @@ func demon_selected(selected_demon : Demon) -> void:
 					break
 		if should_hide:
 			tile.hide_preview_square()
+		if get_demon_true_name() == "Crawler":
+			for k in tile.get_children():
+				print("[buffdbg2] ", tile.name, "/", k.name, " type=", k.get_class(), " visible=", (k.visible if k is CanvasItem else "n/a"), " should_hide=", should_hide)
 				
 func demon_deselected()->void:
 	if buffNodes != null:
