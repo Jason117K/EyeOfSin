@@ -141,4 +141,6 @@ uniforms.
 - ** res://_Utilities/Demons/DemonManager.gd **
 - ** res://_Utilities/Demons/DemonSelectionMenu.gd **
 - ** res://_Stages/level_template.gd **
-- ** **
+- ** res://_Entities/SynAbility/syn_ability.gd **
+- ** res://_Entities/SynAbility/syn_ability.gd **
+- ** res://_Entities/SwapAbilities/swap_ability.gd **
