@@ -69,6 +69,7 @@ func _ready() -> void:
 func _on_Blood_mouse_entered() -> void:
 	#var demon_manager = get_parent().get_parent().get_node("DemonManager")
 	#print("Demon Manager is ", demon_manager)
+	auto_pickup_timer.stop()
 	if demon_manager:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()
@@ -94,7 +95,7 @@ func _on_Blood_mouse_entered() -> void:
 	animation_player.play("pickup")
 	#queue_free()
 
-func alt_free_blood()->void:
+func alt_free_blood(_anim_name := "")->void:
 	print("Alt Free Blood Called")
 	queue_free()
 
