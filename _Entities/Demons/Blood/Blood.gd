@@ -31,9 +31,10 @@ var decrease_blood_val := true
 var highest_health :float = -1
 var current_target_health :float = 1
 var counter :float = 0
+var _spawn_tick_msec: int = 0
 
 func _ready() -> void:
-	
+	_spawn_tick_msec = Time.get_ticks_msec()
 	animation_player.animation_finished.connect(alt_free_blood)
 	input_pickable = true
 	aoe.set_collision_mask_value(self.collision_mask,true)
@@ -221,9 +222,9 @@ func clear_heal_aoe() -> void:
 
 func _on_auto_pick_up_timer_timeout() -> void:
 	print("Origin Occulum is ", origin_occulum)
-	print("Auto Wait Time When Gen Was ", auto_pickup_timer.wait_time)
-	print(self," time at pickup is ", counter)
-	
+	var elapsed_sec := (Time.get_ticks_msec() - _spawn_tick_msec) / 1000.0
+	var dim := "Green" if is_in_group("Green") else "Purple"
+	print("[BLOOD AUTOPICKUP] dim=", dim, " configured_wait=", auto_pickup_timer.wait_time, "s  actual_elapsed=", elapsed_sec, "s  value_before_halving=", BloodValue, " counter=", counter)
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
 		BloodValue = BloodValue / 2.0
