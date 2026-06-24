@@ -17,6 +17,7 @@ var spawnAnimDone := false
 @onready var current_icon :Texture2D = sprite_frames.get_frame_texture(currentAnim, 0)
 var anim_spawn_speed_mult := 1
 var default_anim_speed_scale := 1
+var is_ulting := false 
 
 func _ready() -> void:
 	#make_buff_glow()
@@ -56,7 +57,10 @@ func _on_animation_finished() -> void:
 		visible = false
 		spawn_done()
 	else:
-		animation = currentAnim
+		if is_ulting:
+			animation = currentAttackAnim
+		else:
+			animation = currentAnim
 		play()
 		
 		

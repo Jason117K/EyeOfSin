@@ -32,7 +32,7 @@ var is_demo_blood_spawn := false
 var num_blood_plays := 0
 var max_num_blood_plays := 3
 var demo_fast_wait_time := 3.0
-var cost_flat_modifier := 0 
+var cost_first_discount := 15 
 
 # --- Component References ---
 @onready var bloodTimer := $BloodTimer

@@ -4,6 +4,7 @@ signal frame_changed_signal(animation_name: String, frame_index: int)
 
 var true_once:= false
 
+
 func _ready() -> void:
 	super()
 	frame_changed.connect(_on_AnimatedSprite_frame_changed)

@@ -114,7 +114,7 @@ func shoot_projectile() -> void:
 			#print("SHOOTING HERE")
 			projectile = projectile_scene.instantiate()
 			projectile.global_position = parent_demon.position + projectile_spawn_offest 
-			projectile.damage = damage
+			
 			apply_buffs_to_projectile(projectile)
 			if get_parent().is_in_group("Green"):
 				projectile.add_to_group("Green")
@@ -126,7 +126,7 @@ func shoot_projectile() -> void:
 		#print("NAH SHOOTING HERE")
 		for shoot_pos:Node in shoot_positions:
 			projectile = projectile_scene.instantiate()
-			projectile.damage = damage
+			
 			apply_buffs_to_projectile(projectile)
 			if get_parent().is_in_group("Green"):
 				projectile.add_to_group("Green")

@@ -1227,6 +1227,7 @@ spiderling_wait_time = 4
 spinalOcculumHealth = 500.0
 shoot_interval = 1.3
 buffed_range_target_pos = Vector2(450, 0)
+ultimate_timer_wait_time = 0.1
 cost = 75.0
 health = 100.0
 maxHealth = 100.0

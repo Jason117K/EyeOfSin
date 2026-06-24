@@ -41,6 +41,7 @@ var speedComp : ZombieSpeedRefCountedComponent
 #@onready var attackComp : AttackComponent = $AttackComponent
 var attackComp : ZombieAttackRefCountedComponent
 @onready var animatedSprite : ZombieSpriteComp = $AnimatedSprite2D
+@onready var hurtbox := $HurtBoxComponent
 @onready var attack_ray := $DMGRayCast2D
 @onready var bloodHit := $BloodHit
 @onready var fire_fx := $FireFX
@@ -249,10 +250,15 @@ func _on_respawn() -> void:
 	animatedSprite.play("Walk")
 	
 func die() -> void:
+	hurtbox.disabled = true 
+	self.monitorable = false
+	self.monitoring = false
 	set_process(false)
 	if false:
 		_demo_die()
+		
 	else:
+		
 		Global.deregister_zombie(self)
 		#print(self, " dying")
 		if should_spawn_slow_field:

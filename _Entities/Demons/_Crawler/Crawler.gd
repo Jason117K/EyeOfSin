@@ -13,6 +13,12 @@ extends Demon
 @export var shoot_interval := 2.0 #Fire time is this val + anim time, currently +0.6
 @export var buffed_range_target_pos := Vector2(375.0,0)
 
+var ultimate_timer : Timer 
+@export var ultimate_timer_wait_time := 0.2
+var volleys_fired : int = 0
+var ultimate_max_volleys : int = 8
+var can_ult : bool = true 
+
 # --- Preloads ---
 var projectile_scene: PackedScene = preload("res://_Entities/Demons/_Crawler/DemonProjectile.tscn")
 var spiderling_scene: PackedScene = preload("res://_Entities/Demons/_Crawler/spiderling.tscn")
@@ -45,6 +51,13 @@ func _ready() -> void:
 	all_synergies = Global.all_crawler_synergies
 	special_description_file = get_special_description_file(all_synergies,"Base")
 
+	ultimate_timer = Timer.new()
+	ultimate_timer.autostart = false 
+	ultimate_timer.one_shot = true
+	ultimate_timer.wait_time = ultimate_timer_wait_time
+	ultimate_timer.timeout.connect(fire_volley)
+	add_child(ultimate_timer)
+	
 	
 	if "Level0-1" in Global.game_controller.get_active_dimension().name:
 		$PreviewNodes/BloodTileFront.modulate = Color(1,1,1,0)
@@ -177,12 +190,47 @@ func _on_mouse_entered() -> void:
 	super()
 	Global.game_controller.get_active_dimension().demon_hover()
 
+
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
 
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if can_ult:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if spawn_done:
+				trigger_ultimate()
+	else:
+		super(_viewport,event,_shape_idx)
+		#add_ellipse(event.position)
 	
-
-
+func trigger_ultimate()->void:
+	print("Trigger Ult")
+	if ultimate_timer.is_stopped():
+		ultimate_timer.start()
+		can_ult = false 
+		animSpriteComp.animation = animSpriteComp.currentAttackAnim
+		animSpriteComp.speed_scale = 8 
+		animSpriteComp.is_ulting = true 
+	
+func fire_volley()->void:
+	if volleys_fired < ultimate_max_volleys:
+		print("Fire Volley")
+		projectile_shoot_component.add_projectile(Vector2(0, 8))
+		projectile_shoot_component.add_projectile(Vector2(8, 0))
+		projectile_shoot_component.add_projectile(Vector2(0, -8))
+		volleys_fired = volleys_fired + 1 
+		ultimate_timer.start()
+	else:
+		volleys_fired = 0
+		ultimate_timer.stop()
+		animSpriteComp.speed_scale = 1
+		animSpriteComp.is_ulting = false
+		#animSpriteComp.animation
+		can_ult = true 
+	
+	
+	
+	
 	
 	
 func _increase_range()->void:

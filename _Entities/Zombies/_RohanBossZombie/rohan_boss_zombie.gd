@@ -67,7 +67,7 @@ var _consecutive_attacks: int = 0
 @onready var piercing_zone : Area2D = $PierceZone
 @onready var phase2_sprite: AnimatedSprite2D = $Phase2AnimSprite
 @onready var phase2_ray := $Phase_2_DMGRayCast2D
-@onready var hurtbox := $HurtBoxComponent
+#@onready var hurtbox := $HurtBoxComponent
 @onready var phase2_hurtbox := $Phase_2_HurtBoxComponent
 
 

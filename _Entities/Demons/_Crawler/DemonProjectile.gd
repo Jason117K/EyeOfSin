@@ -129,6 +129,8 @@ func on_hit(area: Area2D) -> void:
 			#return
 		#print("Area Hit Is ", area)
 		var healthComp :ZombieHealthRefCountedComponent = area.getHealthComponent()
+		if healthComp.health < 1:
+			return 
 		if is_slowing:
 			area.slow()
 		if spinalOcculumBuff:

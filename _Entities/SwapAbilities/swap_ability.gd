@@ -45,9 +45,10 @@ func _input(event:InputEvent) -> void:
 func lock_unlock_swap_ability()->void:
 	if is_locked:
 		is_locked = false
+		print("Swap Is Not Locked")
 	else:
 		is_locked = true
-	
+		print("Swap Is Locked")
 		
 func get_panel_container()->PanelContainer:
 	return cooldown_controller.get_panel_container()

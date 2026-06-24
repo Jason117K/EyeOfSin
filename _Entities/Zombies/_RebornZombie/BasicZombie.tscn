@@ -504,7 +504,6 @@ frame = 6
 frame_progress = 1.0
 
 [node name="HurtBoxComponent" type="CollisionShape2D" parent="." unique_id=1516634289]
-visible = false
 position = Vector2(0, 1.83333)
 shape = SubResource("1")
 

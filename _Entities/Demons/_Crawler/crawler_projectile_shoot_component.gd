@@ -57,6 +57,9 @@ func shoot_projectile() -> void:
 		add_projectile(Vector2(0, -32))
 
 
+
+
+
 func second_shoot_projectile() -> void:
 	print("Shoot 2nd Proj From Crawler ")
 	add_projectile(Vector2(30, 32))
@@ -67,6 +70,7 @@ func add_projectile(offset: Vector2) -> void:
 	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	projectile = projectile_scene.instantiate()
 	projectile.position = parent_demon.position + offset  # Adjust starting position
+	apply_buffs_to_projectile(projectile)
 	if get_parent().is_in_group("Green"):
 		projectile.add_to_group("Green")
 	else:
@@ -74,6 +78,7 @@ func add_projectile(offset: Vector2) -> void:
 	parent_demon.get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
 func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
+	projectile.damage = damage
 	if spinalOcculumBuffed:
 		print("Buff Projectile With Spine")
 		projectile_to_buff.spinalOcculumBuff = true 
