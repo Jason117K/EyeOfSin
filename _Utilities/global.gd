@@ -214,6 +214,8 @@ var is_hive_maw := false
 var is_wyrm_maw := false 
 var is_occulum_maw := false 
 
+var ultimate_is_ready := false 
+
 var all_demon_synergies : Array = [crawler_occulum_synergy,spinal_occulum_occulum_synergy, wyrm_occulum_synergy, 
 	hive_occulum_synergy,maw_occulum_synergy,crawler_wyrm_synergy,occulum_wyrm_synergy,spinal_occulum_wyrm_synergy,
 	hive_wyrm_synergy, maw_wyrm_synergy, crawler_spinal_occulum_synergy , occulum_spinal_occulum_synergy, 
@@ -252,6 +254,8 @@ var should_navigate_demon_codex : bool
 
 var skull_tile_highlight_area : Control 
 
+var ultimate_charge_container: Control 
+
 signal swap_scenes_signal
 signal demon_was_removed
 
@@ -262,6 +266,19 @@ func _process(delta: float) -> void:
 	for zombie in zombies:
 		if zombie != null:
 			zombie.tick(delta)
+
+func add_mana(mana_to_add:float)->void:
+	ultimate_charge_container.add_mana(mana_to_add)
+
+func disable_ultimate()->void:
+	ultimate_charge_container.modulate = Color(1,1,1,0)
+
+func enable_ultimate()->void:
+	ultimate_charge_container.modulate = Color(1,1,1,1)
+	
+func un_ready_ultimate()->void:
+	ultimate_is_ready = false
+	ultimate_charge_container.un_ready_ultimate()
 
 func reset_all_variables()->void:
 	gameIsStarted = false

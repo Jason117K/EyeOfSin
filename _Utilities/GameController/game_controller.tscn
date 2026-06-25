@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://coub7ytyumf5a" path="res://_UI/style_screen.tscn" id="2_roe6v"]
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://_Common/LevelSwitching/LevelSwitcher.tscn" id="3_3rtt1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
+[ext_resource type="PackedScene" uid="uid://txqpdqcrcf5y" path="res://_UI/ultimate_charge_container.tscn" id="8_52igo"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
 
@@ -72,6 +73,7 @@ color = Color(1, 0, 0, 1)
 [node name="PipCamera" type="Camera2D" parent="PipViewport" unique_id=1390905299]
 
 [node name="PipRoot" type="Control" parent="." unique_id=780481794]
+visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 15
@@ -111,3 +113,6 @@ mouse_filter = 2
 texture = SubResource("ViewportTexture_mahd0")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="UltimateChargeContainer" parent="." unique_id=2025927789 instance=ExtResource("8_52igo")]
+z_index = 2

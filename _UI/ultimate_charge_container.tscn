@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://txqpdqcrcf5y"]
+
+[ext_resource type="Script" uid="uid://bynr364cj2ty4" path="res://_UI/ultimate_charge_container.gd" id="1_c1dwm"]
+[ext_resource type="Texture2D" uid="uid://bsigl1vxbr4rm" path="res://_UI/UltCharge_Empty.png" id="2_twcj5"]
+[ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="3_gconv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7yadw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppvoc"]
+bg_color = Color(0.76, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="UltimateChargeContainer" type="Control" unique_id=2025927789]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_c1dwm")
+
+[node name="UltimateVboxContainer" type="VBoxContainer" parent="." unique_id=1773851283]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -55.0
+offset_right = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AllChargesPanelContainer" type="PanelContainer" parent="UltimateVboxContainer" unique_id=1997225180]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7yadw")
+
+[node name="AllChargeHboxContainer" type="HBoxContainer" parent="UltimateVboxContainer/AllChargesPanelContainer" unique_id=567855120]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Charge1" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=1227248482]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("2_twcj5")
+stretch_mode = 5
+
+[node name="Charge2" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=735776952]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("2_twcj5")
+stretch_mode = 5
+
+[node name="Charge3" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=1073013741]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("2_twcj5")
+stretch_mode = 5
+
+[node name="Charge4" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=1881936327]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("2_twcj5")
+stretch_mode = 5
+
+[node name="UltimateChargeProgressBar" type="ProgressBar" parent="UltimateVboxContainer" unique_id=1620240606]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("3_gconv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/fill = SubResource("StyleBoxFlat_ppvoc")
+value = 100.0
+show_percentage = false

@@ -12,6 +12,7 @@ extends Demon
 @export var blood_worth_to_add := 10.0
 @export var shoot_interval := 2.0 #Fire time is this val + anim time, currently +0.6
 @export var buffed_range_target_pos := Vector2(375.0,0)
+@export var mana_add_on_shot := 100 
 
 var ultimate_timer : Timer 
 @export var ultimate_timer_wait_time := 0.2
@@ -195,9 +196,7 @@ func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	super(_viewport,event,_shape_idx)
-	return
-	if can_ult:
+	if Global.ultimate_is_ready:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if spawn_done:
 				trigger_ultimate()
@@ -206,7 +205,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			#add_ellipse(event.position)
 	
 func trigger_ultimate()->void:
-	print("Trigger Ult")
+	print("Trigger Crawler Ult")
+	Global.un_ready_ultimate()
 	if ultimate_timer.is_stopped():
 		ultimate_timer.start()
 		can_ult = false 
@@ -229,7 +229,6 @@ func fire_volley()->void:
 		animSpriteComp.is_ulting = false
 		#animSpriteComp.animation
 		can_ult = true 
-	
 	
 	
 	

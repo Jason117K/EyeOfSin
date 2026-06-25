@@ -14,6 +14,8 @@ extends Demon
 
 @export var spike_damage := 20
 
+@export var mana_add_on_block_damage := 100 
+
 # --- Preloads ---
 var bloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 
@@ -124,7 +126,7 @@ func unlock_new_buff(demonName:String)->void:
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if can_ult:
+	if Global.ultimate_is_ready:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if spawn_done:
 				trigger_ultimate()
@@ -134,6 +136,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	
 func trigger_ultimate()->void:
 	print("Trigger Spine Ult")
+	Global.un_ready_ultimate()
 	for demon in rib_buff_area.get_overlapping_areas():
 		if demon.is_in_group("Demons"):
 			demon.rib_shield()

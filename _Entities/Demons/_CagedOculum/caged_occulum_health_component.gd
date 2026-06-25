@@ -28,6 +28,7 @@ func take_damage(damage: float) -> void:
 	super(damage)
 	if canGenBlood:
 		generate_blood()
+	Global.add_mana(demon.mana_add_on_block_damage)
 
 
 #Move to Generate Blood Component That Gets Added

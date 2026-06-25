@@ -35,7 +35,7 @@ extends Demon
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
 @onready var og_target_position :Vector2 = attack_ray.target_position
-
+@export var mana_add_on_laser := 100
 
 # --- State ---
 var isCrawlerBuffed := false

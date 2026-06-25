@@ -49,6 +49,7 @@ func _on_shoot_timer_timeout() -> void:
 
 func shoot_projectile() -> void:
 	super()
+	Global.add_mana(parent_demon.mana_add_on_shot)
 	#if hiveBuffed:
 		#second_shot_timer.start()
 	if hiveBuffed:

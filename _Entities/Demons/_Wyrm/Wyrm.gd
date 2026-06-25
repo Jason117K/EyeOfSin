@@ -72,6 +72,9 @@ var initial_sprite_scale: Vector2
 var initial_sprite_position: Vector2
 var bufferName: String
 
+@export var mana_add_on_laser := 100
+
+
 signal wyrm_buff_unlocked(buff_to_unlock:String)
 
 # --- Lifecycle ---
@@ -207,7 +210,7 @@ func _increase_range()->void:
 	
 						
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if can_ult:
+	if Global.ultimate_is_ready:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if spawn_done:
 				trigger_ultimate()
@@ -216,6 +219,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			#add_ellipse(event.position)
 	
 func trigger_ultimate()->void:
+	print("Trigger Wyrm Ult")
+	Global.un_ready_ultimate()
 	laserShootComp1.modulate = Color(1,1,1,0)
 	laserShootComp2.modulate = Color(1,1,1,0)
 	beam_ultimate.show()

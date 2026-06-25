@@ -12,6 +12,7 @@ extends Demon
 @export var spinal_occulum_heal_over_time_amount := 5
 @export var maw_health := 500
 @export var ultimate_blood_value := 200
+@export var mana_add_on_generate_blood := 100 
 
 # --- Preloads ---
 var BloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -212,7 +213,7 @@ func generate_blood() -> Node2D:
 	if Global.gameIsStarted == false:
 		#print("Game Not Started Cannot Generate")
 		return
-
+	Global.add_mana(mana_add_on_generate_blood)
 	if mawBuff:
 		can_eat_zombie = true
 
@@ -345,7 +346,7 @@ func undo_baal_buff()->void:
 	super()
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if can_ult:
+	if Global.ultimate_is_ready:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if spawn_done:
 				trigger_ultimate()
@@ -354,7 +355,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func trigger_ultimate()->void:
-	print("Trigger Ult")
+	print("Trigger Occulum Ult")
+	Global.un_ready_ultimate()
 	ultimate_buffed = true 
 	generate_blood()
 	

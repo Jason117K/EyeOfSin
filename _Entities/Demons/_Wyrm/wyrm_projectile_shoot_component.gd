@@ -63,6 +63,7 @@ func fire_laser() -> void:
 		#print("Should Fire Laser Can Attack Queen")
 		if parent_demon.spawn_done:
 			#print("Will Now Fire Laser Queen")
+			Global.add_mana(parent_demon.mana_add_on_laser)
 			animSpriteComp.animation = animSpriteComp.currentAttackAnim
 			animSpriteComp.play()
 
