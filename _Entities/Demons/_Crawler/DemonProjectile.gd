@@ -8,7 +8,7 @@ extends Area2D
 @export var speed := 300  # Speed of the projectile
 @export var damage :float= 20 #2   # Damage dealt to zombies
 @export var lightning_damage := 10 #2   # Damage dealt to zombies
-@export var blood_worth_to_add := 5.0
+var blood_worth_to_add := 0
 @export var bleed_damage := 1
 var max_distance_can_travel :float= 0
 
@@ -140,6 +140,7 @@ func on_hit(area: Area2D) -> void:
 		if spinalOcculumBuff:
 			area.knockBack()
 		if give_blood_on_death:
+			print("Adding Blood Worth of ", blood_worth_to_add)
 			healthComp.add_blood_worth(blood_worth_to_add)
 		if spawn_drone_on_zombie_death:
 			area.spawn_drone_on_zombie_death()

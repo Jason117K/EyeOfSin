@@ -85,6 +85,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		
 #region Lifecycle
 func _ready() -> void:
+	Global.disable_ultimate()
 	level_title = "0-6:BONDS"
 	extended_new_power_description = "TELEPORTS ZOMBIES TO OPPOSITE DIMENSION PORTAL. CONTROL THE FIELD"
 	super()

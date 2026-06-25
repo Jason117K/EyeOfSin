@@ -29,7 +29,12 @@ func die() -> void:
 		deathCount = deathCount+1
 		transform()
 
-
+func true_death()->void:
+	deathCount = 2
+	die()
+	
+	
+	
 # Switches visible sprite to transform zombie
 func transform() -> void:
 	anim_sprite_comp.sprite_frames = Global.get_severed_spriteframes()

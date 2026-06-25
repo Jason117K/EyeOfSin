@@ -56,7 +56,8 @@ func _process(_delta: float) -> void:
 		portal_progress_bar.hide()
 		return
 	elif !cooldown_timer.is_stopped():
-		portal_progress_bar.show()
+		if portal_progress_bar != null:
+			portal_progress_bar.show()
 		percent_left = (cooldown_timer.time_left / cooldown_timer.wait_time) * 100
 		if portal_progress_bar != null:
 			portal_progress_bar.value = percent_left

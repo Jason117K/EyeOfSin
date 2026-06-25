@@ -7,9 +7,9 @@ extends Demon
 @export var wyrmBloodWaitTime := 50.0
 @export var hiveBloodWaitTime := 17.0
 @export var crawlerBloodWaitTime := 23.0
-@export var heal_interval_wait_time := 2
+@export var heal_interval_wait_time := 10
 @export var hive_burst_heal_amount := 50
-@export var spinal_occulum_heal_over_time_amount := 5
+@export var spinal_occulum_heal_over_time_amount := 25
 @export var maw_health := 500
 @export var ultimate_blood_value := 200
 @export var mana_add_on_generate_blood := 100 
@@ -269,8 +269,8 @@ func _on_heal_timer_timeout() -> void:
 		if num_healing_zone_sprite_plays == max_num_healing_zone_sprite_plays:
 			healing_zone_sprite.play()
 			num_healing_zone_sprite_plays = 0
-		for demon:Demon in demons_to_heal:
-			if demon != null:
+		for demon in demons_to_heal:
+			if demon != null && is_instance_valid(demon):
 				if demon != self:
 					demon.increase_health(spinal_occulum_heal_over_time_amount)
 

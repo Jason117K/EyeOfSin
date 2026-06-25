@@ -89,6 +89,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	Global.disable_ultimate()
 	level_title = "0-4:REVELATIONS"
 	extended_new_power_description = "SUMMONS LIGHTNING ACROSS THE BATTLEFIELD. USE TO TURN THE TIDE"
 	super()

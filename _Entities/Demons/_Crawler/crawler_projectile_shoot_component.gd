@@ -1,6 +1,6 @@
 extends ProjectileShootComponent
 
-var blood_worth_to_add := 10.0
+var blood_worth_to_add := 0
 var shoot_interval: float
 var shoot_timer: Timer
 @onready var attack_ray_1 := $"../DMG_RayCast2D"

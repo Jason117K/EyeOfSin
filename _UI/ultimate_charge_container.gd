@@ -14,12 +14,16 @@ extends Control
 var current_mana := 0 
 var charges := 0 
 var max_charges := 4
+var is_enabled := true 
+
+signal ultimate_bar_clicked
 
 
 @onready var all_charges :Array[TextureButton]= [charge_1,charge_2,charge_3,charge_4]
 @onready var all_charges_backwards :Array[TextureButton]= [charge_4,charge_3,charge_2,charge_1]
 
 func _ready() -> void:
+	disable_ult()
 	Global.ultimate_charge_container = self 
 	for charge in all_charges:
 		charge.pressed.connect(ready_ultimate)
@@ -42,6 +46,7 @@ func increase_ultimate_charges()->void:
 			return 
 		
 func ready_ultimate()->void:
+	ultimate_bar_clicked.emit()
 	if charges > 0:
 		charges = charges - 1
 		Global.ultimate_is_ready = true 
@@ -57,10 +62,16 @@ func un_ready_ultimate()->void:
 func set_progress_bar_value(new_progress_bar_value : float)->void:
 	charge_progress_bar.value = (new_progress_bar_value / mana_per_charge) * 100 
 	
+func disable_ult()->void:
+	is_enabled = false 
+	modulate = Color(1,1,1,0)
+
+func enable_ult()->void:
+	is_enabled = true 
+	modulate = Color(1,1,1,1)
+	
 		
-		
-		
-		
+
 		
 ##
 	

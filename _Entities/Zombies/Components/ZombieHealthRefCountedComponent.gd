@@ -37,6 +37,7 @@ func _init(new_parent_zombie : Zombie) -> void:
 	should_health_regen = new_parent_zombie.should_health_regen
 	time_between_health_regen = new_parent_zombie.time_between_health_regen
 	bloodWorth = new_parent_zombie.bloodWorth
+	print("Blood Worth on Born is ", bloodWorth)
 	time_between_bleed = new_parent_zombie.time_between_bleed
 	bleed_tick_damage = new_parent_zombie.bleed_tick_damage
 	has_armor = new_parent_zombie.has_armor
@@ -52,10 +53,10 @@ func receive_buff() -> void:
 
 func add_blood_worth(blood_worth_to_add: float) -> void:
 	if !blood_worth_added:
-		#print("New Blood Worth Added 1 ", blood_worth_to_add)
+		print("New Blood Worth Added is ", blood_worth_to_add)
 		bloodWorth = bloodWorth + blood_worth_to_add
 		blood_worth_added = true
-		#print(bloodWorth , " N ew Blood Worth Added 1 ", blood_worth_to_add)
+		print(bloodWorth , " New Blood Worth Is Now :  ", bloodWorth)
 
 
 func getInjured() -> bool:
@@ -89,6 +90,7 @@ func take_damage(is_link_damage : bool = false, damage: float = 1.0, _piercing: 
 		var demon_manager := currentLevel.get_node("DemonManager")
 		if demon_manager:
 			if bloodWorth > 0:
+				print("Add Blood Worth ", bloodWorth)
 				demon_manager.add_blood(bloodWorth)
 		parent_zombie.die()
 

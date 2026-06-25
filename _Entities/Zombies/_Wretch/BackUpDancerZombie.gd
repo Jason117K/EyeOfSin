@@ -3,10 +3,13 @@ extends Zombie
 
 # Handles Any BackUpDancerZombie Specific Logic
 
+
+
 func _ready() -> void:
 	super()
 	attackComp = WretchAttackRefCounted.new(self)
 	Global.unlock_zombie("Wretch")
+	is_flying = true 
 
 func get_zombie_name() -> String:
 	return " WRETCH "

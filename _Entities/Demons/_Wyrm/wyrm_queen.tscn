@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="17_q2cmp"]
 [ext_resource type="PackedScene" uid="uid://dhs0pt2nvnv00" path="res://_Entities/SynAbility/syn_shield_ability.tscn" id="18_y2jld"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="19_bto4q"]
+[ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="21_q2cmp"]
 
 [sub_resource type="Curve2D" id="Curve2D_516r2"]
 resource_local_to_scene = true
@@ -406,7 +407,7 @@ animations = [{
 script = ExtResource("1_ydpmf")
 extension_speed = 3500.0
 max_length = 2500.0
-laser_damage = 40.0
+laser_damage = 50.0
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=268165152 node_paths=PackedStringArray("polygon", "line")]
 visible = false
@@ -684,6 +685,10 @@ script = null
 
 [node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1440103484]
 sprite_frames = SubResource("SpriteFrames_ybbfu")
+
+[node name="ProtectiveRib" type="Sprite2D" parent="." unique_id=439216029]
+position = Vector2(6, -3)
+texture = ExtResource("21_q2cmp")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

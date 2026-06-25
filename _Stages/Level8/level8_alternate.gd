@@ -22,34 +22,34 @@ func _ready() -> void:
 
 func _configure_waves() -> void:
 	pass
-	zombie_spawner_1.set_waves_from_dicts([{},
+	zombie_spawner_3.set_waves_from_dicts([{},
+											{}, 
+											{}, 
+											{ "Amalgam": 2}])
+	zombie_spawner_4.set_waves_from_dicts([{"Severed":2},
+											{"Amalgam":1}, 
+											{"Reanimator": 1, "Severed": 4,"Sundered":1}, 
+											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
+	zombie_spawner_5.set_waves_from_dicts([{},
 											{},
 											{"Reborn": 10, "Unhallower":2}, 
-											{"Severed": 3, "Unhallower": 1,"Amalgam":1 }])
+											{"Severed": 3, "Unhallower": 1,"Amalgam":1,"Sundered":2}])
+	zombie_spawner_6.set_waves_from_dicts([{"Reborn": 4}, 
+											{"Unhallower": 1},
+											{"Unhallower": 1, "Severed": 6}, 
+											{"Unhallower": 2, "Reanimator":1,"Sundered":2}]) 
+	zombie_spawner_7.set_waves_from_dicts([{},
+											{"Amalgam":1},
+											{"Reanimator": 1, "Severed": 4}, 
+											{"Severed": 4, "Unhallower": 1,"Amalgam":1 }])
+	zombie_spawner_1.set_waves_from_dicts([{},
+											{}, 
+											{"Reanimator": 1, "Severed": 4}, 
+											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
 	zombie_spawner_2.set_waves_from_dicts([{},
 											{}, 
-											{"Severed":3}, 
-											{"Amalgam": 2}])
-	zombie_spawner_3.set_waves_from_dicts([{"Reanimator":1, "Reborn":10},
-											{"Reanimator" : 1, "Reborn":9,"Severed":3}, 
-											{"Reanimator": 2, "Severed": 7}, 
-											{"Reanimator": 2, "Unhallower": 1, "Severed" : 2}])
-	zombie_spawner_4.set_waves_from_dicts([{"Unhallower": 1}, 
-											{"Unhallower": 1, "Reborn": 6},
-											{"Unhallower": 1, "Severed": 5}, 
-											{"Unhallower": 2, "Reanimator":1}]) 
-	zombie_spawner_5.set_waves_from_dicts([{"Reanimator":1, "Reborn":10},
-											{"Reanimator" : 1, "Reborn":9,"Severed":3}, 
-											{"Reanimator": 2, "Severed": 7}, 
-											{"Reanimator": 2, "Unhallower": 1, "Severed" : 2}])
-	zombie_spawner_6.set_waves_from_dicts([{},
 											{}, 
-											{"Severed":3}, 
 											{"Amalgam": 2}])
-	zombie_spawner_7.set_waves_from_dicts([{},
-											{},
-											{"Reborn": 10, "Unhallower":2}, 
-											{"Severed": 3, "Unhallower": 1,"Amalgam":1 }])
 
 func getIsGreenDimension() -> bool:
 	return isGreenDimension
@@ -70,6 +70,6 @@ func show_guide() -> void:
 
 func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 	match new_zombie_unlocked:
-		"Sundered":
+		"Buffer":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)

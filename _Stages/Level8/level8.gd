@@ -23,13 +23,13 @@ const TUTORIAL_EXPLAIN_SUNDERED = "res://_Assets/Text/TextFiles/ZombieDescriptio
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
-const TUTORIAL_EXPLAIN_SKULL_TILE := "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt"
-const TUTORIAL_EXPLAIN_PORTALS := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt"
-const TUTORIAL_EXPLAIN_PORTALS_2 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_2.txt"
-const TUTORIAL_EXPLAIN_PORTALS_3 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_3.txt"
-const TUTORIAL_PLACE_PORTAL := "res://_Assets/Text/TextFiles/Tutorial_Place_Portal.txt"
-const TUTORIAL_PLACE_PORTAL_2 := "res://_Assets/Text/TextFiles/Tutorial_Place_Portal_2.txt"
+const TUTORIAL_EXPLAIN_ULTIMATES := "res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates.txt"
+const TUTORIAL_EXPLAIN_ULTIMATES_2 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_2.txt"
+const TUTORIAL_EXPLAIN_ULTIMATES_3 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_3.txt"
+const TUTORIAL_EXPLAIN_ULTIMATES_4 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_4.txt"
+const TUTORIAL_EXPLAIN_ULTIMATES_5 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_5.txt"
 
+var ultimate_demo := load("res://_UI/GameDemonstrations/ultimate_ability_demo.tscn")
 
 var gameStarted := false
 var portal_demo := load("res://_UI/GameDemonstrations/portal_ability_demo.tscn")
@@ -38,28 +38,24 @@ var portal_demo := load("res://_UI/GameDemonstrations/portal_ability_demo.tscn")
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
 		{
-			"name": "EXPLAIN_SKULL_TILES",
-			"enter": _start_explain_skull_tiles,
+			"name": "START_EXPLAIN_ULTIMATES",
+			"enter": _start_explain_ultimates,
 		},
 		{
-			"name": "EXPLAIN_PORTAL",
-			"enter": _start_explain_portals,
+			"name": "EXPLAIN_ULTIMATES_2",
+			"enter": _start_explain_ultimates_2,
 		},
 		{
-			"name": "EXPLAIN_PORTAL_2",
-			"enter": _start_explain_portals_2,
+			"name": "EXPLAIN_ULTIMATES_3",
+			"enter": _start_explain_ultimates_3,
 		},
 		{
-			"name": "EXPLAIN_PORTAL_3",
-			"enter": _start_explain_portals_3,
+			"name": "EXPLAIN_ULTIMATES_4",
+			"enter": _start_explain_ultimates_4,
 		},
 		{
-			"name": "PLACE_PORTAL_1",
-			"enter": _start_place_portals,
-		},
-		{
-			"name": "PLACE_PORTAL_2",
-			"enter": _start_place_portals_2,
+			"name": "EXPLAIN_ULTIMATES_5",
+			"enter": _start_explain_ultimates_5,
 		},
 		{
 			"name": "GAME_READY",
@@ -76,7 +72,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		
 #region Lifecycle
 func _ready() -> void:
-	level_title = "0-7:ODE TO POWER"
+	Global.enable_ultimate()
+	level_title = "0-8:ODE TO POWER"
 	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
@@ -120,31 +117,31 @@ func _configure_waves() -> void:
 	#return
 	zombie_spawner_1.set_waves_from_dicts([{},
 											{}, 
-											{"Severed":3}, 
-											{ "Amalgam": 2}])
-	zombie_spawner_2.set_waves_from_dicts([{"Reanimator":1, "Reborn":10},
-											{"Reanimator" : 1, "Reborn":9, "Severed":3}, 
-											{"Reanimator": 2, "Severed": 7}, 
-											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
-	zombie_spawner_3.set_waves_from_dicts([{"Rohan":1},
-											{},
-											{"Reborn": 10, "Unhallower":2}, 
-											{"Severed": 3, "Unhallower": 1,"Amalgam":1 }])
-	zombie_spawner_4.set_waves_from_dicts([{"Unhallower": 1}, 
-											{"Unhallower": 1, "Reborn": 6},
-											{"Unhallower": 1, "Severed": 6}, 
-											{"Unhallower": 2, "Reanimator":1}]) 
-	zombie_spawner_5.set_waves_from_dicts([{},
-											{},
-											{"Reborn": 10, "Unhallower":2}, 
-											{"Severed": 4, "Unhallower": 1,"Amalgam":1 }])
-	zombie_spawner_6.set_waves_from_dicts([{"Reanimator":1, "Reborn":10},
-											{"Reanimator" : 1, "Reborn":9,"Severed":3}, 
-											{"Reanimator": 2, "Severed": 7}, 
-											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
-	zombie_spawner_7.set_waves_from_dicts([{"Buffer":1},
 											{}, 
-											{"Severed":3}, 
+											{ "Amalgam": 2}])
+	zombie_spawner_2.set_waves_from_dicts([{"Severed":2},
+											{"Amalgam":1}, 
+											{"Reanimator": 1, "Severed": 4,"Sundered":1}, 
+											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
+	zombie_spawner_3.set_waves_from_dicts([{},
+											{},
+											{"Reborn": 10, "Unhallower":2}, 
+											{"Severed": 3, "Unhallower": 1,"Amalgam":1,"Sundered":2}])
+	zombie_spawner_4.set_waves_from_dicts([{"Reborn": 4}, 
+											{"Unhallower": 1},
+											{"Unhallower": 1, "Severed": 6}, 
+											{"Unhallower": 2, "Reanimator":1,"Sundered":2}]) 
+	zombie_spawner_5.set_waves_from_dicts([{},
+											{"Amalgam":1},
+											{"Reanimator": 1, "Severed": 4,"Sundered":1}, 
+											{"Severed": 4, "Unhallower": 1,"Amalgam":1,"Sundered":2 }])
+	zombie_spawner_6.set_waves_from_dicts([{},
+											{}, 
+											{"Reanimator": 1, "Severed": 4}, 
+											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
+	zombie_spawner_7.set_waves_from_dicts([{},
+											{}, 
+											{}, 
 											{"Amalgam": 2}])
 
 
@@ -154,7 +151,7 @@ func finish_ready() -> void:
 		_start_free_play()
 		return
 	_setup_tutorial()
-	go_to_step("EXPLAIN_SKULL_TILES")
+	go_to_step("START_EXPLAIN_ULTIMATES")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
@@ -179,58 +176,47 @@ func getIsPurpleDimension()->void:
 
 #region Step Entry Functions
 
-func _start_explain_skull_tiles()->void:
-	Global.hide_swap_and_pip()
-	toolTips.sideways_config()
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SKULL_TILE,true,Vector2(16,-8))
-	await get_tree().physics_frame
-	Global.hideDemonSelectionMenu()
-	Global.add_pulsing_button_highlight(Global.skull_tile_highlight_area)
-	#set_auto_advance_toolTip(5)
-	
-func _start_explain_portals()->void:
-	Global.remove_pulsing_button_highlight(Global.skull_tile_highlight_area)
-	Global.unHideDemonSelectionMenu()
-	toolTips.basic_config()
-	await get_tree().physics_frame
-	demonSelectionMenu.add_pulsing_button_highlight(demonSelectionMenu.PortalButton)
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_PORTALS,true,"NEW ABILITY UNLOCKED: [color=green]POR[/color][color=purple]TALS[/color]")
-	toolTips.set_visual_demon_tutorial_visual(portal_demo.instantiate(),true,Vector2(0,48))
-	
+func _start_explain_ultimates()->void:
+	Global.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES,true,"NEW ABILITY UNLOCKED:[color=red]ULTIMATES[/color]")
+	toolTips.set_visual_demon_tutorial_visual(ultimate_demo.instantiate(),true,Vector2(0,48))
+
+func _start_explain_ultimates_2()->void:
+	Global.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	Global.add_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_2,true,Vector2(0,-96))
+
+
+func _start_explain_ultimates_3()->void:
+	print("Explain Ultimates 3")
+	Global.remove_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
+	Global.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	demonSelectionMenu._on_CrawlerButton_pressed()
+	demonManager.place_demon(Vector2(304,176),false)
+	Global.ultimate_charge_container.ultimate_bar_clicked.connect(advance_tutorial)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_3,false,Vector2(0,-96))
+	Global.ultimate_charge_container.increase_ultimate_charges()
+
+
+func _start_explain_ultimates_4()->void:
+	print("Explain Ultimates 4")
+	Global.ultimate_charge_container.ultimate_bar_clicked.disconnect(advance_tutorial)
+	Global.crawler_ultimate_triggered.connect(advance_tutorial)
+	Global.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_4,false)
 	
 
-		
-		
-func _start_explain_portals_2()->void:
-	
-	
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_PORTALS_2,true)
+func _start_explain_ultimates_5()->void:
+	print("Explain Ultimates 5")
+	Global.crawler_ultimate_triggered.disconnect(advance_tutorial)
 	auto_advance = true 
-	set_auto_advance_toolTip(12)
-	
-	
-func _start_explain_portals_3()->void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_PORTALS_3,true)
-	set_auto_advance_toolTip(12)
-		
-func _start_place_portals()->void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_PORTAL,false)
-	demonManager.portal_placed.connect(_on_tooltip_hidden)
-	
-	
-func _start_place_portals_2()->void:
-	demonManager.portal_placed.disconnect(_on_tooltip_hidden)
-	
-	green_dimension = get_green_dimension()
-	green_dimension.demonManager.portal_placed.connect(_on_tooltip_hidden)
-	
-	toolTips.set_basic_tutorial_text(TUTORIAL_PLACE_PORTAL_2,false)
-	
+	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_5,false)
+	set_auto_advance_toolTip(6)
+
+
 			
 func _start_game_ready() -> void:
-	green_dimension.demonManager.portal_placed.disconnect(_on_tooltip_hidden)
 	Global.show_swap_and_pip()
-	demonSelectionMenu.remove_pulsing_button_highlight(demonSelectionMenu.PortalButton)
 	auto_advance = false
 	toolTips.hide()
 	
@@ -301,6 +287,6 @@ func show_guide() -> void:
 
 func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 	match new_zombie_unlocked:
-		"Sundered":
+		"Buffer":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)

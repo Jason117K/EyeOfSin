@@ -23,6 +23,7 @@ var _spawn_pool: Array[PackedScene] = []
 
 
 func _ready() -> void:
+	show()
 	add_to_group("ZombieSpawners")
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout)
 

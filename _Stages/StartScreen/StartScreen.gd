@@ -10,6 +10,7 @@ var level0_1 := preload("res://_Stages/Level1/Level0-1.tscn")
 var level0_1Alt := preload("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
 func _ready() -> void:
+	Global.disable_ultimate()
 
 	# Get fresh reference
 	

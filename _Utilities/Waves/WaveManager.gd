@@ -211,7 +211,10 @@ func _on_danger_zone_area_entered(area: Area2D)->void:
 		
 func _on_damage_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		area.die()
+		if area.has_method("true_death"):
+			area.true_death()
+		else:
+			area.die()
 		subtract_health()
 
 

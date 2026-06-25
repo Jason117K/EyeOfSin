@@ -63,6 +63,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	Global.disable_ultimate()
 	level_title = "0-5:RIDE THE LIGHTNING"
 	extended_new_power_description = "SHOOTS PIERCING BLOOD. SYNERGIES IMPROVE AOE DAMAGE. RIPS THROUGH HORDES"
 	super()

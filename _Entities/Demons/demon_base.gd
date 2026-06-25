@@ -121,7 +121,7 @@ func _ready() -> void:
 	# --- Phase 4: Post-spawn detection (deferred, async) ---
 	_schedule_post_spawn()
 	Global.register_demon(self)
-	
+
 	protective_rib.hide()
 	
 	erase_button.mouse_entered.connect(show_erase_button)

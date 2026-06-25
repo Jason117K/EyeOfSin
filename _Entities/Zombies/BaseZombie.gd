@@ -53,6 +53,7 @@ var attackComp : ZombieAttackRefCountedComponent
 @onready var buff_halo := $BuffHalo
 
 var is_buffed := false 
+var is_flying := false 
 #@onready var debuff_degrade_timer : Timer = $DebuffDegrade
 #@onready var reset_color_timer : Timer = $ResetThisColor
 #@onready var just_spawned_timer : Timer = $JustNowSpawned

@@ -29,5 +29,6 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		Global.lose_game()
+		if !area.is_flying:
+			Global.lose_game()
 		

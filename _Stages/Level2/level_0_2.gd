@@ -113,6 +113,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	Global.disable_ultimate()
 	level_title = "0-2:BETRAYAL"
 	extended_new_power_description = "BLOCKS ZOMBIES. SYNERGIES IMPROVE DEFENSE & STALLING POTENTIAL."
 	super()
@@ -168,9 +169,15 @@ func _start_free_play() -> void:
 
 func _configure_waves() -> void:
 	pass
-	zombie_spawner_1.set_waves_from_dicts([{}, {"Reborn": 3, "Severed": 2}, {"Severed": 5}])
-	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 5}, {"Reborn": 4, "Severed": 2}, {"Severed": 3, "Reborn": 6}])
-	zombie_spawner_3.set_waves_from_dicts([{"Reborn": 3}, {"Reborn": 6, "Severed": 1}, {"Severed": 6}])
+	zombie_spawner_1.set_waves_from_dicts([{},
+											{"Severed": 4},                #(2)
+											{"Severed": 6}])               #(3)
+	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 5},                  #(1)
+											{"Reborn": 5, "Severed": 2},   #(2)
+											{"Reborn": 5, "Severed": 4}])  #(3)  
+	zombie_spawner_3.set_waves_from_dicts([{"Reborn": 5},                  #(1)
+											{"Reborn": 5, "Severed": 2},   #(2)
+											{"Severed": 6}])               #(3)
 
 
 func _find_green_dimension() -> void:

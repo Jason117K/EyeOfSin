@@ -39,6 +39,7 @@ var canAttackSetTrueOnce: bool = false
 
 @onready var og_range_target_pos = attack_ray.target_position
 
+signal crawler_ultimate_triggered
 signal crawler_buff_unlocked(buff_to_unlock:String)
 signal is_hovering
 
@@ -205,6 +206,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			#add_ellipse(event.position)
 	
 func trigger_ultimate()->void:
+	
 	print("Trigger Crawler Ult")
 	Global.un_ready_ultimate()
 	if ultimate_timer.is_stopped():
@@ -223,6 +225,7 @@ func fire_volley()->void:
 		volleys_fired = volleys_fired + 1 
 		ultimate_timer.start()
 	else:
+		crawler_ultimate_triggered.emit()
 		volleys_fired = 0
 		ultimate_timer.stop()
 		animSpriteComp.speed_scale = 1

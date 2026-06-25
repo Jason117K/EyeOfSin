@@ -81,7 +81,8 @@ var all_zombie_notif_icons : Array = [reborn_icon,severed_icon,unhallower_icon,r
 
 var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed_icon,"Unhallower": unhallower_icon,
 										"Reanimator":reanimator_icon, "Wretch":wretch_icon,"Sundered":sundered_icon,
-										"Erupter":erupter_icon,"Flesheater":flesheater_icon,"Amalgam":amalgam_icon}
+										"Erupter":erupter_icon,"Flesheater":flesheater_icon,"Amalgam":amalgam_icon,
+										"Buffer":buffer_icon,"Rohan":rohan_icon}
 										
 var occulum_special_description := "res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt"
 var crawler_special_description :="res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt"
@@ -260,6 +261,7 @@ var ultimate_charge_container: Control
 
 signal swap_scenes_signal
 signal demon_was_removed
+signal crawler_ultimate_triggered
 
 func _process(delta: float) -> void:
 	if get_tree().paused:
@@ -273,10 +275,13 @@ func add_mana(mana_to_add:float)->void:
 	ultimate_charge_container.add_mana(mana_to_add)
 
 func disable_ultimate()->void:
-	ultimate_charge_container.modulate = Color(1,1,1,0)
+	if ultimate_charge_container != null:
+		ultimate_charge_container.disable_ult()
+
 
 func enable_ultimate()->void:
-	ultimate_charge_container.modulate = Color(1,1,1,1)
+	ultimate_charge_container.enable_ult()
+
 	
 func un_ready_ultimate()->void:
 	ultimate_is_ready = false
@@ -741,7 +746,14 @@ func get_green_portal_location() -> Vector2:
 	return green_portal.global_position
 	
 func register_demon(new_demon : Demon)->void:
+	if new_demon.has_signal("crawler_ultimate_triggered"):
+		new_demon.crawler_ultimate_triggered.connect(crawler_ult_triggered)
 	all_demons.append(new_demon)
+
+func crawler_ult_triggered()->void:
+	crawler_ultimate_triggered.emit()
+	
+
 
 func get_all_demons()->Array:
 	return all_demons 

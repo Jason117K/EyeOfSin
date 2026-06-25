@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_kf5mr"]
 [ext_resource type="PackedScene" uid="uid://dhs0pt2nvnv00" path="res://_Entities/SynAbility/syn_shield_ability.tscn" id="26_1ds1s"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="28_b5dvj"]
-[ext_resource type="Texture2D" uid="uid://bcnyoq3sknn1w" path="res://_Entities/Demons/_Wyrm/Blood_LaserBeam-Sheet.png" id="31_u0laq"]
+[ext_resource type="SpriteFrames" uid="uid://xnlyswxodwao" path="res://_Entities/Demons/_Wyrm/wyrm_beam_ult_sprite_frames.tres" id="32_ds7ka"]
 [ext_resource type="Script" uid="uid://b4apwa6ns8s" path="res://_Entities/Demons/_Wyrm/beam_ult_area.gd" id="32_l4gaf"]
 [ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="33_ds7ka"]
 
@@ -891,178 +891,6 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yp8m0"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 0, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_awgbk"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 32, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cc5ry"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 64, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ikfm"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 96, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lh36f"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 128, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qe1co"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 160, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_umive"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 192, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1vs0"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 224, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8dler"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 256, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2y2jl"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 288, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dfopk"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 320, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pnil7"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 352, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_awunu"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 384, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cdf6k"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 416, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yuaal"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 448, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3e73"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 480, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s4oya"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 512, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1xbh"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 544, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6452"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 576, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bh3hk"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 608, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4gb55"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 640, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0img4"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 672, 789, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bklo3"]
-atlas = ExtResource("31_u0laq")
-region = Rect2(0, 704, 789, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_etqld"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yp8m0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awgbk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cc5ry")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ikfm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lh36f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qe1co")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_umive")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1vs0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8dler")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2y2jl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dfopk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pnil7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awunu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cdf6k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yuaal")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3e73")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s4oya")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1xbh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l6452")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bh3hk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4gb55")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0img4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bklo3")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"beam",
-"speed": 11.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4gaf"]
 size = Vector2(806, 20)
 
@@ -1310,7 +1138,7 @@ sprite_frames = SubResource("SpriteFrames_ftpd4")
 
 [node name="BeamUlt" type="AnimatedSprite2D" parent="." unique_id=849064209]
 position = Vector2(344, -11)
-sprite_frames = SubResource("SpriteFrames_etqld")
+sprite_frames = ExtResource("32_ds7ka")
 animation = &"beam"
 
 [node name="BeamUltArea" type="Area2D" parent="." unique_id=1909476947]
