@@ -10,6 +10,7 @@ const SCENES: Dictionary = {
 	"Erupter": preload("res://_Entities/Zombies/_Erupter/TickerZombie.tscn"),
 	"Flesheater": preload("res://_Entities/Zombies/_Flesheater/FootballZombie.tscn"),
 	"Rohan": preload("res://_Entities/Zombies/_RohanBossZombie/RohanBossZombie.tscn"),
+	"Buffer": preload("res://_Entities/Zombies/_BufferZombie/BufferZombie.tscn")
 }
 
 const Y_OFFSETS: Dictionary = {

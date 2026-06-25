@@ -12,6 +12,7 @@ class_name WaveData extends Resource
 @export var Sundered: int = 0
 @export var Amalgam: int = 0
 @export var Rohan: int = 0
+@export var Buffer: int = 0
 
 
 ## Convert to Dictionary for systems that still expect {type_name: count}.

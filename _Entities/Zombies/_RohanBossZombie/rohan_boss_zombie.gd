@@ -488,7 +488,7 @@ func silence() -> void:
 
 #Temporary Will Replace
 func get_special_description() -> String:
-	return unhallower_special_description
+	return rohan_special_description
 
 
 #Temporary Will Replace

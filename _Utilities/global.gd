@@ -67,12 +67,14 @@ var severed_spriteframes := preload("res://_Entities/Zombies/_Severed/Severed.tr
 var reborn_icon := preload("res://_Entities/Zombies/Notif_Icons/BasicZombie.png")
 var severed_icon := preload("res://_Entities/Zombies/Notif_Icons/ConeHeadZombie.png")
 var unhallower_icon := preload("res://_Entities/Zombies/_Unhallower/Unhallower.png")
+var buffer_icon := preload("res://_Entities/Zombies/_BufferZombie/BufferZombie.png")
 var reanimator_icon := preload("res://_Entities/Zombies/Notif_Icons/SummonerZombie.png")
 var wretch_icon := preload("res://_Entities/Zombies/Notif_Icons/BackUpDancer.png")
 var sundered_icon := preload("res://_Entities/Zombies/Notif_Icons/PoleVaultZombie.png")
 var erupter_icon := preload("res://_Entities/Zombies/Notif_Icons/TickerZombie.png")
 var flesheater_icon := preload("res://_Entities/Zombies/Notif_Icons/FootBallZombie.png")
 var amalgam_icon := preload("res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png")
+var rohan_icon := preload("res://_Entities/Zombies/_RohanBossZombie/RohanZombie.png")
 
 var all_zombie_notif_icons : Array = [reborn_icon,severed_icon,unhallower_icon,reanimator_icon,wretch_icon,
 								sundered_icon,erupter_icon,flesheater_icon,amalgam_icon,]

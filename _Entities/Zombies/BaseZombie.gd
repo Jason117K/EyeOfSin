@@ -71,6 +71,9 @@ static var erupter_special_description: String
 static var amalgam_special_description: String
 static var flesheater_special_description: String
 static var sundered_special_description: String
+static var buffer_special_description: String
+static var rohan_special_description: String
+
 static var _descriptions_loaded := false
 
 static func _load_descriptions() -> void:
@@ -85,6 +88,8 @@ static func _load_descriptions() -> void:
 	amalgam_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt", FileAccess.READ).get_as_text()
 	flesheater_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt", FileAccess.READ).get_as_text()
 	sundered_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt", FileAccess.READ).get_as_text()
+	buffer_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt", FileAccess.READ).get_as_text()
+	rohan_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt", FileAccess.READ).get_as_text()
 	_descriptions_loaded = true
 
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
