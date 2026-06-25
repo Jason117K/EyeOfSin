@@ -48,6 +48,7 @@ class_name Demon
 @export var is_empty := false 
 @export var syn_shield_position := Vector2(-2,-6)
 @export var hit_flash_duration := 0.3
+@export var rib_health := 250 
 
 # --- Component References ---
 @onready var animSpriteComp: AnimatedSprite2D = $AnimatedSpriteComponent
@@ -58,6 +59,7 @@ class_name Demon
 @onready var erase_mouse_area : Area2D = $EraseMouseArea
 @onready var spawn_juice_anim := $SpawnJuiceAnim
 @onready var baal_halo : AnimatedSprite2D = $BaalHalo
+@onready var protective_rib := $ProtectiveRib
 
 @onready var preview_nodes := $PreviewNodes
 
@@ -66,7 +68,8 @@ class_name Demon
 var demon_buff_name : String = "None"
 
 var special_description_file : String
-
+var can_ult : bool = true 
+var is_ulting : bool = false 
 var can_show_preview := false
 var new_syn_shield_instance :AnimatedSprite2D 
 var syn_timer : Timer
@@ -91,6 +94,8 @@ var my_active_dimension : Control
 
 var grid_map_cell_pos : Vector2
 
+var is_rib_shield := false 
+
 # --- Signals ---
 signal demon_die
 
@@ -108,7 +113,7 @@ func _ready() -> void:
 		return
 	#set_process(false)
 	# --- Phase 1: Collision layers (Green/Purple) ---
-	_init_collision()
+	_init_collision_layer(self)
 	# --- Phase 2: Signal wiring ---
 	_wire_signals()
 	# --- Phase 3: Shared references ---
@@ -116,6 +121,8 @@ func _ready() -> void:
 	# --- Phase 4: Post-spawn detection (deferred, async) ---
 	_schedule_post_spawn()
 	Global.register_demon(self)
+	
+	protective_rib.hide()
 	
 	erase_button.mouse_entered.connect(show_erase_button)
 	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
@@ -154,16 +161,40 @@ func _process(delta: float) -> void:
 			time_since_hit = 0
 			_on_ResetThisColor_timeout()
 
-func _init_collision() -> void:
-	if is_in_group("Green"):
-		set_collision_layer_value(1, false)
-		set_collision_layer_value(2, false)
-		set_collision_layer_value(3, true)
+func _init_collision_layer(this_area : Area2D) -> void:
+	if self.is_in_group("Green"):
+		this_area.set_collision_layer_value(1, false)
+		this_area.set_collision_layer_value(2, false)
+		this_area.set_collision_layer_value(3, true)
 	else:
-		set_collision_layer_value(1, false)
-		set_collision_layer_value(2, true)
-		set_collision_layer_value(3, false)
+		this_area.set_collision_layer_value(1, false)
+		this_area.set_collision_layer_value(2, true)
+		this_area.set_collision_layer_value(3, false)
 
+func _init_collision_mask(this_area : Area2D, detect_zombie :bool = true) -> void:
+	if detect_zombie:
+		if self.is_in_group("Green"):
+			this_area.set_collision_mask_value(1,false)
+			this_area.set_collision_mask_value(2,false)
+			this_area.set_collision_mask_value(3,false)
+			this_area.set_collision_mask_value(4,false)
+			this_area.set_collision_mask_value(5,true)
+		else:
+			this_area.set_collision_mask_value(1,false)
+			this_area.set_collision_mask_value(2,false)
+			this_area.set_collision_mask_value(3,false)
+			this_area.set_collision_mask_value(4,true)
+	else:
+		if self.is_in_group("Green"):
+			this_area.set_collision_mask_value(1,false)
+			this_area.set_collision_mask_value(2,false)
+			this_area.set_collision_mask_value(3,true)
+		else:
+			this_area.set_collision_mask_value(1,false)
+			this_area.set_collision_mask_value(2,true)
+			this_area.set_collision_mask_value(3,false)
+					
+		
 func _wire_signals() -> void:
 	input_event.connect(_on_input_event)
 	area_entered.connect(on_demon_area_entered)
@@ -416,7 +447,14 @@ func end_shield()->void:
 	new_syn_shield_instance.queue_free()
 	syn_timer.queue_free()
 	invulnerable = false 
-	
+
+func rib_shield()->void:
+	is_rib_shield = true 
+	protective_rib.show()
+
+func destroy_rib()->void:
+	is_rib_shield = false
+	protective_rib.hide()
 	
 # --- Input ---
 

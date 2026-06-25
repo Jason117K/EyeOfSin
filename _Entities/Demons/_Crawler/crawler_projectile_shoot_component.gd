@@ -86,7 +86,7 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 		projectile_to_buff.give_blood_on_death = true 
 		projectile_to_buff.blood_worth_to_add = self.blood_worth_to_add
 	if wyrmBuffed:
-		projectile_to_buff.wyrmBuff = true
+		projectile_to_buff._wyrmBuff()
 	if hiveBuffed:
 		pass
 		

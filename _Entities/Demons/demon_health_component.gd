@@ -3,6 +3,8 @@ class_name DemonHealthComponent extends Node
 var regen_wait_time := 1
 
 @export var health: float = 800
+
+var rib_health : float
 var ogHealth: float
 
 var healthRegen: float = 0.0
@@ -23,6 +25,7 @@ func _ready() -> void:
 	ogHealth = health
 	ogMaxHealth = maxHealth
 	ogHealthRegen = healthRegen
+	rib_health = demon.rib_health
 
 var isWyrmBuffed := false
 var isMawBuffed := false
@@ -41,6 +44,12 @@ func get_max_health() -> float:
 
 
 func take_damage(damage: float) -> void:
+	if demon.is_rib_shield:
+		rib_health = rib_health - damage
+		if rib_health <= 0:
+			demon.is_rib_shield = false 
+			demon.destroy_rib()
+		return 
 	if demon.reduced_damage_percent > 0:
 		damage = damage * demon.reduced_damage_percent
 	health = health - damage

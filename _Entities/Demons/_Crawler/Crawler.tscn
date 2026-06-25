@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="37_8u2uv"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="39_0n853"]
 [ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="40_dq2o5"]
+[ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="41_78twq"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="41_an04s"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
@@ -1445,6 +1446,11 @@ animation = &"top_glow"
 
 [node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1604686838]
 sprite_frames = SubResource("SpriteFrames_78twq")
+
+[node name="ProtectiveRib" type="Sprite2D" parent="." unique_id=1015921131]
+z_index = 1
+position = Vector2(6, -3)
+texture = ExtResource("41_78twq")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

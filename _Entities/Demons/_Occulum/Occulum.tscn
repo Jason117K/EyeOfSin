@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="28_he6yk"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_he6yk"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="31_3d0n3"]
+[ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="35_7l7df"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -981,6 +982,7 @@ spinal_occulum_buffed_health = 500
 crawler_buffed_health = 375
 wyrm_buffed_health = 375
 hive_buffed_health = 375
+health = 800.0
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
 visible = false
@@ -1038,13 +1040,15 @@ shape = SubResource("89")
 wait_time = 30.0
 one_shot = true
 
+[node name="ProtectiveRib" type="Sprite2D" parent="." unique_id=427550988]
+position = Vector2(6, -3)
+texture = ExtResource("35_7l7df")
+
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = ExtResource("10_ni4ch")
-animation = &"spawn"
+animation = &"idle"
 autoplay = "spawn"
-frame = 14
-frame_progress = 1.0
 script = ExtResource("16_kvwqv")
 
 [node name="OverlayComponent" type="Node2D" parent="." unique_id=151025187]
@@ -1054,6 +1058,7 @@ visible = false
 sprite_frames = SubResource("11")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=487174492]
+visible = false
 script = ExtResource("21_nkbdm")
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1979715381]

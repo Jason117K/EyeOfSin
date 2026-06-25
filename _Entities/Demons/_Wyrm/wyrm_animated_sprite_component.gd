@@ -19,6 +19,7 @@ func spawn_done() -> void:
 	if spawnAnimDone:
 		pass
 	else:
+		
 		#print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
 		speed_scale = default_anim_speed_scale
 		play()

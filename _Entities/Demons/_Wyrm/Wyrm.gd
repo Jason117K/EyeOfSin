@@ -1,6 +1,8 @@
 extends Demon
 #Wyrm.gd
 
+@export var ultimate_damage :int = 100
+
 # --- Exports: Health Buff Values ---
 @export var spinalOcculumBuffed_health := 650
 @export var mawBuffed_health := 350
@@ -12,6 +14,7 @@ extends Demon
 @export var projectile_speed := 600
 @export var projectile_damage := 20
 @export var bleed_damage_increase := 2
+
 
 # --- Exports: Laser ---
 @export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)
@@ -43,6 +46,8 @@ extends Demon
 @onready var projectile_shoot_component := $ProjectileShootComponent
 @onready var attack_ray := $DMG_RayCast2D
 @onready var shootTimer := $ShootTimer
+@onready var beam_ultimate : AnimatedSprite2D = $BeamUlt
+@onready var beam_ult_area := $BeamUltArea
 
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
@@ -73,6 +78,8 @@ signal wyrm_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	_init_collision_mask(beam_ult_area)
+	beam_ultimate.hide()
 	wyrm_buff_unlocked.connect(Global.unlock_buff)
 	set_process(true)  # Bob animation requires per-frame updates
 	# --- Demon-specific collision ---
@@ -199,6 +206,24 @@ func _increase_range()->void:
 	update_range_preview()
 	
 						
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if can_ult:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if spawn_done:
+				trigger_ultimate()
+	else:
+		super(_viewport,event,_shape_idx)
+			#add_ellipse(event.position)
+	
+func trigger_ultimate()->void:
+	laserShootComp1.modulate = Color(1,1,1,0)
+	laserShootComp2.modulate = Color(1,1,1,0)
+	beam_ultimate.show()
+	beam_ultimate.play()
+	animSpriteComp.animation = animSpriteComp.currentAttackAnim
+	animSpriteComp.play()
+	is_ulting = true 
+	
 	
 	
 # --- Death ---
@@ -279,3 +304,28 @@ func receive_heart_buff()->void:
 
 func adjust_position(_new_form:String)->void:
 	pass
+
+
+func _on_animated_sprite_component_frame_changed() -> void:
+	if is_ulting:
+		if animSpriteComp.frame == 4 && animSpriteComp.animation.containsn("attack"):
+			animSpriteComp.pause()
+			
+	#else:
+		#if !animSpriteComp.is_playing():
+			#animSpriteComp.play() 
+
+
+func _on_beam_ult_animation_finished() -> void:
+	is_ulting = false
+	animSpriteComp.play()
+	laserShootComp1.modulate = Color(1,1,1,1)
+	laserShootComp2.modulate = Color(1,1,1,1)
+	
+	
+	
+
+
+func _on_beam_ult_frame_changed() -> void:
+	if beam_ultimate.frame == 12:
+		beam_ult_area.damage_zombies_in_ultimate_area(ultimate_damage)

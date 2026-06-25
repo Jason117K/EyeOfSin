@@ -22,6 +22,7 @@ var bloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 @onready var spike_rock := $SpikeRock
 @onready var silence_field := $SilenceField
 @onready var maw_lightning := $LightningCrackle
+@onready var rib_buff_area := $RibBuffArea
 
 # --- State ---
 var can_damage_zombie := false
@@ -34,6 +35,7 @@ signal spinal_occulum_buff_unlocked(buff_to_unlock:String)
 func _ready() -> void:
 	super()
 	spinal_occulum_buff_unlocked.connect(Global.unlock_buff)
+	_init_collision_mask(rib_buff_area,false)
 
 	
 	hide_old_preview()
@@ -121,7 +123,20 @@ func unlock_new_buff(demonName:String)->void:
 					
 
 
-
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if can_ult:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if spawn_done:
+				trigger_ultimate()
+	else:
+		super(_viewport,event,_shape_idx)
+			#add_ellipse(event.position)
+	
+func trigger_ultimate()->void:
+	print("Trigger Spine Ult")
+	for demon in rib_buff_area.get_overlapping_areas():
+		if demon.is_in_group("Demons"):
+			demon.rib_shield()
 
 
 	

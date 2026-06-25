@@ -38,7 +38,11 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
 		print_scene_tree(child, indent + 1)
-		
+	
+func _wyrmBuff()->void:
+	wyrmBuff = true
+	modulate = Color("ff0000")
+	
 func _ready() -> void:
 	#print(self, " Projectile Ready Position Is ", self.position)
 	#print_scene_tree()

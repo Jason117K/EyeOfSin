@@ -249,6 +249,10 @@ func _on_auto_pick_up_timer_timeout() -> void:
 func setWorth(bloodWorth: int) -> void:
 	BloodValue = bloodWorth
 
+func ultimate_buff(ultimate_blood_value : int)->void:
+	self.scale = Vector2(1.75,1.75)
+	BloodValue = ultimate_blood_value
+
 func crawler_buff() -> void:
 	crawlerBuff = true
 

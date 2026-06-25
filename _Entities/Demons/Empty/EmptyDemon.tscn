@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="25_bpsi6"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="26_linjw"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="27_6hmpt"]
+[ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="27_bpsi6"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="28_1pm3a"]
 
 [sub_resource type="RectangleShape2D" id="89"]
@@ -1421,5 +1422,10 @@ width = 3.0
 default_color = Color(1, 0, 0, 0)
 sharp_limit = 90.0
 metadata/_edit_lock_ = true
+
+[node name="ProtectiveRib" type="Sprite2D" parent="." unique_id=1535195651]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(6, -3)
+texture = ExtResource("27_bpsi6")
 
 [editable path="BuffNodesComponent"]

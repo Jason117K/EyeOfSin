@@ -11,6 +11,7 @@ extends Demon
 @export var hive_burst_heal_amount := 50
 @export var spinal_occulum_heal_over_time_amount := 5
 @export var maw_health := 500
+@export var ultimate_blood_value := 200
 
 # --- Preloads ---
 var BloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -45,12 +46,14 @@ var cost_first_discount := 15
 @onready var eat_zombie_blood_fx := [$BloodHit, $BloodHit2]
 @onready var blood_hit_1 := $BloodHit
 
+
 @onready var num_cheap_occulum : int = Global.num_cheap_occulum
 
 var healTimer: Timer
 
 signal occulum_buff_unlocked(buff_to_unlock:String)
 
+var ultimate_buffed := false 
 
 
 # --- Lifecycle ---
@@ -59,6 +62,7 @@ func _ready() -> void:
 	super()
 	occulum_buff_unlocked.connect(Global.unlock_buff)
 	num_cheap_occulum = 4
+	_init_collision_mask(healZone,false)
 
 
 	
@@ -221,7 +225,10 @@ func generate_blood() -> Node2D:
 		blood_instance.crawler_buff()
 	if mawBuff:
 		blood_instance.maw_buff()
-
+	if ultimate_buffed:
+		blood_instance.ultimate_buff(ultimate_blood_value)
+		ultimate_buffed = false
+		
 	if self.is_in_group("Green"):
 		blood_instance.add_to_group("Green")
 	else:
@@ -336,8 +343,23 @@ func baal_buff()->void:
 
 func undo_baal_buff()->void:
 	super()
-	
 
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if can_ult:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if spawn_done:
+				trigger_ultimate()
+	else:
+		super(_viewport,event,_shape_idx)
+
+
+func trigger_ultimate()->void:
+	print("Trigger Ult")
+	ultimate_buffed = true 
+	generate_blood()
+	
+	
+	
 # --- Preview ---
 
 
