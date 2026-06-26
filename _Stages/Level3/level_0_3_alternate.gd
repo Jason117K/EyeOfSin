@@ -15,7 +15,7 @@ func _ready() -> void:
 	level_title = "0-3:ACCEPTANCE"
 	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
 	super()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum"])
 	attach_script_to_sway_children()
 	_configure_waves()
 	unlock_power.set_new_unlock_label("NEW SORCERCY")
@@ -23,26 +23,36 @@ func _ready() -> void:
 
 func _configure_waves() -> void:
 	#pass
-	zombie_spawner_1.set_waves_from_dicts([{"Reborn": 4, "Severed": 1}, 
-											{"Reborn": 1, "Severed": 2},
-											{"Reborn": 1, "Severed": 3}, 
-											{ "Severed": 4}])
-	zombie_spawner_2.set_waves_from_dicts([{},
-											{}, 
-											{"Severed": 1, "Reborn": 5}, 
-											{"Severed": 2, "Unhallower": 1}])
-	zombie_spawner_3.set_waves_from_dicts([{},
-											{"Severed": 2},
-											{"Severed": 3}, 
-											{"Reborn": 6, "Unhallower": 2}])
-	zombie_spawner_4.set_waves_from_dicts([{},
-											{},
-											{"Severed": 3, "Reborn":2}, 
-											{"Severed": 1, "Reborn": 4, "Unhallower": 1}])
-	zombie_spawner_5.set_waves_from_dicts([{"Severed": 2}, 
-											{"Severed": 2, "Reborn":3},
-											{"Reborn": 4, "Severed": 1}, 
-											{"Severed": 4}])
+	zombie_spawner_1.set_waves_from_dicts([{"Reborn": 5, "Severed": 2}, 		 #(2)
+											{"Reborn": 8, "Severed": 2}, 		 #(3)
+											{"Reborn": 4, "Severed": 6}, 		 #(4)
+											{"Reborn": 8, "Severed": 6}])		 #(5)
+											
+	zombie_spawner_2.set_waves_from_dicts([{}, 									#(0)
+											{}, 								 #(0)
+											{"Severed": 2, "Reborn": 5},  		 #(2)
+											{"Severed": 4, "Unhallower": 1}]) 	 #(3)
+											
+	zombie_spawner_3.set_waves_from_dicts([{},              			         #(0)
+											{"Severed": 2},						 #(1)
+											{"Severed": 6}, 					 #(3)
+											{"Reborn": 10, "Unhallower": 1}])	 #(3)
+											
+	zombie_spawner_4.set_waves_from_dicts([{}, 					            	 #(0)
+											{"Reborn":5},						 #(1)
+											{"Reborn": 4, "Severed": 4}, 		  #(3)
+											{"Severed": 8}])					 #(4)
+											
+	zombie_spawner_5.set_waves_from_dicts([{"Severed":2},                        #(1)
+											{"Severed": 4},						 #(2)
+											{"Severed": 6}, 					 #(3)
+											{"Reborn": 10, "Unhallower": 1}])	 #(3)
+											
+											
+											
+											
+											
+											
 											
 	#zombie_spawner_1.set_waves_from_dicts([{"Erupter": 1}, {"Flesheater": 1, "Severed": 2}, {"Flesheater": 1, "Reborn": 3}])
 	#zombie_spawner_2.set_waves_from_dicts([{"Severed": 1}, {"Flesheater": 1, "Reborn": 2}, {"Flesheater": 1, "Reborn": 3, "Severed": 1}])

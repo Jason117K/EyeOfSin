@@ -72,6 +72,19 @@ skip_end_dialog = false
 layout_mode = 1
 make_green = true
 
+[node name="ToolTips" parent="." unique_id=1460983106 instance=ExtResource("22_i62ex")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+
 [node name="DemonManager" parent="." unique_id=44492489 instance=ExtResource("2_fsj0e")]
 blood_points = 600
 
@@ -397,19 +410,6 @@ color = Color(0, 0, 0, 0.0784314)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1311640104]
 environment = ExtResource("21_cmthx")
-
-[node name="ToolTips" parent="." unique_id=1460983106 instance=ExtResource("22_i62ex")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=73828683]
 stream = ExtResource("25_j4lsd")

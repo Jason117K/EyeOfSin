@@ -495,6 +495,7 @@ shape_type = 2
 size = Vector2(42.07452, 42.07452)
 rx = 21.03726
 ry = 21.03726
+metadata/_select_hint_ = true
 
 [node name="Fill" type="Polygon2D" parent="HighlightCircle" unique_id=1119342901]
 color = Color(1, 1, 1, 0)
@@ -542,7 +543,9 @@ targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(0.85098, 0.101961, 0.101961, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=391425766 groups=["Zombie"]]
-target_position = Vector2(-26, 0)
+position = Vector2(7, 0)
+target_position = Vector2(-33, 0)
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="SpecialMoveComp" type="Node2D" parent="." unique_id=1717731723]

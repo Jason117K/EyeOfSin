@@ -4018,6 +4018,19 @@ texture = ExtResource("86_18xgo")
 [node name="UILayer" parent="." unique_id=71940636 instance=ExtResource("20_wyrux")]
 layout_mode = 1
 
+[node name="ToolTips" parent="." unique_id=2131015315 instance=ExtResource("22_88et8")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -167.0
+offset_right = 172.0
+offset_bottom = 137.0
+
 [node name="Node" type="Node2D" parent="." unique_id=1246872655]
 visible = false
 z_index = -1
@@ -4032,19 +4045,6 @@ color = Color(0, 0, 0, 0.0784314)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695133031]
 environment = ExtResource("21_fwot8")
-
-[node name="ToolTips" parent="." unique_id=2131015315 instance=ExtResource("22_88et8")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -167.0
-offset_right = 172.0
-offset_bottom = 137.0
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=31771245]
 stream = ExtResource("25_qjdmx")

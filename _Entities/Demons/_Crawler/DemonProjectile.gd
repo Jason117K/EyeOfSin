@@ -33,6 +33,8 @@ var distance_traveled :float= 0
 var _spawn_initialized := false
 var spawn_position: Vector2
 
+var hit_once := false 
+
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
 	print(prefix + node.name + "(" + node.get_class() + ")")
@@ -127,11 +129,16 @@ func setup_lightning_zone() -> void:
 
 # Handles projectile collison and damage application 
 func on_hit(area: Area2D) -> void:
+	if hit_once:
+		if !piercing:
+			return
+	else:
+		hit_once = true 
 	#print("Area Hit Is ", area)
 	if area.is_in_group("Zombie"):
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
-		#print("Area Hit Is ", area)
+		print(self,"Zombie Hit Is ", area)
 		var healthComp :ZombieHealthRefCountedComponent = area.getHealthComponent()
 		if healthComp.health < 1:
 			return 

@@ -1262,7 +1262,7 @@ layout_mode = 1
 make_green = true
 
 [node name="DemonManager" parent="." unique_id=44492489 instance=ExtResource("3_fysat")]
-blood_points = 330
+blood_points = 265
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=839164457]
 process_mode = 1

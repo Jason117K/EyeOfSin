@@ -31,26 +31,29 @@ func _ready() -> void:
 	set_progress_bar_value(current_mana)
 
 func add_mana(mana_to_add : float)->void:
-	current_mana = current_mana + mana_to_add
-	if current_mana >= mana_per_charge:
-		if charges < max_charges:
-			increase_ultimate_charges()
-			current_mana = 0
-	set_progress_bar_value(current_mana)
+	if is_enabled:
+		current_mana = current_mana + mana_to_add
+		if current_mana >= mana_per_charge:
+			if charges < max_charges:
+				increase_ultimate_charges()
+				current_mana = 0
+		set_progress_bar_value(current_mana)
 	
 func increase_ultimate_charges()->void:
-	charges = charges + 1
-	for charge in all_charges:
-		if charge.texture_normal == empty_charge_texture:
-			charge.texture_normal = full_charge_texture
-			return 
+	if is_enabled:
+		charges = charges + 1
+		for charge in all_charges:
+			if charge.texture_normal == empty_charge_texture:
+				charge.texture_normal = full_charge_texture
+				return 
 		
 func ready_ultimate()->void:
-	ultimate_bar_clicked.emit()
-	if charges > 0:
-		charges = charges - 1
-		Global.ultimate_is_ready = true 
-		Global.add_pulsing_button_highlight(all_charges_panel_container)
+	if is_enabled:
+		ultimate_bar_clicked.emit()
+		if charges > 0:
+			charges = charges - 1
+			Global.ultimate_is_ready = true 
+			Global.add_pulsing_button_highlight(all_charges_panel_container)
 		
 func un_ready_ultimate()->void:
 	Global.remove_pulsing_button_highlight(all_charges_panel_container)

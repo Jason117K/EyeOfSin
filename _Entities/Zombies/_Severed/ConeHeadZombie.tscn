@@ -184,7 +184,9 @@ targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(1, 0.145098, 0.168627, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1851277821]
-target_position = Vector2(-8, 0)
+position = Vector2(2, 0)
+target_position = Vector2(-11, 0)
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=1048746352]

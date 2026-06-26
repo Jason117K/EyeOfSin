@@ -408,7 +408,8 @@ script = ExtResource("10_g8toj")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=910183991]
-target_position = Vector2(-17, 0)
+position = Vector2(3, 0)
+target_position = Vector2(-20, 0)
 collide_with_areas = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=436756212]

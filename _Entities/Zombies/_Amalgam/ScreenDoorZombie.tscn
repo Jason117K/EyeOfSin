@@ -883,8 +883,9 @@ flip_h = true
 script = ExtResource("10")
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=137144629]
+position = Vector2(2, 0)
 scale = Vector2(1, 2)
-target_position = Vector2(-28, 0)
+target_position = Vector2(-31, 0)
 collide_with_areas = true
 
 [node name="SynMark" type="Sprite2D" parent="." unique_id=1737276736]

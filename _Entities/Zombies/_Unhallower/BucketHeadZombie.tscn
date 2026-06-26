@@ -1074,7 +1074,9 @@ targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
 targetGlowColor = Color(1, 0, 0, 1)
 
 [node name="DMGRayCast2D" type="RayCast2D" parent="." unique_id=1030967930]
-target_position = Vector2(-15, 0)
+position = Vector2(2, 0)
+target_position = Vector2(-18, 0)
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("13_8vgu3")]
