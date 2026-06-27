@@ -93,7 +93,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rabkd"]
-radius = 201.38968
+radius = 271.27588
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hu5wo"]
 atlas = ExtResource("5_715s3")
@@ -309,7 +309,6 @@ wait_time = 9.0
 one_shot = true
 
 [node name="AOEZone" type="Area2D" parent="." unique_id=974004821]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AOEZone" unique_id=1480185012]

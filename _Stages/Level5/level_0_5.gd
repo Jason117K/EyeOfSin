@@ -73,7 +73,7 @@ func _ready() -> void:
 	Dialogic.Inputs.auto_skip.enabled = true
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]
-	waveManager.wave_delays = [wave2StartTime]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -106,20 +106,33 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner_1.set_waves_from_dicts([{},
-											{"Reborn": 6, "Unhallower": 1, "Reanimator":2}])
-	zombie_spawner_2.set_waves_from_dicts([{"Severed":4},
-											{"Reborn": 8, "Unhallower": 1}])
-	zombie_spawner_3.set_waves_from_dicts([{"Severed":4},
-											{"Reborn": 1, "Severed": 3}])
-	zombie_spawner_4.set_waves_from_dicts([{"Severed":5}, 
-											{"Reborn": 7, "Unhallower":3}]) 
-	zombie_spawner_5.set_waves_from_dicts([{"Severed":4},
-											{"Reborn": 7,"Severed":1}])
-	zombie_spawner_6.set_waves_from_dicts([{"Severed": 4},
-											{"Reborn": 8, "Unhallower": 1}]) 
-	zombie_spawner_7.set_waves_from_dicts([{}, 
-											{"Reanimator": 2, "Reborn":6, "Unhallower":1}])
+	zombie_spawner_1.set_waves_from_dicts([{"Reborn":10,"Severed":4},                             #(4)
+											{"Severed":2,"Unhallower":1},                         #(9)
+											{"Reborn":10,"Severed":4,"Reanimator": 1}])           #(14)
+											
+	zombie_spawner_2.set_waves_from_dicts([{"Severed":7},                                         #(4-)
+											{"Reborn": 15, "Unhallower": 1},                       #(8)
+											{"Severed": 7, "Reanimator" : 1}])                     #(14-)
+											
+	zombie_spawner_3.set_waves_from_dicts([{"Reborn":10,"Severed":4},                             #(4)
+											{"Severed":2,"Unhallower":1},                         #(9)
+											{"Reborn":10,"Severed":4,"Reanimator": 1}])           #(14)
+											
+	zombie_spawner_4.set_waves_from_dicts([{"Severed":7},                                         #(4-)
+											{"Reborn": 15, "Unhallower": 1},                       #(8)
+											{"Severed": 7, "Reanimator" : 1}])                     #(14-)
+											
+	zombie_spawner_5.set_waves_from_dicts([{},                                                   #(0)
+											{"Reborn": 5, "Unhallower":1},                      #(6)
+											{"Severed":2,"Reanimator":1}])                      #(10)
+											
+	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
+											{"Severed": 2, "Unhallower":1},                      #(6)
+											{"Reborn":5,"Reanimator":1}])                        #(10)
+											
+	zombie_spawner_7.set_waves_from_dicts([{},                                                   #(0)
+											{"Reborn": 5, "Unhallower":1},                      #(6)
+											{"Severed":2,"Reanimator":1}])                      #(10)
 func finish_ready() -> void:
 	Global.show_pip()
 	if skip_tutorials: 

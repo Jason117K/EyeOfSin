@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_r8bpw"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="30_rvtdc"]
 [ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="37_fluxn"]
+[ext_resource type="Texture2D" uid="uid://cgwpy1mxr1o2v" path="res://_Entities/Demons/_Occulum/ProtectiveRib_Blood.png" id="40_efimi"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -1143,12 +1144,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fluxn"]
 size = Vector2(20, 373)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emrru"]
+size = Vector2(10, 32)
+
 [node name="SpinalOcculum" type="Area2D" unique_id=106028571 groups=["Demons", "Plants"]]
 z_index = 1
 collision_mask = 3
 script = ExtResource("2")
 lightning_damage = 25
-occulum_buffed_health = 1200
+occulum_buffed_health = 1500
 occulum_buffed_max_health = 1200
 maw_buffed_health = 1500
 maw_buffed_max_health = 1500
@@ -1233,6 +1237,7 @@ texture = ExtResource("37_fluxn")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]
 material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = ExtResource("8_emrru")
+animation = &"idle_Occulum"
 autoplay = "spawn"
 script = ExtResource("15_kwpry")
 
@@ -1360,6 +1365,16 @@ sprite_frames = SubResource("SpriteFrames_ktms3")
 [node name="RibBuffCollision" type="CollisionShape2D" parent="RibBuffArea" unique_id=28585346]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_fluxn")
+
+[node name="BloodRib" type="Sprite2D" parent="." unique_id=791483438]
+visible = false
+position = Vector2(36, 0)
+texture = ExtResource("40_efimi")
+
+[node name="BloodRibCollision" type="CollisionShape2D" parent="." unique_id=2121021772]
+position = Vector2(53, 0)
+shape = SubResource("RectangleShape2D_emrru")
+disabled = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

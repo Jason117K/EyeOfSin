@@ -25,6 +25,9 @@ var bloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
 @onready var silence_field := $SilenceField
 @onready var maw_lightning := $LightningCrackle
 @onready var rib_buff_area := $RibBuffArea
+@onready var blood_rib := $BloodRib
+
+@onready var blood_rib_collision := $BloodRibCollision
 
 # --- State ---
 var can_damage_zombie := false
@@ -36,6 +39,7 @@ signal spinal_occulum_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	blood_rib.hide()
 	spinal_occulum_buff_unlocked.connect(Global.unlock_buff)
 	_init_collision_mask(rib_buff_area,false)
 
@@ -82,7 +86,10 @@ func receive_buff(bufferName:Demon) -> void:
 		unlock_new_buff(demonName)
 		match demonName:
 			"Occulum":
-				pass
+				blood_rib.show()
+				blood_rib_collision.disabled = false
+
+
 			"Crawler":
 				if self.is_in_group("Green"):
 					web.add_to_group("Green")
@@ -121,8 +128,7 @@ func unlock_new_buff(demonName:String)->void:
 					spinal_occulum_buff_unlocked.emit(Global.hive_spinal_occulum_synergy)
 				"Maw":
 					spinal_occulum_buff_unlocked.emit(Global.maw_spinal_occulum_synergy)
-					
-					
+
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

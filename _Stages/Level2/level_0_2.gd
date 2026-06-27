@@ -170,7 +170,7 @@ func _start_free_play() -> void:
 func _configure_waves() -> void:
 	pass
 	zombie_spawner_1.set_waves_from_dicts([{},
-											{"Severed": 4},                #(2)
+											{"Severed": 2},                #(2)
 											{"Severed": 6}])               #(3)
 	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 5},                  #(1)
 											{"Reborn": 5, "Severed": 2},   #(2)

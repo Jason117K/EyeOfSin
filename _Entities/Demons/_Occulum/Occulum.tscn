@@ -1045,6 +1045,7 @@ position = Vector2(6, -3)
 texture = ExtResource("35_7l7df")
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
+z_index = 1
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = ExtResource("10_ni4ch")
 animation = &"idle"

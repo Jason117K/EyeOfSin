@@ -1308,7 +1308,6 @@ sprite_frames = ExtResource("23_78twq")
 animation = &"web_spit"
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
-visible = false
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1908163688]
 self_modulate = Color(0, 0, 0, 1)
@@ -1342,16 +1341,12 @@ shape = SubResource("RectangleShape2D_an04s")
 position = Vector2(-1, 0)
 texture = ExtResource("25_8u2uv")
 
-[node name="BloodTileFront" type="Sprite2D" parent="PreviewNodes" unique_id=946456994]
+[node name="BloodTileFront1" type="Sprite2D" parent="PreviewNodes" unique_id=946456994]
 position = Vector2(32, 0)
 texture = ExtResource("25_jphsv")
 
-[node name="BloodTileBack1" type="Sprite2D" parent="PreviewNodes" unique_id=948379919]
-position = Vector2(-32, 0)
-texture = ExtResource("25_jphsv")
-
-[node name="BloodTileBack2" type="Sprite2D" parent="PreviewNodes" unique_id=1594273121]
-position = Vector2(-64, 0)
+[node name="BloodTileFront2" type="Sprite2D" parent="PreviewNodes" unique_id=1311791047]
+position = Vector2(64, 0)
 texture = ExtResource("25_jphsv")
 
 [node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=1660729825]
@@ -1379,8 +1374,8 @@ visible = false
 [node name="TileArea3" parent="BuffNodesComponent" index="2" unique_id=963343398]
 visible = false
 
-[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea4" parent_id_path=PackedInt32Array(321485823, 1195978361) index="0" unique_id=1425430868]
-visible = true
+[node name="TileArea4" parent="BuffNodesComponent" index="3" unique_id=1195978361]
+visible = false
 
 [node name="TileArea5" parent="BuffNodesComponent" index="4" unique_id=334855413]
 visible = false
@@ -1394,11 +1389,11 @@ visible = false
 [node name="TileArea8" parent="BuffNodesComponent" index="7" unique_id=1026513902]
 visible = false
 
-[node name="TileArea9" parent="BuffNodesComponent" index="8" unique_id=1370979832]
-visible = false
-
-[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea10" parent_id_path=PackedInt32Array(321485823, 1590585108) index="0" unique_id=1606136775]
+[node name="TileAreaCollision" parent="BuffNodesComponent/TileArea9" parent_id_path=PackedInt32Array(321485823, 1370979832) index="0" unique_id=70285421]
 visible = true
+
+[node name="TileArea10" parent="BuffNodesComponent" index="9" unique_id=1590585108]
+visible = false
 
 [node name="Timer" type="Timer" parent="." unique_id=1278380740]
 wait_time = 3.0
