@@ -1288,9 +1288,9 @@ position = Vector2(294, 308)
 
 [node name="SkullTileHighlight" type="TextureRect" parent="FlowerTileContainer" unique_id=6941640]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 334.0
+offset_left = 270.0
 offset_top = 113.0
-offset_right = 382.0
+offset_right = 318.0
 offset_bottom = 316.0
 mouse_filter = 2
 texture = ExtResource("47_ri8pe")

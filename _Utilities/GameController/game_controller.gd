@@ -293,6 +293,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
 	Global.style_menu.hide()
+	Global.disable_ultimate()
 	pip.hide_pip()
 	
 	hide_swap_syn()

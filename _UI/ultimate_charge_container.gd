@@ -23,6 +23,7 @@ signal ultimate_bar_clicked
 
 func _ready() -> void:
 	disable_ult()
+	all_charges_panel_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	Global.ultimate_charge_container = self 
 	for charge in all_charges:
 		charge.pressed.connect(ready_ultimate)

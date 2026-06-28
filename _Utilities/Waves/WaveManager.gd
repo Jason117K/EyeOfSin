@@ -5,10 +5,6 @@ signal wave_started(wave_index: int)
 signal all_waves_complete
 signal level_ended
 
-#75
-#90
-#105
-#105
 
 ## Delay before wave i+1 starts after wave i begins.
 ## Length determines total wave count: total_waves = wave_delays.size() + 1.
@@ -52,6 +48,7 @@ func _setup() -> void:
 	
 	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
+	print("_total_waves for waveManager is : ", _total_waves)
 
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
 	

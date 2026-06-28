@@ -85,7 +85,7 @@ func _ready() -> void:
 	#print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [60.0, 100.0]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -130,7 +130,7 @@ func _configure_waves() -> void:
 											
 	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
-											{"Sundered": 2},                                      #(5)
+											{"Sundered": 1},                                      #(5-)
 											{"Reborn": 4, "Reanimator" : 1},                     #(11)
 											{"Buffer": 1, "Reanimator" : 1}])                    #(15)
 											
@@ -138,13 +138,13 @@ func _configure_waves() -> void:
 											{"Reborn": 2,"Unhallower":1},                        #(5+)    
 											{"Severed": 2, "Sundered":2},                       #(6)
 											{"Severed": 4, "Reanimator":1},                      #(12)
-											{"Sundered": 2, "Buffer":1}])                         #(10)
+											{"Sundered": 6,}])                                   #(15)
 											
 	zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
 											{"Severed": 1,"Unhallower":1},                       #(6)
 											{"Reanimator":1},                                    #(10)
-											{"Severed":2 ,"Sundered":2},                          #(5)
-											{"Sundered":2,"Buffer":1}])                           #(15)
+											{"Severed":2 ,"Sundered":4},                         #(5)
+											{"Sundered":6}])                                     #(15)
 											
 	zombie_spawner_5.set_waves_from_dicts([{"Reborn":2,"Severed":2 },                            #(1+)
 											{"Amalgam":2,  },                                     #(5)
@@ -154,9 +154,9 @@ func _configure_waves() -> void:
 											
 	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)  
-											{"Sundered": 2},                                      #(5)
+											{"Sundered": 1},                                      #(5-)
 											{"Reanimator":1},                                    #(10)
-											{"Sundered": 2,"Reanimator":1}])                      #(15)
+											{"Sundered": 6}])                                     #(15)
 											
 	zombie_spawner_7.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)

@@ -78,6 +78,7 @@ func basic_config() -> void:
 	basicTutorialLabel.custom_minimum_size = Vector2(500, 0)
 	basicTutorialLabel.set_h_size_flags(Control.SIZE_SHRINK_CENTER)
 	basicTutorialButton_Container.set_h_size_flags(Control.SIZE_SHRINK_CENTER)
+	basicTutorialVbox.pivot_offset_ratio = Vector2(0,0)
 
 	# let the vbox recompute its size from the new child constraints first
 	await get_tree().process_frame
@@ -90,15 +91,23 @@ func basic_config() -> void:
 	)
 
 
-func sideways_config()->void:
-	basicTutorialVbox.set_anchors_preset(Control.PRESET_CENTER_LEFT,false)
-	basicTutorialVbox.reset_size()
-	basicTutorialLabel.custom_minimum_size = Vector2(275,0)
-	basicTutorialLabel.reset_size()
+func sideways_config() -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	basicTutorialLabel.custom_minimum_size = Vector2(275, 0)
 	basicTutorialLabel.set_h_size_flags(Control.SIZE_SHRINK_BEGIN)
-	basicTutorialLabel.reset_size()
 	basicTutorialButton_Container.set_h_size_flags(Control.SIZE_EXPAND)
-	basicTutorialButton_Container.reset_size()
+
+	# let the vbox recompute its size from the new child constraints first
+	await get_tree().process_frame
+	basicTutorialVbox.reset_size()
+
+	# now anchor it to center-left
+	basicTutorialVbox.set_anchors_and_offsets_preset(
+		Control.PRESET_CENTER_RIGHT,
+		Control.PRESET_MODE_KEEP_SIZE
+	)
 	
 	
 func set_basic_tutorial_text(newFile: String, shouldPause: bool, location : Vector2 = Vector2(0,0)) -> void:

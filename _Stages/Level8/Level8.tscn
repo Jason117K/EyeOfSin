@@ -73,7 +73,7 @@ mouse_filter = 2
 script = ExtResource("1_ayrsk")
 wave2StartTime = 75
 wave3StartTime = 90
-wave4StartTime = 100
+wave4StartTime = 105
 wave5StartTime = 105
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_1q7ww")]

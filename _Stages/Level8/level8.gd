@@ -1,5 +1,15 @@
 extends LevelTemplate
 #750
+
+
+
+#75
+#90
+#105
+#105
+
+
+
 # Preloaded demo scenes
 var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
@@ -80,7 +90,6 @@ func _ready() -> void:
 	Global.register_swap_ability(Global.lightning_storm)
 	#print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
-	#waveManager.wave_delays = [60.0, 100.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
