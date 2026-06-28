@@ -143,7 +143,7 @@ func _ready() -> void:
 	syn_mark_sprite.hide()
 	
 	buff_halo.hide()
-	buff_halo.set_hue_shift(animatedSprite.hue_shift)
+	
 	
 	Zombie._load_descriptions()
 	if self.is_in_group("Green"):
@@ -484,6 +484,7 @@ func knockBack() -> void:
 func set_hue_shift(hue_shift_degrees: float) -> void:
 	animatedSprite.set_hue_shift(hue_shift_degrees)
 	death_blood.set_hue_shift(hue_shift_degrees)
+	buff_halo.set_hue_shift(animatedSprite.hue_shift)
 
 
 func make_glow() -> void:
@@ -568,13 +569,13 @@ func change_dimensions(new_position : Vector2) -> void:
 	if self.is_in_group("Green"): #Green->Purple
 		self.remove_from_group("Green")
 		self.add_to_group("Purple")
-		self.set_collision_layer_value(2, true)
+		self.set_collision_layer_value(4, true)
 		#set_hue_shift(-86)
 		self.reparent(Global.get_game_controller().get_purple_dimension().get_node("GameLayer"))
 	else:#Purple->Green
 		self.remove_from_group("Purple")
 		self.add_to_group("Green")
-		self.set_collision_layer_value(3, true)
+		self.set_collision_layer_value(5, true)
 		#set_hue_shift(125)
 		self.reparent(Global.get_game_controller().get_green_dimension().get_node("GameLayer"))
 	self.global_position = new_position

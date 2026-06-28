@@ -16,40 +16,53 @@ func _ready() -> void:
 	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
 	super()
 	attach_script_to_sway_children()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
 	_configure_waves()
 
 
 func _configure_waves() -> void:
 	pass
-	zombie_spawner_3.set_waves_from_dicts([{},
-											{}, 
-											{}, 
-											{ "Amalgam": 2}])
-	zombie_spawner_4.set_waves_from_dicts([{"Severed":2},
-											{"Amalgam":1}, 
-											{"Reanimator": 1, "Severed": 4,"Sundered":1}, 
-											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
-	zombie_spawner_5.set_waves_from_dicts([{},
-											{},
-											{"Reborn": 10, "Unhallower":2}, 
-											{"Severed": 3, "Unhallower": 1,"Amalgam":1,"Sundered":2}])
-	zombie_spawner_6.set_waves_from_dicts([{"Reborn": 4}, 
-											{"Unhallower": 1},
-											{"Unhallower": 1, "Severed": 6}, 
-											{"Unhallower": 2, "Reanimator":1,"Sundered":2}]) 
-	zombie_spawner_7.set_waves_from_dicts([{},
-											{"Amalgam":1},
-											{"Reanimator": 1, "Severed": 4}, 
-											{"Severed": 4, "Unhallower": 1,"Amalgam":1 }])
-	zombie_spawner_1.set_waves_from_dicts([{},
-											{}, 
-											{"Reanimator": 1, "Severed": 4}, 
-											{"Reanimator": 2, "Unhallower": 1, "Severed" : 3}])
-	zombie_spawner_2.set_waves_from_dicts([{},
-											{}, 
-											{}, 
-											{"Amalgam": 2}])
+	zombie_spawner_1.set_waves_from_dicts([{"Reborn":7,"Severed":2},                             #(2+)
+											{"Reborn": 11,"Severed":2},                          #(3+)    
+											{"Reborn": 8, "Unhallower":1},                       #(6+)
+											{"Severed": 4, "Reanimator":1},                      #(12)
+											{"Severed": 6, "Reanimator":1}])                     #(13)
+											
+	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
+											{},                                                  #(0)
+											{"Severed": 2, "Reborn": 5},                         #(2)
+											{"Reborn": 3, "Reanimator" : 1},                    #(11-)
+											{"Reborn": 3, "Reanimator" : 1}])                    #(11-)
+											
+	zombie_spawner_3.set_waves_from_dicts([{},                                                   #(0)
+											{},                                                  #(0)
+											{},                                                  #(0)
+											{"Reborn":15},                                       #(3)
+											{"Reborn":20}])                                       #(4)
+											
+	zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
+											{"Reborn": 10, },                                    #(2)
+											{"Severed": 3, "Unhallower": 1},                     #(6+)
+											{"Amalgam":4},                                       #(10)
+											{"Reborn":8,"Amalgam":4}])                           #(11+)
+											
+	zombie_spawner_5.set_waves_from_dicts([{},                                                   #(0)
+											{},                                                  #(0)
+											{},                                                 #(0)
+											{"Unhallower": 1,"Severed": 4},                     #(7)
+											{"Unhallower": 1,"Severed": 4}])                     #(7)
+											
+	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
+											{},                                                  #(0)  
+											{"Severed": 6},                                      #(3)
+											{"Reanimator":1},                                    #(10)
+											{"Severed": 2,"Reanimator":1}])                      #(11)
+											
+	zombie_spawner_7.set_waves_from_dicts([{"Reborn":10, },                                       #(2)
+											{"Severed":6,  },                                     #(3)
+											{"Unhallower":1},                                     #(5)
+											{"Reborn":10, "Amagalm":2},                           #(7)
+											{"Amagalm":6}])                                      #(15)
 
 func getIsGreenDimension() -> bool:
 	return isGreenDimension

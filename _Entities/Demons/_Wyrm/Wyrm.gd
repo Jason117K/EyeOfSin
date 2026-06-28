@@ -2,6 +2,7 @@ extends Demon
 #Wyrm.gd
 
 @export var ultimate_damage :int = 100
+@export var ultimate_bleed : int = 10
 
 # --- Exports: Health Buff Values ---
 @export var spinalOcculumBuffed_health := 650
@@ -155,8 +156,10 @@ func receive_buff(demon) -> void:
 		match demonName:
 			"Occulum":
 				_increase_range()
-				projectile_shoot_component.isOcculumBuffed = true
+				projectile_shoot_component.occulumBuff()
+				#isOcculumBuffed = true
 				laserShootComp2.occulumBuff()
+				#laserShootComp1.occulumBuff()
 				laserShootComp1.isDisabled = true 
 				
 			"Crawler":
@@ -333,4 +336,5 @@ func _on_beam_ult_animation_finished() -> void:
 
 func _on_beam_ult_frame_changed() -> void:
 	if beam_ultimate.frame == 12:
-		beam_ult_area.damage_zombies_in_ultimate_area(ultimate_damage)
+		beam_ult_area.damage_zombies_in_ultimate_area(ultimate_damage,ultimate_bleed)
+		projectile_shoot_component.shoot_projectile(true)

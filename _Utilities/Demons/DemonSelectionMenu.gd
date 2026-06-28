@@ -255,14 +255,17 @@ func _on_OcculumButton_pressed() -> void:
 	OcculumCost  += 5
 	clicked_Eye.emit()
 	
-func increaseOcculumCost() -> void:
+func adjust_occulum_cost() -> void:
 	#OcculumCostLabel.text = str(50+(Global.getOcculumCount() * 15))
 	if Global.getOcculumCount() <= Global.num_cheap_occulum:
 		
 		OcculumCostLabel.text = str(50 + (Global.getOcculumCount() * 15))
 	else:
 		OcculumCostLabel.text = str(50 + ( ((Global.getOcculumCount()-Global.num_cheap_occulum) * 25) + (Global.num_cheap_occulum * 15) ))
-	print("Cost in global is ", OcculumCostLabel.text)
+	print(self," Cost On This Menu is ", OcculumCostLabel.text)
+
+
+
 
 func _on_SpinalOcculumButton_pressed() -> void:
 	on_demon_button_pressed(spinalOcculum_scene,SpinalOcculumButton,SpinalOcculumCostLabel)

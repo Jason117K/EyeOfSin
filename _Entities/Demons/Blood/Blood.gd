@@ -17,6 +17,8 @@ var demo_blood_pickup_time := 1.25
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var anim_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
+var play_auto_blood_collect_sound_fx := true
+
 var blood_spell := preload("res://_Entities/Demons/_Occulum/sword_blood_spell.tscn")
 var crawlerBuff := false
 var wyrmBuff := false
@@ -64,11 +66,24 @@ func _ready() -> void:
 		aoe.set_collision_mask_value(3,false)
 		aoe.set_collision_mask_value(4,true)
 
+
 	
 #TODO Add SFX
 func _on_Blood_mouse_entered() -> void:
 	#var demon_manager = get_parent().get_parent().get_node("DemonManager")
 	#print("Demon Manager is ", demon_manager)
+	if self.is_in_group("Green"):
+		if Global.game_controller.get_active_dimension() == Global.game_controller.get_green_dimension():
+			pass
+		else:
+			return
+	elif self.is_in_group("Purple"):
+		if Global.game_controller.get_active_dimension() == Global.game_controller.get_purple_dimension():
+			pass
+		else:
+			return
+	
+	
 	auto_pickup_timer.stop()
 	if demon_manager:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
@@ -226,7 +241,8 @@ func _on_auto_pick_up_timer_timeout() -> void:
 	var elapsed_sec := (Time.get_ticks_msec() - _spawn_tick_msec) / 1000.0
 	var dim := "Green" if is_in_group("Green") else "Purple"
 	print("[BLOOD AUTOPICKUP] dim=", dim, " configured_wait=", auto_pickup_timer.wait_time, "s  actual_elapsed=", elapsed_sec, "s  value_before_halving=", BloodValue, " counter=", counter)
-	AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
+	if play_auto_blood_collect_sound_fx:
+		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
 		BloodValue = BloodValue / 2.0
 
@@ -273,6 +289,7 @@ func set_fast_pickup_time() -> void:
 	decrease_blood_val = false
 	self.scale = Vector2(0.3,0.3)
 	BloodValue = 2.0
+	play_auto_blood_collect_sound_fx = false
 	#BloodValue = 150 
 	
 	

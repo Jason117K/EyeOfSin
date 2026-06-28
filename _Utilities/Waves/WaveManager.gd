@@ -5,6 +5,11 @@ signal wave_started(wave_index: int)
 signal all_waves_complete
 signal level_ended
 
+#75
+#90
+#105
+#105
+
 ## Delay before wave i+1 starts after wave i begins.
 ## Length determines total wave count: total_waves = wave_delays.size() + 1.
 ## A value <= 0 means that wave requires manual start via start_next_wave().
@@ -14,7 +19,7 @@ signal level_ended
 @export var preview_lead_time: float = 20.0
 
 ## Player health — will be extracted to a separate node later.
-@export var health_points: int = 20
+@export var health_points: int = 1000
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
@@ -126,7 +131,8 @@ func _start_wave(index: int) -> void:
 	print("START WAVEEEEEEEEE ", index)
 	if index < 0 or index >= _total_waves:
 		return
-	Global.add_blood_from_wave(25)
+	if index > 0:
+		Global.add_blood_from_wave(25)
 	_current_wave = index
 
 	# Hide previews for the wave that's now starting

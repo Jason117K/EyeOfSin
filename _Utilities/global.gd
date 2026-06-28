@@ -333,7 +333,8 @@ func free_portals()->void:
 	purple_portal.free_portal()
 	green_portal.free_portal()
 	portal_progress_bar.recharge()
-	portal_progress_bar_1.recharge()
+	if portal_progress_bar_1 != null:
+		portal_progress_bar_1.recharge()
 
 
 func get_demon_cost(demon_name: String) -> int:
@@ -589,13 +590,13 @@ func incrementOcculumCount() -> void:
 		for menu in demon_selection_menus:
 			if menu != null:
 				if !menu.is_alt:
-					menu.increaseOcculumCost() 
+					menu.adjust_occulum_cost() 
 	else: #Green
 		green_occulum_count += 1
 		for menu in demon_selection_menus:
 			if menu != null:
 				if menu.is_alt:
-					menu.increaseOcculumCost() 
+					menu.adjust_occulum_cost() 
 				
 	#occulumCount += 1
 	#for menu in demon_selection_menus:
@@ -603,6 +604,19 @@ func incrementOcculumCount() -> void:
 			#menu.increaseOcculumCost() 
 	##demon_selection_menu.increaseOcculumCost()
 
+func decrement_occulum_count()->void:
+	if game_controller.on_purple_scene():
+		purple_occulum_count -= 1
+		for menu in demon_selection_menus:
+			if menu != null:
+				if !menu.is_alt:
+					menu.adjust_occulum_cost() 
+	else: #Green
+		green_occulum_count -= 1
+		for menu in demon_selection_menus:
+			if menu != null:
+				if menu.is_alt:
+					menu.adjust_occulum_cost() 	
 
 
 	
@@ -1060,6 +1074,10 @@ func unlock_buff(unlocked_buff : String)->void:
 			if unlocked_demon_synergies_dict[synergy] == false:
 				unlocked_demon_synergies_dict[synergy] = true
 				get_current_ui_layer().set_unlock_notif(synergy)
+
+
+
+
 			
 func navigate_to_buff(new_synergy:String)->void:
 	current_synergies = split_capitals(new_synergy)

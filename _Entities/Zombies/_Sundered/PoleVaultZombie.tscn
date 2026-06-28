@@ -475,8 +475,8 @@ animations = [{
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_2rcxa")
-health = 150
-speed = 36.0
+health = 200
+speed = 26.0
 fire_fix_position = Vector2(15, 1)
 syn_mark_position = Vector2(4, -13)
 
@@ -495,7 +495,6 @@ shape_type = 2
 size = Vector2(42.07452, 42.07452)
 rx = 21.03726
 ry = 21.03726
-metadata/_select_hint_ = true
 
 [node name="Fill" type="Polygon2D" parent="HighlightCircle" unique_id=1119342901]
 color = Color(1, 1, 1, 0)

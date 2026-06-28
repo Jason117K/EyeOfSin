@@ -3943,7 +3943,6 @@ flip_h = true
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1251482687]
 stream = ExtResource("38_g88e2")
-volume_db = -80.0
 autoplay = true
 bus = &"music"
 

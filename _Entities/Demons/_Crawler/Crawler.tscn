@@ -1229,6 +1229,7 @@ spinalOcculumHealth = 500.0
 blood_worth_to_add = 2.0
 shoot_interval = 1.3
 buffed_range_target_pos = Vector2(450, 0)
+mana_add_on_shot = 15
 ultimate_timer_wait_time = 0.1
 cost = 75.0
 health = 100.0

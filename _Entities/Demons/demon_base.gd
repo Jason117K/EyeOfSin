@@ -121,8 +121,8 @@ func _ready() -> void:
 	# --- Phase 4: Post-spawn detection (deferred, async) ---
 	_schedule_post_spawn()
 	Global.register_demon(self)
-
-	protective_rib.hide()
+	if protective_rib != null:
+		protective_rib.hide()
 	
 	erase_button.mouse_entered.connect(show_erase_button)
 	erase_mouse_area.mouse_exited.connect(hide_erase_button_on_mouse_leave)
@@ -207,6 +207,16 @@ func get_special_description_file(this_all_synergies : Array[String],demonName :
 	return ""
 
 func _on_mouse_entered() -> void:
+	if self.is_in_group("Green"):
+		if Global.game_controller.get_active_dimension() == Global.game_controller.get_green_dimension():
+			print(Global.game_controller.get_active_dimension(), "Onnn Green and Active Dimension Is Green")
+		else:
+			return
+	elif self.is_in_group("Purple"):
+		if Global.game_controller.get_active_dimension() == Global.game_controller.get_purple_dimension():
+			print(Global.game_controller.get_active_dimension(),"Onnn Purple and Active Dimension Is Purple")
+		else:
+			return
 	print("Mouse Entered ",self)
 	if can_show_preview && Global.game_controller.get_active_dimension() == my_active_dimension:
 		$PreviewNodes.visible = true
@@ -459,6 +469,18 @@ func destroy_rib()->void:
 # --- Input ---
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if self.is_in_group("Green"):
+		if Global.game_controller.get_active_dimension() == Global.game_controller.get_green_dimension():
+			pass
+			#print(Global.game_controller.get_active_dimension(), "Onnn Green and Active Dimension Is Green")
+		else:
+			return
+	elif self.is_in_group("Purple"):
+		if Global.game_controller.get_active_dimension() == Global.game_controller.get_purple_dimension():
+			pass
+			#print(Global.game_controller.get_active_dimension(),"Onnn Purple and Active Dimension Is Purple")
+		else:
+			return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed && spawn_done:
 		#print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)

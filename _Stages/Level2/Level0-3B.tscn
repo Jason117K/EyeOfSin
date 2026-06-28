@@ -3623,7 +3623,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1789462533 instance=ExtResource("2_23sq5")]
-blood_points = 265
+blood_points = 290
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=2012856353]
 stream = ExtResource("5_qsicn")

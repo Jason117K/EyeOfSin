@@ -168,7 +168,7 @@ func _ready() -> void:
 
 
 func _configure_waves() -> void:
-	zombie_spawner.set_waves_from_dicts([{"Reborn": 2}, {"Reborn": 4}, {"Reborn": 5, "Severed" : 1}])
+	zombie_spawner.set_waves_from_dicts([{"Reborn": 2}, {"Reborn": 4}, {"Reborn": 4, "Severed" : 1}])
 
 
 func finish_ready() -> void:

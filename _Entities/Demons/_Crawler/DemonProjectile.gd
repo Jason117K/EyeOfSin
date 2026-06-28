@@ -167,6 +167,7 @@ func on_hit(area: Area2D) -> void:
 			area.set_on_fire()
 		area.take_damage(false,damage,piercing)
 		if piercing == false:
+			
 			queue_free() 
 		else:
 			damage = damage - 0.5

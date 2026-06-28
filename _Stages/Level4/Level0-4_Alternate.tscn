@@ -1012,7 +1012,7 @@ layout_mode = 1
 is_alt = true
 
 [node name="DemonManager" parent="." unique_id=1445746792 instance=ExtResource("2_qrjcg")]
-blood_points = 300
+blood_points = 325
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1094768339]
 process_mode = 1

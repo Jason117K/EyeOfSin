@@ -359,6 +359,10 @@ func trigger_ultimate()->void:
 	Global.un_ready_ultimate()
 	ultimate_buffed = true 
 	generate_blood()
+
+func _cleanup_manager()->void:
+	Global.decrement_occulum_count()
+	super()
 	
 	
 	

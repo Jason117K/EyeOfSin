@@ -108,7 +108,7 @@ func check_attack_rays() -> void:
 				#	if parent_demon.is_in_group()
 						
 						
-func shoot_projectile() -> void:
+func shoot_projectile(is_ult:bool=false) -> void:
 	AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	if shoot_positions.is_empty():
 			#print("SHOOTING HERE")

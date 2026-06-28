@@ -20,11 +20,11 @@ var laser_shoot_comp_1: Node
 var laser_shoot_comp_2: Node
 
 var cooldown: float = 3
-var occulum_buff_cooldown: float = 0.9
+var occulum_buff_cooldown: float = 2
 var auto_fire := true
 var projectile_speed := 600
 var projectile_damage := 20
-var bleed_damage_increase := 2
+var bleed_damage_increase := 3
 
 func _ready() -> void:
 
@@ -110,8 +110,22 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 		projectile_to_buff.damage = parent_demon.maw_damage
 		projectile_to_buff.column_explode = true
 
+
+func shoot_projectile(is_ult:bool=false) -> void:
+	super()
+	if is_ult:
+		projectile.speed = projectile.speed * 2
+	
+	
 func wyrm_bleed_buff() -> void:
 	isWyrmBleedBuffed = true
+
+func occulumBuff()->void:
+	isOcculumBuffed = true 
+	cooldown_timer.wait_time = occulum_buff_cooldown
+	cooldown_timer.start()
+	pass
+	
 	
 func debuff()->void:
 	super()

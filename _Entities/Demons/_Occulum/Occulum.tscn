@@ -926,9 +926,10 @@ position = Vector2(0, 1)
 collision_mask = 3
 script = ExtResource("1")
 bloodWaitTime = 33.0
-wyrmBloodWaitTime = 45.0
+wyrmBloodWaitTime = 40.0
 crawlerBloodWaitTime = 25.0
 maw_health = 600
+mana_add_on_generate_blood = 10
 health = 125.0
 maxHealth = 125.0
 
@@ -985,13 +986,12 @@ hive_buffed_health = 375
 health = 800.0
 
 [node name="HealZone" type="Area2D" parent="." unique_id=302133168]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealZone" unique_id=1133432548]
 shape = SubResource("CircleShape2D_3r88c")
 
 [node name="Ellipse" type="Node2D" parent="HealZone" unique_id=1388740585 node_paths=PackedStringArray("polygon", "line")]
-modulate = Color(1, 0, 0, 0.14902)
+modulate = Color(1, 0, 0, 0)
 script = ExtResource("2_kvwqv")
 polygon = NodePath("Fill")
 stroke_width = 0.0
@@ -1192,7 +1192,6 @@ mouse_filter = 1
 texture_normal = ExtResource("29_he6yk")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1414885338]
-visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2047447869]

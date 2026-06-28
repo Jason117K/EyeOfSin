@@ -38,7 +38,6 @@
 [ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="20_ut0b8"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_07b0m"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="21_8h700"]
-[ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="21_a4agt"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_au3v8"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="22_yobro"]
 [ext_resource type="Texture2D" uid="uid://be43mxb3vs0h" path="res://_Assets/Environment/Tilesets/Level1FloorProps.png" id="23_m3w0o"]
@@ -49,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://drxg2xulwp8jh" path="res://_Entities/LevelSpecial/SynShark_PurpleSheet.png" id="43_83onn"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_3q86g"]
 [ext_resource type="Texture2D" uid="uid://cty5pujg0pwjm" path="res://_Entities/LevelSpecial/SynShark_REDPurpleSheet.png" id="44_m5aj2"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="44_ut0b8"]
 [ext_resource type="Script" uid="uid://c3r7dyhk4np8e" path="res://_Stages/Level6/syn_shark.gd" id="45_6knlj"]
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="48_oaclh"]
 [ext_resource type="PackedScene" uid="uid://cd0jfk3m2t8g2" path="res://_Stages/Level6/sacrifice_detection_area.tscn" id="49_lk4we"]
@@ -1066,8 +1066,9 @@ new_power_description = "TELEPORTS ZOMBIES"
 new_power_texture = ExtResource("2_ut0b8")
 new_end_dialog = "res://_Assets/Dialog/level_06_end_dialog.dtl"
 wave2StartTime = 70
-wave3StartTime = 80
+wave3StartTime = 85
 wave4StartTime = 100
+wave5StartTime = 100
 debug = false
 skip_end_dialog = false
 
@@ -1078,7 +1079,7 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]
-blood_points = 700
+blood_points = 325
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
@@ -1413,8 +1414,7 @@ visible = false
 layout_mode = 1
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("21_a4agt")
-volume_db = -80.0
+stream = ExtResource("44_ut0b8")
 autoplay = true
 bus = &"music"
 

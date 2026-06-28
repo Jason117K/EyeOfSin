@@ -21,7 +21,7 @@ func apply_buffs_to_projectile(projectile)->void:
 	super(projectile)
 	projectile.damage = 1
 
-func shoot_projectile() -> void:
+func shoot_projectile(is_ult:bool=false) -> void:
 	super()
 	#AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	#for shoot_pos in shoot_positions:

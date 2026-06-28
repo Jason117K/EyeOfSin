@@ -18,7 +18,6 @@ var is_enabled := true
 
 signal ultimate_bar_clicked
 
-
 @onready var all_charges :Array[TextureButton]= [charge_1,charge_2,charge_3,charge_4]
 @onready var all_charges_backwards :Array[TextureButton]= [charge_4,charge_3,charge_2,charge_1]
 
@@ -68,11 +67,14 @@ func set_progress_bar_value(new_progress_bar_value : float)->void:
 func disable_ult()->void:
 	is_enabled = false 
 	modulate = Color(1,1,1,0)
+	for charge in all_charges:
+		charge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func enable_ult()->void:
 	is_enabled = true 
 	modulate = Color(1,1,1,1)
-	
+	for charge in all_charges:
+		charge.mouse_filter = Control.MOUSE_FILTER_STOP
 		
 
 		

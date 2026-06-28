@@ -123,7 +123,8 @@ func _on_level_6_pressed() -> void:
 		Global.game_controller.change_dual_scenes(level0_6, level0_6Alt)
 
 func _on_level_7_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level7, level7_alt)
+	Global.game_controller.change_dual_scenes(level8, level8_alt)
+	
 
 
 
@@ -148,7 +149,7 @@ func _on_test_gus_level_1_pressed() -> void:
 
 
 func _on_level_8_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level8, level8_alt)
+	Global.game_controller.change_dual_scenes(level7, level7_alt)
 
 
 func _on_level_9_pressed() -> void:

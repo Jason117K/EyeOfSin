@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="9_nlv0i"]
 [ext_resource type="Resource" uid="uid://i2ubkdlb3dw" path="res://_Stages/WaveData/waveOfReborn.tres" id="10_iik2j"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="11_aq7ty"]
+[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_a508m"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://_Assets/Environment/Props/CoralSmall_PROP.png" id="31_muo1e"]
 [ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://_Assets/Environment/Props/CoralBig_Prop.png" id="32_vphce"]
 [ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://_Common/Shaders/swayShader.tres" id="33_trwfh"]
@@ -24,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://_Assets/Environment/BloodTree.png" id="41_5x6eb"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="42_scs8m"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="43_op0o6"]
-[ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="44_dutw8"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="45_twaj3"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="49_tcoe3"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="50_gu5ui"]
@@ -71,7 +71,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ayrsk")
-wave2StartTime = 45
+wave2StartTime = 75
+wave3StartTime = 90
+wave4StartTime = 100
+wave5StartTime = 105
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_1q7ww")]
 layout_mode = 1
@@ -84,7 +87,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("5_tx0oi")]
-blood_points = 1500
+blood_points = 400
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
@@ -399,8 +402,7 @@ sprite_frames = SubResource("SpriteFrames_b1vmi")
 environment = ExtResource("43_op0o6")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("44_dutw8")
-volume_db = -80.0
+stream = ExtResource("25_a508m")
 autoplay = true
 bus = &"music"
 

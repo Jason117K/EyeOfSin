@@ -47,7 +47,7 @@ func _on_shoot_timer_timeout() -> void:
 		animSpriteComp.animation = animSpriteComp.currentAttackAnim
 		animSpriteComp.play()
 
-func shoot_projectile() -> void:
+func shoot_projectile(is_ult:bool=false) -> void:
 	super()
 	Global.add_mana(parent_demon.mana_add_on_shot)
 	#if hiveBuffed:

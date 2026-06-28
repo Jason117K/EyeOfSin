@@ -1157,6 +1157,7 @@ occulum_buffed_max_health = 1200
 maw_buffed_health = 1500
 maw_buffed_max_health = 1500
 spike_damage = 34
+mana_add_on_block_damage = 20
 syn_shield_position = Vector2(-2, -3)
 hit_flash_duration = 0.25
 

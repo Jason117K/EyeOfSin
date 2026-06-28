@@ -70,6 +70,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_fr6qv")
+isGreenDimension = true
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("2_vo0lm")]
 layout_mode = 1

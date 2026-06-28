@@ -62,9 +62,9 @@ func _ready() -> void:
 	
 	
 	if "Level0-1" in Global.game_controller.get_active_dimension().name:
-		$PreviewNodes/BloodTileFront.modulate = Color(1,1,1,0)
-		$PreviewNodes/BloodTileBack1.modulate = Color(1,1,1,0)
-		$PreviewNodes/BloodTileBack2.modulate = Color(1,1,1,0)
+		$PreviewNodes/BloodTileFront1.modulate = Color(1,1,1,0)
+		$PreviewNodes/BloodTileFront2.modulate = Color(1,1,1,0)
+		
 
 func hide_old_preview()->void:
 	$PreviewNodes/PreviewCard.visible = false 
