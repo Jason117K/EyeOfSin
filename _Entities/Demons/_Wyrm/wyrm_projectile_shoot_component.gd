@@ -22,7 +22,6 @@ var laser_shoot_comp_2: Node
 var cooldown: float = 3
 var occulum_buff_cooldown: float = 2
 var auto_fire := true
-var projectile_speed := 600
 var projectile_damage := 20
 var bleed_damage_increase := 3
 
@@ -38,7 +37,7 @@ func _ready() -> void:
 	cooldown = parent_demon.projectile_cooldown
 	auto_fire = parent_demon.projectile_auto_fire
 	occulum_buff_cooldown = parent_demon.occulum_buff_cooldown
-	projectile_speed = parent_demon.projectile_speed
+	
 	projectile_damage = parent_demon.projectile_damage
 	bleed_damage_increase = parent_demon.bleed_damage_increase
 	damage = projectile_damage
@@ -88,6 +87,8 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	projectile_to_buff.is_slowing = false
 	projectile_to_buff.damage = projectile_damage
 	projectile_to_buff.speed = projectile_speed
+	
+	
 	to_global(attack_rays[0].target_position)
 	projectile_to_buff.max_distance_can_travel = (attack_rays[0].target_position).x
 	print()

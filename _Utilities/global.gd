@@ -1,5 +1,7 @@
 extends Node
 
+var recovery_blood_value := 200 
+
 var style_menu : Control
 
 var canPlayLevel2: bool = true
@@ -456,6 +458,13 @@ func reset_demon_managers()->void:
 			demon_managers_temp.append(demon_manager)
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
+	
+func add_blood_to_demon_manager(is_green:bool=false)->void:
+	for demon_manager in demon_managers:
+		if is_green == demon_manager.is_green:
+			demon_manager.add_blood(recovery_blood_value)
+	
+	
 	
 func register_syn_ability_instance(new_syn_ability : Area2D)->void:
 	print("Register Syn Ability ", new_syn_ability)

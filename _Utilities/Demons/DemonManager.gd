@@ -26,6 +26,8 @@ var queen_placement_count := 0
 
 var empty_demon_to_place :  Demon
 
+var is_green : bool
+
 signal demon_placed(grid_position: Vector2)
 signal occulum_placed(grid_position: Vector2)
 signal crawler_placed(grid_position: Vector2)
@@ -38,6 +40,8 @@ signal demon_deselected()
 signal portal_placed
 
 func _ready() -> void:
+	is_green = get_parent().isGreenDimension
+	
 	if get_parent().has_method("crawler_placed"):
 		self.connect("_on_crawler_placed", Callable(get_parent(), "crawler_placed"))
 	print("blood_points is ", blood_points, str(blood_points))

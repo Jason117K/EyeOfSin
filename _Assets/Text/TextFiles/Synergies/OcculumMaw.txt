@@ -1,1 +1,2 @@
-Occulum produces more value blood at normal pace, if it eats an enemy, blood produced instantly
+Occulum produces higher value blood, and can eat enemies periodically, instantly killing them and generating blood.
+Increased health.

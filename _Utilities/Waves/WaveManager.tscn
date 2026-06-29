@@ -1,11 +1,54 @@
 [gd_scene format=3 uid="uid://b6a02kdhke01v"]
 
 [ext_resource type="Script" uid="uid://bh3xt7r8di81v" path="res://_Utilities/Waves/WaveManager.gd" id="1_ltxuo"]
+[ext_resource type="Script" uid="uid://bgjjfalvvpepe" path="res://_Utilities/Waves/lawnmower.gd" id="2_w60ey"]
+[ext_resource type="Texture2D" uid="uid://be2mu3gf26h6r" path="res://_Entities/Demons/Projectile/FlamingWebBall.png" id="3_hqf2s"]
+[ext_resource type="PackedScene" uid="uid://bm0ctyxpyuxig" path="res://_Utilities/Waves/lane_detector.tscn" id="4_hqf2s"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(96, 560)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwu7k"]
+atlas = ExtResource("3_hqf2s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x40r"]
+atlas = ExtResource("3_hqf2s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdtom"]
+atlas = ExtResource("3_hqf2s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8au5"]
+atlas = ExtResource("3_hqf2s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3o7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwu7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x40r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdtom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8au5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c7a0"]
+size = Vector2(30, 30)
+
 [node name="WaveManager" type="Node2D" unique_id=265852600]
+z_index = 1
 script = ExtResource("1_ltxuo")
 preview_lead_time = 25.0
 
@@ -15,23 +58,130 @@ one_shot = true
 [node name="PreviewTimer" type="Timer" parent="." unique_id=317321763]
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1139834561]
+[node name="Take_Damage_Area" type="Area2D" parent="." unique_id=1139834561]
+position = Vector2(-32, 0)
 collision_mask = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1183948714]
-position = Vector2(-16, 40)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Take_Damage_Area" unique_id=1183948714]
 shape = SubResource("1")
 
 [node name="DangerZone" type="Area2D" parent="." unique_id=1908742414]
-position = Vector2(96, 0)
+position = Vector2(66, 0)
 collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone" unique_id=2118464263]
-position = Vector2(-16, 40)
 shape = SubResource("1")
 
 [node name="CheckDangerZoneTimer" type="Timer" parent="." unique_id=530155188]
 wait_time = 2.0
 autostart = true
 
+[node name="LawnMower1" type="Area2D" parent="." unique_id=1582914846]
+z_index = 3
+position = Vector2(38, -167)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_w60ey")
+
+[node name="AnimSprite2D" type="AnimatedSprite2D" parent="LawnMower1" unique_id=1028238176]
+sprite_frames = SubResource("SpriteFrames_g3o7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LawnMower1" unique_id=585073885]
+shape = SubResource("RectangleShape2D_5c7a0")
+
+[node name="LawnMower2" type="Area2D" parent="." unique_id=1741529049]
+z_index = 3
+position = Vector2(38, -167)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_w60ey")
+
+[node name="AnimSprite2D" type="AnimatedSprite2D" parent="LawnMower2" unique_id=404243636]
+sprite_frames = SubResource("SpriteFrames_g3o7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LawnMower2" unique_id=631773206]
+shape = SubResource("RectangleShape2D_5c7a0")
+
+[node name="LawnMower3" type="Area2D" parent="." unique_id=1338835059]
+z_index = 3
+position = Vector2(38, -167)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_w60ey")
+
+[node name="AnimSprite2D" type="AnimatedSprite2D" parent="LawnMower3" unique_id=768322450]
+sprite_frames = SubResource("SpriteFrames_g3o7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LawnMower3" unique_id=781711548]
+shape = SubResource("RectangleShape2D_5c7a0")
+
+[node name="LawnMower4" type="Area2D" parent="." unique_id=1310436536]
+z_index = 3
+position = Vector2(38, -167)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_w60ey")
+is_green = true
+
+[node name="AnimSprite2D" type="AnimatedSprite2D" parent="LawnMower4" unique_id=275058380]
+sprite_frames = SubResource("SpriteFrames_g3o7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LawnMower4" unique_id=1922529952]
+shape = SubResource("RectangleShape2D_5c7a0")
+
+[node name="LawnMower5" type="Area2D" parent="." unique_id=1513051703]
+z_index = 3
+position = Vector2(38, -167)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_w60ey")
+is_green = true
+
+[node name="AnimSprite2D" type="AnimatedSprite2D" parent="LawnMower5" unique_id=1845489263]
+sprite_frames = SubResource("SpriteFrames_g3o7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LawnMower5" unique_id=1466042115]
+shape = SubResource("RectangleShape2D_5c7a0")
+
+[node name="LawnMower6" type="Area2D" parent="." unique_id=1307595065]
+z_index = 3
+position = Vector2(38, -167)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_w60ey")
+is_green = true
+
+[node name="AnimSprite2D" type="AnimatedSprite2D" parent="LawnMower6" unique_id=74303541]
+sprite_frames = SubResource("SpriteFrames_g3o7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LawnMower6" unique_id=1716050731]
+shape = SubResource("RectangleShape2D_5c7a0")
+
+[node name="Lane1" parent="." unique_id=796860425 instance=ExtResource("4_hqf2s")]
+position = Vector2(33, -87)
+
+[node name="Lane2" parent="." unique_id=509345145 instance=ExtResource("4_hqf2s")]
+position = Vector2(33, -55)
+
+[node name="Lane3" parent="." unique_id=1387791496 instance=ExtResource("4_hqf2s")]
+position = Vector2(33, -23)
+
+[node name="Lane4" parent="." unique_id=44843084 instance=ExtResource("4_hqf2s")]
+position = Vector2(33, 9)
+
+[node name="Lane5" parent="." unique_id=712320489 instance=ExtResource("4_hqf2s")]
+position = Vector2(33, 41)
+
+[node name="Lane6" parent="." unique_id=1663779572 instance=ExtResource("4_hqf2s")]
+position = Vector2(33, 73)
+
+[node name="Lane7" parent="." unique_id=1601398676 instance=ExtResource("4_hqf2s")]
+position = Vector2(33, 105)
+
 [connection signal="timeout" from="CheckDangerZoneTimer" to="." method="_on_check_danger_zone_timer_timeout"]
+[connection signal="area_entered" from="LawnMower1" to="LawnMower1" method="_on_area_entered"]
+[connection signal="area_entered" from="LawnMower2" to="LawnMower2" method="_on_area_entered"]
+[connection signal="area_entered" from="LawnMower3" to="LawnMower3" method="_on_area_entered"]
+[connection signal="area_entered" from="LawnMower4" to="LawnMower4" method="_on_area_entered"]
+[connection signal="area_entered" from="LawnMower5" to="LawnMower5" method="_on_area_entered"]
+[connection signal="area_entered" from="LawnMower6" to="LawnMower6" method="_on_area_entered"]

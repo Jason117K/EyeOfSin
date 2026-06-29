@@ -581,10 +581,16 @@ func get_alt_dimension() -> Node:
 	return current_scenes[0]
 
 func get_purple_dimension()->Control:
-	return current_scenes[0]
+	if current_scenes.size() > 0:
+		return current_scenes[0]
+	else:
+		return null
 
 func get_green_dimension()->Control:
-	return current_scenes[1]
+	if current_scenes.size() > 0:
+		return current_scenes[1]
+	else:
+		return null
 
 func get_other_dimension() -> Node:
 	if on_purple_scene():

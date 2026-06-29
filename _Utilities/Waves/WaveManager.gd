@@ -15,11 +15,11 @@ signal level_ended
 @export var preview_lead_time: float = 20.0
 
 ## Player health — will be extracted to a separate node later.
-@export var health_points: int = 20
+@export var health_points: int = 1000
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
-@onready var take_damage_area := $Area2D
+@onready var take_damage_area := $Take_Damage_Area
 @onready var danger_zone_area := $DangerZone
 
 var can_start: bool = true
@@ -35,9 +35,31 @@ var zombie_close : bool = false
 
 var elapsed_time_preview_on_screen : float
 
+@onready var lane_detector_1 = $Lane1
+@onready var lane_detector_2 = $Lane2
+@onready var lane_detector_3 = $Lane3
+@onready var lane_detector_4 = $Lane4
+@onready var lane_detector_5 = $Lane5
+@onready var lane_detector_6 = $Lane6
+@onready var lane_detector_7 = $Lane7
+
+@onready var all_lane_detectors = [lane_detector_1,lane_detector_2,lane_detector_3,
+					lane_detector_4,lane_detector_5,lane_detector_6,lane_detector_7]
+
+@onready var lawn_mower_1 := $LawnMower1
+@onready var lawn_mower_2 := $LawnMower2
+@onready var lawn_mower_3 := $LawnMower3
+@onready var lawn_mower_4 := $LawnMower4
+@onready var lawn_mower_5 := $LawnMower5
+@onready var lawn_mower_6 := $LawnMower6
+
+@onready var all_lawn_mowers := [lawn_mower_1,lawn_mower_2,lawn_mower_3,
+			lawn_mower_4, lawn_mower_5, lawn_mower_6]
+
 func _ready() -> void:
 	Global.register_wave_manager(self)
 	call_deferred("_setup")
+	
 
 
 func _setup() -> void:
@@ -51,6 +73,10 @@ func _setup() -> void:
 	print("_total_waves for waveManager is : ", _total_waves)
 
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
+	
+	for detector in all_lane_detectors:
+		detector.zombie_detected.connect(launch_lawnmower)
+		
 	
 
 	_wave_previews = []
@@ -254,3 +280,22 @@ func _on_check_danger_zone_timer_timeout() -> void:
 				Global.make_pip_glow()
 	if zombie_close == false :
 		Global.stop_pip_glow()
+
+
+func launch_lawnmower(area_to_clear : Area2D, is_green : bool = false)->void:
+	if all_lawn_mowers.size()>0:
+		print("Going to Launch LawnMower, Mowers Left is ", all_lawn_mowers.size())
+		
+	for mower in all_lawn_mowers:
+		
+		if is_green:
+			if mower.is_green:
+				all_lawn_mowers.erase(mower)
+				mower.launch(area_to_clear)
+				return
+		else:
+			if !mower.is_green:
+				print("Mower to Launch Is ", mower)
+				all_lawn_mowers.erase(mower)
+				mower.launch(area_to_clear)
+				return

@@ -1,2 +1,2 @@
-Blood heals demons behind on pickup
-Occulum has more health, produces slightly blood faster.
+Occulum produces Blood at a faster rate. 
+Blood burst heals nearby Demons on pickup.

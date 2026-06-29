@@ -1,1 +1,2 @@
-Occulum heals units around itself
+Emits a continuous healing over time area of effect.
+Produces Blood faster. 

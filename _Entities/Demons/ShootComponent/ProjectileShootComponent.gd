@@ -3,8 +3,9 @@ class_name ProjectileShootComponent extends Node2D
 #@onready var shootTimer := $"../ShootTimer"
 @onready var base_shoot_interval := 3.0
 @onready var parent_demon: Demon = get_parent()
-var damage := 60
 @onready var og_damage := damage
+
+var damage := 60
 var attack_speed_mult := 1.0
 var projectile_spawn_offest: Vector2 = Vector2(16, 0)
 
@@ -23,6 +24,8 @@ var projectile : Node
 var animSpriteComp : AnimatedSprite2D
 var node_ready := false
 var shoot_positions: Array = []
+var projectile_speed := 600
+
 
 # Map of animation_name -> which frame triggers the shot
 # Might Have to Have Heart Specific in Future 
@@ -39,7 +42,7 @@ func _ready() -> void:
 	#shootTimer.start()  # Start the shoot timer
 	#shootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	animSpriteComp.frame_changed_signal.connect(_on_sprite_frame_changed)
-	
+	projectile_speed = parent_demon.projectile_speed
 	
 func set_attack_rays_collision()->void:
 	if parent_demon.is_in_group("Green"):

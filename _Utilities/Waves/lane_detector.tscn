@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bm0ctyxpyuxig"]
+
+[ext_resource type="Script" uid="uid://ijq1mlqhbcl4" path="res://_Utilities/Waves/lane_detector.gd" id="1_ebjj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w60ey"]
+size = Vector2(25, 25)
+
+[node name="Lane1" type="Area2D" unique_id=796860425]
+collision_layer = 0
+collision_mask = 24
+script = ExtResource("1_ebjj4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1655471596]
+shape = SubResource("RectangleShape2D_w60ey")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

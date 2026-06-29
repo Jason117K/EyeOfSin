@@ -1,3 +1,2 @@
-Blood emits lane damaging effect on pickup 
-Produces higher value blood
-Produces blood slower 
+Blood emits lane damaging effect on pickup. 
+Produces higher value blood slower.

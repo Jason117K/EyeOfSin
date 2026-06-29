@@ -5,6 +5,7 @@ extends Demon
 @export var spiderling_wait_time := 2
 @export var spinalOcculumHealth: float = 375
 
+@export var projectile_speed := 325
 @export var damage: float = 10
 @export var general_damage_increase := 10.0
 @export var attack_speed_mult := 1.0
@@ -13,9 +14,11 @@ extends Demon
 @export var shoot_interval := 2.0 #Fire time is this val + anim time, currently +0.6
 @export var buffed_range_target_pos := Vector2(375.0,0)
 @export var mana_add_on_shot := 100 
+@export var lightning_projectile_damage := 15 #2   # Damage dealt to zombies
+
+@export var ultimate_timer_wait_time := 0.2
 
 var ultimate_timer : Timer 
-@export var ultimate_timer_wait_time := 0.2
 var volleys_fired : int = 0
 var ultimate_max_volleys : int = 8
 

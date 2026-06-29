@@ -1,10 +1,11 @@
 extends ProjectileShootComponent
 
+@onready var attack_ray_1 := $"../DMG_RayCast2D"
+@onready var web_spit_fx := $"../AnimatedSpriteComponent/WebSpitFX"
+
 var blood_worth_to_add := 0
 var shoot_interval: float
 var shoot_timer: Timer
-@onready var attack_ray_1 := $"../DMG_RayCast2D"
-@onready var web_spit_fx := $"../AnimatedSpriteComponent/WebSpitFX"
 var second_shot_timer: Timer
 var damage_increase := 10
 

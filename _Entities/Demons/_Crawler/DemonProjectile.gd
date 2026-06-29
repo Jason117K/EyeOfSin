@@ -5,12 +5,13 @@ extends Area2D
 @onready var lightning_zone_visual := $LightningZoneAnimSprite
 @onready var projectile_anim_sprite := $ProjectileAnimSprite
 
-@export var speed := 300  # Speed of the projectile
-@export var damage :float= 20 #2   # Damage dealt to zombies
-@export var lightning_damage := 10 #2   # Damage dealt to zombies
-var blood_worth_to_add := 0
-@export var bleed_damage := 1
+var bleed_damage := 0
+
+var speed := 325  # Speed of the projectile
+var damage :float= 20 #2   # Damage dealt to zombies
+var lightning_damage := 15 #2   # Damage dealt to zombies
 var max_distance_can_travel :float= 0
+var blood_worth_to_add := 0
 
 
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
