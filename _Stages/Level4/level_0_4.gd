@@ -128,7 +128,7 @@ func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
 											{},                                                  #(0)
-											{ "Severed": 6}])                                    #(3)
+											{ "Severed": 5}])                                    #(3)
 											
 	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
@@ -136,18 +136,18 @@ func _configure_waves() -> void:
 											{"Reborn": 5, "Reanimator" : 1}])                   #(11)
 											
 	zombie_spawner_3.set_waves_from_dicts([{"Reborn":5,"Severed":2},                             #(2)
-											{"Severed": 6},                                      #(3)    
+											{"Severed": 5},                                      #(3)    
 											{"Severed": 2, "Unhallower":1},                      #(6)
-											{"Severed": 3, "Reanimator":1}])                     #(11-)
+											{"Severed": 2, "Reanimator":1}])                     #(11-)
 											
 	zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
 											{"Reborn": 5, "Severed":2},                          #(2)
-											{"Reborn": 5, "Unhallower": 1},                      #(6)
+											{"Reborn": 4, "Unhallower": 1},                      #(6)
 											{"Reborn": 3, "Unhallower": 2}])                     #(11-)
 											
 	zombie_spawner_5.set_waves_from_dicts([{"Reborn":5,"Severed":2},                             #(2)
 											{"Reborn": 5, "Severed":2, "Unhallower":1},          #(7)
-											{"Reborn": 10, "Severed": 2, "Unhallower":1},        #(8)
+											{"Reborn": 8, "Severed": 2, "Unhallower":1},        #(8)
 											{"Reborn": 3,"Reanimator":1}])                      #(11-)
 											
 	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)

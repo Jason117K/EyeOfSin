@@ -23,6 +23,8 @@ var has_pulsed := false
 @export var wave3StartTime := 60
 @export var wave4StartTime := 75
 @export var wave5StartTime := 90
+@export var wave6StartTime := 100
+
 
 @export var debug := true
 @export var skip_tutorials := false  # true = skip all tutorial messages; level free-plays

@@ -1231,7 +1231,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"phase_in",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1257,7 +1257,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"phase_out",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvbwg"]
@@ -1273,8 +1273,11 @@ size = Vector2(98, 20)
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_vvbwg")
-health = 500
+piercing_cooldown = 8.0
+health = 1000
+has_armor = true
 speed = 8.0
+attack_power = 100
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=871038836 node_paths=PackedStringArray("polygon", "line")]
 position = Vector2(2, 16)
@@ -1342,8 +1345,6 @@ position = Vector2(-36, -8)
 sprite_frames = SubResource("SpriteFrames_qnxgt")
 animation = &"attack"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.97444403
 flip_h = true
 script = ExtResource("12_vvbwg")
 
@@ -1351,7 +1352,7 @@ script = ExtResource("12_vvbwg")
 visible = false
 position = Vector2(19, -50)
 sprite_frames = SubResource("SpriteFrames_ar4ol")
-animation = &"idle"
+animation = &"attack"
 flip_h = true
 script = ExtResource("16_h78d2")
 targetGlowColor = Color(0.67058825, 0, 0, 1)

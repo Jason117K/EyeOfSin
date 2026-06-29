@@ -171,13 +171,13 @@ func _configure_waves() -> void:
 	pass
 	zombie_spawner_1.set_waves_from_dicts([{},
 											{"Severed": 2},                #(2)
-											{"Severed": 6}])               #(3)
+											{"Severed": 5}])               #(3)
 	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 5},                  #(1)
 											{"Reborn": 5, "Severed": 2},   #(2)
-											{"Reborn": 5, "Severed": 4}])  #(3)  
+											{"Reborn": 5, "Severed": 3}])  #(3)  
 	zombie_spawner_3.set_waves_from_dicts([{"Reborn": 5},                  #(1)
 											{"Reborn": 5, "Severed": 2},   #(2)
-											{"Severed": 6}])               #(3)
+											{"Severed": 5}])               #(3)
 
 
 func _find_green_dimension() -> void:

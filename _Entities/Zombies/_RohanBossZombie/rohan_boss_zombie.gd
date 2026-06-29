@@ -34,6 +34,7 @@ enum P2State { MOVE, ATTACK, REALMSWAP }
 @export_category("Rohan Boss")
 @export var piercing_cooldown: float = 9.0    # always counts down, in every state
 @export var buff_cooldown: float = 20.0       # only counts down while in MOVE
+@export var dash_cooldown: float = 7.0          # only counts down while in MOVE
 @export var dash_speed: float = 110.0
 @export var dash_stop_gap: float = 32.0        # stop this far in front of the dash target
 
@@ -47,6 +48,8 @@ var _starting_health: float = 0.0
 var _state: State = State.MOVE
 var _piercing_cd: float = 0.0
 var _buff_cd: float = 0.0
+var _dash_cd : float = 0.0
+@export var phase_2_health_mult := 2.0
 
 # ATTACK (shared by both phases — phases never run simultaneously)
 var _attack_elapsed: float = 0.0
@@ -78,6 +81,7 @@ func _ready() -> void:
 		#Global.unlock_zombie("Rohan")
 	_piercing_cd = piercing_cooldown
 	_buff_cd = buff_cooldown
+	_dash_cd = dash_cooldown
 	_starting_health = healthComp.maxHealth
 	_setup_zone_masks()
 	_set_single_mask(phase2_ray, 3 if is_in_group("Green") else 2)
@@ -144,6 +148,7 @@ func _tick_phase1(delta: float) -> void:
 
 func _tick_move(delta: float) -> void:
 	_buff_cd = maxf(0.0, _buff_cd - delta)   # only decrements in MOVE
+	_dash_cd = maxf(0.0, _dash_cd - delta)   # only decrements in MOVE
 	# Detection/zone queries are invalid for the first physics frames after spawn,
 	# so gate them on the base spawn-setup flag.
 	if _spawn_setup_done:
@@ -155,8 +160,9 @@ func _tick_move(delta: float) -> void:
 			return
 		var dash_target = _nearest_demon_in_dash_zone()
 		if dash_target != null:
-			_enter_dash(dash_target)
-			return
+			if _dash_cd <= 0.0:
+				_enter_dash(dash_target)
+				return
 	speedComp.tick(delta)
 	_play(&"idle")
 
@@ -271,7 +277,7 @@ func die() -> void:
 # Async: die anim → reveal phase-2 sprite (phase_in) → swap ray/hurtbox → realm swap.
 func _enter_phase2() -> void:
 	_phase = Phase.TRANSITION
-	healthComp.resetHealth(_starting_health)   # refill (sync, before first await)
+	healthComp.resetHealth(_starting_health * phase_2_health_mult)   # refill (sync, before first await)
 
 	animatedSprite.play(&"die")
 	await animatedSprite.animation_finished
@@ -364,6 +370,7 @@ func _realm_swap_sequence() -> void:
 	_realmswap_cd = realmswap_cooldown
 	_consecutive_attacks = 0
 	_p2_state = P2State.MOVE
+	phase2_sprite.set_hue_shift(1)
 
 
 # Move Rohan to the opposite dimension's GameLayer and re-point every

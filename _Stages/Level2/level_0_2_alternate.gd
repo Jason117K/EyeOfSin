@@ -21,14 +21,14 @@ func _ready() -> void:
 
 func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{"Reborn": 5},                  #(1)
-											{"Reborn": 5, "Severed": 2},   #(2)
-											{"Severed": 6}])                #(3)
+											{"Reborn": 4, "Severed": 2},   #(2)
+											{"Severed": 5}])                #(3)
 	zombie_spawner_2.set_waves_from_dicts([{"Reborn": 5},                  #(1)
 											{"Reborn": 5, "Severed": 2},   #(2)
-											{"Reborn": 6, "Severed": 4}])  #(3)  
+											{"Reborn": 6, "Severed": 3}])  #(3)  
 	zombie_spawner_3.set_waves_from_dicts([{},                              #(1)
 											{"Severed": 4},                 #(2)
-											{"Severed": 6}])                #(3)
+											{"Severed": 5}])                #(3)
 
 
 func start_game() -> void:

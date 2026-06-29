@@ -71,6 +71,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_s1607")
+wave2StartTime = 70
+wave3StartTime = 85
+wave4StartTime = 105
+wave5StartTime = 110
+wave6StartTime = 115
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_vaj4a")]
 layout_mode = 1
@@ -83,7 +88,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("5_3ij1o")]
-blood_points = 1500
+blood_points = 500
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1

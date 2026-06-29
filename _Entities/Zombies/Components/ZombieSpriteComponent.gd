@@ -162,6 +162,13 @@ func _apply_hue_shift() -> void:
 		
 # Public API methods
 func set_hue_shift(degrees: float) -> void:
+	if degrees == 1:
+		await get_tree().physics_frame
+		if self.is_in_group("Green"):
+			degrees = 125
+		else:
+			degrees = -86
+	
 	hue_shift = clamp(degrees, -180.0, 180.0)
 	_apply_hue_shift()
 	

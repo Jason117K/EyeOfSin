@@ -240,7 +240,7 @@ func _on_auto_pick_up_timer_timeout() -> void:
 	print("Origin Occulum is ", origin_occulum)
 	var elapsed_sec := (Time.get_ticks_msec() - _spawn_tick_msec) / 1000.0
 	var dim := "Green" if is_in_group("Green") else "Purple"
-	print("[BLOOD AUTOPICKUP] dim=", dim, " configured_wait=", auto_pickup_timer.wait_time, "s  actual_elapsed=", elapsed_sec, "s  value_before_halving=", BloodValue, " counter=", counter)
+	print("[BLOOD AUTOPICKUP] dim=", dim, " configured_wait=", auto_pickup_timer.wait_time, "s  actual_elapsed=", elapsed_sec, "s  value_before_halving=", BloodValue, " counter=", counter, " play_auto_blood_collect_sound_fx: ", play_auto_blood_collect_sound_fx)
 	if play_auto_blood_collect_sound_fx:
 		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
@@ -274,7 +274,7 @@ func crawler_buff() -> void:
 
 func wyrm_buff() -> void:
 	self.scale = Vector2(1.2,1.2)
-	BloodValue = 75
+	BloodValue = 70
 	wyrmBuff = true
 
 func hive_buff() -> void:
@@ -284,12 +284,14 @@ func maw_buff() -> void:
 	BloodValue = 100
 
 func set_fast_pickup_time() -> void:
+	play_auto_blood_collect_sound_fx = false
 	auto_pickup_timer.wait_time = fast_pick_up_time
 	auto_pickup_timer.start()
 	decrease_blood_val = false
 	self.scale = Vector2(0.3,0.3)
 	BloodValue = 2.0
-	play_auto_blood_collect_sound_fx = false
+	
+	print("Set Auto Collect Sound to ", play_auto_blood_collect_sound_fx)
 	#BloodValue = 150 
 	
 	

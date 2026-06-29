@@ -197,7 +197,7 @@ func _on_lightning_zone_area_entered(area: Area2D) -> void:
 		
 # Function to handle blood generation
 func generate_blood() -> void:
-	print("Generating Blood")
+	print("Generating Blood From Proj")
 	var blood_instance := blood_scene.instantiate()
 	get_parent().add_child(blood_instance) 
 	blood_instance.set_fast_pickup_time() 

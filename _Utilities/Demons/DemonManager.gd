@@ -457,7 +457,8 @@ func add_blood(amount: int) -> void:
 	
 
 func play_blood_collect() -> void:
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
+	pass
+	#AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	
 
 func _on_SetBlood_timeout() -> void:
