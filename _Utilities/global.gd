@@ -1069,11 +1069,12 @@ func get_current_ui_layer()->Control:
 	return null
 			
 func unlock_zombie(unlocked_zombie : String)->void:
-	for zombie_name : String in ZombieRegistry.SCENES:
-		if zombie_name == unlocked_zombie && zombie_name not in unlocked_zombie_array:
-			print("Just Unlocked ", zombie_name)
-			unlocked_zombie_array.append(zombie_name)
-			get_current_ui_layer().set_zombie_unlock_notif(zombie_name)
+	if gameIsStarted:
+		for zombie_name : String in ZombieRegistry.SCENES:
+			if zombie_name == unlocked_zombie && zombie_name not in unlocked_zombie_array:
+				print("Just Unlocked ", zombie_name)
+				unlocked_zombie_array.append(zombie_name)
+				get_current_ui_layer().set_zombie_unlock_notif(zombie_name)
 
 
 func unlock_buff(unlocked_buff : String)->void:

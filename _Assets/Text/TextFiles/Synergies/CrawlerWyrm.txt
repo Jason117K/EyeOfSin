@@ -1,2 +1,2 @@
-Shots now have a damaging lightning AOE 
-Shoots slower 
+Shots have a damaging lightning AOE. 
+Shoots slower. 

@@ -1,3 +1,1 @@
-Spyder periodically spawns a spiderling that runs down the lane. 
-Upgraded :
-Half of all shots are dpulicated and carried by wasps nesting on the spyders back to adjacent lanes.
+Crawler periodically spawns a spiderling that runs down the lane. 

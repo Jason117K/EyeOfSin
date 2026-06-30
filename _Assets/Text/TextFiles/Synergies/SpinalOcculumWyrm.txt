@@ -1,1 +1,1 @@
-Spinal Occulum now damages enemies that attack it
+Spinal-Occulum continously spawns small blood swords from the ground in front of it, dealing damage.
