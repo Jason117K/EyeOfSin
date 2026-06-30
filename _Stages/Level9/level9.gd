@@ -1,6 +1,7 @@
 extends LevelTemplate
 # level_0_6.gd - Level 0-6 Controller (no forced demon tutorial, just zombie explanation)
-#750
+#500
+
 # Preloaded demo scenes
 var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 

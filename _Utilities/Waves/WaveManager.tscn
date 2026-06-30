@@ -78,7 +78,7 @@ autostart = true
 
 [node name="LawnMower1" type="Area2D" parent="." unique_id=1582914846]
 z_index = 3
-position = Vector2(38, -167)
+position = Vector2(-30, -166)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_w60ey")
@@ -91,7 +91,7 @@ shape = SubResource("RectangleShape2D_5c7a0")
 
 [node name="LawnMower2" type="Area2D" parent="." unique_id=1741529049]
 z_index = 3
-position = Vector2(38, -167)
+position = Vector2(-30, -166)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_w60ey")
@@ -104,7 +104,7 @@ shape = SubResource("RectangleShape2D_5c7a0")
 
 [node name="LawnMower3" type="Area2D" parent="." unique_id=1338835059]
 z_index = 3
-position = Vector2(38, -167)
+position = Vector2(-30, -166)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_w60ey")
@@ -117,7 +117,7 @@ shape = SubResource("RectangleShape2D_5c7a0")
 
 [node name="LawnMower4" type="Area2D" parent="." unique_id=1310436536]
 z_index = 3
-position = Vector2(38, -167)
+position = Vector2(-30, -166)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_w60ey")
@@ -131,7 +131,7 @@ shape = SubResource("RectangleShape2D_5c7a0")
 
 [node name="LawnMower5" type="Area2D" parent="." unique_id=1513051703]
 z_index = 3
-position = Vector2(38, -167)
+position = Vector2(-30, -166)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_w60ey")
@@ -145,7 +145,7 @@ shape = SubResource("RectangleShape2D_5c7a0")
 
 [node name="LawnMower6" type="Area2D" parent="." unique_id=1307595065]
 z_index = 3
-position = Vector2(38, -167)
+position = Vector2(-30, -166)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("2_w60ey")

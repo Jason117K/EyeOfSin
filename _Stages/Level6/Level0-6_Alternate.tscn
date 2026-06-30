@@ -79,10 +79,12 @@ debug = false
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("20_21wrt")]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 make_green = true
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_wf2ra")]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 is_alt = true
 

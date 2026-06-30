@@ -1,6 +1,6 @@
 extends LevelTemplate
 # level_0_6.gd - Level 0-6 Controller (no forced demon tutorial, just zombie explanation)
-#750
+#325
 #70
 #100
 #80

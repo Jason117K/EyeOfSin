@@ -1,5 +1,5 @@
 extends LevelTemplate
-#750
+#400
 # Preloaded demo scenes
 var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 

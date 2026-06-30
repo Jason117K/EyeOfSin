@@ -1,6 +1,6 @@
 extends LevelTemplate
 # level_0_4.gd - Level 0-4 Tutorial Controller
-#500
+#325
 #75,95,90
 # Preloaded demo scenes
 var summoner_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/summoner_zombie_demo.tscn")
