@@ -36,6 +36,8 @@ func _ready() -> void:
 	new_zombie_unlocked_button.hide()
 	new_demon_unlocked_button.hide()
 	Global.register_ui_layer(self)
+	if Global.wave_manager != null:
+		Global.wave_manager.player_health.health_changed.connect(set_health)
 	if blood_label != null:
 		blood_label.text = str(blood_amount)
 	
@@ -60,6 +62,10 @@ func get_health_panel()->Control:
 
 func get_the_health() -> Node:
 	return health_label
+
+func set_health(current : int) -> void:
+	if health_label != null:
+		health_label.text = str(current)
 
 func set_blood(new_blood_amount: float) -> void:
 	_blood_pulse_id += 1

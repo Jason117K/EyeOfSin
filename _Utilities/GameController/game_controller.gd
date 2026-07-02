@@ -252,7 +252,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		#print(scene1_path , "This Should Make Pip Show")
 		#pip.show_pip()
 	print(scene1_path)
-	$CurrentScene/WaveManager.call_deferred("_ready")
+	$CurrentScene/WaveManager.call_deferred("setup_level")
 	await get_tree().process_frame
 	get_tree().paused = false
 

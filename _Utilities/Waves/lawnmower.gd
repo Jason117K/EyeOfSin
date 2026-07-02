@@ -2,10 +2,12 @@ extends Area2D
 
 @export var is_green := false 
 
-var is_launched := false 
+var is_launched := false
 var speed := 200
 var max_distance := 800
-var distance_traveled := 0 
+var distance_traveled := 0
+
+@onready var _home_position := position
 
 
 func _ready() -> void:
@@ -24,9 +26,24 @@ func _physics_process(delta: float) -> void:
 		self.position.x += delta * speed
 		distance_traveled +=  delta * speed
 		if distance_traveled > max_distance:
-			print(self,"Now Queue Free Mower")
-			queue_free()
-		#Queue Free When Gone Too Far
+			print(self,"Now Deactivate Mower")
+			_deactivate()
+
+
+# Pooled, not freed: mowers are children of the persistent WaveManager, so a
+# freed mower would be gone for every later level/restart.
+func _deactivate()->void:
+	is_launched = false
+	visible = false
+	set_deferred("monitoring", false)
+
+
+func reset_for_level()->void:
+	position = _home_position
+	distance_traveled = 0
+	is_launched = false
+	visible = true
+	set_deferred("monitoring", true)
 
 
 func _on_area_entered(area: Area2D) -> void:

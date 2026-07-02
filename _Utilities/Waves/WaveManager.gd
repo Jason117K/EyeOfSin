@@ -14,12 +14,7 @@ signal level_ended
 ## Seconds before a wave starts that the preview icon appears.
 @export var preview_lead_time: float = 20.0
 
-## Player health — will be extracted to a separate node later.
-@export var health_points: int = 1000
-# Snapshot at first tree entry so _setup can restore full health on restart
-# (WaveManager persists across level loads; @export keeps the damaged value).
-@onready var _initial_health_points: int = health_points
-
+@onready var player_health: PlayerHealth = $PlayerHealth
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
 @onready var take_damage_area := $Take_Damage_Area
@@ -61,20 +56,26 @@ var elapsed_time_preview_on_screen : float
 
 func _ready() -> void:
 	Global.register_wave_manager(self)
-	call_deferred("_setup")
-	
+	player_health.depleted.connect(_lose)
+	call_deferred("setup_level")
 
 
-func _setup() -> void:
+# Re-run by GameController.change_dual_scenes on every level load/restart —
+# must stay idempotent. WaveManager itself persists across loads.
+func setup_level() -> void:
 	waveDelayTimer.stop()
 	previewTimer.stop()
 	_spawners_finished = 0
 	_all_spawning_done = false
-	
+
 	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
 	print("_total_waves for waveManager is : ", _total_waves)
-	health_points = _initial_health_points
+	player_health.reset()
+	all_lawn_mowers = [lawn_mower_1,lawn_mower_2,lawn_mower_3,
+				lawn_mower_4, lawn_mower_5, lawn_mower_6]
+	for mower in all_lawn_mowers:
+		mower.reset_for_level()
 
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
 
@@ -111,13 +112,6 @@ func _setup() -> void:
 	if not previewTimer.timeout.is_connected(_on_preview_timer_timeout):
 		previewTimer.timeout.connect(_on_preview_timer_timeout)
 
-	#var purple = get_tree().get_first_node_in_group("Purple")
-	#var green = get_tree().get_first_node_in_group("Green")
-	#if purple and purple.has_method("get_health_ui"):
-		#purple.get_health_ui().text = str(health_points)
-	#if green and green.has_method("get_health_ui"):
-		#green.get_health_ui().text = str(health_points)
-	
 
 
 func get_wave_count() -> int:
@@ -254,15 +248,7 @@ func _on_damage_area_entered(area: Area2D) -> void:
 
 func subtract_health() -> void:
 	ScoreManager.set_lives_lost()
-	health_points -= 1
-	var purple : Node = get_tree().get_first_node_in_group("Purple")
-	var green : Node = get_tree().get_first_node_in_group("Green")
-	if purple and purple.has_method("get_health_ui"):
-		purple.get_health_ui().text = str(health_points)
-	if green and green.has_method("get_health_ui"):
-		green.get_health_ui().text = str(health_points)
-	if health_points <= 0:
-		_lose()
+	player_health.damage(1)
 
 
 func _lose() -> void:
