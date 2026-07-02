@@ -154,6 +154,7 @@ var new_power_unlocked := true
 func _ready() -> void:
 	Global.adjust_ui_layer()
 	Global.reset_all_variables()
+	ScoreManager.reset()
 	
 	waveManager.level_ended.connect(_on_level_ended)
 	

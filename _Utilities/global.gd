@@ -291,10 +291,28 @@ func un_ready_ultimate()->void:
 
 func reset_all_variables()->void:
 	gameIsStarted = false
+	hero_demon_summoned = false
+	ultimate_is_ready = false
+	occulumCountVisual = 0
 	reset_swap_ability()
 	resetOcculumCount()
 	reset_demon_managers()
 	reset_all_zombies()
+	reset_all_demons()
+	reset_syn_registries()
+	# Compact (don't clear): both dimensions' level roots call this in _ready,
+	# and their children have already registered by then (children ready first).
+	ui_layers = compact_registrations(ui_layers)
+	wave_previews = compact_registrations(wave_previews)
+
+# NOTE: must build a NEW array (see resetOcculumCount) — never append to the
+# array being iterated.
+func compact_registrations(registered : Array) -> Array:
+	var valid : Array = []
+	for item in registered:
+		if item != null and is_instance_valid(item):
+			valid.append(item)
+	return valid
 
 func get_files_in_folder(path: String, prefix: String) -> Array[String]:
 	var files: Array[String] = []
@@ -570,7 +588,21 @@ func deregister_lightning_ball(new_lightning_ball:Area2D)->void:
 	else:
 		green_lightning_ball = null
 	print(registered_lightning_balls, " now has size lightning balls : ",registered_lightning_balls.size() )
-	
+
+# Deployed syn instances are freed with their level scenes, but nothing
+# deregisters them on a restart — clear outright so no stale cached refs
+# survive into the next run. Safe to clear (vs compact): none exist at load.
+func reset_syn_registries()->void:
+	registered_syn_abilities.clear()
+	purple_syn_ability = null
+	green_syn_ability = null
+	registered_syn_shields.clear()
+	purple_syn_shield = null
+	green_syn_shield = null
+	registered_lightning_balls.clear()
+	purple_lightning_ball = null
+	green_lightning_ball = null
+
 
 
 	
@@ -989,6 +1021,9 @@ func get_all_zombies() -> Array:
 
 func reset_all_zombies()->void:
 	all_zombies.clear()
+
+func reset_all_demons()->void:
+	all_demons = compact_registrations(all_demons)
 	
 func set_zombie_info_bar(zombie : Zombie) -> void:
 	#print(" notification_bar" , notification_bar)

@@ -16,25 +16,12 @@ var lives_lost := 0
 var no_lives_lost_bonus := 750 
 var some_lives_lost_bonus := 150 
 
-var SSS_Rank_Completion_Bonus : float = 3000
-var S_Rank_Completion_Bonus : float = 2500
-var A_Rank_Completion_Bonus : float = 2000
-var B_Rank_Completion_Bonus : float = 1500
-var C_Rank_Completion_Bonus : float = 1000
-var D_Rank_Completion_Bonus : float = 500
-
-var SSS_Rank_Completion_Time : float 
-var S_Rank_Completion_Time : float 
-var A_Rank_Completion_Time : float 
-var B_Rank_Completion_Time : float 
-var C_Rank_Completion_Time : float 
-var D_Rank_Completion_Time : float 
-var completion_time_bonus : float 
+# Both arrays are indexed by SCORE_RANKS (SSS..D).
+var completion_bonuses : Array[float] = [3000.0, 2500.0, 2000.0, 1500.0, 1000.0, 500.0]
+var completion_time_thresholds : Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+var completion_time_bonus : float
 var completion_time_rank : SCORE_RANKS
-var completion_time : float 
-var all_completion_time_ranks : Array[float] = [SSS_Rank_Completion_Time,S_Rank_Completion_Time,
-						A_Rank_Completion_Time,B_Rank_Completion_Time,C_Rank_Completion_Time,
-						D_Rank_Completion_Time]
+var completion_time : float
 
 
 enum SCORE_RANKS{SSS,S,A,B,C,D}
@@ -53,7 +40,18 @@ signal level_ended
 
 func _ready() -> void:
 	pass
-	
+
+# Called from level_template._ready so scores never carry across restarts/levels.
+func reset()->void:
+	total_score = 0.0
+	synergy_multiplier = 1.0
+	style_points_before_bonus = 0
+	num_waves_called_early = 0
+	lives_lost = 0
+	completion_time_bonus = 0.0
+	completion_time_rank = SCORE_RANKS.SSS
+	completion_time = 0.0
+
 func calc_total_level_score()->float:
 	@warning_ignore("narrowing_conversion")
 	style_points_before_bonus = total_score
@@ -102,32 +100,19 @@ func set_lives_lost()->void:
 
 
 func set_completion_times(new_completion_time_thresholds : Array)->void:
-	var count :int= 0 
+	var count :int= 0
 	for completion_time_threshold : float in new_completion_time_thresholds:
-		all_completion_time_ranks[count] = completion_time_threshold
+		completion_time_thresholds[count] = completion_time_threshold
 		count += 1
-	
-	
+
+
 func calc_completion_time_rank(new_completion_time : float)->void:
 	completion_time = new_completion_time
-	if completion_time <= SSS_Rank_Completion_Time:
-		completion_time_rank = SCORE_RANKS.SSS
-		completion_time_bonus = SSS_Rank_Completion_Bonus
-	elif completion_time <= S_Rank_Completion_Time:
-		completion_time_rank = SCORE_RANKS.S
-		completion_time_bonus = S_Rank_Completion_Bonus
-	elif completion_time <= A_Rank_Completion_Time:
-		completion_time_rank = SCORE_RANKS.A
-		completion_time_bonus = A_Rank_Completion_Bonus
-	elif completion_time <= B_Rank_Completion_Time:
-		completion_time_rank = SCORE_RANKS.B
-		completion_time_bonus = B_Rank_Completion_Bonus
-	elif completion_time <= C_Rank_Completion_Time:
-		completion_time_rank = SCORE_RANKS.C
-		completion_time_bonus = C_Rank_Completion_Bonus
-	elif completion_time <= D_Rank_Completion_Time:
-		completion_time_rank = SCORE_RANKS.D
-		completion_time_bonus = D_Rank_Completion_Bonus
+	for rank : int in SCORE_RANKS.values():
+		if completion_time <= completion_time_thresholds[rank]:
+			completion_time_rank = rank as SCORE_RANKS
+			completion_time_bonus = completion_bonuses[rank]
+			return
 
 
 		

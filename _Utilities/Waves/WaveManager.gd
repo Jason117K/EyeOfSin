@@ -16,6 +16,9 @@ signal level_ended
 
 ## Player health — will be extracted to a separate node later.
 @export var health_points: int = 1000
+# Snapshot at first tree entry so _setup can restore full health on restart
+# (WaveManager persists across level loads; @export keeps the damaged value).
+@onready var _initial_health_points: int = health_points
 
 @onready var waveDelayTimer := $WaveDelayTimer
 @onready var previewTimer := $PreviewTimer
@@ -71,11 +74,13 @@ func _setup() -> void:
 	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
 	print("_total_waves for waveManager is : ", _total_waves)
+	health_points = _initial_health_points
 
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
-	
+
 	for detector in all_lane_detectors:
-		detector.zombie_detected.connect(launch_lawnmower)
+		if not detector.zombie_detected.is_connected(launch_lawnmower):
+			detector.zombie_detected.connect(launch_lawnmower)
 		
 	
 

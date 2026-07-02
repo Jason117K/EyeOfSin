@@ -6,12 +6,15 @@ parallel **dimensions** the player swaps between, and a spatial **demon synergy/
 
 ## Architecture
 
-**`Global` autoload is the hub.** Service-locator + registry for nearly everything (demons,
-zombies, occulums, portals, syn/swap abilities, lightning balls, shields, UI layers, demon
-managers, costs, synergies). Nodes **self-register** in `_ready` and **deregister** on death/free;
-cross-system access goes through `Global`, not node paths — follow this for new systems. Other
-autoloads: `GlobalResourceLoader`, `AudioManager`, `Dialogic`, `ScoreManager`. `SoundEffect` and
-`ZombieRegistry` are `class_name` globals (static data), **not** autoloads.
+**`Global` autoload is the hub — and its API is FROZEN (2026-07 refactor rule).** It is the
+service-locator + registry for nearly everything (demons, zombies, occulums, portals, syn/swap
+abilities, lightning balls, shields, UI layers, demon managers, costs, synergies). Nodes **self-register**
+in `_ready` and **deregister** on death/free. Existing call sites keep using `Global`
+indefinitely — do not churn them. But **never add new registries, helpers, preloads, or state to
+`Global`**: a new system gets its own module (`class_name` statics like `SoundEffect`/
+`ZombieRegistry`, a Resource catalog, or a node) and is referenced directly; files being
+rewritten for other reasons migrate to direct module references opportunistically. Other
+autoloads: `GlobalResourceLoader`, `AudioManager`, `Dialogic`, `ScoreManager` — do not add more.
 
 **Dual dimension ("Purple" / "Green") is THE core mechanic.** Every level ships as a pair: `LevelX`
 (Purple, default) + `LevelX_Alternate` (Green), loaded **simultaneously** as siblings under
@@ -52,6 +55,13 @@ a zone whose cell is occupied. A demon scene is previewable only if it contains 
 registered zombie (iterating a *duplicate* of `all_zombies`) and **early-returns on
 `get_tree().paused`** — zombies `set_process(false)`, so per-frame zombie logic belongs in `tick`,
 not `_process`. Zombie types differ by their components/abilities, not base tick.
+
+**Per-frame update order (current):** only zombie ticks are ordered (via `Global._process`,
+pause-gated). Everything else — `BuffNodes` overlap polling, syn charge accumulators
+(`syn_ability._process`), swap cooldown bar (`swap_ability._physics_process`) — runs in Godot
+default tree order with **no guaranteed ordering** relative to zombie ticks. Refactor Phase 6
+makes `Global._process` the explicit conductor: (1) zombies → (2) buff zones; syn/swap keep
+their own `_process`. Until then, don't add gameplay logic that assumes cross-system ordering.
 
 **Waves: data resources sequenced by the level.** Per-dimension `ZombieSpawner`s hold
 `Array[WaveData]` (`.tres`); `WaveManager` sequences them via a `wave_delays` array that **the level
@@ -94,7 +104,9 @@ uniforms.
   guards. To compact one, build a **new** array and filter — never alias an Array and append while
   iterating (reference type → infinite-loop hard-freeze on restart; already hit once).
   `register_demon_selection_menu` / `resetOcculumCount` are the correct templates.
-- **`ScoreManager` has no reset** — scores accumulate across level loads/restarts unless cleared.
+- **`ScoreManager.reset()` is called from `level_template._ready`** (alongside
+  `Global.reset_all_variables()`). Any new level-entry path that bypasses `level_template` must
+  call both, or scores/registries leak across runs.
 - **`add_child(scene)` runs the whole subtree's `_ready` synchronously on the main thread.** Each
   dimension instantiates a full DemonSelectionMenu + grids, so a blocking/looping child `_ready`
   freezes the game mid-transition. Restart re-enters `change_dual_scenes` — the hot path for
@@ -130,6 +142,28 @@ uniforms.
   below ~90 fps that are not game bugs.
 - **Perf ceiling ≈ 144 tentacles** (`curved_lines_2d` addon). LOD isn't viable; staggering deferred;
   GDExtension/compute under evaluation. Treat tentacle count as the perf-critical constraint.
+
+## Regression checklist (reference level: Level0-2)
+
+Run the relevant items after any change near the touched system; run the FULL list after
+refactor phases that touch the restart path, buff matching, or tick order.
+
+1. **Place:** each demon type in both dimensions; costs correct; Occulum +15/+25 cost scaling
+   per dimension; mirror-cell blocker prevents placement in the other dimension.
+2. **Buffs:** each demon gives + receives a buff; SpinalOcculum does NOT trigger Occulum-only
+   entries (and vice versa); debuff on buffer death.
+3. **Swap:** ability fires `begin()` *before* the dimension flip; bar fills; early-cancel =
+   normal cooldown, full duration = −2.5 s; lock toggle; PiP mirrors the inactive dimension.
+4. **Syn:** cast in both dimensions → pair links + connector drawn; 4× recharge while the other
+   half is deployed; cooldown starts at instance death.
+5. **Waves/health:** leak a zombie → ONE mower launch; health decrements in both dimension
+   labels; lose at 0; early-wave call adds blood + score.
+6. **Score:** completion-time rank varies with the level's exported thresholds; style points;
+   synergy multiplier growth.
+7. **Restart torture:** restart ×3 from purple pause, ×3 from green, once mid-wave with a
+   deployed syn instance + active swap ability + launched mower — no freeze, no error spam,
+   score 0, health full, mowers restored, costs reset, no stale connectors.
+8. **Progression:** advance to the next level normally; level-unlock flags intact.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **
