@@ -92,22 +92,25 @@ func set_level_title(new_level_title_text : String)->void:
 func set_time_rank()->void:
 	var completion_time : int = int(ScoreManager.get_completion_time())
 	time_label.text = "TIME: " + str(completion_time)
-	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.SSS]: 
+	# Thresholds ascend (SSS tightest); first match wins, like ScoreManager.
+	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.SSS]:
 		time_rank.text = "SSS"
 		time_rank_value = SCORE_RANKS.SSS
-	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.S]: 
+	elif ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.S]:
 		time_rank.text = "S"
 		time_rank_value = SCORE_RANKS.S
-	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.A]: 
+	elif ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.A]:
 		time_rank.text = "A"
 		time_rank_value = SCORE_RANKS.A
-	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.B]: 
+	elif ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.B]:
 		time_rank.text = "B"
 		time_rank_value = SCORE_RANKS.B
-	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.C]: 
+	elif ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.C]:
 		time_rank.text = "C"
 		time_rank_value = SCORE_RANKS.C
-	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.D]: 
+	else:
+		# Slower than the D threshold: no rank (screen persists across levels,
+		# so the text must always be set).
 		time_rank.text = "D"
 		time_rank_value = SCORE_RANKS.D
 

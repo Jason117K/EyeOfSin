@@ -61,12 +61,13 @@ var check_progress := false
 @export var skip_end_dialog := true
 
 @export_category("Completion Time Thresholds")
-@export var SSS_Rank_Completion_Time : int = 120 
-@export var S_Rank_Completion_Time : int = 110
-@export var A_Rank_Completion_Time : int = 100
-@export var B_Rank_Completion_Time : int = 90
-@export var C_Rank_Completion_Time : int = 80
-@export var D_Rank_Completion_Time : int = 70
+# Shorter is better: SSS is the tightest (smallest) time, D the loosest.
+@export var SSS_Rank_Completion_Time : int = 70
+@export var S_Rank_Completion_Time : int = 80
+@export var A_Rank_Completion_Time : int = 90
+@export var B_Rank_Completion_Time : int = 100
+@export var C_Rank_Completion_Time : int = 110
+@export var D_Rank_Completion_Time : int = 120
 
 @onready var all_time_thresholds :Array[int] = [SSS_Rank_Completion_Time,S_Rank_Completion_Time,
 	A_Rank_Completion_Time,B_Rank_Completion_Time,C_Rank_Completion_Time,D_Rank_Completion_Time]
