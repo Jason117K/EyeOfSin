@@ -113,8 +113,7 @@ func _ready() -> void:
 		
 	Global.register_demon_selection_menu(self)
 	Global.resetOcculumCount()
-	Global._load_demon_costs()
-	
+
 	if not CrawlerButton.pressed.is_connected(_on_CrawlerButton_pressed):
 		CrawlerButton.pressed.connect(_on_CrawlerButton_pressed)
 	if not OcculumButton.pressed.is_connected(_on_OcculumButton_pressed):

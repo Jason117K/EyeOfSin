@@ -104,11 +104,16 @@ func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false 
 
 
-func get_demon_icon()->CompressedTexture2D:
-	return Global.crawler_icon
-	
+# Heart has no catalog entry yet — it deliberately borrows Crawler's
+# presentation (pre-existing placeholder behavior).
+func get_demon_icon()->Texture2D:
+	return Global.demon_catalog.get_demon(&"Crawler").icon
+
 func get_special_description()->String:
-	return Global.crawler_special_description
+	var file := FileAccess.open(Global.demon_catalog.get_demon(&"Crawler").special_description_file, FileAccess.READ)
+	if file == null:
+		return ""
+	return file.get_line().to_upper()
 	
 	
 	

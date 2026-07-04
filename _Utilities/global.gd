@@ -37,8 +37,6 @@ var current_level : Node
 var hero_demon : Node
 var ui_layers  := []
 var wave_previews := []
-var demon_costs: Dictionary = {}
-var demon_scenes: Dictionary
 var should_hide_ui := false
 var demon_managers :Array= []
 var all_registered_occulum : Array = []
@@ -88,13 +86,6 @@ var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed
 										"Erupter":erupter_icon,"Flesheater":flesheater_icon,"Amalgam":amalgam_icon,
 										"Buffer":buffer_icon,"Rohan":rohan_icon}
 										
-var occulum_special_description := "res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt"
-var crawler_special_description :="res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt"
-var wyrm_special_description := "res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt"
-var spinal_occulum_special_description := "res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt"
-var hive_special_description := "res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt"
-var maw_special_description := "res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt"
-
 @onready var all_crawler_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Crawler")
 @onready var all_occulum_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Occulum")
 @onready var all_spinalocculum_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Spinal")
@@ -102,12 +93,8 @@ var maw_special_description := "res://_Entities/Demons/SpecialDescriptions/maw_s
 @onready var all_hive_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Hive")
 @onready var all_maw_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Maw")
 
-var occulum_icon := preload("res://_Assets/Sprites/Occulum.png")
-var crawler_icon := preload("res://_Assets/Sprites/Crawler.png")
-var wyrm_icon := preload("res://_Assets/Sprites/Wyrm.png")
-var spinal_occulum_icon := preload("res://_Assets/Sprites/SpinalOcculum.png")
-var hive_icon := preload("res://_Assets/Sprites/Hive.png")
-var maw_icon := preload("res://_Assets/Sprites/MawImage.png")
+# Demon identity/menu data (scene, icon, base cost, description) lives here.
+var demon_catalog : DemonCatalog = preload("res://_Entities/Demons/Definitions/DemonCatalog.tres")
 
 var syn_ability_manager_scene := preload("res://_Entities/SynAbility/syn_ability.tscn")
 
@@ -236,22 +223,6 @@ func register_skull_tile_highlight_area(new_skull_tile_highlight_area)->void:
 	skull_tile_highlight_area = new_skull_tile_highlight_area
 		
 
-func _load_demon_costs() -> void:
-	demon_scenes = {
-		"Occulum": "res://_Entities/Demons/_Occulum/Occulum.tscn",
-		"Crawler": "res://_Entities/Demons/_Crawler/Crawler.tscn",
-		"SpinalOcculum": "res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn",
-		"Wyrm": "res://_Entities/Demons/_Wyrm/Wyrm.tscn",
-		"Maw": "res://_Entities/Demons/_Maw/Maw.tscn",
-		"Hive": "res://_Entities/Demons/_Hive/Hive.tscn",
-	}
-	for demon_name : String in demon_scenes:
-		var scene: PackedScene = load(demon_scenes[demon_name])
-		var instance: Node = scene.instantiate()
-		demon_costs[demon_name] = instance.cost  # each demon script has an @export var cost: int
-		instance.queue_free()
-
-
 func free_portals()->void:
 	purple_portal.free_portal()
 	green_portal.free_portal()
@@ -261,11 +232,10 @@ func free_portals()->void:
 
 
 func get_demon_cost(demon_name: String) -> int:
-	if demon_costs == null:
+	var def : DemonDefinition = demon_catalog.get_demon(StringName(demon_name))
+	if def == null:
 		return -1
-	if demon_costs.size() < 1:
-		_load_demon_costs()
-	return demon_costs.get(demon_name, -1)
+	return def.base_cost
 	
 func is_on_purple_scene()->bool:
 	return game_controller.on_purple_scene()

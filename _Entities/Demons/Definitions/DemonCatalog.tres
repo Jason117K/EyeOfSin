@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="DemonCatalog" load_steps=21 format=3]
+
+[ext_resource type="Script" path="res://_Entities/Demons/Definitions/demon_catalog.gd" id="1_cat"]
+[ext_resource type="Script" path="res://_Entities/Demons/Definitions/demon_definition.gd" id="2_def"]
+[ext_resource type="PackedScene" path="res://_Entities/Demons/_Occulum/Occulum.tscn" id="3_occ"]
+[ext_resource type="PackedScene" path="res://_Entities/Demons/_Crawler/Crawler.tscn" id="4_cra"]
+[ext_resource type="PackedScene" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn" id="5_spi"]
+[ext_resource type="PackedScene" path="res://_Entities/Demons/_Wyrm/Wyrm.tscn" id="6_wyr"]
+[ext_resource type="PackedScene" path="res://_Entities/Demons/_Maw/Maw.tscn" id="7_maw"]
+[ext_resource type="PackedScene" path="res://_Entities/Demons/_Hive/Hive.tscn" id="8_hiv"]
+[ext_resource type="Texture2D" path="res://_Assets/Sprites/Occulum.png" id="9_occi"]
+[ext_resource type="Texture2D" path="res://_Assets/Sprites/Crawler.png" id="10_crai"]
+[ext_resource type="Texture2D" path="res://_Assets/Sprites/SpinalOcculum.png" id="11_spii"]
+[ext_resource type="Texture2D" path="res://_Assets/Sprites/Wyrm.png" id="12_wyri"]
+[ext_resource type="Texture2D" path="res://_Assets/Sprites/MawImage.png" id="13_mawi"]
+[ext_resource type="Texture2D" path="res://_Assets/Sprites/Hive.png" id="14_hivi"]
+
+[sub_resource type="Resource" id="Resource_Occulum"]
+script = ExtResource("2_def")
+id = &"Occulum"
+display_name = "Occulum"
+scene = ExtResource("3_occ")
+icon = ExtResource("9_occi")
+base_cost = 50
+special_description_file = "res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt"
+
+[sub_resource type="Resource" id="Resource_Crawler"]
+script = ExtResource("2_def")
+id = &"Crawler"
+display_name = "Crawler"
+scene = ExtResource("4_cra")
+icon = ExtResource("10_crai")
+base_cost = 75
+special_description_file = "res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt"
+
+[sub_resource type="Resource" id="Resource_SpinalOcculum"]
+script = ExtResource("2_def")
+id = &"SpinalOcculum"
+display_name = "SpinalOcculum"
+scene = ExtResource("5_spi")
+icon = ExtResource("11_spii")
+base_cost = 50
+special_description_file = "res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt"
+
+[sub_resource type="Resource" id="Resource_Wyrm"]
+script = ExtResource("2_def")
+id = &"Wyrm"
+display_name = "Wyrm"
+scene = ExtResource("6_wyr")
+icon = ExtResource("12_wyri")
+base_cost = 125
+special_description_file = "res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt"
+
+[sub_resource type="Resource" id="Resource_Maw"]
+script = ExtResource("2_def")
+id = &"Maw"
+display_name = "Maw"
+scene = ExtResource("7_maw")
+icon = ExtResource("13_mawi")
+base_cost = 275
+special_description_file = "res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt"
+
+[sub_resource type="Resource" id="Resource_Hive"]
+script = ExtResource("2_def")
+id = &"Hive"
+display_name = "Hive"
+scene = ExtResource("8_hiv")
+icon = ExtResource("14_hivi")
+base_cost = 175
+special_description_file = "res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt"
+
+[resource]
+script = ExtResource("1_cat")
+demons = [SubResource("Resource_Occulum"), SubResource("Resource_Crawler"), SubResource("Resource_SpinalOcculum"), SubResource("Resource_Wyrm"), SubResource("Resource_Maw"), SubResource("Resource_Hive")]
