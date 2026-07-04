@@ -24,7 +24,7 @@ var _is_transitioning := false
 @onready var level_switcher := $CurrentScene/LevelSwitcher
 
 # Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
-const DIM_BITS := [1 << 1, 1 << 2]
+const DIM_BITS := Dim.DIM_BITS
 const UI_BIT := 1
 var _default_root_cull_mask := 0xFFFFFFFF
 

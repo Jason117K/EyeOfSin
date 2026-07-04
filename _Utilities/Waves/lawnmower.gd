@@ -20,7 +20,7 @@ func _ready() -> void:
 # cull-mask checks are per CanvasItem), or the default shared UI bit renders
 # the mower in BOTH dimensions.
 func _init_visibility()->void:
-	var dim_bit : int = GameController.DIM_BITS[1] if is_green else GameController.DIM_BITS[0]
+	var dim_bit : int = Dim.DIM_BITS[1] if is_green else Dim.DIM_BITS[0]
 	visibility_layer = dim_bit
 	for child in get_children():
 		if child is CanvasItem:
@@ -38,9 +38,9 @@ func _exit_tree() -> void:
 
 func init_collision()->void:
 	if is_green:
-		self.set_collision_mask_value(5,true)
+		self.set_collision_mask_value(Dim.LAYER_GREEN_ZOMBIES, true)
 	else:
-		self.set_collision_mask_value(4,true)
+		self.set_collision_mask_value(Dim.LAYER_PURPLE_ZOMBIES, true)
 	
 
 func _physics_process(delta: float) -> void:

@@ -36,7 +36,7 @@ reverted in isolation.
 | — Self-healing mower pool | `1b860327` | DONE (playtest fallout; culprit diagnostic armed) |
 | — Mower dimension visibility | `d382df7c` | DONE (playtest fallout) |
 | 2 — UI glue out of Global | `a6ea4570` | DONE |
-| 3 — Buff targeting + Dim constants | | IN PROGRESS |
+| 3 — Buff targeting + Dim constants | (this commit) | DONE — awaiting buff-matrix playtest; dual-run safety net armed |
 | 4 — SynergyDefinition resource | | pending |
 | 5 — DemonDefinition catalog | | pending |
 | 6 — Deterministic tick + swap rewrite | | pending |
@@ -101,7 +101,17 @@ torture (checklist 7) incl. mashing restart against the `_is_transitioning` guar
 **Validation:** tutorial highlights pulse/clear identically (levels 1, 2, 5, 7, 8); PiP
 glow; synergy unlock → codex lands on correct page/tab for ≥5 pairs; zero behavior diff.
 
-## Phase 3 — Exact-name buff targeting + `Dim` constants (IN PROGRESS)
+## Phase 3 — Exact-name buff targeting + `Dim` constants (DONE — playtest pending)
+
+*Implementation notes:* `giveBuffTo` was a plain var (not @export) with the identical
+full list on every demon — the "allow-list" was universal, so no scene edits were
+needed and current behavior = "buff all six types, exclude Drones/Heart/EmptyDemon".
+`get_demon_true_name()` coverage verified: six types override it; base returns ""
+(never matches) for Heart/EmptyDemon/future demons — matching old behavior. The dead
+SpinalOcculum/Wyrm special case (a `pass` with a TODO) was dropped. Collision-constant
+conversion scoped to files this refactor touches (demon_base, BuffNodes, lawnmower) per
+the hybrid rule — the ~18 zombie-side files migrate opportunistically.
+`GameController.DIM_BITS` now references `Dim.DIM_BITS` (single source).
 
 1. **Create `_Utilities/dim.gd`** (`class_name Dim`): `PURPLE`/`GREEN` StringNames,
    collision constants (`LAYER_PURPLE_DEMONS=2`, `LAYER_GREEN_DEMONS=3`,

@@ -162,37 +162,37 @@ func _process(delta: float) -> void:
 			_on_ResetThisColor_timeout()
 
 func _init_collision_layer(this_area : Area2D) -> void:
-	if self.is_in_group("Green"):
-		this_area.set_collision_layer_value(1, false)
-		this_area.set_collision_layer_value(2, false)
-		this_area.set_collision_layer_value(3, true)
+	if self.is_in_group(Dim.GREEN):
+		this_area.set_collision_layer_value(Dim.LAYER_SHARED, false)
+		this_area.set_collision_layer_value(Dim.LAYER_PURPLE_DEMONS, false)
+		this_area.set_collision_layer_value(Dim.LAYER_GREEN_DEMONS, true)
 	else:
-		this_area.set_collision_layer_value(1, false)
-		this_area.set_collision_layer_value(2, true)
-		this_area.set_collision_layer_value(3, false)
+		this_area.set_collision_layer_value(Dim.LAYER_SHARED, false)
+		this_area.set_collision_layer_value(Dim.LAYER_PURPLE_DEMONS, true)
+		this_area.set_collision_layer_value(Dim.LAYER_GREEN_DEMONS, false)
 
 func _init_collision_mask(this_area : Area2D, detect_zombie :bool = true) -> void:
 	if detect_zombie:
-		if self.is_in_group("Green"):
-			this_area.set_collision_mask_value(1,false)
-			this_area.set_collision_mask_value(2,false)
-			this_area.set_collision_mask_value(3,false)
-			this_area.set_collision_mask_value(4,false)
-			this_area.set_collision_mask_value(5,true)
+		if self.is_in_group(Dim.GREEN):
+			this_area.set_collision_mask_value(Dim.LAYER_SHARED, false)
+			this_area.set_collision_mask_value(Dim.LAYER_PURPLE_DEMONS, false)
+			this_area.set_collision_mask_value(Dim.LAYER_GREEN_DEMONS, false)
+			this_area.set_collision_mask_value(Dim.LAYER_PURPLE_ZOMBIES, false)
+			this_area.set_collision_mask_value(Dim.LAYER_GREEN_ZOMBIES, true)
 		else:
-			this_area.set_collision_mask_value(1,false)
-			this_area.set_collision_mask_value(2,false)
-			this_area.set_collision_mask_value(3,false)
-			this_area.set_collision_mask_value(4,true)
+			this_area.set_collision_mask_value(Dim.LAYER_SHARED, false)
+			this_area.set_collision_mask_value(Dim.LAYER_PURPLE_DEMONS, false)
+			this_area.set_collision_mask_value(Dim.LAYER_GREEN_DEMONS, false)
+			this_area.set_collision_mask_value(Dim.LAYER_PURPLE_ZOMBIES, true)
 	else:
-		if self.is_in_group("Green"):
-			this_area.set_collision_mask_value(1,false)
-			this_area.set_collision_mask_value(2,false)
-			this_area.set_collision_mask_value(3,true)
+		if self.is_in_group(Dim.GREEN):
+			this_area.set_collision_mask_value(Dim.LAYER_SHARED, false)
+			this_area.set_collision_mask_value(Dim.LAYER_PURPLE_DEMONS, false)
+			this_area.set_collision_mask_value(Dim.LAYER_GREEN_DEMONS, true)
 		else:
-			this_area.set_collision_mask_value(1,false)
-			this_area.set_collision_mask_value(2,true)
-			this_area.set_collision_mask_value(3,false)
+			this_area.set_collision_mask_value(Dim.LAYER_SHARED, false)
+			this_area.set_collision_mask_value(Dim.LAYER_PURPLE_DEMONS, true)
+			this_area.set_collision_mask_value(Dim.LAYER_GREEN_DEMONS, false)
 					
 		
 func _wire_signals() -> void:
