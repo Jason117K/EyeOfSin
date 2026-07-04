@@ -44,15 +44,11 @@ var elapsed_time_preview_on_screen : float
 @onready var all_lane_detectors = [lane_detector_1,lane_detector_2,lane_detector_3,
 					lane_detector_4,lane_detector_5,lane_detector_6,lane_detector_7]
 
-@onready var lawn_mower_1 := $LawnMower1
-@onready var lawn_mower_2 := $LawnMower2
-@onready var lawn_mower_3 := $LawnMower3
-@onready var lawn_mower_4 := $LawnMower4
-@onready var lawn_mower_5 := $LawnMower5
-@onready var lawn_mower_6 := $LawnMower6
+const LAWN_MOWER_SCENE := preload("res://_Utilities/Waves/LawnMower.tscn")
+const LAWN_MOWER_COUNT := 6  # 1-3 purple, 4-6 green
+const LAWN_MOWER_HOME := Vector2(-30, -166)
 
-@onready var all_lawn_mowers := [lawn_mower_1,lawn_mower_2,lawn_mower_3,
-			lawn_mower_4, lawn_mower_5, lawn_mower_6]
+var all_lawn_mowers : Array = []
 
 func _ready() -> void:
 	Global.register_wave_manager(self)
@@ -72,10 +68,7 @@ func setup_level() -> void:
 	_total_waves = wave_delays.size() + 1
 	print("_total_waves for waveManager is : ", _total_waves)
 	player_health.reset()
-	all_lawn_mowers = [lawn_mower_1,lawn_mower_2,lawn_mower_3,
-				lawn_mower_4, lawn_mower_5, lawn_mower_6]
-	for mower in all_lawn_mowers:
-		mower.reset_for_level()
+	_ensure_lawn_mowers()
 
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
 
@@ -271,6 +264,24 @@ func _on_check_danger_zone_timer_timeout() -> void:
 				Global.make_pip_glow()
 	if zombie_close == false :
 		Global.stop_pip_glow()
+
+
+# Self-healing mower pool: something outside WaveManager can free a launched
+# mower (culprit unconfirmed — lawnmower.gd logs a warning when it happens),
+# so never trust old refs; re-find or recreate each slot every level.
+func _ensure_lawn_mowers() -> void:
+	all_lawn_mowers = []
+	for i in range(LAWN_MOWER_COUNT):
+		var mower_name := "LawnMower%d" % (i + 1)
+		var mower : Node = get_node_or_null(mower_name)
+		if mower == null or not is_instance_valid(mower):
+			mower = LAWN_MOWER_SCENE.instantiate()
+			mower.name = mower_name
+			mower.is_green = i >= 3
+			mower.position = LAWN_MOWER_HOME
+			add_child(mower)
+		mower.reset_for_level()
+		all_lawn_mowers.append(mower)
 
 
 func launch_lawnmower(area_to_clear : Area2D, is_green : bool = false)->void:

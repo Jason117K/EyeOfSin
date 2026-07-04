@@ -14,6 +14,15 @@ func _ready() -> void:
 	init_collision()
 
 
+# DIAGNOSTIC (remove once the culprit is found): mowers are pooled and should
+# never leave the tree mid-session, yet something frees launched mowers.
+# When this fires, the warning + stack in the output names the caller.
+func _exit_tree() -> void:
+	push_warning("[MOWER] '%s' leaving tree (launched=%s, pos=%s, parent=%s)"
+			% [name, str(is_launched), str(position), str(get_parent())])
+	print_stack()
+
+
 func init_collision()->void:
 	if is_green:
 		self.set_collision_mask_value(5,true)
