@@ -82,8 +82,8 @@ func baal_buff()->void:
 func receive_buff(bufferName:Demon) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())
 	if !isBuffed:
-		super(demonName)
 		unlock_new_buff(demonName)
+		super(demonName)
 		match demonName:
 			"Occulum":
 				blood_rib.show()

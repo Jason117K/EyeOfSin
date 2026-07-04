@@ -170,6 +170,22 @@ func _start_free_play() -> void:
 	Global.show_pip()
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
+	place_spinal_occulum()
+	get_green_dimension().hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
+
+func place_spinal_occulum()->void:
+	demonManager.add_blood(150)
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(176,240))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(176,112))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_SpinalOcculumButton_pressed()
+	demonManager.place_demon(Vector2(176,176))
+	await get_tree().physics_frame
+	get_green_dimension().pre_place_spinal_occulum()
 
 func getIsPurpleDimension():
 	return
@@ -214,18 +230,7 @@ func _explain_pre_placed_spinal_occulum()->void:
 	print("Explain Pre Placed Spinal Occulum")
 	show_demon_selection_menu()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum"])
-	demonManager.add_blood(150)
-	await get_tree().physics_frame
-	demonSelectionMenu._on_SpinalOcculumButton_pressed()
-	demonManager.place_demon(Vector2(176,240))
-	await get_tree().physics_frame
-	demonSelectionMenu._on_SpinalOcculumButton_pressed()
-	demonManager.place_demon(Vector2(176,112))
-	await get_tree().physics_frame
-	demonSelectionMenu._on_SpinalOcculumButton_pressed()
-	demonManager.place_demon(Vector2(176,176))
-	await get_tree().physics_frame
-	get_green_dimension().pre_place_spinal_occulum()
+	place_spinal_occulum()
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_PRE_PLACED_LVL2, false)
 	auto_advance = true 
 	set_auto_advance_toolTip(7)

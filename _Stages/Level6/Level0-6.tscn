@@ -1073,11 +1073,9 @@ debug = false
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_lk4we")]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]

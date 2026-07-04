@@ -41,6 +41,7 @@ func _on_return_to_menu_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
+	Global.skip_tutorials = true
 	# Reload whichever two dimension scenes are currently live, instead of the per-menu
 	# restartScene/restartSceneAlt exports — those are never set on the green dimension's
 	# pause menu, so restarting from green passed empty paths and crashed on load("").

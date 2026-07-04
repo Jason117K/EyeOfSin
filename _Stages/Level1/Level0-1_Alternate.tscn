@@ -2093,7 +2093,7 @@ bus = &"music"
 environment = ExtResource("21_kx3dj")
 
 [node name="DemonManager" parent="." unique_id=987854628 instance=ExtResource("2_6jrws")]
-blood_points = 100
+blood_points = 125
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=719022700]
 process_mode = 1

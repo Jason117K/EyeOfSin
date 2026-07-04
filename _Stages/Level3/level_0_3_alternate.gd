@@ -111,3 +111,7 @@ func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 		"Unhallower":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+
+func place_spinal_occulum()->void:
+	pass
+	

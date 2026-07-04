@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene format=3 uid="uid://cv7b6q46xq7jx"]
 
 [ext_resource type="Script" uid="uid://bgjjfalvvpepe" path="res://_Utilities/Waves/lawnmower.gd" id="1_mower"]
 [ext_resource type="Texture2D" uid="uid://be2mu3gf26h6r" path="res://_Entities/Demons/Projectile/FlamingWebBall.png" id="2_mower"]
@@ -42,16 +42,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw"]
 size = Vector2(30, 30)
 
-[node name="LawnMower" type="Area2D"]
+[node name="LawnMower" type="Area2D" unique_id=634316522]
 z_index = 3
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_mower")
 
-[node name="AnimSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimSprite2D" type="AnimatedSprite2D" parent="." unique_id=682840306]
 sprite_frames = SubResource("SpriteFrames_mw")
+autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=351443356]
 shape = SubResource("RectangleShape2D_mw")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
