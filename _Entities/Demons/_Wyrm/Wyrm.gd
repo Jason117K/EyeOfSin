@@ -189,19 +189,8 @@ func debuff() -> void:
 func unlock_new_buff(demonName:String)->void:
 	if isBuffed == false:
 		if Global.game_controller.current_scenes.size()>1:
-			match demonName:
-				"Occulum":
-					wyrm_buff_unlocked.emit(Global.occulum_wyrm_synergy)
-				"Crawler":
-					wyrm_buff_unlocked.emit(Global.crawler_wyrm_synergy)
-				"SpinalOcculum":
-					wyrm_buff_unlocked.emit(Global.spinal_occulum_wyrm_synergy)
-				"Wyrm":
-					pass
-				"Hive":
-					wyrm_buff_unlocked.emit(Global.hive_wyrm_synergy)
-				"Maw":
-					wyrm_buff_unlocked.emit(Global.maw_wyrm_synergy)
+			if demonName != get_demon_true_name():
+				wyrm_buff_unlocked.emit(SynergyDefinition.make_id(demonName, get_demon_true_name()))
 					
 					
 					

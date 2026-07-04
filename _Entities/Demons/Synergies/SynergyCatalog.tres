@@ -1,0 +1,308 @@
+[gd_resource type="Resource" script_class="SynergyCatalog" load_steps=33 format=3]
+
+[ext_resource type="Script" path="res://_Entities/Demons/Synergies/synergy_catalog.gd" id="1_cat"]
+[ext_resource type="Script" path="res://_Entities/Demons/Synergies/synergy_definition.gd" id="2_def"]
+
+[sub_resource type="Resource" id="Resource_CrawlerOcculum"]
+script = ExtResource("2_def")
+id = &"CrawlerOcculum"
+source_demon = &"Crawler"
+target_demon = &"Occulum"
+display_name = "Crawler + Occulum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/OcculumCrawler.txt"
+codex_page = &"Occulum"
+codex_alt_index = 4
+
+[sub_resource type="Resource" id="Resource_SpinalocculumOcculum"]
+script = ExtResource("2_def")
+id = &"SpinalocculumOcculum"
+source_demon = &"SpinalOcculum"
+target_demon = &"Occulum"
+display_name = "SpinalOcculum + Occulum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/OcculumSpinalOcculum.txt"
+codex_page = &"Occulum"
+codex_alt_index = 5
+
+[sub_resource type="Resource" id="Resource_WyrmOcculum"]
+script = ExtResource("2_def")
+id = &"WyrmOcculum"
+source_demon = &"Wyrm"
+target_demon = &"Occulum"
+display_name = "Wyrm + Occulum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/OcculumWyrm.txt"
+codex_page = &"Occulum"
+codex_alt_index = 6
+
+[sub_resource type="Resource" id="Resource_HiveOcculum"]
+script = ExtResource("2_def")
+id = &"HiveOcculum"
+source_demon = &"Hive"
+target_demon = &"Occulum"
+display_name = "Hive + Occulum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/OcculumHive.txt"
+codex_page = &"Occulum"
+codex_alt_index = 3
+
+[sub_resource type="Resource" id="Resource_MawOcculum"]
+script = ExtResource("2_def")
+id = &"MawOcculum"
+source_demon = &"Maw"
+target_demon = &"Occulum"
+display_name = "Maw + Occulum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/OcculumMaw.txt"
+codex_page = &"Occulum"
+codex_alt_index = 2
+
+[sub_resource type="Resource" id="Resource_CrawlerWyrm"]
+script = ExtResource("2_def")
+id = &"CrawlerWyrm"
+source_demon = &"Crawler"
+target_demon = &"Wyrm"
+display_name = "Crawler + Wyrm"
+description_file = "res://_Assets/Text/TextFiles/Synergies/WyrmCrawler.txt"
+codex_page = &"Wyrm"
+codex_alt_index = 5
+
+[sub_resource type="Resource" id="Resource_OcculumWyrm"]
+script = ExtResource("2_def")
+id = &"OcculumWyrm"
+source_demon = &"Occulum"
+target_demon = &"Wyrm"
+display_name = "Occulum + Wyrm"
+description_file = "res://_Assets/Text/TextFiles/Synergies/WyrmOcculum.txt"
+codex_page = &"Wyrm"
+codex_alt_index = 2
+
+[sub_resource type="Resource" id="Resource_SpinalocculumWyrm"]
+script = ExtResource("2_def")
+id = &"SpinalocculumWyrm"
+source_demon = &"SpinalOcculum"
+target_demon = &"Wyrm"
+display_name = "SpinalOcculum + Wyrm"
+description_file = "res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum.txt"
+codex_page = &"Wyrm"
+codex_alt_index = 6
+
+[sub_resource type="Resource" id="Resource_HiveWyrm"]
+script = ExtResource("2_def")
+id = &"HiveWyrm"
+source_demon = &"Hive"
+target_demon = &"Wyrm"
+display_name = "Hive + Wyrm"
+description_file = "res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt"
+codex_page = &"Wyrm"
+codex_alt_index = 3
+
+[sub_resource type="Resource" id="Resource_MawWyrm"]
+script = ExtResource("2_def")
+id = &"MawWyrm"
+source_demon = &"Maw"
+target_demon = &"Wyrm"
+display_name = "Maw + Wyrm"
+description_file = "res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt"
+codex_page = &"Wyrm"
+codex_alt_index = 4
+
+[sub_resource type="Resource" id="Resource_CrawlerSpinalocculum"]
+script = ExtResource("2_def")
+id = &"CrawlerSpinalocculum"
+source_demon = &"Crawler"
+target_demon = &"SpinalOcculum"
+display_name = "Crawler + SpinalOcculum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumCrawler.txt"
+codex_page = &"SpinalOcculum"
+codex_alt_index = 5
+
+[sub_resource type="Resource" id="Resource_OcculumSpinalocculum"]
+script = ExtResource("2_def")
+id = &"OcculumSpinalocculum"
+source_demon = &"Occulum"
+target_demon = &"SpinalOcculum"
+display_name = "Occulum + SpinalOcculum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumOcculum.txt"
+codex_page = &"SpinalOcculum"
+codex_alt_index = 2
+
+[sub_resource type="Resource" id="Resource_WyrmSpinalocculum"]
+script = ExtResource("2_def")
+id = &"WyrmSpinalocculum"
+source_demon = &"Wyrm"
+target_demon = &"SpinalOcculum"
+display_name = "Wyrm + SpinalOcculum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumWyrm.txt"
+codex_page = &"SpinalOcculum"
+codex_alt_index = 6
+
+[sub_resource type="Resource" id="Resource_MawSpinalocculum"]
+script = ExtResource("2_def")
+id = &"MawSpinalocculum"
+source_demon = &"Maw"
+target_demon = &"SpinalOcculum"
+display_name = "Maw + SpinalOcculum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumMaw.txt"
+codex_page = &"SpinalOcculum"
+codex_alt_index = 4
+
+[sub_resource type="Resource" id="Resource_HiveSpinalocculum"]
+script = ExtResource("2_def")
+id = &"HiveSpinalocculum"
+source_demon = &"Hive"
+target_demon = &"SpinalOcculum"
+display_name = "Hive + SpinalOcculum"
+description_file = "res://_Assets/Text/TextFiles/Synergies/SpinalOcculumHive.txt"
+codex_page = &"SpinalOcculum"
+codex_alt_index = 3
+
+[sub_resource type="Resource" id="Resource_OcculumCrawler"]
+script = ExtResource("2_def")
+id = &"OcculumCrawler"
+source_demon = &"Occulum"
+target_demon = &"Crawler"
+display_name = "Occulum + Crawler"
+description_file = "res://_Assets/Text/TextFiles/Synergies/CrawlerOcculum.txt"
+codex_page = &"Crawler"
+codex_alt_index = 4
+
+[sub_resource type="Resource" id="Resource_SpinalocculumCrawler"]
+script = ExtResource("2_def")
+id = &"SpinalocculumCrawler"
+source_demon = &"SpinalOcculum"
+target_demon = &"Crawler"
+display_name = "SpinalOcculum + Crawler"
+description_file = "res://_Assets/Text/TextFiles/Synergies/CrawlerSpinalOcculum.txt"
+codex_page = &"Crawler"
+codex_alt_index = 5
+
+[sub_resource type="Resource" id="Resource_WyrmCrawler"]
+script = ExtResource("2_def")
+id = &"WyrmCrawler"
+source_demon = &"Wyrm"
+target_demon = &"Crawler"
+display_name = "Wyrm + Crawler"
+description_file = "res://_Assets/Text/TextFiles/Synergies/CrawlerWyrm.txt"
+codex_page = &"Crawler"
+codex_alt_index = 6
+
+[sub_resource type="Resource" id="Resource_MawCrawler"]
+script = ExtResource("2_def")
+id = &"MawCrawler"
+source_demon = &"Maw"
+target_demon = &"Crawler"
+display_name = "Maw + Crawler"
+description_file = "res://_Assets/Text/TextFiles/Synergies/CrawlerMaw.txt"
+codex_page = &"Crawler"
+codex_alt_index = 3
+
+[sub_resource type="Resource" id="Resource_HiveCrawler"]
+script = ExtResource("2_def")
+id = &"HiveCrawler"
+source_demon = &"Hive"
+target_demon = &"Crawler"
+display_name = "Hive + Crawler"
+description_file = "res://_Assets/Text/TextFiles/Synergies/CrawlerHive.txt"
+codex_page = &"Crawler"
+codex_alt_index = 2
+
+[sub_resource type="Resource" id="Resource_MawHive"]
+script = ExtResource("2_def")
+id = &"MawHive"
+source_demon = &"Maw"
+target_demon = &"Hive"
+display_name = "Maw + Hive"
+description_file = "res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt"
+codex_page = &"Hive"
+codex_alt_index = 2
+
+[sub_resource type="Resource" id="Resource_CrawlerHive"]
+script = ExtResource("2_def")
+id = &"CrawlerHive"
+source_demon = &"Crawler"
+target_demon = &"Hive"
+display_name = "Crawler + Hive"
+description_file = "res://_Assets/Text/TextFiles/Synergies/HiveCrawler.txt"
+codex_page = &"Hive"
+codex_alt_index = 3
+
+[sub_resource type="Resource" id="Resource_WyrmHive"]
+script = ExtResource("2_def")
+id = &"WyrmHive"
+source_demon = &"Wyrm"
+target_demon = &"Hive"
+display_name = "Wyrm + Hive"
+description_file = "res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt"
+codex_page = &"Hive"
+codex_alt_index = 6
+
+[sub_resource type="Resource" id="Resource_OcculumHive"]
+script = ExtResource("2_def")
+id = &"OcculumHive"
+source_demon = &"Occulum"
+target_demon = &"Hive"
+display_name = "Occulum + Hive"
+description_file = "res://_Assets/Text/TextFiles/Synergies/HiveOcculum.txt"
+codex_page = &"Hive"
+codex_alt_index = 4
+
+[sub_resource type="Resource" id="Resource_SpinalocculumHive"]
+script = ExtResource("2_def")
+id = &"SpinalocculumHive"
+source_demon = &"SpinalOcculum"
+target_demon = &"Hive"
+display_name = "SpinalOcculum + Hive"
+description_file = "res://_Assets/Text/TextFiles/Synergies/HiveSpinalOcculum.txt"
+codex_page = &"Hive"
+codex_alt_index = 5
+
+[sub_resource type="Resource" id="Resource_CrawlerMaw"]
+script = ExtResource("2_def")
+id = &"CrawlerMaw"
+source_demon = &"Crawler"
+target_demon = &"Maw"
+display_name = "Crawler + Maw"
+description_file = "res://_Assets/Text/TextFiles/Synergies/MawCrawler.txt"
+codex_page = &"Maw"
+codex_alt_index = 3
+
+[sub_resource type="Resource" id="Resource_SpinalocculumMaw"]
+script = ExtResource("2_def")
+id = &"SpinalocculumMaw"
+source_demon = &"SpinalOcculum"
+target_demon = &"Maw"
+display_name = "SpinalOcculum + Maw"
+description_file = "res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt"
+codex_page = &"Maw"
+codex_alt_index = 5
+
+[sub_resource type="Resource" id="Resource_HiveMaw"]
+script = ExtResource("2_def")
+id = &"HiveMaw"
+source_demon = &"Hive"
+target_demon = &"Maw"
+display_name = "Hive + Maw"
+description_file = "res://_Assets/Text/TextFiles/Synergies/MawHive.txt"
+codex_page = &"Maw"
+codex_alt_index = 2
+
+[sub_resource type="Resource" id="Resource_WyrmMaw"]
+script = ExtResource("2_def")
+id = &"WyrmMaw"
+source_demon = &"Wyrm"
+target_demon = &"Maw"
+display_name = "Wyrm + Maw"
+description_file = "res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt"
+codex_page = &"Maw"
+codex_alt_index = 6
+
+[sub_resource type="Resource" id="Resource_OcculumMaw"]
+script = ExtResource("2_def")
+id = &"OcculumMaw"
+source_demon = &"Occulum"
+target_demon = &"Maw"
+display_name = "Occulum + Maw"
+description_file = "res://_Assets/Text/TextFiles/Synergies/MawOcculum.txt"
+codex_page = &"Maw"
+codex_alt_index = 4
+
+[resource]
+script = ExtResource("1_cat")
+synergies = [SubResource("Resource_CrawlerOcculum"), SubResource("Resource_SpinalocculumOcculum"), SubResource("Resource_WyrmOcculum"), SubResource("Resource_HiveOcculum"), SubResource("Resource_MawOcculum"), SubResource("Resource_CrawlerWyrm"), SubResource("Resource_OcculumWyrm"), SubResource("Resource_SpinalocculumWyrm"), SubResource("Resource_HiveWyrm"), SubResource("Resource_MawWyrm"), SubResource("Resource_CrawlerSpinalocculum"), SubResource("Resource_OcculumSpinalocculum"), SubResource("Resource_WyrmSpinalocculum"), SubResource("Resource_MawSpinalocculum"), SubResource("Resource_HiveSpinalocculum"), SubResource("Resource_OcculumCrawler"), SubResource("Resource_SpinalocculumCrawler"), SubResource("Resource_WyrmCrawler"), SubResource("Resource_MawCrawler"), SubResource("Resource_HiveCrawler"), SubResource("Resource_MawHive"), SubResource("Resource_CrawlerHive"), SubResource("Resource_WyrmHive"), SubResource("Resource_OcculumHive"), SubResource("Resource_SpinalocculumHive"), SubResource("Resource_CrawlerMaw"), SubResource("Resource_SpinalocculumMaw"), SubResource("Resource_HiveMaw"), SubResource("Resource_WyrmMaw"), SubResource("Resource_OcculumMaw")]

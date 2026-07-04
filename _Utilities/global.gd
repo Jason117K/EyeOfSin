@@ -142,107 +142,14 @@ var portal_progress_bar_1 : ProgressBar
 
 signal demon_buff_unlocked(synergy_unlocked : String)
 
-#region Synergy data + unlock state (planned: SynergyCatalog resource, Phase 4)
-var crawler_occulum_synergy  := "CrawlerOcculum"
-var spinal_occulum_occulum_synergy := "SpinalocculumOcculum" 
-var wyrm_occulum_synergy := "WyrmOcculum" 
-var hive_occulum_synergy := "HiveOcculum" 
-var maw_occulum_synergy := "MawOcculum" 
+#region Synergy catalog (data) + unlock state
+var synergy_catalog : SynergyCatalog = preload("res://_Entities/Demons/Synergies/SynergyCatalog.tres")
+# Runtime unlock state, keyed by SynergyDefinition.id. Deliberately NOT reset
+# per level: unlocks persist for the whole session (matches the old dict).
+var unlocked_synergies : Dictionary = {}
 
-var is_crawler_occulum  := false 
-var is_spinal_occulum_occulum := false 
-var is_wyrm_occulum := false 
-var is_hive_occulum := false 
-var is_maw_occulum := false 
-
-
-var crawler_wyrm_synergy := "CrawlerWyrm"
-var occulum_wyrm_synergy := "OcculumWyrm"
-var spinal_occulum_wyrm_synergy := "SpinalocculumWyrm"
-var hive_wyrm_synergy := "HiveWyrm"
-var maw_wyrm_synergy := "MawWyrm"
-
-var is_crawler_wyrm  := false 
-var is_occulum_wyrm := false 
-var is_spinal_occulum_wyrm := false 
-var is_hive_wyrm := false 
-var is_maw_wyrm := false 
-
-
-var crawler_spinal_occulum_synergy := "CrawlerSpinalocculum"
-var occulum_spinal_occulum_synergy := "OcculumSpinalocculum"
-var wyrm_spinal_occulum_synergy := "WyrmSpinalocculum"
-var maw_spinal_occulum_synergy := "MawSpinalocculum"
-var hive_spinal_occulum_synergy := "HiveSpinalocculum"
-
-var is_crawler_spinal_occulum  := false 
-var is_occulum_spinal_occulum := false 
-var is_wyrm_spinal_occulum_synergy := false 
-var is_maw_spinal_occulum_synergy := false 
-var is_hive_spinal_occulum_synergy := false 
-
-
-
-var occulum_crawler_synergy := "OcculumCrawler"
-var spinal_occulum_crawler_synergy := "SpinalocculumCrawler"
-var wyrm_crawler_synergy := "WyrmCrawler"
-var maw_crawler_synergy := "MawCrawler"
-var hive_crawler_synergy := "HiveCrawler"
-
-var is_occulum_crawler  := false 
-var is_spinal_occulum_crawler := false 
-var is_wyrm_crawler := false 
-var is_maw_crawler := false 
-var is_hive_crawler := false 
-
-
-
-var maw_hive_synergy := "MawHive"
-var crawler_hive_synergy := "CrawlerHive"
-var wyrm_hive_synergy := "WyrmHive"
-var occulum_hive_synergy := "OcculumHive"
-var spinal_occulum_hive_synergy := "SpinalocculumHive"
-
-var is_maw_hive  := false 
-var is_crawler_hive := false 
-var is_wyrm_hive := false 
-var is_occulum_hive := false 
-var is_spinal_occulum_hive := false 
-
-
-
-var crawler_maw_synergy := "CrawlerMaw"
-var spinal_occulum_maw_synergy := "SpinalocculumMaw"
-var hive_maw_synergy := "HiveMaw"
-var wyrm_maw_synergy := "WyrmMaw"
-var occulum_maw_synergy := "OcculumMaw"
-
-var is_crawler_maw  := false 
-var is_spinal_occulum_maw := false 
-var is_hive_maw := false 
-var is_wyrm_maw := false 
-var is_occulum_maw := false
-
-var all_demon_synergies : Array = [crawler_occulum_synergy,spinal_occulum_occulum_synergy, wyrm_occulum_synergy,
-	hive_occulum_synergy,maw_occulum_synergy,crawler_wyrm_synergy,occulum_wyrm_synergy,spinal_occulum_wyrm_synergy,
-	hive_wyrm_synergy, maw_wyrm_synergy, crawler_spinal_occulum_synergy , occulum_spinal_occulum_synergy, 
-	wyrm_spinal_occulum_synergy, maw_spinal_occulum_synergy, hive_spinal_occulum_synergy, occulum_crawler_synergy,
-	spinal_occulum_crawler_synergy, wyrm_crawler_synergy,maw_crawler_synergy, hive_crawler_synergy, maw_hive_synergy,
-	crawler_hive_synergy, wyrm_hive_synergy, occulum_hive_synergy, spinal_occulum_hive_synergy, crawler_maw_synergy,
-	spinal_occulum_maw_synergy, hive_maw_synergy, wyrm_maw_synergy, occulum_maw_synergy]
-
-var unlocked_demon_synergies_dict : Dictionary = \
-	{crawler_occulum_synergy : is_crawler_occulum, spinal_occulum_occulum_synergy : is_spinal_occulum_occulum, 
-	wyrm_occulum_synergy : is_wyrm_occulum, hive_occulum_synergy : is_hive_occulum , maw_occulum_synergy : is_maw_occulum,
-	crawler_wyrm_synergy : is_crawler_wyrm, occulum_wyrm_synergy : is_occulum_wyrm, spinal_occulum_wyrm_synergy : is_spinal_occulum_wyrm,
-	hive_wyrm_synergy : is_hive_wyrm, maw_wyrm_synergy : is_maw_wyrm , crawler_spinal_occulum_synergy : is_crawler_spinal_occulum,
-	occulum_spinal_occulum_synergy : is_occulum_spinal_occulum ,wyrm_spinal_occulum_synergy : is_wyrm_spinal_occulum_synergy,
-	maw_spinal_occulum_synergy : is_maw_spinal_occulum_synergy,hive_spinal_occulum_synergy : is_hive_spinal_occulum_synergy,
-	occulum_crawler_synergy :is_occulum_crawler,spinal_occulum_crawler_synergy:is_spinal_occulum_crawler,wyrm_crawler_synergy : is_wyrm_crawler,
-	maw_crawler_synergy : is_maw_crawler, hive_crawler_synergy : is_hive_crawler,maw_hive_synergy : is_maw_hive, 
-	crawler_hive_synergy :is_crawler_hive,wyrm_hive_synergy:is_wyrm_hive,occulum_hive_synergy:is_occulum_hive,
-	spinal_occulum_hive_synergy: is_spinal_occulum_hive,crawler_maw_synergy: is_crawler_maw,spinal_occulum_maw_synergy : is_spinal_occulum_maw,
-	hive_maw_synergy :is_hive_maw, wyrm_maw_synergy : is_wyrm_maw, occulum_maw_synergy :  is_occulum_maw  }
+func is_synergy_unlocked(id : StringName) -> bool:
+	return unlocked_synergies.get(id, false)
 #endregion
 
 
@@ -1113,12 +1020,13 @@ func unlock_zombie(unlocked_zombie : String)->void:
 
 
 func unlock_buff(unlocked_buff : String)->void:
-	for synergy : String in all_demon_synergies:
-		if synergy == unlocked_buff:
-			print("this synergy ", synergy , " is A MATCH")
-			if unlocked_demon_synergies_dict[synergy] == false:
-				unlocked_demon_synergies_dict[synergy] = true
-				get_current_ui_layer().set_unlock_notif(synergy)
+	var id := StringName(unlocked_buff)
+	if synergy_catalog.get_by_id(id) == null:
+		return
+	if not unlocked_synergies.get(id, false):
+		print("this synergy ", id, " is A MATCH")
+		unlocked_synergies[id] = true
+		get_current_ui_layer().set_unlock_notif(unlocked_buff)
 
 
 
