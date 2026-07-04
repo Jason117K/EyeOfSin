@@ -12,6 +12,19 @@ var distance_traveled := 0
 
 func _ready() -> void:
 	init_collision()
+	_init_visibility()
+
+
+# Mowers live under the persistent WaveManager, outside the level subtrees
+# that GameController stamps with DIM_BITS — so stamp ourselves (and children:
+# cull-mask checks are per CanvasItem), or the default shared UI bit renders
+# the mower in BOTH dimensions.
+func _init_visibility()->void:
+	var dim_bit : int = GameController.DIM_BITS[1] if is_green else GameController.DIM_BITS[0]
+	visibility_layer = dim_bit
+	for child in get_children():
+		if child is CanvasItem:
+			child.visibility_layer = dim_bit
 
 
 # DIAGNOSTIC (remove once the culprit is found): mowers are pooled and should
