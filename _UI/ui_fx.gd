@@ -14,11 +14,13 @@ static func add_pulsing_button_highlight(button, should_pulse : bool = true,
 	if not button:
 		push_error("Button node is null!")
 		return
-	# Remove any existing highlight
+	# Remove any existing highlight. Untyped fetch: the meta may hold a freed
+	# panel, and assigning a freed instance to a typed var is a runtime error.
 	if button.has_meta("highlight_panel"):
-		var old: Panel = button.get_meta("highlight_panel")
+		var old = button.get_meta("highlight_panel")
 		if is_instance_valid(old):
 			old.queue_free()
+		button.remove_meta("highlight_panel")
 
 	# Create a Panel as a child to act as the border/glow
 	var panel := Panel.new()
@@ -87,9 +89,9 @@ static func stop_glow_pulse(button) -> void:
 			tween.kill()
 		button.remove_meta("glow_tween")
 
-	# Remove the highlight panel
+	# Remove the highlight panel (untyped fetch — see add_pulsing_button_highlight)
 	if button.has_meta("highlight_panel"):
-		var panel: Panel = button.get_meta("highlight_panel")
+		var panel = button.get_meta("highlight_panel")
 		if is_instance_valid(panel):
 			panel.queue_free()
 		button.remove_meta("highlight_panel")
@@ -102,7 +104,9 @@ static func remove_pulsing_button_highlight(button) -> void:
 		var tw: Tween = button.get_meta("glow_tween")
 		if tw and tw.is_valid():
 			tw.kill()
+		button.remove_meta("glow_tween")
 	if button.has_meta("highlight_panel"):
-		var p: Panel = button.get_meta("highlight_panel")
+		var p = button.get_meta("highlight_panel")
 		if is_instance_valid(p):
 			p.queue_free()
+		button.remove_meta("highlight_panel")
