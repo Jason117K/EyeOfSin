@@ -18,7 +18,7 @@ func activate()->void:
 	print("Activating Demon Texture")
 	show()
 	anim_player.play("appear")
-	Global.add_pulsing_button_highlight(self)
+	UiFx.add_pulsing_button_highlight(self)
 	
 
 func _on_acquire_demon_anim_player_animation_finished(anim_name: StringName) -> void:

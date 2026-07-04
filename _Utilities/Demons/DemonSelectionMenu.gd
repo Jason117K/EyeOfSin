@@ -285,12 +285,12 @@ func _on_HiveButton_pressed() -> void:
 func highlight_demon_card(card_name : String)->void:
 	print("All Demon Buttons Dict is ", all_demon_buttons_dict)
 	var button_to_highlight :TextureButton = all_demon_buttons_dict[card_name]
-	Global.add_pulsing_button_highlight(button_to_highlight,true)
+	add_pulsing_button_highlight(button_to_highlight,true)
 	print("Button to Highlight is ", button_to_highlight)
 
 func unhighlight_demon_card(card_name : String)->void:
 	var button_to_highlight :TextureButton= all_demon_buttons_dict[card_name]
-	Global.remove_pulsing_button_highlight(button_to_highlight)
+	remove_pulsing_button_highlight(button_to_highlight)
 
 func create_preview(demon_scene:PackedScene) -> void:
 	#print("MAKE A PREVIEW", demon_scene)
@@ -468,119 +468,19 @@ func add_button_highlight(button: TextureButton) -> void:
 	button.add_theme_stylebox_override("normal", demon_highlight_stylebox)
 	
 	
+# Delegates to UiFx (single implementation), passing this node's exported style.
 func add_pulsing_button_highlight(button: TextureButton, should_pulse : bool = true) -> void:
-	if not button:
-		push_error("Button node is null!")
-		return
-	#print("Button Global START Pos Is  : ", button.global_position)
-	# Remove any existing highlight
-	if button.has_meta("highlight_panel"):
-		var old: Panel = button.get_meta("highlight_panel")
-		if is_instance_valid(old):
-			old.queue_free()
-
-	# Create a Panel as a child to act as the border/glow
-	var panel := Panel.new()
-	#panel.scale = Vector2(0.8,0.8)
-	panel.name = "HighlightPanel"
-	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
-
-
-	button.add_child(panel)
-	for child in button.get_children():
-		#print(button, " children are ", child)
-		pass
-
-
-	# Expand slightly beyond the button to create a border effect
-	var margin := highlight_border_thickness #+ 4
-	#panel.position = Vector2(-margin, -margin)
-	#panel.position = Vector2(0,0)
-	panel.size = button.size #+ Vector2(margin * 2, margin * 2)
-	panel.z_index = 2
-
-	# Build the stylebox for the panel
-	var highlight_style := StyleBoxFlat.new()
-	highlight_style.bg_color = Color.TRANSPARENT
-	highlight_style.border_width_left = highlight_border_thickness
-	highlight_style.border_width_right = highlight_border_thickness
-	highlight_style.border_width_top = highlight_border_thickness
-	highlight_style.border_width_bottom = highlight_border_thickness
-	highlight_style.border_color = highlight_border_color
-	highlight_style.shadow_color = Color(highlight_border_color, 0.5)
-	highlight_style.shadow_size = 2
-	highlight_style.shadow_offset = Vector2.ZERO
-	highlight_style.corner_radius_top_left = 2
-	highlight_style.corner_radius_top_right = 2
-	highlight_style.corner_radius_bottom_left = 2
-	highlight_style.corner_radius_bottom_right = 2
-
-	panel.add_theme_stylebox_override("panel", highlight_style)
-	button.set_meta("highlight_panel", panel)
-
-
-
-
-	if should_pulse:
-		start_glow_pulse(button, panel, highlight_style)
+	UiFx.add_pulsing_button_highlight(button, should_pulse, highlight_border_color, highlight_border_thickness)
 
 func start_glow_pulse(button: TextureButton, _panel: Panel, style: StyleBoxFlat, glow_color: Color = highlight_border_color) -> void:
-	if button.has_meta("glow_tween"):
-		var old_tween: Tween = button.get_meta("glow_tween")
-		if old_tween and old_tween.is_valid():
-			old_tween.kill()
-
-	var tween := button.create_tween()
-	tween.set_loops()
-
-	tween.tween_method(
-		func(val: int) -> void:
-			style.shadow_size = int(lerpf(4, 8, val))
-			style.shadow_color = Color(glow_color, lerpf(0.2, 0.4, val)),
-		0.0, 1.0, 1.2
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-	tween.tween_method(
-		func(val: int) -> void:
-			style.shadow_size = int(lerpf(8, 4, val))
-			style.shadow_color = Color(glow_color, lerpf(0.4, 0.2, val)),
-		0.0, 1.0, 1.2
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-	button.set_meta("glow_tween", tween)
-
+	UiFx.start_glow_pulse(button, _panel, style, glow_color)
 
 func stop_glow_pulse(button: TextureButton) -> void:
-	#print("STOP PULSE")
-	if button.has_meta("glow_tween"):
-		var tween: Tween = button.get_meta("glow_tween")
-		if tween and tween.is_valid():
-			tween.kill()
-		button.remove_meta("glow_tween")
-	
-	# Remove the highlight panel
-	if button.has_meta("highlight_panel"):
-		var panel: Panel = button.get_meta("highlight_panel")
-		if is_instance_valid(panel):
-			panel.queue_free()
-		button.remove_meta("highlight_panel")
-	if button.get_child(0) != null:
-		if button.get_child(0).name == "HighlightPanel":
-			#print("Going to queue free button highlight : ", button.get_child(0))
-			button.get_child(0).queue_free()
-			pass
-		
+	UiFx.stop_glow_pulse(button)
+
 func remove_pulsing_button_highlight(button: TextureButton) -> void:
-	if button.has_meta("glow_tween"):
-		var tw: Tween = button.get_meta("glow_tween")
-		if tw and tw.is_valid():
-			tw.kill()
-	if button.has_meta("highlight_panel"):
-		var p: Panel = button.get_meta("highlight_panel")
-		if is_instance_valid(p):
-			p.queue_free()
-			
-					
+	UiFx.remove_pulsing_button_highlight(button)
+
 # Function to remove highlight from a button
 func remove_button_highlight(button: TextureButton) -> void:
 	if not button:

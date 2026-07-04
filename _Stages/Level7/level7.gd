@@ -202,11 +202,11 @@ func _start_explain_skull_tiles()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SKULL_TILE,true,Vector2(16,-8))
 	await get_tree().physics_frame
 	Global.hideDemonSelectionMenu()
-	Global.add_pulsing_button_highlight(Global.skull_tile_highlight_area)
+	UiFx.add_pulsing_button_highlight(Global.skull_tile_highlight_area)
 	#set_auto_advance_toolTip(5)
 	
 func _start_explain_portals()->void:
-	Global.remove_pulsing_button_highlight(Global.skull_tile_highlight_area)
+	UiFx.remove_pulsing_button_highlight(Global.skull_tile_highlight_area)
 	Global.unHideDemonSelectionMenu()
 	toolTips.basic_config()
 	await get_tree().physics_frame

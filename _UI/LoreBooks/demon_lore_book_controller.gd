@@ -719,3 +719,150 @@ func _on_mouse_exited(button_to_tween) -> void:
 	
 		
 	
+
+
+#region Codex navigation from a synergy unlock (moved from Global)
+# For a synergy id like "CrawlerOcculum": demon_b picks the page,
+# demon_a picks the alt tab on it. Called by Global.register_demon_codex.
+func navigate_to_synergy(synergy : String) -> void:
+	var parts : Array = _split_capitals(synergy)
+	var demon_a : String = parts[0]
+	var demon_b : String = parts[1]
+	print("Demon A Is ", demon_a)
+	print("Demon B is ", demon_b)
+
+	match demon_b:
+		"Crawler":
+			_on_crawler_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_crawler(demon_a)
+		"Occulum":
+			_on_occulum_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_occulum(demon_a)
+		"Hive":
+			_on_hive_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_hive(demon_a)
+		"Spinalocculum":
+			_on_spinalOcculum_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_spinal_occulum(demon_a)
+		"Maw":
+			_on_maw_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_maw(demon_a)
+		"Wyrm":
+			_on_wrym_pressed()
+			await get_tree().physics_frame
+			await get_tree().physics_frame
+			finish_navigate_to_buff_wyrm(demon_a)
+
+func finish_navigate_to_buff_occulum(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			_on_alt_4_pressed()
+		"Occulum":
+			pass
+		"Hive":
+			_on_alt_3_pressed()
+		"Spinalocculum":
+			_on_alt_5_pressed()
+		"Maw":
+			_on_alt_2_pressed()
+		"Wyrm":
+			_on_alt_6_pressed()
+
+func finish_navigate_to_buff_crawler(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			pass
+		"Occulum":
+			_on_alt_4_pressed()
+		"Hive":
+			_on_alt_2_pressed()
+		"Spinalocculum":
+			_on_alt_5_pressed()
+		"Maw":
+			_on_alt_3_pressed()
+		"Wyrm":
+			_on_alt_6_pressed()
+
+func finish_navigate_to_buff_spinal_occulum(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			_on_alt_5_pressed()
+		"Occulum":
+			_on_alt_2_pressed()
+		"Hive":
+			_on_alt_3_pressed()
+		"Spinalocculum":
+			pass
+		"Maw":
+			_on_alt_4_pressed()
+		"Wyrm":
+			_on_alt_6_pressed()
+
+func finish_navigate_to_buff_wyrm(demon_a:String)->void:
+	print("Demon A is still, ", demon_a)
+	match demon_a:
+		"Crawler":
+			_on_alt_5_pressed()
+		"Occulum":
+			_on_alt_2_pressed()
+		"Hive":
+			_on_alt_3_pressed()
+		"Spinalocculum":
+			_on_alt_6_pressed()
+		"Maw":
+			_on_alt_4_pressed()
+		"Wyrm":
+			pass
+
+func finish_navigate_to_buff_hive(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			_on_alt_3_pressed()
+		"Occulum":
+			_on_alt_4_pressed()
+		"Hive":
+			pass
+		"Spinalocculum":
+			_on_alt_5_pressed()
+		"Maw":
+			_on_alt_2_pressed()
+		"Wyrm":
+			_on_alt_6_pressed()
+
+func finish_navigate_to_buff_maw(demon_a:String)->void:
+	match demon_a:
+		"Crawler":
+			_on_alt_3_pressed()
+		"Occulum":
+			_on_alt_4_pressed()
+		"Hive":
+			_on_alt_2_pressed()
+		"Spinalocculum":
+			_on_alt_5_pressed()
+		"Maw":
+			pass
+		"Wyrm":
+			_on_alt_6_pressed()
+
+func _split_capitals(s: String) -> Array:
+	var result: Array = []
+	var current: String = ""
+	for c in s:
+		if c == c.to_upper() and c != c.to_lower() and current != "":
+			result.append(current)
+			current = ""
+		current += c
+	if current != "":
+		result.append(current)
+	return result
+#endregion

@@ -53,10 +53,10 @@ func ready_ultimate()->void:
 		if charges > 0:
 			charges = charges - 1
 			Global.ultimate_is_ready = true 
-			Global.add_pulsing_button_highlight(all_charges_panel_container)
+			UiFx.add_pulsing_button_highlight(all_charges_panel_container)
 		
 func un_ready_ultimate()->void:
-	Global.remove_pulsing_button_highlight(all_charges_panel_container)
+	UiFx.remove_pulsing_button_highlight(all_charges_panel_container)
 	for charge in all_charges_backwards:
 		if charge.texture_normal == full_charge_texture:
 			charge.texture_normal = empty_charge_texture

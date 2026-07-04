@@ -198,20 +198,20 @@ func getIsPurpleDimension()->void:
 #region Step Entry Functions
 
 func _start_explain_ultimates()->void:
-	Global.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
 	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES,true,"NEW ABILITY UNLOCKED:[color=red]ULTIMATES[/color]")
 	toolTips.set_visual_demon_tutorial_visual(ultimate_demo.instantiate(),true,Vector2(0,48))
 
 func _start_explain_ultimates_2()->void:
-	Global.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
-	Global.add_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
+	UiFx.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_2,true,Vector2(0,-96))
 
 
 func _start_explain_ultimates_3()->void:
 	print("Explain Ultimates 3")
-	Global.remove_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
-	Global.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	UiFx.remove_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
+	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
 	demonSelectionMenu._on_CrawlerButton_pressed()
 	demonManager.place_demon(Vector2(304,176),false)
 	Global.ultimate_charge_container.ultimate_bar_clicked.connect(advance_tutorial)
@@ -223,7 +223,7 @@ func _start_explain_ultimates_4()->void:
 	print("Explain Ultimates 4")
 	Global.ultimate_charge_container.ultimate_bar_clicked.disconnect(advance_tutorial)
 	Global.crawler_ultimate_triggered.connect(advance_tutorial)
-	Global.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
+	UiFx.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_4,false)
 	
 
