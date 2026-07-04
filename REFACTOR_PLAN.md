@@ -38,7 +38,7 @@ reverted in isolation.
 | 2 — UI glue out of Global | `a6ea4570` | DONE |
 | 3 — Buff targeting + Dim constants | `a0dec121` | DONE — awaiting buff-matrix playtest; dual-run safety net armed |
 | 4 — SynergyDefinition resource | `778d9262` | DONE — awaiting codex-nav playtest (≥5 pairs) |
-| 5 — DemonDefinition catalog | | pending |
+| 5 — DemonDefinition catalog | `320e5c59` | DONE — awaiting cost/menu playtest |
 | 6 — Deterministic tick + swap rewrite | | pending |
 | 7 — Cheap cleanups | | optional |
 
@@ -162,7 +162,16 @@ description files exist on disk, alt tabs unique per page.
 (exhaustive transcription check of the six match-tables into the .tres); adding a NEW
 synergy = one sub-resource, zero Global edits; checklist item 2.
 
-## Phase 5 — DemonDefinition catalog (pending, 1 session)
+## Phase 5 — DemonDefinition catalog (DONE — 320e5c59)
+
+Implementation notes: the catalog is authoritative for cost — demon_base copies
+base_cost over the scene export at _ready (Heart/EmptyDemon have no entry and keep
+theirs), so balancing happens in DemonCatalog.tres, not per scene. get_demon_cost is
+display-only (charging goes through the demon instance at placement). base_cost values
+transcribed from the scene exports and cross-checked textually. HeartDemon previously
+displayed its special description as a raw file PATH — now reads the file's first line
+like demon_base (intentional fix). Scene-instantiating validation is impossible in
+`-s` mode (autoloads unavailable); the headless boot covers compilation.
 
 1. `_Entities/Demons/Definitions/demon_definition.gd` (`Resource`): `id`,
    `display_name`, `scene: PackedScene`, `icon: Texture2D`, `base_cost: int`,
