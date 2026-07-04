@@ -36,8 +36,8 @@ reverted in isolation.
 | — Self-healing mower pool | `1b860327` | DONE (playtest fallout; culprit diagnostic armed) |
 | — Mower dimension visibility | `d382df7c` | DONE (playtest fallout) |
 | 2 — UI glue out of Global | `a6ea4570` | DONE |
-| 3 — Buff targeting + Dim constants | (this commit) | DONE — awaiting buff-matrix playtest; dual-run safety net armed |
-| 4 — SynergyDefinition resource | | pending |
+| 3 — Buff targeting + Dim constants | `a0dec121` | DONE — awaiting buff-matrix playtest; dual-run safety net armed |
+| 4 — SynergyDefinition resource | `778d9262` | DONE — awaiting codex-nav playtest (≥5 pairs) |
 | 5 — DemonDefinition catalog | | pending |
 | 6 — Deterministic tick + swap rewrite | | pending |
 | 7 — Cheap cleanups | | optional |
@@ -135,7 +135,15 @@ AND receives once; Occulum-zone + SpinalOcculum occupant and inverse explicitly 
 dual-run warning silent for a full Level0-2 playthrough; debuff on buffer death;
 checklist items 1, 2 in full.
 
-## Phase 4 — SynergyDefinition resource + unlock state (pending, 1–2 sessions)
+## Phase 4 — SynergyDefinition resource + unlock state (DONE — 778d9262)
+
+Implementation notes: consumer grep found the six demons' `unlock_new_buff` ladders as
+the only external users of Global's synergy name vars — they now derive ids via
+`SynergyDefinition.make_id(source, target)` (handles the intentional "Spinalocculum"
+id spelling vs "SpinalOcculum" true name; unknown pairs produce ids with no catalog
+entry, which `unlock_buff` ignores). Unlocks do NOT persist to disk (session-only,
+verified). Catalog transcription was validated headlessly: 30 entries, ids derivable,
+description files exist on disk, alt tabs unique per page.
 
 1. `_Entities/Demons/Synergies/synergy_definition.gd` (`Resource`): `id: StringName`
    (existing key strings unchanged), `source_demon`, `target_demon`, `display_name`,
