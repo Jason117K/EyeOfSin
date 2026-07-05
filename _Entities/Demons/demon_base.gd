@@ -240,6 +240,16 @@ func _schedule_post_spawn() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	_detect_heart_buffs()
+	# Only now are this demon's own zone overlaps trustworthy — allow the
+	# central tick to start polling them.
+	if buffNodes != null:
+		buffNodes.buff_ready = true
+
+
+# Called by Global._process (the per-frame conductor) after zombie ticks.
+func tick_buff(delta: float) -> void:
+	if buffNodes != null and is_instance_valid(buffNodes):
+		buffNodes.tick_buff(delta)
 
 func _detect_heart_buffs() -> void:
 	for new_area in get_overlapping_areas():

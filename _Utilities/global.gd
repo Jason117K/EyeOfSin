@@ -94,7 +94,10 @@ var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed
 @onready var all_maw_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Maw")
 
 # Demon identity/menu data (scene, icon, base cost, description) lives here.
-var demon_catalog : DemonCatalog = preload("res://_Entities/Demons/Definitions/DemonCatalog.tres")
+# load(), NOT preload(): the catalog references the demon scenes, whose
+# scripts (extends Demon) can't compile while Global itself is mid-compile —
+# preload here is a compile-time cycle ("Could not resolve class Demon").
+var demon_catalog : DemonCatalog = load("res://_Entities/Demons/Definitions/DemonCatalog.tres")
 
 var syn_ability_manager_scene := preload("res://_Entities/SynAbility/syn_ability.tscn")
 
@@ -155,6 +158,11 @@ signal swap_scenes_signal
 signal demon_was_removed
 signal crawler_ultimate_triggered
 
+# Per-frame conductor — the deterministic order for gameplay ticks:
+#   (1) all zombies tick (movement/attack), then
+#   (2) all demon buff zones poll overlaps (react to settled positions).
+# Syn charge accumulators and the swap cooldown keep their own _process;
+# they touch no cross-system state mid-frame.
 func _process(delta: float) -> void:
 	if get_tree().paused:
 		return
@@ -162,6 +170,10 @@ func _process(delta: float) -> void:
 	for zombie in zombies:
 		if zombie != null:
 			zombie.tick(delta)
+	var demons := all_demons.duplicate()
+	for this_demon in demons:
+		if this_demon != null and is_instance_valid(this_demon):
+			this_demon.tick_buff(delta)
 
 func add_mana(mana_to_add:float)->void:
 	ultimate_charge_container.add_mana(mana_to_add)

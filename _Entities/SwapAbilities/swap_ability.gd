@@ -1,41 +1,40 @@
 class_name SwapAbility extends Node
 
-var stop_ability_timer: Timer
 @export var ability_duration := 3.0
-var cooldown_timer: Timer
 @export var cooldown_duration := 6.0
+# is_active / is_on_cooldown ARE the state machine (READY = neither) — they
+# stay public, subclasses read them. Timing is accumulator-driven like
+# syn_ability.gd: no Timer nodes, _physics_process decrements the counters.
 var is_active := false
 var is_on_cooldown := false
-var cooldown_elapsed := 0.0
 var cooldown_fill_amount := 0.0
-var on_purple := true 
+var on_purple := true
 var affected_zombies : Array = []
-var is_locked := false 
+var is_locked := false
 
-#Reduced Cooldown If Full Ability Transpires 
+# Seconds left in the current ACTIVE / COOLDOWN state. The cooldown only
+# counts down once game_start() releases it (the old Timer wasn't started
+# until then either).
+var _active_left := 0.0
+var _cooldown_left := 0.0
+var _cooldown_running := false
+
+#Reduced Cooldown If Full Ability Transpires
 @onready var cooldown_length_special := cooldown_duration - 2.5
 @onready var cooldown_length_normal := cooldown_duration
 @onready var cooldown_controller := $Control
 @onready var cooldown_visual := $Control/SwapAbilityCooldownPanel
 @onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/MarginContainer/SwapAbilityProgressBar
-const STEP := 0.1
 
 
 func _ready() -> void:
 	print("Swap Ability Ready")
-	#cooldown_visual.material.set_shader_parameter("fill_amount", 0.0)
 	Global.register_swap_ability_instance(self)
-	cooldown_timer = Timer.new()
-	cooldown_timer.one_shot = true
-	cooldown_timer.autostart = false
-	cooldown_timer.wait_time = cooldown_duration
-	cooldown_timer.timeout.connect(reset_cooldown)
-	add_child(cooldown_timer)
-	#cooldown_timer.start()
 
 func game_start()->void:
 	print("Game Start For Swap Ability Called")
-	cooldown_timer.start()
+	_cooldown_left = cooldown_duration
+	_cooldown_running = true
 
 func hide_swap()->void:
 	cooldown_controller.hide()
@@ -63,41 +62,39 @@ func get_panel_container()->PanelContainer:
 func reset_cooldown() -> void:
 	print("Set Is On Cooldown to Faklse")
 	is_on_cooldown = false
+	_cooldown_running = false
+	cooldown_fill_amount = 100.0
 
 func reset_on_game_start() -> void:
 	print("Set Is On Cooldown to True")
 	cooldown_fill_amount = 0
 	is_on_cooldown = true
-	#cooldown_timer.start()
+	# Parked until game_start() releases the countdown.
+	_cooldown_left = cooldown_duration
+	_cooldown_running = false
 
 func begin() -> void:
-	if is_locked:   
+	if is_locked:
 		return
 	#Stopped too soon, longer cooldown
 	if is_active:
 		cooldown_duration = cooldown_length_normal
 		undo_swap_ability()
 		return
-	
+
 	if is_on_cooldown:
 		return
 
 	is_active = true
 	cooldown_fill_amount = 0.0
 	for child in get_children():
-		if child.has_method("show") && !(child is Control): 
+		if child.has_method("show") && !(child is Control):
 			child.show()
-	
+
 
 	apply_swap_ability()
-		
-	stop_ability_timer = Timer.new()
-	stop_ability_timer.one_shot = true
-	stop_ability_timer.autostart = false
-	stop_ability_timer.wait_time = ability_duration
-	stop_ability_timer.timeout.connect(ability_full_duration_end)
-	add_child(stop_ability_timer)
-	stop_ability_timer.start()
+
+	_active_left = ability_duration
 	
 func apply_swap_ability()->void:
 	pass
@@ -111,15 +108,16 @@ func undo_swap_ability() -> void:
 		
 func stop() -> void:
 	for child in get_children():
-		if child.has_method("hide") && !(child is Control): 
+		if child.has_method("hide") && !(child is Control):
 			child.hide()
 	is_active = false
-	cooldown_timer.wait_time = cooldown_duration
-	print("Game Start for swap aaa here")
-	cooldown_timer.start()
 	print("Set Is On Cooldown to Trueee")
 	is_on_cooldown = true
-	cooldown_elapsed = 0.0
+	# cooldown_duration is normal or special depending on how we got here
+	# (early cancel vs full duration) — set by begin()/ability_full_duration_end.
+	_cooldown_left = cooldown_duration
+	_cooldown_running = true
+	cooldown_fill_amount = 0.0
 
 
 func append_new_zombie(new_zombie : Zombie) -> void:
@@ -128,19 +126,22 @@ func append_new_zombie(new_zombie : Zombie) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Accumulator clock (replaces the old Timer nodes). Runs whenever the tree
+	# runs, like the Timers did; only the BAR is gated on gameIsStarted below.
+	if is_active:
+		_active_left -= delta
+		if _active_left <= 0.0:
+			ability_full_duration_end()
+	elif is_on_cooldown && _cooldown_running:
+		_cooldown_left -= delta
+		if _cooldown_left <= 0.0:
+			reset_cooldown()
+
 	if Global.gameIsStarted:
 		if is_active == false && is_on_cooldown:
-			cooldown_elapsed += delta
-			#cooldown_fill_amount = clampf(cooldown_elapsed / cooldown_duration, 0.0, 1.0)
-			#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
-			
-			cooldown_fill_amount = clampf((cooldown_elapsed / cooldown_duration)*100, 0.0, 100.0)
-			#print(cooldown_fill_amount , "Cooldown Duyration Is ", cooldown_duration)
+			cooldown_fill_amount = clampf((1.0 - _cooldown_left / cooldown_duration) * 100, 0.0, 100.0)
 		elif is_active == true:
 			cooldown_fill_amount = 0.0
-			#cooldown_visual.material.set_shader_parameter("fill_amount", cooldown_fill_amount)
-			#print("Is Active ", is_active, "Is On Cooldown ", is_on_cooldown, "Fill Amount ", cooldown_fill_amount)
-				#
 		swap_cooldown_visual_bar.value = cooldown_fill_amount
 	
 	

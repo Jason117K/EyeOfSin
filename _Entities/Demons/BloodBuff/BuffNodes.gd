@@ -36,6 +36,10 @@ enum Demons { OCCULUM,CRAWLER,SPINALOCCULUM,WYRM,HIVE, MAW, }
 
 var buffedDemons: Array[Demon]
 
+# Set by the owning demon after its post-spawn physics-frame awaits (overlap
+# queries are invalid for the first frames); cleared again by clearBuffs.
+var buff_ready := false
+
 func _ready() -> void:
 	# Make sure all the bloodTiles are not visible
 	#bloodTile1.visible = false
@@ -64,7 +68,7 @@ func _ready() -> void:
 				child.set_collision_layer_value(Dim.LAYER_PURPLE_BUFF, true)
 
 func clearBuffs() -> void:
-	set_process(false)   
+	buff_ready = false
 	print("DDD Buffed Demons is ", buffedDemons)
 	for this_demon in buffedDemons:
 		print("Now DDD DeBuffing ", this_demon)
@@ -76,11 +80,13 @@ func clearBuffs() -> void:
 	
 	
 	
-func _process(_delta: float) -> void:
-	pass
-	
-	#print("I Am ", get_parent().name)
-	
+# Driven by Global._process (the per-frame conductor), ordered AFTER zombie
+# ticks — this node has no _process of its own. can_process() preserves the
+# old pause behavior (e.g. level scenes process-disabled behind the codex).
+func tick_buff(_delta: float) -> void:
+	if not buff_ready or not can_process():
+		return
+
 	# Go through all children of BuffNodes
 	for child in get_children():
 		
