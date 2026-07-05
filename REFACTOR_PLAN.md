@@ -39,6 +39,8 @@ reverted in isolation.
 | 3 — Buff targeting + Dim constants | `a0dec121` | DONE — awaiting buff-matrix playtest; dual-run safety net armed |
 | 4 — SynergyDefinition resource | `778d9262` | DONE — awaiting codex-nav playtest (≥5 pairs) |
 | 5 — DemonDefinition catalog | `320e5c59` | DONE — awaiting cost/menu playtest |
+| — Catalog preload cycle fix | `33f28a37` | DONE (bundled with Phase 6; Phase 5's preload broke class Demon compilation on every boot) |
+| 6 — Central tick + swap accumulator | `33f28a37` | DONE — awaiting swap/buff playtest |
 | 6 — Deterministic tick + swap rewrite | | pending |
 | 7 — Cheap cleanups | | optional |
 
@@ -187,7 +189,16 @@ like demon_base (intentional fix). Scene-instantiating validation is impossible 
 unchanged; level load measurably faster; new demon = scene + one catalog entry, zero
 Global edits; checklist item 1.
 
-## Phase 6 — Deterministic tick + swap-ability state machine (pending, 2 sessions)
+## Phase 6 — Deterministic tick + swap-ability state machine (DONE — 33f28a37)
+
+Implementation notes: is_active/is_on_cooldown remain THE public state (subclasses
+read them; lucretia_grasp chains super._physics_process) — accumulators replace only
+the clocks. buff_ready gates the spawn-overlap window; can_process() in tick_buff
+preserves pausing with process-disabled level scenes (codex overlay). Two intended
+behavior fixes: early swap cancel no longer leaves the leaked full-duration Timer
+running (it used to fire late, flip cooldown to special, and re-undo), and the Timer
+child no longer accumulates per begin(). Also fixed here: Phase 5's catalog preload
+compile cycle (see Status). Two clean headless boots, zero script errors.
 
 **6a — central tick order.** `Global._process` becomes the explicit conductor:
 (1) zombies tick → (2) buff zones tick. Iterate `all_demons.duplicate()` with
