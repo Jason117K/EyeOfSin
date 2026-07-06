@@ -166,10 +166,11 @@ synergy = one sub-resource, zero Global edits; checklist item 2.
 
 ## Phase 5 — DemonDefinition catalog (DONE — 320e5c59)
 
-Implementation notes: the catalog is authoritative for cost — demon_base copies
-base_cost over the scene export at _ready (Heart/EmptyDemon have no entry and keep
-theirs), so balancing happens in DemonCatalog.tres, not per scene. get_demon_cost is
-display-only (charging goes through the demon instance at placement). base_cost values
+Implementation notes: REVISED (Jason's call, 39825f3f) — cost is balanced on each
+demon SCENE's exported `cost`, as before the refactor; the catalog carries identity,
+scene, icon, and description only. get_demon_cost derives the display value lazily
+from the definition's scene (one cached instantiation per type per session), so menu
+labels can't drift from what placement charges. base_cost values
 transcribed from the scene exports and cross-checked textually. HeartDemon previously
 displayed its special description as a raw file PATH — now reads the file's first line
 like demon_base (intentional fix). Scene-instantiating validation is impossible in
