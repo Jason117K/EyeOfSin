@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://b5aslnivgv4kb" path="res://_Utilities/Demons/portal_progress_bar.gd" id="16_c3fhf"]
 [ext_resource type="PackedScene" uid="uid://ct0d53f75vuby" path="res://_UI/Pause/pause_button.tscn" id="16_dur3e"]
 [ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="17_jfwei"]
+[ext_resource type="Texture2D" uid="uid://cva35fu0n3j51" path="res://_Entities/Demons/Cards/Hero_Demon_CARD-Black.png" id="18_1y46f"]
 [ext_resource type="Script" uid="uid://cho0s6lvv3v5h" path="res://_Utilities/Demons/sprite_2d.gd" id="19_nabk1"]
 
 [sub_resource type="Shader" id="Shader_q10kc"]
@@ -735,30 +736,6 @@ theme_override_font_sizes/font_size = 10
 text = "50"
 horizontal_alignment = 1
 
-[node name="Maw" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = -2
-
-[node name="MawButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
-material = ExtResource("5_3emsw")
-custom_minimum_size = Vector2(42, 42)
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-texture_normal = ExtResource("9_jfwei")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("6_q10kc")
-
-[node name="MawCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
-z_index = 2
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_vvged")
-theme_override_font_sizes/font_size = 15
-text = "50"
-horizontal_alignment = 1
-
 [node name="Wyrm" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=638542658]
 layout_mode = 2
 theme_override_constants/separation = -1
@@ -775,6 +752,38 @@ stretch_mode = 0
 script = ExtResource("6_q10kc")
 
 [node name="WyrmCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm" unique_id=925628958]
+z_index = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_wixct")
+theme_override_font_sizes/font_size = 10
+text = "50"
+horizontal_alignment = 1
+
+[node name="Maw" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="MawButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
+visible = false
+material = ExtResource("5_3emsw")
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture_normal = ExtResource("9_jfwei")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_q10kc")
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1756768209]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture_normal = ExtResource("9_jfwei")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MawCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
 z_index = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_wixct")
@@ -811,7 +820,6 @@ layout_mode = 2
 theme_override_constants/separation = -5
 
 [node name="HeartButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart" unique_id=1081347700]
-visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 5
@@ -849,6 +857,17 @@ script = ExtResource("16_c3fhf")
 
 [node name="RechargeTimer" type="Timer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalProgressBar" unique_id=92619545]
 one_shot = true
+
+[node name="Hero" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1496618985]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero" unique_id=493376975]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+texture_normal = ExtResource("18_1y46f")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Node2D" type="Node2D" parent="." unique_id=797355327]
 position = Vector2(103, 2)
@@ -981,10 +1000,10 @@ shape = SubResource("RectangleShape2D_nabk1")
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton" to="." method="_on_WalnutButton_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="." method="_on_EggButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]

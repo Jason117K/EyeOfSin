@@ -5,7 +5,7 @@ extends HeroAbilityComponent
 @export var max_beats := 12
 @export var beat_of_death_interval := 0.4
 
-@onready var beatOfDeathCirle := $"../BeatOfDeathCircle"
+#@onready var beatOfDeathCirle := $"../BeatOfDeathCircle"
 @onready var beat_lightning_dmg_anim := $"../BeatDMGAnim"
 @onready var beat_of_death_damage_aoe := $"../BeatOfDeathDamage"
 @onready var beat_of_death_lure_timer := $"../LureTimer"

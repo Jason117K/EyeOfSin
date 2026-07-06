@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c8qwna1nhmu33" path="res://_Entities/Demons/WebTile/web_tile_slow.gd" id="2_62gwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8qau"]
-size = Vector2(56.5, 21)
+size = Vector2(92.5, 30)
 
 [node name="Web" type="Area2D" unique_id=1061980033]
 collision_mask = 3
@@ -12,16 +12,24 @@ monitoring = false
 script = ExtResource("2_62gwg")
 
 [node name="WebCollisionShape" type="CollisionShape2D" parent="." unique_id=1666382139]
-position = Vector2(15.75, -0.5)
+position = Vector2(33.75, 0)
 shape = SubResource("RectangleShape2D_k8qau")
 
 [node name="WebSprite" type="Sprite2D" parent="." unique_id=480431712]
+modulate = Color(1, 1, 1, 0.4627451)
 z_index = -1
 texture = ExtResource("1_0udyw")
 
 [node name="WebSprite2" type="Sprite2D" parent="." unique_id=800760]
+modulate = Color(1, 1, 1, 0.4627451)
 z_index = -1
-position = Vector2(29, 0)
+position = Vector2(32, 0)
+texture = ExtResource("1_0udyw")
+
+[node name="WebSprite3" type="Sprite2D" parent="." unique_id=1202213428]
+modulate = Color(1, 1, 1, 0.4627451)
+z_index = -1
+position = Vector2(64, 0)
 texture = ExtResource("1_0udyw")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
