@@ -6,7 +6,17 @@ class_name DemonDefinition extends Resource
 @export var display_name: String
 @export var scene: PackedScene
 @export var icon: Texture2D
-## Authoritative base cost: demon_base copies this over its scene export at
-## _ready, and the selection menu displays it — balance here, not per scene.
-@export var base_cost: int = 50
 @export_file("*.txt") var special_description_file: String
+
+var _scene_cost := -1
+
+
+## Cost is balanced on the demon SCENE (its exported `cost`), not here — the
+## catalog only derives it for menu display, lazily, one instantiation per
+## demon type per session.
+func get_scene_cost() -> int:
+	if _scene_cost < 0 and scene != null:
+		var instance = scene.instantiate()
+		_scene_cost = int(instance.cost)
+		instance.free()
+	return _scene_cost

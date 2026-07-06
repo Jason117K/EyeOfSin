@@ -112,11 +112,6 @@ func _ready() -> void:
 		set_process(false)
 		return
 	#set_process(false)
-	# Base cost comes from the catalog (single balance source); demons the
-	# catalog doesn't know (Heart, "" true name) keep their scene export.
-	var definition : DemonDefinition = Global.demon_catalog.get_demon(StringName(get_demon_true_name()))
-	if definition != null:
-		cost = definition.base_cost
 	# --- Phase 1: Collision layers (Green/Purple) ---
 	_init_collision_layer(self)
 	# --- Phase 2: Signal wiring ---
