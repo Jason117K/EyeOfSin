@@ -21,7 +21,6 @@ id = &"Occulum"
 display_name = "Occulum"
 scene = ExtResource("3_occ")
 icon = ExtResource("9_occi")
-base_cost = 50
 special_description_file = "res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt"
 
 [sub_resource type="Resource" id="Resource_Crawler"]
@@ -30,7 +29,6 @@ id = &"Crawler"
 display_name = "Crawler"
 scene = ExtResource("4_cra")
 icon = ExtResource("10_crai")
-base_cost = 75
 special_description_file = "res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt"
 
 [sub_resource type="Resource" id="Resource_SpinalOcculum"]
@@ -39,7 +37,6 @@ id = &"SpinalOcculum"
 display_name = "SpinalOcculum"
 scene = ExtResource("5_spi")
 icon = ExtResource("11_spii")
-base_cost = 50
 special_description_file = "res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt"
 
 [sub_resource type="Resource" id="Resource_Wyrm"]
@@ -48,7 +45,6 @@ id = &"Wyrm"
 display_name = "Wyrm"
 scene = ExtResource("6_wyr")
 icon = ExtResource("12_wyri")
-base_cost = 125
 special_description_file = "res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt"
 
 [sub_resource type="Resource" id="Resource_Maw"]
@@ -57,7 +53,6 @@ id = &"Maw"
 display_name = "Maw"
 scene = ExtResource("7_maw")
 icon = ExtResource("13_mawi")
-base_cost = 275
 special_description_file = "res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt"
 
 [sub_resource type="Resource" id="Resource_Hive"]
@@ -66,7 +61,6 @@ id = &"Hive"
 display_name = "Hive"
 scene = ExtResource("8_hiv")
 icon = ExtResource("14_hivi")
-base_cost = 175
 special_description_file = "res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt"
 
 [resource]

@@ -247,7 +247,7 @@ func get_demon_cost(demon_name: String) -> int:
 	var def : DemonDefinition = demon_catalog.get_demon(StringName(demon_name))
 	if def == null:
 		return -1
-	return def.base_cost
+	return def.get_scene_cost()
 	
 func is_on_purple_scene()->bool:
 	return game_controller.on_purple_scene()
