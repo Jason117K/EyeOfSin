@@ -1,15 +1,19 @@
 extends DemonHealthComponent
 
-@export var maw_health := 500
-@export var spinal_occulum_buffed_health := 500
-@export var crawler_buffed_health := 500 
-@export var wyrm_buffed_health := 500 
-@export var hive_buffed_health := 500
+var maw_health := 500
+var spinal_occulum_buffed_health := 500
+var crawler_buffed_health := 500 
+var wyrm_buffed_health := 500 
+var hive_buffed_health := 500
 
 
 func _ready() -> void:
 	super()
 	maw_health = demon.maw_health
+	spinal_occulum_buffed_health = demon.spinal_occulum_buffed_health
+	crawler_buffed_health = demon.crawler_buffed_health
+	wyrm_buffed_health = demon.wyrm_buffed_health
+	hive_buffed_health = demon.hive_buffed_health
 
 func receive_buff(demonName: String) -> void:
 	#print("Buff Name is ", newDemon.name)

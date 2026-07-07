@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="SynergyCatalog" load_steps=33 format=3]
+[gd_resource type="Resource" script_class="SynergyCatalog" format=3 uid="uid://bt24r5bq68sc8"]
 
-[ext_resource type="Script" path="res://_Entities/Demons/Synergies/synergy_catalog.gd" id="1_cat"]
-[ext_resource type="Script" path="res://_Entities/Demons/Synergies/synergy_definition.gd" id="2_def"]
+[ext_resource type="Script" uid="uid://b3s6u1gl5i4dm" path="res://_Entities/Demons/Synergies/synergy_catalog.gd" id="1_cat"]
+[ext_resource type="Script" uid="uid://cude558di6t1f" path="res://_Entities/Demons/Synergies/synergy_definition.gd" id="2_def"]
 
 [sub_resource type="Resource" id="Resource_CrawlerOcculum"]
 script = ExtResource("2_def")
@@ -305,4 +305,4 @@ codex_alt_index = 4
 
 [resource]
 script = ExtResource("1_cat")
-synergies = [SubResource("Resource_CrawlerOcculum"), SubResource("Resource_SpinalocculumOcculum"), SubResource("Resource_WyrmOcculum"), SubResource("Resource_HiveOcculum"), SubResource("Resource_MawOcculum"), SubResource("Resource_CrawlerWyrm"), SubResource("Resource_OcculumWyrm"), SubResource("Resource_SpinalocculumWyrm"), SubResource("Resource_HiveWyrm"), SubResource("Resource_MawWyrm"), SubResource("Resource_CrawlerSpinalocculum"), SubResource("Resource_OcculumSpinalocculum"), SubResource("Resource_WyrmSpinalocculum"), SubResource("Resource_MawSpinalocculum"), SubResource("Resource_HiveSpinalocculum"), SubResource("Resource_OcculumCrawler"), SubResource("Resource_SpinalocculumCrawler"), SubResource("Resource_WyrmCrawler"), SubResource("Resource_MawCrawler"), SubResource("Resource_HiveCrawler"), SubResource("Resource_MawHive"), SubResource("Resource_CrawlerHive"), SubResource("Resource_WyrmHive"), SubResource("Resource_OcculumHive"), SubResource("Resource_SpinalocculumHive"), SubResource("Resource_CrawlerMaw"), SubResource("Resource_SpinalocculumMaw"), SubResource("Resource_HiveMaw"), SubResource("Resource_WyrmMaw"), SubResource("Resource_OcculumMaw")]
+synergies = Array[ExtResource("2_def")]([SubResource("Resource_CrawlerOcculum"), SubResource("Resource_SpinalocculumOcculum"), SubResource("Resource_WyrmOcculum"), SubResource("Resource_HiveOcculum"), SubResource("Resource_MawOcculum"), SubResource("Resource_CrawlerWyrm"), SubResource("Resource_OcculumWyrm"), SubResource("Resource_SpinalocculumWyrm"), SubResource("Resource_HiveWyrm"), SubResource("Resource_MawWyrm"), SubResource("Resource_CrawlerSpinalocculum"), SubResource("Resource_OcculumSpinalocculum"), SubResource("Resource_WyrmSpinalocculum"), SubResource("Resource_MawSpinalocculum"), SubResource("Resource_HiveSpinalocculum"), SubResource("Resource_OcculumCrawler"), SubResource("Resource_SpinalocculumCrawler"), SubResource("Resource_WyrmCrawler"), SubResource("Resource_MawCrawler"), SubResource("Resource_HiveCrawler"), SubResource("Resource_MawHive"), SubResource("Resource_CrawlerHive"), SubResource("Resource_WyrmHive"), SubResource("Resource_OcculumHive"), SubResource("Resource_SpinalocculumHive"), SubResource("Resource_CrawlerMaw"), SubResource("Resource_SpinalocculumMaw"), SubResource("Resource_HiveMaw"), SubResource("Resource_WyrmMaw"), SubResource("Resource_OcculumMaw")])

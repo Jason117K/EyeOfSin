@@ -2,9 +2,8 @@ extends Demon
 #SpinalOcculum.gd
 
 # --- Exports ---
-@export var lightning_damage := 10
 
-@export var blood_spawn_time := 5
+@export_category("Buffed Health")
 @export var occulum_buffed_health := 850
 @export var occulum_buffed_max_health := 800
 @export var occulum_buffed_health_regen := 0.1
@@ -12,8 +11,13 @@ extends Demon
 @export var maw_buffed_max_health := 800
 @export var maw_buffed_health_regen := 0.1
 
+
+@export_category("Buff Parameters")
+@export var lightning_damage := 10
+@export var blood_spawn_time := 5
 @export var spike_damage := 20
 
+@export_category("Ultimate Parameters")
 @export var mana_add_on_block_damage := 100 
 
 # --- Preloads ---

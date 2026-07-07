@@ -32,23 +32,33 @@ class_name Demon
 #   2. isBuffed = false + reset all buff flags
 # ============================================================
 
-# --- Exports ---
+# --- Exports ---abstract
+
+
+@export_category("Cost")
+@export var cost: float = 50
+
+@export_category("Health")
+@export var health: float = 800
+@export var healthRegen: float = 0.0
+@export var maxHealth: float = 800
+@export var regen_wait_time := 1
+
+@export_category("Component Configuration")
+@export var syn_shield_position := Vector2(-2,-6)
+@export var hit_flash_duration := 0.3
+@export var rib_health := 250 
+
+@export_category("Buff Status")
 @export var wyrmBuff: bool = false
 @export var hiveBuff: bool = false
 @export var spinalOcculumBuff: bool = false
 @export var mawBuff: bool = false
 @export var crawlerBuff: bool = false
 @export var occulumBuff: bool = false
-@export var cost: float = 50
 
-@export var health: float = 800
-@export var healthRegen: float = 0.0
-@export var maxHealth: float = 800
-@export var regen_wait_time := 1
+@export_category("Is Empty")
 @export var is_empty := false 
-@export var syn_shield_position := Vector2(-2,-6)
-@export var hit_flash_duration := 0.3
-@export var rib_health := 250 
 
 # --- Component References ---
 @onready var animSpriteComp: AnimatedSprite2D = $AnimatedSpriteComponent

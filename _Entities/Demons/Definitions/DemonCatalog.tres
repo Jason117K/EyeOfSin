@@ -1,19 +1,19 @@
-[gd_resource type="Resource" script_class="DemonCatalog" load_steps=21 format=3]
+[gd_resource type="Resource" script_class="DemonCatalog" format=3 uid="uid://lboasbe74i8u"]
 
-[ext_resource type="Script" path="res://_Entities/Demons/Definitions/demon_catalog.gd" id="1_cat"]
-[ext_resource type="Script" path="res://_Entities/Demons/Definitions/demon_definition.gd" id="2_def"]
-[ext_resource type="PackedScene" path="res://_Entities/Demons/_Occulum/Occulum.tscn" id="3_occ"]
-[ext_resource type="PackedScene" path="res://_Entities/Demons/_Crawler/Crawler.tscn" id="4_cra"]
-[ext_resource type="PackedScene" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn" id="5_spi"]
-[ext_resource type="PackedScene" path="res://_Entities/Demons/_Wyrm/Wyrm.tscn" id="6_wyr"]
-[ext_resource type="PackedScene" path="res://_Entities/Demons/_Maw/Maw.tscn" id="7_maw"]
-[ext_resource type="PackedScene" path="res://_Entities/Demons/_Hive/Hive.tscn" id="8_hiv"]
-[ext_resource type="Texture2D" path="res://_Assets/Sprites/Occulum.png" id="9_occi"]
-[ext_resource type="Texture2D" path="res://_Assets/Sprites/Crawler.png" id="10_crai"]
-[ext_resource type="Texture2D" path="res://_Assets/Sprites/SpinalOcculum.png" id="11_spii"]
-[ext_resource type="Texture2D" path="res://_Assets/Sprites/Wyrm.png" id="12_wyri"]
-[ext_resource type="Texture2D" path="res://_Assets/Sprites/MawImage.png" id="13_mawi"]
-[ext_resource type="Texture2D" path="res://_Assets/Sprites/Hive.png" id="14_hivi"]
+[ext_resource type="Script" uid="uid://dqph5cpgjol2h" path="res://_Entities/Demons/Definitions/demon_catalog.gd" id="1_cat"]
+[ext_resource type="Script" uid="uid://ba8dgwsugr3ea" path="res://_Entities/Demons/Definitions/demon_definition.gd" id="2_def"]
+[ext_resource type="PackedScene" uid="uid://ct2xdafdtut66" path="res://_Entities/Demons/_Occulum/Occulum.tscn" id="3_occ"]
+[ext_resource type="PackedScene" uid="uid://chtib6ixf30ex" path="res://_Entities/Demons/_Crawler/Crawler.tscn" id="4_cra"]
+[ext_resource type="PackedScene" uid="uid://bymckgsndcx1y" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum.tscn" id="5_spi"]
+[ext_resource type="PackedScene" uid="uid://p8shvofaoy5d" path="res://_Entities/Demons/_Wyrm/Wyrm.tscn" id="6_wyr"]
+[ext_resource type="PackedScene" uid="uid://d3n5cefu4fpso" path="res://_Entities/Demons/_Maw/Maw.tscn" id="7_maw"]
+[ext_resource type="PackedScene" uid="uid://cp6xcabhkv21t" path="res://_Entities/Demons/_Hive/Hive.tscn" id="8_hiv"]
+[ext_resource type="Texture2D" uid="uid://bsvip7ynvvsfb" path="res://_Assets/Sprites/Occulum.png" id="9_occi"]
+[ext_resource type="Texture2D" uid="uid://chk4e2hs0suwg" path="res://_Assets/Sprites/Crawler.png" id="10_crai"]
+[ext_resource type="Texture2D" uid="uid://c7jnbj05l4pfo" path="res://_Assets/Sprites/SpinalOcculum.png" id="11_spii"]
+[ext_resource type="Texture2D" uid="uid://dym7nudn0quv8" path="res://_Assets/Sprites/Wyrm.png" id="12_wyri"]
+[ext_resource type="Texture2D" uid="uid://7wwfnfvi1oqa" path="res://_Assets/Sprites/MawImage.png" id="13_mawi"]
+[ext_resource type="Texture2D" uid="uid://dxiljdd5mblgg" path="res://_Assets/Sprites/Hive.png" id="14_hivi"]
 
 [sub_resource type="Resource" id="Resource_Occulum"]
 script = ExtResource("2_def")
@@ -65,4 +65,4 @@ special_description_file = "res://_Entities/Demons/SpecialDescriptions/hive_spec
 
 [resource]
 script = ExtResource("1_cat")
-demons = [SubResource("Resource_Occulum"), SubResource("Resource_Crawler"), SubResource("Resource_SpinalOcculum"), SubResource("Resource_Wyrm"), SubResource("Resource_Maw"), SubResource("Resource_Hive")]
+demons = Array[ExtResource("2_def")]([SubResource("Resource_Occulum"), SubResource("Resource_Crawler"), SubResource("Resource_SpinalOcculum"), SubResource("Resource_Wyrm"), SubResource("Resource_Maw"), SubResource("Resource_Hive")])
