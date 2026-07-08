@@ -6,13 +6,67 @@ parallel **dimensions** the player swaps between, and a spatial **demon synergy/
 
 ## Architecture
 
+```mermaid
+flowchart TD
+    subgraph AUTOLOADS["Autoloads — always loaded"]
+        GLOBAL["Global — the hub<br/>frozen API · registries<br/>per-frame conductor"]
+        SCORE["ScoreManager<br/>score · ranks · reset()"]
+        GRL["GlobalResourceLoader<br/>texture / SpriteFrames cache"]
+        AUDIO["AudioManager"]
+        DIALOGIC["Dialogic"]
+    end
+
+    STATICS["class_name statics<br/>Dim · UiFx · SoundEffect · ZombieRegistry"]
+
+    subgraph TREE["GameController's tree — persists across level loads"]
+        GC["GameController<br/>change_dual_scenes · swap_scenes · cull masks"]
+        PIP["PiP viewport<br/>mirrors inactive dimension"]
+        subgraph WM["WaveManager — idempotent setup_level() per load"]
+            PH["PlayerHealth<br/>health_changed / depleted"]
+            MOWERS["LawnMower pool ×6<br/>self-healing"]
+        end
+    end
+
+    subgraph PURPLE["Level X — Purple (collision layers 2 · 4 · 12)"]
+        PKIDS["DemonManager · DemonSelectionMenu<br/>UILayer · ZombieSpawner<br/>+ demon &amp; zombie instances"]
+    end
+    subgraph GREEN["Level X_Alternate — Green (collision layers 3 · 5 · 13)"]
+        GKIDS["DemonManager · DemonSelectionMenu<br/>UILayer · ZombieSpawner<br/>+ demon &amp; zombie instances"]
+    end
+
+    subgraph BRICKS["Gameplay bricks"]
+        DEMON["Demon (demon_base)<br/>components: Health · Sprite · BuffNodes"]
+        ZOMBIE["BaseZombie<br/>tick(delta)"]
+        SYN["Syn ability manager<br/>cross-dimension pairs · accumulator charges"]
+        SWAP["SwapAbility + 4 subclasses<br/>accumulator cooldown"]
+    end
+
+    subgraph DATA["Data — Resources (.tres)"]
+        SYNCAT["SynergyCatalog<br/>30 pairs · codex page/tab"]
+        DEMCAT["DemonCatalog<br/>id · scene · icon · description<br/>(balance values stay on scenes)"]
+        WDATA["WaveData<br/>per-spawner wave definitions"]
+    end
+
+    GC -->|"loads pair as siblings"| PURPLE
+    GC -->|"loads pair as siblings"| GREEN
+    GC -->|"setup_level() each load"| WM
+    GC --- PIP
+    GC -->|"swap triggers begin()"| SWAP
+    GLOBAL -->|"① zombie.tick(delta)"| ZOMBIE
+    GLOBAL -->|"② demon.tick_buff(delta)"| DEMON
+    PURPLE -. "everything self-registers in _ready" .-> GLOBAL
+    GREEN -.-> GLOBAL
+    GLOBAL -->|"load()s at init"| DEMCAT
+    GLOBAL --> SYNCAT
+```
+
 **`Global` autoload is the hub — and its API is FROZEN (2026-07 refactor rule).** It is the
 service-locator + registry for nearly everything (demons, zombies, occulums, portals, syn/swap
 abilities, lightning balls, shields, UI layers, demon managers, costs, synergies). Nodes **self-register**
 in `_ready` and **deregister** on death/free. Existing call sites keep using `Global`
 indefinitely — do not churn them. But **never add new registries, helpers, preloads, or state to
-`Global`**: a new system gets its own module (`class_name` statics like `SoundEffect`/
-`ZombieRegistry`, a Resource catalog, or a node) and is referenced directly; files being
+`Global`**: a new system gets its own module (`class_name` statics like `Dim`/`UiFx`/
+`SoundEffect`/`ZombieRegistry`, a Resource catalog, or a node) and is referenced directly; files being
 rewritten for other reasons migrate to direct module references opportunistically. Other
 autoloads: `GlobalResourceLoader`, `AudioManager`, `Dialogic`, `ScoreManager` — do not add more.
 
@@ -45,28 +99,36 @@ lives in child components (AnimatedSprite, Health, BuffNodes, PreviewNodes).
 **cell-center** (`floor(pos/32)*32 + 16`) → demon. Multi-cell demons write multiple keys (Maw = 2,
 Heart = 6). Each dimension has its own DemonManager *and* DemonSelectionMenu.
 
-**Buff/synergy is spatial + polled.** Each demon's BuffNodes component owns `TileArea` zones; its
-`_process` polls `get_overlapping_areas()` to buff demons standing in a zone. Synergy is identified
-by **demon-name substring**. The placement preview uses **oldest-overlapping-zone-wins** and hides
-a zone whose cell is occupied. A demon scene is previewable only if it contains a node named exactly
-**`PreviewNodes`** (its children are duplicated semi-transparent and dragged with the cursor).
+**Buff/synergy is spatial + polled.** Each demon's BuffNodes component owns `TileArea` zones and
+polls `get_overlapping_areas()` in `tick_buff(delta)` — driven by the conductor (below), gated by
+`buff_ready` (set after the post-spawn awaits) and `can_process()`. Targets match by **exact
+digit-stripped true name** (`get_demon_true_name()`) against the demon's exported `give_buff_to`
+list — substring matching is gone. Synergy pair identity + codex navigation live in
+`SynergyCatalog.tres` (30 `SynergyDefinition`s); unlock STATE is `Global.unlocked_synergies`
+(session-only). Synergy ids capitalize only each word's first letter (`"SpinalocculumOcculum"`) so
+pairs split on capitals — build them with `SynergyDefinition.make_id()`, never by hand. The
+placement preview uses **oldest-overlapping-zone-wins** and hides a zone whose cell is occupied. A
+demon scene is previewable only if it contains a node named exactly **`PreviewNodes`** (its
+children are duplicated semi-transparent and dragged with the cursor).
 
-**Zombies are ticked centrally.** `Global._process` manually calls `zombie.tick(delta)` on every
-registered zombie (iterating a *duplicate* of `all_zombies`) and **early-returns on
-`get_tree().paused`** — zombies `set_process(false)`, so per-frame zombie logic belongs in `tick`,
-not `_process`. Zombie types differ by their components/abilities, not base tick.
+**`Global._process` is the per-frame conductor.** Explicit order, one pause gate:
+**(1)** every zombie's `tick(delta)`, then **(2)** every demon's `tick_buff(delta)` (BuffNodes
+polling) — buffs always react to settled positions. Both loops iterate a *duplicate* of the
+registry array with validity guards. Zombies and BuffNodes have no per-frame callbacks of their
+own — new per-frame gameplay logic belongs in `tick`/`tick_buff`, added to the conductor in an
+explicit position. Syn charges and the swap cooldown keep their own accumulator `_process`; they
+touch no cross-system state mid-frame. Zombie types differ by their components/abilities, not
+base tick.
 
-**Per-frame update order (current):** only zombie ticks are ordered (via `Global._process`,
-pause-gated). Everything else — `BuffNodes` overlap polling, syn charge accumulators
-(`syn_ability._process`), swap cooldown bar (`swap_ability._physics_process`) — runs in Godot
-default tree order with **no guaranteed ordering** relative to zombie ticks. Refactor Phase 6
-makes `Global._process` the explicit conductor: (1) zombies → (2) buff zones; syn/swap keep
-their own `_process`. Until then, don't add gameplay logic that assumes cross-system ordering.
-
-**Waves: data resources sequenced by the level.** Per-dimension `ZombieSpawner`s hold
-`Array[WaveData]` (`.tres`); `WaveManager` sequences them via a `wave_delays` array that **the level
-sets in its own `_ready`** (deferred `_setup`). The spawn pool is **shuffled per wave** (order is
-random). Wave previews register with the manager.
+**Waves: data resources sequenced by the persistent `WaveManager`.** Per-dimension
+`ZombieSpawner`s hold `Array[WaveData]` (`.tres`). `WaveManager` lives under GameController's
+`CurrentScene` and **survives level loads** — `change_dual_scenes` re-runs its **idempotent
+`setup_level()`** on every load/restart (never invoke `_ready` manually). Player health is its
+`PlayerHealth` child node (`max_health` set in WaveManager.tscn; emits
+`health_changed`/`depleted`, UILayers subscribe). Lawnmowers are a **self-healing pool**
+(`LawnMower.tscn`): `_ensure_lawn_mowers()` re-finds or recreates all six each level, and each
+mower stamps itself to its dimension's visibility layer. The spawn pool is **shuffled per wave**
+(order is random). Wave previews register with the manager.
 
 **Syn abilities (player-activated) are cross-dimension pairs.** Each cast spawns a Purple + Green
 half that self-register; when both are present `Global` **links** them (`connect_syn_abilities` /
@@ -80,7 +142,16 @@ deployed instance dies, not at cast**.
 → `Global.start_swap_ability()` → `swap_ability.begin()`. Named abilities (blood rain, lucretia
 grasp, lightning storm, gaze of baal) extend `SwapAbility` and override `apply_swap_ability` /
 `undo_swap_ability` / `get_icon`. `begin()` runs **before** `on_scene_1` flips, so an ability must
-read `is_on_purple_dimension()` at apply time, not cache the dimension.
+read `is_on_purple_dimension()` at apply time, not cache the dimension. Cooldown/duration are
+**accumulator-driven** like syn (`is_active`/`is_on_cooldown` + counters in `_physics_process`,
+no Timer nodes): early cancel → normal cooldown, full duration → −2.5 s special cooldown.
+
+**Content catalogs are Resources; balance numbers are scene exports.** `DemonCatalog.tres` holds
+each placeable demon's identity (id = true name, scene, icon, description path);
+`SynergyCatalog.tres` holds the 30 synergy pairs + codex navigation. Adding a demon or synergy is
+**data-only** — zero `Global` edits. Costs/HP/timers deliberately **stay on the demon scenes**;
+`get_demon_cost()` derives the menu label from the definition's scene lazily, so the label and
+the amount charged can never drift.
 
 **Scoring + style rank.** Each demon accrues `game_time` and reports to `ScoreManager` on the
 `level_ended` signal (weighted by whether it was buffed). Per-level threshold arrays (exported on
@@ -103,7 +174,7 @@ uniforms.
 - **Registration arrays never deregister on death.** Always iterate with `is_instance_valid()`
   guards. To compact one, build a **new** array and filter — never alias an Array and append while
   iterating (reference type → infinite-loop hard-freeze on restart; already hit once).
-  `register_demon_selection_menu` / `resetOcculumCount` are the correct templates.
+  `Global.compact_registrations()` / `resetOcculumCount` are the correct templates.
 - **`ScoreManager.reset()` is called from `level_template._ready`** (alongside
   `Global.reset_all_variables()`). Any new level-entry path that bypasses `level_template` must
   call both, or scores/registries leak across runs.
@@ -111,18 +182,27 @@ uniforms.
   dimension instantiates a full DemonSelectionMenu + grids, so a blocking/looping child `_ready`
   freezes the game mid-transition. Restart re-enters `change_dual_scenes` — the hot path for
   restart bugs.
-- **Manual `_ready()` re-invocation exists** (`GridManager` → `tilemapLayer._ready()`;
-  `change_dual_scenes` → `WaveManager.call_deferred("_ready")`) → double-init risk.
+- **Manual `_ready()` re-invocation still exists in `GridManager`** (`tilemapLayer._ready()`) →
+  double-init risk. WaveManager's was replaced by public `setup_level()` — keep it idempotent;
+  `@onready` initializers do NOT re-run on re-invoked `_ready`.
 - **Overlap/area queries are invalid for the first few physics frames after spawn.** Existing code
   awaits 2–4 `physics_frame`s before `get_overlapping_areas()` (demon spawn 2, syn instance ~3,
   shield 4) — preserve these awaits.
 - **Group membership must be set BEFORE the node enters the tree.** `place_demon` adds the
   Purple/Green group *then* `call_deferred("add_child")`; `_ready` reads the group to pick collision
   layers. Reordering silently breaks dimension isolation.
-- **Demon names carry numeric suffixes** (`generate_unique_name` → `Occulum3`); identity/synergy
-  checks strip digits (`truncate_string`) or use substring `in`. **Substring trap: `"Occulum"` ⊂
-  `"SpinalOcculum"`** — order/specificity matters. The **`Occulum` spelling is intentional and
-  load-bearing**; do not "correct" it.
+- **Demon names carry numeric suffixes** (`generate_unique_name` → `Occulum3`); identity checks
+  use digit-stripped `get_demon_true_name()`. Buff matching is **exact-name** now — do not
+  reintroduce substring `in`-matching on node names (the old `"Occulum"` ⊂ `"SpinalOcculum"`
+  trap). The **`Occulum` spelling is intentional and load-bearing**; synergy IDS additionally
+  lowercase inner capitals (`"Spinalocculum"`) — build ids with `SynergyDefinition.make_id()`.
+- **Never `preload()` a resource that references demon scenes from an autoload** — it's a
+  compile-time cycle (demon scripts `extend Demon` and can't compile while `Global` is
+  mid-compile: "Could not resolve class Demon"). Use `load()` (see `demon_catalog`).
+- **Two temporary diagnostics are armed** (delete after one clean full playtest):
+  `[BUFF-MIGRATION]` (BuffNodes dual-runs old substring vs new exact matching and warns on
+  disagreement) and `[MOWER]` `_exit_tree` warnings (something external frees launched mowers —
+  culprit unidentified; warnings at app quit are normal teardown, mid-session ones are the catch).
 - **`EmptyDemon` (`is_empty`) short-circuits `_ready`** — no processing/registration; it exists only
   as a cross-dimension placement blocker.
 - **Maw uses a deliberate `-256` visual offset** in `place_demon` while its `grid_map` keys stay on
@@ -167,14 +247,20 @@ refactor phases that touch the restart path, buff matching, or tick order.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **
+- ** res://_Utilities/dim.gd ** (dimension groups + collision-layer constants)
+- ** res://_UI/ui_fx.gd ** (pulsing-highlight statics)
 - ** res://_Utilities/GameController/game_controller.gd **
 - ** res://_Utilities/Waves/WaveManager.gd **
+- ** res://_Utilities/Waves/PlayerHealth.gd **
 - ** res://_Utilities/Zombies/ZombieSpawner.gd **
 - ** res://_Entities/Demons/demon_base.gd **
+- ** res://_Entities/Demons/BloodBuff/BuffNodes.gd **
+- ** res://_Entities/Demons/Definitions/DemonCatalog.tres **
+- ** res://_Entities/Demons/Synergies/SynergyCatalog.tres **
 - ** res://_Entities/Zombies/BaseZombie.gd **
 - ** res://_Utilities/Demons/DemonManager.gd **
 - ** res://_Utilities/Demons/DemonSelectionMenu.gd **
 - ** res://_Stages/level_template.gd **
 - ** res://_Entities/SynAbility/syn_ability.gd **
-- ** res://_Entities/SynAbility/syn_ability.gd **
 - ** res://_Entities/SwapAbilities/swap_ability.gd **
+- ** REFACTOR_PLAN.md ** (living refactor status, per-phase validation)
