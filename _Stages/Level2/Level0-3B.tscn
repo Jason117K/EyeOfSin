@@ -3611,6 +3611,7 @@ new_power_texture = ExtResource("2_xqwgl")
 wave2StartTime = 65
 wave3StartTime = 85
 wave4StartTime = 90
+record_footage = true
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_3m502")]
 layout_mode = 1

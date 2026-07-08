@@ -169,7 +169,7 @@ point_count = 3
 [node name="BaalGaze" type="Node" unique_id=656116311]
 script = ExtResource("1_1mmxp")
 ability_duration = 10.0
-cooldown_duration = 35.0
+cooldown_duration = 5.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_ekoey")]
 ability_name = "GAZE OF BAAL"

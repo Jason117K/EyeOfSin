@@ -22,6 +22,7 @@ var _is_transitioning := false
 #@onready var demon_selection_menu := $CurrentScene/DemonSelectionMenu
 @onready var demon_selection_menus := Global.demon_selection_menus
 @onready var level_switcher := $CurrentScene/LevelSwitcher
+@onready var ultimate_container := $UltimateChargeContainer
 
 # Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
 const DIM_BITS := Dim.DIM_BITS

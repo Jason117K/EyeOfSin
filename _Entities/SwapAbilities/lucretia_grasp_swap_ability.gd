@@ -1,5 +1,7 @@
 extends SwapAbility
 
+#13
+#40
 
 @onready var grasp_container := $AllGrasp
 @export var grasp_speed := 225.0

@@ -87,7 +87,7 @@ size = Vector2(110, 20)
 [node name="LucretiaGrasp" type="Node" unique_id=534558046]
 script = ExtResource("1_hkd1k")
 ability_duration = 13.0
-cooldown_duration = 40.0
+cooldown_duration = 5.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_hkd1k")]
 ability_name = "GRASP OF LUCRETIA"

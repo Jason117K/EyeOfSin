@@ -444,6 +444,7 @@ func remove_syn_mark()->void:
 func blood_slow(blood_slow_percent:float=0.33) -> void:
 	#speedComp.setSpeed(speedComp.getOriginalSpeed() / 3)
 	slow_amount = slow_amount + 9999
+	buff_halo.set_hue_shift(0)
 	speedComp.slow(blood_slow_percent,true)
 	animatedSprite.blood_slow()
 	#set_hue_shift(0)
@@ -456,6 +457,7 @@ func undoBloodSlow() -> void:
 	slow_amount = clampf(slow_amount - 9999,0,99999)
 	animatedSprite.undo_blood_slow()
 	speedComp.undo_blood_slow()
+	buff_halo.set_hue_shift(animatedSprite.hue_shift)
 	_on_DebuffDegrade_timeout()
 
 

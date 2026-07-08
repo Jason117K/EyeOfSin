@@ -36,6 +36,7 @@ func connect_ability(shield_to_connect: Area2D) -> void:
 	var end := shield_to_connect.global_position
 
 	var line := Line2D.new()
+	line.hide()
 	line.width = 2.0
 
 	var points := PackedVector2Array()

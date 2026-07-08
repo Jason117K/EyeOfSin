@@ -988,6 +988,7 @@ new_power_description = "EVOKE LIGHTNING STORM"
 new_power_texture = ExtResource("2_0xw0i")
 isGreenDimension = true
 debug = false
+record_footage = true
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1561045702 instance=ExtResource("20_hgpp1")]

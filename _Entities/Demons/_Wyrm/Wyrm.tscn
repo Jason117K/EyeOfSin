@@ -942,7 +942,7 @@ metadata/_edit_lock_ = true
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=1914990497]
 visible = false
-z_index = 1
+z_index = 3
 position = Vector2(-2, -22)
 sprite_frames = ExtResource("2_1ds1s")
 animation = &"top_glow"
@@ -1008,7 +1008,6 @@ position = Vector2(-1, -2.5)
 shape = SubResource("1")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1120460148]
-visible = false
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1086403001]
 self_modulate = Color(0, 0, 0, 1)

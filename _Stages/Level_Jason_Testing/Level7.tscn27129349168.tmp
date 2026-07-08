@@ -43,13 +43,11 @@
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="40_r75n6"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="41_x4b75"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="42_k7wtk"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="44_8dhhw"]
+[ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="43_wn5ss"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_u53wd"]
 [ext_resource type="PackedScene" uid="uid://cm6m7oqcnnpok" path="res://_Stages/SpecialTiles/flower_tile.tscn" id="46_4fca4"]
 [ext_resource type="Texture2D" uid="uid://db6k2q4hdqclj" path="res://_Assets/Shapes/WhiteRectangle.png" id="47_ri8pe"]
 [ext_resource type="Script" uid="uid://crgav0n87odt2" path="res://_Stages/Level7/skull_tile_highlight.gd" id="48_8bot6"]
-[ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="49_8dhhw"]
-[ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="50_oer7y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4now0"]
 texture = ExtResource("10_tnl3t")
@@ -921,17 +919,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_oer7y")
-wave2StartTime = 70
-wave3StartTime = 85
-wave4StartTime = 100
-wave5StartTime = 100
-record_footage = true
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_7cbeu")]
 layout_mode = 1
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_2ghnq")]
-visible = false
 layout_mode = 1
 
 [node name="ToolTips" parent="." unique_id=423481821 instance=ExtResource("42_k7wtk")]
@@ -939,13 +931,12 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("4_k8jit")]
-blood_points = 400
+blood_points = 2000
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("5_ru6d6")]
-visible = false
 position = Vector2(740, 109)
 waves = Array[ExtResource("6_fkbw1")]([ExtResource("8_4fca4")])
 
@@ -954,7 +945,6 @@ z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("5_ru6d6")]
-visible = false
 position = Vector2(740, 141)
 waves = Array[ExtResource("6_fkbw1")]([ExtResource("8_4fca4")])
 
@@ -963,7 +953,6 @@ z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("5_ru6d6")]
-visible = false
 position = Vector2(740, 173)
 waves = Array[ExtResource("6_fkbw1")]([ExtResource("8_4fca4"), ExtResource("7_ysjbd"), ExtResource("7_ysjbd")])
 
@@ -972,7 +961,6 @@ z_index = 1
 position = Vector2(-32, 1)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("5_ru6d6")]
-visible = false
 position = Vector2(740, 205)
 waves = Array[ExtResource("6_fkbw1")]([ExtResource("8_4fca4"), ExtResource("7_ysjbd"), ExtResource("7_ysjbd")])
 
@@ -981,7 +969,6 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=40172816 instance=ExtResource("5_ru6d6")]
-visible = false
 position = Vector2(740, 237)
 waves = Array[ExtResource("6_fkbw1")]([ExtResource("8_4fca4"), ExtResource("7_ysjbd"), ExtResource("7_ysjbd")])
 
@@ -990,7 +977,6 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=816215242 instance=ExtResource("5_ru6d6")]
-visible = false
 position = Vector2(740, 269)
 waves = Array[ExtResource("6_fkbw1")]([ExtResource("8_4fca4"), ExtResource("7_ysjbd"), ExtResource("7_ysjbd")])
 
@@ -999,7 +985,6 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1922773539 instance=ExtResource("5_ru6d6")]
-visible = false
 position = Vector2(740, 301)
 waves = Array[ExtResource("6_fkbw1")]([ExtResource("8_4fca4"), ExtResource("7_ysjbd"), ExtResource("7_ysjbd")])
 
@@ -1016,7 +1001,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 tile_map_data = PackedByteArray("AAAtAAQAAQARAAcAAQArAAUAAQARAAcAAQA=")
 
 [node name="Block_Layer" type="TileMapLayer" parent="GameLayer/GridManager" unique_id=1479357457]
-tile_map_data = PackedByteArray("AAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAAIAAcAAQAAAAUAAAAJAAcAAQAAAAUAAAAIAAUAAQAAAAUAAAAJAAUAAQAAAAUAAAAIAAMAAQAAAAUAAAAJAAMAAQAAAAUAAAAIAAkAAQAAAAUAAAAJAAkAAQAAAAUAAAA=")
+tile_map_data = PackedByteArray("AAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAALAAMAAQAAAAUAAAALAAQAAQAAAAUAAAALAAUAAQAAAAUAAAALAAYAAQAAAAUAAAALAAcAAQAAAAUAAAALAAgAAQAAAAUAAAALAAkAAQAAAAUAAAAKAAkAAQAAAAUAAAAKAAgAAQAAAAUAAAAKAAcAAQAAAAUAAAAKAAYAAQAAAAUAAAAKAAUAAQAAAAUAAAAKAAQAAQAAAAUAAAAKAAMAAQAAAAUAAAA=")
 tile_set = SubResource("TileSet_0wqs2")
 script = ExtResource("28_7gxpp")
 hue_shift = 0.57
@@ -1267,7 +1252,8 @@ sprite_frames = SubResource("SpriteFrames_b1vmi")
 environment = ExtResource("41_x4b75")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("44_8dhhw")
+stream = ExtResource("43_wn5ss")
+volume_db = -80.0
 autoplay = true
 bus = &"music"
 
@@ -1276,22 +1262,45 @@ bus = &"music"
 [node name="FlowerTileContainer" type="Node" parent="." unique_id=724750231]
 
 [node name="FlowerTile" parent="FlowerTileContainer" unique_id=1493116393 instance=ExtResource("46_4fca4")]
-position = Vector2(294, 116)
+position = Vector2(358, 116)
+monitoring = false
+monitorable = false
+
+[node name="FlowerTile2" parent="FlowerTileContainer" unique_id=998494745 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 148)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile3" parent="FlowerTileContainer" unique_id=1382783001 instance=ExtResource("46_4fca4")]
-position = Vector2(294, 180)
+position = Vector2(358, 180)
+monitoring = false
+monitorable = false
+
+[node name="FlowerTile4" parent="FlowerTileContainer" unique_id=828783709 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 212)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile5" parent="FlowerTileContainer" unique_id=1862808082 instance=ExtResource("46_4fca4")]
-position = Vector2(294, 244)
+position = Vector2(358, 244)
+monitoring = false
+monitorable = false
+
+[node name="FlowerTile6" parent="FlowerTileContainer" unique_id=1047588340 instance=ExtResource("46_4fca4")]
+position = Vector2(358, 276)
+monitoring = false
+monitorable = false
 
 [node name="FlowerTile7" parent="FlowerTileContainer" unique_id=1767163720 instance=ExtResource("46_4fca4")]
-position = Vector2(294, 308)
+position = Vector2(358, 308)
+monitoring = false
+monitorable = false
 
 [node name="SkullTileHighlight" type="TextureRect" parent="FlowerTileContainer" unique_id=6941640]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 270.0
+offset_left = 334.0
 offset_top = 113.0
-offset_right = 318.0
+offset_right = 382.0
 offset_bottom = 316.0
 mouse_filter = 2
 texture = ExtResource("47_ri8pe")
@@ -1306,14 +1315,6 @@ offset_top = 91.0
 offset_right = 806.0
 offset_bottom = 538.0
 mouse_filter = 2
-
-[node name="AcquirePowerTexture" parent="." unique_id=195454887 instance=ExtResource("49_8dhhw")]
-visible = false
-layout_mode = 1
-
-[node name="UnlockPower" parent="." unique_id=1731368497 instance=ExtResource("50_oer7y")]
-visible = false
-layout_mode = 1
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]

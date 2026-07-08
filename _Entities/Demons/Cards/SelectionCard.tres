@@ -226,7 +226,7 @@ void fragment(){
 shader = SubResource("Shader_lv7j8")
 shader_parameter/debug = false
 shader_parameter/border_scale = 1.0
-shader_parameter/shadow_offset = Vector2(0, -100)
+shader_parameter/shadow_offset = Vector2(0, 0)
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/blur_amount = 0.0
 shader_parameter/shadow_scale = 1.5

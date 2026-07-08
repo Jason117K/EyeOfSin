@@ -27,6 +27,7 @@ var has_pulsed := false
 
 
 @export var debug := true
+@export var record_footage := false 
 @export var skip_tutorials := false  # true = skip all tutorial messages; level free-plays
 @onready var toolTips := $ToolTips
 @onready var demonManager := $DemonManager
@@ -168,6 +169,9 @@ func _ready() -> void:
 		unlock_power.set_new_power_description(extended_new_power_description)
 	unlock_power.hide()
 	new_power_unlock_rune.hide()
+	
+	if record_footage:
+		hide_ui_elements()
 
 func demon_clicked()->void:
 	pass 
@@ -375,6 +379,22 @@ func get_game_layer()->Node:
 	return $GameLayer
 	
 	
+func hide_ui_elements()->void:
+	ui_layer.modulate = Color(1,1,1,0)
+	demonSelectionMenu.modulate = Color(1,1,1,0)
+	#Global.game_controller.hide_swap_syn()
+	Global.ultimate_charge_container.modulate = Color(1,1,1,0)
+	Global.syn_ability_manager.hide_ability()
+	Global.swap_ability.hide_swap_alt()
+	Global.hide_pip()
+	
+	for zombie_spawner in $GameLayer.get_children():
+		if zombie_spawner.name.containsn("Spawner"):
+			zombie_spawner.modulate = Color(1,1,1,0)
+			
+	
+func show_ui_elements()->void:
+	pass
 	
 	
 	

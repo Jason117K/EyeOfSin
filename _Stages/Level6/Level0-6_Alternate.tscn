@@ -76,6 +76,7 @@ new_power_description = "TELEPORTS ZOMBIES"
 new_power_texture = ExtResource("2_2ngtn")
 isGreenDimension = true
 debug = false
+record_footage = true
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("20_21wrt")]

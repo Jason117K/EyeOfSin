@@ -964,6 +964,7 @@ metadata/_edit_lock_ = true
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=145781643]
 visible = false
+z_index = 2
 position = Vector2(-1, -9)
 sprite_frames = ExtResource("2_qlgaq")
 animation = &"back"
@@ -1039,7 +1040,7 @@ position = Vector2(6, -3)
 texture = ExtResource("35_7l7df")
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=686202393]
-z_index = 1
+z_index = 2
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = ExtResource("10_ni4ch")
 animation = &"idle"

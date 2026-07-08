@@ -1,4 +1,9 @@
 extends SwapAbility
+
+#10
+#35
+
+
 @onready var baal_eye := $BaalEye
 @onready var baal_eye_aoe := $BaalAOE
 func apply_swap_ability()->void:

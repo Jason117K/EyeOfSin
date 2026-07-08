@@ -35,6 +35,9 @@ func _ready() -> void:
 	syn_ability_cooldown.set_icon(icon_texture)
 	Global.register_syn_ability_manager(self)
 
+func hide_ability()->void:
+	syn_ability_cooldown.modulate = Color(1,1,1,0)
+
 func set_icon(new_texture:Texture2D)->void:
 	icon_texture = new_texture
 	syn_ability_cooldown.set_icon(icon_texture)

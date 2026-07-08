@@ -1252,6 +1252,7 @@ new_power_title = "SYN LIGHTNING"
 new_power_description = "ELECTROCUTES ZOMBIES"
 new_power_texture = ExtResource("2_6dyon")
 isGreenDimension = true
+record_footage = true
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_dk2pv")]
 layout_mode = 1

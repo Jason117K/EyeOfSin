@@ -1,5 +1,7 @@
 extends SwapAbility
 
+#10
+#35
 
 
 @export var max_lightning_per_rain := 4

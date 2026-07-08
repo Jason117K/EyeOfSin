@@ -1229,7 +1229,7 @@ buffed_range_target_pos = Vector2(450, 0)
 spiderling_wait_time = 4
 spinalOcculumHealth = 500.0
 ultimate_timer_wait_time = 0.1
-cost = 87.0
+cost = 75.0
 health = 100.0
 maxHealth = 100.0
 syn_shield_position = Vector2(-5, -6.5)
@@ -1293,7 +1293,7 @@ health = 800.0
 z_index = 1
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = ExtResource("8_jphsv")
-animation = &"idle"
+animation = &"attack_Crawler_2"
 autoplay = "spawn"
 flip_h = true
 script = ExtResource("21_ol6r1")
@@ -1435,6 +1435,7 @@ shape = SubResource("RectangleShape2D_dq2o5")
 
 [node name="BaalHalo" type="AnimatedSprite2D" parent="." unique_id=609308179]
 visible = false
+z_index = 3
 position = Vector2(-2, -9)
 sprite_frames = ExtResource("40_dq2o5")
 animation = &"top_glow"

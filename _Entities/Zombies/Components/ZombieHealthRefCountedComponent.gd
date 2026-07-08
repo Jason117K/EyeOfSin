@@ -37,7 +37,6 @@ func _init(new_parent_zombie : Zombie) -> void:
 	should_health_regen = new_parent_zombie.should_health_regen
 	time_between_health_regen = new_parent_zombie.time_between_health_regen
 	bloodWorth = new_parent_zombie.bloodWorth
-	print("Blood Worth on Born is ", bloodWorth)
 	time_between_bleed = new_parent_zombie.time_between_bleed
 	bleed_tick_damage = new_parent_zombie.bleed_tick_damage
 	has_armor = new_parent_zombie.has_armor

@@ -15,10 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bnf1svkhirytd" path="res://_Entities/Demons/_Maw/Maw_Card_New.png" id="9_jfwei"]
 [ext_resource type="FontFile" uid="uid://bop401swmurfb" path="res://_Assets/Fonts/Minecraft.ttf" id="9_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://bajbuwbiesujh" path="res://_Entities/Demons/Cards/DemonCard_HEART.png" id="11_iafbj"]
-[ext_resource type="Texture2D" uid="uid://ih1hwshjvue1" path="res://_Entities/Demons/Cards/DemonCARD_Base_NOText3.png" id="11_js2vo"]
 [ext_resource type="Texture2D" uid="uid://dli3rsa1e6fd7" path="res://_Entities/Demons/_Wyrm/Wyrm_Card_New.png" id="12_jfwei"]
 [ext_resource type="Texture2D" uid="uid://cwvvrqlikkiuo" path="res://_Entities/Demons/Cards/DESELECT_CARD.png" id="12_yqvs4"]
 [ext_resource type="Texture2D" uid="uid://w4n34nhafrdq" path="res://_Entities/Demons/Cards/WORDSWAP_CARD.png" id="13_vvged"]
+[ext_resource type="Texture2D" uid="uid://ci1830sxqb555" path="res://_Entities/Demons/_Hive/Hive_Card_New.png" id="14_1y46f"]
 [ext_resource type="Texture2D" uid="uid://dg2b6shnkexyk" path="res://_Assets/Misc/CODEX_CARD.png" id="14_04elx"]
 [ext_resource type="Texture2D" uid="uid://chfuimepfak3s" path="res://_Assets/UI/DemonCard_FastForward.png" id="15_e3ig8"]
 [ext_resource type="Texture2D" uid="uid://dcmst4lacr57c" path="res://_Entities/SpecialElementsPortal/GreenPortalCard.png" id="15_wixct"]
@@ -760,12 +760,10 @@ text = "50"
 horizontal_alignment = 1
 
 [node name="Maw" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=376957345]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = -2
 
-[node name="MawButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1327820071]
-visible = false
+[node name="MawButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=451035862]
 material = ExtResource("5_3emsw")
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
@@ -773,15 +771,8 @@ size_flags_horizontal = 5
 size_flags_vertical = 5
 texture_normal = ExtResource("9_jfwei")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 script = ExtResource("6_q10kc")
-
-[node name="TextureButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=1756768209]
-custom_minimum_size = Vector2(42, 42)
-layout_mode = 2
-texture_normal = ExtResource("9_jfwei")
-ignore_texture_size = true
-stretch_mode = 0
 
 [node name="MawCostLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw" unique_id=71867927]
 z_index = 2
@@ -796,13 +787,14 @@ visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="HiveButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive" unique_id=1601093442]
+[node name="HiveButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive" unique_id=2070136816]
+visible = false
 material = ExtResource("5_3emsw")
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
-texture_normal = ExtResource("11_js2vo")
+texture_normal = ExtResource("14_1y46f")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_q10kc")
@@ -1003,7 +995,11 @@ shape = SubResource("RectangleShape2D_nabk1")
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmButton" to="." method="_on_EggButton_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawButton" to="." method="_on_MawButton_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveButton" to="." method="_on_HiveButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart/HeartButton" to="." method="_on_heart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton" to="." method="_on_portal_button_pressed"]

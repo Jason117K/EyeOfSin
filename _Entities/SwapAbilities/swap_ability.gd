@@ -38,6 +38,9 @@ func game_start()->void:
 
 func hide_swap()->void:
 	cooldown_controller.hide()
+
+func hide_swap_alt()->void:
+	cooldown_controller.modulate = Color(1,1,1,0)
 	
 func show_swap()->void:
 	cooldown_controller.show()
