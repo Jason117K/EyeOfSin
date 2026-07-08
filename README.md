@@ -8,56 +8,56 @@ parallel **dimensions** the player swaps between, and a spatial **demon synergy/
 
 ```mermaid
 flowchart TD
-    subgraph AUTOLOADS["Autoloads — always loaded"]
-        GLOBAL["Global — the hub<br/>frozen API · registries<br/>per-frame conductor"]
-        SCORE["ScoreManager<br/>score · ranks · reset()"]
-        GRL["GlobalResourceLoader<br/>texture / SpriteFrames cache"]
-        AUDIO["AudioManager"]
-        DIALOGIC["Dialogic"]
-    end
+	subgraph AUTOLOADS["Autoloads — always loaded"]
+		GLOBAL["Global — the hub<br/>frozen API · registries<br/>per-frame conductor"]
+		SCORE["ScoreManager<br/>score · ranks · reset()"]
+		GRL["GlobalResourceLoader<br/>texture / SpriteFrames cache"]
+		AUDIO["AudioManager"]
+		DIALOGIC["Dialogic"]
+	end
 
-    STATICS["class_name statics<br/>Dim · UiFx · SoundEffect · ZombieRegistry"]
+	STATICS["class_name statics<br/>Dim · UiFx · SoundEffect · ZombieRegistry"]
 
-    subgraph TREE["GameController's tree — persists across level loads"]
-        GC["GameController<br/>change_dual_scenes · swap_scenes · cull masks"]
-        PIP["PiP viewport<br/>mirrors inactive dimension"]
-        subgraph WM["WaveManager — idempotent setup_level() per load"]
-            PH["PlayerHealth<br/>health_changed / depleted"]
-            MOWERS["LawnMower pool ×6<br/>self-healing"]
-        end
-    end
+	subgraph TREE["GameController's tree — persists across level loads"]
+		GC["GameController<br/>change_dual_scenes · swap_scenes · cull masks"]
+		PIP["PiP viewport<br/>mirrors inactive dimension"]
+		subgraph WM["WaveManager — idempotent setup_level() per load"]
+			PH["PlayerHealth<br/>health_changed / depleted"]
+			MOWERS["LawnMower pool ×6<br/>self-healing"]
+		end
+	end
 
-    subgraph PURPLE["Level X — Purple (collision layers 2 · 4 · 12)"]
-        PKIDS["DemonManager · DemonSelectionMenu<br/>UILayer · ZombieSpawner<br/>+ demon &amp; zombie instances"]
-    end
-    subgraph GREEN["Level X_Alternate — Green (collision layers 3 · 5 · 13)"]
-        GKIDS["DemonManager · DemonSelectionMenu<br/>UILayer · ZombieSpawner<br/>+ demon &amp; zombie instances"]
-    end
+	subgraph PURPLE["Level X — Purple (collision layers 2 · 4 · 12)"]
+		PKIDS["DemonManager · DemonSelectionMenu<br/>UILayer · ZombieSpawner<br/>+ demon &amp; zombie instances"]
+	end
+	subgraph GREEN["Level X_Alternate — Green (collision layers 3 · 5 · 13)"]
+		GKIDS["DemonManager · DemonSelectionMenu<br/>UILayer · ZombieSpawner<br/>+ demon &amp; zombie instances"]
+	end
 
-    subgraph BRICKS["Gameplay bricks"]
-        DEMON["Demon (demon_base)<br/>components: Health · Sprite · BuffNodes"]
-        ZOMBIE["BaseZombie<br/>tick(delta)"]
-        SYN["Syn ability manager<br/>cross-dimension pairs · accumulator charges"]
-        SWAP["SwapAbility + 4 subclasses<br/>accumulator cooldown"]
-    end
+	subgraph BRICKS["Gameplay bricks"]
+		DEMON["Demon (demon_base)<br/>components: Health · Sprite · BuffNodes"]
+		ZOMBIE["BaseZombie<br/>tick(delta)"]
+		SYN["Syn ability manager<br/>cross-dimension pairs · accumulator charges"]
+		SWAP["SwapAbility + 4 subclasses<br/>accumulator cooldown"]
+	end
 
-    subgraph DATA["Data — Resources (.tres)"]
-        SYNCAT["SynergyCatalog<br/>30 pairs · codex page/tab"]
-        DEMCAT["DemonCatalog<br/>id · scene · icon · description<br/>(balance values stay on scenes)"]
-        WDATA["WaveData<br/>per-spawner wave definitions"]
-    end
+	subgraph DATA["Data — Resources (.tres)"]
+		SYNCAT["SynergyCatalog<br/>30 pairs · codex page/tab"]
+		DEMCAT["DemonCatalog<br/>id · scene · icon · description<br/>(balance values stay on scenes)"]
+		WDATA["WaveData<br/>per-spawner wave definitions"]
+	end
 
-    GC -->|"loads pair as siblings"| PURPLE
-    GC -->|"loads pair as siblings"| GREEN
-    GC -->|"setup_level() each load"| WM
-    GC --- PIP
-    GC -->|"swap triggers begin()"| SWAP
-    GLOBAL -->|"① zombie.tick(delta)"| ZOMBIE
-    GLOBAL -->|"② demon.tick_buff(delta)"| DEMON
-    PURPLE -. "everything self-registers in _ready" .-> GLOBAL
-    GREEN -.-> GLOBAL
-    GLOBAL -->|"load()s at init"| DEMCAT
-    GLOBAL --> SYNCAT
+	GC -->|"loads pair as siblings"| PURPLE
+	GC -->|"loads pair as siblings"| GREEN
+	GC -->|"setup_level() each load"| WM
+	GC --- PIP
+	GC -->|"swap triggers begin()"| SWAP
+	GLOBAL -->|"① zombie.tick(delta)"| ZOMBIE
+	GLOBAL -->|"② demon.tick_buff(delta)"| DEMON
+	PURPLE -. "everything self-registers in _ready" .-> GLOBAL
+	GREEN -.-> GLOBAL
+	GLOBAL -->|"load()s at init"| DEMCAT
+	GLOBAL --> SYNCAT
 ```
 
 **`Global` autoload is the hub — and its API is FROZEN (2026-07 refactor rule).** It is the

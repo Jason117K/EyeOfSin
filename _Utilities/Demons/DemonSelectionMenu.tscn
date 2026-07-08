@@ -851,6 +851,7 @@ script = ExtResource("16_c3fhf")
 one_shot = true
 
 [node name="Hero" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1496618985]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -1
 
