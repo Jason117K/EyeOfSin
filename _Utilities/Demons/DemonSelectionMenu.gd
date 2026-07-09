@@ -226,7 +226,8 @@ func deselect_demon() -> void:
 	#print("Clearing Preview Because of Deselect")
 	clear_preview()
 	release_all_focus()
-	selected_demon = null 			
+	Global.is_demon_hero_selected = false
+	selected_demon = null 
 	setCanRemoveFalse()
 	demon_deselected.emit()
 	
@@ -648,3 +649,7 @@ func get_panel_container()->Control:
 
 func get_all_extra_buttons()->Array:
 	return all_extra_buttons
+
+
+func _on_hero_button_pressed() -> void:
+	Global.is_demon_hero_selected = true 

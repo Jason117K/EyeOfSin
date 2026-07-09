@@ -43,6 +43,7 @@ signal spinal_occulum_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	current_demon_type = Global.DEMON_TYPE.SPINAL_OCCULUM
 	blood_rib.hide()
 	spinal_occulum_buff_unlocked.connect(Global.unlock_buff)
 	_init_collision_mask(rib_buff_area,false)

@@ -1,20 +1,26 @@
-extends Demon
+extends Area2D
 
+@onready var death_timer := $DeathTimer
+
+var current_demon_type : Global.DEMON_TYPE
+var demon_location : Vector2
 var demon_selection_menu : Control
-
-
-	
-	
-func die_fromClearSpace() -> void:
-	queue_free()
+var demon_manager : Node 
+var is_green : bool 
 
 func _ready() -> void:
-	disable_buff_nodes()
 	demon_selection_menu = Global.get_demon_selection_menu(is_green)
 	demon_manager = Global.get_demon_manager(is_green)
 
-func set_demon_type(new_demon_type : Global.DEMON_TYPE)->void:
+func set_current_demon_type(new_demon_type:Global.DEMON_TYPE)->void:
 	current_demon_type = new_demon_type
+	
+func set_is_green(new_is_green : bool)->void:
+	is_green = new_is_green 
+	
+	
+func revive_summon()->void:
+	print("[HERO_REVIVE]: Calling Revive SUMMON ")
 	match current_demon_type:
 		Global.DEMON_TYPE.CRAWLER:
 			demon_selection_menu._on_CrawlerButton_pressed()
@@ -29,31 +35,10 @@ func set_demon_type(new_demon_type : Global.DEMON_TYPE)->void:
 		Global.DEMON_TYPE.HIVE:
 			demon_selection_menu._on_HiveButton_pressed()
 			
-	demon_manager.place_blood_demon(global_position)
-
-func summon_blood_clone()->void:
-	pass
-	
+	demon_manager.place_demon(demon_location)
+	self.hide()
+	death_timer.start()
 
 
-
-
-func on_demon_area_entered(_new_area: Area2D) -> void:
-	pass
-
-func on_demon_area_exited(_old_area: Area2D) -> void:
-	pass
-
-func receive_buff(_newDemon:String) -> void:
-	pass
-
-
-func truncate_string(_input_string: String) -> String:
-	pass
-	return ""
-
-func receive_heart_buff() -> void:
-	pass
-
-func remove_heart_buff() -> void:
-	pass
+func _on_death_timer_timeout() -> void:
+	queue_free()

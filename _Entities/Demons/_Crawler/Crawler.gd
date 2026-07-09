@@ -54,6 +54,7 @@ signal is_hovering
 
 func _ready() -> void:
 	super()
+	current_demon_type = Global.DEMON_TYPE.CRAWLER
 	crawler_buff_unlocked.connect(Global.unlock_buff)
 	hide_old_preview()
 	

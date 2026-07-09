@@ -84,6 +84,7 @@ signal wyrm_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	current_demon_type = Global.DEMON_TYPE.WYRM
 	_init_collision_mask(beam_ult_area)
 	beam_ultimate.hide()
 	wyrm_buff_unlocked.connect(Global.unlock_buff)

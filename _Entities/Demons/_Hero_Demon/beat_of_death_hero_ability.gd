@@ -6,8 +6,8 @@ extends HeroAbilityComponent
 @export var beat_of_death_interval := 0.4
 
 #@onready var beatOfDeathCirle := $"../BeatOfDeathCircle"
-@onready var beat_lightning_dmg_anim := $"../BeatDMGAnim"
-@onready var beat_of_death_damage_aoe := $"../BeatOfDeathDamage"
+@onready var beat_lightning_dmg_anim := $"../BeatOfDeath_Anim"
+@onready var beat_of_death_damage_aoe := $"../BeatOfDeath_Range"
 @onready var beat_of_death_lure_timer := $"../LureTimer"
 
 var beat_of_death_timer: Timer
@@ -16,7 +16,11 @@ var beat_of_death_timer: Timer
 func _ready() -> void:
 	super()
 	beat_of_death_damage_aoe.area_entered.connect(trigger) 
+	beat_of_death_lure_timer.timeout.connect(begin)
+	#anim_sprite = 
 
+func get_detection_area()->Area2D:
+	return beat_of_death_damage_aoe
 	
 func reset_cooldown() -> void:
 	is_on_cooldown = false
@@ -31,7 +35,7 @@ func begin() -> void:
 	
 
 func apply_ability()->void:
-	anim_sprite.animation = "beat_of_death"
+	#anim_sprite.animation = "beat_of_death"
 	#Start Timer to increment beating dmaage, throw in times 2
 	beat_of_death_timer = Timer.new()
 	beat_of_death_timer.one_shot = false
@@ -64,7 +68,7 @@ func ability_end() -> void:
 
 func beat_of_death() -> void:
 	beat_lightning_dmg_anim.show()
-	beat_lightning_dmg_anim.play("new_animation")
+	beat_lightning_dmg_anim.play("aoe_dmg")
 
 
 	

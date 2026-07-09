@@ -192,11 +192,11 @@ func tick(delta: float) -> void:
 							is_attacking = true
 							pass
 						else:
-							print(self, " time to attack demon here ")
+							#print(self, " time to attack demon here ")
 							attack_starting_pos = parent_zombie.global_position
 							attack_demon(collider)
 					else:
-						print(self, " time to attack demon")
+						#print(self, " time to attack demon")
 						attack_starting_pos = parent_zombie.global_position
 						attack_demon(collider)
 func switch_sides()->void:

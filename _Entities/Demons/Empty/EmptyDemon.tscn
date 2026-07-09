@@ -1302,6 +1302,20 @@ script = ExtResource("28_1pm3a")
 [node name="Empty" type="Area2D" unique_id=422311796 groups=["Plants"]]
 position = Vector2(0, 1)
 script = ExtResource("1_rfapi")
+cost = null
+health = null
+healthRegen = null
+maxHealth = null
+regen_wait_time = null
+syn_shield_position = null
+hit_flash_duration = null
+rib_health = null
+wyrmBuff = null
+hiveBuff = null
+spinalOcculumBuff = null
+mawBuff = null
+crawlerBuff = null
+occulumBuff = null
 is_empty = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1589969452]

@@ -48,6 +48,7 @@ signal hive_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	current_demon_type = Global.DEMON_TYPE.HIVE
 	hive_buff_unlocked.connect(Global.unlock_buff)
 	# --- Component init ---
 	swarm.initialize(waitTime)

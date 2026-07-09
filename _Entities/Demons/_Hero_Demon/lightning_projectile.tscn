@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://fyrvopmboib7"]
+
+[ext_resource type="Texture2D" uid="uid://degk3rc0kfw1" path="res://_Entities/Demons/_Hero_Demon/Hero_Lightning-Sheet.png" id="1_58uc3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpwx4"]
+atlas = ExtResource("1_58uc3")
+region = Rect2(480, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnxle"]
+atlas = ExtResource("1_58uc3")
+region = Rect2(560, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd0j2"]
+atlas = ExtResource("1_58uc3")
+region = Rect2(640, 0, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e437b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpwx4")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_pnxle")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vd0j2")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_pnxle")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_246v2"]
+size = Vector2(76, 20)
+
+[node name="LightningProjectile" type="Area2D" unique_id=575202039]
+
+[node name="LightningAnim" type="AnimatedSprite2D" parent="." unique_id=1392884844]
+sprite_frames = SubResource("SpriteFrames_e437b")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=487647755]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_246v2")

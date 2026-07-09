@@ -54,6 +54,7 @@ signal maw_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	current_demon_type = Global.DEMON_TYPE.MAW
 	collision_mask = 2
 	maw_buff_unlocked.connect(Global.unlock_buff)
 	# --- Tentacle setup ---

@@ -1,6 +1,7 @@
 extends Area2D
 #DemonProjectile.gd
 
+@onready var hero_lightning_strike_anim := $LightningStrikeAnim
 @onready var lightning_detection_zone : Area2D = $LightningZone
 @onready var lightning_zone_visual := $LightningZoneAnimSprite
 @onready var projectile_anim_sprite := $ProjectileAnimSprite
@@ -45,6 +46,12 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 func _wyrmBuff()->void:
 	wyrmBuff = true
 	modulate = Color("ff0000")
+
+func make_hero_lightning_strike()->void:
+	hero_lightning_strike_anim.show()
+	projectile_anim_sprite.hide()
+	piercing = true
+	
 	
 func _ready() -> void:
 	#print(self, " Projectile Ready Position Is ", self.position)
@@ -139,7 +146,7 @@ func on_hit(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
-		print(self,"Zombie Hit Is ", area)
+		#print(self,"Zombie Hit Is ", area)
 		var healthComp :ZombieHealthRefCountedComponent = area.getHealthComponent()
 		if healthComp.health < 1:
 			return 

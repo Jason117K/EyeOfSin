@@ -1,8 +1,14 @@
 extends Node
 
-var recovery_blood_value := 200 
 
-var style_menu : Control
+enum DEMON_TYPE{
+	CRAWLER,
+	OCCULUM,
+	SPINAL_OCCULUM,
+	WYRM,
+	HIVE,
+	MAW
+}
 
 var canPlayLevel2: bool = true
 var canPlayLevel3: bool = true
@@ -23,6 +29,7 @@ var skip_tutorials := false
 
 var all_zombies := []
 var all_demons := []
+var style_menu : Control
 var game_controller: GameController
 var demon_selection_menus : Array = []
 var demon_selection_menu : Control
@@ -34,7 +41,8 @@ var hero_demon_summoned := false
 var ultimate_is_ready := false
 var swap_ability : Node
 var current_level : Node
-var hero_demon : Node
+#var hero_demon : Node
+var current_hero_demon : Node 
 var ui_layers  := []
 var wave_previews := []
 var should_hide_ui := false
@@ -53,10 +61,15 @@ var purple_syn_ability : Area2D
 var green_syn_ability : Area2D
 
 var num_cheap_occulum :int = 4 
+var recovery_blood_value := 200 
+var is_demon_hero_selected := false 
 
 #region Preloaded scenes & icons (planned: move to catalogs in refactor Phase 5)
 @onready var sway_shader: VisualShader = preload("res://_Common/Shaders/swayShader.tres")
 
+var hero_demon := preload("res://_Entities/Demons/_Hero_Demon/hero_demon.tscn")
+
+var demon_revive_point := preload("res://_Entities/Demons/demon_revive_point.tscn")
 
 var column_death_explosion := preload("res://_Entities/Demons/_Wyrm/zombie_death_explosion.tscn")
 var blood_scene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -342,7 +355,16 @@ func unHideDemonSelectionMenu() -> void:
 						 
 	#if demon_selection_menu != null:
 		#demon_selection_menu.visible = true
-	
+		
+func get_demon_selection_menu(is_green:bool)->Control:
+	for menu in demon_selection_menus:
+		if menu != null:
+			if menu.is_alt && is_green:
+				return menu
+			if !menu.is_alt && !is_green:
+				return menu 
+	return null
+		
 		
 func swap_portal_button() -> void:
 	#TODO
@@ -366,7 +388,12 @@ func add_blood_to_demon_manager(is_green:bool=false)->void:
 	for demon_manager in demon_managers:
 		if is_green == demon_manager.is_green:
 			demon_manager.add_blood(recovery_blood_value)
-	
+
+func get_demon_manager(is_green:bool)->Node:
+	for demon_manager in demon_managers:
+		if is_green == demon_manager.is_green:
+			return demon_manager
+	return null 
 	
 	
 #region Syn ability / shield / lightning-ball pair registries
@@ -705,12 +732,12 @@ func get_all_demons()->Array:
 func demon_removed()->void:
 	demon_was_removed.emit()
 		
-func register_hero_demon(new_hero_demon : Demon) -> void:
-	hero_demon = new_hero_demon
+func register_hero_demon(new_hero_demon : Area2D) -> void:
+	if current_hero_demon != null && is_instance_valid(current_hero_demon):
+		current_hero_demon.queue_free()
+	current_hero_demon = new_hero_demon
 	hero_demon_summoned = true
-	for demon_manager in demon_managers:
-		if demon_manager != null:
-			demon_manager.hero_demon = new_hero_demon
+
 
 func hero_demon_is_summoned() -> bool:
 	return hero_demon_summoned
@@ -720,28 +747,28 @@ func swap_scenes() -> void:
 	game_controller.swap_scenes()
 	adjust_ui_layer()					
 	swap_portal_button()
-	swap_hero_demon()
+	#swap_hero_demon()
 	swap_scenes_signal.emit()
 	#demon_manager.swap_heart()
 
-func swap_hero_demon()->void:
-	pass
-	#print("Swap Hero Demon")
-	if hero_demon != null:
-		if hero_demon.is_in_group("Purple"):
-			#print("Hero Was Purple")
-			hero_demon.add_to_group("Green")
-			hero_demon.remove_from_group("Purple")
-			if hero_demon.is_in_group("Purple"):
-				print("Hero Still Purple Lmao")
-			hero_demon.reparent(game_controller.get_active_dimension().game_layer)
-			hero_demon.swap_scenes()
-		else:
-		#	print("Hero Was Green")
-			hero_demon.add_to_group("Purple")
-			hero_demon.remove_from_group("Green")
-			hero_demon.reparent(game_controller.get_active_dimension().game_layer)
-			hero_demon.swap_scenes()
+#func swap_hero_demon()->void:
+	#pass
+	##print("Swap Hero Demon")
+	#if hero_demon != null:
+		#if hero_demon.is_in_group("Purple"):
+			##print("Hero Was Purple")
+			#hero_demon.add_to_group("Green")
+			#hero_demon.remove_from_group("Purple")
+			#if hero_demon.is_in_group("Purple"):
+				#print("Hero Still Purple Lmao")
+			#hero_demon.reparent(game_controller.get_active_dimension().game_layer)
+			#hero_demon.swap_scenes()
+		#else:
+		##	print("Hero Was Green")
+			#hero_demon.add_to_group("Purple")
+			#hero_demon.remove_from_group("Green")
+			#hero_demon.reparent(game_controller.get_active_dimension().game_layer)
+			#hero_demon.swap_scenes()
 	
 
 func unhide_ui_layer() -> void:
@@ -929,7 +956,6 @@ func set_dialog_disabled()->void:
 	pass
 	
 	
-	
 func get_column_death_explosion() -> PackedScene:
 	return column_death_explosion
 		
@@ -952,19 +978,24 @@ func get_silence_field() -> PackedScene :
 func get_severed_spriteframes()-> SpriteFrames:
 	return severed_spriteframes
 	
+	
 func hide_pip() -> void:
 	print("Should hide ", game_controller.pip)
 	game_controller.pip.hide()
 	game_controller.pip.hide_pip()
 	
+	
 func show_pip() -> void:
 	game_controller.pip.show()
+
 
 func make_pip_glow()->void:
 	UiFx.add_pulsing_button_highlight(game_controller.pip.get_pip_panel())
 
+
 func stop_pip_glow()->void:
 	UiFx.remove_pulsing_button_highlight(game_controller.pip.get_pip_panel())
+	
 	
 func register_style_menu(new_style_menu)->void:
 	style_menu = new_style_menu
@@ -979,8 +1010,10 @@ func start_game()->void:
 			occulum.start_blood_timer()
 	pass
 	
+	
 func register_occulum(new_occulum:Demon)->void:
 	all_registered_occulum.append(new_occulum)
+
 
 func get_current_ui_layer()->Control:
 	var on_purple :bool= game_controller.on_purple_scene()
@@ -991,6 +1024,7 @@ func get_current_ui_layer()->Control:
 			if !on_purple && ui_layer.make_green == true:
 				return ui_layer
 	return null
+			
 			
 func unlock_zombie(unlocked_zombie : String)->void:
 	if gameIsStarted:
@@ -1011,10 +1045,10 @@ func unlock_buff(unlocked_buff : String)->void:
 		get_current_ui_layer().set_unlock_notif(unlocked_buff)
 
 
-
 func navigate_to_buff(new_synergy:String)->void:
 	pending_codex_synergy = new_synergy
 	game_controller.change_scene_with_pause("res://_UI/LoreBooks/demon_lore_book.tscn")
+
 
 func register_demon_codex(new_demon_codex : Control)->void:
 	demon_codex = new_demon_codex

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dvdspuft08po8"]
+
+[ext_resource type="Script" uid="uid://brmsmht28udmb" path="res://_Entities/Demons/demon_revive_point.gd" id="1_6vjyt"]
+[ext_resource type="Texture2D" uid="uid://chjlyymq5t45q" path="res://_Entities/Demons/Blood/Sun.png" id="1_kpxi3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vjyt"]
+radius = 18.110771
+
+[node name="DemonRevivePoint" type="Area2D" unique_id=680319188 groups=["Demon_Revive_Point"]]
+script = ExtResource("1_6vjyt")
+
+[node name="Marker" type="Sprite2D" parent="." unique_id=483487689]
+visible = false
+modulate = Color(0.35, 0, 0, 1)
+texture = ExtResource("1_kpxi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1522330751]
+shape = SubResource("CircleShape2D_6vjyt")
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=1980683423]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://kpal5ggmjv70"]
 
 [ext_resource type="PackedScene" uid="uid://kf64j7pluy7o" path="res://_UI/LoreBooks/LoreBookVisual/interactive_book_2d.tscn" id="1_0r1la"]
-[ext_resource type="Texture2D" uid="uid://56xpmsexudca" path="res://_Assets/Codex/CodexWip1.png" id="1_c1n67"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="1_d8001"]
+[ext_resource type="Texture2D" uid="uid://bnaf6vn58jiq5" path="res://_Assets/Codex/CodexWip3.2.png" id="1_v2ssp"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="1_votx1"]
 [ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="2_v2ssp"]
 [ext_resource type="Script" uid="uid://drb4eskwaylxl" path="res://_Common/ColorChangingScripts/change_color_watcher.gd" id="3_nhj8y"]
@@ -139,7 +139,7 @@ grow_vertical = 2
 self_modulate = Color(0.46799976, 0, 0.72, 1)
 position = Vector2(371, 206)
 scale = Vector2(0.515, 0.515)
-texture = ExtResource("1_c1n67")
+texture = ExtResource("1_v2ssp")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=130120643]
 visible = false

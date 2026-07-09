@@ -76,7 +76,7 @@ class_name Demon
 @onready var highlight_circle := $HighlightCircle
 
 var demon_buff_name : String = "None"
-
+var is_green : bool 
 var special_description_file : String
 var can_ult : bool = true 
 var is_ulting : bool = false 
@@ -87,6 +87,8 @@ var invulnerable := false
 var is_shielded := false
 var reduced_damage_percent := 0.0
 var game_time: float = 0.0
+var hero_demon_instance 
+var current_demon_type : Global.DEMON_TYPE
 
 @onready var hide_highlight_timer : Timer = Timer.new()
 
@@ -152,8 +154,10 @@ func _ready() -> void:
 	Global.notification_bar.show_new_demon_notification.connect(hide_highlight)
 	
 	if self.is_in_group("Green"):
+		is_green = true 
 		my_active_dimension = Global.game_controller.get_green_dimension()
 	else:
+		is_green = false 
 		my_active_dimension = Global.game_controller.get_purple_dimension()
 		
 	ScoreManager.level_ended.connect(broadcast_time_alive)
@@ -291,6 +295,21 @@ func undo_baal_buff()->void:
 	baal_halo.hide()
 	animSpriteComp.speed_scale = 1 #animSpriteComp.default_anim_speed_scale
 
+func make_blood_demon()->void:
+	#Deactivate Receiving Buffs
+	#Deactivate Giving Buffs
+	#Make Red
+	isBuffed = true 
+	disable_buff_nodes()
+	pass
+	
+func disable_buff_nodes()->void:
+	for child in $BuffNodesComponent.get_children():
+		if child is Area2D:
+			child.monitorable = false
+			child.monitoring = false
+
+
 # Called by children after extracting demonName string from the buffing demon node.
 # Order: guard → healthComp → animSpriteComp → flag set
 func receive_buff(demonName) -> void:
@@ -360,8 +379,18 @@ func get_is_buffed() -> bool:
 
 # --- Death ---
 
+func spawn_revive_point()->void:
+	var revive_point_instance = Global.demon_revive_point.instantiate()
+	revive_point_instance.global_position = self.global_position
+	revive_point_instance.demon_location = global_position
+	revive_point_instance.set_is_green(is_green)
+	revive_point_instance.set_current_demon_type(current_demon_type)
+	_init_collision_layer(revive_point_instance)
+	get_parent().add_child(revive_point_instance)
+	
 func die() -> void:
 	demon_die.emit()
+	spawn_revive_point()
 	_cleanup_manager()
 	_cleanup()
 	queue_free()
@@ -508,7 +537,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		pass
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
 	# your double-click logic here
-		show_erase_button()
+		if Global.is_demon_hero_selected:
+			spawn_hero_demon()
+		else:
+			show_erase_button()
 		pass
 
 func show_erase_button()->void:
@@ -531,6 +563,14 @@ func on_demon_area_exited(old_area: Area2D) -> void:
 
 
 # --- Spawn ---
+
+func spawn_hero_demon()->void:
+	hero_demon_instance = Global.hero_demon.instantiate()
+	add_child(hero_demon_instance)
+	hero_demon_instance.assign_parent_demon(self)
+	Global.is_demon_hero_selected = false
+	pass
+	
 
 func finish_spawn() -> void:
 	spawn_done = true 

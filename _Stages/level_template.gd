@@ -363,7 +363,9 @@ func click_pause_button()->void:
 func remove_empty_blocker_demon(grid_pos:Vector2) -> void:
 	demonManager.clear_space_alt(grid_pos)
 
-
+func summon_blood_clone()->void:
+	pass
+	
 
 func show_unlock_zombie_button(new_zombie_unlock:String)->void:
 	pass

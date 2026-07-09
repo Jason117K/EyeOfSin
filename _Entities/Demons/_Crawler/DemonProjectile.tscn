@@ -1,10 +1,43 @@
 [gd_scene format=3 uid="uid://c35ses7btlwqk"]
 
 [ext_resource type="Script" uid="uid://bk1ka6qbmryci" path="res://_Entities/Demons/_Crawler/DemonProjectile.gd" id="1_q5oco"]
+[ext_resource type="Texture2D" uid="uid://degk3rc0kfw1" path="res://_Entities/Demons/_Hero_Demon/Hero_Lightning-Sheet.png" id="2_a6n4p"]
 [ext_resource type="Texture2D" uid="uid://chh8k80e2gdwn" path="res://_Entities/Demons/Projectile/WebBallwOutline.png" id="2_pnqjf"]
 [ext_resource type="Texture2D" uid="uid://bu2xe78apat00" path="res://_Entities/Demons/Projectile/FlamingBalls-SheetGreen.png" id="3_a6n4p"]
 [ext_resource type="Texture2D" uid="uid://bwcgujjm7p3jm" path="res://_Entities/Demons/Explosion/blueboom.png" id="3_abrjb"]
 [ext_resource type="Texture2D" uid="uid://dk1fxkw1ttmvo" path="res://_Entities/Demons/Projectile/FlamingBalls-Sheet.png" id="4_ggtey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpwx4"]
+atlas = ExtResource("2_a6n4p")
+region = Rect2(480, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnxle"]
+atlas = ExtResource("2_a6n4p")
+region = Rect2(560, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd0j2"]
+atlas = ExtResource("2_a6n4p")
+region = Rect2(640, 0, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggtey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpwx4")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_pnxle")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vd0j2")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_pnxle")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5uua"]
 atlas = ExtResource("2_pnqjf")
@@ -227,6 +260,14 @@ z_index = 1
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("1_q5oco")
+
+[node name="LightningStrikeAnim" type="AnimatedSprite2D" parent="." unique_id=1670802968]
+visible = false
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_ggtey")
+autoplay = "default"
+frame = 1
+frame_progress = 0.65100026
 
 [node name="ProjectileAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1077432265]
 sprite_frames = SubResource("SpriteFrames_h5pg5")

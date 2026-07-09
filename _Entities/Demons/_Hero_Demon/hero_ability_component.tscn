@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmmvuo0uc4nvr"]
 
-[ext_resource type="Script" uid="uid://b5fmwvjqobl76" path="res://_Entities/Demons/_HeartDemon/hero_ability_component.gd" id="1_txri4"]
+[ext_resource type="Script" uid="uid://b5fmwvjqobl76" path="res://_Entities/Demons/_Hero_Demon/hero_ability_component.gd" id="1_txri4"]
 [ext_resource type="Texture2D" uid="uid://t6ilamcx5awq" path="res://_Assets/UI/DemonCard_BloodRain_CARD_ICON.png" id="4_yipsg"]
 
 [sub_resource type="Shader" id="Shader_xbg3e"]

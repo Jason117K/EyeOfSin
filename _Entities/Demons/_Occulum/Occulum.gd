@@ -73,6 +73,7 @@ var ultimate_buffed := false
 
 func _ready() -> void:
 	super()
+	current_demon_type = Global.DEMON_TYPE.OCCULUM
 	occulum_buff_unlocked.connect(Global.unlock_buff)
 	num_cheap_occulum = 4
 	_init_collision_mask(healZone,false)

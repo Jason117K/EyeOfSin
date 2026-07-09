@@ -8,6 +8,7 @@ var cooldown_timer: Timer
 var is_active := false
 var is_on_cooldown := false
 var cooldown_elapsed := 0.0
+var is_green : bool = false 
 
 
 func _ready() -> void:
@@ -26,6 +27,8 @@ func _ready() -> void:
 func reset_cooldown() -> void:
 	is_on_cooldown = false
 
+func get_detection_area()->Area2D:
+	return null 
 
 func begin() -> void:
 	if is_on_cooldown:
@@ -51,8 +54,8 @@ func ability_end() -> void:
 	cooldown_timer.start()
 	is_on_cooldown = true 
 	cooldown_elapsed = 0.0
-	anim_sprite.speed_scale = 1
-	anim_sprite.animation = "idle"
+	#anim_sprite.speed_scale = 1
+	#anim_sprite.animation = "idle"
 
 
 
