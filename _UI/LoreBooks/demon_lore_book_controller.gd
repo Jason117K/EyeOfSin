@@ -104,6 +104,8 @@ var mawCrawler := "res://_Assets/Text/TextFiles/Synergies/MawCrawler.txt"
 var mawSpinalOcculum := "res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt"
 var mawWyrm := "res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt"
 
+var wyrmQueen := "res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt"
+
 var wyrmBase := "res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt"
 var wyrmOcculum := "res://_Assets/Text/TextFiles/Synergies/WyrmOcculum.txt"
 var wyrmHive := "res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt"

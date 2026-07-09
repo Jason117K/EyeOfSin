@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b1dsse5rwmx6q" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_HIVE-Sheet.png" id="8_c21ec"]
 [ext_resource type="Texture2D" uid="uid://duqm4y5ct74xm" path="res://_Entities/Demons/_Occulum/Spritesheets/OcculumTowerIdle_WYRM-Sheet.png" id="9_00tae"]
 [ext_resource type="SpriteFrames" uid="uid://d2q2x3trj5nsp" path="res://_Entities/Demons/_Occulum/occulum_sprite_frames.tres" id="10_ni4ch"]
+[ext_resource type="Shader" uid="uid://cpkds665i6vsl" path="res://_Common/Shaders/Blood_Demon.gdshader" id="11_a3nmy"]
 [ext_resource type="Script" uid="uid://cy1djltqpfkrb" path="res://_Entities/Demons/preview_card_anim_sprite.gd" id="14_4h7ci"]
 [ext_resource type="Script" uid="uid://b03qsa5a72bt" path="res://_Entities/Demons/_Occulum/occulum_sprite_comp.gd" id="16_kvwqv"]
 [ext_resource type="PackedScene" uid="uid://bqs2ilquqyrgj" path="res://_Entities/Demons/Spawn/lightning_spawn.tscn" id="20_pomd1"]
@@ -110,48 +111,11 @@ size = Vector2(87, 77)
 [sub_resource type="RectangleShape2D" id="89"]
 size = Vector2(11, 9)
 
-[sub_resource type="Shader" id="Shader_bufnm"]
-code = "shader_type canvas_item;
-
-
-
-uniform vec4 glow_color : source_color = vec4(223,66,66,256);
-const vec4 modulate_factor = vec4(9, 9,9, 1.0);
-//uniform vec4 modulate_factor : source_color = vec4(1.1, 1.1, 1.1, 1.0);
-const float glow_tolerance = 0.2;
-//uniform float glow_tolerance : hint_range(0.0, 1.0) = 0.5;
-
-// Optimized HSV conversion
-vec3 rgb2hsv(vec3 c) {
-    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
-    vec4 p = c.g < c.b ? vec4(c.bg, K.wz) : vec4(c.gb, K.xy);
-    vec4 q = c.r < p.x ? vec4(p.xyw, c.r) : vec4(c.r, p.yzx);
-    
-    float d = q.x - min(q.w, q.y);
-    float e = 1.0e-10;
-    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
-}
-
-vec3 hsv2rgb(vec3 c) {
-    vec3 rgb = clamp(abs(fract(c.x + vec3(0.0, 2.0/3.0, 1.0/3.0)) * 6.0 - 3.0) - 1.0, 0.0, 1.0);
-    return c.z * mix(vec3(1.0), rgb, c.y);
-}
-
-void fragment() {
-	vec4 first_tex_color = texture(TEXTURE, UV);
-		// Apply modulation to pixels matching glow_color
-	float glow_dist = distance(first_tex_color.rgb, glow_color.rgb);
-	if (glow_dist < glow_tolerance) {
-		first_tex_color *= modulate_factor;
-	}
-	COLOR = first_tex_color;
-	
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a84i6"]
 resource_local_to_scene = true
-shader = SubResource("Shader_bufnm")
-shader_parameter/glow_color = Color(223, 66, 66, 256)
+shader = ExtResource("11_a3nmy")
+shader_parameter/blood_color = Color(0.6, 0, 0, 1)
+shader_parameter/active = false
 
 [sub_resource type="SpriteFrames" id="11"]
 
@@ -928,6 +892,7 @@ script = ExtResource("1")
 bloodWaitTime = 33.0
 wyrmBloodWaitTime = 40.0
 crawlerBloodWaitTime = 25.0
+ultimate_blood_value = 100
 mana_add_on_generate_blood = 10
 health = 125.0
 maxHealth = 125.0

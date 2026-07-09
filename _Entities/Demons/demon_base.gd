@@ -89,6 +89,7 @@ var reduced_damage_percent := 0.0
 var game_time: float = 0.0
 var hero_demon_instance 
 var current_demon_type : Global.DEMON_TYPE
+var blood_clone_empty_parent 
 
 @onready var hide_highlight_timer : Timer = Timer.new()
 
@@ -100,6 +101,7 @@ var spawn_done := false
 var is_hero := false
 var hit_flash_active : bool = false 
 var time_since_hit : float = 0.0 
+var is_blood : bool = false 
 
 var all_synergies : Array 
 var my_active_dimension : Control
@@ -300,8 +302,15 @@ func make_blood_demon()->void:
 	#Deactivate Giving Buffs
 	#Make Red
 	isBuffed = true 
+	is_blood = true 
 	disable_buff_nodes()
+	animSpriteComp.material.set_shader_parameter("active", true)
 	pass
+
+func set_blood_empty_parent(empty_parent : Area2D)->void:
+	blood_clone_empty_parent = empty_parent
+	pass
+	
 	
 func disable_buff_nodes()->void:
 	for child in $BuffNodesComponent.get_children():
@@ -346,6 +355,7 @@ func _set_buff_flag(demonName: String) -> void:
 	
 func get_special_description() -> String:
 	var file := FileAccess.open(special_description_file, FileAccess.READ)
+	print("FILE IS ", file)
 	if file == null:
 		push_error("Could not open file: %s. Error: %d" % [special_description_file, FileAccess.get_open_error()])
 		return ""
@@ -356,13 +366,14 @@ func get_demon_icon() -> Texture2D:
 	return animSpriteComp.current_icon
 	
 func debuff() -> void:
-	print(self,"Self Being Debuffed")
-	isBuffed = false
-	_reset_buff_flags()
-	healthComp.debuff()
-	animSpriteComp.debuff()
-	special_description_file = get_special_description_file(all_synergies,"Base")
-	
+	if !is_blood:
+		print(self,"Self Being Debuffed")
+		isBuffed = false
+		_reset_buff_flags()
+		healthComp.debuff()
+		animSpriteComp.debuff()
+		special_description_file = get_special_description_file(all_synergies,"Base")
+		
 
 func _reset_buff_flags() -> void:
 	demon_buff_name = "None"
@@ -389,6 +400,10 @@ func spawn_revive_point()->void:
 	get_parent().add_child(revive_point_instance)
 	
 func die() -> void:
+	if is_blood:
+		blood_clone_empty_parent.dispel_blood_clone(true)
+		return 
+	kill_hero()
 	demon_die.emit()
 	spawn_revive_point()
 	_cleanup_manager()
@@ -396,11 +411,16 @@ func die() -> void:
 	queue_free()
 
 func die_fromClearSpace() -> void:
+	kill_hero()
 	demon_manager.add_blood(calc_blood_refund())
 	demon_die.emit()
 	_cleanup_manager()
 	_cleanup()
 	queue_free()
+
+func kill_hero()->void:
+	if hero_demon_instance != null:
+		hero_demon_instance.remove_hero()
 
 func calc_blood_refund()->int:
 	var health_percent :float = get_health()/get_max_health()
@@ -568,8 +588,15 @@ func spawn_hero_demon()->void:
 	hero_demon_instance = Global.hero_demon.instantiate()
 	add_child(hero_demon_instance)
 	hero_demon_instance.assign_parent_demon(self)
+	var opposite_demon_manager := Global.get_demon_manager(!is_green)
+	opposite_demon_manager.summon_blood_clone(global_position)
 	Global.is_demon_hero_selected = false
 	pass
+
+func despawn_hero_demon()->void:
+	var opposite_demon_manager := Global.get_demon_manager(!is_green)
+	opposite_demon_manager.dispel_blood_clone(global_position)
+	hero_demon_instance.queue_free()
 	
 
 func finish_spawn() -> void:

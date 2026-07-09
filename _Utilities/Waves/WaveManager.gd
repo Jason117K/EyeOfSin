@@ -144,6 +144,7 @@ func start_next_wave() -> void:
 
 func _start_wave(index: int) -> void:
 	print("START WAVEEEEEEEEE ", index)
+	Global.show_wave_label(index+1)
 	if index < 0 or index >= _total_waves:
 		return
 	if index > 0:

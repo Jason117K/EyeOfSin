@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://6wegh0y13r2" path="res://_Entities/Demons/SummonAnim-Sheet.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bdtsmxs7db4wj" path="res://_Entities/Demons/_Maw/MawMouthSpriteSheet.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://d2eib1tduw3xy" path="res://_Entities/Demons/Components/demon_health_component.tscn" id="2_colwa"]
-[ext_resource type="Shader" uid="uid://dmuekynfvi6pn" path="res://_Common/Shaders/basicZombieHitShader.tres" id="2_fxtok"]
 [ext_resource type="Texture2D" uid="uid://dvhsuk38knfqi" path="res://_Entities/LevelSpecial/TempBloodHalo-Sheet.png" id="2_mg35w"]
 [ext_resource type="Texture2D" uid="uid://347bq70xelxl" path="res://_Entities/Zombies/_Wretch/BackUpDancerHead.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dlft4k3qhircs" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Base-Sheet.png" id="3_38s27"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://dvmo00thwrc38" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Hive-Sheet.png" id="8_5v7ar"]
 [ext_resource type="Texture2D" uid="uid://dbvf8xjhda4q4" path="res://_Entities/Demons/_Occulum/Idle Animation 2 -Sheet.png" id="9"]
+[ext_resource type="Shader" uid="uid://cpkds665i6vsl" path="res://_Common/Shaders/Blood_Demon.gdshader" id="9_1qbof"]
 [ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="9_drv5f"]
 [ext_resource type="Texture2D" uid="uid://c1q6c44qrhv7u" path="res://_Entities/Demons/_Occulum/OcculumTowerIdle.png" id="10"]
 [ext_resource type="SpriteFrames" uid="uid://c3wk5vmvvq1fv" path="res://_Entities/Demons/_Maw/maw_sprite_frames.tres" id="10_1qbof"]
@@ -89,13 +89,9 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1eo28"]
-shader = ExtResource("2_fxtok")
-shader_parameter/target_color = Color(0, 0, 0, 1)
-shader_parameter/replace_color = Color(0, 0, 0, 1)
-shader_parameter/glow_color = Color(0, 0, 0, 1)
-shader_parameter/modulate_factor = Color(9, 9, 9, 1)
-shader_parameter/tolerance = 0.0
-shader_parameter/glow_tolerance = 0.0
+shader = ExtResource("9_1qbof")
+shader_parameter/blood_color = Color(0.6, 0, 0, 1)
+shader_parameter/active = false
 
 [sub_resource type="CircleShape2D" id="8"]
 resource_local_to_scene = true

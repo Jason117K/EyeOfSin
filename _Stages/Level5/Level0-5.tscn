@@ -97,7 +97,6 @@ new_power_texture = ExtResource("2_msdba")
 new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
 wave2StartTime = 75
 wave3StartTime = 100
-record_footage = true
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1

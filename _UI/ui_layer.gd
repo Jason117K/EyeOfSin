@@ -71,9 +71,9 @@ func set_blood(new_blood_amount: float) -> void:
 	_blood_pulse_id += 1
 	var my_id := _blood_pulse_id
 	if new_blood_amount < blood_amount:
-		blood_label.text = "[wave amp=40 freq=8][pulse freq=4 color=#ffffff40]%s[/pulse][/wave]" % str(new_blood_amount)
+		blood_label.text = "[wave amp=20 freq=8][pulse freq=4 color=#ffffff40]%s[/pulse][/wave]" % str(new_blood_amount)
 	else:
-		blood_label.text = "[wave amp=-40 freq=8][pulse freq=4 color=#ff0000]%s[/pulse][/wave]" % str(new_blood_amount)
+		blood_label.text = "[wave amp=-20 freq=8][pulse freq=4 color=#ff0000]%s[/pulse][/wave]" % str(new_blood_amount)
 	
 	await get_tree().create_timer(0.8).timeout
 	if my_id == _blood_pulse_id:  # only reset if no newer call happened

@@ -386,8 +386,10 @@ func hide_ui_elements()->void:
 	demonSelectionMenu.modulate = Color(1,1,1,0)
 	#Global.game_controller.hide_swap_syn()
 	Global.ultimate_charge_container.modulate = Color(1,1,1,0)
-	Global.syn_ability_manager.hide_ability()
-	Global.swap_ability.hide_swap_alt()
+	if Global.syn_ability_manager != null:
+		Global.syn_ability_manager.hide_ability()
+	if Global.swap_ability != null:
+		Global.swap_ability.hide_swap_alt()
 	Global.hide_pip()
 	
 	for zombie_spawner in $GameLayer.get_children():

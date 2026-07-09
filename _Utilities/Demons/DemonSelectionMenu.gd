@@ -5,6 +5,7 @@ extends Control
 var swap_ability := preload("res://_Entities/SwapAbilities/blood_rain_swap_ability.tscn")
 var swap_ability_instance: Node
 
+
 var root : String
 var selected_demon := occulum_scene  # Holds the currently selected demon scene
 var preview_sprite: AnimatedSprite2D = null  # Holds the sprite currently being previewed 
@@ -81,7 +82,8 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var wyrmCostLabel  := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Wyrm/WyrmCostLabel
 @onready var mawCostLabel  := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Maw/MawCostLabel
 @onready var hiveCostLabel   := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hive/HiveCostLabel
-
+@onready var wave_label := $WaveLabel
+@onready var wave_label_disappear_timer := $HideWaveLabel
 @onready var alt_portal_texture : Texture2D = preload("res://_Entities/SpecialElementsPortal/PurplePortalCard.png")
 
 @onready var OcculumCost := 50
@@ -616,6 +618,16 @@ func swap_portal_button() -> void:
 		portalButton.texture_normal = green_portal_icon #purple_portal_icon
 		purple_scene = true
 		return
+
+func show_wave_label(wave_num : int)->void:
+	wave_label.text = "WAVE : " + str(wave_num)
+	wave_label.show()
+	wave_label_disappear_timer.start()
+
+func hide_wave_label()->void:
+	wave_label.hide()
+	
+	
 		
 func get_crawler_button() -> TextureButton:
 	return CrawlerButton

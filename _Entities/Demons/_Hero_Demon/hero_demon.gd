@@ -12,6 +12,9 @@ var parent_demon : Demon
 func _ready() -> void:
 	Global.register_hero_demon(self)
 
+func remove_hero()->void:
+	parent_demon.despawn_hero_demon()
+	
 
 func assign_parent_demon(new_parent_demon : Demon)->void:
 	parent_demon = new_parent_demon

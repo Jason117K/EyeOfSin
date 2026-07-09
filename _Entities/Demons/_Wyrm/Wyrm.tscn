@@ -88,6 +88,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Shader" id="Shader_ds7ka"]
+code = "shader_type canvas_item;
+
+// Replaces every visible pixel of the sprite with a flat color.
+// Alpha of the original texture is preserved so the silhouette stays intact.
+uniform vec4 blood_color : source_color = vec4(0.6, 0.0, 0.0, 1.0);
+// When false, the sprite renders normally with no color replacement.
+uniform bool active = false;
+
+void fragment() {
+	
+	if (active) {
+		vec4 tex = texture(TEXTURE, UV);
+		COLOR = vec4(blood_color.rgb, tex.a * blood_color.a * COLOR.a);
+	} 
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fuqq8"]
+resource_local_to_scene = true
+shader = SubResource("Shader_ds7ka")
+shader_parameter/blood_color = Color(0.6, 0, 0, 1)
+shader_parameter/active = false
+
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(38, 33)
 
@@ -906,7 +930,7 @@ max_length = 200.0
 laser_width = 8.0
 laser_damage = 10.0
 maw_damage = 90.0
-mana_add_on_laser = 15
+mana_add_on_laser = 10
 cost = 125.0
 health = 100.0
 maxHealth = 100.0
@@ -965,11 +989,10 @@ position = Vector2(6, -3)
 texture = ExtResource("33_ds7ka")
 
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
-position = Vector2(0, -2)
+material = SubResource("ShaderMaterial_fuqq8")
 sprite_frames = ExtResource("9_l4gaf")
-animation = &"attack"
+animation = &"idle"
 autoplay = "spawn"
-frame = 4
 script = ExtResource("4_3fijn")
 modulate_factor = Vector4(1, 1, 1, 1)
 

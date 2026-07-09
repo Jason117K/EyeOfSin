@@ -61,6 +61,7 @@ signal wyrm_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	special_description_file = Global.wyrm_queen_special_description
 	# --- Demon-specific collision ---
 	_init_demon_collision()
 		
@@ -71,7 +72,7 @@ func _ready() -> void:
 	hide_old_preview()
 
 	all_synergies = Global.all_wyrm_synergies
-	special_description_file = get_special_description_file(all_synergies,"Base")
+	#special_description_file = get_special_description_file(all_synergies,"Base")
 	spawn_done = true
 	can_show_preview = true 
 	

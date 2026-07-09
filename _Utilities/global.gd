@@ -105,6 +105,7 @@ var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed
 @onready var all_wyrm_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Wyrm")
 @onready var all_hive_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Hive")
 @onready var all_maw_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Maw")
+@onready var wyrm_queen_special_description = "res://_Assets/Text/TextFiles/WyrmQueen.txt"
 
 # Demon identity/menu data (scene, icon, base cost, description) lives here.
 # load(), NOT preload(): the catalog references the demon scenes, whose
@@ -324,6 +325,13 @@ func register_demon_selection_menu(new_demon_selection_menu)->void:
 			
 	demon_selection_menus = temp_menu_holder
 	demon_selection_menus.append(new_demon_selection_menu)
+
+func show_wave_label(wave_num:int)->void:
+	for menu in demon_selection_menus:
+		if menu != null:
+			menu.show_wave_label(wave_num)
+
+	
 
 func hideDemonSelectionMenu() -> void:
 	for menu in demon_selection_menus:
@@ -734,7 +742,7 @@ func demon_removed()->void:
 		
 func register_hero_demon(new_hero_demon : Area2D) -> void:
 	if current_hero_demon != null && is_instance_valid(current_hero_demon):
-		current_hero_demon.queue_free()
+		current_hero_demon.remove_hero()
 	current_hero_demon = new_hero_demon
 	hero_demon_summoned = true
 

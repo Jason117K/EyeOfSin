@@ -182,8 +182,12 @@ func clear_space_alt(passed_grid_pos: Vector2) -> void:
 
 func summon_blood_clone(passed_grid_pos: Vector2)->void:
 	var demon_node: Area2D = grid_map.get(passed_grid_pos)
-	pass
-	
+	demon_node.summon_blood_clone()
+
+func dispel_blood_clone(passed_grid_pos: Vector2)->void:
+	var demon_node: Area2D = grid_map.get(passed_grid_pos)
+	if demon_node != null:
+		demon_node.dispel_blood_clone()
 	
 	
 func detect_demon(passed_grid_pos: Vector2) -> bool:
@@ -268,10 +272,12 @@ func place_empty_blocker_demon(grid_pos: Vector2, this_empty_demon_to_place : De
 		pass
 		#print("Not enough blood points!")
 
-func place_blood_demon(grid_pos: Vector2) -> void:
+func place_blood_demon(grid_pos: Vector2) -> Demon:
 	print("Place Blood Demon")
 	selected_demon_scene = get_selected_demon()  
+	selection_menu.deselect_demon()
 	var demon_instance := selected_demon_scene.instantiate()
+	demon_instance.grid_map_cell_pos = grid_pos
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	
 	if "Alternate" in get_parent().name :
@@ -285,9 +291,14 @@ func place_blood_demon(grid_pos: Vector2) -> void:
 		demon_instance.set_collision_layer_value(1,false)
 		demon_instance.set_collision_layer_value(2,true)
 		demon_instance.set_collision_layer_value(3,false)
-		
+	demon_instance.position = Vector2(grid_pos.x,grid_pos.y )	
 	get_parent().get_node("GameLayer").call_deferred("add_child", demon_instance)
-	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	demon_instance.make_blood_demon()
+	return demon_instance
 	
 # Place the selected demon on the grid
 func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
@@ -310,6 +321,8 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	
 	var demon_instance := selected_demon_scene.instantiate()
 	
+	
+	
 	if is_queen:
 		demon_instance.grid_map_cell_pos = Vector2(grid_pos.x-16,grid_pos.y+16)
 	else:
@@ -321,13 +334,19 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
+		empty_demon_to_place.add_to_group("Green")
+		empty_demon_to_place.is_green = true 
 		demon_instance.add_to_group("Green")
+		demon_instance.is_green = true
 		demon_instance.set_collision_layer_value(1,false)
 		demon_instance.set_collision_layer_value(2,false)
 		demon_instance.set_collision_layer_value(3,true)
 	else:
 		print("Add ", demon_instance, " to purple group")
+		empty_demon_to_place.add_to_group("Purple")
+		empty_demon_to_place.is_green = false
 		demon_instance.add_to_group("Purple")
+		demon_instance.is_green = false
 		demon_instance.set_collision_layer_value(1,false)
 		demon_instance.set_collision_layer_value(2,true)
 		demon_instance.set_collision_layer_value(3,false)	
@@ -412,7 +431,12 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_SUMMON)
 		AudioManager.create_2d_audio_at_location(demon_instance.position, SoundEffect.SOUND_EFFECT_TYPE.DEMON_PLACE)
 		get_parent().get_node("GameLayer").call_deferred("add_child", demon_instance)
-
+		await get_tree().physics_frame
+		
+		await get_tree().physics_frame
+		await get_tree().physics_frame
+		empty_demon_to_place.set_demon_type(demon_instance.current_demon_type)
+		
 		#Reduce Blood Points
 		blood_points -= demon_cost
 		

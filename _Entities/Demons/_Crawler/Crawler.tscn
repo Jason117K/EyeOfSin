@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://4ri65iuedqnx" path="res://_Entities/Demons/_Crawler/RedSpider-Sheet.png" id="1"]
 [ext_resource type="Script" uid="uid://bgt5v0062xhpm" path="res://_Entities/Demons/_Crawler/Crawler.gd" id="2"]
-[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_4vrps"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_an04s"]
 [ext_resource type="Texture2D" uid="uid://c3dpia12ni8en" path="res://_Entities/Demons/Demon_Shadow.png" id="2_druvk"]
 [ext_resource type="Texture2D" uid="uid://bu7ip1echj7fu" path="res://_Entities/Zombies/ZombieFX/Zombie_Shadow1.png" id="2_hvfi3"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cugwyj56vu68w" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderAttack_Wyrm-Sheet.png" id="8_mmfac"]
 [ext_resource type="Texture2D" uid="uid://duguavrw707dc" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_MAW-Sheet.png" id="9_82rcb"]
 [ext_resource type="PackedScene" uid="uid://c4p43yljvybvj" path="res://_Entities/Demons/BloodBuff/BuffNodesComponent.tscn" id="10"]
+[ext_resource type="Shader" uid="uid://cpkds665i6vsl" path="res://_Common/Shaders/Blood_Demon.gdshader" id="10_an04s"]
 [ext_resource type="Texture2D" uid="uid://jy54hb8pml7g" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_OCCULUM-Sheet.png" id="10_jwcrf"]
 [ext_resource type="Texture2D" uid="uid://gbme1d2t6p3t" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_SpinalOcculum-Sheet.png" id="11_druvk"]
 [ext_resource type="Texture2D" uid="uid://cwkfu3np0gnrm" path="res://_Entities/Demons/SpriteSheets/Maw/SpiderIdle_Base-Sheet.png" id="11_io8k3"]
@@ -101,10 +101,9 @@ size = Vector2(16, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vrps"]
 resource_local_to_scene = true
-shader = ExtResource("2_4vrps")
-shader_parameter/glow_color = Color(223, 66, 66, 256)
-shader_parameter/modulate_factor = Vector4(22, 22, 22, 1)
-shader_parameter/glow_tolerance = 0.8
+shader = ExtResource("10_an04s")
+shader_parameter/blood_color = Color(0.6, 0, 0, 1)
+shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qq15"]
 atlas = ExtResource("17_hvfi3")
@@ -1228,6 +1227,7 @@ blood_worth_to_add = 2.0
 buffed_range_target_pos = Vector2(450, 0)
 spiderling_wait_time = 4
 spinalOcculumHealth = 500.0
+mana_add_on_shot = 10
 ultimate_timer_wait_time = 0.1
 cost = 75.0
 health = 100.0

@@ -983,6 +983,23 @@ script = ExtResource("19_nabk1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1361264571]
 shape = SubResource("RectangleShape2D_nabk1")
 
+[node name="WaveLabel" type="Label" parent="." unique_id=1985403701]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 3.0
+offset_right = 677.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_wixct")
+theme_override_font_sizes/font_size = 36
+text = "WAVE 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HideWaveLabel" type="Timer" parent="." unique_id=963677406]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="mouse_entered" from="3DTest" to="3DTest" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="3DTest" to="3DTest" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" to="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton" method="_on_mouse_entered"]
@@ -1011,3 +1028,4 @@ shape = SubResource("RectangleShape2D_nabk1")
 [connection signal="pressed" from="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/PipToggle/PipToggleButton" to="." method="_on_pip_toggle_button_pressed"]
 [connection signal="mouse_entered" from="Sprite2D/Area2D" to="Sprite2D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite2D/Area2D" to="Sprite2D" method="_on_mouse_exited"]
+[connection signal="timeout" from="HideWaveLabel" to="." method="hide_wave_label"]

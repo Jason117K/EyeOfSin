@@ -386,7 +386,7 @@ animations = [{
 
 [node name="SynLightning" type="Area2D" unique_id=999441652]
 script = ExtResource("1_35nct")
-lightning_damage = 75
+lightning_damage = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2024741786]
 position = Vector2(-0.5, 0)
