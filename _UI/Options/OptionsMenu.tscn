@@ -29,7 +29,7 @@ layout_mode = 2
 [node name="Master" type="Label" parent="CenterContainer/VBoxContainer" unique_id=604364995]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8a2yq")
-text = "Master Volume"
+text = "UI_MASTER_VOLUME"
 horizontal_alignment = 1
 
 [node name="masterVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer" unique_id=993278938]
@@ -43,7 +43,7 @@ busName = "Master"
 [node name="Music" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1493180971]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8a2yq")
-text = "Music Volume"
+text = "UI_MUSIC_VOLUME"
 horizontal_alignment = 1
 
 [node name="musicVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer" unique_id=1060151745]
@@ -57,7 +57,7 @@ busName = "music"
 [node name="SFX" type="Label" parent="CenterContainer/VBoxContainer" unique_id=904517783]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8a2yq")
-text = "SFX Volume"
+text = "UI_SFX_VOLUME"
 horizontal_alignment = 1
 
 [node name="sfxVolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer" unique_id=1690023005]
@@ -67,6 +67,18 @@ step = 0.001
 value = 1.0
 script = ExtResource("3_ck7nb")
 busName = "sfx"
+
+[node name="Language" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1533990781]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8a2yq")
+text = "UI_LANGUAGE"
+horizontal_alignment = 1
+
+[node name="languageDropdown" type="OptionButton" parent="CenterContainer/VBoxContainer" unique_id=1533990782]
+auto_translate_mode = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8a2yq")
+fit_to_longest_item = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1214672174]
 stream = ExtResource("4_0gbsf")
@@ -89,7 +101,7 @@ layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_fonts/font = ExtResource("2_8a2yq")
-text = "BACK"
+text = "UI_BACK"
 
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/masterVolumeSlider" to="CenterContainer/VBoxContainer/masterVolumeSlider" method="on_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/musicVolumeSlider" to="CenterContainer/VBoxContainer/musicVolumeSlider" method="on_value_changed"]

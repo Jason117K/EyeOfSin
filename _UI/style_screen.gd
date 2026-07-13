@@ -91,7 +91,7 @@ func set_level_title(new_level_title_text : String)->void:
 		
 func set_time_rank()->void:
 	var completion_time : int = int(ScoreManager.get_completion_time())
-	time_label.text = "TIME: " + str(completion_time)
+	time_label.text = tr("UI_SCORE_TIME").format({"time": completion_time})
 	# Thresholds ascend (SSS tightest); first match wins, like ScoreManager.
 	if ScoreManager.get_completion_time() <= all_time_thresholds[SCORE_RANKS.SSS]:
 		time_rank.text = "SSS"
@@ -115,7 +115,7 @@ func set_time_rank()->void:
 		time_rank_value = SCORE_RANKS.D
 
 func set_lives_lost_rank()->void:
-	lives_lost_label.text = "LIVES LOST: " + str(ScoreManager.get_lives_lost())
+	lives_lost_label.text = tr("UI_SCORE_LIVES_LOST").format({"lives": ScoreManager.get_lives_lost()})
 	if ScoreManager.get_lives_lost() > 0:
 		lives_lost_rank.text = "B"
 		lives_lost_rank_value = SCORE_RANKS.B
@@ -125,7 +125,7 @@ func set_lives_lost_rank()->void:
 	
 func set_style_rank()->void:
 	var points : int = int(ScoreManager.get_style_points_before_bonus())
-	style_label.text = "DEMON POINTS: " + str(points)
+	style_label.text = tr("UI_SCORE_DEMON_POINTS").format({"points": points})
 	if points >= all_style_point_thresholds[SCORE_RANKS.SSS]:
 		style_rank.text = "SSS"
 		style_rank_value = SCORE_RANKS.SSS

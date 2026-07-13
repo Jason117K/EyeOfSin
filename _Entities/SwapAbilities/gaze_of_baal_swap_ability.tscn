@@ -172,7 +172,7 @@ ability_duration = 10.0
 cooldown_duration = 5.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_ekoey")]
-ability_name = "GAZE OF BAAL"
+ability_name = "ABILITY_BAAL_GAZE_TITLE"
 
 [node name="BaalAOE" type="AnimatedSprite2D" parent="." unique_id=1870355713]
 visible = false

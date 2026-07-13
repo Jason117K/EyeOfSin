@@ -620,7 +620,7 @@ func swap_portal_button() -> void:
 		return
 
 func show_wave_label(wave_num : int)->void:
-	wave_label.text = "WAVE : " + str(wave_num)
+	wave_label.text = tr("UI_WAVE_LABEL").format({"num": wave_num})
 	wave_label.show()
 	wave_label_disappear_timer.start()
 

@@ -53,5 +53,5 @@ func update_current_level(this_current_Level:String, this_current_LevelAlt:Strin
 
 func lose() -> void:
 	#outcome_label.text = ""
-	outcome_label.text = "YOU LOSE!"
+	outcome_label.text = tr("UI_YOU_LOSE")
 	continue_button.visible = false

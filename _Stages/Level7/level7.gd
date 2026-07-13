@@ -78,8 +78,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 func _ready() -> void:
 	
 	Global.enable_ultimate()
-	level_title = "0-7:ODE TO POWER"
-	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
+	level_title = tr("LEVEL_TITLE_0_7")
+	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)
@@ -211,7 +211,7 @@ func _start_explain_portals()->void:
 	toolTips.basic_config()
 	await get_tree().physics_frame
 	demonSelectionMenu.add_pulsing_button_highlight(demonSelectionMenu.PortalButton)
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_PORTALS,true,"NEW ABILITY UNLOCKED: [color=green]POR[/color][color=purple]TALS[/color]")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_PORTALS,true,tr("TIP_TITLE_PORTALS"))
 	toolTips.set_visual_demon_tutorial_visual(portal_demo.instantiate(),true,Vector2(0,48))
 	
 	

@@ -17,10 +17,10 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 
 
 func _ready() -> void:
-	level_title = "0-6:BONDS"
-	extended_new_power_description = "TELEPORTS ZOMBIES TO OPPOSITE DIMENSION PORTAL. CONTROL THE FIELD"
+	level_title = tr("LEVEL_TITLE_0_6")
+	extended_new_power_description = "POWER_PORTALS_DESC_LONG"
 	super()
-	unlock_power.set_new_unlock_label("NEW SORCERCY")
+	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
 	attach_script_to_sway_children()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm"])
 	_configure_waves()

@@ -1,0 +1,93 @@
+keys,en,_notes
+TXT_CRAWLERBASE,"- Shoots a web projectile that damages and slows the first enemy it contacts
+",res://_Assets/Text/TextFiles/Synergies/CrawlerBase.txt
+TXT_CRAWLERHIVE,"Shoots in adjacent lanes.
+",res://_Assets/Text/TextFiles/Synergies/CrawlerHive.txt
+TXT_CRAWLERMAW,"Crawler periodically spawns a spiderling that runs down the lane. 
+",res://_Assets/Text/TextFiles/Synergies/CrawlerMaw.txt
+TXT_CRAWLEROCCULUM,"Webbed enemies now give blood on death.
+Range is increased.
+Damage is increased.
+",res://_Assets/Text/TextFiles/Synergies/CrawlerOcculum.txt
+TXT_CRAWLERSPINALOCCULUM,"Shots knock enemies back. 
+Increased health.
+Shoots slower.
+",res://_Assets/Text/TextFiles/Synergies/CrawlerSpinalOcculum.txt
+TXT_CRAWLERWYRM,"Shots have a damaging lightning AOE. 
+Shoots slower. 
+",res://_Assets/Text/TextFiles/Synergies/CrawlerWyrm.txt
+TXT_HIVEBASE,"Spawns Syn-Wasps that stall zombies 
+",res://_Assets/Text/TextFiles/Synergies/HiveBase.txt
+TXT_HIVECRAWLER,"Enemies killed by the hive spawn a web slowing zone on their death
+",res://_Assets/Text/TextFiles/Synergies/HiveCrawler.txt
+TXT_HIVEMAW,"Hive gains healing over time, wasps gain damage the more damage they deal
+",res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt
+TXT_HIVEOCCULUM,"Increased Wasp Count x2, Wasps Give Blood On Death
+Upgraded : 
+	- wasps give blood on death
+",res://_Assets/Text/TextFiles/Synergies/HiveOcculum.txt
+TXT_HIVESPINALOCCULUM,"Increased Wasp Count x1, Increased Health
+",res://_Assets/Text/TextFiles/Synergies/HiveSpinalOcculum.txt
+TXT_HIVEWYRM,"Hive Wasps now spit blood forward on attack 
+",res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt
+TXT_MAWBASE,"Devours zombies whole
+",res://_Assets/Text/TextFiles/Synergies/MawBase.txt
+TXT_MAWCRAWLER,"Maw produces slowing area of effect web ball when it finishes digesting
+",res://_Assets/Text/TextFiles/Synergies/MawCrawler.txt
+TXT_MAWHIVE,"Increased range 
+",res://_Assets/Text/TextFiles/Synergies/MawHive.txt
+TXT_MAWOCCULUM,"Maw produces blood on zombie digest.
+",res://_Assets/Text/TextFiles/Synergies/MawOcculum.txt
+TXT_MAWSPINALOCCULUM,"Increased health, kills now heal
+Can kill lower health enemies faster 
+",res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt
+TXT_MAWWYRM,"Maws digest faster
+",res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt
+TXT_OCCULUMBASE,"Generates Blood
+",res://_Assets/Text/TextFiles/Synergies/OcculumBase.txt
+TXT_OCCULUMCRAWLER,"Blood becomes an auto-targeting projectile on pickup, damaging & slowing the highest health enemy in range.
+Produces Blood faster.
+",res://_Assets/Text/TextFiles/Synergies/OcculumCrawler.txt
+TXT_OCCULUMHIVE,"Occulum produces Blood at a faster rate. 
+Blood burst heals nearby Demons on pickup.
+",res://_Assets/Text/TextFiles/Synergies/OcculumHive.txt
+TXT_OCCULUMMAW,"Occulum produces higher value blood, and can eat enemies periodically, instantly killing them and generating blood.
+Increased health.
+",res://_Assets/Text/TextFiles/Synergies/OcculumMaw.txt
+TXT_OCCULUMSPINALOCCULUM,"Emits a continuous healing over time area of effect.
+Produces Blood faster. 
+",res://_Assets/Text/TextFiles/Synergies/OcculumSpinalOcculum.txt
+TXT_OCCULUMWYRM,"Blood emits lane damaging effect on pickup. 
+Produces higher value blood slower.
+",res://_Assets/Text/TextFiles/Synergies/OcculumWyrm.txt
+TXT_SPINALOCCULUMBASE,"Blocks Zombies
+",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumBase.txt
+TXT_SPINALOCCULUMCRAWLER,"Generates webs on the ground in front of it, slowing zombies 
+",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumCrawler.txt
+TXT_SPINALOCCULUMHIVE,"Spinal-Occulum gains silencing field in front of it.
+",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumHive.txt
+TXT_SPINALOCCULUMMAW,"Increases nearby demon damage & Nearby zombie deaths heal 
+Increased Health
+",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumMaw.txt
+TXT_SPINALOCCULUMOCCULUM,"Spinal Occulum shields Occulum in front of it and produces blood when attacked.
+Increased health.
+",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumOcculum.txt
+TXT_SPINALOCCULUMWYRM,"Spinal-Occulum continously spawns small blood swords from the ground in front of it, dealing damage.
+",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumWyrm.txt
+TXT_WYRMBASE,"Shoots Piercing Blood
+",res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt
+TXT_WYRMCRAWLER,"Slows all enemies hit with blood 
+",res://_Assets/Text/TextFiles/Synergies/WyrmCrawler.txt
+TXT_WYRMHIVE,"Increased range
+",res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt
+TXT_WYRMMAW,"Close up kills heal
+Increased health, slightly increased damage 
+Upgraded : 
+	-Increased damage the closer enemies are
+",res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt
+TXT_WYRMOCCULUM,"Generates blood on multihit 
+Increased fire speed
+",res://_Assets/Text/TextFiles/Synergies/WyrmOcculum.txt
+TXT_WYRMSPINALOCCULUM,"Increased Damage When Being Attacked 
+Increased Health
+",res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum.txt

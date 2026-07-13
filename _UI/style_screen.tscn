@@ -135,7 +135,7 @@ layout_mode = 2
 [node name="TotalScoreTitle" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel/TotalScoreHbox" unique_id=355688203]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
-text = "TOTAL SCORE :"
+text = "UI_SCORE_TOTAL"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

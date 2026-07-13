@@ -219,11 +219,8 @@ func _clear_synergy_preview() -> void:
 
 #Sets the current Demon Description Text
 func set_text(newFile: String) -> void:
-	var file := FileAccess.open(newFile, FileAccess.READ)
-	var newText := file.get_as_text()
-	file.close()
 	currentDemonLabel.show()
-	currentDemonLabel.text = newText
+	currentDemonLabel.text = Loc.text(newFile)
 
 func set_demon_variations(newDemon: GlobalResourceLoader.DemonType) -> void:
 	is_in_synergy = true

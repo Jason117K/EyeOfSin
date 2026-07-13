@@ -120,9 +120,7 @@ func set_basic_tutorial_text(newFile: String, shouldPause: bool, location : Vect
 	basicTutorialMessageContainer.position = location
 	visualTutorialContainer.visible = false
 
-	var file := FileAccess.open(newFile, FileAccess.READ)
-	var newText := file.get_as_text()
-	file.close()
+	var newText := Loc.text(newFile)
 
 	basicTutorialLabel.text = newText
 	char_count = newText.length()
@@ -161,10 +159,8 @@ func set_visual_tutorial_text(newFile: String, show_button: bool = true) -> void
 	basicTutorialMessageContainer.visible = false
 	visualTutorialContainer.visible = true
 
-	var file := FileAccess.open(newFile, FileAccess.READ)
-	var newText := file.get_as_text()
-	file.close()
-	
+	var newText := Loc.text(newFile)
+
 	visualTutorialLabel.text = newText
 	char_count = newText.length()
 	get_tree().paused = true
@@ -181,12 +177,10 @@ func set_visual_demon_tutorial_text(newFile: String, show_button: bool = true, d
 	show()
 	basicTutorialMessageContainer.visible = false
 	demon_visual_tutorial_vbox_container.visible = true
-	demon_title_label.text = demon_title
+	demon_title_label.text = tr(demon_title)
 
-	var file := FileAccess.open(newFile, FileAccess.READ)
-	var newText := file.get_as_text()
-	file.close()
-	
+	var newText := Loc.text(newFile)
+
 	demon_visual_tutorial_label.text = newText
 	char_count = newText.length()
 	get_tree().paused = true

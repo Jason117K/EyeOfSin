@@ -63,6 +63,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("3_68l7c")
-text = "BACK"
+text = "UI_BACK"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

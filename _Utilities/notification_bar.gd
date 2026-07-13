@@ -115,7 +115,7 @@ func set_demon_info(demon: Demon) -> void:
 	hide_bar_timer.wait_time = info_disappear_time
 	current_demon = demon
 	show_demon_notification()
-	notifLabel.text = demon.get_demon_name()
+	notifLabel.text = Loc.display_name(demon.get_demon_name())
 	#print("Getting Demon Health, it is ",demon.get_health() )
 	health_progress_bar.max_value = int(demon.get_max_health())
 	health_progress_bar.value = int(demon.get_health())
@@ -151,7 +151,7 @@ func set_zombie_info(zombie: Zombie) -> void:
 	hide_bar_timer.wait_time = info_disappear_time
 	current_zombie = zombie
 	show_zombie_notification()
-	notifLabel.text = zombie.get_zombie_name()
+	notifLabel.text = Loc.display_name(zombie.get_zombie_name())
 	#health_amount_label.text = str(zombie.get_health())
 	health_progress_bar.value = zombie.get_health()
 	health_progress_bar.max_value = zombie.get_max_health()

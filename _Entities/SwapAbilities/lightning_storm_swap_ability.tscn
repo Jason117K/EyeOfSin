@@ -13,7 +13,7 @@ ability_duration = 10.0
 cooldown_duration = 45.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_plh2v")]
-ability_name = "LIGHTNING CASCADE"
+ability_name = "ABILITY_LIGHTNING_CASCADE_TITLE"
 
 [node name="LightningSpawnArea" type="Area2D" parent="." unique_id=109663788]
 position = Vector2(354, 190)

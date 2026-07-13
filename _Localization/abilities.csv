@@ -1,0 +1,41 @@
+keys,en,_notes
+ABILITY_BLOOD_RAIN_TITLE,BLOOD RAIN,Swap ability name (panel header)
+ABILITY_BLOOD_RAIN_DESC,Summon a storm of blood slowing all zombies on the screen,Swap ability description
+ABILITY_LIGHTNING_STORM_TITLE,LIGHTNING STORM,Swap ability name (was BLOOD RAIN copy-paste bug in code)
+ABILITY_LIGHTNING_STORM_DESC,Summon a storm of lightning damaging zombies at random,Swap ability description
+ABILITY_LUCRETIA_GRASP_TITLE,GRASP OF LUCRETIA,Swap ability name; Lucretia is a character name — do not translate it
+ABILITY_LUCRETIA_GRASP_DESC,Summon forth hands that cross the screen and flip zombie allegiances,Swap ability description
+ABILITY_BAAL_GAZE_TITLE,GAZE OF BAAL,Swap ability name; Baal is a character name — do not translate it
+ABILITY_BAAL_GAZE_DESC,Summon a [REDACTED] for assistance,Swap ability description; keep [REDACTED] styling (deliberate mystery)
+ABILITY_LIGHTNING_STRIKE_TITLE,Lightning Strike,Syn ability name
+ABILITY_LIGHTNING_STRIKE_DESC,Summon a bolt of lightning in a location,Syn ability description
+ABILITY_SYN_SHIELDS_TITLE,Syn Shields,Syn ability name; Syn is the game's core term — keep untranslated
+ABILITY_SYN_SHIELDS_DESC,Conjure powerful shields to protect your demons,Syn ability description
+ABILITY_BLOOD_ICE_TITLE,Blood Ice,Syn ability name
+ABILITY_BLOOD_ICE_DESC,Summon ice spikes from the ground that trigger bleed,Syn ability description
+ABILITY_DEATH_MARK_TITLE,Death Mark,Syn ability name
+ABILITY_DEATH_MARK_DESC,"Curse zombies, causing them to take more damage from all sources",Syn ability description
+ABILITY_SHROOMIE_TITLE,SHROOMIE,Syn ability name (cute mushroom creature)
+ABILITY_SHROOMIE_DESC,"Summon a fungal friend that sets demon projectiles on fire, buffing them",Syn ability description
+ABILITY_TORRENTIAL_BLOOD_TITLE,TORRENTIAL BLOOD,Swap ability name on in-game cooldown bar (blood rain variant)
+ABILITY_LIGHTNING_CASCADE_TITLE,LIGHTNING CASCADE,Swap ability name on in-game cooldown bar (lightning storm variant)
+ABILITY_SWAP_PANEL_HINT,Swap abilities activate when the bottom left bar is full and you swap dimensions. Click one to see more!,Loadout screen hint (fixed abiltiies typo)
+ABILITY_SYN_PANEL_HINT,Syn abilities activate when you click the bottom right icon and then click on the map. Click one to see more!,Loadout screen hint
+POWER_OCCULUM_TITLE,OCCULUM,Power unlock title
+POWER_OCCULUM_DESC_SHORT,GENERATES BLOOD,Power unlock rune caption
+POWER_OCCULUM_DESC_LONG,GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE.,Power unlock screen description
+POWER_SPINAL_OCCULUM_TITLE,SPINAL OCCULUM,Power unlock title
+POWER_SPINAL_OCCULUM_DESC_SHORT,BLOCKS ZOMBIES,Power unlock rune caption
+POWER_SPINAL_OCCULUM_DESC_LONG,BLOCKS ZOMBIES. SYNERGIES IMPROVE DEFENSE & STALLING POTENTIAL.,Power unlock screen description
+POWER_SYN_LIGHTNING_TITLE,SYN LIGHTNING,Power unlock title
+POWER_SYN_LIGHTNING_DESC_SHORT,ELECTROCUTES ZOMBIES,Power unlock rune caption
+POWER_SYN_LIGHTNING_DESC_LONG,SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES.,Power unlock screen description
+POWER_LIGHTNING_CASCADE_TITLE,LIGHTNING CASCADE,Power unlock title
+POWER_LIGHTNING_CASCADE_DESC_SHORT,EVOKE LIGHTNING STORM,Power unlock rune caption
+POWER_LIGHTNING_CASCADE_DESC_LONG,SUMMONS LIGHTNING ACROSS THE BATTLEFIELD. USE TO TURN THE TIDE,Power unlock screen description
+POWER_WYRM_TITLE,WYRM,Power unlock title
+POWER_WYRM_DESC_SHORT,SHOOTS PIERCING BLOOD,Power unlock rune caption
+POWER_WYRM_DESC_LONG,SHOOTS PIERCING BLOOD. SYNERGIES IMPROVE AOE DAMAGE. RIPS THROUGH HORDES,Power unlock screen description
+POWER_PORTALS_TITLE,PORTALS,Power unlock title
+POWER_PORTALS_DESC_SHORT,TELEPORTS ZOMBIES,Power unlock rune caption
+POWER_PORTALS_DESC_LONG,TELEPORTS ZOMBIES TO OPPOSITE DIMENSION PORTAL. CONTROL THE FIELD,Power unlock screen description

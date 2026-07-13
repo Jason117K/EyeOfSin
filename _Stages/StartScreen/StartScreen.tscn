@@ -1223,7 +1223,7 @@ offset_right = 168.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("15_f7xvn")
 theme_override_font_sizes/font_size = 20
-text = "START GAME"
+text = "UI_START_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1243,7 +1243,7 @@ offset_right = 168.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("15_f7xvn")
 theme_override_font_sizes/font_size = 20
-text = "LEVEL  SELECT"
+text = "UI_LEVEL_SELECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1263,7 +1263,7 @@ offset_right = 168.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("15_f7xvn")
 theme_override_font_sizes/font_size = 20
-text = "CODEX"
+text = "UI_CODEX"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1283,7 +1283,7 @@ offset_right = 168.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("15_f7xvn")
 theme_override_font_sizes/font_size = 20
-text = "OPTIONS"
+text = "UI_OPTIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1303,7 +1303,7 @@ offset_right = 168.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("15_f7xvn")
 theme_override_font_sizes/font_size = 20
-text = "CREDITS"
+text = "UI_CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1323,7 +1323,7 @@ offset_right = 168.0
 offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("15_f7xvn")
 theme_override_font_sizes/font_size = 20
-text = "QUIT"
+text = "UI_QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 

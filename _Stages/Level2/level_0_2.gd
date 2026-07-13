@@ -114,8 +114,8 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.disable_ultimate()
-	level_title = "0-2:BETRAYAL"
-	extended_new_power_description = "BLOCKS ZOMBIES. SYNERGIES IMPROVE DEFENSE & STALLING POTENTIAL."
+	level_title = tr("LEVEL_TITLE_0_2")
+	extended_new_power_description = "POWER_SPINAL_OCCULUM_DESC_LONG"
 	super()
 	levelSwitcher.visible = false
 	demonSelectionMenu.visible = false
@@ -215,7 +215,7 @@ func _start_explain_occulum() -> void:
 	print("Start Explain Occulum")
 	demonSelectionMenu.block_clicks()
 	Global.hide_notification_bar()
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_OCCULUM,true,"NEW DEMON : OCCULUM")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_OCCULUM,true,tr("TIP_TITLE_NEW_DEMON_OCCULUM"))
 	toolTips.set_visual_demon_tutorial_visual(occulum_demo_scene.instantiate(),true,Vector2(0,0))
 	toolTips.new_demon_visual_minimum_size()
 
@@ -271,7 +271,7 @@ func _start_force_select_crawler_after_blood() -> void:
 func _start_force_place_crawler_behind() -> void:
 	print("Start Force Place Crawler Behind")
 	Global.is_blocking = true
-	toolTips.set_visual_demon_tutorial_text(tutorial_place_crawler,true,"NEW ABILITY UNLOCKED : [color=red]BLOOD BUFFS[/color]")
+	toolTips.set_visual_demon_tutorial_text(tutorial_place_crawler,true,tr("TIP_TITLE_BLOOD_BUFFS"))
 	toolTips.set_visual_demon_tutorial_visual(buff_demo_scene.instantiate())
 	toolTips.new_demon_visual_minimum_size(Vector2(600,0))
 	
@@ -290,14 +290,14 @@ func _start_explain_blood_buffs() -> void:
 	print("Start Explain Blood Buffs")
 	
 	get_tree().paused = true
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_BLOOD_BUFFS,true, "SYNERGY UNLOCKED: [color=red]CRAWLEROCCULUM[/color]")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_BLOOD_BUFFS,true, tr("TIP_TITLE_SYNERGY_CRAWLEROCCULUM"))
 	toolTips.set_visual_demon_tutorial_visual(crawler_occulum_buff_scene.instantiate())
 
 
 func _start_explain_blood_buffs_2() -> void:
 	print("Start Explain Blood Buffs 2")
 	get_tree().paused = true
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_BLOOD_BUFFS_2,true,"SYNERGY UNLOCKED: [color=red]OCCULUMCRAWLER[/color]")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_BLOOD_BUFFS_2,true,tr("TIP_TITLE_SYNERGY_OCCULUMCRAWLER"))
 	toolTips.set_visual_demon_tutorial_visual(occulum_crawler_buff_scene.instantiate())
 	tutorial_occulum.hide_buff_preview_nodes()
 	tutorial_crawler.hide_buff_preview_nodes()

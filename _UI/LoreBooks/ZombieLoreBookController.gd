@@ -28,15 +28,15 @@ var screennDoorZombieDescription := "res://_Assets/Text/TextFiles/ZombieDescript
 var footBallZombieDescription := "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
 var poleVaultZombieDescription := "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 
-var baseZombieTitle := "Reborn"
-var coneHeadZombieTitle := "Severed"
-var bucketHeadZombieTitle := "Unhallower"
-var dancerZombieTitle := "Reanimator"
-var backUpDancerZombieTitle := "Wretch"
-var tickerZombieTitle := "Erupter"
-var screenDoorZombieTitle := "Amalgams"
-var footballZombieTitle := "Flesheater"
-var poleVaultZombieTitle := "Sundered"
+var baseZombieTitle := "NAME_REBORN"
+var coneHeadZombieTitle := "NAME_SEVERED"
+var bucketHeadZombieTitle := "NAME_UNHALLOWER"
+var dancerZombieTitle := "NAME_REANIMATOR"
+var backUpDancerZombieTitle := "NAME_WRETCH"
+var tickerZombieTitle := "NAME_ERUPTER"
+var screenDoorZombieTitle := "NAME_AMALGAMS"
+var footballZombieTitle := "NAME_FLESHEATER"
+var poleVaultZombieTitle := "NAME_SUNDERED"
 
 var current_zobmie_texture : Texture2D
 
@@ -110,13 +110,10 @@ func _update_button_textures() -> void:
 			
 #Sets the current Zombie Description Text
 func set_text(newFile: String) -> void:
-	var file := FileAccess.open(newFile, FileAccess.READ)
-	var newText := file.get_as_text()
-	file.close()
-	currentZombieLabel.text = newText
+	currentZombieLabel.text = Loc.text(newFile)
 
 func set_title(newTitle: String) -> void:
-	currentZombieTitle.text = newTitle
+	currentZombieTitle.text = tr(newTitle)
 
 func _on_base_zombie_pressed() -> void:
 	current_zombie_animation.show()

@@ -74,7 +74,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 16
-text = "PAUSED"
+text = "UI_PAUSED"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=1664631598]
@@ -90,7 +90,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
-text = "RESUME"
+text = "UI_RESUME"
 
 [node name="Restart" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer" unique_id=938324446]
 process_mode = 3
@@ -100,7 +100,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
-text = "RESTART"
+text = "UI_RESTART"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer" unique_id=1777330376]
 process_mode = 3
@@ -115,7 +115,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
-text = "OPTIONS"
+text = "UI_OPTIONS"
 
 [node name="ReturnToMenu" type="Button" parent="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer2" unique_id=402001552]
 process_mode = 3
@@ -125,7 +125,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_0buc1")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("5_dg4q1")
-text = "MAIN MENU"
+text = "UI_MAIN_MENU"
 
 [connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CenterContainer/PauseMenuPanel/PauseMenuMarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]

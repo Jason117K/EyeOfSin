@@ -1,0 +1,84 @@
+keys,en,_notes
+UI_START_GAME,START GAME,Start screen main menu button
+UI_LEVEL_SELECT,LEVEL  SELECT,Start screen button (double space is intentional styling)
+UI_CODEX,CODEX,Start screen button
+UI_OPTIONS,OPTIONS,Start screen button
+UI_CREDITS,CREDITS,Start screen button
+UI_QUIT,QUIT,Start screen button
+UI_MASTER_VOLUME,Master Volume,Options menu slider label
+UI_MUSIC_VOLUME,Music Volume,Options menu slider label
+UI_SFX_VOLUME,SFX Volume,Options menu slider label
+UI_LANGUAGE,Language,Options menu language dropdown label
+UI_BACK,BACK,Options menu back button (short!)
+UI_YOU_LOSE,YOU LOSE!,Defeat banner
+UI_WAVE_LABEL,WAVE : {num},In-level wave announcement; {num} is the wave number
+UI_SCORE_TIME,TIME: {time},Score screen; {time} is seconds
+UI_SCORE_LIVES_LOST,LIVES LOST: {lives},Score screen
+UI_SCORE_DEMON_POINTS,DEMON POINTS: {points},Score screen
+LEVEL_TITLE_0_1,0-1:AWAKENING,Level title (score screen)
+LEVEL_TITLE_0_2,0-2:BETRAYAL,Level title
+LEVEL_TITLE_0_3,0-3:ACCEPTANCE,Level title
+LEVEL_TITLE_0_4,0-4:REVELATIONS,Level title
+LEVEL_TITLE_0_5,0-5:RIDE THE LIGHTNING,Level title
+LEVEL_TITLE_0_6,0-6:BONDS,Level title
+LEVEL_TITLE_0_7,0-7:ODE TO POWER,Level title
+LEVEL_TITLE_0_8,0-8:ODE TO POWER,Level title
+LEVEL_TITLE_0_9,0-9:ODE TO POWER,Level title
+TIP_TITLE_NEW_DEMON_OCCULUM,NEW DEMON : OCCULUM,Tutorial banner
+TIP_TITLE_NEW_DEMON_SPINALOCCULUM,NEW DEMON : SPINAL-OCCULUM,Tutorial banner
+TIP_TITLE_NEW_DEMON_WYRM,NEW DEMON : Wyrm,Tutorial banner
+TIP_TITLE_BLOOD_BUFFS,NEW ABILITY UNLOCKED : [color=red]BLOOD BUFFS[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_SYN_SORCERIES,NEW ABILITY UNLOCKED : [color=red]SYN SORCERIES[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_SWAP_SORCERIES,NEW ABILITY UNLOCKED : [color=red]SWAP SORCERIES[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_ULTIMATES,NEW ABILITY UNLOCKED:[color=red]ULTIMATES[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_PORTALS,NEW ABILITY UNLOCKED: [color=green]POR[/color][color=purple]TALS[/color],Tutorial banner; two-tone PORTALS wordmark — keep both color tags
+TIP_TITLE_SYNERGY_CRAWLEROCCULUM,SYNERGY UNLOCKED: [color=red]CRAWLEROCCULUM[/color],Tutorial banner; CRAWLEROCCULUM is a synergy id — do not translate it
+TIP_TITLE_SYNERGY_OCCULUMCRAWLER,SYNERGY UNLOCKED: [color=red]OCCULUMCRAWLER[/color],Tutorial banner; OCCULUMCRAWLER is a synergy id — do not translate it
+UI_THANKS_FOR_PLAYING,THANKS FOR PLAYING!,End screen
+UI_PLAY_AGAIN,PLAY AGAIN,Button
+UI_YOU_WIN,YOU WIN!,Victory banner
+UI_CONTINUE,CONTINUE,Button
+UI_RETURN_TO_MAIN,RETURN TO MAIN,Button
+UI_UNDERSTOOD,UNDERSTOOD,Tutorial dismiss button
+UI_DEMON_CODEX,DEMON CODEX,Codex menu button
+UI_ZOMBIE_CODEX,ZOMBIE CODEX,Codex menu button
+UI_PAUSED,PAUSED,Pause menu header
+UI_RESUME,RESUME,Pause menu button
+UI_RESTART,RESTART,Pause menu button
+UI_MAIN_MENU,MAIN MENU,Pause menu button
+UI_LEVEL_BTN_1,LEVEL 1,Level select map button
+UI_LEVEL_BTN_2,LEVEL 2,Level select map button
+UI_LEVEL_BTN_3,LEVEL 3,Level select map button
+UI_LEVEL_BTN_4,LEVEL 4,Level select map button
+UI_LEVEL_BTN_5,LEVEL 5,Level select map button
+UI_LEVEL_BTN_6,LEVEL 6,Level select map button
+UI_LEVEL_BTN_7,LEVEL 7,Level select map button
+UI_LEVEL_BTN_8,LEVEL 8,Level select map button
+UI_LEVEL_BTN_9,LEVEL 9,Level select map button
+UI_SORCERIES,SORCERIES,Level select map button (ability loadout screen)
+UI_CHECK_OUT_SORCERIES,CHECK OUT SORCERIES->,Level select map hint; keep the -> arrow
+UI_DISABLE_DIALOG,DISABLE DIALOG,Level select map toggle
+UI_DISABLE_TUTORIALS,DISABLE TUTORIALS,Level select map toggle
+UI_SCORE_TOTAL,TOTAL SCORE :,Score screen static label
+UI_STAT_DAMAGE, DAMAGE,Entity inspector stat label; keep leading space
+UI_STAT_SPEED, SPEED,Entity inspector stat label; keep leading space
+UI_NEW_DEMON,NEW DEMON,Power unlock screen header
+UI_NEW_SORCERY,NEW SORCERY,Power unlock screen header (was NEW SORCERCY typo)
+UI_NEXT_LEVEL,NEXT LEVEL,Power unlock screen button
+UI_CANNOT_AFFORD_DEMON, CANNOT AFFORD DEMON,Notification; keep leading space
+UI_DEMON_UNLOCKED,"DEMON
+UNLOCKED	!",Codex unlock chip; two lines — keep the line break
+UI_ZOMBIE_DISCOVERED,"ZOMBIE
+DISCOVERED!",Codex unlock chip; two lines — keep the line break
+UI_BOOK_FLIP_HINT,"Click the left and right sides of the book to flip the pages.
+
+
+
+
+
+
+Use the back arrow to close the book.",Codex book hint; blank lines position the second sentence — keep them
+LORE_OCCULUM_INTRO,"Resilient and fast-growing, the Oculum are densely populated and serve both as the primary producers of blood energy on Syn and as spies for Argus.
+
+- Generates blood energy over time
+",Demon codex intro page (Occulum lore); Syn and Argus are proper nouns

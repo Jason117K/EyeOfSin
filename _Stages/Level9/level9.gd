@@ -55,8 +55,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.enable_ultimate()
-	level_title = "0-9:ODE TO POWER"
-	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
+	level_title = tr("LEVEL_TITLE_0_9")
+	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)

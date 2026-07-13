@@ -12,13 +12,13 @@ var buckethead_zombie_demo_scene := preload("res://_UI/GameDemonstrations/Zombie
 
 
 func _ready() -> void:
-	level_title = "0-3:ACCEPTANCE"
-	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
+	level_title = tr("LEVEL_TITLE_0_3")
+	extended_new_power_description = "POWER_SYN_LIGHTNING_DESC_LONG"
 	super()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum"])
 	attach_script_to_sway_children()
 	_configure_waves()
-	unlock_power.set_new_unlock_label("NEW SORCERCY")
+	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
 
 
 func _configure_waves() -> void:

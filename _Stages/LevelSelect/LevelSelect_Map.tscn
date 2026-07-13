@@ -542,7 +542,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 1"
+text = "UI_LEVEL_BTN_1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -571,7 +571,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 2"
+text = "UI_LEVEL_BTN_2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -600,7 +600,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 3"
+text = "UI_LEVEL_BTN_3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -629,7 +629,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 4"
+text = "UI_LEVEL_BTN_4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -658,7 +658,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 5"
+text = "UI_LEVEL_BTN_5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -687,7 +687,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 6"
+text = "UI_LEVEL_BTN_6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -716,7 +716,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 7"
+text = "UI_LEVEL_BTN_7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -745,7 +745,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 8"
+text = "UI_LEVEL_BTN_8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -774,7 +774,7 @@ offset_bottom = 12.000015
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_m5ufq")
-text = "LEVEL 9"
+text = "UI_LEVEL_BTN_9"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -846,7 +846,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("7_nj8lg")
-text = " BACK "
+text = "UI_BACK"
 
 [node name="BackButton" type="TextureButton" parent="." unique_id=79365668]
 visible = false
@@ -877,7 +877,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 52
-text = "BACK"
+text = "UI_BACK"
 
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=331079586]
 z_index = 1
@@ -1232,7 +1232,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_lwmcq")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("7_nj8lg")
-text = " SORCERIES "
+text = "UI_SORCERIES"
 
 [node name="SwapSorcery" type="TextureRect" parent="SorceryPanel/MarginContainer/VBoxContainer" unique_id=912172719]
 custom_minimum_size = Vector2(150, 150)
@@ -1255,7 +1255,7 @@ offset_top = 27.0
 offset_right = 526.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("3_lwmcq")
-text = "CHECK OUT SORCERIES->"
+text = "UI_CHECK_OUT_SORCERIES"
 
 [node name="DisableDialog" type="Button" parent="." unique_id=1437203228]
 layout_mode = 0
@@ -1264,7 +1264,7 @@ offset_top = 339.0
 offset_right = 144.0
 offset_bottom = 370.0
 theme_override_styles/normal = ExtResource("7_nj8lg")
-text = "DISABLE DIALOG"
+text = "UI_DISABLE_DIALOG"
 script = ExtResource("14_4uoky")
 
 [node name="Panel" type="Panel" parent="DisableDialog" unique_id=1273605137]
@@ -1282,7 +1282,7 @@ offset_top = 375.0
 offset_right = 144.0
 offset_bottom = 406.0
 theme_override_styles/normal = ExtResource("7_nj8lg")
-text = "DISABLE TUTORIALS"
+text = "UI_DISABLE_TUTORIALS"
 script = ExtResource("15_uqscy")
 
 [node name="Panel" type="Panel" parent="DisableTutorials" unique_id=227684557]

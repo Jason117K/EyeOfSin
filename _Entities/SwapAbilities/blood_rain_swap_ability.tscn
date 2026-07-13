@@ -58,7 +58,7 @@ ability_duration = 9.0
 cooldown_duration = 99.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_17mp3")]
-ability_name = "TORRENTIAL BLOOD"
+ability_name = "ABILITY_TORRENTIAL_BLOOD_TITLE"
 
 [node name="Raindrops" type="GPUParticles2D" parent="." unique_id=1356173960]
 visible = false

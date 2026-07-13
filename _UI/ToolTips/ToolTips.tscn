@@ -127,7 +127,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_m6aj6")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ygqpy")
-text = "UNDERSTOOD"
+text = "UI_UNDERSTOOD"
 
 [node name="VisualTutorialVBox" type="VBoxContainer" parent="." unique_id=771461667]
 visible = false
@@ -218,7 +218,7 @@ theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("6_m6aj6")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_f4pib")
-text = "UNDERSTOOD"
+text = "UI_UNDERSTOOD"
 
 [node name="DemonVisualTutorialVBox" type="VBoxContainer" parent="." unique_id=1361729839]
 visible = false
@@ -310,7 +310,7 @@ theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("6_m6aj6")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_f4pib")
-text = "UNDERSTOOD"
+text = "UI_UNDERSTOOD"
 
 [node name="CountdownTimer" type="Timer" parent="." unique_id=731847931]
 wait_time = 14.245

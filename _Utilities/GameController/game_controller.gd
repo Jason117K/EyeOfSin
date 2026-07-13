@@ -38,6 +38,7 @@ func _input(event:InputEvent) -> void:
 
 
 func _ready() -> void:
+	Loc.apply_saved_locale() # must run before any translated UI builds
 	print(Input.is_using_accumulated_input(), " balls")
 	@warning_ignore("narrowing_conversion")
 	Engine.max_fps = DisplayServer.screen_get_refresh_rate()

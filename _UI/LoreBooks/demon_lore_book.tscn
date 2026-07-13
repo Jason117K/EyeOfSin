@@ -86,10 +86,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_r6hpg")
 theme_override_font_sizes/normal_font_size = 16
-text = "Resilient and fast-growing, the Oculum are densely populated and serve both as the primary producers of blood energy on Syn and as spies for Argus. 
-
-- Generates blood energy over time 
-"
+text = "LORE_OCCULUM_INTRO"
 scroll_active = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1961918662]
@@ -322,7 +319,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
-text = "EYE"
+text = "NAME_EYE"
 
 [node name="MarginContainer2" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1217756370]
 layout_mode = 2
@@ -332,7 +329,7 @@ theme_override_constants/margin_right = 55
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
-text = "SPYDER"
+text = "NAME_SPYDER"
 
 [node name="MarginContainer3" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1524718653]
 layout_mode = 2
@@ -342,7 +339,7 @@ theme_override_constants/margin_right = 25
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
-text = "O-SPINE"
+text = "NAME_O_SPINE"
 
 [node name="Row2" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1178864748]
 layout_mode = 2
@@ -376,7 +373,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
-text = "MAW"
+text = "NAME_MAW"
 
 [node name="MarginContainer2" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=134442084]
 layout_mode = 2
@@ -386,7 +383,7 @@ theme_override_constants/margin_right = 45
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
-text = "WYRM"
+text = "NAME_WYRM"
 
 [node name="MarginContainer3" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1187907957]
 layout_mode = 2
@@ -396,7 +393,7 @@ theme_override_constants/margin_right = 50
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
-text = "HIVE"
+text = "NAME_HIVE"
 
 [node name="DemonNames3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=113310672]
 visible = false
@@ -411,7 +408,7 @@ theme_override_constants/margin_right = 212
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 32
-text = "MAW"
+text = "NAME_MAW"
 
 [node name="Row3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1772946496]
 layout_mode = 2
@@ -582,7 +579,7 @@ size_flags_horizontal = 4
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("9_tpmsq")
 theme_override_font_sizes/font_size = 13
-text = "BACK"
+text = "UI_BACK"
 
 [node name="CurrentDemonVboxContainer" type="VBoxContainer" parent="." unique_id=1790534077]
 layout_mode = 1

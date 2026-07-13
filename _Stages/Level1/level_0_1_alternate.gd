@@ -9,8 +9,8 @@ var wave_1_completed := false
 var wave_2_completed := false 
 
 func _ready() -> void:
-	level_title = "0-1:AWAKENING"
-	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
+	level_title = tr("LEVEL_TITLE_0_1")
+	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	
 	hide_all_demon_buttons_with_exception(["Crawler"])

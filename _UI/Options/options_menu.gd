@@ -23,6 +23,21 @@ func _ready() -> void:
 	print("Process mode: ", process_mode)
 	print("Tree paused: ", get_tree().paused)
 	backButton.connect("pressed",_on_back_button_pressed)
+	_setup_language_dropdown()
+
+func _setup_language_dropdown() -> void:
+	var dropdown: OptionButton = $CenterContainer/VBoxContainer/languageDropdown
+	for entry: Dictionary in Loc.LOCALES:
+		dropdown.add_item(str(entry.name))
+	var current := Loc.match_supported_locale(TranslationServer.get_locale())
+	for i: int in Loc.LOCALES.size():
+		if str(Loc.LOCALES[i].code) == current:
+			dropdown.select(i)
+			break
+	dropdown.item_selected.connect(_on_language_selected)
+
+func _on_language_selected(index: int) -> void:
+	Loc.set_locale(str(Loc.LOCALES[index].code))
 
 func _on_back_button_pressed() -> void:
 	print("=== BACK BUTTON CLICKED ===")

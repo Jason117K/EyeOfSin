@@ -82,14 +82,14 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 24
-text = "DEMON CODEX  "
+text = "UI_DEMON_CODEX"
 
 [node name="Label2" type="Label" parent="HBoxContainer2" unique_id=89440407]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_x4iqa")
 theme_override_font_sizes/font_size = 24
-text = "ZOMBIE CODEX"
+text = "UI_ZOMBIE_CODEX"
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=1187630603]
 z_index = -1
@@ -120,7 +120,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_6vkct")
 theme_override_font_sizes/font_size = 28
-text = "BACK"
+text = "UI_BACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 

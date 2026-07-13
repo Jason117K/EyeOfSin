@@ -9,8 +9,8 @@ extends LevelTemplate
 #215
 
 func _ready() -> void:
-	level_title = "0-2:BETRAYAL"
-	extended_new_power_description = "BLOCKS ZOMBIES. SYNERGIES IMPROVE DEFENSE & STALLING POTENTIAL."
+	level_title = tr("LEVEL_TITLE_0_2")
+	extended_new_power_description = "POWER_SPINAL_OCCULUM_DESC_LONG"
 	super()
 	hide_all_demon_buttons_with_exception(["Occulum","Crawler"])
 	process_mode = Node.PROCESS_MODE_ALWAYS

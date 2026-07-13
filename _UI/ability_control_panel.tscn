@@ -645,7 +645,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_j0wbd")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("2_m8mrx")
-text = " BACK "
+text = "UI_BACK"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1956049940]
 z_index = 2
@@ -673,7 +673,7 @@ z_index = 2
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_j0wbd")
-text = "Swap abiltiies activate when the bottom left bar is full and you swap dimensions. Click one to see more!"
+text = "ABILITY_SWAP_PANEL_HINT"
 
 [node name="TutorialPanel2" type="PanelContainer" parent="VBoxContainer" unique_id=1662999353]
 z_index = 2
@@ -692,7 +692,7 @@ z_index = 2
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_j0wbd")
-text = "Syn abilities activate when you click the bottom right icon and then click on the map. Click one to see more!"
+text = "ABILITY_SYN_PANEL_HINT"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/SwapAbilitiesMargin/SwapAbilitiesHbox/BloodRainButton" to="." method="_on_blood_rain_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/SwapAbilitiesMargin/SwapAbilitiesHbox/LightningStormButton" to="." method="_on_lightning_storm_button_pressed"]

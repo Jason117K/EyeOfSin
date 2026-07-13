@@ -354,12 +354,7 @@ func _set_buff_flag(demonName: String) -> void:
 		
 	
 func get_special_description() -> String:
-	var file := FileAccess.open(special_description_file, FileAccess.READ)
-	print("FILE IS ", file)
-	if file == null:
-		push_error("Could not open file: %s. Error: %d" % [special_description_file, FileAccess.get_open_error()])
-		return ""
-	var first_line := file.get_line()
+	var first_line := Loc.text(special_description_file).get_slice("\n", 0)
 	return first_line.to_upper()
 	
 func get_demon_icon() -> Texture2D:

@@ -90,10 +90,10 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.disable_ultimate()
-	level_title = "0-4:REVELATIONS"
-	extended_new_power_description = "SUMMONS LIGHTNING ACROSS THE BATTLEFIELD. USE TO TURN THE TIDE"
+	level_title = tr("LEVEL_TITLE_0_4")
+	extended_new_power_description = "POWER_LIGHTNING_CASCADE_DESC_LONG"
 	super()
-	unlock_power.set_new_unlock_label("NEW SORCERCY")
+	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
 	
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [35.0, 45.0]
@@ -201,7 +201,7 @@ func _input(event: InputEvent) -> void:
 #region Step Entry Functions (same sequential order as definitions above)
 
 func _start_explain_syn_ability()->void:
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY,true,"NEW ABILITY UNLOCKED : [color=red]SYN SOCERCIES[/color]")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY,true,tr("TIP_TITLE_SYN_SORCERIES"))
 	toolTips.set_visual_demon_tutorial_visual(syn_demo_scene.instantiate(),true,Vector2(0,48))
 	
 

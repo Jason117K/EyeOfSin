@@ -110,10 +110,8 @@ func get_demon_icon()->Texture2D:
 	return Global.demon_catalog.get_demon(&"Crawler").icon
 
 func get_special_description()->String:
-	var file := FileAccess.open(Global.demon_catalog.get_demon(&"Crawler").special_description_file, FileAccess.READ)
-	if file == null:
-		return ""
-	return file.get_line().to_upper()
+	var desc := Loc.text(Global.demon_catalog.get_demon(&"Crawler").special_description_file)
+	return desc.get_slice("\n", 0).to_upper()
 	
 	
 	

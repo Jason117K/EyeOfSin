@@ -102,7 +102,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				# early return if no blood points
 				if blood_points < cost:
 					selection_menu.clear_preview()
-					Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
+					Global.notification_bar.set_text(tr("UI_CANNOT_AFFORD_DEMON"))
 					selection_menu.deselect_demon()
 					print("Blood Points is : ", blood_points, " which is less than ", cost)
 					return
@@ -478,7 +478,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	else:
 		#print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
 		#Global.notification_bar.show()
-		#Global.notification_bar.set_text(" CANNOT AFFORD DEMON")
+		#Global.notification_bar.set_text(tr("UI_CANNOT_AFFORD_DEMON"))
 		pass
 
 	selection_menu.deselect_demon()

@@ -6,7 +6,7 @@ extends Control
 @onready var swap_ability_lock_visual := $LockedVisual
 
 func _ready() -> void:
-	swap_ability_label.text = ability_name
+	swap_ability_label.text = tr(ability_name)
 	swap_ability_lock_visual.hide()
 	
 func get_panel_container()->PanelContainer:

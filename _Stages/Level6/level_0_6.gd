@@ -86,10 +86,10 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.disable_ultimate()
-	level_title = "0-6:BONDS"
-	extended_new_power_description = "TELEPORTS ZOMBIES TO OPPOSITE DIMENSION PORTAL. CONTROL THE FIELD"
+	level_title = tr("LEVEL_TITLE_0_6")
+	extended_new_power_description = "POWER_PORTALS_DESC_LONG"
 	super()
-	unlock_power.set_new_unlock_label("NEW SORCERCY")
+	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)
 	#print_scene_tree()
@@ -205,7 +205,7 @@ func _start_explain_wyrm() -> void:
 	print("Explain Wyrm Demon")
 	Global.hide_notification_bar()
 	
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_WYRM, true, "NEW DEMON : Wyrm")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_WYRM, true, tr("TIP_TITLE_NEW_DEMON_WYRM"))
 	toolTips.set_visual_demon_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
 	hide_demon_selection_menu()
 	

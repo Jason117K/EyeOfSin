@@ -110,8 +110,8 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.disable_ultimate()
-	level_title = "0-1:AWAKENING"
-	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
+	level_title = tr("LEVEL_TITLE_0_1")
+	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	
 	#Dialogic.Inputs.auto_skip.enabled = true

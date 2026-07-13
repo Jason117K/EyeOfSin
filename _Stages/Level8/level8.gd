@@ -83,8 +83,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.enable_ultimate()
-	level_title = "0-8:ODE TO POWER"
-	extended_new_power_description = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
+	level_title = tr("LEVEL_TITLE_0_8")
+	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)
@@ -199,7 +199,7 @@ func getIsPurpleDimension()->void:
 
 func _start_explain_ultimates()->void:
 	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES,true,"NEW ABILITY UNLOCKED:[color=red]ULTIMATES[/color]")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES,true,tr("TIP_TITLE_ULTIMATES"))
 	toolTips.set_visual_demon_tutorial_visual(ultimate_demo.instantiate(),true,Vector2(0,48))
 
 func _start_explain_ultimates_2()->void:

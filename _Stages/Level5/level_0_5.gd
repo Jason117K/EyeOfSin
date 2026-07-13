@@ -64,8 +64,8 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.disable_ultimate()
-	level_title = "0-5:RIDE THE LIGHTNING"
-	extended_new_power_description = "SHOOTS PIERCING BLOOD. SYNERGIES IMPROVE AOE DAMAGE. RIPS THROUGH HORDES"
+	level_title = tr("LEVEL_TITLE_0_5")
+	extended_new_power_description = "POWER_WYRM_DESC_LONG"
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)
@@ -173,7 +173,7 @@ func _input(event: InputEvent) -> void:
 
 func _start_explain_swap()->void:
 	
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SWAP,true,"NEW ABILITY UNLOCKED : [color=red]SWAP SORCERIES[/color]")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SWAP,true,tr("TIP_TITLE_SWAP_SORCERIES"))
 	toolTips.set_visual_demon_tutorial_visual(swap_demo_scene.instantiate())
 	toolTips.add_pulsing_button_highlight(Global.get_swap_ability_panel())
 	await get_tree().physics_frame

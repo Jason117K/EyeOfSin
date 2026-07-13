@@ -90,7 +90,7 @@ ability_duration = 13.0
 cooldown_duration = 5.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_hkd1k")]
-ability_name = "GRASP OF LUCRETIA"
+ability_name = "ABILITY_LUCRETIA_GRASP_TITLE"
 
 [node name="AllGrasp" type="Node2D" parent="." unique_id=1520557252]
 position = Vector2(-113, 93)

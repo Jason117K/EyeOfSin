@@ -44,8 +44,8 @@ func undo_syn_opacity()->void:
 func _on_blood_rain_button_pressed() -> void:
 	undo_swap_opacity()
 	print("Blood Rain Button Pressed")
-	swap_label.text = "Summon a storm of blood slowing all zombies on the screen"
-	swap_title.text = "BLOOD RAIN"
+	swap_label.text = tr("ABILITY_BLOOD_RAIN_DESC")
+	swap_title.text = tr("ABILITY_BLOOD_RAIN_TITLE")
 	swap_ability_display.texture = blood_rain_button.texture_normal
 	Global.register_swap_ability(blood_rain)
 
@@ -54,23 +54,23 @@ func _on_lightning_storm_button_pressed() -> void:
 	undo_swap_opacity()
 	swap_ability_display.texture = lightning_storm_button.texture_normal
 	Global.register_swap_ability(lightning_storm)
-	swap_label.text = "Summon a storm of lightning damaging zombies at random"
-	swap_title.text = "BLOOD RAIN"
+	swap_label.text = tr("ABILITY_LIGHTNING_STORM_DESC")
+	swap_title.text = tr("ABILITY_LIGHTNING_STORM_TITLE")
 
 func _on_lucretia_grasp_button_pressed() -> void:
 	undo_swap_opacity()
 	swap_ability_display.texture = lucretia_grasp_button.texture_normal
 	Global.register_swap_ability(lucretia_grasp)
-	swap_label.text = "Summon forth hands that cross the screen and flip zombie allegiances"
-	swap_title.text = "GRASP OF LUCRETIA"
+	swap_label.text = tr("ABILITY_LUCRETIA_GRASP_DESC")
+	swap_title.text = tr("ABILITY_LUCRETIA_GRASP_TITLE")
 	
 func _on_baal_gaze_button_pressed() -> void:
 	undo_swap_opacity()
 	swap_ability_display.texture = baal_gaze_button.texture_normal
 	Global.register_swap_ability(baal_gaze)
 
-	swap_label.text = "Summon a [REDACTED] for assitance"
-	swap_title.text = "GAZE OF BAAL"
+	swap_label.text = tr("ABILITY_BAAL_GAZE_DESC")
+	swap_title.text = tr("ABILITY_BAAL_GAZE_TITLE")
 
 
 func _on_lightning_strike_button_pressed() -> void:
@@ -78,32 +78,32 @@ func _on_lightning_strike_button_pressed() -> void:
 	syn_ability_display.texture = lightning_strike_button.texture_normal
 	Global.register_syn_ability(lightning_strike)
 
-	syn_label.text = "Summon a bolt of lightning in a location"
-	syn_ability_title.text = "Lightning Strike"
+	syn_label.text = tr("ABILITY_LIGHTNING_STRIKE_DESC")
+	syn_ability_title.text = tr("ABILITY_LIGHTNING_STRIKE_TITLE")
 
 func _on_shield_button_pressed() -> void:
 	syn_ability_display.texture = shield_button.texture_normal
 	Global.register_syn_ability(syn_shield)
-	syn_label.text = "Conjure powerful shields to protect your demons "
-	syn_ability_title.text = "Syn Shields"
+	syn_label.text = tr("ABILITY_SYN_SHIELDS_DESC")
+	syn_ability_title.text = tr("ABILITY_SYN_SHIELDS_TITLE")
 	
 func _on_blood_ice_button_pressed() -> void:
 	syn_ability_display.texture = blood_ice_button.texture_normal
 	Global.register_syn_ability(blood_ice)
-	syn_label.text = "Summon ice spikes from the ground that trigger bleed"
-	syn_ability_title.text = "Blood Ice"
+	syn_label.text = tr("ABILITY_BLOOD_ICE_DESC")
+	syn_ability_title.text = tr("ABILITY_BLOOD_ICE_TITLE")
 
 func _on_death_mark_button_pressed() -> void:
 	syn_ability_display.texture = death_mark_button.texture_normal
 	Global.register_syn_ability(death_mark)
-	syn_label.text = "Curse zombies, causing them to take more damage from all sources"
-	syn_ability_title.text = "Death Mark"
+	syn_label.text = tr("ABILITY_DEATH_MARK_DESC")
+	syn_ability_title.text = tr("ABILITY_DEATH_MARK_TITLE")
 	
 func _on_shroomie_button_pressed() -> void:
 	syn_ability_display.texture = shroomie_button.texture_normal
 	Global.register_syn_ability(shroomie)
-	syn_label.text = "Summon a fungal friend that sets demon projectiles on fire, buffing them"
-	syn_ability_title.text = "SHROOMIE"
+	syn_label.text = tr("ABILITY_SHROOMIE_DESC")
+	syn_ability_title.text = tr("ABILITY_SHROOMIE_TITLE")
 
 func _on_back_plain_button_pressed() -> void:
 	Global.game_controller.change_scene(map_screen)

@@ -1,0 +1,138 @@
+keys,en,_notes
+TXT_AMALGAM_SPECIAL_DESCRIPTION,"*Partially regenerates after loosing shield
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt
+TXT_BACKUPDANCERDESCRIPTION,"Wretches are smaller than average Reborns, and this is because they are actually infants. 
+Speed: Medium
+Health: Low
+Numbers: High
+Damage: Low
+",res://_Assets/Text/TextFiles/ZombieDescriptions/backUpDancerDescription.txt
+TXT_BASEZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Reborn [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Slow    [b][color=#9b42df] Health :[/color][/b] 50
+[b][color=#9b42df] Numbers :[/color][/b] High  [b][color=#9b42df] Damage :[/color][/b]  10
+[hr width=100%]
+Weak undead footsoldiers that overwhelm with numbers.
+",res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt
+TXT_BUCKETHEADZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Unhallower [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Slow [b][color=#9b42df] Health :[/color][/b] 550
+[b][color=#9b42df] Numbers :[/color][/b] Low [b][color=#9b42df] Damage :[/color][/b]  110
+[hr width=100%]
+Slow, tough zombies that deal massive damage.
+",res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt
+TXT_BUFFER_SPECIAL_DESCRIPTION,"Buffs nearby zombies.
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt
+TXT_CONEHEADZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Severed [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Moderate [b][color=#9b42df] Health :[/color][/b] 175
+[b][color=#9b42df] Numbers :[/color][/b] High   [b][color=#9b42df] Damage :[/color][/b]  30
+[hr width=100%]
+Stronger than Reborn and almost as numerous.
+",res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt
+TXT_CRAWLERDESCRIPTION,"Once beloved pet companions to the people of Syn, the Crawlers have been weaponized into hideous and lethal servants. 
+
+- Shoots a web projectile that damages and slows the first enemy it contacts
+
+- Strong VS. 
+	- High Speed 
+	- High Numbers 
+	
+- Weak VS. 
+	- High Health
+	
+",res://_Assets/Text/TextFiles/DemonDescriptions/CrawlerDescription.txt
+TXT_CRAWLER_SPECIAL_DESCRIPTION,"*Shots slow enemies 
+",res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt
+TXT_DANCERZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Reanimator [/color]
+[hr width=100%]
+[b] [color=#9b42df]Speed :[/color][/b] Slow
+[b][color=#9b42df] Health :[/color][/b] 375
+[b][color=#9b42df] Numbers :[/color][/b] Low
+[b][color=#9b42df] Damage :[/color][/b]  30
+[hr width=100%]
+Dangerous fusions of multiple Reborn that can [b][color=#9b42df]summon[/color][/b] Wretches to bypass defenses. 
+",res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt
+TXT_ERUPTER_SPECIAL_DESCRIPTION,"*High damage self-sacrifice attack
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt
+TXT_FLESHEATER_SPECIAL_DESCRIPTION,"*High health regen
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt
+TXT_FOOTBALLZOMBIEDESCRIPTION,"The Flesheaters were originally designed by contorting multiple zombies together to serve as mounts for the Reborn, but they quickly proved far too vicious to be tamed. 
+Speed: Medium
+Health: High
+Numbers: Medium
+Damage: High
+",res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt
+TXT_HIVEDESCRIPTION,"A Hive is made up of several layers of acidic wax layered over a mound of corpses. Once the barrier is established, Infernal Wasp eggs are planted that later hatch and feed upon the decomposed bodies inside. - Stalls incoming enemies 
+
+- Spawns three wasps that orbit the demon, with each wasp attacking and stopping zombies that get close
+- Wasps respawn a set time after they die, but when all wasps are dead, the Hive is defenseless
+
+
+- Strong VS 
+	- High Speed
+	- High Numbers
+	
+- Weak VS 
+	- High Health
+",res://_Assets/Text/TextFiles/DemonDescriptions/HiveDescription.txt
+TXT_HIVE_SPECIAL_DESCRIPTION,"*Continously produces Syn-Wasps
+",res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt
+TXT_MAWDESCRIPTION,"Said to be inspired by the screams of his victims, the Maws are Argus’ most sinister creation. With an insatiable appetite, the chasmic throat of the beast appears to stretch endlessly into the depths of Syn’s core. - Can Insta-kill most enemies 
+
+- Maintains 3 tentacles which consume zombies whole as they approach, killing them instantly
+- When a zombie is eaten, a digestion timer starts, and when the timer is done, the tentacle is free to consume another zombie 
+
+- Strong VS
+	- High Health
+	
+- Weak VS 
+	- High Numbers
+	- High Speed
+",res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt
+TXT_MAW_SPECIAL_DESCRIPTION,"*Eats zombies
+",res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt
+TXT_OCCULUMDESCRIPTION,"Generates [color=red]BLOOD[/color] over time 
+",res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt
+TXT_OCCULUM_SPECIAL_DESCRIPTION,"*Generates Blood 
+",res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt
+TXT_POLEVAULTZOMBIEDESCRIPTION,"All of the Sundered’s vital organs have been moved to the head, allowing them to disconnect and regenerate limbs quickly. This does, however, also make the head too heavy for their bodies. 
+Speed: High
+Health: Medium
+Numbers: Medium
+Damage: Low
+",res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt
+TXT_RANGED_SPECIAL_DESCRIPTION,"*Ranged attack
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/ranged_special_description.txt
+TXT_REANIMATOR_SPECIAL_DESCRIPTION,"*Summons minions
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt
+TXT_REBORN_SPECIAL_DESCRIPTION,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt
+TXT_ROHAN_SPECIAL_DESCRIPTION,"Entity formely known as Rohan
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt
+TXT_SCREENDOORZOMBIEDESCRIPTION,"An imbalance of chemicals within their psyche made these zombies highly unstable, causing them to kill their own kind. This error was eventually fixed, but the corpses remain. 
+Speed: Medium
+Health: High
+Numbers: Low
+Damage: High
+",res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt
+TXT_SEVERED_SPECIAL_DESCRIPTION,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt
+TXT_SPINALOCCULUMDESCRIPTION,"[color=red]DEFENSIVE[/color] DEMON. [color=red]Blocks[/color] [color=purple]Zombies[/color] from progressing. [color=red]BUFFS[/color] Demons giving them [color=red]VASTLY INCREASED HEALTH[/color] and [color=red]STALLING POWER.[/color]
+",res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt
+TXT_SPINAL_OCCULUM_SPECIAL_DESCRIPTION,"*Blocks zombies
+",res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt
+TXT_SUNDERED_SPECIAL_DESCRIPTION,"*Can leap over demons
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt
+TXT_TICKERZOMBIEDESCRIPTION,"Mutated zombies that spontaneously combust when exposed to threatening stimuli. This makes the Erupters perfect for world-ending conquests. 
+Speed: High
+Health: Low
+Numbers: Low
+Damage: High
+",res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt
+TXT_UNHALLOWER_SPECIAL_DESCRIPTION,"*High armor
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt
+TXT_WRETCH_SPECIAL_DESCRIPTION,"*Ignores blockers
+",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt
+TXT_WYRMDESCRIPTION,"Shoots [color=red]PIERCING[/color] pressurized blood that can [color=red]HIT MULTIPLE ZOMBIES[/color]. Damage decreases per zombie hit. Gives buffs that generally increase [color=red]Area Of Effect potential[/color].
+",res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt
+TXT_WYRM_SPECIAL_DESCRIPTION,"*Shots Pierce Zombies, Inflicts Bleed
+",res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt

@@ -66,8 +66,8 @@ func _setup_tutorial() -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.disable_ultimate()
-	level_title = "0-3:ACCEPTANCE"
-	extended_new_power_description = "SUMMONS LIGHTNING IN SELECTED AREA. TEARS THROUGH HORDES."
+	level_title = tr("LEVEL_TITLE_0_3")
+	extended_new_power_description = "POWER_SYN_LIGHTNING_DESC_LONG"
 	super()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [37.0, 50.0]
@@ -83,7 +83,7 @@ func _ready() -> void:
 
 	Global.resetOcculumCount()
 	Global.reset_swap_ability()
-	unlock_power.set_new_unlock_label("NEW SORCERCY")
+	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
 
 	# Connect signals
 	#toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
@@ -206,7 +206,7 @@ func _start_explain_spinal_occulum() -> void:
 	print("Explain Spinal Occulum Demon")
 	Global.hide_notification_bar()
 	
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SPINAL_OCCULUM, true, "NEW DEMON : SPINAL-OCCULUM")
+	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SPINAL_OCCULUM, true, tr("TIP_TITLE_NEW_DEMON_SPINALOCCULUM"))
 	toolTips.set_visual_demon_tutorial_visual(spinal_occulum_demo_scene.instantiate(),true,Vector2(0,-16))
 	hide_demon_selection_menu()
 

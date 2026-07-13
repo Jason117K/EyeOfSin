@@ -40,11 +40,11 @@ func set_new_power_texture(new_texture : Texture)->void:
 	
 
 func set_new_power_title(new_title:String)->void:
-	title_label.text = new_title
+	title_label.text = tr(new_title)
 	
 
 func set_new_power_description(new_description:String)->void:
-	description_label.text = new_description
+	description_label.text = tr(new_description)
 	
 	
 	

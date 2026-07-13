@@ -98,6 +98,11 @@ text/autoadvance_enabled=true
 text/autoadvance_fixed_delay=0.5
 layout/style_list=["res://New_File.tres"]
 layout/default_style="res://New_File.tres"
+translation/enabled=true
+translation/original_locale="en"
+translation/file_mode=0
+translation/save_mode=0
+translation/translation_folder="res://_Localization/dialogic"
 
 [display]
 
@@ -166,6 +171,10 @@ LockSwapAbility={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://_Localization/abilities.en.translation", "res://_Localization/descriptions.en.translation", "res://_Localization/names.en.translation", "res://_Localization/synergies.en.translation", "res://_Localization/tutorials.en.translation", "res://_Localization/ui.en.translation")
 
 [physics]
 

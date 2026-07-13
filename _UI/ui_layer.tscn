@@ -137,8 +137,7 @@ mouse_filter = 1
 theme_override_constants/line_spacing = -3
 theme_override_fonts/font = ExtResource("5_kni87")
 theme_override_font_sizes/font_size = 8
-text = "DEMON 
-UNLOCKED	!"
+text = "UI_DEMON_UNLOCKED"
 horizontal_alignment = 1
 
 [node name="ZombieUnlockedButton" type="Button" parent="." unique_id=1585373430]
@@ -185,8 +184,7 @@ layout_mode = 2
 theme_override_constants/line_spacing = -3
 theme_override_fonts/font = ExtResource("5_kni87")
 theme_override_font_sizes/font_size = 8
-text = "ZOMBIE
-DISCOVERED!"
+text = "UI_ZOMBIE_DISCOVERED"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="DemonUnlockedButton" to="." method="_on_demon_unlocked_button_pressed"]

@@ -66,7 +66,7 @@ offset_right = 50.0
 offset_bottom = 65.0
 theme_override_fonts/font = ExtResource("3_4bvgs")
 theme_override_font_sizes/font_size = 32
-text = "CODEX"
+text = "UI_CODEX"
 
 [node name="ZombieCodexLabel" type="Label" parent="." unique_id=759164211]
 visible = false
@@ -77,7 +77,7 @@ offset_right = 50.0
 offset_bottom = 65.0
 theme_override_fonts/font = ExtResource("3_4bvgs")
 theme_override_font_sizes/font_size = 32
-text = "CODEX"
+text = "UI_CODEX"
 
 [connection signal="pressed" from="HBoxContainer/OpenDemonCodexButton" to="HBoxContainer/OpenDemonCodexButton" method="_on_open_demon_codex_pressed"]
 [connection signal="pressed" from="HBoxContainer/OpenZombieCodexButton" to="HBoxContainer/OpenDemonCodexButton" method="_on_open_zombie_codex_button_pressed"]

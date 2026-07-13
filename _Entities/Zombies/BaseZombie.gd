@@ -78,19 +78,19 @@ static var rohan_special_description: String
 static var _descriptions_loaded := false
 
 static func _load_descriptions() -> void:
-	if _descriptions_loaded:
-		return
-	reborn_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt", FileAccess.READ).get_as_text()
-	severed_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt", FileAccess.READ).get_as_text()
-	unhallower_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt", FileAccess.READ).get_as_text()
-	reanimator_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt", FileAccess.READ).get_as_text()
-	wretch_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt", FileAccess.READ).get_as_text()
-	erupter_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt", FileAccess.READ).get_as_text()
-	amalgam_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt", FileAccess.READ).get_as_text()
-	flesheater_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt", FileAccess.READ).get_as_text()
-	sundered_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt", FileAccess.READ).get_as_text()
-	buffer_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt", FileAccess.READ).get_as_text()
-	rohan_special_description = FileAccess.open("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt", FileAccess.READ).get_as_text()
+	# No caching guard: Loc.text() is a translation lookup, and reloading keeps
+	# these current after a mid-session language switch.
+	reborn_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt")
+	severed_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt")
+	unhallower_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt")
+	reanimator_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt")
+	wretch_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt")
+	erupter_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt")
+	amalgam_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt")
+	flesheater_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt")
+	sundered_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt")
+	buffer_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt")
+	rohan_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt")
 	_descriptions_loaded = true
 
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
