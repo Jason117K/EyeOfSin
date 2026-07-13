@@ -1,75 +1,93 @@
-keys,en,_notes
-UI_START_GAME,START GAME,Start screen main menu button
-UI_LEVEL_SELECT,LEVEL  SELECT,Start screen button (double space is intentional styling)
-UI_CODEX,CODEX,Start screen button
-UI_OPTIONS,OPTIONS,Start screen button
-UI_CREDITS,CREDITS,Start screen button
-UI_QUIT,QUIT,Start screen button
-UI_MASTER_VOLUME,Master Volume,Options menu slider label
-UI_MUSIC_VOLUME,Music Volume,Options menu slider label
-UI_SFX_VOLUME,SFX Volume,Options menu slider label
-UI_LANGUAGE,Language,Options menu language dropdown label
-UI_BACK,BACK,Options menu back button (short!)
-UI_YOU_LOSE,YOU LOSE!,Defeat banner
-UI_WAVE_LABEL,WAVE : {num},In-level wave announcement; {num} is the wave number
-UI_SCORE_TIME,TIME: {time},Score screen; {time} is seconds
-UI_SCORE_LIVES_LOST,LIVES LOST: {lives},Score screen
-UI_SCORE_DEMON_POINTS,DEMON POINTS: {points},Score screen
-LEVEL_TITLE_0_1,0-1:AWAKENING,Level title (score screen)
-LEVEL_TITLE_0_2,0-2:BETRAYAL,Level title
-LEVEL_TITLE_0_3,0-3:ACCEPTANCE,Level title
-LEVEL_TITLE_0_4,0-4:REVELATIONS,Level title
-LEVEL_TITLE_0_5,0-5:RIDE THE LIGHTNING,Level title
-LEVEL_TITLE_0_6,0-6:BONDS,Level title
-LEVEL_TITLE_0_7,0-7:ODE TO POWER,Level title
-LEVEL_TITLE_0_8,0-8:ODE TO POWER,Level title
-LEVEL_TITLE_0_9,0-9:ODE TO POWER,Level title
-TIP_TITLE_NEW_DEMON_OCCULUM,NEW DEMON : OCCULUM,Tutorial banner
-TIP_TITLE_NEW_DEMON_SPINALOCCULUM,NEW DEMON : SPINAL-OCCULUM,Tutorial banner
-TIP_TITLE_NEW_DEMON_WYRM,NEW DEMON : Wyrm,Tutorial banner
-TIP_TITLE_BLOOD_BUFFS,NEW ABILITY UNLOCKED : [color=red]BLOOD BUFFS[/color],Tutorial banner; keep BBCode tags
-TIP_TITLE_SYN_SORCERIES,NEW ABILITY UNLOCKED : [color=red]SYN SORCERIES[/color],Tutorial banner; keep BBCode tags
-TIP_TITLE_SWAP_SORCERIES,NEW ABILITY UNLOCKED : [color=red]SWAP SORCERIES[/color],Tutorial banner; keep BBCode tags
-TIP_TITLE_ULTIMATES,NEW ABILITY UNLOCKED:[color=red]ULTIMATES[/color],Tutorial banner; keep BBCode tags
-TIP_TITLE_PORTALS,NEW ABILITY UNLOCKED: [color=green]POR[/color][color=purple]TALS[/color],Tutorial banner; two-tone PORTALS wordmark — keep both color tags
-TIP_TITLE_SYNERGY_CRAWLEROCCULUM,SYNERGY UNLOCKED: [color=red]CRAWLEROCCULUM[/color],Tutorial banner; CRAWLEROCCULUM is a synergy id — do not translate it
-TIP_TITLE_SYNERGY_OCCULUMCRAWLER,SYNERGY UNLOCKED: [color=red]OCCULUMCRAWLER[/color],Tutorial banner; OCCULUMCRAWLER is a synergy id — do not translate it
-UI_THANKS_FOR_PLAYING,THANKS FOR PLAYING!,End screen
-UI_PLAY_AGAIN,PLAY AGAIN,Button
-UI_YOU_WIN,YOU WIN!,Victory banner
-UI_CONTINUE,CONTINUE,Button
-UI_RETURN_TO_MAIN,RETURN TO MAIN,Button
-UI_UNDERSTOOD,UNDERSTOOD,Tutorial dismiss button
-UI_DEMON_CODEX,DEMON CODEX,Codex menu button
-UI_ZOMBIE_CODEX,ZOMBIE CODEX,Codex menu button
-UI_PAUSED,PAUSED,Pause menu header
-UI_RESUME,RESUME,Pause menu button
-UI_RESTART,RESTART,Pause menu button
-UI_MAIN_MENU,MAIN MENU,Pause menu button
-UI_LEVEL_BTN_1,LEVEL 1,Level select map button
-UI_LEVEL_BTN_2,LEVEL 2,Level select map button
-UI_LEVEL_BTN_3,LEVEL 3,Level select map button
-UI_LEVEL_BTN_4,LEVEL 4,Level select map button
-UI_LEVEL_BTN_5,LEVEL 5,Level select map button
-UI_LEVEL_BTN_6,LEVEL 6,Level select map button
-UI_LEVEL_BTN_7,LEVEL 7,Level select map button
-UI_LEVEL_BTN_8,LEVEL 8,Level select map button
-UI_LEVEL_BTN_9,LEVEL 9,Level select map button
-UI_SORCERIES,SORCERIES,Level select map button (ability loadout screen)
-UI_CHECK_OUT_SORCERIES,CHECK OUT SORCERIES->,Level select map hint; keep the -> arrow
-UI_DISABLE_DIALOG,DISABLE DIALOG,Level select map toggle
-UI_DISABLE_TUTORIALS,DISABLE TUTORIALS,Level select map toggle
-UI_SCORE_TOTAL,TOTAL SCORE :,Score screen static label
-UI_STAT_DAMAGE, DAMAGE,Entity inspector stat label; keep leading space
-UI_STAT_SPEED, SPEED,Entity inspector stat label; keep leading space
-UI_NEW_DEMON,NEW DEMON,Power unlock screen header
-UI_NEW_SORCERY,NEW SORCERY,Power unlock screen header (was NEW SORCERCY typo)
-UI_NEXT_LEVEL,NEXT LEVEL,Power unlock screen button
-UI_CANNOT_AFFORD_DEMON, CANNOT AFFORD DEMON,Notification; keep leading space
+keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
+UI_START_GAME,START GAME,INICIAR PARTIDA,开始游戏,НАЧАТЬ ИГРУ,INICIAR JOGO,SPIEL STARTEN,ゲーム開始,COMMENCER,ROZPOCZNIJ GRĘ,게임 시작,Start screen main menu button
+UI_LEVEL_SELECT,LEVEL  SELECT,ELEGIR NIVEL,选择关卡,ВЫБОР УРОВНЯ,SELEÇÃO DE FASE,LEVELAUSWAHL,レベル選択,CHOIX DU NIVEAU,WYBÓR POZIOMU,레벨 선택,Start screen button (double space is intentional styling)
+UI_CODEX,CODEX,CÓDICE,图鉴,КОДЕКС,CÓDICE,KODEX,コデックス,CODEX,KODEKS,코덱스,Start screen button
+UI_OPTIONS,OPTIONS,OPCIONES,选项,НАСТРОЙКИ,OPÇÕES,OPTIONEN,オプション,OPTIONS,OPCJE,옵션,Start screen button
+UI_CREDITS,CREDITS,CRÉDITOS,制作人员,АВТОРЫ,CRÉDITOS,MITWIRKENDE,クレジット,CRÉDITS,TWÓRCY,크레딧,Start screen button
+UI_QUIT,QUIT,SALIR,退出,ВЫХОД,SAIR,BEENDEN,終了,QUITTER,WYJDŹ,종료,Start screen button
+UI_MASTER_VOLUME,Master Volume,Volumen general,主音量,Общая громкость,Volume geral,Gesamtlautstärke,マスター音量,Volume général,Głośność główna,전체 음량,Options menu slider label
+UI_MUSIC_VOLUME,Music Volume,Volumen de música,音乐音量,Громкость музыки,Volume da música,Musiklautstärke,音楽の音量,Volume de la musique,Głośność muzyki,음악 음량,Options menu slider label
+UI_SFX_VOLUME,SFX Volume,Volumen de efectos,音效音量,Громкость эффектов,Volume dos efeitos,Effektlautstärke,効果音の音量,Volume des effets,Głośność efektów,효과음 음량,Options menu slider label
+UI_LANGUAGE,Language,Idioma,语言,Язык,Idioma,Sprache,言語,Langue,Język,언어,Options menu language dropdown label
+UI_BACK,BACK,ATRÁS,返回,НАЗАД,VOLTAR,ZURÜCK,戻る,RETOUR,WSTECZ,뒤로,Options menu back button (short!)
+UI_YOU_LOSE,YOU LOSE!,¡HAS PERDIDO!,你输了！,ВЫ ПРОИГРАЛИ!,VOCÊ PERDEU!,VERLOREN!,敗北…,DÉFAITE !,PRZEGRYWASZ!,패배했습니다!,Defeat banner
+UI_WAVE_LABEL,WAVE : {num},OLEADA : {num},第 {num} 波,ВОЛНА : {num},ONDA : {num},WELLE : {num},ウェーブ {num},VAGUE : {num},FALA : {num},웨이브 {num},In-level wave announcement; {num} is the wave number
+UI_SCORE_TIME,TIME: {time},TIEMPO: {time},用时：{time},ВРЕМЯ: {time},TEMPO: {time},ZEIT: {time},タイム：{time},TEMPS : {time},CZAS: {time},시간: {time},Score screen; {time} is seconds
+UI_SCORE_LIVES_LOST,LIVES LOST: {lives},VIDAS PERDIDAS: {lives},损失生命：{lives},ПОТЕРЯНО ЖИЗНЕЙ: {lives},VIDAS PERDIDAS: {lives},VERLORENE LEBEN: {lives},失ったライフ：{lives},VIES PERDUES : {lives},STRACONE ŻYCIA: {lives},잃은 생명: {lives},Score screen
+UI_SCORE_DEMON_POINTS,DEMON POINTS: {points},PUNTOS DE DEMONIO: {points},恶魔点数：{points},ОЧКИ ДЕМОНОВ: {points},PONTOS DE DEMÔNIO: {points},DÄMONENPUNKTE: {points},悪魔ポイント：{points},POINTS DE DÉMON : {points},PUNKTY DEMONÓW: {points},악마 포인트: {points},Score screen
+LEVEL_TITLE_0_1,0-1:AWAKENING,0-1:DESPERTAR,0-1：觉醒,0-1:ПРОБУЖДЕНИЕ,0-1:DESPERTAR,0-1:ERWACHEN,0-1：覚醒,0-1:ÉVEIL,0-1:PRZEBUDZENIE,0-1:각성,Level title (score screen)
+LEVEL_TITLE_0_2,0-2:BETRAYAL,0-2:TRAICIÓN,0-2：背叛,0-2:ПРЕДАТЕЛЬСТВО,0-2:TRAIÇÃO,0-2:VERRAT,0-2：裏切り,0-2:TRAHISON,0-2:ZDRADA,0-2:배신,Level title
+LEVEL_TITLE_0_3,0-3:ACCEPTANCE,0-3:ACEPTACIÓN,0-3：接受,0-3:ПРИНЯТИЕ,0-3:ACEITAÇÃO,0-3:AKZEPTANZ,0-3：受容,0-3:ACCEPTATION,0-3:AKCEPTACJA,0-3:수용,Level title
+LEVEL_TITLE_0_4,0-4:REVELATIONS,0-4:REVELACIONES,0-4：启示,0-4:ОТКРОВЕНИЯ,0-4:REVELAÇÕES,0-4:OFFENBARUNGEN,0-4：啓示,0-4:RÉVÉLATIONS,0-4:OBJAWIENIA,0-4:계시,Level title
+LEVEL_TITLE_0_5,0-5:RIDE THE LIGHTNING,0-5:CABALGA EL RAYO,0-5：驭雷而行,0-5:ОСЕДЛАЙ МОЛНИЮ,0-5:CAVALGUE O RAIO,0-5:REITE DEN BLITZ,0-5：雷に乗れ,0-5:CHEVAUCHE LA FOUDRE,0-5:UJARZMIJ BŁYSKAWICĘ,0-5:번개를 타라,Level title
+LEVEL_TITLE_0_6,0-6:BONDS,0-6:LAZOS,0-6：羁绊,0-6:УЗЫ,0-6:LAÇOS,0-6:BANDE,0-6：絆,0-6:LIENS,0-6:WIĘZI,0-6:유대,Level title
+LEVEL_TITLE_0_7,0-7:ODE TO POWER,0-7:ODA AL PODER,0-7：力量颂歌,0-7:ОДА СИЛЕ,0-7:ODE AO PODER,0-7:ODE AN DIE MACHT,0-7：力への頌歌,0-7:ODE AU POUVOIR,0-7:ODA DO POTĘGI,0-7:힘의 송가,Level title
+LEVEL_TITLE_0_8,0-8:ODE TO POWER,0-8:ODA AL PODER,0-8：力量颂歌,0-8:ОДА СИЛЕ,0-8:ODE AO PODER,0-8:ODE AN DIE MACHT,0-8：力への頌歌,0-8:ODE AU POUVOIR,0-8:ODA DO POTĘGI,0-8:힘의 송가,Level title
+LEVEL_TITLE_0_9,0-9:ODE TO POWER,0-9:ODA AL PODER,0-9：力量颂歌,0-9:ОДА СИЛЕ,0-9:ODE AO PODER,0-9:ODE AN DIE MACHT,0-9：力への頌歌,0-9:ODE AU POUVOIR,0-9:ODA DO POTĘGI,0-9:힘의 송가,Level title
+TIP_TITLE_NEW_DEMON_OCCULUM,NEW DEMON : OCCULUM,NUEVO DEMONIO : OCCULUM,新恶魔：奥库伦,НОВЫЙ ДЕМОН : ОККУЛУМ,NOVO DEMÔNIO : OCCULUM,NEUER DÄMON : OCCULUM,新たな悪魔：オキュラム,NOUVEAU DÉMON : OCCULUM,NOWY DEMON : OCCULUM,새로운 악마 : 오큘럼,Tutorial banner
+TIP_TITLE_NEW_DEMON_SPINALOCCULUM,NEW DEMON : SPINAL-OCCULUM,NUEVO DEMONIO : OCCULUM ESPINAL,新恶魔：脊柱奥库伦,НОВЫЙ ДЕМОН : СПИНАЛЬНЫЙ ОККУЛУМ,NOVO DEMÔNIO : OCCULUM ESPINHAL,NEUER DÄMON : STACHEL-OCCULUM,新たな悪魔：スパイナル・オキュラム,NOUVEAU DÉMON : OCCULUM SPINAL,NOWY DEMON : OCCULUM KRĘGOWY,새로운 악마 : 스파이널 오큘럼,Tutorial banner
+TIP_TITLE_NEW_DEMON_WYRM,NEW DEMON : Wyrm,NUEVO DEMONIO : Sierpe,新恶魔：蠕龙,НОВЫЙ ДЕМОН : Змий,NOVO DEMÔNIO : Serpe,NEUER DÄMON : Wyrm,新たな悪魔：ワーム,NOUVEAU DÉMON : Vouivre,NOWY DEMON : Żmij,새로운 악마 : 웜,Tutorial banner
+TIP_TITLE_BLOOD_BUFFS,NEW ABILITY UNLOCKED : [color=red]BLOOD BUFFS[/color],NUEVA HABILIDAD : [color=red]MEJORAS DE SANGRE[/color],解锁新能力：[color=red]鲜血增益[/color],НОВАЯ СПОСОБНОСТЬ : [color=red]КРОВАВЫЕ УСИЛЕНИЯ[/color],NOVA HABILIDADE : [color=red]BÊNÇÃOS DE SANGUE[/color],NEUE FÄHIGKEIT : [color=red]BLUT-BUFFS[/color],新アビリティ解放：[color=red]血の強化[/color],NOUVEAU POUVOIR : [color=red]BONUS DE SANG[/color],NOWA ZDOLNOŚĆ : [color=red]KRWAWE WZMOCNIENIA[/color],새 능력 해금 : [color=red]피의 강화[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_SYN_SORCERIES,NEW ABILITY UNLOCKED : [color=red]SYN SORCERIES[/color],NUEVA HABILIDAD : [color=red]HECHICERÍAS DE SYN[/color],解锁新能力：[color=red]辛之魔法[/color],НОВАЯ СПОСОБНОСТЬ : [color=red]ЧАРЫ СИНА[/color],NOVA HABILIDADE : [color=red]FEITIÇOS DE SYN[/color],NEUE FÄHIGKEIT : [color=red]SYN-ZAUBER[/color],新アビリティ解放：[color=red]シンの魔術[/color],NOUVEAU POUVOIR : [color=red]SORCELLERIES DE SYN[/color],NOWA ZDOLNOŚĆ : [color=red]CZARY SYN[/color],새 능력 해금 : [color=red]신의 마법[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_SWAP_SORCERIES,NEW ABILITY UNLOCKED : [color=red]SWAP SORCERIES[/color],NUEVA HABILIDAD : [color=red]HECHICERÍAS DE CAMBIO[/color],解锁新能力：[color=red]换界魔法[/color],НОВАЯ СПОСОБНОСТЬ : [color=red]ЧАРЫ СМЕНЫ[/color],NOVA HABILIDADE : [color=red]FEITIÇOS DE TROCA[/color],NEUE FÄHIGKEIT : [color=red]WECHSEL-ZAUBER[/color],新アビリティ解放：[color=red]転移の魔術[/color],NOUVEAU POUVOIR : [color=red]SORCELLERIES D'ÉCHANGE[/color],NOWA ZDOLNOŚĆ : [color=red]CZARY ZAMIANY[/color],새 능력 해금 : [color=red]전환 마법[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_ULTIMATES,NEW ABILITY UNLOCKED:[color=red]ULTIMATES[/color],NUEVA HABILIDAD:[color=red]DEFINITIVAS[/color],解锁新能力：[color=red]终极技[/color],НОВАЯ СПОСОБНОСТЬ:[color=red]УЛЬТИМАТЫ[/color],NOVA HABILIDADE:[color=red]SUPREMAS[/color],NEUE FÄHIGKEIT:[color=red]ULTIMATIVE[/color],新アビリティ解放：[color=red]アルティメット[/color],NOUVEAU POUVOIR :[color=red]ULTIMES[/color],NOWA ZDOLNOŚĆ:[color=red]ULTIMATY[/color],새 능력 해금:[color=red]궁극기[/color],Tutorial banner; keep BBCode tags
+TIP_TITLE_PORTALS,NEW ABILITY UNLOCKED: [color=green]POR[/color][color=purple]TALS[/color],NUEVA HABILIDAD: [color=green]POR[/color][color=purple]TALES[/color],解锁新能力：[color=green]传送[/color][color=purple]门[/color],НОВАЯ СПОСОБНОСТЬ: [color=green]ПОР[/color][color=purple]ТАЛЫ[/color],NOVA HABILIDADE: [color=green]POR[/color][color=purple]TAIS[/color],NEUE FÄHIGKEIT: [color=green]POR[/color][color=purple]TALE[/color],新アビリティ解放：[color=green]ポー[/color][color=purple]タル[/color],NOUVEAU POUVOIR : [color=green]POR[/color][color=purple]TAILS[/color],NOWA ZDOLNOŚĆ: [color=green]POR[/color][color=purple]TALE[/color],새 능력 해금: [color=green]포[/color][color=purple]털[/color],Tutorial banner; two-tone PORTALS wordmark — keep both color tags
+TIP_TITLE_SYNERGY_CRAWLEROCCULUM,SYNERGY UNLOCKED: [color=red]CRAWLEROCCULUM[/color],SINERGIA DESBLOQUEADA: [color=red]CRAWLEROCCULUM[/color],解锁协同：[color=red]CRAWLEROCCULUM[/color],СИНЕРГИЯ ОТКРЫТА: [color=red]CRAWLEROCCULUM[/color],SINERGIA DESBLOQUEADA: [color=red]CRAWLEROCCULUM[/color],SYNERGIE FREIGESCHALTET: [color=red]CRAWLEROCCULUM[/color],シナジー解放：[color=red]CRAWLEROCCULUM[/color],SYNERGIE DÉBLOQUÉE : [color=red]CRAWLEROCCULUM[/color],SYNERGIA ODBLOKOWANA: [color=red]CRAWLEROCCULUM[/color],시너지 해금: [color=red]CRAWLEROCCULUM[/color],Tutorial banner; CRAWLEROCCULUM is a synergy id — do not translate it
+TIP_TITLE_SYNERGY_OCCULUMCRAWLER,SYNERGY UNLOCKED: [color=red]OCCULUMCRAWLER[/color],SINERGIA DESBLOQUEADA: [color=red]OCCULUMCRAWLER[/color],解锁协同：[color=red]OCCULUMCRAWLER[/color],СИНЕРГИЯ ОТКРЫТА: [color=red]OCCULUMCRAWLER[/color],SINERGIA DESBLOQUEADA: [color=red]OCCULUMCRAWLER[/color],SYNERGIE FREIGESCHALTET: [color=red]OCCULUMCRAWLER[/color],シナジー解放：[color=red]OCCULUMCRAWLER[/color],SYNERGIE DÉBLOQUÉE : [color=red]OCCULUMCRAWLER[/color],SYNERGIA ODBLOKOWANA: [color=red]OCCULUMCRAWLER[/color],시너지 해금: [color=red]OCCULUMCRAWLER[/color],Tutorial banner; OCCULUMCRAWLER is a synergy id — do not translate it
+UI_THANKS_FOR_PLAYING,THANKS FOR PLAYING!,¡GRACIAS POR JUGAR!,感谢游玩！,СПАСИБО ЗА ИГРУ!,OBRIGADO POR JOGAR!,DANKE FÜRS SPIELEN!,プレイありがとう！,MERCI D'AVOIR JOUÉ !,DZIĘKUJEMY ZA GRĘ!,플레이해 주셔서 감사합니다!,End screen
+UI_PLAY_AGAIN,PLAY AGAIN,JUGAR DE NUEVO,再玩一次,ИГРАТЬ СНОВА,JOGAR DE NOVO,NOCHMAL SPIELEN,もう一度プレイ,REJOUER,ZAGRAJ PONOWNIE,다시 하기,Button
+UI_YOU_WIN,YOU WIN!,¡HAS GANADO!,你赢了！,ПОБЕДА!,VOCÊ VENCEU!,GEWONNEN!,勝利！,VICTOIRE !,WYGRYWASZ!,승리했습니다!,Victory banner
+UI_CONTINUE,CONTINUE,CONTINUAR,继续,ПРОДОЛЖИТЬ,CONTINUAR,WEITER,つづける,CONTINUER,KONTYNUUJ,계속,Button
+UI_RETURN_TO_MAIN,RETURN TO MAIN,VOLVER AL MENÚ,返回主菜单,В ГЛАВНОЕ МЕНЮ,VOLTAR AO MENU,ZUM HAUPTMENÜ,メインに戻る,MENU PRINCIPAL,DO MENU GŁÓWNEGO,메인으로,Button
+UI_UNDERSTOOD,UNDERSTOOD,ENTENDIDO,明白了,ПОНЯТНО,ENTENDIDO,VERSTANDEN,了解,COMPRIS,ROZUMIEM,알겠습니다,Tutorial dismiss button
+UI_DEMON_CODEX,DEMON CODEX,CÓDICE DE DEMONIOS,恶魔图鉴,КОДЕКС ДЕМОНОВ,CÓDICE DE DEMÔNIOS,DÄMONENKODEX,悪魔コデックス,CODEX DES DÉMONS,KODEKS DEMONÓW,악마 코덱스,Codex menu button
+UI_ZOMBIE_CODEX,ZOMBIE CODEX,CÓDICE DE ZOMBIS,僵尸图鉴,КОДЕКС ЗОМБИ,CÓDICE DE ZUMBIS,ZOMBIEKODEX,ゾンビコデックス,CODEX DES ZOMBIES,KODEKS ZOMBIE,좀비 코덱스,Codex menu button
+UI_PAUSED,PAUSED,PAUSA,已暂停,ПАУЗА,PAUSADO,PAUSE,ポーズ中,PAUSE,PAUZA,일시 정지,Pause menu header
+UI_RESUME,RESUME,REANUDAR,继续游戏,ПРОДОЛЖИТЬ,RETOMAR,FORTSETZEN,再開,REPRENDRE,WZNÓW,계속하기,Pause menu button
+UI_RESTART,RESTART,REINICIAR,重新开始,ЗАНОВО,REINICIAR,NEU STARTEN,リスタート,RECOMMENCER,OD NOWA,재시작,Pause menu button
+UI_MAIN_MENU,MAIN MENU,MENÚ PRINCIPAL,主菜单,ГЛАВНОЕ МЕНЮ,MENU PRINCIPAL,HAUPTMENÜ,メインメニュー,MENU PRINCIPAL,MENU GŁÓWNE,메인 메뉴,Pause menu button
+UI_LEVEL_BTN_1,LEVEL 1,NIVEL 1,第 1 关,УРОВЕНЬ 1,FASE 1,LEVEL 1,レベル 1,NIVEAU 1,POZIOM 1,레벨 1,Level select map button
+UI_LEVEL_BTN_2,LEVEL 2,NIVEL 2,第 2 关,УРОВЕНЬ 2,FASE 2,LEVEL 2,レベル 2,NIVEAU 2,POZIOM 2,레벨 2,Level select map button
+UI_LEVEL_BTN_3,LEVEL 3,NIVEL 3,第 3 关,УРОВЕНЬ 3,FASE 3,LEVEL 3,レベル 3,NIVEAU 3,POZIOM 3,레벨 3,Level select map button
+UI_LEVEL_BTN_4,LEVEL 4,NIVEL 4,第 4 关,УРОВЕНЬ 4,FASE 4,LEVEL 4,レベル 4,NIVEAU 4,POZIOM 4,레벨 4,Level select map button
+UI_LEVEL_BTN_5,LEVEL 5,NIVEL 5,第 5 关,УРОВЕНЬ 5,FASE 5,LEVEL 5,レベル 5,NIVEAU 5,POZIOM 5,레벨 5,Level select map button
+UI_LEVEL_BTN_6,LEVEL 6,NIVEL 6,第 6 关,УРОВЕНЬ 6,FASE 6,LEVEL 6,レベル 6,NIVEAU 6,POZIOM 6,레벨 6,Level select map button
+UI_LEVEL_BTN_7,LEVEL 7,NIVEL 7,第 7 关,УРОВЕНЬ 7,FASE 7,LEVEL 7,レベル 7,NIVEAU 7,POZIOM 7,레벨 7,Level select map button
+UI_LEVEL_BTN_8,LEVEL 8,NIVEL 8,第 8 关,УРОВЕНЬ 8,FASE 8,LEVEL 8,レベル 8,NIVEAU 8,POZIOM 8,레벨 8,Level select map button
+UI_LEVEL_BTN_9,LEVEL 9,NIVEL 9,第 9 关,УРОВЕНЬ 9,FASE 9,LEVEL 9,レベル 9,NIVEAU 9,POZIOM 9,레벨 9,Level select map button
+UI_SORCERIES,SORCERIES,HECHICERÍAS,魔法,ЧАРЫ,FEITIÇOS,ZAUBER,魔術,SORCELLERIES,CZARY,마법,Level select map button (ability loadout screen)
+UI_CHECK_OUT_SORCERIES,CHECK OUT SORCERIES->,MIRA LAS HECHICERÍAS->,看看魔法->,ЗАГЛЯНИ В ЧАРЫ->,CONFIRA OS FEITIÇOS->,ZAUBER ANSEHEN->,魔術をチェック->,VOIR LES SORCELLERIES->,SPRAWDŹ CZARY->,마법을 확인하세요->,Level select map hint; keep the -> arrow
+UI_DISABLE_DIALOG,DISABLE DIALOG,DESACTIVAR DIÁLOGOS,关闭对话,ОТКЛ. ДИАЛОГИ,DESATIVAR DIÁLOGOS,DIALOGE AUS,会話オフ,DÉSACTIVER DIALOGUES,WYŁĄCZ DIALOGI,대화 끄기,Level select map toggle
+UI_DISABLE_TUTORIALS,DISABLE TUTORIALS,DESACTIVAR TUTORIALES,关闭教程,ОТКЛ. ОБУЧЕНИЕ,DESATIVAR TUTORIAIS,TUTORIALS AUS,チュートリアルオフ,DÉSACTIVER TUTORIELS,WYŁĄCZ SAMOUCZKI,튜토리얼 끄기,Level select map toggle
+UI_SCORE_TOTAL,TOTAL SCORE :,PUNTUACIÓN TOTAL :,总分：,ОБЩИЙ СЧЁТ :,PONTUAÇÃO TOTAL :,GESAMTPUNKTZAHL :,合計スコア：,SCORE TOTAL :,WYNIK ŁĄCZNY :,총점 :,Score screen static label
+UI_STAT_DAMAGE, DAMAGE, DAÑO, 伤害, УРОН, DANO, SCHADEN, 攻撃力, DÉGÂTS, OBRAŻENIA, 공격력,Entity inspector stat label; keep leading space
+UI_STAT_SPEED, SPEED, VELOCIDAD, 速度, СКОРОСТЬ, VELOCIDADE, TEMPO, 速度, VITESSE, SZYBKOŚĆ, 속도,Entity inspector stat label; keep leading space
+UI_NEW_DEMON,NEW DEMON,NUEVO DEMONIO,新恶魔,НОВЫЙ ДЕМОН,NOVO DEMÔNIO,NEUER DÄMON,新たな悪魔,NOUVEAU DÉMON,NOWY DEMON,새로운 악마,Power unlock screen header
+UI_NEW_SORCERY,NEW SORCERY,NUEVA HECHICERÍA,新魔法,НОВЫЕ ЧАРЫ,NOVO FEITIÇO,NEUER ZAUBER,新たな魔術,NOUVELLE SORCELLERIE,NOWY CZAR,새로운 마법,Power unlock screen header (was NEW SORCERCY typo)
+UI_NEXT_LEVEL,NEXT LEVEL,SIGUIENTE NIVEL,下一关,СЛЕДУЮЩИЙ УРОВЕНЬ,PRÓXIMA FASE,NÄCHSTES LEVEL,次のレベルへ,NIVEAU SUIVANT,NASTĘPNY POZIOM,다음 레벨,Power unlock screen button
+UI_CANNOT_AFFORD_DEMON, CANNOT AFFORD DEMON, SANGRE INSUFICIENTE, 鲜血不足, НЕ ХВАТАЕТ КРОВИ, SANGUE INSUFICIENTE, NICHT GENUG BLUT, 血が足りない, PAS ASSEZ DE SANG, ZA MAŁO KRWI, 피가 부족합니다,Notification; keep leading space
 UI_DEMON_UNLOCKED,"DEMON
-UNLOCKED	!",Codex unlock chip; two lines — keep the line break
+UNLOCKED	!","¡DEMONIO
+DESBLOQUEADO!","恶魔
+已解锁！","ДЕМОН
+ОТКРЫТ!","DEMÔNIO
+LIBERADO!","DÄMON
+FREIGESCHALTET!","悪魔
+解放！","DÉMON
+DÉBLOQUÉ !","DEMON
+ODBLOKOWANY!","악마
+해금!",Codex unlock chip; two lines — keep the line break
 UI_ZOMBIE_DISCOVERED,"ZOMBIE
-DISCOVERED!",Codex unlock chip; two lines — keep the line break
+DISCOVERED!","¡ZOMBI
+DESCUBIERTO!","发现
+僵尸！","ЗОМБИ
+ОБНАРУЖЕН!","ZUMBI
+DESCOBERTO!","ZOMBIE
+ENTDECKT!","ゾンビ
+発見！","ZOMBIE
+DÉCOUVERT !","ZOMBIE
+ODKRYTY!","좀비
+발견!",Codex unlock chip; two lines — keep the line break
 UI_BOOK_FLIP_HINT,"Click the left and right sides of the book to flip the pages.
 
 
@@ -77,8 +95,98 @@ UI_BOOK_FLIP_HINT,"Click the left and right sides of the book to flip the pages.
 
 
 
-Use the back arrow to close the book.",Codex book hint; blank lines position the second sentence — keep them
+Use the back arrow to close the book.","Haz clic en los lados izquierdo y derecho del libro para pasar las páginas.
+
+
+
+
+
+
+Usa la flecha de retroceso para cerrar el libro.","点击书本的左右两侧即可翻页。
+
+
+
+
+
+
+使用返回箭头关闭书本。","Нажимайте на левую и правую стороны книги, чтобы листать страницы.
+
+
+
+
+
+
+Стрелка «назад» закрывает книгу.","Clique nos lados esquerdo e direito do livro para virar as páginas.
+
+
+
+
+
+
+Use a seta de voltar para fechar o livro.","Klicke links oder rechts auf das Buch, um zu blättern.
+
+
+
+
+
+
+Mit dem Zurück-Pfeil schließt du das Buch.","本の左右をクリックするとページをめくれます。
+
+
+
+
+
+
+戻る矢印で本を閉じます。","Cliquez sur les côtés gauche et droit du livre pour tourner les pages.
+
+
+
+
+
+
+Utilisez la flèche retour pour fermer le livre.","Klikaj lewą i prawą stronę księgi, aby przewracać kartki.
+
+
+
+
+
+
+Strzałka wstecz zamyka księgę.","책의 좌우를 클릭하면 페이지를 넘길 수 있습니다.
+
+
+
+
+
+
+뒤로 화살표로 책을 닫습니다.",Codex book hint; blank lines position the second sentence — keep them
 LORE_OCCULUM_INTRO,"Resilient and fast-growing, the Oculum are densely populated and serve both as the primary producers of blood energy on Syn and as spies for Argus.
 
 - Generates blood energy over time
+","Resistentes y de rápido crecimiento, los Oculum abundan por doquier y sirven tanto de principales productores de energía de sangre en Syn como de espías para Argus.
+
+- Genera energía de sangre con el tiempo
+","奥库伦生命力顽强、生长迅速、数量庞大，既是辛恩大陆鲜血能量的主要来源，也是阿古斯的耳目。
+
+- 随时间生成鲜血能量
+","Живучие и быстрорастущие Оккулумы расселились повсюду: они и главные производители кровавой энергии Сина, и соглядатаи Аргуса.
+
+- Со временем вырабатывает кровавую энергию
+","Resistentes e de crescimento rápido, os Oculum são numerosos e servem tanto como principais produtores de energia de sangue em Syn quanto como espiões de Argus.
+
+- Gera energia de sangue ao longo do tempo
+","Widerstandsfähig und schnellwachsend sind die Oculum weit verbreitet; sie sind die wichtigsten Erzeuger von Blutenergie auf Syn und zugleich Spione für Argus.
+
+- Erzeugt mit der Zeit Blutenergie
+","強靭で成長の早いオキュラムは各地に群生し、シンにおける血のエネルギーの主要な生産者であると同時に、アーガスの密偵でもある。
+
+- 時間経過で血のエネルギーを生成
+","Résistants et à croissance rapide, les Oculum pullulent : ils sont à la fois les principaux producteurs d'énergie de sang de Syn et les espions d'Argus.
+
+- Génère de l'énergie de sang au fil du temps
+","Wytrzymałe i szybko rosnące Oculum występują gęsto po całym Syn: to główni wytwórcy krwawej energii i zarazem szpiedzy Argusa.
+
+- Z czasem wytwarza krwawą energię
+","끈질기고 빠르게 자라는 오큘럼은 곳곳에 서식하며, 신 대륙의 주요 피 에너지 생산자이자 아르구스의 첩자 역할을 한다.
+
+- 시간이 지나면 피 에너지를 생성
 ",Demon codex intro page (Occulum lore); Syn and Argus are proper nouns
