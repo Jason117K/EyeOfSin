@@ -1250,7 +1250,6 @@ new_power_description = "POWER_SPINAL_OCCULUM_DESC_SHORT"
 new_power_texture = ExtResource("2_a2121")
 isGreenDimension = true
 debug = false
-record_footage = true
 skip_end_dialog = false
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_np61k")]

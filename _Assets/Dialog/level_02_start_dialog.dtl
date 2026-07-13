@@ -1,12 +1,12 @@
 join Lucretia leftmost
-Lucretia: We made a deal, Argus and I.
+Lucretia: We made a deal, Argus and I. #id:1b
 join Syn_Lucretia rightmost
-Syn_Lucretia: You’re telling me that guy – no, that monster – that just appeared, you agreed to let him do this to us?
-Lucretia: …Yes.
-Syn_Lucretia: So you’re the reason I’m here, trapped in this eldritch hellscape–
-Lucretia: Well, technically, we both are–
-Syn_Lucretia: LOOK AT WHAT YOU’VE DONE TO ME!
-Lucretia: Aughhhh, stop shouting! My head feels like it’s being split in two!
-Syn_Lucretia: WHY? Why would you do this?
-Lucretia: Just give me a minute and I can explain…Shit, there’s more coming.
-Syn_Lucretia: Ugh, you’re right. After this, you and I are gonna have a loooong chat about how to fix your mess.
+Syn_Lucretia: You’re telling me that guy – no, that monster – that just appeared, you agreed to let him do this to us? #id:1c
+Lucretia: …Yes. #id:1d
+Syn_Lucretia: So you’re the reason I’m here, trapped in this eldritch hellscape– #id:1e
+Lucretia: Well, technically, we both are– #id:1f
+Syn_Lucretia: LOOK AT WHAT YOU’VE DONE TO ME! #id:20
+Lucretia: Aughhhh, stop shouting! My head feels like it’s being split in two! #id:21
+Syn_Lucretia: WHY? Why would you do this? #id:22
+Lucretia: Just give me a minute and I can explain…Shit, there’s more coming. #id:23
+Syn_Lucretia: Ugh, you’re right. After this, you and I are gonna have a loooong chat about how to fix your mess. #id:24

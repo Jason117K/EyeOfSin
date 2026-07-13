@@ -1,12 +1,12 @@
 join Syn_Lucretia rightmost
-Syn_Lucretia: The statue is getting closer.
+Syn_Lucretia: The statue is getting closer. #id:59
 join Lucretia leftmost
-Lucretia: Hm?
-Syn_Lucretia: The one I’ve been walking towards. I think it’ll be my ticket out of here, if I can get to it.
-Lucretia: Be careful. I don’t even want to think about what would happen if one of us…
-Syn_Lucretia: Yeah, yeah, just worry about yourself, okay?
-Lucretia: We’re the same per–
-AHHHHHH HELPPPPP
-Lucretia: Did you hear that? Someone’s trapped!
-Syn_Lucretia: What did I just say…
-Lucretia: I see her! Up there, by the zombies!
+Lucretia: Hm? #id:5a
+Syn_Lucretia: The one I’ve been walking towards. I think it’ll be my ticket out of here, if I can get to it. #id:5b
+Lucretia: Be careful. I don’t even want to think about what would happen if one of us… #id:5c
+Syn_Lucretia: Yeah, yeah, just worry about yourself, okay? #id:5d
+Lucretia: We’re the same per– #id:5e
+AHHHHHH HELPPPPP #id:5f
+Lucretia: Did you hear that? Someone’s trapped! #id:60
+Syn_Lucretia: What did I just say… #id:61
+Lucretia: I see her! Up there, by the zombies! #id:62

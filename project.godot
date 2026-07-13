@@ -103,6 +103,11 @@ translation/original_locale="en"
 translation/file_mode=0
 translation/save_mode=0
 translation/translation_folder="res://_Localization/dialogic"
+translation/intern/save_mode=0
+translation/intern/file_mode=0
+translation/intern/translation_folder="res://_Localization/dialogic"
+translation/id_counter=145
+translation/locales=[]
 
 [display]
 
@@ -175,6 +180,8 @@ LockSwapAbility={
 [internationalization]
 
 locale/translations=PackedStringArray("res://_Localization/abilities.en.translation", "res://_Localization/descriptions.en.translation", "res://_Localization/names.en.translation", "res://_Localization/synergies.en.translation", "res://_Localization/tutorials.en.translation", "res://_Localization/ui.en.translation")
+pseudolocalization/use_pseudolocalization=true
+pseudolocalization/expansion_ratio=0.3
 
 [physics]
 

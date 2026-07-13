@@ -3600,7 +3600,6 @@ new_power_texture = ExtResource("2_jn235")
 new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
 wave2StartTime = 55
 wave3StartTime = 75
-record_footage = true
 SSS_Rank_Completion_Time = 30
 S_Rank_Completion_Time = 40
 A_Rank_Completion_Time = 50
