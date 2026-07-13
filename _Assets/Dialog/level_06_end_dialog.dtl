@@ -1,19 +1,19 @@
 join Lucretia leftmost
-Lucretia: Rohan, I’m sorry…
+Lucretia: Rohan, I’m sorry… #id:63
 join Rohan_Moore center
-Rohan_Moore: Do not waste your breath. T-This was my own doing… my whole life… my own doing…
+Rohan_Moore: Do not waste your breath. T-This was my own doing… my whole life… my own doing… #id:64
 leave Rohan_Moore
-Lucretia: …
-Syn_Lucretia: Ahhh, I can’t fight these zombies much longer! There’s too many!
-Lucretia: I-I can feel it, please, try to hold on… I need to get to Argus…
+Lucretia: … #id:65
+Syn_Lucretia: Ahhh, I can’t fight these zombies much longer! There’s too many! #id:66
+Lucretia: I-I can feel it, please, try to hold on… I need to get to Argus… #id:67
 join Argus right
-Argus: I appreciate both of your dedications, Lucretias. But please, try not to fight it. What has been done cannot be undone.
-Syn_Lucretia: No! I will not accept this! You can’t keep me here!
-Argus: Don’t worry, girls. You will realize your purpose soon enough.
-Syn_Lucretia: Aughhhh…
-Lucretia: Aughhhh…
+Argus: I appreciate both of your dedications, Lucretias. But please, try not to fight it. What has been done cannot be undone. #id:68
+Syn_Lucretia: No! I will not accept this! You can’t keep me here! #id:69
+Argus: Don’t worry, girls. You will realize your purpose soon enough. #id:6a
+Syn_Lucretia: Aughhhh… #id:6b
+Lucretia: Aughhhh… #id:6c
 leave Lucretia
 leave Syn_Lucretia
 join Ally center
-Ally: …
-Ally: Don’t worry, I got you. I got you.
+Ally: … #id:6d
+Ally: Don’t worry, I got you. I got you. #id:6e

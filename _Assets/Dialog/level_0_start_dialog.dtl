@@ -1,14 +1,14 @@
 join Lucretia leftmost
-Lucretia: augh, I… t-the room is spinning… my head…
+Lucretia: augh, I… t-the room is spinning… my head… #id:83
 join Syn_Lucretia rightmost
-Syn_Lucretia: uuuggguuh–
-Lucretia: –Hello?? Is someone there?
-Syn_Lucretia: ugghh…what…w-where are you? What is the hell going on?
+Syn_Lucretia: uuuggguuh– #id:84
+Lucretia: –Hello?? Is someone there? #id:85
+Syn_Lucretia: ugghh…what…w-where are you? What is the hell going on? #id:86
 join Argus center
-Argus: Up again already? Well then, I’m sure you’ll find your new powers to be most delightful. Enjoy them while you can, Lucretias!
+Argus: Up again already? Well then, I’m sure you’ll find your new powers to be most delightful. Enjoy them while you can, Lucretias! #id:87
 leave Argus
-Lucretia: …
-Syn_Lucretia: Hey, voice in my head that sounds a lot like me – care to explain?
-Lucretia: It’s starting to come back to me now…
-Syn_Lucretia: Actually, let’s put a pin in it. I gotta get out of here. There’s–
-Lucretia: –Zombies!
+Lucretia: … #id:88
+Syn_Lucretia: Hey, voice in my head that sounds a lot like me – care to explain? #id:89
+Lucretia: It’s starting to come back to me now… #id:8a
+Syn_Lucretia: Actually, let’s put a pin in it. I gotta get out of here. There’s– #id:8b
+Lucretia: –Zombies! #id:8c
