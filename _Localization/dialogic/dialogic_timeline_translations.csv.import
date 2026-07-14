@@ -6,10 +6,10 @@ uid="uid://dwm5h53psvp7m"
 
 [deps]
 
-files=["res://_Localization/dialogic/dialogic_timeline_translations.en.translation"]
+files=["res://_Localization/dialogic/dialogic_timeline_translations.en.translation", "res://_Localization/dialogic/dialogic_timeline_translations.es.translation", "res://_Localization/dialogic/dialogic_timeline_translations.zh_CN.translation", "res://_Localization/dialogic/dialogic_timeline_translations.ru.translation", "res://_Localization/dialogic/dialogic_timeline_translations.pt_BR.translation", "res://_Localization/dialogic/dialogic_timeline_translations.de.translation", "res://_Localization/dialogic/dialogic_timeline_translations.ja.translation", "res://_Localization/dialogic/dialogic_timeline_translations.fr.translation", "res://_Localization/dialogic/dialogic_timeline_translations.pl.translation", "res://_Localization/dialogic/dialogic_timeline_translations.ko.translation"]
 
 source_file="res://_Localization/dialogic/dialogic_timeline_translations.csv"
-dest_files=["res://_Localization/dialogic/dialogic_timeline_translations.en.translation"]
+dest_files=["res://_Localization/dialogic/dialogic_timeline_translations.en.translation", "res://_Localization/dialogic/dialogic_timeline_translations.es.translation", "res://_Localization/dialogic/dialogic_timeline_translations.zh_CN.translation", "res://_Localization/dialogic/dialogic_timeline_translations.ru.translation", "res://_Localization/dialogic/dialogic_timeline_translations.pt_BR.translation", "res://_Localization/dialogic/dialogic_timeline_translations.de.translation", "res://_Localization/dialogic/dialogic_timeline_translations.ja.translation", "res://_Localization/dialogic/dialogic_timeline_translations.fr.translation", "res://_Localization/dialogic/dialogic_timeline_translations.pl.translation", "res://_Localization/dialogic/dialogic_timeline_translations.ko.translation"]
 
 [params]
 

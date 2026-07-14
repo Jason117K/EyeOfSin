@@ -6,10 +6,10 @@ uid="uid://bh0fecas1rnh0"
 
 [deps]
 
-files=["res://_Localization/synergies.en.translation"]
+files=["res://_Localization/synergies.en.translation", "res://_Localization/synergies.es.translation", "res://_Localization/synergies.zh_CN.translation", "res://_Localization/synergies.ru.translation", "res://_Localization/synergies.pt_BR.translation", "res://_Localization/synergies.de.translation", "res://_Localization/synergies.ja.translation", "res://_Localization/synergies.fr.translation", "res://_Localization/synergies.pl.translation", "res://_Localization/synergies.ko.translation"]
 
 source_file="res://_Localization/synergies.csv"
-dest_files=["res://_Localization/synergies.en.translation"]
+dest_files=["res://_Localization/synergies.en.translation", "res://_Localization/synergies.es.translation", "res://_Localization/synergies.zh_CN.translation", "res://_Localization/synergies.ru.translation", "res://_Localization/synergies.pt_BR.translation", "res://_Localization/synergies.de.translation", "res://_Localization/synergies.ja.translation", "res://_Localization/synergies.fr.translation", "res://_Localization/synergies.pl.translation", "res://_Localization/synergies.ko.translation"]
 
 [params]
 

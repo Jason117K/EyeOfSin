@@ -6,10 +6,10 @@ uid="uid://cw35bplrq516s"
 
 [deps]
 
-files=["res://_Localization/abilities.en.translation"]
+files=["res://_Localization/abilities.en.translation", "res://_Localization/abilities.es.translation", "res://_Localization/abilities.zh_CN.translation", "res://_Localization/abilities.ru.translation", "res://_Localization/abilities.pt_BR.translation", "res://_Localization/abilities.de.translation", "res://_Localization/abilities.ja.translation", "res://_Localization/abilities.fr.translation", "res://_Localization/abilities.pl.translation", "res://_Localization/abilities.ko.translation"]
 
 source_file="res://_Localization/abilities.csv"
-dest_files=["res://_Localization/abilities.en.translation"]
+dest_files=["res://_Localization/abilities.en.translation", "res://_Localization/abilities.es.translation", "res://_Localization/abilities.zh_CN.translation", "res://_Localization/abilities.ru.translation", "res://_Localization/abilities.pt_BR.translation", "res://_Localization/abilities.de.translation", "res://_Localization/abilities.ja.translation", "res://_Localization/abilities.fr.translation", "res://_Localization/abilities.pl.translation", "res://_Localization/abilities.ko.translation"]
 
 [params]
 

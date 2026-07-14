@@ -1,49 +1,301 @@
-keys,en,_notes
+keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
 TXT_AMALGAM_SPECIAL_DESCRIPTION,"*Partially regenerates after loosing shield
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt
-TXT_BACKUPDANCERDESCRIPTION,"Wretches are smaller than average Reborns, and this is because they are actually infants. 
+","*Se regenera parcialmente tras perder el escudo","*失去护盾后部分再生","*Частично восстанавливается после потери щита","*Regenera parcialmente após perder o escudo","*Regeneriert sich teilweise nach Schildverlust","*シールドを失うと部分的に再生する","*Se régénère partiellement après avoir perdu son bouclier","*Częściowo regeneruje się po utracie tarczy","*보호막을 잃으면 부분적으로 재생합니다",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt
+TXT_BACKUPDANCERDESCRIPTION,"Wretches are smaller than average Reborns, and this is because they are actually infants.
 Speed: Medium
 Health: Low
 Numbers: High
 Damage: Low
-",res://_Assets/Text/TextFiles/ZombieDescriptions/backUpDancerDescription.txt
+","Los Desdichados son más pequeños que un Renacido medio porque, en realidad, son criaturas infantes.
+Velocidad: Media
+Salud: Baja
+Cantidad: Alta
+Daño: Bajo","卑贱者比普通重生者更小，因为它们其实是幼体。
+速度：中
+生命：低
+数量：高
+伤害：低","Жалкие меньше обычных Возрождённых — на самом деле это младенцы.
+Скорость: средняя
+Здоровье: низкое
+Численность: высокая
+Урон: низкий","Os Miseráveis são menores que os Renascidos comuns porque, na verdade, são bebês.
+Velocidade: Média
+Vida: Baixa
+Números: Altos
+Dano: Baixo","Elende sind kleiner als gewöhnliche Wiedergänger — es sind nämlich Säuglinge.
+Tempo: Mittel
+Leben: Niedrig
+Anzahl: Hoch
+Schaden: Niedrig","レッチは平均的なリボーンより小さい。それもそのはず、彼らは実は幼体なのだ。
+速度：中
+体力：低
+数：多
+攻撃力：低","Les Misérables sont plus petits que les Ressuscités ordinaires : ce sont en réalité des nourrissons.
+Vitesse : Moyenne
+Santé : Faible
+Nombre : Élevé
+Dégâts : Faibles","Nędznicy są mniejsi od przeciętnych Odrodzonych, bo w istocie to niemowlęta.
+Szybkość: średnia
+Zdrowie: niskie
+Liczebność: wysoka
+Obrażenia: niskie","레치는 평균적인 리본보다 작습니다. 사실 이들은 유아이기 때문입니다.
+속도: 중간
+체력: 낮음
+수: 많음
+공격력: 낮음",res://_Assets/Text/TextFiles/ZombieDescriptions/backUpDancerDescription.txt
 TXT_BASEZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Reborn [/color]
 [hr width=100%]
 [b] [color=#9b42df]Speed :[/color][/b] Slow    [b][color=#9b42df] Health :[/color][/b] 50
 [b][color=#9b42df] Numbers :[/color][/b] High  [b][color=#9b42df] Damage :[/color][/b]  10
 [hr width=100%]
 Weak undead footsoldiers that overwhelm with numbers.
-",res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt
+","Nuevo enemigo : [color=#9b42df] Renacido [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidad :[/color][/b] Lenta    [b][color=#9b42df] Salud :[/color][/b] 50
+[b][color=#9b42df] Cantidad :[/color][/b] Alta  [b][color=#9b42df] Daño :[/color][/b]  10
+[hr width=100%]
+Débiles soldados no muertos que abruman por su número.","新敌人：[color=#9b42df] 重生者 [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]慢    [b][color=#9b42df] 生命：[/color][/b] 50
+[b][color=#9b42df] 数量：[/color][/b]高  [b][color=#9b42df] 伤害：[/color][/b]  10
+[hr width=100%]
+以数量取胜的孱弱亡灵步兵。","Новый враг : [color=#9b42df] Возрождённый [/color]
+[hr width=100%]
+[b] [color=#9b42df]Скорость :[/color][/b] Низкая    [b][color=#9b42df] Здоровье :[/color][/b] 50
+[b][color=#9b42df] Численность :[/color][/b] Высокая  [b][color=#9b42df] Урон :[/color][/b]  10
+[hr width=100%]
+Слабая нежить-пехота, берущая числом.","Novo inimigo : [color=#9b42df] Renascido [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidade :[/color][/b] Lenta    [b][color=#9b42df] Vida :[/color][/b] 50
+[b][color=#9b42df] Números :[/color][/b] Altos  [b][color=#9b42df] Dano :[/color][/b]  10
+[hr width=100%]
+Soldados mortos-vivos fracos que dominam pela quantidade.","Neuer Gegner : [color=#9b42df] Wiedergänger [/color]
+[hr width=100%]
+[b] [color=#9b42df]Tempo :[/color][/b] Langsam    [b][color=#9b42df] Leben :[/color][/b] 50
+[b][color=#9b42df] Anzahl :[/color][/b] Hoch  [b][color=#9b42df] Schaden :[/color][/b]  10
+[hr width=100%]
+Schwache untote Fußsoldaten die mit Masse überrennen.","新たな敵：[color=#9b42df] リボーン [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]遅い    [b][color=#9b42df] 体力：[/color][/b] 50
+[b][color=#9b42df] 数：[/color][/b]多い  [b][color=#9b42df] 攻撃力：[/color][/b]  10
+[hr width=100%]
+数で押し寄せる弱い不死の歩兵。","Nouvel ennemi : [color=#9b42df] Ressuscité [/color]
+[hr width=100%]
+[b] [color=#9b42df]Vitesse :[/color][/b] Lente    [b][color=#9b42df] Santé :[/color][/b] 50
+[b][color=#9b42df] Nombre :[/color][/b] Élevé  [b][color=#9b42df] Dégâts :[/color][/b]  10
+[hr width=100%]
+De faibles fantassins morts-vivants qui submergent par le nombre.","Nowy wróg : [color=#9b42df] Odrodzony [/color]
+[hr width=100%]
+[b] [color=#9b42df]Szybkość :[/color][/b] Niska    [b][color=#9b42df] Zdrowie :[/color][/b] 50
+[b][color=#9b42df] Liczebność :[/color][/b] Wysoka  [b][color=#9b42df] Obrażenia :[/color][/b]  10
+[hr width=100%]
+Słabi nieumarli piechurzy, którzy przytłaczają liczbą.","새로운 적 : [color=#9b42df] 리본 [/color]
+[hr width=100%]
+[b] [color=#9b42df]속도 :[/color][/b] 느림    [b][color=#9b42df] 체력 :[/color][/b] 50
+[b][color=#9b42df] 수 :[/color][/b] 많음  [b][color=#9b42df] 공격력 :[/color][/b]  10
+[hr width=100%]
+수로 밀어붙이는 약한 언데드 보병.",res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt
 TXT_BUCKETHEADZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Unhallower [/color]
 [hr width=100%]
 [b] [color=#9b42df]Speed :[/color][/b] Slow [b][color=#9b42df] Health :[/color][/b] 550
 [b][color=#9b42df] Numbers :[/color][/b] Low [b][color=#9b42df] Damage :[/color][/b]  110
 [hr width=100%]
 Slow, tough zombies that deal massive damage.
-",res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt
+","Nuevo enemigo : [color=#9b42df] Profanador [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidad :[/color][/b] Lenta [b][color=#9b42df] Salud :[/color][/b] 550
+[b][color=#9b42df] Cantidad :[/color][/b] Baja [b][color=#9b42df] Daño :[/color][/b]  110
+[hr width=100%]
+Zombis lentos y resistentes que infligen un daño enorme.","新敌人：[color=#9b42df] 渎圣者 [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]慢 [b][color=#9b42df] 生命：[/color][/b] 550
+[b][color=#9b42df] 数量：[/color][/b]低 [b][color=#9b42df] 伤害：[/color][/b]  110
+[hr width=100%]
+缓慢而坚韧的僵尸，能造成巨额伤害。","Новый враг : [color=#9b42df] Осквернитель [/color]
+[hr width=100%]
+[b] [color=#9b42df]Скорость :[/color][/b] Низкая [b][color=#9b42df] Здоровье :[/color][/b] 550
+[b][color=#9b42df] Численность :[/color][/b] Низкая [b][color=#9b42df] Урон :[/color][/b]  110
+[hr width=100%]
+Медленные живучие зомби с сокрушительным уроном.","Novo inimigo : [color=#9b42df] Profanador [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidade :[/color][/b] Lenta [b][color=#9b42df] Vida :[/color][/b] 550
+[b][color=#9b42df] Números :[/color][/b] Baixos [b][color=#9b42df] Dano :[/color][/b]  110
+[hr width=100%]
+Zumbis lentos e resistentes que causam dano massivo.","Neuer Gegner : [color=#9b42df] Entweiher [/color]
+[hr width=100%]
+[b] [color=#9b42df]Tempo :[/color][/b] Langsam [b][color=#9b42df] Leben :[/color][/b] 550
+[b][color=#9b42df] Anzahl :[/color][/b] Niedrig [b][color=#9b42df] Schaden :[/color][/b]  110
+[hr width=100%]
+Langsame, zähe Zombies mit gewaltigem Schaden.","新たな敵：[color=#9b42df] アンハロワー [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]遅い [b][color=#9b42df] 体力：[/color][/b] 550
+[b][color=#9b42df] 数：[/color][/b]少ない [b][color=#9b42df] 攻撃力：[/color][/b]  110
+[hr width=100%]
+遅いが頑丈で、莫大なダメージを与えるゾンビ。","Nouvel ennemi : [color=#9b42df] Profanateur [/color]
+[hr width=100%]
+[b] [color=#9b42df]Vitesse :[/color][/b] Lente [b][color=#9b42df] Santé :[/color][/b] 550
+[b][color=#9b42df] Nombre :[/color][/b] Faible [b][color=#9b42df] Dégâts :[/color][/b]  110
+[hr width=100%]
+Des zombies lents et coriaces qui infligent des dégâts colossaux.","Nowy wróg : [color=#9b42df] Plugawiciel [/color]
+[hr width=100%]
+[b] [color=#9b42df]Szybkość :[/color][/b] Niska [b][color=#9b42df] Zdrowie :[/color][/b] 550
+[b][color=#9b42df] Liczebność :[/color][/b] Niska [b][color=#9b42df] Obrażenia :[/color][/b]  110
+[hr width=100%]
+Powolne, wytrzymałe zombie zadające ogromne obrażenia.","새로운 적 : [color=#9b42df] 언핼로워 [/color]
+[hr width=100%]
+[b] [color=#9b42df]속도 :[/color][/b] 느림 [b][color=#9b42df] 체력 :[/color][/b] 550
+[b][color=#9b42df] 수 :[/color][/b] 적음 [b][color=#9b42df] 공격력 :[/color][/b]  110
+[hr width=100%]
+느리지만 단단하며 어마어마한 피해를 주는 좀비.",res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt
 TXT_BUFFER_SPECIAL_DESCRIPTION,"Buffs nearby zombies.
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt
+","Potencia a los zombis cercanos.","强化附近的僵尸。","Усиливает ближайших зомби.","Fortalece os zumbis próximos.","Verstärkt nahe Zombies.","周囲のゾンビを強化する。","Renforce les zombies proches.","Wzmacnia pobliskie zombie.","주변 좀비를 강화합니다.",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt
 TXT_CONEHEADZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Severed [/color]
 [hr width=100%]
 [b] [color=#9b42df]Speed :[/color][/b] Moderate [b][color=#9b42df] Health :[/color][/b] 175
 [b][color=#9b42df] Numbers :[/color][/b] High   [b][color=#9b42df] Damage :[/color][/b]  30
 [hr width=100%]
 Stronger than Reborn and almost as numerous.
-",res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt
-TXT_CRAWLERDESCRIPTION,"Once beloved pet companions to the people of Syn, the Crawlers have been weaponized into hideous and lethal servants. 
+","Nuevo enemigo : [color=#9b42df] Cercenado [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidad :[/color][/b] Moderada [b][color=#9b42df] Salud :[/color][/b] 175
+[b][color=#9b42df] Cantidad :[/color][/b] Alta   [b][color=#9b42df] Daño :[/color][/b]  30
+[hr width=100%]
+Más fuerte que el Renacido y casi igual de numeroso.","新敌人：[color=#9b42df] 断裂者 [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]中等 [b][color=#9b42df] 生命：[/color][/b] 175
+[b][color=#9b42df] 数量：[/color][/b]高   [b][color=#9b42df] 伤害：[/color][/b]  30
+[hr width=100%]
+比重生者更强，数量几乎不相上下。","Новый враг : [color=#9b42df] Отсечённый [/color]
+[hr width=100%]
+[b] [color=#9b42df]Скорость :[/color][/b] Средняя [b][color=#9b42df] Здоровье :[/color][/b] 175
+[b][color=#9b42df] Численность :[/color][/b] Высокая   [b][color=#9b42df] Урон :[/color][/b]  30
+[hr width=100%]
+Сильнее Возрождённого и почти так же многочислен.","Novo inimigo : [color=#9b42df] Decepado [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidade :[/color][/b] Moderada [b][color=#9b42df] Vida :[/color][/b] 175
+[b][color=#9b42df] Números :[/color][/b] Altos   [b][color=#9b42df] Dano :[/color][/b]  30
+[hr width=100%]
+Mais forte que o Renascido e quase tão numeroso.","Neuer Gegner : [color=#9b42df] Abgetrennter [/color]
+[hr width=100%]
+[b] [color=#9b42df]Tempo :[/color][/b] Mäßig [b][color=#9b42df] Leben :[/color][/b] 175
+[b][color=#9b42df] Anzahl :[/color][/b] Hoch   [b][color=#9b42df] Schaden :[/color][/b]  30
+[hr width=100%]
+Stärker als der Wiedergänger und fast ebenso zahlreich.","新たな敵：[color=#9b42df] セヴァード [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]普通 [b][color=#9b42df] 体力：[/color][/b] 175
+[b][color=#9b42df] 数：[/color][/b]多い   [b][color=#9b42df] 攻撃力：[/color][/b]  30
+[hr width=100%]
+リボーンより強く、数もほぼ同じ。","Nouvel ennemi : [color=#9b42df] Tranché [/color]
+[hr width=100%]
+[b] [color=#9b42df]Vitesse :[/color][/b] Modérée [b][color=#9b42df] Santé :[/color][/b] 175
+[b][color=#9b42df] Nombre :[/color][/b] Élevé   [b][color=#9b42df] Dégâts :[/color][/b]  30
+[hr width=100%]
+Plus fort que le Ressuscité et presque aussi nombreux.","Nowy wróg : [color=#9b42df] Odcięty [/color]
+[hr width=100%]
+[b] [color=#9b42df]Szybkość :[/color][/b] Umiarkowana [b][color=#9b42df] Zdrowie :[/color][/b] 175
+[b][color=#9b42df] Liczebność :[/color][/b] Wysoka   [b][color=#9b42df] Obrażenia :[/color][/b]  30
+[hr width=100%]
+Silniejszy od Odrodzonego i niemal równie liczny.","새로운 적 : [color=#9b42df] 세버드 [/color]
+[hr width=100%]
+[b] [color=#9b42df]속도 :[/color][/b] 보통 [b][color=#9b42df] 체력 :[/color][/b] 175
+[b][color=#9b42df] 수 :[/color][/b] 많음   [b][color=#9b42df] 공격력 :[/color][/b]  30
+[hr width=100%]
+리본보다 강하며 수도 거의 비슷합니다.",res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt
+TXT_CRAWLERDESCRIPTION,"Once beloved pet companions to the people of Syn, the Crawlers have been weaponized into hideous and lethal servants.
 
 - Shoots a web projectile that damages and slows the first enemy it contacts
 
-- Strong VS. 
-	- High Speed 
-	- High Numbers 
-	
-- Weak VS. 
+- Strong VS.
+	- High Speed
+	- High Numbers
+
+- Weak VS.
 	- High Health
-	
-",res://_Assets/Text/TextFiles/DemonDescriptions/CrawlerDescription.txt
-TXT_CRAWLER_SPECIAL_DESCRIPTION,"*Shots slow enemies 
-",res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt
+
+","Antaño queridas mascotas del pueblo de Syn, los Reptadores han sido convertidos en sirvientes horrendos y letales.
+
+- Dispara un proyectil de telaraña que daña y ralentiza al primer enemigo que toca
+
+- Fuerte CONTRA
+	- Alta velocidad
+	- Gran cantidad
+
+- Débil CONTRA
+	- Mucha salud","爬行者曾是辛恩子民深爱的宠物伙伴，如今却被改造成狰狞而致命的仆从。
+
+- 发射蛛网弹，对首个命中的敌人造成伤害并使其减速
+
+- 克制：
+	- 高速度
+	- 高数量
+
+- 惧怕：
+	- 高生命","Когда-то любимые питомцы жителей Сина, Ползуны были превращены в отвратительных и смертоносных слуг.
+
+- Стреляет паутиной, которая ранит и замедляет первого задетого врага
+
+- Силён ПРОТИВ
+	- высокой скорости
+	- большой численности
+
+- Слаб ПРОТИВ
+	- большого запаса здоровья","Antes queridos animais de estimação do povo de Syn, os Rastejadores foram transformados em servos hediondos e letais.
+
+- Dispara um projétil de teia que fere e retarda o primeiro inimigo atingido
+
+- Forte CONTRA
+	- Alta velocidade
+	- Grandes números
+
+- Fraco CONTRA
+	- Muita vida","Einst geliebte Haustiere der Bewohner Syns, wurden die Kriecher zu scheußlichen, tödlichen Dienern umfunktioniert.
+
+- Verschießt ein Netzgeschoss das den ersten getroffenen Gegner verletzt und verlangsamt
+
+- Stark GEGEN
+	- Hohe Geschwindigkeit
+	- Große Anzahl
+
+- Schwach GEGEN
+	- Viel Leben","かつてシンの民に愛されたペットだったクローラーは、醜悪で致命的な下僕へと武器化された。
+
+- 蜘蛛の巣の弾を発射し、最初に当たった敵にダメージと減速を与える
+
+- 得意な相手
+	- 高速の敵
+	- 大群の敵
+
+- 苦手な相手
+	- 高体力の敵","Jadis compagnons adorés du peuple de Syn, les Rampants ont été transformés en serviteurs hideux et mortels.
+
+- Tire un projectile de toile qui blesse et ralentit le premier ennemi touché
+
+- Fort CONTRE
+	- Grande vitesse
+	- Grand nombre
+
+- Faible CONTRE
+	- Santé élevée","Niegdyś ukochane zwierzątka mieszkańców Syn, Pełzacze zostały przekute w ohydne i zabójcze sługi.
+
+- Strzela pociskiem z pajęczyny, który rani i spowalnia pierwszego trafionego wroga
+
+- Mocny PRZECIW
+	- dużej szybkości
+	- dużej liczebności
+
+- Słaby PRZECIW
+	- dużemu zdrowiu","한때 신 대륙 사람들의 사랑받는 반려동물이었던 크롤러는 흉측하고 치명적인 하수인으로 개조되었습니다.
+
+- 거미줄 탄환을 발사해 처음 맞은 적에게 피해를 주고 느리게 만듭니다
+
+- 강함:
+	- 빠른 적
+	- 다수의 적
+
+- 약함:
+	- 체력이 높은 적",res://_Assets/Text/TextFiles/DemonDescriptions/CrawlerDescription.txt
+TXT_CRAWLER_SPECIAL_DESCRIPTION,"*Shots slow enemies
+","*Los disparos ralentizan a los enemigos","*攻击使敌人减速","*Выстрелы замедляют врагов","*Os tiros retardam os inimigos","*Schüsse verlangsamen Gegner","*攻撃が敵を減速させる","*Les tirs ralentissent les ennemis","*Strzały spowalniają wrogów","*공격이 적을 느리게 만듭니다",res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt
 TXT_DANCERZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Reanimator [/color]
 [hr width=100%]
 [b] [color=#9b42df]Speed :[/color][/b] Slow
@@ -51,88 +303,484 @@ TXT_DANCERZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Reanimator [/color]
 [b][color=#9b42df] Numbers :[/color][/b] Low
 [b][color=#9b42df] Damage :[/color][/b]  30
 [hr width=100%]
-Dangerous fusions of multiple Reborn that can [b][color=#9b42df]summon[/color][/b] Wretches to bypass defenses. 
-",res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt
+Dangerous fusions of multiple Reborn that can [b][color=#9b42df]summon[/color][/b] Wretches to bypass defenses.
+","Nuevo enemigo : [color=#9b42df] Reanimador [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidad :[/color][/b] Lenta
+[b][color=#9b42df] Salud :[/color][/b] 375
+[b][color=#9b42df] Cantidad :[/color][/b] Baja
+[b][color=#9b42df] Daño :[/color][/b]  30
+[hr width=100%]
+Peligrosas fusiones de varios Renacidos capaces de [b][color=#9b42df]invocar[/color][/b] Desdichados para saltarse las defensas.","新敌人：[color=#9b42df] 唤尸者 [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]慢
+[b][color=#9b42df] 生命：[/color][/b] 375
+[b][color=#9b42df] 数量：[/color][/b]低
+[b][color=#9b42df] 伤害：[/color][/b]  30
+[hr width=100%]
+由多具重生者融合而成的危险存在，能[b][color=#9b42df]召唤[/color][/b]卑贱者绕过防线。","Новый враг : [color=#9b42df] Реаниматор [/color]
+[hr width=100%]
+[b] [color=#9b42df]Скорость :[/color][/b] Низкая
+[b][color=#9b42df] Здоровье :[/color][/b] 375
+[b][color=#9b42df] Численность :[/color][/b] Низкая
+[b][color=#9b42df] Урон :[/color][/b]  30
+[hr width=100%]
+Опасные сращения нескольких Возрождённых, способные [b][color=#9b42df]призывать[/color][/b] Жалких в обход обороны.","Novo inimigo : [color=#9b42df] Reanimador [/color]
+[hr width=100%]
+[b] [color=#9b42df]Velocidade :[/color][/b] Lenta
+[b][color=#9b42df] Vida :[/color][/b] 375
+[b][color=#9b42df] Números :[/color][/b] Baixos
+[b][color=#9b42df] Dano :[/color][/b]  30
+[hr width=100%]
+Fusões perigosas de vários Renascidos capazes de [b][color=#9b42df]invocar[/color][/b] Miseráveis para furar as defesas.","Neuer Gegner : [color=#9b42df] Wiedererwecker [/color]
+[hr width=100%]
+[b] [color=#9b42df]Tempo :[/color][/b] Langsam
+[b][color=#9b42df] Leben :[/color][/b] 375
+[b][color=#9b42df] Anzahl :[/color][/b] Niedrig
+[b][color=#9b42df] Schaden :[/color][/b]  30
+[hr width=100%]
+Gefährliche Verschmelzungen mehrerer Wiedergänger die [b][color=#9b42df]Elende beschwören[/color][/b] können um Verteidigungen zu umgehen.","新たな敵：[color=#9b42df] リアニメーター [/color]
+[hr width=100%]
+[b] [color=#9b42df]速度：[/color][/b]遅い
+[b][color=#9b42df] 体力：[/color][/b] 375
+[b][color=#9b42df] 数：[/color][/b]少ない
+[b][color=#9b42df] 攻撃力：[/color][/b]  30
+[hr width=100%]
+複数のリボーンが融合した危険な存在。レッチを[b][color=#9b42df]召喚[/color][/b]して防衛線をすり抜ける。","Nouvel ennemi : [color=#9b42df] Réanimateur [/color]
+[hr width=100%]
+[b] [color=#9b42df]Vitesse :[/color][/b] Lente
+[b][color=#9b42df] Santé :[/color][/b] 375
+[b][color=#9b42df] Nombre :[/color][/b] Faible
+[b][color=#9b42df] Dégâts :[/color][/b]  30
+[hr width=100%]
+Dangereuses fusions de plusieurs Ressuscités capables d'[b][color=#9b42df]invoquer[/color][/b] des Misérables pour contourner les défenses.","Nowy wróg : [color=#9b42df] Reanimator [/color]
+[hr width=100%]
+[b] [color=#9b42df]Szybkość :[/color][/b] Niska
+[b][color=#9b42df] Zdrowie :[/color][/b] 375
+[b][color=#9b42df] Liczebność :[/color][/b] Niska
+[b][color=#9b42df] Obrażenia :[/color][/b]  30
+[hr width=100%]
+Niebezpieczne zrosty wielu Odrodzonych, potrafiące [b][color=#9b42df]przyzywać[/color][/b] Nędzników omijających obronę.","새로운 적 : [color=#9b42df] 리애니메이터 [/color]
+[hr width=100%]
+[b] [color=#9b42df]속도 :[/color][/b] 느림
+[b][color=#9b42df] 체력 :[/color][/b] 375
+[b][color=#9b42df] 수 :[/color][/b] 적음
+[b][color=#9b42df] 공격력 :[/color][/b]  30
+[hr width=100%]
+여러 리본이 융합된 위험한 존재로, 레치를 [b][color=#9b42df]소환[/color][/b]해 방어선을 우회합니다.",res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt
 TXT_ERUPTER_SPECIAL_DESCRIPTION,"*High damage self-sacrifice attack
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt
+","*Ataque suicida de gran daño","*高伤害自爆攻击","*Мощная жертвенная атака","*Ataque suicida de alto dano","*Selbstopfer-Angriff mit hohem Schaden","*高威力の自爆攻撃","*Attaque sacrificielle à hauts dégâts","*Samobójczy atak o wysokich obrażeniach","*강력한 자폭 공격",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt
 TXT_FLESHEATER_SPECIAL_DESCRIPTION,"*High health regen
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt
-TXT_FOOTBALLZOMBIEDESCRIPTION,"The Flesheaters were originally designed by contorting multiple zombies together to serve as mounts for the Reborn, but they quickly proved far too vicious to be tamed. 
+","*Gran regeneración de salud","*高速生命回复","*Быстрая регенерация здоровья","*Alta regeneração de vida","*Starke Lebensregeneration","*高い体力再生","*Forte régénération de santé","*Silna regeneracja zdrowia","*빠른 체력 재생",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/flesheater_special_description.txt
+TXT_FOOTBALLZOMBIEDESCRIPTION,"The Flesheaters were originally designed by contorting multiple zombies together to serve as mounts for the Reborn, but they quickly proved far too vicious to be tamed.
 Speed: Medium
 Health: High
 Numbers: Medium
 Damage: High
-",res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt
-TXT_HIVEDESCRIPTION,"A Hive is made up of several layers of acidic wax layered over a mound of corpses. Once the barrier is established, Infernal Wasp eggs are planted that later hatch and feed upon the decomposed bodies inside. - Stalls incoming enemies 
+","Los Carnívoros se crearon retorciendo varios zombis juntos para servir de monturas a los Renacidos, pero pronto resultaron demasiado feroces para ser domados.
+Velocidad: Media
+Salud: Alta
+Cantidad: Media
+Daño: Alto","食肉者原本是将多具僵尸扭结而成、供重生者骑乘的坐骑，但它们很快就凶残得无法驯服。
+速度：中
+生命：高
+数量：中
+伤害：高","Плотожоров создали, сплетя воедино несколько зомби, — как ездовых тварей для Возрождённых, но те быстро оказались слишком свирепыми для приручения.
+Скорость: средняя
+Здоровье: высокое
+Численность: средняя
+Урон: высокий","Os Devoradores de Carne foram criados contorcendo vários zumbis juntos para servirem de montaria aos Renascidos, mas logo se mostraram ferozes demais para serem domados.
+Velocidade: Média
+Vida: Alta
+Números: Médios
+Dano: Alto","Die Fleischfresser entstanden indem mehrere Zombies zu Reittieren für die Wiedergänger verflochten wurden — doch sie erwiesen sich schnell als viel zu bösartig zum Zähmen.
+Tempo: Mittel
+Leben: Hoch
+Anzahl: Mittel
+Schaden: Hoch","フレッシュイーターは複数のゾンビをねじり合わせ、リボーンの乗騎として設計された。だが、あまりに凶暴で飼いならせないことがすぐに判明した。
+速度：中
+体力：高
+数：中
+攻撃力：高","Les Mange-Chair furent conçus en tordant plusieurs zombies ensemble pour servir de montures aux Ressuscités, mais ils se révélèrent bien trop féroces pour être domptés.
+Vitesse : Moyenne
+Santé : Élevée
+Nombre : Moyen
+Dégâts : Élevés","Mięsożercy powstali ze splecenia wielu zombie, by służyć Odrodzonym za wierzchowce, lecz szybko okazali się zbyt dzicy, by ich ujarzmić.
+Szybkość: średnia
+Zdrowie: wysokie
+Liczebność: średnia
+Obrażenia: wysokie","플레시이터는 여러 좀비를 비틀어 엮어 리본의 탈것으로 만들어졌지만, 길들이기엔 너무 사나운 것으로 금세 판명되었습니다.
+속도: 중간
+체력: 높음
+수: 중간
+공격력: 높음",res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt
+TXT_HIVEDESCRIPTION,"A Hive is made up of several layers of acidic wax layered over a mound of corpses. Once the barrier is established, Infernal Wasp eggs are planted that later hatch and feed upon the decomposed bodies inside. - Stalls incoming enemies
 
 - Spawns three wasps that orbit the demon, with each wasp attacking and stopping zombies that get close
 - Wasps respawn a set time after they die, but when all wasps are dead, the Hive is defenseless
 
 
-- Strong VS 
+- Strong VS
 	- High Speed
 	- High Numbers
-	
-- Weak VS 
+
+- Weak VS
 	- High Health
-",res://_Assets/Text/TextFiles/DemonDescriptions/HiveDescription.txt
+","Una Colmena consta de varias capas de cera ácida superpuestas sobre un montículo de cadáveres. Una vez formada la barrera, se implantan huevos de avispa infernal que después eclosionan y se alimentan de los cuerpos descompuestos del interior. - Frena a los enemigos entrantes
+
+- Genera tres avispas que orbitan al demonio; cada una ataca y detiene a los zombis que se acercan
+- Las avispas reaparecen un tiempo después de morir, pero si mueren todas, la Colmena queda indefensa
+
+
+- Fuerte CONTRA
+	- Alta velocidad
+	- Gran cantidad
+
+- Débil CONTRA
+	- Mucha salud","蜂巢由数层酸性蜂蜡覆盖在尸堆上筑成。屏障成形后，会植入炼狱黄蜂的卵，孵化后以内部腐尸为食。- 拖延来袭敌人
+
+- 生成三只环绕恶魔的黄蜂，每只都会攻击并拦停靠近的僵尸
+- 黄蜂死后会在固定时间后重生，但全部死亡时蜂巢将毫无防御
+
+
+- 克制：
+	- 高速度
+	- 高数量
+
+- 惧怕：
+	- 高生命","Улей — это несколько слоёв едкого воска поверх горы трупов. Когда преграда готова, внутрь откладывают яйца адских ос: вылупившись, те кормятся разложившимися телами. - Задерживает наступающих врагов
+
+- Порождает трёх ос, кружащих вокруг демона; каждая атакует и останавливает приблизившихся зомби
+- Осы возрождаются через время после гибели, но пока все мертвы, Улей беззащитен
+
+
+- Силён ПРОТИВ
+	- высокой скорости
+	- большой численности
+
+- Слаб ПРОТИВ
+	- большого запаса здоровья","Uma Colmeia é feita de várias camadas de cera ácida sobre um monte de cadáveres. Estabelecida a barreira, ovos de vespa infernal são plantados; ao eclodirem, alimentam-se dos corpos decompostos lá dentro. - Atrasa os inimigos que avançam
+
+- Gera três vespas que orbitam o demônio; cada uma ataca e detém os zumbis que se aproximam
+- As vespas renascem um tempo após morrerem, mas com todas mortas a Colmeia fica indefesa
+
+
+- Forte CONTRA
+	- Alta velocidade
+	- Grandes números
+
+- Fraco CONTRA
+	- Muita vida","Ein Nest besteht aus mehreren Schichten ätzenden Wachses über einem Leichenhügel. Steht die Barriere, werden Eier der Höllenwespen eingepflanzt, die später schlüpfen und sich von den verwesten Körpern darin ernähren. - Hält anrückende Gegner auf
+
+- Erzeugt drei Wespen die den Dämon umkreisen; jede greift nahende Zombies an und stoppt sie
+- Wespen erscheinen einige Zeit nach ihrem Tod neu, doch sind alle tot, ist das Nest wehrlos
+
+
+- Stark GEGEN
+	- Hohe Geschwindigkeit
+	- Große Anzahl
+
+- Schwach GEGEN
+	- Viel Leben","ハイブは死体の山に酸性の蝋を幾重にも塗り固めて作られる。障壁が完成すると煉獄蜂の卵が植え付けられ、孵化した蜂は内部の腐乱死体を喰らって育つ。- 迫る敵を足止めする
+
+- 悪魔の周囲を回る3匹の蜂を生み、それぞれが接近するゾンビを攻撃して止める
+- 蜂は死んでも一定時間後に再生するが、全滅している間ハイブは無防備
+
+
+- 得意な相手
+	- 高速の敵
+	- 大群の敵
+
+- 苦手な相手
+	- 高体力の敵","Une Ruche se compose de plusieurs couches de cire acide déposées sur un monticule de cadavres. Une fois la barrière établie, des œufs de guêpes infernales y sont plantés ; ils écloront pour se nourrir des corps décomposés à l'intérieur. - Retient les ennemis qui approchent
+
+- Engendre trois guêpes qui orbitent autour du démon ; chacune attaque et arrête les zombies qui s'approchent
+- Les guêpes réapparaissent quelque temps après leur mort, mais si toutes sont mortes, la Ruche est sans défense
+
+
+- Fort CONTRE
+	- Grande vitesse
+	- Grand nombre
+
+- Faible CONTRE
+	- Santé élevée","Ul składa się z kilku warstw kwaśnego wosku nałożonych na stos zwłok. Gdy bariera powstanie, składane są jaja piekielnych os, które po wykluciu żywią się rozkładającymi się ciałami w środku. - Zatrzymuje nadciągających wrogów
+
+- Tworzy trzy osy krążące wokół demona; każda atakuje i powstrzymuje zbliżające się zombie
+- Osy odradzają się po pewnym czasie od śmierci, lecz gdy wszystkie zginą, Ul jest bezbronny
+
+
+- Mocny PRZECIW
+	- dużej szybkości
+	- dużej liczebności
+
+- Słaby PRZECIW
+	- dużemu zdrowiu","하이브는 시체 더미 위에 산성 밀랍을 겹겹이 발라 만들어집니다. 장벽이 완성되면 지옥 말벌의 알을 심고, 부화한 말벌은 내부의 부패한 시체를 먹고 자랍니다. - 다가오는 적을 저지합니다
+
+- 악마 주위를 도는 말벌 세 마리를 소환하며, 각 말벌은 접근하는 좀비를 공격해 멈춰 세웁니다
+- 말벌은 죽은 뒤 일정 시간이 지나면 되살아나지만, 모두 죽어 있는 동안 하이브는 무방비 상태입니다
+
+
+- 강함:
+	- 빠른 적
+	- 다수의 적
+
+- 약함:
+	- 체력이 높은 적",res://_Assets/Text/TextFiles/DemonDescriptions/HiveDescription.txt
 TXT_HIVE_SPECIAL_DESCRIPTION,"*Continously produces Syn-Wasps
-",res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt
-TXT_MAWDESCRIPTION,"Said to be inspired by the screams of his victims, the Maws are Argus’ most sinister creation. With an insatiable appetite, the chasmic throat of the beast appears to stretch endlessly into the depths of Syn’s core. - Can Insta-kill most enemies 
+","*Produce avispas de Syn sin cesar","*持续产出辛之黄蜂","*Непрерывно производит ос Сина","*Produz vespas de Syn continuamente","*Erzeugt fortlaufend Syn-Wespen","*シンの蜂を絶えず生み出す","*Produit sans cesse des guêpes de Syn","*Nieustannie wytwarza osy Syn","*신의 말벌을 계속 생산합니다",res://_Entities/Demons/SpecialDescriptions/hive_special_description.txt
+TXT_MAWDESCRIPTION,"Said to be inspired by the screams of his victims, the Maws are Argus’ most sinister creation. With an insatiable appetite, the chasmic throat of the beast appears to stretch endlessly into the depths of Syn’s core. - Can Insta-kill most enemies
 
 - Maintains 3 tentacles which consume zombies whole as they approach, killing them instantly
-- When a zombie is eaten, a digestion timer starts, and when the timer is done, the tentacle is free to consume another zombie 
+- When a zombie is eaten, a digestion timer starts, and when the timer is done, the tentacle is free to consume another zombie
 
 - Strong VS
 	- High Health
-	
-- Weak VS 
+
+- Weak VS
 	- High Numbers
 	- High Speed
-",res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt
+","Se dice que las Fauces, la creación más siniestra de Argus, se inspiran en los gritos de sus víctimas. De apetito insaciable, la garganta abisal de la bestia parece extenderse sin fin hacia las profundidades del núcleo de Syn. - Puede matar al instante a la mayoría de los enemigos
+
+- Mantiene 3 tentáculos que devoran enteros a los zombis que se acercan, matándolos al instante
+- Al comerse un zombi comienza un tiempo de digestión; cuando termina, el tentáculo queda libre para devorar a otro
+
+- Fuerte CONTRA
+	- Mucha salud
+
+- Débil CONTRA
+	- Gran cantidad
+	- Alta velocidad","据说巨口的灵感源自受害者的惨叫，它是阿古斯最阴森的造物。这头野兽食欲无度，深渊般的咽喉仿佛无尽延伸至辛恩大陆的核心。- 可秒杀大多数敌人
+
+- 拥有3条触手，可将靠近的僵尸整只吞下，令其立即死亡
+- 吞下僵尸后开始消化计时，计时结束后触手即可再吞食下一只
+
+- 克制：
+	- 高生命
+
+- 惧怕：
+	- 高数量
+	- 高速度","Говорят, Пасти — самое зловещее творение Аргуса — вдохновлены криками его жертв. Бездонная глотка ненасытной твари словно уходит в самые недра Сина. - Мгновенно убивает большинство врагов
+
+- Держит 3 щупальца, которые целиком заглатывают подошедших зомби, убивая их на месте
+- После проглатывания начинается переваривание; когда оно закончится, щупальце готово сожрать следующего
+
+- Силён ПРОТИВ
+	- большого запаса здоровья
+
+- Слаб ПРОТИВ
+	- большой численности
+	- высокой скорости","Dizem que as Goelas, a criação mais sinistra de Argus, foram inspiradas nos gritos de suas vítimas. Com apetite insaciável, a garganta abissal da fera parece se estender sem fim até as profundezas do núcleo de Syn. - Pode matar instantaneamente a maioria dos inimigos
+
+- Mantém 3 tentáculos que devoram inteiros os zumbis que se aproximam, matando-os na hora
+- Ao comer um zumbi, inicia-se a digestão; quando termina, o tentáculo pode devorar outro
+
+- Forte CONTRA
+	- Muita vida
+
+- Fraco CONTRA
+	- Grandes números
+	- Alta velocidade","Angeblich von den Schreien seiner Opfer inspiriert, sind die Schlünde Argus' finsterste Schöpfung. Der abgrundtiefe Rachen der unersättlichen Bestie scheint sich endlos bis in den Kern Syns zu erstrecken. - Kann die meisten Gegner sofort töten
+
+- Unterhält 3 Tentakel die nahende Zombies im Ganzen verschlingen und sofort töten
+- Nach dem Fressen beginnt die Verdauung; ist sie beendet, kann der Tentakel den nächsten Zombie verschlingen
+
+- Stark GEGEN
+	- Viel Leben
+
+- Schwach GEGEN
+	- Große Anzahl
+	- Hohe Geschwindigkeit","犠牲者の悲鳴から着想を得たと言われるマウは、アーガス最も邪悪な創造物。飽くなき食欲を持つこの獣の深淵の如き喉は、シンの核の奥底まで果てしなく続いているようだ。- ほとんどの敵を即死させられる
+
+- 3本の触手を持ち、近づいたゾンビを丸呑みにして即座に葬る
+- ゾンビを食べると消化タイマーが始まり、終わると触手は次のゾンビを呑み込める
+
+- 得意な相手
+	- 高体力の敵
+
+- 苦手な相手
+	- 大群の敵
+	- 高速の敵","Inspirées, dit-on, des cris de ses victimes, les Gueules sont la création la plus sinistre d'Argus. Dotée d'un appétit insatiable, la gorge abyssale de la bête semble s'étendre sans fin jusqu'aux profondeurs du cœur de Syn. - Peut tuer instantanément la plupart des ennemis
+
+- Entretient 3 tentacules qui dévorent tout entiers les zombies qui approchent, les tuant sur le coup
+- Quand un zombie est avalé, une digestion commence ; une fois terminée, le tentacule peut en dévorer un autre
+
+- Fort CONTRE
+	- Santé élevée
+
+- Faible CONTRE
+	- Grand nombre
+	- Grande vitesse","Podobno zainspirowane krzykami ofiar Paszcze są najbardziej złowrogim dziełem Argusa. Nienasycona bestia ma przepastną gardziel, która zdaje się ciągnąć bez końca ku trzewiom Syn. - Może natychmiast zabić większość wrogów
+
+- Utrzymuje 3 macki, które pożerają w całości zbliżające się zombie, zabijając je na miejscu
+- Po zjedzeniu zombie rusza trawienie; gdy się skończy, macka może pożreć kolejnego
+
+- Mocny PRZECIW
+	- dużemu zdrowiu
+
+- Słaby PRZECIW
+	- dużej liczebności
+	- dużej szybkości","희생자들의 비명에서 영감을 받았다는 마우는 아르구스의 가장 사악한 창조물입니다. 채워지지 않는 식욕을 지닌 이 짐승의 심연 같은 목구멍은 신 대륙의 핵 깊은 곳까지 끝없이 이어진 듯합니다. - 대부분의 적을 즉사시킬 수 있습니다
+
+- 촉수 3개를 유지하며, 접근하는 좀비를 통째로 삼켜 즉시 처치합니다
+- 좀비를 삼키면 소화 시간이 시작되고, 끝나면 촉수는 다음 좀비를 삼킬 수 있습니다
+
+- 강함:
+	- 체력이 높은 적
+
+- 약함:
+	- 다수의 적
+	- 빠른 적",res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt
 TXT_MAW_SPECIAL_DESCRIPTION,"*Eats zombies
-",res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt
-TXT_OCCULUMDESCRIPTION,"Generates [color=red]BLOOD[/color] over time 
-",res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt
-TXT_OCCULUM_SPECIAL_DESCRIPTION,"*Generates Blood 
-",res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt
-TXT_POLEVAULTZOMBIEDESCRIPTION,"All of the Sundered’s vital organs have been moved to the head, allowing them to disconnect and regenerate limbs quickly. This does, however, also make the head too heavy for their bodies. 
+","*Devora zombis","*吞食僵尸","*Пожирает зомби","*Devora zumbis","*Frisst Zombies","*ゾンビを喰らう","*Dévore les zombies","*Pożera zombie","*좀비를 삼킵니다",res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt
+TXT_OCCULUMDESCRIPTION,"Generates [color=red]BLOOD[/color] over time
+","Genera [color=red]SANGRE[/color] con el tiempo","随时间生成[color=red]鲜血[/color]","Со временем производит [color=red]КРОВЬ[/color]","Gera [color=red]SANGUE[/color] ao longo do tempo","Erzeugt mit der Zeit [color=red]BLUT[/color]","時間経過で[color=red]血[/color]を生成する","Génère du [color=red]SANG[/color] au fil du temps","Z czasem wytwarza [color=red]KREW[/color]","시간이 지나며 [color=red]피[/color]를 생성합니다",res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt
+TXT_OCCULUM_SPECIAL_DESCRIPTION,"*Generates Blood
+","*Genera sangre","*生成鲜血","*Производит кровь","*Gera sangue","*Erzeugt Blut","*血を生成する","*Génère du sang","*Wytwarza krew","*피를 생성합니다",res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt
+TXT_POLEVAULTZOMBIEDESCRIPTION,"All of the Sundered’s vital organs have been moved to the head, allowing them to disconnect and regenerate limbs quickly. This does, however, also make the head too heavy for their bodies.
 Speed: High
 Health: Medium
 Numbers: Medium
 Damage: Low
-",res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt
+","Todos los órganos vitales del Escindido se trasladaron a la cabeza, lo que le permite desprender y regenerar extremidades con rapidez. Eso, sin embargo, también hace que la cabeza pese demasiado para su cuerpo.
+Velocidad: Alta
+Salud: Media
+Cantidad: Media
+Daño: Bajo","离断者的所有重要器官都移到了头部，使其能迅速断开并再生四肢。但这也让头颅对身体而言过于沉重。
+速度：高
+生命：中
+数量：中
+伤害：低","Все жизненно важные органы Расколотого перенесены в голову: он может быстро отбрасывать и отращивать конечности. Правда, из-за этого голова стала слишком тяжёлой для тела.
+Скорость: высокая
+Здоровье: среднее
+Численность: средняя
+Урон: низкий","Todos os órgãos vitais do Partido foram movidos para a cabeça, o que lhe permite soltar e regenerar membros rapidamente. Isso, porém, também torna a cabeça pesada demais para o corpo.
+Velocidade: Alta
+Vida: Média
+Números: Médios
+Dano: Baixo","Alle lebenswichtigen Organe des Zerrissenen wurden in den Kopf verlagert, sodass er Gliedmaßen schnell abwerfen und nachwachsen lassen kann. Dadurch ist der Kopf allerdings zu schwer für den Körper.
+Tempo: Hoch
+Leben: Mittel
+Anzahl: Mittel
+Schaden: Niedrig","サンダードの重要器官はすべて頭部に移されており、四肢を素早く切り離して再生できる。しかしそのせいで、頭が体に対して重すぎる。
+速度：高
+体力：中
+数：中
+攻撃力：低","Tous les organes vitaux du Scindé ont été déplacés dans la tête, ce qui lui permet de détacher et régénérer ses membres rapidement. Mais cela rend aussi la tête trop lourde pour son corps.
+Vitesse : Élevée
+Santé : Moyenne
+Nombre : Moyen
+Dégâts : Faibles","Wszystkie ważne organy Rozdartego przeniesiono do głowy, dzięki czemu może szybko odłączać i odtwarzać kończyny. To jednak sprawia, że głowa jest dla ciała zbyt ciężka.
+Szybkość: wysoka
+Zdrowie: średnie
+Liczebność: średnia
+Obrażenia: niskie","선더드의 모든 주요 장기는 머리로 옮겨져 사지를 빠르게 분리하고 재생할 수 있습니다. 다만 그 탓에 머리가 몸에 비해 너무 무겁습니다.
+속도: 높음
+체력: 중간
+수: 중간
+공격력: 낮음",res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt
 TXT_RANGED_SPECIAL_DESCRIPTION,"*Ranged attack
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/ranged_special_description.txt
+","*Ataque a distancia","*远程攻击","*Дальняя атака","*Ataque à distância","*Fernangriff","*遠距離攻撃","*Attaque à distance","*Atak dystansowy","*원거리 공격",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/ranged_special_description.txt
 TXT_REANIMATOR_SPECIAL_DESCRIPTION,"*Summons minions
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt
-TXT_REBORN_SPECIAL_DESCRIPTION,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt
+","*Invoca esbirros","*召唤仆从","*Призывает прислужников","*Invoca lacaios","*Beschwört Diener","*手下を召喚する","*Invoque des sbires","*Przyzywa sługusów","*하수인을 소환합니다",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt
+TXT_REBORN_SPECIAL_DESCRIPTION,,,,,,,,,,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt
 TXT_ROHAN_SPECIAL_DESCRIPTION,"Entity formely known as Rohan
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt
-TXT_SCREENDOORZOMBIEDESCRIPTION,"An imbalance of chemicals within their psyche made these zombies highly unstable, causing them to kill their own kind. This error was eventually fixed, but the corpses remain. 
+","Entidad antes conocida como Rohan","曾被称作罗翰的存在","Сущность, некогда известная как Рохан","Entidade antes conhecida como Rohan","Wesen einst bekannt als Rohan","かつてローハンと呼ばれた存在","Entité jadis connue sous le nom de Rohan","Istota znana niegdyś jako Rohan","한때 로한이라 불리던 존재",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt
+TXT_SCREENDOORZOMBIEDESCRIPTION,"An imbalance of chemicals within their psyche made these zombies highly unstable, causing them to kill their own kind. This error was eventually fixed, but the corpses remain.
 Speed: Medium
 Health: High
 Numbers: Low
 Damage: High
-",res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt
-TXT_SEVERED_SPECIAL_DESCRIPTION,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt
+","Un desequilibrio químico en su psique volvió a estos zombis sumamente inestables y los llevó a matar a los de su propia especie. El error acabó corrigiéndose, pero los cadáveres permanecen.
+Velocidad: Media
+Salud: Alta
+Cantidad: Baja
+Daño: Alto","精神中的化学失衡使这些僵尸极不稳定，甚至自相残杀。这个错误最终被修正，但尸体留了下来。
+速度：中
+生命：高
+数量：低
+伤害：高","Химический дисбаланс в их психике сделал этих зомби крайне неустойчивыми: они убивали себе подобных. Ошибку в итоге исправили, но трупы остались.
+Скорость: средняя
+Здоровье: высокое
+Численность: низкая
+Урон: высокий","Um desequilíbrio químico na psique tornou esses zumbis altamente instáveis, levando-os a matar os da própria espécie. O erro acabou corrigido, mas os corpos permanecem.
+Velocidade: Média
+Vida: Alta
+Números: Baixos
+Dano: Alto","Ein chemisches Ungleichgewicht in ihrer Psyche machte diese Zombies höchst instabil — sie töteten ihresgleichen. Der Fehler wurde schließlich behoben, doch die Leichen blieben.
+Tempo: Mittel
+Leben: Hoch
+Anzahl: Niedrig
+Schaden: Hoch","精神内の化学物質の不均衡により極めて不安定になったこのゾンビは、同族すら殺していた。この欠陥はやがて修正されたが、死体は残ったままだ。
+速度：中
+体力：高
+数：少
+攻撃力：高","Un déséquilibre chimique de leur psyché a rendu ces zombies très instables, au point de tuer leurs semblables. L'erreur fut finalement corrigée, mais les cadavres demeurent.
+Vitesse : Moyenne
+Santé : Élevée
+Nombre : Faible
+Dégâts : Élevés","Zaburzenie równowagi chemicznej w psychice uczyniło te zombie skrajnie niestabilnymi — zabijały własny gatunek. Błąd w końcu naprawiono, lecz trupy pozostały.
+Szybkość: średnia
+Zdrowie: wysokie
+Liczebność: niska
+Obrażenia: wysokie","정신 속 화학적 불균형으로 극도로 불안정해진 이 좀비들은 동족마저 죽였습니다. 결국 그 결함은 수정되었지만, 시체는 남았습니다.
+속도: 중간
+체력: 높음
+수: 적음
+공격력: 높음",res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt
+TXT_SEVERED_SPECIAL_DESCRIPTION,,,,,,,,,,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt
 TXT_SPINALOCCULUMDESCRIPTION,"[color=red]DEFENSIVE[/color] DEMON. [color=red]Blocks[/color] [color=purple]Zombies[/color] from progressing. [color=red]BUFFS[/color] Demons giving them [color=red]VASTLY INCREASED HEALTH[/color] and [color=red]STALLING POWER.[/color]
-",res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt
+","DEMONIO [color=red]DEFENSIVO[/color]. [color=red]Impide[/color] que los [color=purple]zombis[/color] avancen. [color=red]POTENCIA[/color] a los demonios otorgándoles [color=red]MUCHA MÁS SALUD[/color] y [color=red]PODER DE CONTENCIÓN.[/color]","[color=red]防御型[/color]恶魔。[color=red]阻挡[/color][color=purple]僵尸[/color]前进。为恶魔提供[color=red]增益[/color]，赋予[color=red]大幅提升的生命值[/color]与[color=red]拖延能力。[/color]","[color=red]ЗАЩИТНЫЙ[/color] ДЕМОН. [color=red]Не даёт[/color] [color=purple]зомби[/color] продвигаться. [color=red]УСИЛИВАЕТ[/color] демонов, давая им [color=red]ОГРОМНЫЙ ЗАПАС ЗДОРОВЬЯ[/color] и [color=red]СИЛУ СДЕРЖИВАНИЯ.[/color]","DEMÔNIO [color=red]DEFENSIVO[/color]. [color=red]Impede[/color] que os [color=purple]zumbis[/color] avancem. [color=red]FORTALECE[/color] os demônios dando a eles [color=red]VIDA MUITO MAIOR[/color] e [color=red]PODER DE CONTENÇÃO.[/color]","[color=red]DEFENSIVER[/color] DÄMON. [color=red]Hindert[/color] [color=purple]Zombies[/color] am Vorrücken. [color=red]VERSTÄRKT[/color] Dämonen mit [color=red]MASSIV ERHÖHTEM LEBEN[/color] und [color=red]AUFHALTEKRAFT.[/color]","[color=red]防御型[/color]の悪魔。[color=purple]ゾンビ[/color]の前進を[color=red]阻止[/color]する。悪魔に[color=red]強化[/color]を与え、[color=red]体力を大幅に増加[/color]させ[color=red]足止め力を高める。[/color]","DÉMON [color=red]DÉFENSIF[/color]. [color=red]Empêche[/color] les [color=purple]zombies[/color] d'avancer. [color=red]RENFORCE[/color] les démons en leur donnant une [color=red]SANTÉ LARGEMENT ACCRUE[/color] et un [color=red]POUVOIR DE BLOCAGE.[/color]","DEMON [color=red]OBRONNY[/color]. [color=red]Blokuje[/color] [color=purple]zombie[/color] przed marszem. [color=red]WZMACNIA[/color] demony, dając im [color=red]OGROMNIE ZWIĘKSZONE ZDROWIE[/color] i [color=red]MOC POWSTRZYMYWANIA.[/color]","[color=red]방어형[/color] 악마. [color=purple]좀비[/color]의 전진을 [color=red]막습니다[/color]. 악마를 [color=red]강화[/color]해 [color=red]크게 증가한 체력[/color]과 [color=red]저지력[/color]을 부여합니다.",res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt
 TXT_SPINAL_OCCULUM_SPECIAL_DESCRIPTION,"*Blocks zombies
-",res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt
+","*Bloquea zombis","*阻挡僵尸","*Блокирует зомби","*Bloqueia zumbis","*Blockiert Zombies","*ゾンビを阻止する","*Bloque les zombies","*Blokuje zombie","*좀비를 막아섭니다",res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt
 TXT_SUNDERED_SPECIAL_DESCRIPTION,"*Can leap over demons
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt
-TXT_TICKERZOMBIEDESCRIPTION,"Mutated zombies that spontaneously combust when exposed to threatening stimuli. This makes the Erupters perfect for world-ending conquests. 
+","*Puede saltar sobre los demonios","*可跃过恶魔","*Перепрыгивает через демонов","*Pode saltar sobre os demônios","*Kann über Dämonen springen","*悪魔を飛び越えられる","*Peut bondir par-dessus les démons","*Potrafi przeskakiwać demony","*악마를 뛰어넘을 수 있습니다",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt
+TXT_TICKERZOMBIEDESCRIPTION,"Mutated zombies that spontaneously combust when exposed to threatening stimuli. This makes the Erupters perfect for world-ending conquests.
 Speed: High
 Health: Low
 Numbers: Low
 Damage: High
-",res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt
+","Zombis mutados que entran en combustión espontánea ante estímulos amenazantes. Eso hace a los Eruptores perfectos para conquistas apocalípticas.
+Velocidad: Alta
+Salud: Baja
+Cantidad: Baja
+Daño: Alto","受到威胁刺激时会自燃的变异僵尸。这让爆裂者成为终结世界征途的完美武器。
+速度：高
+生命：低
+数量：低
+伤害：高","Мутировавшие зомби, самовоспламеняющиеся при малейшей угрозе. Это делает Извергателей идеальным оружием для сокрушения миров.
+Скорость: высокая
+Здоровье: низкое
+Численность: низкая
+Урон: высокий","Zumbis mutantes que entram em combustão espontânea diante de estímulos ameaçadores. Isso torna os Eruptores perfeitos para conquistas apocalípticas.
+Velocidade: Alta
+Vida: Baixa
+Números: Baixos
+Dano: Alto","Mutierte Zombies die sich bei bedrohlichen Reizen spontan entzünden. Das macht die Erupter perfekt für weltvernichtende Eroberungen.
+Tempo: Hoch
+Leben: Niedrig
+Anzahl: Niedrig
+Schaden: Hoch","脅威を感じると自然発火する変異ゾンビ。この性質ゆえに、エラプターは世界を滅ぼす侵略にうってつけだ。
+速度：高
+体力：低
+数：少
+攻撃力：高","Des zombies mutants qui s'embrasent spontanément face à une menace. Cela fait des Érupteurs l'arme idéale des conquêtes apocalyptiques.
+Vitesse : Élevée
+Santé : Faible
+Nombre : Faible
+Dégâts : Élevés","Zmutowane zombie, które samozapalają się w obliczu zagrożenia. To czyni Eruptorów doskonałymi do podbojów kończących światy.
+Szybkość: wysoka
+Zdrowie: niskie
+Liczebność: niska
+Obrażenia: wysokie","위협적인 자극을 받으면 저절로 폭발하는 변이 좀비. 그래서 이럽터는 세계를 끝장내는 정복전에 안성맞춤입니다.
+속도: 높음
+체력: 낮음
+수: 적음
+공격력: 높음",res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt
 TXT_UNHALLOWER_SPECIAL_DESCRIPTION,"*High armor
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt
+","*Gran armadura","*高护甲","*Мощная броня","*Armadura alta","*Starke Panzerung","*高い防御力","*Armure élevée","*Gruby pancerz","*높은 방어력",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt
 TXT_WRETCH_SPECIAL_DESCRIPTION,"*Ignores blockers
-",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt
+","*Ignora a los bloqueadores","*无视阻挡者","*Игнорирует заслоны","*Ignora bloqueadores","*Ignoriert Blocker","*ブロッカーを無視する","*Ignore les bloqueurs","*Ignoruje blokujących","*저지 유닛을 무시합니다",res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt
 TXT_WYRMDESCRIPTION,"Shoots [color=red]PIERCING[/color] pressurized blood that can [color=red]HIT MULTIPLE ZOMBIES[/color]. Damage decreases per zombie hit. Gives buffs that generally increase [color=red]Area Of Effect potential[/color].
-",res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt
+","Dispara sangre presurizada [color=red]PERFORANTE[/color] capaz de [color=red]GOLPEAR A VARIOS ZOMBIS[/color]. El daño disminuye por cada zombi alcanzado. Otorga mejoras que suelen aumentar el [color=red]potencial de área de efecto[/color].","喷射[color=red]穿透性[/color]的高压血弹，可[color=red]命中多个僵尸[/color]。每命中一个僵尸伤害递减。提供的增益通常可提升[color=red]范围伤害潜力[/color]。","Стреляет [color=red]ПРОБИВАЮЩЕЙ[/color] кровью под давлением, способной [color=red]ПОРАЗИТЬ НЕСКОЛЬКИХ ЗОМБИ[/color]. Урон снижается с каждым задетым зомби. Даёт усиления, обычно повышающие [color=red]урон по площади[/color].","Dispara sangue pressurizado [color=red]PERFURANTE[/color] que pode [color=red]ATINGIR VÁRIOS ZUMBIS[/color]. O dano diminui a cada zumbi atingido. Concede bênçãos que costumam aumentar o [color=red]potencial de dano em área[/color].","Verschießt [color=red]DURCHDRINGENDES[/color] Druckblut das [color=red]MEHRERE ZOMBIES TREFFEN[/color] kann. Der Schaden sinkt pro getroffenem Zombie. Gewährt Buffs die generell das [color=red]Flächenschadens-Potenzial[/color] erhöhen.","[color=red]貫通[/color]する高圧の血を発射し、[color=red]複数のゾンビに命中[/color]させられる。命中したゾンビごとにダメージは減少。付与するバフは主に[color=red]範囲攻撃の潜在力[/color]を高める。","Tire du sang pressurisé [color=red]PERFORANT[/color] capable de [color=red]TOUCHER PLUSIEURS ZOMBIES[/color]. Les dégâts diminuent à chaque zombie touché. Accorde des bonus qui augmentent en général le [color=red]potentiel de zone d'effet[/color].","Strzela [color=red]PRZEBIJAJĄCĄ[/color] sprężoną krwią, która może [color=red]TRAFIĆ WIELE ZOMBIE[/color]. Obrażenia maleją z każdym trafionym zombie. Daje wzmocnienia zwiększające zwykle [color=red]potencjał obrażeń obszarowych[/color].","[color=red]관통하는[/color] 압축된 피를 발사해 [color=red]여러 좀비를 맞힐 수 있습니다[/color]. 좀비를 맞힐 때마다 피해량이 감소합니다. 주로 [color=red]광역 피해 잠재력[/color]을 높이는 강화를 부여합니다.",res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt
 TXT_WYRM_SPECIAL_DESCRIPTION,"*Shots Pierce Zombies, Inflicts Bleed
-",res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt
+","*Los disparos atraviesan zombis e infligen sangrado","*攻击穿透僵尸并造成流血","*Выстрелы пробивают зомби и вызывают кровотечение","*Os tiros perfuram zumbis e causam sangramento","*Schüsse durchbohren Zombies und verursachen Blutung","*攻撃はゾンビを貫通し、出血を与える","*Les tirs transpercent les zombies et infligent des saignements","*Strzały przebijają zombie i zadają krwawienie","*공격이 좀비를 관통하며 출혈을 입힙니다",res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt

@@ -6,10 +6,10 @@ uid="uid://bugjy504nx53g"
 
 [deps]
 
-files=["res://_Localization/ui.en.translation"]
+files=["res://_Localization/ui.en.translation", "res://_Localization/ui.es.translation", "res://_Localization/ui.zh_CN.translation", "res://_Localization/ui.ru.translation", "res://_Localization/ui.pt_BR.translation", "res://_Localization/ui.de.translation", "res://_Localization/ui.ja.translation", "res://_Localization/ui.fr.translation", "res://_Localization/ui.pl.translation", "res://_Localization/ui.ko.translation"]
 
 source_file="res://_Localization/ui.csv"
-dest_files=["res://_Localization/ui.en.translation"]
+dest_files=["res://_Localization/ui.en.translation", "res://_Localization/ui.es.translation", "res://_Localization/ui.zh_CN.translation", "res://_Localization/ui.ru.translation", "res://_Localization/ui.pt_BR.translation", "res://_Localization/ui.de.translation", "res://_Localization/ui.ja.translation", "res://_Localization/ui.fr.translation", "res://_Localization/ui.pl.translation", "res://_Localization/ui.ko.translation"]
 
 [params]
 

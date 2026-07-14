@@ -1,23 +1,23 @@
-keys,en,_notes
-NAME_REBORN,REBORN,Zombie name
-NAME_SEVERED,SEVERED,Zombie name
-NAME_UNHALLOWER,UNHALLOWER,Zombie name
-NAME_REANIMATOR,REANIMATOR,Zombie name
-NAME_WRETCH,WRETCH,Zombie name
-NAME_ERUPTER,ERUPTER,Zombie name
-NAME_AMALGAM,AMALGAM,Zombie name
-NAME_AMALGAMS,AMALGAMS,Zombie name (lore book plural form)
-NAME_FLESHEATER,FLESHEATER,Zombie name
-NAME_SUNDERED,SUNDERED,Zombie name
-NAME_BUFFER,BUFFER,Zombie name
-NAME_ROHAN,ROHAN,Boss name — proper noun; do not translate
-NAME_OCCULUM,OCCULUM,Demon name — invented word; transliterate rather than translate
-NAME_CRAWLER,CRAWLER,Demon name
-NAME_SPINAL_OCCULUM,SPINAL OCCULUM,Demon name
-NAME_WYRM,WYRM,Demon name
-NAME_WYRMQUEEN,WYRMQUEEN,Demon name
-NAME_HIVE,HIVE,Demon name
-NAME_MAW,MAW,Demon name
-NAME_EYE,EYE,Demon nickname (codex tab)
-NAME_SPYDER,SPYDER,Demon nickname (codex tab); stylized spelling of spider
-NAME_O_SPINE,O-SPINE,Demon nickname (codex tab)
+keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
+NAME_REBORN,REBORN,RENACIDO,重生者,ВОЗРОЖДЁННЫЙ,RENASCIDO,WIEDERGÄNGER,リボーン,RESSUSCITÉ,ODRODZONY,리본,Zombie name
+NAME_SEVERED,SEVERED,CERCENADO,断裂者,ОТСЕЧЁННЫЙ,DECEPADO,ABGETRENNTER,セヴァード,TRANCHÉ,ODCIĘTY,세버드,Zombie name
+NAME_UNHALLOWER,UNHALLOWER,PROFANADOR,渎圣者,ОСКВЕРНИТЕЛЬ,PROFANADOR,ENTWEIHER,アンハロワー,PROFANATEUR,PLUGAWICIEL,언핼로워,Zombie name
+NAME_REANIMATOR,REANIMATOR,REANIMADOR,唤尸者,РЕАНИМАТОР,REANIMADOR,WIEDERERWECKER,リアニメーター,RÉANIMATEUR,REANIMATOR,리애니메이터,Zombie name
+NAME_WRETCH,WRETCH,DESDICHADO,卑贱者,ЖАЛКИЙ,MISERÁVEL,ELENDER,レッチ,MISÉRABLE,NĘDZNIK,레치,Zombie name
+NAME_ERUPTER,ERUPTER,ERUPTOR,爆裂者,ИЗВЕРГАТЕЛЬ,ERUPTOR,ERUPTER,エラプター,ÉRUPTEUR,ERUPTOR,이럽터,Zombie name
+NAME_AMALGAM,AMALGAM,AMALGAMA,融合体,АМАЛЬГАМА,AMÁLGAMA,AMALGAM,アマルガム,AMALGAME,AMALGAMAT,아말감,Zombie name
+NAME_AMALGAMS,AMALGAMS,AMALGAMAS,融合体,АМАЛЬГАМЫ,AMÁLGAMAS,AMALGAME,アマルガム,AMALGAMES,AMALGAMATY,아말감,Zombie name (lore book plural form)
+NAME_FLESHEATER,FLESHEATER,CARNÍVORO,食肉者,ПЛОТОЖОР,DEVORADOR DE CARNE,FLEISCHFRESSER,フレッシュイーター,MANGE-CHAIR,MIĘSOŻERCA,플레시이터,Zombie name
+NAME_SUNDERED,SUNDERED,ESCINDIDO,离断者,РАСКОЛОТЫЙ,PARTIDO,ZERRISSENER,サンダード,SCINDÉ,ROZDARTY,선더드,Zombie name
+NAME_BUFFER,BUFFER,POTENCIADOR,增益者,УСИЛИТЕЛЬ,FORTALECEDOR,VERSTÄRKER,バッファー,AMPLIFICATEUR,WZMACNIACZ,버퍼,Zombie name
+NAME_ROHAN,ROHAN,ROHAN,罗翰,РОХАН,ROHAN,ROHAN,ローハン,ROHAN,ROHAN,로한,Boss name — proper noun; do not translate
+NAME_OCCULUM,OCCULUM,OCCULUM,奥库伦,ОККУЛУМ,OCCULUM,OCCULUM,オキュラム,OCCULUM,OCCULUM,오큘럼,Demon name — invented word; transliterate rather than translate
+NAME_CRAWLER,CRAWLER,REPTADOR,爬行者,ПОЛЗУН,RASTEJADOR,KRIECHER,クローラー,RAMPANT,PEŁZACZ,크롤러,Demon name
+NAME_SPINAL_OCCULUM,SPINAL OCCULUM,OCCULUM ESPINAL,脊柱奥库伦,СПИНАЛЬНЫЙ ОККУЛУМ,OCCULUM ESPINHAL,STACHEL-OCCULUM,スパイナル・オキュラム,OCCULUM SPINAL,OCCULUM KRĘGOWY,스파이널 오큘럼,Demon name
+NAME_WYRM,WYRM,SIERPE,蠕龙,ЗМИЙ,SERPE,WYRM,ワーム,VOUIVRE,ŻMIJ,웜,Demon name
+NAME_WYRMQUEEN,WYRMQUEEN,SIERPE REINA,蠕龙女王,ЦАРИЦА ЗМИЕВ,SERPE RAINHA,WYRMKÖNIGIN,ワームクイーン,REINE VOUIVRE,KRÓLOWA ŻMIJÓW,웜 여왕,Demon name
+NAME_HIVE,HIVE,COLMENA,蜂巢,УЛЕЙ,COLMEIA,NEST,ハイブ,RUCHE,UL,하이브,Demon name
+NAME_MAW,MAW,FAUCES,巨口,ПАСТЬ,GOELA,SCHLUND,マウ,GUEULE,PASZCZA,마우,Demon name
+NAME_EYE,EYE,OJO,魔眼,ОКО,OLHO,AUGE,アイ,ŒIL,OKO,아이,Demon nickname (codex tab)
+NAME_SPYDER,SPYDER,ARAKNIA,魔蛛,ПАУКЪ,ARANHO,SPYNNE,スパイダー,ARAIGNÉE,PAJONK,스파이더,Demon nickname (codex tab); stylized spelling of spider
+NAME_O_SPINE,O-SPINE,O-ESPINA,眼脊柱,О-ХРЕБЕТ,O-ESPINHA,O-DORN,オー・スパイン,O-ÉPINE,O-KRĘG,오-스파인,Demon nickname (codex tab)

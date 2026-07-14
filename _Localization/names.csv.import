@@ -6,10 +6,10 @@ uid="uid://bbuykr5g4o72h"
 
 [deps]
 
-files=["res://_Localization/names.en.translation"]
+files=["res://_Localization/names.en.translation", "res://_Localization/names.es.translation", "res://_Localization/names.zh_CN.translation", "res://_Localization/names.ru.translation", "res://_Localization/names.pt_BR.translation", "res://_Localization/names.de.translation", "res://_Localization/names.ja.translation", "res://_Localization/names.fr.translation", "res://_Localization/names.pl.translation", "res://_Localization/names.ko.translation"]
 
 source_file="res://_Localization/names.csv"
-dest_files=["res://_Localization/names.en.translation"]
+dest_files=["res://_Localization/names.en.translation", "res://_Localization/names.es.translation", "res://_Localization/names.zh_CN.translation", "res://_Localization/names.ru.translation", "res://_Localization/names.pt_BR.translation", "res://_Localization/names.de.translation", "res://_Localization/names.ja.translation", "res://_Localization/names.fr.translation", "res://_Localization/names.pl.translation", "res://_Localization/names.ko.translation"]
 
 [params]
 

@@ -6,10 +6,10 @@ uid="uid://4m5u2bhcm7iy"
 
 [deps]
 
-files=["res://_Localization/dialogic/dialogic_character_translations.en.translation"]
+files=["res://_Localization/dialogic/dialogic_character_translations.en.translation", "res://_Localization/dialogic/dialogic_character_translations.es.translation", "res://_Localization/dialogic/dialogic_character_translations.zh_CN.translation", "res://_Localization/dialogic/dialogic_character_translations.ru.translation", "res://_Localization/dialogic/dialogic_character_translations.pt_BR.translation", "res://_Localization/dialogic/dialogic_character_translations.de.translation", "res://_Localization/dialogic/dialogic_character_translations.ja.translation", "res://_Localization/dialogic/dialogic_character_translations.fr.translation", "res://_Localization/dialogic/dialogic_character_translations.pl.translation", "res://_Localization/dialogic/dialogic_character_translations.ko.translation"]
 
 source_file="res://_Localization/dialogic/dialogic_character_translations.csv"
-dest_files=["res://_Localization/dialogic/dialogic_character_translations.en.translation"]
+dest_files=["res://_Localization/dialogic/dialogic_character_translations.en.translation", "res://_Localization/dialogic/dialogic_character_translations.es.translation", "res://_Localization/dialogic/dialogic_character_translations.zh_CN.translation", "res://_Localization/dialogic/dialogic_character_translations.ru.translation", "res://_Localization/dialogic/dialogic_character_translations.pt_BR.translation", "res://_Localization/dialogic/dialogic_character_translations.de.translation", "res://_Localization/dialogic/dialogic_character_translations.ja.translation", "res://_Localization/dialogic/dialogic_character_translations.fr.translation", "res://_Localization/dialogic/dialogic_character_translations.pl.translation", "res://_Localization/dialogic/dialogic_character_translations.ko.translation"]
 
 [params]
 
