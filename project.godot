@@ -180,7 +180,6 @@ LockSwapAbility={
 [internationalization]
 
 locale/translations=PackedStringArray("res://_Localization/abilities.en.translation", "res://_Localization/descriptions.en.translation", "res://_Localization/names.en.translation", "res://_Localization/synergies.en.translation", "res://_Localization/tutorials.en.translation", "res://_Localization/ui.en.translation")
-pseudolocalization/use_pseudolocalization=true
 pseudolocalization/expansion_ratio=0.3
 
 [physics]

@@ -3610,7 +3610,6 @@ new_end_dialog = "res://_Assets/Dialog/level_04_end_dialog.dtl"
 wave2StartTime = 65
 wave3StartTime = 90
 wave4StartTime = 105
-record_footage = true
 
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false

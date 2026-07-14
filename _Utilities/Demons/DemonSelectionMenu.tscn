@@ -851,10 +851,12 @@ script = ExtResource("16_c3fhf")
 one_shot = true
 
 [node name="Hero" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1496618985]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -1
 
 [node name="HeroButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero" unique_id=493376975]
+visible = false
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 texture_normal = ExtResource("18_1y46f")

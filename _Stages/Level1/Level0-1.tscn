@@ -3617,7 +3617,6 @@ wave2StartTime = 40
 wave3StartTime = 40
 wave4StartTime = null
 debug = null
-record_footage = true
 skip_tutorials = null
 progress_timer_wait_time = 2.9
 skip_end_dialog = null

@@ -925,7 +925,6 @@ wave2StartTime = 70
 wave3StartTime = 85
 wave4StartTime = 100
 wave5StartTime = 100
-record_footage = true
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_7cbeu")]
 layout_mode = 1
