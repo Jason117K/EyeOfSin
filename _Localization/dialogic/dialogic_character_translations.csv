@@ -1,11 +1,11 @@
-keys,en
-Character/8d/name,Ally
-Character/8d/nicknames,
-Character/8e/name,Argus
-Character/8e/nicknames,
-Character/8f/name,Lucretia
-Character/8f/nicknames,
-Character/90/name,Rohan Moore
-Character/90/nicknames,
-Character/91/name,Syn Lucretia
-Character/91/nicknames,
+keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko
+Character/8d/name,Ally,Ally,艾莉,Элли,Ally,Ally,アリー,Ally,Ally,앨리
+Character/8d/nicknames,,,,,,,,,,
+Character/8e/name,Argus,Argus,阿古斯,Аргус,Argus,Argus,アーガス,Argus,Argus,아르구스
+Character/8e/nicknames,,,,,,,,,,
+Character/8f/name,Lucretia,Lucretia,卢克蕾西娅,Лукреция,Lucretia,Lucretia,ルクレツィア,Lucretia,Lukrecja,루크레티아
+Character/8f/nicknames,,,,,,,,,,
+Character/90/name,Rohan Moore,Rohan Moore,罗翰·摩尔,Рохан Мур,Rohan Moore,Rohan Moore,ローハン・ムーア,Rohan Moore,Rohan Moore,로한 무어
+Character/90/nicknames,,,,,,,,,,
+Character/91/name,Syn Lucretia,Syn Lucretia,辛·卢克蕾西娅,Син-Лукреция,Syn Lucretia,Syn Lucretia,シン・ルクレツィア,Syn Lucretia,Syn Lukrecja,신 루크레티아
+Character/91/nicknames,,,,,,,,,,

@@ -28,15 +28,29 @@ const SAMPLE_KEYS: Array[String] = [
 ]
 
 
+const LOCALES: Array[String] = ["en", "es", "zh_CN", "ru", "pt_BR", "de", "ja", "fr", "pl", "ko"]
+
+
 func _init() -> void:
 	TranslationServer.set_locale("en")
-	var failures := 0
+	var en_values := {}
 	for key: String in SAMPLE_KEYS:
-		var value := TranslationServer.translate(key)
-		if value == key:
-			push_error("verify_translations: UNRESOLVED key " + key)
-			failures += 1
-		else:
-			print("%s -> %s" % [key, value.left(50).replace("\n", " ")])
+		en_values[key] = TranslationServer.translate(key)
+
+	var failures := 0
+	for locale: String in LOCALES:
+		TranslationServer.set_locale(locale)
+		var unresolved := 0
+		var same_as_en := 0
+		for key: String in SAMPLE_KEYS:
+			var value := TranslationServer.translate(key)
+			if value == key:
+				push_error("verify_translations: [%s] UNRESOLVED key %s" % [locale, key])
+				unresolved += 1
+			elif locale != "en" and value == en_values[key]:
+				same_as_en += 1
+		failures += unresolved
+		print("%s: %d/%d resolved, %d identical to en" % [locale, SAMPLE_KEYS.size() - unresolved, SAMPLE_KEYS.size(), same_as_en])
+	TranslationServer.set_locale("en")
 	print("verify_translations: %d failures" % failures)
 	quit(failures)
