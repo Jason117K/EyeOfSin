@@ -1,93 +1,273 @@
-keys,en,_notes
+keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
 TXT_CRAWLERBASE,"- Shoots a web projectile that damages and slows the first enemy it contacts
-",res://_Assets/Text/TextFiles/Synergies/CrawlerBase.txt
+","- Dispara un proyectil de telaraña que daña y ralentiza al primer enemigo que toca","- 发射蛛网弹，对首个命中的敌人造成伤害并使其减速","- Стреляет паутиной, которая ранит и замедляет первого задетого врага","- Dispara um projétil de teia que fere e retarda o primeiro inimigo atingido","- Verschießt ein Netzgeschoss das den ersten getroffenen Gegner verletzt und verlangsamt","- 蜘蛛の巣の弾を発射し、最初に当たった敵にダメージと減速を与える","- Tire un projectile de toile qui blesse et ralentit le premier ennemi touché","- Strzela pociskiem z pajęczyny, który rani i spowalnia pierwszego trafionego wroga","- 거미줄 탄환을 발사해 처음 맞은 적에게 피해를 주고 느리게 만듭니다",res://_Assets/Text/TextFiles/Synergies/CrawlerBase.txt
 TXT_CRAWLERHIVE,"Shoots in adjacent lanes.
-",res://_Assets/Text/TextFiles/Synergies/CrawlerHive.txt
-TXT_CRAWLERMAW,"Crawler periodically spawns a spiderling that runs down the lane. 
-",res://_Assets/Text/TextFiles/Synergies/CrawlerMaw.txt
+","Dispara también en los carriles adyacentes.","可向相邻路线射击。","Стреляет и по соседним дорожкам.","Atira também nas pistas adjacentes.","Schießt auch in benachbarte Bahnen.","隣のレーンにも攻撃できる。","Tire aussi dans les voies adjacentes.","Strzela także w sąsiednich alejach.","인접한 길에도 공격합니다.",res://_Assets/Text/TextFiles/Synergies/CrawlerHive.txt
+TXT_CRAWLERMAW,"Crawler periodically spawns a spiderling that runs down the lane.
+","El Reptador genera periódicamente una arañita que recorre el carril.","爬行者会定期生成一只小蜘蛛，沿路线冲锋。","Ползун периодически порождает паучка, бегущего по дорожке.","O Rastejador gera periodicamente uma aranhinha que percorre a pista.","Der Kriecher erzeugt regelmäßig eine Jungspinne die die Bahn entlangläuft.","クローラーは定期的に子グモを生み、レーンを走らせる。","Le Rampant engendre régulièrement une araignée qui parcourt la voie.","Pełzacz co jakiś czas tworzy pajączka biegnącego wzdłuż alei.","크롤러가 주기적으로 새끼 거미를 낳아 길을 따라 달리게 합니다.",res://_Assets/Text/TextFiles/Synergies/CrawlerMaw.txt
 TXT_CRAWLEROCCULUM,"Webbed enemies now give blood on death.
 Range is increased.
 Damage is increased.
-",res://_Assets/Text/TextFiles/Synergies/CrawlerOcculum.txt
-TXT_CRAWLERSPINALOCCULUM,"Shots knock enemies back. 
+","Los enemigos atrapados en telaraña ahora dan sangre al morir.
+Mayor alcance.
+Mayor daño.","被蛛网缠住的敌人死亡时会掉落鲜血。
+射程提升。
+伤害提升。","Опутанные враги теперь дают кровь после смерти.
+Дальность увеличена.
+Урон увеличен.","Inimigos presos na teia agora dão sangue ao morrer.
+Alcance aumentado.
+Dano aumentado.","Eingesponnene Gegner geben beim Tod jetzt Blut.
+Erhöhte Reichweite.
+Erhöhter Schaden.","巣に絡まった敵は倒すと血を落とすようになる。
+射程アップ。
+ダメージアップ。","Les ennemis englués donnent désormais du sang à leur mort.
+Portée augmentée.
+Dégâts augmentés.","Wrogowie w pajęczynie oddają teraz krew po śmierci.
+Zwiększony zasięg.
+Zwiększone obrażenia.","거미줄에 걸린 적이 죽을 때 피를 남깁니다.
+사거리가 증가합니다.
+피해량이 증가합니다.",res://_Assets/Text/TextFiles/Synergies/CrawlerOcculum.txt
+TXT_CRAWLERSPINALOCCULUM,"Shots knock enemies back.
 Increased health.
 Shoots slower.
-",res://_Assets/Text/TextFiles/Synergies/CrawlerSpinalOcculum.txt
-TXT_CRAWLERWYRM,"Shots have a damaging lightning AOE. 
-Shoots slower. 
-",res://_Assets/Text/TextFiles/Synergies/CrawlerWyrm.txt
-TXT_HIVEBASE,"Spawns Syn-Wasps that stall zombies 
-",res://_Assets/Text/TextFiles/Synergies/HiveBase.txt
+","Los disparos empujan a los enemigos hacia atrás.
+Más salud.
+Dispara más lento.","攻击可将敌人击退。
+生命值提升。
+射速降低。","Выстрелы отбрасывают врагов назад.
+Здоровье увеличено.
+Стреляет медленнее.","Os tiros empurram os inimigos para trás.
+Mais vida.
+Atira mais devagar.","Schüsse stoßen Gegner zurück.
+Mehr Leben.
+Schießt langsamer.","攻撃が敵をノックバックさせる。
+体力アップ。
+攻撃速度ダウン。","Les tirs repoussent les ennemis.
+Santé accrue.
+Tire plus lentement.","Strzały odpychają wrogów.
+Większe zdrowie.
+Strzela wolniej.","공격이 적을 밀쳐냅니다.
+체력이 증가합니다.
+공격 속도는 느려집니다.",res://_Assets/Text/TextFiles/Synergies/CrawlerSpinalOcculum.txt
+TXT_CRAWLERWYRM,"Shots have a damaging lightning AOE.
+Shoots slower.
+","Los disparos generan un área de rayos dañina.
+Dispara más lento.","攻击附带范围雷电伤害。
+射速降低。","Выстрелы бьют молнией по площади.
+Стреляет медленнее.","Os tiros causam dano elétrico em área.
+Atira mais devagar.","Schüsse verursachen Blitz-Flächenschaden.
+Schießt langsamer.","攻撃に範囲雷ダメージが付与される。
+攻撃速度ダウン。","Les tirs infligent des dégâts de foudre de zone.
+Tire plus lentement.","Strzały zadają obszarowe obrażenia od piorunów.
+Strzela wolniej.","공격에 광역 번개 피해가 붙습니다.
+공격 속도는 느려집니다.",res://_Assets/Text/TextFiles/Synergies/CrawlerWyrm.txt
+TXT_HIVEBASE,"Spawns Syn-Wasps that stall zombies
+","Genera avispas de Syn que frenan a los zombis","生成辛之黄蜂，拖住僵尸","Порождает ос Сина, задерживающих зомби","Gera vespas de Syn que atrasam os zumbis","Erzeugt Syn-Wespen die Zombies aufhalten","シンの蜂を生み出し、ゾンビを足止めする","Engendre des guêpes de Syn qui retiennent les zombies","Tworzy osy Syn zatrzymujące zombie","신의 말벌을 소환해 좀비를 저지합니다",res://_Assets/Text/TextFiles/Synergies/HiveBase.txt
 TXT_HIVECRAWLER,"Enemies killed by the hive spawn a web slowing zone on their death
-",res://_Assets/Text/TextFiles/Synergies/HiveCrawler.txt
+","Los enemigos que mata la colmena dejan al morir una zona de telaraña ralentizante","被蜂巢击杀的敌人死后会留下减速蛛网区域","Враги, убитые ульем, оставляют после смерти замедляющую паутину","Inimigos mortos pela colmeia deixam uma zona de teia que retarda","Vom Nest getötete Gegner hinterlassen beim Tod eine verlangsamende Netzzone","ハイブに倒された敵は死亡時に減速する巣の領域を残す","Les ennemis tués par la ruche laissent une zone de toile ralentissante","Wrogowie zabici przez ul zostawiają po śmierci spowalniającą pajęczynę","하이브에게 죽은 적은 죽을 때 감속 거미줄 지대를 남깁니다",res://_Assets/Text/TextFiles/Synergies/HiveCrawler.txt
 TXT_HIVEMAW,"Hive gains healing over time, wasps gain damage the more damage they deal
-",res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt
+","La colmena se cura con el tiempo; las avispas ganan daño cuanto más daño infligen","蜂巢获得持续治疗；黄蜂造成的伤害越多，攻击力越高","Улей исцеляется со временем; осы наносят тем больше урона, чем больше вреда причинили","A colmeia se cura ao longo do tempo; as vespas ganham dano conforme causam dano","Das Nest heilt sich mit der Zeit; Wespen erhalten mehr Schaden je mehr Schaden sie anrichten","ハイブは時間経過で回復し、蜂は与えたダメージに応じて攻撃力が上がる","La ruche se soigne avec le temps ; les guêpes gagnent en dégâts à mesure qu'elles en infligent","Ul leczy się z czasem; osy zyskują obrażenia im więcej ich zadają","하이브는 지속 회복을 얻고, 말벌은 피해를 줄수록 공격력이 오릅니다",res://_Assets/Text/TextFiles/Synergies/HiveMaw.txt
 TXT_HIVEOCCULUM,"Increased Wasp Count x2, Wasps Give Blood On Death
-Upgraded : 
+Upgraded :
 	- wasps give blood on death
-",res://_Assets/Text/TextFiles/Synergies/HiveOcculum.txt
+","Número de avispas x2; las avispas dan sangre al morir
+Mejorado :
+	- las avispas dan sangre al morir","黄蜂数量 x2，黄蜂死亡时掉落鲜血
+升级：
+	- 黄蜂死亡时掉落鲜血","Число ос x2; осы дают кровь после смерти
+Улучшено :
+	- осы дают кровь после смерти","Número de vespas x2; vespas dão sangue ao morrer
+Aprimorado :
+	- vespas dão sangue ao morrer","Wespenanzahl x2; Wespen geben beim Tod Blut
+Verbessert :
+	- Wespen geben beim Tod Blut","蜂の数 x2、蜂は死亡時に血を落とす
+強化：
+	- 蜂は死亡時に血を落とす","Nombre de guêpes x2 ; les guêpes donnent du sang à leur mort
+Amélioré :
+	- les guêpes donnent du sang à leur mort","Liczba os x2; osy oddają krew po śmierci
+Ulepszone :
+	- osy oddają krew po śmierci","말벌 수 x2, 말벌이 죽을 때 피를 남깁니다
+강화 :
+	- 말벌이 죽을 때 피를 남깁니다",res://_Assets/Text/TextFiles/Synergies/HiveOcculum.txt
 TXT_HIVESPINALOCCULUM,"Increased Wasp Count x1, Increased Health
-",res://_Assets/Text/TextFiles/Synergies/HiveSpinalOcculum.txt
-TXT_HIVEWYRM,"Hive Wasps now spit blood forward on attack 
-",res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt
+","Número de avispas +1; más salud","黄蜂数量 +1，生命值提升","Число ос +1; здоровье увеличено","Número de vespas +1; mais vida","Wespenanzahl +1; mehr Leben","蜂の数 +1、体力アップ","Nombre de guêpes +1 ; santé accrue","Liczba os +1; większe zdrowie","말벌 수 +1, 체력이 증가합니다",res://_Assets/Text/TextFiles/Synergies/HiveSpinalOcculum.txt
+TXT_HIVEWYRM,"Hive Wasps now spit blood forward on attack
+","Las avispas de la colmena ahora escupen sangre hacia delante al atacar","蜂巢黄蜂攻击时会向前喷吐鲜血","Осы улья теперь плюются кровью вперёд при атаке","As vespas da colmeia agora cospem sangue para a frente ao atacar","Nest-Wespen spucken beim Angriff jetzt Blut nach vorn","ハイブの蜂は攻撃時に前方へ血を吐くようになる","Les guêpes de la ruche crachent désormais du sang vers l'avant","Osy ula plują teraz krwią do przodu podczas ataku","하이브의 말벌이 공격할 때 앞으로 피를 내뿜습니다",res://_Assets/Text/TextFiles/Synergies/HiveWyrm.txt
 TXT_MAWBASE,"Devours zombies whole
-",res://_Assets/Text/TextFiles/Synergies/MawBase.txt
+","Devora zombis enteros","整只吞下僵尸","Пожирает зомби целиком","Devora zumbis inteiros","Verschlingt Zombies im Ganzen","ゾンビを丸呑みにする","Dévore les zombies tout entiers","Pożera zombie w całości","좀비를 통째로 삼킵니다",res://_Assets/Text/TextFiles/Synergies/MawBase.txt
 TXT_MAWCRAWLER,"Maw produces slowing area of effect web ball when it finishes digesting
-",res://_Assets/Text/TextFiles/Synergies/MawCrawler.txt
-TXT_MAWHIVE,"Increased range 
-",res://_Assets/Text/TextFiles/Synergies/MawHive.txt
+","Las Fauces sueltan una bola de telaraña ralentizante al terminar de digerir","巨口消化完毕后会吐出减速蛛网球","Пасть после переваривания выпускает замедляющий шар паутины","A Goela solta uma bola de teia que retarda ao terminar a digestão","Der Schlund erzeugt nach dem Verdauen eine verlangsamende Netzkugel","マウは消化を終えると減速効果の巣玉を吐き出す","La Gueule crache une boule de toile ralentissante après digestion","Paszcza po strawieniu wypluwa spowalniającą kulę pajęczyny","마우가 소화를 마치면 감속 거미줄 구체를 내놓습니다",res://_Assets/Text/TextFiles/Synergies/MawCrawler.txt
+TXT_MAWHIVE,"Increased range
+","Mayor alcance","射程提升","Дальность увеличена","Alcance aumentado","Erhöhte Reichweite","射程アップ","Portée augmentée","Zwiększony zasięg","사거리가 증가합니다",res://_Assets/Text/TextFiles/Synergies/MawHive.txt
 TXT_MAWOCCULUM,"Maw produces blood on zombie digest.
-",res://_Assets/Text/TextFiles/Synergies/MawOcculum.txt
+","Las Fauces producen sangre al digerir zombis.","巨口消化僵尸时产出鲜血。","Пасть производит кровь, переваривая зомби.","A Goela produz sangue ao digerir zumbis.","Der Schlund erzeugt beim Verdauen von Zombies Blut.","マウはゾンビを消化すると血を生み出す。","La Gueule produit du sang en digérant les zombies.","Paszcza wytwarza krew trawiąc zombie.","마우가 좀비를 소화하면 피를 생성합니다.",res://_Assets/Text/TextFiles/Synergies/MawOcculum.txt
 TXT_MAWSPINALOCCULUM,"Increased health, kills now heal
-Can kill lower health enemies faster 
-",res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt
+Can kill lower health enemies faster
+","Más salud; las bajas ahora curan
+Mata más rápido a los enemigos con poca vida","生命值提升，击杀可回复生命
+更快解决低血量敌人","Здоровье увеличено; убийства теперь исцеляют
+Быстрее расправляется с ослабленными врагами","Mais vida; abates agora curam
+Mata inimigos com pouca vida mais rápido","Mehr Leben; Kills heilen jetzt
+Tötet geschwächte Gegner schneller","体力アップ、撃破時に回復
+体力の低い敵をより速く倒せる","Santé accrue ; les mises à mort soignent désormais
+Tue plus vite les ennemis affaiblis","Większe zdrowie; zabójstwa teraz leczą
+Szybciej zabija osłabionych wrogów","체력이 증가하고, 처치 시 회복합니다
+체력이 낮은 적을 더 빨리 처치합니다",res://_Assets/Text/TextFiles/Synergies/MawSpinalOcculum.txt
 TXT_MAWWYRM,"Maws digest faster
-",res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt
+","Las Fauces digieren más rápido","巨口消化速度提升","Пасть переваривает быстрее","A Goela digere mais rápido","Der Schlund verdaut schneller","マウの消化が速くなる","La Gueule digère plus vite","Paszcza trawi szybciej","마우의 소화가 빨라집니다",res://_Assets/Text/TextFiles/Synergies/MawWyrm.txt
 TXT_OCCULUMBASE,"Generates Blood
-",res://_Assets/Text/TextFiles/Synergies/OcculumBase.txt
+","Genera sangre","生成鲜血","Производит кровь","Gera sangue","Erzeugt Blut","血を生成する","Génère du sang","Wytwarza krew","피를 생성합니다",res://_Assets/Text/TextFiles/Synergies/OcculumBase.txt
 TXT_OCCULUMCRAWLER,"Blood becomes an auto-targeting projectile on pickup, damaging & slowing the highest health enemy in range.
 Produces Blood faster.
-",res://_Assets/Text/TextFiles/Synergies/OcculumCrawler.txt
-TXT_OCCULUMHIVE,"Occulum produces Blood at a faster rate. 
+","Al recogerla, la sangre se convierte en un proyectil autoguiado que daña y ralentiza al enemigo con más vida a su alcance.
+Produce sangre más rápido.","拾取鲜血时会化作自动瞄准的弹体，伤害并减速射程内生命值最高的敌人。
+产血速度提升。","Подобранная кровь превращается в самонаводящийся снаряд, который ранит и замедляет самого живучего врага в радиусе.
+Производит кровь быстрее.","Ao ser coletado, o sangue vira um projétil teleguiado que fere e retarda o inimigo com mais vida no alcance.
+Produz sangue mais rápido.","Aufgesammeltes Blut wird zu einem zielsuchenden Geschoss das den Gegner mit dem meisten Leben in Reichweite verletzt und verlangsamt.
+Erzeugt Blut schneller.","回収した血が自動追尾弾となり、射程内で最も体力の高い敵にダメージと減速を与える。
+血の生成が速くなる。","Une fois ramassé, le sang devient un projectile autoguidé qui blesse et ralentit l'ennemi le plus résistant à portée.
+Produit du sang plus vite.","Zebrana krew staje się samonaprowadzającym pociskiem, który rani i spowalnia najżywotniejszego wroga w zasięgu.
+Wytwarza krew szybciej.","피를 획득하면 자동 조준 투사체가 되어 사거리 내 체력이 가장 높은 적에게 피해와 감속을 줍니다.
+피 생성이 빨라집니다.",res://_Assets/Text/TextFiles/Synergies/OcculumCrawler.txt
+TXT_OCCULUMHIVE,"Occulum produces Blood at a faster rate.
 Blood burst heals nearby Demons on pickup.
-",res://_Assets/Text/TextFiles/Synergies/OcculumHive.txt
+","El Occulum produce sangre más deprisa.
+Al recogerla, el estallido de sangre cura a los demonios cercanos.","奥库伦产血速度提升。
+拾取鲜血时的爆发可治疗附近的恶魔。","Оккулум производит кровь быстрее.
+Подбор крови исцеляет ближайших демонов.","O Occulum produz sangue mais rápido.
+Ao coletar, a explosão de sangue cura os demônios próximos.","Das Occulum erzeugt Blut schneller.
+Aufgesammeltes Blut heilt nahe Dämonen.","オキュラムの血の生成が速くなる。
+血を回収すると周囲の悪魔が回復する。","L'Occulum produit du sang plus vite.
+Le sang ramassé soigne les démons proches.","Occulum wytwarza krew szybciej.
+Zebrana krew leczy pobliskie demony.","오큘럼의 피 생성이 빨라집니다.
+피를 획득하면 주변 악마가 회복됩니다.",res://_Assets/Text/TextFiles/Synergies/OcculumHive.txt
 TXT_OCCULUMMAW,"Occulum produces higher value blood, and can eat enemies periodically, instantly killing them and generating blood.
 Increased health.
-",res://_Assets/Text/TextFiles/Synergies/OcculumMaw.txt
+","El Occulum produce sangre de mayor valor y puede devorar enemigos periódicamente, matándolos al instante y generando sangre.
+Más salud.","奥库伦产出更高价值的鲜血，并能定期吞食敌人，将其秒杀并产出鲜血。
+生命值提升。","Оккулум производит более ценную кровь и периодически пожирает врагов, мгновенно убивая их и вырабатывая кровь.
+Здоровье увеличено.","O Occulum produz sangue mais valioso e pode devorar inimigos periodicamente, matando-os na hora e gerando sangue.
+Mais vida.","Das Occulum erzeugt wertvolleres Blut und kann regelmäßig Gegner fressen; diese sterben sofort und geben Blut.
+Mehr Leben.","オキュラムはより価値の高い血を生成し、定期的に敵を喰らって即死させ、血を生み出す。
+体力アップ。","L'Occulum produit du sang plus précieux et peut dévorer périodiquement des ennemis, les tuant sur le coup en générant du sang.
+Santé accrue.","Occulum wytwarza cenniejszą krew i może okresowo pożerać wrogów, zabijając ich natychmiast i generując krew.
+Większe zdrowie.","오큘럼이 더 가치 높은 피를 생성하며, 주기적으로 적을 삼켜 즉사시키고 피를 만들어냅니다.
+체력이 증가합니다.",res://_Assets/Text/TextFiles/Synergies/OcculumMaw.txt
 TXT_OCCULUMSPINALOCCULUM,"Emits a continuous healing over time area of effect.
-Produces Blood faster. 
-",res://_Assets/Text/TextFiles/Synergies/OcculumSpinalOcculum.txt
-TXT_OCCULUMWYRM,"Blood emits lane damaging effect on pickup. 
+Produces Blood faster.
+","Emite un área de curación continua.
+Produce sangre más rápido.","持续散发范围治疗效果。
+产血速度提升。","Излучает постоянную исцеляющую ауру.
+Производит кровь быстрее.","Emite uma área de cura contínua.
+Produz sangue mais rápido.","Strahlt eine dauerhafte Heilaura aus.
+Erzeugt Blut schneller.","継続回復の効果範囲を放つ。
+血の生成が速くなる。","Émet une aura de soin continue.
+Produit du sang plus vite.","Emituje ciągłą leczącą aurę.
+Wytwarza krew szybciej.","지속 회복 오라를 내뿜습니다.
+피 생성이 빨라집니다.",res://_Assets/Text/TextFiles/Synergies/OcculumSpinalOcculum.txt
+TXT_OCCULUMWYRM,"Blood emits lane damaging effect on pickup.
 Produces higher value blood slower.
-",res://_Assets/Text/TextFiles/Synergies/OcculumWyrm.txt
+","Al recogerla, la sangre daña todo el carril.
+Produce sangre de mayor valor, pero más despacio.","拾取鲜血时对整条路线造成伤害。
+产出更高价值的鲜血，但速度更慢。","Подобранная кровь бьёт по всей дорожке.
+Производит более ценную кровь, но медленнее.","Ao coletar, o sangue causa dano na pista inteira.
+Produz sangue mais valioso, porém mais devagar.","Aufgesammeltes Blut schädigt die ganze Bahn.
+Erzeugt wertvolleres Blut, aber langsamer.","血を回収するとレーン全体にダメージ効果が走る。
+より価値の高い血をゆっくり生成する。","Le sang ramassé inflige des dégâts sur toute la voie.
+Produit du sang plus précieux, mais plus lentement.","Zebrana krew zadaje obrażenia w całej alei.
+Wytwarza cenniejszą krew, ale wolniej.","피를 획득하면 길 전체에 피해 효과가 발생합니다.
+더 가치 높은 피를 더 느리게 생성합니다.",res://_Assets/Text/TextFiles/Synergies/OcculumWyrm.txt
 TXT_SPINALOCCULUMBASE,"Blocks Zombies
-",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumBase.txt
-TXT_SPINALOCCULUMCRAWLER,"Generates webs on the ground in front of it, slowing zombies 
-",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumCrawler.txt
+","Bloquea zombis","阻挡僵尸","Блокирует зомби","Bloqueia zumbis","Blockiert Zombies","ゾンビを阻止する","Bloque les zombies","Blokuje zombie","좀비를 막아섭니다",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumBase.txt
+TXT_SPINALOCCULUMCRAWLER,"Generates webs on the ground in front of it, slowing zombies
+","Genera telarañas en el suelo frente a él que ralentizan a los zombis","在身前地面生成蛛网，减缓僵尸速度","Плетёт паутину на земле перед собой, замедляя зомби","Gera teias no chão à sua frente que retardam os zumbis","Erzeugt Netze auf dem Boden vor sich die Zombies verlangsamen","前方の地面に巣を張り、ゾンビを減速させる","Tisse des toiles au sol devant lui, ralentissant les zombies","Tworzy pajęczyny na ziemi przed sobą, spowalniając zombie","앞쪽 바닥에 거미줄을 깔아 좀비를 느리게 만듭니다",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumCrawler.txt
 TXT_SPINALOCCULUMHIVE,"Spinal-Occulum gains silencing field in front of it.
-",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumHive.txt
-TXT_SPINALOCCULUMMAW,"Increases nearby demon damage & Nearby zombie deaths heal 
+","El Occulum Espinal gana un campo de silencio frente a él.","脊柱奥库伦获得身前的沉默力场。","Спинальный Оккулум создаёт перед собой поле безмолвия.","O Occulum Espinhal ganha um campo de silêncio à sua frente.","Das Stachel-Occulum erhält ein Stillefeld vor sich.","スパイナル・オキュラムは前方に沈黙のフィールドを得る。","L'Occulum Spinal gagne un champ de silence devant lui.","Occulum Kręgowy zyskuje pole uciszenia przed sobą.","스파이널 오큘럼이 전방에 침묵 역장을 얻습니다.",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumHive.txt
+TXT_SPINALOCCULUMMAW,"Increases nearby demon damage & Nearby zombie deaths heal
 Increased Health
-",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumMaw.txt
+","Aumenta el daño de los demonios cercanos; las muertes de zombis cercanos curan
+Más salud","提升附近恶魔的伤害；附近僵尸死亡时回复生命
+生命值提升","Усиливает урон ближайших демонов; смерть зомби поблизости исцеляет
+Здоровье увеличено","Aumenta o dano dos demônios próximos; mortes de zumbis próximos curam
+Mais vida","Erhöht den Schaden naher Dämonen; Zombietode in der Nähe heilen
+Mehr Leben","周囲の悪魔の攻撃力を上げ、近くでゾンビが死ぬと回復する
+体力アップ","Augmente les dégâts des démons proches ; les morts de zombies alentour soignent
+Santé accrue","Zwiększa obrażenia pobliskich demonów; śmierć zombie w pobliżu leczy
+Większe zdrowie","주변 악마의 공격력을 올리고, 근처에서 좀비가 죽으면 회복합니다
+체력이 증가합니다",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumMaw.txt
 TXT_SPINALOCCULUMOCCULUM,"Spinal Occulum shields Occulum in front of it and produces blood when attacked.
 Increased health.
-",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumOcculum.txt
+","El Occulum Espinal protege al Occulum que tiene delante y produce sangre al ser atacado.
+Más salud.","脊柱奥库伦为身前的奥库伦提供护盾，受击时产出鲜血。
+生命值提升。","Спинальный Оккулум прикрывает Оккулум перед собой и производит кровь, когда его атакуют.
+Здоровье увеличено.","O Occulum Espinhal protege o Occulum à sua frente e produz sangue ao ser atacado.
+Mais vida.","Das Stachel-Occulum schirmt das Occulum vor sich ab und erzeugt Blut wenn es angegriffen wird.
+Mehr Leben.","スパイナル・オキュラムは前方のオキュラムを守り、攻撃を受けると血を生み出す。
+体力アップ。","L'Occulum Spinal protège l'Occulum devant lui et produit du sang lorsqu'il est attaqué.
+Santé accrue.","Occulum Kręgowy osłania Occulum przed sobą i wytwarza krew, gdy jest atakowany.
+Większe zdrowie.","스파이널 오큘럼이 앞의 오큘럼을 보호하며, 공격받을 때 피를 생성합니다.
+체력이 증가합니다.",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumOcculum.txt
 TXT_SPINALOCCULUMWYRM,"Spinal-Occulum continously spawns small blood swords from the ground in front of it, dealing damage.
-",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumWyrm.txt
+","El Occulum Espinal hace brotar sin cesar pequeñas espadas de sangre del suelo frente a él, causando daño.","脊柱奥库伦不断从身前地面召唤出小型血剑，造成伤害。","Спинальный Оккулум непрерывно вызывает из земли перед собой малые кровавые клинки, наносящие урон.","O Occulum Espinhal faz brotar continuamente pequenas espadas de sangue do chão à sua frente, causando dano.","Das Stachel-Occulum lässt vor sich fortlaufend kleine Blutklingen aus dem Boden fahren die Schaden verursachen.","スパイナル・オキュラムは前方の地面から小さな血の剣を絶え間なく出現させ、ダメージを与える。","L'Occulum Spinal fait jaillir sans cesse de petites épées de sang du sol devant lui, infligeant des dégâts.","Occulum Kręgowy nieustannie wyłania z ziemi przed sobą małe krwawe ostrza zadające obrażenia.","스파이널 오큘럼이 전방 바닥에서 작은 피의 검을 끊임없이 솟아나게 해 피해를 줍니다.",res://_Assets/Text/TextFiles/Synergies/SpinalOcculumWyrm.txt
 TXT_WYRMBASE,"Shoots Piercing Blood
-",res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt
-TXT_WYRMCRAWLER,"Slows all enemies hit with blood 
-",res://_Assets/Text/TextFiles/Synergies/WyrmCrawler.txt
+","Dispara sangre perforante","喷射穿透血弹","Стреляет пробивающей кровью","Dispara sangue perfurante","Verschießt durchdringendes Blut","貫通する血を発射する","Tire du sang perforant","Strzela przebijającą krwią","관통하는 피를 발사합니다",res://_Assets/Text/TextFiles/Synergies/WyrmBase.txt
+TXT_WYRMCRAWLER,"Slows all enemies hit with blood
+","Ralentiza a todos los enemigos alcanzados por la sangre","被血弹命中的所有敌人减速","Замедляет всех врагов, задетых кровью","Retarda todos os inimigos atingidos pelo sangue","Verlangsamt alle vom Blut getroffenen Gegner","血が命中したすべての敵を減速させる","Ralentit tous les ennemis touchés par le sang","Spowalnia wszystkich wrogów trafionych krwią","피에 맞은 모든 적을 느리게 만듭니다",res://_Assets/Text/TextFiles/Synergies/WyrmCrawler.txt
 TXT_WYRMHIVE,"Increased range
-",res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt
+","Mayor alcance","射程提升","Дальность увеличена","Alcance aumentado","Erhöhte Reichweite","射程アップ","Portée augmentée","Zwiększony zasięg","사거리가 증가합니다",res://_Assets/Text/TextFiles/Synergies/WyrmHive.txt
 TXT_WYRMMAW,"Close up kills heal
-Increased health, slightly increased damage 
-Upgraded : 
+Increased health, slightly increased damage
+Upgraded :
 	-Increased damage the closer enemies are
-",res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt
-TXT_WYRMOCCULUM,"Generates blood on multihit 
+","Las bajas a corta distancia curan
+Más salud y algo más de daño
+Mejorado :
+	-Más daño cuanto más cerca estén los enemigos","近距离击杀可回复生命
+生命值提升，伤害小幅提升
+升级：
+	-敌人越近，伤害越高","Убийства вблизи исцеляют
+Здоровье увеличено, урон немного повышен
+Улучшено :
+	-Чем ближе враги, тем выше урон","Abates de perto curam
+Mais vida e dano levemente maior
+Aprimorado :
+	-Mais dano quanto mais perto os inimigos estiverem","Nahkills heilen
+Mehr Leben, etwas mehr Schaden
+Verbessert :
+	-Mehr Schaden je näher die Gegner sind","近距離での撃破時に回復
+体力アップ、攻撃力もわずかにアップ
+強化：
+	-敵が近いほどダメージ増加","Les mises à mort au corps à corps soignent
+Santé accrue, dégâts légèrement augmentés
+Amélioré :
+	-Dégâts accrus selon la proximité des ennemis","Zabójstwa z bliska leczą
+Większe zdrowie, nieco większe obrażenia
+Ulepszone :
+	-Tym większe obrażenia, im bliżej są wrogowie","근접 처치 시 회복합니다
+체력이 증가하고 피해량이 약간 오릅니다
+강화 :
+	-적이 가까울수록 피해량 증가",res://_Assets/Text/TextFiles/Synergies/WyrmMaw.txt
+TXT_WYRMOCCULUM,"Generates blood on multihit
 Increased fire speed
-",res://_Assets/Text/TextFiles/Synergies/WyrmOcculum.txt
-TXT_WYRMSPINALOCCULUM,"Increased Damage When Being Attacked 
+","Genera sangre al golpear a varios enemigos
+Mayor cadencia de disparo","一次命中多个敌人时生成鲜血
+射速提升","Производит кровь при попадании по нескольким целям
+Скорострельность повышена","Gera sangue ao atingir vários inimigos
+Cadência de tiro maior","Erzeugt Blut bei Mehrfachtreffern
+Höhere Feuerrate","複数ヒットで血を生成
+発射速度アップ","Génère du sang en cas de tir multiple
+Cadence de tir accrue","Wytwarza krew przy trafieniu wielu celów
+Zwiększona szybkostrzelność","다중 적중 시 피를 생성합니다
+발사 속도가 증가합니다",res://_Assets/Text/TextFiles/Synergies/WyrmOcculum.txt
+TXT_WYRMSPINALOCCULUM,"Increased Damage When Being Attacked
 Increased Health
-",res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum.txt
+","Más daño mientras recibe ataques
+Más salud","受到攻击时伤害提升
+生命值提升","Урон повышается, пока его атакуют
+Здоровье увеличено","Mais dano enquanto é atacado
+Mais vida","Mehr Schaden während es angegriffen wird
+Mehr Leben","攻撃を受けている間、攻撃力アップ
+体力アップ","Dégâts accrus lorsqu'il est attaqué
+Santé accrue","Większe obrażenia, gdy jest atakowany
+Większe zdrowie","공격받는 동안 피해량이 증가합니다
+체력이 증가합니다",res://_Assets/Text/TextFiles/Synergies/WyrmSpinalOcculum.txt
