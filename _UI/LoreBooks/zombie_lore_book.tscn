@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://kf64j7pluy7o" path="res://_UI/LoreBooks/LoreBookVisual/interactive_book_2d.tscn" id="1_0r1la"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="1_d8001"]
-[ext_resource type="Texture2D" uid="uid://bnaf6vn58jiq5" path="res://_Assets/Codex/CodexWip3.2.png" id="1_v2ssp"]
+[ext_resource type="Texture2D" uid="uid://c88w7rcmeodvu" path="res://_Assets/Codex/CodexOpenPurple.png" id="1_v2ssp"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="1_votx1"]
 [ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="2_v2ssp"]
 [ext_resource type="Script" uid="uid://drb4eskwaylxl" path="res://_Common/ColorChangingScripts/change_color_watcher.gd" id="3_nhj8y"]
@@ -135,20 +135,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Codex" type="Sprite2D" parent="." unique_id=1329565331]
-self_modulate = Color(0.46799976, 0, 0.72, 1)
-position = Vector2(371, 206)
-scale = Vector2(0.515, 0.515)
-texture = ExtResource("1_v2ssp")
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=130120643]
-visible = false
 layout_mode = 0
 offset_left = -2.0
 offset_right = 38.0
 offset_bottom = 40.0
 scale = Vector2(18.6, 10.48)
 color = Color(0.20712, 0.032399993, 0.36, 1)
+
+[node name="Codex" type="Sprite2D" parent="." unique_id=1329565331]
+position = Vector2(371, 206)
+scale = Vector2(1.033, 1.033)
+texture = ExtResource("1_v2ssp")
 
 [node name="InteractiveBook2D" parent="." unique_id=640058282 instance=ExtResource("1_0r1la")]
 visible = false
