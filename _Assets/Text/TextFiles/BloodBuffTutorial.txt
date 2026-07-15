@@ -1,2 +1,2 @@
-Certain DEMONS have the ability to apply BLOOD BUFFS to other DEMONS. This means that when a compatible DEMON is placed in the BLOOD BUFF area of another DEMON, a special interaction will occur, making the DEMONS stronger.
+Certain [b]demons[/b] have the ability to apply [b]blood buffs[/b] to other [b]demons[/b]. This means that when a compatible [b]demon[/b] is placed in the [b]blood buff[/b] area of another [b]demon[/b], a special interaction will occur, making the [b]demons[/b] stronger.
  

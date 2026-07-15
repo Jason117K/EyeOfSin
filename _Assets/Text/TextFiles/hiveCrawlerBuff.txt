@@ -1,1 +1,1 @@
-HIVE's RECEIVE buffs from SPYDERS, causing slowed enemies killed by Wasps to explode.
+[b]hive[/b]'s [b]receive[/b] buffs from [b]spyders[/b], causing slowed enemies killed by Wasps to explode.

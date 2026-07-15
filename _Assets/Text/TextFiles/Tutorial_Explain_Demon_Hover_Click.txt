@@ -1,1 +1,1 @@
-[color=red]HOVER[/color] over a [color=red]DEMON[/color] to view its [color=red]RANGE[/color].
+[color=red][b]hover[/b][/color] over a [color=red][b]demon[/b][/color] to view its [color=red][b]range[/b][/color].

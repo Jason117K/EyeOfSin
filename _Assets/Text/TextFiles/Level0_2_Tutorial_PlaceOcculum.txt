@@ -1,2 +1,2 @@
-Summon the Occulum to start [color=red]GENERATING BLOOD[/color]. 
-Occulum get [color=red]MORE EXPENSIVE[/color] with each one summoned.
+Summon the Occulum to start [color=red][b]generating blood[/b][/color]. 
+Occulum get [color=red][b]more expensive[/b][/color] with each one summoned.

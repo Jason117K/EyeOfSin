@@ -1,1 +1,1 @@
-[color=red]OCCULUM BUFFS[/color] generally grant more [color=red]BLOOD[/color]
+[color=red][b]occulum buffs[/b][/color] generally grant more [color=red][b]blood[/b][/color]

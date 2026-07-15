@@ -1,1 +1,1 @@
-Do [color=red]NOT[/color] let [color=purple]ZOMBIES [/color][color=purple]TOUCH[/color] the [color=purple]SKULL TILES[/color] or you [color=red]LOSE[/color]. [color=red]CANNOT SUMMON[/color] on Skull Tiles.
+Do [color=red][b]not[/b][/color] let [color=purple][b]zombies[/b] [/color][color=purple][b]touch[/b][/color] the [color=purple][b]skull tiles[/b][/color] or you [color=red][b]lose[/b][/color]. [color=red][b]cannot summon[/b][/color] on Skull Tiles.

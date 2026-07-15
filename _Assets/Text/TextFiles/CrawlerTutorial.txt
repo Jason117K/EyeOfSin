@@ -1,6 +1,6 @@
-SPYDERS provide basic offense
+[b]spyders[/b] provide basic offense
  
 They shoot web balls that damage and slow enemies 
  
-Click the SPYDER to select it 
+Click the [b]spyder[/b] to select it 
 Click a tile to place it 

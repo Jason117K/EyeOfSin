@@ -1,1 +1,1 @@
-EYES give HIVES a reduced respawn time for their wasps.
+[b]eyes[/b] give [b]hives[/b] a reduced respawn time for their wasps.

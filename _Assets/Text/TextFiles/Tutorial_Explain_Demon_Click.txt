@@ -1,1 +1,1 @@
-Click a [color=red]DEMON[/color] to View its [color=red]INFO[/color]
+Click a [color=red][b]demon[/b][/color] to View its [color=red][b]info[/b][/color]

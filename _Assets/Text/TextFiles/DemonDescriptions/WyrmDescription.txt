@@ -1,1 +1,1 @@
-Shoots [color=red]PIERCING[/color] pressurized blood that can [color=red]HIT MULTIPLE ZOMBIES[/color]. Damage decreases per zombie hit. Gives buffs that generally increase [color=red]Area Of Effect potential[/color].
+Shoots [color=red][b]piercing[/b][/color] pressurized blood that can [color=red][b]hit multiple zombies[/b][/color]. Damage decreases per zombie hit. Gives buffs that generally increase [color=red]Area Of Effect potential[/color].

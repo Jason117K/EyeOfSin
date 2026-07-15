@@ -1,4 +1,4 @@
-- Crawler projectiles now generate [color=red]BLOOD[/color] on [color=red]HIT[/color]
-- Webbed enemies now give [color=red]BLOOD[/color] on [color=red]DEATH[/color]  
-- [color=red]RANGE INCREASED[/color]
-- [color=red]DAMAGE INCREASED[/color]
+- Crawler projectiles now generate [color=red][b]blood[/b][/color] on [color=red][b]hit[/b][/color]
+- Webbed enemies now give [color=red][b]blood[/b][/color] on [color=red][b]death[/b][/color]  
+- [color=red][b]range increased[/b][/color]
+- [color=red][b]damage increased[/b][/color]

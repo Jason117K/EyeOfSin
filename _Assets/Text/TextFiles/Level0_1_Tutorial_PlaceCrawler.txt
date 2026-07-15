@@ -1,1 +1,1 @@
-[color=red]Click[/color] on a pulsing tile to [color=red]SUMMON[/color] the [color=red]DEMON[/color]
+[color=red]Click[/color] on a pulsing tile to [color=red][b]summon[/b][/color] the [color=red][b]demon[/b][/color]

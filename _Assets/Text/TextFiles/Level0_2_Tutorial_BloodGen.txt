@@ -1,3 +1,3 @@
-Occulum [color=red]GENERATE BLOOD[/color] over time.
-Collect the blood by [color=red]HOVERING[/color] over it.
-Blood is eventually [color=red]AUTO-COLLECTED[/color] for [color=red]REDUCED VALUE[/color].
+Occulum [color=red][b]generate blood[/b][/color] over time.
+Collect the blood by [color=red][b]hovering[/b][/color] over it.
+Blood is eventually [color=red][b]auto-collected[/b][/color] for [color=red][b]reduced value[/b][/color].

@@ -1,1 +1,1 @@
-[color=red]DEFENSIVE[/color] DEMON. [color=red]Blocks[/color] [color=purple]Zombies[/color] from progressing. [color=red]BUFFS[/color] Demons giving them [color=red]VASTLY INCREASED HEALTH[/color] and [color=red]STALLING POWER.[/color]
+[color=red][b]defensive[/b][/color] [b]demon[/b]. [color=red]Blocks[/color] [color=purple]Zombies[/color] from progressing. [color=red][b]buffs[/b][/color] Demons giving them [color=red][b]vastly increased health[/b][/color] and [color=red][b]stalling power[/b].[/color]

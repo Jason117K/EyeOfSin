@@ -1,1 +1,1 @@
-Generating enough [color=red]MANA[/color] grants an [color=red]ULTIMATE CHARGE[/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].
+Generating enough [color=red][b]mana[/b][/color] grants an [color=red][b]ultimate charge[/b][/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].

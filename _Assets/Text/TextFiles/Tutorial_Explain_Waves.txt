@@ -1,1 +1,1 @@
-Click the [color=red]SKULL[/color] to call [color=purple]zombie[/color] [color=green]waves[/color] [color=red]EARLY[/color] for [color=red]BONUS BLOOD[/color]
+Click the [color=red][b]skull[/b][/color] to call [color=purple]zombie[/color] [color=green]waves[/color] [color=red][b]early[/b][/color] for [color=red][b]bonus blood[/b][/color]

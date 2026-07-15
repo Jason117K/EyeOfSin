@@ -1,1 +1,1 @@
-Protect your [color=red]HEALTH[/color] and [color=red]Defeat[/color] the [color=purple]ZOMBIES[/color] 
+Protect your [color=red][b]health[/b][/color] and [color=red]Defeat[/color] the [color=purple][b]zombies[/b][/color] 

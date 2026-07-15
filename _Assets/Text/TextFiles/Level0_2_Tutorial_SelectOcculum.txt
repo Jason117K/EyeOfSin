@@ -1,2 +1,2 @@
-You are almost out of [color=red]BLOOD[/color].
-Select an [color=red]OCCULUM[/color] 
+You are almost out of [color=red][b]blood[/b][/color].
+Select an [color=red][b]occulum[/b][/color] 

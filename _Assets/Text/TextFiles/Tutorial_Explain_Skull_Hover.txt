@@ -1,1 +1,1 @@
-[color=red]HOVER[/color] over a [color=red]SKULL[/color] to see incoming [color=purple]Zombies[/color] 
+[color=red][b]hover[/b][/color] over a [color=red][b]skull[/b][/color] to see incoming [color=purple]Zombies[/color] 

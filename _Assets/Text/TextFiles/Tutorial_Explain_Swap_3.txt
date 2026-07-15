@@ -1,1 +1,1 @@
-Swapping when an ability is [color=red]CURRENTLY ACTIVATED[/color] will [color=red]CANCEL it[/color] and [color=red]LENGTHEN[/color] the cooldown.
+Swapping when an ability is [color=red][b]currently activated[/b][/color] will [color=red][b]cancel[/b] it[/color] and [color=red][b]lengthen[/b][/color] the cooldown.

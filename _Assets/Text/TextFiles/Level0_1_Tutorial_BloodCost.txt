@@ -1,1 +1,1 @@
-Demons cost [color=red]BLOOD[/color] to [color=red]SUMMON[/color]
+Demons cost [color=red][b]blood[/b][/color] to [color=red][b]summon[/b][/color]

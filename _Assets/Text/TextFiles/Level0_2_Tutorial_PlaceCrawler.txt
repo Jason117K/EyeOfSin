@@ -1,3 +1,3 @@
-[color=red]ALL DEMONS[/color] can [color=red]BLOOD BUFF[/color] other Demons. 
-Blood Buffs are activated by placing a Demon in the red [color=red]BLOOD BUFF[/color] ZONE of another.
-Summon the [color=red]CRAWLER[/color] in the [color=red]BLOOD BUFF[/color] ZONE of the [color=red]OCCULUM[/color].
+[color=red][b]all demons[/b][/color] can [color=red][b]blood buff[/b][/color] other Demons. 
+Blood Buffs are activated by placing a Demon in the red [color=red][b]blood buff[/b][/color] [b]zone[/b] of another.
+Summon the [color=red][b]crawler[/b][/color] in the [color=red][b]blood buff[/b][/color] [b]zone[/b] of the [color=red][b]occulum[/b][/color].
