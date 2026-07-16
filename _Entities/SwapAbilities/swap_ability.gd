@@ -26,6 +26,7 @@ var _cooldown_running := false
 @onready var cooldown_visual := $Control/SwapAbilityCooldownPanel
 @onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/MarginContainer/SwapAbilityProgressBar
 
+var cooldown_glow := false 
 
 func _ready() -> void:
 	print("Swap Ability Ready")
@@ -146,6 +147,17 @@ func _physics_process(delta: float) -> void:
 		elif is_active == true:
 			cooldown_fill_amount = 0.0
 		swap_cooldown_visual_bar.value = cooldown_fill_amount
+		
+		if swap_cooldown_visual_bar.value >= 100:
+			if !is_locked:
+				cooldown_glow = true 
+				UiFx.add_pulsing_button_highlight(swap_cooldown_visual_bar)
+			else:
+				cooldown_glow = false
+				UiFx.remove_pulsing_button_highlight(swap_cooldown_visual_bar)
+		else:
+			cooldown_glow = false
+			UiFx.remove_pulsing_button_highlight(swap_cooldown_visual_bar)
 	
 	
 func set_current_visibility_layer(flag : int)->void:

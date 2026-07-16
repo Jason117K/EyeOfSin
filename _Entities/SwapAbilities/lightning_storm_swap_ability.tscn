@@ -10,7 +10,7 @@ size = Vector2(723, 271)
 script = ExtResource("1_oghj6")
 max_lightning_per_rain_1 = 0
 ability_duration = 10.0
-cooldown_duration = 45.0
+cooldown_duration = 5.0
 
 [node name="Control" parent="." unique_id=6644879 instance=ExtResource("2_plh2v")]
 ability_name = "ABILITY_LIGHTNING_CASCADE_TITLE"

@@ -1,88 +1,16 @@
 keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
-TXT_BASICOFFENSIVEDEFENSE,"Harness BLOOD from EYE summons and killing zombies
-
-Use BLOOD to create a mix of a offensive and defensive summons to best the zombie
+TXT_BASICOFFENSIVEDEFENSE,"Harness [b]blood[/b] from [b]eye[/b] summons and killing zombies 
+ 
+Use [b]blood[/b] to create a mix of a offensive and defensive summons to best the zombie 
 horde
-
-For info on upcoming waves, hover over the skull wave preview icon on the right
-","Consigue SANGRE con los OJOS invocados y matando zombis
-
-Usa la SANGRE para crear una mezcla de invocaciones ofensivas y defensivas con la que superar a la horda
-
-Para ver las próximas oleadas, pasa el cursor sobre el icono de calavera de la derecha
-","通过召唤魔眼和击杀僵尸获取鲜血
-
-用鲜血打造攻防兼备的召唤物阵容，击败僵尸大军
-
-想了解即将来袭的波次，将鼠标悬停在右侧的骷髅波次预览图标上
-","Добывайте КРОВЬ с помощью призванных ОЧЕЙ и убийства зомби
-
-Тратьте КРОВЬ на сочетание атакующих и защитных призывов, чтобы одолеть орду
-
-Чтобы узнать о будущих волнах, наведите курсор на значок черепа справа
-","Colete SANGUE com os OLHOS invocados e matando zumbis
-
-Use o SANGUE para criar uma mistura de invocações ofensivas e defensivas e vencer a horda
-
-Para ver as próximas ondas, passe o mouse sobre o ícone de caveira à direita
-","Gewinne BLUT durch beschworene AUGEN und getötete Zombies
-
-Nutze BLUT für eine Mischung aus offensiven und defensiven Beschwörungen um die Horde zu bezwingen
-
-Infos zu kommenden Wellen siehst du wenn du über das Totenkopf-Symbol rechts fährst
-","召喚したアイやゾンビ討伐で血を集めよう
-
-血を使って攻守バランスの取れた召喚陣を組み、ゾンビの大群を打ち破れ
-
-次のウェーブ情報は、右のドクロアイコンにカーソルを合わせて確認
-","Récoltez du SANG grâce aux ŒILS invoqués et en tuant des zombies
-
-Utilisez le SANG pour mêler invocations offensives et défensives et vaincre la horde
-
-Pour connaître les vagues à venir, survolez l'icône de crâne à droite
-","Zdobywaj KREW dzięki przyzwanym OKOM i zabijaniu zombie
-
-Używaj KRWI, by tworzyć mieszankę przyzwań ofensywnych i defensywnych i pokonać hordę
-
-Informacje o nadchodzących falach zobaczysz najeżdżając na ikonę czaszki po prawej
-","소환한 아이와 좀비 처치로 피를 모으세요
-
-피로 공격과 방어를 겸비한 소환수 조합을 만들어 좀비 무리를 물리치세요
-
-다가올 웨이브 정보는 오른쪽 해골 아이콘에 마우스를 올려 확인하세요
-",res://_Assets/Text/TextFiles/basicOffensiveDefense.txt
-TXT_BLOODBUFFTUTORIAL,"Certain DEMONS have the ability to apply BLOOD BUFFS to other DEMONS. This means that when a compatible DEMON is placed in the BLOOD BUFF area of another DEMON, a special interaction will occur, making the DEMONS stronger.
-
-","Ciertos DEMONIOS pueden aplicar MEJORAS DE SANGRE a otros DEMONIOS. Cuando un DEMONIO compatible se coloca en el área de MEJORA DE SANGRE de otro, se produce una interacción especial que los hace más fuertes.
-
-","某些恶魔能够为其他恶魔施加鲜血增益。将相容的恶魔放入另一恶魔的鲜血增益区域时，会产生特殊互动，使恶魔变得更强。
-
-","Некоторые ДЕМОНЫ умеют накладывать КРОВАВЫЕ УСИЛЕНИЯ на других ДЕМОНОВ. Если совместимого ДЕМОНА поставить в зону КРОВАВОГО УСИЛЕНИЯ другого, возникнет особое взаимодействие, делающее демонов сильнее.
-
-","Certos DEMÔNIOS podem aplicar BÊNÇÃOS DE SANGUE em outros DEMÔNIOS. Quando um DEMÔNIO compatível é colocado na área de BÊNÇÃO DE SANGUE de outro, ocorre uma interação especial que os torna mais fortes.
-
-","Bestimmte DÄMONEN können anderen DÄMONEN BLUT-BUFFS verleihen. Wird ein kompatibler DÄMON im BLUT-BUFF-Bereich eines anderen platziert, entsteht eine besondere Wechselwirkung die beide stärker macht.
-
-","一部の悪魔は他の悪魔に血の強化を与えられる。相性の良い悪魔を別の悪魔の血の強化エリアに配置すると特別な相互作用が起き、悪魔たちが強くなる。
-
-","Certains DÉMONS peuvent appliquer des BONUS DE SANG à d'autres DÉMONS. Quand un DÉMON compatible est placé dans la zone de BONUS DE SANG d'un autre, une interaction spéciale se produit et les rend plus forts.
-
-","Niektóre DEMONY potrafią nakładać KRWAWE WZMOCNIENIA na inne DEMONY. Gdy zgodny DEMON stanie w strefie KRWAWEGO WZMOCNIENIA innego, zajdzie szczególna interakcja czyniąca demony silniejszymi.
-
-","일부 악마는 다른 악마에게 피의 강화를 부여할 수 있습니다. 상성이 맞는 악마를 다른 악마의 피의 강화 영역에 배치하면 특별한 상호작용이 일어나 악마들이 강해집니다.
-
-",res://_Assets/Text/TextFiles/BloodBuffTutorial.txt
-TXT_BLOODBUFFTUTORIAL12,"BLOOD BUFFS are powerful buffs Demons can give to eachother denoted by the red squares around a demon when placing it. Place Demons in eachtothers BLOOD BUFF zones for powerful effects and transformations. Experiment! Or else . . .
-","Las MEJORAS DE SANGRE son potentes bonificaciones que los demonios se otorgan entre sí, señaladas por los cuadrados rojos al colocar un demonio. Coloca demonios en las zonas de MEJORA DE SANGRE de otros para lograr efectos y transformaciones poderosas. ¡Experimenta! O atente a las consecuencias...
-","鲜血增益是恶魔之间互相赋予的强大增益，放置恶魔时周围的红色方格即是其范围。把恶魔放进彼此的鲜血增益区域，可获得强大的效果与蜕变。大胆尝试吧！否则……
-","КРОВАВЫЕ УСИЛЕНИЯ — мощные бонусы, которыми демоны делятся друг с другом; при установке демона их зона показана красными квадратами. Ставьте демонов в зоны усиления друг друга ради мощных эффектов и превращений. Экспериментируйте! А иначе...
-","BÊNÇÃOS DE SANGUE são bônus poderosos que os demônios concedem uns aos outros, indicados pelos quadrados vermelhos ao posicionar um demônio. Coloque demônios nas zonas de BÊNÇÃO DE SANGUE uns dos outros para efeitos e transformações poderosas. Experimente! Ou então...
-","BLUT-BUFFS sind mächtige Boni die Dämonen einander geben; beim Platzieren zeigen rote Quadrate den Bereich an. Stelle Dämonen in die BLUT-BUFF-Zonen der anderen für mächtige Effekte und Verwandlungen. Experimentiere! Sonst . . .
-","血の強化は悪魔同士が与え合う強力なバフで、配置時に悪魔の周囲に出る赤いマスがその範囲。互いの血の強化ゾーンに悪魔を配置すれば、強力な効果や変身が得られる。試してみよう！さもないと……
-","Les BONUS DE SANG sont de puissants avantages que les démons s'accordent entre eux, indiqués par les carrés rouges lors du placement. Placez les démons dans les zones de BONUS DE SANG des autres pour des effets et transformations puissants. Expérimentez ! Sinon...
-","KRWAWE WZMOCNIENIA to potężne bonusy, które demony dają sobie nawzajem, oznaczone czerwonymi polami przy stawianiu demona. Stawiaj demony w strefach KRWAWYCH WZMOCNIEŃ innych, by uzyskać potężne efekty i przemiany. Eksperymentuj! Bo inaczej...
-","피의 강화는 악마들이 서로에게 주는 강력한 버프로, 악마를 배치할 때 주위의 붉은 칸으로 표시됩니다. 악마를 서로의 피의 강화 구역에 배치해 강력한 효과와 변신을 얻으세요. 실험해 보세요! 안 그러면……
-",res://_Assets/Text/TextFiles/BloodBuffTutorial12.txt
+ 
+For info on upcoming waves, hover over the skull wave preview icon on the right 
+",,,,,,,,,,res://_Assets/Text/TextFiles/basicOffensiveDefense.txt
+TXT_BLOODBUFFTUTORIAL,"Certain [b]demons[/b] have the ability to apply [b]blood buffs[/b] to other [b]demons[/b]. This means that when a compatible [b]demon[/b] is placed in the [b]blood buff[/b] area of another [b]demon[/b], a special interaction will occur, making the [b]demons[/b] stronger.
+ 
+",,,,,,,,,,res://_Assets/Text/TextFiles/BloodBuffTutorial.txt
+TXT_BLOODBUFFTUTORIAL12,"[b]blood buffs[/b] are powerful buffs Demons can give to eachother denoted by the red squares around a demon when placing it. Place Demons in eachtothers [b]blood buff[/b] zones for powerful effects and transformations. Experiment! Or else . . . 
+",,,,,,,,,,res://_Assets/Text/TextFiles/BloodBuffTutorial12.txt
 TXT_BLOODBUFFTUTORIAL2,"Eggwyrms can apply buffs to Occular Spine's, resulting in the Spine having increased health regeneration and the EggWyrm's beam becoming empowered when it passes through the spine.
 
 Place an Occular Spine within two tiles to the right of the EggWyrm
@@ -114,17 +42,8 @@ Postaw Oczny Kręg w odległości do dwóch pól na prawo od EggWyrma
 
 에그웜 오른쪽 두 칸 이내에 오큘러 스파인을 배치하세요
 ",res://_Assets/Text/TextFiles/BloodBuffTutorial2.txt
-TXT_BLOODBUFFTUTORIAL3,"Blood Buffs can have powerful effects that shouldn't be ignored. Eyes give general stat buffs to all summons in a one tile radius, while most other summons are more specific. Read up on specific combinations in the CODEX.
-","Las Mejoras de Sangre tienen efectos potentes que no conviene ignorar. Los Ojos dan bonificaciones generales a todas las invocaciones en un radio de una casilla, mientras que la mayoría de las demás son más específicas. Consulta las combinaciones en el CÓDICE.
-","鲜血增益的效果强大，不容忽视。魔眼会为一格范围内的所有召唤物提供全面属性增益，而其他大多数召唤物的增益更有针对性。具体组合请查阅图鉴。
-","Кровавые усиления дают мощные эффекты, которыми не стоит пренебрегать. Очи дают общие бонусы всем призывам в радиусе одной клетки, а большинство других призывов действуют избирательно. Подробнее о сочетаниях — в КОДЕКСЕ.
-","Bênçãos de Sangue têm efeitos poderosos que não devem ser ignorados. Olhos dão bônus gerais a todas as invocações num raio de uma casa, enquanto a maioria das outras é mais específica. Consulte as combinações no CÓDICE.
-","Blut-Buffs haben mächtige Effekte die man nicht ignorieren sollte. Augen geben allen Beschwörungen im Umkreis von einem Feld allgemeine Boni, die meisten anderen wirken gezielter. Details zu Kombinationen stehen im KODEX.
-","血の強化には見逃せない強力な効果がある。アイは1マス以内の全召喚物に全般的なステータス強化を与え、他の召喚物はより特化した強化を持つ。組み合わせの詳細はコデックスで確認しよう。
-","Les Bonus de Sang ont des effets puissants à ne pas négliger. Les Œils donnent des bonus généraux à toutes les invocations dans un rayon d'une case, la plupart des autres étant plus spécifiques. Consultez les combinaisons dans le CODEX.
-","Krwawe Wzmocnienia mają potężne efekty, których nie warto ignorować. Oka dają ogólne bonusy wszystkim przyzwaniom w promieniu jednego pola, a większość innych działa bardziej wybiórczo. Konkretne kombinacje znajdziesz w KODEKSIE.
-","피의 강화는 무시할 수 없는 강력한 효과를 지닙니다. 아이는 한 칸 반경의 모든 소환수에게 전반적인 능력치 강화를 주고, 다른 소환수 대부분은 더 특화된 강화를 줍니다. 구체적인 조합은 코덱스에서 확인하세요.
-",res://_Assets/Text/TextFiles/BloodBuffTutorial3.txt
+TXT_BLOODBUFFTUTORIAL3,"Blood Buffs can have powerful effects that shouldn't be ignored. Eyes give general stat buffs to all summons in a one tile radius, while most other summons are more specific. Read up on specific combinations in the [b]codex[/b].
+",,,,,,,,,,res://_Assets/Text/TextFiles/BloodBuffTutorial3.txt
 TXT_BUCKETHEADTUTORIAL,"Zombies that were once great warriors in life, now granted a sword of hell energy in death, enabling them to deal massive damage.
 
 - Slower than regular zombie
@@ -207,572 +126,86 @@ Zajrzyj do niego teraz!
 
 지금 확인해 보세요!
 ",res://_Assets/Text/TextFiles/CodexSelectExplain.txt
-TXT_CONEHEADTUTORIAL,"SEVERED have had their inner mutation evolve out of control
+TXT_CONEHEADTUTORIAL,"[b]severed[/b] have had their inner mutation evolve out of control
 due to loosing there brains.
 
-Stronger and faster than basic zombies.
-","Los CERCENADOS han visto su mutación interna descontrolarse
-al perder el cerebro.
+Stronger and faster than basic zombies. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/ConeheadTutorial.txt
+TXT_CRAWLERMAWBUFF,"Spyders can give [b]maws[/b] a buff that causes them to release an AOE explosion of slowing webs on death.
+",,,,,,,,,,res://_Assets/Text/TextFiles/CrawlerMawBuff.txt
+TXT_CRAWLERTUTORIAL,"[b]spyders[/b] provide basic offense
+ 
+They shoot web balls that damage and slow enemies 
+ 
+Click the [b]spyder[/b] to select it 
+Click a tile to place it 
+",,,,,,,,,,res://_Assets/Text/TextFiles/CrawlerTutorial.txt
+TXT_DANCERTUTORIAL,"[b]summoner[/b] Zombies are slow moving masses of flesh that spawn other zombies 
+from their putresence. 
 
-Más fuertes y rápidos que los zombis básicos.
-","断裂者因失去大脑，
-体内的变异已然失控。
-
-比基础僵尸更强更快。
-","У ОТСЕЧЁННЫХ внутренняя мутация вышла из-под контроля
-из-за потери мозга.
-
-Сильнее и быстрее обычных зомби.
-","Os DECEPADOS tiveram sua mutação interna fora de controle
-por terem perdido o cérebro.
-
-Mais fortes e rápidos que os zumbis básicos.
-","Bei den ABGETRENNTEN ist die innere Mutation außer Kontrolle geraten
-weil sie ihr Gehirn verloren haben.
-
-Stärker und schneller als einfache Zombies.
-","セヴァードは脳を失ったせいで
-体内の変異が制御不能に進化した。
-
-基本のゾンビより強く、速い。
-","Les TRANCHÉS ont vu leur mutation interne échapper à tout contrôle
-après avoir perdu leur cerveau.
-
-Plus forts et plus rapides que les zombies de base.
-","ODCIĘCI stracili mózgi, przez co ich wewnętrzna mutacja
-wymknęła się spod kontroli.
-
-Silniejsi i szybsi od podstawowych zombie.
-","세버드는 뇌를 잃은 탓에
-내부 변이가 통제 불능으로 진화했습니다.
-
-기본 좀비보다 강하고 빠릅니다.
-",res://_Assets/Text/TextFiles/ConeheadTutorial.txt
-TXT_CRAWLERMAWBUFF,"Spyders can give MAWS a buff that causes them to release an AOE explosion of slowing webs on death.
-","Las Araknias pueden dar a las FAUCES una mejora que libera una explosión de telarañas ralentizantes al morir.
-","魔蛛可以为巨口提供增益，使其死亡时释放减速蛛网的范围爆炸。
-","Паукки могут дать ПАСТЯМ усиление: при смерти те выпускают взрыв замедляющей паутины.
-","Aranhos podem dar às GOELAS um bônus que libera uma explosão de teias que retardam ao morrer.
-","Spynnen können SCHLÜNDEN einen Buff geben: Beim Tod setzen sie eine Flächenexplosion verlangsamender Netze frei.
-","スパイダーはマウに、死亡時に減速する巣の範囲爆発を放つ強化を与えられる。
-","Les Araignées peuvent accorder aux GUEULES un bonus : à leur mort, elles libèrent une explosion de toiles ralentissantes.
-","Pajonki mogą dać PASZCZOM wzmocnienie: po śmierci wyzwalają obszarową eksplozję spowalniających pajęczyn.
-","스파이더는 마우에게 죽을 때 감속 거미줄을 광역으로 터뜨리는 강화를 줄 수 있습니다.
-",res://_Assets/Text/TextFiles/CrawlerMawBuff.txt
-TXT_CRAWLERTUTORIAL,"SPYDERS provide basic offense
-
-They shoot web balls that damage and slow enemies
-
-Click the SPYDER to select it
-Click a tile to place it
-","Las ARAKNIAS son tu ofensiva básica
-
-Disparan bolas de telaraña que dañan y ralentizan a los enemigos
-
-Haz clic en la ARAKNIA para seleccionarla
-Haz clic en una casilla para colocarla
-","魔蛛提供基础火力
-
-它们发射蛛网球，伤害并减速敌人
-
-点击魔蛛以选择它
-点击格子以放置它
-","ПАУККИ — ваша базовая атака
-
-Они стреляют шарами паутины, которые ранят и замедляют врагов
-
-Нажмите на ПАУККА, чтобы выбрать его
-Нажмите на клетку, чтобы поставить его
-","Os ARANHOS são sua ofensiva básica
-
-Eles atiram bolas de teia que ferem e retardam os inimigos
-
-Clique no ARANHO para selecioná-lo
-Clique numa casa para posicioná-lo
-","SPYNNEN sind deine Basis-Offensive
-
-Sie verschießen Netzkugeln die Gegner verletzen und verlangsamen
-
-Klicke die SPYNNE an um sie auszuwählen
-Klicke ein Feld an um sie zu platzieren
-","スパイダーは基本の攻め手
-
-巣の玉を撃ち、敵にダメージと減速を与える
-
-スパイダーをクリックして選択
-マスをクリックして配置
-","Les ARAIGNÉES assurent l'offensive de base
-
-Elles tirent des boules de toile qui blessent et ralentissent les ennemis
-
-Cliquez sur l'ARAIGNÉE pour la sélectionner
-Cliquez sur une case pour la placer
-","PAJONKI to twoja podstawowa ofensywa
-
-Strzelają kulami pajęczyny, które ranią i spowalniają wrogów
-
-Kliknij PAJONKA, by go wybrać
-Kliknij pole, by go postawić
-","스파이더는 기본 공격을 담당합니다
-
-거미줄 구슬을 쏘아 적에게 피해를 주고 느리게 만듭니다
-
-스파이더를 클릭해 선택하세요
-칸을 클릭해 배치하세요
-",res://_Assets/Text/TextFiles/CrawlerTutorial.txt
-TXT_DANCERTUTORIAL,"SUMMONER Zombies are slow moving masses of flesh that spawn other zombies
-from their putresence.
-
-Will spawn up to 8 head zombies in an area around it. Make use of attacks
+Will spawn up to 8 head zombies in an area around it. Make use of attacks 
 affecting a large area to take them out.
-","Los zombis INVOCADORES son masas de carne lentas que engendran otros zombis
-a partir de su putrefacción.
+",,,,,,,,,,res://_Assets/Text/TextFiles/DancerTutorial.txt
+TXT_DIMENSIONTUTORIAL,"You have [b]two battles[/b] to fight. Hit Y to travel to the other dimension also besieged by Zombies. Defend both at the same time!
+",,,,,,,,,,res://_Assets/Text/TextFiles/DimensionTutorial.txt
+TXT_FIRSTTUTORIAL,"[b]zombies[/b] will walk right to left down the path, trying to feast on your blood.
+ 
+Use [b]demons[/b] to kill zombies before they reach the end of the path. 
+ 
+If too many zombies reach the end of the path, you die. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/FirstTutorial.txt
+TXT_FOOTBALLTUTORIAL,"[b]chimera[/b] are the result of the infernal tinkering of Blood Priests. Not content with solely warping human flesh, they fused the bodies of man and demon in an unholy union, creaturing a monster of relentless strength, speed, and ferocity. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/FootBallTutorial.txt
+TXT_HIVECRAWLERBUFF,"[b]hive[/b]'s [b]receive[/b] buffs from [b]spyders[/b], causing slowed enemies killed by Wasps to explode.
+",,,,,,,,,,res://_Assets/Text/TextFiles/hiveCrawlerBuff.txt
+TXT_HIVEMAWBUFF,"When [b]maw[/b]'s eat foes inlaid with the eggs of demonic wasps, they absorb and are empowered by the foreign hell energy, gaining increased range.
+",,,,,,,,,,res://_Assets/Text/TextFiles/HiveMawBuff.txt
+TXT_LASTBLOODBUFFTUTORIAL,"You will know a [b]blood buff[/b] is activated by the floating [b]blood[/b] around a given [b]summon[/b].
+",,,,,,,,,,res://_Assets/Text/TextFiles/LastBloodBuffTutorial.txt
+TXT_LEVEL0_1_TUTORIAL_BLOODCOST,"Demons cost [color=red][b]blood[/b][/color] to [color=red][b]summon[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt
+TXT_LEVEL0_1_TUTORIAL_GREENDIMENSION,"[color=red][b]defend[/b][/color] [color=#9b42df]Earth[/color] & [color=#18b800]Syn[/color] Simultaneously
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt
+TXT_LEVEL0_1_TUTORIAL_PLACECRAWLER,"[color=red]Click[/color] on a pulsing tile to [color=red][b]summon[/b][/color] the [color=red][b]demon[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceCrawler.txt
+TXT_LEVEL0_1_TUTORIAL_PRESSY,"[b]press[/b] [color=red]Y[/color] to [color=red][b]swap[/b][/color] from [color=purple][b]earth[/b][/color] to the [color=green][b]syn dimension[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt
+TXT_LEVEL0_1_TUTORIAL_SELECTCRAWLER,"Click a [color=red][b]demon ruune[/b][/color] to Select It
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectCrawler.txt
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS,"- Occulum [color=red][b]blood[/b][/color] now [color=red][b]damages[/b][/color] nearby enemies on [color=red][b]pickup[/b][/color]
+- Occulum now [color=red][b]generates blood faster[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_2,"- Crawler projectiles now generate [color=red][b]blood[/b][/color] on [color=red][b]hit[/b][/color]
+- Webbed enemies now give [color=red][b]blood[/b][/color] on [color=red][b]death[/b][/color]  
+- [color=red][b]range increased[/b][/color]
+- [color=red][b]damage increased[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_3,"Blood Buffs are [color=red][b]crucial[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_3.txt
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_4,"[color=red][b]crawler buffs[/b][/color] generally [color=red][b]slow[/b][/color] down [color=purple]Zombies[/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_4.txt
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_5,"[color=red][b]occulum buffs[/b][/color] generally grant more [color=red][b]blood[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_5.txt
+TXT_LEVEL0_2_TUTORIAL_BLOODGEN,"Occulum [color=red][b]generate blood[/b][/color] over time.
+Collect the blood by [color=red][b]hovering[/b][/color] over it.
+Blood is eventually [color=red][b]auto-collected[/b][/color] for [color=red][b]reduced value[/b][/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt
+TXT_LEVEL0_2_TUTORIAL_INVALIDCRAWLERPLACEMENT,"Wrong position! Place the [b]spyder[/b] directly [b]behind[/b] the Eye.
 
-Generan hasta 8 zombis a su alrededor. Usa ataques
-de gran área para eliminarlos.
-","召唤者僵尸是行动迟缓的血肉之躯，
-能从腐肉中孵化其他僵尸。
-
-会在周围区域生成至多8只僵尸。善用
-大范围攻击将其消灭。
-","Зомби-ПРИЗЫВАТЕЛИ — медлительные груды плоти, порождающие других зомби
-из собственного гниения.
-
-Создают до 8 зомби вокруг себя. Используйте атаки
-по большой площади, чтобы их уничтожить.
-","Zumbis INVOCADORES são massas de carne lentas que geram outros zumbis
-de sua putrefação.
-
-Geram até 8 zumbis na área ao redor. Use ataques
-de grande área para eliminá-los.
-","BESCHWÖRER-Zombies sind träge Fleischmassen die aus ihrer Fäulnis
-weitere Zombies hervorbringen.
-
-Erzeugen bis zu 8 Zombies in ihrer Umgebung. Setze
-großflächige Angriffe ein um sie auszuschalten.
-","サモナーゾンビは動きの鈍い肉塊で、
-その腐敗から他のゾンビを生み出す。
-
-周囲に最大8体のゾンビを発生させる。広範囲
-攻撃を活用して仕留めよう。
-","Les zombies INVOCATEURS sont des masses de chair lentes qui engendrent d'autres zombies
-de leur putréfaction.
-
-Ils font apparaître jusqu'à 8 zombies autour d'eux. Utilisez des attaques
-de grande zone pour les éliminer.
-","Zombie PRZYWOŁYWACZE to powolne masy mięsa, które z własnej zgnilizny
-płodzą kolejne zombie.
-
-Tworzą do 8 zombie w okolicy. Używaj ataków
-obszarowych, by się ich pozbyć.
-","소환사 좀비는 느리게 움직이는 살덩어리로,
-부패한 몸에서 다른 좀비를 낳습니다.
-
-주변에 최대 8마리의 좀비를 생성합니다. 광역
-공격을 활용해 처치하세요.
-",res://_Assets/Text/TextFiles/DancerTutorial.txt
-TXT_DIMENSIONTUTORIAL,"You have TWO BATTLES to fight. Hit Y to travel to the other dimension also besieged by Zombies. Defend both at the same time!
-","Libras DOS BATALLAS. Pulsa Y para viajar a la otra dimensión, también asediada por zombis. ¡Defiende ambas a la vez!
-","你要同时打两场战斗。按 Y 前往同样被僵尸围攻的另一维度。同时守住两边！
-","Вам предстоит ДВЕ БИТВЫ. Нажмите Y, чтобы перенестись в другое измерение, тоже осаждённое зомби. Обороняйте оба одновременно!
-","Você trava DUAS BATALHAS. Aperte Y para viajar à outra dimensão, também sitiada por zumbis. Defenda as duas ao mesmo tempo!
-","Du kämpfst ZWEI SCHLACHTEN. Drücke Y um in die andere Dimension zu reisen die ebenfalls von Zombies belagert wird. Verteidige beide gleichzeitig!
-","戦いは2つ同時に進行する。Yキーで、同じくゾンビに包囲されたもう一つの次元へ移動。両方を同時に守り抜け！
-","Vous menez DEUX BATAILLES. Appuyez sur Y pour passer dans l'autre dimension, elle aussi assiégée par les zombies. Défendez les deux en même temps !
-","Toczysz DWIE BITWY. Wciśnij Y, by przenieść się do drugiego wymiaru, również obleganego przez zombie. Broń obu naraz!
-","당신은 두 개의 전투를 치러야 합니다. Y 키를 눌러 마찬가지로 좀비에게 포위된 다른 차원으로 이동하세요. 양쪽을 동시에 지켜내세요!
-",res://_Assets/Text/TextFiles/DimensionTutorial.txt
-TXT_FIRSTTUTORIAL,"ZOMBIES will walk right to left down the path, trying to feast on your blood.
-
-Use DEMONS to kill zombies before they reach the end of the path.
-
-If too many zombies reach the end of the path, you die.
-","Los ZOMBIS avanzarán por el camino de derecha a izquierda para darse un festín con tu sangre.
-
-Usa DEMONIOS para matarlos antes de que lleguen al final del camino.
-
-Si llegan demasiados zombis al final del camino, mueres.
-","僵尸会沿着道路从右向左行进，企图饱餐你的鲜血。
-
-用恶魔在僵尸抵达道路尽头前将其消灭。
-
-若有太多僵尸抵达道路尽头，你就会死。
-","ЗОМБИ будут идти по дорожке справа налево, мечтая полакомиться вашей кровью.
-
-Используйте ДЕМОНОВ, чтобы убивать зомби, пока те не дошли до конца дорожки.
-
-Если до конца дорожки доберётся слишком много зомби — вы погибнете.
-","Os ZUMBIS caminharão da direita para a esquerda pela trilha, tentando se banquetear com seu sangue.
-
-Use DEMÔNIOS para matá-los antes que cheguem ao fim da trilha.
-
-Se zumbis demais chegarem ao fim da trilha, você morre.
-","ZOMBIES laufen den Pfad von rechts nach links entlang und wollen sich an deinem Blut laben.
-
-Setze DÄMONEN ein um sie zu töten bevor sie das Ende des Pfads erreichen.
-
-Erreichen zu viele Zombies das Ende des Pfads, stirbst du.
-","ゾンビは道を右から左へ進み、おまえの血を貪ろうとする。
-
-悪魔を使い、道の終わりに着く前にゾンビを倒せ。
-
-道の終わりに到達したゾンビが多すぎると、死が待っている。
-","Les ZOMBIES avanceront de droite à gauche sur le chemin pour se repaître de votre sang.
-
-Utilisez des DÉMONS pour les tuer avant qu'ils n'atteignent le bout du chemin.
-
-Si trop de zombies atteignent le bout du chemin, vous mourrez.
-","ZOMBIE będą szły ścieżką z prawa na lewo, chcąc ucztować na twojej krwi.
-
-Używaj DEMONÓW, by je zabijać, nim dotrą do końca ścieżki.
-
-Jeśli zbyt wiele zombie dotrze do końca ścieżki — zginiesz.
-","좀비는 길을 따라 오른쪽에서 왼쪽으로 걸어오며 당신의 피를 노립니다.
-
-악마를 이용해 좀비가 길 끝에 닿기 전에 처치하세요.
-
-너무 많은 좀비가 길 끝에 도달하면 당신은 죽습니다.
-",res://_Assets/Text/TextFiles/FirstTutorial.txt
-TXT_FOOTBALLTUTORIAL,"CHIMERA are the result of the infernal tinkering of Blood Priests. Not content with solely warping human flesh, they fused the bodies of man and demon in an unholy union, creaturing a monster of relentless strength, speed, and ferocity.
-","Las QUIMERAS son fruto de los experimentos infernales de los Sacerdotes de Sangre. No contentos con deformar solo carne humana, fusionaron los cuerpos de hombre y demonio en una unión impía, creando un monstruo de fuerza, velocidad y ferocidad implacables.
-","奇美拉是血祭司地狱实验的产物。他们不满足于仅仅扭曲人类血肉，便将人与恶魔之躯以邪秽之术融合，造出了一头拥有无尽力量、速度与凶残的怪物。
-","ХИМЕРЫ — плод адских опытов Жрецов Крови. Не довольствуясь искажением человеческой плоти, они слили тела человека и демона в нечестивом союзе, породив чудовище безжалостной силы, скорости и свирепости.
-","As QUIMERAS são o resultado das experiências infernais dos Sacerdotes de Sangue. Não contentes em deformar apenas carne humana, fundiram os corpos de homem e demônio numa união profana, criando um monstro de força, velocidade e ferocidade implacáveis.
-","CHIMÄREN sind das Ergebnis der höllischen Bastelei der Blutpriester. Nicht zufrieden damit nur Menschenfleisch zu verformen, verschmolzen sie Mensch und Dämon in unheiliger Vereinigung — ein Monster von unerbittlicher Stärke, Geschwindigkeit und Wildheit.
-","キメラは血の司祭たちの地獄めいた実験の産物。人の肉体を歪めるだけでは飽き足らず、人と悪魔の体を邪悪な融合で結びつけ、容赦なき力と速さと凶暴さを持つ怪物を生み出した。
-","Les CHIMÈRES sont le fruit des bricolages infernaux des Prêtres de Sang. Non contents de déformer la chair humaine, ils ont fusionné les corps d'homme et de démon en une union impie, créant un monstre d'une force, d'une vitesse et d'une férocité implacables.
-","CHIMERY to owoc piekielnych eksperymentów Kapłanów Krwi. Nie zadowalając się wypaczaniem ludzkiego ciała, złączyli ciała człowieka i demona w bezbożnej unii, tworząc potwora o nieubłaganej sile, szybkości i dzikości.
-","키메라는 피의 사제들이 벌인 지옥 같은 실험의 산물입니다. 인간의 육신을 뒤트는 것에 만족하지 못한 그들은 인간과 악마의 몸을 부정한 결합으로 융합해, 무자비한 힘과 속도와 흉포함을 지닌 괴물을 만들어냈습니다.
-",res://_Assets/Text/TextFiles/FootBallTutorial.txt
-TXT_HIVECRAWLERBUFF,"HIVE's RECEIVE buffs from SPYDERS, causing slowed enemies killed by Wasps to explode.
-","Las COLMENAS RECIBEN mejoras de las ARAKNIAS: los enemigos ralentizados que maten las avispas explotan.
-","蜂巢可从魔蛛处获得增益：黄蜂击杀的减速敌人会爆炸。
-","УЛЬИ ПОЛУЧАЮТ усиления от ПАУККОВ: замедленные враги, убитые осами, взрываются.
-","As COLMEIAS RECEBEM bônus dos ARANHOS: inimigos retardados mortos pelas vespas explodem.
-","NESTER ERHALTEN Buffs von SPYNNEN: Verlangsamte Gegner die von Wespen getötet werden explodieren.
-","ハイブはスパイダーから強化を受け、蜂に倒された減速中の敵が爆発するようになる。
-","Les RUCHES REÇOIVENT des bonus des ARAIGNÉES : les ennemis ralentis tués par les guêpes explosent.
-","ULE OTRZYMUJĄ wzmocnienia od PAJONKÓW: spowolnieni wrogowie zabici przez osy wybuchają.
-","하이브는 스파이더에게서 강화를 받아, 말벌이 처치한 감속된 적이 폭발하게 됩니다.
-",res://_Assets/Text/TextFiles/hiveCrawlerBuff.txt
-TXT_HIVEMAWBUFF,"When MAW's eat foes inlaid with the eggs of demonic wasps, they absorb and are empowered by the foreign hell energy, gaining increased range.
-","Cuando las FAUCES devoran enemigos incrustados con huevos de avispas demoníacas, absorben esa energía infernal ajena y se fortalecen, ganando alcance.
-","当巨口吞下嵌有恶魔黄蜂卵的敌人时，会吸收其中的异界地狱能量而变强，射程得以提升。
-","Когда ПАСТИ съедают врагов, начинённых яйцами демонических ос, они впитывают чужую адскую энергию и усиливаются, получая большую дальность.
-","Quando as GOELAS devoram inimigos incrustados com ovos de vespas demoníacas, absorvem essa energia infernal alheia e se fortalecem, ganhando mais alcance.
-","Frisst der SCHLUND Gegner voller Eier dämonischer Wespen, absorbiert er die fremde Höllenenergie und wird gestärkt — mit erhöhter Reichweite.
-","マウが悪魔蜂の卵を宿した敵を喰らうと、異質な地獄のエネルギーを吸収して強化され、射程が伸びる。
-","Quand les GUEULES dévorent des ennemis incrustés d'œufs de guêpes démoniaques, elles absorbent cette énergie infernale étrangère et gagnent en portée.
-","Gdy PASZCZE zjedzą wrogów naszpikowanych jajami demonicznych os, wchłaniają obcą piekielną energię i zyskują większy zasięg.
-","마우가 악마 말벌의 알이 박힌 적을 삼키면, 그 이질적인 지옥 에너지를 흡수해 강화되어 사거리가 늘어납니다.
-",res://_Assets/Text/TextFiles/HiveMawBuff.txt
-TXT_LASTBLOODBUFFTUTORIAL,"You will know a BLOOD BUFF is activated by the floating BLOOD around a given SUMMON.
-","Sabrás que una MEJORA DE SANGRE está activa por la SANGRE que flota alrededor de la invocación.
-","当召唤物周围漂浮着鲜血时，就说明鲜血增益已激活。
-","О том, что КРОВАВОЕ УСИЛЕНИЕ активно, скажет КРОВЬ, парящая вокруг призыва.
-","Você saberá que uma BÊNÇÃO DE SANGUE está ativa pelo SANGUE flutuando ao redor da invocação.
-","Ob ein BLUT-BUFF aktiv ist erkennst du am schwebenden BLUT um die jeweilige Beschwörung.
-","召喚物の周りに血が浮かんでいれば、血の強化が発動している証だ。
-","Vous saurez qu'un BONUS DE SANG est actif grâce au SANG flottant autour de l'invocation.
-","O tym, że KRWAWE WZMOCNIENIE działa, świadczy KREW unosząca się wokół przyzwania.
-","소환수 주위에 떠다니는 피가 보이면 피의 강화가 발동 중이라는 뜻입니다.
-",res://_Assets/Text/TextFiles/LastBloodBuffTutorial.txt
-TXT_LEVEL0_1_TUTORIAL_BLOODCOST,"Demons cost [color=red]BLOOD[/color] to [color=red]SUMMON[/color]
-","[color=red]INVOCAR[/color] demonios cuesta [color=red]SANGRE[/color]
-","[color=red]召唤[/color]恶魔需要消耗[color=red]鲜血[/color]
-","[color=red]ПРИЗЫВ[/color] демонов стоит [color=red]КРОВИ[/color]
-","[color=red]INVOCAR[/color] demônios custa [color=red]SANGUE[/color]
-","Dämonen zu [color=red]BESCHWÖREN[/color] kostet [color=red]BLUT[/color]
-","悪魔の[color=red]召喚[/color]には[color=red]血[/color]が必要
-","[color=red]INVOQUER[/color] des démons coûte du [color=red]SANG[/color]
-","[color=red]PRZYZWANIE[/color] demonów kosztuje [color=red]KREW[/color]
-","악마를 [color=red]소환[/color]하려면 [color=red]피[/color]가 필요합니다
-",res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt
-TXT_LEVEL0_1_TUTORIAL_GREENDIMENSION,"[color=red]DEFEND[/color] [color=#9b42df]Earth[/color] & [color=#18b800]Syn[/color] Simultaneously
-","[color=red]DEFIENDE[/color] la [color=#9b42df]Tierra[/color] y [color=#18b800]Syn[/color] a la vez
-","同时[color=red]守护[/color][color=#9b42df]地球[/color]与[color=#18b800]辛恩[/color]
-","[color=red]ЗАЩИЩАЙТЕ[/color] [color=#9b42df]Землю[/color] и [color=#18b800]Син[/color] одновременно
-","[color=red]DEFENDA[/color] a [color=#9b42df]Terra[/color] e [color=#18b800]Syn[/color] ao mesmo tempo
-","[color=red]VERTEIDIGE[/color] [color=#9b42df]Erde[/color] & [color=#18b800]Syn[/color] gleichzeitig
-","[color=#9b42df]地球[/color]と[color=#18b800]シン[/color]を同時に[color=red]防衛[/color]せよ
-","[color=red]DÉFENDEZ[/color] la [color=#9b42df]Terre[/color] et [color=#18b800]Syn[/color] simultanément
-","[color=red]BROŃ[/color] [color=#9b42df]Ziemi[/color] i [color=#18b800]Syn[/color] jednocześnie
-","[color=#9b42df]지구[/color]와 [color=#18b800]신[/color]을 동시에 [color=red]지켜내세요[/color]
-",res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt
-TXT_LEVEL0_1_TUTORIAL_PLACECRAWLER,"[color=red]Click[/color] on a pulsing tile to [color=red]SUMMON[/color] the [color=red]DEMON[/color]
-","[color=red]Haz clic[/color] en una casilla parpadeante para [color=red]INVOCAR[/color] al [color=red]DEMONIO[/color]
-","[color=red]点击[/color]闪烁的格子来[color=red]召唤[/color][color=red]恶魔[/color]
-","[color=red]Нажмите[/color] на мерцающую клетку, чтобы [color=red]ПРИЗВАТЬ[/color] [color=red]ДЕМОНА[/color]
-","[color=red]Clique[/color] numa casa pulsante para [color=red]INVOCAR[/color] o [color=red]DEMÔNIO[/color]
-","[color=red]Klicke[/color] auf ein pulsierendes Feld um den [color=red]DÄMON[/color] zu [color=red]BESCHWÖREN[/color]
-","点滅するマスを[color=red]クリック[/color]して[color=red]悪魔[/color]を[color=red]召喚[/color]しよう
-","[color=red]Cliquez[/color] sur une case clignotante pour [color=red]INVOQUER[/color] le [color=red]DÉMON[/color]
-","[color=red]Kliknij[/color] pulsujące pole, by [color=red]PRZYZWAĆ[/color] [color=red]DEMONA[/color]
-","깜빡이는 칸을 [color=red]클릭[/color]해 [color=red]악마[/color]를 [color=red]소환[/color]하세요
-",res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceCrawler.txt
-TXT_LEVEL0_1_TUTORIAL_PRESSY,"PRESS [color=red]Y[/color] to [color=red]SWAP[/color] from [color=purple]EARTH[/color] to the [color=green]SYN DIMENSION[/color]
-","PULSA [color=red]Y[/color] para [color=red]CAMBIAR[/color] de la [color=purple]TIERRA[/color] a la [color=green]DIMENSIÓN SYN[/color]
-","按 [color=red]Y[/color] 从[color=purple]地球[/color][color=red]切换[/color]到[color=green]辛恩维度[/color]
-","НАЖМИТЕ [color=red]Y[/color], чтобы [color=red]ПЕРЕЙТИ[/color] с [color=purple]ЗЕМЛИ[/color] в [color=green]ИЗМЕРЕНИЕ СИН[/color]
-","APERTE [color=red]Y[/color] para [color=red]TROCAR[/color] da [color=purple]TERRA[/color] para a [color=green]DIMENSÃO SYN[/color]
-","DRÜCKE [color=red]Y[/color] um von der [color=purple]ERDE[/color] in die [color=green]SYN-DIMENSION[/color] zu [color=red]WECHSELN[/color]
-","[color=red]Y[/color]キーで[color=purple]地球[/color]から[color=green]シン次元[/color]へ[color=red]転移[/color]
-","APPUYEZ SUR [color=red]Y[/color] pour [color=red]PASSER[/color] de la [color=purple]TERRE[/color] à la [color=green]DIMENSION SYN[/color]
-","WCIŚNIJ [color=red]Y[/color], by [color=red]PRZESKOCZYĆ[/color] z [color=purple]ZIEMI[/color] do [color=green]WYMIARU SYN[/color]
-","[color=red]Y[/color] 키를 눌러 [color=purple]지구[/color]에서 [color=green]신 차원[/color]으로 [color=red]전환[/color]하세요
-",res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt
-TXT_LEVEL0_1_TUTORIAL_SELECTCRAWLER,"Click a [color=red]DEMON RUNE[/color] to Select It
-","Haz clic en una [color=red]RUNA DE DEMONIO[/color] para seleccionarla
-","点击[color=red]恶魔符文[/color]以选择
-","Нажмите на [color=red]РУНУ ДЕМОНА[/color], чтобы выбрать её
-","Clique numa [color=red]RUNA DE DEMÔNIO[/color] para selecioná-la
-","Klicke eine [color=red]DÄMONENRUNE[/color] an um sie auszuwählen
-","[color=red]悪魔のルーン[/color]をクリックして選択しよう
-","Cliquez sur une [color=red]RUNE DE DÉMON[/color] pour la sélectionner
-","Kliknij [color=red]RUNĘ DEMONA[/color], by ją wybrać
-","[color=red]악마 룬[/color]을 클릭해 선택하세요
-",res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectCrawler.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS,"- Occulum [color=red]BLOOD[/color] now [color=red]DAMAGES[/color] nearby enemies on [color=red]PICKUP[/color]
-- Occulum now [color=red]GENERATES BLOOD FASTER[/color]
-","- La [color=red]SANGRE[/color] del Occulum ahora [color=red]DAÑA[/color] a los enemigos cercanos al [color=red]RECOGERLA[/color]
-- El Occulum ahora [color=red]GENERA SANGRE MÁS RÁPIDO[/color]
-","- [color=red]拾取[/color]奥库伦的[color=red]鲜血[/color]时会对附近敌人造成[color=red]伤害[/color]
-- 奥库伦[color=red]产血速度提升[/color]
-","- [color=red]КРОВЬ[/color] Оккулума теперь [color=red]РАНИТ[/color] ближайших врагов при [color=red]ПОДБОРЕ[/color]
-- Оккулум теперь [color=red]ПРОИЗВОДИТ КРОВЬ БЫСТРЕЕ[/color]
-","- O [color=red]SANGUE[/color] do Occulum agora [color=red]FERE[/color] inimigos próximos ao ser [color=red]COLETADO[/color]
-- O Occulum agora [color=red]GERA SANGUE MAIS RÁPIDO[/color]
-","- Occulum-[color=red]BLUT[/color] [color=red]VERLETZT[/color] beim [color=red]AUFSAMMELN[/color] jetzt nahe Gegner
-- Das Occulum [color=red]ERZEUGT BLUT jetzt SCHNELLER[/color]
-","- オキュラムの[color=red]血[/color]は[color=red]回収時[/color]に周囲の敵に[color=red]ダメージ[/color]を与える
-- オキュラムの[color=red]血の生成が速くなる[/color]
-","- Le [color=red]SANG[/color] de l'Occulum [color=red]BLESSE[/color] désormais les ennemis proches au [color=red]RAMASSAGE[/color]
-- L'Occulum [color=red]GÉNÈRE DU SANG PLUS VITE[/color]
-","- [color=red]KREW[/color] Occulum przy [color=red]ZEBRANIU[/color] [color=red]RANI[/color] teraz pobliskich wrogów
-- Occulum [color=red]WYTWARZA KREW SZYBCIEJ[/color]
-","- 오큘럼의 [color=red]피[/color]를 [color=red]획득[/color]하면 주변 적에게 [color=red]피해[/color]를 줍니다
-- 오큘럼의 [color=red]피 생성이 빨라집니다[/color]
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_2,"- Crawler projectiles now generate [color=red]BLOOD[/color] on [color=red]HIT[/color]
-- Webbed enemies now give [color=red]BLOOD[/color] on [color=red]DEATH[/color]
-- [color=red]RANGE INCREASED[/color]
-- [color=red]DAMAGE INCREASED[/color]
-","- Los proyectiles del Crawler generan [color=red]SANGRE[/color] al [color=red]IMPACTAR[/color]
-- Los enemigos atrapados dan [color=red]SANGRE[/color] al [color=red]MORIR[/color]
-- [color=red]MAYOR ALCANCE[/color]
-- [color=red]MAYOR DAÑO[/color]
-","- 爬行者的弹体[color=red]命中[/color]时产出[color=red]鲜血[/color]
-- 被蛛网缠住的敌人[color=red]死亡[/color]时掉落[color=red]鲜血[/color]
-- [color=red]射程提升[/color]
-- [color=red]伤害提升[/color]
-","- Снаряды Ползуна теперь дают [color=red]КРОВЬ[/color] при [color=red]ПОПАДАНИИ[/color]
-- Опутанные враги дают [color=red]КРОВЬ[/color] после [color=red]СМЕРТИ[/color]
-- [color=red]ДАЛЬНОСТЬ УВЕЛИЧЕНА[/color]
-- [color=red]УРОН УВЕЛИЧЕН[/color]
-","- Projéteis do Crawler agora geram [color=red]SANGUE[/color] ao [color=red]ACERTAR[/color]
-- Inimigos presos na teia dão [color=red]SANGUE[/color] ao [color=red]MORRER[/color]
-- [color=red]ALCANCE AUMENTADO[/color]
-- [color=red]DANO AUMENTADO[/color]
-","- Crawler-Geschosse erzeugen bei [color=red]TREFFERN[/color] jetzt [color=red]BLUT[/color]
-- Eingesponnene Gegner geben beim [color=red]TOD[/color] [color=red]BLUT[/color]
-- [color=red]REICHWEITE ERHÖHT[/color]
-- [color=red]SCHADEN ERHÖHT[/color]
-","- クローラーの弾は[color=red]命中[/color]時に[color=red]血[/color]を生成
-- 巣に絡まった敵は[color=red]死亡[/color]時に[color=red]血[/color]を落とす
-- [color=red]射程アップ[/color]
-- [color=red]ダメージアップ[/color]
-","- Les projectiles du Crawler génèrent du [color=red]SANG[/color] à l'[color=red]IMPACT[/color]
-- Les ennemis englués donnent du [color=red]SANG[/color] à leur [color=red]MORT[/color]
-- [color=red]PORTÉE AUGMENTÉE[/color]
-- [color=red]DÉGÂTS AUGMENTÉS[/color]
-","- Pociski Crawlera generują [color=red]KREW[/color] przy [color=red]TRAFIENIU[/color]
-- Wrogowie w pajęczynie oddają [color=red]KREW[/color] po [color=red]ŚMIERCI[/color]
-- [color=red]ZWIĘKSZONY ZASIĘG[/color]
-- [color=red]ZWIĘKSZONE OBRAŻENIA[/color]
-","- 크롤러의 투사체가 [color=red]명중[/color] 시 [color=red]피[/color]를 생성합니다
-- 거미줄에 걸린 적이 [color=red]죽을 때[/color] [color=red]피[/color]를 남깁니다
-- [color=red]사거리 증가[/color]
-- [color=red]피해량 증가[/color]
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_3,"Blood Buffs are [color=red]CRUCIAL[/color]
-","Las Mejoras de Sangre son [color=red]CRUCIALES[/color]
-","鲜血增益[color=red]至关重要[/color]
-","Кровавые усиления [color=red]КРАЙНЕ ВАЖНЫ[/color]
-","As Bênçãos de Sangue são [color=red]CRUCIAIS[/color]
-","Blut-Buffs sind [color=red]ENTSCHEIDEND[/color]
-","血の強化は[color=red]極めて重要[/color]
-","Les Bonus de Sang sont [color=red]CRUCIAUX[/color]
-","Krwawe Wzmocnienia są [color=red]KLUCZOWE[/color]
-","피의 강화는 [color=red]필수[/color]입니다
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_3.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_4,"[color=red]CRAWLER BUFFS[/color] generally [color=red]SLOW[/color] down [color=purple]Zombies[/color]
-","Las [color=red]MEJORAS DEL CRAWLER[/color] suelen [color=red]RALENTIZAR[/color] a los [color=purple]zombis[/color]
-","[color=red]爬行者增益[/color]通常会[color=red]减缓[/color][color=purple]僵尸[/color]
-","[color=red]УСИЛЕНИЯ ПОЛЗУНА[/color] обычно [color=red]ЗАМЕДЛЯЮТ[/color] [color=purple]зомби[/color]
-","Os [color=red]BÔNUS DO CRAWLER[/color] geralmente [color=red]RETARDAM[/color] os [color=purple]zumbis[/color]
-","[color=red]CRAWLER-BUFFS[/color] machen [color=purple]Zombies[/color] meist [color=red]LANGSAMER[/color]
-","[color=red]クローラーの強化[/color]は主に[color=purple]ゾンビ[/color]を[color=red]減速[/color]させる
-","Les [color=red]BONUS DU CRAWLER[/color] [color=red]RALENTISSENT[/color] en général les [color=purple]zombies[/color]
-","[color=red]WZMOCNIENIA CRAWLERA[/color] zwykle [color=red]SPOWALNIAJĄ[/color] [color=purple]zombie[/color]
-","[color=red]크롤러 강화[/color]는 주로 [color=purple]좀비[/color]를 [color=red]느리게[/color] 만듭니다
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_4.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_5,"[color=red]OCCULUM BUFFS[/color] generally grant more [color=red]BLOOD[/color]
-","Las [color=red]MEJORAS DEL OCCULUM[/color] suelen dar más [color=red]SANGRE[/color]
-","[color=red]奥库伦增益[/color]通常会带来更多[color=red]鲜血[/color]
-","[color=red]УСИЛЕНИЯ ОККУЛУМА[/color] обычно дают больше [color=red]КРОВИ[/color]
-","Os [color=red]BÔNUS DO OCCULUM[/color] geralmente dão mais [color=red]SANGUE[/color]
-","[color=red]OCCULUM-BUFFS[/color] bringen meist mehr [color=red]BLUT[/color]
-","[color=red]オキュラムの強化[/color]は主に[color=red]血[/color]を増やす
-","Les [color=red]BONUS DE L'OCCULUM[/color] rapportent en général plus de [color=red]SANG[/color]
-","[color=red]WZMOCNIENIA OCCULUM[/color] zwykle dają więcej [color=red]KRWI[/color]
-","[color=red]오큘럼 강화[/color]는 주로 더 많은 [color=red]피[/color]를 줍니다
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_5.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODGEN,"Occulum [color=red]GENERATE BLOOD[/color] over time.
-Collect the blood by [color=red]HOVERING[/color] over it.
-Blood is eventually [color=red]AUTO-COLLECTED[/color] for [color=red]REDUCED VALUE[/color].
-","Los Occulum [color=red]GENERAN SANGRE[/color] con el tiempo.
-Recógela [color=red]PASANDO EL CURSOR[/color] por encima.
-La sangre acaba [color=red]RECOGIÉNDOSE SOLA[/color] con [color=red]VALOR REDUCIDO[/color].
-","奥库伦会随时间[color=red]生成鲜血[/color]。
-将鼠标[color=red]悬停[/color]在鲜血上即可拾取。
-鲜血最终会被[color=red]自动回收[/color]，但[color=red]价值降低[/color]。
-","Оккулумы со временем [color=red]ПРОИЗВОДЯТ КРОВЬ[/color].
-Собирайте её, [color=red]НАВОДЯ КУРСОР[/color].
-Со временем кровь [color=red]СОБИРАЕТСЯ САМА[/color], но с [color=red]МЕНЬШЕЙ ЦЕННОСТЬЮ[/color].
-","Occulum [color=red]GERAM SANGUE[/color] ao longo do tempo.
-Colete o sangue [color=red]PASSANDO O MOUSE[/color] sobre ele.
-O sangue acaba sendo [color=red]COLETADO SOZINHO[/color] com [color=red]VALOR REDUZIDO[/color].
-","Occulum [color=red]ERZEUGEN mit der Zeit BLUT[/color].
-Sammle es indem du mit der Maus [color=red]DARÜBERFÄHRST[/color].
-Blut wird irgendwann [color=red]AUTOMATISCH EINGESAMMELT[/color] — mit [color=red]GERINGEREM WERT[/color].
-","オキュラムは時間経過で[color=red]血を生成[/color]する。
-血に[color=red]カーソルを合わせて[/color]回収しよう。
-放置した血はやがて[color=red]自動回収[/color]されるが[color=red]価値が下がる[/color]。
-","Les Occulum [color=red]GÉNÈRENT DU SANG[/color] au fil du temps.
-Récupérez-le en le [color=red]SURVOLANT[/color].
-Le sang finit par être [color=red]RAMASSÉ AUTOMATIQUEMENT[/color] à [color=red]VALEUR RÉDUITE[/color].
-","Occulum z czasem [color=red]WYTWARZAJĄ KREW[/color].
-Zbieraj ją [color=red]NAJEŻDŻAJĄC[/color] na nią kursorem.
-Krew w końcu zostaje [color=red]ZEBRANA AUTOMATYCZNIE[/color] o [color=red]ZMNIEJSZONEJ WARTOŚCI[/color].
-","오큘럼은 시간이 지나며 [color=red]피를 생성[/color]합니다.
-피 위에 [color=red]마우스를 올려[/color] 획득하세요.
-피는 결국 [color=red]자동 회수[/color]되지만 [color=red]가치가 줄어듭니다[/color].
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt
-TXT_LEVEL0_2_TUTORIAL_INVALIDCRAWLERPLACEMENT,"Wrong position! Place the SPYDER directly BEHIND the Eye.
-
-""Behind"" means one cell to the LEFT of the Eye.
-","¡Posición incorrecta! Coloca la ARAKNIA justo DETRÁS del Ojo.
-
-""Detrás"" significa una casilla a la IZQUIERDA del Ojo.
-","位置不对！请将魔蛛放在魔眼的正后方。
-
-“后方”指魔眼左边一格。
-","Не то место! Поставьте ПАУККА прямо ПОЗАДИ Ока.
-
-""Позади"" — это на одну клетку ЛЕВЕЕ Ока.
-","Posição errada! Coloque o ARANHO logo ATRÁS do Olho.
-
-""Atrás"" significa uma casa à ESQUERDA do Olho.
-","Falsche Position! Platziere die SPYNNE direkt HINTER dem Auge.
-
-""Hinter"" heißt ein Feld LINKS vom Auge.
-","位置が違う！スパイダーはアイのすぐ後ろに配置しよう。
-
-「後ろ」とはアイの左1マスのこと。
-","Mauvaise position ! Placez l'ARAIGNÉE juste DERRIÈRE l'Œil.
-
-« Derrière » signifie une case à GAUCHE de l'Œil.
-","Złe miejsce! Postaw PAJONKA tuż ZA Okiem.
-
-""Za"" oznacza jedno pole na LEWO od Oka.
-","위치가 틀렸습니다! 스파이더를 아이 바로 뒤에 배치하세요.
-
-""뒤""란 아이의 왼쪽 한 칸을 뜻합니다.
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidCrawlerPlacement.txt
-TXT_LEVEL0_2_TUTORIAL_PLACECRAWLER,"[color=red]ALL DEMONS[/color] can [color=red]BLOOD BUFF[/color] other Demons.
-Blood Buffs are activated by placing a Demon in the red [color=red]BLOOD BUFF[/color] ZONE of another.
-Summon the [color=red]CRAWLER[/color] in the [color=red]BLOOD BUFF[/color] ZONE of the [color=red]OCCULUM[/color].
-","[color=red]TODOS LOS DEMONIOS[/color] pueden dar [color=red]MEJORAS DE SANGRE[/color] a otros.
-Se activan colocando un demonio en la ZONA roja de [color=red]MEJORA DE SANGRE[/color] de otro.
-Invoca al [color=red]CRAWLER[/color] en la ZONA de [color=red]MEJORA DE SANGRE[/color] del [color=red]OCCULUM[/color].
-","[color=red]所有恶魔[/color]都能为其他恶魔提供[color=red]鲜血增益[/color]。
-将恶魔放入另一恶魔的红色[color=red]鲜血增益[/color]区域即可激活。
-把[color=red]爬行者[/color]召唤到[color=red]奥库伦[/color]的[color=red]鲜血增益[/color]区域内。
-","[color=red]ВСЕ ДЕМОНЫ[/color] могут давать другим [color=red]КРОВАВЫЕ УСИЛЕНИЯ[/color].
-Они активируются, если поставить демона в красную ЗОНУ [color=red]КРОВАВОГО УСИЛЕНИЯ[/color] другого.
-Призовите [color=red]ПОЛЗУНА[/color] в ЗОНУ [color=red]КРОВАВОГО УСИЛЕНИЯ[/color] [color=red]ОККУЛУМА[/color].
-","[color=red]TODOS OS DEMÔNIOS[/color] podem dar [color=red]BÊNÇÃOS DE SANGUE[/color] a outros.
-Elas são ativadas colocando um demônio na ZONA vermelha de [color=red]BÊNÇÃO DE SANGUE[/color] de outro.
-Invoque o [color=red]CRAWLER[/color] na ZONA de [color=red]BÊNÇÃO DE SANGUE[/color] do [color=red]OCCULUM[/color].
-","[color=red]ALLE DÄMONEN[/color] können anderen [color=red]BLUT-BUFFS[/color] geben.
-Sie werden aktiviert indem man einen Dämon in die rote [color=red]BLUT-BUFF[/color]-ZONE eines anderen stellt.
-Beschwöre den [color=red]CRAWLER[/color] in der [color=red]BLUT-BUFF[/color]-ZONE des [color=red]OCCULUM[/color].
-","[color=red]すべての悪魔[/color]は他の悪魔に[color=red]血の強化[/color]を与えられる。
-別の悪魔の赤い[color=red]血の強化[/color]ゾーンに悪魔を置くと発動する。
-[color=red]オキュラム[/color]の[color=red]血の強化[/color]ゾーンに[color=red]クローラー[/color]を召喚しよう。
-","[color=red]TOUS LES DÉMONS[/color] peuvent accorder des [color=red]BONUS DE SANG[/color] aux autres.
-Ils s'activent en plaçant un démon dans la ZONE rouge de [color=red]BONUS DE SANG[/color] d'un autre.
-Invoquez le [color=red]CRAWLER[/color] dans la ZONE de [color=red]BONUS DE SANG[/color] de l'[color=red]OCCULUM[/color].
-","[color=red]WSZYSTKIE DEMONY[/color] mogą dawać innym [color=red]KRWAWE WZMOCNIENIA[/color].
-Aktywują się, gdy postawisz demona w czerwonej STREFIE [color=red]KRWAWEGO WZMOCNIENIA[/color] innego.
-Przyzwij [color=red]CRAWLERA[/color] w STREFIE [color=red]KRWAWEGO WZMOCNIENIA[/color] [color=red]OCCULUM[/color].
-","[color=red]모든 악마[/color]는 다른 악마에게 [color=red]피의 강화[/color]를 줄 수 있습니다.
-악마를 다른 악마의 붉은 [color=red]피의 강화[/color] 구역에 배치하면 발동됩니다.
-[color=red]크롤러[/color]를 [color=red]오큘럼[/color]의 [color=red]피의 강화[/color] 구역에 소환하세요.
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceCrawler.txt
-TXT_LEVEL0_2_TUTORIAL_PLACEOCCULUM,"Summon the Occulum to start [color=red]GENERATING BLOOD[/color].
-Occulum get [color=red]MORE EXPENSIVE[/color] with each one summoned.
-","Invoca al Occulum para empezar a [color=red]GENERAR SANGRE[/color].
-Los Occulum se vuelven [color=red]MÁS CAROS[/color] con cada invocación.
-","召唤奥库伦，开始[color=red]生成鲜血[/color]。
-每召唤一个奥库伦，价格就会[color=red]变得更贵[/color]。
-","Призовите Оккулум, чтобы начать [color=red]ПРОИЗВОДИТЬ КРОВЬ[/color].
-С каждым призывом Оккулумы становятся [color=red]ДОРОЖЕ[/color].
-","Invoque o Occulum para começar a [color=red]GERAR SANGUE[/color].
-Os Occulum ficam [color=red]MAIS CAROS[/color] a cada invocação.
-","Beschwöre das Occulum um [color=red]BLUT ZU ERZEUGEN[/color].
-Occulum werden mit jeder Beschwörung [color=red]TEURER[/color].
-","オキュラムを召喚して[color=red]血の生成[/color]を始めよう。
-オキュラムは召喚するたびに[color=red]値段が上がる[/color]。
-","Invoquez l'Occulum pour commencer à [color=red]GÉNÉRER DU SANG[/color].
-Les Occulum deviennent [color=red]PLUS CHERS[/color] à chaque invocation.
-","Przyzwij Occulum, by zacząć [color=red]WYTWARZAĆ KREW[/color].
-Occulum [color=red]DROŻEJĄ[/color] z każdym przyzwaniem.
-","오큘럼을 소환해 [color=red]피 생성[/color]을 시작하세요.
-오큘럼은 소환할 때마다 [color=red]비용이 늘어납니다[/color].
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt
-TXT_LEVEL0_2_TUTORIAL_SELECTCRAWLER,"Now select the [color=red]CRAWLER[/color]
-","Ahora selecciona al [color=red]CRAWLER[/color]
-","现在选择[color=red]爬行者[/color]
-","Теперь выберите [color=red]ПОЛЗУНА[/color]
-","Agora selecione o [color=red]CRAWLER[/color]
-","Wähle jetzt den [color=red]CRAWLER[/color]
-","次は[color=red]クローラー[/color]を選択しよう
-","Sélectionnez maintenant le [color=red]CRAWLER[/color]
-","Teraz wybierz [color=red]CRAWLERA[/color]
-","이제 [color=red]크롤러[/color]를 선택하세요
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectCrawler.txt
-TXT_LEVEL0_2_TUTORIAL_SELECTOCCULUM,"You are almost out of [color=red]BLOOD[/color].
-Select an [color=red]OCCULUM[/color]
-","Casi no te queda [color=red]SANGRE[/color].
-Selecciona un [color=red]OCCULUM[/color]
-","你的[color=red]鲜血[/color]快用完了。
-选择一个[color=red]奥库伦[/color]
-","У вас почти закончилась [color=red]КРОВЬ[/color].
-Выберите [color=red]ОККУЛУМ[/color]
-","Seu [color=red]SANGUE[/color] está quase acabando.
-Selecione um [color=red]OCCULUM[/color]
-","Dein [color=red]BLUT[/color] ist fast aufgebraucht.
-Wähle ein [color=red]OCCULUM[/color]
-","[color=red]血[/color]が残りわずかだ。
-[color=red]オキュラム[/color]を選択しよう
-","Vous êtes presque à court de [color=red]SANG[/color].
-Sélectionnez un [color=red]OCCULUM[/color]
-","Prawie skończyła ci się [color=red]KREW[/color].
-Wybierz [color=red]OCCULUM[/color]
-","[color=red]피[/color]가 거의 다 떨어졌습니다.
-[color=red]오큘럼[/color]을 선택하세요
-",res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectOcculum.txt
+""Behind"" means one cell to the [b]left[/b] of the Eye.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidCrawlerPlacement.txt
+TXT_LEVEL0_2_TUTORIAL_PLACECRAWLER,"[color=red][b]all demons[/b][/color] can [color=red][b]blood buff[/b][/color] other Demons. 
+Blood Buffs are activated by placing a Demon in the red [color=red][b]blood buff[/b][/color] [b]zone[/b] of another.
+Summon the [color=red][b]crawler[/b][/color] in the [color=red][b]blood buff[/b][/color] [b]zone[/b] of the [color=red][b]occulum[/b][/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceCrawler.txt
+TXT_LEVEL0_2_TUTORIAL_PLACEOCCULUM,"Summon the Occulum to start [color=red][b]generating blood[/b][/color]. 
+Occulum get [color=red][b]more expensive[/b][/color] with each one summoned.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt
+TXT_LEVEL0_2_TUTORIAL_SELECTCRAWLER,"Now select the [color=red][b]crawler[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectCrawler.txt
+TXT_LEVEL0_2_TUTORIAL_SELECTOCCULUM,"You are almost out of [color=red][b]blood[/b][/color].
+Select an [color=red][b]occulum[/b][/color] 
+",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectOcculum.txt
 TXT_LEVEL0_3_TUTORIAL_PLACEMAW,"Place One Now
 ","Coloca una ahora
 ","现在放置一个
@@ -899,320 +332,50 @@ Wybierz jeden teraz
 
 지금 하나를 선택하세요
 ",res://_Assets/Text/TextFiles/Level0-5_Tutorial_SelectHive.txt
-TXT_MAWTUTORIAL,"MAW's are ravenous hell creatures that can devour enemies whole. Beware, when all their tentacles are busy wripping prey apart in their cavernous stomachs, the MAW is vulnerable.
-","Las FAUCES son voraces criaturas infernales que devoran enemigos enteros. Cuidado: cuando todos sus tentáculos están ocupados despedazando presas en sus estómagos cavernosos, las FAUCES quedan vulnerables.
-","巨口是贪婪的地狱生物，能将敌人整只吞下。但要小心：当它所有的触手都忙着在洞穴般的胃里撕碎猎物时，巨口就会陷入无防备状态。
-","ПАСТИ — прожорливые адские твари, глотающие врагов целиком. Но берегитесь: пока все щупальца заняты, разрывая добычу в бездонных желудках, ПАСТЬ уязвима.
-","As GOELAS são criaturas infernais vorazes que devoram inimigos inteiros. Cuidado: quando todos os tentáculos estão ocupados despedaçando presas em seus estômagos cavernosos, a GOELA fica vulnerável.
-","SCHLÜNDE sind gefräßige Höllenkreaturen die Gegner im Ganzen verschlingen. Doch Vorsicht: Sind alle Tentakel damit beschäftigt Beute in ihren höhlenartigen Mägen zu zerreißen, ist der SCHLUND verwundbar.
-","マウは敵を丸呑みにする貪欲な地獄の生物。ただし注意——すべての触手が洞窟のような胃で獲物を引き裂くのに忙しいとき、マウは無防備になる。
-","Les GUEULES sont des créatures infernales voraces qui dévorent les ennemis tout entiers. Attention : quand tous leurs tentacules déchiquettent des proies dans leurs estomacs caverneux, la GUEULE est vulnérable.
-","PASZCZE to żarłoczne piekielne stwory pożerające wrogów w całości. Uwaga: gdy wszystkie macki są zajęte rozszarpywaniem ofiar w przepastnych żołądkach, PASZCZA jest bezbronna.
-","마우는 적을 통째로 삼키는 게걸스러운 지옥의 생물입니다. 주의하세요. 모든 촉수가 동굴 같은 위 속에서 사냥감을 찢느라 바쁠 때, 마우는 무방비 상태가 됩니다.
-",res://_Assets/Text/TextFiles/MawTutorial.txt
-TXT_OCCULARSPINETUTORIAL,"Utilize OCCULAR SPINES to block zombies, halting them in their tracks while they attempt to break through.
-
-OCCULAR SPINES will regenerate health over time when not being damaged.
-
-OCCULAR SPINES cannot block flying enemies.
-
-Click the OCCULAR Spine Icon to select it and place it in a defensive position.
-","Usa las ESPINAS OCULARES para bloquear zombis y frenarlos en seco mientras intentan abrirse paso.
-
-Las ESPINAS OCULARES regeneran salud con el tiempo si no reciben daño.
-
-Las ESPINAS OCULARES no pueden bloquear enemigos voladores.
-
-Haz clic en el icono de la Espina Ocular para seleccionarla y colócala en posición defensiva.
-","利用眼脊柱阻挡僵尸，让它们在试图突破时寸步难行。
-
-眼脊柱未受伤害时会随时间回复生命。
-
-眼脊柱无法阻挡飞行敌人。
-
-点击眼脊柱图标选择它，并放置在防御位置。
-","Используйте ОКУЛЯРНЫЕ ХРЕБТЫ, чтобы блокировать зомби и останавливать их, пока те пытаются прорваться.
-
-ОКУЛЯРНЫЕ ХРЕБТЫ восстанавливают здоровье со временем, если не получают урон.
-
-ОКУЛЯРНЫЕ ХРЕБТЫ не могут блокировать летающих врагов.
-
-Нажмите на значок Окулярного Хребта, чтобы выбрать его, и поставьте в оборонительную позицию.
-","Use ESPINHAS OCULARES para bloquear zumbis, detendo-os enquanto tentam romper a linha.
-
-ESPINHAS OCULARES regeneram vida ao longo do tempo quando não estão sofrendo dano.
-
-ESPINHAS OCULARES não podem bloquear inimigos voadores.
-
-Clique no ícone da Espinha Ocular para selecioná-la e coloque-a em posição defensiva.
-","Nutze AUGENDORNE um Zombies zu blockieren und sie aufzuhalten während sie durchzubrechen versuchen.
-
-AUGENDORNE regenerieren mit der Zeit Leben wenn sie keinen Schaden nehmen.
-
-AUGENDORNE können keine fliegenden Gegner blockieren.
-
-Klicke das Augendorn-Symbol an um ihn auszuwählen und platziere ihn defensiv.
-","オキュラースパインでゾンビを阻み、突破しようとする敵をその場で足止めしよう。
-
-オキュラースパインはダメージを受けていない間、時間経過で体力を再生する。
-
-オキュラースパインは飛行する敵を止められない。
-
-オキュラースパインのアイコンをクリックして選択し、防御位置に配置しよう。
-","Utilisez les ÉPINES OCULAIRES pour bloquer les zombies et les stopper net pendant qu'ils tentent de percer.
-
-Les ÉPINES OCULAIRES régénèrent leur santé avec le temps quand elles ne subissent pas de dégâts.
-
-Les ÉPINES OCULAIRES ne peuvent pas bloquer les ennemis volants.
-
-Cliquez sur l'icône de l'Épine Oculaire pour la sélectionner et placez-la en position défensive.
-","Używaj OCZNYCH KRĘGÓW, by blokować zombie i zatrzymywać je w miejscu, gdy próbują się przebić.
-
-OCZNE KRĘGI regenerują zdrowie z czasem, gdy nie otrzymują obrażeń.
-
-OCZNE KRĘGI nie zablokują latających wrogów.
-
-Kliknij ikonę Ocznego Kręgu, by go wybrać, i postaw go na pozycji obronnej.
-","오큘러 스파인으로 좀비를 막아, 뚫고 지나가려는 적을 그 자리에 묶어두세요.
-
-오큘러 스파인은 피해를 받지 않는 동안 시간이 지나며 체력을 회복합니다.
-
-오큘러 스파인은 비행하는 적을 막을 수 없습니다.
-
-오큘러 스파인 아이콘을 클릭해 선택하고 방어 위치에 배치하세요.
-",res://_Assets/Text/TextFiles/OccularSpineTutorial.txt
-TXT_OCCULUMCRAWLERBUFF,"EYES give SPYDERS increased rate of fire.
-","Los OJOS aumentan la cadencia de disparo de las ARAKNIAS.
-","魔眼可提升魔蛛的射速。
-","ОЧИ повышают скорострельность ПАУККОВ.
-","Os OLHOS aumentam a cadência de tiro dos ARANHOS.
-","AUGEN erhöhen die Feuerrate der SPYNNEN.
-","アイはスパイダーの攻撃速度を上げる。
-","Les ŒILS augmentent la cadence de tir des ARAIGNÉES.
-","OKA zwiększają szybkostrzelność PAJONKÓW.
-","아이는 스파이더의 공격 속도를 올려줍니다.
-",res://_Assets/Text/TextFiles/OcculumCrawlerBuff.txt
-TXT_OCCULUMHIVEBUFF,"EYES give HIVES a reduced respawn time for their wasps.
-","Los OJOS reducen el tiempo de reaparición de las avispas de las COLMENAS.
-","魔眼可缩短蜂巢黄蜂的重生时间。
-","ОЧИ сокращают время возрождения ос УЛЬЕВ.
-","Os OLHOS reduzem o tempo de renascimento das vespas das COLMEIAS.
-","AUGEN verkürzen die Wiedererscheinzeit der Wespen des NESTS.
-","アイはハイブの蜂の再生時間を短くする。
-","Les ŒILS réduisent le temps de réapparition des guêpes des RUCHES.
-","OKA skracają czas odradzania os w ULACH.
-","아이는 하이브 말벌의 부활 시간을 줄여줍니다.
-",res://_Assets/Text/TextFiles/OcculumHiveBuff.txt
-TXT_OCCULUMINTRO,"DEMONS can be selected from the Summon Menu in the bottom right
-
-Click the Sanguine Eye to Select It
-","Los DEMONIOS se seleccionan en el menú de invocación de abajo a la derecha
-
-Haz clic en el Ojo Sanguíneo para seleccionarlo
-","可以在右下角的召唤菜单中选择恶魔
-
-点击血眼以选择它
-","ДЕМОНОВ можно выбирать в меню призыва справа внизу
-
-Нажмите на Кровавое Око, чтобы выбрать его
-","DEMÔNIOS podem ser selecionados no menu de invocação no canto inferior direito
-
-Clique no Olho Sanguíneo para selecioná-lo
-","DÄMONEN wählst du im Beschwörungsmenü unten rechts aus
-
-Klicke das Blutauge an um es auszuwählen
-","悪魔は右下の召喚メニューから選択できる
-
-血の眼をクリックして選択しよう
-","Les DÉMONS se sélectionnent dans le menu d'invocation en bas à droite
-
-Cliquez sur l'Œil sanguin pour le sélectionner
-","DEMONY wybiera się z menu przyzywania w prawym dolnym rogu
-
-Kliknij Krwawe Oko, by je wybrać
-","악마는 오른쪽 아래 소환 메뉴에서 선택할 수 있습니다
-
-핏빛 눈을 클릭해 선택하세요
-",res://_Assets/Text/TextFiles/OcculumIntro.txt
-TXT_OCCULUMMAWBUFF,"EYES give MAWS the ability to belch out BLOOD when upon zombie digestion completion.
-","Los OJOS permiten a las FAUCES eructar SANGRE al terminar de digerir un zombi.
-","魔眼使巨口在消化完僵尸后能喷吐出鲜血。
-","ОЧИ позволяют ПАСТЯМ отрыгивать КРОВЬ по завершении переваривания зомби.
-","Os OLHOS permitem que as GOELAS arrotem SANGUE ao concluir a digestão de um zumbi.
-","AUGEN verleihen SCHLÜNDEN die Fähigkeit nach verdautem Zombie BLUT auszuspeien.
-","アイはマウに、ゾンビの消化完了時に血を吐き出す能力を与える。
-","Les ŒILS permettent aux GUEULES de recracher du SANG une fois la digestion d'un zombie terminée.
-","OKA pozwalają PASZCZOM wypluwać KREW po zakończeniu trawienia zombie.
-","아이는 마우가 좀비 소화를 마쳤을 때 피를 토해내게 해줍니다.
-",res://_Assets/Text/TextFiles/OcculumMawBuff.txt
-TXT_OCCULUMSPINEBUFF,"EYES give OCCULAR SPINES increased maximum health and increased health regeneration.
-","Los OJOS dan a las ESPINAS OCULARES más salud máxima y mayor regeneración.
-","魔眼可提升眼脊柱的生命上限与生命回复。
-","ОЧИ дают ОКУЛЯРНЫМ ХРЕБТАМ больше здоровья и ускоренную регенерацию.
-","Os OLHOS dão às ESPINHAS OCULARES mais vida máxima e regeneração maior.
-","AUGEN geben AUGENDORNEN mehr maximales Leben und stärkere Regeneration.
-","アイはオキュラースパインの最大体力と体力再生を高める。
-","Les ŒILS donnent aux ÉPINES OCULAIRES plus de santé maximale et une meilleure régénération.
-","OKA dają OCZNYM KRĘGOM większe maksymalne zdrowie i szybszą regenerację.
-","아이는 오큘러 스파인의 최대 체력과 체력 재생을 올려줍니다.
-",res://_Assets/Text/TextFiles/OcculumSpineBuff.txt
-TXT_OCCULUMWYRMBUFF,"EYES give WYRMS a shorter primary fire cooldown.
-","Los OJOS acortan el enfriamiento del disparo principal de las SIERPES.
-","魔眼可缩短蠕龙主攻击的冷却时间。
-","ОЧИ сокращают перезарядку основной атаки ЗМИЕВ.
-","Os OLHOS encurtam a recarga do disparo principal das SERPES.
-","AUGEN verkürzen die Abklingzeit des Primärangriffs der WYRMS.
-","アイはワームの主攻撃のクールダウンを短くする。
-","Les ŒILS raccourcissent le temps de recharge du tir principal des VOUIVRES.
-","OKA skracają czas odnowienia głównego ataku ŻMIJÓW.
-","아이는 웜의 기본 공격 재사용 대기시간을 줄여줍니다.
-",res://_Assets/Text/TextFiles/OcculumWyrmBuff.txt
-TXT_PLACESUMMON,"EYES generate BLOOD over time. Collect BLOOD by hovering over it with your mouse, but be warned, it will be picked up afterwards for less value if you wait too long.
-
-BLOOD is used to place more SUMMONS
-
-You also gain BLOOD from killing enemies
-
-Click on a Tile to place the Eye. Be careful, as EYES will get more expensive with each one placed.
-","Los OJOS generan SANGRE con el tiempo. Recógela pasando el cursor por encima; pero cuidado: si tardas demasiado, se recogerá sola con menos valor.
-
-La SANGRE sirve para colocar más INVOCACIONES
-
-También ganas SANGRE al matar enemigos
-
-Haz clic en una casilla para colocar el Ojo. Atento: los OJOS se encarecen con cada uno colocado.
-","魔眼会随时间生成鲜血。将鼠标悬停其上即可拾取，但注意：拖得太久，鲜血会被自动回收且价值降低。
-
-鲜血用于放置更多召唤物
-
-击杀敌人也能获得鲜血
-
-点击格子放置魔眼。小心，每放置一个魔眼，价格都会上涨。
-","ОЧИ со временем производят КРОВЬ. Собирайте её, наводя курсор, но помните: если тянуть слишком долго, она соберётся сама с меньшей ценностью.
-
-КРОВЬ нужна для новых ПРИЗЫВОВ
-
-Кровь также даётся за убийство врагов
-
-Нажмите на клетку, чтобы поставить Око. Осторожно: с каждым установленным ОКОМ цена растёт.
-","Os OLHOS geram SANGUE ao longo do tempo. Colete-o passando o mouse por cima; mas atenção: se demorar demais, ele será coletado sozinho com menos valor.
-
-O SANGUE serve para colocar mais INVOCAÇÕES
-
-Você também ganha SANGUE matando inimigos
-
-Clique numa casa para colocar o Olho. Cuidado: os OLHOS ficam mais caros a cada um colocado.
-","AUGEN erzeugen mit der Zeit BLUT. Sammle es indem du mit der Maus darüberfährst — aber Achtung: Wartest du zu lange, wird es automatisch mit geringerem Wert eingesammelt.
-
-BLUT dient dazu weitere BESCHWÖRUNGEN zu platzieren
-
-Auch getötete Gegner geben BLUT
-
-Klicke ein Feld an um das Auge zu platzieren. Vorsicht: AUGEN werden mit jedem platzierten teurer.
-","アイは時間経過で血を生成する。マウスを合わせて回収しよう。ただし放置しすぎると、自動回収され価値が下がる。
-
-血はさらなる召喚に使う
-
-敵を倒しても血を得られる
-
-マスをクリックしてアイを配置。注意——アイは配置するたびに値段が上がる。
-","Les ŒILS génèrent du SANG au fil du temps. Récupérez-le en le survolant avec la souris ; mais attention, si vous attendez trop, il sera ramassé automatiquement à moindre valeur.
-
-Le SANG sert à placer d'autres INVOCATIONS
-
-Tuer des ennemis rapporte aussi du SANG
-
-Cliquez sur une case pour placer l'Œil. Prudence : les ŒILS coûtent plus cher à chaque placement.
-","OKA z czasem wytwarzają KREW. Zbieraj ją najeżdżając kursorem, ale uwaga: jeśli zwlekasz zbyt długo, zostanie zebrana automatycznie o mniejszej wartości.
-
-KREW służy do stawiania kolejnych PRZYZWAŃ
-
-Krew zdobywasz też zabijając wrogów
-
-Kliknij pole, by postawić Oko. Ostrożnie: OKA drożeją z każdym postawionym.
-","아이는 시간이 지나며 피를 생성합니다. 마우스를 올려 피를 획득하세요. 단, 너무 오래 두면 자동 회수되어 가치가 줄어듭니다.
-
-피는 더 많은 소환수를 배치하는 데 쓰입니다
-
-적을 처치해도 피를 얻습니다
-
-칸을 클릭해 아이를 배치하세요. 주의하세요. 아이는 배치할 때마다 비용이 늘어납니다.
-",res://_Assets/Text/TextFiles/PlaceSummon.txt
-TXT_POLEVAULTTUTORIAL,"LEAPER's can do as their name suggests a catapault themselves over defenses. Take them out quickly.
-","Los SALTADORES hacen honor a su nombre: se catapultan por encima de las defensas. Elimínalos rápido.
-","跳跃者名副其实，能将自己弹射越过防线。尽快消灭它们。
-","ПРЫГУНЫ оправдывают своё имя: они перемахивают через оборону. Устраняйте их быстро.
-","Os SALTADORES fazem jus ao nome: catapultam-se por cima das defesas. Elimine-os rápido.
-","SPRINGER machen ihrem Namen alle Ehre: Sie katapultieren sich über Verteidigungen hinweg. Schalte sie schnell aus.
-","跳躍者はその名の通り、防衛線を飛び越えてくる。素早く仕留めよう。
-","Les SAUTEURS portent bien leur nom : ils se catapultent par-dessus les défenses. Éliminez-les vite.
-","SKOCZKOWIE robią dokładnie to, co sugeruje nazwa: katapultują się nad obroną. Pozbądź się ich szybko.
-","도약자는 이름 그대로 방어선을 뛰어넘습니다. 빠르게 처치하세요.
-",res://_Assets/Text/TextFiles/PoleVaultTutorial.txt
-TXT_SCREENDOORZOMBIETUTORIAL,"PHALANX's are severed that use the undead corpses of their kin as a shields that double as battering rams. Masters of hell energy, these foes are not to be underestimated.
+TXT_MAWTUTORIAL,"[b]maw[/b]'s are ravenous hell creatures that can devour enemies whole. Beware, when all their tentacles are busy wripping prey apart in their cavernous stomachs, the [b]maw[/b] is vulnerable.
+",,,,,,,,,,res://_Assets/Text/TextFiles/MawTutorial.txt
+TXT_OCCULARSPINETUTORIAL,"Utilize [b]occular spines[/b] to block zombies, halting them in their tracks while they attempt to break through. 
+ 
+[b]occular spines[/b] will regenerate health over time when not being damaged.
+ 
+[b]occular spines[/b] cannot block flying enemies.
+ 
+Click the [b]occular[/b] Spine Icon to select it and place it in a defensive position.
+",,,,,,,,,,res://_Assets/Text/TextFiles/OccularSpineTutorial.txt
+TXT_OCCULUMCRAWLERBUFF,"[b]eyes[/b] give [b]spyders[/b] increased rate of fire.
+",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumCrawlerBuff.txt
+TXT_OCCULUMHIVEBUFF,"[b]eyes[/b] give [b]hives[/b] a reduced respawn time for their wasps.
+",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumHiveBuff.txt
+TXT_OCCULUMINTRO,"[b]demons[/b] can be selected from the Summon Menu in the bottom right
+ 
+Click the Sanguine Eye to Select It 
+",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumIntro.txt
+TXT_OCCULUMMAWBUFF,"[b]eyes[/b] give [b]maws[/b] the ability to belch out [b]blood[/b] when upon zombie digestion completion. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumMawBuff.txt
+TXT_OCCULUMSPINEBUFF,"[b]eyes[/b] give [b]occular spines[/b] increased maximum health and increased health regeneration.
+",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumSpineBuff.txt
+TXT_OCCULUMWYRMBUFF,"[b]eyes[/b] give [b]wyrms[/b] a shorter primary fire cooldown.
+",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumWyrmBuff.txt
+TXT_PLACESUMMON,"[b]eyes[/b] generate [b]blood[/b] over time. Collect [b]blood[/b] by hovering over it with your mouse, but be warned, it will be picked up afterwards for less value if you wait too long.
+ 
+[b]blood[/b] is used to place more [b]summons[/b]
+  
+You also gain [b]blood[/b] from killing enemies 
+ 
+Click on a Tile to place the Eye. Be careful, as [b]eyes[/b] will get more expensive with each one placed.
+",,,,,,,,,,res://_Assets/Text/TextFiles/PlaceSummon.txt
+TXT_POLEVAULTTUTORIAL,"[b]leaper[/b]'s can do as their name suggests a catapault themselves over defenses. Take them out quickly.
+",,,,,,,,,,res://_Assets/Text/TextFiles/PoleVaultTutorial.txt
+TXT_SCREENDOORZOMBIETUTORIAL,"[b]phalanx[/b]'s are severed that use the undead corpses of their kin as a shields that double as battering rams. Masters of hell energy, these foes are not to be underestimated.
 
 Piercing damage is especially effective.
-","Las FALANGES son cercenados que usan los cadáveres de los suyos como escudos que también sirven de arietes. Maestros de la energía infernal, no hay que subestimarlos.
-
-El daño perforante es especialmente eficaz.
-","方阵兵是使用同族尸体作盾牌兼攻城槌的断裂者。他们精通地狱能量，绝不可小觑。
-
-穿透伤害对其尤其有效。
-","ФАЛАНГИ — отсечённые, что используют трупы сородичей как щиты и тараны одновременно. Мастера адской энергии — недооценивать их нельзя.
-
-Особенно эффективен пробивающий урон.
-","As FALANGES são decepados que usam os cadáveres dos seus como escudos que também servem de aríetes. Mestres da energia infernal, não devem ser subestimados.
-
-Dano perfurante é especialmente eficaz.
-","PHALANX sind Abgetrennte die die untoten Leichen ihrer Artgenossen als Schilde nutzen die zugleich Rammböcke sind. Als Meister der Höllenenergie sind sie nicht zu unterschätzen.
-
-Durchdringender Schaden ist besonders wirksam.
-","ファランクスは同族の死体を盾兼破城槌として使うセヴァード。地獄のエネルギーを操る強敵で、侮ってはならない。
-
-貫通ダメージが特に有効。
-","Les PHALANGES sont des tranchés qui utilisent les cadavres de leurs semblables comme boucliers faisant aussi office de béliers. Maîtres de l'énergie infernale, ils ne sont pas à sous-estimer.
-
-Les dégâts perforants sont particulièrement efficaces.
-","FALANGI to odcięci, którzy używają trupów pobratymców jako tarcz służących też za tarany. To mistrzowie piekielnej energii — nie wolno ich lekceważyć.
-
-Obrażenia przebijające są szczególnie skuteczne.
-","팔랑크스는 동족의 시체를 방패 겸 공성추로 쓰는 세버드입니다. 지옥 에너지의 달인이니 얕보아선 안 됩니다.
-
-관통 피해가 특히 효과적입니다.
-",res://_Assets/Text/TextFiles/ScreenDoorZombieTutorial.txt
-TXT_SPINEMAWBUFF,"The BLOOD and HELL ENERGY released from the MAW's victims invirogate nearby Occular Spines, enabling them to heal faster.
-","La SANGRE y la ENERGÍA INFERNAL que sueltan las víctimas de las FAUCES vigorizan a las Espinas Oculares cercanas, que se curan más rápido.
-","巨口的猎物释放出的鲜血与地狱能量会滋养附近的眼脊柱，使其恢复得更快。
-","КРОВЬ и АДСКАЯ ЭНЕРГИЯ жертв ПАСТИ бодрят ближайшие Окулярные Хребты, ускоряя их исцеление.
-","O SANGUE e a ENERGIA INFERNAL liberados pelas vítimas da GOELA revigoram as Espinhas Oculares próximas, que se curam mais rápido.
-","BLUT und HÖLLENENERGIE aus den Opfern des SCHLUNDS beleben nahe Augendorne die dadurch schneller heilen.
-","マウの犠牲者から放たれる血と地獄のエネルギーは、近くのオキュラースパインを活気づけ、回復を早める。
-","Le SANG et l'ÉNERGIE INFERNALE libérés par les victimes de la GUEULE revigorent les Épines Oculaires proches, qui guérissent plus vite.
-","KREW i PIEKIELNA ENERGIA uwolnione z ofiar PASZCZY ożywiają pobliskie Oczne Kręgi, które leczą się szybciej.
-","마우의 희생자에게서 흘러나온 피와 지옥 에너지는 근처 오큘러 스파인에 활력을 불어넣어 더 빨리 회복하게 합니다.
-",res://_Assets/Text/TextFiles/SpineMawBuff.txt
-TXT_TICKERTUTORIAL,"TICKER ZOMBIES are fast moving sentient bombs. Make sure to take them out before they get too close to your summons.
-","Los ZOMBIS DETONANTES son bombas conscientes y veloces. Asegúrate de eliminarlos antes de que se acerquen a tus invocaciones.
-","定时僵尸是高速移动的活体炸弹。务必在它们接近你的召唤物之前将其消灭。
-","ЗОМБИ-БОМБЫ — быстрые разумные снаряды. Уничтожайте их, пока они не подобрались к вашим призывам.
-","Os ZUMBIS-RELÓGIO são bombas conscientes e velozes. Elimine-os antes que cheguem perto demais das suas invocações.
-","TICKER-ZOMBIES sind schnelle, empfindungsfähige Bomben. Schalte sie aus bevor sie deinen Beschwörungen zu nahe kommen.
-","ティッカーゾンビは高速で動く生きた爆弾。召喚物に近づかれる前に必ず仕留めよう。
-","Les ZOMBIES À RETARDEMENT sont des bombes conscientes et rapides. Éliminez-les avant qu'ils ne s'approchent trop de vos invocations.
-","ZOMBIE-TYKACZE to szybkie, świadome bomby. Pozbądź się ich, zanim zbliżą się do twoich przyzwań.
-","티커 좀비는 빠르게 움직이는 살아있는 폭탄입니다. 소환수에 너무 가까워지기 전에 반드시 처치하세요.
-",res://_Assets/Text/TextFiles/TickerTutorial.txt
-TXT_TUTORIAL_CLICK_SKULL,"Click the [color=red]SKULL ICON[/color] to [color=red]START[/color] the [color=red]WAVE[/color]
-","Haz clic en el [color=red]ICONO DE CALAVERA[/color] para [color=red]INICIAR[/color] la [color=red]OLEADA[/color]
-","点击[color=red]骷髅图标[/color]以[color=red]开始[/color][color=red]波次[/color]
-","Нажмите на [color=red]ЗНАЧОК ЧЕРЕПА[/color], чтобы [color=red]НАЧАТЬ[/color] [color=red]ВОЛНУ[/color]
-","Clique no [color=red]ÍCONE DE CAVEIRA[/color] para [color=red]INICIAR[/color] a [color=red]ONDA[/color]
-","Klicke das [color=red]TOTENKOPF-SYMBOL[/color] an um die [color=red]WELLE[/color] zu [color=red]STARTEN[/color]
-","[color=red]ドクロアイコン[/color]をクリックして[color=red]ウェーブ[/color]を[color=red]開始[/color]
-","Cliquez sur l'[color=red]ICÔNE DE CRÂNE[/color] pour [color=red]LANCER[/color] la [color=red]VAGUE[/color]
-","Kliknij [color=red]IKONĘ CZASZKI[/color], by [color=red]ROZPOCZĄĆ[/color] [color=red]FALĘ[/color]
-","[color=red]해골 아이콘[/color]을 클릭해 [color=red]웨이브[/color]를 [color=red]시작[/color]하세요
-",res://_Assets/Text/TextFiles/Tutorial_Click_Skull.txt
+",,,,,,,,,,res://_Assets/Text/TextFiles/ScreenDoorZombieTutorial.txt
+TXT_SPINEMAWBUFF,"The [b]blood[/b] and [b]hell energy[/b] released from the [b]maw[/b]'s victims invirogate nearby Occular Spines, enabling them to heal faster.
+",,,,,,,,,,res://_Assets/Text/TextFiles/SpineMawBuff.txt
+TXT_TICKERTUTORIAL,"[b]ticker zombies[/b] are fast moving sentient bombs. Make sure to take them out before they get too close to your summons.
+",,,,,,,,,,res://_Assets/Text/TextFiles/TickerTutorial.txt
+TXT_TUTORIAL_CLICK_SKULL,"Click the [color=red][b]skull icon[/b][/color] to [color=red][b]start[/b][/color] the [color=red][b]wave[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Click_Skull.txt
 TXT_TUTORIAL_DEMON_REMOVAL,"[color=red]Wyrms[/color] have been reflexively summoned in a bad position.
 ","Se han invocado [color=red]Sierpes[/color] por instinto en una mala posición.
 ","[color=red]蠕龙[/color]被本能地召唤到了错误的位置。
@@ -1224,171 +387,36 @@ TXT_TUTORIAL_DEMON_REMOVAL,"[color=red]Wyrms[/color] have been reflexively summo
 ","[color=red]Żmije[/color] zostały odruchowo przyzwane w złym miejscu.
 ","[color=red]웜[/color]이 반사적으로 잘못된 위치에 소환되었습니다.
 ",res://_Assets/Text/TextFiles/Tutorial_Demon_Removal.txt
-TXT_TUTORIAL_DEMON_REMOVAL_2,"[color=red]Double Click[/color] and press the [color=red]X SYMBOL[/color] to remove.
-","[color=red]Haz doble clic[/color] y pulsa el [color=red]SÍMBOLO X[/color] para retirarlo.
-","[color=red]双击[/color]并点击 [color=red]X 符号[/color]即可移除。
-","[color=red]Дважды щёлкните[/color] и нажмите [color=red]СИМВОЛ X[/color], чтобы убрать.
-","[color=red]Dê dois cliques[/color] e aperte o [color=red]SÍMBOLO X[/color] para remover.
-","[color=red]Doppelklicke[/color] und drücke das [color=red]X-SYMBOL[/color] zum Entfernen.
-","[color=red]ダブルクリック[/color]して[color=red]Xマーク[/color]を押せば撤去できる。
-","[color=red]Double-cliquez[/color] et appuyez sur le [color=red]SYMBOLE X[/color] pour retirer.
-","[color=red]Kliknij dwukrotnie[/color] i wciśnij [color=red]SYMBOL X[/color], by usunąć.
-","[color=red]더블 클릭[/color] 후 [color=red]X 기호[/color]를 눌러 제거하세요.
-",res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_2.txt
-TXT_TUTORIAL_DEMON_REMOVAL_3,"[color=red]Removing[/color] Demons [color=red]REFUNDS BLOOD[/color] proportional to their [color=red]REMAINING HEALTH[/color]
-","[color=red]Retirar[/color] demonios [color=red]DEVUELVE SANGRE[/color] proporcional a su [color=red]SALUD RESTANTE[/color]
-","[color=red]移除[/color]恶魔可按其[color=red]剩余生命[/color]比例[color=red]返还鲜血[/color]
-","[color=red]Удаление[/color] демона [color=red]ВОЗВРАЩАЕТ КРОВЬ[/color] пропорционально его [color=red]ОСТАВШЕМУСЯ ЗДОРОВЬЮ[/color]
-","[color=red]Remover[/color] demônios [color=red]DEVOLVE SANGUE[/color] proporcional à [color=red]VIDA RESTANTE[/color]
-","Das [color=red]Entfernen[/color] von Dämonen [color=red]ERSTATTET BLUT[/color] proportional zum [color=red]VERBLEIBENDEN LEBEN[/color]
-","悪魔を[color=red]撤去[/color]すると[color=red]残り体力[/color]に応じて[color=red]血が返還[/color]される
-","[color=red]Retirer[/color] un démon [color=red]REMBOURSE DU SANG[/color] proportionnellement à sa [color=red]SANTÉ RESTANTE[/color]
-","[color=red]Usunięcie[/color] demona [color=red]ZWRACA KREW[/color] proporcjonalnie do jego [color=red]POZOSTAŁEGO ZDROWIA[/color]
-","악마를 [color=red]제거[/color]하면 [color=red]남은 체력[/color]에 비례해 [color=red]피가 환급[/color]됩니다
-",res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_3.txt
-TXT_TUTORIAL_EXPLAIN_DEMON_CLICK,"Click a [color=red]DEMON[/color] to View its [color=red]INFO[/color]
-","Haz clic en un [color=red]DEMONIO[/color] para ver su [color=red]INFORMACIÓN[/color]
-","点击[color=red]恶魔[/color]查看其[color=red]信息[/color]
-","Нажмите на [color=red]ДЕМОНА[/color], чтобы увидеть его [color=red]ДАННЫЕ[/color]
-","Clique num [color=red]DEMÔNIO[/color] para ver suas [color=red]INFORMAÇÕES[/color]
-","Klicke einen [color=red]DÄMON[/color] an um seine [color=red]INFOS[/color] zu sehen
-","[color=red]悪魔[/color]をクリックして[color=red]情報[/color]を確認
-","Cliquez sur un [color=red]DÉMON[/color] pour voir ses [color=red]INFOS[/color]
-","Kliknij [color=red]DEMONA[/color], by zobaczyć jego [color=red]INFORMACJE[/color]
-","[color=red]악마[/color]를 클릭해 [color=red]정보[/color]를 확인하세요
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Click.txt
-TXT_TUTORIAL_EXPLAIN_DEMON_HOVER_CLICK,"[color=red]HOVER[/color] over a [color=red]DEMON[/color] to view its [color=red]RANGE[/color].
-","[color=red]PASA EL CURSOR[/color] sobre un [color=red]DEMONIO[/color] para ver su [color=red]ALCANCE[/color].
-","将鼠标[color=red]悬停[/color]在[color=red]恶魔[/color]上可查看其[color=red]射程[/color]。
-","[color=red]НАВЕДИТЕ[/color] курсор на [color=red]ДЕМОНА[/color], чтобы увидеть его [color=red]ДАЛЬНОСТЬ[/color].
-","[color=red]PASSE O MOUSE[/color] sobre um [color=red]DEMÔNIO[/color] para ver seu [color=red]ALCANCE[/color].
-","[color=red]FAHRE[/color] über einen [color=red]DÄMON[/color] um seine [color=red]REICHWEITE[/color] zu sehen.
-","[color=red]悪魔[/color]に[color=red]カーソルを合わせる[/color]と[color=red]射程[/color]を確認できる。
-","[color=red]SURVOLEZ[/color] un [color=red]DÉMON[/color] pour voir sa [color=red]PORTÉE[/color].
-","[color=red]NAJEDŹ[/color] kursorem na [color=red]DEMONA[/color], by zobaczyć jego [color=red]ZASIĘG[/color].
-","[color=red]악마[/color] 위에 [color=red]마우스를 올리면[/color] [color=red]사거리[/color]를 볼 수 있습니다.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt
-TXT_TUTORIAL_EXPLAIN_HEALTH,"Protect your [color=red]HEALTH[/color] and [color=red]Defeat[/color] the [color=purple]ZOMBIES[/color]
-","Protege tu [color=red]SALUD[/color] y [color=red]derrota[/color] a los [color=purple]ZOMBIS[/color]
-","保护你的[color=red]生命[/color]，[color=red]击败[/color][color=purple]僵尸[/color]
-","Берегите своё [color=red]ЗДОРОВЬЕ[/color] и [color=red]одолейте[/color] [color=purple]ЗОМБИ[/color]
-","Proteja sua [color=red]VIDA[/color] e [color=red]derrote[/color] os [color=purple]ZUMBIS[/color]
-","Schütze dein [color=red]LEBEN[/color] und [color=red]besiege[/color] die [color=purple]ZOMBIES[/color]
-","[color=red]ライフ[/color]を守り、[color=purple]ゾンビ[/color]を[color=red]倒せ[/color]
-","Protégez votre [color=red]SANTÉ[/color] et [color=red]vainquez[/color] les [color=purple]ZOMBIES[/color]
-","Chroń swoje [color=red]ZDROWIE[/color] i [color=red]pokonaj[/color] [color=purple]ZOMBIE[/color]
-","[color=red]생명[/color]을 지키고 [color=purple]좀비[/color]를 [color=red]물리치세요[/color]
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Health.txt
-TXT_TUTORIAL_EXPLAIN_PORTALS,"Lucretia can summon [color=purple]POR[/color][color=green]TALS[/color] between [color=purple]Earth[/color] and [color=green]Syn[/color].
-","Lucretia puede invocar [color=purple]POR[/color][color=green]TALES[/color] entre la [color=purple]Tierra[/color] y [color=green]Syn[/color].
-","卢克蕾西娅能在[color=purple]地球[/color]与[color=green]辛恩[/color]之间召唤[color=purple]传送[/color][color=green]门[/color]。
-","Лукреция может открывать [color=purple]ПОР[/color][color=green]ТАЛЫ[/color] между [color=purple]Землёй[/color] и [color=green]Сином[/color].
-","Lucretia pode invocar [color=purple]POR[/color][color=green]TAIS[/color] entre a [color=purple]Terra[/color] e [color=green]Syn[/color].
-","Lucretia kann [color=purple]POR[/color][color=green]TALE[/color] zwischen [color=purple]Erde[/color] und [color=green]Syn[/color] beschwören.
-","ルクレツィアは[color=purple]地球[/color]と[color=green]シン[/color]の間に[color=purple]ポー[/color][color=green]タル[/color]を召喚できる。
-","Lucretia peut invoquer des [color=purple]POR[/color][color=green]TAILS[/color] entre la [color=purple]Terre[/color] et [color=green]Syn[/color].
-","Lukrecja może przyzywać [color=purple]POR[/color][color=green]TALE[/color] między [color=purple]Ziemią[/color] a [color=green]Syn[/color].
-","루크레티아는 [color=purple]지구[/color]와 [color=green]신[/color] 사이에 [color=purple]포[/color][color=green]털[/color]을 소환할 수 있습니다.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt
-TXT_TUTORIAL_EXPLAIN_PORTALS_2,"[color=purple]POR[/color][color=green]TALS[/color] are [color=red]ONE-WAY[/color]. [color=purple]ZOMBIES[/color] [color=red]enter[/color] via the [color=red]first[/color] portal summoned, [color=red]exit[/color] via the [color=red]second[/color].
-","Los [color=purple]POR[/color][color=green]TALES[/color] son de [color=red]UN SOLO SENTIDO[/color]. Los [color=purple]ZOMBIS[/color] [color=red]entran[/color] por el [color=red]primer[/color] portal invocado y [color=red]salen[/color] por el [color=red]segundo[/color].
-","[color=purple]传送[/color][color=green]门[/color]是[color=red]单向的[/color]。[color=purple]僵尸[/color]从[color=red]先[/color]召唤的门[color=red]进入[/color]，从[color=red]后[/color]召唤的门[color=red]出来[/color]。
-","[color=purple]ПОР[/color][color=green]ТАЛЫ[/color] [color=red]ОДНОСТОРОННИЕ[/color]. [color=purple]ЗОМБИ[/color] [color=red]входят[/color] в [color=red]первый[/color] призванный портал и [color=red]выходят[/color] из [color=red]второго[/color].
-","[color=purple]POR[/color][color=green]TAIS[/color] são de [color=red]MÃO ÚNICA[/color]. Os [color=purple]ZUMBIS[/color] [color=red]entram[/color] pelo [color=red]primeiro[/color] portal invocado e [color=red]saem[/color] pelo [color=red]segundo[/color].
-","[color=purple]POR[/color][color=green]TALE[/color] sind [color=red]EINBAHNIG[/color]. [color=purple]ZOMBIES[/color] [color=red]betreten[/color] das [color=red]zuerst[/color] beschworene Portal und [color=red]verlassen[/color] das [color=red]zweite[/color].
-","[color=purple]ポー[/color][color=green]タル[/color]は[color=red]一方通行[/color]。[color=purple]ゾンビ[/color]は[color=red]先[/color]に召喚したポータルから[color=red]入り[/color]、[color=red]後[/color]のポータルから[color=red]出る[/color]。
-","Les [color=purple]POR[/color][color=green]TAILS[/color] sont à [color=red]SENS UNIQUE[/color]. Les [color=purple]ZOMBIES[/color] [color=red]entrent[/color] par le [color=red]premier[/color] portail invoqué et [color=red]sortent[/color] par le [color=red]second[/color].
-","[color=purple]POR[/color][color=green]TALE[/color] są [color=red]JEDNOKIERUNKOWE[/color]. [color=purple]ZOMBIE[/color] [color=red]wchodzą[/color] przez [color=red]pierwszy[/color] przyzwany portal, a [color=red]wychodzą[/color] przez [color=red]drugi[/color].
-","[color=purple]포[/color][color=green]털[/color]은 [color=red]일방통행[/color]입니다. [color=purple]좀비[/color]는 [color=red]먼저[/color] 소환한 포털로 [color=red]들어가[/color] [color=red]두 번째[/color] 포털로 [color=red]나옵니다[/color].
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_2.txt
-TXT_TUTORIAL_EXPLAIN_PORTALS_3,"[color=purple]POR[/color][color=green]TALS[/color] have [color=red]LONG DURATION[/color] & [color=red]SHORT COOLDOWN[/color]
-","Los [color=purple]POR[/color][color=green]TALES[/color] tienen [color=red]LARGA DURACIÓN[/color] y [color=red]POCO ENFRIAMIENTO[/color]
-","[color=purple]传送[/color][color=green]门[/color]拥有[color=red]持久的时效[/color]与[color=red]短暂的冷却[/color]
-","У [color=purple]ПОР[/color][color=green]ТАЛОВ[/color] [color=red]ДОЛГАЯ ДЛИТЕЛЬНОСТЬ[/color] и [color=red]КОРОТКАЯ ПЕРЕЗАРЯДКА[/color]
-","[color=purple]POR[/color][color=green]TAIS[/color] têm [color=red]LONGA DURAÇÃO[/color] e [color=red]RECARGA CURTA[/color]
-","[color=purple]POR[/color][color=green]TALE[/color] haben [color=red]LANGE DAUER[/color] & [color=red]KURZE ABKLINGZEIT[/color]
-","[color=purple]ポー[/color][color=green]タル[/color]は[color=red]効果時間が長く[/color]、[color=red]クールダウンが短い[/color]
-","Les [color=purple]POR[/color][color=green]TAILS[/color] ont une [color=red]LONGUE DURÉE[/color] et un [color=red]COURT TEMPS DE RECHARGE[/color]
-","[color=purple]POR[/color][color=green]TALE[/color] mają [color=red]DŁUGI CZAS DZIAŁANIA[/color] i [color=red]KRÓTKIE ODNOWIENIE[/color]
-","[color=purple]포[/color][color=green]털[/color]은 [color=red]지속시간이 길고[/color] [color=red]재사용 대기시간이 짧습니다[/color]
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_3.txt
-TXT_TUTORIAL_EXPLAIN_PREPLACED_SPINAL_OCCULUM,"You have reflexively summoned some SpinalOcculum. [color=red]USE THEIR BUFFS[/color] as you learn control over your new power.
-","Has invocado por instinto algunos Occulum Espinales. [color=red]USA SUS MEJORAS[/color] mientras aprendes a controlar tu nuevo poder.
-","你本能地召唤出了几个脊柱奥库伦。在学习掌控新力量的同时，[color=red]善用它们的增益[/color]。
-","Вы рефлекторно призвали несколько Спинальных Оккулумов. [color=red]ПОЛЬЗУЙТЕСЬ ИХ УСИЛЕНИЯМИ[/color], осваивая новую силу.
-","Você invocou por reflexo alguns Occulum Espinhais. [color=red]USE SEUS BÔNUS[/color] enquanto aprende a controlar seu novo poder.
-","Du hast reflexartig einige Stachel-Occulum beschworen. [color=red]NUTZE IHRE BUFFS[/color] während du deine neue Macht beherrschen lernst.
-","反射的にスパイナル・オキュラムを召喚してしまった。新たな力を制御する練習をしながら、[color=red]その強化を活用[/color]しよう。
-","Vous avez invoqué par réflexe des Occulum Spinaux. [color=red]UTILISEZ LEURS BONUS[/color] en apprenant à maîtriser votre nouveau pouvoir.
-","Odruchowo przyzwano kilka Occulum Kręgowych. [color=red]KORZYSTAJ Z ICH WZMOCNIEŃ[/color], ucząc się panować nad nową mocą.
-","반사적으로 스파이널 오큘럼 몇을 소환했습니다. 새로운 힘을 다루는 법을 익히는 동안 [color=red]그들의 강화를 활용하세요[/color].
-",res://_Assets/Text/TextFiles/Tutorial_Explain_PrePlaced_Spinal_Occulum.txt
-TXT_TUTORIAL_EXPLAIN_SKULL_HOVER,"[color=red]HOVER[/color] over a [color=red]SKULL[/color] to see incoming [color=purple]Zombies[/color]
-","[color=red]PASA EL CURSOR[/color] sobre una [color=red]CALAVERA[/color] para ver los [color=purple]zombis[/color] entrantes
-","将鼠标[color=red]悬停[/color]在[color=red]骷髅[/color]上可查看来袭的[color=purple]僵尸[/color]
-","[color=red]НАВЕДИТЕ[/color] курсор на [color=red]ЧЕРЕП[/color], чтобы увидеть приближающихся [color=purple]зомби[/color]
-","[color=red]PASSE O MOUSE[/color] sobre uma [color=red]CAVEIRA[/color] para ver os [color=purple]zumbis[/color] que virão
-","[color=red]FAHRE[/color] über einen [color=red]TOTENKOPF[/color] um anrückende [color=purple]Zombies[/color] zu sehen
-","[color=red]ドクロ[/color]に[color=red]カーソルを合わせる[/color]と迫りくる[color=purple]ゾンビ[/color]を確認できる
-","[color=red]SURVOLEZ[/color] un [color=red]CRÂNE[/color] pour voir les [color=purple]zombies[/color] à venir
-","[color=red]NAJEDŹ[/color] na [color=red]CZASZKĘ[/color], by zobaczyć nadciągające [color=purple]zombie[/color]
-","[color=red]해골[/color] 위에 [color=red]마우스를 올리면[/color] 다가오는 [color=purple]좀비[/color]를 볼 수 있습니다
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt
-TXT_TUTORIAL_EXPLAIN_SKULL_TILE,"Do [color=red]NOT[/color] let [color=purple]ZOMBIES [/color][color=purple]TOUCH[/color] the [color=purple]SKULL TILES[/color] or you [color=red]LOSE[/color]. [color=red]CANNOT SUMMON[/color] on Skull Tiles.
-","[color=red]NO[/color] dejes que los [color=purple]ZOMBIS [/color][color=purple]TOQUEN[/color] las [color=purple]CASILLAS DE CALAVERA[/color] o [color=red]PERDERÁS[/color]. [color=red]NO SE PUEDE INVOCAR[/color] en ellas.
-","[color=red]绝不能[/color]让[color=purple]僵尸[/color][color=purple]碰到[/color][color=purple]骷髅格[/color]，否则你会[color=red]失败[/color]。骷髅格上[color=red]无法召唤[/color]。
-","[color=red]НЕ[/color] позволяйте [color=purple]ЗОМБИ [/color][color=purple]КОСНУТЬСЯ[/color] [color=purple]КЛЕТОК С ЧЕРЕПАМИ[/color], иначе вы [color=red]ПРОИГРАЕТЕ[/color]. На них [color=red]НЕЛЬЗЯ ПРИЗЫВАТЬ[/color].
-","[color=red]NÃO[/color] deixe os [color=purple]ZUMBIS [/color][color=purple]TOCAREM[/color] as [color=purple]CASAS DE CAVEIRA[/color] ou você [color=red]PERDE[/color]. [color=red]NÃO É POSSÍVEL INVOCAR[/color] nelas.
-","Lass die [color=purple]ZOMBIES [/color][color=red]NICHT[/color] die [color=purple]TOTENKOPF-FELDER[/color] [color=purple]BERÜHREN[/color] sonst [color=red]VERLIERST[/color] du. Auf ihnen kann man [color=red]NICHT BESCHWÖREN[/color].
-","[color=purple]ゾンビ[/color]を[color=purple]ドクロマス[/color]に[color=purple]触れさせては[/color][color=red]ならない[/color]。触れられたら[color=red]敗北[/color]だ。ドクロマスには[color=red]召喚できない[/color]。
-","Ne laissez [color=red]PAS[/color] les [color=purple]ZOMBIES [/color][color=purple]TOUCHER[/color] les [color=purple]CASES DE CRÂNE[/color] ou vous [color=red]PERDEZ[/color]. [color=red]INVOCATION IMPOSSIBLE[/color] sur ces cases.
-","[color=red]NIE[/color] pozwól, by [color=purple]ZOMBIE [/color][color=purple]DOTKNĘŁY[/color] [color=purple]PÓL Z CZASZKĄ[/color], bo [color=red]PRZEGRASZ[/color]. Na polach z czaszką [color=red]NIE MOŻNA PRZYZYWAĆ[/color].
-","[color=purple]좀비[/color]가 [color=purple]해골 칸[/color]에 [color=purple]닿게 하면[/color] [color=red]안 됩니다[/color]. 닿으면 [color=red]패배[/color]합니다. 해골 칸에는 [color=red]소환할 수 없습니다[/color].
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt
-TXT_TUTORIAL_EXPLAIN_SWAP,"Lucretia can now command devastating [color=red]SWAP SORCERIES[/color] that charge over time.
-","Lucretia ahora domina devastadoras [color=red]HECHICERÍAS DE CAMBIO[/color] que se cargan con el tiempo.
-","卢克蕾西娅现在可以施展毁灭性的[color=red]换界魔法[/color]，它们会随时间充能。
-","Лукреция теперь владеет разрушительными [color=red]ЧАРАМИ СМЕНЫ[/color], которые заряжаются со временем.
-","Lucretia agora comanda devastadores [color=red]FEITIÇOS DE TROCA[/color] que carregam com o tempo.
-","Lucretia beherrscht nun verheerende [color=red]WECHSEL-ZAUBER[/color] die sich mit der Zeit aufladen.
-","ルクレツィアは、時間とともにチャージされる破壊的な[color=red]転移の魔術[/color]を操れるようになった。
-","Lucretia commande désormais de dévastatrices [color=red]SORCELLERIES D'ÉCHANGE[/color] qui se chargent avec le temps.
-","Lukrecja włada teraz niszczycielskimi [color=red]CZARAMI ZAMIANY[/color], które ładują się z czasem.
-","루크레티아는 이제 시간에 따라 충전되는 파괴적인 [color=red]전환 마법[/color]을 부릴 수 있습니다.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Swap.txt
-TXT_TUTORIAL_EXPLAIN_SWAP_2,"When fully charged, [color=red]SWAPING DIMENSIONS ACTIVATES[/color] the [color=red]SWAP SORCERY[/color] (unless it is locked with [color=red]SPACEBAR[/color])
-","Con la carga completa, [color=red]CAMBIAR DE DIMENSIÓN ACTIVA[/color] la [color=red]HECHICERÍA DE CAMBIO[/color] (salvo que la bloquees con la [color=red]BARRA ESPACIADORA[/color])
-","充能完毕后，[color=red]切换维度即可发动[/color][color=red]换界魔法[/color]（除非已用[color=red]空格键[/color]锁定）
-","При полной зарядке [color=red]СМЕНА ИЗМЕРЕНИЯ АКТИВИРУЕТ[/color] [color=red]ЧАРЫ СМЕНЫ[/color] (если они не заблокированы [color=red]ПРОБЕЛОМ[/color])
-","Com a carga completa, [color=red]TROCAR DE DIMENSÃO ATIVA[/color] o [color=red]FEITIÇO DE TROCA[/color] (a menos que esteja travado com a [color=red]BARRA DE ESPAÇO[/color])
-","Bei voller Ladung [color=red]AKTIVIERT DER DIMENSIONSWECHSEL[/color] den [color=red]WECHSEL-ZAUBER[/color] (außer er ist mit der [color=red]LEERTASTE[/color] gesperrt)
-","チャージ完了後は[color=red]次元を切り替えると[/color][color=red]転移の魔術が発動[/color]する（[color=red]スペースキー[/color]でロックしている場合を除く）
-","Une fois chargée, [color=red]CHANGER DE DIMENSION ACTIVE[/color] la [color=red]SORCELLERIE D'ÉCHANGE[/color] (sauf si elle est verrouillée avec la [color=red]BARRE D'ESPACE[/color])
-","Przy pełnym naładowaniu [color=red]ZMIANA WYMIARU AKTYWUJE[/color] [color=red]CZAR ZAMIANY[/color] (chyba że zablokujesz go [color=red]SPACJĄ[/color])
-","완전히 충전되면 [color=red]차원을 전환할 때[/color] [color=red]전환 마법이 발동[/color]됩니다 ([color=red]스페이스바[/color]로 잠근 경우 제외)
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_2.txt
-TXT_TUTORIAL_EXPLAIN_SWAP_3,"Swapping when an ability is [color=red]CURRENTLY ACTIVATED[/color] will [color=red]CANCEL it[/color] and [color=red]LENGTHEN[/color] the cooldown.
-","Cambiar de dimensión con una habilidad [color=red]YA ACTIVADA[/color] la [color=red]CANCELA[/color] y [color=red]ALARGA[/color] el enfriamiento.
-","当技能[color=red]正在生效[/color]时切换维度会[color=red]取消它[/color]并[color=red]延长[/color]冷却时间。
-","Смена измерения при [color=red]УЖЕ АКТИВНОЙ[/color] способности [color=red]ОТМЕНИТ её[/color] и [color=red]УДЛИНИТ[/color] перезарядку.
-","Trocar de dimensão com uma habilidade [color=red]JÁ ATIVADA[/color] vai [color=red]CANCELÁ-LA[/color] e [color=red]ALONGAR[/color] a recarga.
-","Wechselst du während eine Fähigkeit [color=red]GERADE AKTIV[/color] ist, wird sie [color=red]ABGEBROCHEN[/color] und die Abklingzeit [color=red]VERLÄNGERT[/color].
-","アビリティが[color=red]発動中[/color]に次元を切り替えると[color=red]キャンセル[/color]され、クールダウンが[color=red]延長[/color]される。
-","Changer de dimension quand un pouvoir est [color=red]DÉJÀ ACTIVÉ[/color] va [color=red]L'ANNULER[/color] et [color=red]RALLONGER[/color] le temps de recharge.
-","Zamiana, gdy zdolność jest [color=red]WŁAŚNIE AKTYWNA[/color], [color=red]ANULUJE ją[/color] i [color=red]WYDŁUŻY[/color] odnowienie.
-","능력이 [color=red]발동 중[/color]일 때 전환하면 능력이 [color=red]취소되고[/color] 재사용 대기시간이 [color=red]길어집니다[/color].
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_3.txt
-TXT_TUTORIAL_EXPLAIN_SYN_ABILITY,"Lucretia can command powerful [color=red]SYN SORCERIES[/color].
-","Lucretia puede dominar poderosas [color=red]HECHICERÍAS DE SYN[/color].
-","卢克蕾西娅可以施展强大的[color=red]辛之魔法[/color]。
-","Лукреция владеет могущественными [color=red]ЧАРАМИ СИНА[/color].
-","Lucretia pode comandar poderosos [color=red]FEITIÇOS DE SYN[/color].
-","Lucretia kann mächtige [color=red]SYN-ZAUBER[/color] befehligen.
-","ルクレツィアは強力な[color=red]シンの魔術[/color]を操れる。
-","Lucretia peut commander de puissantes [color=red]SORCELLERIES DE SYN[/color].
-","Lukrecja włada potężnymi [color=red]CZARAMI SYN[/color].
-","루크레티아는 강력한 [color=red]신의 마법[/color]을 부릴 수 있습니다.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability.txt
+TXT_TUTORIAL_DEMON_REMOVAL_2,"[color=red]Double Click[/color] and press the [color=red]X [b]symbol[/b][/color] to remove. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_2.txt
+TXT_TUTORIAL_DEMON_REMOVAL_3,"[color=red]Removing[/color] Demons [color=red][b]refunds blood[/b][/color] proportional to their [color=red][b]remaining health[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_3.txt
+TXT_TUTORIAL_EXPLAIN_DEMON_CLICK,"Click a [color=red][b]demon[/b][/color] to View its [color=red][b]info[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Click.txt
+TXT_TUTORIAL_EXPLAIN_DEMON_HOVER_CLICK,"[color=red][b]hover[/b][/color] over a [color=red][b]demon[/b][/color] to view its [color=red][b]range[/b][/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt
+TXT_TUTORIAL_EXPLAIN_HEALTH,"Protect your [color=red][b]health[/b][/color] and [color=red]Defeat[/color] the [color=purple][b]zombies[/b][/color] 
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Health.txt
+TXT_TUTORIAL_EXPLAIN_PORTALS,"Lucretia can summon [color=purple][b]por[/b][/color][color=green][b]tals[/b][/color] between [color=purple]Earth[/color] and [color=green]Syn[/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt
+TXT_TUTORIAL_EXPLAIN_PORTALS_2,"[color=purple][b]por[/b][/color][color=green][b]tals[/b][/color] are [color=red][b]one-way[/b][/color]. [color=purple][b]zombies[/b][/color] [color=red]enter[/color] via the [color=red]first[/color] portal summoned, [color=red]exit[/color] via the [color=red]second[/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_2.txt
+TXT_TUTORIAL_EXPLAIN_PORTALS_3,"[color=purple][b]por[/b][/color][color=green][b]tals[/b][/color] have [color=red][b]long duration[/b][/color] & [color=red][b]short cooldown[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_3.txt
+TXT_TUTORIAL_EXPLAIN_PREPLACED_SPINAL_OCCULUM,"You have reflexively summoned some SpinalOcculum. [color=red][b]use their buffs[/b][/color] as you learn control over your new power.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_PrePlaced_Spinal_Occulum.txt
+TXT_TUTORIAL_EXPLAIN_SKULL_HOVER,"[color=red][b]hover[/b][/color] over a [color=red][b]skull[/b][/color] to see incoming [color=purple]Zombies[/color] 
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt
+TXT_TUTORIAL_EXPLAIN_SKULL_TILE,"Do [color=red][b]not[/b][/color] let [color=purple][b]zombies[/b] [/color][color=purple][b]touch[/b][/color] the [color=purple][b]skull tiles[/b][/color] or you [color=red][b]lose[/b][/color]. [color=red][b]cannot summon[/b][/color] on Skull Tiles.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt
+TXT_TUTORIAL_EXPLAIN_SWAP,"Lucretia can now command devastating [color=red][b]swap socercies[/b][/color] that charge over time.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Swap.txt
+TXT_TUTORIAL_EXPLAIN_SWAP_2,"When fully charged, [color=red][b]swaping dimensions activates[/b][/color] the [color=red][b]swap sorcery[/b][/color] (unless it is locked with [color=red][b]spacebar[/b][/color])
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_2.txt
+TXT_TUTORIAL_EXPLAIN_SWAP_3,"Swapping when an ability is [color=red][b]currently activated[/b][/color] will [color=red][b]cancel[/b] it[/color] and [color=red][b]lengthen[/b][/color] the cooldown.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_3.txt
+TXT_TUTORIAL_EXPLAIN_SYN_ABILITY,"Lucretia can command powerful [color=red][b]syn sorceries[/b][/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability.txt
 TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_2,"Click the [color=red]Rune[/color] to ready the Sorcery.
 ","Haz clic en la [color=red]runa[/color] para preparar la hechicería.
 ","点击[color=red]符文[/color]准备魔法。
@@ -1412,26 +440,8 @@ TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_3,"[color=red]Click[/color] the Map to [color=r
 ","맵을 [color=red]클릭[/color]해 [color=red]마법[/color]을 [color=red]발동[/color]하세요
 ",res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_3.txt
 TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_4,"Each Dimension has it's own Syn Sorcery & cooldown.
-[color=red]SWAP[/color] & [color=red]Invoke[/color] the [color=red]Sorcery[/color] again
-","Cada dimensión tiene su propia hechicería de Syn y su enfriamiento.
-[color=red]CAMBIA[/color] e [color=red]invoca[/color] la [color=red]hechicería[/color] otra vez
-","每个维度都有自己的辛之魔法与冷却时间。
-[color=red]切换维度[/color]，再次[color=red]施放[/color][color=red]魔法[/color]
-","У каждого измерения — свои чары Сина и своя перезарядка.
-[color=red]СМЕНИТЕ[/color] измерение и [color=red]сотворите[/color] [color=red]чары[/color] снова
-","Cada dimensão tem seu próprio feitiço de Syn e recarga.
-[color=red]TROQUE[/color] e [color=red]invoque[/color] o [color=red]feitiço[/color] de novo
-","Jede Dimension hat ihren eigenen Syn-Zauber & eigene Abklingzeit.
-[color=red]WECHSLE[/color] & [color=red]wirke[/color] den [color=red]Zauber[/color] erneut
-","次元ごとに独自のシンの魔術とクールダウンがある。
-[color=red]転移[/color]して、もう一度[color=red]魔術[/color]を[color=red]発動[/color]しよう
-","Chaque dimension a sa propre sorcellerie de Syn et son temps de recharge.
-[color=red]CHANGEZ[/color] et [color=red]invoquez[/color] à nouveau la [color=red]sorcellerie[/color]
-","Każdy wymiar ma własny czar Syn i odnowienie.
-[color=red]ZAMIEŃ[/color] wymiar i [color=red]rzuć[/color] [color=red]czar[/color] ponownie
-","차원마다 고유한 신의 마법과 재사용 대기시간이 있습니다.
-[color=red]전환[/color]한 뒤 [color=red]마법[/color]을 다시 [color=red]발동[/color]하세요
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_4.txt
+[color=red][b]swap[/b][/color] & [color=red]Invoke[/color] the [color=red]Sorcery[/color] again
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_4.txt
 TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_5,"[color=red]Click[/color] the Rune then Map to [color=red]Invoke[/color] the [color=red]Sorcery[/color]
 ","[color=red]Haz clic[/color] en la runa y luego en el mapa para [color=red]invocar[/color] la [color=red]hechicería[/color]
 ","先[color=red]点击[/color]符文再点击地图，以[color=red]施放[/color][color=red]魔法[/color]
@@ -1465,39 +475,12 @@ TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_7,"Use them at [color=red]different times[/colo
 ","Używaj ich w [color=red]różnym czasie[/color] dla [color=red]szybszego odnowienia[/color] (zdolność ładuje się szybciej, gdy zdolność drugiego wymiaru jest aktywna).
 ","[color=red]서로 다른 시점[/color]에 사용하면 [color=red]재사용 대기시간이 빨라집니다[/color] (다른 차원의 능력이 발동 중일 때 능력이 더 빨리 충전됩니다).
 ",res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_7.txt
-TXT_TUTORIAL_EXPLAIN_ULTIMATES,"Command Demons to unleash their [color=red]MAXIMUM POWER.[/color]
-","Ordena a los demonios desatar su [color=red]MÁXIMO PODER.[/color]
-","命令恶魔释放它们的[color=red]最大力量。[/color]
-","Прикажите демонам высвободить их [color=red]ПОЛНУЮ МОЩЬ.[/color]
-","Ordene que os demônios liberem seu [color=red]PODER MÁXIMO.[/color]
-","Befiehl den Dämonen ihre [color=red]MAXIMALE MACHT[/color] zu entfesseln.
-","悪魔たちに[color=red]最大の力[/color]を解き放たせよ。
-","Ordonnez aux démons de déchaîner leur [color=red]PUISSANCE MAXIMALE.[/color]
-","Rozkaż demonom uwolnić ich [color=red]PEŁNĄ MOC.[/color]
-","악마들에게 [color=red]최대의 힘[/color]을 해방하라 명하세요.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates.txt
-TXT_TUTORIAL_EXPLAIN_ULTIMATES_2,"Each Demon has a unique [color=red]ULTIMATE[/color]. Generate [color=red]MANA[/color] for [color=red]ULTIMATES[/color] via [color=red]Demon activity[/color].
-","Cada demonio tiene una [color=red]DEFINITIVA[/color] única. Genera [color=red]MANÁ[/color] para las [color=red]DEFINITIVAS[/color] con la [color=red]actividad de tus demonios[/color].
-","每个恶魔都有独特的[color=red]终极技[/color]。通过[color=red]恶魔的行动[/color]为[color=red]终极技[/color]积攒[color=red]法力[/color]。
-","У каждого демона свой [color=red]УЛЬТИМАТ[/color]. Копите [color=red]МАНУ[/color] для [color=red]УЛЬТИМАТОВ[/color] через [color=red]действия демонов[/color].
-","Cada demônio tem uma [color=red]SUPREMA[/color] única. Gere [color=red]MANA[/color] para as [color=red]SUPREMAS[/color] com a [color=red]atividade dos demônios[/color].
-","Jeder Dämon hat eine einzigartige [color=red]ULTIMATIVE[/color]. Erzeuge [color=red]MANA[/color] für [color=red]ULTIMATIVE[/color] durch [color=red]Dämonen-Aktivität[/color].
-","悪魔ごとに固有の[color=red]アルティメット[/color]がある。[color=red]悪魔の活動[/color]で[color=red]アルティメット[/color]用の[color=red]マナ[/color]を生み出そう。
-","Chaque démon a un [color=red]ULTIME[/color] unique. Générez du [color=red]MANA[/color] pour les [color=red]ULTIMES[/color] via l'[color=red]activité des démons[/color].
-","Każdy demon ma unikalny [color=red]ULTIMAT[/color]. Generuj [color=red]MANĘ[/color] na [color=red]ULTIMATY[/color] poprzez [color=red]działania demonów[/color].
-","악마마다 고유한 [color=red]궁극기[/color]가 있습니다. [color=red]악마의 활동[/color]으로 [color=red]궁극기[/color]용 [color=red]마나[/color]를 모으세요.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_2.txt
-TXT_TUTORIAL_EXPLAIN_ULTIMATES_3,"Generating enough [color=red]MANA[/color] grants an [color=red]ULTIMATE CHARGE[/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].
-","Acumular suficiente [color=red]MANÁ[/color] otorga una [color=red]CARGA DE DEFINITIVA[/color]. Prueba una definitiva ahora. [color=red]Haz clic en la barra de definitiva[/color].
-","积攒足够的[color=red]法力[/color]即可获得一次[color=red]终极技充能[/color]。现在就试试终极技吧。[color=red]点击终极技条[/color]。
-","Накопив достаточно [color=red]МАНЫ[/color], вы получите [color=red]ЗАРЯД УЛЬТИМАТА[/color]. Попробуйте прямо сейчас. [color=red]Нажмите на шкалу ультимата[/color].
-","Gerar [color=red]MANA[/color] suficiente concede uma [color=red]CARGA DE SUPREMA[/color]. Experimente uma agora. [color=red]Clique na barra de Suprema[/color].
-","Genug [color=red]MANA[/color] gewährt eine [color=red]ULTIMATIV-LADUNG[/color]. Probiere jetzt eine aus. [color=red]Klicke die Ultimativ-Leiste an[/color].
-","[color=red]マナ[/color]が十分たまると[color=red]アルティメットチャージ[/color]を獲得。今すぐ使ってみよう。[color=red]アルティメットバーをクリック[/color]。
-","Générer assez de [color=red]MANA[/color] octroie une [color=red]CHARGE D'ULTIME[/color]. Essayez-en un maintenant. [color=red]Cliquez sur la barre d'Ultime[/color].
-","Zebranie dość [color=red]MANY[/color] daje [color=red]ŁADUNEK ULTIMATU[/color]. Wypróbuj ultimat teraz. [color=red]Kliknij pasek ultimatu[/color].
-","[color=red]마나[/color]를 충분히 모으면 [color=red]궁극기 충전[/color]을 얻습니다. 지금 궁극기를 써 보세요. [color=red]궁극기 바를 클릭[/color]하세요.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_3.txt
+TXT_TUTORIAL_EXPLAIN_ULTIMATES,"Command Demons to unleash their [color=red][b]maximum power[/b].[/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates.txt
+TXT_TUTORIAL_EXPLAIN_ULTIMATES_2,"Each Demon has a unique [color=red][b]ultimate[/b][/color]. Generate [color=red][b]mana[/b][/color] for [color=red][b]ultimates[/b][/color] via [color=red]Demon activity[/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_2.txt
+TXT_TUTORIAL_EXPLAIN_ULTIMATES_3,"Generating enough [color=red][b]mana[/b][/color] grants an [color=red][b]ultimate charge[/b][/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_3.txt
 TXT_TUTORIAL_EXPLAIN_ULTIMATES_4,"Now click the [color=red]Crawler[/color].
 ","Ahora haz clic en el [color=red]Crawler[/color].
 ","现在点击[color=red]爬行者[/color]。
@@ -1520,50 +503,14 @@ TXT_TUTORIAL_EXPLAIN_ULTIMATES_5,"[color=red]Efficient[/color] Demon Use = [colo
 ","[color=red]Sprawne[/color] użycie demonów = [color=red]szybsze[/color] ładowanie ultimatu. Szczegóły znajdziesz w [color=red]kodeksie[/color].
 ","악마를 [color=red]효율적으로[/color] 쓰면 궁극기 충전이 [color=red]빨라집니다[/color]. 자세한 내용은 [color=red]코덱스[/color]에서 확인하세요.
 ",res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_5.txt
-TXT_TUTORIAL_EXPLAIN_WAVES,"Click the [color=red]SKULL[/color] to call [color=purple]zombie[/color] [color=green]waves[/color] [color=red]EARLY[/color] for [color=red]BONUS BLOOD[/color]
-","Haz clic en la [color=red]CALAVERA[/color] para [color=red]adelantar[/color] las [color=green]oleadas[/color] de [color=purple]zombis[/color] y ganar [color=red]SANGRE EXTRA[/color]
-","点击[color=red]骷髅[/color]可[color=red]提前[/color]召来[color=purple]僵尸[/color][color=green]波次[/color]，获得[color=red]额外鲜血[/color]
-","Нажмите на [color=red]ЧЕРЕП[/color], чтобы вызвать [color=green]волны[/color] [color=purple]зомби[/color] [color=red]ЗАРАНЕЕ[/color] и получить [color=red]БОНУСНУЮ КРОВЬ[/color]
-","Clique na [color=red]CAVEIRA[/color] para chamar as [color=green]ondas[/color] de [color=purple]zumbis[/color] [color=red]ANTES DA HORA[/color] e ganhar [color=red]SANGUE BÔNUS[/color]
-","Klicke den [color=red]TOTENKOPF[/color] an um [color=purple]Zombie[/color]-[color=green]Wellen[/color] [color=red]FRÜHER[/color] zu rufen — für [color=red]BONUS-BLUT[/color]
-","[color=red]ドクロ[/color]をクリックして[color=purple]ゾンビ[/color]の[color=green]ウェーブ[/color]を[color=red]早めに[/color]呼び込めば[color=red]ボーナスの血[/color]を獲得
-","Cliquez sur le [color=red]CRÂNE[/color] pour appeler les [color=green]vagues[/color] de [color=purple]zombies[/color] [color=red]EN AVANCE[/color] et gagner du [color=red]SANG BONUS[/color]
-","Kliknij [color=red]CZASZKĘ[/color], by wezwać [color=green]fale[/color] [color=purple]zombie[/color] [color=red]WCZEŚNIEJ[/color] i zdobyć [color=red]PREMIOWĄ KREW[/color]
-","[color=red]해골[/color]을 클릭해 [color=purple]좀비[/color] [color=green]웨이브[/color]를 [color=red]앞당기면[/color] [color=red]보너스 피[/color]를 얻습니다
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Waves.txt
-TXT_TUTORIAL_EXPLAIN_WYRM_QUEEN,"A [color=red]DEMON QUEEN[/color] has decided to aid you. [color=red]Defend them[/color] and gain their alliegance.
-","Una [color=red]REINA DEMONIO[/color] ha decidido ayudarte. [color=red]Defiéndela[/color] y gánate su lealtad.
-","一位[color=red]恶魔女王[/color]决定助你一臂之力。[color=red]保护她[/color]，赢得她的效忠。
-","[color=red]КОРОЛЕВА ДЕМОНОВ[/color] решила помочь вам. [color=red]Защитите её[/color] и заслужите её верность.
-","Uma [color=red]RAINHA DEMÔNIO[/color] decidiu ajudá-lo. [color=red]Defenda-a[/color] e conquiste sua lealdade.
-","Eine [color=red]DÄMONENKÖNIGIN[/color] hat beschlossen dir zu helfen. [color=red]Verteidige sie[/color] und gewinne ihre Treue.
-","[color=red]悪魔の女王[/color]がお前に力を貸すことを決めた。[color=red]守り抜いて[/color]忠誠を勝ち取れ。
-","Une [color=red]REINE DÉMONE[/color] a décidé de vous aider. [color=red]Défendez-la[/color] pour gagner son allégeance.
-","[color=red]KRÓLOWA DEMONÓW[/color] postanowiła ci pomóc. [color=red]Broń jej[/color], by zdobyć jej lojalność.
-","[color=red]악마 여왕[/color]이 당신을 돕기로 했습니다. [color=red]여왕을 지켜내고[/color] 충성을 얻으세요.
-",res://_Assets/Text/TextFiles/Tutorial_Explain_Wyrm_Queen.txt
-TXT_TUTORIAL_PLACE_PORTAL,"Select & Place a [color=purple]POR[/color][color=green]TAL[/color] now.
-","Selecciona y coloca un [color=purple]POR[/color][color=green]TAL[/color] ahora.
-","现在选择并放置一座[color=purple]传送[/color][color=green]门[/color]。
-","Выберите и поставьте [color=purple]ПОР[/color][color=green]ТАЛ[/color] сейчас.
-","Selecione e coloque um [color=purple]POR[/color][color=green]TAL[/color] agora.
-","Wähle & platziere jetzt ein [color=purple]POR[/color][color=green]TAL[/color].
-","今すぐ[color=purple]ポー[/color][color=green]タル[/color]を選択して配置しよう。
-","Sélectionnez et placez un [color=purple]POR[/color][color=green]TAIL[/color] maintenant.
-","Wybierz i postaw [color=purple]POR[/color][color=green]TAL[/color] teraz.
-","지금 [color=purple]포[/color][color=green]털[/color]을 선택해 배치하세요.
-",res://_Assets/Text/TextFiles/Tutorial_Place_Portal.txt
-TXT_TUTORIAL_PLACE_PORTAL_2,"Swap & Place another [color=purple]POR[/color][color=green]TAL[/color] now.
-","Cambia de dimensión y coloca otro [color=purple]POR[/color][color=green]TAL[/color].
-","切换维度，再放置另一座[color=purple]传送[/color][color=green]门[/color]。
-","Смените измерение и поставьте второй [color=purple]ПОР[/color][color=green]ТАЛ[/color].
-","Troque de dimensão e coloque outro [color=purple]POR[/color][color=green]TAL[/color].
-","Wechsle & platziere jetzt ein weiteres [color=purple]POR[/color][color=green]TAL[/color].
-","転移して、もう一つ[color=purple]ポー[/color][color=green]タル[/color]を配置しよう。
-","Changez de dimension et placez un autre [color=purple]POR[/color][color=green]TAIL[/color].
-","Zamień wymiar i postaw kolejny [color=purple]POR[/color][color=green]TAL[/color].
-","차원을 전환한 뒤 [color=purple]포[/color][color=green]털[/color]을 하나 더 배치하세요.
-",res://_Assets/Text/TextFiles/Tutorial_Place_Portal_2.txt
+TXT_TUTORIAL_EXPLAIN_WAVES,"Click the [color=red][b]skull[/b][/color] to call [color=purple]zombie[/color] [color=green]waves[/color] [color=red][b]early[/b][/color] for [color=red][b]bonus blood[/b][/color]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Waves.txt
+TXT_TUTORIAL_EXPLAIN_WYRM_QUEEN,"A [color=red][b]demon queen[/b][/color] has decided to aid you. [color=red]Defend them[/color] and gain their alliegance. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Wyrm_Queen.txt
+TXT_TUTORIAL_PLACE_PORTAL,"Select & Place a [color=purple][b]por[/b][/color][color=green][b]tal[/b][/color] now.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Place_Portal.txt
+TXT_TUTORIAL_PLACE_PORTAL_2,"Swap & Place another [color=purple][b]por[/b][/color][color=green][b]tal[/b][/color] now.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Place_Portal_2.txt
 TXT_TUTORIAL_SELECT_DEMON,"Select one now
 ","Selecciona uno ahora
 ","现在选择一个
@@ -1586,50 +533,14 @@ TXT_TUTORIAL_SELECT_WYRM,"Select a Wyrm Demon now
 ","Wybierz demona Żmija teraz
 ","지금 웜 악마를 선택하세요
 ",res://_Assets/Text/TextFiles/Tutorial_Select_Wyrm.txt
-TXT_TUTORIAL_SPINAL_OCCULUM_UNLOCKED,"SPINAL OCCULUM UNLOCKED
-","OCCULUM ESPINAL DESBLOQUEADO
-","脊柱奥库伦已解锁
-","СПИНАЛЬНЫЙ ОККУЛУМ ОТКРЫТ
-","OCCULUM ESPINHAL LIBERADO
-","STACHEL-OCCULUM FREIGESCHALTET
-","スパイナル・オキュラム解放
-","OCCULUM SPINAL DÉBLOQUÉ
-","OCCULUM KRĘGOWY ODBLOKOWANY
-","스파이널 오큘럼 해금
-",res://_Assets/Text/TextFiles/Tutorial_Spinal_Occulum_Unlocked.txt
-TXT_WASPTUTORIAL,"HIVE's are dens of demonic wasps that can harrass and slow down enemies near itself. Covers more ground and does more damage than the Occular Spine at the cost of durablity. Place wisely.
-","Las COLMENAS son nidos de avispas demoníacas que hostigan y ralentizan a los enemigos cercanos. Cubren más terreno y hacen más daño que la Espina Ocular, a costa de resistencia. Colócalas con cabeza.
-","蜂巢是恶魔黄蜂的巢穴，能骚扰并减速附近的敌人。比眼脊柱覆盖更广、伤害更高，但耐久较差。放置时要三思。
-","УЛЬИ — гнёзда демонических ос, которые изводят и замедляют врагов поблизости. Покрывают больше земли и наносят больше урона, чем Окулярный Хребет, но менее прочны. Ставьте с умом.
-","As COLMEIAS são ninhos de vespas demoníacas que atormentam e retardam inimigos próximos. Cobrem mais terreno e causam mais dano que a Espinha Ocular, ao custo de resistência. Posicione com sabedoria.
-","NESTER sind Brutstätten dämonischer Wespen die Gegner in der Nähe bedrängen und verlangsamen. Sie decken mehr Fläche ab und richten mehr Schaden an als der Augendorn — auf Kosten der Haltbarkeit. Platziere sie klug.
-","ハイブは悪魔蜂の巣窟で、近くの敵に嫌がらせをして減速させる。オキュラースパインより広範囲・高ダメージだが、耐久力は低い。配置は慎重に。
-","Les RUCHES sont des nids de guêpes démoniaques qui harcèlent et ralentissent les ennemis proches. Elles couvrent plus de terrain et infligent plus de dégâts que l'Épine Oculaire, au prix de la solidité. Placez-les avec discernement.
-","ULE to gniazda demonicznych os, które nękają i spowalniają pobliskich wrogów. Pokrywają większy obszar i zadają większe obrażenia niż Oczny Kręg, kosztem wytrzymałości. Stawiaj je mądrze.
-","하이브는 악마 말벌의 소굴로, 근처의 적을 괴롭히고 느리게 만듭니다. 오큘러 스파인보다 넓은 범위와 높은 피해를 주지만 내구력이 약합니다. 신중히 배치하세요.
-",res://_Assets/Text/TextFiles/waspTutorial.txt
-TXT_WASPWYRMBUFF,"HIVE's can RECEIVE buffs from EGGWYRM's, enraging the demonic wasps and causing them to attack faster and deal more damage.
-","Las COLMENAS pueden RECIBIR mejoras de los EGGWYRM: las avispas demoníacas se enfurecen, atacan más rápido y hacen más daño.
-","蜂巢可从卵蠕龙处获得增益：恶魔黄蜂被激怒，攻击更快、伤害更高。
-","УЛЬИ могут ПОЛУЧАТЬ усиления от ЯЙЦЕ-ЗМИЕВ: демонические осы приходят в ярость, атакуют быстрее и бьют больнее.
-","As COLMEIAS podem RECEBER bônus dos EGGWYRMS: as vespas demoníacas se enfurecem, atacando mais rápido e causando mais dano.
-","NESTER können Buffs von EGGWYRMS ERHALTEN: Die dämonischen Wespen geraten in Rage, greifen schneller an und verursachen mehr Schaden.
-","ハイブはエッグワームから強化を受けられる。悪魔蜂は怒り狂い、攻撃速度とダメージが上がる。
-","Les RUCHES peuvent RECEVOIR des bonus des EGGWYRMS : les guêpes démoniaques s'enragent, attaquent plus vite et infligent plus de dégâts.
-","ULE mogą OTRZYMYWAĆ wzmocnienia od EGGWYRMÓW: demoniczne osy wpadają w szał, atakują szybciej i zadają większe obrażenia.
-","하이브는 에그웜에게서 강화를 받을 수 있습니다. 악마 말벌이 격노해 더 빠르게 공격하고 더 큰 피해를 줍니다.
-",res://_Assets/Text/TextFiles/WaspWyrmBuff.txt
-TXT_WYRMMAWBUFF,"The fresh blood dripping from the EggWyrms cocoon can seep into the jaws of a MAW, aiding it's digestion allowing it to kill enemies faster.
-","La sangre fresca que gotea del capullo del EggWyrm puede filtrarse en las fauces de una FAUCES, facilitando su digestión y permitiéndole matar más rápido.
-","从卵蠕龙茧中滴落的鲜血能渗入巨口的颚中，帮助其消化，使其更快杀死敌人。
-","Свежая кровь, капающая с кокона Яйце-Змия, затекает в пасть ПАСТИ, помогая пищеварению и позволяя убивать врагов быстрее.
-","O sangue fresco que goteja do casulo do EggWyrm pode escorrer para as mandíbulas de uma GOELA, ajudando na digestão e permitindo matar inimigos mais rápido.
-","Das frische Blut das vom Kokon des EggWyrms tropft kann in die Kiefer eines SCHLUNDS sickern, die Verdauung fördern und ihn Gegner schneller töten lassen.
-","エッグワームの繭から滴る新鮮な血はマウの顎に染み込み、消化を助けて敵をより速く殺せるようにする。
-","Le sang frais qui goutte du cocon de l'EggWyrm peut s'infiltrer dans les mâchoires d'une GUEULE, facilitant sa digestion et lui permettant de tuer plus vite.
-","Świeża krew kapiąca z kokonu EggWyrma może wsiąkać w szczęki PASZCZY, wspomagając trawienie i pozwalając szybciej zabijać wrogów.
-","에그웜의 고치에서 떨어지는 신선한 피가 마우의 턱에 스며들어 소화를 도와 적을 더 빨리 처치하게 해줍니다.
-",res://_Assets/Text/TextFiles/WyrmMawBuff.txt
+TXT_TUTORIAL_SPINAL_OCCULUM_UNLOCKED,"[b]spinal occulum unlocked[/b]
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Spinal_Occulum_Unlocked.txt
+TXT_WASPTUTORIAL,"[b]hive[/b]'s are dens of demonic wasps that can harrass and slow down enemies near itself. Covers more ground and does more damage than the Occular Spine at the cost of durablity. Place wisely. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/waspTutorial.txt
+TXT_WASPWYRMBUFF,"[b]hive[/b]'s can [b]receive[/b] buffs from [b]eggwyrm[/b]'s, enraging the demonic wasps and causing them to attack faster and deal more damage.
+",,,,,,,,,,res://_Assets/Text/TextFiles/WaspWyrmBuff.txt
+TXT_WYRMMAWBUFF,"The fresh blood dripping from the EggWyrms cocoon can seep into the jaws of a [b]maw[/b], aiding it's digestion allowing it to kill enemies faster. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/WyrmMawBuff.txt
 TXT_WYRMQUEEN,"A queen Wyrm that can give but not receive buffs.
 ","Una Sierpe reina que puede dar mejoras, pero no recibirlas.
 ","蠕龙女王：只能给予增益，无法接受增益。
@@ -1641,17 +552,8 @@ TXT_WYRMQUEEN,"A queen Wyrm that can give but not receive buffs.
 ","Królowa Żmijów, która może dawać wzmocnienia, lecz ich nie otrzymuje.
 ","강화를 줄 수는 있지만 받을 수는 없는 웜 여왕.
 ",res://_Assets/Text/TextFiles/WyrmQueen.txt
-TXT_WYRMSPINEBUFF,"EggWyrms can simultanesouly buff OCCULAR SPINE's and themselves, granting the Spine increased health regeneration while increasing the Wyrm's damage.
-","Los EggWyrm pueden potenciarse a sí mismos y a las ESPINAS OCULARES a la vez: la Espina regenera más salud y la Sierpe hace más daño.
-","卵蠕龙可以同时强化眼脊柱与自身：脊柱获得更快的生命回复，蠕龙的伤害也随之提升。
-","Яйце-Змии могут одновременно усиливать ОКУЛЯРНЫЕ ХРЕБТЫ и себя: Хребет быстрее восстанавливается, а урон Змия растёт.
-","EggWyrms podem fortalecer as ESPINHAS OCULARES e a si mesmos ao mesmo tempo: a Espinha regenera mais vida e o dano da Serpe aumenta.
-","EggWyrms können AUGENDORNE und sich selbst gleichzeitig verstärken: Der Dorn regeneriert mehr Leben während der Schaden des Wyrms steigt.
-","エッグワームはオキュラースパインと自分自身を同時に強化できる。スパインの体力再生が上がり、ワームのダメージも増える。
-","Les EggWyrms peuvent renforcer les ÉPINES OCULAIRES et eux-mêmes en même temps : l'Épine régénère plus de santé et les dégâts de la Vouivre augmentent.
-","EggWyrmy mogą jednocześnie wzmacniać OCZNE KRĘGI i siebie: Kręg szybciej regeneruje zdrowie, a obrażenia Żmija rosną.
-","에그웜은 오큘러 스파인과 자기 자신을 동시에 강화할 수 있습니다. 스파인의 체력 재생이 빨라지고 웜의 피해량이 늘어납니다.
-",res://_Assets/Text/TextFiles/WyrmSpineBuff.txt
+TXT_WYRMSPINEBUFF,"EggWyrms can simultanesouly buff [b]occular spine[/b]'s and themselves, granting the Spine increased health regeneration while increasing the Wyrm's damage.
+",,,,,,,,,,res://_Assets/Text/TextFiles/WyrmSpineBuff.txt
 TXT_WYRMTUTORIAL,"Hatchling wyrms that fire a stream of super heated piercing blood.
 
 Useful at taking out groups of enemies but struggles against high health single targets.
