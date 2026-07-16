@@ -608,6 +608,14 @@ shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nabk1"]
 size = Vector2(46, 48)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1y46f"]
+texture = ExtResource("17_jfwei")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.35, 0.35, 0.35, 1)
+
 [node name="DemonSelectionMenu" type="Control" unique_id=1988977493]
 visibility_layer = 2
 z_index = 2
@@ -987,13 +995,14 @@ shape = SubResource("RectangleShape2D_nabk1")
 
 [node name="WaveLabel" type="Label" parent="." unique_id=1985403701]
 layout_mode = 0
-offset_left = 509.0
+offset_left = 542.0
 offset_top = 3.0
-offset_right = 677.0
-offset_bottom = 60.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_right = 667.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_wixct")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxTexture_1y46f")
 text = "WAVE 1"
 horizontal_alignment = 1
 vertical_alignment = 1

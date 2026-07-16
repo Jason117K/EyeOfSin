@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bne3yycsqxclr" path="res://_Assets/Environment/Tilesets/Earth3WalkTile2.png" id="7_rsk7n"]
 [ext_resource type="Texture2D" uid="uid://3hli3x35y7ur" path="res://_Assets/Environment/Skulls_NoSummonTile.png" id="8_3icwk"]
 [ext_resource type="Texture2D" uid="uid://dhyrydgphy1ry" path="res://_Assets/Environment/Tilesets/Ground_Green.png" id="9_7ebtf"]
+[ext_resource type="Texture2D" uid="uid://bycf4yi0vxc11" path="res://_Assets/Environment/Tilesets/_Seabed_Tileset.png" id="9_wn1f1"]
 [ext_resource type="Texture2D" uid="uid://4rl85c68p60t" path="res://_Assets/Environment/Tilesets/bgtilesgbig-Sheet.png" id="10_fcmgp"]
 [ext_resource type="Texture2D" uid="uid://b35bpqpjftktv" path="res://_Assets/Environment/Tilesets/SpecialTile1-Green.png" id="11_au0vw"]
 [ext_resource type="Texture2D" uid="uid://8g35103qrcq8" path="res://_Assets/Environment/Tilesets/PurpleSwampTileset.png" id="12_873si"]
@@ -304,6 +305,11 @@ texture = ExtResource("8_3icwk")
 texture_region_size = Vector2i(32, 32)
 use_texture_padding = false
 0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4qdk"]
+texture = ExtResource("9_wn1f1")
+texture_region_size = Vector2i(32, 32)
+13:19/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcl57"]
 texture = ExtResource("9_7ebtf")
@@ -863,3 +869,4 @@ sources/13 = SubResource("TileSetAtlasSource_3a1hl")
 sources/14 = SubResource("TileSetAtlasSource_7424c")
 sources/15 = SubResource("TileSetAtlasSource_bp4ny")
 sources/18 = SubResource("TileSetAtlasSource_vcl57")
+sources/16 = SubResource("TileSetAtlasSource_j4qdk")

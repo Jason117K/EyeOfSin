@@ -102,6 +102,7 @@ wave3StartTime = 100
 layout_mode = 1
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_pkv84")]
+visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=2054959841 instance=ExtResource("2_uuukh")]
@@ -111,6 +112,7 @@ blood_points = 625
 process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=64591417 instance=ExtResource("3_e2mf6")]
+visible = false
 position = Vector2(740, 109)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_gtg2i")])
 
@@ -119,6 +121,7 @@ z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1681961726 instance=ExtResource("3_e2mf6")]
+visible = false
 position = Vector2(740, 141)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_3au0f")])
 
@@ -127,6 +130,7 @@ z_index = 1
 position = Vector2(-32, 1)
 
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=781429151 instance=ExtResource("3_e2mf6")]
+visible = false
 position = Vector2(740, 173)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_3au0f")])
 
@@ -135,6 +139,7 @@ z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1152355151 instance=ExtResource("3_e2mf6")]
+visible = false
 position = Vector2(740, 205)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_3au0f")])
 
@@ -143,6 +148,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=427235216 instance=ExtResource("3_e2mf6")]
+visible = false
 position = Vector2(740, 237)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_10a2h")])
 
@@ -151,6 +157,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1909322556 instance=ExtResource("3_e2mf6")]
+visible = false
 position = Vector2(740, 269)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_pkv84")])
 
@@ -159,6 +166,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1811656157 instance=ExtResource("3_e2mf6")]
+visible = false
 position = Vector2(740, 301)
 waves = Array[ExtResource("4_pkv84")]([SubResource("Resource_1cdkr")])
 
@@ -447,7 +455,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="GameLayer/GridManager"]

@@ -171,6 +171,9 @@ func _start_free_play() -> void:
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
 	place_spinal_occulum()
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	get_green_dimension().hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
 
 func place_spinal_occulum()->void:

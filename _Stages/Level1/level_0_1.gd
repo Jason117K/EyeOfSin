@@ -133,7 +133,8 @@ func _ready() -> void:
 	Global.reset_swap_ability()
 
 	#waveManager.wave_delays = [-1, -1]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime]
+	#waveManager.wave_delays = [wave2StartTime,wave3StartTime]
+	waveManager.wave_delays = [-1,wave3StartTime]
 
 		
 	waveManager.wave_started.connect(_on_wave_started)
@@ -344,7 +345,7 @@ func _start_wave_2_both_dimensions() -> void:
 	if green_dimension and green_dimension.has_method("setup_wave_2_ui"):
 		green_dimension.setup_wave_2_ui()
 
-	#waveManager.start_next_wave()
+	waveManager.start_next_wave()
 	demonSelectionMenu.canSwapScenes = true
 	_start_explain_early_wave_call()
 
@@ -473,6 +474,7 @@ func _physics_process(_delta: float) -> void:
 			if wave_1_completed :
 				if purple_zombies.size() == 0 and wave_1_active:
 					wave_1_complete = true
+					print("Going to Force Press Y")
 					go_to_step("FORCE_PRESS_Y")
 #endregion
 

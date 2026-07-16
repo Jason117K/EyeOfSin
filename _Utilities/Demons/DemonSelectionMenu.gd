@@ -108,6 +108,7 @@ signal demon_selected(Demon)
 
 func _ready() -> void:
 	show()
+	hide_wave_label()
 	is_alt = get_parent().isGreenDimension
 	add_child(preview_container)
 	if is_alt:
