@@ -14,15 +14,17 @@
 [ext_resource type="TileSet" uid="uid://cbxfw4q52ecva" path="res://_Assets/Environment/TempOcean.tres" id="12_afqn6"]
 [ext_resource type="Texture2D" uid="uid://dmli8i55mkd02" path="res://_Assets/Environment/Updated_Props/Red_Coral.png" id="25_eggto"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_gkxyp"]
+[ext_resource type="Texture2D" uid="uid://ctvcwty57as57" path="res://_Assets/Environment/Updated_Props/Sea_Hole.png" id="29_txapp"]
+[ext_resource type="Texture2D" uid="uid://cu2fjgix7g3sf" path="res://_Assets/Environment/Updated_Props/Coral_Fans.png" id="30_txi5o"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://_Assets/Environment/Props/CoralSmall_PROP.png" id="31_oihkf"]
+[ext_resource type="Texture2D" uid="uid://dudo8l1gyv8xp" path="res://_Assets/Environment/Updated_Props/Spindly_Coral.png" id="31_sofns"]
 [ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://_Assets/Environment/Props/CoralBig_Prop.png" id="32_og8xg"]
+[ext_resource type="Texture2D" uid="uid://ca35tylcredq8" path="res://_Assets/Environment/Updated_Props/Kelp_Sheet.png" id="32_txi5o"]
 [ext_resource type="Shader" uid="uid://bvtgcoyd11iop" path="res://_Common/Shaders/swayShader.tres" id="33_8dqj3"]
 [ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://_Assets/Environment/Props/Coral_ExtraBig.png" id="34_ejg0n"]
 [ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://_Common/EnvironmentScripts/sway.gd" id="35_8xxcl"]
-[ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://_Assets/Environment/Props/FetusProp.png" id="36_0yyqr"]
 [ext_resource type="Texture2D" uid="uid://dcw0v1rjdfnn3" path="res://_Assets/Environment/Props/Bramble1.png" id="37_8il63"]
 [ext_resource type="Texture2D" uid="uid://d0ircqae1knpw" path="res://_Assets/Environment/Props/Bramble2PROP.png" id="38_80sge"]
-[ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="39_b7m8f"]
 [ext_resource type="PackedScene" uid="uid://b4jxfxm2xg2yb" path="res://_Entities/LevelDecorations/Shrub.tscn" id="40_14e22"]
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://_Assets/Environment/BloodTree.png" id="41_sjrs2"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="42_6xjg7"]
@@ -71,6 +73,76 @@ region = Rect2(0, 0, 24.24, 0)
 [sub_resource type="AtlasTexture" id="AtlasTexture_txi5o"]
 atlas = ExtResource("25_eggto")
 region = Rect2(31.45, 0, 24.24, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w08x"]
+atlas = ExtResource("30_txi5o")
+region = Rect2(0, 0, 31.51, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51wd5"]
+atlas = ExtResource("30_txi5o")
+region = Rect2(27.54, 0, 24.775, 32.52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_063aa"]
+atlas = ExtResource("31_sofns")
+region = Rect2(0, 0, 30, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sofns"]
+atlas = ExtResource("31_sofns")
+region = Rect2(30, 0, 30, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uvi7"]
+atlas = ExtResource("31_sofns")
+region = Rect2(58.485, 0, 30, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf6fo"]
+atlas = ExtResource("32_txi5o")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h1lk"]
+atlas = ExtResource("32_txi5o")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up4xu"]
+atlas = ExtResource("32_txi5o")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu51e"]
+atlas = ExtResource("32_txi5o")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygt8l"]
+atlas = ExtResource("32_txi5o")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvwhe"]
+atlas = ExtResource("32_txi5o")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_81sde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf6fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h1lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up4xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu51e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygt8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvwhe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Level_9" type="Control" unique_id=1992174859 groups=["Purple", "PurpleLevel"]]
 layout_mode = 3
@@ -169,6 +241,7 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="GridManager" parent="GameLayer" unique_id=856589040 instance=ExtResource("11_ngp3g")]
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer_Background" parent="GameLayer/GridManager" index="0" unique_id=1844112071]
 self_modulate = Color(0.6, 0.6, 0.6, 1)
@@ -219,6 +292,7 @@ z_index = 1
 position = Vector2(0, 11)
 
 [node name="Coral" type="Node2D" parent="Environment" unique_id=1624402288]
+visible = false
 
 [node name="CoralSmallProp" type="Sprite2D" parent="Environment/Coral" unique_id=1391583440]
 position = Vector2(543, 347)
@@ -312,14 +386,6 @@ script = ExtResource("35_8xxcl")
 position = Vector2(662, 343)
 texture = ExtResource("34_ejg0n")
 
-[node name="FetusProp" type="Sprite2D" parent="Environment/Coral" unique_id=1901949953]
-position = Vector2(438, 4)
-texture = ExtResource("36_0yyqr")
-
-[node name="FetusProp2" type="Sprite2D" parent="Environment/Coral" unique_id=703013498]
-position = Vector2(465, 347)
-texture = ExtResource("36_0yyqr")
-
 [node name="Bramble" type="Node2D" parent="Environment" unique_id=927069907]
 visible = false
 
@@ -365,45 +431,6 @@ texture = ExtResource("38_80sge")
 position = Vector2(428, 399)
 texture = ExtResource("38_80sge")
 flip_h = true
-
-[node name="Fish" type="Node2D" parent="Environment" unique_id=20384520]
-visible = false
-
-[node name="Fish" parent="Environment/Fish" unique_id=1368306985 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(583, 381)
-
-[node name="Fish2" parent="Environment/Fish" unique_id=34004921 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(515, 353)
-
-[node name="Fish5" parent="Environment/Fish" unique_id=584181545 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(209, 354)
-
-[node name="Fish6" parent="Environment/Fish" unique_id=386926567 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(27, 353)
-
-[node name="Fish7" parent="Environment/Fish" unique_id=1876254730 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(573, 19)
-
-[node name="Fish8" parent="Environment/Fish" unique_id=1723648838 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(507, 397)
-
-[node name="Fish9" parent="Environment/Fish" unique_id=1137711555 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(315, 14)
-
-[node name="Fish3" parent="Environment/Fish" unique_id=788925231 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(580, 351)
-
-[node name="Fish4" parent="Environment/Fish" unique_id=674175233 instance=ExtResource("39_b7m8f")]
-z_index = -1
-position = Vector2(633, 395)
 
 [node name="Shrubs" type="Node2D" parent="Environment" unique_id=1235179708]
 visible = false
@@ -458,35 +485,36 @@ position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_b1vmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment" unique_id=1441000877]
-position = Vector2(207, 25)
+position = Vector2(513, 3)
 texture = SubResource("AtlasTexture_txapp")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Environment" unique_id=327574483]
-position = Vector2(379, 347)
+position = Vector2(348, 348)
 texture = SubResource("AtlasTexture_txapp")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Environment" unique_id=1530863073]
-position = Vector2(585, 326)
+position = Vector2(275, 346)
 texture = SubResource("AtlasTexture_txapp")
+flip_h = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Environment" unique_id=2037035300]
-position = Vector2(708, 370)
+position = Vector2(395, 361)
 texture = SubResource("AtlasTexture_txapp")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Environment" unique_id=620412328]
-position = Vector2(478, 42)
+position = Vector2(514, 49)
 texture = SubResource("AtlasTexture_txi5o")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Environment" unique_id=1780228976]
-position = Vector2(304, 7)
+position = Vector2(472, 24)
 texture = SubResource("AtlasTexture_txi5o")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Environment" unique_id=776378421]
-position = Vector2(285, 383)
+position = Vector2(322, 374)
 texture = SubResource("AtlasTexture_txi5o")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Environment" unique_id=760365194]
-position = Vector2(718, 51)
+position = Vector2(557, 31)
 texture = SubResource("AtlasTexture_txi5o")
 
 [node name="Sprite2D9" type="Sprite2D" parent="Environment" unique_id=706785863]
@@ -519,6 +547,181 @@ layout_mode = 1
 [node name="UnlockPower" parent="." unique_id=1731368497 instance=ExtResource("50_eir2s")]
 visible = false
 layout_mode = 1
+
+[node name="SeaHole" type="Sprite2D" parent="." unique_id=705312236]
+position = Vector2(530, 36)
+texture = ExtResource("29_txapp")
+
+[node name="SeaHole2" type="Sprite2D" parent="." unique_id=1453259861]
+position = Vector2(302, 345)
+texture = ExtResource("29_txapp")
+
+[node name="SeaHole3" type="Sprite2D" parent="." unique_id=832050408]
+position = Vector2(353, 391)
+texture = ExtResource("29_txapp")
+
+[node name="CoralFan_Large" type="Sprite2D" parent="." unique_id=152621116]
+position = Vector2(298, 35)
+texture = SubResource("AtlasTexture_3w08x")
+
+[node name="CoralFan_Large2" type="Sprite2D" parent="." unique_id=640873240]
+position = Vector2(527, 340)
+texture = SubResource("AtlasTexture_3w08x")
+
+[node name="CoralFan_Large3" type="Sprite2D" parent="." unique_id=448256807]
+position = Vector2(489, 392)
+texture = SubResource("AtlasTexture_3w08x")
+
+[node name="CoralFan_Large4" type="Sprite2D" parent="." unique_id=433940841]
+position = Vector2(186, 339)
+texture = SubResource("AtlasTexture_3w08x")
+
+[node name="CoralFan_Large5" type="Sprite2D" parent="." unique_id=63072616]
+position = Vector2(160, 59)
+texture = SubResource("AtlasTexture_3w08x")
+
+[node name="CoralFan_Large6" type="Sprite2D" parent="." unique_id=719219330]
+position = Vector2(650, 66)
+texture = SubResource("AtlasTexture_3w08x")
+
+[node name="CoralFans_Small" type="Sprite2D" parent="." unique_id=1757856365]
+position = Vector2(336, 54)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="CoralFans_Small2" type="Sprite2D" parent="." unique_id=768449807]
+position = Vector2(178, 365)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="CoralFans_Small3" type="Sprite2D" parent="." unique_id=936101082]
+position = Vector2(622, 343)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="CoralFans_Small4" type="Sprite2D" parent="." unique_id=508094466]
+position = Vector2(590, 365)
+texture = SubResource("AtlasTexture_51wd5")
+flip_h = true
+
+[node name="CoralFans_Small5" type="Sprite2D" parent="." unique_id=1779970636]
+position = Vector2(571, 331)
+texture = SubResource("AtlasTexture_51wd5")
+flip_h = true
+
+[node name="CoralFans_Small6" type="Sprite2D" parent="." unique_id=243812853]
+position = Vector2(333, 14)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="CoralFans_Small9" type="Sprite2D" parent="." unique_id=1270788307]
+position = Vector2(268, 12)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="CoralFans_Small10" type="Sprite2D" parent="." unique_id=318617137]
+position = Vector2(409, 13)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="CoralFans_Small7" type="Sprite2D" parent="." unique_id=1537839292]
+position = Vector2(718, 61)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="CoralFans_Small8" type="Sprite2D" parent="." unique_id=1095639303]
+position = Vector2(560, 395)
+texture = SubResource("AtlasTexture_51wd5")
+
+[node name="SpindlyCoral_Large" type="Sprite2D" parent="." unique_id=1630253762]
+position = Vector2(246, 53)
+texture = SubResource("AtlasTexture_063aa")
+
+[node name="SpindlyCoral_Large2" type="Sprite2D" parent="." unique_id=1306103990]
+position = Vector2(315, 21)
+texture = SubResource("AtlasTexture_063aa")
+
+[node name="SpindlyCoral_Large3" type="Sprite2D" parent="." unique_id=2073497039]
+position = Vector2(553, 367)
+texture = SubResource("AtlasTexture_063aa")
+
+[node name="SpindlyCoral_Med" type="Sprite2D" parent="." unique_id=221002685]
+position = Vector2(436, 363)
+texture = SubResource("AtlasTexture_sofns")
+
+[node name="SpindlyCoral_Med4" type="Sprite2D" parent="." unique_id=2147371185]
+position = Vector2(504, 334)
+texture = SubResource("AtlasTexture_sofns")
+
+[node name="SpindlyCoral_Med5" type="Sprite2D" parent="." unique_id=1923278486]
+position = Vector2(438, 20)
+texture = SubResource("AtlasTexture_sofns")
+
+[node name="SpindlyCoral_Med2" type="Sprite2D" parent="." unique_id=894544417]
+position = Vector2(243, 367)
+texture = SubResource("AtlasTexture_sofns")
+flip_h = true
+
+[node name="SpindlyCoral_Med3" type="Sprite2D" parent="." unique_id=966919344]
+position = Vector2(232, 338)
+texture = SubResource("AtlasTexture_sofns")
+
+[node name="SpindlyCoral_Small" type="Sprite2D" parent="." unique_id=1383973731]
+position = Vector2(287, 58)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="SpindlyCoral_Small2" type="Sprite2D" parent="." unique_id=1134509576]
+position = Vector2(444, 327)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="SpindlyCoral_Small3" type="Sprite2D" parent="." unique_id=2054032998]
+position = Vector2(464, 384)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="SpindlyCoral_Small4" type="Sprite2D" parent="." unique_id=1338620108]
+position = Vector2(205, 380)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="SpindlyCoral_Small5" type="Sprite2D" parent="." unique_id=870803816]
+position = Vector2(592, 341)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="SpindlyCoral_Small6" type="Sprite2D" parent="." unique_id=1838392927]
+position = Vector2(453, 54)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="SpindlyCoral_Small7" type="Sprite2D" parent="." unique_id=118728235]
+position = Vector2(371, 10)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="SpindlyCoral_Small8" type="Sprite2D" parent="." unique_id=965855887]
+position = Vector2(381, 35)
+texture = SubResource("AtlasTexture_7uvi7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1790822019]
+position = Vector2(198, 57)
+sprite_frames = SubResource("SpriteFrames_81sde")
+autoplay = "default"
+frame = 5
+frame_progress = 0.29997584
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=242892265]
+position = Vector2(473, 332)
+sprite_frames = SubResource("SpriteFrames_81sde")
+autoplay = "default"
+frame_progress = 0.6672939
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="." unique_id=677279408]
+position = Vector2(650, 386)
+sprite_frames = SubResource("SpriteFrames_81sde")
+autoplay = "default"
+frame = 3
+frame_progress = 0.12855831
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="." unique_id=251661589]
+position = Vector2(229, 378)
+sprite_frames = SubResource("SpriteFrames_81sde")
+autoplay = "default"
+frame_progress = 0.25742483
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." unique_id=114221362]
+position = Vector2(422, 35)
+sprite_frames = SubResource("SpriteFrames_81sde")
+autoplay = "default"
+frame_progress = 0.6672939
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
