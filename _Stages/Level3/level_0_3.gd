@@ -418,7 +418,7 @@ func show_only_demon_buttons(visible_containers: Array) -> void:
 
 
 func show_guide() -> void:
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 7)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(2, 6)
 #endregion
 
 

@@ -2,7 +2,7 @@ extends Button
 
 @onready var is_disabled_panel :Panel = $Panel
 
-var is_disabled := true 
+@export var is_function_disabled := true 
 
 var disabled_color := Color.RED
 var enabled_color := Color("99999920")
@@ -13,16 +13,16 @@ func _ready() -> void:
 	set_status()
 
 func _on_pressed() -> void:
-	if is_disabled:
-		is_disabled = false
-	elif !is_disabled:
-		is_disabled = true
+	if is_function_disabled:
+		is_function_disabled = false
+	elif !is_function_disabled:
+		is_function_disabled = true
 	set_status()
 	
 func set_status()->void:
-	if is_disabled:
+	if is_function_disabled:
 		style.bg_color = disabled_color
 		Global.dialog_is_disabled = true 
-	elif !is_disabled:
+	elif !is_function_disabled:
 		style.bg_color = enabled_color
 		Global.dialog_is_disabled = false

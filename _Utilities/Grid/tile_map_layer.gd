@@ -115,10 +115,11 @@ func place_rectangles_on_rows(start_row: int, end_row: int) -> void:
 			#print("Spawn Recttttppppp")
 			available_rectangles.append(cell_coords)
 			_spawn_rectangle_at_cell(cell_coords)
+	
 			
 
 func _spawn_rectangle_at_cell(cell_coords: Vector2i) -> void:
-#	print("Spawn Rectttt")
+	print("Spawn Rectttt")
 	var rect_instance: Node2D = rectangle_scene.instantiate()
 	rect_instance.scale = Vector2(0.2,0.356)
 	rect_instance.z_index = 2
@@ -126,7 +127,7 @@ func _spawn_rectangle_at_cell(cell_coords: Vector2i) -> void:
 	# Get the center position of the tile in local coordinates
 	var tile_center := map_to_local(cell_coords)
 	
-	rect_instance.position = tile_center
+	rect_instance.position = to_global(tile_center)
 	add_child(rect_instance)
 	spawned_rectangles.append(rect_instance)
 

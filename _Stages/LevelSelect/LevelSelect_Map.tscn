@@ -1284,6 +1284,7 @@ offset_bottom = 406.0
 theme_override_styles/normal = ExtResource("7_nj8lg")
 text = "UI_DISABLE_TUTORIALS"
 script = ExtResource("15_uqscy")
+is_function_disabled = true
 
 [node name="Panel" type="Panel" parent="DisableTutorials" unique_id=227684557]
 layout_mode = 0

@@ -48,6 +48,7 @@ func _stop_breathing() -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
+	print("SELF CHANGE SELF MODULATE ", self)
 	self_modulate = hover_self_modulate
 
 

@@ -119,7 +119,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					pass
 				Global.hide_notification_bar()
 				return 
-			print("ParentName is ", parentName)
+			print("ParentName is ", parentName, "Grid Pos is ", grid_pos)
 			# Place the demon assuming it's within bounds of the level
 			if(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
@@ -151,7 +151,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Convert mouse position to a grid cell position
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
-	return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
+	#add grid offset
+	var grid_offset : Vector2 = $"../GameLayer".position
+	print("GRID OFFSET IS ", grid_offset)
+	var og_grid_pos = Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
+	var modified_grid_pos = Vector2(floor(mouse_pos.x / grid_size), floor( (mouse_pos.y - grid_offset.y) / grid_size)) * grid_size
+	return modified_grid_pos
 
 # Clear a space for a new demon to go 
 func clear_space(passed_grid_pos: Vector2) -> void:

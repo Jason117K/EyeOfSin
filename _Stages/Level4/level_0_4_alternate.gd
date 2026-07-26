@@ -80,7 +80,7 @@ func start_game() -> void:
 	purple_dimension.start_game()
 
 func show_guide() -> void:
-	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 11)
+	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 
 func _start_explain_syn_ability_5()->void:
 	print("Start Syn 5")
