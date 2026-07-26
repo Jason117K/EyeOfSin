@@ -22,8 +22,8 @@ var _is_transitioning := false
 #@onready var demon_selection_menu := $CurrentScene/DemonSelectionMenu
 @onready var demon_selection_menus := Global.demon_selection_menus
 @onready var level_switcher := $CurrentScene/LevelSwitcher
-@onready var ultimate_container := $UltimateChargeContainer
-
+#@onready var ultimate_container := $UltimateChargeContainer
+var ultimate_container 
 # Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
 const DIM_BITS := Dim.DIM_BITS
 const UI_BIT := 1
@@ -157,6 +157,7 @@ func restart_current_dual_scenes() -> void:
 
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
+	ultimate_container = Global.ultimate_charge_container
 	#print_scene_tree()
 	# DIAGNOSTIC: catch overlapping/re-entrant transitions (a leading suspect for the
 	# Level 4 restart crash). If this prints, two transitions raced and the second is aborted.

@@ -114,5 +114,4 @@ texture = SubResource("ViewportTexture_mahd0")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="UltimateChargeContainer" parent="." unique_id=2025927789 instance=ExtResource("8_52igo")]
-z_index = 2
+[node name="UltimateChargeContainer" parent="." unique_id=1072950679 instance=ExtResource("8_52igo")]

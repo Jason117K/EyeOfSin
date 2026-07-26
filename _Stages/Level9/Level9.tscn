@@ -163,7 +163,6 @@ wave6StartTime = 115
 layout_mode = 1
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_xws6q")]
-visible = false
 layout_mode = 1
 
 [node name="ToolTips" parent="." unique_id=423481821 instance=ExtResource("4_5ra5s")]
@@ -723,8 +722,8 @@ sprite_frames = SubResource("SpriteFrames_81sde")
 autoplay = "default"
 frame_progress = 0.6672939
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

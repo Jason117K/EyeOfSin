@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://txqpdqcrcf5y"]
 
 [ext_resource type="Script" uid="uid://bynr364cj2ty4" path="res://_UI/ultimate_charge_container.gd" id="1_c1dwm"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="2_gconv"]
 [ext_resource type="Texture2D" uid="uid://bsigl1vxbr4rm" path="res://_UI/UltCharge_Empty.png" id="2_twcj5"]
 [ext_resource type="FontFile" uid="uid://dcr46xb63uejs" path="res://_Assets/Fonts/Cormorant-Italic-VariableFont_wght.ttf" id="3_gconv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7yadw"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5pils"]
+texture = ExtResource("2_gconv")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.46, 0.46, 0.46, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppvoc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6rbx"]
 bg_color = Color(0.76, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -22,7 +29,7 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[node name="UltimateChargeContainer" type="Control" unique_id=2025927789]
+[node name="UltimateChargeContainer" type="Control" unique_id=1072950679]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,57 +39,67 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_c1dwm")
 
-[node name="UltimateVboxContainer" type="VBoxContainer" parent="." unique_id=1773851283]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -55.0
-offset_right = 54.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="UltimateMarginContainer" type="MarginContainer" parent="." unique_id=699269934]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="AllChargesPanelContainer" type="PanelContainer" parent="UltimateVboxContainer" unique_id=1997225180]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_7yadw")
-
-[node name="AllChargeHboxContainer" type="HBoxContainer" parent="UltimateVboxContainer/AllChargesPanelContainer" unique_id=567855120]
+[node name="UltimateVboxContainer" type="HBoxContainer" parent="UltimateMarginContainer" unique_id=1499253671]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Charge1" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=1227248482]
-custom_minimum_size = Vector2(24, 24)
+[node name="AllChargesPanelContainer" type="PanelContainer" parent="UltimateMarginContainer/UltimateVboxContainer" unique_id=93644292]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5pils")
+
+[node name="MarginContainer" type="MarginContainer" parent="UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer" unique_id=1104789031]
+layout_mode = 2
+theme_override_constants/margin_left = -7
+theme_override_constants/margin_top = -7
+theme_override_constants/margin_right = -7
+theme_override_constants/margin_bottom = -6
+
+[node name="AllChargeHboxContainer" type="VBoxContainer" parent="UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer" unique_id=45712478]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Charge1" type="TextureButton" parent="UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer/AllChargeHboxContainer" unique_id=811126486]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 texture_normal = ExtResource("2_twcj5")
+ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Charge2" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=735776952]
-custom_minimum_size = Vector2(24, 24)
+[node name="Charge2" type="TextureButton" parent="UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer/AllChargeHboxContainer" unique_id=646079072]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 texture_normal = ExtResource("2_twcj5")
+ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Charge3" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=1073013741]
-custom_minimum_size = Vector2(24, 24)
+[node name="Charge3" type="TextureButton" parent="UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer/AllChargeHboxContainer" unique_id=2003429904]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 texture_normal = ExtResource("2_twcj5")
+ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Charge4" type="TextureButton" parent="UltimateVboxContainer/AllChargesPanelContainer/AllChargeHboxContainer" unique_id=1881936327]
-custom_minimum_size = Vector2(24, 24)
+[node name="Charge4" type="TextureButton" parent="UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer/AllChargeHboxContainer" unique_id=1389664991]
+custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 texture_normal = ExtResource("2_twcj5")
+ignore_texture_size = true
 stretch_mode = 5
 
-[node name="UltimateChargeProgressBar" type="ProgressBar" parent="UltimateVboxContainer" unique_id=1620240606]
+[node name="UltimateChargeProgressBar" type="ProgressBar" parent="UltimateMarginContainer/UltimateVboxContainer" unique_id=1197220840]
+custom_minimum_size = Vector2(0, 62.21)
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("3_gconv")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/fill = SubResource("StyleBoxFlat_ppvoc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c6rbx")
 value = 100.0
+fill_mode = 2
 show_percentage = false
