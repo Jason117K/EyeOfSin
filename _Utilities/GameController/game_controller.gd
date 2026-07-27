@@ -478,6 +478,8 @@ func set_node_and_children_process_mode_inherit(root: Node) -> void:
 # --- Dimension Swapping ---
 
 func swap_scenes() -> void:
+	if current_scenes.size() < 2:
+		return
 	Global.start_swap_ability()
 	if !can_swap:
 		return

@@ -85,6 +85,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		
 #region Lifecycle
 func _ready() -> void:
+	Global.wyrm_unlocked = true
 	Global.disable_ultimate()
 	level_title = tr("LEVEL_TITLE_0_6")
 	extended_new_power_description = "POWER_PORTALS_DESC_LONG"

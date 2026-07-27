@@ -16,6 +16,14 @@ var canPlayLevel4: bool = true
 var canPlayLevel5: bool = true
 var canPlayLevel6: bool = true
 var canPlayLevel7: bool = true
+
+var crawler_unlocked := true
+var occulum_unlocked := false
+var spinal_occulum_unlocked := false
+var wyrm_unlocked := false
+var maw_unlocked := false
+var hive_unlocked := false
+
 var occulumCount := 0
 var green_occulum_count := 0
 var purple_occulum_count := 0 

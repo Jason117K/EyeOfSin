@@ -113,6 +113,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	Global.occulum_unlocked = true 
 	Global.disable_ultimate()
 	level_title = tr("LEVEL_TITLE_0_2")
 	extended_new_power_description = "POWER_SPINAL_OCCULUM_DESC_LONG"

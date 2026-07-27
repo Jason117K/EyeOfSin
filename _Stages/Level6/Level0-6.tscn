@@ -3762,6 +3762,7 @@ wave3StartTime = 85
 wave4StartTime = 100
 wave5StartTime = 100
 debug = false
+record_footage = false
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]

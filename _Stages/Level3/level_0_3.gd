@@ -65,6 +65,7 @@ func _setup_tutorial() -> void:
 
 #region Lifecycle
 func _ready() -> void:
+	Global.spinal_occulum_unlocked = true
 	Global.disable_ultimate()
 	level_title = tr("LEVEL_TITLE_0_3")
 	extended_new_power_description = "POWER_SYN_LIGHTNING_DESC_LONG"

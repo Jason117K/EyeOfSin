@@ -27,7 +27,8 @@ var has_pulsed := false
 
 
 @export var debug := true
-@export var record_footage := false 
+@export var record_footage := true 
+@export var take_screenshot := false
 @export var skip_tutorials := false  # true = skip all tutorial messages; level free-plays
 @onready var toolTips := $ToolTips
 @onready var demonManager := $DemonManager
@@ -151,6 +152,8 @@ var total_game_time : float = 0
 
 var new_power_unlocked := true 
 
+var is_first_screenshot := true 
+
 @onready var extended_new_power_description : String
 
 func _ready() -> void:
@@ -172,7 +175,29 @@ func _ready() -> void:
 	
 	if record_footage:
 		hide_ui_elements()
+	if take_screenshot:
+		take_level_screenshot()
 
+func take_level_screenshot() -> void:
+
+	var screenshot_location: String = "res://screenshots/" + self.name + ".jpg"
+	print(screenshot_location)
+	await RenderingServer.frame_post_draw
+	var img := get_viewport().get_texture().get_image()
+	img.convert(Image.FORMAT_RGBA8)
+	img.linear_to_srgb()
+	img.save_jpg(screenshot_location)
+	if !self.isGreenDimension:
+		print("Should Swap to Green")
+		Global.swap_scenes()
+		await RenderingServer.frame_post_draw
+		get_green_dimension().take_level_screenshot()
+	else:
+		print("Should Swap Back To Purple")
+		Global.swap_scenes()
+
+	
+	
 func demon_clicked()->void:
 	pass 
 	
@@ -290,11 +315,11 @@ func set_auto_advance_toolTip(new_progress_wait_time:float)->void:
 	check_progress = true 
 		
 	
-func show_zombie_tutorial(unlocked_zombie:String)->void:
+func show_zombie_tutorial(_unlocked_zombie:String)->void:
 	pass
 
-func get_green_dimension():
-	return Global.game_controller.get_green_dimension()	
+func get_green_dimension()->Control:
+	return Global.game_controller.get_green_dimension()
 	
 func progress_time_passed()->void:
 	if auto_advance:

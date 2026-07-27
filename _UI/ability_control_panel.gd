@@ -33,6 +33,7 @@ extends Control
 @onready var shroomie := preload("res://_Entities/SynAbility/syn_torch_ability.tscn")
 
 var map_screen := "res://_Stages/LevelSelect/LevelSelect_Map.tscn"
+var level_select_screen := "res://_Stages/LevelSelect/LevelSelect.tscn"
 
 func undo_swap_opacity()->void:
 	swap_ability_display.self_modulate = Color(1,1,1,1)
@@ -106,5 +107,5 @@ func _on_shroomie_button_pressed() -> void:
 	syn_ability_title.text = tr("ABILITY_SHROOMIE_TITLE")
 
 func _on_back_plain_button_pressed() -> void:
-	Global.game_controller.change_scene(map_screen)
+	Global.game_controller.change_scene(level_select_screen)
 	

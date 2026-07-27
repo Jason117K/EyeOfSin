@@ -54,6 +54,7 @@ var ability_screen := "res://_UI/ability_control_panel.tscn"
 @onready var swap_icon := $SorceryPanel/MarginContainer/VBoxContainer/SwapSorcery
 @onready var syn_icon := $SorceryPanel/MarginContainer/VBoxContainer/SynSorcery
 
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	canPlayLevel2 = Global.getCanPlayLevel2()
