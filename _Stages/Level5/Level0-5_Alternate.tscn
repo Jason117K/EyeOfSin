@@ -98,6 +98,7 @@ new_power_description = "POWER_WYRM_DESC_SHORT"
 new_power_texture = ExtResource("2_1sdpp")
 isGreenDimension = true
 debug = false
+record_footage = false
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=1182954165 instance=ExtResource("20_nsrc7")]

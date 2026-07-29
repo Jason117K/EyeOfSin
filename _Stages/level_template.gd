@@ -170,8 +170,10 @@ func _ready() -> void:
 		unlock_power.set_new_power_title(new_power_title)
 		new_power_unlock_rune.set_new_power_description(new_power_description)
 		unlock_power.set_new_power_description(extended_new_power_description)
-	unlock_power.hide()
-	new_power_unlock_rune.hide()
+	if unlock_power != null:
+		unlock_power.hide()
+	if new_power_unlock_rune != null:
+		new_power_unlock_rune.hide()
 	
 	if record_footage:
 		hide_ui_elements()

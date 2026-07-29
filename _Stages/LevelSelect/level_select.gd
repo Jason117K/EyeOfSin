@@ -37,7 +37,7 @@ var level8_alt := "res://_Stages/Level8/Level8_Alternate.tscn"
 var level9 := "res://_Stages/Level9/Level9.tscn"
 var level9_alt := "res://_Stages/Level9/Level9_Alternate.tscn"
 
-var level_jason := "res://_Stages/Level_Jason_Testing/Level_Jason_Testing.tscn"
+var level_jason := "res://_Stages/LevelChurch_Visuals/Level_Church.tscn"
 var level_jason_alt := "res://_Stages/Level_Jason_Testing/Level_Jason_Testing_Alternate.tscn"
 
 var level_Gus_1 := ("res://_Stages/Level-Testing/TestLevel1/Level_Gus_1.tscn")

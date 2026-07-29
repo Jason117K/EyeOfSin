@@ -22,7 +22,7 @@ const TUTORIAL_EXPLAIN_AMALGAM = "res://_Assets/Text/TextFiles/ZombieDescription
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
-@onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
 
 var gameStarted := false
@@ -182,6 +182,7 @@ func _show_all_buttons() -> void:
 	for container_name:String in ALL_DEMON_CONTAINERS:
 		if container_name == "Hive":
 			continue
+		print("Container Name is ", container_name)
 		var container := hbox.get_node(container_name)
 		container.visible = true
 		for child in container.get_children():

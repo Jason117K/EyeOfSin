@@ -3611,6 +3611,7 @@ wave2StartTime = 65
 wave3StartTime = 90
 wave4StartTime = 105
 record_footage = false
+skip_tutorials = true
 
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false
@@ -3625,7 +3626,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1939348814 instance=ExtResource("2_60dyi")]
-blood_points = 325
+blood_points = 899
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1754723991]
 process_mode = 1

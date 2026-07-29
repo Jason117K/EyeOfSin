@@ -2070,7 +2070,7 @@ new_power_description = "POWER_OCCULUM_DESC_SHORT"
 new_power_texture = ExtResource("2_fh83j")
 isGreenDimension = true
 debug = false
-record_footage = true
+record_footage = false
 skip_end_dialog = false
 
 [node name="UILayer" parent="." unique_id=836634407 instance=ExtResource("20_qm12r")]

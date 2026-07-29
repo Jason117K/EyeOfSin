@@ -170,7 +170,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("5_tx0oi")]
-blood_points = 400
+blood_points = 1980
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1

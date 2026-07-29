@@ -10,6 +10,7 @@ var level0_1 := preload("res://_Stages/Level1/Level0-1.tscn")
 var level0_1Alt := preload("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
 var level_select_screen :=  "res://_Stages/LevelSelect/LevelSelect.tscn"
+var level_select_map :=  "res://_Stages/LevelSelect/LevelSelect_Map.tscn"
 
 func _ready() -> void:
 	Global.disable_ultimate()
@@ -59,7 +60,7 @@ func _on_start_game_pressed() -> void:
 
 func _on_level_select_button_pressed() -> void:
 	#print("Button Worky")
-	Global.game_controller.change_scene(level_select_screen)
+	Global.game_controller.change_scene(level_select_map)
 
 
 func _on_quit_pressed() -> void:
