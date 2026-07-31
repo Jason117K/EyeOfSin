@@ -6,7 +6,7 @@ signal all_waves_exhausted
 signal show_preview_icon
 
 ## Each entry is a WaveData resource mapping zombie type name to count.
-@export var waves: Array[WaveData] = []
+@export var waves: Array[Dictionary] = []
 @export var make_green: bool = false
 
 @export_group("Spawn Timing")
@@ -17,6 +17,8 @@ signal show_preview_icon
 @export var small_gap_min: float = 0.1
 @export var small_gap_max: float = 0.9
 @export var small_gap_weight: float = 25.0
+@export var is_random := true 
+@export var debug := false 
 
 var _current_wave: int = -1
 var _spawn_pool: Array[PackedScene] = []
@@ -42,7 +44,7 @@ func get_current_wave() -> int:
 
 func get_wave_config(index: int) -> Dictionary:
 	if index >= 0 and index < waves.size():
-		return waves[index].to_dict()
+		return waves[index] #to_dict()
 	return {}
 
 
@@ -55,7 +57,10 @@ func get_wave_preview() -> Node:
 func set_waves_from_dicts(data: Array) -> void:
 	waves = []
 	for d:Dictionary in data:
-		waves.append(WaveData.from_dict(d))
+		waves.append(d)  #WaveData.from_dict(d))
+		if debug:
+			pass
+			#print("Using d:" ,d, " Waves Append ",WaveData.from_dict(d) )
 	if get_parent().get_parent().name.containsn("Level0-1"):
 		pass
 	else:
@@ -67,7 +72,10 @@ func set_waves_from_dicts(data: Array) -> void:
 func begin_wave(wave_index: int) -> void:
 	_current_wave = wave_index
 	_spawn_pool = _build_pool(wave_index)
-	_spawn_pool.shuffle()
+	if debug : 
+		print("Spawn Pool Is ", _spawn_pool)
+	if is_random:
+		_spawn_pool.shuffle()
 	$SpawnTimer.wait_time = _get_weighted_spawn_delay()
 	$SpawnTimer.start()
 
@@ -76,14 +84,30 @@ func _build_pool(wave_index: int) -> Array[PackedScene]:
 	var pool: Array[PackedScene] = []
 	if wave_index < 0 or wave_index >= waves.size():
 		return pool
-	var wave: WaveData = waves[wave_index]
-	for type_name:String in ZombieRegistry.SCENES:
-		var count: int = wave.get(type_name)
+	var wave: Dictionary = waves[wave_index]
+	if debug:
+		print("Wave is ", wave)#.to_dict())
+		for entry in wave:#.to_dict(): 
+			print("Wave Entry is ", entry)
+	
+	for zombie_entry in wave:#.to_dict(): 
+		var count: int = wave.get(zombie_entry)
 		if count <= 0:
 			continue
-		var scene: PackedScene = ZombieRegistry.SCENES[type_name]
+		var scene: PackedScene = ZombieRegistry.SCENES[zombie_entry]
 		for _i in range(count):
 			pool.append(scene)
+			
+	#for type_name:String in ZombieRegistry.SCENES:
+		#var count: int = wave.get(type_name)
+		#if count <= 0:
+			#continue
+		#var scene: PackedScene = ZombieRegistry.SCENES[type_name]
+		#for _i in range(count):
+			#pool.append(scene)
+			
+			
+			
 	if get_parent().get_parent().name.containsn("Level0-1"):
 		pass
 	else:
