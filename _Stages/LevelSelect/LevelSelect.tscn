@@ -928,7 +928,6 @@ frame = 6
 frame_progress = 0.6367948
 
 [node name="Blur" type="ColorRect" parent="." unique_id=362944195]
-visible = false
 material = SubResource("ShaderMaterial_ch55y")
 layout_mode = 0
 offset_right = 811.0
@@ -940,22 +939,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = -46
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
 
 [node name="Acts_Hbox" type="HBoxContainer" parent="Acts_MarginContainer" unique_id=1014554369]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 theme_override_constants/separation = 7
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Acts_MarginContainer/Acts_Hbox" unique_id=85014012]
-custom_minimum_size = Vector2(585, 0)
+custom_minimum_size = Vector2(585, 237.55)
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
@@ -994,7 +986,7 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="Level_1_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container" unique_id=1815195602]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1025,14 +1017,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=425123751]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("5_d8rw5")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1453785447]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("2_rdse6")
 expand_mode = 1
@@ -1061,7 +1053,7 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("7_ri3ca")
 
 [node name="Level_2_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container" unique_id=226307929]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1092,14 +1084,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1222332125]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("7_brkyj")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1107059818]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("4_jipnq")
 expand_mode = 1
@@ -1128,7 +1120,7 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("7_ri3ca")
 
 [node name="Level_3_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container" unique_id=344300192]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1159,14 +1151,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=80717074]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("9_ri3ca")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=798030598]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("5_phpb5")
 expand_mode = 1
@@ -1199,7 +1191,7 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="Level_4_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container" unique_id=251346431]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1230,14 +1222,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=416146273]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("9_n1sy3")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1245046565]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("6_echw2")
 expand_mode = 1
@@ -1266,7 +1258,7 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("7_ri3ca")
 
 [node name="Level_5_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container" unique_id=1278724553]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1297,14 +1289,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=565519501]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("10_1m7ea")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1949352752]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("7_gt6cd")
 expand_mode = 1
@@ -1333,7 +1325,7 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("7_ri3ca")
 
 [node name="Level_6_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container" unique_id=1784853454]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1364,14 +1356,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container/Level_6_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=536210155]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("11_2b5gl")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_4-6_Container/Level_6_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1968424040]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("8_34wl1")
 expand_mode = 1
@@ -1404,7 +1396,7 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="Level_7_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container" unique_id=1779176509]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1435,14 +1427,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_7_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1623486157]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("12_hxniq")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_7_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1487128862]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("9_gt6cd")
 expand_mode = 1
@@ -1471,7 +1463,7 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("7_ri3ca")
 
 [node name="Level_8_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container" unique_id=596484932]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1502,14 +1494,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_8_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=870613130]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("14_2b5gl")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_8_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=984778648]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("10_34wl1")
 expand_mode = 1
@@ -1538,7 +1530,7 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("7_ri3ca")
 
 [node name="Level_9_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container" unique_id=1419691412]
-custom_minimum_size = Vector2(170, 14.265)
+custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
@@ -1569,14 +1561,14 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_9_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1232364705]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("16_1m7ea")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_9_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=476939806]
-custom_minimum_size = Vector2(0, 89)
+custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
 texture = ExtResource("11_4q4bd")
 expand_mode = 1
@@ -1607,27 +1599,32 @@ theme_override_styles/normal = ExtResource("7_ri3ca")
 [node name="Loadout_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox" unique_id=1155080603]
 layout_mode = 2
 
-[node name="DemonPanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox" unique_id=511122449]
+[node name="MarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox" unique_id=1012083010]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 9
+
+[node name="DemonPanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer" unique_id=511122449]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ch55y")
 
-[node name="MarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer" unique_id=148236543]
+[node name="MarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer" unique_id=148236543]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="LoadOutVboxes" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer" unique_id=1205034850]
+[node name="LoadOutVboxes" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer" unique_id=1205034850]
 layout_mode = 2
 
-[node name="CurrentDemonsButton" type="Button" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=302414177]
+[node name="CurrentDemonsButton" type="Button" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=302414177]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_77dwv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_an2nd")
 
-[node name="DemonButtonMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentDemonsButton" unique_id=727097726]
+[node name="DemonButtonMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentDemonsButton" unique_id=727097726]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1637,22 +1634,22 @@ grow_vertical = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_bottom = 4
 
-[node name="DemonLabel" type="Label" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentDemonsButton/DemonButtonMarginContainer" unique_id=1313313993]
+[node name="DemonLabel" type="Label" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentDemonsButton/DemonButtonMarginContainer" unique_id=1313313993]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_77dwv")
 text = "DEMONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DemonVbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=927399094]
+[node name="DemonVbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=927399094]
 layout_mode = 2
 
-[node name="DemonGridContainer" type="GridContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox" unique_id=1019410162]
+[node name="DemonGridContainer" type="GridContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox" unique_id=1019410162]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 2
 
-[node name="Crawler" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1520447596]
+[node name="Crawler" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1520447596]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1660,7 +1657,7 @@ texture = ExtResource("2_g4yub")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Occulum" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1405235814]
+[node name="Occulum" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1405235814]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1668,7 +1665,7 @@ texture = ExtResource("3_yspon")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="SpinalOcculum" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=603946699]
+[node name="SpinalOcculum" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=603946699]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1676,7 +1673,7 @@ texture = ExtResource("4_i4m3d")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Wyrm" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1419899173]
+[node name="Wyrm" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1419899173]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1684,7 +1681,7 @@ texture = ExtResource("5_nd254")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Maw" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1912082985]
+[node name="Maw" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1912082985]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1692,7 +1689,7 @@ texture = ExtResource("6_77dwv")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Hive" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1909471210]
+[node name="Hive" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer" unique_id=1909471210]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1700,13 +1697,13 @@ texture = ExtResource("9_x5sr8")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="CurrentSorceryButton" type="Button" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=650633846]
+[node name="CurrentSorceryButton" type="Button" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=650633846]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_77dwv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_an2nd")
 
-[node name="DemonButtonMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton" unique_id=1323681298]
+[node name="DemonButtonMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton" unique_id=1323681298]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1716,7 +1713,7 @@ grow_vertical = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_bottom = 4
 
-[node name="SorceryLabel" type="Label" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton/DemonButtonMarginContainer" unique_id=909603383]
+[node name="SorceryLabel" type="Label" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton/DemonButtonMarginContainer" unique_id=909603383]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_77dwv")
 theme_override_font_sizes/font_size = 13
@@ -1724,19 +1721,19 @@ text = "SORCERIES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AbilitiesVbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=809231304]
+[node name="AbilitiesVbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes" unique_id=809231304]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="SwapPanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox" unique_id=1615633874]
+[node name="SwapPanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox" unique_id=1615633874]
 z_index = 8
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_tekwh")
 
-[node name="SwapMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SwapPanelContainer" unique_id=399836006]
+[node name="SwapMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SwapPanelContainer" unique_id=399836006]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/margin_left = -2
@@ -1744,7 +1741,7 @@ theme_override_constants/margin_top = -2
 theme_override_constants/margin_right = -2
 theme_override_constants/margin_bottom = -2
 
-[node name="SwapSorcery" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SwapPanelContainer/SwapMarginContainer" unique_id=2100288635]
+[node name="SwapSorcery" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SwapPanelContainer/SwapMarginContainer" unique_id=2100288635]
 z_index = -1
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -1753,12 +1750,12 @@ texture = ExtResource("3_g4yub")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="SynPanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox" unique_id=931136918]
+[node name="SynPanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox" unique_id=931136918]
 z_index = 8
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_tekwh")
 
-[node name="SynMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SynPanelContainer" unique_id=1221481412]
+[node name="SynMarginContainer" type="MarginContainer" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SynPanelContainer" unique_id=1221481412]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/margin_left = -2
@@ -1766,7 +1763,7 @@ theme_override_constants/margin_top = -2
 theme_override_constants/margin_right = -2
 theme_override_constants/margin_bottom = -2
 
-[node name="SynSorcery" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SynPanelContainer/SynMarginContainer" unique_id=198358528]
+[node name="SynSorcery" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SynPanelContainer/SynMarginContainer" unique_id=198358528]
 z_index = -1
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -1786,4 +1783,4 @@ stretch_mode = 4
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_7_PanelContainer/Level7Button" to="." method="_on_level_8_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_8_PanelContainer/Level8Button" to="." method="_on_level_7_button_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_1_PanelContainer/Act_1_MarginContainer/Act_1_Vbox/Levels_7-9_Container/Level_9_PanelContainer/Level9Button" to="." method="_on_level_9_pressed"]
-[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton" to="." method="_on_current_sorcery_button_pressed"]
+[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton" to="." method="_on_current_sorcery_button_pressed"]
