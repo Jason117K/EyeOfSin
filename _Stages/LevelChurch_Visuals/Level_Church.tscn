@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_8rtl3"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_dat2x"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="6_ayrsk"]
-[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="7_1q7ww"]
-[ext_resource type="Resource" uid="uid://i2ubkdlb3dw" path="res://_Stages/WaveData/waveOfReborn.tres" id="8_pqjlm"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="9_0faky"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="10_tx0oi"]
 [ext_resource type="TileSet" uid="uid://dvsn02j7tjmga" path="res://_Assets/Environment/Act2/Tilesets/PurpleChapel.tres" id="11_34umc"]
@@ -3275,7 +3273,6 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("6_ayrsk")]
 visible = false
 position = Vector2(740, 109)
-waves = Array[ExtResource("7_1q7ww")]([ExtResource("8_pqjlm")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=288115831 instance=ExtResource("9_0faky")]
 z_index = 1
@@ -3284,7 +3281,6 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("6_ayrsk")]
 visible = false
 position = Vector2(740, 141)
-waves = Array[ExtResource("7_1q7ww")]([ExtResource("8_pqjlm")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=197908073 instance=ExtResource("9_0faky")]
 z_index = 1
@@ -3293,7 +3289,6 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("6_ayrsk")]
 visible = false
 position = Vector2(740, 173)
-waves = Array[ExtResource("7_1q7ww")]([ExtResource("8_pqjlm"), ExtResource("8_pqjlm"), ExtResource("8_pqjlm")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("9_0faky")]
 z_index = 1
@@ -3302,7 +3297,6 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("6_ayrsk")]
 visible = false
 position = Vector2(740, 205)
-waves = Array[ExtResource("7_1q7ww")]([ExtResource("8_pqjlm")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=477558108 instance=ExtResource("9_0faky")]
 z_index = 1
@@ -3311,7 +3305,6 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=40172816 instance=ExtResource("6_ayrsk")]
 visible = false
 position = Vector2(740, 237)
-waves = Array[ExtResource("7_1q7ww")]([ExtResource("8_pqjlm")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=366118389 instance=ExtResource("9_0faky")]
 z_index = 1
@@ -3320,7 +3313,6 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=816215242 instance=ExtResource("6_ayrsk")]
 visible = false
 position = Vector2(740, 269)
-waves = Array[ExtResource("7_1q7ww")]([ExtResource("8_pqjlm")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1257123650 instance=ExtResource("9_0faky")]
 z_index = 1
@@ -3329,7 +3321,6 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1922773539 instance=ExtResource("6_ayrsk")]
 visible = false
 position = Vector2(740, 301)
-waves = Array[ExtResource("7_1q7ww")]([ExtResource("8_pqjlm")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1043848066 instance=ExtResource("9_0faky")]
 z_index = 1
@@ -3459,39 +3450,41 @@ texture = ExtResource("43_w77ft")
 position = Vector2(23, 2)
 texture = ExtResource("44_3i3nd")
 
-[node name="Flower" type="Sprite2D" parent="." unique_id=566962559]
+[node name="FlowerVases" type="Node2D" parent="." unique_id=614191770]
+
+[node name="Flower" type="Sprite2D" parent="FlowerVases" unique_id=566962559]
 position = Vector2(433, 78)
 texture = SubResource("AtlasTexture_cty0y")
 
-[node name="Flower2" type="Sprite2D" parent="." unique_id=285658215]
+[node name="Flower2" type="Sprite2D" parent="FlowerVases" unique_id=285658215]
 position = Vector2(47, 77)
 texture = SubResource("AtlasTexture_cty0y")
 
-[node name="Flower3" type="Sprite2D" parent="." unique_id=1736757657]
+[node name="Flower3" type="Sprite2D" parent="FlowerVases" unique_id=1736757657]
 position = Vector2(174, 77)
 texture = SubResource("AtlasTexture_cty0y")
 
-[node name="Flower4" type="Sprite2D" parent="." unique_id=570903703]
+[node name="Flower4" type="Sprite2D" parent="FlowerVases" unique_id=570903703]
 position = Vector2(304, 76)
 texture = SubResource("AtlasTexture_cty0y")
 
-[node name="Flower5" type="Sprite2D" parent="." unique_id=33542704]
+[node name="Flower5" type="Sprite2D" parent="FlowerVases" unique_id=33542704]
 position = Vector2(558, 77)
 texture = SubResource("AtlasTexture_cty0y")
 
-[node name="Flower6" type="Sprite2D" parent="." unique_id=1616243117]
+[node name="Flower6" type="Sprite2D" parent="FlowerVases" unique_id=1616243117]
 position = Vector2(694, 72)
 texture = SubResource("AtlasTexture_cty0y")
 
-[node name="Flower7" type="Sprite2D" parent="." unique_id=1481237671]
+[node name="Flower7" type="Sprite2D" parent="FlowerVases" unique_id=1481237671]
 position = Vector2(602, 374)
 texture = SubResource("AtlasTexture_nktsc")
 
-[node name="Flower9" type="Sprite2D" parent="." unique_id=785062260]
+[node name="Flower9" type="Sprite2D" parent="FlowerVases" unique_id=785062260]
 position = Vector2(135, 389)
 texture = SubResource("AtlasTexture_nktsc")
 
-[node name="Flower8" type="Sprite2D" parent="." unique_id=368767767]
+[node name="Flower8" type="Sprite2D" parent="FlowerVases" unique_id=368767767]
 position = Vector2(393, 361)
 texture = SubResource("AtlasTexture_v6jc5")
 

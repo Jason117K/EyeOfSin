@@ -60,7 +60,7 @@ func _on_start_game_pressed() -> void:
 
 func _on_level_select_button_pressed() -> void:
 	#print("Button Worky")
-	Global.game_controller.change_scene(level_select_map)
+	Global.game_controller.change_scene(level_select_screen)
 
 
 func _on_quit_pressed() -> void:

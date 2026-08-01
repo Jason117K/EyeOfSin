@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq41ifmsmi1nu"
-path="res://.godot/imported/DungeonWallsFloor.png-4f6cd2d3b6a40bc0931f496ebd554d4e.ctex"
+uid="uid://b7kv6l1yg5p4i"
+path="res://.godot/imported/WinterGroundDetails.png-aac638cc54403ee38af284e618348899.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Environment/Act2/Tilesets/DungeonWallsFloor.png"
-dest_files=["res://.godot/imported/DungeonWallsFloor.png-4f6cd2d3b6a40bc0931f496ebd554d4e.ctex"]
+source_file="res://_Assets/Environment/Act_3/WinterGroundDetails.png"
+dest_files=["res://.godot/imported/WinterGroundDetails.png-aac638cc54403ee38af284e618348899.ctex"]
 
 [params]
 

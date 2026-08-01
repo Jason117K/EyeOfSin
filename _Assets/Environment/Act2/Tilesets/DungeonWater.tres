@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dhyrydgphy1ry" path="res://_Assets/Environment/Tilesets/Ground_Green.png" id="1_kfynw"]
 [ext_resource type="Texture2D" uid="uid://tmvd3d2p35g4" path="res://_Assets/Environment/Tilesets/Green_Cave1.png" id="2_0xarr"]
-[ext_resource type="Texture2D" uid="uid://cq41ifmsmi1nu" path="res://_Assets/Environment/Act2/Tilesets/DungeonWallsFloor.png" id="3_0x2qf"]
+[ext_resource type="Texture2D" uid="uid://cq41ifmsmi1nu" path="res://_Assets/Environment/Act2/Tilesets/Water_DungeonWallsFloor.png" id="3_0x2qf"]
 [ext_resource type="Texture2D" uid="uid://cgqouxus3kt4f" path="res://_Assets/Environment/Act2/Tilesets/DungeonWaterCoast.png" id="4_6tahv"]
 [ext_resource type="Texture2D" uid="uid://bycf4yi0vxc11" path="res://_Assets/Environment/Tilesets/_Seabed_Tileset.png" id="5_3mywt"]
 [ext_resource type="Texture2D" uid="uid://di37x1xi8aki" path="res://_Assets/Environment/Tilesets/Cursed_Ground-export.png" id="6_a77c3"]
