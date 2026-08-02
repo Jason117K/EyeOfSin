@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2c3rstuen8sk"
-path="res://.godot/imported/Modern_Office_16x16-export.png-5eabb1846ab255a75f1d045acfb247e2.ctex"
+uid="uid://beseg0ex8b1oe"
+path="res://.godot/imported/BigWaterAnim_2-Sheet.png-8d92ffb47bf7ca87e1f47783e8274573.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Environment/Act2/Tilesets/Modern_Office_16x16-export.png"
-dest_files=["res://.godot/imported/Modern_Office_16x16-export.png-5eabb1846ab255a75f1d045acfb247e2.ctex"]
+source_file="res://_Assets/Environment/Act2/WrongPurple/BigWaterAnim_2-Sheet.png"
+dest_files=["res://.godot/imported/BigWaterAnim_2-Sheet.png-8d92ffb47bf7ca87e1f47783e8274573.ctex"]
 
 [params]
 

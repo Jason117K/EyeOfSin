@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mshgo26aw4wn"]
 
-[ext_resource type="Script" uid="uid://b1x3sawhqfdhx" path="res://_Stages/LevelSelect/level_select.gd" id="1_n2hue"]
+[ext_resource type="Script" uid="uid://b1x3sawhqfdhx" path="res://_Stages/LevelSelect/level_select_act_1.gd" id="1_n2hue"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="2_c0y8p"]
 [ext_resource type="Texture2D" uid="uid://c3p8ugved3erb" path="res://_Assets/Maps/EyeOfSynTempMap1.png" id="2_hrgqr"]
 [ext_resource type="FontFile" uid="uid://cg2jfae3ta7r0" path="res://_Assets/Fonts/cormorant.semi.otf" id="3_lwmcq"]

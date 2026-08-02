@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmby3cajbgox4"
-path="res://.godot/imported/Room_Builder_Office_32x32-export.png-890759dda8e4f16bdac786ae3accc716.ctex"
+uid="uid://b6jy0e0fb6pet"
+path="res://.godot/imported/UnderWaterWeapons.png-2abd0c95abf3a5b3edc3bc14490c8b17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Environment/Act2/Tilesets/Room_Builder_Office_32x32-export.png"
-dest_files=["res://.godot/imported/Room_Builder_Office_32x32-export.png-890759dda8e4f16bdac786ae3accc716.ctex"]
+source_file="res://_Assets/Environment/Act2/WrongPurple/UnderWaterWeapons.png"
+dest_files=["res://.godot/imported/UnderWaterWeapons.png-2abd0c95abf3a5b3edc3bc14490c8b17.ctex"]
 
 [params]
 

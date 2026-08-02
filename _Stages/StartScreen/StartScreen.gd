@@ -9,7 +9,7 @@ extends Control
 var level0_1 := preload("res://_Stages/Level1/Level0-1.tscn")
 var level0_1Alt := preload("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
-var level_select_screen :=  "res://_Stages/LevelSelect/LevelSelect.tscn"
+var level_select_screen :=  "res://_Stages/LevelSelect/level_select.tscn"
 var level_select_map :=  "res://_Stages/LevelSelect/LevelSelect_Map.tscn"
 
 func _ready() -> void:

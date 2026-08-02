@@ -9,6 +9,7 @@ var canPlayLevel6 := false
 var canPlayLevel7 := false
 
 var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
+var level_select := "res://_Stages/LevelSelect/level_select.tscn"
 
 
 
@@ -220,3 +221,7 @@ func _on_level_jason_testing_pressed() -> void:
 
 func _on_current_sorcery_button_pressed() -> void:
 	Global.game_controller.change_scene(ability_screen)
+
+
+func _on_back_button_pressed() -> void:
+	Global.game_controller.change_scene(level_select)

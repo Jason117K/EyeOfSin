@@ -44,7 +44,8 @@ var crawler_placed := false
 @onready var occulum_button :TextureButton= demonSelectionMenu.get_occulum_button()
 @onready var crawler_button :TextureButton= demonSelectionMenu.get_crawler_button()
 @onready var spinal_occulum_button :TextureButton= demonSelectionMenu.get_spinal_occulum_button()
-@onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
+
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)

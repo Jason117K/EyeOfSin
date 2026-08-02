@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ybnoy1qxprg6"
-path="res://.godot/imported/Modern_Office_32x32-export.png-671127093949271222cd915f306318fc.ctex"
+uid="uid://68gur0uvihr3"
+path="res://.godot/imported/Dungeon_Chains.png-40bdf8ee603080ccf73cf7161548c948.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Assets/Environment/Act2/Tilesets/Modern_Office_32x32-export.png"
-dest_files=["res://.godot/imported/Modern_Office_32x32-export.png-671127093949271222cd915f306318fc.ctex"]
+source_file="res://_Assets/Environment/Act2/WrongPurple/Dungeon_Chains.png"
+dest_files=["res://.godot/imported/Dungeon_Chains.png-40bdf8ee603080ccf73cf7161548c948.ctex"]
 
 [params]
 

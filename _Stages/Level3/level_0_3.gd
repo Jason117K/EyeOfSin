@@ -30,7 +30,8 @@ var spinal_occulum_demo_scene = load("res://_UI/GameDemonstrations/DemonTutorial
 @onready var zombie_spawner_4 := $GameLayer/ZombieSpawner4
 @onready var zombie_spawner_5 := $GameLayer/ZombieSpawner5
 @onready var maw_button :TextureButton= demonSelectionMenu.get_maw_button()
-@onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
+
 @onready var spinal_occulum_button :TextureButton= demonSelectionMenu.get_spinal_occulum_button()
 
 
