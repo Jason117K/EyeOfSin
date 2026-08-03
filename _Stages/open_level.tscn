@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://nyapu5wuh3yc"]
+
+[ext_resource type="Script" uid="uid://liq8pg2j4vh1" path="res://_Stages/open_level.gd" id="1_15pr5"]
+[ext_resource type="FontFile" uid="uid://dptosray0efea" path="res://_Assets/Fonts/EBGaramond-VariableFont_wght.ttf" id="1_o73ch"]
+[ext_resource type="Texture2D" uid="uid://ophch7r0ngcp" path="res://screenshots/Level0-1_Alternate.jpg" id="2_15pr5"]
+[ext_resource type="Texture2D" uid="uid://b87in16ty26k5" path="res://screenshots/Level0-1.jpg" id="3_81vee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o73ch"]
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.93333334)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 3.0
+expand_margin_top = 2.0
+expand_margin_right = 3.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0ed2o"]
+color = Color(1, 1, 1, 1)
+grow_begin = -4.0
+grow_end = -4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6i7x4"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15pr5"]
+bg_color = Color(0.11845, 0.0068999934, 0.23, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+
+[node name="OpenLevel" type="Control" unique_id=1628375336]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_15pr5")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=334161186]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=404491958]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o73ch")
+
+[node name="Level_Vbox" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1836969504]
+layout_mode = 2
+
+[node name="Level_Label" type="Label" parent="CenterContainer/PanelContainer/Level_Vbox" unique_id=498306819]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_o73ch")
+theme_override_font_sizes/font_size = 33
+text = "1-1 : AWAKENING"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/Level_Vbox" unique_id=2062548178]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_0ed2o")
+
+[node name="LevelMarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/Level_Vbox" unique_id=603349150]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="LevelImagePanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer" unique_id=851921207]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6i7x4")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer" unique_id=2035532234]
+layout_mode = 2
+
+[node name="LevelTextureAlt" type="TextureRect" parent="CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer" unique_id=1557107456]
+visible = false
+custom_minimum_size = Vector2(111, 62)
+layout_mode = 2
+texture = ExtResource("2_15pr5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="LevelTexture" type="TextureRect" parent="CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer" unique_id=315189693]
+custom_minimum_size = Vector2(222, 124)
+layout_mode = 2
+texture = ExtResource("3_81vee")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="LevelDescription" type="RichTextLabel" parent="CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer" unique_id=3419014]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_o73ch")
+theme_override_font_sizes/normal_font_size = 12
+text = "I woke up confused, alone, and under seige. It was then I discovered my power, and my sin. I woke up confused, alone, and under seige. It was then I discovered my power, and my sin. I woke up confused, alone, and under seige. It was then I discovered my power, and my sin."
+fit_content = true
+scroll_active = false
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/Level_Vbox" unique_id=1749198418]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_0ed2o")
+
+[node name="Rank_HBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/Level_Vbox" unique_id=521200109]
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox" unique_id=867031198]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_o73ch")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_15pr5")
+text = "PLAY"
+
+[node name="RankLetter" type="Label" parent="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox" unique_id=424680323]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_o73ch")
+theme_override_font_sizes/font_size = 43
+text = "SSS"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/PlayButton" to="." method="_on_play_button_pressed"]

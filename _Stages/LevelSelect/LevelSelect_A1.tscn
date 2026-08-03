@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="32_7hejl"]
 [ext_resource type="Texture2D" uid="uid://dgv2mrtncmvv4" path="res://_Entities/SynAbility/SynAbility_1_CARD.png" id="33_ovoaq"]
 [ext_resource type="Texture2D" uid="uid://3ariqfl7xasf" path="res://_Entities/SwapAbilities/Lightning_Storm_Swap_Card.png" id="34_rt3on"]
+[ext_resource type="PackedScene" uid="uid://nyapu5wuh3yc" path="res://_Stages/open_level.tscn" id="35_b4dv2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5msfq"]
 atlas = ExtResource("2_b4dv2")
@@ -1788,6 +1789,10 @@ theme_override_fonts/font = ExtResource("5_dmv6s")
 theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxFlat_08t36")
 text = " BACK "
+
+[node name="OpenLevel" parent="." unique_id=1628375336 instance=ExtResource("35_b4dv2")]
+visible = false
+layout_mode = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1331838528]
 
