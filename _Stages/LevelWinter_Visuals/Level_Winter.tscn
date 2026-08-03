@@ -43,7 +43,7 @@
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="41_jnx5j"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="42_bh6uq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jt5e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5kl0"]
 resource_local_to_scene = true
 atlas = ExtResource("3_ltkof")
 region = Rect2(32, 0, 32, 32)
@@ -5197,7 +5197,7 @@ script = ExtResource("1_ry1q5")
 layout_mode = 1
 
 [node name="Health_Icon" parent="UILayer/HUD_Panel/MarginContainer/HUD_HBox/Health_VBox" parent_id_path=PackedInt32Array(1131846546, 241863994) index="0" unique_id=186687710]
-texture = SubResource("AtlasTexture_2jt5e")
+texture = SubResource("AtlasTexture_m5kl0")
 
 [node name="DemonUnlockedButton" parent="UILayer" index="1" unique_id=178306112]
 visible = false

@@ -150,7 +150,7 @@ func _configure_waves() -> void:
 	zombie_spawner_5.set_waves_from_dicts([{"Reborn":2,"Severed":2 },                            #(1+)
 											{"Amalgam":2,  },                                     #(5)
 											{"Reborn":4, "Amalgam":1},                            #(6-)
-											{"Buffer":1, "Amagalm":1},                           #(10)
+											{"Buffer":1, "Amalgam":1},                           #(10)
 											{ "Severed":4, "Unhallower":1,"Buffer":1}])          #(13)
 											
 	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)

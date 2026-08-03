@@ -151,7 +151,7 @@ func get_cost() -> float:
 
 func receive_buff(demon) -> void:
 	var demonName : String = (demon.get_demon_true_name())
-	print("WYRM SHOULD RECEICVE BUFF FROM ", demonName)
+	#print("WYRM SHOULD RECEICVE BUFF FROM ", demonName)
 	if !isBuffed:
 		unlock_new_buff(demonName)
 		super(demonName)

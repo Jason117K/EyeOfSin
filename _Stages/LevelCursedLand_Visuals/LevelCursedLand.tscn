@@ -42,7 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="43_a5xof"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_nqyag"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vuouw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfod1"]
 resource_local_to_scene = true
 atlas = ExtResource("3_qfod1")
 region = Rect2(32, 0, 32, 32)
@@ -6919,7 +6919,7 @@ layout_mode = 1
 make_green = true
 
 [node name="Health_Icon" parent="UILayer/HUD_Panel/MarginContainer/HUD_HBox/Health_VBox" parent_id_path=PackedInt32Array(1131846546, 241863994) index="0" unique_id=186687710]
-texture = SubResource("AtlasTexture_vuouw")
+texture = SubResource("AtlasTexture_qfod1")
 
 [node name="DemonUnlockedButton" parent="UILayer" index="1" unique_id=178306112]
 visible = false
@@ -7020,7 +7020,7 @@ tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAA
 tile_set = SubResource("TileSet_v6mw1")
 
 [node name="Details_2_TileMapLayer" parent="GameLayer/GridManager" index="8" unique_id=221227500]
-tile_map_data = PackedByteArray("AAAIAAMAAgAGAAMAAAAIAAQAAgAGAAQAAAAJAAMAAgAHAAMAAAAJAAQAAgAHAAQAAAApAAQAAgAFAAUAAAApAAUAAgAFAAYAAAAqAAQAAgAGAAUAAAAqAAUAAgAGAAYAAAAXAAIAAgAIAAcAAAAYAAIAAgAJAAcAAAAWABkAAgAIAAcAAAAXABgAAgAJAAYAAAAXABkAAgAJAAcAAAAYABgAAgAKAAYAAAAYABkAAgAKAAcAAAAKABgAAgAGAAcAAAAXAAQAAgAAAAYAAAAYAAQAAgABAAYAAAARABcAAgAEAAUAAAARABgAAgAEAAYAAAAEABoAAgAAAAQAAAAEABsAAgAAAAUAAAAFABkAAgABAAMAAAAFABoAAgABAAQAAAAFABsAAgABAAUAAAAGABkAAgACAAMAAAAGABoAAgACAAQAAAAGABsAAgACAAUAAAAhABgAAgADAAQAAAAhABkAAgADAAUAAAAMAAQAAgAHAAYAAAANAAQAAgAIAAYAAAAVABcAAgAEAAUAAAAVABgAAgAEAAYAAAApABgAAgAJAAQAAAApABkAAgAJAAUAAAAqABgAAgAKAAQAAAAqABkAAgAKAAUAAAAHABgAAgAJAAQAAAAHABkAAgAJAAUAAAAIABgAAgAKAAQAAAAIABkAAgAKAAUAAAABAAQAAgADAAMAAAACAAQAAgAEAAMAAAACAAUAAgAEAAQAAAADAAQAAgAFAAMAAAADAAUAAgAFAAQAAAAkAAMAAgAAAAQAAAAkAAQAAgAAAAUAAAAlAAIAAgABAAMAAAAlAAMAAgABAAQAAAAlAAQAAgABAAUAAAAmAAIAAgACAAMAAAAmAAMAAgACAAQAAAAmAAQAAgACAAUAAAAfAAIAAgAIAAQAAAAfAAMAAgAIAAUAAAAiAAEAAgAEAAUAAAAiAAIAAgAEAAYAAAA=")
+tile_map_data = PackedByteArray("AAAIAAMAAgAGAAMAAAAIAAQAAgAGAAQAAAAJAAMAAgAHAAMAAAAJAAQAAgAHAAQAAAApAAQAAgAFAAUAAAApAAUAAgAFAAYAAAAqAAQAAgAGAAUAAAAqAAUAAgAGAAYAAAAXAAIAAgAIAAcAAAAYAAIAAgAJAAcAAAAWABkAAgAIAAcAAAAXABgAAgAJAAYAAAAXABkAAgAJAAcAAAAYABgAAgAKAAYAAAAYABkAAgAKAAcAAAAKABgAAgAGAAcAAAAXAAQAAgAAAAYAAAAYAAQAAgABAAYAAAARABcAAgAEAAUAAAARABgAAgAIAAQAAAAEABoAAgAAAAQAAAAEABsAAgAAAAUAAAAFABkAAgABAAMAAAAFABoAAgABAAQAAAAFABsAAgABAAUAAAAGABkAAgACAAMAAAAGABoAAgACAAQAAAAGABsAAgACAAUAAAAhABgAAgADAAQAAAAhABkAAgADAAUAAAAMAAQAAgAHAAYAAAANAAQAAgAIAAYAAAAVABcAAgAEAAUAAAAVABgAAgAEAAYAAAApABgAAgAJAAQAAAApABkAAgAJAAUAAAAqABgAAgAKAAQAAAAqABkAAgAKAAUAAAAHABgAAgAJAAQAAAAHABkAAgAJAAUAAAAIABgAAgAKAAQAAAAIABkAAgAKAAUAAAABAAQAAgADAAMAAAACAAQAAgAEAAMAAAACAAUAAgAEAAQAAAADAAQAAgAFAAMAAAADAAUAAgAFAAQAAAAkAAMAAgAAAAQAAAAkAAQAAgAAAAUAAAAlAAIAAgABAAMAAAAlAAMAAgABAAQAAAAlAAQAAgABAAUAAAAmAAIAAgACAAMAAAAmAAMAAgACAAQAAAAmAAQAAgACAAUAAAAfAAIAAgAIAAQAAAAfAAMAAgAIAAUAAAAiAAEAAgAEAAUAAAAiAAIAAgAEAAYAAAAdAAQAAgAIAAMAAAAeAAQAAgAJAAMAAAAnABkAAgAIAAMAAAAoABkAAgAJAAMAAAARABkAAgAIAAUAAAAGAAQAAgAIAAMAAAAHAAQAAgAJAAMAAAALAAUAAgAAAAYAAAAMAAUAAgABAAYAAAA=")
 tile_set = SubResource("TileSet_014uf")
 
 [node name="Environment" type="Node2D" parent="." unique_id=761127064]
@@ -7032,15 +7032,33 @@ position = Vector2(455, -51)
 texture = ExtResource("32_6rpxj")
 
 [node name="SynEye" type="Sprite2D" parent="Environment" unique_id=468296764]
-position = Vector2(413, 65)
+position = Vector2(548, 43)
 texture = ExtResource("33_5rhif")
+
+[node name="SynEye4" type="Sprite2D" parent="Environment" unique_id=690469188]
+position = Vector2(548, 43)
+texture = ExtResource("33_5rhif")
+
+[node name="SynEye2" type="Sprite2D" parent="Environment" unique_id=1569456395]
+position = Vector2(326, 387)
+texture = ExtResource("33_5rhif")
+
+[node name="SynEye3" type="Sprite2D" parent="Environment" unique_id=1020516355]
+position = Vector2(371, 74)
+texture = ExtResource("33_5rhif")
+flip_h = true
+
+[node name="SynEye5" type="Sprite2D" parent="Environment" unique_id=1816202940]
+position = Vector2(148, 77)
+texture = ExtResource("33_5rhif")
+flip_h = true
 
 [node name="MultipleSynEyes" type="Sprite2D" parent="Environment" unique_id=1926569696]
 position = Vector2(207, -56)
 texture = ExtResource("34_xi6hd")
 
 [node name="DragonRock" type="Sprite2D" parent="Environment" unique_id=1295997411]
-position = Vector2(342, 46)
+position = Vector2(423, 51)
 texture = ExtResource("35_1ybch")
 
 [node name="SynHeart" type="Sprite2D" parent="Environment" unique_id=1732411599]
@@ -7052,7 +7070,7 @@ position = Vector2(222, 26)
 texture = SubResource("AtlasTexture_c0wer")
 
 [node name="SynBones2" type="Sprite2D" parent="Environment" unique_id=773646605]
-position = Vector2(501, 70)
+position = Vector2(530, 70)
 texture = SubResource("AtlasTexture_ohuja")
 
 [node name="SynBones3" type="Sprite2D" parent="Environment" unique_id=1317974947]
@@ -7061,6 +7079,10 @@ texture = SubResource("AtlasTexture_oyb2e")
 
 [node name="SynBones4" type="Sprite2D" parent="Environment" unique_id=628781521]
 position = Vector2(227, 388)
+texture = SubResource("AtlasTexture_w47v0")
+
+[node name="SynBones10" type="Sprite2D" parent="Environment" unique_id=2121637234]
+position = Vector2(641, 43)
 texture = SubResource("AtlasTexture_w47v0")
 
 [node name="SynBones5" type="Sprite2D" parent="Environment" unique_id=951345928]
@@ -7076,30 +7098,40 @@ position = Vector2(462, 23)
 texture = SubResource("AtlasTexture_orf7x")
 
 [node name="SynBones8" type="Sprite2D" parent="Environment" unique_id=857293428]
-position = Vector2(562, 47)
+position = Vector2(635, 66)
+texture = SubResource("AtlasTexture_roedb")
+
+[node name="SynBones9" type="Sprite2D" parent="Environment" unique_id=167875470]
+position = Vector2(446, 382)
 texture = SubResource("AtlasTexture_roedb")
 
 [node name="MultipleSynRocks" type="Sprite2D" parent="Environment" unique_id=1842017621]
+visible = false
 position = Vector2(314, 383)
 texture = SubResource("AtlasTexture_linuc")
 
 [node name="MultipleSynRocks2" type="Sprite2D" parent="Environment" unique_id=1406442349]
+visible = false
 position = Vector2(271, 30)
 texture = SubResource("AtlasTexture_s3kjb")
 
 [node name="MultipleSynRocks3" type="Sprite2D" parent="Environment" unique_id=1611744802]
+visible = false
 position = Vector2(629, 377)
 texture = SubResource("AtlasTexture_s3kjb")
 
 [node name="MultipleSynRocks4" type="Sprite2D" parent="Environment" unique_id=964070291]
+visible = false
 position = Vector2(173, 69)
 texture = SubResource("AtlasTexture_p77hs")
 
 [node name="MultipleSynRocks5" type="Sprite2D" parent="Environment" unique_id=237282809]
+visible = false
 position = Vector2(442, 386)
 texture = SubResource("AtlasTexture_p77hs")
 
 [node name="MultipleSynRocks6" type="Sprite2D" parent="Environment" unique_id=158042777]
+visible = false
 position = Vector2(466, 52)
 texture = SubResource("AtlasTexture_p77hs")
 

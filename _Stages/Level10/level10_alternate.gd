@@ -26,14 +26,14 @@ func _configure_waves() -> void:
 	zombie_spawner_1.set_waves_from_dicts([{"Reborn":0,"Severed":4},                             #(3+)
 											{"Reborn":4, "Unhallower":1},                         #(6-)    
 											{"Reanimator":1},                                     #(10)
-											{"Reanimator": 1, "Amagalm":2},                      #(15)
+											{"Reanimator": 1, "Amalgam":2},                      #(15)
 											{"Sundered": 3, "Buffer":2},                         #(20-)
 											{"Unhallower":3, "Sundered":4}])                     #(25)
 											
 	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
 											{"Reanimator":1},                                    #(10)
-											{ "Amagalm" : 5},                                    #(15-)
+											{ "Amalgam" : 5},                                    #(15-)
 											{"Sundered": 2, "Buffer" : 2},                        #(15)
 											{"Amalgam": 4,"Buffer": 2}])                          #(20)
 											
@@ -61,7 +61,7 @@ func _configure_waves() -> void:
 	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
 											{"Reanimator":1},                                    #(10)
-											{ "Amagalm" : 5},                                    #(15-)
+											{ "Amalgam" : 5},                                    #(15-)
 											{"Sundered": 2, "Buffer" : 2},                        #(15)
 											{"Amalgam": 4,"Buffer": 2}])                          #(20)
 			
@@ -69,7 +69,7 @@ func _configure_waves() -> void:
 	zombie_spawner_7.set_waves_from_dicts([{"Reborn":0,"Severed":4},                             #(3+)
 											{"Reborn":4, "Unhallower":1},                         #(6-)
 											{"Reanimator":1},                                     #(10)
-											{"Reanimator":1, "Amagalm":2},                         #(15)
+											{"Reanimator":1, "Amalgam":2},                         #(15)
 											{ "Sundered":3, "Buffer":2},                          #(20-)
 											{"Unhallower":3, "Sundered":4}])                      #(25)  
 
