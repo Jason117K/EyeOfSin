@@ -143,7 +143,7 @@ const TUTORIAL_EXPLAIN_FLESHEATER = "res://_Assets/Text/TextFiles/ZombieDescript
 const TUTORIAL_SELECT_CODEX = "res://_Assets/Text/TextFiles/CodexSelectExplain.txt"
 const TUTORIAL_SPINAL_OCCULUM_UNLOCKED = "res://_Assets/Text/TextFiles/Tutorial_Spinal_Occulum_Unlocked.txt"
 
-const ALL_DEMON_CONTAINERS : Array [String]= ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal"]
+const ALL_DEMON_CONTAINERS : Array [String]= ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal","Hero"]
 const ALL_EXTRA_BUTTONS = []
 
 var auto_advance : bool = false 

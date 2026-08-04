@@ -13,10 +13,7 @@ var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
 
 # Text file paths
-const TUTORIAL_EXPLAIN_SYN_MONOLITH = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith.txt"
-const TUTORIAL_EXPLAIN_SYN_MONOLITH_2 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_2.txt"
-const TUTORIAL_EXPLAIN_SYN_MONOLITH_3 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_3.txt"
-const TUTORIAL_EXPLAIN_SYN_MONOLITH_4 = "res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_4.txt"
+const TUTORIAL_EXPLAIN_SUNDERED = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
 
 # Cached references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -28,29 +25,20 @@ const TUTORIAL_EXPLAIN_SYN_MONOLITH_4 = "res://_Assets/Text/TextFiles/Tutorial_E
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
+const TUTORIAL_EXPLAIN_SKULL_TILE := "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt"
+const TUTORIAL_EXPLAIN_PORTALS := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt"
+const TUTORIAL_EXPLAIN_PORTALS_2 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_2.txt"
+const TUTORIAL_EXPLAIN_PORTALS_3 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_3.txt"
+const TUTORIAL_PLACE_PORTAL := "res://_Assets/Text/TextFiles/Tutorial_Place_Portal.txt"
+const TUTORIAL_PLACE_PORTAL_2 := "res://_Assets/Text/TextFiles/Tutorial_Place_Portal_2.txt"
+
 
 var gameStarted := false
-var syn_monolith_demo_scene := load("res://_UI/GameDemonstrations/syn_monolith_demo.tscn")
+var portal_demo := load("res://_UI/GameDemonstrations/portal_ability_demo.tscn")
 
 #region Tutorial Step Definitions
 func _setup_tutorial() -> void:
 	define_tutorial_steps([
-		{
-			"name": "EXPLAIN_SYN_MONOLILTH",
-			"enter": _start_explain_syn_monolith,
-		},
-		{
-			"name": "EXPLAIN_SYN_MONOLILTH_2",
-			"enter": _start_explain_syn_monolith_2,
-		},
-		{
-			"name": "EXPLAIN_SYN_MONOLILTH_3",
-			"enter": _start_explain_syn_monolith_3,
-		},
-		{
-			"name": "EXPLAIN_SYN_MONOLILTH_4",
-			"enter": _start_explain_syn_monolith_4,
-		},
 		{
 			"name": "GAME_READY",
 			"enter": _start_game_ready,
@@ -67,7 +55,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.enable_ultimate()
-	level_title = tr("LEVEL_TITLE_0_10")
+	level_title = tr("LEVEL_TITLE_0_9")
 	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
@@ -164,17 +152,17 @@ func finish_ready() -> void:
 		_start_free_play()
 		return
 	_setup_tutorial()
-	go_to_step("EXPLAIN_SYN_MONOLILTH")
+	go_to_step("EXPLAIN_SKULL_TILES")
 	levelSwitcher.update_level(endScreen, endScreenAlt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
 	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.canSwapScenes = true
 	Global.unhide_ui_layer()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hero"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal",])
 
 
 func _start_free_play() -> void:
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hero"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal",])
 	world_swap_button.visible = true
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
@@ -189,34 +177,13 @@ func getIsPurpleDimension()->void:
 
 #region Step Entry Functions
 
-func _start_explain_syn_monolith()->void:
-	demonManager.add_blood(75)
-	await get_tree().physics_frame
-	demonSelectionMenu._on_CrawlerButton_pressed()
-	demonManager.place_demon(Vector2(176,240))
-	
-	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SYN_MONOLITH,true,"[color=red]SYN MONOLITH")
-	toolTips.set_visual_demon_tutorial_visual(syn_monolith_demo_scene.instantiate(),true,Vector2(0,48))
 
-func _start_explain_syn_monolith_2()->void:
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_MONOLITH_2,false)
-	toolTips.add_pulsing_button_highlight(demonSelectionMenu.get_syn_monolith_button())
-	demonSelectionMenu.get_syn_monolith_button().pressed.connect(_on_syn_monolith_pressed)
 	
-	
-
-func _start_explain_syn_monolith_3()->void:
-	demonSelectionMenu.get_syn_monolith_button().pressed.disconnect(_on_syn_monolith_pressed)
-	Global.syn_monolith_activated.connect(_on_syn_monolith_activated)
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_MONOLITH_3,false)
-
-func _start_explain_syn_monolith_4()->void:
-	toolTips.stop_glow_pulse(demonSelectionMenu.get_syn_monolith_button())
-	Global.syn_monolith_activated.disconnect(_on_syn_monolith_activated)
-	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_MONOLITH_4,true)
 			
 func _start_game_ready() -> void:
+	green_dimension.demonManager.portal_placed.disconnect(_on_tooltip_hidden)
 	Global.show_swap_and_pip()
+	demonSelectionMenu.remove_pulsing_button_highlight(demonSelectionMenu.PortalButton)
 	auto_advance = false
 	toolTips.hide()
 	
@@ -242,19 +209,17 @@ func start_game() -> void:
 
 
 #region Signal Handlers
-
-func _on_syn_monolith_pressed()->void:
-	demonSelectionMenu.get_syn_monolith_button().pressed.disconnect(_on_syn_monolith_pressed)
-	go_to_step("EXPLAIN_SYN_MONOLILTH_3")
-
-func _on_syn_monolith_activated()->void:
-	go_to_step("EXPLAIN_SYN_MONOLILTH_4")
-	
 func _on_tooltip_hidden() -> void:
 	toolTips.visible = false
 	advance_tutorial()
 
-
+func _start_explain_sundered()->void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUNDERED)
+	toolTips.set_visual_tutorial_visual(sundered_zombie_demo_scene.instantiate())
+	
+	
+func show_zombie_tutorial(_unlocked_zombie : String)->void:
+	_start_explain_sundered()
 	
 func _on_wave_started(wave_index: int) -> void:
 	pass

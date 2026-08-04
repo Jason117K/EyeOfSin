@@ -33,7 +33,7 @@ var wave_manager : Node
 var is_blocking := false
 
 var dialog_is_disabled := true 
-var skip_tutorials := true 
+var skip_tutorials := false 
 
 var all_zombies := []
 var all_demons := []
@@ -179,6 +179,7 @@ var ultimate_charge_container: Control
 signal swap_scenes_signal
 signal demon_was_removed
 signal crawler_ultimate_triggered
+signal syn_monolith_activated
 
 # Per-frame conductor — the deterministic order for gameplay ticks:
 #   (1) all zombies tick (movement/attack), then
@@ -230,6 +231,9 @@ func reset_all_variables()->void:
 	# and their children have already registered by then (children ready first).
 	ui_layers = compact_registrations(ui_layers)
 	wave_previews = compact_registrations(wave_previews)
+
+func emit_syn_monolith_activated()->void:
+	syn_monolith_activated.emit()
 
 # NOTE: must build a NEW array (see resetOcculumCount) — never append to the
 # array being iterated.

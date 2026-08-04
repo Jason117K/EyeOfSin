@@ -5,17 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://bb6yquhrpa8c1" path="res://_UI/PurpleNoClouds_Earth-Sheet.png" id="3_elpr2"]
 [ext_resource type="Shader" uid="uid://dr08vnjf4ly07" path="res://_Stages/LevelSelect/BlurShader.gdshader" id="4_hhdlp"]
 [ext_resource type="FontFile" uid="uid://dptosray0efea" path="res://_Assets/Fonts/EBGaramond-VariableFont_wght.ttf" id="5_seoc2"]
-[ext_resource type="Texture2D" uid="uid://ophch7r0ngcp" path="res://screenshots/Level0-1_Alternate.jpg" id="6_kdtou"]
-[ext_resource type="Texture2D" uid="uid://b87in16ty26k5" path="res://screenshots/Level0-1.jpg" id="7_f8c0m"]
+[ext_resource type="Texture2D" uid="uid://3fm314jw53eh" path="res://screenshots/Level_10_Alternate.jpg" id="6_f6ltn"]
+[ext_resource type="Texture2D" uid="uid://krsnf4y03dmr" path="res://screenshots/Level_10.jpg" id="7_kaqe8"]
 [ext_resource type="StyleBox" uid="uid://cpw5skdkhmd7w" path="res://_Stages/LevelSelect/LevelSelectButtonNormal.tres" id="8_8v3ty"]
-[ext_resource type="Texture2D" uid="uid://cvdr2862cse2w" path="res://screenshots/Level0-2_Alternate.jpg" id="9_cu6pm"]
-[ext_resource type="Texture2D" uid="uid://bc8575rxga4jh" path="res://screenshots/Level0-2.jpg" id="10_nj0qy"]
-[ext_resource type="Texture2D" uid="uid://cpyehgr83462s" path="res://screenshots/Level03Alternate_B.jpg" id="11_uw2p6"]
-[ext_resource type="Texture2D" uid="uid://cv0l85gf8ff86" path="res://screenshots/Level03B.jpg" id="12_nlaio"]
-[ext_resource type="Texture2D" uid="uid://b2ygetobsdv6m" path="res://screenshots/Level04Alternate.jpg" id="13_hs6xs"]
-[ext_resource type="Texture2D" uid="uid://cv6ygng51eu4b" path="res://screenshots/Level0-4.jpg" id="14_mp453"]
-[ext_resource type="Texture2D" uid="uid://cktsw32dq7is" path="res://screenshots/Level05Alternate.jpg" id="15_jvapc"]
-[ext_resource type="Texture2D" uid="uid://b3psaej2rngib" path="res://screenshots/Level0-5.jpg" id="16_48mf8"]
+[ext_resource type="Texture2D" uid="uid://df76bimacumcr" path="res://screenshots/Level_11_Alternate.jpg" id="9_t846v"]
+[ext_resource type="Texture2D" uid="uid://brvovmdb1qwck" path="res://screenshots/Level_11.jpg" id="10_v2u2x"]
+[ext_resource type="Texture2D" uid="uid://djm4km8u2hm77" path="res://screenshots/Level_12_Alternate.jpg" id="11_oblpc"]
+[ext_resource type="Texture2D" uid="uid://bmxw506mikunj" path="res://screenshots/Level_12.jpg" id="12_utj0t"]
+[ext_resource type="Texture2D" uid="uid://c50gic2tdi8tx" path="res://screenshots/Level_13_Alternate.jpg" id="13_ajcc0"]
+[ext_resource type="Texture2D" uid="uid://rypr3chqjjy1" path="res://screenshots/Level_13.jpg" id="14_u4bno"]
+[ext_resource type="Texture2D" uid="uid://wueb2oflns0b" path="res://screenshots/Level_14_Alternate.jpg" id="15_elpr2"]
+[ext_resource type="Texture2D" uid="uid://w7hw5kr647xi" path="res://screenshots/Level_14.jpg" id="16_hhdlp"]
 [ext_resource type="Texture2D" uid="uid://d0h6j6hpyfm2h" path="res://screenshots/Level06Alternate.jpg" id="17_lnuqe"]
 [ext_resource type="Texture2D" uid="uid://cmjlxv8c7ixya" path="res://screenshots/Level0-6.jpg" id="18_yh2lp"]
 [ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="25_niigx"]
@@ -1020,14 +1020,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=425123751]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("6_kdtou")
+texture = ExtResource("6_f6ltn")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1453785447]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("7_f8c0m")
+texture = ExtResource("7_kaqe8")
 expand_mode = 1
 stretch_mode = 4
 
@@ -1087,14 +1087,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1222332125]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("9_cu6pm")
+texture = ExtResource("9_t846v")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1107059818]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("10_nj0qy")
+texture = ExtResource("10_v2u2x")
 expand_mode = 1
 stretch_mode = 4
 
@@ -1154,14 +1154,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=80717074]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("11_uw2p6")
+texture = ExtResource("11_oblpc")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=798030598]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("12_nlaio")
+texture = ExtResource("12_utj0t")
 expand_mode = 1
 stretch_mode = 4
 
@@ -1225,14 +1225,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=416146273]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("13_hs6xs")
+texture = ExtResource("13_ajcc0")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1245046565]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("14_mp453")
+texture = ExtResource("14_u4bno")
 expand_mode = 1
 stretch_mode = 4
 
@@ -1292,14 +1292,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rdse6")
 [node name="LevelTextureAlt" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=565519501]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("15_jvapc")
+texture = ExtResource("15_elpr2")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="LevelTexture" type="TextureRect" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer" unique_id=1949352752]
 custom_minimum_size = Vector2(0, 97)
 layout_mode = 2
-texture = ExtResource("16_48mf8")
+texture = ExtResource("16_hhdlp")
 expand_mode = 1
 stretch_mode = 4
 
@@ -1326,6 +1326,7 @@ layout_mode = 2
 theme_override_styles/normal = ExtResource("8_8v3ty")
 
 [node name="Level_6_PanelContainer" type="PanelContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container" unique_id=1784853454]
+visible = false
 custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
@@ -1580,11 +1581,11 @@ text = " BACK "
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1331838528]
 
-[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level1Button" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level2Button" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level3Button" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level4Button" to="." method="_on_level_4_pressed"]
-[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level5Button" to="." method="_on_level_5_pressed"]
-[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_6_PanelContainer/Level6Button" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level4Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level5Button" to="." method="_on_level_5_button_pressed"]
+[connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_6_PanelContainer/Level6Button" to="." method="_on_level_6_button_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton" to="." method="_on_current_sorcery_button_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/BackButton" to="." method="_on_back_button_pressed"]

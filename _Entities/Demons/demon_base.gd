@@ -585,7 +585,9 @@ func spawn_hero_demon()->void:
 	hero_demon_instance.assign_parent_demon(self)
 	var opposite_demon_manager := Global.get_demon_manager(!is_green)
 	opposite_demon_manager.summon_blood_clone(global_position)
+	
 	Global.is_demon_hero_selected = false
+	Global.syn_monolith_activated.emit()
 	pass
 
 func despawn_hero_demon()->void:

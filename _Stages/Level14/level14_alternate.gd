@@ -16,7 +16,7 @@ func _ready() -> void:
 	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	attach_script_to_sway_children()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hero"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal"])
 	_configure_waves()
 
 

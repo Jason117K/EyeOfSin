@@ -70,6 +70,7 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var CrawlerButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Crawler/CrawlerButton
 @onready var HeartButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 @onready var PortalButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
+@onready var hero_button := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Hero/HeroButton
 
 @onready var all_demon_buttons :Array[TextureButton]= [OcculumButton,SpinalOcculumButton,
 							WyrmButton,MawButton,HiveButton,
@@ -116,6 +117,7 @@ func _ready() -> void:
 		
 	Global.register_demon_selection_menu(self)
 	Global.resetOcculumCount()
+	Global.syn_monolith_activated.connect(remove_hero_pulse)
 
 	if not CrawlerButton.pressed.is_connected(_on_CrawlerButton_pressed):
 		CrawlerButton.pressed.connect(_on_CrawlerButton_pressed)
@@ -667,6 +669,12 @@ func get_panel_container()->Control:
 func get_all_extra_buttons()->Array:
 	return all_extra_buttons
 
+func get_syn_monolith_button()->TextureButton:
+	return hero_button
 
 func _on_hero_button_pressed() -> void:
+	UiFx.add_pulsing_button_highlight(hero_button,false)
 	Global.is_demon_hero_selected = true 
+
+func remove_hero_pulse()->void:
+	UiFx.stop_glow_pulse(hero_button)
