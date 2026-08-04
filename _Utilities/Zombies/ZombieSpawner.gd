@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 class_name ZombieSpawner
 
@@ -5,8 +6,14 @@ signal wave_exhausted
 signal all_waves_exhausted
 signal show_preview_icon
 
-## Each entry is a WaveData resource mapping zombie type name to count.
-@export var waves: Array[Dictionary] = []
+## Each entry is a WaveData resource holding ordered {type, count} WaveEntry rows.
+@export var waves: Array[WaveData] = []:
+	set(value):
+		waves = value
+		if Engine.is_editor_hint():
+			for wave in waves:
+				if wave != null and not wave.changed.is_connected(_on_wave_data_changed):
+					wave.changed.connect(_on_wave_data_changed)
 @export var make_green: bool = false
 
 @export_group("Spawn Timing")
@@ -25,6 +32,8 @@ var _spawn_pool: Array[PackedScene] = []
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	show()
 	add_to_group("ZombieSpawners")
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout)
@@ -43,9 +52,34 @@ func get_current_wave() -> int:
 
 
 func get_wave_config(index: int) -> Dictionary:
-	if index >= 0 and index < waves.size():
-		return waves[index] #to_dict()
+	if index >= 0 and index < waves.size() and waves[index] != null:
+		return waves[index].to_dict()
 	return {}
+
+
+func _on_wave_data_changed() -> void:
+	notify_property_list_changed()
+
+
+func _get_property_list() -> Array[Dictionary]:
+	return [
+		{"name": "Wave Info", "type": TYPE_NIL, "hint_string": "", "usage": PROPERTY_USAGE_GROUP},
+		{
+			"name": "wave_danger_scores",
+			"type": TYPE_STRING,
+			"usage": PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_READ_ONLY,
+		},
+	]
+
+
+func _get(property: StringName) -> Variant:
+	if property == &"wave_danger_scores":
+		var parts: PackedStringArray = []
+		for i in waves.size():
+			var score := "-" if waves[i] == null else str(waves[i].get_danger_score())
+			parts.append("W%d: %s" % [i + 1, score])
+		return ", ".join(parts)
+	return null
 
 
 func get_wave_preview() -> Node:
@@ -55,12 +89,13 @@ func get_wave_preview() -> Node:
 ## Set waves from an array of Dictionaries (for code-based configuration).
 ## e.g. set_waves_from_dicts([{"Reborn": 3, "Severed": 2}, {"Unhallower": 1}])
 func set_waves_from_dicts(data: Array) -> void:
-	waves = []
+	var new_waves: Array[WaveData] = []
 	for d:Dictionary in data:
-		waves.append(d)  #WaveData.from_dict(d))
+		new_waves.append(WaveData.from_dict(d))
 		if debug:
 			pass
 			#print("Using d:" ,d, " Waves Append ",WaveData.from_dict(d) )
+	waves = new_waves
 	if get_parent().get_parent().name.containsn("Level0-1"):
 		pass
 	else:
@@ -84,30 +119,25 @@ func _build_pool(wave_index: int) -> Array[PackedScene]:
 	var pool: Array[PackedScene] = []
 	if wave_index < 0 or wave_index >= waves.size():
 		return pool
-	var wave: Dictionary = waves[wave_index]
+	var wave: WaveData = waves[wave_index]
+	if wave == null:
+		return pool
 	if debug:
-		print("Wave is ", wave)#.to_dict())
-		for entry in wave:#.to_dict(): 
-			print("Wave Entry is ", entry)
-	
-	for zombie_entry in wave:#.to_dict(): 
-		var count: int = wave.get(zombie_entry)
-		if count <= 0:
+		print("Wave is ", wave.to_dict())
+		for entry in wave.entries:
+			if entry != null:
+				print("Wave Entry is ", entry.type, " x", entry.count)
+
+	for entry in wave.entries:
+		if entry == null or entry.count <= 0:
 			continue
-		var scene: PackedScene = ZombieRegistry.SCENES[zombie_entry]
-		for _i in range(count):
+		var scene: PackedScene = ZombieRegistry.SCENES.get(entry.type)
+		if scene == null:
+			push_warning("ZombieSpawner: unknown zombie type '%s'" % entry.type)
+			continue
+		for _i in range(entry.count):
 			pool.append(scene)
-			
-	#for type_name:String in ZombieRegistry.SCENES:
-		#var count: int = wave.get(type_name)
-		#if count <= 0:
-			#continue
-		#var scene: PackedScene = ZombieRegistry.SCENES[type_name]
-		#for _i in range(count):
-			#pool.append(scene)
-			
-			
-			
+
 	if get_parent().get_parent().name.containsn("Level0-1"):
 		pass
 	else:

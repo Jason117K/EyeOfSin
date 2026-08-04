@@ -13,6 +13,20 @@ const SCENES: Dictionary = {
 	"Buffer": preload("res://_Entities/Zombies/_BufferZombie/BufferZombie.tscn")
 }
 
+## Per-type threat weighting; a wave's danger score is the count-weighted sum.
+const DANGER_SCORES: Dictionary = {
+	"Reborn": 1,
+	"Severed": 1,
+	"Unhallower": 1,
+	"Amalgam": 1,
+	"Reanimator": 1,
+	"Sundered": 1,
+	"Erupter": 1,
+	"Flesheater": 1,
+	"Rohan": 1,
+	"Buffer": 1
+}
+
 const Y_OFFSETS: Dictionary = {
 	"Erupter": -3,
 	"Flesheater": -2,
