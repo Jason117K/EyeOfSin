@@ -24,7 +24,7 @@ func get_danger_score() -> int:
 
 
 func _on_entry_changed() -> void:
-	notify_property_list_changed()
+	#notify_property_list_changed()
 	emit_changed()
 
 

@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_0k43l"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_a3djo"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="6_2nmih"]
+[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="7_x3w7u"]
+[ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="8_x3w7u"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="9_6jrr4"]
 [ext_resource type="TileSet" uid="uid://dvsn02j7tjmga" path="res://_Assets/Environment/Act2/Tilesets/PurpleChapel.tres" id="9_ywaoo"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="10_0m1k8"]
@@ -47,6 +49,55 @@
 [ext_resource type="Texture2D" uid="uid://b03wii0stnsi5" path="res://_Assets/Environment/Act2/Church_Girl_Statue.png" id="45_p4xyn"]
 [ext_resource type="Texture2D" uid="uid://ib1561l82acs" path="res://_Assets/Environment/Act2/Dragon_Church_Statue.png" id="46_hgnhr"]
 [ext_resource type="Texture2D" uid="uid://d1xne4blp32s2" path="res://_Assets/Environment/Act2/Flowers.png" id="47_ghr5q"]
+
+[sub_resource type="Resource" id="Resource_xukng"]
+script = ExtResource("8_x3w7u")
+type = "Reborn"
+count = 5
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_2erop"]
+script = ExtResource("8_x3w7u")
+type = "Severed"
+count = 1
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_x8w7o"]
+script = ExtResource("8_x3w7u")
+type = "Unhallower"
+count = 1
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_ot5yi"]
+script = ExtResource("8_x3w7u")
+type = "Sundered"
+count = 1
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_vr50w"]
+script = ExtResource("7_x3w7u")
+entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_xukng"), SubResource("Resource_2erop"), SubResource("Resource_x8w7o"), SubResource("Resource_ot5yi")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_86tkw"]
+script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_jtg80"]
+script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_4otel"]
+script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_38ixu"]
+script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_wpxir"]
+script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2byx"]
 texture = ExtResource("10_0m1k8")
@@ -3273,7 +3324,8 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("6_2nmih")]
 visible = false
 position = Vector2(740, 109)
-waves = Array[Dictionary]([{}, {}, {}])
+waves = Array[ExtResource("7_x3w7u")]([SubResource("Resource_vr50w"), SubResource("Resource_86tkw"), SubResource("Resource_jtg80"), SubResource("Resource_4otel"), SubResource("Resource_38ixu"), SubResource("Resource_wpxir")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=288115831 instance=ExtResource("9_6jrr4")]
 z_index = 1

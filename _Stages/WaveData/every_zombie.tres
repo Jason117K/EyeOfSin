@@ -1,15 +1,8 @@
 [gd_resource type="Resource" script_class="WaveData" format=3 uid="uid://vhqoeqrccttt"]
 
+[ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="1_vj270"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="1_x5ec3"]
 
 [resource]
 script = ExtResource("1_x5ec3")
-Reborn = 1
-Severed = 1
-Unhallower = 1
-Flesheater = 1
-Erupter = 1
-Reanimator = 1
-Sundered = 1
-Amalgam = 1
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"

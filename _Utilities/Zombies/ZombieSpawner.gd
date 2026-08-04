@@ -58,7 +58,8 @@ func get_wave_config(index: int) -> Dictionary:
 
 
 func _on_wave_data_changed() -> void:
-	notify_property_list_changed()
+	pass
+	#notify_property_list_changed()
 
 
 func _get_property_list() -> Array[Dictionary]:
