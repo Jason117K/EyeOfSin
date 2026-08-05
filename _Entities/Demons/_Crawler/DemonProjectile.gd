@@ -6,7 +6,7 @@ extends Area2D
 @onready var lightning_zone_visual := $LightningZoneAnimSprite
 @onready var projectile_anim_sprite := $ProjectileAnimSprite
 
-var bleed_damage := 0
+var bleed_damage := 1
 
 var speed := 325  # Speed of the projectile
 var damage :float= 20 #2   # Damage dealt to zombies
@@ -97,25 +97,26 @@ func _physics_process(delta: float) -> void:
 	var travel_distance := speed * delta
 	distance_traveled = position.x - spawn_position.x
 	
-	# Raycast along travel path to prevent tunneling at high speeds
-	var _space_state :PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
-	var query := PhysicsRayQueryParameters2D.create(
-		global_position,
-		global_position + Vector2(travel_distance, 0)
-		)
-	query.collide_with_areas = true
-	query.collide_with_bodies = false
-	query.collision_mask = collision_mask
-	query.exclude = [self.get_rid()]
+	## Raycast along travel path to prevent tunneling at high speeds
+	#var _space_state :PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+	#var query := PhysicsRayQueryParameters2D.create(
+		#global_position,
+		#global_position + Vector2(travel_distance, 0)
+		#)
+	#query.collide_with_areas = true
+	#query.collide_with_bodies = false
+	#query.collision_mask = collision_mask
+	#query.exclude = [self.get_rid()]
 
 	position.x += travel_distance
 	distance_traveled = position.x - spawn_position.x
 	##print(self, " Projectile 6Position Is ", self.position)
+	
 	if distance_traveled > max_distance_can_travel:
 		if max_distance_can_travel > 0:
 			##print(self, " Traveled Too Far, ", distance_traveled , " is greater than ", max_distance_can_travel, " Time to Die ")
 			queue_free()
-		
+		#
 
 func setup_lightning_zone() -> void:
 	if self.is_in_group("Green"):

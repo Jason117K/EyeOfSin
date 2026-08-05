@@ -279,7 +279,6 @@ visible = false
 texture = ExtResource("2_pnqjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037487616 groups=["Zombie"]]
-visible = false
 shape = SubResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1465907550]

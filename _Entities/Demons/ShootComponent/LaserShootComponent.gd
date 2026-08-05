@@ -9,7 +9,7 @@ var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)
 var extension_speed: float = 1000.0
 var ogExtension_Speed: float
 
-var max_length: float = 1000.0
+var max_length: float = 250
 var ogMax_Length: float
 
 var laser_width: float = 4.0
@@ -27,14 +27,12 @@ var isOcculumBuffed := false
 var demon: Demon
 
 # Zigzag parameters
-@export var zigzag_height: float = 50.0  # Height of the zigzag
-@export var zigzag_position: float = 300.0  # Fixed screen position where zigzag occurs
-@export var zigzag_width: float = 100.0  # Width of the zigzag section
+#@export var zigzag_height: float = 50.0  # Height of the zigzag
+#@export var zigzag_position: float = 300.0  # Fixed screen position where zigzag occurs
+#@export var zigzag_width: float = 100.0  # Width of the zigzag section
 
 # Node references
-@onready var line2D := Line2D.new()
-@onready var laser_area := Area2D.new()
-@onready var collision_shape := CollisionShape2D.new()
+@onready var line2D := $Line2D
 var blood_spit_fx #:= $"../../Worm2/BloodSpitFX"
 #@onready var attack_ray := $"../../DMG_RayCast2D"
 var attack_ray : Node
@@ -126,7 +124,7 @@ func _process(delta: float) -> void:
 		return
 	if is_firing:
 		self.visible = true
-		##print("Is Firing, Current Length is ", current_length, " max length is ", max_length)
+		#print("Is Firing, Current Length is ", current_length, " max length is ", max_length)
 		if current_length < max_length:
 			current_length += extension_speed * delta
 			current_length = min(current_length, max_length)
@@ -180,28 +178,7 @@ func _update_laser() -> void:
 	var points := PackedVector2Array()
 	points.append(Vector2.ZERO)  # Starting point
 		
-	if isBuffed:
-		
-		if current_length <= zigzag_position:
-			# Before zigzag point, just draw straight line
-			points.append(Vector2(current_length, 0))
-		else:
-			# Add straight line up to zigzag
-			points.append(Vector2(zigzag_position, 0))
-		
-			#Add ZigZag
-			points.append(Vector2(zigzag_position + zigzag_width/4, zigzag_height))
-			points.append(Vector2(zigzag_position + ((zigzag_width/4)*2), 0))
-			points.append(Vector2(zigzag_position + ((zigzag_width/4)*3), zigzag_height))
-			points.append(Vector2(zigzag_position + zigzag_width, 0))
-		
-		
-		# If laser extends beyond zigzag, add final straight section
-		if current_length > zigzag_position + zigzag_width:
-			points.append(Vector2(current_length, 0))
-	else:
-		# Before zigzag point, just draw straight line
-		points.append(Vector2(current_length, 0))
+	points.append(Vector2(current_length, 0))
 		
 	line2D.points = points
 
@@ -252,7 +229,7 @@ func buff(bufferLocation:Vector2) -> void:
 		return
 	isBuffed = true
 	bufferLocation = to_local(bufferLocation)
-	zigzag_position = self.position.x + (bufferLocation.x - 96)
+	
 	damage = damage * 2.0
 
 func occulumBuff() -> void:

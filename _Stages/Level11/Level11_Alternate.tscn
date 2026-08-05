@@ -5652,6 +5652,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bivts")
 isGreenDimension = true
+record_footage = false
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("2_vkme3")]
 layout_mode = 1

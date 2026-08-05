@@ -398,7 +398,7 @@ func register_demon_managers(new_demon_manager:DemonManager)->void:
 	demon_managers.append(new_demon_manager)
 
 func reset_demon_managers()->void:
-	print("Demon Managers Before Reset ", demon_managers)
+	#print("Demon Managers Before Reset ", demon_managers)
 	var demon_managers_temp : Array = []
 	for demon_manager in demon_managers:
 		if demon_manager == null:
@@ -407,7 +407,7 @@ func reset_demon_managers()->void:
 			demon_managers_temp.append(demon_manager)
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
-	print("Demon Managers After Reset ", demon_managers)
+	#print("Demon Managers After Reset ", demon_managers)
 	
 func add_blood_to_demon_manager(is_green:bool=false)->void:
 	for demon_manager in demon_managers:
