@@ -156,8 +156,8 @@ func _ready() -> void:
 	reset_panel_size()
 	
 func get_ultimate_margin_offset()->int:
-	print("Panel Container size is ",panelContainer.size.x ) 
-	print("Position.x is : ", global_position.x)
+	#print("Panel Container size is ",panelContainer.size.x ) 
+	#print("Position.x is : ", global_position.x)
 	return panelContainer.size.x + panelContainer.global_position.x + 4
 
 func reset_panel_size()->void:
@@ -175,9 +175,9 @@ func adjust_highlights(blood_amount:int)->void:
 	var button_label : Control 
 	for button in all_demon_buttons:
 		button_label = button.get_parent().get_child(1)
-		#print("Button is ", button)
-		#print("Button parent is ", button.get_parent())
-		#print("Button Label is ", button_label,button_label.name)
+		##print("Button is ", button)
+		##print("Button parent is ", button.get_parent())
+		##print("Button Label is ", button_label,button_label.name)
 		if button.visible == true && button.get_parent().visible == true:
 			if blood_amount < int(button_label.text):
 				button.dim()
@@ -191,33 +191,33 @@ func _input(event:InputEvent) -> void:
 			deselect_demon()
 			
 	if event is InputEventKey and event.pressed:
-		#print("Key Pressed")
+		##print("Key Pressed")
 		if event.keycode == KEY_X:
 			deselect_demon()
 		#if event.keycode == KEY_Y:
-			##print("Y Key Pressed")
+			###print("Y Key Pressed")
 			#Global.hide_notification_bar()
 			#if canSwapScenes:
 				#Global.swap_scenes()
 			#else:
-				#print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
+				##print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
 		if event.keycode == KEY_1:
-			print("1 Key Pressed")
+			#print("1 Key Pressed")
 			_on_OcculumButton_pressed()
 		if event.keycode == KEY_2:
-			print("2 Key Pressed")
+			#print("2 Key Pressed")
 			_on_CrawlerButton_pressed()
 		if event.keycode == KEY_3:
-			print("3 Key Pressed")
+			#print("3 Key Pressed")
 			_on_SpinalOcculumButton_pressed()
 		if event.keycode == KEY_4:
-			print("4 Key Pressed")
+			#print("4 Key Pressed")
 			_on_MawButton_pressed()
 		if event.keycode == KEY_5:
-			print("5 Key Pressed")
+			#print("5 Key Pressed")
 			_on_WyrmButton_pressed()
 		if event.keycode == KEY_6:
-			print("6 Key Pressed")
+			#print("6 Key Pressed")
 			_on_HiveButton_pressed()			
 
 func set_pause_process_mode():
@@ -226,13 +226,13 @@ func set_pause_process_mode():
 
 
 func setPanelContainerWidth(_newWidth: int) -> void:
-	#print("Panel Container Dimensions is ", panelContainer.size)
+	##print("Panel Container Dimensions is ", panelContainer.size)
 	panelContainer.size.x = 71
-	#print("Panel Container Dimensions is ", panelContainer.size)
+	##print("Panel Container Dimensions is ", panelContainer.size)
 
 		
 func deselect_demon() -> void:
-	#print("Clearing Preview Because of Deselect")
+	##print("Clearing Preview Because of Deselect")
 	clear_preview()
 	release_all_focus()
 	Global.is_demon_hero_selected = false
@@ -251,7 +251,7 @@ func on_demon_button_pressed(demon_scene:PackedScene, demon_button:Control, demo
 	create_preview(demon_scene)
 	add_button_highlight(demon_button)
 	temp_instance.queue_free()
-	print(demon_scene, " selected")
+	#print(demon_scene, " selected")
 	currentDemonCostLabel = demon_label
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)	
 
@@ -271,7 +271,7 @@ func adjust_occulum_cost() -> void:
 		OcculumCostLabel.text = str(50 + (Global.getOcculumCount() * 15))
 	else:
 		OcculumCostLabel.text = str(50 + ( ((Global.getOcculumCount()-Global.num_cheap_occulum) * 25) + (Global.num_cheap_occulum * 15) ))
-	print(self," Cost On This Menu is ", OcculumCostLabel.text)
+	#print(self," Cost On This Menu is ", OcculumCostLabel.text)
 
 
 
@@ -292,19 +292,19 @@ func _on_HiveButton_pressed() -> void:
 	on_demon_button_pressed(hive_scene,HiveButton,hiveCostLabel)
 
 func highlight_demon_card(card_name : String)->void:
-	print("All Demon Buttons Dict is ", all_demon_buttons_dict)
+	#print("All Demon Buttons Dict is ", all_demon_buttons_dict)
 	var button_to_highlight :TextureButton = all_demon_buttons_dict[card_name]
 	add_pulsing_button_highlight(button_to_highlight,true)
-	print("Button to Highlight is ", button_to_highlight)
+	#print("Button to Highlight is ", button_to_highlight)
 
 func unhighlight_demon_card(card_name : String)->void:
 	var button_to_highlight :TextureButton= all_demon_buttons_dict[card_name]
 	remove_pulsing_button_highlight(button_to_highlight)
 
 func create_preview(demon_scene:PackedScene) -> void:
-	#print("MAKE A PREVIEW", demon_scene)
+	##print("MAKE A PREVIEW", demon_scene)
 	# Clear the last preview
-	#print("Clearing Preview Because of Create Preview")
+	##print("Clearing Preview Because of Create Preview")
 	clear_preview()
 
 	Global.show_guide()
@@ -314,10 +314,10 @@ func create_preview(demon_scene:PackedScene) -> void:
 	var preview_node : Node = find_preview_nodes(temp_demon)
 	
 	if preview_node:
-		#print("Found Preview Node : ", preview_node)
+		##print("Found Preview Node : ", preview_node)
 		# Duplicate all child sprites
 		for child in preview_node.get_children():
-			#print("Preview Node Child is ", child)
+			##print("Preview Node Child is ", child)
 			# Create the preview sprite and make it semi-transparent 
 			var this_preview_sprite : Node = child.duplicate()
 			this_preview_sprite.modulate = preview_sprite_modulation
@@ -327,12 +327,12 @@ func create_preview(demon_scene:PackedScene) -> void:
 				this_preview_sprite.play()
 				
 			
-			# Store original position and print it
+			# Store original position and #print it
 			var original_pos := Vector2(child.position.x, child.position.y)
 			this_preview_sprite.set_meta("original_offset", original_pos)
 			
 			# Add the preview sprite to the container and array 
-			#print("Add ", this_preview_sprite , " to preview container")
+			##print("Add ", this_preview_sprite , " to preview container")
 			preview_container.add_child(this_preview_sprite)
 			
 			if this_preview_sprite.name.begins_with("PreviewCard"): 
@@ -358,17 +358,17 @@ func get_tooltips()->Control:
 	
 # Clears the current preview image 
 func clear_preview() -> void:
-	#print("Clear BUTTON PReview")
+	##print("Clear BUTTON PReview")
 	Global.clear_guide()
 	for sprite:Node in preview_sprites:
 		if sprite:
 			sprite.visible = false
 			#sprite.queue_free()
 	for demonButton:TextureButton in all_demon_buttons:
-		#print("Demon Button ia ",demonButton )
+		##print("Demon Button ia ",demonButton )
 		remove_button_highlight(demonButton)
 	preview_sprites.clear()
-	#print("Preview Sprites Is ", preview_sprites)
+	##print("Preview Sprites Is ", preview_sprites)
 	preview_card_sprites.clear()
 	#currentDemonLabel.text = ""
 	is_previewing = false
@@ -390,7 +390,7 @@ func set_wyrm_queen()->void:
 
 # Gets all the previewNodes
 func find_preview_nodes(node:Node) -> Node:
-	#print("Must Find Preview For : ", node)
+	##print("Must Find Preview For : ", node)
 	if node.name == "PreviewNodes":
 		return node
 	
@@ -432,9 +432,9 @@ func _process(delta:float) -> void:
 						sprite.play(sprite.autoplay)
 					else:
 						for demon_tile_area in sprite.get_overlapping_demon_areas():
-							#print("Overlapping Area is ", demon_tile_area)
+							##print("Overlapping Area is ", demon_tile_area)
 							if demon_tile_area.is_in_group("BloodTile") && demon_tile_area.visible == true:
-								#print("RECEIVE BUFF FROM ", demon_tile_area.get_parent().get_parent().get_demon_true_name())
+								##print("RECEIVE BUFF FROM ", demon_tile_area.get_parent().get_parent().get_demon_true_name())
 								#demon_tile_area.get_parent().get_parent().get_demon_true_name()
 								sprite.receive_buff(demon_tile_area.get_parent().get_parent().get_demon_true_name()) #Get True Name
 					
@@ -451,7 +451,7 @@ func _process(delta:float) -> void:
 			#for card in preview_card_sprites:
 				#if card:
 					#card.rotation = card_displacement
-				#print(sprite, " sprite new global pos is ",sprite.global_position )
+				##print(sprite, " sprite new global pos is ",sprite.global_position )
 
 func find_animated_sprite(node:Node)->Node:
 	# Recursively search for AnimatedSprite node
@@ -514,7 +514,7 @@ func showEyeSummon() -> void:
 
 
 func _on_remove_demon_button_pressed() -> void:
-		print("Clear Guide Because Remove Demon Button Pressed")
+		#print("Clear Guide Because Remove Demon Button Pressed")
 		clear_preview()
 		
 		selected_demon = null
@@ -540,11 +540,12 @@ func _on_world_swap_button_pressed() -> void:
 	if can_click:
 		Global.hide_notification_bar()
 		if canSwapScenes:
-		#	print("Can Swap Scenes is ", canSwapScenes)
+		#	#print("Can Swap Scenes is ", canSwapScenes)
 			#Global.game_controller.swap_scenes()
 			Global.swap_scenes()
 		else:
-			print("Can Swap Scenes is false")
+			pass
+			#print("Can Swap Scenes is false")
 
 
 func _on_pip_toggle_button_pressed() -> void:
@@ -586,7 +587,7 @@ func _on_heart_button_pressed() -> void:
 	temp_instance.queue_free()
 	#var HeartButton :TextureButton= $PanelContainer/VBoxContainer/HBoxContainer/Heart/HeartButton
 	#SpinalOcculumButton.release_focus()
-	print("Heart selected")
+	#print("Heart selected")
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 
 
@@ -611,7 +612,7 @@ func _on_portal_button_pressed() -> void:
 	#currentDemonCost.text = "0"
 	#currentDemonLabel.text = "PORTAL SELECTED " + deselectText
 	temp_instance.queue_free()
-	print("Portal selected")
+	#print("Portal selected")
 
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	

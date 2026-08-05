@@ -47,7 +47,7 @@ func set_mirror_camera(cam: Camera2D) -> void:
 
 func set_pip_cull_mask(bit: int) -> void:
 	_viewport.canvas_cull_mask = bit | 1
-	#print("Setting Cull Mask To ", bit, " (actual mask: ", bit | 1, ")")
+	##print("Setting Cull Mask To ", bit, " (actual mask: ", bit | 1, ")")
 	if bit == 4:
 		#_set_pip_border(Color("1e0530"))
 		_set_pip_border(Color("042b17"))
@@ -62,12 +62,12 @@ func _set_pip_border(color: Color) -> void:
 	panel_container.add_theme_stylebox_override("panel", stylebox)
 
 func show_pip() -> void:
-	#print("Pip Should SHow")
+	##print("Pip Should SHow")
 	visible = true
 
 
 func hide_pip() -> void:
-	#print("Pip Should Hide")
+	##print("Pip Should Hide")
 	visible = false
 
 

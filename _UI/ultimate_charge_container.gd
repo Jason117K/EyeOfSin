@@ -33,16 +33,16 @@ func _ready() -> void:
 	set_progress_bar_value(current_mana)
 
 func add_mana(mana_to_add : float)->void:
-	print("GLOBAL Add Mana : ", mana_to_add)
+	#print("GLOBAL Add Mana : ", mana_to_add)
 	if is_enabled:
 		
 		current_mana = current_mana + mana_to_add
-		print("GLOBAL Ult Is Enabled Should Add, Current Mana : ", current_mana)
-		print("GLOBAL Ult Is Enabled Should Add, mana_per_charge : ", mana_per_charge)
+		#print("GLOBAL Ult Is Enabled Should Add, Current Mana : ", current_mana)
+		#print("GLOBAL Ult Is Enabled Should Add, mana_per_charge : ", mana_per_charge)
 		if current_mana >= mana_per_charge:
-			print("GLOBAL Current Mana is ", current_mana)
+			#print("GLOBAL Current Mana is ", current_mana)
 			if charges < max_charges:
-				print("GLOBAL Increasing Ultimate Charge")
+				#print("GLOBAL Increasing Ultimate Charge")
 				increase_ultimate_charges()
 				current_mana = 0
 		set_progress_bar_value(current_mana)
@@ -72,17 +72,17 @@ func un_ready_ultimate()->void:
 					
 func set_progress_bar_value(new_progress_bar_value : float)->void:
 	charge_progress_bar.value = (new_progress_bar_value / mana_per_charge) * 100 
-	print("GLOBAL Charge Progress Value is ", charge_progress_bar.value )
+	#print("GLOBAL Charge Progress Value is ", charge_progress_bar.value )
 	
 func disable_ult()->void:
-	print("GLOBAL-Ult Ult Disabled")
+	#print("GLOBAL-Ult Ult Disabled")
 	is_enabled = false 
 	modulate = Color(1,1,1,0)
 	for charge in all_charges:
 		charge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func enable_ult()->void:
-	print("GLOBAL-Ult Ult Enabled")
+	#print("GLOBAL-Ult Ult Enabled")
 	is_enabled = true 
 	modulate = Color(1,1,1,1)
 	for charge in all_charges:

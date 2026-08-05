@@ -183,19 +183,19 @@ func _ready() -> void:
 func take_level_screenshot() -> void:
 
 	var screenshot_location: String = "res://screenshots/" + self.name + ".jpg"
-	print(screenshot_location)
+	#print(screenshot_location)
 	await RenderingServer.frame_post_draw
 	var img := get_viewport().get_texture().get_image()
 	img.convert(Image.FORMAT_RGBA8)
 	img.linear_to_srgb()
 	img.save_jpg(screenshot_location)
 	if !self.isGreenDimension:
-		print("Should Swap to Green")
+		#print("Should Swap to Green")
 		Global.swap_scenes()
 		await RenderingServer.frame_post_draw
 		get_green_dimension().take_level_screenshot()
 	else:
-		print("Should Swap Back To Purple")
+		#print("Should Swap Back To Purple")
 		Global.swap_scenes()
 
 	
@@ -210,11 +210,11 @@ func get_demon_manager()->Node:
 	return demonManager
 
 func show_demon_selection_menu()->void:
-	#print("About to Show D Select Menu ", demonSelectionMenu)
+	##print("About to Show D Select Menu ", demonSelectionMenu)
 	demonSelectionMenu.show()
 
 func hide_demon_selection_menu()->void:
-	#print("About to Hide D Select Menu ", demonSelectionMenu)
+	##print("About to Hide D Select Menu ", demonSelectionMenu)
 	demonSelectionMenu.hide()
 	#demonSelectionMenu.visible = false
 	#demonSelectionMenu.self_modulate = Color(1,1,1,0)
@@ -225,13 +225,13 @@ func show_new_demon()->void:
 func _on_level_ended() -> void:
 	if isGreenDimension:
 		if Global.game_controller.get_active_dimension() != Global.game_controller.get_green_dimension():
-			print("Ended On Purple Early Return From Green")
+			#print("Ended On Purple Early Return From Green")
 			return
 	elif !isGreenDimension:
 		if Global.game_controller.get_active_dimension() != Global.game_controller.get_purple_dimension():
-			print("Ended on Green Early Return From Purple")
+			#print("Ended on Green Early Return From Purple")
 			return
-	print(self, " isGreen is:", isGreenDimension, " should show score then card")
+	#print(self, " isGreen is:", isGreenDimension, " should show score then card")
 	handle_score()
 
 	
@@ -287,7 +287,7 @@ func finish_end_level()->void:
 
 
 func _on_end_dialog_finished() -> void:
-	print(isGreenDimension, "-------------Style Menu Visible--------------", self)
+	#print(isGreenDimension, "-------------Style Menu Visible--------------", self)
 	if isGreenDimension:
 		return
 	else:
@@ -304,11 +304,11 @@ func _process(delta: float) -> void:
 		progress_timer_wait_time -= delta
 
 		if progress_timer_wait_time <= 0:
-			print("Call Progress Time Passed")
+			#print("Call Progress Time Passed")
 			
 			progress_timer_wait_time = og_progress_timer_wait_time
 			check_progress = false
-			print("Time Up", check_progress)
+			#print("Time Up", check_progress)
 			progress_time_passed()
 	
 func set_auto_advance_toolTip(new_progress_wait_time:float)->void:
@@ -330,24 +330,24 @@ func progress_time_passed()->void:
 ## Hides all demon buttons except those in the exceptions array.
 ## Pass container names matching ALL_DEMON_CONTAINERS, e.g. ["Maw", "Occulum"]
 func hide_all_demon_buttons_with_exception(exceptions: Array = []) -> void:
-	#print("Exceptions Are ",exceptions)
+	##print("Exceptions Are ",exceptions)
 	for container_name:String in ALL_DEMON_CONTAINERS:
 		if container_name in exceptions:
 			pass
-			#print(container_name , " is in ",exceptions )
+			##print(container_name , " is in ",exceptions )
 		else:
 			pass
-			#print(container_name , " is not in ",exceptions )
+			##print(container_name , " is not in ",exceptions )
 		
 		
 		
-		#print("container_name is ",container_name)
-		#print("demon box is is ",_demon_hbox)
+		##print("container_name is ",container_name)
+		##print("demon box is is ",_demon_hbox)
 		if _demon_hbox.get_node(container_name) != null:
 			var container := _demon_hbox.get_node(container_name)
 
 			var should_show :bool= container_name in exceptions
-			#print(should_show, " container is IS ",container)
+			##print(should_show, " container is IS ",container)
 			container.visible = should_show
 			for child in container.get_children():
 				child.visible = should_show
@@ -381,7 +381,7 @@ func make_camera_current() -> void:
 	$Camera2D.make_current()
 
 func place_empty_blocker_demon(grid_pos:Vector2,empty_demon_to_place:Demon) -> void:
-	print("Calling Demon Manager Place Empty From Level ", self)
+	#print("Calling Demon Manager Place Empty From Level ", self)
 	demonManager.place_empty_blocker_demon(grid_pos,empty_demon_to_place)
 
 func click_pause_button()->void:
@@ -461,7 +461,7 @@ func go_to_step_index(index: int) -> void:
 	var old_name := get_current_step_name()
 	_current_step_index = index
 	var step := _tutorial_steps[_current_step_index]
-	print("[Tutorial] Transition: ", old_name, " → ", step["name"])
+	#print("[Tutorial] Transition: ", old_name, " → ", step["name"])
 	if step.has("enter"):
 		step["enter"].call()
 
@@ -485,7 +485,7 @@ func _filter_tutorial_input(event: InputEvent) -> void:
 	
 func attach_script_to_sway_children(_make_green : bool = false) -> void:                                       #script_path: String) -> void:
 	var coral_node := get_node("Environment/Coral")
-	#print("Should Attach Scripts to Children of ", coral_node)
+	##print("Should Attach Scripts to Children of ", coral_node)
 	if coral_node == null:
 		push_error("Coral node not found at Environment/Coral")
 		return
@@ -499,7 +499,7 @@ func attach_script_to_sway_children(_make_green : bool = false) -> void:        
 		child.set_script(script_to_attach)
 		if child.is_inside_tree() and child.has_method("_ready"):
 			child._ready()
-			#print(child, " is ready has attached ", script_to_attach)
+			##print(child, " is ready has attached ", script_to_attach)
 			#if make_green:
 				#child.make_green()
 
@@ -528,7 +528,7 @@ func _filter_only_allow_y(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.swap_scenes()
-			print("Advancing Tutorial Should Explian Green")
+			#print("Advancing Tutorial Should Explian Green")
 			advance_tutorial() # → EXPLAIN_GREEN_DIMENSION
 			return
 		else:

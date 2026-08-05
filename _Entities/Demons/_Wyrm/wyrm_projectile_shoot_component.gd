@@ -47,7 +47,7 @@ func _ready() -> void:
 	super()
 	
 	if auto_fire:
-		#print("AUTO FIRE TRUUUU")
+		##print("AUTO FIRE TRUUUU")
 		cooldown_timer = Timer.new()
 		add_child(cooldown_timer)
 		cooldown_timer.wait_time = cooldown
@@ -57,11 +57,11 @@ func _ready() -> void:
 	node_ready = true
 
 func fire_laser() -> void:
-	#print("Wyrm Queen Checking Can Attack ", canAttack)
+	##print("Wyrm Queen Checking Can Attack ", canAttack)
 	if canAttack:
-		#print("Should Fire Laser Can Attack Queen")
+		##print("Should Fire Laser Can Attack Queen")
 		if parent_demon.spawn_done:
-			#print("Will Now Fire Laser Queen")
+			##print("Will Now Fire Laser Queen")
 			Global.add_mana(parent_demon.mana_add_on_laser)
 			animSpriteComp.animation = animSpriteComp.currentAttackAnim
 			animSpriteComp.play()
@@ -69,7 +69,7 @@ func fire_laser() -> void:
 	
 	else:
 		pass
-		#print("Cannot Attack")
+		##print("Cannot Attack")
 
 func _on_animated_sprite_component_frame_changed() -> void:
 	if animSpriteComp != null:
@@ -77,7 +77,7 @@ func _on_animated_sprite_component_frame_changed() -> void:
 			if animSpriteComp.frame == 4:
 				laser_shoot_comp_1.fire()
 				laser_shoot_comp_2.fire()
-				print("Shoot that proj")
+				#print("Shoot that proj")
 				shoot_projectile()
 		
 		
@@ -91,14 +91,14 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	
 	to_global(attack_rays[0].target_position)
 	projectile_to_buff.max_distance_can_travel = (attack_rays[0].target_position).x
-	print()
+	#print()
 	projectile_to_buff.hide()
 	
 	if isCrawlerBuffed:
 		projectile_to_buff.is_slowing = true
 		
 	if isOcculumBuffed:
-		#print("Setting Can Gen Blood To True ")
+		##print("Setting Can Gen Blood To True ")
 		projectile_to_buff.canGenBlood = true
 
 	if isWyrmBleedBuffed:

@@ -20,7 +20,7 @@ const START_SCALE: Vector2 = Vector2(0.1, 0.1)
 
 #Grab demonmanager, start default anim and connect/start relevant timers 
 func _ready() -> void:
-	print("Hero DEMON Ready")
+	#print("Hero DEMON Ready")
 	is_hero = true 
 	Global.register_hero_demon(self)
 	$PreviewNodes/AnimatedSprite2D.hide()
@@ -59,7 +59,7 @@ func set_attack_collision() -> void:
 
 #Cost getter
 func get_cost() -> float:
-	#print("Return , ", cost )
+	##print("Return , ", cost )
 	return cost
 
 func swap_scenes()->void:
@@ -91,7 +91,7 @@ func die() -> void:
 	queue_free()
 
 func die_fromClearSpace() -> void:
-	#print("DD YYYING ---------------------------------")
+	##print("DD YYYING ---------------------------------")
 	buffNodes.clearBuffs()
 	queue_free()		
 	

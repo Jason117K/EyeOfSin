@@ -13,13 +13,13 @@ func _ready() -> void:
 	pass
 	
 func set_maw_parent() -> void:
-	print("SETTING Blood Sword Parent As MAW")
+	#print("SETTING Blood Sword Parent As MAW")
 	for blood_sword:Node in all_swords:
 		blood_sword.is_maw_parent = true
 		blood_sword.blood_spell_finished.connect(end_spell)
 
 func setup_collision_and_damage_zombies() -> void:
-	print("Setting Blood Sword Collision")
+	#print("Setting Blood Sword Collision")
 	for sword:Node in all_swords:
 		if self.is_in_group("Green"):
 			sword.set_collision_mask_value(1,false)
@@ -38,11 +38,11 @@ func setup_collision_and_damage_zombies() -> void:
 	for blood_sword:Node in all_swords:
 		blood_sword.is_maw_parent = true 
 		blood_sword.blood_spell_finished.connect(end_spell)
-		print("Calling Blood Sword Damage Zombies")
+		#print("Calling Blood Sword Damage Zombies")
 		blood_sword.damage_zombies()
 		pass
 		
 	
 func end_spell() -> void:
-	print("Should Free BLOOD Spell Sword Digest ")
+	#print("Should Free BLOOD Spell Sword Digest ")
 	queue_free()

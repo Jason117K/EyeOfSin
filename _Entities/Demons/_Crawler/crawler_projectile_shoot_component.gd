@@ -54,7 +54,7 @@ func shoot_projectile(is_ult:bool=false) -> void:
 	#if hiveBuffed:
 		#second_shot_timer.start()
 	if hiveBuffed:
-		print("Shoot More Is Hived Buffed ")
+		#print("Shoot More Is Hived Buffed ")
 		add_projectile(Vector2(0, 32))
 		add_projectile(Vector2(0, -32))
 
@@ -63,7 +63,7 @@ func shoot_projectile(is_ult:bool=false) -> void:
 
 
 func second_shoot_projectile() -> void:
-	print("Shoot 2nd Proj From Crawler ")
+	#print("Shoot 2nd Proj From Crawler ")
 	add_projectile(Vector2(30, 32))
 	add_projectile(Vector2(30, -32))
 
@@ -82,7 +82,7 @@ func add_projectile(offset: Vector2) -> void:
 func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	projectile.damage = damage
 	if spinalOcculumBuffed:
-		print("Buff Projectile With Spine")
+		#print("Buff Projectile With Spine")
 		projectile_to_buff.spinalOcculumBuff = true 
 	if occulumBuffed:
 		projectile_to_buff.give_blood_on_death = true 

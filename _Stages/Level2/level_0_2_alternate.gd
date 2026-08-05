@@ -36,7 +36,7 @@ func start_game() -> void:
 
 
 func _on_spinalOcculum_placed(grid_pos: Vector2) -> void:
-	print("[Tutorial] Spinal Occulum placement complete - tutorial finished")
+	#print("[Tutorial] Spinal Occulum placement complete - tutorial finished")
 	toolTips.hide()
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler","SpinalOcculum"])
 	# Tutorial complete - no further forced actions

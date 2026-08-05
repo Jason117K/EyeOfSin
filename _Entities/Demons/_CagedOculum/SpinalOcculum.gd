@@ -135,7 +135,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			#add_ellipse(event.position)
 	
 func trigger_ultimate()->void:
-	print("Trigger Spine Ult")
+	#print("Trigger Spine Ult")
 	Global.un_ready_ultimate()
 	for demon in rib_buff_area.get_overlapping_areas():
 		if demon.is_in_group("Demons"):
@@ -174,7 +174,7 @@ func _on_area_2d_area_entered(this_area: Area2D) -> void:
 
 func _on_mouse_entered() -> void:
 	super()
-	print(self.global_position)
+	#print(self.global_position)
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false

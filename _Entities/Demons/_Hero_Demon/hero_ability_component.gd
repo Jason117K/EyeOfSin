@@ -12,7 +12,7 @@ var is_green : bool = false
 
 
 func _ready() -> void:
-	print("Hero Ability Ready")
+	#print("Hero Ability Ready")
 	cooldown_timer = Timer.new()
 	cooldown_timer.one_shot = true 
 	cooldown_timer.autostart = false
@@ -36,7 +36,7 @@ func begin() -> void:
 	else:
 		is_on_cooldown = true 
 
-	print("Hero Ability Begin")
+	#print("Hero Ability Begin")
 
 	is_active = true 
 	

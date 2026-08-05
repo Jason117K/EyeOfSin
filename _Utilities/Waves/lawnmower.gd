@@ -33,7 +33,7 @@ func _init_visibility()->void:
 func _exit_tree() -> void:
 	push_warning("[MOWER] '%s' leaving tree (launched=%s, pos=%s, parent=%s)"
 			% [name, str(is_launched), str(position), str(get_parent())])
-	print_stack()
+	#print_stack()
 
 
 func init_collision()->void:
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		self.position.x += delta * speed
 		distance_traveled +=  delta * speed
 		if distance_traveled > max_distance:
-			print(self,"Now Deactivate Mower")
+			#print(self,"Now Deactivate Mower")
 			_deactivate()
 
 
@@ -82,7 +82,7 @@ func kill_zombie(area : Area2D):
 		area.die()
 
 func launch(launch_area : Area2D)->void:
-	print("Should Launch, new global pos is ", launch_area.global_position)
+	#print("Should Launch, new global pos is ", launch_area.global_position)
 	
 	self.global_position = launch_area.global_position
 	

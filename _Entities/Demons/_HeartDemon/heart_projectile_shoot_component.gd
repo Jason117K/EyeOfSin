@@ -12,7 +12,7 @@ extends ProjectileShootComponent
 func _ready() -> void:
 	shoot_positions = [shootPosition1, shootPosition2,shootPosition3]
 	attack_rays = [$"../DMG_RayCast2D",attack_ray_2,attack_ray_3]
-	print("Attack Rays is ", attack_rays)
+	#print("Attack Rays is ", attack_rays)
 	super()
 	#set_damage_zone_collision()
 	node_ready = true

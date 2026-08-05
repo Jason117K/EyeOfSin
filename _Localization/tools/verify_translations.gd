@@ -50,7 +50,7 @@ func _init() -> void:
 			elif locale != "en" and value == en_values[key]:
 				same_as_en += 1
 		failures += unresolved
-		print("%s: %d/%d resolved, %d identical to en" % [locale, SAMPLE_KEYS.size() - unresolved, SAMPLE_KEYS.size(), same_as_en])
+		#print("%s: %d/%d resolved, %d identical to en" % [locale, SAMPLE_KEYS.size() - unresolved, SAMPLE_KEYS.size(), same_as_en])
 	TranslationServer.set_locale("en")
-	print("verify_translations: %d failures" % failures)
+	#print("verify_translations: %d failures" % failures)
 	quit(failures)

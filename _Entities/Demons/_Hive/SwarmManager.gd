@@ -58,7 +58,7 @@ func kill_all_drones() -> void:
 			var drone :Area2D= available_drones.pop_back()
 			if is_instance_valid(drone):
 				drone.die()
-	print("Avaliable Drones is " , available_drones)
+	#print("Avaliable Drones is " , available_drones)
 	
 	while available_drones.size() > 0:
 		var drone :Area2D= available_drones.pop_back()
@@ -103,7 +103,7 @@ func spawn_initial_drones() -> void:
 		else:
 			drone.add_to_group("Purple")
 		available_drones.append(drone)
-		print("Avaliable Drones WAS " , available_drones)
+		#print("Avaliable Drones WAS " , available_drones)
 
 		var rest_pos := calculate_rest_position(i)
 		drone_rest_positions[drone] = rest_pos
@@ -114,7 +114,7 @@ func spawn_initial_drones() -> void:
 
 
 func _on_enemy_entered(area: Area2D) -> void:
-	#print("Area Entered ", area)
+	##print("Area Entered ", area)
 	if area.is_in_group("Zombie"):
 		enemy_queue.append(area)
 		active_enemies.append(area)
@@ -183,7 +183,7 @@ func optimize_drone_assignments() -> void:
 		return
 
 	var enemies_to_assign := enemy_queue.slice(0, min(enemy_queue.size(), max_drones))
-	#print("Enemies to ass is ", enemies_to_assign)
+	##print("Enemies to ass is ", enemies_to_assign)
 	if enemies_to_assign.is_empty():
 		return
 
@@ -208,7 +208,7 @@ func optimize_drone_assignments() -> void:
 
 
 func command_drone_to_attack(drone: Node, enemy: Area2D) -> void:
-	#print("Drone ", drone, " is being commaned to attack enemy : ", enemy)
+	##print("Drone ", drone, " is being commaned to attack enemy : ", enemy)
 	if is_instance_valid(enemy) and not enemy.is_queued_for_deletion():
 		drone.enable_hurtbox()
 		drone.attack_target(enemy)

@@ -61,7 +61,7 @@ func _ready() -> void:
 	setup_tentacles()
 	# --- Demon-specific collision ---
 	_init_demon_collision()
-	#print("Tentacle Is Active Num ", GlobalTentacleManager.get_active_arm_count())
+	##print("Tentacle Is Active Num ", GlobalTentacleManager.get_active_arm_count())
 	
 	all_synergies = Global.all_maw_synergies
 	special_description_file = get_special_description_file(all_synergies,"Base")
@@ -180,7 +180,8 @@ func setup_tentacles() -> void:
 	_set_tentacle_digestion_time(digestTime)
 
 	if debug_mode:
-		print("[Maw] Setup complete: %d tentacles ready" % tentacles.size())
+		pass
+		#print("[Maw] Setup complete: %d tentacles ready" % tentacles.size())
 
 func get_tentacles() -> Array[Tentacle]:
 	return available_tentacles
@@ -207,7 +208,8 @@ func _is_being_eaten(target:Node) -> bool:
 func assign_tentacle_to_target(target:Node) -> void:
 	if _is_being_eaten(target):
 		if debug_mode:
-			print("[Maw] Target already being eaten, skipping")
+			pass
+			#print("[Maw] Target already being eaten, skipping")
 		return
 
 	cost = _get_charge_cost(target)
@@ -218,8 +220,9 @@ func assign_tentacle_to_target(target:Node) -> void:
 	if available_tentacles.size() < cost:
 		if not target in enemies_to_eat:
 			if debug_mode:
+				pass
 				
-				print("[Maw] Not enough tentacles for cost-%d %s; queueing" % [cost, target.name])
+				#print("[Maw] Not enough tentacles for cost-%d %s; queueing" % [cost, target.name])
 			enemies_to_eat.append(target)
 		return
 
@@ -243,7 +246,8 @@ func assign_tentacle_to_target(target:Node) -> void:
 		t.attack(target, t == primary)
 
 	if debug_mode:
-		print("[Maw] Assigned %d tentacles to cost-%d %s — Available: %d" % [cost, cost, target.name, available_tentacles.size()])
+		pass
+		#print("[Maw] Assigned %d tentacles to cost-%d %s — Available: %d" % [cost, cost, target.name, available_tentacles.size()])
 
 func _process_queue() -> void:
 	var made_progress := true
@@ -259,7 +263,8 @@ func _process_queue() -> void:
 			if available_tentacles.size() >= enemy_cost:
 				enemies_to_eat.remove_at(i)
 				if debug_mode:
-					print("[Maw] Dequeueing %s (enemy_cost %d)" % [enemy.name, enemy_cost])
+					pass
+					#print("[Maw] Dequeueing %s (enemy_cost %d)" % [enemy.name, enemy_cost])
 				assign_tentacle_to_target(enemy)
 				made_progress = true
 				break
@@ -270,7 +275,8 @@ func _process_queue() -> void:
 func _on_tentacle_grabbed(_enemy: Node2D, _tentacle: Tentacle) -> void:
 	AudioManager.create_2d_audio_at_location(global_position, SoundEffect.SOUND_EFFECT_TYPE.MAW_GRAB)
 	if debug_mode:
-		print("[Maw] Tentacle grabbed enemy")
+		pass
+		#print("[Maw] Tentacle grabbed enemy")
 
 func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void:
 	var group:Dictionary = eating_groups.get(tentacle)
@@ -288,7 +294,8 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 		for t:Node in group.tentacles:
 			t.begin_digestion()
 		if debug_mode:
-			print("[Maw] Group of %d entered DIGESTING" % group.tentacles.size())
+			pass
+			#print("[Maw] Group of %d entered DIGESTING" % group.tentacles.size())
 
 func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 	if not tentacle in available_tentacles:
@@ -315,7 +322,8 @@ func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
 			if eating_groups.get(t) == group:
 				eating_groups.erase(t)
 		if debug_mode:
-			print("[Maw] Group complete — Available: %d" % available_tentacles.size())
+			pass
+			#print("[Maw] Group complete — Available: %d" % available_tentacles.size())
 	_process_queue()
 
 func _on_tentacle_aborted(tentacle: Tentacle) -> void:
@@ -334,7 +342,8 @@ func _on_tentacle_aborted(tentacle: Tentacle) -> void:
 	eating_groups.erase(tentacle)
 
 	if debug_mode:
-		print("[Maw] Tentacle aborted")
+		pass
+		#print("[Maw] Tentacle aborted")
 
 	_process_queue()
 
@@ -419,7 +428,7 @@ func add_consume_zombie_group_component() -> void:
 		get_parent().add_child(consume_zombie_group)
 		consume_zombie_group.set_all_areas()
 		consume_zombie_group.done_eating.connect(devour_complete)
-		print_scene_tree(consume_zombie_group)
+		#print_scene_tree(consume_zombie_group)
 
 func devour_zombies() -> void:
 	if devour_done:

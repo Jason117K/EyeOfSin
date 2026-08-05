@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	# Set random movement amount and store start position
 	moveAmount = randf_range(minAmount, maxAmount)
-	#print("MM Move Amount is ", moveAmount)
+	##print("MM Move Amount is ", moveAmount)
 	startPosition = position
 	
 	#Init speed

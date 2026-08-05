@@ -92,7 +92,7 @@ func _ready() -> void:
 	# Set up Line2D
 	add_child(line2D)
 	line2D.visible = false
-	print("Line2D is ", line2D)
+	#print("Line2D is ", line2D)
 	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
 	line2D.default_color = laser_color
 	line2D.width = laser_width
@@ -126,7 +126,7 @@ func _process(delta: float) -> void:
 		return
 	if is_firing:
 		self.visible = true
-		#print("Is Firing, Current Length is ", current_length, " max length is ", max_length)
+		##print("Is Firing, Current Length is ", current_length, " max length is ", max_length)
 		if current_length < max_length:
 			current_length += extension_speed * delta
 			current_length = min(current_length, max_length)
@@ -144,7 +144,7 @@ func _process_collision(area: Area2D) -> void:
 	if isDisabled:
 		return
 	if "Zombie" in area.name and not hit_enemies.has(area):
-		#print("Damaging via signal: ", area.name)
+		##print("Damaging via signal: ", area.name)
 		hit_enemies[area] = true
 
 
@@ -155,10 +155,10 @@ func fire() -> void:
 		return
 	else:
 		pass
-		#print("Not Disabled are we Firing?")
+		##print("Not Disabled are we Firing?")
 	if !is_firing:
 		line2D.visible=true
-	#	print("Not Firing No Return Cos Diabled Do Sutff")
+	#	#print("Not Firing No Return Cos Diabled Do Sutff")
 		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 		is_firing = true
 		current_length = 0.0
@@ -170,7 +170,7 @@ func fire() -> void:
 		if blood_spit_fx != null:
 			blood_spit_fx.play("blood_spit")
 	else:
-	#	print("We are not firing")
+	#	#print("We are not firing")
 		pass
 
 # Update the laser points specifically, also taking into account buffs
@@ -220,9 +220,9 @@ func _update_collision_shape() -> void:
 # Stop firing the laser on a cooldown 
 func _on_laser_timeout() -> void:
 	if isDisabled:
-		#print("We are diasabled return")
+		##print("We are diasabled return")
 		return
-	#print("No Return Make Length 0")
+	##print("No Return Make Length 0")
 	is_firing = false
 	current_length = 0.0
 	hit_enemies.clear()  # Clear the hit enemies when the laser times out

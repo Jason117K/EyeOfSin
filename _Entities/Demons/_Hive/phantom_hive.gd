@@ -54,7 +54,7 @@ func get_cost() -> float:
 
 
 func receive_buff(bufferName) -> void:
-	#print("BUFF HIVE")
+	##print("BUFF HIVE")
 	super(bufferName)
 	for drone in available_drones:
 		drone.make_drone_glow()
@@ -91,7 +91,7 @@ func debuff() -> void:
 
 #Kill every drone if the Hive falls
 func kill_all_drones() -> void:
-	print("Die Cos KILL ALL DRONES")
+	#print("Die Cos KILL ALL DRONES")
 	# Kill all assigned drones
 	for enemy in drone_assignments.keys():
 		for drone in drone_assignments[enemy]:
@@ -122,7 +122,7 @@ func spawn_initial_drones() -> void:
 		drone.name = "Drone_%d" % i  # e.g., "Drone_0", "Drone_1"
 		add_child(drone)
 		available_drones.append(drone)
-		#print("Just Added : ", drone.name)
+		##print("Just Added : ", drone.name)
 	
 		
 		# Calculate and store rest position
@@ -140,7 +140,7 @@ func spawn_initial_drones() -> void:
 #Assigns drones to enemies if able & then re-optimizes drone assignments
 func _on_enemy_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		#print("Hive Reporting," ,area.name, " entered.")
+		##print("Hive Reporting," ,area.name, " entered.")
 		# Add to tracking arrays
 		enemy_queue.append(area)
 		active_enemies.append(area)
@@ -162,7 +162,7 @@ func _on_enemy_exited(area: Area2D) -> void:
 		if area in drone_assignments:
 			var freed_drones: Array = drone_assignments[area]
 			available_drones.append_array(freed_drones)
-			#print("In Exited, Available Drones gets ", freed_drones)
+			##print("In Exited, Available Drones gets ", freed_drones)
 			drone_assignments.erase(area)
 		
 		for drone in available_drones:
@@ -187,16 +187,16 @@ func _on_enemy_died(enemy) -> void:
 
 #Handle assignment clean-up on drone death
 func _on_drone_died(drone) -> void:
-	#print("DRONE DEAD")
+	##print("DRONE DEAD")
 	#
 	#
 	#
 	#
-	#print("Drone to kill is ", drone )
-	#print("Drone Assignments Is ",drone_assignments )
-	#print("Drone Assignments.KEYS Is ",drone_assignments.keys())
-	#print("Available Drones is ", available_drones)
-	#print("Drone Rest Positions is, ", drone_rest_positions)
+	##print("Drone to kill is ", drone )
+	##print("Drone Assignments Is ",drone_assignments )
+	##print("Drone Assignments.KEYS Is ",drone_assignments.keys())
+	##print("Available Drones is ", available_drones)
+	##print("Drone Rest Positions is, ", drone_rest_positions)
 	#
 	for this_drone in available_drones:
 		if this_drone == drone:
@@ -209,10 +209,10 @@ func _on_drone_died(drone) -> void:
 	# Remove drone from assignments
 	for enemy in drone_assignments.keys():
 		if drone in drone_assignments[enemy]:
-			#print("Will Now Erase ", drone)
-			#print("Drone Assign B4 Erase ", drone_assignments)
+			##print("Will Now Erase ", drone)
+			##print("Drone Assign B4 Erase ", drone_assignments)
 			drone_assignments[enemy].erase(drone)
-			#print("Drone Assign After Erase ", drone_assignments)
+			##print("Drone Assign After Erase ", drone_assignments)
 	
 	# Remove rest position
 	drone_rest_positions.erase(drone)
@@ -222,36 +222,36 @@ func _on_drone_died(drone) -> void:
 
 #Assigns the optimal number of drones based on availablity and enemy presence
 func optimize_drone_assignments() -> void:
-	print("Available drones77 at start is ", available_drones)
+	#print("Available drones77 at start is ", available_drones)
 	# Reset all drone assignments
 	var all_drones: Array = []
-	#print("All drones B4 the loop is ", all_drones)
+	##print("All drones B4 the loop is ", all_drones)
 	for drones in drone_assignments.values():
 		all_drones.append_array(drones)
-		#print("All drones will append ",drones )
-	#print("All drones After the loop is ", all_drones)
+		##print("All drones will append ",drones )
+	##print("All drones After the loop is ", all_drones)
 	all_drones.append_array(available_drones)
 	
 	
-	#print("All drones after Available Drones Appened is ", all_drones)
+	##print("All drones after Available Drones Appened is ", all_drones)
 	drone_assignments.clear()
 	available_drones = all_drones
-	#print("Available drones88 at end is ", available_drones)
+	##print("Available drones88 at end is ", available_drones)
 
 	
-	#print("Enemy Queue is ", enemy_queue)
+	##print("Enemy Queue is ", enemy_queue)
 	# If no enemies, return all drones to rest positions
 	if enemy_queue.is_empty():
 		return_drones_to_rest()
 		return
 		
-	print(min(enemy_queue.size() , MAX_DRONES ))
-	print(enemy_queue.size() )
-	#print()
-	#print()
+	#print(min(enemy_queue.size() , MAX_DRONES ))
+	#print(enemy_queue.size() )
+	##print()
+	##print()
 	# Calculate optimal distribution
 	var enemies_to_assign: Array = enemy_queue.slice(0, min(enemy_queue.size(), MAX_DRONES ))
-	#print("Enemies to assign is ", enemies_to_assign)
+	##print("Enemies to assign is ", enemies_to_assign)
 	if enemies_to_assign.is_empty():
 		return
 		
@@ -260,37 +260,37 @@ func optimize_drone_assignments() -> void:
 	
 	# Assign drones based on calculated distribution
 	for enemy in enemies_to_assign:
-		#print("Enemy is ", enemy)
+		##print("Enemy is ", enemy)
 		if !(enemy.get_parent().get_parent() == get_parent().get_parent()):
-			#print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
-			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+			##print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
+			##print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
 			break
 		else:
-		#	print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
-			#print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
+		#	#print("Enemy is ", enemy , " and visible status is ", enemy.get_parent().get_parent().visible)
+			##print("Enemy parent ", enemy.get_parent().get_parent() , " and self parent is ", get_parent().get_parent())
 			var num_drones: int = drones_per_enemy
 			if extra_drones > 0:
 				num_drones += 1
 				extra_drones -= 1
 				
 			drone_assignments[enemy] = []
-			#print("Drone Assign B4 Loop ", drone_assignments)
+			##print("Drone Assign B4 Loop ", drone_assignments)
 			for _i in range(num_drones):
-				#print("Available drones1 is ", available_drones)
+				##print("Available drones1 is ", available_drones)
 				if available_drones.is_empty():
 					break
 				var drone = available_drones.pop_front()
-			#	print("Drone is ", drone)
+			#	#print("Drone is ", drone)
 				drone_assignments[enemy].append(drone)
-			#	print("In Loop, Append ", drone)
+			#	#print("In Loop, Append ", drone)
 				command_drone_to_attack(drone, enemy)
-			#print("Drone Assign After Loop ", drone_assignments)
+			##print("Drone Assign After Loop ", drone_assignments)
 
 #Tell a drone to attack a target
 func command_drone_to_attack(drone, enemy) -> void:
-#	print("First Attack Command")
+#	#print("First Attack Command")
 	if is_instance_valid_and_alive(enemy):
-	#	print("Drone is ", drone, " Enemy is ", enemy)
+	#	#print("Drone is ", drone, " Enemy is ", enemy)
 		drone.attack_target(enemy)
 		
 #Handles the Hive taking damage
@@ -305,7 +305,7 @@ func _on_DroneRespawnTimer_timeout() -> void:
 	var new_drone: Node = DroneScene.instantiate()
 	add_child(new_drone)
 	available_drones.append(new_drone)
-	#print("Availablle Drone just got : ", new_drone)
+	##print("Availablle Drone just got : ", new_drone)
 	
 	# Calculate and store rest position for new drone
 	var rest_pos: Vector2 = calculate_rest_position(available_drones.size() - 1)

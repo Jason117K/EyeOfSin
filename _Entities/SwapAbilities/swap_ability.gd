@@ -29,11 +29,11 @@ var _cooldown_running := false
 var cooldown_glow := false 
 
 func _ready() -> void:
-	print("Swap Ability Ready")
+	#print("Swap Ability Ready")
 	Global.register_swap_ability_instance(self)
 
 func game_start()->void:
-	print("Game Start For Swap Ability Called")
+	#print("Game Start For Swap Ability Called")
 	_cooldown_left = cooldown_duration
 	_cooldown_running = true
 
@@ -55,22 +55,22 @@ func _input(event:InputEvent) -> void:
 func lock_unlock_swap_ability()->void:
 	if is_locked:
 		is_locked = false
-		print("Swap Is Not Locked")
+		#print("Swap Is Not Locked")
 	else:
 		is_locked = true
-		print("Swap Is Locked")
+		#print("Swap Is Locked")
 		
 func get_panel_container()->PanelContainer:
 	return cooldown_controller.get_panel_container()
 
 func reset_cooldown() -> void:
-	print("Set Is On Cooldown to Faklse")
+	#print("Set Is On Cooldown to Faklse")
 	is_on_cooldown = false
 	_cooldown_running = false
 	cooldown_fill_amount = 100.0
 
 func reset_on_game_start() -> void:
-	print("Set Is On Cooldown to True")
+	#print("Set Is On Cooldown to True")
 	cooldown_fill_amount = 0
 	is_on_cooldown = true
 	# Parked until game_start() releases the countdown.
@@ -115,7 +115,7 @@ func stop() -> void:
 		if child.has_method("hide") && !(child is Control):
 			child.hide()
 	is_active = false
-	print("Set Is On Cooldown to Trueee")
+	#print("Set Is On Cooldown to Trueee")
 	is_on_cooldown = true
 	# cooldown_duration is normal or special depending on how we got here
 	# (early cancel vs full duration) — set by begin()/ability_full_duration_end.
@@ -162,7 +162,7 @@ func _physics_process(delta: float) -> void:
 	
 func set_current_visibility_layer(flag : int)->void:
 	cooldown_visual = $Control/SwapAbilityCooldownPanel
-	print("CoolDown VIsual is ", cooldown_visual)
+	#print("CoolDown VIsual is ", cooldown_visual)
 	if flag == 1:
 		cooldown_visual.visibility_layer = 2
 	#	cooldown_visual.set_visibility_layer_bit(2, true)  

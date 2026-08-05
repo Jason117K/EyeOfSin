@@ -57,7 +57,7 @@ signal ToolTipHid
 func _ready() -> void:
 	countdown_timer.timeout.connect(hide_self)
 	countdown_timer.wait_time = tooltip_dissappear_wait_time
-	#print("HIDEEE Ready")
+	##print("HIDEEE Ready")
 	hide()
 	demon_visual_tutorial_vbox_container.hide()
 	if not basicTutorialButton.pressed.is_connected(_on_basic_tutorial_understood_button_pressed):
@@ -148,7 +148,7 @@ func hide_basic_tutorial_button() -> void:
 	#basicTutorialVbox.hide()
 		
 func _on_basic_tutorial_understood_button_pressed() -> void:
-	print("HIDEEE Understood Bu")
+	#print("HIDEEE Understood Bu")
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
@@ -195,7 +195,7 @@ func set_visual_demon_tutorial_text(newFile: String, show_button: bool = true, d
 			
 		
 func set_modulate_invis()->void:
-	#print("SET INVIS")
+	##print("SET INVIS")
 	self.modulate = Color(1,1,1,0)
 	pass
 			
@@ -240,16 +240,16 @@ func new_demon_visual_minimum_size(new_size:Vector2 = Vector2.ZERO)->void:
 		
 	
 func _on_visual_tutorial_understood_button_pressed() -> void:
-	print("V Button Pressed")
+	#print("V Button Pressed")
 	Global.is_blocking = false
-	#print("HIddDEEE")
+	##print("HIddDEEE")
 	hide()
 	ToolTipHid.emit()
 	get_tree().paused = false
 
 
 func _on_demon_visual_tutorial_understood_button_pressed() -> void:
-	#print("Demon V Button Pressed")
+	##print("Demon V Button Pressed")
 	Global.is_blocking = false
 	demon_visual_tutorial_vbox_container.hide()
 	#hide()
@@ -263,7 +263,7 @@ func _on_demon_visual_tutorial_understood_button_pressed() -> void:
 
 func start_basic_countdown()->void:
 	pass
-	print("Start Basic Countdown")
+	#print("Start Basic Countdown")
 	#countdown_timer.start()
 
 func hide_self()->void:

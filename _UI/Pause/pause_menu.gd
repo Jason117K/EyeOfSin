@@ -15,13 +15,13 @@ func set_pause_process_mode():
 		child.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
-	print(newLevel,newAltLevel, "RESTART LEVELS SET")
+	#print(newLevel,newAltLevel, "RESTART LEVELS SET")
 	restartScene = newLevel
 	restartSceneAlt = newAltLevel
-	#print(restartScene,restartSceneAlt, "RESTART LEVELS SET2")
+	##print(restartScene,restartSceneAlt, "RESTART LEVELS SET2")
 
 func _on_resume_pressed() -> void:
-	print("UNPPAUSE HERE")
+	#print("UNPPAUSE HERE")
 	pause_button.undo_toolTip_change()
 	get_tree().paused = false
 

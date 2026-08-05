@@ -56,6 +56,7 @@ func set_syn_ability_icon(new_icon_texture:CompressedTexture2D)->void:
 	icon_texture = new_icon_texture
 
 func set_ability_targeting_active()->void:
+	UiFx.add_pulsing_button_highlight(syn_ability_button)
 	syn_crosshair_active = true
 	syn_ability_crosshair.show()
 
@@ -130,9 +131,11 @@ func _input(event: InputEvent) -> void:
 		if syn_crosshair_active:
 			var color := _current_color()
 			if can_cast(color):
-				print(color, " Syn Ability CLICK")
+				
+				#print(color, " Syn Ability CLICK")
 				syn_sorcery_activated.emit()
 				activate_syn_ability(get_viewport().get_mouse_position())
+			UiFx.stop_glow_pulse(syn_ability_button)
 			syn_crosshair_active = false
 
 func hide_syn_ability()->void:

@@ -202,13 +202,13 @@ func add_mana(mana_to_add:float)->void:
 	ultimate_charge_container.add_mana(mana_to_add)
 
 func disable_ultimate()->void:
-	print("GLOBAL Should DISABLE Ultimate")
+	#print("GLOBAL Should DISABLE Ultimate")
 	if ultimate_charge_container != null:
 		ultimate_charge_container.disable_ult()
 
 
 func enable_ultimate()->void:
-	print("GLOBAL Should Enable Ultimate")
+	#print("GLOBAL Should Enable Ultimate")
 	ultimate_charge_container.enable_ult()
 
 	
@@ -217,6 +217,7 @@ func un_ready_ultimate()->void:
 	ultimate_charge_container.un_ready_ultimate()
 
 func reset_all_variables()->void:
+	
 	gameIsStarted = false
 	hero_demon_summoned = false
 	ultimate_is_ready = false
@@ -300,18 +301,18 @@ func get_blood_panel()->Control:
 	for this_ui_layer in ui_layers:
 		if this_ui_layer != null:
 			if !this_ui_layer.make_green:
-				#print("Will Return ", this_ui_layer)
+				##print("Will Return ", this_ui_layer)
 				return this_ui_layer.get_blood_panel()
-	#print("Return Null L")
+	##print("Return Null L")
 	return null
 
 func get_health_panel()->Control:
 	for this_ui_layer in ui_layers:
 		if this_ui_layer != null:
 			if !this_ui_layer.make_green:
-				#print("Will Return ", this_ui_layer)
+				##print("Will Return ", this_ui_layer)
 				return this_ui_layer.get_health_panel()
-	#print("Return Null L")
+	##print("Return Null L")
 	return null
 
 func register_wave_preview(new_wave_preview:Node) -> void:
@@ -351,7 +352,7 @@ func hideDemonSelectionMenu() -> void:
 	for menu in demon_selection_menus:
 		if menu != null:
 			menu.visible = false 
-			print(menu , " demon selection menu hide")
+			#print(menu , " demon selection menu hide")
 			
 	#if demon_selection_menu != null:
 		#demon_selection_menu.visible = false
@@ -369,11 +370,11 @@ func unHideDemonSelectionMenu() -> void:
 			if on_purple:
 				if !menu.is_alt:
 					menu.visible = true 
-					print(menu , " demon selection menu show")
+					#print(menu , " demon selection menu show")
 			elif !on_purple:
 				if menu.is_alt:
 					menu.visible = true
-					print(menu , " demon selection menu show") 
+					#print(menu , " demon selection menu show") 
 						 
 	#if demon_selection_menu != null:
 		#demon_selection_menu.visible = true
@@ -397,14 +398,16 @@ func register_demon_managers(new_demon_manager:DemonManager)->void:
 	demon_managers.append(new_demon_manager)
 
 func reset_demon_managers()->void:
+	print("Demon Managers Before Reset ", demon_managers)
 	var demon_managers_temp : Array = []
 	for demon_manager in demon_managers:
 		if demon_manager == null:
-			pass
+			continue
 		else:
 			demon_managers_temp.append(demon_manager)
 	demon_managers.clear()
 	demon_managers = demon_managers_temp
+	print("Demon Managers After Reset ", demon_managers)
 	
 func add_blood_to_demon_manager(is_green:bool=false)->void:
 	for demon_manager in demon_managers:
@@ -422,7 +425,7 @@ func get_demon_manager(is_green:bool)->Node:
 # (planned: collapse the three copy-pasted register/connect/deregister blocks
 # into one generic pair-linker in refactor Phase 7)
 func register_syn_ability_instance(new_syn_ability : Area2D)->void:
-	print("Register Syn Ability ", new_syn_ability)
+	#print("Register Syn Ability ", new_syn_ability)
 	if new_syn_ability.is_in_group("Purple"):
 		if purple_syn_ability == null:
 			registered_syn_abilities.append(new_syn_ability)
@@ -436,10 +439,11 @@ func register_syn_ability_instance(new_syn_ability : Area2D)->void:
 	if registered_syn_abilities.size() >= 2 :
 		connect_syn_abilities()
 	else:
-		print(registered_syn_abilities, " Cannot connect not enough syn sheilds : ",registered_syn_abilities.size() )	
+		pass
+		#print(registered_syn_abilities, " Cannot connect not enough syn sheilds : ",registered_syn_abilities.size() )	
 		
 func connect_syn_abilities()->void:
-	#print("Should Start connect Syn Abilities")
+	##print("Should Start connect Syn Abilities")
 	if green_syn_ability != null && purple_syn_ability != null:
 		if green_syn_ability.is_dual_connection:
 			green_syn_ability.connect_ability(purple_syn_ability)
@@ -457,7 +461,7 @@ func deregister_syn_ability(new_syn_ability:Area2D)->void:
 		purple_syn_ability = null
 	else:
 		green_syn_ability = null
-	#print(registered_syn_abilities, " now has size syn abilitys : ",registered_syn_abilities.size() )		
+	##print(registered_syn_abilities, " now has size syn abilitys : ",registered_syn_abilities.size() )		
 		
 		
 		
@@ -477,13 +481,13 @@ func register_syn_shield(new_shield:Area2D)->void:
 		connect_syn_shields()
 	else:
 		pass
-		print(registered_syn_shields, " Cannot connect not enough syn sheilds : ",registered_syn_shields.size() )
+		#print(registered_syn_shields, " Cannot connect not enough syn sheilds : ",registered_syn_shields.size() )
 
 
 
 
 func connect_syn_shields()->void:
-	#print("Should Start connect shields s")
+	##print("Should Start connect shields s")
 	if green_syn_shield.global_position.x > purple_syn_shield.global_position.x:
 		green_syn_shield.connect_shield(purple_syn_shield)
 	else:
@@ -495,7 +499,7 @@ func deregister_syn_shield(new_shield:Area2D)->void:
 		purple_syn_shield = null
 	else:
 		green_syn_shield = null
-	print(registered_syn_shields, " now has size syn shields : ",registered_syn_shields.size() )
+	#print(registered_syn_shields, " now has size syn shields : ",registered_syn_shields.size() )
 		
 func register_lightning_ball(new_lightning_ball:Area2D)->void:
 	
@@ -512,7 +516,8 @@ func register_lightning_ball(new_lightning_ball:Area2D)->void:
 	if registered_lightning_balls.size() >= 2:
 		connect_lightning_balls()
 	else:
-		print(registered_lightning_balls, " Cannot connect not enough balls : ",registered_lightning_balls.size() )
+		pass
+		#print(registered_lightning_balls, " Cannot connect not enough balls : ",registered_lightning_balls.size() )
 		
 func connect_lightning_balls()->void:
 	green_lightning_ball.connect_lightning(purple_lightning_ball)
@@ -524,7 +529,7 @@ func deregister_lightning_ball(new_lightning_ball:Area2D)->void:
 		purple_lightning_ball = null
 	else:
 		green_lightning_ball = null
-	print(registered_lightning_balls, " now has size lightning balls : ",registered_lightning_balls.size() )
+	#print(registered_lightning_balls, " now has size lightning balls : ",registered_lightning_balls.size() )
 
 # Deployed syn instances are freed with their level scenes, but nothing
 # deregisters them on a restart — clear outright so no stale cached refs
@@ -558,7 +563,7 @@ func resetOcculumCount() -> void:
 			temp_occulum_array.append(occulum)
 
 	all_registered_occulum = temp_occulum_array
-	#print("All Registered Occulum is ", all_registered_occulum)
+	##print("All Registered Occulum is ", all_registered_occulum)
 	
 	#game_controller.on_scene_1 = true 
 	
@@ -603,7 +608,7 @@ func incrementOcculumCountVisual() -> void:
 	occulumCountVisual += 1
 	
 func getOcculumCount() -> int:
-	#print("SSReturn , ", occulumCount)
+	##print("SSReturn , ", occulumCount)
 	if game_controller.on_purple_scene():
 		return purple_occulum_count
 	else:
@@ -611,10 +616,10 @@ func getOcculumCount() -> int:
 	#return occulumCount
 
 func damage_all_zombies_with_link(damage : float, zombie_to_exclude : Zombie)->void:
-	print("Checking Link DMG on ", all_zombies)
+	#print("Checking Link DMG on ", all_zombies)
 	for zombie in all_zombies:
 		if zombie.is_flame_dmg_linked && zombie != zombie_to_exclude:
-			print("Calling Link Damage on ", zombie)
+			#print("Calling Link Damage on ", zombie)
 			zombie.take_damage(true,damage,false)
 	pass
 	
@@ -684,17 +689,17 @@ func unlockLevel(levelUnlocked : int) -> void:
 func start_wave_1() -> void:
 	if current_level != null:
 		current_level.wave_1_active = true	
-		#print("Current Level is ", current_level, " wave 1 active is ", current_level.wave_1_active)
+		##print("Current Level is ", current_level, " wave 1 active is ", current_level.wave_1_active)
 	else:
 		pass
-		#print("Current Level is Null")
+		##print("Current Level is Null")
 	
 func show_guide() -> void:
-#	print("UNDO THE CLEAR AND SHOW THE GUIDE FROM GLOBAL")
+#	#print("UNDO THE CLEAR AND SHOW THE GUIDE FROM GLOBAL")
 	game_controller.show_guide()	
 	
 func clear_guide() -> void:
-	#print("CLEAR THE GUIDE GAMECONTROLLER")
+	##print("CLEAR THE GUIDE GAMECONTROLLER")
 	game_controller.clear_guide()		
 	
 func get_game_controller() -> GameController:
@@ -765,7 +770,7 @@ func hero_demon_is_summoned() -> bool:
 	return hero_demon_summoned
 
 func swap_scenes() -> void:
-	print("SWAP SCENES SHOULD")
+	#print("SWAP SCENES SHOULD")
 	game_controller.swap_scenes()
 	adjust_ui_layer()					
 	swap_portal_button()
@@ -775,18 +780,18 @@ func swap_scenes() -> void:
 
 #func swap_hero_demon()->void:
 	#pass
-	##print("Swap Hero Demon")
+	###print("Swap Hero Demon")
 	#if hero_demon != null:
 		#if hero_demon.is_in_group("Purple"):
-			##print("Hero Was Purple")
+			###print("Hero Was Purple")
 			#hero_demon.add_to_group("Green")
 			#hero_demon.remove_from_group("Purple")
 			#if hero_demon.is_in_group("Purple"):
-				#print("Hero Still Purple Lmao")
+				##print("Hero Still Purple Lmao")
 			#hero_demon.reparent(game_controller.get_active_dimension().game_layer)
 			#hero_demon.swap_scenes()
 		#else:
-		##	print("Hero Was Green")
+		##	#print("Hero Was Green")
 			#hero_demon.add_to_group("Purple")
 			#hero_demon.remove_from_group("Green")
 			#hero_demon.reparent(game_controller.get_active_dimension().game_layer)
@@ -816,7 +821,7 @@ func hide_ui_layer() -> void:
 		else:
 			real_ui_layers.append(item)
 	for this_ui_layer  in real_ui_layers:		
-		#print("Should Hide Ui Layer ", this_ui_layer)
+		##print("Should Hide Ui Layer ", this_ui_layer)
 		this_ui_layer.hide()
 		
 		
@@ -839,24 +844,24 @@ func adjust_ui_layer() -> void:
 				real_wave_previews.append(preview_item)
 				
 		for this_ui_layer in real_ui_layers:
-		#	print("SHOULD CHECKING UI LAYER ", this_ui_layer)
+		#	#print("SHOULD CHECKING UI LAYER ", this_ui_layer)
 			if game_controller.on_purple_scene():
-			#	print("ON PURPLE SCENE SHOULD HIDE GREEN")
+			#	#print("ON PURPLE SCENE SHOULD HIDE GREEN")
 				if this_ui_layer.make_green == true :
 					this_ui_layer.hide()
 				else:
 					this_ui_layer.show()
 			else:
-			#	print("ON GREEN SCENE SHOULD HIDE PURPLE")
+			#	#print("ON GREEN SCENE SHOULD HIDE PURPLE")
 				if this_ui_layer.make_green == true :
 					this_ui_layer.show()
 				else:
 					this_ui_layer.hide()
 					
 		for this_preview in real_wave_previews:
-		#	print("SHOULD CHECKING PREVIEW ", this_preview)
+		#	#print("SHOULD CHECKING PREVIEW ", this_preview)
 			if game_controller.on_purple_scene():
-				#print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
+				##print("ON PURPLE SCENE SHOULD HIDE GREEN PREVIEW")
 				if this_preview.is_green == true :
 					#this_preview.hide()
 					this_preview.set_detect_mouse(false)
@@ -868,7 +873,7 @@ func adjust_ui_layer() -> void:
 					this_preview.set_detect_mouse(true)
 					this_preview.make_preview_visible()
 			else:
-				#print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
+				##print("ON GREEN SCENE SHOULD HIDE PURPLE PREVIEW")
 				if this_preview.is_green == true :
 					this_preview.set_detect_mouse(true)
 					this_preview.make_preview_visible()
@@ -938,7 +943,7 @@ func start_swap_ability() -> void:
 
 func stop_swap_ability() -> void:
 	if swap_ability != null:
-		print("Stop Swap In Globa;l")
+		#print("Stop Swap In Globa;l")
 		swap_ability.stop()
 
 func reset_swap_ability() -> void:
@@ -964,7 +969,7 @@ func reset_all_demons()->void:
 	all_demons = compact_registrations(all_demons)
 	
 func set_zombie_info_bar(zombie : Zombie) -> void:
-	#print(" notification_bar" , notification_bar)
+	##print(" notification_bar" , notification_bar)
 	notification_bar.set_zombie_info(zombie)
 	pass
 
@@ -1002,7 +1007,7 @@ func get_severed_spriteframes()-> SpriteFrames:
 	
 	
 func hide_pip() -> void:
-	print("Should hide ", game_controller.pip)
+	#print("Should hide ", game_controller.pip)
 	game_controller.pip.hide()
 	game_controller.pip.hide_pip()
 	
@@ -1053,7 +1058,7 @@ func unlock_zombie(unlocked_zombie : String)->void:
 	if gameIsStarted:
 		for zombie_name : String in ZombieRegistry.SCENES:
 			if zombie_name == unlocked_zombie && zombie_name not in unlocked_zombie_array:
-				print("Just Unlocked ", zombie_name)
+				#print("Just Unlocked ", zombie_name)
 				unlocked_zombie_array.append(zombie_name)
 				get_current_ui_layer().set_zombie_unlock_notif(zombie_name)
 
@@ -1063,7 +1068,7 @@ func unlock_buff(unlocked_buff : String)->void:
 	if synergy_catalog.get_by_id(id) == null:
 		return
 	if not unlocked_synergies.get(id, false):
-		print("this synergy ", id, " is A MATCH")
+		#print("this synergy ", id, " is A MATCH")
 		unlocked_synergies[id] = true
 		get_current_ui_layer().set_unlock_notif(unlocked_buff)
 

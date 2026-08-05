@@ -6,7 +6,7 @@ func receive_buff(_demonName: String) -> void:
 	pass
 
 func spawn_done() -> void:
-	print("Wyrm Queen Spawn Done Called ")
+	#print("Wyrm Queen Spawn Done Called ")
 	if spawnAnimDone:
 		pass
 	else:
@@ -14,6 +14,6 @@ func spawn_done() -> void:
 		play()
 		spawnAnimDone = true
 		demon.can_show_preview = true 
-		print("Wyrm Queen Can Show Pre")
+		#print("Wyrm Queen Can Show Pre")
 		
 		

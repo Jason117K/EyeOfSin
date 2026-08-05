@@ -27,7 +27,7 @@ func _ready() -> void:
 		speed_scale = speed_scale * anim_spawn_speed_mult
 		animation = "spawn"
 	self.animation_finished.connect(_on_animation_finished)
-	#print(self, " PARENT Is " , get_parent())
+	##print(self, " PARENT Is " , get_parent())
 	demon = get_parent()
 	pass
 
@@ -36,11 +36,11 @@ func set_spawn_anim_speed(_new_spawn_anim_speed: float) -> void:
 
 
 func spawn_done() -> void:
-	#print(demon, " spawn done ")
+	##print(demon, " spawn done ")
 	if spawnAnimDone:
 		pass
 	else:
-		#print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
+		##print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
 		speed_scale = default_anim_speed_scale
 		play()
 		spawnAnimDone = true
@@ -48,7 +48,7 @@ func spawn_done() -> void:
 
 
 func _on_animation_finished() -> void:
-	#print(self,animation, " Anim Finshed, PARENT Is" , get_parent(), " spawn done is ", spawnAnimDone)
+	##print(self,animation, " Anim Finshed, PARENT Is" , get_parent(), " spawn done is ", spawnAnimDone)
 	if animation == "spawn":
 		if spawnAnimDone:
 			lightning_spawn.animation = "change_form"
@@ -70,7 +70,7 @@ func receive_buff(new_form : String) -> void:
 	
 	if parent.has_method("adjust_position"):
 		parent.adjust_position(new_form)
-	#print("APPLYING BUFF FROM ",new_form )
+	##print("APPLYING BUFF FROM ",new_form )
 	match new_form:
 		"Occulum":
 			currentAnim = "idle_Occulum"
@@ -119,7 +119,7 @@ func receive_buff(new_form : String) -> void:
 func make_buff_glow() -> void:
 	#return
 	if material == null:
-		print("PRE LOL")
+		#print("PRE LOL")
 		material = ShaderMaterial.new()
 		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 
@@ -127,11 +127,11 @@ func make_buff_glow() -> void:
 	if material is ShaderMaterial:
 
 		#material.shader = demon_glow
-		print("LOL" , material)
+		#print("LOL" , material)
 		material.set_shader_parameter("glow_color", targetGlowColor)
 		material.set_shader_parameter("modulate_factor", modulate_factor)
 	else:
-		#print("Not funn y LOL ", material)
+		##print("Not funn y LOL ", material)
 		pass
 
 
@@ -144,7 +144,7 @@ func make_drone_glow() -> void:
 
 
 func debuff() -> void:
-	print("Anim Sprite Debuff")
+	#print("Anim Sprite Debuff")
 	speed_scale = 1
 	currentAnim = "idle"
 	currentAttackAnim = "attack"

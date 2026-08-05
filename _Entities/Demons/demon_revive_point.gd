@@ -20,7 +20,7 @@ func set_is_green(new_is_green : bool)->void:
 	
 	
 func revive_summon()->void:
-	print("[HERO_REVIVE]: Calling Revive SUMMON ")
+	#print("[HERO_REVIVE]: Calling Revive SUMMON ")
 	match current_demon_type:
 		Global.DEMON_TYPE.CRAWLER:
 			demon_selection_menu._on_CrawlerButton_pressed()

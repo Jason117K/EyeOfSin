@@ -49,10 +49,10 @@ func _ready() -> void:
 		self.modulate = Color(1.697, 1.2, 1.001)
 	if wyrmBuff:
 		auto_pickup_timer.wait_time = wyrm_buff_auto_pickup_wait_time
-	print(self," time at start1 is ", counter, " has scale of ", self.scale)
+	#print(self," time at start1 is ", counter, " has scale of ", self.scale)
 	auto_pickup_timer.timeout.connect(_on_auto_pick_up_timer_timeout)
 	auto_pickup_timer.start()
-	print(self," time at start2 is ", counter, " has scale of ", self.scale)
+	#print(self," time at start2 is ", counter, " has scale of ", self.scale)
 	#Must Look For Zombies AND Demons
 	if self.is_in_group("Green"):
 		aoe.set_collision_mask_value(1,false)
@@ -71,7 +71,7 @@ func _ready() -> void:
 #TODO Add SFX
 func _on_Blood_mouse_entered() -> void:
 	#var demon_manager = get_parent().get_parent().get_node("DemonManager")
-	#print("Demon Manager is ", demon_manager)
+	##print("Demon Manager is ", demon_manager)
 	if self.is_in_group("Green"):
 		if Global.game_controller.get_active_dimension() == Global.game_controller.get_green_dimension():
 			pass
@@ -89,12 +89,12 @@ func _on_Blood_mouse_entered() -> void:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()
 		if hiveBuff:
-			#print("About to Heal Demons")
+			##print("About to Heal Demons")
 			heal_demons()
 			return
 		
 	if crawlerBuff:
-		print("PickUp Crawler Blood Cos Mouse Entered")
+		#print("PickUp Crawler Blood Cos Mouse Entered")
 		crawler_blood_pickup()
 		return
 			
@@ -111,7 +111,7 @@ func _on_Blood_mouse_entered() -> void:
 	#queue_free()
 
 func alt_free_blood(_anim_name := "")->void:
-	print("Alt Free Blood Called")
+	#print("Alt Free Blood Called")
 	queue_free()
 
 
@@ -119,7 +119,7 @@ func free_blood() -> void:
 	if current_zombie_target != null:
 		current_zombie_target.take_damage(false,BloodDamage,false)
 		current_zombie_target.slow()
-	print("Regular Free Blood Called")
+	#print("Regular Free Blood Called")
 	queue_free()
 	
 func _on_zombie_died(dead_zombie:Zombie)->void:
@@ -127,7 +127,7 @@ func _on_zombie_died(dead_zombie:Zombie)->void:
 	pass
 
 func crawler_blood_pickup() -> void:
-	print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	temp_zombie_container = aoe.get_overlapping_areas()
 	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
@@ -135,7 +135,7 @@ func crawler_blood_pickup() -> void:
 			if not zombie.this_zombie_died.is_connected(_on_zombie_died):
 				zombie.this_zombie_died.connect(_on_zombie_died)
 	if nearby_zombies.is_empty() == true:
-		print("NO NEARBY ZOMBIES : ", nearby_zombies)
+		#print("NO NEARBY ZOMBIES : ", nearby_zombies)
 		$CollisionShape2D.disabled = true 
 		self.monitoring = false
 		self.monitorable = false 
@@ -154,7 +154,7 @@ func crawler_blood_pickup() -> void:
 				if current_target_health > highest_health && zombie != null:
 					highest_health = current_target_health
 					current_zombie_target = zombie
-		print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
+		#print("Nearby Zombies is ",nearby_zombies, " current zombie is " ,current_zombie_target )
 		#TODO Sort By Health
 		if current_zombie_target != null && is_instance_valid(current_zombie_target):
 			attack_zombie(current_zombie_target)
@@ -163,9 +163,10 @@ func crawler_blood_pickup() -> void:
 
 func summon_blood_swords() -> void:
 	if origin_occulum != null:
-		print("Summon Blood Sword")
+		pass
+		#print("Summon Blood Sword")
 	else:
-		print("Origin Occulum is now ", origin_occulum)
+		#print("Origin Occulum is now ", origin_occulum)
 		queue_free()
 	spawn_blood_sword(Vector2(49,-8))
 	spawn_blood_sword(Vector2(113,-8))
@@ -189,12 +190,12 @@ func spawn_blood_sword(offset: Vector2) -> void:
 		#blood_spell_instance.global_position = origin_occulum.global_position # + offset
 		origin_occulum.get_parent().add_child(blood_spell_instance)
 		blood_spell_instance.global_position = origin_occulum.global_position + offset
-		print("Blood Sword Damage Zombies SHOULD BE at position global : ", blood_spell_instance.global_position , " and position local ", blood_spell_instance.position )
+		#print("Blood Sword Damage Zombies SHOULD BE at position global : ", blood_spell_instance.global_position , " and position local ", blood_spell_instance.position )
 	
 	
 	
 func set_origin_occulum(parent_occulum : Demon) -> void:
-	#print("Origin Occulum is ", parent_occulum)
+	##print("Origin Occulum is ", parent_occulum)
 	origin_occulum = parent_occulum
 		
 	
@@ -213,21 +214,22 @@ func attack_zombie(zombie_to_attack : Zombie) -> void:
 	
 	
 func heal_demons() -> void:
-	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	##print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	for entity in aoe.get_overlapping_areas():
 		if entity.is_in_group("Demons"):
 			demons_to_heal.append(entity)
-	#print("Demons to heal is ", demons_to_heal)
+	##print("Demons to heal is ", demons_to_heal)
 
 	for demon in demons_to_heal:
 		if demon == null:
 			demons_to_heal.erase(demon)
 		if demon != null:
 			if demon.is_node_ready():
-				print("Demon is ", demon )
+				#print("Demon is ", demon )
 				demon.increase_health(100)
 			else:
-				print("Demon is not ready ", demon)
+				pass
+				#print("Demon is not ready ", demon)
 	heal_anim.play()
 	clear_heal_aoe()
 
@@ -237,10 +239,10 @@ func clear_heal_aoe() -> void:
 	demons_to_heal.clear()
 
 func _on_auto_pick_up_timer_timeout() -> void:
-	print("Origin Occulum is ", origin_occulum)
+	#print("Origin Occulum is ", origin_occulum)
 	var elapsed_sec := (Time.get_ticks_msec() - _spawn_tick_msec) / 1000.0
 	var dim := "Green" if is_in_group("Green") else "Purple"
-	print("[BLOOD AUTOPICKUP] dim=", dim, " configured_wait=", auto_pickup_timer.wait_time, "s  actual_elapsed=", elapsed_sec, "s  value_before_halving=", BloodValue, " counter=", counter, " play_auto_blood_collect_sound_fx: ", play_auto_blood_collect_sound_fx)
+	#print("[BLOOD AUTOPICKUP] dim=", dim, " configured_wait=", auto_pickup_timer.wait_time, "s  actual_elapsed=", elapsed_sec, "s  value_before_halving=", BloodValue, " counter=", counter, " play_auto_blood_collect_sound_fx: ", play_auto_blood_collect_sound_fx)
 	if play_auto_blood_collect_sound_fx:
 		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.SUN_COLLECT)
 	if decrease_blood_val:
@@ -250,12 +252,12 @@ func _on_auto_pick_up_timer_timeout() -> void:
 		demon_manager.add_blood(BloodValue)  # Add 25 blood points (or whatever amount)
 		demon_manager.play_blood_collect()
 		if hiveBuff:
-			print("About to Heal Demons")
+			#print("About to Heal Demons")
 			heal_demons()
 			return
 		if crawlerBuff:
-			print("PickUp Crawler Blood Cos Time Ran Out",get_parent().get_parent())
-			print(self, " has scale of ", self.scale)
+			#print("PickUp Crawler Blood Cos Time Ran Out",get_parent().get_parent())
+			#print(self, " has scale of ", self.scale)
 			crawler_blood_pickup()
 			return
 		if wyrmBuff:
@@ -291,7 +293,7 @@ func set_fast_pickup_time() -> void:
 	self.scale = Vector2(0.3,0.3)
 	BloodValue = 2.0
 	
-	print("Set Auto Collect Sound to ", play_auto_blood_collect_sound_fx)
+	#print("Set Auto Collect Sound to ", play_auto_blood_collect_sound_fx)
 	#BloodValue = 150 
 	
 	

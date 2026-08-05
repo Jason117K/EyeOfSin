@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func activate()->void:
-	print("Activating Demon Texture")
+	#print("Activating Demon Texture")
 	show()
 	anim_player.play("appear")
 	UiFx.add_pulsing_button_highlight(self)

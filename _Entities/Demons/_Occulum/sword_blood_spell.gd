@@ -17,17 +17,17 @@ func _ready() -> void:
 
 			
 func damage_zombies() -> void:
-	#print("Blood Sword Damage Zombies Called at position global : ", global_position , " and position local ", position )
+	##print("Blood Sword Damage Zombies Called at position global : ", global_position , " and position local ", position )
 	spell_anim.animation_finished.connect(_on_blood_spell_sprite_animation_finished)
-	#print("Sword world2d: ", get_world_2d(), " rid: ", get_world_2d().get_rid())
+	##print("Sword world2d: ", get_world_2d(), " rid: ", get_world_2d().get_rid())
 	temp_zombie_container = get_overlapping_areas()
-	#print("Zombie Temp Container is ", temp_zombie_container)
+	##print("Zombie Temp Container is ", temp_zombie_container)
 	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			zombies_to_damage.append(zombie)
-	#print("Zombies to damage is ", zombies_to_damage)
+	##print("Zombies to damage is ", zombies_to_damage)
 	for zombie:Node in zombies_to_damage:
-		#print("Zombie is ", zombie)
+		##print("Zombie is ", zombie)
 		zombie.take_damage(false,blood_damage,false)
 		if is_maw_parent:
 			#TODO Add Armor Stripping 
@@ -35,12 +35,12 @@ func damage_zombies() -> void:
 
 
 func _on_blood_spell_sprite_animation_finished() -> void:
-	#print("Blood Sword Anim Finished")
+	##print("Blood Sword Anim Finished")
 	if is_maw_parent:
-		#print("Blood Sword Parent Is MAW ")
+		##print("Blood Sword Parent Is MAW ")
 		blood_spell_finished.emit()
 	else:
-		#print("Blood Sword Parent Is NOT MAW ")
+		##print("Blood Sword Parent Is NOT MAW ")
 		queue_free()
 
 

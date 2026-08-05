@@ -83,7 +83,7 @@ func show_guide() -> void:
 	$GameLayer/GridManager/TileMapLayer.place_rectangles_on_rows(3, 9)
 
 func _start_explain_syn_ability_5()->void:
-	print("Start Syn 5")
+	#print("Start Syn 5")
 	Global.syn_ability_manager.syn_sorcery_activated.connect(_on_syn_sorcery_activated_again)
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_5,false)
 
@@ -92,7 +92,7 @@ func _on_syn_sorcery_activated_again()->void:
 	_start_explain_syn_ability_6()
 
 func _start_explain_syn_ability_6()->void:
-	print("Start Syn 6")
+	#print("Start Syn 6")
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_6,false)
 	auto_advance = true 
 	set_auto_advance_toolTip(5)
@@ -105,7 +105,7 @@ func _start_explain_syn_ability_6()->void:
 		#toolTips.hide()
 
 func _start_explain_syn_ability_7()->void:
-	print("Start Syn 7")
+	#print("Start Syn 7")
 	_on_step_7 = true 
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_ABILITY_7,false)
 	auto_advance = true 
@@ -114,13 +114,13 @@ func _start_explain_syn_ability_7()->void:
 
 
 func _pre_start_game()->void:
-	print("Hide Tooltips")
+	#print("Hide Tooltips")
 	toolTips.hide()
 	pass
 	
 		
 func progress_time_passed()->void:
-	print("Progress Time Passed ")
+	#print("Progress Time Passed ")
 	if !_on_step_6:
 		_start_explain_syn_ability_6()
 	if _on_step_6:

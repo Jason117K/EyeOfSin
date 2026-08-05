@@ -48,9 +48,10 @@ func _setup_tutorial() -> void:
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)
 		
 #region Lifecycle
 func _ready() -> void:
@@ -60,7 +61,7 @@ func _ready() -> void:
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)
-	#print_scene_tree()
+	##print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [60.0, 100.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime,wave6StartTime]

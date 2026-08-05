@@ -34,7 +34,7 @@ func activate() -> void:
 		self.set_collision_mask_value(4,true)
 	area_entered.connect(func(area:Area2D)->void: 
 		if area.is_in_group("Zombie"):
-			print("Silence ", area)
+			#print("Silence ", area)
 			area.silence()
 			)
 	for area in get_overlapping_areas():
@@ -81,8 +81,8 @@ func show_silence_fields() -> void:
 
 
 func silence_zombies() -> void:
-	print("SILENCE ZOMBIES CALLED",  get_overlapping_areas())
+	#print("SILENCE ZOMBIES CALLED",  get_overlapping_areas())
 	for area in get_overlapping_areas():
 		if area.is_in_group("Zombie"):
-			print(area, " Is Silenced")
+			#print(area, " Is Silenced")
 			area.silence()

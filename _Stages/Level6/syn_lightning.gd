@@ -5,7 +5,7 @@ extends Area2D
 @onready var all_aftershocks := $AfterShocks
 
 func _ready() -> void:
-	print("SYN LIGHTNING STRIKE!")
+	#print("SYN LIGHTNING STRIKE!")
 	syn_lightning_animation.animation_finished.connect(_on_animation_finished)
 	syn_lightning_animation.frame_changed.connect(_on_syn_lightning_frame_changed)
 	
@@ -32,7 +32,7 @@ func _on_animation_finished() -> void:
 		
 		
 func _on_syn_lightning_frame_changed()->void:
-	print("Syn Lightning Animation Frame Changed Checking Loop ", syn_lightning_animation.frame)
+	#print("Syn Lightning Animation Frame Changed Checking Loop ", syn_lightning_animation.frame)
 	if syn_lightning_animation.frame == 1:
 		for area in self.get_overlapping_areas():
 			if area.is_in_group("Zombie"):
@@ -40,7 +40,7 @@ func _on_syn_lightning_frame_changed()->void:
 				
 	if syn_lightning_animation.frame == 2:
 		for shock in all_aftershocks.get_children():
-			print("Loop setting: ", shock.sprite_frames.get_animation_loop(shock.animation))
-			print("Animation: ", shock.animation)
+			#print("Loop setting: ", shock.sprite_frames.get_animation_loop(shock.animation))
+			#print("Animation: ", shock.animation)
 			shock.play()
 			

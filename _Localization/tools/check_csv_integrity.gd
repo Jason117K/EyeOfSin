@@ -21,7 +21,7 @@ var problems := 0
 func _init() -> void:
 	for path: String in CSVS:
 		_check(path)
-	print("check_csv_integrity: %d problems" % problems)
+	#print("check_csv_integrity: %d problems" % problems)
 	quit(mini(problems, 100))
 
 
@@ -70,5 +70,5 @@ func _placeholders(text: String) -> Array:
 
 
 func _flag(path: String, key: String, msg: String) -> void:
-	print("PROBLEM %s [%s]: %s" % [path.get_file(), key, msg])
+	#print("PROBLEM %s [%s]: %s" % [path.get_file(), key, msg])
 	problems += 1

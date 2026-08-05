@@ -11,7 +11,7 @@ func die_fromClearSpace() -> void:
 	queue_free()
 
 func _ready() -> void:
-	print("THIS EMPTY IS GREEN IS : ", is_green)
+	#print("THIS EMPTY IS GREEN IS : ", is_green)
 	disable_buff_nodes()
 	demon_selection_menu = Global.get_demon_selection_menu(!is_green)
 	demon_manager = Global.get_demon_manager(!is_green)
@@ -21,13 +21,13 @@ func _ready() -> void:
 
 func set_demon_type(new_demon_type : Global.DEMON_TYPE)->void:
 	current_demon_type = new_demon_type
-	print("Current Demon Type Is : ", current_demon_type)
+	#print("Current Demon Type Is : ", current_demon_type)
 
 			
 	
 
 func summon_blood_clone()->void:
-	print("2 Current Demon Type Is : ", current_demon_type)
+	#print("2 Current Demon Type Is : ", current_demon_type)
 	match current_demon_type:
 		Global.DEMON_TYPE.CRAWLER:
 			demon_selection_menu._on_CrawlerButton_pressed()

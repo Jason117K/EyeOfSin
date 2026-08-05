@@ -12,7 +12,7 @@ func _ready() -> void:
 	material = thisMaterial
 	# Set initial shader parameters
 	if thisMaterial:
-		#print("Made h")
+		##print("Made h")
 		thisMaterial.set_shader_parameter("target_color", Color("ff0013"))
 		thisMaterial.set_shader_parameter("replace_color", Color.HOT_PINK)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func _on_animation_changed() -> void:
 	if thisMaterial:
-		#print("Made PPInk")
+		##print("Made PPInk")
 		thisMaterial.set_shader_parameter("target_color", Color(targetColorString))
 		thisMaterial.set_shader_parameter("replace_color", Color.DEEP_PINK)
 		thisMaterial.set_shader_parameter("tolerance", 0.3)

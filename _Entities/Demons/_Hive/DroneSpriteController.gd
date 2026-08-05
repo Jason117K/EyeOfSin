@@ -64,9 +64,9 @@ func debuff() -> void:
 
 
 func make_glow() -> void:
-	#print("Make Drone Glow")
+	##print("Make Drone Glow")
 	if material == null:
-		#print("PRE LOL")
+		##print("PRE LOL")
 		material = ShaderMaterial.new()
 		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 	
@@ -74,8 +74,8 @@ func make_glow() -> void:
 	if material is ShaderMaterial:
 		
 		#material.shader = demon_glow
-		#print("LOL" , material)
+		##print("LOL" , material)
 		material.set_shader_parameter("glow_color", targetGlowColor)
 	else:
-		#print("Not funn y LOL ", material)
+		##print("Not funn y LOL ", material)
 		pass

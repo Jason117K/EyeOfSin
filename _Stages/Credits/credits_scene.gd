@@ -29,5 +29,5 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-	print("Change to Start ", startScreen)
+	#print("Change to Start ", startScreen)
 	Global.game_controller.change_scene(startScreen)

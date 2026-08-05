@@ -36,7 +36,7 @@ var isSpinalOcculumBuffed := false
 var isHeartBuffed := false
 
 func get_health() -> float:
-	#print(demon, " is getting health from comp, returning ", health)
+	##print(demon, " is getting health from comp, returning ", health)
 	return health
 
 func get_max_health() -> float:
@@ -53,7 +53,7 @@ func take_damage(damage: float) -> void:
 	if demon.reduced_damage_percent > 0:
 		damage = damage * demon.reduced_damage_percent
 	health = health - damage
-	#print(demon, " is taking DAMAGE health is now ", health)
+	##print(demon, " is taking DAMAGE health is now ", health)
 	if(health <= 0):
 		demon.die()
 

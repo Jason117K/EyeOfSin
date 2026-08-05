@@ -37,7 +37,7 @@ signal show_new_demon_notification(highlighted_demon:Demon)
 signal show_new_zombie_notification(highlighted_zombie:Zombie)
 
 func _ready() -> void:
-	#print_scene_tree()
+	##print_scene_tree()
 	hide()
 	Global.register_notification_bar(self)
 	hide_bar_timer = Timer.new()
@@ -50,7 +50,7 @@ func _physics_process(_delta: float) -> void:
 	if self.visible == true :
 		if current_zombie != null:
 			if current_zombie.get_health() > 0:
-				#print("Setting Current Zombie Health to ", current_zombie.get_health())
+				##print("Setting Current Zombie Health to ", current_zombie.get_health())
 				health_progress_bar.value = current_zombie.get_health()
 				health_progress_bar.max_value = current_zombie.get_max_health()
 				health_progress_bar_label.text = str(current_zombie.get_health()) + " / " + str(current_zombie.get_max_health())
@@ -76,7 +76,7 @@ func set_panel_background_color(panel: PanelContainer, color: Color) -> void:
 	
 func set_label_border_color(label: RichTextLabel, color: Color) -> void:
 	var stylebox := label.get_theme_stylebox("normal").duplicate() as StyleBoxFlat
-	#print("Label Is ", label, " StyleBox Is : ",stylebox)
+	##print("Label Is ", label, " StyleBox Is : ",stylebox)
 	stylebox.border_color = color
 	label.add_theme_stylebox_override("normal", stylebox)
 
@@ -104,10 +104,10 @@ func _on_hide_bar_timer_timeout() -> void:
 	
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
 		pass
-		print_scene_tree(child, indent + 1)
+		#print_scene_tree(child, indent + 1)
 		
 		
 func set_demon_info(demon: Demon) -> void:
@@ -116,7 +116,7 @@ func set_demon_info(demon: Demon) -> void:
 	current_demon = demon
 	show_demon_notification()
 	notifLabel.text = Loc.display_name(demon.get_demon_name())
-	#print("Getting Demon Health, it is ",demon.get_health() )
+	##print("Getting Demon Health, it is ",demon.get_health() )
 	health_progress_bar.max_value = int(demon.get_max_health())
 	health_progress_bar.value = int(demon.get_health())
 	health_progress_bar_label.text = str(int(demon.get_health())) + " / " + str(int(demon.get_max_health()))
@@ -147,7 +147,7 @@ func set_demon_info(demon: Demon) -> void:
 		
 func set_zombie_info(zombie: Zombie) -> void:
 	current_demon = null
-	#print("Setting Bar For ", zombie)
+	##print("Setting Bar For ", zombie)
 	hide_bar_timer.wait_time = info_disappear_time
 	current_zombie = zombie
 	show_zombie_notification()

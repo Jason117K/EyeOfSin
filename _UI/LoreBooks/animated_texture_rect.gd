@@ -31,8 +31,8 @@ var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
 var original_hue_shift := -86
 
 func _ready() -> void:
-	#print("AnimatedTextureRect: _ready() called")
-	print("UNPAUSE GAME")
+	##print("AnimatedTextureRect: _ready() called")
+	#print("UNPAUSE GAME")
 	get_tree().paused = false
 	
 	# Set initial sprites if none are set
@@ -42,7 +42,7 @@ func _ready() -> void:
 	# Initialize animation data
 	if sprites != null:
 		if not sprites.has_animation(current_animation):
-			#print("Sprites not null")
+			##print("Sprites not null")
 			var animations := sprites.get_animation_names()
 			if animations.size() > 0:
 				current_animation = animations[0]
@@ -55,16 +55,16 @@ func _ready() -> void:
 # Handle scene switching with _notification
 func _notification(what) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
-		#print("AnimatedTextureRect: Visibility changed, visible =", visible)
+		##print("AnimatedTextureRect: Visibility changed, visible =", visible)
 		if visible:
 			call_deferred("_restart_animation")
 	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
-		#print("AnimatedTextureRect: Window focus gained")
+		##print("AnimatedTextureRect: Window focus gained")
 		call_deferred("_restart_animation")
 
 # Restart animation (called after scene changes)
 func _restart_animation() -> void:
-	#print("AnimatedTextureRect: Restarting animation")
+	##print("AnimatedTextureRect: Restarting animation")
 	
 	
 	# Restart animation
@@ -73,27 +73,27 @@ func _restart_animation() -> void:
 
 func _process(delta: float) -> void:
 	if sprites == null or playing == false:
-		#print("Early Return cos ",sprites,playing)
+		##print("Early Return cos ",sprites,playing)
 		return
 
 
 	if sprites.has_animation(current_animation) == false:
 		playing = false
-		#print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
-		#print("Available animations:", sprites.get_animation_names())
+		##print("AnimatedTextureRect: Animation doesn't exist:", current_animation)
+		##print("Available animations:", sprites.get_animation_names())
 		return
 		
 	get_animation_data(current_animation)
 	frame_delta += (speed_scale * delta)
 	if frame_delta >= refresh_rate/fps:
-		#print("Texture should be ",get_next_frame())
+		##print("Texture should be ",get_next_frame())
 		texture = get_next_frame()
 		frame_delta = 0.0
 	#else:
-		#print("Frame Delta is ",frame_delta )
-		#print("Fps is ", fps)
-		#print("Refresh rate is ", refresh_rate)
-		#print("refresh_rate/fps is ", refresh_rate/fps)
+		##print("Frame Delta is ",frame_delta )
+		##print("Fps is ", fps)
+		##print("Refresh rate is ", refresh_rate)
+		##print("refresh_rate/fps is ", refresh_rate/fps)
 
 func play(animation_name: String = current_animation) -> void:
 	frame_index = 0
@@ -103,9 +103,9 @@ func play(animation_name: String = current_animation) -> void:
 	playing = true
 	
 func get_animation_data(animation) -> void:
-	#print("Animation is ", animation)
-	#print("Current Animation  is ", current_animation)
-	#print("sprites is", sprites)
+	##print("Animation is ", animation)
+	##print("Current Animation  is ", current_animation)
+	##print("sprites is", sprites)
 	fps = sprites.get_animation_speed(current_animation)
 	refresh_rate = sprites.get_frame_duration(current_animation, frame_index)
 	
@@ -117,7 +117,7 @@ func get_next_frame()->Texture2D:
 		#if not sprites.get_animation_loop(current_animation):
 			#playing = false
 	get_animation_data(current_animation)
-	#print("Get next frame should return ", sprites.get_frame_texture(current_animation, frame_index))
+	##print("Get next frame should return ", sprites.get_frame_texture(current_animation, frame_index))
 	return sprites.get_frame_texture(current_animation, frame_index)
 	
 func resume() -> void:

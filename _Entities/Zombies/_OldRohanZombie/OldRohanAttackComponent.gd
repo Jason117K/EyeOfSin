@@ -38,7 +38,7 @@ func _on_TeleportTimer_timeout() -> void:
 
 
 #if self.is_in_group("Green"):
-		#print(" I AM GREEN CRAWLER I WILL ATTACK GREEN")
+		##print(" I AM GREEN CRAWLER I WILL ATTACK GREEN")
 		#$DMG_RayCast2D.collision_mask = 3
 		#$DMG_RayCast2D.set_collision_mask_value(1,false)
 		#$DMG_RayCast2D.set_collision_mask_value(2,false)
@@ -74,7 +74,7 @@ func changeGroup() -> void:
 func _on_AttackTimer_timeout() -> void:
 	if(teleport_timer.is_stopped()):
 		teleport_timer.start()
-	#print("Basic Zombie Attack Timer Timeout")
+	##print("Basic Zombie Attack Timer Timeout")
 		#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)
@@ -83,7 +83,7 @@ func _on_AttackTimer_timeout() -> void:
 	elif "Screen" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
+		##print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	if target_demons == null:
 		return
@@ -116,7 +116,7 @@ func _on_AttackTimer_timeout() -> void:
 	stop_attack()
 # Stops the attack and resumes movement
 func stop_attack() -> void:
-	#print("Stopping Attack")
+	##print("Stopping Attack")
 	is_attacking = false
 	#target_demons = null
 	target_demons.clear()
@@ -128,10 +128,10 @@ func _process(_delta: float) -> void:
 		for ray:Node in attack_rays:
 			if ray.is_colliding():
 				var collider :Node= ray.get_collider()
-				#print(parent.name , " Its collding with ", collider.name )
+				##print(parent.name , " Its collding with ", collider.name )
 				if collider:
 					if collider.is_in_group("Demons"):
-						#print("Collider In Right Group")
+						##print("Collider In Right Group")
 						if collider.get_parent().get_parent() != self.get_parent().get_parent().get_parent():
 							if collider.get_parent().get_parent().get_parent() != self.get_parent().get_parent().get_parent():
 								return
@@ -160,7 +160,7 @@ func _process(_delta: float) -> void:
 			elif "Screen" in parent.name:
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 			else:
-				#print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
+				##print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
 				AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 			attack_timer.start()
 		else:

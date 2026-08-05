@@ -35,7 +35,7 @@ func silence() -> void:
 func summon_backup() -> void:
 	if is_silenced:
 		return
-	#print("Summoning ",dancerZombie.position.y)
+	##print("Summoning ",dancerZombie.position.y)
 
 	var game_layer := get_parent().get_parent()
 	var is_green := get_parent().is_in_group("Green")
@@ -88,11 +88,11 @@ func _on_SummonTimer_timeout() -> void:
 
 # Start the actual summon at a certain point in the animation
 func _on_AnimatedSprite_animation_finished() -> void:
-	#print(animatedSpriteComp.animation, " just finished playing")
+	##print(animatedSpriteComp.animation, " just finished playing")
 	if(animatedSpriteComp.animation == "Summon"):
 		dancerZombie.reset_speed()
-		#print(animatedSpriteComp.animation)
-		#print("AnimPlayed")
+		##print(animatedSpriteComp.animation)
+		##print("AnimPlayed")
 		summon_backup()
 		animatedSpriteComp.setSpecialMoveFalse()
 		is_attacking = attackComp.getAttackState()

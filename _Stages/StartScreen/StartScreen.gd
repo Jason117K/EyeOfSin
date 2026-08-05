@@ -20,16 +20,16 @@ func _ready() -> void:
 		# Always disconnect any existing connections first
 	if startGameButton.pressed.is_connected(_on_start_game_pressed):
 		startGameButton.pressed.disconnect(_on_start_game_pressed)
-	#print("=== Button Debug Info ===")
-	#print("Button exists: ", startGameButton != null)
-	#print("Button disabled: ", startGameButton.disabled if startGameButton else "null")
-	#print("Button visible: ", startGameButton.visible if startGameButton else "null")
-	#print("Button mouse_filter: ", startGameButton.mouse_filter if startGameButton else "null")
-	#print("Button instance ID: ", startGameButton.get_instance_id() if startGameButton else "null")
+	##print("=== Button Debug Info ===")
+	##print("Button exists: ", startGameButton != null)
+	##print("Button disabled: ", startGameButton.disabled if startGameButton else "null")
+	##print("Button visible: ", startGameButton.visible if startGameButton else "null")
+	##print("Button mouse_filter: ", startGameButton.mouse_filter if startGameButton else "null")
+	##print("Button instance ID: ", startGameButton.get_instance_id() if startGameButton else "null")
 	
 	if startGameButton and not startGameButton.pressed.is_connected(_on_start_game_pressed):
 		var result : int = startGameButton.pressed.connect(_on_start_game_pressed)
-		print("Connection result: ", result)
+		#print("Connection result: ", result)
 		
 	#$GridManager.set_tiles_for_rows(0,1, 68)
 	#$GridManager.set_tiles_for_rows(1,2, 66)
@@ -54,12 +54,12 @@ func _ready() -> void:
 	Global.hideDemonSelectionMenu()
 
 func _on_start_game_pressed() -> void:
-	print("I KNOW U WERE CLICKED")
+	#print("I KNOW U WERE CLICKED")
 	Global.game_controller.change_dual_scenes(level0_1.resource_path,level0_1Alt.resource_path )
 
 
 func _on_level_select_button_pressed() -> void:
-	#print("Button Worky")
+	##print("Button Worky")
 	Global.game_controller.change_scene(level_select_screen)
 
 

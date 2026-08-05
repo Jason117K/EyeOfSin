@@ -20,7 +20,7 @@ var silenced := false
 # Play the Animation and Make it Visible
 func goBoom() -> void:
 
-	#print("TickerRRRRRRR going boom ")
+	##print("TickerRRRRRRR going boom ")
 	if get_parent().is_in_group("Green"):
 		hitBoxComp.set_collision_mask_value(1,false)
 		hitBoxComp.set_collision_mask_value(2,false)
@@ -45,7 +45,7 @@ func goBoom() -> void:
 func _on_Hit3_animation_finished() -> void:
 	if silenced:
 		erupter_zombie_parent.die()
-	#print("Ticker DEF About Die")
+	##print("Ticker DEF About Die")
 	# Make the animation invisible & stop it
 	self.visible = false
 	#hit1.stop()
@@ -57,11 +57,11 @@ func _on_Hit3_animation_finished() -> void:
 	
 	# Damage all the Towers & Then Kill the Parent/Ticker Zombie 
 	for area:Area2D in areasToDamage:
-		print("This area is ", area.name)
+		#print("This area is ", area.name)
 		if(is_instance_valid(area)):
 			if area.is_in_group("Demons"):
-				print("About to bomb ", area.name)
-				print("AP IS ", attack_power)
+				#print("About to bomb ", area.name)
+				#print("AP IS ", attack_power)
 				if(area.get_health() >= 0):
 					area.take_damage(attack_power)
 				else:
@@ -70,7 +70,7 @@ func _on_Hit3_animation_finished() -> void:
 				pass
 	var parent := get_parent()
 	parent.die()
-	#print("TTicker Should Die")
+	##print("TTicker Should Die")
 
 func silence() -> void:
 	attack_power = 0

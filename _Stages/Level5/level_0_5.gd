@@ -77,7 +77,7 @@ func _ready() -> void:
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
-	print("Set Restart Levels to ", thisLevel,thisAltLevel)
+	#print("Set Restart Levels to ", thisLevel,thisAltLevel)
 	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_HIVE, false)

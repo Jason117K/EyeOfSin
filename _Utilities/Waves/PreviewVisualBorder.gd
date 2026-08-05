@@ -29,7 +29,7 @@ func _fit_to_target() -> void:
 	position = position #+  Vector2(0,8)
 	#size = size + Vector2(0,7)
 	#scale = Vector2(border_scale, border_scale)
-	#print("Target : ", target, " position is ", target.position)
+	##print("Target : ", target, " position is ", target.position)
 	#position = target.position + position_offset
 
 func change_visibility()->void:

@@ -64,19 +64,19 @@ func calc_total_level_score()->float:
 	return total_score
 
 func set_style_points_before_bonus()->void:
-	print("Style Points Before Bonus is ", total_score)
+	#print("Style Points Before Bonus is ", total_score)
 	style_points_before_bonus = total_score
 	
 func add_score_from_demon(time_alive_secs : float, is_demon_buffed : bool = false)->void:
 	var score_to_add : float = demon_base_score_value
 	score_to_add += time_alive_secs 
-	print("Score to Add From Demon is ", score_to_add)
+	#print("Score to Add From Demon is ", score_to_add)
 	
 	if is_demon_buffed:
 		score_to_add += add_score_from_synergy()
-		print("Demon Was Buffed, Score to Add is ",score_to_add)
+		#print("Demon Was Buffed, Score to Add is ",score_to_add)
 		
-	print("Total Score Is now ", total_score)
+	#print("Total Score Is now ", total_score)
 	total_score += score_to_add
 	
 func add_score_from_synergy()->float:

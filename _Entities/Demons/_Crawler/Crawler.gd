@@ -202,7 +202,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	
 func trigger_ultimate()->void:
 	
-	print("Trigger Crawler Ult")
+	#print("Trigger Crawler Ult")
 	Global.un_ready_ultimate()
 	if ultimate_timer.is_stopped():
 		ultimate_timer.start()
@@ -213,7 +213,7 @@ func trigger_ultimate()->void:
 	
 func fire_volley()->void:
 	if volleys_fired < ultimate_max_volleys:
-		print("Fire Volley")
+		#print("Fire Volley")
 		projectile_shoot_component.add_projectile(Vector2(0, 8))
 		projectile_shoot_component.add_projectile(Vector2(8, 0))
 		projectile_shoot_component.add_projectile(Vector2(0, -8))
@@ -233,9 +233,9 @@ func fire_volley()->void:
 	
 	
 func _increase_range()->void:
-	#print("Old Target Pos ",attack_ray.target_position )
+	##print("Old Target Pos ",attack_ray.target_position )
 	attack_ray.target_position = buffed_range_target_pos
-	#print("New Target Pos ",attack_ray.target_position )
+	##print("New Target Pos ",attack_ray.target_position )
 	update_range_preview()
 	pass
 		

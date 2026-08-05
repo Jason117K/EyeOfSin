@@ -21,7 +21,7 @@ var _initial_scale: Vector2
 
 func _ready() -> void:
 	_initial_scale = scale
-	#print("Rect Is Alive")
+	##print("Rect Is Alive")
 	visibility_layer = get_parent().get_parent().visibility_layer
 	if breathing:
 		_start_breathing()
@@ -48,7 +48,7 @@ func _stop_breathing() -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	print("SELF CHANGE SELF MODULATE ", self)
+	##print("SELF CHANGE SELF MODULATE ", self)
 	self_modulate = hover_self_modulate
 
 

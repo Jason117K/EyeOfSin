@@ -82,7 +82,7 @@ func _spinal_occulum_unlocked()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SPINAL_OCCULUM_UNLOCKED, false)
 	
 func _hide_spinal_occulum_highlight()->void:
-	print("Green Hide Spinal Occulum Highlight")
+	#print("Green Hide Spinal Occulum Highlight")
 	demonSelectionMenu.unhighlight_demon_card("SpinalOcculum")
 	toolTips.hide()
 

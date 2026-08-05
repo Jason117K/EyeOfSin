@@ -6,11 +6,11 @@ extends SwapAbility
 func append_new_zombie(new_zombie : Zombie) -> void:
 	
 	if is_active == true:
-		#print("Should Blood Slow ", new_zombie)
+		##print("Should Blood Slow ", new_zombie)
 		await get_tree().physics_frame
 		await get_tree().physics_frame
 		await get_tree().physics_frame
-		#print("Will Now Blood Slow ", new_zombie)
+		##print("Will Now Blood Slow ", new_zombie)
 		new_zombie.blood_slow()
 		affected_zombies.append(new_zombie)
 		

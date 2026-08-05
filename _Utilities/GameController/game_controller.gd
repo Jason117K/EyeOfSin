@@ -39,10 +39,10 @@ func _input(event:InputEvent) -> void:
 
 func _ready() -> void:
 	Loc.apply_saved_locale() # must run before any translated UI builds
-	print(Input.is_using_accumulated_input(), " balls")
+	#print(Input.is_using_accumulated_input(), " balls")
 	@warning_ignore("narrowing_conversion")
 	Engine.max_fps = DisplayServer.screen_get_refresh_rate()
-	print("Max FPS Set to " , Engine.max_fps)
+	#print("Max FPS Set to " , Engine.max_fps)
 	Global.game_controller = self
 	current_scene = scene_container.get_child(0)
 	swap_ability = Global.swap_ability
@@ -109,9 +109,10 @@ func _apply_dimension_visibility() -> void:
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)
 
 
 # --- Single Scene Transitions ---
@@ -144,6 +145,8 @@ func change_scene(new_scene_path: String, delete: bool = true, keep_running: boo
 # strings to change_dual_scenes (load("") -> null instance -> crash). Deriving the paths from
 # the loaded scenes fixes restart from either dimension on every level and can't drift.
 func restart_current_dual_scenes() -> void:
+	#print("Global Reset All Variables")
+	Global.reset_all_variables()
 	if current_scenes.size() < 2 or not is_instance_valid(current_scenes[0]) or not is_instance_valid(current_scenes[1]):
 		push_error("[RESTART] restart_current_dual_scenes: expected 2 live scenes, have " + str(current_scenes.size()))
 		return
@@ -154,23 +157,24 @@ func restart_current_dual_scenes() -> void:
 			"(purple='" + purple_path + "' green='" + green_path + "')")
 		return
 	change_dual_scenes(purple_path, green_path)
+	
 
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	ultimate_container = Global.ultimate_charge_container
-	#print_scene_tree()
+	##print_scene_tree()
 	# DIAGNOSTIC: catch overlapping/re-entrant transitions (a leading suspect for the
-	# Level 4 restart crash). If this prints, two transitions raced and the second is aborted.
+	# Level 4 restart crash). If this #prints, two transitions raced and the second is aborted.
 	if _is_transitioning:
 		push_error("[RESTART] change_dual_scenes RE-ENTERED while a transition was in progress. " +
 			"scene1=" + str(scene1_path) + " scene2=" + str(scene2_path) +
 			" current_scenes.size=" + str(current_scenes.size()))
 		return
 	_is_transitioning = true
-	print("[RESTART] change_dual_scenes BEGIN scene1=", scene1_path,
-		" exists=", ResourceLoader.exists(scene1_path),
-		" scene2=", scene2_path, " exists=", ResourceLoader.exists(scene2_path),
-		" current_scenes.size=", current_scenes.size())
+	#print("[RESTART] change_dual_scenes BEGIN scene1=", scene1_path,
+		#" exists=", ResourceLoader.exists(scene1_path),
+		#" scene2=", scene2_path, " exists=", ResourceLoader.exists(scene2_path),
+		#" current_scenes.size=", current_scenes.size())
 
 	Global.hide_notification_bar()
 	#pause_button.visible = true
@@ -190,13 +194,13 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	await get_tree().process_frame
 	
 
-	print(scene1_path)
+	#print(scene1_path)
 	# DIAGNOSTIC: guard the load so a null resource logs the cause instead of hard-crashing.
 	var packed1: Resource = load(scene1_path)
 	if packed1 == null:
 		push_error("[RESTART] load() returned NULL for scene1_path=" + str(scene1_path) +
 			" (ResourceLoader.exists=" + str(ResourceLoader.exists(scene1_path)) +
-			"). Aborting transition. See the engine error printed ABOVE this line for the real cause.")
+			"). Aborting transition. See the engine error #printed ABOVE this line for the real cause.")
 		_is_transitioning = false
 		return
 	var new1 : Control = packed1.instantiate()
@@ -215,24 +219,24 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		new1.skip_tutorials = false 
 	
 	
-	print(scene1_path)
-	print("About to Add Child New1 ", new1)
-	print("Scene Container is ", scene_container)
+	#print(scene1_path)
+	#print("About to Add Child New1 ", new1)
+	#print("Scene Container is ", scene_container)
 	scene_container.add_child(new1)
-	print("About to Show Demon Slection Menu")
+	#print("About to Show Demon Slection Menu")
 	new1.show_demon_selection_menu()
 	
 	current_scene = new1
 	current_scenes.append(new1)
 	
-	print(scene2_path)
+	#print(scene2_path)
 
 	# DIAGNOSTIC: same guard for the alternate (green) scene.
 	var packed2: Resource = load(scene2_path)
 	if packed2 == null:
 		push_error("[RESTART] load() returned NULL for scene2_path=" + str(scene2_path) +
 			" (ResourceLoader.exists=" + str(ResourceLoader.exists(scene2_path)) +
-			"). Aborting transition. See the engine error printed ABOVE this line for the real cause.")
+			"). Aborting transition. See the engine error #printed ABOVE this line for the real cause.")
 		_is_transitioning = false
 		return
 	var new2 : Control = packed2.instantiate()
@@ -242,19 +246,19 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	new2.hide_demon_selection_menu()
 
 	on_scene_1 = true
-	print("About to Stamp Scnes")
+	#print("About to Stamp Scnes")
 	_stamp_scene(current_scenes[0], DIM_BITS[0])
 	_stamp_scene(current_scenes[1], DIM_BITS[1])
 	_apply_view_masks()
-	print("About to Make Camera2D Currebt")
+	#print("About to Make Camera2D Currebt")
 	current_scenes[0].get_node("Camera2D").make_current()
 	if "Level1/Level0-1" in scene1_path:
 		pass
 	else:
 		pass
-		#print(scene1_path , "This Should Make Pip Show")
+		##print(scene1_path , "This Should Make Pip Show")
 		#pip.show_pip()
-	print(scene1_path)
+	#print(scene1_path)
 	$CurrentScene/WaveManager.call_deferred("setup_level")
 	await get_tree().process_frame
 	get_tree().paused = false
@@ -274,7 +278,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	
 	#pause_button.visibility_layer = 0
 	#pause_button.set_visibility_layer_bit(1, true)   # bit 3 -> layer 
-	print(scene1_path)
+	#print(scene1_path)
 	level_switcher.visibility_layer = 0
 	level_switcher.set_visibility_layer_bit(1,true)
 	Global.adjust_ui_layer()
@@ -288,10 +292,10 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 		current_scenes[0].skip_tutorials = true 
 	else:
 		current_scenes[0].skip_tutorials = false
-	print(scene1_path)
+	#print(scene1_path)
 	# DIAGNOSTIC: transition finished cleanly; allow the next one.
 	_is_transitioning = false
-	print("[RESTART] change_dual_scenes END ok. current_scenes.size=", current_scenes.size())
+	#print("[RESTART] change_dual_scenes END ok. current_scenes.size=", current_scenes.size())
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
@@ -383,9 +387,9 @@ func change_scene_with_pause_from_dual_scene(new_scene_path: String) -> void:
 
 
 func restore_previous_scene() -> void:
-	print("Will Now Restore Previous Scene")
+	#print("Will Now Restore Previous Scene")
 	if current_scenes.size() > 1:
-		print("Should Restore Dual Scenes")
+		#print("Should Restore Dual Scenes")
 		restore_dual_scenes()
 		return 
 	var scene_to_restore: Node = previous_scenes.pop_back()
@@ -402,14 +406,14 @@ func restore_previous_scene() -> void:
 
 
 func restore_dual_scenes() -> void:
-	print("Will Now Restore Dual Scenes")
+	#print("Will Now Restore Dual Scenes")
 	#pause_button.visible = true
 	if current_scenes.size() < 2:
-		print("Should Instead Restore Previous Scenes ")
+		#print("Should Instead Restore Previous Scenes ")
 		restore_previous_scene()
 		return 
 	if is_instance_valid(current_scene) and current_scene not in current_scenes:
-		print("Will Now Remove & Free ", current_scene)
+		#print("Will Now Remove & Free ", current_scene)
 		_remove_and_free(current_scene)
 
 	await get_tree().process_frame
@@ -466,7 +470,7 @@ func set_node_and_children_process_mode_inherit(root: Node) -> void:
 	if root == null:
 		return
 	if root.process_mode != Node.PROCESS_MODE_ALWAYS:
-		#print("Root ", root , " process mode was ", root.process_mode )
+		##print("Root ", root , " process mode was ", root.process_mode )
 		if root.has_method("set_node_process_mode_inherit"):
 			root.set_node_process_mode_inherit()
 		else:
@@ -553,7 +557,7 @@ func _on_node_added(node: Node) -> void:
 	#for i in 2:
 		#var s: Node = current_scenes[i]
 		#if is_instance_valid(s) and (node == s or s.is_ancestor_of(node)):
-			#print(" Node ", node , " will have visibility layer set to DIM_BITS[",i,"]")
+			##print(" Node ", node , " will have visibility layer set to DIM_BITS[",i,"]")
 			#node.visibility_layer = DIM_BITS[i]
 			#return
 
@@ -561,11 +565,11 @@ func _on_node_added(node: Node) -> void:
 func _stamp_scene(scene: Node, layer: int) -> void:
 	if scene is CanvasItem:
 		#if "control" in scene.name:
-		#print(scene.name , " will have visibility layer set to ", layer, scene.get_name())
+		##print(scene.name , " will have visibility layer set to ", layer, scene.get_name())
 		scene.visibility_layer = layer
 	for child in scene.get_children():
 		_stamp_scene(child, layer)
-		#print("Calling stamp scene on child ", child, " and/on layer ", layer  )
+		##print("Calling stamp scene on child ", child, " and/on layer ", layer  )
 
 
 func _apply_view_masks() -> void:
@@ -580,9 +584,9 @@ func _apply_view_masks() -> void:
 
 func get_alt_dimension() -> Node:
 	if on_scene_1:
-		print("Get Alt D Returns ", current_scenes[1])
+		#print("Get Alt D Returns ", current_scenes[1])
 		return current_scenes[1]
-	print("Get Alt D Returns ", current_scenes[0])
+	#print("Get Alt D Returns ", current_scenes[0])
 	return current_scenes[0]
 
 func get_purple_dimension()->Control:
@@ -605,7 +609,7 @@ func get_other_dimension() -> Node:
 
 
 func place_empty_in_alt_scene(grid_pos : Vector2,empty_demon_to_place:Demon,origin_dimension) -> void:
-	#print("Should Place Empty Block Demon at ", grid_pos)
+	##print("Should Place Empty Block Demon at ", grid_pos)
 	#var other_dimension := get_other_dimension()
 	#if other_dimension:
 		#other_dimension.place_empty_blocker_demon(grid_pos,empty_demon_to_place)
@@ -654,8 +658,8 @@ func get_current_scene_filepath() -> String:
 # --- Guide Functions ---
 
 func show_guide() -> void:
-	#print("Undo Clear and SHOW THE GUIDE for ", current_scene, " and ", get_alt_dimension())
-	#print("Undo Clear and SHOW THE GUIDE for ", current_scenes[0], " and ", current_scenes[1])
+	##print("Undo Clear and SHOW THE GUIDE for ", current_scene, " and ", get_alt_dimension())
+	##print("Undo Clear and SHOW THE GUIDE for ", current_scenes[0], " and ", current_scenes[1])
 	if current_scene and current_scenes.size() >= 2:
 		if on_purple_scene():
 			current_scenes[0].show_guide()
@@ -663,8 +667,8 @@ func show_guide() -> void:
 			current_scenes[1].show_guide()
 
 func clear_guide() -> void:
-	#print("Should Clear Guide")
+	##print("Should Clear Guide")
 	if current_scene and current_scenes.size() >= 2:
-		#print("Should DEF Clear Both Guides")
+		##print("Should DEF Clear Both Guides")
 		current_scenes[0].hide_guide()
 		current_scenes[1].hide_guide()

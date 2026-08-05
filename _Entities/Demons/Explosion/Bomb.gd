@@ -30,7 +30,7 @@ func _ready() -> void:
 func _on_DeathTimer_timeout() -> void:
 	# Get all areas, some of which are enemies, some aren't
 	enemiesToHitTemp = get_overlapping_areas()
-	#print("Spawned Bomb : ", enemiesToHitTemp)
+	##print("Spawned Bomb : ", enemiesToHitTemp)
 	
 	# Gets & stores all the actual zombies from enemiesToHitTemp 
 	for enemy : Node in enemiesToHitTemp:

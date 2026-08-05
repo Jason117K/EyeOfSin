@@ -30,13 +30,14 @@ func _init(new_parent_zombie:Zombie) -> void:
 	#attack_timer = parent_zombie.attack_timer
 	_frame_counter = randi() % 3
 	if new_parent_zombie.is_in_group("Green"):
-		#print(parent," DOING GREEN SET FOOOOOR ", attack_ray)
+		##print(parent," DOING GREEN SET FOOOOOR ", attack_ray)
 		attack_ray.set_collision_mask_value(1,false)
 		attack_ray.set_collision_mask_value(2,false)
 		attack_ray.set_collision_mask_value(3,true)
 	else:
 		if attack_ray == null:
-			print(new_parent_zombie," DOING PURPLE SET FOOOOOR ", attack_ray)
+			pass
+			#print(new_parent_zombie," DOING PURPLE SET FOOOOOR ", attack_ray)
 		attack_ray.set_collision_mask_value(1,false)
 		attack_ray.set_collision_mask_value(2,true)
 		attack_ray.set_collision_mask_value(3,false)
@@ -73,10 +74,10 @@ func attack_demon(collider:Node) -> void:
 			
 	is_attacking = true
 	target_demon = collider
-	#print("TName is ", target_demon.name)
-	#print("I am " , self.name)
+	##print("TName is ", target_demon.name)
+	##print("I am " , self.name)
 	zombieSprite.speed_scale = base_anim_duration * parent_zombie.attack_speed
-	print("Now Attack Demon")
+	#print("Now Attack Demon")
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
 	#TODO Make Attacking Sounds More Efficient
@@ -87,22 +88,22 @@ func attack_demon(collider:Node) -> void:
 	elif "Screen" in parent_zombie.name:
 		AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		#print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
+		##print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	attack_timer_started = true 
 
 	#if "Ticker" in parent.get_name():
-		#print("Ticker Should Die ")
+		##print("Ticker Should Die ")
 		#parent.queue_free()
 
 # Damages the target demon and decides whether or not to keep attacking
 func _on_AttackTimer_timeout() -> void:
 
-	#print(parent_zombie.global_position, " Attack Demon Again ",attack_starting_pos)
+	##print(parent_zombie.global_position, " Attack Demon Again ",attack_starting_pos)
 	if abs(attack_starting_pos.x - parent_zombie.global_position.x) > 2:
 		stop_attack()
 		return
-	#print("Basic Zombie Attack Timer Timeout")
+	##print("Basic Zombie Attack Timer Timeout")
 	if target_demon != null:
 		if parent_zombie.is_in_group("Green"):
 			if target_demon.is_in_group("Purple"):
@@ -119,17 +120,17 @@ func _on_AttackTimer_timeout() -> void:
 	elif "Screen" in parent_zombie.name:
 		AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
+		##print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
 	if(is_instance_valid(target_demon) && target_demon.is_in_group("Portal") != true ):
-		#print("target demon name is ", target_demon.name)
+		##print("target demon name is ", target_demon.name)
 		if(target_demon.has_method("get_health") && (target_demon.get_health()!=null)): 
 			#TODO Give Spiderling Get Health
 			if(target_demon.get_health() >= 0):
 				if target_demon.has_method("eat_zombie"):
 					if target_demon.can_eat_zombie == true :
-					#	print("Demon Can Eat Me Time to Die")
+					#	#print("Demon Can Eat Me Time to Die")
 						target_demon.eat_zombie(parent_zombie)
 						parent_zombie.die()
 				if target_demon.has_method("spinalOcculumWyrmBuffed"):
@@ -139,7 +140,7 @@ func _on_AttackTimer_timeout() -> void:
 					if target_demon.is_lightning_maw_buff:
 						parent_zombie.take_damage(false,target_demon.get_lightning_damage(),false)
 
-				#print(attack_power ," Calling Take Damage on ", target_demon)
+				##print(attack_power ," Calling Take Damage on ", target_demon)
 
 				target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
@@ -155,7 +156,7 @@ func _on_AttackTimer_timeout() -> void:
 
 # Stops the attack and resumes movement
 func stop_attack() -> void:
-	#print("Stopping Attack no damage")
+	##print("Stopping Attack no damage")
 	is_attacking = false
 	target_demon = null
 	attack_timer_started = false
@@ -176,27 +177,27 @@ func tick(delta: float) -> void:
 		if attack_ray.is_colliding():
 			var collider : Node = attack_ray.get_collider()
 			if collider:
-				#print(parent.name , " Its 77 collding with ", collider.name )
+				##print(parent.name , " Its 77 collding with ", collider.name )
 				if collider.is_in_group(target_group):
 					if collider.has_method("demon_minion_busy"):
-						#print("Calling Demon 77 Minion Busy On ", collider)
+						##print("Calling Demon 77 Minion Busy On ", collider)
 						if collider.demon_minion_busy(parent_zombie):
-							#print(collider, " is busy early return 77")
+							##print(collider, " is busy early return 77")
 							return
 					#TODO Make Sundered Extend Attack Comp
 					if("Sundered" in parent_zombie.name):
 						if canSpecial && !collider.is_in_group("Drone") && collider.is_in_group("Demons"):
-							print("Sundered Special Move Pole Vault")
+							#print("Sundered Special Move Pole Vault")
 							parent_zombie.special_move()
 							canSpecial = false
 							is_attacking = true
 							pass
 						else:
-							#print(self, " time to attack demon here ")
+							##print(self, " time to attack demon here ")
 							attack_starting_pos = parent_zombie.global_position
 							attack_demon(collider)
 					else:
-						#print(self, " time to attack demon")
+						##print(self, " time to attack demon")
 						attack_starting_pos = parent_zombie.global_position
 						attack_demon(collider)
 func switch_sides()->void:

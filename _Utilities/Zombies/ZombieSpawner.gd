@@ -95,7 +95,7 @@ func set_waves_from_dicts(data: Array) -> void:
 		new_waves.append(WaveData.from_dict(d))
 		if debug:
 			pass
-			#print("Using d:" ,d, " Waves Append ",WaveData.from_dict(d) )
+			##print("Using d:" ,d, " Waves Append ",WaveData.from_dict(d) )
 	waves = new_waves
 	if get_parent().get_parent().name.containsn("Level0-1"):
 		pass
@@ -109,7 +109,8 @@ func begin_wave(wave_index: int) -> void:
 	_current_wave = wave_index
 	_spawn_pool = _build_pool(wave_index)
 	if debug : 
-		print("Spawn Pool Is ", _spawn_pool)
+		pass
+		#print("Spawn Pool Is ", _spawn_pool)
 	if is_random:
 		_spawn_pool.shuffle()
 	$SpawnTimer.wait_time = _get_weighted_spawn_delay()
@@ -124,10 +125,11 @@ func _build_pool(wave_index: int) -> Array[PackedScene]:
 	if wave == null:
 		return pool
 	if debug:
-		print("Wave is ", wave.to_dict())
+		#print("Wave is ", wave.to_dict())
 		for entry in wave.entries:
 			if entry != null:
-				print("Wave Entry is ", entry.type, " x", entry.count)
+				pass
+				#print("Wave Entry is ", entry.type, " x", entry.count)
 
 	for entry in wave.entries:
 		if entry == null or entry.count <= 0:
@@ -199,12 +201,12 @@ func _on_spawn_timer_timeout() -> void:
 func _get_type_key(zombie_name: String) -> String:
 	for type_name : String in ZombieRegistry.Y_OFFSETS:
 		if type_name in zombie_name:
-			#print("Will Return ", zombie_name, " with type name ", type_name)
+			##print("Will Return ", zombie_name, " with type name ", type_name)
 			return type_name
 		else:
 			pass
-			#print(type_name ," was not right NAME")
-	#print("Not Retunring NOTHING FOUND NO NAME FOR ", zombie_name)
+			##print(type_name ," was not right NAME")
+	##print("Not Retunring NOTHING FOUND NO NAME FOR ", zombie_name)
 	return ""
 
 

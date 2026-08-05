@@ -16,11 +16,11 @@ func _ready() -> void:
 	pass
 
 func dim()->void:
-	#print("Dim ", self)
+	##print("Dim ", self)
 	self.self_modulate = Color("8a8a8a")
 	
 func brighten()->void:
-	#print("Brighten ", self)
+	##print("Brighten ", self)
 	self.self_modulate = Color(1,1,1,1)
 	
 

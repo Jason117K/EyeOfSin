@@ -79,9 +79,10 @@ func _setup_tutorial() -> void:
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)
 		
 #region Lifecycle
 func _ready() -> void:
@@ -93,7 +94,7 @@ func _ready() -> void:
 	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)
-	#print_scene_tree()
+	##print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [60.0, 100.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
@@ -203,14 +204,14 @@ func getIsPurpleDimension()->void:
 func _start_explain_wyrm() -> void:
 	await get_tree().physics_frame
 
-	print("Explain Wyrm Demon")
+	#print("Explain Wyrm Demon")
 	Global.hide_notification_bar()
 	
 	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_WYRM, true, tr("TIP_TITLE_NEW_DEMON_WYRM"))
 	toolTips.set_visual_demon_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
 	hide_demon_selection_menu()
 	
-	#print("Explain Wyrm Demon")
+	##print("Explain Wyrm Demon")
 	#Global.hide_notification_bar()
 	#toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_WYRM)
 	#toolTips.set_visual_tutorial_visual(wyrm_demo_scene.instantiate(),true,Vector2(0,0))
@@ -297,9 +298,9 @@ func _on_wyrm_button_pressed() -> void:
 		go_to_step("FORCE_PLACE_WYRM")
 
 func _on_wyrm_placed(grid_pos: Vector2) -> void:
-	print("WYRM PLACED")
+	#print("WYRM PLACED")
 	if get_current_step_name() != "FORCE_PLACE_WYRM":
-		print("Current Step is ", get_current_step_name())
+		#print("Current Step is ", get_current_step_name())
 		return
 	go_to_step("GAME_READY")
 		

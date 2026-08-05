@@ -30,7 +30,7 @@ func _ready() -> void:
 		self.set_collision_layer_value(2, false)
 		self.set_collision_layer_value(3, false)
 		self.set_collision_layer_value(4, true)
-	print("Area is in world space ", get_world_2d().direct_space_state)
+	#print("Area is in world space ", get_world_2d().direct_space_state)
 		
 		
 func _process(delta: float) -> void:

@@ -139,7 +139,7 @@ func _ready() -> void:
 	Global.register_demon_codex(self)
 	synergy_preview_container.hide()
 	$"../../Camera2D".make_current()
-	#print("Demon AnimatedTextureRect: _ready() called")
+	##print("Demon AnimatedTextureRect: _ready() called")
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	current_page = current_page + 1
 		# Set default button textures based on current colors
@@ -258,7 +258,7 @@ func set_demon_variations(newDemon: GlobalResourceLoader.DemonType) -> void:
 	
 func _on_occulum_pressed() -> void:
 	clear_all_focus()
-	print("Occulum Pressed")
+	#print("Occulum Pressed")
 	current_page = current_page + 1
 	$"../../InteractiveBook2D".go_to_page(current_page)
 	_clear_synergy_preview()
@@ -363,7 +363,7 @@ func _on_back_button_pressed() -> void:
 	if is_in_synergy == false:
 		get_parent().get_parent().visible = false
 
-		print("BBack Button Pressed")
+		#print("BBack Button Pressed")
 		self.visible = false
 
 		#Global.unHideDemonSelectionMenu()
@@ -618,7 +618,7 @@ func _on_alt_5_mouse_exited() -> void:
 
 func _on_alt_6_mouse_entered() -> void:
 	_on_mouse_entered(alt6)
-	#print("Alt 6 Area Entered")
+	##print("Alt 6 Area Entered")
 	#red_hive.modulate = Color(1,1,1,1)
 
 

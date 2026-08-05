@@ -198,7 +198,7 @@ func get_attack_comp()->ZombieAttackRefCountedComponent:
 
 func make_demo() -> void:
 	is_demo = true
-	#print("Should Make is_demo ", is_demo)
+	##print("Should Make is_demo ", is_demo)
 
 func get_special_description() -> String:
 	return "Zombie"
@@ -266,7 +266,7 @@ func die() -> void:
 	else:
 		
 		Global.deregister_zombie(self)
-		#print(self, " dying")
+		##print(self, " dying")
 		if should_spawn_slow_field:
 			spawn_slow_field_on_death()
 		if should_spawn_drone_on_death:
@@ -327,7 +327,7 @@ func _do_spawn_drone_on_death() -> void:
 # --- Damage ---
 
 func take_damage(is_link_damage : bool = false, damage: float = 1.0, piercing: bool = false) -> void:
-	#print(self, " is taking damage ",damage )
+	##print(self, " is taking damage ",damage )
 	_on_hit_dmg_effect()
 	healthComp.take_damage(is_link_damage,damage, piercing)
 #	if !is_link_damage:
@@ -393,7 +393,7 @@ func switch_sides()->void:
 	self.add_to_group("Demons")
 	attackComp.switch_sides()
 	if self.is_in_group("Green"):
-		print(self, " this green zombie switched sides")
+		#print(self, " this green zombie switched sides")
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
@@ -404,7 +404,7 @@ func switch_sides()->void:
 		set_collision_layer_value(2,false)
 		set_collision_layer_value(3,true)
 	else:
-		print(self, " this purple zombie switched sides")
+		#print(self, " this purple zombie switched sides")
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
@@ -416,7 +416,7 @@ func switch_sides()->void:
 	
 
 func syn_mark(duration:float)->void:
-	print("Syn Mark Called on ", self)
+	#print("Syn Mark Called on ", self)
 	animatedSprite.lucretia_hue_shift()
 	is_syn_marked = true 
 	syn_mark_sprite.show()
@@ -494,7 +494,7 @@ func make_glow() -> void:
 
 
 func setMaterial(newAnimatedSprite:Node) -> void:
-	print("Material Set Here Zombie")
+	#print("Material Set Here Zombie")
 	_secondary_flash_sprite = newAnimatedSprite
 
 
@@ -516,7 +516,7 @@ func fightDroneExplode() -> void:
 
 func special_move() -> void:
 	var specialMoveComp := $SpecialMoveComp
-	print("Pole Vault Special COMP Manager")
+	#print("Pole Vault Special COMP Manager")
 	specialMoveComp.executeMove()
 	animatedSprite.setSpecialMoveTrue()
 
@@ -617,7 +617,7 @@ func get_charge_cost() -> int:
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		#print(self, " was clicked ")
+		##print(self, " was clicked ")
 		Global.set_zombie_info_bar(self)
 		highlight_circle.show()
 		pass

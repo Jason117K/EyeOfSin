@@ -50,12 +50,12 @@ func _ready() -> void:
 	var timer := Timer.new()
 	add_child(timer)
 	var attack_length : float = animatedSpriteComp.get_animation_length("attack")
-	#print("Attack animation is ", attack_length, " seconds long")
+	##print("Attack animation is ", attack_length, " seconds long")
 	timer.wait_time = attack_length
 	timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
 	timer.start()
 	if self.is_in_group("Green"):
-		print(self, "THIS DEMON MINION IS GREEN")
+		#print(self, "THIS DEMON MINION IS GREEN")
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
@@ -66,7 +66,7 @@ func _ready() -> void:
 		set_collision_layer_value(2,false)
 		set_collision_layer_value(3,true)
 	else:
-		print(self, "THIS DEMON MINION IS PURPLE")
+		#print(self, "THIS DEMON MINION IS PURPLE")
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
@@ -77,13 +77,13 @@ func _ready() -> void:
 		set_collision_layer_value(3,false)
 
 func current_zombie_dead() -> void:
-	#print(self, " received 77 zombie dead signal")
+	##print(self, " received 77 zombie dead signal")
 	current_zombie = null
 	
 func demon_minion_busy(questioning_zombie: Zombie) -> bool:
 	if current_zombie == null:
 		current_zombie = questioning_zombie
-		#print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
+		##print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
 		current_zombie.zombie_death.connect(current_zombie_dead)
 		return false 
 	else:
@@ -101,7 +101,7 @@ func crawler_buff() -> void:
 	is_crawler_buffed = true
 
 func maw_buff() -> void:
-	print("Maw Buff Drone so Drone Go Boom")
+	#print("Maw Buff Drone so Drone Go Boom")
 	is_maw_buffed = true
 
 func make_drone_glow() -> void:
@@ -126,9 +126,10 @@ func makeNotExplode() -> void:
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)
 		
 		
 
@@ -137,7 +138,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
-		#print("Die Cos Health too Low")
+		##print("Die Cos Health too Low")
 		die()
 
 func get_health() -> int:
@@ -162,7 +163,7 @@ func die() -> void:
 		pass
 		generate_blood()
 	if is_maw_buffed:
-		print("Should Death BOOM BOOM")
+		#print("Should Death BOOM BOOM")
 		death_explode()
 	if is_crawler_buffed:
 		death_slow()
@@ -175,7 +176,7 @@ func death_slow() -> void:
 func death_explode() -> void:
 	var death_bomb :Area2D= Global.get_bomb_scene().instantiate()
 	if is_demo:
-		print("DRONE GO BOOM")
+		#print("DRONE GO BOOM")
 		get_parent().get_parent().add_child(death_bomb)
 		death_bomb.global_position = self.global_position
 		if self.is_in_group("Green"):
@@ -192,7 +193,7 @@ func death_explode() -> void:
 		death_bomb.global_position = self.global_position
 	
 func generate_blood() -> void:
-	print("Generating Blood")
+	#print("Generating Blood")
 	var blood_instance :Area2D= Global.get_blood_scene().instantiate()
 	get_parent().add_child(blood_instance)
 	blood_instance.set_fast_pickup_time()
@@ -236,7 +237,7 @@ func _physics_process(delta: float) -> void:
 				position += velocity * delta
 			else:
 				if direction.x < 0:
-					print(self.get_name(), " Drone is behind enemy , ", current_target)
+					#print(self.get_name(), " Drone is behind enemy , ", current_target)
 					state = State.PURSUING
 					self.global_position = self.global_position + Vector2(-40,0)
 				else:

@@ -44,7 +44,7 @@ func undo_syn_opacity()->void:
 	
 func _on_blood_rain_button_pressed() -> void:
 	undo_swap_opacity()
-	print("Blood Rain Button Pressed")
+	#print("Blood Rain Button Pressed")
 	swap_label.text = tr("ABILITY_BLOOD_RAIN_DESC")
 	swap_title.text = tr("ABILITY_BLOOD_RAIN_TITLE")
 	swap_ability_display.texture = blood_rain_button.texture_normal

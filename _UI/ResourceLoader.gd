@@ -20,16 +20,16 @@ var zombie_animations: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time
 func _ready() -> void:
-	print("GlobalResourceManager: Initializing...")
+	#print("GlobalResourceManager: Initializing...")
 	_initialize_resource_caches()
 	_load_resources()
-	print("GlobalResourceManager: Resources loaded and ready")
+	#print("GlobalResourceManager: Resources loaded and ready")
 
 
 # Initialize the resource cache dictionaries
 func _initialize_resource_caches() -> void:
 	for this_demonType : int in DemonType.values():
-		print("PP : ", this_demonType)
+		#print("PP : ", this_demonType)
 		demon_images[this_demonType] = {}
 		demon_animations[this_demonType] = {}
 		demon_variation_images[this_demonType] = []
@@ -37,7 +37,7 @@ func _initialize_resource_caches() -> void:
 			#demon_variation_images[this_demonType2] = {}
 		
 	for this_zombieType : int in ZombieType.values():
-		print("ZZ : ", this_zombieType)
+		#print("ZZ : ", this_zombieType)
 		zombie_images[this_zombieType] = {}
 		zombie_animations[this_zombieType] = {}		
 
@@ -119,7 +119,7 @@ func _load_resources() -> void:
 	_load_zombie_type_animation_resource(ZombieType.SCREENDOORZOMBIE,"ScreenDoorZombie.tres")
 	_load_zombie_type_animation_resource(ZombieType.TICKER,"TickerFrames.tres")
 	
-	#print("Demon Variation Images 1 is ", demon_variation_images[1])
+	##print("Demon Variation Images 1 is ", demon_variation_images[1])
 	
 	
 # Helper function to load resources for a specific tower type
@@ -128,7 +128,7 @@ func _load_demon_type_image_resource(demon_type : int, file_name : String) -> vo
 	var img_path: String = img_base_path + file_name
 
 	# Force immediate loading with ResourceLoader
-	print("ResourceLoader: Loading image from " + img_path)
+	#print("ResourceLoader: Loading image from " + img_path)
 	var img_resource := ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	demon_images[demon_type] = img_resource
 	demon_variation_images[demon_type].append(img_resource)
@@ -139,7 +139,7 @@ func _load_demon_type_image_resource_variation(demon_type : int, file_name : Str
 	var img_path: String = img_base_path + file_name
 
 	# Force immediate loading with ResourceLoader
-	print("ResourceLoader: Loading image from " + img_path)
+	#print("ResourceLoader: Loading image from " + img_path)
 	var img_resource := ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	demon_variation_images[demon_type].append(img_resource)
 
@@ -149,42 +149,42 @@ func _load_demon_type_animation_resource(demon_type : int, file_name : String) -
 	var anim_path: String = anim_base_path + file_name
 
 	# Force immediate loading with ResourceLoader
-	print("ResourceLoader: Loading animation from " + anim_path)
+	#print("ResourceLoader: Loading animation from " + anim_path)
 	var anim_resource := ResourceLoader.load(anim_path, "", ResourceLoader.CACHE_MODE_REPLACE)
-	print("Added : ", anim_resource)
+	#print("Added : ", anim_resource)
 	demon_animations[demon_type]= anim_resource
 
 
 # Get a alien image by type, 
 func get_demon_image(demon_type : int)->CompressedTexture2D:
 	if not demon_images.has(demon_type):
-		print("ResourceManager: Error - Resource not found for image:",demon_type)
+		#print("ResourceManager: Error - Resource not found for image:",demon_type)
 		return null
 	return demon_images[demon_type]
 	
 func get_demon_image_variations(demon_type:int) -> Array:
-	#print("Demon Varation Images is ", demon_variation_images[demon_type])
+	##print("Demon Varation Images is ", demon_variation_images[demon_type])
 	return demon_variation_images[demon_type]
 	
 # Get a alien animation by type,
 func get_demon_animation(demon_type:int)->Resource:
 	if not demon_animations.has(demon_type):
-		print("ResourceManager: Error - Resource not found for animation:", demon_type)
+		#print("ResourceManager: Error - Resource not found for animation:", demon_type)
 		return null
-	#print("This Demon Type : ", demon_type, " has animation : ", demon_animations[demon_type])
+	##print("This Demon Type : ", demon_type, " has animation : ", demon_animations[demon_type])
 	return demon_animations[demon_type]
 
 func get_demon_synergy_icon(demon_a:String,demon_b:String, demon_type:int)->CompressedTexture2D:
-	#print("Demon A is ",demon_a)
-	#print("Demon B is ", demon_b)
+	##print("Demon A is ",demon_a)
+	##print("Demon B is ", demon_b)
 	if demon_b == "Spinalocculum":
 		demon_b = "OccularSpine"
 		
 	for demon_image:CompressedTexture2D in get_demon_image_variations(demon_type):
-		#print("Load Path is ", demon_image.load_path)
+		##print("Load Path is ", demon_image.load_path)
 		if demon_image.load_path.containsn(demon_a) && demon_image.load_path.containsn(demon_b):
-			#print("Found D Image ")
-			#print(demon_image)
+			##print("Found D Image ")
+			##print(demon_image)
 			return demon_image
 			pass
 	
@@ -199,7 +199,7 @@ func _load_zombie_type_image_resource(zombie_type:int, file_name:String) -> void
 	var img_path: String = img_base_path + file_name
 
 	# Force immediate loading with ResourceLoader
-	print("ResourceLoader: Loading image from " + img_path)
+	#print("ResourceLoader: Loading image from " + img_path)
 	var img_resource := ResourceLoader.load(img_path, "", ResourceLoader.CACHE_MODE_REPLACE)
 	zombie_images[zombie_type] = img_resource
 	
@@ -211,26 +211,26 @@ func _load_zombie_type_animation_resource(zombie_type:int, file_name:String) -> 
 	var anim_path: String = anim_base_path + file_name
 
 	# Force immediate loading with ResourceLoader
-	print("ResourceLoader: Loading animation from " + anim_path)
+	#print("ResourceLoader: Loading animation from " + anim_path)
 	var anim_resource := ResourceLoader.load(anim_path, "", ResourceLoader.CACHE_MODE_REPLACE)
-	print("Added : ", anim_resource)
+	#print("Added : ", anim_resource)
 	zombie_animations[zombie_type]= anim_resource
 
 
 
 func get_zombie_image(zombie_type:int)-> CompressedTexture2D:
 	if not zombie_images.has(zombie_type):
-		print("ResourceManager: Error - Resource not found for image:",zombie_type)
-		print(zombie_images)
+		#print("ResourceManager: Error - Resource not found for image:",zombie_type)
+		#print(zombie_images)
 		return null
 	return zombie_images[zombie_type]
 	
 # Get a alien animation by type,
 func get_zombie_animation(zombie_type:int)->SpriteFrames:
 	if not zombie_animations.has(zombie_type):
-		print("ResourceManager: Error - Resource not found for animation:", zombie_type)
+		#print("ResourceManager: Error - Resource not found for animation:", zombie_type)
 		return null
-	print("This ", zombie_animations[zombie_type])
+	#print("This ", zombie_animations[zombie_type])
 	return zombie_animations[zombie_type]
 	
 	

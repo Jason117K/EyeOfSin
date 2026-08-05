@@ -69,9 +69,9 @@ func _ready() -> void:
 
 func clearBuffs() -> void:
 	buff_ready = false
-	print("DDD Buffed Demons is ", buffedDemons)
+	#print("DDD Buffed Demons is ", buffedDemons)
 	for this_demon in buffedDemons:
-		print("Now DDD DeBuffing ", this_demon)
+		#print("Now DDD DeBuffing ", this_demon)
 		if is_instance_valid(this_demon):
 			this_demon.debuff()
 	
@@ -105,9 +105,9 @@ func tick_buff(_delta: float) -> void:
 
 			# Find the corresponding BloodTile
 			var blood_tile_name := "BloodTile" + area_number
-			#print(blood_tile_name)
+			##print(blood_tile_name)
 			var blood_tile := get_node_or_null(blood_tile_name)
-			#print(blood_tile)
+			##print(blood_tile)
 			#If we have a valid blood tile 
 			#if blood_tile:
 			if true:
@@ -115,7 +115,7 @@ func tick_buff(_delta: float) -> void:
 				var demon_detected := false 
 				for potential_demon in overlapping_areas:
 					if potential_demon.is_in_group("Demons"):
-						#print(potential_demon)
+						##print(potential_demon)
 						if potential_demon.is_in_group("Green") && demon.is_in_group("Green"):
 							demon_detected = true 
 						if potential_demon.is_in_group("Purple") && demon.is_in_group("Purple"):
@@ -126,8 +126,8 @@ func tick_buff(_delta: float) -> void:
 							
 				# Check for demons in the overlapped areas
 				for demonToBuff in overlapping_areas:
-					#print("Demon buff is : ", demonToBuff)
-					#print("Demon buff name is : ", demonToBuff.name)
+					##print("Demon buff is : ", demonToBuff)
+					##print("Demon buff name is : ", demonToBuff.name)
 					
 					# If the demonToBuff is a valid demon & not a drone
 					if(demonToBuff.is_in_group("Demons") && !("Drone" in demonToBuff.name)):      # &&   #demonToBuff.get_parent() ==   demon.get_parent()  ):
@@ -137,7 +137,7 @@ func tick_buff(_delta: float) -> void:
 						elif demonToBuff.is_in_group("Purple"):
 							if demon.is_in_group("Green"):
 								continue
-						#print("Demon to Buff is ", demonToBuff.name)
+						##print("Demon to Buff is ", demonToBuff.name)
 						bloodTileVisible = true
 						#Check our list of valid demons to buff
 						if _should_buff(demonToBuff):
@@ -150,8 +150,8 @@ func tick_buff(_delta: float) -> void:
 							if demonToBuff in buffedDemons:
 								pass
 							else:
-								print("DD Demon to Buff is ", demonToBuff)
-								print("Self DD Demon is ", demon)
+								#print("DD Demon to Buff is ", demonToBuff)
+								#print("Self DD Demon is ", demon)
 								buffedDemons.append(demonToBuff)
 							#blood_tile.visible = true
 				#blood_tile.visible = bloodTileVisible

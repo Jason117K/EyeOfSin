@@ -31,7 +31,7 @@ func is_blocked(grid_pos:Vector2)->bool:
 		var data: TileData = block_layer.get_cell_tile_data(grid_pos)
 		if data == null:
 			return false 
-		print("Return ", data.get_custom_data("block"))
+		#print("Return ", data.get_custom_data("block"))
 		return data.get_custom_data("block")	
 		
 	else:

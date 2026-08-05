@@ -11,21 +11,21 @@ func receive_buff(demonName: String) -> void:
 #
 	#if parent.has_method("adjust_position"):
 		#parent.adjust_position(new_form)
-	#print("APPLYING BUFF FROM ",new_form )
+	##print("APPLYING BUFF FROM ",new_form )
 	#pass
 
 func spawn_done() -> void:
-	print("Wyrm Spawn Done Called ")
+	#print("Wyrm Spawn Done Called ")
 	if spawnAnimDone:
 		pass
 	else:
 		
-		#print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
+		##print("Demon Setting Speed Mult Back to ", default_anim_speed_scale)
 		speed_scale = default_anim_speed_scale
 		play()
 		spawnAnimDone = true
 		demon.can_show_preview = true 
-		print("Wyrm Can Show Pre")
+		#print("Wyrm Can Show Pre")
 		
 		
 		

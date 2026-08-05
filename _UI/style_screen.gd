@@ -73,11 +73,11 @@ func _setup_score()->void:
 	if Global.game_controller.on_purple_scene():
 		#set_current_visibility_layer(1)
 		set_visibility_layer_bit(1,true)
-		print("Style Menu On Purple")
+		#print("Style Menu On Purple")
 	else:
 		#set_current_visibility_layer(2)
 		set_visibility_layer_bit(2,true)
-		print("Style Menu On Green")
+		#print("Style Menu On Green")
 	set_time_rank()
 	set_lives_lost_rank()
 	set_style_rank()
@@ -183,7 +183,7 @@ func set_total_point_thresholds(new_total_point_thresholds : Array)->void:
 func set_current_visibility_layer(flag : int)->void:
 	if flag == 1:
 		visibility_layer = 2
-		print("Style Vis Layer 2")
+		#print("Style Vis Layer 2")
 	elif flag == 2:
 		visibility_layer = 3
-		print("Style Vis Layer 3")
+		#print("Style Vis Layer 3")

@@ -35,7 +35,7 @@ const SHOOT_FRAMES = {"attack": 3, "attack_Hive": 3, "attack_Maw": 3, "attack_Cr
 func _ready() -> void:
 	animSpriteComp = $"../AnimatedSpriteComponent"
 	#node_ready = true 
-	#print(parent_demon.get_name(), " has an AnimSpriteComp of ", animSpriteComp)
+	##print(parent_demon.get_name(), " has an AnimSpriteComp of ", animSpriteComp)
 	set_attack_speed(attack_speed_mult)
 	set_attack_rays_collision()
 
@@ -69,44 +69,44 @@ func set_attack_rays_collision()->void:
 func _on_sprite_frame_changed(animation_name: String, frame_index: int) -> void:
 	if SHOOT_FRAMES.has(animation_name):
 		if frame_index == SHOOT_FRAMES[animation_name] and canAttack:
-			#print(get_parent(), " shoooot projectile ")
+			##print(get_parent(), " shoooot projectile ")
 			shoot_projectile()
 			
 			
 func _process(_delta:float) ->void:
 	if node_ready && animSpriteComp != null:
 		if animSpriteComp.animation == "spawn":
-			#print("Early")
+			##print("Early")
 			return
 		else:
 			if canAttack == false:
-				#print("Check Attack Rays")
+				##print("Check Attack Rays")
 				check_attack_rays()
 	else:
 		pass
-		#print("NOOOOOO")
+		##print("NOOOOOO")
 
 
 func check_attack_rays() -> void:
 	canAttack = false
 	for ray : Node in attack_rays:
-		#print("Checking Ray ", ray)
+		##print("Checking Ray ", ray)
 		if ray.is_colliding():
-			#print(" Ray Colling ",self )
+			##print(" Ray Colling ",self )
 			for i in range(ray.get_collision_count()):
 				var collider : Area2D = ray.get_collider(i)
-				#print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
+				##print("Collider [", i, "]: ", collider, " | is_null: ", collider == null)
 				if collider == null:
 					continue  # guard against freed/invalid colliders
 				if collider and collider.is_in_group("Zombie"):
-					#print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
+					##print("Valid Zombie Found, Parent is ", parent_demon, " and collider is ",collider )
 					if collider.is_in_group("Green") and parent_demon.is_in_group("Green"):
-						#print("Green Can Attack True")
+						##print("Green Can Attack True")
 						canAttack = true
 						return
 					elif collider.is_in_group("Purple") and parent_demon.is_in_group("Purple"):
 						canAttack = true
-						#print("Purple Can Attack True")
+						##print("Purple Can Attack True")
 						return 
 				#	if parent_demon.is_in_group()
 						
@@ -114,7 +114,7 @@ func check_attack_rays() -> void:
 func shoot_projectile(is_ult:bool=false) -> void:
 	AudioManager.create_2d_audio_at_location(parent_demon.global_position, SoundEffect.SOUND_EFFECT_TYPE.SPYDER_SPIT)
 	if shoot_positions.is_empty():
-			#print("SHOOTING HERE")
+			##print("SHOOTING HERE")
 			projectile = projectile_scene.instantiate()
 			projectile.global_position = parent_demon.position + projectile_spawn_offest 
 			
@@ -126,7 +126,7 @@ func shoot_projectile(is_ult:bool=false) -> void:
 			parent_demon.get_parent().add_child(projectile)  
 
 	else:
-		#print("NAH SHOOTING HERE")
+		##print("NAH SHOOTING HERE")
 		for shoot_pos:Node in shoot_positions:
 			projectile = projectile_scene.instantiate()
 			

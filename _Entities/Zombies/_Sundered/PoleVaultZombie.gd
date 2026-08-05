@@ -25,7 +25,7 @@ func get_zombie_name() -> String:
 	return " SUNDERED "
 
 func silence() -> void:
-	print(self, "Is Silenced")
+	#print(self, "Is Silenced")
 	super()
 	specialMoveComp.silence()
 	attackComp.canSpecial = false

@@ -94,7 +94,7 @@ func _ready() -> void:
 	special_description_file = get_special_description_file(all_synergies,"Base")
 
 func hide_old_preview()->void:
-	print("Occulum Hide Old Preview")
+	#print("Occulum Hide Old Preview")
 	$PreviewNodes/PreviewCard.visible = false 
 	$PreviewNodes/PreviewCardSprite.visible = false 
 	$PreviewNodes/PreviewCardShadow.visible = false 
@@ -120,12 +120,12 @@ func get_cost() -> float:
 	#15,25
 	
 	if Global.getOcculumCount() <= 4:
-		print("Cost in Occulum Was ", cost)
+		#print("Cost in Occulum Was ", cost)
 		cost = cost + (Global.getOcculumCount() * 15)
-		print("Cost in Occulum Is Now ", cost)
+		#print("Cost in Occulum Is Now ", cost)
 	else:
 		cost = cost + ( ((Global.getOcculumCount()-4) * 25) + (4 * 15) )
-	print(Global.getOcculumCount() , " Cost in ",4 ,"Occulum is ", cost)
+	#print(Global.getOcculumCount() , " Cost in ",4 ,"Occulum is ", cost)
 	return cost 
 
 
@@ -190,7 +190,7 @@ func toggle_highlight() -> void:
 
 func highlight() -> void:
 	pass
-	#print("Highlight Here")
+	##print("Highlight Here")
 
 
 # --- Blood Generation ---
@@ -200,7 +200,7 @@ func _on_BloodTimer_timeout() -> void:
 	bloodTimer.start()
 	
 func force_generate_blood()->Node2D:
-	#print("Force Blood Gen")
+	##print("Force Blood Gen")
 	var blood_instance := BloodScene.instantiate()
 	if self.is_in_group("Green"):
 		blood_instance.add_to_group("Green")
@@ -213,7 +213,7 @@ func force_generate_blood()->Node2D:
 	
 func generate_blood() -> Node2D:
 	if Global.gameIsStarted == false:
-		#print("Game Not Started Cannot Generate")
+		##print("Game Not Started Cannot Generate")
 		return
 	Global.add_mana(mana_add_on_generate_blood)
 	if mawBuff:
@@ -357,7 +357,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func trigger_ultimate()->void:
-	print("Trigger Occulum Ult")
+	#print("Trigger Occulum Ult")
 	Global.un_ready_ultimate()
 	ultimate_buffed = true 
 	generate_blood()

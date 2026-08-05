@@ -23,11 +23,11 @@ func set_pause_process_mode():
 func _on_pressed() -> void:
 	if can_click:
 		toolTips = demon_selection_menu.get_tooltips()
-		#print("Tooltips is ", toolTips)
+		##print("Tooltips is ", toolTips)
 		toolTips.set_modulate_invis()
 		#toolTips.modulate = Color(1,1,1,0)
-		#print("PP Pause Button Pressed, Pause Menu is ",pauseMenu )
-		#print("PAUSE GAME")
+		##print("PP Pause Button Pressed, Pause Menu is ",pauseMenu )
+		##print("PAUSE GAME")
 		get_tree().paused = true
 		#pauseMenu.visible = true
 
@@ -41,7 +41,7 @@ func undo_toolTip_change()->void:
 	toolTips.modulate = Color(1,1,1,1)
 
 func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
-	print("Set restart levels ot ", newAltLevel,newLevel)
+	#print("Set restart levels ot ", newAltLevel,newLevel)
 	pauseMenu.set_restart_levels(newLevel,newAltLevel)
 
 #func hide_toolTip():

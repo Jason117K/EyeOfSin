@@ -44,7 +44,7 @@ func _ready() -> void:
 	
 	if get_parent().has_method("crawler_placed"):
 		self.connect("_on_crawler_placed", Callable(get_parent(), "crawler_placed"))
-	print("blood_points is ", blood_points, str(blood_points))
+	#print("blood_points is ", blood_points, str(blood_points))
 	get_parent().get_node("UILayer").set_initial_blood(blood_points)
 	
 	Global.register_demon_managers(self)
@@ -52,10 +52,10 @@ func _ready() -> void:
 
 # Reference the DemonSelectionMenu dynamically
 func get_selected_demon() -> PackedScene:
-	#print("Emit Test")
+	##print("Emit Test")
 	test_signal.emit()
 	if demon_highlighted:
-		#print("Returning HighLight Occulum.R")
+		##print("Returning HighLight Occulum.R")
 		return occulum_scene
 	else:
 		return get_parent().get_node("DemonSelectionMenu").selected_demon
@@ -70,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	selected_demon_scene = get_selected_demon()  
 	
 	if selected_demon_scene == null:
-		#print("Demon Scene is Null")
+		##print("Demon Scene is Null")
 		pass
 	
 	if event is InputEventMouseButton and event.pressed:
@@ -79,14 +79,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		# If they left click, grab the positon and place a demon there 
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if get_parent() != Global.game_controller.get_active_dimension():
-				#print(get_parent(), " is not visible, return early qqx")
+				##print(get_parent(), " is not visible, return early qqx")
 				return 
-			#print(get_parent()," QQx Grid Map on Click is ", grid_map)
+			##print(get_parent()," QQx Grid Map on Click is ", grid_map)
 			var mouse_pos :Vector2= get_global_mouse_position()
 			var grid_pos :Vector2= mouse_pos_to_grid(mouse_pos)
-			#print("GRID POS IS ", grid_pos)
+			##print("GRID POS IS ", grid_pos)
 			grid_pos = Vector2(grid_pos.x+16,grid_pos.y+16)
-			#print("GRID POS IS NOW ", grid_pos)
+			##print("GRID POS IS NOW ", grid_pos)
 			
 			if demon_highlighted:
 				move_demon(demon_to_move, grid_pos)
@@ -95,7 +95,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				var temp_instance = selected_demon_scene.instantiate()
 				
 				var cost :float= temp_instance.get_cost()
-				#print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
+				##print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 
 					
 				temp_instance.queue_free()
@@ -104,41 +104,41 @@ func _unhandled_input(event: InputEvent) -> void:
 					selection_menu.clear_preview()
 					Global.notification_bar.set_text(tr("UI_CANNOT_AFFORD_DEMON"))
 					selection_menu.deselect_demon()
-					print("Blood Points is : ", blood_points, " which is less than ", cost)
+					#print("Blood Points is : ", blood_points, " which is less than ", cost)
 					return
 			else: #Demon Scene Null
 				#TODO Make Demons Handle Their Own Selection After Being Placed
-				#print("Clicked1 and Demon Scene Null NN")
+				##print("Clicked1 and Demon Scene Null NN")
 				if selection_menu.getCanRemove():
-					#print("Clicked1 and Time to Clear Space")
+					##print("Clicked1 and Time to Clear Space")
 					clear_space(grid_pos)
 					#selection_menu.setCanRemoveFalse()
 				if detect_demon(grid_pos):
-				#	print("Demon Detected")
+				#	#print("Demon Detected")
 					#highlight_demon(grid_pos)
 					pass
 				Global.hide_notification_bar()
 				return 
-			print("ParentName is ", parentName, "Grid Pos is ", grid_pos)
+			#print("ParentName is ", parentName, "Grid Pos is ", grid_pos)
 			# Place the demon assuming it's within bounds of the level
 			if(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<176 && grid_pos.y > 112):
-					#print("Place Demon " , grid_pos)
+					##print("Place Demon " , grid_pos)
 					#Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
 					place_demon(grid_pos)
 			elif(parentName == "Level0-2" || parentName == "Level0-2_Alternate"):
 				if(grid_pos.x<769 && grid_pos.y<208 && grid_pos.y > 80):
-					#print("Place Demon " , grid_pos)
+					##print("Place Demon " , grid_pos)
 					#Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
 					place_demon(grid_pos)
 			elif(parentName.contains("Level03")):
 				if(grid_pos.x<769 && grid_pos.y<=240 && grid_pos.y > 80):
-					#print("Place Demon " , grid_pos)
+					##print("Place Demon " , grid_pos)
 					#Global.game_controller.place_empty_in_alt_scene(grid_pos,empty_demon_to_place)
 					place_demon(grid_pos)				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
-					#print(get_parent(), "QQOtro Place Demon " , grid_pos)
+					##print(get_parent(), "QQOtro Place Demon " , grid_pos)
 					var temp_check_instance =  get_selected_demon().instantiate()
 					#if temp_check_instance.is_hero == false:
 					if temp_check_instance.is_in_group("Portal"):
@@ -153,7 +153,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	#add grid offset
 	var grid_offset : Vector2 = $"../GameLayer".position
-	print("GRID OFFSET IS ", grid_offset)
+	##print("GRID OFFSET IS ", grid_offset)
 	var og_grid_pos = Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size
 	var modified_grid_pos = Vector2(floor(mouse_pos.x / grid_size), floor( (mouse_pos.y - grid_offset.y) / grid_size)) * grid_size
 	return modified_grid_pos
@@ -162,11 +162,12 @@ func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 func clear_space(passed_grid_pos: Vector2) -> void:
 	var demon_node: Area2D = grid_map.get(passed_grid_pos)
 	if demon_node != null:
-		print(demon_node , " Demon Node will DIE from CLEAR SPACE")
+		pass
+		#print(demon_node , " Demon Node will DIE from CLEAR SPACE")
 		#demon_node.die_fromClearSpace()
 	#else:
-	print("GridMap To Clear Was ", grid_map)
-	print("Passed Grid Pos Was ", passed_grid_pos)
+	##print("GridMap To Clear Was ", grid_map)
+	##print("Passed Grid Pos Was ", passed_grid_pos)
 	grid_map.erase(passed_grid_pos)
 	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
@@ -181,7 +182,7 @@ func clear_space_alt(passed_grid_pos: Vector2) -> void:
 	var demon_node: Area2D = grid_map.get(passed_grid_pos)
 	if demon_node != null:
 		demon_node.die_fromClearSpace()
-	print("Clear Alt Passed Grid Pos ", passed_grid_pos)
+	#print("Clear Alt Passed Grid Pos ", passed_grid_pos)
 	grid_map.erase(passed_grid_pos)
 	#Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
 
@@ -196,14 +197,14 @@ func dispel_blood_clone(passed_grid_pos: Vector2)->void:
 	
 	
 func detect_demon(passed_grid_pos: Vector2) -> bool:
-	#print("QQ Grid Map is ", grid_map)
+	##print("QQ Grid Map is ", grid_map)
 	#var demon_node = grid_map.get(passed_grid_pos)
 	
 	if grid_map.get(passed_grid_pos) != null:
-		#print("Demon Node is , ",demon_node, " returning true" )
+		##print("Demon Node is , ",demon_node, " returning true" )
 		return true
 	else:
-		#print("Demon Node is , ",demon_node, " returning false" )
+		##print("Demon Node is , ",demon_node, " returning false" )
 		return false 
 	
 
@@ -219,7 +220,7 @@ func move_demon(this_demon_to_move: Demon, passed_new_grid_pos: Vector2) -> void
 	
 	#Works 
 	demon_highlighted = false
-	print("TRIED MOVE and Time to Clear Space")
+	#print("TRIED MOVE and Time to Clear Space")
 	clear_space(highlight_demon_global_pos)
 	pass
 func remove_from_grid_map()->void:
@@ -231,27 +232,27 @@ func place_empty_blocker_demon(grid_pos: Vector2, this_empty_demon_to_place : De
 	if(grid_pos.x<769 && grid_pos.y<305 && grid_pos.y > 48):
 		pass
 	else:
-		print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
+		#print("Grid Pos ", grid_pos, " is OUTTA BOUNDS")
 		return 
 	
-	print("Should Place Empty Blocker Demon ", )
+	#print("Should Place Empty Blocker Demon ", )
 	var demon_instance :Demon = this_empty_demon_to_place
 	demon_instance.grid_map_cell_pos = grid_pos
 	
-	print("Should Place Empty Blocker Demon ", demon_instance)
-	#print("Will Make PPName From ",demon_instance.name)
+	#print("Should Place Empty Blocker Demon ", demon_instance)
+	##print("Will Make PPName From ",demon_instance.name)
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	
 	
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		print(get_parent(), grid_pos , " QQW Cell already occupied!")
+		#print(get_parent(), grid_pos , " QQW Cell already occupied!")
 		return
 	
 	#Maw is larger, check neighboring cell
 	if  "Maw" in demon_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
-			print(get_parent(), "QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
+			#print(get_parent(), "QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 	
 	if blood_points >= -99999: 
@@ -275,10 +276,10 @@ func place_empty_blocker_demon(grid_pos: Vector2, this_empty_demon_to_place : De
 
 	else:
 		pass
-		#print("Not enough blood points!")
+		##print("Not enough blood points!")
 
 func place_blood_demon(grid_pos: Vector2) -> Demon:
-	print("Place Blood Demon")
+	#print("Place Blood Demon")
 	selected_demon_scene = get_selected_demon()  
 	selection_menu.deselect_demon()
 	var demon_instance := selected_demon_scene.instantiate()
@@ -291,7 +292,7 @@ func place_blood_demon(grid_pos: Vector2) -> Demon:
 		demon_instance.set_collision_layer_value(2,false)
 		demon_instance.set_collision_layer_value(3,true)
 	else:
-		print("Add ", demon_instance, " to purple group")
+		#print("Add ", demon_instance, " to purple group")
 		demon_instance.add_to_group("Purple")
 		demon_instance.set_collision_layer_value(1,false)
 		demon_instance.set_collision_layer_value(2,true)
@@ -320,7 +321,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	empty_demon_to_place = empty_demon_scene.instantiate()
 	
 	if selected_demon_scene == null:
-		#print("No demon selected!")
+		##print("No demon selected!")
 		return
 	
 	
@@ -347,7 +348,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		demon_instance.set_collision_layer_value(2,false)
 		demon_instance.set_collision_layer_value(3,true)
 	else:
-		print("Add ", demon_instance, " to purple group")
+		#print("Add ", demon_instance, " to purple group")
 		empty_demon_to_place.add_to_group("Purple")
 		empty_demon_to_place.is_green = false
 		demon_instance.add_to_group("Purple")
@@ -358,36 +359,36 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 
 	#Check if Spot is Occupied
 	if grid_pos in grid_map:
-		#print(get_parent(), grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)
+		##print(get_parent(), grid_pos , " QQV Cell already occupied! Grid Map is ", grid_map)
 		return
 	
 	#Maw is larger, check neighboring cell
 	if  "Maw" in demon_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
-			#print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
+			##print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
 			return 
 		else:
 			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y),empty_demon_to_place,get_parent())
 	else:
 		if is_queen:
 			if !get_parent().isGreenDimension:
-				print(self, "placing wyrm in purple")
+				#print(self, "placing wyrm in purple")
 				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate(),get_parent())
 				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate(),get_parent())
 				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate(),get_parent())
 				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place,get_parent())
 				queen_placement_count += 1
 			else:
-				print(self, "placing wyrm in green")
+				#print(self, "placing wyrm in green")
 				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate())
 				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate())
 				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate())
 				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place)
 		else:
-			print(self, "placing regular demon ")
+			#print(self, "placing regular demon ")
 			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place,get_parent())
 	if "Heart" in demon_instance.name:
-		#print("About to Place Heart Demon")
+		##print("About to Place Heart Demon")
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			return 
 		if Vector2(grid_pos.x+32,grid_pos.y+32) in grid_map:
@@ -410,11 +411,11 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 
 		hero_demon = demon_instance  
 		Global.game_controller.register_heart_alt_scene(hero_demon)
-		print("Heart Demon Should Be Placed : ", hero_demon)
+		#print("Heart Demon Should Be Placed : ", hero_demon)
 	
 	#Get The Cost 
 	demon_cost = demon_instance.get_cost()
-	#print("Demon CCost is : ", demon_cost)
+	##print("Demon CCost is : ", demon_cost)
 	
 	if blood_points >= demon_cost: 
 		#Maw Handling, occupies two cells
@@ -451,7 +452,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		
 		camera.screen_shake(1.25,0.7)
 
-		#print("Pdemon name is ", demon_instance.name)
+		##print("Pdemon name is ", demon_instance.name)
 		
 		if demon_instance.name.containsn("Portal"):
 			portal_placed.emit()
@@ -462,14 +463,14 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		
 		if "SpinalOcculum" in demon_instance.name:
 			spinalOcculum_placed.emit(grid_pos)
-			print("Spinal Occulum Should Emit")
+			#print("Spinal Occulum Should Emit")
 		elif "Occulum" in demon_instance.name:
-			#print("Selected Demon Scene is : ", demon_instance.name)
+			##print("Selected Demon Scene is : ", demon_instance.name)
 			#TODO change to occulum_placed
 			occulum_placed.emit(grid_pos)
 			Global.incrementOcculumCount()
 		elif "Crawler" in demon_instance.name:
-			#print("[TUTORIAL] Emit Crawler Placed")
+			##print("[TUTORIAL] Emit Crawler Placed")
 			crawler_placed.emit(grid_pos)
 			crawler_not_placed = false
 		elif "Wyrm" in demon_instance.name:
@@ -481,7 +482,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 
 		
 	else:
-		#print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+		##print("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
 		#Global.notification_bar.show()
 		#Global.notification_bar.set_text(tr("UI_CANNOT_AFFORD_DEMON"))
 		pass
@@ -528,7 +529,7 @@ func _on_SetBlood_timeout() -> void:
 		get_parent().get_node("UILayer").set_blood(blood_points)
 
 func swap_heart() -> void:
-	#print("Hero Demon Is ", hero_demon)
+	##print("Hero Demon Is ", hero_demon)
 	if hero_demon != null:
 		if "Alternate" in get_parent().name :
 			#hero_demon.add_to_group("Green")

@@ -157,7 +157,7 @@ func finish_ready() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_MAW, false)
 	_setup_tutorial()
 	demonSelectionMenu.canSwapScenes = true
-	print("Go To Step Spinal Occulum Select")
+	#print("Go To Step Spinal Occulum Select")
 	go_to_step("EXPLAIN_SPINAL_OCCULUM")
 	levelSwitcher.update_level(level04, level04Alt)
 	levelSwitcher.update_current_level(thisLevel, thisAltLevel)
@@ -208,7 +208,7 @@ func _input(event: InputEvent) -> void:
 func _start_explain_spinal_occulum() -> void:
 	await get_tree().physics_frame
 
-	print("Explain Spinal Occulum Demon")
+	#print("Explain Spinal Occulum Demon")
 	Global.hide_notification_bar()
 	
 	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_SPINAL_OCCULUM, true, tr("TIP_TITLE_NEW_DEMON_SPINALOCCULUM"))
@@ -218,7 +218,7 @@ func _start_explain_spinal_occulum() -> void:
 #func _start_force_select_spinal_occulum()->void:
 #
 	#show_demon_selection_menu()
-	#print("Starting Force Select")
+	##print("Starting Force Select")
 	##Global.unHideDemonSelectionMenu()
 	#toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_DEMON, false)
 	#hide_all_demon_buttons_with_exception(["SpinalOcculum"])
@@ -232,7 +232,7 @@ func _start_explain_spinal_occulum() -> void:
 
 func _explain_pre_placed_spinal_occulum()->void:
 	green_dimension = get_green_dimension()
-	print("Explain Pre Placed Spinal Occulum")
+	#print("Explain Pre Placed Spinal Occulum")
 	show_demon_selection_menu()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum"])
 	place_spinal_occulum()
@@ -251,7 +251,7 @@ func _resume_game()->void:
 	
 	
 func _spinal_occulum_unlocked()->void:
-	print("Spinal Occulum Unlocked")
+	#print("Spinal Occulum Unlocked")
 	green_dimension._spinal_occulum_unlocked()
 	auto_advance = true 
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
@@ -260,14 +260,14 @@ func _spinal_occulum_unlocked()->void:
 	set_auto_advance_toolTip(7)
 
 func _hide_spinal_occulum_highlight()->void:
-	print("Hide Spinal Occulum Highlight")
+	#print("Hide Spinal Occulum Highlight")
 	demonSelectionMenu.unhighlight_demon_card("SpinalOcculum")
 	green_dimension._hide_spinal_occulum_highlight()
 	toolTips.hide()
 	
 
 func _start_tutorial_p1_done() -> void:
-	print("Start Tutorial P1 Done")
+	#print("Start Tutorial P1 Done")
 	toolTips.hide()
 	hide_all_demon_buttons_with_exception(["Occulum", "Crawler", "SpinalOcculum"])
 	demonSelectionMenu.canSwapScenes = true
@@ -297,11 +297,11 @@ func _start_explain_codex() -> void:
 	codex_button.visible = true
 	codex_button.pressed.connect(toolTips._on_visual_tutorial_understood_button_pressed)
 	#toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CODEX, false)
-	print("Codex Explain")
+	#print("Codex Explain")
 	toolTips.set_visual_tutorial_text(TUTORIAL_SELECT_CODEX)
 	
 	demonSelectionMenu.add_pulsing_button_highlight(demonSelectionMenu.get_codex_button())
-	print("Add Glow Pulse F")
+	#print("Add Glow Pulse F")
 	toolTips.set_visual_tutorial_visual(codex_demo.instantiate(), false)
 	
 	#show_spotlight_at_node(codex_button)
@@ -329,10 +329,10 @@ func _filter_block_deselect(event: InputEvent) -> void:
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
 	#hide_spotlight()
-	print("Tooltip Hidden")
+	#print("Tooltip Hidden")
 	match get_current_step_name():
 		#"FORCE_SELECT_SPINALOCCULUM":
-			#print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
+			##print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
 			#go_to_step("FORCE_PLACE_SPINAL_OCCULUM")
 		"EXPLAIN_SPINAL_OCCULUM":
 			go_to_step("EXPLAIN_PRE_PLACED_SPINAL")
@@ -351,15 +351,15 @@ func _on_tooltip_hidden() -> void:
 
 func _on_spinal_occulum_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_SPINALOCCULUM":
-		print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
+		#print("Go to Step FORCE_PLACE_SPINAL_OCCULUM")
 		go_to_step("FORCE_PLACE_SPINAL_OCCULUM")
 
 func _on_spinal_occulum_placed(_grid_position) -> void:
 	if get_current_step_name() == "FORCE_PLACE_SPINAL_OCCULUM":
-		print("Should Hide ToolTip")
+		#print("Should Hide ToolTip")
 		toolTips.hide()
 	else:
-		print("Current Step is ", get_current_step_name())
+		#print("Current Step is ", get_current_step_name())
 				
 func _on_wave_started(wave_index: int) -> void:
 	if skip_tutorials:

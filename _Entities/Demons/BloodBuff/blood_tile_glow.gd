@@ -7,7 +7,7 @@ var demon_glow := preload("res://_Common/Shaders/DemonGlow.gdshader")
 func make_buff_glow() -> void:
 	#return
 	if material == null:
-		print("PRE LOL")
+		#print("PRE LOL")
 		material = ShaderMaterial.new()
 		material.shader = demon_glow #preload("res://Scripts/Demons/Shaders/DemonHueShift.gdshader")
 	
@@ -15,9 +15,9 @@ func make_buff_glow() -> void:
 	if material is ShaderMaterial:
 		
 		#material.shader = demon_glow
-		print("LOL" , material)
+		#print("LOL" , material)
 		material.set_shader_parameter("glow_color", targetGlowColor)
 		material.set_shader_parameter("modulate_factor", modulate_factor)
 	else:
-		#print("Not funn y LOL ", material)
+		##print("Not funn y LOL ", material)
 		pass

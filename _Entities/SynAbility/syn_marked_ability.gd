@@ -29,7 +29,7 @@ func activate_ability()->void:
 			activate_ability()
 
 func connect_ability(_marked_to_connect : Area2D)->void:
-	print(self, " syn ability mark will now light on fire : ", targets_marked)
+	#print(self, " syn ability mark will now light on fire : ", targets_marked)
 	for target in targets_marked:
 		target.set_on_fire()
 		

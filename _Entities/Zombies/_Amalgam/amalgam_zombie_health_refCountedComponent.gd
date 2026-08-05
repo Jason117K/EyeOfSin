@@ -2,12 +2,12 @@ class_name AmalgamHealthRefCounted extends ZombieHealthRefCountedComponent
 
 
 func take_damage(is_link_damage : bool = false, damage: float = 1, piercing: bool = false) -> void:
-	#print(zombie.name, " just took, ", damage)
+	##print(zombie.name, " just took, ", damage)
 	if is_flame_dmg_linked && !is_link_damage:
 		Global.damage_all_zombies_with_link(damage*link_damage_modifier,parent_zombie)
 	health -= damage
 	if piercing:
-		#print(zombie.name, " just took, ", damage)
+		##print(zombie.name, " just took, ", damage)
 		health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(parent_zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)

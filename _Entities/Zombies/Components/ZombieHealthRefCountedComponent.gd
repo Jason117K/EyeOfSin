@@ -52,10 +52,10 @@ func receive_buff() -> void:
 
 func add_blood_worth(blood_worth_to_add: float) -> void:
 	if !blood_worth_added:
-		print("New Blood Worth Added is ", blood_worth_to_add)
+		#print("New Blood Worth Added is ", blood_worth_to_add)
 		bloodWorth = bloodWorth + blood_worth_to_add
 		blood_worth_added = true
-		print(bloodWorth , " New Blood Worth Is Now :  ", bloodWorth)
+		#print(bloodWorth , " New Blood Worth Is Now :  ", bloodWorth)
 
 
 func getInjured() -> bool:
@@ -63,7 +63,7 @@ func getInjured() -> bool:
 
 
 func take_damage(is_link_damage : bool = false, damage: float = 1.0, _piercing: bool = false) -> void:
-	#print(zombie.name, " just took, ", damage)
+	##print(zombie.name, " just took, ", damage)
 	if is_syn_marked:
 		damage = damage * syn_dmg_mult
 	if is_flame_dmg_linked && !is_link_damage:
@@ -89,7 +89,7 @@ func take_damage(is_link_damage : bool = false, damage: float = 1.0, _piercing: 
 		var demon_manager := currentLevel.get_node("DemonManager")
 		if demon_manager:
 			if bloodWorth > 0:
-				print("Add Blood Worth ", bloodWorth)
+				#print("Add Blood Worth ", bloodWorth)
 				demon_manager.add_blood(bloodWorth)
 		parent_zombie.die()
 
@@ -103,7 +103,7 @@ func tick(delta: float) -> void:
 	if should_health_regen:
 		health_regen_elapsed_time += delta 
 		if health_regen_elapsed_time >= time_between_health_regen:
-			#print("Health Regen Elapsed Time is ", health_regen_elapsed_time)
+			##print("Health Regen Elapsed Time is ", health_regen_elapsed_time)
 			health_regen_elapsed_time = 0.0 
 			_on_regen_tick()
 			

@@ -107,7 +107,8 @@ func _process(delta: float) -> void:
 	# now-invalid enemy is expected — let the retraction run to completion.
 	if state in [State.EXTENDING, State.ATTACHED] and not is_instance_valid(enemy):
 		if debug_mode:
-			print("[Tentacle %s] Enemy became invalid, aborting" % name)
+			pass
+			#print("[Tentacle %s] Enemy became invalid, aborting" % name)
 		abort()
 		return
 
@@ -130,7 +131,8 @@ func _tick_extending(delta: float) -> void:
 	_extend_timer += delta
 	if _extend_timer > MAX_EXTEND_TIME:
 		if debug_mode:
-			print("[Tentacle %s] Extension timeout" % name)
+			pass
+			#print("[Tentacle %s] Extension timeout" % name)
 		abort()
 		return
 
@@ -193,11 +195,11 @@ func _tick_digesting(delta: float) -> void:
 		_complete_digestion()
 	else:
 		pass
-		#print("timer is ", _timer)
+		##print("timer is ", _timer)
 
 
 func _complete_digestion() -> void:
-	print("Digestion Complete")
+	#print("Digestion Complete")
 	state = State.IDLE
 	enemy = null
 	is_primary_grabber = true

@@ -39,7 +39,8 @@ func executeMove(old_speed : float) -> void:
 	if tweener:  # Check if tween was created successfully
 		tweener.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	else:
-		print("Tween failed! Check parent/end_pos.")	
+		pass
+		#print("Tween failed! Check parent/end_pos.")	
 	#tween.tween_property(
 		#parent,
 		#"position",

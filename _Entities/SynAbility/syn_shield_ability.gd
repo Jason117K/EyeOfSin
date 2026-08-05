@@ -14,19 +14,19 @@ func _ready() -> void:
 	self.global_position = grid_pos + offset
 	
 func activate_ability()->void:
-	print("Shield Demons Called ", self.get_overlapping_areas())
+	#print("Shield Demons Called ", self.get_overlapping_areas())
 	for demon in self.get_overlapping_areas():
 		if demon.is_in_group("Demons"):
-			print("Shield Demon ", demon)
+			#print("Shield Demon ", demon)
 			demon.shield(syn_shield,ability_duration)
 	death_timer.start()
 	
 			
 func weak_shield_demons()->void:
-	print("Weak Shield Demons Called ", weak_shield_area.get_overlapping_areas())
+	#print("Weak Shield Demons Called ", weak_shield_area.get_overlapping_areas())
 	for demon in weak_shield_area.get_overlapping_areas():
 		if demon.is_in_group("Demons") && !demon.invulnerable:
-			print("Weak Shield Demon ", demon)
+			#print("Weak Shield Demon ", demon)
 			demon.weak_shield(syn_shield,ability_duration)
 			
 				

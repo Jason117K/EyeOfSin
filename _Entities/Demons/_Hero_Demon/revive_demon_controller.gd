@@ -18,7 +18,7 @@ func _ready() -> void:
 func check_for_demons_to_revive()->void:
 	for revive_point in lightning_revive_detection.get_overlapping_areas():
 		if revive_point.is_in_group("Demon_Revive_Point"):
-			print("[HERO_REVIVE]: About to Add Revive Point : ", revive_point)
+			#print("[HERO_REVIVE]: About to Add Revive Point : ", revive_point)
 			add_to_revive_array(revive_point)
 	
 		
@@ -35,12 +35,12 @@ func add_to_revive_array(_new_demon:Area2D)->void:
 		return 
 	else:
 		if _new_demon.is_in_group("Demon_Revive_Point"):
-			print("[HERO_REVIVE]: Def Add Revive Point : ", _new_demon)
+			#print("[HERO_REVIVE]: Def Add Revive Point : ", _new_demon)
 			demons_to_revive.append(_new_demon)
 			await get_tree().physics_frame
 			await get_tree().physics_frame
 			await get_tree().physics_frame
-			print("[HERO_REVIVE]: Demons to Revive Is : ", demons_to_revive)
+			#print("[HERO_REVIVE]: Demons to Revive Is : ", demons_to_revive)
 			begin()
 
 
@@ -52,7 +52,7 @@ func apply_ability()->void:
 	revive_demon()
 
 func revive_demon()->void:
-	print("[HERO_REVIVE]: Calling Revive Demon : ", demons_to_revive)
+	#print("[HERO_REVIVE]: Calling Revive Demon : ", demons_to_revive)
 	for res_point in demons_to_revive:
 		if is_instance_valid(res_point) && res_point != null:
 			res_point.revive_summon()

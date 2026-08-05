@@ -39,6 +39,7 @@ layout_mode = 0
 offset_right = 74.0
 offset_bottom = 57.0
 scale = Vector2(1.215, 1.215)
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_i34nt")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD_Panel" unique_id=379065495]

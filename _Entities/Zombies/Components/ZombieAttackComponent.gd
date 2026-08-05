@@ -25,13 +25,14 @@ func _ready() -> void:
 	my_level = parent.get_parent().get_parent()
 	_frame_counter = randi() % 3
 	if parent.is_in_group("Green"):
-		#print(parent," DOING GREEN SET FOOOOOR ", attack_ray)
+		##print(parent," DOING GREEN SET FOOOOOR ", attack_ray)
 		attack_ray.set_collision_mask_value(1,false)
 		attack_ray.set_collision_mask_value(2,false)
 		attack_ray.set_collision_mask_value(3,true)
 	else:
 		if attack_ray == null:
-			print(parent," DOING PURPLE SET FOOOOOR ", attack_ray)
+			pass
+			#print(parent," DOING PURPLE SET FOOOOOR ", attack_ray)
 		attack_ray.set_collision_mask_value(1,false)
 		attack_ray.set_collision_mask_value(2,true)
 		attack_ray.set_collision_mask_value(3,false)
@@ -64,8 +65,8 @@ func attack_demon(collider:Node) -> void:
 			
 	is_attacking = true
 	target_demon = collider
-	#print("TName is ", target_demon.name)
-	#print("I am " , self.name)
+	##print("TName is ", target_demon.name)
+	##print("I am " , self.name)
 	zombieSprite.speed_scale = parent.attack_speed
 	zombieSprite.play("Attack")
 	#attack_audio_player.play()
@@ -77,21 +78,21 @@ func attack_demon(collider:Node) -> void:
 	elif "Screen" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		#print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
+		##print("Playing ZOMBIE DEAL DAMAGE in attack_demon for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 	
 	attack_timer.start()
 	#if "Ticker" in parent.get_name():
-		#print("Ticker Should Die ")
+		##print("Ticker Should Die ")
 		#parent.queue_free()
 
 # Damages the target demon and decides whether or not to keep attacking
 func _on_AttackTimer_timeout() -> void:
-	#print(global_position, " Attack Demon Again ",attack_starting_pos)
+	##print(global_position, " Attack Demon Again ",attack_starting_pos)
 	if abs(attack_starting_pos.x - global_position.x) > 2:
 		stop_attack()
 		return
-	#print("Basic Zombie Attack Timer Timeout")
+	##print("Basic Zombie Attack Timer Timeout")
 		#TODO Make Attacking Sounds More Efficient
 	if "Bucket" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.BUCKET_DEAL_DAMAGE)
@@ -100,17 +101,17 @@ func _on_AttackTimer_timeout() -> void:
 	elif "Screen" in parent.name:
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.SCREEN_DOOR_ATTACK)
 	else:
-		#print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
+		##print("Playing ZOMBIE DEAL DAMAGE in _on_AttackTimer_timeout for parent ", parent.name)
 		AudioManager.create_2d_audio_at_location(parent.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_DEAL_DAMAGE)
 		
 	if(is_instance_valid(target_demon) && target_demon.is_in_group("Portal") != true ):
-		#print("target demon name is ", target_demon.name)
+		##print("target demon name is ", target_demon.name)
 		if(target_demon.has_method("get_health") && (target_demon.get_health()!=null)): 
 			#TODO Give Spiderling Get Health
 			if(target_demon.get_health() >= 0):
 				if target_demon.has_method("eat_zombie"):
 					if target_demon.can_eat_zombie == true :
-					#	print("Demon Can Eat Me Time to Die")
+					#	#print("Demon Can Eat Me Time to Die")
 						target_demon.eat_zombie(self)
 						get_parent().die()
 				if target_demon.has_method("spinalOcculumWyrmBuffed"):
@@ -119,7 +120,7 @@ func _on_AttackTimer_timeout() -> void:
 				if target_demon.has_method("lightning_maw_buff"):
 					if target_demon.is_lightning_maw_buff:
 						zombie.take_damage(target_demon.get_lightning_damage())
-				print(attack_power ," Calling Take Damage on ", target_demon)
+				#print(attack_power ," Calling Take Damage on ", target_demon)
 				target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
 				var safe_speed : float = max(parent.attack_speed, 0.01)
@@ -134,7 +135,7 @@ func _on_AttackTimer_timeout() -> void:
 
 # Stops the attack and resumes movement
 func stop_attack() -> void:
-	#print("Stopping Attack no damage")
+	##print("Stopping Attack no damage")
 	is_attacking = false
 	target_demon = null
 	attack_timer.stop()
@@ -149,12 +150,12 @@ func tick(_delta: float) -> void:
 		if attack_ray.is_colliding():
 			var collider : Node = attack_ray.get_collider()
 			if collider:
-				#print(parent.name , " Its 77 collding with ", collider.name )
+				##print(parent.name , " Its 77 collding with ", collider.name )
 				if collider.is_in_group("Demons"):
 					if collider.has_method("demon_minion_busy"):
-						#print("Calling Demon 77 Minion Busy On ", collider)
+						##print("Calling Demon 77 Minion Busy On ", collider)
 						if collider.demon_minion_busy(parent):
-							#print(collider, " is busy early return 77")
+							##print(collider, " is busy early return 77")
 							return
 					#TODO Make Sundered Extend Attack Comp
 					if("Sundered" in parent.name):

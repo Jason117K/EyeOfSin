@@ -76,9 +76,10 @@ func _setup_tutorial() -> void:
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)
 		
 #region Lifecycle
 func _ready() -> void:
@@ -88,7 +89,7 @@ func _ready() -> void:
 	super()
 	Global.register_syn_ability(Global.lightning_strike)
 	Global.register_swap_ability(Global.lightning_storm)
-	#print_scene_tree()
+	##print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
@@ -209,7 +210,7 @@ func _start_explain_ultimates_2()->void:
 
 
 func _start_explain_ultimates_3()->void:
-	print("Explain Ultimates 3")
+	#print("Explain Ultimates 3")
 	UiFx.remove_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
 	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
 	demonSelectionMenu._on_CrawlerButton_pressed()
@@ -220,7 +221,7 @@ func _start_explain_ultimates_3()->void:
 
 
 func _start_explain_ultimates_4()->void:
-	print("Explain Ultimates 4")
+	#print("Explain Ultimates 4")
 	Global.ultimate_charge_container.ultimate_bar_clicked.disconnect(advance_tutorial)
 	Global.crawler_ultimate_triggered.connect(advance_tutorial)
 	UiFx.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
@@ -228,7 +229,7 @@ func _start_explain_ultimates_4()->void:
 	
 
 func _start_explain_ultimates_5()->void:
-	print("Explain Ultimates 5")
+	#print("Explain Ultimates 5")
 	Global.crawler_ultimate_triggered.disconnect(advance_tutorial)
 	auto_advance = true 
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_5,false)

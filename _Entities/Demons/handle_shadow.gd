@@ -24,13 +24,13 @@ var oscillator_velocity: float = 0.0
 func rotate_velocity(delta: float) -> void:
 
 	var center_pos: Vector2 = global_position - (size/2.0)
-	print("Pos: ", center_pos)
-	print("Pos: ", last_pos)
+	#print("Pos: ", center_pos)
+	#print("Pos: ", last_pos)
 	# Compute the velocity
 	velocity = (position - last_pos) / delta
 	last_pos = position
 	
-	print("Velocity: ", velocity)
+	#print("Velocity: ", velocity)
 	oscillator_velocity += velocity.normalized().x * velocity_multiplier
 	
 	# Oscillator stuff

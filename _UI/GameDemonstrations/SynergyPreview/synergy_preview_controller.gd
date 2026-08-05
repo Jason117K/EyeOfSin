@@ -237,8 +237,8 @@ func _spawn_demons() -> void:
 	demon_b_instance = scene_b.instantiate()
 	demon_a_instance.add_to_group("Purple")
 	demon_b_instance.add_to_group("Purple")
-	print(demon_b_instance , " Demon B is ", demon_b_name)
-	print(demon_a_instance , " Demon A is ", demon_a_name)
+	#print(demon_b_instance , " Demon B is ", demon_b_name)
+	#print(demon_a_instance , " Demon A is ", demon_a_name)
 
 	# B: from demon name → slot number → node
 	var slot_b_number := get_slot_b_number(demon_b_name)

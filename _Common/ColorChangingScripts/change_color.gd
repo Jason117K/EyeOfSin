@@ -17,7 +17,7 @@ func _ready() -> void:
 		material = thisMaterial
 		# Set initial shader parameters
 		if thisMaterial:
-			#print("Made h")
+			##print("Made h")
 			thisMaterial.set_shader_parameter("target_color", Color("ff0013"))
 			thisMaterial.set_shader_parameter("replace_color", Color.HOT_PINK)
 			thisMaterial.set_shader_parameter("tolerance", 0.1)
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func _on_animation_changed() -> void:
 	if thisMaterial:
-		#print("Made PPInk")
+		##print("Made PPInk")
 		thisMaterial.set_shader_parameter("target_color", Color(targetColorString))
 		thisMaterial.set_shader_parameter("replace_color", Color.DEEP_PINK)
 		thisMaterial.set_shader_parameter("tolerance", 0.35)
@@ -61,35 +61,35 @@ func _on_frame_changed() -> void:
 			thisMaterial.set_shader_parameter("replace_color", Color.DEEP_PINK)
 			thisMaterial.set_shader_parameter("tolerance", 0.2)
 		if "Tree" in get_parent().name:
-			print("GG Color Change AGaIn",targetColorString, " ", replaceColorString)
+			#print("GG Color Change AGaIn",targetColorString, " ", replaceColorString)
 			thisMaterial.set_shader_parameter("target_color", target_color) #Color("#272727"))
 			#thisMaterial.set_shader_parameter("replace_color", replaceColorString)
 			thisMaterial.set_shader_parameter("replace_color", replace_color)
 			thisMaterial.set_shader_parameter("tolerance", 0.1)			
 		if "Maw" in get_parent().name:
 			if isAlt:
-				print("GG Maw Color Change")
+				#print("GG Maw Color Change")
 				thisMaterial.set_shader_parameter("target_color", target_color)
 				thisMaterial.set_shader_parameter("replace_color", replace_color)
 				thisMaterial.set_shader_parameter("tolerance", 0.1)
 			else:
-				print("GG Maw Color Change")
+				#print("GG Maw Color Change")
 				thisMaterial.set_shader_parameter("target_color", Color.WHITE)
 				thisMaterial.set_shader_parameter("replace_color", Color.DARK_RED)
 				thisMaterial.set_shader_parameter("tolerance", 0.1)
 		else:
 			pass
-			#print("GG : ", get_parent().name)
+			##print("GG : ", get_parent().name)
 	else:
 		pass
-		#print("GGG NOT DISABLED ")
+		##print("GGG NOT DISABLED ")
 		
 func change_color() -> void:
 	isDisabled = false
 	thisMaterial = material.duplicate()
 	material = thisMaterial
 	if thisMaterial:
-		print("Made COLOR CHANGGE")
+		#print("Made COLOR CHANGGE")
 		thisMaterial.set_shader_parameter("target_color", targetColorString) #Color("#272727"))
 		thisMaterial.set_shader_parameter("replace_color", replaceColorString)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)
@@ -102,7 +102,7 @@ func change_color_specific(new_target_color, new_replace_color) -> void:
 	material = thisMaterial
 	isAlt = true
 	if thisMaterial:
-		print("Made COLOR CHANGGE")
+		#print("Made COLOR CHANGGE")
 		thisMaterial.set_shader_parameter("target_color", targetColorString) #Color("#272727"))
 		thisMaterial.set_shader_parameter("replace_color", replaceColorString)
 		thisMaterial.set_shader_parameter("tolerance", 0.1)

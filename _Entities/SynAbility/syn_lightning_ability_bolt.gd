@@ -62,7 +62,7 @@ func _ready() -> void:
 
 	
 func damage_zombies()->void:
-	#print("Lightning Frame is ", lightning_strike_anim.frame)
+	##print("Lightning Frame is ", lightning_strike_anim.frame)
 	if lightning_strike_anim.frame == 2:
 		for zombie in self.get_overlapping_areas():
 			if zombie.is_in_group("Zombie"):
@@ -80,7 +80,7 @@ func spawn_aftershock()->void:
 	shock_dmg_timer.start()
 
 func aftershock_damage()->void:
-	#print("Aftershock Damage Called ", aftershock_dmg)
+	##print("Aftershock Damage Called ", aftershock_dmg)
 	for zombie in get_overlapping_areas():
 		if zombie.is_in_group("Zombie"):
 			zombie.take_damage(false,aftershock_dmg,false)
@@ -90,7 +90,7 @@ func aftershock_damage()->void:
 				zombie.take_damage(false,aftershock_dmg,false)
 	
 func connect_ability(lightning_to_connect : Area2D)->void:
-	#print("Attempt Connect Lightning")
+	##print("Attempt Connect Lightning")
 	lightning_connector_line.hide()
 	var target_local :Vector2 = lightning_connector_line.to_local(lightning_to_connect.global_position)
 	if lightning_connector_line.get_point_count() < 2:

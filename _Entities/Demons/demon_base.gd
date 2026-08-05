@@ -225,19 +225,22 @@ func get_special_description_file(this_all_synergies : Array[String],demonName :
 func _on_mouse_entered() -> void:
 	if self.is_in_group("Green"):
 		if Global.game_controller.get_active_dimension() == Global.game_controller.get_green_dimension():
-			print(Global.game_controller.get_active_dimension(), "Onnn Green and Active Dimension Is Green")
+			pass
+			#print(Global.game_controller.get_active_dimension(), "Onnn Green and Active Dimension Is Green")
 		else:
 			return
 	elif self.is_in_group("Purple"):
 		if Global.game_controller.get_active_dimension() == Global.game_controller.get_purple_dimension():
-			print(Global.game_controller.get_active_dimension(),"Onnn Purple and Active Dimension Is Purple")
+			pass
+			#print(Global.game_controller.get_active_dimension(),"Onnn Purple and Active Dimension Is Purple")
 		else:
 			return
-	print("Mouse Entered ",self)
+	#print("Mouse Entered ",self)
 	if can_show_preview && Global.game_controller.get_active_dimension() == my_active_dimension:
 		$PreviewNodes.visible = true
 	else:
-		print("")
+		pass
+		#print("")
 	
 func _init_demon_manager() -> void:
 	var _dm_parent: Node = get_parent()
@@ -288,12 +291,12 @@ func hide_old_preview()->void:
 # --- Buff System ---
 
 func baal_buff()->void:
-	print("Show Baal Halo")
+	#print("Show Baal Halo")
 	animSpriteComp.speed_scale = animSpriteComp.speed_scale * 2
 	baal_halo.show()
 
 func undo_baal_buff()->void:
-	print("Hide Baal Halo")
+	#print("Hide Baal Halo")
 	baal_halo.hide()
 	animSpriteComp.speed_scale = 1 #animSpriteComp.default_anim_speed_scale
 
@@ -325,10 +328,10 @@ func receive_buff(demonName) -> void:
 	if demonName == truncate_string(self.get_name()):
 		
 		return
-	print(self.name, " Received Buff from ", demonName, " is buffed is ", isBuffed)
+	#print(self.name, " Received Buff from ", demonName, " is buffed is ", isBuffed)
 	special_description_file = get_special_description_file(all_synergies,demonName)
 	if !isBuffed:
-		print(self.name, " Received Buff from ", demonName)
+		#print(self.name, " Received Buff from ", demonName)
 		healthComp.receive_buff(demonName)
 		animSpriteComp.receive_buff(demonName)
 		isBuffed = true
@@ -362,7 +365,7 @@ func get_demon_icon() -> Texture2D:
 	
 func debuff() -> void:
 	if !is_blood:
-		print(self,"Self Being Debuffed")
+		#print(self,"Self Being Debuffed")
 		isBuffed = false
 		_reset_buff_flags()
 		healthComp.debuff()
@@ -433,7 +436,7 @@ func _cleanup() -> void:
 
 func hide_preview()->void:
 	if get_preview_nodes() != null:
-		#print(get_preview_nodes())
+		##print(get_preview_nodes())
 		for node in get_preview_nodes().get_children():
 			node.hide()
 
@@ -441,13 +444,13 @@ func hide_preview()->void:
 # --- Health Delegation ---
 
 func receive_heart_buff() -> void:
-	print(self.name, " receive Heart Buff")
+	#print(self.name, " receive Heart Buff")
 	buffNodes.get_child(0).visible = true
 	increase_max_health(400)
 	increase_health(400)
 
 func remove_heart_buff() -> void:
-	print(self.name, " remove Heart Buff")
+	#print(self.name, " remove Heart Buff")
 	buffNodes.get_child(0).visible = false
 
 func increase_health(added_health_amount: float) -> void:
@@ -484,9 +487,9 @@ func get_animSpriteComp() -> DemonSpriteComp:
 	return animSpriteComp
 
 func get_preview_nodes() -> Node:
-	print("Getting Preview Nodes")
+	#print("Getting Preview Nodes")
 	if "Level0-1" in Global.game_controller.get_active_dimension().name:
-		print("Making Tile Alpha Invis")
+		#print("Making Tile Alpha Invis")
 		$PreviewNodes/BloodTileFront.modulate = Color(1,1,1,0)
 		$PreviewNodes/BloodTileBack1.modulate = Color(1,1,1,0)
 		$PreviewNodes/BloodTileBack2.modulate = Color(1,1,1,0)
@@ -496,7 +499,7 @@ func get_true_name() -> String:
 	return ""
 
 func shield(syn_shield:PackedScene,duration:float)->void:
-	print("Will Now Shield ", self)
+	#print("Will Now Shield ", self)
 	new_syn_shield_instance = syn_shield.instantiate()
 	add_child(new_syn_shield_instance)
 	new_syn_shield_instance.global_position = syn_shield_position + global_position
@@ -536,17 +539,17 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if self.is_in_group("Green"):
 		if Global.game_controller.get_active_dimension() == Global.game_controller.get_green_dimension():
 			pass
-			#print(Global.game_controller.get_active_dimension(), "Onnn Green and Active Dimension Is Green")
+			##print(Global.game_controller.get_active_dimension(), "Onnn Green and Active Dimension Is Green")
 		else:
 			return
 	elif self.is_in_group("Purple"):
 		if Global.game_controller.get_active_dimension() == Global.game_controller.get_purple_dimension():
 			pass
-			#print(Global.game_controller.get_active_dimension(),"Onnn Purple and Active Dimension Is Purple")
+			##print(Global.game_controller.get_active_dimension(),"Onnn Purple and Active Dimension Is Purple")
 		else:
 			return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed && spawn_done:
-		#print(self, " was clicked, node is ", _viewport)
+		##print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)
 		highlight_circle.show()
 		pass
@@ -677,6 +680,7 @@ func truncate_string(input_string: String) -> String:
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)

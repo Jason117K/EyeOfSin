@@ -43,7 +43,7 @@ func receive_buff() -> void:
 
 
 func add_blood_worth(blood_worth_to_add: float) -> void:
-	print("New Blood Worth")
+	#print("New Blood Worth")
 	bloodWorth = bloodWorth + blood_worth_to_add
 
 
@@ -52,7 +52,7 @@ func getInjured() -> bool:
 
 
 func take_damage(damage: float, _piercing: bool = false) -> void:
-	#print(zombie.name, " just took, ", damage)
+	##print(zombie.name, " just took, ", damage)
 	health -= damage
 	injured = health < halfHealth
 	AudioManager.create_2d_audio_at_location(zombie.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)

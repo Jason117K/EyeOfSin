@@ -6,7 +6,8 @@ extends AnimatedSprite2D
 var is_purple := false 
 
 func _ready() -> void:
-	print(self, " PREVIEW SPRITE IS READYYY")
+	pass
+	#print(self, " PREVIEW SPRITE IS READYYY")
 
 func set_collision()->void:
 	if Global.game_controller.on_purple_scene():

@@ -13,7 +13,7 @@ func _on_animation_finished() -> void:
 
 
 func _on_frame_changed() -> void:
-	#print("Frame is ", frame)
+	##print("Frame is ", frame)
 	if frame == 2:
-		#print("Frame is ", frame)
+		##print("Frame is ", frame)
 		get_parent().finish_spawn()

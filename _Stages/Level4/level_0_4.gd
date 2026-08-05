@@ -253,7 +253,7 @@ func _start_explain_reanimator() -> void:
 	toolTips.set_visual_tutorial_visual(summoner_zombie_demo_scene.instantiate())
 
 func _resume_game()->void:
-	print("Resume Game")
+	#print("Resume Game")
 	toolTips.hide()
 	pass
 	

@@ -45,7 +45,7 @@ func set_collision()->void:
 
 
 func rain_lightning()->void : 
-	print("Calling Rain Lightning")
+	#print("Calling Rain Lightning")
 	zombies_to_lightning_strike = lightning_spawn_area.get_overlapping_areas()
 	zombies_to_lightning_strike.shuffle()
 	currently_available_zombies = zombies_to_lightning_strike.filter(func(z:Area2D): return z.is_in_group("Zombie"))
@@ -76,9 +76,9 @@ func rain_lightning()->void :
 
 
 func _strike_batch(zombies: Array, num_zombies_to_strike: int) -> void:
-	#print("Should Lightning Strike Batch ",currently_available_zombies)
+	##print("Should Lightning Strike Batch ",currently_available_zombies)
 	if !is_on_cooldown:
-		print("About to Lightning Strike")
+		#print("About to Lightning Strike")
 		num_zombies_struck = 0
 		batches_struck += 1 
 		for i in range(zombies.size() - 1, -1, -1):
@@ -88,12 +88,13 @@ func _strike_batch(zombies: Array, num_zombies_to_strike: int) -> void:
 				num_zombies_struck += 1
 				#Could Remove From Array here if no want duplicates 
 	else:
-		print("IS ON COOLDOWN NO LIGHTNINGGGGGGGGGGGGG")
+		pass
+		#print("IS ON COOLDOWN NO LIGHTNINGGGGGGGGGGGGG")
 	
 func call_lighting(zombie : Area2D)->void:
 	var syn_lightning_instance = syn_lightning.instantiate()
 	syn_lightning_instance.global_position = zombie.global_position
-	print("Add Lightning Child to ", get_parent().get_active_dimension())
+	#print("Add Lightning Child to ", get_parent().get_active_dimension())
 	
 	if Global.is_on_purple_dimension():
 		syn_lightning_instance.add_to_group("Purple")
@@ -103,7 +104,7 @@ func call_lighting(zombie : Area2D)->void:
 	
 	
 func undo_swap_ability() -> void:
-	print("Stop Swap In Undo")
+	#print("Stop Swap In Undo")
 	stop()
 
 	

@@ -151,7 +151,7 @@ func get_cost() -> float:
 
 func receive_buff(demon) -> void:
 	var demonName : String = (demon.get_demon_true_name())
-	#print("WYRM SHOULD RECEICVE BUFF FROM ", demonName)
+	##print("WYRM SHOULD RECEICVE BUFF FROM ", demonName)
 	if !isBuffed:
 		unlock_new_buff(demonName)
 		super(demonName)
@@ -198,9 +198,9 @@ func unlock_new_buff(demonName:String)->void:
 					
 					
 func _increase_range()->void:
-	#print("Old Target Pos ",attack_ray.target_position )
+	##print("Old Target Pos ",attack_ray.target_position )
 	attack_ray.target_position = buffed_range_target_pos
-	#print("New Target Pos ",attack_ray.target_position )
+	##print("New Target Pos ",attack_ray.target_position )
 	update_range_preview()
 	
 						
@@ -214,7 +214,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			#add_ellipse(event.position)
 	
 func trigger_ultimate()->void:
-	print("Trigger Wyrm Ult")
+	#print("Trigger Wyrm Ult")
 	Global.un_ready_ultimate()
 	laserShootComp1.modulate = Color(1,1,1,0)
 	laserShootComp2.modulate = Color(1,1,1,0)
@@ -262,7 +262,7 @@ func _on_mouse_exited() -> void:
 # --- Heart Buff ---
 
 func receive_heart_buff()->void:
-	print(self.name, " receive Heart Buff")
+	#print(self.name, " receive Heart Buff")
 	buffNodes.get_child(0).visible = true
 	self.health = self.health + 400
 

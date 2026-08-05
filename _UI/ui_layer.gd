@@ -84,14 +84,14 @@ func set_blood(new_blood_amount: float) -> void:
 	
 	
 func set_initial_blood(new_blood_amount: float) -> void:
-	#print("SETTING NEW BLOOD ", new_blood_amount)
+	##print("SETTING NEW BLOOD ", new_blood_amount)
 	blood_set.emit(new_blood_amount)
 	blood_amount = new_blood_amount
 	if blood_label != null:
 		blood_label.text = str(blood_amount)
 		
 func set_zombie_unlock_notif(unlocked_zombie : String)->void:
-	print("Set Zombie Unlock Notif For ", unlocked_zombie)
+	#print("Set Zombie Unlock Notif For ", unlocked_zombie)
 	current_unlocked_zombie = unlocked_zombie
 	if unlocked_zombies.has(unlocked_zombie):
 		return 
@@ -107,7 +107,7 @@ func set_zombie_icon_texture(unlocked_zombie:String)->void:
 
 
 func set_unlock_notif(synergy : String)->void:
-	print("Set Unlock Notif For ", synergy)
+	#print("Set Unlock Notif For ", synergy)
 	if current_demon_synergies.has(synergy):
 		return 
 	current_demon_synergies.append(synergy)
@@ -133,10 +133,10 @@ func split_capitals(s: String) -> Array:
 
 
 func _on_demon_unlocked_button_pressed() -> void:
-	print("Demon Unlock Button Pressed")
-	print("Current Demon Synergies was ",current_demon_synergies )
+	#print("Demon Unlock Button Pressed")
+	#print("Current Demon Synergies was ",current_demon_synergies )
 	Global.navigate_to_buff(current_demon_synergies.pop_back())
-	print("Current Demon Synergies is now ",current_demon_synergies )
+	#print("Current Demon Synergies is now ",current_demon_synergies )
 	if current_demon_synergies.size() > 0:
 		set_icon_texture(current_demon_synergies[0])
 		return
@@ -147,7 +147,7 @@ func _on_demon_unlocked_button_pressed() -> void:
 
 
 func _on_zombie_unlocked_button_pressed() -> void:
-	print("Zombie Unlocked Button Pressed")
+	#print("Zombie Unlocked Button Pressed")
 	new_zombie_unlocked_button.hide()
 	get_parent().show_zombie_tutorial(current_unlocked_zombie)
 	

@@ -40,7 +40,7 @@ func free_portals()->void:
 
 func free_portal()->void:
 	if demon_manager != null:
-		print("DM IS ", demon_manager)
+		#print("DM IS ", demon_manager)
 		# Remove the blocker relative to THIS portal's dimension, not the active one —
 		# free_portals() frees both portals in one frame, so the active flag is wrong for one of them.
 		demon_manager.clear_space_for_source(grid_map_cell_pos, is_in_group("Purple"))
@@ -68,18 +68,18 @@ func _process(_delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		print("Swap Portal Area Entered")
+		#print("Swap Portal Area Entered")
 		if area.is_in_group("HasTeleported"):
 			pass
 		else:
 			if self.is_in_group("EntrancePortal"):
 				if self.is_in_group("Purple") && area.is_in_group("Purple"):
-					print("SWAP ZOMBIE DIMENSION PURPLE->GREEN")
+					#print("SWAP ZOMBIE DIMENSION PURPLE->GREEN")
 					area.add_to_group("HasTeleported")
 					area.change_dimensions(Global.get_green_portal_location())
 					
 				elif self.is_in_group("Green") && area.is_in_group("Green"):
-					print("SWAP ZOMBIE DIMENSION GREEN->PURPLE")
+					#print("SWAP ZOMBIE DIMENSION GREEN->PURPLE")
 					area.add_to_group("HasTeleported")
 					area.change_dimensions(Global.get_purple_portal_location())
 
@@ -104,7 +104,7 @@ func _init_demon_manager() -> void:
 		var _dm_grandparent: Node = _dm_parent.get_parent()
 		if _dm_grandparent and _dm_grandparent.has_node("DemonManager"):
 			demon_manager = _dm_grandparent.get_node("DemonManager")
-	print("Portal Demon Manager is ", demon_manager)
+	#print("Portal Demon Manager is ", demon_manager)
 
 func finish_spawn() -> void:
 	pass

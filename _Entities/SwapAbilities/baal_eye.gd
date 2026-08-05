@@ -25,7 +25,7 @@ func _ready() -> void:
 	 
 	
 	loop_start = path.curve.get_closest_offset( path.curve.get_point_position(1)) / path.curve.get_baked_length()
-	print("LOOOOP ", loop_start)
+	#print("LOOOOP ", loop_start)
 	#descend()
 
 func descend()->void:

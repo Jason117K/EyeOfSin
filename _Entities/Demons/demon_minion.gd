@@ -21,7 +21,7 @@ func _ready() -> void:
 	add_child(attack_timer)
 	
 	if self.is_in_group("Green"):
-		print(self, "THIS DEMON MINION IS GREEN")
+		#print(self, "THIS DEMON MINION IS GREEN")
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
@@ -32,7 +32,7 @@ func _ready() -> void:
 		set_collision_layer_value(2,false)
 		set_collision_layer_value(3,true)
 	else:
-		print(self, "THIS DEMON MINION IS PURPLE")
+		#print(self, "THIS DEMON MINION IS PURPLE")
 		set_collision_mask_value(1,false)
 		set_collision_mask_value(2,false)
 		set_collision_mask_value(3,false)
@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 func current_zombie_dead() -> void:
-	print(self, " received zombie dead signal")
+	#print(self, " received zombie dead signal")
 	attack_timer.stop()
 	current_zombie = null
 	canMove = true 
@@ -70,7 +70,7 @@ func demon_minion_busy(questioning_zombie : Zombie) -> bool:
 	if current_zombie == null:
 		current_zombie = questioning_zombie
 		canMove = false
-		#print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
+		##print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
 		current_zombie.zombie_death.connect(current_zombie_dead)
 		attack_timer.start()
 		return false 
@@ -81,7 +81,7 @@ func demon_minion_busy(questioning_zombie : Zombie) -> bool:
 func take_damage(amount : float) -> void:
 	health -= amount
 	if health <= 0:
-		#print("Die Cos Health too Low")
+		##print("Die Cos Health too Low")
 		queue_free()
 
 func get_health() -> float:

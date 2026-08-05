@@ -39,9 +39,10 @@ var hit_once := false
 
 func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 	var prefix := "\t".repeat(indent)
-	print(prefix + node.name + "(" + node.get_class() + ")")
+	#print(prefix + node.name + "(" + node.get_class() + ")")
 	for child in node.get_children():
-		print_scene_tree(child, indent + 1)
+		pass
+		#print_scene_tree(child, indent + 1)
 	
 func _wyrmBuff()->void:
 	wyrmBuff = true
@@ -54,14 +55,14 @@ func make_hero_lightning_strike()->void:
 	
 	
 func _ready() -> void:
-	#print(self, " Projectile Ready Position Is ", self.position)
-	#print_scene_tree()
+	##print(self, " Projectile Ready Position Is ", self.position)
+	##print_scene_tree()
 	if max_distance_can_travel == 0:
 		max_distance_can_travel = get_viewport_rect().size.x
 
 	self.area_entered.connect(on_hit)
 	if wyrmBuff:
-		#print("SETUP LIGHTNING ZONE")
+		##print("SETUP LIGHTNING ZONE")
 		setup_lightning_zone()
 	else:
 		lightning_detection_zone.monitoring = false
@@ -84,15 +85,15 @@ func _ready() -> void:
 		
 		self.set_collision_layer_value(2,true)
 		self.set_collision_layer_value(3,false)
-	#print(get_world_2d().direct_space_state , " area_entered connections: ", self.area_entered.get_connections())
-	#print("AREA OVERLAPP", get_overlapping_areas() )
+	##print(get_world_2d().direct_space_state , " area_entered connections: ", self.area_entered.get_connections())
+	##print("AREA OVERLAPP", get_overlapping_areas() )
 				
 func _physics_process(delta: float) -> void:
 	if not _spawn_initialized:
 		spawn_position = position
 		_spawn_initialized = true
-	#print("AREA OVERLAPP", get_overlapping_areas() )
-	#print(self, " Projectile 4Position Is ", self.position)
+	##print("AREA OVERLAPP", get_overlapping_areas() )
+	##print(self, " Projectile 4Position Is ", self.position)
 	var travel_distance := speed * delta
 	distance_traveled = position.x - spawn_position.x
 	
@@ -109,10 +110,10 @@ func _physics_process(delta: float) -> void:
 
 	position.x += travel_distance
 	distance_traveled = position.x - spawn_position.x
-	#print(self, " Projectile 6Position Is ", self.position)
+	##print(self, " Projectile 6Position Is ", self.position)
 	if distance_traveled > max_distance_can_travel:
 		if max_distance_can_travel > 0:
-			#print(self, " Traveled Too Far, ", distance_traveled , " is greater than ", max_distance_can_travel, " Time to Die ")
+			##print(self, " Traveled Too Far, ", distance_traveled , " is greater than ", max_distance_can_travel, " Time to Die ")
 			queue_free()
 		
 
@@ -142,11 +143,11 @@ func on_hit(area: Area2D) -> void:
 			return
 	else:
 		hit_once = true 
-	#print("Area Hit Is ", area)
+	##print("Area Hit Is ", area)
 	if area.is_in_group("Zombie"):
 		#if area.get_parent().get_parent() != self.get_parent().get_parent():
 			#return
-		#print(self,"Zombie Hit Is ", area)
+		##print(self,"Zombie Hit Is ", area)
 		var healthComp :ZombieHealthRefCountedComponent = area.getHealthComponent()
 		if healthComp.health < 1:
 			return 
@@ -155,7 +156,7 @@ func on_hit(area: Area2D) -> void:
 		if spinalOcculumBuff:
 			area.knockBack()
 		if give_blood_on_death:
-			print("Adding Blood Worth of ", blood_worth_to_add)
+			#print("Adding Blood Worth of ", blood_worth_to_add)
 			healthComp.add_blood_worth(blood_worth_to_add)
 		if spawn_drone_on_zombie_death:
 			area.spawn_drone_on_zombie_death()
@@ -169,7 +170,7 @@ func on_hit(area: Area2D) -> void:
 			column_explode = false
 		if silencing:
 			area.silence()
-		#print("Calling Take Damage On ", area, " damage is ", damage)
+		##print("Calling Take Damage On ", area, " damage is ", damage)
 		if is_on_fire:
 			pass
 			area.set_on_fire()
@@ -195,17 +196,17 @@ func enflame(enflame_damage_mult : float)->void:
 
 func _on_lightning_zone_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Zombie"):
-		#print(area, " is INDEED in Zombie Group")
+		##print(area, " is INDEED in Zombie Group")
 
 		#area.slow()
 		area.take_damage(false,lightning_damage,false)
 	else:
 		pass
-		#print(area, " is not in Zombie Group")
+		##print(area, " is not in Zombie Group")
 		
 # Function to handle blood generation
 func generate_blood() -> void:
-	print("Generating Blood From Proj")
+	#print("Generating Blood From Proj")
 	var blood_instance := blood_scene.instantiate()
 	get_parent().add_child(blood_instance) 
 	blood_instance.set_fast_pickup_time() 

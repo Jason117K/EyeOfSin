@@ -51,7 +51,7 @@ func set_all_areas() -> void:
 
 
 func get_highest_zombie_concentration_and_eat() -> void:
-	#print("Should Devour NOW")
+	##print("Should Devour NOW")
 	set_all_areas()
 	zombie_counts = [0, 0, 0, 0, 0, 0]
 
@@ -78,20 +78,20 @@ func get_highest_zombie_concentration_and_eat() -> void:
 
 	if zombie_counts[highest_index] > 0:
 		death_zone_area.position = all_detection_areas[highest_index].position
-		#print("Should Devour Pull From Below ")
+		##print("Should Devour Pull From Below ")
 		pull_from_below(zombies_per_area[highest_index])
 	else:
-		#print("Emiting Done Eat Early So Devour Sooner")
+		##print("Emiting Done Eat Early So Devour Sooner")
 		done_eating.emit()
 		
 		
 		
 func pull_from_below(zombies_found: Array) -> void:
 	zombies_to_kill = zombies_found.duplicate()
-	#print("Should Devour Zombies to Kill : ", zombies_to_kill)
+	##print("Should Devour Zombies to Kill : ", zombies_to_kill)
 	for zombie : Node in zombies_to_kill:
 		if is_instance_valid(zombie):
-			#print("Should Devour & Freeze ", zombie)
+			##print("Should Devour & Freeze ", zombie)
 			zombie.freeze()
 
 	pull_from_below_animation.show()
@@ -99,7 +99,7 @@ func pull_from_below(zombies_found: Array) -> void:
 
 	for zombie : Node in zombies_to_kill:
 		if is_instance_valid(zombie):
-			#print("Should Devour & Drag ", zombie)
+			##print("Should Devour & Drag ", zombie)
 			drag_down(zombie)
 
 	zombies_to_kill.clear()
@@ -121,7 +121,7 @@ func kill_zombie(zombie_to_kill: Node) -> void:
 
 func _on_pull_from_below_anim_animation_finished() -> void:
 	pull_from_below_animation.hide()
-	print("Emiting Done Eat Normal Time So Devour ")
+	#print("Emiting Done Eat Normal Time So Devour ")
 	done_eating.emit()
 
 

@@ -5,17 +5,17 @@ extends AnimatedSprite2D
 @export_range(-180, 180) var hue_shift: float = -86.0: #25.0
 	set(value):
 		hue_shift = clamp(value, -180.0, 180.0)
-		#print(hue_shift,"Apply HUE Shift ", count)
+		##print(hue_shift,"Apply HUE Shift ", count)
 		_apply_hue_shift()
 var demon_hue_shift := preload("res://_Common/Shaders/DemonHueShift.gdshader")
 
 
 func _ready() -> void:
-	print(self, " is now readyyyyyyyyyyyyyyyyyyyyyyyyy")
+	#print(self, " is now readyyyyyyyyyyyyyyyyyyyyyyyyy")
 	_apply_hue_shift()
 
 func _apply_hue_shift() -> void:
-	print("Apply Hue Shift ")
+	#print("Apply Hue Shift ")
 	
 	# Create material if needed
 	if material == null:

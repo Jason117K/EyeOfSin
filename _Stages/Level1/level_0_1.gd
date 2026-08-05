@@ -218,7 +218,7 @@ func _input(event: InputEvent) -> void:
 
 #region Step Entry Functions (same sequential order as definitions above)
 func _start_force_select_crawler() -> void:
-	print("Strart FORCE SELECR CRAWLER")
+	#print("Strart FORCE SELECR CRAWLER")
 	toolTips.set_basic_tutorial_text(TUTORIAL_SELECT_CRAWLER, false)
 	hide_all_demon_buttons_with_exception(["Crawler"])
 	#hide_all_demon_buttons_except_crawler()
@@ -240,7 +240,7 @@ func _start_force_place_demon() -> void:
 func _start_explain_blood_cost() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_BLOOD_COST, false)
 	toolTips.add_pulsing_button_highlight(Global.get_blood_panel())
-	print("Set Check Progress True 1 ")
+	#print("Set Check Progress True 1 ")
 	set_auto_advance_toolTip(3)
 	#check_progress = true 
 
@@ -249,7 +249,7 @@ func _start_explain_demon_hover() -> void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_DEMON_HOVER, false)
 	set_auto_advance_toolTip(0.1)
 	#check_progress = true 
-	print("Set Check Progress True 2", check_progress)
+	#print("Set Check Progress True 2", check_progress)
 	pass
 
 func _start_explain_hover_skull()->void:
@@ -263,17 +263,17 @@ func _start_explain_demon_click()->void:
 
 	
 func demon_hover()->void:
-	print("Demon Hover", first_hover)
+	#print("Demon Hover", first_hover)
 	if first_hover:
 		toolTips.hide()
 		_on_tooltip_hidden()
 		first_hover = false 
 	
 func progress_time_passed()->void:
-	print("Progress Time Passed ")
+	#print("Progress Time Passed ")
 	match progress_count:
 		0:
-			print("Hide Button In Progress Time Passed")
+			#print("Hide Button In Progress Time Passed")
 			toolTips._on_basic_tutorial_understood_button_pressed()
 		1:
 			first_hover = true 
@@ -281,7 +281,7 @@ func progress_time_passed()->void:
 	
 	
 func demon_clicked()->void:
-	print("demon clicked")
+	#print("demon clicked")
 	if demon_never_clicked:
 		toolTips.hide()
 		_on_tooltip_hidden()
@@ -295,7 +295,7 @@ func _start_explain_click_skull()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_CLICK_SKULL, false, Vector2(0,-48))
 
 func _start_wave_1() -> void:
-	print("STAT WAVE !1")
+	#print("STAT WAVE !1")
 	toolTips.stop_glow_pulse(zombie_spawner.get_preview_icon_panel())
 	waveManager.can_start = true
 	wave_1_active = false
@@ -306,7 +306,7 @@ func start_game() -> void:
 	_start_wave_1()
 
 func show_zombie_tutorial(unlocked_zombie : String)->void:
-	print("Unlocked Zombie Is ", unlocked_zombie)
+	#print("Unlocked Zombie Is ", unlocked_zombie)
 	match unlocked_zombie:
 		"Reborn":
 			_start_explain_basic_zombie()
@@ -314,7 +314,7 @@ func show_zombie_tutorial(unlocked_zombie : String)->void:
 			_start_explain_severed_zombie()
 
 func _start_explain_basic_zombie() -> void:
-	print("Explain Basic Zombie")
+	#print("Explain Basic Zombie")
 	Global.hide_notification_bar()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,20))
@@ -324,7 +324,7 @@ func _start_explain_health()->void:
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_HEALTH,true,Vector2(0,-26))
 
 func _continue_wave_1()->void:
-	print("Should Stop the Glow Pulse")
+	#print("Should Stop the Glow Pulse")
 	toolTips.stop_glow_pulse(Global.get_health_panel())
 	
 func _start_force_press_y() -> void:
@@ -384,7 +384,7 @@ func _filter_only_allow_y(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.swap_scenes()
-			#print("Advancing Tutorial Should Explian Green")
+			##print("Advancing Tutorial Should Explian Green")
 			advance_tutorial() # → EXPLAIN_GREEN_DIMENSION
 			return
 		else:
@@ -397,7 +397,7 @@ func _filter_only_allow_y(event: InputEvent) -> void:
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
 	toolTips.visible = false 
-	print("Tooltip Was Hidden, Current Step is ", get_current_step_name() )
+	#print("Tooltip Was Hidden, Current Step is ", get_current_step_name() )
 	#hide_spotlight()
 	match get_current_step_name():
 		"EXPLAIN_BLOOD_COST":
@@ -406,7 +406,7 @@ func _on_tooltip_hidden() -> void:
 		"EXPLAIN_DEMON_HOVER":
 			go_to_step("EXPLAIN_DEMON_CLICK")
 		"EXPLAIN_DEMON_CLICK":
-			print("Should Go To Step Click Skull")
+			#print("Should Go To Step Click Skull")
 			go_to_step("EXPLAIN_HOVER_SKULL")
 		"EXPLAIN_HOVER_SKULL":
 			go_to_step("EXPLAIN_CLICK_SKULL")
@@ -424,13 +424,13 @@ func _on_tooltip_hidden() -> void:
 
 func _on_crawler_placed() -> void:
 	if get_current_step_name() == "FORCE_PLACE_demon":
-		#print("Advancing YTutorial Here from : ", get_current_step_name())
+		##print("Advancing YTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → EXPLAIN_BLOOD_COST
 
 
 func _on_crawler_button_pressed() -> void:
 	if get_current_step_name() == "FORCE_SELECT_CRAWLER":
-		#print("Advancing WTutorial Here from : ", get_current_step_name())
+		##print("Advancing WTutorial Here from : ", get_current_step_name())
 		advance_tutorial() # → FORCE_PLACE_demon
 
 
@@ -439,11 +439,11 @@ func _on_wave_started(wave_index: int) -> void:
 		_on_tooltip_hidden()
 	if skip_tutorials:
 		return
-	print("Wave Starteddd")
+	#print("Wave Starteddd")
 	match wave_index:
 		0:
 			wave_1_active = true
-			print("Advacning Tutoiral Should Explain Basic Zomvie / HEALTH FR")
+			#print("Advacning Tutoiral Should Explain Basic Zomvie / HEALTH FR")
 			advance_tutorial() # → EXPLAIN_BASIC_ZOMBIE
 		1:
 			pass
@@ -474,14 +474,14 @@ func _physics_process(_delta: float) -> void:
 			if wave_1_completed :
 				if purple_zombies.size() == 0 and wave_1_active:
 					wave_1_complete = true
-					print("Going to Force Press Y")
+					#print("Going to Force Press Y")
 					go_to_step("FORCE_PRESS_Y")
 #endregion
 
 
 #region UI Helpers
 func setup_demon_selection_menu() -> void:
-	print("Demon Selection Menu is ", demonSelectionMenu)
+	#print("Demon Selection Menu is ", demonSelectionMenu)
 	demonSelectionMenu.get_world_swap_button().visible = false
 	#demonSelectionMenu.get_remove_demon_button().visible = false
 	demonSelectionMenu.get_codex_button().visible = false

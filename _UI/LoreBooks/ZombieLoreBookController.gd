@@ -44,7 +44,7 @@ var current_zobmie_texture : Texture2D
 var current_page := 2
 
 func _ready() -> void:
-	#print("Zombie AnimatedTextureRect: _ready() called")
+	##print("Zombie AnimatedTextureRect: _ready() called")
 	zombieBookVisual.go_to_page(current_page)
 	current_page = current_page + 1
 	
@@ -151,7 +151,7 @@ func _on_cone_head_zombie_pressed() -> void:
 	zombieBookVisual.go_to_page(current_page)
 	sprites = GlobalResourceLoader.get_zombie_animation(
 		GlobalResourceLoader.ZombieType.CONEHEAD)
-	print("Sprites was ",sprites )
+	#print("Sprites was ",sprites )
 	sprites = load("res://_Entities/Zombies/_Severed/Severed.tres")
 	play("Attack")
 	
@@ -319,5 +319,5 @@ func _on_back_button_pressed() -> void:
 	current_page = current_page - 1
 	zombieBookVisual.go_to_page(current_page)
 	get_parent().get_parent().visible = false
-	print("BBack Button Pressed")
+	#print("BBack Button Pressed")
 	Global.game_controller.restore_previous_scene()

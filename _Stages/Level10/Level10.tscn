@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="7_x3w7u"]
 [ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="8_x3w7u"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="9_6jrr4"]
+[ext_resource type="Script" uid="uid://c1y62mpedbiiq" path="res://_Utilities/Waves/level10_wave_entry.gd" id="9_xukng"]
 [ext_resource type="TileSet" uid="uid://dvsn02j7tjmga" path="res://_Assets/Environment/Act2/Tilesets/PurpleChapel.tres" id="9_ywaoo"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="10_0m1k8"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="11_838ad"]
@@ -50,37 +51,19 @@
 [ext_resource type="Texture2D" uid="uid://ib1561l82acs" path="res://_Assets/Environment/Act2/Dragon_Church_Statue.png" id="46_hgnhr"]
 [ext_resource type="Texture2D" uid="uid://d1xne4blp32s2" path="res://_Assets/Environment/Act2/Flowers.png" id="47_ghr5q"]
 
-[sub_resource type="Resource" id="Resource_xukng"]
-script = ExtResource("8_x3w7u")
-type = "Reborn"
-count = 5
-metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
-
-[sub_resource type="Resource" id="Resource_2erop"]
-script = ExtResource("8_x3w7u")
-type = "Severed"
-count = 1
-metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
-
-[sub_resource type="Resource" id="Resource_x8w7o"]
-script = ExtResource("8_x3w7u")
-type = "Unhallower"
-count = 1
-metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
-
-[sub_resource type="Resource" id="Resource_ot5yi"]
-script = ExtResource("8_x3w7u")
-type = "Sundered"
-count = 1
-metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
-
 [sub_resource type="Resource" id="Resource_vr50w"]
 script = ExtResource("7_x3w7u")
-entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_xukng"), SubResource("Resource_2erop"), SubResource("Resource_x8w7o"), SubResource("Resource_ot5yi")])
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_reoh2"]
+script = ExtResource("9_xukng")
+type = "Reanimator"
+count = 1
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
 
 [sub_resource type="Resource" id="Resource_86tkw"]
 script = ExtResource("7_x3w7u")
+entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_reoh2")])
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="Resource" id="Resource_jtg80"]
@@ -97,6 +80,81 @@ metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="Resource" id="Resource_wpxir"]
 script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_ot5yi"]
+script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_kf06p"]
+script = ExtResource("9_xukng")
+type = "Unhallower"
+count = 1
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
+
+[sub_resource type="Resource" id="Resource_qewa4"]
+script = ExtResource("9_xukng")
+type = "Reborn"
+count = 5
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
+
+[sub_resource type="Resource" id="Resource_3fgte"]
+script = ExtResource("7_x3w7u")
+entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_kf06p"), SubResource("Resource_qewa4")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_xukng"]
+script = ExtResource("9_xukng")
+type = "Reanimator"
+count = 1
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
+
+[sub_resource type="Resource" id="Resource_2erop"]
+script = ExtResource("7_x3w7u")
+entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_xukng")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_x8w7o"]
+script = ExtResource("9_xukng")
+type = "Reanimator"
+count = 1
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
+
+[sub_resource type="Resource" id="Resource_7k1j4"]
+script = ExtResource("7_x3w7u")
+entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_x8w7o")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_xeh8b"]
+script = ExtResource("7_x3w7u")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_s3aks"]
+script = ExtResource("9_xukng")
+type = "Unhallower"
+count = 1
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
+
+[sub_resource type="Resource" id="Resource_n7pl1"]
+script = ExtResource("9_xukng")
+type = "Reborn"
+count = 5
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
+
+[sub_resource type="Resource" id="Resource_87akm"]
+script = ExtResource("7_x3w7u")
+entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_s3aks"), SubResource("Resource_n7pl1")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_xb5r1"]
+script = ExtResource("9_xukng")
+type = "Reanimator"
+count = 1
+metadata/_custom_type_script = "uid://c1y62mpedbiiq"
+
+[sub_resource type="Resource" id="Resource_m43bi"]
+script = ExtResource("7_x3w7u")
+entries = Array[ExtResource("8_x3w7u")]([SubResource("Resource_xb5r1")])
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2byx"]
@@ -3334,6 +3392,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("6_2nmih")]
 visible = false
 position = Vector2(740, 141)
+waves = Array[ExtResource("7_x3w7u")]([SubResource("Resource_ot5yi"), SubResource("Resource_3fgte"), null, null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=197908073 instance=ExtResource("9_6jrr4")]
 z_index = 1
@@ -3342,6 +3401,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("6_2nmih")]
 visible = false
 position = Vector2(740, 173)
+waves = Array[ExtResource("7_x3w7u")]([SubResource("Resource_2erop"), null, null, null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("9_6jrr4")]
 z_index = 1
@@ -3350,6 +3410,7 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("6_2nmih")]
 visible = false
 position = Vector2(740, 205)
+waves = Array[ExtResource("7_x3w7u")]([null, null, null, null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=477558108 instance=ExtResource("9_6jrr4")]
 z_index = 1
@@ -3358,6 +3419,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=40172816 instance=ExtResource("6_2nmih")]
 visible = false
 position = Vector2(740, 237)
+waves = Array[ExtResource("7_x3w7u")]([SubResource("Resource_7k1j4"), null, null, null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=366118389 instance=ExtResource("9_6jrr4")]
 z_index = 1
@@ -3366,6 +3428,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=816215242 instance=ExtResource("6_2nmih")]
 visible = false
 position = Vector2(740, 269)
+waves = Array[ExtResource("7_x3w7u")]([SubResource("Resource_xeh8b"), SubResource("Resource_87akm"), null, null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1257123650 instance=ExtResource("9_6jrr4")]
 z_index = 1
@@ -3374,6 +3437,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1922773539 instance=ExtResource("6_2nmih")]
 visible = false
 position = Vector2(740, 301)
+waves = Array[ExtResource("7_x3w7u")]([null, SubResource("Resource_m43bi"), null, null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1043848066 instance=ExtResource("9_6jrr4")]
 z_index = 1

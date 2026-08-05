@@ -16,7 +16,7 @@ func _ready() -> void:
 	hive_buffed_health = demon.hive_buffed_health
 
 func receive_buff(demonName: String) -> void:
-	#print("Buff Name is ", newDemon.name)
+	##print("Buff Name is ", newDemon.name)
 
 	match demonName:
 		"Maw" :

@@ -102,7 +102,7 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 	Global.adjust_ui_layer()
 	reset_panel_size()
 	glow_panel.show()
-	#print("SHOW PREVIEW")
+	##print("SHOW PREVIEW")
 	_preview_wave_index = wave_index
 	$PreviewSprite.visible = true
 	self.visible = true
@@ -110,13 +110,13 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 	$Area2D/CollisionShape2D.disabled = false
 	next_wave_timer.start()
 	if Global.get_wave_manager()._current_wave > -1:
-		#print("Make visible, current wave is ",Global.get_wave_manager()._current_wave )
+		##print("Make visible, current wave is ",Global.get_wave_manager()._current_wave )
 		wave_progress_bar.visible = true
 		#timer_label.visible = true
 	else:
 		wave_progress_bar.visible = false
 		timer_label.visible = false 
-		#print("Global Current Wave is , ",  Global.get_wave_manager()._current_wave)
+		##print("Global Current Wave is , ",  Global.get_wave_manager()._current_wave)
 	progressing = true
 	#get_parent().emit_show_preview()
 	get_parent().emit_signal("show_preview_icon")
@@ -125,7 +125,7 @@ func show_preview(wave_index: int, show_start_button: bool = false) -> void:
 
 func hide_preview() -> void:
 	reset_panel_size()
-	#print("HIDE PREIVEW")
+	##print("HIDE PREIVEW")
 	_preview_wave_index = -1
 	glow_panel.hide()
 	$PreviewSprite.visible = false
@@ -140,10 +140,10 @@ func hide_preview() -> void:
 
 func _on_Area2D_mouse_entered() -> void:
 	if !can_click:
-		print($Area2D, " was mouse EARLY RETURN entered ", get_parent().get_parent().get_parent())
-		print($Area2D, " input pickable was set to ", $Area2D.input_pickable)
+		#print($Area2D, " was mouse EARLY RETURN entered ", get_parent().get_parent().get_parent())
+		#print($Area2D, " input pickable was set to ", $Area2D.input_pickable)
 		return 
-	#print($Area2D, " was mouse entered ", get_parent().get_parent().get_parent())
+	##print($Area2D, " was mouse entered ", get_parent().get_parent().get_parent())
 	reset_panel_size()
 	hover_over_preview.emit()
 	if _preview_wave_index < 0 or not $PreviewSprite.visible:
@@ -163,7 +163,7 @@ func _on_Area2D_mouse_entered() -> void:
 	for type_name:String in config:
 		
 		var count: int = config[type_name]
-		#print("Type Name is ", type_name, " with count ", count)
+		##print("Type Name is ", type_name, " with count ", count)
 		if count > 0:
 			#preview_text.append_text(str(type_name) + " : " + str(count) + "\n")
 			for this_label:RichTextLabel in ALL_ZOMBIE_LABELS:
@@ -181,7 +181,7 @@ func _on_Area2D_mouse_entered() -> void:
 						this_image.hue_shift = 0.0
 						this_image._apply_hue_shift()
 					else:
-						print("Should Apply Green Hue Shift")
+						#print("Should Apply Green Hue Shift")
 						this_image.hue_shift = -125.0
 						this_image._apply_hue_shift()
 												
@@ -237,10 +237,10 @@ func get_preview_icon_panel()->Control:
 func _on_start_game_button_pressed() -> void:
 	
 	if Global.gameIsStarted:
-		print("RequestingGGGGGGG")
+		#print("RequestingGGGGGGG")
 		call_wave_early_requested.emit()
 		return
-	print("starttttttSSS")
+	#print("starttttttSSS")
 	Global.start_game()
 	Global.gameIsStarted = true
 	game_start_requested.emit()
@@ -259,14 +259,14 @@ func set_preview_lead_time(new_preview_lead_time:float) -> void:
 	
 func set_detect_mouse(detection_enabled:bool)->void:
 	if detection_enabled:
-		#print(self, " Enable detection for ", get_parent().get_parent().get_parent())
+		##print(self, " Enable detection for ", get_parent().get_parent().get_parent())
 		$Area2D.input_pickable = true
 		start_game_button.mouse_filter = Control.MOUSE_FILTER_STOP
 		can_click = true
 
 		
 	else:
-		#print(self, " Disable detection for ", get_parent().get_parent().get_parent())
+		##print(self, " Disable detection for ", get_parent().get_parent().get_parent())
 		$Area2D.input_pickable = false
 		start_game_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		can_click = false

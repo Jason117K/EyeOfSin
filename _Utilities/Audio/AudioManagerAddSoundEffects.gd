@@ -26,7 +26,7 @@ func _run() -> void:
 		audio_manage_scene = PackedScene.new()
 		audio_manage_scene.pack(audio_manage_scene_instance)
 		ResourceSaver.save(audio_manage_scene, audio_manager_path)
-		#print("AudioManager updated. If you have the scene open in the editor, you may need to reload it to see the updates.")
+		##print("AudioManager updated. If you have the scene open in the editor, you may need to reload it to see the updates.")
 	else:
 		pass
-		#print("AudioManager was not updated, no new SoundEffect resources found.")
+		##print("AudioManager was not updated, no new SoundEffect resources found.")

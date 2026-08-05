@@ -47,13 +47,13 @@ func _init() -> void:
 	for job: Dictionary in JOBS:
 		_merge_job(job, seen_keys)
 	if not _retranslate.is_empty():
-		print("\nNEEDS RETRANSLATION (en changed, locale cells cleared):")
+		#print("\nNEEDS RETRANSLATION (en changed, locale cells cleared):")
 		for k: String in _retranslate:
-			print("  - " + k)
+			#print("  - " + k)
 	if not _orphaned.is_empty():
-		print("\nORPHANED rows (no matching .txt on disk; kept, delete manually if intended):")
+		#print("\nORPHANED rows (no matching .txt on disk; kept, delete manually if intended):")
 		for k: String in _orphaned:
-			print("  - " + k)
+			#print("  - " + k)
 	quit(1 if _had_error else 0)
 
 
@@ -155,7 +155,7 @@ func _merge_job(job: Dictionary, seen_keys: Dictionary) -> void:
 		_had_error = true
 		return
 	out.store_string("\n".join(lines) + "\n")
-	print("%s: %d added, %d en-updated, %d unchanged, %d orphaned" % [out_path.get_file(), added, updated, unchanged, _count_for(out_path)])
+	#print("%s: %d added, %d en-updated, %d unchanged, %d orphaned" % [out_path.get_file(), added, updated, unchanged, _count_for(out_path)])
 
 
 func _count_for(out_path: String) -> int:

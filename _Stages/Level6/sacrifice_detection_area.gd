@@ -38,9 +38,9 @@ func _on_area_exited(area: Area2D) -> void:
 
 func add_charge()->void:
 	charge = charge + 1
-	print("Add Charge, Charge Is ", charge)
+	#print("Add Charge, Charge Is ", charge)
 	if charge >= total_charge_needed && off_cooldown:
-		print("Emit Lightning Strike")
+		#print("Emit Lightning Strike")
 		lightning_storm.emit()
 		charge = 0
 		off_cooldown = false

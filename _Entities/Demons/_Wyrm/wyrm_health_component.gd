@@ -9,7 +9,7 @@ func _ready() -> void:
 	mawBuffed_health = demon.mawBuffed_health
 
 func receive_buff(demonName: String) -> void:
-	#print("Buff Name is ", demonName)
+	##print("Buff Name is ", demonName)
 
 	match demonName:
 		"SpinalOcculum" :

@@ -66,7 +66,7 @@ func setup_level() -> void:
 
 	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
-	print("_total_waves for waveManager is : ", _total_waves)
+	#print("_total_waves for waveManager is : ", _total_waves)
 	player_health.reset()
 	_ensure_lawn_mowers()
 
@@ -117,15 +117,15 @@ func get_current_wave() -> int:
 
 ## Called when the player clicks the Start button (gated by can_start).
 func _on_game_start_requested() -> void:
-	#print("START REEEEEEE")
+	##print("START REEEEEEE")
 	if not can_start:
-		#print("CANNOT START")
+		##print("CANNOT START")
 		return
 	_start_wave(0)
 
 func _on_call_early_wave_requested() -> void:
 	ScoreManager.wave_called_early()
-	#print("Requested Early Wave, current wave is ",_current_wave )
+	##print("Requested Early Wave, current wave is ",_current_wave )
 	#_start_wave(_current_wave + 1)
 	if (_current_wave + 1) < wave_delays.size():
 		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
@@ -137,13 +137,13 @@ func _on_call_early_wave_requested() -> void:
 
 ## Manually start the next wave (for tutorial-controlled progression).
 func start_next_wave() -> void:
-	#print("Manual Call Start Next Wave")
+	##print("Manual Call Start Next Wave")
 	_start_wave(_current_wave + 1)
 
 
 
 func _start_wave(index: int) -> void:
-	print("START WAVEEEEEEEEE ", index)
+	#print("START WAVEEEEEEEEE ", index)
 	Global.show_wave_label(index+1)
 	if index < 0 or index >= _total_waves:
 		return
@@ -164,10 +164,10 @@ func _start_wave(index: int) -> void:
 
 	# Schedule next wave (if not the last and delay is positive)
 	if index < wave_delays.size():
-		print("Index Is ",index, " & wave_delays.size() is ",wave_delays.size() )
+		#print("Index Is ",index, " & wave_delays.size() is ",wave_delays.size() )
 		var delay: float = wave_delays[index]
 		if delay > 0:
-			#print("Wave Delay Timer At Index ", index, " has a wait time of ", delay)
+			##print("Wave Delay Timer At Index ", index, " has a wait time of ", delay)
 			waveDelayTimer.wait_time = delay
 			waveDelayTimer.start()
 
@@ -182,7 +182,7 @@ func _start_wave(index: int) -> void:
 
 
 func _on_wave_delay_timer_timeout() -> void:
-	#print("Start Da Wave Here")
+	##print("Start Da Wave Here")
 	_start_wave(_current_wave + 1)
 
 
@@ -193,7 +193,7 @@ func _on_preview_timer_timeout() -> void:
 func _show_preview_for_next_wave() -> void:
 	var next := _current_wave + 1
 	if next < _total_waves:
-		#print("Wave Previews Is ", _wave_previews)
+		##print("Wave Previews Is ", _wave_previews)
 		for preview : Node in _wave_previews:
 			pass
 			preview.show_preview(next,true)
@@ -217,7 +217,7 @@ func _check_level_end() -> void:
 	if not _all_spawning_done:
 		return
 	if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
-		print("Emitting Level End Cos No Enmeies In Group")
+		#print("Emitting Level End Cos No Enmeies In Group")
 		level_ended.emit()
 	else:
 		get_tree().create_timer(1.0).timeout.connect(_check_level_end)
@@ -287,7 +287,8 @@ func _ensure_lawn_mowers() -> void:
 
 func launch_lawnmower(area_to_clear : Area2D, is_green : bool = false)->void:
 	if all_lawn_mowers.size()>0:
-		print("Going to Launch LawnMower, Mowers Left is ", all_lawn_mowers.size())
+		pass
+		#print("Going to Launch LawnMower, Mowers Left is ", all_lawn_mowers.size())
 		
 	for mower in all_lawn_mowers:
 		
@@ -298,7 +299,7 @@ func launch_lawnmower(area_to_clear : Area2D, is_green : bool = false)->void:
 				return
 		else:
 			if !mower.is_green:
-				print("Mower to Launch Is ", mower)
+				#print("Mower to Launch Is ", mower)
 				all_lawn_mowers.erase(mower)
 				mower.launch(area_to_clear)
 				return

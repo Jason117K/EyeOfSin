@@ -55,7 +55,7 @@ func _on_wave_started(wave_index: int) -> void:
 			demonManager.add_blood(25)
 			
 func show_zombie_tutorial(unlocked_zombie : String)->void:
-	print("Unlocked Zombie Is ", unlocked_zombie)
+	#print("Unlocked Zombie Is ", unlocked_zombie)
 	match unlocked_zombie:
 		"Reborn":
 			_start_explain_basic_zombie()
@@ -63,7 +63,7 @@ func show_zombie_tutorial(unlocked_zombie : String)->void:
 			_start_explain_severed_zombie()
 			
 func _start_explain_basic_zombie() -> void:
-	print("Explain Basic Zombie")
+	#print("Explain Basic Zombie")
 	Global.hide_notification_bar()
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_BASIC_ZOMBIE)
 	toolTips.set_visual_tutorial_visual(basic_zombie_demo_scene.instantiate(),true,Vector2(0,20))

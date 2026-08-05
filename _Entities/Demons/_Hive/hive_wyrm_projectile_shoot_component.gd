@@ -16,7 +16,7 @@ func _ready() -> void:
 	attack_rays = [attack_ray]
 	set_attack_rays_collision()
 	if auto_fire:
-		#print("AUTO FIRE TRUUUU")
+		##print("AUTO FIRE TRUUUU")
 		cooldown_timer = Timer.new()
 		add_child(cooldown_timer)
 		cooldown_timer.wait_time = cooldown
@@ -25,20 +25,20 @@ func _ready() -> void:
 	node_ready = true
 
 func fire_laser() -> void:
-	print("Try Fire Laser")
+	#print("Try Fire Laser")
 	if canAttack && laser_shoot_comp.done_firing:
 		laser_shoot_comp.fire()
 		shoot_projectile()
 	else:
 		pass
-		#print("Cannot Attack")
+		##print("Cannot Attack")
 		
 func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	projectile_to_buff.max_distance_can_travel = laser_shoot_comp.max_length
 	projectile_to_buff.bleed = false
 	projectile_to_buff.piercing = true
 	projectile_to_buff.is_slowing = false
-	print("Set Silencing To True, parent is ", get_parent())
+	#print("Set Silencing To True, parent is ", get_parent())
 	projectile_to_buff.silencing = true
 	projectile_to_buff.damage = projectile_damage
 	projectile_to_buff.speed = projectile_speed
