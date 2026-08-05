@@ -13,6 +13,9 @@ var percent_left : float
 var demon_manager : Node
 var grid_map_cell_pos : Vector2
 
+var is_green : bool
+var is_portal := true 
+
 	
 
 #Make Place Other Portal

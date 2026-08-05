@@ -3757,11 +3757,11 @@ new_power_title = "POWER_PORTALS_TITLE"
 new_power_description = "POWER_PORTALS_DESC_SHORT"
 new_power_texture = ExtResource("2_ut0b8")
 new_end_dialog = "res://_Assets/Dialog/level_06_end_dialog.dtl"
-wave2StartTime = 75
+wave2StartTime = 80
 wave3StartTime = 90
 wave4StartTime = 110
 wave5StartTime = 120
-wave6StartTime = 130
+wave6StartTime = 125
 debug = false
 record_footage = false
 skip_end_dialog = false
@@ -3775,7 +3775,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1133292641 instance=ExtResource("2_au3v8")]
-blood_points = 375
+blood_points = 400
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1

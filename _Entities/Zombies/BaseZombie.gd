@@ -574,13 +574,23 @@ func change_dimensions(new_position : Vector2) -> void:
 		self.set_collision_layer_value(4, true)
 		#set_hue_shift(-86)
 		self.reparent(Global.get_game_controller().get_purple_dimension().get_node("GameLayer"))
+		attack_ray.set_collision_mask_value(1,false)
+		attack_ray.set_collision_mask_value(2,true)
+		attack_ray.set_collision_mask_value(3,false)
+		
 	else:#Purple->Green
 		self.remove_from_group("Purple")
 		self.add_to_group("Green")
 		self.set_collision_layer_value(5, true)
 		#set_hue_shift(125)
 		self.reparent(Global.get_game_controller().get_green_dimension().get_node("GameLayer"))
+
+		attack_ray.set_collision_mask_value(1,false)
+		attack_ray.set_collision_mask_value(2,false)
+		attack_ray.set_collision_mask_value(3,true)
+		
 	self.global_position = new_position
+	
 
 
 # --- Getters ---

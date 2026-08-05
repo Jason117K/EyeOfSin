@@ -441,8 +441,9 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		
 		await get_tree().physics_frame
 		await get_tree().physics_frame
-		empty_demon_to_place.set_demon_type(demon_instance.current_demon_type)
-		
+		if !demon_instance.is_portal:
+			empty_demon_to_place.set_demon_type(demon_instance.current_demon_type)
+			
 		#Reduce Blood Points
 		blood_points -= demon_cost
 		

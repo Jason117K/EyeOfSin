@@ -101,7 +101,7 @@ func _ready() -> void:
 	var scale_x :float= laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
 	laserShootComp2.max_length =  attack_ray.target_position.x 
 	laserShootComp1.max_length =  attack_ray.target_position.x 
-	print("Laser Shoot Comp Default Max Length is ", laserShootComp1.max_length)
+	#print("Laser Shoot Comp Default Max Length is ", laserShootComp1.max_length)
 
 	# --- Timer config ---
 	shootTimer.wait_time = laser_cooldown
@@ -135,7 +135,7 @@ func update_range_preview()->void:
 	var scale_x = laserShootComp2.line2D.global_transform.x.length()
 	laserShootComp2.max_length =  attack_ray.target_position.x 
 	laserShootComp1.max_length =  attack_ray.target_position.x 
-	print("Laser Shoot Comp Buffed Max Length is ", laserShootComp1.max_length)
+	#print("Laser Shoot Comp Buffed Max Length is ", laserShootComp1.max_length)
 # --- Getters ---
 
 func get_demon_true_name() -> String:

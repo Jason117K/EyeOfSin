@@ -90,6 +90,7 @@ var game_time: float = 0.0
 var hero_demon_instance 
 var current_demon_type : Global.DEMON_TYPE
 var blood_clone_empty_parent 
+var is_portal := false
 
 @onready var hide_highlight_timer : Timer = Timer.new()
 
