@@ -15,16 +15,16 @@ const SCENES: Dictionary = {
 
 ## Per-type threat weighting; a wave's danger score is the count-weighted sum.
 const DANGER_SCORES: Dictionary = {
-	"Reborn": 1,
-	"Severed": 1,
-	"Unhallower": 1,
-	"Amalgam": 1,
-	"Reanimator": 1,
-	"Sundered": 1,
-	"Erupter": 1,
-	"Flesheater": 1,
-	"Rohan": 1,
-	"Buffer": 1
+	"Reborn": 2,
+	"Severed": 5,
+	"Unhallower": 50,
+	"Amalgam": 25,
+	"Reanimator": 100,
+	"Sundered": 25,
+	"Erupter": 50,
+	"Flesheater": 150,
+	"Rohan": 1000,
+	"Buffer": 50
 }
 
 const Y_OFFSETS: Dictionary = {

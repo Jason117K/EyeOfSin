@@ -3549,8 +3549,8 @@ texture = SubResource("AtlasTexture_b5hoh")
 position = Vector2(393, 361)
 texture = SubResource("AtlasTexture_nwycs")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

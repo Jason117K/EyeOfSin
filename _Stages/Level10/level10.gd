@@ -102,12 +102,12 @@ func _ready() -> void:
 #TODO Re-Implement Rohan 
 func _configure_waves() -> void:
 	zombie_spawner_1._build_pool(0)
-	#zombie_spawner_2._build_pool(0)
-	#zombie_spawner_3._build_pool(0)
-	#zombie_spawner_4._build_pool(0)
-	#zombie_spawner_5._build_pool(0)
-	#zombie_spawner_6._build_pool(0)
-	#zombie_spawner_7._build_pool(0)
+	zombie_spawner_2._build_pool(0)
+	zombie_spawner_3._build_pool(0)
+	zombie_spawner_4._build_pool(0)
+	zombie_spawner_5._build_pool(0)
+	zombie_spawner_6._build_pool(0)
+	zombie_spawner_7._build_pool(0)
 	#return
 	#zombie_spawner_1.set_waves_from_dicts([{},                                                   #(0)
 											#{},                                                  #(0)

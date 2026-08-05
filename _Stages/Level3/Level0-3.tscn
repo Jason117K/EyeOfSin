@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://cf23o6rna857e" path="res://_Stages/Level3/level_0_3.gd" id="1_3xvj4"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_k82tg"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_6yqwi"]
+[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="4_1a115"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_gehqo"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_o6keo"]
+[ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="5_q7mac"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="6_1vdho"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="6_t7wxb"]
+[ext_resource type="Script" uid="uid://cqkv0i4ragxm1" path="res://_Utilities/Waves/level3_wave_entry.gd" id="6_wqtmm"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="7_1dl7s"]
 [ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="8_uo8m3"]
 [ext_resource type="Texture2D" uid="uid://brt2p4mtk3uyg" path="res://_Assets/Environment/Tilesets/SpecialTile1.png" id="9_pylhy"]
@@ -85,6 +88,116 @@
 [ext_resource type="Texture2D" uid="uid://dv828bwpttdxc" path="res://_Assets/Environment/Props/GraveStonePURPLE15.png" id="84_7fnes"]
 [ext_resource type="Texture2D" uid="uid://rmgjkwwo8qj8" path="res://_Assets/Environment/Props/GraveStonePURPLE16.png" id="85_nwhm3"]
 [ext_resource type="Texture2D" uid="uid://bwx5cm4dsd64q" path="res://_Assets/Environment/Props/GraveStonePURPLE17.png" id="86_18xgo"]
+
+[sub_resource type="Resource" id="Resource_hnpjm"]
+script = ExtResource("4_1a115")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_k4e5a"]
+script = ExtResource("4_1a115")
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_tf4b0"]
+script = ExtResource("6_wqtmm")
+type = "Severed"
+count = 2
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_pb1tf"]
+script = ExtResource("6_wqtmm")
+type = "Reborn"
+count = 5
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_yhog0"]
+script = ExtResource("4_1a115")
+entries = Array[ExtResource("5_q7mac")]([SubResource("Resource_tf4b0"), SubResource("Resource_pb1tf")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_bybb7"]
+script = ExtResource("6_wqtmm")
+type = "Severed"
+count = 4
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_e0tbc"]
+script = ExtResource("6_wqtmm")
+type = "Unhallower"
+count = 1
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_g1rju"]
+script = ExtResource("4_1a115")
+entries = Array[ExtResource("5_q7mac")]([SubResource("Resource_bybb7"), SubResource("Resource_e0tbc")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_1a115"]
+script = ExtResource("6_wqtmm")
+type = "Reborn"
+count = 4
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_q7mac"]
+script = ExtResource("6_wqtmm")
+type = "Severed"
+count = 2
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_wqtmm"]
+script = ExtResource("4_1a115")
+entries = Array[ExtResource("5_q7mac")]([SubResource("Resource_1a115"), SubResource("Resource_q7mac")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_ww4n5"]
+script = ExtResource("6_wqtmm")
+type = "Reborn"
+count = 8
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_8rf3v"]
+script = ExtResource("6_wqtmm")
+type = "Severed"
+count = 2
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_qa6qe"]
+script = ExtResource("4_1a115")
+entries = Array[ExtResource("5_q7mac")]([SubResource("Resource_ww4n5"), SubResource("Resource_8rf3v")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_qbs3g"]
+script = ExtResource("6_wqtmm")
+type = "Reborn"
+count = 4
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_hdf6o"]
+script = ExtResource("6_wqtmm")
+type = "Severed"
+count = 3
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_l86aq"]
+script = ExtResource("4_1a115")
+entries = Array[ExtResource("5_q7mac")]([SubResource("Resource_qbs3g"), SubResource("Resource_hdf6o")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_xnq1y"]
+script = ExtResource("6_wqtmm")
+type = "Reborn"
+count = 8
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_d2wwr"]
+script = ExtResource("6_wqtmm")
+type = "Severed"
+count = 5
+metadata/_custom_type_script = "uid://cqkv0i4ragxm1"
+
+[sub_resource type="Resource" id="Resource_1hd4s"]
+script = ExtResource("4_1a115")
+entries = Array[ExtResource("5_q7mac")]([SubResource("Resource_xnq1y"), SubResource("Resource_d2wwr")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eq5sd"]
 texture = ExtResource("6_t7wxb")
@@ -3631,45 +3744,45 @@ blood_points = 600
 process_mode = 1
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1818320134 instance=ExtResource("3_6yqwi")]
-visible = false
 z_index = 1
 position = Vector2(740, 109)
+waves = Array[ExtResource("4_1a115")]([SubResource("Resource_hnpjm"), SubResource("Resource_k4e5a"), SubResource("Resource_yhog0"), SubResource("Resource_g1rju")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1288326444 instance=ExtResource("4_gehqo")]
 z_index = 1
 position = Vector2(-32, 0)
 
-[node name="ZombieSpawner3" parent="GameLayer" unique_id=1984376630 instance=ExtResource("3_6yqwi")]
-visible = false
+[node name="ZombieSpawner2" parent="GameLayer" unique_id=1984376630 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 141)
+waves = Array[ExtResource("4_1a115")]([SubResource("Resource_wqtmm"), SubResource("Resource_qa6qe"), SubResource("Resource_l86aq"), SubResource("Resource_1hd4s")])
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1587845654 instance=ExtResource("4_gehqo")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=1587845654 instance=ExtResource("4_gehqo")]
 z_index = 1
 position = Vector2(-32, 1)
 
-[node name="ZombieSpawner2" parent="GameLayer" unique_id=1903365869 instance=ExtResource("3_6yqwi")]
-visible = false
+[node name="ZombieSpawner3" parent="GameLayer" unique_id=1903365869 instance=ExtResource("3_6yqwi")]
 z_index = 1
 position = Vector2(740, 173)
+waves = Array[ExtResource("4_1a115")]([null, null, null])
 
-[node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=2026872960 instance=ExtResource("4_gehqo")]
+[node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=2026872960 instance=ExtResource("4_gehqo")]
 z_index = 1
 position = Vector2(-32, 0)
 
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1387059718 instance=ExtResource("3_6yqwi")]
-visible = false
 z_index = 1
 position = Vector2(740, 205)
+waves = Array[ExtResource("4_1a115")]([null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1069787089 instance=ExtResource("4_gehqo")]
 z_index = 1
 position = Vector2(-32, -1)
 
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=404246832 instance=ExtResource("3_6yqwi")]
-visible = false
 z_index = 1
 position = Vector2(740, 237)
+waves = Array[ExtResource("4_1a115")]([null, null, null])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1574738843 instance=ExtResource("4_gehqo")]
 z_index = 1
@@ -3677,7 +3790,7 @@ position = Vector2(-32, -1)
 
 [node name="GridManager" parent="GameLayer" unique_id=982072559 instance=ExtResource("5_o6keo")]
 
-[node name="TileMapLayer" parent="GameLayer/GridManager" index="1" unique_id=456208734]
+[node name="TileMapLayer" parent="GameLayer/GridManager" index="2" unique_id=456208734]
 modulate = Color(0.54, 0.54, 0.54, 1)
 z_index = 1
 tile_map_data = PackedByteArray("AAABAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQADAAYAAAAAAAAAAQAFAAUAAAAAAAAAAQAOAAYAAAAAAAAAAQALAAUAAAAAAAAAAQAVAAcAAAAAAAAAAQASAAYAAAAAAAAAAQAJAAYAAAAAAAAAAQAFAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAAAAYAAAAAAAAAAQABAAYAAAAAAAAAAQACAAcAAAAAAAAAAQADAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQACAAYAAAAAAAAAAQAEAAYAAAAAAAAAAQAGAAYAAAAAAAAAAQAGAAcAAAAAAAAAAQAFAAYAAAAAAAAAAQAHAAYAAAAAAAAAAQAIAAYAAAAAAAAAAQAHAAcAAAAAAAAAAQAJAAcAAAAAAAAAAQAKAAYAAAAAAAAAAQALAAcAAAAAAAAAAQAKAAcAAAAAAAAAAQALAAYAAAAAAAAAAQAMAAYAAAAAAAAAAQANAAYAAAAAAAAAAQANAAcAAAAAAAAAAQAMAAcAAAAAAAAAAQAOAAcAAAAAAAAAAQAPAAcAAAAAAAAAAQAPAAYAAAAAAAAAAQAQAAYAAAAAAAAAAQARAAYAAAAAAAAAAQARAAcAAAAAAAAAAQAQAAcAAAAAAAAAAQASAAcAAAAAAAAAAQATAAYAAAAAAAAAAQATAAcAAAAAAAAAAQAUAAcAAAAAAAAAAQAUAAYAAAAAAAAAAQAVAAYAAAAAAAAAAQAWAAYAAAAAAAAAAQAWAAcAAAAAAAAAAQAWAAIAAAAAAAAAAQAVAAIAAAAAAAAAAQAUAAIAAAAAAAAAAQATAAIAAAAAAAAAAQASAAIAAAAAAAAAAQARAAIAAAAAAAAAAQAQAAIAAAAAAAAAAQAPAAIAAAAAAAAAAQAOAAIAAAAAAAAAAQANAAIAAAAAAAAAAQAMAAIAAAAAAAAAAQALAAIAAAAAAAAAAQAKAAIAAAAAAAAAAQAJAAIAAAAAAAAAAQAIAAIAAAAAAAAAAQAHAAIAAAAAAAAAAQAGAAIAAAAAAAAAAQAFAAIAAAAAAAAAAQAEAAIAAAAAAAAAAQADAAIAAAAAAAAAAQACAAIAAAAAAAAAAQABAAIAAAAAAAAAAQAAAAIAAAAAAAAAAQAWAAUAAAAAAAAAAQAVAAUAAAAAAAAAAQAUAAUAAAAAAAAAAQATAAUAAAAAAAAAAQASAAUAAAAAAAAAAQARAAUAAAAAAAAAAQAQAAUAAAAAAAAAAQAPAAUAAAAAAAAAAQAOAAUAAAAAAAAAAQANAAUAAAAAAAAAAQAMAAUAAAAAAAAAAQAKAAUAAAAAAAAAAQAJAAUAAAAAAAAAAQAIAAUAAAAAAAAAAQAHAAUAAAAAAAAAAQAWAAQAAAAAAAAAAQAVAAQAAAAAAAAAAQAUAAQAAAAAAAAAAQATAAQAAAAAAAAAAQASAAQAAAAAAAAAAQARAAQAAAAAAAAAAQAQAAQAAAAAAAAAAQAPAAQAAAAAAAAAAQAGAAUAAAAAAAAAAQAEAAUAAAAAAAAAAQADAAUAAAAAAAAAAQACAAUAAAAAAAAAAQABAAUAAAAAAAAAAQAAAAUAAAAAAAAAAQAAAAQAAAAAAAAAAQABAAQAAAAAAAAAAQACAAQAAAAAAAAAAQADAAQAAAAAAAAAAQAEAAQAAAAAAAAAAQAFAAQAAAAAAAAAAQAGAAQAAAAAAAAAAQAHAAQAAAAAAAAAAQAIAAQAAAAAAAAAAQAJAAQAAAAAAAAAAQAKAAQAAAAAAAAAAQALAAQAAAAAAAAAAQAMAAQAAAAAAAAAAQANAAQAAAAAAAAAAQAOAAQAAAAAAAAAAQAAAAMAAAAAAAAAAQABAAMAAAAAAAAAAQACAAMAAAAAAAAAAQADAAMAAAAAAAAAAQAEAAMAAAAAAAAAAQAFAAMAAAAAAAAAAQAGAAMAAAAAAAAAAQAHAAMAAAAAAAAAAQAIAAMAAAAAAAAAAQAJAAMAAAAAAAAAAQAKAAMAAAAAAAAAAQALAAMAAAAAAAAAAQAQAAMAAAAAAAAAAQARAAMAAAAAAAAAAQASAAMAAAAAAAAAAQATAAMAAAAAAAAAAQAUAAMAAAAAAAAAAQAVAAMAAAAAAAAAAQAWAAMAAAAAAAAAAQAPAAMAAAAAAAAAAQAOAAMAAAAAAAAAAQANAAMAAAAAAAAAAQAMAAMAAAAAAAAAAQD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAA=")

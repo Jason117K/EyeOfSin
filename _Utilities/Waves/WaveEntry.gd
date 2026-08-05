@@ -18,6 +18,8 @@ var count: int = 1:
 func get_danger_score() -> int:
 	return count * int(ZombieRegistry.DANGER_SCORES.get(type, 1))
 
+func _get_allowed_types() -> Array:
+	return ZombieRegistry.SCENES.keys()
 
 func _get_property_list() -> Array[Dictionary]:
 	return [
@@ -25,7 +27,7 @@ func _get_property_list() -> Array[Dictionary]:
 			"name": "type",
 			"type": TYPE_STRING,
 			"hint": PROPERTY_HINT_ENUM,
-			"hint_string": ",".join(ZombieRegistry.SCENES.keys()),
+			"hint_string": ",".join(_get_allowed_types()),
 			"usage": PROPERTY_USAGE_DEFAULT,
 		},
 		{
