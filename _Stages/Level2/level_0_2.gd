@@ -483,6 +483,7 @@ func _on_crawler_placed(grid_pos: Vector2) -> void:
 		#print("Current Step Is ", get_current_step_name())
 		return
 	else:
+		pass
 		#print("Current Step Is " , get_current_step_name())
 	if crawler_placed == false:
 		var expected_pos_1 := tutorial_occulum_grid_pos - Vector2(32, 0)

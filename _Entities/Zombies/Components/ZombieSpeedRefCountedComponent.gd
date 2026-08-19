@@ -15,7 +15,7 @@ var max_base_speed_modulate : float = 2.0
 var min_slow_adjust_modulate : float = 0.0
 var max_slow_adjust_modulate : float = 0.03
 var current_slow_walking_speed_percent : float = 0.0
-var default_slow_walking_speed_percent : float = 0.7
+var default_slow_walking_speed_percent : float = 0.6
 
 #Could Pass Slow duration here or get it from the parent zombie when being slowed
 func _init(new_parent_zombie:Area2D) -> void:

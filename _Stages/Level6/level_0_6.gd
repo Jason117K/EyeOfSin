@@ -135,7 +135,7 @@ func _configure_waves() -> void:
 	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
 											{"Reborn": 10, "Severed": 2},                        #(3)
-											{"Reborn": 5, "Reanimator" : 1},                     #(11)
+											{"Reborn": 7, "Reanimator" : 1},                     #(11)
 											{"Severed": 4, "Reanimator" : 1}])                   #(12)
 											
 	zombie_spawner_3.set_waves_from_dicts([{"Reanimator":1,"Reborn":7, "Severed":2,},                             #(2+)
@@ -147,13 +147,13 @@ func _configure_waves() -> void:
 	zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
 											{"Reborn": 10, },                                    #(2)
 											{"Severed": 3, "Unhallower": 1},                     #(6+)
-											{"Amalgam":4},                                       #(10)
+											{"Amalgam":3},                                       #(10)
 											{"Reborn":8,"Amalgam":4}])                           #(11+)
 											
 	zombie_spawner_5.set_waves_from_dicts([{"Reborn":10, },                                       #(2)
 											{"Severed":6,  },                                     #(3)
 											{"Unhallower":1},                                     #(5)
-											{"Reborn":10, "Amalgam":2},                           #(7)
+											{"Severed":3, "Amalgam":2},                           #(7)
 											{"Amalgam":6}])                                      #(15)
 											
 	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
@@ -166,7 +166,7 @@ func _configure_waves() -> void:
 											{},                                                  #(0)
 											{},                                                  #(0)
 											{"Reborn":15},                                       #(3)
-											{"Reborn":20}])                                       #(4)
+											{"Severed":10}])                                       #(4)
 
 
 func finish_ready() -> void:

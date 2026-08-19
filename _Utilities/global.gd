@@ -33,7 +33,7 @@ var wave_manager : Node
 var is_blocking := false
 
 var dialog_is_disabled := true 
-var skip_tutorials := false 
+var skip_tutorials := true 
 
 var all_zombies := []
 var all_demons := []

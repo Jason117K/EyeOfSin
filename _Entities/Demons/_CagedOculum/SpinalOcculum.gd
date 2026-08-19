@@ -7,6 +7,9 @@ extends Demon
 @export var occulum_buffed_health := 850
 @export var occulum_buffed_max_health := 800
 @export var occulum_buffed_health_regen := 0.1
+@export var wyrm_buffed_health := 850
+@export var wyrm_buffed_max_health := 800
+@export var wyrm_buffed_health_regen := 0.1
 @export var maw_buffed_health := 850
 @export var maw_buffed_max_health := 800
 @export var maw_buffed_health_regen := 0.1

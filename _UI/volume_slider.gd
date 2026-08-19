@@ -17,6 +17,7 @@ func _ready() -> void:
 		value = db_to_linear(db_value)
 		#print("Setting slider value to: ", value)
 	else:
+		pass
 		#print("ERROR: Invalid bus index for bus: ", busName)
 
 func on_value_changed(value: float) -> void:

@@ -35,8 +35,8 @@ func _ready() -> void:
 	#toolTips.ToolTipHid.connect(_on_tooltip_hidden)
 
 func _configure_waves() -> void:
-	zombie_spawner_1.set_waves_from_dicts([{"Reborn":5,"Severed":2},                             #(2+)
-											{"Severed": 6},                                      #(3)    
+	zombie_spawner_1.set_waves_from_dicts([{"Unhallower":1},                             #(2+)
+											{"Reborn": 5,"Severed": 6},                                      #(3)    
 											{"Severed": 2, "Unhallower":1},                      #(6)
 											{"Severed": 2, "Reanimator":1}])                     #(11)
 											
@@ -65,8 +65,8 @@ func _configure_waves() -> void:
 											{"Reborn": 8, "Severed": 2},                        #(3)
 											{"Severed": 6,"Reanimator":1}])                      #(13)
 											
-	zombie_spawner_7.set_waves_from_dicts([{"Reborn":5,"Severed":2},                             #(2)
-											{"Reborn": 5, "Severed":2, "Unhallower":1},          #(7)
+	zombie_spawner_7.set_waves_from_dicts([{"Unhallower":1},                             #(2)
+											{"Reborn": 5, "Severed":6, },                 #(7)
 											{"Reborn": 8, "Severed": 2, "Unhallower":1},        #(8)
 											{"Severed":2,"Reanimator":1}])                      #(11)
 func getIsGreenDimension() -> bool:

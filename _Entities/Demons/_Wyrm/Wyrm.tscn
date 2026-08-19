@@ -921,10 +921,12 @@ size = Vector2(806, 20)
 [node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Demons", "Plants", "Wyrm"]]
 z_index = 1
 script = ExtResource("4")
+ultimate_damage = 125
+ultimate_bleed = 15
 spinalOcculumBuffed_health = 500
 mawBuffed_health = 400
-projectile_damage = 10
-bleed_damage_increase = 5
+projectile_damage = 13
+bleed_damage_increase = 8
 extension_speed = 5000.0
 max_length = 200.0
 laser_width = 2.0
@@ -991,22 +993,20 @@ texture = ExtResource("33_ds7ka")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
 material = SubResource("ShaderMaterial_fuqq8")
 sprite_frames = ExtResource("9_l4gaf")
-animation = &"idle"
+animation = &"attack"
 autoplay = "spawn"
+frame = 4
 script = ExtResource("4_3fijn")
 modulate_factor = Vector4(1, 1, 1, 1)
 
 [node name="LaserShootComponent" parent="." unique_id=1148768080 instance=ExtResource("6")]
 position = Vector2(-5, -7)
-scale = Vector2(1, 1)
 
 [node name="LaserShootComponent2" parent="." unique_id=1577011033 instance=ExtResource("6")]
 position = Vector2(8, -9)
-scale = Vector2(1, 1)
 
 [node name="LaserShootComponent3" parent="." unique_id=1439520591 instance=ExtResource("6")]
 position = Vector2(-2, -17)
-scale = Vector2(1, 1)
 
 [node name="BloodSpitFX" type="AnimatedSprite2D" parent="." unique_id=1052488203]
 position = Vector2(6, -5)
@@ -1025,6 +1025,7 @@ position = Vector2(-1, -2.5)
 shape = SubResource("1")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1120460148]
+visible = false
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1086403001]
 self_modulate = Color(0, 0, 0, 1)
@@ -1148,7 +1149,7 @@ script = null
 sprite_frames = SubResource("SpriteFrames_ftpd4")
 
 [node name="BeamUlt" type="AnimatedSprite2D" parent="." unique_id=849064209]
-position = Vector2(344, -11)
+position = Vector2(346, -9)
 sprite_frames = ExtResource("32_ds7ka")
 animation = &"beam"
 

@@ -138,7 +138,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					place_demon(grid_pos)				
 			else:
 				if(grid_pos.x<769 && grid_pos.y<500 && grid_pos.y > 80):
-					##print(get_parent(), "QQOtro Place Demon " , grid_pos)
+					print(get_parent(), "QQOtro Place Demon " , grid_pos)
 					var temp_check_instance =  get_selected_demon().instantiate()
 					#if temp_check_instance.is_hero == false:
 					if temp_check_instance.is_in_group("Portal"):
@@ -308,11 +308,14 @@ func place_blood_demon(grid_pos: Vector2) -> Demon:
 	
 # Place the selected demon on the grid
 func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
+	print("Place Demon At ", grid_pos)
 	if(grid_pos.x<769 && grid_pos.y<336 && grid_pos.y > 48):
 		pass
 	else:
+		print("Demon Cant Place at ", grid_pos, " early return")
 		return 
 	if grid_manager.is_blocked(grid_pos):
+		print("Demon Cant Place at ", grid_pos, " cos BLOCKED early return")
 		return 
 	
 	# Dynamically get the selected demon	
@@ -340,6 +343,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
+		print("Add Demon ", demon_instance, " to purple group")
 		empty_demon_to_place.add_to_group("Green")
 		empty_demon_to_place.is_green = true 
 		demon_instance.add_to_group("Green")
@@ -415,7 +419,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	
 	#Get The Cost 
 	demon_cost = demon_instance.get_cost()
-	##print("Demon CCost is : ", demon_cost)
+	print("Demon CCost is : ", demon_cost)
 	
 	if blood_points >= demon_cost: 
 		#Maw Handling, occupies two cells

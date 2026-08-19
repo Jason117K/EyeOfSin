@@ -1388,7 +1388,7 @@ offset_right = 152.0
 offset_bottom = 2036.5
 
 [node name="DemonManager" parent="." unique_id=282479321 instance=ExtResource("2_m8syp")]
-blood_points = 290
+blood_points = 250
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1910969798]
 stream = ExtResource("25_7in2w")

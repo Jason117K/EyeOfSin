@@ -200,6 +200,7 @@ animations = [{
 process_mode = 3
 z_index = 2
 script = ExtResource("1_b40rw")
+blood_damage = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1772793892]
 position = Vector2(-1, 6.5)

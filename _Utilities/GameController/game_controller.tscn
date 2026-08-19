@@ -46,6 +46,7 @@ current_level_alt = "res://Scenes/LevelScenes/Level0-1_Alternate.tscn"
 
 [node name="WaveManager" parent="CurrentScene" unique_id=275355790 instance=ExtResource("7_k31g3")]
 position = Vector2(-40, 200)
+preview_lead_time = 30.0
 
 [node name="NotifMarginContainer" parent="." unique_id=1498960940 instance=ExtResource("9_ip61f")]
 visible = false

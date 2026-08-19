@@ -229,17 +229,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s2ya0"]
-size = Vector2(53, 24)
+size = Vector2(94, 24)
 
 [node name="SpikeRock" type="Area2D" unique_id=869057113]
 script = ExtResource("1_s2ya0")
+spike_damage = 40.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2076998205]
-position = Vector2(44, 0)
+[node name="SpikeRock_1" type="AnimatedSprite2D" parent="." unique_id=2076998205]
+position = Vector2(36, -1)
+sprite_frames = SubResource("SpriteFrames_e54eh")
+frame = 13
+frame_progress = 0.2157395
+
+[node name="SpikeRock_2" type="AnimatedSprite2D" parent="." unique_id=344998759]
+position = Vector2(78, -1)
 sprite_frames = SubResource("SpriteFrames_e54eh")
 frame = 13
 frame_progress = 0.2157395
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1311900812]
-position = Vector2(40.5, 2)
+position = Vector2(61, 2)
 shape = SubResource("RectangleShape2D_s2ya0")

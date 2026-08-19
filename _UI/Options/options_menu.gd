@@ -15,6 +15,7 @@ func _ready() -> void:
 	#print("Master slider value: ", $CenterContainer/VBoxContainer/masterVolumeSlider.value if $CenterContainer/VBoxContainer/masterVolumeSlider else "null")
 	#print("Available audio buses: ")
 	for i in AudioServer.bus_count:
+		pass
 		#print("  Bus ", i, ": ", AudioServer.get_bus_name(i))
 	backButton = get_node("BackButton")
 	#print("Baack Button is ", backButton)

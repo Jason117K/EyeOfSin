@@ -63,6 +63,28 @@
 [ext_resource type="Texture2D" uid="uid://do810kt1fef16" path="res://_Assets/Environment/Act2/BigWaterAnim_2-Sheet.png" id="58_425dm"]
 [ext_resource type="Texture2D" uid="uid://te84bp0hfx5j" path="res://_Assets/Environment/Act2/BigWaterAnim_3-Sheet.png" id="59_3h2rt"]
 
+[sub_resource type="Resource" id="Resource_o6gef"]
+script = ExtResource("9_fcy4v")
+type = "Reborn"
+count = 10
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_fcy4v"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_o6gef")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_g4ks8"]
+script = ExtResource("9_fcy4v")
+type = "Sundered"
+count = 3
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_lp3x5"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_g4ks8")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
 [sub_resource type="Resource" id="Resource_so5nc"]
 script = ExtResource("10_8m1ly")
 type = "Unhallower"
@@ -72,6 +94,17 @@ metadata/_custom_type_script = "uid://c1y62mpedbiiq"
 [sub_resource type="Resource" id="Resource_fnd4g"]
 script = ExtResource("7_o6gef")
 entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_so5nc")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_105k7"]
+script = ExtResource("9_fcy4v")
+type = "Sundered"
+count = 2
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_1emk7"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_105k7")])
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="Resource" id="Resource_q6pqg"]
@@ -85,6 +118,28 @@ script = ExtResource("7_o6gef")
 entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_q6pqg")])
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
+[sub_resource type="Resource" id="Resource_8m1ly"]
+script = ExtResource("9_fcy4v")
+type = "Unhallower"
+count = 1
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_gf1bo"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_8m1ly")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_1dl3e"]
+script = ExtResource("9_fcy4v")
+type = "Reanimator"
+count = 1
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_doxyq"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_1dl3e")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
 [sub_resource type="Resource" id="Resource_p7sbo"]
 script = ExtResource("9_fcy4v")
 type = "Unhallower"
@@ -94,6 +149,39 @@ metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
 [sub_resource type="Resource" id="Resource_ku4ea"]
 script = ExtResource("7_o6gef")
 entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_p7sbo")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_jsxhc"]
+script = ExtResource("9_fcy4v")
+type = "Sundered"
+count = 1
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_qadxe"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_jsxhc")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_81vfu"]
+script = ExtResource("9_fcy4v")
+type = "Sundered"
+count = 3
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_srmav"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_81vfu")])
+metadata/_custom_type_script = "uid://crr67tmp2yh8d"
+
+[sub_resource type="Resource" id="Resource_76sr4"]
+script = ExtResource("9_fcy4v")
+type = "Reborn"
+count = 10
+metadata/_custom_type_script = "uid://dpe7du2tkhlt0"
+
+[sub_resource type="Resource" id="Resource_5qw74"]
+script = ExtResource("7_o6gef")
+entries = Array[ExtResource("9_fcy4v")]([SubResource("Resource_76sr4")])
 metadata/_custom_type_script = "uid://crr67tmp2yh8d"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c176a"]
@@ -5711,7 +5799,7 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=128186070 instance=ExtResource("6_aab5q")]
 visible = false
 position = Vector2(740, 109)
-waves = Array[ExtResource("7_o6gef")]([null, null, null, null, null, null])
+waves = Array[ExtResource("7_o6gef")]([null, SubResource("Resource_fcy4v"), null, null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1497888431 instance=ExtResource("9_lxxmd")]
@@ -5721,7 +5809,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1689922068 instance=ExtResource("6_aab5q")]
 visible = false
 position = Vector2(740, 141)
-waves = Array[ExtResource("7_o6gef")]([null, null, null, null, null, null])
+waves = Array[ExtResource("7_o6gef")]([null, null, SubResource("Resource_lp3x5"), null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=326913154 instance=ExtResource("9_lxxmd")]
@@ -5731,7 +5819,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("6_aab5q")]
 visible = false
 position = Vector2(740, 173)
-waves = Array[ExtResource("7_o6gef")]([SubResource("Resource_fnd4g"), null, null, null, null, null])
+waves = Array[ExtResource("7_o6gef")]([SubResource("Resource_fnd4g"), null, SubResource("Resource_1emk7"), null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("9_lxxmd")]
@@ -5741,7 +5829,7 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=2041524300 instance=ExtResource("6_aab5q")]
 visible = false
 position = Vector2(740, 205)
-waves = Array[ExtResource("7_o6gef")]([SubResource("Resource_x5atj"), null, null, null, null, null])
+waves = Array[ExtResource("7_o6gef")]([SubResource("Resource_x5atj"), SubResource("Resource_gf1bo"), SubResource("Resource_doxyq"), null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1681998341 instance=ExtResource("9_lxxmd")]
@@ -5751,7 +5839,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=228284926 instance=ExtResource("6_aab5q")]
 visible = false
 position = Vector2(740, 237)
-waves = Array[ExtResource("7_o6gef")]([SubResource("Resource_ku4ea"), null, null, null, null, null])
+waves = Array[ExtResource("7_o6gef")]([SubResource("Resource_ku4ea"), null, SubResource("Resource_qadxe"), null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1236080942 instance=ExtResource("9_lxxmd")]
@@ -5761,7 +5849,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1329179264 instance=ExtResource("6_aab5q")]
 visible = false
 position = Vector2(740, 269)
-waves = Array[ExtResource("7_o6gef")]([null, null, null, null, null, null])
+waves = Array[ExtResource("7_o6gef")]([null, null, SubResource("Resource_srmav"), null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1772735517 instance=ExtResource("9_lxxmd")]
@@ -5771,7 +5859,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=2003164474 instance=ExtResource("6_aab5q")]
 visible = false
 position = Vector2(740, 301)
-waves = Array[ExtResource("7_o6gef")]([null, null, null, null, null, null])
+waves = Array[ExtResource("7_o6gef")]([null, SubResource("Resource_5qw74"), null, null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=633272156 instance=ExtResource("9_lxxmd")]

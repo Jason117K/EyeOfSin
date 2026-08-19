@@ -36,7 +36,7 @@ func _configure_waves() -> void:
 	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
 											{"Severed": 2, "Reborn": 5},                         #(2)
-											{"Reborn": 3, "Reanimator" : 1},                    #(11-)
+											{"Reborn": 6, "Reanimator" : 1},                    #(11-)
 											{"Reborn": 3, "Reanimator" : 1}])                    #(11-)
 											
 	zombie_spawner_3.set_waves_from_dicts([{},                                                   #(0)
@@ -48,7 +48,7 @@ func _configure_waves() -> void:
 	zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
 											{"Reborn": 10, },                                    #(2)
 											{"Severed": 3, "Unhallower": 1},                     #(6+)
-											{"Amalgam":4},                                       #(10)
+											{"Amalgam":3},                                       #(10)
 											{"Reborn":8,"Amalgam":4}])                           #(11+)
 											
 	zombie_spawner_5.set_waves_from_dicts([{},                                                   #(0)
@@ -66,7 +66,7 @@ func _configure_waves() -> void:
 	zombie_spawner_7.set_waves_from_dicts([{"Reborn":10, },                                       #(2)
 											{"Severed":6,  },                                     #(3)
 											{"Unhallower":1},                                     #(5)
-											{"Reborn":10, "Amalgam":2},                           #(7)
+											{"Reborn":8, "Amalgam":2},                           #(7)
 											{"Amalgam":6}])                                      #(15)
 
 func getIsGreenDimension() -> bool:

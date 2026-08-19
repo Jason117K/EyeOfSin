@@ -359,6 +359,7 @@ func _on_spinal_occulum_placed(_grid_position) -> void:
 		#print("Should Hide ToolTip")
 		toolTips.hide()
 	else:
+		pass
 		#print("Current Step is ", get_current_step_name())
 				
 func _on_wave_started(wave_index: int) -> void:

@@ -13,7 +13,7 @@ extends Control
 
 @onready var ultimate_margin_container : MarginContainer = $UltimateMarginContainer
 var current_mana := 0 
-var charges := 0 
+var charges := 2 
 var max_charges := 4
 var is_enabled := true 
 

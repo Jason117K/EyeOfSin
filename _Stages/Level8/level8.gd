@@ -133,11 +133,11 @@ func _configure_waves() -> void:
 											
 	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)
-											{"Amalgam": 2},                                      #(5)
-											{"Reborn": 5, "Reanimator" : 1},                     #(11)
+											{"Unhallower":1,"Amalgam": 2},                                      #(5)
+											{"Severed": 4, "Reanimator" : 1},                     #(11)
 											{"Buffer": 1, "Reanimator" : 1}])                    #(15)
 											
-	zombie_spawner_3.set_waves_from_dicts([{"Reborn":3,"Severed":4},                             #(2+)
+	zombie_spawner_3.set_waves_from_dicts([{"Reborn":5,"Severed":5},                             #(2+)
 											{"Reborn": 3,"Unhallower":1},                        #(5+)    
 											{"Severed": 4, "Unhallower":1},                       #(7)
 											{"Severed": 4, "Reanimator":1},                      #(12)
@@ -145,25 +145,25 @@ func _configure_waves() -> void:
 											
 	zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
 											{"Severed": 2,"Unhallower":1},                       #(6)
-											{"Reanimator":1},                                    #(10)
+											{"Reanimator":1,"Unhallower":1},                                    #(10)
 											{"Severed":2 ,"Amalgam":4},                          #(11+)
 											{"Amalgam":4,"Buffer":1}])                           #(15)
 											
-	zombie_spawner_5.set_waves_from_dicts([{"Severed":5, },                                       #(2+)
+	zombie_spawner_5.set_waves_from_dicts([{"Severed":8, },                                       #(2+)
 											{"Amalgam":2,  },                                     #(5)
-											{"Reborn":5, "Amalgam":2},                            #(6)
-											{"Buffer":1, "Amalgam":2},                           #(10)
+											{"Severed":4, "Amalgam":2},                            #(6)
+											{"Amalgam":4},                           #(10)
 											{ "Severed":4, "Unhallower":1,"Buffer":1}])          #(13)
 											
 	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
 											{},                                                  #(0)  
-											{"Severed": 6},                                      #(3)
+											{"Unhallower":1,"Severed": 4},                                      #(3)
 											{"Reanimator":1},                                    #(10)
 											{"Amalgam": 2,"Reanimator":1}])                      #(15)
 											
 	zombie_spawner_7.set_waves_from_dicts([{},                                                   #(0)
-											{},                                                  #(0)
-											{},                                                  #(0)
+											{"Sundered":1,"Unhallower":1},                                                  #(0)
+											{"Amalgam":2},                                                  #(0)
 											{"Buffer":1},                                        #(5)
 											{"Buffer":2}])                                       #(10)
 

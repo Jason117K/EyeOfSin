@@ -476,7 +476,7 @@ z_index = 1
 collision_layer = 2
 script = ExtResource("1_2rcxa")
 health = 200
-speed = 24.0
+speed = 21.0
 fire_fix_position = Vector2(15, 1)
 syn_mark_position = Vector2(4, -13)
 

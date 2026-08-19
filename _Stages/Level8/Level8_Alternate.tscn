@@ -72,12 +72,10 @@ isGreenDimension = true
 record_footage = false
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("2_814ju")]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 make_green = true
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("3_83jvw")]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 is_alt = true
 
@@ -86,7 +84,7 @@ visible = false
 layout_mode = 1
 
 [node name="DemonManager" parent="." unique_id=1812003954 instance=ExtResource("5_f0h7o")]
-blood_points = 2442
+blood_points = 400
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1288006005]
 process_mode = 1

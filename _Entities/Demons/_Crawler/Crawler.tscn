@@ -1223,10 +1223,11 @@ animations = [{
 [node name="Crawler" type="Area2D" unique_id=675421916 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
+attack_speed_mult = 1.1
 blood_worth_to_add = 2.0
 buffed_range_target_pos = Vector2(450, 0)
 spiderling_wait_time = 4
-spinalOcculumHealth = 500.0
+spinalOcculumHealth = 650.0
 mana_add_on_shot = 10
 ultimate_timer_wait_time = 0.1
 cost = 75.0

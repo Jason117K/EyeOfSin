@@ -7,7 +7,9 @@ var blood_worth_to_add := 0
 var shoot_interval: float
 var shoot_timer: Timer
 var second_shot_timer: Timer
+
 var damage_increase := 10
+var occulum_damage_increase := 20
 
 func _ready() -> void:
 	attack_rays = [attack_ray_1]
@@ -99,7 +101,7 @@ func receive_buff(newDemon: String) -> void:
 	
 	match newDemon:
 		"Occulum":
-			damage = damage + damage_increase
+			damage = damage + occulum_damage_increase
 		"Crawler":
 			pass
 		"SpinalOcculum" :
