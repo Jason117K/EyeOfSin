@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="6_7fyap"]
 [ext_resource type="Texture2D" uid="uid://ch7x4yluo887e" path="res://_Assets/Environment/Tilesets/Ground_Rock_GreenVer1.png" id="7_1rolb"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="8_jhxut"]
+[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="8_mn8q5"]
 [ext_resource type="Script" uid="uid://bdglpq7w4qohv" path="res://_Common/EnvironmentScripts/sway.gd" id="8_nlpi7"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="9_lgc8d"]
 [ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="10_dk2pv"]
@@ -1265,7 +1266,7 @@ layout_mode = 1
 make_green = true
 
 [node name="DemonManager" parent="." unique_id=44492489 instance=ExtResource("3_fysat")]
-blood_points = 250
+blood_points = 275
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=839164457]
 process_mode = 1
@@ -1273,6 +1274,7 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=2057685534 instance=ExtResource("4_x35ys")]
 visible = false
 position = Vector2(740, 109)
+waves = Array[ExtResource("8_mn8q5")]([null, null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=2098310623 instance=ExtResource("5_cfq71")]
@@ -1282,6 +1284,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1264917164 instance=ExtResource("4_x35ys")]
 visible = false
 position = Vector2(740, 141)
+waves = Array[ExtResource("8_mn8q5")]([null, null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=506190949 instance=ExtResource("5_cfq71")]
@@ -1291,6 +1294,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1871957712 instance=ExtResource("4_x35ys")]
 visible = false
 position = Vector2(740, 173)
+waves = Array[ExtResource("8_mn8q5")]([null, null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=618197459 instance=ExtResource("5_cfq71")]
@@ -1300,6 +1304,7 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=707224228 instance=ExtResource("4_x35ys")]
 visible = false
 position = Vector2(740, 205)
+waves = Array[ExtResource("8_mn8q5")]([null, null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=319483994 instance=ExtResource("5_cfq71")]
@@ -1309,6 +1314,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=1507788297 instance=ExtResource("4_x35ys")]
 visible = false
 position = Vector2(740, 237)
+waves = Array[ExtResource("8_mn8q5")]([null, null, null, null])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=978056081 instance=ExtResource("5_cfq71")]

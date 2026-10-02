@@ -10,7 +10,7 @@ extends Control
 @onready var charge_2 := $UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer/AllChargeHboxContainer/Charge2
 @onready var charge_3 := $UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer/AllChargeHboxContainer/Charge3
 @onready var charge_4 := $UltimateMarginContainer/UltimateVboxContainer/AllChargesPanelContainer/MarginContainer/AllChargeHboxContainer/Charge4
-
+@onready var ultimate_vbox_container := $UltimateMarginContainer/UltimateVboxContainer
 @onready var ultimate_margin_container : MarginContainer = $UltimateMarginContainer
 var current_mana := 0 
 var charges := 2 
@@ -83,6 +83,7 @@ func disable_ult()->void:
 
 func enable_ult()->void:
 	#print("GLOBAL-Ult Ult Enabled")
+	self.show()
 	is_enabled = true 
 	modulate = Color(1,1,1,1)
 	for charge in all_charges:

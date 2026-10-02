@@ -84,6 +84,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 #region Lifecycle
 func _ready() -> void:
 	Global.enable_ultimate()
+	
+	Global.ultimate_charge_container.set_margin()
 	level_title = tr("LEVEL_TITLE_0_8")
 	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
@@ -199,18 +201,20 @@ func getIsPurpleDimension()->void:
 #region Step Entry Functions
 
 func _start_explain_ultimates()->void:
+	print("Explain Ult 1")
 	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
 	toolTips.set_visual_demon_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES,true,tr("TIP_TITLE_ULTIMATES"))
 	toolTips.set_visual_demon_tutorial_visual(ultimate_demo.instantiate(),true,Vector2(0,48))
 
 func _start_explain_ultimates_2()->void:
+	print("Explain Ult 2")
 	UiFx.remove_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
 	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_ULTIMATES_2,true,Vector2(0,-96))
 
 
 func _start_explain_ultimates_3()->void:
-	#print("Explain Ultimates 3")
+	print("Explain Ultimates 3")
 	UiFx.remove_pulsing_button_highlight(Global.ultimate_charge_container.charge_progress_bar)
 	UiFx.add_pulsing_button_highlight(Global.ultimate_charge_container.all_charges_panel_container)
 	demonSelectionMenu._on_CrawlerButton_pressed()

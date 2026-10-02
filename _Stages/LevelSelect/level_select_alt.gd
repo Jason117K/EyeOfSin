@@ -9,7 +9,7 @@ var canPlayLevel6 := false
 var canPlayLevel7 := false
 
 var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
-var level_select := "res://_Stages/LevelSelect/level_select.tscn"
+var level_select := "res://_Stages/LevelSelect/act_select.tscn"
 
 
 

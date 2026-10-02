@@ -2,7 +2,7 @@ extends Control
 
 
 var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
-var level_select := "res://_Stages/LevelSelect/level_select.tscn"
+var level_select := "res://_Stages/LevelSelect/act_select.tscn"
 
 
 var ability_screen := "res://_UI/ability_control_panel.tscn"

@@ -170,7 +170,7 @@ TXT_LEVEL0_1_TUTORIAL_PLACECRAWLER,"[color=red]Click[/color] on a pulsing tile t
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceCrawler.txt
 TXT_LEVEL0_1_TUTORIAL_PRESSY,"[b]press[/b] [color=red]Y[/color] to [color=red][b]swap[/b][/color] from [color=purple][b]earth[/b][/color] to the [color=green][b]syn dimension[/b][/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt
-TXT_LEVEL0_1_TUTORIAL_SELECTCRAWLER,"Click a [color=red][b]demon ruune[/b][/color] to Select It
+TXT_LEVEL0_1_TUTORIAL_SELECTCRAWLER,"Click a [color=red][b]demon rune[/b][/color] to Select It
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectCrawler.txt
 TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS,"- Occulum [color=red][b]blood[/b][/color] now [color=red][b]damages[/b][/color] nearby enemies on [color=red][b]pickup[/b][/color]
 - Occulum now [color=red][b]generates blood faster[/b][/color]
@@ -374,7 +374,7 @@ TXT_SPINEMAWBUFF,"The [b]blood[/b] and [b]hell energy[/b] released from the [b]m
 ",,,,,,,,,,res://_Assets/Text/TextFiles/SpineMawBuff.txt
 TXT_TICKERTUTORIAL,"[b]ticker zombies[/b] are fast moving sentient bombs. Make sure to take them out before they get too close to your summons.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/TickerTutorial.txt
-TXT_TUTORIAL_CLICK_SKULL,"Click the [color=red][b]skull icon[/b][/color] to [color=red][b]start[/b][/color] the [color=red][b]wave[/b][/color]
+TXT_TUTORIAL_CLICK_SKULL,"Click the [color=red]skull icon[/color] to [color=red]start[/color] the [color=red]wave[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Click_Skull.txt
 TXT_TUTORIAL_DEMON_REMOVAL,"[color=red]Wyrms[/color] have been reflexively summoned in a bad position.
 ","Se han invocado [color=red]Sierpes[/color] por instinto en una mala posición.
@@ -393,7 +393,7 @@ TXT_TUTORIAL_DEMON_REMOVAL_3,"[color=red]Removing[/color] Demons [color=red][b]r
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_3.txt
 TXT_TUTORIAL_EXPLAIN_DEMON_CLICK,"Click a [color=red][b]demon[/b][/color] to View its [color=red][b]info[/b][/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Click.txt
-TXT_TUTORIAL_EXPLAIN_DEMON_HOVER_CLICK,"[color=red][b]hover[/b][/color] over a [color=red][b]demon[/b][/color] to view its [color=red][b]range[/b][/color].
+TXT_TUTORIAL_EXPLAIN_DEMON_HOVER_CLICK,"[color=red][b]Hover[/b][/color] over a [color=red][b]demon[/b][/color] to view its [color=red][b]range[/b][/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt
 TXT_TUTORIAL_EXPLAIN_HEALTH,"Protect your [color=red][b]health[/b][/color] and [color=red]Defeat[/color] the [color=purple][b]zombies[/b][/color] 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Health.txt
@@ -405,7 +405,7 @@ TXT_TUTORIAL_EXPLAIN_PORTALS_3,"[color=purple][b]por[/b][/color][color=green][b]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_3.txt
 TXT_TUTORIAL_EXPLAIN_PREPLACED_SPINAL_OCCULUM,"You have reflexively summoned some SpinalOcculum. [color=red][b]use their buffs[/b][/color] as you learn control over your new power.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_PrePlaced_Spinal_Occulum.txt
-TXT_TUTORIAL_EXPLAIN_SKULL_HOVER,"[color=red][b]hover[/b][/color] over a [color=red][b]skull[/b][/color] to see incoming [color=purple]Zombies[/color] 
+TXT_TUTORIAL_EXPLAIN_SKULL_HOVER,"[color=red][b]Hover[/b][/color] over a [color=red][b]skull[/b][/color] to see incoming [color=purple]Zombies[/color] 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt
 TXT_TUTORIAL_EXPLAIN_SKULL_TILE,"Do [color=red][b]not[/b][/color] let [color=purple][b]zombies[/b] [/color][color=purple][b]touch[/b][/color] the [color=purple][b]skull tiles[/b][/color] or you [color=red][b]lose[/b][/color]. [color=red][b]cannot summon[/b][/color] on Skull Tiles.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt
@@ -475,6 +475,14 @@ TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_7,"Use them at [color=red]different times[/colo
 ","Używaj ich w [color=red]różnym czasie[/color] dla [color=red]szybszego odnowienia[/color] (zdolność ładuje się szybciej, gdy zdolność drugiego wymiaru jest aktywna).
 ","[color=red]서로 다른 시점[/color]에 사용하면 [color=red]재사용 대기시간이 빨라집니다[/color] (다른 차원의 능력이 발동 중일 때 능력이 더 빨리 충전됩니다).
 ",res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_7.txt
+TXT_TUTORIAL_EXPLAIN_SYN_MONOLITH,"Lucretia can now reinforce her Demons with raw Syn Energy via the Syn Monolith.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith.txt
+TXT_TUTORIAL_EXPLAIN_SYN_MONOLITH_2,"Click the Syn Monolith to select it.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_2.txt
+TXT_TUTORIAL_EXPLAIN_SYN_MONOLITH_3,"Double Click a Demon to Place the Monolith. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_3.txt
+TXT_TUTORIAL_EXPLAIN_SYN_MONOLITH_4,"Syn Monoliths can be moved at any time. Syn Monolith abilities activate automatically. Read more in the codex.
+",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_4.txt
 TXT_TUTORIAL_EXPLAIN_ULTIMATES,"Command Demons to unleash their [color=red][b]maximum power[/b].[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates.txt
 TXT_TUTORIAL_EXPLAIN_ULTIMATES_2,"Each Demon has a unique [color=red][b]ultimate[/b][/color]. Generate [color=red][b]mana[/b][/color] for [color=red][b]ultimates[/b][/color] via [color=red]Demon activity[/color].

@@ -11,6 +11,7 @@ const DEFAULT_BORDER_COLOR: Color = Color.RED
 static func add_pulsing_button_highlight(button, should_pulse : bool = true,
 		border_color: Color = DEFAULT_BORDER_COLOR,
 		border_thickness: int = DEFAULT_BORDER_THICKNESS) -> void:
+			
 	if not button:
 		push_error("Button node is null!")
 		return
@@ -21,15 +22,18 @@ static func add_pulsing_button_highlight(button, should_pulse : bool = true,
 		if is_instance_valid(old):
 			old.queue_free()
 		button.remove_meta("highlight_panel")
-
+	print("Should Add Highlightr to ", button)
+	
+	print("All Charges Panel Size is ", Global.ultimate_charge_container.all_charges_panel_container.size)
 	# Create a Panel as a child to act as the border/glow
 	var panel := Panel.new()
 	panel.name = "HighlightPanel"
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
-
+	#TODO Should not be add child, should add to root of scene to not mess up UI
 	button.add_child(panel)
-
+	print("Button Size is ", button.size)
 	panel.size = button.size
+	print("Panel Size is ", panel.size)
 	panel.z_index = 2
 
 	# Build the stylebox for the panel

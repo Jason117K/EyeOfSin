@@ -49,11 +49,11 @@ func _init() -> void:
 	if not _retranslate.is_empty():
 		#print("\nNEEDS RETRANSLATION (en changed, locale cells cleared):")
 		for k: String in _retranslate:
-			#print("  - " + k)
+			print("  - " + k)
 	if not _orphaned.is_empty():
 		#print("\nORPHANED rows (no matching .txt on disk; kept, delete manually if intended):")
 		for k: String in _orphaned:
-			#print("  - " + k)
+			print("  - " + k)
 	quit(1 if _had_error else 0)
 
 
