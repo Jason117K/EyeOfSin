@@ -97,6 +97,10 @@ func _ready() -> void:
 		finish_ready()
 	else:
 		Dialogic.start(level_6_start_dialog)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	pre_place_hive_demon()
 
 	#finish_ready()
 
@@ -186,6 +190,17 @@ func _start_free_play() -> void:
 	
 func getIsPurpleDimension()->void:
 	return
+	
+func pre_place_hive_demon()->void:
+	demonManager.add_blood(175)
+	#demonSelectionMenu._on_HiveButton_pressed()
+	#demonManager.place_demon(Vector2(432,144))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_HiveButton_pressed()
+	demonManager.place_demon(Vector2(432,208))
+	await get_tree().physics_frame
+	#demonSelectionMenu._on_HiveButton_pressed()
+	#demonManager.place_demon(Vector2(432,272))
 #endregion
 
 

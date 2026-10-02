@@ -215,6 +215,9 @@ func attack_zombie(zombie_to_attack : Zombie) -> void:
 	
 func heal_demons() -> void:
 	##print("Overlapping Areas Is ", aoe.get_overlapping_areas())
+	print(self, "Blood Should Heal Demons")
+	self_modulate = Color(0,0,0,0)
+	self.input_pickable = false 
 	for entity in aoe.get_overlapping_areas():
 		if entity.is_in_group("Demons"):
 			demons_to_heal.append(entity)

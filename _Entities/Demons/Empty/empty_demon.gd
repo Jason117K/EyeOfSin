@@ -12,6 +12,7 @@ func die_fromClearSpace() -> void:
 
 func _ready() -> void:
 	#print("THIS EMPTY IS GREEN IS : ", is_green)
+	#print("Empty Spawned, ", self)
 	disable_buff_nodes()
 	demon_selection_menu = Global.get_demon_selection_menu(!is_green)
 	demon_manager = Global.get_demon_manager(!is_green)

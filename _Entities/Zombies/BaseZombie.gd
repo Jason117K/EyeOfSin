@@ -54,6 +54,7 @@ var attackComp : ZombieAttackRefCountedComponent
 
 var is_buffed := false 
 var is_flying := false 
+
 #@onready var debuff_degrade_timer : Timer = $DebuffDegrade
 #@onready var reset_color_timer : Timer = $ResetThisColor
 #@onready var just_spawned_timer : Timer = $JustNowSpawned
@@ -256,9 +257,14 @@ func _on_respawn() -> void:
 	animatedSprite.play("Walk")
 	
 func die() -> void:
-	hurtbox.disabled = true 
-	self.monitorable = false
-	self.monitoring = false
+	if !is_dead:
+		if hurtbox != null:
+			hurtbox.set_deferred("disabled",true)
+			#hurtbox.disabled = true 
+	set_deferred("monitorable",false)
+	set_deferred("monitoring",false)
+	#self.monitorable = false
+	#self.monitoring = false
 	set_process(false)
 	if false:
 		_demo_die()
@@ -291,6 +297,7 @@ func die() -> void:
 			#freeze_on_death()
 		death_blood.show()
 		death_blood.play()
+		is_dead = true 
 		#queue_free()
 
 func freeze_on_death()->void:

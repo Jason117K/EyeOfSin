@@ -479,7 +479,7 @@ frame_progress = 0.17550617
 
 [node name="BeatOfDeath_Controller" parent="." unique_id=55620515 instance=ExtResource("2_x2ifd")]
 script = ExtResource("3_otih5")
-damage = 8.0
+damage = 12.0
 beats = 0
 max_beats = 12
 beat_of_death_interval = 0.4
@@ -502,7 +502,8 @@ one_shot = true
 
 [node name="LightningStrike_Controller" type="Node" parent="." unique_id=1786011234]
 script = ExtResource("7_d6vjw")
-cooldown_duration = 7.0
+damage = 150
+cooldown_duration = 8.0
 
 [node name="LightningStrikeAnim" type="AnimatedSprite2D" parent="." unique_id=1455294723]
 visible = false

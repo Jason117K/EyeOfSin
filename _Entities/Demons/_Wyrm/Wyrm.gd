@@ -262,6 +262,10 @@ func baal_buff()->void:
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
 
+func make_blood_demon()->void:
+	super()
+	projectile_damage = projectile_damage * 2
+	projectile_shoot_component.projectile_damage =  projectile_damage
 
 # --- Heart Buff ---
 

@@ -18,6 +18,10 @@ func _ready() -> void:
 	attach_script_to_sway_children()
 	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hero"])
 	_configure_waves()
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	pre_place_hive_demon()
 
 
 func _configure_waves() -> void:
@@ -95,3 +99,15 @@ func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 		"Rohan":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+
+func pre_place_hive_demon()->void:
+	demonManager.add_blood(350)
+	demonSelectionMenu._on_HiveButton_pressed()
+	demonManager.place_demon(Vector2(336,112))
+	await get_tree().physics_frame
+	#demonSelectionMenu._on_HiveButton_pressed()
+	#demonManager.place_demon(Vector2(336,208))
+	await get_tree().physics_frame
+	demonSelectionMenu._on_HiveButton_pressed()
+	demonManager.place_demon(Vector2(336,304))
+	

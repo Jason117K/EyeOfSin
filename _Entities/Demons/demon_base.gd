@@ -107,6 +107,8 @@ var is_blood : bool = false
 var all_synergies : Array 
 var my_active_dimension : Control
 
+var clone_global_position : Vector2 
+
 var grid_map_cell_pos : Vector2
 
 var is_rib_shield := false 
@@ -164,6 +166,8 @@ func _ready() -> void:
 		my_active_dimension = Global.game_controller.get_purple_dimension()
 		
 	ScoreManager.level_ended.connect(broadcast_time_alive)
+	
+	clone_global_position = self.global_position
 
 func broadcast_time_alive()->void:
 	ScoreManager.add_score_from_demon(game_time, get_is_buffed())
@@ -588,7 +592,7 @@ func spawn_hero_demon()->void:
 	add_child(hero_demon_instance)
 	hero_demon_instance.assign_parent_demon(self)
 	var opposite_demon_manager := Global.get_demon_manager(!is_green)
-	opposite_demon_manager.summon_blood_clone(global_position)
+	opposite_demon_manager.summon_blood_clone(clone_global_position)
 	
 	Global.is_demon_hero_selected = false
 	Global.syn_monolith_activated.emit()
@@ -596,7 +600,7 @@ func spawn_hero_demon()->void:
 
 func despawn_hero_demon()->void:
 	var opposite_demon_manager := Global.get_demon_manager(!is_green)
-	opposite_demon_manager.dispel_blood_clone(global_position)
+	opposite_demon_manager.dispel_blood_clone(clone_global_position)
 	hero_demon_instance.queue_free()
 	
 
