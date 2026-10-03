@@ -994,6 +994,7 @@ script = ExtResource("19_nabk1")
 shape = SubResource("RectangleShape2D_nabk1")
 
 [node name="WaveLabel" type="Label" parent="." unique_id=1985403701]
+z_index = 5
 layout_mode = 0
 offset_left = 542.0
 offset_top = 3.0

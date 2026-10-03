@@ -1,1 +1,1 @@
-Generating enough [color=red][b]mana[/b][/color] grants an [color=red][b]ultimate charge[/b][/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].
+Generating enough [color=red]mana[/color] grants an [color=red]ultimate charge[/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].

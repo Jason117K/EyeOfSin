@@ -1,1 +1,1 @@
-[b]press[/b] [color=red]Y[/color] to [color=red][b]swap[/b][/color] from [color=purple][b]earth[/b][/color] to the [color=green][b]syn dimension[/b][/color]
+Press [color=red]Y[/color] to [color=red]swap[/color] from [color=purple]earth[/color] to the [color=green]syn dimension[/color]

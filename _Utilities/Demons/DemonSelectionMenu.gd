@@ -156,8 +156,8 @@ func _ready() -> void:
 	reset_panel_size()
 	
 func get_ultimate_margin_offset()->int:
-	print("Panel Container size is ",panelContainer.size.x ) 
-	print("Panel Container Position.x is : ", panelContainer.position.x)
+	#print("Panel Container size is ",panelContainer.size.x ) 
+	#print("Panel Container Position.x is : ", panelContainer.position.x)
 	#print("Return : ", panelContainer.size.x  + panelContainer.position.x)
 	#return panelContainer.size.x + panelContainer.position.x + 4
 	return panelContainer.size.x + 4

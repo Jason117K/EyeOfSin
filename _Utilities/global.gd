@@ -185,7 +185,7 @@ signal syn_monolith_activated
 #   (1) all zombies tick (movement/attack), then
 #   (2) all demon buff zones poll overlaps (react to settled positions).
 # Syn charge accumulators and the swap cooldown keep their own _process;
-# they touch no cross-system state mid-frame.
+# they touch no cross-system state mid-frame."res://_Stages/LevelSelect/LevelSelect_A1.tscn"
 func _process(delta: float) -> void:
 	if get_tree().paused:
 		return
@@ -197,6 +197,20 @@ func _process(delta: float) -> void:
 	for this_demon in demons:
 		if this_demon != null and is_instance_valid(this_demon):
 			this_demon.tick_buff(delta)
+
+
+func show_trailer_footage()->void:
+	print("Global Should Show Trailer Footage")
+	if game_controller.current_scenes.size() > 1:
+		game_controller.change_from_dual_scenes("res://_Stages/LevelSelect/LevelSelect_A1.tscn")
+	game_controller.trailer_video_player.show()
+	game_controller.trailer_video_player.paused = false
+	if !game_controller.trailer_video_player.is_playing():
+		game_controller.trailer_video_player.play()
+	
+func stop_trailer_footage()->void:
+	game_controller.trailer_video_player.hide()
+	game_controller.trailer_video_player.stop()
 
 func add_mana(mana_to_add:float)->void:
 	ultimate_charge_container.add_mana(mana_to_add)

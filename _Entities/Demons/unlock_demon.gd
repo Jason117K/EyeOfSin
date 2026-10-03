@@ -5,11 +5,12 @@ extends Control
 @onready var description_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewPowerDescription
 @onready var new_power_unlock_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewDemonLabel
 
+var level_select_screen = "res://_Stages/LevelSelect/LevelSelect_A1.tscn"
 
 
 func _on_next_level_button_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	Global.game_controller.change_from_dual_scenes("res://_Stages/LevelSelect/LevelSelect_Map.tscn")
+	Global.game_controller.change_from_dual_scenes(level_select_screen)
 	self.visible = false
 
 func set_new_unlock_label(new_unlock_label_text:String="UI_NEW_DEMON")->void:

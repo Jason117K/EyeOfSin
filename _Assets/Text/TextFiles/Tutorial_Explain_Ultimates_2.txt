@@ -1,1 +1,1 @@
-Each Demon has a unique [color=red][b]ultimate[/b][/color]. Generate [color=red][b]mana[/b][/color] for [color=red][b]ultimates[/b][/color] via [color=red]Demon activity[/color].
+Each Demon has a unique [color=red]ultimate[/color]. Generate [color=red]mana[/color] for [color=red]ultimates[/color] via [color=red]Demon activity[/color].

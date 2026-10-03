@@ -1,1 +1,1 @@
-EggWyrms can simultanesouly buff [b]occular spine[/b]'s and themselves, granting the Spine increased health regeneration while increasing the Wyrm's damage.
+EggWyrms can simultanesouly buff occular spine's and themselves, granting the Spine increased health regeneration while increasing the Wyrm's damage.

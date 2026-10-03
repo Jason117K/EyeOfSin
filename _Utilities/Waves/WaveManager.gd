@@ -126,19 +126,19 @@ func _on_game_start_requested() -> void:
 func _on_call_early_wave_requested() -> void:
 	ScoreManager.wave_called_early()
 	##print("Requested Early Wave, current wave is ",_current_wave )
-	#_start_wave(_current_wave + 1)
 	if (_current_wave + 1) < wave_delays.size():
 		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
 										- (waveDelayTimer.time_left)
 	_start_wave(_current_wave + 1)
 	Global.add_blood_from_wave(25)
-	#_start_wave(_current_wave + 1)
+
 
 
 ## Manually start the next wave (for tutorial-controlled progression).
 func start_next_wave() -> void:
 	##print("Manual Call Start Next Wave")
-	_start_wave(_current_wave + 1)
+	if (_current_wave + 1) < wave_delays.size():
+		_start_wave(_current_wave + 1)
 
 
 
@@ -183,7 +183,8 @@ func _start_wave(index: int) -> void:
 
 func _on_wave_delay_timer_timeout() -> void:
 	##print("Start Da Wave Here")
-	_start_wave(_current_wave + 1)
+	if (_current_wave + 1) < wave_delays.size():
+		_start_wave(_current_wave + 1)
 
 
 func _on_preview_timer_timeout() -> void:

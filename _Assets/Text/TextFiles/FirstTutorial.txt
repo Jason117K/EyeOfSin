@@ -1,5 +1,5 @@
-[b]zombies[/b] will walk right to left down the path, trying to feast on your blood.
+zombies will walk right to left down the path, trying to feast on your blood.
  
-Use [b]demons[/b] to kill zombies before they reach the end of the path. 
+Use demons to kill zombies before they reach the end of the path. 
  
 If too many zombies reach the end of the path, you die. 

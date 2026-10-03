@@ -1,2 +1,2 @@
-- Occulum [color=red][b]blood[/b][/color] now [color=red][b]damages[/b][/color] nearby enemies on [color=red][b]pickup[/b][/color]
-- Occulum now [color=red][b]generates blood faster[/b][/color]
+- Occulum [color=red]blood[/color] now [color=red]damages[/color] nearby enemies on [color=red]pickup[/color]
+- Occulum now [color=red]generates blood faster[/color]

@@ -1,6 +1,6 @@
 New Enemy : [color=#9b42df] Unhallower [/color]
 [hr width=100%]
-[b] [color=#9b42df]Speed :[/color][/b] Slow [b][color=#9b42df] Health :[/color][/b] 550
-[b][color=#9b42df] Numbers :[/color][/b] Low [b][color=#9b42df] Damage :[/color][/b]  110
+ [color=#9b42df]Speed :[/color] Slow [color=#9b42df] Health :[/color] 550
+[color=#9b42df] Numbers :[/color] Low [color=#9b42df] Damage :[/color]  110
 [hr width=100%]
 Slow, tough zombies that deal massive damage.

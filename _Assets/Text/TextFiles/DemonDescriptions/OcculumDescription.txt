@@ -1,1 +1,1 @@
-Generates [color=red][b]blood[/b][/color] over time 
+Generates [color=red]blood[/color] over time 

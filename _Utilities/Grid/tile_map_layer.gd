@@ -17,6 +17,7 @@ var _shader_material: ShaderMaterial
 
 var available_rectangles : Array 
 
+@export var is_visible = true 
 
 
 func _ready() -> void:
@@ -26,6 +27,8 @@ func _ready() -> void:
 		_setup_shader()
 
 func _setup_shader() -> void:
+	if !is_visible:
+		return
 	var shader := Shader.new()
 	shader.code = """
 shader_type canvas_item;

@@ -1,1 +1,1 @@
-[color=red]Removing[/color] Demons [color=red][b]refunds blood[/b][/color] proportional to their [color=red][b]remaining health[/b][/color]
+[color=red]Removing[/color] Demons [color=red]refunds blood[/color] proportional to their [color=red]remaining health[/color]

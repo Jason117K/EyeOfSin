@@ -806,6 +806,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="ActSelect" type="Control" unique_id=981211310]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -871,6 +872,7 @@ theme_override_font_sizes/font_size = 50
 text = " ACT 1 "
 
 [node name="Act2_PanelContainer" type="PanelContainer" parent="CenterContainer/HBoxContainer" unique_id=236465686]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_28jnq")
 
@@ -881,6 +883,7 @@ theme_override_font_sizes/font_size = 50
 text = " ACT 2 "
 
 [node name="Act3_PanelContainer" type="PanelContainer" parent="CenterContainer/HBoxContainer" unique_id=1527671674]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_28jnq")
 

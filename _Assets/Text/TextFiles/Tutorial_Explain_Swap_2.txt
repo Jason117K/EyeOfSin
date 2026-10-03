@@ -1,1 +1,1 @@
-When fully charged, [color=red][b]swaping dimensions activates[/b][/color] the [color=red][b]swap sorcery[/b][/color] (unless it is locked with [color=red][b]spacebar[/b][/color])
+When fully charged, [color=red]swaping dimensions activates[/color] the [color=red]swap sorcery[/color] (unless it is locked with [color=red]spacebar[/color])

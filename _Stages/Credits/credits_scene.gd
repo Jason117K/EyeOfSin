@@ -6,12 +6,13 @@ var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
 
 func _ready() -> void:
 	creditsText.append_text("Creative Director : Jason King\n")
+	creditsText.append_text("Producer : Darrow Mohammadi-hall\n")
+	creditsText.append_text("Marketing Lead: Meg Thurmeier\n")
 	creditsText.append_text("Gameplay Designers : Augustus Sabino, Jason King\n")
-	creditsText.append_text("Artists : Tobi, Jason King\n")
+	creditsText.append_text("Art: Tobi, Jason King, Ren Grunberg (Capsule Art)\n")
 	creditsText.append_text("Writers : Meg Thurmeier., Jason King\n")
-	creditsText.append_text("Project Management : Darrow Mohammadi-Hall\n")
-	creditsText.append_text("Marketing : Kamryn Driver, Jason King\n")
-	creditsText.append_text("Music : August, Autumn Kirkpatrick\n")
+	creditsText.append_text("Socials and Marketing Team: Beck Lyons, Dashieel Alexander, Kamryn Driver, Jason King, Barbie\n")
+	creditsText.append_text("Music : August Draper, Autumn Kirkpatrick\n")
 	creditsText.append_text("SFX : Sourced from Zapsplat\n")
 	creditsText.append_text("Asset Packs Used From : Aurora Sprites, Admurin and Penusbmic\n")
 	

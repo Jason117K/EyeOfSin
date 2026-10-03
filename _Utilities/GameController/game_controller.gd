@@ -1,6 +1,7 @@
 class_name GameController extends Node
 
 @export var scene_container: Control
+@onready var trailer_video_player : VideoStreamPlayer = $VideoStreamPlayer
 
 var current_scene: Node
 var current_scenes: Array = []
@@ -30,7 +31,7 @@ const UI_BIT := 1
 var _default_root_cull_mask := 0xFFFFFFFF
 
 func _input(event:InputEvent) -> void:
-			
+	IdleTimer.reset_timer()
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Y:
 			Global.hide_notification_bar()
@@ -38,6 +39,8 @@ func _input(event:InputEvent) -> void:
 
 
 func _ready() -> void:
+	trailer_video_player.hide()
+	trailer_video_player.paused = true 
 	Loc.apply_saved_locale() # must run before any translated UI builds
 	#print(Input.is_using_accumulated_input(), " balls")
 	@warning_ignore("narrowing_conversion")

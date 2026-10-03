@@ -1,7 +1,7 @@
-[b]eyes[/b] generate [b]blood[/b] over time. Collect [b]blood[/b] by hovering over it with your mouse, but be warned, it will be picked up afterwards for less value if you wait too long.
+eyes generate blood over time. Collect blood by hovering over it with your mouse, but be warned, it will be picked up afterwards for less value if you wait too long.
  
-[b]blood[/b] is used to place more [b]summons[/b]
+blood is used to place more summons
   
-You also gain [b]blood[/b] from killing enemies 
+You also gain blood from killing enemies 
  
-Click on a Tile to place the Eye. Be careful, as [b]eyes[/b] will get more expensive with each one placed.
+Click on a Tile to place the Eye. Be careful, as eyes will get more expensive with each one placed.

@@ -1,1 +1,1 @@
-You will know a [b]blood buff[/b] is activated by the floating [b]blood[/b] around a given [b]summon[/b].
+You will know a blood buff is activated by the floating blood around a given summon.

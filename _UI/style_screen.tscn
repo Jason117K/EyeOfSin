@@ -15,7 +15,7 @@ modulate_color = Color(0.76, 0.76, 0.76, 0.9764706)
 
 [node name="Style_Screen" type="Control" unique_id=1550670052]
 process_mode = 3
-z_index = 3
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -6,8 +6,14 @@ var act_1_level_select := "res://_Stages/LevelSelect/LevelSelect_A1.tscn"
 var act_2_level_select := "res://_Stages/LevelSelect/LevelSelect_A2.tscn"
 var act_3_level_select := "res://_Stages/LevelSelect/LevelSelect_A3.tscn"
 
+@onready var act_1_button := $CenterContainer/HBoxContainer/Act1_PanelContainer/Act1_Button
+
+func _ready() -> void:
+	act_1_button.pressed.connect(_on_act_1_button_pressed)
+	
 
 func _on_act_1_button_pressed() -> void:
+	print("Act 1 Button Pressed")
 	Global.game_controller.change_scene(act_1_level_select)
 
 

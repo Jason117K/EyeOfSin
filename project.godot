@@ -29,6 +29,7 @@ GlobalResourceLoader="*res://_UI/ResourceLoader.gd"
 AudioManager="*res://_Utilities/Audio/audio_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
 ScoreManager="*uid://4au61f4tanoo"
+IdleTimer="*uid://b31vc0x341bew"
 
 [debug]
 

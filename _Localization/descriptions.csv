@@ -45,162 +45,27 @@ Obrażenia: niskie","레치는 평균적인 리본보다 작습니다. 사실 �
 공격력: 낮음",res://_Assets/Text/TextFiles/ZombieDescriptions/backUpDancerDescription.txt
 TXT_BASEZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Reborn [/color]
 [hr width=100%]
-[b] [color=#9b42df]Speed :[/color][/b] Slow    [b][color=#9b42df] Health :[/color][/b] 50
-[b][color=#9b42df] Numbers :[/color][/b] High  [b][color=#9b42df] Damage :[/color][/b]  10
+ [color=#9b42df]Speed :[/color] Slow    [color=#9b42df] Health :[/color] 50
+[color=#9b42df] Numbers :[/color] High  [color=#9b42df] Damage :[/color]  10
 [hr width=100%]
 Weak undead footsoldiers that overwhelm with numbers.
-","Nuevo enemigo : [color=#9b42df] Renacido [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidad :[/color][/b] Lenta    [b][color=#9b42df] Salud :[/color][/b] 50
-[b][color=#9b42df] Cantidad :[/color][/b] Alta  [b][color=#9b42df] Daño :[/color][/b]  10
-[hr width=100%]
-Débiles soldados no muertos que abruman por su número.","新敌人：[color=#9b42df] 重生者 [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]慢    [b][color=#9b42df] 生命：[/color][/b] 50
-[b][color=#9b42df] 数量：[/color][/b]高  [b][color=#9b42df] 伤害：[/color][/b]  10
-[hr width=100%]
-以数量取胜的孱弱亡灵步兵。","Новый враг : [color=#9b42df] Возрождённый [/color]
-[hr width=100%]
-[b] [color=#9b42df]Скорость :[/color][/b] Низкая    [b][color=#9b42df] Здоровье :[/color][/b] 50
-[b][color=#9b42df] Численность :[/color][/b] Высокая  [b][color=#9b42df] Урон :[/color][/b]  10
-[hr width=100%]
-Слабая нежить-пехота, берущая числом.","Novo inimigo : [color=#9b42df] Renascido [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidade :[/color][/b] Lenta    [b][color=#9b42df] Vida :[/color][/b] 50
-[b][color=#9b42df] Números :[/color][/b] Altos  [b][color=#9b42df] Dano :[/color][/b]  10
-[hr width=100%]
-Soldados mortos-vivos fracos que dominam pela quantidade.","Neuer Gegner : [color=#9b42df] Wiedergänger [/color]
-[hr width=100%]
-[b] [color=#9b42df]Tempo :[/color][/b] Langsam    [b][color=#9b42df] Leben :[/color][/b] 50
-[b][color=#9b42df] Anzahl :[/color][/b] Hoch  [b][color=#9b42df] Schaden :[/color][/b]  10
-[hr width=100%]
-Schwache untote Fußsoldaten die mit Masse überrennen.","新たな敵：[color=#9b42df] リボーン [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]遅い    [b][color=#9b42df] 体力：[/color][/b] 50
-[b][color=#9b42df] 数：[/color][/b]多い  [b][color=#9b42df] 攻撃力：[/color][/b]  10
-[hr width=100%]
-数で押し寄せる弱い不死の歩兵。","Nouvel ennemi : [color=#9b42df] Ressuscité [/color]
-[hr width=100%]
-[b] [color=#9b42df]Vitesse :[/color][/b] Lente    [b][color=#9b42df] Santé :[/color][/b] 50
-[b][color=#9b42df] Nombre :[/color][/b] Élevé  [b][color=#9b42df] Dégâts :[/color][/b]  10
-[hr width=100%]
-De faibles fantassins morts-vivants qui submergent par le nombre.","Nowy wróg : [color=#9b42df] Odrodzony [/color]
-[hr width=100%]
-[b] [color=#9b42df]Szybkość :[/color][/b] Niska    [b][color=#9b42df] Zdrowie :[/color][/b] 50
-[b][color=#9b42df] Liczebność :[/color][/b] Wysoka  [b][color=#9b42df] Obrażenia :[/color][/b]  10
-[hr width=100%]
-Słabi nieumarli piechurzy, którzy przytłaczają liczbą.","새로운 적 : [color=#9b42df] 리본 [/color]
-[hr width=100%]
-[b] [color=#9b42df]속도 :[/color][/b] 느림    [b][color=#9b42df] 체력 :[/color][/b] 50
-[b][color=#9b42df] 수 :[/color][/b] 많음  [b][color=#9b42df] 공격력 :[/color][/b]  10
-[hr width=100%]
-수로 밀어붙이는 약한 언데드 보병.",res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt
 TXT_BUCKETHEADZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Unhallower [/color]
 [hr width=100%]
-[b] [color=#9b42df]Speed :[/color][/b] Slow [b][color=#9b42df] Health :[/color][/b] 550
-[b][color=#9b42df] Numbers :[/color][/b] Low [b][color=#9b42df] Damage :[/color][/b]  110
+ [color=#9b42df]Speed :[/color] Slow [color=#9b42df] Health :[/color] 550
+[color=#9b42df] Numbers :[/color] Low [color=#9b42df] Damage :[/color]  110
 [hr width=100%]
 Slow, tough zombies that deal massive damage.
-","Nuevo enemigo : [color=#9b42df] Profanador [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidad :[/color][/b] Lenta [b][color=#9b42df] Salud :[/color][/b] 550
-[b][color=#9b42df] Cantidad :[/color][/b] Baja [b][color=#9b42df] Daño :[/color][/b]  110
-[hr width=100%]
-Zombis lentos y resistentes que infligen un daño enorme.","新敌人：[color=#9b42df] 渎圣者 [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]慢 [b][color=#9b42df] 生命：[/color][/b] 550
-[b][color=#9b42df] 数量：[/color][/b]低 [b][color=#9b42df] 伤害：[/color][/b]  110
-[hr width=100%]
-缓慢而坚韧的僵尸，能造成巨额伤害。","Новый враг : [color=#9b42df] Осквернитель [/color]
-[hr width=100%]
-[b] [color=#9b42df]Скорость :[/color][/b] Низкая [b][color=#9b42df] Здоровье :[/color][/b] 550
-[b][color=#9b42df] Численность :[/color][/b] Низкая [b][color=#9b42df] Урон :[/color][/b]  110
-[hr width=100%]
-Медленные живучие зомби с сокрушительным уроном.","Novo inimigo : [color=#9b42df] Profanador [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidade :[/color][/b] Lenta [b][color=#9b42df] Vida :[/color][/b] 550
-[b][color=#9b42df] Números :[/color][/b] Baixos [b][color=#9b42df] Dano :[/color][/b]  110
-[hr width=100%]
-Zumbis lentos e resistentes que causam dano massivo.","Neuer Gegner : [color=#9b42df] Entweiher [/color]
-[hr width=100%]
-[b] [color=#9b42df]Tempo :[/color][/b] Langsam [b][color=#9b42df] Leben :[/color][/b] 550
-[b][color=#9b42df] Anzahl :[/color][/b] Niedrig [b][color=#9b42df] Schaden :[/color][/b]  110
-[hr width=100%]
-Langsame, zähe Zombies mit gewaltigem Schaden.","新たな敵：[color=#9b42df] アンハロワー [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]遅い [b][color=#9b42df] 体力：[/color][/b] 550
-[b][color=#9b42df] 数：[/color][/b]少ない [b][color=#9b42df] 攻撃力：[/color][/b]  110
-[hr width=100%]
-遅いが頑丈で、莫大なダメージを与えるゾンビ。","Nouvel ennemi : [color=#9b42df] Profanateur [/color]
-[hr width=100%]
-[b] [color=#9b42df]Vitesse :[/color][/b] Lente [b][color=#9b42df] Santé :[/color][/b] 550
-[b][color=#9b42df] Nombre :[/color][/b] Faible [b][color=#9b42df] Dégâts :[/color][/b]  110
-[hr width=100%]
-Des zombies lents et coriaces qui infligent des dégâts colossaux.","Nowy wróg : [color=#9b42df] Plugawiciel [/color]
-[hr width=100%]
-[b] [color=#9b42df]Szybkość :[/color][/b] Niska [b][color=#9b42df] Zdrowie :[/color][/b] 550
-[b][color=#9b42df] Liczebność :[/color][/b] Niska [b][color=#9b42df] Obrażenia :[/color][/b]  110
-[hr width=100%]
-Powolne, wytrzymałe zombie zadające ogromne obrażenia.","새로운 적 : [color=#9b42df] 언핼로워 [/color]
-[hr width=100%]
-[b] [color=#9b42df]속도 :[/color][/b] 느림 [b][color=#9b42df] 체력 :[/color][/b] 550
-[b][color=#9b42df] 수 :[/color][/b] 적음 [b][color=#9b42df] 공격력 :[/color][/b]  110
-[hr width=100%]
-느리지만 단단하며 어마어마한 피해를 주는 좀비.",res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt
 TXT_BUFFER_SPECIAL_DESCRIPTION,"Buffs nearby zombies.
 ",Potencia a los zombis cercanos.,强化附近的僵尸。,Усиливает ближайших зомби.,Fortalece os zumbis próximos.,Verstärkt nahe Zombies.,周囲のゾンビを強化する。,Renforce les zombies proches.,Wzmacnia pobliskie zombie.,주변 좀비를 강화합니다.,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt
 TXT_CONEHEADZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Severed [/color]
 [hr width=100%]
-[b] [color=#9b42df]Speed :[/color][/b] Moderate [b][color=#9b42df] Health :[/color][/b] 175
-[b][color=#9b42df] Numbers :[/color][/b] High   [b][color=#9b42df] Damage :[/color][/b]  30
+ [color=#9b42df]Speed :[/color] Moderate [color=#9b42df] Health :[/color] 175
+[color=#9b42df] Numbers :[/color] High   [color=#9b42df] Damage :[/color]  30
 [hr width=100%]
 Stronger than Reborn and almost as numerous.
-","Nuevo enemigo : [color=#9b42df] Cercenado [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidad :[/color][/b] Moderada [b][color=#9b42df] Salud :[/color][/b] 175
-[b][color=#9b42df] Cantidad :[/color][/b] Alta   [b][color=#9b42df] Daño :[/color][/b]  30
-[hr width=100%]
-Más fuerte que el Renacido y casi igual de numeroso.","新敌人：[color=#9b42df] 断裂者 [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]中等 [b][color=#9b42df] 生命：[/color][/b] 175
-[b][color=#9b42df] 数量：[/color][/b]高   [b][color=#9b42df] 伤害：[/color][/b]  30
-[hr width=100%]
-比重生者更强，数量几乎不相上下。","Новый враг : [color=#9b42df] Отсечённый [/color]
-[hr width=100%]
-[b] [color=#9b42df]Скорость :[/color][/b] Средняя [b][color=#9b42df] Здоровье :[/color][/b] 175
-[b][color=#9b42df] Численность :[/color][/b] Высокая   [b][color=#9b42df] Урон :[/color][/b]  30
-[hr width=100%]
-Сильнее Возрождённого и почти так же многочислен.","Novo inimigo : [color=#9b42df] Decepado [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidade :[/color][/b] Moderada [b][color=#9b42df] Vida :[/color][/b] 175
-[b][color=#9b42df] Números :[/color][/b] Altos   [b][color=#9b42df] Dano :[/color][/b]  30
-[hr width=100%]
-Mais forte que o Renascido e quase tão numeroso.","Neuer Gegner : [color=#9b42df] Abgetrennter [/color]
-[hr width=100%]
-[b] [color=#9b42df]Tempo :[/color][/b] Mäßig [b][color=#9b42df] Leben :[/color][/b] 175
-[b][color=#9b42df] Anzahl :[/color][/b] Hoch   [b][color=#9b42df] Schaden :[/color][/b]  30
-[hr width=100%]
-Stärker als der Wiedergänger und fast ebenso zahlreich.","新たな敵：[color=#9b42df] セヴァード [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]普通 [b][color=#9b42df] 体力：[/color][/b] 175
-[b][color=#9b42df] 数：[/color][/b]多い   [b][color=#9b42df] 攻撃力：[/color][/b]  30
-[hr width=100%]
-リボーンより強く、数もほぼ同じ。","Nouvel ennemi : [color=#9b42df] Tranché [/color]
-[hr width=100%]
-[b] [color=#9b42df]Vitesse :[/color][/b] Modérée [b][color=#9b42df] Santé :[/color][/b] 175
-[b][color=#9b42df] Nombre :[/color][/b] Élevé   [b][color=#9b42df] Dégâts :[/color][/b]  30
-[hr width=100%]
-Plus fort que le Ressuscité et presque aussi nombreux.","Nowy wróg : [color=#9b42df] Odcięty [/color]
-[hr width=100%]
-[b] [color=#9b42df]Szybkość :[/color][/b] Umiarkowana [b][color=#9b42df] Zdrowie :[/color][/b] 175
-[b][color=#9b42df] Liczebność :[/color][/b] Wysoka   [b][color=#9b42df] Obrażenia :[/color][/b]  30
-[hr width=100%]
-Silniejszy od Odrodzonego i niemal równie liczny.","새로운 적 : [color=#9b42df] 세버드 [/color]
-[hr width=100%]
-[b] [color=#9b42df]속도 :[/color][/b] 보통 [b][color=#9b42df] 체력 :[/color][/b] 175
-[b][color=#9b42df] 수 :[/color][/b] 많음   [b][color=#9b42df] 공격력 :[/color][/b]  30
-[hr width=100%]
-리본보다 강하며 수도 거의 비슷합니다.",res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt
 TXT_CRAWLERDESCRIPTION,"Once beloved pet companions to the people of Syn, the Crawlers have been weaponized into hideous and lethal servants.
 
 - Shoots a web projectile that damages and slows the first enemy it contacts
@@ -298,76 +163,13 @@ TXT_CRAWLER_SPECIAL_DESCRIPTION,"*Shots slow enemies
 ",*Los disparos ralentizan a los enemigos,*攻击使敌人减速,*Выстрелы замедляют врагов,*Os tiros retardam os inimigos,*Schüsse verlangsamen Gegner,*攻撃が敵を減速させる,*Les tirs ralentissent les ennemis,*Strzały spowalniają wrogów,*공격이 적을 느리게 만듭니다,res://_Entities/Demons/SpecialDescriptions/crawler_special_description.txt
 TXT_DANCERZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Reanimator [/color]
 [hr width=100%]
-[b] [color=#9b42df]Speed :[/color][/b] Slow
-[b][color=#9b42df] Health :[/color][/b] 375
-[b][color=#9b42df] Numbers :[/color][/b] Low
-[b][color=#9b42df] Damage :[/color][/b]  30
+ [color=#9b42df]Speed :[/color] Slow
+[color=#9b42df] Health :[/color] 375
+[color=#9b42df] Numbers :[/color] Low
+[color=#9b42df] Damage :[/color]  30
 [hr width=100%]
-Dangerous fusions of multiple Reborn that can [b][color=#9b42df]summon[/color][/b] Wretches to bypass defenses.
-","Nuevo enemigo : [color=#9b42df] Reanimador [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidad :[/color][/b] Lenta
-[b][color=#9b42df] Salud :[/color][/b] 375
-[b][color=#9b42df] Cantidad :[/color][/b] Baja
-[b][color=#9b42df] Daño :[/color][/b]  30
-[hr width=100%]
-Peligrosas fusiones de varios Renacidos capaces de [b][color=#9b42df]invocar[/color][/b] Desdichados para saltarse las defensas.","新敌人：[color=#9b42df] 唤尸者 [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]慢
-[b][color=#9b42df] 生命：[/color][/b] 375
-[b][color=#9b42df] 数量：[/color][/b]低
-[b][color=#9b42df] 伤害：[/color][/b]  30
-[hr width=100%]
-由多具重生者融合而成的危险存在，能[b][color=#9b42df]召唤[/color][/b]卑贱者绕过防线。","Новый враг : [color=#9b42df] Реаниматор [/color]
-[hr width=100%]
-[b] [color=#9b42df]Скорость :[/color][/b] Низкая
-[b][color=#9b42df] Здоровье :[/color][/b] 375
-[b][color=#9b42df] Численность :[/color][/b] Низкая
-[b][color=#9b42df] Урон :[/color][/b]  30
-[hr width=100%]
-Опасные сращения нескольких Возрождённых, способные [b][color=#9b42df]призывать[/color][/b] Жалких в обход обороны.","Novo inimigo : [color=#9b42df] Reanimador [/color]
-[hr width=100%]
-[b] [color=#9b42df]Velocidade :[/color][/b] Lenta
-[b][color=#9b42df] Vida :[/color][/b] 375
-[b][color=#9b42df] Números :[/color][/b] Baixos
-[b][color=#9b42df] Dano :[/color][/b]  30
-[hr width=100%]
-Fusões perigosas de vários Renascidos capazes de [b][color=#9b42df]invocar[/color][/b] Miseráveis para furar as defesas.","Neuer Gegner : [color=#9b42df] Wiedererwecker [/color]
-[hr width=100%]
-[b] [color=#9b42df]Tempo :[/color][/b] Langsam
-[b][color=#9b42df] Leben :[/color][/b] 375
-[b][color=#9b42df] Anzahl :[/color][/b] Niedrig
-[b][color=#9b42df] Schaden :[/color][/b]  30
-[hr width=100%]
-Gefährliche Verschmelzungen mehrerer Wiedergänger die [b][color=#9b42df]Elende beschwören[/color][/b] können um Verteidigungen zu umgehen.","新たな敵：[color=#9b42df] リアニメーター [/color]
-[hr width=100%]
-[b] [color=#9b42df]速度：[/color][/b]遅い
-[b][color=#9b42df] 体力：[/color][/b] 375
-[b][color=#9b42df] 数：[/color][/b]少ない
-[b][color=#9b42df] 攻撃力：[/color][/b]  30
-[hr width=100%]
-複数のリボーンが融合した危険な存在。レッチを[b][color=#9b42df]召喚[/color][/b]して防衛線をすり抜ける。","Nouvel ennemi : [color=#9b42df] Réanimateur [/color]
-[hr width=100%]
-[b] [color=#9b42df]Vitesse :[/color][/b] Lente
-[b][color=#9b42df] Santé :[/color][/b] 375
-[b][color=#9b42df] Nombre :[/color][/b] Faible
-[b][color=#9b42df] Dégâts :[/color][/b]  30
-[hr width=100%]
-Dangereuses fusions de plusieurs Ressuscités capables d'[b][color=#9b42df]invoquer[/color][/b] des Misérables pour contourner les défenses.","Nowy wróg : [color=#9b42df] Reanimator [/color]
-[hr width=100%]
-[b] [color=#9b42df]Szybkość :[/color][/b] Niska
-[b][color=#9b42df] Zdrowie :[/color][/b] 375
-[b][color=#9b42df] Liczebność :[/color][/b] Niska
-[b][color=#9b42df] Obrażenia :[/color][/b]  30
-[hr width=100%]
-Niebezpieczne zrosty wielu Odrodzonych, potrafiące [b][color=#9b42df]przyzywać[/color][/b] Nędzników omijających obronę.","새로운 적 : [color=#9b42df] 리애니메이터 [/color]
-[hr width=100%]
-[b] [color=#9b42df]속도 :[/color][/b] 느림
-[b][color=#9b42df] 체력 :[/color][/b] 375
-[b][color=#9b42df] 수 :[/color][/b] 적음
-[b][color=#9b42df] 공격력 :[/color][/b]  30
-[hr width=100%]
-여러 리본이 융합된 위험한 존재로, 레치를 [b][color=#9b42df]소환[/color][/b]해 방어선을 우회합니다.",res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt
+Dangerous fusions of multiple Reborn that can [color=#9b42df]summon[/color] Wretches to bypass defenses. 
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt
 TXT_ERUPTER_SPECIAL_DESCRIPTION,"*High damage self-sacrifice attack
 ",*Ataque suicida de gran daño,*高伤害自爆攻击,*Мощная жертвенная атака,*Ataque suicida de alto dano,*Selbstopfer-Angriff mit hohem Schaden,*高威力の自爆攻撃,*Attaque sacrificielle à hauts dégâts,*Samobójczy atak o wysokich obrażeniach,*강력한 자폭 공격,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/erupter_special_description.txt
 TXT_FLESHEATER_SPECIAL_DESCRIPTION,"*High health regen
@@ -632,7 +434,7 @@ TXT_MAWDESCRIPTION,"Said to be inspired by the screams of his victims, the Maws 
 	- 빠른 적",res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt
 TXT_MAW_SPECIAL_DESCRIPTION,"*Eats zombies
 ",*Devora zombis,*吞食僵尸,*Пожирает зомби,*Devora zumbis,*Frisst Zombies,*ゾンビを喰らう,*Dévore les zombies,*Pożera zombie,*좀비를 삼킵니다,res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt
-TXT_OCCULUMDESCRIPTION,"Generates [color=red][b]blood[/b][/color] over time 
+TXT_OCCULUMDESCRIPTION,"Generates [color=red]blood[/color] over time 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt
 TXT_OCCULUM_SPECIAL_DESCRIPTION,"*Generates Blood
 ",*Genera sangre,*生成鲜血,*Производит кровь,*Gera sangue,*Erzeugt Blut,*血を生成する,*Génère du sang,*Wytwarza krew,*피를 생성합니다,res://_Entities/Demons/SpecialDescriptions/occulum_special_description.txt
@@ -728,7 +530,7 @@ Obrażenia: wysokie","정신 속 화학적 불균형으로 극도로 불안정�
 수: 적음
 공격력: 높음",res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt
 TXT_SEVERED_SPECIAL_DESCRIPTION,,,,,,,,,,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt
-TXT_SPINALOCCULUMDESCRIPTION,"[color=red][b]defensive[/b][/color] [b]demon[/b]. [color=red]Blocks[/color] [color=purple]Zombies[/color] from progressing. [color=red][b]buffs[/b][/color] Demons giving them [color=red][b]vastly increased health[/b][/color] and [color=red][b]stalling power[/b].[/color]
+TXT_SPINALOCCULUMDESCRIPTION,"[color=red]defensive[/color] demon. [color=red]Blocks[/color] [color=purple]Zombies[/color] from progressing. [color=red]buffs[/color] Demons giving them [color=red]vastly increased health[/color] and [color=red]stalling power.[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/DemonDescriptions/SpinalOcculumDescription.txt
 TXT_SPINAL_OCCULUM_SPECIAL_DESCRIPTION,"*Blocks zombies
 ",*Bloquea zombis,*阻挡僵尸,*Блокирует зомби,*Bloqueia zumbis,*Blockiert Zombies,*ゾンビを阻止する,*Bloque les zombies,*Blokuje zombie,*좀비를 막아섭니다,res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt
@@ -780,7 +582,7 @@ TXT_UNHALLOWER_SPECIAL_DESCRIPTION,"*High armor
 ",*Gran armadura,*高护甲,*Мощная броня,*Armadura alta,*Starke Panzerung,*高い防御力,*Armure élevée,*Gruby pancerz,*높은 방어력,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt
 TXT_WRETCH_SPECIAL_DESCRIPTION,"*Ignores blockers
 ",*Ignora a los bloqueadores,*无视阻挡者,*Игнорирует заслоны,*Ignora bloqueadores,*Ignoriert Blocker,*ブロッカーを無視する,*Ignore les bloqueurs,*Ignoruje blokujących,*저지 유닛을 무시합니다,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/wretch_special_description.txt
-TXT_WYRMDESCRIPTION,"Shoots [color=red][b]piercing[/b][/color] pressurized blood that can [color=red][b]hit multiple zombies[/b][/color]. Damage decreases per zombie hit. Gives buffs that generally increase [color=red]Area Of Effect potential[/color].
+TXT_WYRMDESCRIPTION,"Shoots [color=red]piercing[/color] pressurized blood that can [color=red]hit multiple zombies[/color]. Damage decreases per zombie hit. Gives buffs that generally increase [color=red]Area Of Effect potential[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/DemonDescriptions/WyrmDescription.txt
 TXT_WYRM_SPECIAL_DESCRIPTION,"*Shots Pierce Zombies, Inflicts Bleed
 ",*Los disparos atraviesan zombis e infligen sangrado,*攻击穿透僵尸并造成流血,*Выстрелы пробивают зомби и вызывают кровотечение,*Os tiros perfuram zumbis e causam sangramento,*Schüsse durchbohren Zombies und verursachen Blutung,*攻撃はゾンビを貫通し、出血を与える,*Les tirs transpercent les zombies et infligent des saignements,*Strzały przebijają zombie i zadają krwawienie,*공격이 좀비를 관통하며 출혈을 입힙니다,res://_Entities/Demons/SpecialDescriptions/wyrm_special_description.txt

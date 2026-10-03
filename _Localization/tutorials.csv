@@ -1,15 +1,15 @@
 keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
-TXT_BASICOFFENSIVEDEFENSE,"Harness [b]blood[/b] from [b]eye[/b] summons and killing zombies 
+TXT_BASICOFFENSIVEDEFENSE,"Harness blood from eye summons and killing zombies 
  
-Use [b]blood[/b] to create a mix of a offensive and defensive summons to best the zombie 
+Use blood to create a mix of a offensive and defensive summons to best the zombie 
 horde
  
 For info on upcoming waves, hover over the skull wave preview icon on the right 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/basicOffensiveDefense.txt
-TXT_BLOODBUFFTUTORIAL,"Certain [b]demons[/b] have the ability to apply [b]blood buffs[/b] to other [b]demons[/b]. This means that when a compatible [b]demon[/b] is placed in the [b]blood buff[/b] area of another [b]demon[/b], a special interaction will occur, making the [b]demons[/b] stronger.
+TXT_BLOODBUFFTUTORIAL,"Certain demons have the ability to apply blood buffs to other demons. This means that when a compatible demon is placed in the blood buff area of another demon, a special interaction will occur, making the demons stronger.
  
 ",,,,,,,,,,res://_Assets/Text/TextFiles/BloodBuffTutorial.txt
-TXT_BLOODBUFFTUTORIAL12,"[b]blood buffs[/b] are powerful buffs Demons can give to eachother denoted by the red squares around a demon when placing it. Place Demons in eachtothers [b]blood buff[/b] zones for powerful effects and transformations. Experiment! Or else . . . 
+TXT_BLOODBUFFTUTORIAL12,"blood buffs are powerful buffs Demons can give to eachother denoted by the red squares around a demon when placing it. Place Demons in eachtothers blood buff zones for powerful effects and transformations. Experiment! Or else . . . 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/BloodBuffTutorial12.txt
 TXT_BLOODBUFFTUTORIAL2,"Eggwyrms can apply buffs to Occular Spine's, resulting in the Spine having increased health regeneration and the EggWyrm's beam becoming empowered when it passes through the spine.
 
@@ -42,7 +42,7 @@ Postaw Oczny Kręg w odległości do dwóch pól na prawo od EggWyrma
 
 에그웜 오른쪽 두 칸 이내에 오큘러 스파인을 배치하세요
 ",res://_Assets/Text/TextFiles/BloodBuffTutorial2.txt
-TXT_BLOODBUFFTUTORIAL3,"Blood Buffs can have powerful effects that shouldn't be ignored. Eyes give general stat buffs to all summons in a one tile radius, while most other summons are more specific. Read up on specific combinations in the [b]codex[/b].
+TXT_BLOODBUFFTUTORIAL3,"Blood Buffs can have powerful effects that shouldn't be ignored. Eyes give general stat buffs to all summons in a one tile radius, while most other summons are more specific. Read up on specific combinations in the codex.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/BloodBuffTutorial3.txt
 TXT_BUCKETHEADTUTORIAL,"Zombies that were once great warriors in life, now granted a sword of hell energy in death, enabling them to deal massive damage.
 
@@ -126,85 +126,85 @@ Zajrzyj do niego teraz!
 
 지금 확인해 보세요!
 ",res://_Assets/Text/TextFiles/CodexSelectExplain.txt
-TXT_CONEHEADTUTORIAL,"[b]severed[/b] have had their inner mutation evolve out of control
+TXT_CONEHEADTUTORIAL,"severed have had their inner mutation evolve out of control
 due to loosing there brains.
 
 Stronger and faster than basic zombies. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/ConeheadTutorial.txt
-TXT_CRAWLERMAWBUFF,"Spyders can give [b]maws[/b] a buff that causes them to release an AOE explosion of slowing webs on death.
+TXT_CRAWLERMAWBUFF,"Spyders can give maws a buff that causes them to release an AOE explosion of slowing webs on death.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/CrawlerMawBuff.txt
-TXT_CRAWLERTUTORIAL,"[b]spyders[/b] provide basic offense
+TXT_CRAWLERTUTORIAL,"spyders provide basic offense
  
 They shoot web balls that damage and slow enemies 
  
-Click the [b]spyder[/b] to select it 
+Click the spyder to select it 
 Click a tile to place it 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/CrawlerTutorial.txt
-TXT_DANCERTUTORIAL,"[b]summoner[/b] Zombies are slow moving masses of flesh that spawn other zombies 
+TXT_DANCERTUTORIAL,"summoner Zombies are slow moving masses of flesh that spawn other zombies 
 from their putresence. 
 
 Will spawn up to 8 head zombies in an area around it. Make use of attacks 
 affecting a large area to take them out.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/DancerTutorial.txt
-TXT_DIMENSIONTUTORIAL,"You have [b]two battles[/b] to fight. Hit Y to travel to the other dimension also besieged by Zombies. Defend both at the same time!
+TXT_DIMENSIONTUTORIAL,"You have two battles to fight. Hit Y to travel to the other dimension also besieged by Zombies. Defend both at the same time!
 ",,,,,,,,,,res://_Assets/Text/TextFiles/DimensionTutorial.txt
-TXT_FIRSTTUTORIAL,"[b]zombies[/b] will walk right to left down the path, trying to feast on your blood.
+TXT_FIRSTTUTORIAL,"zombies will walk right to left down the path, trying to feast on your blood.
  
-Use [b]demons[/b] to kill zombies before they reach the end of the path. 
+Use demons to kill zombies before they reach the end of the path. 
  
 If too many zombies reach the end of the path, you die. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/FirstTutorial.txt
-TXT_FOOTBALLTUTORIAL,"[b]chimera[/b] are the result of the infernal tinkering of Blood Priests. Not content with solely warping human flesh, they fused the bodies of man and demon in an unholy union, creaturing a monster of relentless strength, speed, and ferocity. 
+TXT_FOOTBALLTUTORIAL,"chimera are the result of the infernal tinkering of Blood Priests. Not content with solely warping human flesh, they fused the bodies of man and demon in an unholy union, creaturing a monster of relentless strength, speed, and ferocity. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/FootBallTutorial.txt
-TXT_HIVECRAWLERBUFF,"[b]hive[/b]'s [b]receive[/b] buffs from [b]spyders[/b], causing slowed enemies killed by Wasps to explode.
+TXT_HIVECRAWLERBUFF,"hive's receive buffs from spyders, causing slowed enemies killed by Wasps to explode.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/hiveCrawlerBuff.txt
-TXT_HIVEMAWBUFF,"When [b]maw[/b]'s eat foes inlaid with the eggs of demonic wasps, they absorb and are empowered by the foreign hell energy, gaining increased range.
+TXT_HIVEMAWBUFF,"When maw's eat foes inlaid with the eggs of demonic wasps, they absorb and are empowered by the foreign hell energy, gaining increased range.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/HiveMawBuff.txt
-TXT_LASTBLOODBUFFTUTORIAL,"You will know a [b]blood buff[/b] is activated by the floating [b]blood[/b] around a given [b]summon[/b].
+TXT_LASTBLOODBUFFTUTORIAL,"You will know a blood buff is activated by the floating blood around a given summon.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/LastBloodBuffTutorial.txt
-TXT_LEVEL0_1_TUTORIAL_BLOODCOST,"Demons cost [color=red][b]blood[/b][/color] to [color=red][b]summon[/b][/color]
+TXT_LEVEL0_1_TUTORIAL_BLOODCOST,"Demons cost [color=red]blood[/color] to [color=red]summon[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt
-TXT_LEVEL0_1_TUTORIAL_GREENDIMENSION,"[color=red][b]defend[/b][/color] [color=#9b42df]Earth[/color] & [color=#18b800]Syn[/color] Simultaneously
+TXT_LEVEL0_1_TUTORIAL_GREENDIMENSION,"[color=red]defend[/color] [color=#9b42df]Earth[/color] & [color=#18b800]Syn[/color] Simultaneously
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt
-TXT_LEVEL0_1_TUTORIAL_PLACECRAWLER,"[color=red]Click[/color] on a pulsing tile to [color=red][b]summon[/b][/color] the [color=red][b]demon[/b][/color]
+TXT_LEVEL0_1_TUTORIAL_PLACECRAWLER,"[color=red]Click[/color] on a pulsing tile to [color=red]summon[/color] the [color=red]demon[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceCrawler.txt
-TXT_LEVEL0_1_TUTORIAL_PRESSY,"[b]press[/b] [color=red]Y[/color] to [color=red][b]swap[/b][/color] from [color=purple][b]earth[/b][/color] to the [color=green][b]syn dimension[/b][/color]
+TXT_LEVEL0_1_TUTORIAL_PRESSY,"press [color=red]Y[/color] to [color=red]swap[/color] from [color=purple]earth[/color] to the [color=green]syn dimension[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt
-TXT_LEVEL0_1_TUTORIAL_SELECTCRAWLER,"Click a [color=red][b]demon rune[/b][/color] to Select It
+TXT_LEVEL0_1_TUTORIAL_SELECTCRAWLER,"Click a [color=red]demon rune[/color] to Select It
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectCrawler.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS,"- Occulum [color=red][b]blood[/b][/color] now [color=red][b]damages[/b][/color] nearby enemies on [color=red][b]pickup[/b][/color]
-- Occulum now [color=red][b]generates blood faster[/b][/color]
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS,"- Occulum [color=red]blood[/color] now [color=red]damages[/color] nearby enemies on [color=red]pickup[/color]
+- Occulum now [color=red]generates blood faster[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_2,"- Crawler projectiles now generate [color=red][b]blood[/b][/color] on [color=red][b]hit[/b][/color]
-- Webbed enemies now give [color=red][b]blood[/b][/color] on [color=red][b]death[/b][/color]  
-- [color=red][b]range increased[/b][/color]
-- [color=red][b]damage increased[/b][/color]
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_2,"- Crawler projectiles now generate [color=red]blood[/color] on [color=red]hit[/color]
+- Webbed enemies now give [color=red]blood[/color] on [color=red]death[/color]  
+- [color=red]range increased[/color]
+- [color=red]damage increased[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_2.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_3,"Blood Buffs are [color=red][b]crucial[/b][/color]
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_3,"Blood Buffs are [color=red]crucial[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_3.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_4,"[color=red][b]crawler buffs[/b][/color] generally [color=red][b]slow[/b][/color] down [color=purple]Zombies[/color]
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_4,"[color=red]crawler buffs[/color] generally [color=red]slow[/color] down [color=purple]Zombies[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_4.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_5,"[color=red][b]occulum buffs[/b][/color] generally grant more [color=red][b]blood[/b][/color]
+TXT_LEVEL0_2_TUTORIAL_BLOODBUFFS_5,"[color=red]occulum buffs[/color] generally grant more [color=red]blood[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodBuffs_5.txt
-TXT_LEVEL0_2_TUTORIAL_BLOODGEN,"Occulum [color=red][b]generate blood[/b][/color] over time.
-Collect the blood by [color=red][b]hovering[/b][/color] over it.
-Blood is eventually [color=red][b]auto-collected[/b][/color] for [color=red][b]reduced value[/b][/color].
+TXT_LEVEL0_2_TUTORIAL_BLOODGEN,"Occulum [color=red]generate blood[/color] over time.
+Collect the blood by [color=red]hovering[/color] over it.
+Blood is eventually [color=red]auto-collected[/color] for [color=red]reduced value[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_BloodGen.txt
-TXT_LEVEL0_2_TUTORIAL_INVALIDCRAWLERPLACEMENT,"Wrong position! Place the [b]spyder[/b] directly [b]behind[/b] the Eye.
+TXT_LEVEL0_2_TUTORIAL_INVALIDCRAWLERPLACEMENT,"Wrong position! Place the spyder directly behind the Eye.
 
-""Behind"" means one cell to the [b]left[/b] of the Eye.
+""Behind"" means one cell to the left of the Eye.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_InvalidCrawlerPlacement.txt
-TXT_LEVEL0_2_TUTORIAL_PLACECRAWLER,"[color=red][b]all demons[/b][/color] can [color=red][b]blood buff[/b][/color] other Demons. 
-Blood Buffs are activated by placing a Demon in the red [color=red][b]blood buff[/b][/color] [b]zone[/b] of another.
-Summon the [color=red][b]crawler[/b][/color] in the [color=red][b]blood buff[/b][/color] [b]zone[/b] of the [color=red][b]occulum[/b][/color].
+TXT_LEVEL0_2_TUTORIAL_PLACECRAWLER,"[color=red]all demons[/color] can [color=red]blood buff[/color] other Demons. 
+Blood Buffs are activated by placing a Demon in the red [color=red]blood buff[/color] zone of another.
+Summon the [color=red]crawler[/color] in the [color=red]blood buff[/color] zone of the [color=red]occulum[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceCrawler.txt
-TXT_LEVEL0_2_TUTORIAL_PLACEOCCULUM,"Summon the Occulum to start [color=red][b]generating blood[/b][/color]. 
-Occulum get [color=red][b]more expensive[/b][/color] with each one summoned.
+TXT_LEVEL0_2_TUTORIAL_PLACEOCCULUM,"Summon the Occulum to start [color=red]generating blood[/color]. 
+Occulum get [color=red]more expensive[/color] with each one summoned.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_PlaceOcculum.txt
-TXT_LEVEL0_2_TUTORIAL_SELECTCRAWLER,"Now select the [color=red][b]crawler[/b][/color]
+TXT_LEVEL0_2_TUTORIAL_SELECTCRAWLER,"Now select the [color=red]crawler[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectCrawler.txt
-TXT_LEVEL0_2_TUTORIAL_SELECTOCCULUM,"You are almost out of [color=red][b]blood[/b][/color].
-Select an [color=red][b]occulum[/b][/color] 
+TXT_LEVEL0_2_TUTORIAL_SELECTOCCULUM,"You are almost out of [color=red]blood[/color].
+Select an [color=red]occulum[/color] 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_2_Tutorial_SelectOcculum.txt
 TXT_LEVEL0_3_TUTORIAL_PLACEMAW,"Place One Now
 ","Coloca una ahora
@@ -332,47 +332,47 @@ Wybierz jeden teraz
 
 지금 하나를 선택하세요
 ",res://_Assets/Text/TextFiles/Level0-5_Tutorial_SelectHive.txt
-TXT_MAWTUTORIAL,"[b]maw[/b]'s are ravenous hell creatures that can devour enemies whole. Beware, when all their tentacles are busy wripping prey apart in their cavernous stomachs, the [b]maw[/b] is vulnerable.
+TXT_MAWTUTORIAL,"maw's are ravenous hell creatures that can devour enemies whole. Beware, when all their tentacles are busy wripping prey apart in their cavernous stomachs, the maw is vulnerable.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/MawTutorial.txt
-TXT_OCCULARSPINETUTORIAL,"Utilize [b]occular spines[/b] to block zombies, halting them in their tracks while they attempt to break through. 
+TXT_OCCULARSPINETUTORIAL,"Utilize occular spines to block zombies, halting them in their tracks while they attempt to break through. 
  
-[b]occular spines[/b] will regenerate health over time when not being damaged.
+occular spines will regenerate health over time when not being damaged.
  
-[b]occular spines[/b] cannot block flying enemies.
+occular spines cannot block flying enemies.
  
-Click the [b]occular[/b] Spine Icon to select it and place it in a defensive position.
+Click the occular Spine Icon to select it and place it in a defensive position.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/OccularSpineTutorial.txt
-TXT_OCCULUMCRAWLERBUFF,"[b]eyes[/b] give [b]spyders[/b] increased rate of fire.
+TXT_OCCULUMCRAWLERBUFF,"eyes give spyders increased rate of fire.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumCrawlerBuff.txt
-TXT_OCCULUMHIVEBUFF,"[b]eyes[/b] give [b]hives[/b] a reduced respawn time for their wasps.
+TXT_OCCULUMHIVEBUFF,"eyes give hives a reduced respawn time for their wasps.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumHiveBuff.txt
-TXT_OCCULUMINTRO,"[b]demons[/b] can be selected from the Summon Menu in the bottom right
+TXT_OCCULUMINTRO,"demons can be selected from the Summon Menu in the bottom right
  
 Click the Sanguine Eye to Select It 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumIntro.txt
-TXT_OCCULUMMAWBUFF,"[b]eyes[/b] give [b]maws[/b] the ability to belch out [b]blood[/b] when upon zombie digestion completion. 
+TXT_OCCULUMMAWBUFF,"eyes give maws the ability to belch out blood when upon zombie digestion completion. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumMawBuff.txt
-TXT_OCCULUMSPINEBUFF,"[b]eyes[/b] give [b]occular spines[/b] increased maximum health and increased health regeneration.
+TXT_OCCULUMSPINEBUFF,"eyes give occular spines increased maximum health and increased health regeneration.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumSpineBuff.txt
-TXT_OCCULUMWYRMBUFF,"[b]eyes[/b] give [b]wyrms[/b] a shorter primary fire cooldown.
+TXT_OCCULUMWYRMBUFF,"eyes give wyrms a shorter primary fire cooldown.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/OcculumWyrmBuff.txt
-TXT_PLACESUMMON,"[b]eyes[/b] generate [b]blood[/b] over time. Collect [b]blood[/b] by hovering over it with your mouse, but be warned, it will be picked up afterwards for less value if you wait too long.
+TXT_PLACESUMMON,"eyes generate blood over time. Collect blood by hovering over it with your mouse, but be warned, it will be picked up afterwards for less value if you wait too long.
  
-[b]blood[/b] is used to place more [b]summons[/b]
+blood is used to place more summons
   
-You also gain [b]blood[/b] from killing enemies 
+You also gain blood from killing enemies 
  
-Click on a Tile to place the Eye. Be careful, as [b]eyes[/b] will get more expensive with each one placed.
+Click on a Tile to place the Eye. Be careful, as eyes will get more expensive with each one placed.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/PlaceSummon.txt
-TXT_POLEVAULTTUTORIAL,"[b]leaper[/b]'s can do as their name suggests a catapault themselves over defenses. Take them out quickly.
+TXT_POLEVAULTTUTORIAL,"leaper's can do as their name suggests a catapault themselves over defenses. Take them out quickly.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/PoleVaultTutorial.txt
-TXT_SCREENDOORZOMBIETUTORIAL,"[b]phalanx[/b]'s are severed that use the undead corpses of their kin as a shields that double as battering rams. Masters of hell energy, these foes are not to be underestimated.
+TXT_SCREENDOORZOMBIETUTORIAL,"phalanx's are severed that use the undead corpses of their kin as a shields that double as battering rams. Masters of hell energy, these foes are not to be underestimated.
 
 Piercing damage is especially effective.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/ScreenDoorZombieTutorial.txt
-TXT_SPINEMAWBUFF,"The [b]blood[/b] and [b]hell energy[/b] released from the [b]maw[/b]'s victims invirogate nearby Occular Spines, enabling them to heal faster.
+TXT_SPINEMAWBUFF,"The blood and hell energy released from the maw's victims invirogate nearby Occular Spines, enabling them to heal faster.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/SpineMawBuff.txt
-TXT_TICKERTUTORIAL,"[b]ticker zombies[/b] are fast moving sentient bombs. Make sure to take them out before they get too close to your summons.
+TXT_TICKERTUTORIAL,"ticker zombies are fast moving sentient bombs. Make sure to take them out before they get too close to your summons.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/TickerTutorial.txt
 TXT_TUTORIAL_CLICK_SKULL,"Click the [color=red]skull icon[/color] to [color=red]start[/color] the [color=red]wave[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Click_Skull.txt
@@ -387,35 +387,35 @@ TXT_TUTORIAL_DEMON_REMOVAL,"[color=red]Wyrms[/color] have been reflexively summo
 ","[color=red]Żmije[/color] zostały odruchowo przyzwane w złym miejscu.
 ","[color=red]웜[/color]이 반사적으로 잘못된 위치에 소환되었습니다.
 ",res://_Assets/Text/TextFiles/Tutorial_Demon_Removal.txt
-TXT_TUTORIAL_DEMON_REMOVAL_2,"[color=red]Double Click[/color] and press the [color=red]X [b]symbol[/b][/color] to remove. 
+TXT_TUTORIAL_DEMON_REMOVAL_2,"[color=red]Double Click[/color] and press the [color=red]X symbol[/color] to remove. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_2.txt
-TXT_TUTORIAL_DEMON_REMOVAL_3,"[color=red]Removing[/color] Demons [color=red][b]refunds blood[/b][/color] proportional to their [color=red][b]remaining health[/b][/color]
+TXT_TUTORIAL_DEMON_REMOVAL_3,"[color=red]Removing[/color] Demons [color=red]refunds blood[/color] proportional to their [color=red]remaining health[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Demon_Removal_3.txt
-TXT_TUTORIAL_EXPLAIN_DEMON_CLICK,"Click a [color=red][b]demon[/b][/color] to View its [color=red][b]info[/b][/color]
+TXT_TUTORIAL_EXPLAIN_DEMON_CLICK,"Click a [color=red]demon[/color] to View its [color=red]info[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Click.txt
-TXT_TUTORIAL_EXPLAIN_DEMON_HOVER_CLICK,"[color=red][b]Hover[/b][/color] over a [color=red][b]demon[/b][/color] to view its [color=red][b]range[/b][/color].
+TXT_TUTORIAL_EXPLAIN_DEMON_HOVER_CLICK,"[color=red]Hover[/color] over a [color=red]demon[/color] to view its [color=red]range[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt
-TXT_TUTORIAL_EXPLAIN_HEALTH,"Protect your [color=red][b]health[/b][/color] and [color=red]Defeat[/color] the [color=purple][b]zombies[/b][/color] 
+TXT_TUTORIAL_EXPLAIN_HEALTH,"Protect your [color=red]health[/color] and [color=red]Defeat[/color] the [color=purple]zombies[/color] 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Health.txt
-TXT_TUTORIAL_EXPLAIN_PORTALS,"Lucretia can summon [color=purple][b]por[/b][/color][color=green][b]tals[/b][/color] between [color=purple]Earth[/color] and [color=green]Syn[/color].
+TXT_TUTORIAL_EXPLAIN_PORTALS,"Lucretia can summon [color=purple]por[/color][color=green]tals[/color] between [color=purple]Earth[/color] and [color=green]Syn[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt
-TXT_TUTORIAL_EXPLAIN_PORTALS_2,"[color=purple][b]por[/b][/color][color=green][b]tals[/b][/color] are [color=red][b]one-way[/b][/color]. [color=purple][b]zombies[/b][/color] [color=red]enter[/color] via the [color=red]first[/color] portal summoned, [color=red]exit[/color] via the [color=red]second[/color].
+TXT_TUTORIAL_EXPLAIN_PORTALS_2,"[color=purple]por[/color][color=green]tals[/color] are [color=red]one-way[/color]. [color=purple]zombies[/color] [color=red]enter[/color] via the [color=red]first[/color] portal summoned, [color=red]exit[/color] via the [color=red]second[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_2.txt
-TXT_TUTORIAL_EXPLAIN_PORTALS_3,"[color=purple][b]por[/b][/color][color=green][b]tals[/b][/color] have [color=red][b]long duration[/b][/color] & [color=red][b]short cooldown[/b][/color]
+TXT_TUTORIAL_EXPLAIN_PORTALS_3,"[color=purple]por[/color][color=green]tals[/color] have [color=red]long duration[/color] & [color=red]short cooldown[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_3.txt
-TXT_TUTORIAL_EXPLAIN_PREPLACED_SPINAL_OCCULUM,"You have reflexively summoned some SpinalOcculum. [color=red][b]use their buffs[/b][/color] as you learn control over your new power.
+TXT_TUTORIAL_EXPLAIN_PREPLACED_SPINAL_OCCULUM,"You have reflexively summoned some SpinalOcculum. [color=red]use their buffs[/color] as you learn control over your new power.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_PrePlaced_Spinal_Occulum.txt
-TXT_TUTORIAL_EXPLAIN_SKULL_HOVER,"[color=red][b]Hover[/b][/color] over a [color=red][b]skull[/b][/color] to see incoming [color=purple]Zombies[/color] 
+TXT_TUTORIAL_EXPLAIN_SKULL_HOVER,"[color=red]Hover[/color] over a [color=red]skull[/color] to see incoming [color=purple]Zombies[/color] 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Hover.txt
-TXT_TUTORIAL_EXPLAIN_SKULL_TILE,"Do [color=red][b]not[/b][/color] let [color=purple][b]zombies[/b] [/color][color=purple][b]touch[/b][/color] the [color=purple][b]skull tiles[/b][/color] or you [color=red][b]lose[/b][/color]. [color=red][b]cannot summon[/b][/color] on Skull Tiles.
+TXT_TUTORIAL_EXPLAIN_SKULL_TILE,"Do [color=red]not[/color] let [color=purple]zombies [/color][color=purple]touch[/color] the [color=purple]skull tiles[/color] or you [color=red]lose[/color]. [color=red]cannot summon[/color] on Skull Tiles.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt
-TXT_TUTORIAL_EXPLAIN_SWAP,"Lucretia can now command devastating [color=red][b]swap socercies[/b][/color] that charge over time.
+TXT_TUTORIAL_EXPLAIN_SWAP,"Lucretia can now command devastating [color=red]swap socercies[/color] that charge over time.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Swap.txt
-TXT_TUTORIAL_EXPLAIN_SWAP_2,"When fully charged, [color=red][b]swaping dimensions activates[/b][/color] the [color=red][b]swap sorcery[/b][/color] (unless it is locked with [color=red][b]spacebar[/b][/color])
+TXT_TUTORIAL_EXPLAIN_SWAP_2,"When fully charged, [color=red]swaping dimensions activates[/color] the [color=red]swap sorcery[/color] (unless it is locked with [color=red]spacebar[/color])
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_2.txt
-TXT_TUTORIAL_EXPLAIN_SWAP_3,"Swapping when an ability is [color=red][b]currently activated[/b][/color] will [color=red][b]cancel[/b] it[/color] and [color=red][b]lengthen[/b][/color] the cooldown.
+TXT_TUTORIAL_EXPLAIN_SWAP_3,"Swapping when an ability is [color=red]currently activated[/color] will [color=red]cancel it[/color] and [color=red]lengthen[/color] the cooldown.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Swap_3.txt
-TXT_TUTORIAL_EXPLAIN_SYN_ABILITY,"Lucretia can command powerful [color=red][b]syn sorceries[/b][/color].
+TXT_TUTORIAL_EXPLAIN_SYN_ABILITY,"Lucretia can command powerful [color=red]syn sorceries[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability.txt
 TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_2,"Click the [color=red]Rune[/color] to ready the Sorcery.
 ","Haz clic en la [color=red]runa[/color] para preparar la hechicería.
@@ -440,7 +440,7 @@ TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_3,"[color=red]Click[/color] the Map to [color=r
 ","맵을 [color=red]클릭[/color]해 [color=red]마법[/color]을 [color=red]발동[/color]하세요
 ",res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_3.txt
 TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_4,"Each Dimension has it's own Syn Sorcery & cooldown.
-[color=red][b]swap[/b][/color] & [color=red]Invoke[/color] the [color=red]Sorcery[/color] again
+[color=red]swap[/color] & [color=red]Invoke[/color] the [color=red]Sorcery[/color] again
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Ability_4.txt
 TXT_TUTORIAL_EXPLAIN_SYN_ABILITY_5,"[color=red]Click[/color] the Rune then Map to [color=red]Invoke[/color] the [color=red]Sorcery[/color]
 ","[color=red]Haz clic[/color] en la runa y luego en el mapa para [color=red]invocar[/color] la [color=red]hechicería[/color]
@@ -483,11 +483,11 @@ TXT_TUTORIAL_EXPLAIN_SYN_MONOLITH_3,"Double Click a Demon to Place the Monolith.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_3.txt
 TXT_TUTORIAL_EXPLAIN_SYN_MONOLITH_4,"Syn Monoliths can be moved at any time. Syn Monolith abilities activate automatically. Read more in the codex.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Syn_Monolith_4.txt
-TXT_TUTORIAL_EXPLAIN_ULTIMATES,"Command Demons to unleash their [color=red][b]maximum power[/b].[/color]
+TXT_TUTORIAL_EXPLAIN_ULTIMATES,"Command Demons to unleash their [color=red]maximum power.[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates.txt
-TXT_TUTORIAL_EXPLAIN_ULTIMATES_2,"Each Demon has a unique [color=red][b]ultimate[/b][/color]. Generate [color=red][b]mana[/b][/color] for [color=red][b]ultimates[/b][/color] via [color=red]Demon activity[/color].
+TXT_TUTORIAL_EXPLAIN_ULTIMATES_2,"Each Demon has a unique [color=red]ultimate[/color]. Generate [color=red]mana[/color] for [color=red]ultimates[/color] via [color=red]Demon activity[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_2.txt
-TXT_TUTORIAL_EXPLAIN_ULTIMATES_3,"Generating enough [color=red][b]mana[/b][/color] grants an [color=red][b]ultimate charge[/b][/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].
+TXT_TUTORIAL_EXPLAIN_ULTIMATES_3,"Generating enough [color=red]mana[/color] grants an [color=red]ultimate charge[/color]. Try using an Ultimate Now. [color=red]Click the Ultimate Bar[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_3.txt
 TXT_TUTORIAL_EXPLAIN_ULTIMATES_4,"Now click the [color=red]Crawler[/color].
 ","Ahora haz clic en el [color=red]Crawler[/color].
@@ -511,13 +511,13 @@ TXT_TUTORIAL_EXPLAIN_ULTIMATES_5,"[color=red]Efficient[/color] Demon Use = [colo
 ","[color=red]Sprawne[/color] użycie demonów = [color=red]szybsze[/color] ładowanie ultimatu. Szczegóły znajdziesz w [color=red]kodeksie[/color].
 ","악마를 [color=red]효율적으로[/color] 쓰면 궁극기 충전이 [color=red]빨라집니다[/color]. 자세한 내용은 [color=red]코덱스[/color]에서 확인하세요.
 ",res://_Assets/Text/TextFiles/Tutorial_Explain_Ultimates_5.txt
-TXT_TUTORIAL_EXPLAIN_WAVES,"Click the [color=red][b]skull[/b][/color] to call [color=purple]zombie[/color] [color=green]waves[/color] [color=red][b]early[/b][/color] for [color=red][b]bonus blood[/b][/color]
+TXT_TUTORIAL_EXPLAIN_WAVES,"Click the [color=red]skull[/color] to call [color=purple]zombie[/color] [color=green]waves[/color] [color=red]early[/color] for [color=red]bonus blood[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Waves.txt
-TXT_TUTORIAL_EXPLAIN_WYRM_QUEEN,"A [color=red][b]demon queen[/b][/color] has decided to aid you. [color=red]Defend them[/color] and gain their alliegance. 
+TXT_TUTORIAL_EXPLAIN_WYRM_QUEEN,"A [color=red]demon queen[/color] has decided to aid you. [color=red]Defend them[/color] and gain their alliegance. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Wyrm_Queen.txt
-TXT_TUTORIAL_PLACE_PORTAL,"Select & Place a [color=purple][b]por[/b][/color][color=green][b]tal[/b][/color] now.
+TXT_TUTORIAL_PLACE_PORTAL,"Select & Place a [color=purple]por[/color][color=green]tal[/color] now.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Place_Portal.txt
-TXT_TUTORIAL_PLACE_PORTAL_2,"Swap & Place another [color=purple][b]por[/b][/color][color=green][b]tal[/b][/color] now.
+TXT_TUTORIAL_PLACE_PORTAL_2,"Swap & Place another [color=purple]por[/color][color=green]tal[/color] now.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Place_Portal_2.txt
 TXT_TUTORIAL_SELECT_DEMON,"Select one now
 ","Selecciona uno ahora
@@ -541,13 +541,13 @@ TXT_TUTORIAL_SELECT_WYRM,"Select a Wyrm Demon now
 ","Wybierz demona Żmija teraz
 ","지금 웜 악마를 선택하세요
 ",res://_Assets/Text/TextFiles/Tutorial_Select_Wyrm.txt
-TXT_TUTORIAL_SPINAL_OCCULUM_UNLOCKED,"[b]spinal occulum unlocked[/b]
+TXT_TUTORIAL_SPINAL_OCCULUM_UNLOCKED,"spinal occulum unlocked
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Spinal_Occulum_Unlocked.txt
-TXT_WASPTUTORIAL,"[b]hive[/b]'s are dens of demonic wasps that can harrass and slow down enemies near itself. Covers more ground and does more damage than the Occular Spine at the cost of durablity. Place wisely. 
+TXT_WASPTUTORIAL,"hive's are dens of demonic wasps that can harrass and slow down enemies near itself. Covers more ground and does more damage than the Occular Spine at the cost of durablity. Place wisely. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/waspTutorial.txt
-TXT_WASPWYRMBUFF,"[b]hive[/b]'s can [b]receive[/b] buffs from [b]eggwyrm[/b]'s, enraging the demonic wasps and causing them to attack faster and deal more damage.
+TXT_WASPWYRMBUFF,"hive's can receive buffs from eggwyrm's, enraging the demonic wasps and causing them to attack faster and deal more damage.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/WaspWyrmBuff.txt
-TXT_WYRMMAWBUFF,"The fresh blood dripping from the EggWyrms cocoon can seep into the jaws of a [b]maw[/b], aiding it's digestion allowing it to kill enemies faster. 
+TXT_WYRMMAWBUFF,"The fresh blood dripping from the EggWyrms cocoon can seep into the jaws of a maw, aiding it's digestion allowing it to kill enemies faster. 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/WyrmMawBuff.txt
 TXT_WYRMQUEEN,"A queen Wyrm that can give but not receive buffs.
 ","Una Sierpe reina que puede dar mejoras, pero no recibirlas.
@@ -560,7 +560,7 @@ TXT_WYRMQUEEN,"A queen Wyrm that can give but not receive buffs.
 ","Królowa Żmijów, która może dawać wzmocnienia, lecz ich nie otrzymuje.
 ","강화를 줄 수는 있지만 받을 수는 없는 웜 여왕.
 ",res://_Assets/Text/TextFiles/WyrmQueen.txt
-TXT_WYRMSPINEBUFF,"EggWyrms can simultanesouly buff [b]occular spine[/b]'s and themselves, granting the Spine increased health regeneration while increasing the Wyrm's damage.
+TXT_WYRMSPINEBUFF,"EggWyrms can simultanesouly buff occular spine's and themselves, granting the Spine increased health regeneration while increasing the Wyrm's damage.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/WyrmSpineBuff.txt
 TXT_WYRMTUTORIAL,"Hatchling wyrms that fire a stream of super heated piercing blood.
 

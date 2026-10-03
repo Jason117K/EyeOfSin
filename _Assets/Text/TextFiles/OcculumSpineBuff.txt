@@ -1,1 +1,1 @@
-[b]eyes[/b] give [b]occular spines[/b] increased maximum health and increased health regeneration.
+eyes give occular spines increased maximum health and increased health regeneration.

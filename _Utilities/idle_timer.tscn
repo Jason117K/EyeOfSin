@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b31vc0x341bew"]
+
+[ext_resource type="Script" uid="uid://xe6db35lg7or" path="res://_Utilities/return_to_act_1_screen_stopwatch.gd" id="1_d2dhv"]
+
+[node name="IdleTimer" type="Timer" unique_id=1082163459]
+autostart = true
+script = ExtResource("1_d2dhv")
+allowed_elapsed_time = 50
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]
