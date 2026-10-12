@@ -124,6 +124,8 @@ func _on_game_start_requested() -> void:
 	_start_wave(0)
 
 func _on_call_early_wave_requested() -> void:
+	if _current_wave + 1 >= _total_waves:
+		return
 	ScoreManager.wave_called_early()
 	##print("Requested Early Wave, current wave is ",_current_wave )
 	if (_current_wave + 1) < wave_delays.size():
@@ -137,16 +139,20 @@ func _on_call_early_wave_requested() -> void:
 ## Manually start the next wave (for tutorial-controlled progression).
 func start_next_wave() -> void:
 	##print("Manual Call Start Next Wave")
-	if (_current_wave + 1) < wave_delays.size():
-		_start_wave(_current_wave + 1)
+	_start_wave(_current_wave + 1)
 
 
 
+# Single gate for every wave start (timer, early call, manual, start button).
 func _start_wave(index: int) -> void:
 	#print("START WAVEEEEEEEEE ", index)
-	Global.show_wave_label(index+1)
-	if index < 0 or index >= _total_waves:
+	if index < 0 or index >= _total_waves or index <= _current_wave:
 		return
+	# Drop any schedule left over from the previous wave (e.g. after an early call);
+	# re-armed below for this wave.
+	waveDelayTimer.stop()
+	previewTimer.stop()
+	Global.show_wave_label(index+1)
 	if index > 0:
 		Global.add_blood_from_wave(25)
 	_current_wave = index
@@ -174,8 +180,8 @@ func _start_wave(index: int) -> void:
 			# Schedule preview to appear before next wave
 			var preview_time := delay - preview_lead_time
 			if preview_time > 0:
-				$PreviewTimer.wait_time = preview_time
-				$PreviewTimer.start()
+				previewTimer.wait_time = preview_time
+				previewTimer.start()
 			else:
 				# Lead time exceeds delay — show preview immediately
 				_show_preview_for_next_wave()
@@ -183,8 +189,7 @@ func _start_wave(index: int) -> void:
 
 func _on_wave_delay_timer_timeout() -> void:
 	##print("Start Da Wave Here")
-	if (_current_wave + 1) < wave_delays.size():
-		_start_wave(_current_wave + 1)
+	_start_wave(_current_wave + 1)
 
 
 func _on_preview_timer_timeout() -> void:
@@ -221,7 +226,8 @@ func _check_level_end() -> void:
 		#print("Emitting Level End Cos No Enmeies In Group")
 		level_ended.emit()
 	else:
-		get_tree().create_timer(1.0).timeout.connect(_check_level_end)
+		# process_always = false: don't re-check (and end the level) while paused.
+		get_tree().create_timer(1.0, false).timeout.connect(_check_level_end)
 
 
 		
