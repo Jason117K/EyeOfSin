@@ -172,7 +172,11 @@ func _ready() -> void:
 	else:
 		set_process(false)
 		Global.register_zombie(self)
-		
+		# Count as alive from the spawn frame: ZombieSpawner emits all_waves_exhausted in
+		# the same call that spawns the last zombie, and WaveManager._check_level_end
+		# would otherwise see 0 and end the level with this zombie still walking.
+		add_to_group("Alive-Enemies")
+
 	hide_highlight_timer.one_shot = true 
 	hide_highlight_timer.autostart = false
 	hide_highlight_timer.wait_time = 6.0
