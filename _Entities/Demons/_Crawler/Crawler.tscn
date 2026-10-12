@@ -1308,6 +1308,7 @@ sprite_frames = ExtResource("23_78twq")
 animation = &"web_spit"
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=1142597748]
+visible = false
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1908163688]
 self_modulate = Color(0, 0, 0, 1)
@@ -1416,7 +1417,6 @@ position = Vector2(0, -9)
 texture = ExtResource("37_8u2uv")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=1067851881]
-visible = false
 offset_left = -33.0
 offset_top = -19.0
 offset_right = 9.0
@@ -1445,6 +1445,7 @@ animation = &"top_glow"
 sprite_frames = SubResource("SpriteFrames_78twq")
 
 [node name="ProtectiveRib" type="Sprite2D" parent="." unique_id=1015921131]
+visible = false
 z_index = 1
 position = Vector2(6, -3)
 texture = ExtResource("41_78twq")

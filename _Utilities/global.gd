@@ -203,14 +203,15 @@ func show_trailer_footage()->void:
 	print("Global Should Show Trailer Footage")
 	if game_controller.current_scenes.size() > 1:
 		game_controller.change_from_dual_scenes("res://_Stages/LevelSelect/LevelSelect_A1.tscn")
-	game_controller.trailer_video_player.show()
-	game_controller.trailer_video_player.paused = false
-	if !game_controller.trailer_video_player.is_playing():
-		game_controller.trailer_video_player.play()
+	#game_controller.trailer_video_player.show()
+	#game_controller.trailer_video_player.paused = false
+	#if !game_controller.trailer_video_player.is_playing():
+	#	game_controller.trailer_video_player.play()
 	
 func stop_trailer_footage()->void:
-	game_controller.trailer_video_player.hide()
-	game_controller.trailer_video_player.stop()
+	return
+	#game_controller.trailer_video_player.hide()
+	#game_controller.trailer_video_player.stop()
 
 func add_mana(mana_to_add:float)->void:
 	ultimate_charge_container.add_mana(mana_to_add)

@@ -6,7 +6,7 @@ var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
 
 func _ready() -> void:
 	creditsText.append_text("Creative Director : Jason King\n")
-	creditsText.append_text("Producer : Darrow Mohammadi-hall\n")
+	creditsText.append_text("Producer : Darrow Mohammadi-Hall\n")
 	creditsText.append_text("Marketing Lead: Meg Thurmeier\n")
 	creditsText.append_text("Gameplay Designers : Augustus Sabino, Jason King\n")
 	creditsText.append_text("Art: Tobi, Jason King, Ren Grunberg (Capsule Art)\n")
