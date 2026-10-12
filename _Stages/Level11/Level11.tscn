@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cctav6jfduj1m" path="res://_Stages/Level11/level11.gd" id="1_74n7b"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_3w01g"]
+[ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="2_ubhex"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_0if83"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_q73vl"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_ci0g5"]
@@ -12,7 +13,7 @@
 [ext_resource type="TileSet" uid="uid://dvsn02j7tjmga" path="res://_Assets/Environment/Act2/Tilesets/PurpleChapel.tres" id="9_tw0e1"]
 [ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="9_ubhex"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="10_0bfui"]
-[ext_resource type="Script" uid="uid://c1y62mpedbiiq" path="res://_Utilities/Waves/level10_wave_entry.gd" id="10_2d7p1"]
+[ext_resource type="Script" path="res://_Utilities/Waves/level10_wave_entry.gd" id="10_2d7p1"]
 [ext_resource type="Texture2D" uid="uid://cgwgxvu0fcq6y" path="res://_Assets/Environment/Tilesets/PurpleTileSet.png" id="11_funvm"]
 [ext_resource type="Texture2D" uid="uid://d1ami55ajbiti" path="res://_Assets/Environment/Tilesets/Ground_rocks.png" id="12_fkjf8"]
 [ext_resource type="Texture2D" uid="uid://brt2p4mtk3uyg" path="res://_Assets/Environment/Tilesets/SpecialTile1.png" id="13_jbajw"]
@@ -50,6 +51,15 @@
 [ext_resource type="Texture2D" uid="uid://b03wii0stnsi5" path="res://_Assets/Environment/Act2/Church_Girl_Statue.png" id="45_436k0"]
 [ext_resource type="Texture2D" uid="uid://ib1561l82acs" path="res://_Assets/Environment/Act2/Dragon_Church_Statue.png" id="46_fnlki"]
 [ext_resource type="Texture2D" uid="uid://d1xne4blp32s2" path="res://_Assets/Environment/Act2/Flowers.png" id="47_jmtrr"]
+
+[sub_resource type="Resource" id="Resource_ubhex"]
+script = ExtResource("9_ubhex")
+type = "Reborn"
+count = 2
+
+[sub_resource type="Resource" id="Resource_2d7p1"]
+script = ExtResource("8_hkc6s")
+entries = Array[ExtResource("9_ubhex")]([SubResource("Resource_ubhex")])
 
 [sub_resource type="Resource" id="Resource_0ck12"]
 script = ExtResource("10_2d7p1")
@@ -3267,6 +3277,8 @@ mouse_filter = 2
 script = ExtResource("1_74n7b")
 record_footage = false
 
+[node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("2_ubhex")]
+
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_3w01g")]
 layout_mode = 1
 
@@ -3294,6 +3306,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("6_5r4k1")]
 visible = false
 position = Vector2(740, 141)
+waves = Array[ExtResource("8_hkc6s")]([SubResource("Resource_2d7p1")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=197908073 instance=ExtResource("7_i5ic1")]
 z_index = 1
@@ -3510,8 +3523,8 @@ texture = SubResource("AtlasTexture_b5hoh")
 position = Vector2(393, 361)
 texture = SubResource("AtlasTexture_nwycs")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="47_m2m2j"]
 [ext_resource type="Texture2D" uid="uid://du6cidxufyk1f" path="res://_Assets/Environment/Act2/AllVases.png" id="47_xkumu"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="48_yfb51"]
+[ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="53_i0r05"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26wus"]
 texture = ExtResource("11_y07bx")
@@ -5571,6 +5572,8 @@ layout_mode = 1
 [node name="UnlockPower" parent="." unique_id=1731368497 instance=ExtResource("48_yfb51")]
 visible = false
 layout_mode = 1
+
+[node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("53_i0r05")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://c60xle326avy0" path="res://_Assets/Environment/Act2/BigWaterAnim-Sheet.png" id="57_5ac5y"]
 [ext_resource type="Texture2D" uid="uid://do810kt1fef16" path="res://_Assets/Environment/Act2/BigWaterAnim_2-Sheet.png" id="58_gj3f5"]
 [ext_resource type="Texture2D" uid="uid://te84bp0hfx5j" path="res://_Assets/Environment/Act2/BigWaterAnim_3-Sheet.png" id="59_m3pe7"]
+[ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="60_og4xb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c176a"]
 texture = ExtResource("9_q26s5")
@@ -6111,6 +6112,8 @@ autoplay = "default"
 position = Vector2(675, 65)
 sprite_frames = SubResource("SpriteFrames_2eb3e")
 autoplay = "default"
+
+[node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("60_og4xb")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 

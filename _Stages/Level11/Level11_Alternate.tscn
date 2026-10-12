@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://c60xle326avy0" path="res://_Assets/Environment/Act2/BigWaterAnim-Sheet.png" id="57_mncst"]
 [ext_resource type="Texture2D" uid="uid://do810kt1fef16" path="res://_Assets/Environment/Act2/BigWaterAnim_2-Sheet.png" id="58_kkwsq"]
 [ext_resource type="Texture2D" uid="uid://te84bp0hfx5j" path="res://_Assets/Environment/Act2/BigWaterAnim_3-Sheet.png" id="59_0ajrg"]
+[ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="60_je6vi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c176a"]
 texture = ExtResource("9_bufpn")
@@ -5653,6 +5654,8 @@ mouse_filter = 2
 script = ExtResource("1_bivts")
 isGreenDimension = true
 record_footage = false
+
+[node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("60_je6vi")]
 
 [node name="UILayer" parent="." unique_id=1114925412 instance=ExtResource("2_vkme3")]
 layout_mode = 1

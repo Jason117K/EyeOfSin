@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://b03wii0stnsi5" path="res://_Assets/Environment/Act2/Church_Girl_Statue.png" id="45_m0gba"]
 [ext_resource type="Texture2D" uid="uid://ib1561l82acs" path="res://_Assets/Environment/Act2/Dragon_Church_Statue.png" id="46_c4j1x"]
 [ext_resource type="Texture2D" uid="uid://d1xne4blp32s2" path="res://_Assets/Environment/Act2/Flowers.png" id="47_s4csh"]
+[ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="48_b2uik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2byx"]
 texture = ExtResource("10_y3wge")
@@ -3494,6 +3495,8 @@ texture = SubResource("AtlasTexture_b5hoh")
 [node name="Flower8" type="Sprite2D" parent="FlowerVases" unique_id=393004644]
 position = Vector2(393, 361)
 texture = SubResource("AtlasTexture_nwycs")
+
+[node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("48_b2uik")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
