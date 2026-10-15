@@ -76,7 +76,7 @@ func _ready() -> void:
 	##print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [60.0, 100.0]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime,wave6StartTime]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
 	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
@@ -306,6 +306,6 @@ func show_guide() -> void:
 
 func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 	match new_zombie_unlocked:
-		"Rohan":
+		"Rohan", "Erupter":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
