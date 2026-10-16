@@ -4,6 +4,9 @@ extends Demon
 @onready var blood_clone_respawn_timer : Timer = $RespawnBloodCloneTimer
 var demon_selection_menu : Control
 var blood_clone
+# Set when the clone is dispelled while place_blood_demon is still awaiting it.
+var pending_dispel := false
+var is_summoning := false
 
 	
 	
@@ -42,17 +45,32 @@ func summon_blood_clone()->void:
 			demon_selection_menu._on_MawButton_pressed()
 		Global.DEMON_TYPE.HIVE:
 			demon_selection_menu._on_HiveButton_pressed()
-			
-	blood_clone = await demon_manager.place_blood_demon(global_position)
+
+	pending_dispel = false
+	is_summoning = true
+	var new_clone : Demon = await demon_manager.place_blood_demon(global_position)
+	is_summoning = false
+	if pending_dispel:
+		# Dispelled while the clone was still being placed.
+		pending_dispel = false
+		new_clone.dispel_blood_clone_instance()
+		return
+	blood_clone = new_clone
 	blood_clone.set_blood_empty_parent(self)
 	hide()
 
 
 func dispel_blood_clone(should_respawn : bool = false)->void:
-	if blood_clone != null:
+	if is_summoning:
+		pending_dispel = true
+	if not should_respawn:
+		# The hero is gone: a clone killed earlier must not respawn later.
+		blood_clone_respawn_timer.stop()
+	if is_instance_valid(blood_clone):
 		if should_respawn:
 			blood_clone_respawn_timer.start()
-		blood_clone.queue_free()
+		blood_clone.dispel_blood_clone_instance()
+	blood_clone = null
 	show()
 
 	

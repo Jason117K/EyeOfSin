@@ -7134,8 +7134,8 @@ texture = ExtResource("59_qlrnu")
 
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("92_l14pwth")]
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

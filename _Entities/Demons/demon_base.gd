@@ -26,6 +26,8 @@ class_name Demon
 #   2. _cleanup_manager()  — DemonManager.clear_space (skipped in die_fromClearSpace)
 #   3. _cleanup()          — buffNodes + demon-specific teardown
 #   4. queue_free()
+#   Blood clones instead hand off to their Empty, which calls dispel_blood_clone_instance()
+#   (steps 1, 3, 4 only — the Empty owns the grid cell).
 #
 # debuff() — children do component cleanup, then call super():
 #   1. Child component-specific cleanup
@@ -413,8 +415,11 @@ func spawn_revive_point()->void:
 	
 func die() -> void:
 	if is_blood:
-		blood_clone_empty_parent.dispel_blood_clone(true)
-		return 
+		if is_instance_valid(blood_clone_empty_parent):
+			blood_clone_empty_parent.dispel_blood_clone(true)
+		else:
+			dispel_blood_clone_instance()
+		return
 	kill_hero()
 	demon_die.emit()
 	spawn_revive_point()
@@ -427,6 +432,16 @@ func die_fromClearSpace() -> void:
 	demon_manager.add_blood(calc_blood_refund())
 	demon_die.emit()
 	_cleanup_manager()
+	_cleanup()
+	queue_free()
+
+# Teardown for a blood clone. Runs _cleanup() so things the demon spawned outside
+# itself (Hive drones and buzz audio, a Maw's devour group via demon_die) go with it.
+# No revive point, refund or _cleanup_manager(): the Empty owns the grid cell.
+func dispel_blood_clone_instance() -> void:
+	if is_queued_for_deletion():
+		return
+	demon_die.emit()
 	_cleanup()
 	queue_free()
 

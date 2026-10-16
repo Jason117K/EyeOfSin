@@ -193,7 +193,7 @@ func _input(event:InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			deselect_demon()
 			
-	if event is InputEventKey and event.pressed:
+	if event is InputEventKey and event.pressed and not event.echo:
 		##print("Key Pressed")
 		if event.keycode == KEY_X:
 			deselect_demon()
@@ -207,24 +207,13 @@ func _input(event:InputEvent) -> void:
 				#Global.swap_scenes()
 			#else:
 				##print("Can Swap Scenes is ", canSwapScenes, " no swapping possible")
-		if event.keycode == KEY_1:
-			#print("1 Key Pressed")
-			_on_OcculumButton_pressed()
-		if event.keycode == KEY_2:
-			#print("2 Key Pressed")
-			_on_CrawlerButton_pressed()
-		if event.keycode == KEY_3:
-			#print("3 Key Pressed")
-			_on_SpinalOcculumButton_pressed()
-		if event.keycode == KEY_4:
-			#print("4 Key Pressed")
-			_on_MawButton_pressed()
-		if event.keycode == KEY_5:
-			#print("5 Key Pressed")
-			_on_WyrmButton_pressed()
-		if event.keycode == KEY_6:
-			#print("6 Key Pressed")
-			_on_HiveButton_pressed()			
+		# Hotkeys follow the card order and only reach cards the player could click:
+		# levels lock demons by hiding their card container.
+		var hotkey_buttons := {KEY_1: OcculumButton, KEY_2: CrawlerButton, KEY_3: SpinalOcculumButton,
+								KEY_4: WyrmButton, KEY_5: MawButton, KEY_6: HiveButton}
+		var button : TextureButton = hotkey_buttons.get(event.keycode)
+		if button and button.is_visible_in_tree() and not button.disabled:
+			button.pressed.emit()
 
 func set_pause_process_mode():
 	pause_button.set_pause_process_mode()
