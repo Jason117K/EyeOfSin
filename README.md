@@ -73,7 +73,10 @@ autoloads: `GlobalResourceLoader`, `AudioManager`, `Dialogic`, `ScoreManager` â€
 **Dual dimension ("Purple" / "Green") is THE core mechanic.** Every level ships as a pair: `LevelX`
 (Purple, default) + `LevelX_Alternate` (Green), loaded **simultaneously** as siblings under
 GameController's `scene_container`. They are separated by **canvas visibility layers + viewport
-cull mask** (`DIM_BITS`), not show/hide; shared UI is bit 0. `Global.is_on_purple_dimension()`
+cull mask** (`DIM_BITS`), not show/hide; shared UI is bit 0. Each level's tutorial pop-ups
+(`ToolTips`) are stamped with `Dim.OVERLAY_BITS` instead, so they draw only in the main view of
+their own dimension and are never mirrored into the PiP. Culling is draw-only: a culled but
+`visible` Control still takes mouse input, and physics picking reaches both dimensions' areas. `Global.is_on_purple_dimension()`
 (== `game_controller.on_scene_1`) is the single source of truth. `swap_scenes()` flips the active
 dimension, re-applies cull masks, makes the active `Camera2D` current, and updates the PiP (which
 mirrors the *inactive* dimension). Persistent entities are **re-grouped + reparented** into the

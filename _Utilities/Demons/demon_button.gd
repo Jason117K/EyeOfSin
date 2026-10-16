@@ -25,8 +25,10 @@ func brighten()->void:
 	
 
 
-func _on_mouse_entered() -> void: 
+func _on_mouse_entered() -> void:
 	hover_target = 1.0
+	# Scale around the card's center so its edges don't slide under the cursor.
+	pivot_offset = size / 2.0
 	if tween_hover and tween_hover.is_running():
 		tween_hover.kill()
 		

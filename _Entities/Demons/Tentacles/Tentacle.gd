@@ -105,7 +105,11 @@ func _process(delta: float) -> void:
 	# Only the pre-commit phases bail on enemy loss. Once RETRACTING is
 	# under way the primary has (or is about to) apply damage, so a
 	# now-invalid enemy is expected — let the retraction run to completion.
-	if state in [State.EXTENDING, State.ATTACHED] and not is_instance_valid(enemy):
+	# A zombie killed by something else stays valid through its death
+	# animation, so the primary also bails on is_dead; secondaries don't,
+	# since their own group's primary may be the one that killed it.
+	if state in [State.EXTENDING, State.ATTACHED] and (not is_instance_valid(enemy) \
+			or (is_primary_grabber and enemy.get("is_dead") == true)):
 		if debug_mode:
 			pass
 			#print("[Tentacle %s] Enemy became invalid, aborting" % name)

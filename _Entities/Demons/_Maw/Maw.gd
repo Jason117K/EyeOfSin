@@ -55,12 +55,14 @@ signal maw_buff_unlocked(buff_to_unlock:String)
 func _ready() -> void:
 	super()
 	current_demon_type = Global.DEMON_TYPE.MAW
-	collision_mask = 2
+	_init_collision_mask(self, false)
+	print("Og Detection Radius is ", ogDetectionRadius)
 	maw_buff_unlocked.connect(Global.unlock_buff)
 	# --- Tentacle setup ---
 	setup_tentacles()
 	# --- Demon-specific collision ---
 	_init_demon_collision()
+	detection_area.area_exited.connect(_on_detection_component_area_exited)
 	##print("Tentacle Is Active Num ", GlobalTentacleManager.get_active_arm_count())
 	
 	all_synergies = Global.all_maw_synergies
@@ -93,6 +95,12 @@ func get_demon_true_name() -> String:
 
 func get_damage() -> String:
 	return "INSTAKILL"
+
+# The root sits at place_demon's -256 visual offset (+16 to center on two
+# cells); undo it to get the left grid cell that grid_map, revive points and
+# blood clones key on.
+func get_cell_global_position() -> Vector2:
+	return global_position + Vector2(256 - 16, 256)
 
 
 # --- Buff System ---
@@ -132,6 +140,16 @@ func receive_buff(demon) -> void:
 
 func debuff() -> void:
 	super()
+	if is_blood:
+		return
+	# Base debuff() only resets the shared flags; undo the Maw-only buff effects
+	# too, or they outlive the buffing demon and stack on the next buff.
+	willBelchBlood = false
+	willBelchWebs = false
+	will_spawn_swords = false
+	_set_tentacle_digestion_time(digestTime)
+	detectionAreaShape.shape.radius = ogDetectionRadius
+	_remove_consume_zombie_group()
 
 
 func unlock_new_buff(demonName:String)->void:
@@ -151,10 +169,10 @@ func shield(syn_shield:PackedScene,duration:float)->void:
 # --- Death ---
 
 func _cleanup_manager() -> void:
-	# Maw occupies two grid spaces
+	# Maw occupies two grid spaces, keyed from the cell it was placed on
 	if demon_manager != null:
-		demon_manager.clear_space(Vector2(self.global_position.x - 16, self.global_position.y))
-		demon_manager.clear_space(Vector2(self.global_position.x + 16, self.global_position.y))
+		demon_manager.clear_space(grid_map_cell_pos)
+		demon_manager.clear_space(grid_map_cell_pos + Vector2(32, 0))
 
 func _cleanup() -> void:
 	# Free tentacles before base cleanup
@@ -205,29 +223,42 @@ func _is_being_eaten(target:Node) -> bool:
 			return true
 	return false
 
+# A zombie killed by something else stays valid through its death animation,
+# and one being dragged under by the Hive-buff devour is already taken.
+func _is_edible(target:Node) -> bool:
+	if not is_instance_valid(target) or target.get("is_dead") == true:
+		return false
+	if consume_zombie_group != null and is_instance_valid(consume_zombie_group) \
+			and consume_zombie_group.is_devouring(target):
+		return false
+	return true
+
 func assign_tentacle_to_target(target:Node) -> void:
+	if not _is_edible(target):
+		return
 	if _is_being_eaten(target):
 		if debug_mode:
 			pass
 			#print("[Maw] Target already being eaten, skipping")
 		return
 
-	cost = _get_charge_cost(target)
-	if cost > tentacles.size():
-		push_warning("[Maw] Enemy %s charge_cost (%d) exceeds tentacle count (%d) — will never be eaten" % [target.name, cost, tentacles.size()])
+	# Local, not the inherited `cost` (the Maw's blood cost, used for refunds).
+	var charge_cost := _get_charge_cost(target)
+	if charge_cost > tentacles.size():
+		push_warning("[Maw] Enemy %s charge_cost (%d) exceeds tentacle count (%d) — will never be eaten" % [target.name, charge_cost, tentacles.size()])
 		return
 
-	if available_tentacles.size() < cost:
+	if available_tentacles.size() < charge_cost:
 		if not target in enemies_to_eat:
 			if debug_mode:
 				pass
-				
-				#print("[Maw] Not enough tentacles for cost-%d %s; queueing" % [cost, target.name])
+
+				#print("[Maw] Not enough tentacles for cost-%d %s; queueing" % [charge_cost, target.name])
 			enemies_to_eat.append(target)
 		return
 
 	var group_tentacles: Array[Tentacle] = []
-	for i in range(cost):
+	for i in range(charge_cost):
 		group_tentacles.append(available_tentacles.pop_front())
 	var primary: Tentacle = group_tentacles[0]
 
@@ -235,8 +266,8 @@ func assign_tentacle_to_target(target:Node) -> void:
 		"enemy": target,
 		"tentacles": group_tentacles,
 		"primary": primary,
-		"pending_retract": cost,
-		"pending_ready_again": cost,
+		"pending_retract": charge_cost,
+		"pending_ready_again": charge_cost,
 		"damage_applied": false,
 		"aborted": false,
 	}
@@ -255,7 +286,7 @@ func _process_queue() -> void:
 		made_progress = false
 		for i in range(enemies_to_eat.size()):
 			var enemy = enemies_to_eat[i]
-			if not is_instance_valid(enemy):
+			if not _is_edible(enemy):
 				enemies_to_eat.remove_at(i)
 				made_progress = true
 				break
@@ -284,10 +315,14 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 		return
 
 	if not group.damage_applied:
+		# Killed or devoured by something else mid-grab: nothing to eat, so
+		# don't spend a digestion (or pay out its death a second time).
+		if not _is_edible(enemy):
+			tentacle.abort()
+			return
 		group.damage_applied = true
-		if is_instance_valid(enemy):
-			enemy.visible = false
-			enemy.take_damage(false,INSTAKILL_DAMAGE,false)
+		enemy.visible = false
+		enemy.take_damage(false,INSTAKILL_DAMAGE,false)
 
 	group.pending_retract -= 1
 	if group.pending_retract == 0:
@@ -430,10 +465,21 @@ func add_consume_zombie_group_component() -> void:
 		consume_zombie_group.done_eating.connect(devour_complete)
 		#print_scene_tree(consume_zombie_group)
 
+func _remove_consume_zombie_group() -> void:
+	if consume_zombie_group_timer != null:
+		consume_zombie_group_timer.queue_free()
+		consume_zombie_group_timer = null
+	if consume_zombie_group != null and is_instance_valid(consume_zombie_group):
+		if demon_die.is_connected(consume_zombie_group.die):
+			demon_die.disconnect(consume_zombie_group.die)
+		consume_zombie_group.die()
+	consume_zombie_group = null
+	devour_done = true
+
 func devour_zombies() -> void:
 	if devour_done:
 		devour_done = false
-		consume_zombie_group.get_highest_zombie_concentration_and_eat()
+		consume_zombie_group.get_highest_zombie_concentration_and_eat(_is_being_eaten)
 
 func devour_complete() -> void:
 	devour_done = true
@@ -451,6 +497,10 @@ func _on_detection_component_area_entered(this_area: Area2D) -> void:
 	if "Boss" in this_area.get_name():
 		return
 	assign_tentacle_to_target(this_area)
+
+func _on_detection_component_area_exited(this_area: Area2D) -> void:
+	# A queued zombie that walks out of range is no longer a target.
+	enemies_to_eat.erase(this_area)
 
 
 # --- Demo ---

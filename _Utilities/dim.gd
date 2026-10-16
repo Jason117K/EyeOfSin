@@ -19,6 +19,11 @@ const LAYER_GREEN_BUFF := 13
 # Single source of truth — GameController.DIM_BITS references this.
 const DIM_BITS := [1 << 1, 1 << 2]
 
+# Overlay bits ([purple, green]) for a dimension's UI that belongs only in the
+# main view while that dimension is active — never mirrored into the PiP,
+# which renders the inactive dimension's DIM_BITS. Used by tutorial pop-ups.
+const OVERLAY_BITS := [1 << 3, 1 << 4]
+
 
 # Dimension membership is a group, not a field. Nodes in neither group are
 # treated as Purple (the default dimension).

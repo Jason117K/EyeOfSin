@@ -66,8 +66,15 @@ func current_zombie_dead() -> void:
 	current_zombie = null
 	canMove = true 
 		
+func is_holding(zombie: Node) -> bool:
+	return current_zombie == zombie
+
 func demon_minion_busy(questioning_zombie : Zombie) -> bool:
-	if current_zombie == null:
+	# Never busy to the zombie already holding it: it re-checks after an
+	# interrupted attack (e.g. knockback).
+	if current_zombie == questioning_zombie:
+		return false
+	if current_zombie == null or not is_instance_valid(current_zombie):
 		current_zombie = questioning_zombie
 		canMove = false
 		##print(self, " Setting Can 77 Move to false because of ", questioning_zombie)

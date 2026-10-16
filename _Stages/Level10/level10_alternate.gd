@@ -2,6 +2,8 @@ extends LevelTemplate
 
 
 var purple_dimension: Control
+var erupter_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/erupter_zombie_demo.tscn")
+const TUTORIAL_EXPLAIN_ERUPTER = "res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
 
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
 @onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
@@ -15,8 +17,7 @@ func _ready() -> void:
 	level_title = tr("LEVEL_TITLE_0_7")
 	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
-	attach_script_to_sway_children()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hero"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal","Hero"])
 	_configure_waves()
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -111,3 +112,12 @@ func pre_place_hive_demon()->void:
 	demonSelectionMenu._on_HiveButton_pressed()
 	demonManager.place_demon(Vector2(336,304))
 	
+
+func show_zombie_tutorial(unlocked_zombie : String)->void:
+	match unlocked_zombie:
+		"Erupter":
+			_start_explain_erupter()
+
+func _start_explain_erupter()->void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_ERUPTER)
+	toolTips.set_visual_tutorial_visual(erupter_zombie_demo_scene.instantiate())

@@ -1,7 +1,6 @@
 class_name HeroAbilityComponent extends Node
 
 @export var cooldown_duration := 25.0
-@onready var anim_sprite := $"../AnimatedSpriteComponent"
 
 var stop_ability_timer: Timer
 var cooldown_timer: Timer

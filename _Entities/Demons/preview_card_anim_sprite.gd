@@ -35,24 +35,15 @@ func get_overlapping_demon_areas()->Array:
 		
 		
 
+const BUFF_FORMS := ["Occulum", "Crawler", "SpinalOcculum", "Wyrm", "Hive", "Maw"]
+
+# Runs every frame while the preview hovers a buff tile, and not every preview
+# has a buffed animation for every buffer: only switch when it exists and differs.
 func receive_buff(new_form : String) -> void:
-	match new_form:
-		"Occulum":
-			animation = "idle_Occulum"
-
-		"Crawler":
-			animation = "idle_Crawler"
-
-		"SpinalOcculum" :
-			animation = "idle_SpinalOcculum"
-
-		"Wyrm":
-			animation = "idle_Wyrm"
-			
-		"Hive":
-			animation = "idle_Hive"
-
-		"Maw":
-			animation = "idle_Maw"
+	if not new_form in BUFF_FORMS:
+		return
+	var buffed_animation := StringName("idle_" + new_form)
+	if animation != buffed_animation and sprite_frames.has_animation(buffed_animation):
+		animation = buffed_animation
 
 			

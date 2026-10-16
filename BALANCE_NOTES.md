@@ -90,7 +90,7 @@ The Ranged Zombie in the design doc is not implemented; ignore it.
 | SpinalOcculum | 50 | 800 | Slows on contact | Main staller. Buffed by: Crawler → web slow; Wyrm → spikes; **Hive → silence field**; Maw → lightning; Occulum → blood rib. |
 | Wyrm | 125 | 100 | Piercing blood shot every 3 s: 14 damage, 0.5 less per extra zombie hit, plus bleed | AOE and damage over time. **Ignores armor, hits Amalgams twice, switches off regen.** |
 | Hive | 175 | 800 | 3 wasps (75 HP, 7 damage/s), respawn every 6 s; buffs raise the count to 4–5 | Stall/damage hybrid; handles crowds |
-| Maw | 275 | 800 | Kills any zombie outright, then digests for 15 s | Burst; glass cannon. Removes the Amalgam second life. |
+| Maw | 275 | 800 | 3 tentacles (every zombie costs 1) grab and kill outright within 73 px (about 2 lanes either side), then each digests for 15 s (5 s with a Wyrm buff, 9 s with a SpinalOcculum buff). An Erupter it grabs is eaten without exploding. | Burst; glass cannon. Removes the Amalgam second life. |
 
 Player abilities from Level 6 on: Lightning Strike (Syn) and Lightning Storm (Swap). The
 Ultimate is enabled from Level 7. Heart, Hero and Portal are out of scope for wave design.
@@ -171,9 +171,10 @@ final wave).
 | Level | Demons available | Starting blood | Status |
 |---|---|---|---|
 | 10 | Crawler, Occulum, SpinalOcculum, Wyrm (same as the Level 7/8 ratings), **plus pre-placed Hives** (see below) | 500 | **Rebuilt 2026-10-12** (target rating 3, 5 waves); see §5.1. Awaiting playtest. |
-| 11 | Same + Hive (silence becomes available) | 500 | Placeholder copy of Level 9's waves, set in code, using default gaps |
-| 12 | Same + Maw | 500 | Placeholder copy of Level 9's waves, set in code, using default gaps |
-| 13 | — | — | Not being worked on yet |
+| 11 | Same + Hive (silence becomes available) + Portal, **plus pre-placed Maws** | 500 | **Rebuilt 2026-10-15** (target rating 4, 5 waves); see §5.2. Awaiting playtest. |
+| 12 | Same + Maw (Crawler, Occulum, SpinalOcculum, Wyrm, Hive, Maw, Portal) | 500 | **Rebuilt 2026-10-15** (target rating 4, 5 waves); see §5.3. Awaiting playtest. |
+| 13 | Same as 12 (Crawler, Occulum, SpinalOcculum, Wyrm, Hive, Maw, Portal) | 500 | **Rebuilt 2026-10-16** (target rating 5, 5 waves, fixed spawn order); see §5.4. Awaiting playtest. |
+| 14 | Crawler, Occulum, SpinalOcculum, Wyrm, Hive, Maw, Portal, Hero | 600 | **Rebuilt 2026-10-16** (target rating 5, **6 waves**, escalating type mix); see §5.5. Awaiting playtest. |
 
 **Level 10's pre-placed Hives (kept on purpose):** the level scripts place Hives at the start:
 Purple lane 4, Green lanes 1 and 7. The Hive button stays hidden, so the player can't build
@@ -243,6 +244,288 @@ For comparison: Level 6 = 3,379 danger / 51k HP; Level 8 = 4,618 / 60k.
 - The first Erupter spawn shows the new-zombie notification (`show_unlock_zombie_button` in
   both Level 10 scripts handles "Erupter").
 
+### 5.2 Level 11 (rebuilt 2026-10-15, awaiting playtest)
+
+**Brief:** rating 4; 5 waves. Swarm and elite waves alternate: Green goes swarm, elite,
+swarm, elite, swarm, and Purple the opposite. Severed fill out the swarms; no Reanimators
+(keeps the screen readable). Allowed types: Severed, Unhallower, Erupter, Amalgam, Buffer,
+Sundered. Starting blood 500 per dimension. Toolkit: Crawler, Occulum, SpinalOcculum,
+Wyrm, Hive, Portal.
+
+**Pre-placed Maws (free):** Purple lanes 1, 4, 7; Green lanes 2, 6. They sit mid-screen on
+columns 11–12 (`pre_place_maw_demons()` in both level scripts). The Maw button stays hidden.
+
+**Lane order:**
+- Wave 1: Purple 3 and 5; Green 1, 2, 6, 7.
+- Wave 2: Purple adds 1 and 7; Green adds none.
+- Wave 3: both add 4.
+- Wave 4 onwards: all 7.
+
+**Gaps:** 70 / 95 / 105 / 110 s.
+
+S = swarm, E = elite, "—" = lane closed, **M** = lane with a Maw.
+
+**Green** (S · E · S · E · S)
+| Lane | W1 (S) | W2 (E) | W3 (S) | W4 (E) | W5 (S) |
+|---|---|---|---|---|---|
+| 1 | 6 Severed, Sundered | Unhallower, Amalgam | 8 Severed, Amalgam | Unhallower, Amalgam, Sundered | 9 Severed, Amalgam |
+| 2 M | 4 Severed | Erupter, Unhallower | 7 Severed, Buffer | Erupter, Unhallower, Buffer | 9 Severed, Buffer, Erupter |
+| 3 | — | — | — | Unhallower, 2 Amalgam | 9 Severed, Amalgam, Sundered |
+| 4 | — | — | 6 Severed, Sundered | 2 Amalgam, Sundered | 9 Severed, Buffer |
+| 5 | — | — | — | Unhallower, 2 Amalgam | 9 Severed, Amalgam, Sundered |
+| 6 M | 4 Severed | Erupter, Unhallower | 7 Severed, Buffer | Erupter, Unhallower, Buffer | 9 Severed, Buffer, Erupter |
+| 7 | 6 Severed, Sundered | Unhallower, Amalgam | 8 Severed, Amalgam | Unhallower, Amalgam, Sundered | 9 Severed, Amalgam |
+| Danger | 150 | 350 | 355 | 775 | 715 |
+| Zombies | 22 | 8 | 41 | 21 | 74 |
+
+**Purple** (E · S · E · S · E)
+| Lane | W1 (E) | W2 (S) | W3 (E) | W4 (S) | W5 (E) |
+|---|---|---|---|---|---|
+| 1 M | — | 4 Severed, Sundered | Erupter, Unhallower, Amalgam | 7 Severed, Sundered | Erupter, Unhallower, Amalgam, Sundered |
+| 2 | — | — | — | 8 Severed, Amalgam | 2 Unhallower, Buffer |
+| 3 | Unhallower, Amalgam, Sundered | 7 Severed, Amalgam | Unhallower, Buffer, Sundered | 8 Severed, Buffer | Unhallower, 2 Amalgam |
+| 4 M | — | — | Erupter, Unhallower | 7 Severed, Erupter | 2 Erupter, Unhallower, Amalgam |
+| 5 | Unhallower, Amalgam, Sundered | 7 Severed, Amalgam | Unhallower, Buffer, Sundered | 8 Severed, Buffer | Unhallower, 2 Amalgam |
+| 6 | — | — | — | 8 Severed, Amalgam | 2 Unhallower, Buffer |
+| 7 M | — | 4 Severed, Sundered | Erupter, Unhallower, Amalgam | 7 Severed, Sundered | Erupter, Unhallower, Amalgam, Sundered |
+| Danger | 200 | 210 | 600 | 515 | 975 |
+| Zombies | 6 | 26 | 14 | 60 | 24 |
+
+**Totals (both dimensions):** danger 350 · 560 · 955 · 1,290 · 1,690 = **4,845**; HP 6.3k ·
+8.5k · 12.0k · 18.6k · 22.6k = 68k; zombies 28 · 34 · 55 · 81 · 98; peak pressure 704.
+That's slightly above Level 8 (4,618 / 60k / 717) on raw numbers. About 60% of the danger
+is in elite waves, which the Maws eat into, and there's +100 blood and the Hive. Expected
+to play as a 4; the least certain number in these notes, since no Maw level has been
+playtested.
+
+**Design intent:**
+- **The Maws counter elites, and the swarms threaten the Maws.** A Maw eats the first 3
+  zombies in reach, then digests for 15 s, and its 73 px reach covers about 2 lanes either
+  side. Between them, the 5 Maws cover every lane at mid-screen. Zombies left over in a Maw's
+  own lane eat it (800 HP) while it digests, so keeping the Maws alive through the swarms
+  (e.g. a SpinalOcculum in front) is the level's core skill. A Wyrm next to a Maw cuts its
+  digestion to 5 s.
+- Elite waves outgrow the Maws: 6 heavies vs 1 Maw (Purple W1, the Maw showcase); then 8 vs
+  6 tentacles, 14 vs 9, 21 vs 6, 24 vs 9.
+- Erupters are the elite waves' tentacle bait. They're the fastest zombie, so they always
+  arrive first, and an eaten Erupter doesn't explode. Each one ties up a tentacle for 15 s.
+- Maw lanes get only 4 Severed in the first wave each Maw faces, so one SpinalOcculum in
+  front saves it. Later swarms (7–9 per lane) kill unprotected Maws.
+- **Levers if it plays too hard, in order:**
+  1. Cut 1 Severed per lane in Green W5 / Purple W4.
+  2. Drop the elite-wave Buffers.
+  3. Add 10 s to gaps 3 and 4.
+- **If the elites feel free:** add 1 Erupter per Maw lane, or +1 Unhallower in non-Maw
+  lanes.
+- Preset `L11 v1` holds this version.
+
+### 5.3 Level 12 (rebuilt 2026-10-15, awaiting playtest)
+
+**Brief:** rating 4; 5 waves. Like Level 10, but with even fewer, stronger zombies, because
+this is where the player gets the Maw and should be able to use it in a near-ideal
+setting. Flesheater debuts in waves 4–5. Allowed types: Unhallower, Reanimator, Erupter,
+Amalgam, Buffer, Sundered, Flesheater. Starting blood 500 per dimension.
+
+**Lane order** (the brief's "Purple adds lane 7" in W3 was confirmed to mean Green):
+- Wave 1: Green 3, 4, 5; Purple 1, 2, 6, 7.
+- Wave 2: Green adds 2 and 6; Purple adds 4.
+- Wave 3: Green adds 7; Purple adds none.
+- Wave 4 onwards: all 7.
+
+**Gaps:** 75 / 95 / 105 / 110 s.
+
+**Green**
+| Lane | W1 | W2 | W3 | W4 | W5 |
+|---|---|---|---|---|---|
+| 1 | — | — | — | Amalgam, Sundered | 2 Unhallower |
+| 2 | — | Amalgam | Unhallower | Unhallower, Buffer | Flesheater |
+| 3 | Unhallower | Unhallower, Sundered | Unhallower, Buffer | Erupter, Unhallower | Erupter, Unhallower, Buffer |
+| 4 | Unhallower | Erupter, Unhallower | Reanimator | Flesheater | Reanimator, Unhallower |
+| 5 | Unhallower | Unhallower | Erupter, Unhallower | Reanimator | Erupter, Unhallower |
+| 6 | — | Amalgam | Unhallower | Unhallower, Buffer | Flesheater |
+| 7 | — | — | Unhallower | Unhallower | Unhallower, Buffer |
+| Danger | 150 | 275 | 450 | 650 | 900 |
+| Zombies | 3 | 7 | 8 | 11 | 13 |
+
+**Purple**
+| Lane | W1 | W2 | W3 | W4 | W5 |
+|---|---|---|---|---|---|
+| 1 | Amalgam | Unhallower | Unhallower, Buffer | Unhallower, Buffer | Flesheater, Sundered |
+| 2 | Unhallower | Amalgam, Sundered | Reanimator | Erupter, Unhallower | Unhallower, Buffer |
+| 3 | — | — | — | Unhallower | Erupter, Unhallower |
+| 4 | — | Erupter, Unhallower | Erupter, Unhallower | Flesheater | Reanimator, Unhallower |
+| 5 | — | — | — | Unhallower | Erupter, Unhallower |
+| 6 | Unhallower | Amalgam | Unhallower, Amalgam | Reanimator | Unhallower, Buffer |
+| 7 | Amalgam | Unhallower | Unhallower, Sundered | Unhallower, Buffer | Flesheater, Sundered |
+| Danger | 150 | 275 | 450 | 650 | 900 |
+| Zombies | 4 | 7 | 9 | 10 | 14 |
+
+**Totals (both dimensions):** danger 300 · 550 · 900 · 1,300 · 1,800 = **4,850**; zombies
+7 · 14 · 17 · 21 · 27 = 86; about 35k HP; peak pressure 709. Level 10 had 110 zombies at
+about 37 danger each; Level 12 has 86 at about 56. Expected to play as 3.5 to 4, depending on
+how quickly players afford Maws (275 each against 500 starting blood).
+
+**Design intent:**
+- Maw intro in wave 1: Green sends 3 Unhallowers down the middle lanes, so one Maw on lane 4
+  eats all three. Purple splits lanes 1–2 and 6–7, so where the Maw goes matters.
+- Unhallowers are the bulk (40 of 86). They're armored, so Crawlers barely hurt them, which
+  makes the Maw (or a Wyrm) the clear answer.
+- One Reanimator per dimension from wave 3. A Maw kills it in one bite; left alone, its
+  Wretches tie up the Maw's tentacles.
+- Flesheater: one per dimension in wave 4 (centre lane 4, easy for a Maw to reach), two
+  per dimension in wave 5 (Green 2 and 6; Purple 1 and 7, harder to reach).
+- Erupters (10 in total) arrive first and tie up tentacles. Buffers travel with Unhallowers.
+- The first Flesheater shows the new-zombie button; clicking it opens the Flesheater
+  description and demo (`show_zombie_tutorial` in both level scripts).
+- **Levers if it plays too hard:** drop the wave 5 Buffers, then 1 Unhallower per dimension
+  in wave 5. **If too easy:** add Erupters to tie up the Maws.
+- Preset `L12 v1` holds this version.
+
+### 5.4 Level 13 (rebuilt 2026-10-16, awaiting playtest)
+
+**Brief:** rating 5; 5 waves; more balanced overall. Both dimensions mix strong and weak
+zombies across all nine types (Reborn, Severed, Unhallower, Reanimator, Erupter, Amalgam,
+Buffer, Sundered, Flesheater). The dimensions differ mainly through **spawn order**: each
+gets its own mix, and every spawner has `is_random = false`. Starting blood 500 per
+dimension. Toolkit is the same as Level 12.
+
+**Lane order** (Green mirrors Purple):
+- Wave 1: Purple 1, 2, 3; Green 5, 6, 7.
+- Wave 2: Purple adds 7; Green adds 1.
+- Wave 3: Purple adds 5; Green adds 3.
+- Wave 4: both add 4.
+- Wave 5: all 7.
+
+**Gaps:** 70 / 95 / 105 / 110 s.
+
+**How fixed order plays out:** a lane spawns its entries top to bottom, about 1.5 s apart,
+and then speed reshapes them on the way down.
+- **Purple is tank-first.** The strong zombie leads, and Reborn (same 8 px/s as an
+  Unhallower) cluster right behind it like a shield wall. The Maw or Wyrm meets the tank
+  first, and the fodder floods in while the Maw digests.
+- **Green is fodder-first.** Fodder spawns first. Fast strong units (Amalgam and
+  Flesheater, 16 px/s) catch the pack mid-lane; a slow Unhallower trails behind it. The
+  fodder soaks up Maw tentacles and Wyrm shots before the strong zombie arrives.
+- Erupters (48 px/s) arrive first whatever their position.
+- Each type appears at most once per lane-wave, so the Wave Table Editor grid can still
+  edit it.
+
+Cells are in spawn order (→).
+
+**Purple** (tank-first)
+| Lane | W1 | W2 | W3 | W4 | W5 |
+|---|---|---|---|---|---|
+| 1 | Unhallower → 4 Reborn | Unhallower → Buffer → 5 Reborn | Unhallower → Amalgam → 5 Reborn | Flesheater → 4 Severed | 2 Unhallower → Buffer → 5 Reborn |
+| 2 | Amalgam → 4 Severed → Sundered | Reanimator → 4 Severed | Flesheater → 5 Severed | 2 Unhallower → Buffer → 4 Reborn | Flesheater → Amalgam → 5 Severed |
+| 3 | Unhallower → 4 Reborn | Amalgam → 4 Severed | Unhallower → Buffer → 5 Severed | Reanimator → Amalgam → 4 Severed | Reanimator → Unhallower → 4 Reborn |
+| 4 | — | — | — | Amalgam → 4 Reborn → Sundered | Flesheater → Buffer → 5 Severed |
+| 5 | — | — | Amalgam → 4 Reborn → Erupter | Unhallower → Amalgam → 4 Severed | Unhallower → 2 Amalgam → 5 Severed → Erupter |
+| 6 | — | — | — | — | Unhallower → Amalgam → 4 Reborn → Sundered |
+| 7 | — | Unhallower → 4 Reborn | Reanimator → 5 Reborn | Flesheater → Buffer → 4 Reborn | Reanimator → Amalgam → 5 Severed |
+| Danger | 186 | 333 | 578 | 834 | 1,176 |
+| Zombies | 16 | 22 | 32 | 36 | 51 |
+
+**Green** (fodder-first)
+| Lane | W1 | W2 | W3 | W4 | W5 |
+|---|---|---|---|---|---|
+| 1 | — | 4 Reborn → Amalgam | 5 Severed → Sundered → Amalgam | 4 Severed → Buffer → Amalgam | 5 Severed → Erupter → Flesheater |
+| 2 | — | — | — | — | 4 Reborn → Sundered → Amalgam → Unhallower |
+| 3 | — | — | 4 Reborn → Unhallower → Amalgam | 4 Reborn → Erupter → Unhallower | 5 Severed → Buffer → Sundered → 2 Amalgam |
+| 4 | — | — | — | 4 Severed → Sundered → Amalgam | 4 Reborn → Reanimator → Unhallower |
+| 5 | 4 Severed → Amalgam | 4 Severed → Buffer → Amalgam | 5 Severed → Buffer → Flesheater | 4 Severed → Amalgam → Flesheater | 5 Severed → Buffer → Flesheater |
+| 6 | 4 Reborn → Sundered → Unhallower | 5 Reborn → Reanimator | 5 Reborn → Erupter → Amalgam | 4 Reborn → Reanimator → Amalgam | 5 Reborn → Erupter → 2 Amalgam |
+| 7 | 4 Severed → Sundered → Amalgam | 4 Severed → Erupter → Amalgam | 5 Severed → Reanimator | 4 Severed → Buffer → Flesheater | 5 Severed → Sundered → Flesheater |
+| Danger | 198 | 333 | 593 | 821 | 1,176 |
+| Zombies | 17 | 23 | 33 | 36 | 51 |
+
+**How the dimensions differ:**
+- **Purple** leans slow and grinding: 14 Unhallowers and 5 Reanimators, with Reborn.
+- **Green** leans fast: 17 Amalgams, 7 Sundered and 5 Erupters, with Severed.
+- Both use all nine types, with 5–6 Flesheaters and 6 Buffers. Danger is 3,107 vs 3,121.
+
+**Totals (both dimensions):** danger 384 · 666 · 1,171 · 1,655 · 2,352 = **6,228**; HP
+6.4k · 7.6k · 11.6k · 14.6k · 21.5k = 61.6k; zombies 33 · 45 · 65 · 72 · 102 = 317; peak
+pressure 903. That's about 35% more danger than Level 8 (4,618, rated 5 without Hive or
+Maw) at similar HP: the player now has Hive, Maw and 500 blood. Mixed waves also blunt
+any one-counter build: fodder clogs the Maws, and tanks shrug off the Wyrm's spread
+damage.
+
+- **Levers if it plays too hard:** drop the 4 wave 5 Buffers; then 1 fodder per lane in
+  waves 4–5; then +10 s on gaps 3–4.
+- **If too easy:** swap one wave 5 Amalgam per dimension for a Flesheater.
+- Preset `L13 v1` holds this version.
+
+### 5.5 Level 14 (rebuilt 2026-10-16, awaiting playtest)
+
+**Brief:** rating 5; **6 waves**; complexity escalates. Wave 1 is only Reborn and Severed.
+Each later wave adds types and keeps every earlier one. All 9 types appear by wave 5, and
+again in wave 6. Reborn and Severed stay a swarm threat without crowding the screen.
+Starting blood 600 per dimension. Toolkit (left as the script has it): Crawler, Occulum,
+SpinalOcculum, Wyrm, Hive, Maw, Portal, Hero. Spawning is random within a lane. The scenes
+had no WaveTableHost; one was added to both.
+
+**Type unlocks** (each dimension in its own order; every wave keeps everything earlier):
+| Wave | Purple adds (tanks first) | Green adds (specialists first) | Types per dimension |
+|---|---|---|---|
+| 1 | Reborn, Severed | Reborn, Severed | 2 |
+| 2 | Unhallower, Amalgam | Sundered, Buffer | 4 |
+| 3 | Reanimator, Flesheater | Erupter, Amalgam | 6 |
+| 4 | Sundered, Buffer | Unhallower, Reanimator | 8 |
+| 5 | Erupter | Flesheater | 9 |
+| 6 | — | — | 9 |
+
+**Lanes:**
+- Wave 1: lane 4.
+- Wave 2: 3–5.
+- Wave 3: 2–6.
+- Wave 4: Purple 1–6, Green 2–7.
+- Waves 5–6: all.
+
+**Gaps:** 55 / 80 / 95 / 105 / 110 s. `level14.gd` passes all 5 gaps, giving 6 waves.
+
+**Purple** (tanks first)
+| Lane | W1 | W2 | W3 | W4 | W5 | W6 |
+|---|---|---|---|---|---|---|
+| 1 | — | — | — | 4 Reborn, Unhallower, Sundered | 4 Severed, Unhallower, Buffer | 4 Reborn, 2 Unhallower, Buffer, Amalgam |
+| 2 | — | — | 4 Reborn, Unhallower, Amalgam | 4 Severed, Amalgam, Buffer | 4 Reborn, Amalgam, Erupter | 4 Severed, Flesheater, Amalgam |
+| 3 | — | 4 Reborn, 2 Severed, Unhallower | 4 Severed, Reanimator | 3 Reborn, Reanimator, Unhallower | 4 Severed, Reanimator, Sundered | 4 Reborn, Reanimator, Unhallower |
+| 4 | 8 Reborn, 6 Severed | 3 Severed, 2 Amalgam | 3 Severed, Flesheater | 4 Severed, Flesheater | 3 Reborn, Flesheater, Amalgam | 4 Severed, Flesheater, Erupter |
+| 5 | — | 4 Reborn, 2 Severed, Unhallower | 4 Reborn, 2 Severed, Unhallower | 4 Reborn, Amalgam, Sundered | 4 Severed, Unhallower, Amalgam | 4 Reborn, Reanimator, Amalgam |
+| 6 | — | — | 3 Severed, Amalgam | 4 Severed, Unhallower, Buffer | 4 Reborn, Reanimator | 4 Severed, Unhallower, Buffer, Sundered |
+| 7 | — | — | — | — | 4 Severed, Unhallower, Sundered | 4 Reborn, Unhallower, Erupter, Sundered |
+| Danger | 46 | 201 | 476 | 682 | 827 | 1,167 |
+| Zombies | 14 | 19 | 26 | 34 | 40 | 46 |
+
+**Green** (specialists first)
+| Lane | W1 | W2 | W3 | W4 | W5 | W6 |
+|---|---|---|---|---|---|---|
+| 1 | — | — | — | — | 4 Severed, Sundered, Erupter | 4 Reborn, Flesheater, Sundered |
+| 2 | — | — | 4 Severed, Sundered, Erupter | 4 Reborn, Unhallower, Sundered, Amalgam | 4 Reborn, Unhallower, Buffer | 4 Severed, Unhallower, Erupter, Sundered |
+| 3 | — | 4 Severed, 2 Sundered | 4 Reborn, Amalgam, Buffer | 4 Severed, Amalgam, Erupter | 4 Severed, Amalgam, Sundered | 4 Reborn, Reanimator, Buffer, Amalgam |
+| 4 | 6 Reborn, 7 Severed | 5 Reborn, 2 Severed, Buffer | 4 Severed, 2 Sundered, Amalgam | 4 Reborn, Reanimator, Buffer | 4 Reborn, Flesheater, Buffer | 4 Severed, Flesheater, Amalgam |
+| 5 | — | 4 Severed, 2 Sundered | 4 Reborn, Amalgam, Buffer | 4 Severed, Unhallower, Sundered | 4 Severed, Reanimator, Sundered | 4 Reborn, Unhallower, Erupter, Amalgam |
+| 6 | — | — | 4 Severed, Sundered, Erupter | 4 Reborn, Amalgam, Erupter | 4 Reborn, Amalgam, Erupter | 4 Severed, Reanimator, Sundered |
+| 7 | — | — | — | 4 Severed, Sundered, Erupter, Amalgam | 4 Severed, Unhallower, Amalgam | 4 Reborn, Unhallower, Buffer, Sundered |
+| Danger | 47 | 210 | 451 | 659 | 804 | 1,117 |
+| Zombies | 13 | 20 | 31 | 38 | 42 | 46 |
+
+**Totals (both dimensions):** danger 93 · 411 · 927 · 1,341 · 1,631 · 2,284 = **6,687**; HP
+2.9k · 6.5k · 10.2k · 13.6k · 15.7k · 18.2k = 67k; zombies 27 · 39 · 57 · 72 · 82 · 92 =
+369; peak pressure 890. That's on par with Level 13 (also a 5: 6,228 / 61.6k / 903), with
++100 blood and one extra wave.
+
+**Design intent:**
+- Wave 1 is one swarm lane of 13–14 Reborn and Severed. After that it's 2–4 fodder per
+  lane alongside the specials: about 60% of the bodies, but little of the danger. The final
+  wave is 92 zombies (Level 13: 102).
+- Purple (3,399 danger) leans on tanks: 15 Unhallowers, 6 Reanimators, 5 Flesheaters.
+  Green (3,288) leans on tricks: 18 Sundered, 8 Erupters, 9 Buffers. Mid-level, Purple hits
+  harder in HP and Green is harder to read.
+- **Levers if it plays too hard:** drop 1 fodder per lane in waves 5–6; then the wave 6
+  Buffers; then +10 s on gaps 4–5. **If too easy:** add a second Flesheater to each
+  dimension's wave 6.
+- Preset `L14 v1` holds this version.
+
 ## 6. Suggested danger values (parked)
 
 The current `DANGER_SCORES` are in use. These suggestions are saved for later:
@@ -265,3 +548,21 @@ Reborn 2, Unhallower 50, Sundered 25 and Rohan 1000 look right as they are.
   confirmed as unintended.
 - 2026-10-12 — Level 10 rebuilt: 5 waves, gaps 75/95/105/110, 500 starting blood, new lane
   order, lane 1 randomized, Erupter notification (§5.1).
+- 2026-10-12 — Wave presets added to the Wave Table Editor (§1); Level 10 seeded with
+  `L10 v1` and `L10 original`.
+- 2026-10-15 — Level 11 rebuilt: 5 alternating swarm/elite waves, gaps 70/95/105/110,
+  5 pre-placed Maws, Hive added to the toolkit, waves moved from code to the scenes (§5.2).
+- 2026-10-15 — Maw row in §3 corrected from the code: 3 tentacles, 73 px reach, an eaten
+  Erupter doesn't explode.
+- 2026-10-15 — Level 11/12 scripts: own level paths, dropped the duplicate `level_ended`
+  and ToolTipHid connects and the Coral-less sway call (mirrors the Level 10 cleanup).
+- 2026-10-15 — Level 12 rebuilt: 5 waves, gaps 75/95/105/110, Flesheater debut with its
+  tutorial, Hive and Maw added to the toolkit, waves moved from code to the scenes (§5.3).
+- 2026-10-15 — Level 10: clicking the Erupter notification now opens its description and
+  demo (it did nothing before).
+- 2026-10-16 — Level 13 rebuilt: 5 waves with fixed spawn order (Purple tank-first, Green
+  fodder-first), gaps 70/95/105/110, Hive and Maw added to the toolkit, waves moved from
+  code to the scenes, and the same script cleanup as Levels 10–12 (§5.4).
+- 2026-10-16 — Level 14 rebuilt: 6 waves with escalating type unlocks (each dimension in
+  its own order), gaps 55/80/95/105/110, 600 starting blood, a WaveTableHost added to both
+  scenes, waves moved from code to the scenes, and the same script cleanup (§5.5).

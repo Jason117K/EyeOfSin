@@ -1,0 +1,288 @@
+{
+	"format": 1,
+	"scene": "res://_Stages/Level12/Level12.tscn",
+	"saved": "2026-10-15 17:38:21",
+	"root": {
+		"wave2StartTime": 75,
+		"wave3StartTime": 95,
+		"wave4StartTime": 105,
+		"wave5StartTime": 110,
+		"wave6StartTime": 100
+	},
+	"spawners": {
+		"GameLayer/ZombieSpawner1": {
+			"is_random": true,
+			"waves": [
+				[
+					{
+						"type": "Amalgam",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Buffer",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Buffer",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Flesheater",
+						"count": 1
+					},
+					{
+						"type": "Sundered",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner2": {
+			"is_random": true,
+			"waves": [
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Amalgam",
+						"count": 1
+					},
+					{
+						"type": "Sundered",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Reanimator",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Erupter",
+						"count": 1
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Buffer",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner3": {
+			"is_random": true,
+			"waves": [
+				[],
+				[],
+				[],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Erupter",
+						"count": 1
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner4": {
+			"is_random": true,
+			"waves": [
+				[],
+				[
+					{
+						"type": "Erupter",
+						"count": 1
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Erupter",
+						"count": 1
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Flesheater",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Reanimator",
+						"count": 1
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner5": {
+			"is_random": true,
+			"waves": [
+				[],
+				[],
+				[],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Erupter",
+						"count": 1
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner6": {
+			"is_random": true,
+			"waves": [
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Amalgam",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Amalgam",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Reanimator",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Buffer",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner7": {
+			"is_random": true,
+			"waves": [
+				[
+					{
+						"type": "Amalgam",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Sundered",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Buffer",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Flesheater",
+						"count": 1
+					},
+					{
+						"type": "Sundered",
+						"count": 1
+					}
+				]
+			]
+		}
+	}
+}

@@ -106,13 +106,29 @@ func set_zombie_icon_texture(unlocked_zombie:String)->void:
 #	new_zombie_icon.texture = GlobalResourceLoader.get_zombie_image(all_zombie_types[unlocked_zombie])
 
 
+# The "Demon Unlocked" notification is shared: it shows on every dimension's
+# UILayer and clears from all of them together.
 func set_unlock_notif(synergy : String)->void:
 	#print("Set Unlock Notif For ", synergy)
+	for layer in _live_ui_layers():
+		layer._add_unlock_notif(synergy)
+
+func _add_unlock_notif(synergy : String)->void:
 	if current_demon_synergies.has(synergy):
-		return 
+		return
 	current_demon_synergies.append(synergy)
 	new_demon_unlocked_button.show()
 	set_icon_texture(synergy)
+
+func _remove_unlock_notif(synergy : String)->void:
+	current_demon_synergies.erase(synergy)
+	if current_demon_synergies.is_empty():
+		new_demon_unlocked_button.hide()
+	else:
+		set_icon_texture(current_demon_synergies.back())
+
+func _live_ui_layers() -> Array:
+	return Global.ui_layers.filter(func(layer): return is_instance_valid(layer))
 
 	
 func set_icon_texture(synergy:String)->void:
@@ -134,14 +150,13 @@ func split_capitals(s: String) -> Array:
 
 func _on_demon_unlocked_button_pressed() -> void:
 	#print("Demon Unlock Button Pressed")
-	#print("Current Demon Synergies was ",current_demon_synergies )
-	Global.navigate_to_buff(current_demon_synergies.pop_back())
-	#print("Current Demon Synergies is now ",current_demon_synergies )
-	if current_demon_synergies.size() > 0:
-		set_icon_texture(current_demon_synergies[0])
+	if current_demon_synergies.is_empty():
 		return
-		
-	new_demon_unlocked_button.hide()
+	# Open the newest unlock (the icon shown) and clear it from both dimensions.
+	var synergy : String = current_demon_synergies.back()
+	for layer in _live_ui_layers():
+		layer._remove_unlock_notif(synergy)
+	Global.navigate_to_buff(synergy)
 	
 	
 

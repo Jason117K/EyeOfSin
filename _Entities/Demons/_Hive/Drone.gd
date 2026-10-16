@@ -78,16 +78,31 @@ func _ready() -> void:
 
 func current_zombie_dead() -> void:
 	##print(self, " received 77 zombie dead signal")
+	_release_claim()
+
+# Let go of the zombie holding this wasp (it died, or the swarm sent the wasp
+# after a different zombie) so the next zombie that reaches it can stop.
+func _release_claim() -> void:
+	if is_instance_valid(current_zombie) and current_zombie.zombie_death.is_connected(current_zombie_dead):
+		current_zombie.zombie_death.disconnect(current_zombie_dead)
 	current_zombie = null
-	
+	exit_combat()
+
+func is_holding(zombie: Node) -> bool:
+	return current_zombie == zombie
+
 func demon_minion_busy(questioning_zombie: Zombie) -> bool:
-	if current_zombie == null:
-		current_zombie = questioning_zombie
-		##print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
-		current_zombie.zombie_death.connect(current_zombie_dead)
-		return false 
-	else:
+	# Never busy to the zombie already holding it: it re-checks after an
+	# interrupted attack (e.g. knockback).
+	if current_zombie == questioning_zombie:
+		return false
+	if is_instance_valid(current_zombie) and not current_zombie.is_dead:
 		return true
+	_release_claim()
+	current_zombie = questioning_zombie
+	##print(self, " Setting Can 77 Move to false because of ", questioning_zombie)
+	current_zombie.zombie_death.connect(current_zombie_dead)
+	return false
 				
 func spinal_occulum_buff() -> void:
 	self.health = spinal_occulum_buffed_health
@@ -207,6 +222,8 @@ func enable_hurtbox() -> void:
 func attack_target(enemy: Area2D) -> void:
 	$HurtBox.set_deferred("disabled", false)
 	current_target = enemy
+	if current_zombie != null and current_zombie != enemy:
+		_release_claim()
 	#if explodeBuff:
 		#enemy.fightDroneExplode()
 	#if isCrawlerBuffed:

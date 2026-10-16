@@ -113,12 +113,17 @@ func _unhandled_input(event: InputEvent) -> void:
 					##print("Clicked1 and Time to Clear Space")
 					clear_space(grid_pos)
 					#selection_menu.setCanRemoveFalse()
-				if detect_demon(grid_pos):
-				#	#print("Demon Detected")
-					#highlight_demon(grid_pos)
-					pass
+				else:
+					# Demons are clicked by grid cell, not by their (often tiny)
+					# hurtbox. A live zombie under the cursor is drawn on top, so
+					# that click is left to physics picking.
+					var clicked_demon := _demon_at(grid_pos, mouse_pos)
+					if clicked_demon != null and not _zombie_under(mouse_pos):
+						get_viewport().set_input_as_handled()
+						clicked_demon._on_input_event(get_viewport(), event, 0)
+						return
 				Global.hide_notification_bar()
-				return 
+				return
 			#print("ParentName is ", parentName, "Grid Pos is ", grid_pos)
 			# Place the demon assuming it's within bounds of the level
 			if(parentName == "Level0-1" || parentName == "Level0-1_Alternate"):
@@ -149,6 +154,41 @@ func _unhandled_input(event: InputEvent) -> void:
 					temp_check_instance.queue_free()
 					place_demon(grid_pos)
 
+# The demon a click on this cell means: its occupant, a blood clone standing on
+# a mirror blocker, or (for cells grid_map doesn't key, like a Wyrm Queen's
+# extra cells) any demon hurtbox of this dimension under the cursor.
+func _demon_at(grid_pos: Vector2, mouse_pos: Vector2) -> Demon:
+	var occupant = grid_map.get(grid_pos)
+	if is_instance_valid(occupant) and occupant is Demon:
+		if not occupant.is_empty:
+			return occupant
+		var clone = occupant.get("blood_clone")
+		if is_instance_valid(clone) and clone is Demon:
+			return clone
+	var demon_layer := Dim.LAYER_GREEN_DEMONS if is_green else Dim.LAYER_PURPLE_DEMONS
+	for hit in _areas_at(mouse_pos, demon_layer):
+		if hit is Demon and not hit.is_empty:
+			return hit
+	return null
+
+func _zombie_under(point: Vector2) -> bool:
+	var zombie_layer := Dim.LAYER_GREEN_ZOMBIES if is_green else Dim.LAYER_PURPLE_ZOMBIES
+	for hit in _areas_at(point, zombie_layer):
+		if hit is Zombie and not hit.is_dead:
+			return true
+	return false
+
+func _areas_at(point: Vector2, layer: int) -> Array:
+	var params := PhysicsPointQueryParameters2D.new()
+	params.position = point
+	params.collide_with_areas = true
+	params.collide_with_bodies = false
+	params.collision_mask = 1 << (layer - 1)
+	var found : Array = []
+	for hit in get_world_2d().direct_space_state.intersect_point(params, 16):
+		found.append(hit.collider)
+	return found
+
 # Convert mouse position to a grid cell position
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	#add grid offset
@@ -168,8 +208,9 @@ func clear_space(passed_grid_pos: Vector2) -> void:
 	#else:
 	##print("GridMap To Clear Was ", grid_map)
 	##print("Passed Grid Pos Was ", passed_grid_pos)
-	grid_map.erase(passed_grid_pos)
-	Global.game_controller.remove_empty_in_alt_scene(passed_grid_pos)
+	# The mirror blocker lives in the dimension opposite this manager's, not the
+	# one being viewed: a demon can die while the player is in the other dimension.
+	clear_space_for_source(passed_grid_pos, !is_green)
 
 # Like clear_space, but removes the opposite-dimension blocker based on the source
 # dimension instead of the currently-active dimension. Used by portals, which are
@@ -188,7 +229,6 @@ func clear_space_alt(passed_grid_pos: Vector2) -> void:
 
 func summon_blood_clone(passed_grid_pos: Vector2)->void:
 	var demon_node: Area2D = grid_map.get(passed_grid_pos)
-	print("Demon Node is ", demon_node)
 	demon_node.summon_blood_clone()
 
 func dispel_blood_clone(passed_grid_pos: Vector2)->void:
@@ -298,7 +338,10 @@ func place_blood_demon(grid_pos: Vector2) -> Demon:
 		demon_instance.set_collision_layer_value(1,false)
 		demon_instance.set_collision_layer_value(2,true)
 		demon_instance.set_collision_layer_value(3,false)
-	demon_instance.position = Vector2(grid_pos.x,grid_pos.y )	
+	demon_instance.position = Vector2(grid_pos.x,grid_pos.y )
+	if "Maw" in demon_instance.name:
+		# Same two-cell centering and -256 visual offset as place_demon.
+		demon_instance.position = Vector2(grid_pos.x+16-256,grid_pos.y-256)
 	get_parent().get_node("GameLayer").call_deferred("add_child", demon_instance)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -368,11 +411,18 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		return
 	
 	#Maw is larger, check neighboring cell
+	var maw_left_blocker : Demon = null
 	if  "Maw" in demon_instance.name:
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
 			##print("QQ Maw is Big, Neighboring Cell Occupied at : ", Vector2(grid_pos.x+32,grid_pos.y) )
-			return 
+			return
 		else:
+			# Block both mirror cells. A fresh instance, not duplicate():
+			# is_green is a plain var and wouldn't be copied.
+			maw_left_blocker = empty_demon_scene.instantiate()
+			maw_left_blocker.add_to_group(Dim.of(empty_demon_to_place))
+			maw_left_blocker.is_green = empty_demon_to_place.is_green
+			Global.game_controller.place_empty_in_alt_scene(grid_pos,maw_left_blocker,get_parent())
 			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y),empty_demon_to_place,get_parent())
 	else:
 		if is_queen:
@@ -448,6 +498,8 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		await get_tree().physics_frame
 		if !demon_instance.is_portal:
 			empty_demon_to_place.set_demon_type(demon_instance.current_demon_type)
+			if maw_left_blocker != null:
+				maw_left_blocker.set_demon_type(demon_instance.current_demon_type)
 			
 		#Reduce Blood Points
 		blood_points -= demon_cost

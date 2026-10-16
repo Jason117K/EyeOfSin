@@ -79,7 +79,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 func _ready() -> void:
 	
 	Global.enable_ultimate()
-	level_title = tr("LEVEL_TITLE_0_7")
+	level_title = tr("LEVEL_TITLE_0_8") # played 8th (after the Ultimates level)
 	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	Global.register_syn_ability(Global.lightning_strike)

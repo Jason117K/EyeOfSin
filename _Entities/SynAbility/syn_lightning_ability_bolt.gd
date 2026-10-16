@@ -20,8 +20,11 @@ extends Syn_Ability_Instance
 @onready var lightning_connector_area : Area2D = $LightningPivot/LightningConnectorArea
 
 
-var is_on_green := false 
+var is_on_green := false
 var is_lightning_connected := false
+
+const CONNECTOR_TILE_SIZE := Vector2(48, 128) # one LightningConnector frame
+var connector_clip : ColorRect
 
 func _ready() -> void:
 	detect_zombies = true 
@@ -102,13 +105,33 @@ func connect_ability(lightning_to_connect : Area2D)->void:
 	lightning_connector_pivot.global_rotation = angle - PI / 2.0
 	
 	var distance :float= lightning_connector_pivot.global_position.distance_to(lightning_to_connect.global_position)
-	lightning_connector_pivot.scale.y = distance / default_connector_length
-	
+	# Repeat the bolt frame along the gap instead of stretching one copy; only
+	# the damage area is scaled to the full length.
+	lightning_connector_area.scale.y = distance / default_connector_length
+	_tile_connector(distance)
+
 	place_shadow_orb(lightning_to_connect.global_position)
-	
-	lightning_connector_anim.play()
-	
-	is_lightning_connected = true 
+
+	is_lightning_connected = true
+
+# Lay synced copies of the connector frame end to end inside a clip rect the
+# length of the gap, so the last copy is cut off exactly at the target.
+func _tile_connector(distance: float) -> void:
+	if connector_clip != null:
+		connector_clip.queue_free()
+	connector_clip = ColorRect.new()
+	connector_clip.clip_children = CanvasItem.CLIP_CHILDREN_ONLY
+	connector_clip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	connector_clip.position = Vector2(lightning_connector_anim.position.x - CONNECTOR_TILE_SIZE.x / 2.0, 0)
+	connector_clip.size = Vector2(CONNECTOR_TILE_SIZE.x, distance)
+	lightning_connector_pivot.add_child(connector_clip)
+	lightning_connector_anim.hide()
+	for i in ceili(distance / CONNECTOR_TILE_SIZE.y):
+		var tile : AnimatedSprite2D = lightning_connector_anim.duplicate()
+		tile.position = Vector2(CONNECTOR_TILE_SIZE.x / 2.0, CONNECTOR_TILE_SIZE.y * (i + 0.5))
+		tile.show()
+		connector_clip.add_child(tile)
+		tile.play()
 
 func place_shadow_orb(new_position:Vector2)->void:
 	shadow_orb.global_position = new_position

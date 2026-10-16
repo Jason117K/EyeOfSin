@@ -145,7 +145,7 @@ func receive_buff(bufferName:Demon) -> void:
 func _activate_wyrm_buff() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
-	hive_laser_shoot_comp._ready()
+	hive_laser_shoot_comp.enable()
 	$ProjectileShootComponent.enable_auto_fire()
 
 func debuff() -> void:

@@ -161,6 +161,7 @@ theme_override_constants/margin_bottom = 2
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("8_xuysx")
 theme_override_fonts/italics_font = ExtResource("5_2o6rf")
@@ -178,6 +179,7 @@ script = ExtResource("3_4nnmc")
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxLine_xuysx")
 
@@ -202,6 +204,7 @@ custom_minimum_size = Vector2(135.315, 13)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_4nnmc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kbdbf")
 value = 100.0
@@ -279,6 +282,7 @@ script = ExtResource("3_4nnmc")
 [node name="VSeparator" type="VSeparator" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer" unique_id=1154140342]
 custom_minimum_size = Vector2(0, 13.84)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_0xt66")
 
 [node name="SpeedPanel" type="PanelContainer" parent="NotificationPanel/NotifMarginContainer/NotificationHbox/NameHealthVboxContainer/StatsHboxContainer" unique_id=988558454]

@@ -59,6 +59,7 @@ size = Vector2(15, 24)
 [node name="Spiderling" type="Area2D" unique_id=353747011 groups=["Demons", "Plants"]]
 collision_mask = 3
 script = ExtResource("1_x3xnr")
+health = 50.0
 
 [node name="SpiderlingSprite" type="AnimatedSprite2D" parent="." unique_id=1752429040]
 sprite_frames = SubResource("SpriteFrames_6isrd")

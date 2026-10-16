@@ -63,15 +63,11 @@ func getAttackState() -> bool:
 # Sets is_attacking to true and plays the audio will also starting the attack cooldown timer
 func attack_demon(collider:Node) -> void:
 	if collider.is_in_group("Drone"):
-		if collider.get_is_in_combat() == true:
-			if collider.get_enemy_combatant() != self:
-				return
-			else:
-				pass 
-		else:
-			pass
-			collider.enter_combat(parent_zombie)
-			
+		# tick() just claimed the wasp via demon_minion_busy(); only its holder fights it.
+		if not collider.is_holding(parent_zombie):
+			return
+		collider.enter_combat(parent_zombie)
+
 	is_attacking = true
 	target_demon = collider
 	##print("TName is ", target_demon.name)
@@ -101,6 +97,12 @@ func _on_AttackTimer_timeout() -> void:
 
 	##print(parent_zombie.global_position, " Attack Demon Again ",attack_starting_pos)
 	if abs(attack_starting_pos.x - parent_zombie.global_position.x) > 2:
+		stop_attack()
+		return
+	# The wasp let go of this zombie (sent elsewhere): stop hitting it from afar
+	# and walk on; the ray re-engages it if it's still ahead.
+	if is_instance_valid(target_demon) and target_demon.has_method("is_holding") \
+			and not target_demon.is_holding(parent_zombie):
 		stop_attack()
 		return
 	##print("Basic Zombie Attack Timer Timeout")

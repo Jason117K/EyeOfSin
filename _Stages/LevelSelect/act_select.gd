@@ -9,8 +9,10 @@ var act_3_level_select := "res://_Stages/LevelSelect/LevelSelect_A3.tscn"
 @onready var act_1_button := $CenterContainer/HBoxContainer/Act1_PanelContainer/Act1_Button
 
 func _ready() -> void:
-	act_1_button.pressed.connect(_on_act_1_button_pressed)
-	
+	# The scene already wires this; connect only if it was removed there.
+	if not act_1_button.pressed.is_connected(_on_act_1_button_pressed):
+		act_1_button.pressed.connect(_on_act_1_button_pressed)
+
 
 func _on_act_1_button_pressed() -> void:
 	print("Act 1 Button Pressed")

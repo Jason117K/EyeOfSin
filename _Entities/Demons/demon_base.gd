@@ -9,7 +9,7 @@ class_name Demon
 # _ready() — synchronous phases, children call super() first:
 #   1. set_process(false)      — disabled by default, children opt-in
 #   2. _init_collision()       — Green/Purple collision layers
-#   3. _wire_signals()         — input_event, area_entered/exited
+#   3. _wire_signals()         — area_entered/exited (clicks come from DemonManager)
 #   4. _init_demon_manager()   — DemonManager reference lookup
 #   5. _schedule_post_spawn()  — ASYNC: heart buff detection after 2 physics frames
 #   Then children do demon-specific setup (raycasts, timers, components).
@@ -71,7 +71,7 @@ class_name Demon
 @onready var baal_halo : AnimatedSprite2D = $BaalHalo
 @onready var protective_rib := $ProtectiveRib
 
-@onready var preview_nodes := $PreviewNodes
+@onready var preview_nodes := get_node_or_null("PreviewNodes") # EmptyDemon has none
 
 @onready var highlight_circle := $HighlightCircle
 
@@ -155,7 +155,9 @@ func _ready() -> void:
 	hide_highlight_timer.timeout.connect(hide_highlight)
 	add_child(hide_highlight_timer)
 	
-	highlight_circle.visibility_changed.connect(_on_highlight_circle_visibility_changed)
+	# Some demon scenes (Occulum) also wire this in the editor.
+	if not highlight_circle.visibility_changed.is_connected(_on_highlight_circle_visibility_changed):
+		highlight_circle.visibility_changed.connect(_on_highlight_circle_visibility_changed)
 	Global.notification_bar.show_new_demon_notification.connect(hide_highlight)
 	
 	if self.is_in_group("Green"):
@@ -166,8 +168,13 @@ func _ready() -> void:
 		my_active_dimension = Global.game_controller.get_purple_dimension()
 		
 	ScoreManager.level_ended.connect(broadcast_time_alive)
-	
-	clone_global_position = self.global_position
+
+	clone_global_position = get_cell_global_position()
+
+# Global position of the grid cell this demon was placed on. Equal to
+# global_position except for demons placed with a visual offset (Maw).
+func get_cell_global_position() -> Vector2:
+	return global_position
 
 func broadcast_time_alive()->void:
 	ScoreManager.add_score_from_demon(game_time, get_is_buffed())
@@ -217,7 +224,9 @@ func _init_collision_mask(this_area : Area2D, detect_zombie :bool = true) -> voi
 					
 		
 func _wire_signals() -> void:
-	input_event.connect(_on_input_event)
+	# Clicks are routed by DemonManager by grid cell (calls _on_input_event), not
+	# by physics picking on the demon's hurtbox, which is often far smaller than
+	# its sprite.
 	area_entered.connect(on_demon_area_entered)
 	area_exited.connect(on_demon_area_exited)
 
@@ -395,8 +404,8 @@ func get_is_buffed() -> bool:
 
 func spawn_revive_point()->void:
 	var revive_point_instance = Global.demon_revive_point.instantiate()
-	revive_point_instance.global_position = self.global_position
-	revive_point_instance.demon_location = global_position
+	revive_point_instance.global_position = get_cell_global_position()
+	revive_point_instance.demon_location = get_cell_global_position()
 	revive_point_instance.set_is_green(is_green)
 	revive_point_instance.set_current_demon_type(current_demon_type)
 	_init_collision_layer(revive_point_instance)

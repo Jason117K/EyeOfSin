@@ -86,6 +86,7 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0lpgd"]
+resource_local_to_scene = true
 shader = ExtResource("10_dvp3m")
 shader_parameter/blood_color = Color(0.6, 0, 0, 1)
 shader_parameter/active = false

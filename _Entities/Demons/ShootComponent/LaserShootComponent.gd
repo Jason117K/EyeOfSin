@@ -84,11 +84,21 @@ func _ready() -> void:
 
 	if isDisabled:
 		return
+	_setup_laser()
+
+## Turns on a laser that started disabled (Wyrm/Hive buffs). Use this rather
+## than calling _ready() again, which re-runs the one-time setup.
+func enable() -> void:
+	isDisabled = false
+	_setup_laser()
+
+func _setup_laser() -> void:
+	if timer.get_parent() != null:
+		return # already set up
 	og_cooldown = cooldown
 	og_damage = damage
 	#self.visible = false
-	# Set up Line2D
-	add_child(line2D)
+	# Set up Line2D (a child in the scene already)
 	line2D.visible = false
 	#print("Line2D is ", line2D)
 	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])

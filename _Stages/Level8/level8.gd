@@ -14,8 +14,8 @@ extends LevelTemplate
 var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
 # Level paths
-var thisLevel :=  "res://_Stages/Level7/Level7.tscn"
-var thisAltLevel := "res://_Stages/Level7/Level7_Alternate.tscn"
+var thisLevel :=  "res://_Stages/Level8/Level8.tscn"
+var thisAltLevel := "res://_Stages/Level8/Level8_Alternate.tscn"
 
 var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
@@ -86,7 +86,7 @@ func _ready() -> void:
 	Global.enable_ultimate()
 	
 	Global.ultimate_charge_container.set_margin()
-	level_title = tr("LEVEL_TITLE_0_8")
+	level_title = tr("LEVEL_TITLE_0_7") # played 7th (introduces Ultimates)
 	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
 	Global.register_syn_ability(Global.lightning_strike)

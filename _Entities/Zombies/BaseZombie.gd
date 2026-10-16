@@ -76,11 +76,15 @@ static var sundered_special_description: String
 static var buffer_special_description: String
 static var rohan_special_description: String
 
-static var _descriptions_loaded := false
+static var _descriptions_locale := ""
+static var _last_click_frame := -1
 
 static func _load_descriptions() -> void:
-	# No caching guard: Loc.text() is a translation lookup, and reloading keeps
-	# these current after a mid-session language switch.
+	# Cached per language: every zombie calls this from _ready, and reloading on
+	# a locale change keeps these current after a mid-session language switch.
+	var locale := TranslationServer.get_locale()
+	if locale == _descriptions_locale:
+		return
 	reborn_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt")
 	severed_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/severed_special_description.txt")
 	unhallower_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/unhallower_special_description.txt")
@@ -92,7 +96,7 @@ static func _load_descriptions() -> void:
 	sundered_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt")
 	buffer_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt")
 	rohan_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt")
-	_descriptions_loaded = true
+	_descriptions_locale = locale
 
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")
 
@@ -638,10 +642,17 @@ func get_charge_cost() -> int:
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# Physics picking reaches zombies in both dimensions (the hidden one just
+		# isn't drawn), and every overlapping zombie gets the click: one visible
+		# zombie wins.
+		if Dim.of(self) != (Dim.PURPLE if Global.is_on_purple_dimension() else Dim.GREEN):
+			return
+		if _last_click_frame == Engine.get_physics_frames():
+			return
+		_last_click_frame = Engine.get_physics_frames()
 		##print(self, " was clicked ")
 		Global.set_zombie_info_bar(self)
 		highlight_circle.show()
-		pass
 
 
 # --- Timer Handlers ---

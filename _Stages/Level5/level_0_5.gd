@@ -157,6 +157,9 @@ func _start_free_play() -> void:
 	Global.show_pip()
 	Global.unhide_ui_layer()
 	Global.unHideDemonSelectionMenu()
+	# finish_ready() can run from _ready, before the Green level is loaded.
+	await get_tree().physics_frame
+	_place_wyrm_queens()
 
 func getIsPurpleDimension():
 	return
@@ -189,12 +192,16 @@ func _start_explain_swap_3()->void:
 	
 func _pre_start_game()->void:
 	Global.unHideDemonSelectionMenu()
-	demonSelectionMenu.set_wyrm_queen()
-	demonManager.place_demon(Vector2(48,144),true)
+	_place_wyrm_queens()
 	toolTips.stop_glow_pulse(Global.get_swap_ability_panel())
-	
+
 	toolTips.set_basic_tutorial_text(EXPLAIN_WYRM_QUEEN,true,Vector2(0,-80))
 	set_auto_advance_toolTip(9)
+
+# Both dimensions start with a Wyrm Queen, tutorial or not.
+func _place_wyrm_queens()->void:
+	demonSelectionMenu.set_wyrm_queen()
+	demonManager.place_demon(Vector2(48,144),true)
 	green_dimension = Global.game_controller.get_green_dimension()
 	green_dimension.place_wyrm_queen()
 

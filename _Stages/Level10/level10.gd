@@ -4,10 +4,12 @@ extends LevelTemplate
 
 # Preloaded demo scenes
 var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
+var erupter_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/erupter_zombie_demo.tscn")
+const TUTORIAL_EXPLAIN_ERUPTER = "res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
 
 # Level paths
-var thisLevel :=  "res://_Stages/Level7/Level7.tscn"
-var thisAltLevel := "res://_Stages/Level7/Level7_Alternate.tscn"
+var thisLevel :=  "res://_Stages/Level10/Level10.tscn"
+var thisAltLevel := "res://_Stages/Level10/Level10_Alternate.tscn"
 
 var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
@@ -78,17 +80,12 @@ func _ready() -> void:
 	#waveManager.wave_delays = [60.0, 100.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
-	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
 
 	setup_demon_selection_menu()
 	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.resetOcculumCount()
-	attach_script_to_sway_children()
-
-	# Connect signals
-	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
@@ -176,11 +173,11 @@ func finish_ready() -> void:
 	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.canSwapScenes = true
 	Global.unhide_ui_layer()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hero"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal","Hero"])
 
 
 func _start_free_play() -> void:
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hero"])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal","Hero"])
 	world_swap_button.visible = true
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
@@ -223,7 +220,9 @@ func _start_explain_syn_monolith_2()->void:
 	
 
 func _start_explain_syn_monolith_3()->void:
-	demonSelectionMenu.get_syn_monolith_button().pressed.disconnect(_on_syn_monolith_pressed)
+	# _on_syn_monolith_pressed already disconnects itself when it is the path here.
+	if demonSelectionMenu.get_syn_monolith_button().pressed.is_connected(_on_syn_monolith_pressed):
+		demonSelectionMenu.get_syn_monolith_button().pressed.disconnect(_on_syn_monolith_pressed)
 	Global.syn_monolith_activated.connect(_on_syn_monolith_activated)
 	toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_SYN_MONOLITH_3,false)
 
@@ -309,3 +308,12 @@ func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 		"Rohan", "Erupter":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+
+func show_zombie_tutorial(unlocked_zombie : String)->void:
+	match unlocked_zombie:
+		"Erupter":
+			_start_explain_erupter()
+
+func _start_explain_erupter()->void:
+	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_ERUPTER)
+	toolTips.set_visual_tutorial_visual(erupter_zombie_demo_scene.instantiate())

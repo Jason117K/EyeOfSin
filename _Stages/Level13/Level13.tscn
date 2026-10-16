@@ -60,6 +60,483 @@
 [ext_resource type="Texture2D" uid="uid://dxgw10u4d0kno" path="res://_Assets/Environment/Act2/Office/OfficeDeskStuff.png" id="53_58o1h"]
 [ext_resource type="Texture2D" uid="uid://b0ix5vm6vyv0i" path="res://_Assets/Environment/Act2/Office/OfficeWaterCooler.png" id="54_684nb"]
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="60_oridc"]
+[ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="90_l13pwd"]
+[ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="91_l13pwe"]
+
+[sub_resource type="Resource" id="Resource_l13p1w1e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p1w1e2"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p1w1"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p1w1e1"), SubResource("Resource_l13p1w1e2")])
+
+[sub_resource type="Resource" id="Resource_l13p1w2e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p1w2e2"]
+script = ExtResource("91_l13pwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p1w2e3"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p1w2"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p1w2e1"), SubResource("Resource_l13p1w2e2"), SubResource("Resource_l13p1w2e3")])
+
+[sub_resource type="Resource" id="Resource_l13p1w3e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p1w3e2"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p1w3e3"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p1w3"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p1w3e1"), SubResource("Resource_l13p1w3e2"), SubResource("Resource_l13p1w3e3")])
+
+[sub_resource type="Resource" id="Resource_l13p1w4e1"]
+script = ExtResource("91_l13pwe")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p1w4e2"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p1w4"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p1w4e1"), SubResource("Resource_l13p1w4e2")])
+
+[sub_resource type="Resource" id="Resource_l13p1w5e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 2
+
+[sub_resource type="Resource" id="Resource_l13p1w5e2"]
+script = ExtResource("91_l13pwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p1w5e3"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p1w5"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p1w5e1"), SubResource("Resource_l13p1w5e2"), SubResource("Resource_l13p1w5e3")])
+
+[sub_resource type="Resource" id="Resource_l13p2w1e1"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p2w1e2"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p2w1e3"]
+script = ExtResource("91_l13pwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p2w1"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p2w1e1"), SubResource("Resource_l13p2w1e2"), SubResource("Resource_l13p2w1e3")])
+
+[sub_resource type="Resource" id="Resource_l13p2w2e1"]
+script = ExtResource("91_l13pwe")
+type = "Reanimator"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p2w2e2"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p2w2"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p2w2e1"), SubResource("Resource_l13p2w2e2")])
+
+[sub_resource type="Resource" id="Resource_l13p2w3e1"]
+script = ExtResource("91_l13pwe")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p2w3e2"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p2w3"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p2w3e1"), SubResource("Resource_l13p2w3e2")])
+
+[sub_resource type="Resource" id="Resource_l13p2w4e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 2
+
+[sub_resource type="Resource" id="Resource_l13p2w4e2"]
+script = ExtResource("91_l13pwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p2w4e3"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p2w4"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p2w4e1"), SubResource("Resource_l13p2w4e2"), SubResource("Resource_l13p2w4e3")])
+
+[sub_resource type="Resource" id="Resource_l13p2w5e1"]
+script = ExtResource("91_l13pwe")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p2w5e2"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p2w5e3"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p2w5"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p2w5e1"), SubResource("Resource_l13p2w5e2"), SubResource("Resource_l13p2w5e3")])
+
+[sub_resource type="Resource" id="Resource_l13p3w1e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w1e2"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p3w1"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p3w1e1"), SubResource("Resource_l13p3w1e2")])
+
+[sub_resource type="Resource" id="Resource_l13p3w2e1"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w2e2"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p3w2"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p3w2e1"), SubResource("Resource_l13p3w2e2")])
+
+[sub_resource type="Resource" id="Resource_l13p3w3e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w3e2"]
+script = ExtResource("91_l13pwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w3e3"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p3w3"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p3w3e1"), SubResource("Resource_l13p3w3e2"), SubResource("Resource_l13p3w3e3")])
+
+[sub_resource type="Resource" id="Resource_l13p3w4e1"]
+script = ExtResource("91_l13pwe")
+type = "Reanimator"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w4e2"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w4e3"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p3w4"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p3w4e1"), SubResource("Resource_l13p3w4e2"), SubResource("Resource_l13p3w4e3")])
+
+[sub_resource type="Resource" id="Resource_l13p3w5e1"]
+script = ExtResource("91_l13pwe")
+type = "Reanimator"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w5e2"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p3w5e3"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p3w5"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p3w5e1"), SubResource("Resource_l13p3w5e2"), SubResource("Resource_l13p3w5e3")])
+
+[sub_resource type="Resource" id="Resource_l13p4w1"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p4w2"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p4w3"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p4w4e1"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p4w4e2"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p4w4e3"]
+script = ExtResource("91_l13pwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p4w4"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p4w4e1"), SubResource("Resource_l13p4w4e2"), SubResource("Resource_l13p4w4e3")])
+
+[sub_resource type="Resource" id="Resource_l13p4w5e1"]
+script = ExtResource("91_l13pwe")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p4w5e2"]
+script = ExtResource("91_l13pwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p4w5e3"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p4w5"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p4w5e1"), SubResource("Resource_l13p4w5e2"), SubResource("Resource_l13p4w5e3")])
+
+[sub_resource type="Resource" id="Resource_l13p5w1"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p5w2"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p5w3e1"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p5w3e2"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p5w3e3"]
+script = ExtResource("91_l13pwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p5w3"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p5w3e1"), SubResource("Resource_l13p5w3e2"), SubResource("Resource_l13p5w3e3")])
+
+[sub_resource type="Resource" id="Resource_l13p5w4e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p5w4e2"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p5w4e3"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p5w4"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p5w4e1"), SubResource("Resource_l13p5w4e2"), SubResource("Resource_l13p5w4e3")])
+
+[sub_resource type="Resource" id="Resource_l13p5w5e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p5w5e2"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 2
+
+[sub_resource type="Resource" id="Resource_l13p5w5e3"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p5w5e4"]
+script = ExtResource("91_l13pwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p5w5"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p5w5e1"), SubResource("Resource_l13p5w5e2"), SubResource("Resource_l13p5w5e3"), SubResource("Resource_l13p5w5e4")])
+
+[sub_resource type="Resource" id="Resource_l13p6w1"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p6w2"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p6w3"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p6w4"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p6w5e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p6w5e2"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p6w5e3"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p6w5e4"]
+script = ExtResource("91_l13pwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p6w5"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p6w5e1"), SubResource("Resource_l13p6w5e2"), SubResource("Resource_l13p6w5e3"), SubResource("Resource_l13p6w5e4")])
+
+[sub_resource type="Resource" id="Resource_l13p7w1"]
+script = ExtResource("90_l13pwd")
+
+[sub_resource type="Resource" id="Resource_l13p7w2e1"]
+script = ExtResource("91_l13pwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p7w2e2"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p7w2"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p7w2e1"), SubResource("Resource_l13p7w2e2")])
+
+[sub_resource type="Resource" id="Resource_l13p7w3e1"]
+script = ExtResource("91_l13pwe")
+type = "Reanimator"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p7w3e2"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p7w3"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p7w3e1"), SubResource("Resource_l13p7w3e2")])
+
+[sub_resource type="Resource" id="Resource_l13p7w4e1"]
+script = ExtResource("91_l13pwe")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p7w4e2"]
+script = ExtResource("91_l13pwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p7w4e3"]
+script = ExtResource("91_l13pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l13p7w4"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p7w4e1"), SubResource("Resource_l13p7w4e2"), SubResource("Resource_l13p7w4e3")])
+
+[sub_resource type="Resource" id="Resource_l13p7w5e1"]
+script = ExtResource("91_l13pwe")
+type = "Reanimator"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p7w5e2"]
+script = ExtResource("91_l13pwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l13p7w5e3"]
+script = ExtResource("91_l13pwe")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l13p7w5"]
+script = ExtResource("90_l13pwd")
+entries = Array[ExtResource("91_l13pwe")]([SubResource("Resource_l13p7w5e1"), SubResource("Resource_l13p7w5e2"), SubResource("Resource_l13p7w5e3")])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agy4r"]
 texture = ExtResource("9_xi0m8")
@@ -6298,7 +6775,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_u2irr")
-take_screenshot = true
+wave2StartTime = 70
+wave3StartTime = 95
+wave4StartTime = 105
+wave5StartTime = 110
+record_footage = false
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_bnps3")]
 layout_mode = 1
@@ -6319,6 +6800,8 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("6_4pkvp")]
 visible = false
 position = Vector2(740, 109)
+waves = Array[ExtResource("90_l13pwd")]([SubResource("Resource_l13p1w1"), SubResource("Resource_l13p1w2"), SubResource("Resource_l13p1w3"), SubResource("Resource_l13p1w4"), SubResource("Resource_l13p1w5")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=288115831 instance=ExtResource("7_31j3o")]
 z_index = 1
@@ -6327,6 +6810,8 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("6_4pkvp")]
 visible = false
 position = Vector2(740, 141)
+waves = Array[ExtResource("90_l13pwd")]([SubResource("Resource_l13p2w1"), SubResource("Resource_l13p2w2"), SubResource("Resource_l13p2w3"), SubResource("Resource_l13p2w4"), SubResource("Resource_l13p2w5")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=197908073 instance=ExtResource("7_31j3o")]
 z_index = 1
@@ -6335,6 +6820,8 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("6_4pkvp")]
 visible = false
 position = Vector2(740, 173)
+waves = Array[ExtResource("90_l13pwd")]([SubResource("Resource_l13p3w1"), SubResource("Resource_l13p3w2"), SubResource("Resource_l13p3w3"), SubResource("Resource_l13p3w4"), SubResource("Resource_l13p3w5")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("7_31j3o")]
 z_index = 1
@@ -6343,6 +6830,8 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("6_4pkvp")]
 visible = false
 position = Vector2(740, 205)
+waves = Array[ExtResource("90_l13pwd")]([SubResource("Resource_l13p4w1"), SubResource("Resource_l13p4w2"), SubResource("Resource_l13p4w3"), SubResource("Resource_l13p4w4"), SubResource("Resource_l13p4w5")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=477558108 instance=ExtResource("7_31j3o")]
 z_index = 1
@@ -6351,6 +6840,8 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=40172816 instance=ExtResource("6_4pkvp")]
 visible = false
 position = Vector2(740, 237)
+waves = Array[ExtResource("90_l13pwd")]([SubResource("Resource_l13p5w1"), SubResource("Resource_l13p5w2"), SubResource("Resource_l13p5w3"), SubResource("Resource_l13p5w4"), SubResource("Resource_l13p5w5")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=366118389 instance=ExtResource("7_31j3o")]
 z_index = 1
@@ -6359,6 +6850,8 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=816215242 instance=ExtResource("6_4pkvp")]
 visible = false
 position = Vector2(740, 269)
+waves = Array[ExtResource("90_l13pwd")]([SubResource("Resource_l13p6w1"), SubResource("Resource_l13p6w2"), SubResource("Resource_l13p6w3"), SubResource("Resource_l13p6w4"), SubResource("Resource_l13p6w5")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1257123650 instance=ExtResource("7_31j3o")]
 z_index = 1
@@ -6367,6 +6860,8 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1922773539 instance=ExtResource("6_4pkvp")]
 visible = false
 position = Vector2(740, 301)
+waves = Array[ExtResource("90_l13pwd")]([SubResource("Resource_l13p7w1"), SubResource("Resource_l13p7w2"), SubResource("Resource_l13p7w3"), SubResource("Resource_l13p7w4"), SubResource("Resource_l13p7w5")])
+is_random = false
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1043848066 instance=ExtResource("7_31j3o")]
 z_index = 1

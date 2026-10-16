@@ -6,8 +6,8 @@ extends LevelTemplate
 var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
 # Level paths
-var thisLevel :=  "res://_Stages/Level7/Level7.tscn"
-var thisAltLevel := "res://_Stages/Level7/Level7_Alternate.tscn"
+var thisLevel :=  "res://_Stages/Level11/Level11.tscn"
+var thisAltLevel := "res://_Stages/Level11/Level11_Alternate.tscn"
 
 var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
@@ -64,19 +64,14 @@ func _ready() -> void:
 	##print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [60.0, 100.0]
-	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime,wave6StartTime]
+	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
-	waveManager.level_ended.connect(_on_level_ended)
 	_configure_waves()
 
 	setup_demon_selection_menu()
 	pause_Button.set_restart_levels(thisLevel, thisAltLevel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.resetOcculumCount()
-	attach_script_to_sway_children()
-
-	# Connect signals
-	toolTips.connect("ToolTipHid", Callable(self, "_on_tooltip_hidden"))
 
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
@@ -85,11 +80,16 @@ func _ready() -> void:
 		finish_ready()
 	else:
 		Dialogic.start(level_6_start_dialog)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	pre_place_maw_demons()
 
 	#finish_ready()
 
 #TODO Re-Implement Rohan 
 func _configure_waves() -> void:
+	pass
 	#zombie_spawner_1._build_pool(0)
 	#zombie_spawner_2._build_pool(0)
 	#zombie_spawner_3._build_pool(0)
@@ -98,54 +98,54 @@ func _configure_waves() -> void:
 	#zombie_spawner_6._build_pool(0)
 	#zombie_spawner_7._build_pool(0)
 	#return
-	zombie_spawner_1.set_waves_from_dicts([{},                                                   #(0)
-											{},                                                  #(0)
-											{},                                                  #(0)
-											{"Amalgam": 2},                                      #(5)
-											{"Buffer": 2},                                      #(10)
-											{"Reanimator":2}])                                   #(20)
+	#zombie_spawner_1.set_waves_from_dicts([{},                                                   #(0)
+	#										{},                                                  #(0)
+	#										{},                                                  #(0)
+	#										{"Amalgam": 2},                                      #(5)
+	#										{"Buffer": 2},                                      #(10)
+	#										{"Reanimator":2}])                                   #(20)
 											 
-	zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
-											{},                                                  #(0)
-											{"Reanimator":1},                                    #(10)
-											{ "Amalgam" : 5},                                    #(15-)
-											{"Sundered": 2, "Buffer" : 2},                        #(15)
-											{"Amalgam": 4,"Buffer": 2}])                          #(20)
+	#zombie_spawner_2.set_waves_from_dicts([{},                                                   #(0)
+	#										{},                                                  #(0)
+	#										{"Reanimator":1},                                    #(10)
+	#										{ "Amalgam" : 5},                                    #(15-)
+	#										{"Sundered": 2, "Buffer" : 2},                        #(15)
+	#										{"Amalgam": 4,"Buffer": 2}])                          #(20)
 											
-	zombie_spawner_3.set_waves_from_dicts([{"Reborn":8,"Severed":4},                             #(3+)
-											{"Reborn":4, "Unhallower":1},                         #(6-)    
-											{"Reanimator":1},                                     #(10)
-											{"Reanimator": 1, "Amalgam":2},                      #(15)
-											{"Sundered": 3, "Buffer":2},                         #(20-)
-											{"Unhallower":3, "Sundered":4}])                     #(25)
+	#zombie_spawner_3.set_waves_from_dicts([{"Reborn":8,"Severed":4},                             #(3+)
+	#										{"Reborn":4, "Unhallower":1},                         #(6-)    
+	#										{"Reanimator":1},                                     #(10)
+	#										{"Reanimator": 1, "Amalgam":2},                      #(15)
+	#										{"Sundered": 3, "Buffer":2},                         #(20-)
+	#										{"Unhallower":3, "Sundered":4}])                     #(25)
 											
-	zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
-											{"Unhallower":1},                                     #(5)
-											{"Reanimator":1},                                    #(10)
-											{"Reanimator":1 ,"Amalgam":2},                          #(11+)
-											{"Sundered":3,"Buffer":2},                           #(20-)
-											{"Rohan":1}])                                            #???
+	#zombie_spawner_4.set_waves_from_dicts([{},                                                   #(0)
+	#										{"Unhallower":1},                                     #(5)
+	#										{"Reanimator":1},                                    #(10)
+	#										{"Reanimator":1 ,"Amalgam":2},                          #(11+)
+	#										{"Sundered":3,"Buffer":2},                           #(20-)
+	#										{"Rohan":1}])                                            #???
 											
-	zombie_spawner_5.set_waves_from_dicts([{"Reborn":8,"Severed":4},                             #(3+)
-											{"Reborn":4, "Unhallower":1},                         #(6-)
-											{"Reanimator":1},                                     #(10)
-											{"Reanimator":1, "Amalgam":2},                         #(15)
-											{ "Sundered":3, "Buffer":2},                          #(20-)
-											{"Unhallower":3, "Sundered":4}])                      #(25)  
+	#zombie_spawner_5.set_waves_from_dicts([{"Reborn":8,"Severed":4},                             #(3+)
+	#										{"Reborn":4, "Unhallower":1},                         #(6-)
+	#										{"Reanimator":1},                                     #(10)
+	#										{"Reanimator":1, "Amalgam":2},                         #(15)
+	#										{ "Sundered":3, "Buffer":2},                          #(20-)
+	#										{"Unhallower":3, "Sundered":4}])                      #(25)  
 											
-	zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
-											{},                                                  #(0)  
-											{"Reanimator":1},                                      #(10)
-											{ "Amalgam" : 5},                                     #(15-)
-											{"Sundered": 2, "Buffer" : 2},                         #(15)
-											{"Amalgam": 4,"Buffer": 2}])                          #(20)
+	#zombie_spawner_6.set_waves_from_dicts([{},                                                   #(0)
+	#										{},                                                  #(0)  
+	#										{"Reanimator":1},                                      #(10)
+	#										{ "Amalgam" : 5},                                     #(15-)
+	#										{"Sundered": 2, "Buffer" : 2},                         #(15)
+	#										{"Amalgam": 4,"Buffer": 2}])                          #(20)
 											
-	zombie_spawner_7.set_waves_from_dicts([{},                                                   #(0)
-											{},                                                  #(0)
-											{},                                                  #(0)
-											{ "Amalgam": 2},                                      #(5)
-											{"Buffer":2},                                       #(10)
-											{"Reanimator":2}])                                   #(20) 
+	#zombie_spawner_7.set_waves_from_dicts([{},                                                   #(0)
+	#										{},                                                  #(0)
+	#										{},                                                  #(0)
+	#										{ "Amalgam": 2},                                      #(5)
+	#										{"Buffer":2},                                       #(10)
+	#										{"Reanimator":2}])                                   #(20) 
 
 func finish_ready() -> void:
 	Global.show_pip()
@@ -159,11 +159,11 @@ func finish_ready() -> void:
 	Global.unHideDemonSelectionMenu()
 	demonSelectionMenu.canSwapScenes = true
 	Global.unhide_ui_layer()
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal",])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hive","Portal","Hero"])
 
 
 func _start_free_play() -> void:
-	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Portal",])
+	hide_all_demon_buttons_with_exception(["Crawler","Occulum","SpinalOcculum","Wyrm","Hive","Portal","Hero"])
 	world_swap_button.visible = true
 	demonSelectionMenu.canSwapScenes = true
 	waveManager.can_start = true
@@ -173,6 +173,14 @@ func _start_free_play() -> void:
 	
 func getIsPurpleDimension()->void:
 	return
+	
+## Free Maws mid-screen (a Maw fills columns 11–12) in lanes 1, 4 and 7.
+func pre_place_maw_demons()->void:
+	demonManager.add_blood(275 * 3)
+	for lane_y: int in [112, 208, 304]:
+		await get_tree().physics_frame
+		demonSelectionMenu._on_MawButton_pressed()
+		demonManager.place_demon(Vector2(368, lane_y))
 #endregion
 
 

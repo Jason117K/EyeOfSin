@@ -253,12 +253,12 @@ func set_level_details(level_number:int)->void:
 			open_level_screen.set_level_title(level_7_label.text)
 			open_level_screen.set_level_description(level_7_description)
 			open_level_screen.set_level_images(level_7_image_earth,level_7_image_syn)
-			open_level_screen.set_levels(level7,level7_alt)
+			open_level_screen.set_levels(level8,level8_alt) # 7th = Ultimates level
 		8:
 			open_level_screen.set_level_title(level_8_label.text)
 			open_level_screen.set_level_description(level_8_description)
 			open_level_screen.set_level_images(level_8_image_earth,level_8_image_syn)
-			open_level_screen.set_levels(level8,level8_alt)
+			open_level_screen.set_levels(level7,level7_alt) # 8th = skull-line level
 		9:
 			open_level_screen.set_level_title(level_9_label.text)
 			open_level_screen.set_level_description(level_9_description)

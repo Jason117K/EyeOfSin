@@ -220,10 +220,13 @@ func set_visual_tutorial_visual(newVisual: CenterContainer, show_button: bool = 
 		visual_tutorial_panel_container.get_theme_stylebox("panel").texture = demon_nine_patch_texture 
 
 func set_visual_demon_tutorial_visual(newVisual: CenterContainer, show_button: bool = true, location : Vector2 = Vector2(0,0)) -> void:
-	demon_visual_tutorial_parent.remove_child(visualTutorialVisual)
+	# Swap this pop-up's own visual in place (not the zombie pop-up's, whose
+	# `index` is for a different container).
+	var demon_index := demon_visual_tutorial_visual.get_index()
+	demon_visual_tutorial_parent.remove_child(demon_visual_tutorial_visual)
 	demon_visual_tutorial_visual.queue_free()
 	demon_visual_tutorial_parent.add_child(newVisual)
-	demon_visual_tutorial_parent.move_child(newVisual, index)
+	demon_visual_tutorial_parent.move_child(newVisual, demon_index)
 	demon_visual_tutorial_visual = newVisual
 	demon_visual_tutorial_panel_container.reset_size()
 	if show_button:

@@ -174,6 +174,8 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 			" current_scenes.size=" + str(current_scenes.size()))
 		return
 	_is_transitioning = true
+	# Every level (and restart) starts at normal speed; fast-forward is per run.
+	Engine.time_scale = 1.0
 	#print("[RESTART] change_dual_scenes BEGIN scene1=", scene1_path,
 		#" exists=", ResourceLoader.exists(scene1_path),
 		#" scene2=", scene2_path, " exists=", ResourceLoader.exists(scene2_path),
@@ -252,6 +254,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	#print("About to Stamp Scnes")
 	_stamp_scene(current_scenes[0], DIM_BITS[0])
 	_stamp_scene(current_scenes[1], DIM_BITS[1])
+	_stamp_overlays()
 	_apply_view_masks()
 	#print("About to Make Camera2D Currebt")
 	current_scenes[0].get_node("Camera2D").make_current()
@@ -302,6 +305,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
+	Engine.time_scale = 1.0 # menus run at normal speed
 	Global.style_menu.hide()
 	Global.disable_ultimate()
 	pip.hide_pip()
@@ -575,9 +579,19 @@ func _stamp_scene(scene: Node, layer: int) -> void:
 		##print("Calling stamp scene on child ", child, " and/on layer ", layer  )
 
 
+# Tutorial pop-ups (each level's ToolTips) get their dimension's overlay bit in
+# place of its world bit, so the PiP never mirrors the other dimension's tips.
+func _stamp_overlays() -> void:
+	for i in 2:
+		var tool_tips : Node = current_scenes[i].get_node_or_null("ToolTips")
+		if tool_tips != null:
+			_stamp_scene(tool_tips, Dim.OVERLAY_BITS[i])
+
+
 func _apply_view_masks() -> void:
-	var active_bit: int = DIM_BITS[0] if on_scene_1 else DIM_BITS[1]
-	get_viewport().canvas_cull_mask = UI_BIT | active_bit | (1 << 9)
+	var active_idx := 0 if on_scene_1 else 1
+	var active_bit: int = DIM_BITS[active_idx]
+	get_viewport().canvas_cull_mask = UI_BIT | active_bit | Dim.OVERLAY_BITS[active_idx] | (1 << 9)
 	var inactive_idx := 1 if on_scene_1 else 0
 	pip.set_pip_cull_mask(DIM_BITS[inactive_idx])
 	pip.set_mirror_camera(current_scenes[inactive_idx].get_node("Camera2D"))

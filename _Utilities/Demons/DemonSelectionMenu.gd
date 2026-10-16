@@ -57,10 +57,10 @@ var deselectText := " PRESS [X] TO DESELECT"
 @onready var panelContainer := $PanelContainer
 @onready var portalButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Portal/PortalButton
 @onready var swapButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer/WorldSwap/WorldSwapButton
-@onready var removeDemonButton := $PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton
+@onready var removeDemonButton := get_node_or_null("PanelContainer2/UtilityVBoxContainer/HBoxContainer/RemoveDemon/RemoveDemonButton") # no longer in the scene
 @onready var codexButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/Codex2/CodexButton
 @onready var fastForwardButton := $UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2/FastForward/FastForwardButton
-@onready var all_extra_buttons := [fastForwardButton,swapButton,removeDemonButton, codexButton]
+@onready var all_extra_buttons := [fastForwardButton,swapButton, codexButton]
 
 @onready var OcculumButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Occulum/OcculumButton
 @onready var SpinalOcculumButton := $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SpinalOcculum/SpinalOcculumButton
@@ -97,8 +97,7 @@ const MAX_SHADOW_OFFSET := 8.0
 # Color of the highlight border
 @export var highlight_border_color: Color = Color.RED
 
-var doubleSpeed := true
-var can_click : bool = true 
+var can_click : bool = true
 																						
 @onready var all_demon_buttons_dict := {"Occulum" : OcculumButton, "Crawler" : CrawlerButton, "SpinalOcculum":SpinalOcculumButton,
 								"Wyrm": WyrmButton, "Hive":HiveButton, "Maw":MawButton}
@@ -152,8 +151,10 @@ func _ready() -> void:
 	
 	# Connect button signals to their respective functions
 	root = get_parent().get_name()
-	
+
 	reset_panel_size()
+	if Engine.time_scale > 1.0:
+		refresh_fast_forward_highlight()
 	
 func get_ultimate_margin_offset()->int:
 	#print("Panel Container size is ",panelContainer.size.x ) 
@@ -196,6 +197,9 @@ func _input(event:InputEvent) -> void:
 		##print("Key Pressed")
 		if event.keycode == KEY_X:
 			deselect_demon()
+		# Only the visible (active dimension's) menu takes the demon hotkeys.
+		if not is_visible_in_tree():
+			return
 		#if event.keycode == KEY_Y:
 			###print("Y Key Pressed")
 			#Global.hide_notification_bar()
@@ -413,7 +417,8 @@ func find_preview_sprite(node:Node)->Node:
 
 # Drags the preview sprite around with the cursor 
 func _process(delta:float) -> void:
-	if is_previewing and not preview_sprites.is_empty():
+	# The hidden dimension's menu has nothing on screen to drag or buff.
+	if is_previewing and not preview_sprites.is_empty() and is_visible_in_tree():
 		var base_pos := get_global_mouse_position()
 		var center_x := get_viewport_rect().size.x / 2.0
 
@@ -563,15 +568,19 @@ func _on_codex_button_pressed() -> void:
 
 func _on_fast_forward_pressed() -> void:
 	if can_click:
-		if doubleSpeed : 
-			add_pulsing_button_highlight(fastForwardButton,false)
-			Engine.time_scale = 2
-			doubleSpeed = false
-		else:
-			stop_glow_pulse(fastForwardButton)
-			remove_button_highlight(fastForwardButton)
-			Engine.time_scale = 1
-			doubleSpeed = true
+		# Engine.time_scale is global, so it is the state: toggle it and refresh
+		# every dimension's button so they always agree.
+		Engine.time_scale = 1.0 if Engine.time_scale > 1.0 else 2.0
+		for menu in Global.demon_selection_menus:
+			if is_instance_valid(menu):
+				menu.refresh_fast_forward_highlight()
+
+func refresh_fast_forward_highlight() -> void:
+	if Engine.time_scale > 1.0:
+		add_pulsing_button_highlight(fastForwardButton,false)
+	else:
+		stop_glow_pulse(fastForwardButton)
+		remove_button_highlight(fastForwardButton)
 
 
 func _on_heart_button_pressed() -> void:

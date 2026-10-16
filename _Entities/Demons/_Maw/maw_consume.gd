@@ -50,7 +50,8 @@ func set_all_areas() -> void:
 			area.set_collision_mask_value(4,true)
 
 
-func get_highest_zombie_concentration_and_eat() -> void:
+## `is_taken` (optional) returns true for zombies the Maw's tentacles already hold.
+func get_highest_zombie_concentration_and_eat(is_taken: Callable = Callable()) -> void:
 	##print("Should Devour NOW")
 	set_all_areas()
 	zombie_counts = [0, 0, 0, 0, 0, 0]
@@ -59,9 +60,12 @@ func get_highest_zombie_concentration_and_eat() -> void:
 
 	for i in all_detection_areas.size():
 		for area:Area2D in all_detection_areas[i].get_overlapping_areas():
-			if area.is_in_group("Zombie"):
-				zombie_counts[i] += 1
-				zombies_per_area[i].append(area)
+			if not area.is_in_group("Zombie") or area.get("is_dead") == true:
+				continue
+			if is_taken.is_valid() and is_taken.call(area):
+				continue
+			zombie_counts[i] += 1
+			zombies_per_area[i].append(area)
 
 	zombie_count_area_1 = zombie_counts[0]
 	zombie_count_area_2 = zombie_counts[1]
@@ -115,9 +119,11 @@ func drag_down(zombie_to_drag: Node) -> void:
 	tween.tween_callback(kill_zombie.bind(zombie_to_drag))
 	
 func kill_zombie(zombie_to_kill: Node) -> void:
-	pass
-	if is_instance_valid(zombie_to_kill):
+	if is_instance_valid(zombie_to_kill) and zombie_to_kill.get("is_dead") != true:
 		zombie_to_kill.die()
+
+func is_devouring(zombie: Node) -> bool:
+	return is_instance_valid(zombie) and zombie.get_parent() == zombie_hiding_rect
 
 func _on_pull_from_below_anim_animation_finished() -> void:
 	pull_from_below_animation.hide()
@@ -126,4 +132,9 @@ func _on_pull_from_below_anim_animation_finished() -> void:
 
 
 func die() -> void:
+	# Zombies mid-pull are reparented under us; kill them properly (death
+	# signals, registry cleanup) instead of freeing them along with this node.
+	for zombie in zombie_hiding_rect.get_children():
+		if zombie is Zombie:
+			kill_zombie(zombie)
 	queue_free()

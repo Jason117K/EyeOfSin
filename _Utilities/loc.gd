@@ -40,9 +40,13 @@ static func text(path: String) -> String:
 	if translated != String(key):
 		return translated
 	# Key missing (new/renamed .txt without a CSV regen) — fall back to the raw file.
-	push_warning("Loc: no translation for %s (from %s); falling back to file contents" % [key, path])
 	var file := FileAccess.open(path, FileAccess.READ)
-	return file.get_as_text() if file != null else String(key)
+	var contents := file.get_as_text() if file != null else String(key)
+	# An empty .txt is deliberately blank (its CSV row is empty, which the
+	# TranslationServer treats as missing), so don't warn about it.
+	if file == null or not contents.is_empty():
+		push_warning("Loc: no translation for %s (from %s); falling back to file contents" % [key, path])
+	return contents
 
 
 ## Translated display name for an entity (get_demon_name/get_zombie_name values,

@@ -179,8 +179,7 @@ func receive_buff(demon) -> void:
 				attack_ray.target_position = attack_ray.target_position + Vector2(100, 0)
 				projectile_shoot_component.hiveSpawnDroneBuffed = true
 			"Maw":
-				laserShootComp1.isDisabled = false
-				laserShootComp1._ready()
+				laserShootComp1.enable()
 				#$ShellBack.visible = false
 				laserShootComp1.mawBuff()
 				#$Worm1.z_index = 2

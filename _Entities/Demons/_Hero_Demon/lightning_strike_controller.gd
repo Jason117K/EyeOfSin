@@ -31,7 +31,9 @@ func reset_cooldown() -> void:
 
 
 func trigger(_new_zombie:Area2D)->void:
-	begin()
+	# area_entered fires while physics queries are flushing; spawning the
+	# strike projectiles from inside it is refused by the physics server.
+	begin.call_deferred()
 	#beat_of_death_lure_timer.start()
 
 
@@ -44,13 +46,18 @@ func apply_ability()->void:
 	
 		
 func shoot_lightning_strike() -> void:
+	# Spawn like ProjectileShootComponent: dimension group first (the projectile's
+	# _ready picks its collision layers from it), then into the host demon's layer
+	# so the strikes are culled with their dimension instead of drawing in both.
+	var host_demon : Node2D = get_parent().get_parent()
+	var layer : Node2D = host_demon.get_parent()
 	for lightning_strike in all_lightning_strikes:
-		lightning_strike.visible = true 
+		lightning_strike.visible = true
 		lightning_strike.play()
 		lightning_strike_instance = lightning_strike_projectile_scene.instantiate()
-		
-		lightning_strike_instance.global_position = lightning_strike.global_position
-		add_child(lightning_strike_instance)
+		lightning_strike_instance.add_to_group(Dim.of(host_demon))
+		lightning_strike_instance.position = layer.to_local(lightning_strike.global_position)
+		layer.add_child(lightning_strike_instance)
 		lightning_strike_instance.make_hero_lightning_strike()
 	ability_end()
 		
