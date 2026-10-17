@@ -218,6 +218,9 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	
 func trigger_ultimate()->void:
 	#print("Trigger Wyrm Ult")
+	# Beam already running: stay armed instead of spending a charge on nothing.
+	if is_ulting:
+		return
 	Global.un_ready_ultimate()
 	laserShootComp1.modulate = Color(1,1,1,0)
 	laserShootComp2.modulate = Color(1,1,1,0)

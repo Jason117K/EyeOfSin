@@ -203,13 +203,15 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 func trigger_ultimate()->void:
 	
 	#print("Trigger Crawler Ult")
+	# Already volleying: stay armed instead of spending a charge on nothing.
+	if not ultimate_timer.is_stopped():
+		return
 	Global.un_ready_ultimate()
-	if ultimate_timer.is_stopped():
-		ultimate_timer.start()
-		can_ult = false 
-		animSpriteComp.animation = animSpriteComp.currentAttackAnim
-		animSpriteComp.speed_scale = 8 
-		animSpriteComp.is_ulting = true 
+	ultimate_timer.start()
+	can_ult = false
+	animSpriteComp.animation = animSpriteComp.currentAttackAnim
+	animSpriteComp.speed_scale = 8
+	animSpriteComp.is_ulting = true
 	
 func fire_volley()->void:
 	if volleys_fired < ultimate_max_volleys:

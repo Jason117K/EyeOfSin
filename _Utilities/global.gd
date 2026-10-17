@@ -236,6 +236,8 @@ func reset_all_variables()->void:
 	gameIsStarted = false
 	hero_demon_summoned = false
 	ultimate_is_ready = false
+	if ultimate_charge_container != null:
+		ultimate_charge_container.reset_charges()
 	occulumCountVisual = 0
 	reset_swap_ability()
 	resetOcculumCount()

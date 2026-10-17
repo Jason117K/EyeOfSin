@@ -156,15 +156,21 @@ func _ready() -> void:
 	if Engine.time_scale > 1.0:
 		refresh_fast_forward_highlight()
 	
-func get_ultimate_margin_offset()->int:
-	#print("Panel Container size is ",panelContainer.size.x ) 
-	#print("Panel Container Position.x is : ", panelContainer.position.x)
-	#print("Return : ", panelContainer.size.x  + panelContainer.position.x)
-	#return panelContainer.size.x + panelContainer.position.x + 4
-	return panelContainer.size.x + 4
-
 func reset_panel_size()->void:
 	panelContainer.reset_size()
+
+# Canvas-space rect spanning the visible demon cards (levels lock demons by
+# hiding their card container). The ult bar anchors to its top-right corner.
+func get_card_row_rect() -> Rect2:
+	var row := Rect2()
+	var found := false
+	for card:Control in $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer.get_children():
+		if not card.visible:
+			continue
+		var card_rect : Rect2 = card.get_global_transform_with_canvas() * Rect2(Vector2.ZERO, card.size)
+		row = card_rect if not found else row.merge(card_rect)
+		found = true
+	return row
 	
 func block_clicks()->void:
 	pause_button.can_click = false 

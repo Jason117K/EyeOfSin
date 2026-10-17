@@ -535,10 +535,6 @@ func _on_wave_started(wave_index: int) -> void:
 			#show_only_demon_buttons(["Occulum", "Crawler"])
 			hide_all_demon_buttons_with_exception(["Occulum", "Crawler"])
 			wave_1_active = true
-		1:
-			go_to_step("EXPLAIN_BUCKETHEAD_ZOMBIE")
-		2:
-			go_to_step("FORCE_SELECT_SPINALOCCULUM")
 #endregion
 
 
