@@ -75,6 +75,11 @@ static var flesheater_special_description: String
 static var sundered_special_description: String
 static var buffer_special_description: String
 static var rohan_special_description: String
+static var tank_special_description: String
+static var minion_special_description: String
+static var ranged_special_description: String
+
+
 
 static var _descriptions_locale := ""
 static var _last_click_frame := -1
@@ -96,6 +101,9 @@ static func _load_descriptions() -> void:
 	sundered_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt")
 	buffer_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt")
 	rohan_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt")
+	tank_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/tank_special_description.txt")
+	minion_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/minion_special_description.txt")
+	ranged_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/ranged_special_description.txt")
 	_descriptions_locale = locale
 
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")

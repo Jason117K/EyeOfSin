@@ -131,6 +131,10 @@ func tick(_delta: float) -> void:
 func _on_AnimatedSprite_animation_finished() -> void:
 	if("Vault" in self.animation):
 		specialMove = false
+	if("Spawn" in self.animation):
+		position = Vector2(-6, 5)
+		setSpecialMoveFalse()
+		_play_if_changed(&"Walk")
 	if("death" in self.animation):
 		zombie.die()
 

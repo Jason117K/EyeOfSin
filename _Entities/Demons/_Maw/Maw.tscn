@@ -935,15 +935,15 @@ position = Vector2(-1, 0)
 texture = ExtResource("23_ae2ap")
 
 [node name="BuffOutline" type="Sprite2D" parent="PreviewNodes" unique_id=1601131719]
-position = Vector2(32, -32)
+position = Vector2(47, -32)
 texture = ExtResource("24_4e2m8")
 
 [node name="BuffOutline2" type="Sprite2D" parent="PreviewNodes" unique_id=1166172530]
-position = Vector2(32, 32)
+position = Vector2(47, 32)
 texture = ExtResource("24_4e2m8")
 
 [node name="BuffOutline3" type="Sprite2D" parent="PreviewNodes" unique_id=464726481]
-position = Vector2(32, 0)
+position = Vector2(47, 0)
 texture = ExtResource("24_4e2m8")
 
 [node name="BuffNodesComponent" parent="." unique_id=464042542 instance=ExtResource("8")]

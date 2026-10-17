@@ -10,7 +10,10 @@ const SCENES: Dictionary = {
 	"Erupter": preload("res://_Entities/Zombies/_Erupter/TickerZombie.tscn"),
 	"Flesheater": preload("res://_Entities/Zombies/_Flesheater/FootballZombie.tscn"),
 	"Rohan": preload("res://_Entities/Zombies/_RohanBossZombie/RohanBossZombie.tscn"),
-	"Buffer": preload("res://_Entities/Zombies/_BufferZombie/BufferZombie.tscn")
+	"Buffer": preload("res://_Entities/Zombies/_BufferZombie/BufferZombie.tscn"),
+	"Tank" : preload("res://_Entities/Zombies/_Tank/TankZombie.tscn"),
+	"Minion" : preload("res://_Entities/Zombies/_MinionZombie/MinionZombie.tscn"),
+	"Ranged" : preload("res://_Entities/Zombies/_RangedZombie/RangedZombie.tscn")
 }
 
 ## Per-type threat weighting; a wave's danger score is the count-weighted sum.
@@ -24,7 +27,10 @@ const DANGER_SCORES: Dictionary = {
 	"Erupter": 50,
 	"Flesheater": 150,
 	"Rohan": 1000,
-	"Buffer": 50
+	"Buffer": 50,
+	"Tank":250,
+	"Minion":5,
+	"Ranged": 75,
 }
 
 const Y_OFFSETS: Dictionary = {

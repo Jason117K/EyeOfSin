@@ -10,6 +10,7 @@ func _ready() -> void:
 	attackComp = WretchAttackRefCounted.new(self)
 	Global.unlock_zombie("Wretch")
 	is_flying = true 
+	
 
 func get_zombie_name() -> String:
 	return " WRETCH "

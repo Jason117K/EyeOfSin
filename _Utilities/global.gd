@@ -10,6 +10,14 @@ enum DEMON_TYPE{
 	MAW
 }
 
+enum CURRENT_ACT{
+	ACT_1,
+	ACT_2,
+	ACT_3,
+}
+
+var current_act : CURRENT_ACT = CURRENT_ACT.ACT_1
+
 var canPlayLevel2: bool = true
 var canPlayLevel3: bool = true
 var canPlayLevel4: bool = true
@@ -98,14 +106,16 @@ var erupter_icon := preload("res://_Entities/Zombies/Notif_Icons/TickerZombie.pn
 var flesheater_icon := preload("res://_Entities/Zombies/Notif_Icons/FootBallZombie.png")
 var amalgam_icon := preload("res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png")
 var rohan_icon := preload("res://_Entities/Zombies/_RohanBossZombie/RohanZombie.png")
+var tank_icon := preload("res://_Entities/Zombies/_Tank/TankZombie.png")
+var ranged_icon := preload("res://_Entities/Zombies/_RangedZombie/RangedZombie.png")
 
 var all_zombie_notif_icons : Array = [reborn_icon,severed_icon,unhallower_icon,reanimator_icon,wretch_icon,
-								sundered_icon,erupter_icon,flesheater_icon,amalgam_icon,]
+								sundered_icon,erupter_icon,flesheater_icon,amalgam_icon,tank_icon]
 
 var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed_icon,"Unhallower": unhallower_icon,
 										"Reanimator":reanimator_icon, "Wretch":wretch_icon,"Sundered":sundered_icon,
 										"Erupter":erupter_icon,"Flesheater":flesheater_icon,"Amalgam":amalgam_icon,
-										"Buffer":buffer_icon,"Rohan":rohan_icon}
+										"Buffer":buffer_icon,"Rohan":rohan_icon, "Tank":tank_icon }
 										
 @onready var all_crawler_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Crawler")
 @onready var all_occulum_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Occulum")
