@@ -1,5 +1,5 @@
 @tool
-@icon("res://sprites/target.png")
+@icon("res://_Utilities/TentacleDemo/sprites/target.png")
 extends Node2D
 
 ## Left-click and drag to move the target around the viewport.

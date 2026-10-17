@@ -34,10 +34,11 @@ func _init() -> void:
 		for label: String in SAMPLES:
 			if not font.has_char(SAMPLES[label]):
 				missing.append(label)
+		# Dev tool run from the command line: printing is its output.
 		if missing.is_empty():
-			#print(fpath.get_file() + ": all scripts covered")
+			print(fpath.get_file() + ": all scripts covered")
 		else:
-			#print(fpath.get_file() + ": MISSING " + ", ".join(missing))
+			print(fpath.get_file() + ": MISSING " + ", ".join(missing))
 			failures += 1
-	#print("verify_fonts: %d fonts with gaps" % failures)
+	print("verify_fonts: %d fonts with gaps" % failures)
 	quit(failures)

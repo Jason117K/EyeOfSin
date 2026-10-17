@@ -1,5 +1,5 @@
 @tool
-@icon("res://svg/tentacle_icon.svg")
+@icon("res://_Utilities/TentacleDemo/svg/tentacle_icon.svg")
 class_name Arm extends Node2D
 ## Procedural tentacle arm showcasing FABRIK IK with a wave (hello)
 ##
