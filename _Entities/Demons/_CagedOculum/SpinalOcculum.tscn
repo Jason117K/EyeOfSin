@@ -1275,10 +1275,9 @@ position = Vector2(0, -25)
 texture = ExtResource("28_egyvc")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=185795330]
-visible = false
-offset_left = -33.0
+offset_left = 4.0
 offset_top = -36.0
-offset_right = 9.0
+offset_right = 46.0
 offset_bottom = 6.0
 scale = Vector2(0.395, 0.395)
 mouse_filter = 1

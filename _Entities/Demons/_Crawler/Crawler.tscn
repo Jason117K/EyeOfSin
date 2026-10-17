@@ -1420,10 +1420,9 @@ position = Vector2(0, -9)
 texture = ExtResource("37_8u2uv")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=1067851881]
-offset_left = -33.0
-offset_top = -19.0
-offset_right = 9.0
-offset_bottom = 23.0
+offset_top = -20.0
+offset_right = 42.0
+offset_bottom = 22.0
 scale = Vector2(0.395, 0.395)
 mouse_filter = 1
 texture_normal = ExtResource("39_0n853")
