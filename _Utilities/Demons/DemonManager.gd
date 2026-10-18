@@ -508,7 +508,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		get_parent().get_node("UILayer").set_blood(blood_points)
 		
 		
-		camera.screen_shake(1.25,0.7)
+		camera.screen_shake(2,0.4)
 
 		##print("Pdemon name is ", demon_instance.name)
 		

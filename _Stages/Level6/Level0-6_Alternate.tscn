@@ -187,7 +187,6 @@ z_index = 1
 position = Vector2(-32, -1)
 
 [node name="GridManager" parent="GameLayer" unique_id=1538178973 instance=ExtResource("7_mt0c8")]
-make_green = true
 
 [node name="TileMapLayer_Background" parent="GameLayer/GridManager" index="0" unique_id=1844112071]
 self_modulate = Color(0.4, 0.4, 0.4, 1)

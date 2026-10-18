@@ -1,5 +1,5 @@
 extends Camera2D
-@export var shake_intensity : float = 0.0
+@export var shake_intensity : float = 2.0
 @export var active_shake_time : float = 0.0
 
 @export var shake_decay : float = 5.0

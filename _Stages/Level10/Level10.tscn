@@ -3749,6 +3749,7 @@ autoplay = true
 bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("30_lqlcu")]
+active_shake_time = 0.2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=574585201]
 visible = false
