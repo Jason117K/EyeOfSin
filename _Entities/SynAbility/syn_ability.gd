@@ -137,6 +137,9 @@ func _input(event: InputEvent) -> void:
 				activate_syn_ability(get_viewport().get_mouse_position())
 			UiFx.stop_glow_pulse(syn_ability_button)
 			syn_crosshair_active = false
+			# The cast click is spent here; otherwise DemonManager also handled it
+			# (demon stats, placing a selected card, firing an armed ult).
+			get_viewport().set_input_as_handled()
 	# Right-click cancels targeting. Not consumed, so it still deselects a demon card too.
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		if syn_crosshair_active:

@@ -4,7 +4,8 @@ var highest_health := -1
 var current_target_health : int 
 var current_zombie_target : Zombie
 var num_targets_marked := 0 
-var max_targets_marked := 3 
+# Marks up to this many of the healthiest zombies in the area.
+@export var max_targets_marked := 3 
 var targets_marked : Array = []
 
 func _ready() -> void:
@@ -31,7 +32,9 @@ func activate_ability()->void:
 func connect_ability(_marked_to_connect : Area2D)->void:
 	#print(self, " syn ability mark will now light on fire : ", targets_marked)
 	for target in targets_marked:
-		target.set_on_fire()
+		# Marked zombies may have died during the window.
+		if is_instance_valid(target) and not target.is_dead:
+			target.set_on_fire()
 		
 func get_icon()->Texture:
 	return Global.death_mark_button_icon

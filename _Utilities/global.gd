@@ -484,10 +484,16 @@ func connect_syn_abilities()->void:
 func deregister_syn_ability(new_syn_ability:Area2D)->void:
 	registered_syn_abilities.erase(new_syn_ability)
 	syn_ability_manager.deregister_ability_instance(new_syn_ability)
+	var partner
 	if new_syn_ability.is_in_group("Purple"):
 		purple_syn_ability = null
+		partner = green_syn_ability
 	else:
 		green_syn_ability = null
+		partner = purple_syn_ability
+	# Tell the surviving half its pair is gone (its connector / links must end).
+	if partner != null and is_instance_valid(partner) and partner != new_syn_ability and partner.has_method("disconnect_ability"):
+		partner.disconnect_ability(new_syn_ability)
 	##print(registered_syn_abilities, " now has size syn abilitys : ",registered_syn_abilities.size() )		
 		
 		

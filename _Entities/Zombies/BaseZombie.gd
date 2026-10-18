@@ -457,6 +457,11 @@ func switch_sides()->void:
 
 func syn_mark(duration:float)->void:
 	#print("Syn Mark Called on ", self)
+	# Already marked: restart the running timer. A second timer used to be freed
+	# by the first one's remove_syn_mark, ending the new mark early.
+	if is_syn_marked and is_instance_valid(syn_timer):
+		syn_timer.start(duration)
+		return
 	animatedSprite.lucretia_hue_shift()
 	is_syn_marked = true 
 	syn_mark_sprite.show()
@@ -475,7 +480,9 @@ func remove_syn_mark()->void:
 	is_syn_marked = false 
 	healthComp.set_syn_mark(is_syn_marked)
 	syn_mark_sprite.hide()
-	syn_timer.queue_free()
+	if is_instance_valid(syn_timer):
+		syn_timer.queue_free()
+	syn_timer = null
 	if is_flame_dmg_linked:
 		set_off_fire()
 	

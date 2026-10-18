@@ -133,6 +133,17 @@ func _tile_connector(distance: float) -> void:
 		connector_clip.add_child(tile)
 		tile.play()
 
+# The partner ball died: drop the connector and its damage (the README's known
+# issue of the survivor keeping a connector to nothing).
+func disconnect_ability(_departed_partner: Area2D) -> void:
+	is_lightning_connected = false
+	if connector_clip != null and is_instance_valid(connector_clip):
+		connector_clip.queue_free()
+	connector_clip = null
+	lightning_connector_line.hide()
+	shadow_orb.stop()
+	shadow_orb.hide()
+
 func place_shadow_orb(new_position:Vector2)->void:
 	shadow_orb.global_position = new_position
 	shadow_orb.show()

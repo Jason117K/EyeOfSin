@@ -29,6 +29,8 @@ var bleed := false
 var column_explode := false
 var silencing := false 
 var is_on_fire := false 
+# The Shroomie that enflamed this projectile; hits link zombies only while it is paired.
+var enflame_source : Node
 
 var collision : Node
 var distance_traveled :float= 0
@@ -172,9 +174,10 @@ func on_hit(area: Area2D) -> void:
 		if silencing:
 			area.silence()
 		##print("Calling Take Damage On ", area, " damage is ", damage)
-		if is_on_fire:
-			pass
+		# Damage link (fire) only in dual mode: a single Shroomie just doubles damage.
+		if is_on_fire and is_instance_valid(enflame_source) and enflame_source.is_paired:
 			area.set_on_fire()
+			enflame_source.register_linked_zombie(area)
 		area.take_damage(false,damage,piercing)
 		if piercing == false:
 			
@@ -186,7 +189,8 @@ func on_hit(area: Area2D) -> void:
 func increase_bleed_damage(bleed_damage_increase: int) -> void:
 	bleed_damage = bleed_damage + bleed_damage_increase
 
-func enflame(enflame_damage_mult : float)->void:
+func enflame(enflame_damage_mult : float, shroom : Node = null)->void:
+	enflame_source = shroom
 	if self.is_in_group("Green"):
 		projectile_anim_sprite.play("GreenFlame")
 	else:

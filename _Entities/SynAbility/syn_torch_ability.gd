@@ -23,11 +23,41 @@ func _ready() -> void:
 	self.global_position = grid_pos
 		
 	self.area_entered.connect(enflame_projectile)
-	
-	
+	# Base lifecycle: registers for pairing and starts the death timer. Without it
+	# the Shroomie never expired and its dimension's Syn charge stayed ACTIVE.
+	super()
+
+
+# True while the other dimension's Shroomie is up (the pair stands).
+var is_paired := false
+var linked_zombies : Array = []
+
 func enflame_projectile(projectile_to_enflame : Area2D)->void:
 	if projectile_to_enflame.is_in_group("DemonProjectile"):
-		projectile_to_enflame.enflame(enflame_damage_mult)
+		projectile_to_enflame.enflame(enflame_damage_mult, self)
+
+func connect_ability(_other_shroom : Area2D)->void:
+	is_paired = true
+
+func register_linked_zombie(zombie : Area2D)->void:
+	if not zombie in linked_zombies:
+		linked_zombies.append(zombie)
+
+# The pair ended (partner expired): links made through it end too.
+func disconnect_ability(_departed_partner : Area2D)->void:
+	_end_links()
+
+func stop_ability()->void:
+	_end_links()
+	super()
+
+# A zombie still Syn-marked keeps its fire: the mark's own expiry clears it.
+func _end_links()->void:
+	is_paired = false
+	for zombie in linked_zombies:
+		if is_instance_valid(zombie) and not zombie.is_dead and zombie.is_flame_dmg_linked and not zombie.is_syn_marked:
+			zombie.set_off_fire()
+	linked_zombies.clear()
 	
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:
 	return Vector2(floor(mouse_pos.x / grid_size), floor(mouse_pos.y / grid_size)) * grid_size

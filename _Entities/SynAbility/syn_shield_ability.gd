@@ -15,8 +15,11 @@ func _ready() -> void:
 	
 func activate_ability()->void:
 	#print("Shield Demons Called ", self.get_overlapping_areas())
+	# `is Demon` as well as the group: a Lucretia-flipped zombie joins "Demons" and
+	# the demon collision layer but has no shield(); EmptyDemon blockers are Demons
+	# outside the group.
 	for demon in self.get_overlapping_areas():
-		if demon.is_in_group("Demons"):
+		if demon is Demon and demon.is_in_group("Demons"):
 			#print("Shield Demon ", demon)
 			demon.shield(syn_shield,ability_duration)
 	death_timer.start()
@@ -25,9 +28,10 @@ func activate_ability()->void:
 func weak_shield_demons()->void:
 	#print("Weak Shield Demons Called ", weak_shield_area.get_overlapping_areas())
 	for demon in weak_shield_area.get_overlapping_areas():
-		if demon.is_in_group("Demons") && !demon.invulnerable:
+		if demon is Demon and demon.is_in_group("Demons") and !demon.invulnerable:
 			#print("Weak Shield Demon ", demon)
-			demon.weak_shield(syn_shield,ability_duration)
+			# Full protection along the L (was weak_shield: 70% less damage).
+			demon.shield(syn_shield,ability_duration)
 			
 				
 	

@@ -558,6 +558,10 @@ func get_true_name() -> String:
 
 func shield(syn_shield:PackedScene,duration:float)->void:
 	#print("Will Now Shield ", self)
+	# A new shield replaces an active one; overwriting the refs leaked the first
+	# shield's visual, and its timer ended the new shield early.
+	if is_instance_valid(new_syn_shield_instance) or is_instance_valid(syn_timer):
+		end_shield()
 	new_syn_shield_instance = syn_shield.instantiate()
 	add_child(new_syn_shield_instance)
 	new_syn_shield_instance.global_position = syn_shield_position + global_position
@@ -579,9 +583,15 @@ func weak_shield(syn_shield:PackedScene,duration:float)->void:
 
 	
 func end_shield()->void:
-	new_syn_shield_instance.queue_free()
-	syn_timer.queue_free()
+	if is_instance_valid(new_syn_shield_instance):
+		new_syn_shield_instance.queue_free()
+	if is_instance_valid(syn_timer):
+		syn_timer.queue_free()
+	new_syn_shield_instance = null
+	syn_timer = null
 	invulnerable = false 
+	# A weak shield's reduction used to outlive it for the rest of the level.
+	reduced_damage_percent = 0.0
 
 func rib_shield()->void:
 	is_rib_shield = true 

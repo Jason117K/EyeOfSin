@@ -57,6 +57,10 @@ func stop_ability()->void:
 	
 func connect_abilities(_syn_ability_to_connect: Area2D) -> void:
 	pass
+
+# Called on the surviving half when its partner deregisters (Global).
+func disconnect_ability(_departed_partner: Area2D) -> void:
+	pass
 	
 	
 func mouse_pos_to_grid(mouse_pos: Vector2) -> Vector2:

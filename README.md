@@ -216,8 +216,9 @@ uniforms.
 - **The 3D card shader is authored for Sprite2D (centered-origin) space.** On a Control/TextureRect
   (top-left origin) the naive math discards every pixel; the in-repo version uses a `rect_size`
   uniform — keep that path for Control hosts.
-- **A linked Syn pair's cross-dimension connector is not torn down on the survivor when one half
-  dies.**
+- **When one half of a linked Syn pair dies, `Global.deregister_syn_ability` calls
+  `disconnect_ability()` on the survivor** (base no-op). Anything a pair builds together (Lightning's
+  connector, Shroomie's damage links) must be torn down there.
 - **Export-only crashes are almost always case-sensitive `res://` path mismatches** (editor on
   Windows hides them; export breaks). Debug with `console.exe --verbose` — the in-game log file
   truncates.
