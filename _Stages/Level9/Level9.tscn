@@ -175,7 +175,6 @@ blood_points = 500
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
-position = Vector2(0, -18)
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("6_fay7u")]
 visible = false
@@ -723,8 +722,8 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

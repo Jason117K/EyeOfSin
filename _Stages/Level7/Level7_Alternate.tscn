@@ -939,7 +939,6 @@ blood_points = 400
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=1288006005]
 process_mode = 1
-position = Vector2(0, -18)
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=128186070 instance=ExtResource("5_6nkkc")]
 visible = false
@@ -1321,15 +1320,15 @@ bus = &"music"
 [node name="FlowerTileContainer" type="Node" parent="." unique_id=1691710862]
 
 [node name="FlowerTile2" parent="FlowerTileContainer" unique_id=1110572315 instance=ExtResource("26_ww5m7")]
-position = Vector2(230, 130)
+position = Vector2(230, 148)
 is_alt = true
 
 [node name="FlowerTile4" parent="FlowerTileContainer" unique_id=723459990 instance=ExtResource("26_ww5m7")]
-position = Vector2(230, 194)
+position = Vector2(230, 212)
 is_alt = true
 
 [node name="FlowerTile6" parent="FlowerTileContainer" unique_id=1018452568 instance=ExtResource("26_ww5m7")]
-position = Vector2(230, 258)
+position = Vector2(230, 276)
 is_alt = true
 
 [node name="AcquirePowerTexture" parent="." unique_id=195454887 instance=ExtResource("46_cggt2")]

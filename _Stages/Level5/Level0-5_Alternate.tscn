@@ -115,7 +115,6 @@ blood_points = 625
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=819774608]
 process_mode = 1
-position = Vector2(0, -18)
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1966373180 instance=ExtResource("3_4xikw")]
 visible = false

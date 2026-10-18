@@ -1398,7 +1398,6 @@ blood_points = 400
 
 [node name="GameLayer" type="Node2D" parent="." unique_id=105230336]
 process_mode = 1
-position = Vector2(0, -18)
 
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("5_ru6d6")]
 visible = false
@@ -1932,16 +1931,16 @@ bus = &"music"
 [node name="FlowerTileContainer" type="Node" parent="." unique_id=724750231]
 
 [node name="FlowerTile" parent="FlowerTileContainer" unique_id=1493116393 instance=ExtResource("46_4fca4")]
-position = Vector2(230, 98)
+position = Vector2(230, 116)
 
 [node name="FlowerTile3" parent="FlowerTileContainer" unique_id=1382783001 instance=ExtResource("46_4fca4")]
-position = Vector2(230, 162)
+position = Vector2(230, 180)
 
 [node name="FlowerTile5" parent="FlowerTileContainer" unique_id=1862808082 instance=ExtResource("46_4fca4")]
-position = Vector2(230, 226)
+position = Vector2(230, 244)
 
 [node name="FlowerTile7" parent="FlowerTileContainer" unique_id=1767163720 instance=ExtResource("46_4fca4")]
-position = Vector2(230, 290)
+position = Vector2(230, 308)
 
 [node name="SkullTileHighlight" type="TextureRect" parent="FlowerTileContainer" unique_id=6941640]
 self_modulate = Color(1, 1, 1, 0)
