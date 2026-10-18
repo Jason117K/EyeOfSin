@@ -145,6 +145,8 @@ const TUTORIAL_SPINAL_OCCULUM_UNLOCKED = "res://_Assets/Text/TextFiles/Tutorial_
 
 const ALL_DEMON_CONTAINERS : Array [String]= ["Occulum", "SpinalOcculum", "Wyrm", "Maw", "Hive", "Crawler","Portal","Hero"]
 const ALL_EXTRA_BUTTONS = []
+# Matches process/size_limit in screenshots/*.jpg.import.
+const SCREENSHOT_MAX_WIDTH := 640
 
 var auto_advance : bool = false 
 
@@ -188,6 +190,10 @@ func take_level_screenshot() -> void:
 	var img := get_viewport().get_texture().get_image()
 	img.convert(Image.FORMAT_RGBA8)
 	img.linear_to_srgb()
+	# Level-select thumbnails show these ~97px tall; full-resolution captures
+	# made the Act screens slow to open.
+	if img.get_width() > SCREENSHOT_MAX_WIDTH:
+		img.resize(SCREENSHOT_MAX_WIDTH, roundi(img.get_height() * float(SCREENSHOT_MAX_WIDTH) / img.get_width()), Image.INTERPOLATE_LANCZOS)
 	img.save_jpg(screenshot_location)
 	if !self.isGreenDimension:
 		#print("Should Swap to Green")

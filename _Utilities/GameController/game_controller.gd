@@ -53,6 +53,8 @@ func _ready() -> void:
 	swap_cooldown_timer.wait_time = 0.1
 	swap_cooldown_timer.one_shot = true
 	swap_cooldown_timer.timeout.connect(func()->void: can_swap = true)
+	# Runs while paused too, so swap_while_paused can swap back and forth.
+	swap_cooldown_timer.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(swap_cooldown_timer)
 
 	_default_root_cull_mask = get_viewport().canvas_cull_mask
@@ -488,10 +490,13 @@ func set_node_and_children_process_mode_inherit(root: Node) -> void:
 		
 # --- Dimension Swapping ---
 
-func swap_scenes() -> void:
+# trigger_sorcery = false is a view-only swap (used while paused): the Swap
+# Sorcery neither fires nor cancels.
+func swap_scenes(trigger_sorcery := true) -> void:
 	if current_scenes.size() < 2:
 		return
-	Global.start_swap_ability()
+	if trigger_sorcery:
+		Global.start_swap_ability()
 	if !can_swap:
 		return
 	Global.stop_pip_glow()
@@ -543,6 +548,30 @@ func swap_scenes() -> void:
 	swap_cooldown_timer.start()
 	demon_manager.swap_heart()
 
+
+# Y from an open pause menu (GameController's own _input doesn't run while
+# paused). The pause menus live inside each dimension's DemonSelectionMenu, so
+# the open one is handed over to the dimension being entered.
+func swap_while_paused() -> void:
+	if not get_tree().paused or not can_swap or not _swap_allowed_now():
+		return
+	get_active_dimension().demonSelectionMenu.pause_button.close_pause_menu()
+	Global.swap_scenes(false)
+	# Reopens the same menu if the swap didn't happen.
+	get_active_dimension().demonSelectionMenu.pause_button.open_pause_menu()
+
+# Same locks an unpaused swap respects: the world-swap button is unlocked and
+# no tutorial step is filtering input (some steps block Y).
+func _swap_allowed_now() -> bool:
+	if current_scenes.size() < 2:
+		return false
+	var menu = get_active_dimension().demonSelectionMenu
+	if not menu.canSwapScenes or not menu.get_world_swap_button().is_visible_in_tree():
+		return false
+	for scene in current_scenes:
+		if is_instance_valid(scene) and scene.has_method("get_current_step") and scene.get_current_step().has("input_filter"):
+			return false
+	return true
 
 func on_purple_scene() -> bool:
 	return on_scene_1

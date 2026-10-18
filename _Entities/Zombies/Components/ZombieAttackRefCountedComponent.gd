@@ -144,7 +144,12 @@ func _on_AttackTimer_timeout() -> void:
 
 				##print(attack_power ," Calling Take Damage on ", target_demon)
 
-				target_demon.take_damage(attack_power)
+				if target_demon is Zombie:
+					# Zombie vs flipped zombie: Zombie.take_damage's first parameter is
+					# is_link_damage, so the demon-style call landed only its default 1.0.
+					target_demon.take_damage(false, attack_power, false)
+				else:
+					target_demon.take_damage(attack_power)
 				# Schedule next hit at same animation fraction in next loop
 				var safe_speed : float = max(parent_zombie.attack_speed, 0.01)
 				attack_time_wait_time = 1.0 / safe_speed
@@ -204,6 +209,11 @@ func tick(delta: float) -> void:
 						attack_demon(collider)
 func switch_sides()->void:
 	target_group = "Zombie"
+	# Let go of the demon it was eating, and face the zombies coming from the right:
+	# the ray pointed left (toward the demons) and never saw them.
+	stop_attack()
+	attack_ray.target_position.x = absf(attack_ray.target_position.x)
+	attack_ray.position.x = -attack_ray.position.x
 	if parent_zombie != null:
 		if parent_zombie.is_in_group("Green"):
 			attack_ray.set_collision_mask_value(1,false)

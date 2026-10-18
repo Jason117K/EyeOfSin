@@ -774,6 +774,8 @@ func register_demon(new_demon : Demon)->void:
 	if new_demon.has_signal("crawler_ultimate_triggered"):
 		new_demon.crawler_ultimate_triggered.connect(crawler_ult_triggered)
 	all_demons.append(new_demon)
+	if swap_ability != null:
+		swap_ability.append_new_demon(new_demon)
 
 func crawler_ult_triggered()->void:
 	crawler_ultimate_triggered.emit()
@@ -796,9 +798,9 @@ func register_hero_demon(new_hero_demon : Area2D) -> void:
 func hero_demon_is_summoned() -> bool:
 	return hero_demon_summoned
 
-func swap_scenes() -> void:
+func swap_scenes(trigger_sorcery := true) -> void:
 	#print("SWAP SCENES SHOULD")
-	game_controller.swap_scenes()
+	game_controller.swap_scenes(trigger_sorcery)
 	adjust_ui_layer()					
 	swap_portal_button()
 	#swap_hero_demon()
@@ -925,6 +927,9 @@ func register_syn_ability_manager(new_syn_ability_manager)->void:
 	
 func register_swap_ability(new_swap_ability ) -> void:
 	if swap_ability != null:
+		# Undo first, or its slows/flips/buffs outlive it.
+		if is_instance_valid(swap_ability) and swap_ability.is_active:
+			swap_ability.undo_swap_ability()
 		swap_ability.queue_free()
 	swap_ability = new_swap_ability.instantiate()
 	game_controller.add_child(swap_ability)

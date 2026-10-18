@@ -34,7 +34,8 @@ func get_icon()->Texture:
 func apply_swap_ability()->void:
 	set_collision()
 	ability_duration = lightning_wave_delay * 6 
-	await get_tree().create_timer(lightning_delay).timeout
+	# process_always = false: the storm pauses with the game.
+	await get_tree().create_timer(lightning_delay, false).timeout
 	rain_lightning()
 
 func set_collision()->void:
@@ -46,44 +47,34 @@ func set_collision()->void:
 
 func rain_lightning()->void : 
 	#print("Calling Rain Lightning")
-	zombies_to_lightning_strike = lightning_spawn_area.get_overlapping_areas()
-	zombies_to_lightning_strike.shuffle()
-	currently_available_zombies = zombies_to_lightning_strike.filter(func(z:Area2D): return z.is_in_group("Zombie"))
+	var batch_sizes := [max_lightning_per_rain_1, max_lightning_per_rain_2, max_lightning_per_rain_3,
+						max_lightning_per_rain_4, max_lightning_per_rain_5]
+	for i in batch_sizes.size():
+		if i > 0:
+			await get_tree().create_timer(lightning_wave_delay, false).timeout
+		# Re-sample every wave: zombies struck earlier may be dead or freed, and
+		# new ones may have walked in.
+		currently_available_zombies = _living_targets()
+		_strike_batch(currently_available_zombies, batch_sizes[i])
 
-	_strike_batch(currently_available_zombies, max_lightning_per_rain_1)
-	await get_tree().create_timer(lightning_wave_delay).timeout
-	currently_available_zombies.shuffle()
-	
-	_strike_batch(currently_available_zombies, max_lightning_per_rain_2)
-	await get_tree().create_timer(lightning_wave_delay).timeout
-	currently_available_zombies.shuffle()
-	
-	_strike_batch(currently_available_zombies, max_lightning_per_rain_3)
-	await get_tree().create_timer(lightning_wave_delay).timeout
-	currently_available_zombies.shuffle()
-
-	_strike_batch(currently_available_zombies, max_lightning_per_rain_4)
-	await get_tree().create_timer(lightning_wave_delay).timeout
-	currently_available_zombies.shuffle()
-
-	_strike_batch(currently_available_zombies, max_lightning_per_rain_5)
-	await get_tree().create_timer(lightning_wave_delay).timeout
-	currently_available_zombies.shuffle()
-
-	#_strike_batch(currently_available_zombies, max_lightning_per_rain_6)
-	#await get_tree().create_timer(lightning_wave_delay).timeout
-	#currently_available_zombies.shuffle()
+# Living, unflipped zombies of the storm's dimension (the area's mask), shuffled.
+func _living_targets() -> Array:
+	var targets: Array = lightning_spawn_area.get_overlapping_areas().filter(
+		func(z: Area2D) -> bool: return is_instance_valid(z) and z is Zombie and z.is_in_group("Zombie") and not z.is_dead)
+	targets.shuffle()
+	return targets
 
 
 func _strike_batch(zombies: Array, num_zombies_to_strike: int) -> void:
 	##print("Should Lightning Strike Batch ",currently_available_zombies)
-	if !is_on_cooldown:
+	# Only while the storm is up (an early cancel or a restart stops it).
+	if is_active:
 		#print("About to Lightning Strike")
 		num_zombies_struck = 0
 		batches_struck += 1 
 		for i in range(zombies.size() - 1, -1, -1):
 			var zombie = zombies[i]
-			if zombie != null && num_zombies_struck < num_zombies_to_strike:
+			if is_instance_valid(zombie) && num_zombies_struck < num_zombies_to_strike:
 				call_lighting(zombie)
 				num_zombies_struck += 1
 				#Could Remove From Array here if no want duplicates 
@@ -123,6 +114,8 @@ func set_purple_collision()->void:
 	lightning_spawn_area.set_collision_mask_value(2,false)
 	lightning_spawn_area.set_collision_mask_value(3,false)
 	lightning_spawn_area.set_collision_mask_value(4,true)
+	# Clear green zombies too, or a storm cast into Green leaves this bit set.
+	lightning_spawn_area.set_collision_mask_value(5,false)
 
 	
 	

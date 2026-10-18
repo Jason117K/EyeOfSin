@@ -20,6 +20,14 @@ func set_restart_levels(newLevel: String, newAltLevel: String) -> void:
 	restartSceneAlt = newAltLevel
 	##print(restartScene,restartSceneAlt, "RESTART LEVELS SET2")
 
+# Y swaps dimensions while paused (view-only). This menu runs while paused;
+# GameController's own Y handler doesn't.
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_Y:
+		if get_tree().paused and is_visible_in_tree():
+			get_viewport().set_input_as_handled()
+			Global.game_controller.swap_while_paused()
+
 func _on_resume_pressed() -> void:
 	#print("UNPPAUSE HERE")
 	pause_button.undo_toolTip_change()

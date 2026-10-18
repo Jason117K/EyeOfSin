@@ -16,6 +16,8 @@ extends Demon
 @export var lightning_projectile_damage := 15 #2   # Damage dealt to zombies
 @export var buffed_range_target_pos := Vector2(375.0,0)
 @export var spiderling_wait_time := 2
+# Gaze of Baal damage-per-hit multiplier.
+@export var baal_damage_multiplier := 2.0
 @export var spinalOcculumHealth: float = 375
 
 @export_category("Ultimate Config")
@@ -107,6 +109,10 @@ func get_can_attack() -> bool:
 func baal_buff()->void:
 	super()
 	baal_halo.play("top_glow")
+
+# Gaze of Baal: damage per hit while buffed (read by the shoot component).
+func get_baal_damage_multiplier()->float:
+	return baal_damage_multiplier if is_baal_buffed else 1.0
 	
 	
 func receive_buff(newDemon:Demon) -> void:

@@ -492,6 +492,7 @@ frame_progress = 1.0
 shape = SubResource("RectangleShape2D_1dndg")
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=491908974]
+visible = false
 
 [node name="RangeIndicatorLine2D" type="Line2D" parent="PreviewNodes" unique_id=1570954011]
 position = Vector2(0, -21)

@@ -13,6 +13,8 @@ var is_maw_buffed: bool = false
 var occulum_buff := false
 var drone_damage : float
 var is_crawler_buffed := false
+# Gaze of Baal: applied to every drone, including ones that spawn while it lasts.
+var is_baal_buffed := false
 var is_spinal_occulum_buffed := false
 var is_demo := false
 
@@ -95,6 +97,8 @@ func spawn_initial_drones() -> void:
 			drone.crawler_buff()
 		if is_spinal_occulum_buffed:
 			drone.spinal_occulum_buff()	
+		if is_baal_buffed:
+			drone.baal_buff()
 		if is_demo:
 			drone.is_demo = true
 		hive.get_parent().add_child(drone)
@@ -213,6 +217,15 @@ func command_drone_to_attack(drone: Node, enemy: Area2D) -> void:
 		drone.enable_hurtbox()
 		drone.attack_target(enemy)
 
+func set_baal_buff(on: bool) -> void:
+	is_baal_buffed = on
+	for drone in get_all_drones():
+		if is_instance_valid(drone):
+			if on:
+				drone.baal_buff()
+			else:
+				drone.undo_baal_buff()
+
 func set_damage(newDroneDamage: int) -> void:
 	drone_damage = newDroneDamage
 
@@ -232,6 +245,8 @@ func _on_DroneRespawnTimer_timeout() -> void:
 		new_drone.crawler_buff()
 	if is_spinal_occulum_buffed:
 		new_drone.spinal_occulum_buff()	
+	if is_baal_buffed:
+		new_drone.baal_buff()
 	if is_demo:
 		new_drone.is_demo = true		
 	hive.get_parent().add_child(new_drone)

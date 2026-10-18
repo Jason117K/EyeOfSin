@@ -82,7 +82,7 @@ func add_projectile(offset: Vector2) -> void:
 	parent_demon.get_parent().add_child(projectile)  # Add the projectile to the game layer
 	
 func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
-	projectile.damage = damage
+	projectile.damage = damage * parent_demon.get_baal_damage_multiplier()
 	if spinalOcculumBuffed:
 		#print("Buff Projectile With Spine")
 		projectile_to_buff.spinalOcculumBuff = true 

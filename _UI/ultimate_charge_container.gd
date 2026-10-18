@@ -32,6 +32,9 @@ func _ready() -> void:
 	charge_progress_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ultimate_margin_container.remove_theme_constant_override("margin_left")
 	Global.ultimate_charge_container = self
+	# _process is paused while the game is, so a swap made from the pause menu
+	# re-anchors the bar here.
+	Global.swap_scenes_signal.connect(set_margin)
 	for charge in all_charges:
 		charge.pressed.connect(ready_ultimate)
 	refresh_charges()

@@ -126,10 +126,14 @@ var time_since_hit : float = 0.0
 
 var is_demo := false
 var is_dead := false
+# Set by Lucretia's Grasp (switch_sides): fights zombies, counts as dead for level end.
+var is_flipped := false
 var respawn_timer: Timer
 var demo_original_speed: float
 @export var spawn_x := 180.0
 @export var despawn_x := -20.0
+# A flipped zombie that walks past this x leaves the field (killed, with payout).
+@export var flipped_despawn_x := 790.0
 @export var respawn_delay := 1.5
 var time_since_spawn : float = 0
 var _spawn_setup_done := false
@@ -252,8 +256,16 @@ func tick(delta: float) -> void:
 
 	if not attackComp.is_attacking:
 		speedComp.tick(delta)
+		if is_flipped and global_position.x > flipped_despawn_x:
+			_leave_field_flipped()
+			return
 
 	animatedSprite.tick(delta)
+
+# A flipped zombie that survives to the right edge dies through the normal kill
+# path, so it pays its usual blood. Link damage, so a flame link doesn't spread it.
+func _leave_field_flipped() -> void:
+	healthComp.take_damage(true, healthComp.health + 1.0, true)
 
 
 # --- Death ---
@@ -406,7 +418,12 @@ func reset_speed() -> void:
 	speedComp.setSpeed(speedComp.getOriginalSpeed())
 
 func switch_sides()->void:
-	pass
+	if is_flipped:
+		return
+	is_flipped = true
+	# Counts as dead from now on: WaveManager._check_level_end waits for this group
+	# to empty, so a flipped zombie kept the level from ending.
+	remove_from_group("Alive-Enemies")
 	#set_hue_shift(0)
 	animatedSprite.lucretia_hue_shift()
 	animatedSprite.flip_h = !animatedSprite.flip_h 
@@ -666,7 +683,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 # --- Timer Handlers ---
 
 func _on_JustNowSpawned_timeout() -> void:
-	add_to_group("Alive-Enemies")
+	if not is_flipped:
+		add_to_group("Alive-Enemies")
 
 func get_is_injured()->bool:
 	return healthComp.injured

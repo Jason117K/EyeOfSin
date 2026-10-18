@@ -104,6 +104,12 @@ func update_range_preview()->void:
 func baal_buff()->void:
 	super()
 	baal_halo.play("back")
+
+func _apply_baal_buff()->void:
+	swarm.set_baal_buff(true)
+
+func _undo_baal_buff()->void:
+	swarm.set_baal_buff(false)
 	
 func receive_buff(bufferName:Demon) -> void:
 	var demonName : String = (bufferName.get_demon_true_name())

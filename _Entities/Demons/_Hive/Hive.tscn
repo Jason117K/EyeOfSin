@@ -482,6 +482,7 @@ visible = false
 visible = false
 
 [node name="PreviewNodes" type="Node2D" parent="." unique_id=240505522]
+visible = false
 
 [node name="PreviewCardShadow" type="Sprite2D" parent="PreviewNodes" unique_id=1332812095]
 self_modulate = Color(0, 0, 0, 1)

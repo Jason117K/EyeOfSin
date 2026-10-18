@@ -50,6 +50,9 @@ var cost_first_discount := 15
 @onready var madeTutorialBlood := false
 
 @onready var bloodTimer := $BloodTimer
+# Gaze of Baal blood-rate multiplier (1.5 = 50% faster).
+@export var baal_blood_rate_multiplier := 1.5
+var _base_blood_wait_time := 0.0
 @onready var resetEatingTimer := $ResetEatingSpeed
 #@onready var healInvisTimer := $HealInvisTimer
 @onready var healing_zone_sprite := $HealingAnimSprite
@@ -82,7 +85,7 @@ func _ready() -> void:
 	
 	Global.register_occulum(self)
 	# --- Timer setup ---
-	bloodTimer.wait_time = bloodWaitTime
+	_set_blood_wait_time(bloodWaitTime)
 	bloodTimer.connect("timeout", Callable(self, "_on_BloodTimer_timeout"))
 	blood_hit_1.animation_looped.connect(zombie_gore_fx)
 	if Global.gameIsStarted:
@@ -143,15 +146,15 @@ func receive_buff(newDemon) -> void:
 			"Crawler":
 
 				
-				bloodTimer.wait_time = crawlerBloodWaitTime
+				_set_blood_wait_time(crawlerBloodWaitTime)
 				bloodTimer.start()
 			"SpinalOcculum":
 				set_up_healing()
 			"Wyrm":
-				bloodTimer.wait_time = wyrmBloodWaitTime
+				_set_blood_wait_time(wyrmBloodWaitTime)
 				bloodTimer.start()
 			"Hive":
-				bloodTimer.wait_time = hiveBloodWaitTime
+				_set_blood_wait_time(hiveBloodWaitTime)
 				bloodTimer.start()
 			"Maw":
 				can_eat_zombie = true
@@ -161,7 +164,7 @@ func receive_buff(newDemon) -> void:
 
 func debuff() -> void:
 	super()
-	bloodTimer.wait_time = bloodWaitTime
+	_set_blood_wait_time(bloodWaitTime)
 	can_eat_zombie = false
 
 func unlock_new_buff(demonName)->void:
@@ -346,6 +349,18 @@ func baal_buff()->void:
 
 func undo_baal_buff()->void:
 	super()
+
+func _apply_baal_buff()->void:
+	_set_blood_wait_time(_base_blood_wait_time)
+
+func _undo_baal_buff()->void:
+	_set_blood_wait_time(_base_blood_wait_time)
+
+# Every blood-interval change goes through here, so Baal's faster rate combines
+# with the synergy wait times in any order. Takes effect from the next blood.
+func _set_blood_wait_time(t: float) -> void:
+	_base_blood_wait_time = t
+	bloodTimer.wait_time = t / (baal_blood_rate_multiplier if is_baal_buffed else 1.0)
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if Global.ultimate_is_ready:

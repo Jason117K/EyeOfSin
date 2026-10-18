@@ -70,6 +70,10 @@ func reset_cooldown() -> void:
 	cooldown_fill_amount = 100.0
 
 func reset_on_game_start() -> void:
+	# A sorcery still running from the previous level (restart mid-sorcery)
+	# would otherwise carry its rain, hands or eye into the new one.
+	if is_active:
+		undo_swap_ability()
 	#print("Set Is On Cooldown to True")
 	cooldown_fill_amount = 0
 	is_on_cooldown = true
@@ -126,8 +130,25 @@ func stop() -> void:
 
 func append_new_zombie(new_zombie : Zombie) -> void:
 	pass
+
+# Called from Global.register_demon for every new demon (Gaze of Baal uses it).
+func append_new_demon(_new_demon : Demon) -> void:
+	pass
 		
 
+
+# The bar is drawn every rendered frame, extrapolating the cooldown between
+# physics ticks, so it fills smoothly at any frame rate. Timing stays in
+# _physics_process.
+func _process(_delta: float) -> void:
+	if not Global.gameIsStarted:
+		return
+	var fill := cooldown_fill_amount
+	if is_on_cooldown and _cooldown_running and not is_active and cooldown_duration > 0.0:
+		var tick := get_physics_process_delta_time() * Engine.time_scale
+		var left := maxf(_cooldown_left - Engine.get_physics_interpolation_fraction() * tick, 0.0)
+		fill = clampf((1.0 - left / cooldown_duration) * 100, 0.0, 100.0)
+	swap_cooldown_visual_bar.value = fill
 
 func _physics_process(delta: float) -> void:
 	# Accumulator clock (replaces the old Timer nodes). Runs whenever the tree
@@ -146,9 +167,8 @@ func _physics_process(delta: float) -> void:
 			cooldown_fill_amount = clampf((1.0 - _cooldown_left / cooldown_duration) * 100, 0.0, 100.0)
 		elif is_active == true:
 			cooldown_fill_amount = 0.0
-		swap_cooldown_visual_bar.value = cooldown_fill_amount
-		
-		if swap_cooldown_visual_bar.value >= 100:
+
+		if cooldown_fill_amount >= 100:
 			if !is_locked:
 				cooldown_glow = true 
 				UiFx.add_pulsing_button_highlight(swap_cooldown_visual_bar)

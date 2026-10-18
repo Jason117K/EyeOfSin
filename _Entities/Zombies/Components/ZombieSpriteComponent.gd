@@ -186,6 +186,10 @@ func lucretia_hue_shift()->void:
 	set_hue_shift(0)
 
 func undo_lucretia_hue_shift()->void:
+	# A flipped (Lucretia) zombie stays red: Blood Rain's undo and Syn-mark expiry
+	# also come through here.
+	if zombie and zombie.get("is_flipped"):
+		return
 	set_hue_shift(original_hue_shift)
 
 func blood_slow()->void:

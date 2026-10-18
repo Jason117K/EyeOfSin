@@ -15,6 +15,7 @@ var max_base_speed_modulate : float = 2.0
 var min_slow_adjust_modulate : float = 0.0
 var max_slow_adjust_modulate : float = 0.03
 var current_slow_walking_speed_percent : float = 0.0
+var blood_slow_percent : float = 1.0
 var default_slow_walking_speed_percent : float = 0.6
 
 #Could Pass Slow duration here or get it from the parent zombie when being slowed
@@ -27,8 +28,13 @@ func _init(new_parent_zombie:Area2D) -> void:
 
 func tick(delta: float) -> void:
 	parent_zombie.position.x -= speed * delta
-	if !is_slow && !is_blood_slow && speed > 0:
-		speed = originalSpeed
+	if speed > 0:
+		if is_blood_slow:
+			# Holds the rain's slow even if something reset the speed meanwhile
+			# (e.g. a Buffer unfreezing the zombie).
+			speed = minf(speed, originalSpeed * blood_slow_percent)
+		elif !is_slow:
+			speed = originalSpeed
 	#if is_slow:
 		#slow_duration -= delta 
 		#if slow_duration <= 0:
@@ -57,8 +63,12 @@ func getOriginalSpeed() -> float:
 func slow(slow_percent : float = default_slow_walking_speed_percent,is_blood_slowed : bool = false) -> void:
 	if originalSpeed * slow_percent < speed:
 		speed = originalSpeed * slow_percent
-		is_blood_slow = true 
-	if !is_blood_slowed: #If Not Blood Rain
+	# The blood flag belongs to Blood Rain only. Setting it on ordinary slows kept
+	# tick() from ever restoring full speed after the slow wore off.
+	if is_blood_slowed:
+		is_blood_slow = true
+		blood_slow_percent = slow_percent
+	else:
 		is_slow = true 
 		current_slow_walking_speed_percent = slow_percent
 

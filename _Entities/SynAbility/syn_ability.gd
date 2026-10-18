@@ -137,6 +137,15 @@ func _input(event: InputEvent) -> void:
 				activate_syn_ability(get_viewport().get_mouse_position())
 			UiFx.stop_glow_pulse(syn_ability_button)
 			syn_crosshair_active = false
+	# Right-click cancels targeting. Not consumed, so it still deselects a demon card too.
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if syn_crosshair_active:
+			cancel_targeting()
+
+func cancel_targeting()->void:
+	UiFx.stop_glow_pulse(syn_ability_button)
+	syn_crosshair_active = false
+	syn_ability_crosshair.hide()
 
 func hide_syn_ability()->void:
 	syn_ability_cooldown.hide()

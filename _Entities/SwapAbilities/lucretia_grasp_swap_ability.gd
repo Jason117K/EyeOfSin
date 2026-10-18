@@ -51,7 +51,9 @@ func _physics_process(delta: float) -> void:
 func _on_grasp_hit(area: Area2D, grasp: AnimatedSprite2D) -> void:
 	if !is_sweeping or !is_instance_valid(area):
 		return
-	if area.is_in_group("Zombie") and area not in turned_zombies:
+	# `is Zombie`: child areas such as the Erupter's HitBoxComponent share the group
+	# but can't switch sides.
+	if area is Zombie and area.is_in_group("Zombie") and area not in turned_zombies:
 		if num_zombies_turned < max_num_zombies_turned : 
 			turned_zombies.append(area)
 			area.switch_sides()

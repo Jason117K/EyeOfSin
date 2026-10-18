@@ -85,6 +85,13 @@ func get_lightning_damage() -> int:
 func baal_buff()->void:
 	super()
 	baal_halo.play("top_glow")
+
+# Unkillable under Gaze of Baal. Its own check, not `invulnerable`: a Syn shield
+# ending mid-Gaze clears that flag.
+func take_damage(damage: float) -> void:
+	if is_baal_buffed:
+		return
+	super(damage)
 	
 	
 func receive_buff(bufferName:Demon) -> void:

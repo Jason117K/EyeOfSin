@@ -11,8 +11,13 @@ var loop_end : float
 var can_move := false 
 var reached_top := false
 var num_times_hit_end := 0 
+# Start-of-cast state, restored by stop_descend so every cast descends again.
+var _start_travel_time : float
+var _start_position : Vector2
 
 func _ready() -> void:
+	_start_travel_time = travel_time
+	_start_position = position
 	path.curve.add_point( Vector2(370,32), Vector2.ZERO , Vector2.ZERO,2)
 	var total_length := path.curve.get_baked_length()
 	loop_end = path.curve.get_closest_offset(path.curve.get_point_position(2))  / total_length
@@ -34,6 +39,12 @@ func descend()->void:
 func stop_descend()->void:
 	can_move = false 
 	initial_pass_done = false 
+	reached_top = false
+	sample_point = 0.0
+	dir = 1
+	num_times_hit_end = 0
+	travel_time = _start_travel_time
+	position = _start_position
 
 func _physics_process(delta: float) -> void:
 	if can_move:

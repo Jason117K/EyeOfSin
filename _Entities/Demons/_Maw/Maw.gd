@@ -16,6 +16,10 @@ const DEFAULT_CHARGE_COST := 1
 @export var debug_mode: bool = false
 @export var bloodAmount: int = 10
 @export var digestTime: float = 15.0
+# Gaze of Baal digestion-time multiplier (0.5 = twice as fast).
+@export var baal_digestion_multiplier := 0.5
+# Digestion time the synergies last asked for; Baal scales it on top.
+var _base_digestion_time := -1.0
 @export var wyrm_buffed_digestion_time : float = 5.0
 @export var spinal_occulum_buffed_digestion_time : float = 9.0
 @export var spinal_occulum_heal_amount := 300
@@ -107,6 +111,12 @@ func get_cell_global_position() -> Vector2:
 func baal_buff()->void:
 	super()
 	baal_halo.play("back")
+
+func _apply_baal_buff()->void:
+	_set_tentacle_digestion_time(_base_digestion_time if _base_digestion_time > 0.0 else digestTime)
+
+func _undo_baal_buff()->void:
+	_set_tentacle_digestion_time(_base_digestion_time if _base_digestion_time > 0.0 else digestTime)
 	
 	
 func receive_buff(demon) -> void:
@@ -207,9 +217,14 @@ func get_tentacles() -> Array[Tentacle]:
 func _get_retraction_center() -> Vector2:
 	return animSpriteComp.global_position
 
+# Every digestion change goes through here, so Baal combines with the Wyrm and
+# Spinal digestion buffs (and debuff's restore) in any order. Tentacles read
+# digestion_time live, so a digestion already under way speeds up too.
 func _set_tentacle_digestion_time(t: float) -> void:
+	_base_digestion_time = t
+	var effective := t * (baal_digestion_multiplier if is_baal_buffed else 1.0)
 	for tentacle in tentacles:
-		tentacle.digestion_time = t
+		tentacle.digestion_time = effective
 
 func _get_charge_cost(enemy:Node) -> int:
 	if enemy.has_method("get_charge_cost"):

@@ -72,6 +72,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_13k3d")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sukl5")
+step = 0.0
 value = 100.0
 fill_mode = 3
 show_percentage = false

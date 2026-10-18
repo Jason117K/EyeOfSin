@@ -86,6 +86,8 @@ var can_show_preview := false
 var new_syn_shield_instance :AnimatedSprite2D 
 var syn_timer : Timer
 var invulnerable := false 
+# Gaze of Baal (swap sorcery). Buff/undo are idempotent through this flag.
+var is_baal_buffed := false
 var is_shielded := false
 var reduced_damage_percent := 0.0
 var game_time: float = 0.0
@@ -130,6 +132,10 @@ func _ready() -> void:
 	if is_empty:
 		set_process(false)
 		return
+	# Range/buff previews are hover-only (_on_mouse_entered/_exited). Some scenes
+	# ship them visible, which left scripted placements looking hovered.
+	if preview_nodes:
+		preview_nodes.visible = false
 	#set_process(false)
 	# --- Phase 1: Collision layers (Green/Purple) ---
 	_init_collision_layer(self)
@@ -306,15 +312,38 @@ func hide_old_preview()->void:
 	pass
 # --- Buff System ---
 
+# Template: subclasses play their halo animation in baal_buff() after super(),
+# and put the gameplay effect in _apply_baal_buff() / _undo_baal_buff().
 func baal_buff()->void:
+	if is_baal_buffed:
+		return
+	is_baal_buffed = true
 	#print("Show Baal Halo")
 	animSpriteComp.speed_scale = animSpriteComp.speed_scale * 2
 	baal_halo.show()
+	_apply_baal_buff()
 
 func undo_baal_buff()->void:
+	if not is_baal_buffed:
+		return
+	is_baal_buffed = false
 	#print("Hide Baal Halo")
 	baal_halo.hide()
-	animSpriteComp.speed_scale = 1 #animSpriteComp.default_anim_speed_scale
+	# Halve instead of resetting to 1, so an unrelated speed (a Crawler ult's 8x)
+	# survives; never below the default if something reset it meanwhile.
+	var default_speed : float = animSpriteComp.get("default_anim_speed_scale") if animSpriteComp.get("default_anim_speed_scale") != null else 1.0
+	animSpriteComp.speed_scale = maxf(animSpriteComp.speed_scale / 2.0, default_speed)
+	_undo_baal_buff()
+
+func _apply_baal_buff()->void:
+	pass
+
+func _undo_baal_buff()->void:
+	pass
+
+# Damage multiplier Crawler/Wyrm shots read when fired. 1.0 for demons without one.
+func get_baal_damage_multiplier()->float:
+	return 1.0
 
 func make_blood_demon()->void:
 	#Deactivate Receiving Buffs

@@ -11,6 +11,10 @@ var current_zombie : Zombie = null
 # Export variables 
 @export var health := 75          # Drone Health
 @export var max_health := 75
+# Gaze of Baal: triple damage, double health (taken as half damage, so other
+# buffs that set health/max_health stay untouched).
+@export var baal_damage_multiplier := 3.0
+@export var baal_health_multiplier := 2.0
 @export var attack_damage := 7    # Attack Damage
 @export var attack_speed := 1.0   # Attacks per second
 @export var move_speed := 200     # Pixels per second
@@ -35,6 +39,7 @@ var current_zombie_to_fight : Area2D
 var blood_on_death := false
 var is_maw_buffed := false
 var is_crawler_buffed := false
+var is_baal_buffed := false
 var is_demo := false
 
 @onready var animatedSpriteComp := $AnimatedSprite2D  # RefCounted to Sprite2D Comp
@@ -119,6 +124,12 @@ func maw_buff() -> void:
 	#print("Maw Buff Drone so Drone Go Boom")
 	is_maw_buffed = true
 
+func baal_buff() -> void:
+	is_baal_buffed = true
+
+func undo_baal_buff() -> void:
+	is_baal_buffed = false
+
 func make_drone_glow() -> void:
 	animatedSpriteComp.make_glow()
 
@@ -151,6 +162,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 
 # Handles the drone taking damage
 func take_damage(amount: int) -> void:
+	if is_baal_buffed:
+		amount = ceili(amount / baal_health_multiplier)
 	health -= amount
 	if health <= 0:
 		##print("Die Cos Health too Low")
@@ -292,7 +305,8 @@ func _on_attack_timer_timeout() -> void:
 		animatedSpriteComp.animation = "attack"
 		var distance := global_position.distance_to(current_target.global_position)
 		if distance <= attack_range:
-			current_target.take_damage(false,attack_damage,false)
+			var hit := attack_damage * (baal_damage_multiplier if is_baal_buffed else 1.0)
+			current_target.take_damage(false,hit,false)
 
 
 func get_is_in_combat() -> bool:

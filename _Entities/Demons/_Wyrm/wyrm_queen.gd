@@ -19,6 +19,8 @@ extends Demon
 @export var max_length: float = 1000.0
 @export var laser_width: float = 4.0
 @export var laser_damage: float = 20
+# Gaze of Baal damage-per-hit multiplier.
+@export var baal_damage_multiplier := 2.0
 @export var maw_damage: float = 60
 @export var duration: float = 0.5
 @export var laser_auto_fire: bool = false
@@ -136,6 +138,10 @@ func take_damage(damage: float) -> void:
 func baal_buff()->void:
 	super()
 	baal_halo.play("top_glow")	
+
+# Gaze of Baal: damage per hit while buffed (read by the shoot component).
+func get_baal_damage_multiplier()->float:
+	return baal_damage_multiplier if is_baal_buffed else 1.0
 
 # --- Preview ---
 

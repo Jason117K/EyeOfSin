@@ -110,6 +110,8 @@ func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	if mawBuffed:
 		projectile_to_buff.damage = parent_demon.maw_damage
 		projectile_to_buff.column_explode = true
+	# Gaze of Baal, on top of whichever damage the synergies set.
+	projectile_to_buff.damage = projectile_to_buff.damage * parent_demon.get_baal_damage_multiplier()
 
 
 func shoot_projectile(is_ult:bool=false) -> void:

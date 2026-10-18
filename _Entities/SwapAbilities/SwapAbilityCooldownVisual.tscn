@@ -93,6 +93,7 @@ mouse_filter = 2
 theme_override_fonts/font = ExtResource("3_yn551")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/fill = SubResource("StyleBoxFlat_dc01u")
+step = 0.0
 value = 100.0
 show_percentage = false
 
