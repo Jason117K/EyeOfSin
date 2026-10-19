@@ -1,6 +1,8 @@
 extends Zombie
 # MinionZombie.gd
 
+const MINION_ICON := preload("res://_Entities/Zombies/_MinionZombie/MinionZombie.png")
+
 
 func _ready() -> void:
 	super()
@@ -21,4 +23,4 @@ func get_special_description() -> String:
 
 
 func get_zombie_icon() -> CompressedTexture2D:
-	return Global.minion_icon
+	return MINION_ICON
