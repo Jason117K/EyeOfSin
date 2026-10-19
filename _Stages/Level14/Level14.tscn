@@ -6878,6 +6878,8 @@ wave5StartTime = 105
 wave6StartTime = 110
 record_footage = false
 
+[node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("92_l14pwth")]
+
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_i3rw8")]
 layout_mode = 1
 
@@ -7132,8 +7134,6 @@ texture = ExtResource("58_q3d17")
 [node name="OfficeWaterCooler" type="Sprite2D" parent="Environment" unique_id=1215794592]
 position = Vector2(323, 359)
 texture = ExtResource("59_qlrnu")
-
-[node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("92_l14pwth")]
 
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
