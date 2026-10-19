@@ -115,7 +115,7 @@ var all_zombie_notif_icons : Array = [reborn_icon,severed_icon,unhallower_icon,r
 var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed_icon,"Unhallower": unhallower_icon,
 										"Reanimator":reanimator_icon, "Wretch":wretch_icon,"Sundered":sundered_icon,
 										"Erupter":erupter_icon,"Flesheater":flesheater_icon,"Amalgam":amalgam_icon,
-										"Buffer":buffer_icon,"Rohan":rohan_icon, "Tank":tank_icon }
+										"Buffer":buffer_icon,"Rohan":rohan_icon, "Tank":tank_icon, "Ranged":ranged_icon }
 										
 @onready var all_crawler_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Crawler")
 @onready var all_occulum_synergies : Array = get_files_in_folder("res://_Assets/Text/TextFiles/Synergies/","Occulum")

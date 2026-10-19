@@ -207,8 +207,9 @@ func start_game() -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
+	# No scripted tutorial in this level: closing the Flesheater pop-up must not advance
+	# into the leftover GAME_READY step (its _start_game_ready reads a null green_dimension).
 	toolTips.visible = false
-	advance_tutorial()
 
 func _start_explain_flesheater()->void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_FLESHEATER)

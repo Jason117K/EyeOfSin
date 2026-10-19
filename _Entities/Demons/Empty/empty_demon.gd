@@ -32,23 +32,16 @@ func set_demon_type(new_demon_type : Global.DEMON_TYPE)->void:
 
 func summon_blood_clone()->void:
 	#print("2 Current Demon Type Is : ", current_demon_type)
-	match current_demon_type:
-		Global.DEMON_TYPE.CRAWLER:
-			demon_selection_menu._on_CrawlerButton_pressed()
-		Global.DEMON_TYPE.OCCULUM:
-			demon_selection_menu._on_OcculumButton_pressed()
-		Global.DEMON_TYPE.SPINAL_OCCULUM:
-			demon_selection_menu._on_SpinalOcculumButton_pressed()
-		Global.DEMON_TYPE.WYRM:
-			demon_selection_menu._on_WyrmButton_pressed()
-		Global.DEMON_TYPE.MAW:
-			demon_selection_menu._on_MawButton_pressed()
-		Global.DEMON_TYPE.HIVE:
-			demon_selection_menu._on_HiveButton_pressed()
+	# Take the scene straight from the menu's refs. Pressing the card handler here
+	# played a UI click, bumped OcculumCost, showed a placement preview and then
+	# cleared whatever card the player had selected.
+	var clone_scene : PackedScene = _clone_scene()
+	if clone_scene == null:
+		return
 
 	pending_dispel = false
 	is_summoning = true
-	var new_clone : Demon = await demon_manager.place_blood_demon(global_position)
+	var new_clone : Demon = await demon_manager.place_blood_demon(global_position, clone_scene)
 	is_summoning = false
 	if pending_dispel:
 		# Dispelled while the clone was still being placed.
@@ -58,6 +51,23 @@ func summon_blood_clone()->void:
 	blood_clone = new_clone
 	blood_clone.set_blood_empty_parent(self)
 	hide()
+
+
+func _clone_scene() -> PackedScene:
+	match current_demon_type:
+		Global.DEMON_TYPE.CRAWLER:
+			return demon_selection_menu.crawler_scene
+		Global.DEMON_TYPE.OCCULUM:
+			return demon_selection_menu.occulum_scene
+		Global.DEMON_TYPE.SPINAL_OCCULUM:
+			return demon_selection_menu.spinalOcculum_scene
+		Global.DEMON_TYPE.WYRM:
+			return demon_selection_menu.wyrm_scene
+		Global.DEMON_TYPE.MAW:
+			return demon_selection_menu.maw_scene
+		Global.DEMON_TYPE.HIVE:
+			return demon_selection_menu.hive_scene
+	return null
 
 
 func dispel_blood_clone(should_respawn : bool = false)->void:

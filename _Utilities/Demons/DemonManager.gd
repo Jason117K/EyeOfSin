@@ -319,11 +319,11 @@ func place_empty_blocker_demon(grid_pos: Vector2, this_empty_demon_to_place : De
 		pass
 		##print("Not enough blood points!")
 
-func place_blood_demon(grid_pos: Vector2) -> Demon:
+# clone_scene: the demon to clone. Passed directly so the player's card
+# selection is left alone (no menu round-trip, no deselect).
+func place_blood_demon(grid_pos: Vector2, clone_scene: PackedScene) -> Demon:
 	#print("Place Blood Demon")
-	selected_demon_scene = get_selected_demon()  
-	selection_menu.deselect_demon()
-	var demon_instance := selected_demon_scene.instantiate()
+	var demon_instance := clone_scene.instantiate()
 	demon_instance.grid_map_cell_pos = grid_pos
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	

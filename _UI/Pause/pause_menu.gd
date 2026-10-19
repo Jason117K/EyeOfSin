@@ -1,8 +1,8 @@
 extends Control
 
 @onready var pause_button := $".."
-var level0_3 := "res://_Stages/Level3/Level0-3.tscn"
-var level0_3Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
+var level0_3 := "res://_Stages/Level2/Level0-3B.tscn"
+var level0_3Alt := "res://_Stages/Level3/Level0-3_Alternate_B.tscn"
 
 var options_menu := "res://_UI/Options/OptionsMenu.tscn"
 

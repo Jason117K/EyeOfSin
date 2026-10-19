@@ -6,8 +6,8 @@ extends LevelTemplate
 var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
 
 # Level paths
-var thisLevel :=  "res://_Stages/Level14/Level14.tscn"
-var thisAltLevel := "res://_Stages/Level14/Level14_Alternate.tscn"
+var thisLevel :=  "res://_Stages/Level16/Level16.tscn"
+var thisAltLevel := "res://_Stages/Level16/Level16_Alternate.tscn"
 
 var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
@@ -207,8 +207,9 @@ func start_game() -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
+	# No scripted tutorial in this level: closing a pop-up must not advance into the
+	# leftover GAME_READY step (its _start_game_ready reads a null green_dimension).
 	toolTips.visible = false
-	advance_tutorial()
 
 func _start_explain_sundered()->void:
 	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUNDERED)

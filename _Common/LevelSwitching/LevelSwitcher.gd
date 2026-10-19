@@ -30,7 +30,10 @@ func _on_Continue_pressed() -> void:
 func _on_PlayAgain_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	self.visible = false
-	Global.game_controller.change_dual_scenes(current_level,current_level_alt)
+	# Reload the scenes that are actually live. current_level is only set on the
+	# tutorial path (levels return early into free play first), so with tutorials
+	# off this reloaded the previous level or the empty scene.
+	Global.game_controller.restart_current_dual_scenes()
 	Global.unlockLevel(level_unlocked)
 
 func _on_return_to_menu_pressed() -> void:

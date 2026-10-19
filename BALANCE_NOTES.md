@@ -31,7 +31,7 @@ the "Enemy Design" doc. Where those two disagreed, the designer's call is record
   dimension, so load the same name in both scenes. They're snapshots; **save the scene
   after loading**, because the scene is still what the game plays. The folder has a
   `.gdignore`, so presets don't show in the FileSystem dock and aren't exported. Level 10
-  has `L10 v1` (the 2026-10-12 rebuild) and `L10 original` (before it).
+  has `Level 10 v1` (the 2026-10-12 rebuild) and `L10 original` (before it).
 - **Every spawner needs exactly as many `waves` entries as the level has waves** (pad with
   empty WaveData). A spawner only reports "done" after its own last entry, so one with 0
   entries stops the level from ever ending, and one with extra entries does the same.
@@ -55,9 +55,10 @@ and the step from Medium to High is bigger than the step from Low to Medium.
 | Erupter | 60 | 48 (High) | 1000 to every demon in its blast | 50 | Suicide bomber that counters stallers ("walnuts") |
 | Flesheater | 450 | 16 (Med) | 60/s | 150 | The apex threat; the player should feel threatened. **Not playtested yet.** |
 | Buffer | 76 | 10 (Low) | 33/s | 50 | Makes everything near it more dangerous; must be dealt with quickly. Its slow speed offsets the danger. |
+| Ranged | 250 (regen 2 HP/s) | 16 (Med) | 75 per shot, 1 shot/s, from about 3 tiles away (75/s) | 100 | Pressure unit: wrecks defenses from out of melee reach (Maw, stallers). Medium health but the quickest-restarting regen. **Not playtested yet.** |
+| Tank | 2000 + armor | 8 (Low) | 500 per hit, about 1 hit/s | 400 | The highest-HP unit in the game: lumbers in, kills almost any demon in 1–2 hits, and launches a Minion past your front line every 5 s. A Maw can't eat it. **Not playtested yet.** |
+| Minion ("Urchin"; launched by Tanks, can also be placed in waves) | 60 | 14 (Low–Med) | 50/s | 5 | Fragile harasser that lands *behind* the demon its Tank is attacking, then chews into the back line |
 | Rohan | 1000 + armor | 8 | 100 | 1000 | Boss, only in specific levels |
-
-The Ranged Zombie in the design doc is not implemented; ignore it.
 
 ### Special mechanics (as the code has them)
 - **Armor** (Unhallower, Rohan): hits of 10 or more lose 5 damage; smaller hits are halved.
@@ -75,6 +76,54 @@ The Ranged Zombie in the design doc is not implemented; ignore it.
   (roughly 4.5 tiles of its lane) and deals 1000 damage to every demon in it.
 - **Buffer:** every 7 s it stops and buffs the zombies around it with +50% damage and +25%
   speed. Each zombie can only be buffed once.
+- **Ranged** (`_Entities/Zombies/_RangedZombie/`):
+  - **Range and shots:** its attack ray reaches 101 px (about 3 tiles; melee zombies reach
+    13–20 px), so it stops about 3 tiles short of the first demon in its lane. The first
+    shot fires after 0.67 s, then one every 1 s. Each web ball deals 75 damage, flies at
+    325 px/s and hits the first same-dimension demon it touches (portals and mirror
+    blockers are skipped).
+  - **What it dodges:** it never makes contact. The Maw's 73 px reach only catches it as it
+    walks past in a neighbouring lane. SpinalOcculum's contact slow and the on-hit
+    reflects (Spinal + Wyrm spikes, Maw lightning) never trigger.
+  - **Regen:** 2 HP every 1 s. Any hit resets the timer, but it needs only 1 s without
+    damage (others need 2 s), so it heals between slow hits such as a lone Crawler's.
+    Bleed (1 s ticks) still switches it off.
+  - **Silence** halves its shot damage.
+  - **Not wired for a debut yet:**
+    - `Global.zombie_notif_icons` has no `"Ranged"` key, so a level that shows its unlock
+      button would error. `Global.ranged_icon` exists.
+    - There's no `ZombieDescriptions` text and no tutorial demo scene (the
+      `lancer_zombie_demo` uses the Sundered sprite).
+    - Its special description is a one-line stub.
+- **Tank** (`_Entities/Zombies/_Tank/`):
+  - **Damage:** 500 per hit; the first hit lands 0.5 s after it reaches a demon, then one
+    per second. A Crawler, Occulum or Wyrm dies in one hit. An 800 HP SpinalOcculum, Hive
+    or Maw dies in two (about 1.5 s), so stallers barely delay it.
+  - **Armor:** 2000 HP with armor. A Crawler hit does 6. Wyrm's piercing hits ignore the
+    armor.
+  - **Maw:** its `charge_cost` is 9, more than a Maw's 3 tentacles, so a Maw can **never**
+    eat it. The Maw's tentacles go to its Minions instead.
+  - **Minion launches:** it launches its first Minion 3 s after spawning, then one every
+    5 s (`SummonComponent`). It stops for the launch animation, and keeps launching while
+    it's attacking.
+    - Each Minion appears about 47 px (about 1.5 tiles) ahead of the Tank. When the Tank
+      is chewing on a demon, that's roughly a tile *past* that demon, behind your front
+      line.
+    - A Tank crossing the whole lane (about 90 s at 8 px/s, more with stops) launches 15+
+      Minions. They aren't counted in its danger score, just like Wretches.
+  - **Silence** stops the launches and halves its hit to 250.
+- **Minion** (`_Entities/Zombies/_MinionZombie/`, shown in game as "Urchin"):
+  - **Stats:** 60 HP, speed 14, one 50-damage bite per second (melee, 14 px reach). No
+    regen, no armor. Its `charge_cost` is 1, so a Maw eats it in one tentacle.
+  - **Scene data:** its scene saves about 19 properties as `null`. Godot falls back to the
+    script defaults, so the numbers above are what actually loads (checked headless).
+- **Not wired for a debut yet:**
+  - **Tank:** has an icon and a `"Tank"` entry in `Global.zombie_notif_icons`. There's no
+    `ZombieDescriptions` text or tutorial demo, and its special description is a one-line
+    stub.
+  - **Minion:** has no `"Minion"` entry in `Global.zombie_notif_icons` and no icon image
+    (only sprite sheets). `minion_zombie.gd` returns `Global.minion_icon`, which doesn't
+    exist, so **clicking a Minion in game errors** when the info bar asks for its icon.
 - **Silence** (from the SpinalOcculum + Hive synergy only): halves zombie damage, stops
   Reanimator summons, stops the Sundered vault, cuts the Erupter blast to 0, and skips the
   Amalgam's second life.
@@ -107,6 +156,9 @@ Ultimate is enabled from Level 7. Heart, Hero and Portal are out of scope for wa
 | Erupter | Kill or slow before it reaches you (only 60 HP); silence | Clustered demons and stallers in its lane |
 | Flesheater | Slow, bleed (stops regen), AOE, Maw | Sustained low damage that lets it regenerate |
 | Buffer | Focus it down early (76 HP) | Ignoring it inside a pack |
+| Tank | Wyrm (pierce ignores armor) plus lots of focused damage from range; silence (stops launches, halves its hits); slows; cheap demons thrown in its path to buy time | Maw (can't eat it); stallers (dead in 2 hits); Crawler chip (6 per hit); leaving it alive (endless Minions) |
+| Minion | Any damage (60 HP); Wyrm AOE; Hive wasps; a back line that can fight, since they land behind the front | Defending only the front line; Maw tentacles wasted on them while the Tank closes in |
+| Ranged | Damage that reaches 3+ tiles: Crawlers, Wyrm (bleed also stops its regen), Hive wasps; cheap or tough demons up front to soak shots while it's killed | Maw (it fires from outside the reach); SpinalOcculum's contact slow; slow chip damage it can regen through |
 
 Silence is gated behind the SpinalOcculum + Hive synergy. So in levels without the Hive, the
 zombies that are weak to silence (Reanimator, Erupter, Sundered, Amalgam, Flesheater) are
@@ -175,6 +227,8 @@ final wave).
 | 12 | Same + Maw (Crawler, Occulum, SpinalOcculum, Wyrm, Hive, Maw, Portal) | 500 | **Rebuilt 2026-10-15** (target rating 4, 5 waves); see §5.3. Awaiting playtest. |
 | 13 | Same as 12 (Crawler, Occulum, SpinalOcculum, Wyrm, Hive, Maw, Portal) | 500 | **Rebuilt 2026-10-16** (target rating 5, 5 waves, fixed spawn order); see §5.4. Awaiting playtest. |
 | 14 | Crawler, Occulum, SpinalOcculum, Wyrm, Hive, Maw, Portal, Hero | 600 | **Rebuilt 2026-10-16** (target rating 5, **6 waves**, escalating type mix); see §5.5. Awaiting playtest. |
+| 15 | Same as 14 (duplicated from it) | 600 | **Built 2026-10-19** (target rating 5, 6 waves, **Ranged and Tank debut**); see §5.6. Awaiting playtest. |
+| 16 | Same as 14 (duplicated from it) | 600 | **Built 2026-10-19** (target rating 5, 6 waves, heavier blend, 4 Tanks); see §5.7. Awaiting playtest. |
 
 **Level 10's pre-placed Hives (kept on purpose):** the level scripts place Hives at the start:
 Purple lane 4, Green lanes 1 and 7. The Hive button stays hidden, so the player can't build
@@ -317,7 +371,7 @@ playtested.
   3. Add 10 s to gaps 3 and 4.
 - **If the elites feel free:** add 1 Erupter per Maw lane, or +1 Unhallower in non-Maw
   lanes.
-- Preset `L11 v1` holds this version.
+- Preset `Level 11 v1` holds this version.
 
 ### 5.3 Level 12 (rebuilt 2026-10-15, awaiting playtest)
 
@@ -379,7 +433,7 @@ how quickly players afford Maws (275 each against 500 starting blood).
   description and demo (`show_zombie_tutorial` in both level scripts).
 - **Levers if it plays too hard:** drop the wave 5 Buffers, then 1 Unhallower per dimension
   in wave 5. **If too easy:** add Erupters to tie up the Maws.
-- Preset `L12 v1` holds this version.
+- Preset `Level 12 v1` holds this version.
 
 ### 5.4 Level 13 (rebuilt 2026-10-16, awaiting playtest)
 
@@ -453,7 +507,7 @@ damage.
 - **Levers if it plays too hard:** drop the 4 wave 5 Buffers; then 1 fodder per lane in
   waves 4–5; then +10 s on gaps 3–4.
 - **If too easy:** swap one wave 5 Amalgam per dimension for a Flesheater.
-- Preset `L13 v1` holds this version.
+- Preset `Level 13 v1` holds this version.
 
 ### 5.5 Level 14 (rebuilt 2026-10-16, awaiting playtest)
 
@@ -524,7 +578,142 @@ had no WaveTableHost; one was added to both.
 - **Levers if it plays too hard:** drop 1 fodder per lane in waves 5–6; then the wave 6
   Buffers; then +10 s on gaps 4–5. **If too easy:** add a second Flesheater to each
   dimension's wave 6.
-- Preset `L14 v1` holds this version.
+- Preset `Level 14 v1` holds this version.
+
+### 5.6 Level 15 (built 2026-10-19, awaiting playtest)
+
+**Brief:** rating 5; 6 waves; waves mix swarm types with higher-HP units. Within each wave
+the two dimensions share **no** zombie types, except Ranged, which debuts here in both
+dimensions from wave 5 (the second-to-last wave). Allowed types: Reborn, Severed,
+Unhallower, Reanimator, Erupter, Amalgam, Buffer, Sundered, Flesheater, Tank, Ranged.
+Starting blood 600. The level was duplicated from Level 14 by the designer (same toolkit,
+Hero included). Spawning is random within a lane.
+
+**Lanes:**
+- Wave 1: 3–5.
+- Wave 2: Purple adds 2, Green adds 6.
+- Wave 3: Purple adds 1, Green adds 7.
+- Waves 4–6: all.
+
+**Gaps:** 65 / 85 / 95 / 105 / 110 s.
+
+**How the rules are met (checked by script):**
+- No type is shared between the dimensions in any wave except Ranged.
+- Every lineup has a swarm type plus at least one heavy. Reborn and Severed swap
+  dimensions every wave.
+- Ranged appears only in waves 5–6, in both dimensions.
+- Tanks: one in Purple wave 4 and one in Green wave 6, both in lane 4. A shared type isn't
+  allowed, so they can't appear in both dimensions in the same wave.
+
+**Purple**
+| Lane | W1 | W2 | W3 | W4 | W5 | W6 |
+|---|---|---|---|---|---|---|
+| 1 | — | — | 6 Reborn, Unhallower | 4 Severed, Amalgam | 4 Reborn, Unhallower, Sundered | 5 Severed, Amalgam, Erupter |
+| 2 | — | 5 Severed, Amalgam | 6 Reborn, Reanimator | 4 Severed, Amalgam, Buffer | 4 Reborn, Unhallower, Ranged | 5 Severed, Ranged, Buffer |
+| 3 | 5 Reborn, Unhallower | 5 Severed, Sundered | 5 Reborn, Unhallower, Erupter | 4 Severed, Amalgam | 4 Reborn, Flesheater | 5 Severed, Amalgam, Reanimator |
+| 4 | 8 Reborn | 5 Severed, Amalgam, Sundered | 6 Reborn, Unhallower | 4 Severed, **Tank** | 4 Reborn, Unhallower, Sundered | 5 Severed, Amalgam, Ranged |
+| 5 | 5 Reborn, Unhallower | 5 Severed, Amalgam | 5 Reborn, Reanimator | 4 Severed, Amalgam | 4 Reborn, Flesheater | 5 Severed, Reanimator, Buffer |
+| 6 | — | — | — | 4 Severed, Amalgam, Buffer | 4 Reborn, Ranged | 5 Severed, Ranged, Erupter |
+| 7 | — | — | — | 4 Severed, Amalgam | 4 Reborn, Unhallower, Sundered | 5 Severed, Amalgam, Reanimator |
+| Danger | 136 | 225 | 456 | 790 | 831 | 1,075 |
+| Zombies | 20 | 25 | 34 | 37 | 39 | 49 |
+
+**Green**
+| Lane | W1 | W2 | W3 | W4 | W5 | W6 |
+|---|---|---|---|---|---|---|
+| 1 | — | — | — | 4 Reborn, Unhallower | 4 Severed, Amalgam, Erupter | 5 Reborn, Unhallower, Sundered |
+| 2 | — | — | — | 4 Reborn, Unhallower, Erupter | 4 Severed, Amalgam, Ranged | 5 Reborn, Flesheater, Ranged |
+| 3 | 4 Severed, Amalgam | 5 Reborn, Unhallower | 5 Severed, Amalgam, Sundered | 4 Reborn, Flesheater | 4 Severed, Reanimator | 5 Reborn, Unhallower |
+| 4 | 5 Severed, Amalgam | 6 Reborn, Buffer | 5 Severed, Flesheater | 4 Reborn, Unhallower, Sundered | 4 Severed, Amalgam, Buffer | 4 Reborn, **Tank** |
+| 5 | 4 Severed, Amalgam | 5 Reborn, Unhallower | 5 Severed, Amalgam, Sundered | 4 Reborn, Flesheater | 4 Severed, Reanimator | 5 Reborn, Unhallower |
+| 6 | — | 5 Reborn, Unhallower | 5 Severed, Amalgam | 4 Reborn, Unhallower, Erupter | 4 Severed, Ranged | 5 Reborn, Flesheater, Ranged |
+| 7 | — | — | 5 Severed, Amalgam, Sundered | 4 Reborn, Unhallower, Sundered | 4 Severed, Amalgam, Erupter | 5 Reborn, Unhallower, Sundered |
+| Danger | 140 | 242 | 450 | 756 | 790 | 1,218 |
+| Zombies | 16 | 25 | 33 | 39 | 39 | 45 |
+
+**Totals (both dimensions, Tank 400 / Ranged 100):** danger 276 · 467 · 906 · 1,546 ·
+1,621 · 2,293 = **7,109**; about 72k HP; zombies 36 · 50 · 67 · 76 · 78 · 94 = 401, plus the
+Minions each Tank launches (unscored); peak pressure 884. That's on par with Level 14
+(6,687 / 67k / 890, also a 5), slightly heavier, with two Tanks and the Ranged debut.
+
+**Debut wiring:**
+- The first Ranged and the first Tank each show the new-zombie button in either dimension
+  (`"Ranged"` was added to `Global.zombie_notif_icons`).
+- Clicking it opens a **text-only** pop-up (`set_basic_tutorial_text`) with the draft
+  descriptions in `ZombieDescriptions/rangedZombieDescription.txt` and
+  `tankZombieDescription.txt`. Swap in demo scenes once they exist.
+- The descriptions aren't in the translation CSV yet; `Loc.text` falls back to the file.
+
+**Known issue in play:** the Tanks launch Minions, and clicking a Minion still errors
+(`Global.minion_icon` doesn't exist; §2).
+
+**Levers if it plays too hard:** drop 1 fodder per lane in waves 5–6; then move Green's
+wave 6 Tank to a plain Unhallower; then +10 s on gaps 4–5.
+
+Preset `Level 15 v1` holds this version.
+
+### 5.7 Level 16 (built 2026-10-19, awaiting playtest)
+
+**Brief:** rating 5; 6 waves; low-health swarmers blend with higher-health units, **trending
+toward the higher-health units**. All 11 types allowed (Tank and Ranged debuted in Level 15).
+Starting blood 600. Duplicated from Level 14 by the designer. Spawning is random within a
+lane.
+
+**Lanes:**
+- Wave 1: lanes 1 and 7.
+- Wave 2: Purple adds 2, Green adds 6.
+- Wave 3: Purple adds 3, Green adds 5.
+- Waves 4–6: all.
+
+**Gaps:** 60 / 85 / 95 / 105 / 115 s.
+
+**The heavy trend (checked by script):**
+- Every lane in every wave has a swarm type and at least one heavy.
+- Fodder per lane drops from 5–6 (waves 1–2) to 4 (wave 3) to 3 (waves 4–6), while heavies
+  per lane rise from 1 to 1–2.
+- Heavies' share of the HP climbs from about 34–66% in wave 1 to about 71% in wave 6.
+- **Tanks:** Purple waves 4 and 6, Green waves 5 and 6, all in lane 4 (4 in total).
+- **Ranged:** from wave 3.
+
+**Purple**
+| Lane | W1 | W2 | W3 | W4 | W5 | W6 |
+|---|---|---|---|---|---|---|
+| 1 | 6 Reborn, Unhallower | 5 Severed, Amalgam | 4 Reborn, Unhallower, Sundered | 3 Severed, Unhallower | 3 Reborn, Unhallower | 3 Severed, Unhallower, Amalgam |
+| 2 | — | 5 Reborn, Unhallower | 4 Severed, Flesheater | 3 Reborn, Unhallower | 3 Severed, Flesheater | 3 Reborn, Flesheater |
+| 3 | — | — | 4 Reborn, Unhallower, Ranged | 3 Severed, Amalgam | 3 Reborn, Reanimator | 3 Severed, Amalgam, Reanimator |
+| 4 | — | — | — | 3 Reborn, **Tank** | 3 Severed, Amalgam, Ranged | 3 Reborn, **Tank** |
+| 5 | — | — | — | 3 Severed, Ranged | 3 Reborn, Unhallower | 3 Severed, Amalgam, Ranged |
+| 6 | — | — | — | 3 Reborn, Unhallower, Sundered | 3 Severed, Flesheater | 3 Reborn, Flesheater |
+| 7 | 6 Reborn, Unhallower | 5 Severed, Reanimator | 4 Severed, Amalgam, Erupter | 3 Severed, Amalgam | 3 Reborn, Amalgam, Ranged | 3 Severed, Amalgam, Ranged |
+| Danger | 124 | 235 | 506 | 803 | 819 | 1,228 |
+| Zombies | 14 | 18 | 23 | 29 | 30 | 32 |
+
+**Green**
+| Lane | W1 | W2 | W3 | W4 | W5 | W6 |
+|---|---|---|---|---|---|---|
+| 1 | 5 Severed, Amalgam | 5 Reborn, Unhallower | 4 Severed, Amalgam, Erupter | 3 Reborn, Reanimator | 3 Severed, Ranged | 3 Reborn, Unhallower, Ranged |
+| 2 | — | — | — | 3 Severed, Amalgam, Sundered | 3 Reborn, Unhallower | 3 Severed, Amalgam, Reanimator |
+| 3 | — | — | — | 3 Reborn, Unhallower, Erupter | 3 Severed, Amalgam | 3 Reborn, Flesheater |
+| 4 | — | — | — | 3 Severed, Flesheater | 3 Reborn, **Tank** | 3 Severed, **Tank** |
+| 5 | — | — | 4 Reborn, Amalgam, Ranged | 3 Reborn, Amalgam, Ranged | 3 Severed, Flesheater | 3 Reborn, Unhallower, Erupter |
+| 6 | — | 5 Severed, Amalgam | 4 Severed, Flesheater | 3 Severed, Amalgam, Buffer | 3 Reborn, Amalgam | 3 Severed, Reanimator |
+| 7 | 5 Severed, Amalgam | 5 Reborn, Reanimator | 4 Reborn, Unhallower, Sundered | 3 Reborn, Unhallower, Amalgam | 3 Severed, Ranged | 3 Reborn, Amalgam, Ranged |
+| Danger | 100 | 220 | 481 | 744 | 928 | 1,219 |
+| Zombies | 12 | 18 | 23 | 33 | 28 | 32 |
+
+**Totals (both dimensions):** danger 224 · 455 · 987 · 1,547 · 1,747 · 2,447 = **7,407**;
+HP 62.9k; zombies 26 · 36 · 46 · 62 · 58 · 64 = 292, plus Minions from the 4 Tanks; peak
+pressure 911. Compared with Level 15 (7,109 / 72k / 401 / 884): slightly more danger and
+far fewer bodies, with more of the HP in heavies. Purple leans on Unhallowers (11), Green
+on Amalgams (13) and Erupters; 3,715 vs 3,692 danger.
+
+**Levers if it plays too hard:** remove one dimension's wave 6 Tank (−400); then drop 1
+fodder per lane in waves 5–6; then +10 s on gaps 3–4. **If too easy:** add an Unhallower to
+wave 5 lanes 2 and 6 in both dimensions.
+
+**Known in play:** the Minion-click error (§2) applies; 4 Tanks launch Minions here.
+
+Preset `Level 16 v1` holds this version.
 
 ## 6. Suggested danger values (parked)
 
@@ -539,7 +728,8 @@ The current `DANGER_SCORES` are in use. These suggestions are saved for later:
 | Flesheater | 150 | 100 | Now medium speed; roughly an Unhallower without armor but with regen. Re-check after playtesting. |
 | Buffer | 50 | 35 | Fragile and slow; its threat comes from neighbours that are already scored |
 
-Reborn 2, Unhallower 50, Sundered 25 and Rohan 1000 look right as they are.
+Reborn 2, Unhallower 50, Sundered 25, Minion 5 and Rohan 1000 look right as they are. Tank
+(250 → 400) and Ranged (75 → 100) were **applied** on 2026-10-19; see the change log.
 
 ## 7. Change log
 - 2026-10-12 — Flesheater: speed 32 → 16 (Medium); health regen turned on at 7 HP every 2 s
@@ -549,7 +739,7 @@ Reborn 2, Unhallower 50, Sundered 25 and Rohan 1000 look right as they are.
 - 2026-10-12 — Level 10 rebuilt: 5 waves, gaps 75/95/105/110, 500 starting blood, new lane
   order, lane 1 randomized, Erupter notification (§5.1).
 - 2026-10-12 — Wave presets added to the Wave Table Editor (§1); Level 10 seeded with
-  `L10 v1` and `L10 original`.
+  `Level 10 v1` and `L10 original`.
 - 2026-10-15 — Level 11 rebuilt: 5 alternating swarm/elite waves, gaps 70/95/105/110,
   5 pre-placed Maws, Hive added to the toolkit, waves moved from code to the scenes (§5.2).
 - 2026-10-15 — Maw row in §3 corrected from the code: 3 tentacles, 73 px reach, an eaten
@@ -566,3 +756,16 @@ Reborn 2, Unhallower 50, Sundered 25 and Rohan 1000 look right as they are.
 - 2026-10-16 — Level 14 rebuilt: 6 waves with escalating type unlocks (each dimension in
   its own order), gaps 55/80/95/105/110, 600 starting blood, a WaveTableHost added to both
   scenes, waves moved from code to the scenes, and the same script cleanup (§5.5).
+- 2026-10-19 — `DANGER_SCORES`: Tank 250 → 400 and Ranged 75 → 100 (Ranged out-damages every
+  regular zombie from outside Maw reach; Tank is Maw-proof and launches unscored Minions).
+  Danger totals quoted for Levels 10–14 are unchanged, since none of them use Tank or
+  Ranged.
+- 2026-10-19 — Level 15 built (§5.6): 6 waves, separate lineups per dimension, Ranged and
+  Tank debut with unlock buttons and text-only pop-ups (draft descriptions), gaps
+  65/85/95/105/110, root nodes renamed from the copied `Level_14`, level paths fixed.
+- 2026-10-19 — Levels 12 and 15: closing a zombie pop-up no longer advances into the leftover
+  `GAME_READY` tutorial step. In Level 12 that step hit a null `green_dimension` when the
+  Flesheater pop-up was closed on a first (non-restart) play.
+- 2026-10-19 — Level 16 built (§5.7): 6 waves trending toward heavies, 4 Tanks, gaps
+  60/85/95/105/115, roots renamed from the copied `Level_14`, level paths fixed, the same
+  pop-up handler fix as Levels 12/15, and the copied `L14 v1` preset replaced by `Level 16 v1`.

@@ -28,9 +28,9 @@ const DANGER_SCORES: Dictionary = {
 	"Flesheater": 150,
 	"Rohan": 1000,
 	"Buffer": 50,
-	"Tank":250,
+	"Tank":400,
 	"Minion":5,
-	"Ranged": 75,
+	"Ranged": 100,
 }
 
 const Y_OFFSETS: Dictionary = {

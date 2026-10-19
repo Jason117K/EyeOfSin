@@ -1,18 +1,20 @@
 {
 	"format": 1,
-	"scene": "res://_Stages/Level10/Level10.tscn",
-	"saved": "2026-10-12 22:36:08",
+	"scene": "res://_Stages/Level12/Level12_Alternate.tscn",
+	"saved": "2026-10-19 14:36:32",
 	"root": {
-		"wave2StartTime": 75,
-		"wave3StartTime": 95,
-		"wave4StartTime": 105,
-		"wave5StartTime": 110,
+		"wave2StartTime": 30,
+		"wave3StartTime": 60,
+		"wave4StartTime": 75,
+		"wave5StartTime": 90,
 		"wave6StartTime": 100
 	},
 	"spawners": {
 		"GameLayer/ZombieSpawner1": {
 			"is_random": true,
 			"waves": [
+				[],
+				[],
 				[],
 				[
 					{
@@ -27,6 +29,51 @@
 				[
 					{
 						"type": "Unhallower",
+						"count": 2
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner2": {
+			"is_random": true,
+			"waves": [
+				[],
+				[
+					{
+						"type": "Amalgam",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Buffer",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Flesheater",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner3": {
+			"is_random": true,
+			"waves": [
+				[
+					{
+						"type": "Unhallower",
 						"count": 1
 					}
 				],
@@ -37,6 +84,26 @@
 					},
 					{
 						"type": "Sundered",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					},
+					{
+						"type": "Buffer",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Erupter",
+						"count": 1
+					},
+					{
+						"type": "Unhallower",
 						"count": 1
 					}
 				],
@@ -56,19 +123,9 @@
 				]
 			]
 		},
-		"GameLayer/ZombieSpawner2": {
+		"GameLayer/ZombieSpawner4": {
 			"is_random": true,
 			"waves": [
-				[
-					{
-						"type": "Amalgam",
-						"count": 1
-					},
-					{
-						"type": "Sundered",
-						"count": 1
-					}
-				],
 				[
 					{
 						"type": "Unhallower",
@@ -77,50 +134,23 @@
 				],
 				[
 					{
-						"type": "Amalgam",
-						"count": 2
-					}
-				],
-				[
-					{
 						"type": "Erupter",
 						"count": 1
 					},
 					{
-						"type": "Amalgam",
-						"count": 2
-					}
-				],
-				[
-					{
-						"type": "Amalgam",
-						"count": 3
-					}
-				]
-			]
-		},
-		"GameLayer/ZombieSpawner3": {
-			"is_random": true,
-			"waves": [
-				[],
-				[],
-				[
-					{
-						"type": "Amalgam",
-						"count": 1
-					},
-					{
-						"type": "Sundered",
+						"type": "Unhallower",
 						"count": 1
 					}
 				],
 				[
 					{
-						"type": "Amalgam",
-						"count": 2
-					},
+						"type": "Reanimator",
+						"count": 1
+					}
+				],
+				[
 					{
-						"type": "Sundered",
+						"type": "Flesheater",
 						"count": 1
 					}
 				],
@@ -130,44 +160,7 @@
 						"count": 1
 					},
 					{
-						"type": "Amalgam",
-						"count": 1
-					}
-				]
-			]
-		},
-		"GameLayer/ZombieSpawner4": {
-			"is_random": true,
-			"waves": [
-				[],
-				[],
-				[
-					{
-						"type": "Reanimator",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Erupter",
-						"count": 1
-					},
-					{
-						"type": "Amalgam",
-						"count": 1
-					},
-					{
-						"type": "Sundered",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Erupter",
-						"count": 2
-					},
-					{
-						"type": "Amalgam",
+						"type": "Unhallower",
 						"count": 1
 					}
 				]
@@ -176,53 +169,25 @@
 		"GameLayer/ZombieSpawner5": {
 			"is_random": true,
 			"waves": [
-				[],
-				[],
-				[],
 				[
 					{
-						"type": "Amalgam",
-						"count": 2
+						"type": "Unhallower",
+						"count": 1
 					}
 				],
 				[
 					{
 						"type": "Unhallower",
 						"count": 1
-					},
-					{
-						"type": "Amalgam",
-						"count": 2
-					}
-				]
-			]
-		},
-		"GameLayer/ZombieSpawner6": {
-			"is_random": true,
-			"waves": [
-				[
-					{
-						"type": "Amalgam",
-						"count": 1
-					},
-					{
-						"type": "Sundered",
-						"count": 1
 					}
 				],
 				[
 					{
-						"type": "Amalgam",
-						"count": 2
-					}
-				],
-				[
-					{
-						"type": "Amalgam",
-						"count": 2
+						"type": "Erupter",
+						"count": 1
 					},
 					{
-						"type": "Sundered",
+						"type": "Unhallower",
 						"count": 1
 					}
 				],
@@ -238,13 +203,13 @@
 						"count": 1
 					},
 					{
-						"type": "Amalgam",
-						"count": 2
+						"type": "Unhallower",
+						"count": 1
 					}
 				]
 			]
 		},
-		"GameLayer/ZombieSpawner7": {
+		"GameLayer/ZombieSpawner6": {
 			"is_random": true,
 			"waves": [
 				[],
@@ -266,17 +231,42 @@
 						"count": 1
 					},
 					{
-						"type": "Amalgam",
+						"type": "Buffer",
 						"count": 1
 					}
 				],
 				[
 					{
-						"type": "Reanimator",
+						"type": "Flesheater",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner7": {
+			"is_random": true,
+			"waves": [
+				[],
+				[],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Unhallower",
 						"count": 1
 					},
 					{
-						"type": "Sundered",
+						"type": "Buffer",
 						"count": 1
 					}
 				]

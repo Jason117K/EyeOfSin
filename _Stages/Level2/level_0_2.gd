@@ -17,8 +17,8 @@ var thisLevel := "res://_Stages/Level2/Level0-2.tscn"
 var thisAltLevel := "res://_Stages/Level2/Level0-2_Alternate.tscn"
 var level02 := "res://_Stages/Level2/Level0-2.tscn"
 var level02Alt := "res://_Stages/Level2/Level0-2_Alternate.tscn"
-var level03 := "res://_Stages/Level3/Level0-3.tscn"
-var level03Alt := "res://_Stages/Level3/Level0-3_Alternate.tscn"
+var level03 := "res://_Stages/Level2/Level0-3B.tscn"
+var level03Alt := "res://_Stages/Level3/Level0-3_Alternate_B.tscn"
 
 # Text file paths
 

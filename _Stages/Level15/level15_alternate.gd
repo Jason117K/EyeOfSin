@@ -2,6 +2,8 @@ extends LevelTemplate
 
 
 var purple_dimension: Control
+const TUTORIAL_EXPLAIN_RANGED = "res://_Assets/Text/TextFiles/ZombieDescriptions/rangedZombieDescription.txt"
+const TUTORIAL_EXPLAIN_TANK = "res://_Assets/Text/TextFiles/ZombieDescriptions/tankZombieDescription.txt"
 
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
 @onready var zombie_spawner_2 := $GameLayer/ZombieSpawner2
@@ -91,6 +93,14 @@ func show_guide() -> void:
 
 func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 	match new_zombie_unlocked:
-		"Rohan":
+		"Rohan", "Ranged", "Tank":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+
+# Text-only pop-ups until Ranged / Tank have demo scenes.
+func show_zombie_tutorial(unlocked_zombie : String)->void:
+	match unlocked_zombie:
+		"Ranged":
+			toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_RANGED, true)
+		"Tank":
+			toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_TANK, true)

@@ -1,0 +1,5 @@
+Reborn that learned to spit their own rot, the Ranged hang back from the fighting and pelt demons from a distance, picking defenses apart before they can strike back.
+Speed: Medium
+Health: Medium
+Numbers: Low
+Damage: High

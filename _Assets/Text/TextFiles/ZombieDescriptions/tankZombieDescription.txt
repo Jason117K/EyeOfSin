@@ -1,0 +1,5 @@
+Hulking amalgamations of bone and plate, Tanks lumber across the field crushing every demon in their path, hurling smaller zombies ahead to swarm what lies beyond.
+Speed: Low
+Health: Very High
+Numbers: Very Low
+Damage: Very High

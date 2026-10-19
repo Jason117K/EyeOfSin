@@ -2,18 +2,16 @@ extends LevelTemplate
 # level_0_6.gd - Level 0-6 Controller (no forced demon tutorial, just zombie explanation)
 #500
 
-# Preloaded demo scenes
-var sundered_zombie_demo_scene := preload("res://_UI/GameDemonstrations/ZombieTutorials/amalgam_zombie_demo.tscn")
-
 # Level paths
-var thisLevel :=  "res://_Stages/Level14/Level14.tscn"
-var thisAltLevel := "res://_Stages/Level14/Level14_Alternate.tscn"
+var thisLevel :=  "res://_Stages/Level15/Level15.tscn"
+var thisAltLevel := "res://_Stages/Level15/Level15_Alternate.tscn"
 
 var endScreen := "res://_Stages/EndScreen/EndScreen.tscn"
 var endScreenAlt := "res://_Stages/EndScreen/EndScreen.tscn"
 
-# Text file paths
-const TUTORIAL_EXPLAIN_SUNDERED = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
+# Text file paths (Ranged and Tank debut here; no demo scenes yet, so text-only pop-ups)
+const TUTORIAL_EXPLAIN_RANGED = "res://_Assets/Text/TextFiles/ZombieDescriptions/rangedZombieDescription.txt"
+const TUTORIAL_EXPLAIN_TANK = "res://_Assets/Text/TextFiles/ZombieDescriptions/tankZombieDescription.txt"
 
 # Cached references
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -207,16 +205,16 @@ func start_game() -> void:
 
 #region Signal Handlers
 func _on_tooltip_hidden() -> void:
+	# No scripted tutorial in this level: closing a zombie pop-up must not advance
+	# into the leftover GAME_READY step (its _start_game_ready reads a null green_dimension).
 	toolTips.visible = false
-	advance_tutorial()
 
-func _start_explain_sundered()->void:
-	toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_SUNDERED)
-	toolTips.set_visual_tutorial_visual(sundered_zombie_demo_scene.instantiate())
-	
-	
-func show_zombie_tutorial(_unlocked_zombie : String)->void:
-	_start_explain_sundered()
+func show_zombie_tutorial(unlocked_zombie : String)->void:
+	match unlocked_zombie:
+		"Ranged":
+			toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_RANGED, true)
+		"Tank":
+			toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_TANK, true)
 	
 func _on_wave_started(wave_index: int) -> void:
 	pass
@@ -251,6 +249,6 @@ func show_guide() -> void:
 
 func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 	match new_zombie_unlocked:
-		"Rohan":
+		"Rohan", "Ranged", "Tank":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)

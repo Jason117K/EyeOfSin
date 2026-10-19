@@ -1,21 +1,38 @@
 {
 	"format": 1,
-	"scene": "res://_Stages/Level14/Level14.tscn",
-	"saved": "2026-10-16 16:10:54",
+	"scene": "res://_Stages/Level16/Level16.tscn",
+	"saved": "2026-10-19 16:42:54",
 	"root": {
-		"wave2StartTime": 55,
-		"wave3StartTime": 80,
+		"wave2StartTime": 60,
+		"wave3StartTime": 85,
 		"wave4StartTime": 95,
 		"wave5StartTime": 105,
-		"wave6StartTime": 110
+		"wave6StartTime": 115
 	},
 	"spawners": {
 		"GameLayer/ZombieSpawner1": {
 			"is_random": true,
 			"waves": [
-				[],
-				[],
-				[],
+				[
+					{
+						"type": "Reborn",
+						"count": 6
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Severed",
+						"count": 5
+					},
+					{
+						"type": "Amalgam",
+						"count": 1
+					}
+				],
 				[
 					{
 						"type": "Reborn",
@@ -33,28 +50,30 @@
 				[
 					{
 						"type": "Severed",
-						"count": 4
+						"count": 3
 					},
 					{
 						"type": "Unhallower",
-						"count": 1
-					},
-					{
-						"type": "Buffer",
 						"count": 1
 					}
 				],
 				[
 					{
 						"type": "Reborn",
-						"count": 4
+						"count": 3
 					},
 					{
 						"type": "Unhallower",
-						"count": 2
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Severed",
+						"count": 3
 					},
 					{
-						"type": "Buffer",
+						"type": "Unhallower",
 						"count": 1
 					},
 					{
@@ -68,46 +87,13 @@
 			"is_random": true,
 			"waves": [
 				[],
-				[],
 				[
 					{
 						"type": "Reborn",
-						"count": 4
+						"count": 5
 					},
 					{
 						"type": "Unhallower",
-						"count": 1
-					},
-					{
-						"type": "Amalgam",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Severed",
-						"count": 4
-					},
-					{
-						"type": "Amalgam",
-						"count": 1
-					},
-					{
-						"type": "Buffer",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Reborn",
-						"count": 4
-					},
-					{
-						"type": "Amalgam",
-						"count": 1
-					},
-					{
-						"type": "Erupter",
 						"count": 1
 					}
 				],
@@ -119,9 +105,35 @@
 					{
 						"type": "Flesheater",
 						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Reborn",
+						"count": 3
 					},
 					{
-						"type": "Amalgam",
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Severed",
+						"count": 3
+					},
+					{
+						"type": "Flesheater",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Reborn",
+						"count": 3
+					},
+					{
+						"type": "Flesheater",
 						"count": 1
 					}
 				]
@@ -131,27 +143,28 @@
 			"is_random": true,
 			"waves": [
 				[],
+				[],
 				[
 					{
 						"type": "Reborn",
 						"count": 4
 					},
 					{
-						"type": "Severed",
-						"count": 2
+						"type": "Unhallower",
+						"count": 1
 					},
 					{
-						"type": "Unhallower",
+						"type": "Ranged",
 						"count": 1
 					}
 				],
 				[
 					{
 						"type": "Severed",
-						"count": 4
+						"count": 3
 					},
 					{
-						"type": "Reanimator",
+						"type": "Amalgam",
 						"count": 1
 					}
 				],
@@ -163,37 +176,19 @@
 					{
 						"type": "Reanimator",
 						"count": 1
-					},
-					{
-						"type": "Unhallower",
-						"count": 1
 					}
 				],
 				[
 					{
 						"type": "Severed",
-						"count": 4
+						"count": 3
+					},
+					{
+						"type": "Amalgam",
+						"count": 1
 					},
 					{
 						"type": "Reanimator",
-						"count": 1
-					},
-					{
-						"type": "Sundered",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Reborn",
-						"count": 4
-					},
-					{
-						"type": "Reanimator",
-						"count": 1
-					},
-					{
-						"type": "Unhallower",
 						"count": 1
 					}
 				]
@@ -202,14 +197,17 @@
 		"GameLayer/ZombieSpawner4": {
 			"is_random": true,
 			"waves": [
+				[],
+				[],
+				[],
 				[
 					{
 						"type": "Reborn",
-						"count": 8
+						"count": 3
 					},
 					{
-						"type": "Severed",
-						"count": 6
+						"type": "Tank",
+						"count": 1
 					}
 				],
 				[
@@ -219,26 +217,10 @@
 					},
 					{
 						"type": "Amalgam",
-						"count": 2
-					}
-				],
-				[
-					{
-						"type": "Severed",
-						"count": 3
-					},
-					{
-						"type": "Flesheater",
 						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Severed",
-						"count": 4
 					},
 					{
-						"type": "Flesheater",
+						"type": "Ranged",
 						"count": 1
 					}
 				],
@@ -248,25 +230,7 @@
 						"count": 3
 					},
 					{
-						"type": "Flesheater",
-						"count": 1
-					},
-					{
-						"type": "Amalgam",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Severed",
-						"count": 4
-					},
-					{
-						"type": "Flesheater",
-						"count": 1
-					},
-					{
-						"type": "Erupter",
+						"type": "Tank",
 						"count": 1
 					}
 				]
@@ -276,14 +240,22 @@
 			"is_random": true,
 			"waves": [
 				[],
+				[],
+				[],
+				[
+					{
+						"type": "Severed",
+						"count": 3
+					},
+					{
+						"type": "Ranged",
+						"count": 1
+					}
+				],
 				[
 					{
 						"type": "Reborn",
-						"count": 4
-					},
-					{
-						"type": "Severed",
-						"count": 2
+						"count": 3
 					},
 					{
 						"type": "Unhallower",
@@ -292,57 +264,15 @@
 				],
 				[
 					{
-						"type": "Reborn",
-						"count": 4
-					},
-					{
 						"type": "Severed",
-						"count": 2
-					},
-					{
-						"type": "Unhallower",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Reborn",
-						"count": 4
+						"count": 3
 					},
 					{
 						"type": "Amalgam",
 						"count": 1
 					},
 					{
-						"type": "Sundered",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Severed",
-						"count": 4
-					},
-					{
-						"type": "Unhallower",
-						"count": 1
-					},
-					{
-						"type": "Amalgam",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Reborn",
-						"count": 4
-					},
-					{
-						"type": "Reanimator",
-						"count": 1
-					},
-					{
-						"type": "Amalgam",
+						"type": "Ranged",
 						"count": 1
 					}
 				]
@@ -353,34 +283,60 @@
 			"waves": [
 				[],
 				[],
+				[],
 				[
 					{
-						"type": "Severed",
+						"type": "Reborn",
 						"count": 3
-					},
-					{
-						"type": "Amalgam",
-						"count": 1
-					}
-				],
-				[
-					{
-						"type": "Severed",
-						"count": 4
 					},
 					{
 						"type": "Unhallower",
 						"count": 1
 					},
 					{
-						"type": "Buffer",
+						"type": "Sundered",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Severed",
+						"count": 3
+					},
+					{
+						"type": "Flesheater",
 						"count": 1
 					}
 				],
 				[
 					{
 						"type": "Reborn",
-						"count": 4
+						"count": 3
+					},
+					{
+						"type": "Flesheater",
+						"count": 1
+					}
+				]
+			]
+		},
+		"GameLayer/ZombieSpawner7": {
+			"is_random": true,
+			"waves": [
+				[
+					{
+						"type": "Reborn",
+						"count": 6
+					},
+					{
+						"type": "Unhallower",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Severed",
+						"count": 5
 					},
 					{
 						"type": "Reanimator",
@@ -393,56 +349,49 @@
 						"count": 4
 					},
 					{
-						"type": "Unhallower",
+						"type": "Amalgam",
 						"count": 1
 					},
 					{
-						"type": "Buffer",
-						"count": 1
-					},
-					{
-						"type": "Sundered",
+						"type": "Erupter",
 						"count": 1
 					}
-				]
-			]
-		},
-		"GameLayer/ZombieSpawner7": {
-			"is_random": true,
-			"waves": [
-				[],
-				[],
-				[],
-				[],
+				],
 				[
 					{
 						"type": "Severed",
-						"count": 4
+						"count": 3
 					},
 					{
-						"type": "Unhallower",
-						"count": 1
-					},
-					{
-						"type": "Sundered",
+						"type": "Amalgam",
 						"count": 1
 					}
 				],
 				[
 					{
 						"type": "Reborn",
-						"count": 4
+						"count": 3
 					},
 					{
-						"type": "Unhallower",
+						"type": "Amalgam",
 						"count": 1
 					},
 					{
-						"type": "Erupter",
+						"type": "Ranged",
+						"count": 1
+					}
+				],
+				[
+					{
+						"type": "Severed",
+						"count": 3
+					},
+					{
+						"type": "Amalgam",
 						"count": 1
 					},
 					{
-						"type": "Sundered",
+						"type": "Ranged",
 						"count": 1
 					}
 				]

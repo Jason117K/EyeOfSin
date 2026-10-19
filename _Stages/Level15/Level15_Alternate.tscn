@@ -56,610 +56,569 @@
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="54_25axk"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="55_7ow13"]
 
-[sub_resource type="Resource" id="Resource_l14g1w1"]
+[sub_resource type="Resource" id="Resource_l15g1w1"]
 script = ExtResource("8_h0j0p")
 
-[sub_resource type="Resource" id="Resource_l14g1w2"]
+[sub_resource type="Resource" id="Resource_l15g1w2"]
 script = ExtResource("8_h0j0p")
 
-[sub_resource type="Resource" id="Resource_l14g1w3"]
+[sub_resource type="Resource" id="Resource_l15g1w3"]
 script = ExtResource("8_h0j0p")
 
-[sub_resource type="Resource" id="Resource_l14g1w4"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g1w5e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g1w5e2"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g1w5e3"]
-script = ExtResource("9_rpilq")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g1w5"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g1w5e1"), SubResource("Resource_l14g1w5e2"), SubResource("Resource_l14g1w5e3")])
-
-[sub_resource type="Resource" id="Resource_l14g1w6e1"]
+[sub_resource type="Resource" id="Resource_l15g1w4e1"]
 script = ExtResource("9_rpilq")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g1w6e2"]
-script = ExtResource("9_rpilq")
-type = "Flesheater"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g1w6e3"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g1w6"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g1w6e1"), SubResource("Resource_l14g1w6e2"), SubResource("Resource_l14g1w6e3")])
-
-[sub_resource type="Resource" id="Resource_l14g2w1"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g2w2"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g2w3e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g2w3e2"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g2w3e3"]
-script = ExtResource("9_rpilq")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g2w3"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g2w3e1"), SubResource("Resource_l14g2w3e2"), SubResource("Resource_l14g2w3e3")])
-
-[sub_resource type="Resource" id="Resource_l14g2w4e1"]
-script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g2w4e2"]
+[sub_resource type="Resource" id="Resource_l15g1w4e2"]
 script = ExtResource("9_rpilq")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g2w4e3"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g2w4e4"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g2w4"]
+[sub_resource type="Resource" id="Resource_l15g1w4"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g2w4e1"), SubResource("Resource_l14g2w4e2"), SubResource("Resource_l14g2w4e3"), SubResource("Resource_l14g2w4e4")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g1w4e1"), SubResource("Resource_l15g1w4e2")])
 
-[sub_resource type="Resource" id="Resource_l14g2w5e1"]
-script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g2w5e2"]
-script = ExtResource("9_rpilq")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g2w5e3"]
-script = ExtResource("9_rpilq")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g2w5"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g2w5e1"), SubResource("Resource_l14g2w5e2"), SubResource("Resource_l14g2w5e3")])
-
-[sub_resource type="Resource" id="Resource_l14g2w6e1"]
+[sub_resource type="Resource" id="Resource_l15g1w5e1"]
 script = ExtResource("9_rpilq")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g2w6e2"]
+[sub_resource type="Resource" id="Resource_l15g1w5e2"]
 script = ExtResource("9_rpilq")
-type = "Unhallower"
+type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g2w6e3"]
+[sub_resource type="Resource" id="Resource_l15g1w5e3"]
 script = ExtResource("9_rpilq")
 type = "Erupter"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g2w6e4"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g2w6"]
+[sub_resource type="Resource" id="Resource_l15g1w5"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g2w6e1"), SubResource("Resource_l14g2w6e2"), SubResource("Resource_l14g2w6e3"), SubResource("Resource_l14g2w6e4")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g1w5e1"), SubResource("Resource_l15g1w5e2"), SubResource("Resource_l15g1w5e3")])
 
-[sub_resource type="Resource" id="Resource_l14g3w1"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g3w2e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g3w2e2"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 2
-
-[sub_resource type="Resource" id="Resource_l14g3w2"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g3w2e1"), SubResource("Resource_l14g3w2e2")])
-
-[sub_resource type="Resource" id="Resource_l14g3w3e1"]
-script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g3w3e2"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w3e3"]
-script = ExtResource("9_rpilq")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w3"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g3w3e1"), SubResource("Resource_l14g3w3e2"), SubResource("Resource_l14g3w3e3")])
-
-[sub_resource type="Resource" id="Resource_l14g3w4e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g3w4e2"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w4e3"]
-script = ExtResource("9_rpilq")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w4"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g3w4e1"), SubResource("Resource_l14g3w4e2"), SubResource("Resource_l14g3w4e3")])
-
-[sub_resource type="Resource" id="Resource_l14g3w5e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g3w5e2"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w5e3"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w5"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g3w5e1"), SubResource("Resource_l14g3w5e2"), SubResource("Resource_l14g3w5e3")])
-
-[sub_resource type="Resource" id="Resource_l14g3w6e1"]
-script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g3w6e2"]
-script = ExtResource("9_rpilq")
-type = "Reanimator"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w6e3"]
-script = ExtResource("9_rpilq")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w6e4"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g3w6"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g3w6e1"), SubResource("Resource_l14g3w6e2"), SubResource("Resource_l14g3w6e3"), SubResource("Resource_l14g3w6e4")])
-
-[sub_resource type="Resource" id="Resource_l14g4w1e1"]
-script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 6
-
-[sub_resource type="Resource" id="Resource_l14g4w1e2"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 7
-
-[sub_resource type="Resource" id="Resource_l14g4w1"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g4w1e1"), SubResource("Resource_l14g4w1e2")])
-
-[sub_resource type="Resource" id="Resource_l14g4w2e1"]
+[sub_resource type="Resource" id="Resource_l15g1w6e1"]
 script = ExtResource("9_rpilq")
 type = "Reborn"
 count = 5
 
-[sub_resource type="Resource" id="Resource_l14g4w2e2"]
+[sub_resource type="Resource" id="Resource_l15g1w6e2"]
 script = ExtResource("9_rpilq")
-type = "Severed"
-count = 2
-
-[sub_resource type="Resource" id="Resource_l14g4w2e3"]
-script = ExtResource("9_rpilq")
-type = "Buffer"
+type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g4w2"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g4w2e1"), SubResource("Resource_l14g4w2e2"), SubResource("Resource_l14g4w2e3")])
+[sub_resource type="Resource" id="Resource_l15g1w6e3"]
+script = ExtResource("9_rpilq")
+type = "Sundered"
+count = 1
 
-[sub_resource type="Resource" id="Resource_l14g4w3e1"]
+[sub_resource type="Resource" id="Resource_l15g1w6"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g1w6e1"), SubResource("Resource_l15g1w6e2"), SubResource("Resource_l15g1w6e3")])
+
+[sub_resource type="Resource" id="Resource_l15g2w1"]
+script = ExtResource("8_h0j0p")
+
+[sub_resource type="Resource" id="Resource_l15g2w2"]
+script = ExtResource("8_h0j0p")
+
+[sub_resource type="Resource" id="Resource_l15g2w3"]
+script = ExtResource("8_h0j0p")
+
+[sub_resource type="Resource" id="Resource_l15g2w4e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g2w4e2"]
+script = ExtResource("9_rpilq")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g2w4e3"]
+script = ExtResource("9_rpilq")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g2w4"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g2w4e1"), SubResource("Resource_l15g2w4e2"), SubResource("Resource_l15g2w4e3")])
+
+[sub_resource type="Resource" id="Resource_l15g2w5e1"]
 script = ExtResource("9_rpilq")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g4w3e2"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 2
-
-[sub_resource type="Resource" id="Resource_l14g4w3e3"]
+[sub_resource type="Resource" id="Resource_l15g2w5e2"]
 script = ExtResource("9_rpilq")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g4w3"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g4w3e1"), SubResource("Resource_l14g4w3e2"), SubResource("Resource_l14g4w3e3")])
-
-[sub_resource type="Resource" id="Resource_l14g4w4e1"]
+[sub_resource type="Resource" id="Resource_l15g2w5e3"]
 script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g4w4e2"]
-script = ExtResource("9_rpilq")
-type = "Reanimator"
+type = "Ranged"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g4w4e3"]
-script = ExtResource("9_rpilq")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g4w4"]
+[sub_resource type="Resource" id="Resource_l15g2w5"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g4w4e1"), SubResource("Resource_l14g4w4e2"), SubResource("Resource_l14g4w4e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g2w5e1"), SubResource("Resource_l15g2w5e2"), SubResource("Resource_l15g2w5e3")])
 
-[sub_resource type="Resource" id="Resource_l14g4w5e1"]
+[sub_resource type="Resource" id="Resource_l15g2w6e1"]
 script = ExtResource("9_rpilq")
 type = "Reborn"
-count = 4
+count = 5
 
-[sub_resource type="Resource" id="Resource_l14g4w5e2"]
+[sub_resource type="Resource" id="Resource_l15g2w6e2"]
 script = ExtResource("9_rpilq")
 type = "Flesheater"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g4w5e3"]
+[sub_resource type="Resource" id="Resource_l15g2w6e3"]
 script = ExtResource("9_rpilq")
-type = "Buffer"
+type = "Ranged"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g4w5"]
+[sub_resource type="Resource" id="Resource_l15g2w6"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g4w5e1"), SubResource("Resource_l14g4w5e2"), SubResource("Resource_l14g4w5e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g2w6e1"), SubResource("Resource_l15g2w6e2"), SubResource("Resource_l15g2w6e3")])
 
-[sub_resource type="Resource" id="Resource_l14g4w6e1"]
+[sub_resource type="Resource" id="Resource_l15g3w1e1"]
 script = ExtResource("9_rpilq")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g4w6e2"]
+[sub_resource type="Resource" id="Resource_l15g3w1e2"]
+script = ExtResource("9_rpilq")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g3w1"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g3w1e1"), SubResource("Resource_l15g3w1e2")])
+
+[sub_resource type="Resource" id="Resource_l15g3w2e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g3w2e2"]
+script = ExtResource("9_rpilq")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g3w2"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g3w2e1"), SubResource("Resource_l15g3w2e2")])
+
+[sub_resource type="Resource" id="Resource_l15g3w3e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g3w3e2"]
+script = ExtResource("9_rpilq")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g3w3e3"]
+script = ExtResource("9_rpilq")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g3w3"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g3w3e1"), SubResource("Resource_l15g3w3e2"), SubResource("Resource_l15g3w3e3")])
+
+[sub_resource type="Resource" id="Resource_l15g3w4e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g3w4e2"]
 script = ExtResource("9_rpilq")
 type = "Flesheater"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g4w6e3"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g4w6"]
+[sub_resource type="Resource" id="Resource_l15g3w4"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g4w6e1"), SubResource("Resource_l14g4w6e2"), SubResource("Resource_l14g4w6e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g3w4e1"), SubResource("Resource_l15g3w4e2")])
 
-[sub_resource type="Resource" id="Resource_l14g5w1"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g5w2e1"]
+[sub_resource type="Resource" id="Resource_l15g3w5e1"]
 script = ExtResource("9_rpilq")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g5w2e2"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 2
-
-[sub_resource type="Resource" id="Resource_l14g5w2"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g5w2e1"), SubResource("Resource_l14g5w2e2")])
-
-[sub_resource type="Resource" id="Resource_l14g5w3e1"]
-script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g5w3e2"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g5w3e3"]
-script = ExtResource("9_rpilq")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g5w3"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g5w3e1"), SubResource("Resource_l14g5w3e2"), SubResource("Resource_l14g5w3e3")])
-
-[sub_resource type="Resource" id="Resource_l14g5w4e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g5w4e2"]
-script = ExtResource("9_rpilq")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g5w4e3"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g5w4"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g5w4e1"), SubResource("Resource_l14g5w4e2"), SubResource("Resource_l14g5w4e3")])
-
-[sub_resource type="Resource" id="Resource_l14g5w5e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g5w5e2"]
+[sub_resource type="Resource" id="Resource_l15g3w5e2"]
 script = ExtResource("9_rpilq")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g5w5e3"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g5w5"]
+[sub_resource type="Resource" id="Resource_l15g3w5"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g5w5e1"), SubResource("Resource_l14g5w5e2"), SubResource("Resource_l14g5w5e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g3w5e1"), SubResource("Resource_l15g3w5e2")])
 
-[sub_resource type="Resource" id="Resource_l14g5w6e1"]
+[sub_resource type="Resource" id="Resource_l15g3w6e1"]
 script = ExtResource("9_rpilq")
 type = "Reborn"
-count = 4
+count = 5
 
-[sub_resource type="Resource" id="Resource_l14g5w6e2"]
+[sub_resource type="Resource" id="Resource_l15g3w6e2"]
 script = ExtResource("9_rpilq")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g5w6e3"]
-script = ExtResource("9_rpilq")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g5w6e4"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g5w6"]
+[sub_resource type="Resource" id="Resource_l15g3w6"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g5w6e1"), SubResource("Resource_l14g5w6e2"), SubResource("Resource_l14g5w6e3"), SubResource("Resource_l14g5w6e4")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g3w6e1"), SubResource("Resource_l15g3w6e2")])
 
-[sub_resource type="Resource" id="Resource_l14g6w1"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g6w2"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g6w3e1"]
+[sub_resource type="Resource" id="Resource_l15g4w1e1"]
 script = ExtResource("9_rpilq")
 type = "Severed"
-count = 4
+count = 5
 
-[sub_resource type="Resource" id="Resource_l14g6w3e2"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g6w3e3"]
-script = ExtResource("9_rpilq")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g6w3"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g6w3e1"), SubResource("Resource_l14g6w3e2"), SubResource("Resource_l14g6w3e3")])
-
-[sub_resource type="Resource" id="Resource_l14g6w4e1"]
-script = ExtResource("9_rpilq")
-type = "Reborn"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g6w4e2"]
+[sub_resource type="Resource" id="Resource_l15g4w1e2"]
 script = ExtResource("9_rpilq")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g6w4e3"]
+[sub_resource type="Resource" id="Resource_l15g4w1"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g4w1e1"), SubResource("Resource_l15g4w1e2")])
+
+[sub_resource type="Resource" id="Resource_l15g4w2e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 6
+
+[sub_resource type="Resource" id="Resource_l15g4w2e2"]
 script = ExtResource("9_rpilq")
 type = "Buffer"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g6w4"]
+[sub_resource type="Resource" id="Resource_l15g4w2"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g6w4e1"), SubResource("Resource_l14g6w4e2"), SubResource("Resource_l14g6w4e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g4w2e1"), SubResource("Resource_l15g4w2e2")])
 
-[sub_resource type="Resource" id="Resource_l14g6w5e1"]
+[sub_resource type="Resource" id="Resource_l15g4w3e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g4w3e2"]
+script = ExtResource("9_rpilq")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g4w3"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g4w3e1"), SubResource("Resource_l15g4w3e2")])
+
+[sub_resource type="Resource" id="Resource_l15g4w4e1"]
 script = ExtResource("9_rpilq")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g6w5e2"]
+[sub_resource type="Resource" id="Resource_l15g4w4e2"]
 script = ExtResource("9_rpilq")
-type = "Amalgam"
+type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g6w5e3"]
+[sub_resource type="Resource" id="Resource_l15g4w4e3"]
 script = ExtResource("9_rpilq")
-type = "Erupter"
+type = "Sundered"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g6w5"]
+[sub_resource type="Resource" id="Resource_l15g4w4"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g6w5e1"), SubResource("Resource_l14g6w5e2"), SubResource("Resource_l14g6w5e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g4w4e1"), SubResource("Resource_l15g4w4e2"), SubResource("Resource_l15g4w4e3")])
 
-[sub_resource type="Resource" id="Resource_l14g6w6e1"]
+[sub_resource type="Resource" id="Resource_l15g4w5e1"]
 script = ExtResource("9_rpilq")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g6w6e2"]
+[sub_resource type="Resource" id="Resource_l15g4w5e2"]
+script = ExtResource("9_rpilq")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g4w5e3"]
+script = ExtResource("9_rpilq")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g4w5"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g4w5e1"), SubResource("Resource_l15g4w5e2"), SubResource("Resource_l15g4w5e3")])
+
+[sub_resource type="Resource" id="Resource_l15g4w6e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g4w6e2"]
+script = ExtResource("9_rpilq")
+type = "Tank"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g4w6"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g4w6e1"), SubResource("Resource_l15g4w6e2")])
+
+[sub_resource type="Resource" id="Resource_l15g5w1e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g5w1e2"]
+script = ExtResource("9_rpilq")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g5w1"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g5w1e1"), SubResource("Resource_l15g5w1e2")])
+
+[sub_resource type="Resource" id="Resource_l15g5w2e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g5w2e2"]
+script = ExtResource("9_rpilq")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g5w2"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g5w2e1"), SubResource("Resource_l15g5w2e2")])
+
+[sub_resource type="Resource" id="Resource_l15g5w3e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g5w3e2"]
+script = ExtResource("9_rpilq")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g5w3e3"]
+script = ExtResource("9_rpilq")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g5w3"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g5w3e1"), SubResource("Resource_l15g5w3e2"), SubResource("Resource_l15g5w3e3")])
+
+[sub_resource type="Resource" id="Resource_l15g5w4e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g5w4e2"]
+script = ExtResource("9_rpilq")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g5w4"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g5w4e1"), SubResource("Resource_l15g5w4e2")])
+
+[sub_resource type="Resource" id="Resource_l15g5w5e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g5w5e2"]
 script = ExtResource("9_rpilq")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g6w6e3"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g6w6"]
+[sub_resource type="Resource" id="Resource_l15g5w5"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g6w6e1"), SubResource("Resource_l14g6w6e2"), SubResource("Resource_l14g6w6e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g5w5e1"), SubResource("Resource_l15g5w5e2")])
 
-[sub_resource type="Resource" id="Resource_l14g7w1"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g7w2"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g7w3"]
-script = ExtResource("8_h0j0p")
-
-[sub_resource type="Resource" id="Resource_l14g7w4e1"]
+[sub_resource type="Resource" id="Resource_l15g5w6e1"]
 script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
+type = "Reborn"
+count = 5
 
-[sub_resource type="Resource" id="Resource_l14g7w4e2"]
-script = ExtResource("9_rpilq")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g7w4e3"]
-script = ExtResource("9_rpilq")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g7w4e4"]
-script = ExtResource("9_rpilq")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l14g7w4"]
-script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g7w4e1"), SubResource("Resource_l14g7w4e2"), SubResource("Resource_l14g7w4e3"), SubResource("Resource_l14g7w4e4")])
-
-[sub_resource type="Resource" id="Resource_l14g7w5e1"]
-script = ExtResource("9_rpilq")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l14g7w5e2"]
+[sub_resource type="Resource" id="Resource_l15g5w6e2"]
 script = ExtResource("9_rpilq")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g7w5e3"]
+[sub_resource type="Resource" id="Resource_l15g5w6"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g5w6e1"), SubResource("Resource_l15g5w6e2")])
+
+[sub_resource type="Resource" id="Resource_l15g6w1"]
+script = ExtResource("8_h0j0p")
+
+[sub_resource type="Resource" id="Resource_l15g6w2e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g6w2e2"]
+script = ExtResource("9_rpilq")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g6w2"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g6w2e1"), SubResource("Resource_l15g6w2e2")])
+
+[sub_resource type="Resource" id="Resource_l15g6w3e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g6w3e2"]
 script = ExtResource("9_rpilq")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g7w5"]
+[sub_resource type="Resource" id="Resource_l15g6w3"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g7w5e1"), SubResource("Resource_l14g7w5e2"), SubResource("Resource_l14g7w5e3")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g6w3e1"), SubResource("Resource_l15g6w3e2")])
 
-[sub_resource type="Resource" id="Resource_l14g7w6e1"]
+[sub_resource type="Resource" id="Resource_l15g6w4e1"]
 script = ExtResource("9_rpilq")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_l14g7w6e2"]
+[sub_resource type="Resource" id="Resource_l15g6w4e2"]
 script = ExtResource("9_rpilq")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g7w6e3"]
+[sub_resource type="Resource" id="Resource_l15g6w4e3"]
 script = ExtResource("9_rpilq")
-type = "Buffer"
+type = "Erupter"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g7w6e4"]
+[sub_resource type="Resource" id="Resource_l15g6w4"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g6w4e1"), SubResource("Resource_l15g6w4e2"), SubResource("Resource_l15g6w4e3")])
+
+[sub_resource type="Resource" id="Resource_l15g6w5e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g6w5e2"]
+script = ExtResource("9_rpilq")
+type = "Ranged"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g6w5"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g6w5e1"), SubResource("Resource_l15g6w5e2")])
+
+[sub_resource type="Resource" id="Resource_l15g6w6e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g6w6e2"]
+script = ExtResource("9_rpilq")
+type = "Flesheater"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g6w6e3"]
+script = ExtResource("9_rpilq")
+type = "Ranged"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g6w6"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g6w6e1"), SubResource("Resource_l15g6w6e2"), SubResource("Resource_l15g6w6e3")])
+
+[sub_resource type="Resource" id="Resource_l15g7w1"]
+script = ExtResource("8_h0j0p")
+
+[sub_resource type="Resource" id="Resource_l15g7w2"]
+script = ExtResource("8_h0j0p")
+
+[sub_resource type="Resource" id="Resource_l15g7w3e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g7w3e2"]
+script = ExtResource("9_rpilq")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g7w3e3"]
 script = ExtResource("9_rpilq")
 type = "Sundered"
 count = 1
 
-[sub_resource type="Resource" id="Resource_l14g7w6"]
+[sub_resource type="Resource" id="Resource_l15g7w3"]
 script = ExtResource("8_h0j0p")
-entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l14g7w6e1"), SubResource("Resource_l14g7w6e2"), SubResource("Resource_l14g7w6e3"), SubResource("Resource_l14g7w6e4")])
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g7w3e1"), SubResource("Resource_l15g7w3e2"), SubResource("Resource_l15g7w3e3")])
+
+[sub_resource type="Resource" id="Resource_l15g7w4e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g7w4e2"]
+script = ExtResource("9_rpilq")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g7w4e3"]
+script = ExtResource("9_rpilq")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g7w4"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g7w4e1"), SubResource("Resource_l15g7w4e2"), SubResource("Resource_l15g7w4e3")])
+
+[sub_resource type="Resource" id="Resource_l15g7w5e1"]
+script = ExtResource("9_rpilq")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l15g7w5e2"]
+script = ExtResource("9_rpilq")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g7w5e3"]
+script = ExtResource("9_rpilq")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g7w5"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g7w5e1"), SubResource("Resource_l15g7w5e2"), SubResource("Resource_l15g7w5e3")])
+
+[sub_resource type="Resource" id="Resource_l15g7w6e1"]
+script = ExtResource("9_rpilq")
+type = "Reborn"
+count = 5
+
+[sub_resource type="Resource" id="Resource_l15g7w6e2"]
+script = ExtResource("9_rpilq")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g7w6e3"]
+script = ExtResource("9_rpilq")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l15g7w6"]
+script = ExtResource("8_h0j0p")
+entries = Array[ExtResource("9_rpilq")]([SubResource("Resource_l15g7w6e1"), SubResource("Resource_l15g7w6e2"), SubResource("Resource_l15g7w6e3")])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f7hke"]
 texture = ExtResource("12_c53er")
@@ -5914,7 +5873,7 @@ region = Rect2(34.75, 0, 25, 0)
 atlas = ExtResource("50_8rcy0")
 region = Rect2(64, 0, 32, 0)
 
-[node name="Level_14_Alternate" type="Control" unique_id=1958367603 groups=["Green", "GreenLevel"]]
+[node name="Level_15_Alternate" type="Control" unique_id=1958367603 groups=["Green", "GreenLevel"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -5949,7 +5908,7 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=128186070 instance=ExtResource("7_12nl2")]
 visible = false
 position = Vector2(740, 109)
-waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l14g1w1"), SubResource("Resource_l14g1w2"), SubResource("Resource_l14g1w3"), SubResource("Resource_l14g1w4"), SubResource("Resource_l14g1w5"), SubResource("Resource_l14g1w6")])
+waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l15g1w1"), SubResource("Resource_l15g1w2"), SubResource("Resource_l15g1w3"), SubResource("Resource_l15g1w4"), SubResource("Resource_l15g1w5"), SubResource("Resource_l15g1w6")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=1497888431 instance=ExtResource("10_bq28m")]
@@ -5959,7 +5918,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1689922068 instance=ExtResource("7_12nl2")]
 visible = false
 position = Vector2(740, 141)
-waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l14g2w1"), SubResource("Resource_l14g2w2"), SubResource("Resource_l14g2w3"), SubResource("Resource_l14g2w4"), SubResource("Resource_l14g2w5"), SubResource("Resource_l14g2w6")])
+waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l15g2w1"), SubResource("Resource_l15g2w2"), SubResource("Resource_l15g2w3"), SubResource("Resource_l15g2w4"), SubResource("Resource_l15g2w5"), SubResource("Resource_l15g2w6")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=326913154 instance=ExtResource("10_bq28m")]
@@ -5969,7 +5928,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=706710178 instance=ExtResource("7_12nl2")]
 visible = false
 position = Vector2(740, 173)
-waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l14g3w1"), SubResource("Resource_l14g3w2"), SubResource("Resource_l14g3w3"), SubResource("Resource_l14g3w4"), SubResource("Resource_l14g3w5"), SubResource("Resource_l14g3w6")])
+waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l15g3w1"), SubResource("Resource_l15g3w2"), SubResource("Resource_l15g3w3"), SubResource("Resource_l15g3w4"), SubResource("Resource_l15g3w5"), SubResource("Resource_l15g3w6")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=1934912273 instance=ExtResource("10_bq28m")]
@@ -5979,7 +5938,7 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=2041524300 instance=ExtResource("7_12nl2")]
 visible = false
 position = Vector2(740, 205)
-waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l14g4w1"), SubResource("Resource_l14g4w2"), SubResource("Resource_l14g4w3"), SubResource("Resource_l14g4w4"), SubResource("Resource_l14g4w5"), SubResource("Resource_l14g4w6")])
+waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l15g4w1"), SubResource("Resource_l15g4w2"), SubResource("Resource_l15g4w3"), SubResource("Resource_l15g4w4"), SubResource("Resource_l15g4w5"), SubResource("Resource_l15g4w6")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=1681998341 instance=ExtResource("10_bq28m")]
@@ -5989,7 +5948,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=228284926 instance=ExtResource("7_12nl2")]
 visible = false
 position = Vector2(740, 237)
-waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l14g5w1"), SubResource("Resource_l14g5w2"), SubResource("Resource_l14g5w3"), SubResource("Resource_l14g5w4"), SubResource("Resource_l14g5w5"), SubResource("Resource_l14g5w6")])
+waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l15g5w1"), SubResource("Resource_l15g5w2"), SubResource("Resource_l15g5w3"), SubResource("Resource_l15g5w4"), SubResource("Resource_l15g5w5"), SubResource("Resource_l15g5w6")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=1236080942 instance=ExtResource("10_bq28m")]
@@ -5999,7 +5958,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=1329179264 instance=ExtResource("7_12nl2")]
 visible = false
 position = Vector2(740, 269)
-waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l14g6w1"), SubResource("Resource_l14g6w2"), SubResource("Resource_l14g6w3"), SubResource("Resource_l14g6w4"), SubResource("Resource_l14g6w5"), SubResource("Resource_l14g6w6")])
+waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l15g6w1"), SubResource("Resource_l15g6w2"), SubResource("Resource_l15g6w3"), SubResource("Resource_l15g6w4"), SubResource("Resource_l15g6w5"), SubResource("Resource_l15g6w6")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1772735517 instance=ExtResource("10_bq28m")]
@@ -6009,7 +5968,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=2003164474 instance=ExtResource("7_12nl2")]
 visible = false
 position = Vector2(740, 301)
-waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l14g7w1"), SubResource("Resource_l14g7w2"), SubResource("Resource_l14g7w3"), SubResource("Resource_l14g7w4"), SubResource("Resource_l14g7w5"), SubResource("Resource_l14g7w6")])
+waves = Array[ExtResource("8_h0j0p")]([SubResource("Resource_l15g7w1"), SubResource("Resource_l15g7w2"), SubResource("Resource_l15g7w3"), SubResource("Resource_l15g7w4"), SubResource("Resource_l15g7w5"), SubResource("Resource_l15g7w6")])
 make_green = true
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=633272156 instance=ExtResource("10_bq28m")]
