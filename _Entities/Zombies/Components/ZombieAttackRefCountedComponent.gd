@@ -130,26 +130,7 @@ func _on_AttackTimer_timeout() -> void:
 		if(target_demon.has_method("get_health") && (target_demon.get_health()!=null)): 
 			#TODO Give Spiderling Get Health
 			if(target_demon.get_health() >= 0):
-				if target_demon.has_method("eat_zombie"):
-					if target_demon.can_eat_zombie == true :
-					#	#print("Demon Can Eat Me Time to Die")
-						target_demon.eat_zombie(parent_zombie)
-						parent_zombie.die()
-				if target_demon.has_method("spinalOcculumWyrmBuffed"):
-					if target_demon.can_damage_zombie == true :
-						parent_zombie.take_damage(false,10,false)
-				if target_demon.has_method("lightning_maw_buff"):
-					if target_demon.is_lightning_maw_buff:
-						parent_zombie.take_damage(false,target_demon.get_lightning_damage(),false)
-
-				##print(attack_power ," Calling Take Damage on ", target_demon)
-
-				if target_demon is Zombie:
-					# Zombie vs flipped zombie: Zombie.take_damage's first parameter is
-					# is_link_damage, so the demon-style call landed only its default 1.0.
-					target_demon.take_damage(false, attack_power, false)
-				else:
-					target_demon.take_damage(attack_power)
+				_strike(target_demon)
 				# Schedule next hit at same animation fraction in next loop
 				var safe_speed : float = max(parent_zombie.attack_speed, 0.01)
 				attack_time_wait_time = 1.0 / safe_speed
@@ -160,6 +141,29 @@ func _on_AttackTimer_timeout() -> void:
 			parent_zombie.die()
 	else:
 		stop_attack()
+
+# One attack landing on target. Ranged zombies override this to fire a projectile.
+func _strike(target: Node) -> void:
+	if target.has_method("eat_zombie"):
+		if target.can_eat_zombie == true :
+		#	#print("Demon Can Eat Me Time to Die")
+			target.eat_zombie(parent_zombie)
+			parent_zombie.die()
+	if target.has_method("spinalOcculumWyrmBuffed"):
+		if target.can_damage_zombie == true :
+			parent_zombie.take_damage(false,10,false)
+	if target.has_method("lightning_maw_buff"):
+		if target.is_lightning_maw_buff:
+			parent_zombie.take_damage(false,target.get_lightning_damage(),false)
+
+	##print(attack_power ," Calling Take Damage on ", target)
+
+	if target is Zombie:
+		# Zombie vs flipped zombie: Zombie.take_damage's first parameter is
+		# is_link_damage, so the demon-style call landed only its default 1.0.
+		target.take_damage(false, attack_power, false)
+	else:
+		target.take_damage(attack_power)
 
 # Stops the attack and resumes movement
 func stop_attack() -> void:

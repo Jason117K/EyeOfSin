@@ -147,8 +147,8 @@ func _ready() -> void:
 	
 	speedComp = ZombieSpeedRefCountedComponent.new(self)
 	healthComp = ZombieHealthRefCountedComponent.new(self)
-	attackComp = ZombieAttackRefCountedComponent.new(self)
-	
+	attackComp = _make_attack_comp()
+
 	death_blood.animation_finished.connect(free_zombie)
 
 	animatedSprite.attackComp = attackComp
@@ -216,6 +216,10 @@ func hide_highlight(new_zombie_to_highlight : Zombie = null)->void:
 			
 func get_attack_comp()->ZombieAttackRefCountedComponent:
 	return attackComp
+
+# Zombie types with a non-melee attack (Ranged) override this.
+func _make_attack_comp() -> ZombieAttackRefCountedComponent:
+	return ZombieAttackRefCountedComponent.new(self)
 
 func make_demo() -> void:
 	is_demo = true

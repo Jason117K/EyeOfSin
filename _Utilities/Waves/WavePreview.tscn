@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://exlne6jopiwu" path="res://_Entities/Zombies/Notif_Icons/TickerZombie.png" id="17_bs2g5"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="17_ubrib"]
 [ext_resource type="Texture2D" uid="uid://cuqd6r3l53ioq" path="res://_Entities/Zombies/_Tank/TankZombie.png" id="17_whwra"]
+[ext_resource type="Texture2D" uid="uid://ck5anay3bncnf" path="res://_Entities/Zombies/Notif_Icons/RangedZombie.png" id="18_8gou2"]
 [ext_resource type="Texture2D" uid="uid://cy81nbf656x8o" path="res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png" id="18_ay8qy"]
 [ext_resource type="Texture2D" uid="uid://cm5r3ye5lej7b" path="res://_Entities/Zombies/Notif_Icons/FootBallZombie.png" id="19_iqvn7"]
 
@@ -358,6 +359,32 @@ flip_h = true
 script = ExtResource("7_47ah1")
 
 [node name="Tank" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/TankHbox" unique_id=722802307]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_hksyf")
+bbcode_enabled = true
+text = "x99"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RangedHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=297871163]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -1
+
+[node name="RangedTexture" type="TextureRect" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RangedHbox" unique_id=829667941]
+custom_minimum_size = Vector2(0, 59)
+layout_mode = 2
+texture = ExtResource("18_8gou2")
+expand_mode = 3
+stretch_mode = 5
+flip_h = true
+script = ExtResource("7_47ah1")
+
+[node name="Ranged" type="RichTextLabel" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RangedHbox" unique_id=129052519]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 mouse_filter = 2

@@ -60,7 +60,7 @@ func _ready() -> void:
 	super()
 	current_demon_type = Global.DEMON_TYPE.MAW
 	_init_collision_mask(self, false)
-	print("Og Detection Radius is ", ogDetectionRadius)
+	#print("Og Detection Radius is ", ogDetectionRadius)
 	maw_buff_unlocked.connect(Global.unlock_buff)
 	# --- Tentacle setup ---
 	setup_tentacles()
