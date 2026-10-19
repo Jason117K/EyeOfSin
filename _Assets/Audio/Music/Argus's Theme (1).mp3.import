@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://we5p4kumeiwp"
+path="res://.godot/imported/Argus's Theme (1).mp3-e97b3e2397c3b5936292a71eb775ec7f.mp3str"
+
+[deps]
+
+source_file="res://_Assets/Audio/Music/Argus's Theme (1).mp3"
+dest_files=["res://.godot/imported/Argus's Theme (1).mp3-e97b3e2397c3b5936292a71eb775ec7f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

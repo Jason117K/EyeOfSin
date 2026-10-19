@@ -1,7 +1,19 @@
 extends Demon
 
+# Runes are 64x32; single-cell glyphs sit in the left half, Maw's spans both cells.
+const RUNE_OFFSET := Vector2(16, 0)
+const RUNE_TEXTURES := {
+	Global.DEMON_TYPE.CRAWLER: preload("res://_Assets/Runes/Crawler_Rune.png"),
+	Global.DEMON_TYPE.OCCULUM: preload("res://_Assets/Runes/Occulum_Rune.png"),
+	Global.DEMON_TYPE.SPINAL_OCCULUM: preload("res://_Assets/Runes/SpinalOcculum_Rune.png"),
+	Global.DEMON_TYPE.WYRM: preload("res://_Assets/Runes/Wyrm_Rune.png"),
+	Global.DEMON_TYPE.HIVE: preload("res://_Assets/Runes/Hive_Rune.png"),
+	Global.DEMON_TYPE.MAW: preload("res://_Assets/Runes/Maw_Rune.png"),
+}
+
 @export var blood_clone_respawn_time : int = 45
 @onready var blood_clone_respawn_timer : Timer = $RespawnBloodCloneTimer
+@onready var rune_sprite : Sprite2D = $Sprite2D
 var demon_selection_menu : Control
 var blood_clone
 # Set when the clone is dispelled while place_blood_demon is still awaiting it.
@@ -23,8 +35,11 @@ func _ready() -> void:
 	blood_clone_respawn_timer.timeout.connect(summon_blood_clone)
 	blood_clone_respawn_timer.wait_time = blood_clone_respawn_time
 
-func set_demon_type(new_demon_type : Global.DEMON_TYPE)->void:
+# draw_rune is false for a Maw's right blocker: the left one draws the wide rune.
+func set_demon_type(new_demon_type : Global.DEMON_TYPE, draw_rune : bool = true)->void:
 	current_demon_type = new_demon_type
+	rune_sprite.texture = RUNE_TEXTURES.get(new_demon_type) if draw_rune else null
+	rune_sprite.offset = RUNE_OFFSET
 	#print("Current Demon Type Is : ", current_demon_type)
 
 			

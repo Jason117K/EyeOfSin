@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds5ia02s4qpr"
+path="res://.godot/imported/eye of syn - chthonic (1).mp3-61322811a79dd3ffc6e7a5b32f9630ff.mp3str"
+
+[deps]
+
+source_file="res://_Assets/Audio/Music/eye of syn - chthonic (1).mp3"
+dest_files=["res://.godot/imported/eye of syn - chthonic (1).mp3-61322811a79dd3ffc6e7a5b32f9630ff.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
