@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://s7jaakpv304h"]
 
-[ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.gd" id="1_2a3qg"]
+[ext_resource type="Script" uid="uid://dbdxxk82fvxry" path="res://_Entities/Zombies/_HeraldZombie/herald_zombie.gd" id="1_2a3qg"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_a2n58"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_esdcc"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_6qb65"]
@@ -411,10 +411,10 @@ animations = [{
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_2a3qg")
-health = 50
-time_between_health_regen = 3
+health = 800
 speed = 8.0
-attack_power = 10
+attack_power = 60
+charge_cost = 9
 silence_field_position = Vector2(-3, 3)
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=2125197195 node_paths=PackedStringArray("polygon", "line")]
@@ -475,7 +475,7 @@ shape = SubResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
 sprite_frames = SubResource("11")
-animation = &"death"
+animation = &"Walk"
 flip_h = true
 script = ExtResource("13_78xmm")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -501,4 +501,3 @@ script = ExtResource("16_iwgk2")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]

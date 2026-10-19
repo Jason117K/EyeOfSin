@@ -59,6 +59,9 @@ and the step from Medium to High is bigger than the step from Low to Medium.
 | Tank | 2000 + armor | 8 (Low) | 500 per hit, about 1 hit/s | 400 | The highest-HP unit in the game: lumbers in, kills almost any demon in 1–2 hits, and launches a Minion past your front line every 5 s. A Maw can't eat it. **Not playtested yet.** |
 | Minion ("Urchin"; launched by Tanks, can also be placed in waves) | 60 | 14 (Low–Med) | 50/s | 5 | Fragile harasser that lands *behind* the demon its Tank is attacking, then chews into the back line |
 | Rohan | 1000 + armor | 8 | 100 | 1000 | Boss, only in specific levels |
+| Act 2 Boss (`Act2Boss`) | Phase 1 1500, phase 2 1000 *per twin*, phase 3 1500 *per twin* (placeholders) | 8 / 10 / 6 | Two melee attacks per phase: 100 or 200, 75 or 150, 150 or 300 (placeholders) | 1000 | Three-phase boss that splits into twins. **Not playtested yet.** |
+| Argus, Act 3 Boss (`Argus`) | 3000, **one pool shared** by both dimensions (placeholder) | 10 until planted | none (never attacks) | 1000 | Stands in both dimensions; immune in a dimension while its Herald lives. **Not playtested yet.** |
+| Herald (spawned by Argus) | 800 (placeholder) | 8 | 60 (placeholder) | — | Shields Argus; reaching the house loses the level |
 
 ### Special mechanics (as the code has them)
 - **Armor** (Unhallower, Rohan): hits of 10 or more lose 5 damage; smaller hits are halved.
@@ -124,6 +127,43 @@ and the step from Medium to High is bigger than the step from Low to Medium.
   - **Minion:** has no `"Minion"` entry in `Global.zombie_notif_icons` and no icon image
     (only sprite sheets). `minion_zombie.gd` returns `Global.minion_icon`, which doesn't
     exist, so **clicking a Minion in game errors** when the info bar asks for its icon.
+- **Act 2 Boss** (`_Entities/Zombies/_Act2Boss/act2_boss_zombie.gd`, built 2026-10-19):
+  - **Attacks:** every phase walks the lane and picks one of its two melee attacks at
+    random (`Attack_PhaseN` / `_Alt`). Each attack lands on a set frame for its own
+    damage.
+  - **Phase 1 at 0 HP:** it plays `death_phase_1` (untouchable), becomes phase 2, and
+    spawns a phase-2 **twin** in the other dimension at the same spot.
+  - **Phase 2 at 0 HP:** a twin freezes on the first frame of `death_phase_2` for
+    `twin_wait_time` (10 s).
+    - If the other twin falls inside that window, both play `death_phase_2` and become
+      phase 3 together.
+    - Otherwise the downed twin revives at full phase-2 health.
+  - **Phase 3 at 0 HP:** a real death; the boss is freed after `death_phase_3`.
+  - **Per-phase inspector groups:** health, speed, sprite / ray / fire / Syn-mark
+    positions, and each attack's damage and hit frame. Each phase has its own hurtbox.
+  - **Immunities:** a Maw can't eat it (`charge_cost` 9), and Lucretia's grasp can't flip
+    it. Silence halves its damage.
+  - `bloodWorth` would pay out at every phase's zero-health moment.
+- **Argus, Act 3 Boss** (`_Entities/Zombies/_Act3Boss/argus_boss.gd` +
+  `_HeraldZombie/herald_zombie.gd`, built 2026-10-19):
+  - **Arrival:** placed in one spawner. That instance is the *original*: it spawns a *copy*
+    at the same spot in the other dimension, sharing its health component (one pool, each
+    in its dimension's colour), plus two Heralds in Green lane 2 and Purple lane 7.
+  - **Movement:** Argus walks `walk_distance` (250 px) from his spawn point, then stands
+    playing `Idle`. He never attacks.
+  - **Immunity:** he's immune in a dimension while its Herald is alive.
+    - **One Herald down:** vulnerable in its dimension for `herald_down_time` (8 s). Then
+      the Herald revives at full health where it fell (its death animation played in
+      reverse).
+    - **Other Herald down inside that window:** both stay down for `both_down_time` (15 s),
+      and Argus is vulnerable in both dimensions.
+  - **What can't hurt him:** hits and bleed only land while vulnerable. Mowers and direct
+    `die()` calls can't kill Argus while he has health left. Neither Argus nor the Heralds
+    can be eaten by a Maw (`charge_cost` 9) or flipped by Lucretia.
+  - **A Herald reaching the house** calls `Global.lose_game()`.
+  - **At 0 health:** both Argus instances fade out and the Heralds die for good, so the
+    level can end.
+  - **Placeholders:** name, description and icon (Rohan's).
 - **Silence** (from the SpinalOcculum + Hive synergy only): halves zombie damage, stops
   Reanimator summons, stops the Sundered vault, cuts the Erupter blast to 0, and skips the
   Amalgam's second life.
@@ -769,3 +809,7 @@ Reborn 2, Unhallower 50, Sundered 25, Minion 5 and Rohan 1000 look right as they
 - 2026-10-19 — Level 16 built (§5.7): 6 waves trending toward heavies, 4 Tanks, gaps
   60/85/95/105/115, roots renamed from the copied `Level_14`, level paths fixed, the same
   pop-up handler fix as Levels 12/15, and the copied `L14 v1` preset replaced by `Level 16 v1`.
+- 2026-10-19 — Act 2 Boss implemented (§2) and registered as `Act2Boss` (danger 1000). Its
+  health, speed and damage values are placeholders to tune.
+- 2026-10-19 — Act 3 Boss Argus and his Heralds implemented (§2), registered as `Argus`
+  (danger 1000). Health, damage and timers are placeholders.

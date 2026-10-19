@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8qudo807qtld"]
 
-[ext_resource type="Script" uid="uid://biurf77ydi8xj" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.gd" id="1_majkd"]
+[ext_resource type="Script" uid="uid://dw54wttadmoep" path="res://_Entities/Zombies/_Act2Boss/act2_boss_zombie.gd" id="1_majkd"]
 [ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="2_dii3e"]
 [ext_resource type="Script" uid="uid://dlbv4pit17dnu" path="res://addons/curved_lines_2d/scalable_arc.gd" id="3_q1d83"]
 [ext_resource type="Script" uid="uid://dl1t88tthmwts" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="4_547xc"]
@@ -99,6 +99,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(179, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phase2"]
+size = Vector2(179, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phase3"]
 size = Vector2(179, 50)
 
 [sub_resource type="ShaderMaterial" id="20"]
@@ -676,7 +682,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wjjbq")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Phase1",
 "speed": 12.0
 }, {
@@ -714,7 +720,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tyohy")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Phase1_Alt",
 "speed": 5.0
 }, {
@@ -749,7 +755,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ys16u")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Phase2",
 "speed": 12.0
 }, {
@@ -781,7 +787,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wsk5w")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Phase2_Alt",
 "speed": 5.0
 }, {
@@ -825,7 +831,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_selab")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Phase3",
 "speed": 5.0
 }, {
@@ -875,7 +881,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oismm")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_Phase3_Alt",
 "speed": 5.0
 }, {
@@ -1000,7 +1006,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rett6")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_phase_1",
 "speed": 5.0
 }, {
@@ -1029,7 +1035,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h15cd")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_phase_2",
 "speed": 5.0
 }, {
@@ -1100,19 +1106,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jaj5y")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_phase_3",
 "speed": 5.0
 }]
 
-[node name="Reborn" type="Area2D" unique_id=1498839439 groups=["Zombie"]]
+[node name="Act2Boss" type="Area2D" unique_id=1498839439 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_majkd")
-health = 50
-time_between_health_regen = 3
-speed = 8.0
-attack_power = 10
+charge_cost = 9
 silence_field_position = Vector2(-3, 3)
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=2125197195 node_paths=PackedStringArray("polygon", "line")]
@@ -1174,18 +1177,20 @@ shape = SubResource("1")
 [node name="HurtBoxComponent_Phase2" type="CollisionShape2D" parent="." unique_id=1688658726]
 visible = false
 position = Vector2(-22.5, 5.000001)
-shape = SubResource("1")
+shape = SubResource("RectangleShape2D_phase2")
+disabled = true
 
 [node name="HurtBoxComponent_Phase3" type="CollisionShape2D" parent="." unique_id=788527401]
 visible = false
 position = Vector2(10.5, 51)
-shape = SubResource("1")
+shape = SubResource("RectangleShape2D_phase3")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
 position = Vector2(-12, 4)
 sprite_frames = SubResource("11")
-animation = &"Walk_Phase3"
+animation = &"Walk_Phase1"
 flip_h = true
 script = ExtResource("13_ivwtn")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -1211,4 +1216,3 @@ script = ExtResource("16_kwp8k")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_AnimatedSprite_animation_finished"]
