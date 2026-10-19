@@ -1171,7 +1171,7 @@ texture = ExtResource("37_fluxn")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]
 material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = ExtResource("8_emrru")
-animation = &"idle_Occulum"
+animation = &"spawn"
 autoplay = "spawn"
 script = ExtResource("15_kwpry")
 
