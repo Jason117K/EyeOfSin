@@ -1297,8 +1297,10 @@ health = 800.0
 z_index = 1
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = ExtResource("8_jphsv")
-animation = &"attack_Crawler_2"
+animation = &"spawn"
 autoplay = "spawn"
+frame = 6
+frame_progress = 1.0
 flip_h = true
 script = ExtResource("21_ol6r1")
 

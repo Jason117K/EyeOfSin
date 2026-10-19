@@ -1008,7 +1008,7 @@ texture = ExtResource("35_7l7df")
 z_index = 2
 material = SubResource("ShaderMaterial_a84i6")
 sprite_frames = ExtResource("10_ni4ch")
-animation = &"idle"
+animation = &"spawn"
 autoplay = "spawn"
 script = ExtResource("16_kvwqv")
 

@@ -993,7 +993,7 @@ texture = ExtResource("33_ds7ka")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1046201543]
 material = SubResource("ShaderMaterial_fuqq8")
 sprite_frames = ExtResource("9_l4gaf")
-animation = &"idle_Hive"
+animation = &"attack"
 autoplay = "spawn"
 script = ExtResource("4_3fijn")
 modulate_factor = Vector4(1, 1, 1, 1)
