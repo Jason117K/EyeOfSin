@@ -35,7 +35,7 @@ var swap_demo_scene := load("res://_UI/GameDemonstrations/swap_ability_demo.tscn
 @onready var zombie_spawner_6 := $GameLayer/ZombieSpawner6
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hive_button :TextureButton= demonSelectionMenu.get_hive_button()
-@onready var hbox := demonSelectionMenu.get_node("PanelContainer/VBoxContainer/HBoxContainer")
+@onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
 
 #region Tutorial Step Definitions (sequential order — read top to bottom)
@@ -293,11 +293,14 @@ func show_only_demon_buttons(visible_containers: Array) -> void:
 			child.visible = should_show
 
 
+# Only demons the player has unlocked. Wyrm unlocks after this level: a hand-placed
+# regular Wyrm would unlock "X + Wyrm" synergies, which the Queens must not.
 func _show_all_buttons() -> void:
-	show_only_demon_buttons(ALL_DEMON_CONTAINERS)
-	# Also show non-demon UI and parent containers
-	for container_name in ALL_DEMON_CONTAINERS:
-		hbox.get_node(container_name).visible = true
+	var unlocked : Array = []
+	for demon_name : String in DemonLoadout.DEMONS:
+		if Progress.is_demon_unlocked(demon_name):
+			unlocked.append(demon_name)
+	hide_all_demon_buttons_with_exception(unlocked)
 	world_swap_button.show()
 	codex_button.show()
 

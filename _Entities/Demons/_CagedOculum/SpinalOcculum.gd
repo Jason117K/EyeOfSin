@@ -104,6 +104,7 @@ func receive_buff(bufferName:Demon) -> void:
 		super(demonName)
 		match demonName:
 			"Occulum":
+				_place_rib_in_front_of(bufferName)
 				blood_rib.show()
 				blood_rib_collision.disabled = false
 
@@ -125,10 +126,24 @@ func receive_buff(bufferName:Demon) -> void:
 
 func debuff() -> void:
 	super()
+	# The rib only stands while an Occulum buffs this Spinal.
+	blood_rib.hide()
+	blood_rib_collision.set_deferred("disabled", true)
 	silence_field.deactivate()
 	spike_rock.deactivate()
 	web.deactivate()
 	undo_lightning_maw_buff()
+
+# The rib sits in front of the buffing Occulum, wherever it is: offsets taken from
+# the original layout (+36 sprite / +53 collision with the Occulum one cell, 32 px,
+# to the right), so a two-cell gap no longer leaves the rib behind the Occulum.
+const RIB_SPRITE_OFFSET_FROM_OCCULUM := 4.0
+const RIB_COLLISION_OFFSET_FROM_OCCULUM := 21.0
+
+func _place_rib_in_front_of(occulum : Demon) -> void:
+	var dx := occulum.get_cell_global_position().x - get_cell_global_position().x
+	blood_rib.position.x = dx + RIB_SPRITE_OFFSET_FROM_OCCULUM
+	blood_rib_collision.position.x = dx + RIB_COLLISION_OFFSET_FROM_OCCULUM
 
 func unlock_new_buff(demonName:String)->void:
 	if isBuffed == false:

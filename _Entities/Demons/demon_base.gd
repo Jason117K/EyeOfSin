@@ -92,6 +92,9 @@ var syn_timer : Timer
 var invulnerable := false 
 # Gaze of Baal (swap sorcery). Buff/undo are idempotent through this flag.
 var is_baal_buffed := false
+# False for demons that never take buffs (Wyrm Queen): BuffNodes skips them, so they
+# can't receive a buff or unlock an "X + <them>" synergy.
+var can_receive_buffs := true
 var is_shielded := false
 var reduced_damage_percent := 0.0
 var game_time: float = 0.0
@@ -178,6 +181,10 @@ func _ready() -> void:
 	erase_button.pressed.connect(die_fromClearSpace)
 	erase_button.pressed.connect(Global.demon_removed)
 	erase_button.hide()
+	# Above every game element (scenes go up to z 8) and below the drag preview
+	# (100); at the demon's own z it was covered by later demons, zombies and halos.
+	erase_button.z_as_relative = false
+	erase_button.z_index = 50
 	
 	spawn_juice_anim.play()
 	

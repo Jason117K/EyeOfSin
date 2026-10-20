@@ -594,51 +594,36 @@ func resetOcculumCount() -> void:
 	#game_controller.on_scene_1 = true 
 	
 	
-func incrementOcculumCount() -> void:
-	if game_controller.on_purple_scene():
-		purple_occulum_count += 1
-		for menu in demon_selection_menus:
-			if menu != null:
-				if !menu.is_alt:
-					menu.adjust_occulum_cost() 
-	else: #Green
+# Occulum counts are per dimension and keyed by the OCCULUM's dimension, not the one
+# being viewed: a Green Occulum dying while you watched Purple used to decrement
+# Purple's count (it went negative, making a Purple Occulum cost 5).
+func incrementOcculumCount(is_green : bool) -> void:
+	if is_green:
 		green_occulum_count += 1
-		for menu in demon_selection_menus:
-			if menu != null:
-				if menu.is_alt:
-					menu.adjust_occulum_cost() 
-				
-	#occulumCount += 1
-	#for menu in demon_selection_menus:
-		#if menu != null:
-			#menu.increaseOcculumCost() 
-	##demon_selection_menu.increaseOcculumCost()
+	else:
+		purple_occulum_count += 1
+	for menu in demon_selection_menus:
+		if menu != null and is_instance_valid(menu) and menu.is_alt == is_green:
+			menu.adjust_occulum_cost()
 
-func decrement_occulum_count()->void:
-	if game_controller.on_purple_scene():
-		purple_occulum_count -= 1
-		for menu in demon_selection_menus:
-			if menu != null:
-				if !menu.is_alt:
-					menu.adjust_occulum_cost() 
-	else: #Green
-		green_occulum_count -= 1
-		for menu in demon_selection_menus:
-			if menu != null:
-				if menu.is_alt:
-					menu.adjust_occulum_cost() 	
+func decrement_occulum_count(is_green : bool)->void:
+	if is_green:
+		green_occulum_count = maxi(green_occulum_count - 1, 0)
+	else:
+		purple_occulum_count = maxi(purple_occulum_count - 1, 0)
+	for menu in demon_selection_menus:
+		if menu != null and is_instance_valid(menu) and menu.is_alt == is_green:
+			menu.adjust_occulum_cost()
 
 
-	
 func incrementOcculumCountVisual() -> void:
 	occulumCountVisual += 1
 	
-func getOcculumCount() -> int:
+# is_green = null reads the dimension being viewed.
+func getOcculumCount(is_green = null) -> int:
 	##print("SSReturn , ", occulumCount)
-	if game_controller.on_purple_scene():
-		return purple_occulum_count
-	else:
-		return green_occulum_count
+	var green : bool = (not game_controller.on_purple_scene()) if is_green == null else is_green
+	return green_occulum_count if green else purple_occulum_count
 	#return occulumCount
 
 func damage_all_zombies_with_link(damage : float, zombie_to_exclude : Zombie)->void:
@@ -964,6 +949,9 @@ func get_column_death_explosion() -> PackedScene:
 func hide_notification_bar() -> void:
 	if notification_bar != null:
 		notification_bar.hide()
+		# Drop the tracked unit too: it may belong to a level about to be freed.
+		notification_bar.current_zombie = null
+		notification_bar.current_demon = null
 	
 func get_blood_scene() -> PackedScene:
 	return blood_scene

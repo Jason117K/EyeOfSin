@@ -212,6 +212,14 @@ static func is_sorcery_unlocked(id: StringName) -> bool:
 	return true # not gated
 
 
+## True once any sorcery is unlocked; until then the select screens lock the sorcery menu.
+static func any_sorcery_unlocked() -> bool:
+	for id: StringName in SORCERY_UNLOCKS:
+		if is_sorcery_unlocked(id):
+			return true
+	return false
+
+
 static func is_demon_unlocked(demon_name: String) -> bool:
 	var level: int = DEMON_UNLOCKS.get(demon_name, -1)
 	if level < 0:

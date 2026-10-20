@@ -255,9 +255,8 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.PURSUING:
 
-			if not current_target or not is_instance_valid(current_target):
-				state = State.RETURNING
-				velocity = Vector2.ZERO
+			if _target_gone():
+				_head_home()
 				return
 			var direction :Vector2= current_target.global_position - global_position
 
@@ -275,9 +274,8 @@ func _physics_process(delta: float) -> void:
 					state = State.ATTACKING
 
 		State.ATTACKING:
-			if not current_target or not is_instance_valid(current_target):
-				state = State.RETURNING
-				velocity = Vector2.ZERO
+			if _target_gone():
+				_head_home()
 				return
 			var distance := global_position.distance_to(current_target.global_position)
 			if distance > attack_range:
@@ -298,6 +296,19 @@ func _physics_process(delta: float) -> void:
 				state = State.IDLE
 		State.IDLE:
 			velocity = Vector2.ZERO
+
+# Dead zombies aren't freed (they stay for the death animation), and a flipped one
+# leaves the "Zombie" group: either way the target is gone, even if still valid.
+# Before this a wasp the swarm didn't re-task hovered over the corpse forever.
+func _target_gone() -> bool:
+	return current_target == null or not is_instance_valid(current_target) \
+			or current_target.get("is_dead") == true or not current_target.is_in_group("Zombie")
+
+func _head_home() -> void:
+	current_target = null
+	velocity = Vector2.ZERO
+	state = State.RETURNING
+	exit_combat()
 
 # Handles the drone dealing attack damage 
 func _on_attack_timer_timeout() -> void:

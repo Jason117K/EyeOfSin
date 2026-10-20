@@ -57,6 +57,9 @@ var ability_screen := "res://_UI/ability_control_panel.tscn"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# The sorcery menu stays darkened and unclickable until a sorcery is unlocked.
+	UiFx.set_locked($SorceryPanel, $SorceryPanel/MarginContainer/VBoxContainer/MarginContainer/Button,
+			not Progress.any_sorcery_unlocked())
 	canPlayLevel2 = Progress.is_level_unlocked(2)
 	canPlayLevel3 = Progress.is_level_unlocked(3)
 	canPlayLevel4 = Progress.is_level_unlocked(4)

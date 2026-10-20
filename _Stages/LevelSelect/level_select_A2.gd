@@ -43,6 +43,9 @@ var level_14_alt := ("res://_Stages/Level14/Level14_Alternate.tscn")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# The sorcery menu stays darkened and unclickable until a sorcery is unlocked.
+	var sorcery_button : BaseButton = $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton
+	UiFx.set_locked(sorcery_button, sorcery_button, not Progress.any_sorcery_unlocked())
 	
 	Global.hideDemonSelectionMenu()
 	swap_icon.texture = Global.get_swap_icon()

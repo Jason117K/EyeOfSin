@@ -142,7 +142,7 @@ func tick_buff(_delta: float) -> void:
 						##print("Demon to Buff is ", demonToBuff.name)
 						bloodTileVisible = true
 						#Check our list of valid demons to buff
-						if _should_buff(demonToBuff):
+						if _should_buff(demonToBuff) and demonToBuff.can_receive_buffs:
 							if demonToBuff.isBuffed == false:
 								child.set_buff_inactive()
 								demonToBuff.receive_buff(demon)

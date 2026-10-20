@@ -531,7 +531,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 			##print("Selected Demon Scene is : ", demon_instance.name)
 			#TODO change to occulum_placed
 			occulum_placed.emit(grid_pos)
-			Global.incrementOcculumCount()
+			Global.incrementOcculumCount(demon_instance.is_green)
 		elif "Crawler" in demon_instance.name:
 			##print("[TUTORIAL] Emit Crawler Placed")
 			crawler_placed.emit(grid_pos)

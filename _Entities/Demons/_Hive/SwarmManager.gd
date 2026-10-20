@@ -113,7 +113,8 @@ func spawn_initial_drones() -> void:
 		var rest_pos := calculate_rest_position(i)
 		drone_rest_positions[drone] = rest_pos
 		drone.global_position = hive.global_position + rest_pos
-		drone.rest_position = rest_pos
+		# Absolute, like return_to_position(): a wasp that heads home on its own uses it.
+		drone.rest_position = hive.global_position + rest_pos
 
 		drone.connect("drone_died", Callable(self, "_on_drone_died"))
 
@@ -129,8 +130,10 @@ func _on_enemy_entered(area: Area2D) -> void:
 		optimize_drone_assignments()
 
 
+# Any area the swarm is tracking is cleaned up, whatever its group: a
+# Lucretia-flipped zombie has left "Zombie" but its wasps still need releasing.
 func _on_enemy_exited(area: Area2D) -> void:
-	if area.is_in_group("Zombie"):
+	if area.is_in_group("Zombie") or area in enemy_queue or area in drone_assignments:
 		enemy_queue.erase(area)
 		active_enemies.erase(area)
 
@@ -155,7 +158,7 @@ func _on_enemy_died(enemy: Zombie) -> void:
 func return_drones_to_rest() -> void:
 	for drone:Node in available_drones:
 		if is_instance_valid(drone):
-			drone.return_to_position(hive.global_position + drone_rest_positions[drone])
+			drone.return_to_position(hive.global_position + drone_rest_positions.get(drone, Vector2.ZERO))
 			drone.setAnimation("idle")
 
 
@@ -210,6 +213,10 @@ func optimize_drone_assignments() -> void:
 			var drone :Area2D= available_drones.pop_front()
 			drone_assignments[enemy].append(drone)
 			command_drone_to_attack(drone, enemy)
+
+	# Wasps beyond max_drones (left over after a buff that raised it ended) were
+	# never commanded and kept their old orders: send them home.
+	return_drones_to_rest()
 
 
 func command_drone_to_attack(drone: Node, enemy: Area2D) -> void:
@@ -275,7 +282,7 @@ func _on_DroneRespawnTimer_timeout() -> void:
 	var rest_pos := calculate_rest_position(available_drones.size() - 1)
 	drone_rest_positions[new_drone] = rest_pos
 	new_drone.global_position = hive.global_position + rest_pos
-	new_drone.rest_position = rest_pos
+	new_drone.rest_position = hive.global_position + rest_pos
 	new_drone.connect("drone_died", Callable(self, "_on_drone_died"))
 
 	drones_to_respawn -= 1

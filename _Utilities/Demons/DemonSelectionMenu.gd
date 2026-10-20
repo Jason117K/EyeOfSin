@@ -301,13 +301,24 @@ func _on_OcculumButton_pressed() -> void:
 	OcculumCost  += 5
 	clicked_Eye.emit()
 	
+# This menu's own dimension, priced by the Occulum scene's own formula.
 func adjust_occulum_cost() -> void:
-	#OcculumCostLabel.text = str(50+(Global.getOcculumCount() * 15))
-	if Global.getOcculumCount() <= Global.num_cheap_occulum:
-		
-		OcculumCostLabel.text = str(50 + (Global.getOcculumCount() * 15))
-	else:
-		OcculumCostLabel.text = str(50 + ( ((Global.getOcculumCount()-Global.num_cheap_occulum) * 25) + (Global.num_cheap_occulum * 15) ))
+	OcculumCostLabel.text = str(int(_get_occulum_template().cost_for_count(Global.getOcculumCount(is_alt))))
+
+var _occulum_template : Node
+
+# An Occulum that never enters the tree, only to read its cost settings.
+func _get_occulum_template() -> Node:
+	if _occulum_template == null:
+		_occulum_template = occulum_scene.instantiate()
+		if _occulum_template.has_method("apply_stats"):
+			_occulum_template.apply_stats()
+	return _occulum_template
+
+func _exit_tree() -> void:
+	if _occulum_template != null:
+		_occulum_template.free()
+		_occulum_template = null
 	#print(self," Cost On This Menu is ", OcculumCostLabel.text)
 
 

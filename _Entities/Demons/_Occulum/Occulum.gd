@@ -128,14 +128,17 @@ func get_cost() -> float:
 		
 	#15,25
 	
-	if Global.getOcculumCount() <= 4:
-		#print("Cost in Occulum Was ", cost)
-		cost = cost + (Global.getOcculumCount() * cost_step)
-		#print("Cost in Occulum Is Now ", cost)
-	else:
-		cost = cost + ( ((Global.getOcculumCount()-4) * cost_step_after_four) + (4 * cost_step) )
-	#print(Global.getOcculumCount() , " Cost in ",4 ,"Occulum is ", cost)
+	# This Occulum's own dimension (is_green is set before placement asks the cost).
+	cost = cost_for_count(Global.getOcculumCount(is_green))
 	return cost 
+
+# Price of the next Occulum when `count` are already placed in a dimension. The menu
+# label uses this too, so label and price share the Stats-configurable steps.
+func cost_for_count(count : int) -> float:
+	var cheap : int = Global.num_cheap_occulum
+	if count <= cheap:
+		return cost + count * cost_step
+	return cost + (count - cheap) * cost_step_after_four + cheap * cost_step
 
 
 # --- Buff System ---
@@ -384,7 +387,7 @@ func trigger_ultimate()->void:
 	generate_blood()
 
 func _cleanup_manager()->void:
-	Global.decrement_occulum_count()
+	Global.decrement_occulum_count(is_green)
 	super()
 	
 	

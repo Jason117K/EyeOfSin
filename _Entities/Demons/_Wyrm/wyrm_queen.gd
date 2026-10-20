@@ -63,6 +63,8 @@ signal wyrm_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	# Queens give Wyrm buffs but never receive any (and so never unlock "X + Wyrm").
+	can_receive_buffs = false
 	special_description_file = Global.wyrm_queen_special_description
 	# --- Demon-specific collision ---
 	_init_demon_collision()

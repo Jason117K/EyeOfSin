@@ -184,6 +184,8 @@ func restart_current_dual_scenes() -> void:
 
 
 func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool = true, keep_running: bool = false) -> void:
+	# The info bar is persistent and may track a unit of the level being freed.
+	Global.hide_notification_bar()
 	ultimate_container = Global.ultimate_charge_container
 	##print_scene_tree()
 	# DIAGNOSTIC: catch overlapping/re-entrant transitions (a leading suspect for the
@@ -336,6 +338,9 @@ func _apply_demon_loadouts(purple_scene_path: String) -> void:
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
 	Engine.time_scale = 1.0 # menus run at normal speed
+	# Otherwise a clicked zombie's info stays up on the level-select screen (its hide
+	# timer was paused with the level-end screen).
+	Global.hide_notification_bar()
 	Global.style_menu.hide()
 	Global.disable_ultimate()
 	pip.hide_pip()
