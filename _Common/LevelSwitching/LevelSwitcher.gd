@@ -22,9 +22,8 @@ func _ready() -> void:
 #Moves onto next level
 func _on_Continue_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	Global.game_controller.change_from_dual_scenes("res://_Stages/LevelSelect/LevelSelect_Map.tscn")
+	Global.game_controller.change_from_dual_scenes(Progress.select_screen_after_win())
 	self.visible = false
-	Global.unlockLevel(level_unlocked)
 
 #Restarts the current level
 func _on_PlayAgain_pressed() -> void:
@@ -34,7 +33,6 @@ func _on_PlayAgain_pressed() -> void:
 	# tutorial path (levels return early into free play first), so with tutorials
 	# off this reloaded the previous level or the empty scene.
 	Global.game_controller.restart_current_dual_scenes()
-	Global.unlockLevel(level_unlocked)
 
 func _on_return_to_menu_pressed() -> void:
 	get_tree().root.set_input_as_handled()
@@ -43,7 +41,6 @@ func _on_return_to_menu_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
 	self.visible = false
 	Global.game_controller.change_from_dual_scenes("res://_Stages/StartScreen/StartScreen.tscn")
-	Global.unlockLevel(level_unlocked)
 
 func update_level(this_upcomingLevel:String, this_upcomingLevelAlt:String) -> void:
 	next_level = this_upcomingLevel

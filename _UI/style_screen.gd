@@ -20,6 +20,8 @@ var all_rank_values : Array[SCORE_RANKS] = [time_rank_value,lives_lost_rank_valu
 
 @onready var overall_score_label := $CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel/TotalScoreHbox/TotalScoreNum
 @onready var overall_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel/StyleRankLetterLabel
+@onready var total_score_panel := $CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel
+var stars_label : RichTextLabel # built in _ready from a copy of TotalScorePanel
 
 var SSS_STYLE_POINTS_MIN := 2000
 var S_STYLE_POINTS_MIN := 1500
@@ -59,12 +61,23 @@ func _ready() -> void:
 	Global.register_style_menu(self)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
+	_build_stars_panel()
 
 		
 	#ScoreManager.level_ended.connect(_setup_score)
 
 func configure_style_thresholds()->void:
 	pass
+
+
+# A copy of the total-score row (same panel style + font) placed under it for the stars line.
+func _build_stars_panel()->void:
+	var stars_panel : Control = total_score_panel.duplicate()
+	stars_panel.name = "StarsPanel"
+	total_score_panel.add_sibling(stars_panel)
+	stars_panel.get_node("TotalScoreHbox/TotalScoreNum").hide()
+	stars_label = stars_panel.get_node("TotalScoreHbox/TotalScoreTitle")
+	stars_label.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 	
 	
 func _setup_score()->void:
@@ -149,18 +162,26 @@ func set_overall_rank()->void:
 	ScoreManager.calc_total_level_score()
 	var points : int = int(ScoreManager.get_total_score())
 	overall_score_label.text = str(points)
+	var rank : SCORE_RANKS
 	if points >= all_total_point_thresholds[SCORE_RANKS.SSS]:
-		overall_rank.text = "SSS"
+		rank = SCORE_RANKS.SSS
 	elif points >= all_total_point_thresholds[SCORE_RANKS.S]:
-		overall_rank.text = "S"
+		rank = SCORE_RANKS.S
 	elif points >= all_total_point_thresholds[SCORE_RANKS.A]:
-		overall_rank.text = "A"	
+		rank = SCORE_RANKS.A
 	elif points >= all_total_point_thresholds[SCORE_RANKS.B]:
-		overall_rank.text = "B"	
+		rank = SCORE_RANKS.B
 	elif points >= all_total_point_thresholds[SCORE_RANKS.C]:
-		overall_rank.text = "C"	
-	elif points >= all_total_point_thresholds[SCORE_RANKS.D]:
-		overall_rank.text = "D"
+		rank = SCORE_RANKS.C
+	else:
+		# Below the D threshold still counts as D (1 star); the letter used to go stale here.
+		rank = SCORE_RANKS.D
+	# The overall rank is what earns stars; a debug win may force it (Progress.resolve_rank).
+	var final_rank := Progress.resolve_rank(rank)
+	overall_rank.text = Progress.RANK_LETTERS[final_rank]
+	var stars_earned := Progress.record_rank(final_rank)
+	if stars_label != null:
+		stars_label.text = tr("UI_SCORE_STARS").format({"stars": stars_earned, "total": Progress.total_stars()})
 
 func set_completion_times(new_completion_time_thresholds : Array)->void:
 	var count :int= 0 

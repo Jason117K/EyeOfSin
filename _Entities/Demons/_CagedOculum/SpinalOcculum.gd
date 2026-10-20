@@ -4,6 +4,9 @@ extends Demon
 # --- Exports ---
 
 @export_category("Buffed Health")
+@export var crawler_buffed_health := 850
+@export var crawler_buffed_max_health := 850
+
 @export var occulum_buffed_health := 850
 @export var occulum_buffed_max_health := 800
 @export var occulum_buffed_health_regen := 0.1

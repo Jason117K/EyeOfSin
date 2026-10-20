@@ -378,6 +378,16 @@ func show_all_demon_buttons(extras: Array = []) -> void:
 func setup_demon_selection_menu() -> void:
 	pass
 
+## Levels 5+: equip Lightning Strike / Lightning Storm only as DEFAULTS, so a sorcery the
+## player picked on the ability panel carries into the level. Then show both bars
+## (menus hide them; levels and the ability panel show them).
+func equip_default_sorceries() -> void:
+	if not is_instance_valid(Global.syn_ability_manager):
+		Global.register_syn_ability(Global.lightning_strike)
+	if not is_instance_valid(Global.swap_ability):
+		Global.register_swap_ability(Global.lightning_storm)
+	Global.game_controller.show_swap_syn()
+
 ## Levels override this to set up normal play when skip_tutorials is true.
 func _start_free_play() -> void:
 	pass

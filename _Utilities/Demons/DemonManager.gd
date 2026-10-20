@@ -365,7 +365,11 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	# Dynamically get the selected demon	
 	selected_demon_scene = get_selected_demon()  
 	
-	empty_demon_to_place = empty_demon_scene.instantiate()
+	# Locals, not members: this function awaits physics frames below, and back-to-back
+	# placements (e.g. Level 3's pre-placed Spinal Occulums) would otherwise overwrite
+	# the blocker/cost mid-await, typing the wrong blocker's rune and charging the wrong cost.
+	var empty_blocker : Demon = empty_demon_scene.instantiate()
+	empty_demon_to_place = empty_blocker # kept for any outside reader
 	
 	if selected_demon_scene == null:
 		##print("No demon selected!")
@@ -380,7 +384,7 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		demon_instance.grid_map_cell_pos = Vector2(grid_pos.x-16,grid_pos.y+16)
 	else:
 		demon_instance.grid_map_cell_pos = grid_pos
-	#demon_instance.demon_die.connect(empty_demon_to_place.remove_empty)
+	#demon_instance.demon_die.connect(empty_blocker.remove_empty)
 	demon_deselected.connect(demon_instance.demon_deselected)
 	selection_menu.demon_deselected.connect(demon_instance.demon_deselected)
 	selection_menu.demon_selected.connect(demon_instance.demon_selected)
@@ -388,8 +392,8 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 	demon_instance.name = generate_unique_name(demon_instance.name)
 	if "Alternate" in get_parent().name :
 		#print("Add Demon ", demon_instance, " to purple group")
-		empty_demon_to_place.add_to_group("Green")
-		empty_demon_to_place.is_green = true 
+		empty_blocker.add_to_group("Green")
+		empty_blocker.is_green = true 
 		demon_instance.add_to_group("Green")
 		demon_instance.is_green = true
 		demon_instance.set_collision_layer_value(1,false)
@@ -397,8 +401,8 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		demon_instance.set_collision_layer_value(3,true)
 	else:
 		#print("Add ", demon_instance, " to purple group")
-		empty_demon_to_place.add_to_group("Purple")
-		empty_demon_to_place.is_green = false
+		empty_blocker.add_to_group("Purple")
+		empty_blocker.is_green = false
 		demon_instance.add_to_group("Purple")
 		demon_instance.is_green = false
 		demon_instance.set_collision_layer_value(1,false)
@@ -420,28 +424,28 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 			# Block both mirror cells. A fresh instance, not duplicate():
 			# is_green is a plain var and wouldn't be copied.
 			maw_left_blocker = empty_demon_scene.instantiate()
-			maw_left_blocker.add_to_group(Dim.of(empty_demon_to_place))
-			maw_left_blocker.is_green = empty_demon_to_place.is_green
+			maw_left_blocker.add_to_group(Dim.of(empty_blocker))
+			maw_left_blocker.is_green = empty_blocker.is_green
 			Global.game_controller.place_empty_in_alt_scene(grid_pos,maw_left_blocker,get_parent())
-			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y),empty_demon_to_place,get_parent())
+			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x+32,grid_pos.y),empty_blocker,get_parent())
 	else:
 		if is_queen:
 			if !get_parent().isGreenDimension:
 				#print(self, "placing wyrm in purple")
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate(),get_parent())
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate(),get_parent())
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate(),get_parent())
-				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place,get_parent())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_blocker.duplicate(),get_parent())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y),empty_blocker.duplicate(),get_parent())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x-32,grid_pos.y+32),empty_blocker.duplicate(),get_parent())
+				Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y+32),empty_blocker,get_parent())
 				queen_placement_count += 1
 			else:
 				#print(self, "placing wyrm in green")
-				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place.duplicate())
-				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y),empty_demon_to_place.duplicate())
-				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y+32),empty_demon_to_place.duplicate())
-				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y+32),empty_demon_to_place)
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y),empty_blocker.duplicate())
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y),empty_blocker.duplicate())
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x-32,grid_pos.y+32),empty_blocker.duplicate())
+				Global.game_controller.place_empty_in_purple_dimension(Vector2(grid_pos.x,grid_pos.y+32),empty_blocker)
 		else:
 			#print(self, "placing regular demon ")
-			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_demon_to_place,get_parent())
+			Global.game_controller.place_empty_in_alt_scene(Vector2(grid_pos.x,grid_pos.y),empty_blocker,get_parent())
 	if "Heart" in demon_instance.name:
 		##print("About to Place Heart Demon")
 		if Vector2(grid_pos.x+32,grid_pos.y) in grid_map:
@@ -469,10 +473,11 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		#print("Heart Demon Should Be Placed : ", hero_demon)
 	
 	#Get The Cost 
-	demon_cost = demon_instance.get_cost()
-	#print("Demon CCost is : ", demon_cost)
+	var cost : int = demon_instance.get_cost()
+	demon_cost = cost # kept for any outside reader
+	#print("Demon CCost is : ", cost)
 	
-	if blood_points >= demon_cost: 
+	if blood_points >= cost: 
 		#Maw Handling, occupies two cells
 		if "Maw" in demon_instance.name:
 			demon_instance.position = Vector2(grid_pos.x+16,grid_pos.y)
@@ -497,12 +502,12 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		await get_tree().physics_frame
 		await get_tree().physics_frame
 		if !demon_instance.is_portal:
-			empty_demon_to_place.set_demon_type(demon_instance.current_demon_type, maw_left_blocker == null)
+			empty_blocker.set_demon_type(demon_instance.current_demon_type, maw_left_blocker == null)
 			if maw_left_blocker != null:
 				maw_left_blocker.set_demon_type(demon_instance.current_demon_type)
 			
 		#Reduce Blood Points
-		blood_points -= demon_cost
+		blood_points -= cost
 		
 		#Global.ui_layer.set_blood(str(blood_points))
 		get_parent().get_node("UILayer").set_blood(blood_points)

@@ -5,20 +5,10 @@ extends Control
 @onready var description_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewPowerDescription
 @onready var new_power_unlock_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewDemonLabel
 
-var level_select_screen_a1 = "res://_Stages/LevelSelect/LevelSelect_A1.tscn"
-var level_select_screen_a2 = "res://_Stages/LevelSelect/LevelSelect_A1.tscn"
-var level_select_screen_a3 = "res://_Stages/LevelSelect/LevelSelect_A1.tscn"
-
-
 func _on_next_level_button_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
-	match Global.current_act:
-		Global.CURRENT_ACT.ACT_1:
-			Global.game_controller.change_from_dual_scenes(level_select_screen_a1)
-		Global.CURRENT_ACT.ACT_2:
-			Global.game_controller.change_from_dual_scenes(level_select_screen_a2)
-		Global.CURRENT_ACT.ACT_3:
-			Global.game_controller.change_from_dual_scenes(level_select_screen_a3)
+	# Act of the beaten level; an Act's last level lands on the newly unlocked Act.
+	Global.game_controller.change_from_dual_scenes(Progress.select_screen_after_win())
 	self.visible = false
 
 func set_new_unlock_label(new_unlock_label_text:String="UI_NEW_DEMON")->void:

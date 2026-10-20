@@ -102,8 +102,12 @@ var can_click : bool = true
 @onready var all_demon_buttons_dict := {"Occulum" : OcculumButton, "Crawler" : CrawlerButton, "SpinalOcculum":SpinalOcculumButton,
 								"Wyrm": WyrmButton, "Hive":HiveButton, "Maw":MawButton}
 
-signal demon_deselected 
+signal demon_deselected
 signal demon_selected(Demon)
+
+# Player loadout (DemonLoadout) for this dimension: demon card names allowed to show.
+# Empty = no restriction. Only ever HIDES cards — the level still decides what it offers.
+var _loadout_allowed : Array[String] = []
 
 
 func _ready() -> void:
@@ -132,7 +136,14 @@ func _ready() -> void:
 		HiveButton.pressed.connect(_on_HiveButton_pressed)
 		
 	if not HeartButton.pressed.is_connected(_on_heart_button_pressed):
-		HeartButton.pressed.connect(_on_heart_button_pressed)		
+		HeartButton.pressed.connect(_on_heart_button_pressed)
+
+	# Loadout guard: whatever shows a demon card later (template helpers, tutorial steps,
+	# per-level _show_all_buttons), a card outside the loadout is hidden again.
+	for demon_name : String in DemonLoadout.DEMONS:
+		var card : Control = _get_demon_card(demon_name)
+		if card != null:
+			card.visibility_changed.connect(_enforce_loadout.bind(card))
 
 
 
@@ -158,6 +169,31 @@ func _ready() -> void:
 	
 func reset_panel_size()->void:
 	panelContainer.reset_size()
+
+
+## Called by GameController.change_dual_scenes for loadout levels (empty = unrestricted).
+func set_loadout(allowed : Array[String]) -> void:
+	_loadout_allowed = allowed
+	for demon_name : String in DemonLoadout.DEMONS:
+		var card : Control = _get_demon_card(demon_name)
+		if card != null and card.visible and not _is_card_allowed(card):
+			card.hide()
+	reset_panel_size()
+
+
+func _get_demon_card(demon_name : String) -> Control:
+	return $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer.get_node_or_null(demon_name)
+
+
+func _is_card_allowed(card : Control) -> bool:
+	return _loadout_allowed.is_empty() or String(card.name) in _loadout_allowed
+
+
+# Deferred: re-hiding from inside the card's own visibility notification is re-entrant.
+func _enforce_loadout(card : Control) -> void:
+	if card.visible and not _is_card_allowed(card):
+		card.hide.call_deferred()
+		reset_panel_size.call_deferred()
 
 # Canvas-space rect spanning the visible demon cards (levels lock demons by
 # hiding their card container). The ult bar anchors to its top-right corner.

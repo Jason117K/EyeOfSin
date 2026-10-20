@@ -161,6 +161,37 @@ the amount charged can never drift.
 the level script) map the total to a **style rank**, shown on the end-of-level score screen —
 **purple dimension only**.
 
+**Level progression is linear and saved by the `Progress` statics** (`_Utilities/progress.gd`).
+The save is `highest_unlocked` plus a `[best_ranks]` section (level → best overall rank, 0 = SSS
+… 5 = D) in `user://progress.cfg` (separate from `settings.cfg`). Beating level N unlocks N+1. An Act is unlocked once its first level is (beat 9 →
+Act 2, beat 14 → Act 3). Level identity = the purple scene path's position in `Progress.ACTS`,
+which is in **select-screen button order, not folder order** (slot 7 is `Level8.tscn`, slot 8 is
+`Level7.tscn`). A new level needs a table entry, or its wins log `[PROGRESS] unknown level` and
+aren't recorded. Wins are recorded at one choke point, `WaveManager._win()`, before `level_ended`.
+Select screens darken and disable locked entries via `UiFx.set_locked` and expose `refresh_locks()`.
+The win screens' Next/Continue go to `Progress.select_screen_after_win()`. Demon/synergy unlocks
+are still session-only.
+
+**Stars + sorcery unlocks.** The score screen's overall rank is recorded per level
+(`style_screen.set_overall_rank` → `Progress.record_rank`; below D counts as D). Stars are
+**derived** from each level's best rank (SSS 3, S/A/B 2, C/D 1; max 51) and never stored, so
+replays can raise the total but not farm it. Swap/Syn sorceries unlock from `Progress.SORCERY_UNLOCKS`.
+Each sorcery either needs a beaten level or a star **threshold**; stars are never spent. The ability
+control panel darkens locked ones. Clicking a locked one shows its requirement but doesn't equip it.
+The panel only gates its own buttons; levels handle the starting loadout.
+
+**Demon loadouts (`DemonLoadout` statics, `_Utilities/demon_loadout.gd`).**
+- **Unlocks:** each demon unlocks by beating a level (`Progress.DEMON_UNLOCKS`; Maw = level 11).
+- **Act screens:** the `DemonGridContainer` hides locked demons. Once all six are unlocked, the
+  player equips 1–5 per dimension (Y flips purple/green). Unequipped icons are darkened, and
+  equipping a 6th drops a random one. One state is shared by all Acts and saved to
+  `user://loadout.cfg`.
+- **In levels:** loadouts apply only from `DemonLoadout.FIRST_LEVEL` (12) on.
+  `GameController.change_dual_scenes` calls each dimension menu's
+  `DemonSelectionMenu.set_loadout()`. A `visibility_changed` guard re-hides any card outside the
+  loadout, whoever shows it. It only **hides**: availability = the level's cards ∩ the loadout,
+  so level scripts stay untouched.
+
 **`GlobalResourceLoader`** preloads/caches demon & zombie textures + `SpriteFrames` (and per-synergy
 variation images) at startup to avoid runtime load stalls — a separate concern from `Global`'s game
 state.
@@ -206,6 +237,13 @@ uniforms.
   `[BUFF-MIGRATION]` (BuffNodes dual-runs old substring vs new exact matching and warns on
   disagreement) and `[MOWER]` `_exit_tree` warnings (something external frees launched mowers —
   culprit unidentified; warnings at app quit are normal teardown, mid-session ones are the catch).
+- **Debug progression keys are ALWAYS ON — remove or gate them before a release build.**
+  In a level, `U` = instant **S**-rank win and `Shift+U` = instant **SSS**-rank win. Both go
+  through the normal win flow (`WaveManager.debug_force_win`).
+  Outside a level, `Ctrl+U` = unlock every level/Act with SSS everywhere (51 stars, every
+  sorcery). That's saved. All three live in `GameController._input`.
+  `U` won't fire during tutorial steps whose input filter swallows keys (use `skip_tutorials`).
+  For a fresh save, delete `progress.cfg` (Editor → Project → Open User Data Folder).
 - **`EmptyDemon` (`is_empty`) short-circuits `_ready`** — no processing/registration; it exists only
   as a cross-dimension placement blocker.
 - **Maw uses a deliberate `-256` visual offset** in `place_demon` while its `grid_map` keys stay on
@@ -247,7 +285,14 @@ refactor phases that touch the restart path, buff matching, or tick order.
 7. **Restart torture:** restart ×3 from purple pause, ×3 from green, once mid-wave with a
    deployed syn instance + active swap ability + launched mower — no freeze, no error spam,
    score 0, health full, mowers restored, costs reset, no stale connectors.
-8. **Progression:** advance to the next level normally; level-unlock flags intact.
+8. **Progression:** fresh save → only Act 1 / Level 1 lit. A win unlocks the next level and
+   survives a relaunch. Losing or Play Again unlocks nothing. Next after level 9 → Act 2 select,
+   after 14 → Act 3 select. Locked panels stay dark through a Y swap. Score screen shows stars
+   (U → S/2, Shift+U → SSS/3); a worse replay leaves the total unchanged. Level cards show best
+   rank or "-". Ability panel: locked sorceries dark and show their requirement on click; levels
+   3/4/12/14/15 and 27/33/39/45 stars unlock the right ones. Demon grid: locked demons hidden.
+   After the Maw unlocks, toggle 1–5 per dimension; level 12+ menus offer exactly that
+   dimension's loadout, including after a restart, and levels ≤ 11 are unchanged.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **

@@ -1,7 +1,7 @@
 extends Demon
 
 # Runes are 64x32; single-cell glyphs sit in the left half, Maw's spans both cells.
-const RUNE_OFFSET := Vector2(16, 0)
+const RUNE_OFFSET := Vector2(0, 0)
 const RUNE_TEXTURES := {
 	Global.DEMON_TYPE.CRAWLER: preload("res://_Assets/Runes/Crawler_Rune.png"),
 	Global.DEMON_TYPE.OCCULUM: preload("res://_Assets/Runes/Occulum_Rune.png"),

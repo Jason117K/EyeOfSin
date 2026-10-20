@@ -230,7 +230,9 @@ SwapAbility in the remote tree; checklist item 3 in full.
    blocks into one generic pair-linker (public names stay). **Fix the README known
    issue:** tear down the cross-dimension connector on the surviving half when its
    partner dies.
-3. Delete `canPlayLevelN` getter/setter boilerplate.
+3. ~~Delete `canPlayLevelN` getter/setter boilerplate.~~ **DONE (2026-10-19)** with the level
+   progression work: Global's flags/getters/setters/`unlockLevel` deleted; progression now lives
+   in the `Progress` static module (`_Utilities/progress.gd`).
 
 **Validation:** placement bounds identical per level (checklist 1); syn pair
 link/connector behavior identical + connector dies with partner (checklist 4).
@@ -246,7 +248,8 @@ link/connector behavior identical + connector dies with partner (checklist 4).
 | Dim | `class_name` consts | Must work in `@tool` scripts, no tree access |
 | Synergy/Demon catalogs | `.tres` Resources, preloaded field | Data in Resources (WaveData precedent); unlock STATE stays in Global |
 | Codex nav | Codex's own script | UI navigates itself |
-| Registries/session/progression | Stay in Global (frozen API) | README-sanctioned locator; hybrid rule |
+| Registries/session state | Stay in Global (frozen API) | README-sanctioned locator; hybrid rule |
+| Level progression (saved) | `Progress` `class_name` statics | New system → own module per frozen-Global rule; persists to `user://progress.cfg` |
 | New autoloads | **None** | Nothing needs another global lifecycle |
 
 ## Explicit skip list (agreed not worth solo-dev hours)

@@ -1,10 +1,14 @@
 extends DemonHealthComponent
 
 var blood_spawn_time := 5
+
+var crawler_buffed_health := 850
+var crawler_buffed_max_health := 800
+var wyrm_buffed_health := 850
+var wyrm_buffed_max_health := 800
 var occulum_buffed_health := 850
 var occulum_buffed_max_health := 800
 var occulum_buffed_health_regen := 0.1
-
 var maw_buffed_health := 850
 var maw_buffed_max_health := 800
 var maw_buffed_health_regen := 0.1
@@ -17,6 +21,10 @@ var thisBufferName: String
 func _ready() -> void:
 	super()
 	blood_spawn_time = demon.blood_spawn_time
+	crawler_buffed_health = demon.crawler_buffed_health
+	crawler_buffed_max_health = demon.crawler_buffed_max_health
+	wyrm_buffed_health = demon.wyrm_buffed_health
+	wyrm_buffed_max_health = demon.wyrm_buffed_max_health
 	occulum_buffed_health = demon.occulum_buffed_health
 	occulum_buffed_max_health = demon.occulum_buffed_max_health
 	occulum_buffed_health_regen = demon.occulum_buffed_health_regen
@@ -58,13 +66,16 @@ func receive_buff(bufferName: String) -> void:
 			add_child(blood_spawn_timer)
 			blood_spawn_timer.start()
 		"Crawler":
-			pass
+			health = crawler_buffed_health
+			maxHealth = crawler_buffed_max_health
 
 		"SpinalOcculum" :
 			pass
 
 		"Wyrm":
 			can_damage_zombie = true
+			health = wyrm_buffed_health
+			maxHealth = wyrm_buffed_max_health
 
 		"Hive":
 			pass

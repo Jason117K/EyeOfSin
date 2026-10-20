@@ -36,6 +36,17 @@ func _input(event:InputEvent) -> void:
 		if event.keycode == KEY_Y:
 			Global.hide_notification_bar()
 			Global.swap_scenes()
+		# DEBUG progression keys — ALWAYS ON; remove or gate before a release build.
+		# In a level: U = instant S-rank win, Shift+U = instant SSS-rank win.
+		# Outside a level: Ctrl+U = unlock everything (all levels SSS = every star).
+		elif event.keycode == KEY_U and not event.echo:
+			var in_level := current_scenes.size() == 2
+			if not in_level and event.ctrl_pressed:
+				Progress.unlock_all()
+				if current_scene != null and current_scene.has_method("refresh_locks"):
+					current_scene.refresh_locks()
+			elif in_level and not event.ctrl_pressed and not get_tree().paused and Global.wave_manager != null:
+				Global.wave_manager.debug_force_win(Progress.RANK_SSS if event.shift_pressed else Progress.RANK_S)
 
 
 func _ready() -> void:
@@ -88,20 +99,19 @@ func _cleanup_all_scenes() -> void:
 	
 	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
+# Swap/Syn bars belong to levels and the ability panel only. Guard on Global's live
+# references: this node's own swap_ability field goes stale (null at boot, freed when the
+# panel registers a new swap), which silently skipped the swap half.
 func hide_swap_syn()->void:
-	
-	if swap_ability != null:
+	if is_instance_valid(Global.swap_ability):
 		Global.swap_ability.hide_swap()
-		
-	if Global.syn_ability_manager != null:
+	if is_instance_valid(Global.syn_ability_manager):
 		Global.syn_ability_manager.hide_syn_ability()
 
 func show_swap_syn()->void:
-	
-	if swap_ability != null:
+	if is_instance_valid(Global.swap_ability):
 		Global.swap_ability.show_swap()
-		
-	if Global.syn_ability_manager != null:
+	if is_instance_valid(Global.syn_ability_manager):
 		Global.syn_ability_manager.show_syn_ability()
 
 func _apply_dimension_visibility() -> void:
@@ -124,6 +134,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 
 func change_scene(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	Global.hide_notification_bar()
+	hide_swap_syn() # menus never show the bars; the ability panel re-shows them itself
 	#pause_button.visible = false
 
 	if current_scene != null:
@@ -258,6 +269,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	_stamp_scene(current_scenes[1], DIM_BITS[1])
 	_stamp_overlays()
 	_apply_view_masks()
+	_apply_demon_loadouts(scene1_path)
 	#print("About to Make Camera2D Currebt")
 	current_scenes[0].get_node("Camera2D").make_current()
 	if "Level1/Level0-1" in scene1_path:
@@ -304,6 +316,15 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	# DIAGNOSTIC: transition finished cleanly; allow the next one.
 	_is_transitioning = false
 	#print("[RESTART] change_dual_scenes END ok. current_scenes.size=", current_scenes.size())
+
+# Player loadouts (DemonLoadout) only apply from DemonLoadout.FIRST_LEVEL on, and only once
+# every demon is unlocked; each dimension's menu gets its own. Re-run on every restart.
+func _apply_demon_loadouts(purple_scene_path: String) -> void:
+	if Progress.level_for_scene(purple_scene_path) < DemonLoadout.FIRST_LEVEL or not DemonLoadout.is_active():
+		return
+	current_scenes[0].demonSelectionMenu.set_loadout(DemonLoadout.get_loadout(false))
+	current_scenes[1].demonSelectionMenu.set_loadout(DemonLoadout.get_loadout(true))
+
 
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false

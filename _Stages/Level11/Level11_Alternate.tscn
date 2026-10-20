@@ -63,6 +63,438 @@
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="90_l11gwd"]
 [ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="91_l11gwe"]
 
+[sub_resource type="Resource" id="Resource_l11g1w1e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 6
+
+[sub_resource type="Resource" id="Resource_l11g1w1e2"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w1"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w1e1"), SubResource("Resource_l11g1w1e2")])
+
+[sub_resource type="Resource" id="Resource_l11g1w2e1"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w2e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w2"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w2e1"), SubResource("Resource_l11g1w2e2")])
+
+[sub_resource type="Resource" id="Resource_l11g1w3e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 8
+
+[sub_resource type="Resource" id="Resource_l11g1w3e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w3"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w3e1"), SubResource("Resource_l11g1w3e2")])
+
+[sub_resource type="Resource" id="Resource_l11g1w4e1"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w4e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w4e3"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w4"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w4e1"), SubResource("Resource_l11g1w4e2"), SubResource("Resource_l11g1w4e3")])
+
+[sub_resource type="Resource" id="Resource_l11g1w5e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 9
+
+[sub_resource type="Resource" id="Resource_l11g1w5e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g1w5"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w5e1"), SubResource("Resource_l11g1w5e2")])
+
+[sub_resource type="Resource" id="Resource_l11g2w1e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l11g2w1"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w1e1")])
+
+[sub_resource type="Resource" id="Resource_l11g2w2e1"]
+script = ExtResource("91_l11gwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w2e2"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w2"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w2e1"), SubResource("Resource_l11g2w2e2")])
+
+[sub_resource type="Resource" id="Resource_l11g2w3e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 7
+
+[sub_resource type="Resource" id="Resource_l11g2w3e2"]
+script = ExtResource("91_l11gwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w3"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w3e1"), SubResource("Resource_l11g2w3e2")])
+
+[sub_resource type="Resource" id="Resource_l11g2w4e1"]
+script = ExtResource("91_l11gwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w4e2"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w4e3"]
+script = ExtResource("91_l11gwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w4"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w4e1"), SubResource("Resource_l11g2w4e2"), SubResource("Resource_l11g2w4e3")])
+
+[sub_resource type="Resource" id="Resource_l11g2w5e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 9
+
+[sub_resource type="Resource" id="Resource_l11g2w5e2"]
+script = ExtResource("91_l11gwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w5e3"]
+script = ExtResource("91_l11gwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g2w5"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w5e1"), SubResource("Resource_l11g2w5e2"), SubResource("Resource_l11g2w5e3")])
+
+[sub_resource type="Resource" id="Resource_l11g3w1"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g3w2"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g3w3"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g3w4e1"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g3w4e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 2
+
+[sub_resource type="Resource" id="Resource_l11g3w4"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g3w4e1"), SubResource("Resource_l11g3w4e2")])
+
+[sub_resource type="Resource" id="Resource_l11g3w5e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 9
+
+[sub_resource type="Resource" id="Resource_l11g3w5e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g3w5e3"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g3w5"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g3w5e1"), SubResource("Resource_l11g3w5e2"), SubResource("Resource_l11g3w5e3")])
+
+[sub_resource type="Resource" id="Resource_l11g4w1"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g4w2"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g4w3e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 6
+
+[sub_resource type="Resource" id="Resource_l11g4w3e2"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g4w3"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g4w3e1"), SubResource("Resource_l11g4w3e2")])
+
+[sub_resource type="Resource" id="Resource_l11g4w4e1"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 2
+
+[sub_resource type="Resource" id="Resource_l11g4w4e2"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g4w4"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g4w4e1"), SubResource("Resource_l11g4w4e2")])
+
+[sub_resource type="Resource" id="Resource_l11g4w5e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 9
+
+[sub_resource type="Resource" id="Resource_l11g4w5e2"]
+script = ExtResource("91_l11gwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g4w5"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g4w5e1"), SubResource("Resource_l11g4w5e2")])
+
+[sub_resource type="Resource" id="Resource_l11g5w1"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g5w2"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g5w3"]
+script = ExtResource("90_l11gwd")
+
+[sub_resource type="Resource" id="Resource_l11g5w4e1"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g5w4e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 2
+
+[sub_resource type="Resource" id="Resource_l11g5w4"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g5w4e1"), SubResource("Resource_l11g5w4e2")])
+
+[sub_resource type="Resource" id="Resource_l11g5w5e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 9
+
+[sub_resource type="Resource" id="Resource_l11g5w5e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g5w5e3"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g5w5"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g5w5e1"), SubResource("Resource_l11g5w5e2"), SubResource("Resource_l11g5w5e3")])
+
+[sub_resource type="Resource" id="Resource_l11g6w1e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 4
+
+[sub_resource type="Resource" id="Resource_l11g6w1"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w1e1")])
+
+[sub_resource type="Resource" id="Resource_l11g6w2e1"]
+script = ExtResource("91_l11gwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w2e2"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w2"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w2e1"), SubResource("Resource_l11g6w2e2")])
+
+[sub_resource type="Resource" id="Resource_l11g6w3e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 7
+
+[sub_resource type="Resource" id="Resource_l11g6w3e2"]
+script = ExtResource("91_l11gwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w3"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w3e1"), SubResource("Resource_l11g6w3e2")])
+
+[sub_resource type="Resource" id="Resource_l11g6w4e1"]
+script = ExtResource("91_l11gwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w4e2"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w4e3"]
+script = ExtResource("91_l11gwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w4"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w4e1"), SubResource("Resource_l11g6w4e2"), SubResource("Resource_l11g6w4e3")])
+
+[sub_resource type="Resource" id="Resource_l11g6w5e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 9
+
+[sub_resource type="Resource" id="Resource_l11g6w5e2"]
+script = ExtResource("91_l11gwe")
+type = "Buffer"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w5e3"]
+script = ExtResource("91_l11gwe")
+type = "Erupter"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g6w5"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w5e1"), SubResource("Resource_l11g6w5e2"), SubResource("Resource_l11g6w5e3")])
+
+[sub_resource type="Resource" id="Resource_l11g7w1e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 6
+
+[sub_resource type="Resource" id="Resource_l11g7w1e2"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w1"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w1e1"), SubResource("Resource_l11g7w1e2")])
+
+[sub_resource type="Resource" id="Resource_l11g7w2e1"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w2e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w2"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w2e1"), SubResource("Resource_l11g7w2e2")])
+
+[sub_resource type="Resource" id="Resource_l11g7w3e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 8
+
+[sub_resource type="Resource" id="Resource_l11g7w3e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w3"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w3e1"), SubResource("Resource_l11g7w3e2")])
+
+[sub_resource type="Resource" id="Resource_l11g7w4e1"]
+script = ExtResource("91_l11gwe")
+type = "Unhallower"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w4e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w4e3"]
+script = ExtResource("91_l11gwe")
+type = "Sundered"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w4"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w4e1"), SubResource("Resource_l11g7w4e2"), SubResource("Resource_l11g7w4e3")])
+
+[sub_resource type="Resource" id="Resource_l11g7w5e1"]
+script = ExtResource("91_l11gwe")
+type = "Severed"
+count = 9
+
+[sub_resource type="Resource" id="Resource_l11g7w5e2"]
+script = ExtResource("91_l11gwe")
+type = "Amalgam"
+count = 1
+
+[sub_resource type="Resource" id="Resource_l11g7w5"]
+script = ExtResource("90_l11gwd")
+entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w5e1"), SubResource("Resource_l11g7w5e2")])
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c176a"]
 texture = ExtResource("9_bufpn")
 1:1/0 = 0
@@ -5644,438 +6076,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="Resource" id="Resource_l11g1w1e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 6
-
-[sub_resource type="Resource" id="Resource_l11g1w1e2"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w1"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w1e1"), SubResource("Resource_l11g1w1e2")])
-
-[sub_resource type="Resource" id="Resource_l11g1w2e1"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w2e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w2"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w2e1"), SubResource("Resource_l11g1w2e2")])
-
-[sub_resource type="Resource" id="Resource_l11g1w3e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 8
-
-[sub_resource type="Resource" id="Resource_l11g1w3e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w3"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w3e1"), SubResource("Resource_l11g1w3e2")])
-
-[sub_resource type="Resource" id="Resource_l11g1w4e1"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w4e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w4e3"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w4"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w4e1"), SubResource("Resource_l11g1w4e2"), SubResource("Resource_l11g1w4e3")])
-
-[sub_resource type="Resource" id="Resource_l11g1w5e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 9
-
-[sub_resource type="Resource" id="Resource_l11g1w5e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g1w5"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g1w5e1"), SubResource("Resource_l11g1w5e2")])
-
-[sub_resource type="Resource" id="Resource_l11g2w1e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l11g2w1"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w1e1")])
-
-[sub_resource type="Resource" id="Resource_l11g2w2e1"]
-script = ExtResource("91_l11gwe")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w2e2"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w2"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w2e1"), SubResource("Resource_l11g2w2e2")])
-
-[sub_resource type="Resource" id="Resource_l11g2w3e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 7
-
-[sub_resource type="Resource" id="Resource_l11g2w3e2"]
-script = ExtResource("91_l11gwe")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w3"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w3e1"), SubResource("Resource_l11g2w3e2")])
-
-[sub_resource type="Resource" id="Resource_l11g2w4e1"]
-script = ExtResource("91_l11gwe")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w4e2"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w4e3"]
-script = ExtResource("91_l11gwe")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w4"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w4e1"), SubResource("Resource_l11g2w4e2"), SubResource("Resource_l11g2w4e3")])
-
-[sub_resource type="Resource" id="Resource_l11g2w5e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 9
-
-[sub_resource type="Resource" id="Resource_l11g2w5e2"]
-script = ExtResource("91_l11gwe")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w5e3"]
-script = ExtResource("91_l11gwe")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g2w5"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g2w5e1"), SubResource("Resource_l11g2w5e2"), SubResource("Resource_l11g2w5e3")])
-
-[sub_resource type="Resource" id="Resource_l11g3w1"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g3w2"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g3w3"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g3w4e1"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g3w4e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 2
-
-[sub_resource type="Resource" id="Resource_l11g3w4"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g3w4e1"), SubResource("Resource_l11g3w4e2")])
-
-[sub_resource type="Resource" id="Resource_l11g3w5e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 9
-
-[sub_resource type="Resource" id="Resource_l11g3w5e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g3w5e3"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g3w5"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g3w5e1"), SubResource("Resource_l11g3w5e2"), SubResource("Resource_l11g3w5e3")])
-
-[sub_resource type="Resource" id="Resource_l11g4w1"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g4w2"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g4w3e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 6
-
-[sub_resource type="Resource" id="Resource_l11g4w3e2"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g4w3"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g4w3e1"), SubResource("Resource_l11g4w3e2")])
-
-[sub_resource type="Resource" id="Resource_l11g4w4e1"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 2
-
-[sub_resource type="Resource" id="Resource_l11g4w4e2"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g4w4"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g4w4e1"), SubResource("Resource_l11g4w4e2")])
-
-[sub_resource type="Resource" id="Resource_l11g4w5e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 9
-
-[sub_resource type="Resource" id="Resource_l11g4w5e2"]
-script = ExtResource("91_l11gwe")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g4w5"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g4w5e1"), SubResource("Resource_l11g4w5e2")])
-
-[sub_resource type="Resource" id="Resource_l11g5w1"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g5w2"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g5w3"]
-script = ExtResource("90_l11gwd")
-
-[sub_resource type="Resource" id="Resource_l11g5w4e1"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g5w4e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 2
-
-[sub_resource type="Resource" id="Resource_l11g5w4"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g5w4e1"), SubResource("Resource_l11g5w4e2")])
-
-[sub_resource type="Resource" id="Resource_l11g5w5e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 9
-
-[sub_resource type="Resource" id="Resource_l11g5w5e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g5w5e3"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g5w5"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g5w5e1"), SubResource("Resource_l11g5w5e2"), SubResource("Resource_l11g5w5e3")])
-
-[sub_resource type="Resource" id="Resource_l11g6w1e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_l11g6w1"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w1e1")])
-
-[sub_resource type="Resource" id="Resource_l11g6w2e1"]
-script = ExtResource("91_l11gwe")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w2e2"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w2"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w2e1"), SubResource("Resource_l11g6w2e2")])
-
-[sub_resource type="Resource" id="Resource_l11g6w3e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 7
-
-[sub_resource type="Resource" id="Resource_l11g6w3e2"]
-script = ExtResource("91_l11gwe")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w3"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w3e1"), SubResource("Resource_l11g6w3e2")])
-
-[sub_resource type="Resource" id="Resource_l11g6w4e1"]
-script = ExtResource("91_l11gwe")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w4e2"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w4e3"]
-script = ExtResource("91_l11gwe")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w4"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w4e1"), SubResource("Resource_l11g6w4e2"), SubResource("Resource_l11g6w4e3")])
-
-[sub_resource type="Resource" id="Resource_l11g6w5e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 9
-
-[sub_resource type="Resource" id="Resource_l11g6w5e2"]
-script = ExtResource("91_l11gwe")
-type = "Buffer"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w5e3"]
-script = ExtResource("91_l11gwe")
-type = "Erupter"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g6w5"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g6w5e1"), SubResource("Resource_l11g6w5e2"), SubResource("Resource_l11g6w5e3")])
-
-[sub_resource type="Resource" id="Resource_l11g7w1e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 6
-
-[sub_resource type="Resource" id="Resource_l11g7w1e2"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w1"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w1e1"), SubResource("Resource_l11g7w1e2")])
-
-[sub_resource type="Resource" id="Resource_l11g7w2e1"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w2e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w2"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w2e1"), SubResource("Resource_l11g7w2e2")])
-
-[sub_resource type="Resource" id="Resource_l11g7w3e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 8
-
-[sub_resource type="Resource" id="Resource_l11g7w3e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w3"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w3e1"), SubResource("Resource_l11g7w3e2")])
-
-[sub_resource type="Resource" id="Resource_l11g7w4e1"]
-script = ExtResource("91_l11gwe")
-type = "Unhallower"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w4e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w4e3"]
-script = ExtResource("91_l11gwe")
-type = "Sundered"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w4"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w4e1"), SubResource("Resource_l11g7w4e2"), SubResource("Resource_l11g7w4e3")])
-
-[sub_resource type="Resource" id="Resource_l11g7w5e1"]
-script = ExtResource("91_l11gwe")
-type = "Severed"
-count = 9
-
-[sub_resource type="Resource" id="Resource_l11g7w5e2"]
-script = ExtResource("91_l11gwe")
-type = "Amalgam"
-count = 1
-
-[sub_resource type="Resource" id="Resource_l11g7w5"]
-script = ExtResource("90_l11gwd")
-entries = Array[ExtResource("91_l11gwe")]([SubResource("Resource_l11g7w5e1"), SubResource("Resource_l11g7w5e2")])
 
 [node name="Level_11_Alternate" type="Control" unique_id=1958367603 groups=["Green", "GreenLevel"]]
 layout_mode = 3

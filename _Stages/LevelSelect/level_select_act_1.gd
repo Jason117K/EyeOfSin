@@ -57,12 +57,12 @@ var ability_screen := "res://_UI/ability_control_panel.tscn"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	canPlayLevel2 = Global.getCanPlayLevel2()
-	canPlayLevel3 = Global.getCanPlayLevel3()
-	canPlayLevel4 = Global.getCanPlayLevel4()
-	canPlayLevel5 = Global.getCanPlayLevel5()
-	canPlayLevel6 = Global.getCanPlayLevel6()
-	canPlayLevel7 = Global.getCanPlayLevel7()
+	canPlayLevel2 = Progress.is_level_unlocked(2)
+	canPlayLevel3 = Progress.is_level_unlocked(3)
+	canPlayLevel4 = Progress.is_level_unlocked(4)
+	canPlayLevel5 = Progress.is_level_unlocked(5)
+	canPlayLevel6 = Progress.is_level_unlocked(6)
+	canPlayLevel7 = Progress.is_level_unlocked(7)
 	
 	Global.hideDemonSelectionMenu()
 	swap_icon.texture = Global.get_swap_icon()

@@ -6,6 +6,21 @@ class_name UiFx extends RefCounted
 
 const DEFAULT_BORDER_THICKNESS: int = 1
 const DEFAULT_BORDER_COLOR: Color = Color.RED
+## Tint for locked Acts/levels on the select screens (Progress).
+const LOCKED_MODULATE: Color = Color(0.25, 0.25, 0.25)
+
+
+## Locked = the normal look, heavily darkened, and unclickable. The button's disabled
+## stylebox/font colour are pinned to its normal ones so the theme's grey disabled box
+## never shows — only the panel tint changes.
+static func set_locked(panel: Control, button: BaseButton, locked: bool) -> void:
+	panel.modulate = LOCKED_MODULATE if locked else Color.WHITE
+	if button == null:
+		return
+	button.disabled = locked
+	button.add_theme_stylebox_override("disabled", button.get_theme_stylebox("normal"))
+	if button is Button:
+		button.add_theme_color_override("font_disabled_color", button.get_theme_color("font_color"))
 
 
 static func add_pulsing_button_highlight(button, should_pulse : bool = true,

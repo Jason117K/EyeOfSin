@@ -28,6 +28,7 @@ var _current_wave: int = -1
 var _total_waves: int = 0
 @onready var _spawners_finished: int = 0
 var _all_spawning_done: bool = false
+var _level_won: bool = false
 
 var zombie_close : bool = false 
 
@@ -63,6 +64,7 @@ func setup_level() -> void:
 	previewTimer.stop()
 	_spawners_finished = 0
 	_all_spawning_done = false
+	_level_won = false
 
 	_current_wave = -1
 	_total_waves = wave_delays.size() + 1
@@ -220,14 +222,45 @@ func _on_spawner_all_waves_exhausted() -> void:
 
 
 func _check_level_end() -> void:
-	if not _all_spawning_done:
+	if not _all_spawning_done or _level_won:
 		return
 	if get_tree().get_nodes_in_group("Alive-Enemies").size() == 0:
 		#print("Emitting Level End Cos No Enmeies In Group")
-		level_ended.emit()
+		_win()
 	else:
 		# process_always = false: don't re-check (and end the level) while paused.
 		get_tree().create_timer(1.0, false).timeout.connect(_check_level_end)
+
+
+# Single gate for every win (natural or debug): records progression, then runs the
+# normal end-of-level flow exactly once per level load. forced_rank >= 0 (debug only)
+# overrides the overall rank the score screen computes; -1 = natural win.
+func _win(forced_rank: int = -1) -> void:
+	if _level_won:
+		return
+	_level_won = true
+	waveDelayTimer.stop()
+	previewTimer.stop()
+	var purple_level: Node = Global.game_controller.get_purple_dimension()
+	if purple_level != null:
+		Progress.mark_level_beaten(purple_level.scene_file_path, forced_rank)
+	level_ended.emit()
+
+
+## DEBUG (U / Shift+U): instantly beat the current level through the normal win flow,
+## scored as forced_rank (Progress.RANK_S / RANK_SSS).
+func debug_force_win(forced_rank: int) -> void:
+	if _level_won:
+		return
+	for zombie: Node in get_tree().get_nodes_in_group("Alive-Enemies"):
+		if not is_instance_valid(zombie):
+			continue
+		if zombie.has_method("true_death"):
+			zombie.true_death()
+		elif zombie.has_method("die"):
+			zombie.die()
+	_all_spawning_done = true
+	_win(forced_rank)
 
 
 		
@@ -244,7 +277,9 @@ func _on_damage_area_entered(area: Area2D) -> void:
 			area.true_death()
 		else:
 			area.die()
-		subtract_health()
+		# A forced (debug) win can leave a straggler in flight before the score screen pauses.
+		if not _level_won:
+			subtract_health()
 
 
 func subtract_health() -> void:

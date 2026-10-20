@@ -67,8 +67,7 @@ func _ready() -> void:
 	level_title = tr("LEVEL_TITLE_0_5")
 	extended_new_power_description = "POWER_WYRM_DESC_LONG"
 	super()
-	Global.register_syn_ability(Global.lightning_strike)
-	Global.register_swap_ability(Global.lightning_storm)
+	equip_default_sorceries() # defaults only; keeps the player's panel picks
 	
 	Dialogic.Inputs.auto_skip.enabled = true
 	waveManager = get_parent().get_node("WaveManager")

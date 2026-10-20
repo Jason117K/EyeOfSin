@@ -1,12 +1,6 @@
 extends Control
 
 
-var canPlayLevel2 := false
-var canPlayLevel3 := false
-var canPlayLevel4 := false
-var canPlayLevel5 := false
-var canPlayLevel6 := false
-var canPlayLevel7 := false
 
 var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
 var level_select := "res://_Stages/LevelSelect/act_select.tscn"
@@ -59,12 +53,7 @@ var show_green := false
 @onready var swap_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SwapPanelContainer/SwapMarginContainer/SwapSorcery
 @onready var syn_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SynPanelContainer/SynMarginContainer/SynSorcery
 
-@onready var crawler_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Crawler
-@onready var occulum_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Occulum
-@onready var spinal_occulum_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/SpinalOcculum
-@onready var wyrm_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Wyrm
-@onready var maw_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Maw
-@onready var hive_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Hive
+@onready var demon_grid := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer
 
 @onready var green_earth := $GreenEarth
 @onready var purple_earth := $PurpleEarth
@@ -130,12 +119,6 @@ var level_9_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Leve
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	canPlayLevel2 = Global.getCanPlayLevel2()
-	canPlayLevel3 = Global.getCanPlayLevel3()
-	canPlayLevel4 = Global.getCanPlayLevel4()
-	canPlayLevel5 = Global.getCanPlayLevel5()
-	canPlayLevel6 = Global.getCanPlayLevel6()
-	canPlayLevel7 = Global.getCanPlayLevel7()
 	
 	Global.hideDemonSelectionMenu()
 	swap_icon.texture = Global.get_swap_icon()
@@ -144,17 +127,20 @@ func _ready() -> void:
 	Global.swap_scenes_signal.connect(swap_textures)
 	
 	assemble_panel_containers(self)
+	DemonLoadout.connect_grid(demon_grid, func() -> bool: return show_green)
+	refresh_locks() # level locks + demon grid
+
+
+# Also called by GameController after the Ctrl+U debug unlock.
+func refresh_locks() -> void:
+	Progress.apply_level_locks(self, 1)
 	set_demon_unlocks()
-	
+
 	
 	
 func set_demon_unlocks()->void:
-	crawler_icon.visible = Global.crawler_unlocked
-	occulum_icon.visible = Global.occulum_unlocked
-	spinal_occulum_icon.visible = Global.spinal_occulum_unlocked
-	wyrm_icon.visible = Global.wyrm_unlocked
-	maw_icon.visible = Global.maw_unlocked
-	hive_icon.visible = Global.hive_unlocked
+	# Hidden = locked; darkened = unlocked but not in this dimension's loadout.
+	DemonLoadout.refresh_grid(demon_grid, show_green)
 	
 
 func assemble_panel_containers(given_node : Node)->void:
@@ -186,6 +172,9 @@ func swap_textures()->void:
 			act_panel_container.get_theme_stylebox("panel").bg_color = Color("2400309b")
 			purple_bg.show()
 			green_bg.hide()
+	# Y flips which dimension's loadout the demon grid shows and edits.
+	set_demon_unlocks()
+
 
 func get_level_title(level_num:int)->String:
 	match level_num:
@@ -277,36 +266,31 @@ func _on_level_1_pressed() -> void:
 
 
 func _on_level_2_pressed() -> void:
-	if canPlayLevel2:
-		#assert(get_tree().change_scene_to_file(level2) ==OK)
-		#Global.game_controller.change_scene(level2)
-		Global.game_controller.change_dual_scenes(level0_2, level0_2Alt)
+	#assert(get_tree().change_scene_to_file(level2) ==OK)
+	#Global.game_controller.change_scene(level2)
+	Global.game_controller.change_dual_scenes(level0_2, level0_2Alt)
 
 
 
 func _on_level_3_pressed() -> void:
-	if canPlayLevel3:
-		#assert(get_tree().change_scene_to_file(level3) ==OK)
-		Global.game_controller.change_dual_scenes(level0_3, level0_3Alt)
+	#assert(get_tree().change_scene_to_file(level3) ==OK)
+	Global.game_controller.change_dual_scenes(level0_3, level0_3Alt)
 
 
 func _on_level_4_pressed() -> void:
-	if canPlayLevel4:
-		#assert(get_tree().change_scene_to_file(level4) ==OK)
-		Global.game_controller.change_dual_scenes(level0_4, level0_4Alt)
+	#assert(get_tree().change_scene_to_file(level4) ==OK)
+	Global.game_controller.change_dual_scenes(level0_4, level0_4Alt)
 
 
 func _on_level_5_pressed() -> void:
-	if canPlayLevel5:
-		#assert(get_tree().change_scene_to_file(level5) ==OK)
-		Global.game_controller.change_dual_scenes(level0_5, level0_5Alt)
+	#assert(get_tree().change_scene_to_file(level5) ==OK)
+	Global.game_controller.change_dual_scenes(level0_5, level0_5Alt)
 
 
 
 func _on_level_6_pressed() -> void:
-	if canPlayLevel6:
-		#assert(get_tree().change_scene_to_file(level6) ==OK)
-		Global.game_controller.change_dual_scenes(level0_6, level0_6Alt)
+	#assert(get_tree().change_scene_to_file(level6) ==OK)
+	Global.game_controller.change_dual_scenes(level0_6, level0_6Alt)
 
 func _on_level_7_button_pressed() -> void:
 	Global.game_controller.change_dual_scenes(level8, level8_alt)

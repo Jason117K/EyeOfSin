@@ -18,13 +18,6 @@ enum CURRENT_ACT{
 
 var current_act : CURRENT_ACT = CURRENT_ACT.ACT_1
 
-var canPlayLevel2: bool = true
-var canPlayLevel3: bool = true
-var canPlayLevel4: bool = true
-var canPlayLevel5: bool = true
-var canPlayLevel6: bool = true
-var canPlayLevel7: bool = true
-
 var crawler_unlocked := true
 var occulum_unlocked := false
 var spinal_occulum_unlocked := false
@@ -661,64 +654,6 @@ func damage_all_zombies_with_link(damage : float, zombie_to_exclude : Zombie)->v
 func getOcculumCountVisual() -> int:
 	return occulumCountVisual
 	
-func setCanPlayLevel2() -> void:
-	canPlayLevel2 = true
-
-func getCanPlayLevel2() -> bool:
-	return canPlayLevel2
-
-
-func setCanPlayLevel3() -> void:
-	canPlayLevel3 = true
-
-func getCanPlayLevel3() -> bool:
-	return canPlayLevel3
-
-
-func setCanPlayLevel4() -> void:
-	canPlayLevel4 = true
-
-func getCanPlayLevel4() -> bool:
-	return canPlayLevel4
-
-
-func setCanPlayLevel5() -> void:
-	canPlayLevel5 = true
-
-func getCanPlayLevel5() -> bool:
-	return canPlayLevel5
-
-
-func setCanPlayLevel6() -> void:
-	canPlayLevel6 = true
-
-func getCanPlayLevel6() -> bool:
-	return canPlayLevel6
-
-
-func setCanPlayLevel7() -> void:
-	canPlayLevel7 = true
-
-func getCanPlayLevel7() -> bool:
-	return canPlayLevel7
-
-func unlockLevel(levelUnlocked : int) -> void:
-	match levelUnlocked:
-		1:
-			pass
-		2:
-			setCanPlayLevel2()
-		3:
-			setCanPlayLevel3()
-		4:
-			setCanPlayLevel4()
-		5:
-			setCanPlayLevel5()
-		6:
-			setCanPlayLevel6()
-		7:
-			setCanPlayLevel7()
-	
 func start_wave_1() -> void:
 	if current_level != null:
 		current_level.wave_1_active = true	
@@ -966,10 +901,12 @@ func get_swap_icon()->Texture:
 		return blood_rain_icon
 	
 func get_syn_icon()->Texture:
-	if swap_ability != null:
+	# Guard the SYN manager (was checking swap_ability: equipping only a Swap sorcery then
+	# opening an Act screen hit a null manager). Fallback is the default Syn card.
+	if is_instance_valid(syn_ability_manager):
 		return syn_ability_manager.get_icon()
 	else:
-		return lightning_storm_icon	
+		return lightning_strike_button_icon
 
 func get_syn_button()->Control:
 	return syn_ability_manager.get_syn_button()

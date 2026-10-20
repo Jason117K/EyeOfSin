@@ -13,12 +13,7 @@ var show_green := false
 @onready var swap_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SwapPanelContainer/SwapMarginContainer/SwapSorcery
 @onready var syn_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/AbilitiesVbox/SynPanelContainer/SynMarginContainer/SynSorcery
 
-@onready var crawler_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Crawler
-@onready var occulum_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Occulum
-@onready var spinal_occulum_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/SpinalOcculum
-@onready var wyrm_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Wyrm
-@onready var maw_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Maw
-@onready var hive_icon := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer/Hive
+@onready var demon_grid := $Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/DemonVbox/DemonGridContainer
 
 @onready var green_earth := $GreenEarth
 @onready var purple_earth := $PurpleEarth
@@ -56,17 +51,19 @@ func _ready() -> void:
 	Global.swap_scenes_signal.connect(swap_textures)
 	
 	assemble_panel_containers(self)
+	DemonLoadout.connect_grid(demon_grid, func() -> bool: return show_green)
+	refresh_locks() # level locks + demon grid
+
+
+# Also called by GameController after the Ctrl+U debug unlock.
+func refresh_locks() -> void:
+	Progress.apply_level_locks(self, 2)
 	set_demon_unlocks()
-	
-	
-	
+
+
 func set_demon_unlocks()->void:
-	crawler_icon.visible = Global.crawler_unlocked
-	occulum_icon.visible = Global.occulum_unlocked
-	spinal_occulum_icon.visible = Global.spinal_occulum_unlocked
-	wyrm_icon.visible = Global.wyrm_unlocked
-	maw_icon.visible = Global.maw_unlocked
-	hive_icon.visible = Global.hive_unlocked
+	# Hidden = locked; darkened = unlocked but not in this dimension's loadout.
+	DemonLoadout.refresh_grid(demon_grid, show_green)
 	
 
 func assemble_panel_containers(given_node : Node)->void:
@@ -97,7 +94,8 @@ func swap_textures()->void:
 			act_panel_container.get_theme_stylebox("panel").bg_color = Color("2400309b")
 			purple_bg.show()
 			green_bg.hide()
-	
+	# Y flips which dimension's loadout the demon grid shows and edits.
+	set_demon_unlocks()
 
 
 func _on_back_pressed() -> void:

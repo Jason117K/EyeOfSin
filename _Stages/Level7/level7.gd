@@ -82,8 +82,7 @@ func _ready() -> void:
 	level_title = tr("LEVEL_TITLE_0_8") # played 8th (after the Ultimates level)
 	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
 	super()
-	Global.register_syn_ability(Global.lightning_strike)
-	Global.register_swap_ability(Global.lightning_storm)
+	equip_default_sorceries() # defaults only; keeps the player's panel picks
 	##print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [60.0, 100.0]

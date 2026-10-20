@@ -64,523 +64,519 @@
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="92_l14pwth"]
 
 [sub_resource type="Resource" id="Resource_p84i3"]
-script = ExtResource("91_l14pwe")
-type = "Tank"
-count = 1
+script = ExtResource("90_l14pwd")
 
 [sub_resource type="Resource" id="Resource_rf8nn"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_p84i3")])
 
 [sub_resource type="Resource" id="Resource_vaggj"]
 script = ExtResource("90_l14pwd")
 
 [sub_resource type="Resource" id="Resource_hci8y"]
-script = ExtResource("90_l14pwd")
+script = ExtResource("91_l14pwe")
+type = "Reborn"
+count = 4
 
 [sub_resource type="Resource" id="Resource_8fhf1"]
 script = ExtResource("91_l14pwe")
-type = "Reborn"
-count = 4
+type = "Unhallower"
+count = 1
 
 [sub_resource type="Resource" id="Resource_nrft8"]
 script = ExtResource("91_l14pwe")
-type = "Unhallower"
+type = "Sundered"
 count = 1
 
 [sub_resource type="Resource" id="Resource_qc0hs"]
-script = ExtResource("91_l14pwe")
-type = "Sundered"
-count = 1
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_hci8y"), SubResource("Resource_8fhf1"), SubResource("Resource_nrft8")])
 
 [sub_resource type="Resource" id="Resource_fvx8c"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_8fhf1"), SubResource("Resource_nrft8"), SubResource("Resource_qc0hs")])
+script = ExtResource("91_l14pwe")
+type = "Severed"
+count = 4
 
 [sub_resource type="Resource" id="Resource_lu4u4"]
 script = ExtResource("91_l14pwe")
-type = "Severed"
-count = 4
+type = "Unhallower"
+count = 1
 
 [sub_resource type="Resource" id="Resource_3ky1h"]
 script = ExtResource("91_l14pwe")
-type = "Unhallower"
+type = "Buffer"
 count = 1
 
 [sub_resource type="Resource" id="Resource_b1esn"]
-script = ExtResource("91_l14pwe")
-type = "Buffer"
-count = 1
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_fvx8c"), SubResource("Resource_lu4u4"), SubResource("Resource_3ky1h")])
 
 [sub_resource type="Resource" id="Resource_1gags"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_lu4u4"), SubResource("Resource_3ky1h"), SubResource("Resource_b1esn")])
+script = ExtResource("91_l14pwe")
+type = "Reborn"
+count = 4
 
 [sub_resource type="Resource" id="Resource_dl5p4"]
 script = ExtResource("91_l14pwe")
-type = "Reborn"
-count = 4
+type = "Unhallower"
+count = 2
 
 [sub_resource type="Resource" id="Resource_bk3hr"]
 script = ExtResource("91_l14pwe")
-type = "Unhallower"
-count = 2
+type = "Buffer"
+count = 1
 
 [sub_resource type="Resource" id="Resource_heax3"]
 script = ExtResource("91_l14pwe")
-type = "Buffer"
+type = "Amalgam"
 count = 1
 
 [sub_resource type="Resource" id="Resource_q3d17"]
-script = ExtResource("91_l14pwe")
-type = "Amalgam"
-count = 1
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_1gags"), SubResource("Resource_dl5p4"), SubResource("Resource_bk3hr"), SubResource("Resource_heax3")])
 
 [sub_resource type="Resource" id="Resource_qlrnu"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_dl5p4"), SubResource("Resource_bk3hr"), SubResource("Resource_heax3"), SubResource("Resource_q3d17")])
 
 [sub_resource type="Resource" id="Resource_rdkmj"]
-script = ExtResource("91_l14pwe")
-type = "Ranged"
-count = 1
+script = ExtResource("90_l14pwd")
 
 [sub_resource type="Resource" id="Resource_n4g6h"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_rdkmj")])
-
-[sub_resource type="Resource" id="Resource_26xv3"]
-script = ExtResource("90_l14pwd")
-
-[sub_resource type="Resource" id="Resource_6r80g"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_2n1h3"]
+[sub_resource type="Resource" id="Resource_26xv3"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_qfj8x"]
+[sub_resource type="Resource" id="Resource_6r80g"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_st34s"]
+[sub_resource type="Resource" id="Resource_2n1h3"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_6r80g"), SubResource("Resource_2n1h3"), SubResource("Resource_qfj8x")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_n4g6h"), SubResource("Resource_26xv3"), SubResource("Resource_6r80g")])
 
-[sub_resource type="Resource" id="Resource_h0he2"]
+[sub_resource type="Resource" id="Resource_qfj8x"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_3d086"]
+[sub_resource type="Resource" id="Resource_st34s"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_orndo"]
+[sub_resource type="Resource" id="Resource_h0he2"]
 script = ExtResource("91_l14pwe")
 type = "Buffer"
 count = 1
 
-[sub_resource type="Resource" id="Resource_wk0mx"]
+[sub_resource type="Resource" id="Resource_3d086"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_h0he2"), SubResource("Resource_3d086"), SubResource("Resource_orndo")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_qfj8x"), SubResource("Resource_st34s"), SubResource("Resource_h0he2")])
+
+[sub_resource type="Resource" id="Resource_orndo"]
+script = ExtResource("91_l14pwe")
+type = "Reborn"
+count = 4
+
+[sub_resource type="Resource" id="Resource_wk0mx"]
+script = ExtResource("91_l14pwe")
+type = "Amalgam"
+count = 1
 
 [sub_resource type="Resource" id="Resource_farcw"]
 script = ExtResource("91_l14pwe")
-type = "Reborn"
-count = 4
+type = "Erupter"
+count = 1
 
 [sub_resource type="Resource" id="Resource_jwwri"]
-script = ExtResource("91_l14pwe")
-type = "Amalgam"
-count = 1
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_orndo"), SubResource("Resource_wk0mx"), SubResource("Resource_farcw")])
 
 [sub_resource type="Resource" id="Resource_na47w"]
 script = ExtResource("91_l14pwe")
-type = "Erupter"
-count = 1
+type = "Severed"
+count = 4
 
 [sub_resource type="Resource" id="Resource_0oukd"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_farcw"), SubResource("Resource_jwwri"), SubResource("Resource_na47w")])
+script = ExtResource("91_l14pwe")
+type = "Flesheater"
+count = 1
 
 [sub_resource type="Resource" id="Resource_1am0g"]
 script = ExtResource("91_l14pwe")
-type = "Severed"
-count = 4
-
-[sub_resource type="Resource" id="Resource_4myyk"]
-script = ExtResource("91_l14pwe")
-type = "Flesheater"
-count = 1
-
-[sub_resource type="Resource" id="Resource_yu5q5"]
-script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_wnfhr"]
+[sub_resource type="Resource" id="Resource_4myyk"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_1am0g"), SubResource("Resource_4myyk"), SubResource("Resource_yu5q5")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_na47w"), SubResource("Resource_0oukd"), SubResource("Resource_1am0g")])
+
+[sub_resource type="Resource" id="Resource_yu5q5"]
+script = ExtResource("90_l14pwd")
 
 [sub_resource type="Resource" id="Resource_h1cu2"]
-script = ExtResource("90_l14pwd")
-
-[sub_resource type="Resource" id="Resource_bm67m"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_pdwli"]
+[sub_resource type="Resource" id="Resource_bm67m"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 2
 
-[sub_resource type="Resource" id="Resource_0qjhh"]
+[sub_resource type="Resource" id="Resource_pdwli"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_78u4p"]
+[sub_resource type="Resource" id="Resource_0qjhh"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_bm67m"), SubResource("Resource_pdwli"), SubResource("Resource_0qjhh")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_h1cu2"), SubResource("Resource_bm67m"), SubResource("Resource_pdwli")])
 
-[sub_resource type="Resource" id="Resource_mttuq"]
+[sub_resource type="Resource" id="Resource_78u4p"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_tf825"]
+[sub_resource type="Resource" id="Resource_mttuq"]
 script = ExtResource("91_l14pwe")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_nbags"]
+[sub_resource type="Resource" id="Resource_tf825"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_mttuq"), SubResource("Resource_tf825")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_78u4p"), SubResource("Resource_mttuq")])
 
-[sub_resource type="Resource" id="Resource_2y2lk"]
+[sub_resource type="Resource" id="Resource_nbags"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 3
 
-[sub_resource type="Resource" id="Resource_ofkw5"]
+[sub_resource type="Resource" id="Resource_2y2lk"]
 script = ExtResource("91_l14pwe")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_bg4lc"]
+[sub_resource type="Resource" id="Resource_ofkw5"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_8e5yo"]
+[sub_resource type="Resource" id="Resource_bg4lc"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_2y2lk"), SubResource("Resource_ofkw5"), SubResource("Resource_bg4lc")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_nbags"), SubResource("Resource_2y2lk"), SubResource("Resource_ofkw5")])
 
-[sub_resource type="Resource" id="Resource_bo4lt"]
+[sub_resource type="Resource" id="Resource_8e5yo"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_k75an"]
+[sub_resource type="Resource" id="Resource_bo4lt"]
 script = ExtResource("91_l14pwe")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_iwtpj"]
+[sub_resource type="Resource" id="Resource_k75an"]
 script = ExtResource("91_l14pwe")
 type = "Sundered"
 count = 1
 
-[sub_resource type="Resource" id="Resource_hixxw"]
+[sub_resource type="Resource" id="Resource_iwtpj"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_bo4lt"), SubResource("Resource_k75an"), SubResource("Resource_iwtpj")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_8e5yo"), SubResource("Resource_bo4lt"), SubResource("Resource_k75an")])
 
-[sub_resource type="Resource" id="Resource_tfmy2"]
+[sub_resource type="Resource" id="Resource_hixxw"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_jfir1"]
+[sub_resource type="Resource" id="Resource_tfmy2"]
 script = ExtResource("91_l14pwe")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_fv47y"]
+[sub_resource type="Resource" id="Resource_jfir1"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_q6ps4"]
+[sub_resource type="Resource" id="Resource_fv47y"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_tfmy2"), SubResource("Resource_jfir1"), SubResource("Resource_fv47y")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_hixxw"), SubResource("Resource_tfmy2"), SubResource("Resource_jfir1")])
+
+[sub_resource type="Resource" id="Resource_q6ps4"]
+script = ExtResource("91_l14pwe")
+type = "Reborn"
+count = 8
 
 [sub_resource type="Resource" id="Resource_7ay0g"]
-script = ExtResource("90_l14pwd")
+script = ExtResource("91_l14pwe")
+type = "Severed"
+count = 6
 
 [sub_resource type="Resource" id="Resource_ndsbp"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_q6ps4"), SubResource("Resource_7ay0g")])
+
+[sub_resource type="Resource" id="Resource_evf0g"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 3
 
-[sub_resource type="Resource" id="Resource_evf0g"]
+[sub_resource type="Resource" id="Resource_s1cf5"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 2
 
-[sub_resource type="Resource" id="Resource_s1cf5"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_ndsbp"), SubResource("Resource_evf0g")])
-
 [sub_resource type="Resource" id="Resource_sdfay"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_evf0g"), SubResource("Resource_s1cf5")])
+
+[sub_resource type="Resource" id="Resource_aaocs"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 3
 
-[sub_resource type="Resource" id="Resource_aaocs"]
+[sub_resource type="Resource" id="Resource_sy1hx"]
 script = ExtResource("91_l14pwe")
 type = "Flesheater"
 count = 1
 
-[sub_resource type="Resource" id="Resource_sy1hx"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_sdfay"), SubResource("Resource_aaocs")])
-
 [sub_resource type="Resource" id="Resource_k3dru"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_aaocs"), SubResource("Resource_sy1hx")])
+
+[sub_resource type="Resource" id="Resource_tlr7k"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_tlr7k"]
+[sub_resource type="Resource" id="Resource_8e3a2"]
 script = ExtResource("91_l14pwe")
 type = "Flesheater"
 count = 1
 
-[sub_resource type="Resource" id="Resource_8e3a2"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_k3dru"), SubResource("Resource_tlr7k")])
-
 [sub_resource type="Resource" id="Resource_vg1yp"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_tlr7k"), SubResource("Resource_8e3a2")])
+
+[sub_resource type="Resource" id="Resource_xc32j"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 3
 
-[sub_resource type="Resource" id="Resource_xc32j"]
+[sub_resource type="Resource" id="Resource_2u2nm"]
 script = ExtResource("91_l14pwe")
 type = "Flesheater"
 count = 1
 
-[sub_resource type="Resource" id="Resource_2u2nm"]
+[sub_resource type="Resource" id="Resource_0dmi7"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_0dmi7"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_vg1yp"), SubResource("Resource_xc32j"), SubResource("Resource_2u2nm")])
-
 [sub_resource type="Resource" id="Resource_0trvh"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_xc32j"), SubResource("Resource_2u2nm"), SubResource("Resource_0dmi7")])
+
+[sub_resource type="Resource" id="Resource_xkhnd"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_xkhnd"]
+[sub_resource type="Resource" id="Resource_8yg61"]
 script = ExtResource("91_l14pwe")
 type = "Flesheater"
 count = 1
 
-[sub_resource type="Resource" id="Resource_8yg61"]
+[sub_resource type="Resource" id="Resource_hdkbh"]
 script = ExtResource("91_l14pwe")
 type = "Erupter"
 count = 1
 
-[sub_resource type="Resource" id="Resource_hdkbh"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_0trvh"), SubResource("Resource_xkhnd"), SubResource("Resource_8yg61")])
-
 [sub_resource type="Resource" id="Resource_sbuge"]
 script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_xkhnd"), SubResource("Resource_8yg61"), SubResource("Resource_hdkbh")])
 
 [sub_resource type="Resource" id="Resource_vi1ug"]
-script = ExtResource("91_l14pwe")
-type = "Reborn"
-count = 4
+script = ExtResource("90_l14pwd")
 
 [sub_resource type="Resource" id="Resource_g3rda"]
 script = ExtResource("91_l14pwe")
-type = "Severed"
-count = 2
+type = "Reborn"
+count = 4
 
 [sub_resource type="Resource" id="Resource_dukns"]
 script = ExtResource("91_l14pwe")
+type = "Severed"
+count = 2
+
+[sub_resource type="Resource" id="Resource_7o6nk"]
+script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_7o6nk"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_vi1ug"), SubResource("Resource_g3rda"), SubResource("Resource_dukns")])
-
 [sub_resource type="Resource" id="Resource_5o6ro"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_g3rda"), SubResource("Resource_dukns"), SubResource("Resource_7o6nk")])
+
+[sub_resource type="Resource" id="Resource_2pkba"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_2pkba"]
+[sub_resource type="Resource" id="Resource_8nyhp"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 2
 
-[sub_resource type="Resource" id="Resource_8nyhp"]
+[sub_resource type="Resource" id="Resource_75yxn"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_75yxn"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_5o6ro"), SubResource("Resource_2pkba"), SubResource("Resource_8nyhp")])
-
 [sub_resource type="Resource" id="Resource_hps1p"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_2pkba"), SubResource("Resource_8nyhp"), SubResource("Resource_75yxn")])
+
+[sub_resource type="Resource" id="Resource_2u1ig"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_2u1ig"]
+[sub_resource type="Resource" id="Resource_bu7on"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_bu7on"]
+[sub_resource type="Resource" id="Resource_hwyvp"]
 script = ExtResource("91_l14pwe")
 type = "Sundered"
 count = 1
 
-[sub_resource type="Resource" id="Resource_hwyvp"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_hps1p"), SubResource("Resource_2u1ig"), SubResource("Resource_bu7on")])
-
 [sub_resource type="Resource" id="Resource_0gcv6"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_2u1ig"), SubResource("Resource_bu7on"), SubResource("Resource_hwyvp")])
+
+[sub_resource type="Resource" id="Resource_sn5md"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_sn5md"]
+[sub_resource type="Resource" id="Resource_nrxng"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_nrxng"]
+[sub_resource type="Resource" id="Resource_1e4vx"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_1e4vx"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_0gcv6"), SubResource("Resource_sn5md"), SubResource("Resource_nrxng")])
-
 [sub_resource type="Resource" id="Resource_t2iic"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_sn5md"), SubResource("Resource_nrxng"), SubResource("Resource_1e4vx")])
+
+[sub_resource type="Resource" id="Resource_lk5dq"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_lk5dq"]
+[sub_resource type="Resource" id="Resource_jhc0y"]
 script = ExtResource("91_l14pwe")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_jhc0y"]
+[sub_resource type="Resource" id="Resource_cu0bg"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_cu0bg"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_t2iic"), SubResource("Resource_lk5dq"), SubResource("Resource_jhc0y")])
-
 [sub_resource type="Resource" id="Resource_mu8ru"]
 script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_lk5dq"), SubResource("Resource_jhc0y"), SubResource("Resource_cu0bg")])
 
 [sub_resource type="Resource" id="Resource_203wl"]
 script = ExtResource("90_l14pwd")
 
 [sub_resource type="Resource" id="Resource_utjw7"]
+script = ExtResource("90_l14pwd")
+
+[sub_resource type="Resource" id="Resource_a8xce"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 3
 
-[sub_resource type="Resource" id="Resource_a8xce"]
+[sub_resource type="Resource" id="Resource_elx0o"]
 script = ExtResource("91_l14pwe")
 type = "Amalgam"
 count = 1
 
-[sub_resource type="Resource" id="Resource_elx0o"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_utjw7"), SubResource("Resource_a8xce")])
-
 [sub_resource type="Resource" id="Resource_wt5l8"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_a8xce"), SubResource("Resource_elx0o")])
+
+[sub_resource type="Resource" id="Resource_vwuf7"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_vwuf7"]
+[sub_resource type="Resource" id="Resource_v5bls"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_v5bls"]
+[sub_resource type="Resource" id="Resource_v6uxq"]
 script = ExtResource("91_l14pwe")
 type = "Buffer"
 count = 1
 
-[sub_resource type="Resource" id="Resource_v6uxq"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_wt5l8"), SubResource("Resource_vwuf7"), SubResource("Resource_v5bls")])
-
 [sub_resource type="Resource" id="Resource_41xqk"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_vwuf7"), SubResource("Resource_v5bls"), SubResource("Resource_v6uxq")])
+
+[sub_resource type="Resource" id="Resource_jea3e"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_jea3e"]
+[sub_resource type="Resource" id="Resource_tvryr"]
 script = ExtResource("91_l14pwe")
 type = "Reanimator"
 count = 1
 
-[sub_resource type="Resource" id="Resource_tvryr"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_41xqk"), SubResource("Resource_jea3e")])
-
 [sub_resource type="Resource" id="Resource_vcseb"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_jea3e"), SubResource("Resource_tvryr")])
+
+[sub_resource type="Resource" id="Resource_04nuw"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_04nuw"]
+[sub_resource type="Resource" id="Resource_t11u2"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_t11u2"]
+[sub_resource type="Resource" id="Resource_22uyu"]
 script = ExtResource("91_l14pwe")
 type = "Buffer"
 count = 1
 
-[sub_resource type="Resource" id="Resource_22uyu"]
+[sub_resource type="Resource" id="Resource_2abpr"]
 script = ExtResource("91_l14pwe")
 type = "Sundered"
 count = 1
 
-[sub_resource type="Resource" id="Resource_2abpr"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_vcseb"), SubResource("Resource_04nuw"), SubResource("Resource_t11u2"), SubResource("Resource_22uyu")])
-
 [sub_resource type="Resource" id="Resource_7wmwc"]
 script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_04nuw"), SubResource("Resource_t11u2"), SubResource("Resource_22uyu"), SubResource("Resource_2abpr")])
 
 [sub_resource type="Resource" id="Resource_r514w"]
 script = ExtResource("90_l14pwd")
@@ -592,47 +588,50 @@ script = ExtResource("90_l14pwd")
 script = ExtResource("90_l14pwd")
 
 [sub_resource type="Resource" id="Resource_gyjvq"]
+script = ExtResource("90_l14pwd")
+
+[sub_resource type="Resource" id="Resource_mnpcs"]
 script = ExtResource("91_l14pwe")
 type = "Severed"
 count = 4
 
-[sub_resource type="Resource" id="Resource_mnpcs"]
+[sub_resource type="Resource" id="Resource_hq1d1"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_hq1d1"]
+[sub_resource type="Resource" id="Resource_wuw5j"]
 script = ExtResource("91_l14pwe")
 type = "Sundered"
 count = 1
 
-[sub_resource type="Resource" id="Resource_wuw5j"]
-script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_gyjvq"), SubResource("Resource_mnpcs"), SubResource("Resource_hq1d1")])
-
 [sub_resource type="Resource" id="Resource_pj31d"]
+script = ExtResource("90_l14pwd")
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_mnpcs"), SubResource("Resource_hq1d1"), SubResource("Resource_wuw5j")])
+
+[sub_resource type="Resource" id="Resource_t1nd1"]
 script = ExtResource("91_l14pwe")
 type = "Reborn"
 count = 4
 
-[sub_resource type="Resource" id="Resource_t1nd1"]
+[sub_resource type="Resource" id="Resource_jqqtq"]
 script = ExtResource("91_l14pwe")
 type = "Unhallower"
 count = 1
 
-[sub_resource type="Resource" id="Resource_jqqtq"]
+[sub_resource type="Resource" id="Resource_k3n3p"]
 script = ExtResource("91_l14pwe")
 type = "Erupter"
 count = 1
 
-[sub_resource type="Resource" id="Resource_k3n3p"]
+[sub_resource type="Resource" id="Resource_83dht"]
 script = ExtResource("91_l14pwe")
 type = "Sundered"
 count = 1
 
-[sub_resource type="Resource" id="Resource_83dht"]
+[sub_resource type="Resource" id="Resource_wnfhr"]
 script = ExtResource("90_l14pwd")
-entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_pj31d"), SubResource("Resource_t1nd1"), SubResource("Resource_jqqtq"), SubResource("Resource_k3n3p")])
+entries = Array[ExtResource("91_l14pwe")]([SubResource("Resource_t1nd1"), SubResource("Resource_jqqtq"), SubResource("Resource_k3n3p"), SubResource("Resource_83dht")])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rdkmj"]
 texture = ExtResource("9_h0m1o")
@@ -6899,7 +6898,7 @@ process_mode = 1
 [node name="ZombieSpawner1" parent="GameLayer" unique_id=1376288603 instance=ExtResource("6_cx4it")]
 visible = false
 position = Vector2(740, 109)
-waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_rf8nn"), SubResource("Resource_vaggj"), SubResource("Resource_hci8y"), SubResource("Resource_fvx8c"), SubResource("Resource_1gags"), SubResource("Resource_qlrnu")])
+waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_p84i3"), SubResource("Resource_rf8nn"), SubResource("Resource_vaggj"), SubResource("Resource_qc0hs"), SubResource("Resource_b1esn"), SubResource("Resource_q3d17")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner1" unique_id=288115831 instance=ExtResource("7_funac")]
 z_index = 1
@@ -6908,7 +6907,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner2" parent="GameLayer" unique_id=1827099493 instance=ExtResource("6_cx4it")]
 visible = false
 position = Vector2(740, 141)
-waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_n4g6h"), SubResource("Resource_26xv3"), SubResource("Resource_st34s"), SubResource("Resource_wk0mx"), SubResource("Resource_0oukd"), SubResource("Resource_wnfhr")])
+waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_qlrnu"), SubResource("Resource_rdkmj"), SubResource("Resource_2n1h3"), SubResource("Resource_3d086"), SubResource("Resource_jwwri"), SubResource("Resource_4myyk")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner2" unique_id=197908073 instance=ExtResource("7_funac")]
 z_index = 1
@@ -6917,7 +6916,7 @@ position = Vector2(-32, 0)
 [node name="ZombieSpawner3" parent="GameLayer" unique_id=1637701727 instance=ExtResource("6_cx4it")]
 visible = false
 position = Vector2(740, 173)
-waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_h1cu2"), SubResource("Resource_78u4p"), SubResource("Resource_nbags"), SubResource("Resource_8e5yo"), SubResource("Resource_hixxw"), SubResource("Resource_q6ps4")])
+waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_yu5q5"), SubResource("Resource_0qjhh"), SubResource("Resource_tf825"), SubResource("Resource_bg4lc"), SubResource("Resource_iwtpj"), SubResource("Resource_fv47y")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner3" unique_id=183593388 instance=ExtResource("7_funac")]
 z_index = 1
@@ -6926,7 +6925,7 @@ position = Vector2(-32, 1)
 [node name="ZombieSpawner4" parent="GameLayer" unique_id=1209489549 instance=ExtResource("6_cx4it")]
 visible = false
 position = Vector2(740, 205)
-waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_7ay0g"), SubResource("Resource_s1cf5"), SubResource("Resource_sy1hx"), SubResource("Resource_8e3a2"), SubResource("Resource_0dmi7"), SubResource("Resource_hdkbh")])
+waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_ndsbp"), SubResource("Resource_sdfay"), SubResource("Resource_k3dru"), SubResource("Resource_vg1yp"), SubResource("Resource_0trvh"), SubResource("Resource_sbuge")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner4" unique_id=477558108 instance=ExtResource("7_funac")]
 z_index = 1
@@ -6935,7 +6934,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner5" parent="GameLayer" unique_id=40172816 instance=ExtResource("6_cx4it")]
 visible = false
 position = Vector2(740, 237)
-waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_sbuge"), SubResource("Resource_7o6nk"), SubResource("Resource_75yxn"), SubResource("Resource_hwyvp"), SubResource("Resource_1e4vx"), SubResource("Resource_cu0bg")])
+waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_vi1ug"), SubResource("Resource_5o6ro"), SubResource("Resource_hps1p"), SubResource("Resource_0gcv6"), SubResource("Resource_t2iic"), SubResource("Resource_mu8ru")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner5" unique_id=366118389 instance=ExtResource("7_funac")]
 z_index = 1
@@ -6944,7 +6943,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner6" parent="GameLayer" unique_id=816215242 instance=ExtResource("6_cx4it")]
 visible = false
 position = Vector2(740, 269)
-waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_mu8ru"), SubResource("Resource_203wl"), SubResource("Resource_elx0o"), SubResource("Resource_v6uxq"), SubResource("Resource_tvryr"), SubResource("Resource_2abpr")])
+waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_203wl"), SubResource("Resource_utjw7"), SubResource("Resource_wt5l8"), SubResource("Resource_41xqk"), SubResource("Resource_vcseb"), SubResource("Resource_7wmwc")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner6" unique_id=1257123650 instance=ExtResource("7_funac")]
 z_index = 1
@@ -6953,7 +6952,7 @@ position = Vector2(-32, -1)
 [node name="ZombieSpawner7" parent="GameLayer" unique_id=1922773539 instance=ExtResource("6_cx4it")]
 visible = false
 position = Vector2(740, 301)
-waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_7wmwc"), SubResource("Resource_r514w"), SubResource("Resource_3ydvh"), SubResource("Resource_y874u"), SubResource("Resource_wuw5j"), SubResource("Resource_83dht")])
+waves = Array[ExtResource("90_l14pwd")]([SubResource("Resource_r514w"), SubResource("Resource_3ydvh"), SubResource("Resource_y874u"), SubResource("Resource_gyjvq"), SubResource("Resource_pj31d"), SubResource("Resource_wnfhr")])
 
 [node name="WavePreview" parent="GameLayer/ZombieSpawner7" unique_id=1043848066 instance=ExtResource("7_funac")]
 z_index = 1
@@ -6970,8 +6969,8 @@ tile_map_data = PackedByteArray("AAABAAYACgAcAAwAAFABAAcACgAdAAwAAFAAAAYACgAcAA0
 tile_set = SubResource("TileSet_yu5q5")
 
 [node name="TileMapLayer" parent="GameLayer/GridManager" index="2" unique_id=456208734]
-visible = false
-tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAAAAAADAAsABQAAAAAAAAAFAAsAAQARAAgAAAAGAAsAAQARAAgAAAAHAAsABQAAAAAAAAAIAAsABQAAAAAAAAAWAAsAAQARAAgAAAAXAAsABQAAAAAAAAAVAAsABQAAAAAAAAAUAAsABQAAAAAAAAATAAsABQAAAAAAAAASAAsABQAAAAAAAAARAAsABQAAAAAAAAAQAAsABQAAAAAAAAAPAAsABQAAAAAAAAAOAAsABQAAAAAAAAANAAsABQAAAAAAAAAMAAsABQAAAAAAAAALAAsABQAAAAAAAAAKAAsABQAAAAAAAAAJAAsABQAAAAAAAAAEAAoAAQAFAAcAAAADAAoAAQARAAcAAAACAAoAAQAJAAcAAAABAAoAAQABAAcAAAAFAAoAAQAJAAcAAAAHAAoAAQABAAcAAAAIAAoAAQACAAcAAAAJAAoAAQAIAAcAAAAKAAoAAQAAAAcAAAALAAoAAQAJAAcAAAAMAAoAAQARAAcAAAANAAoAAQACAAcAAAAOAAoAAQAJAAcAAAAPAAoAAQACAAMAAAAQAAoAAQAKAAcAAAARAAoAAQALAAcAAAASAAoAAQAFAAcAAAATAAoAAQAJAAcAAAAUAAoAAQAKAAcAAAAVAAoAAQAJAAcAAAAWAAoAAQAQAAcAAAARAAkAAQADAAUAAAAQAAkAAQADAAUAAAAPAAkAAQADAAUAAAAOAAkAAQADAAUAAAANAAkAAQADAAUAAAAMAAkAAQADAAUAAAALAAkAAQADAAUAAAAKAAkAAQADAAUAAAAJAAkAAQADAAUAAAAAAAoAAQANAAcAAAAAAAkAAQADAAUAAAABAAkAAQADAAUAAAACAAkAAQADAAUAAAADAAkAAQADAAUAAAAEAAkAAQADAAUAAAAFAAkAAQADAAUAAAAGAAkAAQADAAUAAAAHAAkAAQADAAUAAAAIAAkAAQADAAUAAAASAAkAAQADAAUAAAATAAkAAQADAAUAAAAUAAkAAQADAAUAAAAVAAkAAQADAAUAAAAWAAkAAQADAAUAAAAXAAkAAQADAAUAAAAEAAsAAQAAAAkAAAAGAAoAAQAKAAcAAAADAAgAAQADAAUAAAABAAcAAQADAAUAAAAIAAcAAQADAAUAAAADAAYAAQADAAUAAAAFAAUAAQABAAUAAAAGAAgAAQADAAUAAAAOAAYAAQADAAUAAAALAAUAAQABAAUAAAAMAAgAAQADAAUAAAAVAAcAAQADAAUAAAASAAYAAQADAAUAAAAQAAgAAQADAAUAAAAJAAYAAQADAAUAAAAFAAcAAQADAAUAAAAHAAgAAQADAAUAAAAIAAgAAQADAAUAAAAJAAgAAQADAAUAAAAKAAgAAQADAAUAAAALAAgAAQADAAUAAAAFAAgAAQADAAUAAAAEAAgAAQADAAUAAAACAAgAAQADAAUAAAAAAAgAAQADAAUAAAABAAgAAQADAAUAAAAAAAcAAQADAAUAAAAAAAYAAQADAAUAAAABAAYAAQADAAUAAAACAAcAAQADAAUAAAADAAcAAQADAAUAAAAEAAcAAQADAAUAAAACAAYAAQADAAUAAAAEAAYAAQADAAUAAAAGAAYAAQADAAUAAAAGAAcAAQADAAUAAAAFAAYAAQADAAUAAAAHAAYAAQADAAUAAAAIAAYAAQADAAUAAAAHAAcAAQADAAUAAAAJAAcAAQADAAUAAAAKAAYAAQADAAUAAAALAAcAAQADAAUAAAAKAAcAAQADAAUAAAALAAYAAQADAAUAAAAMAAYAAQADAAUAAAANAAYAAQADAAUAAAANAAcAAQADAAUAAAAMAAcAAQADAAUAAAANAAgAAQADAAUAAAAOAAgAAQADAAUAAAAPAAgAAQADAAUAAAAOAAcAAQADAAUAAAAPAAcAAQADAAUAAAAPAAYAAQADAAUAAAAQAAYAAQADAAUAAAARAAYAAQADAAUAAAARAAcAAQADAAUAAAAQAAcAAQADAAUAAAARAAgAAQADAAUAAAASAAgAAQADAAUAAAASAAcAAQADAAUAAAATAAYAAQADAAUAAAATAAcAAQADAAUAAAATAAgAAQADAAUAAAAUAAgAAQADAAUAAAAUAAcAAQADAAUAAAAUAAYAAQADAAUAAAAVAAYAAQADAAUAAAAWAAYAAQADAAUAAAAWAAcAAQADAAUAAAAWAAgAAQADAAUAAAAVAAgAAQADAAUAAAAXAAIAAQAJAAMAAAAWAAIAAQAKAAMAAAAVAAIAAQAGAAMAAAAUAAIAAQAJAAMAAAATAAIAAQANAAMAAAASAAIAAQABAAMAAAARAAIAAQAJAAMAAAAQAAIAAQACAAMAAAAPAAIAAQAJAAMAAAAOAAIAAQAEAAMAAAANAAIAAQALAAMAAAAMAAIAAQAIAAMAAAALAAIAAQALAAMAAAAKAAIAAQAJAAMAAAAJAAIAAQAPAAMAAAAIAAIAAQAHAAMAAAAHAAIAAQABAAMAAAAGAAIAAQACAAMAAAAFAAIAAQAAAAMAAAAEAAIAAQAGAAMAAAADAAIAAQABAAMAAAACAAIAAQAJAAMAAAABAAIAAQAIAAMAAAAAAAIAAQALAAMAAAAXAAoAAQAJAAcAAAAXAAgAAQADAAUAAAAXAAcAAQADAAUAAAAXAAYAAQADAAUAAAAWAAUAAQABAAUAAAAVAAUAAQABAAUAAAAUAAUAAQABAAUAAAATAAUAAQABAAUAAAASAAUAAQABAAUAAAARAAUAAQABAAUAAAAQAAUAAQABAAUAAAAPAAUAAQABAAUAAAAOAAUAAQABAAUAAAANAAUAAQABAAUAAAAMAAUAAQABAAUAAAAKAAUAAQABAAUAAAAXAAUAAQABAAUAAAAJAAUAAQABAAUAAAAIAAUAAQABAAUAAAAHAAUAAQABAAUAAAAXAAQAAQADAAUAAAAWAAQAAQADAAUAAAAVAAQAAQADAAUAAAAUAAQAAQADAAUAAAATAAQAAQADAAUAAAASAAQAAQADAAUAAAARAAQAAQADAAUAAAAQAAQAAQADAAUAAAAPAAQAAQADAAUAAAAGAAUAAQABAAUAAAAEAAUAAQABAAUAAAADAAUAAQABAAUAAAACAAUAAQACAAUAAAABAAUAAQADAAUAAAAAAAUAAQADAAUAAAAAAAQAAQADAAUAAAABAAQAAQADAAUAAAACAAQAAQADAAUAAAADAAQAAQADAAUAAAAEAAQAAQADAAUAAAAFAAQAAQADAAUAAAAGAAQAAQADAAUAAAAHAAQAAQADAAUAAAAIAAQAAQADAAUAAAAJAAQAAQADAAUAAAAKAAQAAQADAAUAAAALAAQAAQADAAUAAAAMAAQAAQADAAUAAAANAAQAAQADAAUAAAAOAAQAAQADAAUAAAAAAAMAAQADAAUAAAABAAMAAQADAAUAAAACAAMAAQADAAUAAAADAAMAAQADAAUAAAAEAAMAAQADAAUAAAAFAAMAAQADAAUAAAAGAAMAAQADAAUAAAAHAAMAAQADAAUAAAAIAAMAAQADAAUAAAAJAAMAAQADAAUAAAAKAAMAAQADAAUAAAALAAMAAQADAAUAAAAQAAMAAQADAAUAAAARAAMAAQADAAUAAAASAAMAAQADAAUAAAATAAMAAQADAAUAAAAUAAMAAQADAAUAAAAVAAMAAQADAAUAAAAWAAMAAQADAAUAAAAXAAMAAQADAAUAAAAPAAMAAQADAAUAAAAOAAMAAQADAAUAAAANAAMAAQADAAUAAAAMAAMAAQADAAUAAAAXAAEABQAAAAAAAAAWAAEABQAAAAAAAAAVAAEABQAAAAAAAAAUAAEABQAAAAAAAAATAAEABQAAAAAAAAASAAEABQAAAAAAAAARAAEABQAAAAAAAAAQAAEABQAAAAEAAAAPAAEABQAAAAAAAAAOAAEABQAAAAAAAAANAAEABQAAAAAAAAAMAAEABQAAAAAAAAALAAEABQAAAAAAAAAKAAEABQAAAAAAAAAJAAEABQAAAAAAAAAIAAEABQAAAAAAAAAHAAEABQAAAAAAAAAGAAEABQAAAAAAAAAFAAEABQAAAAAAAAAEAAEABQAAAAAAAAADAAEABQAAAAAAAAACAAEABQAAAAAAAAABAAEABQAAAAAAAAAAAAEABQAAAAAAAAAXAAAABQAAAAAAAAAWAAAABQAAAAAAAAAVAAAABQAAAAAAAAAUAAAABQAAAAAAAAATAAAABQAAAAAAAAASAAAABQAAAAAAAAARAAAABQAAAAAAAAAQAAAABQAAAAEAAAAPAAAABQAAAAAAAAAOAAAABQAAAAAAAAANAAAABQAAAAAAAAAMAAAABQAAAAAAAAALAAAABQAAAAAAAAAKAAAABQAAAAAAAAAJAAAABQAAAAAAAAAIAAAABQAAAAAAAAAHAAAABQAAAAAAAAAGAAAABQAAAAAAAAAFAAAABQAAAAAAAAAEAAAABQAAAAAAAAADAAAABQAAAAAAAAACAAAABQAAAAAAAAABAAAABQAAAAAAAAAAAAAABQAAAAAAAAAXAAwABQAAAAAAAAAWAAwABQAAAAAAAAAVAAwABQAAAAEAAAAUAAwABQAAAAAAAAATAAwABQAAAAAAAAASAAwABQAAAAAAAAARAAwABQAAAAAAAAAQAAwABQAAAAAAAAAPAAwABQAAAAAAAAAOAAwABQAAAAEAAAANAAwABQAAAAAAAAAMAAwAAQAAAAkAAAALAAwAAQAGAAkAAAAKAAwAAQAAAAkAAAAJAAwABQAAAAAAAAAIAAwABQAAAAAAAAAHAAwABQAAAAAAAAAGAAwABQAAAAAAAAAFAAwABQAAAAAAAAAEAAwABQAAAAAAAAADAAwABQAAAAAAAAACAAwABQAAAAAAAAABAAwABQAAAAAAAAAAAAwABQAAAAAAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAD+/wUAAQADAAUAAAAAAA0ABQAAAAAAAAABAA0ABQAAAAAAAAACAA0ABQAAAAAAAAADAA0ABQAAAAAAAAAEAA0ABQAAAAAAAAAFAA0ABQAAAAAAAAAGAA0ABQAAAAAAAAAHAA0ABQAAAAAAAAAIAA0ABQAAAAAAAAAJAA0ABQAAAAAAAAAKAA0ABQAAAAAAAAALAA0ABQAAAAAAAAAMAA0ABQAAAAAAAAANAA0ABQAAAAAAAAAOAA0ABQAAAAAAAAAPAA0ABQAAAAAAAAAQAA0ABQAAAAAAAAARAA0ABQAAAAAAAAASAA0ABQAAAAAAAAATAA0ABQAAAAAAAAAUAA0ABQAAAAAAAAAVAA0ABQAAAAAAAAAWAA0ABQAAAAAAAAAXAA0ABQAAAAAAAAA=")
+self_modulate = Color(1, 1, 1, 0)
+tile_map_data = PackedByteArray("AAACAAsABQAAAAAAAAABAAsABQAAAAAAAAAAAAsABQAAAAAAAAADAAsABQAAAAAAAAAFAAsAAQARAAgAAAAGAAsAAQARAAgAAAAHAAsABQAAAAAAAAAIAAsABQAAAAAAAAAWAAsAAQARAAgAAAAXAAsABQAAAAAAAAAVAAsABQAAAAAAAAAUAAsABQAAAAAAAAATAAsABQAAAAAAAAASAAsABQAAAAAAAAARAAsABQAAAAAAAAAQAAsABQAAAAAAAAAPAAsABQAAAAAAAAAOAAsABQAAAAAAAAANAAsABQAAAAAAAAAMAAsABQAAAAAAAAALAAsABQAAAAAAAAAKAAsABQAAAAAAAAAJAAsABQAAAAAAAAAEAAoAAQAFAAcAAAADAAoAAQARAAcAAAACAAoAAQAJAAcAAAABAAoAAQABAAcAAAAFAAoAAQAJAAcAAAAHAAoAAQABAAcAAAAIAAoAAQACAAcAAAAJAAoAAQAIAAcAAAAKAAoAAQAAAAcAAAALAAoAAQAJAAcAAAAMAAoAAQARAAcAAAANAAoAAQACAAcAAAAOAAoAAQAJAAcAAAAPAAoAAQACAAMAAAAQAAoAAQAKAAcAAAARAAoAAQALAAcAAAASAAoAAQAFAAcAAAATAAoAAQAJAAcAAAAUAAoAAQAKAAcAAAAVAAoAAQAJAAcAAAAWAAoAAQAQAAcAAAARAAkAAQADAAUAAAAQAAkAAQADAAUAAAAPAAkAAQADAAUAAAAOAAkAAQADAAUAAAANAAkAAQADAAUAAAAMAAkAAQADAAUAAAALAAkAAQADAAUAAAAKAAkAAQADAAUAAAAJAAkAAQADAAUAAAAAAAoAAQANAAcAAAAAAAkAAQADAAUAAAABAAkAAQADAAUAAAACAAkAAQADAAUAAAADAAkAAQADAAUAAAAEAAkAAQADAAUAAAAFAAkAAQADAAUAAAAGAAkAAQADAAUAAAAHAAkAAQADAAUAAAAIAAkAAQADAAUAAAASAAkAAQADAAUAAAATAAkAAQADAAUAAAAUAAkAAQADAAUAAAAVAAkAAQADAAUAAAAWAAkAAQADAAUAAAAXAAkAAQADAAUAAAAEAAsAAQAAAAkAAAAGAAoAAQAKAAcAAAADAAgAAQADAAUAAAABAAcAAQADAAUAAAAIAAcAAQADAAUAAAADAAYAAQADAAUAAAAFAAUAAQABAAUAAAAGAAgAAQADAAUAAAAOAAYAAQADAAUAAAALAAUAAQABAAUAAAAMAAgAAQADAAUAAAAVAAcAAQADAAUAAAASAAYAAQADAAUAAAAQAAgAAQADAAUAAAAJAAYAAQADAAUAAAAFAAcAAQADAAUAAAAHAAgAAQADAAUAAAAIAAgAAQADAAUAAAAJAAgAAQADAAUAAAAKAAgAAQADAAUAAAALAAgAAQADAAUAAAAFAAgAAQADAAUAAAAEAAgAAQADAAUAAAACAAgAAQADAAUAAAAAAAgAAQADAAUAAAABAAgAAQADAAUAAAAAAAcAAQADAAUAAAAAAAYAAQADAAUAAAABAAYAAQADAAUAAAACAAcAAQADAAUAAAADAAcAAQADAAUAAAAEAAcAAQADAAUAAAACAAYAAQADAAUAAAAEAAYAAQADAAUAAAAGAAYAAQADAAUAAAAGAAcAAQADAAUAAAAFAAYAAQADAAUAAAAHAAYAAQADAAUAAAAIAAYAAQADAAUAAAAHAAcAAQADAAUAAAAJAAcAAQADAAUAAAAKAAYAAQADAAUAAAALAAcAAQADAAUAAAAKAAcAAQADAAUAAAALAAYAAQADAAUAAAAMAAYAAQADAAUAAAANAAYAAQADAAUAAAANAAcAAQADAAUAAAAMAAcAAQADAAUAAAANAAgAAQADAAUAAAAOAAgAAQADAAUAAAAPAAgAAQADAAUAAAAOAAcAAQADAAUAAAAPAAcAAQADAAUAAAAPAAYAAQADAAUAAAAQAAYAAQADAAUAAAARAAYAAQADAAUAAAARAAcAAQADAAUAAAAQAAcAAQADAAUAAAARAAgAAQADAAUAAAASAAgAAQADAAUAAAASAAcAAQADAAUAAAATAAYAAQADAAUAAAATAAcAAQADAAUAAAATAAgAAQADAAUAAAAUAAgAAQADAAUAAAAUAAcAAQADAAUAAAAUAAYAAQADAAUAAAAVAAYAAQADAAUAAAAWAAYAAQADAAUAAAAWAAcAAQADAAUAAAAWAAgAAQADAAUAAAAVAAgAAQADAAUAAAAXAAIAAQAJAAMAAAAWAAIAAQAKAAMAAAAVAAIAAQAGAAMAAAAUAAIAAQAJAAMAAAATAAIAAQANAAMAAAASAAIAAQABAAMAAAARAAIAAQAJAAMAAAAQAAIAAQACAAMAAAAPAAIAAQAJAAMAAAAOAAIAAQAEAAMAAAANAAIAAQALAAMAAAAMAAIAAQAIAAMAAAALAAIAAQALAAMAAAAKAAIAAQAJAAMAAAAJAAIAAQAPAAMAAAAIAAIAAQAHAAMAAAAHAAIAAQABAAMAAAAGAAIAAQACAAMAAAAFAAIAAQAAAAMAAAAEAAIAAQAGAAMAAAADAAIAAQABAAMAAAACAAIAAQAJAAMAAAABAAIAAQAIAAMAAAAAAAIAAQALAAMAAAAXAAoAAQAJAAcAAAAXAAgAAQADAAUAAAAXAAcAAQADAAUAAAAXAAYAAQADAAUAAAAWAAUAAQABAAUAAAAVAAUAAQABAAUAAAAUAAUAAQABAAUAAAATAAUAAQABAAUAAAASAAUAAQABAAUAAAARAAUAAQABAAUAAAAQAAUAAQABAAUAAAAPAAUAAQABAAUAAAAOAAUAAQABAAUAAAANAAUAAQABAAUAAAAMAAUAAQABAAUAAAAKAAUAAQABAAUAAAAXAAUAAQABAAUAAAAJAAUAAQABAAUAAAAIAAUAAQABAAUAAAAHAAUAAQABAAUAAAAXAAQAAQADAAUAAAAWAAQAAQADAAUAAAAVAAQAAQADAAUAAAAUAAQAAQADAAUAAAATAAQAAQADAAUAAAASAAQAAQADAAUAAAARAAQAAQADAAUAAAAQAAQAAQADAAUAAAAPAAQAAQADAAUAAAAGAAUAAQABAAUAAAAEAAUAAQABAAUAAAADAAUAAQABAAUAAAACAAUAAQACAAUAAAABAAUAAQADAAUAAAAAAAUAAQADAAUAAAAAAAQAAQADAAUAAAABAAQAAQADAAUAAAACAAQAAQADAAUAAAADAAQAAQADAAUAAAAEAAQAAQADAAUAAAAFAAQAAQADAAUAAAAGAAQAAQADAAUAAAAHAAQAAQADAAUAAAAIAAQAAQADAAUAAAAJAAQAAQADAAUAAAAKAAQAAQADAAUAAAALAAQAAQADAAUAAAAMAAQAAQADAAUAAAANAAQAAQADAAUAAAAOAAQAAQADAAUAAAAAAAMAAQADAAUAAAABAAMAAQADAAUAAAACAAMAAQADAAUAAAADAAMAAQADAAUAAAAEAAMAAQADAAUAAAAFAAMAAQADAAUAAAAGAAMAAQADAAUAAAAHAAMAAQADAAUAAAAIAAMAAQADAAUAAAAJAAMAAQADAAUAAAAKAAMAAQADAAUAAAALAAMAAQADAAUAAAAQAAMAAQADAAUAAAARAAMAAQADAAUAAAASAAMAAQADAAUAAAATAAMAAQADAAUAAAAUAAMAAQADAAUAAAAVAAMAAQADAAUAAAAWAAMAAQADAAUAAAAXAAMAAQADAAUAAAAPAAMAAQADAAUAAAAOAAMAAQADAAUAAAANAAMAAQADAAUAAAAMAAMAAQADAAUAAAAXAAEABQAAAAAAAAAWAAEABQAAAAAAAAAVAAEABQAAAAAAAAAUAAEABQAAAAAAAAATAAEABQAAAAAAAAASAAEABQAAAAAAAAARAAEABQAAAAAAAAAQAAEABQAAAAEAAAAPAAEABQAAAAAAAAAOAAEABQAAAAAAAAANAAEABQAAAAAAAAAMAAEABQAAAAAAAAALAAEABQAAAAAAAAAKAAEABQAAAAAAAAAJAAEABQAAAAAAAAAIAAEABQAAAAAAAAAHAAEABQAAAAAAAAAGAAEABQAAAAAAAAAFAAEABQAAAAAAAAAEAAEABQAAAAAAAAADAAEABQAAAAAAAAACAAEABQAAAAAAAAABAAEABQAAAAAAAAAAAAEABQAAAAAAAAAXAAAABQAAAAAAAAAWAAAABQAAAAAAAAAVAAAABQAAAAAAAAAUAAAABQAAAAAAAAATAAAABQAAAAAAAAASAAAABQAAAAAAAAARAAAABQAAAAAAAAAQAAAABQAAAAEAAAAPAAAABQAAAAAAAAAOAAAABQAAAAAAAAANAAAABQAAAAAAAAAMAAAABQAAAAAAAAALAAAABQAAAAAAAAAKAAAABQAAAAAAAAAJAAAABQAAAAAAAAAIAAAABQAAAAAAAAAHAAAABQAAAAAAAAAGAAAABQAAAAAAAAAFAAAABQAAAAAAAAAEAAAABQAAAAAAAAADAAAABQAAAAAAAAACAAAABQAAAAAAAAABAAAABQAAAAAAAAAAAAAABQAAAAAAAAAXAAwABQAAAAAAAAAWAAwABQAAAAAAAAAVAAwABQAAAAEAAAAUAAwABQAAAAAAAAATAAwABQAAAAAAAAASAAwABQAAAAAAAAARAAwABQAAAAAAAAAQAAwABQAAAAAAAAAPAAwABQAAAAAAAAAOAAwABQAAAAEAAAANAAwABQAAAAAAAAAMAAwAAQAAAAkAAAALAAwAAQAGAAkAAAAKAAwAAQAAAAkAAAAJAAwABQAAAAAAAAAIAAwABQAAAAAAAAAHAAwABQAAAAAAAAAGAAwABQAAAAAAAAAFAAwABQAAAAAAAAAEAAwABQAAAAAAAAADAAwABQAAAAAAAAACAAwABQAAAAAAAAABAAwABQAAAAAAAAAAAAwABQAAAAAAAAAXAP//AQARAAoAAAAWAP//AQARAAoAAAAVAP//AQARAAoAAAAUAP//AQARAAoAAAATAP//AQARAAoAAAASAP//AQARAAoAAAARAP//AQARAAoAAAAQAP//AQARAAoAAAAPAP//AQARAAoAAAAOAP//AQARAAoAAAANAP//AQARAAoAAAAMAP//AQARAAoAAAALAP//AQARAAoAAAAKAP//AQARAAoAAAAJAP//AQARAAoAAAAIAP//AQARAAoAAAAHAP//AQARAAoAAAAGAP//AQARAAoAAAAFAP//AQARAAoAAAAEAP//AQARAAoAAAADAP//AQARAAoAAAACAP//AQARAAoAAAABAP//AQARAAoAAAAAAP//AQARAAoAAAD1/xEAAQARAAEAAAD1/xIAAQARAAEAAAD1/xMAAQARAAEAAAD1/xcAAQANAAcAAAD1/xgAAQAAAAkAAAD2/xEAAQARAAEAAAD2/xIAAQARAAEAAAD2/xMAAQARAAEAAAD2/xcAAQABAAcAAAD2/xgAAQAGAAkAAAD3/xEAAQAMAAEAAAD3/xIAAQAMAAEAAAD3/xMAAQAMAAEAAAD3/xcAAQAJAAcAAAD3/xgAAQAAAAkAAAD4/xEAAQARAAEAAAD4/xIAAQARAAEAAAD4/xMAAQARAAEAAAD4/xcAAQARAAcAAAD4/xgAAQAGAAkAAAD5/xEAAQAMAAEAAAD5/xIAAQAMAAEAAAD5/xMAAQAMAAEAAAD5/xcAAQAFAAcAAAD5/xgAAQAAAAkAAAD6/xEAAQARAAEAAAD6/xIAAQARAAEAAAD6/xMAAQARAAEAAAD6/xcAAQAJAAcAAAD6/xgAAQARAAgAAAD7/xEAAQAMAAEAAAD7/xIAAQAMAAEAAAD7/xMAAQAMAAEAAAD7/xcAAQAKAAcAAAD7/xgAAQARAAgAAAD8/xEAAQARAAEAAAD8/xIAAQARAAEAAAD8/xMAAQARAAEAAAD8/xcAAQABAAcAAAD8/xgAAQARAAgAAAD9/xEAAQARAAEAAAD9/xIAAQARAAEAAAD9/xMAAQARAAEAAAD9/xcAAQACAAcAAAD9/xgAAQARAAgAAAD+/xEAAQAMAAEAAAD+/xIAAQAMAAEAAAD+/xMAAQAMAAEAAAD+/xcAAQAIAAcAAAD+/xgAAQADAAgAAAD//xEAAQAMAAEAAAD//xIAAQAMAAEAAAD//xMAAQAMAAEAAAD//xcAAQAAAAcAAAD//xgAAQARAAgAAAAAABEAAQARAAEAAAAAABIAAQARAAEAAAAAABMAAQARAAEAAAAAABcAAQAJAAcAAAAAABgAAQARAAgAAAABABEAAQAMAAEAAAABABIAAQAMAAEAAAABABMAAQAMAAEAAAABABcAAQARAAcAAAABABgAAQADAAgAAAACABEAAQARAAEAAAACABIAAQARAAEAAAACABMAAQARAAEAAAACABcAAQACAAcAAAACABgAAQADAAgAAAADABEAAQARAAEAAAADABIAAQARAAEAAAADABMAAQARAAEAAAADABcAAQAJAAcAAAADABgAAQARAAgAAAAEABEAAQAMAAEAAAAEABIAAQAMAAEAAAAEABMAAQAMAAEAAAAEABcAAQACAAMAAAAEABgAAQARAAgAAAAFABEAAQARAAEAAAAFABIAAQARAAEAAAAFABMAAQARAAEAAAAFABcAAQAKAAcAAAAFABgAAQARAAgAAAAGABEAAQARAAEAAAAGABIAAQARAAEAAAAGABMAAQARAAEAAAAGABcAAQALAAcAAAAGABgAAQARAAgAAAAHABEAAQAMAAEAAAAHABIAAQAMAAEAAAAHABMAAQAMAAEAAAAHABcAAQAFAAcAAAAHABgAAQARAAgAAAAIABEAAQARAAEAAAAIABIAAQARAAEAAAAIABMAAQARAAEAAAAIABcAAQAJAAcAAAAIABgAAQARAAgAAAAJABEAAQAMAAEAAAAJABIAAQAMAAEAAAAJABMAAQAMAAEAAAAJABcAAQAKAAcAAAAJABgAAQARAAgAAAAKABEAAQARAAEAAAAKABIAAQARAAEAAAAKABMAAQARAAEAAAAKABcAAQAJAAcAAAAKABgAAQARAAgAAAALABEAAQAMAAEAAAALABIAAQAMAAEAAAALABMAAQAMAAEAAAALABcAAQAQAAcAAAALABgAAQARAAgAAAAMABEAAQARAAEAAAAMABIAAQARAAEAAAAMABMAAQARAAEAAAAMABcAAQAJAAcAAAAMABgAAQARAAgAAAD+/wUAAQADAAUAAAAAAA0ABQAAAAAAAAABAA0ABQAAAAAAAAACAA0ABQAAAAAAAAADAA0ABQAAAAAAAAAEAA0ABQAAAAAAAAAFAA0ABQAAAAAAAAAGAA0ABQAAAAAAAAAIAA0ABQAAAAAAAAAHAA0ABQAAAAAAAAAJAA0ABQAAAAAAAAANAA0ABQAAAAAAAAAMAA0ABQAAAAAAAAALAA0ABQAAAAAAAAAKAA0ABQAAAAAAAAAOAA0ABQAAAAAAAAAPAA0ABQAAAAAAAAAQAA0ABQAAAAAAAAARAA0ABQAAAAAAAAASAA0ABQAAAAAAAAATAA0ABQAAAAAAAAAUAA0ABQAAAAAAAAAVAA0ABQAAAAAAAAAWAA0ABQAAAAAAAAAXAA0ABQAAAAAAAAA=")
 tile_set = SubResource("TileSet_q6ps4")
 
 [node name="TileMapLayer_Foreground" parent="GameLayer/GridManager" index="3" unique_id=183843661]

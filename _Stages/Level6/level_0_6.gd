@@ -92,8 +92,7 @@ func _ready() -> void:
 	extended_new_power_description = "POWER_PORTALS_DESC_LONG"
 	super()
 	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
-	Global.register_syn_ability(Global.lightning_strike)
-	Global.register_swap_ability(Global.lightning_storm)
+	equip_default_sorceries() # defaults only; keeps the player's panel picks
 	##print_scene_tree()
 	waveManager = get_parent().get_node("WaveManager")
 	#waveManager.wave_delays = [60.0, 100.0]
