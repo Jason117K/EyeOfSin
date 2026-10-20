@@ -5,7 +5,12 @@ signal zombie_death
 @warning_ignore("untyped_declaration")
 signal this_zombie_died(deadZombie)
 
-# --- Exports (Phase 2 will replace these with a single ZombieStats resource) ---
+# --- Exports ---
+# Swappable stat config (_Utilities/Stats/). When set, its values replace the
+# matching exports below before any component reads them.
+@export_category("Stats Config")
+@export var stats: ZombieStats
+
 @export_category("Health")
 @export var time_between_bleed := 1
 @export var health := 76
@@ -137,10 +142,28 @@ var demo_original_speed: float
 @export var respawn_delay := 1.5
 var time_since_spawn : float = 0
 var _spawn_setup_done := false
-var is_flame_dmg_linked := false 
+var is_flame_dmg_linked := false
+var _stats_applied := false
 
 
 @onready var hide_highlight_timer : Timer = Timer.new()
+
+# Before any _ready, so the components copy the configured values.
+func _enter_tree() -> void:
+	apply_stats()
+
+# Once only: change_dimensions() reparents, which re-enters the tree.
+# Order: the active StatsSet's entry, then this scene's Stats slot, then the
+# scene's own exports (nothing applied).
+func apply_stats() -> void:
+	if _stats_applied:
+		return
+	_stats_applied = true
+	var config := StatsSet.lookup(self)
+	if config == null:
+		config = stats
+	if config != null:
+		config.apply_to(self)
 
 func _ready() -> void:
 	highlight_circle.hide()

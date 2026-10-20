@@ -2,6 +2,10 @@ extends Zombie
 # TickerZombie.gd
 
 # Handles Any Ticker Zombie Specific Logic
+
+# Explosion damage, read by the AOEHit child in its _ready
+@export var blast_damage := 1000
+
 @onready var aoe := $AOEHit
 
 

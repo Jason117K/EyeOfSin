@@ -10,11 +10,19 @@ var pre_special_speed
 var vaultTimer: Timer
 #@onready var tween = Tween.new()  # Create new Tween node
 var tween : Tween
+# Copied from the parent zombie's exports in _ready (its Stats config can set them)
 var move_duration := 3.3  # Duration of the vault movement in seconds
 var vault_distance := -110  # Distance to move left (negative for leftward movement)
+var silenced_speed := 26
 var moveDone := false
 
 func _ready() -> void:
+	var zombie := get_parent()
+	if "vault_duration" in zombie:
+		move_duration = zombie.get("vault_duration")
+		vault_distance = zombie.get("vault_distance")
+		silenced_speed = zombie.get("silenced_speed")
+
 	# Add Tween as child of this node
 	tween = create_tween()
 	tween.stop()
@@ -74,7 +82,7 @@ func moveFinished() -> void:
 
 func silence() -> void:
 	animatedSprite.setSpecialMoveFalse()
-	parent.setSpeed(26)
+	parent.setSpeed(silenced_speed)
 	moveDone = true
 	#TODO Add Ability to Recover From Being Silenced?
 

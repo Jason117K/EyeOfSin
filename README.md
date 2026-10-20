@@ -192,6 +192,42 @@ The panel only gates its own buttons; levels handle the starting loadout.
   loadout, whoever shows it. It only **hides**: availability = the level's cards ∩ the loadout,
   so level scripts stay untouched.
 
+**Stat configs (`UnitStats` resources, `_Utilities/Stats/`).** Every zombie and demon root has a
+**Stats** slot (`ZombieStats` / `DemonStats`). A filled slot **overrides** the scene's matching
+exports in `_enter_tree`, before any component copies them, so editing those numbers in the
+Inspector does nothing while a config is assigned. An empty slot = the scene's own values. Demon
+`cost` is part of the config (`DemonDefinition.get_scene_cost()` applies it for the menu).
+- **New version:** open the unit scene, run `capture_unit_stats.gd` (Script editor → File → Run)
+  → `<scene folder>/Stats/<name>_v<N>.tres` holds today's values. Duplicate/edit it for v2, drag
+  either into the slot to switch.
+- **Fields match root exports by name and type**; `apply_to()` is generic and `push_error`s an
+  unknown name. Per-type extras = an `@tool` subclass (e.g. `CrawlerStats extends DemonStats`)
+  that only declares fields, plus an entry in the capture tool's `TYPE_STATS`.
+- **Per-type classes** (`_Utilities/Stats/Types/`): Crawler, Occulum, Maw, Hive, Wyrm,
+  SpinalOcculum, Buffer, Erupter, Reanimator, Tank, Sundered, Amalgam, Ranged, Act2Boss, Argus,
+  RohanBoss. Drop one into the same Stats slot. Not covered yet: Wyrm Queen, Empty, spiderlings.
+- **Numbers on child nodes live on the root** and are handed down: Hive's `drone_*` exports →
+  every drone (`SwarmManager._configure_drone`; `Drone.tscn`'s own values are overwritten),
+  Erupter `blast_damage` → `AOEHit`, Reanimator/Tank `summon_wait_time` → their
+  SummonComponents, Sundered `vault_*`/`silenced_speed` → `VaultSpecialMoveComp`. Children copy
+  in their own `_ready`, which runs after the root's `_enter_tree`, so they see the config. Tune
+  these on the root, never on the child.
+- Every Hive drone now deals `drone_attack_damage` (7). Before stat configs, a Hive's starting
+  drones skipped it and dealt `Drone.tscn`'s 13.
+- Configs are shared by every instance: read-only at runtime. A config also overrides any
+  per-instance value a level scene sets on a placed unit.
+- **Stats sets (game-wide balance passes, `StatsSet`).** GameController's **Stats Set** slot
+  (`game_controller.tscn`) picks one set for the whole launch. Order per unit: the set's entry →
+  the unit's Stats slot → the scene's exports, so a unit the set doesn't list behaves as usual.
+  Entries are keyed by unit scene (blood clones, revives and pre-placed copies match) and point at
+  whole config files. Boot prints `[Stats] Active set: …`.
+  - **New set:** run `capture_stats_set.gd` (File → Run) → `_Utilities/Stats/Sets/set_v<N>/` with
+    one config per unit (scene values with any Stats slot config laid over) plus `set_v<N>.tres`.
+    A fresh set changes nothing; edit the unit files in its folder, then assign the set. Each set
+    has its own copies. Delete entries for units you don't want the set to touch.
+  - Running a level alone (F6) has no GameController, so no set applies (Stats slots still do).
+  - **Before a release build:** clear the slot or assign the release set. It ships otherwise.
+
 **`GlobalResourceLoader`** preloads/caches demon & zombie textures + `SpriteFrames` (and per-synergy
 variation images) at startup to avoid runtime load stalls — a separate concern from `Global`'s game
 state.
@@ -202,6 +238,22 @@ base resolution and keep it integer-aligned; `Engine.max_fps` is pinned to the m
 Mouse reaches shaders via the **global** shader uniform `mouse_screen_pos`, pushed every frame with
 `RenderingServer.global_shader_parameter_set(...)` — reuse this channel, don't add per-material mouse
 uniforms.
+
+**All player-facing text is localized through CSV translation tables (`Loc` statics, `_Utilities/loc.gd`).**
+10 locales (`en es zh_CN ru pt_BR de ja fr pl ko`); CSVs live in `_Localization/` (UTF-8, no BOM,
+columns `keys, en, <9 locales>, _notes`), each locale's `.translation` registered in `project.godot`.
+Never hardcode display text — three paths in:
+- **Scene text:** set the Label/Button text to the key itself (`UI_START_GAME`); Godot auto-translates.
+- **Script text:** `tr("UI_...")`; entity names via `Loc.display_name(raw)` (→ `NAME_*`, raw fallback).
+- **`.txt` files (codex, tutorials, tooltips):** `Loc.text(path)`, never `FileAccess`. The **path is
+  the identity** — `Loc.key_from_path()` derives `TXT_<STEM_UPPER>`.
+
+`ui.csv` / `names.csv` / `abilities.csv` are hand-edited. `tutorials.csv` / `descriptions.csv` /
+`synergies.csv` are **generated** from the `.txt` files by `_Localization/tools/generate_text_csvs.gd`
+(merge mode: keeps translations, adds new rows, clears a row's locales only when its English changed).
+Dialogic timelines use Dialogic's own translation module (`_Localization/dialogic/`). Current
+translations are machine-made, pending human review. Locale is saved in `user://settings.cfg`
+and applied in `GameController._ready` (saved → OS language → `en`).
 
 ## Gotchas
 
@@ -264,6 +316,16 @@ uniforms.
   below ~90 fps that are not game bugs.
 - **Perf ceiling ≈ 144 tentacles** (`curved_lines_2d` addon). LOD isn't viable; staggering deferred;
   GDExtension/compute under evaluation. Treat tentacle count as the perf-critical constraint.
+- **Editing a `.txt` alone changes nothing in-game.** `Loc.text()` reads the CSV `en` cell and only
+  falls back to the raw file (with a warning) when the key is missing. Re-sync after any `.txt`
+  add/rename/edit: `godot --headless --path . -s res://_Localization/tools/generate_text_csvs.gd`,
+  then validate with `check_csv_integrity.gd` + `verify_translations.gd`. The script only rewrites
+  the CSV — the game reads the compiled `.translation` files, so **open/focus the editor to
+  re-import** before testing (stale if `<csv>.en.translation` is older than the CSV). Always quote
+  translated CSV cells (unquoted commas in ru/pl broke rows twice).
+- **Headless Godot runs have side effects:** they can empty the `[dialogic]` directory maps in
+  `project.godot` and strip a UID from a font `.import` fallback chain — diff both afterwards. Update
+  Dialogic translation CSVs from the editor only (it rewrites `.dtl` files).
 
 ## Regression checklist (reference level: Level0-2)
 
@@ -298,6 +360,7 @@ refactor phases that touch the restart path, buff matching, or tick order.
 - ** res://_Utilities/global.gd **
 - ** res://_Utilities/dim.gd ** (dimension groups + collision-layer constants)
 - ** res://_UI/ui_fx.gd ** (pulsing-highlight statics)
+- ** res://_Utilities/loc.gd ** (localization statics; CSVs + tools in res://_Localization/)
 - ** res://_Utilities/GameController/game_controller.gd **
 - ** res://_Utilities/Waves/WaveManager.gd **
 - ** res://_Utilities/Waves/PlayerHealth.gd **

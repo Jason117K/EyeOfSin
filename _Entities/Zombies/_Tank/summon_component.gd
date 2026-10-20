@@ -2,7 +2,8 @@ extends Node2D
 #SummonComponent.gd
 
 @export var slow_summon_wait_time := 17
-@export var summon_timer_wait_time := 5
+# Copied from the parent Tank's summon_wait_time in _ready
+var summon_timer_wait_time := 5
 
 #Various node references
 @onready var summonTimer := $SummonTimer
@@ -20,6 +21,8 @@ var is_silenced := false
 var is_attacking:bool
 
 func _ready() -> void:
+	if "summon_wait_time" in tankZombie:
+		summon_timer_wait_time = tankZombie.get("summon_wait_time")
 	summonTimer.wait_time = summon_timer_wait_time
 
 func silence() -> void:

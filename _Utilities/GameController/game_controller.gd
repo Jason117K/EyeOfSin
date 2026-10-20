@@ -1,6 +1,13 @@
 class_name GameController extends Node
 
 @export var scene_container: Control
+## Game-wide stats set (_Utilities/Stats/Sets/). Units it lists use its config;
+## the rest keep their own Stats slot, then their scene's values. The setter runs
+## when this scene is created, before any unit enters the tree.
+@export var stats_set: StatsSet:
+	set(value):
+		stats_set = value
+		StatsSet.activate(value)
 #@onready var trailer_video_player : VideoStreamPlayer = $VideoStreamPlayer
 
 var current_scene: Node

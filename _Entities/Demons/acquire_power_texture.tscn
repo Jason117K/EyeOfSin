@@ -118,7 +118,7 @@ _data = {
 
 [node name="AcquirePowerTexture" type="TextureButton" unique_id=195454887]
 process_mode = 3
-z_index = 4
+z_index = 10
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5

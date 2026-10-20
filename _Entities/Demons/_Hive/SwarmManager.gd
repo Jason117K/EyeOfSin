@@ -89,6 +89,7 @@ func spawn_initial_drones() -> void:
 	for i in range(max_drones):
 		var drone := DroneScene.instantiate()
 		drone.name = "Drone_%d" % i
+		_configure_drone(drone)
 		if occulum_buff:
 			drone.occulum_buff()
 		if is_maw_buffed:
@@ -230,13 +231,28 @@ func set_damage(newDroneDamage: int) -> void:
 	drone_damage = newDroneDamage
 
 
+# The Hive owns its drones' stats. Runs before the buff calls (spinal_occulum_buff
+# reads the buffed-health values) and before add_child (Drone._ready stores
+# base_attack_damage).
+func _configure_drone(drone: Node) -> void:
+	drone.set_damage(drone_damage)
+	drone.health = hive.drone_health
+	drone.max_health = hive.drone_max_health
+	drone.move_speed = hive.drone_move_speed
+	drone.attack_range = hive.drone_attack_range
+	drone.baal_damage_multiplier = hive.drone_baal_damage_multiplier
+	drone.baal_health_multiplier = hive.drone_baal_health_multiplier
+	drone.spinal_occulum_buffed_health = hive.drone_spinal_occulum_buffed_health
+	drone.spinal_occulum_buffed_max_health = hive.drone_spinal_occulum_buffed_max_health
+
+
 func _on_DroneRespawnTimer_timeout() -> void:
 	if drones_to_respawn <= 0 or get_total_drone_count() >= max_drones:
 		drones_to_respawn = 0
 		return
 
 	var new_drone := DroneScene.instantiate()
-	new_drone.set_damage(drone_damage)
+	_configure_drone(new_drone)
 	if occulum_buff:
 		new_drone.occulum_buff()
 	if is_maw_buffed:

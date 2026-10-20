@@ -11,12 +11,15 @@ class_name DemonDefinition extends Resource
 var _scene_cost := -1
 
 
-## Cost is balanced on the demon SCENE (its exported `cost`), not here — the
-## catalog only derives it for menu display, lazily, one instantiation per
-## demon type per session.
+## Cost is balanced on the demon SCENE (its exported `cost`, or its Stats
+## config when one is assigned), not here — the catalog only derives it for
+## menu display, lazily, one instantiation per demon type per session.
 func get_scene_cost() -> int:
 	if _scene_cost < 0 and scene != null:
 		var instance = scene.instantiate()
+		# Never enters the tree, so _enter_tree's apply doesn't run.
+		if instance.has_method("apply_stats"):
+			instance.apply_stats()
 		_scene_cost = int(instance.cost)
 		instance.free()
 	return _scene_cost

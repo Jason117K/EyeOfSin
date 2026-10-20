@@ -22,7 +22,13 @@ extends Demon
 
 @export_category("Ultimate Parameters")
 @export var ultimate_blood_value := 200
-@export var mana_add_on_generate_blood := 100 
+@export var mana_add_on_generate_blood := 100
+
+@export_category("Cost Scaling")
+# Added to cost per Occulum already placed: cost_step for the first four,
+# cost_step_after_four for each one beyond.
+@export var cost_step := 15
+@export var cost_step_after_four := 25
 
 # --- Preloads ---
 var BloodScene := preload("res://_Entities/Demons/Blood/Blood.tscn")
@@ -124,10 +130,10 @@ func get_cost() -> float:
 	
 	if Global.getOcculumCount() <= 4:
 		#print("Cost in Occulum Was ", cost)
-		cost = cost + (Global.getOcculumCount() * 15)
+		cost = cost + (Global.getOcculumCount() * cost_step)
 		#print("Cost in Occulum Is Now ", cost)
 	else:
-		cost = cost + ( ((Global.getOcculumCount()-4) * 25) + (4 * 15) )
+		cost = cost + ( ((Global.getOcculumCount()-4) * cost_step_after_four) + (4 * cost_step) )
 	#print(Global.getOcculumCount() , " Cost in ",4 ,"Occulum is ", cost)
 	return cost 
 

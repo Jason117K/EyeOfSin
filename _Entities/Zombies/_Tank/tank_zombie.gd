@@ -1,6 +1,9 @@
 extends Zombie
 # TankZombie.gd
 
+# Seconds between minion summons, read by SummonComponent in its _ready
+@export var summon_wait_time := 5
+
 @onready var summon_comp := $SummonComponent
 
 func _ready()->void:

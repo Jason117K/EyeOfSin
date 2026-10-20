@@ -11,10 +11,15 @@ extends Node2D
 @onready var hitBoxComp := $HitBoxComponent
 @onready var erupter_zombie_parent := get_parent()
 
-# Adjustable Explosion Damage
-@export var attack_power := 1000
+# Explosion damage, copied from the parent Erupter's blast_damage in _ready
+var attack_power := 1000
 
 var silenced := false
+
+
+func _ready() -> void:
+	if "blast_damage" in erupter_zombie_parent:
+		attack_power = erupter_zombie_parent.get("blast_damage")
 
 
 # Play the Animation and Make it Visible

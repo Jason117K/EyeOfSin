@@ -6,6 +6,18 @@ extends Demon
 @export var drone_attack_damage := 7
 @export var spinalOcculumHealth := 800
 
+# Handed to every drone by SwarmManager._configure_drone (Drone.tscn's own values
+# are overwritten), so the Stats config can tune them.
+@export_category("Drones")
+@export var drone_health := 100
+@export var drone_max_health := 100
+@export var drone_move_speed := 150
+@export var drone_attack_range := 20
+@export var drone_baal_damage_multiplier := 3.0
+@export var drone_baal_health_multiplier := 2.0
+@export var drone_spinal_occulum_buffed_health := 200
+@export var drone_spinal_occulum_buffed_max_health := 200
+
 @export var projectile_cooldown: float = 3
 @export var projectile_auto_fire := false
 @export var occulum_buff_cooldown: float = 0.9
@@ -51,8 +63,9 @@ func _ready() -> void:
 	current_demon_type = Global.DEMON_TYPE.HIVE
 	hive_buff_unlocked.connect(Global.unlock_buff)
 	# --- Component init ---
-	swarm.initialize(waitTime)
+	# Damage first: initialize() spawns the starting drones.
 	swarm.set_damage(drone_attack_damage)
+	swarm.initialize(waitTime)
 	# --- Audio ---
 	buzz_audio = AudioManager.create_return_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WASP_BUZZ)
 	# --- Demon-specific collision ---

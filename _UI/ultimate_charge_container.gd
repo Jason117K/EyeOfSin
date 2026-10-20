@@ -44,6 +44,7 @@ func _ready() -> void:
 # dimension swap, so the bar follows it every frame while shown.
 func _process(_delta: float) -> void:
 	set_margin()
+	pass
 
 # Cancel an armed ult without spending the charge.
 func _input(event: InputEvent) -> void:
@@ -143,7 +144,9 @@ func set_margin()->void:
 	var row : Rect2 = menu.get_card_row_rect()
 	if row.size == Vector2.ZERO:
 		return
-	var canvas_target := Vector2(row.end.x + CARD_ROW_GAP, row.position.y)
+	var x_offset = 5
+	var canvas_target := Vector2(row.end.x + CARD_ROW_GAP + x_offset, 0) #row.position.y)
+	#print("Canvas Target is ", canvas_target)
 	var target := get_global_transform_with_canvas().affine_inverse() * canvas_target
 	if not ultimate_margin_container.position.is_equal_approx(target):
 		ultimate_margin_container.position = target

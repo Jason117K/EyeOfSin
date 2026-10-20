@@ -29,10 +29,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = -65.5
-offset_right = 348.00018
-offset_bottom = 65.5
+offset_left = 50.0
+offset_top = -77.5
+offset_right = 327.0
+offset_bottom = 77.5
 grow_vertical = 2
 
 [node name="StylePanel" type="PanelContainer" parent="CenterContainer" unique_id=1458025525]

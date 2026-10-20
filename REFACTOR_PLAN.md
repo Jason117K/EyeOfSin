@@ -250,18 +250,38 @@ link/connector behavior identical + connector dies with partner (checklist 4).
 | Codex nav | Codex's own script | UI navigates itself |
 | Registries/session state | Stay in Global (frozen API) | README-sanctioned locator; hybrid rule |
 | Level progression (saved) | `Progress` `class_name` statics | New system → own module per frozen-Global rule; persists to `user://progress.cfg` |
+| Stat configs / stats sets | `UnitStats` `.tres` + `StatsSet` (`static var active`) | Per-unit Stats slot + game-wide set chosen on GameController; no Global state (README "Stat configs") |
 | New autoloads | **None** | Nothing needs another global lifecycle |
 
 ## Explicit skip list (agreed not worth solo-dev hours)
 
 1. Four-registry Global split + forwarding facade — regions + extractions achieve it.
 2. DimensionContext dependency injection — `Dim` consts + Global locator instead.
-3. Per-unit ZombieStats/DemonStats `.tres` — `@export` on scenes already IS data separation.
+3. ~~Per-unit ZombieStats/DemonStats `.tres`~~ — **reversed (2026-10-20, Jason's call):** swappable
+   stat configs built for playtest iteration, core stats first (`_Utilities/Stats/`, README "Stat
+   configs"). Demon cost is part of the config. Per-type extras are a follow-up (inventory →
+   approval → per-type subclasses).
 4. ScoreRules.tres — named consts + `reset()` suffice until per-level tuning is real.
 5. Sim/view separation — nothing demands it; dual-dimension must not be restructured.
 6. lightning_storm await→scheduler — until a concrete bug.
 7. DemonSelectionMenu general rehab — catalog reads + duplicate-helper deletion only.
 8. Unit-test harness — the manual regression checklist is the honest solo equivalent.
+
+## Cleanup candidates (found during stat configs Phase B, 2026-10-20)
+
+Exports nothing reads. Left out of the stat configs and NOT deleted; remove after a check.
+
+- Crawler `lightning_projectile_damage`
+- Maw `alt_target_color`, `alt_replace_color`
+- Drone `attack_speed`, `rotation_speed`
+- Tank `summon_component.gd` `slow_summon_wait_time` (its only use is commented out)
+- Occulum `cost_first_discount` (plain var)
+- SpinalOcculum `wyrm_buffed_health_regen` — **possible bug, not just dead code:**
+  `caged_occulum_health_component.gd` copies the Occulum and Maw buffed regen but has no Wyrm
+  regen, so a Wyrm buff gives SpinalOcculum no regen while the other two do. Decide: wire it up
+  or delete it.
+- `Drone.tscn` root overrides (`health`, `max_health`, `attack_damage = 13`, `move_speed`,
+  `attack_range`) are now always overwritten by Hive's `drone_*` exports.
 
 ## Regression checklist (reference level: Level0-2)
 

@@ -3,6 +3,9 @@ extends Zombie
 
 # Handles ScreenDoor Zombie specific behavior
 
+# Health of the second form it transforms into on its first death
+@export var second_form_health := 150.0
+
 @onready var anim_sprite_comp: AnimatedSprite2D = $AnimatedSprite2D
 @onready var extra_blood_hit := $BloodHit2
 
@@ -43,7 +46,7 @@ func transform() -> void:
 	anim_sprite_comp.play()
 	#compManager.setMaterial(altSprite)
 	erase_blood_hit(extra_blood_hit)
-	healthComp.resetHealth(150.0)
+	healthComp.resetHealth(second_form_health)
 
 func check_for_maw(damage: float) -> void:
 	if damage > 9000:

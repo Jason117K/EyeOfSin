@@ -164,11 +164,11 @@ TXT_LASTBLOODBUFFTUTORIAL,"You will know a blood buff is activated by the floati
 ",,,,,,,,,,res://_Assets/Text/TextFiles/LastBloodBuffTutorial.txt
 TXT_LEVEL0_1_TUTORIAL_BLOODCOST,"Demons cost [color=red]blood[/color] to [color=red]summon[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_BloodCost.txt
-TXT_LEVEL0_1_TUTORIAL_GREENDIMENSION,"[color=red]defend[/color] [color=#9b42df]Earth[/color] & [color=#18b800]Syn[/color] Simultaneously
+TXT_LEVEL0_1_TUTORIAL_GREENDIMENSION,"[color=red]Defend[/color] [color=#9b42df]Earth[/color] & [color=#18b800]Syn[/color] simultaneously
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_GreenDimension.txt
 TXT_LEVEL0_1_TUTORIAL_PLACECRAWLER,"[color=red]Click[/color] on a pulsing tile to [color=red]summon[/color] the [color=red]demon[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PlaceCrawler.txt
-TXT_LEVEL0_1_TUTORIAL_PRESSY,"press [color=red]Y[/color] to [color=red]swap[/color] from [color=purple]earth[/color] to the [color=green]syn dimension[/color]
+TXT_LEVEL0_1_TUTORIAL_PRESSY,"Press [color=red]Y[/color] to [color=red]swap[/color] from [color=purple]earth[/color] to the [color=green]syn dimension[/color]
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_PressY.txt
 TXT_LEVEL0_1_TUTORIAL_SELECTCRAWLER,"Click a [color=red]demon rune[/color] to Select It
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Level0_1_Tutorial_SelectCrawler.txt
@@ -395,7 +395,7 @@ TXT_TUTORIAL_EXPLAIN_DEMON_CLICK,"Click a [color=red]demon[/color] to View its [
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Click.txt
 TXT_TUTORIAL_EXPLAIN_DEMON_HOVER_CLICK,"[color=red]Hover[/color] over a [color=red]demon[/color] to view its [color=red]range[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Demon_Hover_Click.txt
-TXT_TUTORIAL_EXPLAIN_HEALTH,"Protect your [color=red]health[/color] and [color=red]Defeat[/color] the [color=purple]zombies[/color] 
+TXT_TUTORIAL_EXPLAIN_HEALTH,"Protect your [color=red]health[/color] and [color=red]defeat[/color] the [color=purple]zombies[/color] 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Health.txt
 TXT_TUTORIAL_EXPLAIN_PORTALS,"Lucretia can summon [color=purple]por[/color][color=green]tals[/color] between [color=purple]Earth[/color] and [color=green]Syn[/color].
 ",,,,,,,,,,res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt

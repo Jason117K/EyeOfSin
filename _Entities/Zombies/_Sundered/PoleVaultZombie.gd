@@ -3,6 +3,12 @@ extends Zombie
 
 # Handles PoleVault Zombie specific functionality
 
+# Read by SpecialMoveComp (VaultSpecialMoveComp.gd) in its _ready
+@export_category("Vault")
+@export var vault_duration := 3.3   # Duration of the vault movement in seconds
+@export var vault_distance := -110  # Distance to move left (negative for leftward movement)
+@export var silenced_speed := 26    # Walk speed once silenced
+
 @onready var specialMoveComp := $SpecialMoveComp
 
 

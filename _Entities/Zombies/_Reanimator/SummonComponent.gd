@@ -1,7 +1,8 @@
 extends Node2D
 #SummonComponent.gd
 
-@export var slow_summon_wait_time := 17
+# Copied from the parent Reanimator's summon_wait_time in _ready
+var slow_summon_wait_time := 17
 
 #Various node references
 @onready var summonTimer := $SummonTimer
@@ -26,7 +27,8 @@ var is_silenced := false
 var is_attacking:bool #Whether or not we are attacking
 
 func _ready() -> void:
-	pass
+	if "summon_wait_time" in dancerZombie:
+		slow_summon_wait_time = dancerZombie.get("summon_wait_time")
 
 func silence() -> void:
 	is_silenced = true

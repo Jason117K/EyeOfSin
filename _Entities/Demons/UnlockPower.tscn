@@ -62,10 +62,12 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_cr1d6")
 
 [node name="CardMarginContainer" type="MarginContainer" parent="PowerUnlockPanel" unique_id=1591831003]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 13
 
 [node name="AcquirePowerCardShort" type="TextureRect" parent="PowerUnlockPanel/CardMarginContainer" unique_id=550473595]
+visible = false
 layout_mode = 2
 texture = ExtResource("3_u1hxm")
 stretch_mode = 4
@@ -91,9 +93,11 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 84)
 layout_mode = 2
 texture = ExtResource("5_c3x7j")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="NewPowerTitle" type="RichTextLabel" parent="PowerUnlockPanel/MarginContainer/AllElementsVbox" unique_id=1809190057]
+self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_0tsif")
 theme_override_font_sizes/normal_font_size = 10

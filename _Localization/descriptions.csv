@@ -434,6 +434,8 @@ TXT_MAWDESCRIPTION,"Said to be inspired by the screams of his victims, the Maws 
 	- 빠른 적",res://_Assets/Text/TextFiles/DemonDescriptions/MawDescription.txt
 TXT_MAW_SPECIAL_DESCRIPTION,"*Eats zombies
 ",*Devora zombis,*吞食僵尸,*Пожирает зомби,*Devora zumbis,*Frisst Zombies,*ゾンビを喰らう,*Dévore les zombies,*Pożera zombie,*좀비를 삼킵니다,res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt
+TXT_MINION_SPECIAL_DESCRIPTION,"*Low health, high damage, gets thrown
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/minion_special_description.txt
 TXT_OCCULUMDESCRIPTION,"Generates [color=red]blood[/color] over time 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt
 TXT_OCCULUM_SPECIAL_DESCRIPTION,"*Generates Blood
@@ -480,6 +482,12 @@ Obrażenia: niskie","선더드의 모든 주요 장기는 머리로 옮겨져 �
 체력: 중간
 수: 중간
 공격력: 낮음",res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt
+TXT_RANGEDZOMBIEDESCRIPTION,"Reborn that learned to spit their own rot, the Ranged hang back from the fighting and pelt demons from a distance, picking defenses apart before they can strike back.
+Speed: Medium
+Health: Medium
+Numbers: Low
+Damage: High
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieDescriptions/rangedZombieDescription.txt
 TXT_RANGED_SPECIAL_DESCRIPTION,"*Ranged attack
 ",*Ataque a distancia,*远程攻击,*Дальняя атака,*Ataque à distância,*Fernangriff,*遠距離攻撃,*Attaque à distance,*Atak dystansowy,*원거리 공격,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/ranged_special_description.txt
 TXT_REANIMATOR_SPECIAL_DESCRIPTION,"*Summons minions
@@ -536,6 +544,14 @@ TXT_SPINAL_OCCULUM_SPECIAL_DESCRIPTION,"*Blocks zombies
 ",*Bloquea zombis,*阻挡僵尸,*Блокирует зомби,*Bloqueia zumbis,*Blockiert Zombies,*ゾンビを阻止する,*Bloque les zombies,*Blokuje zombie,*좀비를 막아섭니다,res://_Entities/Demons/SpecialDescriptions/spinal_occulum_special_description.txt
 TXT_SUNDERED_SPECIAL_DESCRIPTION,"*Can leap over demons
 ",*Puede saltar sobre los demonios,*可跃过恶魔,*Перепрыгивает через демонов,*Pode saltar sobre os demônios,*Kann über Dämonen springen,*悪魔を飛び越えられる,*Peut bondir par-dessus les démons,*Potrafi przeskakiwać demony,*악마를 뛰어넘을 수 있습니다,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/sundered_special_description.txt
+TXT_TANKZOMBIEDESCRIPTION,"Hulking amalgamations of bone and plate, Tanks lumber across the field crushing every demon in their path, hurling smaller zombies ahead to swarm what lies beyond.
+Speed: Low
+Health: Very High
+Numbers: Very Low
+Damage: Very High
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieDescriptions/tankZombieDescription.txt
+TXT_TANK_SPECIAL_DESCRIPTION,"*Launches smaller zombies
+",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/tank_special_description.txt
 TXT_TICKERZOMBIEDESCRIPTION,"Mutated zombies that spontaneously combust when exposed to threatening stimuli. This makes the Erupters perfect for world-ending conquests.
 Speed: High
 Health: Low

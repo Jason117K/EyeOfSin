@@ -996,10 +996,10 @@ shape = SubResource("RectangleShape2D_nabk1")
 [node name="WaveLabel" type="Label" parent="." unique_id=1985403701]
 z_index = 5
 layout_mode = 0
-offset_left = 542.0
-offset_top = 3.0
-offset_right = 667.0
-offset_bottom = 66.0
+offset_left = 527.0
+offset_top = 2.0
+offset_right = 652.0
+offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_wixct")
 theme_override_font_sizes/font_size = 26

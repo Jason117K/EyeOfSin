@@ -2,6 +2,10 @@ extends Zombie
 # DancerZombie.gd
 
 # Handles Any DancerZombie Specific Logic
+
+# Seconds between summons after the first, read by SummonComponent in its _ready
+@export var summon_wait_time := 17
+
 @onready var summon_comp := $SummonComponent
 
 

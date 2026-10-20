@@ -36,6 +36,10 @@ class_name Demon
 
 # --- Exports ---abstract
 
+# Swappable stat config (_Utilities/Stats/). When set, its values replace the
+# matching exports below before any component reads them.
+@export_category("Stats Config")
+@export var stats: DemonStats
 
 @export_category("Cost")
 @export var cost: float = 50
@@ -115,7 +119,8 @@ var clone_global_position : Vector2
 
 var grid_map_cell_pos : Vector2
 
-var is_rib_shield := false 
+var is_rib_shield := false
+var _stats_applied := false
 
 # --- Signals ---
 signal demon_die
@@ -126,6 +131,25 @@ signal demon_die
 
 
 # --- Lifecycle (_ready) ---
+
+# Before any _ready: HealthComponent copies health in its own (child) _ready,
+# which runs before ours.
+func _enter_tree() -> void:
+	apply_stats()
+
+# Once only, so re-entering the tree can't undo runtime changes (Occulum's cost).
+# DemonDefinition.get_scene_cost() calls this on an instance outside the tree.
+# Order: the active StatsSet's entry, then this scene's Stats slot, then the
+# scene's own exports (nothing applied).
+func apply_stats() -> void:
+	if _stats_applied:
+		return
+	_stats_applied = true
+	var config := StatsSet.lookup(self)
+	if config == null:
+		config = stats
+	if config != null:
+		config.apply_to(self)
 
 func _ready() -> void:
 	highlight_circle.hide()

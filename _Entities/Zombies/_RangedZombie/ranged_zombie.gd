@@ -3,6 +3,8 @@ extends Zombie
 
 const PROJECTILE_SCENE := preload("res://_Entities/Zombies/_RangedZombie/ZombieProjectile.tscn")
 
+@export var projectile_speed := 325.0
+
 @onready var projectile_spawn_point : Node2D = $ProjectileSpawnPoint
 
 
@@ -22,6 +24,7 @@ func shoot_projectile(damage: float, target_group: String) -> void:
 	# Group before entering the tree: the projectile's _ready reads it for its mask.
 	projectile.add_to_group(Dim.of(self))
 	projectile.damage = damage
+	projectile.speed = projectile_speed
 	projectile.target_group = target_group
 	projectile.direction = 1.0 if is_flipped else -1.0
 	projectile.position = get_parent().to_local(projectile_spawn_point.global_position)
