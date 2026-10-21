@@ -46,7 +46,6 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="44_gyta3"]
 [ext_resource type="Texture2D" uid="uid://b7i3croqttx7g" path="res://_Assets/Environment/Act2/SpikeTrapSheet.png" id="44_sbook"]
 [ext_resource type="Texture2D" uid="uid://c7ht4gka7h7fy" path="res://_Assets/Environment/Act2/AltFireWallTorch-Sheet.png" id="45_aoxmw"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="45_itid7"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="46_csouj"]
 [ext_resource type="Texture2D" uid="uid://sl8ql68rcmk1" path="res://_Assets/Environment/Act2/AllGold.png" id="46_gwy1u"]
 [ext_resource type="Texture2D" uid="uid://du6cidxufyk1f" path="res://_Assets/Environment/Act2/AllVases.png" id="47_asdsv"]
@@ -6173,11 +6172,6 @@ texture = SubResource("AtlasTexture_gywv7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=354028522]
 environment = ExtResource("44_gyta3")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1692939267]
-stream = ExtResource("45_itid7")
-volume_db = -80.0
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("46_csouj")]
 

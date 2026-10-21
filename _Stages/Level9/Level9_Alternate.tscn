@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://c6s44b8xrpg2b" path="res://_Assets/Environment/BloodTree.png" id="40_5y0e1"]
 [ext_resource type="Texture2D" uid="uid://ek4nru0b3wax" path="res://_Assets/Environment/Props/EyeStalkPROP-Sheet.png" id="41_u1ya1"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="42_v2h4r"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="43_yoi25"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_ws45w"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="46_vqyiq"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="47_2rd5x"]
@@ -422,11 +421,6 @@ sprite_frames = SubResource("SpriteFrames_hvvur")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=354028522]
 environment = ExtResource("42_v2h4r")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1692939267]
-stream = ExtResource("43_yoi25")
-volume_db = -80.0
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("44_ws45w")]
 

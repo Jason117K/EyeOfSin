@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_eq38i"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_iid74"]
 [ext_resource type="Texture2D" uid="uid://cuco28dqx6pis" path="res://_Assets/Environment/Updated_Props/Triple_Red_Mushrooms.png" id="22_huwok"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_mjn0x"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="23_jlj08"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="24_5gqp4"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="25_1sdpp"]
@@ -567,11 +566,6 @@ offset_left = -150.0
 offset_top = -150.0
 offset_right = 150.0
 offset_bottom = 150.0
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=91227064]
-stream = ExtResource("22_mjn0x")
-volume_db = -80.0
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("23_jlj08")]
 

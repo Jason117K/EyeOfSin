@@ -183,21 +183,21 @@ func get_level_title(level_num:int)->String:
 	match level_num:
 		1:
 			return level_1_label.text
-		1:
+		2:
 			return level_2_label.text
-		1:
+		3:
 			return level_3_label.text
-		1:
+		4:
 			return level_4_label.text
-		1:
+		5:
 			return level_5_label.text
-		1:
+		6:
 			return level_6_label.text
-		1:
+		7:
 			return level_7_label.text
-		1:
+		8:
 			return level_8_label.text
-		1:
+		9:
 			return level_9_label.text
 			
 	return level_1_label.text
@@ -271,32 +271,36 @@ func _on_level_1_pressed() -> void:
 func _on_level_2_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level2) ==OK)
 	#Global.game_controller.change_scene(level2)
-	Global.game_controller.change_dual_scenes(level0_2, level0_2Alt)
+	set_level_details(2)
+	#Global.game_controller.change_dual_scenes(level0_2, level0_2Alt)
 
 
 
 func _on_level_3_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level3) ==OK)
-	Global.game_controller.change_dual_scenes(level0_3, level0_3Alt)
-
+	#Global.game_controller.change_dual_scenes(level0_3, level0_3Alt)
+	set_level_details(3)
 
 func _on_level_4_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level4) ==OK)
-	Global.game_controller.change_dual_scenes(level0_4, level0_4Alt)
+	#Global.game_controller.change_dual_scenes(level0_4, level0_4Alt)
+	set_level_details(4)
 
 
 func _on_level_5_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level5) ==OK)
-	Global.game_controller.change_dual_scenes(level0_5, level0_5Alt)
-
+	#Global.game_controller.change_dual_scenes(level0_5, level0_5Alt)
+	set_level_details(5)
 
 
 func _on_level_6_pressed() -> void:
 	#assert(get_tree().change_scene_to_file(level6) ==OK)
-	Global.game_controller.change_dual_scenes(level0_6, level0_6Alt)
+	#Global.game_controller.change_dual_scenes(level0_6, level0_6Alt)
+	set_level_details(6)
 
 func _on_level_7_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level8, level8_alt)
+	#Global.game_controller.change_dual_scenes(level8, level8_alt)
+	set_level_details(7)
 	
 
 
@@ -320,11 +324,13 @@ func _on_test_gus_level_1_pressed() -> void:
 
 
 func _on_level_8_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level7, level7_alt)
+	#Global.game_controller.change_dual_scenes(level7, level7_alt)
+	set_level_details(8)
 
 
 func _on_level_9_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level9, level9_alt)
+	#Global.game_controller.change_dual_scenes(level9, level9_alt)
+	set_level_details(9)
 	
 	
 	

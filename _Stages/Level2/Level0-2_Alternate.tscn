@@ -39,7 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_16kt4"]
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="22_vmwmq"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="23_aiy7s"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_7in2w"]
 [ext_resource type="Texture2D" uid="uid://xnmh8u6wirep" path="res://_Stages/SynMantaRay-Sheet.png" id="36_ycqcl"]
 [ext_resource type="Script" uid="uid://cjto6m715op88" path="res://_Stages/syn_manta_ray.gd" id="37_468no"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="39_1esa2"]
@@ -1389,11 +1388,6 @@ offset_bottom = 2036.5
 
 [node name="DemonManager" parent="." unique_id=282479321 instance=ExtResource("2_m8syp")]
 blood_points = 250
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1910969798]
-stream = ExtResource("25_7in2w")
-volume_db = -80.0
-bus = &"music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=59155517]
 environment = ExtResource("21_sy2g0")

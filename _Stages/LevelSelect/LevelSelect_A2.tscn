@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://wyp8cyf43yac" path="res://_Entities/Demons/_Occulum/Occulum_Display_CARD.png" id="27_cv6vm"]
 [ext_resource type="Texture2D" uid="uid://bmr70mtnhode1" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum_Display_CARD.png" id="28_vt1w4"]
 [ext_resource type="Texture2D" uid="uid://dli3rsa1e6fd7" path="res://_Entities/Demons/_Wyrm/Wyrm_Card_New.png" id="29_72tjp"]
+[ext_resource type="PackedScene" uid="uid://nyapu5wuh3yc" path="res://_Stages/open_level.tscn" id="29_kaqe8"]
 [ext_resource type="Texture2D" uid="uid://bnf1svkhirytd" path="res://_Entities/Demons/_Maw/Maw_Card_New.png" id="30_g7m7d"]
 [ext_resource type="Texture2D" uid="uid://ci1830sxqb555" path="res://_Entities/Demons/_Hive/Hive_Card_New.png" id="31_8v26r"]
 [ext_resource type="Texture2D" uid="uid://byi4tyr74yr5l" path="res://_Entities/Demons/Cards/Empty_Display_CARD.png" id="32_s2lji"]
@@ -998,7 +999,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_seoc2")
 theme_override_font_sizes/font_size = 10
-text = "2-1 : AWAKENING"
+text = "2-1 : COMEBACK"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox" unique_id=1372793230]
@@ -1065,7 +1066,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_seoc2")
 theme_override_font_sizes/font_size = 10
-text = "2-2 : REVELATIONS"
+text = "2-2 : RAGE"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox" unique_id=1248826972]
@@ -1132,7 +1133,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_seoc2")
 theme_override_font_sizes/font_size = 10
-text = "2-3 : DIVIDE & CONQUER"
+text = "2-3 : ONSLAUGHT"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox" unique_id=1077469635]
@@ -1203,7 +1204,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_seoc2")
 theme_override_font_sizes/font_size = 10
-text = "2-4 : HERE LIES HOPE"
+text = "2-4 : LONG DAY"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox" unique_id=530726462]
@@ -1270,7 +1271,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_seoc2")
 theme_override_font_sizes/font_size = 10
-text = "2-5 : LIKELY ALLIES"
+text = "2-5 : HUNGER"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox" unique_id=1345184392]
@@ -1579,6 +1580,13 @@ theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxFlat_08t36")
 text = " BACK "
 
+[node name="OpenLevel" parent="." unique_id=1628375336 instance=ExtResource("29_kaqe8")]
+visible = false
+layout_mode = 1
+
+[node name="LevelTexture" parent="OpenLevel/CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1628375336, 2035532234) index="1" unique_id=315189693]
+visible = false
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1331838528]
 
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
@@ -1589,3 +1597,5 @@ text = " BACK "
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_6_PanelContainer/Level6Button" to="." method="_on_level_6_button_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton" to="." method="_on_current_sorcery_button_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="OpenLevel"]

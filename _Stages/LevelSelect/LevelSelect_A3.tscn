@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://csbrjj1wgdbam" path="res://_Entities/Demons/_Crawler/Crawler_Display_CARD.png" id="20_yqnbx"]
 [ext_resource type="Texture2D" uid="uid://wyp8cyf43yac" path="res://_Entities/Demons/_Occulum/Occulum_Display_CARD.png" id="21_pq008"]
 [ext_resource type="Texture2D" uid="uid://bmr70mtnhode1" path="res://_Entities/Demons/_CagedOculum/SpinalOcculum_Display_CARD.png" id="22_rxj00"]
+[ext_resource type="PackedScene" uid="uid://nyapu5wuh3yc" path="res://_Stages/open_level.tscn" id="23_2sprj"]
 [ext_resource type="Texture2D" uid="uid://dli3rsa1e6fd7" path="res://_Entities/Demons/_Wyrm/Wyrm_Card_New.png" id="23_8lm0t"]
 [ext_resource type="Texture2D" uid="uid://bnf1svkhirytd" path="res://_Entities/Demons/_Maw/Maw_Card_New.png" id="24_rqdje"]
 [ext_resource type="Texture2D" uid="uid://ci1830sxqb555" path="res://_Entities/Demons/_Hive/Hive_Card_New.png" id="25_lx04p"]
@@ -970,7 +971,7 @@ theme_override_constants/separation = 15
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_sqabr")
 theme_override_font_sizes/font_size = 40
-text = "ACT 2 : ASSAULT"
+text = "ACT 3 : END"
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox" unique_id=1584819256]
 layout_mode = 2
@@ -1367,6 +1368,13 @@ theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxFlat_08t36")
 text = " BACK "
 
+[node name="OpenLevel" parent="." unique_id=1628375336 instance=ExtResource("23_2sprj")]
+visible = false
+layout_mode = 1
+
+[node name="LevelTexture" parent="OpenLevel/CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer" parent_id_path=PackedInt32Array(1628375336, 2035532234) index="1" unique_id=315189693]
+visible = false
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1331838528]
 
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
@@ -1374,3 +1382,5 @@ text = " BACK "
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/MarginContainer/DemonPanelContainer/MarginContainer/LoadOutVboxes/CurrentSorceryButton" to="." method="_on_current_sorcery_button_pressed"]
 [connection signal="pressed" from="Acts_MarginContainer/Acts_Hbox/Loadout_Vbox/BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="OpenLevel"]

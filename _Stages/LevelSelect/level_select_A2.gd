@@ -19,6 +19,31 @@ var show_green := false
 @onready var purple_earth := $PurpleEarth
 
 @onready var act_panel_container : PanelContainer = $Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer
+@onready var act_scroll_container : ScrollContainer = $Acts_MarginContainer/Acts_Hbox/ScrollContainer
+@onready var open_level_screen := $OpenLevel
+
+
+@onready var level_1_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_2_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_3_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_4_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_5_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/Level_Label"
+
+@onready var level_1_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_1_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
+@onready var level_2_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_2_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
+@onready var level_3_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_3_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
+@onready var level_4_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_4_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
+@onready var level_5_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_5_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
 
 @onready var purple_bg := $BG_Purple
 @onready var green_bg := $BG_Green
@@ -40,6 +65,11 @@ var level_14 := ("res://_Stages/Level14/Level14.tscn")
 var level_14_alt := ("res://_Stages/Level14/Level14_Alternate.tscn")
 
 
+var level_10_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_10_Description.txt"
+var level_11_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_11_Description.txt"
+var level_12_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_12_Description.txt"
+var level_13_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_13_Description.txt"
+var level_14_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_14_Description.txt"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -114,20 +144,56 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_level_1_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_10,level_10_alt)
+	#Global.game_controller.change_dual_scenes(level_10,level_10_alt)
+	set_level_details(1)
 
 
 func _on_level_2_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_11,level_11_alt)
+	#Global.game_controller.change_dual_scenes(level_11,level_11_alt)
+	set_level_details(2)
 
 
 func _on_level_3_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_12,level_12_alt)
+	#Global.game_controller.change_dual_scenes(level_12,level_12_alt)
+	set_level_details(3)
 
 
 func _on_level_4_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_13,level_13_alt)
+	#Global.game_controller.change_dual_scenes(level_13,level_13_alt)
+	set_level_details(4)
 
 
 func _on_level_5_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_14,level_14_alt)
+	#Global.game_controller.change_dual_scenes(level_14,level_14_alt)
+	set_level_details(5)
+
+
+func set_level_details(level_number:int)->void:
+	open_level_screen.show()
+	act_scroll_container.modulate = Color(1,1,1,0)
+	match level_number:
+		1:
+			open_level_screen.set_level_title(level_1_label.text)
+			open_level_screen.set_level_description(level_10_description)
+			open_level_screen.set_level_images(level_1_image_earth,level_1_image_syn)
+			open_level_screen.set_levels(level_10,level_10_alt)
+		2:
+			open_level_screen.set_level_title(level_2_label.text)
+			open_level_screen.set_level_description(level_11_description)
+			open_level_screen.set_level_images(level_2_image_earth,level_2_image_syn)
+			open_level_screen.set_levels(level_11,level_11_alt)
+		3:
+			open_level_screen.set_level_title(level_3_label.text)
+			open_level_screen.set_level_description(level_12_description)
+			open_level_screen.set_level_images(level_3_image_earth,level_3_image_syn)
+			open_level_screen.set_levels(level_12,level_12_alt)
+		4:
+			open_level_screen.set_level_title(level_4_label.text)
+			open_level_screen.set_level_description(level_13_description)
+			open_level_screen.set_level_images(level_4_image_earth,level_4_image_syn)
+			open_level_screen.set_levels(level_13,level_13_alt)
+		5:
+			open_level_screen.set_level_title(level_5_label.text)
+			open_level_screen.set_level_description(level_14_description)
+			open_level_screen.set_level_images(level_5_image_earth,level_5_image_syn)
+			open_level_screen.set_levels(level_14,level_14_alt)

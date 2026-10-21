@@ -19,6 +19,26 @@ var show_green := false
 @onready var purple_earth := $PurpleEarth
 
 @onready var act_panel_container : PanelContainer = $Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer
+@onready var act_scroll_container : ScrollContainer = $Acts_MarginContainer/Acts_Hbox/ScrollContainer
+@onready var open_level_screen := $OpenLevel
+
+@onready var level_1_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_2_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_3_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_4_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_4-6_Container/Level_4_PanelContainer/Level_Vbox/Level_Label"
+@onready var level_5_label := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_4-6_Container/Level_5_PanelContainer/Level_Vbox/Level_Label"
+
+
+@onready var level_1_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_1_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
+@onready var level_2_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_2_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
+@onready var level_3_image_earth := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTexture"
+@onready var level_3_image_syn := $"Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox/LevelMarginContainer/LevelPanelContainer/LevelTextureAlt"
+
+
 
 @onready var purple_bg := $BG_Purple
 @onready var green_bg := $BG_Green
@@ -33,6 +53,9 @@ var level_16_alt := ("res://_Stages/Level16/Level16_Alternate.tscn")
 var level_17 := ("res://_Stages/Level17/Level17.tscn")
 var level_17_alt := ("res://_Stages/Level17/Level17_Alternate.tscn")
 
+var level_15_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_15_Description.txt"
+var level_16_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_16_Description.txt"
+var level_17_description := "res://_Assets/Text/TextFiles/Level_Descriptions/Level_17_Description.txt"
 
 
 
@@ -109,12 +132,37 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_level_1_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_15,level_15_alt)
+	#Global.game_controller.change_dual_scenes(level_15,level_15_alt)
+	set_level_details(1)
 
 
 func _on_level_2_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_16,level_16_alt)
+	#Global.game_controller.change_dual_scenes(level_16,level_16_alt)
+	set_level_details(2)
 
 
 func _on_level_3_button_pressed() -> void:
-	Global.game_controller.change_dual_scenes(level_17,level_17_alt)
+	#Global.game_controller.change_dual_scenes(level_17,level_17_alt)
+	set_level_details(3)
+
+
+
+func set_level_details(level_number:int)->void:
+	open_level_screen.show()
+	act_scroll_container.modulate = Color(1,1,1,0)
+	match level_number:
+		1:
+			open_level_screen.set_level_title(level_1_label.text)
+			open_level_screen.set_level_description(level_15_description)
+			open_level_screen.set_level_images(level_1_image_earth,level_1_image_syn)
+			open_level_screen.set_levels(level_15,level_15_alt)
+		2:
+			open_level_screen.set_level_title(level_2_label.text)
+			open_level_screen.set_level_description(level_16_description)
+			open_level_screen.set_level_images(level_2_image_earth,level_2_image_syn)
+			open_level_screen.set_levels(level_16,level_16_alt)
+		3:
+			open_level_screen.set_level_title(level_3_label.text)
+			open_level_screen.set_level_description(level_17_description)
+			open_level_screen.set_level_images(level_3_image_earth,level_3_image_syn)
+			open_level_screen.set_levels(level_17,level_17_alt)

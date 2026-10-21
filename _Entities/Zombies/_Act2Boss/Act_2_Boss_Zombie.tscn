@@ -722,7 +722,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_Phase1_Alt",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -789,7 +789,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_Phase2_Alt",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -833,7 +833,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_Phase3",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -883,7 +883,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_Phase3_Alt",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -912,7 +912,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk_Phase1",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -947,7 +947,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk_Phase2",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -979,7 +979,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk_Phase3",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1008,7 +1008,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death_phase_1",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1037,7 +1037,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death_phase_2",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1108,13 +1108,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"death_phase_3",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="Act2Boss" type="Area2D" unique_id=1498839439 groups=["Zombie"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_majkd")
+p2_sprite_position = Vector2(6, -5)
+p3_sprite_position = Vector2(-5, -51)
 charge_cost = 9
 silence_field_position = Vector2(-3, 3)
 
@@ -1188,9 +1190,9 @@ disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
-position = Vector2(-12, 4)
+position = Vector2(-5, -51)
 sprite_frames = SubResource("11")
-animation = &"Walk_Phase1"
+animation = &"Walk_Phase3"
 flip_h = true
 script = ExtResource("13_ivwtn")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)

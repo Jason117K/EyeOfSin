@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="20_21wrt"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_0v3x8"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_hshn1"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_x84xy"]
 [ext_resource type="Texture2D" uid="uid://bn7ngkp2nwf84" path="res://_Assets/Environment/Updated_Props/Red_Rock.png" id="23_6ode7"]
 [ext_resource type="Texture2D" uid="uid://cuco28dqx6pis" path="res://_Assets/Environment/Updated_Props/Triple_Red_Mushrooms.png" id="24_74b0g"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="25_epp3e"]
@@ -572,11 +571,6 @@ offset_left = -150.0
 offset_top = -150.0
 offset_right = 150.0
 offset_bottom = 150.0
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1692939267]
-stream = ExtResource("22_x84xy")
-volume_db = -80.0
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("25_epp3e")]
 position = Vector2(370, 208)

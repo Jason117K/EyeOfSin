@@ -861,7 +861,7 @@ layout_mode = 2
 
 [node name="SwapAbilityDisplayTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/SwapPanel/VBoxContainer/HBoxContainer" unique_id=797337081]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(89, 89)
 layout_mode = 2
 texture = ExtResource("2_oeg55")
 stretch_mode = 4
@@ -929,7 +929,7 @@ layout_mode = 2
 
 [node name="SynAbilityDisplayTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/SynPanel/VBoxContainer/HBoxContainer2" unique_id=288091382]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(89, 89)
 layout_mode = 2
 texture = ExtResource("4_m8mrx")
 stretch_mode = 4

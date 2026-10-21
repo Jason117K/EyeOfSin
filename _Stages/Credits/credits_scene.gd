@@ -1,7 +1,7 @@
 extends Control
 
 @onready var creditsText := $CenterContainer/VBoxContainer/RichTextLabel
-
+@onready var back_button := $CenterContainer/VBoxContainer/Button
 var startScreen := ("res://_Stages/StartScreen/StartScreen.tscn")
 
 func _ready() -> void:
@@ -16,6 +16,7 @@ func _ready() -> void:
 	creditsText.append_text("SFX : Sourced from Zapsplat\n")
 	creditsText.append_text("Asset Packs Used From : Aurora Sprites, Admurin and Penusbmic\n")
 	
+	back_button.pressed.connect(_on_button_pressed)
 	#$GridManager.set_tiles_for_rows(0,1, 68)
 	#$GridManager.set_tiles_for_rows(1,2, 66)
 	#
@@ -30,5 +31,5 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
-	#print("Change to Start ", startScreen)
+	print("Change to Start ", startScreen)
 	Global.game_controller.change_scene(startScreen)
