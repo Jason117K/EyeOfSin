@@ -1092,7 +1092,7 @@ maw_buffed_health = 1500
 maw_buffed_max_health = 1500
 lightning_damage = 25
 spike_damage = 34
-mana_add_on_block_damage = 10
+mana_add_on_block_damage = 7
 syn_shield_position = Vector2(-2, -3)
 hit_flash_duration = 0.25
 

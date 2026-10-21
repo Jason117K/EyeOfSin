@@ -1053,6 +1053,9 @@ z_index = 1
 position = Vector2(280, 248)
 texture = ExtResource("34_vqn1v")
 
+[node name="UltimateArmTargetLocation" type="Node2D" parent="." unique_id=398963845]
+position = Vector2(234, 224)
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSpriteComponent" to="." method="_on_AnimatedSprite_animation_finished"]

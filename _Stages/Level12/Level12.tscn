@@ -38,9 +38,9 @@
 [ext_resource type="Texture2D" uid="uid://ccpv3tcghh4mj" path="res://_Assets/Environment/Updated_Props/GreenSquare_BG.png" id="36_83lak"]
 [ext_resource type="Texture2D" uid="uid://dx3yv3qhonll8" path="res://_Assets/Environment/Act2/Tilesets/StainedWindows_Dragon_1.png" id="37_7fgpr"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="38_67fxc"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="39_4ghb1"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_42w8n"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="41_d7c5l"]
+[ext_resource type="AudioStream" uid="uid://c4aj3ofcpoilm" path="res://_Assets/Audio/Music/Lucretia.mp3" id="41_thrn2"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="42_yoljw"]
 [ext_resource type="Texture2D" uid="uid://c3y0vddyfpsk" path="res://_Assets/Environment/Act2/Candelabra-Sheet.png" id="43_t4o4j"]
 [ext_resource type="Texture2D" uid="uid://n0s2xgvtyd2h" path="res://_Assets/Environment/Act2/ChurchBookPulpit.png" id="44_3yehs"]
@@ -3744,7 +3744,7 @@ visible = false
 environment = ExtResource("38_67fxc")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("39_4ghb1")
+stream = ExtResource("41_thrn2")
 autoplay = true
 bus = &"music"
 

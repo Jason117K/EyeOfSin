@@ -103,7 +103,7 @@ var tank_icon := preload("res://_Entities/Zombies/_Tank/TankZombie.png")
 var ranged_icon := preload("res://_Entities/Zombies/_RangedZombie/RangedZombie.png")
 
 var all_zombie_notif_icons : Array = [reborn_icon,severed_icon,unhallower_icon,reanimator_icon,wretch_icon,
-								sundered_icon,erupter_icon,flesheater_icon,amalgam_icon,tank_icon]
+								sundered_icon,erupter_icon,flesheater_icon,amalgam_icon,tank_icon, rohan_icon]
 
 var zombie_notif_icons : Dictionary = {"Reborn": reborn_icon, "Severed": severed_icon,"Unhallower": unhallower_icon,
 										"Reanimator":reanimator_icon, "Wretch":wretch_icon,"Sundered":sundered_icon,
@@ -159,16 +159,12 @@ signal demon_buff_unlocked(synergy_unlocked : String)
 
 #region Synergy catalog (data) + unlock state
 var synergy_catalog : SynergyCatalog = preload("res://_Entities/Demons/Synergies/SynergyCatalog.tres")
-# Runtime unlock state, keyed by SynergyDefinition.id. Deliberately NOT reset
-# per level: unlocks persist for the whole session (matches the old dict).
-var unlocked_synergies : Dictionary = {}
+# Unlock (discovery) state lives in the Discovery statics, saved across launches.
 
 func is_synergy_unlocked(id : StringName) -> bool:
-	return unlocked_synergies.get(id, false)
+	return Discovery.is_synergy_discovered(id)
 #endregion
 
-
-var unlocked_zombie_array : Array = []
 
 var demon_codex : Control
 # Synergy id waiting for the codex scene to load and register (see
@@ -1017,12 +1013,12 @@ func get_current_ui_layer()->Control:
 	return null
 			
 			
+# Discovery returns true only on a first-ever discovery, so the pop-up shows once per save.
 func unlock_zombie(unlocked_zombie : String)->void:
 	if gameIsStarted:
 		for zombie_name : String in ZombieRegistry.SCENES:
-			if zombie_name == unlocked_zombie && zombie_name not in unlocked_zombie_array:
+			if zombie_name == unlocked_zombie && Discovery.discover_zombie(zombie_name):
 				#print("Just Unlocked ", zombie_name)
-				unlocked_zombie_array.append(zombie_name)
 				get_current_ui_layer().set_zombie_unlock_notif(zombie_name)
 
 
@@ -1030,9 +1026,8 @@ func unlock_buff(unlocked_buff : String)->void:
 	var id := StringName(unlocked_buff)
 	if synergy_catalog.get_by_id(id) == null:
 		return
-	if not unlocked_synergies.get(id, false):
+	if Discovery.discover_synergy(id):
 		#print("this synergy ", id, " is A MATCH")
-		unlocked_synergies[id] = true
 		get_current_ui_layer().set_unlock_notif(unlocked_buff)
 
 

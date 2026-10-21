@@ -39,10 +39,10 @@
 [ext_resource type="Texture2D" uid="uid://d30gj0npw3nfa" path="res://_Assets/Environment/Tilesets/OpeningLevelAltPath_NoWater.png" id="35_542gf"]
 [ext_resource type="Texture2D" uid="uid://ccpv3tcghh4mj" path="res://_Assets/Environment/Updated_Props/GreenSquare_BG.png" id="36_64wy6"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="38_i7fwg"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="39_e6noa"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_87wjl"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="41_e4a5i"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="42_wt2k5"]
+[ext_resource type="AudioStream" uid="uid://bvbqq2kvea0u" path="res://_Assets/Audio/Music/The Maw.mp3" id="43_p84i3"]
 [ext_resource type="Texture2D" uid="uid://t3dw8ukmsjtd" path="res://_Assets/Environment/Act2/Office/OfficeAC_Unit.png" id="44_rf8nn"]
 [ext_resource type="Texture2D" uid="uid://dqwpvfov8sw5" path="res://_Assets/Environment/Act2/Office/OfficeBigMoney.png" id="45_vaggj"]
 [ext_resource type="Texture2D" uid="uid://sranyvwytmg6" path="res://_Assets/Environment/Act2/Office/OfficePlant1.png" id="46_hci8y"]
@@ -7004,7 +7004,8 @@ visible = false
 environment = ExtResource("38_i7fwg")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("39_e6noa")
+stream = ExtResource("43_p84i3")
+volume_db = -10.0
 autoplay = true
 bus = &"music"
 

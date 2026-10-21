@@ -17,6 +17,8 @@ var is_crawler_buffed := false
 var is_baal_buffed := false
 var is_spinal_occulum_buffed := false
 var is_demo := false
+# Hive ultimate: levels up every drone, including ones that spawn later.
+var is_ultimate := false
 
 @onready var hive: Node = get_parent()
 @onready var respawn_timer: Timer = get_parent().get_node("DroneRespawnTimer")
@@ -103,6 +105,8 @@ func spawn_initial_drones() -> void:
 		if is_demo:
 			drone.is_demo = true
 		hive.get_parent().add_child(drone)
+		if is_ultimate:
+			drone.level_up()
 		if hive.is_in_group("Green"):
 			drone.add_to_group("Green")
 		else:
@@ -234,6 +238,12 @@ func set_baal_buff(on: bool) -> void:
 			else:
 				drone.undo_baal_buff()
 
+func set_ultimate() -> void:
+	is_ultimate = true
+	for drone in get_all_drones():
+		if is_instance_valid(drone):
+			drone.level_up()
+
 func set_damage(newDroneDamage: int) -> void:
 	drone_damage = newDroneDamage
 
@@ -273,6 +283,8 @@ func _on_DroneRespawnTimer_timeout() -> void:
 	if is_demo:
 		new_drone.is_demo = true		
 	hive.get_parent().add_child(new_drone)
+	if is_ultimate:
+		new_drone.level_up()
 	available_drones.append(new_drone)
 	if hive.is_in_group("Green"):
 		new_drone.add_to_group("Green")

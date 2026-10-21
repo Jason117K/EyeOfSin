@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://ch7x4yluo887e" path="res://_Assets/Environment/Tilesets/Ground_Rock_GreenVer1.png" id="23_5qw74"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="23_a3eod"]
 [ext_resource type="Texture2D" uid="uid://8gjjcy015jc8" path="res://_Assets/Environment/Tilesets/Earth3WalkTile.png" id="24_g4ks8"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="24_s68yu"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="25_4go2n"]
 [ext_resource type="Texture2D" uid="uid://bne3yycsqxclr" path="res://_Assets/Environment/Tilesets/Earth3WalkTile2.png" id="25_lp3x5"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="26_6ma7v"]
@@ -6209,11 +6208,6 @@ tile_set = SubResource("TileSet_kybki")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=354028522]
 environment = ExtResource("23_a3eod")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1692939267]
-stream = ExtResource("24_s68yu")
-volume_db = -80.0
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("25_4go2n")]
 

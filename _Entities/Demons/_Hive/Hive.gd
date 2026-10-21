@@ -198,3 +198,20 @@ func _on_play_anim_timer_timeout() -> void:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
+
+
+# --- Ultimate ---
+
+# Once per Hive: an already-ulted Hive takes a normal click and the armed charge
+# isn't spent.
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if Global.ultimate_is_ready and can_ult and spawn_done:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			trigger_ultimate()
+	else:
+		super(_viewport, event, _shape_idx)
+
+func trigger_ultimate() -> void:
+	can_ult = false
+	Global.un_ready_ultimate()
+	swarm.set_ultimate()

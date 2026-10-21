@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/resurgence.mp3-8fe2bfdb7fabef88a26e1957245634
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

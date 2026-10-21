@@ -39,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://d30gj0npw3nfa" path="res://_Assets/Environment/Tilesets/OpeningLevelAltPath_NoWater.png" id="35_ah0yb"]
 [ext_resource type="Texture2D" uid="uid://ccpv3tcghh4mj" path="res://_Assets/Environment/Updated_Props/GreenSquare_BG.png" id="36_23ttq"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="38_4ad8a"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="39_f8nbj"]
 [ext_resource type="Texture2D" uid="uid://t3dw8ukmsjtd" path="res://_Assets/Environment/Act2/Office/OfficeAC_Unit.png" id="39_s3guw"]
 [ext_resource type="Texture2D" uid="uid://dqwpvfov8sw5" path="res://_Assets/Environment/Act2/Office/OfficeBigMoney.png" id="40_iaid1"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_sdyxr"]
@@ -59,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://dw20g4kjh7vff" path="res://_Assets/Environment/Act2/Office/OfficeChairFaceLeft.png" id="52_85r1q"]
 [ext_resource type="Texture2D" uid="uid://dxgw10u4d0kno" path="res://_Assets/Environment/Act2/Office/OfficeDeskStuff.png" id="53_58o1h"]
 [ext_resource type="Texture2D" uid="uid://b0ix5vm6vyv0i" path="res://_Assets/Environment/Act2/Office/OfficeWaterCooler.png" id="54_684nb"]
+[ext_resource type="AudioStream" uid="uid://cwag86e0uo1w8" path="res://_Assets/Audio/Music/resurgence.mp3" id="58_2lvip"]
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="60_oridc"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="90_l13pwd"]
 [ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="91_l13pwe"]
@@ -7020,7 +7020,8 @@ texture = ExtResource("54_684nb")
 environment = ExtResource("38_4ad8a")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("39_f8nbj")
+stream = ExtResource("58_2lvip")
+volume_db = -9.0
 autoplay = true
 bus = &"music"
 

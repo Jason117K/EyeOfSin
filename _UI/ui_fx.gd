@@ -8,6 +8,8 @@ const DEFAULT_BORDER_THICKNESS: int = 1
 const DEFAULT_BORDER_COLOR: Color = Color.RED
 ## Tint for locked Acts/levels on the select screens (Progress).
 const LOCKED_MODULATE: Color = Color(0.25, 0.25, 0.25)
+## Tint for undiscovered codex art: black RGB, original alpha = a jet-black silhouette.
+const SILHOUETTE_MODULATE: Color = Color.BLACK
 
 
 ## Locked = the normal look, heavily darkened, and unclickable. The button's disabled
@@ -21,6 +23,16 @@ static func set_locked(panel: Control, button: BaseButton, locked: bool) -> void
 	button.add_theme_stylebox_override("disabled", button.get_theme_stylebox("normal"))
 	if button is Button:
 		button.add_theme_color_override("font_disabled_color", button.get_theme_color("font_color"))
+
+
+## Codex art for an undiscovered unit: its normal texture drawn as a black silhouette, and
+## unclickable. self_modulate keeps children (highlight panels) untinted; hidden = false
+## restores the exact normal look.
+static func set_silhouette(button: BaseButton, hidden: bool) -> void:
+	if button == null:
+		return
+	button.self_modulate = SILHOUETTE_MODULATE if hidden else Color.WHITE
+	button.disabled = hidden
 
 
 static func add_pulsing_button_highlight(button, should_pulse : bool = true,

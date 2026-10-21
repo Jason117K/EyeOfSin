@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Shadow in the Marsh.mp3-0743cc791416aa16e6b63
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

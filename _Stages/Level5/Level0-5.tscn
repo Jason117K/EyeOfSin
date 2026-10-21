@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_k4d0o"]
 [ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://_Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="21_q6yms"]
 [ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="22_jy0sd"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_uqvme"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="23_c8h3b"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="24_3au0f"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="24_q2ndg"]
@@ -69,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://cci1m6lpfeyk8" path="res://_Assets/Environment/Props/PurpleDeadTree3.png" id="61_m4bcc"]
 [ext_resource type="Texture2D" uid="uid://b2570yv5xwfwa" path="res://_Assets/Environment/Props/Objects.png" id="62_sp1j0"]
 [ext_resource type="Texture2D" uid="uid://cutsd2jwatt7y" path="res://_Assets/Environment/Props/Dead_arm_shadow1_1.png" id="63_cd1p6"]
+[ext_resource type="AudioStream" uid="uid://by563n6jbvls1" path="res://_Assets/Audio/Music/Shadow in the Marsh.mp3" id="66_8dhvv"]
 
 [sub_resource type="Resource" id="Resource_gtg2i"]
 script = ExtResource("4_pkv84")
@@ -3628,6 +3628,24 @@ new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
 wave2StartTime = 75
 wave3StartTime = 100
 record_footage = false
+SSS_Rank_Completion_Time = 330
+S_Rank_Completion_Time = 350
+A_Rank_Completion_Time = 360
+B_Rank_Completion_Time = 370
+C_Rank_Completion_Time = 380
+D_Rank_Completion_Time = 390
+SSS_STYLE_POINTS_MIN = 33000
+S_STYLE_POINTS_MIN = 30000
+A_STYLE_POINTS_MIN = 27000
+B_STYLE_POINTS_MIN = 24000
+C_STYLE_POINTS_MIN = 21000
+D_STYLE_POINTS_MIN = 18000
+SSS_TOTAL_POINTS_MIN = 32000
+S_TOTAL_POINTS_MIN = 29000
+A_TOTAL_POINTS_MIN = 26000
+B_TOTAL_POINTS_MIN = 23000
+C_TOTAL_POINTS_MIN = 20000
+D_TOTAL_POINTS_MIN = 17000
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1
@@ -3955,7 +3973,8 @@ visible = false
 layout_mode = 1
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1328218008]
-stream = ExtResource("22_uqvme")
+stream = ExtResource("66_8dhvv")
+volume_db = -10.0
 autoplay = true
 bus = &"music"
 

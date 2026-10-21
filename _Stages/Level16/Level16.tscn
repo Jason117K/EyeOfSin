@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://_Assets/Environment/TX Tileset Grass.png" id="35_tsuat"]
 [ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://_Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="36_lolef"]
 [ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="37_h7wuc"]
+[ext_resource type="AudioStream" uid="uid://b76l1pwmp3a3o" path="res://_Assets/Audio/Music/Against the Odds (1).mp3" id="37_qdoa2"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="38_c7qr3"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="39_cjqbn"]
 [ext_resource type="Texture2D" uid="uid://be43mxb3vs0h" path="res://_Assets/Environment/Tilesets/Level1FloorProps.png" id="40_ogu4v"]
@@ -38,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://djn2xu2jfsygr" path="res://_Assets/Environment/Act_3/IceTree.png" id="41_qdoa2"]
 [ext_resource type="Texture2D" uid="uid://dfac4fab02ceu" path="res://_Assets/Environment/Act_3/BorderMushroom.png" id="42_gude6"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="42_hmvos"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="43_2exoa"]
 [ext_resource type="Texture2D" uid="uid://d08oej848bd3g" path="res://_Assets/Environment/Act_3/Border_Ice_Flowers1.png" id="43_p4vo5"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="44_fkjfh"]
 [ext_resource type="Texture2D" uid="uid://7l01peigw4f" path="res://_Assets/Environment/Act_3/Border_Ice_Flowers2.png" id="44_n8fph"]
@@ -5824,7 +5824,8 @@ tile_set = SubResource("TileSet_ftufw")
 environment = ExtResource("42_hmvos")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("43_2exoa")
+stream = ExtResource("37_qdoa2")
+volume_db = -10.0
 autoplay = true
 bus = &"music"
 

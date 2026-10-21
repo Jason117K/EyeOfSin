@@ -3736,6 +3736,24 @@ script = ExtResource("1_3xvj4")
 wave2StartTime = 65
 wave3StartTime = 80
 record_footage = false
+SSS_Rank_Completion_Time = 375
+S_Rank_Completion_Time = 390
+A_Rank_Completion_Time = 400
+B_Rank_Completion_Time = 410
+C_Rank_Completion_Time = 420
+D_Rank_Completion_Time = 430
+SSS_STYLE_POINTS_MIN = 25000
+S_STYLE_POINTS_MIN = 24000
+A_STYLE_POINTS_MIN = 23000
+B_STYLE_POINTS_MIN = 22000
+C_STYLE_POINTS_MIN = 21000
+D_STYLE_POINTS_MIN = 20000
+SSS_TOTAL_POINTS_MIN = 26000
+S_TOTAL_POINTS_MIN = 25000
+A_TOTAL_POINTS_MIN = 24000
+B_TOTAL_POINTS_MIN = 23000
+C_TOTAL_POINTS_MIN = 22000
+D_TOTAL_POINTS_MIN = 21000
 
 [node name="DemonManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
 blood_points = 600

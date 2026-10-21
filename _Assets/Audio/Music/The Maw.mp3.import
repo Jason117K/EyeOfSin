@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/The Maw.mp3-2c2b115a636bb52b013ce83fe2bb6c5e.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

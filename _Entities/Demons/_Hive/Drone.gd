@@ -41,6 +41,8 @@ var is_maw_buffed := false
 var is_crawler_buffed := false
 var is_baal_buffed := false
 var is_demo := false
+# Hive ultimate: double health and damage, "_ultimate" animations. Permanent.
+var is_leveled_up := false
 
 @onready var animatedSpriteComp := $AnimatedSprite2D  # RefCounted to Sprite2D Comp
 
@@ -130,6 +132,18 @@ func baal_buff() -> void:
 func undo_baal_buff() -> void:
 	is_baal_buffed = false
 
+# Called after add_child, so base_attack_damage is already set and doubling it
+# keeps doubleDamage()/regularDamage() relative to the leveled damage.
+func level_up() -> void:
+	if is_leveled_up:
+		return
+	is_leveled_up = true
+	health *= 2
+	max_health *= 2
+	attack_damage *= 2
+	base_attack_damage *= 2
+	setAnimation(String(animatedSpriteComp.animation).trim_suffix("_ultimate"))
+
 func make_drone_glow() -> void:
 	animatedSpriteComp.make_glow()
 
@@ -176,8 +190,11 @@ func increase_health(added_health_amount: int) -> void:
 	if max_health != null:
 		health = clamp(health + added_health_amount, 0, max_health)
 
-# Changes the drone's current animation
+# Changes the drone's current animation (its "_ultimate" version once leveled up)
 func setAnimation(newAnimation: String) -> void:
+	var ultimate_animation := newAnimation + "_ultimate"
+	if is_leveled_up and animatedSpriteComp.sprite_frames.has_animation(ultimate_animation):
+		newAnimation = ultimate_animation
 	animatedSpriteComp.animation = newAnimation
 
 func set_damage(new_damage: int) -> void:
@@ -313,7 +330,7 @@ func _head_home() -> void:
 # Handles the drone dealing attack damage 
 func _on_attack_timer_timeout() -> void:
 	if state == State.ATTACKING and current_target and is_instance_valid(current_target):
-		animatedSpriteComp.animation = "attack"
+		setAnimation("attack")
 		var distance := global_position.distance_to(current_target.global_position)
 		if distance <= attack_range:
 			var hit := attack_damage * (baal_damage_multiplier if is_baal_buffed else 1.0)

@@ -1,15 +1,21 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var baseZombieButton := $"../../HBoxContainer/AllZombieRows/Row1/BaseZombie"
-@onready var coneHeadZombieButton := $"../../HBoxContainer/AllZombieRows/Row1/ConeHeadZombie"
-@onready var bucketHeadZombieButton := $"../../HBoxContainer/AllZombieRows/Row1/BucketHeadZombie"
-@onready var dancerZombieButton := $"../../HBoxContainer/AllZombieRows/Row2/DancerZombie"
-@onready var backUpDanceerZombieButton := $"../../HBoxContainer/AllZombieRows/Row2/BackUpDancerZombie"
-@onready var tickerZombieButton := $"../../HBoxContainer/AllZombieRows/Row2/TickerZombie"
-@onready var screenDoorZombieButton := $"../../HBoxContainer2/MarginContainer/AllZombieRows/Row3/AmalgamButton"
-@onready var footBallZombieButton := $"../../AllZombieRows/Row3/FootballZombie"
-@onready var poleVaultZombieButton := $"../../AllZombieRows/Row3/PoleVaultZombie"
+# Codex entries by discovery name (Global.unlock_zombie), in codex order:
+# [clickable card frame, art drawn over it (ignores the mouse), its pressed handler].
+const ZOMBIE_FRAME_ROWS := "../../AllZombieButtonsContainer/MarginContainer/AllZombieRows/"
+const ZOMBIE_ART_ROWS := "../../AllZombieSpritesContainer/MarginContainer/AllZombieRows/"
+const ZOMBIE_ENTRIES := {
+	"Reborn": ["Row1/RebornButton", "Row1/BaseZombie", &"_on_base_zombie_pressed"],
+	"Severed": ["Row1/SeveredButton", "Row1/ConeHeadZombie", &"_on_cone_head_zombie_pressed"],
+	"Unhallower": ["Row1/UnhallowerButton", "Row1/BucketHeadZombie", &"_on_bucket_head_zombie_pressed"],
+	"Erupter": ["Row2/ErupterButton", "Row2/TickerZombie", &"_on_ticker_zombie_pressed"],
+	"Reanimator": ["Row2/ReanimatorButton", "Row2/DancerZombie", &"_on_dancer_zombie_pressed"],
+	"Wretch": ["Row2/WretchButton", "Row2/BackUpDancerZombie", &"_on_back_up_dancer_zombie_pressed"],
+	"Amalgam": ["Row3/AmalgamButton", "Row3/ScreenDoorZombie", &"_on_screen_door_zombie_pressed"],
+	"Sundered": ["Row3/LeaperButton", "Row3/PoleVaultZombie", &"_on_pole_vault_zombie_pressed"],
+	"Flesheater": ["Row3/FleshEaterButton", "Row3/FootballZombie", &"_on_football_zombie_pressed"],
+}
 
 @onready var currentZombieLabel := $"../../CurrentZombieLabel"
 @onready var currentZombieTitle := $"../../CurrentZombieTitle"
@@ -67,47 +73,37 @@ func _ready() -> void:
 		refresh_rate = sprites.get_frame_duration(current_animation, frame_index)
 		if auto_play:
 			play()
-	set_text(coneheadZombieDescription)
-	set_title(coneHeadZombieTitle)
-	_on_cone_head_zombie_pressed()
-# Update all button textures based on current color settings
+	_refresh_zombie_locks()
+	_open_first_discovered()
+
+
+# Undiscovered zombies (Discovery): art silhouetted, card frame darkened and unclickable.
+# The codex scene is rebuilt on each open, so this always reads live state.
+func _refresh_zombie_locks() -> void:
+	for zombie_name: String in ZOMBIE_ENTRIES:
+		var entry: Array = ZOMBIE_ENTRIES[zombie_name]
+		var locked := not Discovery.is_zombie_discovered(zombie_name)
+		var frame := get_node_or_null(ZOMBIE_FRAME_ROWS + entry[0]) as BaseButton
+		if frame != null:
+			UiFx.set_locked(frame, frame, locked)
+		UiFx.set_silhouette(get_node_or_null(ZOMBIE_ART_ROWS + entry[1]) as BaseButton, locked)
+
+
+# Opens the first discovered zombie's page; with none discovered, the page stays blank.
+func _open_first_discovered() -> void:
+	for zombie_name: String in ZOMBIE_ENTRIES:
+		if Discovery.is_zombie_discovered(zombie_name):
+			call(ZOMBIE_ENTRIES[zombie_name][2])
+			return
+	current_zombie_animation.hide()
+	currentZombieLabel.text = ""
+	currentZombieTitle.text = ""
+
+
+# The codex art textures come from the scene; only the hue shift is applied here.
 func _update_button_textures() -> void:
-	
-	# Set
-	if baseZombieButton != null:
-		baseZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.BASEZOMBIE)
-	if coneHeadZombieButton != null:
-		coneHeadZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.CONEHEAD)
-	if bucketHeadZombieButton != null:
-		bucketHeadZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.BUCKETHEAD)
-	
-	# Set 
-	if dancerZombieButton != null:
-		dancerZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.DANCERZOMBIE)
-	if backUpDanceerZombieButton != null:
-		backUpDanceerZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.BACKUPDANCERZOMBIE)
-	if tickerZombieButton != null:
-		tickerZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.TICKER)
-			
-	#if screenDoorZombieButton != null:
-		#screenDoorZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			#GlobalResourceLoader.ZombieType.SCREENDOORZOMBIE)
-			#
-	if footBallZombieButton != null:
-		footBallZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.FOOTBALLZOMBIE)
-			
-	if poleVaultZombieButton != null:
-		poleVaultZombieButton.texture_normal = GlobalResourceLoader.get_zombie_image(
-			GlobalResourceLoader.ZombieType.POLEVAULTZOMBIE)
 	_apply_hue_shift()
-			
+
 #Sets the current Zombie Description Text
 func set_text(newFile: String) -> void:
 	currentZombieLabel.text = Loc.text(newFile)

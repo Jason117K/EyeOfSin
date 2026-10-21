@@ -3657,6 +3657,23 @@ wave3StartTime = 40
 record_footage = false
 skip_tutorials = true
 progress_timer_wait_time = 2.9
+SSS_Rank_Completion_Time = 190
+S_Rank_Completion_Time = 200
+A_Rank_Completion_Time = 210
+B_Rank_Completion_Time = 220
+C_Rank_Completion_Time = 230
+D_Rank_Completion_Time = 240
+SSS_STYLE_POINTS_MIN = 600
+S_STYLE_POINTS_MIN = 500
+A_STYLE_POINTS_MIN = 400
+B_STYLE_POINTS_MIN = 300
+C_STYLE_POINTS_MIN = 200
+SSS_TOTAL_POINTS_MIN = 1300
+S_TOTAL_POINTS_MIN = 1200
+A_TOTAL_POINTS_MIN = 1100
+B_TOTAL_POINTS_MIN = 1000
+C_TOTAL_POINTS_MIN = 900
+D_TOTAL_POINTS_MIN = 800
 
 [node name="UILayer" parent="." unique_id=1087850493 instance=ExtResource("2_umbnb")]
 visible = false

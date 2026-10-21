@@ -1089,6 +1089,7 @@ animations = [{
 script = ExtResource("1_y2ihn")
 aftershock_interval = 0.8
 ability_duration = 15.0
+ability_cooldown_duration = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156082583]
 position = Vector2(0, -42)

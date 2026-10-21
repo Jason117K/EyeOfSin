@@ -32,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="27_kf06p"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="28_1mef3"]
 [ext_resource type="Texture2D" uid="uid://dhyrydgphy1ry" path="res://_Assets/Environment/Tilesets/Ground_Green.png" id="28_3fgte"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="29_16xd5"]
 [ext_resource type="Texture2D" uid="uid://tmvd3d2p35g4" path="res://_Assets/Environment/Tilesets/Green_Cave1.png" id="29_s3aks"]
 [ext_resource type="Texture2D" uid="uid://bt0olwrrp8ut7" path="res://_Assets/Environment/Act2/Tilesets/Chapel_Interior.png" id="30_87akm"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="30_lqlcu"]
@@ -45,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://d30gj0npw3nfa" path="res://_Assets/Environment/Tilesets/OpeningLevelAltPath_NoWater.png" id="35_uicby"]
 [ext_resource type="Texture2D" uid="uid://ccpv3tcghh4mj" path="res://_Assets/Environment/Updated_Props/GreenSquare_BG.png" id="36_s6o5h"]
 [ext_resource type="Texture2D" uid="uid://dx3yv3qhonll8" path="res://_Assets/Environment/Act2/Tilesets/StainedWindows_Dragon_1.png" id="37_o75od"]
+[ext_resource type="AudioStream" uid="uid://c4aj3ofcpoilm" path="res://_Assets/Audio/Music/Lucretia.mp3" id="42_xukng"]
 [ext_resource type="Texture2D" uid="uid://c3y0vddyfpsk" path="res://_Assets/Environment/Act2/Candelabra-Sheet.png" id="43_t1eut"]
 [ext_resource type="Texture2D" uid="uid://n0s2xgvtyd2h" path="res://_Assets/Environment/Act2/ChurchBookPulpit.png" id="44_n57s0"]
 [ext_resource type="Texture2D" uid="uid://b03wii0stnsi5" path="res://_Assets/Environment/Act2/Church_Girl_Statue.png" id="45_p4xyn"]
@@ -3744,7 +3744,7 @@ visible = false
 environment = ExtResource("28_1mef3")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("29_16xd5")
+stream = ExtResource("42_xukng")
 autoplay = true
 bus = &"music"
 

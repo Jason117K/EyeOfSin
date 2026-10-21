@@ -134,6 +134,30 @@ enum DEMON {
 
 var current_demon := DEMON.OCCULUM
 
+# Codex page (SynergyDefinition.codex_page) of each DEMON.
+const DEMON_PAGES := {
+	DEMON.OCCULUM: &"Occulum",
+	DEMON.CRAWLER: &"Crawler",
+	DEMON.SPINALOCCULUM: &"SpinalOcculum",
+	DEMON.WYRM: &"Wyrm",
+	DEMON.HIVE: &"Hive",
+	DEMON.MAW: &"Maw",
+}
+
+# Each demon has three pressable layers sharing one row path: its art, its card back and
+# its focus outline. Keyed by Progress demon name; SpinalOcculum's nodes are "Walnut".
+const DEMON_ART_ROWS := "../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/"
+const DEMON_CARD_BACK_ROWS := "../../Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/"
+const DEMON_OUTLINE_ROWS := "../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/"
+const DEMON_ROW_PATHS := {
+	"Occulum": "Row1/Occulum",
+	"Crawler": "Row1/Crawler",
+	"SpinalOcculum": "Row2/Walnut",
+	"Maw": "Row2/Maw",
+	"Wyrm": "Row3/Wyrm",
+	"Hive": "Row3/Hive",
+}
+
 func _ready() -> void:
 	pass
 	Global.register_demon_codex(self)
@@ -165,7 +189,35 @@ func _ready() -> void:
 	occulumButton.pressed.connect(_on_occulum_pressed)
 	wyrmButton.pressed.connect(_on_wrym_pressed)
 	spinalOcculumButton.pressed.connect(_on_spinalOcculum_pressed)
-	
+	_refresh_demon_locks()
+
+
+# Locked demons (Progress.is_demon_unlocked): art silhouetted, card back darkened, every
+# layer unclickable. The codex scene is rebuilt on each open, so this always reads live state.
+func _refresh_demon_locks() -> void:
+	for demon_name: String in DEMON_ROW_PATHS:
+		var locked := not Progress.is_demon_unlocked(demon_name)
+		var row_path: String = DEMON_ROW_PATHS[demon_name]
+		UiFx.set_silhouette(get_node_or_null(DEMON_ART_ROWS + row_path) as BaseButton, locked)
+		var card_back := get_node_or_null(DEMON_CARD_BACK_ROWS + row_path) as BaseButton
+		if card_back != null:
+			UiFx.set_locked(card_back, card_back, locked)
+		var outline := get_node_or_null(DEMON_OUTLINE_ROWS + row_path) as BaseButton
+		if outline != null:
+			outline.disabled = locked
+
+
+# Alt2..Alt6 show the current page's synergies; undiscovered ones are silhouetted and
+# unclickable. Alt1 is the demon's base page and always open.
+func _refresh_synergy_locks() -> void:
+	var page: StringName = DEMON_PAGES[current_demon]
+	var synergy_tabs := [alt2, alt3, alt4, alt5, alt6]
+	for i in synergy_tabs.size():
+		var synergy : SynergyDefinition = Global.synergy_catalog.get_by_codex_slot(page, i + 2)
+		if synergy == null:
+			push_warning("Codex: no synergy in the catalog for %s alt %d" % [page, i + 2])
+		UiFx.set_silhouette(synergy_tabs[i], synergy != null and not Discovery.is_synergy_discovered(synergy.id))
+
 
 # Update all button textures based on current color settings
 func _update_button_textures() -> void:
@@ -251,10 +303,10 @@ func set_demon_variations(newDemon: GlobalResourceLoader.DemonType) -> void:
 				alt5.texture_normal= this_image
 			5:
 				alt6.texture_normal= this_image
-				
+
 		count+=1
-	
-	pass
+
+	_refresh_synergy_locks()
 	
 func _on_occulum_pressed() -> void:
 	clear_all_focus()
@@ -701,7 +753,9 @@ func clear_all_focus()->void:
 	red_wyrm.modulate = Color(1,1,1,0)
 	red_hive.modulate = Color(1,1,1,0)
 
-func _on_mouse_entered(button_to_tween) -> void: 
+func _on_mouse_entered(button_to_tween) -> void:
+	if button_to_tween is BaseButton and button_to_tween.disabled:
+		return # locked codex entries don't bounce
 	hover_target = 1.0
 	if tween_hover and tween_hover.is_running():
 		tween_hover.kill()

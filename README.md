@@ -16,7 +16,7 @@ flowchart TD
 		DIALOGIC["Dialogic"]
 	end
 
-	STATICS["class_name statics<br/>Dim · UiFx · SoundEffect · ZombieRegistry"]
+	STATICS["class_name statics<br/>Dim · UiFx · SoundEffect · ZombieRegistry · Loc<br/>Progress · DemonLoadout · Discovery (saved to user://)"]
 
 	subgraph TREE["GameController's tree — persists across level loads"]
 		GC["GameController<br/>change_dual_scenes · swap_scenes · cull masks"]
@@ -107,8 +107,8 @@ polls `get_overlapping_areas()` in `tick_buff(delta)` — driven by the conducto
 `buff_ready` (set after the post-spawn awaits) and `can_process()`. Targets match by **exact
 digit-stripped true name** (`get_demon_true_name()`) against the demon's exported `give_buff_to`
 list — substring matching is gone. Synergy pair identity + codex navigation live in
-`SynergyCatalog.tres` (30 `SynergyDefinition`s); unlock STATE is `Global.unlocked_synergies`
-(session-only). Synergy ids capitalize only each word's first letter (`"SpinalocculumOcculum"`) so
+`SynergyCatalog.tres` (30 `SynergyDefinition`s); unlock STATE is saved by `Discovery` (see Codex
+gating). Synergy ids capitalize only each word's first letter (`"SpinalocculumOcculum"`) so
 pairs split on capitals — build them with `SynergyDefinition.make_id()`, never by hand. The
 placement preview uses **oldest-overlapping-zone-wins** and hides a zone whose cell is occupied. A
 demon scene is previewable only if it contains a node named exactly **`PreviewNodes`** (its
@@ -149,12 +149,25 @@ read `is_on_purple_dimension()` at apply time, not cache the dimension. Cooldown
 **accumulator-driven** like syn (`is_active`/`is_on_cooldown` + counters in `_physics_process`,
 no Timer nodes): early cancel → normal cooldown, full duration → −2.5 s special cooldown.
 
+**Swap/Syn bars show only in levels and on the ability panel.** Both live under GameController
+and survive scene changes, so visibility is explicit:
+- `change_scene` (every menu change) and `change_from_dual_scenes` hide them.
+- `ability_control_panel._ready` and `equip_default_sorceries()` (level start) show them.
+- `hide_swap_syn()` / `show_swap_syn()` guard on Global's **live** references. GameController's own
+  `swap_ability` field goes stale (null at boot, freed when the panel registers a new swap), so
+  don't guard on it.
+- The Syn button is a fixed 64×64 slot (`syn_ability_cooldown_visual.CARD_SLOT_SIZE`), because the
+  card PNGs range from 32 to 64px. Mark scales exactly 2×; Shield, Shroomie and Blood Ice resample
+  unevenly until they're re-exported at 64×64.
+
 **Content catalogs are Resources; balance numbers are scene exports.** `DemonCatalog.tres` holds
 each placeable demon's identity (id = true name, scene, icon, description path);
 `SynergyCatalog.tres` holds the 30 synergy pairs + codex navigation. Adding a demon or synergy is
-**data-only** — zero `Global` edits. Costs/HP/timers deliberately **stay on the demon scenes**;
-`get_demon_cost()` derives the menu label from the definition's scene lazily, so the label and
-the amount charged can never drift.
+**data-only** — zero `Global` edits. Costs/HP/timers deliberately **stay on the unit, never the
+catalog**: the scene's exports, or its Stats config when one is assigned (see Stat configs).
+`get_demon_cost()` → `DemonDefinition.get_scene_cost()` derives the menu label lazily from the
+scene with its config applied, so the label and the amount charged can never drift. The Occulum's
+escalating price (per dimension) is `Occulum.cost_for_count()`, which the menu label also uses.
 
 **Scoring + style rank.** Each demon accrues `game_time` and reports to `ScoreManager` on the
 `level_ended` signal (weighted by whether it was buffed). Per-level threshold arrays (exported on
@@ -163,14 +176,18 @@ the level script) map the total to a **style rank**, shown on the end-of-level s
 
 **Level progression is linear and saved by the `Progress` statics** (`_Utilities/progress.gd`).
 The save is `highest_unlocked` plus a `[best_ranks]` section (level → best overall rank, 0 = SSS
-… 5 = D) in `user://progress.cfg` (separate from `settings.cfg`). Beating level N unlocks N+1. An Act is unlocked once its first level is (beat 9 →
-Act 2, beat 14 → Act 3). Level identity = the purple scene path's position in `Progress.ACTS`,
+… 5 = D) in `user://progress.cfg` (separate from `settings.cfg`). Beating level N unlocks N+1.
+An Act is unlocked once its first level is (beat 9 → Act 2, beat 14 → Act 3). Level identity =
+the purple scene path's position in `Progress.ACTS`,
 which is in **select-screen button order, not folder order** (slot 7 is `Level8.tscn`, slot 8 is
 `Level7.tscn`). A new level needs a table entry, or its wins log `[PROGRESS] unknown level` and
 aren't recorded. Wins are recorded at one choke point, `WaveManager._win()`, before `level_ended`.
 Select screens darken and disable locked entries via `UiFx.set_locked` and expose `refresh_locks()`.
-The win screens' Next/Continue go to `Progress.select_screen_after_win()`. Demon/synergy unlocks
-are still session-only.
+Their sorcery-menu button stays locked until `Progress.any_sorcery_unlocked()`. The win screens'
+Next/Continue go to `Progress.select_screen_after_win()`: the Act of the level *after* the one
+beaten, so finishing an Act lands on the next one. Demon unlocks are derived from progress (see
+Demon loadouts); the Act screens no longer read `Global.*_unlocked`. Zombie and synergy
+discoveries are saved separately by `Discovery` (see Codex gating).
 
 **Stars + sorcery unlocks.** The score screen's overall rank is recorded per level
 (`style_screen.set_overall_rank` → `Progress.record_rank`; below D counts as D). Stars are
@@ -178,7 +195,10 @@ are still session-only.
 replays can raise the total but not farm it. Swap/Syn sorceries unlock from `Progress.SORCERY_UNLOCKS`.
 Each sorcery either needs a beaten level or a star **threshold**; stars are never spent. The ability
 control panel darkens locked ones. Clicking a locked one shows its requirement but doesn't equip it.
-The panel only gates its own buttons; levels handle the starting loadout.
+The equipped sorceries persist for the session (not saved). Levels 5–17 call
+`level_template.equip_default_sorceries()`, which equips Lightning Strike / Lightning Storm only
+when nothing is equipped, so a panel pick carries into the level. Never call
+`Global.register_*_ability` unconditionally from a level: it overwrites the player's pick.
 
 **Demon loadouts (`DemonLoadout` statics, `_Utilities/demon_loadout.gd`).**
 - **Unlocks:** each demon unlocks by beating a level (`Progress.DEMON_UNLOCKS`; Maw = level 11).
@@ -191,6 +211,23 @@ The panel only gates its own buttons; levels handle the starting loadout.
   `DemonSelectionMenu.set_loadout()`. A `visibility_changed` guard re-hides any card outside the
   loadout, whoever shows it. It only **hides**: availability = the level's cards ∩ the loadout,
   so level scripts stay untouched.
+
+**Codex gating (`Discovery` statics, `_Utilities/discovery.gd`).** The codexes show only what the
+player has met. Anything else is a jet-black silhouette of its normal art and can't be clicked.
+- **Sources of truth:** demons = `Progress.is_demon_unlocked`. Zombies = first real spawn
+  (`Global.unlock_zombie`, called from every zombie's `_ready`). Synergies = first trigger
+  (`Global.unlock_buff`, connected in all six demon scripts). Zombies and synergies are saved to
+  `user://discovery.cfg`. `discover_*` returns true only the first time, so the in-level unlock
+  pop-ups fire once per save, not once per session.
+- **Look:** `UiFx.set_silhouette` (art `self_modulate` = black + disabled; reverting restores the
+  exact normal look). Card frames/backs behind the art use `UiFx.set_locked`.
+- **Demon codex** locks all three pressable layers per demon (art, card back, red outline;
+  SpinalOcculum's nodes are `Walnut`). Synergy tabs Alt2–6 are looked up with
+  `SynergyCatalog.get_by_codex_slot(page, alt_index)`, and Alt1 (base page) is always open.
+- **Zombie codex** maps discovery names to frame + art nodes in `ZOMBIE_ENTRIES`, and opens on the
+  first discovered zombie (blank page if none). The clickable frames live in
+  `AllZombieButtonsContainer`, and the art above them ignores the mouse.
+- Both codex scenes are rebuilt on every open and read live state in `_ready`.
 
 **Stat configs (`UnitStats` resources, `_Utilities/Stats/`).** Every zombie and demon root has a
 **Stats** slot (`ZombieStats` / `DemonStats`). A filled slot **overrides** the scene's matching
@@ -293,9 +330,26 @@ and applied in `GameController._ready` (saved → OS language → `en`).
   In a level, `U` = instant **S**-rank win and `Shift+U` = instant **SSS**-rank win. Both go
   through the normal win flow (`WaveManager.debug_force_win`).
   Outside a level, `Ctrl+U` = unlock every level/Act with SSS everywhere (51 stars, every
-  sorcery). That's saved. All three live in `GameController._input`.
+  sorcery) and discover every zombie + synergy. That's saved. All three live in
+  `GameController._input`.
   `U` won't fire during tutorial steps whose input filter swallows keys (use `skip_tutorials`).
-  For a fresh save, delete `progress.cfg` (Editor → Project → Open User Data Folder).
+  For a fresh save, delete `progress.cfg`, `loadout.cfg` and `discovery.cfg` (Editor → Project →
+  Open User Data Folder).
+- **`place_demon` awaits physics frames mid-function, so per-placement state must be locals.**
+  The mirror blocker and the cost used to be members. Back-to-back placements (Level 3 pre-places
+  three Spinal Occulums one frame apart) overwrote them mid-await, typing the wrong blocker's rune
+  and charging the wrong cost. Any new state there goes in a local (`empty_blocker`, `cost`).
+- **Blockers that never get `set_demon_type()` show `EmptyDemon.tscn`'s default sprite, currently
+  `Wyrm_Rune.png`.** Portal mirror blockers and the Wyrm Queen's three extra blockers are never
+  typed, so they show a Wyrm rune. Set the default to an empty texture if that's unwanted.
+- **Placement preview squares need grid tiles.** `TileMapLayer.place_rectangles_on_rows(3, 9)`
+  spawns one square per used tile on `GameLayer/GridManager/TileMapLayer`, as children of that
+  layer. Hide the layer with `self_modulate` alpha 0, never `visible = false` (that hides the
+  squares too), and don't paint level art on it: replacing its tiles removes the anchors. Levels
+  13–14 hit both.
+- **A `class_name` static module that names an autoload won't compile in headless `-s` /
+  `--check-only` runs** (no autoloads there), which breaks scratchpad tests. Look the autoload up at
+  runtime instead (`get_node_or_null(^"/root/AudioManager")`, as `DemonLoadout` does).
 - **`EmptyDemon` (`is_empty`) short-circuits `_ready`** — no processing/registration; it exists only
   as a cross-dimension placement blocker.
 - **Maw uses a deliberate `-256` visual offset** in `place_demon` while its `grid_map` keys stay on
@@ -333,7 +387,9 @@ Run the relevant items after any change near the touched system; run the FULL li
 refactor phases that touch the restart path, buff matching, or tick order.
 
 1. **Place:** each demon type in both dimensions; costs correct; Occulum +15/+25 cost scaling
-   per dimension; mirror-cell blocker prevents placement in the other dimension.
+   per dimension; mirror-cell blocker prevents placement in the other dimension and shows the
+   placed demon's rune (Level 3's three pre-placed Spinal Occulums, restart a few times);
+   selecting a demon shows the preview squares in every level, both dimensions.
 2. **Buffs:** each demon gives + receives a buff; SpinalOcculum does NOT trigger Occulum-only
    entries (and vice versa); debuff on buffer death.
 3. **Swap:** ability fires `begin()` *before* the dimension flip; bar fills; early-cancel =
@@ -355,11 +411,29 @@ refactor phases that touch the restart path, buff matching, or tick order.
    3/4/12/14/15 and 27/33/39/45 stars unlock the right ones. Demon grid: locked demons hidden.
    After the Maw unlocks, toggle 1–5 per dimension; level 12+ menus offer exactly that
    dimension's loadout, including after a restart, and levels ≤ 11 are unchanged.
+9. **Sorceries + bars:** the Act screens' sorcery button stays dark until the first sorcery
+   unlocks. A sorcery picked on the ability panel is still equipped in levels 5–17 (not replaced
+   by Lightning) and after a restart. Swap/Syn bars show in levels and on the ability panel only:
+   none on the start screen, Act select, Act 1–3 screens, or after Next on a win. Every Syn card
+   fills the same 64px slot.
+10. **Codex:** fresh save → demon codex shows only Crawler normally. The rest are black
+    silhouettes with no click and no hover bounce. The zombie codex is clickable only for zombies
+    that have spawned. Every synergy tab is a silhouette until that synergy triggers, its pop-up
+    shows once, and after reopening the codex the tab is normal. A relaunch keeps everything. The
+    same synergy again → no pop-up. Beat level 1 → Occulum turns normal. Ctrl+U → everything normal.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **
 - ** res://_Utilities/dim.gd ** (dimension groups + collision-layer constants)
-- ** res://_UI/ui_fx.gd ** (pulsing-highlight statics)
+- ** res://_UI/ui_fx.gd ** (pulsing-highlight statics + `set_locked` darkening)
+- ** res://_Utilities/progress.gd ** (level progression, best ranks/stars, sorcery + demon unlock tables)
+- ** res://_Utilities/demon_loadout.gd ** (per-dimension demon loadouts)
+- ** res://_Utilities/discovery.gd ** (saved zombie + synergy discoveries for codex gating)
+- ** res://_UI/LoreBooks/ ** (`demon_lore_book_controller.gd`, `ZombieLoreBookController.gd`: the codexes)
+- ** res://_UI/ability_control_panel.gd ** (sorcery picker, star gating)
+- ** res://_UI/style_screen.gd ** (score screen; records the overall rank)
+- ** res://_Stages/LevelSelect/ ** (`act_select.gd`; Act 1–3 screens `level_select_alt.gd` / `_A2` / `_A3`)
+- ** res://_Utilities/Grid/tile_map_layer.gd ** (placement preview squares)
 - ** res://_Utilities/loc.gd ** (localization statics; CSVs + tools in res://_Localization/)
 - ** res://_Utilities/GameController/game_controller.gd **
 - ** res://_Utilities/Waves/WaveManager.gd **

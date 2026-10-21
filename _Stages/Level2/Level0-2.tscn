@@ -3715,24 +3715,24 @@ new_end_dialog = "res://_Assets/Dialog/level_02_end_dialog.dtl"
 wave2StartTime = 55
 wave3StartTime = 75
 record_footage = false
-SSS_Rank_Completion_Time = 30
-S_Rank_Completion_Time = 40
-A_Rank_Completion_Time = 50
-B_Rank_Completion_Time = 60
-C_Rank_Completion_Time = 70
-D_Rank_Completion_Time = 80
-SSS_STYLE_POINTS_MIN = 15000
-S_STYLE_POINTS_MIN = 12000
-A_STYLE_POINTS_MIN = 10000
-B_STYLE_POINTS_MIN = 9000
-C_STYLE_POINTS_MIN = 6000
-D_STYLE_POINTS_MIN = 5000
-SSS_TOTAL_POINTS_MIN = 15000
-S_TOTAL_POINTS_MIN = 12000
-A_TOTAL_POINTS_MIN = 11000
-B_TOTAL_POINTS_MIN = 10000
-C_TOTAL_POINTS_MIN = 9000
-D_TOTAL_POINTS_MIN = 8000
+SSS_Rank_Completion_Time = 220
+S_Rank_Completion_Time = 230
+A_Rank_Completion_Time = 240
+B_Rank_Completion_Time = 250
+C_Rank_Completion_Time = 260
+D_Rank_Completion_Time = 270
+SSS_STYLE_POINTS_MIN = 8000
+S_STYLE_POINTS_MIN = 7000
+A_STYLE_POINTS_MIN = 6000
+B_STYLE_POINTS_MIN = 5000
+C_STYLE_POINTS_MIN = 4000
+D_STYLE_POINTS_MIN = 3000
+SSS_TOTAL_POINTS_MIN = 9000
+S_TOTAL_POINTS_MIN = 8000
+A_TOTAL_POINTS_MIN = 7000
+B_TOTAL_POINTS_MIN = 6000
+C_TOTAL_POINTS_MIN = 5000
+D_TOTAL_POINTS_MIN = 4000
 
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("20_17c31")]
 layout_mode = 1
@@ -4036,7 +4036,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
 
 [editable path="GameLayer/GridManager"]

@@ -251,7 +251,6 @@ playing = true
 targetGlowColor = Color(0.7882353, 0, 0.050980393, 1)
 
 [node name="AllZombieButtonsContainer" type="HBoxContainer" parent="." unique_id=1329874444]
-visible = false
 layout_mode = 0
 offset_left = 57.0
 offset_top = 10.0

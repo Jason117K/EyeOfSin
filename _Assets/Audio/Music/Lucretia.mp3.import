@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Lucretia.mp3-ca344e66b9c97f7e2f6c7515c8aaf051
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

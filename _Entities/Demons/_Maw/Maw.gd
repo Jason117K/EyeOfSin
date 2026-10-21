@@ -5,6 +5,7 @@ extends Demon
 const BLOOD_SCENE := preload("res://_Entities/Demons/Blood/Blood.tscn")
 const WEB_BALL_SCENE := preload("res://_Entities/Demons/Projectile/WebBall.tscn")
 const DIGEST_SWORD_SCENE := preload("res://_Entities/Demons/_Maw/digest_sword_attack.tscn")
+const TENTACLE_SCENE := preload("res://_Entities/Demons/Tentacles/Tentacle.tscn")
 
 # --- Constants ---
 const INSTAKILL_DAMAGE := 9999
@@ -32,6 +33,8 @@ var _base_digestion_time := -1.0
 @onready var tentacle1: Tentacle = $Tentacle1
 @onready var tentacle2: Tentacle = $Tentacle2
 @onready var tentacle3: Tentacle = $Tentacle3
+# Rest point of the 4th tentacle the ultimate adds.
+@onready var ultimate_arm_target_location: Node2D = $UltimateArmTargetLocation
 @onready var detectionAreaShape: CollisionShape2D = $DetectionComponent/CollisionShape2D
 @onready var detection_area: Area2D = $DetectionComponent
 @onready var ogDetectionRadius: float = detectionAreaShape.shape.radius
@@ -43,6 +46,7 @@ var available_tentacles: Array[Tentacle] = []
 var enemies_to_eat: Array = []
 var eating_groups: Dictionary = {}
 var consume_zombie_group_timer: Timer
+var tentacle4: Tentacle
 
 # Buff state
 var willBelchWebs := false
@@ -189,6 +193,7 @@ func _cleanup() -> void:
 	if tentacle1: tentacle1.queue_free()
 	if tentacle2: tentacle2.queue_free()
 	if tentacle3: tentacle3.queue_free()
+	if is_instance_valid(tentacle4): tentacle4.queue_free()
 	super()
 
 
@@ -199,17 +204,20 @@ func setup_tentacles() -> void:
 	available_tentacles = tentacles.duplicate()
 
 	for tentacle in tentacles:
-		tentacle.retraction_center_provider = _get_retraction_center
-		tentacle.grabbed_enemy.connect(_on_tentacle_grabbed.bind(tentacle))
-		tentacle.retraction_finished.connect(_on_tentacle_retraction_finished.bind(tentacle))
-		tentacle.ready_again.connect(_on_tentacle_ready_again.bind(tentacle))
-		tentacle.aborted.connect(_on_tentacle_aborted.bind(tentacle))
+		_wire_tentacle(tentacle)
 
 	_set_tentacle_digestion_time(digestTime)
 
 	if debug_mode:
 		pass
 		#print("[Maw] Setup complete: %d tentacles ready" % tentacles.size())
+
+func _wire_tentacle(tentacle: Tentacle) -> void:
+	tentacle.retraction_center_provider = _get_retraction_center
+	tentacle.grabbed_enemy.connect(_on_tentacle_grabbed.bind(tentacle))
+	tentacle.retraction_finished.connect(_on_tentacle_retraction_finished.bind(tentacle))
+	tentacle.ready_again.connect(_on_tentacle_ready_again.bind(tentacle))
+	tentacle.aborted.connect(_on_tentacle_aborted.bind(tentacle))
 
 func get_tentacles() -> Array[Tentacle]:
 	return available_tentacles
@@ -549,3 +557,39 @@ func get_out_of_place_nodes() -> Array:
 
 func _on_mouse_exited() -> void:
 	$PreviewNodes.visible = false
+
+
+# --- Ultimate ---
+
+# Once per Maw: an already-ulted Maw takes a normal click and the armed charge
+# isn't spent.
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if Global.ultimate_is_ready and can_ult and spawn_done:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			trigger_ultimate()
+	else:
+		super(_viewport, event, _shape_idx)
+
+func trigger_ultimate() -> void:
+	can_ult = false
+	Global.un_ready_ultimate()
+	_add_ultimate_tentacle()
+
+# Spawned on demand so un-ulted Maws don't pay for a 4th tentacle. The tentacle
+# rests at (and returns to) global_position + idle_offset, so idle_offset is what
+# puts its ArmTarget on UltimateArmTargetLocation.
+func _add_ultimate_tentacle() -> void:
+	tentacle4 = TENTACLE_SCENE.instantiate()
+	tentacle4.name = "Tentacle4"
+	tentacle4.position = tentacle1.position
+	tentacle4.idle_offset = ultimate_arm_target_location.position - tentacle1.position
+	tentacle3.add_sibling(tentacle4)
+	_wire_tentacle(tentacle4)
+	tentacles.append(tentacle4)
+	available_tentacles.append(tentacle4)
+	_set_tentacle_digestion_time(_base_digestion_time if _base_digestion_time > 0.0 else digestTime)
+	# Grab zombies already in range: queued ones, and any whose cost was above
+	# the old tentacle count (those were never queued).
+	for this_area in detection_area.get_overlapping_areas():
+		_on_detection_component_area_entered(this_area)
+	_process_queue()

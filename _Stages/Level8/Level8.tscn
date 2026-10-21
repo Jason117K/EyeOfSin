@@ -14,9 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://dmli8i55mkd02" path="res://_Assets/Environment/Updated_Props/Red_Coral.png" id="23_a508m"]
 [ext_resource type="Texture2D" uid="uid://ctvcwty57as57" path="res://_Assets/Environment/Updated_Props/Sea_Hole.png" id="24_8wacc"]
 [ext_resource type="Texture2D" uid="uid://cu2fjgix7g3sf" path="res://_Assets/Environment/Updated_Props/Coral_Fans.png" id="25_3cser"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_a508m"]
 [ext_resource type="Texture2D" uid="uid://dudo8l1gyv8xp" path="res://_Assets/Environment/Updated_Props/Spindly_Coral.png" id="26_xoy3f"]
 [ext_resource type="Texture2D" uid="uid://ca35tylcredq8" path="res://_Assets/Environment/Updated_Props/Kelp_Sheet.png" id="27_23b4q"]
+[ext_resource type="AudioStream" uid="uid://dbuw471mvfhu4" path="res://_Assets/Audio/Music/Quandry.mp3" id="28_3cser"]
 [ext_resource type="Texture2D" uid="uid://nbqmvr7ipyy2" path="res://_Assets/Environment/Props/FetusProp.png" id="29_h7w3t"]
 [ext_resource type="PackedScene" uid="uid://f72ajnkx6ih5" path="res://_Entities/LevelDecorations/Fish.tscn" id="30_fx2r8"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://_Assets/Environment/Props/CoralSmall_PROP.png" id="31_muo1e"]
@@ -215,6 +215,24 @@ wave4StartTime = 105
 wave5StartTime = 108
 wave6StartTime = 110
 record_footage = false
+SSS_Rank_Completion_Time = 460
+S_Rank_Completion_Time = 470
+A_Rank_Completion_Time = 480
+B_Rank_Completion_Time = 490
+C_Rank_Completion_Time = 500
+D_Rank_Completion_Time = 510
+SSS_STYLE_POINTS_MIN = 39000
+S_STYLE_POINTS_MIN = 37000
+A_STYLE_POINTS_MIN = 35000
+B_STYLE_POINTS_MIN = 34000
+C_STYLE_POINTS_MIN = 33000
+D_STYLE_POINTS_MIN = 32000
+SSS_TOTAL_POINTS_MIN = 38000
+S_TOTAL_POINTS_MIN = 36000
+A_TOTAL_POINTS_MIN = 34000
+B_TOTAL_POINTS_MIN = 32000
+C_TOTAL_POINTS_MIN = 31000
+D_TOTAL_POINTS_MIN = 30000
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_1q7ww")]
 layout_mode = 1
@@ -748,7 +766,8 @@ autoplay = "default"
 environment = ExtResource("43_op0o6")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("25_a508m")
+stream = ExtResource("28_3cser")
+volume_db = -10.0
 autoplay = true
 bus = &"music"
 

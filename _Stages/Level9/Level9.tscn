@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="11_ngp3g"]
 [ext_resource type="TileSet" uid="uid://cbxfw4q52ecva" path="res://_Assets/Environment/TempOcean.tres" id="12_afqn6"]
 [ext_resource type="Texture2D" uid="uid://dmli8i55mkd02" path="res://_Assets/Environment/Updated_Props/Red_Coral.png" id="25_eggto"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_gkxyp"]
 [ext_resource type="Texture2D" uid="uid://ctvcwty57as57" path="res://_Assets/Environment/Updated_Props/Sea_Hole.png" id="29_txapp"]
+[ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="29_txi5o"]
 [ext_resource type="Texture2D" uid="uid://cu2fjgix7g3sf" path="res://_Assets/Environment/Updated_Props/Coral_Fans.png" id="30_txi5o"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://_Assets/Environment/Props/CoralSmall_PROP.png" id="31_oihkf"]
 [ext_resource type="Texture2D" uid="uid://dudo8l1gyv8xp" path="res://_Assets/Environment/Updated_Props/Spindly_Coral.png" id="31_sofns"]
@@ -154,11 +154,29 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_s1607")
 wave2StartTime = 75
-wave3StartTime = 97
-wave4StartTime = 100
-wave5StartTime = 105
-wave6StartTime = 110
+wave3StartTime = 92
+wave4StartTime = 95
+wave5StartTime = 100
+wave6StartTime = 105
 record_footage = false
+SSS_Rank_Completion_Time = 550
+S_Rank_Completion_Time = 530
+A_Rank_Completion_Time = 510
+B_Rank_Completion_Time = 500
+C_Rank_Completion_Time = 480
+D_Rank_Completion_Time = 460
+SSS_STYLE_POINTS_MIN = 38000
+S_STYLE_POINTS_MIN = 37000
+A_STYLE_POINTS_MIN = 36000
+B_STYLE_POINTS_MIN = 35000
+C_STYLE_POINTS_MIN = 34000
+D_STYLE_POINTS_MIN = 33000
+SSS_TOTAL_POINTS_MIN = 37000
+S_TOTAL_POINTS_MIN = 36000
+A_TOTAL_POINTS_MIN = 35000
+B_TOTAL_POINTS_MIN = 34000
+C_TOTAL_POINTS_MIN = 33000
+D_TOTAL_POINTS_MIN = 32000
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_vaj4a")]
 layout_mode = 1
@@ -699,7 +717,8 @@ frame_progress = 0.6672939
 environment = ExtResource("43_yhb1u")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("25_gkxyp")
+stream = ExtResource("29_txi5o")
+volume_db = -10.0
 autoplay = true
 bus = &"music"
 

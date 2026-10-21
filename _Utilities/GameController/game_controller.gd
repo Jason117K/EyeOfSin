@@ -45,11 +45,13 @@ func _input(event:InputEvent) -> void:
 			Global.swap_scenes()
 		# DEBUG progression keys — ALWAYS ON; remove or gate before a release build.
 		# In a level: U = instant S-rank win, Shift+U = instant SSS-rank win.
-		# Outside a level: Ctrl+U = unlock everything (all levels SSS = every star).
+		# Outside a level: Ctrl+U = unlock everything (all levels SSS = every star,
+		# every zombie + synergy discovered in the codex).
 		elif event.keycode == KEY_U and not event.echo:
 			var in_level := current_scenes.size() == 2
 			if not in_level and event.ctrl_pressed:
 				Progress.unlock_all()
+				Discovery.discover_all(ZombieRegistry.SCENES, Global.synergy_catalog)
 				if current_scene != null and current_scene.has_method("refresh_locks"):
 					current_scene.refresh_locks()
 			elif in_level and not event.ctrl_pressed and not get_tree().paused and Global.wave_manager != null:

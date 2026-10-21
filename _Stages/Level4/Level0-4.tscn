@@ -26,7 +26,6 @@
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_60dyi"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="21_rurye"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="21_u00xe"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="22_2i5fe"]
 [ext_resource type="Texture2D" uid="uid://be43mxb3vs0h" path="res://_Assets/Environment/Tilesets/Level1FloorProps.png" id="22_ml5sw"]
 [ext_resource type="Texture2D" uid="uid://bet2srtb0dtqg" path="res://_Assets/Environment/Tilesets/Level1FloorTiles.png" id="23_5ssnv"]
 [ext_resource type="Script" uid="uid://bs3j03wuqkiye" path="res://_Utilities/Grid/tile_map_layer.gd" id="24_6jv8d"]
@@ -65,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://b2570yv5xwfwa" path="res://_Assets/Environment/Props/Objects.png" id="58_hhcjx"]
 [ext_resource type="Texture2D" uid="uid://cutsd2jwatt7y" path="res://_Assets/Environment/Props/Dead_arm_shadow1_1.png" id="59_k4i7f"]
 [ext_resource type="Script" uid="uid://x3g0tevnjlod" path="res://_Stages/Level4/label.gd" id="63_gs3u6"]
+[ext_resource type="AudioStream" uid="uid://by563n6jbvls1" path="res://_Assets/Audio/Music/Shadow in the Marsh.mp3" id="64_mhhhf"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="64_rqakg"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="66_u6smp"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="67_mhhhf"]
@@ -3612,6 +3612,24 @@ wave3StartTime = 90
 wave4StartTime = 105
 record_footage = false
 skip_tutorials = true
+SSS_Rank_Completion_Time = 410
+S_Rank_Completion_Time = 430
+A_Rank_Completion_Time = 450
+B_Rank_Completion_Time = 470
+C_Rank_Completion_Time = 490
+D_Rank_Completion_Time = 510
+SSS_STYLE_POINTS_MIN = 17000
+S_STYLE_POINTS_MIN = 15000
+A_STYLE_POINTS_MIN = 12000
+B_STYLE_POINTS_MIN = 10000
+C_STYLE_POINTS_MIN = 7000
+D_STYLE_POINTS_MIN = 6000
+SSS_TOTAL_POINTS_MIN = 16000
+S_TOTAL_POINTS_MIN = 14000
+A_TOTAL_POINTS_MIN = 11000
+B_TOTAL_POINTS_MIN = 9000
+C_TOTAL_POINTS_MIN = 6000
+D_TOTAL_POINTS_MIN = 5000
 
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false
@@ -3933,7 +3951,8 @@ color = Color(0.3647059, 0.07450981, 0.61960787, 1)
 environment = ExtResource("21_60dyi")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=817263993]
-stream = ExtResource("22_2i5fe")
+stream = ExtResource("64_mhhhf")
+volume_db = -10.0
 autoplay = true
 bus = &"music"
 
