@@ -3745,6 +3745,7 @@ environment = ExtResource("28_1mef3")
 
 [node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
 stream = ExtResource("42_xukng")
+volume_db = -10.0
 autoplay = true
 bus = &"music"
 
@@ -3863,8 +3864,8 @@ texture = SubResource("AtlasTexture_b5hoh")
 position = Vector2(393, 361)
 texture = SubResource("AtlasTexture_nwycs")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

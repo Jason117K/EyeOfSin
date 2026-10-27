@@ -853,7 +853,7 @@ frame_progress = 1.0
 material = SubResource("ShaderMaterial_1eo28")
 position = Vector2(256, 256)
 sprite_frames = ExtResource("10_1qbof")
-animation = &"idle"
+animation = &"spawn"
 autoplay = "spawn"
 script = ExtResource("14_xf387")
 

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dlooruj7v3bo2" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Occulum-Sheet.png" id="5_g4wwy"]
 [ext_resource type="Texture2D" uid="uid://c05bqxnmc2aor" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_SpinalOcculum-Sheet.png" id="6_4woug"]
 [ext_resource type="Texture2D" uid="uid://hdlvccr1qlng" path="res://_Entities/Demons/SpriteSheets/Maw/Maw_Wyrm-Sheet.png" id="7_qyjh8"]
+[ext_resource type="Texture2D" uid="uid://dmotu08wv2ikb" path="res://_Assets/Runes/Maw_RuneSummon_Anim.png" id="8_3vd1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hr7d"]
 atlas = ExtResource("1_3vd1r")
@@ -115,6 +116,34 @@ region = Rect2(64, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_plov3"]
 atlas = ExtResource("7_qyjh8")
 region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmegm"]
+atlas = ExtResource("8_3vd1r")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed8p8"]
+atlas = ExtResource("8_3vd1r")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ce72"]
+atlas = ExtResource("8_3vd1r")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4wwy"]
+atlas = ExtResource("8_3vd1r")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4woug"]
+atlas = ExtResource("8_3vd1r")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyjh8"]
+atlas = ExtResource("8_3vd1r")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbbnv"]
+atlas = ExtResource("8_3vd1r")
+region = Rect2(384, 0, 64, 32)
 
 [resource]
 animations = [{
@@ -253,7 +282,28 @@ animations = [{
 "name": &"idle_Wyrm",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmegm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed8p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ce72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4wwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4woug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyjh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbbnv")
+}],
 "loop": false,
 "name": &"spawn",
 "speed": 12.0

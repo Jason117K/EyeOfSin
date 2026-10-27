@@ -1,7 +1,7 @@
 extends Demon
 
 # Runes are 64x32; single-cell glyphs sit in the left half, Maw's spans both cells.
-const RUNE_OFFSET := Vector2(0, 0)
+var RUNE_OFFSET := Vector2(0, 0)
 const RUNE_TEXTURES := {
 	Global.DEMON_TYPE.CRAWLER: preload("res://_Assets/Runes/Crawler_Rune.png"),
 	Global.DEMON_TYPE.OCCULUM: preload("res://_Assets/Runes/Occulum_Rune.png"),
@@ -38,10 +38,12 @@ func _ready() -> void:
 # draw_rune is false for a Maw's right blocker: the left one draws the wide rune.
 func set_demon_type(new_demon_type : Global.DEMON_TYPE, draw_rune : bool = true)->void:
 	current_demon_type = new_demon_type
+	if current_demon_type == Global.DEMON_TYPE.MAW:
+		RUNE_OFFSET = Vector2(16,0)
 	if rune_sprite != null:
 		rune_sprite.texture = RUNE_TEXTURES.get(new_demon_type) if draw_rune else null
 		rune_sprite.offset = RUNE_OFFSET
-	#print("Current Demon Type Is : ", current_demon_type)
+	print("Current Demon Type Is : ", current_demon_type)
 
 			
 	

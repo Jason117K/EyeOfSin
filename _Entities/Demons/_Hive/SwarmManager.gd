@@ -104,13 +104,15 @@ func spawn_initial_drones() -> void:
 			drone.baal_buff()
 		if is_demo:
 			drone.is_demo = true
-		hive.get_parent().add_child(drone)
+		
 		if is_ultimate:
 			drone.level_up()
 		if hive.is_in_group("Green"):
+			print("add drone to green2")
 			drone.add_to_group("Green")
 		else:
 			drone.add_to_group("Purple")
+		hive.get_parent().add_child(drone)
 		available_drones.append(drone)
 		#print("Avaliable Drones WAS " , available_drones)
 
@@ -282,14 +284,16 @@ func _on_DroneRespawnTimer_timeout() -> void:
 		new_drone.baal_buff()
 	if is_demo:
 		new_drone.is_demo = true		
-	hive.get_parent().add_child(new_drone)
+	
 	if is_ultimate:
 		new_drone.level_up()
 	available_drones.append(new_drone)
 	if hive.is_in_group("Green"):
+		print("add drone to green1")
 		new_drone.add_to_group("Green")
 	else:
 		new_drone.add_to_group("Purple")
+	hive.get_parent().add_child(new_drone)
 
 	var rest_pos := calculate_rest_position(available_drones.size() - 1)
 	drone_rest_positions[new_drone] = rest_pos
