@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bb6yquhrpa8c1" path="res://_UI/PurpleNoClouds_Earth-Sheet.png" id="3_27lfc"]
 [ext_resource type="Shader" uid="uid://dr08vnjf4ly07" path="res://_Stages/LevelSelect/BlurShader.gdshader" id="4_3dt2x"]
 [ext_resource type="FontFile" uid="uid://dptosray0efea" path="res://_Assets/Fonts/EBGaramond-VariableFont_wght.ttf" id="5_sqabr"]
+[ext_resource type="Texture2D" uid="uid://bukmk8vpwgaon" path="res://_Assets/Lock.png" id="6_0tf4u"]
 [ext_resource type="Texture2D" uid="uid://3fm314jw53eh" path="res://screenshots/Level_10_Alternate.jpg" id="6_bgimr"]
 [ext_resource type="Texture2D" uid="uid://krsnf4y03dmr" path="res://screenshots/Level_10.jpg" id="7_4bxa5"]
 [ext_resource type="StyleBox" uid="uid://cpw5skdkhmd7w" path="res://_Stages/LevelSelect/LevelSelectButtonNormal.tres" id="8_pxi70"]
@@ -986,6 +987,12 @@ custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_1_PanelContainer" unique_id=65962690]
+z_index = 1
+position = Vector2(90.00001, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_0tf4u")
+
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_1_PanelContainer" unique_id=761286995]
 layout_mode = 2
 
@@ -1053,6 +1060,12 @@ custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_2_PanelContainer" unique_id=619038313]
+z_index = 1
+position = Vector2(90, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_0tf4u")
+
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_2_PanelContainer" unique_id=1109163164]
 layout_mode = 2
 
@@ -1119,6 +1132,12 @@ theme_override_styles/normal = ExtResource("8_pxi70")
 custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
+
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_3_PanelContainer" unique_id=1207574605]
+z_index = 1
+position = Vector2(90, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_0tf4u")
 
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_3_PanelContainer" unique_id=891260504]
 layout_mode = 2

@@ -249,14 +249,17 @@ static func unlock_all() -> void:
 ## Where the win screen's Next/Continue goes: the Act of the level AFTER the one just
 ## beaten, so finishing an Act's last level lands on the newly unlocked Act.
 static func select_screen_after_win() -> String:
+	#TODO Demo Change Back
+	#return ACT_SELECT_SCREENS[0]
 	if _last_beaten == 0:
 		return ACT_SELECT_SCREENS[0]
 	return ACT_SELECT_SCREENS[act_of_level(mini(_last_beaten + 1, total_levels())) - 1]
 
 
-## Darkens + disables an Act's level panels on a level-select screen and fills each card's
-## best-rank letter. Expects the select-screen naming: Level_<slot>_PanelContainer holding a
-## Level<slot>Button and Level_Vbox/Rank_HBox/RankLetter.
+## Darkens + disables an Act's level panels on a level-select screen, shows each locked card's
+## Lock icon, and fills each card's best-rank letter. Expects the select-screen naming:
+## Level_<slot>_PanelContainer holding a Level<slot>Button, a Lock sprite and
+## Level_Vbox/Rank_HBox/RankLetter.
 static func apply_level_locks(root: Node, act: int) -> void:
 	var first := first_level_of_act(act)
 	for slot in range(1, (ACTS[act - 1] as Array).size() + 1):
@@ -265,8 +268,15 @@ static func apply_level_locks(root: Node, act: int) -> void:
 			push_warning("[PROGRESS] %s has no Level_%d_PanelContainer" % [root.name, slot])
 			continue
 		var level := first + slot - 1
+		var locked := not is_level_unlocked(level)
 		var button := panel.get_node_or_null("Level%dButton" % slot) as BaseButton
-		UiFx.set_locked(panel, button, not is_level_unlocked(level))
+		UiFx.set_locked(panel, button, locked)
+		var lock_icon := panel.get_node_or_null("Lock") as CanvasItem
+		if lock_icon != null:
+			lock_icon.visible = locked
+			# set_locked darkens the whole panel, children included; cancel it on the lock
+			# so the icon reads at full brightness over the darkened card.
+			lock_icon.modulate = Color.WHITE / UiFx.LOCKED_MODULATE if locked else Color.WHITE
 		var rank_letter := panel.get_node_or_null("Level_Vbox/Rank_HBox/RankLetter") as Label
 		if rank_letter != null:
 			var rank := best_rank(level)

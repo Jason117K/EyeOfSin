@@ -183,6 +183,8 @@ which is in **select-screen button order, not folder order** (slot 7 is `Level8.
 `Level7.tscn`). A new level needs a table entry, or its wins log `[PROGRESS] unknown level` and
 aren't recorded. Wins are recorded at one choke point, `WaveManager._win()`, before `level_ended`.
 Select screens darken and disable locked entries via `UiFx.set_locked` and expose `refresh_locks()`.
+Each level card's `Lock` sprite shows only while that level is locked (counter-modulated so it
+stays full brightness over the darkened card).
 Their sorcery-menu button stays locked until `Progress.any_sorcery_unlocked()`. The win screens'
 Next/Continue go to `Progress.select_screen_after_win()`: the Act of the level *after* the one
 beaten, so finishing an Act lands on the next one. Demon unlocks are derived from progress (see
@@ -405,8 +407,9 @@ refactor phases that touch the restart path, buff matching, or tick order.
    score 0, health full, mowers restored, costs reset, no stale connectors.
 8. **Progression:** fresh save → only Act 1 / Level 1 lit. A win unlocks the next level and
    survives a relaunch. Losing or Play Again unlocks nothing. Next after level 9 → Act 2 select,
-   after 14 → Act 3 select. Locked panels stay dark through a Y swap. Score screen shows stars
-   (U → S/2, Shift+U → SSS/3); a worse replay leaves the total unchanged. Level cards show best
+   after 14 → Act 3 select. Locked panels stay dark through a Y swap, and only locked cards
+   show a lock. Score screen shows stars (U → S/2, Shift+U → SSS/3); a worse replay leaves the
+   total unchanged. Level cards show best
    rank or "-". Ability panel: locked sorceries dark and show their requirement on click; levels
    3/4/12/14/15 and 27/33/39/45 stars unlock the right ones. Demon grid: locked demons hidden.
    After the Maw unlocks, toggle 1–5 per dimension; level 12+ menus offer exactly that

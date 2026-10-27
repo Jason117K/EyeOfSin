@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://dr08vnjf4ly07" path="res://_Stages/LevelSelect/BlurShader.gdshader" id="4_hhdlp"]
 [ext_resource type="FontFile" uid="uid://dptosray0efea" path="res://_Assets/Fonts/EBGaramond-VariableFont_wght.ttf" id="5_seoc2"]
 [ext_resource type="Texture2D" uid="uid://3fm314jw53eh" path="res://screenshots/Level_10_Alternate.jpg" id="6_f6ltn"]
+[ext_resource type="Texture2D" uid="uid://bukmk8vpwgaon" path="res://_Assets/Lock.png" id="6_t846v"]
 [ext_resource type="Texture2D" uid="uid://krsnf4y03dmr" path="res://screenshots/Level_10.jpg" id="7_kaqe8"]
 [ext_resource type="StyleBox" uid="uid://cpw5skdkhmd7w" path="res://_Stages/LevelSelect/LevelSelectButtonNormal.tres" id="8_8v3ty"]
 [ext_resource type="Texture2D" uid="uid://df76bimacumcr" path="res://screenshots/Level_11_Alternate.jpg" id="9_t846v"]
@@ -992,6 +993,12 @@ custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer" unique_id=444882145]
+z_index = 1
+position = Vector2(90.00001, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_t846v")
+
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_1_PanelContainer" unique_id=761286995]
 layout_mode = 2
 
@@ -1059,6 +1066,12 @@ custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer" unique_id=1853733322]
+z_index = 1
+position = Vector2(90, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_t846v")
+
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_2_PanelContainer" unique_id=1109163164]
 layout_mode = 2
 
@@ -1125,6 +1138,12 @@ theme_override_styles/normal = ExtResource("8_8v3ty")
 custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
+
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer" unique_id=2064849247]
+z_index = 1
+position = Vector2(90, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_t846v")
 
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_1-3_Container/Level_3_PanelContainer" unique_id=891260504]
 layout_mode = 2
@@ -1197,6 +1216,12 @@ custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
 
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer" unique_id=1001759468]
+z_index = 1
+position = Vector2(90.00001, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_t846v")
+
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_4_PanelContainer" unique_id=893157920]
 layout_mode = 2
 
@@ -1263,6 +1288,12 @@ theme_override_styles/normal = ExtResource("8_8v3ty")
 custom_minimum_size = Vector2(183, 14.265)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x5sr8")
+
+[node name="Lock" type="Sprite2D" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer" unique_id=1696179169]
+z_index = 1
+position = Vector2(90, 80)
+scale = Vector2(0.495, 0.495)
+texture = ExtResource("6_t846v")
 
 [node name="Level_Vbox" type="VBoxContainer" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_2_PanelContainer/Act_2_MarginContainer/Act_2_Vbox/Levels_4-6_Container/Level_5_PanelContainer" unique_id=29265966]
 layout_mode = 2
