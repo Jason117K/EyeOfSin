@@ -10,7 +10,8 @@ extends Area2D
 @export var fast_pick_up_time := 1.5
 var demo_blood_pickup_time := 1.25
 
-@onready var aoe: Area2D = $AOEZone
+@onready var crawler_aoe: Area2D = $Crawler_AOE
+@onready var hive_aoe: Area2D = $Hive_AOE
 @onready var auto_pickup_timer: Timer = $AutoPickUpTimer
 @onready var heal_anim := $HealingAnimSprite
 @onready var demon_manager : Node = get_parent().get_parent().get_node("DemonManager")
@@ -39,7 +40,8 @@ func _ready() -> void:
 	_spawn_tick_msec = Time.get_ticks_msec()
 	animation_player.animation_finished.connect(alt_free_blood)
 	input_pickable = true
-	aoe.set_collision_mask_value(self.collision_mask,true)
+	crawler_aoe.set_collision_mask_value(self.collision_mask,true)
+	hive_aoe.set_collision_mask_value(self.collision_mask,true)
 	#AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ZOMBIE_TAKE_DAMAGE)
 	self.mouse_entered.connect(_on_Blood_mouse_entered)
 	
@@ -55,17 +57,28 @@ func _ready() -> void:
 	#print(self," time at start2 is ", counter, " has scale of ", self.scale)
 	#Must Look For Zombies AND Demons
 	if self.is_in_group("Green"):
-		aoe.set_collision_mask_value(1,false)
-		aoe.set_collision_mask_value(2,false)
-		aoe.set_collision_mask_value(3,true)
-		aoe.set_collision_mask_value(4,false)
-		aoe.set_collision_mask_value(5,true)
+		hive_aoe.set_collision_mask_value(1,false)
+		hive_aoe.set_collision_mask_value(2,false)
+		hive_aoe.set_collision_mask_value(3,true)
+		hive_aoe.set_collision_mask_value(4,false)
+		hive_aoe.set_collision_mask_value(5,true)
+		
+		crawler_aoe.set_collision_mask_value(1,false)
+		crawler_aoe.set_collision_mask_value(2,false)
+		crawler_aoe.set_collision_mask_value(3,true)
+		crawler_aoe.set_collision_mask_value(4,false)
+		crawler_aoe.set_collision_mask_value(5,true)
+		
 	else:
-		aoe.set_collision_mask_value(1,false)
-		aoe.set_collision_mask_value(2,true)
-		aoe.set_collision_mask_value(3,false)
-		aoe.set_collision_mask_value(4,true)
+		hive_aoe.set_collision_mask_value(1,false)
+		hive_aoe.set_collision_mask_value(2,true)
+		hive_aoe.set_collision_mask_value(3,false)
+		hive_aoe.set_collision_mask_value(4,true)
 
+		crawler_aoe.set_collision_mask_value(1,false)
+		crawler_aoe.set_collision_mask_value(2,true)
+		crawler_aoe.set_collision_mask_value(3,false)
+		crawler_aoe.set_collision_mask_value(4,true)
 
 	
 #TODO Add SFX
@@ -128,7 +141,7 @@ func _on_zombie_died(dead_zombie:Zombie)->void:
 
 func crawler_blood_pickup() -> void:
 	#print("Overlapping Areas Is ", aoe.get_overlapping_areas())
-	temp_zombie_container = aoe.get_overlapping_areas()
+	temp_zombie_container = crawler_aoe.get_overlapping_areas()
 	for zombie:Node in temp_zombie_container:
 		if zombie.is_in_group("Zombie"):
 			nearby_zombies.append(zombie)
@@ -216,9 +229,9 @@ func attack_zombie(zombie_to_attack : Zombie) -> void:
 func heal_demons() -> void:
 	##print("Overlapping Areas Is ", aoe.get_overlapping_areas())
 	print(self, "Blood Should Heal Demons")
-	self_modulate = Color(0,0,0,0)
+	anim_sprite.self_modulate = Color(0,0,0,0)
 	self.input_pickable = false 
-	for entity in aoe.get_overlapping_areas():
+	for entity in hive_aoe.get_overlapping_areas():
 		if entity.is_in_group("Demons"):
 			demons_to_heal.append(entity)
 	##print("Demons to heal is ", demons_to_heal)

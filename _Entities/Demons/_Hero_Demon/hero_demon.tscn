@@ -463,7 +463,7 @@ animations = [{
 size = Vector2(120, 120)
 
 [node name="HeroDemon" type="Area2D" unique_id=833493368]
-z_index = 1
+z_index = 2
 script = ExtResource("1_vvhym")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=963704012]

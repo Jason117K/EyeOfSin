@@ -43,7 +43,7 @@ func set_demon_type(new_demon_type : Global.DEMON_TYPE, draw_rune : bool = true)
 	if rune_sprite != null:
 		rune_sprite.texture = RUNE_TEXTURES.get(new_demon_type) if draw_rune else null
 		rune_sprite.offset = RUNE_OFFSET
-	print("Current Demon Type Is : ", current_demon_type)
+	#print("Current Demon Type Is : ", current_demon_type)
 
 			
 	

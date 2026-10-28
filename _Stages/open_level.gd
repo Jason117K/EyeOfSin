@@ -4,9 +4,22 @@ extends Control
 @onready var level_description := $CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer/LevelDescription
 @onready var level_image_earth  := $CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer/LevelTexture
 @onready var level_image_syn  :=  $CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer/LevelTextureAlt
+@onready var show_tutorial_box := $CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer
+@onready var toggle_tutorial_button := $CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer/TutorialVbox/ToggleTutorialButton
+var tutorial_active : bool = true 
 
 var level_earth
 var level_syn 
+
+func _ready() -> void:
+	toggle_tutorial_button.self_modulate = Color("410054")
+	Global.skip_tutorials = !tutorial_active
+
+func set_tutorial(show_tutorial_option : bool = false) -> void:
+	if show_tutorial_option:
+		show_tutorial_box.show()
+	else:
+		show_tutorial_box.hide()
 
 func set_level_title(new_title : String)->void:
 	level_title.text = new_title
@@ -24,3 +37,26 @@ func set_levels(new_earth_level : String, new_syn_level : String) -> void:
 
 func _on_play_button_pressed() -> void:
 	Global.game_controller.change_dual_scenes(level_earth,level_syn)
+	
+
+func _on_toggle_tutorial_button_pressed() -> void:
+	
+	tutorial_active = !tutorial_active
+	
+	if tutorial_active:
+		toggle_tutorial_button.self_modulate = Color("410054")
+	else:
+		
+		toggle_tutorial_button.self_modulate = Color("000000")
+		
+	Global.skip_tutorials = !tutorial_active
+	
+
+	
+	
+	
+	
+	
+	
+	
+	

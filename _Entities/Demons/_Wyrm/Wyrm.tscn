@@ -1020,6 +1020,7 @@ frame_progress = 1.0
 autostart = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=615257564]
+visible = false
 position = Vector2(-1, -2.5)
 shape = SubResource("1")
 
@@ -1133,6 +1134,7 @@ mouse_filter = 1
 texture_normal = ExtResource("25_kf5mr")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1488447784]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=615408492]
@@ -1152,6 +1154,7 @@ sprite_frames = ExtResource("32_ds7ka")
 animation = &"beam"
 
 [node name="BeamUltArea" type="Area2D" parent="." unique_id=1909476947]
+visible = false
 script = ExtResource("32_l4gaf")
 
 [node name="BeamCollision" type="CollisionShape2D" parent="BeamUltArea" unique_id=1832380787]

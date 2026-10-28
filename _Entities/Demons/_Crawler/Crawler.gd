@@ -48,6 +48,9 @@ var canAttackSetTrueOnce: bool = false
 
 @onready var og_range_target_pos = attack_ray.target_position
 
+@onready var arm_1 := $ArmContainer/Arm
+@onready var arm_2 := $ArmContainer/Arm2
+
 signal crawler_ultimate_triggered
 signal crawler_buff_unlocked(buff_to_unlock:String)
 signal is_hovering
@@ -141,9 +144,13 @@ func receive_buff(newDemon:Demon) -> void:
 				spiderling_timer.timeout.connect(_on_spawn_spiderling_timeout)
 				add_child(spiderling_timer)
 				spiderling_timer.start()
-				if $"../Arm" != null:
-					$"../Arm".visible = true 
-					$"../Arm2".visible = true 
+				arm_1.process_mode = Node.PROCESS_MODE_INHERIT
+				arm_2.process_mode = Node.PROCESS_MODE_INHERIT
+				arm_1.show()
+				arm_2.show()
+				#if $"../Arm" != null:
+					#$"../Arm".visible = true 
+					#$"../Arm2".visible = true 
 		
 
 

@@ -36,6 +36,9 @@ extends Demon
 @export var blood_buff_cooldown: float = 0.9
 
 @onready var hive_attack_ray := $DMG_RayCast2D
+@onready var arm_1 := $Arm
+@onready var arm_2 := $Arm2
+
 # --- Constants ---
 const SPINAL_OCCULUM_BUFF_MAX_DRONES = 4
 const OCCULUM_BUFF_MAX_DRONES = 5
@@ -131,7 +134,8 @@ func receive_buff(bufferName:Demon) -> void:
 		unlock_new_buff(demonName)
 		super(demonName)
 		for drone:Node in swarm.get_available_drones():
-			drone.make_drone_glow()
+			pass
+			#drone.make_drone_glow()
 
 		match demonName:
 			"Occulum":
@@ -156,9 +160,13 @@ func receive_buff(bufferName:Demon) -> void:
 				swarm.is_maw_buffed = true
 				for drone:Area2D in swarm.get_all_drones():
 					drone.maw_buff()
-				if $"../Arm" != null:
-					$"../Arm".visible = true 
-					$"../Arm2".visible = true 
+				arm_1.process_mode = Node.PROCESS_MODE_INHERIT
+				arm_2.process_mode = Node.PROCESS_MODE_INHERIT
+				arm_1.show()
+				arm_2.show()
+				#if $"../Arm" != null:
+					#$"../Arm".visible = true 
+					#$"../Arm2".visible = true 
 
 # Isolates async from receive_buff — laser re-init needs physics frames
 func _activate_wyrm_buff() -> void:

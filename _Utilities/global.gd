@@ -216,13 +216,13 @@ func add_mana(mana_to_add:float)->void:
 	ultimate_charge_container.add_mana(mana_to_add)
 
 func disable_ultimate()->void:
-	print("GLOBAL Should DISABLE Ultimate")
+	#print("GLOBAL Should DISABLE Ultimate")
 	if ultimate_charge_container != null:
 		ultimate_charge_container.disable_ult()
 
 
 func enable_ultimate()->void:
-	print("GLOBAL Should Enable Ultimate")
+	#print("GLOBAL Should Enable Ultimate")
 	ultimate_charge_container.enable_ult()
 
 	

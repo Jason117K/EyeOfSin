@@ -39,6 +39,7 @@ var _base_digestion_time := -1.0
 @onready var detection_area: Area2D = $DetectionComponent
 @onready var ogDetectionRadius: float = detectionAreaShape.shape.radius
 @onready var ogDigestTime: float = digestTime
+@onready var range_visual := $PreviewNodes/RangeVisual
 
 # --- State ---
 var tentacles: Array[Tentacle] = []
@@ -151,6 +152,7 @@ func receive_buff(demon) -> void:
 				consume_zombie_group_timer.start()
 			"Maw":
 				pass
+		update_range_preview()
 
 func debuff() -> void:
 	super()
@@ -593,3 +595,9 @@ func _add_ultimate_tentacle() -> void:
 	for this_area in detection_area.get_overlapping_areas():
 		_on_detection_component_area_entered(this_area)
 	_process_queue()
+
+
+func update_range_preview()->void:
+	range_visual.size = Vector2(detectionAreaShape.shape.radius,detectionAreaShape.shape.radius)
+	
+	

@@ -95,6 +95,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_rabkd"]
 radius = 271.27588
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_715s3"]
+radius = 119.1703
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hu5wo"]
 atlas = ExtResource("5_715s3")
 region = Rect2(0, 0, 82, 73)
@@ -308,11 +311,17 @@ process_mode = 1
 wait_time = 9.0
 one_shot = true
 
-[node name="AOEZone" type="Area2D" parent="." unique_id=974004821]
+[node name="Crawler_AOE" type="Area2D" parent="." unique_id=974004821]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AOEZone" unique_id=1480185012]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler_AOE" unique_id=1480185012]
 shape = SubResource("CircleShape2D_rabkd")
+
+[node name="Hive_AOE" type="Area2D" parent="." unique_id=1499892626]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hive_AOE" unique_id=1053788283]
+shape = SubResource("CircleShape2D_715s3")
 
 [node name="HealingAnimSprite" type="AnimatedSprite2D" parent="." unique_id=1658361398]
 sprite_frames = SubResource("SpriteFrames_hmwl7")
@@ -322,6 +331,4 @@ frame_progress = 1.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=47237201]
 libraries/ = SubResource("AnimationLibrary_hmwl7")
 
-[connection signal="area_entered" from="AOEZone" to="." method="_on_heal_zone_area_entered"]
-[connection signal="area_exited" from="AOEZone" to="." method="_on_aoe_zone_area_exited"]
 [connection signal="animation_finished" from="HealingAnimSprite" to="." method="_on_healing_anim_sprite_animation_finished"]

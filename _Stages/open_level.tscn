@@ -41,6 +41,18 @@ corner_radius_bottom_left = 4
 expand_margin_left = 10.0
 expand_margin_right = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81vee"]
+bg_color = Color(0.74, 0.74, 0.74, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="OpenLevel" type="Control" unique_id=1628375336]
 layout_mode = 3
 anchors_preset = 15
@@ -48,6 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_15pr5")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=334161186]
@@ -57,6 +70,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=404491958]
 layout_mode = 2
@@ -64,6 +78,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o73ch")
 
 [node name="Level_Vbox" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1836969504]
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="Level_Label" type="Label" parent="CenterContainer/PanelContainer/Level_Vbox" unique_id=498306819]
 layout_mode = 2
@@ -137,4 +152,28 @@ theme_override_fonts/font = ExtResource("1_o73ch")
 theme_override_font_sizes/font_size = 43
 text = "SSS"
 
+[node name="TutorialMarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox" unique_id=660322737]
+layout_mode = 2
+theme_override_constants/margin_left = 52
+
+[node name="TutorialVbox" type="VBoxContainer" parent="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer" unique_id=384219655]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer/TutorialVbox" unique_id=1114827004]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_o73ch")
+theme_override_font_sizes/font_size = 12
+text = "TUTORIAL"
+
+[node name="ToggleTutorialButton" type="Button" parent="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer/TutorialVbox" unique_id=1874097103]
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_81vee")
+
 [connection signal="pressed" from="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer/TutorialVbox/ToggleTutorialButton" to="." method="_on_toggle_tutorial_button_pressed"]

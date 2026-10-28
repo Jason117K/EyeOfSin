@@ -41,6 +41,10 @@
 [ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="40_dq2o5"]
 [ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="41_78twq"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="41_an04s"]
+[ext_resource type="Script" uid="uid://dke7ech31kspq" path="res://_Entities/Demons/_Crawler/arm_container.gd" id="42_8f1n2"]
+[ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="42_mqfjf"]
+[ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://_Utilities/TentacleDemo/shaders/canvas_group_two_tone.gdshader" id="43_8f1n2"]
+[ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="44_n2212"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -1220,6 +1224,18 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnio3"]
+shader = ExtResource("43_8f1n2")
+shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
+shader_parameter/dark_color = Color(0, 0, 0, 1)
+shader_parameter/shade_ratio = 0.53
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fky01"]
+shader = ExtResource("43_8f1n2")
+shader_parameter/light_color = Color(0.36, 0, 0.048, 1)
+shader_parameter/dark_color = Color(0.01, 0, 0.00383333, 1)
+shader_parameter/shade_ratio = 0.53
+
 [node name="Crawler" type="Area2D" unique_id=675421916 groups=["Demons", "Plants"]]
 z_index = 1
 script = ExtResource("2")
@@ -1273,6 +1289,7 @@ position = Vector2(3, -10)
 sprite_frames = SubResource("SpriteFrames_0n853")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434290327]
+visible = false
 show_behind_parent = true
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
@@ -1297,10 +1314,8 @@ health = 800.0
 z_index = 1
 material = SubResource("ShaderMaterial_4vrps")
 sprite_frames = ExtResource("8_jphsv")
-animation = &"spawn"
+animation = &"idle_Wyrm"
 autoplay = "spawn"
-frame = 6
-frame_progress = 1.0
 flip_h = true
 script = ExtResource("21_ol6r1")
 
@@ -1370,6 +1385,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="BuffNodesComponent" parent="." unique_id=321485823 instance=ExtResource("10")]
+visible = false
 
 [node name="TileAreaCollision" parent="BuffNodesComponent/TileArea1" parent_id_path=PackedInt32Array(321485823, 1583416791) index="0" unique_id=493772299]
 visible = true
@@ -1430,6 +1446,7 @@ mouse_filter = 1
 texture_normal = ExtResource("39_0n853")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=894796709]
+visible = false
 show_behind_parent = true
 position = Vector2(0, 17)
 collision_mask = 0
@@ -1454,9 +1471,73 @@ z_index = 1
 position = Vector2(6, -3)
 texture = ExtResource("41_78twq")
 
+[node name="ArmContainer" type="Node2D" parent="." unique_id=499200471]
+script = ExtResource("42_8f1n2")
+
+[node name="Arm" parent="ArmContainer" unique_id=31777929 node_paths=PackedStringArray("target") instance=ExtResource("42_mqfjf")]
+process_mode = 4
+visible = false
+z_index = 1
+position = Vector2(-11, -3)
+target = NodePath("../ArmTarget")
+max_length = 40.0
+wave_amplitude = 2.0
+wave_frequency = 1.0
+wave_speed = 2.0
+line_width = 4.0
+
+[node name="SubViewport" parent="ArmContainer/Arm/OutlinedSubViewportContainer" parent_id_path=PackedInt32Array(31777929, 919528686) index="0" unique_id=1073598609]
+render_target_update_mode = 0
+
+[node name="ShadowLine" parent="ArmContainer/Arm/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(31777929, 648045698) index="0" unique_id=1872142284]
+points = PackedVector2Array(112.595, 131.435, 114.261665, 132.06, 115.92834, 132.685, 117.595, 133.31, 119.261665, 133.935, 120.92834, 134.56, 122.595, 135.185, 124.261665, 135.81, 125.92834, 136.435, 127.595, 137.06, 129.26167, 137.685, 130.92833, 138.31, 132.595, 138.935, 134.26167, 139.56, 135.92833, 140.185, 137.595, 140.81, 139.26167, 141.435, 140.92833, 142.06, 142.595, 142.685, 144.26167, 143.31, 145.92833, 143.935, 147.595, 144.56, 149.26167, 145.185, 150.92833, 145.81, 152.595, 146.435)
+width = 4.0
+
+[node name="TwoToneCanvasGroup" parent="ArmContainer/Arm/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
+material = SubResource("ShaderMaterial_rnio3")
+
+[node name="BaseLine" parent="ArmContainer/Arm/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
+points = PackedVector2Array(112.595, 126.435, 114.261665, 126.435, 115.92834, 126.435, 117.595, 126.435, 119.261665, 126.435, 120.92834, 126.435, 122.595, 126.435, 124.261665, 126.435, 125.92834, 126.435, 127.595, 126.435, 129.26167, 126.435, 130.92833, 126.435, 132.595, 126.435, 134.26167, 126.435, 135.92833, 126.435, 137.595, 126.435, 139.26167, 126.435, 140.92833, 126.435, 142.595, 126.435, 144.26167, 126.435, 145.92833, 126.435, 147.595, 126.435, 149.26167, 126.435, 150.92833, 126.435, 152.595, 126.435)
+width = 4.0
+
+[node name="Arm2" parent="ArmContainer" unique_id=1354696986 node_paths=PackedStringArray("target") instance=ExtResource("42_mqfjf")]
+process_mode = 4
+visible = false
+z_index = 1
+position = Vector2(-11, -3)
+target = NodePath("../ArmTarget2")
+max_length = 40.0
+wave_speed = 2.0
+line_width = 4.0
+
+[node name="SubViewport" parent="ArmContainer/Arm2/OutlinedSubViewportContainer" parent_id_path=PackedInt32Array(1354696986, 919528686) index="0" unique_id=1073598609]
+render_target_update_mode = 0
+
+[node name="ShadowLine" parent="ArmContainer/Arm2/OutlinedSubViewportContainer/SubViewport/ShadowCanvasGroup" parent_id_path=PackedInt32Array(1354696986, 648045698) index="0" unique_id=1872142284]
+points = PackedVector2Array(112.595, 131.435, 114.261665, 132.06, 115.92834, 132.685, 117.595, 133.31, 119.261665, 133.935, 120.92834, 134.56, 122.595, 135.185, 124.261665, 135.81, 125.92834, 136.435, 127.595, 137.06, 129.26167, 137.685, 130.92833, 138.31, 132.595, 138.935, 134.26167, 139.56, 135.92833, 140.185, 137.595, 140.81, 139.26167, 141.435, 140.92833, 142.06, 142.595, 142.685, 144.26167, 143.31, 145.92833, 143.935, 147.595, 144.56, 149.26167, 145.185, 150.92833, 145.81, 152.595, 146.435)
+width = 4.0
+
+[node name="TwoToneCanvasGroup" parent="ArmContainer/Arm2/OutlinedSubViewportContainer/SubViewport" index="1" unique_id=2001686121]
+material = SubResource("ShaderMaterial_fky01")
+
+[node name="BaseLine" parent="ArmContainer/Arm2/OutlinedSubViewportContainer/SubViewport/TwoToneCanvasGroup" index="0" unique_id=1903972213]
+points = PackedVector2Array(112.595, 126.435, 114.261665, 126.435, 115.92834, 126.435, 117.595, 126.435, 119.261665, 126.435, 120.92834, 126.435, 122.595, 126.435, 124.261665, 126.435, 125.92834, 126.435, 127.595, 126.435, 129.26167, 126.435, 130.92833, 126.435, 132.595, 126.435, 134.26167, 126.435, 135.92833, 126.435, 137.595, 126.435, 139.26167, 126.435, 140.92833, 126.435, 142.595, 126.435, 144.26167, 126.435, 145.92833, 126.435, 147.595, 126.435, 149.26167, 126.435, 150.92833, 126.435, 152.595, 126.435)
+width = 4.0
+
+[node name="ArmTarget" parent="ArmContainer" unique_id=2000335342 instance=ExtResource("44_n2212")]
+visible = false
+position = Vector2(-40, 5)
+
+[node name="ArmTarget2" parent="ArmContainer" unique_id=577845707 instance=ExtResource("44_n2212")]
+visible = false
+position = Vector2(21, -10)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="frame_changed" from="AnimatedSpriteComponent" to="ArmContainer" method="_on_animated_sprite_component_frame_changed"]
 [connection signal="timeout" from="Timer" to="AnimatedSpriteComponent" method="_on_timer_timeout"]
 
 [editable path="BuffNodesComponent"]
+[editable path="ArmContainer/Arm"]
+[editable path="ArmContainer/Arm2"]

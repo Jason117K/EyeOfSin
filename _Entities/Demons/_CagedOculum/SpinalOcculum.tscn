@@ -1097,6 +1097,7 @@ syn_shield_position = Vector2(-2, -3)
 hit_flash_duration = 0.25
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=738747531 node_paths=PackedStringArray("polygon", "line")]
+visible = false
 position = Vector2(0, 11.999999)
 scale = Vector2(0.705, 0.145)
 script = ExtResource("2_ogidr")
@@ -1164,6 +1165,7 @@ position = Vector2(57.5, 1)
 shape = SubResource("RectangleShape2D_ktms3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2004042112]
+visible = false
 shape = SubResource("1")
 
 [node name="ProtectiveRib" type="Sprite2D" parent="." unique_id=1890625180]
@@ -1173,7 +1175,7 @@ texture = ExtResource("37_fluxn")
 [node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="." unique_id=1105710504]
 material = SubResource("ShaderMaterial_sygpr")
 sprite_frames = ExtResource("8_emrru")
-animation = &"spawn"
+animation = &"idle_Occulum"
 autoplay = "spawn"
 script = ExtResource("15_kwpry")
 
@@ -1277,6 +1279,7 @@ position = Vector2(0, -25)
 texture = ExtResource("28_egyvc")
 
 [node name="EraseButton" type="TextureButton" parent="." unique_id=185795330]
+visible = false
 offset_left = 4.0
 offset_top = -36.0
 offset_right = 46.0
@@ -1286,6 +1289,7 @@ mouse_filter = 1
 texture_normal = ExtResource("29_r8bpw")
 
 [node name="EraseMouseArea" type="Area2D" parent="." unique_id=1928357118]
+visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EraseMouseArea" unique_id=2080345614]
@@ -1296,6 +1300,7 @@ shape = SubResource("RectangleShape2D_rvtdc")
 sprite_frames = SubResource("SpriteFrames_ktms3")
 
 [node name="RibBuffArea" type="Area2D" parent="." unique_id=755833329]
+visible = false
 
 [node name="RibBuffCollision" type="CollisionShape2D" parent="RibBuffArea" unique_id=28585346]
 position = Vector2(0, -3.5)

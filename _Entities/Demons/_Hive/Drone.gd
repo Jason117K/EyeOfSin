@@ -142,7 +142,8 @@ func level_up() -> void:
 	max_health *= 2
 	attack_damage *= 2
 	base_attack_damage *= 2
-	setAnimation(String(animatedSpriteComp.animation).trim_suffix("_ultimate"))
+	if animatedSpriteComp != null:
+		setAnimation(String(animatedSpriteComp.animation).trim_suffix("_ultimate"))
 
 func make_drone_glow() -> void:
 	animatedSpriteComp.make_glow()

@@ -210,6 +210,8 @@ func set_level_details(level_number:int)->void:
 	#open_level_screen.set_level_images(get_level_images(level_number))
 	open_level_screen.show()
 	act_scroll_container.modulate = Color(1,1,1,0)
+	open_level_screen.set_tutorial(Progress.is_level_beaten(level_number))
+	
 	match level_number:
 		1:
 			open_level_screen.set_level_title(level_1_label.text)
@@ -331,6 +333,7 @@ func _on_level_8_pressed() -> void:
 func _on_level_9_pressed() -> void:
 	#Global.game_controller.change_dual_scenes(level9, level9_alt)
 	set_level_details(9)
+	
 	
 	
 	

@@ -153,8 +153,6 @@ func receive_buff(newDemon) -> void:
 			"Occulum":
 				pass
 			"Crawler":
-
-				
 				_set_blood_wait_time(crawlerBloodWaitTime)
 				bloodTimer.start()
 			"SpinalOcculum":

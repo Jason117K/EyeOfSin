@@ -407,7 +407,7 @@ attack_range = 20
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1401582092]
 material = SubResource("ShaderMaterial_10gu7")
 sprite_frames = SubResource("18")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 script = ExtResource("3")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
