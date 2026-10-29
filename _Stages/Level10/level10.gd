@@ -30,9 +30,13 @@ const TUTORIAL_EXPLAIN_SYN_MONOLITH_4 = "res://_Assets/Text/TextFiles/Tutorial_E
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
+@onready var music_controller : AudioStreamPlayer = $AudioStreamPlayer
 
 var gameStarted := false
 var syn_monolith_demo_scene := load("res://_UI/GameDemonstrations/syn_monolith_demo.tscn")
+
+
+
 
 #region Tutorial Step Definitions
 func _setup_tutorial() -> void:
@@ -69,6 +73,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		
 #region Lifecycle
 func _ready() -> void:
+	music_controller.play_calm_1()
 	Global.current_act = Global.CURRENT_ACT.ACT_2
 	Global.enable_ultimate()
 	level_title = tr("LEVEL_TITLE_0_10")
@@ -101,7 +106,7 @@ func _ready() -> void:
 
 	#finish_ready()
 
-#TODO Re-Implement Rohan 
+
 func _configure_waves() -> void:
 	pass
 	#zombie_spawner_1._build_pool(0)

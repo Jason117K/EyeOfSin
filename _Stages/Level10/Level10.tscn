@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dvy3qckbu82ue" path="res://_Stages/Level10/level10.gd" id="1_ywaoo"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_07bbq"]
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="2_xukng"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="3_2erop"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_usloo"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_0k43l"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_a3djo"]
@@ -3611,6 +3612,11 @@ wave4StartTime = 105
 wave5StartTime = 103
 record_footage = false
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1461448860]
+stream = ExtResource("42_xukng")
+volume_db = -10.0
+script = ExtResource("3_2erop")
+
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("2_xukng")]
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_07bbq")]
@@ -3742,12 +3748,6 @@ visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1955658257]
 environment = ExtResource("28_1mef3")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("42_xukng")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("30_lqlcu")]
 active_shake_time = 0.2
