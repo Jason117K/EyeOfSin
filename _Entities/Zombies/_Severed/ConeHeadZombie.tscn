@@ -177,7 +177,8 @@ frame_progress = 1.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=904310645]
 material = SubResource("31")
 sprite_frames = ExtResource("9_bkie4")
-animation = &"death"
+animation = &"Walk"
+frame_progress = 0.24297586
 flip_h = true
 script = ExtResource("12")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)

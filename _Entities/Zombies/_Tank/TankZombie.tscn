@@ -265,34 +265,34 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jijd5")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_t4bgl")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_jpxbd")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_jw3ku")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_4cbm4")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_yem08")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_b8fp0")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_lcm16")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dfbc3")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_nwyfv")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_sdgrb")
 }, {
 "duration": 1.0,
@@ -313,24 +313,24 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o3pi0")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_ucgrn")
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 20.0
+"speed": 17.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_1x2dv")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("AtlasTexture_0a8uh")
 }, {
-"duration": 1.0,
+"duration": 1.8,
 "texture": SubResource("AtlasTexture_l5q52")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_jml6e")
 }, {
 "duration": 1.0,
@@ -369,7 +369,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xfvok")
 }],
-"loop": false,
+"loop": true,
 "name": &"LaunchZombie",
 "speed": 20.0
 }, {
@@ -427,16 +427,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vkifl")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("AtlasTexture_tgwle")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_6nnov")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_5b2am")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_ui7dn")
 }, {
 "duration": 1.0,
@@ -548,6 +548,7 @@ shape_type = 2
 size = Vector2(166.09952, 166.09952)
 rx = 83.04976
 ry = 83.04976
+metadata/_select_hint_ = true
 
 [node name="Fill" type="Polygon2D" parent="HighlightCircle" unique_id=742254146]
 color = Color(1, 1, 1, 0)
@@ -568,9 +569,9 @@ position = Vector2(16.087, -26.525002)
 rotation = 3.14159
 scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_vsg7n")
-animation = &"LaunchZombie"
-frame = 15
-frame_progress = 1.0
+animation = &"Walk"
+frame = 1
+frame_progress = 0.035984542
 script = ExtResource("16_w1ird")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 

@@ -188,7 +188,7 @@ func tick(delta: float) -> void:
 		if attack_ray.is_colliding():
 			var collider : Node = attack_ray.get_collider()
 			if collider:
-				print(parent_zombie, " Its 77 collding with ", collider.name )
+				#print(parent_zombie, " Its 77 collding with ", collider.name )
 				if collider.is_in_group(target_group):
 					if collider.has_method("demon_minion_busy"):
 						##print("Calling Demon 77 Minion Busy On ", collider)

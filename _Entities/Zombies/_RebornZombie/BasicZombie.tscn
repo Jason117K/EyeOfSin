@@ -285,19 +285,19 @@ region = Rect2(0, 165, 62, 33)
 [sub_resource type="SpriteFrames" id="11"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("12")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("13")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("14")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("15")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("16")
 }, {
 "duration": 1.0,
@@ -308,7 +308,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -317,7 +317,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("3")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("4")
 }, {
 "duration": 1.0,
@@ -329,7 +329,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("7")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("8")
 }, {
 "duration": 1.0,
@@ -343,19 +343,19 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("21")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("22")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("23")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("24")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("25")
 }, {
 "duration": 1.0,
@@ -366,7 +366,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebAttack",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -375,7 +375,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("29")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("30")
 }, {
 "duration": 1.0,
@@ -387,7 +387,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("33")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("34")
 }, {
 "duration": 1.0,
@@ -398,7 +398,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebWalk",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 0.5,
@@ -510,7 +510,8 @@ shape = SubResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
 sprite_frames = SubResource("11")
-animation = &"Attack"
+animation = &"WebWalk"
+frame_progress = 0.8742077
 flip_h = true
 script = ExtResource("6")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)

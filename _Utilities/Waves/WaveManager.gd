@@ -2,6 +2,7 @@
 class_name WaveManager extends Node2D
 
 signal wave_started(wave_index: int)
+signal wave_spawning_finished(wave_index: int)
 signal all_waves_complete
 signal level_ended
 
@@ -23,6 +24,7 @@ signal level_ended
 var can_start: bool = true
 
 var _spawners: Array = []
+var _spawners_spawning_current_wave: Array = []
 var _wave_previews: Array = [Node]
 var _current_wave: int = -1
 var _total_waves: int = 0
@@ -91,7 +93,9 @@ func setup_level() -> void:
 			preview.set_green()
 
 		spawner.all_waves_exhausted.connect(_on_spawner_all_waves_exhausted)
-		
+		spawner.wave_exhausted.connect(_on_spawner_wave_spawned.bind(spawner))
+		spawner.all_waves_exhausted.connect(_on_spawner_wave_spawned.bind(spawner))
+
 	if not take_damage_area.area_entered.is_connected(_on_damage_area_entered):
 		take_damage_area.connect("area_entered", _on_damage_area_entered)
 		
@@ -164,11 +168,15 @@ func _start_wave(index: int) -> void:
 		preview.hide_preview()
 
 	# Tell every spawner to begin this wave
+	_spawners_spawning_current_wave.clear()
 	for spawner:Node in _spawners:
 		if index < spawner.get_wave_count():
+			_spawners_spawning_current_wave.append(spawner)
 			spawner.begin_wave(index)
-	
+
 	wave_started.emit(index)
+	if _spawners_spawning_current_wave.is_empty():
+		wave_spawning_finished.emit(index)
 
 	# Schedule next wave (if not the last and delay is positive)
 	if index < wave_delays.size():
@@ -211,6 +219,14 @@ func _show_preview_for_next_wave() -> void:
 			else:
 				if preview.is_green:
 					preview.show()
+
+
+func _on_spawner_wave_spawned(spawner: Node) -> void:
+	if not _spawners_spawning_current_wave.has(spawner):
+		return
+	_spawners_spawning_current_wave.erase(spawner)
+	if _spawners_spawning_current_wave.is_empty():
+		wave_spawning_finished.emit(_current_wave)
 
 
 func _on_spawner_all_waves_exhausted() -> void:

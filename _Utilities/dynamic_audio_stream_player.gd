@@ -1,4 +1,4 @@
-extends AudioStreamPlayer
+class_name DynamicAudioStreamPlayer extends AudioStreamPlayer
 
 @export var calm_1_start : float = 0.0
 @export var calm_1_end : float = 40.0

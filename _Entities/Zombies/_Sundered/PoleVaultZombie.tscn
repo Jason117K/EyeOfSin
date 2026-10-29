@@ -305,19 +305,19 @@ region = Rect2(512, 0, 64, 32)
 [sub_resource type="SpriteFrames" id="9"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("60")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("61")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("62")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("63")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("64")
 }, {
 "duration": 1.0,
@@ -328,7 +328,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -337,37 +337,37 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("46")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("47")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("48")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("49")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("50")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("51")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("52")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("53")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("54")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("55")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("56")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("57")
 }, {
 "duration": 1.0,
@@ -378,7 +378,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Vault",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -387,25 +387,25 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("68")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("69")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("70")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("71")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("72")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("73")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("74")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("75")
 }],
 "loop": true,
@@ -413,16 +413,16 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("76")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("77")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("78")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("79")
 }, {
 "duration": 1.0,
@@ -436,7 +436,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebAttack",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -445,7 +445,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("84")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("85")
 }, {
 "duration": 1.0,
@@ -457,7 +457,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("88")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("89")
 }, {
 "duration": 1.0,
@@ -535,7 +535,7 @@ shape = SubResource("1")
 material = SubResource("44")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
-animation = &"Attack"
+animation = &"Walk"
 flip_h = true
 script = ExtResource("14_wnede")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
