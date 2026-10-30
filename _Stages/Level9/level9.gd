@@ -222,7 +222,7 @@ func show_zombie_tutorial(_unlocked_zombie : String)->void:
 	_start_explain_sundered()
 	
 func _on_wave_started(wave_index: int) -> void:
-	pass
+	super(wave_index)
 	#if wave_index == 0:
 		#go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion

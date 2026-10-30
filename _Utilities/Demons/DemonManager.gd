@@ -93,7 +93,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 			if selected_demon_scene != null:
 				var temp_instance = selected_demon_scene.instantiate()
-				
+				if "Alternate" in get_parent().name :
+					temp_instance.add_to_group("Green")
+				get_parent().get_node("GameLayer").add_child(temp_instance)
+				#get_parent().get_node("GameLayer").call_deferred("add_child", temp_instance)
+				#temp_instance.hide()
 				var cost :float= temp_instance.get_cost()
 				##print("Temp instance is ", temp_instance.get_name(), " with a cost of " , cost)
 
@@ -101,6 +105,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				temp_instance.queue_free()
 				# early return if no blood points
 				if blood_points < cost:
+					print("Blood Points is ", blood_points)
+					print("Cost is ", cost)
 					selection_menu.clear_preview()
 					Global.notification_bar.set_text(tr("UI_CANNOT_AFFORD_DEMON"))
 					selection_menu.deselect_demon()

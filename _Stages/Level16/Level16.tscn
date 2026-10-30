@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="45_xknko"]
 [ext_resource type="Texture2D" uid="uid://8200lqforree" path="res://_Assets/Environment/Act_3/Island_Mushrooms_2.png" id="46_gkt6v"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="46_wtk4g"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="48_n8fph"]
 
 [sub_resource type="Resource" id="Resource_l16p1w1e1"]
 script = ExtResource("9_pfvk1")
@@ -5704,6 +5705,11 @@ wave5StartTime = 105
 wave6StartTime = 115
 record_footage = false
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=2852040]
+stream = ExtResource("37_qdoa2")
+volume_db = -10.0
+script = ExtResource("48_n8fph")
+
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("2_r8rtg")]
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("3_c52le")]
@@ -5822,12 +5828,6 @@ tile_set = SubResource("TileSet_ftufw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1955658257]
 environment = ExtResource("42_hmvos")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("37_qdoa2")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("44_fkjfh")]
 

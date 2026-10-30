@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://dw20g4kjh7vff" path="res://_Assets/Environment/Act2/Office/OfficeChairFaceLeft.png" id="57_heax3"]
 [ext_resource type="Texture2D" uid="uid://dxgw10u4d0kno" path="res://_Assets/Environment/Act2/Office/OfficeDeskStuff.png" id="58_q3d17"]
 [ext_resource type="Texture2D" uid="uid://b0ix5vm6vyv0i" path="res://_Assets/Environment/Act2/Office/OfficeWaterCooler.png" id="59_qlrnu"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="64_hci8y"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="90_l14pwd"]
 [ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="91_l14pwe"]
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="92_l14pwth"]
@@ -6877,6 +6878,11 @@ wave5StartTime = 105
 wave6StartTime = 110
 record_footage = false
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1189431514]
+stream = ExtResource("43_p84i3")
+volume_db = -10.0
+script = ExtResource("64_hci8y")
+
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("92_l14pwth")]
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_i3rw8")]
@@ -7002,12 +7008,6 @@ visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1955658257]
 environment = ExtResource("38_i7fwg")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("43_p84i3")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("40_87wjl")]
 

@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://bcagkfrrfe7ix" path="res://_Stages/Level2/level_0_2.gd" id="1_te6yt"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_1uoo0"]
 [ext_resource type="Texture2D" uid="uid://r25iqil7jmud" path="res://_Entities/Demons/_Demon_Icons/SpinalOcculum_32x32.png" id="2_jn235"]
+[ext_resource type="AudioStream" uid="uid://c4aj3ofcpoilm" path="res://_Assets/Audio/Music/Lucretia.mp3" id="3_2tanc"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_28mt4"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_sg366"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_6v8rd"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_acmis"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_3rh8l"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="6_r12fy"]
@@ -30,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://dh20r0dicsso1" path="res://_Assets/Environment/Tilesets/Level1FloorProps2.png" id="21_3mnb7"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="21_kmsuw"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="22_oidxx"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_71bjb"]
 [ext_resource type="Texture2D" uid="uid://w74nfa4bai7c" path="res://_Assets/Environment/Props/BookProp1.png" id="27_w8is8"]
 [ext_resource type="Texture2D" uid="uid://d3rsdc3gf1i0i" path="res://_Assets/Environment/Props/BookProp3.png" id="28_cycam"]
 [ext_resource type="Texture2D" uid="uid://bbrlm3dg1tnxx" path="res://_Assets/Environment/Props/Ritual-Dodeca.png" id="29_37eso"]
@@ -3734,6 +3735,11 @@ B_TOTAL_POINTS_MIN = 6000
 C_TOTAL_POINTS_MIN = 5000
 D_TOTAL_POINTS_MIN = 4000
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=815087821]
+stream = ExtResource("3_2tanc")
+volume_db = -10.0
+script = ExtResource("4_6v8rd")
+
 [node name="UILayer" parent="." unique_id=1538099874 instance=ExtResource("20_17c31")]
 layout_mode = 1
 
@@ -4020,11 +4026,6 @@ position = Vector2(705, 92)
 sprite_frames = SubResource("SpriteFrames_gktj4")
 autoplay = "default"
 flip_h = true
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=2012856353]
-stream = ExtResource("25_71bjb")
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("40_lrpgx")]
 

@@ -147,6 +147,9 @@ const ALL_DEMON_CONTAINERS : Array [String]= ["Occulum", "SpinalOcculum", "Wyrm"
 const ALL_EXTRA_BUTTONS = []
 # Matches process/size_limit in screenshots/*.jpg.import.
 const SCREENSHOT_MAX_WIDTH := 640
+const FINAL_WAVES_COUNT := 2
+const CALM_ALIVE_ZOMBIE_THRESHOLD := 4
+const CALM_CHECK_INTERVAL := 0.5
 
 var auto_advance : bool = false 
 
@@ -156,9 +159,14 @@ var new_power_unlocked := true
 
 var is_first_screenshot := true 
 
+var music_controller : DynamicAudioStreamPlayer
+
 @onready var extended_new_power_description : String
 
 func _ready() -> void:
+	if !self.isGreenDimension:
+		music_controller = $MusicController
+		music_controller.play_calm_1()
 	Global.adjust_ui_layer()
 	Global.reset_all_variables()
 	ScoreManager.reset()
@@ -181,6 +189,7 @@ func _ready() -> void:
 		hide_ui_elements()
 	if take_screenshot:
 		take_level_screenshot()
+	waveManager.wave_spawning_finished.connect(_on_wave_spawning_finished)
 
 func take_level_screenshot() -> void:
 
@@ -443,9 +452,35 @@ func hide_ui_elements()->void:
 func show_ui_elements()->void:
 	pass
 	
+func _on_wave_started(wave_index: int) -> void:
+	if !isGreenDimension:
+		if _is_final_wave(wave_index):
+			music_controller.play_intense_2()
+		else:
+			music_controller.play_intense_1()
+			
+func _is_final_wave(wave_index: int) -> bool:
+	return wave_index >= waveManager.get_wave_count() - FINAL_WAVES_COUNT
+		
+func _on_wave_spawning_finished(wave_index: int) -> void:
+	if _is_last_wave(wave_index):
+		return
+	_play_calm_once_zombies_thin_out(wave_index)
 	
-	
-	
+
+func _is_last_wave(wave_index: int) -> bool:
+	return wave_index == waveManager.get_wave_count() - 1	
+
+
+func _play_calm_once_zombies_thin_out(wave_index: int) -> void:
+	if waveManager.get_current_wave() != wave_index:
+		return
+	if get_tree().get_nodes_in_group("Alive-Enemies").size() < CALM_ALIVE_ZOMBIE_THRESHOLD:
+		music_controller.play_calm_2()
+	else:
+		get_tree().create_timer(CALM_CHECK_INTERVAL, false).timeout.connect(
+			_play_calm_once_zombies_thin_out.bind(wave_index))	
+			
 # ============================================================
 # Tutorial Step System 
 # ============================================================

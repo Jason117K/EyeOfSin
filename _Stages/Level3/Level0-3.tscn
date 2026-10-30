@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cf23o6rna857e" path="res://_Stages/Level3/level_0_3.gd" id="1_3xvj4"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_k82tg"]
+[ext_resource type="AudioStream" uid="uid://c4aj3ofcpoilm" path="res://_Assets/Audio/Music/Lucretia.mp3" id="2_q7mac"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_6yqwi"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="3_wqtmm"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="4_1a115"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_gehqo"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_o6keo"]
@@ -42,7 +44,6 @@
 [ext_resource type="Texture2D" uid="uid://f14xq5mmwpkh" path="res://_Assets/Environment/Tilesets/Earth3SpecialTile1Alt.png" id="24_lwhto"]
 [ext_resource type="PackedScene" uid="uid://dsy2hsulw3a7q" path="res://_Common/Misc/white_rectangle.tscn" id="24_qsfc0"]
 [ext_resource type="Texture2D" uid="uid://br72hmo02lek" path="res://_Assets/Environment/Tilesets/Earth3SpecialTile1Alt2.png" id="25_c7r4k"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="25_qjdmx"]
 [ext_resource type="Texture2D" uid="uid://dt0doyptw5ye6" path="res://_Assets/Environment/Tilesets/Earth3SpecialTile2.png" id="27_w02yh"]
 [ext_resource type="Texture2D" uid="uid://8kk2f4tvad3l" path="res://_Assets/Environment/Props/Grave_shadow1_4.png" id="42_yf6p8"]
 [ext_resource type="Texture2D" uid="uid://c5lgi2bplvvrv" path="res://_Assets/Environment/Props/Grave_shadow1_1.png" id="43_xyvkd"]
@@ -3755,6 +3756,11 @@ B_TOTAL_POINTS_MIN = 23000
 C_TOTAL_POINTS_MIN = 22000
 D_TOTAL_POINTS_MIN = 21000
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1744388649]
+stream = ExtResource("2_q7mac")
+volume_db = -10.0
+script = ExtResource("3_wqtmm")
+
 [node name="DemonManager" parent="." unique_id=237884262 instance=ExtResource("2_k82tg")]
 blood_points = 600
 
@@ -4182,11 +4188,6 @@ color = Color(0, 0, 0, 0.0784314)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1695133031]
 environment = ExtResource("21_fwot8")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=31771245]
-stream = ExtResource("25_qjdmx")
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1679277948]
 position = Vector2(370, 208)

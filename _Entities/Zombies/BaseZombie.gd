@@ -47,7 +47,7 @@ var speedComp : ZombieSpeedRefCountedComponent
 var attackComp : ZombieAttackRefCountedComponent
 @onready var animatedSprite : ZombieSpriteComp = $AnimatedSprite2D
 @onready var hurtbox := $HurtBoxComponent
-@onready var attack_ray := $DMGRayCast2D
+@onready var attack_ray : RayCast2D = $DMGRayCast2D
 @onready var bloodHit := $BloodHit
 @onready var fire_fx := $FireFX
 @onready var syn_mark_sprite := $SynMark

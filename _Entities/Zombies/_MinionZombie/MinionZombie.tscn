@@ -300,16 +300,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iak5i")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_8rbvq")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_u5iov")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_lxjun")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_2dbm0")
 }, {
 "duration": 1.0,
@@ -320,7 +320,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -385,13 +385,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hc51w")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_w1u6j")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_upbw6")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_wqiap")
 }, {
 "duration": 1.0,
@@ -408,16 +408,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ny87j")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_0tpbp")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_n2a7f")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_1rusd")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_uv8tp")
 }, {
 "duration": 1.0,
@@ -428,7 +428,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebAttack",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -440,13 +440,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_slu7b")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_opb6i")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_b11px")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_oouri")
 }, {
 "duration": 1.0,
@@ -571,7 +571,8 @@ shape = SubResource("8")
 material = SubResource("ShaderMaterial_6m1t7")
 position = Vector2(30, 3)
 sprite_frames = SubResource("7")
-animation = &"Walk"
+animation = &"WebWalk"
+frame_progress = 0.42903504
 flip_h = true
 script = ExtResource("11_8rbvq")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)

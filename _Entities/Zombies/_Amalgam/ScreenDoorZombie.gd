@@ -44,6 +44,7 @@ func transform() -> void:
 	anim_sprite_comp.flip_h = true
 	anim_sprite_comp._ready()
 	anim_sprite_comp.play()
+	attack_ray.target_position = Vector2(-11,0)
 	#compManager.setMaterial(altSprite)
 	erase_blood_hit(extra_blood_hit)
 	healthComp.resetHealth(second_form_health)

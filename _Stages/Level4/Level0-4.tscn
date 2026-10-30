@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://drs76ldec5lpu" path="res://_Entities/SwapAbilities/Swap_Unlock_32x32.png" id="2_mhhhf"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_xdg5i"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_0d8pj"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_orevn"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="4_xaddq"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_07eun"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="7_albfy"]
@@ -3631,6 +3632,11 @@ B_TOTAL_POINTS_MIN = 9000
 C_TOTAL_POINTS_MIN = 6000
 D_TOTAL_POINTS_MIN = 5000
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1603788744]
+stream = ExtResource("64_mhhhf")
+volume_db = -10.0
+script = ExtResource("4_orevn")
+
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false
 layout_mode = 1
@@ -3949,12 +3955,6 @@ color = Color(0.3647059, 0.07450981, 0.61960787, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1696146911]
 environment = ExtResource("21_60dyi")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=817263993]
-stream = ExtResource("64_mhhhf")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("64_rqakg")]
 

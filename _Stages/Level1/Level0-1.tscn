@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://wgl64y1kabbp" path="res://_Entities/Demons/_Demon_Icons/Occulum_32x32.png" id="2_6ct43"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_umbnb"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_17ad1"]
+[ext_resource type="AudioStream" uid="uid://c4aj3ofcpoilm" path="res://_Assets/Audio/Music/Lucretia.mp3" id="3_ob1pr"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="4_07bn3"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_qpk63"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_wjf0q"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="5_fhu8f"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="6_6ct43"]
@@ -42,7 +44,6 @@
 [ext_resource type="Texture2D" uid="uid://bjwxrvjpwvxbp" path="res://_Assets/Environment/Props/Blood_Stain_Anim_2-Sheet.png" id="35_ejdxa"]
 [ext_resource type="Texture2D" uid="uid://jmiumnuidyj1" path="res://_Assets/Environment/Props/rifts-2-Sheet.png" id="36_v1k3w"]
 [ext_resource type="Texture2D" uid="uid://bptwf4ix4fj61" path="res://_Assets/Environment/Props/rifts-alt-Sheet.png" id="37_8ymh3"]
-[ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="38_g88e2"]
 [ext_resource type="Texture2D" uid="uid://b4g25fs8qx38m" path="res://_Stages/Level1/PurpleEarthCrystal.png" id="39_fb4rh"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_umbnb"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="42_07bn3"]
@@ -3675,6 +3676,11 @@ B_TOTAL_POINTS_MIN = 1000
 C_TOTAL_POINTS_MIN = 900
 D_TOTAL_POINTS_MIN = 800
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=715300829]
+stream = ExtResource("3_ob1pr")
+volume_db = -10.0
+script = ExtResource("4_qpk63")
+
 [node name="UILayer" parent="." unique_id=1087850493 instance=ExtResource("2_umbnb")]
 visible = false
 layout_mode = 1
@@ -3977,11 +3983,6 @@ texture = ExtResource("39_fb4rh")
 position = Vector2(690, 274)
 texture = ExtResource("39_fb4rh")
 flip_h = true
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1251482687]
-stream = ExtResource("38_g88e2")
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("40_umbnb")]
 

@@ -30,11 +30,7 @@ const TUTORIAL_EXPLAIN_SYN_MONOLITH_4 = "res://_Assets/Text/TextFiles/Tutorial_E
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
-@onready var music_controller : DynamicAudioStreamPlayer = $AudioStreamPlayer
 
-const FINAL_WAVES_COUNT := 2
-const CALM_ALIVE_ZOMBIE_THRESHOLD := 4
-const CALM_CHECK_INTERVAL := 0.5
 
 var gameStarted := false
 var syn_monolith_demo_scene := load("res://_UI/GameDemonstrations/syn_monolith_demo.tscn")
@@ -77,7 +73,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 		
 #region Lifecycle
 func _ready() -> void:
-	music_controller.play_calm_1()
+
 	Global.current_act = Global.CURRENT_ACT.ACT_2
 	Global.enable_ultimate()
 	level_title = tr("LEVEL_TITLE_0_10")
@@ -89,7 +85,7 @@ func _ready() -> void:
 	#waveManager.wave_delays = [60.0, 100.0]
 	waveManager.wave_delays = [wave2StartTime,wave3StartTime,wave4StartTime,wave5StartTime]
 	waveManager.wave_started.connect(_on_wave_started)
-	waveManager.wave_spawning_finished.connect(_on_wave_spawning_finished)
+	
 	_configure_waves()
 
 	setup_demon_selection_menu()
@@ -283,18 +279,12 @@ func _on_tooltip_hidden() -> void:
 
 	
 func _on_wave_started(wave_index: int) -> void:
-	if _is_final_wave(wave_index):
-		music_controller.play_intense_2()
-	else:
-		music_controller.play_intense_1()
+	super(wave_index)
 	#if wave_index == 0:
 		#go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 
 
-func _on_wave_spawning_finished(wave_index: int) -> void:
-	if _is_last_wave(wave_index):
-		return
-	_play_calm_once_zombies_thin_out(wave_index)
+
 #endregion
 
 
@@ -307,14 +297,7 @@ func _is_last_wave(wave_index: int) -> bool:
 	return wave_index == waveManager.get_wave_count() - 1
 
 
-func _play_calm_once_zombies_thin_out(wave_index: int) -> void:
-	if waveManager.get_current_wave() != wave_index:
-		return
-	if get_tree().get_nodes_in_group("Alive-Enemies").size() < CALM_ALIVE_ZOMBIE_THRESHOLD:
-		music_controller.play_calm_2()
-	else:
-		get_tree().create_timer(CALM_CHECK_INTERVAL, false).timeout.connect(
-			_play_calm_once_zombies_thin_out.bind(wave_index))
+
 #endregion
 
 

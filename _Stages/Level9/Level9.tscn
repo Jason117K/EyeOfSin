@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://chrc81k0ij7t8"]
 
 [ext_resource type="Script" uid="uid://ryijaqqcbqc4" path="res://_Stages/Level9/level9.gd" id="1_s1607"]
+[ext_resource type="AudioStream" uid="uid://dbuw471mvfhu4" path="res://_Assets/Audio/Music/Quandry.mp3" id="2_sofns"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_vaj4a"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="3_3w08x"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_xws6q"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_5ra5s"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_3ij1o"]
@@ -14,7 +16,6 @@
 [ext_resource type="TileSet" uid="uid://cbxfw4q52ecva" path="res://_Assets/Environment/TempOcean.tres" id="12_afqn6"]
 [ext_resource type="Texture2D" uid="uid://dmli8i55mkd02" path="res://_Assets/Environment/Updated_Props/Red_Coral.png" id="25_eggto"]
 [ext_resource type="Texture2D" uid="uid://ctvcwty57as57" path="res://_Assets/Environment/Updated_Props/Sea_Hole.png" id="29_txapp"]
-[ext_resource type="AudioStream" uid="uid://det1jqlflbl3j" path="res://_Assets/Audio/Eye of Syn Boss Battle (New Edits).mp3" id="29_txi5o"]
 [ext_resource type="Texture2D" uid="uid://cu2fjgix7g3sf" path="res://_Assets/Environment/Updated_Props/Coral_Fans.png" id="30_txi5o"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://_Assets/Environment/Props/CoralSmall_PROP.png" id="31_oihkf"]
 [ext_resource type="Texture2D" uid="uid://dudo8l1gyv8xp" path="res://_Assets/Environment/Updated_Props/Spindly_Coral.png" id="31_sofns"]
@@ -177,6 +178,11 @@ A_TOTAL_POINTS_MIN = 35000
 B_TOTAL_POINTS_MIN = 34000
 C_TOTAL_POINTS_MIN = 33000
 D_TOTAL_POINTS_MIN = 32000
+
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1875919713]
+stream = ExtResource("2_sofns")
+volume_db = -10.0
+script = ExtResource("3_3w08x")
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_vaj4a")]
 layout_mode = 1
@@ -715,12 +721,6 @@ frame_progress = 0.6672939
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1955658257]
 environment = ExtResource("43_yhb1u")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("29_txi5o")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("45_go3hr")]
 

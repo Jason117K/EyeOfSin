@@ -25,6 +25,8 @@ const TUTORIAL_EXPLAIN_SUNDERED = "res://_Assets/Text/TextFiles/ZombieDescriptio
 @onready var zombie_spawner_7 := $GameLayer/ZombieSpawner7
 @onready var hbox := demonSelectionMenu.get_node("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
 
+
+
 const TUTORIAL_EXPLAIN_SKULL_TILE := "res://_Assets/Text/TextFiles/Tutorial_Explain_Skull_Tile.txt"
 const TUTORIAL_EXPLAIN_PORTALS := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals.txt"
 const TUTORIAL_EXPLAIN_PORTALS_2 := "res://_Assets/Text/TextFiles/Tutorial_Explain_Portals_2.txt"
@@ -231,7 +233,7 @@ func show_zombie_tutorial(_unlocked_zombie : String)->void:
 	_start_explain_sundered()
 	
 func _on_wave_started(wave_index: int) -> void:
-	pass
+	super(wave_index)
 	#if wave_index == 0:
 		#go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion

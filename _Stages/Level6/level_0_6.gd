@@ -304,7 +304,7 @@ func _on_wyrm_placed(grid_pos: Vector2) -> void:
 	go_to_step("GAME_READY")
 		
 func _on_wave_started(wave_index: int) -> void:
-	pass
+	super(wave_index)
 	#if wave_index == 0:
 		#go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion

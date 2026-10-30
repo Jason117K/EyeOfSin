@@ -216,7 +216,7 @@ func show_zombie_tutorial(unlocked_zombie : String)->void:
 			toolTips.set_basic_tutorial_text(TUTORIAL_EXPLAIN_TANK, true)
 	
 func _on_wave_started(wave_index: int) -> void:
-	pass
+	super(wave_index)
 	#if wave_index == 0:
 		#go_to_step("EXPLAIN_AMALGAM_ZOMBIE")
 #endregion

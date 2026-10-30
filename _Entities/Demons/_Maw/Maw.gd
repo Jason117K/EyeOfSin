@@ -63,6 +63,7 @@ signal maw_buff_unlocked(buff_to_unlock:String)
 
 func _ready() -> void:
 	super()
+	
 	current_demon_type = Global.DEMON_TYPE.MAW
 	_init_collision_mask(self, false)
 	#print("Og Detection Radius is ", ogDetectionRadius)
@@ -542,6 +543,7 @@ func set_demo_digest() -> void:
 func finish_spawn() -> void:
 	super()
 	show_tentacles()
+	update_range_preview()
 
 func show_tentacles() -> void:
 	tentacle1.visible = true
@@ -598,6 +600,6 @@ func _add_ultimate_tentacle() -> void:
 
 
 func update_range_preview()->void:
-	range_visual.size = Vector2(detectionAreaShape.shape.radius,detectionAreaShape.shape.radius)
+	range_visual.size = Vector2(detectionAreaShape.shape.radius * 2,detectionAreaShape.shape.radius * 2) 
 	
 	

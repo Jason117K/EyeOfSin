@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cyhp61il501u1" path="res://_Stages/Level8/level8.gd" id="1_ayrsk"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_1q7ww"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_pqjlm"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="3_xoy3f"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_0faky"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_tx0oi"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="6_woog2"]
@@ -233,6 +234,11 @@ A_TOTAL_POINTS_MIN = 34000
 B_TOTAL_POINTS_MIN = 32000
 C_TOTAL_POINTS_MIN = 31000
 D_TOTAL_POINTS_MIN = 30000
+
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=576797177]
+stream = ExtResource("28_3cser")
+volume_db = -10.0
+script = ExtResource("3_xoy3f")
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_1q7ww")]
 layout_mode = 1
@@ -764,12 +770,6 @@ autoplay = "default"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1955658257]
 environment = ExtResource("43_op0o6")
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("28_3cser")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("45_twaj3")]
 

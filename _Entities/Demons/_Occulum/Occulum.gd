@@ -101,6 +101,7 @@ func _ready() -> void:
 
 	all_synergies = Global.all_occulum_synergies
 	special_description_file = get_special_description_file(all_synergies,"Base")
+	print("Occulum Ready")
 
 func hide_old_preview()->void:
 	#print("Occulum Hide Old Preview")
@@ -129,6 +130,7 @@ func get_cost() -> float:
 	#15,25
 	
 	# This Occulum's own dimension (is_green is set before placement asks the cost).
+	print("IS Green IS ", is_green)
 	cost = cost_for_count(Global.getOcculumCount(is_green))
 	return cost 
 

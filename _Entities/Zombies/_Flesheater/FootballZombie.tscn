@@ -235,22 +235,22 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x5n0p")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_o5kil")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_5ut6p")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("AtlasTexture_nihc1")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("AtlasTexture_ae3ds")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_qij6q")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_fogvx")
 }, {
 "duration": 1.0,
@@ -261,7 +261,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -284,28 +284,28 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_djok7")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_t5kd2")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": SubResource("AtlasTexture_aevdq")
 }, {
-"duration": 1.0,
+"duration": 1.4,
 "texture": SubResource("AtlasTexture_t1x5w")
 }, {
-"duration": 1.0,
+"duration": 1.1,
 "texture": SubResource("AtlasTexture_006ks")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_xpq4k")
 }, {
-"duration": 1.0,
+"duration": 0.9,
 "texture": SubResource("AtlasTexture_jhrc4")
 }, {
 "duration": 1.0,
@@ -316,7 +316,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebAttack",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -339,7 +339,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"WebWalk",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [node name="Flesheater" type="Area2D" unique_id=1502349723 groups=["Zombie"]]
@@ -351,7 +351,6 @@ health = 450
 healthRegen = 7.0
 should_health_regen = true
 time_between_health_regen = 2
-speed = 16.0
 attack_power = 60
 bloodWorth = 50.0
 fire_fix_position = Vector2(9, -10)
@@ -407,6 +406,7 @@ material = SubResource("ShaderMaterial_oaedh")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
 animation = &"WebWalk"
+frame_progress = 0.18677203
 script = ExtResource("10_g8toj")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 

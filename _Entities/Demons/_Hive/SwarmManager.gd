@@ -108,7 +108,7 @@ func spawn_initial_drones() -> void:
 		if is_ultimate:
 			drone.level_up()
 		if hive.is_in_group("Green"):
-			print("add drone to green2")
+			#print("add drone to green2")
 			drone.add_to_group("Green")
 		else:
 			drone.add_to_group("Purple")
@@ -289,7 +289,7 @@ func _on_DroneRespawnTimer_timeout() -> void:
 		new_drone.level_up()
 	available_drones.append(new_drone)
 	if hive.is_in_group("Green"):
-		print("add drone to green1")
+		#print("add drone to green1")
 		new_drone.add_to_group("Green")
 	else:
 		new_drone.add_to_group("Purple")

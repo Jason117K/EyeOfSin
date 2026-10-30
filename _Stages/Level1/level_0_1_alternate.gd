@@ -42,7 +42,7 @@ func wave_exhausted() -> void:
 	wave_1_completed = true
 	
 func _on_wave_started(wave_index: int) -> void:
-
+	super(wave_index)
 		
 	match wave_index:
 		0:

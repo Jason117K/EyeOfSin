@@ -278,6 +278,7 @@ func _on_hive_placed(_grid_pos: Vector2) -> void:
 
 
 func _on_wave_started(wave_index: int) -> void:
+	super(wave_index)
 	match wave_index:
 		0: go_to_step("EXPLAIN_LANCER_ZOMBIE")
 		1: go_to_step("EXPLAIN_ERUPTER_ZOMBIE")

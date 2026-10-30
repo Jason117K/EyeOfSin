@@ -529,6 +529,7 @@ func _on_spinalOcculum_placed(grid_pos: Vector2) -> void:
 
 
 func _on_wave_started(wave_index: int) -> void:
+	super(wave_index)
 	match wave_index:
 		0:
 			#print("Sussy1")

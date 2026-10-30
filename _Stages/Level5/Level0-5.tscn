@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_pkv84"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_51x2f"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="4_pkv84"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_vs3h5"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_fpxyx"]
 [ext_resource type="Script" uid="uid://dpe7du2tkhlt0" path="res://_Utilities/Waves/WaveEntry.gd" id="8_8dhvv"]
 [ext_resource type="Texture2D" uid="uid://bxxx2jnjrsyfy" path="res://_Assets/Environment/Tilesets/SpecialTile2-Green.png" id="10_ljad3"]
@@ -3647,6 +3648,11 @@ B_TOTAL_POINTS_MIN = 23000
 C_TOTAL_POINTS_MIN = 20000
 D_TOTAL_POINTS_MIN = 17000
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=648665266]
+stream = ExtResource("66_8dhvv")
+volume_db = -10.0
+script = ExtResource("4_vs3h5")
+
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1
 
@@ -3971,12 +3977,6 @@ color = Color(0, 0, 0, 0.0784314)
 [node name="ToolTips" parent="." unique_id=1587344709 instance=ExtResource("21_k4d0o")]
 visible = false
 layout_mode = 1
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=1328218008]
-stream = ExtResource("66_8dhvv")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("24_3au0f")]
 

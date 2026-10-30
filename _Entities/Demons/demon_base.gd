@@ -201,9 +201,11 @@ func _ready() -> void:
 	
 	if self.is_in_group("Green"):
 		is_green = true 
+		print("On this Demon, is greent is ", is_green)
 		my_active_dimension = Global.game_controller.get_green_dimension()
 	else:
 		is_green = false 
+		print("On this Demon, is greenf is ", is_green)
 		my_active_dimension = Global.game_controller.get_purple_dimension()
 		
 	ScoreManager.level_ended.connect(broadcast_time_alive)

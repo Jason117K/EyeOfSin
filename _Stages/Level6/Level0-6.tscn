@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_7nw23"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_lk4we"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_0g5v1"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_ykdo4"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_bik1u"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="5_lk4we"]
 [ext_resource type="Resource" uid="uid://i2ubkdlb3dw" path="res://_Stages/WaveData/waveOfReborn.tres" id="6_3q86g"]
@@ -3784,6 +3785,11 @@ B_TOTAL_POINTS_MIN = 17000
 C_TOTAL_POINTS_MIN = 16000
 D_TOTAL_POINTS_MIN = 15000
 
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=575056376]
+stream = ExtResource("66_07b5c")
+volume_db = -10.0
+script = ExtResource("4_ykdo4")
+
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
 visible = false
 layout_mode = 1
@@ -4094,12 +4100,6 @@ environment = ExtResource("21_au3v8")
 [node name="ToolTips" parent="." unique_id=423481821 instance=ExtResource("21_07b0m")]
 visible = false
 layout_mode = 1
-
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=221994638]
-stream = ExtResource("66_07b5c")
-volume_db = -10.0
-autoplay = true
-bus = &"music"
 
 [node name="Camera2D" parent="." unique_id=1729019829 instance=ExtResource("44_3q86g")]
 position = Vector2(370, 208)
