@@ -16,7 +16,12 @@ func _on_area_entered(area: Area2D) -> void:
 			set_disabled()
 
 func set_disabled()->void:
-	
+
 	self.monitoring = false
 	is_disabled = true
-	
+
+
+func rearm()->void:
+	is_disabled = false
+	set_deferred("monitoring", true)
+

@@ -463,6 +463,8 @@ func _is_final_wave(wave_index: int) -> bool:
 	return wave_index >= waveManager.get_wave_count() - FINAL_WAVES_COUNT
 		
 func _on_wave_spawning_finished(wave_index: int) -> void:
+	if self.isGreenDimension:
+		return
 	if _is_last_wave(wave_index):
 		return
 	_play_calm_once_zombies_thin_out(wave_index)

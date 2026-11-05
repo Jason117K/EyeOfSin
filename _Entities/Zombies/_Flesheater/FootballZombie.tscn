@@ -405,8 +405,9 @@ shape = SubResource("1")
 material = SubResource("ShaderMaterial_oaedh")
 position = Vector2(0, -2)
 sprite_frames = SubResource("9")
-animation = &"WebWalk"
-frame_progress = 0.18677203
+animation = &"Attack"
+frame = 2
+frame_progress = 0.2985306
 script = ExtResource("10_g8toj")
 targetGlowColor = Color(0.788235, 0, 0.0509804, 1)
 

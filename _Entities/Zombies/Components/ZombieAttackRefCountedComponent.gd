@@ -70,7 +70,7 @@ func attack_demon(collider:Node) -> void:
 
 	is_attacking = true
 	target_demon = collider
-	print("Target Demon Name is ", target_demon.name)
+	#print("Target Demon Name is ", target_demon.name)
 	#print("I am " , self.parent.name)
 	zombieSprite.speed_scale = base_anim_duration * parent_zombie.attack_speed
 	#print("Now Attack Demon")

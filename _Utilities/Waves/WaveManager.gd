@@ -77,6 +77,7 @@ func setup_level() -> void:
 	_spawners = get_tree().get_nodes_in_group("ZombieSpawners")
 
 	for detector in all_lane_detectors:
+		detector.rearm()
 		if not detector.zombie_detected.is_connected(launch_lawnmower):
 			detector.zombie_detected.connect(launch_lawnmower)
 		

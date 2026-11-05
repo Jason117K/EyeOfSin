@@ -245,7 +245,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ReanimatorHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=1506510671]
-visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -4
@@ -270,7 +269,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AmalgamHbox" type="HBoxContainer" parent="ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer" unique_id=337988947]
-visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = -2
