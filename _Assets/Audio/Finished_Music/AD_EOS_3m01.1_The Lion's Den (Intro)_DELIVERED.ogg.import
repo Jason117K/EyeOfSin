@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4pprag02k6wp"
+path="res://.godot/imported/AD_EOS_3m01.1_The Lion's Den (Intro)_DELIVERED.ogg-29112c01e317df7f1dd758b12ae759fd.oggvorbisstr"
+
+[deps]
+
+source_file="res://_Assets/Audio/Finished_Music/AD_EOS_3m01.1_The Lion's Den (Intro)_DELIVERED.ogg"
+dest_files=["res://.godot/imported/AD_EOS_3m01.1_The Lion's Den (Intro)_DELIVERED.ogg-29112c01e317df7f1dd758b12ae759fd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ryijaqqcbqc4" path="res://_Stages/Level9/level9.gd" id="1_s1607"]
 [ext_resource type="Texture2D" uid="uid://cva35fu0n3j51" path="res://_Entities/Demons/Cards/Hero_Demon_CARD-Black.png" id="2_3w08x"]
-[ext_resource type="AudioStream" uid="uid://dbuw471mvfhu4" path="res://_Assets/Audio/Music/Quandry.mp3" id="2_sofns"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_vaj4a"]
 [ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="3_3w08x"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_xws6q"]
@@ -184,7 +183,6 @@ C_TOTAL_POINTS_MIN = 33000
 D_TOTAL_POINTS_MIN = 32000
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1875919713]
-stream = ExtResource("2_sofns")
 volume_db = -10.0
 script = ExtResource("3_3w08x")
 

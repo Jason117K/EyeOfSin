@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4qwyma1frkvu"
+path="res://.godot/imported/AD_EOS_3m04_Fighting Stance_DELIVERED.ogg-e613073c032507cb0b375e91e4db7390.oggvorbisstr"
+
+[deps]
+
+source_file="res://_Assets/Audio/Finished_Music/AD_EOS_3m04_Fighting Stance_DELIVERED.ogg"
+dest_files=["res://.godot/imported/AD_EOS_3m04_Fighting Stance_DELIVERED.ogg-e613073c032507cb0b375e91e4db7390.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

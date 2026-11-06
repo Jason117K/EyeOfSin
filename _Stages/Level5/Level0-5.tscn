@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dym7nudn0quv8" path="res://_Assets/Sprites/Wyrm.png" id="2_dph4f"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="2_e2mf6"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_uuukh"]
+[ext_resource type="AudioStream" uid="uid://bb4q8rciik3fg" path="res://_Assets/Audio/Finished_Music/AD_EOS_1m03_Shadow in the Marsh_DELIVERED.ogg" id="3_dph4f"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_e2mf6"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_pkv84"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_51x2f"]
@@ -69,7 +70,6 @@
 [ext_resource type="Texture2D" uid="uid://cci1m6lpfeyk8" path="res://_Assets/Environment/Props/PurpleDeadTree3.png" id="61_m4bcc"]
 [ext_resource type="Texture2D" uid="uid://b2570yv5xwfwa" path="res://_Assets/Environment/Props/Objects.png" id="62_sp1j0"]
 [ext_resource type="Texture2D" uid="uid://cutsd2jwatt7y" path="res://_Assets/Environment/Props/Dead_arm_shadow1_1.png" id="63_cd1p6"]
-[ext_resource type="AudioStream" uid="uid://by563n6jbvls1" path="res://_Assets/Audio/Music/Shadow in the Marsh.mp3" id="66_8dhvv"]
 
 [sub_resource type="Resource" id="Resource_gtg2i"]
 script = ExtResource("4_pkv84")
@@ -3649,9 +3649,16 @@ C_TOTAL_POINTS_MIN = 20000
 D_TOTAL_POINTS_MIN = 17000
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=648665266]
-stream = ExtResource("66_8dhvv")
+stream = ExtResource("3_dph4f")
 volume_db = -10.0
 script = ExtResource("4_vs3h5")
+calm_1_end = 84.0
+calm_2_start = 0.0
+calm_2_end = 0.0
+intense_1_start = 33.0
+intense_1_end = 112.0
+intense_2_start = 0.0
+intense_2_end = 0.0
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1

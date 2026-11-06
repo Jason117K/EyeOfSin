@@ -66,10 +66,19 @@ func play_calm_1() -> void:
 	_play_section(calm_1_start, calm_1_end)
 
 func play_calm_2() -> void:
-	_play_section(calm_2_start, calm_2_end)
+	if _section_exists(calm_2_start, calm_2_end):
+		_play_section(calm_2_start, calm_2_end)
+	else:
+		play_calm_1()
 
 func play_intense_1() -> void:
 	_play_section(intense_1_start, intense_1_end)
 
 func play_intense_2() -> void:
-	_play_section(intense_2_start, intense_2_end)
+	if _section_exists(intense_2_start, intense_2_end):
+		_play_section(intense_2_start, intense_2_end)
+	else:
+		play_intense_1()
+
+func _section_exists(start: float, end: float) -> bool:
+	return not is_zero_approx(start) and not is_zero_approx(end)

@@ -1402,7 +1402,7 @@ B_TOTAL_POINTS_MIN = 33000
 C_TOTAL_POINTS_MIN = 32000
 D_TOTAL_POINTS_MIN = 31000
 
-[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=571399529]
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=659263476]
 stream = ExtResource("47_lblo5")
 volume_db = -10.0
 script = ExtResource("3_b84ei")

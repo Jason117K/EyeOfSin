@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://8f6u42ck4bpg" path="res://_Stages/Level4/level_0_4.gd" id="1_xw2pb"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_60dyi"]
 [ext_resource type="Texture2D" uid="uid://drs76ldec5lpu" path="res://_Entities/SwapAbilities/Swap_Unlock_32x32.png" id="2_mhhhf"]
+[ext_resource type="AudioStream" uid="uid://bb4q8rciik3fg" path="res://_Assets/Audio/Finished_Music/AD_EOS_1m03_Shadow in the Marsh_DELIVERED.ogg" id="3_orto8"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_xdg5i"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_0d8pj"]
 [ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_orevn"]
@@ -65,7 +66,6 @@
 [ext_resource type="Texture2D" uid="uid://b2570yv5xwfwa" path="res://_Assets/Environment/Props/Objects.png" id="58_hhcjx"]
 [ext_resource type="Texture2D" uid="uid://cutsd2jwatt7y" path="res://_Assets/Environment/Props/Dead_arm_shadow1_1.png" id="59_k4i7f"]
 [ext_resource type="Script" uid="uid://x3g0tevnjlod" path="res://_Stages/Level4/label.gd" id="63_gs3u6"]
-[ext_resource type="AudioStream" uid="uid://by563n6jbvls1" path="res://_Assets/Audio/Music/Shadow in the Marsh.mp3" id="64_mhhhf"]
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="64_rqakg"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="66_u6smp"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="67_mhhhf"]
@@ -3633,9 +3633,16 @@ C_TOTAL_POINTS_MIN = 6000
 D_TOTAL_POINTS_MIN = 5000
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1603788744]
-stream = ExtResource("64_mhhhf")
+stream = ExtResource("3_orto8")
 volume_db = -10.0
 script = ExtResource("4_orevn")
+calm_1_end = 84.0
+calm_2_start = 0.0
+calm_2_end = 0.0
+intense_1_start = 33.0
+intense_1_end = 112.0
+intense_2_start = 0.0
+intense_2_end = 0.0
 
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false

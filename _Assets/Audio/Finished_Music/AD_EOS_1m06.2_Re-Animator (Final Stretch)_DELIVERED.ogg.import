@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://diiablxhqalb6"
+path="res://.godot/imported/AD_EOS_1m06.2_Re-Animator (Final Stretch)_DELIVERED.ogg-384c9691239255f745b08e2ba7e40433.oggvorbisstr"
+
+[deps]
+
+source_file="res://_Assets/Audio/Finished_Music/AD_EOS_1m06.2_Re-Animator (Final Stretch)_DELIVERED.ogg"
+dest_files=["res://.godot/imported/AD_EOS_1m06.2_Re-Animator (Final Stretch)_DELIVERED.ogg-384c9691239255f745b08e2ba7e40433.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

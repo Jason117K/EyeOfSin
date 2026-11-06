@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://e80sp6dkrrfk" path="res://_UI/UltCharge_Full.png" id="2_ykdo4"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_7nw23"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_lk4we"]
+[ext_resource type="AudioStream" uid="uid://bb4q8rciik3fg" path="res://_Assets/Audio/Finished_Music/AD_EOS_1m03_Shadow in the Marsh_DELIVERED.ogg" id="3_ykdo4"]
 [ext_resource type="PackedScene" uid="uid://bteegsg6ig7de" path="res://_Utilities/Waves/WavePreview.tscn" id="4_0g5v1"]
 [ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_ykdo4"]
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="5_bik1u"]
@@ -76,7 +77,6 @@
 [ext_resource type="Texture2D" uid="uid://cci1m6lpfeyk8" path="res://_Assets/Environment/Props/PurpleDeadTree3.png" id="61_jo51v"]
 [ext_resource type="Texture2D" uid="uid://b2570yv5xwfwa" path="res://_Assets/Environment/Props/Objects.png" id="62_q3lls"]
 [ext_resource type="Texture2D" uid="uid://cutsd2jwatt7y" path="res://_Assets/Environment/Props/Dead_arm_shadow1_1.png" id="63_07tke"]
-[ext_resource type="AudioStream" uid="uid://by563n6jbvls1" path="res://_Assets/Audio/Music/Shadow in the Marsh.mp3" id="66_07b5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07b5c"]
 texture = ExtResource("7_nn467")
@@ -3786,9 +3786,16 @@ C_TOTAL_POINTS_MIN = 16000
 D_TOTAL_POINTS_MIN = 15000
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=575056376]
-stream = ExtResource("66_07b5c")
+stream = ExtResource("3_ykdo4")
 volume_db = -10.0
 script = ExtResource("4_ykdo4")
+calm_1_end = 33.0
+calm_2_start = 0.0
+calm_2_end = 0.0
+intense_1_start = 33.0
+intense_1_end = 84.0
+intense_2_start = 112.0
+intense_2_end = 240.0
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
 visible = false

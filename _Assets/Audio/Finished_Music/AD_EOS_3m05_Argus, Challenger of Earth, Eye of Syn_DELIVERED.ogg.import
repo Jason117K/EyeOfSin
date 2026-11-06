@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://da1wqnludx6ji"
+path="res://.godot/imported/AD_EOS_3m05_Argus, Challenger of Earth, Eye of Syn_DELIVERED.ogg-a3420eced1dcb24bd98633ab3343497c.oggvorbisstr"
+
+[deps]
+
+source_file="res://_Assets/Audio/Finished_Music/AD_EOS_3m05_Argus, Challenger of Earth, Eye of Syn_DELIVERED.ogg"
+dest_files=["res://.godot/imported/AD_EOS_3m05_Argus, Challenger of Earth, Eye of Syn_DELIVERED.ogg-a3420eced1dcb24bd98633ab3343497c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

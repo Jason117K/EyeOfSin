@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csemfaik1yuro"
+path="res://.godot/imported/AD_EOS_2m01_Newfound Rhythm_DELIVERED.ogg-193657a41aa54fe4f8870176a2719a12.oggvorbisstr"
+
+[deps]
+
+source_file="res://_Assets/Audio/Finished_Music/AD_EOS_2m01_Newfound Rhythm_DELIVERED.ogg"
+dest_files=["res://.godot/imported/AD_EOS_2m01_Newfound Rhythm_DELIVERED.ogg-193657a41aa54fe4f8870176a2719a12.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
