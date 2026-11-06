@@ -45,6 +45,7 @@ var is_baal_buffed := false
 var is_demo := false
 # Hive ultimate: double health and damage, "_ultimate" animations. Permanent.
 var is_leveled_up := false
+var drone_mana_to_add := 1 
 
 @onready var animatedSpriteComp := $AnimatedSprite2D  # RefCounted to Sprite2D Comp
 
@@ -338,6 +339,7 @@ func _on_attack_timer_timeout() -> void:
 		if distance <= attack_range:
 			var hit := attack_damage * (baal_damage_multiplier if is_baal_buffed else 1.0)
 			current_target.take_damage(false,hit,false)
+			Global.add_mana(drone_mana_to_add)
 
 
 func get_is_in_combat() -> bool:

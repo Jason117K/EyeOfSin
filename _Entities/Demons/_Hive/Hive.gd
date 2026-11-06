@@ -17,6 +17,7 @@ extends Demon
 @export var drone_baal_health_multiplier := 2.0
 @export var drone_spinal_occulum_buffed_health := 200
 @export var drone_spinal_occulum_buffed_max_health := 200
+@export var drone_mana_to_add := 2
 
 @export var projectile_cooldown: float = 3
 @export var projectile_auto_fire := false

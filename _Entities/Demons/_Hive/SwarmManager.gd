@@ -125,6 +125,7 @@ func spawn_initial_drones() -> void:
 		else:
 			drone.add_to_group("Purple")
 		hive.get_parent().add_child(drone)
+		drone.drone_mana_to_add = hive.drone_mana_to_add
 		available_drones.append(drone)
 		if is_blood_demon:
 			make_blood_drones()
@@ -308,6 +309,7 @@ func _on_DroneRespawnTimer_timeout() -> void:
 	else:
 		new_drone.add_to_group("Purple")
 	hive.get_parent().add_child(new_drone)
+	new_drone.drone_mana_to_add = hive.drone_mana_to_add
 	if is_blood_demon:
 		make_blood_drones()
 

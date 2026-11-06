@@ -12,6 +12,9 @@ const INSTAKILL_DAMAGE := 9999
 const DEFAULT_CHARGE_COST := 1
 
 # --- Exports ---
+@export var mana_add_on_zombie_consume_1 := 5
+@export var mana_add_on_zombie_consume_2 := 5
+
 @export var alt_target_color: Color
 @export var alt_replace_color: Color
 @export var debug_mode: bool = false
@@ -349,6 +352,7 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 		group.damage_applied = true
 		enemy.visible = false
 		enemy.take_damage(false,INSTAKILL_DAMAGE,false)
+		Global.add_mana(mana_add_on_zombie_consume_1)
 
 	group.pending_retract -= 1
 	if group.pending_retract == 0:
@@ -359,6 +363,7 @@ func _on_tentacle_retraction_finished(enemy: Node2D, tentacle: Tentacle) -> void
 			#print("[Maw] Group of %d entered DIGESTING" % group.tentacles.size())
 
 func _on_tentacle_ready_again(tentacle: Tentacle) -> void:
+	Global.add_mana(mana_add_on_zombie_consume_2)
 	if not tentacle in available_tentacles:
 		available_tentacles.append(tentacle)
 
