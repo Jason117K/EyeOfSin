@@ -1,3 +1,4 @@
+# This node never plays itself: its stream, bus and volume_db configure the two voices it crossfades between.
 class_name DynamicAudioStreamPlayer extends AudioStreamPlayer
 
 @export var calm_1_start : float = 0.0
@@ -10,38 +11,55 @@ class_name DynamicAudioStreamPlayer extends AudioStreamPlayer
 @export var intense_2_start : float = 131.0
 @export var intense_2_end : float = 202.0
 
-var _loop_start : float = 0.0
-var _loop_end : float = 0.0
-var _looping : bool = false
+@export var crossfade_duration : float = 1.5
+
+var _active_voice : LoopingSectionPlayer
+var _idle_voice : LoopingSectionPlayer
+var _crossfade : Tween
 
 
-func _process(_delta: float) -> void:
-	if not _looping or not playing:
-		return
+func _ready() -> void:
+	_active_voice = _create_voice()
+	_idle_voice = _create_voice()
 
-	# Add the time since the last audio mix for a more accurate position.
-	var pos := get_playback_position() + AudioServer.get_time_since_last_mix()
 
-	if pos >= _loop_end:
-		# Carry the overshoot into the jump so the loop stays in time.
-		var overshoot := pos - _loop_end
-		seek(_loop_start + overshoot)
+func _create_voice() -> LoopingSectionPlayer:
+	var voice := LoopingSectionPlayer.new()
+	voice.stream = stream
+	voice.bus = bus
+	voice.volume_linear = 0.0
+	add_child(voice)
+	return voice
 
 
 func _play_section(start: float, end: float) -> void:
-	# Do nothing if this section is already the one playing.
-	if _looping and playing and _loop_start == start and _loop_end == end:
+	if _active_voice.is_playing_section(start, end):
 		return
-	_loop_start = start
-	_loop_end = end
-	_looping = true
-	play(start)
+	# Mid-fade, the section may still be playing on the outgoing voice: fade it back
+	# up from where it is instead of restarting it.
+	if not _idle_voice.is_playing_section(start, end):
+		_idle_voice.volume_linear = 0.0
+		_idle_voice.play_section(start, end)
+	var outgoing := _active_voice
+	_active_voice = _idle_voice
+	_idle_voice = outgoing
+	_fade_between(outgoing, _active_voice)
 
+
+func _fade_between(outgoing: LoopingSectionPlayer, incoming: LoopingSectionPlayer) -> void:
+	if _crossfade:
+		_crossfade.kill()
+	_crossfade = create_tween().set_parallel().set_trans(Tween.TRANS_SINE)
+	_crossfade.tween_property(incoming, "volume_linear", db_to_linear(volume_db), crossfade_duration)
+	_crossfade.tween_property(outgoing, "volume_linear", 0.0, crossfade_duration)
+	_crossfade.chain().tween_callback(outgoing.stop_section)
 
 
 func stop_music() -> void:
-	_looping = false
-	stop()
+	if _crossfade:
+		_crossfade.kill()
+	_active_voice.stop_section()
+	_idle_voice.stop_section()
 
 
 func play_calm_1() -> void:

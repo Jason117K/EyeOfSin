@@ -16,6 +16,7 @@ var has_pulsed := false
 @export var new_power_title : String 
 @export var new_power_description : String 
 @export var new_power_texture : Texture
+@export var no_new_unlock := false
 
 @export var isGreenDimension := false
 @export var new_end_dialog := "res://_Assets/Dialog/level_0_end_dialog.dtl"
@@ -155,8 +156,6 @@ var auto_advance : bool = false
 
 var total_game_time : float = 0 
 
-var new_power_unlocked := true 
-
 var is_first_screenshot := true 
 
 var music_controller : DynamicAudioStreamPlayer
@@ -281,8 +280,12 @@ func handle_score()->void:
 	
 func handle_new_power_unlock()->void:
 	Global.style_menu._setup_score()
-	if !new_power_unlocked:
-		finish_end_level()
+	if no_new_unlock:
+		unlock_power.show_next_level_button_only()
+		show_new_demon()
+		toolTips.visible = false
+		get_tree().paused = true
+		return
 	new_power_unlock_rune.unlock_done.connect(show_new_demon)
 	new_power_unlock_rune.activate()
 	new_power_unlock_rune.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -292,15 +295,6 @@ func handle_new_power_unlock()->void:
 	get_tree().paused = true
 	
 	
-func finish_end_level()->void:
-	toolTips.visible = false
-	levelSwitcher.visible = true
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	get_tree().paused = true
-
-
 func _on_end_dialog_finished() -> void:
 	#print(isGreenDimension, "-------------Style Menu Visible--------------", self)
 	if isGreenDimension:

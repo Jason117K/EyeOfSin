@@ -87,7 +87,7 @@ func _ready() -> void:
 	
 	Global.ultimate_charge_container.set_margin()
 	level_title = tr("LEVEL_TITLE_0_7") # played 7th (introduces Ultimates)
-	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
+	extended_new_power_description = "PORTAL_DESCRIPTION_LONG"
 	super()
 	equip_default_sorceries() # defaults only; keeps the player's panel picks
 	##print_scene_tree()
@@ -108,6 +108,7 @@ func _ready() -> void:
 
 	Dialogic.timeline_ended.connect(finish_ready)
 	Global.hide_ui_layer()
+	unlock_power.set_new_unlock_label("UI_NEW_ULTIMATE")
 	
 	if debug:
 		finish_ready()

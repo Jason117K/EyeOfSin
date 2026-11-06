@@ -435,6 +435,7 @@ func _on_crawler_button_pressed() -> void:
 
 
 func _on_wave_started(wave_index: int) -> void:
+	super(wave_index)
 	if wave_2_completed:
 		_on_tooltip_hidden()
 	if skip_tutorials:

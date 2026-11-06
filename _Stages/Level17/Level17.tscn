@@ -5763,6 +5763,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_dov3n")
+no_new_unlock = true
 wave2StartTime = 55
 wave3StartTime = 80
 wave4StartTime = 95

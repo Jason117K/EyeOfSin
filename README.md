@@ -190,6 +190,9 @@ Next/Continue go to `Progress.select_screen_after_win()`: the Act of the level *
 beaten, so finishing an Act lands on the next one. Demon unlocks are derived from progress (see
 Demon loadouts); the Act screens no longer read `Global.*_unlocked`. Zombie and synergy
 discoveries are saved separately by `Discovery` (see Codex gating).
+A level's `no_new_unlock` export skips the acquire-power card and shows the score screen with only
+the Next Level button. It only changes the end screen, not what `Progress` unlocks. Set it on both
+scenes of the pair, because the dimension the player wins in reads its own value.
 
 **Stars + sorcery unlocks.** The score screen's overall rank is recorded per level
 (`style_screen.set_overall_rank` → `Progress.record_rank`; below D counts as D). Stars are
@@ -263,7 +266,7 @@ Inspector does nothing while a config is assigned. An empty slot = the scene's o
   - **New set:** run `capture_stats_set.gd` (File → Run) → `_Utilities/Stats/Sets/set_v<N>/` with
     one config per unit (scene values with any Stats slot config laid over) plus `set_v<N>.tres`.
     A fresh set changes nothing; edit the unit files in its folder, then assign the set. Each set
-    has its own copies. Delete entries for units you don't want the set to touch.
+	has its own copies. Delete entries for units you don't want the set to touch.
   - Running a level alone (F6) has no GameController, so no set applies (Stats slots still do).
   - **Before a release build:** clear the slot or assign the release set. It ships otherwise.
 
@@ -420,10 +423,10 @@ refactor phases that touch the restart path, buff matching, or tick order.
    none on the start screen, Act select, Act 1–3 screens, or after Next on a win. Every Syn card
    fills the same 64px slot.
 10. **Codex:** fresh save → demon codex shows only Crawler normally. The rest are black
-    silhouettes with no click and no hover bounce. The zombie codex is clickable only for zombies
-    that have spawned. Every synergy tab is a silhouette until that synergy triggers, its pop-up
-    shows once, and after reopening the codex the tab is normal. A relaunch keeps everything. The
-    same synergy again → no pop-up. Beat level 1 → Occulum turns normal. Ctrl+U → everything normal.
+	silhouettes with no click and no hover bounce. The zombie codex is clickable only for zombies
+	that have spawned. Every synergy tab is a silhouette until that synergy triggers, its pop-up
+	shows once, and after reopening the codex the tab is normal. A relaunch keeps everything. The
+	same synergy again → no pop-up. Beat level 1 → Occulum turns normal. Ctrl+U → everything normal.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **

@@ -57,7 +57,8 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 func _ready() -> void:
 	Global.enable_ultimate()
 	level_title = tr("LEVEL_TITLE_0_9")
-	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
+	extended_new_power_description = "SYN_MONOLITH_DESC_LONG"
+	unlock_power.set_new_unlock_label("UI_NEW_SORCERY")
 	super()
 	equip_default_sorceries() # defaults only; keeps the player's panel picks
 	##print_scene_tree()

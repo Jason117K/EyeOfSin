@@ -60,7 +60,7 @@ func _ready() -> void:
 	Global.current_act = Global.CURRENT_ACT.ACT_2
 	Global.enable_ultimate()
 	level_title = tr("LEVEL_TITLE_0_9")
-	extended_new_power_description = "POWER_OCCULUM_DESC_LONG"
+	extended_new_power_description = "POWER_MAW_DESC_LONG"
 	super()
 	equip_default_sorceries() # defaults only; keeps the player's panel picks
 	##print_scene_tree()

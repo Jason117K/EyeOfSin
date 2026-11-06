@@ -1376,6 +1376,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_oer7y")
+no_new_unlock = true
 wave2StartTime = 70
 wave3StartTime = 97
 wave4StartTime = 100

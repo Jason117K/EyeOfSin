@@ -4,12 +4,21 @@ extends Control
 @onready var title_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewPowerTitle
 @onready var description_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewPowerDescription
 @onready var new_power_unlock_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewDemonLabel
+@onready var power_unlock_panel := $PowerUnlockPanel
+@onready var all_elements_vbox := $PowerUnlockPanel/MarginContainer/AllElementsVbox
+@onready var next_level_button := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NextLevelButton
 
 func _on_next_level_button_pressed() -> void:
 	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.UI_CLICK)
 	# Act of the beaten level; an Act's last level lands on the newly unlocked Act.
 	Global.game_controller.change_from_dual_scenes(Progress.select_screen_after_win())
 	self.visible = false
+
+func show_next_level_button_only()->void:
+	for element: Control in all_elements_vbox.get_children():
+		element.visible = element == next_level_button
+	power_unlock_panel.offset_top = 0
+	power_unlock_panel.offset_bottom = 0
 
 func set_new_unlock_label(new_unlock_label_text:String="UI_NEW_DEMON")->void:
 	new_power_unlock_label.text = tr(new_unlock_label_text)
