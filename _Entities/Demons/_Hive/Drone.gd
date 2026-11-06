@@ -24,6 +24,8 @@ var current_zombie : Zombie = null
 @export var spinal_occulum_buffed_health := 200
 @export var spinal_occulum_buffed_max_health := 200
 
+@onready var animSpriteComp = $AnimatedSprite2D
+
 
 enum State { IDLE, PURSUING, ATTACKING, RETURNING }
 

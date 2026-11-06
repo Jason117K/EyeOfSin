@@ -3,6 +3,9 @@ extends Area2D
 @export var attack_timer_wait_time := 3
 @export var minion_damage := 10
 @export var health : float = 100
+
+@onready var animSpriteComp = $AnimatedSprite2D
+
 var attack_timer: Timer
 
 var speed := 60

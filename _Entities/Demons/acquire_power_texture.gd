@@ -2,9 +2,9 @@ extends TextureButton
 
 
 @onready var anim_player := $AcquireDemonAnimPlayer
-@onready var new_power_texture := $New_Power_Margin_Container/NewPowerTextVbox/New_Power_Texture
-@onready var title_label := $New_Power_Margin_Container/NewPowerTextVbox/TitleLabel
-@onready var description_label := $New_Power_Margin_Container/NewPowerTextVbox/DescriptionLabel
+@onready var new_power_texture := $NewPowerTextVbox/MarginContainer/TextureContainer/New_Power_Texture
+@onready var title_label := $NewPowerTextVbox/TitleContainer/TitleLabel
+@onready var description_label := $NewPowerTextVbox/TextContainer/DescriptionLabel
 
 
 signal unlock_done
@@ -41,10 +41,12 @@ func set_new_power_texture(new_texture : Texture)->void:
 
 func set_new_power_title(new_title:String)->void:
 	title_label.text = tr(new_title)
+	title_label._fit()
 	
 
 func set_new_power_description(new_description:String)->void:
 	description_label.text = tr(new_description)
+	description_label._fit()
 	
 	
 	

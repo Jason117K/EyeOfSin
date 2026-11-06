@@ -16,12 +16,10 @@ texture_margin_bottom = 12.0
 modulate_color = Color(0.65, 0.65, 0.65, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkb75"]
-content_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yoeus"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5t1t"]
-content_margin_top = 13.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_omjam"]
 texture = ExtResource("5_yx1fs")
@@ -43,17 +41,16 @@ grow_vertical = 2
 script = ExtResource("1_u1hxm")
 
 [node name="PowerUnlockPanel" type="PanelContainer" parent="." unique_id=1618061640]
-custom_minimum_size = Vector2(0, 176.45)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -275.0
-offset_top = -126.0
-offset_right = -123.62439
-offset_bottom = 126.0
+offset_left = -280.905
+offset_top = -118.0
+offset_right = -81.90442
+offset_bottom = 118.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -83,38 +80,38 @@ theme_override_constants/separation = 1
 [node name="NewDemonLabel" type="RichTextLabel" parent="PowerUnlockPanel/MarginContainer/AllElementsVbox" unique_id=1368722922]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_0tsif")
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jkb75")
 text = "UI_NEW_DEMON"
 fit_content = true
 horizontal_alignment = 1
 
 [node name="NewPowerTexture" type="TextureRect" parent="PowerUnlockPanel/MarginContainer/AllElementsVbox" unique_id=1307326426]
-custom_minimum_size = Vector2(0, 84)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("5_c3x7j")
-expand_mode = 3
-stretch_mode = 5
+expand_mode = 5
 
 [node name="NewPowerTitle" type="RichTextLabel" parent="PowerUnlockPanel/MarginContainer/AllElementsVbox" unique_id=1809190057]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_0tsif")
-theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/normal_font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yoeus")
 text = "SPINAL OCCULUM"
 fit_content = true
 horizontal_alignment = 1
 
 [node name="NewPowerDescription" type="RichTextLabel" parent="PowerUnlockPanel/MarginContainer/AllElementsVbox" unique_id=726730724]
-custom_minimum_size = Vector2(110.395, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_0tsif")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxEmpty_t5t1t")
 bbcode_enabled = true
-text = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION.
-VITAL FOR ANY DEFENSE."
+text = "GENERATES BLOOD OVER TIME. SYNERGIES IMPROVE BLOOD GENERATION. VITAL FOR ANY DEFENSE."
 fit_content = true
 horizontal_alignment = 1
 

@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://vadugshvfncf"]
 
 [ext_resource type="Script" uid="uid://bkctt2665ap4n" path="res://_Stages/Level5/level_0_5.gd" id="1_ehl8e"]
+[ext_resource type="Texture2D" uid="uid://dym7nudn0quv8" path="res://_Assets/Sprites/Wyrm.png" id="2_dph4f"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="2_e2mf6"]
-[ext_resource type="Texture2D" uid="uid://b6sng5o3sbmqn" path="res://_Entities/Demons/_Demon_Icons/Wyrm_32x32png.png" id="2_msdba"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_uuukh"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="3_e2mf6"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_pkv84"]
@@ -3624,7 +3624,7 @@ mouse_filter = 2
 script = ExtResource("1_ehl8e")
 new_power_title = "POWER_WYRM_TITLE"
 new_power_description = "POWER_WYRM_DESC_SHORT"
-new_power_texture = ExtResource("2_msdba")
+new_power_texture = ExtResource("2_dph4f")
 new_end_dialog = "res://_Assets/Dialog/level_05_end_dialog.dtl"
 wave2StartTime = 75
 wave3StartTime = 100

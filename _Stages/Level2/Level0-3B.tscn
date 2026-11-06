@@ -4,8 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="2_3m502"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="2_23sq5"]
 [ext_resource type="Texture2D" uid="uid://bx4ad0vd1syxk" path="res://_Entities/SynAbility/Syn_Ability_Unlock_32x32.png" id="2_xqwgl"]
+[ext_resource type="AudioStream" uid="uid://c4aj3ofcpoilm" path="res://_Assets/Audio/Music/Lucretia.mp3" id="3_i4erg"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="3_qqn1e"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_3m502"]
+[ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="4_xspvh"]
 [ext_resource type="AudioStream" uid="uid://0obob1n8xw3p" path="res://_Utilities/Audio/gameplay track bounce 8-13-25.wav" id="5_qsicn"]
 [ext_resource type="Environment" uid="uid://dtckl7wajix60" path="res://_Stages/Level6/Level0-6Environment.tres" id="6_err8n"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="7_gm4ar"]
@@ -3612,6 +3614,11 @@ wave2StartTime = 65
 wave3StartTime = 85
 wave4StartTime = 90
 record_footage = false
+
+[node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1493866396]
+stream = ExtResource("3_i4erg")
+volume_db = -10.0
+script = ExtResource("4_xspvh")
 
 [node name="DemonSelectionMenu" parent="." unique_id=1988977493 instance=ExtResource("2_3m502")]
 layout_mode = 1

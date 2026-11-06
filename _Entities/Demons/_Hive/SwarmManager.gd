@@ -19,6 +19,7 @@ var is_spinal_occulum_buffed := false
 var is_demo := false
 # Hive ultimate: levels up every drone, including ones that spawn later.
 var is_ultimate := false
+var is_blood_demon := false 
 
 @onready var hive: Node = get_parent()
 @onready var respawn_timer: Timer = get_parent().get_node("DroneRespawnTimer")
@@ -28,6 +29,17 @@ func initialize(wait_time: float) -> void:
 	respawn_timer.wait_time = wait_time
 	spawn_initial_drones()
 
+
+func make_blood_demon()->void:
+	is_blood_demon = true
+	make_blood_drones()
+	
+func make_blood_drones()->void:
+	for drone in available_drones:
+		drone.animSpriteComp.material.set_shader_parameter("active", true)
+		
+	
+	
 
 func get_available_drones() -> Array:
 	return available_drones
@@ -114,6 +126,8 @@ func spawn_initial_drones() -> void:
 			drone.add_to_group("Purple")
 		hive.get_parent().add_child(drone)
 		available_drones.append(drone)
+		if is_blood_demon:
+			make_blood_drones()
 		#print("Avaliable Drones WAS " , available_drones)
 
 		var rest_pos := calculate_rest_position(i)
@@ -294,6 +308,8 @@ func _on_DroneRespawnTimer_timeout() -> void:
 	else:
 		new_drone.add_to_group("Purple")
 	hive.get_parent().add_child(new_drone)
+	if is_blood_demon:
+		make_blood_drones()
 
 	var rest_pos := calculate_rest_position(available_drones.size() - 1)
 	drone_rest_positions[new_drone] = rest_pos

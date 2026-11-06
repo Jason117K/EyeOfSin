@@ -272,6 +272,7 @@ func _on_mouse_exited() -> void:
 
 func make_blood_demon()->void:
 	super()
+	#TODO Why is this buffed?
 	projectile_damage = projectile_damage * 2
 	projectile_shoot_component.projectile_damage =  projectile_damage
 

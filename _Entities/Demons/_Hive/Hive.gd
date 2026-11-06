@@ -115,6 +115,12 @@ func update_range_preview()->void:
 	range_line_indicator.set_point_position(1, Vector2(hive_attack_ray.target_position.x,range_line_indicator.get_point_position(1).y))
 	
 
+func make_blood_demon()->void:
+	super()
+	swarm.make_blood_demon()
+	
+	
+	
 # --- Buff System ---
 
 func baal_buff()->void:

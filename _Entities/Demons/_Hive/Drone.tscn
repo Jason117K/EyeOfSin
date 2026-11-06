@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://xia8qyghjoqw"]
 
 [ext_resource type="Script" uid="uid://mbwu3w6n5a3x" path="res://_Entities/Demons/_Hive/Drone.gd" id="2"]
-[ext_resource type="Shader" uid="uid://dw35nbmidggdo" path="res://_Common/Shaders/DemonGlow.gdshader" id="2_8cfhw"]
+[ext_resource type="Shader" uid="uid://cpkds665i6vsl" path="res://_Common/Shaders/Blood_Demon.gdshader" id="2_xgw56"]
 [ext_resource type="Script" uid="uid://cjpy3j8mq8mfa" path="res://_Entities/Demons/_Hive/DroneSpriteController.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c0aq2hdykvca" path="res://_Entities/Demons/_Hive/WaspLvl1.png" id="4_wvb0n"]
 [ext_resource type="Texture2D" uid="uid://4n3qop4leetx" path="res://_Entities/Demons/_Hive/WaspULTIMATE.png" id="5_14ccn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10gu7"]
 resource_local_to_scene = true
-shader = ExtResource("2_8cfhw")
-shader_parameter/glow_color = Color(223, 66, 66, 256)
-shader_parameter/modulate_factor = Vector4(99, 99, 99, 1)
-shader_parameter/glow_tolerance = 0.2
+shader = ExtResource("2_xgw56")
+shader_parameter/blood_color = Color(0.6, 0, 0, 1)
+shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7tiy"]
 atlas = ExtResource("4_wvb0n")
