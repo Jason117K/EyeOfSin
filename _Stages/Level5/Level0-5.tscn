@@ -3652,13 +3652,13 @@ D_TOTAL_POINTS_MIN = 17000
 stream = ExtResource("3_dph4f")
 volume_db = -10.0
 script = ExtResource("4_vs3h5")
-calm_1_end = 84.0
-calm_2_start = 0.0
-calm_2_end = 0.0
+calm_1_end = 33.0
 intense_1_start = 33.0
-intense_1_end = 112.0
-intense_2_start = 0.0
-intense_2_end = 0.0
+intense_1_end = 84.0
+calm_2_start = 84.0
+calm_2_end = 112.0
+intense_2_start = 112.0
+intense_2_end = 180.0
 
 [node name="UILayer" parent="." unique_id=1507334042 instance=ExtResource("20_icbpr")]
 layout_mode = 1

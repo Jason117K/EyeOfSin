@@ -14,6 +14,8 @@ func get_panel_container()->PanelContainer:
 
 func lock_unlock_swap_ability()->void:
 	if swap_ability_lock_visual.visible == true:
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SWAP_UNLOCKED)
 		swap_ability_lock_visual.hide()
 	else:
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SWAP_LOCKED)
 		swap_ability_lock_visual.show()

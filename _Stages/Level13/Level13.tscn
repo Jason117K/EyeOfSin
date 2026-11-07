@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3bjrryo37vcf" path="res://_Stages/Level13/level13.gd" id="1_u2irr"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_bnps3"]
+[ext_resource type="AudioStream" uid="uid://detwti8tdgw66" path="res://_Assets/Audio/Finished_Music/AD_EOS_2m05_Against-All-Odds_DELIVERED.ogg" id="2_s3guw"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_xjclt"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_16h1e"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_4js4h"]
@@ -58,7 +59,6 @@
 [ext_resource type="Texture2D" uid="uid://dw20g4kjh7vff" path="res://_Assets/Environment/Act2/Office/OfficeChairFaceLeft.png" id="52_85r1q"]
 [ext_resource type="Texture2D" uid="uid://dxgw10u4d0kno" path="res://_Assets/Environment/Act2/Office/OfficeDeskStuff.png" id="53_58o1h"]
 [ext_resource type="Texture2D" uid="uid://b0ix5vm6vyv0i" path="res://_Assets/Environment/Act2/Office/OfficeWaterCooler.png" id="54_684nb"]
-[ext_resource type="AudioStream" uid="uid://cwag86e0uo1w8" path="res://_Assets/Audio/Music/resurgence.mp3" id="58_2lvip"]
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="60_oridc"]
 [ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="64_m3xb4"]
 [ext_resource type="Script" uid="uid://crr67tmp2yh8d" path="res://_Utilities/Waves/WaveData.gd" id="90_l13pwd"]
@@ -6784,9 +6784,14 @@ wave5StartTime = 110
 record_footage = false
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1522063472]
-stream = ExtResource("58_2lvip")
+stream = ExtResource("2_s3guw")
 volume_db = -10.0
 script = ExtResource("64_m3xb4")
+intense_1_end = 66.0
+calm_2_start = 66.0
+calm_2_end = 100.0
+intense_2_start = 100.0
+intense_2_end = 133.0
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("2_bnps3")]
 layout_mode = 1

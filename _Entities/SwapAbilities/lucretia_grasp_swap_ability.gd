@@ -17,6 +17,7 @@ func get_icon()->Texture:
 	return Global.lucretia_grasp_icon
 
 func apply_swap_ability() -> void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.LUCRETIA_GRASP_TRIGGER)
 	num_zombies_turned = 0
 	end_x = get_viewport().get_visible_rect().size.x + 150.0
 	if !_signals_connected:
@@ -80,5 +81,6 @@ func set_collision() -> void:
 func undo_swap_ability() -> void:
 	for grasp: AnimatedSprite2D in grasp_container.get_children():
 		grasp.hide()
+
 	is_sweeping = false
 	stop()

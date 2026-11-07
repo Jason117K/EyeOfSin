@@ -3,6 +3,8 @@ extends SwapAbility
 #10
 #35
 
+#11
+#50
 
 @export var max_lightning_per_rain := 4
 @export var max_lightning_per_rain_1 := 1
@@ -32,6 +34,8 @@ func get_icon()->Texture:
 	return Global.lightning_storm_icon
 	
 func apply_swap_ability()->void:
+	
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.LIGHTNING_STORM_TRIGGER)
 	set_collision()
 	ability_duration = lightning_wave_delay * 6 
 	# process_always = false: the storm pauses with the game.
@@ -68,6 +72,7 @@ func _living_targets() -> Array:
 func _strike_batch(zombies: Array, num_zombies_to_strike: int) -> void:
 	##print("Should Lightning Strike Batch ",currently_available_zombies)
 	# Only while the storm is up (an early cancel or a restart stops it).
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_LIGHTNING_DEPLOY)
 	if is_active:
 		#print("About to Lightning Strike")
 		num_zombies_struck = 0

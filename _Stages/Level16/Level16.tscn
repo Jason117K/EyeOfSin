@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dak6ut8b7bvo"]
 
 [ext_resource type="Script" uid="uid://cjbhlvr8nij8b" path="res://_Stages/Level16/level16.gd" id="1_4505m"]
+[ext_resource type="AudioStream" uid="uid://daniduw6ph01a" path="res://_Assets/Audio/Finished_Music/AD_EOS_3m03_Bitter End_DELIVERED.ogg" id="2_gude6"]
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="2_r8rtg"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="3_c52le"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="4_6v880"]
@@ -31,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://_Assets/Environment/TX Tileset Grass.png" id="35_tsuat"]
 [ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://_Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="36_lolef"]
 [ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="37_h7wuc"]
-[ext_resource type="AudioStream" uid="uid://b76l1pwmp3a3o" path="res://_Assets/Audio/Music/Against the Odds (1).mp3" id="37_qdoa2"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="38_c7qr3"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="39_cjqbn"]
 [ext_resource type="Texture2D" uid="uid://be43mxb3vs0h" path="res://_Assets/Environment/Tilesets/Level1FloorProps.png" id="40_ogu4v"]
@@ -5707,9 +5707,16 @@ wave6StartTime = 115
 record_footage = false
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=2852040]
-stream = ExtResource("37_qdoa2")
+stream = ExtResource("2_gude6")
 volume_db = -10.0
 script = ExtResource("48_n8fph")
+calm_1_end = 57.0
+intense_1_start = 57.0
+intense_1_end = 116.0
+calm_2_start = 116.0
+calm_2_end = 146.0
+intense_2_start = 146.0
+intense_2_end = 185.0
 
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("2_r8rtg")]
 

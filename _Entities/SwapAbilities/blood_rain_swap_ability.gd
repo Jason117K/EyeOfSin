@@ -28,6 +28,8 @@ func append_new_zombie(new_zombie : Zombie) -> void:
 		
 
 func apply_swap_ability()->void:
+	swap_audio = AudioManager.create_return_2d_audio_at_location(Vector2(0,0),SoundEffect.SOUND_EFFECT_TYPE.RAIN_BACKGROUND)
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BLOOD_RAIN_TRIGGER)
 	rain_group = "Green" if Global.is_on_purple_dimension() else "Purple"
 	for zombie in Global.get_all_zombies():
 		if is_instance_valid(zombie) and zombie.is_in_group(rain_group) and not zombie.is_flipped:
@@ -40,7 +42,10 @@ func undo_swap_ability() -> void:
 		for zombie in affected_zombies: #Global.get_all_zombies():
 			if zombie != null && is_instance_valid(zombie):
 				zombie.undoBloodSlow()
-		stop()	
+		stop()
+	if swap_audio != null:
+		swap_audio.stop()
+		swap_audio.queue_free()
 	affected_zombies.clear()
 	
 func get_icon()->Texture:

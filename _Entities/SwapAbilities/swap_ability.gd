@@ -11,6 +11,7 @@ var cooldown_fill_amount := 0.0
 var on_purple := true
 var affected_zombies : Array = []
 var is_locked := false
+var swap_audio : AudioStreamPlayer2D
 
 # Seconds left in the current ACTIVE / COOLDOWN state. The cooldown only
 # counts down once game_start() releases it (the old Timer wasn't started
@@ -27,6 +28,7 @@ var _cooldown_running := false
 @onready var swap_cooldown_visual_bar := $Control/SwapAbilityCooldownPanel/MarginContainer/SwapAbilityProgressBar
 
 var cooldown_glow := false 
+var play_charged_sfx := true 
 
 func _ready() -> void:
 	#print("Swap Ability Ready")
@@ -84,6 +86,7 @@ func reset_on_game_start() -> void:
 func begin() -> void:
 	if is_locked:
 		return
+	play_charged_sfx = true 
 	#Stopped too soon, longer cooldown
 	if is_active:
 		cooldown_duration = cooldown_length_normal
@@ -169,6 +172,9 @@ func _physics_process(delta: float) -> void:
 			cooldown_fill_amount = 0.0
 
 		if cooldown_fill_amount >= 100:
+			if play_charged_sfx:
+				AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SWAP_CHARGED)
+				play_charged_sfx = false
 			if !is_locked:
 				cooldown_glow = true 
 				UiFx.add_pulsing_button_highlight(swap_cooldown_visual_bar)

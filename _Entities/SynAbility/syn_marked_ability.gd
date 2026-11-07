@@ -14,6 +14,7 @@ func _ready() -> void:
 	#mark_zombies()
 	
 func activate_ability()->void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_MARK_DEPLOY)
 	for zombie in get_overlapping_areas():
 		if zombie != null && !(zombie in targets_marked):
 			current_target_health = zombie.get_health()

@@ -3636,13 +3636,13 @@ D_TOTAL_POINTS_MIN = 5000
 stream = ExtResource("3_orto8")
 volume_db = -10.0
 script = ExtResource("4_orevn")
-calm_1_end = 84.0
-calm_2_start = 0.0
-calm_2_end = 0.0
+calm_1_end = 33.0
 intense_1_start = 33.0
-intense_1_end = 112.0
-intense_2_start = 0.0
-intense_2_end = 0.0
+intense_1_end = 84.0
+calm_2_start = 84.0
+calm_2_end = 112.0
+intense_2_start = 112.0
+intense_2_end = 180.0
 
 [node name="ToolTips" parent="." unique_id=1130305039 instance=ExtResource("21_u00xe")]
 visible = false

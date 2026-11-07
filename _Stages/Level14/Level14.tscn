@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="2_i3rw8"]
 [ext_resource type="Texture2D" uid="uid://brkb10lkjyant" path="res://_Entities/SwapAbilities/Blood_Rain_Swap_Card.png" id="2_vaggj"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_amqr0"]
+[ext_resource type="AudioStream" uid="uid://basurucsem25s" path="res://_Assets/Audio/Finished_Music/AD_EOS_2m06_The Gravedigger_DELIVERED.ogg" id="3_vaggj"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_uwweg"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_15m45"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="6_cx4it"]
@@ -43,7 +44,6 @@
 [ext_resource type="PackedScene" uid="uid://t5ghcfxwbcom" path="res://_Stages/camera_2d.tscn" id="40_87wjl"]
 [ext_resource type="PackedScene" uid="uid://b0pc3q3ku2bkl" path="res://_Entities/Demons/acquire_power_texture.tscn" id="41_e4a5i"]
 [ext_resource type="PackedScene" uid="uid://c474ytl4mplao" path="res://_Entities/Demons/UnlockPower.tscn" id="42_wt2k5"]
-[ext_resource type="AudioStream" uid="uid://bvbqq2kvea0u" path="res://_Assets/Audio/Music/The Maw.mp3" id="43_p84i3"]
 [ext_resource type="Texture2D" uid="uid://t3dw8ukmsjtd" path="res://_Assets/Environment/Act2/Office/OfficeAC_Unit.png" id="44_rf8nn"]
 [ext_resource type="Texture2D" uid="uid://dqwpvfov8sw5" path="res://_Assets/Environment/Act2/Office/OfficeBigMoney.png" id="45_vaggj"]
 [ext_resource type="Texture2D" uid="uid://sranyvwytmg6" path="res://_Assets/Environment/Act2/Office/OfficePlant1.png" id="46_hci8y"]
@@ -6883,9 +6883,16 @@ wave6StartTime = 110
 record_footage = false
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1189431514]
-stream = ExtResource("43_p84i3")
+stream = ExtResource("3_vaggj")
 volume_db = -10.0
 script = ExtResource("64_hci8y")
+calm_1_end = 30.0
+intense_1_start = 30.0
+intense_1_end = 58.0
+calm_2_start = 58.0
+calm_2_end = 87.0
+intense_2_start = 87.0
+intense_2_end = 115.0
 
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("92_l14pwth")]
 

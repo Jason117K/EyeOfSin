@@ -23,6 +23,7 @@ func _ready() -> void:
 	self.global_position = grid_pos
 		
 	self.area_entered.connect(enflame_projectile)
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_TORCH_DEPLOY)
 	# Base lifecycle: registers for pairing and starts the death timer. Without it
 	# the Shroomie never expired and its dimension's Syn charge stayed ACTIVE.
 	super()

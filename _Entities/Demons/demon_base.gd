@@ -652,6 +652,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed && spawn_done:
 		##print(self, " was clicked, node is ", _viewport)
 		Global.set_demon_info_bar(self)
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.DEMON_CLICK)
 		highlight_circle.show()
 		pass
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:

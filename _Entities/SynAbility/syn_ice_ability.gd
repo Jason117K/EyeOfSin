@@ -47,6 +47,7 @@ func _ready() -> void:
 
 func activate_ability()->void:
 	ice_attack()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_ICE_DEPLOY)
 
 func ice_attack()->void:
 	blood_ice_anim.frame_changed.connect(ice_bleed_zombies)

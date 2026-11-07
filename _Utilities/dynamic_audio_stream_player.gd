@@ -3,11 +3,10 @@ class_name DynamicAudioStreamPlayer extends AudioStreamPlayer
 
 @export var calm_1_start : float = 0.0
 @export var calm_1_end : float = 40.0
-@export var calm_2_start : float = 114.0
-@export var calm_2_end : float = 131.0
-
 @export var intense_1_start : float = 40.0
 @export var intense_1_end : float = 114.0
+@export var calm_2_start : float = 114.0
+@export var calm_2_end : float = 131.0
 @export var intense_2_start : float = 131.0
 @export var intense_2_end : float = 202.0
 

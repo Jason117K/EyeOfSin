@@ -134,6 +134,7 @@ func _on_call_early_wave_requested() -> void:
 	if _current_wave + 1 >= _total_waves:
 		return
 	ScoreManager.wave_called_early()
+	
 	##print("Requested Early Wave, current wave is ",_current_wave )
 	if (_current_wave + 1) < wave_delays.size():
 		wave_delays[_current_wave + 1] = wave_delays[_current_wave + 1] \
@@ -160,6 +161,7 @@ func _start_wave(index: int) -> void:
 	waveDelayTimer.stop()
 	previewTimer.stop()
 	Global.show_wave_label(index+1)
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.WAVE_CALL)
 	if index > 0:
 		Global.add_blood_from_wave(25)
 	_current_wave = index

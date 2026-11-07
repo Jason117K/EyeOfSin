@@ -12,6 +12,7 @@ var baal_group := ""
 var buffed_demons : Array = []
 
 func apply_swap_ability()->void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BAAL_TRIGGER)
 	baal_eye.descend()
 	baal_eye_aoe.show()
 	baal_group = "Green" if Global.is_on_purple_dimension() else "Purple"

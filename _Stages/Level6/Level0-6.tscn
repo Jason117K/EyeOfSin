@@ -3790,12 +3790,12 @@ stream = ExtResource("3_ykdo4")
 volume_db = -10.0
 script = ExtResource("4_ykdo4")
 calm_1_end = 33.0
-calm_2_start = 0.0
-calm_2_end = 0.0
 intense_1_start = 33.0
 intense_1_end = 84.0
+calm_2_start = 84.0
+calm_2_end = 112.0
 intense_2_start = 112.0
-intense_2_end = 240.0
+intense_2_end = 180.0
 
 [node name="UILayer" parent="." unique_id=1131846546 instance=ExtResource("20_f0dgu")]
 visible = false

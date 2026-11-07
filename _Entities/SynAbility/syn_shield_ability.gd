@@ -18,6 +18,7 @@ func activate_ability()->void:
 	# `is Demon` as well as the group: a Lucretia-flipped zombie joins "Demons" and
 	# the demon collision layer but has no shield(); EmptyDemon blockers are Demons
 	# outside the group.
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_SHIELD_DEPLOY)
 	for demon in self.get_overlapping_areas():
 		if demon is Demon and demon.is_in_group("Demons"):
 			#print("Shield Demon ", demon)

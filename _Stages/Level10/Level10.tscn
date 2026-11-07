@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="2_xukng"]
 [ext_resource type="Script" uid="uid://cpw4y6y0kfisf" path="res://_Utilities/dynamic_audio_stream_player.gd" id="3_2erop"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="3_usloo"]
+[ext_resource type="AudioStream" uid="uid://csemfaik1yuro" path="res://_Assets/Audio/Finished_Music/AD_EOS_2m01_Newfound Rhythm_DELIVERED.ogg" id="3_x8w7o"]
 [ext_resource type="PackedScene" uid="uid://cgkc7lr4bmh7r" path="res://_UI/ToolTips/ToolTips.tscn" id="4_0k43l"]
 [ext_resource type="PackedScene" uid="uid://cugpi5ymx1ua8" path="res://_Utilities/Demons/DemonManager.tscn" id="5_a3djo"]
 [ext_resource type="PackedScene" uid="uid://dwihkqs25js7n" path="res://_Utilities/Zombies/ZombieSpawner.tscn" id="6_2nmih"]
@@ -46,7 +47,6 @@
 [ext_resource type="Texture2D" uid="uid://d30gj0npw3nfa" path="res://_Assets/Environment/Tilesets/OpeningLevelAltPath_NoWater.png" id="35_uicby"]
 [ext_resource type="Texture2D" uid="uid://ccpv3tcghh4mj" path="res://_Assets/Environment/Updated_Props/GreenSquare_BG.png" id="36_s6o5h"]
 [ext_resource type="Texture2D" uid="uid://dx3yv3qhonll8" path="res://_Assets/Environment/Act2/Tilesets/StainedWindows_Dragon_1.png" id="37_o75od"]
-[ext_resource type="AudioStream" uid="uid://c4aj3ofcpoilm" path="res://_Assets/Audio/Music/Lucretia.mp3" id="42_xukng"]
 [ext_resource type="Texture2D" uid="uid://c3y0vddyfpsk" path="res://_Assets/Environment/Act2/Candelabra-Sheet.png" id="43_t1eut"]
 [ext_resource type="Texture2D" uid="uid://n0s2xgvtyd2h" path="res://_Assets/Environment/Act2/ChurchBookPulpit.png" id="44_n57s0"]
 [ext_resource type="Texture2D" uid="uid://b03wii0stnsi5" path="res://_Assets/Environment/Act2/Church_Girl_Statue.png" id="45_p4xyn"]
@@ -3617,9 +3617,16 @@ wave5StartTime = 103
 record_footage = false
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1461448860]
-stream = ExtResource("42_xukng")
-volume_db = -10.0
+stream = ExtResource("3_x8w7o")
+volume_db = -80.0
 script = ExtResource("3_2erop")
+calm_1_end = 21.0
+intense_1_start = 21.0
+intense_1_end = 43.0
+calm_2_start = 43.0
+calm_2_end = 64.0
+intense_2_start = 64.0
+intense_2_end = 86.0
 
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("2_xukng")]
 

@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://ceh484ek4cnjx"]
 
 [ext_resource type="Script" uid="uid://b543dx3el78s4" path="res://_Stages/Level17/level17.gd" id="1_dov3n"]
+[ext_resource type="AudioStream" uid="uid://da1wqnludx6ji" path="res://_Assets/Audio/Finished_Music/AD_EOS_3m05_Argus, Challenger of Earth, Eye of Syn_DELIVERED.ogg" id="2_ey8ha"]
 [ext_resource type="PackedScene" uid="uid://dlgjv440ai7uy" path="res://_Stages/wave_table_host.tscn" id="2_w3i3s"]
 [ext_resource type="PackedScene" uid="uid://3ls67604vxxj" path="res://_UI/ui_layer.tscn" id="3_d5mox"]
 [ext_resource type="PackedScene" uid="uid://802bvw3m4n0a" path="res://_Utilities/Demons/DemonSelectionMenu.tscn" id="4_0sx6k"]
@@ -30,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://ctb7d12dqn8lq" path="res://_Assets/Environment/Act_3/Ice_Monster_Parts.png" id="35_5qr3x"]
 [ext_resource type="Texture2D" uid="uid://bs7oq706umv61" path="res://_Assets/Environment/TX Tileset Grass.png" id="35_lujvm"]
 [ext_resource type="Texture2D" uid="uid://bdthl3bxuc3q" path="res://_Assets/Environment/Tilesets/bgtilespbig-Sheet2.png" id="36_nm1rc"]
-[ext_resource type="AudioStream" uid="uid://b76l1pwmp3a3o" path="res://_Assets/Audio/Music/Against the Odds (1).mp3" id="37_glqk8"]
 [ext_resource type="Texture2D" uid="uid://b45agunr6cqph" path="res://_Assets/Environment/Tilesets/SpecialTile3-Green.png" id="37_wjg0d"]
 [ext_resource type="Texture2D" uid="uid://dkhfnc6l7rr1t" path="res://_Assets/Environment/WalkTile32x32.png" id="38_0l5vj"]
 [ext_resource type="Texture2D" uid="uid://jg8g7sjhq14a" path="res://_Assets/Environment/GrassTilesRED.png" id="39_1s4ru"]
@@ -5772,9 +5772,16 @@ wave6StartTime = 110
 record_footage = false
 
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1386042652]
-stream = ExtResource("37_glqk8")
+stream = ExtResource("2_ey8ha")
 volume_db = -10.0
 script = ExtResource("48_yalta")
+calm_1_end = 57.0
+intense_1_start = 57.0
+intense_1_end = 85.0
+calm_2_start = 85.0
+calm_2_end = 128.0
+intense_2_start = 128.0
+intense_2_end = 157.0
 
 [node name="WaveTableHost" parent="." unique_id=958368631 instance=ExtResource("2_w3i3s")]
 

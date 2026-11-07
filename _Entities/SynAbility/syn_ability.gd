@@ -59,6 +59,7 @@ func set_ability_targeting_active()->void:
 	UiFx.add_pulsing_button_highlight(syn_ability_button)
 	syn_crosshair_active = true
 	syn_ability_crosshair.show()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_SELECTED)
 
 # --- Charge helpers -------------------------------------------------
 
@@ -105,6 +106,7 @@ func _tick_cooldowns(delta: float) -> void:
 		var rate : float = charge_boost_multipler if charges[_other_color(color)]["state"] == ChargeState.ACTIVE else 1.0
 		charge["cooldown_left"] = max(0.0, charge["cooldown_left"] - delta * rate)
 		if charge["cooldown_left"] == 0.0:
+			AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_CHARGED)
 			charge["state"] = ChargeState.READY
 
 func _bar_percent() -> float:
@@ -120,6 +122,7 @@ func _bar_percent() -> float:
 			# While recharging the bar fills 0 -> 100.
 			if charge["cooldown_duration"] > 0.0:
 				return (1.0 - charge["cooldown_left"] / charge["cooldown_duration"]) * 100.0
+			
 			return 100.0
 		_:
 			return 100.0

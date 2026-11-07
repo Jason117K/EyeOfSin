@@ -1,5 +1,7 @@
 extends Syn_Ability_Instance
 
+#15
+#30
 @export var damage := 100
 @export var aftershock_dmg := 25 
 @export var aftershock_interval := 1.2
@@ -60,7 +62,7 @@ func _ready() -> void:
 	lightning_strike_anim.frame_changed.connect(damage_zombies)
 	lightning_strike_anim.show()
 	lightning_strike_anim.play()
-	
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_LIGHTNING_DEPLOY)
 	super()
 
 	

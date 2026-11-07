@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1gmvehw2gd8s"
+path="res://.godot/imported/Spell Flame Cast.wav-24a51197eaa4e0510f70399d69e34ca1.sample"
+
+[deps]
+
+source_file="res://_Assets/Audio/SFX/Spell Flame Cast.wav"
+dest_files=["res://.godot/imported/Spell Flame Cast.wav-24a51197eaa4e0510f70399d69e34ca1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
