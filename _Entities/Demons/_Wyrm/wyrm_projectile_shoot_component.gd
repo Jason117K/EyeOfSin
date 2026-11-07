@@ -24,6 +24,7 @@ var occulum_buff_cooldown: float = 2
 var auto_fire := true
 var projectile_damage := 20
 var bleed_damage_increase := 3
+var bleed_damage := 1 
 
 func _ready() -> void:
 
@@ -39,7 +40,8 @@ func _ready() -> void:
 	occulum_buff_cooldown = parent_demon.occulum_buff_cooldown
 	
 	projectile_damage = parent_demon.projectile_damage
-	bleed_damage_increase = parent_demon.bleed_damage_increase
+	bleed_damage = parent_demon.bleed_damage
+	bleed_damage_increase = parent_demon.spinal_bleed_damage_increase
 	damage = projectile_damage
 
 	shoot_positions = [shootPosition1] #shootPosition2]
@@ -83,6 +85,7 @@ func _on_animated_sprite_component_frame_changed() -> void:
 		
 func apply_buffs_to_projectile(projectile_to_buff: Node) -> void:
 	projectile_to_buff.bleed = true
+	projectile_to_buff.bleed_damage = bleed_damage
 	projectile_to_buff.piercing = true
 	projectile_to_buff.is_slowing = false
 	projectile_to_buff.damage = projectile_damage
@@ -119,7 +122,7 @@ func shoot_projectile(is_ult:bool=false) -> void:
 	if is_ult:
 		projectile.speed = projectile.speed * 2
 	
-	
+#From Spinal Occulum
 func wyrm_bleed_buff() -> void:
 	isWyrmBleedBuffed = true
 

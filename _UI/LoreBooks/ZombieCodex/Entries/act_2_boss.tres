@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+
+[resource]
+script = ExtResource("1_entry")
+discovery_name = "Act2Boss"
+title_key = "NAME_ACT2BOSS"

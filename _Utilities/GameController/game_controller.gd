@@ -281,6 +281,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 	_stamp_overlays()
 	_apply_view_masks()
 	_apply_demon_loadouts(scene1_path)
+	Progress.mark_level_attempted(scene1_path)
 	#print("About to Make Camera2D Currebt")
 	current_scenes[0].get_node("Camera2D").make_current()
 	if "Level1/Level0-1" in scene1_path:

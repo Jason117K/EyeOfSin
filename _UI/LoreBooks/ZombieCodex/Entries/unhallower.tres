@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://cbqsu6sxf5odc" path="res://_Entities/Zombies/_Unhallower/Unhallower.png" id="2_portrait"]
+[ext_resource type="SpriteFrames" uid="uid://bjc5v2of6tb2k" path="res://_Entities/Zombies/ImgAnimationResources/BucketHead.tres" id="3_animation"]
+
+[resource]
+script = ExtResource("1_entry")
+discovery_name = "Unhallower"
+title_key = "NAME_UNHALLOWER"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt"
+portrait = ExtResource("2_portrait")
+portrait_flip_h = true
+animation = ExtResource("3_animation")
+animation_flip_h = true

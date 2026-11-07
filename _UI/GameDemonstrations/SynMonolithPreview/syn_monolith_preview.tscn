@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://_UI/GameDemonstrations/SynMonolithPreview/syn_monolith_preview_controller.gd" id="1_controller"]
+[ext_resource type="PackedScene" uid="uid://br5uv5svgqnxm" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn" id="2_stage"]
+
+[node name="SynMonolithPreview" type="CenterContainer"]
+process_mode = 3
+script = ExtResource("1_controller")
+
+[node name="Stage" parent="." instance=ExtResource("2_stage")]
+layout_mode = 2

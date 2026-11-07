@@ -72,7 +72,7 @@ func _ready() -> void:
 		extension_speed = demon.extension_speed
 		max_length = demon.max_length
 		laser_width = demon.laser_width
-		damage = demon.laser_damage
+		damage = demon.projectile_damage
 		maw_damage = demon.maw_damage
 		duration = demon.duration
 		auto_fire = demon.laser_auto_fire

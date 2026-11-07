@@ -693,7 +693,7 @@ func spawn_hero_demon()->void:
 	
 	Global.is_demon_hero_selected = false
 	Global.syn_monolith_activated.emit()
-	pass
+	Discovery.discover_monolith()
 
 func despawn_hero_demon()->void:
 	var opposite_demon_manager := Global.get_demon_manager(!is_green)

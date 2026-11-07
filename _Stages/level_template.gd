@@ -487,6 +487,7 @@ var _current_step_index: int = -1
 
 func define_tutorial_steps(steps: Array[Dictionary]) -> void:
 	_tutorial_steps = steps
+	Progress.record_tutorial_steps(scene_file_path, steps.size())
 
 
 func advance_tutorial() -> void:

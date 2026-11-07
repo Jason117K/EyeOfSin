@@ -7,7 +7,9 @@ var cooldown_timer: Timer
 var is_active := false
 var is_on_cooldown := false
 var cooldown_elapsed := 0.0
-var is_green : bool = false 
+var is_green : bool = false
+## Set by HeroDemon.make_demo(): the ability never triggers itself, a codex preview calls begin().
+var is_demo := false
 
 
 func _ready() -> void:
@@ -51,7 +53,7 @@ func ability_end() -> void:
 	is_active = false
 	cooldown_timer.wait_time = cooldown_duration
 	cooldown_timer.start()
-	is_on_cooldown = true 
+	is_on_cooldown = true
 	cooldown_elapsed = 0.0
 	#anim_sprite.speed_scale = 1
 	#anim_sprite.animation = "idle"

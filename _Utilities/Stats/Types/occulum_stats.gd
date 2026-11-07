@@ -22,7 +22,8 @@ class_name OcculumStats extends DemonStats
 @export var hive_buffed_health := 375
 
 @export_category("Ultimate Parameters")
-@export var ultimate_blood_value := 200
+@export var ultimate_blood_multiplier := 2.0
+@export var wyrm_ultimate_blood_multiplier := 1.75
 @export var mana_add_on_generate_blood := 100
 
 @export_category("Cost Scaling")

@@ -15,7 +15,12 @@ var beat_of_death_timer: Timer
 
 func _ready() -> void:
 	super()
-	beat_of_death_damage_aoe.area_entered.connect(trigger) 
+	beat_of_death_timer = Timer.new()
+	beat_of_death_timer.timeout.connect(damage_all_zombies_in_range)
+	add_child(beat_of_death_timer)
+	if is_demo:
+		return
+	beat_of_death_damage_aoe.area_entered.connect(trigger)
 	beat_of_death_lure_timer.timeout.connect(begin)
 	#anim_sprite = 
 
@@ -37,13 +42,7 @@ func begin() -> void:
 func apply_ability()->void:
 	#anim_sprite.animation = "beat_of_death"
 	#Start Timer to increment beating dmaage, throw in times 2
-	beat_of_death_timer = Timer.new()
-	beat_of_death_timer.one_shot = false
-	beat_of_death_timer.autostart = false
-	beat_of_death_timer.wait_time = beat_of_death_interval
-	beat_of_death_timer.timeout.connect(damage_all_zombies_in_range)
-	add_child(beat_of_death_timer)
-	beat_of_death_timer.start()
+	beat_of_death_timer.start(beat_of_death_interval)
 	
 		
 func damage_all_zombies_in_range() -> void:

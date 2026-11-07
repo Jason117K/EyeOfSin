@@ -21,3 +21,7 @@ NAME_MAW,MAW,FAUCES,巨口,ПАСТЬ,GOELA,SCHLUND,マウ,GUEULE,PASZCZA,마우
 NAME_EYE,EYE,OJO,魔眼,ОКО,OLHO,AUGE,アイ,ŒIL,OKO,아이,Demon nickname (codex tab)
 NAME_SPYDER,SPYDER,ARAKNIA,魔蛛,ПАУКЪ,ARANHO,SPYNNE,スパイダー,ARAIGNÉE,PAJONK,스파이더,Demon nickname (codex tab); stylized spelling of spider
 NAME_O_SPINE,O-SPINE,O-ESPINA,眼脊柱,О-ХРЕБЕТ,O-ESPINHA,O-DORN,オー・スパイン,O-ÉPINE,O-KRĘG,오-스파인,Demon nickname (codex tab)
+"NAME_TANK","TANK","TANQUE","坦克","ТАНК","TANQUE","TANK","タンク","TANK","TANK","탱크","Zombie name"
+"NAME_RANGED","RANGED","TIRADOR","远程者","СТРЕЛОК","ATIRADOR","FERNKÄMPFER","レンジド","TIREUR","STRZELEC","레인지드","Zombie name (attacks from a distance)"
+"NAME_MINION","MINION","ESBIRRO","爪牙","ПРИСПЕШНИК","LACAIO","SCHERGE","ミニオン","SBIRE","SŁUGA","미니언","Zombie name"
+"NAME_ARGUS","ARGUS","ARGUS","阿古斯","АРГУС","ARGUS","ARGUS","アーガス","ARGUS","ARGUS","아르구스","Boss name — proper noun; do not translate"

@@ -183,6 +183,13 @@ which is in **select-screen button order, not folder order** (slot 7 is `Level8.
 `Level7.tscn`). A new level needs a table entry, or its wins log `[PROGRESS] unknown level` and
 aren't recorded. Wins are recorded at one choke point, `WaveManager._win()`, before `level_ended`.
 Select screens darken and disable locked entries via `UiFx.set_locked` and expose `refresh_locks()`.
+**Tutorial toggle (OpenLevel).** A level counts as attempted once it loads
+(`Progress.mark_level_attempted`, from `change_dual_scenes`), or once it's beaten. Its step
+count is saved when the level calls `define_tutorial_steps`, which only happens with tutorials on.
+Both are stored in the `[tutorial_steps]` section (`-1` = attempted, count not seen yet).
+`OpenLevel.set_levels` applies the rule on every open, for all Acts. An unattempted level hides the
+toggle and plays the tutorial. An attempted one defaults to off, and shows the toggle only if it
+has more than 1 step or the count is unknown. `Global.skip_tutorials` is written only on Play.
 Each level card's `Lock` sprite shows only while that level is locked (counter-modulated so it
 stays full brightness over the darkened card).
 Their sorcery-menu button stays locked until `Progress.any_sorcery_unlocked()`. The win screens'
@@ -221,18 +228,39 @@ when nothing is equipped, so a panel pick carries into the level. Never call
 player has met. Anything else is a jet-black silhouette of its normal art and can't be clicked.
 - **Sources of truth:** demons = `Progress.is_demon_unlocked`. Zombies = first real spawn
   (`Global.unlock_zombie`, called from every zombie's `_ready`). Synergies = first trigger
-  (`Global.unlock_buff`, connected in all six demon scripts). Zombies and synergies are saved to
-  `user://discovery.cfg`. `discover_*` returns true only the first time, so the in-level unlock
-  pop-ups fire once per save, not once per session.
+  (`Global.unlock_buff`, connected in all six demon scripts). The Syn Monolith = first placement
+  (`Demon.spawn_hero_demon` → `Discovery.discover_monolith`). Zombies, synergies and the Monolith
+  are saved to `user://discovery.cfg`. `discover_*` returns true only the first time, so the
+  in-level unlock pop-ups fire once per save, not once per session.
 - **Look:** `UiFx.set_silhouette` (art `self_modulate` = black + disabled; reverting restores the
   exact normal look). Card frames/backs behind the art use `UiFx.set_locked`.
 - **Demon codex** locks all three pressable layers per demon (art, card back, red outline;
   SpinalOcculum's nodes are `Walnut`). Synergy tabs Alt2–6 are looked up with
   `SynergyCatalog.get_by_codex_slot(page, alt_index)`, and Alt1 (base page) is always open.
-- **Zombie codex** maps discovery names to frame + art nodes in `ZOMBIE_ENTRIES`, and opens on the
-  first discovered zombie (blank page if none). The clickable frames live in
-  `AllZombieButtonsContainer`, and the art above them ignores the mouse.
-- Both codex scenes are rebuilt on every open and read live state in `_ready`.
+  - The three card layers sit together under `DemonCardScroll/DemonCardStack`, so they scroll as
+    one. The controller reaches them through their unique names (`%Card_BG_MarginContainer`,
+    `%RedCardOutlineMarginContainer`, `%DemonCardMarginContainer`). Card buttons use
+    `mouse_filter = PASS` so the mouse wheel still scrolls over them.
+  - `Row4/SynMonolith` (card back + art, no outline) opens the Syn Monolith page. The grid stays,
+    and `SynMonolithPreview` plays in the synergy preview frame. In synergy mode Row4 hides and
+    the list stops scrolling.
+  - **Syn Monolith preview** (`_UI/GameDemonstrations/SynMonolithPreview/`) wraps the synergy
+    preview's stage and scripts one loop: Reborn kill the Spinal Occulum, Beat of Death, Lightning
+    Strike, Revive, pause. Its Monolith uses `HeroDemon.make_demo()` (see Gotchas). Timing
+    constants are at the top of `syn_monolith_preview_controller.gd`.
+- **Zombie codex** is data-driven. Each zombie is a `ZombieCodexEntry` `.tres`
+  (`_UI/LoreBooks/ZombieCodex/Entries/`) listed in the root's `entries` array, in codex order.
+  `ZombieGrid` holds the `ZombieCodexSlot` cards, and its slot count is the page size (3×3 = 9).
+  Next/Previous are locked at the ends and hidden when there's only one page. Unused slots on the
+  last page are hidden. It opens on the page of the first discovered entry (blank detail if none).
+  An entry whose `discovery_name` isn't in `ZombieRegistry.SCENES` can never unlock, and it warns
+  on open.
+  - **Add a zombie:** create a `ZombieCodexEntry` `.tres` (discovery name, `NAME_*` key, lore
+    `.txt`, portrait, SpriteFrames + animation name, flips, `preview_scale`) and add it to
+    `entries`. Add its `NAME_*` row to `names.csv` and sync its `.txt` (see Localization). No code
+    changes.
+- Both codex scenes are rebuilt on every open and read live state in `_ready`. The zombie codex
+  also re-reads it on Ctrl+U through `refresh_locks()`.
 
 **Stat configs (`UnitStats` resources, `_Utilities/Stats/`).** Every zombie and demon root has a
 **Stats** slot (`ZombieStats` / `DemonStats`). A filled slot **overrides** the scene's matching
@@ -337,6 +365,9 @@ and applied in `GameController._ready` (saved → OS language → `en`).
   Outside a level, `Ctrl+U` = unlock every level/Act with SSS everywhere (51 stars, every
   sorcery) and discover every zombie + synergy. That's saved. All three live in
   `GameController._input`.
+  `K` (`debug_add_ult_charge`) = +1 ult charge, handled in `ultimate_charge_container.gd`. It's
+  gated by `OS.is_debug_build()`, so it needs no removal before release, and it does nothing while
+  the ult is disabled.
   `U` won't fire during tutorial steps whose input filter swallows keys (use `skip_tutorials`).
   For a fresh save, delete `progress.cfg`, `loadout.cfg` and `discovery.cfg` (Editor → Project →
   Open User Data Folder).
@@ -355,6 +386,15 @@ and applied in `GameController._ready` (saved → OS language → `en`).
 - **A `class_name` static module that names an autoload won't compile in headless `-s` /
   `--check-only` runs** (no autoloads there), which breaks scratchpad tests. Look the autoload up at
   runtime instead (`get_node_or_null(^"/root/AudioManager")`, as `DemonLoadout` does).
+- **A Syn Monolith shown outside a level must be a demo (`HeroDemon.make_demo()` before
+  `add_child`).** A normal one calls `Global.register_hero_demon`, which removes the player's real
+  Monolith, and its revive places demons through the level's DemonSelectionMenu/DemonManager. A
+  demo skips registration, its abilities never trigger themselves (call `reset_cooldown()` then
+  `begin()`), and a revive point with `demo_revive` set calls that instead of placing a demon.
+  Codex preview demons also call `disable_buff_nodes()`: `Global` ticks their buffs, and
+  `Global.unlock_buff` would discover a synergy from inside the codex. Lightning Strike's bolt
+  damage is `LightningStrike_Controller.damage` (150), copied onto each `DemonProjectile`. Before
+  2026-11-07 the bolts kept the projectile's default 20.
 - **`EmptyDemon` (`is_empty`) short-circuits `_ready`** — no processing/registration; it exists only
   as a cross-dimension placement blocker.
 - **Maw uses a deliberate `-256` visual offset** in `place_demon` while its `grid_map` keys stay on
@@ -417,6 +457,8 @@ refactor phases that touch the restart path, buff matching, or tick order.
    3/4/12/14/15 and 27/33/39/45 stars unlock the right ones. Demon grid: locked demons hidden.
    After the Maw unlocks, toggle 1–5 per dimension; level 12+ menus offer exactly that
    dimension's loadout, including after a restart, and levels ≤ 11 are unchanged.
+   Tutorial toggle: fresh save → opening 1-1 shows no toggle and Play runs the tutorial. Reopening
+   it shows the toggle, off. 1-9 and 2-2 hide it after one play, while 2-1 keeps it.
 9. **Sorceries + bars:** the Act screens' sorcery button stays dark until the first sorcery
    unlocks. A sorcery picked on the ability panel is still equipped in levels 5–17 (not replaced
    by Lightning) and after a restart. Swap/Syn bars show in levels and on the ability panel only:
@@ -427,6 +469,13 @@ refactor phases that touch the restart path, buff matching, or tick order.
 	that have spawned. Every synergy tab is a silhouette until that synergy triggers, its pop-up
 	shows once, and after reopening the codex the tab is normal. A relaunch keeps everything. The
 	same synergy again → no pop-up. Beat level 1 → Occulum turns normal. Ctrl+U → everything normal.
+	Zombie codex paging: page 1 shows 9 cards with Previous dark. Next shows the rest, with unused
+	slots hidden and Next dark. With only a page-2 zombie discovered, it opens on page 2.
+	Demon codex: the list scrolls (wheel over cards too) to the Syn Monolith card, a silhouette
+	until a Monolith is first placed. Its page loops Spinal Occulum death → Beat of Death →
+	Lightning Strike → Revive (with the revive flash) → pause, and stops when another card is
+	clicked. A synergy view hides it and stops scrolling. Opened mid-level with a Monolith placed,
+	the real Monolith survives and no synergy is discovered.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **

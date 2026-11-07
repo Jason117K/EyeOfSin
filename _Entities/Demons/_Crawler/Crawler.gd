@@ -23,10 +23,20 @@ extends Demon
 @export_category("Ultimate Config")
 @export var mana_add_on_shot := 100 
 @export var ultimate_timer_wait_time := 0.2
+@export var spinal_ult_fire_rate_divisor := 3.0
+@export var spinal_ult_volley_divisor := 2
+@export var maw_ult_spiderling_count := 7
+@export var maw_ult_spiderling_duration := 6.0
 
-var ultimate_timer : Timer 
+const ULT_SPREAD: Array[Vector2] = [Vector2(0, 8), Vector2(8, 0), Vector2(0, -8)]
+const ULT_CENTER := Vector2(8, 0)
+const LANE_OFFSET := Vector2(0, 32)
+
+var ultimate_timer : Timer
 var volleys_fired : int = 0
 var ultimate_max_volleys : int = 8
+var ult_volley_offsets: Array[Vector2]
+var ult_volley_count: int
 
 
 # --- Preloads ---
@@ -160,9 +170,9 @@ func debuff() -> void:
 	attack_ray.target_position = og_range_target_pos
 	if spiderling_timer != null:
 		spiderling_timer.stop()
-	if $"../Arm" != null:
-		$"../Arm".visible = false 
-		$"../Arm2".visible = false 
+	for arm in [arm_1, arm_2]:
+		arm.process_mode = Node.PROCESS_MODE_DISABLED
+		arm.hide()
 	update_range_preview()
 
 
@@ -185,13 +195,22 @@ func _cleanup() -> void:
 
 func _on_spawn_spiderling_timeout() -> void:
 	if mawBuff:
-		var spiderling: Node2D = spiderling_scene.instantiate()
-		spiderling.position = position + Vector2(8, -4)
-		if self.is_in_group("Green"):
-			spiderling.add_to_group("Green")
-		else:
-			spiderling.add_to_group("Purple")
-		get_parent().add_child(spiderling)
+		spawn_spiderling()
+
+func spawn_spiderling() -> void:
+	var spiderling: Node2D = spiderling_scene.instantiate()
+	spiderling.position = position + Vector2(8, -4)
+	if self.is_in_group("Green"):
+		spiderling.add_to_group("Green")
+	else:
+		spiderling.add_to_group("Purple")
+	get_parent().add_child(spiderling)
+
+# Not gated on mawBuff: a cast ult finishes even if the Maw is lost.
+func _start_ult_spiderlings() -> void:
+	var interval := maw_ult_spiderling_duration / maw_ult_spiderling_count
+	for i in maw_ult_spiderling_count:
+		get_tree().create_timer(interval * (i + 1), false).timeout.connect(spawn_spiderling)
 
 
 # --- Preview ---
@@ -220,19 +239,36 @@ func trigger_ultimate()->void:
 	if not ultimate_timer.is_stopped():
 		return
 	Global.un_ready_ultimate()
+	_configure_ultimate()
 	ultimate_timer.start()
 	can_ult = false
 	animSpriteComp.animation = animSpriteComp.currentAttackAnim
 	animSpriteComp.speed_scale = 8
 	animSpriteComp.is_ulting = true
-	
+
+# The ult's shape is fixed at cast, so gaining or losing a buff mid-volley doesn't reshape it.
+func _configure_ultimate()->void:
+	ult_volley_offsets = ULT_SPREAD.duplicate()
+	ult_volley_count = ultimate_max_volleys
+	ultimate_timer.wait_time = ultimate_timer_wait_time
+	if hiveBuff:
+		for offset in ULT_SPREAD:
+			ult_volley_offsets.append(offset + LANE_OFFSET)
+			ult_volley_offsets.append(offset - LANE_OFFSET)
+	elif wyrmBuff:
+		ult_volley_offsets = [ULT_CENTER]
+	elif spinalOcculumBuff:
+		@warning_ignore("integer_division")
+		ult_volley_count = ultimate_max_volleys / spinal_ult_volley_divisor
+		ultimate_timer.wait_time = ultimate_timer_wait_time * spinal_ult_fire_rate_divisor
+	elif mawBuff:
+		_start_ult_spiderlings()
+
 func fire_volley()->void:
-	if volleys_fired < ultimate_max_volleys:
-		#print("Fire Volley")
-		projectile_shoot_component.add_projectile(Vector2(0, 8))
-		projectile_shoot_component.add_projectile(Vector2(8, 0))
-		projectile_shoot_component.add_projectile(Vector2(0, -8))
-		volleys_fired = volleys_fired + 1 
+	if volleys_fired < ult_volley_count:
+		for offset in ult_volley_offsets:
+			projectile_shoot_component.add_projectile(offset)
+		volleys_fired = volleys_fired + 1
 		ultimate_timer.start()
 	else:
 		crawler_ultimate_triggered.emit()

@@ -56,6 +56,11 @@ func _input(event: InputEvent) -> void:
 		disarm_ultimate()
 		get_viewport().set_input_as_handled()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if OS.is_debug_build() and event.is_action_pressed("debug_add_ult_charge"):
+		increase_ultimate_charges()
+		get_viewport().set_input_as_handled()
+
 func add_mana(mana_to_add : float)->void:
 	#print("GLOBAL Add Mana : ", mana_to_add)
 	if is_enabled:

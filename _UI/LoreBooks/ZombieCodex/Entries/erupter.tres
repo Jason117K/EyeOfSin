@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://vfleagnw1j4h" path="res://_Entities/Zombies/_Erupter/TickerZombie.png" id="2_portrait"]
+[ext_resource type="SpriteFrames" uid="uid://bs4vr30toj2i3" path="res://_Entities/Zombies/ImgAnimationResources/TickerFrames.tres" id="3_animation"]
+
+[resource]
+script = ExtResource("1_entry")
+discovery_name = "Erupter"
+title_key = "NAME_ERUPTER"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/tickerZombieDescription.txt"
+portrait = ExtResource("2_portrait")
+portrait_flip_h = true
+animation = ExtResource("3_animation")
+animation_flip_h = true

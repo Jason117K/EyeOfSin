@@ -16,7 +16,7 @@ class_name WyrmStats extends DemonStats
 @export var occulum_buff_cooldown: float = 0.9
 @export var projectile_speed := 600
 @export var projectile_damage := 20
-@export var bleed_damage_increase := 2
+@export var spinal_bleed_damage_increase := 2
 @export var buffed_range_target_pos := Vector2(450.0, 0)
 
 @export_category("Laser")

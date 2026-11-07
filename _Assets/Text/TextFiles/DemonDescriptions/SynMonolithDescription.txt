@@ -1,0 +1,4 @@
+Raw Syn energy given form. Its abilities fire on their own:
+Beat of Death: damages nearby zombies.
+Lightning Strike: bolts pierce all lanes ahead.
+Revive: raises a fallen neighboring Demon.

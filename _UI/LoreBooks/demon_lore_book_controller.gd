@@ -1,50 +1,61 @@
 extends AnimatedTextureRect
 
 #Button References
-@onready var occulumButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum"
-@onready var crawlerButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler"
-@onready var spinalOcculumButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut"
-@onready var wyrmButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm"
-@onready var hiveButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive"
-@onready var mawButton := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw"
+@onready var occulumButton := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum"
+@onready var crawlerButton := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler"
+@onready var spinalOcculumButton := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut"
+@onready var wyrmButton := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm"
+@onready var hiveButton := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive"
+@onready var mawButton := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw"
 
 @onready var synergy_preview_container := $"../../CurrentDemonVboxContainer/SynergyPreviewContainer"
 
 @onready var currentDemonLabel := $"../../CurrentDemonLabel"
 @onready var bgDarken := $"../../BGDarkEn"
-@onready var backOutDetailsButton := $"../../BackOutDetails"
 @onready var staticPreview := $"../../StaticPreviewPanelContainer/StaticPreview"
 @onready var static_preview_container := $"../../StaticPreviewPanelContainer"
 
 var current_synergy_preview: Node = null
 
-@onready var alt1 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1"
-@onready var alt2 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2"
-@onready var alt3 :=$"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3"
-@onready var alt4 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4"
-@onready var alt5 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5"
-@onready var alt6 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6"
+@onready var alt1 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1"
+@onready var alt2 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2"
+@onready var alt3 :=$"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3"
+@onready var alt4 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4"
+@onready var alt5 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5"
+@onready var alt6 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6"
 
-@onready var alt_row_1 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1"
-@onready var alt_row_2 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2"
-@onready var alt_row_3 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3"
+@onready var alt_row_1 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1"
+@onready var alt_row_2 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2"
+@onready var alt_row_3 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3"
 
-@onready var row_1 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1"
-@onready var row_2 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2"
-@onready var row_3 := $"../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3"
+@onready var row_1 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1"
+@onready var row_2 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2"
+@onready var row_3 := $"%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3"
 
 @onready var preview := $"../../CurrentDemonVboxContainer/SynergyPreviewContainer/SynergyMarginContainer/SynergyPreview"
 
 @onready var red_display_card := load("res://_Entities/Demons/_Maw/EmptyDisplayCard_RED.png")
 
-@onready var red_occulum  := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Occulum"
-@onready var red_crawler := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler"
-@onready var red_spinal_occulum := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut"
-@onready var red_maw := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw"
-@onready var red_wyrm := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm"
-@onready var red_hive := $"../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive"
+@onready var red_occulum  := $"%RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Occulum"
+@onready var red_crawler := $"%RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler"
+@onready var red_spinal_occulum := $"%RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut"
+@onready var red_maw := $"%RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw"
+@onready var red_wyrm := $"%RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm"
+@onready var red_hive := $"%RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive"
 
 var is_in_synergy := false
+
+const MONOLITH_ROW_PATH := "Row4/SynMonolith"
+var syn_monolith_description := "res://_Assets/Text/TextFiles/DemonDescriptions/SynMonolithDescription.txt"
+
+@onready var monolith_preview := %SynMonolithPreview
+@onready var monolith_button: BaseButton = get_node(DEMON_ART_ROWS + MONOLITH_ROW_PATH)
+@onready var monolith_card_back: BaseButton = get_node(DEMON_CARD_BACK_ROWS + MONOLITH_ROW_PATH)
+@onready var row_4: Control = get_node(DEMON_ART_ROWS + "Row4")
+@onready var card_back_row_4: Control = get_node(DEMON_CARD_BACK_ROWS + "Row4")
+@onready var demon_card_scroll: ScrollContainer = %DemonCardScroll
+@onready var demon_card_stack: Control = $"%DemonCardScroll/DemonCardStack"
+@onready var demon_card_stack_height: float = demon_card_stack.custom_minimum_size.y
 
 #Demon Text Descriptions
 var occulumDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
@@ -146,9 +157,9 @@ const DEMON_PAGES := {
 
 # Each demon has three pressable layers sharing one row path: its art, its card back and
 # its focus outline. Keyed by Progress demon name; SpinalOcculum's nodes are "Walnut".
-const DEMON_ART_ROWS := "../../DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/"
-const DEMON_CARD_BACK_ROWS := "../../Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/"
-const DEMON_OUTLINE_ROWS := "../../RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/"
+const DEMON_ART_ROWS := "%DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/"
+const DEMON_CARD_BACK_ROWS := "%Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/"
+const DEMON_OUTLINE_ROWS := "%RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/"
 const DEMON_ROW_PATHS := {
 	"Occulum": "Row1/Occulum",
 	"Crawler": "Row1/Crawler",
@@ -186,9 +197,10 @@ func _ready() -> void:
 		if auto_play:
 			play()
 			
-	occulumButton.pressed.connect(_on_occulum_pressed)
-	wyrmButton.pressed.connect(_on_wrym_pressed)
-	spinalOcculumButton.pressed.connect(_on_spinalOcculum_pressed)
+	monolith_button.pressed.connect(_on_syn_monolith_pressed)
+	monolith_card_back.pressed.connect(_on_syn_monolith_pressed)
+	monolith_button.mouse_entered.connect(_on_mouse_entered.bind(monolith_button))
+	monolith_button.mouse_exited.connect(_on_mouse_exited.bind(monolith_button))
 	_refresh_demon_locks()
 
 
@@ -205,6 +217,9 @@ func _refresh_demon_locks() -> void:
 		var outline := get_node_or_null(DEMON_OUTLINE_ROWS + row_path) as BaseButton
 		if outline != null:
 			outline.disabled = locked
+	var monolith_locked := not Discovery.is_monolith_discovered()
+	UiFx.set_silhouette(monolith_button, monolith_locked)
+	UiFx.set_locked(monolith_card_back, monolith_card_back, monolith_locked)
 
 
 # Alt2..Alt6 show the current page's synergies; undiscovered ones are silhouetted and
@@ -262,12 +277,38 @@ func _show_synergy_preview(demon_a: String, demon_b: String) -> void:
 	current_synergy_preview = _create_synergy_preview(demon_a, demon_b)
 
 func _clear_synergy_preview() -> void:
+	_clear_monolith_preview()
 	if current_synergy_preview and is_instance_valid(current_synergy_preview):
 		#current_synergy_preview.queue_free()
 		#current_synergy_preview = null
 		synergy_preview_container.hide()
 		current_synergy_preview.hide()
 		current_synergy_preview.clear_preview()
+
+func _on_syn_monolith_pressed() -> void:
+	clear_all_focus()
+	_clear_synergy_preview()
+	visible = false
+	static_preview_container.hide()
+	preview.hide()
+	synergy_preview_container.show()
+	monolith_preview.show()
+	monolith_preview.start()
+	set_text(syn_monolith_description)
+
+func _clear_monolith_preview() -> void:
+	if not monolith_preview.visible:
+		return
+	monolith_preview.stop()
+	monolith_preview.hide()
+	synergy_preview_container.hide()
+
+# Synergy tabs reuse rows 1-3, so the Monolith row hides and the list stops scrolling.
+func _set_card_list_scrollable(scrollable: bool) -> void:
+	row_4.visible = scrollable
+	card_back_row_4.visible = scrollable
+	demon_card_scroll.scroll_vertical = 0
+	demon_card_stack.custom_minimum_size.y = demon_card_stack_height if scrollable else 0.0
 
 #Sets the current Demon Description Text
 func set_text(newFile: String) -> void:
@@ -281,7 +322,8 @@ func set_demon_variations(newDemon: GlobalResourceLoader.DemonType) -> void:
 	row_1.visible = false
 	row_2.visible = false
 	row_3.visible = false
-	
+	_set_card_list_scrollable(false)
+
 	alt_row_1.visible = true
 	alt_row_2.visible = true
 	alt_row_3.visible = true
@@ -426,6 +468,7 @@ func _on_back_button_pressed() -> void:
 		row_1.visible = true
 		row_2.visible = true
 		row_3.visible = true
+		_set_card_list_scrollable(true)
 		clear_all_focus()
 		alt_row_1.visible = false
 		alt_row_2.visible = false
@@ -440,7 +483,6 @@ func _on_back_button_pressed() -> void:
 func _on_back_out_details_pressed() -> void:
 	if is_in_synergy == false:
 		bgDarken.visible = false
-		backOutDetailsButton.visible = false
 
 
 func _on_alt_1_pressed() -> void:

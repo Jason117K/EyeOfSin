@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_slot.gd" id="1_slot"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="2_frame"]
+[ext_resource type="StyleBox" uid="uid://dhpm871ygprfn" path="res://_UI/LoreBooks/zombie_style_box_texture.tres" id="3_hover"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frame"]
+texture = ExtResource("2_frame")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.8, 0.5019608, 1, 1)
+
+[node name="ZombieCodexSlot" type="Button"]
+custom_minimum_size = Vector2(47, 47)
+theme_override_styles/normal = SubResource("StyleBoxTexture_frame")
+theme_override_styles/hover = ExtResource("3_hover")
+script = ExtResource("1_slot")
+
+[node name="Portrait" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+ignore_texture_size = true
+stretch_mode = 5

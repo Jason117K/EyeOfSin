@@ -1,3 +1,4 @@
+class_name DemonRevivePoint
 extends Area2D
 
 @onready var death_timer := $DeathTimer
@@ -5,8 +6,10 @@ extends Area2D
 var current_demon_type : Global.DEMON_TYPE
 var demon_location : Vector2
 var demon_selection_menu : Control
-var demon_manager : Node 
-var is_green : bool 
+var demon_manager : Node
+var is_green : bool
+## Codex previews set this so a revive never places a demon in the real level.
+var demo_revive : Callable
 
 func _ready() -> void:
 	demon_selection_menu = Global.get_demon_selection_menu(is_green)
@@ -14,13 +17,22 @@ func _ready() -> void:
 
 func set_current_demon_type(new_demon_type:Global.DEMON_TYPE)->void:
 	current_demon_type = new_demon_type
-	
+
 func set_is_green(new_is_green : bool)->void:
-	is_green = new_is_green 
-	
-	
+	is_green = new_is_green
+
+
 func revive_summon()->void:
 	#print("[HERO_REVIVE]: Calling Revive SUMMON ")
+	if demo_revive.is_valid():
+		demo_revive.call()
+	else:
+		_summon_in_level()
+	self.hide()
+	death_timer.start()
+
+
+func _summon_in_level() -> void:
 	match current_demon_type:
 		Global.DEMON_TYPE.CRAWLER:
 			demon_selection_menu._on_CrawlerButton_pressed()
@@ -34,10 +46,7 @@ func revive_summon()->void:
 			demon_selection_menu._on_MawButton_pressed()
 		Global.DEMON_TYPE.HIVE:
 			demon_selection_menu._on_HiveButton_pressed()
-			
 	demon_manager.place_demon(demon_location)
-	self.hide()
-	death_timer.start()
 
 
 func _on_death_timer_timeout() -> void:

@@ -1,3 +1,4 @@
+class_name ReviveDemonController
 extends HeroAbilityComponent
 
 
@@ -5,14 +6,18 @@ extends HeroAbilityComponent
 @onready var lightning_revive_detection := $"../Revive_Detection"
 
 var demons_to_revive : Array[Area2D] = []
+var revive_fx_offset_y : float
 
 
 func _ready() -> void:
 	super()
-	lightning_revive_detection.area_entered.connect(add_to_revive_array) 
-	lightning_revive_anim.visible = false 
+	lightning_revive_anim.visible = false
 	lightning_revive_anim.stop()
-	
+	revive_fx_offset_y = lightning_revive_anim.position.y
+	lightning_revive_anim.animation_finished.connect(lightning_revive_anim.hide)
+	if is_demo:
+		return
+	lightning_revive_detection.area_entered.connect(add_to_revive_array)
 	check_for_demons_to_revive()
 			
 func check_for_demons_to_revive()->void:
@@ -53,11 +58,21 @@ func apply_ability()->void:
 
 func revive_demon()->void:
 	#print("[HERO_REVIVE]: Calling Revive Demon : ", demons_to_revive)
+	demons_to_revive = demons_to_revive.filter(func(point) -> bool: return is_instance_valid(point))
 	for res_point in demons_to_revive:
-		if is_instance_valid(res_point) && res_point != null:
-			res_point.revive_summon()
-			ability_end()
-			return 
+		play_revive_fx(res_point.global_position)
+		res_point.revive_summon()
+		ability_end()
+		return
+	is_active = false
+	is_on_cooldown = false
+
+
+func play_revive_fx(target_global_position: Vector2) -> void:
+	var hero := lightning_revive_anim.get_parent() as Node2D
+	lightning_revive_anim.position = hero.to_local(target_global_position) + Vector2(0, revive_fx_offset_y)
+	lightning_revive_anim.show()
+	lightning_revive_anim.play(&"default")
 			
 	
 		

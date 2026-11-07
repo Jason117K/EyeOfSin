@@ -19,3 +19,7 @@ class_name CrawlerStats extends DemonStats
 @export_category("Ultimate")
 @export var mana_add_on_shot := 100
 @export var ultimate_timer_wait_time := 0.2
+@export var spinal_ult_fire_rate_divisor := 3.0
+@export var spinal_ult_volley_divisor := 2
+@export var maw_ult_spiderling_count := 7
+@export var maw_ult_spiderling_duration := 6.0

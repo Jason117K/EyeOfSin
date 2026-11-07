@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://cb8ilmxxu5imp" path="res://_Entities/Zombies/_Wretch/BackUpDancer.png" id="2_portrait"]
+[ext_resource type="SpriteFrames" uid="uid://cecxtlvy5647m" path="res://_Entities/Zombies/ImgAnimationResources/BackUpDancer.tres" id="3_animation"]
+
+[resource]
+script = ExtResource("1_entry")
+discovery_name = "Wretch"
+title_key = "NAME_WRETCH"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/backUpDancerDescription.txt"
+portrait = ExtResource("2_portrait")
+animation = ExtResource("3_animation")
+animation_flip_h = true

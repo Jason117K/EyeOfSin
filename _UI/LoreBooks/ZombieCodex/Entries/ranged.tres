@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+
+[resource]
+script = ExtResource("1_entry")
+discovery_name = "Ranged"
+title_key = "NAME_RANGED"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/rangedZombieDescription.txt"

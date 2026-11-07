@@ -11,7 +11,7 @@ extends Demon
 @export var occulum_buff_cooldown: float = 0.9
 @export var projectile_speed := 600
 @export var projectile_damage := 20
-@export var bleed_damage_increase := 2
+@export var spinal_bleed_damage_increase := 2
 
 # --- Exports: Laser ---
 @export var laser_color: Color = Color(1.0, 0.0, 0.0, 1.0)

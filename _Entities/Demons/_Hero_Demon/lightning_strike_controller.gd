@@ -18,10 +18,11 @@ var lightning_strike_instance : Area2D
 
 func _ready() -> void:
 	super()
-	lightning_strike_detection.area_entered.connect(trigger) 
 	for lightning_strike in all_lightning_strikes:
-		lightning_strike.visible = false 
+		lightning_strike.visible = false
 		lightning_strike.stop()
+	if not is_demo:
+		lightning_strike_detection.area_entered.connect(trigger)
 
 func get_detection_area()->Area2D:
 	return lightning_strike_detection
@@ -55,6 +56,7 @@ func shoot_lightning_strike() -> void:
 		lightning_strike.visible = true
 		lightning_strike.play()
 		lightning_strike_instance = lightning_strike_projectile_scene.instantiate()
+		lightning_strike_instance.damage = damage
 		lightning_strike_instance.add_to_group(Dim.of(host_demon))
 		lightning_strike_instance.position = layer.to_local(lightning_strike.global_position)
 		layer.add_child(lightning_strike_instance)

@@ -893,7 +893,6 @@ bloodWaitTime = 33.0
 wyrmBloodWaitTime = 40.0
 crawlerBloodWaitTime = 25.0
 spinal_occulum_heal_over_time_amount = 200
-ultimate_blood_value = 100
 mana_add_on_generate_blood = 5
 health = 125.0
 maxHealth = 125.0

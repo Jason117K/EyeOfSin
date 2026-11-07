@@ -15,9 +15,9 @@ extends Demon
 @export var occulum_buff_cooldown: float = 0.9
 @export var projectile_speed := 600
 @export var projectile_damage := 20
-@export var bleed_damage_increase := 2
+@export var spinal_bleed_damage_increase := 2
 @export var buffed_range_target_pos := Vector2(450.0,0)
-
+@export var bleed_damage := 1 
 
 @export_category("Laser Visual")
 
@@ -25,7 +25,7 @@ extends Demon
 @export var extension_speed: float = 1000.0
 @export var max_length: float = 1000.0
 @export var laser_width: float = 4.0
-@export var laser_damage: float = 20
+#@export var laser_damage: float = 20
 # Gaze of Baal damage-per-hit multiplier.
 @export var baal_damage_multiplier := 2.0
 @export var maw_damage: float = 60

@@ -15,7 +15,8 @@ const SCENES: Dictionary = {
 	"Minion" : preload("res://_Entities/Zombies/_MinionZombie/MinionZombie.tscn"),
 	"Ranged" : preload("res://_Entities/Zombies/_RangedZombie/RangedZombie.tscn"),
 	"Act2Boss" : preload("res://_Entities/Zombies/_Act2Boss/Act_2_Boss_Zombie.tscn"),
-	"Argus" : preload("res://_Entities/Zombies/_Act3Boss/Act_3_Boss_Zombie.tscn")
+	"Argus" : preload("res://_Entities/Zombies/_Act3Boss/Act_3_Boss_Zombie.tscn"),
+	"Wretch" : preload("res://_Entities/Zombies/_Wretch/BackUpDancerZombie.tscn")
 }
 
 ## Per-type threat weighting; a wave's danger score is the count-weighted sum.

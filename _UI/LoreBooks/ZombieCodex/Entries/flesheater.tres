@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://87mvflvt25ip" path="res://_Entities/Zombies/_Flesheater/FootBallZombie.png" id="2_portrait"]
+[ext_resource type="SpriteFrames" uid="uid://cabv2mux6b64t" path="res://_Entities/Zombies/ImgAnimationResources/FootBall.tres" id="3_animation"]
+
+[resource]
+script = ExtResource("1_entry")
+discovery_name = "Flesheater"
+title_key = "NAME_FLESHEATER"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/footBallZombieDescription.txt"
+portrait = ExtResource("2_portrait")
+animation = ExtResource("3_animation")

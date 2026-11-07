@@ -541,6 +541,7 @@ script = ExtResource("9_omot1")
 cooldown_duration = 5.0
 
 [node name="Lightning_Revive" type="AnimatedSprite2D" parent="." unique_id=1585302888]
+visible = false
 position = Vector2(72, -56)
 sprite_frames = SubResource("SpriteFrames_wmcn8")
 frame = 9

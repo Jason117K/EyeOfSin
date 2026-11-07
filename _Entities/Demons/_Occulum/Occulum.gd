@@ -21,7 +21,8 @@ extends Demon
 @export var hive_buffed_health := 375
 
 @export_category("Ultimate Parameters")
-@export var ultimate_blood_value := 200
+@export var ultimate_blood_multiplier := 2.0
+@export var wyrm_ultimate_blood_multiplier := 1.75
 @export var mana_add_on_generate_blood := 100
 
 @export_category("Cost Scaling")
@@ -74,8 +75,6 @@ var _base_blood_wait_time := 0.0
 var healTimer: Timer
 
 signal occulum_buff_unlocked(buff_to_unlock:String)
-
-var ultimate_buffed := false 
 
 
 # --- Lifecycle ---
@@ -223,13 +222,14 @@ func force_generate_blood()->Node2D:
 	blood_instance.global_position = self.global_position + Vector2(0, -40)
 	return blood_instance
 	
-func generate_blood() -> Node2D:
+func generate_blood(is_ultimate := false) -> Node2D:
 	if Global.gameIsStarted == false:
 		##print("Game Not Started Cannot Generate")
 		return
-	Global.add_mana(mana_add_on_generate_blood)
-	if mawBuff:
-		can_eat_zombie = true
+	if not is_ultimate:
+		Global.add_mana(mana_add_on_generate_blood)
+		if mawBuff:
+			can_eat_zombie = true
 
 	var blood_instance := BloodScene.instantiate()
 	if wyrmBuff:
@@ -240,10 +240,9 @@ func generate_blood() -> Node2D:
 		blood_instance.crawler_buff()
 	if mawBuff:
 		blood_instance.maw_buff()
-	if ultimate_buffed:
-		blood_instance.ultimate_buff(ultimate_blood_value)
-		ultimate_buffed = false
-		
+	if is_ultimate:
+		blood_instance.ultimate_buff(wyrm_ultimate_blood_multiplier if wyrmBuff else ultimate_blood_multiplier)
+
 	if self.is_in_group("Green"):
 		blood_instance.add_to_group("Green")
 	else:
@@ -381,10 +380,11 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func trigger_ultimate()->void:
-	#print("Trigger Occulum Ult")
+	# Before the game starts no blood can spawn, so stay armed instead of spending the charge.
+	if not Global.gameIsStarted:
+		return
 	Global.un_ready_ultimate()
-	ultimate_buffed = true 
-	generate_blood()
+	generate_blood(true)
 
 func _cleanup_manager()->void:
 	Global.decrement_occulum_count(is_green)

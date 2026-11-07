@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://bg14fal1ou75g" path="res://_Entities/Demons/Icons/OcculumTowerIdle_Base.png" id="15_8exk2"]
 [ext_resource type="PackedScene" uid="uid://br5uv5svgqnxm" path="res://_UI/GameDemonstrations/SynergyPreview/synergy_preview.tscn" id="16_r6hpg"]
 
+[ext_resource type="Texture2D" uid="uid://clmhwr24evnfi" path="res://_Entities/Demons/_Hero_Demon/Hero_Main.png" id="17_monolith"]
+[ext_resource type="PackedScene" path="res://_UI/GameDemonstrations/SynMonolithPreview/syn_monolith_preview.tscn" id="18_monolith"]
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpmsq"]
 texture = ExtResource("3_28t4q")
 texture_margin_left = 12.0
@@ -30,6 +32,10 @@ texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 12.0
 modulate_color = Color(0.6, 0.6, 0.6, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_monolith"]
+atlas = ExtResource("17_monolith")
+region = Rect2(0, 0, 44, 94)
 
 [node name="DemonLoreBook" type="Control" unique_id=97848138]
 process_mode = 3
@@ -108,408 +114,475 @@ script = ExtResource("3_gh3ig")
 sprites = ExtResource("4_chrhc")
 playing = true
 
-[node name="Card_BG_MarginContainer" type="MarginContainer" parent="." unique_id=686840469]
+[node name="DemonCardScroll" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 79.0
 offset_top = 5.0
-offset_right = 307.0
+offset_right = 320.0
+offset_bottom = 338.0
+horizontal_scroll_mode = 0
+
+[node name="DemonCardStack" type="Control" parent="DemonCardScroll"]
+custom_minimum_size = Vector2(228, 452)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Card_BG_MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack" unique_id=686840469]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 228.0
 offset_bottom = 338.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
-[node name="DemonCardBacks" type="HBoxContainer" parent="Card_BG_MarginContainer" unique_id=21643920]
+[node name="DemonCardBacks" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer" unique_id=21643920]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="AllDemonRows" type="VBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks" unique_id=1796140127]
+[node name="AllDemonRows" type="VBoxContainer" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks" unique_id=1796140127]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Row1" type="HBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=1569937242]
+[node name="Row1" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=1569937242]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Occulum" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=70317778]
+[node name="Occulum" type="TextureButton" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=70317778]
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("5_gh3ig")
 texture_hover = ExtResource("7_tpmsq")
 texture_focused = ExtResource("7_tpmsq")
 stretch_mode = 4
 
-[node name="Crawler" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1041164036]
+[node name="Crawler" type="TextureButton" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1041164036]
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("5_gh3ig")
 stretch_mode = 5
 
-[node name="Row2" type="HBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=979816968]
+[node name="Row2" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=979816968]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Walnut" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=1051577966]
+[node name="Walnut" type="TextureButton" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=1051577966]
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("5_gh3ig")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Maw" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=326798182]
+[node name="Maw" type="TextureButton" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=326798182]
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("5_gh3ig")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Row3" type="HBoxContainer" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=736887385]
+[node name="Row3" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows" unique_id=736887385]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Wyrm" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=910381475]
+[node name="Wyrm" type="TextureButton" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=910381475]
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("5_gh3ig")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Hive" type="TextureButton" parent="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1470651034]
+[node name="Hive" type="TextureButton" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1470651034]
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("5_gh3ig")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="RedCardOutlineMarginContainer" type="MarginContainer" parent="." unique_id=359595590]
+[node name="Row4" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="SynMonolith" type="TextureButton" parent="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row4"]
+custom_minimum_size = Vector2(105, 105)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("5_gh3ig")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RedCardOutlineMarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack" unique_id=359595590]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 79.0
-offset_top = 5.0
-offset_right = 307.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 228.0
 offset_bottom = 338.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 
-[node name="DemonCardBacks" type="HBoxContainer" parent="RedCardOutlineMarginContainer" unique_id=117808329]
+[node name="DemonCardBacks" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer" unique_id=117808329]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="AllDemonRows" type="VBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks" unique_id=1306843940]
+[node name="AllDemonRows" type="VBoxContainer" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks" unique_id=1306843940]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Row1" type="HBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=1523553477]
+[node name="Row1" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=1523553477]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Occulum" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1967593460]
+[node name="Occulum" type="TextureButton" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1967593460]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_tpmsq")
 texture_hover = ExtResource("7_tpmsq")
 texture_focused = ExtResource("7_tpmsq")
 stretch_mode = 4
 
-[node name="Crawler" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1091654482]
+[node name="Crawler" type="TextureButton" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1" unique_id=1091654482]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_tpmsq")
 stretch_mode = 5
 
-[node name="Row2" type="HBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=197705055]
+[node name="Row2" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=197705055]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Walnut" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=374126950]
+[node name="Walnut" type="TextureButton" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=374126950]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Maw" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=1697021930]
+[node name="Maw" type="TextureButton" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2" unique_id=1697021930]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Row3" type="HBoxContainer" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=1928297582]
+[node name="Row3" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows" unique_id=1928297582]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Wyrm" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1290776798]
+[node name="Wyrm" type="TextureButton" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1290776798]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Hive" type="TextureButton" parent="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1577620339]
+[node name="Hive" type="TextureButton" parent="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3" unique_id=1577620339]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(105, 105)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="DemonCardMarginContainer" type="MarginContainer" parent="." unique_id=758055256]
+[node name="DemonCardMarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack" unique_id=758055256]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 79.0
-offset_top = 5.0
-offset_right = 307.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 228.0
 offset_bottom = 495.0
 mouse_filter = 2
 theme_override_constants/margin_left = 21
 theme_override_constants/margin_top = 19
 
-[node name="DemonHboxContainer" type="HBoxContainer" parent="DemonCardMarginContainer" unique_id=1376691575]
+[node name="DemonHboxContainer" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer" unique_id=1376691575]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="AllDemonRows" type="VBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer" unique_id=287999705]
+[node name="AllDemonRows" type="VBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer" unique_id=287999705]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 30
 
-[node name="Row1" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1010203393]
+[node name="Row1" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1010203393]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 43
 
-[node name="Occulum" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1" unique_id=1900871465]
+[node name="Occulum" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1" unique_id=1900871465]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("6_gh3ig")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="Crawler" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1" unique_id=342407816]
+[node name="Crawler" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1" unique_id=342407816]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_chrhc")
 stretch_mode = 6
 flip_h = true
 
-[node name="DemonNames1" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1209401893]
+[node name="DemonNames1" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1209401893]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 23
 
-[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1038732148]
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1038732148]
 layout_mode = 2
 
-[node name="EyeLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=2034527998]
+[node name="EyeLabel" type="Label" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=2034527998]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "NAME_EYE"
 
-[node name="MarginContainer2" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1217756370]
+[node name="MarginContainer2" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1217756370]
 layout_mode = 2
 theme_override_constants/margin_right = 55
 
-[node name="SpyderLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=987055448]
+[node name="SpyderLabel" type="Label" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=987055448]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "NAME_SPYDER"
 
-[node name="MarginContainer3" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1524718653]
+[node name="MarginContainer3" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1524718653]
 layout_mode = 2
 theme_override_constants/margin_right = 25
 
-[node name="WalnutLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1302543777]
+[node name="WalnutLabel" type="Label" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames1" unique_id=1302543777]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "NAME_O_SPINE"
 
-[node name="Row2" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1178864748]
+[node name="Row2" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1178864748]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 34
 
-[node name="Walnut" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2" unique_id=337339227]
+[node name="Walnut" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2" unique_id=337339227]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("9_jm2ht")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Maw" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2" unique_id=794088523]
+[node name="Maw" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2" unique_id=794088523]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("12_tpmsq")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="DemonNames2" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=229843166]
+[node name="DemonNames2" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=229843166]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 22
 
-[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=493684138]
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=493684138]
 layout_mode = 2
 
-[node name="MawLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1313293612]
+[node name="MawLabel" type="Label" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1313293612]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "NAME_MAW"
 
-[node name="MarginContainer2" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=134442084]
+[node name="MarginContainer2" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=134442084]
 layout_mode = 2
 theme_override_constants/margin_right = 45
 
-[node name="WyrmLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=227279318]
+[node name="WyrmLabel" type="Label" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=227279318]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "NAME_WYRM"
 
-[node name="MarginContainer3" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1187907957]
+[node name="MarginContainer3" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1187907957]
 layout_mode = 2
 theme_override_constants/margin_right = 50
 
-[node name="HiveLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1428129755]
+[node name="HiveLabel" type="Label" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames2" unique_id=1428129755]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 16
 text = "NAME_HIVE"
 
-[node name="DemonNames3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=113310672]
+[node name="DemonNames3" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=113310672]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames3" unique_id=648118578]
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames3" unique_id=648118578]
 layout_mode = 2
 theme_override_constants/margin_right = 212
 
-[node name="MawLabel" type="Label" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames3" unique_id=771669505]
+[node name="MawLabel" type="Label" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/DemonNames3" unique_id=771669505]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_n4a1q")
 theme_override_font_sizes/font_size = 32
 text = "NAME_MAW"
 
-[node name="Row3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1772946496]
+[node name="Row3" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1772946496]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 34
 
-[node name="Wyrm" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3" unique_id=1306419466]
+[node name="Wyrm" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3" unique_id=1306419466]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("13_n4a1q")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Hive" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3" unique_id=858027766]
+[node name="Hive" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3" unique_id=858027766]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("12_jm2ht")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Row1MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1645853633]
+[node name="Row4" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="SynMonolith" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row4"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 1
+texture_normal = SubResource("AtlasTexture_monolith")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Row1MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1645853633]
 layout_mode = 2
 
-[node name="AltRow1" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer" unique_id=1802603340]
+[node name="AltRow1" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer" unique_id=1802603340]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 33
 
-[node name="Alt1" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1" unique_id=1360651257]
+[node name="Alt1" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1" unique_id=1360651257]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt2" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1" unique_id=249098203]
+[node name="Alt2" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1" unique_id=249098203]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Row2MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1668397475]
+[node name="Row2MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1668397475]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="AltRow2" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer" unique_id=142716490]
+[node name="AltRow2" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer" unique_id=142716490]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 33
 
-[node name="Alt3" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2" unique_id=2053529146]
+[node name="Alt3" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2" unique_id=2053529146]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt4" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2" unique_id=214639677]
+[node name="Alt4" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2" unique_id=214639677]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Row3MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1394589624]
+[node name="Row3MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1394589624]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="AltRow3" type="HBoxContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer" unique_id=2037741047]
+[node name="AltRow3" type="HBoxContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer" unique_id=2037741047]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 33
 
-[node name="Alt5" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3" unique_id=217192327]
+[node name="Alt5" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3" unique_id=217192327]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("13_hqwrb")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Alt6" type="TextureButton" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3" unique_id=71210810]
+[node name="Alt6" type="TextureButton" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3" unique_id=71210810]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+mouse_filter = 1
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("14_te31g")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1159880042]
+[node name="MarginContainer" type="MarginContainer" parent="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows" unique_id=1159880042]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 0
@@ -603,49 +676,57 @@ theme_override_constants/margin_bottom = -6
 [node name="SynergyPreview" parent="CurrentDemonVboxContainer/SynergyPreviewContainer/SynergyMarginContainer" unique_id=1133102798 instance=ExtResource("16_r6hpg")]
 layout_mode = 2
 
-[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
-[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
-[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
-[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
-[connection signal="pressed" from="Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
-[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
-[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
-[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
-[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
-[connection signal="pressed" from="RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_mouse_exited"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wyrm_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wyrm_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_egg_wrym_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
-[connection signal="mouse_entered" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_mouse_entered"]
-[connection signal="mouse_exited" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_mouse_exited"]
-[connection signal="pressed" from="DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
+[node name="SynMonolithPreview" parent="CurrentDemonVboxContainer/SynergyPreviewContainer/SynergyMarginContainer" instance=ExtResource("18_monolith")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_spinalOcculum_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wrym_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/Card_BG_MarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_spinalOcculum_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wrym_pressed"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/RedCardOutlineMarginContainer/DemonCardBacks/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Occulum" to="VBoxContainer/TextureRect" method="_on_occulum_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1/Crawler" to="VBoxContainer/TextureRect" method="_on_crawler_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_walnut_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Walnut" to="VBoxContainer/TextureRect" method="_on_spinalOcculum_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2/Maw" to="VBoxContainer/TextureRect" method="_on_maw_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wyrm_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wyrm_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Wyrm" to="VBoxContainer/TextureRect" method="_on_wrym_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3/Hive" to="VBoxContainer/TextureRect" method="_on_hive_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt1" to="VBoxContainer/TextureRect" method="_on_alt_1_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row1MarginContainer/AltRow1/Alt2" to="VBoxContainer/TextureRect" method="_on_alt_2_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt3" to="VBoxContainer/TextureRect" method="_on_alt_3_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row2MarginContainer/AltRow2/Alt4" to="VBoxContainer/TextureRect" method="_on_alt_4_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt5" to="VBoxContainer/TextureRect" method="_on_alt_5_pressed"]
+[connection signal="mouse_entered" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_mouse_entered"]
+[connection signal="mouse_exited" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_mouse_exited"]
+[connection signal="pressed" from="DemonCardScroll/DemonCardStack/DemonCardMarginContainer/DemonHboxContainer/AllDemonRows/Row3MarginContainer/AltRow3/Alt6" to="VBoxContainer/TextureRect" method="_on_alt_6_pressed"]
 [connection signal="pressed" from="BackButton" to="VBoxContainer/TextureRect" method="_on_back_button_pressed"]

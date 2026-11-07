@@ -1023,6 +1023,8 @@ func unlock_zombie(unlocked_zombie : String)->void:
 
 
 func unlock_buff(unlocked_buff : String)->void:
+	if !gameIsStarted:
+		return
 	var id := StringName(unlocked_buff)
 	if synergy_catalog.get_by_id(id) == null:
 		return

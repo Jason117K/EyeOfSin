@@ -210,7 +210,6 @@ func set_level_details(level_number:int)->void:
 	#open_level_screen.set_level_images(get_level_images(level_number))
 	open_level_screen.show()
 	act_scroll_container.modulate = Color(1,1,1,0)
-	open_level_screen.set_tutorial(Progress.is_level_beaten(level_number))
 	
 	match level_number:
 		1:

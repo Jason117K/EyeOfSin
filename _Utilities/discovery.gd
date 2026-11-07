@@ -1,7 +1,8 @@
 class_name Discovery extends RefCounted
 ## Zombies and synergies the player has discovered (2026-10). Static helpers only — no
 ## autoload, no Global state. A zombie is discovered the first time one spawns in a real
-## game (Global.unlock_zombie); a synergy the first time it triggers (Global.unlock_buff).
+## game (Global.unlock_zombie); a synergy the first time it triggers (Global.unlock_buff);
+## the Syn Monolith the first time one is placed (Demon.spawn_hero_demon).
 ## The codexes silhouette and disable anything not discovered yet. Demons aren't tracked
 ## here: their codex state is Progress.is_demon_unlocked.
 ## Saved to its own file so Progress's whole-file save can't clobber it.
@@ -13,6 +14,7 @@ const SAVE_SECTION := "discovery"
 static var _loaded := false
 static var _zombies: Array[String] = []
 static var _synergies: Array[StringName] = []
+static var _monolith := false
 
 
 static func is_zombie_discovered(zombie_name: String) -> bool:
@@ -43,11 +45,26 @@ static func discover_synergy(id: StringName) -> bool:
 	return true
 
 
-## DEBUG (Ctrl+U): discovers every zombie name in zombie_names (any iterable, e.g.
-## ZombieRegistry.SCENES) and every synergy in the catalog. Taken as arguments so this
-## module never references Global or an autoload.
+static func is_monolith_discovered() -> bool:
+	_ensure_loaded()
+	return _monolith
+
+
+## Returns true only the first time the player places a Syn Monolith.
+static func discover_monolith() -> bool:
+	if is_monolith_discovered():
+		return false
+	_monolith = true
+	_save()
+	return true
+
+
+## DEBUG (Ctrl+U): discovers the Syn Monolith, every zombie name in zombie_names (any
+## iterable, e.g. ZombieRegistry.SCENES) and every synergy in the catalog. Taken as
+## arguments so this module never references Global or an autoload.
 static func discover_all(zombie_names, catalog: SynergyCatalog) -> void:
 	_ensure_loaded()
+	_monolith = true
 	for zombie_name in zombie_names:
 		if String(zombie_name) not in _zombies:
 			_zombies.append(String(zombie_name))
@@ -67,6 +84,7 @@ static func _load() -> void:
 	_loaded = true
 	_zombies = []
 	_synergies = []
+	_monolith = false
 	var cfg := ConfigFile.new()
 	var err := cfg.load(SAVE_PATH)
 	if err == ERR_FILE_NOT_FOUND:
@@ -80,6 +98,7 @@ static func _load() -> void:
 	for id: String in _read_list(cfg, "synergies"):
 		if StringName(id) not in _synergies:
 			_synergies.append(StringName(id))
+	_monolith = cfg.get_value(SAVE_SECTION, "monolith", false) == true
 
 
 static func _read_list(cfg: ConfigFile, key: String) -> Array[String]:
@@ -101,6 +120,7 @@ static func _save() -> void:
 	for id: StringName in _synergies:
 		ids.append(String(id))
 	cfg.set_value(SAVE_SECTION, "synergies", ids)
+	cfg.set_value(SAVE_SECTION, "monolith", _monolith)
 	var err := cfg.save(SAVE_PATH)
 	if err != OK:
 		push_warning("[DISCOVERY] could not save %s (error %d) — discoveries kept for this session only" % [SAVE_PATH, err])
