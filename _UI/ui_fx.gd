@@ -49,18 +49,19 @@ static func add_pulsing_button_highlight(button, should_pulse : bool = true,
 		if is_instance_valid(old):
 			old.queue_free()
 		button.remove_meta("highlight_panel")
-	#print("Should Add Highlightr to ", button)
+	print("Should Add Highlightr to ", button)
 	
 	#print("All Charges Panel Size is ", Global.ultimate_charge_container.all_charges_panel_container.size)
 	# Create a Panel as a child to act as the border/glow
 	var panel := Panel.new()
 	panel.name = "HighlightPanel"
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't eat clicks
-	#TODO Should not be add child, should add to root of scene to not mess up UI
 	button.add_child(panel)
-	#print("Button Size is ", button.size)
-	panel.size = button.size
-	#print("Panel Size is ", panel.size)
+	panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	# A Container fits its children inside its content margins, so re-fill the
+	# whole rect after each sort or the highlight ends up inset (or zero-sized).
+	if button is Container:
+		button.sort_children.connect(panel.set_anchors_and_offsets_preset.bind(Control.PRESET_FULL_RECT))
 	panel.z_index = 2
 
 	# Build the stylebox for the panel
@@ -97,14 +98,14 @@ static func start_glow_pulse(button, _panel: Panel, style: StyleBoxFlat,
 	tween.set_loops()
 
 	tween.tween_method(
-		func(val: int) -> void:
+		func(val: float) -> void:
 			style.shadow_size = int(lerpf(4, 8, val))
 			style.shadow_color = Color(glow_color, lerpf(0.2, 0.4, val)),
 		0.0, 1.0, 1.2
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	tween.tween_method(
-		func(val: int) -> void:
+		func(val: float) -> void:
 			style.shadow_size = int(lerpf(8, 4, val))
 			style.shadow_color = Color(glow_color, lerpf(0.4, 0.2, val)),
 		0.0, 1.0, 1.2

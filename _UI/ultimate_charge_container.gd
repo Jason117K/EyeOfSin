@@ -91,6 +91,7 @@ func ready_ultimate()->void:
 	if charges > 0:
 		Global.ultimate_is_ready = true
 		UiFx.add_pulsing_button_highlight(all_charges_panel_container)
+		print("Clicked ULT Bar")
 		ultimate_bar_clicked.emit()
 
 func disarm_ultimate()->void:
