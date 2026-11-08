@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://x3lhqh1bs2ye"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="SpriteFrames" uid="uid://bx1gx3i8vubgi" path="res://_Entities/Zombies/ImgAnimationResources/Tank_Zombie.tres" id="1_il8ur"]
+[ext_resource type="Texture2D" uid="uid://cuqd6r3l53ioq" path="res://_Entities/Zombies/_Tank/TankZombie.png" id="1_ruci7"]
 
 [resource]
 script = ExtResource("1_entry")
 discovery_name = "Tank"
 title_key = "NAME_TANK"
 description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/tankZombieDescription.txt"
+portrait = ExtResource("1_ruci7")
+portrait_flip_h = true
+portrait_scale = 0.75
+animation = ExtResource("1_il8ur")
+animation_name = &"Walk"
+animation_flip_h = true

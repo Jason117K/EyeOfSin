@@ -49,7 +49,7 @@ static func add_pulsing_button_highlight(button, should_pulse : bool = true,
 		if is_instance_valid(old):
 			old.queue_free()
 		button.remove_meta("highlight_panel")
-	print("Should Add Highlightr to ", button)
+	#print("Should Add Highlightr to ", button)
 	
 	#print("All Charges Panel Size is ", Global.ultimate_charge_container.all_charges_panel_container.size)
 	# Create a Panel as a child to act as the border/glow

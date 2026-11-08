@@ -1,6 +1,10 @@
 keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
+TXT_A2_BOSS_DESCRIPTION,"A vicious mutating Zombie.
+",Un zombi mutante y feroz.,一只凶残的变异僵尸。,Свирепый мутирующий зомби.,Um zumbi mutante e feroz.,"Ein bösartiger, mutierender Zombie.",凶暴に変異し続けるゾンビ。,Un zombie mutant et vicieux.,"Okrutny, mutujący zombie.",사납게 변이하는 좀비.,res://_Assets/Text/TextFiles/ZombieDescriptions/A2_Boss_Description.txt
 TXT_AMALGAM_SPECIAL_DESCRIPTION,"*Partially regenerates after loosing shield
 ",*Se regenera parcialmente tras perder el escudo,*失去护盾后部分再生,*Частично восстанавливается после потери щита,*Regenera parcialmente após perder o escudo,*Regeneriert sich teilweise nach Schildverlust,*シールドを失うと部分的に再生する,*Se régénère partiellement après avoir perdu son bouclier,*Częściowo regeneruje się po utracie tarczy,*보호막을 잃으면 부분적으로 재생합니다,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt
+TXT_ARGUS_BOSS_DESCRIPTION,"The source of this Eldritch plague.
+",El origen de esta plaga ultraterrena.,这场诡秘瘟疫的源头。,Источник этой потусторонней чумы.,A origem desta praga sobrenatural.,Der Ursprung dieser unheimlichen Seuche.,この異形の疫病の元凶。,La source de cette peste indicible.,Źródło tej nieziemskiej zarazy.,이 기괴한 역병의 근원.,res://_Assets/Text/TextFiles/ZombieDescriptions/Argus_Boss_Description.txt
 TXT_BACKUPDANCERDESCRIPTION,"Wretches are smaller than average Reborns, and this is because they are actually infants.
 Speed: Medium
 Health: Low
@@ -59,6 +63,8 @@ Slow, tough zombies that deal massive damage.
 ",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieDescriptions/bucketHeadZombieDescription.txt
 TXT_BUFFER_SPECIAL_DESCRIPTION,"Buffs nearby zombies.
 ",Potencia a los zombis cercanos.,强化附近的僵尸。,Усиливает ближайших зомби.,Fortalece os zumbis próximos.,Verstärkt nahe Zombies.,周囲のゾンビを強化する。,Renforce les zombies proches.,Wzmacnia pobliskie zombie.,주변 좀비를 강화합니다.,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/buffer_special_description.txt
+TXT_BUFFER_ZOMBIE_DESCRIPTION,"Buffs nearby zombies.
+",Potencia a los zombis cercanos.,强化附近的僵尸。,Усиливает ближайших зомби.,Fortalece os zumbis próximos.,Verstärkt nahe Zombies.,周囲のゾンビを強化する。,Renforce les zombies proches.,Wzmacnia pobliskie zombie.,주변 좀비를 강화합니다.,res://_Assets/Text/TextFiles/ZombieDescriptions/Buffer_Zombie_Description.txt
 TXT_CONEHEADZOMBIEDESCRIPTION,"New Enemy : [color=#9b42df] Severed [/color]
 [hr width=100%]
  [color=#9b42df]Speed :[/color] Moderate [color=#9b42df] Health :[/color] 175
@@ -436,6 +442,8 @@ TXT_MAW_SPECIAL_DESCRIPTION,"*Eats zombies
 ",*Devora zombis,*吞食僵尸,*Пожирает зомби,*Devora zumbis,*Frisst Zombies,*ゾンビを喰らう,*Dévore les zombies,*Pożera zombie,*좀비를 삼킵니다,res://_Entities/Demons/SpecialDescriptions/maw_special_description.txt
 TXT_MINION_SPECIAL_DESCRIPTION,"*Low health, high damage, gets thrown
 ",,,,,,,,,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/minion_special_description.txt
+TXT_MINION_ZOMBIE_DESCRIPTION,"Tenacious minions spawned by the larger tank zombies.
+",Esbirros tenaces engendrados por los zombis tanque más grandes.,由体型更大的坦克僵尸生出的顽强爪牙。,"Упорные приспешники, порождаемые крупными зомби-танками.",Lacaios tenazes gerados pelos zumbis tanque maiores.,"Zähe Schergen, hervorgebracht von den größeren Tank-Zombies.",大型のタンクゾンビが生み出す、しぶとい手下。,Des sbires tenaces engendrés par les grands zombies tanks.,Zawzięte sługi zrodzone przez większe zombie-tanki.,덩치 큰 탱크 좀비가 낳는 끈질긴 미니언.,res://_Assets/Text/TextFiles/ZombieDescriptions/Minion_Zombie_Description.txt
 TXT_OCCULUMDESCRIPTION,"Generates [color=red]blood[/color] over time 
 ",,,,,,,,,,res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt
 TXT_OCCULUM_SPECIAL_DESCRIPTION,"*Generates Blood
@@ -493,6 +501,8 @@ TXT_RANGED_SPECIAL_DESCRIPTION,"*Ranged attack
 TXT_REANIMATOR_SPECIAL_DESCRIPTION,"*Summons minions
 ",*Invoca esbirros,*召唤仆从,*Призывает прислужников,*Invoca lacaios,*Beschwört Diener,*手下を召喚する,*Invoque des sbires,*Przyzywa sługusów,*하수인을 소환합니다,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reanimator_special_description.txt
 TXT_REBORN_SPECIAL_DESCRIPTION,,,,,,,,,,,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/reborn_special_description.txt
+TXT_ROHAN_BOSS_DESCRIPTION,"What remains of the once great CEO Rohan.
+",Lo que queda del otrora gran CEO Rohan.,曾经伟大的CEO罗翰的残骸。,"То, что осталось от некогда великого генерального директора Рохана.",O que resta do outrora grande CEO Rohan.,Was vom einst großen CEO Rohan übrig ist.,かつての偉大なCEO、ローハンの成れの果て。,Ce qu'il reste du jadis grand PDG Rohan.,"To, co zostało z niegdyś wielkiego prezesa Rohana.",한때 위대했던 CEO 로한의 잔해.,res://_Assets/Text/TextFiles/ZombieDescriptions/Rohan_Boss_Description.txt
 TXT_ROHAN_SPECIAL_DESCRIPTION,"Entity formely known as Rohan
 ",Entidad antes conocida como Rohan,曾被称作罗翰的存在,"Сущность, некогда известная как Рохан",Entidade antes conhecida como Rohan,Wesen einst bekannt als Rohan,かつてローハンと呼ばれた存在,Entité jadis connue sous le nom de Rohan,Istota znana niegdyś jako Rohan,한때 로한이라 불리던 존재,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/rohan_special_description.txt
 TXT_SCREENDOORZOMBIEDESCRIPTION,"An imbalance of chemicals within their psyche made these zombies highly unstable, causing them to kill their own kind. This error was eventually fixed, but the corpses remain.

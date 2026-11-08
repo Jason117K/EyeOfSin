@@ -3,6 +3,7 @@ extends Syn_Ability_Instance
 @export var enflame_damage_mult := 2.0 
 
 @onready var torch_anim_sprite := $AnimatedSprite2D
+@onready var flame_area: CollisionShape2D = $CollisionShape2D
 
 
 
@@ -36,6 +37,11 @@ var linked_zombies : Array = []
 func enflame_projectile(projectile_to_enflame : Area2D)->void:
 	if projectile_to_enflame.is_in_group("DemonProjectile"):
 		projectile_to_enflame.enflame(enflame_damage_mult, self)
+
+# The area that enflames projectiles; Wyrm beams change color where they enter it.
+func get_global_flame_rect() -> Rect2:
+	var size: Vector2 = (flame_area.shape as RectangleShape2D).size
+	return Rect2(flame_area.global_position - size / 2.0, size)
 
 func connect_ability(_other_shroom : Area2D)->void:
 	is_paired = true

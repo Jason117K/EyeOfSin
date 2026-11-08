@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://c0yvjy1cpoeou"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
-[ext_resource type="Texture2D" uid="uid://csockxqf1ab8l" path="res://_Entities/Zombies/_Sundered/PoleVaultZombie.png" id="2_portrait"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://dqkw8451lo86m" path="res://_Entities/Zombies/Notif_Icons/PoleVaultZombie.png" id="2_h7n02"]
 [ext_resource type="SpriteFrames" uid="uid://cnw5rtdduousg" path="res://_Entities/Zombies/ImgAnimationResources/Leaper.tres" id="3_animation"]
 
 [resource]
@@ -9,7 +9,7 @@ script = ExtResource("1_entry")
 discovery_name = "Sundered"
 title_key = "NAME_SUNDERED"
 description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/poleVaultZombieDescription.txt"
-portrait = ExtResource("2_portrait")
+portrait = ExtResource("2_h7n02")
 portrait_flip_h = true
 animation = ExtResource("3_animation")
 animation_flip_h = true

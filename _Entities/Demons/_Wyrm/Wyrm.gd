@@ -2,8 +2,23 @@ extends Demon
 #Wyrm.gd
 
 @export_category("Ultimate")
-@export var ultimate_damage :int = 100
-@export var ultimate_bleed : int = 10
+@export var ult_damage_multiplier := 8
+@export var maw_ult_damage_multiplier := 15
+@export var ult_bleed_multiplier := 4
+@export var maw_ult_extra_loops := 2
+## Ult beam color per synergy: x = saturation, y = brightness. Unlisted synergies keep the drawn color.
+@export var ult_beam_color_shifts: Dictionary[String, Vector2] = {
+	"Hive": Vector2(0.3, 0.35),
+	"Crawler": Vector2(0.25, 1.4),
+	"SpinalOcculum": Vector2(0.25, 1.4),
+	"Occulum": Vector2(1.6, 1.15),
+}
+
+# 0-based frames of the ult beam animation (1-based 7 and 13 and 17).
+const ULT_LOOP_START_FRAME := 6
+const ULT_DAMAGE_FRAME := 12
+const ULT_LOOP_END_FRAME := 16
+const ULT_BEAM_COLOR_SHADER := preload("res://_Entities/Demons/_Wyrm/ult_beam_color_shift.gdshader")
 
 @export_category("Buffed Health")
 @export var spinalOcculumBuffed_health := 650
@@ -53,7 +68,14 @@ extends Demon
 @onready var attack_ray := $DMG_RayCast2D
 @onready var shootTimer := $ShootTimer
 @onready var beam_ultimate : AnimatedSprite2D = $BeamUlt
+@onready var beam_ultimate_2 : AnimatedSprite2D = $BeamUlt2
 @onready var beam_ult_area := $BeamUltArea
+
+var ult_beam_material := ShaderMaterial.new()
+var ult_damage := 0
+var ult_bleed := 0
+var ult_loops_remaining := 0
+var ult_damage_dealt := false
 
 
 @onready var range_line_indicator := $PreviewNodes/RangeIndicatorLine2D
@@ -88,7 +110,10 @@ func _ready() -> void:
 	super()
 	current_demon_type = Global.DEMON_TYPE.WYRM
 	_init_collision_mask(beam_ult_area)
-	beam_ultimate.hide()
+	ult_beam_material.shader = ULT_BEAM_COLOR_SHADER
+	for beam: AnimatedSprite2D in [beam_ultimate, beam_ultimate_2]:
+		beam.material = ult_beam_material
+		beam.hide()
 	wyrm_buff_unlocked.connect(Global.unlock_buff)
 	set_process(true)  # Bob animation requires per-frame updates
 	# --- Demon-specific collision ---
@@ -100,7 +125,7 @@ func _ready() -> void:
 	#else:
 		#push_warning("No sprite assigned to animate!")
 		
-	var scale_x :float= laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
+	var scale_x :float= laserShootComp2.global_transform.x.length()   # world px per local px, along local X
 	laserShootComp2.max_length =  attack_ray.target_position.x 
 	laserShootComp1.max_length =  attack_ray.target_position.x 
 	#print("Laser Shoot Comp Default Max Length is ", laserShootComp1.max_length)
@@ -134,7 +159,7 @@ func _init_demon_collision() -> void:
 
 func update_range_preview()->void:
 	range_line_indicator.set_point_position(1, Vector2(attack_ray.target_position.x,range_line_indicator.get_point_position(1).y))
-	var scale_x = laserShootComp2.line2D.global_transform.x.length()
+	var scale_x = laserShootComp2.global_transform.x.length()
 	laserShootComp2.max_length =  attack_ray.target_position.x 
 	laserShootComp1.max_length =  attack_ray.target_position.x 
 	#print("Laser Shoot Comp Buffed Max Length is ", laserShootComp1.max_length)
@@ -224,14 +249,52 @@ func trigger_ultimate()->void:
 	if is_ulting:
 		return
 	Global.un_ready_ultimate()
+	# Fixed at cast, so gaining or losing a buff mid-beam doesn't change this ult.
+	ult_damage = _get_ult_damage()
+	ult_bleed = _get_ult_bleed()
+	ult_loops_remaining = maw_ult_extra_loops if mawBuff else 0
+	ult_damage_dealt = false
+	_apply_ult_beam_color()
 	laserShootComp1.modulate = Color(1,1,1,0)
 	laserShootComp2.modulate = Color(1,1,1,0)
-	beam_ultimate.show()
-	beam_ultimate.play()
+	for beam in _get_ult_beams():
+		beam.show()
+		beam.play()
 	animSpriteComp.animation = animSpriteComp.currentAttackAnim
 	animSpriteComp.play()
-	is_ulting = true 
-	
+	is_ulting = true
+
+func _get_ult_damage() -> int:
+	return projectile_damage * (maw_ult_damage_multiplier if mawBuff else ult_damage_multiplier)
+
+func _get_ult_bleed() -> int:
+	var total_bleed := bleed_damage + (spinal_bleed_damage_increase if spinalOcculumBuff else 0)
+	return total_bleed * ult_bleed_multiplier
+
+# One beam per head, except the Occulum and Maw ults, which use one.
+func _get_ult_beams() -> Array[AnimatedSprite2D]:
+	if occulumBuff or mawBuff:
+		return [beam_ultimate]
+	return [beam_ultimate, beam_ultimate_2]
+
+func _apply_ult_beam_color() -> void:
+	var shift: Vector2 = ult_beam_color_shifts.get(_active_synergy(), Vector2.ONE)
+	ult_beam_material.set_shader_parameter("saturation", shift.x)
+	ult_beam_material.set_shader_parameter("brightness", shift.y)
+
+func _active_synergy() -> String:
+	if hiveBuff:
+		return "Hive"
+	if crawlerBuff:
+		return "Crawler"
+	if spinalOcculumBuff:
+		return "SpinalOcculum"
+	if occulumBuff:
+		return "Occulum"
+	if mawBuff:
+		return "Maw"
+	return ""
+
 	
 	
 # --- Death ---
@@ -302,12 +365,17 @@ func _on_beam_ult_animation_finished() -> void:
 	animSpriteComp.play()
 	laserShootComp1.modulate = Color(1,1,1,1)
 	laserShootComp2.modulate = Color(1,1,1,1)
-	
-	
-	
+	beam_ultimate_2.stop()
+	beam_ultimate_2.hide()
 
 
+# BeamUlt alone drives the ult; BeamUlt2 only mirrors its frames.
 func _on_beam_ult_frame_changed() -> void:
-	if beam_ultimate.frame == 12:
-		beam_ult_area.damage_zombies_in_ultimate_area(ultimate_damage,ultimate_bleed)
+	if beam_ultimate.frame == ULT_DAMAGE_FRAME and not ult_damage_dealt:
+		ult_damage_dealt = true
+		beam_ult_area.damage_zombies_in_ultimate_area(ult_damage, ult_bleed)
 		projectile_shoot_component.shoot_projectile(true)
+	elif beam_ultimate.frame == ULT_LOOP_END_FRAME and ult_loops_remaining > 0:
+		ult_loops_remaining -= 1
+		for beam in _get_ult_beams():
+			beam.frame = ULT_LOOP_START_FRAME

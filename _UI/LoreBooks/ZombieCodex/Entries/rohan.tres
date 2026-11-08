@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://dh2yjaujppi7o"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="SpriteFrames" uid="uid://dda5dr370ofwc" path="res://_Entities/Zombies/ImgAnimationResources/Rohan_Boss_Zombie.tres" id="1_3lehh"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
 [ext_resource type="Texture2D" uid="uid://dasm25pbyxfdj" path="res://_Entities/Zombies/_RohanBossZombie/RohanZombie.png" id="2_portrait"]
 
 [resource]
 script = ExtResource("1_entry")
 discovery_name = "Rohan"
 title_key = "NAME_ROHAN"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/Rohan_Boss_Description.txt"
 portrait = ExtResource("2_portrait")
+portrait_flip_h = true
+animation = ExtResource("1_3lehh")
+animation_name = &"idle"
+animation_flip_h = true

@@ -9,23 +9,23 @@
 [ext_resource type="Script" uid="uid://bwjh0i0w016sm" path="res://_UI/LoreBooks/ZombieLoreBookController.gd" id="10_lexj7"]
 [ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="18_eji6s"]
 [ext_resource type="StyleBox" uid="uid://bcfbsgfdihfxu" path="res://_UI/bordered_button_hover.tres" id="19_k22sn"]
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="20_entry"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="20_entry"]
 [ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/reborn.tres" id="21_reborn"]
 [ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/severed.tres" id="22_severed"]
 [ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/unhallower.tres" id="23_unhallower"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/erupter.tres" id="24_erupter"]
+[ext_resource type="Resource" uid="uid://dlv1bjs2wuxbg" path="res://_UI/LoreBooks/ZombieCodex/Entries/erupter.tres" id="24_erupter"]
 [ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/reanimator.tres" id="25_reanimator"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/wretch.tres" id="26_wretch"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/amalgam.tres" id="27_amalgam"]
+[ext_resource type="Resource" uid="uid://7ryvnjmtivvi" path="res://_UI/LoreBooks/ZombieCodex/Entries/wretch.tres" id="26_wretch"]
+[ext_resource type="Resource" uid="uid://bxl56wm4pxuq3" path="res://_UI/LoreBooks/ZombieCodex/Entries/amalgam.tres" id="27_amalgam"]
 [ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/sundered.tres" id="28_sundered"]
 [ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/flesheater.tres" id="29_flesheater"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/buffer.tres" id="30_buffer"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/tank.tres" id="31_tank"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/ranged.tres" id="32_ranged"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/minion.tres" id="33_minion"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/rohan.tres" id="34_rohan"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/act_2_boss.tres" id="35_act_2_boss"]
-[ext_resource type="Resource" path="res://_UI/LoreBooks/ZombieCodex/Entries/argus.tres" id="36_argus"]
+[ext_resource type="Resource" uid="uid://cilfccae83mud" path="res://_UI/LoreBooks/ZombieCodex/Entries/buffer.tres" id="30_buffer"]
+[ext_resource type="Resource" uid="uid://x3lhqh1bs2ye" path="res://_UI/LoreBooks/ZombieCodex/Entries/tank.tres" id="31_tank"]
+[ext_resource type="Resource" uid="uid://beiq7wqu2fiy8" path="res://_UI/LoreBooks/ZombieCodex/Entries/ranged.tres" id="32_ranged"]
+[ext_resource type="Resource" uid="uid://be4uhskat33sc" path="res://_UI/LoreBooks/ZombieCodex/Entries/minion.tres" id="33_minion"]
+[ext_resource type="Resource" uid="uid://dh2yjaujppi7o" path="res://_UI/LoreBooks/ZombieCodex/Entries/rohan.tres" id="34_rohan"]
+[ext_resource type="Resource" uid="uid://dmrxm5ujne5sm" path="res://_UI/LoreBooks/ZombieCodex/Entries/act_2_boss.tres" id="35_act_2_boss"]
+[ext_resource type="Resource" uid="uid://c48vps70xd7m7" path="res://_UI/LoreBooks/ZombieCodex/Entries/argus.tres" id="36_argus"]
 [ext_resource type="PackedScene" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_slot.tscn" id="40_slot"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0reyw"]
@@ -85,9 +85,15 @@ offset_right = 666.0
 offset_bottom = 155.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_0reyw")
 
-[node name="CurrentZombieAnim" type="AnimatedSprite2D" parent="." unique_id=515070860]
+[node name="ZombiePreviewArea" type="Control" parent="PanelContainer"]
 unique_name_in_owner = true
-position = Vector2(539, 89)
+clip_contents = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CurrentZombieAnim" type="AnimatedSprite2D" parent="PanelContainer/ZombiePreviewArea" unique_id=515070860]
+unique_name_in_owner = true
+position = Vector2(118, 54)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_v2ssp")
 animation = &"Attack"
@@ -152,7 +158,7 @@ theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "Lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum Lorem ipsum lorem ipsum lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum"
 
-[node name="ZombieGrid" type="GridContainer" parent="."]
+[node name="ZombieGrid" type="GridContainer" parent="." unique_id=256087452]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 68.0
@@ -165,31 +171,31 @@ theme_override_constants/h_separation = 9
 theme_override_constants/v_separation = 9
 columns = 3
 
-[node name="Slot1" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot1" parent="ZombieGrid" unique_id=1629093890 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot2" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot2" parent="ZombieGrid" unique_id=65341369 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot3" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot3" parent="ZombieGrid" unique_id=2075114251 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot4" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot4" parent="ZombieGrid" unique_id=1946675685 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot5" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot5" parent="ZombieGrid" unique_id=712921012 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot6" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot6" parent="ZombieGrid" unique_id=1770276119 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot7" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot7" parent="ZombieGrid" unique_id=1912854795 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot8" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot8" parent="ZombieGrid" unique_id=1339472727 instance=ExtResource("40_slot")]
 layout_mode = 2
 
-[node name="Slot9" parent="ZombieGrid" instance=ExtResource("40_slot")]
+[node name="Slot9" parent="ZombieGrid" unique_id=388584284 instance=ExtResource("40_slot")]
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="." unique_id=316313279]

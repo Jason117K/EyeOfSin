@@ -248,6 +248,14 @@ player has met. Anything else is a jet-black silhouette of its normal art and ca
     preview's stage and scripts one loop: Reborn kill the Spinal Occulum, Beat of Death, Lightning
     Strike, Revive, pause. Its Monolith uses `HeroDemon.make_demo()` (see Gotchas). Timing
     constants are at the top of `syn_monolith_preview_controller.gd`.
+  - **Demon / Sorcery tabs.** `OpenDemonTab` and `OpenSorceryTab` swap `DemonCardScroll` for
+    `SorceryTab`: a 2x2 `SwapGrid` and a 3-across `SynGrid` of `SorceryCodexCard`s
+    (`_UI/LoreBooks/SorceryCodex/`). Each card exports `sorcery_id` (a `Progress.SORCERY_UNLOCKS`
+    key) and `icon` (the ability panel's card art). A card is a silhouette until
+    `Progress.is_sorcery_unlocked`, so the ability panel and codex always agree. Clicking one
+    shows its art and `ABILITY_<ID>_TITLE` / `_DESC` on the right page. Switching tabs leaves any
+    synergy view and stops the Monolith demo. `navigate_to_synergy` always opens the Demon tab.
+    A new sorcery is one more card instance plus its `ABILITY_*` text.
 - **Zombie codex** is data-driven. Each zombie is a `ZombieCodexEntry` `.tres`
   (`_UI/LoreBooks/ZombieCodex/Entries/`) listed in the root's `entries` array, in codex order.
   `ZombieGrid` holds the `ZombieCodexSlot` cards, and its slot count is the page size (3×3 = 9).
@@ -255,9 +263,16 @@ player has met. Anything else is a jet-black silhouette of its normal art and ca
   last page are hidden. It opens on the page of the first discovered entry (blank detail if none).
   An entry whose `discovery_name` isn't in `ZombieRegistry.SCENES` can never unlock, and it warns
   on open.
+  - **Preview fit.** `CurrentZombieAnim` lives in `PanelContainer/ZombiePreviewArea`, which clips
+    it, so a zombie can never draw over the description. `_fit_preview()` measures the animation's
+    visible pixels (`SpriteFramesBounds`, cached per session; full frames when no pixel data, e.g.
+    headless) and centers them. It picks the largest whole-number scale that fits, below 1x only
+    when even 1x is too big, and never above the entry's `preview_scale` (default 3).
   - **Add a zombie:** create a `ZombieCodexEntry` `.tres` (discovery name, `NAME_*` key, lore
-    `.txt`, portrait, SpriteFrames + animation name, flips, `preview_scale`) and add it to
-    `entries`. Add its `NAME_*` row to `names.csv` and sync its `.txt` (see Localization). No code
+    `.txt`, portrait, SpriteFrames + animation name, flips) and add it to `entries`.
+    `preview_scale` is only needed to cap a zombie below 3x. Tune the grid card with
+    `portrait_scale` (× the fitted size, centered) and `portrait_offset` (card pixels). Portraits are
+    clipped by `PortraitArea` in `zombie_codex_slot.tscn`, inset 3 px so the card border shows. Add its `NAME_*` row to `names.csv` and sync its `.txt` (see Localization). No code
     changes.
 - Both codex scenes are rebuilt on every open and read live state in `_ready`. The zombie codex
   also re-reads it on Ctrl+U through `refresh_locks()`.
@@ -476,6 +491,9 @@ refactor phases that touch the restart path, buff matching, or tick order.
 	Lightning Strike → Revive (with the revive flash) → pause, and stops when another card is
 	clicked. A synergy view hides it and stops scrolling. Opened mid-level with a Monolith placed,
 	the real Monolith survives and no synergy is discovered.
+	Sorcery tab: 4 Swap + 5 Syn cards. Locked sorceries are silhouettes that can't be clicked,
+	matching the ability panel (Ctrl+U → all normal on the next open). Switching tabs mid synergy
+	view or mid Monolith demo returns cleanly, and the Demon tab restores the opening page.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **

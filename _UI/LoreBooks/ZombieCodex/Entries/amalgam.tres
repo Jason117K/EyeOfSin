@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://bxl56wm4pxuq3"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
-[ext_resource type="Texture2D" uid="uid://boehiq0ysreqy" path="res://_Entities/Zombies/_Amalgam/ScreenDoorZombie.png" id="2_portrait"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://cy81nbf656x8o" path="res://_Entities/Zombies/Notif_Icons/ScreenDoorZombie.png" id="2_ulg2k"]
 [ext_resource type="SpriteFrames" uid="uid://dbug8d0842e12" path="res://_Entities/Zombies/ImgAnimationResources/ScreenDoorZombie.tres" id="3_animation"]
 
 [resource]
@@ -9,5 +9,6 @@ script = ExtResource("1_entry")
 discovery_name = "Amalgam"
 title_key = "NAME_AMALGAMS"
 description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/ScreenDoorZombieDescription.txt"
-portrait = ExtResource("2_portrait")
+portrait = ExtResource("2_ulg2k")
+portrait_scale = 0.7999999999999999
 animation = ExtResource("3_animation")

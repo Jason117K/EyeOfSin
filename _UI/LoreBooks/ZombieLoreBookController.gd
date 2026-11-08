@@ -4,10 +4,12 @@ extends Control
 
 var _slots: Array[ZombieCodexSlot] = []
 var _page := 0
+var _shown_entry: ZombieCodexEntry
 
 @onready var _grid: GridContainer = %ZombieGrid
 @onready var _previous_page_button: Button = %PreviousPage
 @onready var _next_page_button: Button = %NextPage
+@onready var _preview_area: Control = %ZombiePreviewArea
 @onready var _preview: AnimatedSprite2D = %CurrentZombieAnim
 @onready var _title: Label = %CurrentZombieTitle
 @onready var _description: RichTextLabel = %CurrentZombieLabel
@@ -20,6 +22,7 @@ func _ready() -> void:
 		return
 	for slot: ZombieCodexSlot in _slots:
 		slot.entry_pressed.connect(_show_entry)
+	_preview_area.resized.connect(_fit_preview)
 	_warn_undiscoverable_entries()
 	_open_first_discovered()
 
@@ -69,14 +72,35 @@ func _open_first_discovered() -> void:
 
 
 func _show_entry(entry: ZombieCodexEntry) -> void:
+	_shown_entry = entry
 	_preview.visible = entry.animation != null
 	if entry.animation != null:
 		_preview.sprite_frames = entry.animation
 		_preview.flip_h = entry.animation_flip_h
-		_preview.scale = Vector2.ONE * entry.preview_scale
 		_preview.play(entry.animation_name)
+		_fit_preview()
 	_title.text = tr(entry.title_key)
 	_description.text = "" if entry.description_path.is_empty() else Loc.text(entry.description_path)
+
+
+## Largest whole-number scale whose visible pixels fit the panel (below 1x only when even 1x
+## is too big), capped at the entry's preview_scale, with the visible pixels centered.
+func _fit_preview() -> void:
+	if _shown_entry == null or _shown_entry.animation == null:
+		return
+	var area := _preview_area.size
+	if not area.x > 0.0 or not area.y > 0.0:
+		return
+	var bounds := SpriteFramesBounds.visible_rect(_shown_entry.animation, _shown_entry.animation_name)
+	var fit := minf(area.x / bounds.size.x, area.y / bounds.size.y)
+	var preview_scale := minf(floorf(fit) if fit >= 1.0 else fit, _shown_entry.preview_scale)
+	var center := bounds.get_center()
+	if _shown_entry.animation_flip_h:
+		center.x = -center.x
+	_preview.centered = true
+	_preview.offset = Vector2.ZERO
+	_preview.scale = Vector2.ONE * preview_scale
+	_preview.position = (area / 2.0 - center * preview_scale).round()
 
 
 func _clear_details() -> void:

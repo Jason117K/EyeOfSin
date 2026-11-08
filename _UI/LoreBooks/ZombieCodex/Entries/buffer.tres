@@ -1,10 +1,17 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://cilfccae83mud"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="SpriteFrames" uid="uid://dg8uc2h2lkwg7" path="res://_Entities/Zombies/ImgAnimationResources/Buffer_Zombie.tres" id="1_7in4t"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
 [ext_resource type="Texture2D" uid="uid://cjrtbkp7mcs4s" path="res://_Entities/Zombies/_BufferZombie/BufferZombie.png" id="2_portrait"]
 
 [resource]
 script = ExtResource("1_entry")
 discovery_name = "Buffer"
 title_key = "NAME_BUFFER"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/Buffer_Zombie_Description.txt"
 portrait = ExtResource("2_portrait")
+portrait_flip_h = true
+portrait_scale = 0.85
+animation = ExtResource("1_7in4t")
+animation_name = &"Walk"
+animation_flip_h = true

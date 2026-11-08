@@ -362,7 +362,7 @@ func silence() -> void:
 
 
 func get_zombie_name() -> String:
-	return " ACT 2 BOSS "
+	return " FLESH MASS "
 
 
 func get_special_description() -> String:

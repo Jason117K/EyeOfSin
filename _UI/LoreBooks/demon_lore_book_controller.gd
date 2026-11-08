@@ -57,6 +57,13 @@ var syn_monolith_description := "res://_Assets/Text/TextFiles/DemonDescriptions/
 @onready var demon_card_stack: Control = $"%DemonCardScroll/DemonCardStack"
 @onready var demon_card_stack_height: float = demon_card_stack.custom_minimum_size.y
 
+@onready var sorcery_tab: Control = %SorceryTab
+@onready var open_demon_tab_button: Button = %OpenDemonTab
+@onready var open_sorcery_tab_button: Button = %OpenSorceryTab
+var sorcery_cards: Array[SorceryCodexCard] = []
+var opening_page_text: String
+var opening_page_texture: Texture2D
+
 #Demon Text Descriptions
 var occulumDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/OcculumDescription.txt"
 var crawlerDescription := "res://_Assets/Text/TextFiles/DemonDescriptions/CrawlerDescription.txt"
@@ -202,6 +209,7 @@ func _ready() -> void:
 	monolith_button.mouse_entered.connect(_on_mouse_entered.bind(monolith_button))
 	monolith_button.mouse_exited.connect(_on_mouse_exited.bind(monolith_button))
 	_refresh_demon_locks()
+	_setup_sorcery_tab()
 
 
 # Locked demons (Progress.is_demon_unlocked): art silhouetted, card back darkened, every
@@ -464,20 +472,78 @@ func _on_back_button_pressed() -> void:
 		#Global.game_controller.restore_dual_scenes()
 		Global.game_controller.restore_previous_scene()
 	else:
-		is_in_synergy = false
-		row_1.visible = true
-		row_2.visible = true
-		row_3.visible = true
-		_set_card_list_scrollable(true)
-		clear_all_focus()
-		alt_row_1.visible = false
-		alt_row_2.visible = false
-		alt_row_3.visible = false
-		current_page = current_page - 1
-		staticPreview.show()
-		static_preview_container.show()
-		$"../../InteractiveBook2D".go_to_page(current_page)
-	
+		_exit_synergy_view()
+
+
+func _exit_synergy_view() -> void:
+	is_in_synergy = false
+	row_1.visible = true
+	row_2.visible = true
+	row_3.visible = true
+	_set_card_list_scrollable(true)
+	clear_all_focus()
+	alt_row_1.visible = false
+	alt_row_2.visible = false
+	alt_row_3.visible = false
+	current_page = current_page - 1
+	staticPreview.show()
+	static_preview_container.show()
+	$"../../InteractiveBook2D".go_to_page(current_page)
+
+
+func _setup_sorcery_tab() -> void:
+	opening_page_text = currentDemonLabel.text
+	opening_page_texture = staticPreview.texture
+	for node in sorcery_tab.find_children("*", "TextureButton", true, false):
+		if node is SorceryCodexCard:
+			sorcery_cards.append(node)
+	for card in sorcery_cards:
+		card.refresh_lock()
+		card.pressed.connect(_on_sorcery_pressed.bind(card))
+		card.mouse_entered.connect(_on_mouse_entered.bind(card))
+		card.mouse_exited.connect(_on_mouse_exited.bind(card))
+	for tab_button: Button in [open_demon_tab_button, open_sorcery_tab_button]:
+		tab_button.add_theme_stylebox_override("disabled", tab_button.get_theme_stylebox("normal"))
+	open_demon_tab_button.pressed.connect(_show_demon_tab)
+	open_sorcery_tab_button.pressed.connect(_show_sorcery_tab)
+	_show_demon_tab()
+
+
+func _show_demon_tab() -> void:
+	sorcery_tab.hide()
+	demon_card_scroll.show()
+	currentDemonLabel.text = opening_page_text
+	staticPreview.texture = opening_page_texture
+	staticPreview.show()
+	static_preview_container.show()
+	_mark_active_tab(open_demon_tab_button)
+
+
+func _show_sorcery_tab() -> void:
+	if is_in_synergy:
+		_exit_synergy_view()
+	_clear_synergy_preview()
+	clear_all_focus()
+	visible = false
+	demon_card_scroll.hide()
+	sorcery_tab.show()
+	static_preview_container.hide()
+	currentDemonLabel.text = ""
+	_mark_active_tab(open_sorcery_tab_button)
+
+
+func _mark_active_tab(active: Button) -> void:
+	open_demon_tab_button.disabled = active == open_demon_tab_button
+	open_sorcery_tab_button.disabled = active == open_sorcery_tab_button
+
+
+func _on_sorcery_pressed(card: SorceryCodexCard) -> void:
+	staticPreview.texture = card.icon
+	staticPreview.show()
+	static_preview_container.show()
+	currentDemonLabel.show()
+	currentDemonLabel.text = "%s\n%s" % [tr(card.title_key()), tr(card.description_key())]
+
 	
 
 func _on_back_out_details_pressed() -> void:
@@ -819,6 +885,7 @@ func _on_mouse_exited(button_to_tween) -> void:
 #region Codex navigation from a synergy unlock (data-driven via SynergyCatalog)
 # Called by Global.register_demon_codex after this scene loads.
 func navigate_to_synergy(synergy : String) -> void:
+	_show_demon_tab()
 	var def : SynergyDefinition = Global.synergy_catalog.get_by_id(StringName(synergy))
 	if def == null:
 		push_warning("Codex: unknown synergy id '" + synergy + "'")

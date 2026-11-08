@@ -3,8 +3,10 @@
 class_name WyrmStats extends DemonStats
 
 @export_category("Ultimate")
-@export var ultimate_damage :int = 100
-@export var ultimate_bleed : int = 10
+@export var ult_damage_multiplier := 8
+@export var maw_ult_damage_multiplier := 15
+@export var ult_bleed_multiplier := 4
+@export var maw_ult_extra_loops := 2
 @export var mana_add_on_laser := 100
 
 @export_category("Buffed Health")

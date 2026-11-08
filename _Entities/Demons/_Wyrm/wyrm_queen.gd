@@ -69,7 +69,7 @@ func _ready() -> void:
 	# --- Demon-specific collision ---
 	_init_demon_collision()
 		
-	var scale_x :float= laserShootComp2.line2D.global_transform.x.length()   # world px per local px, along local X
+	var scale_x :float= laserShootComp2.global_transform.x.length()   # world px per local px, along local X
 	laserShootComp2.max_length =  attack_ray.target_position.x / scale_x
 	laserShootComp1.max_length =  attack_ray.target_position.x / scale_x
 	

@@ -25,6 +25,16 @@
 
 [ext_resource type="Texture2D" uid="uid://clmhwr24evnfi" path="res://_Entities/Demons/_Hero_Demon/Hero_Main.png" id="17_monolith"]
 [ext_resource type="PackedScene" path="res://_UI/GameDemonstrations/SynMonolithPreview/syn_monolith_preview.tscn" id="18_monolith"]
+[ext_resource type="PackedScene" path="res://_UI/LoreBooks/SorceryCodex/sorcery_codex_card.tscn" id="19_card"]
+[ext_resource type="Texture2D" uid="uid://brkb10lkjyant" path="res://_Entities/SwapAbilities/Blood_Rain_Swap_Card.png" id="20_blood_rain"]
+[ext_resource type="Texture2D" uid="uid://3ariqfl7xasf" path="res://_Entities/SwapAbilities/Lightning_Storm_Swap_Card.png" id="20_lightning_storm"]
+[ext_resource type="Texture2D" uid="uid://dym4prhghn6kr" path="res://_Entities/SwapAbilities/Lucretia_Grasp_Swap_Card.png" id="20_lucretia_grasp"]
+[ext_resource type="Texture2D" uid="uid://c4xb4fl7w40gv" path="res://_Entities/SwapAbilities/Baal_Gaze_Swap_Card.png" id="20_baal_gaze"]
+[ext_resource type="Texture2D" uid="uid://dgv2mrtncmvv4" path="res://_Entities/SynAbility/SynAbility_1_CARD.png" id="20_lightning_strike"]
+[ext_resource type="Texture2D" uid="uid://c0j30y02h516h" path="res://_Entities/SynAbility/SynShieldCard.png" id="20_syn_shields"]
+[ext_resource type="Texture2D" uid="uid://dl00sh0wykl7" path="res://_Entities/SynAbility/BloodIceSpike_Card.png" id="20_blood_ice"]
+[ext_resource type="Texture2D" uid="uid://cbllpjwciwdsi" path="res://_Entities/SynAbility/MarkedForDeath_CARD.png" id="20_death_mark"]
+[ext_resource type="Texture2D" uid="uid://b2eucoeqyvpvq" path="res://_Entities/SynAbility/TorchShroomie_Card.png" id="20_shroomie"]
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpmsq"]
 texture = ExtResource("3_28t4q")
 texture_margin_left = 12.0
@@ -587,6 +597,97 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 0
 
+[node name="SorceryTab" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 79.0
+offset_top = 5.0
+offset_right = 307.0
+offset_bottom = 338.0
+mouse_filter = 2
+
+[node name="SorceryRows" type="VBoxContainer" parent="SorceryTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="SwapGrid" type="GridContainer" parent="SorceryTab/SorceryRows"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="BloodRain" parent="SorceryTab/SorceryRows/SwapGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+sorcery_id = &"blood_rain"
+icon = ExtResource("20_blood_rain")
+
+[node name="LightningStorm" parent="SorceryTab/SorceryRows/SwapGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+sorcery_id = &"lightning_storm"
+icon = ExtResource("20_lightning_storm")
+
+[node name="LucretiaGrasp" parent="SorceryTab/SorceryRows/SwapGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+sorcery_id = &"lucretia_grasp"
+icon = ExtResource("20_lucretia_grasp")
+
+[node name="BaalGaze" parent="SorceryTab/SorceryRows/SwapGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+sorcery_id = &"baal_gaze"
+icon = ExtResource("20_baal_gaze")
+
+[node name="SynGrid" type="GridContainer" parent="SorceryTab/SorceryRows"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="LightningStrike" parent="SorceryTab/SorceryRows/SynGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+sorcery_id = &"lightning_strike"
+icon = ExtResource("20_lightning_strike")
+
+[node name="SynShields" parent="SorceryTab/SorceryRows/SynGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+sorcery_id = &"syn_shields"
+icon = ExtResource("20_syn_shields")
+
+[node name="BloodIce" parent="SorceryTab/SorceryRows/SynGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+sorcery_id = &"blood_ice"
+icon = ExtResource("20_blood_ice")
+
+[node name="DeathMark" parent="SorceryTab/SorceryRows/SynGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+sorcery_id = &"death_mark"
+icon = ExtResource("20_death_mark")
+
+[node name="Shroomie" parent="SorceryTab/SorceryRows/SynGrid" instance=ExtResource("19_card")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+sorcery_id = &"shroomie"
+icon = ExtResource("20_shroomie")
+
 [node name="BGDarkEn" type="ColorRect" parent="." unique_id=1722038336]
 visible = false
 layout_mode = 0
@@ -650,6 +751,74 @@ mouse_filter = 1
 theme_override_fonts/font = ExtResource("9_tpmsq")
 theme_override_font_sizes/font_size = 13
 text = "UI_BACK"
+
+[node name="OpenDemonTab" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 75.0
+offset_top = 344.0
+offset_right = 133.0
+offset_bottom = 368.0
+theme_override_fonts/font = ExtResource("2_r6hpg")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_jm2ht")
+theme_override_styles/hover = ExtResource("8_28t4q")
+
+[node name="MarginContainer" type="MarginContainer" parent="OpenDemonTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DarkenBG" type="ColorRect" parent="OpenDemonTab/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5294118)
+
+[node name="Label" type="Label" parent="OpenDemonTab/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("9_tpmsq")
+theme_override_font_sizes/font_size = 10
+text = "UI_DEMONS"
+
+[node name="OpenSorceryTab" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 264.0
+offset_top = 344.0
+offset_right = 322.0
+offset_bottom = 368.0
+theme_override_fonts/font = ExtResource("2_r6hpg")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("7_jm2ht")
+theme_override_styles/hover = ExtResource("8_28t4q")
+
+[node name="MarginContainer" type="MarginContainer" parent="OpenSorceryTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DarkenBG" type="ColorRect" parent="OpenSorceryTab/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5294118)
+
+[node name="Label" type="Label" parent="OpenSorceryTab/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("9_tpmsq")
+theme_override_font_sizes/font_size = 10
+text = "UI_SORCERIES"
 
 [node name="CurrentDemonVboxContainer" type="VBoxContainer" parent="." unique_id=1790534077]
 layout_mode = 1

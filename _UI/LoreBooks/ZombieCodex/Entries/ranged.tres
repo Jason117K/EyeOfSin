@@ -1,9 +1,18 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://beiq7wqu2fiy8"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://ck5anay3bncnf" path="res://_Entities/Zombies/Notif_Icons/RangedZombie.png" id="1_s1gj0"]
+[ext_resource type="SpriteFrames" uid="uid://dggooy8u2du5g" path="res://_Entities/Zombies/ImgAnimationResources/Ranged_Zombie.tres" id="1_ua2t2"]
 
 [resource]
 script = ExtResource("1_entry")
 discovery_name = "Ranged"
 title_key = "NAME_RANGED"
 description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/rangedZombieDescription.txt"
+portrait = ExtResource("1_s1gj0")
+portrait_flip_h = true
+portrait_scale = 0.9
+animation = ExtResource("1_ua2t2")
+animation_name = &"Walk"
+animation_flip_h = true
+preview_scale = 2.5

@@ -1,8 +1,16 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://dmrxm5ujne5sm"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="SpriteFrames" uid="uid://5hegmg7uxgtj" path="res://_Entities/Zombies/ImgAnimationResources/Act_2_Boss.tres" id="1_2xymf"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://dm0201wklko7m" path="res://_Entities/Zombies/_Act2Boss/Act_2_Boss_Icon.png" id="2_rroja"]
 
 [resource]
 script = ExtResource("1_entry")
 discovery_name = "Act2Boss"
-title_key = "NAME_ACT2BOSS"
+title_key = "NAME_FLESH_MASS"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/A2_Boss_Description.txt"
+portrait = ExtResource("2_rroja")
+portrait_flip_h = true
+animation = ExtResource("1_2xymf")
+animation_name = &"Walk_Phase3"
+animation_flip_h = true

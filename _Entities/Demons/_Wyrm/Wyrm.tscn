@@ -921,8 +921,6 @@ size = Vector2(806, 20)
 [node name="Wyrm" type="Area2D" unique_id=639369473 groups=["Demons", "Plants", "Wyrm"]]
 z_index = 1
 script = ExtResource("4")
-ultimate_damage = 125
-ultimate_bleed = 15
 spinalOcculumBuffed_health = 500
 mawBuffed_health = 400
 projectile_damage = 14
@@ -930,7 +928,7 @@ spinal_bleed_damage_increase = 4
 bleed_damage = 2
 extension_speed = 5000.0
 max_length = 200.0
-laser_width = 2.0
+laser_width = 3.0
 maw_damage = 90.0
 mana_add_on_laser = 5
 cost = 125.0
@@ -1174,7 +1172,5 @@ shape = SubResource("RectangleShape2D_l4gaf")
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="BeamUlt" to="." method="_on_beam_ult_animation_finished"]
 [connection signal="frame_changed" from="BeamUlt" to="." method="_on_beam_ult_frame_changed"]
-[connection signal="animation_finished" from="BeamUlt2" to="." method="_on_beam_ult_animation_finished"]
-[connection signal="frame_changed" from="BeamUlt2" to="." method="_on_beam_ult_frame_changed"]
 
 [editable path="BuffNodesComponent"]

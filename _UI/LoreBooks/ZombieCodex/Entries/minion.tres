@@ -1,8 +1,17 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://be4uhskat33sc"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="SpriteFrames" uid="uid://d08d1t2h2bds4" path="res://_Entities/Zombies/ImgAnimationResources/Minion_Zombie.tres" id="1_lteu8"]
+[ext_resource type="Texture2D" uid="uid://ddovxrcgaa77k" path="res://_Entities/Zombies/_MinionZombie/MinionZombie.png" id="1_wg25y"]
 
 [resource]
 script = ExtResource("1_entry")
 discovery_name = "Minion"
 title_key = "NAME_MINION"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/Minion_Zombie_Description.txt"
+portrait = ExtResource("1_wg25y")
+portrait_flip_h = true
+portrait_scale = 0.9
+animation = ExtResource("1_lteu8")
+animation_name = &"Walk"
+animation_flip_h = true

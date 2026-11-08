@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://cw1uw4136lo4n"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
 [ext_resource type="Texture2D" uid="uid://bwjap2jd7pge8" path="res://_Entities/Zombies/_RebornZombie/BasicZombie.png" id="2_portrait"]
 [ext_resource type="SpriteFrames" uid="uid://cb16nsqkqjisk" path="res://_Entities/Zombies/ImgAnimationResources/BaseZombie.tres" id="3_animation"]
 
@@ -11,5 +11,6 @@ title_key = "NAME_REBORN"
 description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/BaseZombieDescription.txt"
 portrait = ExtResource("2_portrait")
 portrait_flip_h = true
+portrait_scale = 1.4000000000000001
 animation = ExtResource("3_animation")
 animation_flip_h = true

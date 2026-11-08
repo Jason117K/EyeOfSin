@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://c2eutshf3e4hk"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
 [ext_resource type="Texture2D" uid="uid://c0o0spwuo5xck" path="res://_Entities/Zombies/_Reanimator/Reanimator.png" id="2_portrait"]
 [ext_resource type="SpriteFrames" uid="uid://c74kvawp1yp4x" path="res://_Entities/Zombies/ImgAnimationResources/DancerAnim.tres" id="3_animation"]
 
@@ -11,5 +11,6 @@ title_key = "NAME_REANIMATOR"
 description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/dancerZombieDescription.txt"
 portrait = ExtResource("2_portrait")
 portrait_flip_h = true
+portrait_scale = 1.3
 animation = ExtResource("3_animation")
 animation_flip_h = true

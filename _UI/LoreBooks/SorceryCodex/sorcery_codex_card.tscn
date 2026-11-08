@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://_UI/LoreBooks/SorceryCodex/sorcery_codex_card.gd" id="1_card"]
+
+[node name="SorceryCodexCard" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+mouse_filter = 1
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_card")

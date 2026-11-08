@@ -31,8 +31,30 @@ var demon: Demon
 #@export var zigzag_position: float = 300.0  # Fixed screen position where zigzag occurs
 #@export var zigzag_width: float = 100.0  # Width of the zigzag section
 
+@export_group("Beam Visual")
+## Colors across the beam's width. Leave empty for laser_color → white → laser_color.
+@export var beam_gradient: Gradient
+@export_range(0.0, 1.0, 0.01) var glow_intensity := 0.35
+## Pixels the glow extends past each side of the beam.
+@export_range(0, 8, 1) var glow_width := 2
+## Colors past a Shroomie, which already doubles the Wyrm's damage.
+## Leave empty for laser_color → pink-red → laser_color.
+@export var enflamed_beam_gradient: Gradient
+
+const SYN_TORCH_GROUP := &"SynTorch"
+const ENFLAMED_CORE_WHITENESS := 0.45
+
+# The lines render inside a SubViewport so they're drawn at game-pixel resolution, like the tentacles.
+const VIEWPORT_PADDING := 2
+# Odd, so a texel sits exactly on the beam's center line.
+const GRADIENT_TEXTURE_HEIGHT := 33
+
 # Node references
-@onready var line2D := $Line2D
+@onready var pixel_viewport: SubViewportContainer = $PixelViewport
+@onready var sub_viewport: SubViewport = $PixelViewport/SubViewport
+@onready var glow_line: Line2D = $PixelViewport/SubViewport/GlowLine
+@onready var line2D: Line2D = $PixelViewport/SubViewport/BeamLine
+@onready var enflamed_line: Line2D = $PixelViewport/SubViewport/EnflamedBeamLine
 var blood_spit_fx #:= $"../../Worm2/BloodSpitFX"
 #@onready var attack_ray := $"../../DMG_RayCast2D"
 var attack_ray : Node
@@ -98,16 +120,16 @@ func _setup_laser() -> void:
 	og_cooldown = cooldown
 	og_damage = damage
 	#self.visible = false
-	# Set up Line2D (a child in the scene already)
-	line2D.visible = false
-	#print("Line2D is ", line2D)
-	line2D.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
-	line2D.default_color = laser_color
-	line2D.width = laser_width
-	line2D.begin_cap_mode = Line2D.LINE_CAP_ROUND
-	line2D.end_cap_mode = Line2D.LINE_CAP_ROUND
-	line2D.z_index = 1
-	
+	for line: Line2D in [glow_line, line2D, enflamed_line]:
+		line.points = PackedVector2Array([Vector2.ZERO, Vector2(100, 0)])
+		line.default_color = Color.WHITE
+		line.texture_mode = Line2D.LINE_TEXTURE_STRETCH
+		line.begin_cap_mode = Line2D.LINE_CAP_ROUND
+		line.end_cap_mode = Line2D.LINE_CAP_ROUND
+	enflamed_line.begin_cap_mode = Line2D.LINE_CAP_NONE
+	_apply_beam_style()
+	_fit_viewport()
+
 	# Set up Area2D and CollisionShape2D
 	#add_child(laser_area)
 	#laser_area.add_child(collision_shape)
@@ -140,7 +162,33 @@ func _process(delta: float) -> void:
 			current_length = min(current_length, max_length)
 			_update_laser()
 			_update_collision_shape()
-			
+		_update_enflamed_segment()
+
+# Shroomies can appear or expire mid-beam, so this runs every frame while firing.
+func _update_enflamed_segment() -> void:
+	var enflame_x := _find_enflame_x()
+	if enflame_x >= current_length:
+		enflamed_line.hide()
+		return
+	enflamed_line.points = PackedVector2Array([Vector2(enflame_x, 0), Vector2(current_length, 0)])
+	enflamed_line.show()
+
+# Local x where this beam first enters a same-dimension Shroomie, or INF if it never does.
+func _find_enflame_x() -> float:
+	var dimension := "Green" if demon != null and demon.is_in_group("Green") else "Purple"
+	var nearest := INF
+	for torch in get_tree().get_nodes_in_group(SYN_TORCH_GROUP):
+		if not torch.is_in_group(dimension):
+			continue
+		var flame_rect: Rect2 = torch.get_global_flame_rect()
+		if global_position.y < flame_rect.position.y or global_position.y > flame_rect.end.y:
+			continue
+		var right_x := to_local(Vector2(flame_rect.end.x, global_position.y)).x
+		if right_x <= 0.0:
+			continue
+		var left_x := to_local(Vector2(flame_rect.position.x, global_position.y)).x
+		nearest = minf(nearest, maxf(roundf(left_x), 0.0))
+	return nearest
 
 func _on_area_exited(area: Area2D) -> void:
 	if isDisabled:
@@ -165,7 +213,8 @@ func fire() -> void:
 		pass
 		##print("Not Disabled are we Firing?")
 	if !is_firing:
-		line2D.visible=true
+		_fit_viewport()
+		pixel_viewport.show()
 	#	#print("Not Firing No Return Cos Diabled Do Sutff")
 		AudioManager.create_2d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.WYRM_FIRE)
 		is_firing = true
@@ -189,8 +238,9 @@ func _update_laser() -> void:
 	points.append(Vector2.ZERO)  # Starting point
 		
 	points.append(Vector2(current_length, 0))
-		
+
 	line2D.points = points
+	glow_line.points = points
 
 # Updates the laser's collision specifically 
 func _update_collision_shape() -> void:
@@ -215,7 +265,9 @@ func _on_laser_timeout() -> void:
 	hit_enemies.clear()  # Clear the hit enemies when the laser times out
 	_update_laser()
 	_update_collision_shape()
-	done_firing = true 
+	pixel_viewport.hide()
+	enflamed_line.hide()
+	done_firing = true
 	#cooldown_timer.start()
 
 
@@ -224,14 +276,66 @@ func set_laser_color(color: Color) -> void:
 	if isDisabled:
 		return
 	laser_color = color
-	line2D.default_color = color
+	_apply_beam_style()
 
-# Set the laser width 
+# Set the laser width
 func set_laser_width(width: float) -> void:
 	if isDisabled:
 		return
 	laser_width = width
-	line2D.width = width
+	_apply_beam_style()
+	_fit_viewport()
+
+func _apply_beam_style() -> void:
+	line2D.width = laser_width
+	line2D.texture = _make_cross_section_texture(beam_gradient if beam_gradient else _default_beam_gradient())
+	glow_line.width = laser_width + glow_width * 2
+	glow_line.texture = _make_cross_section_texture(_glow_gradient())
+	enflamed_line.width = laser_width
+	enflamed_line.texture = _make_cross_section_texture(enflamed_beam_gradient if enflamed_beam_gradient else _default_enflamed_gradient())
+
+func _default_beam_gradient() -> Gradient:
+	return _edge_to_core_gradient(Color.WHITE)
+
+func _default_enflamed_gradient() -> Gradient:
+	return _edge_to_core_gradient(laser_color.lerp(Color.WHITE, ENFLAMED_CORE_WHITENESS))
+
+# Edges stay laser_color out to a third of the width, so a 3px beam is edge / core / edge.
+func _edge_to_core_gradient(core_color: Color) -> Gradient:
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.33, 0.5, 0.67, 1.0])
+	gradient.colors = PackedColorArray([laser_color, laser_color, core_color, laser_color, laser_color])
+	return gradient
+
+func _glow_gradient() -> Gradient:
+	var edge := Color(laser_color, 0.0)
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.5, 1.0])
+	gradient.colors = PackedColorArray([edge, Color(laser_color, glow_intensity), edge])
+	return gradient
+
+# A Line2D maps its texture's vertical axis across the line's width.
+func _make_cross_section_texture(gradient: Gradient) -> GradientTexture2D:
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.width = 1
+	texture.height = GRADIENT_TEXTURE_HEIGHT
+	texture.fill_from = Vector2(0, 0)
+	texture.fill_to = Vector2(0, 1)
+	return texture
+
+# Sizes the viewport to the beam plus its glow, keeping the beam's start on this node's origin.
+# The lines are centered at height / 2.0 so odd widths fill whole pixel rows, and the viewport
+# itself stays on whole pixels so beam pixels land on the game's pixel grid.
+func _fit_viewport() -> void:
+	var padding := VIEWPORT_PADDING + glow_width
+	sub_viewport.size = Vector2i(ceili(max_length), ceili(laser_width)) + Vector2i.ONE * padding * 2
+	var line_origin := Vector2(padding, sub_viewport.size.y / 2.0)
+	line2D.position = line_origin
+	glow_line.position = line_origin
+	enflamed_line.position = line_origin
+	pixel_viewport.size = sub_viewport.size
+	pixel_viewport.position = -Vector2(padding, floorf(line_origin.y))
 
 # Make the laser more powerful when Wyrm is buffed 
 func buff(bufferLocation:Vector2) -> void:

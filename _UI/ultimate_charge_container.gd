@@ -96,6 +96,7 @@ func ready_ultimate()->void:
 	if charges > 0:
 		Global.ultimate_is_ready = true
 		UiFx.add_pulsing_button_highlight(all_charges_panel_container)
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SYN_SELECTED)
 		print("Clicked ULT Bar")
 		ultimate_bar_clicked.emit()
 

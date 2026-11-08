@@ -1,8 +1,16 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://c48vps70xd7m7"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="SpriteFrames" uid="uid://dm8t32drbct6a" path="res://_Entities/Zombies/ImgAnimationResources/Argus_Boss.tres" id="1_2wk8l"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Texture2D" uid="uid://mqvsl7islsmx" path="res://_Entities/Zombies/_Act3Boss/Argus_Boss_Icon-export.png" id="2_2wk8l"]
 
 [resource]
 script = ExtResource("1_entry")
 discovery_name = "Argus"
 title_key = "NAME_ARGUS"
+description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/Argus_Boss_Description.txt"
+portrait = ExtResource("2_2wk8l")
+portrait_scale = 0.9
+portrait_offset = Vector2(0, -1)
+animation = ExtResource("1_2wk8l")
+animation_name = &"Idle"

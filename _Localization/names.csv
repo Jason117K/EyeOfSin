@@ -25,3 +25,4 @@ NAME_O_SPINE,O-SPINE,O-ESPINA,眼脊柱,О-ХРЕБЕТ,O-ESPINHA,O-DORN,オー�
 "NAME_RANGED","RANGED","TIRADOR","远程者","СТРЕЛОК","ATIRADOR","FERNKÄMPFER","レンジド","TIREUR","STRZELEC","레인지드","Zombie name (attacks from a distance)"
 "NAME_MINION","MINION","ESBIRRO","爪牙","ПРИСПЕШНИК","LACAIO","SCHERGE","ミニオン","SBIRE","SŁUGA","미니언","Zombie name"
 "NAME_ARGUS","ARGUS","ARGUS","阿古斯","АРГУС","ARGUS","ARGUS","アーガス","ARGUS","ARGUS","아르구스","Boss name — proper noun; do not translate"
+"NAME_FLESH_MASS","FLESH MASS","MASA DE CARNE","血肉团","МАССА ПЛОТИ","MASSA DE CARNE","FLEISCHMASSE","フレッシュマス","MASSE DE CHAIR","MASA MIĘSA","살덩어리","Act 2 boss name"
