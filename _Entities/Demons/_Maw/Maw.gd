@@ -32,6 +32,24 @@ var _base_digestion_time := -1.0
 @export var spinal_occulum_max_health: float = 1500
 @export var web_belch_distance := Vector2(128, 0)
 
+@export_group("Buffed Tentacle Colors")
+@export_subgroup("Occulum")
+@export var occulum_tentacle_light := Color(0.36, 0, 0.048)
+@export var occulum_tentacle_dark := Color(0.160784, 0, 0.0627451)
+@export_subgroup("Crawler")
+@export var crawler_tentacle_light := Color(0.36, 0, 0.048)
+@export var crawler_tentacle_dark := Color(0.160784, 0, 0.0627451)
+@export_subgroup("SpinalOcculum")
+@export var spinal_occulum_tentacle_light := Color(0.36, 0, 0.048)
+@export var spinal_occulum_tentacle_dark := Color(0.160784, 0, 0.0627451)
+@export_subgroup("Wyrm")
+@export var wyrm_tentacle_light := Color(0.36, 0, 0.048)
+@export var wyrm_tentacle_dark := Color(0.160784, 0, 0.0627451)
+@export_subgroup("Hive")
+@export var hive_tentacle_light := Color(0.36, 0, 0.048)
+@export var hive_tentacle_dark := Color(0.160784, 0, 0.0627451)
+@export_group("")
+
 # --- Component References ---
 @onready var tentacle1: Tentacle = $Tentacle1
 @onready var tentacle2: Tentacle = $Tentacle2
@@ -51,6 +69,10 @@ var enemies_to_eat: Array = []
 var eating_groups: Dictionary = {}
 var consume_zombie_group_timer: Timer
 var tentacle4: Tentacle
+# Each Maw recolors its own copy; arm.tscn's material is shared by every unbuffed Maw.
+var tentacle_material: ShaderMaterial
+var _base_tentacle_light: Color
+var _base_tentacle_dark: Color
 
 # Buff state
 var willBelchWebs := false
@@ -156,10 +178,12 @@ func receive_buff(demon) -> void:
 				consume_zombie_group_timer.start()
 			"Maw":
 				pass
+		_apply_buffed_tentacle_colors(demonName)
 		update_range_preview()
 
 func debuff() -> void:
 	super()
+	_set_tentacle_colors(_base_tentacle_light, _base_tentacle_dark)
 	if is_blood:
 		return
 	# Base debuff() only resets the shared flags; undo the Maw-only buff effects
@@ -208,6 +232,9 @@ func _cleanup() -> void:
 func setup_tentacles() -> void:
 	tentacles = [tentacle1, tentacle2, tentacle3]
 	available_tentacles = tentacles.duplicate()
+	tentacle_material = tentacle1.arm.get_two_tone_material().duplicate()
+	_base_tentacle_light = tentacle_material.get_shader_parameter("light_color")
+	_base_tentacle_dark = tentacle_material.get_shader_parameter("dark_color")
 
 	for tentacle in tentacles:
 		_wire_tentacle(tentacle)
@@ -224,6 +251,26 @@ func _wire_tentacle(tentacle: Tentacle) -> void:
 	tentacle.retraction_finished.connect(_on_tentacle_retraction_finished.bind(tentacle))
 	tentacle.ready_again.connect(_on_tentacle_ready_again.bind(tentacle))
 	tentacle.aborted.connect(_on_tentacle_aborted.bind(tentacle))
+	tentacle.arm.set_two_tone_material(tentacle_material)
+
+func _set_tentacle_colors(light: Color, dark: Color) -> void:
+	if tentacle_material == null:
+		return
+	tentacle_material.set_shader_parameter("light_color", light)
+	tentacle_material.set_shader_parameter("dark_color", dark)
+
+func _apply_buffed_tentacle_colors(demon_name: String) -> void:
+	match demon_name:
+		"Occulum":
+			_set_tentacle_colors(occulum_tentacle_light, occulum_tentacle_dark)
+		"Crawler":
+			_set_tentacle_colors(crawler_tentacle_light, crawler_tentacle_dark)
+		"SpinalOcculum":
+			_set_tentacle_colors(spinal_occulum_tentacle_light, spinal_occulum_tentacle_dark)
+		"Wyrm":
+			_set_tentacle_colors(wyrm_tentacle_light, wyrm_tentacle_dark)
+		"Hive":
+			_set_tentacle_colors(hive_tentacle_light, hive_tentacle_dark)
 
 func get_tentacles() -> Array[Tentacle]:
 	return available_tentacles

@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://j3gcywxflkf1" path="res://_Entities/Demons/Tentacles/arm.tscn" id="42_mqfjf"]
 [ext_resource type="Shader" uid="uid://uydbla0eud6j" path="res://_Utilities/TentacleDemo/shaders/canvas_group_two_tone.gdshader" id="43_8f1n2"]
 [ext_resource type="PackedScene" uid="uid://dqvqac7rqkedq" path="res://_Entities/Demons/Tentacles/arm_target.tscn" id="44_n2212"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="46_n2212"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -1269,7 +1270,6 @@ shape_type = 2
 size = Vector2(42.07452, 42.07452)
 rx = 21.03726
 ry = 21.03726
-metadata/_select_hint_ = true
 
 [node name="Fill" type="Polygon2D" parent="HighlightCircle" unique_id=1540371729]
 color = Color(1, 1, 1, 0)
@@ -1534,6 +1534,11 @@ position = Vector2(-40, 5)
 [node name="ArmTarget2" parent="ArmContainer" unique_id=577845707 instance=ExtResource("44_n2212")]
 visible = false
 position = Vector2(21, -10)
+
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("46_n2212")]
+position = Vector2(2, -13)
+frame = 2
+frame_progress = 0.39539546
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

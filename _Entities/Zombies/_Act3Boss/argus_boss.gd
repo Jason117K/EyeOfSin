@@ -22,6 +22,7 @@ extends Zombie
 const GREEN_HUE := 125.0
 const DEFAULT_HERALD_SCENE := "res://_Entities/Zombies/_HeraldZombie/HeraldZombie.tscn"
 const PURPLE_HUE := -86.0
+const ARGUS_ICON := preload("res://_Entities/Zombies/_Act3Boss/Argus_Boss_Icon-export.png")
 
 @export_category("Argus")
 ## How far (px) Argus walks from his spawn point before planting himself.
@@ -257,9 +258,8 @@ func get_zombie_name() -> String:
 
 
 func get_special_description() -> String:
-	return "*Immune while his Heralds live"
+	return argus_special_description
 
 
-#Temporary Will Replace
 func get_zombie_icon() -> CompressedTexture2D:
-	return Global.rohan_icon
+	return ARGUS_ICON

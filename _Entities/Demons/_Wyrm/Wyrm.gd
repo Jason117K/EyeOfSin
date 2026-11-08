@@ -115,7 +115,7 @@ func _ready() -> void:
 		beam.material = ult_beam_material
 		beam.hide()
 	wyrm_buff_unlocked.connect(Global.unlock_buff)
-	set_process(true)  # Bob animation requires per-frame updates
+	set_process(true)
 	# --- Demon-specific collision ---
 	_init_demon_collision()
 	## --- Sprite setup ---
@@ -304,20 +304,6 @@ func _cleanup() -> void:
 	super()
 
 
-# --- Damage ---
-
-func take_damage(damage: float) -> void:
-	healthComp.take_damage(damage)
-
-
-# --- Animation (_process) ---
-
-func _process(delta: float) -> void:
-	pass
-
-
-
-	
 func baal_buff()->void:
 	super()
 	baal_halo.play("top_glow")	

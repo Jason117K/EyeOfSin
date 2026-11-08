@@ -183,13 +183,14 @@ which is in **select-screen button order, not folder order** (slot 7 is `Level8.
 `Level7.tscn`). A new level needs a table entry, or its wins log `[PROGRESS] unknown level` and
 aren't recorded. Wins are recorded at one choke point, `WaveManager._win()`, before `level_ended`.
 Select screens darken and disable locked entries via `UiFx.set_locked` and expose `refresh_locks()`.
-**Tutorial toggle (OpenLevel).** A level counts as attempted once it loads
-(`Progress.mark_level_attempted`, from `change_dual_scenes`), or once it's beaten. Its step
-count is saved when the level calls `define_tutorial_steps`, which only happens with tutorials on.
-Both are stored in the `[tutorial_steps]` section (`-1` = attempted, count not seen yet).
-`OpenLevel.set_levels` applies the rule on every open, for all Acts. An unattempted level hides the
-toggle and plays the tutorial. An attempted one defaults to off, and shows the toggle only if it
-has more than 1 step or the count is unknown. `Global.skip_tutorials` is written only on Play.
+**Tutorial toggle (OpenLevel).** A level counts as attempted only once it has loaded. Beating it
+or unlocking it with Ctrl+U doesn't count. On every load, `change_dual_scenes` calls
+`Progress.mark_level_attempted` with `LevelTemplate.get_tutorial_step_count()`, which builds the
+level's `_setup_tutorial()` steps just to count them. The count is saved in the `[tutorial_steps]`
+section. `OpenLevel.set_levels` applies the rule on every open, for all Acts. An unattempted level
+hides the toggle and plays the tutorial. An attempted one defaults to off, and shows the toggle
+only if it has more than 1 step. `Global.skip_tutorials` is written only on Play. Keep
+`_setup_tutorial()` free of side effects: it only calls `define_tutorial_steps`.
 Each level card's `Lock` sprite shows only while that level is locked (counter-modulated so it
 stays full brightness over the darkened card).
 Their sorcery-menu button stays locked until `Progress.any_sorcery_unlocked()`. The win screens'
@@ -272,7 +273,16 @@ player has met. Anything else is a jet-black silhouette of its normal art and ca
     `.txt`, portrait, SpriteFrames + animation name, flips) and add it to `entries`.
     `preview_scale` is only needed to cap a zombie below 3x. Tune the grid card with
     `portrait_scale` (× the fitted size, centered) and `portrait_offset` (card pixels). Portraits are
-    clipped by `PortraitArea` in `zombie_codex_slot.tscn`, inset 3 px so the card border shows. Add its `NAME_*` row to `names.csv` and sync its `.txt` (see Localization). No code
+    clipped by `PortraitArea` in `zombie_codex_slot.tscn`, inset 3 px so the card border shows.
+  - **Outside the codex, a new zombie also needs:**
+    - its script's `get_zombie_name()`, which resolves through `Loc.display_name`, so `" MINION "`
+      maps to `NAME_MINION`;
+    - `get_zombie_icon()`, since the default is Reborn's icon;
+    - a `ZombieSpecialDescriptions/*.txt` loaded in `BaseZombie._load_descriptions()`.
+
+    These feed the notification bar. If the zombie can appear in wave data, it also needs a
+    `<Type>Hbox` row in `WavePreview.tscn` plus entries in `WavePreview.gd`'s two arrays. The
+    preview matches rows by name substring. Add its `NAME_*` row to `names.csv` and sync its `.txt` (see Localization). No code
     changes.
 - Both codex scenes are rebuilt on every open and read live state in `_ready`. The zombie codex
   also re-reads it on Ctrl+U through `refresh_locks()`.
@@ -473,7 +483,8 @@ refactor phases that touch the restart path, buff matching, or tick order.
    After the Maw unlocks, toggle 1–5 per dimension; level 12+ menus offer exactly that
    dimension's loadout, including after a restart, and levels ≤ 11 are unchanged.
    Tutorial toggle: fresh save → opening 1-1 shows no toggle and Play runs the tutorial. Reopening
-   it shows the toggle, off. 1-9 and 2-2 hide it after one play, while 2-1 keeps it.
+   it shows the toggle, off. 1-9 and 2-2 hide it after one play, while 2-1 keeps it. After
+   Ctrl+U, a level that was never loaded still hides the toggle and plays its tutorial.
 9. **Sorceries + bars:** the Act screens' sorcery button stays dark until the first sorcery
    unlocks. A sorcery picked on the ability panel is still equipped in levels 5–17 (not replaced
    by Lightning) and after a restart. Swap/Syn bars show in levels and on the ability panel only:

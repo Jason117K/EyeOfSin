@@ -33,6 +33,8 @@
 [ext_resource type="SpriteFrames" uid="uid://xnlyswxodwao" path="res://_Entities/Demons/_Wyrm/wyrm_beam_ult_sprite_frames.tres" id="32_ds7ka"]
 [ext_resource type="Script" uid="uid://b4apwa6ns8s" path="res://_Entities/Demons/_Wyrm/beam_ult_area.gd" id="32_l4gaf"]
 [ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="33_ds7ka"]
+[ext_resource type="Shader" uid="uid://cpkds665i6vsl" path="res://_Common/Shaders/Blood_Demon.gdshader" id="34_blood"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="35_r0h8a"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -88,27 +90,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Shader" id="Shader_ds7ka"]
-code = "shader_type canvas_item;
-
-// Replaces every visible pixel of the sprite with a flat color.
-// Alpha of the original texture is preserved so the silhouette stays intact.
-uniform vec4 blood_color : source_color = vec4(0.6, 0.0, 0.0, 1.0);
-// When false, the sprite renders normally with no color replacement.
-uniform bool active = false;
-
-void fragment() {
-	
-	if (active) {
-		vec4 tex = texture(TEXTURE, UV);
-		COLOR = vec4(blood_color.rgb, tex.a * blood_color.a * COLOR.a);
-	} 
-}
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fuqq8"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ds7ka")
+shader = ExtResource("34_blood")
 shader_parameter/blood_color = Color(0.6, 0, 0, 1)
 shader_parameter/active = false
 
@@ -1163,6 +1147,11 @@ script = ExtResource("32_l4gaf")
 [node name="BeamCollision" type="CollisionShape2D" parent="BeamUltArea" unique_id=1832380787]
 position = Vector2(393, 0)
 shape = SubResource("RectangleShape2D_l4gaf")
+
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("35_r0h8a")]
+position = Vector2(2, -13)
+frame = 2
+frame_progress = 0.39539546
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -24,6 +24,8 @@ extends Zombie
 
 enum State { WALK, ATTACK, DOWN, TRANSITION, DEAD }
 
+const FLESH_MASS_ICON := preload("res://_Entities/Zombies/_Act2Boss/Act_2_Boss_Icon.png")
+
 # --- Per-phase settings (p1_ / p2_ / p3_; read through _phase_value) ---
 # Hit frames count from 0 and must be 1 or more (frame 0 is where every attack starts).
 @export_group("Phase 1")
@@ -366,9 +368,8 @@ func get_zombie_name() -> String:
 
 
 func get_special_description() -> String:
-	return "*Three phases; splits into twins"
+	return act2boss_special_description
 
 
-#Temporary Will Replace
 func get_zombie_icon() -> CompressedTexture2D:
-	return Global.rohan_icon
+	return FLESH_MASS_ICON

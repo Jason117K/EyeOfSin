@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_he6yk"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="31_3d0n3"]
 [ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="35_7l7df"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="37_m7eju"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -1162,6 +1163,11 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_lskl7")
 frame = 2
 frame_progress = 0.075980306
+
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("37_m7eju")]
+position = Vector2(2, -13)
+frame = 2
+frame_progress = 0.39539546
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

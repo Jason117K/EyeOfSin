@@ -76,6 +76,7 @@ class_name Demon
 @onready var spawn_juice_anim := $SpawnJuiceAnim
 @onready var baal_halo : AnimatedSprite2D = $BaalHalo
 @onready var protective_rib := $ProtectiveRib
+@onready var death_blood: AnimatedSprite2D = get_node_or_null("DeathBlood")
 
 @onready var preview_nodes := get_node_or_null("PreviewNodes") # EmptyDemon has none
 
@@ -113,7 +114,8 @@ var spawn_done := false
 var is_hero := false
 var hit_flash_active : bool = false 
 var time_since_hit : float = 0.0 
-var is_blood : bool = false 
+var is_blood : bool = false
+var is_dying := false
 
 var all_synergies : Array 
 var my_active_dimension : Control
@@ -476,18 +478,40 @@ func spawn_revive_point()->void:
 	get_parent().add_child(revive_point_instance)
 	
 func die() -> void:
+	if is_dying:
+		return
 	if is_blood:
 		if is_instance_valid(blood_clone_empty_parent):
 			blood_clone_empty_parent.dispel_blood_clone(true)
 		else:
 			dispel_blood_clone_instance()
 		return
+	is_dying = true
 	kill_hero()
 	demon_die.emit()
 	spawn_revive_point()
 	_cleanup_manager()
 	_cleanup()
-	queue_free()
+	_play_death_blood()
+
+func _play_death_blood() -> void:
+	if death_blood == null:
+		queue_free()
+		return
+	set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	death_blood.process_mode = Node.PROCESS_MODE_ALWAYS
+	death_blood.frame_changed.connect(_on_death_blood_frame_changed)
+	death_blood.animation_finished.connect(queue_free, CONNECT_ONE_SHOT)
+	death_blood.show()
+	death_blood.play(&"demon_die")
+
+func _on_death_blood_frame_changed() -> void:
+	if death_blood.frame != 1:
+		return
+	death_blood.frame_changed.disconnect(_on_death_blood_frame_changed)
+	for child in get_children():
+		if child is CanvasItem and child != death_blood:
+			child.hide()
 
 func die_fromClearSpace() -> void:
 	kill_hero()
@@ -552,10 +576,13 @@ func increase_max_health(added_health_amount: float) -> void:
 	healthComp.increase_max_health(added_health_amount)
 
 func take_damage(damage: float) -> void:
+	if is_dying:
+		return
 	if !invulnerable:
 		healthComp.take_damage(damage)
 		animSpriteComp.set_instance_shader_parameter("hit_flash", 1.0)
 		hit_flash_active = true
+		time_since_hit = 0.0
 		
 func _on_ResetThisColor_timeout() -> void:
 	animSpriteComp.set_instance_shader_parameter("hit_flash", 0.0)

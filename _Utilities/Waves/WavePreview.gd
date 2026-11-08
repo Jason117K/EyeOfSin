@@ -23,11 +23,12 @@ signal call_wave_early_requested
 @onready var sunderedTexture: TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SunderedHbox/SunderedTexture
 @onready var tankTexture : TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/TankHbox/TankTexture
 @onready var rangedTexture : TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RangedHbox/RangedTexture
+@onready var bufferTexture : TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/BufferHbox/BufferTexture
 
 @onready var ALL_ZOMBIE_TEXTURES := [rebornTexture,severedTexture,unhallowerTexture, \
 									erupterTexture,reanimatorTexture, \
 									flesheaterTexture,amalgamTexture , sunderedTexture, \
-									tankTexture, rangedTexture]
+									tankTexture, rangedTexture, bufferTexture]
 									
 @onready var rebornLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RebornHbox/Reborn
 @onready var severedabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SeveredHbox/Severed
@@ -40,6 +41,7 @@ signal call_wave_early_requested
 @onready var sunderedLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SunderedHbox/Sundered
 @onready var tankLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/TankHbox/Tank
 @onready var rangedLabel : RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RangedHbox/Ranged
+@onready var bufferLabel : RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/BufferHbox/Buffer
 
 @onready var zombie_preview_panel : PanelContainer = $ZombiePreviewControl/ZombiePreviewPanel
 
@@ -48,7 +50,7 @@ signal call_wave_early_requested
 @onready var ALL_ZOMBIE_LABELS := [rebornLabel,severedabel,unhallowerLabel, \
 									erupterLabel, reanimatorLabel, \
 									flesheaterLabel, amalgamLabel, \
-									sunderedLabel, tankLabel, rangedLabel]
+									sunderedLabel, tankLabel, rangedLabel, bufferLabel]
 									
 @onready var zombie_preview_control := $ZombiePreviewControl
 

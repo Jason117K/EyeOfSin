@@ -34,6 +34,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cr0g1f04b2dio" path="res://_Entities/SynAbility/baal_halos.tres" id="30_elaex"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="31_0yhcl"]
 [ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="34_vqn1v"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="35_egaid"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
 resource_local_to_scene = true
@@ -1053,6 +1054,12 @@ texture = ExtResource("34_vqn1v")
 
 [node name="UltimateArmTargetLocation" type="Node2D" parent="." unique_id=398963845]
 position = Vector2(234, 224)
+
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("35_egaid")]
+position = Vector2(253, 240.00002)
+animation = &"demon_die"
+frame = 2
+frame_progress = 0.39539546
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

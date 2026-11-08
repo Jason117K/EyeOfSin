@@ -23,6 +23,38 @@ region = Rect2(330, 186, 110, 93)
 atlas = ExtResource("1_b6vyi")
 region = Rect2(440, 186, 110, 93)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mggmo"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(0, 651, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l3sd"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(110, 651, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pql5h"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(220, 651, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe1pk"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(330, 651, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqb8p"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(440, 651, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpotg"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(550, 651, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be2gk"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(660, 651, 110, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2q8v"]
+atlas = ExtResource("1_b6vyi")
+region = Rect2(770, 651, 110, 93)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_eiab8"]
 animations = [{
 "frames": [{
@@ -50,9 +82,39 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mggmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l3sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pql5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe1pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqb8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpotg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be2gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2q8v")
+}],
+"loop": false,
+"name": &"demon_die",
+"speed": 10.0
 }]
 
 [node name="DeathBlood" type="AnimatedSprite2D" unique_id=183842228]
+visible = false
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_eiab8")
 script = ExtResource("2_mggmo")

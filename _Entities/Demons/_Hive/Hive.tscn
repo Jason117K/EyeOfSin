@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://hk10bht1t83o" path="res://_Entities/SwapAbilities/TempBloodHaloAlt.png" id="27_w5638"]
 [ext_resource type="Texture2D" uid="uid://cdw3sqgcow7x6" path="res://_Entities/Demons/Cards/DESELECT_CARD_Smol.png" id="29_dvp3m"]
 [ext_resource type="Texture2D" uid="uid://cn8jmlj6ub1ji" path="res://_Entities/Demons/_CagedOculum/ProtectiveRib.png" id="30_0lpgd"]
+[ext_resource type="PackedScene" uid="uid://m72ynoh4bg71" path="res://_Entities/Zombies/death_blood.tscn" id="31_fuab8"]
 [ext_resource type="Texture2D" uid="uid://bw0s6ynwthtgn" path="res://_Entities/Demons/SpawnTestJuiceAnim916.png" id="31_kl3hl"]
 
 [sub_resource type="Curve2D" id="Curve2D_fuqq8"]
@@ -645,6 +646,11 @@ sprite_frames = SubResource("SpriteFrames_fuab8")
 [node name="ProtectiveRib" type="Sprite2D" parent="." unique_id=1054963041]
 position = Vector2(7, -1)
 texture = ExtResource("30_0lpgd")
+
+[node name="DeathBlood" parent="." unique_id=183842228 instance=ExtResource("31_fuab8")]
+position = Vector2(2, -13)
+frame = 2
+frame_progress = 0.39539546
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -498,6 +498,5 @@ func get_special_description() -> String:
 	return rohan_special_description
 
 
-#Temporary Will Replace
 func get_zombie_icon() -> CompressedTexture2D:
-	return Global.unhallower_icon
+	return Global.rohan_icon

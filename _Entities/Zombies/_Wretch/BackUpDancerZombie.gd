@@ -21,3 +21,6 @@ func silence() -> void:
 
 func get_special_description() -> String:
 	return wretch_special_description
+
+func get_zombie_icon() -> CompressedTexture2D:
+	return Global.wretch_icon

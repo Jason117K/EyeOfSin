@@ -1,10 +1,14 @@
 keys,en,es,zh_CN,ru,pt_BR,de,ja,fr,pl,ko,_notes
 TXT_A2_BOSS_DESCRIPTION,"A vicious mutating Zombie.
 ",Un zombi mutante y feroz.,一只凶残的变异僵尸。,Свирепый мутирующий зомби.,Um zumbi mutante e feroz.,"Ein bösartiger, mutierender Zombie.",凶暴に変異し続けるゾンビ。,Un zombie mutant et vicieux.,"Okrutny, mutujący zombie.",사납게 변이하는 좀비.,res://_Assets/Text/TextFiles/ZombieDescriptions/A2_Boss_Description.txt
+TXT_ACT2BOSS_SPECIAL_DESCRIPTION,"*Three phases; splits into twins
+",*Tres fases; se divide en gemelos,*三个阶段；分裂成双生体,*Три фазы; распадается на близнецов,*Três fases; divide-se em gêmeos,*Drei Phasen; teilt sich in Zwillinge,*3段階；双子に分裂する,*Trois phases ; se divise en jumeaux,*Trzy fazy; dzieli się na bliźniaki,*3단계; 쌍둥이로 분열,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/act2boss_special_description.txt
 TXT_AMALGAM_SPECIAL_DESCRIPTION,"*Partially regenerates after loosing shield
 ",*Se regenera parcialmente tras perder el escudo,*失去护盾后部分再生,*Частично восстанавливается после потери щита,*Regenera parcialmente após perder o escudo,*Regeneriert sich teilweise nach Schildverlust,*シールドを失うと部分的に再生する,*Se régénère partiellement après avoir perdu son bouclier,*Częściowo regeneruje się po utracie tarczy,*보호막을 잃으면 부분적으로 재생합니다,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/amalgam_special_description.txt
 TXT_ARGUS_BOSS_DESCRIPTION,"The source of this Eldritch plague.
 ",El origen de esta plaga ultraterrena.,这场诡秘瘟疫的源头。,Источник этой потусторонней чумы.,A origem desta praga sobrenatural.,Der Ursprung dieser unheimlichen Seuche.,この異形の疫病の元凶。,La source de cette peste indicible.,Źródło tej nieziemskiej zarazy.,이 기괴한 역병의 근원.,res://_Assets/Text/TextFiles/ZombieDescriptions/Argus_Boss_Description.txt
+TXT_ARGUS_SPECIAL_DESCRIPTION,"*Immune while his Heralds live
+",*Inmune mientras vivan sus Heraldos,*其使者存活时免疫伤害,"*Неуязвим, пока живы его Вестники",*Imune enquanto seus Arautos viverem,"*Immun, solange seine Herolde leben",*伝令が生きている間は無敵,*Invulnérable tant que ses Hérauts vivent,"*Odporny, dopóki żyją jego Heroldowie",*전령이 살아 있는 동안 무적,res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/argus_special_description.txt
 TXT_BACKUPDANCERDESCRIPTION,"Wretches are smaller than average Reborns, and this is because they are actually infants.
 Speed: Medium
 Health: Low

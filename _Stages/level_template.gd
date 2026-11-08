@@ -485,9 +485,22 @@ var _tutorial_steps: Array[Dictionary] = []
 var _current_step_index: int = -1
 
 
+## Levels override this to call define_tutorial_steps.
+func _setup_tutorial() -> void:
+	pass
+
+
 func define_tutorial_steps(steps: Array[Dictionary]) -> void:
 	_tutorial_steps = steps
-	Progress.record_tutorial_steps(scene_file_path, steps.size())
+
+
+## Builds the level's steps only to count them, leaving the live tutorial untouched.
+func get_tutorial_step_count() -> int:
+	var live_steps := _tutorial_steps
+	_setup_tutorial()
+	var count := _tutorial_steps.size()
+	_tutorial_steps = live_steps
+	return count
 
 
 func advance_tutorial() -> void:

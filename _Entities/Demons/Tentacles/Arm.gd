@@ -281,6 +281,15 @@ func _apply_width_curve() -> void:
 		shadow_node.width_curve = width_curve
 
 
+## The two-tone shader material on the CanvasGroup that holds the main tentacle line.
+func get_two_tone_material() -> ShaderMaterial:
+	return base_node.get_parent().material
+
+
+func set_two_tone_material(material: ShaderMaterial) -> void:
+	base_node.get_parent().material = material
+
+
 ## Returns live segment positions for external nodes to read. (Debug Draw etc)
 func get_segments() -> Array[Vector2]:
 	return _segments

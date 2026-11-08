@@ -83,6 +83,8 @@ static var rohan_special_description: String
 static var tank_special_description: String
 static var minion_special_description: String
 static var ranged_special_description: String
+static var act2boss_special_description: String
+static var argus_special_description: String
 
 
 
@@ -109,6 +111,8 @@ static func _load_descriptions() -> void:
 	tank_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/tank_special_description.txt")
 	minion_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/minion_special_description.txt")
 	ranged_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/ranged_special_description.txt")
+	act2boss_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/act2boss_special_description.txt")
+	argus_special_description = Loc.text("res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/argus_special_description.txt")
 	_descriptions_locale = locale
 
 const DroneScene = preload("res://_Entities/Demons/Minion_Drone.tscn")

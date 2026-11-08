@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func get_zombie_name() -> String:
-	return " URCHIN "
+	return " MINION "
 
 func silence() -> void:
 	super()

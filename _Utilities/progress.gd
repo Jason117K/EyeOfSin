@@ -10,9 +10,8 @@ class_name Progress extends RefCounted
 const SAVE_PATH := "user://progress.cfg"
 const SAVE_SECTION := "progress"
 const RANKS_SECTION := "best_ranks" # key = level number, value = rank (0 = SSS .. 5 = D)
-## Key = attempted level number, value = its tutorial step count (UNKNOWN_STEPS until seen).
+## Key = level number that has been loaded at least once, value = its tutorial step count.
 const TUTORIAL_SECTION := "tutorial_steps"
-const UNKNOWN_STEPS := -1
 const SAVE_VERSION := 2
 
 ## Indexed like ScoreManager.SCORE_RANKS / style_screen.SCORE_RANKS (SSS..D).
@@ -207,39 +206,26 @@ static func record_rank(rank: int) -> int:
 	return stars_for_rank(rank)
 
 
-## Called on every level load (GameController.change_dual_scenes); only the first one saves.
-static func mark_level_attempted(scene_path: String) -> void:
+## Called on every level load (GameController.change_dual_scenes); saves only when the count changes.
+static func mark_level_attempted(scene_path: String, step_count: int) -> void:
 	var level := level_for_scene(scene_path)
 	if level == 0:
 		return
 	_ensure_loaded()
-	if not _tutorial_steps.has(level):
-		_tutorial_steps[level] = UNKNOWN_STEPS
-		_save()
-
-
-## Called when a level defines its tutorial steps, which only happens with tutorials on.
-static func record_tutorial_steps(scene_path: String, step_count: int) -> void:
-	var level := level_for_scene(scene_path)
-	if level == 0:
-		return
-	_ensure_loaded()
-	if _tutorial_steps.get(level, UNKNOWN_STEPS) != step_count:
+	if _tutorial_steps.get(level, -1) != step_count:
 		_tutorial_steps[level] = step_count
 		_save()
 
 
-## Beaten levels count too, which covers saves from before attempts were tracked.
+## Only a load counts, so levels unlocked or beaten without loading still play their tutorial.
 static func is_level_attempted(level: int) -> bool:
 	_ensure_loaded()
-	return _tutorial_steps.has(level) or is_level_beaten(level)
+	return _tutorial_steps.has(level)
 
 
-## An unknown step count counts as a tutorial, so the player can always turn one back on.
 static func level_has_tutorial(level: int) -> bool:
 	_ensure_loaded()
-	var steps: int = _tutorial_steps.get(level, UNKNOWN_STEPS)
-	return steps == UNKNOWN_STEPS or steps > 1
+	return _tutorial_steps.get(level, 0) > 1
 
 
 static func is_sorcery_unlocked(id: StringName) -> bool:
@@ -357,7 +343,7 @@ static func _load() -> void:
 			var level := key.to_int()
 			var steps: Variant = cfg.get_value(TUTORIAL_SECTION, key)
 			if not key.is_valid_int() or level < 1 or level > total_levels() \
-					or typeof(steps) != TYPE_INT or steps < UNKNOWN_STEPS:
+					or typeof(steps) != TYPE_INT or steps < 0:
 				push_warning("[PROGRESS] skipping bad tutorial steps '%s = %s' in %s" % [key, str(steps), SAVE_PATH])
 				continue
 			_tutorial_steps[level] = steps
