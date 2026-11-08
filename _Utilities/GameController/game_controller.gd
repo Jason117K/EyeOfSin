@@ -31,6 +31,7 @@ var _is_transitioning := false
 @onready var demon_selection_menus := Global.demon_selection_menus
 @onready var level_switcher := $CurrentScene/LevelSwitcher
 @onready var menu_audio: MenuAudio = $MenuAudio
+var virtual_cursor := VirtualCursor.new()
 #@onready var ultimate_container := $UltimateChargeContainer
 var ultimate_container 
 # Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
@@ -78,6 +79,7 @@ func _ready() -> void:
 	# Runs while paused too, so swap_while_paused can swap back and forth.
 	swap_cooldown_timer.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(swap_cooldown_timer)
+	add_child(virtual_cursor)
 
 	_default_root_cull_mask = get_viewport().canvas_cull_mask
 	get_tree().node_added.connect(_on_node_added)

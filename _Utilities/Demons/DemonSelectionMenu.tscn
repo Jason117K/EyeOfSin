@@ -877,10 +877,9 @@ position = Vector2(103, 2)
 [node name="UtilityPanelContainer" type="PanelContainer" parent="." unique_id=1919938362]
 self_modulate = Color(0.63, 0.63, 0.63, 1)
 layout_mode = 0
-offset_left = 677.0
-offset_top = 2.0
-offset_right = 744.0
-offset_bottom = 69.0
+offset_left = 674.0
+offset_right = 747.0
+offset_bottom = 73.0
 scale = Vector2(0.9, 0.9)
 theme_override_styles/panel = SubResource("StyleBoxTexture_75hld")
 
@@ -895,11 +894,13 @@ theme_override_constants/margin_bottom = -5
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer" unique_id=1070210295]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
+alignment = 1
 
 [node name="RemoveDemon" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer" unique_id=1419068643]
 visible = false
@@ -943,6 +944,7 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
+alignment = 1
 
 [node name="Codex2" type="VBoxContainer" parent="UtilityPanelContainer/MarginContainer/UtilityVBoxContainer/HBoxContainer2" unique_id=1905932608]
 layout_mode = 2
@@ -996,10 +998,9 @@ shape = SubResource("RectangleShape2D_nabk1")
 [node name="WaveLabel" type="Label" parent="." unique_id=1985403701]
 z_index = 5
 layout_mode = 0
-offset_left = 527.0
-offset_top = 2.0
-offset_right = 652.0
-offset_bottom = 65.0
+offset_left = 521.0
+offset_right = 646.0
+offset_bottom = 66.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_wixct")
 theme_override_font_sizes/font_size = 26
