@@ -30,6 +30,7 @@ var _is_transitioning := false
 #@onready var demon_selection_menu := $CurrentScene/DemonSelectionMenu
 @onready var demon_selection_menus := Global.demon_selection_menus
 @onready var level_switcher := $CurrentScene/LevelSwitcher
+@onready var menu_audio: MenuAudio = $MenuAudio
 #@onready var ultimate_container := $UltimateChargeContainer
 var ultimate_container 
 # Dimension visibility-layer scheme. Bit 0 (=1) = shared UI / non-level scenes.
@@ -51,6 +52,7 @@ func _input(event:InputEvent) -> void:
 			var in_level := current_scenes.size() == 2
 			if not in_level and event.ctrl_pressed:
 				Progress.unlock_all()
+				menu_audio.play_menu_music()
 				Discovery.discover_all(ZombieRegistry.SCENES, Global.synergy_catalog)
 				if current_scene != null and current_scene.has_method("refresh_locks"):
 					current_scene.refresh_locks()
@@ -198,6 +200,7 @@ func change_dual_scenes(scene1_path: String, scene2_path: String, delete: bool =
 			" current_scenes.size=" + str(current_scenes.size()))
 		return
 	_is_transitioning = true
+	menu_audio.stop_for_level()
 	# Every level (and restart) starts at normal speed; fast-forward is per run.
 	Engine.time_scale = 1.0
 	#print("[RESTART] change_dual_scenes BEGIN scene1=", scene1_path,
@@ -341,6 +344,7 @@ func _apply_demon_loadouts(purple_scene_path: String) -> void:
 func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	#pause_button.visible = false
 	Engine.time_scale = 1.0 # menus run at normal speed
+	menu_audio.play_menu_music()
 	# Otherwise a clicked zombie's info stays up on the level-select screen (its hide
 	# timer was paused with the level-end screen).
 	Global.hide_notification_bar()
@@ -364,6 +368,7 @@ func change_from_dual_scenes(new_scene_path: String, delete: bool = true, keep_r
 		current_scene = null
 
 	await get_tree().process_frame
+	get_tree().paused = false
 
 	var new_node :Control= load(new_scene_path).instantiate()
 	scene_container.add_child(new_node)

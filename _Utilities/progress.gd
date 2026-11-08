@@ -4,10 +4,11 @@ class_name Progress extends RefCounted
 ## unlocked once its first level is. Each level also keeps its best-ever overall rank;
 ## stars are DERIVED from those ranks (never stored), and Swap/Syn sorceries unlock
 ## from beaten levels or star thresholds (SORCERY_UNLOCKS).
-## Saved to its own file so wiping progress keeps settings.cfg (language) intact.
+## Saved to its own file in the active save slot (SaveSlots), so wiping progress keeps
+## settings.cfg (language) intact.
 
 
-const SAVE_PATH := "user://progress.cfg"
+const SAVE_FILE := "progress.cfg"
 const SAVE_SECTION := "progress"
 const RANKS_SECTION := "best_ranks" # key = level number, value = rank (0 = SSS .. 5 = D)
 ## Key = level number that has been loaded at least once, value = its tutorial step count.
@@ -81,10 +82,11 @@ const ACT_SELECT_SCREENS: Array[String] = [
 	"res://_Stages/LevelSelect/LevelSelect_A3.tscn",
 ]
 
-static var _highest := 0 # 0 = not loaded from disk yet
-static var _best_ranks: Dictionary = {} # level (int) -> best rank (int); loaded with _highest
-static var _tutorial_steps: Dictionary = {} # level (int) -> step count (int); loaded with _highest
-static var _last_beaten := 0 # session-only; drives post-win routing + rank recording
+static var _loaded_slot := 0 # save slot the fields below came from; 0 = not loaded yet
+static var _highest := 1
+static var _best_ranks: Dictionary = {} # level (int) -> best rank (int)
+static var _tutorial_steps: Dictionary = {} # level (int) -> step count (int)
+static var _last_beaten := 0 # session-only, reset per slot; drives post-win routing + rank recording
 static var _pending_forced_rank := -1 # debug win rank for the score screen; -1 = none
 
 
@@ -174,6 +176,7 @@ static func level_for_scene(scene_path: String) -> int:
 ## forced_rank (debug wins) is handed to the score screen via resolve_rank; every call
 ## resets it, so a natural win (-1) can never inherit a stale debug rank.
 static func mark_level_beaten(scene_path: String, forced_rank: int = -1) -> void:
+	_ensure_loaded() # a load resets the session fields set below
 	_pending_forced_rank = forced_rank
 	var level := level_for_scene(scene_path)
 	_last_beaten = level
@@ -188,6 +191,7 @@ static func mark_level_beaten(scene_path: String, forced_rank: int = -1) -> void
 
 ## Score screen hook: the rank it computed, unless a debug win forced one.
 static func resolve_rank(computed_rank: int) -> int:
+	_ensure_loaded()
 	var rank := _pending_forced_rank if _pending_forced_rank >= 0 else computed_rank
 	_pending_forced_rank = -1
 	return rank
@@ -196,6 +200,7 @@ static func resolve_rank(computed_rank: int) -> int:
 ## Score screen hook (once per win, after mark_level_beaten): keeps the level's best rank.
 ## Returns the stars this run earned. Unknown/test levels record nothing.
 static func record_rank(rank: int) -> int:
+	_ensure_loaded()
 	rank = clampi(rank, RANK_SSS, RANK_D)
 	if _last_beaten == 0:
 		return stars_for_rank(rank)
@@ -276,9 +281,23 @@ static func unlock_all() -> void:
 static func select_screen_after_win() -> String:
 	#TODO Demo Change Back
 	#return ACT_SELECT_SCREENS[0]
+	_ensure_loaded()
 	if _last_beaten == 0:
 		return ACT_SELECT_SCREENS[0]
-	return ACT_SELECT_SCREENS[act_of_level(mini(_last_beaten + 1, total_levels())) - 1]
+	return ACT_SELECT_SCREENS[_act_after_last_win() - 1]
+
+
+## The Act whose menu music plays: the one the win screen's Next leads to, or the
+## highest unlocked Act before any win this session.
+static func menu_music_act() -> int:
+	_ensure_loaded()
+	if _last_beaten == 0:
+		return act_of_level(highest_unlocked())
+	return _act_after_last_win()
+
+
+static func _act_after_last_win() -> int:
+	return act_of_level(mini(_last_beaten + 1, total_levels()))
 
 
 ## Darkens + disables an Act's level panels on a level-select screen, shows each locked card's
@@ -309,24 +328,28 @@ static func apply_level_locks(root: Node, act: int) -> void:
 
 
 static func _ensure_loaded() -> void:
-	if _highest == 0:
+	if _loaded_slot != SaveSlots.active_slot():
 		_load()
 
 
 static func _load() -> void:
+	_loaded_slot = SaveSlots.active_slot()
 	_highest = 1
 	_best_ranks = {}
 	_tutorial_steps = {}
+	_last_beaten = 0
+	_pending_forced_rank = -1
+	var save_path := SaveSlots.file_path(SAVE_FILE)
 	var cfg := ConfigFile.new()
-	var err := cfg.load(SAVE_PATH)
+	var err := cfg.load(save_path)
 	if err == ERR_FILE_NOT_FOUND:
 		return
 	if err != OK:
-		push_warning("[PROGRESS] could not read %s (error %d) — starting from level 1" % [SAVE_PATH, err])
+		push_warning("[PROGRESS] could not read %s (error %d) — starting from level 1" % [save_path, err])
 		return
 	var saved: Variant = cfg.get_value(SAVE_SECTION, "highest_unlocked", 1)
 	if typeof(saved) != TYPE_INT:
-		push_warning("[PROGRESS] bad highest_unlocked in %s — starting from level 1" % SAVE_PATH)
+		push_warning("[PROGRESS] bad highest_unlocked in %s — starting from level 1" % save_path)
 	else:
 		_highest = clampi(saved, 1, total_levels())
 	if cfg.has_section(RANKS_SECTION):
@@ -335,7 +358,7 @@ static func _load() -> void:
 			var rank: Variant = cfg.get_value(RANKS_SECTION, key)
 			if not key.is_valid_int() or level < 1 or level > total_levels() \
 					or typeof(rank) != TYPE_INT or rank < RANK_SSS or rank > RANK_D:
-				push_warning("[PROGRESS] skipping bad best rank '%s = %s' in %s" % [key, str(rank), SAVE_PATH])
+				push_warning("[PROGRESS] skipping bad best rank '%s = %s' in %s" % [key, str(rank), save_path])
 				continue
 			_best_ranks[level] = rank
 	if cfg.has_section(TUTORIAL_SECTION):
@@ -344,7 +367,7 @@ static func _load() -> void:
 			var steps: Variant = cfg.get_value(TUTORIAL_SECTION, key)
 			if not key.is_valid_int() or level < 1 or level > total_levels() \
 					or typeof(steps) != TYPE_INT or steps < 0:
-				push_warning("[PROGRESS] skipping bad tutorial steps '%s = %s' in %s" % [key, str(steps), SAVE_PATH])
+				push_warning("[PROGRESS] skipping bad tutorial steps '%s = %s' in %s" % [key, str(steps), save_path])
 				continue
 			_tutorial_steps[level] = steps
 
@@ -357,6 +380,7 @@ static func _save() -> void:
 		cfg.set_value(RANKS_SECTION, str(level), _best_ranks[level])
 	for level: int in _tutorial_steps:
 		cfg.set_value(TUTORIAL_SECTION, str(level), _tutorial_steps[level])
-	var err := cfg.save(SAVE_PATH)
+	var save_path := SaveSlots.file_path(SAVE_FILE)
+	var err := cfg.save(save_path)
 	if err != OK:
-		push_warning("[PROGRESS] could not save %s (error %d) — progress kept for this session only" % [SAVE_PATH, err])
+		push_warning("[PROGRESS] could not save %s (error %d) — progress kept for this session only" % [save_path, err])

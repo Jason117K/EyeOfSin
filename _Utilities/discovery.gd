@@ -5,13 +5,14 @@ class_name Discovery extends RefCounted
 ## the Syn Monolith the first time one is placed (Demon.spawn_hero_demon).
 ## The codexes silhouette and disable anything not discovered yet. Demons aren't tracked
 ## here: their codex state is Progress.is_demon_unlocked.
-## Saved to its own file so Progress's whole-file save can't clobber it.
+## Saved to its own file in the active save slot (SaveSlots), so Progress's whole-file save
+## can't clobber it.
 
 
-const SAVE_PATH := "user://discovery.cfg"
+const SAVE_FILE := "discovery.cfg"
 const SAVE_SECTION := "discovery"
 
-static var _loaded := false
+static var _loaded_slot := 0 # save slot the discoveries came from; 0 = not loaded yet
 static var _zombies: Array[String] = []
 static var _synergies: Array[StringName] = []
 static var _monolith := false
@@ -76,21 +77,22 @@ static func discover_all(zombie_names, catalog: SynergyCatalog) -> void:
 
 
 static func _ensure_loaded() -> void:
-	if not _loaded:
+	if _loaded_slot != SaveSlots.active_slot():
 		_load()
 
 
 static func _load() -> void:
-	_loaded = true
+	_loaded_slot = SaveSlots.active_slot()
 	_zombies = []
 	_synergies = []
 	_monolith = false
+	var save_path := SaveSlots.file_path(SAVE_FILE)
 	var cfg := ConfigFile.new()
-	var err := cfg.load(SAVE_PATH)
+	var err := cfg.load(save_path)
 	if err == ERR_FILE_NOT_FOUND:
 		return
 	if err != OK:
-		push_warning("[DISCOVERY] could not read %s (error %d) — starting with nothing discovered" % [SAVE_PATH, err])
+		push_warning("[DISCOVERY] could not read %s (error %d) — starting with nothing discovered" % [save_path, err])
 		return
 	for zombie_name: String in _read_list(cfg, "zombies"):
 		if zombie_name not in _zombies:
@@ -109,7 +111,7 @@ static func _read_list(cfg: ConfigFile, key: String) -> Array[String]:
 			if not str(value).is_empty():
 				names.append(str(value))
 	else:
-		push_warning("[DISCOVERY] bad '%s' list in %s — ignoring it" % [key, SAVE_PATH])
+		push_warning("[DISCOVERY] bad '%s' list in %s — ignoring it" % [key, SaveSlots.file_path(SAVE_FILE)])
 	return names
 
 
@@ -121,6 +123,7 @@ static func _save() -> void:
 		ids.append(String(id))
 	cfg.set_value(SAVE_SECTION, "synergies", ids)
 	cfg.set_value(SAVE_SECTION, "monolith", _monolith)
-	var err := cfg.save(SAVE_PATH)
+	var save_path := SaveSlots.file_path(SAVE_FILE)
+	var err := cfg.save(save_path)
 	if err != OK:
-		push_warning("[DISCOVERY] could not save %s (error %d) — discoveries kept for this session only" % [SAVE_PATH, err])
+		push_warning("[DISCOVERY] could not save %s (error %d) — discoveries kept for this session only" % [save_path, err])

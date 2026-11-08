@@ -12,25 +12,52 @@ class_name DynamicAudioStreamPlayer extends AudioStreamPlayer
 
 @export var crossfade_duration : float = 1.5
 
+@export_range(0.0, 100.0, 1.0, "suffix:%") var pause_volume_reduction_percent : float = 50.0
+@export var pause_fade_duration : float = 0.25
+
 var _active_voice : LoopingSectionPlayer
 var _idle_voice : LoopingSectionPlayer
 var _crossfade : Tween
+var _is_paused_volume : bool = false
+var _pause_fade : Tween
 
 
 func _ready() -> void:
 	self.bus = "music"
+	_is_paused_volume = get_tree().paused
 	_active_voice = _create_voice()
 	_idle_voice = _create_voice()
-	
+
+
+func _process(_delta: float) -> void:
+	if get_tree().paused != _is_paused_volume:
+		_is_paused_volume = get_tree().paused
+		_fade_gain_to(_target_gain())
 
 
 func _create_voice() -> LoopingSectionPlayer:
 	var voice := LoopingSectionPlayer.new()
 	voice.stream = stream
 	voice.bus = bus
-	voice.volume_linear = 0.0
+	voice.fade = 0.0
+	voice.gain = _target_gain()
 	add_child(voice)
 	return voice
+
+
+func _target_gain() -> float:
+	var level_gain := db_to_linear(volume_db)
+	if _is_paused_volume:
+		return level_gain * (1.0 - pause_volume_reduction_percent / 100.0)
+	return level_gain
+
+
+func _fade_gain_to(target_gain: float) -> void:
+	if _pause_fade:
+		_pause_fade.kill()
+	_pause_fade = create_tween().set_parallel().set_trans(Tween.TRANS_SINE)
+	for voice: LoopingSectionPlayer in [_active_voice, _idle_voice]:
+		_pause_fade.tween_property(voice, "gain", target_gain, pause_fade_duration)
 
 
 func _play_section(start: float, end: float) -> void:
@@ -39,7 +66,7 @@ func _play_section(start: float, end: float) -> void:
 	# Mid-fade, the section may still be playing on the outgoing voice: fade it back
 	# up from where it is instead of restarting it.
 	if not _idle_voice.is_playing_section(start, end):
-		_idle_voice.volume_linear = 0.0
+		_idle_voice.fade = 0.0
 		_idle_voice.play_section(start, end)
 	var outgoing := _active_voice
 	_active_voice = _idle_voice
@@ -51,8 +78,8 @@ func _fade_between(outgoing: LoopingSectionPlayer, incoming: LoopingSectionPlaye
 	if _crossfade:
 		_crossfade.kill()
 	_crossfade = create_tween().set_parallel().set_trans(Tween.TRANS_SINE)
-	_crossfade.tween_property(incoming, "volume_linear", db_to_linear(volume_db), crossfade_duration)
-	_crossfade.tween_property(outgoing, "volume_linear", 0.0, crossfade_duration)
+	_crossfade.tween_property(incoming, "fade", 1.0, crossfade_duration)
+	_crossfade.tween_property(outgoing, "fade", 0.0, crossfade_duration)
 	_crossfade.chain().tween_callback(outgoing.stop_section)
 
 

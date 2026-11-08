@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3]
+[gd_resource type="Resource" script_class="ZombieCodexEntry" format=3 uid="uid://bl7p68abjj8ht"]
 
-[ext_resource type="Script" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://l8sonjtn56dj" path="res://_UI/LoreBooks/ZombieCodex/zombie_codex_entry.gd" id="1_entry"]
+[ext_resource type="SpriteFrames" uid="uid://mg6uxelmtpj2" path="res://_Entities/Zombies/_Severed/Severed.tres" id="1_jr0gy"]
 [ext_resource type="Texture2D" uid="uid://4335s5616i55" path="res://_Entities/Zombies/_Severed/Severed.png" id="2_portrait"]
-[ext_resource type="SpriteFrames" uid="uid://bykctpfyy664a" path="res://_Entities/Zombies/ImgAnimationResources/Severed.tres" id="3_animation"]
 
 [resource]
 script = ExtResource("1_entry")
@@ -11,5 +11,6 @@ title_key = "NAME_SEVERED"
 description_path = "res://_Assets/Text/TextFiles/ZombieDescriptions/ConeHeadZombieDescription.txt"
 portrait = ExtResource("2_portrait")
 portrait_flip_h = true
-animation = ExtResource("3_animation")
+animation = ExtResource("1_jr0gy")
+animation_name = &"Walk"
 animation_flip_h = true

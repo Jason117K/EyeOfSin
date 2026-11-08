@@ -160,6 +160,14 @@ and survive scene changes, so visibility is explicit:
   card PNGs range from 32 to 64px. Mark scales exactly 2×; Shield, Shroomie and Blood Ice resample
   unevenly until they're re-exported at 64×64.
 
+**Menu music is one player, `MenuAudio` (`_Utilities/menu_audio.gd`), under GameController.** It
+plays whenever no level is loaded. `change_dual_scenes` fades it out and `change_from_dual_scenes`
+starts it again from the beginning. Menu-to-menu changes and pause overlays (`change_scene_with_pause`)
+never touch it, so menu scenes must not carry their own music. The track comes from
+`Progress.menu_music_act()`: the Act the win screen's Next leads to, or the highest unlocked Act
+before any win this session. Act tracks go in `act_music` (entry 0 = Act 1); an empty entry plays
+the node's own `stream`.
+
 **Content catalogs are Resources; balance numbers are scene exports.** `DemonCatalog.tres` holds
 each placeable demon's identity (id = true name, scene, icon, description path);
 `SynergyCatalog.tres` holds the 30 synergy pairs + codex navigation. Adding a demon or synergy is
@@ -174,9 +182,27 @@ escalating price (per dimension) is `Occulum.cost_for_count()`, which the menu l
 the level script) map the total to a **style rank**, shown on the end-of-level score screen —
 **purple dimension only**.
 
+**Save slots (`SaveSlots` statics, `_Utilities/save_slots.gd`).** Three slots, each a folder:
+`user://saves/slot_<N>/` holds that slot's `progress.cfg`, `loadout.cfg` and `discovery.cfg`.
+`user://saves/save_slots.cfg` stores the active slot, so the last-used slot loads on launch.
+`settings.cfg` (language) stays at the `user://` root and is shared by every slot.
+- Slot 1 always exists. Pre-slot saves at the `user://` root move into it on first launch, file by
+  file, never overwriting. A failed move retries next launch.
+- `Progress`, `DemonLoadout` and `Discovery` build their paths with `SaveSlots.file_path()` and tag
+  their static cache with `_loaded_slot`. `_ensure_loaded()` reloads when the active slot changes,
+  so a switch needs no invalidation call. Every write must go through a read (`_ensure_loaded()`)
+  first, or it can save the old slot's data into the new one.
+- `Progress._load()` also resets the session fields `_last_beaten` and `_pending_forced_rank`.
+- The GameSaves screen (`_UI/game_saves.gd`), reached only by the start screen's Load Game button,
+  switches slots. The active slot's text is purple, and a slot without a folder reads "Empty".
+  A switch also frees the equipped sorceries (back to the launch state, so a locked one can't
+  carry over) and re-picks the menu music.
+- **New saved data:** per-player data goes in the slot (`SaveSlots.file_path` + `_loaded_slot`).
+  Device settings go in `settings.cfg`.
+
 **Level progression is linear and saved by the `Progress` statics** (`_Utilities/progress.gd`).
 The save is `highest_unlocked` plus a `[best_ranks]` section (level → best overall rank, 0 = SSS
-… 5 = D) in `user://progress.cfg` (separate from `settings.cfg`). Beating level N unlocks N+1.
+… 5 = D) in the active slot's `progress.cfg` (separate from `settings.cfg`). Beating level N unlocks N+1.
 An Act is unlocked once its first level is (beat 9 → Act 2, beat 14 → Act 3). Level identity =
 the purple scene path's position in `Progress.ACTS`,
 which is in **select-screen button order, not folder order** (slot 7 is `Level8.tscn`, slot 8 is
@@ -217,8 +243,8 @@ when nothing is equipped, so a panel pick carries into the level. Never call
 - **Unlocks:** each demon unlocks by beating a level (`Progress.DEMON_UNLOCKS`; Maw = level 11).
 - **Act screens:** the `DemonGridContainer` hides locked demons. Once all six are unlocked, the
   player equips 1–5 per dimension (Y flips purple/green). Unequipped icons are darkened, and
-  equipping a 6th drops a random one. One state is shared by all Acts and saved to
-  `user://loadout.cfg`.
+  equipping a 6th drops a random one. One state is shared by all Acts and saved to the active
+  slot's `loadout.cfg`.
 - **In levels:** loadouts apply only from `DemonLoadout.FIRST_LEVEL` (12) on.
   `GameController.change_dual_scenes` calls each dimension menu's
   `DemonSelectionMenu.set_loadout()`. A `visibility_changed` guard re-hides any card outside the
@@ -231,7 +257,7 @@ player has met. Anything else is a jet-black silhouette of its normal art and ca
   (`Global.unlock_zombie`, called from every zombie's `_ready`). Synergies = first trigger
   (`Global.unlock_buff`, connected in all six demon scripts). The Syn Monolith = first placement
   (`Demon.spawn_hero_demon` → `Discovery.discover_monolith`). Zombies, synergies and the Monolith
-  are saved to `user://discovery.cfg`. `discover_*` returns true only the first time, so the
+  are saved to the active slot's `discovery.cfg`. `discover_*` returns true only the first time, so the
   in-level unlock pop-ups fire once per save, not once per session.
 - **Look:** `UiFx.set_silhouette` (art `self_modulate` = black + disabled; reverting restores the
   exact normal look). Card frames/backs behind the art use `UiFx.set_locked`.
@@ -394,8 +420,8 @@ and applied in `GameController._ready` (saved → OS language → `en`).
   gated by `OS.is_debug_build()`, so it needs no removal before release, and it does nothing while
   the ult is disabled.
   `U` won't fire during tutorial steps whose input filter swallows keys (use `skip_tutorials`).
-  For a fresh save, delete `progress.cfg`, `loadout.cfg` and `discovery.cfg` (Editor → Project →
-  Open User Data Folder).
+  For a fresh save, delete that slot's folder, `saves/slot_<N>/`, or all of `saves/` (Editor →
+  Project → Open User Data Folder).
 - **`place_demon` awaits physics frames mid-function, so per-placement state must be locals.**
   The mirror blocker and the cost used to be members. Back-to-back placements (Level 3 pre-places
   three Spinal Occulums one frame apart) overwrote them mid-await, typing the wrong blocker's rune
@@ -505,11 +531,23 @@ refactor phases that touch the restart path, buff matching, or tick order.
 	Sorcery tab: 4 Swap + 5 Syn cards. Locked sorceries are silhouettes that can't be clicked,
 	matching the ability panel (Ctrl+U → all normal on the next open). Switching tabs mid synergy
 	view or mid Monolith demo returns cleanly, and the Demon tab restores the opening page.
+11. **Menu music:** plays without restarting across every menu (Options, Credits, Act screens,
+	codex). It fades out in levels, stays silent in pause Options/codex and through restarts, and
+	restarts on quit or Next. Winning 1-9 → Act 2 track. An Act 1 replay win → Act 1 track. A loss
+	changes nothing. A relaunch plays the highest unlocked Act's track.
+12. **Save slots:** with pre-slot saves at the `user://` root, the first launch moves them into
+	`saves/slot_1/` and nothing changes in game. Load Game shows Save 1 in purple and Saves 2–3
+	as Empty. Picking Save 2 turns it purple: only 1-1 unlocked, codex all silhouettes, Act 1
+	music. Beat 1-1 there, switch back, and Slot 1 is untouched. Quit on Slot 2 and the relaunch
+	loads Slot 2. With Baal Gaze equipped in Slot 1, switch to Slot 2: Y in levels 1–4 fires no
+	swap ability, and level 5 equips Lightning. A synergy's pop-up shows once per slot.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **
 - ** res://_Utilities/dim.gd ** (dimension groups + collision-layer constants)
 - ** res://_UI/ui_fx.gd ** (pulsing-highlight statics + `set_locked` darkening)
+- ** res://_Utilities/save_slots.gd ** (save slot folders, active slot, legacy-save migration)
+- ** res://_UI/game_saves.gd ** (Load Game screen: slot picker)
 - ** res://_Utilities/progress.gd ** (level progression, best ranks/stars, sorcery + demon unlock tables)
 - ** res://_Utilities/demon_loadout.gd ** (per-dimension demon loadouts)
 - ** res://_Utilities/discovery.gd ** (saved zombie + synergy discoveries for codex gating)

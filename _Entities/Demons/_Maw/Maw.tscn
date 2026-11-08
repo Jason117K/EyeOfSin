@@ -814,6 +814,7 @@ hive_tentacle_light = Color(0.2, 0, 0, 1)
 hive_tentacle_dark = Color(0.06, 0, 0.022999993, 1)
 cost = 275.0
 syn_shield_position = Vector2(253, 237)
+hero_demon_position = Vector2(256, 256)
 
 [node name="HighlightCircle" type="Node2D" parent="." unique_id=1077098208 node_paths=PackedStringArray("polygon", "line")]
 position = Vector2(0, 11.999999)

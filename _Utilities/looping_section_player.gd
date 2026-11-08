@@ -4,6 +4,16 @@ var _loop_start : float = 0.0
 var _loop_end : float = 0.0
 var _looping : bool = false
 
+var fade : float = 0.0:
+	set(value):
+		fade = value
+		_apply_volume()
+
+var gain : float = 1.0:
+	set(value):
+		gain = value
+		_apply_volume()
+
 
 func _process(_delta: float) -> void:
 	if not _looping or not playing:
@@ -32,3 +42,7 @@ func is_playing_section(start: float, end: float) -> bool:
 func stop_section() -> void:
 	_looping = false
 	stop()
+
+
+func _apply_volume() -> void:
+	volume_linear = fade * gain

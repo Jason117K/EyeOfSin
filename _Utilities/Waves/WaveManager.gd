@@ -356,11 +356,19 @@ func launch_lawnmower(area_to_clear : Area2D, is_green : bool = false)->void:
 		if is_green:
 			if mower.is_green:
 				all_lawn_mowers.erase(mower)
+				_count_lawn_mower_used()
 				mower.launch(area_to_clear)
 				return
 		else:
 			if !mower.is_green:
 				#print("Mower to Launch Is ", mower)
 				all_lawn_mowers.erase(mower)
+				_count_lawn_mower_used()
 				mower.launch(area_to_clear)
 				return
+
+
+# Same guard as _on_damage_area_entered: a straggler after a debug win can't change the score.
+func _count_lawn_mower_used()->void:
+	if not _level_won:
+		ScoreManager.lawn_mower_used()

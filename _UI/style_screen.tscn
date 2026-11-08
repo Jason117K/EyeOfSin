@@ -82,6 +82,13 @@ text = "LIVES LOST : "
 fit_content = true
 autowrap_mode = 0
 
+[node name="FireballLabel" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=899255648]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "FIREBALLS USED : "
+fit_content = true
+autowrap_mode = 0
+
 [node name="StyleLabel" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox" unique_id=184252167]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
@@ -100,6 +107,13 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="LivesLostRank" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1863450050]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hp5a7")
+text = "SSS"
+fit_content = true
+autowrap_mode = 0
+
+[node name="FireBallsUsedRank" type="RichTextLabel" parent="CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox" unique_id=1499568365]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hp5a7")
 text = "SSS"

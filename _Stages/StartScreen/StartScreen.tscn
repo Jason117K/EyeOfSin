@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://be6sbtmqr5d2f" path="res://_Utilities/Grid/GridManager.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c1q0c3v24lxaw" path="res://_Stages/StartScreen/StartScreen.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://2ovmbrp2455w" path="res://_Utilities/Audio/menu music bounce 8-13-25.wav" id="3_dd6vr"]
 [ext_resource type="Texture2D" uid="uid://m2lp2ybh6pbf" path="res://_Assets/Environment/Props/CoralSmall_PROP.png" id="6_4rth8"]
 [ext_resource type="Texture2D" uid="uid://dce3mvclveta5" path="res://_Assets/Environment/Props/CoralBig_Prop.png" id="7_j88ag"]
 [ext_resource type="Texture2D" uid="uid://dkmsxxt6s87fy" path="res://_Assets/Environment/Props/Coral_ExtraBig.png" id="8_5mipx"]
@@ -18,6 +17,7 @@
 [ext_resource type="StyleBox" uid="uid://bo2ea43jlnxox" path="res://_UI/bordered_button_normal.tres" id="16_rlj0q"]
 [ext_resource type="StyleBox" uid="uid://bcfbsgfdihfxu" path="res://_UI/bordered_button_hover.tres" id="17_rlj0q"]
 [ext_resource type="Texture2D" uid="uid://bb6yquhrpa8c1" path="res://_UI/PurpleNoClouds_Earth-Sheet.png" id="19_ot6eu"]
+
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("15_mrsis")
 region = Rect2(0, 0, 32, 41)
@@ -737,10 +737,6 @@ visible = false
 position = Vector2(606, 395)
 sprite_frames = SubResource("SpriteFrames_sk018")
 
-[node name="BackGroundMuisc" type="AudioStreamPlayer2D" parent="." unique_id=615701866]
-stream = ExtResource("3_dd6vr")
-autoplay = true
-
 [node name="Node2D" type="Node2D" parent="." unique_id=1076663692]
 position = Vector2(35, 0)
 
@@ -755,7 +751,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.8745098)
 
 [node name="EyeOfSynTitle" type="Sprite2D" parent="." unique_id=916376707]
-position = Vector2(371, 168)
+position = Vector2(371, 159)
 texture = ExtResource("14_4ojxa")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=3187112]
@@ -765,10 +761,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 185.0
-offset_top = 48.0
-offset_right = 185.0
-offset_bottom = 48.0
+offset_left = 187.0
+offset_top = 35.0
+offset_right = 187.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 17.23)
@@ -837,6 +833,26 @@ offset_bottom = 37.0
 theme_override_fonts/font = ExtResource("15_f7xvn")
 theme_override_font_sizes/font_size = 20
 text = "UI_CODEX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadGameButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1381782035]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("16_rlj0q")
+theme_override_styles/hover = ExtResource("17_rlj0q")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/LoadGameButton" unique_id=128573695]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 168.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("15_f7xvn")
+theme_override_font_sizes/font_size = 20
+text = "UI_LOAD_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -912,6 +928,7 @@ autoplay = "new_animation"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CodexButton" to="." method="_on_codex_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LoadGameButton" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

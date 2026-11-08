@@ -5,10 +5,11 @@ class_name DemonLoadout extends RefCounted
 ## Only in effect once every demon is unlocked (Progress.DEMON_UNLOCKS), and only for levels
 ## FIRST_LEVEL+: GameController.change_dual_scenes hands each dimension's DemonSelectionMenu
 ## its loadout via set_loadout(), which can only HIDE cards the level offers, never add any.
-## Saved to its own file so Progress's whole-file save can't clobber it.
+## Saved to its own file in the active save slot (SaveSlots), so Progress's whole-file save
+## can't clobber it.
 
 
-const SAVE_PATH := "user://loadout.cfg"
+const SAVE_FILE := "loadout.cfg"
 const SAVE_SECTION := "loadout"
 
 ## Unlock order; the default loadout is the first MAX_EQUIPPED of these (everything but Maw).
@@ -16,7 +17,7 @@ const DEMONS: Array[String] = ["Crawler", "Occulum", "SpinalOcculum", "Wyrm", "H
 const MAX_EQUIPPED := 5
 const FIRST_LEVEL := 12
 
-static var _loaded := false
+static var _loaded_slot := 0 # save slot the loadouts came from; 0 = not loaded yet
 static var _purple: Array[String] = []
 static var _green: Array[String] = []
 
@@ -106,20 +107,21 @@ static func connect_grid(grid: Control, is_green: Callable) -> void:
 
 
 static func _ensure_loaded() -> void:
-	if not _loaded:
+	if _loaded_slot != SaveSlots.active_slot():
 		_load()
 
 
 static func _load() -> void:
-	_loaded = true
+	_loaded_slot = SaveSlots.active_slot()
 	_purple = default_loadout()
 	_green = default_loadout()
+	var save_path := SaveSlots.file_path(SAVE_FILE)
 	var cfg := ConfigFile.new()
-	var err := cfg.load(SAVE_PATH)
+	var err := cfg.load(save_path)
 	if err == ERR_FILE_NOT_FOUND:
 		return
 	if err != OK:
-		push_warning("[LOADOUT] could not read %s (error %d) — using the default loadout" % [SAVE_PATH, err])
+		push_warning("[LOADOUT] could not read %s (error %d) — using the default loadout" % [save_path, err])
 		return
 	_purple = _read_list(cfg, "purple")
 	_green = _read_list(cfg, "green")
@@ -132,7 +134,7 @@ static func _read_list(cfg: ConfigFile, key: String) -> Array[String]:
 		for value: Variant in saved:
 			names.append(str(value))
 	else:
-		push_warning("[LOADOUT] bad '%s' loadout in %s — using the default" % [key, SAVE_PATH])
+		push_warning("[LOADOUT] bad '%s' loadout in %s — using the default" % [key, SaveSlots.file_path(SAVE_FILE)])
 	return names # sanitised on read by get_loadout
 
 
@@ -140,6 +142,7 @@ static func _save() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value(SAVE_SECTION, "purple", _purple)
 	cfg.set_value(SAVE_SECTION, "green", _green)
-	var err := cfg.save(SAVE_PATH)
+	var save_path := SaveSlots.file_path(SAVE_FILE)
+	var err := cfg.save(save_path)
 	if err != OK:
-		push_warning("[LOADOUT] could not save %s (error %d) — loadout kept for this session only" % [SAVE_PATH, err])
+		push_warning("[LOADOUT] could not save %s (error %d) — loadout kept for this session only" % [save_path, err])

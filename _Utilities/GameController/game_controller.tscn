@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://decli4dnrpx42" path="res://_Common/LevelSwitching/LevelSwitcher.tscn" id="3_3rtt1"]
 [ext_resource type="PackedScene" uid="uid://b6a02kdhke01v" path="res://_Utilities/Waves/WaveManager.tscn" id="7_k31g3"]
 [ext_resource type="PackedScene" uid="uid://txqpdqcrcf5y" path="res://_UI/ultimate_charge_container.tscn" id="8_52igo"]
+[ext_resource type="AudioStream" uid="uid://2ovmbrp2455w" path="res://_Utilities/Audio/menu music bounce 8-13-25.wav" id="9_3rtt1"]
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
+[ext_resource type="Script" uid="uid://psx73xguffbd" path="res://_Utilities/menu_audio.gd" id="9_mahd0"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
@@ -116,3 +118,9 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="UltimateChargeContainer" parent="." unique_id=1072950679 instance=ExtResource("8_52igo")]
+
+[node name="MenuAudio" type="AudioStreamPlayer" parent="." unique_id=1749896812]
+process_mode = 3
+stream = ExtResource("9_3rtt1")
+bus = &"music"
+script = ExtResource("9_mahd0")

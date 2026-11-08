@@ -1159,7 +1159,6 @@ position = Vector2(-7.5, -11)
 shape = SubResource("RectangleShape2D_he6yk")
 
 [node name="SpawnJuiceAnim" type="AnimatedSprite2D" parent="." unique_id=1770091349]
-visible = false
 sprite_frames = SubResource("SpriteFrames_lskl7")
 frame = 2
 frame_progress = 0.075980306

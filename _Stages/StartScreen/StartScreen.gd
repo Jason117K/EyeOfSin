@@ -3,7 +3,6 @@ extends Control
 
 @onready var startGameButton := $CenterContainer/VBoxContainer/StartGameButton
 @onready var levelSelectButton := $CenterContainer/VBoxContainer/LevelSelectButton
-@onready var bgMusic := $BackGroundMuisc
 #Sets up the startscreen tiles
 #var ownerScript = preload("res://Scripts/LevelLogic/Main_Controller.gd")
 var level0_1 := preload("res://_Stages/Level1/Level0-1.tscn")
@@ -11,6 +10,7 @@ var level0_1Alt := preload("res://_Stages/Level1/Level0-1_Alternate.tscn")
 
 var level_select_screen :=  "res://_Stages/LevelSelect/act_select.tscn"
 var level_select_map :=  "res://_Stages/LevelSelect/LevelSelect_Map.tscn"
+var game_saves_screen := "res://_UI/game_saves.tscn"
 
 func _ready() -> void:
 	Global.disable_ultimate()
@@ -46,7 +46,6 @@ func _ready() -> void:
 	#startGameButton.get_theme_stylebox("normal").bg_color = Color.BLACK
 
 
-	bgMusic.playing = true
 	if not levelSelectButton.pressed.is_connected(_on_level_select_button_pressed):
 		levelSelectButton.pressed.connect(_on_level_select_button_pressed)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -73,6 +72,10 @@ func _on_credits_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	Global.game_controller.change_scene("res://_UI/Options/OptionsMenu.tscn")
+
+
+func _on_load_game_pressed() -> void:
+	Global.game_controller.change_scene(game_saves_screen)
 
 func make_camera_current() -> void:
 	$Camera2D.make_current()

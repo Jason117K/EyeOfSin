@@ -61,6 +61,7 @@ const RIB_TEXTURES := {
 
 @export_category("Component Configuration")
 @export var syn_shield_position := Vector2(-2,-6)
+@export var hero_demon_position := Vector2.ZERO
 @export var hit_flash_duration := 0.3
 
 @export_category("Buff Status")
@@ -726,6 +727,7 @@ func on_demon_area_exited(old_area: Area2D) -> void:
 
 func spawn_hero_demon()->void:
 	hero_demon_instance = Global.hero_demon.instantiate()
+	hero_demon_instance.position = hero_demon_position
 	add_child(hero_demon_instance)
 	hero_demon_instance.assign_parent_demon(self)
 	var opposite_demon_manager := Global.get_demon_manager(!is_green)

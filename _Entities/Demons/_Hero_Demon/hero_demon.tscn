@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://clmhwr24evnfi" path="res://_Entities/Demons/_Hero_Demon/Hero_Main.png" id="1_3j2t0"]
 [ext_resource type="Script" uid="uid://c4kvkhmiijrd7" path="res://_Entities/Demons/_Hero_Demon/hero_demon.gd" id="1_vvhym"]
+[ext_resource type="Texture2D" uid="uid://j6j0ni5mambw" path="res://_Entities/Demons/_Hero_Demon/Syn_Monolith_Sheet.png" id="2_8uul5"]
 [ext_resource type="PackedScene" uid="uid://cmmvuo0uc4nvr" path="res://_Entities/Demons/_Hero_Demon/hero_ability_component.tscn" id="2_x2ifd"]
 [ext_resource type="Script" uid="uid://dnhifcr8dmt6d" path="res://_Entities/Demons/_Hero_Demon/beat_of_death_hero_ability.gd" id="3_otih5"]
 [ext_resource type="Texture2D" uid="uid://ol21qkx3gmrw" path="res://_Entities/Demons/_HeartDemon/BeatElectric-Sheet.png" id="4_b8tb7"]
@@ -13,6 +14,30 @@
 [ext_resource type="Texture2D" uid="uid://btytui157wl7d" path="res://_Assets/DemonSpawning/Effect 8-1.png" id="11_8uul5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8tb7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o76bx"]
+atlas = ExtResource("2_8uul5")
+region = Rect2(0, 0, 22, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyr68"]
+atlas = ExtResource("2_8uul5")
+region = Rect2(22, 0, 22, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfqmh"]
+atlas = ExtResource("2_8uul5")
+region = Rect2(44, 0, 22, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3at03"]
+atlas = ExtResource("2_8uul5")
+region = Rect2(66, 0, 22, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eokqy"]
+atlas = ExtResource("2_8uul5")
+region = Rect2(88, 0, 22, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7pdf"]
+atlas = ExtResource("2_8uul5")
+region = Rect2(110, 0, 22, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ige4t"]
 atlas = ExtResource("1_3j2t0")
@@ -42,6 +67,29 @@ region = Rect2(220, 0, 44, 94)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o76bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyr68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfqmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3at03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eokqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7pdf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ige4t")
 }, {
 "duration": 1.0,
@@ -60,7 +108,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_o0pi6")
 }],
 "loop": true,
-"name": &"default",
+"name": &"old_default",
 "speed": 5.0
 }]
 
@@ -471,11 +519,8 @@ shape = SubResource("RectangleShape2D_b8tb7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1012329754]
 position = Vector2(0, -37)
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_d6vjw")
 autoplay = "default"
-frame = 3
-frame_progress = 0.17550617
 
 [node name="BeatOfDeath_Controller" parent="." unique_id=55620515 instance=ExtResource("2_x2ifd")]
 script = ExtResource("3_otih5")

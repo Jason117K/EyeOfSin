@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://clmokkmj08iyc"]
+
+[ext_resource type="Script" uid="uid://dwns8trl6nqab" path="res://_UI/game_saves.gd" id="1_omx0w"]
+
+[node name="GameSaves" type="Control" unique_id=1928717143]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_omx0w")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=513478946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1842954455]
+layout_mode = 2
+
+[node name="SaveButton1" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1180282720]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="SaveButton2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2105242610]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="SaveButton3" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1820952756]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=604187235]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "UI_BACK"

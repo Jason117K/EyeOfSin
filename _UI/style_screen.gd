@@ -12,6 +12,9 @@ var time_rank_value : SCORE_RANKS
 @onready var lives_lost_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/LivesLostRank
 var lives_lost_rank_value : SCORE_RANKS
 
+@onready var fireballs_used_label := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/FireballLabel
+@onready var fireballs_used_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/FireBallsUsedRank
+
 @onready var style_label := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaLabelsVbox/StyleLabel
 @onready var style_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/MainCriteriaPanel/MainCriteriaHbox/CriteriaScoringRanksVbox/StyleRank
 var style_rank_value : SCORE_RANKS
@@ -93,6 +96,7 @@ func _setup_score()->void:
 		#print("Style Menu On Green")
 	set_time_rank()
 	set_lives_lost_rank()
+	set_fireballs_used_rank()
 	set_style_rank()
 	set_overall_rank()
 	self.show()
@@ -135,7 +139,18 @@ func set_lives_lost_rank()->void:
 	else:
 		lives_lost_rank.text = "SSS"
 		lives_lost_rank_value = SCORE_RANKS.SSS
-	
+
+# Fireballs are the player-facing name for lawnmowers.
+func set_fireballs_used_rank()->void:
+	var used : int = ScoreManager.get_lawn_mowers_used()
+	fireballs_used_label.text = tr("UI_SCORE_FIREBALLS_USED").format({"fireballs": used})
+	if used == 0:
+		fireballs_used_rank.text = "S"
+	elif ScoreManager.are_all_lawn_mowers_used():
+		fireballs_used_rank.text = "D"
+	else:
+		fireballs_used_rank.text = "B"
+
 func set_style_rank()->void:
 	var points : int = int(ScoreManager.get_style_points_before_bonus())
 	style_label.text = tr("UI_SCORE_DEMON_POINTS").format({"points": points})
@@ -176,6 +191,8 @@ func set_overall_rank()->void:
 	else:
 		# Below the D threshold still counts as D (1 star); the letter used to go stale here.
 		rank = SCORE_RANKS.D
+	if rank == SCORE_RANKS.SSS and not ScoreManager.are_all_lawn_mowers_intact():
+		rank = SCORE_RANKS.S
 	# The overall rank is what earns stars; a debug win may force it (Progress.resolve_rank).
 	var final_rank := Progress.resolve_rank(rank)
 	overall_rank.text = Progress.RANK_LETTERS[final_rank]
