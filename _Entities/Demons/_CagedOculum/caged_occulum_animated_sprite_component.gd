@@ -42,7 +42,7 @@ func set_default_anim()->void:
 
 
 func set_crawler_anim()->void:
-	print("Demon Health is ", demon.healthComp.health)
+	#print("Demon Health is ", demon.healthComp.health)
 	if demon.healthComp.health > (demon.healthComp.maxHealth * 0.9):
 		demon.animSpriteComp.animation = "idle_Crawler"
 	elif demon.healthComp.health < demon.healthComp.maxHealth && demon.healthComp.health > ((demon.healthComp.maxHealth/3)*2) :
