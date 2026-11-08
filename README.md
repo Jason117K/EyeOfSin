@@ -209,6 +209,8 @@ which is in **select-screen button order, not folder order** (slot 7 is `Level8.
 `Level7.tscn`). A new level needs a table entry, or its wins log `[PROGRESS] unknown level` and
 aren't recorded. Wins are recorded at one choke point, `WaveManager._win()`, before `level_ended`.
 Select screens darken and disable locked entries via `UiFx.set_locked` and expose `refresh_locks()`.
+The start screen shows Start Game until the active slot has beaten level 1, then Level Select
+instead (`StartScreen.refresh_locks()`, so Ctrl+U swaps them at once).
 **Tutorial toggle (OpenLevel).** A level counts as attempted only once it has loaded. Beating it
 or unlocking it with Ctrl+U doesn't count. On every load, `change_dual_scenes` calls
 `Progress.mark_level_attempted` with `LevelTemplate.get_tutorial_step_count()`, which builds the
@@ -499,7 +501,8 @@ refactor phases that touch the restart path, buff matching, or tick order.
 7. **Restart torture:** restart ×3 from purple pause, ×3 from green, once mid-wave with a
    deployed syn instance + active swap ability + launched mower — no freeze, no error spam,
    score 0, health full, mowers restored, costs reset, no stale connectors.
-8. **Progression:** fresh save → only Act 1 / Level 1 lit. A win unlocks the next level and
+8. **Progression:** fresh save → only Act 1 / Level 1 lit. The start screen shows Start Game and no
+   Level Select; after 1-1 is beaten it's the other way round, and an empty slot shows Start Game again. A win unlocks the next level and
    survives a relaunch. Losing or Play Again unlocks nothing. Next after level 9 → Act 2 select,
    after 14 → Act 3 select. Locked panels stay dark through a Y swap, and only locked cards
    show a lock. Score screen shows stars (U → S/2, Shift+U → SSS/3); a worse replay leaves the

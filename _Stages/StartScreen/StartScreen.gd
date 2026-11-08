@@ -49,8 +49,16 @@ func _ready() -> void:
 	if not levelSelectButton.pressed.is_connected(_on_level_select_button_pressed):
 		levelSelectButton.pressed.connect(_on_level_select_button_pressed)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
+
 	Global.hideDemonSelectionMenu()
+	refresh_locks()
+
+
+## Also called by GameController after Ctrl+U unlocks everything.
+func refresh_locks() -> void:
+	var has_beaten_first_level := Progress.is_level_beaten(1)
+	startGameButton.visible = not has_beaten_first_level
+	levelSelectButton.visible = has_beaten_first_level
 
 func _on_start_game_pressed() -> void:
 	#print("I KNOW U WERE CLICKED")
