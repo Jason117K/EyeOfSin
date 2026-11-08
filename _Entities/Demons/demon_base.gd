@@ -50,10 +50,18 @@ class_name Demon
 @export var maxHealth: float = 800
 @export var regen_wait_time := 1
 
+# Rib shield sprite per synergy of the Spinal Occulum that grew it; others use the scene's own rib.
+const RIB_TEXTURES := {
+	"Crawler": preload("res://_Entities/Demons/_CagedOculum/Rib_Variants/Crawler_Rib.png"),
+	"Hive": preload("res://_Entities/Demons/_CagedOculum/Rib_Variants/Hive_Rib.png"),
+	"Maw": preload("res://_Entities/Demons/_CagedOculum/Rib_Variants/Maw_Rib.png"),
+	"Occulum": preload("res://_Entities/Demons/_CagedOculum/Rib_Variants/Occulum_Rib.png"),
+	"Wyrm": preload("res://_Entities/Demons/_CagedOculum/Rib_Variants/Wyrm_Rib.png"),
+}
+
 @export_category("Component Configuration")
 @export var syn_shield_position := Vector2(-2,-6)
 @export var hit_flash_duration := 0.3
-@export var rib_health := 250 
 
 @export_category("Buff Status")
 @export var wyrmBuff: bool = false
@@ -76,6 +84,7 @@ class_name Demon
 @onready var spawn_juice_anim := $SpawnJuiceAnim
 @onready var baal_halo : AnimatedSprite2D = $BaalHalo
 @onready var protective_rib := $ProtectiveRib
+@onready var default_rib_texture: Texture2D = protective_rib.texture if protective_rib != null else null
 @onready var death_blood: AnimatedSprite2D = get_node_or_null("DeathBlood")
 
 @onready var preview_nodes := get_node_or_null("PreviewNodes") # EmptyDemon has none
@@ -653,8 +662,12 @@ func end_shield()->void:
 	# A weak shield's reduction used to outlive it for the rest of the level.
 	reduced_damage_percent = 0.0
 
-func rib_shield()->void:
-	is_rib_shield = true 
+func rib_shield(spinal_buffer_name: String, shield_health: float)->void:
+	if protective_rib == null:
+		return
+	is_rib_shield = true
+	healthComp.rib_health = shield_health
+	protective_rib.texture = RIB_TEXTURES.get(spinal_buffer_name, default_rib_texture)
 	protective_rib.show()
 
 func destroy_rib()->void:

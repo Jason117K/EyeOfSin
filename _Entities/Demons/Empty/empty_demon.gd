@@ -10,6 +10,7 @@ const RUNE_TEXTURES := {
 	Global.DEMON_TYPE.HIVE: preload("res://_Assets/Runes/Hive_Rune.png"),
 	Global.DEMON_TYPE.MAW: preload("res://_Assets/Runes/Maw_Rune.png"),
 }
+const PORTAL_RUNE := preload("res://_Entities/SpecialElementsPortal/Portal_Rune.png")
 
 @export var blood_clone_respawn_time : int = 45
 @onready var blood_clone_respawn_timer : Timer = $RespawnBloodCloneTimer
@@ -44,6 +45,12 @@ func set_demon_type(new_demon_type : Global.DEMON_TYPE, draw_rune : bool = true)
 		rune_sprite.texture = RUNE_TEXTURES.get(new_demon_type) if draw_rune else null
 		rune_sprite.offset = RUNE_OFFSET
 	#print("Current Demon Type Is : ", current_demon_type)
+
+# Portals aren't a DEMON_TYPE, so they leave current_demon_type alone.
+func set_portal_rune() -> void:
+	if rune_sprite != null:
+		rune_sprite.texture = PORTAL_RUNE
+		rune_sprite.offset = Vector2.ZERO
 
 			
 	

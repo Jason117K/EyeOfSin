@@ -3619,6 +3619,7 @@ record_footage = false
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=1461448860]
 stream = ExtResource("3_x8w7o")
 volume_db = -80.0
+bus = &"music"
 script = ExtResource("3_2erop")
 calm_1_end = 21.0
 intense_1_start = 21.0
@@ -3875,8 +3876,8 @@ texture = SubResource("AtlasTexture_b5hoh")
 position = Vector2(393, 361)
 texture = SubResource("AtlasTexture_nwycs")
 
-[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 [connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tooltip_hidden"]
+[connection signal="ToolTipHid" from="ToolTips" to="." method="_on_tool_tips_tool_tip_hid"]
 
 [editable path="DemonSelectionMenu"]
 [editable path="GameLayer/GridManager"]

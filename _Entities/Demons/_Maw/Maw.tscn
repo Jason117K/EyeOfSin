@@ -802,6 +802,16 @@ alt_target_color = Color(0.152941, 0.152941, 0.152941, 1)
 alt_replace_color = Color(0.388235, 0, 0, 1)
 wyrm_buffed_digestion_time = 10.0
 spinal_occulum_buffed_digestion_time = 11.0
+occulum_tentacle_light = Color(0.4, 0.4, 0.4, 1)
+occulum_tentacle_dark = Color(0.37, 0, 0.0061665727, 1)
+crawler_tentacle_light = Color(0.49, 0, 0.008166542, 1)
+crawler_tentacle_dark = Color(0.02, 0, 0.0076666637, 1)
+spinal_occulum_tentacle_light = Color(0.48, 0, 0.063999936, 1)
+spinal_occulum_tentacle_dark = Color(0.17, 0.17, 0.17, 1)
+wyrm_tentacle_light = Color(0.66, 0.052799992, 0.13375992, 1)
+wyrm_tentacle_dark = Color(0.42, 0, 0, 1)
+hive_tentacle_light = Color(0.2, 0, 0, 1)
+hive_tentacle_dark = Color(0.06, 0, 0.022999993, 1)
 cost = 275.0
 syn_shield_position = Vector2(253, 237)
 

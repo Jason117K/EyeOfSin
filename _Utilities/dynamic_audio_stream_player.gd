@@ -18,8 +18,10 @@ var _crossfade : Tween
 
 
 func _ready() -> void:
+	self.bus = "music"
 	_active_voice = _create_voice()
 	_idle_voice = _create_voice()
+	
 
 
 func _create_voice() -> LoopingSectionPlayer:

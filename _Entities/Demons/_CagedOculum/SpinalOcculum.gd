@@ -165,9 +165,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 func trigger_ultimate()->void:
 	#print("Trigger Spine Ult")
 	Global.un_ready_ultimate()
+	var shield_health := get_max_health() / 4.0
 	for demon in rib_buff_area.get_overlapping_areas():
 		if demon.is_in_group("Demons"):
-			demon.rib_shield()
+			demon.rib_shield(demon_buff_name, shield_health)
 
 
 	

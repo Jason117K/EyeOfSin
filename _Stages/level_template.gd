@@ -383,7 +383,7 @@ func setup_demon_selection_menu() -> void:
 
 ## Levels 5+: equip Lightning Strike / Lightning Storm only as DEFAULTS, so a sorcery the
 ## player picked on the ability panel carries into the level. Then show both bars
-## (menus hide them; levels and the ability panel show them).
+## (menus hide them; only levels show them).
 func equip_default_sorceries() -> void:
 	if not is_instance_valid(Global.syn_ability_manager):
 		Global.register_syn_ability(Global.lightning_strike)

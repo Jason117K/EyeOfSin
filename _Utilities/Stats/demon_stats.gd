@@ -12,4 +12,3 @@ class_name DemonStats extends UnitStats
 @export var maxHealth: float = 800
 @export var healthRegen: float = 0.0
 @export var regen_wait_time := 1
-@export var rib_health := 250

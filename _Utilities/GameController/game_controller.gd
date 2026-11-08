@@ -108,7 +108,7 @@ func _cleanup_all_scenes() -> void:
 	
 	get_viewport().canvas_cull_mask = _default_root_cull_mask
 
-# Swap/Syn bars belong to levels and the ability panel only. Guard on Global's live
+# Swap/Syn bars belong to levels only. Guard on Global's live
 # references: this node's own swap_ability field goes stale (null at boot, freed when the
 # panel registers a new swap), which silently skipped the swap half.
 func hide_swap_syn()->void:
@@ -143,7 +143,7 @@ func print_scene_tree(node: Node = self, indent: int = 0) -> void:
 
 func change_scene(new_scene_path: String, delete: bool = true, keep_running: bool = false) -> void:
 	Global.hide_notification_bar()
-	hide_swap_syn() # menus never show the bars; the ability panel re-shows them itself
+	hide_swap_syn() # menus never show the bars
 	#pause_button.visible = false
 
 	if current_scene != null:

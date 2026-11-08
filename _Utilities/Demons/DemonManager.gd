@@ -507,7 +507,9 @@ func place_demon(grid_pos: Vector2, is_queen : bool = false) -> void:
 		
 		await get_tree().physics_frame
 		await get_tree().physics_frame
-		if !demon_instance.is_portal:
+		if demon_instance.is_portal:
+			empty_blocker.set_portal_rune()
+		else:
 			empty_blocker.set_demon_type(demon_instance.current_demon_type, maw_left_blocker == null)
 			if maw_left_blocker != null:
 				maw_left_blocker.set_demon_type(demon_instance.current_demon_type)

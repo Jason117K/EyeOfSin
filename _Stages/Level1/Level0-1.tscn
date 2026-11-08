@@ -3679,6 +3679,7 @@ D_TOTAL_POINTS_MIN = 800
 [node name="MusicController" type="AudioStreamPlayer" parent="." unique_id=715300829]
 stream = ExtResource("3_ob1pr")
 volume_db = -10.0
+bus = &"music"
 script = ExtResource("4_qpk63")
 
 [node name="UILayer" parent="." unique_id=1087850493 instance=ExtResource("2_umbnb")]

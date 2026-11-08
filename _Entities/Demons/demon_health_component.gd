@@ -25,7 +25,6 @@ func _ready() -> void:
 	ogHealth = health
 	ogMaxHealth = maxHealth
 	ogHealthRegen = healthRegen
-	rib_health = demon.rib_health
 
 var isWyrmBuffed := false
 var isMawBuffed := false

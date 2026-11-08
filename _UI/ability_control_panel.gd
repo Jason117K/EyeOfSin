@@ -59,8 +59,6 @@ func _ready() -> void:
 	panel_vbox.add_child(stars_label)
 	panel_vbox.move_child(stars_label, 0)
 	refresh_locks()
-	# The only menu that shows the Swap/Syn bars (change_scene hides them on the way out).
-	Global.game_controller.show_swap_syn()
 
 
 # Also called by GameController after the Ctrl+U debug unlock.
@@ -99,6 +97,8 @@ func _select(id : StringName) -> void:
 		Global.register_swap_ability(entry.scene)
 	else:
 		Global.register_syn_ability(entry.scene)
+	# Registering shows the bars, but they belong to levels only.
+	Global.game_controller.hide_swap_syn()
 
 
 func _on_blood_rain_button_pressed() -> void:
