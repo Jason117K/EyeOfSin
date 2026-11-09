@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bad645hkxklbv" path="res://_UI/notif_margin_container.tscn" id="9_ip61f"]
 [ext_resource type="Script" uid="uid://psx73xguffbd" path="res://_Utilities/menu_audio.gd" id="9_mahd0"]
 [ext_resource type="Script" uid="uid://bwvwwck0ec52m" path="res://_Utilities/GameController/pip_controller.gd" id="10_pip"]
+[ext_resource type="Script" path="res://_Utilities/Leaderboards/leaderboard_service.gd" id="11_leaderboards"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mahd0"]
 bg_color = Color(0.9499998, 0, 1, 0)
@@ -124,3 +125,7 @@ process_mode = 3
 stream = ExtResource("9_3rtt1")
 bus = &"music"
 script = ExtResource("9_mahd0")
+
+[node name="Leaderboards" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("11_leaderboards")

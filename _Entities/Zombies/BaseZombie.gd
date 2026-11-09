@@ -713,7 +713,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		if _last_click_frame == Engine.get_physics_frames():
 			return
 		_last_click_frame = Engine.get_physics_frames()
-		##print(self, " was clicked ")
+		print(self, " was clicked ")
 		Global.set_zombie_info_bar(self)
 		highlight_circle.show()
 

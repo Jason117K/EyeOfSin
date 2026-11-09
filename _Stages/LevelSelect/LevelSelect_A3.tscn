@@ -1000,7 +1000,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_sqabr")
 theme_override_font_sizes/font_size = 10
-text = "2-1 : AWAKENING"
+text = "3-1 : AWAKENING"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_1_PanelContainer/Level_Vbox" unique_id=1372793230]
@@ -1073,7 +1073,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_sqabr")
 theme_override_font_sizes/font_size = 10
-text = "2-2 : REVELATIONS"
+text = "3-2 : REVELATIONS"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_2_PanelContainer/Level_Vbox" unique_id=1248826972]
@@ -1146,7 +1146,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_sqabr")
 theme_override_font_sizes/font_size = 10
-text = "2-3 : DIVIDE & CONQUER"
+text = "3-3 : DIVIDE & CONQUER"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Acts_MarginContainer/Acts_Hbox/ScrollContainer/Acts_Vbox/Act_3_PanelContainer/Act_3_MarginContainer/Act_3_Vbox/Levels_1-3_Container/Level_3_PanelContainer/Level_Vbox" unique_id=1077469635]

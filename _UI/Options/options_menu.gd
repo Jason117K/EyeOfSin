@@ -4,6 +4,9 @@ var startScreen := "res://_Stages/StartScreen/StartScreen.tscn"
 var backButton 
 var returning_to_dual_scene := false
 
+@onready var submit_scores_toggle: CheckButton = %SubmitScoresToggle
+@onready var sort_by_time_toggle: CheckButton = %SortByTimeToggle
+
 func _ready() -> void:
 	# Set process mode to handle input even when paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -25,6 +28,16 @@ func _ready() -> void:
 	#print("Tree paused: ", get_tree().paused)
 	backButton.connect("pressed",_on_back_button_pressed)
 	_setup_language_dropdown()
+	_setup_leaderboard_toggles()
+
+func _setup_leaderboard_toggles() -> void:
+	var has_leaderboards := SteamPlatform.is_available()
+	submit_scores_toggle.visible = has_leaderboards
+	sort_by_time_toggle.visible = has_leaderboards
+	submit_scores_toggle.set_pressed_no_signal(LeaderboardSettings.submits_scores())
+	sort_by_time_toggle.set_pressed_no_signal(LeaderboardSettings.sorts_by_time())
+	submit_scores_toggle.toggled.connect(LeaderboardSettings.set_submits_scores)
+	sort_by_time_toggle.toggled.connect(LeaderboardSettings.set_sorts_by_time)
 
 func _setup_language_dropdown() -> void:
 	var dropdown: OptionButton = $CenterContainer/VBoxContainer/languageDropdown

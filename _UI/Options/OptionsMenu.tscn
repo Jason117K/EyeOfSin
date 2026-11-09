@@ -80,6 +80,20 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_8a2yq")
 fit_to_longest_item = false
 
+[node name="SubmitScoresToggle" type="CheckButton" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8a2yq")
+text = "UI_OPTIONS_SUBMIT_SCORES"
+
+[node name="SortByTimeToggle" type="CheckButton" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8a2yq")
+text = "UI_OPTIONS_SORT_BY_TIME"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1214672174]
 stream = ExtResource("4_0gbsf")
 autoplay = true

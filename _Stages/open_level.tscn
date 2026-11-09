@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dptosray0efea" path="res://_Assets/Fonts/EBGaramond-VariableFont_wght.ttf" id="1_o73ch"]
 [ext_resource type="Texture2D" uid="uid://ophch7r0ngcp" path="res://screenshots/Level0-1_Alternate.jpg" id="2_15pr5"]
 [ext_resource type="Texture2D" uid="uid://b87in16ty26k5" path="res://screenshots/Level0-1.jpg" id="3_81vee"]
+[ext_resource type="PackedScene" path="res://_UI/Leaderboards/leaderboard_mini.tscn" id="4_leaderboard"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o73ch"]
 content_margin_bottom = 5.0
@@ -174,6 +175,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxFlat_81vee")
+
+[node name="LeaderboardMini" parent="CenterContainer/PanelContainer/Level_Vbox" instance=ExtResource("4_leaderboard")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer/TutorialVbox/ToggleTutorialButton" to="." method="_on_toggle_tutorial_button_pressed"]

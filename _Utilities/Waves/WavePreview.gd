@@ -24,11 +24,12 @@ signal call_wave_early_requested
 @onready var tankTexture : TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/TankHbox/TankTexture
 @onready var rangedTexture : TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RangedHbox/RangedTexture
 @onready var bufferTexture : TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/BufferHbox/BufferTexture
+@onready var act2BossTexture : TextureRect = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/Act2BossHbox/Act2BossTexture
 
 @onready var ALL_ZOMBIE_TEXTURES := [rebornTexture,severedTexture,unhallowerTexture, \
 									erupterTexture,reanimatorTexture, \
 									flesheaterTexture,amalgamTexture , sunderedTexture, \
-									tankTexture, rangedTexture, bufferTexture]
+									tankTexture, rangedTexture, bufferTexture, act2BossTexture]
 									
 @onready var rebornLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RebornHbox/Reborn
 @onready var severedabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/SeveredHbox/Severed
@@ -42,6 +43,7 @@ signal call_wave_early_requested
 @onready var tankLabel: RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/TankHbox/Tank
 @onready var rangedLabel : RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/RangedHbox/Ranged
 @onready var bufferLabel : RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/BufferHbox/Buffer
+@onready var act2BossLabel : RichTextLabel = $ZombiePreviewControl/ZombiePreviewPanel/PreviewZombiesGridContainer/Act2BossHbox/Act2Boss
 
 @onready var zombie_preview_panel : PanelContainer = $ZombiePreviewControl/ZombiePreviewPanel
 
@@ -50,7 +52,7 @@ signal call_wave_early_requested
 @onready var ALL_ZOMBIE_LABELS := [rebornLabel,severedabel,unhallowerLabel, \
 									erupterLabel, reanimatorLabel, \
 									flesheaterLabel, amalgamLabel, \
-									sunderedLabel, tankLabel, rangedLabel, bufferLabel]
+									sunderedLabel, tankLabel, rangedLabel, bufferLabel, act2BossLabel]
 									
 @onready var zombie_preview_control := $ZombiePreviewControl
 

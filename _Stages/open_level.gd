@@ -9,6 +9,7 @@ const TUTORIAL_OFF_COLOR := Color.BLACK
 @onready var level_image_syn  :=  $CenterContainer/PanelContainer/Level_Vbox/LevelMarginContainer/LevelImagePanelContainer/VBoxContainer/LevelTextureAlt
 @onready var show_tutorial_box := $CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer
 @onready var toggle_tutorial_button := $CenterContainer/PanelContainer/Level_Vbox/Rank_HBox/TutorialMarginContainer/TutorialVbox/ToggleTutorialButton
+@onready var leaderboard: LeaderboardMini = %LeaderboardMini
 var tutorial_active : bool = true
 
 var level_earth
@@ -27,7 +28,14 @@ func set_level_images (new_earth_image : TextureRect, new_syn_image : TextureRec
 func set_levels(new_earth_level : String, new_syn_level : String) -> void:
 	level_earth = new_earth_level
 	level_syn = new_syn_level
-	_reset_tutorial_option(Progress.level_for_scene(new_earth_level))
+	var level := Progress.level_for_scene(new_earth_level)
+	_reset_tutorial_option(level)
+	_show_leaderboard(level)
+
+func _show_leaderboard(level : int) -> void:
+	leaderboard.visible = LeaderboardService.available() != null and level > 0
+	if leaderboard.visible:
+		leaderboard.open(level, LeaderboardBoards.default_filter(Progress.best_rank(level)))
 
 func _reset_tutorial_option(level : int) -> void:
 	var attempted := Progress.is_level_attempted(level)

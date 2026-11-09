@@ -24,7 +24,11 @@ extends Zombie
 
 enum State { WALK, ATTACK, DOWN, TRANSITION, DEAD }
 
-const FLESH_MASS_ICON := preload("res://_Entities/Zombies/_Act2Boss/Act_2_Boss_Icon.png")
+const PHASE_ICONS: Array[CompressedTexture2D] = [
+	preload("res://_Entities/Zombies/_Act2Boss/Icons/Act_2_Boss_Icon_P1.png"),
+	preload("res://_Entities/Zombies/_Act2Boss/Icons/Act_2_Boss_Icon_P2.png"),
+	preload("res://_Entities/Zombies/_Act2Boss/Icons/Act_2_Boss_Icon_P3.png"),
+]
 
 # --- Per-phase settings (p1_ / p2_ / p3_; read through _phase_value) ---
 # Hit frames count from 0 and must be 1 or more (frame 0 is where every attack starts).
@@ -75,6 +79,10 @@ const FLESH_MASS_ICON := preload("res://_Entities/Zombies/_Act2Boss/Act_2_Boss_I
 
 var twin: Zombie = null
 
+# Pickable only (its layer is masked by nothing), so the boss stays clickable
+# while its hurtbox is disabled during transitions and while DOWN.
+@onready var _click_shape: CollisionShape2D = $ClickArea/CollisionShape2D
+
 var _phase: int = 1
 var _state: State = State.WALK
 var _hurtboxes: Array[CollisionShape2D] = []
@@ -92,6 +100,8 @@ func _ready() -> void:
 	animatedSprite.animation_finished.connect(_on_sprite_animation_finished)
 	animatedSprite.frame_changed.connect(_on_sprite_frame_changed)
 	_enter_phase(2 if starts_in_phase_two else 1)
+	if Global.gameIsStarted and not is_demo:
+		Global.unlock_zombie("Act2Boss")
 
 
 func tick(delta: float) -> void:
@@ -145,6 +155,8 @@ func _enter_phase(phase: int) -> void:
 	for i in _hurtboxes.size():
 		_hurtboxes[i].set_deferred("disabled", i != phase - 1)
 	hurtbox = _hurtboxes[phase - 1]
+	_click_shape.position = hurtbox.position
+	_click_shape.shape = hurtbox.shape
 
 	animatedSprite.position = _phase_value("sprite_position")
 	attack_ray.position = _phase_value("ray_position")
@@ -159,6 +171,8 @@ func _enter_phase(phase: int) -> void:
 	# Shown on the info bar (get_damage); the actual hits use the per-attack damages.
 	attackComp.attack_power = float(_phase_value("attack_damage")) * _damage_mult
 	_enter_walk()
+	if Global.notification_bar != null:
+		Global.notification_bar.refresh_zombie_info(self)
 
 
 func _set_untouchable(untouchable: bool) -> void:
@@ -309,6 +323,7 @@ func _final_death() -> void:
 	if _state == State.DEAD:
 		return
 	_state = State.DEAD
+	_click_shape.set_deferred("disabled", true)
 	if death_blood.animation_finished.is_connected(free_zombie):
 		death_blood.animation_finished.disconnect(free_zombie)
 	super.die()
@@ -372,4 +387,9 @@ func get_special_description() -> String:
 
 
 func get_zombie_icon() -> CompressedTexture2D:
-	return FLESH_MASS_ICON
+	return PHASE_ICONS[_phase - 1]
+
+
+# Health sits at or below 0 during transitions and while DOWN; the info bar shows 0.
+func get_health() -> float:
+	return maxf(healthComp.health, 0.0)

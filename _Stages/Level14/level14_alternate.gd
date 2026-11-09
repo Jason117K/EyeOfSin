@@ -1,6 +1,11 @@
 extends LevelTemplate
 
 
+const TUTORIAL_EXPLAIN_ACT2_BOSS = "res://_Assets/Text/TextFiles/ZombieSpecialDescriptions/act2boss_special_description.txt"
+const ACT2_BOSS_UNLOCK_ICON := preload("res://_Entities/Zombies/_Act2Boss/Icons/Act_2_Boss_Icon_P1.png")
+
+var flesh_mass_zombie_demo := preload("res://_UI/GameDemonstrations/ZombieTutorials/flesh_mass_zombie_demo.tscn")
+
 var purple_dimension: Control
 
 @onready var zombie_spawner_1 := $GameLayer/ZombieSpawner1
@@ -94,3 +99,12 @@ func show_unlock_zombie_button(new_zombie_unlocked:String)->void:
 		"Rohan":
 			ui_layer.new_zombie_unlocked_button.show()
 			ui_layer.set_zombie_icon_texture(new_zombie_unlocked)
+		"Act2Boss":
+			ui_layer.new_zombie_unlocked_button.show()
+			ui_layer.new_zombie_icon.texture = ACT2_BOSS_UNLOCK_ICON
+
+
+func show_zombie_tutorial(unlocked_zombie : String)->void:
+	if unlocked_zombie == "Act2Boss":
+		toolTips.set_visual_tutorial_text(TUTORIAL_EXPLAIN_ACT2_BOSS)
+		toolTips.set_visual_tutorial_visual(flesh_mass_zombie_demo.instantiate())

@@ -116,7 +116,7 @@ shader_parameter/tolerance = 0.0
 shader_parameter/glow_tolerance = 0.061
 
 [node name="Act2Boss" type="Area2D" unique_id=1498839439 groups=["Zombie"]]
-z_index = 1
+z_index = 2
 collision_layer = 2
 script = ExtResource("1_majkd")
 p2_sprite_position = Vector2(6, -5)
@@ -188,15 +188,25 @@ disabled = true
 
 [node name="HurtBoxComponent_Phase3" type="CollisionShape2D" parent="." unique_id=788527401]
 visible = false
-position = Vector2(10.5, 51)
+position = Vector2(19, -1.5)
 shape = SubResource("RectangleShape2D_phase3")
 disabled = true
+
+[node name="ClickArea" type="Area2D" parent="."]
+collision_layer = 524288
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+visible = false
+position = Vector2(-0.5, 1.83333)
+shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351385227]
 material = SubResource("20")
 position = Vector2(-5, -51)
 sprite_frames = ExtResource("11_2k0ns")
-animation = &"Walk_Phase3"
+animation = &"Walk_Phase1"
 flip_h = true
 script = ExtResource("13_ivwtn")
 targetColor = Color(0.0431373, 0.0431373, 0.0431373, 1)
@@ -221,4 +231,5 @@ texture = ExtResource("15_81i2y")
 script = ExtResource("16_kwp8k")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="ClickArea" to="." method="_on_input_event"]
 [connection signal="animation_finished" from="BloodHit" to="." method="_on_blood_hit_animation_finished"]

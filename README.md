@@ -241,6 +241,37 @@ The equipped sorceries persist for the session (not saved). Levels 5–17 call
 when nothing is equipped, so a panel pick carries into the level. Never call
 `Global.register_*_ability` unconditionally from a level: it overwrites the player's pick.
 
+**Leaderboards (Steam, `_Utilities/Leaderboards/` + `_UI/Leaderboards/`).** Per-level Steam
+leaderboards through GodotSteam (GDExtension, `addons/godotsteam`), app 4305730. Without Steam
+running, every board and the two Options toggles stay hidden.
+- **Steam start-up:** `SteamPlatform` (`_Utilities/Steam/steam_platform.gd`) is the only start-up
+  path. `LeaderboardService` (GameController's `Leaderboards` child, `PROCESS_MODE_ALWAYS`) calls
+  `initialize()` in its `_ready` and `Steam.run_callbacks()` every frame, so Steam results keep
+  arriving while the end screen pauses the tree. UI reaches it via `LeaderboardService.available()`
+  (null when Steam or GameController is missing).
+- **Boards:** four per level, `<LevelKey>_<ALL|SSS>_<SCORE|TIME>` (`LeaderboardBoards`), created on
+  first use. The level key is the purple scene's file name, and debug builds use `DEV_` boards.
+  Every win uploads to the ALL pair, and an SSS win to the SSS pair too, with KeepBest. Each
+  entry's details hold a `LevelRun` (`[version, time_ms, score, rank, lives_lost, fireballs_used,
+  demon_points]`). Bump `LevelRun.DETAILS_VERSION` when that layout changes.
+- **One call at a time:** Steam's find/download/upload callbacks don't say which request they
+  answer, so the service runs them one at a time with a timeout. Uploads are limited to 10 per
+  10 minutes per player.
+- **What doesn't upload:** forced wins (U / Shift+U, read through
+  `Progress.has_pending_forced_rank()` before `resolve_rank()`), test levels (level 0), runs with
+  "Submit scores" off.
+- **End screen** (`style_screen`): `LeaderboardPanel` shows 6 rows (`LeaderboardLayout`). It starts
+  on SSS after an SSS run, and its header click switches ALL/SSS. On the first win of a level that
+  shows an unlock card, it stays hidden behind Show Leaderboard. That button appears once the rune
+  finishes, and pressing it cuts UnlockPower to its Next Level button. Replays skip the rune and
+  show the board at once. **Level select** (`OpenLevel`): `LeaderboardMini`, 3 rows with
+  ALL/SSS tabs.
+- **Names:** players' Steam names, passed through `Steam.filterText` (name context) for the viewer.
+- **Options:** "Submit scores" and "Sort by fastest time" live in `settings.cfg` `[leaderboards]`
+  (`LeaderboardSettings`).
+- **The run clock** (`total_game_time`, TIME row, time rank, leaderboards) starts when wave 1
+  starts, not at level load.
+
 **Demon loadouts (`DemonLoadout` statics, `_Utilities/demon_loadout.gd`).**
 - **Unlocks:** each demon unlocks by beating a level (`Progress.DEMON_UNLOCKS`; Maw = level 11).
 - **Act screens:** the `DemonGridContainer` hides locked demons. Once all six are unlocked, the
@@ -475,6 +506,11 @@ and applied in `GameController._ready` (saved → OS language → `en`).
   the CSV — the game reads the compiled `.translation` files, so **open/focus the editor to
   re-import** before testing (stale if `<csv>.en.translation` is older than the CSV). Always quote
   translated CSV cells (unquoted commas in ru/pl broke rows twice).
+- **Renaming a purple level scene gives it fresh, empty leaderboards**, because its file name is the
+  board key. The old boards stay in Steamworks.
+- **GodotSteam's `avatar_loaded` can fire inside `getPlayerAvatar()`**, before anything awaits it.
+  `LeaderboardService.SteamSignalWaiter` keeps that result until it's read. Reuse it for new
+  Steam callbacks.
 - **Headless Godot runs have side effects:** they can empty the `[dialogic]` directory maps in
   `project.godot` and strip a UID from a font `.import` fallback chain — diff both afterwards. Update
   Dialogic translation CSVs from the editor only (it rewrites `.dtl` files).
@@ -544,6 +580,17 @@ refactor phases that touch the restart path, buff matching, or tick order.
 	music. Beat 1-1 there, switch back, and Slot 1 is untouched. Quit on Slot 2 and the relaunch
 	loads Slot 2. With Baal Gaze equipped in Slot 1, switch to Slot 2: Y in levels 1–4 fires no
 	swap ability, and level 5 equips Lightning. A synergy's pop-up shows once per slot.
+13. **Leaderboards** (debug build, `DEV_` boards):
+	- **Steam closed:** no boards, no Options toggles, no errors.
+	- **Steam running:**
+		- A win uploads and the end board shows the run highlighted. Its header switches
+		  ALL/SSS, and an SSS run opens on SSS.
+		- The Friends toggle and the Options sort toggle each fetch again.
+		- First win of 1-1: Show Leaderboard appears after the rune and cuts UnlockPower to Next
+		  Level. A replay shows the board at once.
+		- The OpenLevel popup shows 3 rows with tabs.
+		- U / Shift+U wins and "Submit scores" off upload nothing.
+		- The TIME row counts from wave 1.
 
 ## Important File Paths 
 - ** res://_Utilities/global.gd **
@@ -557,6 +604,9 @@ refactor phases that touch the restart path, buff matching, or tick order.
 - ** res://_UI/LoreBooks/ ** (`demon_lore_book_controller.gd`, `ZombieLoreBookController.gd`: the codexes)
 - ** res://_UI/ability_control_panel.gd ** (sorcery picker, star gating)
 - ** res://_UI/style_screen.gd ** (score screen; records the overall rank)
+- ** res://_Utilities/Steam/steam_platform.gd ** (Steam start-up, name filtering)
+- ** res://_Utilities/Leaderboards/ ** (`leaderboard_service.gd` node; `LevelRun`, `LeaderboardBoards`, `LeaderboardLayout`, `LeaderboardSettings` statics)
+- ** res://_UI/Leaderboards/ ** (end-screen panel, level-select mini board, row scenes)
 - ** res://_Stages/LevelSelect/ ** (`act_select.gd`; Act 1–3 screens `level_select_alt.gd` / `_A2` / `_A3`)
 - ** res://_Utilities/Grid/tile_map_layer.gd ** (placement preview squares)
 - ** res://_Utilities/loc.gd ** (localization statics; CSVs + tools in res://_Localization/)

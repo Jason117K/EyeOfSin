@@ -1,0 +1,69 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://_UI/Leaderboards/leaderboard_panel.gd" id="1_panel"]
+[ext_resource type="PackedScene" path="res://_UI/Leaderboards/leaderboard_row_tall.tscn" id="2_row"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="3_font"]
+[ext_resource type="Texture2D" uid="uid://cvrv7oqp7ejqa" path="res://_Entities/Demons/Cards/Empty_Display_CARD-Black.png" id="4_card"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_card"]
+texture = ExtResource("4_card")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.76, 0.76, 0.76, 0.9764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_header"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_separator"]
+color = Color(1, 1, 1, 1)
+thickness = 2
+
+[node name="LeaderboardPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(230, 0)
+theme_override_styles/panel = SubResource("StyleBoxTexture_card")
+script = ExtResource("1_panel")
+row_scene = ExtResource("2_row")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FilterHeader" type="Button" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_header")
+theme_override_styles/hover = SubResource("StyleBoxFlat_header")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_header")
+theme_override_styles/focus = SubResource("StyleBoxFlat_header")
+text = "UI_LEADERBOARD_ALL_RANKS"
+alignment = 0
+
+[node name="HeaderSeparator" type="HSeparator" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxLine_separator")
+
+[node name="Status" type="Label" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 10
+text = "UI_LEADERBOARD_LOADING"
+horizontal_alignment = 1
+
+[node name="Rows" type="VBoxContainer" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FriendsToggle" type="CheckButton" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 10
+text = "UI_LEADERBOARD_FRIENDS_ONLY"

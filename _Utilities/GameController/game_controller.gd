@@ -31,6 +31,7 @@ var _is_transitioning := false
 @onready var demon_selection_menus := Global.demon_selection_menus
 @onready var level_switcher := $CurrentScene/LevelSwitcher
 @onready var menu_audio: MenuAudio = $MenuAudio
+@onready var leaderboards: LeaderboardService = $Leaderboards
 var virtual_cursor := VirtualCursor.new()
 #@onready var ultimate_container := $UltimateChargeContainer
 var ultimate_container 

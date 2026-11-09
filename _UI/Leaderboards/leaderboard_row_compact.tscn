@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://_UI/Leaderboards/leaderboard_row.gd" id="1_row"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="2_font"]
+
+[node name="LeaderboardRowCompact" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 18)
+theme_override_constants/separation = 6
+script = ExtResource("1_row")
+
+[node name="Position" type="Label" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 2
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 9
+text = "#1"
+vertical_alignment = 1
+
+[node name="Avatar" type="TextureRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlayerName" type="Label" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 2
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Time" type="Label" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "0:00.000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 2
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Rank" type="Label" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 2
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1

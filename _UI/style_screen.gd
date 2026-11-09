@@ -1,6 +1,8 @@
 extends Control
 
-# Should Only Grab values and parse Letter Grade from those values 
+# Should Only Grab values and parse Letter Grade from those values
+
+signal leaderboard_revealed
 
 @onready var level_title := $CenterContainer/StylePanel/AllPanelsVbox/LevelTitlePanel/Level_Title
 
@@ -25,6 +27,13 @@ var all_rank_values : Array[SCORE_RANKS] = [time_rank_value,lives_lost_rank_valu
 @onready var overall_rank := $CenterContainer/StylePanel/AllPanelsVbox/ScoringHbox/StyleRankLetterPanel/StyleRankLetterLabel
 @onready var total_score_panel := $CenterContainer/StylePanel/AllPanelsVbox/TotalScorePanel
 var stars_label : RichTextLabel # built in _ready from a copy of TotalScorePanel
+
+@onready var leaderboard_panel: LeaderboardPanel = %LeaderboardPanel
+@onready var show_leaderboard_button: Button = %ShowLeaderboardButton
+var _overall_rank_value := Progress.RANK_D
+var _was_forced_win := false
+var _leaderboard_level := 0
+var _leaderboard_starts_hidden := false
 
 var SSS_STYLE_POINTS_MIN := 2000
 var S_STYLE_POINTS_MIN := 1500
@@ -65,6 +74,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	_build_stars_panel()
+	show_leaderboard_button.pressed.connect(_reveal_leaderboard)
 
 		
 	#ScoreManager.level_ended.connect(_setup_score)
@@ -99,8 +109,49 @@ func _setup_score()->void:
 	set_fireballs_used_rank()
 	set_style_rank()
 	set_overall_rank()
+	_present_leaderboard()
 	self.show()
-	
+
+
+## Call before _setup_score. Hidden boards wait for the Show Leaderboard button.
+func set_leaderboard_starts_hidden(starts_hidden: bool) -> void:
+	_leaderboard_starts_hidden = starts_hidden
+
+
+func reveal_leaderboard_button() -> void:
+	show_leaderboard_button.visible = _leaderboard_level > 0 and not leaderboard_panel.visible
+
+
+func _present_leaderboard() -> void:
+	leaderboard_panel.hide()
+	show_leaderboard_button.hide()
+	var service := LeaderboardService.available()
+	_leaderboard_level = Progress.last_beaten_level() if service != null else 0
+	if _leaderboard_level <= 0:
+		return
+	if not _was_forced_win:
+		service.submit(_build_level_run())
+	leaderboard_panel.open(_leaderboard_level, LeaderboardBoards.default_filter(_overall_rank_value))
+	leaderboard_panel.visible = not _leaderboard_starts_hidden
+
+
+func _reveal_leaderboard() -> void:
+	show_leaderboard_button.hide()
+	leaderboard_panel.show()
+	leaderboard_revealed.emit()
+
+
+func _build_level_run() -> LevelRun:
+	var run := LevelRun.new()
+	run.level = _leaderboard_level
+	run.time_ms = roundi(ScoreManager.get_completion_time() * 1000.0)
+	run.score = int(ScoreManager.get_total_score())
+	run.rank = _overall_rank_value
+	run.lives_lost = ScoreManager.get_lives_lost()
+	run.fireballs_used = ScoreManager.get_lawn_mowers_used()
+	run.demon_points = ScoreManager.style_points_before_bonus
+	return run
+
 func set_level_title(new_level_title_text : String)->void:
 	level_title.text = new_level_title_text
 	pass
@@ -194,7 +245,9 @@ func set_overall_rank()->void:
 	if rank == SCORE_RANKS.SSS and not ScoreManager.are_all_lawn_mowers_intact():
 		rank = SCORE_RANKS.S
 	# The overall rank is what earns stars; a debug win may force it (Progress.resolve_rank).
+	_was_forced_win = Progress.has_pending_forced_rank()
 	var final_rank := Progress.resolve_rank(rank)
+	_overall_rank_value = final_rank
 	overall_rank.text = Progress.RANK_LETTERS[final_rank]
 	var stars_earned := Progress.record_rank(final_rank)
 	if stars_label != null:

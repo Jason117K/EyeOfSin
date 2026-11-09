@@ -1,0 +1,99 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://_UI/Leaderboards/leaderboard_mini.gd" id="1_mini"]
+[ext_resource type="PackedScene" path="res://_UI/Leaderboards/leaderboard_row_compact.tscn" id="2_row"]
+[ext_resource type="FontFile" uid="uid://tq4eiocyomjs" path="res://_Assets/Fonts/Mantinia Regular.otf" id="3_font"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_separator"]
+color = Color(1, 1, 1, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_off"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_on"]
+bg_color = Color(0.94, 0.94, 0.94, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="LeaderboardMini" type="VBoxContainer"]
+theme_override_constants/separation = 3
+script = ExtResource("1_mini")
+row_scene = ExtResource("2_row")
+shape = 1
+
+[node name="TopSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxLine_separator")
+
+[node name="Tabs" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AllRanksTab" type="Button" parent="Tabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_off")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tab_off")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tab_on")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tab_on")
+toggle_mode = true
+button_pressed = true
+text = "UI_LEADERBOARD_ALL_RANKS"
+
+[node name="SssTab" type="Button" parent="Tabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_off")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tab_off")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tab_on")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tab_on")
+toggle_mode = true
+text = "UI_LEADERBOARD_SSS"
+
+[node name="Status" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 10
+text = "UI_LEADERBOARD_LOADING"
+horizontal_alignment = 1
+
+[node name="Rows" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FriendsToggle" type="CheckButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 10
+text = "UI_LEADERBOARD_FRIENDS_ONLY"

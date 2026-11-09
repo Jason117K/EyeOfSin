@@ -87,6 +87,7 @@ static var _highest := 1
 static var _best_ranks: Dictionary = {} # level (int) -> best rank (int)
 static var _tutorial_steps: Dictionary = {} # level (int) -> step count (int)
 static var _last_beaten := 0 # session-only, reset per slot; drives post-win routing + rank recording
+static var _last_win_was_first := false
 static var _pending_forced_rank := -1 # debug win rank for the score screen; -1 = none
 
 
@@ -172,6 +173,16 @@ static func level_for_scene(scene_path: String) -> int:
 	return 0
 
 
+## Purple scene path for an overall level number (1..total); "" if unknown.
+static func scene_for_level(level: int) -> String:
+	var remaining := level
+	for act_levels: Array in ACTS:
+		if remaining >= 1 and remaining <= act_levels.size():
+			return act_levels[remaining - 1]
+		remaining -= act_levels.size()
+	return ""
+
+
 ## Called once per win (WaveManager._win). Never lowers progress, so replays are safe.
 ## forced_rank (debug wins) is handed to the score screen via resolve_rank; every call
 ## resets it, so a natural win (-1) can never inherit a stale debug rank.
@@ -180,6 +191,7 @@ static func mark_level_beaten(scene_path: String, forced_rank: int = -1) -> void
 	_pending_forced_rank = forced_rank
 	var level := level_for_scene(scene_path)
 	_last_beaten = level
+	_last_win_was_first = level != 0 and not is_level_beaten(level)
 	if level == 0:
 		push_warning("[PROGRESS] unknown level '%s' — not recorded (add it to Progress.ACTS?)" % scene_path)
 		return
@@ -187,6 +199,23 @@ static func mark_level_beaten(scene_path: String, forced_rank: int = -1) -> void
 	if unlocked > highest_unlocked():
 		_highest = unlocked
 		_save()
+
+
+static func last_beaten_level() -> int:
+	_ensure_loaded()
+	return _last_beaten
+
+
+## True when the latest win was this save's first win of that level.
+static func last_win_was_first() -> bool:
+	_ensure_loaded()
+	return _last_win_was_first
+
+
+## Read before resolve_rank(), which clears it.
+static func has_pending_forced_rank() -> bool:
+	_ensure_loaded()
+	return _pending_forced_rank >= 0
 
 
 ## Score screen hook: the rank it computed, unless a debug win forced one.
@@ -338,6 +367,7 @@ static func _load() -> void:
 	_best_ranks = {}
 	_tutorial_steps = {}
 	_last_beaten = 0
+	_last_win_was_first = false
 	_pending_forced_rank = -1
 	var save_path := SaveSlots.file_path(SAVE_FILE)
 	var cfg := ConfigFile.new()

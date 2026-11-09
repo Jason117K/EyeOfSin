@@ -167,7 +167,7 @@ func trigger_ultimate()->void:
 	Global.un_ready_ultimate()
 	var shield_health := get_max_health() / 4.0
 	for demon in rib_buff_area.get_overlapping_areas():
-		if demon.is_in_group("Demons"):
+		if demon.is_in_group("Demons") && demon.has_method("rib_shield"):
 			demon.rib_shield(demon_buff_name, shield_health)
 
 

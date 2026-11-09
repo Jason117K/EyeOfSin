@@ -1,5 +1,8 @@
 extends Control
 
+## Vertical offset of the Next Level button when it's shown alone, clear of the leaderboard.
+@export var next_level_only_offset_y := 182.0
+
 @onready var new_power_texture := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewPowerTexture
 @onready var title_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewPowerTitle
 @onready var description_label := $PowerUnlockPanel/MarginContainer/AllElementsVbox/NewPowerDescription
@@ -17,8 +20,8 @@ func _on_next_level_button_pressed() -> void:
 func show_next_level_button_only()->void:
 	for element: Control in all_elements_vbox.get_children():
 		element.visible = element == next_level_button
-	power_unlock_panel.offset_top = 0
-	power_unlock_panel.offset_bottom = 0
+	power_unlock_panel.offset_top = next_level_only_offset_y
+	power_unlock_panel.offset_bottom = next_level_only_offset_y
 
 func set_new_unlock_label(new_unlock_label_text:String="UI_NEW_DEMON")->void:
 	new_power_unlock_label.text = tr(new_unlock_label_text)

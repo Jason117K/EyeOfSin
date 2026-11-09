@@ -154,7 +154,8 @@ const CALM_CHECK_INTERVAL := 0.5
 
 var auto_advance : bool = false 
 
-var total_game_time : float = 0 
+var total_game_time : float = 0
+var is_run_clock_started := false
 
 var is_first_screenshot := true 
 
@@ -171,7 +172,8 @@ func _ready() -> void:
 	ScoreManager.reset()
 	
 	waveManager.level_ended.connect(_on_level_ended)
-	
+	waveManager.wave_started.connect(_start_run_clock)
+
 	if new_power_texture != null:
 		new_power_unlock_rune.set_new_power_texture(new_power_texture)
 		unlock_power.set_new_power_texture(new_power_texture)
@@ -279,22 +281,30 @@ func handle_score()->void:
 	wait_for_demon_points_timer.start()
 	
 func handle_new_power_unlock()->void:
+	var shows_unlock_card := Progress.last_win_was_first() and not no_new_unlock
+	Global.style_menu.set_leaderboard_starts_hidden(shows_unlock_card)
 	Global.style_menu._setup_score()
-	if no_new_unlock:
+	if not shows_unlock_card:
 		unlock_power.show_next_level_button_only()
 		show_new_demon()
 		toolTips.visible = false
 		get_tree().paused = true
 		return
-	new_power_unlock_rune.unlock_done.connect(show_new_demon)
+	Global.style_menu.leaderboard_revealed.connect(unlock_power.show_next_level_button_only, CONNECT_ONE_SHOT)
+	new_power_unlock_rune.unlock_done.connect(_on_unlock_card_shown)
 	new_power_unlock_rune.activate()
 	new_power_unlock_rune.process_mode = Node.PROCESS_MODE_ALWAYS
 	unlock_power.process_mode = Node.PROCESS_MODE_ALWAYS
 	#levelSwitcher.visible = true
 	toolTips.visible = false
 	get_tree().paused = true
-	
-	
+
+
+func _on_unlock_card_shown() -> void:
+	show_new_demon()
+	Global.style_menu.reveal_leaderboard_button()
+
+
 func _on_end_dialog_finished() -> void:
 	#print(isGreenDimension, "-------------Style Menu Visible--------------", self)
 	if isGreenDimension:
@@ -306,8 +316,14 @@ func _on_end_dialog_finished() -> void:
 	#levelSwitcher.visible = true
 	
 	
+func _start_run_clock(wave_index: int) -> void:
+	if wave_index == 0:
+		is_run_clock_started = true
+
+
 func _process(delta: float) -> void:
-	total_game_time += delta
+	if is_run_clock_started:
+		total_game_time += delta
 	if check_progress:
 
 		progress_timer_wait_time -= delta

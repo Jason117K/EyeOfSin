@@ -1,7 +1,7 @@
 {
 	"format": 1,
 	"scene": "res://_Stages/Level14/Level14.tscn",
-	"saved": "2026-10-19 14:36:32",
+	"saved": "2026-11-09 13:37:44",
 	"root": {
 		"wave2StartTime": 55,
 		"wave3StartTime": 80,
@@ -267,6 +267,10 @@
 					},
 					{
 						"type": "Erupter",
+						"count": 1
+					},
+					{
+						"type": "Act2Boss",
 						"count": 1
 					}
 				]

@@ -216,6 +216,12 @@ func set_zombie_info(zombie: Zombie) -> void:
 		notif_icon._apply_hue_shift()
 		
 		
+## Re-reads a zombie whose stats or look changed (e.g. a boss phase) if the bar is showing it.
+func refresh_zombie_info(zombie: Zombie) -> void:
+	if visible and zombie == current_zombie:
+		set_zombie_info(zombie)
+
+
 func show_zombie_notification() -> void:
 	show()
 	v_separator.show()
